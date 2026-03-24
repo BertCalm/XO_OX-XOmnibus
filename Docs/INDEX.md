@@ -82,13 +82,13 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 
 ## Roadmaps & Launch Planning
 
-- [xolokun_engine_roadmap_v3.md](xolokun_engine_roadmap_v3.md) — Engine roadmap v3 (current)
-- [xolokun_engine_roadmap.md](xolokun_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
-- [xolokun_v2_roadmap.md](xolokun_v2_roadmap.md) — V2 roadmap
-- [xolokun_launch_audit_2026.md](xolokun_launch_audit_2026.md) — Launch audit 2026
-- [xolokun_landscape_2026.md](xolokun_landscape_2026.md) — Competitive landscape 2026
+- [xomnibus_engine_roadmap_v3.md](xomnibus_engine_roadmap_v3.md) — Engine roadmap v3 (current)
+- [xomnibus_engine_roadmap.md](xomnibus_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
+- [xomnibus_v2_roadmap.md](xomnibus_v2_roadmap.md) — V2 roadmap
+- [xomnibus_launch_audit_2026.md](xomnibus_launch_audit_2026.md) — Launch audit 2026
+- [xomnibus_landscape_2026.md](xomnibus_landscape_2026.md) — Competitive landscape 2026
 - [release_readiness_12k.md](release_readiness_12k.md) — Release readiness report (12k)
-- [xolokun_brand_identity_and_launch.md](xolokun_brand_identity_and_launch.md) — Brand identity & launch strategy
+- [xomnibus_brand_identity_and_launch.md](xomnibus_brand_identity_and_launch.md) — Brand identity & launch strategy
 - [funding_plan.md](funding_plan.md) — Funding strategy
 - [engine_expansion_toolkit_strategy.md](engine_expansion_toolkit_strategy.md) — Engine expansion strategy
 
@@ -150,7 +150,7 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 - [build_verification_11j.md](build_verification_11j.md) — Build verification round 11j
 - [build_verification_12j.md](build_verification_12j.md) — Build verification round 12j
 - [v007_journey_demo_report.md](v007_journey_demo_report.md) — v0.0.7 journey demo report
-- [xolokun_volume2_review.md](xolokun_volume2_review.md) — Volume 2 review
+- [xomnibus_volume2_review.md](xomnibus_volume2_review.md) — Volume 2 review
 
 ---
 
@@ -240,7 +240,7 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 - [concepts/xodyssey_concept_brief.md](concepts/xodyssey_concept_brief.md) — ODYSSEY concept
 - [concepts/xohm_concept_brief.md](concepts/xohm_concept_brief.md) — OHM concept
 - [concepts/xole_concept_brief.md](concepts/xole_concept_brief.md) — OLE concept
-- [concepts/xolokun_collections_vision.md](concepts/xolokun_collections_vision.md) — Collections vision
+- [concepts/xomnibus_collections_vision.md](concepts/xomnibus_collections_vision.md) — Collections vision
 - [concepts/xonset_concept_brief.md](concepts/xonset_concept_brief.md) — ONSET concept
 - [concepts/xopal_concept_brief.md](concepts/xopal_concept_brief.md) — OPAL concept
 

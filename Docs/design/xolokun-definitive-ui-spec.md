@@ -186,7 +186,8 @@ velocity[x][y] *= damping; // 0.98
 - Tap center: single ripple, decaying sine wave modulation
 - Drag: continuous wave, amplitude = distance from center, rate = drag speed
 - Two-finger (iPad): interference patterns from two wave sources
-- Tilt (iPad gyroscope via `SensorManager`): water surface tilts with device
+- Tilt (iPad gyroscope via `CMMotionManager`): water surface tilts with device
+  - `import CoreMotion; let motionManager = CMMotionManager()`
 
 **Parameter mapping**: Assignable to any parameter. Default: filter cutoff. The center height value h[8][8] is the output value, normalized 0-1. This creates organic, naturally decaying modulation that no LFO shape can replicate.
 
@@ -676,8 +677,8 @@ Keyboard bindings shown as small key letter, bottom-right of each pad, JetBrains
 
 | Controller | Size | Position |
 |-----------|------|----------|
-| Mod Wheel | 28x120pt | Top-left |
-| Pitch Bend | 28x120pt | Top-right (next to Mod Wheel) |
+| Mod Wheel | 28x160pt | Top-left |
+| Pitch Bend | 28x160pt | Top-right (next to Mod Wheel) |
 | Macro Strips (x4) | 20pt wide each, 120pt tall | Below wheels, 4pt spacing |
 | Tide Controller | 100pt diameter | Below macros, centered |
 
@@ -940,12 +941,12 @@ All touch targets: 44pt minimum. Font sizes: minimum 11pt (iOS Dynamic Type supp
 | Foreground | Background | Ratio | Grade | Usage |
 |-----------|-----------|-------|-------|-------|
 | `#E9C46A` XO Gold | `#1A1A1A` dark bg | 7.2:1 | AAA | Primary accent on dark |
-| `#E9C46A` XO Gold | `#F8F6F3` light shell | 2.4:1 | FAIL normal / AA large | **Use `#9E7C2E` (XO Gold Text) for text on light bg** |
-| `#9E7C2E` XO Gold Text | `#F8F6F3` light shell | 4.8:1 | AA | Gold text on light mode |
+| `#E9C46A` XO Gold | `#F8F6F3` light shell | 2.4:1 | FAIL normal / AA large | **Use `#7A5C1E` (XO Gold Text) for text on light bg** |
+| `#7A5C1E` XO Gold Text | `#F8F6F3` light shell | 5.0:1 | AA | Gold text on light mode |
 | `#1A1A1A` text | `#F8F6F3` light shell | 14.7:1 | AAA | Primary text, light mode |
 | `#F0EDE8` text | `#1A1A1A` dark bg | 13.9:1 | AAA | Primary text, dark mode |
 | `#F0EDE8` text | `#2D2D2D` card bg | 10.1:1 | AAA | Card text, dark mode |
-| `#777570` secondary | `#F8F6F3` light shell | 4.7:1 | AA | Secondary text, light mode |
+| `#6B6965` secondary | `#F8F6F3` light shell | 5.0:1 | AA | Secondary text, light mode |
 | `#A0A0A0` secondary | `#1A1A1A` dark bg | 6.0:1 | AA | Secondary text, dark mode |
 | `#A0A0A0` secondary | `#2E2E2E` card bg | 4.6:1 | AA | Card secondary, dark mode |
 
@@ -1290,7 +1291,7 @@ No synthesizer has ever shown its entire capability space in a single, beautiful
 | `emptySlot` | `#EAE8E4` | `#363636` | Empty engine slots |
 | `borderGray` | `#DDDAD5` | `#4A4A4A` | Subtle borders |
 | `textPrimary` | `#1A1A1A` | `#F0EDE8` | Primary text |
-| `textSecondary` | `#777570` | `#A0A0A0` | Labels, secondary |
+| `textSecondary` | `#6B6965` | `#A0A0A0` | Labels, secondary |
 | `textDim` | `#BDBBB6` | `rgba(240,237,232,0.20)` | Disabled, placeholder |
 
 ## A.2 Brand Constants (Mode-Invariant)
@@ -1300,7 +1301,7 @@ No synthesizer has ever shown its entire capability space in a single, beautiful
 | `xoGold` | `#E9C46A` | THE brand color. Coupling strip, macros, actions |
 | `xoGoldLight` | `#F4DFA0` | Hover state (light mode) |
 | `xoGoldDark` | `#C4A24E` | Pressed state |
-| `xoGoldText` | `#9E7C2E` | Gold text on light backgrounds (AA compliant) |
+| `xoGoldText` | `#7A5C1E` | Gold text on light backgrounds (AA compliant, 5.0:1 on `#F8F6F3`) |
 
 ## A.3 Depth Zone Colors
 

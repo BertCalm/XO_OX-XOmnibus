@@ -1023,7 +1023,7 @@
       "status": "active"
     },
     {
-      "file": "xport_inspector.py",
+      "file": "xpn_xport_inspector.py",
       "category": "xpn-export",
       "description": "XPort Inspector (5th Legendary Feature) \u2014 inspects exported XPN packs for XDrip preview coverage, DNA Inheritance completeness, Coupling Snapshot presence, Rebirth Mode round-robin variation, and XPM rule compliance. Produces GO/NO-GO readiness score (0-100).",
       "status": "active",
@@ -1035,6 +1035,156 @@
       "description": "Cross-Pack Loudness Ledger (Legend Feature #6) \u2014 persistent JSON ledger recording LUFS, true peak, and crest factor for every normalized sample. Phase 1: data recording. Phase 2: crest-compensated normalization targets for perceptual loudness consistency across all packs. CLI: python3 xpn_loudness_ledger.py stats",
       "status": "active",
       "legendary": true
+    },
+    {
+      "file": "dedup_preset_names.py",
+      "category": "preset-tools",
+      "description": "Find and fix duplicate preset names across the XOlokun fleet.",
+      "status": "active"
+    },
+    {
+      "file": "fix_mood_and_entangled.py",
+      "category": "preset-tools",
+      "description": "Fix mood/folder mismatches and Entangled mood issues in .xometa presets.",
+      "status": "active"
+    },
+    {
+      "file": "fix_preset_prefixes.py",
+      "category": "preset-tools",
+      "description": "Batch-fix parameter prefix mismatches in .xometa presets using engine-scoped rename mappings.",
+      "status": "active"
+    },
+    {
+      "file": "generate_broth_presets.py",
+      "category": "preset-design",
+      "description": "Generate 40 BROTH quad awakening preset .xometa files for Overwash, Overworn, Overflow, Overcast (10 each).",
+      "status": "active"
+    },
+    {
+      "file": "generate_descriptions.py",
+      "category": "preset-tools",
+      "description": "Generate evocative 1-2 sentence descriptions for XOlokun presets that are missing them.",
+      "status": "active"
+    },
+    {
+      "file": "generate_submerged_presets.py",
+      "category": "preset-design",
+      "description": "Generate Submerged mood presets for engines that have zero coverage in that mood.",
+      "status": "active"
+    },
+    {
+      "file": "macro_position_pass.py",
+      "category": "preset-tools",
+      "description": "OBRIX Macro Position Pass \u2014 sets meaningful starting positions for the 4 OBRIX macros across presets.",
+      "status": "active"
+    },
+    {
+      "file": "migrate_simplified_presets.py",
+      "category": "utility",
+      "description": "Converts agent-written simplified preset format to the canonical XOlokun .xometa schema.",
+      "status": "active"
+    },
+    {
+      "file": "normalize_engine_names.py",
+      "category": "utility",
+      "description": "Normalize engine names in all .xometa preset files to canonical mixed-case form (e.g. ORIGAMI \u2192 Origami).",
+      "status": "active"
+    },
+    {
+      "file": "xpn_obrix_preset_gen.py",
+      "category": "preset-design",
+      "description": "OBRIX Wave 4 Preset Generator \u2014 150 factory presets for the flagship reef engine across 7 moods.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_oceandeep_preset_gen.py",
+      "category": "preset-design",
+      "description": "OCEANDEEP Factory Preset Generator \u2014 150 presets for the abyssal bass engine across 7 moods.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_opensky_preset_gen.py",
+      "category": "preset-design",
+      "description": "OPENSKY Factory Preset Generator \u2014 150 presets for the euphoric shimmer engine across 7 moods.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_organism_preset_gen.py",
+      "category": "preset-design",
+      "description": "ORGANISM Preset Generator \u2014 150 factory presets for the Coral Colony engine across 7 moods.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_ostinato_preset_gen.py",
+      "category": "preset-design",
+      "description": "OSTINATO Factory Preset Generator \u2014 150 factory presets for The Fire Circle world percussion engine across 7 moods.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_ouie_preset_gen.py",
+      "category": "preset-design",
+      "description": "OUIE Factory Preset Generator \u2014 150 presets for the Hammerhead duophonic synth across 7 moods.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_overtone_preset_gen.py",
+      "category": "preset-design",
+      "description": "OVERTONE Preset Generator \u2014 150 factory presets for the Nautilus continued-fraction spectral engine across 7 moods.",
+      "status": "active"
+    },
+    {
+      "file": "preset_migration_sprint1.py",
+      "category": "utility",
+      "description": "XOlokun .xometa Preset Migration Sprint 1 \u2014 applies 7 P0/P1 fixes across all preset files.",
+      "status": "active"
+    },
+    {
+      "file": "quarantine_empty_presets.py",
+      "category": "preset-tools",
+      "description": "Move empty/macro-only .xometa presets (all parameter values at default) to a _quarantine folder.",
+      "status": "active"
+    },
+    {
+      "file": "rename_debug_presets.py",
+      "category": "preset-tools",
+      "description": "Identify and rename debug/pole-fill preset names to evocative 2-3 word names; also normalizes ALL_CAPS names.",
+      "status": "active"
+    },
+    {
+      "file": "rename_dna_coded_presets.py",
+      "category": "preset-tools",
+      "description": "Rename presets with DNA-encoded names (e.g. '5X DARK COLD...') to evocative names derived from engine pair, mood, and DNA character.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_cold_start_seed.py",
+      "category": "utility",
+      "description": "Cold-Start Seed Protocol (Vision Quest 007) \u2014 seeds initial preset and pack data for new installations.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_intent_generator.py",
+      "category": "xpn-export",
+      "description": "Create .xpn_intent JSON sidecar files for XPN packs, recording the artistic intent and curatorial rationale for each pack.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_profile_preset_selector.py",
+      "category": "oxport-core",
+      "description": "SELECT stage of the .oxbuild compiler \u2014 given a pack profile YAML and a preset directory, selects the best-matching presets for the pack.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_profile_validator.py",
+      "category": "oxport-core",
+      "description": "Profile-Driven QA Validator for XO_OX Pack Builds \u2014 loads a pack profile YAML and validates an actual pack's DNA distribution against targets.",
+      "status": "active"
+    },
+    {
+      "file": "xpn_qa_decision_log.py",
+      "category": "oxport-core",
+      "description": "QA Substitution Decision Log for XO_OX Pack Builds \u2014 records every accept/reject/substitute decision made during a pack build for audit trail.",
+      "status": "active"
     }
   ]
 }

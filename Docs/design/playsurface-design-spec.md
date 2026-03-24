@@ -195,7 +195,7 @@ Four selectable velocity curves matching MPC hardware:
 | Curve | Character | Formula | Use Case |
 |-------|-----------|---------|----------|
 | Linear | Even response | `v = input` | Neutral, predictable |
-| Logarithmic | Sensitive at low vel | `v = log(1 + input*9) / log(10)` | Finger drumming, ghost notes |
+| Logarithmic | Sensitive at low vel | `v = 127 * pow(input/127, 0.6)` | Finger drumming, ghost notes |
 | Exponential | Sensitive at high vel | `v = input^2` | Hard hitting, trap, aggressive |
 | Fixed | Constant velocity | `v = fixedValue (default 0.8)` | Step sequencing, consistent levels |
 
@@ -355,6 +355,7 @@ The Seaboard surface generates MPE (MIDI Polyphonic Expression) messages:
 | Lift velocity | Note Off velocity | — | 0-127 |
 
 **MPE zone config**: Lower Zone (channels 2-8, 7 voices) is the default. Manager channel = 1. Configurable for Upper Zone or Full MPE.
+> **Note**: Standard MPE allows channels 2-16 (15 voices). The 7-voice default (channels 2-8) is a CPU budget constraint, not an MPE limitation. Users with lower CPU pressure can expand to full MPE via the zone config.
 
 **Per-note voice allocation**: Each new touch is assigned to the next available MPE channel. Voice stealing follows LRU (Least Recently Used) when all channels are occupied. The `VoiceAllocator` from `Source/DSP/VoiceAllocator.h` is used for consistency with the engine's internal allocation.
 

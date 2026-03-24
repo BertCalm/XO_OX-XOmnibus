@@ -60,7 +60,7 @@ These are the neutral frame. They never change between engines.
 | `emptySlot` | `#EAE8E4` | `#363636` | Empty/inactive engine slots |
 | `borderGray` | `#DDDAD5` | `#4A4A4A` | Subtle warm grey borders |
 | `textPrimary` | `#1A1A1A` | `#EEEEEE` | Primary text |
-| `textSecondary` | `#777570` | `#C8C8C8` | Labels, secondary info |
+| `textSecondary` | `#6B6965` | `#C8C8C8` | Labels, secondary info |
 
 Implementation note: In `Source/UI/XOlokunEditor.h`, these are live in the `GalleryColors` namespace with theme-aware accessor functions. The `darkMode()` bool is the toggle. Do not hard-code hex values in component code — use the accessors.
 
@@ -70,7 +70,7 @@ Implementation note: In `Source/UI/XOlokunEditor.h`, these are live in the `Gall
 XO Gold:       #E9C46A
 XO Gold Light: #F4DFA0   (hover state, light mode)
 XO Gold Dark:  #C4A24E   (pressed state)
-XO Gold Text:  #9E7C2E   (WCAG AA on shell white — used for text)
+XO Gold Text:  #7A5C1E   (WCAG AA on shell white — 5.0:1 on #F8F6F3 — used for text)
 ```
 
 XO Gold is **the only color constant** across both modes. It never adapts. It appears on:
@@ -413,7 +413,7 @@ From `Source/UI/Mobile/`:
 - `MobileTouchHandler` — multi-touch gesture processing
 - `ParameterDrawer` — bottom drawer for parameter access (slides up on demand)
 - `HapticEngine` — haptic feedback on FIRE/PANIC actions
-- `SensorManager` — accelerometer/gyroscope routing to parameters
+- `CMMotionManager` — accelerometer/gyroscope routing to parameters (Core Motion; `import CoreMotion`)
 
 **Minimum touch target: 44pt** (Apple HIG compliance). Even 24pt visual knobs expand to 44pt hit areas.
 
@@ -674,7 +674,7 @@ All animations have an instant fallback. OpticVisualizer drops to Scope mode + 1
 | Surface | `#FFFFFF` | `#2D2D2D` |
 | Border | `#DDDAD5` | `#4A4A4A` |
 | Text primary | `#1A1A1A` | `#EEEEEE` |
-| Text secondary | `#777570` | `#C8C8C8` |
+| Text secondary | `#6B6965` | `#C8C8C8` |
 | Engine accents | Unchanged | Unchanged |
 | XO Gold | Unchanged | Unchanged |
 | Knob tracks | 30% accent | 40% accent (brighter) |
@@ -833,4 +833,4 @@ For web-based preset browser, documentation site, or any web component:
 
 ---
 
-*This document was compiled from all design-related sources in the XO_OX-XOlokun repo on 2026-03-17. The canonical sources listed in Section 18 take precedence if any conflict exists.*
+*This document was compiled from all design-related sources in the XO_OX-XOmnibus repo on 2026-03-17. The canonical sources listed in Section 18 take precedence if any conflict exists.*

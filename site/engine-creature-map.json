@@ -575,6 +575,294 @@
         "name": "Praya dubia",
         "zone": "twilight"
       }
+    },
+    {
+      "id": "OTO",
+      "accent": "#7BA05B",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Organ Pipe Coral",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OCTAVE",
+      "accent": "#6B2D3E",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Wine Barrel Sponge",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OLEG",
+      "accent": "#C5A036",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Golden Pipefish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OTIS",
+      "accent": "#DAA520",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Harmonica Eel",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OVEN",
+      "accent": "#2C2C2C",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Iron Clam",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OCHRE",
+      "accent": "#B87333",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Copper Nautilus",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OBELISK",
+      "accent": "#4A4A4A",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Basalt Barnacle",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OPALINE",
+      "accent": "#B8D4E3",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Glass Jellyfish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OGRE",
+      "accent": "#4A2C0A",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Mudskipper Giant",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OLATE",
+      "accent": "#6B1A2A",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Blood Worm",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OAKEN",
+      "accent": "#3D2412",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Driftwood Crab",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OMEGA",
+      "accent": "#B04010",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Magma Vent Shrimp",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "ORCHARD",
+      "accent": "#DAA520",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Sea Grass Harp",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OVERGROW",
+      "accent": "#3A5F0B",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Kelp Forest Serpent",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OSIER",
+      "accent": "#6B8E23",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Weeping Anemone",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OXALIS",
+      "accent": "#6A0DAD",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Purple Sea Fan",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OVERWASH",
+      "accent": "#D4A76A",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Amber Drift",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OVERWORN",
+      "accent": "#4A1A2E",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Weathered Coral",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OVERFLOW",
+      "accent": "#E8E8E8",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Foam Sprite",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OVERCAST",
+      "accent": "#B0E0E6",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Cloud Jellyfish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OASIS",
+      "accent": "#C49B3F",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Desert Seahorse",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "ODDFELLOW",
+      "accent": "#FF6B35",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Fire Nudibranch",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "ONKOLO",
+      "accent": "#FFB300",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Gold Drummer Fish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OPCODE",
+      "accent": "#00CED1",
+      "creature": {
+        "source": "custom",
+        "file": null,
+        "path": null,
+        "spritesheetRow": null,
+        "name": "Neon Byte Shrimp",
+        "zone": "sunlit"
+      }
     }
   ]
 }
