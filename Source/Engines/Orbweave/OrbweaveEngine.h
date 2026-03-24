@@ -214,11 +214,13 @@ public:
     // Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int /*maxBlockSize*/) override
+    void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = static_cast<float> (sampleRate);
         for (auto& v : voices) v.reset();
         for (auto& fx : fxSlots) fx.prepare (sr);
+        // SRO SilenceGate: phase-braided oscillators with reverb FX — 500ms hold
+        prepareSilenceGate (sampleRate, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override {}
@@ -239,6 +241,15 @@ public:
                       int numSamples) override
     {
         if (numSamples <= 0) return;
+
+        // SRO SilenceGate: wake on note-on, bypass when silent
+        for (const auto& md : midi)
+            if (md.getMessage().isNoteOn()) { wakeSilenceGate(); break; }
+        if (isSilenceGateBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
+        }
 
         // === ParamSnapshot: cache all parameters once per block ===
 
@@ -508,6 +519,9 @@ public:
         int count = 0;
         for (const auto& v : voices) if (v.active) ++count;
         activeVoices.store(count, std::memory_order_relaxed);
+
+        // SRO SilenceGate: feed output to the gate for silence detection
+        analyzeForSilenceGate (buffer, numSamples);
     }
 
     //==========================================================================

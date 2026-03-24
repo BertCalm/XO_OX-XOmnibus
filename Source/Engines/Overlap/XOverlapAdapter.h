@@ -107,6 +107,12 @@ public:
     {
         juce::ScopedNoDenormals noDenormals;
 
+        // Reset coupling accumulators — prevents sticky modulation after route disconnect
+        extPitchMod  = 0.0f;
+        extFilterMod = 0.0f;
+        extRingMod   = 0.0f;
+        extDelayMod  = 0.0f;
+
         // Cache params once per block — use stored apvts pointer
         if (apvts_ptr != nullptr)
             params.update(*apvts_ptr);

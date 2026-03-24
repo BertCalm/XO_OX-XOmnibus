@@ -540,6 +540,9 @@ public:
             voice.hpf.reset();
             voice.hpf.setMode (CytomicSVF::Mode::HighPass);
         }
+
+        // SRO SilenceGate: shimmer reverb tails need a generous hold — 500ms
+        prepareSilenceGate (sampleRate, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override {}
@@ -578,6 +581,15 @@ public:
                       int numSamples) override
     {
         if (numSamples <= 0) return;
+
+        // SRO SilenceGate: wake on note-on, bypass when silent
+        for (const auto& md : midi)
+            if (md.getMessage().isNoteOn()) { wakeSilenceGate(); break; }
+        if (isSilenceGateBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
+        }
 
         // --- ParamSnapshot: read all parameters once per block ---
         const float sawSpread      = pLoad (pSawSpread, 0.3f);
@@ -921,6 +933,9 @@ public:
         }
 
         envelopeOutput = peakEnv;
+
+        // SRO SilenceGate: feed output to the gate for silence detection
+        analyzeForSilenceGate (buffer, numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------

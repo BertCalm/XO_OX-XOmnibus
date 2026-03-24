@@ -272,12 +272,14 @@ public:
     // Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int /*maxBlockSize*/) override
+    void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = static_cast<float> (sampleRate);
         for (auto& v : voices) v.reset();
         for (auto& fx : fxSlots) fx.prepare (sr);
         buildWavetables();
+        // SRO SilenceGate: complex reef ecology has reverb tails — 500ms hold
+        prepareSilenceGate (sampleRate, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override {}
@@ -321,6 +323,15 @@ public:
                       int numSamples) override
     {
         if (numSamples <= 0) return;
+
+        // SRO SilenceGate: wake on note-on, bypass when silent
+        for (const auto& md : midi)
+            if (md.getMessage().isNoteOn()) { wakeSilenceGate(); break; }
+        if (isSilenceGateBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
+        }
 
         // === ParamSnapshot ===
         const auto src1Type   = static_cast<int> (loadP (pSrc1Type, 2.0f)); // 2=Saw default
@@ -1020,6 +1031,9 @@ public:
         int count = 0;
         for (const auto& v : voices) if (v.active) ++count;
         activeVoices.store(count, std::memory_order_relaxed);
+
+        // SRO SilenceGate: feed output to the gate for silence detection
+        analyzeForSilenceGate (buffer, numSamples);
 
         // Brick complexity for coupling metadata (0–1 normalized)
         // Smith: architectural complexity signal — how many bricks are active

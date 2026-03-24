@@ -27,6 +27,11 @@ public:
         return reg;
     }
 
+    // Thread-safety: All registerEngine() calls happen during static initialization
+    // before main(). createEngine() is called from the message thread only.
+    // No concurrent access is possible under the current architecture.
+    // If this changes (e.g., dynamic plugin loading), add a mutex.
+
     // Register an engine type (called at static init via REGISTER_ENGINE).
     // Returns false if an engine with this ID is already registered.
     bool registerEngine(const std::string& id, EngineFactory factory)

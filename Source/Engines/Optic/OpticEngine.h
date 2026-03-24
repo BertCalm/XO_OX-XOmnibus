@@ -546,6 +546,14 @@ public:
     {
         cachedSampleRate = sampleRate;
 
+        // SRO SilenceGate: OPTIC is intentionally exempt from the zero-idle bypass
+        // (B005: Zero-Audio Identity). It generates no audio — it is a pure modulation
+        // engine that must run continuously to track spectral features even when
+        // no notes are playing. The gate is prepared for contract completeness but
+        // the bypass check is intentionally omitted from renderBlock(). This is the
+        // same exemption as D006 aftertouch (Optic intentionally exempt — visual engine).
+        prepareSilenceGate (sampleRate, maxBlockSize, 100.0f);
+
         analyzer.prepare (sampleRate);
         autoPulse.prepare (sampleRate);
 

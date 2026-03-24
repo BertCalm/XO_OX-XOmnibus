@@ -1528,6 +1528,11 @@ public:
 
         for (int s = 0; s < kNumSeats; ++s)
             seats[s].prepare (sampleRate);
+
+        // SRO SilenceGate: drum synthesis with reverb tail — 500ms hold.
+        // Note: OSTINATO also fires via its autonomous pattern sequencer,
+        // so the gate is woken on sequencer triggers (see renderBlock step 3).
+        prepareSilenceGate (sampleRate, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override
@@ -1552,6 +1557,15 @@ public:
                       juce::MidiBuffer& midi, int numSamples) override
     {
         if (numSamples <= 0) return;
+
+        // SRO SilenceGate: wake on live MIDI note-on
+        for (const auto& md : midi)
+            if (md.getMessage().isNoteOn()) { wakeSilenceGate(); break; }
+        // NOTE: bypass check is intentionally NOT applied here for OSTINATO.
+        // The autonomous pattern sequencer can fire triggers even when the
+        // MIDI buffer is empty. Bypassing on empty MIDI would silence patterns.
+        // The gate is still analyzed at the end of the block to correctly track
+        // actual audio output and enable bypass when the sequencer is also silent.
 
         // ---- 1. ParamSnapshot: cache all parameters once per block ----
         float sInstr[kNumSeats], sArtic[kNumSeats], sTune[kNumSeats], sDecay[kNumSeats];
@@ -1745,6 +1759,8 @@ public:
             int patArt = 0;
             if (seats[s].sequencer.consumeTrigger (patVel, patArt))
             {
+                // SRO SilenceGate: sequencer-fired trigger also wakes the gate
+                wakeSilenceGate();
                 int inst = static_cast<int> (sInstr[s]);
                 seats[s].triggerSeat (patVel, inst, patArt,
                     sTune[s] + pitchBendNorm * 2.0f, sDecay[s], sBright[s],
@@ -1832,6 +1848,9 @@ public:
         couplingDecayMod = 0.0f;
 
         activeVoiceCounter.store (countActiveVoices(), std::memory_order_relaxed);
+
+        // SRO SilenceGate: feed output to the gate for silence detection
+        analyzeForSilenceGate (buffer, numSamples);
     }
 
     //-- Coupling ----------------------------------------------------------------
