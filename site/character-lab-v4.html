@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XO_OX Character Lab v4 — Dendritic Gills</title>
+<style>
+  :root {
+    --felix:#00A6D6; --felix-stripe:#00E5FF; --felix-tail:#FF4444;
+    --oscar:#E8839B; --gill:#FF6B8A; --gill2:#FF8DA6; --gill3:#FFB0C8; --gill-tip:#FFC8D9;
+    --gold:#E9C46A; --abyssal:#080B1A; --pelagic:#111B33; --pearl:#E8E4DC; --cyan:#00E5FF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--abyssal);color:var(--pearl);font-family:'Inter',system-ui,sans-serif;}
+  .hdr{text-align:center;padding:60px 20px 10px;}
+  .hdr h1{font-size:2rem;color:var(--gold);}
+  .hdr p{opacity:.4;font-size:.82rem;margin-top:4px;}
+  .sec{max-width:1100px;margin:0 auto;padding:50px 24px 20px;}
+  .sec h2{font-size:1.3rem;color:var(--gold);margin-bottom:4px;}
+  .sec .sub{opacity:.4;font-size:.8rem;margin-bottom:24px;}
+  .row{display:flex;align-items:flex-end;gap:48px;justify-content:center;flex-wrap:wrap;margin:28px 0;}
+  .cell{text-align:center;}
+  .cell .tag{font-family:monospace;font-size:.6rem;color:var(--cyan);opacity:.4;margin-top:6px;}
+  .note{background:var(--pelagic);border-left:2px solid var(--gold);padding:12px 20px;border-radius:0 8px 8px 0;margin:16px 0;font-size:.8rem;line-height:1.6;}
+  .note strong{color:var(--gold);}
+  .scene{display:flex;align-items:center;justify-content:center;gap:28px;padding:48px;background:var(--pelagic);border-radius:12px;border:1px solid rgba(233,196,106,.06);margin:28px 0;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0;}
+  .grid .v{text-align:center;padding:18px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.04);}
+  .v .l{font-size:.7rem;color:var(--gold);margin-top:8px;}
+  .dark{background:var(--abyssal);}
+  .light{background:#F8F6F3;}
+  .light .l{color:#333;}
+  .divider{width:40px;height:1px;background:var(--gold);opacity:.1;margin:40px auto;}
+  @keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  @keyframes sway-l{0%,100%{transform:rotate(0deg)}50%{transform:rotate(3.5deg)}}
+  @keyframes sway-r{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-3.5deg)}}
+  @keyframes pulse{0%,100%{opacity:.2}50%{opacity:.5}}
+  .drift{animation:drift 4s ease-in-out infinite;}
+  .float{animation:float 3s ease-in-out infinite;}
+  @media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr);}.row{gap:24px;}}
+  @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>Character Lab v4</h1>
+  <p>Dendritic gills — fleshy, branching, coral-like. The axolotl crown.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- GILL STUDY — isolated at large scale        -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec">
+  <h2>Gill Study — Single Branch at 200%</h2>
+  <p class="sub">Main ramus → secondary branches → tertiary filaments → rounded tips. Fleshy, not spiky.</p>
+
+  <div class="row">
+    <div class="cell">
+      <svg width="120" height="200" viewBox="0 0 30 50" style="overflow:visible">
+        <defs>
+          <radialGradient id="tip-glow">
+            <stop offset="0%" stop-color="var(--gill-tip)" stop-opacity=".6"/>
+            <stop offset="100%" stop-color="var(--gill-tip)" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Main ramus — thick, fleshy, curved -->
+        <path d="M15,48 Q13,35 10,22 Q8,12 7,2" stroke="var(--gill)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <!-- Secondary branch 1 (lower, curves left) -->
+        <path d="M11,28 Q6,24 2,22" stroke="var(--gill2)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <!-- Tertiary from branch 1 -->
+        <path d="M5,24 Q2,21 0,19" stroke="var(--gill3)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="0" cy="19" r="1.2" fill="var(--gill-tip)" opacity=".5"/>
+        <path d="M7,23 Q5,25 3,25" stroke="var(--gill3)" stroke-width="1" fill="none" stroke-linecap="round" opacity=".6"/>
+        <circle cx="3" cy="25" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+        <!-- Tip of branch 1 -->
+        <circle cx="2" cy="22" r="1.4" fill="var(--gill-tip)" opacity=".45"/>
+
+        <!-- Secondary branch 2 (middle, curves left-up) -->
+        <path d="M10,20 Q5,17 1,14" stroke="var(--gill2)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Tertiary from branch 2 -->
+        <path d="M4,16 Q1,14 -1,12" stroke="var(--gill3)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <circle cx="-1" cy="12" r="1.1" fill="var(--gill-tip)" opacity=".4"/>
+        <path d="M6,16 Q4,18 2,18" stroke="var(--gill3)" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".5"/>
+        <circle cx="2" cy="18" r=".8" fill="var(--gill-tip)" opacity=".3"/>
+        <!-- Tip -->
+        <circle cx="1" cy="14" r="1.3" fill="var(--gill-tip)" opacity=".4"/>
+
+        <!-- Secondary branch 3 (upper, curves right-up) -->
+        <path d="M9,12 Q5,8 3,4" stroke="var(--gill2)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Tertiary -->
+        <path d="M6,7 Q3,5 1,3" stroke="var(--gill3)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <circle cx="1" cy="3" r="1" fill="var(--gill-tip)" opacity=".35"/>
+        <circle cx="3" cy="4" r="1.2" fill="var(--gill-tip)" opacity=".4"/>
+
+        <!-- Main ramus tip (rounded, fleshy) -->
+        <circle cx="7" cy="2" r="1.5" fill="var(--gill-tip)" opacity=".5"/>
+        <circle cx="7" cy="2" r="3" fill="url(#tip-glow)"/>
+
+        <!-- Subtle right-side branches (asymmetry = organic) -->
+        <path d="M12,25 Q15,22 17,21" stroke="var(--gill2)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+        <circle cx="17" cy="21" r="1" fill="var(--gill-tip)" opacity=".3"/>
+        <path d="M10,16 Q13,13 15,12" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".4"/>
+        <circle cx="15" cy="12" r=".9" fill="var(--gill-tip)" opacity=".25"/>
+      </svg>
+      <div class="tag">Single gill ramus — dendritic structure</div>
+    </div>
+
+    <div class="cell" style="max-width:300px; text-align:left; font-size:.78rem; line-height:1.5; opacity:.6;">
+      <p><strong style="color:var(--gold)">Anatomy:</strong></p>
+      <p>1. <strong>Main ramus</strong> (3.5px) — thick, fleshy stalk curving up</p>
+      <p>2. <strong>Secondary branches</strong> (2px) — 2-3 per side, curve outward</p>
+      <p>3. <strong>Tertiary filaments</strong> (1px) — delicate, short, curve away</p>
+      <p>4. <strong>Rounded tips</strong> (circles) — not pointed, like tiny berries</p>
+      <p style="margin-top:8px">Branches are <em>asymmetric</em> — more on one side than the other (left-heavy = organic). Opacity decreases with each generation. The gill is a tiny tree.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- OSCAR v4 — FULL CHARACTER                   -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec">
+  <h2>Oscar v4 — Full Dendritic Crown</h2>
+  <p class="sub">Each of 6 gills is a branching tree. The crown is a forest.</p>
+
+  <div class="row">
+    <!-- 16px — simplified: curved sticks + tiny forks -->
+    <div class="cell">
+      <svg width="16" height="20" viewBox="0 0 40 48">
+        <circle cx="20" cy="24" r="14" fill="var(--oscar)"/>
+        <!-- At 16px: curved lines with tiny fork hints -->
+        <path d="M9,16 Q4,9 2,3" stroke="var(--gill)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <path d="M4,8 Q2,6 0,5" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M13,12 Q9,5 8,0" stroke="var(--gill)" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+        <path d="M17,10 Q15,4 15,-1" stroke="var(--gill)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M31,16 Q36,9 38,3" stroke="var(--gill)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <path d="M36,8 Q38,6 40,5" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M27,12 Q31,5 32,0" stroke="var(--gill)" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+        <path d="M23,10 Q25,4 25,-1" stroke="var(--gill)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="15" cy="22" r="2.5" fill="#1A0A10"/>
+        <circle cx="25" cy="22" r="2.5" fill="#1A0A10"/>
+        <path d="M16,29 Q20,33 24,29" stroke="#B55570" stroke-width="1.4" fill="none"/>
+      </svg>
+      <div class="tag">16px</div>
+    </div>
+
+    <!-- 32px — secondary branches visible -->
+    <div class="cell">
+      <svg width="32" height="44" viewBox="-2 -3 44 52">
+        <ellipse cx="20" cy="39" rx="11" ry="8" fill="var(--oscar)" opacity=".6"/>
+        <circle cx="20" cy="24" r="15" fill="var(--oscar)"/>
+
+        <!-- Left gill 1 (outer — largest) -->
+        <g style="transform-origin:8px 16px;animation:sway-l 3s ease-in-out infinite">
+          <path d="M8,16 Q3,9 1,2" stroke="var(--gill)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <path d="M4,10 Q1,7 -1,5" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="-1" cy="5" r=".9" fill="var(--gill-tip)" opacity=".4"/>
+          <path d="M3,7 Q0,5 -2,4" stroke="var(--gill3)" stroke-width="1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <path d="M5,12 Q2,11 0,9" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".6"/>
+          <circle cx="1" cy="2" r="1" fill="var(--gill-tip)" opacity=".35"/>
+        </g>
+        <!-- Left gill 2 (middle) -->
+        <g style="transform-origin:12px 12px;animation:sway-l 3.5s ease-in-out infinite">
+          <path d="M12,12 Q7,4 6,-3" stroke="var(--gill)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <path d="M9,5 Q5,2 3,0" stroke="var(--gill2)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <circle cx="3" cy="0" r=".8" fill="var(--gill-tip)" opacity=".35"/>
+          <path d="M10,8 Q7,7 5,5" stroke="var(--gill2)" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="6" cy="-3" r=".9" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+        <!-- Left gill 3 (inner — smallest) -->
+        <g style="transform-origin:16px 10px;animation:sway-l 4s ease-in-out infinite">
+          <path d="M16,10 Q14,3 13,-4" stroke="var(--gill)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M14,4 Q12,1 10,-1" stroke="var(--gill2)" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="13" cy="-4" r=".7" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+
+        <!-- Right gill 1 -->
+        <g style="transform-origin:32px 16px;animation:sway-r 3.2s ease-in-out infinite">
+          <path d="M32,16 Q37,9 39,2" stroke="var(--gill)" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <path d="M36,10 Q39,7 41,5" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="41" cy="5" r=".9" fill="var(--gill-tip)" opacity=".4"/>
+          <path d="M37,7 Q40,5 42,4" stroke="var(--gill3)" stroke-width="1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <path d="M35,12 Q38,11 40,9" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".6"/>
+          <circle cx="39" cy="2" r="1" fill="var(--gill-tip)" opacity=".35"/>
+        </g>
+        <!-- Right gill 2 -->
+        <g style="transform-origin:28px 12px;animation:sway-r 3.7s ease-in-out infinite">
+          <path d="M28,12 Q33,4 34,-3" stroke="var(--gill)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <path d="M31,5 Q35,2 37,0" stroke="var(--gill2)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <circle cx="37" cy="0" r=".8" fill="var(--gill-tip)" opacity=".35"/>
+          <path d="M30,8 Q33,7 35,5" stroke="var(--gill2)" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="34" cy="-3" r=".9" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+        <!-- Right gill 3 -->
+        <g style="transform-origin:24px 10px;animation:sway-r 4.2s ease-in-out infinite">
+          <path d="M24,10 Q26,3 27,-4" stroke="var(--gill)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M26,4 Q28,1 30,-1" stroke="var(--gill2)" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="27" cy="-4" r=".7" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+
+        <!-- Face -->
+        <circle cx="14" cy="21" r="3" fill="#1A0A10"/>
+        <circle cx="26" cy="21" r="3" fill="#1A0A10"/>
+        <circle cx="15.2" cy="19.8" r="1.2" fill="#fff"/>
+        <circle cx="27.2" cy="19.8" r="1.2" fill="#fff"/>
+        <path d="M16,29 Q20,34 24,29" stroke="#B55570" stroke-width="1.4" fill="none"/>
+        <circle cx="10" cy="30" r="1.5" fill="#FFB5C5" opacity=".2"><animate attributeName="opacity" values=".15;.4;.15" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="30" cy="28" r="1.2" fill="#FFB5C5" opacity=".18"/>
+        <!-- Front legs with 4 digit hints -->
+        <path d="M8,32 Q4,35 3,38" stroke="#D88A9E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="2" cy="38.5" r=".7" fill="#D88A9E"/>
+        <circle cx="3.2" cy="39" r=".65" fill="#D88A9E"/>
+        <circle cx="4.2" cy="38.6" r=".6" fill="#D88A9E"/>
+        <path d="M32,32 Q36,35 37,38" stroke="#D88A9E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="38" cy="38.5" r=".7" fill="#D88A9E"/>
+        <circle cx="36.8" cy="39" r=".65" fill="#D88A9E"/>
+        <circle cx="35.8" cy="38.6" r=".6" fill="#D88A9E"/>
+        <!-- Back leg hints -->
+        <path d="M11,40 Q6,42 5,45" stroke="#D88A9E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M29,40 Q34,42 35,45" stroke="#D88A9E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="tag">32px — branches + limbs</div>
+    </div>
+
+    <!-- 64px — full dendritic crown -->
+    <div class="cell">
+      <svg width="80" height="110" viewBox="-4 -5 48 60" class="float">
+        <defs>
+          <radialGradient id="o4-body"><stop offset="0%" stop-color="#FFBDD0"/><stop offset="60%" stop-color="#E8839B"/><stop offset="100%" stop-color="#C47088"/></radialGradient>
+          <radialGradient id="o4-cheek"><stop offset="0%" stop-color="#FF8AAA" stop-opacity=".3"/><stop offset="100%" stop-color="#FF8AAA" stop-opacity="0"/></radialGradient>
+        </defs>
+        <!-- Body -->
+        <ellipse cx="20" cy="40" rx="12" ry="9" fill="url(#o4-body)" opacity=".55"/>
+        <path d="M20,47 Q22,53 20,57 Q18,53 20,47" fill="var(--oscar)" opacity=".35">
+          <animateTransform attributeName="transform" type="rotate" values="0,20,47;3,20,47;-3,20,47;0,20,47" dur="2.5s" repeatCount="indefinite"/>
+        </path>
+        <circle cx="20" cy="24" r="15.5" fill="url(#o4-body)"/>
+        <ellipse cx="20" cy="28" rx="9" ry="3.5" fill="#FFD0DD" opacity=".06"/>
+
+        <!-- LEFT GILL CROWN — full dendritic -->
+        <!-- Gill 1 (outer, biggest, most branches) -->
+        <g style="transform-origin:7px 17px;animation:sway-l 2.8s ease-in-out infinite">
+          <path d="M7,17 Q2,8 0,1" stroke="var(--gill)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- Branch low-left -->
+          <path d="M4,12 Q0,10 -2,8" stroke="var(--gill2)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M0,9 Q-2,8 -3,6" stroke="var(--gill3)" stroke-width="1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="-2" cy="8" r="1" fill="var(--gill-tip)" opacity=".4"/>
+          <circle cx="-3" cy="6" r=".7" fill="var(--gill-tip)" opacity=".3"/>
+          <!-- Branch mid-left -->
+          <path d="M3,8 Q-1,5 -2,3" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M0,5 Q-2,4 -3,2" stroke="var(--gill3)" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".45"/>
+          <circle cx="-2" cy="3" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+          <!-- Branch upper -->
+          <path d="M2,5 Q-1,2 -1,0" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".7"/>
+          <circle cx="-1" cy="0" r=".8" fill="var(--gill-tip)" opacity=".3"/>
+          <!-- Small right-side branches (asymmetry) -->
+          <path d="M5,13 Q7,11 8,10" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".4"/>
+          <circle cx="8" cy="10" r=".7" fill="var(--gill-tip)" opacity=".25"/>
+          <!-- Main tip -->
+          <circle cx="0" cy="1" r="1.2" fill="var(--gill-tip)" opacity=".4">
+            <animate attributeName="opacity" values=".3;.6;.3" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Gill 2 (middle) -->
+        <g style="transform-origin:11px 12px;animation:sway-l 3.3s ease-in-out infinite">
+          <path d="M11,12 Q7,4 5,-3" stroke="var(--gill)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path d="M8,5 Q4,2 2,0" stroke="var(--gill2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M5,2 Q3,0 1,-2" stroke="var(--gill3)" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".45"/>
+          <circle cx="2" cy="0" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+          <circle cx="1" cy="-2" r=".65" fill="var(--gill-tip)" opacity=".25"/>
+          <path d="M9,8 Q6,7 4,5" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".55"/>
+          <circle cx="4" cy="5" r=".8" fill="var(--gill-tip)" opacity=".3"/>
+          <circle cx="5" cy="-3" r="1" fill="var(--gill-tip)" opacity=".35">
+            <animate attributeName="opacity" values=".25;.5;.25" dur="3.5s" begin=".5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Gill 3 (inner, smallest) -->
+        <g style="transform-origin:15px 10px;animation:sway-l 3.8s ease-in-out infinite">
+          <path d="M15,10 Q13,3 12,-4" stroke="var(--gill)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M13,4 Q10,1 9,-1" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="9" cy="-1" r=".7" fill="var(--gill-tip)" opacity=".3"/>
+          <path d="M14,6 Q11,5 10,3" stroke="var(--gill3)" stroke-width=".8" fill="none" stroke-linecap="round" opacity=".35"/>
+          <circle cx="12" cy="-4" r=".9" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+
+        <!-- RIGHT GILL CROWN — mirror (slightly different timing = organic) -->
+        <g style="transform-origin:33px 17px;animation:sway-r 3s ease-in-out infinite">
+          <path d="M33,17 Q38,8 40,1" stroke="var(--gill)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M36,12 Q40,10 42,8" stroke="var(--gill2)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M40,9 Q42,8 43,6" stroke="var(--gill3)" stroke-width="1" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="42" cy="8" r="1" fill="var(--gill-tip)" opacity=".4"/>
+          <circle cx="43" cy="6" r=".7" fill="var(--gill-tip)" opacity=".3"/>
+          <path d="M37,8 Q41,5 42,3" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M40,5 Q42,4 43,2" stroke="var(--gill3)" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".45"/>
+          <circle cx="42" cy="3" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+          <path d="M38,5 Q41,2 41,0" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".7"/>
+          <circle cx="41" cy="0" r=".8" fill="var(--gill-tip)" opacity=".3"/>
+          <path d="M35,13 Q33,11 32,10" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".4"/>
+          <circle cx="40" cy="1" r="1.2" fill="var(--gill-tip)" opacity=".4">
+            <animate attributeName="opacity" values=".3;.6;.3" dur="3.2s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <g style="transform-origin:29px 12px;animation:sway-r 3.5s ease-in-out infinite">
+          <path d="M29,12 Q33,4 35,-3" stroke="var(--gill)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path d="M32,5 Q36,2 38,0" stroke="var(--gill2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M35,2 Q37,0 39,-2" stroke="var(--gill3)" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".45"/>
+          <circle cx="38" cy="0" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+          <circle cx="39" cy="-2" r=".65" fill="var(--gill-tip)" opacity=".25"/>
+          <path d="M31,8 Q34,7 36,5" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".55"/>
+          <circle cx="35" cy="-3" r="1" fill="var(--gill-tip)" opacity=".35"/>
+        </g>
+
+        <g style="transform-origin:25px 10px;animation:sway-r 4s ease-in-out infinite">
+          <path d="M25,10 Q27,3 28,-4" stroke="var(--gill)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M27,4 Q30,1 31,-1" stroke="var(--gill2)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".5"/>
+          <circle cx="31" cy="-1" r=".7" fill="var(--gill-tip)" opacity=".3"/>
+          <circle cx="28" cy="-4" r=".9" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+
+        <!-- FACE -->
+        <circle cx="10" cy="27" r="3.5" fill="url(#o4-cheek)"/>
+        <circle cx="30" cy="27" r="3.5" fill="url(#o4-cheek)"/>
+        <circle cx="14" cy="21" r="3.5" fill="#1A0A10"/>
+        <circle cx="26" cy="21" r="3.5" fill="#1A0A10"/>
+        <circle cx="15.5" cy="19.5" r="1.4" fill="#fff"/>
+        <circle cx="27.5" cy="19.5" r="1.4" fill="#fff"/>
+        <circle cx="16" cy="19" r=".45" fill="#fff" opacity=".5"/>
+        <circle cx="28" cy="19" r=".45" fill="#fff" opacity=".5"/>
+        <circle cx="18" cy="26" r=".5" fill="#B05565" opacity=".4"/>
+        <circle cx="22" cy="26" r=".5" fill="#B05565" opacity=".4"/>
+        <path d="M15,30 Q20,35.5 25,30" stroke="#A54D5F" stroke-width="1.5" fill="none"/>
+        <!-- Spots -->
+        <circle cx="9" cy="33" r="1.8" fill="#FFB5C5" opacity=".18"><animate attributeName="opacity" values=".12;.35;.12" dur="4.5s" repeatCount="indefinite"/></circle>
+        <circle cx="31" cy="31" r="1.4" fill="#FFB5C5" opacity=".15"><animate attributeName="opacity" values=".1;.3;.1" dur="5.5s" begin="1s" repeatCount="indefinite"/></circle>
+        <!-- FRONT LEGS — 4 digits each, wide stance -->
+        <!-- Left front leg -->
+        <path d="M8,32 Q3,34 2,38" stroke="#D88A9E" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M2,38 Q1,39 0,40.5" stroke="#D88A9E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <!-- 4 front toes (bean shaped) -->
+        <ellipse cx="-1" cy="41.2" rx=".9" ry=".65" fill="#D88A9E" transform="rotate(-15,-1,41.2)"/>
+        <ellipse cx="0.3" cy="41.8" rx=".85" ry=".6" fill="#D88A9E" transform="rotate(-5,0.3,41.8)"/>
+        <ellipse cx="1.6" cy="41.6" rx=".8" ry=".6" fill="#D88A9E" transform="rotate(5,1.6,41.6)"/>
+        <ellipse cx="2.7" cy="41" rx=".75" ry=".55" fill="#D88A9E" transform="rotate(15,2.7,41)"/>
+
+        <!-- Right front leg -->
+        <path d="M32,32 Q37,34 38,38" stroke="#D88A9E" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M38,38 Q39,39 40,40.5" stroke="#D88A9E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <!-- 4 front toes -->
+        <ellipse cx="41" cy="41.2" rx=".9" ry=".65" fill="#D88A9E" transform="rotate(15,41,41.2)"/>
+        <ellipse cx="39.7" cy="41.8" rx=".85" ry=".6" fill="#D88A9E" transform="rotate(5,39.7,41.8)"/>
+        <ellipse cx="38.4" cy="41.6" rx=".8" ry=".6" fill="#D88A9E" transform="rotate(-5,38.4,41.6)"/>
+        <ellipse cx="37.3" cy="41" rx=".75" ry=".55" fill="#D88A9E" transform="rotate(-15,37.3,41)"/>
+
+        <!-- BACK LEGS — 5 digits each, wider stance -->
+        <!-- Left back leg -->
+        <path d="M11,42 Q5,44 3,48" stroke="#D88A9E" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M3,48 Q2,49 1,50.5" stroke="#D88A9E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- 5 back toes -->
+        <ellipse cx="-0.5" cy="51" rx=".85" ry=".6" fill="#D88A9E" transform="rotate(-20,-0.5,51)"/>
+        <ellipse cx="0.6" cy="51.8" rx=".8" ry=".55" fill="#D88A9E" transform="rotate(-10,0.6,51.8)"/>
+        <ellipse cx="1.8" cy="52" rx=".8" ry=".55" fill="#D88A9E" transform="rotate(0,1.8,52)"/>
+        <ellipse cx="3" cy="51.8" rx=".75" ry=".55" fill="#D88A9E" transform="rotate(10,3,51.8)"/>
+        <ellipse cx="4" cy="51.2" rx=".7" ry=".5" fill="#D88A9E" transform="rotate(18,4,51.2)"/>
+
+        <!-- Right back leg -->
+        <path d="M29,42 Q35,44 37,48" stroke="#D88A9E" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M37,48 Q38,49 39,50.5" stroke="#D88A9E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- 5 back toes -->
+        <ellipse cx="40.5" cy="51" rx=".85" ry=".6" fill="#D88A9E" transform="rotate(20,40.5,51)"/>
+        <ellipse cx="39.4" cy="51.8" rx=".8" ry=".55" fill="#D88A9E" transform="rotate(10,39.4,51.8)"/>
+        <ellipse cx="38.2" cy="52" rx=".8" ry=".55" fill="#D88A9E" transform="rotate(0,38.2,52)"/>
+        <ellipse cx="37" cy="51.8" rx=".75" ry=".55" fill="#D88A9E" transform="rotate(-10,37,51.8)"/>
+        <ellipse cx="36" cy="51.2" rx=".7" ry=".5" fill="#D88A9E" transform="rotate(-18,36,51.2)"/>
+      </svg>
+      <div class="tag">80px — full dendritic + limbs</div>
+    </div>
+
+    <!-- Professor Oscar -->
+    <div class="cell">
+      <svg width="80" height="100" viewBox="0 0 40 48" class="float" style="animation-duration:3.5s">
+        <defs><radialGradient id="o4-prof"><stop offset="0%" stop-color="#FFBDD0"/><stop offset="60%" stop-color="#E8839B"/><stop offset="100%" stop-color="#C47088"/></radialGradient></defs>
+        <ellipse cx="20" cy="40" rx="12" ry="9" fill="url(#o4-prof)" opacity=".55"/>
+        <circle cx="20" cy="24" r="15.5" fill="url(#o4-prof)"/>
+        <!-- Simplified dendritic gills for professor -->
+        <g>
+          <path d="M7,17 Q2,8 0,1" stroke="var(--gill)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M4,12 Q0,10 -2,8" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="-2" cy="8" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+          <path d="M3,8 Q-1,5 -2,3" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <circle cx="0" cy="1" r="1" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+        <path d="M11,12 Q7,4 5,-3" stroke="var(--gill)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M8,5 Q4,2 2,0" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M15,10 Q13,3 12,-4" stroke="var(--gill)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <g>
+          <path d="M33,17 Q38,8 40,1" stroke="var(--gill)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M36,12 Q40,10 42,8" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="42" cy="8" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+          <path d="M37,8 Q41,5 42,3" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <circle cx="40" cy="1" r="1" fill="var(--gill-tip)" opacity=".3"/>
+        </g>
+        <path d="M29,12 Q33,4 35,-3" stroke="var(--gill)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M32,5 Q36,2 38,0" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M25,10 Q27,3 28,-4" stroke="var(--gill)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Glasses -->
+        <circle cx="14" cy="21" r="5" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
+        <circle cx="26" cy="21" r="5" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
+        <line x1="19" y1="21" x2="21" y2="21" stroke="var(--gold)" stroke-width=".9"/>
+        <!-- Eyes -->
+        <circle cx="14" cy="21" r="3.2" fill="#1A0A10"/>
+        <circle cx="26" cy="21" r="3.2" fill="#1A0A10"/>
+        <circle cx="15.3" cy="19.8" r="1.3" fill="#fff"/>
+        <circle cx="27.3" cy="19.8" r="1.3" fill="#fff"/>
+        <path d="M15,30 Q20,35.5 25,30" stroke="#A54D5F" stroke-width="1.5" fill="none"/>
+        <!-- Wand -->
+        <line x1="34" y1="34" x2="43" y2="23" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="43" cy="23" r="1.5" fill="var(--gold)"><animate attributeName="opacity" values=".5;1;.5" dur="2s" repeatCount="indefinite"/></circle>
+      </svg>
+      <div class="tag">80px — Professor Oscar</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>v3 → v4:</strong> Gills are now <em>dendritic</em> — each has a thick main ramus with 2-3 secondary branches curving outward, and those have tertiary filaments with rounded berry-like tips. Branches are asymmetric (more on the outward-facing side = organic). Four-layer system: ramus (3px) → secondary (1.6px) → tertiary (.9px) → tips (circles). The crown looks like a tiny forest growing from Oscar's head.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- THE DUO                                     -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec">
+  <h2>The Duo v4</h2>
+  <div class="scene">
+    <!-- feliX -->
+    <svg width="140" height="96" viewBox="0 0 52 32" class="drift">
+      <defs><linearGradient id="f4-duo" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0088AA"/><stop offset="50%" stop-color="#00A6D6"/><stop offset="70%" stop-color="#FF5555"/><stop offset="100%" stop-color="#CC2222"/></linearGradient></defs>
+      <path d="M6,16 Q6,6 16,6 L38,7 Q46,8 46,16 Q46,24 38,25 L16,26 Q6,26 6,16Z" fill="url(#f4-duo)"/>
+      <line x1="8" y1="15" x2="32" y2="15" stroke="var(--felix-stripe)" stroke-width="3" stroke-linecap="round"><animate attributeName="opacity" values=".8;1;.8" dur="1.8s" repeatCount="indefinite"/></line>
+      <path d="M44,16 L52,7 L50,16 L52,25Z" fill="var(--felix-tail)" opacity=".85"/>
+      <circle cx="12" cy="13" r="3" fill="#001320"/>
+      <circle cx="13.3" cy="12" r="1.2" fill="#fff"/>
+    </svg>
+    <!-- Oscar with dendritic crown -->
+    <svg width="120" height="150" viewBox="0 0 40 48" class="float">
+      <defs><radialGradient id="o4-duo"><stop offset="0%" stop-color="#FFBDD0"/><stop offset="60%" stop-color="#E8839B"/><stop offset="100%" stop-color="#C47088"/></radialGradient></defs>
+      <ellipse cx="20" cy="40" rx="12" ry="9" fill="url(#o4-duo)" opacity=".55"/>
+      <circle cx="20" cy="24" r="15.5" fill="url(#o4-duo)"/>
+      <!-- Simplified dendritic gills -->
+      <g style="transform-origin:7px 17px;animation:sway-l 2.8s ease-in-out infinite">
+        <path d="M7,17 Q2,8 0,1" stroke="var(--gill)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M4,12 Q0,10 -2,8" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="-2" cy="8" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+        <path d="M3,8 Q-1,5 -2,3" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="0" cy="1" r="1" fill="var(--gill-tip)" opacity=".35"/>
+      </g>
+      <g style="transform-origin:11px 12px;animation:sway-l 3.3s ease-in-out infinite">
+        <path d="M11,12 Q7,4 5,-3" stroke="var(--gill)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M8,5 Q4,2 2,0" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="5" cy="-3" r=".8" fill="var(--gill-tip)" opacity=".3"/>
+      </g>
+      <path d="M15,10 Q13,3 12,-4" stroke="var(--gill)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <g style="transform-origin:33px 17px;animation:sway-r 3s ease-in-out infinite">
+        <path d="M33,17 Q38,8 40,1" stroke="var(--gill)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M36,12 Q40,10 42,8" stroke="var(--gill2)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="42" cy="8" r=".9" fill="var(--gill-tip)" opacity=".35"/>
+        <path d="M37,8 Q41,5 42,3" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="40" cy="1" r="1" fill="var(--gill-tip)" opacity=".35"/>
+      </g>
+      <g style="transform-origin:29px 12px;animation:sway-r 3.5s ease-in-out infinite">
+        <path d="M29,12 Q33,4 35,-3" stroke="var(--gill)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M32,5 Q36,2 38,0" stroke="var(--gill2)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="35" cy="-3" r=".8" fill="var(--gill-tip)" opacity=".3"/>
+      </g>
+      <path d="M25,10 Q27,3 28,-4" stroke="var(--gill)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Face -->
+      <circle cx="14" cy="21" r="3.3" fill="#1A0A10"/>
+      <circle cx="26" cy="21" r="3.3" fill="#1A0A10"/>
+      <circle cx="15.2" cy="19.8" r="1.3" fill="#fff"/>
+      <circle cx="27.2" cy="19.8" r="1.3" fill="#fff"/>
+      <path d="M15,30 Q20,35.5 25,30" stroke="#A54D5F" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+</div>
+
+<div class="sec" style="text-align:center;padding:30px 20px 80px;opacity:.2;font-size:.7rem;">
+  v4 — Dendritic gills: main ramus → secondary branches → tertiary filaments → rounded tips
+</div>
+
+</body>
+</html>
