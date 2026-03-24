@@ -247,11 +247,11 @@ struct OverSpaceReverb {
     static constexpr int kRefCombLensR[kCombs] = { 1139, 1211, 1300, 1379 };
     static constexpr int kRefAP1Len = 347, kRefAP2Len = 113;
 
-    // Maximum buffer sizes: reference lengths scaled to 96000 Hz (2×) with margin.
-    // Supports sample rates up to 96000 Hz without dynamic allocation.
-    static constexpr int kMaxCombLen = 2760;  // ceil(1379 * 96000/48000) + margin
-    static constexpr int kMaxAP1Len  = 700;   // ceil(347  * 96000/48000) + margin
-    static constexpr int kMaxAP2Len  = 230;   // ceil(113  * 96000/48000) + margin
+    // Maximum buffer sizes: reference lengths scaled to 192000 Hz (4×) with margin.
+    // Supports sample rates up to 192000 Hz without dynamic allocation.
+    static constexpr int kMaxCombLen = 5520;  // ceil(1379 * 192000/48000) + margin
+    static constexpr int kMaxAP1Len  = 1390;  // ceil(347  * 192000/48000) + margin
+    static constexpr int kMaxAP2Len  = 460;   // ceil(113  * 192000/48000) + margin
 
     // Runtime-scaled delay lengths (set in prepare())
     int combLensL[kCombs] = { 1116, 1188, 1277, 1356 };

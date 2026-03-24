@@ -77,6 +77,11 @@ public:
         // SilenceGate: skip all DSP if engine has been silent long enough
         if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
 
+        // Reset coupling accumulators — stale values from disconnected routes must not persist
+        extPitchMod = 0.f;
+        extDampMod  = 0.f;
+        extIntens   = 1.f;
+
         // --- Snapshot all 28 params ---
         // Section A: Toddler
         float pTodLvl  = todLvl  ? todLvl->load()  : 0.5f;

@@ -7,6 +7,7 @@
 #include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
+#include <vector>
 
 namespace xolokun {
 
@@ -41,6 +42,21 @@ public:
         chorusLFO.setShape (StandardLFO::Sine);
         phaserLFO.setRate (0.3f, (float)sampleRate);
         phaserLFO.setShape (StandardLFO::Sine);
+        // Dynamic delay buffer sizing — scale with sample rate so 192kHz gets
+        // the same wall-clock delay lengths as 44100Hz (D003 / buffer-overrun guard).
+        float srScale = (float)sampleRate / 44100.0f;
+        int brightLen = (int)(661.f  * srScale) + 1;
+        int darkLen   = (int)(1543.f * srScale) + 1;
+        int springLen = (int)(307.f  * srScale) + 1;
+        brightDelayBufL.assign(brightLen, 0.f);
+        brightDelayBufR.assign(brightLen, 0.f);
+        darkDelayBufL.assign(darkLen, 0.f);
+        darkDelayBufR.assign(darkLen, 0.f);
+        springBufL.assign(springLen, 0.f);
+        springBufR.assign(springLen, 0.f);
+        brightDelayPos = 0;
+        darkDelayPos   = 0;
+        springPos      = 0;
     }
     void releaseResources() override {for(auto&v:voices)v.reset();}
     void reset() override {for(auto&v:voices)v.reset();lastL=lastR=0;chorusLFO.reset();phaserLFO.reset();}
@@ -91,6 +107,11 @@ public:
 
         // SilenceGate: skip all DSP if engine has been silent long enough
         if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
+
+        // Reset coupling accumulators — stale values from disconnected routes must not persist
+        extPitchMod = 0.f;
+        extDampMod  = 0.f;
+        extIntens   = 1.f;
 
         // --- Read all parameter values once per block ---
         // Section A: Brother A
@@ -250,7 +271,7 @@ public:
             float chorusR = sR * (1.0f - chorusMod);
 
             // Bright delay: short feedback delay (bright character)
-            int bdIdx = brightDelayPos % kDelayLen;
+            int bdIdx = brightDelayBufL.empty() ? 0 : brightDelayPos % (int)brightDelayBufL.size();
             float bdL = brightDelayBufL[bdIdx];
             float bdR = brightDelayBufR[bdIdx];
             brightDelayBufL[bdIdx] = flushDenormal(chorusL + bdL * 0.4f * pBrDelay);
@@ -282,7 +303,7 @@ public:
             float wetR = chorusR - phaserStateR * pPhaser;
 
             // Dark delay: longer, filtered feedback delay
-            int ddIdx = darkDelayPos % kDarkDelayLen;
+            int ddIdx = darkDelayBufL.empty() ? 0 : darkDelayPos % (int)darkDelayBufL.size();
             float ddL = darkDelayBufL[ddIdx];
             float ddR = darkDelayBufR[ddIdx];
             // LP filter the feedback for dark character
@@ -295,7 +316,7 @@ public:
             wetR += ddR * pDkDelay;
 
             // Spring reverb: comb-based metallic resonance
-            int spIdx = springPos % kSpringLen;
+            int spIdx = springBufL.empty() ? 0 : springPos % (int)springBufL.size();
             float spL = springBufL[spIdx];
             float spR = springBufR[spIdx];
             springBufL[spIdx] = flushDenormal(wetL * 0.3f + spL * 0.6f);
@@ -467,10 +488,9 @@ private:
     StandardLFO chorusLFO;  // 0.7 Hz sine — chorus pitch modulation
     StandardLFO phaserLFO;  // 0.3 Hz sine — phaser notch sweep
 
-    // FX state: Bright delay (FX Chain A) — ~15ms at 44100
-    static constexpr int kDelayLen=661;
-    float brightDelayBufL[kDelayLen]={};
-    float brightDelayBufR[kDelayLen]={};
+    // FX state: Bright delay (FX Chain A) — ~15ms at 44100; dynamically sized in prepare()
+    std::vector<float> brightDelayBufL;
+    std::vector<float> brightDelayBufR;
     int brightDelayPos=0;
 
     // FX state: Plate
@@ -482,17 +502,15 @@ private:
     // FX state: Phaser (FX Chain B)
     float phaserStateL=0, phaserStateR=0;
 
-    // FX state: Dark delay — ~35ms at 44100
-    static constexpr int kDarkDelayLen=1543;
-    float darkDelayBufL[kDarkDelayLen]={};
-    float darkDelayBufR[kDarkDelayLen]={};
+    // FX state: Dark delay — ~35ms at 44100; dynamically sized in prepare()
+    std::vector<float> darkDelayBufL;
+    std::vector<float> darkDelayBufR;
     int darkDelayPos=0;
     float darkDelayLP_L=0, darkDelayLP_R=0;
 
-    // FX state: Spring reverb — short comb ~7ms
-    static constexpr int kSpringLen=307;
-    float springBufL[kSpringLen]={};
-    float springBufR[kSpringLen]={};
+    // FX state: Spring reverb — short comb ~7ms; dynamically sized in prepare()
+    std::vector<float> springBufL;
+    std::vector<float> springBufR;
     int springPos=0;
 
     // FX state: Wind noise

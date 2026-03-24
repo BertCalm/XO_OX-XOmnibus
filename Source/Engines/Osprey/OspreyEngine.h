@@ -478,12 +478,13 @@ struct FluidEnergyModel
 //  This structure passes all frequencies at unity gain but scrambles
 //  their phase relationships, creating the "smeared" quality of reverb.
 //
-//  Max buffer: 4096 samples = ~93ms at 44.1kHz (adequate for small-room
-//  harbor verb character — not designed for cathedral tails).
+//  Max buffer: 8192 samples — sized for 192kHz operation.
+//  At 192kHz the largest scaled delay (1777 * 192000/44100 ≈ 7734) must fit.
+//  8192 provides headroom up to ~218kHz.
 //==============================================================================
 struct AllpassDelay
 {
-    static constexpr int kMaxBufferSize = 4096;
+    static constexpr int kMaxBufferSize = 8192;
 
     float  buffer[kMaxBufferSize] = {};
     int    writePosition  = 0;
