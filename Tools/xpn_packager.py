@@ -102,18 +102,27 @@ def _collect_programs(build_dir: Path) -> list[tuple[str, Path]]:
     """
     Find all .xpm files in the build directory.
     Returns [(program_name, xpm_path), ...].
+
+    Subdirectories are checked first (drums/, keygroups/, Programs/), then the
+    root of build_dir.  A program slug is only added once — subdirectory copies
+    win over root copies — so XPMs that exist in both locations are never
+    double-added to the ZIP.
     """
     programs = []
+    seen_stems: set = set()
     # Check subdirectories first (drums/, keygroups/)
     for subdir in ["drums", "keygroups", "Programs"]:
         sub = build_dir / subdir
         if sub.exists():
             for xpm in sorted(sub.glob("*.xpm")):
-                programs.append((xpm.stem, xpm))
-    # Also check flat .xpm files in build_dir root
+                if xpm.stem not in seen_stems:
+                    programs.append((xpm.stem, xpm))
+                    seen_stems.add(xpm.stem)
+    # Also check flat .xpm files in build_dir root (only add if not already seen)
     for xpm in sorted(build_dir.glob("*.xpm")):
-        if (xpm.stem, xpm) not in programs:
+        if xpm.stem not in seen_stems:
             programs.append((xpm.stem, xpm))
+            seen_stems.add(xpm.stem)
     return programs
 
 

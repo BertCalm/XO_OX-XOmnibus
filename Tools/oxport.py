@@ -873,15 +873,10 @@ def _stage_package(ctx: PipelineContext) -> None:
     except ImportError:
         print("    [WARN] xpn_manifest_generator not found — skipping manifests")
 
-    # The packager expects .xpm files in the build dir or Programs/ subdir
-    # Move .xpm files into the expected location if needed
-    for xpm in ctx.xpm_paths:
-        if xpm.parent != ctx.build_dir:
-            target = ctx.build_dir / xpm.name
-            if not target.exists() and xpm.exists():
-                import shutil
-                shutil.copy2(xpm, target)
-
+    # XPMs are written to ctx.programs_dir (build_dir/Programs/) by _stage_export.
+    # _collect_programs() already scans build_dir/Programs/ before the root, so
+    # we must NOT copy them into the root — doing so would produce duplicate ZIP
+    # entries (one from the Programs/ scan and one from the root scan).
     ctx.xpn_path = package_xpn(
         build_dir=ctx.build_dir,
         output_path=xpn_path,
