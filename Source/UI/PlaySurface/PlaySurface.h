@@ -4,6 +4,7 @@
 #include <array>
 #include <vector>
 #include <cmath>
+#include <atomic>
 
 namespace xolokun {
 
@@ -64,6 +65,19 @@ class NoteInputZone : public juce::Component
 public:
     enum class Mode { Pad, Fretless, Drum };
 
+    //----------------------------------------------------------------------
+    // P0-1: MIDI pipeline wiring.
+    // Set this pointer (owned externally, e.g. by XOlokunProcessor) before
+    // any interaction. When set, note-on/off messages are enqueued into the
+    // collector for thread-safe delivery to the audio thread instead of
+    // firing the raw std::function callbacks.
+    // The std::function callbacks remain available as a fallback for tests
+    // or callers that have not yet wired the collector.
+    juce::MidiMessageCollector* midiCollector = nullptr;
+
+    // MIDI channel for outgoing messages (1-16, default 1)
+    int midiChannel = 1;
+
     std::function<void(int note, float velocity)> onNoteOn;
     std::function<void(int note)> onNoteOff;
 
@@ -110,7 +124,13 @@ public:
     {
         if (lastNote >= 0)
         {
-            if (onNoteOff) onNoteOff(lastNote);
+            // P0-3: on fretless release, reset pitch bend to 0 first
+            if (mode == Mode::Fretless && midiCollector)
+            {
+                midiCollector->addMessageToQueue(
+                    juce::MidiMessage::pitchWheel(midiChannel, 0));
+            }
+            fireNoteOff(lastNote);
             lastNote = -1;
         }
     }
@@ -137,6 +157,39 @@ public:
     }
 
 private:
+    // ------------------------------------------------------------------
+    // P0-1 helpers: route note events to MidiMessageCollector when wired,
+    // otherwise fall back to the legacy std::function callbacks.
+    void fireNoteOn(int note, float velocity)
+    {
+        if (midiCollector)
+        {
+            // MidiMessageCollector::addMessageToQueue requires a timestamp in
+            // samples. Passing 0 is safe — the collector will sort by sample
+            // position when removeNextBlockOfMessages is called.
+            midiCollector->addMessageToQueue(
+                juce::MidiMessage::noteOn(midiChannel, note,
+                                          static_cast<float>(velocity)));
+        }
+        else if (onNoteOn)
+        {
+            onNoteOn(note, velocity);
+        }
+    }
+
+    void fireNoteOff(int note)
+    {
+        if (midiCollector)
+        {
+            midiCollector->addMessageToQueue(
+                juce::MidiMessage::noteOff(midiChannel, note));
+        }
+        else if (onNoteOff)
+        {
+            onNoteOff(note);
+        }
+    }
+
     struct ScaleDef { const char* name; std::vector<int> intervals; };
     struct WarmMemoryEntry { int pad = -1; float age = 99.0f; };
 
@@ -153,6 +206,20 @@ private:
 
     int midiNoteForPad(int pad) const
     {
+        if (mode == Mode::Drum)
+        {
+            // P0-4: MPC standard Bank A drum note mapping.
+            // pad 0 = bottom-left (Pad 1 in MPC 1-indexed convention).
+            // Source: Akai MPC Bank A default, spec section 3.8.
+            static constexpr int kDrumNotes[PS::kNumPads] = {
+                37, 36, 42, 82,  // row 0 (bottom): Kick A, Kick B, Snare A, Snare B
+                40, 38, 46, 44,  // row 1: Clap, Hat Closed, Hat Open, Ride
+                48, 47, 45, 43,  // row 2: Tom 1, Perc A, Perc B, Crash
+                49, 55, 57, 51,  // row 3 (top): Fx 1, Fx 2, Fx 3, Fx 4
+            };
+            return juce::jlimit(0, 127, kDrumNotes[pad]);
+        }
+        // Chromatic / Pad mode: scale-quantized note with octave offset
         int row = pad / PS::kPadCols;
         int col = pad % PS::kPadCols;
         int rawNote = PS::kBaseNote + (octaveOffset * 12) + (row * 4) + col;
@@ -197,36 +264,73 @@ private:
 
         if (isDown || note != lastNote)
         {
-            if (lastNote >= 0 && onNoteOff) onNoteOff(lastNote);
+            if (lastNote >= 0) fireNoteOff(lastNote);
             padVelocity[(size_t)pad] = velocity;
             warmMemory[(size_t)warmMemIdx] = { pad, 0.0f };
             warmMemIdx = (warmMemIdx + 1) % (int)warmMemory.size();
             lastNote = note;
-            if (onNoteOn) onNoteOn(note, velocity);
+            fireNoteOn(note, velocity);
         }
     }
 
     void handleFretlessTouch(const juce::MouseEvent& e, bool isDown)
     {
         auto b = getLocalBounds();
-        float yNorm = 1.0f - (float)e.y / b.getHeight(); // bottom=0, top=1
-        int note = 24 + (int)(yNorm * 72.0f); // C1-C7
-        note = juce::jlimit(24, 96, quantizeToScale(note));
 
-        // Y-axis expression mapping:
-        //   bottom 20% of strip  → velocity 0.35f (softest touch zone)
-        //   top 20% of strip     → velocity 1.00f (brightest touch zone)
-        //   middle 60%           → linear interpolation across full strip height
-        float velocity = juce::jmap(yNorm, 0.0f, 1.0f, 0.35f, 1.0f);
-        velocity = juce::jlimit(0.35f, 1.0f, velocity);
+        // P0-2: X=pitch (left=low, right=high), Y=expression (bottom=dark,top=bright)
+        // This is the XOuija spec axis: X drives pitch, Y drives expression.
+        float xNorm = juce::jlimit(0.0f, 1.0f, (float)e.x / b.getWidth());
+        float yNorm = juce::jlimit(0.0f, 1.0f,
+                                   1.0f - (float)e.y / b.getHeight()); // bottom=0, top=1
 
-        lastFretlessVelocity_ = velocity;
+        // Pitch from X: C1 (MIDI 24) → C7 (MIDI 96), 6-octave range
+        float pitchF = 24.0f + xNorm * 72.0f;
+        int   note   = juce::jlimit(24, 96, quantizeToScale((int)pitchF));
 
-        if (isDown || note != lastNote)
+        // Expression from Y: bottom=softest, top=brightest.  Used as the
+        // initial velocity on touch-down AND as an ongoing expression signal.
+        float expression = juce::jmap(yNorm, 0.0f, 1.0f, 0.35f, 1.0f);
+        expression = juce::jlimit(0.35f, 1.0f, expression);
+        lastFretlessVelocity_ = expression;
+
+        if (isDown)
         {
-            if (lastNote >= 0 && onNoteOff) onNoteOff(lastNote);
+            // Touch began: fire note-on at the initial Y-derived velocity.
+            if (lastNote >= 0) fireNoteOff(lastNote);
             lastNote = note;
-            if (onNoteOn) onNoteOn(note, velocity);
+            // Reset pitch bend to centre before the new note.
+            if (midiCollector)
+                midiCollector->addMessageToQueue(
+                    juce::MidiMessage::pitchWheel(midiChannel, 0));
+            fireNoteOn(note, expression);
+        }
+        else
+        {
+            // P0-3: drag — do NOT fire note-on/off storms.
+            // Instead: if the quantised note has crossed a semitone boundary,
+            // shift the base note via a new note-on ONLY if the semitone
+            // changed, then use pitch bend for sub-semitone continuous pitch.
+            // For continuous fretless glide we use pitch bend relative to the
+            // base note that was sounded on touch-down (lastNote).
+            if (lastNote >= 0)
+            {
+                // Compute continuous float pitch relative to lastNote
+                // and convert to a 14-bit pitch bend value
+                // (bend range assumed ±2 semitones; standard MIDI default).
+                static constexpr float kBendSemitones = 2.0f;
+                float bendSemitones = pitchF - (float)lastNote;
+                float bendNorm = juce::jlimit(-1.0f, 1.0f,
+                                              bendSemitones / kBendSemitones);
+                // MIDI pitch wheel: 0=full down, 8192=centre, 16383=full up
+                int pitchWheelValue = 8192 + (int)(bendNorm * 8191.0f);
+                pitchWheelValue = juce::jlimit(0, 16383, pitchWheelValue);
+
+                if (midiCollector)
+                {
+                    midiCollector->addMessageToQueue(
+                        juce::MidiMessage::pitchWheel(midiChannel, pitchWheelValue));
+                }
+            }
         }
     }
 
@@ -293,11 +397,12 @@ private:
                 juce::String label;
                 if (mode == Mode::Drum)
                 {
+                    // P0-4: drum labels match MPC Bank A standard note table
                     static const char* drumNames[] = {
-                        "Kick","Snare","Kick","Snare",  // row 0
-                        "Clap","HH-C","HH-O","Acc",    // row 1
-                        "Tom","Perc A","Perc B","Acc",  // row 2
-                        "","","","",                     // row 3
+                        "Kick A","Kick B","Snr A","Snr B",  // row 0 (bottom)
+                        "Clap","HH-C","HH-O","Ride",        // row 1
+                        "Tom 1","Perc A","Perc B","Crash",   // row 2
+                        "Fx 1","Fx 2","Fx 3","Fx 4",        // row 3 (top)
                     };
                     label = drumNames[pad];
                 }
@@ -1014,6 +1119,17 @@ public:
 
     ~PlaySurface() override { stopTimer(); }
 
+    // P0-1: Wire the MIDI pipeline.
+    // Call this from XOlokunEditor after construction, passing the processor's
+    // MidiMessageCollector.  Once set, all note-on/off events from the PlaySurface
+    // are delivered to the audio thread via the collector rather than the raw
+    // std::function callbacks.
+    void setMidiCollector(juce::MidiMessageCollector* collector, int channel = 1)
+    {
+        noteInput.midiCollector = collector;
+        noteInput.midiChannel   = channel;
+    }
+
     // Public zone accessors for wiring callbacks
     NoteInputZone&     getNoteInput()  { return noteInput; }
     OrbitPathZone&     getOrbitPath()  { return orbitPath; }
@@ -1065,6 +1181,24 @@ public:
     bool keyPressed(const juce::KeyPress& key) override
     {
         return perfPads.handleKey(key, true);
+    }
+
+    // P0-1 / audit 4.2: handle key release so XOSEND and ECHO CUT receive
+    // the isDown=false event and held-button state is cleared.
+    bool keyStateChanged(bool /*isKeyDown*/) override
+    {
+        bool handled = false;
+        // Check each of the four keys; dispatch release if no longer held.
+        const juce::KeyPress keys[] = {
+            juce::KeyPress('z'), juce::KeyPress('x'),
+            juce::KeyPress('c'), juce::KeyPress('v'),
+        };
+        for (int i = 0; i < 4; ++i)
+        {
+            if (!keys[i].isCurrentlyDown())
+                handled |= perfPads.handleKey(keys[i], false);
+        }
+        return handled;
     }
 
 private:

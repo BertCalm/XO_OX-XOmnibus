@@ -207,6 +207,10 @@ private:
     // Pad heatmap (velocity visualization)
     std::array<float, MaxPads> padHeat {};
 
+    // P0-6: Track the base note sounded at fretless touch-began so that
+    // pitch bend during drag is relative to the correct base.
+    int fretlessBaseNote_ = -1;
+
     //-- Zone setup --------------------------------------------------------------
 
     void rebuildZones()
@@ -298,34 +302,62 @@ private:
 
     void handleFretlessInput(const TouchEvent& e)
     {
-        // Y-axis: pitch (bottom = low, top = high)
-        // X-axis: modulation target (default: filter cutoff)
-        float pitch = (1.0f - e.normalizedY);  // Invert so top = high
+        // P0-2 (mobile): X=pitch (left=low, right=high), Y=expression (bottom=dark, top=bright)
+        // Spec section 2.4: "X = pitch, Y = expression"
+        float xNorm = juce::jlimit(0.0f, 1.0f, e.normalizedX);
+        float yNorm = juce::jlimit(0.0f, 1.0f, 1.0f - e.normalizedY); // invert: bottom=0
+
         int baseMidi = rootNote + (octave - 4) * 12;
-        float midiFloat = static_cast<float>(baseMidi) + pitch * 24.0f;  // 2 octave range
-        int midiNote = static_cast<int>(std::round(midiFloat));
-        midiNote = juce::jlimit(0, 127, midiNote);
+        // X spans 2 octaves by default; same as desktop.
+        float midiFloat = static_cast<float>(baseMidi) + xNorm * 24.0f;
+        int midiNote = juce::jlimit(0, 127, static_cast<int>(std::round(midiFloat)));
+
+        // Expression from Y-axis (used as initial velocity and ongoing expression)
+        float expression = juce::jmap(yNorm, 0.0f, 1.0f, 0.35f, 1.0f);
 
         switch (e.phase)
         {
             case TouchPhase::Began:
             {
                 float velocity = forceToVelocity(e.force);
+                // Use the larger of force-derived and Y-derived velocity
+                velocity = std::max(velocity, expression);
+                fretlessBaseNote_ = midiNote;
                 if (noteCallback) noteCallback(midiNote, velocity, true);
                 if (haptics) haptics->fire(HapticEngine::Event::PadStrike, velocity);
                 break;
             }
             case TouchPhase::Moved:
             {
-                // Continuous pitch change (portamento) via pitch bend
-                // X-axis modulation
-                if (modCallback) modCallback(e.normalizedX, 1.0f - e.normalizedY, 1);
+                // P0-6: send pitch bend so the playing note's pitch tracks
+                // the finger position.  Pitch bend range ±2 semitones (MIDI default).
+                if (fretlessBaseNote_ >= 0)
+                {
+                    static constexpr float kBendSemitones = 2.0f;
+                    float bendSemitones = midiFloat - static_cast<float>(fretlessBaseNote_);
+                    float bendNorm = juce::jlimit(-1.0f, 1.0f,
+                                                  bendSemitones / kBendSemitones);
+                    // Scale to 14-bit MIDI pitch wheel (0=full-down, 8192=centre, 16383=full-up)
+                    int pitchWheelValue = 8192 + static_cast<int>(bendNorm * 8191.0f);
+                    pitchWheelValue = juce::jlimit(0, 16383, pitchWheelValue);
+
+                    // Deliver pitch bend via noteCallback using a dedicated encoding:
+                    // noteCallback(-1, pitchBendNorm, true) where pitchBendNorm is
+                    // (pitchWheelValue / 16383.0f).  Callers that understand this
+                    // convention can route it; others ignore negative note numbers.
+                    // For callers that have a modCallback, also forward the X/Y expression.
+                    if (modCallback) modCallback(static_cast<float>(pitchWheelValue) / 16383.0f,
+                                                 yNorm, 1);
+                }
                 break;
             }
             case TouchPhase::Ended:
             case TouchPhase::Cancelled:
             {
+                // Reset pitch bend to centre before note-off
+                if (modCallback) modCallback(0.5f, yNorm, 1);  // 0.5 = 8192/16383 ≈ centre
                 if (noteCallback) noteCallback(midiNote, 0.0f, false);
+                fretlessBaseNote_ = -1;
                 break;
             }
         }

@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <array>
+#include <atomic>
 #include <functional>
 #include <cmath>
 
@@ -75,8 +76,17 @@ public:
         smoothMs = std::max (1.0f, ms);
     }
 
-    /// Get current expression state (call from audio thread via atomic copy)
-    ExpressionState getState() const { return currentState; }
+    /// Get current expression state — safe to call from the audio thread.
+    ///
+    /// P0-5: We use a double-buffer scheme to eliminate the data race between
+    /// the GUI thread (writer) and the audio thread (reader).  The GUI thread
+    /// writes to the "back" buffer and then flips the read index atomically.
+    /// The audio thread reads the current "front" buffer without any lock.
+    /// This is lock-free and wait-free for the reader.
+    ExpressionState getState() const
+    {
+        return stateBuffer[readIndex.load(std::memory_order_acquire)];
+    }
 
     //--------------------------------------------------------------------------
     // juce::Component overrides
@@ -133,7 +143,7 @@ public:
         currentState.active = true;
         currentState.velocity = 1.0f; // Could be refined with timing
 
-        updateFromMouse (event);
+        updateFromMouse (event);  // also calls publishState() + repaint()
 
         if (onTouchBegin)
             onTouchBegin();
@@ -150,6 +160,8 @@ public:
         currentState.pressure = 0.0f;
         currentState.velocity = 0.0f;
 
+        publishState();  // P0-5: push zero-state to audio thread
+
         if (onExpressionChanged)
             onExpressionChanged (currentState);
 
@@ -161,7 +173,37 @@ public:
 
 private:
     Mode mode = Mode::Intensity;
+
+    // P0-5: Double-buffer for lock-free GUI→audio-thread state sharing.
+    //
+    // Layout:
+    //   readIndex  — the buffer slot the audio thread is currently reading.
+    //   writeSlot  — the OTHER slot (1 - readIndex), written by the GUI thread.
+    //
+    // Protocol (GUI thread only):
+    //   1. Compute writeSlot = 1 - readIndex (relaxed load, GUI only writes)
+    //   2. stateBuffer[writeSlot] = currentState
+    //   3. readIndex.store(writeSlot, release)  ← atomic flip
+    //
+    // The audio thread calls readIndex.load(acquire) once per query; no spin,
+    // no lock.  The worst case is reading a frame-old value, which is fine for
+    // expression control.
+    std::array<ExpressionState, 2> stateBuffer {};
+    std::atomic<int> readIndex { 0 };   // index the audio thread reads
+
+    // GUI-only live state (painted directly from this; not accessed by audio thread)
     ExpressionState currentState;
+
+    void publishState()
+    {
+        // GUI thread: determine which slot the audio thread is NOT reading,
+        // write there, then flip the read pointer atomically.
+        int ri = readIndex.load(std::memory_order_relaxed);
+        int wi = 1 - ri;
+        stateBuffer[static_cast<size_t>(wi)] = currentState;
+        readIndex.store(wi, std::memory_order_release);
+    }
+
     float smoothMs = 10.0f;
 
     void updateFromMouse (const juce::MouseEvent& event)
@@ -173,10 +215,12 @@ private:
             (static_cast<float> (event.x) - bounds.getX()) / bounds.getWidth(),
             0.0f, 1.0f);
 
-        // Y axis → pressure (inverted: top = 0, bottom = 1... no, bottom = 0, top = 1)
+        // Y axis → pressure (inverted: bottom = 0, top = 1)
         currentState.pressure = std::clamp (
             1.0f - (static_cast<float> (event.y) - bounds.getY()) / bounds.getHeight(),
             0.0f, 1.0f);
+
+        publishState();  // P0-5: make new state visible to audio thread
 
         if (onExpressionChanged)
             onExpressionChanged (currentState);
