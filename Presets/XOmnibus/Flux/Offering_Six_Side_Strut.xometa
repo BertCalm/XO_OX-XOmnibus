@@ -1,10 +1,27 @@
 {
   "name": "Six Side Strut",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["Toronto", "sidechain", "sub duck", "bounce", "flux"],
-  "macros": {"M1": 0.4, "M2": 0.65, "M3": 0.0, "M4": 0.2},
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.7, "density": 0.7, "space": 0.4, "aggression": 0.6},
+  "tags": [
+    "Toronto",
+    "sidechain",
+    "sub duck",
+    "bounce",
+    "flux"
+  ],
+  "macros": {
+    "M1": 0.4,
+    "M2": 0.65,
+    "M3": 0.0,
+    "M4": 0.2
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.6
+  },
   "parameters": {
     "ofr_transientSnap": 0.7,
     "ofr_transientPitch": 0.5,
@@ -24,5 +41,10 @@
     "ofr_v1_body": 0.6,
     "ofr_masterWidth": 0.65,
     "ofr_dustVinyl": 0.15
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

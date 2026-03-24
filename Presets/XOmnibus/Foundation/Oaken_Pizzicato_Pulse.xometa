@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 staccato pizzicato bass. Higher damping, shorter decay for contemporary jazz and R&B.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.12,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.22
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Pizzicato Pulse",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.35,
+      "oaken_bodyDepth": 0.55,
+      "oaken_woodAge": 0.6,
+      "oaken_room": 0.25,
+      "oaken_brightness": 5000.0,
+      "oaken_damping": 0.35,
+      "oaken_curingRate": 0.25,
+      "oaken_filterEnvAmount": 0.35,
+      "oaken_attack": 0.002,
+      "oaken_decay": 0.7,
+      "oaken_sustain": 0.55,
+      "oaken_release": 0.35,
+      "oaken_gravity": 0.35,
+      "oaken_glide": 0.0,
+      "oaken_lfo1Rate": 0.5,
+      "oaken_lfo1Depth": 0.0,
+      "oaken_lfo2Rate": 1.5,
+      "oaken_lfo2Depth": 0.06,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "acoustic",
+    "jazz",
+    "pluck"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

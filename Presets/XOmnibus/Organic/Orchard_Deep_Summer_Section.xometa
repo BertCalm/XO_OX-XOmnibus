@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Manual Summer (season=1), high warmth (0.75). The fullest, lushest orchestral strings in the fleet. This is the string section at its absolute best: warm, full, every oscillator in place.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.5,
+    "density": 0.75,
+    "movement": 0.2,
+    "space": 0.7,
+    "warmth": 0.85
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Deep Summer Section",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.18,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.52,
+      "orch_cutoff": 5200.0,
+      "orch_decay": 0.9,
+      "orch_detune": 10.0,
+      "orch_ensembleWidth": 0.85,
+      "orch_filterEnvAmt": 0.25,
+      "orch_formant": 0.48,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 25.0,
+      "orch_lfo1Depth": 0.12,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Shape": 0,
+      "orch_lfo2Depth": 0.05,
+      "orch_lfo2Rate": 0.08,
+      "orch_lfo2Shape": 0,
+      "orch_release": 2.0,
+      "orch_resonance": 0.15,
+      "orch_season": 1,
+      "orch_sustain": 0.9,
+      "orch_vibratoDepth": 0.23,
+      "orch_vibratoRate": 5.0,
+      "orch_warmth": 0.75
+    }
+  },
+  "tags": ["Garden", "Strings", "Orchestral", "Summer"],
+  "version": "1.0"
+}

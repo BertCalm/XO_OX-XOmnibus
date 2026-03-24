@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Infinite Patience",
+  "author": "XO_OX Designs",
+  "mood": "Ethereal",
+  "tags": [
+    "ethereal",
+    "patience",
+    "slow",
+    "companionate ethereal",
+    "warm commitment"
+  ],
+  "dna": {
+    "brightness": 0.671,
+    "warmth": 0.635,
+    "movement": 0.118,
+    "density": 0.291,
+    "space": 0.733,
+    "aggression": 0.205
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.68,
+      "oxy_passion": 0.04,
+      "oxy_commitment": 0.82,
+      "oxy_warmth_rate": 4.0,
+      "oxy_passion_rate": 0.4,
+      "oxy_commit_rate": 4.5,
+      "oxy_entanglement": 0.14,
+      "oxy_circuit_age": 0.55,
+      "oxy_circuit_noise": 0.06,
+      "oxy_memory_depth": 0.52,
+      "oxy_memory_decay": 8.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.52,
+      "oxy_cutoff": 1600,
+      "oxy_pitch": 0,
+      "oxy_detune": 3,
+      "oxy_attack": 0.4,
+      "oxy_decay": 2.8,
+      "oxy_sustain": 0.92,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.011,
+      "oxy_lfo_depth": 0.09,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.006,
+      "oxy_lfo2_depth": 0.05,
+      "oxy_output": -3,
+      "oxy_pan": 0.0,
+      "oxy_voices": 5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Ink Drop",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fast spreading spectral ink \u2014 watch harmonics scatter outward in seconds.",
+  "tags": [
+    "pad",
+    "bright",
+    "spreading",
+    "fast"
+  ],
+  "macroLabels": [
+    "VISCOSITY",
+    "DIFFUSION",
+    "INTERFERENCE",
+    "WIDTH"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.3,
+    "movement": 0.8,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.8,
+      "wash_viscosity": 0.5,
+      "wash_harmonics": 16.0,
+      "wash_spreadMax": 400.0,
+      "wash_diffusionTime": 5.0,
+      "wash_interference": 0.3,
+      "wash_brightness": 0.9,
+      "wash_warmth": 0.5,
+      "wash_stereoWidth": 0.6,
+      "wash_filterCutoff": 4000.0,
+      "wash_filterRes": 0.2,
+      "wash_filtEnvAmount": 0.3,
+      "wash_ampAttack": 0.3,
+      "wash_ampDecay": 1.0,
+      "wash_ampSustain": 0.8,
+      "wash_ampRelease": 2.0,
+      "wash_filtAttack": 0.1,
+      "wash_filtDecay": 0.5,
+      "wash_filtSustain": 0.4,
+      "wash_filtRelease": 1.0,
+      "wash_lfo1Rate": 0.1,
+      "wash_lfo1Depth": 0.2,
+      "wash_lfo2Rate": 0.05,
+      "wash_lfo2Depth": 0.15,
+      "wash_level": 0.8,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.0,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "starterFor": null
+}

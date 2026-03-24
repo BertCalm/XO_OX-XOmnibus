@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Long Commitment",
+  "author": "XO_OX Designs",
+  "mood": "Ethereal",
+  "tags": [
+    "ethereal",
+    "long sustained",
+    "commitment peak",
+    "very slow LFO",
+    "ambient"
+  ],
+  "dna": {
+    "brightness": 0.69,
+    "warmth": 0.402,
+    "movement": 0.132,
+    "density": 0.332,
+    "space": 0.725,
+    "aggression": 0.275
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.5,
+      "oxy_passion": 0.18,
+      "oxy_commitment": 0.95,
+      "oxy_warmth_rate": 5.0,
+      "oxy_passion_rate": 0.05,
+      "oxy_commit_rate": 5.0,
+      "oxy_entanglement": 0.1,
+      "oxy_circuit_age": 0.22,
+      "oxy_circuit_noise": 0.03,
+      "oxy_memory_depth": 0.5,
+      "oxy_memory_decay": 10.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.6,
+      "oxy_cutoff": 1500,
+      "oxy_pitch": 0,
+      "oxy_detune": 3,
+      "oxy_attack": 0.55,
+      "oxy_decay": 3.5,
+      "oxy_sustain": 0.95,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.008,
+      "oxy_lfo_depth": 0.09,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.004,
+      "oxy_lfo2_depth": 0.05,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

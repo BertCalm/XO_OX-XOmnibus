@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Compulsion Loop",
+  "author": "XO_OX Designs",
+  "mood": "Flux",
+  "tags": [
+    "obsessive",
+    "loop",
+    "feedback topology",
+    "commitment trap",
+    "repetition"
+  ],
+  "dna": {
+    "brightness": 0.756,
+    "warmth": 0.249,
+    "movement": 0.182,
+    "density": 0.249,
+    "space": 0.484,
+    "aggression": 0.406
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.05,
+      "oxy_passion": 0.18,
+      "oxy_commitment": 0.92,
+      "oxy_warmth_rate": 6.0,
+      "oxy_passion_rate": 0.008,
+      "oxy_commit_rate": 0.08,
+      "oxy_entanglement": 0.48,
+      "oxy_circuit_age": 0.62,
+      "oxy_circuit_noise": 0.14,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 2.0,
+      "oxy_topology": 2,
+      "oxy_topology_lock": 8,
+      "oxy_feedback": 0.85,
+      "oxy_cutoff": 2800,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.04,
+      "oxy_decay": 1.5,
+      "oxy_sustain": 0.8,
+      "oxy_release": 2.618,
+      "oxy_lfo_rate": 0.023,
+      "oxy_lfo_depth": 0.06,
+      "oxy_lfo_shape": 2,
+      "oxy_lfo2_rate": 0.012,
+      "oxy_lfo2_depth": 0.03,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

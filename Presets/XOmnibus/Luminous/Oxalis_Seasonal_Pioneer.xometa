@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Auto season (accumulator-derived). phi=0.45. As W accumulates, seasonal brightness shifts the filter. The pioneer species adapting to the session — begins bright (Spring) and evolves.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.65,
+    "density": 0.55,
+    "movement": 0.25,
+    "space": 0.6,
+    "warmth": 0.4
+  },
+  "engines": ["Oxalis"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Luminous",
+  "name": "Seasonal Pioneer",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.008,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.7,
+      "oxal_cutoff": 7000.0,
+      "oxal_decay": 0.3,
+      "oxal_filterEnvAmt": 0.25,
+      "oxal_growthMode": 0.0,
+      "oxal_growthTime": 8.0,
+      "oxal_lfo1Depth": 0.12,
+      "oxal_lfo1Rate": 0.5,
+      "oxal_lfo1Shape": 0,
+      "oxal_lfo2Depth": 0.05,
+      "oxal_lfo2Rate": 1.0,
+      "oxal_lfo2Shape": 0,
+      "oxal_phi": 0.45,
+      "oxal_release": 0.8,
+      "oxal_resonance": 0.18,
+      "oxal_spread": 0.6,
+      "oxal_sustain": 0.85,
+      "oxal_symmetry": 0.65,
+      "oxal_vibratoDepth": 0.12,
+      "oxal_vibratoRate": 4.5
+    }
+  },
+  "tags": ["Garden", "Strings", "Pioneer", "Seasonal"],
+  "version": "1.0"
+}

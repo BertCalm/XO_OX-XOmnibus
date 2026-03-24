@@ -1,10 +1,27 @@
 {
   "name": "Crosstown Shift",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["city blend", "New York", "Toronto", "morphing", "flux"],
-  "macros": {"M1": 0.5, "M2": 0.55, "M3": 0.1, "M4": 0.1},
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.78, "density": 0.6, "space": 0.5, "aggression": 0.55},
+  "tags": [
+    "city blend",
+    "New York",
+    "Toronto",
+    "morphing",
+    "flux"
+  ],
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.55,
+    "M3": 0.1,
+    "M4": 0.1
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.78,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.55
+  },
   "parameters": {
     "ofr_transientSnap": 0.7,
     "ofr_transientPitch": 0.45,
@@ -24,5 +41,10 @@
     "ofr_v1_decay": 0.24,
     "ofr_v2_pan": 0.35,
     "ofr_v3_pan": -0.35
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

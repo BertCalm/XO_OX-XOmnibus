@@ -130,6 +130,22 @@ ENGINE_PAD_COLORS = {
     "Ombre":     "#7B6B8A",  # Shadow Mauve
     "Orca":      "#1B2838",  # Deep Ocean
     "Octopus":   "#E040FB",  # Chromatophore Magenta
+    # Wave 4-7 engines (added 2026-03-20 through 2026-03-23)
+    "Ostinato":  "#E8701A",  # Firelight Orange
+    "OpenSky":   "#FF8C00",  # Sunburst
+    "OceanDeep": "#2D0A4E",  # Trench Violet
+    "Ouie":      "#708090",  # Hammerhead Steel
+    "Obrix":     "#1E8B7E",  # Reef Jade
+    "Orbweave":  "#8E4585",  # Kelp Knot Purple
+    "Overtone":  "#A8D8EA",  # Spectral Ice
+    "Organism":  "#C6E377",  # Emergence Lime
+    "Oxbow":     "#1A6B5A",  # Oxbow Teal
+    "Oware":     "#B5883E",  # Akan Goldweight
+    "Opera":     "#D4AF37",  # Aria Gold
+    "Offering":  "#E5B80B",  # Crate Wax Yellow
+    "Osmosis":   "#C0C0C0",  # Surface Tension Silver
+    # Engine #48 (added 2026-03-23)
+    "Oxytocin":  "#9B5DE5",  # Synapse Violet
 }
 
 

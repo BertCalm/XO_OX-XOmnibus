@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Colony Light",
+  "author": "XO_OX Designs",
+  "mood": "Luminous",
+  "tags": [
+    "anglerfish siphonophore",
+    "colony",
+    "distributed warmth",
+    "luminous",
+    "organic"
+  ],
+  "dna": {
+    "brightness": 0.752,
+    "warmth": 0.605,
+    "movement": 0.105,
+    "density": 0.45,
+    "space": 0.705,
+    "aggression": 0.228
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.85,
+      "oxy_passion": 0.15,
+      "oxy_commitment": 0.72,
+      "oxy_warmth_rate": 0.55,
+      "oxy_passion_rate": 0.01,
+      "oxy_commit_rate": 2.0,
+      "oxy_entanglement": 0.38,
+      "oxy_circuit_age": 0.15,
+      "oxy_circuit_noise": 0.04,
+      "oxy_memory_depth": 0.45,
+      "oxy_memory_decay": 5.5,
+      "oxy_topology": 1,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.35,
+      "oxy_cutoff": 3800,
+      "oxy_pitch": 0,
+      "oxy_detune": 6,
+      "oxy_attack": 0.03,
+      "oxy_decay": 0.8,
+      "oxy_sustain": 0.85,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.067,
+      "oxy_lfo_depth": 0.13,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.04,
+      "oxy_lfo2_depth": 0.07,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

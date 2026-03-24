@@ -1,10 +1,27 @@
 {
   "name": "Bay Shimmer",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["Bay Area", "fog", "bright hats", "allpass", "hyphy"],
-  "macros": {"M1": 0.3, "M2": 0.4, "M3": 0.2, "M4": 0.1},
-  "dna": {"brightness": 0.75, "warmth": 0.4, "movement": 0.55, "density": 0.6, "space": 0.65, "aggression": 0.5},
+  "tags": [
+    "Bay Area",
+    "fog",
+    "bright hats",
+    "allpass",
+    "hyphy"
+  ],
+  "macros": {
+    "M1": 0.3,
+    "M2": 0.4,
+    "M3": 0.2,
+    "M4": 0.1
+  },
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.5
+  },
   "parameters": {
     "ofr_transientSnap": 0.7,
     "ofr_transientPitch": 0.5,
@@ -26,5 +43,10 @@
     "ofr_v3_level": 0.85,
     "ofr_v3_pan": -0.4,
     "ofr_v7_level": 0.75
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -509,3 +509,66 @@ Never use stateReset in a performance preset unless the intent is to demonstrate
 - **Implement infusion.** When `isInfusion = true`, re-energize upper spectral bands slightly and skip the heat multiplier.
 - **Visual reduction meter.** The 8-band `spectralMass[]` array as a frequency-domain bar chart would give players a real-time view of where they are in the reduction arc. The data is already exported.
 - **BROTH coordinator.** Fifteen lines in XOmnibusProcessor to pump `sessionAge`, `concentrateDark`, and `spectralMass` to the other three BROTH engines. This unlocks the entire cooperative chemistry that makes BROTH a collection rather than four independent engines.
+
+---
+
+## Phase R8: Parameter Refinements (2026-03-23)
+
+*Added during BROTH Quad Retreat.*
+
+| # | Parameter | Current Default | Recommended Default | Rationale |
+|---|-----------|----------------|---------------------|-----------|
+| R01 | `worn_reductionRate` | 0.50 | **0.30** | 0.50 makes the arc perceptible within 5–7 minutes. 0.30 extends the rich harmonic character to 12–15 minutes before visible reduction — better matches the 30-minute session target. |
+| R02 | `worn_heat` | 0.50 | **0.40** | 0.40 is more forgiving — moderate playing does not burn off spectral mass as fast. Reserve 0.7+ for presets designed around fast reduction. |
+| R03 | `worn_richness` | 1.00 | **1.00** | Keep maximum richness as default. The reduction takes it away — why start with less? |
+| R04 | `worn_maillard` | 0.30 | **0.20** | 0.20 delays the caramelization character to later in the session — making it a reward rather than an early flavoring. |
+| R05 | `worn_umamiDepth` | 0.50 | **0.65** | The fundamental bloom at deep reduction should be unmistakable. 0.65 makes the late-session reward more prominent. |
+| R06 | `worn_sessionTarget` | 30.0 min | **30.0 min** | Keep default. Use preset-level adjustment for different arc lengths. |
+| R07 | `worn_filterCutoff` | 8000.0 Hz | **7000.0 Hz** | 7kHz allows the session-age cutoff reduction (`1 - sessionAge * 0.7`) to land in a more musical range. |
+| R08 | `worn_ampAttack` | 0.50 s | **0.70 s** | 700ms onset suggests the weight of a simmering liquid entering the space. |
+| R09 | `worn_ampDecay` | 1.00 s | **1.20 s** | Slightly extended decay to match the slow, heavy quality of the metaphor. |
+| R10 | `worn_ampRelease` | 3.00 s | **5.0 s** | 5 seconds lets the concentrated sound dissipate gradually — like the stove being turned off and the pot cooling. |
+| R11 | `worn_lfo1Rate` | 0.08 Hz | **0.06 Hz** | 0.06 Hz is a slow simmer — one cycle every 17 seconds, matching the pace of a sauce reducing over time. |
+| R12 | `worn_lfo2Rate` | 0.03 Hz | **0.015 Hz** | At 0.015 Hz LFO2 becomes the deep geological breath of the pot — felt more than heard. |
+| R13 | `worn_stereoWidth` | 0.50 | **0.42** | A concentrated reduction has a focused quality. 0.42 narrows the image slightly, suggesting concentration rather than diffusion. |
+
+---
+
+## Phase R9: Scripture Verses (2026-03-23)
+
+**I. On Irreversibility**
+*The session is not a loop.
+It begins once.
+It accumulates.
+The high frequencies leave first — the volatile ones,
+the ones that could not hold their place
+in the presence of accumulated heat.
+What remains is not less. It is more.
+The sauce that reduces by half
+has twice the flavor per gram.
+Concentration is not decay.
+It is arrival.*
+
+**II. On the Session Clock**
+*Other synthesizers measure time in beats, in bars, in minutes.
+XOverworn measures time in sessions.
+The evaporation integral does not reset at the bar line.
+It does not reset at the transport stop.
+It does not reset when you eat lunch.
+It remembers.
+When you return and play the first note,
+the reduction state is exactly where you left it —
+the bands at their arrived levels,
+the Maillard saturation deepened by an hour of waiting.*
+
+**III. On What Cannot Be Taken Back**
+*One parameter returns the sauce to its original state.
+One knob past 0.5 and the reduction state resets —
+every band returns to 1.0,
+the sessionAge returns to 0.0,
+the Maillard depth returns to nothing.
+Use it carefully.
+The ability to start fresh is not an invitation to do so.
+Sometimes the concentration is what you came here to hear.
+The sauce took thirty minutes to become this.
+Let it be.*

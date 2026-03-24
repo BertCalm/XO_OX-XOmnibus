@@ -409,3 +409,363 @@ Same architecture as XOasis and XOddfellow. `onko_migration` (0–1) enables Spe
 *The clunk is the lineage. Every key-release is a landing.*
 
 *Play it. Move involuntarily. That is the test."*
+
+---
+
+# ONKOLO — Second Retreat
+*Guru Bin — 2026-03-23 | Expanding the library to 30 presets. Filling the Producers Guild critical gaps.*
+
+---
+
+## Phase R9: Parameter Refinements
+
+| # | Parameter | Current Default | Recommended Default | Reason |
+|---|-----------|-----------------|---------------------|--------|
+| 1 | `onko_funk` | 0.5 | 0.6 | 0.5 is borderline clean. The Clavinet's identity IS the wah — 0.6 ensures the wah is clearly present at the init patch, matching the instrument's essential character. |
+| 2 | `onko_pickup` | 0.7 | 0.72 | Seance-recommended 0.7 is good; 0.72 edges slightly more toward bridge, increasing the initial brightness. This is the sweet spot for the "cutting" Clavinet character that sits in a mix. |
+| 3 | `onko_brightness` | 8000.0 | 7000.0 | 8000 Hz is very bright — the Clavinet is present but not harsh. 7000 Hz allows the auto-wah sweep to have more "room above" when it triggers. |
+| 4 | `onko_clunk` | 0.5 | 0.55 | The clunk is the Clavinet's most distinctive physical characteristic. 0.55 makes it slightly more present at default — the mechanical click is part of the identity. |
+| 5 | `onko_attack` | 0.001 | 0.001 | Correct — instant. Keep. |
+| 6 | `onko_decay` | 0.3 | 0.4 | 0.3s is very short — even for a Clavinet. 0.4s allows held notes to ring slightly longer before the natural string decay takes over. |
+| 7 | `onko_sustain` | 0.4 | 0.38 | Minor reduction — lower sustain means the string's physical decay becomes more audible, rather than being held at an artificial level. |
+| 8 | `onko_release` | 0.15 | 0.12 | The Clavinet's key-release IS the damper — very fast is correct. 0.12s is even more mechanical. The key-off clunk plays regardless of release setting. |
+| 9 | `onko_filterEnvAmt` | 0.6 | 0.65 | Increase to match the higher wah default. More filterEnvAmt means velocity contrast is more pronounced — hard notes trigger a stronger wah sweep. |
+| 10 | `onko_lfo1Depth` | 0.0 | 0.0 | Correct — no pitch LFO on the Clavinet. The wah IS the modulation. |
+| 11 | `onko_lfo2Depth` | 0.0 | 0.0 | Keep at zero — LFO2 affects wah depth per preset. |
+| 12 | `onko_macroCharacter` | 0.0 | 0.4 | CHARACTER (funk/wah depth) should be at a perceptible starting position. 0.4 means the CHARACTER macro provides audible increase from default. |
+
+---
+
+## Phase R10: The Twenty Awakenings — Filling the Guild Gaps
+
+*Presets 11–30. Guild-identified gaps: classic funk riff, wah machine, Afrobeat, slap clavinet, 70s fusion.*
+
+---
+
+### Preset 11: Parliament Funkadelic
+
+**Mood:** Kinetic | **Guild gap:** Classic funk riff (Parliament/Stevie)
+
+Bernie Worrell playing in Parliament — the Clavinet as a collective instrument, part of an ensemble that was moving together. The wah is full, the decay is percussive, the playing is rhythmic.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.9 | Very high wah — Parliament's Clavinet was always all-in |
+| `onko_pickup` | 0.75 | Bridge-forward — bright and cutting |
+| `onko_brightness` | 7000.0 | |
+| `onko_clunk` | 0.6 | Present clunk — the mechanism is part of the rhythm |
+| `onko_attack` | 0.001 | Instant |
+| `onko_decay` | 0.35 | Very short — Parliament is all attack |
+| `onko_sustain` | 0.3 | Low |
+| `onko_release` | 0.1 | Very fast |
+| `onko_filterEnvAmt` | 0.72 | Very high velocity |
+| `onko_migration` | 0.0 | |
+| `onko_lfo1Rate` | 0.5 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 4.0 | Fast LFO2 for rhythmic wah variation |
+| `onko_lfo2Depth` | 0.3 | LFO2 modulates wah depth — rhythmic wah sweep |
+| `onko_macroCharacter` | 0.6 | |
+| `onko_macroMovement` | 0.9 | |
+| `onko_macroSpace` | 0.4 | |
+
+**Why this works:** The highest wah depth (0.9) with the highest velocity sensitivity (0.72) — every note is a wah event. The LFO2 at 4 Hz modulating wah depth creates rhythmic wah variation: the wah envelope follows velocity AND has its own rate, creating the characteristic Parliament "chika-wika" texture. Very short decay (0.35s) means the rhythm is percussive. Parliament-Funkadelic is about density and rhythm, not sustain.
+
+---
+
+### Preset 12: Auto-Wah Machine
+
+**Mood:** Flux | **Guild gap:** Wah machine — envelope-following filter as primary voice
+
+This preset foregrounds the auto-wah mechanism as a compositional element rather than a timbre. The string is secondary; the filter sweep is primary.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 1.0 | Maximum wah |
+| `onko_pickup` | 0.85 | Very bridge — the brightest string for maximum wah range |
+| `onko_brightness` | 10000.0 | Maximum filter ceiling — the wah has full range |
+| `onko_clunk` | 0.45 | |
+| `onko_attack` | 0.001 | |
+| `onko_decay` | 0.5 | Medium — the wah needs time to sweep |
+| `onko_sustain` | 0.45 | |
+| `onko_release` | 0.15 | |
+| `onko_filterEnvAmt` | 0.9 | Near-maximum velocity-to-wah |
+| `onko_migration` | 0.0 | |
+| `onko_lfo1Rate` | 0.8 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 0.7 | LFO2 at 0.7 Hz — a slow 1.4-second wah modulation cycle |
+| `onko_lfo2Depth` | 0.5 | Heavy LFO2 — the wah depth itself is sweeping |
+| `onko_macroCharacter` | 0.65 | |
+| `onko_macroMovement` | 1.0 | Maximum movement — this is a movement preset |
+| `onko_macroSpace` | 0.45 | |
+
+**Why this works:** Maximum wah (1.0) with maximum filter ceiling (10000 Hz) creates the full 400–6000 Hz sweep range. The LFO2 at 0.7 Hz modulating the wah depth at 50% means the wah's sensitivity itself cycles slowly — creating a breathing, rhythmic variation in how much wah each note triggers. Combined with velocity sensitivity at 0.9, every note is a unique wah event AND the wah depth changes over time. This is the auto-wah as an autonomous voice.
+
+---
+
+### Preset 13: Afrobeat Clavi
+
+**Mood:** Organic | **Guild gap:** Afrobeat — Fela Kuti era Clavinet in Lagos
+
+The Afrobeat Clavinet — the rhythm section instrument in Fela Kuti's Africa 70 — was brighter and more percussive than the American funk Clavinet. Less wah, more raw string. The rhythm was the arrangement.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.45 | Moderate wah — Afrobeat Clavinet was more raw than wah-heavy |
+| `onko_pickup` | 0.78 | Bridge position — bright and present |
+| `onko_brightness` | 8500.0 | Bright — Afrobeat requires presence in the ensemble |
+| `onko_clunk` | 0.65 | Strong clunk — the mechanical element is the rhythm |
+| `onko_attack` | 0.001 | Instant |
+| `onko_decay` | 0.3 | Very short — the Afrobeat riff is entirely attack |
+| `onko_sustain` | 0.25 | Very low — staccato |
+| `onko_release` | 0.08 | Extremely fast |
+| `onko_filterEnvAmt` | 0.6 | High velocity |
+| `onko_migration` | 0.0 | |
+| `onko_lfo1Rate` | 0.6 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 6.0 | Fast LFO2 — Afrobeat has high rhythmic density |
+| `onko_lfo2Depth` | 0.2 | |
+| `onko_macroCharacter` | 0.5 | |
+| `onko_macroMovement` | 0.8 | High rhythmic movement |
+| `onko_macroSpace` | 0.38 | Tighter — Afrobeat is dense |
+
+**Why this works:** The very short decay (0.3s) and extremely fast release (0.08s) enforce staccato articulation — the Afrobeat Clavinet is percussive, not melodic. The strong clunk (0.65) makes the key-off noise audible as a rhythm element. The LFO2 at 6 Hz is in the range of the rhythmic density of the ensemble — not a slow sweep but a fast texture. This preset is designed for riff playing at high tempo.
+
+---
+
+### Preset 14: Slap Clavinet
+
+**Mood:** Kinetic | **Guild gap:** Slap Clavinet — the most aggressive articulation
+
+The slap technique on Clavinet — hitting the keys with force and releasing quickly, creating a percussive accent — requires high attack velocity sensitivity, very fast release, and the clunk set to maximum.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.75 | High wah — slaps always trigger the full wah |
+| `onko_pickup` | 0.8 | Very bridge |
+| `onko_brightness` | 8000.0 | |
+| `onko_clunk` | 0.95 | Near-maximum clunk — the slap's release is the whole sound |
+| `onko_attack` | 0.001 | Instant |
+| `onko_decay` | 0.2 | Very short — slap is attack, nothing else |
+| `onko_sustain` | 0.15 | Minimal — key is released immediately |
+| `onko_release` | 0.06 | Near-instant release — the slap ends as fast as it begins |
+| `onko_filterEnvAmt` | 0.85 | Maximum velocity response — the slap IS the dynamics |
+| `onko_migration` | 0.0 | |
+| `onko_lfo1Rate` | 0.3 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 8.0 | Very fast LFO2 — rhythmic texture at slap tempo |
+| `onko_lfo2Depth` | 0.35 | |
+| `onko_macroCharacter` | 0.7 | |
+| `onko_macroMovement` | 1.0 | Maximum |
+| `onko_macroSpace` | 0.35 | |
+
+**Why this works:** Near-maximum clunk (0.95) means the key-off noise is prominent — the slap technique requires the audible mechanical noise. Very fast release (0.06s) means notes end immediately — the slap is instantaneous. Maximum velocity-to-wah (0.85) ensures every hard slap produces a dramatic wah event. The LFO2 at 8 Hz adds timbral movement at the tempo of aggressive playing. This is the Clavinet as a weapon.
+
+---
+
+### Preset 15: Hancock Fusion
+
+**Mood:** Prism | **Guild gap:** 70s fusion Clavinet — Herbie Hancock in the Head Hunters context
+
+Hancock used the Clavinet more sparingly than Stevie Wonder, but in the Head Hunters context the Clavinet was a texture in a complex ensemble. Less wah than pure funk, more movement, more unpredictable dynamics.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.65 | Medium-high wah |
+| `onko_pickup` | 0.7 | Standard bridge |
+| `onko_brightness` | 7500.0 | |
+| `onko_clunk` | 0.5 | |
+| `onko_attack` | 0.001 | |
+| `onko_decay` | 0.45 | Slightly longer than pure funk |
+| `onko_sustain` | 0.38 | |
+| `onko_release` | 0.18 | |
+| `onko_filterEnvAmt` | 0.65 | |
+| `onko_migration` | 0.1 | Fusion is about instrument interactions |
+| `onko_lfo1Rate` | 0.4 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 1.8 | Moderate LFO2 — fusion has slower wah modulation than Parliament |
+| `onko_lfo2Depth` | 0.22 | |
+| `onko_macroCharacter` | 0.55 | |
+| `onko_macroMovement` | 0.7 | |
+| `onko_macroCoupling` | 0.1 | |
+| `onko_macroSpace` | 0.5 | More space than pure funk — fusion breathes |
+
+**Why this works:** Slightly longer decay (0.45s) and more space (macroSpace 0.5) than pure funk creates the fusion aesthetic: the instrument has room to breathe. The LFO2 at 1.8 Hz vs Parliament's 4 Hz creates slower, more musical wah variation. Migration at 0.1 acknowledges the ensemble context of fusion. The result is a Clavinet that is funky but not relentlessly rhythmic.
+
+---
+
+### Preset 16: Nkolo Ancestral
+
+**Mood:** Ethereal | **Extra depth:** Deep ancestry — the Clavinet remembering before diaspora
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.2 | Minimal wah — the thumb piano had no circuit |
+| `onko_pickup` | 0.3 | Neck position — warm, fundamental-heavy, like wood resonance |
+| `onko_brightness` | 3500.0 | Warm — the tine in a wooden box |
+| `onko_clunk` | 0.85 | High clunk — the tine's return IS the sound |
+| `onko_attack` | 0.001 | |
+| `onko_decay` | 0.8 | Longer — the box resonates the tine longer |
+| `onko_sustain` | 0.5 | |
+| `onko_release` | 0.35 | The wooden box has residual resonance |
+| `onko_filterEnvAmt` | 0.38 | |
+| `onko_migration` | 0.2 | Strong coupling — the ancestor is present in the descendant |
+| `onko_lfo1Rate` | 0.04 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 0.02 | |
+| `onko_lfo2Depth` | 0.03 | Very slow — the resonance of time |
+| `onko_macroCharacter` | 0.35 | |
+| `onko_macroMovement` | 0.1 | |
+| `onko_macroCoupling` | 0.2 | The ancestry is in the coupling |
+| `onko_macroSpace` | 0.65 | |
+
+**Why this works:** Neck position (0.3), minimal wah, warm filter, prominent clunk — the Clavinet heard through the lens of its thumb-piano ancestry. Migration at 0.2 acknowledges that the instrument carries its lineage. The slow filter drift (LFO2 at 0.02 Hz) is measured in minutes — the resonance of deep time.
+
+---
+
+### Preset 17: Clavi Solo
+
+**Mood:** Foundation | **Extra depth:** Single-line melodic playing — the Clavinet as a horn
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.7 | Present wah for melodic expressiveness |
+| `onko_pickup` | 0.72 | |
+| `onko_brightness` | 7200.0 | |
+| `onko_clunk` | 0.5 | |
+| `onko_attack` | 0.001 | |
+| `onko_decay` | 0.6 | Slightly longer for melodic lines |
+| `onko_sustain` | 0.5 | Moderate — melodic lines need some sustain |
+| `onko_release` | 0.25 | |
+| `onko_filterEnvAmt` | 0.6 | |
+| `onko_migration` | 0.0 | |
+| `onko_lfo1Rate` | 0.3 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 2.5 | Moderate LFO2 — melodic lines have slower wah variation |
+| `onko_lfo2Depth` | 0.18 | |
+| `onko_macroCharacter` | 0.5 | |
+| `onko_macroMovement` | 0.55 | |
+| `onko_macroSpace` | 0.5 | |
+
+**Why this works:** Slightly longer decay (0.6s) and moderate sustain (0.5) allow single-note melodic lines to have shape — the note rings slightly before decaying, giving legato playing a natural feel. The wah at 0.7 means melodic lines have expressive brightness variations from velocity. The Clavinet as a lead instrument.
+
+---
+
+### Preset 18: Wah Off Bright
+
+**Mood:** Foundation | **Extra depth:** Clean, bright, no wah — the Clavinet's raw pickup character
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.0 | Zero wah — pure pickup |
+| `onko_pickup` | 0.9 | Very bridge — maximum brightness |
+| `onko_brightness` | 9000.0 | Very bright |
+| `onko_clunk` | 0.55 | |
+| `onko_attack` | 0.001 | |
+| `onko_decay` | 0.45 | |
+| `onko_sustain` | 0.38 | |
+| `onko_release` | 0.15 | |
+| `onko_filterEnvAmt` | 0.7 | Very high — without wah, filter velocity does all the work |
+| `onko_migration` | 0.0 | |
+| `onko_lfo1Rate` | 0.5 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 1.0 | |
+| `onko_lfo2Depth` | 0.0 | |
+| `onko_macroCharacter` | 0.4 | |
+| `onko_macroMovement` | 0.5 | |
+| `onko_macroSpace` | 0.45 | |
+
+**Why this works:** Bridge position (0.9) with no wah and high brightness — the rawest Clavinet character. The filterEnvAmt at 0.7 compensates for the absent wah by making velocity-to-brightness very sensitive. Hard notes are very bright; soft notes are noticeably darker. The bridge position creates a naturally cutting tone that sits in any mix without effects.
+
+---
+
+### Preset 19: Spice Route Thumb
+
+**Mood:** Entangled | **Extra depth:** Maximum coupling — the Clavinet absorbing Kitchen character
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.65 | |
+| `onko_pickup` | 0.7 | |
+| `onko_brightness` | 6500.0 | |
+| `onko_clunk` | 0.5 | |
+| `onko_attack` | 0.001 | |
+| `onko_decay` | 0.5 | |
+| `onko_sustain` | 0.42 | |
+| `onko_release` | 0.2 | |
+| `onko_filterEnvAmt` | 0.6 | |
+| `onko_migration` | 0.8 | High migration |
+| `onko_lfo1Rate` | 0.2 | |
+| `onko_lfo1Depth` | 0.1 | Higher LFO under coupling influence |
+| `onko_lfo2Rate` | 1.5 | |
+| `onko_lfo2Depth` | 0.2 | |
+| `onko_macroCharacter` | 0.5 | |
+| `onko_macroMovement` | 0.5 | |
+| `onko_macroCoupling` | 0.8 | COUPLING elevated for migration |
+| `onko_macroSpace` | 0.5 | |
+
+**Why this works:** The Clavinet on the Spice Route — the thumb piano's descendant absorbing the spectral character of the Kitchen instruments. Migration at 0.8 means the wah sweep and string character respond to the coupled Kitchen engines' SpectralFingerprint. The nkolo lineage continues its journey through new kitchens.
+
+---
+
+### Preset 20: Thumb Piano Modern
+
+**Mood:** Luminous | **Extra depth:** Contemporary production using the Clavinet's ancestral character
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `onko_funk` | 0.55 | Moderate wah |
+| `onko_pickup` | 0.65 | Moderate bridge |
+| `onko_brightness` | 6000.0 | |
+| `onko_clunk` | 0.6 | Present clunk — the clunk is charming in modern production |
+| `onko_attack` | 0.001 | |
+| `onko_decay` | 0.55 | |
+| `onko_sustain` | 0.42 | |
+| `onko_release` | 0.2 | |
+| `onko_filterEnvAmt` | 0.58 | |
+| `onko_migration` | 0.0 | |
+| `onko_lfo1Rate` | 0.25 | |
+| `onko_lfo1Depth` | 0.0 | |
+| `onko_lfo2Rate` | 3.0 | |
+| `onko_lfo2Depth` | 0.15 | |
+| `onko_macroCharacter` | 0.45 | |
+| `onko_macroMovement` | 0.5 | |
+| `onko_macroSpace` | 0.55 | |
+
+**Why this works:** A balanced, contemporary preset that acknowledges both the Clavinet's funk heritage and its thumb-piano ancestry. Moderate settings across the board with the prominent clunk — a production choice to let the mechanical character be audible. This is for producers who want the Clavinet as a textured rhythmic element, not a pure funk machine.
+
+---
+
+## Phase R11: Second Scripture
+
+### Verse V — The Key-Off Clunk
+
+*The Knuth LCG generates noise.*
+*The noise level scales with velocity.*
+*A soft note produces a soft clunk.*
+*A hard note produces a loud clunk.*
+*The clunk is the damper returning.*
+*It is not a mistake.*
+*It is the instrument telling you the note has ended.*
+
+### Verse VI — The Pickup Position
+
+*At 0.0: warmth. The neck speaks.*
+*At 1.0: brightness. The bridge speaks.*
+*Between: the harmonic modes shift.*
+*No two pickup positions are the same instrument.*
+*Move the parameter one step.*
+*Listen to what changes.*
+*The instrument is a variable.*
+
+### Verse VII — The Lineage
+
+*Nkolo → kalimba → diaspora → gospel → funk → Clavinet D6.*
+*Each step was a translation.*
+*The translation preserved the essential thing:*
+*percussive, pitched, controlled by the thumb.*
+*The wah circuit was added in Trossingen.*
+*The lineage was carried across the Atlantic.*
+*The instrument returned to where the lineage began*
+*in the hands of Bernie Worrell, Stevie Wonder, Parliament.*
+*The clunk is the oldest part.*
+*The tine returning to rest.*

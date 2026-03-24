@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 Japanese terroir. Ultra-clean, pristine headroom, 12% gain reduction. Bass for precision mixing.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.38,
+    "movement": 0.08,
+    "density": 0.48,
+    "space": 0.3,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Tokyo Transparent",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.2,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 3500.0,
+      "olate_resonance": 0.2,
+      "olate_drive": 0.25,
+      "olate_filterEnvAmount": 0.3,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.2,
+      "olate_vintage": 0.78,
+      "olate_warmth": 0.35,
+      "olate_terroir": 0.99,
+      "olate_ageRate": 0.2,
+      "olate_attack": 0.001,
+      "olate_decay": 0.35,
+      "olate_sustain": 0.7,
+      "olate_release": 0.3,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.3,
+      "olate_lfo1Rate": 0.5,
+      "olate_lfo1Depth": 0.0,
+      "olate_lfo2Rate": 1.0,
+      "olate_lfo2Depth": 0.0,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "analog",
+    "clean"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

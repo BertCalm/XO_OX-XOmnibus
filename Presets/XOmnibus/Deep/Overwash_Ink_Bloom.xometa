@@ -1,0 +1,50 @@
+{
+  "name": "Ink Bloom",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Chinese ink in cold water \u2014 concentrated drop, dark, patient. Five harmonics in darkness.",
+  "mood": "Deep",
+  "tags": [
+    "pad",
+    "dark",
+    "ambient",
+    "diffusion"
+  ],
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.5,
+    "SPACE": 0.44
+  },
+  "dna": {
+    "warmth": 0.68,
+    "complexity": 0.25,
+    "movement": 0.12,
+    "brightness": 0.12,
+    "aggression": 0.05
+  },
+  "params": {
+    "wash_diffusionRate": 0.22,
+    "wash_viscosity": 0.62,
+    "wash_harmonics": 5,
+    "wash_diffusionTime": 18.0,
+    "wash_spreadMax": 200.0,
+    "wash_brightness": 0.22,
+    "wash_warmth": 0.68,
+    "wash_ampAttack": 2.2,
+    "wash_ampDecay": 1.5,
+    "wash_ampSustain": 0.85,
+    "wash_ampRelease": 9.0,
+    "wash_filterCutoff": 1800.0,
+    "wash_filterRes": 0.12,
+    "wash_filtEnvAmount": 0.2,
+    "wash_lfo1Rate": 0.02,
+    "wash_lfo1Depth": 0.2,
+    "wash_lfo2Rate": 0.009,
+    "wash_lfo2Depth": 0.1,
+    "wash_stereoWidth": 0.44,
+    "wash_level": 0.8
+  }
+}

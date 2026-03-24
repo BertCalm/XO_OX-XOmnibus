@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "First Sight",
+  "author": "XO_OX Designs",
+  "mood": "Kinetic",
+  "tags": [
+    "infatuation",
+    "passion only",
+    "bright",
+    "unstable",
+    "nervous energy"
+  ],
+  "dna": {
+    "brightness": 0.619,
+    "warmth": 0.028,
+    "movement": 0.202,
+    "density": 0.186,
+    "space": 0.32,
+    "aggression": 0.611
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.0,
+      "oxy_passion": 0.88,
+      "oxy_commitment": 0.0,
+      "oxy_warmth_rate": 0.8,
+      "oxy_passion_rate": 0.002,
+      "oxy_commit_rate": 4.0,
+      "oxy_entanglement": 0.18,
+      "oxy_circuit_age": 0.08,
+      "oxy_circuit_noise": 0.12,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 2.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.45,
+      "oxy_cutoff": 4200,
+      "oxy_pitch": 7,
+      "oxy_detune": 0,
+      "oxy_attack": 0.001,
+      "oxy_decay": 0.08,
+      "oxy_sustain": 0.3,
+      "oxy_release": 0.4,
+      "oxy_lfo_rate": 4.5,
+      "oxy_lfo_depth": 0.22,
+      "oxy_lfo_shape": 1,
+      "oxy_lfo2_rate": 2.1,
+      "oxy_lfo2_depth": 0.08,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

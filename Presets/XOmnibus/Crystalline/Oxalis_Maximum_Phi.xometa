@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "phi=1.0 — full phyllotaxis harmonic spacing. All seven partials at golden ratio intervals (1:1.618:2.618:4.236:6.854:11.09:17.94). The sunflower seed head made sound. Inharmonic, crystalline, distinctly non-string.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.7,
+    "density": 0.6,
+    "movement": 0.1,
+    "space": 0.75,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Crystalline",
+  "name": "Maximum Phi",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.01,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.65,
+      "oxal_cutoff": 7500.0,
+      "oxal_decay": 0.4,
+      "oxal_filterEnvAmt": 0.15,
+      "oxal_growthMode": 0.0,
+      "oxal_growthTime": 8.0,
+      "oxal_lfo1Depth": 0.05,
+      "oxal_lfo1Rate": 0.3,
+      "oxal_lfo1Shape": 0,
+      "oxal_lfo2Depth": 0.0,
+      "oxal_lfo2Rate": 0.5,
+      "oxal_lfo2Shape": 0,
+      "oxal_phi": 1.0,
+      "oxal_release": 1.2,
+      "oxal_resonance": 0.2,
+      "oxal_spread": 0.65,
+      "oxal_sustain": 0.8,
+      "oxal_symmetry": 0.9,
+      "oxal_vibratoDepth": 0.05,
+      "oxal_vibratoRate": 4.0
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings",
+    "Pioneer",
+    "Mathematical"
+  ],
+  "version": "1.0"
+}

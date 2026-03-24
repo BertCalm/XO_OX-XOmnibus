@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Parliament Funkadelic",
+  "mood": "Kinetic",
+  "engines": ["Onkolo"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bootsy, Bernie Worrell territory — maximum funk depth, pickup near bridge for maximum clank, fast key-off. The clavinet as a rhythm machine. One Thing — every note is a percussion event.",
+  "tags": ["clavinet", "parliament", "funkadelic", "funk", "kinetic", "rhythm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.35,
+    "movement": 0.85,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.88,
+      "onko_pickup": 0.82,
+      "onko_brightness": 7500.0,
+      "onko_clunk": 0.65,
+      "onko_attack": 0.001,
+      "onko_decay": 0.32,
+      "onko_sustain": 0.35,
+      "onko_release": 0.1,
+      "onko_filterEnvAmt": 0.78,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2.0,
+      "onko_macroCharacter": 0.75,
+      "onko_macroMovement": 0.85,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.35,
+      "onko_lfo1Rate": 0.08,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 4.0,
+      "onko_lfo2Depth": 0.05,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

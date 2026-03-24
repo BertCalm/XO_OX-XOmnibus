@@ -1,0 +1,49 @@
+{
+  "name": "The Consequence",
+  "engines": [
+    "Overflow"
+  ],
+  "author": "XO_OX Designs",
+  "description": "The pad that remembers how you played. Play gently \u2014 a pad. Play harder \u2014 it tightens. Play a dense passage \u2014 the valve opens. Then silence. Then restart.",
+  "mood": "Organic",
+  "tags": [
+    "pad",
+    "pressure",
+    "evolving",
+    "ambient"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.5,
+    "SPACE": 0.62
+  },
+  "dna": {
+    "warmth": 0.55,
+    "complexity": 0.55,
+    "movement": 0.4,
+    "brightness": 0.48,
+    "aggression": 0.25
+  },
+  "params": {
+    "flow_threshold": 0.65,
+    "flow_accumRate": 0.52,
+    "flow_valveType": 0,
+    "flow_vesselSize": 0.52,
+    "flow_strainColor": 0.55,
+    "flow_releaseTime": 0.7,
+    "flow_ampAttack": 0.32,
+    "flow_ampDecay": 0.7,
+    "flow_ampSustain": 0.88,
+    "flow_ampRelease": 2.5,
+    "flow_filterCutoff": 5500.0,
+    "flow_filterRes": 0.18,
+    "flow_filtEnvAmount": 0.32,
+    "flow_lfo1Rate": 0.1,
+    "flow_lfo1Depth": 0.2,
+    "flow_lfo2Rate": 0.045,
+    "flow_lfo2Depth": 0.14,
+    "flow_stereoWidth": 0.62,
+    "flow_level": 0.8
+  }
+}

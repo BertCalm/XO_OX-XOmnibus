@@ -1,10 +1,27 @@
 {
   "name": "Entropy Engine",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["chaotic", "high curiosity", "evolving", "complex", "unstable"],
-  "macros": {"M1": 0.95, "M2": 0.4, "M3": 0.25, "M4": 0.2},
-  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.98, "density": 0.6, "space": 0.45, "aggression": 0.65},
+  "tags": [
+    "chaotic",
+    "high curiosity",
+    "evolving",
+    "complex",
+    "unstable"
+  ],
+  "macros": {
+    "M1": 0.95,
+    "M2": 0.4,
+    "M3": 0.25,
+    "M4": 0.2
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.98,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.65
+  },
   "parameters": {
     "ofr_transientSnap": 0.5,
     "ofr_transientSat": 0.35,
@@ -27,5 +44,10 @@
     "ofr_envToPitch": 0.25,
     "ofr_v0_decay": 0.38,
     "ofr_v1_decay": 0.2
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

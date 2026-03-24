@@ -1,0 +1,50 @@
+{
+  "name": "BROTH Opening",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "description": "The inaugural state \u2014 fresh water, before any reduction. Balanced, warm, patient. The ideal starting state for BROTH system play.",
+  "mood": "Foundation",
+  "tags": [
+    "pad",
+    "warm",
+    "ambient",
+    "diffusion"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.5,
+    "SPACE": 0.55
+  },
+  "dna": {
+    "warmth": 0.66,
+    "complexity": 0.5,
+    "movement": 0.22,
+    "brightness": 0.42,
+    "aggression": 0.05
+  },
+  "params": {
+    "wash_diffusionRate": 0.3,
+    "wash_viscosity": 0.45,
+    "wash_harmonics": 10,
+    "wash_diffusionTime": 15.0,
+    "wash_spreadMax": 155.0,
+    "wash_brightness": 0.55,
+    "wash_warmth": 0.66,
+    "wash_ampAttack": 1.0,
+    "wash_ampDecay": 1.2,
+    "wash_ampSustain": 0.85,
+    "wash_ampRelease": 6.5,
+    "wash_filterCutoff": 4000.0,
+    "wash_filterRes": 0.15,
+    "wash_filtEnvAmount": 0.28,
+    "wash_lfo1Rate": 0.05,
+    "wash_lfo1Depth": 0.18,
+    "wash_lfo2Rate": 0.02,
+    "wash_lfo2Depth": 0.12,
+    "wash_stereoWidth": 0.55,
+    "wash_level": 0.8
+  }
+}

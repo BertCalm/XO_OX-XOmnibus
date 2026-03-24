@@ -1,10 +1,27 @@
 {
   "name": "Drum Lattice",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["lattice", "structured chaos", "Detroit", "coupling", "woven"],
-  "macros": {"M1": 0.7, "M2": 0.7, "M3": 0.85, "M4": 0.25},
-  "dna": {"brightness": 0.4, "warmth": 0.65, "movement": 0.68, "density": 0.9, "space": 0.4, "aggression": 0.65},
+  "tags": [
+    "lattice",
+    "structured chaos",
+    "Detroit",
+    "coupling",
+    "woven"
+  ],
+  "macros": {
+    "M1": 0.7,
+    "M2": 0.7,
+    "M3": 0.85,
+    "M4": 0.25
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.68,
+    "density": 0.9,
+    "space": 0.4,
+    "aggression": 0.65
+  },
   "parameters": {
     "ofr_flipLayers": 3,
     "ofr_flipChop": 0.6,
@@ -26,5 +43,10 @@
     "ofr_v0_decay": 0.48,
     "ofr_v1_body": 0.62,
     "ofr_masterLevel": 0.82
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

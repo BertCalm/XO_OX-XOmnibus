@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Afrobeat Clavi",
+  "mood": "Kinetic",
+  "engines": ["Onkolo"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fela Kuti's Afrika 70 clavinet sound — interlocking patterns, brighter tone, less extreme wah, rhythmic articulation. The clavinet as a polyrhythmic conversation partner.",
+  "tags": ["clavinet", "afrobeat", "fela-kuti", "polyrhythm", "africa", "kinetic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.38,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.68,
+      "onko_pickup": 0.78,
+      "onko_brightness": 8000.0,
+      "onko_clunk": 0.55,
+      "onko_attack": 0.001,
+      "onko_decay": 0.35,
+      "onko_sustain": 0.38,
+      "onko_release": 0.1,
+      "onko_filterEnvAmt": 0.65,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2.0,
+      "onko_macroCharacter": 0.6,
+      "onko_macroMovement": 0.7,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.38,
+      "onko_lfo1Rate": 0.06,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 2.0,
+      "onko_lfo2Depth": 0.04,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

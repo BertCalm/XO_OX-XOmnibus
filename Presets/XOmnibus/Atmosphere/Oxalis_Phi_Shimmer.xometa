@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "phi=0.5, very slow LFO1 (0.03 Hz) on filter, wide spread, long release. A shimmering atmospheric pad that doesn't quite sound like strings — the space between standard harmony and mathematical precision.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.5,
+    "density": 0.45,
+    "movement": 0.35,
+    "space": 0.8,
+    "warmth": 0.45
+  },
+  "engines": ["Oxalis"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Atmosphere",
+  "name": "Phi Shimmer",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.015,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.55,
+      "oxal_cutoff": 6500.0,
+      "oxal_decay": 0.5,
+      "oxal_filterEnvAmt": 0.15,
+      "oxal_growthMode": 0.0,
+      "oxal_growthTime": 8.0,
+      "oxal_lfo1Depth": 0.18,
+      "oxal_lfo1Rate": 0.03,
+      "oxal_lfo1Shape": 0,
+      "oxal_lfo2Depth": 0.05,
+      "oxal_lfo2Rate": 0.6,
+      "oxal_lfo2Shape": 0,
+      "oxal_phi": 0.5,
+      "oxal_release": 3.0,
+      "oxal_resonance": 0.18,
+      "oxal_spread": 0.75,
+      "oxal_sustain": 0.82,
+      "oxal_symmetry": 0.65,
+      "oxal_vibratoDepth": 0.12,
+      "oxal_vibratoRate": 4.0
+    }
+  },
+  "tags": ["Garden", "Strings", "Pioneer", "Atmospheric"],
+  "version": "1.0"
+}

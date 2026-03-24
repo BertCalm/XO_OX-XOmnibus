@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 New York circuit flavor. Soft saturation and presence boost. Bell Sound Studios analog character.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.68,
+    "movement": 0.15,
+    "density": 0.68,
+    "space": 0.22,
+    "aggression": 0.48
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "East Coast Grit",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.35,
+      "olate_pulseWidth": 0.48,
+      "olate_cutoff": 2500.0,
+      "olate_resonance": 0.38,
+      "olate_drive": 0.55,
+      "olate_filterEnvAmount": 0.5,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.3,
+      "olate_vintage": 0.35,
+      "olate_warmth": 0.55,
+      "olate_terroir": 0.82,
+      "olate_ageRate": 0.4,
+      "olate_attack": 0.002,
+      "olate_decay": 0.5,
+      "olate_sustain": 0.72,
+      "olate_release": 0.4,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.5,
+      "olate_lfo1Rate": 0.5,
+      "olate_lfo1Depth": 0.0,
+      "olate_lfo2Rate": 1.0,
+      "olate_lfo2Depth": 0.0,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "analog",
+    "warm",
+    "jazz"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

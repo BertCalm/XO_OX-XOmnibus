@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "symmetry=1.0 — no asymmetric waveshaping. phi=0.75. The sound is crystalline and precise: each partial at its exact geometric position, untouched by organic distortion. The most mathematical XOxalis preset.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.75,
+    "density": 0.5,
+    "movement": 0.05,
+    "space": 0.75,
+    "warmth": 0.1
+  },
+  "engines": ["Oxalis"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Crystalline",
+  "name": "Mathematical Precision",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.008,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.7,
+      "oxal_cutoff": 7500.0,
+      "oxal_decay": 0.35,
+      "oxal_filterEnvAmt": 0.15,
+      "oxal_growthMode": 0.0,
+      "oxal_growthTime": 8.0,
+      "oxal_lfo1Depth": 0.04,
+      "oxal_lfo1Rate": 0.2,
+      "oxal_lfo1Shape": 0,
+      "oxal_lfo2Depth": 0.0,
+      "oxal_lfo2Rate": 0.5,
+      "oxal_lfo2Shape": 0,
+      "oxal_phi": 0.75,
+      "oxal_release": 0.9,
+      "oxal_resonance": 0.2,
+      "oxal_spread": 0.65,
+      "oxal_sustain": 0.82,
+      "oxal_symmetry": 1.0,
+      "oxal_vibratoDepth": 0.04,
+      "oxal_vibratoRate": 4.0
+    }
+  },
+  "tags": ["Garden", "Strings", "Pioneer", "Mathematical"],
+  "version": "1.0"
+}

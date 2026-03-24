@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 canonical analog bass. Moog region vintage, saw-dominant, warm filter. The first note a producer plays should sound like this.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.1,
+    "density": 0.65,
+    "space": 0.28,
+    "aggression": 0.3
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "First Pressing",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.3,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 2200.0,
+      "olate_resonance": 0.35,
+      "olate_drive": 0.45,
+      "olate_filterEnvAmount": 0.6,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.25,
+      "olate_vintage": 0.38,
+      "olate_warmth": 0.6,
+      "olate_terroir": 0.0,
+      "olate_ageRate": 0.35,
+      "olate_attack": 0.003,
+      "olate_decay": 0.5,
+      "olate_sustain": 0.75,
+      "olate_release": 0.45,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.5,
+      "olate_lfo1Rate": 0.5,
+      "olate_lfo1Depth": 0.0,
+      "olate_lfo2Rate": 1.0,
+      "olate_lfo2Depth": 0.0,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "analog",
+    "warm",
+    "clean"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

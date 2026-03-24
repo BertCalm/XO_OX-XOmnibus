@@ -1,0 +1,47 @@
+{
+  "name": "Early Reduction",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Twenty minutes in \u2014 the top notes have begun to leave. sessionAge ~0.25, bands 7-8 at 55% mass.",
+  "mood": "Atmosphere",
+  "tags": [
+    "pad",
+    "warm",
+    "reduction",
+    "evolving"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.5,
+    "SPACE": 0.44
+  },
+  "dna": {
+    "warmth": 0.75,
+    "complexity": 0.6,
+    "movement": 0.2,
+    "brightness": 0.45,
+    "aggression": 0.08
+  },
+  "params": {
+    "worn_reductionRate": 0.45,
+    "worn_heat": 0.42,
+    "worn_richness": 0.85,
+    "worn_maillard": 0.22,
+    "worn_umamiDepth": 0.65,
+    "worn_sessionTarget": 30.0,
+    "worn_filterCutoff": 6200.0,
+    "worn_filterRes": 0.15,
+    "worn_filtEnvAmount": 0.25,
+    "worn_ampAttack": 0.8,
+    "worn_ampSustain": 0.88,
+    "worn_ampRelease": 5.5,
+    "worn_lfo1Rate": 0.06,
+    "worn_lfo1Depth": 0.15,
+    "worn_stereoWidth": 0.44,
+    "worn_level": 0.8,
+    "worn_stateReset": 0.0
+  }
+}

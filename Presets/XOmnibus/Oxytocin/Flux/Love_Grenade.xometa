@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Love Grenade",
+  "author": "XO_OX Designs",
+  "mood": "Flux",
+  "tags": [
+    "volatile",
+    "explosive",
+    "love types",
+    "high drive",
+    "destructive beauty"
+  ],
+  "dna": {
+    "brightness": 0.751,
+    "warmth": 0.376,
+    "movement": 0.431,
+    "density": 0.369,
+    "space": 0.34,
+    "aggression": 0.788
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.32,
+      "oxy_passion": 0.95,
+      "oxy_commitment": 0.45,
+      "oxy_warmth_rate": 0.15,
+      "oxy_passion_rate": 0.001,
+      "oxy_commit_rate": 0.18,
+      "oxy_entanglement": 0.78,
+      "oxy_circuit_age": 0.48,
+      "oxy_circuit_noise": 0.22,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 0.5,
+      "oxy_topology": 2,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.88,
+      "oxy_cutoff": 6000,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.001,
+      "oxy_decay": 0.08,
+      "oxy_sustain": 0.4,
+      "oxy_release": 0.5,
+      "oxy_lfo_rate": 5.0,
+      "oxy_lfo_depth": 0.45,
+      "oxy_lfo_shape": 3,
+      "oxy_lfo2_rate": 10.0,
+      "oxy_lfo2_depth": 0.22,
+      "oxy_output": 3,
+      "oxy_pan": 0.0,
+      "oxy_voices": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

@@ -1,10 +1,27 @@
 {
   "name": "Full Frequency Web",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["full spectrum", "coupling-ready", "Bay Area", "rich", "textured"],
-  "macros": {"M1": 0.55, "M2": 0.9, "M3": 0.7, "M4": 0.1},
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.68, "density": 0.88, "space": 0.7, "aggression": 0.5},
+  "tags": [
+    "full spectrum",
+    "coupling-ready",
+    "Bay Area",
+    "rich",
+    "textured"
+  ],
+  "macros": {
+    "M1": 0.55,
+    "M2": 0.9,
+    "M3": 0.7,
+    "M4": 0.1
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.68,
+    "density": 0.88,
+    "space": 0.7,
+    "aggression": 0.5
+  },
   "parameters": {
     "ofr_flipLayers": 3,
     "ofr_flipChop": 0.35,
@@ -26,5 +43,10 @@
     "ofr_v3_decay": 0.55,
     "ofr_v6_level": 0.88,
     "ofr_v7_level": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

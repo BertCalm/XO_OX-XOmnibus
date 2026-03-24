@@ -563,6 +563,18 @@
         "name": "White Coral Anemone",
         "zone": "sunlit"
       }
+    },
+    {
+      "id": "OXYTOCIN",
+      "accent": "#9B5DE5",
+      "creature": {
+        "source": "custom",
+        "file": "praya_dubia.png",
+        "path": "img/fish/saltwater/praya_dubia.png",
+        "spritesheetRow": null,
+        "name": "Praya dubia",
+        "zone": "twilight"
+      }
     }
   ]
 }

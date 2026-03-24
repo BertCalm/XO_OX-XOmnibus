@@ -72,6 +72,18 @@ ENGINE_COLORS = {
     "OPENSKY":   (0xFF, 0x8C, 0x00),  # Sunburst
     "OCEANDEEP": (0x2D, 0x0A, 0x4E),  # Trench Violet
     "OUIE":      (0x70, 0x80, 0x90),  # Hammerhead Steel
+    # Wave 4-7 engines (added 2026-03-20 through 2026-03-23)
+    "OBRIX":     (0x1E, 0x8B, 0x7E),  # Reef Jade
+    "ORBWEAVE":  (0x8E, 0x45, 0x85),  # Kelp Knot Purple
+    "OVERTONE":  (0xA8, 0xD8, 0xEA),  # Spectral Ice
+    "ORGANISM":  (0xC6, 0xE3, 0x77),  # Emergence Lime
+    "OXBOW":     (0x1A, 0x6B, 0x5A),  # Oxbow Teal
+    "OWARE":     (0xB5, 0x88, 0x3E),  # Akan Goldweight
+    "OPERA":     (0xD4, 0xAF, 0x37),  # Aria Gold
+    "OFFERING":  (0xE5, 0xB8, 0x0B),  # Crate Wax Yellow
+    "OSMOSIS":   (0xC0, 0xC0, 0xC0),  # Surface Tension Silver
+    # Engine #48 (added 2026-03-23)
+    "OXYTOCIN":  (0x9B, 0x5D, 0xE5),  # Synapse Violet
 }
 
 DEFAULT_COLOR = (0x44, 0x44, 0x44)  # fallback dark gray

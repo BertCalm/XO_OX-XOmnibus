@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Nocturnal Tide",
+  "author": "XO_OX Designs",
+  "mood": "Submerged",
+  "tags": [
+    "nocturnal",
+    "slow tide",
+    "dark ambient",
+    "gentle",
+    "mysterious"
+  ],
+  "dna": {
+    "brightness": 0.494,
+    "warmth": 0.353,
+    "movement": 0.099,
+    "density": 0.154,
+    "space": 0.525,
+    "aggression": 0.231
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.22,
+      "oxy_passion": 0.1,
+      "oxy_commitment": 0.48,
+      "oxy_warmth_rate": 3.5,
+      "oxy_passion_rate": 0.012,
+      "oxy_commit_rate": 2.2,
+      "oxy_entanglement": 0.1,
+      "oxy_circuit_age": 0.6,
+      "oxy_circuit_noise": 0.12,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 3.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.42,
+      "oxy_cutoff": 620,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.09,
+      "oxy_decay": 2.4,
+      "oxy_sustain": 0.52,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.019,
+      "oxy_lfo_depth": 0.08,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.01,
+      "oxy_lfo2_depth": 0.04,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

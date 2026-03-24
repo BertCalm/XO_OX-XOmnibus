@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Heavy Suitcase",
+  "mood": "Organic",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fender Rhodes Suitcase at full tremolo depth. 5.8 Hz stereo tremolo at 82% depth, wide stereo field. The Motown/Stax soul sound — warm, pulsing, full of character.",
+  "tags": ["rhodes", "suitcase", "tremolo", "soul", "wide-stereo", "organic"],
+  "macroLabels": ["CHARACTER", "TREMOLO DEPTH", "COUPLING", "STEREO WIDTH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.72,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.72,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oasis": {
+      "oasis_warmth": 0.62,
+      "oasis_bell": 0.44,
+      "oasis_brightness": 5200.0,
+      "oasis_tremRate": 5.8,
+      "oasis_tremDepth": 0.82,
+      "oasis_attack": 0.005,
+      "oasis_decay": 1.8,
+      "oasis_sustain": 0.55,
+      "oasis_release": 0.85,
+      "oasis_filterEnvAmt": 0.33,
+      "oasis_migration": 0.0,
+      "oasis_stereoWidth": 0.85,
+      "oasis_bendRange": 2.0,
+      "oasis_macroCharacter": 0.4,
+      "oasis_macroMovement": 0.7,
+      "oasis_macroCoupling": 0.0,
+      "oasis_macroSpace": 0.7,
+      "oasis_lfo1Rate": 0.05,
+      "oasis_lfo1Depth": 0.06,
+      "oasis_lfo1Shape": 0,
+      "oasis_lfo2Rate": 0.3,
+      "oasis_lfo2Depth": 0.0,
+      "oasis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

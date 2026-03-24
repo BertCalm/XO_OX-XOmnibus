@@ -1,10 +1,27 @@
 {
   "name": "Stretch Gospel",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["stretch", "collage", "Toronto", "wide", "layered"],
-  "macros": {"M1": 0.45, "M2": 0.55, "M3": 0.88, "M4": 0.05},
-  "dna": {"brightness": 0.45, "warmth": 0.6, "movement": 0.6, "density": 0.75, "space": 0.65, "aggression": 0.4},
+  "tags": [
+    "stretch",
+    "collage",
+    "Toronto",
+    "wide",
+    "layered"
+  ],
+  "macros": {
+    "M1": 0.45,
+    "M2": 0.55,
+    "M3": 0.88,
+    "M4": 0.05
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.6,
+    "density": 0.75,
+    "space": 0.65,
+    "aggression": 0.4
+  },
   "parameters": {
     "ofr_flipLayers": 3,
     "ofr_flipStretch": 1.5,
@@ -25,5 +42,10 @@
     "ofr_v0_body": 0.8,
     "ofr_v0_tune": -1.5,
     "ofr_v6_level": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

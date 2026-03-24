@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Pair With Obese",
+  "author": "XO_OX Designs",
+  "mood": "Entangled",
+  "tags": [
+    "coupling",
+    "obese pairing",
+    "Mojo",
+    "passion drive",
+    "fat warmth"
+  ],
+  "dna": {
+    "brightness": 0.662,
+    "warmth": 0.415,
+    "movement": 0.168,
+    "density": 0.339,
+    "space": 0.442,
+    "aggression": 0.567
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.45,
+      "oxy_passion": 0.75,
+      "oxy_commitment": 0.45,
+      "oxy_warmth_rate": 0.22,
+      "oxy_passion_rate": 0.003,
+      "oxy_commit_rate": 0.8,
+      "oxy_entanglement": 0.42,
+      "oxy_circuit_age": 0.35,
+      "oxy_circuit_noise": 0.1,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 1.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.55,
+      "oxy_cutoff": 2800,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.004,
+      "oxy_decay": 0.4,
+      "oxy_sustain": 0.62,
+      "oxy_release": 1.618,
+      "oxy_lfo_rate": 0.3,
+      "oxy_lfo_depth": 0.16,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.15,
+      "oxy_lfo2_depth": 0.08,
+      "oxy_output": 0,
+      "oxy_pan": 0.15,
+      "oxy_voices": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

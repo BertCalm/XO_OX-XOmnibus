@@ -1,10 +1,27 @@
 {
   "name": "Mutation Rate",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["curiosity", "evolving", "unstable", "Detroit", "high movement"],
-  "macros": {"M1": 0.9, "M2": 0.7, "M3": 0.2, "M4": 0.1},
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.95, "density": 0.55, "space": 0.4, "aggression": 0.5},
+  "tags": [
+    "curiosity",
+    "evolving",
+    "unstable",
+    "Detroit",
+    "high movement"
+  ],
+  "macros": {
+    "M1": 0.9,
+    "M2": 0.7,
+    "M3": 0.2,
+    "M4": 0.1
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.95,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.5
+  },
   "parameters": {
     "ofr_digCuriosity": 0.9,
     "ofr_digComplexity": 0.65,
@@ -24,5 +41,10 @@
     "ofr_aftertouch": 0.6,
     "ofr_v1_decay": 0.15,
     "ofr_v4_decay": 0.2
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

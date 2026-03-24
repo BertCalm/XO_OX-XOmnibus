@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Zawinul Electric",
+  "mood": "Prism",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Joe Zawinul's Mercy Mercy Mercy Wurlitzer — the most famous Wurlitzer tone in jazz. Standard tremolo at 5.5 Hz, warm but present, moderate drive. The instrument that defined the soul-jazz era.",
+  "tags": ["wurlitzer", "zawinul", "jazz", "soul-jazz", "mercy-mercy-mercy", "prism"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.42,
+      "oddf_brightness": 3500.0,
+      "oddf_tremRate": 5.5,
+      "oddf_tremDepth": 0.52,
+      "oddf_attack": 0.005,
+      "oddf_decay": 1.0,
+      "oddf_sustain": 0.55,
+      "oddf_release": 0.5,
+      "oddf_filterEnvAmt": 0.4,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2.0,
+      "oddf_macroCharacter": 0.42,
+      "oddf_macroMovement": 0.55,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.5,
+      "oddf_lfo1Rate": 0.06,
+      "oddf_lfo1Depth": 0.07,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 0.4,
+      "oddf_lfo2Depth": 0.06,
+      "oddf_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

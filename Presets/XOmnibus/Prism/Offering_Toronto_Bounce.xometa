@@ -1,10 +1,27 @@
 {
   "name": "Toronto Bounce",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["Toronto", "bounce", "sidechain", "danceable", "bright"],
-  "macros": {"M1": 0.25, "M2": 0.5, "M3": 0.0, "M4": 0.2},
-  "dna": {"brightness": 0.7, "warmth": 0.5, "movement": 0.75, "density": 0.72, "space": 0.55, "aggression": 0.6},
+  "tags": [
+    "Toronto",
+    "bounce",
+    "sidechain",
+    "danceable",
+    "bright"
+  ],
+  "macros": {
+    "M1": 0.25,
+    "M2": 0.5,
+    "M3": 0.0,
+    "M4": 0.2
+  },
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.5,
+    "movement": 0.75,
+    "density": 0.72,
+    "space": 0.55,
+    "aggression": 0.6
+  },
   "parameters": {
     "ofr_transientSnap": 0.7,
     "ofr_transientPitch": 0.45,
@@ -26,5 +43,10 @@
     "ofr_v0_body": 0.72,
     "ofr_v3_decay": 0.48,
     "ofr_v3_level": 0.88
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -1,10 +1,27 @@
 {
   "name": "Entangled Clock",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["rhythmic entanglement", "coupling", "NY", "precise", "interlocked"],
-  "macros": {"M1": 0.6, "M2": 0.25, "M3": 0.78, "M4": 0.08},
-  "dna": {"brightness": 0.55, "warmth": 0.45, "movement": 0.7, "density": 0.78, "space": 0.5, "aggression": 0.55},
+  "tags": [
+    "rhythmic entanglement",
+    "coupling",
+    "NY",
+    "precise",
+    "interlocked"
+  ],
+  "macros": {
+    "M1": 0.6,
+    "M2": 0.25,
+    "M3": 0.78,
+    "M4": 0.08
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.7,
+    "density": 0.78,
+    "space": 0.5,
+    "aggression": 0.55
+  },
   "parameters": {
     "ofr_flipLayers": 2,
     "ofr_flipChop": 0.55,
@@ -26,5 +43,10 @@
     "ofr_v1_decay": 0.22,
     "ofr_v4_decay": 0.22,
     "ofr_masterWidth": 0.65
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

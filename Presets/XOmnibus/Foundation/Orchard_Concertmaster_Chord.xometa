@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Detune=20 cents, ensembleWidth=0.95. Four voices, four oscillators each, maximally spread. At full polyphony: 16 oscillators, 20-cent total detune spread across the stereo field. The widest orchestral string in the fleet.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.5,
+    "density": 0.9,
+    "movement": 0.3,
+    "space": 0.95,
+    "warmth": 0.6
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Concertmaster Chord",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.18,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.5,
+      "orch_cutoff": 5000.0,
+      "orch_decay": 0.8,
+      "orch_detune": 20.0,
+      "orch_ensembleWidth": 0.95,
+      "orch_filterEnvAmt": 0.28,
+      "orch_formant": 0.45,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 25.0,
+      "orch_lfo1Depth": 0.12,
+      "orch_lfo1Rate": 0.5,
+      "orch_lfo1Shape": 0,
+      "orch_lfo2Depth": 0.0,
+      "orch_lfo2Rate": 1.0,
+      "orch_lfo2Shape": 0,
+      "orch_release": 1.8,
+      "orch_resonance": 0.15,
+      "orch_season": 1,
+      "orch_sustain": 0.88,
+      "orch_vibratoDepth": 0.24,
+      "orch_vibratoRate": 5.5,
+      "orch_warmth": 0.6
+    }
+  },
+  "tags": ["Garden", "Strings", "Orchestral", "Wide"],
+  "version": "1.0"
+}

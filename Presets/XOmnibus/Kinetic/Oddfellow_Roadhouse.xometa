@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Roadhouse Grit",
+  "mood": "Kinetic",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wurlitzer in a roadhouse context. Very high drive, very fast deep tremolo, LFO drive modulation. No deference. The Wurlitzer as a rock instrument.",
+  "tags": ["wurlitzer", "roadhouse", "rock", "driven", "fast-tremolo", "kinetic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.35,
+    "movement": 0.92,
+    "density": 0.5,
+    "space": 0.42,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.35,
+      "oddf_drive": 0.82,
+      "oddf_brightness": 5500.0,
+      "oddf_tremRate": 8.5,
+      "oddf_tremDepth": 0.72,
+      "oddf_attack": 0.003,
+      "oddf_decay": 0.9,
+      "oddf_sustain": 0.45,
+      "oddf_release": 0.4,
+      "oddf_filterEnvAmt": 0.62,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2.0,
+      "oddf_macroCharacter": 0.65,
+      "oddf_macroMovement": 0.95,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.45,
+      "oddf_lfo1Rate": 0.4,
+      "oddf_lfo1Depth": 0.18,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 3.5,
+      "oddf_lfo2Depth": 0.25,
+      "oddf_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

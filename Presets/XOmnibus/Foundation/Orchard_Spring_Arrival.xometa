@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Manual Spring (season=0). High brightness (0.6), high cutoff (7000 Hz). The orchard in its fresh new state — not yet warm, slightly thin, energetic. Bright orchestral strings that don't need warmup time.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.7,
+    "density": 0.55,
+    "movement": 0.2,
+    "space": 0.65,
+    "warmth": 0.35
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Spring Arrival",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.12,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.6,
+      "orch_cutoff": 7000.0,
+      "orch_decay": 0.7,
+      "orch_detune": 8.0,
+      "orch_ensembleWidth": 0.72,
+      "orch_filterEnvAmt": 0.28,
+      "orch_formant": 0.4,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 25.0,
+      "orch_lfo1Depth": 0.1,
+      "orch_lfo1Rate": 0.5,
+      "orch_lfo1Shape": 0,
+      "orch_lfo2Depth": 0.0,
+      "orch_lfo2Rate": 1.0,
+      "orch_lfo2Shape": 0,
+      "orch_release": 1.2,
+      "orch_resonance": 0.15,
+      "orch_season": 0,
+      "orch_sustain": 0.85,
+      "orch_vibratoDepth": 0.2,
+      "orch_vibratoRate": 5.5,
+      "orch_warmth": 0.4
+    }
+  },
+  "tags": ["Garden", "Strings", "Orchestral", "Spring"],
+  "version": "1.0"
+}

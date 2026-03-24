@@ -1,0 +1,46 @@
+{
+  "name": "Late Reduction",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Nearly concentrated \u2014 only the fundamentals and their first shadows remain. Maillard saturation clearly audible, umami bed rising.",
+  "mood": "Crystalline",
+  "tags": [
+    "pad",
+    "dark",
+    "reduction",
+    "warm",
+    "drone"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.5,
+    "SPACE": 0.36
+  },
+  "dna": {
+    "warmth": 0.82,
+    "complexity": 0.4,
+    "movement": 0.15,
+    "brightness": 0.25,
+    "aggression": 0.18
+  },
+  "params": {
+    "worn_reductionRate": 0.5,
+    "worn_heat": 0.5,
+    "worn_richness": 0.6,
+    "worn_maillard": 0.55,
+    "worn_umamiDepth": 0.72,
+    "worn_sessionTarget": 30.0,
+    "worn_filterCutoff": 3600.0,
+    "worn_filterRes": 0.2,
+    "worn_ampAttack": 1.0,
+    "worn_ampSustain": 0.82,
+    "worn_ampRelease": 7.0,
+    "worn_lfo1Rate": 0.05,
+    "worn_lfo1Depth": 0.14,
+    "worn_stereoWidth": 0.36,
+    "worn_level": 0.84
+  }
+}

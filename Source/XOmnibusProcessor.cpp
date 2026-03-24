@@ -75,6 +75,7 @@
 #include "Engines/Onkolo/OnkoloEngine.h"
 #include "Engines/Opcode/OpcodeEngine.h"
 #include "Engines/Osmosis/OsmosisEngine.h"
+#include "Engines/Oxytocin/OxytocinAdapter.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -400,6 +401,11 @@ static bool registered_Osmosis = xomnibus::EngineRegistry::instance().registerEn
     "Osmosis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OsmosisEngine>();
     });
+// OXYTOCIN — circuit-modeling love-triangle synth, Engine #48 (Synapse Violet)
+static bool registered_Oxytocin = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oxytocin", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OxytocinAdapter>();
+    });
 
 namespace xomnibus {
 
@@ -591,28 +597,31 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OddfellowEngine::addParameters(params);
     OnkoloEngine::addParameters(params);
     OpcodeEngine::addParameters(params);
+    // OXYTOCIN — circuit-modeling love-triangle synth (Engine #48)
+    OxytocinAdapter::addParameters(params);
 
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.
     // These are ephemeral live-performance controls that overlay preset coupling.
     // See Docs/specs/coupling_performance_spec.md §2.2.
     {
-        // CouplingType enum labels (0–13) — must match CouplingType order in SynthEngine.h
+        // CouplingType enum labels (0–14) — must match CouplingType order in SynthEngine.h
         const juce::StringArray couplingTypeLabels {
-            "AmpToFilter",      // 0
-            "AmpToPitch",       // 1
-            "LFOToPitch",       // 2
-            "EnvToMorph",       // 3
-            "AudioToFM",        // 4
-            "AudioToRing",      // 5
-            "FilterToFilter",   // 6
-            "AmpToChoke",       // 7
-            "RhythmToBlend",    // 8
-            "EnvToDecay",       // 9
-            "PitchToPitch",     // 10
-            "AudioToWavetable", // 11
-            "AudioToBuffer",    // 12
-            "KnotTopology"      // 13
+            "AmpToFilter",       // 0
+            "AmpToPitch",        // 1
+            "LFOToPitch",        // 2
+            "EnvToMorph",        // 3
+            "AudioToFM",         // 4
+            "AudioToRing",       // 5
+            "FilterToFilter",    // 6
+            "AmpToChoke",        // 7
+            "RhythmToBlend",     // 8
+            "EnvToDecay",        // 9
+            "PitchToPitch",      // 10
+            "AudioToWavetable",  // 11
+            "AudioToBuffer",     // 12
+            "KnotTopology",      // 13
+            "TriangularCoupling" // 14 — XOxytocin love-triangle state transfer
         };
 
         const juce::StringArray slotLabels { "Slot 1", "Slot 2", "Slot 3", "Slot 4" };

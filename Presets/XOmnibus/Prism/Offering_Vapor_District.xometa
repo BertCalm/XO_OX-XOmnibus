@@ -1,10 +1,27 @@
 {
   "name": "Vapor District",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["Detroit", "LA", "blended", "lo-fi", "saturated"],
-  "macros": {"M1": 0.15, "M2": 0.65, "M3": 0.25, "M4": 0.3},
-  "dna": {"brightness": 0.55, "warmth": 0.7, "movement": 0.5, "density": 0.8, "space": 0.4, "aggression": 0.65},
+  "tags": [
+    "Detroit",
+    "LA",
+    "blended",
+    "lo-fi",
+    "saturated"
+  ],
+  "macros": {
+    "M1": 0.15,
+    "M2": 0.65,
+    "M3": 0.25,
+    "M4": 0.3
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.8,
+    "space": 0.4,
+    "aggression": 0.65
+  },
   "parameters": {
     "ofr_transientSnap": 0.62,
     "ofr_transientSat": 0.25,
@@ -26,5 +43,10 @@
     "ofr_v0_decay": 0.42,
     "ofr_v0_body": 0.78,
     "ofr_v1_decay": 0.27
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 bowed arco upright bass. Sustained orchestral quality, slow bow catch, LFO vibrato.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.9,
+    "movement": 0.38,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Arco Anchor",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 1,
+      "oaken_bowPressure": 0.7,
+      "oaken_stringTension": 0.3,
+      "oaken_bodyDepth": 0.7,
+      "oaken_woodAge": 0.8,
+      "oaken_room": 0.5,
+      "oaken_brightness": 2800.0,
+      "oaken_damping": 0.12,
+      "oaken_curingRate": 0.5,
+      "oaken_filterEnvAmount": 0.15,
+      "oaken_attack": 0.04,
+      "oaken_decay": 3.0,
+      "oaken_sustain": 0.85,
+      "oaken_release": 1.2,
+      "oaken_gravity": 0.5,
+      "oaken_glide": 0.0,
+      "oaken_lfo1Rate": 0.1,
+      "oaken_lfo1Depth": 0.06,
+      "oaken_lfo2Rate": 0.08,
+      "oaken_lfo2Depth": 0.04,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "acoustic",
+    "bow",
+    "cinematic",
+    "ambient"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

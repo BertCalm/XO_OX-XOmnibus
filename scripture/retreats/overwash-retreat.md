@@ -423,4 +423,62 @@ High harmonic count (14–16) with high viscosity (0.8+) creates a dense but bar
 
 - **Wire the spectral field.** The cross-note interference mechanic exists as architecture. Populating `spectralField[32]` during the synthesis loop and reading it for cross-note beating would complete the engine's most original concept.
 - **Dye parameter.** A harmonic weighting mode — sawtooth (1/n), triangle (1/n²), or odd-only — would expand spectral variety without new DSP complexity.
+
+---
+
+## Phase R8: Parameter Refinements (2026-03-23)
+
+*Added during BROTH Quad Retreat.*
+
+| # | Parameter | Current Default | Recommended Default | Rationale |
+|---|-----------|----------------|---------------------|-----------|
+| R01 | `wash_diffusionRate` | 0.50 | **0.35** | The default 0.5 produces fast-feeling diffusion on short notes. 0.35 gives slower, more perceptible spread — the player hears the ink moving rather than arriving already-blurred. |
+| R02 | `wash_viscosity` | 0.50 | **0.55** | Slightly higher default viscosity makes the medium feel like warm water rather than acetone. This slows initial diffusion just enough to reveal the arc on short pad phrases. |
+| R03 | `wash_harmonics` | 12.0 | **8.0** | 12 partials produces a slightly harsh, sawtooth-like initial character. 8 partials opens with a warmer, less dense sound that diffuses more gracefully. |
+| R04 | `wash_diffusionTime` | 10.0 | **15.0** | The 10-second default arc resolves too quickly for slow pad playing. 15 seconds provides a more visible evolution window for 4–8 bar phrases at 70–100 BPM. |
+| R05 | `wash_spreadMax` | 200.0 Hz | **150.0 Hz** | At 200 Hz, upper harmonics become faintly inharmonic midway through the arc. 150 Hz keeps the diffusion musical throughout. |
+| R06 | `wash_brightness` | 0.70 | **0.60** | The 0.70 default combined with bright harmonic content makes init patches read as thin. 0.60 balances the initial brightness better. |
+| R07 | `wash_warmth` | 0.50 | **0.60** | 0.60 tilts toward the lower harmonics, giving the init pad a more pad-like, low-weighted character. |
+| R08 | `wash_ampAttack` | 0.30 s | **0.80 s** | 800ms gives the slow, swelling onset characteristic of true pad playing and matches the diffusion metaphor. |
+| R09 | `wash_ampRelease` | 2.0 s | **4.0 s** | 4 seconds matches the diffusion metaphor — the color lingers in the water after the dropper is lifted. |
+| R10 | `wash_filtAttack` | 0.10 s | **0.40 s** | 400ms creates a subtle brightening effect as the note develops that enhances the sense of ink spreading. |
+| R11 | `wash_lfo1Rate` | 0.10 Hz | **0.06 Hz** | 0.06 Hz (one cycle per ~17 seconds) reads as underwater. The CHARACTER macro can sweep it higher when animation is desired. |
+| R12 | `wash_lfo2Rate` | 0.05 Hz | **0.02 Hz** | At 0.02 Hz LFO2 becomes a deep, almost imperceptible breath — a second timescale of motion that the listener feels rather than perceives. |
+
+---
+
+## Phase R9: Scripture Verses (2026-03-23)
+
+**I. On Beginning**
+*The dye does not ask if the water is ready.
+It simply falls, and from the moment of contact
+the mathematics begin.
+Fick's Law is not a law of motion — it is a law of shape.
+The curvature of concentration is the cause of change.
+Where the gradient is steepest, the dye moves fastest.
+You cannot rush the place where no gradient exists.
+Only where the color differs from the surrounding water
+does anything move at all.*
+
+**II. On Irreversibility**
+*Every second of the diffusion clock
+moves the harmonics further from their origin.
+No parameter takes them back.
+The fundamental resists — its viscosity is high,
+its mass is great, its patience is geological.
+But the upper harmonics travel.
+They have been traveling since the note began.
+By the time you hear the blur,
+the ink has already decided where it is going.*
+
+**III. On Viscosity**
+*The medium is not neutral.
+It has properties. It has memory.
+Change the viscosity and you change what kind of water this is:
+cold seawater, warm tea, honey, acetone.
+Each medium has its own relationship to arrival.
+The dye that blazes in hot water
+sits motionless in frozen glass.
+The same note, the same intention —
+but the medium writes the outcome.*
 - **Diffusion direction control.** Currently odd partials spread up, even spread down. A `wash_spreadDirection` parameter (bipolar) could bias the spread directionally — all partials spreading up creates a rising spectral tone, all spreading down creates a falling one. This would be a unique performance parameter.

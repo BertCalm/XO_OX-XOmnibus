@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Broken Record",
+  "author": "XO_OX Designs",
+  "mood": "Flux",
+  "tags": [
+    "obsessive",
+    "repetition",
+    "loop",
+    "aged circuit",
+    "self-oscillation"
+  ],
+  "dna": {
+    "brightness": 0.744,
+    "warmth": 0.362,
+    "movement": 0.174,
+    "density": 0.145,
+    "space": 0.525,
+    "aggression": 0.385
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.1,
+      "oxy_passion": 0.12,
+      "oxy_commitment": 0.95,
+      "oxy_warmth_rate": 6.0,
+      "oxy_passion_rate": 0.01,
+      "oxy_commit_rate": 0.07,
+      "oxy_entanglement": 0.22,
+      "oxy_circuit_age": 0.85,
+      "oxy_circuit_noise": 0.2,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 2.0,
+      "oxy_topology": 2,
+      "oxy_topology_lock": 8,
+      "oxy_feedback": 0.82,
+      "oxy_cutoff": 2400,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.04,
+      "oxy_decay": 1.8,
+      "oxy_sustain": 0.82,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.021,
+      "oxy_lfo_depth": 0.05,
+      "oxy_lfo_shape": 3,
+      "oxy_lfo2_rate": 0.011,
+      "oxy_lfo2_depth": 0.025,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

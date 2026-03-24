@@ -31,6 +31,13 @@ except ImportError:
           file=sys.stderr)
     sys.exit(1)
 
+# Optional: xpn_auto_dna for per-sample 6D DNA (enables Sonic DNA Velocity Sculpting)
+try:
+    from xpn_auto_dna import compute_dna as _compute_dna
+    _DNA_AVAILABLE = True
+except ImportError:
+    _DNA_AVAILABLE = False
+
 
 # ---------------------------------------------------------------------------
 # Velocity curve definitions
@@ -63,6 +70,42 @@ VELOCITY_CURVES = {
 #   -1.0 (Oscar/dark)   → low filter sensitivity (e.g. 10)
 FILTER_SENSITIVITY_BASE = 55     # neutral bias maps to this
 FILTER_SENSITIVITY_RANGE = 45    # ± this many units from base
+
+
+def dna_to_velocity_curve(dna: dict, instrument_type: str, n_layers: int = 4) -> list:
+    """Morph base velocity curve using 6D Sonic DNA.
+
+    Legend Feature #1 — velocity curves shaped by the actual sonic character
+    of each sample, not just its instrument category.
+
+    Dark+warm sounds: compress lower layers, expand upper (hit harder to open up)
+    Bright+aggressive sounds: expand lower layers (already present at soft hits)
+
+    Args:
+        dna: 6D Sonic DNA dict with keys brightness, warmth, aggression, etc.
+        instrument_type: instrument category string (kick/snare/hihat etc.)
+        n_layers: number of velocity layers in the XPM instrument (default 4)
+
+    Returns:
+        List of VelStart boundary values, length == n_layers, same contract as
+        VELOCITY_CURVES entries.  First element is always 0, last always 127.
+    """
+    base = VELOCITY_CURVES.get(instrument_type, VELOCITY_CURVES.get("unknown", [0, 32, 64, 96, 127]))
+    brightness = dna.get("brightness", 0.5)
+    aggression = dna.get("aggression", 0.5)
+    warmth = dna.get("warmth", 0.5)
+
+    # Compression factor: positive = compress lower layers (need to hit harder)
+    compression = (1.0 - brightness) * 0.4 + warmth * 0.2 - aggression * 0.3
+    compression = max(-0.5, min(0.5, compression))
+
+    # Shift midpoint layers by compression factor
+    shifted = [base[0]]
+    for i in range(1, len(base) - 1):
+        offset = int(compression * (64 - base[i]) * 0.5)
+        shifted.append(max(1, min(126, base[i] + offset)))
+    shifted.append(base[-1])
+    return shifted
 
 
 def bias_to_velocity_filter(bias: float) -> int:
@@ -251,20 +294,25 @@ def process_xpm(xpm_path: str, stems_dir: str, output_path: str):
     print(f"  Output: {output_path}")
     print(f"{'─'*72}\n")
 
+    dna_mode = "DNA" if _DNA_AVAILABLE else "static"
+    print(f"  Velocity sculpting: {dna_mode}")
+    print()
+
     # Column header
-    print(f"  {'#':<4} {'File':<30} {'Category':<14} {'Conf':>5}  {'Curve':<10} {'Filter':>6}")
-    print(f"  {'─'*4} {'─'*30} {'─'*14} {'─'*5}  {'─'*10} {'─'*6}")
+    print(f"  {'#':<4} {'File':<30} {'Category':<14} {'Conf':>5}  {'Curve':<10} {'Filter':>6} {'DNA':>5}")
+    print(f"  {'─'*4} {'─'*30} {'─'*14} {'─'*5}  {'─'*10} {'─'*6} {'─'*5}")
 
     for idx, instrument in enumerate(instruments):
         wav_ref = get_instrument_wav(instrument)
         if not wav_ref:
-            print(f"  {idx+1:<4} {'(no SampleFile)':<30} {'—':<14} {'—':>5}  {'—':<10} {'—':>6}")
+            print(f"  {idx+1:<4} {'(no SampleFile)':<30} {'—':<14} {'—':>5}  {'—':<10} {'—':>6} {'—':>5}")
             continue
 
         wav_path = find_wav_in_stems(stems_dir, wav_ref)
 
+        sample_dna: Optional[dict] = None
         if not wav_path:
-            print(f"  {idx+1:<4} {os.path.basename(wav_ref):<30} {'NOT FOUND':<14} {'—':>5}  {'default':<10} {'55':>6}")
+            print(f"  {idx+1:<4} {os.path.basename(wav_ref):<30} {'NOT FOUND':<14} {'—':>5}  {'default':<10} {'55':>6} {'—':>5}")
             category = "unknown"
             confidence = 0.0
             bias = 0.0
@@ -274,9 +322,21 @@ def process_xpm(xpm_path: str, stems_dir: str, output_path: str):
             confidence = result.get("confidence", 0.0)
             bias = result.get("feliX_oscar_bias", 0.0)
 
+            # Legend Feature #1: compute per-sample 6D Sonic DNA for velocity sculpting
+            if _DNA_AVAILABLE:
+                try:
+                    sample_dna = _compute_dna(wav_path)
+                except Exception:
+                    sample_dna = None
+
         # Resolve curve key (collapse aliases)
         curve_key = category if category in VELOCITY_CURVES else "unknown"
-        target_curve = VELOCITY_CURVES[curve_key]
+
+        # Use DNA-morphed curve when DNA is available; fall back to static lookup
+        if sample_dna is not None:
+            target_curve = dna_to_velocity_curve(sample_dna, curve_key)
+        else:
+            target_curve = VELOCITY_CURVES[curve_key]
 
         # Get active layers
         layers = get_instrument_layers(instrument)
@@ -301,7 +361,8 @@ def process_xpm(xpm_path: str, stems_dir: str, output_path: str):
         if len(short_name) > 29:
             short_name = short_name[:26] + "..."
         curve_label = curve_key if n_layers > 0 else "no layers"
-        print(f"  {idx+1:<4} {short_name:<30} {category:<14} {confidence:>4.0%}  {curve_label:<10} {filter_val:>6}")
+        dna_tag = "yes" if sample_dna is not None else "no"
+        print(f"  {idx+1:<4} {short_name:<30} {category:<14} {confidence:>4.0%}  {curve_label:<10} {filter_val:>6} {dna_tag:>5}")
 
     print(f"\n{'─'*72}")
 

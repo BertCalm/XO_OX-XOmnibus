@@ -1,0 +1,251 @@
+#!/usr/bin/env python3
+"""Cross-Pack Loudness Ledger — records LUFS, true peak, crest factor per sample.
+
+Phase 1: Data recording only. Each render populates the ledger.
+Phase 2 (future): Use accumulated data to compute crest-compensated
+normalization targets for perceptual loudness matching across all packs.
+
+The legend: "Every XO_OX pack sits at exactly the same perceived volume."
+"""
+
+import json
+import math
+import struct
+from pathlib import Path
+from datetime import datetime
+
+LEDGER_PATH = Path(__file__).parent / "loudness_ledger.json"
+
+
+def load_ledger():
+    """Load the persistent loudness ledger."""
+    if LEDGER_PATH.exists():
+        try:
+            return json.loads(LEDGER_PATH.read_text())
+        except json.JSONDecodeError:
+            return {"packs": {}, "meta": {"created": datetime.now().isoformat()}}
+    return {"packs": {}, "meta": {"created": datetime.now().isoformat()}}
+
+
+def save_ledger(ledger):
+    """Save the ledger back to disk."""
+    ledger["meta"]["last_updated"] = datetime.now().isoformat()
+    ledger["meta"]["total_samples"] = sum(
+        len(samples) for samples in ledger["packs"].values()
+    )
+    LEDGER_PATH.write_text(json.dumps(ledger, indent=2))
+
+
+def record_sample(pack_name, sample_name, lufs, true_peak, crest_factor,
+                  category, engine=None):
+    """Record a sample's loudness data after normalization."""
+    ledger = load_ledger()
+    if pack_name not in ledger["packs"]:
+        ledger["packs"][pack_name] = {}
+    ledger["packs"][pack_name][sample_name] = {
+        "lufs": round(lufs, 2),
+        "true_peak": round(true_peak, 2),
+        "crest": round(crest_factor, 2),
+        "category": category,
+        "engine": engine,
+        "recorded": datetime.now().isoformat(),
+    }
+    save_ledger(ledger)
+
+
+def get_fleet_stats():
+    """Get aggregate loudness statistics across all packs."""
+    ledger = load_ledger()
+    all_samples = []
+    for pack_samples in ledger["packs"].values():
+        all_samples.extend(pack_samples.values())
+    if not all_samples:
+        return None
+    return {
+        "total_samples": len(all_samples),
+        "total_packs": len(ledger["packs"]),
+        "avg_lufs": sum(s["lufs"] for s in all_samples) / len(all_samples),
+        "avg_crest": sum(s["crest"] for s in all_samples) / len(all_samples),
+        "max_peak": max(s["true_peak"] for s in all_samples),
+        "by_category": _stats_by_field(all_samples, "category"),
+        "by_engine": _stats_by_field(all_samples, "engine"),
+    }
+
+
+def _stats_by_field(samples, field):
+    """Group stats by a field (category or engine)."""
+    groups = {}
+    for s in samples:
+        key = s.get(field, "unknown")
+        if key not in groups:
+            groups[key] = []
+        groups[key].append(s)
+    return {
+        k: {
+            "count": len(v),
+            "avg_lufs": round(sum(s["lufs"] for s in v) / len(v), 2),
+            "avg_crest": round(sum(s["crest"] for s in v) / len(v), 2),
+        }
+        for k, v in groups.items()
+    }
+
+
+def compute_compensated_target(base_lufs, crest_factor):
+    """Phase 2: Compute crest-compensated LUFS target.
+
+    High crest (transient) = feels quieter -> boost target
+    Low crest (sustained) = feels louder -> cut target
+    """
+    stats = get_fleet_stats()
+    if stats is None or stats["total_samples"] < 10:
+        return base_lufs  # Not enough data yet, use default
+
+    avg_crest = stats["avg_crest"]
+    delta = (crest_factor - avg_crest) * 0.5  # 0.5 dB per dB of crest deviation
+    return base_lufs + max(-2.0, min(2.0, delta))
+
+
+# ---------------------------------------------------------------------------
+# Pure-stdlib WAV loudness measurement (no numpy/scipy dependency)
+# ---------------------------------------------------------------------------
+
+def _decode_wav_samples(data: bytes, bps: int) -> list:
+    """Decode raw PCM bytes to float samples in [-1, 1]."""
+    bytes_per_sample = bps // 8
+    n_samples = len(data) // bytes_per_sample
+    if n_samples == 0:
+        return []
+
+    if bps == 16:
+        fmt = f"<{n_samples}h"
+        raw = struct.unpack(fmt, data[:n_samples * 2])
+        scale = 1.0 / 32768.0
+        return [s * scale for s in raw]
+    elif bps == 24:
+        samples = []
+        for i in range(0, n_samples * 3, 3):
+            b = data[i:i + 3]
+            if len(b) < 3:
+                break
+            val = b[0] | (b[1] << 8) | (b[2] << 16)
+            if val >= 0x800000:
+                val -= 0x1000000
+            samples.append(val / 8388608.0)
+        return samples
+    elif bps == 32:
+        fmt = f"<{n_samples}i"
+        raw = struct.unpack(fmt, data[:n_samples * 4])
+        scale = 1.0 / 2147483648.0
+        return [s * scale for s in raw]
+    elif bps == 8:
+        return [(b - 128) / 128.0 for b in data[:n_samples]]
+    return []
+
+
+def measure_wav(wav_path: Path) -> dict:
+    """Measure LUFS (RMS proxy), true peak, and crest factor for a WAV file.
+
+    Returns dict with keys: lufs, true_peak, crest_factor.
+    Returns None on read error or silence.
+
+    Notes:
+    - LUFS approximation: integrated RMS converted to dBFS. True ITU-R BS.1770
+      requires a K-weighting filter and gating — those require numpy. This is a
+      fast, dependency-free proxy suitable for cross-pack consistency tracking.
+    - True peak: per-sample max absolute value in dBFS (no inter-sample
+      oversampling). Accurate enough for ledger recording purposes.
+    - Crest factor: peak_dBFS - rms_dBFS (higher = more transient).
+    """
+    try:
+        import struct as _struct  # already imported at module level, belt+suspenders
+        with open(wav_path, "rb") as f:
+            riff = f.read(4)
+            if riff != b"RIFF":
+                return None
+            f.read(4)  # file size
+            wave = f.read(4)
+            if wave != b"WAVE":
+                return None
+
+            num_channels = sample_rate = bits_per_sample = 0
+            data_bytes = b""
+            fmt_found = False
+
+            while True:
+                chunk_id = f.read(4)
+                if len(chunk_id) < 4:
+                    break
+                chunk_size_bytes = f.read(4)
+                if len(chunk_size_bytes) < 4:
+                    break
+                chunk_size = struct.unpack("<I", chunk_size_bytes)[0]
+                if chunk_id == b"fmt ":
+                    fmt_data = f.read(chunk_size)
+                    audio_fmt = struct.unpack("<H", fmt_data[0:2])[0]
+                    if audio_fmt != 1:
+                        return None  # not PCM
+                    num_channels = struct.unpack("<H", fmt_data[2:4])[0]
+                    sample_rate = struct.unpack("<I", fmt_data[4:8])[0]
+                    bits_per_sample = struct.unpack("<H", fmt_data[14:16])[0]
+                    fmt_found = True
+                elif chunk_id == b"data":
+                    data_bytes = f.read(chunk_size)
+                else:
+                    f.read(chunk_size)
+                if chunk_size % 2 != 0:
+                    f.read(1)
+
+        if not fmt_found or not data_bytes:
+            return None
+
+    except (OSError, struct.error):
+        return None
+
+    samples = _decode_wav_samples(data_bytes, bits_per_sample)
+    if not samples:
+        return None
+
+    # RMS (LUFS proxy)
+    sum_sq = sum(s * s for s in samples)
+    rms = math.sqrt(sum_sq / len(samples))
+    if rms < 1e-10:
+        return None  # silence — skip
+
+    rms_db = 20.0 * math.log10(rms)
+
+    # True peak (per-sample, no inter-sample oversampling)
+    peak = max(abs(s) for s in samples)
+    if peak < 1e-10:
+        return None
+    peak_db = 20.0 * math.log10(peak)
+
+    # Crest factor
+    crest_factor = peak_db - rms_db
+
+    return {
+        "lufs": round(rms_db, 2),        # RMS proxy for LUFS
+        "true_peak": round(peak_db, 2),   # dBFS
+        "crest_factor": round(crest_factor, 2),  # dB
+    }
+
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "stats":
+        stats = get_fleet_stats()
+        if stats:
+            print("Fleet Loudness Stats:")
+            print(f"  Total samples: {stats['total_samples']}")
+            print(f"  Total packs: {stats['total_packs']}")
+            print(f"  Avg LUFS: {stats['avg_lufs']:.1f}")
+            print(f"  Avg Crest: {stats['avg_crest']:.1f} dB")
+            print(f"  Max True Peak: {stats['max_peak']:.1f} dBTP")
+            print("\n  By Category:")
+            for cat, data in stats["by_category"].items():
+                print(f"    {cat}: {data['count']} samples, "
+                      f"avg {data['avg_lufs']:.1f} LUFS, "
+                      f"crest {data['avg_crest']:.1f} dB")
+        else:
+            print("No data in ledger yet. Run some exports first.")
+    else:
+        print("Usage: python3 xpn_loudness_ledger.py stats")

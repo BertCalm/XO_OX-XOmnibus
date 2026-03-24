@@ -1,10 +1,27 @@
 {
   "name": "Borrowed Pulse",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["coupling", "borrowed rhythm", "New York", "intricate", "intertwined"],
-  "macros": {"M1": 0.75, "M2": 0.2, "M3": 0.8, "M4": 0.25},
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.72, "density": 0.78, "space": 0.45, "aggression": 0.55},
+  "tags": [
+    "coupling",
+    "borrowed rhythm",
+    "New York",
+    "intricate",
+    "intertwined"
+  ],
+  "macros": {
+    "M1": 0.75,
+    "M2": 0.2,
+    "M3": 0.8,
+    "M4": 0.25
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.72,
+    "density": 0.78,
+    "space": 0.45,
+    "aggression": 0.55
+  },
   "parameters": {
     "ofr_flipLayers": 2,
     "ofr_flipChop": 0.65,
@@ -25,5 +42,10 @@
     "ofr_v0_body": 0.78,
     "ofr_v1_decay": 0.2,
     "ofr_masterWidth": 0.68
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

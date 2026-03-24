@@ -1,10 +1,27 @@
 {
   "name": "Mantis Strike",
-  "engine": "Offering",
   "mood": "Foundation",
-  "tags": ["transient", "punch", "dry", "velocity sensitive", "attack"],
-  "macros": {"M1": 0.0, "M2": 0.0, "M3": 0.0, "M4": 0.0},
-  "dna": {"brightness": 0.6, "warmth": 0.2, "movement": 0.2, "density": 0.8, "space": 0.2, "aggression": 1.0},
+  "tags": [
+    "transient",
+    "punch",
+    "dry",
+    "velocity sensitive",
+    "attack"
+  ],
+  "macros": {
+    "M1": 0.0,
+    "M2": 0.0,
+    "M3": 0.0,
+    "M4": 0.0
+  },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.2,
+    "movement": 0.2,
+    "density": 0.8,
+    "space": 0.2,
+    "aggression": 1.0
+  },
   "parameters": {
     "ofr_transientSnap": 0.85,
     "ofr_transientPitch": 0.55,
@@ -26,5 +43,10 @@
     "ofr_v1_decay": 0.18,
     "ofr_v1_body": 0.3,
     "ofr_v2_decay": 0.04
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

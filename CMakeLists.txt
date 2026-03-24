@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(XOmnibus VERSION 0.1.0 LANGUAGES C CXX)
+project(XOmnibus VERSION 1.0.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -258,6 +258,19 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Opera/OperaEngine.h
     Source/Engines/Opera/OperaAdapter.h
     Source/Engines/Opera/OperaAdapter.cpp
+
+    # Love Triangle Circuit Synth — Engine #48
+    Source/Engines/Oxytocin/OxytocinParamSnapshot.h
+    Source/Engines/Oxytocin/OxytocinMemory.h
+    Source/Engines/Oxytocin/OxytocinTriangle.h
+    Source/Engines/Oxytocin/OxytocinLoveEnvelope.h
+    Source/Engines/Oxytocin/OxytocinThermal.h
+    Source/Engines/Oxytocin/OxytocinDrive.h
+    Source/Engines/Oxytocin/OxytocinReactive.h
+    Source/Engines/Oxytocin/OxytocinVoice.h
+    Source/Engines/Oxytocin/OxytocinEngine.h
+    Source/Engines/Oxytocin/OxytocinAdapter.h
+    Source/Engines/Oxytocin/OxytocinAdapter.cpp
 
     # Singularity Collection FX
     Source/DSP/Effects/fXObscura.h

@@ -1,10 +1,27 @@
 {
   "name": "Parallel Universe",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["LA", "parallel compression", "punchy", "evolving", "dynamic"],
-  "macros": {"M1": 0.45, "M2": 0.5, "M3": 0.15, "M4": 0.0},
-  "dna": {"brightness": 0.6, "warmth": 0.45, "movement": 0.72, "density": 0.65, "space": 0.55, "aggression": 0.65},
+  "tags": [
+    "LA",
+    "parallel compression",
+    "punchy",
+    "evolving",
+    "dynamic"
+  ],
+  "macros": {
+    "M1": 0.45,
+    "M2": 0.5,
+    "M3": 0.15,
+    "M4": 0.0
+  },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.65
+  },
   "parameters": {
     "ofr_transientSnap": 0.8,
     "ofr_transientSat": 0.2,
@@ -24,5 +41,10 @@
     "ofr_v1_decay": 0.2,
     "ofr_v1_body": 0.65,
     "ofr_masterWidth": 0.7
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

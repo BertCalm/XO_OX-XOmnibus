@@ -1,0 +1,47 @@
+{
+  "name": "Flash Freeze",
+  "engines": [
+    "Overcast"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Instant mode \u2014 no transition, just crystal. High lattice snap produces very clean, tonally pure crystals. An organ stop locked in place.",
+  "mood": "Crystalline",
+  "tags": [
+    "pad",
+    "crystalline",
+    "frozen",
+    "bright"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.5,
+    "SPACE": 0.65
+  },
+  "dna": {
+    "warmth": 0.25,
+    "complexity": 0.5,
+    "movement": 0.02,
+    "brightness": 0.65,
+    "aggression": 0.05
+  },
+  "params": {
+    "cast_freezeRate": 0.02,
+    "cast_crystalSize": 0.5,
+    "cast_numPeaks": 8,
+    "cast_transition": 0,
+    "cast_latticeSnap": 0.6,
+    "cast_purity": 0.55,
+    "cast_crackle": 0.1,
+    "cast_stereoWidth": 0.65,
+    "cast_filterCutoff": 7000.0,
+    "cast_filterRes": 0.14,
+    "cast_ampAttack": 0.001,
+    "cast_ampDecay": 0.2,
+    "cast_ampSustain": 1.0,
+    "cast_ampRelease": 2.5,
+    "cast_lfo1Rate": 0.12,
+    "cast_lfo1Depth": 0.08,
+    "cast_level": 0.8
+  }
+}

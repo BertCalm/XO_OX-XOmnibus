@@ -1,10 +1,27 @@
 {
   "name": "Astral Crate",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["transcendent", "long tail", "detuned", "Bay Area", "meditative"],
-  "macros": {"M1": 0.72, "M2": 0.0, "M3": 0.2, "M4": 0.2},
-  "dna": {"brightness": 0.45, "warmth": 0.45, "movement": 0.6, "density": 0.4, "space": 0.98, "aggression": 0.2},
+  "tags": [
+    "transcendent",
+    "long tail",
+    "detuned",
+    "Bay Area",
+    "meditative"
+  ],
+  "macros": {
+    "M1": 0.72,
+    "M2": 0.0,
+    "M3": 0.2,
+    "M4": 0.2
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.4,
+    "space": 0.98,
+    "aggression": 0.2
+  },
   "parameters": {
     "ofr_transientSnap": 0.48,
     "ofr_transientPitch": 0.22,
@@ -31,5 +48,10 @@
     "ofr_v3_decay": 1.2,
     "ofr_v6_decay": 0.9,
     "ofr_v6_tune": -9.0
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

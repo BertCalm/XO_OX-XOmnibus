@@ -424,3 +424,551 @@ The bark is the most important expressive parameter. At low velocity: the output
 *The migration concept — the instrument absorbing the SpectralFingerprint of coupled Kitchen engines — is the FUSION insight. The Rhodes traveled the Spice Route not just as a historical fact but as an ongoing process: every instrument it encountered changed it slightly. The parameter exists. When the migration coupling path is audited and verified, the instrument will complete its journey — a Rhodes that sounds different depending on what kitchen it is currently in.*
 
 *The Spice Route is not a metaphor. It is the signal path."*
+
+---
+
+# OASIS — Second Retreat
+*Guru Bin — 2026-03-23 | Expanding the library to 30 presets. Filling the Producers Guild critical gaps.*
+
+---
+
+## Phase R9: Parameter Refinements
+
+The first retreat established the ten core presets and the philosophy. Twelve refinements are now proposed after extended listening and genre testing.
+
+| # | Parameter | Current Default | Recommended Default | Reason |
+|---|-----------|-----------------|---------------------|--------|
+| 1 | `oasis_warmth` | 0.3 | 0.45 | 0.3 is too lean at init — feels bright and thin. 0.45 is the warm-but-present sweet spot that works in jazz, neo-soul, and pop contexts before the player touches CHARACTER. |
+| 2 | `oasis_bell` | 0.5 | 0.42 | 0.5 emphasizes the bell too much at neutral velocity. The stage-73 character at medium velocity wants the third partial present but not dominant. 0.42 is closer to the spectral measurement. |
+| 3 | `oasis_brightness` | 6000.0 | 5500.0 | 6000 Hz is slightly bright for the init patch — the Mk II Suitcase ran darker than the Stage. 5500 is the right warm-present default. |
+| 4 | `oasis_tremDepth` | 0.0 | 0.0 | Keep at zero — correct. The Rhodes tremolo is optional; init without tremolo is historically accurate (Stage 73 players often bypassed it). |
+| 5 | `oasis_decay` | 0.8 | 1.2 | 0.8s decay is slightly short — the tine should ring longer at medium velocity. 1.2s is more natural. High-velocity notes get a shorter effective decay from the bark, so 1.2 is still punchy when played hard. |
+| 6 | `oasis_sustain` | 0.6 | 0.55 | 0.6 is slightly high — sustained chord voicings accumulate density. 0.55 creates natural space between voices. |
+| 7 | `oasis_release` | 0.5 | 0.7 | 0.5s release is abrupt for jazz. 0.7s allows natural decay after key-off without excessive overlap. |
+| 8 | `oasis_filterEnvAmt` | 0.4 | 0.35 | 0.4 is slightly aggressive — velocity already drives warmth via the amp stage. 0.35 produces gentler velocity-to-brightness without competing with the bark. |
+| 9 | `oasis_stereoWidth` | 0.5 | 0.55 | Rhodes piano-position panning (low notes left, high notes right) benefits from slightly wider field. 0.55 gives the keyboard natural stereo spread without excess. |
+| 10 | `oasis_lfo1Rate` | 0.5 | 0.4 | 0.5 Hz is slightly fast for the init vibrato. 0.4 Hz is the subtler, below-the-threshold-of-obvious rate that keeps notes alive without announcing itself. |
+| 11 | `oasis_lfo1Depth` | 0.0 | 0.0 | Correct — keep at zero. Vibrato should be player-initiated via mod wheel. |
+| 12 | `oasis_lfo2Depth` | 0.0 | 0.0 | Correct — keep at zero for init. LFO2 targets filter, should be explicitly enabled per preset. |
+
+---
+
+## Phase R10: The Twenty Awakenings — Filling the Guild Gaps
+
+*Presets 11–30. Guild-identified critical gaps: McCoy Tyner jazz voicing, suitcase with heavy tremolo, clean HiFi Rhodes, lo-fi crinkly Rhodes, Herbie Hancock fusion, neo-soul warmth, reggae roots, contemporary R&B bright.*
+
+---
+
+### Preset 11: Afro Blue Voicing
+
+**Mood:** Foundation | **Guild gap:** Jazz voicing (McCoy Tyner style)
+
+McCoy Tyner's "Afro Blue" voicings are quartal — stacked fourths — played with moderate velocity, warm filter. The Rhodes under his hands was never bright; it was warm and fundamental-heavy with the bell present but not forward.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.72 | Very warm — Tyner played warm, not aggressive |
+| `oasis_bell` | 0.38 | Bell present but not dominant — warmth leads |
+| `oasis_brightness` | 4800.0 | Dark-warm — jazz Rhodes was always dark relative to pop |
+| `oasis_tremRate` | 4.0 | Slow-medium — not the suitcase pulse, a gentle movement |
+| `oasis_tremDepth` | 0.0 | No tremolo — Tyner on "Afro Blue" was dry, direct |
+| `oasis_attack` | 0.005 | Natural |
+| `oasis_decay` | 2.5 | Long — jazz chords ring, no choppy staccato |
+| `oasis_sustain` | 0.52 | |
+| `oasis_release` | 1.0 | Natural |
+| `oasis_filterEnvAmt` | 0.28 | Gentle velocity — jazz dynamics are subtle, not loud/soft binary |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.45 | Moderate — jazz was often mono or narrow |
+| `oasis_lfo1Rate` | 0.3 | |
+| `oasis_lfo1Depth` | 0.04 | Barely perceptible warm "breathe" |
+| `oasis_lfo2Rate` | 0.1 | |
+| `oasis_lfo2Depth` | 0.02 | |
+| `oasis_macroCharacter` | 0.45 | |
+| `oasis_macroMovement` | 0.0 | Player creates movement |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.5 | |
+
+**Why this works:** The quartal voicing style requires warmth to avoid stacking bell-tones into harshness. No tremolo because Tyner played dry. Long decay because jazz chords sustain. The gentle velocity shaping means the dynamic range is subtle — exactly correct for jazz comping where the player is supporting, not asserting.
+
+---
+
+### Preset 12: Heavy Suitcase
+
+**Mood:** Organic | **Guild gap:** Suitcase with heavy tremolo
+
+The Fender Rhodes Suitcase model had a built-in stereo power amplifier and the tremolo circuit was the defining feature. At full depth, the tremolo is genuinely dramatic — the amplitude pulses visibly. This preset is that Suitcase at full deployment.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.62 | Warm — suitcase was warmer than stage |
+| `oasis_bell` | 0.44 | Moderate bell |
+| `oasis_brightness` | 5200.0 | |
+| `oasis_tremRate` | 5.8 | Slightly above classic rate — heavy suitcase has urgency |
+| `oasis_tremDepth` | 0.82 | Very deep — the suitcase at full trem depth |
+| `oasis_attack` | 0.005 | |
+| `oasis_decay` | 1.8 | |
+| `oasis_sustain` | 0.55 | |
+| `oasis_release` | 0.85 | |
+| `oasis_filterEnvAmt` | 0.33 | |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.85 | Very wide — the suitcase stereo is the whole point |
+| `oasis_lfo1Rate` | 0.05 | |
+| `oasis_lfo1Depth` | 0.06 | |
+| `oasis_macroCharacter` | 0.4 | |
+| `oasis_macroMovement` | 0.7 | High movement — this preset is all about the pulse |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.7 | Wide space for the tremolo to live in |
+
+**Why this works:** 0.82 tremolo depth at 5.8 Hz with 0.85 stereo width creates the full suitcase experience. The amplitude pulses deeply — notes breathe in and out at nearly 6 times per second. Wide stereo means the left and right tremolo phases are offset, creating a spinning-speaker effect. This is the sound of Motown, of Stax, of every soul record with that pulsing electric piano.
+
+---
+
+### Preset 13: Clean HiFi Rhodes
+
+**Mood:** Crystalline | **Guild gap:** Clean HiFi Rhodes
+
+Not the vintage, compressed, worn recording — but the Rhodes as it actually sounds through a clean, modern amplifier at moderate volume. High fidelity, no saturation, the tine ring-out in full resolution.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.2 | Minimal warmth — let the tine speak without coloration |
+| `oasis_bell` | 0.55 | Bell slightly elevated — HiFi reveals the natural third partial |
+| `oasis_brightness` | 8500.0 | Very bright — HiFi exposes the full frequency range |
+| `oasis_tremRate` | 4.0 | |
+| `oasis_tremDepth` | 0.0 | No tremolo — clean means dry |
+| `oasis_attack` | 0.003 | Fast — the transient is clear at HiFi levels |
+| `oasis_decay` | 3.0 | Long — the tine rings fully |
+| `oasis_sustain` | 0.35 | Lower — the partials decay naturally |
+| `oasis_release` | 1.2 | Natural ring-out |
+| `oasis_filterEnvAmt` | 0.5 | Higher — HiFi shows velocity contrast |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.7 | Wider — HiFi benefits from full stereo spread |
+| `oasis_lfo1Rate` | 0.2 | |
+| `oasis_lfo1Depth` | 0.0 | Zero LFO |
+| `oasis_lfo2Rate` | 0.1 | |
+| `oasis_lfo2Depth` | 0.0 | |
+| `oasis_macroCharacter` | 0.1 | Minimal additional character — this preset IS the character |
+| `oasis_macroMovement` | 0.0 | |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.65 | |
+
+**Why this works:** Low warmth and high brightness with no tremolo or additional saturation reveals the tine's natural character. The HiFi Rhodes sounds different from the vintage recording: cleaner, brighter, with more obvious partial ring. The velocity-to-brightness at 0.5 means soft notes are warm and hard notes are crystalline.
+
+---
+
+### Preset 14: Lo-Fi Crinkle
+
+**Mood:** Organic | **Guild gap:** Lo-fi crinkly Rhodes
+
+The crinkle is a specific lo-fi artifact — not just dark and rolled-off but physically worn. The pickup is slightly microphonic. The tine has mechanical noise. The amp stage is saturating. The sound is degraded in a beautiful, specific way.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.85 | Maximum warmth — the amp is saturating |
+| `oasis_bell` | 0.2 | Minimal bell — the saturation masks the partial ring |
+| `oasis_brightness` | 2800.0 | Very dark — crinkle is about lost high-frequency content |
+| `oasis_tremRate` | 3.5 | Slightly irregular-feeling tremolo rate |
+| `oasis_tremDepth` | 0.55 | Moderate depth — worn suitcase tremolo |
+| `oasis_attack` | 0.02 | Slow — worn mechanism, rounded attack |
+| `oasis_decay` | 1.6 | Medium — the saturation shortens perceived sustain |
+| `oasis_sustain` | 0.58 | |
+| `oasis_release` | 1.4 | Slightly sticky — worn key mechanism |
+| `oasis_filterEnvAmt` | 0.15 | Very low — saturation compresses dynamics |
+| `oasis_migration` | 0.08 | Trace coupling — the warmth of a room |
+| `oasis_stereoWidth` | 0.25 | Narrow — worn recordings are nearly mono |
+| `oasis_lfo1Rate` | 0.05 | Very slow — analog tape drift |
+| `oasis_lfo1Depth` | 0.08 | Slight pitch drift |
+| `oasis_lfo2Rate` | 0.02 | |
+| `oasis_lfo2Depth` | 0.06 | Slow filter drift — crinkle means randomness |
+| `oasis_macroCharacter` | 0.7 | High character — this is the most character-forward preset |
+| `oasis_macroMovement` | 0.15 | |
+| `oasis_macroCoupling` | 0.08 | |
+| `oasis_macroSpace` | 0.35 | |
+
+**Why this works:** Maximum warmth drives the amp stage asymmetric clipper at low drive levels — not barking but saturating gently. Very dark brightness (2800 Hz) rolls off the high end completely. The crinkle is in the narrow stereo, slow pitch drift, and very low filterEnvAmt. Notes feel physically rounded and compressed — a piano that has been played for thirty years in a room with no air conditioning.
+
+---
+
+### Preset 15: Headhunters
+
+**Mood:** Flux | **Guild gap:** Herbie Hancock fusion
+
+"Chameleon" (1973). The Rhodes under Hancock's hands in that context was not gentle — it was aggressive, fast, with heavy bark, fast tremolo, and the characteristic FM-era brightness. This is the fusion Rhodes: demanding.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.55 | Medium — fusion requires presence over warmth |
+| `oasis_bell` | 0.62 | Bell elevated — the attack clarity is essential for fast playing |
+| `oasis_brightness` | 7500.0 | Bright — Hancock's Rhodes in this period cut through the band |
+| `oasis_tremRate` | 7.0 | Fast — the fusion tremolo was aggressive |
+| `oasis_tremDepth` | 0.65 | Deep pulse |
+| `oasis_attack` | 0.002 | Very fast — fusion playing is percussive |
+| `oasis_decay` | 1.3 | Shorter — the notes attack and move on |
+| `oasis_sustain` | 0.48 | |
+| `oasis_release` | 0.55 | |
+| `oasis_filterEnvAmt` | 0.68 | Very high — every note is a brightness event |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.65 | |
+| `oasis_lfo1Rate` | 0.35 | |
+| `oasis_lfo1Depth` | 0.12 | Subtle pitch movement — fusion Rhodes had slight vibrato |
+| `oasis_lfo2Rate` | 2.5 | |
+| `oasis_lfo2Depth` | 0.1 | Subtle filter movement |
+| `oasis_macroCharacter` | 0.5 | |
+| `oasis_macroMovement` | 0.85 | Maximum movement — fusion is in constant motion |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.5 | |
+
+**Why this works:** High filterEnvAmt (0.68) plus high bell (0.62) means every note has a dramatic velocity-dependent brightness event. Fast tremolo (7 Hz) at 65% depth creates the rhythmic pulse that defines the Headhunters sound. The LFO1 pitch movement at 0.12 adds slight vibrato — not classical, but the subtle instability of an instrument played hard in a sweaty room.
+
+---
+
+### Preset 16: D'Angelo Rhodes
+
+**Mood:** Organic | **Guild gap:** Neo-soul warmth
+
+The neo-soul Rhodes — Questlove and D'Angelo's "Brown Sugar" era — is not the jazz Rhodes and not the fusion Rhodes. It is warm, intimate, slightly compressed, with a gentle tremolo at moderate speed. It is the Rhodes as interior monologue.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.78 | Very warm — neo-soul Rhodes is saturated with warmth |
+| `oasis_bell` | 0.32 | Low bell — the warmth is the voice, not the attack |
+| `oasis_brightness` | 4000.0 | Dark-warm |
+| `oasis_tremRate` | 3.8 | Moderate — the neo-soul pulse is not urgent, it breathes |
+| `oasis_tremDepth` | 0.42 | Medium depth |
+| `oasis_attack` | 0.01 | Slightly rounded — intimate, not percussive |
+| `oasis_decay` | 2.4 | Long — the neo-soul Rhodes sings |
+| `oasis_sustain` | 0.58 | |
+| `oasis_release` | 1.3 | |
+| `oasis_filterEnvAmt` | 0.22 | Low — dynamics are compressed, intimate |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.62 | |
+| `oasis_lfo1Rate` | 0.04 | |
+| `oasis_lfo1Depth` | 0.07 | |
+| `oasis_lfo2Rate` | 0.015 | Very slow filter drift |
+| `oasis_lfo2Depth` | 0.04 | |
+| `oasis_macroCharacter` | 0.5 | |
+| `oasis_macroMovement` | 0.28 | |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.58 | |
+
+**Why this works:** The D'Angelo-era Rhodes sound is defined by warmth and intimacy. High warmth (0.78) drives the asymmetric clipping into the warm range without reaching the bark. Low bell (0.32) means the fundamental dominates — this is a vocal instrument, not a percussive one. The slow filter drift from LFO2 gives it the analog breathing quality that neo-soul production prized.
+
+---
+
+### Preset 17: Roots Riddim
+
+**Mood:** Foundation | **Guild gap:** Reggae roots
+
+The roots reggae Rhodes — Sly Dunbar and Robbie Shakespeare era, early 1980s Kingston — was dry, warm, with the rhythmic chop pattern that defines the genre. The "skank" is a rhythmic articulation: staccato chords on the upbeat, short decay, never pedaled.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.6 | Warm but not excessively so — reggae needs the chop |
+| `oasis_bell` | 0.42 | Moderate bell — the chop needs some attack clarity |
+| `oasis_brightness` | 5000.0 | |
+| `oasis_tremRate` | 4.0 | |
+| `oasis_tremDepth` | 0.0 | No tremolo — reggae Rhodes is typically dry, the rhythm is in the playing |
+| `oasis_attack` | 0.004 | Fast — the chop is an attack event |
+| `oasis_decay` | 0.6 | Short — the reggae chop is staccato |
+| `oasis_sustain` | 0.3 | Low sustain — the notes don't linger |
+| `oasis_release` | 0.2 | Very fast — staccato |
+| `oasis_filterEnvAmt` | 0.45 | Moderate — the chop has dynamic contrast |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.5 | |
+| `oasis_lfo1Rate` | 0.1 | |
+| `oasis_lfo1Depth` | 0.0 | |
+| `oasis_lfo2Rate` | 0.05 | |
+| `oasis_lfo2Depth` | 0.0 | |
+| `oasis_macroCharacter` | 0.4 | |
+| `oasis_macroMovement` | 0.0 | The player creates the riddim |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.4 | |
+
+**Why this works:** The reggae skank is all in the playing — the preset enables it but the articulation is the player's responsibility. Short decay (0.6s) and very fast release (0.2s) means staccato playing sounds correct: the note stops when you release. The moderate filterEnvAmt means hard upbeats have brightness contrast against softer notes. No tremolo — reggae Rhodes is dry and direct.
+
+---
+
+### Preset 18: Contemporary R&B Bright
+
+**Mood:** Prism | **Guild gap:** Contemporary R&B bright
+
+The 2020s R&B Rhodes — SZA, Frank Ocean, Brent Faiyaz producers — uses the Rhodes as a bright, almost digital-sounding anchor. High brightness, moderate bell, fast tremolo, and the Rhodes sits in a mix that also contains 808s and trap hi-hats.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.38 | Less warm — modern R&B is more present, less vintage |
+| `oasis_bell` | 0.58 | Higher bell — the bright attack works in dense mixes |
+| `oasis_brightness` | 8000.0 | Very bright — contemporary R&B production is high-frequency |
+| `oasis_tremRate` | 6.5 | Fast — contemporary production has fast, tight tremolo |
+| `oasis_tremDepth` | 0.48 | Moderate — present but not dominating |
+| `oasis_attack` | 0.003 | Fast transient |
+| `oasis_decay` | 1.5 | Medium |
+| `oasis_sustain` | 0.5 | |
+| `oasis_release` | 0.6 | |
+| `oasis_filterEnvAmt` | 0.55 | High velocity sensitivity |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.7 | Wider — modern mixing uses wider stereo field |
+| `oasis_lfo1Rate` | 0.5 | |
+| `oasis_lfo1Depth` | 0.06 | |
+| `oasis_lfo2Rate` | 1.5 | |
+| `oasis_lfo2Depth` | 0.08 | Fast filter movement — contemporary motion |
+| `oasis_macroCharacter` | 0.35 | |
+| `oasis_macroMovement` | 0.6 | |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.6 | |
+
+**Why this works:** High brightness (8000 Hz) and elevated bell (0.58) create the cutting, present Rhodes sound that works in contemporary dense mixes. Fast tremolo (6.5 Hz) with moderate depth creates a rhythmic pulse that feels modern rather than vintage. The fast LFO2 filter movement adds the subtle animation that distinguishes a contemporary sound from a static vintage patch.
+
+---
+
+### Preset 19: Rhodes After Dark
+
+**Mood:** Ethereal | **Extra depth:** Late night introspective — not kissaten, but contemporary late-night studio
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.68 | Warm |
+| `oasis_bell` | 0.36 | Low bell — introspective, not expressive |
+| `oasis_brightness` | 3500.0 | Dark |
+| `oasis_tremRate` | 1.5 | Very slow — almost too slow to perceive as tremolo |
+| `oasis_tremDepth` | 0.35 | |
+| `oasis_attack` | 0.012 | Slightly rounded — late night softness |
+| `oasis_decay` | 3.2 | Long — the notes have time |
+| `oasis_sustain` | 0.6 | |
+| `oasis_release` | 2.0 | Very long release |
+| `oasis_filterEnvAmt` | 0.2 | Low — quiet hours have no dynamics |
+| `oasis_migration` | 0.05 | Trace |
+| `oasis_stereoWidth` | 0.58 | |
+| `oasis_lfo1Rate` | 0.015 | Very slow — almost geological |
+| `oasis_lfo1Depth` | 0.06 | |
+| `oasis_lfo2Rate` | 0.008 | |
+| `oasis_lfo2Depth` | 0.04 | |
+| `oasis_macroCharacter` | 0.45 | |
+| `oasis_macroMovement` | 0.08 | |
+| `oasis_macroCoupling` | 0.05 | |
+| `oasis_macroSpace` | 0.7 | |
+
+**Why this works:** The very slow tremolo (1.5 Hz at 35% depth) is barely perceptible as tremolo — it reads as natural amplitude breathing rather than a circuit effect. Long release (2.0s) means notes overlap organically. The geological LFO rates (0.015 and 0.008 Hz) create change measured in minutes, not seconds. This is the instrument as companion, not instrument as performer.
+
+---
+
+### Preset 20: Bark and Bloom
+
+**Mood:** Kinetic | **Extra depth:** Dynamic contrast — the Rhodes as a velocity-responsive instrument
+
+Designed specifically to demonstrate the full range from whisper to bark. At low velocity it is warm and intimate; at high velocity it is aggressive and driven. The dynamic range is the point.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.45 | Medium — allows bark at high velocity |
+| `oasis_bell` | 0.55 | Bell elevated — the bark is always through the bell |
+| `oasis_brightness` | 7000.0 | Open filter — the bark needs room |
+| `oasis_tremRate` | 5.0 | |
+| `oasis_tremDepth` | 0.3 | Light tremolo — not about tremolo here |
+| `oasis_attack` | 0.002 | Instant — bark requires transient clarity |
+| `oasis_decay` | 1.5 | |
+| `oasis_sustain` | 0.5 | |
+| `oasis_release` | 0.8 | |
+| `oasis_filterEnvAmt` | 0.8 | Very high — maximum velocity-to-brightness transformation |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.6 | |
+| `oasis_lfo1Rate` | 0.3 | |
+| `oasis_lfo1Depth` | 0.0 | |
+| `oasis_lfo2Rate` | 1.0 | |
+| `oasis_lfo2Depth` | 0.0 | |
+| `oasis_macroCharacter` | 0.45 | CHARACTER controls warmth = controls bark threshold |
+| `oasis_macroMovement` | 0.5 | MOVEMENT controls brightness = controls bark expression |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.45 | |
+
+**Why this works:** filterEnvAmt at 0.8 is the highest in the library — soft notes open the filter by a small amount (intimacy), hard notes blow it open (bark). The bell at 0.55 ensures the bark is always a bell-brightness event rather than a mid-range snarl. This preset is a dynamic instrument, not a static tone: every articulation choice produces a different sound.
+
+---
+
+### Preset 21: Spice Route Full Migration
+
+**Mood:** Entangled | **Extra depth:** Maximum Kitchen coupling
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.5 | Neutral base — migration transforms from here |
+| `oasis_bell` | 0.45 | |
+| `oasis_brightness` | 6000.0 | |
+| `oasis_tremRate` | 4.5 | |
+| `oasis_tremDepth` | 0.35 | |
+| `oasis_attack` | 0.005 | |
+| `oasis_decay` | 2.0 | |
+| `oasis_sustain` | 0.5 | |
+| `oasis_release` | 1.0 | |
+| `oasis_filterEnvAmt` | 0.35 | |
+| `oasis_migration` | 1.0 | Maximum — full Kitchen absorption |
+| `oasis_stereoWidth` | 0.6 | |
+| `oasis_lfo1Rate` | 0.08 | |
+| `oasis_lfo1Depth` | 0.12 | Higher LFO depth — migration introduces instability |
+| `oasis_lfo2Rate` | 0.35 | |
+| `oasis_lfo2Depth` | 0.1 | |
+| `oasis_macroCharacter` | 0.45 | |
+| `oasis_macroMovement` | 0.45 | |
+| `oasis_macroCoupling` | 1.0 | COUPLING at maximum — full migration path |
+| `oasis_macroSpace` | 0.55 | |
+
+**Why this works:** Migration at 1.0 and COUPLING macro at 1.0 enable the full FUSION spectral coupling path. With Kitchen engines loaded, the tine absorbs their character completely. The harmonic complexity generated by migration is managed by slightly higher LFO depths that feel like the instrument breathing under an external influence. This is the Spice Route at its most migratory.
+
+---
+
+### Preset 22: Stage 73 Mk I
+
+**Mood:** Foundation | **Extra depth:** The specific Stage 73 character — not generic Rhodes but a specific era
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.5 | Balanced — the Mk I was less warm than later models |
+| `oasis_bell` | 0.48 | The Mk I third partial was very present |
+| `oasis_brightness` | 6200.0 | Moderate-bright — Mk I had a more forward character |
+| `oasis_tremRate` | 4.0 | |
+| `oasis_tremDepth` | 0.0 | Stage 73 was often used without tremolo |
+| `oasis_attack` | 0.003 | Fast — the Mk I had a faster transient |
+| `oasis_decay` | 1.8 | |
+| `oasis_sustain` | 0.48 | |
+| `oasis_release` | 0.8 | |
+| `oasis_filterEnvAmt` | 0.42 | Higher — the Mk I had more dynamic range than later models |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.5 | Mono or narrow — Mk I was often recorded in mono |
+| `oasis_lfo1Rate` | 0.25 | |
+| `oasis_lfo1Depth` | 0.03 | Barely perceptible tine breathe |
+| `oasis_macroCharacter` | 0.35 | |
+| `oasis_macroMovement` | 0.0 | |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.35 | |
+
+**Why this works:** The Mk I Stage 73 was brighter and more forward than the Suitcase — the mechanical simplicity (no tremolo circuit, direct to amp) gave it a more honest, unprocessed character. Slightly higher bell (0.48) and brightness (6200) without tremolo. Narrow stereo for the mono recording practice.
+
+---
+
+### Preset 23: Vibraphone Cross
+
+**Mood:** Aether | **Extra depth:** The tine as marimba/vibraphone — extended bell identity
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.15 | Minimal warmth — mallets don't have tube amplifier warmth |
+| `oasis_bell` | 0.95 | Near-maximum bell — the third partial is the whole instrument |
+| `oasis_brightness` | 10000.0 | Very bright — vibraphone is high-frequency |
+| `oasis_tremRate` | 6.0 | Medium-fast — vibraphone motor tremolo |
+| `oasis_tremDepth` | 0.45 | Moderate — vibraphone tremolo is subtle (it's a motor turning baffles) |
+| `oasis_attack` | 0.001 | Instant mallet |
+| `oasis_decay` | 4.0 | Very long — vibraphone rings forever |
+| `oasis_sustain` | 0.2 | Low — vibraphone rings out, doesn't sustain at a level |
+| `oasis_release` | 2.5 | Long ring-out |
+| `oasis_filterEnvAmt` | 0.6 | High — mallet dynamics translate to brilliance |
+| `oasis_migration` | 0.0 | |
+| `oasis_stereoWidth` | 0.75 | Wide — vibraphone in stereo is spectacular |
+| `oasis_lfo1Rate` | 0.06 | |
+| `oasis_lfo1Depth` | 0.05 | Slow pitch movement — metal bar resonance |
+| `oasis_macroCharacter` | 0.1 | |
+| `oasis_macroMovement` | 0.45 | |
+| `oasis_macroCoupling` | 0.0 | |
+| `oasis_macroSpace` | 0.8 | Wide space — vibraphone lives in space |
+
+**Why this works:** Maximum bell (0.95) with minimal warmth produces the pure third-partial sound without the tube-amp coloration. The long decay and low sustain correctly model the mallet instrument ring-out. The Rhodes tine IS a metal bar — there is no fundamental reason the bell mode cannot be the whole instrument.
+
+---
+
+### Preset 24: Rhodes Pad
+
+**Mood:** Atmosphere | **Extra depth:** The Rhodes as a pad instrument — overlapping, sustained, atmospheric
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.7 | Warm — the pad needs warmth to blend |
+| `oasis_bell` | 0.3 | Low bell — the pad does not need attack clarity |
+| `oasis_brightness` | 4200.0 | Dark-warm |
+| `oasis_tremRate` | 2.0 | Very slow — almost imperceptible rhythm |
+| `oasis_tremDepth` | 0.25 | Light — the pad breathes, does not pulse |
+| `oasis_attack` | 0.08 | Slow attack — the pad rises rather than attacks |
+| `oasis_decay` | 3.0 | Long |
+| `oasis_sustain` | 0.7 | High sustain — the pad holds |
+| `oasis_release` | 3.0 | Very long — pad notes overlap and blend |
+| `oasis_filterEnvAmt` | 0.18 | Low — the pad does not need velocity dynamics |
+| `oasis_migration` | 0.1 | Slight coupling — pads blend with their environment |
+| `oasis_stereoWidth` | 0.8 | Wide — the pad needs space |
+| `oasis_lfo1Rate` | 0.015 | Very slow — pad drift |
+| `oasis_lfo1Depth` | 0.08 | |
+| `oasis_lfo2Rate` | 0.008 | |
+| `oasis_lfo2Depth` | 0.05 | |
+| `oasis_macroCharacter` | 0.5 | |
+| `oasis_macroMovement` | 0.15 | |
+| `oasis_macroCoupling` | 0.1 | |
+| `oasis_macroSpace` | 0.8 | Maximum space for the pad |
+
+**Why this works:** Slow attack (0.08s) prevents the pad from having percussive attack — it rises like a tide rather than strikes. High sustain (0.7) and very long release (3.0s) mean notes overlap organically, building harmonic density with chord playing. The Rhodes as a pad instrument is less common than its lead and comp roles, but it is a distinct and beautiful character.
+
+---
+
+### Preset 25: Kissa Sunset
+
+**Mood:** Deep | **Extra depth:** The Rhodes at golden hour in a Tokyo listening room
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `oasis_warmth` | 0.73 | |
+| `oasis_bell` | 0.33 | |
+| `oasis_brightness` | 4600.0 | |
+| `oasis_tremRate` | 2.0 | Slow |
+| `oasis_tremDepth` | 0.28 | |
+| `oasis_attack` | 0.008 | |
+| `oasis_decay` | 2.8 | |
+| `oasis_sustain` | 0.56 | |
+| `oasis_release` | 1.6 | |
+| `oasis_filterEnvAmt` | 0.24 | |
+| `oasis_migration` | 0.12 | A trace of every kitchen visited |
+| `oasis_stereoWidth` | 0.5 | |
+| `oasis_lfo1Rate` | 0.02 | |
+| `oasis_lfo1Depth` | 0.05 | |
+| `oasis_lfo2Rate` | 0.01 | |
+| `oasis_lfo2Depth` | 0.035 | |
+| `oasis_macroCharacter` | 0.45 | |
+| `oasis_macroMovement` | 0.12 | |
+| `oasis_macroCoupling` | 0.12 | |
+| `oasis_macroSpace` | 0.65 | |
+
+**Why this works:** The kissaten at the end of the afternoon. Not the late-night dark preset, not the morning bell — the transitional hour where the light changes and the listening changes with it. Migration at 0.12 — barely there, but the trace of every kitchen the Rhodes has traveled through is present in the sound.
+
+---
+
+## Phase R11: Second Scripture
+
+### Verse V — The Velocity
+
+*You choose how hard you play.*
+*The tine responds.*
+*At low velocity: the fundamental rings warmly.*
+*At high velocity: the amp stage clips.*
+*Even harmonics appear from nothing.*
+*The bark is not distortion.*
+*It is the instrument's vocabulary for aggression.*
+*It is saying: I felt that.*
+
+### Verse VI — The Tradition
+
+*Harold Rhodes knew nothing about McCoy Tyner.*
+*McCoy Tyner knew nothing about Afrobeat.*
+*Afrobeat knew nothing about lo-fi hip-hop.*
+*But the tine traveled through all of them.*
+*Each tradition played it differently.*
+*The instrument absorbed the playing.*
+*Migration is not fantasy.*
+*Every style that ever played on a tine*
+*is present in how the tine sounds now.*
+
+### Verse VII — The Warmth Parameter
+
+*0.3 is the default.*
+*0.3 is too cold for most rooms.*
+*Start at 0.45.*
+*Find the place where the fundamental leads*
+*and the bark is ready but not insistent.*
+*That is where the Rhodes lives.*
+*Not at 0.3. Not at 0.9.*
+*Somewhere in between.*
+*Where the warmth is earned.*

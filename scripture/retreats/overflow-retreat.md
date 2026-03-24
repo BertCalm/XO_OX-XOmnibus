@@ -440,3 +440,68 @@ The four-engine arc: XOverwash spreads diffusively into the bowl. XOverworn conc
 - Strain hardening: per-sample filter coefficient updates — light
 - LFOs: StandardLFO pair — light
 - Over-pressure mode: extremely rare event path, no steady-state CPU cost
+
+---
+
+## Phase R9: Parameter Refinements (2026-03-23)
+
+*Added during BROTH Quad Retreat.*
+
+| # | Parameter | Current Default | Recommended Default | Rationale |
+|---|-----------|----------------|---------------------|-----------|
+| R01 | `flow_threshold` | 0.70 | **0.75** | 0.75 gives the player more room to express themselves before consequences arrive — the valve is a reward for sustained density, not a punishment for normal playing. |
+| R02 | `flow_accumRate` | 0.50 | **0.40** | Pairs with the raised threshold. Velocity must be higher or note density must be greater to fill the pressure vessel. This extends the usable pre-release zone. |
+| R03 | `flow_valveType` | 0 (Gradual) | **0 (Gradual)** | Keep Gradual. Explosive is spectacular but startling for first use. Explosive and Whistle are preset-specific destinations. |
+| R04 | `flow_vesselSize` | 0.50 | **0.55** | 0.55 shifts the vessel resonance toward a warmer, lower frequency — more pot than kettle. |
+| R05 | `flow_strainColor` | 0.50 | **0.45** | 0.45 is more subtle — the filter tightening is perceptible but not dramatic as a default. Reserve high values for presets showcasing the pressure aesthetic. |
+| R06 | `flow_releaseTime` | 0.50 s | **0.65 s** | 0.65 seconds gives the gradual valve release enough time to develop its spectral expansion before closing. |
+| R07 | `flow_ampAttack` | 0.20 s | **0.35 s** | 350ms gives a slightly slower pad onset that makes the pressure accumulation behavior more visible. |
+| R08 | `flow_ampSustain` | 0.80 | **0.85** | Higher sustain keeps voices audible while pressure builds — the strain hardening will reduce brightness anyway. |
+| R09 | `flow_ampRelease` | 1.50 s | **2.5 s** | 2.5 seconds sounds more like a pressure cooker completing its cycle. |
+| R10 | `flow_filtAttack` | 0.10 s | **0.20 s** | 0.20s creates a more perceptible brightness bloom on note-on before the strain hardening counteracts it. |
+| R11 | `flow_filterCutoff` | 6000.0 Hz | **5500.0 Hz** | 5500Hz gives a warmer character that allows strain hardening to sweep cutoff into more sonically interesting territory. |
+| R12 | `flow_lfo1Rate` | 0.15 Hz | **0.10 Hz** | 0.10 Hz is less rhythmically assertive — appropriate for a pad that develops its interest through the pressure mechanism. |
+| R13 | `flow_stereoWidth` | 0.50 | **0.58** | Slightly wider stereo field for the release event to spread into. The burst should feel spatially expansive. |
+
+---
+
+## Phase R10: Scripture Verses (2026-03-23)
+
+**I. On Pressure**
+*The vessel holds the steam because the walls are strong enough.
+But strength is not infinite.
+There is a threshold.
+Below the threshold, the walls hold.
+The pressure accumulates — unseen, unfelt by the walls,
+which are designed for exactly this.
+Above the threshold, the valve must open.
+The valve is not failure.
+The valve is design.
+Everything that accumulates
+must eventually release.*
+
+**II. On Playing Density**
+*Two notes are not twice one note.
+Dissonant notes are not twice consonant ones.
+Minor seconds cost the vessel more than perfect fifths.
+Tritones cost more than thirds.
+The engine knows the harmonic series
+and charges accordingly.
+You cannot play chromatic density without consequences.
+You can play diatonic density gently
+and the pressure never rises.
+The physics of consonance is not just aesthetic.
+It is physical.
+The pressure gauge responds to what you play.*
+
+**III. On the Release**
+*After the valve opens, there is always a silence.
+Or a burst. Or a whistle.
+Three ways the pressure equalizes.
+In all three cases, what follows is a restart —
+the pressure returns to zero,
+the walls relax,
+the cycle begins again.
+The release is not an end.
+It is a reset.
+Every release is a new beginning.*

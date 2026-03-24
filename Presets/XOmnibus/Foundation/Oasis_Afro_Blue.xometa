@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Afro Blue Voicing",
+  "mood": "Foundation",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "McCoy Tyner quartal voicing character. No tremolo, dark-warm filter, long decay. Jazz EP in a straight-ahead context. Passes the source tradition test.",
+  "tags": ["rhodes", "jazz", "warm", "no-tremolo", "mccoy-tyner", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.82,
+    "movement": 0.05,
+    "density": 0.45,
+    "space": 0.5,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oasis": {
+      "oasis_warmth": 0.72,
+      "oasis_bell": 0.38,
+      "oasis_brightness": 4800.0,
+      "oasis_tremRate": 4.0,
+      "oasis_tremDepth": 0.0,
+      "oasis_attack": 0.005,
+      "oasis_decay": 2.5,
+      "oasis_sustain": 0.52,
+      "oasis_release": 1.0,
+      "oasis_filterEnvAmt": 0.28,
+      "oasis_migration": 0.0,
+      "oasis_stereoWidth": 0.45,
+      "oasis_bendRange": 2.0,
+      "oasis_macroCharacter": 0.45,
+      "oasis_macroMovement": 0.0,
+      "oasis_macroCoupling": 0.0,
+      "oasis_macroSpace": 0.5,
+      "oasis_lfo1Rate": 0.3,
+      "oasis_lfo1Depth": 0.04,
+      "oasis_lfo1Shape": 0,
+      "oasis_lfo2Rate": 0.1,
+      "oasis_lfo2Depth": 0.02,
+      "oasis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,10 +1,27 @@
 {
   "name": "Sub Orbit",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["sub", "Toronto", "sidechain", "coupling", "deep bass"],
-  "macros": {"M1": 0.4, "M2": 0.65, "M3": 0.72, "M4": 0.2},
-  "dna": {"brightness": 0.2, "warmth": 0.7, "movement": 0.62, "density": 0.8, "space": 0.45, "aggression": 0.65},
+  "tags": [
+    "sub",
+    "Toronto",
+    "sidechain",
+    "coupling",
+    "deep bass"
+  ],
+  "macros": {
+    "M1": 0.4,
+    "M2": 0.65,
+    "M3": 0.72,
+    "M4": 0.2
+  },
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.62,
+    "density": 0.8,
+    "space": 0.45,
+    "aggression": 0.65
+  },
   "parameters": {
     "ofr_flipLayers": 2,
     "ofr_flipChop": 0.35,
@@ -26,5 +43,10 @@
     "ofr_v0_decay": 0.55,
     "ofr_masterWidth": 0.55,
     "ofr_masterLevel": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

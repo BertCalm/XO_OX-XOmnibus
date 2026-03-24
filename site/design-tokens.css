@@ -6,7 +6,7 @@
  * Sections:
  *   1. Global Brand
  *   2. Ecological Depth Zones
- *   3. Engine Accent Colors (70 engines)
+ *   3. Engine Accent Colors (72 engines)
  *   4. Ecological Instrument Anatomy
  *   5. Glass / Porthole Formula
  *   6. PlaySurface Tokens
@@ -114,7 +114,7 @@
 
 
 /* ============================================================
-   SECTION 3 — Engine Accent Colors (70 engines)
+   SECTION 3 — Engine Accent Colors (72 engines)
    One custom property per registered engine.
    Property name matches the Engine ID (all-caps).
    Source: CLAUDE.md Engine Modules table.
@@ -186,6 +186,46 @@
   --engine-OPERA:     #D4AF37;   /* Aria Gold                — XOpera */
   --engine-OFFERING:  #E5B80B;   /* Crate Wax Yellow         — XOffering */
   --engine-OSMOSIS:   #C0C0C0;   /* Surface Tension Silver   — XOsmosis */
+
+  /* Oxytocin (OXYTO) — Synapse Violet. Circuit-modeling × Love Theory.
+     When to use: XOxytocin engine-specific UI surfaces, preset cards, aquarium glow. */
+  --engine-OXYTOCIN: #9B5DE5;   /* Synapse Violet            — XOxytocin */
+
+  /* --- Kitchen Collection — Chef Quad (Organs / Adversarial coupling) --- */
+  --engine-OTO:      #7BA05B;   /* Bamboo Green              — XOto */
+  --engine-OCTAVE:   #6B2D3E;   /* Bordeaux                  — XOctave */
+  --engine-OLEG:     #C5A036;   /* Orthodox Gold             — XOleg */
+  --engine-OTIS:     #DAA520;   /* Soul Gold                 — XOtis */
+
+  /* --- Kitchen Collection — Kitchen Quad (Pianos / Resonant coupling) --- */
+  --engine-OVEN:     #2C2C2C;   /* Cast Iron Black           — XOven */
+  --engine-OCHRE:    #B87333;   /* Copper Patina             — XOchre */
+  --engine-OBELISK:  #4A4A4A;   /* Obsidian Slate            — XObelisk */
+  --engine-OPALINE:  #B8D4E3;   /* Crystal Blue              — XOpaline */
+
+  /* --- Kitchen Collection — Cellar Quad (Bass / Gravitational coupling) --- */
+  --engine-OGRE:     #4A2C0A;   /* Deep Earth Brown          — XOgre */
+  --engine-OLATE:    #6B1A2A;   /* Burgundy                  — XOlate */
+  --engine-OAKEN:    #3D2412;   /* Dark Walnut               — XOaken */
+  --engine-OMEGA:    #B04010;   /* Copper Still              — XOmega */
+
+  /* --- Kitchen Collection — Garden Quad (Strings / Evolutionary coupling) --- */
+  --engine-ORCHARD:  #DAA520;   /* Harvest Gold              — XOrchard (matches OTIS; distinct enough at engine level) */
+  --engine-OVERGROW: #3A5F0B;   /* Vine Green                — XOvergrow */
+  --engine-OSIER:    #6B8E23;   /* Willow Green              — XOsier */
+  --engine-OXALIS:   #6A0DAD;   /* Clover Purple             — XOxalis */
+
+  /* --- Kitchen Collection — Broth Quad (Pads / Cooperative coupling) --- */
+  --engine-OVERWASH: #D4A76A;   /* Tea Amber                 — XOverwash */
+  --engine-OVERWORN: #4A1A2E;   /* Reduced Wine              — XOverworn */
+  --engine-OVERFLOW: #E8E8E8;   /* Steam White               — XOverflow */
+  --engine-OVERCAST: #B0E0E6;   /* Ice Blue                  — XOvercast */
+
+  /* --- Kitchen Collection — Fusion Quad (Electric Piano / Migratory coupling) --- */
+  --engine-OASIS:    #C49B3F;   /* Cardamom Gold             — XOasis */
+  --engine-ODDFELLOW:#FF6B35;   /* Neon Night                — XOddfellow */
+  --engine-ONKOLO:   #FFB300;   /* Kente Gold                — XOnkolo */
+  --engine-OPCODE:   #00CED1;   /* Digital Cyan              — XOpcode (matches ORGANON; both engines use the same hex) */
 }
 
 

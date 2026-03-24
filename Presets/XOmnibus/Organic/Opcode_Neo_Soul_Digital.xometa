@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Neo-Soul Digital",
+  "mood": "Organic",
+  "engines": ["Opcode"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "2000s neo-soul producers re-embracing FM — D'Angelo Voodoo era where digital instruments were played with analog warmth. Lower brightness, slower modulator decay, more sustained FM tail. The DX7 as a soulful instrument.",
+  "tags": ["dx7", "fm", "neo-soul", "dangelo", "organic", "soulful"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.52,
+    "movement": 0.32,
+    "density": 0.52,
+    "space": 0.58,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 1.0,
+      "opco_index": 0.72,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.6,
+      "opco_brightness": 8500.0,
+      "opco_attack": 0.005,
+      "opco_decay": 1.8,
+      "opco_sustain": 0.5,
+      "opco_release": 0.9,
+      "opco_modAttack": 0.002,
+      "opco_modDecay": 0.7,
+      "opco_modSustain": 0.18,
+      "opco_filterEnvAmt": 0.22,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2.0,
+      "opco_macroCharacter": 0.4,
+      "opco_macroMovement": 0.32,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.58,
+      "opco_lfo1Rate": 0.35,
+      "opco_lfo1Depth": 0.06,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 0.9,
+      "opco_lfo2Depth": 0.07,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

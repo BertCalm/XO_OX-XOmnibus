@@ -318,6 +318,7 @@ private:
     juce::AudioBuffer<float> previewAudioBuffer;
     std::unique_ptr<juce::AudioDeviceManager> previewDeviceManager;
     std::unique_ptr<juce::AudioSourcePlayer> previewPlayer;
+    std::unique_ptr<PreviewAudioSource> previewSource;
     int selectedPresetIndex = -1;
 
     // Entangled mode — coupling snapshot export
@@ -406,8 +407,8 @@ private:
         }
 
         // Create a simple playback source
-        auto* src = new PreviewAudioSource(*this);
-        previewPlayer->setSource(src);
+        previewSource = std::make_unique<PreviewAudioSource>(*this);
+        previewPlayer->setSource(previewSource.get());
 
         if (!isTimerRunning())
             startTimerHz(15);
@@ -423,6 +424,7 @@ private:
 
         if (previewPlayer)
             previewPlayer->setSource(nullptr);
+        previewSource.reset();
 
         if (previewDrip.getState() == XDrip::State::Ready)
             previewPlayBtn.setButtonText(">");

@@ -1,10 +1,27 @@
 {
   "name": "Crate Fever",
-  "engine": "Offering",
   "mood": "Atmosphere",
-  "tags": ["curious", "stochastic", "Bay Area", "Madlib", "variation"],
-  "macros": {"M1": 0.4, "M2": 0.8, "M3": 0.2, "M4": 0.1},
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.9, "density": 0.5, "space": 0.7, "aggression": 0.5},
+  "tags": [
+    "curious",
+    "stochastic",
+    "Bay Area",
+    "Madlib",
+    "variation"
+  ],
+  "macros": {
+    "M1": 0.4,
+    "M2": 0.8,
+    "M3": 0.2,
+    "M4": 0.1
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.9,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.5
+  },
   "parameters": {
     "ofr_transientSnap": 0.55,
     "ofr_transientPitch": 0.45,
@@ -25,5 +42,10 @@
     "ofr_v1_decay": 0.25,
     "ofr_v3_decay": 0.6,
     "ofr_v7_body": 0.7
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

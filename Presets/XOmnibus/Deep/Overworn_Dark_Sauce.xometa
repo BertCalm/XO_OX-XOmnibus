@@ -1,0 +1,47 @@
+{
+  "name": "Dark Sauce",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "The furthest state \u2014 nearly fully reduced, dark, concentrated, irreversible. Fundamentals only, deeply saturated, narrow stereo field.",
+  "mood": "Deep",
+  "tags": [
+    "pad",
+    "dark",
+    "reduction",
+    "drone",
+    "warm"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.5,
+    "SPACE": 0.32
+  },
+  "dna": {
+    "warmth": 0.85,
+    "complexity": 0.3,
+    "movement": 0.1,
+    "brightness": 0.15,
+    "aggression": 0.25
+  },
+  "params": {
+    "worn_reductionRate": 0.5,
+    "worn_heat": 0.55,
+    "worn_richness": 0.45,
+    "worn_maillard": 0.75,
+    "worn_umamiDepth": 0.8,
+    "worn_concentrate": 0.85,
+    "worn_sessionTarget": 30.0,
+    "worn_filterCutoff": 2400.0,
+    "worn_filterRes": 0.22,
+    "worn_ampAttack": 1.2,
+    "worn_ampSustain": 0.8,
+    "worn_ampRelease": 8.0,
+    "worn_lfo1Rate": 0.045,
+    "worn_lfo1Depth": 0.13,
+    "worn_stereoWidth": 0.32,
+    "worn_level": 0.85
+  }
+}

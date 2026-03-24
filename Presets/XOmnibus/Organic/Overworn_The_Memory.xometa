@@ -1,0 +1,50 @@
+{
+  "name": "The Memory",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "The session is the instrument \u2014 what the broth remembers. The default production workhorse. Begin, play, return \u2014 the engine remembers.",
+  "mood": "Organic",
+  "tags": [
+    "pad",
+    "warm",
+    "ambient",
+    "evolving",
+    "reduction"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.5,
+    "SPACE": 0.44
+  },
+  "dna": {
+    "warmth": 0.72,
+    "complexity": 0.65,
+    "movement": 0.22,
+    "brightness": 0.5,
+    "aggression": 0.1
+  },
+  "params": {
+    "worn_reductionRate": 0.4,
+    "worn_heat": 0.45,
+    "worn_richness": 1.0,
+    "worn_maillard": 0.28,
+    "worn_umamiDepth": 0.7,
+    "worn_sessionTarget": 30.0,
+    "worn_filterCutoff": 7000.0,
+    "worn_filterRes": 0.16,
+    "worn_filtEnvAmount": 0.28,
+    "worn_ampAttack": 0.72,
+    "worn_ampDecay": 1.3,
+    "worn_ampSustain": 0.88,
+    "worn_ampRelease": 5.5,
+    "worn_lfo1Rate": 0.06,
+    "worn_lfo1Depth": 0.16,
+    "worn_lfo2Rate": 0.015,
+    "worn_lfo2Depth": 0.1,
+    "worn_stereoWidth": 0.44,
+    "worn_level": 0.8
+  }
+}

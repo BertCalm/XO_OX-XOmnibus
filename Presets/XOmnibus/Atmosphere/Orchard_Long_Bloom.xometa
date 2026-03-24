@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Growth Mode at 60 seconds — maximum germination time. The full orchestral ensemble does not arrive until 60 seconds have elapsed. For ambient, installation, or drone contexts where the orchestra is a slow architectural process.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.45,
+    "density": 0.15,
+    "movement": 0.1,
+    "space": 0.8,
+    "warmth": 0.55
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Atmosphere",
+  "name": "Long Bloom",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.18,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.45,
+      "orch_cutoff": 5200.0,
+      "orch_decay": 1.0,
+      "orch_detune": 9.0,
+      "orch_ensembleWidth": 0.8,
+      "orch_filterEnvAmt": 0.2,
+      "orch_formant": 0.45,
+      "orch_growthMode": 1.0,
+      "orch_growthTime": 60.0,
+      "orch_lfo1Depth": 0.08,
+      "orch_lfo1Rate": 0.12,
+      "orch_lfo1Shape": 0,
+      "orch_lfo2Depth": 0.04,
+      "orch_lfo2Rate": 0.05,
+      "orch_lfo2Shape": 0,
+      "orch_release": 5.0,
+      "orch_resonance": 0.12,
+      "orch_season": 1,
+      "orch_sustain": 0.92,
+      "orch_vibratoDepth": 0.2,
+      "orch_vibratoRate": 4.5,
+      "orch_warmth": 0.6
+    }
+  },
+  "tags": ["Garden", "Strings", "Orchestral", "GrowthMode", "Ambient"],
+  "version": "1.0"
+}

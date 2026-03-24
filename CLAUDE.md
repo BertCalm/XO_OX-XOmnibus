@@ -4,14 +4,14 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **47 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21)
+and mutate into sounds impossible with any single synth. **72 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS
-- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (14 coupling types incl. KnotTopology)
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN
+- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** ~16,000+ factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
+- **Presets:** ~19,000+ factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -86,6 +86,31 @@ and mutate into sounds impossible with any single synth. **47 engines** are regi
 | OPERA | XOpera | Aria Gold `#D4AF37` |
 | OFFERING | XOffering | Crate Wax Yellow `#E5B80B` |
 | OSMOSIS | XOsmosis | Surface Tension Silver `#C0C0C0` |
+| OXYTOCIN | XOxytocin | Synapse Violet `#9B5DE5` |
+| OTO | XOto | Pipe Organ Ivory `#F5F0E8` |
+| OCTAVE | XOctave | Hammond Teak `#8B6914` |
+| OLEG | XOleg | Theatre Red `#C0392B` |
+| OTIS | XOtis | Gospel Gold `#D4A017` |
+| OVEN | XOven | Steinway Ebony `#1C1C1C` |
+| OCHRE | XOchre | Upright Oak `#9C6B30` |
+| OBELISK | XObelisk | Grand Ivory `#FFFFF0` |
+| OPALINE | XOpaline | Prepared Rust `#B7410E` |
+| OGRE | XOgre | Sub Bass Black `#0D0D0D` |
+| OLATE | XOlate | Fretless Walnut `#5C3317` |
+| OAKEN | XOaken | Upright Oak `#9C6B30` |
+| OMEGA | XOmega | Synth Bass Blue `#003366` |
+| ORCHARD | XOrchard | Orchard Blossom `#FFB7C5` |
+| OVERGROW | XOvergrow | Forest Green `#228B22` |
+| OSIER | XOsier | Willow Silver `#C0C8C8` |
+| OXALIS | XOxalis | Wood Sorrel Lilac `#9B59B6` |
+| OVERWASH | XOverwash | Tide Foam White `#F0F8FF` |
+| OVERWORN | XOverworn | Worn Felt Grey `#808080` |
+| OVERFLOW | XOverflow | Deep Current Blue `#1A3A5C` |
+| OVERCAST | XOvercast | Storm Cloud Slate `#708090` |
+| OASIS | XOasis | Desert Spring Teal `#00827F` |
+| ODDFELLOW | XOddfellow | Fusion Copper `#B87333` |
+| ONKOLO | XOnkolo | Spectral Amber `#FFBF00` |
+| OPCODE | XOpcode | Circuit Green `#39FF14` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -141,6 +166,31 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Opera | `opera_` | `opera_drama` |
 | Offering | `ofr_` | `ofr_digCuriosity` |
 | Osmosis | `osmo_` | `osmo_permeability` |
+| Oxytocin | `oxy_` | `oxy_intimacy` |
+| Oto | `oto_` | `oto_drawbar1` |
+| Octave (Chef) | `oct_` | `oct_tonewheel` |
+| Oleg | `oleg_` | `oleg_harmonics` |
+| Otis | `otis_` | `otis_soulDrive` |
+| Oven | `oven_` | `oven_hammerBrightness` |
+| Ochre | `ochre_` | `ochre_woodResonance` |
+| Obelisk | `obel_` | `obel_stringMass` |
+| Opaline | `opal2_` | `opal2_preparedDensity` |
+| Ogre | `ogre_` | `ogre_subFreq` |
+| Olate | `olate_` | `olate_fretlessGlide` |
+| Oaken | `oaken_` | `oaken_stringAge` |
+| Omega | `omega_` | `omega_synthBass` |
+| Orchard | `orch_` | `orch_bowPressure` |
+| Overgrow | `grow_` | `grow_growthRate` |
+| Osier | `osier_` | `osier_windDensity` |
+| Oxalis | `oxal_` | `oxal_leafTension` |
+| Overwash | `wash_` | `wash_tideDepth` |
+| Overworn | `worn_` | `worn_feltAge` |
+| Overflow | `flow_` | `flow_currentSpeed` |
+| Overcast | `cast_` | `cast_cloudDensity` |
+| Oasis | `oasis_` | `oasis_springDepth` |
+| Oddfellow | `oddf_` | `oddf_spectralShift` |
+| Onkolo | `onko_` | `onko_resonanceCore` |
+| Opcode | `opco_` | `opco_codeDepth` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -184,6 +234,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Opera/OperaAdapter.h` | Additive-vocal Kuramoto synchronicity engine (formant synthesis + phase transition + Conductor arcs) |
 | `Source/Engines/Offering/OfferingEngine.h` | Psychology-driven boom bap drum synthesis (Berlyne curiosity + 5 city chains + per-type transient models) |
 | `Source/Engines/Osmosis/OsmosisEngine.h` | External audio membrane engine (envelope follower, pitch detect, coupling source) |
+| `Source/Engines/Oxytocin/OxytocinAdapter.h` | Circuit-modeling love-triangle synth (RE-201/MS-20/Moog/Serge/Buchla + TriangularCoupling #15) |
 | `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
@@ -192,7 +243,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 ## Preset System
 
 - `.xometa` JSON files are the source of truth (version-controlled)
-- 8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged
+- 15 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic
 - 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE
 - 6D Sonic DNA: brightness, warmth, movement, density, space, aggression
 - Naming: 2-3 words, evocative, max 30 chars, no duplicates, no jargon
@@ -267,7 +318,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 
 ## Seance Findings
 
-**46 of 46 engines seanced** (2026-03-21) — All engines complete. OFFERING: 8.8/10 post-build (up from 7.9 pre-build, all 3 P0s resolved). B035 (Psychology-as-DSP) RATIFIED 8-0, B036 (City-as-Processing-Chain) RATIFIED 6-2. OPERA: 8.85/10 post-build (up from 8.7). B035/B036/B037 confirmed in code. New B038 candidate (Three-Timescale Temporal Architecture). P0: std::tan() per-sample in OperaSVF — needs block-rate cache before V1. OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All 44 previous engines at 8.0+ target. OPERA 8.7/10 with no DSP bugs. OFFERING 8.8/10 with 3 dead params fixed post-seance + Tom double-sat fixed. Full data in:
+**71 engines seanced** (original 47 by 2026-03-21; Kitchen Collection 24 in batch verdicts 2026-03-22) — All engines complete. OXYTO: 9.5/10 — NEW FLEET LEADER (B040 Note Duration, unanimous). OFFERING: 8.8/10 post-build (up from 7.9 pre-build, all 3 P0s resolved). B038 (Psychology-as-DSP) RATIFIED 8-0, B039 (City-as-Processing-Chain) RATIFIED 6-2. OPERA: 8.85/10 post-build (up from 8.7). B035/B036/B037 confirmed in code. B037 (Three-Timescale Conductor) confirmed. P0 FIXED: OperaSVF block-rate coefficient cache committed (2026-03-22). OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All original 47 engines at 8.0+ target. OPERA 8.7/10 with no DSP bugs. OFFERING 8.8/10 with 3 dead params fixed post-seance + Tom double-sat fixed. Full data in:
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
@@ -287,7 +338,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 | D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
 | D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
 
-### The 37 Blessings
+### The 40 Blessings
 
 | ID | Blessing | Engine |
 |----|----------|--------|
@@ -328,8 +379,9 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 | B035 | OperaConductor: Autonomous Dramatic Arc Architecture — 4 arc shapes, configurable arc time/peak, ±5%/±3% jitter, graceful player override via max(conductorK, manualK). First synthesizer in the fleet with autonomous narrative intent. Blessed by Kakehashi, Pearlman, Vangelis, Smith. | OPERA |
 | B036 | Coherence-Driven Spatial Panning — stereo field is a live readout of Kuramoto order parameter R: locked partials spread wide, chaotic partials collapse to center. The stereo field breathes with the dramatic arc. Blessed by Tomita, Buchla. | OPERA |
 | B037 | EmotionalMemory: Phase Persistence Across Note Boundaries — partial phases stored at note-off, recalled within 500ms window. The Kuramoto field wakes up knowing where it was. Named after Vangelis in source code. Blessed by Vangelis. | OPERA |
-| B035 | Psychology-as-DSP: First synthesizer deriving timbral variation from cited experimental psychology (Berlyne 1960, Wundt 1874, Csikszentmihalyi 1975) implemented as real-time DSP. Alien shift above curiosity=0.7 is emergent theoretical consequence. Ratified 8-0. | OFFERING |
-| B036 | City-as-Processing-Chain (conditional): Five structurally distinct architectures encoding cultural production aesthetics — NY noise gate, Detroit feedback sat + drunk timing, LA parallel compression, Toronto sidechain sub, Bay Area prime-delay allpass fog. Spatial character V1.1. Ratified 6-2. | OFFERING |
+| B038 | Psychology-as-DSP: First synthesizer deriving timbral variation from cited experimental psychology (Berlyne 1960, Wundt 1874, Csikszentmihalyi 1975) implemented as real-time DSP. Alien shift above curiosity=0.7 is emergent theoretical consequence. Ratified 8-0. | OFFERING |
+| B039 | City-as-Processing-Chain (conditional): Five structurally distinct architectures encoding cultural production aesthetics — NY noise gate, Detroit feedback sat + drunk timing, LA parallel compression, Toronto sidechain sub, Bay Area prime-delay allpass fog. Spatial character V1.1. Ratified 6-2. | OFFERING |
+| B040 | Note Duration as Synthesis Parameter — note length drives circuit warmth, bond depth, and intimacy accumulation; long notes unlock timbral states unavailable to short notes. Unanimous. | OXYTO |
 
 ### The 5 Ongoing Debates
 
@@ -343,7 +395,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 
 ### Critical Fleet-Wide Findings
 
-- **Seance score range (post 2026-03-21 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE / OWARE). Fleet avg ~8.8. **All 45 engines seanced. OPERA 8.7/10 (no DSP bugs, 3 UX fixes for 9.0+).** Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
+- **Seance score range (post 2026-03-22 fixes)**: ~8.0 (ORIGAMI) to 9.5 (OXYTO). Fleet avg ~8.8. **All 71 engines seanced. OXYTO 9.5/10 (new fleet leader). OPERA 8.85/10 (P0 fixed 2026-03-22, 3 UX fixes for 9.0+).** Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
 - **D006 aftertouch coverage**: 23/23 engines have aftertouch (Optic intentionally exempt — visual engine)
 - **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)

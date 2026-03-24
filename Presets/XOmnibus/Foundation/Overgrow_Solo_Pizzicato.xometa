@@ -1,0 +1,47 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Short attack (5ms), short decay (0.15s), low sustain (0.1). Damping=0.7, feedback=0.988 for fast natural decay. XOxalis as pizzicato: plucked, not bowed. Physical string without envelope sustain.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.65,
+    "density": 0.25,
+    "movement": 0.2,
+    "space": 0.45,
+    "warmth": 0.35
+  },
+  "engines": ["Overgrow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Solo Pizzicato",
+  "parameters": {
+    "Overgrow": {
+      "grow_attack": 0.005,
+      "grow_bendRange": 2,
+      "grow_bowNoise": 0.03,
+      "grow_brightness": 0.65,
+      "grow_cutoff": 5500.0,
+      "grow_damping": 0.7,
+      "grow_decay": 0.15,
+      "grow_feedback": 0.988,
+      "grow_filterEnvAmt": 0.15,
+      "grow_growthMode": 0.0,
+      "grow_growthTime": 12.0,
+      "grow_lfo1Depth": 0.04,
+      "grow_lfo1Rate": 0.5,
+      "grow_lfo1Shape": 0,
+      "grow_lfo2Depth": 0.0,
+      "grow_lfo2Rate": 1.0,
+      "grow_lfo2Shape": 0,
+      "grow_release": 0.4,
+      "grow_resonance": 0.2,
+      "grow_sustain": 0.1,
+      "grow_vibratoDepth": 0.05,
+      "grow_vibratoRate": 5.5,
+      "grow_wildness": 0.15
+    }
+  },
+  "tags": ["Garden", "Strings", "Pizzicato", "Physical"],
+  "version": "1.0"
+}

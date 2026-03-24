@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 rocky soil bandpass character. Triangle content, mid-emphasis sub for dense mixes.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.2,
+    "aggression": 0.45
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Rocky Ground",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.3,
+      "ogre_drive": 0.65,
+      "ogre_rootDepth": 0.6,
+      "ogre_bodyResonance": 0.55,
+      "ogre_brightness": 1200.0,
+      "ogre_density": 0.35,
+      "ogre_soil": 0.85,
+      "ogre_tectonicRate": 0.015,
+      "ogre_tectonicDepth": 7.0,
+      "ogre_attack": 0.005,
+      "ogre_decay": 0.7,
+      "ogre_sustain": 0.75,
+      "ogre_release": 0.4,
+      "ogre_filterEnvAmount": 0.35,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.4,
+      "ogre_lfo1Rate": 0.4,
+      "ogre_lfo1Depth": 0.12,
+      "ogre_lfo2Rate": 0.8,
+      "ogre_lfo2Depth": 0.08,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "sub",
+    "metallic",
+    "experimental"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

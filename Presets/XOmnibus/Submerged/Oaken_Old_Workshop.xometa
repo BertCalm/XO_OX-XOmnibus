@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 maximum wood age, ancient gut strings. A 200-year-old Italian bass in a cold cellar.",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.95,
+    "movement": 0.28,
+    "density": 0.8,
+    "space": 0.5,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Old Workshop",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.05,
+      "oaken_bodyDepth": 0.85,
+      "oaken_woodAge": 1.0,
+      "oaken_room": 0.45,
+      "oaken_brightness": 2000.0,
+      "oaken_damping": 0.08,
+      "oaken_curingRate": 0.55,
+      "oaken_filterEnvAmount": 0.1,
+      "oaken_attack": 0.006,
+      "oaken_decay": 3.0,
+      "oaken_sustain": 0.6,
+      "oaken_release": 1.8,
+      "oaken_gravity": 0.6,
+      "oaken_glide": 0.0,
+      "oaken_lfo1Rate": 0.05,
+      "oaken_lfo1Depth": 0.08,
+      "oaken_lfo2Rate": 0.12,
+      "oaken_lfo2Depth": 0.06,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "acoustic",
+    "dark",
+    "warm",
+    "ambient"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

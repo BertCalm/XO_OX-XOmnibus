@@ -1,0 +1,49 @@
+{
+  "name": "Morning Stock",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "A light, delicate broth \u2014 high filter cutoff, light Maillard, gentle reduction. Luminous opening bloom on each note.",
+  "mood": "Ethereal",
+  "tags": [
+    "pad",
+    "ambient",
+    "bright",
+    "warm",
+    "evolving"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.5,
+    "SPACE": 0.55
+  },
+  "dna": {
+    "warmth": 0.62,
+    "complexity": 0.65,
+    "movement": 0.2,
+    "brightness": 0.72,
+    "aggression": 0.03
+  },
+  "params": {
+    "worn_reductionRate": 0.2,
+    "worn_heat": 0.3,
+    "worn_richness": 1.0,
+    "worn_maillard": 0.08,
+    "worn_umamiDepth": 0.4,
+    "worn_sessionTarget": 45.0,
+    "worn_filterCutoff": 8500.0,
+    "worn_filterRes": 0.1,
+    "worn_filtEnvAmount": 0.35,
+    "worn_ampAttack": 0.6,
+    "worn_ampSustain": 0.85,
+    "worn_ampRelease": 5.0,
+    "worn_lfo1Rate": 0.07,
+    "worn_lfo1Depth": 0.2,
+    "worn_lfo2Rate": 0.025,
+    "worn_lfo2Depth": 0.12,
+    "worn_stereoWidth": 0.55,
+    "worn_level": 0.78
+  }
+}

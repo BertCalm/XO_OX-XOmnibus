@@ -1,0 +1,49 @@
+{
+  "name": "Watercolor Wet",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Wet-on-wet watercolor \u2014 each note bleeds into the previous one's wake. Interference parameter raised; future-ready for BROTH coupling.",
+  "mood": "Atmosphere",
+  "tags": [
+    "pad",
+    "ambient",
+    "diffusion",
+    "evolving",
+    "coupling"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.7,
+    "SPACE": 0.72
+  },
+  "dna": {
+    "warmth": 0.6,
+    "complexity": 0.55,
+    "movement": 0.4,
+    "brightness": 0.48,
+    "aggression": 0.1
+  },
+  "params": {
+    "wash_diffusionRate": 0.48,
+    "wash_viscosity": 0.38,
+    "wash_harmonics": 10,
+    "wash_diffusionTime": 10.0,
+    "wash_spreadMax": 175.0,
+    "wash_interference": 0.7,
+    "wash_brightness": 0.62,
+    "wash_warmth": 0.6,
+    "wash_ampAttack": 0.32,
+    "wash_ampDecay": 1.0,
+    "wash_ampSustain": 0.78,
+    "wash_ampRelease": 4.0,
+    "wash_lfo1Rate": 0.09,
+    "wash_lfo1Depth": 0.24,
+    "wash_lfo2Rate": 0.038,
+    "wash_lfo2Depth": 0.16,
+    "wash_stereoWidth": 0.72,
+    "wash_level": 0.8
+  }
+}

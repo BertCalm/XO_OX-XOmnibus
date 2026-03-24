@@ -1,0 +1,50 @@
+{
+  "name": "Crystal Choir",
+  "engines": [
+    "Overcast"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Low purity, many peaks \u2014 all voices audible in the ice. Every partial locked, none filtered. Wide stereo frozen chord.",
+  "mood": "Ethereal",
+  "tags": [
+    "pad",
+    "crystalline",
+    "frozen",
+    "ambient",
+    "bright"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.5,
+    "SPACE": 0.82
+  },
+  "dna": {
+    "warmth": 0.35,
+    "complexity": 0.68,
+    "movement": 0.06,
+    "brightness": 0.58,
+    "aggression": 0.05
+  },
+  "params": {
+    "cast_freezeRate": 0.09,
+    "cast_crystalSize": 0.4,
+    "cast_numPeaks": 12,
+    "cast_transition": 1,
+    "cast_latticeSnap": 0.55,
+    "cast_purity": 0.2,
+    "cast_crackle": 0.42,
+    "cast_stereoWidth": 0.82,
+    "cast_filterCutoff": 5800.0,
+    "cast_filterRes": 0.12,
+    "cast_ampAttack": 0.005,
+    "cast_ampDecay": 0.55,
+    "cast_ampSustain": 1.0,
+    "cast_ampRelease": 3.5,
+    "cast_lfo1Rate": 0.14,
+    "cast_lfo1Depth": 0.12,
+    "cast_lfo2Rate": 0.35,
+    "cast_lfo2Depth": 0.08,
+    "cast_level": 0.78
+  }
+}

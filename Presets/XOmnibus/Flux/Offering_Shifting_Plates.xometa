@@ -1,10 +1,27 @@
 {
   "name": "Shifting Plates",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["tectonic", "slow evolve", "Toronto", "sidechain", "deep"],
-  "macros": {"M1": 0.45, "M2": 0.6, "M3": 0.0, "M4": 0.3},
-  "dna": {"brightness": 0.3, "warmth": 0.65, "movement": 0.7, "density": 0.7, "space": 0.5, "aggression": 0.45},
+  "tags": [
+    "tectonic",
+    "slow evolve",
+    "Toronto",
+    "sidechain",
+    "deep"
+  ],
+  "macros": {
+    "M1": 0.45,
+    "M2": 0.6,
+    "M3": 0.0,
+    "M4": 0.3
+  },
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.45
+  },
   "parameters": {
     "ofr_transientSnap": 0.6,
     "ofr_transientPitch": 0.6,
@@ -25,5 +42,10 @@
     "ofr_v6_decay": 0.5,
     "ofr_v6_level": 0.9,
     "ofr_masterWidth": 0.55
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -16,6 +16,10 @@
 | ORBWEAVE | 2026-03-20 | Braid depth threshold (0.7+ for topology); Sine coupling purity (exact vs approximate); Torus star polygons (cinquefoil P=2,Q=5; golden torus P=5,Q=8); Topology Chimera (macroKNOT=0.5); Solomon two-ring chord architecture (strandTune=7.02); Velocity-Cutoff Threshold Law; 147 ghost params (velCutoff/velAmp) removed | 9 awakening presets (Foundation×3, Atmosphere×2, Prism×2, Flux×1, Aether×1) | 6 WEAVE-specific verses |
 | OVERTONE | 2026-03-20 | 69% of 307 presets use Phi constant (3 constants ignored); E constant at depth 7 creates near-unison beating cluster (unexplored); velBright=1.0 transforms whisper→full spectrum (zero presets used max); allpass resonator at 0.9 creates quasi-Karplus body; autonomous shimmer via macroCoupling (no partner needed); 0 Submerged presets despite Mesopelagic Zone mythos; Phi at depth 7 = actual golden ratio (rarely used) | 8 awakening presets (Foundation×2, Atmosphere×2, Prism×1, Flux×1, Aether×1, Submerged×1 — first-ever Submerged OVERTONE) | 6 OVER-specific verses |
 | ORGANISM | 2026-03-20 | freeze=1 used in only 3.3% of presets; mutation≥0.5 in only 1.8% (noise synthesis mode undiscovered); stepRate=32 continuous modulator mode never designed (2.7%); resonance≥0.7 creates emergent melody via resonant filter sweeping (3%); LFO floor 0.01 Hz in only 3.6% (D005 truth); macroSeed latch as performance instrument (9.6%); different MIDI notes = different organisms (note×257 XOR seed); Submerged catastrophically empty (2 presets); 8 ghost/missing param types fixed across 28 presets | 8 awakening presets (Submerged×2, Aether×1, Foundation×1, Atmosphere×1, Flux×1, Prism×1, Family×1) | 6 ORG-specific verses |
+| CELLAR quad (XOgre, XOlate, XOaken, XOmega) | 2026-03-23 | 48 refinements across 4 bass engines; gravitational coupling depth never explored; Fretless Walnut (OLATE) portamento range only partially used; OAKEN string age parameter at default in all presets; OMEGA synth bass blue underrepresented in high-register territory | 40 awakening presets (10/engine) | 12 scripture verses |
+| GARDEN quad (XOrchard, XOvergrow, XOsier, XOxalis) | 2026-03-23 | 48 refinements across 4 string engines; Growth Mode never pushed to extremes; OSIER wind density range upper half unexplored; OXALIS leaf tension modulation absent from majority of presets; ORCHARD bow pressure dynamics undifferentiated across moods | 40 awakening presets (10/engine) | 11 scripture verses |
+| BROTH quad (XOverwash, XOverworn, XOverflow, XOvercast) | 2026-03-23 | 50 refinements across 4 pad engines; 4 time scales (Fick/Clausius-Clapeyron/Wilson) underutilized; OVERWASH tide depth never at max; OVERCAST storm cloud density undifferentiated; OVERFLOW current speed used identically across most presets; 80 engine-local presets migrated to central registry | 40 awakening presets (10/engine) | 12 scripture verses |
+| FUSION quad (XOasis, XOddfellow, XOnkolo, XOpcode) | 2026-03-23 | Refinements across 4 EP engines; Spectral Fingerprint Cache underutilized in preset design; 5th slot mechanic never demonstrated as primary voice; ODDFELLOW spectral shift parameter avoided in conservative preset range; ONKOLO resonance core at default in most presets | 41 awakening presets | Scripture verses inscribed |
 
 ---
 
@@ -28,10 +32,14 @@
 | OVERTONE | 2026-03-20 | Retreat complete — 8 awakening presets, 0 ghost params, 6 verses inscribed | Done |
 | ORGANISM | 2026-03-20 | Retreat complete — 8 awakening presets, 8 ghost params + 108 missing params fixed, 6 verses inscribed | Done |
 | OBRIX | 2026-03-20 | Fab Five Gala complete — habitat story, 27 presets renamed, 7.2/10 sound score. Next: macro pass + Submerged deep pass | Ongoing |
+| CELLAR quad | 2026-03-23 | Retreat complete — 40 awakening presets, 48 refinements, 12 verses inscribed | Done |
+| GARDEN quad | 2026-03-23 | Retreat complete — 40 awakening presets, 48 refinements, 11 verses inscribed | Done |
+| BROTH quad | 2026-03-23 | Retreat complete — 40 awakening presets, 50 refinements, 12 verses inscribed, 80 presets migrated | Done |
+| FUSION quad | 2026-03-23 | Retreat complete — 41 awakening presets, refinements + scripture inscribed | Done |
 | OVERLAP | Never | Phase 4 complete, no seance yet | Medium |
 | OUTWIT | Never | Phase 4 complete, no seance yet | Medium |
 | OBSCURA | Never | 20 presets, moderate coverage | Low |
-| OCELOT | Never | 0 presets, lowest seance score (6.4/10) | High |
+| OCELOT | 2026-03-22 | Retreat complete (DONE) | Done |
 
 ---
 
@@ -100,7 +108,9 @@
 - Seance score 8.0/10 with 2 Blessing candidates (CIRCLE ghost cascade, physically-modeled world instruments)
 
 **Active Triggers:**
-- Next retreats: OVERLAP/OUTWIT (post-build, need seances first); OCELOT (0 presets, 6.4/10 — high priority)
+- All 6 Kitchen Collection quads retreated (Chef ✅, Kitchen ✅, Cellar ✅, Garden ✅, Broth ✅, Fusion ✅) — 2026-03-23
+- 161 new awakening presets written across 16 Kitchen Collection engines this session
+- Next retreats: OVERLAP/OUTWIT (post-build, need seances first)
 - OWLFISH coupling: once applyCouplingInput is wired, design receiving-end presets (OWLFISH as coupling target)
 - OCEANIC: design Saw/Pulse waveform presets (not yet explored); Poly4 + Murmuration behavior unknown
 - OSTINATO: 150+ preset generation pending; Beatbox circle unexplored; micro-tuning for non-Western scales; body model as macro target; extreme FIRE (industrial percussion)

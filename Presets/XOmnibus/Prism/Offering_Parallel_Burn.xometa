@@ -1,10 +1,27 @@
 {
   "name": "Parallel Burn",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["LA", "parallel compression", "aggressive", "saturated", "punchy"],
-  "macros": {"M1": 0.3, "M2": 0.7, "M3": 0.2, "M4": 0.25},
-  "dna": {"brightness": 0.65, "warmth": 0.6, "movement": 0.3, "density": 0.95, "space": 0.3, "aggression": 0.9},
+  "tags": [
+    "LA",
+    "parallel compression",
+    "aggressive",
+    "saturated",
+    "punchy"
+  ],
+  "macros": {
+    "M1": 0.3,
+    "M2": 0.7,
+    "M3": 0.2,
+    "M4": 0.25
+  },
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.95,
+    "space": 0.3,
+    "aggression": 0.9
+  },
   "parameters": {
     "ofr_transientSnap": 0.75,
     "ofr_transientPitch": 0.42,
@@ -29,5 +46,10 @@
     "ofr_v1_decay": 0.26,
     "ofr_v1_body": 0.65,
     "ofr_v4_body": 0.3
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 modern trap sub. Bright filter envelope click, long decay, sits across earbuds and club systems.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.75,
+    "movement": 0.1,
+    "density": 0.6,
+    "space": 0.25,
+    "aggression": 0.4
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Trap Core",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.0,
+      "ogre_drive": 0.55,
+      "ogre_rootDepth": 0.68,
+      "ogre_bodyResonance": 0.4,
+      "ogre_brightness": 1800.0,
+      "ogre_density": 0.38,
+      "ogre_soil": 0.05,
+      "ogre_tectonicRate": 0.012,
+      "ogre_tectonicDepth": 3.0,
+      "ogre_attack": 0.001,
+      "ogre_decay": 1.8,
+      "ogre_sustain": 0.88,
+      "ogre_release": 0.5,
+      "ogre_filterEnvAmount": 0.5,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.5,
+      "ogre_lfo1Rate": 0.5,
+      "ogre_lfo1Depth": 0.0,
+      "ogre_lfo2Rate": 1.0,
+      "ogre_lfo2Depth": 0.0,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "sub",
+    "trap",
+    "clean"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

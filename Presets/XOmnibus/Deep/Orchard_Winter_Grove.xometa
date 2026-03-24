@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Manual Winter (season=3), very low brightness (0.25), cutoff=3200 Hz, long release (4.0s). The string section in an empty concert hall in January. The most introverted orchestral preset in the fleet.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.2,
+    "density": 0.55,
+    "movement": 0.12,
+    "space": 0.6,
+    "warmth": 0.7
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Deep",
+  "name": "Winter Grove",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.22,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.25,
+      "orch_cutoff": 3200.0,
+      "orch_decay": 0.9,
+      "orch_detune": 8.0,
+      "orch_ensembleWidth": 0.65,
+      "orch_filterEnvAmt": 0.18,
+      "orch_formant": 0.28,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 25.0,
+      "orch_lfo1Depth": 0.08,
+      "orch_lfo1Rate": 0.15,
+      "orch_lfo1Shape": 0,
+      "orch_lfo2Depth": 0.04,
+      "orch_lfo2Rate": 0.06,
+      "orch_lfo2Shape": 0,
+      "orch_release": 4.0,
+      "orch_resonance": 0.1,
+      "orch_season": 3,
+      "orch_sustain": 0.82,
+      "orch_vibratoDepth": 0.16,
+      "orch_vibratoRate": 4.0,
+      "orch_warmth": 0.72
+    }
+  },
+  "tags": ["Garden", "Strings", "Orchestral", "Winter"],
+  "version": "1.0"
+}

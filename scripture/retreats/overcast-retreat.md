@@ -467,3 +467,71 @@ Because velocity controls `cast_numPeaks` rather than brightness, light touches 
 - **Freeze LFO phases during frozen state.** When `crystal.isFrozen`, stop advancing LFO phases. This is both a CPU saving and a philosophical correctness.
 - **Shatter preset series with tempo-sync.** The shatter gap is a rhythmic parameter. A tempo-sync option (`cast_shatterGapSync` as a note division) would let the crystal-break rhythm lock to the host BPM.
 - **Per-crystal timbral evolution.** After freezing, a very slow spectral drift (microtonal expansion of the lattice under thermal pressure) would create the impression of a frozen spectrum slowly thawing — a partial violation of the anti-pad philosophy that could be musically interesting.
+
+---
+
+## Phase R8: Parameter Refinements (2026-03-23)
+
+*Added during BROTH Quad Retreat.*
+
+| # | Parameter | Current Default | Recommended Default | Rationale |
+|---|-----------|----------------|---------------------|-----------|
+| R01 | `cast_freezeRate` | 0.10 s | **0.08 s** | 80ms produces a more decisive freeze while keeping enough crackle to make the crystallization audible. 100ms feels slightly prolonged before the lock-in. |
+| R02 | `cast_crystalSize` | 0.50 | **0.45** | 0.45 tilts toward smaller crystals — more evenly distributed amplitudes — which sounds cleaner on first play. |
+| R03 | `cast_numPeaks` | 8.0 | **7.0** | Seven gives a cleaner crystal structure at medium velocity while still allowing the full 16 peaks at maximum velocity. |
+| R04 | `cast_transition` | 1.0 (Crystal) | **1.0 (Crystal)** | Keep Crystal mode as default. It demonstrates the engine's unique mechanism without being abrupt (Instant) or disruptive (Shatter). |
+| R05 | `cast_latticeSnap` | 0.30 | **0.35** | 0.35 pushes the frozen crystal toward cleaner harmonic ratios — the frozen state sounds like a chord rather than an inharmonic cluster. |
+| R06 | `cast_purity` | 0.50 | **0.45** | 0.45 preserves slightly more crystal complexity while still providing audible purity filtering. |
+| R07 | `cast_crackle` | 0.40 | **0.50** | 0.50 makes the crystallization window clearly audible — the characteristic ice-forming sound is a key selling point. |
+| R08 | `cast_filterCutoff` | 8000.0 Hz | **6500.0 Hz** | 6500Hz gives a crystalline, glass-like character without the brittle high-frequency exposure of 8kHz. |
+| R09 | `cast_ampDecay` | 0.30 s | **0.50 s** | 500ms gives the frozen state room to establish before sustain takes over. |
+| R10 | `cast_ampRelease` | 1.00 s | **2.0 s** | The ice should melt slowly. 2 seconds gives the frozen crystal a lingering presence — it dissolves rather than snapping off. |
+| R11 | `cast_lfo1Rate` | 0.20 Hz | **0.15 Hz** | Slower rate produces subtler crystallization variation. At 0.15 Hz, the LFO has less chance of imposing rhythmic patterns on the transition window. |
+| R12 | `cast_stereoWidth` | 0.50 | **0.60** | 0.60 spreads the frozen spectrum across the stereo field in a way that emphasizes the spatial metaphor — ice covering a surface. |
+
+---
+
+## Phase R9: Scripture Verses (2026-03-23)
+
+**I. On Nucleation**
+*The ice does not begin everywhere at once.
+It begins at a point.
+One thermal fluctuation,
+one surface irregularity,
+one moment when the conditions aligned
+and the critical free energy barrier was crossed.
+From that point, the lattice propagates outward.
+The crystallization window is not the beginning.
+It is the announcement of a beginning
+that has already occurred.*
+
+**II. On Stasis**
+*Between triggers, nothing moves.
+The crystal exists without time.
+The partial frequencies are locked.
+The amplitudes are locked.
+The phase relationships are locked.
+There is no LFO sweeping through the frozen field.
+There is nothing to evolve.
+This is the philosophical statement of the engine:
+that a sound can simply be,
+without becoming anything else,
+without aspiring toward change,
+without the restlessness that living requires.
+The crystal is the sound that knows it is complete.*
+
+**III. On What the Anti-Pad Teaches**
+*Every other engine in the fleet moves.
+The diffusion spreads.
+The reduction concentrates.
+The pressure builds.
+And here: nothing.
+Not because the engine is simple.
+Because the engine has chosen stillness
+as the deepest form of expression.
+The musician who understands this
+will play OVERCAST differently —
+not as a pad to hold,
+but as a moment to capture.
+The note-on is the art.
+Everything after is just the frame.*

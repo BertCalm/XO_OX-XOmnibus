@@ -1,10 +1,27 @@
 {
   "name": "SP-1200 Dig",
-  "engine": "Offering",
   "mood": "Submerged",
-  "tags": ["SP-1200", "lo-fi", "bit crush", "vinyl", "sampler"],
-  "macros": {"M1": 0.0, "M2": 0.0, "M3": 0.0, "M4": 0.0},
-  "dna": {"brightness": 0.3, "warmth": 0.7, "movement": 0.4, "density": 0.7, "space": 0.2, "aggression": 0.6},
+  "tags": [
+    "SP-1200",
+    "lo-fi",
+    "bit crush",
+    "vinyl",
+    "sampler"
+  ],
+  "macros": {
+    "M1": 0.0,
+    "M2": 0.0,
+    "M3": 0.0,
+    "M4": 0.0
+  },
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.6
+  },
   "parameters": {
     "ofr_transientSnap": 0.6,
     "ofr_transientPitch": 0.42,
@@ -27,5 +44,10 @@
     "ofr_v1_decay": 0.22,
     "ofr_v3_decay": 0.5,
     "ofr_v6_decay": 0.4
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

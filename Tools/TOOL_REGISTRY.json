@@ -873,7 +873,13 @@
     },
     {
       "file": "xpn_smart_trim.py",
-      "category": "general",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_spectral_fingerprint.py",
+      "category": "sample-tools",
+      "description": "Spectral fingerprint analysis \u2014 computes brightness, centroid, ZCR, RMS, peak_freq from WAV files. Pure stdlib (no numpy). Used by cover art generator for sound-derived visuals.",
       "status": "active"
     },
     {
@@ -1020,6 +1026,13 @@
       "file": "xport_inspector.py",
       "category": "xpn-export",
       "description": "XPort Inspector (5th Legendary Feature) \u2014 inspects exported XPN packs for XDrip preview coverage, DNA Inheritance completeness, Coupling Snapshot presence, Rebirth Mode round-robin variation, and XPM rule compliance. Produces GO/NO-GO readiness score (0-100).",
+      "status": "active",
+      "legendary": true
+    },
+    {
+      "file": "xpn_loudness_ledger.py",
+      "category": "loudness",
+      "description": "Cross-Pack Loudness Ledger (Legend Feature #6) \u2014 persistent JSON ledger recording LUFS, true peak, and crest factor for every normalized sample. Phase 1: data recording. Phase 2: crest-compensated normalization targets for perceptual loudness consistency across all packs. CLI: python3 xpn_loudness_ledger.py stats",
       "status": "active",
       "legendary": true
     }

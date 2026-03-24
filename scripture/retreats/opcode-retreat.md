@@ -466,3 +466,425 @@ Same architecture as other FUSION engines. `opco_migration` (0–1) enables Spec
 *The algorithm is the recipe. The emotion is the meal.*
 
 *That is XOpcode: mathematics that became music, mathematics that became memory."*
+
+---
+
+# OPCODE — Second Retreat
+*Guru Bin — 2026-03-23 | Expanding the library to 30 presets. Filling the Producers Guild critical gaps. XOpcode scored 9.0/10 — the highest score in both quads combined. The second retreat honors this.*
+
+---
+
+## Phase R9: Parameter Refinements
+
+| # | Parameter | Current Default | Recommended Default | Reason |
+|---|-----------|-----------------|---------------------|--------|
+| 1 | `opco_ratio` | 2.0 | 1.0 | The DX EP's canonical ratio is 1:1, not 2:1. The default should match "E. Piano 1" — the most historically significant DX preset. A 1:1 ratio produces sidebands at 0, 2×, 3×... of the carrier — the bell quality of the second sideband is the DX EP sound. Ratio 2.0 creates a brighter, more metallic character. Start at 1.0. |
+| 2 | `opco_index` | 0.7 | 0.9 | 0.7 is slightly low at initial velocity — the DX EP had more harmonic complexity at its default. 0.9 creates a richer init patch that still has room to grow with velocity. |
+| 3 | `opco_brightness` | 10000.0 | 12000.0 | FM synthesis is naturally bright — the LP filter at 10000 Hz is barely perceptible. 12000 Hz opens the filter further, letting the full FM sideband spectrum breathe. The LP is there to tame aliasing, not to shape the tone. |
+| 4 | `opco_velToIndex` | 0.6 | 0.65 | 0.6 is good — 0.65 produces slightly more dramatic velocity response. The DX EP's dynamic character was one of its most expressive properties: hard playing produced dramatically brighter, more complex tones. |
+| 5 | `opco_decay` | 1.0 | 1.2 | 1.0s is slightly short for the long, singing decay of the DX EP. 1.2s allows the tone trajectory (bright attack → warm sustain) to develop fully before the note fades. |
+| 6 | `opco_sustain` | 0.5 | 0.45 | The DX EP's sustain level was moderate — 0.45 creates a natural decay curve that feels like the bell decaying toward a lower sustain value. |
+| 7 | `opco_release` | 0.6 | 0.8 | 0.6s release is slightly short — 0.8s allows the note to ring naturally after key-off, which is important for the bell-like sustain quality. |
+| 8 | `opco_modDecay` | 0.3 | 0.5 | The modulation envelope decay (controlling the FM index arc) at 0.3s creates a short bell-attack. 0.5s gives the FM brightness more time to resolve toward the sustain warmth — the "arrival" feeling that the council identified as the DX EP's emotional mechanism. |
+| 9 | `opco_modSustain` | 0.2 | 0.15 | The lower mod sustain (the warm, low-index sustain state) at 0.15 creates a more dramatic contrast between the bright attack and the warm sustain. The resolution is more pronounced. |
+| 10 | `opco_filterEnvAmt` | 0.3 | 0.25 | The FM index already controls brightness via the mod envelope. The filter envelope at 0.25 is a secondary brightness mechanism that doesn't compete with the primary FM arc. |
+| 11 | `opco_lfo1Depth` | 0.0 | 0.0 | Correct — no default vibrato. DX EP is already rich without LFO. |
+| 12 | `opco_feedback` | 0.0 | 0.0 | Keep at zero until feedback stability clamp is confirmed. The seance finding stands. |
+
+---
+
+## Phase R10: The Twenty Awakenings — Filling the Guild Gaps
+
+*Presets 11–30. Guild-identified gaps: classic E Piano 1 equivalent, ballad warmth, 80s pop bright, City Pop Tokyo, neo-soul digital, bell/marimba hybrid.*
+
+---
+
+### Preset 11: E Piano 1983 Classic
+
+**Mood:** Foundation | **Guild gap:** Classic E Piano 1 equivalent
+
+The closest XOpcode can come to the original DX7 Preset 11. Ratio 1:1, moderate index, moderate mod decay. The sound of 1983 in its most recognizable form.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series — the classic DX EP algorithm |
+| `opco_ratio` | 1.0 | The canonical DX EP ratio |
+| `opco_index` | 0.8 | Moderate — not too bright, not too pure |
+| `opco_feedback` | 0.0 | No feedback |
+| `opco_velToIndex` | 0.65 | Significant velocity sensitivity |
+| `opco_brightness` | 12000.0 | Open filter — FM brightness unhindered |
+| `opco_attack` | 0.005 | Fast |
+| `opco_decay` | 1.2 | Long |
+| `opco_sustain` | 0.45 | |
+| `opco_release` | 0.8 | Natural |
+| `opco_modAttack` | 0.001 | Instant mod attack — the bell hits immediately |
+| `opco_modDecay` | 0.5 | The FM arc resolves over 500ms — the "arrival" |
+| `opco_modSustain` | 0.15 | Low warm sustain |
+| `opco_filterEnvAmt` | 0.25 | Secondary brightness |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.3 | |
+| `opco_lfo1Depth` | 0.0 | |
+| `opco_macroCharacter` | 0.35 | |
+| `opco_macroMovement` | 0.0 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.45 | |
+
+**Why this works:** Ratio 1:1 with modDecay 0.5s and modSustain 0.15 creates the textbook DX EP trajectory: bright bell attack (high FM index at note onset) resolving to warm sine-piano sustain (low FM index). The velToIndex at 0.65 means playing dynamics translate to brightness changes — soft notes arrive at warmth immediately, hard notes have the full bright-to-warm arc. This is "E. Piano 1" in its essential form.
+
+---
+
+### Preset 12: DX Ballad Warmth
+
+**Mood:** Atmosphere | **Guild gap:** Ballad warmth — the DX EP as an emotional instrument
+
+The DX EP at its most accessible — long, warm sustain, minimal brightness at rest, the bell attack barely perceptible. For ballads where the electronic piano is being played with restraint and feeling.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series |
+| `opco_ratio` | 1.0 | |
+| `opco_index` | 0.5 | Low index — at rest, almost pure sine |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.8 | High velocity sensitivity — soft is pure, hard is bright |
+| `opco_brightness` | 11000.0 | |
+| `opco_attack` | 0.01 | Slightly slower — intimate rather than percussive |
+| `opco_decay` | 2.5 | Very long — the ballad sustains |
+| `opco_sustain` | 0.55 | High — chords ring |
+| `opco_release` | 1.5 | Long ring-out |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 0.8 | Slow FM arc — the brightness resolves very slowly |
+| `opco_modSustain` | 0.1 | Very warm sustain |
+| `opco_filterEnvAmt` | 0.2 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.08 | |
+| `opco_lfo1Depth` | 0.06 | Slight, very slow vibrato for emotional quality |
+| `opco_lfo2Rate` | 0.03 | |
+| `opco_lfo2Depth` | 0.04 | |
+| `opco_macroCharacter` | 0.3 | |
+| `opco_macroMovement` | 0.15 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.7 | Wide space for the ballad |
+
+**Why this works:** Low base index (0.5) means soft playing produces a nearly pure, warm sine tone — intimate and simple. High velToIndex (0.8) means hard notes have a dramatic bright-to-warm arc. The slow mod decay (0.8s) gives the arc time to resolve fully, creating the sense of emotional resolution the council described. Long release (1.5s) means chord voicings sustain and blend. For "Human Nature" — the Michael Jackson chord.
+
+---
+
+### Preset 13: 80s Pop Bright
+
+**Mood:** Prism | **Guild gap:** 80s pop bright — Toto, Journey, Foreigner era DX EP
+
+The bright, crystalline DX EP of 80s rock/pop production. High modulation index, faster decay, wide stereo (achieved via the keyboard spread), confident and present in a mix that also had gated reverb on the snare.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series |
+| `opco_ratio` | 2.0 | Ratio 2:1 — brighter, more metallic character |
+| `opco_index` | 1.4 | High index — complex at onset, still has character at sustain |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.7 | |
+| `opco_brightness` | 14000.0 | Very open |
+| `opco_attack` | 0.003 | Fast |
+| `opco_decay` | 1.0 | Medium — 80s EP was more compressed than jazz ballad |
+| `opco_sustain` | 0.5 | |
+| `opco_release` | 0.7 | |
+| `opco_modAttack` | 0.001 | Instant — the bell attack is the point |
+| `opco_modDecay` | 0.3 | Fast — the 80s sound is quick to resolve |
+| `opco_modSustain` | 0.25 | Higher mod sustain — the bright character persists |
+| `opco_filterEnvAmt` | 0.35 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.5 | |
+| `opco_lfo1Depth` | 0.08 | Slight DX vibrato — the 80s player used modulation wheel for vibrato |
+| `opco_lfo2Rate` | 0.8 | |
+| `opco_lfo2Depth` | 0.06 | |
+| `opco_macroCharacter` | 0.4 | |
+| `opco_macroMovement` | 0.4 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.6 | |
+
+**Why this works:** Ratio 2:1 creates a brighter, more metallic sideband structure than the 1:1 ratio. Higher index (1.4) with faster mod decay (0.3s) creates the quick bell flash that resolves to a moderately bright sustain (mod sustain 0.25) — the 80s character was not as warm as the jazz ballad. The slight LFO1 vibrato is characteristic of 80s player technique.
+
+---
+
+### Preset 14: Tokyo City Pop
+
+**Mood:** Luminous | **Guild gap:** City Pop Tokyo — Tatsuro Yamashita, Anri, Mariya Takeuchi
+
+The City Pop DX EP is the most specifically Japanese application of the instrument — warm, slightly processed, with a distinctive sheen from the modulation index. Anri's "Heavenly Kiss" (1985). Tatsuro Yamashita's entire catalog.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series |
+| `opco_ratio` | 1.5 | Between 1:1 and 2:1 — City Pop sat between jazz warmth and pop brightness |
+| `opco_index` | 1.0 | Medium — the City Pop EP was not the extreme in either direction |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.62 | |
+| `opco_brightness` | 12000.0 | |
+| `opco_attack` | 0.005 | |
+| `opco_decay` | 1.5 | Long — City Pop had long, lush production |
+| `opco_sustain` | 0.5 | |
+| `opco_release` | 1.0 | |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 0.6 | Medium-slow — the bell resolves gracefully |
+| `opco_modSustain` | 0.18 | |
+| `opco_filterEnvAmt` | 0.28 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.4 | |
+| `opco_lfo1Depth` | 0.07 | Subtle vibrato — City Pop was smooth, not aggressive |
+| `opco_lfo2Rate` | 0.15 | |
+| `opco_lfo2Depth` | 0.04 | |
+| `opco_macroCharacter` | 0.35 | |
+| `opco_macroMovement` | 0.3 | City Pop has gentle movement |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.65 | Spacious — City Pop production was always wide |
+
+**Why this works:** Ratio 1.5 creates a sideband structure between the warmth of 1:1 and the brightness of 2:1 — the hybrid position that characterized City Pop's approach to the DX EP. The long amp decay (1.5s) and spacious macro (0.65) give the instrument the lush, wide quality of the Yen production era. The subtle vibrato (0.07) is present but not assertive — City Pop's polish.
+
+---
+
+### Preset 15: Neo-Soul Digital
+
+**Mood:** Organic | **Guild gap:** Neo-soul digital — Erykah Badu, Kendrick era DX EP
+
+The neo-soul digital Rhodes — not the analog warmth but the digital clarity used as an analog warmth aesthetic. The DX EP in a context that celebrates its mathematical nature rather than hiding it.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series |
+| `opco_ratio` | 1.0 | Back to 1:1 — neo-soul wants the warm sideband |
+| `opco_index` | 0.75 | Moderate — present but not aggressive |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.7 | High velocity sensitivity |
+| `opco_brightness` | 11000.0 | |
+| `opco_attack` | 0.008 | Slightly rounded — neo-soul has intimacy |
+| `opco_decay` | 2.0 | Long |
+| `opco_sustain` | 0.52 | |
+| `opco_release` | 1.2 | |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 0.7 | Slow arc — the warmth arrives gently |
+| `opco_modSustain` | 0.12 | Very warm sustain |
+| `opco_filterEnvAmt` | 0.22 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.06 | |
+| `opco_lfo1Depth` | 0.08 | Subtle — neo-soul vibrato is tasteful |
+| `opco_lfo2Rate` | 0.025 | Slow filter drift |
+| `opco_lfo2Depth` | 0.05 | |
+| `opco_macroCharacter` | 0.4 | |
+| `opco_macroMovement` | 0.2 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.6 | |
+
+**Why this works:** The slow mod decay (0.7s) and very warm mod sustain (0.12) create the neo-soul digital quality: the initial brightness resolves slowly toward a sustained warmth that is clearly electronic but emotionally warm. This is the DX EP used as an aesthetic tool — the mathematical nature celebrated, not hidden. For producers who want the digital piano to sound deliberate.
+
+---
+
+### Preset 16: Bell Marimba Hybrid
+
+**Mood:** Aether | **Guild gap:** Bell/marimba hybrid — FM at its most percussive
+
+FM synthesis can produce sounds that are clearly bell-like or clearly marimba-like depending on the ratio and index. This preset explores the hybrid territory between them — bright and metallic at attack, wooden at sustain.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series |
+| `opco_ratio` | 3.5 | High ratio — bell territory |
+| `opco_index` | 1.8 | High — lots of sidebands, complex bell spectrum |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.75 | |
+| `opco_brightness` | 14000.0 | Maximum — bell brightness |
+| `opco_attack` | 0.001 | Instant mallet |
+| `opco_decay` | 2.8 | Long — bells ring |
+| `opco_sustain` | 0.2 | Low — the ring decays, it doesn't sustain |
+| `opco_release` | 2.0 | Very long ring-out |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 0.2 | Fast — the metallic attack is brief |
+| `opco_modSustain` | 0.3 | Higher mod sustain — residual brightness remains |
+| `opco_filterEnvAmt` | 0.45 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.1 | |
+| `opco_lfo1Depth` | 0.05 | Very slight — bell resonance drift |
+| `opco_lfo2Rate` | 0.04 | |
+| `opco_lfo2Depth` | 0.04 | |
+| `opco_macroCharacter` | 0.4 | |
+| `opco_macroMovement` | 0.0 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.8 | Bell needs space |
+
+**Why this works:** Ratio 3.5 creates sidebands at carrier ± 3.5×, ± 7×, ± 10.5× — an inharmonic bell spectrum. Index 1.8 at attack creates complex metallic brightness. The fast mod decay (0.2s) and higher mod sustain (0.3) means the metallic brightness fades quickly but doesn't disappear completely — the sustain still has metallic quality. Long amp decay (2.8s) with low sustain creates the bell ring-out. This is an FM sound that plays well on piano keyboards as melodic percussion.
+
+---
+
+### Preset 17: Feedback Texture (Safe)
+
+**Mood:** Flux | **Extra depth:** Algorithm 2 feedback at conservative settings
+
+Using the feedback algorithm at conservative values (0.0–0.2) as confirmed safe by the seance finding. The feedback produces a harmonically richer, slightly unstable character.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 2 | Feedback mode |
+| `opco_ratio` | 1.0 | |
+| `opco_index` | 0.6 | Lower index — the feedback adds complexity |
+| `opco_feedback` | 0.15 | Conservative — within safe seance range |
+| `opco_velToIndex` | 0.6 | |
+| `opco_brightness` | 11000.0 | |
+| `opco_attack` | 0.005 | |
+| `opco_decay` | 1.3 | |
+| `opco_sustain` | 0.48 | |
+| `opco_release` | 0.8 | |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 0.45 | |
+| `opco_modSustain` | 0.18 | |
+| `opco_filterEnvAmt` | 0.28 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.3 | |
+| `opco_lfo1Depth` | 0.06 | |
+| `opco_lfo2Rate` | 0.4 | |
+| `opco_lfo2Depth` | 0.05 | |
+| `opco_macroCharacter` | 0.4 | |
+| `opco_macroMovement` | 0.35 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.5 | |
+
+**Why this works:** Feedback at 0.15 is within the safe range — the modulator's self-feedback adds a subtle harmonic enrichment without instability. The result is an FM EP with slightly more complexity than the pure series algorithm — a hint of metallic character, more harmonic density. The feedback mode is labeled as texture because the macro MOVEMENT can push it further.
+
+---
+
+### Preset 18: Parallel Organ Hybrid
+
+**Mood:** Foundation | **Extra depth:** Algorithm 1 parallel — modulator and carrier combined additively
+
+The parallel algorithm creates an organ-like character — two sine waves (carrier at fundamental, modulator at ratio×fundamental) summed directly. This creates a pitched tone with additive harmonic structure.
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 1 | Parallel mode |
+| `opco_ratio` | 2.0 | Modulator at octave — octave register organ character |
+| `opco_index` | 1.5 | Higher index in parallel mode scales the modulator level |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.5 | |
+| `opco_brightness` | 10000.0 | |
+| `opco_attack` | 0.01 | Slight attack ramp — organ-like |
+| `opco_decay` | 1.5 | |
+| `opco_sustain` | 0.65 | Higher — organ sustains |
+| `opco_release` | 0.8 | |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 1.0 | Very slow mod decay — the parallel character holds |
+| `opco_modSustain` | 0.6 | High mod sustain — the register is maintained |
+| `opco_filterEnvAmt` | 0.2 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.5 | |
+| `opco_lfo1Depth` | 0.0 | |
+| `opco_macroCharacter` | 0.3 | |
+| `opco_macroMovement` | 0.0 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.5 | |
+
+**Why this works:** In parallel mode, the modulator's output is added to the carrier rather than phase-modulating it. With ratio 2.0, the modulator produces the octave register. The high mod sustain (0.6) means the octave register remains throughout the note — creating an organ-like two-register additive character. Slow attack (0.01s) reinforces the organ aesthetic.
+
+---
+
+### Preset 19: Algorithm Migration
+
+**Mood:** Entangled | **Extra depth:** Maximum Kitchen coupling with FM synthesis
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series |
+| `opco_ratio` | 1.0 | |
+| `opco_index` | 0.9 | |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.65 | |
+| `opco_brightness` | 12000.0 | |
+| `opco_attack` | 0.005 | |
+| `opco_decay` | 1.5 | |
+| `opco_sustain` | 0.5 | |
+| `opco_release` | 1.0 | |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 0.55 | |
+| `opco_modSustain` | 0.15 | |
+| `opco_filterEnvAmt` | 0.25 | |
+| `opco_migration` | 0.85 | High migration |
+| `opco_lfo1Rate` | 0.2 | |
+| `opco_lfo1Depth` | 0.12 | Higher LFO under coupling |
+| `opco_lfo2Rate` | 0.6 | |
+| `opco_lfo2Depth` | 0.1 | |
+| `opco_macroCharacter` | 0.45 | |
+| `opco_macroMovement` | 0.5 | |
+| `opco_macroCoupling` | 0.85 | COUPLING elevated |
+| `opco_macroSpace` | 0.55 | |
+
+**Why this works:** FM synthesis absorbing acoustic Kitchen character — the mathematical purity of FM encountering the physical world of Oven/Ochre/Obelisk/Opaline. The migration at 0.85 means the carrier-modulator relationship is influenced by the coupled engine's impedance and spectral centroid. The mathematical becomes entangled with the physical. Stanford meets a kitchen.
+
+---
+
+### Preset 20: Pure Mathematics
+
+**Mood:** Crystalline | **Extra depth:** FM in its most transparent form — near-sine at very low index
+
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `opco_algorithm` | 0 | Series |
+| `opco_ratio` | 1.0 | |
+| `opco_index` | 0.1 | Very low — nearly pure sine carrier |
+| `opco_feedback` | 0.0 | |
+| `opco_velToIndex` | 0.9 | Very high — velocity IS the modulation |
+| `opco_brightness` | 14000.0 | Open — nothing to hide at low index |
+| `opco_attack` | 0.003 | Fast |
+| `opco_decay` | 3.0 | Very long — the pure sine rings |
+| `opco_sustain` | 0.3 | Low — the sine decays naturally |
+| `opco_release` | 2.0 | Very long ring-out |
+| `opco_modAttack` | 0.001 | |
+| `opco_modDecay` | 0.4 | |
+| `opco_modSustain` | 0.05 | Near-zero — sustain is pure sine |
+| `opco_filterEnvAmt` | 0.15 | |
+| `opco_migration` | 0.0 | |
+| `opco_lfo1Rate` | 0.06 | |
+| `opco_lfo1Depth` | 0.04 | Very slight — the sine breathes |
+| `opco_lfo2Rate` | 0.02 | |
+| `opco_lfo2Depth` | 0.03 | |
+| `opco_macroCharacter` | 0.1 | |
+| `opco_macroMovement` | 0.0 | |
+| `opco_macroCoupling` | 0.0 | |
+| `opco_macroSpace` | 0.75 | |
+
+**Why this works:** At base index 0.1, the FM output is nearly pure sine. But velToIndex at 0.9 means hard playing produces high FM index at the attack — and that index arcs back down to near-pure sine at sustain. The note begins complex and resolves to purity. The very high velocity sensitivity means dynamics produce the maximum possible FM trajectory. This is FM at its most elemental: a dynamic spectrum that starts complex and arrives at simplicity.
+
+---
+
+## Phase R11: Second Scripture
+
+### Verse V — The Algorithm
+
+*Series: the modulator drives the carrier.*
+*Parallel: both voices speak together.*
+*Feedback: the modulator listens to itself.*
+*Three configurations.*
+*Thirty-two algorithms on the DX7 were*
+*variations on these three principles.*
+*The principle is the thing.*
+
+### Verse VI — The Ratio
+
+*1.0: warmth. The sidebands cluster near the carrier.*
+*2.0: brightness. The sidebands reach farther.*
+*3.5: bell. The spectrum is inharmonic, metallic.*
+*0.5: fullness. Sub-octave modulation.*
+*The ratio is the instrument.*
+*A single knob.*
+*An infinite palette.*
+
+### Verse VII — The Trajectory
+
+*The bell attack is not the sound.*
+*The warm sustain is not the sound.*
+*The trajectory from one to the other*
+*is the sound.*
+*The Bessel function amplitudes change*
+*as the modulation index falls.*
+*The brain hears this as resolution.*
+*As arrival.*
+*As something that was bright*
+*becoming warm.*
+*This is why the DX EP is emotional.*
+*Not because mathematics is emotional.*
+*Because resolution is.*

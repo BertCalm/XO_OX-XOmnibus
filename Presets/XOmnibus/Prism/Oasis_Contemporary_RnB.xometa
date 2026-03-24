@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Contemporary R&B",
+  "mood": "Prism",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "2020s R&B Rhodes — SZA, Frank Ocean era. High brightness, fast tremolo, wide stereo, sits in a dense contemporary mix. The Rhodes as a modern production tool.",
+  "tags": ["rhodes", "rnb", "contemporary", "bright", "modern", "prism"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.38,
+    "movement": 0.62,
+    "density": 0.5,
+    "space": 0.62,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oasis": {
+      "oasis_warmth": 0.38,
+      "oasis_bell": 0.58,
+      "oasis_brightness": 8000.0,
+      "oasis_tremRate": 6.5,
+      "oasis_tremDepth": 0.48,
+      "oasis_attack": 0.003,
+      "oasis_decay": 1.5,
+      "oasis_sustain": 0.5,
+      "oasis_release": 0.6,
+      "oasis_filterEnvAmt": 0.55,
+      "oasis_migration": 0.0,
+      "oasis_stereoWidth": 0.7,
+      "oasis_bendRange": 2.0,
+      "oasis_macroCharacter": 0.35,
+      "oasis_macroMovement": 0.6,
+      "oasis_macroCoupling": 0.0,
+      "oasis_macroSpace": 0.6,
+      "oasis_lfo1Rate": 0.5,
+      "oasis_lfo1Depth": 0.06,
+      "oasis_lfo1Shape": 0,
+      "oasis_lfo2Rate": 1.5,
+      "oasis_lfo2Depth": 0.08,
+      "oasis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

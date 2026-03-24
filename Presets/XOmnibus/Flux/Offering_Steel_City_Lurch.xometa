@@ -1,10 +1,27 @@
 {
   "name": "Steel City Lurch",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["Detroit", "industrial", "drunk", "heavy", "grinding"],
-  "macros": {"M1": 0.25, "M2": 0.85, "M3": 0.0, "M4": 0.5},
-  "dna": {"brightness": 0.2, "warmth": 0.7, "movement": 0.68, "density": 0.75, "space": 0.25, "aggression": 0.85},
+  "tags": [
+    "Detroit",
+    "industrial",
+    "drunk",
+    "heavy",
+    "grinding"
+  ],
+  "macros": {
+    "M1": 0.25,
+    "M2": 0.85,
+    "M3": 0.0,
+    "M4": 0.5
+  },
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.68,
+    "density": 0.75,
+    "space": 0.25,
+    "aggression": 0.85
+  },
   "parameters": {
     "ofr_transientSnap": 0.55,
     "ofr_transientSat": 0.6,
@@ -28,5 +45,10 @@
     "ofr_v1_decay": 0.38,
     "ofr_v1_body": 0.7,
     "ofr_masterLevel": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -1,10 +1,27 @@
 {
   "name": "Knot Theory",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["coupling matrix", "complex", "intertwined", "LA", "mathematical"],
-  "macros": {"M1": 0.65, "M2": 0.6, "M3": 0.92, "M4": 0.0},
-  "dna": {"brightness": 0.55, "warmth": 0.45, "movement": 0.7, "density": 0.9, "space": 0.55, "aggression": 0.6},
+  "tags": [
+    "coupling matrix",
+    "complex",
+    "intertwined",
+    "LA",
+    "mathematical"
+  ],
+  "macros": {
+    "M1": 0.65,
+    "M2": 0.6,
+    "M3": 0.92,
+    "M4": 0.0
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.7,
+    "density": 0.9,
+    "space": 0.55,
+    "aggression": 0.6
+  },
   "parameters": {
     "ofr_flipLayers": 3,
     "ofr_flipChop": 0.7,
@@ -26,5 +43,10 @@
     "ofr_envToPitch": 0.18,
     "ofr_masterWidth": 0.78,
     "ofr_v0_body": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

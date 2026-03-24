@@ -1,10 +1,27 @@
 {
   "name": "Torn Fabric",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["glitch", "torn", "collage", "ring mod", "dissonant"],
-  "macros": {"M1": 0.6, "M2": 0.05, "M3": 0.9, "M4": 0.3},
-  "dna": {"brightness": 0.55, "warmth": 0.25, "movement": 0.85, "density": 0.6, "space": 0.7, "aggression": 0.65},
+  "tags": [
+    "glitch",
+    "torn",
+    "collage",
+    "ring mod",
+    "dissonant"
+  ],
+  "macros": {
+    "M1": 0.6,
+    "M2": 0.05,
+    "M3": 0.9,
+    "M4": 0.3
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.25,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.65
+  },
   "parameters": {
     "ofr_transientSnap": 0.58,
     "ofr_transientPitch": 0.35,
@@ -29,5 +46,10 @@
     "ofr_v0_tune": -4.0,
     "ofr_v6_tune": 8.0,
     "ofr_v7_tune": -12.0
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

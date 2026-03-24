@@ -1,0 +1,49 @@
+{
+  "name": "Explosive Valve",
+  "engines": [
+    "Overflow"
+  ],
+  "author": "XO_OX Designs",
+  "description": "The lid blowing \u2014 full catastrophic pressure release, silence, restart. Designed for monophonic use where the valve event is part of the musical grammar.",
+  "mood": "Flux",
+  "tags": [
+    "pad",
+    "pressure",
+    "experimental",
+    "evolving"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.5,
+    "SPACE": 0.72
+  },
+  "dna": {
+    "warmth": 0.4,
+    "complexity": 0.65,
+    "movement": 0.7,
+    "brightness": 0.65,
+    "aggression": 0.55
+  },
+  "params": {
+    "flow_threshold": 0.55,
+    "flow_accumRate": 0.7,
+    "flow_valveType": 1,
+    "flow_vesselSize": 0.45,
+    "flow_strainColor": 0.72,
+    "flow_releaseTime": 0.35,
+    "flow_ampAttack": 0.18,
+    "flow_ampDecay": 0.5,
+    "flow_ampSustain": 0.9,
+    "flow_ampRelease": 2.0,
+    "flow_filterCutoff": 7500.0,
+    "flow_filterRes": 0.28,
+    "flow_filtEnvAmount": 0.4,
+    "flow_lfo1Rate": 0.15,
+    "flow_lfo1Depth": 0.3,
+    "flow_lfo2Rate": 0.07,
+    "flow_lfo2Depth": 0.22,
+    "flow_stereoWidth": 0.72,
+    "flow_level": 0.8
+  }
+}

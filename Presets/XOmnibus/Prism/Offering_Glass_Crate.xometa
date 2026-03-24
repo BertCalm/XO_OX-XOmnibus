@@ -1,10 +1,27 @@
 {
   "name": "Glass Crate",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["bright", "sample", "LA", "transparent", "compressed"],
-  "macros": {"M1": 0.2, "M2": 0.5, "M3": 0.4, "M4": 0.05},
-  "dna": {"brightness": 0.85, "warmth": 0.3, "movement": 0.45, "density": 0.8, "space": 0.4, "aggression": 0.55},
+  "tags": [
+    "bright",
+    "sample",
+    "LA",
+    "transparent",
+    "compressed"
+  ],
+  "macros": {
+    "M1": 0.2,
+    "M2": 0.5,
+    "M3": 0.4,
+    "M4": 0.05
+  },
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.3,
+    "movement": 0.45,
+    "density": 0.8,
+    "space": 0.4,
+    "aggression": 0.55
+  },
   "parameters": {
     "ofr_transientSnap": 0.78,
     "ofr_transientPitch": 0.48,
@@ -24,5 +41,10 @@
     "ofr_velToSnap": 0.7,
     "ofr_v0_body": 0.6,
     "ofr_v1_body": 0.4
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

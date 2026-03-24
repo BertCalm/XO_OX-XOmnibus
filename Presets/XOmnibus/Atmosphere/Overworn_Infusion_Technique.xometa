@@ -1,0 +1,45 @@
+{
+  "name": "Infusion Technique",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "The quiet long tone \u2014 adding character without accelerating reduction. Very low heat. Hold chords. Japanese dashi rather than French fond.",
+  "mood": "Atmosphere",
+  "tags": [
+    "pad",
+    "warm",
+    "ambient",
+    "evolving"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "dna": {
+    "warmth": 0.72,
+    "complexity": 0.65,
+    "movement": 0.1,
+    "brightness": 0.52,
+    "aggression": 0.03
+  },
+  "params": {
+    "worn_reductionRate": 0.3,
+    "worn_heat": 0.2,
+    "worn_richness": 1.0,
+    "worn_maillard": 0.12,
+    "worn_umamiDepth": 0.7,
+    "worn_sessionTarget": 45.0,
+    "worn_filterCutoff": 6800.0,
+    "worn_filterRes": 0.1,
+    "worn_ampAttack": 0.5,
+    "worn_ampSustain": 0.95,
+    "worn_ampRelease": 6.0,
+    "worn_lfo1Rate": 0.05,
+    "worn_lfo1Depth": 0.1,
+    "worn_stereoWidth": 0.5,
+    "worn_level": 0.78
+  }
+}

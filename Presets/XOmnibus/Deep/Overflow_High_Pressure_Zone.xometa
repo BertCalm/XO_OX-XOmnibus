@@ -1,0 +1,48 @@
+{
+  "name": "High Pressure Zone",
+  "engines": [
+    "Overflow"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Constant near-threshold operation \u2014 always on the edge. Maximum strain color; even a single note triggers audible strain hardening.",
+  "mood": "Deep",
+  "tags": [
+    "pad",
+    "pressure",
+    "dark",
+    "cinematic",
+    "experimental"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.5,
+    "SPACE": 0.7
+  },
+  "dna": {
+    "warmth": 0.4,
+    "complexity": 0.55,
+    "movement": 0.4,
+    "brightness": 0.35,
+    "aggression": 0.55
+  },
+  "params": {
+    "flow_threshold": 0.45,
+    "flow_accumRate": 0.5,
+    "flow_valveType": 0,
+    "flow_vesselSize": 0.52,
+    "flow_strainColor": 0.8,
+    "flow_releaseTime": 0.55,
+    "flow_ampAttack": 0.22,
+    "flow_ampDecay": 0.6,
+    "flow_ampSustain": 0.88,
+    "flow_ampRelease": 2.0,
+    "flow_filterCutoff": 4500.0,
+    "flow_filterRes": 0.3,
+    "flow_filtEnvAmount": 0.42,
+    "flow_lfo1Rate": 0.14,
+    "flow_lfo1Depth": 0.28,
+    "flow_stereoWidth": 0.7,
+    "flow_level": 0.84
+  }
+}

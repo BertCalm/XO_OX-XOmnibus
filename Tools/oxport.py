@@ -151,6 +151,7 @@ class PipelineContext:
                  pack_name: Optional[str] = None,
                  dry_run: bool = False,
                  strict_qa: bool = False,
+                 auto_fix: bool = False,
                  tuning: Optional[str] = None,
                  choke_preset: str = "none",
                  round_robin: bool = True):
@@ -163,6 +164,7 @@ class PipelineContext:
         self.pack_name = pack_name or f"XO_OX {engine}"
         self.dry_run = dry_run
         self.strict_qa = strict_qa
+        self.auto_fix = auto_fix  # Apply safe auto-fixes (DC_OFFSET, ATTACK_PRESENCE, SILENCE_TAIL)
         self.tuning = tuning  # Optional tuning system name (from xpn_tuning_systems)
         self.choke_preset = choke_preset  # "onset" | "standard" | "none"
         self.round_robin = round_robin  # Enable round-robin layer support (default: on)
@@ -170,6 +172,10 @@ class PipelineContext:
         # Accumulated outputs
         self.render_specs: list[dict] = []
         self.categories: dict = {}
+        # Per-sample 6D Sonic DNA cache: {wav_stem_lower: dna_dict}
+        # Populated by categorize stage, consumed by export stage for
+        # Legend Feature #1 — Sonic DNA Velocity Sculpting.
+        self.sample_dna_cache: dict = {}
         self.expanded_files: list[str] = []
         self.xpm_paths: list[Path] = []
         self.cover_paths: dict = {}
@@ -292,13 +298,13 @@ def _stage_categorize(ctx: PipelineContext) -> None:
         print("    [SKIP] No --wavs-dir provided or directory does not exist")
         return
 
-    # DNA pre-flight: sample up to 5 WAVs and report sonic character
+    # DNA pre-flight + full per-sample DNA cache (Legend Feature #1 — Sonic DNA Velocity Sculpting)
     try:
         import xpn_auto_dna as _dna  # lazy import
-        wav_sample = sorted(ctx.wavs_dir.glob("*.wav"))[:5] + \
-                     sorted(ctx.wavs_dir.glob("*.WAV"))[:5]
-        wav_sample = wav_sample[:5]
+        all_wavs = sorted(ctx.wavs_dir.glob("*.wav")) + sorted(ctx.wavs_dir.glob("*.WAV"))
+        wav_sample = all_wavs[:5]
         if wav_sample:
+            # Pre-flight summary (first 5 WAVs)
             results = [_dna.compute_dna(str(p)) for p in wav_sample]
             brightness  = sum(r.get("brightness",  0.0) for r in results) / len(results)
             warmth      = sum(r.get("warmth",      0.0) for r in results) / len(results)
@@ -306,9 +312,22 @@ def _stage_categorize(ctx: PipelineContext) -> None:
             print(f"    DNA pre-flight: brightness={brightness:.2f}, "
                   f"warmth={warmth:.2f}, aggression={aggression:.2f}")
             if aggression > 0.8:
-                print("    ⚡ High aggression pack — consider tagging as 'aggressive'")
+                print("    High aggression pack — consider tagging as 'aggressive'")
             if brightness < 0.3:
-                print("    🌊 Dark/deep pack — consider tagging as 'dark'")
+                print("    Dark/deep pack — consider tagging as 'dark'")
+
+        # Full DNA scan: populate ctx.sample_dna_cache for every WAV so the
+        # export stage can use per-sample DNA for velocity curve sculpting.
+        n_dna = 0
+        for wav_path in all_wavs:
+            try:
+                dna = _dna.compute_dna(str(wav_path))
+                ctx.sample_dna_cache[wav_path.stem.lower()] = dna
+                n_dna += 1
+            except Exception:
+                pass
+        if n_dna:
+            print(f"    DNA cache: {n_dna} sample(s) analyzed (velocity sculpting enabled)")
     except (ImportError, Exception):
         pass  # module not available or analysis failed — skip silently
 
@@ -389,10 +408,12 @@ def _stage_qa(ctx: PipelineContext) -> None:
         print(f"    [DRY] Would run QA on {len(wav_paths)} WAV file(s)")
         return
 
-    print(f"    Checking {len(wav_paths)} WAV file(s)...")
+    print(f"    Checking {len(wav_paths)} WAV file(s)..."
+          + (" (auto-fix enabled)" if ctx.auto_fix else ""))
 
     n_pass   = 0
     n_fail   = 0
+    n_fixed  = 0
     warnings: list[str] = []   # issue descriptions for blocking/non-blocking issues
     abort_issues = {"CLIPPING", "PHASE_CANCELLED"}
 
@@ -400,6 +421,20 @@ def _stage_qa(ctx: PipelineContext) -> None:
         result = xpn_qa_checker.check_file(wav_path)
         overall = result.get("overall", "ERROR")
         issues  = result.get("issues", [])
+
+        # Auto-remediation: apply safe fixes and re-check before counting
+        if ctx.auto_fix and issues:
+            fixable = [i for i in issues if i in xpn_qa_checker.AUTO_FIX_SAFE]
+            if fixable:
+                fixed = xpn_qa_checker.auto_remediate(wav_path, fixable)
+                for fix in fixed:
+                    n_fixed += 1
+                    print(f"      [QA] Auto-fixed {fix} in {wav_path.name}")
+                if fixed:
+                    # Re-run QA on the now-modified file
+                    result = xpn_qa_checker.check_file(wav_path)
+                    overall = result.get("overall", "ERROR")
+                    issues  = result.get("issues", [])
 
         if overall == "PASS":
             n_pass += 1
@@ -411,11 +446,12 @@ def _stage_qa(ctx: PipelineContext) -> None:
                 print(f"      [WARN] {desc}")
 
     total = n_pass + n_fail
+    fix_str = f", {n_fixed} auto-fix{'es' if n_fixed != 1 else ''} applied" if n_fixed else ""
     if warnings:
-        summary = f"QA: {n_pass}/{total} passed ({len(warnings)} warning(s): {'; '.join(warnings[:3])}" + \
+        summary = f"QA: {n_pass}/{total} passed{fix_str} ({len(warnings)} warning(s): {'; '.join(warnings[:3])}" + \
                   (" ..." if len(warnings) > 3 else "") + ")"
     else:
-        summary = f"QA: {n_pass}/{total} passed"
+        summary = f"QA: {n_pass}/{total} passed{fix_str}"
     print(f"    {summary}")
 
     # Abort logic
@@ -533,12 +569,107 @@ def _stage_smart_trim(ctx: PipelineContext) -> None:
     print(f"    Trimmed: {n_trimmed}, Skipped: {n_skipped}")
 
 
+def _apply_dna_velocity_sculpting(ctx: PipelineContext) -> None:
+    """Apply per-sample Sonic DNA velocity curve morphing to generated XPMs.
+
+    Legend Feature #1: velocity curves shaped by the actual sonic character
+    of each sample, not just its instrument category.
+
+    Requires xpn_adaptive_velocity.dna_to_velocity_curve and
+    ctx.sample_dna_cache populated during the categorize stage.
+    """
+    try:
+        import xml.etree.ElementTree as ET
+        from xpn_adaptive_velocity import (
+            dna_to_velocity_curve,
+            get_instrument_wav,
+            get_instrument_layers,
+            set_layer_velocity_bounds,
+            interpolate_boundaries,
+            indent_tree,
+            VELOCITY_CURVES,
+        )
+        from xpn_classify_instrument import classify_wav
+    except ImportError as exc:
+        print(f"    [WARN] DNA velocity sculpting unavailable: {exc}")
+        return
+
+    n_sculpted = 0
+    for xpm_path in ctx.xpm_paths:
+        if not xpm_path.exists():
+            continue
+        try:
+            tree = ET.parse(xpm_path)
+            root = tree.getroot()
+            instruments = root.findall(".//Instrument")
+            changed = False
+
+            for instrument in instruments:
+                wav_ref = get_instrument_wav(instrument)
+                if not wav_ref:
+                    continue
+
+                # Resolve DNA: check cache by stem (case-insensitive)
+                import os as _os
+                stem = _os.path.splitext(_os.path.basename(wav_ref))[0].lower()
+                sample_dna = ctx.sample_dna_cache.get(stem)
+                if sample_dna is None:
+                    continue  # no DNA for this sample — leave curve as-is
+
+                # Classify to get instrument type for the base curve
+                wav_path = None
+                if ctx.samples_dir.exists():
+                    candidates = list(ctx.samples_dir.rglob(_os.path.basename(wav_ref)))
+                    if candidates:
+                        wav_path = str(candidates[0])
+                if wav_path is None and ctx.wavs_dir and ctx.wavs_dir.exists():
+                    candidates = list(ctx.wavs_dir.rglob(_os.path.basename(wav_ref)))
+                    if candidates:
+                        wav_path = str(candidates[0])
+
+                if wav_path:
+                    try:
+                        cls_result = classify_wav(wav_path)
+                        instrument_type = cls_result.get("category", "unknown")
+                    except Exception:
+                        instrument_type = "unknown"
+                else:
+                    instrument_type = "unknown"
+
+                curve_key = instrument_type if instrument_type in VELOCITY_CURVES else "unknown"
+                layers = get_instrument_layers(instrument)
+                n_layers = len(layers)
+                if n_layers == 0:
+                    continue
+
+                sculpted_curve = dna_to_velocity_curve(sample_dna, curve_key, n_layers)
+                new_starts = interpolate_boundaries([], sculpted_curve, n_layers)
+                set_layer_velocity_bounds(layers, new_starts)
+                changed = True
+
+            if changed:
+                indent_tree(root)
+                tree.write(str(xpm_path), encoding="unicode", xml_declaration=True)
+                n_sculpted += 1
+        except Exception as exc:
+            print(f"    [WARN] DNA sculpting failed for {xpm_path.name}: {exc}")
+
+    if n_sculpted:
+        print(f"    DNA velocity sculpting applied to {n_sculpted} XPM(s)")
+
+
 def _stage_export(ctx: PipelineContext) -> None:
     """Stage 4: Generate .xpm programs."""
     if ctx.is_drum_engine:
         _export_drum(ctx)
     else:
         _export_keygroup(ctx)
+
+    # Legend Feature #1 — Sonic DNA Velocity Sculpting
+    # If DNA was gathered during the categorize stage, apply per-instrument
+    # DNA-shaped velocity curves to every generated XPM now.
+    if ctx.sample_dna_cache and ctx.xpm_paths and not ctx.dry_run:
+        _apply_dna_velocity_sculpting(ctx)
 
 
 def _export_drum(ctx: PipelineContext) -> None:
@@ -1124,14 +1255,28 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
 
 def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
                              target_lufs: float = -14.0,
-                             dry_run: bool = False) -> dict[str, float]:
+                             dry_run: bool = False,
+                             pack_name: Optional[str] = None) -> dict[str, float]:
     """Normalize loudness across engine output directories.
 
     Computes RMS (as LUFS proxy) per engine, then applies per-engine gain to
     reach the target. Returns a dict of engine_name -> gain_db applied.
 
     If target_lufs is None, uses the median RMS across engines as the target.
+
+    After normalization, each sample's LUFS, true peak, and crest factor are
+    recorded to the Cross-Pack Loudness Ledger (Legend Feature #6).
     """
+    # Lazy import — ledger is only needed when normalization actually runs.
+    try:
+        from xpn_loudness_ledger import record_sample as _ledger_record
+        from xpn_loudness_ledger import measure_wav as _ledger_measure
+        _ledger_available = True
+    except ImportError:
+        _ledger_available = False
+
+    _pack_name = pack_name or output_base.name
+
     engine_rms: dict[str, list[float]] = {}
 
     for edir in engine_dirs:
@@ -1192,6 +1337,26 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
                 _apply_gain_db(wav, gain)
             except (ValueError, OSError) as e:
                 print(f"      [WARN] {wav.name}: {e}")
+                continue
+
+            # --- Legend Feature #6: Cross-Pack Loudness Ledger ---
+            # Measure the post-normalization sample and record to the ledger.
+            # category = direct parent dir name (e.g. "kick", "snare", engine slug).
+            if _ledger_available:
+                try:
+                    metrics = _ledger_measure(wav)
+                    if metrics is not None:
+                        _ledger_record(
+                            pack_name=_pack_name,
+                            sample_name=wav.name,
+                            lufs=metrics["lufs"],
+                            true_peak=metrics["true_peak"],
+                            crest_factor=metrics["crest_factor"],
+                            category=wav.parent.name,
+                            engine=engine_name,
+                        )
+                except Exception:
+                    pass  # Ledger write failures must never abort normalization
 
     return adjustments
 
@@ -1361,6 +1526,7 @@ def cmd_run(args) -> int:
         pack_name=args.pack_name,
         dry_run=args.dry_run,
         strict_qa=getattr(args, "strict_qa", False),
+        auto_fix=getattr(args, "auto_fix", False),
         tuning=getattr(args, "tuning", None),
         choke_preset=getattr(args, "choke_preset", "none"),
         round_robin=getattr(args, "round_robin", True),
@@ -2510,6 +2676,9 @@ def main():
                        help="Show what would be executed without running")
     p_run.add_argument("--strict-qa",  action="store_true", dest="strict_qa",
                        help="Abort the pipeline on any QA failure (default: warn and continue)")
+    p_run.add_argument("--auto-fix",   action="store_true", dest="auto_fix",
+                       help="Auto-fix safe QA issues in-place (DC_OFFSET, ATTACK_PRESENCE, "
+                            "SILENCE_TAIL) before re-running QA. No artistic impact.")
     p_run.add_argument("--tuning",     metavar="SYSTEM", default=None,
                        help="Apply a microtonal tuning system to keygroup XPM root note assignments "
                             "(e.g. just_intonation, 19tet, pythagorean, maqam_rast). "
@@ -2587,6 +2756,9 @@ def main():
     p_build.add_argument("--continue-on-error", action="store_true",
                          dest="continue_on_error",
                          help="Continue build even if a stage fails")
+    p_build.add_argument("--auto-fix", action="store_true", dest="auto_fix",
+                         help="Auto-fix safe QA issues in-place (DC_OFFSET, ATTACK_PRESENCE, "
+                              "SILENCE_TAIL) when WAV QA is run during the validate stage.")
 
     args = parser.parse_args()
     if not args.command:

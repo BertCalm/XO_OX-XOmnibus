@@ -1,10 +1,27 @@
 {
   "name": "Uptown Drift",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["New York", "evolution", "groove", "flux", "movement"],
-  "macros": {"M1": 0.7, "M2": 0.0, "M3": 0.1, "M4": 0.15},
-  "dna": {"brightness": 0.55, "warmth": 0.4, "movement": 0.8, "density": 0.5, "space": 0.45, "aggression": 0.5},
+  "tags": [
+    "New York",
+    "evolution",
+    "groove",
+    "flux",
+    "movement"
+  ],
+  "macros": {
+    "M1": 0.7,
+    "M2": 0.0,
+    "M3": 0.1,
+    "M4": 0.15
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.5
+  },
   "parameters": {
     "ofr_transientSnap": 0.75,
     "ofr_transientSat": 0.2,
@@ -24,5 +41,10 @@
     "ofr_v1_decay": 0.18,
     "ofr_v1_body": 0.55,
     "ofr_v2_pan": 0.4
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "High companion (0.8), high intimacy (0.85). Play chords for 5 minutes and hear it change — companion affinity accumulates and voices pull harmonically together. The preset rewards patience.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.25,
+    "space": 0.6,
+    "warmth": 0.7
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Warm Ensemble",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.12,
+      "osier_bendRange": 2,
+      "osier_brightness": 0.48,
+      "osier_companion": 0.8,
+      "osier_cutoff": 4800.0,
+      "osier_decay": 0.55,
+      "osier_detune": 4.0,
+      "osier_filterEnvAmt": 0.28,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 18.0,
+      "osier_intimacy": 0.85,
+      "osier_lfo1Depth": 0.12,
+      "osier_lfo1Rate": 0.2,
+      "osier_lfo1Shape": 0,
+      "osier_lfo2Depth": 0.0,
+      "osier_lfo2Rate": 0.8,
+      "osier_lfo2Shape": 0,
+      "osier_release": 1.2,
+      "osier_resonance": 0.2,
+      "osier_sustain": 0.78,
+      "osier_vibratoDepth": 0.22,
+      "osier_vibratoRate": 5.0
+    }
+  },
+  "tags": ["Garden", "Strings", "Chamber", "Warm"],
+  "version": "1.0"
+}

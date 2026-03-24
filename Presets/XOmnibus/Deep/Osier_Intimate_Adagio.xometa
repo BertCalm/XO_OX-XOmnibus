@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Very slow attack (250ms), very long release (3.5s), companion=0.9, intimacy=0.9, detune=2.5 cents. Voices are nearly unison. For a slow, intimate quartet that breathes as one organism.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.4,
+    "density": 0.55,
+    "movement": 0.15,
+    "space": 0.65,
+    "warmth": 0.8
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Deep",
+  "name": "Intimate Adagio",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.25,
+      "osier_bendRange": 2,
+      "osier_brightness": 0.4,
+      "osier_companion": 0.9,
+      "osier_cutoff": 4000.0,
+      "osier_decay": 0.8,
+      "osier_detune": 2.5,
+      "osier_filterEnvAmt": 0.2,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 18.0,
+      "osier_intimacy": 0.9,
+      "osier_lfo1Depth": 0.08,
+      "osier_lfo1Rate": 0.08,
+      "osier_lfo1Shape": 0,
+      "osier_lfo2Depth": 0.0,
+      "osier_lfo2Rate": 0.6,
+      "osier_lfo2Shape": 0,
+      "osier_release": 3.5,
+      "osier_resonance": 0.18,
+      "osier_sustain": 0.82,
+      "osier_vibratoDepth": 0.2,
+      "osier_vibratoRate": 4.5
+    }
+  },
+  "tags": ["Garden", "Strings", "Chamber", "Slow"],
+  "version": "1.0"
+}

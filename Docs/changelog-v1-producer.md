@@ -4,15 +4,15 @@
 
 ---
 
-Welcome to XOmnibus V1 — a synthesizer built around a single idea: what happens when 42 distinct sonic personalities share the same room, listen to each other, and argue?
+Welcome to XOmnibus V1 — a synthesizer built around a single idea: what happens when 71 distinct sonic personalities share the same room, listen to each other, and argue?
 
 This is our biggest release. Here is everything that is in it.
 
 ---
 
-## 42 Engines
+## 71 Engines
 
-XOmnibus ships with 42 registered synthesis engines. Every one of them has a name, a character, a color, and a sound that cannot come from anywhere else. They range from familiar territory to things we are still not entirely sure how to describe.
+XOmnibus ships with 71 registered synthesis engines. Every one of them has a name, a character, a color, and a sound that cannot come from anywhere else. They range from familiar territory to things we are still not entirely sure how to describe.
 
 If you started counting engines at 22 and wondered where the rest came from — this is where.
 

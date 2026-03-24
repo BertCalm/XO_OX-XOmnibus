@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Loyalty",
+  "author": "XO_OX Designs",
+  "mood": "Submerged",
+  "tags": [
+    "empty love",
+    "commitment only",
+    "cold resonance",
+    "obligation",
+    "frozen"
+  ],
+  "dna": {
+    "brightness": 0.543,
+    "warmth": 0.308,
+    "movement": 0.151,
+    "density": 0.13,
+    "space": 0.525,
+    "aggression": 0.275
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.0,
+      "oxy_passion": 0.0,
+      "oxy_commitment": 0.95,
+      "oxy_warmth_rate": 6.0,
+      "oxy_passion_rate": 0.008,
+      "oxy_commit_rate": 0.12,
+      "oxy_entanglement": 0.04,
+      "oxy_circuit_age": 0.88,
+      "oxy_circuit_noise": 0.18,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 8.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.72,
+      "oxy_cutoff": 420,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.35,
+      "oxy_decay": 1.8,
+      "oxy_sustain": 0.85,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.017,
+      "oxy_lfo_depth": 0.04,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.011,
+      "oxy_lfo2_depth": 0.02,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

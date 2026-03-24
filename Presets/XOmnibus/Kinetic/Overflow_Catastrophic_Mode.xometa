@@ -1,0 +1,48 @@
+{
+  "name": "Catastrophic Mode",
+  "engines": [
+    "Overflow"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Over-pressure \u2014 what happens when the valve is never released. Sustained aggressive playing cycles through multiple valve events.",
+  "mood": "Kinetic",
+  "tags": [
+    "pad",
+    "pressure",
+    "experimental",
+    "dark",
+    "evolving"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.5,
+    "SPACE": 0.8
+  },
+  "dna": {
+    "warmth": 0.3,
+    "complexity": 0.65,
+    "movement": 0.8,
+    "brightness": 0.72,
+    "aggression": 0.75
+  },
+  "params": {
+    "flow_threshold": 0.5,
+    "flow_accumRate": 0.8,
+    "flow_valveType": 1,
+    "flow_vesselSize": 0.4,
+    "flow_strainColor": 0.9,
+    "flow_releaseTime": 0.25,
+    "flow_ampAttack": 0.15,
+    "flow_ampDecay": 0.4,
+    "flow_ampSustain": 0.92,
+    "flow_ampRelease": 1.8,
+    "flow_filterCutoff": 8000.0,
+    "flow_filterRes": 0.35,
+    "flow_filtEnvAmount": 0.5,
+    "flow_lfo1Rate": 0.2,
+    "flow_lfo1Depth": 0.35,
+    "flow_stereoWidth": 0.8,
+    "flow_level": 0.82
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Quick Reduction",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "High heat, fast reduction \u2014 the sauce reaches concentration in minutes. Session target 10 minutes. The full arc within a single song.",
+  "mood": "Flux",
+  "tags": [
+    "pad",
+    "reduction",
+    "evolving",
+    "pressure"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.5,
+    "SPACE": 0.46
+  },
+  "dna": {
+    "warmth": 0.65,
+    "complexity": 0.7,
+    "movement": 0.55,
+    "brightness": 0.5,
+    "aggression": 0.3
+  },
+  "params": {
+    "worn_reductionRate": 0.85,
+    "worn_heat": 0.75,
+    "worn_richness": 1.0,
+    "worn_maillard": 0.45,
+    "worn_umamiDepth": 0.65,
+    "worn_sessionTarget": 10.0,
+    "worn_filterCutoff": 7000.0,
+    "worn_filterRes": 0.15,
+    "worn_ampAttack": 0.45,
+    "worn_ampSustain": 0.88,
+    "worn_ampRelease": 4.5,
+    "worn_lfo1Rate": 0.08,
+    "worn_lfo1Depth": 0.18,
+    "worn_stereoWidth": 0.46,
+    "worn_level": 0.8
+  }
+}

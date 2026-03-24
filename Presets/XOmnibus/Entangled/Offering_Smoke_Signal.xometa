@@ -1,10 +1,27 @@
 {
   "name": "Smoke Signal",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["lo-fi", "dusty", "Detroit", "obscured", "layered"],
-  "macros": {"M1": 0.5, "M2": 0.7, "M3": 0.65, "M4": 0.7},
-  "dna": {"brightness": 0.2, "warmth": 0.8, "movement": 0.55, "density": 0.75, "space": 0.35, "aggression": 0.4},
+  "tags": [
+    "lo-fi",
+    "dusty",
+    "Detroit",
+    "obscured",
+    "layered"
+  ],
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.7,
+    "M3": 0.65,
+    "M4": 0.7
+  },
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.8,
+    "movement": 0.55,
+    "density": 0.75,
+    "space": 0.35,
+    "aggression": 0.4
+  },
   "parameters": {
     "ofr_flipLayers": 3,
     "ofr_flipChop": 0.4,
@@ -25,5 +42,10 @@
     "ofr_masterLevel": 0.75,
     "ofr_masterWidth": 0.5,
     "ofr_v0_body": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

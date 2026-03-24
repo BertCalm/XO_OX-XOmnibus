@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OMEGA \u2014 canonical DX7 E Bass. Algorithm 2 (3:1 fifth), mod index 4.5, feedback 0.15. Better than the original.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.5,
+    "movement": 0.08,
+    "density": 0.62,
+    "space": 0.28,
+    "aggression": 0.32
+  },
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Clean DX",
+  "parameters": {
+    "Omega": {
+      "omega_algorithm": 2,
+      "omega_ratio": 1.0,
+      "omega_modIndex": 4.5,
+      "omega_feedback": 0.15,
+      "omega_purity": 0.75,
+      "omega_distillRate": 0.5,
+      "omega_brightness": 5000.0,
+      "omega_filterEnvAmount": 0.55,
+      "omega_filterAttack": 0.001,
+      "omega_filterDecay": 0.2,
+      "omega_attack": 0.001,
+      "omega_decay": 0.5,
+      "omega_sustain": 0.8,
+      "omega_release": 0.35,
+      "omega_glide": 0.0,
+      "omega_gravity": 0.5,
+      "omega_lfo1Rate": 0.5,
+      "omega_lfo1Depth": 0.0,
+      "omega_lfo2Rate": 1.0,
+      "omega_lfo2Depth": 0.0,
+      "omega_macroCharacter": 0.0,
+      "omega_macroMovement": 0.0,
+      "omega_macroCoupling": 0.0,
+      "omega_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "fm",
+    "clean",
+    "analog"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

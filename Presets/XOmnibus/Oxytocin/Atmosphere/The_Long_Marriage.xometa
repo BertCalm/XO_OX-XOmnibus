@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "The Long Marriage",
+  "author": "XO_OX Designs",
+  "mood": "Atmosphere",
+  "tags": [
+    "companionate love",
+    "intimacy commitment",
+    "stable",
+    "vintage",
+    "profound"
+  ],
+  "dna": {
+    "brightness": 0.668,
+    "warmth": 0.724,
+    "movement": 0.12,
+    "density": 0.317,
+    "space": 0.705,
+    "aggression": 0.236
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.78,
+      "oxy_passion": 0.0,
+      "oxy_commitment": 0.88,
+      "oxy_warmth_rate": 1.2,
+      "oxy_passion_rate": 0.5,
+      "oxy_commit_rate": 0.8,
+      "oxy_entanglement": 0.22,
+      "oxy_circuit_age": 0.62,
+      "oxy_circuit_noise": 0.11,
+      "oxy_memory_depth": 0.45,
+      "oxy_memory_decay": 6.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.52,
+      "oxy_cutoff": 1400,
+      "oxy_pitch": 12,
+      "oxy_detune": 0,
+      "oxy_attack": 0.025,
+      "oxy_decay": 1.2,
+      "oxy_sustain": 0.78,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.067,
+      "oxy_lfo_depth": 0.06,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.033,
+      "oxy_lfo2_depth": 0.03,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

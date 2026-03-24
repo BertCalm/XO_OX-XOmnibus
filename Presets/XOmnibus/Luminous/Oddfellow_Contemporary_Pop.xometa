@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Contemporary Pop Wurlitzer",
+  "mood": "Luminous",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "2010s pop production Wurlitzer. Brighter than vintage, moderate tremolo, layered in a dense mix. Adele, Ed Sheeran territory — the Wurlitzer as emotional punctuation in modern production.",
+  "tags": ["wurlitzer", "pop", "contemporary", "bright", "modern", "luminous"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.45,
+    "density": 0.52,
+    "space": 0.58,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.42,
+      "oddf_drive": 0.4,
+      "oddf_brightness": 4500.0,
+      "oddf_tremRate": 5.0,
+      "oddf_tremDepth": 0.4,
+      "oddf_attack": 0.004,
+      "oddf_decay": 1.1,
+      "oddf_sustain": 0.52,
+      "oddf_release": 0.6,
+      "oddf_filterEnvAmt": 0.45,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2.0,
+      "oddf_macroCharacter": 0.45,
+      "oddf_macroMovement": 0.45,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.58,
+      "oddf_lfo1Rate": 0.08,
+      "oddf_lfo1Depth": 0.07,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 0.6,
+      "oddf_lfo2Depth": 0.08,
+      "oddf_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

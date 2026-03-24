@@ -457,7 +457,7 @@ Contains:
 
 ### B. Engine Signature Color Palette (71 Engines)
 
-#### Original Fleet (47 Engines)
+#### Original Fleet (48 Engines)
 
 | Engine | Color Name | Hex | Engine | Color Name | Hex |
 |--------|-----------|-----|--------|-----------|-----|
@@ -484,7 +484,7 @@ Contains:
 | OVERTONE | Spectral Ice | `#A8D8EA` | ORGANISM | Emergence Lime | `#C6E377` |
 | OXBOW | Oxbow Teal | `#1A6B5A` | OWARE | Akan Goldweight | `#B5883E` |
 | OPERA | Aria Gold | `#D4AF37` | OFFERING | Crate Wax Yellow | `#E5B80B` |
-| OSMOSIS | Surface Tension Silver | `#C0C0C0` | | | |
+| OSMOSIS | Surface Tension Silver | `#C0C0C0` | OXYTOCIN | Synapse Violet | `#9B5DE5` |
 
 #### Kitchen Collection (24 Engines — V2 Paid Expansion)
 

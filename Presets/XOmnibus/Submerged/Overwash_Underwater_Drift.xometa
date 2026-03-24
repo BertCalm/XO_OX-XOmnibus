@@ -1,0 +1,54 @@
+{
+  "name": "Underwater Drift",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Coral pigment dissolving at 30 meters \u2014 diffusion under pressure. Cinematic tension territory.",
+  "mood": "Submerged",
+  "tags": [
+    "pad",
+    "cinematic",
+    "pressure",
+    "dark",
+    "ambient"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.5,
+    "SPACE": 0.58
+  },
+  "dna": {
+    "warmth": 0.75,
+    "complexity": 0.5,
+    "movement": 0.18,
+    "brightness": 0.25,
+    "aggression": 0.12
+  },
+  "params": {
+    "wash_diffusionRate": 0.28,
+    "wash_viscosity": 0.78,
+    "wash_harmonics": 9,
+    "wash_diffusionTime": 25.0,
+    "wash_spreadMax": 90.0,
+    "wash_brightness": 0.38,
+    "wash_warmth": 0.75,
+    "wash_ampAttack": 2.8,
+    "wash_ampDecay": 2.0,
+    "wash_ampSustain": 0.88,
+    "wash_ampRelease": 10.0,
+    "wash_filterCutoff": 2600.0,
+    "wash_filterRes": 0.18,
+    "wash_filtEnvAmount": 0.3,
+    "wash_filtAttack": 0.8,
+    "wash_filtDecay": 3.0,
+    "wash_filtSustain": 0.5,
+    "wash_lfo1Rate": 0.03,
+    "wash_lfo1Depth": 0.22,
+    "wash_lfo2Rate": 0.012,
+    "wash_lfo2Depth": 0.12,
+    "wash_stereoWidth": 0.58,
+    "wash_level": 0.8
+  }
+}

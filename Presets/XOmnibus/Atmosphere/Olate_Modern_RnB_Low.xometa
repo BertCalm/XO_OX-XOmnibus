@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 modern R&B and neo-soul bass. Warm, slow fermentation, suits long chord tones and walking lines.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.88,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.18
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Modern R&B Low",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.2,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 1600.0,
+      "olate_resonance": 0.28,
+      "olate_drive": 0.4,
+      "olate_filterEnvAmount": 0.35,
+      "olate_filterAttack": 0.005,
+      "olate_filterDecay": 0.6,
+      "olate_vintage": 0.42,
+      "olate_warmth": 0.7,
+      "olate_terroir": 0.0,
+      "olate_ageRate": 0.25,
+      "olate_attack": 0.008,
+      "olate_decay": 1.2,
+      "olate_sustain": 0.8,
+      "olate_release": 0.7,
+      "olate_glide": 0.12,
+      "olate_gravity": 0.45,
+      "olate_lfo1Rate": 0.2,
+      "olate_lfo1Depth": 0.05,
+      "olate_lfo2Rate": 0.5,
+      "olate_lfo2Depth": 0.0,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "analog",
+    "warm",
+    "jazz"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

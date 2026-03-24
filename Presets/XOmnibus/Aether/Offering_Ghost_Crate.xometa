@@ -1,10 +1,27 @@
 {
   "name": "Ghost Crate",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["spectral", "long decay", "haunted", "Bay Area", "lo-fi"],
-  "macros": {"M1": 0.7, "M2": 0.1, "M3": 0.4, "M4": 0.4},
-  "dna": {"brightness": 0.3, "warmth": 0.5, "movement": 0.55, "density": 0.35, "space": 0.92, "aggression": 0.2},
+  "tags": [
+    "spectral",
+    "long decay",
+    "haunted",
+    "Bay Area",
+    "lo-fi"
+  ],
+  "macros": {
+    "M1": 0.7,
+    "M2": 0.1,
+    "M3": 0.4,
+    "M4": 0.4
+  },
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.35,
+    "space": 0.92,
+    "aggression": 0.2
+  },
   "parameters": {
     "ofr_transientSnap": 0.45,
     "ofr_transientPitch": 0.25,
@@ -31,5 +48,10 @@
     "ofr_v0_tune": -7.0,
     "ofr_v1_decay": 0.45,
     "ofr_v3_decay": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

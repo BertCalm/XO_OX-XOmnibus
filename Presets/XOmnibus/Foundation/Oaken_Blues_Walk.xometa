@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 blues walking bass. Slight portamento and LFO pitch wobble for human imprecision.",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.85,
+    "movement": 0.22,
+    "density": 0.62,
+    "space": 0.42,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Blues Walk",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.2,
+      "oaken_bodyDepth": 0.6,
+      "oaken_woodAge": 0.75,
+      "oaken_room": 0.35,
+      "oaken_brightness": 4200.0,
+      "oaken_damping": 0.15,
+      "oaken_curingRate": 0.35,
+      "oaken_filterEnvAmount": 0.2,
+      "oaken_attack": 0.003,
+      "oaken_decay": 1.8,
+      "oaken_sustain": 0.6,
+      "oaken_release": 0.9,
+      "oaken_gravity": 0.35,
+      "oaken_glide": 0.05,
+      "oaken_lfo1Rate": 0.2,
+      "oaken_lfo1Depth": 0.08,
+      "oaken_lfo2Rate": 0.5,
+      "oaken_lfo2Depth": 0.0,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "acoustic",
+    "blues",
+    "jazz",
+    "pluck"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

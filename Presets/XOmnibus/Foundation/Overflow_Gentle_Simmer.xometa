@@ -1,0 +1,49 @@
+{
+  "name": "Gentle Simmer",
+  "engines": [
+    "Overflow"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Low heat, patient accumulation \u2014 pressure builds slowly, valve opens gradually. High threshold; the valve may never open during relaxed playing.",
+  "mood": "Foundation",
+  "tags": [
+    "pad",
+    "ambient",
+    "pressure",
+    "warm"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.5,
+    "SPACE": 0.58
+  },
+  "dna": {
+    "warmth": 0.65,
+    "complexity": 0.45,
+    "movement": 0.25,
+    "brightness": 0.45,
+    "aggression": 0.08
+  },
+  "params": {
+    "flow_threshold": 0.85,
+    "flow_accumRate": 0.28,
+    "flow_valveType": 0,
+    "flow_vesselSize": 0.55,
+    "flow_strainColor": 0.38,
+    "flow_releaseTime": 0.8,
+    "flow_ampAttack": 0.4,
+    "flow_ampDecay": 0.8,
+    "flow_ampSustain": 0.85,
+    "flow_ampRelease": 3.0,
+    "flow_filterCutoff": 5500.0,
+    "flow_filterRes": 0.15,
+    "flow_filtEnvAmount": 0.28,
+    "flow_lfo1Rate": 0.09,
+    "flow_lfo1Depth": 0.18,
+    "flow_lfo2Rate": 0.04,
+    "flow_lfo2Depth": 0.12,
+    "flow_stereoWidth": 0.58,
+    "flow_level": 0.8
+  }
+}

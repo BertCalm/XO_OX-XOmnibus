@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Isothermal Pad",
+  "author": "XO_OX Designs",
+  "mood": "Ethereal",
+  "tags": [
+    "ethereal",
+    "temperature stable",
+    "circuit terms",
+    "ambient",
+    "commitment"
+  ],
+  "dna": {
+    "brightness": 0.687,
+    "warmth": 0.482,
+    "movement": 0.112,
+    "density": 0.338,
+    "space": 0.725,
+    "aggression": 0.192
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.58,
+      "oxy_passion": 0.05,
+      "oxy_commitment": 0.8,
+      "oxy_warmth_rate": 3.5,
+      "oxy_passion_rate": 0.15,
+      "oxy_commit_rate": 3.8,
+      "oxy_entanglement": 0.12,
+      "oxy_circuit_age": 0.3,
+      "oxy_circuit_noise": 0.04,
+      "oxy_memory_depth": 0.5,
+      "oxy_memory_decay": 8.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.48,
+      "oxy_cutoff": 1900,
+      "oxy_pitch": 0,
+      "oxy_detune": 2,
+      "oxy_attack": 0.45,
+      "oxy_decay": 2.2,
+      "oxy_sustain": 0.9,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.014,
+      "oxy_lfo_depth": 0.1,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.008,
+      "oxy_lfo2_depth": 0.05,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

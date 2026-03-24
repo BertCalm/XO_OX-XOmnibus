@@ -1,10 +1,27 @@
 {
   "name": "Ghost Groove",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["ghost notes", "subtle", "snare", "NY", "nuanced"],
-  "macros": {"M1": 0.6, "M2": 0.2, "M3": 0.0, "M4": 0.12},
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.72, "density": 0.6, "space": 0.4, "aggression": 0.3},
+  "tags": [
+    "ghost notes",
+    "subtle",
+    "snare",
+    "NY",
+    "nuanced"
+  ],
+  "macros": {
+    "M1": 0.6,
+    "M2": 0.2,
+    "M3": 0.0,
+    "M4": 0.12
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.72,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.3
+  },
   "parameters": {
     "ofr_transientSnap": 0.6,
     "ofr_transientSat": 0.12,
@@ -26,5 +43,10 @@
     "ofr_v1_body": 0.45,
     "ofr_v5_level": 0.7,
     "ofr_masterWidth": 0.6
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

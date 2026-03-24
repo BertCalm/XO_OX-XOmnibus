@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Reed Without Tremolo",
+  "mood": "Foundation",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wurlitzer reed stripped to its core — tremolo off, medium reed, moderate drive. Reveals the pure inharmonic partial structure of the physical model. Starting point for custom tremolo via LFOs.",
+  "tags": ["wurlitzer", "dry", "no-tremolo", "foundation", "pure-reed", "starting-point"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.05,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.45,
+      "oddf_drive": 0.35,
+      "oddf_brightness": 3400.0,
+      "oddf_tremRate": 5.0,
+      "oddf_tremDepth": 0.0,
+      "oddf_attack": 0.004,
+      "oddf_decay": 0.9,
+      "oddf_sustain": 0.52,
+      "oddf_release": 0.45,
+      "oddf_filterEnvAmt": 0.42,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2.0,
+      "oddf_macroCharacter": 0.45,
+      "oddf_macroMovement": 0.05,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.4,
+      "oddf_lfo1Rate": 0.05,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 0.2,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

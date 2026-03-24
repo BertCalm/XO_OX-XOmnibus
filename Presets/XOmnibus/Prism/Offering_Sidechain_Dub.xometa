@@ -1,10 +1,27 @@
 {
   "name": "Sidechain Dub",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["Toronto", "sidechain", "sub duck", "bounce", "pumping"],
-  "macros": {"M1": 0.1, "M2": 0.55, "M3": 0.0, "M4": 0.15},
-  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.7, "density": 0.8, "space": 0.5, "aggression": 0.65},
+  "tags": [
+    "Toronto",
+    "sidechain",
+    "sub duck",
+    "bounce",
+    "pumping"
+  ],
+  "macros": {
+    "M1": 0.1,
+    "M2": 0.55,
+    "M3": 0.0,
+    "M4": 0.15
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.8,
+    "space": 0.5,
+    "aggression": 0.65
+  },
   "parameters": {
     "ofr_transientSnap": 0.68,
     "ofr_transientSat": 0.18,
@@ -25,5 +42,10 @@
     "ofr_v0_body": 0.78,
     "ofr_v3_decay": 0.55,
     "ofr_v3_level": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

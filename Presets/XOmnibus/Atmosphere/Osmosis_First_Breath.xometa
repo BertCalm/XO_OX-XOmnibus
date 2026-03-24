@@ -2,7 +2,12 @@
   "version": 1,
   "name": "Osmosis First Breath",
   "mood": "Atmosphere",
-  "engines": ["Osmosis", "Origami", "", ""],
+  "engines": [
+    "Osmosis",
+    "Origami",
+    "",
+    ""
+  ],
   "parameters": {
     "osmo_permeability": 0.6,
     "osmo_selectivity": 0.7,
@@ -36,6 +41,12 @@
     "space": 0.5,
     "aggression": 0.1
   },
-  "tags": ["membrane", "voice", "external", "air"],
-  "description": "The membrane breathes. External audio passes through with gentle formant coloring and organic breath texture. Origami in slot 2 loaded with defaults — ready for coupling."
+  "tags": [
+    "membrane",
+    "voice",
+    "external",
+    "air"
+  ],
+  "description": "The membrane breathes. External audio passes through with gentle formant coloring and organic breath texture. Origami in slot 2 loaded with defaults \u2014 ready for coupling.",
+  "author": "XO_OX Designs"
 }

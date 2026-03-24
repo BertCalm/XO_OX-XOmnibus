@@ -16,6 +16,7 @@ Usage:
     python xpn_qa_checker.py samples/
     python xpn_qa_checker.py samples/ --json
     python xpn_qa_checker.py samples/ --fail-fast
+    python xpn_qa_checker.py samples/ --auto-fix
 """
 
 import argparse
@@ -574,6 +575,228 @@ def check_xpm_directory(xpm_dir: Path) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# Auto-remediation — safe fixes with no artistic impact
+# ---------------------------------------------------------------------------
+# These three issue types are safe to fix automatically because they are
+# technical artifacts of the render pipeline, not creative choices:
+#   DC_OFFSET      — bias current; inaudible but degrades headroom and D/A
+#   ATTACK_PRESENCE — missing fade-in guard causes click on note-on
+#   SILENCE_TAIL   — trailing silence wastes XPN archive space
+#
+# Issues that are NOT auto-fixed (require human judgement):
+#   CLIPPING, TRUE_PEAK  — headroom decisions are artistic
+#   SILENT               — likely a broken render, not fixable by DSP
+#   PHASE_CANCELLED      — routing bug, not a sample issue
+#   UNDYNAMIC            — timbral quality issue
+#   LAYER_BALANCE        — requires re-render at source
+
+AUTO_FIX_SAFE = {"DC_OFFSET", "ATTACK_PRESENCE", "SILENCE_TAIL"}
+
+
+def _wav_read_raw(path: Path):
+    """
+    Read a WAV file as (interleaved_float_list, n_channels, sample_rate,
+    sample_width_bytes, n_frames).
+    Supports 16-bit, 24-bit, and 32-bit PCM.
+    """
+    import struct as _struct
+    with wave.open(str(path), "rb") as wf:
+        n_channels  = wf.getnchannels()
+        sample_rate = wf.getframerate()
+        sampwidth   = wf.getsampwidth()
+        n_frames    = wf.getnframes()
+        raw         = wf.readframes(n_frames)
+
+    n_samples = n_frames * n_channels
+    bits = sampwidth * 8
+    if bits == 16:
+        fmt = f"<{n_samples}h"
+        ints = list(_struct.unpack(fmt, raw))
+        max_val = 32768.0
+    elif bits == 24:
+        ints = []
+        for i in range(n_samples):
+            b = raw[i * 3:(i + 1) * 3]
+            val = _struct.unpack("<i", b + (b"\xff" if b[2] & 0x80 else b"\x00"))[0]
+            ints.append(val)
+        max_val = 8388608.0
+    elif bits == 32:
+        fmt = f"<{n_samples}i"
+        ints = list(_struct.unpack(fmt, raw))
+        max_val = 2147483648.0
+    else:
+        raise ValueError(f"Unsupported bit depth: {bits}")
+
+    floats = [s / max_val for s in ints]
+    return floats, n_channels, sample_rate, sampwidth, n_frames
+
+
+def _wav_write_raw(path: Path, floats: list, n_channels: int,
+                   sample_rate: int, sampwidth: int) -> None:
+    """Write a float sample list back to WAV at the original bit depth."""
+    import struct as _struct
+    n_frames = len(floats) // n_channels
+    bits = sampwidth * 8
+
+    if bits == 16:
+        max_val = 32767
+        ints = [max(-32768, min(32767, int(round(s * 32767.0)))) for s in floats]
+        raw = _struct.pack(f"<{len(ints)}h", *ints)
+    elif bits == 24:
+        max_val_24 = 8388607
+        raw_ba = bytearray()
+        for s in floats:
+            clamped = max(-1.0, min(1.0, s))
+            ival = int(round(clamped * max_val_24))
+            raw_ba.extend(_struct.pack("<i", ival)[:3])
+        raw = bytes(raw_ba)
+    elif bits == 32:
+        max_val = 2147483647
+        ints = [max(-2147483648, min(2147483647, int(round(s * 2147483647.0))))
+                for s in floats]
+        raw = _struct.pack(f"<{len(ints)}i", *ints)
+    else:
+        raise ValueError(f"Unsupported bit depth: {bits}")
+
+    with wave.open(str(path), "wb") as wf:
+        wf.setnchannels(n_channels)
+        wf.setframerate(sample_rate)
+        wf.setsampwidth(sampwidth)
+        wf.setnframes(n_frames)
+        wf.writeframes(raw)
+
+
+def apply_dc_removal(wav_path: Path) -> None:
+    """
+    Remove DC offset in-place using a one-pole high-pass filter at ~5 Hz.
+
+    Uses the matched-Z IIR coefficient: coeff = exp(-2π × fc / sr).
+    This is a gentle, transparent correction — no audible effect on programme
+    content above 20 Hz.
+    """
+    floats, n_channels, sample_rate, sampwidth, n_frames = _wav_read_raw(wav_path)
+
+    fc = 5.0  # Hz — low enough to be inaudible, high enough to kill DC
+    coeff = math.exp(-2.0 * math.pi * fc / sample_rate)
+
+    # Per-channel first-order high-pass (DC blocker): y[n] = x[n] - x[n-1] + coeff*y[n-1]
+    prev_x = [0.0] * n_channels
+    prev_y = [0.0] * n_channels
+    out = list(floats)
+    for frame in range(n_frames):
+        for ch in range(n_channels):
+            idx = frame * n_channels + ch
+            x = floats[idx]
+            y = x - prev_x[ch] + coeff * prev_y[ch]
+            prev_x[ch] = x
+            prev_y[ch] = y
+            out[idx] = max(-1.0, min(1.0, y))
+
+    _wav_write_raw(wav_path, out, n_channels, sample_rate, sampwidth)
+
+
+def apply_fade_guard(wav_path: Path, attack_ms: float = 2.0) -> None:
+    """
+    Apply a raised-cosine fade-in guard in-place.
+
+    A 2ms fade-in eliminates the click that the MPC generates when a
+    sample with a hard start edge hits note-on. This is zero-artistic-impact
+    because 2ms is below the threshold of transient perception.
+    """
+    floats, n_channels, sample_rate, sampwidth, n_frames = _wav_read_raw(wav_path)
+
+    fade_samples = int(sample_rate * attack_ms / 1000.0)
+    fade_samples = min(fade_samples, n_frames)
+
+    out = list(floats)
+    for frame in range(fade_samples):
+        gain = 0.5 * (1.0 - math.cos(math.pi * frame / fade_samples))
+        for ch in range(n_channels):
+            out[frame * n_channels + ch] *= gain
+
+    _wav_write_raw(wav_path, out, n_channels, sample_rate, sampwidth)
+
+
+def apply_smart_trim(wav_path: Path, threshold_db: float = -60.0) -> None:
+    """
+    Trim trailing silence and apply a 10ms fade-out guard in-place.
+
+    Uses a chunk-scan approach matching the xpn_smart_trim.py algorithm.
+    Preserves the attack — only the tail is trimmed.
+    """
+    floats, n_channels, sample_rate, sampwidth, n_frames = _wav_read_raw(wav_path)
+
+    # Compute mono for analysis
+    if n_channels == 1:
+        mono = floats
+    else:
+        mono = [
+            sum(floats[f * n_channels + c] for c in range(n_channels)) / n_channels
+            for f in range(n_frames)
+        ]
+
+    # Find trailing silence boundary
+    threshold_amp = 10.0 ** (threshold_db / 20.0)
+    window = 256
+    end_frame = n_frames
+    for i in range(n_frames - window, 0, -window):
+        chunk = mono[i:i + window]
+        if max(abs(s) for s in chunk) >= threshold_amp:
+            end_frame = min(n_frames, i + window)
+            break
+    else:
+        # Entire file is silent — don't trim (silence check handles this)
+        end_frame = n_frames
+
+    # Apply 10ms fade-out guard at the new end
+    fade_out_ms = 10.0
+    fade_samples = int(sample_rate * fade_out_ms / 1000.0)
+    fade_samples = min(fade_samples, end_frame)
+
+    out = floats[:end_frame * n_channels]
+    for i in range(fade_samples):
+        gain = 0.5 * (1.0 + math.cos(math.pi * i / fade_samples))
+        frame = end_frame - fade_samples + i
+        if frame < 0:
+            continue
+        for ch in range(n_channels):
+            out[frame * n_channels + ch] *= gain
+
+    _wav_write_raw(wav_path, out, n_channels, sample_rate, sampwidth)
+
+
+def auto_remediate(wav_path: Path, issues: list, ctx=None) -> list:
+    """
+    Apply safe auto-fixes to a WAV file.
+
+    Handles issues as either strings or dicts with a 'type' key — the
+    check_file() function returns plain string issue codes, but callers
+    may pass richer dicts.
+
+    Returns a list of issue codes that were successfully fixed.
+    """
+    fixed = []
+    for issue in issues:
+        issue_type = issue.get("type") if isinstance(issue, dict) else issue
+        try:
+            if issue_type == "DC_OFFSET":
+                apply_dc_removal(wav_path)
+                fixed.append("DC_OFFSET")
+            elif issue_type == "ATTACK_PRESENCE":
+                apply_fade_guard(wav_path, attack_ms=2.0)
+                fixed.append("ATTACK_PRESENCE")
+            elif issue_type == "SILENCE_TAIL":
+                apply_smart_trim(wav_path)
+                fixed.append("SILENCE_TAIL")
+        except Exception as exc:
+            # Log but don't abort — partial remediation is better than none
+            fname = Path(wav_path).name
+            print(f"    [AUTO-FIX ERROR] {issue_type} in {fname}: {exc}",
+                  file=sys.stderr)
+    return fixed
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -589,6 +812,9 @@ def main(argv: Optional[list[str]] = None) -> int:
                         help="Output results as JSON")
     parser.add_argument("--fail-fast", action="store_true",
                         help="Stop on first FAIL result")
+    parser.add_argument("--auto-fix", action="store_true", dest="auto_fix",
+                        help="Apply safe auto-fixes (DC_OFFSET, ATTACK_PRESENCE, "
+                             "SILENCE_TAIL) and re-run QA on fixed files")
     args = parser.parse_args(argv)
 
     target = Path(args.target)
@@ -602,10 +828,25 @@ def main(argv: Optional[list[str]] = None) -> int:
     n_pass = 0
     n_fail = 0
     n_error = 0
+    n_fixed = 0
     all_issues: list[str] = []   # "issue_code in filename" strings for summary
 
     for wav_path in wavs:
         result = check_file(wav_path)
+
+        # Auto-remediation pass: fix safe issues, then re-check
+        if args.auto_fix:
+            fixable = [i for i in result.get("issues", []) if i in AUTO_FIX_SAFE]
+            if fixable:
+                fixed = auto_remediate(wav_path, fixable)
+                for fix in fixed:
+                    n_fixed += 1
+                    if not args.json:
+                        print(f"[QA] Auto-fixed {fix} in {wav_path.name}")
+                if fixed:
+                    # Re-run QA on the now-modified file
+                    result = check_file(wav_path)
+
         results.append(result)
 
         overall = result.get("overall", "ERROR")
@@ -635,7 +876,9 @@ def main(argv: Optional[list[str]] = None) -> int:
                      (" ..." if len(all_issues) > 5 else "") \
                      if all_issues else ""
         error_str  = f" | {n_error} error{'s' if n_error != 1 else ''}" if n_error else ""
-        print(f"\nSummary: {n_pass}/{total} passed{error_str}{issues_str}")
+        fix_str    = f" | {n_fixed} auto-fix{'es' if n_fixed != 1 else ''} applied" \
+                     if n_fixed else ""
+        print(f"\nSummary: {n_pass}/{total} passed{error_str}{fix_str}{issues_str}")
 
     return 0 if (n_fail == 0 and n_error == 0) else 1
 

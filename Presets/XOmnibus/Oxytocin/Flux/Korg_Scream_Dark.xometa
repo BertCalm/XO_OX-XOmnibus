@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Korg Scream Dark",
+  "author": "XO_OX Designs",
+  "mood": "Flux",
+  "tags": [
+    "legend homage",
+    "Korg",
+    "dark",
+    "screaming bass",
+    "nocturnal industrial"
+  ],
+  "dna": {
+    "brightness": 0.77,
+    "warmth": 0.27,
+    "movement": 0.344,
+    "density": 0.317,
+    "space": 0.34,
+    "aggression": 0.76
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.05,
+      "oxy_passion": 0.88,
+      "oxy_commitment": 0.78,
+      "oxy_warmth_rate": 0.12,
+      "oxy_passion_rate": 0.001,
+      "oxy_commit_rate": 0.09,
+      "oxy_entanglement": 0.65,
+      "oxy_circuit_age": 0.68,
+      "oxy_circuit_noise": 0.22,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 0.5,
+      "oxy_topology": 2,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.88,
+      "oxy_cutoff": 4000,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.001,
+      "oxy_decay": 0.12,
+      "oxy_sustain": 0.52,
+      "oxy_release": 0.5,
+      "oxy_lfo_rate": 1.2,
+      "oxy_lfo_depth": 0.35,
+      "oxy_lfo_shape": 2,
+      "oxy_lfo2_rate": 2.4,
+      "oxy_lfo2_depth": 0.18,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

@@ -1,10 +1,27 @@
 {
   "name": "Motor City Slump",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["Detroit", "drunk timing", "slump", "saturation", "evolving"],
-  "macros": {"M1": 0.3, "M2": 0.8, "M3": 0.0, "M4": 0.35},
-  "dna": {"brightness": 0.25, "warmth": 0.85, "movement": 0.75, "density": 0.6, "space": 0.35, "aggression": 0.55},
+  "tags": [
+    "Detroit",
+    "drunk timing",
+    "slump",
+    "saturation",
+    "evolving"
+  ],
+  "macros": {
+    "M1": 0.3,
+    "M2": 0.8,
+    "M3": 0.0,
+    "M4": 0.35
+  },
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.85,
+    "movement": 0.75,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.55
+  },
   "parameters": {
     "ofr_transientSnap": 0.5,
     "ofr_transientSat": 0.45,
@@ -26,5 +43,10 @@
     "ofr_v1_decay": 0.32,
     "ofr_v4_decay": 0.35,
     "ofr_masterWidth": 0.5
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

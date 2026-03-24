@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 reggae sub bass with tectonic drift and high gravity. The low end of rocksteady and dancehall.",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.9,
+    "movement": 0.2,
+    "density": 0.75,
+    "space": 0.3,
+    "aggression": 0.25
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "One Drop",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.1,
+      "ogre_drive": 0.55,
+      "ogre_rootDepth": 0.8,
+      "ogre_bodyResonance": 0.5,
+      "ogre_brightness": 600.0,
+      "ogre_density": 0.5,
+      "ogre_soil": 0.1,
+      "ogre_tectonicRate": 0.006,
+      "ogre_tectonicDepth": 12.0,
+      "ogre_attack": 0.002,
+      "ogre_decay": 0.9,
+      "ogre_sustain": 0.88,
+      "ogre_release": 0.7,
+      "ogre_filterEnvAmount": 0.15,
+      "ogre_glide": 0.08,
+      "ogre_gravity": 0.7,
+      "ogre_lfo1Rate": 0.05,
+      "ogre_lfo1Depth": 0.08,
+      "ogre_lfo2Rate": 0.3,
+      "ogre_lfo2Depth": 0.0,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "sub",
+    "reggae",
+    "warm",
+    "coupling"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

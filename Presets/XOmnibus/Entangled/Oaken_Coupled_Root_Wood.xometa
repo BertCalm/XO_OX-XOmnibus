@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 organic element in CELLAR quad. Portamento follows Ogre's pitch coupling. Wood softens electronic bass.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.82,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Coupled Root Wood",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.25,
+      "oaken_bodyDepth": 0.65,
+      "oaken_woodAge": 0.65,
+      "oaken_room": 0.35,
+      "oaken_brightness": 4000.0,
+      "oaken_damping": 0.22,
+      "oaken_curingRate": 0.4,
+      "oaken_filterEnvAmount": 0.25,
+      "oaken_attack": 0.003,
+      "oaken_decay": 1.5,
+      "oaken_sustain": 0.7,
+      "oaken_release": 0.8,
+      "oaken_gravity": 0.6,
+      "oaken_glide": 0.12,
+      "oaken_macroCoupling": 0.0,
+      "oaken_lfo1Rate": 0.12,
+      "oaken_lfo1Depth": 0.1,
+      "oaken_lfo2Rate": 0.07,
+      "oaken_lfo2Depth": 0.08,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "acoustic",
+    "coupling",
+    "warm",
+    "pluck"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

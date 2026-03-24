@@ -1,10 +1,27 @@
 {
   "name": "Deep Kosmik",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["cosmic", "deep", "detuned", "long decay", "expansive"],
-  "macros": {"M1": 0.65, "M2": 0.1, "M3": 0.15, "M4": 0.25},
-  "dna": {"brightness": 0.3, "warmth": 0.6, "movement": 0.5, "density": 0.45, "space": 0.96, "aggression": 0.2},
+  "tags": [
+    "cosmic",
+    "deep",
+    "detuned",
+    "long decay",
+    "expansive"
+  ],
+  "macros": {
+    "M1": 0.65,
+    "M2": 0.1,
+    "M3": 0.15,
+    "M4": 0.25
+  },
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.45,
+    "space": 0.96,
+    "aggression": 0.2
+  },
   "parameters": {
     "ofr_transientSnap": 0.42,
     "ofr_transientPitch": 0.2,
@@ -33,5 +50,10 @@
     "ofr_v3_decay": 1.5,
     "ofr_v6_decay": 1.0,
     "ofr_v7_decay": 0.6
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

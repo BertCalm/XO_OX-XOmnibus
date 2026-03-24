@@ -1,0 +1,46 @@
+{
+  "name": "Slow Burn",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Controlled, intentional reduction \u2014 low heat, patient, methodical. Session target doubled to 60 minutes for hour-long sessions.",
+  "mood": "Kinetic",
+  "tags": [
+    "pad",
+    "warm",
+    "ambient",
+    "evolving",
+    "reduction"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.5,
+    "SPACE": 0.48
+  },
+  "dna": {
+    "warmth": 0.75,
+    "complexity": 0.65,
+    "movement": 0.12,
+    "brightness": 0.55,
+    "aggression": 0.05
+  },
+  "params": {
+    "worn_reductionRate": 0.18,
+    "worn_heat": 0.28,
+    "worn_richness": 1.0,
+    "worn_maillard": 0.18,
+    "worn_umamiDepth": 0.6,
+    "worn_sessionTarget": 60.0,
+    "worn_filterCutoff": 7500.0,
+    "worn_filterRes": 0.12,
+    "worn_ampAttack": 0.65,
+    "worn_ampSustain": 0.92,
+    "worn_ampRelease": 5.5,
+    "worn_lfo1Rate": 0.06,
+    "worn_lfo1Depth": 0.14,
+    "worn_stereoWidth": 0.48,
+    "worn_level": 0.8
+  }
+}

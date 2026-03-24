@@ -1,0 +1,49 @@
+{
+  "name": "Viscosity Study",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Honey-thick resistance \u2014 near-maximum viscosity, low filter. The diffusion is barely perceptible. A thick, dark, barely-breathing pad.",
+  "mood": "Foundation",
+  "tags": [
+    "pad",
+    "dark",
+    "warm",
+    "drone"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.5,
+    "SPACE": 0.38
+  },
+  "dna": {
+    "warmth": 0.82,
+    "complexity": 0.4,
+    "movement": 0.06,
+    "brightness": 0.15,
+    "aggression": 0.05
+  },
+  "params": {
+    "wash_diffusionRate": 0.5,
+    "wash_viscosity": 0.94,
+    "wash_harmonics": 8,
+    "wash_diffusionTime": 28.0,
+    "wash_spreadMax": 250.0,
+    "wash_brightness": 0.42,
+    "wash_warmth": 0.82,
+    "wash_ampAttack": 1.2,
+    "wash_ampDecay": 1.5,
+    "wash_ampSustain": 0.9,
+    "wash_ampRelease": 10.0,
+    "wash_filterCutoff": 1600.0,
+    "wash_filterRes": 0.28,
+    "wash_lfo1Rate": 0.03,
+    "wash_lfo1Depth": 0.14,
+    "wash_lfo2Rate": 0.012,
+    "wash_lfo2Depth": 0.08,
+    "wash_stereoWidth": 0.38,
+    "wash_level": 0.8
+  }
+}

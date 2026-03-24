@@ -1,0 +1,48 @@
+{
+  "name": "Dark Ice",
+  "engines": [
+    "Overcast"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Low velocity, few peaks, dark filter \u2014 ice in deep water. Slightly inharmonic frozen crystal. Future BROTH coupling state.",
+  "mood": "Deep",
+  "tags": [
+    "pad",
+    "dark",
+    "crystalline",
+    "frozen",
+    "ambient"
+  ],
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "dna": {
+    "warmth": 0.3,
+    "complexity": 0.3,
+    "movement": 0.05,
+    "brightness": 0.2,
+    "aggression": 0.08
+  },
+  "params": {
+    "cast_freezeRate": 0.1,
+    "cast_crystalSize": 0.35,
+    "cast_numPeaks": 5,
+    "cast_transition": 1,
+    "cast_latticeSnap": 0.2,
+    "cast_purity": 0.35,
+    "cast_crackle": 0.45,
+    "cast_stereoWidth": 0.5,
+    "cast_filterCutoff": 3200.0,
+    "cast_filterRes": 0.18,
+    "cast_ampAttack": 0.008,
+    "cast_ampDecay": 0.6,
+    "cast_ampSustain": 1.0,
+    "cast_ampRelease": 3.0,
+    "cast_lfo1Rate": 0.1,
+    "cast_lfo1Depth": 0.1,
+    "cast_level": 0.8
+  }
+}

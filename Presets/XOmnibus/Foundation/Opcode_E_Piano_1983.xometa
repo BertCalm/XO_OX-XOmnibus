@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "E Piano 1983 Classic",
+  "mood": "Foundation",
+  "engines": ["Opcode"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The DX7 Electric Piano 1 — the sound that defined 1980s pop production. Series algorithm, ratio 1.0, index decays rapidly after attack. Bright, glassy, cold. The sound that replaced Rhodes on every pop record from 1983–1991.",
+  "tags": ["dx7", "fm", "electric-piano", "1983", "foundation", "80s-classic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.2,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Opcode": {
+      "opco_algorithm": 0,
+      "opco_ratio": 1.0,
+      "opco_index": 0.85,
+      "opco_feedback": 0.0,
+      "opco_velToIndex": 0.65,
+      "opco_brightness": 12000.0,
+      "opco_attack": 0.003,
+      "opco_decay": 1.5,
+      "opco_sustain": 0.4,
+      "opco_release": 0.7,
+      "opco_modAttack": 0.001,
+      "opco_modDecay": 0.25,
+      "opco_modSustain": 0.08,
+      "opco_filterEnvAmt": 0.22,
+      "opco_migration": 0.0,
+      "opco_bendRange": 2.0,
+      "opco_macroCharacter": 0.5,
+      "opco_macroMovement": 0.25,
+      "opco_macroCoupling": 0.0,
+      "opco_macroSpace": 0.5,
+      "opco_lfo1Rate": 0.4,
+      "opco_lfo1Depth": 0.04,
+      "opco_lfo1Shape": 0,
+      "opco_lfo2Rate": 1.5,
+      "opco_lfo2Depth": 0.05,
+      "opco_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

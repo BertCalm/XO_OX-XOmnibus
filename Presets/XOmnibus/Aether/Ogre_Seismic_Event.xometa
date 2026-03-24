@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 cinematic sub event. Maximum gravity, extreme tectonic depth, slow attack. A rumble, not a bass line.",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.9,
+    "movement": 0.4,
+    "density": 0.9,
+    "space": 0.6,
+    "aggression": 0.55
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Seismic Event",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.5,
+      "ogre_drive": 0.8,
+      "ogre_rootDepth": 0.9,
+      "ogre_bodyResonance": 0.6,
+      "ogre_brightness": 400.0,
+      "ogre_density": 0.7,
+      "ogre_soil": 0.2,
+      "ogre_tectonicRate": 0.003,
+      "ogre_tectonicDepth": 45.0,
+      "ogre_attack": 0.1,
+      "ogre_decay": 4.0,
+      "ogre_sustain": 0.7,
+      "ogre_release": 3.0,
+      "ogre_filterEnvAmount": 0.1,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 1.0,
+      "ogre_lfo1Rate": 0.01,
+      "ogre_lfo1Depth": 0.2,
+      "ogre_lfo2Rate": 0.008,
+      "ogre_lfo2Depth": 0.15,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "sub",
+    "cinematic",
+    "ambient",
+    "coupling"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

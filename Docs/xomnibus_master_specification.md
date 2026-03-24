@@ -48,7 +48,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 ### 1.1 What XOmnibus Is
 
-**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 42 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
+**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 71 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
 
 - **Not** a DAW replacement, a commercial product, or a plugin that tries to do everything
 - **Is** a creative tool where cross-engine coupling is the signature feature
@@ -156,7 +156,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 2.6 Design Doctrines
 
-The 6 Doctrines are the quality contract every XOmnibus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 42 engines.
+The 6 Doctrines are the quality contract every XOmnibus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 71 engines.
 
 | ID | Doctrine | Requirement |
 |----|----------|------------|
@@ -175,7 +175,7 @@ The 6 Doctrines are the quality contract every XOmnibus engine must satisfy. The
 
 ## 3. Engine Modules
 
-### 3.1 The 42 Engines
+### 3.1 The 71 Engines
 
 | Short Name | Source Instrument | Accent Color | Parameter Prefix |
 |-----------|------------------|-------------|-----------------|
@@ -1068,7 +1068,7 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 42 engines wrapped and integrated
+- All 71 engines wrapped and integrated
 - Full coupling matrix (12 types)
 - PlaySurface (all 3 modes)
 - 1000 factory presets with DNA fingerprints

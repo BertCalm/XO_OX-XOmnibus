@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Ray Charles Chords",
+  "mood": "Foundation",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ray Charles block chord comping. What'd I Say era — driven preamp, standard tremolo, warm Atlantic Records studio character. Confident, declarative, warm.",
+  "tags": ["wurlitzer", "ray-charles", "block-chords", "driven", "soul", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.5,
+    "density": 0.6,
+    "space": 0.48,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.45,
+      "oddf_brightness": 3600.0,
+      "oddf_tremRate": 5.0,
+      "oddf_tremDepth": 0.5,
+      "oddf_attack": 0.005,
+      "oddf_decay": 1.5,
+      "oddf_sustain": 0.6,
+      "oddf_release": 0.8,
+      "oddf_filterEnvAmt": 0.4,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2.0,
+      "oddf_macroCharacter": 0.45,
+      "oddf_macroMovement": 0.5,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.5,
+      "oddf_lfo1Rate": 0.06,
+      "oddf_lfo1Depth": 0.06,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 0.5,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

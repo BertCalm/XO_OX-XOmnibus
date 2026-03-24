@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "The definitive film score orchestral string pad. Slow attack (250ms), very long release (3.5s), Summer season, medium formant (0.45), wide ensemble (0.85). Under dialogue, under establishing shots. Timeless.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.45,
+    "density": 0.7,
+    "movement": 0.2,
+    "space": 0.75,
+    "warmth": 0.75
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Atmosphere",
+  "name": "Film Score Strings",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.25,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.45,
+      "orch_cutoff": 5000.0,
+      "orch_decay": 0.8,
+      "orch_detune": 9.0,
+      "orch_ensembleWidth": 0.85,
+      "orch_filterEnvAmt": 0.25,
+      "orch_formant": 0.45,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 25.0,
+      "orch_lfo1Depth": 0.12,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Shape": 0,
+      "orch_lfo2Depth": 0.05,
+      "orch_lfo2Rate": 0.08,
+      "orch_lfo2Shape": 0,
+      "orch_release": 3.5,
+      "orch_resonance": 0.15,
+      "orch_season": 1,
+      "orch_sustain": 0.88,
+      "orch_vibratoDepth": 0.22,
+      "orch_vibratoRate": 5.0,
+      "orch_warmth": 0.62
+    }
+  },
+  "tags": ["Garden", "Strings", "Orchestral", "Cinematic"],
+  "version": "1.0"
+}

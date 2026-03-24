@@ -1,10 +1,27 @@
 {
   "name": "Voltage Drop",
-  "engine": "Offering",
   "mood": "Flux",
-  "tags": ["LA", "crunch", "saturation", "decay", "hip-hop"],
-  "macros": {"M1": 0.55, "M2": 0.6, "M3": 0.15, "M4": 0.4},
-  "dna": {"brightness": 0.4, "warmth": 0.75, "movement": 0.68, "density": 0.7, "space": 0.3, "aggression": 0.75},
+  "tags": [
+    "LA",
+    "crunch",
+    "saturation",
+    "decay",
+    "hip-hop"
+  ],
+  "macros": {
+    "M1": 0.55,
+    "M2": 0.6,
+    "M3": 0.15,
+    "M4": 0.4
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.75,
+    "movement": 0.68,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.75
+  },
   "parameters": {
     "ofr_transientSnap": 0.75,
     "ofr_transientSat": 0.5,
@@ -26,5 +43,10 @@
     "ofr_v1_body": 0.65,
     "ofr_masterLevel": 0.85,
     "ofr_masterWidth": 0.6
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

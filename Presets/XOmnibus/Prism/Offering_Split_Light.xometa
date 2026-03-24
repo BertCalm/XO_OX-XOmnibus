@@ -1,10 +1,27 @@
 {
   "name": "Split Light",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["wide stereo", "panned", "bright", "LA", "spacious"],
-  "macros": {"M1": 0.2, "M2": 0.6, "M3": 0.1, "M4": 0.08},
-  "dna": {"brightness": 0.8, "warmth": 0.35, "movement": 0.4, "density": 0.65, "space": 0.8, "aggression": 0.45},
+  "tags": [
+    "wide stereo",
+    "panned",
+    "bright",
+    "LA",
+    "spacious"
+  ],
+  "macros": {
+    "M1": 0.2,
+    "M2": 0.6,
+    "M3": 0.1,
+    "M4": 0.08
+  },
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.35,
+    "movement": 0.4,
+    "density": 0.65,
+    "space": 0.8,
+    "aggression": 0.45
+  },
   "parameters": {
     "ofr_transientSnap": 0.73,
     "ofr_transientPitch": 0.52,
@@ -24,5 +41,10 @@
     "ofr_v5_pan": -0.25,
     "ofr_v6_pan": 0.5,
     "ofr_v7_pan": -0.5
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

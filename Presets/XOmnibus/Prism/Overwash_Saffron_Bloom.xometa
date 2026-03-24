@@ -1,0 +1,50 @@
+{
+  "name": "Saffron Bloom",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Saffron releasing pigment in hot water \u2014 fast, bright, spectacular. The entire spectrum blurs into mist within 5 seconds.",
+  "mood": "Prism",
+  "tags": [
+    "pad",
+    "bright",
+    "evolving",
+    "diffusion"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.5,
+    "SPACE": 0.82
+  },
+  "dna": {
+    "warmth": 0.48,
+    "complexity": 0.8,
+    "movement": 0.75,
+    "brightness": 0.78,
+    "aggression": 0.2
+  },
+  "params": {
+    "wash_diffusionRate": 0.78,
+    "wash_viscosity": 0.18,
+    "wash_harmonics": 14,
+    "wash_diffusionTime": 5.0,
+    "wash_spreadMax": 320.0,
+    "wash_brightness": 0.78,
+    "wash_warmth": 0.48,
+    "wash_ampAttack": 0.05,
+    "wash_ampDecay": 1.2,
+    "wash_ampSustain": 0.7,
+    "wash_ampRelease": 3.5,
+    "wash_filterCutoff": 7500.0,
+    "wash_filterRes": 0.22,
+    "wash_filtEnvAmount": 0.4,
+    "wash_lfo1Rate": 0.28,
+    "wash_lfo1Depth": 0.32,
+    "wash_lfo2Rate": 0.14,
+    "wash_lfo2Depth": 0.22,
+    "wash_stereoWidth": 0.82,
+    "wash_level": 0.78
+  }
+}

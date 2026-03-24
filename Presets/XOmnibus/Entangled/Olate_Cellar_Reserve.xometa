@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 coupling-optimized bass. Moderate gravity communicates with Ogre. Portamento follows pitch coupling.",
+  "dna": {
+    "brightness": 0.33,
+    "warmth": 0.78,
+    "movement": 0.32,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.28
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Cellar Reserve",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.3,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 2000.0,
+      "olate_resonance": 0.38,
+      "olate_drive": 0.5,
+      "olate_filterEnvAmount": 0.55,
+      "olate_filterAttack": 0.002,
+      "olate_filterDecay": 0.28,
+      "olate_vintage": 0.38,
+      "olate_warmth": 0.6,
+      "olate_terroir": 0.0,
+      "olate_ageRate": 0.4,
+      "olate_attack": 0.004,
+      "olate_decay": 0.7,
+      "olate_sustain": 0.78,
+      "olate_release": 0.5,
+      "olate_glide": 0.15,
+      "olate_gravity": 0.7,
+      "olate_macroCoupling": 0.0,
+      "olate_lfo1Rate": 0.08,
+      "olate_lfo1Depth": 0.1,
+      "olate_lfo2Rate": 0.05,
+      "olate_lfo2Depth": 0.08,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "analog",
+    "warm",
+    "coupling"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

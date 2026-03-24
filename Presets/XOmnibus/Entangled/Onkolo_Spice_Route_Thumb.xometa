@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Spice Route Thumb",
+  "mood": "Entangled",
+  "engines": ["Onkolo"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onkolo with SpectralFingerprint migration engaged — the string model broadcasting its percussive transient fingerprint to coupled Fusion engines. Coupling is the point; the clavi is the transmitter.",
+  "tags": ["clavinet", "coupling", "migration", "fusion-quad", "entangled", "transmitter"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.6,
+      "onko_pickup": 0.72,
+      "onko_brightness": 7000.0,
+      "onko_clunk": 0.55,
+      "onko_attack": 0.001,
+      "onko_decay": 0.4,
+      "onko_sustain": 0.38,
+      "onko_release": 0.12,
+      "onko_filterEnvAmt": 0.65,
+      "onko_migration": 0.55,
+      "onko_bendRange": 2.0,
+      "onko_macroCharacter": 0.55,
+      "onko_macroMovement": 0.6,
+      "onko_macroCoupling": 0.55,
+      "onko_macroSpace": 0.5,
+      "onko_lfo1Rate": 0.06,
+      "onko_lfo1Depth": 0.04,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 2.0,
+      "onko_lfo2Depth": 0.05,
+      "onko_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

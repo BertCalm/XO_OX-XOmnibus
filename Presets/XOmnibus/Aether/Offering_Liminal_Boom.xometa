@@ -1,10 +1,27 @@
 {
   "name": "Liminal Boom",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["sub-heavy", "threshold", "transcendent", "Detroit", "deep"],
-  "macros": {"M1": 0.55, "M2": 0.35, "M3": 0.0, "M4": 0.3},
-  "dna": {"brightness": 0.25, "warmth": 0.75, "movement": 0.4, "density": 0.65, "space": 0.85, "aggression": 0.45},
+  "tags": [
+    "sub-heavy",
+    "threshold",
+    "transcendent",
+    "Detroit",
+    "deep"
+  ],
+  "macros": {
+    "M1": 0.55,
+    "M2": 0.35,
+    "M3": 0.0,
+    "M4": 0.3
+  },
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.4,
+    "density": 0.65,
+    "space": 0.85,
+    "aggression": 0.45
+  },
   "parameters": {
     "ofr_transientSnap": 0.52,
     "ofr_transientPitch": 0.25,
@@ -29,5 +46,10 @@
     "ofr_v1_decay": 0.4,
     "ofr_v6_decay": 0.8,
     "ofr_v6_level": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "Short attack (40ms), high brightness (0.75), high cutoff (6000 Hz), moderate release. Intimacy=0.8 — voices pull together harmonically. A neo-soul/jazz string character: tight, bright, personally expressive.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.75,
+    "density": 0.5,
+    "movement": 0.3,
+    "space": 0.5,
+    "warmth": 0.45
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Neo-Soul Strings",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.04,
+      "osier_bendRange": 2,
+      "osier_brightness": 0.75,
+      "osier_companion": 0.6,
+      "osier_cutoff": 6000.0,
+      "osier_decay": 0.35,
+      "osier_detune": 3.5,
+      "osier_filterEnvAmt": 0.32,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 18.0,
+      "osier_intimacy": 0.8,
+      "osier_lfo1Depth": 0.12,
+      "osier_lfo1Rate": 0.6,
+      "osier_lfo1Shape": 0,
+      "osier_lfo2Depth": 0.0,
+      "osier_lfo2Rate": 1.0,
+      "osier_lfo2Shape": 0,
+      "osier_release": 0.7,
+      "osier_resonance": 0.22,
+      "osier_sustain": 0.72,
+      "osier_vibratoDepth": 0.2,
+      "osier_vibratoRate": 5.5
+    }
+  },
+  "tags": ["Garden", "Strings", "Chamber", "Neo-Soul"],
+  "version": "1.0"
+}

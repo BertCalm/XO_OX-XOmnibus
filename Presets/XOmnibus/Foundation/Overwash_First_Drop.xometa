@@ -1,0 +1,50 @@
+{
+  "name": "First Drop",
+  "engines": [
+    "Overwash"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Single drop in perfectly still water \u2014 the reference diffusion patch. Six harmonics spreading very slowly through a viscous medium.",
+  "mood": "Foundation",
+  "tags": [
+    "pad",
+    "ambient",
+    "diffusion",
+    "warm"
+  ],
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "dna": {
+    "warmth": 0.72,
+    "complexity": 0.3,
+    "movement": 0.15,
+    "brightness": 0.3,
+    "aggression": 0.05
+  },
+  "params": {
+    "wash_diffusionRate": 0.15,
+    "wash_viscosity": 0.72,
+    "wash_harmonics": 6,
+    "wash_diffusionTime": 20.0,
+    "wash_spreadMax": 80.0,
+    "wash_brightness": 0.48,
+    "wash_warmth": 0.72,
+    "wash_ampAttack": 1.5,
+    "wash_ampDecay": 1.0,
+    "wash_ampSustain": 0.85,
+    "wash_ampRelease": 6.0,
+    "wash_filterCutoff": 3200.0,
+    "wash_filterRes": 0.12,
+    "wash_filtEnvAmount": 0.25,
+    "wash_lfo1Rate": 0.04,
+    "wash_lfo1Depth": 0.12,
+    "wash_lfo2Rate": 0.015,
+    "wash_lfo2Depth": 0.08,
+    "wash_stereoWidth": 0.5,
+    "wash_level": 0.8
+  }
+}

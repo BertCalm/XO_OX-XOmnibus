@@ -1,0 +1,47 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "description": "High wildness (0.65) + play at high velocity for several notes to build the aggression accumulator. Then hold a forte note and listen 3-5 seconds for the sub-harmonic runner. One note eventually becomes two.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.55,
+    "density": 0.4,
+    "movement": 0.5,
+    "space": 0.5,
+    "warmth": 0.45
+  },
+  "engines": ["Overgrow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Runner Study",
+  "parameters": {
+    "Overgrow": {
+      "grow_attack": 0.03,
+      "grow_bendRange": 2,
+      "grow_bowNoise": 0.2,
+      "grow_brightness": 0.55,
+      "grow_cutoff": 4000.0,
+      "grow_damping": 0.45,
+      "grow_decay": 0.5,
+      "grow_feedback": 0.996,
+      "grow_filterEnvAmt": 0.2,
+      "grow_growthMode": 0.0,
+      "grow_growthTime": 12.0,
+      "grow_lfo1Depth": 0.08,
+      "grow_lfo1Rate": 0.5,
+      "grow_lfo1Shape": 0,
+      "grow_lfo2Depth": 0.0,
+      "grow_lfo2Rate": 1.0,
+      "grow_lfo2Shape": 0,
+      "grow_release": 2.5,
+      "grow_resonance": 0.25,
+      "grow_sustain": 0.7,
+      "grow_vibratoDepth": 0.25,
+      "grow_vibratoRate": 5.5,
+      "grow_wildness": 0.65
+    }
+  },
+  "tags": ["Garden", "Strings", "Runners", "Organic"],
+  "version": "1.0"
+}

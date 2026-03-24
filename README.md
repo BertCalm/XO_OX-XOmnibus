@@ -2,7 +2,7 @@
 
 **A free, open-source multi-engine synthesizer platform by XO_OX Designs.**
 
-46 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
+71 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
 
 ## Engines
 

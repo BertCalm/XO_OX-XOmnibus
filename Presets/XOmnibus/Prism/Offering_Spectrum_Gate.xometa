@@ -1,10 +1,27 @@
 {
   "name": "Spectrum Gate",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["NY", "gated", "bright", "live room", "punchy"],
-  "macros": {"M1": 0.7, "M2": 0.2, "M3": 0.0, "M4": 0.2},
-  "dna": {"brightness": 0.75, "warmth": 0.4, "movement": 0.35, "density": 0.85, "space": 0.25, "aggression": 0.85},
+  "tags": [
+    "NY",
+    "gated",
+    "bright",
+    "live room",
+    "punchy"
+  ],
+  "macros": {
+    "M1": 0.7,
+    "M2": 0.2,
+    "M3": 0.0,
+    "M4": 0.2
+  },
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.35,
+    "density": 0.85,
+    "space": 0.25,
+    "aggression": 0.85
+  },
   "parameters": {
     "ofr_transientSnap": 0.88,
     "ofr_transientPitch": 0.6,
@@ -26,5 +43,10 @@
     "ofr_v1_decay": 0.2,
     "ofr_v1_body": 0.6,
     "ofr_v4_decay": 0.22
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

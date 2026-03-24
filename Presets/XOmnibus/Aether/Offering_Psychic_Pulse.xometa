@@ -1,10 +1,27 @@
 {
   "name": "Psychic Pulse",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["pulsing", "LFO-driven", "trippy", "Toronto", "deep curiosity"],
-  "macros": {"M1": 0.8, "M2": 0.25, "M3": 0.0, "M4": 0.08},
-  "dna": {"brightness": 0.5, "warmth": 0.45, "movement": 0.88, "density": 0.55, "space": 0.78, "aggression": 0.4},
+  "tags": [
+    "pulsing",
+    "LFO-driven",
+    "trippy",
+    "Toronto",
+    "deep curiosity"
+  ],
+  "macros": {
+    "M1": 0.8,
+    "M2": 0.25,
+    "M3": 0.0,
+    "M4": 0.08
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.88,
+    "density": 0.55,
+    "space": 0.78,
+    "aggression": 0.4
+  },
   "parameters": {
     "ofr_transientSnap": 0.55,
     "ofr_transientPitch": 0.32,
@@ -27,5 +44,10 @@
     "ofr_v0_tune": -2.0,
     "ofr_v3_level": 0.9,
     "ofr_v3_decay": 0.7
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

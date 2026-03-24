@@ -1,0 +1,47 @@
+{
+  "name": "Mid Reduction",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "description": "Halfway to concentration \u2014 the sauce is beginning to show its bones. Maillard saturation audible as mild warmth.",
+  "mood": "Deep",
+  "tags": [
+    "pad",
+    "dark",
+    "warm",
+    "reduction",
+    "texture"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.5,
+    "SPACE": 0.4
+  },
+  "dna": {
+    "warmth": 0.78,
+    "complexity": 0.5,
+    "movement": 0.18,
+    "brightness": 0.35,
+    "aggression": 0.12
+  },
+  "params": {
+    "worn_reductionRate": 0.5,
+    "worn_heat": 0.45,
+    "worn_richness": 0.75,
+    "worn_maillard": 0.35,
+    "worn_umamiDepth": 0.68,
+    "worn_sessionTarget": 30.0,
+    "worn_filterCutoff": 5000.0,
+    "worn_filterRes": 0.18,
+    "worn_filtEnvAmount": 0.22,
+    "worn_ampAttack": 0.9,
+    "worn_ampSustain": 0.85,
+    "worn_ampRelease": 6.0,
+    "worn_lfo1Rate": 0.055,
+    "worn_lfo1Depth": 0.15,
+    "worn_stereoWidth": 0.4,
+    "worn_level": 0.82
+  }
+}

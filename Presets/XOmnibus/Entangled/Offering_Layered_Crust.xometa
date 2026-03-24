@@ -1,10 +1,27 @@
 {
   "name": "Layered Crust",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["collage", "layers", "coupling-ready", "dense", "complex"],
-  "macros": {"M1": 0.5, "M2": 0.3, "M3": 0.85, "M4": 0.2},
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.6, "density": 0.85, "space": 0.5, "aggression": 0.5},
+  "tags": [
+    "collage",
+    "layers",
+    "coupling-ready",
+    "dense",
+    "complex"
+  ],
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.3,
+    "M3": 0.85,
+    "M4": 0.2
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.85,
+    "space": 0.5,
+    "aggression": 0.5
+  },
   "parameters": {
     "ofr_flipLayers": 3,
     "ofr_flipChop": 0.45,
@@ -24,5 +41,10 @@
     "ofr_masterWidth": 0.7,
     "ofr_v0_body": 0.8,
     "ofr_v6_level": 0.85
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

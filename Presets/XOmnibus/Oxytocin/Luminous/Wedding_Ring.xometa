@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Wedding Ring",
+  "author": "XO_OX Designs",
+  "mood": "Luminous",
+  "tags": [
+    "love types",
+    "commitment bright",
+    "warm ceremony",
+    "luminous",
+    "sustained"
+  ],
+  "dna": {
+    "brightness": 0.738,
+    "warmth": 0.593,
+    "movement": 0.125,
+    "density": 0.349,
+    "space": 0.705,
+    "aggression": 0.386
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.75,
+      "oxy_passion": 0.4,
+      "oxy_commitment": 0.92,
+      "oxy_warmth_rate": 0.35,
+      "oxy_passion_rate": 0.006,
+      "oxy_commit_rate": 0.5,
+      "oxy_entanglement": 0.3,
+      "oxy_circuit_age": 0.3,
+      "oxy_circuit_noise": 0.06,
+      "oxy_memory_depth": 0.45,
+      "oxy_memory_decay": 6.0,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.5,
+      "oxy_cutoff": 2400,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.015,
+      "oxy_decay": 0.9,
+      "oxy_sustain": 0.82,
+      "oxy_release": 4.236,
+      "oxy_lfo_rate": 0.067,
+      "oxy_lfo_depth": 0.1,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.033,
+      "oxy_lfo2_depth": 0.04,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

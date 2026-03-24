@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Remember The Fight",
+  "author": "XO_OX Designs",
+  "mood": "Flux",
+  "tags": [
+    "memory subset",
+    "remember",
+    "fight",
+    "passion memory",
+    "volatile with history"
+  ],
+  "dna": {
+    "brightness": 0.698,
+    "warmth": 0.3,
+    "movement": 0.252,
+    "density": 0.322,
+    "space": 0.582,
+    "aggression": 0.625
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.22,
+      "oxy_passion": 0.75,
+      "oxy_commitment": 0.42,
+      "oxy_warmth_rate": 0.25,
+      "oxy_passion_rate": 0.003,
+      "oxy_commit_rate": 0.8,
+      "oxy_entanglement": 0.52,
+      "oxy_circuit_age": 0.45,
+      "oxy_circuit_noise": 0.15,
+      "oxy_memory_depth": 0.35,
+      "oxy_memory_decay": 3.0,
+      "oxy_topology": 2,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.68,
+      "oxy_cutoff": 4000,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.002,
+      "oxy_decay": 0.3,
+      "oxy_sustain": 0.5,
+      "oxy_release": 1.618,
+      "oxy_lfo_rate": 1.5,
+      "oxy_lfo_depth": 0.25,
+      "oxy_lfo_shape": 1,
+      "oxy_lfo2_rate": 0.75,
+      "oxy_lfo2_depth": 0.12,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

@@ -14,6 +14,14 @@ Processing:
   3. Audio Rendering — mixes to stereo WAV, normalizes to -1 dB peak
   4. Encoding — converts to MP3 via ffmpeg/lame (fallback to WAV)
 
+Legend Feature #5 — DNA-Driven Storytelling:
+  When --dna is provided (JSON file or inline JSON), the preview becomes a
+  15-second sonic journey through the pack's personality:
+    • Bars 1-2: gentlest sounds introduced one per beat (warmth-first order)
+    • Bars 3-4: everything layers, velocity crescendos to a full peak
+  Tempo is derived from average aggression + movement (80–130 BPM) when not
+  specified with --tempo.  Falls back to standard sequencing when DNA is absent.
+
 Requirements:
     Python 3.10+ (standard library only — uses the `wave` module)
     Optional: ffmpeg or lame on PATH for MP3 encoding
@@ -28,6 +36,16 @@ Usage:
         --engine OPAL --pack "XO_OX OPAL Atmosphere" --output ./preview/ \\
         --pattern melodic --tempo 90
 
+    # DNA-driven storytelling preview (Legend Feature #5)
+    python3 xpn_preview_generator.py --samples ./rendered_samples/ \\
+        --engine ONSET --pack "XO_OX ONSET Foundation" --output ./preview/ \\
+        --dna samples_dna.json
+
+    # DNA as inline JSON (pack-level fallback — applies same DNA to all samples)
+    python3 xpn_preview_generator.py --samples ./rendered_samples/ \\
+        --engine ONSET --pack "XO_OX ONSET Foundation" --output ./preview/ \\
+        --dna '{"brightness":0.7,"warmth":0.3,"aggression":0.8,"movement":0.6}'
+
     # Dry run — show what would be generated
     python3 xpn_preview_generator.py --samples ./rendered_samples/ \\
         --engine ONSET --pack "XO_OX ONSET Foundation" --output ./preview/ \\
@@ -36,6 +54,7 @@ Usage:
 
 import argparse
 import array
+import json
 import math
 import os
 import random
@@ -265,6 +284,222 @@ def select_melodic_samples(samples_dir: Path, max_samples: int = 6
             result.append(untagged[i])
 
     return result[:max_samples]
+
+
+# =============================================================================
+# DNA-DRIVEN STORYTELLING (Legend Feature #5)
+# =============================================================================
+
+def _compute_preview_tempo(samples_with_dna: list[dict]) -> int:
+    """Derive preview tempo from pack's average aggression/movement.
+
+    Maps the pack's energy (0-1) to a BPM range of 80-130:
+      - Calm, warm packs land around 80-90 BPM
+      - Mid-energy packs cluster at 100-110 BPM
+      - Aggressive, kinetic packs push toward 120-130 BPM
+    """
+    if not samples_with_dna:
+        return 100
+    avg_aggression = sum(
+        s.get("dna", {}).get("aggression", 0.5) for s in samples_with_dna
+    ) / len(samples_with_dna)
+    avg_movement = sum(
+        s.get("dna", {}).get("movement", 0.5) for s in samples_with_dna
+    ) / len(samples_with_dna)
+    energy = (avg_aggression + avg_movement) / 2.0
+    # Map energy 0-1 to tempo 80-130 BPM
+    return int(80 + energy * 50)
+
+
+def _arrange_by_dna(samples_with_dna: list[dict], tempo_bpm: int = 100
+                    ) -> tuple[list[dict], float]:
+    """Arrange samples in DNA-energy order for a storytelling preview.
+
+    The preview becomes a journey through the pack's sonic space:
+      - Starts with the gentlest sound (high warmth, low aggression)
+      - Builds through mid-energy sounds
+      - Peaks with the most intense sound (high brightness + aggression)
+      - Bars 3-4 layer every sound with a velocity crescendo
+
+    Returns:
+        events      — list of {"onset": float, "sample_info": dict,
+                               "velocity": float} dicts (onset in seconds)
+        total_duration — total rendered duration in seconds (4 bars)
+    """
+    # Score each sample: higher = gentler (introduced first)
+    scored = []
+    for sample_info in samples_with_dna:
+        dna = sample_info.get("dna", {})
+        gentleness = (
+            dna.get("warmth", 0.5)
+            - dna.get("aggression", 0.5)
+            - dna.get("brightness", 0.5) * 0.3
+            + dna.get("space", 0.5) * 0.2
+        )
+        scored.append((sample_info, gentleness))
+
+    # Sort: gentlest first (highest gentleness score first)
+    scored.sort(key=lambda x: -x[1])
+
+    bar_length = 60.0 / tempo_bpm * 4  # seconds per bar at given tempo
+    total_duration = bar_length * 4    # 4 bars total
+    events = []
+
+    n_samples = len(scored)
+
+    # --- Bars 1-2: introduce one new sample per beat (gentlest first) ---
+    intro_duration = bar_length * 2
+    for i, (sample_info, _) in enumerate(scored):
+        onset = i * (intro_duration / max(1, n_samples))
+        events.append({
+            "onset": onset,
+            "sample_info": sample_info,
+            # Gradual velocity build: 0.5 → 0.6 across the intro
+            "velocity": 0.5 + 0.1 * (i / max(1, n_samples - 1)),
+        })
+
+    # --- Bars 3-4: layer everything with a crescendo ---
+    layer_start = bar_length * 2
+    beats_remaining = 8  # 2 bars × 4 beats
+    for beat in range(beats_remaining):
+        t = layer_start + beat * (bar_length / 4)
+        vel = 0.6 + 0.4 * (beat / max(1, beats_remaining - 1))
+        # Later (more intense) samples appear more in the peak section:
+        # a sample ranked j (0 = gentlest) only joins beats after its threshold.
+        for j, (sample_info, _) in enumerate(scored):
+            threshold_beat = (n_samples - j - 1) * beats_remaining // max(1, n_samples)
+            if beat >= threshold_beat:
+                events.append({
+                    "onset": t,
+                    "sample_info": sample_info,
+                    "velocity": vel,
+                })
+
+    return events, total_duration
+
+
+def _load_dna_map(dna_arg: Optional[str]) -> Optional[dict]:
+    """Parse the --dna argument into a usable dict.
+
+    Accepted forms:
+      • Path to a JSON file:
+          - Per-sample keyed by filename stem:
+            {"kick_v4": {"brightness": 0.3, ...}, "snare_c1": {...}}
+          - Pack-level DNA (flat dict with dimension keys):
+            {"brightness": 0.7, "warmth": 0.3, ...}
+      • Inline JSON string (same two forms as above).
+
+    Returns the parsed dict, or None if dna_arg is None / unparseable.
+    """
+    if dna_arg is None:
+        return None
+
+    raw_text = dna_arg.strip()
+
+    # Try reading as a file path first
+    maybe_path = Path(raw_text)
+    if maybe_path.exists() and maybe_path.is_file():
+        try:
+            raw_text = maybe_path.read_text(encoding="utf-8")
+        except OSError as e:
+            print(f"  [WARN] Could not read DNA file {maybe_path}: {e}")
+            return None
+
+    try:
+        return json.loads(raw_text)
+    except json.JSONDecodeError as e:
+        print(f"  [WARN] Could not parse --dna JSON: {e}")
+        return None
+
+
+def _build_samples_with_dna(paths: list[Path], dna_map: Optional[dict]
+                             ) -> list[dict]:
+    """Attach DNA dicts to a list of sample paths.
+
+    dna_map can be:
+      • None — DNA unavailable, each sample gets an empty dna dict.
+      • Flat pack-level DNA (has dimension keys like "brightness") —
+        every sample shares the same DNA.
+      • Per-sample map keyed by filename stem — each sample gets its own DNA.
+    """
+    # Detect pack-level vs per-sample map
+    DNA_DIMENSIONS = {"brightness", "warmth", "movement", "density",
+                      "space", "aggression"}
+    is_pack_level = dna_map is not None and bool(
+        DNA_DIMENSIONS & set(dna_map.keys())
+    )
+
+    result = []
+    for path in paths:
+        if dna_map is None:
+            dna = {}
+        elif is_pack_level:
+            dna = {k: float(v) for k, v in dna_map.items()
+                   if k in DNA_DIMENSIONS}
+        else:
+            # Per-sample: look up by stem, then by full name, then empty
+            stem = path.stem
+            raw = dna_map.get(stem) or dna_map.get(path.name) or {}
+            dna = {k: float(v) for k, v in raw.items()
+                   if k in DNA_DIMENSIONS}
+        result.append({"path": path, "dna": dna})
+    return result
+
+
+def generate_dna_storytelling_pattern(
+    tempo: float,
+    sr: int,
+    samples_with_dna: list[dict],
+    loaded_audio: dict,      # maps path → list[float] of resampled audio
+) -> tuple[list[float], list[float]]:
+    """Render the DNA-driven storytelling arrangement to stereo buffers.
+
+    Args:
+        tempo:            BPM (possibly DNA-derived)
+        sr:               sample rate
+        samples_with_dna: output of _build_samples_with_dna()
+        loaded_audio:     {Path: list[float]} — pre-loaded and resampled PCM
+
+    Returns:
+        (left, right) stereo float buffers covering total_duration seconds.
+    """
+    events, total_duration = _arrange_by_dna(samples_with_dna,
+                                              tempo_bpm=int(tempo))
+    total_samples = int(total_duration * sr)
+    left = [0.0] * total_samples
+    right = [0.0] * total_samples
+
+    # Panning table — gentle sounds favour centre; intense ones spread wider
+    n = len(samples_with_dna)
+    for evt_idx, event in enumerate(events):
+        path = event["sample_info"]["path"]
+        audio = loaded_audio.get(path)
+        if not audio:
+            continue
+
+        start = int(event["onset"] * sr)
+        vel = event["velocity"]
+
+        # Find which sorted position this sample occupies (0 = gentlest)
+        rank = next(
+            (i for i, s in enumerate(samples_with_dna) if s["path"] == path),
+            0,
+        )
+        # Rank 0 (gentlest) → pan near centre (0.45-0.55); rank n-1 → wider
+        pan_spread = 0.05 + (rank / max(1, n - 1)) * 0.2
+        pan = 0.5 + (((rank % 2) * 2 - 1) * pan_spread)  # alternate L/R
+
+        l_gain = vel * (1.0 - pan) * 2.0
+        r_gain = vel * pan * 2.0
+
+        for i, s in enumerate(audio):
+            idx = start + i
+            if idx >= total_samples:
+                break
+            left[idx] += s * l_gain
+            right[idx] += s * r_gain
+
+    return left, right
 
 
 # =============================================================================
@@ -525,6 +760,7 @@ def generate_preview(
     output_format: str = "mp3",
     pattern_type: str = "auto",
     dry_run: bool = False,
+    dna_arg: Optional[str] = None,
 ) -> Optional[Path]:
     """
     Generate a preview audio file for an XPN expansion pack.
@@ -534,15 +770,24 @@ def generate_preview(
         engine:         Engine name (e.g. "ONSET", "OPAL")
         pack_name:      Pack name (used for output filename)
         output_dir:     Where to write the preview file
-        tempo:          BPM for the pattern
-        duration:       Target duration in seconds
+        tempo:          BPM for the pattern (0 = auto-derive from DNA)
+        duration:       Target duration in seconds (ignored when DNA
+                        storytelling is active — duration is 4 bars)
         output_format:  "mp3" or "wav"
         pattern_type:   "drum", "melodic", or "auto"
         dry_run:        If True, show plan without generating
+        dna_arg:        Path to a DNA JSON file, or an inline JSON string
+                        describing per-sample or pack-level Sonic DNA.
+                        When provided, activates Legend Feature #5:
+                        DNA-driven storytelling sequencing.
 
     Returns:
         Path to the generated preview file, or None on failure.
     """
+    # --- Parse DNA (Legend Feature #5) ---
+    dna_map = _load_dna_map(dna_arg)
+    use_dna_storytelling = dna_map is not None
+
     # Resolve pattern type
     if pattern_type == "auto":
         pattern_type = detect_pattern_type(engine)
@@ -557,6 +802,8 @@ def generate_preview(
     print(f"\n  Engine:   {engine}")
     print(f"  Pack:     {pack_name}")
     print(f"  Pattern:  {pattern_type}")
+    if use_dna_storytelling:
+        print(f"  Mode:     DNA Storytelling (Legend Feature #5)")
     print(f"  Tempo:    {tempo} BPM")
     print(f"  Duration: {duration}s")
     print(f"  Format:   {output_format}")
@@ -578,6 +825,52 @@ def generate_preview(
         print(f"\n  Selected {len(selected_paths)} melodic samples:")
         for p in selected_paths:
             print(f"    → {p.name}")
+
+    # --- DNA tempo derivation (Legend Feature #5) ---
+    # Collect all selected paths regardless of pattern type so DNA can be
+    # attached to them.  For drum packs the dict values are the paths;
+    # for melodic packs selected_paths is already a list.
+    if use_dna_storytelling:
+        all_selected_paths = (
+            list(selected.values())
+            if pattern_type == "drum"
+            else list(selected_paths)
+        )
+        samples_with_dna = _build_samples_with_dna(all_selected_paths, dna_map)
+
+        # Auto-derive tempo from pack energy if the caller left it at default
+        if tempo == 120.0:
+            derived_tempo = _compute_preview_tempo(samples_with_dna)
+            print(f"  Tempo:    {derived_tempo} BPM  (DNA-derived)")
+            tempo = derived_tempo
+        else:
+            print(f"  Tempo:    {tempo} BPM  (caller-specified)")
+
+        # Compute actual duration: 4 bars at the derived tempo
+        bar_length = 60.0 / tempo * 4
+        duration = bar_length * 4
+        print(f"  Duration: {duration:.2f}s  (4 bars at {tempo} BPM)")
+
+        # Print DNA storytelling order
+        scored_preview = sorted(
+            samples_with_dna,
+            key=lambda s: -(
+                s["dna"].get("warmth", 0.5)
+                - s["dna"].get("aggression", 0.5)
+                - s["dna"].get("brightness", 0.5) * 0.3
+                + s["dna"].get("space", 0.5) * 0.2
+            ),
+        )
+        print("\n  Story order (gentlest → most intense):")
+        for rank, s in enumerate(scored_preview, 1):
+            dna = s["dna"]
+            desc = (
+                f"warmth={dna.get('warmth', '?'):.2f}  "
+                f"aggr={dna.get('aggression', '?'):.2f}  "
+                f"bright={dna.get('brightness', '?'):.2f}"
+                if dna else "no DNA"
+            )
+            print(f"    {rank}. {s['path'].name}  ({desc})")
 
     if dry_run:
         ext = output_format if output_format in ("mp3", "wav") else "mp3"
@@ -614,16 +907,44 @@ def generate_preview(
 
     # --- Sequencing ---
     print("\n  Sequencing pattern...")
-    if pattern_type == "drum":
-        if not loaded:
-            print("  [ERROR] No samples loaded successfully")
-            return None
-        left, right = generate_drum_pattern(tempo, duration, sr, loaded)
-    else:
-        if not loaded_list:
-            print("  [ERROR] No samples loaded successfully")
-            return None
-        left, right = generate_melodic_pattern(tempo, duration, sr, loaded_list)
+
+    if use_dna_storytelling:
+        # Build path → audio lookup for the storytelling renderer
+        loaded_audio: dict[Path, list[float]] = {}
+        if pattern_type == "drum":
+            for voice, path in selected.items():
+                audio = loaded.get(voice)
+                if audio:
+                    loaded_audio[path] = audio
+        else:
+            for path, audio in zip(selected_paths, loaded_list):
+                loaded_audio[path] = audio
+
+        if not loaded_audio:
+            print("  [WARN] No audio loaded for DNA storytelling — falling back to standard sequencing")
+            use_dna_storytelling = False
+        else:
+            print("  Using DNA storytelling arrangement (Legend Feature #5)")
+            left, right = generate_dna_storytelling_pattern(
+                tempo=tempo,
+                sr=sr,
+                samples_with_dna=samples_with_dna,
+                loaded_audio=loaded_audio,
+            )
+
+    if not use_dna_storytelling:
+        # Standard sequencing path (fallback or when --dna not provided)
+        if pattern_type == "drum":
+            if not loaded:
+                print("  [ERROR] No samples loaded successfully")
+                return None
+            left, right = generate_drum_pattern(tempo, duration, sr, loaded)
+        else:
+            if not loaded_list:
+                print("  [ERROR] No samples loaded successfully")
+                return None
+            left, right = generate_melodic_pattern(tempo, duration, sr,
+                                                    loaded_list)
 
     # --- Post-Processing ---
     print("  Applying fades...")
@@ -658,7 +979,7 @@ def generate_preview(
     unit = "KB" if size_kb < 1024 else "MB"
     size_val = size_kb if size_kb < 1024 else size_kb / 1024
     print(f"\n  Output: {final_path}  ({size_val:.1f} {unit})")
-    print(f"  Duration: {duration}s @ {tempo} BPM")
+    print(f"  Duration: {duration:.1f}s @ {tempo} BPM")
     print(f"  Preview ready for XPN packager ✓")
 
     return final_path
@@ -695,6 +1016,22 @@ def main():
                         help="Pattern type (default: auto-detect from engine)")
     parser.add_argument("--dry-run",  action="store_true",
                         help="Show what would be generated without processing")
+    parser.add_argument(
+        "--dna",
+        default=None,
+        metavar="JSON_OR_FILE",
+        help=(
+            "Activate DNA storytelling (Legend Feature #5). "
+            "Accepts a JSON file path or an inline JSON string. "
+            "Format A — per-sample keyed by filename stem: "
+            '\'{"kick_v4": {"brightness": 0.3, "aggression": 0.8}, ...}\'. '
+            "Format B — pack-level DNA applied to all samples: "
+            '\'{"brightness": 0.7, "warmth": 0.3, "aggression": 0.8, '
+            '"movement": 0.6}\'. '
+            "When provided, tempo is auto-derived from pack energy unless "
+            "--tempo is also set."
+        ),
+    )
     args = parser.parse_args()
 
     samples_dir = Path(args.samples)
@@ -712,6 +1049,7 @@ def main():
         output_format=args.output_format,
         pattern_type=args.pattern,
         dry_run=args.dry_run,
+        dna_arg=args.dna,
     )
 
     if result is None and not args.dry_run:

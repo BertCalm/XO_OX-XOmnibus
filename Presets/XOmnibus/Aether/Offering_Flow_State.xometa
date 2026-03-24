@@ -1,10 +1,27 @@
 {
   "name": "Flow State",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["flow", "locked groove", "hypnotic", "Bay Area", "psychology"],
-  "macros": {"M1": 0.0, "M2": 0.0, "M3": 0.0, "M4": 0.0},
-  "dna": {"brightness": 0.4, "warmth": 0.5, "movement": 0.5, "density": 0.5, "space": 0.65, "aggression": 0.4},
+  "tags": [
+    "flow",
+    "locked groove",
+    "hypnotic",
+    "Bay Area",
+    "psychology"
+  ],
+  "macros": {
+    "M1": 0.0,
+    "M2": 0.0,
+    "M3": 0.0,
+    "M4": 0.0
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.4
+  },
   "parameters": {
     "ofr_transientSnap": 0.6,
     "ofr_transientPitch": 0.38,
@@ -28,5 +45,10 @@
     "ofr_v0_body": 0.72,
     "ofr_v1_decay": 0.24,
     "ofr_v3_decay": 0.65
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

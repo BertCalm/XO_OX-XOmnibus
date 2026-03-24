@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Sallen-Key Crisis",
+  "author": "XO_OX Designs",
+  "mood": "Flux",
+  "tags": [
+    "volatile",
+    "sallen-key",
+    "crisis",
+    "circuit terms",
+    "overdriven filter"
+  ],
+  "dna": {
+    "brightness": 0.734,
+    "warmth": 0.29,
+    "movement": 0.411,
+    "density": 0.305,
+    "space": 0.309,
+    "aggression": 0.778
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.22,
+      "oxy_passion": 0.98,
+      "oxy_commitment": 0.28,
+      "oxy_warmth_rate": 0.1,
+      "oxy_passion_rate": 0.001,
+      "oxy_commit_rate": 1.5,
+      "oxy_entanglement": 0.62,
+      "oxy_circuit_age": 0.42,
+      "oxy_circuit_noise": 0.2,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 0.5,
+      "oxy_topology": 2,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.82,
+      "oxy_cutoff": 7000,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.001,
+      "oxy_decay": 0.05,
+      "oxy_sustain": 0.38,
+      "oxy_release": 0.35,
+      "oxy_lfo_rate": 6.0,
+      "oxy_lfo_depth": 0.42,
+      "oxy_lfo_shape": 1,
+      "oxy_lfo2_rate": 12.0,
+      "oxy_lfo2_depth": 0.22,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

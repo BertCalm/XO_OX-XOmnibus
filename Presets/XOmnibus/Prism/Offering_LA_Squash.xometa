@@ -1,10 +1,27 @@
 {
   "name": "LA Squash",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["LA", "compression", "Madlib", "parallel", "punchy"],
-  "macros": {"M1": 0.0, "M2": 0.0, "M3": 0.3, "M4": 0.15},
-  "dna": {"brightness": 0.4, "warmth": 0.6, "movement": 0.4, "density": 0.9, "space": 0.3, "aggression": 0.8},
+  "tags": [
+    "LA",
+    "compression",
+    "Madlib",
+    "parallel",
+    "punchy"
+  ],
+  "macros": {
+    "M1": 0.0,
+    "M2": 0.0,
+    "M3": 0.3,
+    "M4": 0.15
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.9,
+    "space": 0.3,
+    "aggression": 0.8
+  },
   "parameters": {
     "ofr_transientSnap": 0.7,
     "ofr_transientPitch": 0.4,
@@ -26,5 +43,10 @@
     "ofr_v0_body": 0.75,
     "ofr_v1_decay": 0.24,
     "ofr_v1_body": 0.55
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

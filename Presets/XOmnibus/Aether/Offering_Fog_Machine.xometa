@@ -1,10 +1,27 @@
 {
   "name": "Fog Machine",
-  "engine": "Offering",
   "mood": "Aether",
-  "tags": ["Bay Area", "allpass", "diffuse", "hypnotic", "slow"],
-  "macros": {"M1": 0.5, "M2": 0.15, "M3": 0.0, "M4": 0.15},
-  "dna": {"brightness": 0.35, "warmth": 0.55, "movement": 0.4, "density": 0.5, "space": 0.95, "aggression": 0.15},
+  "tags": [
+    "Bay Area",
+    "allpass",
+    "diffuse",
+    "hypnotic",
+    "slow"
+  ],
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.15,
+    "M3": 0.0,
+    "M4": 0.15
+  },
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.55,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.95,
+    "aggression": 0.15
+  },
   "parameters": {
     "ofr_transientSnap": 0.5,
     "ofr_transientPitch": 0.28,
@@ -29,5 +46,10 @@
     "ofr_v3_decay": 0.9,
     "ofr_v6_decay": 0.7,
     "ofr_v7_decay": 0.5
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

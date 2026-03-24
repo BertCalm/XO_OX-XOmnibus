@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Arc Runner",
+  "author": "XO_OX Designs",
+  "mood": "Kinetic",
+  "tags": [
+    "kinetic",
+    "arc",
+    "running",
+    "fast rate",
+    "energetic"
+  ],
+  "dna": {
+    "brightness": 0.724,
+    "warmth": 0.287,
+    "movement": 0.238,
+    "density": 0.294,
+    "space": 0.32,
+    "aggression": 0.605
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.28,
+      "oxy_passion": 0.8,
+      "oxy_commitment": 0.4,
+      "oxy_warmth_rate": 0.2,
+      "oxy_passion_rate": 0.002,
+      "oxy_commit_rate": 0.35,
+      "oxy_entanglement": 0.45,
+      "oxy_circuit_age": 0.3,
+      "oxy_circuit_noise": 0.1,
+      "oxy_memory_depth": 0.0,
+      "oxy_memory_decay": 0.5,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.55,
+      "oxy_cutoff": 5200,
+      "oxy_pitch": 0,
+      "oxy_detune": 0,
+      "oxy_attack": 0.001,
+      "oxy_decay": 0.16,
+      "oxy_sustain": 0.45,
+      "oxy_release": 0.4,
+      "oxy_lfo_rate": 2.8,
+      "oxy_lfo_depth": 0.24,
+      "oxy_lfo_shape": 1,
+      "oxy_lfo2_rate": 5.6,
+      "oxy_lfo2_depth": 0.12,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "version": "1.0.0",
+  "tempo": null,
+  "engines": [
+    "Oxytocin"
+  ],
+  "description": ""
+}

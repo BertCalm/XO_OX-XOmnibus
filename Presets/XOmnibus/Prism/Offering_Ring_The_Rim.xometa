@@ -1,10 +1,27 @@
 {
   "name": "Ring The Rim",
-  "engine": "Offering",
   "mood": "Prism",
-  "tags": ["rimshot", "bright", "NY", "snappy", "percussive"],
-  "macros": {"M1": 0.65, "M2": 0.2, "M3": 0.1, "M4": 0.1},
-  "dna": {"brightness": 0.82, "warmth": 0.3, "movement": 0.45, "density": 0.68, "space": 0.38, "aggression": 0.78},
+  "tags": [
+    "rimshot",
+    "bright",
+    "NY",
+    "snappy",
+    "percussive"
+  ],
+  "macros": {
+    "M1": 0.65,
+    "M2": 0.2,
+    "M3": 0.1,
+    "M4": 0.1
+  },
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.3,
+    "movement": 0.45,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.78
+  },
   "parameters": {
     "ofr_transientSnap": 0.8,
     "ofr_transientPitch": 0.58,
@@ -25,5 +42,10 @@
     "ofr_v5_pan": -0.2,
     "ofr_v1_decay": 0.19,
     "ofr_v4_decay": 0.2
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

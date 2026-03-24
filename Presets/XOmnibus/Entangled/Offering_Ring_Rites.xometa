@@ -1,10 +1,27 @@
 {
   "name": "Ring Rites",
-  "engine": "Offering",
   "mood": "Entangled",
-  "tags": ["ring mod", "metallic", "entangled", "coupling", "harmonic"],
-  "macros": {"M1": 0.4, "M2": 0.4, "M3": 0.95, "M4": 0.1},
-  "dna": {"brightness": 0.7, "warmth": 0.3, "movement": 0.65, "density": 0.7, "space": 0.55, "aggression": 0.6},
+  "tags": [
+    "ring mod",
+    "metallic",
+    "entangled",
+    "coupling",
+    "harmonic"
+  ],
+  "macros": {
+    "M1": 0.4,
+    "M2": 0.4,
+    "M3": 0.95,
+    "M4": 0.1
+  },
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.65,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.6
+  },
   "parameters": {
     "ofr_flipLayers": 2,
     "ofr_flipRingMod": 0.75,
@@ -25,5 +42,10 @@
     "ofr_v7_type": 7,
     "ofr_v7_level": 0.9,
     "ofr_v7_decay": 0.2
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

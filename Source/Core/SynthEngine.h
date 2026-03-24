@@ -26,7 +26,7 @@ enum class CouplingType {
                        // Unlike AudioToWavetable (periodic snapshots), AudioToBuffer streams
                        // every block into a pre-allocated circular buffer with freeze support.
                        // See Docs/xopal_phase1_architecture.md §15 for the full design.
-    KnotTopology       // Bidirectional irreducible coupling (KNOT type, V2 Theorem feature).
+    KnotTopology,      // Bidirectional irreducible coupling (KNOT type, V2 Theorem feature).
                        // Both engines modulate each other's parameters simultaneously.
                        // Linking number (encoded in `amount` param, 1-5) sets entanglement depth:
                        //   linkingNum = juce::roundToInt(amount * 4.0f) + 1  →  range [1, 5]
@@ -34,6 +34,16 @@ enum class CouplingType {
                        // KnotTopology creates mutual, co-evolving entanglement: neither engine
                        // can be decoupled from the other without destroying the patch.
                        // See Docs/specs/knot_coupling_spec.md for full design.
+    TriangularCoupling // Love triangle state transfer (OXYTO type, Engine #48).
+                       // Source engine's effective I/P/C values bleed into the destination
+                       // engine's corresponding love components. Follows the AudioToFM
+                       // spectral band convention:
+                       //   bandA = effective_intimacy
+                       //   bandB = effective_passion
+                       //   bandC = effective_commitment
+                       //   bandD = memory accumulator average
+                       // Designed for XOxytocin but usable by any engine implementing
+                       // love-triangle DSP (per Sternberg's Triangular Theory of Love).
 };
 
 //==============================================================================

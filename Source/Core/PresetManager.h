@@ -48,6 +48,8 @@ inline const juce::StringArray validEngineNames {
     "Oasis", "Oddfellow", "Onkolo", "Opcode",
     // Membrane Collection
     "Osmosis",
+    // Love Triangle Circuit Synth
+    "Oxytocin",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -102,7 +104,11 @@ inline juce::String resolveEngineAlias(const juce::String& name)
 
 // Frozen parameter prefix for each canonical engine ID.
 // These NEVER change — parameter IDs are stable across releases.
-// Returns the prefix WITHOUT trailing underscore (e.g. "snap", "morph").
+// Returns the frozen parameter prefix for the given engine. Original fleet
+// prefixes omit the trailing underscore (e.g. "snap", "morph"). Kitchen
+// Collection prefixes include it (e.g. "oven_", "ochre_", "wash_"). Callers
+// constructing parameter IDs should check for trailing underscore before
+// appending one.
 inline juce::String frozenPrefixForEngine(const juce::String& engineId)
 {
     static const std::map<juce::String, juce::String> prefixes {
@@ -190,6 +196,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Opcode",      "opco_"   },
         // Membrane Collection
         { "Osmosis",     "osmo_"   },
+        // Love Triangle Circuit Synth
+        { "Oxytocin",    "oxy"     },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

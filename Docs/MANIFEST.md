@@ -1,5 +1,5 @@
 # XOmnibus Documentation Manifest
-**Last Updated:** 2026-03-20
+**Last Updated:** 2026-03-23
 **Purpose:** Canonical inventory of all major documentation — purpose, audience, authority level, and currency status.
 
 For governance rules (when to update what), see `GOVERNANCE.md`.
@@ -20,7 +20,7 @@ For the detailed documentation improvement plan, see `documentation_health_plan.
 
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
-| `seance_cross_reference.md` | Engine quality audit index | Sound designers, agents | Engine health status, seance scores, D-violations | ✅ Current (33 seances as of 2026-03-20) |
+| `seance_cross_reference.md` | Engine quality audit index | Sound designers, agents | Engine health status, seance scores, D-violations | ✅ Current (71 seances as of 2026-03-23) |
 | `MANIFEST.md` (this file) | Documentation inventory | All contributors | Which doc to consult for what | ✅ Current |
 | `GOVERNANCE.md` | Update policies and SLAs | All contributors | When to update what | ✅ Current |
 | `INDEX.md` | Full discovery index | New contributors | Where to find anything | ✅ Current (verify) |
@@ -33,7 +33,7 @@ For the detailed documentation improvement plan, see `documentation_health_plan.
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
 | `xoutshine-forge-spec.md` | XOutshine universal instrument forge format spec | Export engineers, pipeline devs | SampleCategory enum, multi-source keygroups, velocity strategies, RR spec, formant metadata, FX routing, 9-stage pipeline, XPM examples, MPC constraints | ✅ Current (2026-03-22, v1.0) |
-| `xomnibus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 38/42 engines (OBRIX, ORBWEAVE, OVERTONE, ORGANISM pending) |
+| `xomnibus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 38/71 engines (OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OXYTOCIN + Kitchen Collection 24 pending) |
 | `xomnibus_name_migration_reference.md` | Legacy → canonical engine name map | Agents, engineers | Name aliases, gotchas | ✅ Current |
 | `xomnibus_landscape_2026.md` | Grand fleet survey | Sound designers, engineers | Pre-sweep baseline metrics | ⚠️ Dated 2026-03-14 (pre-sweep), not updated after Round 12 |
 | `fleet_health_2026_03_20.md` | Current fleet status | All | Post-sweep health metrics | ✅ Current (generated 2026-03-20) |
@@ -48,7 +48,7 @@ For the detailed documentation improvement plan, see `documentation_health_plan.
 |----------|---------|-------|
 | `prism_sweep_final_report.md` | 12-round quality sweep final report (2026-03-20) | Complete — do not modify |
 | `prism_sweep_index.md` | Round-by-round artifact index | Complete — do not modify |
-| `seances/*.md` (33 files) | Individual seance verdict records | Immutable once committed |
+| `seances/*.md` (71 files) | Individual seance verdict records | Immutable once committed |
 | `guild/*.md` | Producer guild + specialist review records | Immutable once committed |
 | `../scripture/the-scripture.md` | Empirical wisdom from development | Living but archival in spirit |
 

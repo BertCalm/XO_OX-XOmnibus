@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OMEGA \u2014 3.5:1 inharmonic FM ratio. Metallic, bell-like sideband structure. Industrial and EBM bass.",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.32,
+    "movement": 0.2,
+    "density": 0.7,
+    "space": 0.22,
+    "aggression": 0.68
+  },
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Inharmonic 3.5",
+  "parameters": {
+    "Omega": {
+      "omega_algorithm": 5,
+      "omega_ratio": 1.0,
+      "omega_modIndex": 5.0,
+      "omega_feedback": 0.25,
+      "omega_purity": 0.65,
+      "omega_distillRate": 0.35,
+      "omega_brightness": 6000.0,
+      "omega_filterEnvAmount": 0.6,
+      "omega_filterAttack": 0.001,
+      "omega_filterDecay": 0.15,
+      "omega_attack": 0.001,
+      "omega_decay": 0.7,
+      "omega_sustain": 0.7,
+      "omega_release": 0.3,
+      "omega_glide": 0.0,
+      "omega_gravity": 0.4,
+      "omega_lfo1Rate": 0.5,
+      "omega_lfo1Depth": 0.0,
+      "omega_lfo2Rate": 2.0,
+      "omega_lfo2Depth": 0.08,
+      "omega_macroCharacter": 0.0,
+      "omega_macroMovement": 0.0,
+      "omega_macroCoupling": 0.0,
+      "omega_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "fm",
+    "metallic",
+    "experimental"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

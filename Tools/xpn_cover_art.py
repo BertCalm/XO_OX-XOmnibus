@@ -300,7 +300,7 @@ ENGINE_DEFS = {
         "style":    "particle_scatter",
         "label":    "OCTOPUS",
     },
-    # V1 concept engines (DSP pending)
+    # V1 concept engines
     "OSTINATO": {
         "accent":   (232, 112,  26),     # Firelight Orange
         "bg_base":  (16,   6,   0),
@@ -324,6 +324,68 @@ ENGINE_DEFS = {
         "bg_base":  (6,    6,   8),
         "style":    "angular_cuts",
         "label":    "OUIE",
+    },
+    # Wave 4-7 engines (added 2026-03-20 through 2026-03-23)
+    "OBRIX": {
+        "accent":   (30,  139, 126),     # Reef Jade
+        "bg_base":  (0,    8,   6),
+        "style":    "wave_morph",
+        "label":    "OBRIX",
+    },
+    "ORBWEAVE": {
+        "accent":   (142,  69, 133),     # Kelp Knot Purple
+        "bg_base":  (8,    2,   8),
+        "style":    "lissajous",
+        "label":    "ORBWEAVE",
+    },
+    "OVERTONE": {
+        "accent":   (168, 216, 234),     # Spectral Ice
+        "bg_base":  (4,    8,  12),
+        "style":    "freq_bands",
+        "label":    "OVERTONE",
+    },
+    "ORGANISM": {
+        "accent":   (198, 227, 119),     # Emergence Lime
+        "bg_base":  (8,   12,   0),
+        "style":    "pixel_grid",
+        "label":    "ORGANISM",
+    },
+    "OXBOW": {
+        "accent":   (26,  107,  90),     # Oxbow Teal
+        "bg_base":  (0,    6,   4),
+        "style":    "wave_morph",
+        "label":    "OXBOW",
+    },
+    "OWARE": {
+        "accent":   (181, 136,  62),     # Akan Goldweight
+        "bg_base":  (12,   8,   0),
+        "style":    "transient_spikes",
+        "label":    "OWARE",
+    },
+    "OPERA": {
+        "accent":   (212, 175,  55),     # Aria Gold
+        "bg_base":  (12,  10,   2),
+        "style":    "lissajous",
+        "label":    "OPERA",
+    },
+    "OFFERING": {
+        "accent":   (229, 184,  11),     # Crate Wax Yellow
+        "bg_base":  (14,  10,   0),
+        "style":    "transient_spikes",
+        "label":    "OFFERING",
+    },
+    "OSMOSIS": {
+        "accent":   (192, 192, 192),     # Surface Tension Silver
+        "bg_base":  (8,    8,   8),
+        "style":    "wave_morph",
+        "label":    "OSMOSIS",
+    },
+    # Engine #48 (added 2026-03-23)
+    "OXYTOCIN": {
+        "accent":   (155,  93, 229),     # Synapse Violet
+        "bg_base":  (14,   4,   6),
+        "style":    "particle_scatter",
+        "label":    "OXYTOCIN",
     },
     # Fallback for unknown engines
     "DEFAULT": {

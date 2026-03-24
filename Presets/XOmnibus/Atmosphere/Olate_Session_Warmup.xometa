@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 session aging demonstration. Both LFOs drift slowly; bass evolves tonally over 20 minutes.",
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.82,
+    "movement": 0.42,
+    "density": 0.62,
+    "space": 0.38,
+    "aggression": 0.22
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Session Warmup",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.25,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 2000.0,
+      "olate_resonance": 0.3,
+      "olate_drive": 0.42,
+      "olate_filterEnvAmount": 0.5,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.3,
+      "olate_vintage": 0.38,
+      "olate_warmth": 0.65,
+      "olate_terroir": 0.0,
+      "olate_ageRate": 0.5,
+      "olate_attack": 0.004,
+      "olate_decay": 0.6,
+      "olate_sustain": 0.75,
+      "olate_release": 0.5,
+      "olate_glide": 0.08,
+      "olate_gravity": 0.5,
+      "olate_lfo1Rate": 0.15,
+      "olate_lfo1Depth": 0.12,
+      "olate_lfo2Rate": 0.05,
+      "olate_lfo2Depth": 0.06,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bass",
+    "analog",
+    "warm",
+    "ambient"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

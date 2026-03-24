@@ -1,10 +1,27 @@
 {
   "name": "Rubble Zone",
-  "engine": "Offering",
   "mood": "Foundation",
-  "tags": ["boom bap", "NYC", "kick snare", "SP-1200", "classic"],
-  "macros": {"M1": 0.0, "M2": 0.0, "M3": 0.0, "M4": 0.0},
-  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.3, "density": 0.6, "space": 0.3, "aggression": 0.7},
+  "tags": [
+    "boom bap",
+    "NYC",
+    "kick snare",
+    "SP-1200",
+    "classic"
+  ],
+  "macros": {
+    "M1": 0.0,
+    "M2": 0.0,
+    "M3": 0.0,
+    "M4": 0.0
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.3,
+    "aggression": 0.7
+  },
   "parameters": {
     "ofr_transientSnap": 0.65,
     "ofr_transientPitch": 0.4,
@@ -25,5 +42,10 @@
     "ofr_v0_body": 0.7,
     "ofr_v1_decay": 0.22,
     "ofr_v2_decay": 0.055
-  }
+  },
+  "engines": [
+    "Offering"
+  ],
+  "author": "XO_OX Designs",
+  "description": ""
 }

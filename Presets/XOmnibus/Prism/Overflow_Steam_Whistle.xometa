@@ -1,0 +1,48 @@
+{
+  "name": "Steam Whistle",
+  "engines": [
+    "Overflow"
+  ],
+  "author": "XO_OX Designs",
+  "description": "The kettle's voice \u2014 pitched FM burst on pressure release at 3200Hz. Frequency rises as pressure equalizes.",
+  "mood": "Prism",
+  "tags": [
+    "pad",
+    "pressure",
+    "experimental",
+    "bright"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.5,
+    "SPACE": 0.65
+  },
+  "dna": {
+    "warmth": 0.45,
+    "complexity": 0.5,
+    "movement": 0.45,
+    "brightness": 0.7,
+    "aggression": 0.3
+  },
+  "params": {
+    "flow_threshold": 0.58,
+    "flow_accumRate": 0.55,
+    "flow_valveType": 2,
+    "flow_vesselSize": 0.42,
+    "flow_strainColor": 0.5,
+    "flow_releaseTime": 0.75,
+    "flow_whistlePitch": 3200.0,
+    "flow_ampAttack": 0.3,
+    "flow_ampDecay": 0.7,
+    "flow_ampSustain": 0.85,
+    "flow_ampRelease": 2.5,
+    "flow_filterCutoff": 5800.0,
+    "flow_filterRes": 0.2,
+    "flow_filtEnvAmount": 0.32,
+    "flow_lfo1Rate": 0.11,
+    "flow_lfo1Depth": 0.22,
+    "flow_stereoWidth": 0.65,
+    "flow_level": 0.8
+  }
+}

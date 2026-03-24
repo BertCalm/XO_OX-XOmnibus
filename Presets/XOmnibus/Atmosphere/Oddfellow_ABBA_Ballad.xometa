@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "ABBA Slow Dance",
+  "mood": "Atmosphere",
+  "engines": ["Oddfellow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wurlitzer ballad character. ABBA era — clean by Wurlitzer standards, slow emotional tremolo at 3.5 Hz, high sustain for full chord voicings. The instrument saying: this matters.",
+  "tags": ["wurlitzer", "ballad", "abba", "slow-tremolo", "emotional", "atmosphere"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.68,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.55,
+      "oddf_drive": 0.25,
+      "oddf_brightness": 4200.0,
+      "oddf_tremRate": 3.5,
+      "oddf_tremDepth": 0.55,
+      "oddf_attack": 0.008,
+      "oddf_decay": 1.8,
+      "oddf_sustain": 0.65,
+      "oddf_release": 1.2,
+      "oddf_filterEnvAmt": 0.28,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2.0,
+      "oddf_macroCharacter": 0.3,
+      "oddf_macroMovement": 0.3,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.65,
+      "oddf_lfo1Rate": 0.04,
+      "oddf_lfo1Depth": 0.07,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 0.015,
+      "oddf_lfo2Depth": 0.04,
+      "oddf_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
