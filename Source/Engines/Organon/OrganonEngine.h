@@ -956,6 +956,7 @@ public:
                       juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         EngineProfiler::ScopedMeasurement measurement (profiler);
 
         // ---- ParamSnapshot: read all parameters once per block ----

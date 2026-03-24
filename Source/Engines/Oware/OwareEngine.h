@@ -167,6 +167,13 @@ struct OwareMode
 {
     void setFreqAndQ (float freqHz, float q, float sampleRate) noexcept
     {
+        // W03 fix: dirty-flag cache — skip expensive exp/cos when freq and Q are
+        // nearly unchanged (within 0.1% and 0.5% respectively). The shimmer LFO
+        // and material smoother change slowly enough that this fires rarely.
+        if (std::abs (freqHz - freq) < freq * 0.001f
+            && std::abs (q - cachedQ) < cachedQ * 0.005f)
+            return;
+
         if (freqHz >= sampleRate * 0.49f) freqHz = sampleRate * 0.49f;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max (q, 1.0f);
@@ -175,6 +182,7 @@ struct OwareMode
         a2 = r * r;
         b0 = (1.0f - r * r) * std::sin (w);
         freq = freqHz;
+        cachedQ = q;
     }
 
     float process (float input) noexcept
@@ -190,6 +198,7 @@ struct OwareMode
     void reset() noexcept { y1 = 0.0f; y2 = 0.0f; lastOutput = 0.0f; }
 
     float freq = 440.0f;
+    float cachedQ = -1.0f;   // W03: dirty-flag cache; -1 forces first-sample computation
     float b0 = 0.0f, a1 = 0.0f, a2 = 0.0f;
     float y1 = 0.0f, y2 = 0.0f;
     float lastOutput = 0.0f;  // per-mode output for sympathetic coupling

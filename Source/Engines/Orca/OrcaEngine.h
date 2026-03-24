@@ -78,7 +78,7 @@ using OrcaLFO = StandardLFO;
 //==============================================================================
 struct OrcaCombFilter
 {
-    static constexpr int kMaxDelaySamples = 4096;
+    static constexpr int kMaxDelaySamples = 8192;
 
     float buffer[kMaxDelaySamples] {};
     int writePos = 0;
@@ -181,6 +181,10 @@ struct OrcaVoice
     CytomicSVF bandSplitLP;   // belly (low, clean)
     CytomicSVF bandSplitHP;   // dorsal (high, crushed)
 
+    // Countershading sample-rate reduction state (per-voice, NOT thread_local)
+    float crushHold = 0.0f;
+    float crushCounter = 0.0f;
+
     // Voice stealing crossfade
     float fadeGain = 1.0f;
     bool fadingOut = false;
@@ -193,6 +197,8 @@ struct OrcaVoice
         glide.snapTo (440.0f);
         fadeGain = 1.0f;
         fadingOut = false;
+        crushHold = 0.0f;
+        crushCounter = 0.0f;
         clickPhase = 0.0f;
         clickPhaseInc = 0.0f;
         ampEnv.reset();
@@ -620,18 +626,16 @@ public:
                     // Quantize to reduced bit depth
                     float crushed = std::round (dorsal * crushStep) / crushStep;
 
-                    // Sample-rate reduction on dorsal
-                    static thread_local float crushHold = 0.0f;
-                    static thread_local float crushCounter = 0.0f;
-                    crushCounter += 1.0f;
-                    if (crushCounter >= crushDownsample)
+                    // Sample-rate reduction on dorsal (per-voice state — no thread_local)
+                    voice.crushCounter += 1.0f;
+                    if (voice.crushCounter >= crushDownsample)
                     {
-                        crushHold = crushed;
-                        crushCounter = 0.0f;
+                        voice.crushHold = crushed;
+                        voice.crushCounter = 0.0f;
                     }
 
                     // Recombine: clean belly + crushed dorsal
-                    float countershaded = belly + crushHold;
+                    float countershaded = belly + voice.crushHold;
 
                     // Mix with dry signal
                     voiceSignal = voiceSignal * (1.0f - smoothedCrushMix) + countershaded * smoothedCrushMix;

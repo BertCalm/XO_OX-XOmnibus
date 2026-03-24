@@ -526,11 +526,6 @@ public:
         smoothCutoff.set (effCutoff);
         smoothResonance.set (effRes);
 
-        // Clear coupling accumulators
-        couplingFilterMod = 0.0f;
-        couplingPitchMod = 0.0f;
-        couplingOrganMod = 0.0f;
-
         const float bendSemitones = pitchBendNorm * 2.0f;  // +-2 semitone range
 
         // ---- Determine current organ model (clamped) ----
@@ -804,6 +799,13 @@ public:
         int count = 0;
         for (const auto& v : voices) if (v.active) ++count;
         activeVoiceCount.store (count);
+
+        // Clear coupling accumulators at end of block (after per-sample loop consumes them).
+        // Moved from mid-block so couplingPitchMod is live during the per-sample loop.
+        couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f;
+        couplingOrganMod = 0.0f;
+
         analyzeForSilenceGate (buffer, numSamples);
     }
 

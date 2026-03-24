@@ -388,21 +388,24 @@ public:
 
                 float fundamental = voice.fundamental * pitchBendRatio;
 
+                // W04 fix: hoist per-voice Fick's Law values out of the partial loop.
+                // t, maxT, D, pSpreadMax, and normalizedT all depend only on voice state —
+                // identical for every partial. Moving them here saves (activePartials-1)
+                // redundant sqrt + division per sample.
+                const float voiceDiffT    = voice.diffusionClock;
+                const float voiceNormT    = (pDiffTime > 0.0f)
+                                             ? std::min (voiceDiffT / pDiffTime, 1.0f) : 0.0f;
+                const float voiceSpread   = std::sqrt (2.0f * D * std::min (voiceDiffT, pDiffTime)) * pSpreadMax;
+
                 // Synthesize diffusing partials
                 float voiceSample = 0.0f;
                 for (int p = 0; p < activePartials; ++p)
                 {
                     auto& partial = voice.partials[p];
 
-                    // Fick's Law: spread = sqrt(2 * D * t) in frequency space
-                    // Each partial drifts outward from its harmonic position
-                    float t = voice.diffusionClock;
-                    float maxT = pDiffTime;
-                    float normalizedT = (maxT > 0.0f) ? std::min (t / maxT, 1.0f) : 0.0f;
-
-                    // Analytical Gaussian diffusion (no FFT needed)
-                    // Spread grows as sqrt(2Dt), capped by pSpreadMax
-                    float spread = std::sqrt (2.0f * D * std::min (t, maxT)) * pSpreadMax;
+                    // Fick's Law spread + normalizedT — per-voice (hoisted above)
+                    const float spread      = voiceSpread;
+                    const float normalizedT = voiceNormT;
 
                     // Each partial gets a unique spreading direction based on harmonic number
                     // Odd partials spread up, even spread down, with alternating phase
