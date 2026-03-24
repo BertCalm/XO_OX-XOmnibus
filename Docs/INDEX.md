@@ -315,3 +315,11 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 
 - [superpowers/](superpowers/) — Superpowers specs and logs
 
+---
+
+## Research Compendium (`research/`)
+
+Continuous scanning for open-source resources relevant to XOmnibus: JUCE UI, audio visualization, Figma assets, MPE/input devices, ocean visualization, design systems.
+
+- [research/continuous-scan-2026-03-24.md](research/continuous-scan-2026-03-24.md) — **Scan 2026-03-24**: 42 resources across 8 domains. P0 finds: melatonin_blur, Vital UI, three.quarks+ocean shader, audioMotion-analyzer, SeaSynth Figma, WeAreROLI/mpejs, tonaljs, shadcn/ui.
+
