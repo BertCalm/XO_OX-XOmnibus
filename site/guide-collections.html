@@ -539,7 +539,7 @@ footer {
 </style>
 <meta property="og:title" content="What Is a Collection? — Vision #1 | XO_OX Field Guide">
 <meta property="og:description" content="The V2 expansion concept: curated engine sets built around a single sonic world, with a fusion engine at the intersection. Why bounded contexts make music easier. Winter 2026.">
-<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
@@ -549,16 +549,17 @@ footer {
 <a href="#article-content" class="skip-link">Skip to article</a>
 
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <a href="index.html" class="nav-logo">XO_OX</a>
+  <button class="hamburger" aria-label="Toggle navigation">☰</button>
   <div class="nav-links">
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
+    <a href="aquarium.html">Aquarium</a>
     <a href="packs.html">Sound Packs</a>
     <a href="guide.html" class="active">Field Guide</a>
+    <a href="learn.html">Academy</a>
+    <a href="community.html">Community</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="expedition.html">Expedition</a>
     <a href="updates.html">Signal</a>
-    <a href="index.html#aquarium">Aquarium</a>
-    <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" rel="noopener">GitHub</a>
   </div>
 </nav>
 
@@ -739,21 +740,16 @@ This is Vision #1. The series is about where XOlokun is going. More to follow.
 </article>
 
 <!-- ═══════════ FOOTER ═══════════ -->
-<footer>
-  <div class="footer-logo">XO_OX</div>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
-    <a href="packs.html">Sound Packs</a>
-    <a href="updates.html">Signal</a>
-    <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+<footer class="footer">
+  <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>
+document.querySelector('.hamburger')?.addEventListener('click', function() {
+  document.querySelector('.nav-links')?.classList.toggle('open');
+});
+
 // ═══════════ SCROLL REVEAL ═══════════
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
