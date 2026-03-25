@@ -23,6 +23,155 @@ namespace xolokun {
 // available here via the xolokun:: namespace that GalleryColors.h opens.
 
 //==============================================================================
+// MidiLearnMouseListener — right-click context menu for MIDI Learn on any Slider.
+//
+// Attach to any juce::Slider via addMouseListener().  Intercepts right-click and
+// shows a context menu: "MIDI Learn", optional "Mapped: CC N", "Clear", "Cancel".
+// Delegates to the shared MIDILearnManager — no audio-thread work here.
+//
+class MidiLearnMouseListener : public juce::MouseListener
+{
+public:
+    MidiLearnMouseListener(juce::String pid, MIDILearnManager& mgr)
+        : paramId(std::move(pid)), manager(mgr) {}
+
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        if (!e.mods.isRightButtonDown())
+            return;
+
+        bool isLearning = manager.isLearning() && manager.getLearningParam() == paramId;
+        bool hasMapping = manager.hasMapping(paramId);
+
+        juce::PopupMenu menu;
+        if (isLearning)
+            menu.addItem(1, "Listening for CC\xe2\x80\xa6  (click to cancel)", true, false);
+        else
+            menu.addItem(2, "MIDI Learn", true, false);
+
+        if (hasMapping)
+        {
+            for (const auto& m : manager.getMappings())
+            {
+                if (m.paramId == paramId)
+                {
+                    juce::String info = "Mapped to CC " + juce::String(m.ccNumber);
+                    if (m.channel != 0) info += "  Ch " + juce::String(m.channel);
+                    menu.addItem(3, info, false, false); // info label (non-selectable)
+                    break;
+                }
+            }
+            menu.addItem(4, "Clear MIDI Mapping", true, false);
+        }
+        menu.addSeparator();
+        menu.addItem(5, "Cancel", true, false);
+
+        int result = menu.showAt(e.getScreenPosition());
+        if (result == 2) // MIDI Learn
+        {
+            manager.enterLearnMode(paramId);
+            if (auto* comp = e.eventComponent) comp->repaint();
+        }
+        else if (result == 1) // cancel while listening
+        {
+            manager.exitLearnMode();
+            if (auto* comp = e.eventComponent) comp->repaint();
+        }
+        else if (result == 4) // clear
+        {
+            manager.removeMappingForParam(paramId);
+            if (auto* comp = e.eventComponent) comp->repaint();
+        }
+    }
+
+private:
+    juce::String      paramId;
+    MIDILearnManager& manager;
+    JUCE_DECLARE_NON_COPYABLE(MidiLearnMouseListener)
+};
+
+//==============================================================================
+// MidiLearnSlider — juce::Slider that draws an amber ring when listening for CC,
+// or a soft green ring + "ML" badge when a CC mapping exists.
+// Used by ParameterGrid (replaces bare juce::Slider).
+//
+class MidiLearnSlider : public juce::Slider
+{
+public:
+    MidiLearnSlider() = default;
+
+    // Call after construction to wire up right-click MIDI Learn.
+    // The caller must store the returned pointer in a unique_ptr vector.
+    MidiLearnMouseListener* setupMidiLearn(const juce::String& pid, MIDILearnManager& mgr)
+    {
+        paramId      = pid;
+        learnManager = &mgr;
+        auto* ml     = new MidiLearnMouseListener(pid, mgr);
+        addMouseListener(ml, false);
+        return ml;
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        juce::Slider::paint(g);
+
+        if (!learnManager) return;
+
+        bool isListening = learnManager->isLearning() && learnManager->getLearningParam() == paramId;
+        bool isMapped    = learnManager->hasMapping(paramId);
+
+        if (!isListening && !isMapped) return;
+
+        juce::Colour ringCol = isListening
+            ? juce::Colour(0xFFE9C46A)                   // XO Gold while listening
+            : juce::Colour(0xFF4ADE80).withAlpha(0.50f); // soft green when mapped
+
+        if (isListening)
+        {
+            double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
+            float pulse = 0.55f + 0.45f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
+            ringCol = ringCol.withAlpha(pulse);
+            // Force continuous repaint while listening so the pulse animates
+            repaint();
+        }
+
+        auto b  = getLocalBounds().toFloat().reduced(3.0f);
+        float r = juce::jmin(b.getWidth(), b.getHeight()) * 0.5f;
+        g.setColour(ringCol);
+        g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r,
+                      r * 2.0f, r * 2.0f, isListening ? 2.5f : 1.5f);
+
+        // Tiny "ML" badge at lower-right for mapped-but-not-listening
+        if (isMapped && !isListening)
+        {
+            g.setFont(juce::Font(6.0f).boldened());
+            g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
+            g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9,
+                       juce::Justification::centred);
+        }
+    }
+
+private:
+    juce::String      paramId;
+    MIDILearnManager* learnManager = nullptr;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MidiLearnSlider)
+};
+
+//==============================================================================
+// attachMidiLearn — attach MIDI Learn right-click to a plain juce::Slider.
+// Use for array-member sliders (MacroSection, MasterFXSection) that cannot
+// be changed to MidiLearnSlider.  Caller stores the returned pointer.
+//
+inline MidiLearnMouseListener* attachMidiLearn(juce::Slider& slider,
+                                               const juce::String& paramId,
+                                               MIDILearnManager& mgr)
+{
+    auto* ml = new MidiLearnMouseListener(paramId, mgr);
+    slider.addMouseListener(ml, false);
+    return ml;
+}
+
+//==============================================================================
 // GalleryLookAndFeel — Gallery Model visual language (WCAG 2.1 AA compliant)
 class GalleryLookAndFeel : public juce::LookAndFeel_V4
 {
@@ -195,6 +344,111 @@ public:
 };
 
 //==============================================================================
+// GalleryKnob — juce::Slider subclass that adds:
+//   • double-click + Cmd+click reset to default value
+//   • right-click MIDI Learn context menu (when wired via setupMidiLearn)
+//   • amber pulsing ring while listening for CC; green "ML" badge when mapped
+//
+class GalleryKnob : public juce::Slider
+{
+public:
+    GalleryKnob() = default;
+
+    // Store the denormalized default value for Cmd+click reset.
+    void setDefaultValue (double v) { defaultValue = v; }
+
+    // Wire up MIDI Learn for this knob.  Call after SliderAttachment is created.
+    // The caller must store the returned listener pointer in a unique_ptr vector.
+    MidiLearnMouseListener* setupMidiLearn(const juce::String& pid, MIDILearnManager& mgr)
+    {
+        paramId      = pid;
+        learnManager = &mgr;
+        auto* ml     = new MidiLearnMouseListener(pid, mgr);
+        addMouseListener(ml, false);
+        return ml;
+    }
+
+    void mouseDown (const juce::MouseEvent& e) override
+    {
+        // Right-click is handled by MidiLearnMouseListener — don't swallow it here.
+        if (e.mods.isRightButtonDown())
+            return;
+
+        // Cmd+click (macOS Command key) → reset to default immediately.
+        if (e.mods.isCommandDown())
+        {
+            setValue (defaultValue, juce::sendNotificationAsync);
+            return;
+        }
+        juce::Slider::mouseDown (e);
+    }
+
+    void paint (juce::Graphics& g) override
+    {
+        juce::Slider::paint(g);
+        drawMidiLearnOverlay(g);
+    }
+
+private:
+    void drawMidiLearnOverlay(juce::Graphics& g)
+    {
+        if (!learnManager) return;
+        bool isListening = learnManager->isLearning() && learnManager->getLearningParam() == paramId;
+        bool isMapped    = learnManager->hasMapping(paramId);
+        if (!isListening && !isMapped) return;
+
+        juce::Colour ringCol = isListening
+            ? juce::Colour(0xFFE9C46A)                   // XO Gold while listening
+            : juce::Colour(0xFF4ADE80).withAlpha(0.50f); // soft green when mapped
+
+        if (isListening)
+        {
+            double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
+            float pulse = 0.55f + 0.45f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
+            ringCol = ringCol.withAlpha(pulse);
+            repaint(); // keep pulsing until learn mode exits
+        }
+
+        auto b  = getLocalBounds().toFloat().reduced(3.0f);
+        float r = juce::jmin(b.getWidth(), b.getHeight()) * 0.5f;
+        g.setColour(ringCol);
+        g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r,
+                      r * 2.0f, r * 2.0f, isListening ? 2.5f : 1.5f);
+
+        if (isMapped && !isListening)
+        {
+            g.setFont(juce::Font(6.0f).boldened());
+            g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
+            g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9,
+                       juce::Justification::centred);
+        }
+    }
+
+    double            defaultValue = 0.0;
+    juce::String      paramId;
+    MIDILearnManager* learnManager = nullptr;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GalleryKnob)
+};
+
+//==============================================================================
+// enableKnobReset — convenience helper: reads the parameter default value and
+// wires up both double-click and Cmd+click reset on a GalleryKnob.
+//
+// Must be called AFTER SliderAttachment is created (the attachment sets the
+// slider range, which is needed to correctly interpret the default value).
+static inline void enableKnobReset (GalleryKnob& knob,
+                                    juce::AudioProcessorValueTreeState& apvts,
+                                    const juce::String& paramId)
+{
+    if (auto* rp = dynamic_cast<juce::RangedAudioParameter*> (apvts.getParameter (paramId)))
+    {
+        double defaultVal = rp->getNormalisableRange().convertFrom0to1 (rp->getDefaultValue());
+        knob.setDefaultValue (defaultVal);
+        knob.setDoubleClickReturnValue (true, defaultVal);
+    }
+}
+
+//==============================================================================
 // ParameterGrid — auto-generates knobs for all params matching a prefix.
 // Mounted inside a Viewport for scrolling.
 //
@@ -275,10 +529,13 @@ public:
     }
 
     // ── Constructor ─────────────────────────────────────────────────────────
+    // midiLearn: optional — when non-null every knob gets a right-click MIDI
+    // learn context menu and shows visual feedback (amber ring / green badge).
     ParameterGrid(XOlokunProcessor& proc,
                   const juce::String& engId,
                   const juce::String& enginePrefix,
-                  juce::Colour accentColour)
+                  juce::Colour accentColour,
+                  MIDILearnManager* midiLearn = nullptr)
     {
         auto& apvts = proc.getAPVTS();
         auto& rawParams = proc.getParameters(); // juce::AudioProcessor::getParameters()
@@ -326,7 +583,7 @@ public:
                     apvts.getParameter(entry.pid));
                 if (!rp) continue;
 
-                auto slider = std::make_unique<juce::Slider>();
+                auto slider = std::make_unique<GalleryKnob>();
                 slider->setSliderStyle(juce::Slider::RotaryVerticalDrag);
                 slider->setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
                 slider->setColour(juce::Slider::rotarySliderFillColourId, accentColour);
@@ -347,6 +604,15 @@ public:
                 attachments.push_back(
                     std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                         apvts, entry.pid, *slider));
+
+                enableKnobReset (*slider, apvts, entry.pid);
+
+                // Wire MIDI learn if manager is available
+                if (midiLearn)
+                {
+                    auto* ml = slider->setupMidiLearn(entry.pid, *midiLearn);
+                    midiLearnListeners.emplace_back(ml);
+                }
 
                 sliders.push_back(std::move(slider));
                 labels.push_back(std::move(label));
@@ -476,12 +742,14 @@ private:
     static constexpr int kPad        = 12;
     static constexpr int kHeaderRowH = 22; // height of each section header strip
 
-    // Destruction order matters: attachments first, then sliders.
-    // Members are destroyed in reverse declaration order, so declare
-    // sliders/labels before attachments.
-    std::vector<std::unique_ptr<juce::Slider>> sliders;
+    // Destruction order matters: listeners → attachments → sliders.
+    // Members are destroyed in reverse declaration order.
+    std::vector<std::unique_ptr<GalleryKnob>> sliders;
     std::vector<std::unique_ptr<juce::Label>>  labels;
     std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> attachments;
+    // MIDI learn mouse listeners — owned here, attached to individual sliders.
+    // Must be declared AFTER sliders so listeners are destroyed before sliders.
+    std::vector<std::unique_ptr<MidiLearnMouseListener>> midiLearnListeners;
 
     // Section layout metadata — populated during construction / resized()
     std::vector<SectionRun>         sectionRuns; // ordered section descriptors
@@ -502,6 +770,9 @@ class MacroHeroStrip : public juce::Component
 {
 public:
     explicit MacroHeroStrip(XOlokunProcessor& proc) : processor(proc) {}
+
+    // Optional: wire MIDI learn before the first loadEngine() call.
+    void setMidiLearnManager(MIDILearnManager* mgr) { learnManager = mgr; }
 
     // Call after an engine slot is selected. Returns true if at least one
     // macro param was found and the strip should be shown.
@@ -580,6 +851,20 @@ public:
 
                 attachments[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                     apvts, foundIds[i], pillars[i]);
+
+                // Re-wire MIDI learn for the new param ID
+                if (learnManager)
+                {
+                    // Remove old listener if re-loading (engine swap)
+                    if (i < (int)pillarLearnListeners.size() && pillarLearnListeners[i])
+                        pillars[i].removeMouseListener(pillarLearnListeners[i].get());
+
+                    auto* ml = attachMidiLearn(pillars[i], foundIds[i], *learnManager);
+                    if (i < (int)pillarLearnListeners.size())
+                        pillarLearnListeners[i].reset(ml);
+                    else
+                        pillarLearnListeners.emplace_back(ml);
+                }
             }
         }
 
@@ -642,12 +927,13 @@ private:
     juce::String       engineName;
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
     int                numMacros = 0;
+    MIDILearnManager*  learnManager = nullptr;
 
     std::array<juce::Slider, 4> pillars;
     std::array<juce::Label,  4> pillarLabels;
-    // Destruction order: attachments must be destroyed before sliders.
-    // Declared after sliders/labels so they are destroyed first (reverse order).
+    // Destruction order: listeners → attachments → sliders.
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attachments;
+    std::vector<std::unique_ptr<MidiLearnMouseListener>> pillarLearnListeners;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MacroHeroStrip)
 };
@@ -666,6 +952,13 @@ public:
         addAndMakeVisible(viewport);
     }
 
+    // Optional: wire MIDI learn manager before the first loadSlot() call.
+    void setMidiLearnManager(MIDILearnManager* mgr)
+    {
+        learnManager = mgr;
+        macroHero.setMidiLearnManager(mgr);
+    }
+
     // Called when the user selects an engine slot to inspect.
     // Returns false if the slot is empty.
     bool loadSlot(int slot)
@@ -680,8 +973,8 @@ public:
         auto prefix = GalleryColors::prefixForEngine(engineId);
         macroHero.loadEngine(engineId, prefix, accentColour);
 
-        // Rebuild parameter grid for this engine
-        auto* newGrid = new ParameterGrid(processor, engineId, prefix, accentColour);
+        // Rebuild parameter grid for this engine (pass MIDI learn manager)
+        auto* newGrid = new ParameterGrid(processor, engineId, prefix, accentColour, learnManager);
         viewport.setViewedComponent(newGrid, /*takeOwnership=*/true);
 
         int gridW = juce::jmax(200, viewport.getWidth()
@@ -766,11 +1059,12 @@ private:
     static constexpr int kHeaderH = 38;
     static constexpr int kHeroH   = 120; // height of the macro hero strip
 
-    XOlokunProcessor& processor;
+    XOlokunProcessor&  processor;
     MacroHeroStrip     macroHero;
     juce::Viewport     viewport;
     juce::String       engineId  { "—" };
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
+    MIDILearnManager*  learnManager = nullptr;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };
@@ -1555,6 +1849,7 @@ public:
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, defs[i].id, knobs[i]);
+            enableKnobReset (knobs[i], apvts, defs[i].id);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.0f));
@@ -1572,6 +1867,7 @@ public:
         addAndMakeVisible(master);
         masterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
             apvts, "masterVolume", master);
+        enableKnobReset (master, apvts, "masterVolume");
 
         masterLbl.setText("MASTER", juce::dontSendNotification);
         masterLbl.setFont(GalleryFonts::heading(8.0f));
@@ -1630,13 +1926,30 @@ public:
         }
     }
 
+    // Wire MIDI Learn to each macro knob and master.
+    // Call after construction (from XOlokunEditor) so the attachment already exists.
+    void setupMidiLearn(MIDILearnManager& mgr)
+    {
+        static const char* ids[4] = { "macro1", "macro2", "macro3", "macro4" };
+        for (int i = 0; i < 4; ++i)
+        {
+            auto* ml = knobs[i].setupMidiLearn(ids[i], mgr);
+            macroLearnListeners[i].reset(ml);
+        }
+        auto* ml = master.setupMidiLearn("masterVolume", mgr);
+        masterLearnListener.reset(ml);
+    }
+
 private:
-    std::array<juce::Slider, 4> knobs;
+    std::array<GalleryKnob, 4> knobs;
     std::array<juce::Label,  4> lbls;
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attach;
-    juce::Slider master;
+    GalleryKnob master;
     juce::Label  masterLbl;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> masterAttach;
+    // MIDI learn listeners — destroyed before knobs (reverse declaration order)
+    std::array<std::unique_ptr<MidiLearnMouseListener>, 4> macroLearnListeners;
+    std::unique_ptr<MidiLearnMouseListener> masterLearnListener;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MacroSection)
 };
@@ -1664,6 +1977,7 @@ public:
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, paramDefs[static_cast<size_t>(i)].first, knobs[i]);
+            enableKnobReset (knobs[i], apvts, paramDefs[static_cast<size_t>(i)].first);
 
             lbls[i].setText(paramDefs[static_cast<size_t>(i)].second, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.5f));
@@ -1704,7 +2018,7 @@ private:
     static constexpr int kMaxKnobs = 8;
     juce::String titleText;
     int numKnobs = 0;
-    std::array<juce::Slider, kMaxKnobs> knobs;
+    std::array<GalleryKnob, kMaxKnobs> knobs;
     std::array<juce::Label, kMaxKnobs>  lbls;
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, kMaxKnobs> attach;
 
@@ -1743,6 +2057,7 @@ public:
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, defs[i].id, knobs[i]);
+            enableKnobReset (knobs[i], apvts, defs[i].id);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(7.5f));
@@ -1950,6 +2265,21 @@ public:
         }
     }
 
+    // Wire MIDI Learn to each primary FX knob.
+    // Call from XOlokunEditor after construction.
+    void setupMidiLearn(MIDILearnManager& mgr)
+    {
+        static const char* ids[kNumPrimaryKnobs] = {
+            "master_satDrive", "master_delayMix", "master_delayFeedback",
+            "master_reverbMix", "master_modDepth", "master_compMix"
+        };
+        for (int i = 0; i < kNumPrimaryKnobs; ++i)
+        {
+            auto* ml = knobs[i].setupMidiLearn(ids[i], mgr);
+            fxLearnListeners[i].reset(ml);
+        }
+    }
+
 private:
     void showAdvancedPanel(juce::TextButton& btn, const juce::String& title,
                            const std::vector<std::pair<juce::String, juce::String>>& params)
@@ -1966,7 +2296,7 @@ private:
     juce::AudioProcessorValueTreeState& myApvts;
 
     // Primary knobs
-    std::array<juce::Slider, kNumPrimaryKnobs> knobs;
+    std::array<GalleryKnob, kNumPrimaryKnobs> knobs;
     std::array<juce::Label, kNumPrimaryKnobs>  lbls;
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, kNumPrimaryKnobs> attach;
 
@@ -1982,6 +2312,9 @@ private:
 
     // Divider X positions
     int divX[kNumSections - 1] = {};
+
+    // MIDI learn listeners — destroyed before knobs
+    std::array<std::unique_ptr<MidiLearnMouseListener>, kNumPrimaryKnobs> fxLearnListeners;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MasterFXSection)
 };
@@ -2850,6 +3183,7 @@ public:
             addAndMakeVisible (macroKnobs[i]);
             macroAttach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (
                 apvts, macroDefs[i].id, macroKnobs[i]);
+            enableKnobReset (macroKnobs[i], apvts, macroDefs[i].id);
 
             macroLabels[i].setText (macroDefs[i].label, juce::dontSendNotification);
             macroLabels[i].setFont (GalleryFonts::heading (8.0f));
@@ -3217,7 +3551,7 @@ private:
     std::array<RouteSection, kNumRoutes> routes;
 
     // Bottom macro strip
-    std::array<juce::Slider, 4> macroKnobs;
+    std::array<GalleryKnob, 4> macroKnobs;
     std::array<juce::Label, 4>  macroLabels;
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> macroAttach;
 
@@ -3565,6 +3899,23 @@ public:
             proc.getPresetManager().scanPresetDirectory(presetDir);
         presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
         presetBrowser.updateDisplay();
+
+        // ── MIDI Learn wiring ─────────────────────────────────────────────────
+        // Connect the processor's MIDILearnManager to every parameter knob in the UI.
+        // This enables right-click → MIDI Learn on all rotary controls.
+        {
+            auto& mlm = proc.getMIDILearnManager();
+            detail.setMidiLearnManager(&mlm);
+            macros.setupMidiLearn(mlm);
+            masterFXStrip.setupMidiLearn(mlm);
+        }
+
+        // ── MIDI Learn learn-complete notification ──────────────────────────
+        // When a mapping is completed (audio thread captured a CC), bump the
+        // timer to 10Hz so visual feedback updates promptly.  Reverts to 1Hz
+        // after the first poll cycle that finds nothing pending.
+        proc.getMIDILearnManager().setLearnCompleteCallback(
+            [this](const juce::String&, int) { startTimerHz(10); });
 
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
         proc.onEngineChanged = [this](int slot)
