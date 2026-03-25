@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The longest arc in the library: 120 seconds of imperceptible linear ramp from chaos to modest synchrony. Peak at 0.4 \u2014 the field never fully resolves. Like watching a glacier move. For installations, ambient sets, and meditative performance. The drama is geological patience.",
+  "description": "The longest arc in the library: 120 seconds of imperceptible linear ramp from chaos to modest synchrony. Peak at 0.4 — the field never fully resolves. Like watching a glacier move. For installations, ambient sets, and meditative performance. The drama is geological patience.",
   "tags": [
     "conductor",
     "ultra-long",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

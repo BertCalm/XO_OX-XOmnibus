@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.33,
-    "COUPLING": 0.375,
-    "MOVEMENT": 0.523,
-    "SPACE": 0.279
+    "MACHINE": 0.33,
+    "SPACE": 0.375,
+    "PUNCH": 0.523,
+    "MUTATE": 0.279
   },
   "mood": "Foundation",
   "name": "Velvet Wrath",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

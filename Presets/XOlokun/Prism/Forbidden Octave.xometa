@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Near-total sync with bright tilt pitched up 19 semitones \u2014 an octave plus a tritone. The partials lock into mathematically perfect ratios at a forbidden interval. Pure, dissonant, wrong in exactly the right way. The uncanny valley of harmony.",
+  "description": "Near-total sync with bright tilt pitched up 19 semitones — an octave plus a tritone. The partials lock into mathematically perfect ratios at a forbidden interval. Pure, dissonant, wrong in exactly the right way. The uncanny valley of harmony.",
   "tags": [
     "dissonant",
     "tritone",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sustain at absolute maximum. Attack is slow and gentle, sustain is full, release is infinite \u2014 notes fade so gradually they seem to persist forever. High sync ensures the sustained tone is harmonically pure. Designed for layering: play one note, let it sustain, add another. Build cathedrals of overlapping crystalline tones.",
+  "description": "Sustain at absolute maximum. Attack is slow and gentle, sustain is full, release is infinite — notes fade so gradually they seem to persist forever. High sync ensures the sustained tone is harmonically pure. Designed for layering: play one note, let it sustain, add another. Build cathedrals of overlapping crystalline tones.",
   "tags": [
     "sustain",
     "layering",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

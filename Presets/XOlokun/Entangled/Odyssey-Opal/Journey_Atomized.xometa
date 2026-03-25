@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Journey Atomized (Odyssey)",
+  "name": "Journey Atomized",
   "mood": "Entangled",
   "engines": [
     "Odyssey",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Drift completely possesses Opal — the pad's envelope, LFO, and filter state drive grain position, cutoff, and density. The familiar has been fully atomized into the alien.",
+  "description": "Drift completely possesses Opal \u2014 the pad's envelope, LFO, and filter state drive grain position, cutoff, and density. The familiar has been fully atomized into the alien.",
   "tags": [
     "coupling",
     "Odyssey-pair",

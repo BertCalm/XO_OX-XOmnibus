@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.442,
-    "COUPLING": 0.627,
-    "MOVEMENT": 0.671,
-    "SPACE": 0.486
+    "MACHINE": 0.442,
+    "SPACE": 0.627,
+    "PUNCH": 0.671,
+    "MUTATE": 0.486
   },
   "mood": "Entangled",
   "name": "Drum Automata",
@@ -72,5 +72,6 @@
     "dynamic"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

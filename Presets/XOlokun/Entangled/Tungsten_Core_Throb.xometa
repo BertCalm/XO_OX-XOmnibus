@@ -23,16 +23,16 @@
     "Oblong"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.52,
-    "COUPLING": 0.84,
-    "MOVEMENT": 0.38,
-    "SPACE": 0.34
+    "MACHINE": 0.52,
+    "SPACE": 0.84,
+    "PUNCH": 0.38,
+    "MUTATE": 0.34
   },
   "mood": "Entangled",
   "name": "Tungsten Core Throb",
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite.",
+  "tier": "awakening"
 }

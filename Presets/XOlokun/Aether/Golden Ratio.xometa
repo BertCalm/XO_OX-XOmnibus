@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Partials tuned to emphasize frequency relationships near phi (1.618). At high Kuramoto sync, the partial bank converges on a ratio field that approximates the golden spiral in frequency space. The result is neither consonant nor dissonant \u2014 it occupies a third category: mathematically inevitable. Strange beauty from inevitable proportion.",
+  "description": "Partials tuned to emphasize frequency relationships near phi (1.618). At high Kuramoto sync, the partial bank converges on a ratio field that approximates the golden spiral in frequency space. The result is neither consonant nor dissonant — it occupies a third category: mathematically inevitable. Strange beauty from inevitable proportion.",
   "tags": [
     "golden",
     "phi",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Humpback whale vocal repertoire: long, complex sequences of moans, cries, and whistles that evolve over months. The Conductor arc runs 40 seconds with a slow formant cycle between dark O and deeper U vowels. Vibrato is slow and wide \u2014 the whole body resonating. Moderate drama allows partial clusters to form and dissolve like phrases in the whale's song. Each performance is a unique composition.",
+  "description": "Humpback whale vocal repertoire: long, complex sequences of moans, cries, and whistles that evolve over months. The Conductor arc runs 40 seconds with a slow formant cycle between dark O and deeper U vowels. Vibrato is slow and wide — the whole body resonating. Moderate drama allows partial clusters to form and dissolve like phrases in the whale's song. Each performance is a unique composition.",
   "tags": [
     "submerged",
     "whale",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

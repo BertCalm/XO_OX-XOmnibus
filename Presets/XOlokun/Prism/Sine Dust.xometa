@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Minimum partials (4) with maximum detune and zero sync. Four sine waves drift aimlessly through frequency space \u2014 no formant structure, no harmonic series, just four independent tones. Stripped to the atomic level. Pure, empty, meditative chaos.",
+  "description": "Minimum partials (4) with maximum detune and zero sync. Four sine waves drift aimlessly through frequency space — no formant structure, no harmonic series, just four independent tones. Stripped to the atomic level. Pure, empty, meditative chaos.",
   "tags": [
     "minimal",
     "sine",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

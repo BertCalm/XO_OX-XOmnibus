@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Glass Strike",
+  "mood": "Foundation",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Instant attack glass-percussion hit with bright ring and fast decay.",
+  "tags": [
+    "percussive",
+    "glass",
+    "bright",
+    "transient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.1,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.25,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.3,
+      "obsidian_stiffness": 0.95,
+      "obsidian_cascadeBlend": 0.1,
+      "obsidian_crossModDepth": 0.08,
+      "obsidian_densityX": 0.25,
+      "obsidian_tiltY": 0.7,
+      "obsidian_formantIntensity": 0.8,
+      "obsidian_formantResonance": 0.65,
+      "obsidian_depthAttack": 0.001,
+      "obsidian_depthDecay": 0.2,
+      "obsidian_depthSustain": 0.0,
+      "obsidian_depthRelease": 0.15,
+      "obsidian_ampAttack": 0.001,
+      "obsidian_ampDecay": 0.28,
+      "obsidian_ampSustain": 0.0,
+      "obsidian_ampRelease": 0.2,
+      "obsidian_filterCutoff": 9500,
+      "obsidian_filterReso": 0.5,
+      "obsidian_lfo1Rate": 3.0,
+      "obsidian_lfo1Depth": 0.0,
+      "obsidian_lfo1Shape": 0,
+      "obsidian_lfo2Rate": 2.0,
+      "obsidian_lfo2Depth": 0.0,
+      "obsidian_lfo2Shape": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 4,
+      "obsidian_stereoWidth": 0.3,
+      "obsidian_level": 0.85,
+      "obsidian_macroCharacter": 0.85,
+      "obsidian_macroMovement": 0.2,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.25
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Oblong",
+        "target": "Oblique",
+        "type": "AMPLITUDE_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Bass line follows the oblique bounce axis — each reflection a syncopated groove.",
+  "dna": {
+    "aggression": 0.519,
+    "brightness": 0.638,
+    "density": 0.625,
+    "movement": 0.692,
+    "space": 0.499,
+    "warmth": 0.507
+  },
+  "engines": [
+    "Oblong",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Mass Bounce",
+  "parameters": {
+    "Oblique": {
+      "oblq_filterCutoff": 5261.5,
+      "oblq_level": 0.749
+    },
+    "Oblong": {
+      "bob_ampAttack": 0.0047,
+      "bob_ampDecay": 0.56,
+      "bob_ampRelease": 0.876,
+      "bob_ampSustain": 0.463,
+      "bob_chordMode": 0.33,
+      "bob_distDrive": 0.319,
+      "bob_distMix": 0.159,
+      "bob_fltCutoff": 2230.0,
+      "bob_fltEnvAmt": 0.498,
+      "bob_fltReso": 0.396,
+      "bob_level": 0.763,
+      "bob_lfo1Depth": 0.406,
+      "bob_lfo1Rate": 4.123,
+      "bob_lfo1Shape": 0.25,
+      "bob_modAttack": 0.0254,
+      "bob_modDecay": 0.465,
+      "bob_modRelease": 0.337,
+      "bob_modSustain": 0.417,
+      "bob_oscDetune": 0.156,
+      "bob_oscWave": 0.33,
+      "bob_reverbMix": 0.351,
+      "bob_scaleMode": 0.4,
+      "bob_subOscLevel": 0.078,
+      "bob_curAmount": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "oblong",
+    "oblique"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

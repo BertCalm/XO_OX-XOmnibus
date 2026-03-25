@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.423,
-    "COUPLING": 0.629,
-    "MOVEMENT": 0.43,
-    "SPACE": 0.669
+    "MACHINE": 0.423,
+    "SPACE": 0.629,
+    "PUNCH": 0.43,
+    "MUTATE": 0.669
   },
   "mood": "Foundation",
   "name": "Rust Crush",
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

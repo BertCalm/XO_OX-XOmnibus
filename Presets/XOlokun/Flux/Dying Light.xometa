@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Inverted drama. Begins at high synchrony (drama=0.7) and the S-curve arc drives the field DOWNWARD \u2014 partials drift apart, the voice dissolves, breath overtakes tone. A 15-second deconstruction. The star singer losing their voice, one partial at a time. Heartbreaking when played slowly.",
+  "description": "Inverted drama. Begins at high synchrony (drama=0.7) and the S-curve arc drives the field DOWNWARD — partials drift apart, the voice dissolves, breath overtakes tone. A 15-second deconstruction. The star singer losing their voice, one partial at a time. Heartbreaking when played slowly.",
   "tags": [
     "conductor",
     "deconstruction",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

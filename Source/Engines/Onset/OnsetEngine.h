@@ -1351,6 +1351,12 @@ struct OnsetVoice
     BreathingLFO breathingLFO;
     float baseCutoff = 1000.0f;  // stored at trigger for LFO modulation
 
+    // Block-rate breathing: counter drives filter coefficient update every 32 samples.
+    // At 0.08 Hz the cutoff changes < 0.003 Hz per sample — perceptually identical
+    // at block-rate but saves 8 std::sin calls per sample across 8 voices.
+    int breathBlockCounter = 0;
+    float lastBreathCutoff = 1000.0f;  // cached modulated cutoff, updated every 32 samples
+
     // State
     bool active = false;
     float lastOutput = 0.0f;
@@ -1416,6 +1422,10 @@ struct OnsetVoice
         voiceFilter.reset();
         // D001: velocity opens filter — harder hits are brighter
         baseCutoff = 200.0f + tone * vel * 18000.0f;
+        // Force immediate coefficient update on trigger so the first sample is correct.
+        // Reset the counter so the block-rate guard fires on the very next processSample call.
+        breathBlockCounter = 0;
+        lastBreathCutoff = baseCutoff;
         voiceFilter.setCoefficients (baseCutoff, 0.1f, sr);
     }
 
@@ -1457,10 +1467,16 @@ struct OnsetVoice
         // Add transient (pre-filter)
         blended += transient.process();
 
-        // D005: breathing LFO modulates filter cutoff continuously (0.08 Hz)
-        float breathMod = breathingLFO.process();
-        float modCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
-        voiceFilter.setCoefficients (modCutoff, 0.1f, sr);
+        // D005: breathing LFO modulates filter cutoff at block-rate (every 32 samples).
+        // At 0.08 Hz the LFO moves < 0.003 Hz per sample; updating every 32 samples
+        // is perceptually identical and saves 8 std::sin calls per sample across 8 voices.
+        if ((breathBlockCounter & 31) == 0)
+        {
+            float breathMod = breathingLFO.process();
+            lastBreathCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
+            voiceFilter.setCoefficients (lastBreathCutoff, 0.1f, sr);
+        }
+        ++breathBlockCounter;
 
         // Voice filter
         blended = voiceFilter.processSample (blended);

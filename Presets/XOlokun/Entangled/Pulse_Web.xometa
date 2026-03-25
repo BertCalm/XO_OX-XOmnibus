@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "OPTIC auto-pulse rate modulates OVERLAP spin rate — light pulses weave through the spatial web",
+  "description": "OPTIC auto-pulse rate modulates OVERLAP spin rate \u2014 light pulses weave through the spatial web",
   "dna": {
     "aggression": 0.325,
     "brightness": 0.65,
@@ -37,7 +37,7 @@
     "SPACE": 0.485
   },
   "mood": "Entangled",
-  "name": "Pulse Web (Overlap)",
+  "name": "Pulse Web",
   "parameters": {
     "Overlap": {
       "olap_couplingBus": 0,

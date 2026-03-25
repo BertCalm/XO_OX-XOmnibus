@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin signature #2. Double-peak arc over 12 seconds \u2014 the overture and the climax. First peak brings partial alignment to 60% (the overture), a dip to 30% (intermission), second peak drives to 95% (the climax). Formant morphs A-to-O as the arc rises. Theatrical. The curtain does not simply rise \u2014 it rises twice.",
+  "description": "Guru Bin signature #2. Double-peak arc over 12 seconds — the overture and the climax. First peak brings partial alignment to 60% (the overture), a dip to 30% (intermission), second peak drives to 95% (the climax). Formant morphs A-to-O as the arc rises. Theatrical. The curtain does not simply rise — it rises twice.",
   "tags": [
     "conductor",
     "double-peak",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

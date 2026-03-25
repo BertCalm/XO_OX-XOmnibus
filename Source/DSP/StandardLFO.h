@@ -174,16 +174,19 @@ private:
 };
 
 //==============================================================================
-// BreathingLFO — D005-compliant autonomous breathing modulator.
+// BreathingLFO — D005-compliant autonomous slow modulator.
 //
-// A minimal sine-only LFO for engines that just need organic evolution.
-// Rate floor enforced at 0.005 Hz (200-second cycle). No shape selection,
-// no S&H, no phase offset — just breathing.
+// An engine that never moves is a photograph. This module is the minimal
+// implementation of D005: one sine LFO with a hard rate floor of 0.005 Hz
+// (200-second cycle), so it always drifts — even when the rate knob is zeroed.
+//
+// Use this when an engine needs organic movement without user configuration.
+// For full shape control, use StandardLFO instead.
 //
 // Usage:
 //   BreathingLFO breath;
-//   breath.setRate (0.01f, sampleRate);   // gentle 100-second drift
-//   float mod = breath.process();          // [-1, +1]
+//   breath.setRate (0.01f, sampleRate);   // 100-second drift cycle
+//   float mod = breath.process();          // [-1, +1] — slow, continuous motion
 //==============================================================================
 struct BreathingLFO
 {

@@ -26,14 +26,14 @@
   "dna": {
     "brightness": 0.52,
     "warmth": 0.58,
-    "movement": 0.10,
+    "movement": 0.1,
     "density": 0.55,
     "space": 0.12,
-    "aggression": 0.50
+    "aggression": 0.5
   },
   "parameters": {
     "Onset": {
-      "perc_macro_machine": 0.40,
+      "perc_macro_machine": 0.4,
       "perc_macro_punch": 0.68,
       "perc_macro_space": 0.12,
       "perc_macro_mutate": 0.06,
@@ -53,18 +53,19 @@
       "perc_xvc_global_amount": 0.08,
       "perc_xvc_kick_to_snare_filter": 0.12,
       "perc_xvc_kick_to_tom_pitch": 0.05,
-      "perc_xvc_snare_to_hat_decay": 0.10,
-      "perc_xvc_snare_to_perc_blend": 0.10,
+      "perc_xvc_snare_to_hat_decay": 0.1,
+      "perc_xvc_snare_to_perc_blend": 0.1,
       "perc_xvc_hat_choke": 0.05
     }
   },
   "macros": {
-    "MACHINE": 0.40,
+    "MACHINE": 0.4,
     "PUNCH": 0.68,
     "SPACE": 0.12,
     "MUTATE": 0.06
   },
   "coupling": {
     "pairs": []
-  }
+  },
+  "tier": "awakening"
 }

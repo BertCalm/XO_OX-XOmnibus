@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermocline (Opera I)",
+  "name": "Thermocline",
   "mood": "Submerged",
   "engines": [
     "Opera"
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Refraction (Ombre)",
+  "name": "Refraction",
   "mood": "Prism",
   "engines": [
     "Ombre"
   ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Memory drift bends the angle of each grain like light through glass. High drift, short grain, resonant filter — each read head refracts at a slightly different angle.",
+  "description": "Memory drift bends the angle of each grain like light through glass. High drift, short grain, resonant filter \u2014 each read head refracts at a slightly different angle.",
   "tags": [
     "prism",
     "refraction",

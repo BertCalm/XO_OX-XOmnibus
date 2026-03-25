@@ -232,6 +232,12 @@ struct ObrixVoice
     // 3 processor filters (Proc1→Src1, Proc2→Src2, Proc3→post-mix)
     CytomicSVF procFilters[3];
 
+    // Cached cutoff/resonance per filter slot — used for delta-threshold guard.
+    // setCoefficients() (which computes an expensive sin()) is skipped when the
+    // new value differs by less than kFilterDeltaHz / kFilterDeltaRes.
+    float procLastCut[3] { -1.0f, -1.0f, -1.0f };  // -1 forces update on first sample
+    float procLastRes[3] { -1.0f, -1.0f, -1.0f };
+
     // Filter feedback state (Proc1, Proc2) — one sample memory for the loop
     float procFbState[2] {};
 
@@ -255,6 +261,8 @@ struct ObrixVoice
         for (auto& l : modLFOs) l.reset();
         for (auto& f : procFilters) f.reset();
         procFbState[0] = procFbState[1] = 0.0f;
+        procLastCut[0] = procLastCut[1] = procLastCut[2] = -1.0f;
+        procLastRes[0] = procLastRes[1] = procLastRes[2] = -1.0f;
         pan = 0.0f;
         jifiOffset[0] = jifiOffset[1] = 0.0f;
     }
@@ -267,6 +275,15 @@ class ObrixEngine : public SynthEngine
 {
 public:
     static constexpr int kMaxVoices = 8;
+
+    // Delta-threshold for filter coefficient updates.
+    // setCoefficients() (which calls std::sin internally) is skipped when the
+    // new cutoff differs by less than kFilterDeltaHz and resonance by less than
+    // kFilterDeltaRes.  At audio rates the modulation can change rapidly, so the
+    // threshold is conservative: 1 Hz / 0.001 — perceptually transparent while
+    // eliminating redundant trig on samples where nothing has moved.
+    static constexpr float kFilterDeltaHz  = 1.0f;
+    static constexpr float kFilterDeltaRes = 0.001f;
 
     //==========================================================================
     // Lifecycle
@@ -846,7 +863,15 @@ public:
                     setFilterMode (voice.procFilters[0], proc1Type);
                     float cut = clamp (proc1Cut + cutoffMod + velTimbre, 20.0f, 20000.0f);
                     float res = clamp (proc1Res + resoMod, 0.0f, 1.0f);
-                    voice.procFilters[0].setCoefficients (cut, res, sr);
+                    // Delta-threshold: skip expensive trig if cutoff/res haven't changed
+                    // enough to be audible (kFilterDeltaHz = 1 Hz, kFilterDeltaRes = 0.001).
+                    if (std::fabs (cut - voice.procLastCut[0]) > kFilterDeltaHz ||
+                        std::fabs (res - voice.procLastRes[0]) > kFilterDeltaRes)
+                    {
+                        voice.procFilters[0].setCoefficients (cut, res, sr);
+                        voice.procLastCut[0] = cut;
+                        voice.procLastRes[0] = res;
+                    }
                     // Filter feedback: route output back through tanh into input
                     float fbIn = sig1 + fastTanh (voice.procFbState[0] * proc1Fb * 4.0f);
                     float filtOut = voice.procFilters[0].processSample (fbIn);
@@ -861,7 +886,13 @@ public:
                     setFilterMode (voice.procFilters[1], proc2Type);
                     float cut = clamp (proc2Cut + cutoffMod * 0.5f + velTimbre, 20.0f, 20000.0f);
                     float res = clamp (proc2Res + resoMod, 0.0f, 1.0f);
-                    voice.procFilters[1].setCoefficients (cut, res, sr);
+                    if (std::fabs (cut - voice.procLastCut[1]) > kFilterDeltaHz ||
+                        std::fabs (res - voice.procLastRes[1]) > kFilterDeltaRes)
+                    {
+                        voice.procFilters[1].setCoefficients (cut, res, sr);
+                        voice.procLastCut[1] = cut;
+                        voice.procLastRes[1] = res;
+                    }
                     float fbIn = sig2 + fastTanh (voice.procFbState[1] * proc2Fb * 4.0f);
                     float filtOut = voice.procFilters[1].processSample (fbIn);
                     voice.procFbState[1] = flushDenormal (filtOut);
@@ -904,7 +935,13 @@ public:
                     setFilterMode (voice.procFilters[2], proc3Type);
                     float cut = clamp (proc3Cut + cutoffMod * 0.3f, 20.0f, 20000.0f);
                     float res = clamp (proc3Res + resoMod, 0.0f, 1.0f);
-                    voice.procFilters[2].setCoefficients (cut, res, sr);
+                    if (std::fabs (cut - voice.procLastCut[2]) > kFilterDeltaHz ||
+                        std::fabs (res - voice.procLastRes[2]) > kFilterDeltaRes)
+                    {
+                        voice.procFilters[2].setCoefficients (cut, res, sr);
+                        voice.procLastCut[2] = cut;
+                        voice.procLastRes[2] = res;
+                    }
                     signal = voice.procFilters[2].processSample (signal);
                 }
 

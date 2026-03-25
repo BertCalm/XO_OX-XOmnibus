@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Glass Cathedral",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLIQUE's prismatic bounce engine feeds pitch and rhythm into OBSIDIAN's phase distortion architecture \u2014 over 32 seconds prism colors rotate through obsidian density layers, creating a stained glass cathedral that rebuilds itself with each new coupling pulse.",
+  "tags": [
+    "evolution",
+    "prismatic",
+    "phase-distortion",
+    "temporal",
+    "cathedral",
+    "coupled",
+    "entangled",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.68,
+    "density": 0.62,
+    "space": 0.7,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.65,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.58,
+      "macro_space": 0.65,
+      "oblq_prismColor": 0.55,
+      "oblq_bounceRate": 0.5,
+      "oblq_filterCutoff": 0.6,
+      "oblq_reverbMix": 0.58,
+      "oblq_outputLevel": 0.8
+    },
+    "Obsidian": {
+      "macro_character": 0.58,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.58,
+      "macro_space": 0.68,
+      "obsidian_depth": 0.6,
+      "obsidian_pdDepth": 0.52,
+      "obsidian_filterCutoff": 2743.6,
+      "obsidian_reverbMix": 0.62,
+      "obsidian_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "LFOToPitch",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "RhythmToBlend",
+        "amount": 0.48
+      },
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oblique",
+        "type": "AudioToFM",
+        "amount": 0.42
+      }
+    ]
+  },
+  "journey": {
+    "durationSeconds": 32,
+    "couplingEnvelope": "sawtooth_ramp",
+    "startAmount": 0.12,
+    "endAmount": 0.72,
+    "cycleCount": 2,
+    "description": "Two 16-second sawtooth ramps \u2014 each ramp builds to full prismatic coupling then resets"
+  },
+  "sequencer": null
+}

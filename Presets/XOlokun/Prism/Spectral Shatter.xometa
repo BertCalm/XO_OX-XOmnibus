@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum partials (48) at zero sync. Every partial drifts independently \u2014 a choir of 48 individual frequencies, each singing its own pitch. The result is a dense, shattered spectrum. Add Drama via mod wheel to hear the pieces reassemble.",
+  "description": "Maximum partials (48) at zero sync. Every partial drifts independently — a choir of 48 individual frequencies, each singing its own pitch. The result is a dense, shattered spectrum. Add Drama via mod wheel to hear the pieces reassemble.",
   "tags": [
     "chaotic",
     "dense",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

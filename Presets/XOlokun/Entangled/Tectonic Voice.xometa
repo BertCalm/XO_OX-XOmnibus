@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBSCURA coupling. Mass-spring physics perturb partial phases \u2014 the voice cracks and reforms like singing through an earthquake. Low drama (0.35) keeps the Kuramoto field near the phase boundary where external perturbation has maximum effect. Each note from OBSCURA sends a seismic wave through the choir.",
+  "description": "OBSCURA coupling. Mass-spring physics perturb partial phases — the voice cracks and reforms like singing through an earthquake. Low drama (0.35) keeps the Kuramoto field near the phase boundary where external perturbation has maximum effect. Each note from OBSCURA sends a seismic wave through the choir.",
   "tags": [
     "entangled",
     "obscura",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A pod of whales singing in loose unison. 2-voice stacking with wide detune creates the sense of multiple animals vocalizing together \u2014 close but not identical, synchronized but independent. The Conductor arc runs 35 seconds, gradually bringing the pod into alignment. Deep fundamental, wide vibrato, formant cycling through the dark vowels. The ocean as cathedral, cetaceans as congregation.",
+  "description": "A pod of whales singing in loose unison. 2-voice stacking with wide detune creates the sense of multiple animals vocalizing together — close but not identical, synchronized but independent. The Conductor arc runs 35 seconds, gradually bringing the pod into alignment. Deep fundamental, wide vibrato, formant cycling through the dark vowels. The ocean as cathedral, cetaceans as congregation.",
   "tags": [
     "submerged",
     "whale",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

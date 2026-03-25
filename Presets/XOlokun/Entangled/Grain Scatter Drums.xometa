@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORPHICA's grain engine scatters microsonic clouds on every ONSET hit. Percussion becomes temporal texture \u2014 a siphonophore colony of sound.",
+  "description": "ORPHICA's grain engine scatters microsonic clouds on every ONSET hit. Percussion becomes temporal texture — a siphonophore colony of sound.",
   "tags": [
     "coupling",
     "entangled",
@@ -19,10 +19,10 @@
     "scatter"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Deep",
   "tempo": null,
@@ -62,5 +62,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Warm Haze (Orbital I)",
+  "name": "Warm Haze",
   "mood": "Atmosphere",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Warm atmospheric haze — gentle harmonic saturation, slow drift, golden tone.",
+  "description": "Warm atmospheric haze \u2014 gentle harmonic saturation, slow drift, golden tone.",
   "tags": [
     "warm",
     "haze",

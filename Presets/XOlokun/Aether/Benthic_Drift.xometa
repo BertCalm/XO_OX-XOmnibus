@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Invisible harmonic mass shaping the audible.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.2,
+    "density": 0.45,
+    "movement": 0.1,
+    "space": 0.45,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Benthic Drift",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.04,
+      "organon_enzymeSelect": 500.0,
+      "organon_isotopeBalance": 0.25,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.45,
+      "organon_metabolicRate": 0.12,
+      "organon_noiseColor": 0.3,
+      "organon_phasonShift": 0.03,
+      "organon_signalFlux": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "dark-matter",
+    "invisible",
+    "shaping",
+    "gravitational"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

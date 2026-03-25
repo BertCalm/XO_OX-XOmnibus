@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Deep Root (OddOscar)",
+  "name": "Deep Root",
   "mood": "Foundation",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Grounded deep-root morph with heavy sub and minimum drift — the stable foundation.",
+  "description": "Grounded deep-root morph with heavy sub and minimum drift \u2014 the stable foundation.",
   "tags": [
     "deep",
     "root",

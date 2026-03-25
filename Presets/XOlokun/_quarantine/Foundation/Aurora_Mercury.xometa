@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.772,
-    "COUPLING": 0.4,
-    "MOVEMENT": 0.156,
-    "SPACE": 0.32
+    "MACHINE": 0.772,
+    "SPACE": 0.4,
+    "PUNCH": 0.156,
+    "MUTATE": 0.32
   },
   "mood": "Foundation",
   "name": "Aurora Mercury",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

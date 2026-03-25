@@ -7,26 +7,27 @@ namespace xolokun {
 //==============================================================================
 // GlideProcessor — Shared portamento/glide for the XOlokun fleet.
 //
-// Consolidates the identical frequency-domain glide pattern found in 35+
-// engines. Operates in Hz space (analog synth convention — upward glides
-// feel naturally slower than downward, matching VCO behavior).
+// Consolidates the frequency-domain glide pattern found across 35+ engines.
+// Operates in Hz space rather than MIDI note space, matching the analog VCO
+// convention: a one-octave glide upward feels naturally slower than the same
+// interval downward, because the Hz distance is twice as large. This is the
+// behavior players expect from a Minimoog or Juno — not from a MIDI sequencer.
 //
-// The glide coefficient is computed from a time constant: the time it takes
-// for the frequency to reach ~63% of the way to the target. At coeff=1.0
-// the glide is instant (no portamento).
+// The coefficient is derived from a time constant (τ): the time to close 63%
+// of the gap to the target each second. coeff = 1.0 means instant arrival
+// (no portamento). Lower values produce longer, smoother glides.
 //
 // Usage:
-//   // In voice struct:
 //   GlideProcessor glide;
 //
+//   // On prepare():
+//   glide.setTime (0.1f, sampleRate);  // 100ms portamento
+//
 //   // On noteOn:
-//   glide.setTarget (targetFreqHz);
+//   glide.setTargetOrSnap (targetFreqHz);  // snap on first note, glide thereafter
 //
 //   // Per-sample in render loop:
 //   float freq = glide.process();
-//
-//   // When glide time changes (once per block):
-//   glide.setTime (glideTimeSec, sampleRate);
 //
 // All methods are noexcept and allocation-free for real-time safety.
 //==============================================================================
@@ -90,13 +91,13 @@ struct GlideProcessor
     {
         float delta = (targetFreq - currentFreq) * coeff;
         currentFreq += delta;
-        // Snap to target when convergence stalls due to float32 precision.
-        // At high frequencies (e.g., 880 Hz), the ULP gap is ~0.00006 Hz,
-        // so a small coeff can't produce a delta large enough to advance.
-        // The 0.2 Hz threshold is inaudible (~0.4 cents at 880 Hz) and
-        // prevents the glide from permanently "almost there."
+
+        // Float32 convergence guard: at high frequencies the ULP gap can
+        // exceed the step size, leaving the glide permanently 0.2 Hz short
+        // of its target. That's inaudible (~0.4 cents at 880 Hz) — snap and move on.
         if (std::fabs (currentFreq - targetFreq) < 0.2f)
             currentFreq = targetFreq;
+
         return currentFreq;
     }
 

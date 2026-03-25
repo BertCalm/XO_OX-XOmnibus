@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMBRE — dark extreme brightness preset for Atmosphere.",
+  "description": "OMBRE \u2014 dark extreme brightness preset for Atmosphere.",
   "dna": {
     "aggression": 0.14,
     "brightness": 0.08,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Twilight Fade (Ombre)",
+  "name": "Twilight Fade",
   "parameters": {
     "Ombre": {
       "ombre_ampAttack": 451.3,

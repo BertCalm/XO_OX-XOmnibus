@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Thermal Vent (Obsidian I)",
+  "name": "Thermal Vent",
   "mood": "Submerged",
   "engines": [
     "Obsidian"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Mineral formation at a thermal vent — warm crystal body emerging from cold deep water, formant glow.",
+  "description": "Mineral formation at a thermal vent \u2014 warm crystal body emerging from cold deep water, formant glow.",
   "tags": [
     "thermal",
     "vent",

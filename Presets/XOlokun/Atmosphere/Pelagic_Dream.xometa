@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "name": "Pelagic Dream",
+  "description": "Floating pads texture with voyager drift and prism shimmer.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.54,
+    "density": 0.163,
+    "movement": 0.09,
+    "space": 0.346,
+    "warmth": 0.408
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Astral Pad",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 200.0,
+      "drift_decay": 800.0,
+      "drift_driftDepth": 0.3,
+      "drift_driftRate": 0.12,
+      "drift_filterCutoff": 3500.0,
+      "drift_filterEnvAmt": 0.3,
+      "drift_filterReso": 0.2,
+      "drift_filterSlope": 1.0,
+      "drift_formantMorph": 0.3,
+      "drift_hazeAmount": 0.25,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.6,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_tune": -12.0,
+      "drift_release": 1500.0,
+      "drift_shimmerAmount": 0.3,
+      "drift_shimmerTone": 0.6,
+      "drift_subLevel": 0.3,
+      "drift_sustain": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "drifty",
+    "saturated",
+    "shimmery",
+    "spacious",
+    "chorus",
+    "formant"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

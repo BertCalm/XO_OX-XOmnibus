@@ -27,20 +27,20 @@
     "brightness": 0.55,
     "warmth": 0.52,
     "movement": 0.25,
-    "density": 0.50,
+    "density": 0.5,
     "space": 0.18,
-    "aggression": 0.40
+    "aggression": 0.4
   },
   "parameters": {
     "Onset": {
       "perc_macro_machine": 0.45,
-      "perc_macro_punch": 0.60,
+      "perc_macro_punch": 0.6,
       "perc_macro_space": 0.14,
       "perc_macro_mutate": 0.08,
       "perc_drive": 0.44,
-      "perc_level": 0.80,
+      "perc_level": 0.8,
       "perc_masterTone": 0.54,
-      "perc_char_grit": 0.30,
+      "perc_char_grit": 0.3,
       "perc_char_warmth": 0.58,
       "perc_fx_reverb_size": 0.18,
       "perc_fx_reverb_decay": 0.22,
@@ -50,21 +50,22 @@
       "perc_fx_delay_mix": 0.04,
       "perc_fx_lofi_bits": 12,
       "perc_fx_lofi_mix": 0.14,
-      "perc_xvc_global_amount": 0.10,
+      "perc_xvc_global_amount": 0.1,
       "perc_xvc_kick_to_snare_filter": 0.08,
       "perc_xvc_kick_to_tom_pitch": 0.05,
       "perc_xvc_snare_to_hat_decay": 0.18,
       "perc_xvc_snare_to_perc_blend": 0.08,
-      "perc_xvc_hat_choke": 0.30
+      "perc_xvc_hat_choke": 0.3
     }
   },
   "macros": {
     "MACHINE": 0.45,
-    "PUNCH": 0.60,
+    "PUNCH": 0.6,
     "SPACE": 0.14,
     "MUTATE": 0.08
   },
   "coupling": {
     "pairs": []
-  }
+  },
+  "tier": "awakening"
 }

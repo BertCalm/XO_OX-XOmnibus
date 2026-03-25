@@ -23,16 +23,16 @@
     "Origami"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.726,
-    "COUPLING": 0.874,
-    "MOVEMENT": 0.157,
-    "SPACE": 0.875
+    "MACHINE": 0.726,
+    "SPACE": 0.874,
+    "PUNCH": 0.157,
+    "MUTATE": 0.875
   },
   "mood": "Foundation",
   "name": "Shard Shimmer",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

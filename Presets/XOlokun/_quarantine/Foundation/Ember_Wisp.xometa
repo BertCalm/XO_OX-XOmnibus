@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.837,
-    "COUPLING": 0.875,
-    "MOVEMENT": 0.887,
-    "SPACE": 0.193
+    "MACHINE": 0.837,
+    "SPACE": 0.875,
+    "PUNCH": 0.887,
+    "MUTATE": 0.193
   },
   "mood": "Foundation",
   "name": "Ember Wisp",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

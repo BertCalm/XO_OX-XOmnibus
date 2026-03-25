@@ -5,10 +5,10 @@
   "couplingIntensity": "Deep",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "coupling": {
     "pairs": [
@@ -74,5 +74,6 @@
       "fat_voiceMode": 0,
       "fat_polyphony": 4
     }
-  }
+  },
+  "tier": "awakening"
 }

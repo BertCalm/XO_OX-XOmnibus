@@ -1,0 +1,58 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "A warm, slowly evolving pad that breathes on its own. The first organism.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.3,
+    "density": 0.3,
+    "movement": 0.3,
+    "space": 0.2,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Tide Origin",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.4,
+      "organon_dampingCoeff": 0.15,
+      "organon_enzymeSelect": 800.0,
+      "organon_isotopeBalance": 0.35,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_metabolicRate": 0.5,
+      "organon_noiseColor": 0.4,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "pad",
+    "warm",
+    "evolving",
+    "organic",
+    "starter"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

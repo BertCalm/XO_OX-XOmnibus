@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Deep Drift (Odyssey I)",
+  "name": "Deep Drift",
   "mood": "Atmosphere",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Deep drift atmosphere — maximum drift depth, very slow rate, subterranean motion.",
+  "description": "Deep drift atmosphere \u2014 maximum drift depth, very slow rate, subterranean motion.",
   "tags": [
     "deep",
     "drift",

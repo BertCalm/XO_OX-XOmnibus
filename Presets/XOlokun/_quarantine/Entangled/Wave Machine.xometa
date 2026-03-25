@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.55,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.65,
-    "SPACE": 0.55
+    "MACHINE": 0.55,
+    "SPACE": 0.75,
+    "PUNCH": 0.65,
+    "MUTATE": 0.55
   },
   "mood": "Entangled",
   "name": "Wave Machine",
@@ -55,5 +55,6 @@
     "waves"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OXBOW coupling. OXBOW's entangled reverb modulates Kuramoto coupling weights \u2014 synchrony ebbs and flows with the reverberant field. Warm formant with high stage presence. The golden ratio reverb of OXBOW makes the voice shimmer with recursive self-similarity. Every echo reinforces a different cluster of partials.",
+  "description": "OXBOW coupling. OXBOW's entangled reverb modulates Kuramoto coupling weights — synchrony ebbs and flows with the reverberant field. Warm formant with high stage presence. The golden ratio reverb of OXBOW makes the voice shimmer with recursive self-similarity. Every echo reinforces a different cluster of partials.",
   "tags": [
     "entangled",
     "oxbow",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Ouroboros"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.9,
-    "COUPLING": 0.914,
-    "MOVEMENT": 0.069,
-    "SPACE": 0.931
+    "MACHINE": 0.9,
+    "SPACE": 0.914,
+    "PUNCH": 0.069,
+    "MUTATE": 0.931
   },
   "mood": "Entangled",
   "name": "Candlelight Abyss",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

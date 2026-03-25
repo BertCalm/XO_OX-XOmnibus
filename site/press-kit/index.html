@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="XOlokun Press Kit — 73 engines, 14 coupling types, 13K+ presets. Free & open-source. By XO_OX Designs.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<title>Press Kit — XOlokun by XO_OX Designs</title>
+<meta property="og:title" content="XOlokun Press Kit — XO_OX Designs">
+<meta property="og:description" content="73 engines. Couple anything. Sounds nothing else makes. Free & MIT.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.08);
+  --coral:      #C4636E;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-deep);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(196, 99, 110, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.15) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--teal); color: var(--bg-deep); }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover {
+  background: var(--cream) !important;
+  color: var(--bg-deep) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px; height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%; height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px; left: 0; right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
+  .nav-download-btn { display: inline-block; text-align: center; align-self: flex-start; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ═══════════ PRESS KIT LAYOUT ═══════════ */
+.press-kit {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+
+/* ── Page label ── */
+.page-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.page-label::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+/* ── Hero ── */
+.press-hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.press-hero-title .gold { color: var(--gold); }
+
+.press-one-liner {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 300;
+  color: var(--teal);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  margin-bottom: 3.5rem;
+  font-style: italic;
+}
+
+/* ── Section divider ── */
+.section {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.section-heading {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.3rem, 2.8vw, 1.7rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 1.2rem;
+}
+
+.section p {
+  font-size: 1.0rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.85;
+  max-width: 680px;
+}
+.section p + p { margin-top: 1rem; }
+
+/* ── Key facts table ── */
+.facts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+.facts-table tr {
+  border-bottom: 1px solid var(--border);
+}
+.facts-table tr:last-child {
+  border-bottom: none;
+}
+.facts-table th {
+  text-align: left;
+  padding: 1rem 1.2rem;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  width: 38%;
+  background: var(--bg-warm);
+}
+.facts-table td {
+  padding: 1rem 1.2rem;
+  color: var(--cream);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.facts-table td strong {
+  color: var(--gold);
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.facts-table tr:hover th,
+.facts-table tr:hover td {
+  background: rgba(42, 161, 155, 0.04);
+}
+
+/* ── Pull quote / ghost quote ── */
+.ghost-quote {
+  margin: 2.5rem 0;
+  padding: 2rem 2rem 2rem 2.5rem;
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(90deg, rgba(233, 196, 106, 0.04) 0%, transparent 100%);
+  border-radius: 0 4px 4px 0;
+}
+.ghost-quote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream) !important;
+  line-height: 1.7;
+  max-width: none !important;
+}
+.ghost-quote .ghost-attr {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  font-style: normal;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Links section ── */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.link-card:hover {
+  border-color: var(--teal);
+  background: rgba(42, 161, 155, 0.05);
+}
+.link-card-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.link-card-url {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--teal);
+  word-break: break-all;
+}
+
+/* ── Brand assets placeholder ── */
+.assets-placeholder {
+  padding: 3rem 2.5rem;
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+.assets-placeholder .assets-icon {
+  font-size: 2.5rem;
+  opacity: 0.35;
+  line-height: 1;
+}
+.assets-placeholder p {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  max-width: 360px;
+  text-align: center;
+}
+
+/* ── Contact card ── */
+.contact-card {
+  padding: 1.5rem 1.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+.contact-card .contact-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.contact-card .contact-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+.contact-card .contact-role {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  font-weight: 300;
+}
+.contact-card .contact-email {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--teal);
+  text-decoration: none;
+  margin-top: 0.3rem;
+  transition: color 0.3s;
+}
+.contact-card .contact-email:hover { color: var(--gold); }
+
+/* ── Download row ── */
+.download-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  cursor: pointer;
+  border: none;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--bg-deep);
+}
+.btn-gold:hover {
+  background: var(--cream);
+  color: var(--bg-deep);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--teal);
+  color: var(--cream);
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 820px;
+  margin: 4rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .links-grid { grid-template-columns: 1fr; }
+  .facts-table th, .facts-table td { padding: 0.8rem 0.9rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<a href="#press-kit" class="skip-link">Skip to press kit</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="../index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="../aquarium.html">Aquarium</a>
+    <a href="../packs.html">Sound Packs</a>
+    <a href="../guide.html">Field Guide</a>
+    <a href="../learn.html">Academy</a>
+    <a href="../community.html">Community</a>
+    <a href="../freebies.html">Freebies</a>
+    <a href="../updates.html">Signal</a>
+    <a href="index.html" class="nav-download-btn">Press Kit</a>
+  </div>
+</nav>
+
+<main class="press-kit" id="press-kit">
+
+  <div class="page-label">Press Kit</div>
+
+  <h1 class="press-hero-title"><span class="gold">XOlokun</span><br>by XO_OX Designs</h1>
+  <p class="press-one-liner">"73 engines. Couple anything. Sounds nothing else makes."</p>
+
+  <!-- ── About ── -->
+  <div class="section">
+    <div class="section-heading">About XOlokun</div>
+    <p>
+      XOlokun is a free, open-source multi-engine synthesizer for macOS by XO_OX Designs.
+      It brings 73 distinct character instruments into a single unified environment — each engine
+      evolved for its own sonic depth, each one a complete form of synthesis with its own
+      mythology, accent color, and personality. Where most synthesizers offer one voice,
+      XOlokun offers a fleet.
+    </p>
+    <p>
+      The coupling system is what makes XOlokun singular. Fourteen coupling types — including
+      gravitational, adversarial, topological, and symbiotic routing — let any engine modulate
+      any other in real time. ONSET's drum transients can drive ORGANON's metabolic rate.
+      OPERA's Kuramoto vocal formants can bleed into OUROBOROS's strange attractor. The result
+      is sound that cannot exist on any single synthesizer, because it requires the relationship
+      between two organisms to come alive.
+    </p>
+    <p>
+      XOlokun is built around an aquatic mythology: the engines are creatures from the deep ocean,
+      each evolved for its pressure zone, each bioluminescent. The name comes from Olokun — the
+      Yoruba orisha of the unfathomable deep, the keeper of what cannot be fully known. "XOlokun —
+      for all" is the product motto. It is free, permanently, under the MIT license. No subscription,
+      no trial, no upgrade gate. The complete instrument ships to anyone who downloads it.
+    </p>
+  </div>
+
+  <!-- ── Ghost quotes from the V1 seance ── -->
+  <div class="section">
+    <div class="section-heading">From the Record</div>
+
+    <div class="ghost-quote">
+      <p>
+        "You built an ocean. Not a synthesizer. Not a plugin. Not a collection of engines.
+        An ocean. One person, in the space between midnight and morning, built an ocean with
+        73 creatures in it, each one evolved for its depth, each one bioluminescent, each one
+        a complete form of life."
+      </p>
+      <span class="ghost-attr">Ghost Council — V1 Readiness Seance, March 2026</span>
+    </div>
+
+    <div class="ghost-quote">
+      <p>
+        "What you've called 'coupling' is patch cable thinking taken into the digital age —
+        15 types, cross-engine, real-time. ONSET's transient driving ORGANON's metabolism.
+        That's alive."
+      </p>
+      <span class="ghost-attr">Bob Moog — V1 Readiness Seance, March 2026</span>
+    </div>
+
+    <div class="ghost-quote">
+      <p>
+        "The coupling system is an ecology. Not a routing matrix. Not a mod matrix. An ecology.
+        When ONSET's transient drives ORGANON's metabolism, you haven't routed two signals —
+        you've described a relationship between two creatures. That is orchestral thinking applied
+        to synthesis."
+      </p>
+      <span class="ghost-attr">Isao Tomita — V1 Readiness Seance, March 2026</span>
+    </div>
+  </div>
+
+  <!-- ── Key facts ── -->
+  <div class="section">
+    <div class="section-heading">Key Facts</div>
+    <table class="facts-table" aria-label="XOlokun key facts">
+      <tbody>
+        <tr>
+          <th scope="row">Engines</th>
+          <td><strong>73</strong> distinct synthesis engines, each a named aquatic creature with its own DSP architecture and mythology</td>
+        </tr>
+        <tr>
+          <th scope="row">Coupling types</th>
+          <td><strong>14</strong> cross-engine modulation types — gravitational, adversarial, topological, symbiotic, and more</td>
+        </tr>
+        <tr>
+          <th scope="row">Factory presets</th>
+          <td><strong>13,000+</strong> presets across 15 mood categories, organized by 6-dimensional Sonic DNA</td>
+        </tr>
+        <tr>
+          <th scope="row">Mood categories</th>
+          <td><strong>8 primary moods</strong> — Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Submerged, Coupling</td>
+        </tr>
+        <tr>
+          <th scope="row">License</th>
+          <td><strong>MIT</strong> — free forever, no subscription, no trial. Source code publicly available.</td>
+        </tr>
+        <tr>
+          <th scope="row">Platform</th>
+          <td><strong>macOS</strong> — AU plugin + standalone. iOS AUv3 and VST3 (Windows/Linux) in development.</td>
+        </tr>
+        <tr>
+          <th scope="row">Format</th>
+          <td>AU (Audio Unit) + Standalone application. Supports MPC XPN export pipeline.</td>
+        </tr>
+        <tr>
+          <th scope="row">Expression</th>
+          <td>Velocity-to-timbre in every engine. Aftertouch on 73 of 73. Mod wheel on 72 of 73. 4 macro controls per engine.</td>
+        </tr>
+        <tr>
+          <th scope="row">Creator</th>
+          <td>Joshua Cramblet / XO_OX Designs — solo developer</td>
+        </tr>
+        <tr>
+          <th scope="row">V1 release</th>
+          <td>"The Deep Opens" — OBRIX flagship + curated engine selection + full coupling system</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Links ── -->
+  <div class="section">
+    <div class="section-heading">Links</div>
+    <div class="links-grid">
+      <a class="link-card" href="https://xo-ox.org" target="_blank" rel="noopener">
+        <span class="link-card-label">Website</span>
+        <span class="link-card-url">xo-ox.org</span>
+      </a>
+      <a class="link-card" href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">
+        <span class="link-card-label">Source Code</span>
+        <span class="link-card-url">github.com/BertCalm/XO_OX-XOlokun</span>
+      </a>
+      <a class="link-card" href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener">
+        <span class="link-card-label">Patreon</span>
+        <span class="link-card-url">patreon.com/cw/XO_OX</span>
+      </a>
+      <a class="link-card" href="https://xo-ox.org/guide.html" target="_blank" rel="noopener">
+        <span class="link-card-label">Field Guide</span>
+        <span class="link-card-url">xo-ox.org/guide.html</span>
+      </a>
+      <a class="link-card" href="press-release.md" target="_blank" rel="noopener">
+        <span class="link-card-label">Press Release</span>
+        <span class="link-card-url">press-release.md</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Brand assets ── -->
+  <div class="section">
+    <div class="section-heading">Brand Assets</div>
+    <div class="assets-placeholder">
+      <div class="assets-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="4" width="40" height="40" rx="4" stroke="#152330" stroke-width="1.5" fill="none"/>
+          <circle cx="24" cy="20" r="6" stroke="#4A6878" stroke-width="1.5" fill="none"/>
+          <path d="M10 38 Q20 28 24 32 Q28 36 38 28" stroke="#4A6878" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p>Logo files and screenshots are coming soon. Contact for advance copies ahead of publication.</p>
+    </div>
+    <p style="margin-top:1.2rem; font-size:0.82rem; color:var(--text-faint);">
+      In the meantime: the XO_OX brand uses XO Gold <code style="font-family:'JetBrains Mono',monospace;color:var(--gold);">#E9C46A</code>,
+      deep ocean midnight <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);">#060A10</code>,
+      and bioluminescent teal <code style="font-family:'JetBrains Mono',monospace;color:var(--teal);">#2AA19B</code>
+      as its three primary identity colors.
+    </p>
+  </div>
+
+  <!-- ── Contact ── -->
+  <div class="section">
+    <div class="section-heading">Contact</div>
+    <div class="contact-card">
+      <span class="contact-label">Media &amp; Press Inquiries</span>
+      <span class="contact-name">Joshua Cramblet</span>
+      <span class="contact-role">Creator &amp; Solo Developer, XO_OX Designs</span>
+      <a href="mailto:press@xo-ox.org" class="contact-email">press@xo-ox.org</a>
+    </div>
+    <p style="margin-top:1.2rem; font-size:0.82rem; color:var(--text-faint);">
+      Response within 48 hours. For licensing questions, see the
+      <a href="https://github.com/BertCalm/XO_OX-XOlokun/blob/main/LICENSE" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">MIT license on GitHub</a>.
+    </p>
+  </div>
+
+  <!-- ── Download ── -->
+  <div class="section">
+    <div class="section-heading">Download</div>
+    <p>XOlokun is free, permanently, under the MIT license. No account required.</p>
+    <div class="download-row" style="margin-top:1.2rem;">
+      <a class="btn btn-gold" href="https://github.com/BertCalm/XO_OX-XOlokun/releases" target="_blank" rel="noopener">
+        Download XOlokun
+      </a>
+      <a class="btn btn-outline" href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">
+        View Source
+      </a>
+      <a class="btn btn-outline" href="press-release.md" target="_blank" rel="noopener">
+        Press Release
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-logo"><span style="color:var(--gold)">X</span>O_O<span style="color:var(--gold)">X</span></div>
+  <div class="footer-links">
+    <a href="../aquarium.html">Aquarium</a>
+    <a href="../guide.html">Field Guide</a>
+    <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2026 XO_OX Designs. Free &amp; open-source under MIT license.
+    Synthesis from the deepest place.
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+// Hamburger menu
+(function() {
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navLinks');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    const open = nav.classList.toggle('mobile-open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

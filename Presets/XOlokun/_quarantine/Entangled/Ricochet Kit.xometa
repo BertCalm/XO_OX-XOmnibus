@@ -16,16 +16,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.54,
-    "COUPLING": 0.824,
-    "MOVEMENT": 0.759,
-    "SPACE": 0.426
+    "MACHINE": 0.54,
+    "SPACE": 0.824,
+    "PUNCH": 0.759,
+    "MUTATE": 0.426
   },
   "mood": "Entangled",
   "name": "Ricochet Kit",
@@ -82,5 +82,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Atmosphere",
-  "name": "Time Stretch (Onset)",
+  "name": "Time Stretch",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.0,
@@ -155,5 +155,6 @@
     "resonant"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.85,
-    "COUPLING": 0.88,
-    "MOVEMENT": 0.76,
-    "SPACE": 0.06
+    "MACHINE": 0.85,
+    "SPACE": 0.88,
+    "PUNCH": 0.76,
+    "MUTATE": 0.06
   },
   "mood": "Entangled",
   "name": "Chaos Percussion",
@@ -52,5 +52,6 @@
     "percussion"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

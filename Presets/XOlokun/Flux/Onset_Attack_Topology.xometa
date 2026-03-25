@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Attack Topology",
   "mood": "Flux",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum snap on all voices with alternating algorithm modes exploring the full range of ONSET's attack character. Character stage grit at 0.35. The transient is the entire musical event — what happens before the sustain defines the morphology of each hit. A study in how eight different attack topologies can occupy the same rhythmic grid.",
-  "tags": ["transient", "snap", "attack", "character", "flux", "grit", "morphology"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "transient",
+    "snap",
+    "attack",
+    "character",
+    "flux",
+    "grit",
+    "morphology"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.86,
-    "COUPLING": 0.88,
-    "MOVEMENT": 0.7,
-    "SPACE": 0.14
+    "MACHINE": 0.86,
+    "SPACE": 0.88,
+    "PUNCH": 0.7,
+    "MUTATE": 0.14
   },
   "mood": "Entangled",
   "name": "Grey Percussion",
@@ -52,5 +52,6 @@
     "grey"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

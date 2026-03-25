@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "name": "Arctic Current (Ocelot)",
+  "name": "Arctic Current",
   "mood": "Submerged",
   "engines": [
     "Ocelot"
@@ -110,5 +110,5 @@
     "deep",
     "whale"
   ],
-  "description": "Arctic undercurrent — winter biome submerged, cold tape wobble through vast reverb."
+  "description": "Arctic undercurrent \u2014 winter biome submerged, cold tape wobble through vast reverb."
 }

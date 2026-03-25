@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High sync in a vast empty space. Drama=0.9 locks partials into crystalline purity while Stage=0.85 places the sound at infinite distance. The result is a single point of harmonic light in an immense darkness \u2014 beautiful, isolated, unreachable. The longer you listen, the more detail emerges from the void.",
+  "description": "High sync in a vast empty space. Drama=0.9 locks partials into crystalline purity while Stage=0.85 places the sound at infinite distance. The result is a single point of harmonic light in an immense darkness — beautiful, isolated, unreachable. The longer you listen, the more detail emerges from the void.",
   "tags": [
     "void",
     "luminous",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

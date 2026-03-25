@@ -10,16 +10,16 @@
   "couplingIntensity": "None",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.94,
-    "MOVEMENT": 0.96,
-    "COUPLING": 0.15,
-    "SPACE": 0.1
+    "MACHINE": 0.94,
+    "PUNCH": 0.96,
+    "SPACE": 0.15,
+    "MUTATE": 0.1
   },
   "coupling": {
     "pairs": []
@@ -43,5 +43,6 @@
     "plasma",
     "whip"
   ],
-  "description": "Hi-hat velocity layers cracking like plasma whip — lightning percussion."
+  "description": "Hi-hat velocity layers cracking like plasma whip — lightning percussion.",
+  "tier": "awakening"
 }

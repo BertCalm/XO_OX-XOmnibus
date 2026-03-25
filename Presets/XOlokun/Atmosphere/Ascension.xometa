@@ -29,7 +29,7 @@
     "FRACTURE"
   ],
   "mood": "Atmosphere",
-  "name": "Ascension (Odyssey I)",
+  "name": "Ascension",
   "parameters": {
     "Odyssey": {
       "drift_attack": 1000.0,

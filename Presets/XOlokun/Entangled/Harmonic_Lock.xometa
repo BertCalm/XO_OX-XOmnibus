@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Harmonic Lock (Overdub)",
+  "name": "Harmonic Lock",
   "mood": "Entangled",
   "engines": [
     "Overdub",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB's pitch drives DRIFT's pitch via Pitch->Pitch coupling — they are harmonically locked. When DUB bends or glides, DRIFT follows. Two engines become one perfectly-tuned detuned voice.",
+  "description": "DUB's pitch drives DRIFT's pitch via Pitch->Pitch coupling \u2014 they are harmonically locked. When DUB bends or glides, DRIFT follows. Two engines become one perfectly-tuned detuned voice.",
   "tags": [
     "harmonic",
     "pitch",

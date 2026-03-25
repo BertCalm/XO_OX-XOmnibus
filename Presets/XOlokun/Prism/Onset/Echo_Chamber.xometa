@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Prism",
-  "name": "Echo Chamber (Onset I)",
+  "name": "Echo Chamber",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.0,
@@ -155,5 +155,6 @@
     "spatial"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

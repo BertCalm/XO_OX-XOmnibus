@@ -16,16 +16,16 @@
     "Oblong"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.9,
-    "COUPLING": 0.88,
-    "MOVEMENT": 0.04,
-    "SPACE": 0.38
+    "MACHINE": 0.9,
+    "SPACE": 0.88,
+    "PUNCH": 0.04,
+    "MUTATE": 0.38
   },
   "mood": "Entangled",
   "name": "Oblong Assault Stasis",
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

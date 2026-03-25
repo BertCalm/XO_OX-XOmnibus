@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Osprey shore blend index selects OUTWIT rule biome — each coastline its own cellular ecosystem",
+  "description": "Osprey shore blend index selects OUTWIT rule biome \u2014 each coastline its own cellular ecosystem",
   "dna": {
     "aggression": 0.475,
     "brightness": 0.575,
@@ -37,7 +37,7 @@
     "SPACE": 0.627
   },
   "mood": "Entangled",
-  "name": "Shore Pattern (Outwit)",
+  "name": "Shore Pattern",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 0.15,

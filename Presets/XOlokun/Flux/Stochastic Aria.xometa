@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Random arc shape over 10 seconds \u2014 every performance is a different dramatic trajectory. The Conductor improvises. Peaks arrive unexpectedly, dips create sudden vulnerability. High ResSens means acausal clusters bloom during random dips, adding unpredictable harmonic events. The opera that writes itself differently each night.",
+  "description": "Random arc shape over 10 seconds — every performance is a different dramatic trajectory. The Conductor improvises. Peaks arrive unexpectedly, dips create sudden vulnerability. High ResSens means acausal clusters bloom during random dips, adding unpredictable harmonic events. The opera that writes itself differently each night.",
   "tags": [
     "conductor",
     "random",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

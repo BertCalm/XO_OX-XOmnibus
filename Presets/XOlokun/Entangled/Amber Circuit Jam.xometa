@@ -85,5 +85,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

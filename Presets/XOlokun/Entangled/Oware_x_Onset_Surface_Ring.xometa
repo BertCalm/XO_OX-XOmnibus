@@ -2,32 +2,46 @@
   "schema_version": 1,
   "name": "Surface Ring",
   "mood": "Entangled",
-  "engines": ["Onset", "Oware"],
+  "engines": [
+    "Onset",
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Onset electronic drums send amplitude into Oware's filter — every kick and snare strike causes the tuned bars to bloom open, melodic percussion answering each electronic hit.",
-  "tags": ["coupled", "electronic-drums", "tuned-bars", "AmpToFilter", "percussion"],
-  "macroLabels": ["CHARACTER", "MATERIAL", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "electronic-drums",
+    "tuned-bars",
+    "AmpToFilter",
+    "percussion"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "MATERIAL",
+    "SPACE",
+    "MUTATE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.68,
     "warmth": 0.55,
     "movement": 0.75,
-    "density": 0.60,
-    "space": 0.40,
+    "density": 0.6,
+    "space": 0.4,
     "aggression": 0.52
   },
   "parameters": {
     "Onset": {
-      "perc_noiseLevel": 0.40,
+      "perc_noiseLevel": 0.4,
       "perc_toneLevel": 0.65,
-      "perc_attackSharp": 0.70,
+      "perc_attackSharp": 0.7,
       "perc_decayTime": 0.35,
       "perc_filterCutoff": 0.55,
-      "perc_filterReso": 0.30,
+      "perc_filterReso": 0.3,
       "perc_reverbMix": 0.15,
-      "perc_outputLevel": 0.80,
+      "perc_outputLevel": 0.8,
       "perc_macroCharacter": 0.0,
       "perc_macroMovement": 0.0,
       "perc_macroCoupling": 0.0,
@@ -37,13 +51,13 @@
       "owr_material": 0.55,
       "owr_malletHardness": 0.35,
       "owr_bodyType": 1,
-      "owr_bodyDepth": 0.50,
-      "owr_buzzAmount": 0.10,
+      "owr_bodyDepth": 0.5,
+      "owr_buzzAmount": 0.1,
       "owr_sympathyAmount": 0.45,
       "owr_shimmerRate": 5.5,
       "owr_thermalDrift": 0.25,
       "owr_brightness": 7500.0,
-      "owr_damping": 0.30,
+      "owr_damping": 0.3,
       "owr_decay": 1.8,
       "owr_filterEnvAmount": 0.35,
       "owr_bendRange": 2.0,
@@ -51,10 +65,10 @@
       "owr_macroMallet": 0.0,
       "owr_macroCoupling": 0.0,
       "owr_macroSpace": 0.0,
-      "owr_lfo1Rate": 0.40,
-      "owr_lfo1Depth": 0.10,
+      "owr_lfo1Rate": 0.4,
+      "owr_lfo1Depth": 0.1,
       "owr_lfo1Shape": 0,
-      "owr_lfo2Rate": 1.20,
+      "owr_lfo2Rate": 1.2,
       "owr_lfo2Depth": 0.06,
       "owr_lfo2Shape": 0
     }
@@ -69,5 +83,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

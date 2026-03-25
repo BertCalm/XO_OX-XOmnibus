@@ -23,16 +23,16 @@
     "Orphica"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.522,
-    "COUPLING": 0.757,
-    "MOVEMENT": 0.057,
-    "SPACE": 0.867
+    "MACHINE": 0.522,
+    "SPACE": 0.757,
+    "PUNCH": 0.057,
+    "MUTATE": 0.867
   },
   "mood": "Entangled",
   "name": "Arctic Fang",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

@@ -7,14 +7,32 @@ namespace xolokun {
 
 //==============================================================================
 // FastMath — Denormal-safe fast math approximations for real-time DSP.
-// All functions are inline, allocation-free, and framework-independent.
+//
+// All functions are inline, allocation-free, and JUCE-independent. Designed
+// for use in renderBlock() and real-time audio callbacks where std::pow,
+// std::exp, and std::sin can be too slow. Accuracy figures are worst-case
+// over the documented input range — not average error.
+//
+// Accuracy summary:
+//   fastSin / fastCos   ~0.02%  — suitable for oscillators and LFOs
+//   fastTanh            ~0.1%   — suitable for saturation curves
+//   fastPow2 / fastExp  ~0.1%   — suitable for pitch and envelope math
+//   fastLog2            ~0.09   — suitable for dB conversion
+//   fastTan             ~0.03%  — suitable for TPT filter prewarping (|x| < π/4)
 //==============================================================================
 
 //------------------------------------------------------------------------------
-/// Flush denormals to zero. Call on every feedback/state variable each sample.
+/// Flush near-zero values (denormals) to exactly zero.
+///
+/// IEEE 754 denormal numbers are computationally expensive: they trigger CPU
+/// microcode fallback that can spike processing time by 100×. Filter feedback
+/// paths and IIR integrators are the main culprits — call this on every state
+/// variable once per sample to keep them clean.
+///
+/// Uses memcpy for type-safe bit inspection (well-defined C++; avoids
+/// undefined union type-punning).
 inline float flushDenormal (float x)
 {
-    // Use memcpy for type-safe bit inspection (well-defined in C++, unlike union punning)
     uint32_t bits;
     std::memcpy (&bits, &x, sizeof (bits));
     if ((bits & 0x7F800000) == 0 && (bits & 0x007FFFFF) != 0)
@@ -40,9 +58,11 @@ inline float fastExp (float x)
 }
 
 //------------------------------------------------------------------------------
-/// Fast tanh approximation using rational function.
-/// Smooth saturation curve, accurate to ~0.1% in [-3, 3].
-/// Beyond +/-3 it clamps to +/-1 (true tanh is >0.995 there anyway).
+/// Fast tanh approximation using a Padé rational function.
+/// Smooth saturation: signals pass through cleanly at low levels and compress
+/// symmetrically at high levels — like a well-biased tube stage.
+/// Accurate to ~0.1% in [-3, 3]. Hard-clips to ±1 beyond ±3 (true tanh
+/// exceeds 0.995 there anyway, so the error is perceptually inaudible).
 inline float fastTanh (float x)
 {
     if (x < -3.0f) return -1.0f;
@@ -208,8 +228,10 @@ inline float smoothCoeffFromTime (float timeSec, float sampleRate)
 }
 
 //------------------------------------------------------------------------------
-/// Soft-clip: cubic soft saturation. Keeps signal in [-1, 1] with smooth knee.
-/// More musical than hard clip. Zero overhead vs tanh for mild overdrive.
+/// Cubic soft saturation — gentler than tanh, zero overhead for mild drive.
+/// Signal passes through unmodified below ±1 and rounds off cleanly above.
+/// The knee is at ±1.5; hard rails at ±1. More musical than hard clipping
+/// for summing bus protection or warm-sounding drive stages.
 inline float softClip (float x)
 {
     if (x <= -1.5f) return -1.0f;

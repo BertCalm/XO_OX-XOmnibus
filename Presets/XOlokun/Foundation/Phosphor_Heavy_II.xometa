@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.723,
-    "COUPLING": 0.695,
-    "MOVEMENT": 0.614,
-    "SPACE": 0.469
+    "MACHINE": 0.723,
+    "SPACE": 0.695,
+    "PUNCH": 0.614,
+    "MUTATE": 0.469
   },
   "mood": "Foundation",
   "name": "Phosphor Heavy II",
@@ -64,5 +64,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, warm atmosphere. Let it breathe — the space is the instrument."
+  "description": "Anchored and grounding, shimmering, warm atmosphere. Let it breathe — the space is the instrument.",
+  "tier": "awakening"
 }

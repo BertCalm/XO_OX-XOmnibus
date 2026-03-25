@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "name": "Cave Resonance (Ocelot I)",
+  "name": "Cave Resonance",
   "mood": "Deep",
   "engines": [
     "Ocelot"
@@ -110,5 +110,5 @@
     "sustained",
     "dark"
   ],
-  "description": "Underwater cave resonance — pandeiro echo off rock walls, whale-tone emerging from canopy peaks."
+  "description": "Underwater cave resonance \u2014 pandeiro echo off rock walls, whale-tone emerging from canopy peaks."
 }

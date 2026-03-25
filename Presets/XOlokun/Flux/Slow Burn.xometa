@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ultra-long 60-second S-curve arc with a subtle peak of 0.5. The drama never fully arrives \u2014 it simmers. Partials drift toward alignment over a full minute, reaching only half synchrony before relaxing. Perfect for ambient beds where gradual spectral evolution is the composition. The longest tension without resolution.",
+  "description": "Ultra-long 60-second S-curve arc with a subtle peak of 0.5. The drama never fully arrives — it simmers. Partials drift toward alignment over a full minute, reaching only half synchrony before relaxing. Perfect for ambient beds where gradual spectral evolution is the composition. The longest tension without resolution.",
   "tags": [
     "conductor",
     "ambient",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

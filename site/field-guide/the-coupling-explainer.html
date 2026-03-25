@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Coupling Explainer — What Happens When Engines Talk | XO_OX Field Guide</title>
+<meta name="description" content="The definitive guide to XOlokun's coupling system. 15 types. 73 engines. One idea: when synthesis engines can genuinely influence each other, sounds emerge that cannot be made any other way.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --coral:      #C4636E;
+  --coupling:   #2AA19B;
+  --coupling-glow: rgba(42, 161, 155, 0.12);
+  --felix:      #00A6D6;
+  --oscar:      #E8839B;
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(233, 196, 106, 0.02) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--coupling); color: var(--cream); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 80%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 20%, rgba(233, 196, 106, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--coupling);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ═══════════ ARTICLE HERO ═══════════ */
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.article-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--coupling);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--coupling);
+  opacity: 0.6;
+}
+
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.12;
+  margin-bottom: 1rem;
+}
+.article-hero h1 em {
+  font-style: italic;
+  color: var(--coupling);
+}
+
+.article-hero-sub {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.85;
+  max-width: 640px;
+}
+
+.article-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.article-meta-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.article-meta-item span {
+  color: var(--text-dim);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* ═══════════ ARTICLE BODY ═══════════ */
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+
+.article p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 1.5rem;
+}
+
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.article strong {
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.article em {
+  font-style: italic;
+  color: var(--text);
+}
+
+.article-accent { color: var(--coupling); font-weight: 400; }
+.article-gold   { color: var(--gold);     font-weight: 400; }
+.article-felix  { color: var(--felix);    font-weight: 400; }
+.article-oscar  { color: var(--oscar);    font-weight: 400; }
+
+.article blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--coupling);
+  background: var(--coupling-glow);
+  border-radius: 0 4px 4px 0;
+}
+
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.article blockquote .attribution {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.8rem;
+  display: block;
+}
+
+.article-lore {
+  margin: 2.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--teal);
+}
+
+.article-lore p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+
+.article-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--coupling), transparent);
+  margin: 3.5rem 0;
+}
+
+.article ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.6rem;
+}
+
+.article li {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 0.5rem;
+}
+
+.article li strong { color: var(--cream); }
+
+/* ═══════════ COUPLING TYPE CARDS ═══════════ */
+.coupling-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.coupling-card {
+  padding: 1.4rem 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  border-top: 2px solid var(--coupling);
+}
+
+.coupling-card.knot {
+  border-top: 2px solid var(--gold);
+  grid-column: 1 / -1;
+}
+
+.coupling-card.triangular {
+  border-top: 2px solid var(--oscar);
+  grid-column: 1 / -1;
+}
+
+.coupling-card .type-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--coupling);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.coupling-card.knot .type-tag       { color: var(--gold); }
+.coupling-card.triangular .type-tag { color: var(--oscar); }
+
+.coupling-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.coupling-card p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+.coupling-card .example {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-top: 0.75rem;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* ═══════════ EXAMPLE PATCHES ═══════════ */
+.patch-card {
+  margin: 2.5rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.patch-header {
+  padding: 1.2rem 1.8rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.patch-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--coupling);
+  text-transform: uppercase;
+}
+
+.patch-header h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.2;
+}
+
+.patch-body {
+  padding: 1.5rem 1.8rem;
+}
+
+.patch-body p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.patch-params {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1rem 1.2rem;
+  line-height: 1.9;
+  margin-top: 1rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.patch-listen {
+  margin-top: 1rem;
+  padding: 0.9rem 1.2rem;
+  background: rgba(42, 161, 155, 0.06);
+  border-radius: 3px;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.75;
+}
+
+.patch-listen strong {
+  color: var(--coupling);
+  font-weight: 500;
+}
+
+/* ═══════════ POLARITY DIAGRAM ═══════════ */
+.polarity-column {
+  margin: 2.5rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.8rem;
+  position: relative;
+}
+
+.polarity-column::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 1.8rem;
+  bottom: 1.8rem;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--felix), var(--coupling), var(--oscar));
+  opacity: 0.3;
+  transform: translateX(-50%);
+}
+
+.polarity-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.polarity-row:not(:last-child) {
+  border-bottom: 1px solid rgba(21, 35, 48, 0.6);
+}
+
+.polarity-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.polarity-label.felix { color: var(--felix); }
+.polarity-label.oscar { color: var(--oscar); }
+.polarity-label.neutral { color: var(--coupling); }
+
+.polarity-engines {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-align: right;
+  flex: 1;
+  line-height: 1.6;
+}
+
+/* ═══════════ AMOUNT TABLE ═══════════ */
+.amount-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.amount-table th {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: left;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.amount-table td {
+  padding: 0.7rem 1rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.7;
+  font-size: 0.88rem;
+}
+
+.amount-table td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--coupling);
+  white-space: nowrap;
+}
+
+.amount-table tr:last-child td { border-bottom: none; }
+
+/* ═══════════ CTA ═══════════ */
+.cta-block {
+  margin: 4rem 0 2rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(42, 161, 155, 0.08) 0%, rgba(233, 196, 106, 0.05) 100%);
+  border: 1px solid rgba(42, 161, 155, 0.25);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.cta-block h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+  margin-top: 0;
+}
+
+.cta-block p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.cta-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-link {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.25s;
+}
+
+.cta-link.primary {
+  background: var(--coupling);
+  color: var(--bg-deep);
+}
+.cta-link.primary:hover { background: #38b0aa; }
+
+.cta-link.secondary {
+  background: transparent;
+  color: var(--coupling);
+  border: 1px solid rgba(42, 161, 155, 0.4);
+}
+.cta-link.secondary:hover {
+  border-color: var(--coupling);
+  background: rgba(42, 161, 155, 0.08);
+}
+
+/* ═══════════ BACK LINK ═══════════ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--coupling); }
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(6, 10, 16, 0.97);
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    padding: 0.85rem 2rem;
+    font-size: 0.7rem;
+  }
+  .nav-links a::after { display: none; }
+  .article-meta { gap: 1rem; }
+  .coupling-grid { grid-template-columns: 1fr; }
+  .coupling-card.knot,
+  .coupling-card.triangular { grid-column: 1; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .polarity-column::before { display: none; }
+  .patch-params { font-size: 0.7rem; }
+  .cta-links { flex-direction: column; align-items: center; }
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+:focus-visible {
+  outline: 2px solid #0066CC;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+
+<meta property="og:title" content="The Coupling Explainer — What Happens When Engines Talk | XO_OX">
+<meta property="og:description" content="15 coupling types. 73 engines. One idea: when synthesis engines can genuinely influence each other at the DSP level, sounds emerge that cannot be made any other way. The definitive guide.">
+<meta property="og:image" content="https://xo-ox.org/assets/og-coupling-explainer.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Coupling Explainer — XO_OX Field Guide">
+<meta name="twitter:description" content="What happens when two synthesis engines are allowed to genuinely talk to each other. 15 coupling types. Free synthesizer. Open source.">
+<meta name="twitter:image" content="https://xo-ox.org/assets/og-coupling-explainer.png">
+<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="../feed.xml">
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="../index.html" class="nav-logo">XO_OX</a>
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+  <div class="nav-links">
+    <a href="../aquarium.html">Aquarium</a>
+    <a href="../packs.html">Sound Packs</a>
+    <a href="../guide.html" class="active">Field Guide</a>
+    <a href="../learn.html">Academy</a>
+    <a href="../community.html">Community</a>
+    <a href="../freebies.html">Freebies</a>
+    <a href="../expedition.html">Expedition</a>
+    <a href="../updates.html">Signal</a>
+  </div>
+</nav>
+
+<!-- ═══════════ ARTICLE HERO ═══════════ -->
+<header class="article-hero">
+  <a href="../guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="article-hero-label">Field Guide &mdash; The Definitive Reference</div>
+  <h1>The Coupling <em>Explainer</em></h1>
+  <p class="article-hero-sub">
+    Most synthesizers give you sounds. XOlokun gives you relationships. When one engine's behavior reshapes another engine's synthesis in real time, at the DSP level, something emerges that neither engine could produce alone. This is what coupling is. This is why it matters. And this is how all 15 types work.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">System<span style="color: var(--coupling);">MegaCouplingMatrix &mdash; 15 Types</span></div>
+    <div class="article-meta-item">Read Time<span>30 min</span></div>
+    <div class="article-meta-item">Level<span>All levels</span></div>
+    <div class="article-meta-item">Updated<span>March 2026</span></div>
+  </div>
+</header>
+
+<!-- ═══════════ ARTICLE CONTENT ═══════════ -->
+<article class="article" id="article-content">
+
+<!-- ─── SECTION 1: WHAT IS COUPLING ─── -->
+
+<p class="reveal">
+Start with two plugins in your DAW. Any two. Run them in parallel. Mix their outputs together. You have two sounds happening simultaneously &mdash; two separate instruments with no awareness of each other. This is what synthesis looked like before coupling.
+</p>
+
+<p class="reveal">
+Now imagine something different: Engine A is playing. In real time, sample by sample, the current amplitude of Engine A's output is flowing into Engine B's filter cutoff. Not as a sidechain signal routed through a compressor. Not as an automation curve drawn in a DAW. Directly &mdash; Engine A's moment-to-moment behavior, as a live stream, modifying Engine B's synthesis at the parameter level. When Engine A is loud, Engine B's filter opens. When Engine A falls silent, Engine B's filter closes. Engine B is not coexisting with Engine A. Engine B is <em>reacting</em> to Engine A.
+</p>
+
+<p class="reveal">
+This is coupling. It is not layering. It is not mixing. It is not modular routing in the traditional sense. It is two synthesis engines in genuine dialogue, where one engine's physics modifies another engine's physics in real time.
+</p>
+
+<blockquote class="reveal">
+  <p>The space between two engines is where the most interesting sounds live.</p>
+  <span class="attribution">XOlokun Design Principle</span>
+</blockquote>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Where Coupling Comes From</h2>
+
+<p class="reveal">
+XOlokun's coupling system traces directly to the mythology at the heart of the project. In the beginning of the XO_OX universe, there were two creatures: <strong class="article-felix">feliX</strong> the neon tetra and <strong class="article-oscar">Oscar</strong> the axolotl.
+</p>
+
+<p class="reveal">
+<strong class="article-felix">feliX</strong> is X &mdash; surface, transient, bright, rhythmic, electric. A flash of neon scales darting through sunlit shallows. Every note is an arrival.
+</p>
+
+<p class="reveal">
+<strong class="article-oscar">Oscar</strong> is O &mdash; depth, sustain, warm, patient, regenerative. Pink gills breathing slowly in a deep cave. Every note is a journey.
+</p>
+
+<p class="reveal">
+When feliX and Oscar coupled for the first time &mdash; transient met sustain, surface met depth, X met O &mdash; the XO_OX universe was born. Every one of the 73 engines in XOlokun is a species that evolved from that primordial coupling. OddfeliX (feliX himself) and OddOscar (Oscar himself) are still in the fleet, still coupled to each other by default, still producing sounds that neither engine makes alone. The brand mark &mdash; <strong>XO_OX</strong> &mdash; is their names interleaved.
+</p>
+
+<p class="reveal">
+Every engine in XOlokun has a <em>feliX-Oscar polarity</em>: its position on the vertical axis between feliX's sky and Oscar's ocean floor. This isn't a quality judgment &mdash; surface isn't better than deep. It's a position. The most interesting coupling patches almost always pair engines at different depths, creating a vertical span that neither engine occupies alone.
+</p>
+
+<div class="polarity-column reveal" aria-label="feliX-Oscar polarity spectrum from surface to deep">
+
+  <div class="polarity-row">
+    <span class="polarity-label felix">Pure feliX</span>
+    <span class="polarity-engines">OPENSKY &middot; ODDFELIX &middot; ONSET</span>
+  </div>
+  <div class="polarity-row">
+    <span class="polarity-label felix">feliX-leaning</span>
+    <span class="polarity-engines">OBLIQUE &middot; OPTIC &middot; ORIGAMI &middot; OPERA &middot; OFFERING</span>
+  </div>
+  <div class="polarity-row">
+    <span class="polarity-label neutral">The Reef</span>
+    <span class="polarity-engines">ODDOSCAR &middot; OBLONG &middot; ORACLE &middot; OWARE &middot; OSTINATO &middot; OCELOT</span>
+  </div>
+  <div class="polarity-row">
+    <span class="polarity-label neutral">Open Water</span>
+    <span class="polarity-engines">ODYSSEY &middot; ORBITAL &middot; OBESE &middot; OXYTOCIN &middot; OSMOSIS</span>
+  </div>
+  <div class="polarity-row">
+    <span class="polarity-label neutral">Thermocline</span>
+    <span class="polarity-engines">OVERDUB &middot; OUIE &middot; OPAL &middot; ORBWEAVE &middot; OVERTONE</span>
+  </div>
+  <div class="polarity-row">
+    <span class="polarity-label oscar">Oscar-leaning</span>
+    <span class="polarity-engines">OVERBITE &middot; OBSIDIAN &middot; ORGANON &middot; OXBOW &middot; ORGANISM</span>
+  </div>
+  <div class="polarity-row">
+    <span class="polarity-label oscar">Pure Oscar</span>
+    <span class="polarity-engines">OUROBOROS &middot; OBSCURA &middot; OCEANDEEP &middot; ORCA</span>
+  </div>
+
+</div>
+
+<p class="reveal">
+The polarity is a starting point for patch design. Couple OPENSKY to OCEANDEEP and you have the full water column: euphoric shimmer over abyssal 808. Couple OUROBOROS to ONSET and you have chaos feeding percussion. Couple OPERA to OXBOW and a vocal engine is entangled with a reverb synth that feeds its own tails back into the source. The vertical span of the coupling is often the character of the sound.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Why Coupling Is Not Routing</h2>
+
+<p class="reveal">
+Every DAW has routing. You can send audio from one track to another, apply a sidechain compressor, use an aux send to share reverb. All of this is useful. None of it is what the MegaCouplingMatrix does.
+</p>
+
+<p class="reveal">
+The difference is the <em>grain</em> and the <em>depth</em> of the interaction.
+</p>
+
+<p class="reveal">
+<strong>Grain:</strong> A sidechain compressor operates at buffer rate &mdash; typically every 64 or 128 samples. By the time it computes a gain reduction value and applies it, several milliseconds have passed. XOlokun's control-rate coupling types (10 of 15) operate at this same block rate, but they route into synthesis parameters rather than gain stages. The other 5 types &mdash; <strong>AudioToFM</strong>, <strong>AudioToRing</strong>, <strong>AudioToWavetable</strong>, <strong>AudioToBuffer</strong>, and <strong>KnotTopology</strong> &mdash; operate sample by sample. At 48kHz, that is 48,000 interactions per second. Engine A's audio is not modulating Engine B's parameters. It <em>is</em> Engine B's synthesis input, at audio rate, in real time.
+</p>
+
+<p class="reveal">
+<strong>Depth:</strong> A routing system carries audio. Coupling carries meaning. When ONSET's amplitude drives OVERBITE's filter, it is not ONSET's audio going through OVERBITE's filter. It is the numerical value of ONSET's instantaneous loudness &mdash; a control signal &mdash; being mapped onto a synthesis parameter inside OVERBITE. OVERBITE is still doing all of its own synthesis. ONSET has simply handed it one piece of information: <em>right now, I am this loud</em>. OVERBITE uses that information to decide how open its filter should be.
+</p>
+
+<p class="reveal">
+The result is timbral. Not a volume change. Not a gain reduction. A change in the character of the synthesis itself, driven by the behavior of a completely separate engine. This is the distinction that makes coupling a fundamentally different thing from anything DAWs have historically offered.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">All 15 Coupling Types</h2>
+
+<p class="reveal">
+The <strong>CouplingType</strong> enum is the vocabulary of interaction. Understanding what each type does &mdash; specifically, what it extracts from Engine A and where it enters Engine B &mdash; is what separates deliberate patch design from random experimentation.
+</p>
+
+<p class="reveal">
+The 15 types organize into four natural categories. Control-rate types (10) run at block rate and carry slowly-evolving signals. Audio-rate types (4) carry actual audio samples at full sample rate. KnotTopology is bidirectional. TriangularCoupling is a new class that encodes emotional state metadata into a structured spectral signal. Each category produces a qualitatively different kind of interaction.
+</p>
+
+<h3 class="reveal">Control-Rate: Amplitude-Driven</h3>
+
+<p class="reveal">These types extract Engine A's instantaneous amplitude and use it to modulate a parameter in Engine B. They are the most universally supported types &mdash; compatible with nearly all 73 engines.</p>
+
+<div class="coupling-grid reveal">
+
+  <div class="coupling-card">
+    <span class="type-tag">AmpToFilter</span>
+    <h4>Amplitude &rarr; Filter Cutoff</h4>
+    <p>The foundational coupling type. Engine A's amplitude envelope opens or closes Engine B's filter in real time. Load it first when exploring any new engine pair. At low amounts (0.08&ndash;0.15), Engine B's filter breathes with Engine A's dynamics in a way that feels like natural expression rather than mechanical modulation. At high amounts (0.5+), Engine B's filter becomes entirely dictated by Engine A's behavior.</p>
+    <p class="example">Start here. Percussion driving a pad. Drone swelling a rhythmic synth. Any high-feliX engine driving the filter of any Oscar-leaning engine.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">AmpToPitch</span>
+    <h4>Amplitude &rarr; Pitch Offset</h4>
+    <p>Engine A's amplitude bends Engine B's pitch. Loud signals push B's pitch up; quieter signals drop it back. This mimics the pitch-sharpening behavior of acoustic instruments under pressure. At musical amounts, it produces a natural-feeling instability that makes sustained notes feel like they are being played. At extreme amounts, it becomes a pressure-sensitive pitch smear driven by another engine's dynamics.</p>
+    <p class="example">Physical models driving wavetable engines. OPERA's Conductor arc (which controls amplitude) shaping a second engine's pitch trajectory through the arc.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">AmpToChoke</span>
+    <h4>Amplitude &rarr; Voice Choke (Ducker)</h4>
+    <p>Engine A's amplitude actively silences Engine B. When A is loud, B is suppressed. When A falls quiet, B breathes. Unlike a compressor, this is not a gain reduction applied to Engine B's output &mdash; Engine B's voices are choked at the voice level, cutting off rather than reducing. Zero latency. No pumping artifacts. The silence is absolute.</p>
+    <p class="example">ONSET transient choking a pad on every hit for clean rhythmic gates. Drum engine choking a lead so attack is always audible. Any rhythmic source creating timed silences in a sustained texture.</p>
+  </div>
+
+</div>
+
+<h3 class="reveal">Control-Rate: Modulation-Source</h3>
+
+<p class="reveal">These types carry more specific signal shapes &mdash; envelope trajectories, LFO rates, morph targets &mdash; rather than raw amplitude. They create more musically specific interactions.</p>
+
+<div class="coupling-grid reveal">
+
+  <div class="coupling-card">
+    <span class="type-tag">LFOToPitch</span>
+    <h4>LFO Rate &rarr; Pitch Modulation</h4>
+    <p>Engine A's LFO rate becomes the speed of pitch modulation in Engine B. Not just the LFO value &mdash; the LFO <em>rate itself</em>. Changing Engine A's modulation tempo changes both engines' temporal character simultaneously. Two engines with slightly different LFO rates, coupled this way, create slow beating that neither could generate alone. OVERDUB and OBBLIGATO are especially rich LFO sources for this type.</p>
+    <p class="example">Synchronizing vibrato across two melodic engines. Creating tempo-derived pitch relationships. LFO-rate feedback loops using two slots of the same engine type.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">EnvToMorph</span>
+    <h4>Envelope &rarr; Wavetable / Morph Position</h4>
+    <p>Engine A's amplitude envelope scans through Engine B's morph parameter. As Engine A's envelope moves through attack, sustain, and decay, Engine B's wavetable position, grain scan, material continuum, or equivalent timbral axis shifts. The spectral trajectory of Engine B becomes tied to the dynamic behavior of a different engine rather than any programmed LFO. OPAL's grain position, OWARE's material continuum, OVERWORLD's ERA triangle all respond to this type.</p>
+    <p class="example">ONSET's percussive envelope scanning OVERWORLD's ERA triangle. ODYSSEY's long release pulling OPAL's grains through time. A pad's 8-second swell morphing a physical model's material.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">EnvToDecay</span>
+    <h4>Envelope &rarr; Decay Time</h4>
+    <p>Engine A's envelope drives Engine B's decay time. Loud, fast attacks from A compress B's decay. Slow, swelling attacks extend it. Engine B's decay time is no longer a fixed preset value &mdash; it becomes a dynamic property that reflects the performance energy of a different instrument. A percussion hit that extends a bass note's decay. A pad swell that makes a bell ring indefinitely.</p>
+    <p class="example">Kick drum extending bass decay so loud hits ring longer. OPERA's Conductor arc shaping the decay of a physical percussion model. ONSET's fast transients giving a reverb engine shorter, drier responses.</p>
+  </div>
+
+</div>
+
+<h3 class="reveal">Control-Rate: Structural</h3>
+
+<p class="reveal">These types route specific architectural signals that only make sense given particular engine topologies. They produce interactions that are not replicable with any simpler type.</p>
+
+<div class="coupling-grid reveal">
+
+  <div class="coupling-card">
+    <span class="type-tag">FilterToFilter</span>
+    <h4>Filter Output &rarr; Filter Input</h4>
+    <p>Engine A's post-filter audio is routed into Engine B's filter input. Engine B's filter is not processing Engine A's raw oscillator output. It is processing Engine A's <em>already-filtered</em> audio. The two filters compound. This creates steep slopes, layered resonant character, and complex spectral relationships between the two filter stages that neither engine's filter alone can produce.</p>
+    <p class="example">Two resonant filters cascaded for extreme selectivity. OPTIC (the zero-audio analysis engine) feeding its analysis channels as filter inputs. OPAL's granular output through a second filter bank for extended formant shaping.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">RhythmToBlend</span>
+    <h4>Rhythm Pattern &rarr; Blend Parameter</h4>
+    <p>Engine A's internal rhythmic pattern drives Engine B's blend or morph parameter. On each beat event detected in Engine A's pattern, Engine B's blend advances by a quantized step. This creates rhythm-locked timbral evolution &mdash; not an LFO sweeping a morph, but a drum pattern's own internal structure deciding when to advance a texture. OUROBOROS running this type into ONSET turns chaos attractor amplitude into groove variation that is deterministically chaotic: always the same mathematics, never quite the same sound.</p>
+    <p class="example">OSTINATO's drum pattern driving OBRIX's brick blend. ONSET's 8-voice percussion advancing OCELOT's biome. OUROBOROS's attractor orbit as a rhythmic modulation generator for another engine's character.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">PitchToPitch</span>
+    <h4>Pitch &rarr; Pitch Offset (Harmony)</h4>
+    <p>Engine A's pitch modulates an interval offset in Engine B. As you play notes on Engine A, Engine B follows at a defined harmonic relationship. This is live, pitch-accurate parallel harmonization where one engine's MIDI input controls the melodic content of a second engine at an automatically derived harmonic interval. The interval calculation is sample-accurate, not quantized to a buffer &mdash; Engine B is in tune with Engine A at all times.</p>
+    <p class="example">Any two melodic engines for real-time parallel fifths, thirds, or octaves. OPERA's vocal driving OBSCURA's physical string at a fifth. ORACLE's stochastic melody harmonized by OVERDUB for counterpoint from chaos.</p>
+  </div>
+
+</div>
+
+<h3 class="reveal">Audio-Rate: Signal Injection</h3>
+
+<p class="reveal">
+These types are categorically different. Control-rate types carry a number. Audio-rate types carry actual audio &mdash; Engine A's full output signal, at sample rate, injected directly into Engine B's synthesis algorithm. The results are not parameter modulation effects. They are synthesis fusion. Engine B is not reacting to Engine A. Engine B is <em>being</em> Engine A.
+</p>
+
+<p class="reveal">
+Audio-rate types require a 50&ndash;100ms crossfade when switching mid-performance to prevent clicks. In exchange, they produce timbral territory that does not exist in any other software synthesizer.
+</p>
+
+<div class="coupling-grid reveal">
+
+  <div class="coupling-card">
+    <span class="type-tag">AudioToFM</span>
+    <h4>Audio &rarr; FM Modulator Input</h4>
+    <p>Engine A's complete audio output becomes the FM modulator for Engine B. Not an envelope derived from Engine A's audio &mdash; the audio itself, every harmonic and inharmonic component, sample by sample, feeding Engine B's FM input. The output timbre is the intermodulation product of two complete synthesis algorithms running simultaneously. OPERA's 32 Kuramoto partials FM-modulating OBRIX's brick stack. ORGANISM's cellular automata output FM-modulating OVERDUB's delay feedback. ORACLE's stochastic waveforms FM-modulating ORGANON's metabolic system. None of these timbres exist without both engines.</p>
+    <p class="example">The most dramatic coupling type. Most useful at low amounts (0.08&ndash;0.25) for spectral enrichment. At high amounts, the source rewrites the target's harmonic structure on a sample-by-sample basis.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">AudioToRing</span>
+    <h4>Audio &rarr; Ring Modulator</h4>
+    <p>Engine A's audio output is multiplied against Engine B's audio output, sample by sample. True audio-rate ring modulation between two complete synthesis engines. The output contains only sum and difference frequencies &mdash; no fundamentals, only sidebands. The sidebands are mathematically derived from the full harmonic content of both engines. ORACLE ring-modulating OPERA for metal-tinged vocals. ORGANISM's binary output gate-ring-modulating OPAL's granular cloud for stochastic granular gating effects.</p>
+    <p class="example">Most useful with harmonic source engines. Chaotic with dense textures. OVERTONE as a target produces sideband spectra built from irrational-number intervals (its continued-fraction synthesis basis). ORBITAL was specifically designed to accept this type.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">AudioToWavetable</span>
+    <h4>Audio &rarr; Wavetable Source (Live Capture)</h4>
+    <p>Engine A's audio output is captured as a single-cycle waveform and written into Engine B's wavetable source. Each cycle, the wavetable is refreshed with Engine A's current output. Engine B plays Engine A's live waveform as its oscillator. OPERA's formant output captured as a wavetable in ODDOSCAR creates a morphable vocal waveform driven by Kuramoto phase dynamics. ORGANISM's cellular automata output captured in any wavetable engine creates pattern-derived oscillation that changes every generation.</p>
+    <p class="example">OVERWORLD feeding OPAL via AudioToWavetable turns NES chip synthesis into a granular cloud that scatters fragments of 8-bit oscillators. The chip is both source and grain material.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-tag">AudioToBuffer</span>
+    <h4>Audio &rarr; Ring Buffer (The Time Telescope)</h4>
+    <p>Engine A's stereo audio streams continuously into Engine B's grain buffer. Unlike AudioToWavetable (periodic updates), AudioToBuffer is a live, continuous feed &mdash; designed for OPAL, the granular engine, which reads from this buffer for grain playback. OPAL can granularize, scatter, freeze, and time-stretch whatever Engine A is producing in real time. Freeze OPAL's buffer position mid-phrase and you hold a single moment of Engine A's synthesis, fragmented into a thousand overlapping grains, for as long as you hold the key. Release and press again to capture a new moment. Engine A is being recorded in real time and OPAL is treating it as a time telescope pointed at the present.</p>
+    <p class="example">Any engine &rarr; OPAL for live granular processing of another synthesis algorithm. OTTONI (brass synthesis) &rarr; OPAL for scattered trumpet grain clouds. OXBOW's entangled FDN reverb &rarr; OPAL to granularize the reverb tails themselves.</p>
+  </div>
+
+</div>
+
+<h3 class="reveal">Bidirectional: KnotTopology</h3>
+
+<div class="coupling-card knot reveal">
+  <span class="type-tag">KnotTopology</span>
+  <h4>Bidirectional Irreducible Coupling &mdash; Mutual Entanglement</h4>
+  <p>Every other coupling type is directional. Engine A sends; Engine B receives. KnotTopology is different. Both engines listen to each other simultaneously, in the same processing pass.</p>
+  <p style="margin-top: 0.8rem;">The coupling amount encodes a <strong>linking number</strong> (1&ndash;5), borrowed from knot theory &mdash; the mathematical field that studies how loops can be wound around each other in three-dimensional space. A linking number of 1 means the engines are loosely coupled: they influence each other but each retains its individual character. A linking number of 5 means they are wound tight enough together that separating them would require destroying at least one loop. In practice: at linking number 5, neither engine is quite itself anymore. The sound is an emergent property of the relationship, not of either engine in isolation.</p>
+  <p style="margin-top: 0.8rem;">The implementation runs two passes per block. Pass A sends Engine A's output into Engine B. Pass B immediately sends Engine B's response back into Engine A. The irreducibility is mathematical: removing one pass destroys the entanglement entirely. ORBWEAVE (the Kelp Knot Spider) was built specifically for this type and implements it natively with four knot matrices: Trefoil, Figure-Eight, Torus, and Solomon. The Torus has a P/Q parameter for real-time navigation of knot theory as a performance gesture.</p>
+  <p class="example">ORBWEAVE is the designed home. ORBWEAVE + OXBOW at linking number 3 creates a reverb-topological entanglement where the FDN tails feed back into the knot that made them. OCEANIC + OCTOPUS at linking number 4: the bioluminescent pad and the chromatophore texture breathe as a single organism. OPERA + OXBOW at linking number 2 for vocal-reverb mutual entrainment.</p>
+</div>
+
+<h3 class="reveal">The New Category: TriangularCoupling</h3>
+
+<div class="coupling-card triangular reveal">
+  <span class="type-tag">TriangularCoupling &mdash; Type 15</span>
+  <h4>Structured Emotional Metadata &mdash; Three-Force Coupling</h4>
+  <p>TriangularCoupling is a new class introduced with OXYTOCIN (the circuit-modeling love-triangle synth). Unlike all other types, it does not carry a single modulation signal. It carries a <em>structured signal</em> with three distinct spectral bands, each encoding one of Sternberg's three components of love: Intimacy (mid frequencies, warm), Passion (high-frequency transients, fast), and Commitment (low frequencies, slow/stable). The three bands together describe the current emotional state of the coupling relationship.</p>
+  <p style="margin-top: 0.8rem;">Any engine that is unaware of TriangularCoupling simply receives it as complex audio, which is sonically interesting in its own right. Engines that are aware of TriangularCoupling &mdash; starting with OXYTOCIN itself &mdash; can decode the three bands and respond to each force independently. This means a future engine could explicitly respond to Commitment (low-band stability) without being affected by Passion (high-band transients). The coupling signal IS the relationship, not just a representation of it.</p>
+  <p class="example">Currently implemented natively in OXYTOCIN (Synapse Violet, fleet seance score 9.5/10 &mdash; the fleet leader). Forward-compatible: any engine receives it as audio until specific TriangularCoupling decoding is implemented.</p>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Five Patches That Show What Coupling Actually Does</h2>
+
+<p class="reveal">
+These are not theoretical. Each produces a sound that cannot be reproduced in any other synthesizer. The parameters are starting points &mdash; all coupling amounts respond musically to adjustment.
+</p>
+
+<!-- Patch 1 -->
+<div class="patch-card reveal">
+  <div class="patch-header">
+    <span class="patch-num">Patch 01</span>
+    <h4>The Breathing Bass &mdash; ONSET + OVERBITE</h4>
+  </div>
+  <div class="patch-body">
+    <p>This is the simplest coupling configuration in the fleet, and the one that explains the concept most clearly to someone who has never encountered it. ONSET is a percussion engine. OVERBITE is a bass synth with a character chain of five macros (the Belly/Bite/Scurry/Trash system). These engines have nothing to say to each other in a mix. Couple them, and the drum pattern teaches the bass how to move.</p>
+    <p>Route 1 sends ONSET's amplitude into OVERBITE's filter cutoff. Every kick hit opens OVERBITE's filter &mdash; the bass gets brighter and slightly longer for the duration of the hit's envelope. The snare creates a smaller, sharper opening. Between hits, the bass settles into its darker, shorter self. You are not compressing OVERBITE. You are not sidechaining it. OVERBITE's filter is moving because ONSET is loud, and it knows ONSET is loud because ONSET told it, sample by sample, in real time.</p>
+    <p>Route 2 extends this: ONSET's envelope now also drives OVERBITE's decay time. Loud hits make the bass ring longer. Quiet fills let it decay quickly. The bass has become an instrument that tracks the energy of the drum machine structurally, not just tonally.</p>
+    <div class="patch-params">Slot 1: ONSET — set a kick/snare pattern
+Slot 2: OVERBITE — bass preset, filter cutoff ~1200 Hz
+
+Route 1: ONSET → OVERBITE
+  Type:   AmpToFilter
+  Amount: 0.45
+
+Route 2: ONSET → OVERBITE
+  Type:   EnvToDecay
+  Amount: 0.20</div>
+    <div class="patch-listen">
+      <strong>Listen for:</strong> Mute ONSET. OVERBITE plays on its own — filter closed, decay short. Unmute ONSET. The drum pattern rewrites OVERBITE's character. Slowly raise Route 1 amount from 0.45 to 0.75. Watch the point where OVERBITE loses its own filter identity and speaks only when the drum speaks.
+    </div>
+  </div>
+</div>
+
+<!-- Patch 2 -->
+<div class="patch-card reveal">
+  <div class="patch-header">
+    <span class="patch-num">Patch 02</span>
+    <h4>The Granular Journey &mdash; ODYSSEY + OPAL</h4>
+  </div>
+  <div class="patch-body">
+    <p>ODYSSEY is built around the Familiar&rarr;Alien arc &mdash; a slow psychological journey from known territory into alien deep. It has a long envelope that moves through the arc over 4&ndash;8 seconds. OPAL is a granular engine: it scatters audio into thousands of overlapping fragments and plays them back at variable positions, speeds, and pitches.</p>
+    <p>The coupling here uses EnvToMorph to map ODYSSEY's envelope arc directly to OPAL's grain scan position. As ODYSSEY's pad builds from attack through sustain, its envelope sweeps OPAL's grain scan through its source buffer. The granular cloud changes character as the pad evolves. What you hear is not two engines playing simultaneously &mdash; it is a single statement of time: ODYSSEY's psychological arc (from familiar to alien) mapped onto OPAL's physical structure (grains scattered across different positions in the source buffer). Hold a chord for 6 seconds and watch the cloud change.</p>
+    <div class="patch-params">Slot 1: ODYSSEY — slow pad, long attack/release, Familiar→Alien arc at 0.5
+Slot 2: OPAL — granular cloud, grain size 80ms, scatter moderate, position 0.5
+
+Route 1: ODYSSEY → OPAL
+  Type:   EnvToMorph
+  Amount: 0.50
+
+Route 2: ODYSSEY → OPAL
+  Type:   AmpToFilter
+  Amount: 0.25
+
+Route 3 (optional): ODYSSEY → OPAL
+  Type:   LFOToPitch
+  Amount: 0.20</div>
+    <div class="patch-listen">
+      <strong>Listen for:</strong> Hold a chord for 6 full seconds. The granular cloud changes three times: as ODYSSEY's attack builds, as it reaches sustain, as it decays. With Route 3 active, OPAL's grains also develop slow pitch drift from ODYSSEY's LFO. The cloud moves in three dimensions simultaneously: position, brightness, and pitch.
+    </div>
+  </div>
+</div>
+
+<!-- Patch 3 -->
+<div class="patch-card reveal">
+  <div class="patch-header">
+    <span class="patch-num">Patch 03</span>
+    <h4>The Organism Learns the Prophet &mdash; ORACLE + ORGANON</h4>
+  </div>
+  <div class="patch-body">
+    <p>ORACLE generates waveforms through GENDY stochastic synthesis &mdash; genuine mathematical randomness derived from ancient probability theory. ORGANON is a living organism: it implements Variational Free Energy metabolism, a DSP model of biological adaptation. Per-voice ingestion buffers consume audio as metabolic input, and over time the organism's modal array (its internal resonant structure) is tuned by what it has eaten.</p>
+    <p>When you route ORACLE into ORGANON via AudioToFM, something specific happens over time: ORACLE's stochastic audio enters ORGANON's ingestion system. The organism metabolizes it. Over 2&ndash;4 seconds, ORGANON's modal array has been tuned by ORACLE's randomness. Notes played after this metabolic period sound different from notes played in the first second &mdash; the organism has learned the prophet's voice. No two extended notes are alike, because ORACLE's randomness is ORGANON's diet, and the organism's memory of that diet shapes everything that follows.</p>
+    <div class="patch-params">Slot 1: ORACLE — GENDY stochastic preset, slow waveform evolution (0.5–1.0 Hz)
+Slot 2: ORGANON — low metabolic rate (1.0 Hz), enzyme selectivity 400–700 Hz
+
+Route 1: ORACLE → ORGANON
+  Type:   AudioToFM
+  Amount: 0.50</div>
+    <div class="patch-listen">
+      <strong>Listen for:</strong> Sustain a single long note for 10 seconds. ORGANON starts as itself. At 3–4 seconds, the character begins to shift as the metabolism adapts to ORACLE's stochastic output. At 8 seconds, the organism has been shaped by its diet. The note sounds different than it did at the start — not because any parameter changed, but because the engine adapted.
+    </div>
+  </div>
+</div>
+
+<!-- Patch 4 -->
+<div class="patch-card reveal">
+  <div class="patch-header">
+    <span class="patch-num">Patch 04</span>
+    <h4>Deterministic Chaos as Groove &mdash; OUROBOROS + ONSET</h4>
+  </div>
+  <div class="patch-body">
+    <p>OUROBOROS implements strange attractor synthesis: the Lorenz, Aizawa, or similar dynamical systems, running continuously. Strange attractors are deterministic &mdash; given the same initial conditions, they produce identical trajectories. But their sensitivity to initial conditions means they <em>appear</em> random on human timescales. OUROBOROS exposes four output channels including two attractor velocity derivatives (dx/dt, dy/dt) that quantify how fast the attractor is moving through phase space at each moment.</p>
+    <p>Route OUROBOROS's amplitude output into ONSET's filter and rhythm blend. The drum pattern is no longer a perfect mechanical grid. The kick's filter character changes subtly on every beat, driven by where the attractor was in its orbit at the moment of the hit. No two bars sound exactly the same, but the variation is <em>mathematically determined</em> &mdash; not random, but deterministically chaotic. The groove is alive without being random.</p>
+    <div class="patch-params">Slot 1: OUROBOROS — attractor preset (Lorenz or Aizawa). No note trigger needed; attractor evolves continuously.
+Slot 2: ONSET — standard four-on-the-floor or swing pattern
+
+Route 1: OUROBOROS → ONSET
+  Type:   AmpToFilter
+  Amount: 0.45
+
+Route 2: OUROBOROS → ONSET
+  Type:   RhythmToBlend
+  Amount: 0.35</div>
+    <div class="patch-listen">
+      <strong>Listen for:</strong> Assign Route 1 amount to a hardware knob (or COUPLING macro). At 0.0: perfect mechanical grid. At 0.45: the attractor has begun shaping the drum's filter character. At 0.75: the attractor has fully invaded the drum machine. The groove lives between those poles &mdash; move the knob during performance.
+    </div>
+  </div>
+</div>
+
+<!-- Patch 5 -->
+<div class="patch-card reveal">
+  <div class="patch-header">
+    <span class="patch-num">Patch 05</span>
+    <h4>The Kelp Knot &mdash; ORBWEAVE + OXBOW</h4>
+  </div>
+  <div class="patch-body">
+    <p>This patch uses KnotTopology &mdash; the only bidirectional coupling type &mdash; to entangle two engines that were specifically designed to work together. ORBWEAVE is a topological coupling engine: it routes its own signal through a mathematically shaped signal path (Trefoil, Figure-Eight, Torus, or Solomon knot topology), creating phase relationships between voices that cannot be reproduced by conventional routing. OXBOW is an entangled reverb synthesizer: it uses a Chiasmus Feedback Delay Network whose decay paths are themselves mathematically entangled.</p>
+    <p>At KnotTopology linking number 3, ORBWEAVE's output shapes OXBOW's filter envelope, and OXBOW's slowly evolving reverb tail simultaneously shapes ORBWEAVE's phase topology. The reverb is feeding back into the thing that made it. This is Blessing B021 in the fleet &mdash; the ghost council awarded it unanimously for the Knot Phase Coupling Matrix. It is, to the best of anyone's knowledge, the first synthesizer system to use knot theory as a live performance parameter.</p>
+    <div class="patch-params">Slot 1: ORBWEAVE — Trefoil or Figure-Eight topology, braidDepth 0.35
+Slot 2: OXBOW — entangle 0.55, FDN feedback 0.62
+
+Route 1: ORBWEAVE ↔ OXBOW
+  Type:   KnotTopology
+  Amount: 0.50  (→ linking number 3)</div>
+    <div class="patch-listen">
+      <strong>Listen for:</strong> Start with Amount at 0.0 (linking number 1, minimal entanglement). Slowly raise Amount while holding a sustained chord. Feel the coupling deepen as the linking number rises. At 1.0 (linking number 5), neither engine is quite itself anymore — they have become one system. Remove one engine and the remaining engine sounds wrong, tuned to a relationship that no longer exists.
+    </div>
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Amount Parameter</h2>
+
+<p class="reveal">
+Every coupling route has an amount from 0.0 to 1.0. This single number is the most consequential parameter in any coupling patch &mdash; and the most consistently misused.
+</p>
+
+<p class="reveal">
+The instinct is to set it high. More coupling, more interaction, bigger amounts. This is wrong for most use cases. The most musical coupling amounts are almost always between 0.05 and 0.20.
+</p>
+
+<p class="reveal">
+There is a concept in production called the <em>subliminal threshold</em> &mdash; the level at which a process affects perception without announcing itself. You can hear that two sounds feel right together without being able to identify what is connecting them. Coupling at 0.08 to 0.15 operates in this register. The filter is moving, but it sounds like natural expression. The pitch is shifting, but it sounds like the sound is breathing. The interaction is felt before it is identified.
+</p>
+
+<table class="amount-table reveal">
+  <thead>
+    <tr>
+      <th>Amount Range</th>
+      <th>Character</th>
+      <th>Named Zone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.00 &ndash; 0.07</td>
+      <td>Subliminal &mdash; felt, not consciously heard. Adds life and sympathy to static patches.</td>
+      <td>Whisper (low)</td>
+    </tr>
+    <tr>
+      <td>0.08 &ndash; 0.20</td>
+      <td>Musical &mdash; sounds like natural expression. The sweet zone for most coupling types.</td>
+      <td>Whisper</td>
+    </tr>
+    <tr>
+      <td>0.21 &ndash; 0.45</td>
+      <td>Audible &mdash; the connection is the sound. Sidechain-style coupling. The modulation is itself a musical element.</td>
+      <td>Dialogue</td>
+    </tr>
+    <tr>
+      <td>0.46 &ndash; 0.70</td>
+      <td>Strong &mdash; Engine B loses its independence. Hybrid synthesis territory.</td>
+      <td>Dialogue (high) &ndash; Possession (low)</td>
+    </tr>
+    <tr>
+      <td>0.71 &ndash; 1.00</td>
+      <td>Dominated &mdash; Engine A controls Engine B completely. KnotTopology at high linking numbers. Extreme effects.</td>
+      <td>Possession</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="reveal">
+The COUPLING macro (one of the four standard macros: CHARACTER, MOVEMENT, COUPLING, SPACE) targets coupling route depths by default. A hardware knob mapped to COUPLING becomes a real-time coupling depth fader. Pull left: two independent engines. Push right: one engine possessed by another. The performance is the motion between those states.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The feliX-Oscar Polarity as a Patch Design Guide</h2>
+
+<p class="reveal">
+The feliX-Oscar spectrum isn't just mythology. It is a practical patch design tool. Engines at the same depth on the spectrum tend to produce coupling that feels redundant &mdash; two engines agreeing with each other. Engines at different depths produce coupling that feels generative &mdash; two engines in genuine dialogue.
+</p>
+
+<p class="reveal">
+The most useful heuristic: <em>couple a high-feliX source into an Oscar-leaning target.</em> The transient, bright, rhythmic character of feliX-side engines produces coupling signals that have clear shape &mdash; fast attacks, clean envelopes, legible rhythm. Oscar-side engines have deep, sustained characters that respond beautifully to being interrupted, opened, and shaped by an external source. The feliX engine provides the interruption; the Oscar engine provides the response.
+</p>
+
+<ul class="reveal">
+  <li><strong>ONSET &rarr; OVERBITE:</strong> The percussive surface shaping the anglerfish's lure and bite.</li>
+  <li><strong>OPENSKY &rarr; OCEANDEEP:</strong> The full water column. Euphoric shimmer modulating abyssal 808 sub-bass.</li>
+  <li><strong>OPERA &rarr; ORGANON:</strong> The vocal engine feeding the metabolic organism. The prophet feeding the chemotroph.</li>
+  <li><strong>ODDFELIX &rarr; ODDOSCAR:</strong> The original coupling. The neon tetra's transient dart, the axolotl's patient response. Every engine pair in XOlokun is an evolved version of this relationship.</li>
+</ul>
+
+<p class="reveal">
+The inverse also works, with different results. An Oscar-side source (OUROBOROS, ORGANON, OCEANDEEP) driving a feliX-side target (ONSET, OPERA, OPENSKY) tends to produce slower, more atmospheric coupling &mdash; the deep water reshaping the surface rather than the surface energizing the deep. Both directions are valid. Both are discoveries.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Architecture: How It Actually Works</h2>
+
+<p class="reveal">
+For those who want the technical picture: XOlokun's coupling runs through the <strong>MegaCouplingMatrix</strong>, which handles up to 64 concurrent routes across four engine slots. Each route specifies a source engine, a target engine, a coupling type, and an amount.
+</p>
+
+<p class="reveal">
+Every engine exposes two coupling interfaces:
+</p>
+
+<ul class="reveal">
+  <li><strong><code>getSampleForCoupling()</code></strong> &mdash; returns the engine's current output as a coupling source. Basic implementations return a single amplitude value (scalar). Full implementations return multiple channels: ch0/ch1 as stereo audio, ch2 as a dedicated amplitude envelope, ch3+ as additional modulation signals (OPTIC returns 8 independent modulation channels).</li>
+  <li><strong><code>applyCouplingInput()</code></strong> &mdash; receives the coupling signal from another engine and applies it to internal parameters. The switch statement inside this function determines which CouplingTypes the engine actually responds to. An engine that handles <code>AudioToFM</code> in this function can be FM-modulated by any other engine in the rack.</li>
+</ul>
+
+<p class="reveal">
+Control-rate types (AmpToFilter, AmpToPitch, LFOToPitch, EnvToMorph, EnvToDecay, AmpToChoke, FilterToFilter, RhythmToBlend, PitchToPitch) run at block rate &mdash; one evaluation per audio buffer, 1/32nd to 1/128th the audio sample rate. This is lightweight: the MegaCouplingMatrix costs less CPU than a single engine in most configurations.
+</p>
+
+<p class="reveal">
+Audio-rate types (AudioToFM, AudioToRing, AudioToWavetable, AudioToBuffer, KnotTopology) run at full sample rate. Every sample, Engine A's output is passed into Engine B's synthesis. These types cost more CPU in proportion to their sonic depth. Switching between them mid-performance triggers a 50&ndash;100ms crossfade window (100ms for AudioToBuffer and KnotTopology) to prevent discontinuities.
+</p>
+
+<p class="reveal">
+The matrix also implements <em>Normalled Matriarch</em> defaults: every engine pair has a pre-wired default route based on their most natural interaction, which engages automatically when you load two engines together and disengages when you define your own routes. Load ORBWEAVE and OXBOW in any two slots and KnotTopology is the default. Load ONSET and OVERBITE and AmpToFilter is the default. The instrument is playable before you patch anything.
+</p>
+
+<p class="reveal">
+OPTIC (XOptic) deserves special mention. It is a zero-audio engine &mdash; it produces no sound output. Its sole function is generating coupling signals. Load OPTIC in Slot 1 and feed any other engine's audio into OPTIC via AudioToFM (as analysis input). OPTIC outputs eight independent modulation channels: composite envelope, pulse, bass band, mid band, high band, spectral centroid, spectral flux, energy, and transient onset. These drive other engines as precision modulation sources. OPTIC turns any signal in your rack into a multi-channel modulation generator that reacts to the spectral and dynamic content of the source audio. The ghost council awarded this Blessing B005 for "Zero-Audio Identity &mdash; synthesis without sound." There is nothing else quite like it.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Coupling as Discovery, Not Configuration</h2>
+
+<p class="reveal">
+There is a wrong way to approach coupling, and it looks like this: you read through the 15 types, choose one that seems theoretically appropriate for your two engines, set the amount to something reasonable, and move on. This treats coupling as a feature to configure.
+</p>
+
+<p class="reveal">
+The right approach is exploratory. Start with any two engines. Set AmpToFilter at 0.30. Play something. Listen for what changes. Raise the amount. Listen again. Switch to AudioToFM. Notice what that does to the character of the interaction. Switch back to AmpToFilter. The four coupling types are 15 different perspectives on the same relationship. You are not selecting a routing option. You are choosing a vocabulary for how two engines speak to each other.
+</p>
+
+<p class="reveal">
+Some of the most interesting discoveries happen at the wrong settings. An amount that is "too high" may reveal a new character. A coupling type that seems theoretically mismatched &mdash; LFOToPitch between two percussive engines, for example &mdash; may produce something that fits exactly into a specific musical context. The coupling system is designed to reward curiosity.
+</p>
+
+<div class="article-lore reveal">
+  <p>Every sound in XOlokun lives somewhere in the water column between feliX's sky and Oscar's floor. The coupling system is the current. It moves things between depths that would never touch on their own. The comb jelly doesn't hand the anglerfish a signal. The comb jelly's neural pulse changes the water around it. The anglerfish, suspended in that same water, responds &mdash; its filter opens, its pitch drifts, its character shifts in ways that are entirely its own but inextricable from the comb jelly's presence. That shared water is the coupling. You cannot record it and play it back without both creatures present. It is alive only while both are running.</p>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The First Three Things to Try</h2>
+
+<p class="reveal">
+If you have XOlokun open right now, or when you do:
+</p>
+
+<ul class="reveal">
+  <li><strong>AmpToFilter, 0.30, any two engines.</strong> This is where everyone starts. It works with almost any engine pair. It explains the concept physically before you have to understand it intellectually. Raise the amount slowly and listen to the point where the modulation becomes audible as a process.</li>
+  <li><strong>AudioToFM, 0.12, ORACLE &rarr; any target.</strong> ORACLE generates genuinely stochastic audio. At a low AudioToFM amount, it adds spectral complexity to any engine that accepts FM input. The source is mathematically random. The result is organically complex. Start quiet.</li>
+  <li><strong>KnotTopology, 0.50, ORBWEAVE &rarr; OXBOW.</strong> Load both engines. Set KnotTopology at linking number 3. Hold a sustained chord for 30 seconds. The sound changes during the sustain as the two engines reach a mutual state. This is the coupling system's most unusual capability: two engines negotiating a shared equilibrium.</li>
+</ul>
+
+<p class="reveal">
+Each of these is a different conversation between engines. The first is a whisper. The second is a question. The third is a bond. All 15 coupling types are variations on those three modes.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<!-- ═══════════ CTA ═══════════ -->
+<div class="cta-block reveal" role="complementary" aria-label="Get XOlokun and join the community">
+  <h3>Find Your Space Between</h3>
+  <p>XOlokun is free and open-source. 73 engines. 15 coupling types. ~19,000 factory presets. Every coupling discovery you make is a sound that doesn't exist anywhere else. Share what you find.</p>
+  <div class="cta-links">
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" class="cta-link primary">Download XOlokun &mdash; Free</a>
+    <a href="../aquarium.html" class="cta-link secondary">Explore the Aquarium</a>
+    <a href="../expedition.html" class="cta-link secondary">Join the Expedition</a>
+  </div>
+  <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-faint);">Share your coupling discoveries at <strong style="color: var(--text-dim);">#XOlokun</strong> or post them in the Expedition forum. The most interesting patches posted to the community become Field Guide features.</p>
+</div>
+
+<p class="reveal" style="font-size: 0.8rem; color: var(--text-faint); text-align: center; margin-top: 3rem;">
+<em>System: MegaCouplingMatrix &mdash; 15 Coupling Types &mdash; Accent: Interconnect Teal #2AA19B</em><br>
+<em>XO_OX Field Guide &mdash; The Definitive Reference &mdash; March 2026</em>
+</p>
+
+</article>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a>
+    <a href="https://www.patreon.com/cw/XO_OX">Patreon</a>
+    <a href="../expedition.html">Expedition</a>
+    <a href="../guide.html">Field Guide</a>
+    <a href="../community.html">Community</a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2026 XO_OX Designs. Free &amp; open-source. Synthesis from the deepest place. <em>XOlokun &mdash; for all.</em>
+  </div>
+</footer>
+
+<script>
+// Mobile nav toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks  = document.querySelector('.nav-links');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', function () {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  },
+  { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -33,10 +33,10 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
+    "MACHINE",
     "PUNCH",
-    "COUPLING",
-    "SPACE"
+    "SPACE",
+    "MUTATE"
   ],
   "mood": "Entangled",
   "name": "Breach Event",
@@ -91,5 +91,6 @@
     "kick"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

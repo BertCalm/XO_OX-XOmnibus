@@ -1,0 +1,89 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-18",
+  "description": "The OVERLAP library at its most elemental. Unknot at near-zero tangle (0.05), feedback at 0.94, 45ms delay base \u2014 the 6 FDN lines are essentially 6 long resonant chambers in a void. Maximum space (0.95 spread), no bioluminescence, no current. Pure resonance in empty space. 10-second release.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.28,
+    "density": 0.2,
+    "movement": 0.05,
+    "space": 0.95,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Aether",
+  "name": "Void Resonance",
+  "parameters": {
+    "Overlap": {
+      "olap_knot": 0,
+      "olap_tangleDepth": 0.05,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 0.08,
+      "olap_entrain": 0.0,
+      "olap_spread": 0.95,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 45.0,
+      "olap_dampening": 0.7,
+      "olap_feedback": 0.94,
+      "olap_brightness": 0.3,
+      "olap_bioluminescence": 0.0,
+      "olap_current": 0.05,
+      "olap_currentRate": 0.02,
+      "olap_attack": 2.0,
+      "olap_decay": 5.0,
+      "olap_sustain": 0.98,
+      "olap_release": 10.0,
+      "olap_filterCutoff": 10000.0,
+      "olap_filterRes": 0.08,
+      "olap_filterEnvAmt": 0.1,
+      "olap_filterEnvDecay": 4.0,
+      "olap_lfo1Rate": 0.05,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.08,
+      "olap_lfo1Dest": 4,
+      "olap_lfo2Rate": 0.03,
+      "olap_lfo2Shape": 0,
+      "olap_lfo2Depth": 0.05,
+      "olap_lfo2Dest": 1,
+      "olap_chorusMix": 0.08,
+      "olap_chorusRate": 0.02,
+      "olap_diffusion": 0.7,
+      "olap_macroKnot": 0.1,
+      "olap_macroPulse": 0.1,
+      "olap_macroEntrain": 0.05,
+      "olap_macroBloom": 0.05,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.3,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "drone",
+    "unknot",
+    "sparse",
+    "void",
+    "crystalline",
+    "minimal",
+    "space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

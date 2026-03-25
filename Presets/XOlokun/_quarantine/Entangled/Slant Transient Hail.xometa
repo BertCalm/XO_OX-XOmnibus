@@ -16,16 +16,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.7,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.9,
-    "SPACE": 0.5
+    "MACHINE": 0.7,
+    "SPACE": 0.75,
+    "PUNCH": 0.9,
+    "MUTATE": 0.5
   },
   "mood": "Entangled",
   "name": "Slant Transient Hail",
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

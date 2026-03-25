@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.84,
-    "COUPLING": 0.89,
-    "MOVEMENT": 0.93,
-    "SPACE": 0.16
+    "MACHINE": 0.84,
+    "SPACE": 0.89,
+    "PUNCH": 0.93,
+    "MUTATE": 0.16
   },
   "mood": "Entangled",
   "name": "Shuriken Barrage",
@@ -52,5 +52,6 @@
     "shuriken"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

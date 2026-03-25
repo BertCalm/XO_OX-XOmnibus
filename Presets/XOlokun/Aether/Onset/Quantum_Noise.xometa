@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Aether",
-  "name": "Quantum Noise (Onset)",
+  "name": "Quantum Noise",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.2,
@@ -155,5 +155,6 @@
     "probability"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

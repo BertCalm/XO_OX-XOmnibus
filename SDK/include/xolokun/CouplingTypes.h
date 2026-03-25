@@ -1,52 +1,74 @@
 #pragma once
 // xolokun-engine-sdk — CouplingTypes.h
 // Standalone header — no JUCE dependency.
-// Defines the coupling modulation types available for cross-engine interaction.
+//
+// Coupling is the signature feature of XOlokun: two engines running in parallel,
+// each modulating the other in real time. A CouplingType describes the nature of
+// that relationship — what signal flows from the source engine and how the
+// destination engine interprets it.
+//
+// The MegaCouplingMatrix evaluates active routes once per block and dispatches
+// to each engine's applyCouplingInput(). Engine developers declare which types
+// they respond to; all others are silently ignored.
 
 namespace xolokun {
 
-/// Cross-engine modulation types.
-/// Each type describes a source→destination relationship between two engines.
+/// The channel through which one engine modulates another.
+///
+/// Each value describes the signal flow: source produces it, destination
+/// consumes it. Engines that don't handle a given type ignore it gracefully.
 enum class CouplingType {
-    AmpToFilter,       ///< Engine A amplitude → Engine B filter cutoff
-    AmpToPitch,        ///< Engine A amplitude → Engine B pitch
-    LFOToPitch,        ///< Engine A LFO → Engine B pitch
-    EnvToMorph,        ///< Engine A envelope → Engine B wavetable/morph position
-    AudioToFM,         ///< Engine A audio → Engine B FM input
-    AudioToRing,       ///< Engine A audio × Engine B audio (ring modulation)
-    FilterToFilter,    ///< Engine A filter output → Engine B filter input
-    AmpToChoke,        ///< Engine A amplitude chokes Engine B (ducking)
-    RhythmToBlend,     ///< Engine A rhythm pattern → Engine B blend parameter
-    EnvToDecay,        ///< Engine A envelope → Engine B decay time
-    PitchToPitch,      ///< Engine A pitch → Engine B pitch (harmony)
-    AudioToWavetable,  ///< Engine A audio → Engine B wavetable source
-    AudioToBuffer,     ///< Engine A audio → Engine B ring buffer (continuous stereo stream)
-    KnotTopology       ///< Bidirectional topological coupling — both engines mutually modulate
-                       ///< each other's pitch/filter/morph via a shared knot state variable.
-                       ///< Post-V1 feature; included here for forward compatibility.
+    // --- Amplitude-driven --------------------------------------------------
+    AmpToFilter,       ///< Source amplitude opens/closes destination filter cutoff
+    AmpToPitch,        ///< Source amplitude bends destination pitch
+    AmpToChoke,        ///< Source amplitude ducks/gates destination (sidechain ducking)
+
+    // --- LFO / Envelope driven --------------------------------------------
+    LFOToPitch,        ///< Source LFO modulates destination pitch (vibrato injection)
+    EnvToMorph,        ///< Source envelope sweeps destination wavetable/morph position
+    EnvToDecay,        ///< Source envelope stretches/shrinks destination decay time
+
+    // --- Audio-rate ---------------------------------------------------------
+    AudioToFM,         ///< Source audio becomes an FM carrier for destination oscillator
+    AudioToRing,       ///< Source audio × destination audio (ring modulation)
+    AudioToWavetable,  ///< Source audio replaces destination wavetable source material
+    AudioToBuffer,     ///< Source audio streams into destination ring buffer (continuous)
+
+    // --- Filter / Pitch topology --------------------------------------------
+    FilterToFilter,    ///< Source filter output feeds into destination filter input
+    PitchToPitch,      ///< Source pitch transposes destination (parallel harmony)
+
+    // --- Pattern -----------------------------------------------------------
+    RhythmToBlend,     ///< Source rhythm pattern modulates destination blend parameter
+
+    // --- Bidirectional (post-V1) -------------------------------------------
+    KnotTopology       ///< Both engines mutually modulate each other's pitch/filter/morph
+                       ///< via a shared knot state variable. Included now for forward
+                       ///< compatibility; the MegaCouplingMatrix activates it in V1.1.
 };
 
-/// Number of coupling types — useful for iteration.
+/// Total number of coupling types — useful for building iteration tables.
 constexpr int kNumCouplingTypes = 14;
 
-/// Get a human-readable name for a CouplingType.
+/// Human-readable display name for each CouplingType.
+/// Used in UI labels, preset debugging, and validation output.
 inline const char* couplingTypeName (CouplingType t)
 {
     switch (t)
     {
         case CouplingType::AmpToFilter:      return "Amp→Filter";
         case CouplingType::AmpToPitch:       return "Amp→Pitch";
+        case CouplingType::AmpToChoke:       return "Amp→Choke";
         case CouplingType::LFOToPitch:       return "LFO→Pitch";
         case CouplingType::EnvToMorph:       return "Env→Morph";
+        case CouplingType::EnvToDecay:       return "Env→Decay";
         case CouplingType::AudioToFM:        return "Audio→FM";
         case CouplingType::AudioToRing:      return "Audio×Ring";
-        case CouplingType::FilterToFilter:   return "Filter→Filter";
-        case CouplingType::AmpToChoke:       return "Amp→Choke";
-        case CouplingType::RhythmToBlend:    return "Rhythm→Blend";
-        case CouplingType::EnvToDecay:       return "Env→Decay";
-        case CouplingType::PitchToPitch:     return "Pitch→Pitch";
         case CouplingType::AudioToWavetable: return "Audio→Wavetable";
         case CouplingType::AudioToBuffer:    return "Audio→Buffer";
+        case CouplingType::FilterToFilter:   return "Filter→Filter";
+        case CouplingType::PitchToPitch:     return "Pitch→Pitch";
+        case CouplingType::RhythmToBlend:    return "Rhythm→Blend";
         case CouplingType::KnotTopology:     return "Knot↔Topology";
     }
     return "Unknown";

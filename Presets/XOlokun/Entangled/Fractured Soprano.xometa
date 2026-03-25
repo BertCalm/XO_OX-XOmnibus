@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBSCURA coupling. Bright soprano voice positioned at the phase boundary \u2014 OBSCURA's mass-spring resonances fracture the high partials, creating a voice that shatters and reforms on every oscillation of the spring model. Higher effort and tilt push the fractures into the audible soprano range. Glass breaking in slow motion.",
+  "description": "OBSCURA coupling. Bright soprano voice positioned at the phase boundary — OBSCURA's mass-spring resonances fracture the high partials, creating a voice that shatters and reforms on every oscillation of the spring model. Higher effort and tilt push the fractures into the audible soprano range. Glass breaking in slow motion.",
   "tags": [
     "entangled",
     "obscura",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

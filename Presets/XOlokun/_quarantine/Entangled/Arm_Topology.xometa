@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.8,
-    "COUPLING": 0.93,
-    "MOVEMENT": 0.98,
-    "SPACE": 0.14
+    "MACHINE": 0.8,
+    "SPACE": 0.93,
+    "PUNCH": 0.98,
+    "MUTATE": 0.14
   },
   "mood": "Entangled",
   "name": "Arm Topology",
@@ -52,5 +52,6 @@
     "arm"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

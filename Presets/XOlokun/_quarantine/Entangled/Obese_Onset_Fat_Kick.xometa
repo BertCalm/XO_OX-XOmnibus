@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.92,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.4,
-    "SPACE": 0.1
+    "MACHINE": 0.92,
+    "SPACE": 0.85,
+    "PUNCH": 0.4,
+    "MUTATE": 0.1
   },
   "mood": "Entangled",
   "name": "Fat Kick",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

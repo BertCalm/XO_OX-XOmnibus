@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.778,
-    "COUPLING": 0.777,
-    "MOVEMENT": 0.506,
-    "SPACE": 0.517
+    "MACHINE": 0.778,
+    "SPACE": 0.777,
+    "PUNCH": 0.506,
+    "MUTATE": 0.517
   },
   "mood": "Family",
   "name": "Silk Solar",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

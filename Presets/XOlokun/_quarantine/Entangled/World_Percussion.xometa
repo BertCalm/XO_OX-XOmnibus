@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.78,
-    "COUPLING": 0.92,
-    "MOVEMENT": 0.95,
-    "SPACE": 0.14
+    "MACHINE": 0.78,
+    "SPACE": 0.92,
+    "PUNCH": 0.95,
+    "MUTATE": 0.14
   },
   "mood": "Entangled",
   "name": "World Percussion",
@@ -52,5 +52,6 @@
     "world"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

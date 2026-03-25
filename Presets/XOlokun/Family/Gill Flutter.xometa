@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oscar's external gills as a sound. Breathy, fluttering tremolo from LFO2 modulating the spectral tilt \u2014 the sound pulses between dark and bright like gill fronds waving in current. Low effort whisper territory with warm baritone vowels. A rhythmic, organic texture that invites you to slow down and breathe with it.",
+  "description": "Oscar's external gills as a sound. Breathy, fluttering tremolo from LFO2 modulating the spectral tilt — the sound pulses between dark and bright like gill fronds waving in current. Low effort whisper territory with warm baritone vowels. A rhythmic, organic texture that invites you to slow down and breathe with it.",
   "tags": [
     "family",
     "oscar",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

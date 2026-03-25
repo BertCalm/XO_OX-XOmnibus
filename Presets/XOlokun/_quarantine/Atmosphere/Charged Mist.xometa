@@ -5,16 +5,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.579,
-    "COUPLING": 0.0,
-    "MOVEMENT": 0.656,
-    "SPACE": 0.596
+    "MACHINE": 0.579,
+    "SPACE": 0.0,
+    "PUNCH": 0.656,
+    "MUTATE": 0.596
   },
   "mood": "Atmosphere",
   "name": "Charged Mist",
@@ -41,5 +41,6 @@
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

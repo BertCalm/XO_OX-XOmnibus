@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Time-stretched textures where lo-fi degradation and extreme delay feedback create the sensation of time slowing to a crawl.",
+  "dna": {
+    "aggression": 0.179,
+    "brightness": 0.687,
+    "density": 0.339,
+    "movement": 0.516,
+    "space": 0.594,
+    "warmth": 0.546
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Deep Space",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Time Dilation",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 14.915,
+      "compRatio": 2.491,
+      "compRelease": 149.15,
+      "compThreshold": -9.311,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.45,
+      "delayEnabled": 1,
+      "delayFeedback": 0.566,
+      "delayMix": 0.299,
+      "delayTime": 1.0,
+      "delayWobble": 0.382,
+      "lofiBitDepth": 6.983,
+      "lofiEnabled": 1,
+      "lofiMix": 0.366,
+      "lofiRateReduce": 3.457,
+      "lofiWowFlutter": 0.282,
+      "macro1": 0.299,
+      "macro2": 0.399,
+      "macro3": 0.598,
+      "macro4": 0.433,
+      "masterBalance": -0.05,
+      "oBloom": 2.983,
+      "oDecay": 3.819,
+      "oDetune": 8.277,
+      "oDrift": 0.382,
+      "oFilterCutoff": 1255.331,
+      "oFilterReso": 0.324,
+      "oLevel": 0.649,
+      "oMorph": 0.828,
+      "oPolyphony": 3,
+      "oRelease": 3.147,
+      "oSub": 0.382,
+      "oSustain": 0.574,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.266,
+      "reverbDecay": 0.829,
+      "reverbEnabled": 1,
+      "reverbMix": 0.407,
+      "reverbSize": 1.415,
+      "xDecay": 2.819,
+      "xDetune": 8.277,
+      "xFilterCutoff": 1782.997,
+      "xFilterReso": 0.266,
+      "xLevel": 0.649,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 2,
+      "xSnap": 0.091,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "time-stretch",
+    "lo-fi",
+    "slow",
+    "degradation",
+    "cinematic"
+  ],
+  "tempo": 45,
+  "version": "1.0.0"
+}

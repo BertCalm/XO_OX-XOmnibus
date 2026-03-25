@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Prism",
-  "name": "Phase Shift (Onset I)",
+  "name": "Phase Shift",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.0,
@@ -155,5 +155,6 @@
     "digital"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

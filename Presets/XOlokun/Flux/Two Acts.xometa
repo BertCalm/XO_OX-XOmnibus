@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin signature #7. Double-peak arc over 20 seconds \u2014 a two-act opera from a single chord. First peak at 7s (Anima to Hero), dip at 10s (Hero relaxes), second peak at 15s (Hero again, stronger), final resolution at 20s. Slow LFO on tilt gives each act a different spectral character. Press one chord, experience an entire opera.",
+  "description": "Guru Bin signature #7. Double-peak arc over 20 seconds — a two-act opera from a single chord. First peak at 7s (Anima to Hero), dip at 10s (Hero relaxes), second peak at 15s (Hero again, stronger), final resolution at 20s. Slow LFO on tilt gives each act a different spectral character. Press one chord, experience an entire opera.",
   "tags": [
     "conductor",
     "double-peak",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

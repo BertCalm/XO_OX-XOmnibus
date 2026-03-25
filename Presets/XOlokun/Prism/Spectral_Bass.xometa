@@ -14,12 +14,12 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Spectral Bass (Overdub)",
+  "name": "Spectral Bass",
   "mood": "Prism",
   "engines": [
     "Overdub"
   ],
-  "description": "Extended range bass using overtone shaping — from sub to presence.",
+  "description": "Extended range bass using overtone shaping \u2014 from sub to presence.",
   "tags": [
     "dub",
     "spectral",

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ResSens=1.0 with Drama=0.25 and LFO2 modulating ResSens. Acausal clusters form and dissolve in violent, unpredictable waves. 4-voice unison multiplies the chaos. Like a thunderstorm of harmonic events \u2014 clusters crash and bloom in every direction.",
+  "description": "ResSens=1.0 with Drama=0.25 and LFO2 modulating ResSens. Acausal clusters form and dissolve in violent, unpredictable waves. 4-voice unison multiplies the chaos. Like a thunderstorm of harmonic events — clusters crash and bloom in every direction.",
   "tags": [
     "storm",
     "acausal",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

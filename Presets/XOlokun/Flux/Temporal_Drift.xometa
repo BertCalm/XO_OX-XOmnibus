@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Temporal Drift",
+  "mood": "Flux",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Kit timing drifts out of sync, creating polymetric flux.",
+  "tags": [
+    "temporal",
+    "drift",
+    "sync",
+    "polymetric",
+    "flux"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.42,
+    "movement": 0.6,
+    "density": 0.58,
+    "space": 0.35,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.5,
+      "perc_macro_punch": 0.5,
+      "perc_macro_space": 0.35,
+      "perc_macro_mutate": 0.72,
+      "perc_drive": 0.38,
+      "perc_level": 0.78,
+      "perc_masterTone": 0.55,
+      "perc_char_grit": 0.3,
+      "perc_char_warmth": 0.42,
+      "perc_fx_reverb_size": 0.35,
+      "perc_fx_reverb_decay": 0.48,
+      "perc_fx_reverb_mix": 0.28,
+      "perc_fx_delay_time": 0.35,
+      "perc_fx_delay_feedback": 0.22,
+      "perc_fx_delay_mix": 0.12,
+      "perc_fx_lofi_bits": 13,
+      "perc_fx_lofi_mix": 0.05,
+      "perc_xvc_global_amount": 0.3,
+      "perc_xvc_kick_to_snare_filter": 0.38,
+      "perc_xvc_kick_to_tom_pitch": 0.2,
+      "perc_xvc_snare_to_hat_decay": 0.18,
+      "perc_xvc_snare_to_perc_blend": 0.28,
+      "perc_xvc_hat_choke": 0.42
+    }
+  },
+  "macros": {
+    "MACHINE": 0.5,
+    "PUNCH": 0.5,
+    "SPACE": 0.35,
+    "MUTATE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tier": "awakening"
+}

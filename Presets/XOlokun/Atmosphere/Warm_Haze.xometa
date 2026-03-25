@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Warm Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm atmospheric drift \u2014 golden haze of slow morphing harmonics.",
+  "tags": [
+    "warm",
+    "haze",
+    "golden",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.78,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.55,
+      "morph_bloom": 0.65,
+      "morph_detune": 0.2,
+      "morph_drift": 0.45,
+      "morph_filterCutoff": 3200.0,
+      "morph_filterReso": 0.25,
+      "morph_filterEnvDepth": 0.22,
+      "morph_sub": 0.42,
+      "morph_decay": 2.2,
+      "morph_sustain": 0.88,
+      "morph_release": 4.0,
+      "morph_glide": 0.2,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.65,
+      "morph_macroBloom": 0.65,
+      "morph_macroDepth": 0.5,
+      "morph_macroDrift": 0.45,
+      "morph_macroSpace": 0.65
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

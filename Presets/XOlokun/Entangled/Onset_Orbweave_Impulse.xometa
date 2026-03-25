@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Orbweave Impulse",
   "mood": "Entangled",
-  "engines": ["Onset", "Orbweave"],
+  "engines": [
+    "Onset",
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ONSET as coupling source for ORBWEAVE's Knot Phase Coupling Matrix. Each drum hit disturbs the topological routing — kick hits rewire the phase relationship between ORBWEAVE's entangled oscillators via AmpToFilter. The rhythm becomes the topology.",
-  "tags": ["coupling-source", "orbweave", "entangled", "topology", "impulse", "knot"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling-source",
+    "orbweave",
+    "entangled",
+    "topology",
+    "impulse",
+    "knot"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -136,5 +151,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

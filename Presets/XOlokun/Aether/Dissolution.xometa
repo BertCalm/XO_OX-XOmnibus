@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Dissolution",
+  "mood": "Aether",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "All Osteria parameters releasing form. Pure resonance.",
+  "tags": [
+    "dissolution",
+    "release",
+    "resonance",
+    "pure",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.88,
+    "movement": 0.35,
+    "density": 0.82,
+    "space": 0.1,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.25,
+      "osteria_patina": 0.58,
+      "osteria_murmur": 0.08,
+      "osteria_oceanBleed": 0.55,
+      "osteria_blendMode": 0,
+      "osteria_bassLevel": 0.42,
+      "osteria_melLevel": 0.52,
+      "osteria_harmLevel": 0.52,
+      "osteria_rhythmLevel": 0.32,
+      "osteria_qBassShore": 0.42,
+      "osteria_qMelShore": 0.3,
+      "osteria_qHarmShore": 0.38,
+      "osteria_qRhythmShore": 0.2,
+      "osteria_qElastic": 0.72,
+      "osteria_qMemory": 0.88,
+      "osteria_qStretch": 0.82,
+      "osteria_qSympathy": 0.68,
+      "osteria_attack": 0.1,
+      "osteria_decay": 0.68,
+      "osteria_sustain": 0.78,
+      "osteria_release": 2.2,
+      "osteria_chorus": 0.08,
+      "osteria_hall": 0.52,
+      "osteria_ensWidth": 0.95,
+      "osteria_tape": 0.03,
+      "osteria_sessionDelay": 0.45,
+      "osteria_filterEnvDepth": 0.06,
+      "osteria_warmth": 0.82,
+      "osteria_smoke": 0.08,
+      "osteria_tavernMix": 0.38,
+      "osteria_tavernShore": 0.25,
+      "osteria_macroCharacter": 0.18,
+      "osteria_macroMovement": 0.52,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

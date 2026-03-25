@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-14",
-  "description": "The Breathing Reef. LFO1 at 0.067 Hz routed to FX Depth — the entire effects chain inhales and exhales every 15 seconds. CuriosityEngine in Nap mode for near-static drift. The coral breathes with you.",
+  "description": "The Breathing Reef. LFO1 at 0.067 Hz routed to FX Depth \u2014 the entire effects chain inhales and exhales every 15 seconds. CuriosityEngine in Nap mode for near-static drift. The coral breathes with you.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.35,
@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Reef Breath (Oblong)",
+  "name": "Reef Breath",
   "parameters": {
     "Oblong": {
       "bob_ampAttack": 0.5,

@@ -23,16 +23,16 @@
     "Ottoni"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.149,
-    "COUPLING": 0.893,
-    "MOVEMENT": 0.891,
-    "SPACE": 0.14
+    "MACHINE": 0.149,
+    "SPACE": 0.893,
+    "PUNCH": 0.891,
+    "MUTATE": 0.14
   },
   "mood": "Entangled",
   "name": "BREAKNECK",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

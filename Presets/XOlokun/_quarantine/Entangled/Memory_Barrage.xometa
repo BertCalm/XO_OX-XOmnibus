@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.84,
-    "COUPLING": 0.86,
-    "MOVEMENT": 0.75,
-    "SPACE": 0.12
+    "MACHINE": 0.84,
+    "SPACE": 0.86,
+    "PUNCH": 0.75,
+    "MUTATE": 0.12
   },
   "mood": "Entangled",
   "name": "Memory Barrage",
@@ -52,5 +52,6 @@
     "memory"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

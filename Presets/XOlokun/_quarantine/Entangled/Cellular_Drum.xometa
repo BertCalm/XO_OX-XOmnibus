@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.78,
-    "COUPLING": 0.9,
-    "MOVEMENT": 0.95,
-    "SPACE": 0.16
+    "MACHINE": 0.78,
+    "SPACE": 0.9,
+    "PUNCH": 0.95,
+    "MUTATE": 0.16
   },
   "mood": "Entangled",
   "name": "Cellular Drum",
@@ -52,5 +52,6 @@
     "cellular"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

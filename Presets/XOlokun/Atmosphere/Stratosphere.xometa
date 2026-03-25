@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Stratosphere (Organon I)",
+  "name": "Stratosphere",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.2,

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "name": "Pressure Membrane (Ocelot)",
+  "name": "Pressure Membrane",
   "mood": "Submerged",
   "engines": [
     "Ocelot"
@@ -110,5 +110,5 @@
     "deep",
     "whale"
   ],
-  "description": "Deep underwater pressure — pandeiro membrane distorted by water column weight."
+  "description": "Deep underwater pressure \u2014 pandeiro membrane distorted by water column weight."
 }

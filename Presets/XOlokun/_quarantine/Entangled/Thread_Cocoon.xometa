@@ -23,16 +23,16 @@
     "Osprey"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.112,
-    "COUPLING": 0.067,
-    "MOVEMENT": 0.345,
-    "SPACE": 0.085
+    "MACHINE": 0.112,
+    "SPACE": 0.067,
+    "PUNCH": 0.345,
+    "MUTATE": 0.085
   },
   "mood": "Entangled",
   "name": "Thread Cocoon",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

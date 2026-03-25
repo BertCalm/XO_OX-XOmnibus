@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The Conductor arc creates a 120-second dramatic arc \u2014 the drama slowly builds from 0 to peak (0.6) and back. At the peak, Kuramoto synchronization is maximum. The arc shape is sigmoidal. Stereo field breathes wide at peak.",
+  "description": "The Conductor arc creates a 120-second dramatic arc — the drama slowly builds from 0 to peak (0.6) and back. At the peak, Kuramoto synchronization is maximum. The arc shape is sigmoidal. Stereo field breathes wide at peak.",
   "tags": [
     "vocal",
     "arc",
@@ -89,5 +89,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

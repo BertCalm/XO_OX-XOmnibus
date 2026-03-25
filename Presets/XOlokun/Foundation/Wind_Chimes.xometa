@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Tubular metal wind chimes \u2014 open body, high shimmer, glittering random-interval brightness",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.82,
+    "density": 0.25,
+    "movement": 0.62,
+    "space": 0.78,
+    "warmth": 0.28
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.75
+  },
+  "mood": "Foundation",
+  "name": "Wind Chimes",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.72,
+      "owr_malletHardness": 0.6,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.35,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.3,
+      "owr_shimmerRate": 7.5,
+      "owr_thermalDrift": 0.18,
+      "owr_brightness": 12000.0,
+      "owr_damping": 0.25,
+      "owr_decay": 2.2,
+      "owr_filterEnvAmount": 0.22,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.55,
+      "owr_macroMallet": 0.55,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.75
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "wind-chimes",
+    "metal",
+    "bright",
+    "shimmer",
+    "foundation"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

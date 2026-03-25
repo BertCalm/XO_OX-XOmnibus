@@ -13,8 +13,9 @@ import json
 import os
 import glob
 from collections import defaultdict
+from pathlib import Path
 
-PRESETS_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets"
+PRESETS_DIR = str(Path(__file__).parent.parent / "Presets")
 
 
 # ---------------------------------------------------------------------------

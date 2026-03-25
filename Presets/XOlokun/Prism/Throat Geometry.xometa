@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Filter resonance at 0.4 sculpts the partial bank into sharp formant ridges \u2014 like a vocal tract with impossible geometry. Narrow bands ring while others are suppressed. The voice becomes architecture.",
+  "description": "Filter resonance at 0.4 sculpts the partial bank into sharp formant ridges — like a vocal tract with impossible geometry. Narrow bands ring while others are suppressed. The voice becomes architecture.",
   "tags": [
     "formant",
     "resonant",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

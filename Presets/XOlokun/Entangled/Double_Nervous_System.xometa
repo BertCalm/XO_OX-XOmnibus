@@ -31,10 +31,10 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "mood": "Entangled",
   "name": "Double Nervous System",
@@ -184,5 +184,6 @@
     "ecosystem"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

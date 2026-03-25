@@ -16,16 +16,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.573,
-    "COUPLING": 0.744,
-    "MOVEMENT": 0.633,
-    "SPACE": 0.503
+    "MACHINE": 0.573,
+    "SPACE": 0.744,
+    "PUNCH": 0.633,
+    "MUTATE": 0.503
   },
   "mood": "Entangled",
   "name": "Silver Drum Plate",
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

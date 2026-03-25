@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "All oscillators locked tight in cold phase. No light escapes.",
+  "dna": {
+    "aggression": 0.83,
+    "brightness": 0.356,
+    "density": 1.0,
+    "movement": 0.55,
+    "space": 0.04,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Hadal Press",
+  "parameters": {
+    "Oblong": {
+      "bob_attack": 2.0,
+      "bob_decay": 150.0,
+      "bob_drive": 0.88,
+      "bob_filterCutoff": 120.0,
+      "bob_filterReso": 0.9,
+      "bob_oscA_shape": 0.88,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_shape": 0.86,
+      "bob_oscB_tune": -0.01,
+      "bob_oscB_wave": 2.0,
+      "bob_release": 80.0,
+      "bob_sustain": 0.95,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "compressed"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

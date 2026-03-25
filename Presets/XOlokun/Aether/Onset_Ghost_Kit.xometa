@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Ghost Kit",
   "mood": "Aether",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Barely-there percussion — ultra-slow decays on all voices, extreme low levels, high reverb and space. The suggestion of drums, not the drums themselves. Sparse hits materialise and vanish.",
-  "tags": ["aether", "ambient", "sparse", "ghost", "percussive", "slow", "drift"],
-  "macroLabels": ["MACHINE", "PUNCH", "SPACE", "MUTATE"],
+  "tags": [
+    "aether",
+    "ambient",
+    "sparse",
+    "ghost",
+    "percussive",
+    "slow",
+    "drift"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
@@ -114,5 +129,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

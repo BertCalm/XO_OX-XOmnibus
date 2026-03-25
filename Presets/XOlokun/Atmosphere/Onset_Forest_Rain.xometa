@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Forest Rain (Onset)",
+  "name": "Forest Rain",
   "mood": "Atmosphere",
   "engines": [
     "Onset"
@@ -66,5 +66,6 @@
   },
   "coupling": {
     "pairs": []
-  }
+  },
+  "tier": "awakening"
 }

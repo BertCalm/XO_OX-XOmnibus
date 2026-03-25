@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wide 4-voice ensemble with high detune and generous stage. The individual voices blur into a harmonic wash \u2014 less a choir, more a tide of vowels. Slow LFO on formant creates gradual timbral drift. Perfect under a melody.",
+  "description": "Wide 4-voice ensemble with high detune and generous stage. The individual voices blur into a harmonic wash — less a choir, more a tide of vowels. Slow LFO on formant creates gradual timbral drift. Perfect under a melody.",
   "tags": [
     "pad",
     "wash",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

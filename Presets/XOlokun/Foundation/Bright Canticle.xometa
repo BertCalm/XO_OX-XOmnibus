@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Spectral tilt pushed bright with E-to-I vowel morph \u2014 the most forward, present formant trajectory. High filter cutoff lets every partial ring. A bright lead that cuts through any mix without harshness.",
+  "description": "Spectral tilt pushed bright with E-to-I vowel morph — the most forward, present formant trajectory. High filter cutoff lets every partial ring. A bright lead that cuts through any mix without harshness.",
   "tags": [
     "lead",
     "bright",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pressure Wave (Orca I)",
+  "name": "Pressure Wave",
   "mood": "Flux",
   "engines": [
     "Orca"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The hydrodynamic pressure wave preceding a charging orca — the prey feels it before the animal arrives. Sub-bass pulsing forward, hunt macro creating pre-arrival aggression, echolocation tracking the distance closing.",
+  "description": "The hydrodynamic pressure wave preceding a charging orca \u2014 the prey feels it before the animal arrives. Sub-bass pulsing forward, hunt macro creating pre-arrival aggression, echolocation tracking the distance closing.",
   "tags": [
     "flux",
     "pressure",

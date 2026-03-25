@@ -21,10 +21,10 @@
     "performance-demo"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,
@@ -110,5 +110,6 @@
       "SPACE": "shared_reverbMix"
     }
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

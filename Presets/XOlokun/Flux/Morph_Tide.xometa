@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Continuous material flux across the bell-metal spectrum \u2014 mid material with high CHARACTER macro sweeping toward bowl, 10 Hz shimmer creating nervous energy against a medium decay",
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.62,
+    "density": 0.6,
+    "movement": 0.75,
+    "space": 0.55,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.55
+  },
+  "mood": "Flux",
+  "name": "Morph Tide",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.42,
+      "owr_malletHardness": 0.55,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.58,
+      "owr_buzzAmount": 0.22,
+      "owr_sympathyAmount": 0.35,
+      "owr_shimmerRate": 10.0,
+      "owr_thermalDrift": 0.3,
+      "owr_brightness": 7000.0,
+      "owr_damping": 0.35,
+      "owr_decay": 1.5,
+      "owr_filterEnvAmount": 0.45,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.72,
+      "owr_macroMallet": 0.72,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.55
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "morph",
+    "bell",
+    "metal",
+    "shimmer",
+    "flux"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

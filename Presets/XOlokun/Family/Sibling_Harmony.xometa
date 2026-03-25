@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "Sibling Harmony",
+  "mood": "Family",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "feliX and Oscar singing together in perfect thirds. 2-voice unison creates the sibling interval \u2014 one voice bright (high tilt partials), one voice warm (low tilt partials), meeting in the middle. Drama at 0.45 keeps both voices coherent but distinct. Wide stereo field separates the two characters left and right. The Family mood in a single preset.",
+  "tags": [
+    "family",
+    "duet",
+    "harmony",
+    "choir",
+    "warm"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.45,
+      "opera_voice": 0.5,
+      "opera_stage": 0.35,
+      "opera_vowelA": 0,
+      "opera_vowelB": 3,
+      "opera_breath": 0.12,
+      "opera_effort": 0.5,
+      "opera_partials": 28,
+      "opera_resSens": 0.45,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 5.5,
+      "opera_vibDepth": 0.25,
+      "opera_tilt": 0.0,
+      "opera_filterCutoff": 7500.0,
+      "opera_filterRes": 0.05,
+      "opera_filterEnvAmt": 0.3,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.25,
+      "opera_filterS": 0.6,
+      "opera_filterR": 0.5,
+      "opera_ampA": 0.06,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.8,
+      "opera_ampR": 0.7,
+      "opera_lfo1Rate": 0.08,
+      "opera_lfo1Depth": 0.2,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 3.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.45,
+      "opera_velToFilter": 0.4,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.15,
+      "opera_portamento": 0.0,
+      "opera_unison": 2,
+      "opera_width": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

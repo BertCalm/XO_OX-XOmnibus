@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.2506,
-    "COUPLING": 0.5508,
-    "MOVEMENT": 0.6351,
-    "SPACE": 0.1252
+    "MACHINE": 0.2506,
+    "SPACE": 0.5508,
+    "PUNCH": 0.6351,
+    "MUTATE": 0.1252
   },
   "mood": "Flux",
   "name": "SPARSE FLUX 8",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Ole"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.584,
-    "COUPLING": 0.866,
-    "MOVEMENT": 0.477,
-    "SPACE": 0.407
+    "MACHINE": 0.584,
+    "SPACE": 0.866,
+    "PUNCH": 0.477,
+    "MUTATE": 0.407
   },
   "mood": "Entangled",
   "name": "Bloom Strike",
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

@@ -307,6 +307,30 @@ target_sources(XOlokun PRIVATE
     Source/UI/Mobile/MobilePlaySurface.h
     Source/UI/Mobile/ParameterDrawer.h
 
+    # Kitchen Collection — Chef (Organs) engines
+    Source/Engines/Oto/OtoEngine.h
+    Source/Engines/Octave/OctaveEngine.h
+    Source/Engines/Oleg/OlegEngine.h
+    Source/Engines/Otis/OtisEngine.h
+
+    # Kitchen Collection — Kitchen (Pianos) engines
+    Source/Engines/Oven/OvenEngine.h
+    Source/Engines/Ochre/OchreEngine.h
+    Source/Engines/Obelisk/ObeliskEngine.h
+    Source/Engines/Opaline/OpalineEngine.h
+
+    # Kitchen Collection — Cellar (Bass) engines
+    Source/Engines/Ogre/OgreEngine.h
+    Source/Engines/Olate/OlateEngine.h
+    Source/Engines/Oaken/OakenEngine.h
+    Source/Engines/Omega/OmegaEngine.h
+
+    # Kitchen Collection — Broth (Pads) engines
+    Source/Engines/Overwash/OverwashEngine.h
+    Source/Engines/Overworn/OverwornEngine.h
+    Source/Engines/Overflow/OverflowEngine.h
+    Source/Engines/Overcast/OvercastEngine.h
+
     # Kitchen Collection — Fusion (EP) engines
     Source/Engines/Oasis/OasisEngine.cpp
     Source/Engines/Oddfellow/OddfellowEngine.cpp

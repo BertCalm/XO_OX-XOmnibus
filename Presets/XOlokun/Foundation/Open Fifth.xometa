@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High sync emphasizes the 3:2 ratio between partials \u2014 a natural open fifth rings through every note. Clean, resonant, medieval. Minimal processing lets the Kuramoto purity shine. Works beautifully with parallel fifths in the left hand.",
+  "description": "High sync emphasizes the 3:2 ratio between partials — a natural open fifth rings through every note. Clean, resonant, medieval. Minimal processing lets the Kuramoto purity shine. Works beautifully with parallel fifths in the left hand.",
   "tags": [
     "pure",
     "harmonic",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

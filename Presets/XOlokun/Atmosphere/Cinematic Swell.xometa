@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Slow Conductor arc over 30 seconds creates a cinematic build from near-silence to gentle harmonic convergence. Not a climax \u2014 a swell. The kind of sound that sits beneath dialogue in a film, rising so slowly the audience only notices when it stops. Formant morph from U to A opens the vowel as drama increases.",
+  "description": "Slow Conductor arc over 30 seconds creates a cinematic build from near-silence to gentle harmonic convergence. Not a climax — a swell. The kind of sound that sits beneath dialogue in a film, rising so slowly the audience only notices when it stops. Formant morph from U to A opens the vowel as drama increases.",
   "tags": [
     "cinematic",
     "swell",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

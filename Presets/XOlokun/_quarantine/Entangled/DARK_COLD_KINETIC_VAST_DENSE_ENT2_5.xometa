@@ -23,16 +23,16 @@
     "Orca"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.11,
-    "COUPLING": 0.662,
-    "MOVEMENT": 0.985,
-    "SPACE": 0.983
+    "MACHINE": 0.11,
+    "SPACE": 0.662,
+    "PUNCH": 0.985,
+    "MUTATE": 0.983
   },
   "mood": "Entangled",
   "name": "DARK COLD KINETIC VAST DENS... (Onset I)",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

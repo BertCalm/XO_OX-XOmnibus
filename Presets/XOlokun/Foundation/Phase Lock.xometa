@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Phase Lock (Ouroboros I)",
+  "name": "Phase Lock",
   "mood": "Foundation",
   "engines": [
     "Ouroboros"

@@ -23,7 +23,7 @@
     "DEN"
   ],
   "mood": "Flux",
-  "name": "Phase Shift (Outwit I)",
+  "name": "Phase Shift",
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 30,

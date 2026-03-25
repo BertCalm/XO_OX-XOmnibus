@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Random arc, 8 seconds, peak 0.7. LFO1 rapidly morphs vowels while LFO2 modulates vibrato depth \u2014 the voice wobbles and shifts like a hallucination. High ResSens creates phantom clusters during chaotic phases. The arc never fully resolves, leaving the listener in a perpetual state of almost-understanding. A fever dream where the choir speaks in tongues.",
+  "description": "Random arc, 8 seconds, peak 0.7. LFO1 rapidly morphs vowels while LFO2 modulates vibrato depth — the voice wobbles and shifts like a hallucination. High ResSens creates phantom clusters during chaotic phases. The arc never fully resolves, leaving the listener in a perpetual state of almost-understanding. A fever dream where the choir speaks in tongues.",
   "tags": [
     "conductor",
     "random",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

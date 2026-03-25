@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.1,
+    "density": 0.17,
+    "movement": 0.55,
+    "space": 0.84,
+    "warmth": 0.22
+  },
+  "engines": [
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.23,
+    "COUPLING": 0.16,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.84
+  },
+  "mood": "Aether",
+  "name": "Pelagic Oracle",
+  "parameters": {
+    "Oracle": {
+      "oracle_macro_character": 0.27,
+      "oracle_macro_coupling": 0.3,
+      "oracle_macro_movement": 0.6,
+      "oracle_macro_space": 0.84
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "dark",
+    "void",
+    "prophecy"
+  ],
+  "version": "1.0.0",
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null,
+  "description": "Vast and otherworldly, dark, crystalline atmosphere. Let it breathe \u2014 the space is the instrument."
+}

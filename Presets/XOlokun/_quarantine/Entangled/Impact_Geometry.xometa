@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.84,
-    "COUPLING": 0.82,
-    "MOVEMENT": 0.75,
-    "SPACE": 0.07
+    "MACHINE": 0.84,
+    "SPACE": 0.82,
+    "PUNCH": 0.75,
+    "MUTATE": 0.07
   },
   "mood": "Entangled",
   "name": "Impact Geometry",
@@ -52,5 +52,6 @@
     "impact"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.104,
-    "COUPLING": 0.283,
-    "MOVEMENT": 0.75,
-    "SPACE": 0.537
+    "MACHINE": 0.104,
+    "SPACE": 0.283,
+    "PUNCH": 0.75,
+    "MUTATE": 0.537
   },
   "mood": "Foundation",
   "name": "Frost Ripple",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

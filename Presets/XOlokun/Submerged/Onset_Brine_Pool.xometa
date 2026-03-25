@@ -15,10 +15,10 @@
     "percussive"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "None",
   "tempo": null,
@@ -40,5 +40,6 @@
   },
   "coupling": {
     "pairs": []
-  }
+  },
+  "tier": "awakening"
 }

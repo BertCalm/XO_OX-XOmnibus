@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Axolotl gill pulse feeds OVERLAP modulation rate — regenerative rhythm in deep reflective water",
+  "description": "Axolotl gill pulse feeds OVERLAP modulation rate \u2014 regenerative rhythm in deep reflective water",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.525,
@@ -37,7 +37,7 @@
     "SPACE": 0.404
   },
   "mood": "Entangled",
-  "name": "Axolotl Bloom (Overlap)",
+  "name": "Axolotl Bloom",
   "parameters": {
     "Overlap": {
       "olap_couplingBus": 0,

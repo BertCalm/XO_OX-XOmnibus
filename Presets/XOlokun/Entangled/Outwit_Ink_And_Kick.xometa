@@ -26,10 +26,10 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
+    "MACHINE",
     "CHAOS",
-    "COUPLING",
-    "SPACE"
+    "SPACE",
+    "MUTATE"
   ],
   "mood": "Entangled",
   "name": "Ink and Kick",
@@ -79,5 +79,6 @@
     "cellular"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

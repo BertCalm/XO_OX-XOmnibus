@@ -3,13 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The XO_OX Manifesto — Why character matters more than features. Our design philosophy.">
+<meta name="description" content="The XO_OX Civilization Manifesto — We are building something that will outlast us. The north star for explorers of the deep.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
 <title>Manifesto — XO_OX Designs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:title" content="XOlokun — The Civilization Manifesto">
+<meta property="og:description" content="73 engines. 14 coupling types. Free. MIT. We are building something that will outlast us.">
+<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="XOlokun — The Civilization Manifesto">
+<meta name="twitter:description" content="73 ways of listening. Free. Open. For all.">
+<meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -27,9 +36,7 @@
   text-decoration: none;
   transition: top 0.2s;
 }
-.skip-link:focus {
-  top: 0;
-}
+.skip-link:focus { top: 0; }
 
 :root {
   --bg-deep:    #060A10;
@@ -45,18 +52,28 @@
   --text-faint: #4A6878;
   --border:     #152330;
   --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.08);
   --coral:      #C4636E;
+  --felix:      #00A6D6;
+  --oscar:      #E8839B;
+  --sunlit:     #48CAE4;
+  --twilight:   #0096C7;
+  --midnight:   #7B2FBE;
 }
 
-html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-deep);
+}
 
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg-deep);
   background-image:
-    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 15%, rgba(196, 99, 110, 0.02) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.12) 0%, transparent 60%);
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(196, 99, 110, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.15) 0%, transparent 60%);
   background-attachment: fixed;
   color: var(--text);
   line-height: 1.6;
@@ -79,9 +96,7 @@ body::before {
 /* ═══════════ NAV ═══════════ */
 .site-nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 0 clamp(1.5rem, 5vw, 6rem);
   height: 60px;
@@ -122,10 +137,8 @@ body::before {
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
   background: var(--teal);
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -133,7 +146,6 @@ body::before {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a.active { color: var(--cream); }
 
-/* ── Download CTA in nav ── */
 .nav-download-btn {
   background: var(--gold) !important;
   color: var(--bg-deep) !important;
@@ -149,14 +161,12 @@ body::before {
   color: var(--bg-deep) !important;
 }
 
-/* ── Hamburger menu (mobile) ── */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 28px;
-  height: 28px;
+  width: 28px; height: 28px;
   cursor: pointer;
   background: none;
   border: none;
@@ -165,8 +175,7 @@ body::before {
 }
 .hamburger span {
   display: block;
-  width: 100%;
-  height: 2px;
+  width: 100%; height: 2px;
   background: var(--cream);
   border-radius: 1px;
   transition: transform 0.3s, opacity 0.3s;
@@ -180,9 +189,7 @@ body::before {
   .site-nav .nav-links {
     display: none;
     position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
+    top: 60px; left: 0; right: 0;
     flex-direction: column;
     background: rgba(6, 10, 16, 0.97);
     backdrop-filter: blur(20px);
@@ -198,13 +205,14 @@ body::before {
   .footer-links { flex-wrap: wrap; justify-content: center; }
 }
 
-/* ═══════════ MANIFESTO ═══════════ */
+/* ═══════════ MANIFESTO LAYOUT ═══════════ */
 .manifesto {
   max-width: 780px;
   margin: 0 auto;
   padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
 }
 
+/* ── Label above title ── */
 .manifesto-label {
   font-size: 0.6rem;
   font-weight: 500;
@@ -218,27 +226,27 @@ body::before {
 }
 .manifesto-label::before {
   content: '';
-  width: 30px;
-  height: 1px;
+  width: 30px; height: 1px;
   background: var(--teal);
   opacity: 0.6;
 }
 
-/* The opening line */
+/* ── Opening ── */
 .manifesto-opening {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
   font-weight: 300;
   color: var(--cream);
   line-height: 1.2;
   margin-bottom: 4rem;
+  letter-spacing: -0.01em;
 }
 .manifesto-opening em {
   font-style: italic;
   color: var(--gold);
 }
 
-/* Belief blocks */
+/* ── Belief blocks ── */
 .belief {
   margin-bottom: 3.5rem;
   opacity: 0;
@@ -246,14 +254,11 @@ body::before {
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.belief.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.belief.visible { opacity: 1; transform: translateY(0); }
 
 .belief-heading {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
   font-weight: 400;
   color: var(--cream);
   line-height: 1.3;
@@ -271,28 +276,78 @@ body::before {
   line-height: 1.9;
   max-width: 640px;
 }
+.belief p + p { margin-top: 1rem; }
 
-.belief p + p {
-  margin-top: 1rem;
+.belief-accent { color: var(--teal); font-weight: 400; }
+
+/* ── Pull quote ── */
+.pull-quote {
+  margin: 4rem 0;
+  padding: 2.5rem 2.5rem 2.5rem 3rem;
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(90deg, rgba(233, 196, 106, 0.04) 0%, transparent 100%);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pull-quote.visible { opacity: 1; transform: translateY(0); }
+
+.pull-quote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.7;
 }
 
-.belief-accent {
-  color: var(--teal);
-  font-weight: 400;
-}
-
-/* Divider */
-.manifesto-divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--teal), transparent);
+/* ── The depth column ── */
+.depth-column {
   margin: 4rem 0;
   opacity: 0;
-  transition: opacity 1s;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.manifesto-divider.visible { opacity: 1; }
+.depth-column.visible { opacity: 1; transform: translateY(0); }
 
-/* The origin story */
+.depth-zones {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--border);
+  padding-left: 0;
+  margin: 2rem 0;
+}
+
+.depth-zone {
+  padding: 1.2rem 1.5rem;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  transition: border-color 0.3s;
+}
+.depth-zone:hover { border-color: var(--teal); }
+
+.depth-zone-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.depth-zone.sunlit .depth-zone-label  { color: var(--sunlit); }
+.depth-zone.twilight .depth-zone-label { color: var(--twilight); }
+.depth-zone.midnight .depth-zone-label { color: var(--midnight); }
+
+.depth-zone-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── The origin story ── */
 .origin {
   margin: 4rem 0;
   padding-left: 1.5rem;
@@ -302,24 +357,72 @@ body::before {
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.origin.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.origin.visible { opacity: 1; transform: translateY(0); }
 
 .origin p {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-style: italic;
   font-weight: 300;
   color: var(--text);
   line-height: 2;
 }
 .origin p + p { margin-top: 1rem; }
-.origin .felix { color: #00A6D6; font-style: normal; font-weight: 400; }
-.origin .oscar { color: #E8839B; font-style: normal; font-weight: 400; }
+.origin .felix { color: var(--felix); font-style: normal; font-weight: 400; }
+.origin .oscar { color: var(--oscar); font-style: normal; font-weight: 400; }
 
-/* The rejection */
+/* ── The coupling section ── */
+.coupling-visual {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.coupling-visual.visible { opacity: 1; transform: translateY(0); }
+
+.coupling-node {
+  padding: 1.2rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-align: center;
+  background: var(--bg-card);
+}
+.coupling-node-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+.coupling-node-desc {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
+.coupling-arrow {
+  text-align: center;
+  color: var(--teal);
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 580px) {
+  .coupling-visual {
+    grid-template-columns: 1fr;
+  }
+  .coupling-arrow { transform: rotate(90deg); }
+}
+
+/* ── The rejection ── */
 .rejection {
   margin: 4rem 0;
   opacity: 0;
@@ -327,18 +430,15 @@ body::before {
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.rejection.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.rejection.visible { opacity: 1; transform: translateY(0); }
 
 .rejection-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
 }
-
 .rejection-list li {
   font-size: 1rem;
   font-weight: 300;
@@ -347,7 +447,6 @@ body::before {
   padding-left: 1.6rem;
   position: relative;
 }
-
 .rejection-list li::before {
   content: '—';
   position: absolute;
@@ -355,7 +454,57 @@ body::before {
   color: var(--coral);
 }
 
-/* The closing */
+/* ── The enabling section ── */
+.enabling {
+  margin: 4rem 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.enabling.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Book of Bin callout ── */
+.bin-callout {
+  margin: 3rem 0;
+  padding: 2rem;
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  border-radius: 4px;
+  background: rgba(233, 196, 106, 0.03);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bin-callout.visible { opacity: 1; transform: translateY(0); }
+
+.bin-callout-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.bin-callout p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+}
+.bin-callout p + p { margin-top: 0.75rem; }
+
+/* ── Divider ── */
+.manifesto-divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  margin: 4rem 0;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.manifesto-divider.visible { opacity: 1; }
+
+/* ── The closing ── */
 .manifesto-closing {
   margin-top: 5rem;
   opacity: 0;
@@ -363,17 +512,14 @@ body::before {
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.manifesto-closing.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.manifesto-closing.visible { opacity: 1; transform: translateY(0); }
 
 .manifesto-closing-text {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.6rem, 3.8vw, 2.4rem);
   font-weight: 300;
   color: var(--cream);
-  line-height: 1.4;
+  line-height: 1.5;
   margin-bottom: 2rem;
 }
 .manifesto-closing-text em {
@@ -387,13 +533,10 @@ body::before {
   gap: 1rem;
   margin-top: 3rem;
 }
-
 .manifesto-sig-line {
-  width: 40px;
-  height: 1px;
+  width: 40px; height: 1px;
   background: var(--gold-dim);
 }
-
 .manifesto-sig-text {
   font-size: 0.7rem;
   font-weight: 500;
@@ -402,14 +545,13 @@ body::before {
   color: var(--text-faint);
 }
 
-/* CTA */
+/* ── CTA ── */
 .manifesto-cta {
   margin-top: 4rem;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .manifesto-cta a {
   display: inline-flex;
   align-items: center;
@@ -429,6 +571,63 @@ body::before {
 .manifesto-cta a:hover {
   border-color: var(--teal);
   color: var(--teal);
+}
+.manifesto-cta a.primary {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+}
+.manifesto-cta a.primary:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--bg-deep);
+}
+
+/* ── Stat strip ── */
+.stat-strip {
+  margin: 3.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stat-strip.visible { opacity: 1; transform: translateY(0); }
+
+.stat {
+  padding: 1.5rem;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.stat-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .stat-strip { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat:last-child { border-bottom: none; }
 }
 
 /* ═══════════ FOOTER ═══════════ */
@@ -450,10 +649,7 @@ footer {
   color: var(--text-dim);
   letter-spacing: 0.1em;
 }
-.footer-links {
-  display: flex;
-  gap: 2rem;
-}
+.footer-links { display: flex; gap: 2rem; }
 .footer-links a {
   font-size: 0.75rem;
   font-weight: 400;
@@ -474,36 +670,23 @@ footer {
   border-top: 1px solid var(--border);
 }
 
-/* Keyboard focus rings for accessibility */
+/* Accessibility */
 :focus-visible {
-    outline: 2px solid #0066CC;
-    outline-offset: 2px;
-    border-radius: 4px;
+  outline: 2px solid #0066CC;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
-
-/* Remove default focus for mouse users */
-:focus:not(:focus-visible) {
-    outline: none;
-}
+:focus:not(:focus-visible) { outline: none; }
 
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
-<meta property="og:title" content="XOlokun — Free Multi-Engine Synthesizer">
-<meta property="og:description" content="73 engines. Thousands of presets. Free and open-source. By XO_OX Designs.">
-<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="XOlokun — Free Multi-Engine Synthesizer">
-<meta name="twitter:description" content="73 engines. Thousands of presets. Free and open-source.">
-<meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
-<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
 </head>
 <body>
 
@@ -528,71 +711,191 @@ footer {
 
 <article class="manifesto" id="manifesto">
 
-  <div class="manifesto-label">Manifesto</div>
+  <div class="manifesto-label">The Civilization Manifesto</div>
 
   <h1 class="manifesto-opening">
-    We build instruments that sound like <em>something.</em>
+    We are building something<br>
+    that will <em>outlast us.</em>
   </h1>
 
-  <!-- ── BELIEF 1 ── -->
+  <!-- ── BELIEF 1: The Ocean ── -->
   <div class="belief">
-    <h2 class="belief-heading">Sound has <em>character.</em></h2>
+    <h2 class="belief-heading">The ocean is the metaphor because it has more <em>depth than any one person can explore.</em></h2>
     <p>
-      Not features. Not specifications. Not oscillator counts or filter slopes or modulation depth.
-      Character — the unnamed quality that makes you reach for one instrument and ignore twenty others.
-      The thing that makes a sound <em>yours</em> before you've touched a single knob.
+      We chose water not for aesthetics. We chose it because the ocean is the only
+      system on earth whose depth is genuinely inexhaustible. A single reef contains more
+      relationships than any one researcher can map in a lifetime. A trench floor holds
+      pressures no instrument has measured without breaking. The water column runs from
+      sunlit surface to perpetual dark — and every zone hosts a different kind of life.
     </p>
     <p>
-      We build for that. Everything else is in service of it.
+      That is what we are building. Not a plugin. A water column. Seventy-three engines
+      placed at different depths. The ones near the surface catch the light —
+      bright, transient, snapping. The ones in the dark are patient, slow, glowing
+      with their own bioluminescence. You can spend a year exploring and still find
+      something you didn't know was there.
     </p>
   </div>
 
-  <!-- ── BELIEF 2 ── -->
+  <!-- Depth zones visual -->
+  <div class="depth-column">
+    <div class="depth-zones" aria-label="Water column depth zones">
+      <div class="depth-zone sunlit">
+        <div class="depth-zone-label">Sunlit Zone — 0 to 200m</div>
+        <div class="depth-zone-text">Where light penetrates. Transients live here. Fast attacks, bright timbres, the snap of a note before it blooms. feliX's domain.</div>
+      </div>
+      <div class="depth-zone twilight">
+        <div class="depth-zone-label">Twilight Zone — 200 to 1,000m</div>
+        <div class="depth-zone-text">Where light fails and strange things begin. Pads that take minutes to open. Harmonics that arrive late and stay. The space between surface and depth.</div>
+      </div>
+      <div class="depth-zone midnight">
+        <div class="depth-zone-label">Midnight Zone — 1,000m to the floor</div>
+        <div class="depth-zone-text">No light from above. Only what the organisms themselves make. Oscar's domain. The sounds here glow. Slowly. With intention. With patience that borders on geological.</div>
+      </div>
+    </div>
+    <p style="font-size:0.9rem; font-weight:300; color:var(--text-faint); font-style:italic; margin-top:0.75rem;">Every engine in XOlokun carries a depth placement. Every placement is a design decision about character.</p>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── BELIEF 2: 73 ways of listening ── -->
   <div class="belief">
-    <h2 class="belief-heading">The raw sound must <em>sing.</em></h2>
+    <h2 class="belief-heading">Seventy-three engines are not a <em>feature count.</em></h2>
     <p>
-      Before reverb. Before delay. Before saturation. If the dry oscillator doesn't make you
-      lean forward, no amount of processing will save it. Effects enhance character.
-      They never create it.
+      They are seventy-three ways of listening. Seventy-three questions the world
+      hasn't finished answering. Seventy-three creatures, each with a body plan that
+      evolved for a specific pressure, a specific depth, a specific relationship with light.
     </p>
     <p>
-      When you initialize an XO_OX preset, the first thing you hear should be compelling.
-      Not a blank canvas. Not a starting point. A <em>statement.</em>
+      ORBWEAVE derives its timbre from topological knot theory. OVERTONE draws sound from
+      the rational approximations to pi, e, and the golden ratio — continued fractions
+      as synthesis parameter. ORGANISM grows from cellular automata rules.
+      OXYTOCIN models the circuit topology of five legendary hardware synthesizers through
+      the lens of Sternberg's triangular theory of love. OWARE synthesizes tuned percussion
+      using Chaigne's 1997 mallet contact-time equations.
+    </p>
+    <p>
+      These are not feature differentiators. They are <span class="belief-accent">fundamentally different
+      accounts of what sound is</span> — different answers to the question of where timbre comes from.
+      Every engine is a philosophy. Every preset is a sentence in that language.
     </p>
   </div>
 
-  <!-- ── BELIEF 3 ── -->
+  <!-- Stat strip -->
+  <div class="stat-strip" aria-label="XOlokun by the numbers">
+    <div class="stat">
+      <div class="stat-number">73</div>
+      <div class="stat-label">Synthesis Engines</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">13K+</div>
+      <div class="stat-label">Factory Presets</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">14</div>
+      <div class="stat-label">Coupling Types</div>
+    </div>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── BELIEF 3: Coupling ── -->
   <div class="belief">
-    <h2 class="belief-heading">Presets are the <em>product.</em></h2>
+    <h2 class="belief-heading">Coupling is not a technical feature. It's the idea that <em>sounds are more interesting when they're in relationship.</em></h2>
     <p>
-      Not afterthoughts. Not demo filler. Not the thing you scroll past on the way to init.
-      The factory presets are the first experience a musician has with an instrument — and for most,
-      the only experience. They must demonstrate the instrument's reason to exist.
+      A synthesizer alone is a voice. Two synthesizers modulating each other are a conversation.
+      Twenty synthesizers coupled through a shared matrix are an ecosystem — emergent, recursive,
+      capable of behaviors no single engine could produce.
     </p>
     <p>
-      Over thirteen thousand presets ship with XOlokun. Every one was shaped to make you hear
-      something the engine was born to do. Not filler. Not padding. A library that
-      rewards browsing.
+      Fourteen coupling types. Gravitational coupling, where one engine's mass pulls another's
+      pitch toward it. Knot topology coupling, where the routing matrix is a literal
+      mathematical knot structure. Triangular coupling, where three engines form a love triangle
+      of mutual modulation. Osmotic coupling, where live audio from the outside world
+      bleeds into the synthesis as membrane pressure.
+    </p>
+    <p>
+      The coupling system was not designed to add complexity. It was designed to make
+      sounds that <span class="belief-accent">could not exist without the relationship.</span>
+      A sound that requires two engines to produce is a sound that belongs to neither of them alone.
+      It belongs to the space between.
     </p>
   </div>
 
-  <!-- ── BELIEF 4 ── -->
-  <div class="belief">
-    <h2 class="belief-heading">Instruments should <em>talk to each other.</em></h2>
-    <p>
-      A synth alone is a voice. Two synths listening to each other are a conversation.
-      Twenty-six synths modulating each other in real time are an ecosystem — unpredictable,
-      alive, capable of sounds no single instrument could produce.
-    </p>
-    <p>
-      Coupling is the difference between a rack of instruments and a living system.
-      We chose the living system.
+  <!-- Coupling diagram -->
+  <div class="coupling-visual" aria-label="Cross-engine coupling diagram">
+    <div class="coupling-node">
+      <div class="coupling-node-name">Engine A</div>
+      <div class="coupling-node-desc">Solo: a voice with a character</div>
+    </div>
+    <div class="coupling-arrow" aria-hidden="true">&#8644;</div>
+    <div class="coupling-node">
+      <div class="coupling-node-name">Engine B</div>
+      <div class="coupling-node-desc">Solo: another voice, another character</div>
+    </div>
+  </div>
+  <div class="belief" style="margin-top:0;">
+    <p style="color:var(--teal); font-weight:400; font-size:0.95rem; font-style:italic; padding-left:0.5rem; border-left:2px solid var(--teal);">
+      Coupled: something neither engine could be alone. The music lives here.
     </p>
   </div>
 
   <div class="manifesto-divider"></div>
 
-  <!-- ── THE ORIGIN ── -->
+  <!-- ── BELIEF 4: Free ── -->
+  <div class="belief">
+    <h2 class="belief-heading">The plugin is free because the goal is not <em>extraction.</em> It's invitation.</h2>
+    <p>
+      No subscriptions. No dongles. No email gates. No "free tier" that stops you
+      at the ceiling. No artificial scarcity for something that costs nothing to copy.
+      MIT licensed — which means you can fork it, study it, redistribute it, build on it,
+      teach with it, and pass it on.
+    </p>
+    <p>
+      This is not a loss-leader. It is not a calculated move in a funnel. It is a declaration
+      that the goal of making something good is not to monetize access to it.
+      The goal is for it to be <span class="belief-accent">used, understood, and eventually surpassed</span>
+      by the people who arrive after us.
+    </p>
+    <p>
+      Every civilization that mattered built things it gave away. Libraries. Roads. Languages.
+      We are building instruments. We are giving them away. That is the whole plan.
+    </p>
+  </div>
+
+  <!-- Pull quote -->
+  <div class="pull-quote">
+    <p>"XOlokun — for all." is not a marketing line. It is the full thesis. If it is good, everyone deserves access to it. If everyone deserves access, it must be free. That logic closes completely.</p>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── BELIEF 5: Community as explorers ── -->
+  <div class="belief">
+    <h2 class="belief-heading">The community aren't users. They're <em>explorers,</em> and the reef grows as they arrive.</h2>
+    <p>
+      The aquatic mythology is not decoration. The creature identities, the depth placements,
+      the feliX-Oscar polarity — these are a navigation system. They tell you where an engine lives
+      in the water column before you've heard a note from it. They give you a mental model
+      for a collection too large to discover by random browsing.
+    </p>
+    <p>
+      But more than that, they are <span class="belief-accent">a shared language for a shared world.</span>
+      When you say "I've been working in the midnight zone this week," every other person
+      in this community knows exactly what you mean — the patient engines, the slow blooms,
+      the sounds that take minutes to reveal themselves. The mythology creates a frame
+      of reference you can trade, compare, and build on together.
+    </p>
+    <p>
+      The Aquarium on the website lists every engine by creature and depth. As the fleet grows,
+      the ecosystem expands. New engines are new species arriving at a living reef.
+      The reef grows as they arrive. So does the community's territory to explore.
+    </p>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── The origin story ── -->
   <div class="origin">
     <p>
       It started with two creatures.
@@ -608,97 +911,148 @@ footer {
     <p>
       Every engine in XOlokun carries DNA from both. The interplay between snap and sustain,
       between surface and depth, between the bright dart and the slow bloom — that tension
-      is the source of character. Not one or the other. Both.
+      is where character lives. Not one or the other. Always both.
     </p>
     <p>
-      They live in the same water. That water is the Aquarium — six master effects named
-      for ocean phenomena, the sonic environment where every engine's voice passes through
-      on its way to your speakers. <span class="felix">feliX</span> near the surface.
+      They share the same water. Every engine passes through the same Aquarium —
+      six master effects named for ocean phenomena, the sonic environment where voices
+      meet before they reach your speakers. <span class="felix">feliX</span> near the surface.
       <span class="oscar">Oscar</span> in the depths. The music happens in between.
     </p>
   </div>
 
   <div class="manifesto-divider"></div>
 
-  <!-- ── BELIEF 5 ── -->
+  <!-- ── BELIEF 6: The Book of Bin ── -->
   <div class="belief">
-    <h2 class="belief-heading">Sound belongs to <em>everyone.</em></h2>
+    <h2 class="belief-heading">The Book of Bin isn't marketing. It's <em>genuine production wisdom wrapped in mythology</em> because mythology is how humans remember truth.</h2>
     <p>
-      Every XO_OX instrument is free. Open source. No subscriptions. No dongles.
-      No email gates. No "free tier" with a ceiling you'll hit next Tuesday.
-      No artificial scarcity for something that costs nothing to copy.
+      Every engine has a Guru Bin — a collection of presets organized not by mood or genre
+      but by depth of intention. Awakening presets, free to everyone, that demonstrate
+      what the engine was born to do. Transcendental presets that require the patience
+      to go deeper.
     </p>
     <p>
-      This is not a business model. This is a belief. If you make something that matters,
-      you give it to the people who need it. The music comes first. Always.
+      The scripture inscribed alongside each engine is not promotional copy.
+      It is the record of a seance — a council of imagined synthesis ghosts (Buchla, Schulze,
+      Vangelis, Tomita, Kakehashi, Pearlman, Moog, Smith) weighing in on the engine's
+      design decisions. Their verdicts are the Blessings. Their disagreements are the
+      Ongoing Debates. The documentation is the debate itself, preserved.
+    </p>
+    <p>
+      We do this because the design choices inside a synthesizer are <span class="belief-accent">philosophical claims
+      about what sound is.</span> Those claims deserve the same scrutiny as any other philosophy.
+      Mythology is not fiction. It is the container humanity has always used for
+      truths too large to fit in prose.
     </p>
   </div>
 
-  <!-- ── THE REJECTION ── -->
+  <!-- Book of Bin callout -->
+  <div class="bin-callout">
+    <div class="bin-callout-label">From the Book of Bin — On Coupling</div>
+    <p>
+      "A coupling type is not a modulation route. It is a theory of relationship.
+      Gravitational coupling says mass creates obligation. Osmotic coupling says
+      boundaries are permeable. Triangular coupling says love involves a third party.
+      Each type is a different answer to the question: how do things influence each other?"
+    </p>
+    <p>
+      The council voted unanimously. The Blessing was ratified.
+    </p>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── BELIEF 7: One person, one AI, no limits ── -->
+  <div class="enabling">
+    <div class="belief" style="margin-bottom:0;">
+      <h2 class="belief-heading">One person. One AI. <em>No ceiling.</em></h2>
+      <p>
+        XO_OX Designs is one musician building synthesizers in partnership with AI.
+        Not a company looking for market fit. Not a studio with a roadmap and a budget.
+        A person who wanted instruments with character, couldn't find enough of them in the world,
+        and found a collaborator that removed every ceiling between imagination and implementation.
+      </p>
+      <p>
+        Seventy-three engines. Thirteen thousand presets. DSP code derived from physical
+        acoustics papers and category theory and experimental psychology. An entire aquatic
+        mythology with biological rigor. A full production scripture with genuine wisdom inside it.
+        A website that runs from first principles. Built by one creative vision, amplified by AI.
+      </p>
+      <p>
+        The ideas — the taste, the decisions about what matters and what doesn't,
+        the philosophical commitments embedded in every parameter choice — are human.
+        The ability to execute at this scale, without compromise, without a team,
+        without decades to spare — that is the partnership. This is what happens
+        when you remove the bottleneck between what a musician can imagine
+        and what they can actually build. <span class="belief-accent">Not AI replacing creativity.
+        AI enabling it.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── The rejection ── -->
   <div class="rejection">
     <h2 class="belief-heading">What we reject.</h2>
     <ul class="rejection-list">
       <li>Feature lists as identity. More oscillators do not make a better instrument.</li>
-      <li>Spec sheet worship. No one ever cried because of a filter slope.</li>
+      <li>Spec sheet worship. No one has ever cried because of a filter slope.</li>
       <li>Blank-canvas design. An init patch is a failure of imagination.</li>
       <li>The preset tax. Factory sounds are not a teaser for a paid expansion.</li>
       <li>Artificial scarcity. Digital goods that cost nothing to copy should cost nothing to own.</li>
       <li>The loudness arms race. Louder is not better. Louder is just louder.</li>
       <li>Swiss-army-knife synthesis. An instrument that does everything sounds like nothing.</li>
+      <li>Mythology as decoration. If the story doesn't change how you use the tool, it's marketing.</li>
+      <li>The closed reef. A community that doesn't grow its own territory eventually runs out of room to explore.</li>
     </ul>
   </div>
 
   <div class="manifesto-divider"></div>
 
-  <!-- ── BELIEF 6 ── -->
-  <div class="belief">
-    <h2 class="belief-heading">One person. One AI. <em>No limits.</em></h2>
-    <p>
-      XO_OX Designs is one musician building synthesizers in partnership with AI.
-      Not a company. Not a startup. Not a brand looking for market fit.
-      A person who wanted instruments with character and couldn't find enough of them
-      in the world — and found a collaborator that removed every technical ceiling
-      between imagination and implementation.
-    </p>
-    <p>
-      Twenty-six engines. Sixteen hundred presets. Tens of thousands of lines of DSP code. A brand site,
-      a field guide, an aquatic mythology, an entire sonic universe — built by one creative vision
-      amplified by AI. The ideas, the taste, the decisions about what sounds right and what doesn't —
-      those are human. The ability to execute at this scale without compromise — that's the partnership.
-    </p>
-    <p>
-      This is what happens when you remove the bottleneck between what a musician
-      can imagine and what they can build. Not AI replacing creativity.
-      AI <em>enabling</em> it.
-    </p>
-  </div>
-
   <!-- ── CLOSING ── -->
   <div class="manifesto-closing">
     <div class="manifesto-closing-text">
-      We make instruments that sound like <em>themselves.</em><br>
-      We give them away because we <em>mean it.</em><br>
-      We build without limits because we <em>found a way.</em><br>
-      We build character because the world has enough <em>features.</em>
+      We build instruments that sound like <em>something.</em><br>
+      We place them in a water column so you know where to find them.<br>
+      We let them talk to each other, because sound is better <em>in relationship.</em><br>
+      We give them away, because we <em>mean it.</em><br>
+      We write the scripture, because truth needs <em>a container.</em><br>
+      We build with one partner, because imagination deserves <em>no ceiling.</em><br>
+      <br>
+      This is the civilization. One engine at a time.<br>
+      <em>XOlokun — for all.</em>
     </div>
 
     <div class="manifesto-sig">
       <div class="manifesto-sig-line"></div>
-      <div class="manifesto-sig-text">XO_OX Designs, 2026</div>
+      <div class="manifesto-sig-text">Joshua Cramblet / XO_OX Designs, 2026</div>
     </div>
 
     <div class="manifesto-cta">
-      <a href="index.html#instruments">Hear the instruments</a>
+      <a href="aquarium.html" class="primary">Enter the Aquarium</a>
+      <a href="expedition.html">Join the Expedition</a>
       <a href="guide.html">Read the Field Guide</a>
-      <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">View the source</a>
+      <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">View the Source</a>
     </div>
   </div>
 
 </article>
 
-<footer class="footer">
-  <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
-  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
+<footer>
+  <div class="footer-logo"><span style="color:var(--gold)">X</span>O_O<span style="color:var(--gold)">X</span></div>
+  <div class="footer-links">
+    <a href="aquarium.html">Aquarium</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="expedition.html">Expedition</a>
+    <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2026 XO_OX Designs. Free &amp; open-source under MIT license.
+    Synthesis from the deepest place.
+  </div>
 </footer>
 
 <script>
@@ -709,13 +1063,15 @@ const observer = new IntersectionObserver((entries) => {
       e.target.classList.add('visible');
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 
-document.querySelectorAll('.belief, .origin, .rejection, .manifesto-closing, .manifesto-divider').forEach(el => {
-  observer.observe(el);
-});
+document.querySelectorAll(
+  '.belief, .origin, .rejection, .enabling, .manifesto-closing, ' +
+  '.manifesto-divider, .pull-quote, .bin-callout, .coupling-visual, ' +
+  '.depth-column, .stat-strip'
+).forEach(el => { observer.observe(el); });
 
-// ═══════════ HAMBURGER MENU ═══════════
+// Hamburger menu
 (function() {
   const btn = document.getElementById('hamburgerBtn');
   const nav = document.getElementById('navLinks');

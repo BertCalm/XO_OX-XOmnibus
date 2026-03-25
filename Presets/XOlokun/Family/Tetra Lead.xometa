@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX in spotlight mode. A punchy, immediate lead voice with soprano brightness and fast vibrato. Short attack, moderate sustain \u2014 designed for melodic lines, not holding chords. Drama at 0.45 gives the partial field enough cohesion to track pitch cleanly while retaining shimmer. Filter envelope bites on velocity for expressive playing.",
+  "description": "feliX in spotlight mode. A punchy, immediate lead voice with soprano brightness and fast vibrato. Short attack, moderate sustain — designed for melodic lines, not holding chords. Drama at 0.45 gives the partial field enough cohesion to track pitch cleanly while retaining shimmer. Filter envelope bites on velocity for expressive playing.",
   "tags": [
     "family",
     "felix",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

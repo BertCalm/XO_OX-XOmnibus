@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "Breath Machine",
+  "mood": "Prism",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Breath=0.8 dominates the spectrum \u2014 the voice is mostly air. LFO on breath creates mechanical inhale-exhale cycles. Minimal partials poke through the noise floor like buried tones. A breathing apparatus with a ghost inside it.",
+  "tags": [
+    "breath",
+    "noise",
+    "mechanical",
+    "ghost",
+    "air"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.4,
+    "movement": 0.65,
+    "density": 0.3,
+    "space": 0.45,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.2,
+      "opera_voice": 0.4,
+      "opera_stage": 0.45,
+      "opera_vowelA": 0,
+      "opera_vowelB": 4,
+      "opera_breath": 0.8,
+      "opera_effort": 0.25,
+      "opera_partials": 12,
+      "opera_resSens": 0.5,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 4.0,
+      "opera_vibDepth": 0.1,
+      "opera_tilt": -0.2,
+      "opera_filterCutoff": 5000.0,
+      "opera_filterRes": 0.08,
+      "opera_filterEnvAmt": 0.3,
+      "opera_filterA": 0.02,
+      "opera_filterD": 0.3,
+      "opera_filterS": 0.45,
+      "opera_filterR": 0.5,
+      "opera_ampA": 0.1,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.75,
+      "opera_ampR": 0.8,
+      "opera_lfo1Rate": 0.15,
+      "opera_lfo1Depth": 0.6,
+      "opera_lfo1Dest": 2,
+      "opera_lfo2Rate": 0.3,
+      "opera_lfo2Depth": 0.3,
+      "opera_lfo2Dest": 5,
+      "opera_modWheelDest": 2,
+      "opera_modWheelAmt": 0.7,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.6,
+      "opera_velToFilter": 0.4,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.15,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

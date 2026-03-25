@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Cold Seep (Oceanic I)",
+  "name": "Cold Seep",
   "mood": "Submerged",
   "engines": [
     "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A cold methane seep community — chemosynthetic boid life in slow steady cycles at extreme depth.",
+  "description": "A cold methane seep community \u2014 chemosynthetic boid life in slow steady cycles at extreme depth.",
   "tags": [
     "cold",
     "seep",

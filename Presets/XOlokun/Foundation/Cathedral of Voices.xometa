@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chorus=0.8, Stage=0.9 \u2014 maximum space, maximum ensemble. Medium sync with open A vowel and operatic vibrato. An entire cathedral choir from a single key. Let the reverb do the work.",
+  "description": "Chorus=0.8, Stage=0.9 — maximum space, maximum ensemble. Medium sync with open A vowel and operatic vibrato. An entire cathedral choir from a single key. Let the reverb do the work.",
   "tags": [
     "choir",
     "cathedral",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

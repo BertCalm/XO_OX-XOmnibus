@@ -12,16 +12,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.4,
-    "COUPLING": 0.13,
-    "MOVEMENT": 0.55,
-    "SPACE": 0.91
+    "MACHINE": 0.4,
+    "SPACE": 0.13,
+    "PUNCH": 0.55,
+    "MUTATE": 0.91
   },
   "mood": "Aether",
   "name": "Glacial Machine",
@@ -46,5 +46,6 @@
     "pairs": []
   },
   "tempo": null,
-  "description": "Vast and otherworldly, shimmering, crystalline lead. Let it breathe — the space is the instrument."
+  "description": "Vast and otherworldly, shimmering, crystalline lead. Let it breathe — the space is the instrument.",
+  "tier": "awakening"
 }

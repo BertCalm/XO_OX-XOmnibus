@@ -10,16 +10,16 @@
   "couplingIntensity": "None",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.75,
-    "MOVEMENT": 0.97,
-    "COUPLING": 0.0,
-    "SPACE": 0.06
+    "MACHINE": 0.75,
+    "PUNCH": 0.97,
+    "SPACE": 0.0,
+    "MUTATE": 0.06
   },
   "coupling": {
     "pairs": []
@@ -43,5 +43,6 @@
     "percussion",
     "barrage"
   ],
-  "description": "All 8 voices triggered in a 32nd-note fusillade — rhythm as violence."
+  "description": "All 8 voices triggered in a 32nd-note fusillade — rhythm as violence.",
+  "tier": "awakening"
 }

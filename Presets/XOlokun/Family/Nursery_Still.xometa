@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.46,
+      "destination": "ORACLE",
+      "source": "OPAL",
+      "type": "TIMBRE_BLEND"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "dna": {
+    "aggression": 0.593,
+    "brightness": 0.913,
+    "density": 0.89,
+    "movement": 0.048,
+    "space": 0.067,
+    "warmth": 0.499
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Nursery Still",
+  "parameters": {
+    "Opal": {
+      "level": 0.75,
+      "pan": -0.024
+    },
+    "Oracle": {
+      "level": 0.763,
+      "pan": 0.004
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "bright",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

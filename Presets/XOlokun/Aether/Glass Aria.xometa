@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin Awakening #10. High partials only \u2014 spectral tilt +0.8 suppresses the fundamental and lifts the overtone series into crystalline prominence. Total synchrony at high register (C5+) produces singing crystal: fragile, precise, otherworldly. Minimal breath, zero detune. Pure mathematics rendered as glass.",
+  "description": "Guru Bin Awakening #10. High partials only — spectral tilt +0.8 suppresses the fundamental and lifts the overtone series into crystalline prominence. Total synchrony at high register (C5+) produces singing crystal: fragile, precise, otherworldly. Minimal breath, zero detune. Pure mathematics rendered as glass.",
   "tags": [
     "glass",
     "crystal",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

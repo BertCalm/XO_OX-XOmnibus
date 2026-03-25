@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A voice that rings like a bell. High sync forces partial alignment while the formant shape (between I and E) adds a vocal quality to the crystalline strike. Fast attack, long decay and release create the bell envelope. Each note is simultaneously a human vowel and a metallic resonance \u2014 two things that should not coexist.",
+  "description": "A voice that rings like a bell. High sync forces partial alignment while the formant shape (between I and E) adds a vocal quality to the crystalline strike. Fast attack, long decay and release create the bell envelope. Each note is simultaneously a human vowel and a metallic resonance — two things that should not coexist.",
   "tags": [
     "bell",
     "vocal",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

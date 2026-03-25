@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.6059,
-    "COUPLING": 0.8941,
-    "MOVEMENT": 0.0766,
-    "SPACE": 0.6182
+    "MACHINE": 0.6059,
+    "SPACE": 0.8941,
+    "PUNCH": 0.0766,
+    "MUTATE": 0.6182
   },
   "mood": "Entangled",
   "name": "Honey Flux 2",
@@ -71,5 +71,6 @@
     "intimate"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

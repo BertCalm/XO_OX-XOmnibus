@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.455,
-    "COUPLING": 0.886,
-    "MOVEMENT": 0.927,
-    "SPACE": 0.576
+    "MACHINE": 0.455,
+    "SPACE": 0.886,
+    "PUNCH": 0.927,
+    "MUTATE": 0.576
   },
   "mood": "Entangled",
   "name": "RAMPAGE",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

@@ -1,5 +1,5 @@
 # Documentation Index
-Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 250+ files
+Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdirectories
 
 ---
 
@@ -296,9 +296,9 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 250+ files
 
 ---
 
-## Guild Reports (`guild_reviews/`, `guild-reports/`)
+## Guild Reports (`guild-reviews/`, `guild-reports/`)
 
-- [guild_reviews/](guild_reviews/) — Producer's Guild review files
+- [guild-reviews/](guild-reviews/) — Producer's Guild review files
 - [guild-reports/](guild-reports/) — Guild report outputs
 
 ---
@@ -341,5 +341,38 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 250+ files
 
 Continuous scanning for open-source resources relevant to XOlokun: JUCE UI, audio visualization, Figma assets, MPE/input devices, ocean visualization, design systems.
 
-- [research/continuous-scan-2026-03-24.md](research/continuous-scan-2026-03-24.md) — **Scan 2026-03-24**: 42 resources across 8 domains. P0 finds: melatonin_blur, Vital UI, three.quarks+ocean shader, audioMotion-analyzer, SeaSynth Figma, WeAreROLI/mpejs, tonaljs, shadcn/ui.
+- [research/continuous-scan-2026-03-24.md](sweeps/continuous-scan-2026-03-24.md) — **Scan 2026-03-24**: 42 resources across 8 domains. P0 finds: melatonin_blur, Vital UI, three.quarks+ocean shader, audioMotion-analyzer, SeaSynth Figma, WeAreROLI/mpejs, tonaljs, shadcn/ui.
+
+---
+
+## Session Logs (`sessions/`)
+
+Chronological session handoff notes and readouts — internal operational history.
+
+- [sessions/](sessions/) — Session handoff documents (2026-03-14 through present)
+- Includes: `session-handoff-2026-03-20.md`, `session-handoff-2026-03-21.md`, `session-handoff-2026-03-22.md`, `session-handoff-xoffering-build.md`, `2026-03-14-session-readout.md`, `sprint_report_2026-03-18.md`, `morning_plan_2026-03-20.md`
+
+---
+
+## QA Sweep Reports (`sweeps/`)
+
+Point-in-time quality sweep reports — codebase, DSP, coupling, UI, presets.
+
+- [sweeps/](sweeps/) — 20 sweep reports from 2026-03-20 through 2026-03-24
+- Key sweeps: `sweep-dsp-safety`, `sweep-code-quality`, `sweep-coupling-deep`, `sweep-preset-deep`, `sweep-ui-architecture`, `sweep-build-deep`, rounds 3–9
+
+---
+
+## Build Logs (`build-logs/`)
+
+Build verification reports and sentinel outputs.
+
+- [build-logs/](build-logs/) — Build verification logs: `build_verification_8h`, `11j`, `12j`; `build-sentinel-2026-03-20.md`
+
+---
+
+## xometa Schema (`specs/`)
+
+- [specs/xometa_schema.json](specs/xometa_schema.json) — `.xometa` JSON schema definition (moved from Docs root)
+- [specs/xometa_examples.json](specs/xometa_examples.json) — `.xometa` example files (moved from Docs root)
 

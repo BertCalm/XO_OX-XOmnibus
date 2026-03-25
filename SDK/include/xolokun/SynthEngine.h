@@ -1,17 +1,21 @@
 #pragma once
 // xolokun-engine-sdk — SynthEngine.h
-// Standalone interface — no JUCE dependency at the boundary.
-// Community engine developers implement this interface.
 //
-// All JUCE types are replaced with plain C++ equivalents:
-//   juce::AudioBuffer<float>  →  StereoBuffer (float** + counts)
-//   juce::MidiBuffer          →  MidiEventList (struct array)
+// This is the contract. Every engine in XOlokun — all 73 built-in engines and
+// every community engine loaded at runtime — implements this interface.
+//
+// The boundary is deliberately JUCE-free so community developers can build,
+// test, and validate engines without the full JUCE toolchain. Plain C++17 only.
+//
+// JUCE type equivalents used here:
+//   juce::AudioBuffer<float>  →  StereoBuffer    (float** + sample count)
+//   juce::MidiBuffer          →  MidiEventList   (pointer + event count)
 //   juce::String              →  std::string
-//   juce::Colour              →  Colour (uint8 RGBA)
+//   juce::Colour              →  Colour          (uint8 RGBA)
 //
-// When building inside XOlokun, the adapter layer converts between
-// JUCE types and these SDK types. When building standalone, developers
-// work with these types directly.
+// When an engine runs inside XOlokun, a thin adapter layer converts between
+// these SDK types and JUCE's native types. The adapter is invisible to engine
+// authors — you write against this interface and it just works.
 
 #include "CouplingTypes.h"
 #include <string>
@@ -117,13 +121,29 @@ public:
     virtual void renderBlock (StereoBuffer& buffer, const MidiEventList& midi) = 0;
 
     //--- Coupling (Cross-Engine Modulation) -----------------------------------
+    //
+    // Coupling is what makes XOlokun more than a multi-timbral host. Engines
+    // send audio and modulation signals to each other in real time through the
+    // MegaCouplingMatrix. Two roles:
+    //
+    //   Sender   — getSampleForCoupling() provides your signal to other engines.
+    //              Must be O(1): return a cached value, never compute on the spot.
+    //
+    //   Receiver — applyCouplingInput() delivers the source engine's signal.
+    //              Accumulate the modulation; consume it in the next renderBlock().
+    //
+    // Both methods have safe no-op defaults — implement only the types you use.
 
-    /// Return a cached output sample for coupling reads. O(1).
-    /// @param channel  0=left, 1=right, 2=envelope level.
+    /// Return a cached output sample so other engines can read your signal.
+    /// Called O(numSamples) times per block for active coupling routes — must be O(1).
+    /// @param channel      0 = left, 1 = right, 2 = envelope level.
     /// @param sampleIndex  Sample offset within the last rendered block.
-    virtual float getSampleForCoupling (int channel, int sampleIndex) const { (void)channel; (void)sampleIndex; return 0.0f; }
+    virtual float getSampleForCoupling (int channel, int sampleIndex) const
+    { (void)channel; (void)sampleIndex; return 0.0f; }
 
-    /// Receive modulation from another engine.
+    /// Receive a modulation signal from another engine before your renderBlock() runs.
+    /// Accumulate into a member variable; read and reset it inside renderBlock().
+    /// Unrecognized coupling types should be silently ignored.
     virtual void applyCouplingInput (CouplingType type, float amount,
                                      const float* sourceBuffer, int numSamples)
     { (void)type; (void)amount; (void)sourceBuffer; (void)numSamples; }
@@ -141,16 +161,19 @@ public:
 
     //--- Identity -------------------------------------------------------------
 
-    /// Unique engine identifier (e.g. "OddfeliX", "Obrix").
+    /// Unique engine identifier — must be an O-word, e.g. "Onyx", "Orbital".
+    /// Frozen once registered: presets depend on it.
     virtual std::string getEngineId() const = 0;
 
-    /// Accent colour for UI theming.
+    /// Accent colour used throughout the UI for this engine's controls and headers.
+    /// Each engine has its own colour; the Gallery Model's warm white shell frames it.
+    /// Default is a neutral grey — override this to give your engine a personality.
     virtual Colour getAccentColour() const { return { 128, 128, 128 }; }
 
-    /// Maximum polyphony.
+    /// Maximum simultaneous voices (polyphony ceiling).
     virtual int getMaxVoices() const { return 1; }
 
-    /// Currently sounding voices.
+    /// Number of voices currently producing audio. Used for CPU load display.
     virtual int getActiveVoiceCount() const { return 0; }
 };
 

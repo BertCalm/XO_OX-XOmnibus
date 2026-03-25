@@ -29,7 +29,7 @@
     "FRACTURE"
   ],
   "mood": "Atmosphere",
-  "name": "Alien Tongue (Odyssey)",
+  "name": "Alien Tongue",
   "parameters": {
     "Odyssey": {
       "drift_attack": 200.0,

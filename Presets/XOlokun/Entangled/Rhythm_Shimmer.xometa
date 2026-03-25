@@ -5,10 +5,10 @@
   "couplingIntensity": "Moderate",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "coupling": {
     "pairs": [
@@ -27,7 +27,7 @@
     "Odyssey",
     "Onset"
   ],
-  "description": "Onset rhythm drives Drift shimmer amount \u2014 beats create harmonic sparkle.",
+  "description": "Onset rhythm drives Drift shimmer amount — beats create harmonic sparkle.",
   "tags": [
     "drift",
     "onset",
@@ -73,5 +73,6 @@
       "perc_macro_punch": 0.4,
       "perc_macro_space": 0.55
     }
-  }
+  },
+  "tier": "awakening"
 }

@@ -6,9 +6,9 @@
     "Outwit",
     "Onset"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT step events (audio transients) sent as FM to ONSET \u2014 each CA cell activation becomes a micro-percussion trigger, creating cellular rhythm at sample resolution.",
+  "description": "OUTWIT step events (audio transients) sent as FM to ONSET — each CA cell activation becomes a micro-percussion trigger, creating cellular rhythm at sample resolution.",
   "tags": [
     "entangled",
     "audio-to-fm",
@@ -17,10 +17,10 @@
     "cellular"
   ],
   "macroLabels": [
-    "CHARACTER",
+    "MACHINE",
     "CHAOS",
-    "COUPLING",
-    "SPACE"
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Strong",
   "tempo": null,
@@ -72,5 +72,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

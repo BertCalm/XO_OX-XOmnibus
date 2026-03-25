@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.464,
-    "COUPLING": 0.612,
-    "MOVEMENT": 0.377,
-    "SPACE": 0.662
+    "MACHINE": 0.464,
+    "SPACE": 0.612,
+    "PUNCH": 0.377,
+    "MUTATE": 0.662
   },
   "mood": "Foundation",
   "name": "Flux Deep",
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

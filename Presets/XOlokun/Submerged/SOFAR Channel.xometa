@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The Sound Fixing and Ranging channel \u2014 a horizontal layer in the deep ocean where sound velocity reaches its minimum, trapping acoustic energy for thousands of miles. This preset lives there: extremely low fundamental, minimal high-frequency content, vast reverberant space. The slow LFO breathes the formant like pressure waves bending through the thermocline. Patient, infinite, lonely.",
+  "description": "The Sound Fixing and Ranging channel — a horizontal layer in the deep ocean where sound velocity reaches its minimum, trapping acoustic energy for thousands of miles. This preset lives there: extremely low fundamental, minimal high-frequency content, vast reverberant space. The slow LFO breathes the formant like pressure waves bending through the thermocline. Patient, infinite, lonely.",
   "tags": [
     "submerged",
     "SOFAR",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

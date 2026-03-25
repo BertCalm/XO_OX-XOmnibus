@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum clarity. High drama, bright tilt, soprano formant, open filter. Every partial is visible, every frequency ratio precise, every spectral peak sharp as a cut diamond facet. This is the vocal engine stripped of all softness \u2014 pure spectral geometry. Velocity maps to filter for expressive brightness control.",
+  "description": "Maximum clarity. High drama, bright tilt, soprano formant, open filter. Every partial is visible, every frequency ratio precise, every spectral peak sharp as a cut diamond facet. This is the vocal engine stripped of all softness — pure spectral geometry. Velocity maps to filter for expressive brightness control.",
   "tags": [
     "diamond",
     "clarity",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

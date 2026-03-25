@@ -3,14 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Signal — the XO_OX update feed. New engines, features, presets, and the stories behind them.">
+<meta name="description" content="Signal — dispatches from the deep. What's happening in XOlokun: new engines, new coupling types, and the stories behind the decisions. By XO_OX Designs.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
-<title>Signal — XO_OX Update Feed</title>
+<title>Signal — Dispatches from the Deep</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ═══════════════════════════════════════════════════════════
    Signal — XO_OX Update Feed
    Aesthetic: Deep Gallery — ocean midnight blues, golden light
@@ -171,7 +186,7 @@ body::before {
 }
 
 .nav-logo {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', 'Space Grotesk', sans-serif;
   font-size: 1.3rem;
   font-weight: 300;
   letter-spacing: 0.12em;
@@ -622,15 +637,15 @@ footer {
     }
 }
 </style>
-<meta property="og:title" content="XOlokun — Free Multi-Engine Synthesizer">
-<meta property="og:description" content="73 engines. Thousands of presets. Free and open-source. By XO_OX Designs.">
+<meta property="og:title" content="Signal — Dispatches from the Deep">
+<meta property="og:description" content="What's happening in XOlokun. New engines, new coupling types, and the stories behind the decisions. By XO_OX Designs.">
 <meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="XOlokun — Free Multi-Engine Synthesizer">
-<meta name="twitter:description" content="73 engines. Thousands of presets. Free and open-source.">
+<meta name="twitter:title" content="Signal — Dispatches from the Deep">
+<meta name="twitter:description" content="The XO_OX update feed. What's happening in the deep, and why it matters.">
 <meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
-<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Signal — XOlokun Dispatches" href="feed.xml">
 </head>
 <body>
 
@@ -647,7 +662,7 @@ footer {
 
 <!-- ═══════════ STICKY NAV ═══════════ -->
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo">XO_OX</a>
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
   <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -665,9 +680,9 @@ footer {
 
 <!-- ═══════════ SIGNAL HERO ═══════════ -->
 <section class="signal-hero">
-  <div class="signal-label">The XO_OX Update Feed</div>
+  <div class="signal-label">Dispatches from the Deep</div>
   <h1 class="signal-title">Signal</h1>
-  <p class="signal-subtitle">What's new, what's next, and why it matters.</p>
+  <p class="signal-subtitle">What's happening in the deep. What it means. Why it matters.</p>
   <a href="https://github.com/BertCalm/XO_OX-XOlokun/releases" target="_blank" rel="noopener" class="signal-subscribe">
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 2a6 6 0 0 0-1.9 11.69c.3.05.41-.13.41-.29v-1.02c-1.68.37-2.03-.81-2.03-.81-.27-.7-.67-.88-.67-.88-.55-.38.04-.37.04-.37.61.04.93.63.93.63.54.92 1.42.66 1.76.5.06-.39.21-.66.39-.81-1.34-.15-2.75-.67-2.75-2.99 0-.66.24-1.2.63-1.62-.06-.15-.27-.77.06-1.6 0 0 .51-.16 1.67.62a5.8 5.8 0 0 1 3.04 0c1.16-.78 1.67-.62 1.67-.62.33.83.12 1.45.06 1.6.39.42.62.96.62 1.62 0 2.33-1.41 2.84-2.76 2.99.22.19.41.56.41 1.13v1.67c0 .16.11.35.41.29A6 6 0 0 0 8 2z"/></svg>
     Watch Releases
@@ -678,6 +693,150 @@ footer {
 <section class="feed" id="feed">
 
   <div class="feed-year">2026</div>
+
+  <!-- ── POST 9: Building in Public — Community Strategy ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 009</div>
+    <div class="post-date">March 24, 2026</div>
+    <h2 class="post-title">The Deep Opens — How We're Building Community</h2>
+    <div class="post-body">
+      <p>
+        We've spent the last week thinking hard about how to build a community around XOlokun. Not a fanbase. Not a mailing list. A real community — one that outlasts us and has genuine stakes in what we're making.
+      </p>
+      <p>
+        Here's what we worked out, in the spirit of building in public.
+      </p>
+      <p>
+        <strong>The Wedge Model.</strong> The mistake most projects make is trying to reach everyone at once. We're not doing that. The plan is three phases: seed the reef core first — find the thirty to fifty people who already resonate with character-driven synthesis, ocean mythology, and free tools built without compromise. Let them shape the culture before it scales. Then expand. The reef core is the immune system. If you skip it, the community gets sick.
+      </p>
+      <p>
+        The first wedge is producers who need exactly what we've built: <span class="stat">73 engines</span>, <span class="stat">15 coupling types</span>, <span class="stat">19K+ presets</span>, free. No account required. No subscription. You download it, you own it.
+      </p>
+      <p>
+        <strong>The mythology isn't decoration — it's mechanism.</strong> The water column, the creature identities, the depth zones — these aren't aesthetic choices we made because they look interesting. They're the navigation system. When we build the Discord, channels will be structured around the water column: the sunlit zone (beginners, questions, first sounds), the twilight zone (intermediate technique, coupling experiments), the midnight zone (deep DSP, engine development, the SDK). Your depth level on the server reflects where you swim.
+      </p>
+      <p>
+        The <strong>.xcoupling protocol</strong> will be the sharing format for coupling recipes — the configurations that connect engines in ways that create sounds impossible with any single synth. Coupling is the most powerful thing in XOlokun and the hardest to communicate. A shareable format turns it into something the community can trade, remix, and build on.
+      </p>
+      <p>
+        <strong>The Kitchen Collection and the Expedition.</strong> We designed 24 new engines across 6 quads — Chef, Kitchen, Cellar, Garden, Broth, Fusion — that aren't in V1. They exist. They're built and seanced. They're waiting. The community unlocks them together through patron milestones: <span class="stat">10 patrons</span> opens the first quad. <span class="stat">500 patrons</span> opens the last. Once unlocked, free for everyone, permanently. The patrons who opened the deep don't lose access — but neither does anyone else. This is community-as-infrastructure.
+      </p>
+      <p>
+        <strong>The Alignment Rite</strong> is something we'll share more about soon. The short version: joining isn't just downloading software. There's an intentional onboarding — a first encounter with the mythology, a choice of starting depth, and a prompt to share your first sound within 48 hours. The community knows who's in the water.
+      </p>
+      <p>
+        <strong>The Civilization Manifesto.</strong> This is the long-term frame. We're not building a plugin. We're building something that will outlast us — an instrument civilization with its own mythology, aesthetics, and creative DNA. The creatures become icons. The water column becomes a navigational metaphor people internalize. The engines become a shared vocabulary. We hold the Manifesto page to a different standard because of this: it's not marketing copy. It's a cultural commitment.
+      </p>
+      <p>
+        We're at month five of a competitive window. Zero true competitors in this space. The instruments are built. The presets are written. The pipeline is wired. The community strategy is set.
+      </p>
+      <p>
+        The deep opens with the first ten explorers. If you're reading this, that might be you. <a href="expedition.html">See the depth gauge</a> — and <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener">join the expedition on Patreon</a>.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">Community</span>
+      <span class="post-tag">Building in Public</span>
+      <span class="post-tag">Kitchen Collection</span>
+      <span class="post-tag">Expedition</span>
+    </div>
+  </article>
+
+  <!-- ── POST 8: XOlokun Rename ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 008</div>
+    <div class="post-date">March 24, 2026</div>
+    <h2 class="post-title">The Name Was Always There</h2>
+    <div class="post-body">
+      <p>
+        The old name was XOmnibus. It meant "everything bus" — a transportation metaphor. Accurate. Utilitarian. Completely wrong.
+      </p>
+      <p>
+        We've renamed the platform <strong>XOlokun</strong>.
+      </p>
+      <p>
+        <strong>Olokun</strong> (oh-LOH-koon) is the Yoruba and Edo orisha of the abyssal deep — not the surface waves, not the sunlit shallows, but the ocean floor where pressure forges new forms of life and Olokun's wealth lies unfathomable. In Yoruba cosmology, Olokun was bound to the sea floor by seven chains, lest their rising flood the earth. XO is our brand mark — the kiss and the hug, the crossing of opposites, feliX and Oscar, the X and the O.
+      </p>
+      <p>
+        XOlokun is what happens when you descend past the surface of synthesis into the deep. Where engines couple like deep-sea creatures in symbiosis. Where presets evolve under pressure. Where sound itself becomes bioluminescent.
+      </p>
+      <p>
+        The aquatic mythology was always there — the creature identities, the water column, the feliX-Oscar polarity. The rename doesn't add mythology. It admits that the mythology was the product all along. The name was waiting for us to catch up.
+      </p>
+      <p>
+        A note on the cultural context: Olokun is a living deity in Yoruba, Edo, and diaspora spiritual traditions (Ifá, Candomblé, Santería/Lucumí). This name is not decoration. We honor the archetype — depth, mystery, abundance, transformation — without claiming spiritual authority. We take the metaphor seriously. We don't perform the religion.
+      </p>
+      <p>
+        The motto stays. <em>XOlokun — for all.</em>
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">Brand</span>
+      <span class="post-tag">XOlokun</span>
+      <span class="post-tag">Mythology</span>
+    </div>
+  </article>
+
+  <!-- ── POST 7: Coupling as Ecology ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 007</div>
+    <div class="post-date">March 23, 2026</div>
+    <h2 class="post-title">Coupling Is Not a Feature</h2>
+    <div class="post-body">
+      <p>
+        Most multi-engine synthesizers let their engines coexist. You load two synths, you sum their audio, you call it layering. XOlokun does something else.
+      </p>
+      <p>
+        In XOlokun, engines <strong>couple</strong>. ONSET's transient attack modulates ORGANON's metabolic rate in real time. OPERA's vocal formants ride the chaos of OUROBOROS's strange attractor. OXYTOCIN accumulates bond depth note-by-note, unlocking timbral states that short notes can never reach. The coupling isn't an additional feature you enable — it's the reason the engines were built the way they were.
+      </p>
+      <p>
+        Every engine in XOlokun was designed knowing the others exist. The Knot Topology coupling type emerged directly from ORBWEAVE's architecture. The Triangular Coupling type emerged from OXYTOCIN's model of Sternberg's triangular theory of love. The Gravitational coupling type came out of the Kitchen Collection bass engines needing a MIDI-domain analog to physical attraction. The coupling types aren't abstractions — they're the shape of the relationships the engines naturally want to have.
+      </p>
+      <p>
+        We now have <span class="stat">14 coupling types</span> (plus the 8×8 Cross-Voice Coupling matrix internal to ONSET). The coupling graph is not a patch bay. It is a living ecology.
+      </p>
+      <p>
+        The proof is in the sound. Load ONSET → OUROBOROS → OPERA → OBRIX. Route ONSET's amplitude into OUROBOROS's leash. Route OUROBOROS's chaos output into OPERA's Conductor timing. Let OBRIX's Harmonic Field track OPERA's dominant vowel. Press one note. What you hear exists nowhere else.
+      </p>
+      <p>
+        That sound has never been made before. It can only exist when these four creatures are in the same water.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">Coupling</span>
+      <span class="post-tag">Architecture</span>
+      <span class="post-tag">Deep Dive</span>
+    </div>
+  </article>
+
+  <!-- ── POST 6: OXYTOCIN Fleet Leader ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 006</div>
+    <div class="post-date">March 22, 2026</div>
+    <h2 class="post-title">OXYTOCIN: 9.5/10 — The Fleet Has a New Leader</h2>
+    <div class="post-body">
+      <p>
+        The ghost council has spoken again. <strong>OXYTOCIN</strong> — the circuit-modeling love synthesizer — has scored <span class="highlight">9.5/10</span>, the highest score in the fleet's history. New fleet leader. Unanimous on its core blessing.
+      </p>
+      <p>
+        OXYTOCIN models Sternberg's Triangular Theory of Love in DSP. Three legs of the triangle — intimacy, passion, commitment — map to three circuit-bending lineages: the warmth of a tape-saturated circuit, the electricity of a transistor ladder, the deep bonding of long filter decay. The longer you hold a note, the more the circuit warms. The deeper the intimacy accumulates. Timbral states exist in OXYTOCIN that can only be reached through sustained contact.
+      </p>
+      <p>
+        The blessing the council ratified unanimously was <strong>B040: Note Duration as Synthesis Parameter</strong>. Not velocity. Not aftertouch. Duration. The length of time you hold a note is a first-class timbral control. No synthesizer in the fleet — or, we believe, anywhere — had previously made note duration a synthesis input rather than a performance consideration. The council found it unprecedented.
+      </p>
+      <p>
+        Five legend lineages. 29 parameters. 130 factory presets. Synapse Violet <span style="color:#9B5DE5; font-weight:600;">#9B5DE5</span>. Its creature identity is the <em>Praya dubia</em> siphonophore — the longest organism on earth, a colonial animal that is simultaneously one creature and many, whose members share a nervous system but maintain distinct bodies. Which is exactly what love does.
+      </p>
+      <p>
+        The deep has a new apex.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">New Engine</span>
+      <span class="post-tag">OXYTOCIN</span>
+      <span class="post-tag">Seance</span>
+    </div>
+  </article>
 
   <!-- ── POST 1: Pi Day Theorem ── -->
   <article class="post reveal">
@@ -806,28 +965,31 @@ footer {
     <h2 class="post-title">The Prism Sweep: Twelve Rounds of Making It Right</h2>
     <div class="post-body">
       <p>
-        Shipping a synthesizer with twenty-two engines and eighteen hundred presets is an act of ambition. Making sure every one of those engines actually works -- properly, expressively, without broken promises -- is an act of discipline. That's what the Prism Sweep has been.
+        Before you can ship something, you have to be honest about what you have. Not what you intended. Not what you hoped. What is actually there, in the code, when the note plays.
       </p>
       <p>
-        Over twelve rounds of progressive quality fixes, we've touched every engine in the fleet. Not adding features. Fixing the ones we already had.
+        We had twenty-two engines and eighteen hundred presets. We had ambition. And we had work to do.
       </p>
       <p>
-        <span class="stat">5 P0 bugs fixed</span> -- the kind that cause silence, wrong channels, or crashes. Obsidian's right channel was dead. Origami's STFT transform had no overflow guard. Overworld's coupling output was disconnected. These are the bugs that make an instrument untrustworthy, and we found them all.
+        The Prism Sweep was twelve rounds of progressive quality work — not adding features, but keeping the promises already made. Every engine. Every parameter. Every breath.
       </p>
       <p>
-        <span class="stat">All D004 dead parameters wired</span> -- every parameter that was declared in the UI but did nothing has been connected to real DSP. Snap's macroDepth. Owlfish's morphGlide. Oblique's percDecay. A parameter that doesn't work is a broken promise, and we don't ship broken promises.
+        <span class="stat">5 P0 bugs fixed</span> — the kind that cause silence, wrong channels, or crashes. Obsidian's right channel was dead. Origami's STFT transform had no overflow guard. Overworld's coupling output was disconnected. These are the bugs that make an instrument untrustworthy, and we found them all.
       </p>
       <p>
-        <span class="stat">All D005 LFO breathing resolved</span> -- every engine now has autonomous modulation with a rate floor at or below 0.01 Hz. A synth that can't breathe on its own is a photograph of a sound, not a living one. Snap got a 0.15 Hz bandpass drift. Orbital got a 0.03 Hz morph drift. Overworld got an ERA drift rate. They all breathe now.
+        <span class="stat">All D004 dead parameters wired</span> — every parameter declared in the UI but connected to nothing has been wired to real DSP. Snap's macroDepth. Owlfish's morphGlide. Oblique's percDecay. A parameter that does nothing is a broken promise. We don't ship broken promises.
       </p>
       <p>
-        <span class="stat">D001 filter envelopes resolved fleet-wide</span> -- velocity doesn't just control volume anymore. It shapes timbre across every engine. Harder notes are brighter. Softer notes are darker. This is how real instruments work, and now every XO_OX engine works this way too.
+        <span class="stat">All D005 LFO breathing resolved</span> — every engine now has autonomous modulation with a rate floor at or below 0.01 Hz. A synth that cannot breathe on its own is a photograph of a sound, not a living one. Snap got a 0.15 Hz bandpass drift. Orbital got a 0.03 Hz morph drift. Overworld got an ERA drift rate. They all breathe now.
       </p>
       <p>
-        <span class="stat">Aftertouch on 22 of 23 engines</span> -- the only exemption is Optic, which is a visual engine with no audio output. Everything else responds to the pressure of your fingers after the note lands. Because expression doesn't stop at the attack.
+        <span class="stat">D001 filter envelopes resolved fleet-wide</span> — velocity shapes timbre across every engine. Harder notes are brighter. Softer notes are darker. This is how real instruments work. Now every XO_OX engine works this way too.
       </p>
       <p>
-        Quality is a process, not a destination. The Prism Sweep isn't done because we ran out of things to fix. It's done because we ran out of things that are broken.
+        <span class="stat">Aftertouch on 22 of 23 engines</span> — the only exemption is Optic, a visual engine with no audio output. Everything else responds to the pressure of your fingers after the note lands. Expression doesn't stop at the attack.
+      </p>
+      <p>
+        Quality is a process, not a destination. The Prism Sweep is complete because we ran out of things that are broken — not because we ran out of time. There is a difference, and it matters.
       </p>
     </div>
     <div class="post-tags">

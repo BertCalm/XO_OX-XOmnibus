@@ -18,10 +18,10 @@
     "prism"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "High",
   "tempo": null,
@@ -59,5 +59,6 @@
     "density": 0.489,
     "space": 0.957,
     "aggression": 0.1
-  }
+  },
+  "tier": "awakening"
 }

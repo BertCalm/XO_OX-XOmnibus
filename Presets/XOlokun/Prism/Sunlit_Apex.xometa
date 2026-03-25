@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "One reactive burst in vast space. Light source without surroundings.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.9,
+    "density": 0.0,
+    "movement": 0.22,
+    "space": 1.0,
+    "warmth": 0.87
+  },
+  "engines": [
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Sunlit Apex",
+  "parameters": {
+    "Optic": {
+      "optic_autoPulse": 0.15,
+      "optic_brightness": 0.9,
+      "optic_inputGain": 0.85,
+      "optic_movement": 0.2,
+      "optic_reactivity": 0.88,
+      "optic_wetDry": 0.92
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "reactive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

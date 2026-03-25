@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 1.0,
-    "COUPLING": 0.052,
-    "MOVEMENT": 0.562,
-    "SPACE": 0.994
+    "MACHINE": 1.0,
+    "SPACE": 0.052,
+    "PUNCH": 0.562,
+    "MUTATE": 0.994
   },
   "mood": "Foundation",
   "name": "Halo Vast",
@@ -71,5 +71,6 @@
     "gentle"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Drift Current",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Maximum drift value \u2014 grain read heads wander far from their anchors. Memory becomes distorted, smeared. Sounds played become unrecognizable but beautiful.",
+  "tags": [
+    "atmosphere",
+    "drift",
+    "distortion",
+    "smear",
+    "motion",
+    "beautiful"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.82,
+    "density": 0.68,
+    "space": 0.85,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.15,
+      "ombre_interference": 0.38,
+      "ombre_memoryDecay": 12.0,
+      "ombre_memoryGrain": 150.0,
+      "ombre_memoryDrift": 1.0,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.4,
+      "ombre_subLevel": 0.38,
+      "ombre_filterCutoff": 3500.0,
+      "ombre_filterReso": 0.22,
+      "ombre_attack": 0.8,
+      "ombre_decay": 2.0,
+      "ombre_sustain": 0.78,
+      "ombre_release": 4.5,
+      "ombre_level": 0.68,
+      "ombre_velCutoffScale": 0.25,
+      "ombre_lfo1Rate": 0.12,
+      "ombre_lfo1Depth": 0.48,
+      "ombre_lfo2Rate": 0.08,
+      "ombre_lfo2Depth": 0.38,
+      "ombre_macroCharacter": 0.82,
+      "ombre_macroMovement": 0.82,
+      "ombre_macroCoupling": 0.45,
+      "ombre_macroSpace": 0.88
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

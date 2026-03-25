@@ -784,13 +784,14 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .nav-logo {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', 'Space Grotesk', sans-serif;
   font-size: 1.3rem;
   font-weight: 300;
   letter-spacing: 0.12em;
   color: var(--text-primary);
   text-decoration: none;
 }
+.nav-logo .gold { color: var(--xo-gold, #E9C46A); }
 .hamburger {
   display: none;
   background: none;
@@ -851,7 +852,7 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
 <body>
 
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo">XO_OX</a>
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
   <button class="hamburger" aria-label="Toggle navigation">☰</button>
   <div class="nav-links">
     <a href="aquarium.html">Aquarium</a>

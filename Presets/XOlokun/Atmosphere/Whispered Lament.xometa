@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Almost entirely breath. Effort at minimum pushes the engine into whisper territory where noise dominates and only the faintest harmonic ghosts remain. The formant shape is still there \u2014 you can hear the vowel in the breath \u2014 but it is a voice remembered, not a voice present. Slow drift between A and I vowels.",
+  "description": "Almost entirely breath. Effort at minimum pushes the engine into whisper territory where noise dominates and only the faintest harmonic ghosts remain. The formant shape is still there — you can hear the vowel in the breath — but it is a voice remembered, not a voice present. Slow drift between A and I vowels.",
   "tags": [
     "whisper",
     "breath",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

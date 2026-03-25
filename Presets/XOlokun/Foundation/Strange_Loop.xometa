@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Strange Loop (Ouroboros)",
+  "name": "Strange Loop",
   "parameters": {
     "Ouroboros": {
       "ouro_chaosIndex": 0.4,

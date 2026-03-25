@@ -308,6 +308,9 @@ private:
     std::atomic<bool> shouldCancel { false };
     std::unique_ptr<juce::FileChooser> fileChooser;
 
+    // Forward declaration — full definition below in the private section.
+    struct PreviewAudioSource;
+
     // XDrip preview
     XDrip previewDrip;
     juce::TextButton previewPlayBtn { ">" };
@@ -370,14 +373,14 @@ private:
 
     void triggerPreviewForSelectedPreset()
     {
-        if (presetManager.library.empty()) return;
+        if (presetManager.getLibrary().empty()) return;
 
         // Use the selected preset, or the first one
         int idx = (selectedPresetIndex >= 0 &&
-                   selectedPresetIndex < (int)presetManager.library.size())
+                   selectedPresetIndex < (int)presetManager.getLibrary().size())
                       ? selectedPresetIndex : 0;
 
-        const auto& preset = presetManager.library[static_cast<size_t>(idx)];
+        const auto& preset = presetManager.getLibrary()[static_cast<size_t>(idx)];
         previewDrip.requestPreview(preset, dialogApvts);
         cachedThumbnail.clear();
         previewPlayBtn.setButtonText("...");
@@ -811,7 +814,7 @@ private:
     void updateSizeEstimate()
     {
         auto settings = getCurrentSettings();
-        int presetCount = juce::jmax(1, (int)presetManager.library.size());
+        int presetCount = juce::jmax(1, (int)presetManager.getLibrary().size());
         auto est = XOriginate::estimateExportSize(settings, presetCount);
 
         juce::String sizeStr;
@@ -835,7 +838,7 @@ private:
 
     void runValidation()
     {
-        auto result = XOriginate::validateBatch(presetManager.library);
+        auto result = XOriginate::validateBatch(presetManager.getLibrary());
 
         juce::String msg;
         if (result.valid)
@@ -935,7 +938,7 @@ private:
                 if (coverEngine.isNotEmpty())
                     config.coverEngine = coverEngine;
 
-                auto& presets = dialog.presetManager.library;
+                auto& presets = dialog.presetManager.getLibrary();
 
                 auto progressCb = [this](XOriginate::Progress& p)
                 {

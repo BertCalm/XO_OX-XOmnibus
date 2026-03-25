@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM coupling. Cellular automata selectively mutes and activates partials \u2014 the voice evolves like a living organism. Some partials are alive, others dormant, and the pattern shifts with every generation. The choir breathes with the biology of the automaton. Moderate sync ensures the living partials still seek each other.",
+  "description": "ORGANISM coupling. Cellular automata selectively mutes and activates partials — the voice evolves like a living organism. Some partials are alive, others dormant, and the pattern shifts with every generation. The choir breathes with the biology of the automaton. Moderate sync ensures the living partials still seek each other.",
   "tags": [
     "entangled",
     "organism",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

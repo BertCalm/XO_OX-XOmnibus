@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-10",
-  "description": "Rössler attractor pulled deep into sub territory. Heavy, grounded, slowly orbiting bass.",
+  "description": "R\u00f6ssler attractor pulled deep into sub territory. Heavy, grounded, slowly orbiting bass.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.1,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Gravity Well (Ouroboros I)",
+  "name": "Gravity Well",
   "parameters": {
     "Ouroboros": {
       "ouro_chaosIndex": 0.15,

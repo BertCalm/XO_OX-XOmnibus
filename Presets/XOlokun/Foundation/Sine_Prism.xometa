@@ -29,7 +29,7 @@
     "SPACE": 0.7263
   },
   "mood": "Foundation",
-  "name": "Sine Prism (Opal)",
+  "name": "Sine Prism",
   "parameters": {
     "Opal": {
       "opal_couplingBus": 0,

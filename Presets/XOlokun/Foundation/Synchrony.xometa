@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Total Kuramoto synchrony. Drama=1.0 locks all 32 partials into perfect integer ratios \u2014 crystalline, beyond-human purity. The sound of mathematical perfection made audible. Play slow chords and hear the universe hum.",
+  "description": "Total Kuramoto synchrony. Drama=1.0 locks all 32 partials into perfect integer ratios — crystalline, beyond-human purity. The sound of mathematical perfection made audible. Play slow chords and hear the universe hum.",
   "tags": [
     "crystalline",
     "pure",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

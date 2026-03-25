@@ -23,16 +23,16 @@
     "Origami"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.819,
-    "COUPLING": 0.818,
-    "MOVEMENT": 0.662,
-    "SPACE": 0.161
+    "MACHINE": 0.819,
+    "SPACE": 0.818,
+    "PUNCH": 0.662,
+    "MUTATE": 0.161
   },
   "mood": "Foundation",
   "name": "Tone Swirl",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

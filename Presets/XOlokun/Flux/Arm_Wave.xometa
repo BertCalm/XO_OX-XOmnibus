@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "name": "Arm Wave",
+  "mood": "Flux",
+  "engines": [
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Arms cycling at medium rate with spread create a sequential wave of modulation \u2014 octopus arms moving in procession like a wave rippling outward from the mantle.",
+  "tags": [
+    "flux",
+    "wave",
+    "sequential",
+    "arms",
+    "cyclic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": 100,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_wtPosition": 0.45,
+      "octo_wtScanRate": 0.4,
+      "octo_armCount": 7,
+      "octo_armBaseRate": 1.0,
+      "octo_armDepth": 0.6,
+      "octo_armSpread": 0.65,
+      "octo_chromaDepth": 0.35,
+      "octo_chromaFreq": 0.35,
+      "octo_chromaMorph": 0.4,
+      "octo_chromaSens": 0.4,
+      "octo_chromaSpeed": 0.4,
+      "octo_inkThreshold": 0.8,
+      "octo_inkDensity": 0.2,
+      "octo_inkDecay": 0.3,
+      "octo_inkMix": 0.1,
+      "octo_suckerFreq": 0.5,
+      "octo_suckerReso": 0.35,
+      "octo_suckerDecay": 0.25,
+      "octo_suckerMix": 0.2,
+      "octo_shiftMicro": 0.2,
+      "octo_shiftDrift": 0.15,
+      "octo_shiftGlide": 0.05,
+      "octo_filterCutoff": 5000.0,
+      "octo_filterReso": 0.35,
+      "octo_lfo1Rate": 1.0,
+      "octo_lfo1Depth": 0.45,
+      "octo_lfo1Shape": 0,
+      "octo_lfo2Rate": 1.8,
+      "octo_lfo2Depth": 0.3,
+      "octo_lfo2Shape": 0,
+      "octo_modAttack": 0.003,
+      "octo_modDecay": 0.4,
+      "octo_modSustain": 0.5,
+      "octo_modRelease": 0.35,
+      "octo_ampAttack": 0.004,
+      "octo_ampDecay": 0.5,
+      "octo_ampSustain": 0.6,
+      "octo_ampRelease": 0.4,
+      "octo_polyphony": 4,
+      "octo_level": 0.85,
+      "octo_macroCharacter": 0.5,
+      "octo_macroMovement": 0.7,
+      "octo_macroCoupling": 0.0,
+      "octo_macroSpace": 0.45
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

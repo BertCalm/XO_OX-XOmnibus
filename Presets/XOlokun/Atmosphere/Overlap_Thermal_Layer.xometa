@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Thermal Layer (Overlap I)",
+  "name": "Thermal Layer",
   "mood": "Atmosphere",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A warm, dense layer sitting below the surface — trefoil routing at low feedback creates a bed of warmth that supports anything placed on top. Not visible but felt. The heat that makes the cold meaningful.",
+  "description": "A warm, dense layer sitting below the surface \u2014 trefoil routing at low feedback creates a bed of warmth that supports anything placed on top. Not visible but felt. The heat that makes the cold meaningful.",
   "tags": [
     "warm",
     "dense",

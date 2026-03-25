@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Inspired by the monolith from 2001. A single, impossibly pure tone with maximum partials in perfect alignment. No formant coloring, no vibrato, no modulation \u2014 just the raw harmonic series at total synchrony. The sound is so clean it feels alien. It does not invite interaction. It transmits.",
+  "description": "Inspired by the monolith from 2001. A single, impossibly pure tone with maximum partials in perfect alignment. No formant coloring, no vibrato, no modulation — just the raw harmonic series at total synchrony. The sound is so clean it feels alien. It does not invite interaction. It transmits.",
   "tags": [
     "monolith",
     "alien",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

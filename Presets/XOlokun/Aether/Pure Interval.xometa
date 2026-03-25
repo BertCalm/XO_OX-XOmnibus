@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Just intonation locked. Drama at 0.9 forces partials into near-perfect integer frequency ratios. Play a fifth and hear the 3:2 ratio ring with zero beating. Play a major third and hear 5:4 lock in place. This is what harmony sounded like before equal temperament \u2014 pure, resonant, ancient.",
+  "description": "Just intonation locked. Drama at 0.9 forces partials into near-perfect integer frequency ratios. Play a fifth and hear the 3:2 ratio ring with zero beating. Play a major third and hear 5:4 lock in place. This is what harmony sounded like before equal temperament — pure, resonant, ancient.",
   "tags": [
     "JI",
     "interval",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

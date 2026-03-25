@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "Low Tide Reed",
+  "mood": "Foundation",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The middle register voice — neither soprano brightness nor baritone darkness. O-to-A vowel with warm tilt and moderate effort. Sits perfectly in the center of a mix. The reliable alto section.",
+  "tags": [
+    "lead",
+    "alto",
+    "warm",
+    "mid",
+    "reliable"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.3,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.45,
+      "opera_voice": 0.38,
+      "opera_stage": 0.3,
+      "opera_vowelA": 3,
+      "opera_vowelB": 0,
+      "opera_breath": 0.1,
+      "opera_effort": 0.55,
+      "opera_partials": 28,
+      "opera_resSens": 0.4,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": -5,
+      "opera_vibRate": 5.2,
+      "opera_vibDepth": 0.25,
+      "opera_tilt": -0.12,
+      "opera_filterCutoff": 6500.0,
+      "opera_filterRes": 0.03,
+      "opera_filterEnvAmt": 0.3,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.2,
+      "opera_filterS": 0.55,
+      "opera_filterR": 0.4,
+      "opera_ampA": 0.05,
+      "opera_ampD": 0.18,
+      "opera_ampS": 0.8,
+      "opera_ampR": 0.6,
+      "opera_lfo1Rate": 0.1,
+      "opera_lfo1Depth": 0.12,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 3.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.4,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.07,
+      "opera_portamento": 0.05,
+      "opera_unison": 1,
+      "opera_width": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

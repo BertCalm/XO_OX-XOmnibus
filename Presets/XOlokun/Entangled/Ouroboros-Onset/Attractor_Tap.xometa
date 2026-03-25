@@ -106,5 +106,6 @@
     "density": 0.5,
     "space": 0.2,
     "aggression": 0.35
-  }
+  },
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.684,
-    "COUPLING": 0.775,
-    "MOVEMENT": 0.255,
-    "SPACE": 0.665
+    "MACHINE": 0.684,
+    "SPACE": 0.775,
+    "PUNCH": 0.255,
+    "MUTATE": 0.665
   },
   "mood": "Foundation",
   "name": "Arctic Feather II",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, crystalline pad. Let it breathe — the space is the instrument."
+  "description": "Anchored and grounding, shimmering, crystalline pad. Let it breathe — the space is the instrument.",
+  "tier": "awakening"
 }

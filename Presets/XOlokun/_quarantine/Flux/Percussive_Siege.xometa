@@ -10,16 +10,16 @@
   "couplingIntensity": "None",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.7,
-    "MOVEMENT": 0.92,
-    "COUPLING": 0.3,
-    "SPACE": 0.12
+    "MACHINE": 0.7,
+    "PUNCH": 0.92,
+    "SPACE": 0.3,
+    "MUTATE": 0.12
   },
   "coupling": {
     "pairs": []
@@ -42,5 +42,6 @@
     "siege",
     "drums"
   ],
-  "description": "Wall of hits with zero mercy — pure rhythmic violence."
+  "description": "Wall of hits with zero mercy — pure rhythmic violence.",
+  "tier": "awakening"
 }

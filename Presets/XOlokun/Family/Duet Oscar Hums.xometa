@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The axolotl half of the duet. Low partial count, slow vibrato at 4 Hz \u2014 Oscar's languid warmth rendered as a baritone hum. Effort 0.3 keeps things in gentle mezzo territory where Oscar is most comfortable. Drama at 0.3 means partials barely synchronize, producing a warm, breathy haze rather than a crisp choir. The sound of contentment. Pair with feliX Sings for the full duet.",
+  "description": "The axolotl half of the duet. Low partial count, slow vibrato at 4 Hz — Oscar's languid warmth rendered as a baritone hum. Effort 0.3 keeps things in gentle mezzo territory where Oscar is most comfortable. Drama at 0.3 means partials barely synchronize, producing a warm, breathy haze rather than a crisp choir. The sound of contentment. Pair with feliX Sings for the full duet.",
   "tags": [
     "family",
     "oscar",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

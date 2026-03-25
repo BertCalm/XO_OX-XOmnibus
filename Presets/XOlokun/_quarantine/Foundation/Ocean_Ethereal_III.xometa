@@ -23,16 +23,16 @@
     "Ouroboros"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.687,
-    "COUPLING": 0.208,
-    "MOVEMENT": 0.706,
-    "SPACE": 0.665
+    "MACHINE": 0.687,
+    "SPACE": 0.208,
+    "PUNCH": 0.706,
+    "MUTATE": 0.665
   },
   "mood": "Foundation",
   "name": "Ocean Ethereal III",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

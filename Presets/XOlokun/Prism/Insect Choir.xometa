@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High partial count with fast vibrato at 15 Hz mimics insectoid wing-beat frequencies. Minimal coupling lets each partial buzz independently. Bright tilt with I-vowel creates the chitinous resonance of a thousand wings. Not a choir of humans \u2014 a choir of cicadas.",
+  "description": "High partial count with fast vibrato at 15 Hz mimics insectoid wing-beat frequencies. Minimal coupling lets each partial buzz independently. Bright tilt with I-vowel creates the chitinous resonance of a thousand wings. Not a choir of humans — a choir of cicadas.",
   "tags": [
     "insect",
     "buzz",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

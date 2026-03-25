@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.464,
-    "COUPLING": 0.137,
-    "MOVEMENT": 0.976,
-    "SPACE": 0.999
+    "MACHINE": 0.464,
+    "SPACE": 0.137,
+    "PUNCH": 0.976,
+    "MUTATE": 0.999
   },
   "mood": "Foundation",
   "name": "Thread Expanse",
@@ -71,5 +71,6 @@
     "foundation"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

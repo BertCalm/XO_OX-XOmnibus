@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Abyssal Strike",
   "mood": "Submerged",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep, geological percussion. Low frequencies only — kick tuned down 12 semitones, all other voices at minimum frequency content. Maximum body, minimum snap. Long decay times on all voices with maximum reverb space. The sound of impact at depth — pressure waves more than acoustic events. Nothing from the surface reaches here.",
-  "tags": ["deep", "submerged", "geological", "sub", "abyssal", "low-frequency", "pressure"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "submerged",
+    "geological",
+    "sub",
+    "abyssal",
+    "low-frequency",
+    "pressure"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

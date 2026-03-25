@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.792,
-    "COUPLING": 0.795,
-    "MOVEMENT": 0.503,
-    "SPACE": 0.646
+    "MACHINE": 0.792,
+    "SPACE": 0.795,
+    "PUNCH": 0.503,
+    "MUTATE": 0.646
   },
   "mood": "Prism",
   "name": "Balm Radiant II",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

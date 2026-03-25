@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Whisper territory. Effort=0.2 with high breath keeps the voice hushed and intimate. Low drama preserves partial independence \u2014 each harmonic drifts like a thought half-formed. Aftertouch pushes toward belt for dynamic crescendos.",
+  "description": "Whisper territory. Effort=0.2 with high breath keeps the voice hushed and intimate. Low drama preserves partial independence — each harmonic drifts like a thought half-formed. Aftertouch pushes toward belt for dynamic crescendos.",
   "tags": [
     "whisper",
     "intimate",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Pressure Wave",
   "mood": "Submerged",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Underwater impact. Slow attack, maximum body, heavy reverb that spreads the hit across multiple seconds. The BridgedT kick with body=1.0 pushes maximum sub-harmonic — the sub-oscillator at full level one octave below the already-low fundamental. The reverb is so long it blurs the distinction between impact and sustained tone. You don't hear the hit. You feel the pressure wave arrive.",
-  "tags": ["underwater", "pressure", "sub", "reverb", "slow", "submerged", "impact"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "underwater",
+    "pressure",
+    "sub",
+    "reverb",
+    "slow",
+    "submerged",
+    "impact"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

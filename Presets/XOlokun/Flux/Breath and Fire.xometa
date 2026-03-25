@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Double-peak arc over 8 seconds \u2014 the breath and the fire. First peak is soft (0.4), breathy, intimate \u2014 the inhale. Brief dip. Second peak is aggressive (0.9), belted, bright \u2014 the fire. LFO2 modulates breath component so the noise texture evolves throughout. Short enough to retrigger with each new note for rhythmic use.",
+  "description": "Double-peak arc over 8 seconds — the breath and the fire. First peak is soft (0.4), breathy, intimate — the inhale. Brief dip. Second peak is aggressive (0.9), belted, bright — the fire. LFO2 modulates breath component so the noise texture evolves throughout. Short enough to retrigger with each new note for rhythmic use.",
   "tags": [
     "conductor",
     "double-peak",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

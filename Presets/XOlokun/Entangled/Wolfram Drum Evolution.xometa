@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ONSET seeds OUTWIT's Wolfram CA rules. The drum pattern becomes the initial condition \u2014 the automaton evolves it bar by bar.",
+  "description": "ONSET seeds OUTWIT's Wolfram CA rules. The drum pattern becomes the initial condition — the automaton evolves it bar by bar.",
   "tags": [
     "coupling",
     "entangled",
@@ -19,10 +19,10 @@
     "cellular-automata"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Deep",
   "tempo": null,
@@ -62,5 +62,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

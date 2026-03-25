@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.607,
+      "destination": "ODDOSCAR",
+      "source": "OLE",
+      "type": "FILTER_MOD"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "dna": {
+    "aggression": 0.932,
+    "brightness": 0.559,
+    "density": 0.922,
+    "movement": 0.958,
+    "space": 0.522,
+    "warmth": 0.929
+  },
+  "engines": [
+    "Ole",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Barracuda Rush",
+  "parameters": {
+    "OddOscar": {
+      "level": 0.715,
+      "pan": -0.074
+    },
+    "Ole": {
+      "level": 0.836,
+      "pan": 0.051
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

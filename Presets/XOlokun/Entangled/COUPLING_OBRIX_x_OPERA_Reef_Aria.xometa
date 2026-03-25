@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX reef amplitude shaping OPERA's formant filter cutoff via AmpToFilter. Coral biophonic dynamics drive the vocal filter \u2014 when the reef is loud, the vowel opens; when quiet, it closes. A conversation between coral and voice.",
+  "description": "OBRIX reef amplitude shaping OPERA's formant filter cutoff via AmpToFilter. Coral biophonic dynamics drive the vocal filter — when the reef is loud, the vowel opens; when quiet, it closes. A conversation between coral and voice.",
   "tags": [
     "coupling",
     "obrix",
@@ -181,5 +181,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Both characters at once \u2014 feliX and Oscar playing together. Bright upper partials and warm lower partials coexist through a neutral vowel morph. Medium partial count, moderate everything. The preset that says: this engine is fun. Mod wheel sweeps drama from relaxed to excited. Velocity opens the filter for dynamic playing. The sound of two friends making music.",
+  "description": "Both characters at once — feliX and Oscar playing together. Bright upper partials and warm lower partials coexist through a neutral vowel morph. Medium partial count, moderate everything. The preset that says: this engine is fun. Mod wheel sweeps drama from relaxed to excited. Velocity opens the filter for dynamic playing. The sound of two friends making music.",
   "tags": [
     "family",
     "playful",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

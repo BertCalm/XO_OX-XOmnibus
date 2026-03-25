@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The opening number. Medium 12-second S-curve arc that builds from near-silence to a rich, warm peak at 0.75. Vowel morphs from E to A \u2014 closed anticipation opening into full expression. 2-voice unison with gentle detune creates orchestral width. The arc that says: the show is about to begin.",
+  "description": "The opening number. Medium 12-second S-curve arc that builds from near-silence to a rich, warm peak at 0.75. Vowel morphs from E to A — closed anticipation opening into full expression. 2-voice unison with gentle detune creates orchestral width. The arc that says: the show is about to begin.",
   "tags": [
     "conductor",
     "s-curve",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

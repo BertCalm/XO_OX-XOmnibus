@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oscar at his biggest. Low fundamental offset brings the voice down to bass territory. Full partials with negative tilt emphasize the deep harmonics. Despite the size, everything is gentle \u2014 low effort, moderate drama, slow vibrato. Like standing next to the largest creature in the room and realizing it only wants to be friends.",
+  "description": "Oscar at his biggest. Low fundamental offset brings the voice down to bass territory. Full partials with negative tilt emphasize the deep harmonics. Despite the size, everything is gentle — low effort, moderate drama, slow vibrato. Like standing next to the largest creature in the room and realizing it only wants to be friends.",
   "tags": [
     "family",
     "oscar",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

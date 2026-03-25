@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX performing a solo. Soprano formant with strong effort pushes into operatic belt territory \u2014 but the drama stays moderate so partials retain their individual character. Fast vibrato and bright tilt give the classic neon-tetra sparkle. Filter envelope responds to velocity for expressive phrasing. A colorful, confident lead voice with personality.",
+  "description": "feliX performing a solo. Soprano formant with strong effort pushes into operatic belt territory — but the drama stays moderate so partials retain their individual character. Fast vibrato and bright tilt give the classic neon-tetra sparkle. Filter envelope responds to velocity for expressive phrasing. A colorful, confident lead voice with personality.",
   "tags": [
     "family",
     "felix",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

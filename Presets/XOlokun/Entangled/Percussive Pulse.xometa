@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.65,
-    "MOVEMENT": 0.65,
-    "SPACE": 0.55
+    "MACHINE": 0.5,
+    "SPACE": 0.65,
+    "PUNCH": 0.65,
+    "MUTATE": 0.55
   },
   "mood": "Entangled",
   "name": "Percussive Pulse",
@@ -74,5 +74,6 @@
     "onset"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

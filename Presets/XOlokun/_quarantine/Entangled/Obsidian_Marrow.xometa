@@ -23,16 +23,16 @@
     "Obese"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.37,
-    "COUPLING": 0.84,
-    "MOVEMENT": 0.4,
-    "SPACE": 0.16
+    "MACHINE": 0.37,
+    "SPACE": 0.84,
+    "PUNCH": 0.4,
+    "MUTATE": 0.16
   },
   "mood": "Entangled",
   "name": "Obsidian Marrow",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

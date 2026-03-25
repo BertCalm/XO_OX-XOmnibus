@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wind through a hollow bone. High breath, low partials, filter resonance peaked to create the singing quality of air through a narrow tube. The formant shape gives it an almost vocal quality \u2014 not quite a voice, not quite a flute, but the ancestor of both. Played in low registers it becomes a didgeridoo drone.",
+  "description": "Wind through a hollow bone. High breath, low partials, filter resonance peaked to create the singing quality of air through a narrow tube. The formant shape gives it an almost vocal quality — not quite a voice, not quite a flute, but the ancestor of both. Played in low registers it becomes a didgeridoo drone.",
   "tags": [
     "hollow",
     "wind",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

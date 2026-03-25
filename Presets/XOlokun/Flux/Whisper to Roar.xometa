@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Effort-focused S-curve arc. Begins in pure whisper \u2014 breathy, soft, intimate. Over 15 seconds the arc drives effort from pianissimo to fortissimo while synchrony builds. LFO1 slowly morphs the vowel from U (closed, whispered) to A (open, belted). The singer finds their voice.",
+  "description": "Effort-focused S-curve arc. Begins in pure whisper — breathy, soft, intimate. Over 15 seconds the arc drives effort from pianissimo to fortissimo while synchrony builds. LFO1 slowly morphs the vowel from U (closed, whispered) to A (open, belted). The singer finds their voice.",
   "tags": [
     "conductor",
     "effort",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

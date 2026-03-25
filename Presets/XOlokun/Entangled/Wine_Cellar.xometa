@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Osteria warmth and density settle into OVERLAP room size — Porto wine in a vaulted FDN hall",
+  "description": "Osteria warmth and density settle into OVERLAP room size \u2014 Porto wine in a vaulted FDN hall",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.475,
@@ -37,7 +37,7 @@
     "SPACE": 0.53
   },
   "mood": "Entangled",
-  "name": "Wine Cellar (Overlap)",
+  "name": "Wine Cellar",
   "parameters": {
     "Overlap": {
       "olap_couplingBus": 0,

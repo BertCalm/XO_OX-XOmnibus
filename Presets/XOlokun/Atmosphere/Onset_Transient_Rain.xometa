@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Transient Rain",
   "mood": "Atmosphere",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Light, sparse, short decay on all voices with generous reverb space. Very short decays (0.03–0.18s) make each hit a brief transient event that dissolves into the reverb tail before the next hit arrives. The result is a rain-like percussion texture — impacts separated by silence, each impact leaving a diffused reverb trace. The grid disappears. Only presence remains.",
-  "tags": ["sparse", "atmosphere", "reverb", "light", "rain", "transient", "ambient"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "sparse",
+    "atmosphere",
+    "reverb",
+    "light",
+    "rain",
+    "transient",
+    "ambient"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

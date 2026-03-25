@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.93, movement 0.81, aggression 0.44. Ultra-bright Prism zone filler.",
+  "dna": {
+    "aggression": 0.441,
+    "brightness": 0.93,
+    "density": 0.736,
+    "movement": 0.805,
+    "space": 0.48,
+    "warmth": 0.19
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Spawning Flash",
+  "parameters": {
+    "Origami": {
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.182,
+      "origami_macro_couple": 0.279,
+      "origami_macro_fold": 0.273,
+      "origami_macro_space": 0.662,
+      "origami_macro_tension": 0.627,
+      "origami_outputLevel": 0.848
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "origami"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

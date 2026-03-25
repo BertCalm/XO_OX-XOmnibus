@@ -23,16 +23,16 @@
     "Oracle"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.538,
-    "COUPLING": 0.82,
-    "MOVEMENT": 0.614,
-    "SPACE": 0.396
+    "MACHINE": 0.538,
+    "SPACE": 0.82,
+    "PUNCH": 0.614,
+    "MUTATE": 0.396
   },
   "mood": "Foundation",
   "name": "Ember Molten",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

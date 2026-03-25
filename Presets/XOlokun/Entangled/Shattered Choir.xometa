@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPAL coupling. Granular clouds detune the partial bank \u2014 the choir shatters into a thousand tiny fragments, each grain carrying a piece of the voice. OPAL's frequency modulation pushes partials off their integer ratios, creating inharmonic spectra that still carry the ghost of the vowel formant. Glass and breath. A stained glass window made of voice.",
+  "description": "OPAL coupling. Granular clouds detune the partial bank — the choir shatters into a thousand tiny fragments, each grain carrying a piece of the voice. OPAL's frequency modulation pushes partials off their integer ratios, creating inharmonic spectra that still carry the ghost of the vowel formant. Glass and breath. A stained glass window made of voice.",
   "tags": [
     "entangled",
     "opal",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

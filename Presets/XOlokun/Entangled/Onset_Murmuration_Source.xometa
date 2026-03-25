@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Murmuration Source",
   "mood": "Entangled",
-  "engines": ["Onset", "Oceanic"],
+  "engines": [
+    "Onset",
+    "Oceanic"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A kit calibrated for OCEANIC murmuration via RhythmToBlend. Clean, high-contrast transients with minimal reverb tail so cascade effects read clearly against the swarm. Velocity contrast is maximized — the difference between a soft and hard hit is the signal OCEANIC reads.",
-  "tags": ["coupling-source", "murmuration", "oceanic", "entangled", "rhythm", "cascade"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling-source",
+    "murmuration",
+    "oceanic",
+    "entangled",
+    "rhythm",
+    "cascade"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -136,5 +151,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

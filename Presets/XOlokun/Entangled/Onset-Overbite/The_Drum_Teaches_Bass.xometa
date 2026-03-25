@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "The Drum Teaches Bass",
   "mood": "Entangled",
-  "engines": ["Onset", "Overbite"],
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Kick and snare share equal authority with Overbite. Each drum hit opens the filter and shapes Bite character — rhythm and bass in constant dialogue.",
-  "tags": ["coupling", "Onset-pair", "bass", "dialogue", "sidechain", "dub"],
-  "macroLabels": ["MACHINE", "BITE", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Onset-pair",
+    "bass",
+    "dialogue",
+    "sidechain",
+    "dub"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "BITE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": 120,
   "created": "2026-03-14",
@@ -135,5 +150,6 @@
     "density": 0.6,
     "space": 0.25,
     "aggression": 0.5
-  }
+  },
+  "tier": "awakening"
 }

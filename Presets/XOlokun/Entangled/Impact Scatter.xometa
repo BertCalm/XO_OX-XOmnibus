@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ONSET coupling. Drum hits create phase disruption \u2014 each percussion event scatters the Kuramoto field like a shockwave through the partial bank. The voice is held at moderate sync; ONSET's transients periodically shatter it, and the partials scramble to re-synchronize. The time between hits IS the drama \u2014 the longer the gap, the more the choir recovers before the next impact.",
+  "description": "ONSET coupling. Drum hits create phase disruption — each percussion event scatters the Kuramoto field like a shockwave through the partial bank. The voice is held at moderate sync; ONSET's transients periodically shatter it, and the partials scramble to re-synchronize. The time between hits IS the drama — the longer the gap, the more the choir recovers before the next impact.",
   "tags": [
     "entangled",
     "onset",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

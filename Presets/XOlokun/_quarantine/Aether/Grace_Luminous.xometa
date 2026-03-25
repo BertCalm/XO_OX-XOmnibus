@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.744,
-    "COUPLING": 0.621,
-    "MOVEMENT": 0.646,
-    "SPACE": 0.36
+    "MACHINE": 0.744,
+    "SPACE": 0.621,
+    "PUNCH": 0.646,
+    "MUTATE": 0.36
   },
   "mood": "Aether",
   "name": "Grace Luminous",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "S-curve arc focused on vowel morphing. LFO1 on Voice at medium rate continuously cycles through formant space while the Conductor builds synchrony over 10 seconds. The voice changes what it sings as it finds its power. I-to-O morph \u2014 from piercing brightness to warm roundness. The vowels are the drama.",
+  "description": "S-curve arc focused on vowel morphing. LFO1 on Voice at medium rate continuously cycles through formant space while the Conductor builds synchrony over 10 seconds. The voice changes what it sings as it finds its power. I-to-O morph — from piercing brightness to warm roundness. The vowels are the drama.",
   "tags": [
     "conductor",
     "vowel-morph",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.731,
-    "COUPLING": 0.458,
-    "MOVEMENT": 0.46,
-    "SPACE": 0.514
+    "MACHINE": 0.731,
+    "SPACE": 0.458,
+    "PUNCH": 0.46,
+    "MUTATE": 0.514
   },
   "mood": "Atmosphere",
   "name": "Glint Lull",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

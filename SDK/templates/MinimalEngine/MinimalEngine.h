@@ -1,13 +1,19 @@
 #pragma once
-// MinimalEngine — XOlokun SDK template
-// A sine oscillator with one parameter (pitch). Start here.
+// MinimalEngine — XOlokun SDK starting template
 //
-// To build:
-//   1. Copy this directory
-//   2. Rename class + files to your engine name
-//   3. Add your DSP in renderBlock()
-//   4. Compile as shared library
-//   5. Run validate-engine on your .dylib
+// The smallest possible engine: one mono sine voice, one pitch parameter.
+// Every line here is intentional — start by reading it, then replace things.
+//
+// How to use this template:
+//   1. Copy this directory: cp -r templates/MinimalEngine SDK/examples/MyEngine
+//   2. Rename the class and files to your engine name
+//   3. Add parameters in getParameterDefs(), wire them in setParameter()
+//   4. Build your DSP in renderBlock()
+//   5. Compile: clang++ -std=c++17 -I SDK/include -shared -fPIC -o MyEngine.dylib MyEngine.h
+//   6. Validate: python3 SDK/tools/validate_engine.py MyEngine.h
+//
+// For a complete worked example with coupling, LFOs, macros, and all 6 Doctrines:
+//   SDK/examples/HelloEngine/HelloEngine.h
 
 #include <xolokun/SynthEngine.h>
 #include <xolokun/EngineModule.h>
@@ -64,9 +70,25 @@ public:
 
     std::vector<xolokun::ParameterDef> getParameterDefs() const override
     {
+        // Add one entry per parameter. Format:
+        //   { "prefix_name", "Display Name", minVal, maxVal, defaultVal, step, skew }
+        // skew < 1.0 gives more resolution at low values (useful for frequency/time).
         return {
             { "min_pitch", "Pitch", 20.0f, 20000.0f, 440.0f, 0.1f, 0.3f }
         };
+    }
+
+    // Called from non-audio thread when a parameter changes.
+    // Every ID declared in getParameterDefs() must be handled here (D004).
+    void setParameter (const std::string& id, float value) override
+    {
+        if (id == "min_pitch") freq = value;
+    }
+
+    float getParameter (const std::string& id) const override
+    {
+        if (id == "min_pitch") return freq;
+        return 0.0f;
     }
 
     std::string getEngineId() const override { return "Minimal"; }
@@ -87,6 +109,14 @@ private:
     int activeNote = -1;
 };
 
-// Export the engine for dynamic loading
-XOLOKUN_EXPORT_ENGINE(MinimalEngine, "Minimal", "Minimal Sine Engine",
-                        "min_", 100, 200, 150, "1.0.0", "XO_OX SDK Template")
+//==============================================================================
+// Export — XOlokun loads this engine by finding these two C symbols.
+// Change the strings to match your engine; keep the class name in sync.
+//==============================================================================
+XOLOKUN_EXPORT_ENGINE (MinimalEngine,
+                        "Minimal",
+                        "Minimal Sine Engine",
+                        "min_",
+                        100, 200, 150,
+                        "1.0.0",
+                        "XO_OX SDK Template")

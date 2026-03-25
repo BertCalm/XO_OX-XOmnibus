@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Delicate high-register texture that flickers. LFO2 on drama creates subtle coupling oscillation \u2014 partials drift toward synchrony then scatter, like moths circling a lamp. Bright tilt, low partial count, high resonance sensitivity means small clusters flash into existence and vanish. Fragile and hypnotic.",
+  "description": "Delicate high-register texture that flickers. LFO2 on drama creates subtle coupling oscillation — partials drift toward synchrony then scatter, like moths circling a lamp. Bright tilt, low partial count, high resonance sensitivity means small clusters flash into existence and vanish. Fragile and hypnotic.",
   "tags": [
     "delicate",
     "flickering",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

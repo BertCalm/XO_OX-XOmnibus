@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.5962,
-    "COUPLING": 0.8101,
-    "MOVEMENT": 0.0725,
-    "SPACE": 0.4385
+    "MACHINE": 0.5962,
+    "SPACE": 0.8101,
+    "PUNCH": 0.0725,
+    "MUTATE": 0.4385
   },
   "mood": "Entangled",
   "name": "Ice Cavern",
@@ -71,5 +71,6 @@
     "vast"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

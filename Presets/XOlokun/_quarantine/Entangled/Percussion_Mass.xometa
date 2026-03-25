@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.82,
-    "COUPLING": 0.95,
-    "MOVEMENT": 0.78,
-    "SPACE": 0.05
+    "MACHINE": 0.82,
+    "SPACE": 0.95,
+    "PUNCH": 0.78,
+    "MUTATE": 0.05
   },
   "mood": "Entangled",
   "name": "Percussion Mass",
@@ -52,5 +52,6 @@
     "percussion"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

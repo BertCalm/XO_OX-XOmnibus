@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.8,
-    "COUPLING": 0.72,
-    "MOVEMENT": 0.65,
-    "SPACE": 0.25
+    "MACHINE": 0.8,
+    "SPACE": 0.72,
+    "PUNCH": 0.65,
+    "MUTATE": 0.25
   },
   "mood": "Entangled",
   "name": "Mojo Machine",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

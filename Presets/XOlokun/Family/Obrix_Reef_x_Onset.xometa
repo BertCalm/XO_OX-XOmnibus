@@ -15,10 +15,10 @@
     "drums"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Medium",
   "tempo": null,
@@ -110,9 +110,10 @@
     ]
   },
   "macros": {
-    "CHARACTER": 0.0,
-    "MOVEMENT": 0.2,
-    "COUPLING": 0.375,
-    "SPACE": 0.0
-  }
+    "MACHINE": 0.0,
+    "PUNCH": 0.2,
+    "SPACE": 0.375,
+    "MUTATE": 0.0
+  },
+  "tier": "awakening"
 }

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Velvet Fang",
+  "mood": "Prism",
+  "engines": [
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Smooth filtered lead bass with silky low-pass and tube warmth \u2014 the sophisticated bite.",
+  "tags": [
+    "bass",
+    "smooth",
+    "tube",
+    "warm"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.3,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 2,
+      "poss_oscAShape": 0.15,
+      "poss_oscBWaveform": 1,
+      "poss_oscMix": 0.4,
+      "poss_subLevel": 0.45,
+      "poss_filterCutoff": 1600,
+      "poss_filterReso": 0.3,
+      "poss_filterDrive": 0.4,
+      "poss_filterEnvAmount": 0.45,
+      "poss_filterDecay": 0.3,
+      "poss_ampAttack": 0.01,
+      "poss_ampDecay": 0.45,
+      "poss_ampSustain": 0.7,
+      "poss_ampRelease": 0.25,
+      "poss_driveAmount": 0.4,
+      "poss_driveType": 0,
+      "poss_macroBelly": 0.55,
+      "poss_macroBite": 0.5,
+      "poss_macroScurry": 0.15,
+      "poss_macroTrash": 0.25,
+      "poss_macroPlayDead": 0.1
+    }
+  },
+  "macros": {
+    "BELLY": 0.55,
+    "BITE": 0.5,
+    "SCURRY": 0.15,
+    "TRASH": 0.25,
+    "PLAY DEAD": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

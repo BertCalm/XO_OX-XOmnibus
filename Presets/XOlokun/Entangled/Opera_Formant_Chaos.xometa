@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Opera with drama at 0.9 \u2014 deep into chaotic territory. Vowel A and B are maximally distant (0 and 6). Formant transitions happen rapidly. With 48 partials and high coherence sensitivity, the vocal chaos is spectacular.",
+  "description": "Opera with drama at 0.9 — deep into chaotic territory. Vowel A and B are maximally distant (0 and 6). Formant transitions happen rapidly. With 48 partials and high coherence sensitivity, the vocal chaos is spectacular.",
   "tags": [
     "vocal",
     "formant",
@@ -89,5 +89,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

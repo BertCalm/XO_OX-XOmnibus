@@ -16,16 +16,16 @@
     "Oblong"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.85,
-    "COUPLING": 0.82,
-    "MOVEMENT": 0.05,
-    "SPACE": 0.4
+    "MACHINE": 0.85,
+    "SPACE": 0.82,
+    "PUNCH": 0.05,
+    "MUTATE": 0.4
   },
   "mood": "Entangled",
   "name": "Drum Column Freeze",
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

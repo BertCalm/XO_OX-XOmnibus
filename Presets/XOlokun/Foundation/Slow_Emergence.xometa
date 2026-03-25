@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Slow Emergence",
+  "mood": "Foundation",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "3-second attack, Oubli-heavy. A note emerges from memory over time rather than arriving at once. The past is where it begins; perception is where it ends up.",
+  "tags": [
+    "foundation",
+    "slow",
+    "emergence",
+    "cinematic",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.7,
+    "movement": 0.28,
+    "density": 0.58,
+    "space": 0.65,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.35,
+      "ombre_interference": 0.3,
+      "ombre_memoryDecay": 15.0,
+      "ombre_memoryGrain": 250.0,
+      "ombre_memoryDrift": 0.25,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.4,
+      "ombre_subLevel": 0.38,
+      "ombre_filterCutoff": 3000.0,
+      "ombre_filterReso": 0.16,
+      "ombre_attack": 3.0,
+      "ombre_decay": 1.0,
+      "ombre_sustain": 0.78,
+      "ombre_release": 4.0,
+      "ombre_level": 0.76,
+      "ombre_velCutoffScale": 0.3,
+      "ombre_lfo1Rate": 0.12,
+      "ombre_lfo1Depth": 0.28,
+      "ombre_lfo2Rate": 0.08,
+      "ombre_lfo2Depth": 0.22,
+      "ombre_macroCharacter": 0.7,
+      "ombre_macroMovement": 0.28,
+      "ombre_macroCoupling": 0.35,
+      "ombre_macroSpace": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

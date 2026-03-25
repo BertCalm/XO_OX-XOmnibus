@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The angelic register. High drama with bright A-vowel formant, gentle vibrato, maximum purity. Two unison voices \u2014 one slightly brighter \u2014 create the impression of a single angelic entity with harmonic depth. No breath, no noise, no imperfection. The voice of a being made entirely of light and frequency.",
+  "description": "The angelic register. High drama with bright A-vowel formant, gentle vibrato, maximum purity. Two unison voices — one slightly brighter — create the impression of a single angelic entity with harmonic depth. No breath, no noise, no imperfection. The voice of a being made entirely of light and frequency.",
   "tags": [
     "angelic",
     "seraphim",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

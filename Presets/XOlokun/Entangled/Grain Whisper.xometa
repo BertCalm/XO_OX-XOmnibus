@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPAL coupling. Whisper-territory voice (low effort, high breath) with OPAL's granular FM creating micro-detuning across the partial field. The breath component scatters into grain-sized particles while the tonal partials shimmer with pitch instability. Intimate, close, fragile \u2014 like overhearing a secret told in a language that keeps changing.",
+  "description": "OPAL coupling. Whisper-territory voice (low effort, high breath) with OPAL's granular FM creating micro-detuning across the partial field. The breath component scatters into grain-sized particles while the tonal partials shimmer with pitch instability. Intimate, close, fragile — like overhearing a secret told in a language that keeps changing.",
   "tags": [
     "entangled",
     "opal",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

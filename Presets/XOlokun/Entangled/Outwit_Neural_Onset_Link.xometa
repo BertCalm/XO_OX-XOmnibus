@@ -6,9 +6,9 @@
     "Outwit",
     "Onset"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT synapse coupling drives ONSET drum trigger thresholds \u2014 when octopus arms are highly coupled, drum hits become more synchronized. CA intelligence as rhythm organizer.",
+  "description": "OUTWIT synapse coupling drives ONSET drum trigger thresholds — when octopus arms are highly coupled, drum hits become more synchronized. CA intelligence as rhythm organizer.",
   "tags": [
     "entangled",
     "ca-to-drums",
@@ -17,10 +17,10 @@
     "synchronized"
   ],
   "macroLabels": [
-    "CHARACTER",
+    "MACHINE",
     "CHAOS",
-    "COUPLING",
-    "SPACE"
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Strong",
   "tempo": null,
@@ -72,5 +72,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Electric Infrastructure",
   "mood": "Foundation",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Minimal, clean, no acoustic reference. A purely electronic kit with no acoustic drum culture signifier. FM on kick and snare for algorithmic precision, Phase Distortion on clap and perc for digital edge. No reverb, no warmth. The clean signal of a circuit diagram made audible.",
-  "tags": ["electronic", "minimal", "clean", "no-reverb", "fm", "electric", "infrastructure"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "electronic",
+    "minimal",
+    "clean",
+    "no-reverb",
+    "fm",
+    "electric",
+    "infrastructure"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

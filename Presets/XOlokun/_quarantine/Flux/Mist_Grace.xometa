@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.748,
-    "COUPLING": 0.463,
-    "MOVEMENT": 0.539,
-    "SPACE": 0.615
+    "MACHINE": 0.748,
+    "SPACE": 0.463,
+    "PUNCH": 0.539,
+    "MUTATE": 0.615
   },
   "mood": "Flux",
   "name": "Mist Grace",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

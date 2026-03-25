@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.6267,
-    "COUPLING": 0.0775,
-    "MOVEMENT": 0.2746,
-    "SPACE": 0.2857
+    "MACHINE": 0.6267,
+    "SPACE": 0.0775,
+    "PUNCH": 0.2746,
+    "MUTATE": 0.2857
   },
   "mood": "Flux",
   "name": "CRYO FLUX 5",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

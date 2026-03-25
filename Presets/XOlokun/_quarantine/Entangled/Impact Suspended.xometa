@@ -16,16 +16,16 @@
     "Oblong"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.8,
-    "COUPLING": 0.8,
-    "MOVEMENT": 0.06,
-    "SPACE": 0.45
+    "MACHINE": 0.8,
+    "SPACE": 0.8,
+    "PUNCH": 0.06,
+    "MUTATE": 0.45
   },
   "mood": "Entangled",
   "name": "Impact Suspended",
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

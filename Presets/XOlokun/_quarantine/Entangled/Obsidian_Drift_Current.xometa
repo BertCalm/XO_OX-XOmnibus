@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.49,
-    "COUPLING": 0.8,
-    "MOVEMENT": 0.86,
-    "SPACE": 0.39
+    "MACHINE": 0.49,
+    "SPACE": 0.8,
+    "PUNCH": 0.86,
+    "MUTATE": 0.39
   },
   "mood": "Entangled",
   "name": "Obsidian Drift Current",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

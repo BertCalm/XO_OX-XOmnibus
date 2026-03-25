@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Negative Space",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The sound around the absence of sound. Oubli-dominant with high-pass HPF emphasis from the hpf internal path. A skeletal, airy presence defined by what isn't there.",
+  "tags": [
+    "aether",
+    "negative-space",
+    "absence",
+    "skeletal",
+    "airy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.3,
+    "movement": 0.42,
+    "density": 0.38,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.15,
+      "ombre_interference": 0.28,
+      "ombre_memoryDecay": 8.0,
+      "ombre_memoryGrain": 50.0,
+      "ombre_memoryDrift": 0.6,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.45,
+      "ombre_subLevel": 0.02,
+      "ombre_filterCutoff": 6000.0,
+      "ombre_filterReso": 0.3,
+      "ombre_attack": 1.0,
+      "ombre_decay": 1.5,
+      "ombre_sustain": 0.65,
+      "ombre_release": 5.0,
+      "ombre_level": 0.62,
+      "ombre_velCutoffScale": 0.25,
+      "ombre_lfo1Rate": 0.25,
+      "ombre_lfo1Depth": 0.5,
+      "ombre_lfo2Rate": 0.15,
+      "ombre_lfo2Depth": 0.4,
+      "ombre_macroCharacter": 0.85,
+      "ombre_macroMovement": 0.42,
+      "ombre_macroCoupling": 0.38,
+      "ombre_macroSpace": 0.92
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

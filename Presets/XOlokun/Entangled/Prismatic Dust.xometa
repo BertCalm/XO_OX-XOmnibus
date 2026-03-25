@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPAL coupling. Alien formant with high tilt \u2014 the upper partials dominate and OPAL's granular FM scatters them into prismatic sprays of inharmonic color. The result is not a voice but a spectral dust cloud that retains the memory of vocal formant shapes. Bright, crystalline, and entirely alien. Each grain is a splinter of a vowel.",
+  "description": "OPAL coupling. Alien formant with high tilt — the upper partials dominate and OPAL's granular FM scatters them into prismatic sprays of inharmonic color. The result is not a voice but a spectral dust cloud that retains the memory of vocal formant shapes. Bright, crystalline, and entirely alien. Each grain is a splinter of a vowel.",
   "tags": [
     "entangled",
     "opal",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

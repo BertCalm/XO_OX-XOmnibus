@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.519,
-    "COUPLING": 0.343,
-    "MOVEMENT": 0.709,
-    "SPACE": 0.829
+    "MACHINE": 0.519,
+    "SPACE": 0.343,
+    "PUNCH": 0.709,
+    "MUTATE": 0.829
   },
   "mood": "Foundation",
   "name": "Node Edge",
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

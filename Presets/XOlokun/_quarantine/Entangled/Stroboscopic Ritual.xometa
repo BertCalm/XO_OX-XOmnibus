@@ -16,16 +16,16 @@
     "Obscura"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.8,
-    "COUPLING": 0.65,
-    "MOVEMENT": 0.8,
-    "SPACE": 0.55
+    "MACHINE": 0.8,
+    "SPACE": 0.65,
+    "PUNCH": 0.8,
+    "MUTATE": 0.55
   },
   "mood": "Entangled",
   "name": "Stroboscopic Ritual",
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

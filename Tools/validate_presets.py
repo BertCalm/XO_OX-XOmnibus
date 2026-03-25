@@ -37,10 +37,16 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun"
 # Constants
 # ---------------------------------------------------------------------------
 
-VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"}
+VALID_MOODS = {
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux",
+    "Aether", "Family", "Submerged", "Coupling", "Crystalline",
+    "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
+    "User",
+}
 
 VALID_ENGINES = {
-    # Canonical O-prefix engine IDs (all 21)
+    # Canonical O-prefix engine IDs (all 73)
+    # Original fleet
     "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
     "Obese", "Onset", "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros", "Obsidian", "Overbite", "Origami",
@@ -48,6 +54,21 @@ VALID_ENGINES = {
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     "Ombre", "Orca", "Octopus", "Overlap", "Outwit",
+    "Ostinato", "OpenSky", "OceanDeep", "Ouie", "Obrix",
+    "Orbweave", "Overtone", "Organism", "Oxbow", "Oware",
+    "Opera", "Offering", "Osmosis", "Oxytocin", "Outlook",
+    # Kitchen Collection — Chef (Organs)
+    "Oto", "Octave", "Oleg", "Otis",
+    # Kitchen Collection — Kitchen (Pianos)
+    "Oven", "Ochre", "Obelisk", "Opaline",
+    # Kitchen Collection — Cellar (Bass)
+    "Ogre", "Olate", "Oaken", "Omega",
+    # Kitchen Collection — Garden (Strings)
+    "Orchard", "Overgrow", "Osier", "Oxalis",
+    # Kitchen Collection — Broth (Pads)
+    "Overwash", "Overworn", "Overflow", "Overcast",
+    # Kitchen Collection — Fusion (EP)
+    "Oasis", "Oddfellow", "Onkolo", "Opcode",
     # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
     "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",

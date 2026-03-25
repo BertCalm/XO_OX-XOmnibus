@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX symbiote mode (maximum symbiosis) feeding amplitude into OPERA. The coupled FM pathway (symbiosis\u2192FM) creates harmonic partial reinforcement in the vocal synthesis. The reef teaches the voice new harmonics.",
+  "description": "OBRIX symbiote mode (maximum symbiosis) feeding amplitude into OPERA. The coupled FM pathway (symbiosis→FM) creates harmonic partial reinforcement in the vocal synthesis. The reef teaches the voice new harmonics.",
   "tags": [
     "coupling",
     "obrix",
@@ -181,5 +181,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "S-curve arc, 30 seconds, peak 1.0. The definitive long-form Conductor preset. Begins in near-silence with high breath and low effort. Over half a minute the entire engine transforms: vowel morphs from U to A, effort builds from whisper to full belt, filter opens, partials lock into total synchrony. Then it releases. The final curtain call \u2014 one held chord becomes a complete performance that ends in silence.",
+  "description": "S-curve arc, 30 seconds, peak 1.0. The definitive long-form Conductor preset. Begins in near-silence with high breath and low effort. Over half a minute the entire engine transforms: vowel morphs from U to A, effort builds from whisper to full belt, filter opens, partials lock into total synchrony. Then it releases. The final curtain call — one held chord becomes a complete performance that ends in silence.",
   "tags": [
     "conductor",
     "s-curve",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

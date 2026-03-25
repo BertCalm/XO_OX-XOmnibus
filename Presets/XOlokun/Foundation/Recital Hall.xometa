@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A solo voice in a medium hall. Stage=0.5 places the performer perfectly \u2014 present but with room to breathe. Moderate sync, natural vibrato, A vowel. The bread-and-butter solo vocal preset.",
+  "description": "A solo voice in a medium hall. Stage=0.5 places the performer perfectly — present but with room to breathe. Moderate sync, natural vibrato, A vowel. The bread-and-butter solo vocal preset.",
   "tags": [
     "lead",
     "solo",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

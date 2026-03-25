@@ -1,38 +1,72 @@
 {
-    "schema_version": 1,
-    "name": "Lo-Fi Hat",
-    "mood": "Foundation",
-    "engines": ["Onset"],
-    "author": "XO_OX Designs",
-    "version": "1.0.0",
-    "description": "Crates Kit. Bit-crushed and dusty — the hat that sounds like it was sampled from a 45 rpm worn thin.",
-    "tags": ["hat", "boom-bap", "lofi", "dusty", "crates-kit", "vinyl"],
-    "macroLabels": ["MACHINE", "PUNCH", "SPACE", "MUTATE"],
-    "couplingIntensity": "None",
-    "tempo": null,
-    "dna": {
-        "brightness": 0.35, "warmth": 0.62, "movement": 0.10,
-        "density": 0.42, "space": 0.08, "aggression": 0.33
-    },
-    "parameters": {
-        "Onset": {
-            "perc_macro_machine": 0.30, "perc_macro_punch": 0.48,
-            "perc_macro_space": 0.06, "perc_macro_mutate": 0.05,
-            "perc_drive": 0.34, "perc_level": 0.78, "perc_masterTone": 0.38,
-            "perc_char_grit": 0.40, "perc_char_warmth": 0.65,
-            "perc_fx_reverb_size": 0.12, "perc_fx_reverb_decay": 0.15,
-            "perc_fx_reverb_mix": 0.04,
-            "perc_fx_delay_time": 0.3, "perc_fx_delay_feedback": 0.1,
-            "perc_fx_delay_mix": 0.01,
-            "perc_fx_lofi_bits": 10, "perc_fx_lofi_mix": 0.22,
-            "perc_xvc_global_amount": 0.07,
-            "perc_xvc_kick_to_snare_filter": 0.09,
-            "perc_xvc_kick_to_tom_pitch": 0.10,
-            "perc_xvc_snare_to_hat_decay": 0.09,
-            "perc_xvc_snare_to_perc_blend": 0.07,
-            "perc_xvc_hat_choke": 0.20
-        }
-    },
-    "macros": {"MACHINE": 0.30, "PUNCH": 0.48, "SPACE": 0.06, "MUTATE": 0.05},
-    "coupling": {"pairs": []}
+  "schema_version": 1,
+  "name": "Lo-Fi Hat",
+  "mood": "Foundation",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Crates Kit. Bit-crushed and dusty — the hat that sounds like it was sampled from a 45 rpm worn thin.",
+  "tags": [
+    "hat",
+    "boom-bap",
+    "lofi",
+    "dusty",
+    "crates-kit",
+    "vinyl"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.1,
+    "density": 0.42,
+    "space": 0.08,
+    "aggression": 0.33
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.3,
+      "perc_macro_punch": 0.48,
+      "perc_macro_space": 0.06,
+      "perc_macro_mutate": 0.05,
+      "perc_drive": 0.34,
+      "perc_level": 0.78,
+      "perc_masterTone": 0.38,
+      "perc_char_grit": 0.4,
+      "perc_char_warmth": 0.65,
+      "perc_fx_reverb_size": 0.12,
+      "perc_fx_reverb_decay": 0.15,
+      "perc_fx_reverb_mix": 0.04,
+      "perc_fx_delay_time": 0.3,
+      "perc_fx_delay_feedback": 0.1,
+      "perc_fx_delay_mix": 0.01,
+      "perc_fx_lofi_bits": 10,
+      "perc_fx_lofi_mix": 0.22,
+      "perc_xvc_global_amount": 0.07,
+      "perc_xvc_kick_to_snare_filter": 0.09,
+      "perc_xvc_kick_to_tom_pitch": 0.1,
+      "perc_xvc_snare_to_hat_decay": 0.09,
+      "perc_xvc_snare_to_perc_blend": 0.07,
+      "perc_xvc_hat_choke": 0.2
+    }
+  },
+  "macros": {
+    "MACHINE": 0.3,
+    "PUNCH": 0.48,
+    "SPACE": 0.06,
+    "MUTATE": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Orphica"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.792,
-    "COUPLING": 0.929,
-    "MOVEMENT": 0.942,
-    "SPACE": 0.936
+    "MACHINE": 0.792,
+    "SPACE": 0.929,
+    "PUNCH": 0.942,
+    "MUTATE": 0.936
   },
   "mood": "Entangled",
   "name": "Radiant Packed II",
@@ -59,5 +59,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

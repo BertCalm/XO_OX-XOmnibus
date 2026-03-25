@@ -5,10 +5,10 @@
   "couplingIntensity": "Moderate",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "coupling": {
     "pairs": [
@@ -27,7 +27,7 @@
     "Onset",
     "OddfeliX"
   ],
-  "description": "ONSET rim triggers SNAP's sharp attack \u2014 stacked transients, double impact.",
+  "description": "ONSET rim triggers SNAP's sharp attack — stacked transients, double impact.",
   "tags": [
     "onset",
     "snap",
@@ -64,5 +64,6 @@
       "snap_snap": 0.8,
       "snap_level": 0.6
     }
-  }
+  },
+  "tier": "awakening"
 }

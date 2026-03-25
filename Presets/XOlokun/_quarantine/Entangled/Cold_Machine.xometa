@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.9,
-    "COUPLING": 0.94,
-    "MOVEMENT": 0.76,
-    "SPACE": 0.1
+    "MACHINE": 0.9,
+    "SPACE": 0.94,
+    "PUNCH": 0.76,
+    "MUTATE": 0.1
   },
   "mood": "Entangled",
   "name": "Cold Machine",
@@ -52,5 +52,6 @@
     "machine"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Obsidian"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.516,
-    "COUPLING": 0.641,
-    "MOVEMENT": 0.817,
-    "SPACE": 0.494
+    "MACHINE": 0.516,
+    "SPACE": 0.641,
+    "PUNCH": 0.817,
+    "MUTATE": 0.494
   },
   "mood": "Foundation",
   "name": "Phase Wrath",
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Ombre"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.082,
-    "COUPLING": 0.763,
-    "MOVEMENT": 0.076,
-    "SPACE": 0.573
+    "MACHINE": 0.082,
+    "SPACE": 0.763,
+    "PUNCH": 0.076,
+    "MUTATE": 0.573
   },
   "mood": "Entangled",
   "name": "Signal Expanse",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

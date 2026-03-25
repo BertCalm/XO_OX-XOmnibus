@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "Drum Fed Organism",
   "mood": "Entangled",
-  "engines": ["Onset", "Organon"],
+  "engines": [
+    "Onset",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ONSET's kick transients fully accelerate Organon's metabolic blend and seize its filter — the organism's feeding cycle is now driven by rhythm. Each kick is a bolus of energy; the organism's harmonic output changes measurably on every beat. Percussion as nutrition.",
-  "tags": ["coupling", "Onset-pair", "organic", "possession", "drums", "metabolic", "extreme", "rhythm"],
-  "macroLabels": ["MACHINE", "METABOLISM", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Onset-pair",
+    "organic",
+    "possession",
+    "drums",
+    "metabolic",
+    "extreme",
+    "rhythm"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Extreme",
   "tempo": 120,
   "created": "2026-03-14",
@@ -113,7 +130,7 @@
         "engineA": "Onset",
         "engineB": "Organon",
         "type": "Rhythm->Blend",
-        "amount": 0.50
+        "amount": 0.5
       }
     ]
   },
@@ -125,5 +142,6 @@
     "density": 0.68,
     "space": 0.3,
     "aggression": 0.65
-  }
+  },
+  "tier": "awakening"
 }

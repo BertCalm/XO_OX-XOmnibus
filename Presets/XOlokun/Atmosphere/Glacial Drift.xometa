@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Immense slow-motion formant morph from O to U over a 100-second LFO cycle. 40 partials at minimal coupling drift like ice sheets \u2014 vast, patient, inevitable. Filter cutoff at 3000 Hz creates a muffled warmth as if heard through glacial ice. Stage at maximum for cavernous depth.",
+  "description": "Immense slow-motion formant morph from O to U over a 100-second LFO cycle. 40 partials at minimal coupling drift like ice sheets — vast, patient, inevitable. Filter cutoff at 3000 Hz creates a muffled warmth as if heard through glacial ice. Stage at maximum for cavernous depth.",
   "tags": [
     "glacial",
     "slow",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

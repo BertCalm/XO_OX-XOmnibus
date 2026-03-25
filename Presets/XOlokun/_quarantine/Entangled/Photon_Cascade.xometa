@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.72,
-    "COUPLING": 0.92,
-    "MOVEMENT": 0.96,
-    "SPACE": 0.18
+    "MACHINE": 0.72,
+    "SPACE": 0.92,
+    "PUNCH": 0.96,
+    "MUTATE": 0.18
   },
   "mood": "Entangled",
   "name": "Photon Cascade III",
@@ -52,5 +52,6 @@
     "photon"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

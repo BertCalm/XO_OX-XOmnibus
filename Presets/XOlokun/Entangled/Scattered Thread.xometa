@@ -17,16 +17,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.53,
-    "COUPLING": 0.81,
-    "MOVEMENT": 0.63,
-    "SPACE": 0.47
+    "MACHINE": 0.53,
+    "SPACE": 0.81,
+    "PUNCH": 0.63,
+    "MUTATE": 0.47
   },
   "mood": "Entangled",
   "name": "Scattered Thread",
@@ -67,5 +67,6 @@
     "space": 0.5,
     "aggression": 0.123
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

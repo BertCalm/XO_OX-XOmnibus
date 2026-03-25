@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pressure Wave (OddfeliX I)",
+  "name": "Pressure Wave",
   "mood": "Submerged",
   "engines": [
     "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sine+Noise at low frequency — the shockwave of something large moving past in the dark.",
+  "description": "Sine+Noise at low frequency \u2014 the shockwave of something large moving past in the dark.",
   "tags": [
     "submerged",
     "pressure",

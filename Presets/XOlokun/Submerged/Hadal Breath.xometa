@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The hadal zone \u2014 ocean trenches deeper than 6000 meters. Below the abyssal plain, below everything. This preset breathes: a very slow LFO at 0.01 Hz modulates the breath parameter, creating a tidal inhalation-exhalation cycle that spans nearly two minutes. The voice is barely a voice \u2014 more felt than heard. Spectral tilt is maximally dark. The fundamental pulses like a heartbeat at the bottom of the world.",
+  "description": "The hadal zone — ocean trenches deeper than 6000 meters. Below the abyssal plain, below everything. This preset breathes: a very slow LFO at 0.01 Hz modulates the breath parameter, creating a tidal inhalation-exhalation cycle that spans nearly two minutes. The voice is barely a voice — more felt than heard. Spectral tilt is maximally dark. The fundamental pulses like a heartbeat at the bottom of the world.",
   "tags": [
     "submerged",
     "deep",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

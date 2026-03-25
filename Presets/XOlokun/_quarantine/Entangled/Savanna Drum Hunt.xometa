@@ -16,16 +16,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.551,
-    "COUPLING": 0.796,
-    "MOVEMENT": 0.685,
-    "SPACE": 0.384
+    "MACHINE": 0.551,
+    "SPACE": 0.796,
+    "PUNCH": 0.685,
+    "MUTATE": 0.384
   },
   "mood": "Entangled",
   "name": "Savanna Drum Hunt",
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

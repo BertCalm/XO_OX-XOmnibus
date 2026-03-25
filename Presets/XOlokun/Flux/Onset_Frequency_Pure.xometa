@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Frequency Pure",
   "mood": "Flux",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Karplus-Strong everywhere. All 8 voices at high blend with K-S algorithm, character at 0.8 (clean string, no snare buzz). Long decay on all voices (0.6–0.85). The result is a tuned metallic string instrument played percussively — somewhere between a hammered dulcimer, a gamelan, and a synthesized zither. Not drums.",
-  "tags": ["karplus-strong", "tuned", "metallic", "string", "flux", "experimental", "not-drums"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "karplus-strong",
+    "tuned",
+    "metallic",
+    "string",
+    "flux",
+    "experimental",
+    "not-drums"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

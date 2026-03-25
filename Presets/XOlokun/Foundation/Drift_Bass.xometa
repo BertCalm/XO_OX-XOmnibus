@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Deep bass presence with voyager drift.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.344,
+    "density": 0.193,
+    "movement": 0.075,
+    "space": 0.0,
+    "warmth": 0.466
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Foundation",
+  "name": "Drift Bass",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 3.0,
+      "drift_decay": 350.0,
+      "drift_driftDepth": 0.4,
+      "drift_driftRate": 0.1,
+      "drift_filterCutoff": 1500.0,
+      "drift_filterReso": 0.2,
+      "drift_filterSlope": 1.0,
+      "drift_hazeAmount": 0.25,
+      "drift_level": -2.0,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.7,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_release": 200.0,
+      "drift_subLevel": 0.4,
+      "drift_sustain": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "drifty",
+    "saturated",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

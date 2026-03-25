@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum effort, maximum filter resonance, zero sync. 40 partials scream independently through a narrow resonant band \u2014 the sound of a voice caught mid-shriek and frozen in time. Sustained, terrifying, beautiful.",
+  "description": "Maximum effort, maximum filter resonance, zero sync. 40 partials scream independently through a narrow resonant band — the sound of a voice caught mid-shriek and frozen in time. Sustained, terrifying, beautiful.",
   "tags": [
     "scream",
     "resonant",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

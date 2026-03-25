@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fault Line (Obsidian)",
+  "name": "Fault Line",
   "mood": "Atmosphere",
   "engines": [
     "Obsidian"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tectonic tension atmosphere — slight cross-mod rumble, long build, slow exhale.",
+  "description": "Tectonic tension atmosphere \u2014 slight cross-mod rumble, long build, slow exhale.",
   "tags": [
     "tectonic",
     "tension",

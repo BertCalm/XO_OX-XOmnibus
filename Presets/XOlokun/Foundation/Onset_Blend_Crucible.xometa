@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Blend Crucible",
   "mood": "Foundation",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All 8 voices locked at blend=0.5 — the equal-power crossfade midpoint where Circuit and Algorithm contribute identically. The 808 bridged-T and the modal resonator fight for the kick simultaneously. The metallic network and the FM oscillator fight for the hat. This is what happens in the crucible when neither side wins. Not an 808. Not a physics simulation. Both.",
-  "tags": ["blend", "crucible", "dual-layer", "b006", "equal-power", "crossfade", "experimental"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "blend",
+    "crucible",
+    "dual-layer",
+    "b006",
+    "equal-power",
+    "crossfade",
+    "experimental"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

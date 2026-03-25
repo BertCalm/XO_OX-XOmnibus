@@ -5,21 +5,20 @@
 namespace xolokun {
 
 //==============================================================================
-// ParameterSmoother — One-pole parameter smoothing for zipper-free automation.
+// ParameterSmoother — One-pole smoothing for zipper-free parameter automation.
 //
-// Consolidates the identical smoothing pattern found in 13+ engines:
+// Consolidates the smoothing pattern found across 13+ engines. The algorithm:
 //   smoothed += (target - smoothed) * coeff
 //
-// Default time constant: 5ms (the fleet standard). This is fast enough to
-// track knob movements without latency, but slow enough to prevent zipper
-// noise on stepped parameter changes.
+// Default time constant: 5ms (the XOlokun fleet standard). Fast enough to
+// track knob movements without audible latency; slow enough to suppress the
+// zipper noise caused by stepped parameter changes at audio rate.
 //
-// Note: the coefficient uses angular frequency (2π/T) rather than the
-// standard one-pole formula (1/T). This produces faster convergence suited
-// to parameter smoothing (~6× faster than a true 5ms RC). The labeled time
-// constant is an approximate -60dB settling time guide, not a strict RC
-// constant. timeSec is the approximate settling time; actual -3dB point is
-// ~timeSec / (2π) ≈ 0.8ms for the 5ms default.
+// Coefficient note: the coefficient is derived using 2π/T (angular frequency)
+// rather than the simpler 1/T. This makes convergence ~6× faster than a
+// strict RC filter at the same labeled time, which is exactly what parameter
+// smoothing needs: settle quickly, but smooth the discontinuity. Think of the
+// labeled `timeSec` as a comfort guide, not an RC specification.
 //
 // Usage:
 //   ParameterSmoother cutoff;
@@ -42,9 +41,7 @@ struct ParameterSmoother
             coeff = 1.0f;
             return;
         }
-        // One-pole smoother using angular frequency for faster convergence.
-        // timeSec is the approximate settling time label, not a strict RC constant.
-        // See class comment above for full explanation.
+        // Angular-frequency coefficient — see class comment for the full reasoning.
         coeff = 1.0f - std::exp (-kTwoPi / (timeSec * sampleRate));
     }
 

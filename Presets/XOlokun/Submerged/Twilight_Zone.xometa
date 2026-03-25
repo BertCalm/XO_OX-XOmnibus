@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Twilight Zone",
+  "mood": "Submerged",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The mesopelagic twilight zone \u2014 where shore light finally fails and creatures glow faint.",
+  "tags": [
+    "submerged",
+    "twilight-zone",
+    "mesopelagic",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.55,
+    "movement": 0.4,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.65,
+      "osprey_foam": 0.05,
+      "osprey_fog": 0.0,
+      "osprey_hull": 0.6,
+      "osprey_depth": 0.85,
+      "osprey_coherence": 0.52,
+      "osprey_filterTilt": 0.32,
+      "osprey_filterEnvDepth": 0.25,
+      "osprey_harborVerb": 0.45,
+      "osprey_creatureRate": 0.3,
+      "osprey_creatureDepth": 0.55,
+      "osprey_glide": 0.22,
+      "osprey_ampAttack": 0.1,
+      "osprey_ampDecay": 0.45,
+      "osprey_ampSustain": 0.68,
+      "osprey_ampRelease": 0.9,
+      "osprey_macroCharacter": 0.65,
+      "osprey_macroMovement": 0.4,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.6
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

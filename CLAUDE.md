@@ -13,7 +13,7 @@ and mutate into sounds impossible with any single synth. **73 engines** are regi
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN, OUTLOOK
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** ~19,000+ factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
+- **Presets:** ~17,250 factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -260,18 +260,34 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 - **Typography:** Space Grotesk (display), Inter (body), JetBrains Mono (values)
 - **Light mode default**, dark mode toggle
 
+## Environment
+
+- **CMake ≥ 3.22**, **Ninja**, **Xcode Command Line Tools** required
+- JUCE 8 lives in `Libs/JUCE/` (fetched automatically via FetchContent if absent)
+- AU plugin code: `aumu Xolk XoOx` — used for auval and DAW identification
+- `OSX_ARCHITECTURES` must be set **before** `project()` in CMakeLists.txt (universal binary)
+- Use `apvts.processor` not `getProcessor()` in JUCE 8
+- `atomic.load()` required for jmax; `1`-param `keyPressed` override
+
 ## Build
 
 ```bash
-# macOS build
+# macOS (Release)
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 
-# iOS build
+# macOS (Debug)
+cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+cmake --build build
+
+# iOS
 cmake -B build-ios -G Xcode \
   -DCMAKE_TOOLCHAIN_FILE=ios-toolchain.cmake \
   -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM=YOUR_TEAM_ID
 cmake --build build-ios --config Release
+
+# Validate AU (run after every macOS build)
+auval -v aumu Xolk XoOx
 ```
 
 ## XPN Export (MPC Compatibility)
@@ -298,6 +314,27 @@ New engines are designed as standalone instruments first, then integrated into X
 - Define coupling compatibility early (which `CouplingType` enums you accept)
 
 **Integration path:** Write a thin adapter implementing `SynthEngine` → `REGISTER_ENGINE()` → copy presets → done.
+
+## V1 Scope — "The Deep Opens"
+
+V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 73-engine fleet is personal; V1 gating is public release only. See `Docs/v1-scope-revision-2026-03-23.md`.
+
+**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked. See `Docs/patreon-milestone-model.md`.
+
+## Kitchen Collection (24 engines across 6 quads)
+
+All 6 quads built, seanced, and Guru Bin retreats complete (2026-03-23):
+
+| Quad | Theme | Engines | Status |
+|------|-------|---------|--------|
+| Chef (Organs) | Adversarial coupling | OTO, OCTAVE, OLEG, OTIS | Retreat complete |
+| Kitchen (Pianos) | Modal resonator banks | OVEN, OCHRE, OBELISK, OPALINE | Retreat complete |
+| Cellar (Bass) | Gravitational coupling | OGRE, OLATE, OAKEN, OMEGA | Retreat complete |
+| Garden (Strings) | Growth Mode | ORCHARD, OVERGROW, OSIER, OXALIS | Retreat complete |
+| Broth (Pads) | Multi-timescale diffusion | OVERWASH, OVERWORN, OVERFLOW, OVERCAST | Retreat complete |
+| Fusion (EP) | Spectral Fingerprint Cache | OASIS, ODDFELLOW, ONKOLO, OPCODE | Retreat complete |
+
+161 awakening presets written across the 16 KC engines. Community strategy: `Docs/community-strategy-v2.md`.
 
 ## OBRIX — Wave 5: Reef Residency (2026-03-21)
 
@@ -479,6 +516,10 @@ Full process: `Docs/xomnibus_new_engine_process.md`
 - Documentation improvement plan: `Docs/documentation_health_plan.md`
 - Master specification: `Docs/xomnibus_master_specification.md`
 - Discovery index: `Docs/INDEX.md`
+- Community strategy: `Docs/community-strategy-v2.md`
+- V1 scope: `Docs/v1-scope-revision-2026-03-23.md`
+- Kitchen Collection release calendar: `Docs/kitchen-collection-release-calendar.md`
+- Fleet seance scores: `Docs/fleet-seance-scores-2026-03-20.md`
 
 ---
 

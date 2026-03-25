@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Optimized for perfect fifth intervals. At Drama=0.85, the 3:2 frequency ratio between partials locks with zero beating. The formant is bright E-vowel, emphasizing the clarity of the interval. Play stacked fifths and hear the Pythagorean spiral \u2014 the oldest harmony in human music, rendered with digital precision.",
+  "description": "Optimized for perfect fifth intervals. At Drama=0.85, the 3:2 frequency ratio between partials locks with zero beating. The formant is bright E-vowel, emphasizing the clarity of the interval. Play stacked fifths and hear the Pythagorean spiral — the oldest harmony in human music, rendered with digital precision.",
   "tags": [
     "fifth",
     "pythagorean",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

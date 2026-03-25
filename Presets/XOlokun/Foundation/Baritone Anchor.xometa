@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Deep, grounded voice pitched down 7 semitones. Dark O vowel with low tilt. Strong fundamental, moderate partials. The anchor voice in any ensemble arrangement \u2014 reliable, authoritative, warm.",
+  "description": "Deep, grounded voice pitched down 7 semitones. Dark O vowel with low tilt. Strong fundamental, moderate partials. The anchor voice in any ensemble arrangement — reliable, authoritative, warm.",
   "tags": [
     "bass",
     "baritone",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

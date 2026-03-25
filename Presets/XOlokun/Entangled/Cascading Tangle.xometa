@@ -17,16 +17,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.66,
-    "SPACE": 0.65
+    "MACHINE": 0.5,
+    "SPACE": 0.85,
+    "PUNCH": 0.66,
+    "MUTATE": 0.65
   },
   "mood": "Entangled",
   "name": "Cascading Tangle",
@@ -67,5 +67,6 @@
     "space": 0.068,
     "aggression": 0.3
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

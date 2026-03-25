@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "Phase Transition",
+  "mood": "Prism",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Drama mapped to mod wheel. Sweep from 0 to 127 to hear the Kuramoto critical threshold \u2014 the exact moment chaos snaps to order. ResSens=0.8 so acausal clusters bloom before the global transition. The player IS the conductor.",
+  "tags": [
+    "kuramoto",
+    "transition",
+    "interactive",
+    "mod-wheel",
+    "physics"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.3,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.0,
+      "opera_voice": 0.5,
+      "opera_stage": 0.3,
+      "opera_vowelA": 0,
+      "opera_vowelB": 5,
+      "opera_breath": 0.2,
+      "opera_effort": 0.55,
+      "opera_partials": 32,
+      "opera_resSens": 0.8,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 5.5,
+      "opera_vibDepth": 0.2,
+      "opera_tilt": 0.0,
+      "opera_filterCutoff": 9000.0,
+      "opera_filterRes": 0.05,
+      "opera_filterEnvAmt": 0.3,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.25,
+      "opera_filterS": 0.55,
+      "opera_filterR": 0.5,
+      "opera_ampA": 0.08,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.8,
+      "opera_ampR": 0.7,
+      "opera_lfo1Rate": 0.1,
+      "opera_lfo1Depth": 0.15,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 3.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 1.0,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.4,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.1,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

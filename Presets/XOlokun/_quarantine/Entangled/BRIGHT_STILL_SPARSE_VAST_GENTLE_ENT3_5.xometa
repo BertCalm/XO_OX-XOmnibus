@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.6464,
-    "COUPLING": 0.8727,
-    "MOVEMENT": 0.0788,
-    "SPACE": 0.7157
+    "MACHINE": 0.6464,
+    "SPACE": 0.8727,
+    "PUNCH": 0.0788,
+    "MUTATE": 0.7157
   },
   "mood": "Entangled",
   "name": "Silver Dome",
@@ -71,5 +71,6 @@
     "vast"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

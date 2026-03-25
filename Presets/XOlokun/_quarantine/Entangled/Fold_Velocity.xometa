@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.83,
-    "COUPLING": 0.87,
-    "MOVEMENT": 0.9,
-    "SPACE": 0.18
+    "MACHINE": 0.83,
+    "SPACE": 0.87,
+    "PUNCH": 0.9,
+    "MUTATE": 0.18
   },
   "mood": "Entangled",
   "name": "Fold Velocity",
@@ -52,5 +52,6 @@
     "fold"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

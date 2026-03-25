@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Onset Akan Assembly",
   "mood": "Entangled",
-  "engines": ["Onset", "Oware"],
+  "engines": [
+    "Onset",
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A tuned percussion kit calibrated for OWARE sympathetic resonance coupling. Modal synthesis on kick and tom (algoMode=1, character=0 for pure Bessel zeros) plus Karplus-Strong on Perc A and B with long decay — tuned to ring sympathetically with OWARE's eight modal tuning modes. Strike the board; OWARE's strings answer.",
-  "tags": ["coupling-source", "oware", "entangled", "tuned-percussion", "akan", "modal", "sympathetic"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling-source",
+    "oware",
+    "entangled",
+    "tuned-percussion",
+    "akan",
+    "modal",
+    "sympathetic"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -136,5 +152,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

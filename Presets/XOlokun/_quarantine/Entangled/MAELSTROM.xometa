@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.521,
-    "COUPLING": 0.627,
-    "MOVEMENT": 0.972,
-    "SPACE": 0.275
+    "MACHINE": 0.521,
+    "SPACE": 0.627,
+    "PUNCH": 0.972,
+    "MUTATE": 0.275
   },
   "mood": "Entangled",
   "name": "MAELSTROM",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

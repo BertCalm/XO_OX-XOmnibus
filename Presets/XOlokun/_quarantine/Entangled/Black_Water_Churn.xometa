@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.37,
-    "COUPLING": 0.86,
-    "MOVEMENT": 0.8,
-    "SPACE": 0.45
+    "MACHINE": 0.37,
+    "SPACE": 0.86,
+    "PUNCH": 0.8,
+    "MUTATE": 0.45
   },
   "mood": "Entangled",
   "name": "Black Water Churn",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

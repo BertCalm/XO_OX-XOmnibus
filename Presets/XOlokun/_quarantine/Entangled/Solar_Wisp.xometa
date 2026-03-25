@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.784,
-    "COUPLING": 0.535,
-    "MOVEMENT": 0.583,
-    "SPACE": 0.594
+    "MACHINE": 0.784,
+    "SPACE": 0.535,
+    "PUNCH": 0.583,
+    "MUTATE": 0.594
   },
   "mood": "Entangled",
   "name": "Solar Wisp",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

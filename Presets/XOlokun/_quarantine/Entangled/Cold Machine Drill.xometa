@@ -16,16 +16,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.8,
-    "COUPLING": 0.68,
-    "MOVEMENT": 0.97,
-    "SPACE": 0.4
+    "MACHINE": 0.8,
+    "SPACE": 0.68,
+    "PUNCH": 0.97,
+    "MUTATE": 0.4
   },
   "mood": "Entangled",
   "name": "Cold Machine Drill",
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

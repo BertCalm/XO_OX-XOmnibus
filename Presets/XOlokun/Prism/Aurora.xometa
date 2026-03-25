@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Aurora",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aurora-like spectral chord \u2014 shifting columns of color in vast unison formation.",
+  "tags": [
+    "aurora",
+    "spectral",
+    "shifting",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.3,
+    "movement": 0.52,
+    "density": 0.72,
+    "space": 0.62,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_snap": 0.62,
+      "snap_decay": 0.62,
+      "snap_detune": 0.3,
+      "snap_filterCutoff": 12500.0,
+      "snap_filterReso": 0.6,
+      "snap_filterEnvDepth": 0.65,
+      "snap_unison": 7,
+      "snap_sweepDirection": 2,
+      "snap_pitchLock": 0.72,
+      "snap_polyphony": 8,
+      "snap_level": 0.73,
+      "snap_macroDart": 0.42,
+      "snap_macroDepth": 0.65,
+      "snap_macroSchool": 0.75,
+      "snap_macroSurface": 0.75
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

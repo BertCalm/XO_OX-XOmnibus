@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Gentle A-to-E vowel sweep, breathy and intimate. Low drama keeps partials independent \u2014 a choir warming up before dawn. Soft effort, slow LFO on formant. The sound of preparation.",
+  "description": "Gentle A-to-E vowel sweep, breathy and intimate. Low drama keeps partials independent — a choir warming up before dawn. Soft effort, slow LFO on formant. The sound of preparation.",
   "tags": [
     "pad",
     "gentle",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

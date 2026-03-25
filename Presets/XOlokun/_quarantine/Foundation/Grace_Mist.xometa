@@ -23,16 +23,16 @@
     "Osteria"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.777,
-    "COUPLING": 0.839,
-    "MOVEMENT": 0.651,
-    "SPACE": 0.423
+    "MACHINE": 0.777,
+    "SPACE": 0.839,
+    "PUNCH": 0.651,
+    "MUTATE": 0.423
   },
   "mood": "Foundation",
   "name": "Grace Mist",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

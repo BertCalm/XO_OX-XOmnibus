@@ -5,10 +5,10 @@
   "couplingIntensity": "Moderate",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "coupling": {
     "pairs": [
@@ -78,5 +78,6 @@
       "dub_voiceMode": 1,
       "dub_lfoDepth": 0.12
     }
-  }
+  },
+  "tier": "awakening"
 }

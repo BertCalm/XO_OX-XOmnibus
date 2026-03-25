@@ -10,16 +10,16 @@
   "couplingIntensity": "None",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.7,
-    "MOVEMENT": 0.99,
-    "COUPLING": 0.0,
-    "SPACE": 0.05
+    "MACHINE": 0.7,
+    "PUNCH": 0.99,
+    "SPACE": 0.0,
+    "MUTATE": 0.05
   },
   "coupling": {
     "pairs": []
@@ -43,5 +43,6 @@
     "percussion",
     "machine"
   ],
-  "description": "XVC at maximum cross-voice density — drum machine as weapon."
+  "description": "XVC at maximum cross-voice density — drum machine as weapon.",
+  "tier": "awakening"
 }

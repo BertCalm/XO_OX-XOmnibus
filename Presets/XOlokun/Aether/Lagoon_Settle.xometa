@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.421,
+      "destination": "OTTONI",
+      "source": "OBLIQUE",
+      "type": "RESONANCE_SHARE"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "dna": {
+    "aggression": 0.543,
+    "brightness": 0.431,
+    "density": 0.928,
+    "movement": 0.08,
+    "space": 0.048,
+    "warmth": 0.929
+  },
+  "engines": [
+    "Oblique",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Lagoon Settle",
+  "parameters": {
+    "Oblique": {
+      "level": 0.761,
+      "pan": 0.02
+    },
+    "Ottoni": {
+      "level": 0.693,
+      "pan": -0.062
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

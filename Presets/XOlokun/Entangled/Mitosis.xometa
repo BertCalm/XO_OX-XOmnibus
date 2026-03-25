@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM coupling. High partial count with ORGANISM's automata splitting the partial field into two independent populations \u2014 the voice divides and recombines. When partials are split, the Kuramoto field operates on two smaller groups, each finding their own sync. When they recombine, the full field snaps together. Cell division as synthesis.",
+  "description": "ORGANISM coupling. High partial count with ORGANISM's automata splitting the partial field into two independent populations — the voice divides and recombines. When partials are split, the Kuramoto field operates on two smaller groups, each finding their own sync. When they recombine, the full field snaps together. Cell division as synthesis.",
   "tags": [
     "entangled",
     "organism",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

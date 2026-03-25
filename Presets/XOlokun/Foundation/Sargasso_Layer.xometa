@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Sargasso Layer",
+  "mood": "Foundation",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Thick, sustaining bass-pad with Soft Tri and Blanket texture. Snout Soft filter for maximum warmth.",
+  "tags": [
+    "bass",
+    "pad",
+    "warm",
+    "thick",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.95,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.15,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscA_wave": 1,
+      "bob_oscA_shape": 0.7,
+      "bob_oscA_tune": -12.0,
+      "bob_oscA_drift": 0.05,
+      "bob_oscB_wave": 3,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_blend": 0.3,
+      "bob_oscB_sync": 0,
+      "bob_oscB_fm": 0.0,
+      "bob_texMode": 1,
+      "bob_texLevel": 0.08,
+      "bob_texTone": 0.3,
+      "bob_texWidth": 0.7,
+      "bob_fltMode": 3,
+      "bob_fltCutoff": 2000.0,
+      "bob_fltReso": 0.0,
+      "bob_fltChar": 0.8,
+      "bob_fltDrive": 0.1,
+      "bob_fltEnvAmt": 0.15,
+      "bob_ampAttack": 0.08,
+      "bob_ampDecay": 2.0,
+      "bob_ampSustain": 0.85,
+      "bob_ampRelease": 1.0,
+      "bob_motAttack": 0.1,
+      "bob_motDecay": 1.5,
+      "bob_motSustain": 0.6,
+      "bob_motRelease": 1.2,
+      "bob_motDepth": 0.2,
+      "bob_lfo1Rate": 0.3,
+      "bob_lfo1Depth": 0.1,
+      "bob_lfo1Shape": 0,
+      "bob_lfo1Target": 0,
+      "bob_curMode": 4,
+      "bob_curAmount": 0.15,
+      "bob_bobMode": 0.4,
+      "bob_dustAmount": 0.0,
+      "bob_dustTone": 0.5,
+      "bob_level": 0.8,
+      "bob_voiceMode": 0,
+      "bob_glide": 0.0,
+      "bob_polyphony": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

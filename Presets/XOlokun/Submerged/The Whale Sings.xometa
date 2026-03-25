@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Signature preset #1. Low C1 drone. 32 partials with slow Conductor arc (45s, S-curve). Begins as deep subharmonic breath, gradually synchronizes into a vast harmonic chord. Vibrato 3.0 Hz, depth 0.5. The SOFAR channel made audible. A humpback whale's song carries thousands of miles through the deep sound channel \u2014 this preset captures that impossible distance and patience.",
+  "description": "Signature preset #1. Low C1 drone. 32 partials with slow Conductor arc (45s, S-curve). Begins as deep subharmonic breath, gradually synchronizes into a vast harmonic chord. Vibrato 3.0 Hz, depth 0.5. The SOFAR channel made audible. A humpback whale's song carries thousands of miles through the deep sound channel — this preset captures that impossible distance and patience.",
   "tags": [
     "submerged",
     "whale",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -251,8 +251,6 @@ public:
         if (numSamples <= 0)
             return;
 
-        juce::ScopedNoDenormals noDenormals;
-
         // Build ParamSnapshot from cached atomics
         auto snap = buildSnapshot();
 

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Heavy spectral tilt suppresses upper partials, leaving only the deep fundamental and first few harmonics audible. The formant shape is still present \u2014 you can hear the vowel character \u2014 but it is dark, subterranean, felt more than heard. Filter cutoff at 2000 Hz seals the ceiling. Low drama, high space.",
+  "description": "Heavy spectral tilt suppresses upper partials, leaving only the deep fundamental and first few harmonics audible. The formant shape is still present — you can hear the vowel character — but it is dark, subterranean, felt more than heard. Filter cutoff at 2000 Hz seals the ceiling. Low drama, high space.",
   "tags": [
     "dark",
     "deep",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

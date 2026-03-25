@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Multiple unison voices with high detune create a layered curtain of formant spectra. Each voice carries its own partial cloud, slightly out of phase with the others. The result is a shimmering veil \u2014 not quite a choir, not quite noise, but a living membrane of harmonic possibility.",
+  "description": "Multiple unison voices with high detune create a layered curtain of formant spectra. Each voice carries its own partial cloud, slightly out of phase with the others. The result is a shimmering veil — not quite a choir, not quite noise, but a living membrane of harmonic possibility.",
   "tags": [
     "veil",
     "layered",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

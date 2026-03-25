@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ONSET pattern distributed across OCTOPUS's 8 arms. Kick = arm 1, snare = arm 2, hats = arms 3\u20135. Intelligence distributed.",
+  "description": "ONSET pattern distributed across OCTOPUS's 8 arms. Kick = arm 1, snare = arm 2, hats = arms 3–5. Intelligence distributed.",
   "tags": [
     "coupling",
     "entangled",
@@ -19,10 +19,10 @@
     "arms"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Deep",
   "tempo": null,
@@ -63,5 +63,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

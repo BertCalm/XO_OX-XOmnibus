@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.8,
-    "COUPLING": 0.88,
-    "MOVEMENT": 0.86,
-    "SPACE": 0.15
+    "MACHINE": 0.8,
+    "SPACE": 0.88,
+    "PUNCH": 0.86,
+    "MUTATE": 0.15
   },
   "mood": "Entangled",
   "name": "Glitch Barrage",
@@ -52,5 +52,6 @@
     "glitch"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

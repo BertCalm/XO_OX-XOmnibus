@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Opera with EmotionalMemory active \u2014 Blessing B037. Drama at 0.5, arc in Both mode. Each note recalls the phase state of the previous note within 500ms. The Kuramoto field 'wakes up knowing where it was' \u2014 continuity of consciousness.",
+  "description": "Opera with EmotionalMemory active — Blessing B037. Drama at 0.5, arc in Both mode. Each note recalls the phase state of the previous note within 500ms. The Kuramoto field 'wakes up knowing where it was' — continuity of consciousness.",
   "tags": [
     "vocal",
     "memory",
@@ -89,5 +89,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

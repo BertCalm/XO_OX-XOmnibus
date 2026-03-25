@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Transient Anatomy",
   "mood": "Foundation",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Each voice explores a different region of the Blend axis (B006) to demonstrate the full anatomy of a transient: Kick at blend=0.0 (pure BridgedT circuit attack), Snare at blend=0.3 (circuit + Modal algorithm tail), HH-C at blend=0.85 (near-pure Metallic FM), HH-O at blend=1.0 (full FM modal), Clap at blend=0.2, Tom at blend=0.6 (FM pitch character), Perc-A at blend=0.95 (full algorithmic), Perc-B at blend=0.5 (exact crossfade center). A dissection table: every voice teaches what blend does at that coordinate.",
-  "tags": ["blend-study", "anatomy", "foundation", "dual-layer", "educational", "transient", "crossfade"],
-  "macroLabels": ["MACHINE", "PUNCH", "SPACE", "MUTATE"],
+  "tags": [
+    "blend-study",
+    "anatomy",
+    "foundation",
+    "dual-layer",
+    "educational",
+    "transient",
+    "crossfade"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -124,5 +139,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

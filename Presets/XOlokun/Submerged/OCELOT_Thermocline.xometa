@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Thermocline (Ocelot)",
+  "name": "Thermocline",
   "mood": "Submerged",
   "engines": [
     "Ocelot"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The temperature boundary between ocean layers — Underwater biome, log drum thud, canopy pad swells like pressure. Ecosystem depth maximum: full cross-stratum circulation.",
+  "description": "The temperature boundary between ocean layers \u2014 Underwater biome, log drum thud, canopy pad swells like pressure. Ecosystem depth maximum: full cross-stratum circulation.",
   "tags": [
     "submerged",
     "thermocline",

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Continental Shelf",
+  "mood": "Submerged",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset adrift in the mesopelagic: wide reverb tails dissolve into surrounding silence, sound dispersed by ten thousand metres of water.",
+  "tags": [
+    "submerged",
+    "deep",
+    "pressure",
+    "percussive"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.4,
+    "movement": 0.3,
+    "density": 0.35,
+    "space": 0.78,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macroCharacter": 0.5,
+      "perc_macroMovement": 0.3,
+      "perc_macroCoupling": 0.0,
+      "perc_macroSpace": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tier": "awakening"
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Trefoil Spin",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Trefoil knot spinning at high rate \u2014 rapid knotted topology with high energy injection.",
+  "tags": [
+    "trefoil",
+    "spin",
+    "rapid",
+    "knotted",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.58,
+    "space": 0.5,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 0.9,
+      "ouro_chaosIndex": 0.65,
+      "ouro_leash": 0.22,
+      "ouro_theta": 0.35,
+      "ouro_phi": 0.65,
+      "ouro_damping": 0.1,
+      "ouro_injection": 0.82
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

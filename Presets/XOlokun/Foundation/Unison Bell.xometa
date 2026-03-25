@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High sync with bright tilt gives partials a bell-like quality. 2-voice unison with slight detune creates gentle beating. Short sustain with long release \u2014 play staccato notes that ring out like a carillon of voices.",
+  "description": "High sync with bright tilt gives partials a bell-like quality. 2-voice unison with slight detune creates gentle beating. Short sustain with long release — play staccato notes that ring out like a carillon of voices.",
   "tags": [
     "bell",
     "bright",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

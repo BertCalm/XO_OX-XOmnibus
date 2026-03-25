@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Foundation",
-  "name": "Parallel Universe (Onset)",
+  "name": "Parallel Universe",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.0,
@@ -155,5 +155,6 @@
     "layered"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

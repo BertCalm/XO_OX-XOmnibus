@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "name": "Biolume Terrain",
+  "description": "Ethereal textures wash with voyager drift and prism shimmer.",
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.565,
+    "density": 0.095,
+    "movement": 0.138,
+    "space": 0.407,
+    "warmth": 0.275
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Alien Landscape",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 800.0,
+      "drift_driftDepth": 0.5,
+      "drift_driftRate": 0.05,
+      "drift_filterCutoff": 4000.0,
+      "drift_filterReso": 0.15,
+      "drift_level": -6.0,
+      "drift_lfoDepth": 0.5,
+      "drift_lfoRate": 0.03,
+      "drift_noiseLevel": 0.15,
+      "drift_oscA_fmDepth": 0.25,
+      "drift_oscA_level": 0.5,
+      "drift_oscA_mode": 3.0,
+      "drift_oscB_fmDepth": 0.15,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 3.0,
+      "drift_release": 3000.0,
+      "drift_shimmerAmount": 0.4,
+      "drift_shimmerTone": 0.5,
+      "drift_sustain": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "drifty",
+    "shimmery",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

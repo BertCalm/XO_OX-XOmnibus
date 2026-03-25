@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "Vowel Drift",
+  "mood": "Foundation",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "LFO1 sweeps the formant morph at a slow 0.03 Hz \u2014 the vowel takes over 30 seconds to complete one A-to-O-to-A cycle. Warm, evolving, never static. Hold a chord and let the voice wander through the vowel space.",
+  "tags": [
+    "pad",
+    "evolving",
+    "formant",
+    "slow",
+    "morphing"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.35,
+      "opera_voice": 0.5,
+      "opera_stage": 0.45,
+      "opera_vowelA": 0,
+      "opera_vowelB": 3,
+      "opera_breath": 0.15,
+      "opera_effort": 0.45,
+      "opera_partials": 32,
+      "opera_resSens": 0.45,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 5.0,
+      "opera_vibDepth": 0.2,
+      "opera_tilt": 0.0,
+      "opera_filterCutoff": 7000.0,
+      "opera_filterRes": 0.0,
+      "opera_filterEnvAmt": 0.25,
+      "opera_filterA": 0.03,
+      "opera_filterD": 0.3,
+      "opera_filterS": 0.55,
+      "opera_filterR": 0.5,
+      "opera_ampA": 0.1,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.82,
+      "opera_ampR": 0.9,
+      "opera_lfo1Rate": 0.03,
+      "opera_lfo1Depth": 0.6,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 3.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.4,
+      "opera_velToEffort": 0.25,
+      "opera_detune": 0.1,
+      "opera_portamento": 0.0,
+      "opera_unison": 2,
+      "opera_width": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

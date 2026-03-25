@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Low pitch territory. A single bass voice resonating through immense stone architecture. Stage at maximum, partials at 48 with heavy dark tilt. The sound is not a note \u2014 it is a vibration that the building itself seems to produce. Portamento connects chord tones with the weight of shifting tectonic plates.",
+  "description": "Low pitch territory. A single bass voice resonating through immense stone architecture. Stage at maximum, partials at 48 with heavy dark tilt. The sound is not a note — it is a vibration that the building itself seems to produce. Portamento connects chord tones with the weight of shifting tectonic plates.",
   "tags": [
     "cathedral",
     "bass",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Speaking in tongues from another planet. Alien-to-Alien vowel with fast LFO on formant morph \u2014 the voice rapidly cycles through impossible vowel shapes. High detune and 4-voice unison create a chattering, multilingual chorus from beyond.",
+  "description": "Speaking in tongues from another planet. Alien-to-Alien vowel with fast LFO on formant morph — the voice rapidly cycles through impossible vowel shapes. High detune and 4-voice unison create a chattering, multilingual chorus from beyond.",
   "tags": [
     "alien",
     "vocal",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

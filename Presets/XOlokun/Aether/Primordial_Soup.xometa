@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Primordial Soup (Organon)",
+  "name": "Primordial Soup",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.6,

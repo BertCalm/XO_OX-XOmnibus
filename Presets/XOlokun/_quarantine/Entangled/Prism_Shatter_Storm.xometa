@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.84,
-    "COUPLING": 0.88,
-    "MOVEMENT": 0.87,
-    "SPACE": 0.2
+    "MACHINE": 0.84,
+    "SPACE": 0.88,
+    "PUNCH": 0.87,
+    "MUTATE": 0.2
   },
   "mood": "Entangled",
   "name": "Prism Shatter Storm",
@@ -52,5 +52,6 @@
     "prism"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

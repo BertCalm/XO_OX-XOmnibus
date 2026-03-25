@@ -37,7 +37,7 @@
     "SPACE": 0.6
   },
   "mood": "Entangled",
-  "name": "Obsidian Predator (Outwit)",
+  "name": "Obsidian Predator",
   "parameters": {
     "Obsidian": {
       "obsidian_ampAttack": 0.26,

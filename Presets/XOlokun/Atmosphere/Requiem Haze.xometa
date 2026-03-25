@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Somber, reverent, enveloped in slow-motion reverb tail. Low-register vowel space (O-U) with dark tilt and maximum release times. Each note hangs in the air like incense smoke. Conductor mode with a 45-second arc provides the gentlest possible crescendo \u2014 a requiem that builds so slowly it becomes meditation.",
+  "description": "Somber, reverent, enveloped in slow-motion reverb tail. Low-register vowel space (O-U) with dark tilt and maximum release times. Each note hangs in the air like incense smoke. Conductor mode with a 45-second arc provides the gentlest possible crescendo — a requiem that builds so slowly it becomes meditation.",
   "tags": [
     "requiem",
     "somber",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

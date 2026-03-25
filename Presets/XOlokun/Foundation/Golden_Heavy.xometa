@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Onset",
+        "type": "CHAOS_INJECT",
+        "amount": 0.801
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.974,
+    "brightness": 0.873,
+    "density": 0.982,
+    "movement": 0.433,
+    "space": 0.621,
+    "warmth": 0.958
+  },
+  "engines": [
+    "Oblong",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.836,
+    "SPACE": 0.822,
+    "PUNCH": 0.51,
+    "MUTATE": 0.415
+  },
+  "mood": "Foundation",
+  "name": "Golden Heavy",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.836,
+      "macro_coupling": 0.822,
+      "macro_movement": 0.51,
+      "macro_space": 0.415,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Onset": {
+      "macro_character": 0.873,
+      "macro_coupling": 0.794,
+      "macro_movement": 0.546,
+      "macro_space": 0.447
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, shimmering, warm sound. Let it breathe — the space is the instrument.",
+  "tier": "awakening"
+}

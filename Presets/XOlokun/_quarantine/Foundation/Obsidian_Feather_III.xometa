@@ -23,16 +23,16 @@
     "Obese"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.529,
-    "COUPLING": 0.695,
-    "MOVEMENT": 0.203,
-    "SPACE": 0.676
+    "MACHINE": 0.529,
+    "SPACE": 0.695,
+    "PUNCH": 0.203,
+    "MUTATE": 0.676
   },
   "mood": "Foundation",
   "name": "Obsidian Feather III",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

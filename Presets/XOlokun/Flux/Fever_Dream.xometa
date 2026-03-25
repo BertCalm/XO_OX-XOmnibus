@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "Fever Dream (Organon)",
+  "name": "Fever Dream",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 1.2,

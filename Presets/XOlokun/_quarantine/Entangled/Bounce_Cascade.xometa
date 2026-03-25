@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.82,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.84,
-    "SPACE": 0.24
+    "MACHINE": 0.82,
+    "SPACE": 0.85,
+    "PUNCH": 0.84,
+    "MUTATE": 0.24
   },
   "mood": "Entangled",
   "name": "Bounce Cascade",
@@ -52,5 +52,6 @@
     "bounce"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

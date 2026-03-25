@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A hymn heard from underwater. Very low filter cutoff with gentle resonance creates the acoustic effect of water absorption \u2014 high frequencies vanish, leaving only the warm body of the voice. Heavy portamento makes pitch transitions liquid. Stage at maximum for the immense reverb of open ocean.",
+  "description": "A hymn heard from underwater. Very low filter cutoff with gentle resonance creates the acoustic effect of water absorption — high frequencies vanish, leaving only the warm body of the voice. Heavy portamento makes pitch transitions liquid. Stage at maximum for the immense reverb of open ocean.",
   "tags": [
     "submerged",
     "underwater",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

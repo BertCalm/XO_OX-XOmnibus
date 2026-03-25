@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A full choir heard from across a vast valley. Maximum stage, heavy low-pass filtering, high detune spread. The individual voices blur into collective texture. You cannot pick out words or notes \u2014 only the presence of many voices singing together at great distance. Portamento adds languid pitch movement.",
+  "description": "A full choir heard from across a vast valley. Maximum stage, heavy low-pass filtering, high detune spread. The individual voices blur into collective texture. You cannot pick out words or notes — only the presence of many voices singing together at great distance. Portamento adds languid pitch movement.",
   "tags": [
     "choir",
     "distant",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -5,10 +5,10 @@
   "couplingIntensity": "Moderate",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "coupling": {
     "pairs": [
@@ -27,7 +27,7 @@
     "Onset",
     "Odyssey"
   ],
-  "description": "Each drum hit triggers Drift shimmer burst \u2014 percussion creates harmonic halos.",
+  "description": "Each drum hit triggers Drift shimmer burst — percussion creates harmonic halos.",
   "tags": [
     "onset",
     "drift",
@@ -70,5 +70,6 @@
       "drift_level": 0.55,
       "drift_polyphony": 4
     }
-  }
+  },
+  "tier": "awakening"
 }

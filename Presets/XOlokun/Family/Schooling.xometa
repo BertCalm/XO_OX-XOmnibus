@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX personality \u2014 a school of neon tetras moving as one. 2-voice unison with bright tilt creates a shimmering, collective sound. The acausal resonance sensitivity is moderate \u2014 small clusters of partials spontaneously align like fish turning together, then separate. Fast vibrato adds nervous energy. Playful, flickering, alive.",
+  "description": "feliX personality — a school of neon tetras moving as one. 2-voice unison with bright tilt creates a shimmering, collective sound. The acausal resonance sensitivity is moderate — small clusters of partials spontaneously align like fish turning together, then separate. Fast vibrato adds nervous energy. Playful, flickering, alive.",
   "tags": [
     "family",
     "felix",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

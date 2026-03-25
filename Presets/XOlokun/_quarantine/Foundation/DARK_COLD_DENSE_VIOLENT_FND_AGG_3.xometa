@@ -23,16 +23,16 @@
     "OddOscar"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.377,
-    "COUPLING": 0.524,
-    "MOVEMENT": 0.487,
-    "SPACE": 0.398
+    "MACHINE": 0.377,
+    "SPACE": 0.524,
+    "PUNCH": 0.487,
+    "MUTATE": 0.398
   },
   "mood": "Foundation",
   "name": "Grain Massive",
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

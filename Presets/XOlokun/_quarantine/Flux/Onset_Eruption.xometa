@@ -10,16 +10,16 @@
   "couplingIntensity": "None",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.69,
-    "MOVEMENT": 0.96,
-    "COUPLING": 0.25,
-    "SPACE": 0.1
+    "MACHINE": 0.69,
+    "PUNCH": 0.96,
+    "SPACE": 0.25,
+    "MUTATE": 0.1
   },
   "coupling": {
     "pairs": []
@@ -42,5 +42,6 @@
     "percussion",
     "eruption"
   ],
-  "description": "Every transient at maximum attack — volcanic drum battery."
+  "description": "Every transient at maximum attack — volcanic drum battery.",
+  "tier": "awakening"
 }

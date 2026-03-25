@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Oracle output at peak density, minimal brightness",
+  "dna": {
+    "aggression": 0.6655,
+    "brightness": 0.1138,
+    "density": 0.894,
+    "movement": 0.5064,
+    "space": 0.2686,
+    "warmth": 0.5915
+  },
+  "engines": [
+    "Oracle"
+  ],
+  "macroLabels": [
+    "SIGNAL",
+    "DRIFT",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLE": 0.4238,
+    "DRIFT": 0.3902,
+    "SIGNAL": 0.1346,
+    "SPACE": 0.6578
+  },
+  "mood": "Prism",
+  "name": "Sonar Dense",
+  "parameters": {
+    "Oracle": {
+      "oracle_couplingBus": 0,
+      "oracle_couplingLevel": 0.5,
+      "oracle_macro_couple": 0.4238,
+      "oracle_macro_drift": 0.3902,
+      "oracle_macro_signal": 0.1346,
+      "oracle_macro_space": 0.6578,
+      "oracle_outputLevel": 0.85
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

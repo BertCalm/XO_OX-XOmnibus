@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Hydrothermal Vent (Overlap)",
+  "name": "Hydrothermal Vent",
   "mood": "Submerged",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Superheated water escaping through rock — the figure-eight topology has a violent center (the vent) flanked by cold water. The crossing point roars. This preset has chemistry.",
+  "description": "Superheated water escaping through rock \u2014 the figure-eight topology has a violent center (the vent) flanked by cold water. The crossing point roars. This preset has chemistry.",
   "tags": [
     "hydrothermal",
     "vent",

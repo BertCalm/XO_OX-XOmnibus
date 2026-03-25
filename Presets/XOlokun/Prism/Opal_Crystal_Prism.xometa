@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Crystal Prism (Opal I)",
+  "name": "Crystal Prism",
   "mood": "Prism",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The quintessential opal prism tone — clean grains refracting through crystalline shimmer and frost.",
+  "description": "The quintessential opal prism tone \u2014 clean grains refracting through crystalline shimmer and frost.",
   "tags": [
     "crystal",
     "prism",

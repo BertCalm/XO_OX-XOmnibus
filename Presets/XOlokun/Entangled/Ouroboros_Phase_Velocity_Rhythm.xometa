@@ -11,10 +11,10 @@
   "couplingIntensity": "Moderate",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "coupling": {
     "pairs": [
@@ -63,5 +63,6 @@
     "percussion",
     "transcendental"
   ],
-  "description": "B007: Chua at chaosIndex=0.65 fires rapid irregular bifurcation events (dx/dt spikes). RhythmToBlend coupling drives ONSET percussion texture. Drums that fire when the chaos tells them to."
+  "description": "B007: Chua at chaosIndex=0.65 fires rapid irregular bifurcation events (dx/dt spikes). RhythmToBlend coupling drives ONSET percussion texture. Drums that fire when the chaos tells them to.",
+  "tier": "awakening"
 }

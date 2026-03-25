@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oscar at his softest. Whisper-effort with high breath content creates an intimate, ASMR-like vocal texture. Low drama means partials drift independently \u2014 a gentle haze rather than a defined voice. Dark filter, slow everything. The sound of someone humming while falling asleep. Safe, warm, present.",
+  "description": "Oscar at his softest. Whisper-effort with high breath content creates an intimate, ASMR-like vocal texture. Low drama means partials drift independently — a gentle haze rather than a defined voice. Dark filter, slow everything. The sound of someone humming while falling asleep. Safe, warm, present.",
   "tags": [
     "family",
     "oscar",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

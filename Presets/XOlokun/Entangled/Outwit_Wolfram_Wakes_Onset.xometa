@@ -6,9 +6,9 @@
     "Outwit",
     "Onset"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT amplitude envelope triggers ONSET in AmpToFilter mode \u2014 the CA envelope gates the drum engine's filter. CA breathing controls drum character.",
+  "description": "OUTWIT amplitude envelope triggers ONSET in AmpToFilter mode — the CA envelope gates the drum engine's filter. CA breathing controls drum character.",
   "tags": [
     "entangled",
     "amp-to-filter",
@@ -17,10 +17,10 @@
     "envelope"
   ],
   "macroLabels": [
-    "CHARACTER",
+    "MACHINE",
     "CHAOS",
-    "COUPLING",
-    "SPACE"
+    "SPACE",
+    "MUTATE"
   ],
   "couplingIntensity": "Strong",
   "tempo": null,
@@ -68,9 +68,10 @@
         "target": "Onset",
         "type": "AmpToFilter",
         "amount": 0.6,
-        "description": "Outwit amplitude opens Onset drum filter \u2014 CA breathing controls drum brightness"
+        "description": "Outwit amplitude opens Onset drum filter — CA breathing controls drum brightness"
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

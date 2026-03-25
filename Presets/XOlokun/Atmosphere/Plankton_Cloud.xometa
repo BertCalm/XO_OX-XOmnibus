@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Thick, heavy environment. Maximum density, warm compression. ORIGAMI dense register.",
+  "dna": {
+    "aggression": 0.207,
+    "brightness": 0.444,
+    "density": 0.815,
+    "movement": 0.235,
+    "space": 0.308,
+    "warmth": 0.681
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.314,
+    "FOLD": 0.152,
+    "SPACE": 0.263,
+    "TENSION": 0.139
+  },
+  "mood": "Atmosphere",
+  "name": "Plankton Cloud",
+  "parameters": {
+    "Origami": {
+      "coupling": 0.314,
+      "fold": 0.152,
+      "space": 0.263,
+      "tension": 0.139
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dense",
+    "extreme",
+    "heavy",
+    "warm",
+    "thick"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

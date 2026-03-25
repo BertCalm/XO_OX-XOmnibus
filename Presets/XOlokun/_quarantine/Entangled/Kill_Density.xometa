@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.88,
-    "COUPLING": 0.93,
-    "MOVEMENT": 0.8,
-    "SPACE": 0.05
+    "MACHINE": 0.88,
+    "SPACE": 0.93,
+    "PUNCH": 0.8,
+    "MUTATE": 0.05
   },
   "mood": "Entangled",
   "name": "Kill Density",
@@ -52,5 +52,6 @@
     "predator"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Cascade Prism",
+  "mood": "Prism",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Voices cascading in bright series. Light on water.",
+  "tags": [
+    "cascade",
+    "light",
+    "water",
+    "bright",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.58,
+    "movement": 0.45,
+    "density": 0.55,
+    "space": 0.18,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.22,
+      "osteria_patina": 0.28,
+      "osteria_murmur": 0.22,
+      "osteria_oceanBleed": 0.35,
+      "osteria_blendMode": 1,
+      "osteria_bassLevel": 0.62,
+      "osteria_melLevel": 0.72,
+      "osteria_harmLevel": 0.7,
+      "osteria_rhythmLevel": 0.52,
+      "osteria_qBassShore": 0.38,
+      "osteria_qMelShore": 0.42,
+      "osteria_qHarmShore": 0.38,
+      "osteria_qRhythmShore": 0.25,
+      "osteria_qElastic": 0.42,
+      "osteria_qMemory": 0.32,
+      "osteria_qStretch": 0.48,
+      "osteria_qSympathy": 0.44,
+      "osteria_attack": 0.02,
+      "osteria_decay": 0.28,
+      "osteria_sustain": 0.62,
+      "osteria_release": 0.82,
+      "osteria_chorus": 0.12,
+      "osteria_hall": 0.2,
+      "osteria_ensWidth": 0.62,
+      "osteria_tape": 0.05,
+      "osteria_sessionDelay": 0.2,
+      "osteria_filterEnvDepth": 0.1,
+      "osteria_warmth": 0.58,
+      "osteria_smoke": 0.1,
+      "osteria_tavernMix": 0.48,
+      "osteria_tavernShore": 0.28,
+      "osteria_macroCharacter": 0.28,
+      "osteria_macroMovement": 0.55,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

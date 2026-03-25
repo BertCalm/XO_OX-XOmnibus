@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.78,
-    "COUPLING": 0.91,
-    "MOVEMENT": 0.82,
-    "SPACE": 0.06
+    "MACHINE": 0.78,
+    "SPACE": 0.91,
+    "PUNCH": 0.82,
+    "MUTATE": 0.06
   },
   "mood": "Entangled",
   "name": "Drum Singularity",
@@ -52,5 +52,6 @@
     "singularity"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Wooden bars in rain — wood body at maximum depth, slow thermal drift like forest air warming after storm",
+  "description": "Wooden bars in rain \u2014 wood body at maximum depth, slow thermal drift like forest air warming after storm",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.32,
@@ -29,7 +29,7 @@
     "SPACE": 0.82
   },
   "mood": "Atmosphere",
-  "name": "Forest Rain (Oware I)",
+  "name": "Forest Rain",
   "parameters": {
     "Oware": {
       "owr_material": 0.02,

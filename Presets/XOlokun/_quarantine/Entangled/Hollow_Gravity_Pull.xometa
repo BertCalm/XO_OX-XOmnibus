@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.86,
-    "COUPLING": 0.71,
-    "MOVEMENT": 0.46,
-    "SPACE": 0.33
+    "MACHINE": 0.86,
+    "SPACE": 0.71,
+    "PUNCH": 0.46,
+    "MUTATE": 0.33
   },
   "mood": "Entangled",
   "name": "Hollow Gravity Pull",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

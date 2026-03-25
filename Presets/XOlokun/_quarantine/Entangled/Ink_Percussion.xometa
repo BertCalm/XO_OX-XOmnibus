@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.82,
-    "COUPLING": 0.91,
-    "MOVEMENT": 0.94,
-    "SPACE": 0.15
+    "MACHINE": 0.82,
+    "SPACE": 0.91,
+    "PUNCH": 0.94,
+    "MUTATE": 0.15
   },
   "mood": "Entangled",
   "name": "Ink Percussion",
@@ -52,5 +52,6 @@
     "ink"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

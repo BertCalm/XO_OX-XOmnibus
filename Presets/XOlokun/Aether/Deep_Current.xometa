@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.337,
+      "destination": "OCEANIC",
+      "source": "ORGANON",
+      "type": "SPECTRAL_MORPH"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.059,
+    "density": 0.55,
+    "movement": 0.897,
+    "space": 0.919,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Deep Current",
+  "parameters": {
+    "Oceanic": {
+      "level": 0.766,
+      "pan": 0.13
+    },
+    "Organon": {
+      "level": 0.653,
+      "pan": -0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "dark",
+    "kinetic",
+    "vast",
+    "violent",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

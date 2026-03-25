@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pressure Gradient (Opera)",
+  "name": "Pressure Gradient",
   "mood": "Submerged",
   "engines": [
     "Opera"
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The discovery preset. Warm, vocal, immediately beautiful. Drama=0.35 places the Kuramoto field in its most musical zone \u2014 partials shimmer at the edge of synchrony. Play a chord and hear a choir that dances between independence and alignment. Mod wheel sweeps the dramatic arc.",
+  "description": "The discovery preset. Warm, vocal, immediately beautiful. Drama=0.35 places the Kuramoto field in its most musical zone — partials shimmer at the edge of synchrony. Play a chord and hear a choir that dances between independence and alignment. Mod wheel sweeps the dramatic arc.",
   "tags": [
     "vocal",
     "choir",
@@ -83,5 +83,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

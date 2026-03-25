@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin signature #11. The most dramatic preset in the fleet. Linear ramp, 8 seconds, arc intensity 1.0. Silence to full operatic climax. Formant morphs from Alien to O \u2014 inhuman to human. The conductor raises the baton and does not stop until the mathematics become music.",
+  "description": "Guru Bin signature #11. The most dramatic preset in the fleet. Linear ramp, 8 seconds, arc intensity 1.0. Silence to full operatic climax. Formant morphs from Alien to O — inhuman to human. The conductor raises the baton and does not stop until the mathematics become music.",
   "tags": [
     "conductor",
     "linear",
@@ -33,7 +33,7 @@
   },
   "parameters": {
     "Opera": {
-      "opera_drama": 0.0,
+      "opera_drama": 0.6,
       "opera_voice": 0.3,
       "opera_stage": 0.35,
       "opera_vowelA": 5,
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

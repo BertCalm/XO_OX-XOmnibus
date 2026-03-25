@@ -10,16 +10,16 @@
   "couplingIntensity": "None",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.95,
-    "COUPLING": 0.22,
-    "SPACE": 0.08
+    "MACHINE": 0.88,
+    "PUNCH": 0.95,
+    "SPACE": 0.22,
+    "MUTATE": 0.08
   },
   "coupling": {
     "pairs": []
@@ -43,5 +43,6 @@
     "riot",
     "percussion"
   ],
-  "description": "Onset drums in full riot — every hit overlapping, rhythm dissolving into noise."
+  "description": "Onset drums in full riot — every hit overlapping, rhythm dissolving into noise.",
+  "tier": "awakening"
 }

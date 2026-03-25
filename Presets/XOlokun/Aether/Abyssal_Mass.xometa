@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Invisible mass. No emission, no reflection. Gravitational only.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.0,
+    "density": 0.0,
+    "movement": 0.05,
+    "space": 0.95,
+    "warmth": 0.05
+  },
+  "engines": [
+    "Obsidian"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Abyssal Mass",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.04,
+      "obsidian_brightness": 0.05,
+      "obsidian_densityX": 0.06,
+      "obsidian_depth": 0.97,
+      "obsidian_movement": 0.04,
+      "obsidian_tiltY": 0.04
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "dark"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

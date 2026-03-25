@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.176,
-    "COUPLING": 0.104,
-    "MOVEMENT": 0.063,
-    "SPACE": 0.052
+    "MACHINE": 0.176,
+    "SPACE": 0.104,
+    "PUNCH": 0.063,
+    "MUTATE": 0.052
   },
   "mood": "Entangled",
   "name": "COLD STILL SPARSE INTIMATE ... (Obscura I)",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

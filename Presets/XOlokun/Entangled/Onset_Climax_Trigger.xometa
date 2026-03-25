@@ -5,10 +5,10 @@
   "couplingIntensity": "Moderate",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "coupling": {
     "pairs": [
@@ -27,7 +27,7 @@
     "Odyssey",
     "Onset"
   ],
-  "description": "Drum hits from ONSET trigger Drift's Climax bloom \u2014 cinema percussion.",
+  "description": "Drum hits from ONSET trigger Drift's Climax bloom — cinema percussion.",
   "tags": [
     "drift",
     "onset",
@@ -71,5 +71,6 @@
       "perc_macro_punch": 0.5,
       "perc_macro_mutate": 0.2
     }
-  }
+  },
+  "tier": "awakening"
 }

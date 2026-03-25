@@ -14,8 +14,9 @@ Skips files that already exist.
 import json
 import os
 import random
+from pathlib import Path
 
-REPO_ROOT = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun"  # FIXME: hardcoded path — should use os.path.join or argparse
+REPO_ROOT = str(Path(__file__).parent.parent)
 PRESET_BASE = os.path.join(REPO_ROOT, "Presets", "XOlokun")
 
 ENGINES = [

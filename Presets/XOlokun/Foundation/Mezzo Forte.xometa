@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The confident middle voice. Effort at 0.65 gives this preset projection without aggression. A-to-O morph and neutral tilt make it sit perfectly in a mix. Strong velocity response \u2014 play harder for more belt.",
+  "description": "The confident middle voice. Effort at 0.65 gives this preset projection without aggression. A-to-O morph and neutral tilt make it sit perfectly in a mix. Strong velocity response — play harder for more belt.",
   "tags": [
     "lead",
     "vocal",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.801,
-    "COUPLING": 0.846,
-    "MOVEMENT": 0.339,
-    "SPACE": 0.575
+    "MACHINE": 0.801,
+    "SPACE": 0.846,
+    "PUNCH": 0.339,
+    "MUTATE": 0.575
   },
   "mood": "Foundation",
   "name": "Charcoal Sienna",
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

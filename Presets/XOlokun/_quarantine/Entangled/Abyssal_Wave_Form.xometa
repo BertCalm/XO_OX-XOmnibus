@@ -23,16 +23,16 @@
     "Ouroboros"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.79,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.82,
-    "SPACE": 0.27
+    "MACHINE": 0.79,
+    "SPACE": 0.75,
+    "PUNCH": 0.82,
+    "MUTATE": 0.27
   },
   "mood": "Entangled",
   "name": "Abyssal Wave Form",
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

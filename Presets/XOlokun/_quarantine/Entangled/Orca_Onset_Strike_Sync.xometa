@@ -17,16 +17,16 @@
     "sync"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.72,
-    "MOVEMENT": 0.62,
-    "COUPLING": 0.82,
-    "SPACE": 0.32
+    "MACHINE": 0.72,
+    "PUNCH": 0.62,
+    "SPACE": 0.82,
+    "MUTATE": 0.32
   },
   "couplingIntensity": "High",
   "dna": {
@@ -48,5 +48,6 @@
       }
     ]
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

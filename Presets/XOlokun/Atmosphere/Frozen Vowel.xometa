@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A single vowel suspended in amber. No formant modulation, no morph \u2014 just the raw spectral shape of an 'O' vowel held perfectly still while 32 partials slowly crystallize around it. LFO1 on tilt creates subtle brightness breathing. The stillness itself becomes the texture.",
+  "description": "A single vowel suspended in amber. No formant modulation, no morph — just the raw spectral shape of an 'O' vowel held perfectly still while 32 partials slowly crystallize around it. LFO1 on tilt creates subtle brightness breathing. The stillness itself becomes the texture.",
   "tags": [
     "frozen",
     "vowel",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

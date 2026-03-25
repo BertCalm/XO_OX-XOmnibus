@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX in wonder mode. Bright, sparkling upper partials that glow and fade like bioluminescent plankton. High spectral tilt emphasizes the upper harmonics while keeping the fundamental warm. Acausal resonance creates spontaneous clusters that flash and dissolve \u2014 each note blooms with unpredictable light. Beautiful enough for beginners, surprising enough to keep experts engaged.",
+  "description": "feliX in wonder mode. Bright, sparkling upper partials that glow and fade like bioluminescent plankton. High spectral tilt emphasizes the upper harmonics while keeping the fundamental warm. Acausal resonance creates spontaneous clusters that flash and dissolve — each note blooms with unpredictable light. Beautiful enough for beginners, surprising enough to keep experts engaged.",
   "tags": [
     "family",
     "felix",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -12,7 +12,7 @@ Usage:
 import json, sys
 from pathlib import Path
 
-BASE   = Path.home() / "Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun"
+BASE   = Path(__file__).parent.parent / "Presets" / "XOlokun"
 AUTHOR = "XO_OX Designs"
 DATE   = "2026-03-18"
 DRY    = "--dry-run" in sys.argv

@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.974,
-    "COUPLING": 0.112,
-    "MOVEMENT": 0.05,
-    "SPACE": 0.06
+    "MACHINE": 0.974,
+    "SPACE": 0.112,
+    "PUNCH": 0.05,
+    "MUTATE": 0.06
   },
   "mood": "Foundation",
   "name": "Frost Strike",
@@ -71,5 +71,6 @@
     "foundation"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

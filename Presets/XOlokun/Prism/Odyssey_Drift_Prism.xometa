@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift Prism (Odyssey I)",
+  "name": "Drift Prism",
   "mood": "Prism",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum drift through prism filter — deep drift rate, bright open formant.",
+  "description": "Maximum drift through prism filter \u2014 deep drift rate, bright open formant.",
   "tags": [
     "drift",
     "prism",

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "S-curve arc over 20 seconds morphing from Alien formant to human A vowel. The voice begins inhuman \u2014 metallic, spectral, unrecognizable. As synchrony builds, the formant traverses the entire vowel space from alien to A. At the peak, a human voice emerges from the machine. The arc is the evolution from code to song.",
+  "description": "S-curve arc over 20 seconds morphing from Alien formant to human A vowel. The voice begins inhuman — metallic, spectral, unrecognizable. As synchrony builds, the formant traverses the entire vowel space from alien to A. At the peak, a human voice emerges from the machine. The arc is the evolution from code to song.",
   "tags": [
     "conductor",
     "alien",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

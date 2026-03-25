@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Shore",
+  "mood": "Submerged",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The coastal shelf drops to abyssal depth \u2014 pressure dark, creatures faint in the deep.",
+  "tags": [
+    "submerged",
+    "abyssal",
+    "deep",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.7,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.7,
+      "osprey_foam": 0.05,
+      "osprey_fog": 0.1,
+      "osprey_hull": 0.7,
+      "osprey_depth": 1.0,
+      "osprey_coherence": 0.55,
+      "osprey_filterTilt": 0.25,
+      "osprey_filterEnvDepth": 0.3,
+      "osprey_harborVerb": 0.55,
+      "osprey_creatureRate": 0.2,
+      "osprey_creatureDepth": 0.4,
+      "osprey_glide": 0.25,
+      "osprey_ampAttack": 0.15,
+      "osprey_ampDecay": 0.5,
+      "osprey_ampSustain": 0.68,
+      "osprey_ampRelease": 1.0,
+      "osprey_macroCharacter": 0.7,
+      "osprey_macroMovement": 0.35,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.6
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

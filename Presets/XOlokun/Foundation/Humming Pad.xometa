@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Closed-mouth vowel U with low effort \u2014 the sound of humming to yourself. Dark, warm, comforting. 2-voice unison adds gentle width without thickness. A background pad that never intrudes.",
+  "description": "Closed-mouth vowel U with low effort — the sound of humming to yourself. Dark, warm, comforting. 2-voice unison adds gentle width without thickness. A background pad that never intrudes.",
   "tags": [
     "pad",
     "warm",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

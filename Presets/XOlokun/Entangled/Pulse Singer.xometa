@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OSTINATO coupling. Rhythmic patterns modulate sync timing \u2014 the voice pulses with the drum circle. OSTINATO's phase modulation creates rhythmic swells in the Kuramoto field, making the choir surge and retreat in time with the pattern. The voice becomes a rhythmic instrument while retaining its vocal character. Moderate effort, clean formant, steady foundation.",
+  "description": "OSTINATO coupling. Rhythmic patterns modulate sync timing — the voice pulses with the drum circle. OSTINATO's phase modulation creates rhythmic swells in the Kuramoto field, making the choir surge and retreat in time with the pattern. The voice becomes a rhythmic instrument while retaining its vocal character. Moderate effort, clean formant, steady foundation.",
   "tags": [
     "entangled",
     "ostinato",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

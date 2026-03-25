@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OXBOW coupling. Smaller, more intimate version of the Cathedral. Fewer partials, brighter tilt, tighter space. OXBOW's knot topology feeds back into a focused partial field \u2014 the recursion is faster, the reflections more present. Like singing in a stone chapel where every wall returns your voice before the last echo fades.",
+  "description": "OXBOW coupling. Smaller, more intimate version of the Cathedral. Fewer partials, brighter tilt, tighter space. OXBOW's knot topology feeds back into a focused partial field — the recursion is faster, the reflections more present. Like singing in a stone chapel where every wall returns your voice before the last echo fades.",
   "tags": [
     "entangled",
     "oxbow",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

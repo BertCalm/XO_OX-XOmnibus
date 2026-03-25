@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Nocturne (Ombre)",
+  "name": "Nocturne",
   "mood": "Atmosphere",
   "engines": [
     "Ombre"
   ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Night atmosphere — low filter, slow breathing LFO2, long grain. The kind of ambient that works when sleep is nearby. Oubli weighs heavier than Opsis.",
+  "description": "Night atmosphere \u2014 low filter, slow breathing LFO2, long grain. The kind of ambient that works when sleep is nearby. Oubli weighs heavier than Opsis.",
   "tags": [
     "atmosphere",
     "nocturne",

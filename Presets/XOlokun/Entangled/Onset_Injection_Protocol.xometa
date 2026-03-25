@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Injection Protocol",
   "mood": "Entangled",
-  "engines": ["Onset", "Ouroboros"],
+  "engines": [
+    "Onset",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A kit calibrated as the primary coupling source for OUROBOROS Injection (0.15–0.20 amount). Every voice generates a strong, clean velocity transient designed to disturb the strange attractor. Minimal reverb tail. Maximum transient clarity. Each hit is a stone dropped into the chaos basin.",
-  "tags": ["coupling-source", "injection", "ouroboros", "entangled", "transient", "percussive"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling-source",
+    "injection",
+    "ouroboros",
+    "entangled",
+    "transient",
+    "percussive"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -136,5 +151,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

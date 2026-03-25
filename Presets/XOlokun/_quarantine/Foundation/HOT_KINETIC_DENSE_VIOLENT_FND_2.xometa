@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.243,
-    "COUPLING": 0.118,
-    "MOVEMENT": 0.422,
-    "SPACE": 0.263
+    "MACHINE": 0.243,
+    "SPACE": 0.118,
+    "PUNCH": 0.422,
+    "MUTATE": 0.263
   },
   "mood": "Foundation",
   "name": "Solar Titan",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

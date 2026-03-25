@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.7,
-    "COUPLING": 0.89,
-    "MOVEMENT": 0.93,
-    "SPACE": 0.2
+    "MACHINE": 0.7,
+    "SPACE": 0.89,
+    "PUNCH": 0.93,
+    "MUTATE": 0.2
   },
   "mood": "Entangled",
   "name": "Light Rhythm",
@@ -52,5 +52,6 @@
     "light"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

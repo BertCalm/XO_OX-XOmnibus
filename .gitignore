@@ -38,8 +38,13 @@ Export/
 
 # Secrets / local config
 .env
+.env.local
 *.pem
 *.key
+*.cert
+credentials.json
+secrets/
+supabase/.env.local
 
 # Python
 __pycache__/
@@ -53,3 +58,6 @@ firebase-debug.*.log
 # Claude Code — ignore all except skills (needed for CLI + web compatibility)
 .claude/*
 !.claude/skills/
+
+# Superpowers (AI agent workspace — not version controlled)
+.superpowers/

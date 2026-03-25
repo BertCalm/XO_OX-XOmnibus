@@ -31,16 +31,16 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.485,
-    "COUPLING": 0.967,
-    "MOVEMENT": 0.006,
-    "SPACE": 0.881
+    "MACHINE": 0.485,
+    "SPACE": 0.967,
+    "PUNCH": 0.006,
+    "MUTATE": 0.881
   },
   "mood": "Foundation",
   "name": "Thread Packed",
@@ -71,5 +71,6 @@
     "dense"
   ],
   "tempo": null,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tier": "awakening"
 }

@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Oblique angle into lowest spectral mass",
+  "dna": {
+    "aggression": 0.7369,
+    "brightness": 0.147,
+    "density": 0.8398,
+    "movement": 0.6388,
+    "space": 0.2271,
+    "warmth": 0.4446
+  },
+  "engines": [
+    "Oblique"
+  ],
+  "macroLabels": [
+    "ANGLE",
+    "MOTION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "ANGLE": 0.1963,
+    "COUPLE": 0.6243,
+    "MOTION": 0.4196,
+    "SPACE": 0.7441
+  },
+  "mood": "Prism",
+  "name": "Obsidian Prism",
+  "parameters": {
+    "Oblique": {
+      "obl_couplingBus": 0,
+      "obl_couplingLevel": 0.5,
+      "obl_macro_angle": 0.1963,
+      "obl_macro_couple": 0.6243,
+      "obl_macro_motion": 0.4196,
+      "obl_macro_space": 0.7441,
+      "obl_outputLevel": 0.85
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

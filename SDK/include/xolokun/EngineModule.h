@@ -1,36 +1,41 @@
 #pragma once
 // xolokun-engine-sdk — EngineModule.h
-// C export macros for community engine modules.
 //
-// Community engines are compiled as shared libraries (.dylib / .so / .dll)
-// and must export two C functions:
+// Community engines ship as shared libraries (.dylib / .so / .dll).
+// XOlokun loads them at runtime and calls two C functions it expects to find:
 //
-//   xolokun_create_engine()  — factory that returns a new SynthEngine instance
-//   xolokun_engine_info()    — fills metadata struct without creating an engine
+//   xolokun_create_engine()  — allocates and returns a new SynthEngine instance
+//   xolokun_engine_info()    — returns metadata without constructing the engine
+//                              (used for display names, accent colours, etc.)
 //
-// Usage in your engine .cpp:
+// The XOLOKUN_EXPORT_ENGINE macro generates both functions from a single line.
+// Drop this at file scope (outside any class or namespace) in your .h file:
 //
 //   #include <xolokun/EngineModule.h>
-//   XOLOKUN_EXPORT_ENGINE(MyEngine, "MyEngine", "My Engine Display Name",
-//                          "me_", 0x1E, 0x8B, 0x7E, "1.0.0", "Your Name")
+//   XOLOKUN_EXPORT_ENGINE (MyEngine, "Onyx", "Onyx Engine",
+//                           "onyx_", 0x1E, 0x8B, 0x7E, "1.0.0", "Your Studio")
 
 #include "SynthEngine.h"
 #include <cstring>
 
 namespace xolokun {
 
-/// Metadata returned by xolokun_engine_info() without instantiating the engine.
-struct EngineMetadata {
-    char id[64]        {};   ///< Engine ID (e.g. "MyEngine")
-    char displayName[128] {};///< Human-readable name
-    char paramPrefix[16] {};  ///< Parameter prefix (e.g. "me_")
-    char version[16]   {};   ///< Semantic version string
-    char author[64]    {};   ///< Author/studio name
-    uint8_t accentR = 128;   ///< Accent colour R
-    uint8_t accentG = 128;   ///< Accent colour G
-    uint8_t accentB = 128;   ///< Accent colour B
-    int maxVoices = 8;       ///< Maximum polyphony
-    int sdkVersion = 1;      ///< SDK ABI version (bump on breaking changes)
+/// Metadata returned by xolokun_engine_info() without constructing the engine.
+/// XOlokun reads this to populate the engine browser, UI headers, and registry.
+struct EngineMetadata
+{
+    char id[64]          {};  ///< Engine ID string, e.g. "Onyx"
+    char displayName[128] {}; ///< Human-readable UI name, e.g. "Onyx Engine"
+    char paramPrefix[16] {};  ///< Parameter namespace prefix, e.g. "onyx_"
+    char version[16]     {};  ///< Semantic version string, e.g. "1.0.0"
+    char author[64]      {};  ///< Author or studio name
+
+    uint8_t accentR = 128;    ///< Accent colour — red channel (0–255)
+    uint8_t accentG = 128;    ///< Accent colour — green channel (0–255)
+    uint8_t accentB = 128;    ///< Accent colour — blue channel (0–255)
+
+    int maxVoices  = 8;       ///< Maximum simultaneous voices
+    int sdkVersion = 1;       ///< SDK ABI version — bumped on breaking interface changes
 };
 
 } // namespace xolokun

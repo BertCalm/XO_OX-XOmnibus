@@ -272,10 +272,12 @@ private:
             auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
             if (!engine) continue;
 
-            // Push snapshotted values directly into the engine's parameters
-            // so we never dereference the (potentially destroyed) APVTS (Fix 3).
-            for (const auto& [paramId, value] : pendingParams_)
-                engine->setParameterValue(paramId, value);
+            // NOTE: SynthEngine has no setParameterValue() — engines read params
+            // via APVTS raw pointers cached in attachParameters(). For the offline
+            // preview render the engine uses its default (init-patch) parameter state.
+            // Preset parameter injection requires a local APVTS; deferred to a future pass.
+            // pendingParams_ values are already snapshotted for that future integration.
+            (void)pendingParams_;
 
             engine->prepare(sampleRate, kBlockSize);
             engine->prepareSilenceGate(sampleRate, kBlockSize, 500.0f);

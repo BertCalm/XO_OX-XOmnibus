@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Press a chord. Wait. Over 10 seconds the engine self-performs: incoherent partials coalesce, the voice strengthens, filter opens, effort builds from mezzo to fortissimo. At the 7-second mark the Kuramoto critical threshold fires \u2014 partials snap into synchrony. Climax. The Conductor IS the mathematics.",
+  "description": "Press a chord. Wait. Over 10 seconds the engine self-performs: incoherent partials coalesce, the voice strengthens, filter opens, effort builds from mezzo to fortissimo. At the 7-second mark the Kuramoto critical threshold fires — partials snap into synchrony. Climax. The Conductor IS the mathematics.",
   "tags": [
     "conductor",
     "arc",
@@ -83,5 +83,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

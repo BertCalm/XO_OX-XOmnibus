@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tidal Pulse (Orca)",
+  "name": "Tidal Pulse",
   "mood": "Flux",
   "engines": [
     "Orca"

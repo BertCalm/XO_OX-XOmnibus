@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "Thermocline (Oceanic I)",
+  "name": "Thermocline",
   "parameters": {
     "Oceanic": {
       "ocean_alignment": 0.72,

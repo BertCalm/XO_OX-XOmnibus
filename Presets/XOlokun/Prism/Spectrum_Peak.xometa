@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Upper limit of tonal brightness \u2014 the spectral peak at full luminance.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.95,
+    "density": 0.35,
+    "movement": 0.22,
+    "space": 0.64,
+    "warmth": 0.1
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Spectrum Peak",
+  "parameters": {
+    "OddfeliX": {
+      "snap_ampAttack": 0.0055,
+      "snap_ampDecay": 0.912,
+      "snap_ampRelease": 1.76,
+      "snap_ampSustain": 0.785,
+      "snap_filterCutoff": 17300.0,
+      "snap_filterReso": 0.13,
+      "snap_harmonicBlend": 0.855,
+      "snap_level": 0.8,
+      "snap_lfoDepth": 0.066,
+      "snap_lfoRate": 1.49,
+      "snap_macroCharacter": 0.76,
+      "snap_macroCoupling": 0.0,
+      "snap_macroMovement": 0.22,
+      "snap_macroSpace": 0.64,
+      "snap_pitchMod": 0.088,
+      "snap_reverbMix": 0.448,
+      "snap_spectralTilt": 0.665,
+      "snap_stereoWidth": 0.756
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "spectral",
+    "peak",
+    "pure",
+    "maximal",
+    "prism"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

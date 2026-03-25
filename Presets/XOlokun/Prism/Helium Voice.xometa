@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pitched up 2 octaves with extreme bright tilt and reduced partials. The formants compress into an impossibly high register \u2014 a cartoon soprano, a voice from a body the size of a thimble. Absurd, fun, surprisingly musical in the upper register.",
+  "description": "Pitched up 2 octaves with extreme bright tilt and reduced partials. The formants compress into an impossibly high register — a cartoon soprano, a voice from a body the size of a thimble. Absurd, fun, surprisingly musical in the upper register.",
   "tags": [
     "high",
     "pitch-shifted",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

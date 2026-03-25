@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Shadow-archetype Conductor. Linear ramp over 8 seconds but pitched an octave down with negative tilt \u2014 the crescendo is dark, guttural, subharmonic. Effort starts high (belt) and the arc drives synchrony upward without brightening. The climax is not a soprano hitting the high note \u2014 it is a bass choir locking into a wall of low-frequency power.",
+  "description": "Shadow-archetype Conductor. Linear ramp over 8 seconds but pitched an octave down with negative tilt — the crescendo is dark, guttural, subharmonic. Effort starts high (belt) and the arc drives synchrony upward without brightening. The climax is not a soprano hitting the high note — it is a bass choir locking into a wall of low-frequency power.",
   "tags": [
     "conductor",
     "dark",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

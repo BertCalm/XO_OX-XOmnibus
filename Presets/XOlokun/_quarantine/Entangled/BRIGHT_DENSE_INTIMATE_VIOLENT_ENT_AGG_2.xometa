@@ -23,16 +23,16 @@
     "Ole"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.571,
-    "COUPLING": 0.985,
-    "MOVEMENT": 0.503,
-    "SPACE": 0.081
+    "MACHINE": 0.571,
+    "SPACE": 0.985,
+    "PUNCH": 0.503,
+    "MUTATE": 0.081
   },
   "mood": "Entangled",
   "name": "Signal Solid",
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

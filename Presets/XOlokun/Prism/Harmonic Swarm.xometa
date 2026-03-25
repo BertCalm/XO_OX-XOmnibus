@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "48 partials with extreme detune and 4-voice unison create a swarming, organic mass of frequencies. Low sync means each partial in each voice drifts independently \u2014 192 oscillators all moving at once. Dense, alive, overwhelming. Reduce CHORUS macro to thin the swarm.",
+  "description": "48 partials with extreme detune and 4-voice unison create a swarming, organic mass of frequencies. Low sync means each partial in each voice drifts independently — 192 oscillators all moving at once. Dense, alive, overwhelming. Reduce CHORUS macro to thin the swarm.",
   "tags": [
     "swarm",
     "organic",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

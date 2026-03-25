@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "48 partials, total synchrony, neutral tilt. Every partial at perfect integer ratio, every one audible. This is the natural harmonic series made manifest \u2014 the overtone series that exists in every vibrating body, here isolated and crystallized. Play a single note and hear the mathematics of nature.",
+  "description": "48 partials, total synchrony, neutral tilt. Every partial at perfect integer ratio, every one audible. This is the natural harmonic series made manifest — the overtone series that exists in every vibrating body, here isolated and crystallized. Play a single note and hear the mathematics of nature.",
   "tags": [
     "harmonic",
     "overtone",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

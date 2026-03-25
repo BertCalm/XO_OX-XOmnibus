@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OSTINATO coupling. Breathy, chant-like voice with OSTINATO's rhythmic patterns modulating the breath component and sync timing simultaneously. The voice breathes in time with the rhythm \u2014 inhale as sync drops, exhale as it builds. O-to-U vowel morph gives it a ceremonial, ritualistic quality. The choir becomes a breathing circle.",
+  "description": "OSTINATO coupling. Breathy, chant-like voice with OSTINATO's rhythmic patterns modulating the breath component and sync timing simultaneously. The voice breathes in time with the rhythm — inhale as sync drops, exhale as it builds. O-to-U vowel morph gives it a ceremonial, ritualistic quality. The choir becomes a breathing circle.",
   "tags": [
     "entangled",
     "ostinato",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

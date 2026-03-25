@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.335,
-    "COUPLING": 0.954,
-    "MOVEMENT": 0.038,
-    "SPACE": 0.076
+    "MACHINE": 0.335,
+    "SPACE": 0.954,
+    "PUNCH": 0.038,
+    "MUTATE": 0.076
   },
   "mood": "Entangled",
   "name": "Quartz Phase",
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

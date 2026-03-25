@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Onset Stochastic Drum",
   "mood": "Foundation",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All 8 voices in full-algorithmic territory (blend > 0.7). Modal resonators at maximum inharmonicity, Karplus-Strong with string-to-snare blend in the middle zone, Phase Distortion at extremes. XVC global amount at 0.85 with all four routes active — the kit develops autonomous rhythmic intelligence. Evades acoustic reference entirely.",
-  "tags": ["algorithmic", "stochastic", "xvc", "inharmonic", "genre-free", "autonomous"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "algorithmic",
+    "stochastic",
+    "xvc",
+    "inharmonic",
+    "genre-free",
+    "autonomous"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +142,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

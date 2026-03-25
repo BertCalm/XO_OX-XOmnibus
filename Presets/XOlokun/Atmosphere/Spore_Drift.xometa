@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Spore Drift (Organon I)",
+  "name": "Spore Drift",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.25,

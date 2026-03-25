@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Beautiful singing \u2014 the literal translation. High sync at Drama=0.6 with strong vibrato and full effort. The partials lock into a powerful, resonant voice. Classical technique rendered in additive synthesis. Play legato with portamento.",
+  "description": "Beautiful singing — the literal translation. High sync at Drama=0.6 with strong vibrato and full effort. The partials lock into a powerful, resonant voice. Classical technique rendered in additive synthesis. Play legato with portamento.",
   "tags": [
     "lead",
     "vocal",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.76,
-    "COUPLING": 0.9,
-    "MOVEMENT": 0.88,
-    "SPACE": 0.18
+    "MACHINE": 0.76,
+    "SPACE": 0.9,
+    "PUNCH": 0.88,
+    "MUTATE": 0.18
   },
   "mood": "Entangled",
   "name": "Light Percussion",
@@ -52,5 +52,6 @@
     "light"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Feeding Frenzy (Owlfish I)",
+  "name": "Feeding Frenzy",
   "mood": "Flux",
   "engines": [
     "Owlfish"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Rapid creature-like attack bursts with sub floor and punchy compression — schooling owlfish descending on a food column.",
+  "description": "Rapid creature-like attack bursts with sub floor and punchy compression \u2014 schooling owlfish descending on a food column.",
   "tags": [
     "flux",
     "feeding",

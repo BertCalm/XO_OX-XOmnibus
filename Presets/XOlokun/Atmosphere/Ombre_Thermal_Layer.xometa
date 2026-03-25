@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Thermal Layer (Ombre I)",
+  "name": "Thermal Layer",
   "mood": "Atmosphere",
   "engines": [
     "Ombre"
   ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Thermocline in reverse — warm on top, cold stored below. High filter cutoff Opsis over warm grain beneath. LFO2 slowly heats and cools the filter.",
+  "description": "Thermocline in reverse \u2014 warm on top, cold stored below. High filter cutoff Opsis over warm grain beneath. LFO2 slowly heats and cools the filter.",
   "tags": [
     "atmosphere",
     "thermal",

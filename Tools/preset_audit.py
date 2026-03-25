@@ -7,8 +7,8 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-PRESET_ROOT = Path("/home/user/XO_OX-XOlokun/Presets/XOlokun")  # FIXME: hardcoded path — should use os.path.join or argparse
-PROJECT_ROOT = Path("/home/user/XO_OX-XOlokun")  # FIXME: hardcoded path — should use os.path.join or argparse
+PROJECT_ROOT = Path(__file__).parent.parent
+PRESET_ROOT = PROJECT_ROOT / "Presets" / "XOlokun"
 MAX_NAME_LEN = 30
 DNA_DIMS = {"brightness", "warmth", "movement", "density", "space", "aggression"}
 REQUIRED_FIELDS = ["mood", "tags", "author", "dna", "macroLabels", "engines", "parameters"]

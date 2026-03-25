@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The twilight zone \u2014 200 to 1000 meters deep where sunlight fades to nothing. A dark vocal drone with the Conductor slowly cycling formants over 50 seconds. The S-curve arc mimics the daily vertical migration of deep-sea creatures: rising toward light, retreating to darkness. Subharmonic emphasis, heavy spectral tilt toward the fundamental. A hymn sung in permanent dusk.",
+  "description": "The twilight zone — 200 to 1000 meters deep where sunlight fades to nothing. A dark vocal drone with the Conductor slowly cycling formants over 50 seconds. The S-curve arc mimics the daily vertical migration of deep-sea creatures: rising toward light, retreating to darkness. Subharmonic emphasis, heavy spectral tilt toward the fundamental. A hymn sung in permanent dusk.",
   "tags": [
     "submerged",
     "deep",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

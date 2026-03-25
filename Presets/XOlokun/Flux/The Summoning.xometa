@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin signature #15. A 30-second Jungian journey in one held chord. Begins in the Shadow archetype \u2014 dark, detuned, subharmonic. First peak transitions to Anima. The dip allows acausal clusters to bloom unpredictably (ResSens=0.7). Second peak arrives at Hero \u2014 full synchrony, bright, powerful. A complete archetypal summoning.",
+  "description": "Guru Bin signature #15. A 30-second Jungian journey in one held chord. Begins in the Shadow archetype — dark, detuned, subharmonic. First peak transitions to Anima. The dip allows acausal clusters to bloom unpredictably (ResSens=0.7). Second peak arrives at Hero — full synchrony, bright, powerful. A complete archetypal summoning.",
   "tags": [
     "conductor",
     "double-peak",
@@ -82,5 +82,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

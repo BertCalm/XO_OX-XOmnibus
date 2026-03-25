@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OPTIC — bright extreme brightness preset for Foundation.",
+  "description": "OPTIC \u2014 bright extreme brightness preset for Foundation.",
   "dna": {
     "aggression": 0.63,
     "brightness": 0.98,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Spectral Bloom (Optic I)",
+  "name": "Spectral Bloom",
   "parameters": {
     "Optic": {
       "optic_ampAttack": 554.0,

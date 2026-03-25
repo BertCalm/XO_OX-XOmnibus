@@ -16,16 +16,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.7,
-    "COUPLING": 0.7,
-    "MOVEMENT": 0.55,
-    "SPACE": 0.65
+    "MACHINE": 0.7,
+    "SPACE": 0.7,
+    "PUNCH": 0.55,
+    "MUTATE": 0.65
   },
   "mood": "Entangled",
   "name": "Drum Circle Ritual",
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

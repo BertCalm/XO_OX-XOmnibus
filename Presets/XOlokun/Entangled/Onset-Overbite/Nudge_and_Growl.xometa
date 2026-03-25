@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Nudge and Growl",
   "mood": "Entangled",
-  "engines": ["Onset", "Overbite"],
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Kick drum barely touches Bite's filter — a whisper of percussive nudge opens the bass just slightly on each hit.",
-  "tags": ["coupling", "Onset-pair", "bass", "subtle", "sidechain", "kick"],
-  "macroLabels": ["MACHINE", "BITE", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Onset-pair",
+    "bass",
+    "subtle",
+    "sidechain",
+    "kick"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "BITE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": 120,
   "created": "2026-03-14",
@@ -118,5 +133,6 @@
     "density": 0.55,
     "space": 0.2,
     "aggression": 0.35
-  }
+  },
+  "tier": "awakening"
 }

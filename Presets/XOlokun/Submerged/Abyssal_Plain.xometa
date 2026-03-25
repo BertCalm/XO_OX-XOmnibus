@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Plain",
+  "mood": "Submerged",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The flat, featureless ocean floor at 4000+ meters. Absolute darkness, near-freezing temperature, crushing pressure. This is the deepest preset in the library: fundamental at -36 semitones, maximum negative tilt, filter cutoff barely above the sub-bass range. Only the lowest partials survive. An ultra-slow LFO at 0.01 Hz breathes the formant over a full minute. Time has no meaning here.",
+  "tags": [
+    "submerged",
+    "deep",
+    "abyssal",
+    "drone",
+    "dark"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.9,
+    "movement": 0.1,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.15,
+      "opera_voice": 0.15,
+      "opera_stage": 0.85,
+      "opera_vowelA": 4,
+      "opera_vowelB": 3,
+      "opera_breath": 0.2,
+      "opera_effort": 0.25,
+      "opera_partials": 24,
+      "opera_resSens": 0.25,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": -36,
+      "opera_vibRate": 1.5,
+      "opera_vibDepth": 0.15,
+      "opera_tilt": -0.8,
+      "opera_filterCutoff": 1500.0,
+      "opera_filterRes": 0.0,
+      "opera_filterEnvAmt": 0.05,
+      "opera_filterA": 0.1,
+      "opera_filterD": 0.6,
+      "opera_filterS": 0.4,
+      "opera_filterR": 2.0,
+      "opera_ampA": 0.5,
+      "opera_ampD": 0.3,
+      "opera_ampS": 0.9,
+      "opera_ampR": 3.0,
+      "opera_lfo1Rate": 0.01,
+      "opera_lfo1Depth": 0.2,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 0.02,
+      "opera_lfo2Depth": 0.1,
+      "opera_lfo2Dest": 5,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.4,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.3,
+      "opera_velToFilter": 0.35,
+      "opera_velToEffort": 0.1,
+      "opera_detune": 0.15,
+      "opera_portamento": 0.15,
+      "opera_unison": 1,
+      "opera_width": 0.85
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

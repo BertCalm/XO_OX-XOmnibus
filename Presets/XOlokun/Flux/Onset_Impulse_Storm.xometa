@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Onset Impulse Storm",
   "mood": "Flux",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High XVC global amount (0.9) with all four cross-voice routes active at maximum. Kick→Snare filter (0.45), Snare→Hat decay (0.35), Kick→Tom pitch (0.7), Snare→Perc blend (0.55). The kit becomes fully self-modifying — each hit reshapes what comes next. Not a drum machine. A rhythm brain at full activation.",
-  "tags": ["xvc", "self-modifying", "b002", "autonomous", "flux", "storm", "rhythm-brain"],
-  "macroLabels": ["MACHINE", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "xvc",
+    "self-modifying",
+    "b002",
+    "autonomous",
+    "flux",
+    "storm",
+    "rhythm-brain"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -128,5 +143,6 @@
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }

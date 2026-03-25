@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "Cold Seep",
+  "mood": "Submerged",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mineral-rich cold seep \u2014 dark filtered hum, steady low trickle of cross-modal cascade.",
+  "tags": [
+    "cold",
+    "seep",
+    "mineral",
+    "steady",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.35,
+    "movement": 0.12,
+    "density": 0.82,
+    "space": 0.45,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.82,
+      "obsidian_stiffness": 0.55,
+      "obsidian_cascadeBlend": 0.48,
+      "obsidian_crossModDepth": 0.18,
+      "obsidian_densityX": 0.82,
+      "obsidian_tiltY": -0.6,
+      "obsidian_formantIntensity": 0.1,
+      "obsidian_formantResonance": 0.15,
+      "obsidian_depthAttack": 0.6,
+      "obsidian_depthDecay": 0.8,
+      "obsidian_depthSustain": 0.92,
+      "obsidian_depthRelease": 2.0,
+      "obsidian_ampAttack": 0.5,
+      "obsidian_ampDecay": 0.65,
+      "obsidian_ampSustain": 0.92,
+      "obsidian_ampRelease": 2.5,
+      "obsidian_filterCutoff": 780,
+      "obsidian_filterReso": 0.12,
+      "obsidian_lfo1Rate": 0.05,
+      "obsidian_lfo1Depth": 0.05,
+      "obsidian_lfo1Shape": 0,
+      "obsidian_lfo2Rate": 0.03,
+      "obsidian_lfo2Depth": 0.03,
+      "obsidian_lfo2Shape": 0,
+      "obsidian_glide": 0.05,
+      "obsidian_polyphony": 3,
+      "obsidian_stereoWidth": 0.3,
+      "obsidian_level": 0.82,
+      "obsidian_macroCharacter": 0.15,
+      "obsidian_macroMovement": 0.12,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.45
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

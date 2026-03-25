@@ -25,16 +25,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.82,
-    "COUPLING": 0.86,
-    "MOVEMENT": 0.72,
-    "SPACE": 0.14
+    "MACHINE": 0.82,
+    "SPACE": 0.86,
+    "PUNCH": 0.72,
+    "MUTATE": 0.14
   },
   "mood": "Entangled",
   "name": "Daguerreotype Violence",
@@ -52,5 +52,6 @@
     "daguerreotype"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

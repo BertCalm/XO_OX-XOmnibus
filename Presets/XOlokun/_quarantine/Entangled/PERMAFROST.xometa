@@ -23,16 +23,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.841,
-    "COUPLING": 0.981,
-    "MOVEMENT": 0.92,
-    "SPACE": 0.534
+    "MACHINE": 0.841,
+    "SPACE": 0.981,
+    "PUNCH": 0.92,
+    "MUTATE": 0.534
   },
   "mood": "Entangled",
   "name": "Permafrost (Ombre)",
@@ -59,5 +59,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "tier": "awakening"
 }

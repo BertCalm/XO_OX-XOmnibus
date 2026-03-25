@@ -5,16 +5,16 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
   ],
   "macros": {
-    "CHARACTER": 0.602,
-    "COUPLING": 0.0,
-    "MOVEMENT": 0.692,
-    "SPACE": 0.447
+    "MACHINE": 0.602,
+    "SPACE": 0.0,
+    "PUNCH": 0.692,
+    "MUTATE": 0.447
   },
   "mood": "Atmosphere",
   "name": "UV Lattice",
@@ -41,5 +41,6 @@
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "tier": "awakening"
 }

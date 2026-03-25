@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBSCURA coupling. Dark, low-register voice sitting directly on the Kuramoto critical boundary. OBSCURA's spring system creates fault lines through the partial field \u2014 groups of partials snap in and out of sync as the springs oscillate. Moderate ResSens ensures acausal clusters form along the fault boundaries. The geology of a singing earthquake.",
+  "description": "OBSCURA coupling. Dark, low-register voice sitting directly on the Kuramoto critical boundary. OBSCURA's spring system creates fault lines through the partial field — groups of partials snap in and out of sync as the springs oscillate. Moderate ResSens ensures acausal clusters form along the fault boundaries. The geology of a singing earthquake.",
   "tags": [
     "entangled",
     "obscura",
@@ -89,5 +89,6 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "tier": "awakening"
 }
