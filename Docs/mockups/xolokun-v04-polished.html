@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>XOlokun — V0.4 Polished Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0E0E10;
+  --surface:    #1A1A1C;
+  --elevated:   #242426;
+  --raised:     #2C2C2F;
+  --border:     rgba(255,255,255,0.07);
+  --border-md:  rgba(255,255,255,0.11);
+
+  --t1: #F0EDE8;
+  --t2: #9E9B97;
+  --t3: #5E5C5A;
+  --t4: #3A3938;
+
+  --gold:       #E9C46A;
+  --gold-dim:   rgba(233,196,106,0.14);
+  --gold-glow:  rgba(233,196,106,0.28);
+
+  --accent:         #1E8B7E;
+  --accent-dim:     rgba(30,139,126,0.14);
+  --accent-glow:    rgba(30,139,126,0.32);
+  --accent-bright:  rgba(30,139,126,0.70);
+
+  --f-display: 'Space Grotesk', system-ui, sans-serif;
+  --f-body:    'Inter', system-ui, sans-serif;
+  --f-mono:    'JetBrains Mono', monospace;
+
+  --ease-out:    cubic-bezier(0.0,0.0,0.2,1);
+  --ease-snap:   cubic-bezier(0.34,1.56,0.64,1);
+  --dur-fast:    120ms;
+  --dur-mid:     220ms;
+  --dur-slow:    380ms;
+}
+
+body {
+  background: #080809;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px;
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  color: var(--t1);
+}
+
+/* ── Plugin shell ─────────────────────────────────────────── */
+.plugin {
+  width: 1100px;
+  height: 700px;
+  background: var(--bg);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.055),
+    0 4px 12px rgba(0,0,0,0.5),
+    0 20px 60px rgba(0,0,0,0.6),
+    0 60px 120px rgba(0,0,0,0.4);
+  user-select: none;
+  position: relative;
+}
+
+/* ── HEADER (52px) ────────────────────────────────────────── */
+.header {
+  height: 52px;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 20;
+}
+
+.logo-mark {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.engines-btn {
+  font-family: var(--f-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--t2);
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+  white-space: nowrap;
+}
+.engines-btn:hover { color: var(--t1); border-color: var(--border-md); }
+
+/* Preset nav */
+.preset-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+}
+.preset-arrow {
+  width: 22px; height: 22px;
+  background: none;
+  border: 1px solid var(--border-md);
+  border-radius: 4px;
+  color: var(--t2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 9px;
+  transition: all var(--dur-fast);
+}
+.preset-arrow:hover { color: var(--t1); border-color: rgba(255,255,255,0.22); }
+.preset-name {
+  font-family: var(--f-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--t1);
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.preset-icon-btn {
+  width: 22px; height: 22px;
+  background: none;
+  border: none;
+  color: var(--t3);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: color var(--dur-fast);
+  border-radius: 3px;
+}
+.preset-icon-btn:hover { color: var(--t1); }
+.preset-icon-btn.active { color: var(--gold); }
+.ab-toggle {
+  display: flex;
+  border: 1px solid var(--border-md);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-left: 2px;
+}
+.ab-btn {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  color: var(--t3);
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.ab-btn.active { background: var(--elevated); color: var(--t1); }
+.ab-btn:hover { color: var(--t2); }
+.undo-btn {
+  width: 22px; height: 22px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--t3);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  transition: all var(--dur-fast);
+}
+.undo-btn:hover { color: var(--t1); border-color: var(--border-md); }
+
+/* Header macros */
+.header-macros {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+.header-macro-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.header-macro-label {
+  font-family: var(--f-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  color: var(--t3);
+  text-transform: uppercase;
+}
+
+/* Header indicators */
+.header-indicators {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: 10px;
+}
+.ind-pill {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--t3);
+  padding: 3px 7px;
+  border-radius: 3px;
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.ind-pill:hover { color: var(--t2); }
+.ind-pill.active { color: var(--gold); border-color: rgba(233,196,106,0.25); }
+.cpu-display {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t3);
+  padding: 3px 6px;
+}
+.settings-btn {
+  width: 28px; height: 28px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--t3);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  transition: all var(--dur-fast);
+}
+.settings-btn:hover { color: var(--t1); border-color: var(--border-md); }
+
+/* ── MAIN BODY ────────────────────────────────────────────── */
+.main-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── COL A (260px) ────────────────────────────────────────── */
+.col-a {
+  width: 260px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.col-a-slots {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Engine slot tile */
+.slot-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 9px 11px 8px 14px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--dur-fast);
+  background: transparent;
+  flex: 1;
+}
+.slot-tile::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--slot-accent, var(--t4));
+  border-radius: 0 2px 2px 0;
+  transition: background var(--dur-mid);
+}
+.slot-tile:hover { background: rgba(255,255,255,0.025); }
+.slot-tile.active { background: rgba(255,255,255,0.04); }
+.slot-tile.active::before { box-shadow: 0 0 8px var(--slot-accent, var(--t4)); }
+
+.slot-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.slot-number {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t3);
+  width: 12px;
+}
+.slot-name {
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--slot-accent, var(--t2));
+  transition: color var(--dur-mid);
+  flex: 1;
+}
+.slot-power {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--border-md);
+  background: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px;
+  color: var(--t3);
+  transition: all var(--dur-fast);
+  flex-shrink: 0;
+}
+.slot-power:hover { color: var(--t1); }
+.slot-power.on { border-color: var(--slot-accent, var(--t2)); color: var(--slot-accent, var(--t2)); }
+
+.slot-macros {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+/* Mini waveform SVG area */
+.slot-wave {
+  height: 22px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.025);
+}
+
+.slot-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.slot-mood-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.mood-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--slot-accent, var(--t4));
+  opacity: 0.6;
+}
+.mood-dot.dim { opacity: 0.22; background: var(--t4); }
+.slot-fx-indicator {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  color: var(--t3);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.fx-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--t4);
+}
+.fx-dot.on { background: var(--gold); }
+
+/* CPU bar */
+.slot-cpu-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  margin-top: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.slot-cpu-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--slot-accent, var(--t3));
+  opacity: 0.55;
+  transition: width 0.8s ease;
+}
+
+/* Empty slot */
+.slot-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  transition: background var(--dur-fast);
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+.slot-empty:hover { background: rgba(255,255,255,0.02); }
+.slot-empty-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.slot-plus {
+  width: 28px; height: 28px;
+  border: 1px dashed var(--border-md);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  color: var(--t4);
+  transition: all var(--dur-fast);
+}
+.slot-empty:hover .slot-plus { border-color: var(--t3); color: var(--t3); }
+.slot-empty-label {
+  font-family: var(--f-body);
+  font-size: 10px;
+  color: var(--t4);
+  transition: color var(--dur-fast);
+}
+.slot-empty:hover .slot-empty-label { color: var(--t3); }
+
+/* Coupling mini-graph */
+.coupling-graph {
+  height: 80px;
+  border-top: 1px solid var(--border);
+  padding: 8px 11px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.coupling-graph-label {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.coupling-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.7;
+}
+.coupling-svg-wrap {
+  flex: 1;
+  position: relative;
+}
+
+/* ── COL B (520px) ────────────────────────────────────────── */
+.col-b {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Engine nameplate */
+.engine-nameplate {
+  padding: 10px 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.engine-name-large {
+  font-family: var(--f-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 16px var(--accent-glow);
+  transition: color var(--dur-slow), text-shadow var(--dur-slow);
+}
+.engine-tagline {
+  font-family: var(--f-body);
+  font-size: 10px;
+  color: var(--t3);
+  flex: 1;
+}
+.engine-randomize {
+  width: 22px; height: 22px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--t3);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--dur-fast);
+}
+.engine-randomize:hover { color: var(--t1); border-color: var(--border-md); }
+
+/* Signal flow strip */
+.signal-flow {
+  display: flex;
+  align-items: center;
+  padding: 5px 16px 7px;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+.sf-block {
+  font-family: var(--f-mono);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--t3);
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+  white-space: nowrap;
+}
+.sf-block:hover { color: var(--t1); background: rgba(255,255,255,0.04); }
+.sf-block.active { color: var(--accent); }
+.sf-arrow {
+  font-size: 9px;
+  color: var(--t4);
+  padding: 0 2px;
+  flex-shrink: 0;
+}
+
+/* Macro knobs row (large) */
+.macros-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.015) 0%, transparent 100%);
+}
+.macro-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.macro-label {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.75;
+}
+.macro-value {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t3);
+}
+
+/* Collapsible sections */
+.col-b-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--t4) transparent;
+}
+.col-b-scroll::-webkit-scrollbar { width: 4px; }
+.col-b-scroll::-webkit-scrollbar-thumb { background: var(--t4); border-radius: 2px; }
+
+.section {
+  border-bottom: 1px solid var(--border);
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 32px;
+  cursor: pointer;
+  transition: background var(--dur-fast);
+  gap: 7px;
+  position: relative;
+}
+.section-header:hover { background: rgba(255,255,255,0.025); }
+.section-header.expanded { background: rgba(255,255,255,0.03); }
+.section-color-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--f-display);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t2);
+  flex: 1;
+}
+.section-collapse-arrow {
+  font-size: 9px;
+  color: var(--t4);
+  transition: transform var(--dur-mid);
+}
+.section-header.expanded .section-collapse-arrow { transform: rotate(90deg); }
+.section-tint {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.section-body {
+  display: none;
+  padding: 8px 16px 12px;
+  gap: 10px;
+}
+.section-body.expanded { display: flex; flex-wrap: wrap; gap: 10px 14px; }
+
+/* Parameter knob in section */
+.param-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 52px;
+}
+.param-label {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  color: var(--t3);
+  text-align: center;
+  max-width: 58px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.param-value {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  color: var(--t4);
+}
+
+/* Waveform + ADSR sticky bottom */
+.col-b-bottom {
+  height: 80px;
+  min-height: 80px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  padding: 6px 16px;
+  gap: 12px;
+  background: var(--surface);
+}
+.wave-canvas-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wave-canvas-label {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  color: var(--t4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.adsr-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* ── COL C (320px) ────────────────────────────────────────── */
+.col-c {
+  width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Tab bar */
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0 4px;
+}
+.tab-btn {
+  font-family: var(--f-display);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--t3);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 11px;
+  height: 38px;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--t2); }
+.tab-btn.active {
+  color: var(--t1);
+  border-bottom-color: var(--accent);
+}
+
+.tab-panel {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+.tab-panel.active { display: flex; }
+
+/* Preset browser */
+.preset-browser {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+.browser-filters {
+  padding: 8px 12px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-bottom: 1px solid var(--border);
+}
+.filter-pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.filter-pill {
+  font-family: var(--f-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+  color: var(--t3);
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.filter-pill:hover { color: var(--t2); border-color: var(--border-md); }
+.filter-pill.active {
+  color: var(--accent);
+  border-color: rgba(30,139,126,0.35);
+  background: var(--accent-dim);
+}
+.mood-pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.mood-pill {
+  font-family: var(--f-body);
+  font-size: 9px;
+  color: var(--t3);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.mood-pill:hover { color: var(--t2); }
+.mood-pill.active {
+  color: var(--gold);
+  border-color: rgba(233,196,106,0.35);
+  background: var(--gold-dim);
+}
+
+.preset-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--t4) transparent;
+  padding: 4px 0;
+}
+.preset-list::-webkit-scrollbar { width: 4px; }
+.preset-list::-webkit-scrollbar-thumb { background: var(--t4); border-radius: 2px; }
+
+.preset-card {
+  display: flex;
+  align-items: center;
+  padding: 7px 12px 7px 14px;
+  gap: 8px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all var(--dur-fast);
+}
+.preset-card:hover { background: rgba(255,255,255,0.03); }
+.preset-card.active {
+  background: rgba(255,255,255,0.045);
+  border-left-color: var(--accent);
+}
+.preset-play-btn {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--border-md);
+  background: none;
+  color: var(--t3);
+  font-size: 8px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--dur-fast);
+  flex-shrink: 0;
+}
+.preset-play-btn:hover { color: var(--t1); border-color: rgba(255,255,255,0.25); }
+.preset-info {
+  flex: 1;
+  min-width: 0;
+}
+.preset-title {
+  font-family: var(--f-body);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--t1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.preset-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+.preset-engine-badge {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  padding: 1px 5px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  color: var(--t3);
+}
+.preset-mood-pip {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.preset-fav {
+  font-size: 10px;
+  color: var(--t4);
+  cursor: pointer;
+  transition: color var(--dur-fast);
+  flex-shrink: 0;
+}
+.preset-fav:hover { color: var(--gold); }
+.preset-fav.active { color: var(--gold); }
+
+/* COUPLE tab */
+.couple-panel {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  overflow-y: auto;
+}
+.couple-route {
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast);
+}
+.couple-route:hover { border-color: var(--border-md); }
+.couple-route-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.couple-from {
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  color: var(--t2);
+  letter-spacing: 0.1em;
+}
+.couple-arrow-icon { color: var(--gold); font-size: 11px; }
+.couple-type-badge {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--gold-dim);
+  color: var(--gold);
+  border: 1px solid rgba(233,196,106,0.25);
+  margin-left: auto;
+}
+.couple-knobs {
+  display: flex;
+  gap: 12px;
+}
+.couple-knob-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.couple-knob-label {
+  font-family: var(--f-mono);
+  font-size: 8px;
+  color: var(--t4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── STATUS BAR (28px) ────────────────────────────────────── */
+.status-bar {
+  height: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 10px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.status-action-btn {
+  font-family: var(--f-mono);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--t3);
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.status-action-btn:hover { color: var(--t1); border-color: var(--border-md); }
+.status-action-btn.fire { color: var(--accent-bright); border-color: rgba(30,139,126,0.25); }
+.status-action-btn.panic { color: #FF6B6B; border-color: rgba(255,107,107,0.25); }
+.status-divider { width: 1px; height: 14px; background: var(--border); }
+.status-bpm {
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  color: var(--t2);
+}
+.status-label {
+  font-family: var(--f-mono);
+  font-size: 8.5px;
+  color: var(--t4);
+  letter-spacing: 0.08em;
+}
+.status-value {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t2);
+}
+.status-spacer { flex: 1; }
+.slot-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.slot-status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--t4);
+  transition: background var(--dur-mid), box-shadow var(--dur-mid);
+}
+.slot-status-dot.on {
+  background: var(--accent);
+  box-shadow: 0 0 5px var(--accent-glow);
+}
+.slot-status-dot.gold {
+  background: var(--gold);
+  box-shadow: 0 0 5px var(--gold-glow);
+}
+
+/* ── KNOB COMPONENT ───────────────────────────────────────── */
+.knob-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ns-resize;
+}
+.knob-body {
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.knob-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── TOOLTIP ──────────────────────────────────────────────── */
+.tooltip {
+  position: absolute;
+  background: var(--raised);
+  border: 1px solid var(--border-md);
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t1);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+}
+.tooltip.visible { opacity: 1; }
+
+/* ── EXPORT BTN ───────────────────────────────────────────── */
+.export-btn {
+  font-family: var(--f-display);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1A1A1C;
+  background: var(--gold);
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+  box-shadow: 0 2px 8px var(--gold-glow);
+}
+.export-btn:hover { background: #F0CE7A; box-shadow: 0 4px 14px rgba(233,196,106,0.4); }
+
+/* FX panel in col-c */
+.fx-panel {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  overflow-y: auto;
+}
+.fx-slot-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--elevated);
+  cursor: pointer;
+  transition: border-color var(--dur-fast);
+}
+.fx-slot-row:hover { border-color: var(--border-md); }
+.fx-icon {
+  font-size: 13px;
+  width: 20px;
+  text-align: center;
+}
+.fx-name {
+  font-family: var(--f-body);
+  font-size: 11px;
+  color: var(--t2);
+  flex: 1;
+}
+.fx-bypass-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 4px var(--accent-glow);
+  cursor: pointer;
+}
+.fx-bypass-dot.off { background: var(--t4); box-shadow: none; }
+.fx-wetdry {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t3);
+  width: 28px;
+  text-align: right;
+}
+
+/* Export panel */
+.export-panel {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  overflow-y: auto;
+}
+.export-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.export-row-label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.export-option-group {
+  display: flex;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.export-option {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  padding: 3px 8px;
+  background: none;
+  border: none;
+  color: var(--t3);
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+.export-option.active { background: var(--elevated); color: var(--t1); }
+.export-path {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--t3);
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 4px 8px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.export-big-btn {
+  width: 100%;
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1A1A1C;
+  background: var(--gold);
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--gold-glow);
+  transition: all var(--dur-fast);
+}
+.export-big-btn:hover { background: #F0CE7A; }
+
+/* Settings panel */
+.settings-panel {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.settings-label {
+  font-family: var(--f-body);
+  font-size: 11px;
+  color: var(--t2);
+}
+.toggle-switch {
+  width: 32px; height: 18px;
+  border-radius: 9px;
+  background: var(--t4);
+  position: relative;
+  cursor: pointer;
+  transition: background var(--dur-fast);
+}
+.toggle-switch.on { background: var(--accent); }
+.toggle-knob {
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--t1);
+  top: 2px; left: 2px;
+  transition: transform var(--dur-fast);
+}
+.toggle-switch.on .toggle-knob { transform: translateX(14px); }
+
+/* ── SCROLLBAR globally ────────────────────────────────────── */
+* { scrollbar-width: thin; scrollbar-color: var(--t4) transparent; }
+</style>
+</head>
+<body>
+
+<div class="plugin" id="plugin">
+
+  <!-- ══ HEADER ══════════════════════════════════════════════ -->
+  <div class="header">
+
+    <!-- Logo -->
+    <div class="logo-mark">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <circle cx="9" cy="9" r="7" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.9"/>
+        <circle cx="17" cy="17" r="7" stroke="var(--gold)" stroke-width="1.5" fill="none" opacity="0.9"/>
+        <circle cx="9" cy="9" r="2.5" fill="var(--accent)" opacity="0.7"/>
+        <circle cx="17" cy="17" r="2.5" fill="var(--gold)" opacity="0.7"/>
+      </svg>
+    </div>
+
+    <!-- Engines button -->
+    <button class="engines-btn">ENGINES ▾</button>
+
+    <!-- Preset nav -->
+    <div class="preset-nav">
+      <button class="preset-arrow" title="Previous preset">◀</button>
+      <span class="preset-name">Chiasmus First Breath</span>
+      <button class="preset-arrow" title="Next preset">▶</button>
+      <button class="preset-icon-btn active" title="Favorite">♥</button>
+      <button class="preset-icon-btn" title="Sonic DNA">◈</button>
+      <div class="ab-toggle">
+        <button class="ab-btn active">A</button>
+        <button class="ab-btn">B</button>
+      </div>
+      <button class="undo-btn" title="Undo">↩</button>
+    </div>
+
+    <!-- Macro knobs (4×40pt) -->
+    <div class="header-macros">
+      <div class="header-macro-group">
+        <div class="macro-label" style="color:var(--gold);opacity:0.65;font-size:7px;letter-spacing:0.1em;">CHAR</div>
+        <div id="hmacro1" class="knob-wrap" data-value="62" data-label="CHARACTER">
+          <!-- rendered by JS -->
+        </div>
+      </div>
+      <div class="header-macro-group">
+        <div class="macro-label" style="color:var(--gold);opacity:0.65;font-size:7px;letter-spacing:0.1em;">MOVE</div>
+        <div id="hmacro2" class="knob-wrap" data-value="38" data-label="MOVEMENT">
+        </div>
+      </div>
+      <div class="header-macro-group">
+        <div class="macro-label" style="color:var(--gold);opacity:0.65;font-size:7px;letter-spacing:0.1em;">COUP</div>
+        <div id="hmacro3" class="knob-wrap" data-value="55" data-label="COUPLING">
+        </div>
+      </div>
+      <div class="header-macro-group">
+        <div class="macro-label" style="color:var(--gold);opacity:0.65;font-size:7px;letter-spacing:0.1em;">SPC</div>
+        <div id="hmacro4" class="knob-wrap" data-value="71" data-label="SPACE">
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicators -->
+    <div class="header-indicators">
+      <span class="ind-pill active">MIDI</span>
+      <span class="ind-pill">FIRE</span>
+      <button class="export-btn">EXPORT</button>
+      <span class="cpu-display">CPU 4.1%</span>
+      <button class="settings-btn">⚙</button>
+    </div>
+
+  </div><!-- /header -->
+
+  <!-- ══ MAIN BODY ════════════════════════════════════════════ -->
+  <div class="main-body">
+
+    <!-- ═══ COL A: Engine Rack ═══════════════════════════════ -->
+    <div class="col-a">
+      <div class="col-a-slots">
+
+        <!-- Slot 1 — OBRIX (active) -->
+        <div class="slot-tile active" id="slot1"
+             style="--slot-accent:#1E8B7E;"
+             onclick="selectSlot(1, '#1E8B7E', 'OBRIX', 'Modular brick synthesis')">
+          <div class="slot-header">
+            <span class="slot-number">1</span>
+            <span class="slot-name" style="color:#1E8B7E;">OBRIX</span>
+            <button class="slot-power on" style="border-color:#1E8B7E;color:#1E8B7E;" onclick="event.stopPropagation()">⏻</button>
+          </div>
+          <div class="slot-macros">
+            <div id="sm1a" class="knob-wrap" data-value="68" data-label="SRC1"></div>
+            <div id="sm1b" class="knob-wrap" data-value="44" data-label="FILT"></div>
+            <div id="sm1c" class="knob-wrap" data-value="72" data-label="ENV"></div>
+            <div id="sm1d" class="knob-wrap" data-value="55" data-label="FX"></div>
+          </div>
+          <div class="slot-wave">
+            <svg width="100%" height="22" preserveAspectRatio="none" id="wave1">
+              <polyline points="" fill="none" stroke="#1E8B7E" stroke-width="1.2" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="slot-footer">
+            <div class="slot-mood-dots">
+              <div class="mood-dot"></div>
+              <div class="mood-dot"></div>
+              <div class="mood-dot dim"></div>
+              <div class="mood-dot dim"></div>
+            </div>
+            <div class="slot-fx-indicator">
+              <div class="fx-dot on"></div>
+              <div class="fx-dot on"></div>
+              <div class="fx-dot"></div>
+              <span style="font-size:8px;color:var(--t4);margin-left:2px;">FX</span>
+            </div>
+          </div>
+          <div class="slot-cpu-bar"><div class="slot-cpu-fill" style="width:18%;"></div></div>
+        </div>
+
+        <!-- Slot 2 — OPERA -->
+        <div class="slot-tile" id="slot2"
+             style="--slot-accent:#D4AF37;"
+             onclick="selectSlot(2, '#D4AF37', 'OPERA', 'Additive-vocal Kuramoto synth')">
+          <div class="slot-header">
+            <span class="slot-number">2</span>
+            <span class="slot-name" style="color:#D4AF37;">OPERA</span>
+            <button class="slot-power on" style="border-color:#D4AF37;color:#D4AF37;" onclick="event.stopPropagation()">⏻</button>
+          </div>
+          <div class="slot-macros">
+            <div id="sm2a" class="knob-wrap" data-value="55" data-label="DRAMA"></div>
+            <div id="sm2b" class="knob-wrap" data-value="63" data-label="VOICE"></div>
+            <div id="sm2c" class="knob-wrap" data-value="40" data-label="CHORUS"></div>
+            <div id="sm2d" class="knob-wrap" data-value="78" data-label="STAGE"></div>
+          </div>
+          <div class="slot-wave">
+            <svg width="100%" height="22" preserveAspectRatio="none" id="wave2">
+              <polyline points="" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="slot-footer">
+            <div class="slot-mood-dots">
+              <div class="mood-dot" style="background:#D4AF37;"></div>
+              <div class="mood-dot" style="background:#D4AF37;"></div>
+              <div class="mood-dot" style="background:#D4AF37;"></div>
+              <div class="mood-dot dim"></div>
+            </div>
+            <div class="slot-fx-indicator">
+              <div class="fx-dot on"></div>
+              <div class="fx-dot"></div>
+              <div class="fx-dot"></div>
+              <span style="font-size:8px;color:var(--t4);margin-left:2px;">FX</span>
+            </div>
+          </div>
+          <div class="slot-cpu-bar"><div class="slot-cpu-fill" style="width:11%;background:#D4AF37;"></div></div>
+        </div>
+
+        <!-- Slot 3 — OXYTOCIN -->
+        <div class="slot-tile" id="slot3"
+             style="--slot-accent:#9B5DE5;"
+             onclick="selectSlot(3, '#9B5DE5', 'OXYTOCIN', 'Circuit-modeling love synth')">
+          <div class="slot-header">
+            <span class="slot-number">3</span>
+            <span class="slot-name" style="color:#9B5DE5;">OXYTOCIN</span>
+            <button class="slot-power on" style="border-color:#9B5DE5;color:#9B5DE5;" onclick="event.stopPropagation()">⏻</button>
+          </div>
+          <div class="slot-macros">
+            <div id="sm3a" class="knob-wrap" data-value="48" data-label="INTM"></div>
+            <div id="sm3b" class="knob-wrap" data-value="71" data-label="BOND"></div>
+            <div id="sm3c" class="knob-wrap" data-value="33" data-label="WARM"></div>
+            <div id="sm3d" class="knob-wrap" data-value="60" data-label="OXYT"></div>
+          </div>
+          <div class="slot-wave">
+            <svg width="100%" height="22" preserveAspectRatio="none" id="wave3">
+              <polyline points="" fill="none" stroke="#9B5DE5" stroke-width="1.2" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="slot-footer">
+            <div class="slot-mood-dots">
+              <div class="mood-dot" style="background:#9B5DE5;"></div>
+              <div class="mood-dot" style="background:#9B5DE5;"></div>
+              <div class="mood-dot dim"></div>
+              <div class="mood-dot dim"></div>
+            </div>
+            <div class="slot-fx-indicator">
+              <div class="fx-dot on"></div>
+              <div class="fx-dot on"></div>
+              <div class="fx-dot on"></div>
+              <span style="font-size:8px;color:var(--t4);margin-left:2px;">FX</span>
+            </div>
+          </div>
+          <div class="slot-cpu-bar"><div class="slot-cpu-fill" style="width:7%;background:#9B5DE5;"></div></div>
+        </div>
+
+        <!-- Slot 4 — empty -->
+        <div class="slot-empty" id="slot4" onclick="selectSlot(4, 'var(--t3)', 'EMPTY', '')">
+          <div class="slot-empty-inner">
+            <div class="slot-plus">+</div>
+            <div class="slot-empty-label">Add Engine</div>
+          </div>
+        </div>
+
+      </div><!-- /col-a-slots -->
+
+      <!-- Coupling mini-graph -->
+      <div class="coupling-graph">
+        <div class="coupling-graph-label">
+          <div class="coupling-dot"></div>
+          COUPLING
+        </div>
+        <div class="coupling-svg-wrap">
+          <svg id="couplingSvg" width="100%" height="44" style="overflow:visible;">
+            <!-- nodes at fixed positions: 1=30,22  2=90,22  3=150,22  4=210,22 -->
+            <!-- arcs drawn by JS -->
+            <g id="couplingArcs"></g>
+            <circle cx="30"  cy="22" r="7" fill="#1E8B7E" fill-opacity="0.25" stroke="#1E8B7E" stroke-width="1.2" id="cn1"/>
+            <circle cx="95"  cy="22" r="7" fill="#D4AF37" fill-opacity="0.25" stroke="#D4AF37" stroke-width="1.2" id="cn2"/>
+            <circle cx="160" cy="22" r="7" fill="#9B5DE5" fill-opacity="0.25" stroke="#9B5DE5" stroke-width="1.2" id="cn3"/>
+            <circle cx="225" cy="22" r="7" fill="var(--t4)" fill-opacity="0.25" stroke="var(--t4)" stroke-width="0.8" stroke-dasharray="3,2" id="cn4"/>
+            <text x="30"  y="26" text-anchor="middle" font-family="var(--f-mono)" font-size="7" fill="#1E8B7E" opacity="0.8">1</text>
+            <text x="95"  y="26" text-anchor="middle" font-family="var(--f-mono)" font-size="7" fill="#D4AF37" opacity="0.8">2</text>
+            <text x="160" y="26" text-anchor="middle" font-family="var(--f-mono)" font-size="7" fill="#9B5DE5" opacity="0.8">3</text>
+            <text x="225" y="26" text-anchor="middle" font-family="var(--f-mono)" font-size="7" fill="var(--t4)" opacity="0.5">4</text>
+          </svg>
+        </div>
+        <div style="font-family:var(--f-mono);font-size:8px;color:var(--t3);margin-top:-2px;">
+          OBRIX → OPERA: <span style="color:var(--gold);">Entangle 0.72</span>
+        </div>
+      </div>
+
+    </div><!-- /col-a -->
+
+    <!-- ═══ COL B: Engine Detail ══════════════════════════════ -->
+    <div class="col-b">
+
+      <!-- Engine nameplate -->
+      <div class="engine-nameplate">
+        <span class="engine-name-large" id="engineNameLarge">OBRIX</span>
+        <span class="engine-tagline" id="engineTagline">Modular brick synthesis — Reef Jade</span>
+        <button class="engine-randomize" title="Randomize">⚄</button>
+      </div>
+
+      <!-- Signal flow strip -->
+      <div class="signal-flow">
+        <div class="sf-block active" id="sf1">SRC1</div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-block" id="sf2">SRC2</div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-block" id="sf3">FILTER</div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-block" id="sf4">SHAPER</div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-block" id="sf5">FX</div>
+        <div class="sf-arrow">→</div>
+        <div class="sf-block" id="sf6">OUT</div>
+      </div>
+
+      <!-- 4 Large macro knobs -->
+      <div class="macros-row">
+        <div class="macro-group">
+          <div class="macro-label">CHARACTER</div>
+          <div id="bmacro1" class="knob-wrap" data-value="62" data-label="CHARACTER"></div>
+          <div class="macro-value">62</div>
+        </div>
+        <div class="macro-group">
+          <div class="macro-label">MOVEMENT</div>
+          <div id="bmacro2" class="knob-wrap" data-value="38" data-label="MOVEMENT"></div>
+          <div class="macro-value">38</div>
+        </div>
+        <div class="macro-group">
+          <div class="macro-label">COUPLING</div>
+          <div id="bmacro3" class="knob-wrap" data-value="55" data-label="COUPLING"></div>
+          <div class="macro-value">55</div>
+        </div>
+        <div class="macro-group">
+          <div class="macro-label">SPACE</div>
+          <div id="bmacro4" class="knob-wrap" data-value="71" data-label="SPACE"></div>
+          <div class="macro-value">71</div>
+        </div>
+      </div>
+
+      <!-- Collapsible sections -->
+      <div class="col-b-scroll" id="colBScroll">
+
+        <!-- OSC section -->
+        <div class="section">
+          <div class="section-header expanded" onclick="toggleSection(this)">
+            <div class="section-color-dot" style="background:#FF8C00;"></div>
+            <span class="section-title">Oscillator</span>
+            <div class="section-tint" style="background:#FF8C00;"></div>
+            <span class="section-collapse-arrow">▶</span>
+          </div>
+          <div class="section-body expanded">
+            <div class="param-group">
+              <div id="p_src1" class="knob-wrap" data-value="75" data-label="Src1 Type"></div>
+              <div class="param-label">SRC1 TYPE</div>
+            </div>
+            <div class="param-group">
+              <div id="p_src2" class="knob-wrap" data-value="42" data-label="Src2 Type"></div>
+              <div class="param-label">SRC2 TYPE</div>
+            </div>
+            <div class="param-group">
+              <div id="p_tune" class="knob-wrap" data-value="50" data-label="Tune"></div>
+              <div class="param-label">TUNE</div>
+            </div>
+            <div class="param-group">
+              <div id="p_detune" class="knob-wrap" data-value="22" data-label="Detune"></div>
+              <div class="param-label">DETUNE</div>
+            </div>
+            <div class="param-group">
+              <div id="p_width" class="knob-wrap" data-value="65" data-label="Width"></div>
+              <div class="param-label">WIDTH</div>
+            </div>
+            <div class="param-group">
+              <div id="p_level" class="knob-wrap" data-value="85" data-label="Level"></div>
+              <div class="param-label">LEVEL</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTER section -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-color-dot" style="background:#00A6D6;"></div>
+            <span class="section-title">Filter</span>
+            <div class="section-tint" style="background:#00A6D6;"></div>
+            <span class="section-collapse-arrow">▶</span>
+          </div>
+          <div class="section-body">
+            <div class="param-group">
+              <div id="p_cutoff" class="knob-wrap" data-value="68" data-label="Cutoff"></div>
+              <div class="param-label">CUTOFF</div>
+            </div>
+            <div class="param-group">
+              <div id="p_reso" class="knob-wrap" data-value="30" data-label="Resonance"></div>
+              <div class="param-label">RESO</div>
+            </div>
+            <div class="param-group">
+              <div id="p_env" class="knob-wrap" data-value="55" data-label="Env Amt"></div>
+              <div class="param-label">ENV AMT</div>
+            </div>
+            <div class="param-group">
+              <div id="p_drive" class="knob-wrap" data-value="40" data-label="Drive"></div>
+              <div class="param-label">DRIVE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOD section -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-color-dot" style="background:#9B5DE5;"></div>
+            <span class="section-title">Modulation</span>
+            <div class="section-tint" style="background:#9B5DE5;"></div>
+            <span class="section-collapse-arrow">▶</span>
+          </div>
+          <div class="section-body">
+            <div class="param-group">
+              <div id="p_lfo1r" class="knob-wrap" data-value="33" data-label="LFO1 Rate"></div>
+              <div class="param-label">LFO1 RATE</div>
+            </div>
+            <div class="param-group">
+              <div id="p_lfo1d" class="knob-wrap" data-value="48" data-label="LFO1 Depth"></div>
+              <div class="param-label">LFO1 DEPTH</div>
+            </div>
+            <div class="param-group">
+              <div id="p_lfo2r" class="knob-wrap" data-value="60" data-label="LFO2 Rate"></div>
+              <div class="param-label">LFO2 RATE</div>
+            </div>
+            <div class="param-group">
+              <div id="p_vmod" class="knob-wrap" data-value="72" data-label="Vel Mod"></div>
+              <div class="param-label">VEL MOD</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPECIAL section -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-color-dot" style="background:#1E8B7E;"></div>
+            <span class="section-title">Special — Reef Ecology</span>
+            <div class="section-tint" style="background:#1E8B7E;"></div>
+            <span class="section-collapse-arrow">▶</span>
+          </div>
+          <div class="section-body">
+            <div class="param-group">
+              <div id="p_field" class="knob-wrap" data-value="55" data-label="Field Str"></div>
+              <div class="param-label">FIELD STR</div>
+            </div>
+            <div class="param-group">
+              <div id="p_temp" class="knob-wrap" data-value="42" data-label="Env Temp"></div>
+              <div class="param-label">ENV TEMP</div>
+            </div>
+            <div class="param-group">
+              <div id="p_comp" class="knob-wrap" data-value="35" data-label="Compete"></div>
+              <div class="param-label">COMPETE</div>
+            </div>
+            <div class="param-group">
+              <div id="p_symb" class="knob-wrap" data-value="60" data-label="Symbiosis"></div>
+              <div class="param-label">SYMBIOSIS</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /col-b-scroll -->
+
+      <!-- Waveform + ADSR sticky bottom -->
+      <div class="col-b-bottom">
+        <div class="wave-canvas-wrap">
+          <div class="wave-canvas-label">OSCILLOSCOPE</div>
+          <canvas id="waveCanvas" width="240" height="48" style="width:100%;height:48px;border-radius:3px;background:rgba(255,255,255,0.02);"></canvas>
+        </div>
+        <div class="adsr-wrap">
+          <div class="wave-canvas-label">ENVELOPE</div>
+          <svg id="adsrSvg" width="100%" height="48" style="background:rgba(255,255,255,0.02);border-radius:3px;">
+            <!-- ADSR curve drawn by JS -->
+          </svg>
+        </div>
+      </div>
+
+    </div><!-- /col-b -->
+
+    <!-- ═══ COL C: Browser/Inspector ═════════════════════════ -->
+    <div class="col-c">
+
+      <!-- Tab bar -->
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab(this,'preset')">PRESET</button>
+        <button class="tab-btn" onclick="switchTab(this,'couple')">COUPLE</button>
+        <button class="tab-btn" onclick="switchTab(this,'fx')">FX</button>
+        <button class="tab-btn" onclick="switchTab(this,'export')">EXPORT</button>
+        <button class="tab-btn" onclick="switchTab(this,'settings')">⚙</button>
+      </div>
+
+      <!-- PRESET tab -->
+      <div class="tab-panel active" id="tab-preset">
+        <div class="preset-browser">
+          <div class="browser-filters">
+            <div class="filter-pills">
+              <div class="filter-pill active">ALL</div>
+              <div class="filter-pill" onclick="togglePill(this)">DRUMS</div>
+              <div class="filter-pill" onclick="togglePill(this)">BASS</div>
+              <div class="filter-pill" onclick="togglePill(this)">PADS</div>
+              <div class="filter-pill" onclick="togglePill(this)">LEADS</div>
+              <div class="filter-pill" onclick="togglePill(this)">KEYS</div>
+              <div class="filter-pill" onclick="togglePill(this)">FX</div>
+            </div>
+            <div class="mood-pills">
+              <div class="mood-pill active" onclick="toggleMoodPill(this)">Foundation</div>
+              <div class="mood-pill" onclick="toggleMoodPill(this)">Entangled</div>
+              <div class="mood-pill" onclick="toggleMoodPill(this)">Aether</div>
+              <div class="mood-pill" onclick="toggleMoodPill(this)">Submerged</div>
+              <div class="mood-pill" onclick="toggleMoodPill(this)">Kinetic</div>
+              <div class="mood-pill" onclick="toggleMoodPill(this)">Luminous</div>
+            </div>
+          </div>
+          <div class="preset-list" id="presetList">
+
+            <div class="preset-card active" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Chiasmus First Breath</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#1E8B7E;border-color:rgba(30,139,126,0.3);">OBRIX</span>
+                  <div class="preset-mood-pip" style="background:#1E8B7E;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Foundation</span>
+                </div>
+              </div>
+              <span class="preset-fav active">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Reef Residency Deep</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#1E8B7E;border-color:rgba(30,139,126,0.3);">OBRIX</span>
+                  <div class="preset-mood-pip" style="background:#0096C7;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Submerged</span>
+                </div>
+              </div>
+              <span class="preset-fav">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Aria Gold Conductor</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#D4AF37;border-color:rgba(212,175,55,0.3);">OPERA</span>
+                  <div class="preset-mood-pip" style="background:#D4AF37;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Luminous</span>
+                </div>
+              </div>
+              <span class="preset-fav active">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Synapse Love Circuit</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#9B5DE5;border-color:rgba(155,93,229,0.3);">OXYTOCIN</span>
+                  <div class="preset-mood-pip" style="background:#9B5DE5;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Entangled</span>
+                </div>
+              </div>
+              <span class="preset-fav">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Kelp Knot Drift</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#8E4585;border-color:rgba(142,69,133,0.3);">ORBWEAVE</span>
+                  <div class="preset-mood-pip" style="background:#8E4585;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Aether</span>
+                </div>
+              </div>
+              <span class="preset-fav">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Oxbow Entangle Gold</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#1A6B5A;border-color:rgba(26,107,90,0.3);">OXBOW</span>
+                  <div class="preset-mood-pip" style="background:#1A6B5A;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Entangled</span>
+                </div>
+              </div>
+              <span class="preset-fav">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Bioluminescent Tick</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#00FFB4;border-color:rgba(0,255,180,0.2);">OVERLAP</span>
+                  <div class="preset-mood-pip" style="background:#00FFB4;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Kinetic</span>
+                </div>
+              </div>
+              <span class="preset-fav">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Mallet Rain Resonant</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#B5883E;border-color:rgba(181,136,62,0.3);">OWARE</span>
+                  <div class="preset-mood-pip" style="background:#B5883E;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Foundation</span>
+                </div>
+              </div>
+              <span class="preset-fav">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Trench Pressure Hold</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#2D0A4E;border-color:rgba(45,10,78,0.5);">OCEANDEEP</span>
+                  <div class="preset-mood-pip" style="background:#2D0A4E;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Submerged</span>
+                </div>
+              </div>
+              <span class="preset-fav">♥</span>
+            </div>
+
+            <div class="preset-card" onclick="selectPreset(this)">
+              <button class="preset-play-btn">▶</button>
+              <div class="preset-info">
+                <div class="preset-title">Crate Dig Detroit</div>
+                <div class="preset-meta">
+                  <span class="preset-engine-badge" style="color:#E5B80B;border-color:rgba(229,184,11,0.3);">OFFERING</span>
+                  <div class="preset-mood-pip" style="background:#E5B80B;"></div>
+                  <span style="font-family:var(--f-mono);font-size:8px;color:var(--t4);">Kinetic</span>
+                </div>
+              </div>
+              <span class="preset-fav active">♥</span>
+            </div>
+
+          </div><!-- /preset-list -->
+        </div>
+      </div><!-- /tab-preset -->
+
+      <!-- COUPLE tab -->
+      <div class="tab-panel" id="tab-couple">
+        <div class="couple-panel">
+
+          <div class="couple-route">
+            <div class="couple-route-header">
+              <span class="couple-from" style="color:#1E8B7E;">OBRIX</span>
+              <span class="couple-arrow-icon">→</span>
+              <span class="couple-from" style="color:#D4AF37;">OPERA</span>
+              <span class="couple-type-badge">ENTANGLE</span>
+            </div>
+            <div class="couple-knobs">
+              <div class="couple-knob-group">
+                <div id="ck1a" class="knob-wrap" data-value="72" data-label="Amount"></div>
+                <div class="couple-knob-label">AMOUNT</div>
+              </div>
+              <div class="couple-knob-group">
+                <div id="ck1b" class="knob-wrap" data-value="55" data-label="Depth"></div>
+                <div class="couple-knob-label">DEPTH</div>
+              </div>
+              <div class="couple-knob-group">
+                <div id="ck1c" class="knob-wrap" data-value="40" data-label="Rate"></div>
+                <div class="couple-knob-label">RATE</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="couple-route">
+            <div class="couple-route-header">
+              <span class="couple-from" style="color:#D4AF37;">OPERA</span>
+              <span class="couple-arrow-icon">→</span>
+              <span class="couple-from" style="color:#9B5DE5;">OXYTOCIN</span>
+              <span class="couple-type-badge">PHASE</span>
+            </div>
+            <div class="couple-knobs">
+              <div class="couple-knob-group">
+                <div id="ck2a" class="knob-wrap" data-value="45" data-label="Amount"></div>
+                <div class="couple-knob-label">AMOUNT</div>
+              </div>
+              <div class="couple-knob-group">
+                <div id="ck2b" class="knob-wrap" data-value="62" data-label="Depth"></div>
+                <div class="couple-knob-label">DEPTH</div>
+              </div>
+              <div class="couple-knob-group">
+                <div id="ck2c" class="knob-wrap" data-value="35" data-label="Rate"></div>
+                <div class="couple-knob-label">RATE</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:4px;display:flex;gap:6px;">
+            <button style="flex:1;font-family:var(--f-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(30,139,126,0.25);border-radius:4px;padding:7px;cursor:pointer;">+ ADD ROUTE</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FX tab -->
+      <div class="tab-panel" id="tab-fx">
+        <div class="fx-panel">
+          <div class="fx-slot-row">
+            <div class="fx-icon">⬟</div>
+            <div class="fx-name">Saturation</div>
+            <div class="fx-bypass-dot"></div>
+            <div class="fx-wetdry">78%</div>
+          </div>
+          <div class="fx-slot-row">
+            <div class="fx-icon">◷</div>
+            <div class="fx-name">Delay 3/16</div>
+            <div class="fx-bypass-dot"></div>
+            <div class="fx-wetdry">42%</div>
+          </div>
+          <div class="fx-slot-row">
+            <div class="fx-icon">〰</div>
+            <div class="fx-name">Reverb Hall</div>
+            <div class="fx-bypass-dot"></div>
+            <div class="fx-wetdry">35%</div>
+          </div>
+          <div class="fx-slot-row">
+            <div class="fx-icon">≋</div>
+            <div class="fx-name">Chorus</div>
+            <div class="fx-bypass-dot off"></div>
+            <div class="fx-wetdry">—</div>
+          </div>
+          <div class="fx-slot-row">
+            <div class="fx-icon">▽</div>
+            <div class="fx-name">Compressor</div>
+            <div class="fx-bypass-dot off"></div>
+            <div class="fx-wetdry">—</div>
+          </div>
+          <div class="fx-slot-row">
+            <div class="fx-icon">⊟</div>
+            <div class="fx-name">Sequencer FX</div>
+            <div class="fx-bypass-dot off"></div>
+            <div class="fx-wetdry">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPORT tab -->
+      <div class="tab-panel" id="tab-export">
+        <div class="export-panel">
+          <div class="export-row">
+            <span class="export-row-label">Velocity Layers</span>
+            <div class="export-option-group">
+              <button class="export-option">1</button>
+              <button class="export-option">4</button>
+              <button class="export-option active">8</button>
+              <button class="export-option">16</button>
+            </div>
+          </div>
+          <div class="export-row">
+            <span class="export-row-label">Bit Depth</span>
+            <div class="export-option-group">
+              <button class="export-option">16</button>
+              <button class="export-option active">24</button>
+              <button class="export-option">32</button>
+            </div>
+          </div>
+          <div class="export-row">
+            <span class="export-row-label">Sample Rate</span>
+            <div class="export-option-group">
+              <button class="export-option active">44.1</button>
+              <button class="export-option">48</button>
+              <button class="export-option">96</button>
+            </div>
+          </div>
+          <div class="export-row">
+            <span class="export-row-label">Output Path</span>
+            <div class="export-path">~/Desktop/XPN/mpce-perc-001/</div>
+          </div>
+          <div style="margin-top:8px;">
+            <button class="export-big-btn">START RENDER</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS tab -->
+      <div class="tab-panel" id="tab-settings">
+        <div class="settings-panel">
+          <div class="settings-row">
+            <span class="settings-label">Dark Cockpit</span>
+            <div class="toggle-switch on" onclick="toggleSwitch(this)"><div class="toggle-knob"></div></div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">CPU Meters</span>
+            <div class="toggle-switch on" onclick="toggleSwitch(this)"><div class="toggle-knob"></div></div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Auto-PlaySurface (Drums)</span>
+            <div class="toggle-switch" onclick="toggleSwitch(this)"><div class="toggle-knob"></div></div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Coupling Arc Labels</span>
+            <div class="toggle-switch on" onclick="toggleSwitch(this)"><div class="toggle-knob"></div></div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Preset Preview Audio</span>
+            <div class="toggle-switch on" onclick="toggleSwitch(this)"><div class="toggle-knob"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /col-c -->
+
+  </div><!-- /main-body -->
+
+  <!-- ══ STATUS BAR ═══════════════════════════════════════════ -->
+  <div class="status-bar">
+    <button class="status-action-btn fire">FIRE</button>
+    <button class="status-action-btn">XOSEND</button>
+    <button class="status-action-btn">ECHO</button>
+    <button class="status-action-btn panic">PANIC</button>
+    <div class="status-divider"></div>
+    <span class="status-label">BPM</span>
+    <span class="status-bpm">120.0</span>
+    <div class="status-divider"></div>
+    <span class="status-label">VOICES</span>
+    <span class="status-value">6/32</span>
+    <div class="status-divider"></div>
+    <span class="status-label">CPU</span>
+    <span class="status-value">4.1%</span>
+    <div class="status-spacer"></div>
+    <div class="slot-dots">
+      <div class="slot-status-dot gold"></div>
+      <div class="slot-status-dot on"></div>
+      <div class="slot-status-dot on"></div>
+      <div class="slot-status-dot"></div>
+    </div>
+  </div>
+
+</div><!-- /plugin -->
+
+<!-- ══ TOOLTIP DOM ══════════════════════════════════════════ -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ── Design tokens (JS mirrors CSS) ────────────────────────
+const GOLD  = '#E9C46A';
+const BG    = '#0E0E10';
+const T3    = '#5E5C5A';
+const T4    = '#3A3938';
+
+// ── Knob renderer ─────────────────────────────────────────
+// size: diameter in px, isGold: use gold arc, value: 0-100
+function buildKnob(container, size, isGold, value) {
+  const r = size / 2;
+  const trackR = r - 3;
+  const startAngle = 225; // degrees clockwise from top
+  const totalArc   = 270;
+
+  const frac = Math.max(0, Math.min(1, value / 100));
+  const fillArc = frac * totalArc;
+
+  // Gradient body
+  const bodyGrad = `radial-gradient(circle at 38% 32%,
+    #4A4A4E 0%, #3A3A3E 25%, #282830 55%, #141418 100%)`;
+
+  const html = `
+    <div class="knob-body" style="
+      width:${size}px;height:${size}px;
+      background:${bodyGrad};
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.07),
+        inset 0 1px 1px rgba(255,255,255,0.09),
+        0 3px 6px rgba(0,0,0,0.6),
+        0 1px 2px rgba(0,0,0,0.8);
+    ">
+      <svg class="knob-svg" viewBox="0 0 ${size} ${size}">
+        <defs>
+          <linearGradient id="arcGrad${size}${isGold?'g':'a'}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${isGold ? GOLD : 'var(--accent)'}" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="${isGold ? GOLD : 'var(--accent)'}"/>
+          </linearGradient>
+        </defs>
+        ${arcPath(r, trackR, startAngle, totalArc, T4, 1.4)}
+        ${fillArc > 0 ? arcPath(r, trackR, startAngle, fillArc, `url(#arcGrad${size}${isGold?'g':'a'})`, 1.8) : ''}
+        ${indicator(r, trackR - 2, startAngle + fillArc - totalArc/2 + totalArc/2, frac)}
+      </svg>
+    </div>`;
+
+  container.innerHTML = html;
+  container.dataset.size = size;
+  container.dataset.isGold = isGold ? '1' : '0';
+  attachKnobDrag(container);
+}
+
+function polarToXY(cx, cy, radius, angleDeg) {
+  const rad = (angleDeg - 90) * Math.PI / 180;
+  return [cx + radius * Math.cos(rad), cy + radius * Math.sin(rad)];
+}
+
+function arcPath(cx, r, startDeg, sweepDeg, color, sw) {
+  const [x1, y1] = polarToXY(cx, cx, r, startDeg);
+  const [x2, y2] = polarToXY(cx, cx, r, startDeg + sweepDeg);
+  const large = sweepDeg > 180 ? 1 : 0;
+  return `<path d="M${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2}"
+    fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round"/>`;
+}
+
+function indicator(cx, r, endAngle, frac) {
+  // Small dot at the end of the arc
+  const [x, y] = polarToXY(cx, cx, r, 225 + frac * 270);
+  return `<circle cx="${x}" cy="${y}" r="1.8" fill="var(--accent)" opacity="0.9"/>`;
+}
+
+// ── Knob sizes ─────────────────────────────────────────────
+const KNOB_HEADER  = 32;
+const KNOB_SLOT    = 26;
+const KNOB_LARGE   = 52;
+const KNOB_PARAM   = 32;
+const KNOB_COUPLE  = 28;
+
+function initKnobs() {
+  // Header macros (gold)
+  ['hmacro1','hmacro2','hmacro3','hmacro4'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) buildKnob(el, KNOB_HEADER, true, parseInt(el.dataset.value));
+  });
+  // Slot mini macros
+  ['sm1a','sm1b','sm1c','sm1d',
+   'sm2a','sm2b','sm2c','sm2d',
+   'sm3a','sm3b','sm3c','sm3d'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) buildKnob(el, KNOB_SLOT, false, parseInt(el.dataset.value));
+  });
+  // Col B large macros (gold)
+  ['bmacro1','bmacro2','bmacro3','bmacro4'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) buildKnob(el, KNOB_LARGE, true, parseInt(el.dataset.value));
+  });
+  // Col B param knobs
+  ['p_src1','p_src2','p_tune','p_detune','p_width','p_level',
+   'p_cutoff','p_reso','p_env','p_drive',
+   'p_lfo1r','p_lfo1d','p_lfo2r','p_vmod',
+   'p_field','p_temp','p_comp','p_symb'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) buildKnob(el, KNOB_PARAM, false, parseInt(el.dataset.value));
+  });
+  // Couple knobs
+  ['ck1a','ck1b','ck1c','ck2a','ck2b','ck2c'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) buildKnob(el, KNOB_COUPLE, true, parseInt(el.dataset.value));
+  });
+}
+
+// ── Knob drag ──────────────────────────────────────────────
+function attachKnobDrag(container) {
+  let startY = 0, startVal = 0, dragging = false;
+  const tooltip = document.getElementById('tooltip');
+
+  container.addEventListener('mousedown', e => {
+    e.preventDefault();
+    dragging = true;
+    startY   = e.clientY;
+    startVal = parseInt(container.dataset.value) || 50;
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    showTooltip(container, startVal, e);
+  });
+
+  function onMove(e) {
+    if (!dragging) return;
+    const delta = (startY - e.clientY) * 0.8;
+    const newVal = Math.max(0, Math.min(100, Math.round(startVal + delta)));
+    container.dataset.value = newVal;
+    const size = parseInt(container.dataset.size) || KNOB_PARAM;
+    const isGold = container.dataset.isGold === '1';
+    buildKnob(container, size, isGold, newVal);
+    showTooltip(container, newVal, e);
+    // Sync macro value display
+    syncMacroDisplay(container.id, newVal);
+  }
+
+  function onUp() {
+    dragging = false;
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+    tooltip.classList.remove('visible');
+  }
+
+  container.addEventListener('mouseenter', e => {
+    const label = container.dataset.label || '';
+    const val   = container.dataset.value || '—';
+    if (label) {
+      tooltip.textContent = `${label}: ${val}`;
+      tooltip.classList.add('visible');
+      positionTooltip(e);
+    }
+  });
+  container.addEventListener('mousemove', positionTooltip);
+  container.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+}
+
+function showTooltip(container, val, e) {
+  const tooltip = document.getElementById('tooltip');
+  const label = container.dataset.label || '';
+  tooltip.textContent = `${label}: ${val}`;
+  tooltip.classList.add('visible');
+  positionTooltip(e);
+}
+
+function positionTooltip(e) {
+  const tooltip = document.getElementById('tooltip');
+  tooltip.style.left = (e.clientX + 12) + 'px';
+  tooltip.style.top  = (e.clientY - 28) + 'px';
+}
+
+function syncMacroDisplay(id, val) {
+  const map = { bmacro1: 0, bmacro2: 1, bmacro3: 2, bmacro4: 3 };
+  if (id in map) {
+    const vals = document.querySelectorAll('.macros-row .macro-value');
+    if (vals[map[id]]) vals[map[id]].textContent = val;
+  }
+}
+
+// ── Section collapse ───────────────────────────────────────
+function toggleSection(header) {
+  const body   = header.nextElementSibling;
+  const isOpen = header.classList.contains('expanded');
+  header.classList.toggle('expanded', !isOpen);
+  body.classList.toggle('expanded', !isOpen);
+}
+
+// ── Tab switching ──────────────────────────────────────────
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+// ── Slot selection ─────────────────────────────────────────
+const engineData = {
+  1: { name:'OBRIX',    tag:'Modular brick synthesis — Reef Jade',             accent:'#1E8B7E',
+       sf:['SRC1','SRC2','FILTER','SHAPER','FX','OUT'] },
+  2: { name:'OPERA',    tag:'Additive-vocal Kuramoto synth — Aria Gold',       accent:'#D4AF37',
+       sf:['OSC','FORMANT','FILTER','CONDUCTOR','FX','OUT'] },
+  3: { name:'OXYTOCIN', tag:'Circuit-modeling love synth — Synapse Violet',    accent:'#9B5DE5',
+       sf:['CIRC','BOND','FILTER','INTIM','FX','OUT'] },
+  4: { name:'',         tag:'',                                                 accent:'#3A3938',
+       sf:['—','—','—','—','—','—'] }
+};
+
+function selectSlot(n, accent, name, tag) {
+  document.querySelectorAll('.slot-tile').forEach(t => t.classList.remove('active'));
+  const tile = document.getElementById('slot' + n);
+  if (tile && !tile.classList.contains('slot-empty')) tile.classList.add('active');
+
+  const d = engineData[n];
+  if (!d) return;
+
+  // Update accent CSS variable
+  document.documentElement.style.setProperty('--accent', d.accent);
+  document.documentElement.style.setProperty('--accent-dim', hexToRGBA(d.accent, 0.14));
+  document.documentElement.style.setProperty('--accent-glow', hexToRGBA(d.accent, 0.32));
+  document.documentElement.style.setProperty('--accent-bright', hexToRGBA(d.accent, 0.70));
+
+  // Update col B
+  document.getElementById('engineNameLarge').textContent = d.name;
+  document.getElementById('engineNameLarge').style.color = d.accent;
+  document.getElementById('engineNameLarge').style.textShadow = `0 0 16px ${hexToRGBA(d.accent, 0.4)}`;
+  document.getElementById('engineTagline').textContent = d.tag;
+
+  // Signal flow
+  const sfIds = ['sf1','sf2','sf3','sf4','sf5','sf6'];
+  sfIds.forEach((id, i) => {
+    document.getElementById(id).textContent = d.sf[i] || '—';
+    document.getElementById(id).classList.toggle('active', i === 0);
+  });
+
+  // Re-tint macros
+  document.querySelectorAll('.macro-label').forEach(el => el.style.color = GOLD);
+}
+
+function hexToRGBA(hex, a) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+// ── Preset card ────────────────────────────────────────────
+function selectPreset(card) {
+  document.querySelectorAll('.preset-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  const title = card.querySelector('.preset-title').textContent;
+  document.querySelector('.preset-name').textContent = title;
+}
+
+// ── Filter pills ───────────────────────────────────────────
+function togglePill(pill) {
+  document.querySelectorAll('.filter-pills .filter-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+}
+function toggleMoodPill(pill) {
+  pill.classList.toggle('active');
+}
+
+// ── Toggle switch ──────────────────────────────────────────
+function toggleSwitch(sw) {
+  sw.classList.toggle('on');
+}
+
+// ── Waveform canvas animation ──────────────────────────────
+const waveCanvas = document.getElementById('waveCanvas');
+const waveCtx = waveCanvas.getContext('2d');
+let waveT = 0;
+
+function drawWave() {
+  const w = waveCanvas.width;
+  const h = waveCanvas.height;
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+
+  waveCtx.clearRect(0, 0, w, h);
+  waveCtx.strokeStyle = accent || '#1E8B7E';
+  waveCtx.lineWidth = 1.5;
+  waveCtx.globalAlpha = 0.75;
+  waveCtx.shadowBlur = 6;
+  waveCtx.shadowColor = accent || '#1E8B7E';
+
+  waveCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const t  = x / w;
+    const y  = h/2 +
+      Math.sin(t * Math.PI * 6 + waveT) * (h * 0.28) +
+      Math.sin(t * Math.PI * 12 + waveT * 1.3) * (h * 0.10) +
+      Math.sin(t * Math.PI * 2  + waveT * 0.5) * (h * 0.12);
+    x === 0 ? waveCtx.moveTo(x, y) : waveCtx.lineTo(x, y);
+  }
+  waveCtx.stroke();
+  waveCtx.globalAlpha = 1;
+  waveCtx.shadowBlur  = 0;
+  waveT += 0.035;
+  requestAnimationFrame(drawWave);
+}
+
+// ── Slot mini waveforms (static SVG) ──────────────────────
+function drawSlotWave(svgId, color, phase, freq) {
+  const svg = document.getElementById(svgId);
+  if (!svg) return;
+  const poly = svg.querySelector('polyline');
+  const W = 236, H = 22;
+  let pts = '';
+  for (let x = 0; x <= W; x += 2) {
+    const t = x / W;
+    const y = H/2
+      + Math.sin(t * Math.PI * freq + phase) * (H * 0.32)
+      + Math.sin(t * Math.PI * freq * 2.1 + phase * 0.7) * (H * 0.1);
+    pts += `${x},${y.toFixed(1)} `;
+  }
+  poly.setAttribute('points', pts.trim());
+  poly.setAttribute('stroke', color);
+}
+
+// ── ADSR SVG ───────────────────────────────────────────────
+function drawADSR() {
+  const svg = document.getElementById('adsrSvg');
+  if (!svg) return;
+  const W = svg.clientWidth || 240, H = 48;
+  const pad = 6;
+  const A = pad + 20, D = A + 28, S = D + 80, R = W - pad;
+  const sLevel = H * 0.35;
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#1E8B7E';
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="adsrFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${accent}" stop-opacity="0.25"/>
+        <stop offset="100%" stop-color="${accent}" stop-opacity="0.04"/>
+      </linearGradient>
+    </defs>
+    <path d="M${pad},${H-pad} L${A},${pad} L${D},${sLevel} L${S},${sLevel} L${R},${H-pad} Z"
+          fill="url(#adsrFill)"/>
+    <path d="M${pad},${H-pad} L${A},${pad} L${D},${sLevel} L${S},${sLevel} L${R},${H-pad}"
+          fill="none" stroke="${accent}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"
+          opacity="0.85"/>
+    <circle cx="${A}" cy="${pad}" r="3" fill="${accent}" opacity="0.7"/>
+    <circle cx="${D}" cy="${sLevel}" r="3" fill="${accent}" opacity="0.7"/>
+    <circle cx="${S}" cy="${sLevel}" r="3" fill="${accent}" opacity="0.7"/>
+    <text x="${pad+2}" y="${H-1}" font-family="var(--f-mono)" font-size="7" fill="var(--t4)">A</text>
+    <text x="${A+4}"   y="${H-1}" font-family="var(--f-mono)" font-size="7" fill="var(--t4)">D</text>
+    <text x="${(D+S)/2-4}" y="${H-1}" font-family="var(--f-mono)" font-size="7" fill="var(--t4)">S</text>
+    <text x="${S+4}"  y="${H-1}" font-family="var(--f-mono)" font-size="7" fill="var(--t4)">R</text>
+  `;
+}
+
+// ── Coupling mini-graph arcs (breathing animation) ─────────
+const arcConfigs = [
+  { from:[30,22],  to:[95,22],  color:'var(--gold)',  labelY:14, id:'arc12' },
+  { from:[95,22],  to:[160,22], color:'#9B5DE5',      labelY:42, id:'arc23' },
+];
+let arcPhase = 0;
+
+function drawCouplingArcs() {
+  const g = document.getElementById('couplingArcs');
+  if (!g) return;
+  arcPhase += 0.018;
+  const breath = 0.55 + 0.45 * Math.sin(arcPhase);
+
+  g.innerHTML = arcConfigs.map(cfg => {
+    const [x1,y1] = cfg.from, [x2,y2] = cfg.to;
+    const mx = (x1+x2)/2, my = cfg.labelY;
+    return `<path d="M${x1},${y1} Q${mx},${my} ${x2},${y2}"
+      fill="none" stroke="${cfg.color}" stroke-width="${1 + breath * 0.8}"
+      opacity="${(0.35 + breath * 0.45).toFixed(2)}" stroke-linecap="round"/>`;
+  }).join('');
+
+  requestAnimationFrame(drawCouplingArcs);
+}
+
+// ── Init ───────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  initKnobs();
+  drawWave();
+  drawCouplingArcs();
+
+  drawSlotWave('wave1', '#1E8B7E', 0.2,  8);
+  drawSlotWave('wave2', '#D4AF37', 1.1,  6);
+  drawSlotWave('wave3', '#9B5DE5', 2.4, 10);
+
+  drawADSR();
+});
+
+// Re-draw ADSR when accent changes (after slot switch)
+const _origSelectSlot = selectSlot;
+window.selectSlot = function(n, accent, name, tag) {
+  _origSelectSlot(n, accent, name, tag);
+  setTimeout(drawADSR, 50);
+};
+
+// ── Export options toggle ──────────────────────────────────
+document.querySelectorAll('.export-option-group').forEach(group => {
+  group.addEventListener('click', e => {
+    const btn = e.target.closest('.export-option');
+    if (!btn) return;
+    group.querySelectorAll('.export-option').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ── Signal flow block click → scroll to section ───────────
+['sf1','sf2','sf3','sf4','sf5','sf6'].forEach((id, i) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('click', () => {
+    const scroll = document.getElementById('colBScroll');
+    const sections = scroll.querySelectorAll('.section');
+    const idx = Math.min(i, sections.length - 1);
+    sections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.sf-block').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  });
+});
+
+</script>
+</body>
+</html>
