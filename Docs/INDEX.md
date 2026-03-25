@@ -1,5 +1,5 @@
 # Documentation Index
-Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
+Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 250+ files
 
 ---
 
@@ -314,6 +314,26 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 ## Superpowers
 
 - [superpowers/](superpowers/) — Superpowers specs and logs
+
+---
+
+## UI & Design Specs (`design/`)
+
+- [design/xolokun-spatial-architecture-v1.md](design/xolokun-spatial-architecture-v1.md) — **V1 (canonical)**: Spatial architecture post-10-panel review — every feature gets an address before visual polish
+- [design/xolokun-spatial-architecture.md](design/xolokun-spatial-architecture.md) — **DRAFT (Phase 1)**: Earlier spatial architecture draft (superseded by V1 above)
+- [design/pixel-art-creature-spec.md](design/pixel-art-creature-spec.md) — Pixel art creature specification for engine identity icons
+- [design/xolokun-definitive-ui-spec.md](design/xolokun-definitive-ui-spec.md) — Definitive UI specification
+- [design/playsurface-design-spec.md](design/playsurface-design-spec.md) — PlaySurface zone/mode design spec
+- [design/accessibility-audit.md](design/accessibility-audit.md) — Accessibility audit
+- [design/button-system-spec.md](design/button-system-spec.md) — Button system specification
+- [design/toast-notification-system.md](design/toast-notification-system.md) — Toast notification system spec
+- [design/input-state-matrix.md](design/input-state-matrix.md) — Input state matrix
+- [design/outshine-empty-state.md](design/outshine-empty-state.md) — Outshine empty state design
+- [design/asset-registry.md](design/asset-registry.md) — Figma component + font asset registry
+- [design/kai-akai-tool-ui-review.md](design/kai-akai-tool-ui-review.md) — Kai/AKAI tool UI review (Outshine/Originate/Oxport)
+- [design/xolokun-ui-blessing-session.md](design/xolokun-ui-blessing-session.md) — UI blessing session verdict (B041–B043)
+- [design/xomnibus_design_guidelines.md](design/xomnibus_design_guidelines.md) — Designer brief & visual design system (compiled 2026-03-17; canonical sources listed in §18 take precedence)
+- [design/xomnibus_ui_master_spec_v2.md](design/xomnibus_ui_master_spec_v2.md) — UI master spec v2 (XOlokun Rebirth design language)
 
 ---
 

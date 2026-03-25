@@ -1,6 +1,6 @@
 # XOlokun Spatial Architecture — Where Every Feature Lives
 
-> **Status:** DRAFT — Phase 1 of UI Architecture planning.
+> **Status:** SUPERSEDED — This is the Phase 1 draft. Canonical version: `xolokun-spatial-architecture-v1.md` (post-10-panel review).
 > **Date:** 2026-03-24
 > **Authors:** Ringleader + UIX Design Studio
 > **Purpose:** Prove that every planned feature (326 cataloged) has a specific home in the UI before any visual polish is applied.

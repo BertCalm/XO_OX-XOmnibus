@@ -1,8 +1,8 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-03-23 — All 73 engines added; 71 seanced (including 24 Kitchen Collection batch verdicts 2026-03-22); OSMOSIS design-only (not yet seanced)
-**Sources:** Grand Survey (`xolokun_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
+**Updated:** 2026-03-24 — All 73 engines added; 72 seanced (including 24 Kitchen Collection batch verdicts 2026-03-22; OUTLOOK seanced 2026-03-23); OSMOSIS design-only (not yet seanced)
+**Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
 ---
