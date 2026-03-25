@@ -620,32 +620,46 @@
   .verify-item.warn { color: #fc8; }
   .verify-item.ok { color: #8f8; }
 
-  /* Single engine mode — minimal strip */
-  #col-a.single-engine { width: 80px; overflow: hidden; }
-  #col-a.single-engine .slot-tile {
-    padding: 4px 2px;
-    min-height: 40px;
-    max-height: 50px;
+  /* Single engine mode — minimal strip at 80px */
+  #col-a.single-engine {
+    width: 80px !important;
+    overflow: hidden;
   }
-  #col-a.single-engine .slot-tile .slot-waveform,
-  #col-a.single-engine .slot-tile .slot-macros,
-  #col-a.single-engine .slot-tile .slot-fx-indicator,
-  #col-a.single-engine .slot-tile .slot-cpu,
-  #col-a.single-engine .slot-tile .slot-expanded-content,
-  #col-a.single-engine .slot-tile .creature-icon,
+  #col-a.single-engine .slot-tile {
+    padding: 4px 4px;
+    min-height: unset;
+    height: auto;
+  }
+  /* Hide everything except header row and name */
+  #col-a.single-engine .slot-waveform,
+  #col-a.single-engine .slot-macros,
+  #col-a.single-engine .slot-bottom-row,
+  #col-a.single-engine .slot-cpu,
+  #col-a.single-engine .slot-creature,
+  #col-a.single-engine .coupling-dot,
   #col-a.single-engine .coupling-mini-graph,
-  #col-a.single-engine .engine-browser-btn {
+  #col-a.single-engine .dim-tag,
+  #col-a.single-engine .size-label {
     display: none !important;
   }
-  #col-a.single-engine .slot-tile .slot-header {
+  #col-a.single-engine .slot-header {
     font-size: 8px;
+  }
+  #col-a.single-engine .slot-num {
+    font-size: 8px;
+  }
+  #col-a.single-engine .slot-name-row {
+    font-size: 9px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  #col-a.single-engine .slot-tile .slot-name {
-    font-size: 9px;
-    writing-mode: horizontal-tb;
+  #col-a.single-engine .slot-name-row span {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  #col-a.single-engine .slot-power {
+    width: 8px; height: 8px;
   }
   #col-b.single-engine-expanded { }
 
