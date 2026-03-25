@@ -1,0 +1,7 @@
+Coupling discovery this week: Drum Teaches Bass
+
+ONSET (Amp->Filter, amount 0.50) → OVERBITE
+"ONSET's kick transients drive three simultaneous processes on OVERBITE: the filter opens (making the bass briefly brighter on every hit), FM depth increases (ad…"
+
+Full recipe with setup tips: reddit.com/r/XO_OX
+#XOlokun #synthesis
