@@ -1204,6 +1204,28 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             ++activeCount;
     }
 
+    // Drain pending crossfade commands posted by the message thread.
+    // Lock-free SPSC: audio thread is the sole consumer; message thread is
+    // the sole producer.  We consume with acquire semantics to ensure the
+    // shared_ptr and scalar fields written by the message thread are visible.
+    // NOTE: This drain must run BEFORE the activeCount==0 early-return so that
+    // a pending crossfade command is always consumed even when the last active
+    // engine has just been unloaded.
+    for (int i = 0; i < MaxSlots; ++i)
+    {
+        auto& pending = pendingCrossfades[i];
+        if (pending.ready.load(std::memory_order_acquire))
+        {
+            // Consume the pending command into the audio-thread-only crossfades[].
+            // Move the shared_ptr to avoid a ref-count bump on the audio thread.
+            crossfades[i].outgoing             = std::move(pending.outgoing);
+            crossfades[i].fadeGain             = pending.fadeGain;
+            crossfades[i].fadeSamplesRemaining = pending.fadeSamplesRemaining;
+            // Release the slot so the message thread may post another swap.
+            pending.ready.store(false, std::memory_order_release);
+        }
+    }
+
     if (activeCount == 0)
         return;
 
@@ -1474,27 +1496,10 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             buffer.addFrom(ch, 0, engineBuffers[i], ch, 0, numSamples, masterVol);
     }
 
-    // Drain pending crossfade commands posted by the message thread.
-    // Lock-free SPSC: audio thread is the sole consumer; message thread is
-    // the sole producer.  We consume with acquire semantics to ensure the
-    // shared_ptr and scalar fields written by the message thread are visible.
-    for (int i = 0; i < MaxSlots; ++i)
-    {
-        auto& pending = pendingCrossfades[i];
-        if (pending.ready.load(std::memory_order_acquire))
-        {
-            // Consume the pending command into the audio-thread-only crossfades[].
-            // Move the shared_ptr to avoid a ref-count bump on the audio thread.
-            crossfades[i].outgoing             = std::move(pending.outgoing);
-            crossfades[i].fadeGain             = pending.fadeGain;
-            crossfades[i].fadeSamplesRemaining = pending.fadeSamplesRemaining;
-            // Release the slot so the message thread may post another swap.
-            pending.ready.store(false, std::memory_order_release);
-        }
-    }
-
     // Process crossfade tails for outgoing engines.
     // crossfades[] is now audio-thread-only — no locking required.
+    // (Pending crossfade commands were already drained above, before the
+    // activeCount==0 early-return, so crossfades[] is up-to-date here.)
     for (int i = 0; i < MaxSlots; ++i)
     {
         auto& cf = crossfades[i];
@@ -1640,6 +1645,14 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
     if (oldEngine)
     {
         auto& pending = pendingCrossfades[slot];
+        // Wait until the audio thread has consumed any previous pending command
+        // for this slot before overwriting the non-atomic fields.  A rapid
+        // double-swap (two loadEngine() calls before the audio thread runs)
+        // would otherwise produce a data race on outgoing/fadeGain/fadeSamplesRemaining.
+        // One audio block at 48 kHz / 512 samples ≈ 10 ms worst-case; safe on the
+        // message thread.
+        while (pending.ready.load(std::memory_order_acquire))
+            std::this_thread::yield();
         pending.outgoing             = oldEngine;
         pending.fadeGain             = 1.0f;
         pending.fadeSamplesRemaining =
@@ -1673,6 +1686,11 @@ void XOlokunProcessor::unloadEngine(int slot)
     if (oldEngine)
     {
         auto& pending = pendingCrossfades[slot];
+        // Wait until the audio thread has consumed any previous pending command
+        // for this slot before overwriting the non-atomic fields.  Mirrors the
+        // spin-check in loadEngine() — same data-race protection.
+        while (pending.ready.load(std::memory_order_acquire))
+            std::this_thread::yield();
         pending.outgoing             = oldEngine;
         pending.fadeGain             = 1.0f;
         pending.fadeSamplesRemaining =
