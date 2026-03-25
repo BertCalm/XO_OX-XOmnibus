@@ -27,6 +27,11 @@
 #define XOLOKUN_PRESET_BROWSER_INCLUDED
 #include "../PresetBrowser/PresetBrowser.h"
 #endif
+#include "CouplingInspectorPanel.h"
+#include "FXInspectorPanel.h"
+#include "PlayControlPanel.h"
+#include "SettingsPanel.h"
+#include "ExportTabPanel.h"
 
 namespace xolokun {
 
@@ -110,6 +115,69 @@ public:
     }
 
     //==========================================================================
+    // Wire the ExportTabPanel for the C5 Export tab, and lazily construct the
+    // C2–C4, C6 panels (CouplingInspector, FXInspector, PlayControl, Settings).
+    // Call once from the editor after setPresetManager(), passing the processor.
+    // Safe to call repeatedly — construction is guarded.
+    void setProcessor(XOlokunProcessor& proc)
+    {
+        if (exportPanel == nullptr)
+        {
+            exportPanel = std::make_unique<ExportTabPanel>(proc);
+            contentArea.addChildComponent(*exportPanel);
+            exportPanel->setVisible(activeTab == Export);
+            exportPlaceholder.setVisible(false); // live panel replaces placeholder
+        }
+
+        if (couplingPanel == nullptr)
+        {
+            couplingPanel = std::make_unique<CouplingInspectorPanel>(proc);
+            contentArea.addChildComponent(*couplingPanel);
+            couplingPanel->setVisible(activeTab == Couple);
+            couplePlaceholder.setVisible(false);
+        }
+
+        if (fxPanel == nullptr)
+        {
+            fxPanel = std::make_unique<FXInspectorPanel>(proc.getAPVTS());
+            contentArea.addChildComponent(*fxPanel);
+            fxPanel->setVisible(activeTab == FX);
+            fxPlaceholder.setVisible(false);
+        }
+
+        if (playPanel == nullptr)
+        {
+            playPanel = std::make_unique<PlayControlPanel>(proc);
+            contentArea.addChildComponent(*playPanel);
+            playPanel->setVisible(activeTab == Play);
+            playPlaceholder.setVisible(false);
+        }
+
+        if (settingsPanel == nullptr)
+        {
+            settingsPanel = std::make_unique<SettingsPanel>(proc);
+            contentArea.addChildComponent(*settingsPanel);
+            settingsPanel->setVisible(activeTab == Settings);
+            settingsPlaceholder.setVisible(false);
+        }
+
+        resized();
+    }
+
+    //==========================================================================
+    // Accessor for the SettingsPanel so the editor can wire MIDILearnManager.
+    SettingsPanel* getSettingsPanel() noexcept { return settingsPanel.get(); }
+
+    //==========================================================================
+    // Notify the Export tab that the active preset changed (call from editor's
+    // preset-changed callback).
+    void refreshExportPanel()
+    {
+        if (exportPanel != nullptr)
+            exportPanel->refresh();
+    }
+
+    //==========================================================================
     Tab getActiveTab() const noexcept { return activeTab; }
 
     void selectTab(Tab t)
@@ -121,11 +189,27 @@ public:
         if (havePresetBrowser)
             presetBrowser->setVisible(t == Preset);
         presetPlaceholder.setVisible(!havePresetBrowser && t == Preset);
-        couplePlaceholder.setVisible(t == Couple);
-        fxPlaceholder.setVisible(t == FX);
-        playPlaceholder.setVisible(t == Play);
-        exportPlaceholder.setVisible(t == Export);
-        settingsPlaceholder.setVisible(t == Settings);
+
+        if (couplingPanel) couplingPanel->setVisible(t == Couple);
+        couplePlaceholder.setVisible(t == Couple && !couplingPanel);
+
+        if (fxPanel) fxPanel->setVisible(t == FX);
+        fxPlaceholder.setVisible(t == FX && !fxPanel);
+
+        if (playPanel) playPanel->setVisible(t == Play);
+        playPlaceholder.setVisible(t == Play && !playPanel);
+
+        bool haveExportPanel = (exportPanel != nullptr);
+        if (haveExportPanel)
+            exportPanel->setVisible(t == Export);
+        exportPlaceholder.setVisible(!haveExportPanel && t == Export);
+
+        if (settingsPanel) settingsPanel->setVisible(t == Settings);
+        settingsPlaceholder.setVisible(t == Settings && !settingsPanel);
+
+        // Refresh coupling data whenever the Couple tab becomes active
+        if (t == Couple && couplingPanel)
+            couplingPanel->refresh();
 
         repaint();
 
@@ -254,6 +338,22 @@ public:
         if (presetBrowser != nullptr)
             presetBrowser->setBounds(inner);
 
+        // ExportTabPanel: no padding — it owns its own header bar and internal gutters
+        if (exportPanel != nullptr)
+            exportPanel->setBounds(contentArea.getLocalBounds());
+
+        if (couplingPanel != nullptr)
+            couplingPanel->setBounds(inner);
+
+        if (fxPanel != nullptr)
+            fxPanel->setBounds(inner);
+
+        if (playPanel != nullptr)
+            playPanel->setBounds(inner);
+
+        if (settingsPanel != nullptr)
+            settingsPanel->setBounds(inner);
+
         presetPlaceholder.setBounds(inner);
         couplePlaceholder.setBounds(inner);
         fxPlaceholder.setBounds(inner);
@@ -318,12 +418,27 @@ private:
     // C1 — Preset Browser (constructed lazily when setPresetManager() is called)
     std::unique_ptr<PresetBrowser>  presetBrowser;
 
+    // C2 — Coupling Inspector (constructed lazily when setProcessor() is called)
+    std::unique_ptr<CouplingInspectorPanel> couplingPanel;
+
+    // C3 — FX Inspector (constructed lazily when setProcessor() is called)
+    std::unique_ptr<FXInspectorPanel>       fxPanel;
+
+    // C4 — Play Control (constructed lazily when setProcessor() is called)
+    std::unique_ptr<PlayControlPanel>       playPanel;
+
+    // C5 — Export Tab Panel (constructed lazily when setProcessor() is called)
+    std::unique_ptr<ExportTabPanel>         exportPanel;
+
+    // C6 — Settings (constructed lazily when setProcessor() is called)
+    std::unique_ptr<SettingsPanel>          settingsPanel;
+
     // V1 placeholder labels for C2 – C6
     juce::Label presetPlaceholder;   // shown when presetBrowser is null
     juce::Label couplePlaceholder;
     juce::Label fxPlaceholder;
     juce::Label playPlaceholder;
-    juce::Label exportPlaceholder;
+    juce::Label exportPlaceholder;   // shown when exportPanel is null
     juce::Label settingsPlaceholder;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SidebarPanel)

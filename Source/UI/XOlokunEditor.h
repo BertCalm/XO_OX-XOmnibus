@@ -269,6 +269,14 @@ public:
         // has valid bounds when setPresetManager() calls resized() internally.
         sidebar.setPresetManager(proc.getPresetManager());
 
+        // Wire C2–C6 panels (CouplingInspector, FXInspector, PlayControl, Export, Settings).
+        sidebar.setProcessor(proc);
+
+        // Wire MIDILearnManager into the Settings panel so the MIDI mappings
+        // table stays live and the Clear All button is functional.
+        if (auto* sp = sidebar.getSettingsPanel())
+            sp->setMidiLearnManager(&proc.getMIDILearnManager());
+
         setResizable(true, true);
         setResizeLimits(960, 600, 1600, 1000);
         setWantsKeyboardFocus(true);
@@ -681,6 +689,9 @@ private:
             overview.refresh();
         if (performancePanel.isVisible())
             performancePanel.refresh();
+
+        // ── Refresh Export tab panel with current preset/kit info ────────────
+        sidebar.refreshExportPanel();
 
         // ── Update coupling hit tester with current arc data ─────────────────
         {
