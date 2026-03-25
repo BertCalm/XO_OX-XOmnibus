@@ -78,7 +78,7 @@ public:
         currentDriftPhase = 0.0f;
 
         lastSampleL = lastSampleR = 0.0f;
-        activeCount = 0;
+        activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
     void releaseResources() override
@@ -400,9 +400,7 @@ public:
         }
 
         // Count active voices for XOlokun voice display
-        activeCount = 0;
-        for (auto& v : voices)
-            if (v.isActive()) ++activeCount;
+        { int c = 0; for (auto& v : voices) if (v.isActive()) ++c; activeVoiceCount_.store(c, std::memory_order_relaxed); }
 
         const float* rL = buffer.getReadPointer(0);
         const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr;
@@ -574,7 +572,7 @@ public:
     juce::String getEngineId()      const override { return "Overlap"; }
     juce::Colour getAccentColour()  const override { return juce::Colour(0xFF00FFB4); }
     int getMaxVoices()              const override { return kVoices; }
-    int getActiveVoiceCount()       const override { return activeCount; }
+    int getActiveVoiceCount()       const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
 private:
     //==========================================================================
@@ -644,8 +642,7 @@ private:
     float lastSampleL = 0.0f;
     float lastSampleR = 0.0f;
 
-    // Active voice count for XOlokun display
-    int activeCount = 0;
+    // Active voice count promoted to base class activeVoiceCount_
 
     //==========================================================================
     // LFO xorshift noise

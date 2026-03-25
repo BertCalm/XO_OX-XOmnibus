@@ -2,6 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "MPEManager.h"
 #include "../DSP/SRO/SilenceGate.h"
+#include <atomic>
 
 namespace xolokun {
 
@@ -124,9 +125,9 @@ public:
 
     // Return the number of currently active (sounding) voices.
     // Default returns 0; engines with polyphony override this.
-    // Safe to call from the message thread — implementations must use an atomic
-    // or just return a cached counter updated at the end of each renderBlock().
-    virtual int getActiveVoiceCount() const { return 0; }
+    // Safe to call from the message thread — the base class stores the count
+    // in an atomic; engines may override with their own atomic if needed.
+    virtual int getActiveVoiceCount() const { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
     // Override in analysis engines (Osmosis) to receive external audio without RTTI.
     virtual bool isAnalysisEngine() const { return false; }
@@ -180,6 +181,12 @@ protected:
     // Engines access this to query per-channel expression state.
     // nullptr when MPE is disabled (engines should check before use).
     MPEManager* mpeManager = nullptr;
+
+    // Thread-safe active voice counter.
+    // Written on the audio thread (renderBlock), read on the UI thread
+    // (getActiveVoiceCount). Use memory_order_relaxed — a one-block-late
+    // display value is acceptable and no sequential consistency is required.
+    std::atomic<int> activeVoiceCount_ { 0 };
 
     // SRO: SilenceGate instance — engines configure hold time in prepare().
     // Call silenceGate.prepare(sampleRate, maxBlockSize) in engine's prepare().

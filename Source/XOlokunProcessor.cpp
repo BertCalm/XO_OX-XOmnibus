@@ -1474,43 +1474,47 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             buffer.addFrom(ch, 0, engineBuffers[i], ch, 0, numSamples, masterVol);
     }
 
-    // Process crossfade tails for outgoing engines.
-    // Snapshot outgoing engine shared_ptrs under the mutex to prevent a race
-    // with loadEngine/unloadEngine (which write crossfades[] on the message thread).
-    // DSP rendering happens outside the lock so the message thread is never
-    // blocked for a full audio block duration.
-    std::array<std::shared_ptr<SynthEngine>, MaxSlots> outgoingSnapshot;
-    std::array<float, MaxSlots> fadeGainSnapshot  = {};
-    std::array<int,   MaxSlots> fadeSamplesSnapshot = {};
+    // Drain pending crossfade commands posted by the message thread.
+    // Lock-free SPSC: audio thread is the sole consumer; message thread is
+    // the sole producer.  We consume with acquire semantics to ensure the
+    // shared_ptr and scalar fields written by the message thread are visible.
+    for (int i = 0; i < MaxSlots; ++i)
     {
-        std::scoped_lock lock(crossfadeMutex);
-        for (int i = 0; i < MaxSlots; ++i)
+        auto& pending = pendingCrossfades[i];
+        if (pending.ready.load(std::memory_order_acquire))
         {
-            outgoingSnapshot[i]    = crossfades[i].outgoing;
-            fadeGainSnapshot[i]    = crossfades[i].fadeGain;
-            fadeSamplesSnapshot[i] = crossfades[i].fadeSamplesRemaining;
+            // Consume the pending command into the audio-thread-only crossfades[].
+            // Move the shared_ptr to avoid a ref-count bump on the audio thread.
+            crossfades[i].outgoing             = std::move(pending.outgoing);
+            crossfades[i].fadeGain             = pending.fadeGain;
+            crossfades[i].fadeSamplesRemaining = pending.fadeSamplesRemaining;
+            // Release the slot so the message thread may post another swap.
+            pending.ready.store(false, std::memory_order_release);
         }
     }
 
+    // Process crossfade tails for outgoing engines.
+    // crossfades[] is now audio-thread-only — no locking required.
     for (int i = 0; i < MaxSlots; ++i)
     {
-        if (fadeSamplesSnapshot[i] <= 0 || !outgoingSnapshot[i])
+        auto& cf = crossfades[i];
+        if (cf.fadeSamplesRemaining <= 0 || !cf.outgoing)
             continue;
 
         crossfadeBuffer.clear();
         juce::MidiBuffer emptyMidi;
-        outgoingSnapshot[i]->renderBlock(crossfadeBuffer, emptyMidi, numSamples);
+        cf.outgoing->renderBlock(crossfadeBuffer, emptyMidi, numSamples);
 
-        int fadeSamples = std::min(numSamples, fadeSamplesSnapshot[i]);
+        int fadeSamples = std::min(numSamples, cf.fadeSamplesRemaining);
         if (fadeSamples <= 0)
             continue;
         // Distribute fade over ALL remaining samples, not just this block,
         // so the crossfade takes the full 50ms regardless of block size.
-        float fadeStep = fadeGainSnapshot[i] / static_cast<float>(fadeSamplesSnapshot[i]);
+        float fadeStep = cf.fadeGain / static_cast<float>(cf.fadeSamplesRemaining);
 
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
         {
-            float gain = fadeGainSnapshot[i];
+            float gain = cf.fadeGain;
             auto* dest = buffer.getWritePointer(ch);
             auto* src = crossfadeBuffer.getReadPointer(ch);
             for (int s = 0; s < fadeSamples; ++s)
@@ -1520,27 +1524,13 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             }
         }
 
-        // Write updated crossfade state back under the lock.
-        // Another loadEngine call between the snapshot and here is benign:
-        // it would have reset fadeGain=1.0 and fadeSamplesRemaining=full,
-        // so our decrement would be overwritten by their reset — correct behavior.
-        {
-            std::scoped_lock lock(crossfadeMutex);
-            auto& cf = crossfades[i];
-            // Only update if outgoing pointer hasn't been replaced by a new swap.
-            // If loadEngine fired between snapshot and now, cf.outgoing will differ
-            // from outgoingSnapshot[i] — leave the new crossfade state untouched.
-            if (cf.outgoing == outgoingSnapshot[i])
-            {
-                cf.fadeGain -= fadeStep * static_cast<float>(fadeSamples);
-                cf.fadeSamplesRemaining -= fadeSamples;
+        cf.fadeGain -= fadeStep * static_cast<float>(fadeSamples);
+        cf.fadeSamplesRemaining -= fadeSamples;
 
-                if (cf.fadeSamplesRemaining <= 0)
-                {
-                    cf.outgoing.reset();
-                    cf.fadeGain = 0.0f;
-                }
-            }
+        if (cf.fadeSamplesRemaining <= 0)
+        {
+            cf.outgoing.reset();
+            cf.fadeGain = 0.0f;
         }
     }
 
@@ -1644,15 +1634,19 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
     // because processBlock would skip the new engine before its first note-on.
     newEngine->wakeSilenceGate();
 
-    // Move the old engine to crossfade-out state
+    // Post the old engine to the lock-free crossfade mailbox so the audio
+    // thread can fade it out without any mutex on the real-time path.
     auto oldEngine = std::atomic_load(&engines[slot]);
     if (oldEngine)
     {
-        std::scoped_lock lock(crossfadeMutex);
-        crossfades[slot].outgoing = oldEngine;
-        crossfades[slot].fadeGain = 1.0f;
-        crossfades[slot].fadeSamplesRemaining =
+        auto& pending = pendingCrossfades[slot];
+        pending.outgoing             = oldEngine;
+        pending.fadeGain             = 1.0f;
+        pending.fadeSamplesRemaining =
             static_cast<int>(currentSampleRate * CrossfadeMs * 0.001);
+        // Release-store: makes the fields above visible to the audio thread
+        // before it observes ready==true.
+        pending.ready.store(true, std::memory_order_release);
     }
 
     // Atomic swap — audio thread sees the new engine on next block
@@ -1678,11 +1672,14 @@ void XOlokunProcessor::unloadEngine(int slot)
     auto oldEngine = std::atomic_load(&engines[slot]);
     if (oldEngine)
     {
-        std::scoped_lock lock(crossfadeMutex);
-        crossfades[slot].outgoing = oldEngine;
-        crossfades[slot].fadeGain = 1.0f;
-        crossfades[slot].fadeSamplesRemaining =
+        auto& pending = pendingCrossfades[slot];
+        pending.outgoing             = oldEngine;
+        pending.fadeGain             = 1.0f;
+        pending.fadeSamplesRemaining =
             static_cast<int>(currentSampleRate * CrossfadeMs * 0.001);
+        // Release-store: makes the fields above visible to the audio thread
+        // before it observes ready==true.
+        pending.ready.store(true, std::memory_order_release);
     }
 
     std::shared_ptr<SynthEngine> empty;

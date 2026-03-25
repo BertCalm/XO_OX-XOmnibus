@@ -989,7 +989,7 @@ public:
         int count = 0;
         for (const auto& voice : voices)
             if (voice.active) ++count;
-        activeVoiceCount = count;
+        activeVoiceCount_.store(count, std::memory_order_relaxed);
 
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock (buffer.getReadPointer (0),
@@ -1261,7 +1261,7 @@ public:
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF8A9BA8); }
 
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override { return activeVoiceCount; }
+    int getActiveVoiceCount() const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
 
 private:
@@ -1661,7 +1661,7 @@ private:
     //-- Voice pool ------------------------------------------------------------
     std::array<ObscuraVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;     // monotonic counter for LRU voice stealing
-    int activeVoiceCount = 0;
+    // activeVoiceCount_ promoted to base class std::atomic<int>
 
     //-- Smoothed control parameters (ParameterSmoother — 5ms time constant) ---
     ParameterSmoother smoothedStiffness;

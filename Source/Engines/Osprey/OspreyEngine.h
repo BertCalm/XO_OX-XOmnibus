@@ -1404,7 +1404,7 @@ public:
         int count = 0;
         for (const auto& voice : voices)
             if (voice.active) ++count;
-        activeVoiceCount = count;
+        activeVoiceCount_.store(count, std::memory_order_relaxed);
 
         silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
@@ -1708,7 +1708,7 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoiceCount; }
+    int getActiveVoiceCount() const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
 private:
 
@@ -1956,7 +1956,7 @@ private:
     // --- Voice pool ---
     std::array<OspreyVoice, kMaxVoices> voices;
     uint64_t voiceCounter    = 0;          // monotonic counter for LRU stealing
-    int      activeVoiceCount = 0;         // for UI display
+    // activeVoiceCount_ promoted to base class std::atomic<int> — for UI display
 
     // --- Global fluid energy model (shared by all voices) ---
     FluidEnergyModel fluidModel;

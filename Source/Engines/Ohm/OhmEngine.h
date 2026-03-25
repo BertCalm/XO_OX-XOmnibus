@@ -449,7 +449,7 @@ public:
             outL[i]+=sL; outR[i]+=sR;
             lastSampleL=sL; lastSampleR=sR;
         }
-        activeCount=0;for(auto&v:voices)if(v.active)++activeCount;
+        {int c=0;for(auto&v:voices)if(v.active)++c;activeVoiceCount_.store(c,std::memory_order_relaxed);}
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }
@@ -578,14 +578,14 @@ public:
     juce::String getEngineId() const override { return "Ohm"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFF87AE73); } // Sage
     int getMaxVoices() const override { return kVoices; }
-    int getActiveVoiceCount() const override { return activeCount; }
+    int getActiveVoiceCount() const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
 private:
     SilenceGate silenceGate;
     static constexpr int kVoices=12;
     double sr=44100;
     std::array<OhmAdapterVoice,kVoices> voices;
-    int nextV=0, activeCount=0;
+    int nextV=0; // activeCount promoted to base class activeVoiceCount_
     float lastSampleL=0, lastSampleR=0;
     std::vector<float> couplingBuf;
 

@@ -810,7 +810,7 @@ public:
         int count = 0;
         for (const auto& voice : voices)
             if (voice.active) ++count;
-        activeVoiceCount = count;
+        activeVoiceCount_.store(count, std::memory_order_relaxed);
 
         silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
@@ -1062,7 +1062,7 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoiceCount; }
+    int getActiveVoiceCount() const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
 private:
 
@@ -1569,7 +1569,7 @@ private:
     // --- Voice pool ---
     std::array<OracleVoice, kMaxVoices> voices;
     uint64_t voiceCounter   = 0;    // Monotonic counter for LRU voice stealing
-    int activeVoiceCount    = 0;    // UI-safe read via getActiveVoiceCount()
+    // activeVoiceCount_ promoted to base class std::atomic<int> — UI-safe read via getActiveVoiceCount()
 
     // --- Smoothed control parameters (updated per-sample) ---
     float smoothedTimeStep      = 0.3f;   // Smoothed time step amount

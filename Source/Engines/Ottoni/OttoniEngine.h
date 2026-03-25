@@ -306,7 +306,7 @@ public:
 
             oL[i]+=sL;oR[i]+=sR;lastL=sL;lastR=sR;
         }
-        ac=0;for(auto&v:voices)if(v.active)++ac;
+        {int c=0;for(auto&v:voices)if(v.active)++c;activeVoiceCount_.store(c,std::memory_order_relaxed);}
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }
@@ -424,12 +424,12 @@ public:
     juce::String getEngineId() const override {return "Ottoni";}
     juce::Colour getAccentColour() const override {return juce::Colour(0xFF5B8A72);} // Patina
     int getMaxVoices() const override {return kV;}
-    int getActiveVoiceCount() const override {return ac;}
+    int getActiveVoiceCount() const override {return activeVoiceCount_.load(std::memory_order_relaxed);}
 
 private:
     SilenceGate silenceGate;
     static constexpr int kV=12;
-    double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
+    double sr=44100; int nv=0; float lastL=0,lastR=0; // ac promoted to base class activeVoiceCount_
     std::array<OttoniAdapterVoice,kV> voices;
 
     float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range

@@ -58,7 +58,7 @@ public:
         extStepRateMod = extChromMod = extSynapseMod = extFilterMod = extPitchMod = 0.0f;
         extAmpMod = 1.0f;
         lastSampleL = lastSampleR = 0.0f;
-        activeCount = 0;
+        activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
     void releaseResources() override {}
@@ -80,7 +80,7 @@ public:
         extStepRateMod = extChromMod = extSynapseMod = extFilterMod = extPitchMod = 0.0f;
         extAmpMod = 1.0f;
         lastSampleL = lastSampleR = 0.0f;
-        activeCount = 0;
+        activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
     //==========================================================================
@@ -273,7 +273,7 @@ public:
             lastSampleR = sR;
         }
 
-        activeCount = noteHeld ? 1 : 0;
+        activeVoiceCount_.store(noteHeld ? 1 : 0, std::memory_order_relaxed);
 
         silenceGate.analyzeBlock(buf.getReadPointer(0), buf.getReadPointer(1), ns);
     }
@@ -492,7 +492,7 @@ public:
     juce::String getEngineId()    const override { return "Outwit"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFCC6600); } // Chromatophore Amber
     int getMaxVoices()            const override { return 1; }
-    int getActiveVoiceCount()     const override { return activeCount; }
+    int getActiveVoiceCount()     const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
 private:
 
@@ -538,7 +538,7 @@ private:
     float solveDensityBias = 0.0f; // [-1,+1] targetDensity bias for CA rule offset
     float solveAmt         = 0.0f; // [0,1]   effective SOLVE strength this block
 
-    int activeCount = 0;
+    // activeCount promoted to base class activeVoiceCount_
     juce::AudioProcessorValueTreeState* apvts_ptr = nullptr;
 
     //==========================================================================

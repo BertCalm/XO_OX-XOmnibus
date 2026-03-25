@@ -15,7 +15,6 @@
 #include "DSP/SRO/SROAuditor.h"
 #include <atomic>
 #include <memory>
-#include <mutex>
 
 namespace xolokun {
 
@@ -155,18 +154,35 @@ private:
     };
     std::array<std::shared_ptr<SynthEngine>, MaxSlots> engines;
 
-    // Crossfade state for engine hot-swap
+    // Crossfade state for engine hot-swap — audio-thread-only after the
+    // pending command is consumed.  Never touched by the message thread.
     struct CrossfadeState {
         std::shared_ptr<SynthEngine> outgoing;  // engine being faded out
         float fadeGain = 0.0f;                    // 1.0 → 0.0 during crossfade
         int fadeSamplesRemaining = 0;
     };
     std::array<CrossfadeState, MaxSlots> crossfades;
-    // Guards crossfades[] against concurrent access between the message thread
-    // (loadEngine/unloadEngine) and the audio thread (processBlock).
-    // Acquired for the crossfade mutation in loadEngine/unloadEngine and for
-    // the crossfade rendering loop in processBlock. Not held during DSP.
-    std::mutex crossfadeMutex;
+
+    // Lock-free mailbox: message thread writes a pending swap command; audio
+    // thread drains it at the top of processBlock.  Single-producer /
+    // single-consumer per slot — only one swap can be in-flight at a time
+    // because loadEngine/unloadEngine run on the message (UI) thread which is
+    // single-threaded.  `ready` is the SPSC handshake flag:
+    //   message thread: fill fields → release-store ready=true
+    //   audio   thread: acquire-load ready → consume fields → store ready=false
+    // No mutex needed; no heap allocation on the audio thread.
+    struct PendingCrossfade {
+        std::shared_ptr<SynthEngine> outgoing;
+        float fadeGain               = 0.0f;
+        int   fadeSamplesRemaining   = 0;
+        std::atomic<bool> ready      { false };
+
+        // Non-copyable — std::atomic<bool> cannot be copy/move-assigned.
+        PendingCrossfade() = default;
+        PendingCrossfade(const PendingCrossfade&) = delete;
+        PendingCrossfade& operator=(const PendingCrossfade&) = delete;
+    };
+    std::array<PendingCrossfade, MaxSlots> pendingCrossfades;
 
     std::array<juce::AudioBuffer<float>, MaxSlots> engineBuffers;
     juce::AudioBuffer<float> crossfadeBuffer;
