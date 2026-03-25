@@ -134,7 +134,7 @@ public:
             {"Overbite",  "Five-macro apex predator — fang white silence"},
             {"Oceandeep", "Hydrostatic compression + bioluminescent exciter"},
             {"Orbweave",  "Topological knot coupling — trefoil/figure-eight matrices"},
-            {"Overtone",  "Continued fraction spectral — \xcf\x80, e, \xcf\x86, \xe2\x88\x9a\x32 timbres"},
+            {"Overtone",  "Continued fraction spectral - pi, e, phi, sqrt2 timbres"},
             {"Organism",  "Cellular automata generative — coral colony growth"},
             {"Ostinato",  "Modal membrane synthesis — world rhythm engine"},
             {"Opensky",   "Euphoric shimmer + Shepard ascension geometry"},

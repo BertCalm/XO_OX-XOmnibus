@@ -15,10 +15,10 @@
 namespace xolokun {
 namespace GalleryColors {
 
-    // Theme state — light by default (brand rule)
+    // Theme state — dark by default
     inline bool& darkMode()
     {
-        static bool dark = false;
+        static bool dark = true;
         return dark;
     }
 

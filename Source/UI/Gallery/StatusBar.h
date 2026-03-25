@@ -133,9 +133,9 @@ public:
     {
         using namespace GalleryColors;
 
-        // Background — slightly darker than shell
-        auto bg = get(shellWhite()).darker(0.04f);
-        g.fillAll(bg);
+        // Background — slightly darker than the slot background
+        g.setColour(get(slotBg()).darker(0.15f));
+        g.fillRect(getLocalBounds());
 
         // Top border — 1px borderGray at 40% alpha
         g.setColour(get(borderGray()).withAlpha(0.40f));

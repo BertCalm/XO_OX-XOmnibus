@@ -28,7 +28,7 @@ public:
 
         juce::PopupMenu menu;
         if (isLearning)
-            menu.addItem(1, "Listening for CC\xe2\x80\xa6  (click to cancel)", true, false);
+            menu.addItem(1, "Listening for CC...  (click to cancel)", true, false);
         else
             menu.addItem(2, "MIDI Learn", true, false);
 

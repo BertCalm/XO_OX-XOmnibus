@@ -524,7 +524,7 @@ private:
         if (slot == 4)
             return "GHST";  // Ghost Slot (slot 5)
 
-        return "\xe2\x80\x94";  // em-dash for empty slot
+        return "-";  // dash for empty slot
     }
 
     //==========================================================================

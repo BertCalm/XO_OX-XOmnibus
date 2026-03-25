@@ -18,7 +18,7 @@ public:
         : presetManager(pm), onPresetSelected(std::move(onSelect))
     {
         // Search field
-        searchField.setTextToShowWhenEmpty("Search presets\xe2\x80\xa6",
+        searchField.setTextToShowWhenEmpty("Search presets...",
                                            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
         searchField.setColour(juce::TextEditor::backgroundColourId,
                               GalleryColors::get(GalleryColors::slotBg()));

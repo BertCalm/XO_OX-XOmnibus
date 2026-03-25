@@ -174,6 +174,138 @@ public:
             g.drawRoundedRectangle(b, 5.0f, 1.0f);
         }
     }
+
+    void drawComboBox(juce::Graphics& g, int width, int height, bool isButtonDown,
+                      int /*buttonX*/, int /*buttonY*/, int /*buttonW*/, int /*buttonH*/,
+                      juce::ComboBox& box) override
+    {
+        using namespace GalleryColors;
+        auto bounds = juce::Rectangle<int>(0, 0, width, height).toFloat();
+
+        // Rounded container
+        g.setColour(get(slotBg()));
+        g.fillRoundedRectangle(bounds, 4.0f);
+
+        // Border
+        g.setColour(get(borderGray()).withAlpha(box.hasKeyboardFocus(true) ? 0.8f : 0.4f));
+        g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.0f);
+
+        // Dropdown arrow (right side)
+        auto arrowZone = bounds.removeFromRight(height * 0.7f).reduced(height * 0.25f);
+        juce::Path arrow;
+        arrow.addTriangle(arrowZone.getX(), arrowZone.getY(),
+                          arrowZone.getRight(), arrowZone.getY(),
+                          arrowZone.getCentreX(), arrowZone.getBottom());
+        g.setColour(get(textMid()).withAlpha(isButtonDown ? 0.9f : 0.55f));
+        g.fillPath(arrow);
+    }
+
+    void drawLinearSlider(juce::Graphics& g, int x, int y, int width, int height,
+                          float sliderPos, float /*minSliderPos*/, float /*maxSliderPos*/,
+                          juce::Slider::SliderStyle style, juce::Slider& slider) override
+    {
+        using namespace GalleryColors;
+
+        bool isHorizontal = (style == juce::Slider::LinearHorizontal ||
+                             style == juce::Slider::LinearBar);
+
+        auto bounds = juce::Rectangle<int>(x, y, width, height).toFloat();
+
+        // Track background
+        auto trackBounds = isHorizontal
+            ? bounds.withSizeKeepingCentre(bounds.getWidth(), 4.0f)
+            : bounds.withSizeKeepingCentre(4.0f, bounds.getHeight());
+
+        g.setColour(get(borderGray()).withAlpha(0.3f));
+        g.fillRoundedRectangle(trackBounds, 2.0f);
+
+        // Filled portion
+        auto fillColour = slider.findColour(juce::Slider::rotarySliderFillColourId);
+        if (fillColour.isTransparent()) fillColour = get(xoGold);
+
+        auto filledBounds = trackBounds;
+        if (isHorizontal)
+            filledBounds.setWidth(sliderPos - (float)x);
+        else
+            filledBounds = filledBounds.withTop(sliderPos);
+
+        g.setColour(fillColour);
+        g.fillRoundedRectangle(filledBounds, 2.0f);
+
+        // Thumb
+        float thumbSize = isHorizontal ? 12.0f : 12.0f;
+        juce::Point<float> thumbCenter;
+        if (isHorizontal)
+            thumbCenter = { sliderPos, bounds.getCentreY() };
+        else
+            thumbCenter = { bounds.getCentreX(), sliderPos };
+
+        // Shadow
+        g.setColour(juce::Colours::black.withAlpha(0.15f));
+        g.fillEllipse(thumbCenter.x - thumbSize/2 + 1, thumbCenter.y - thumbSize/2 + 1, thumbSize, thumbSize);
+
+        // Thumb body
+        g.setColour(fillColour.brighter(0.15f));
+        g.fillEllipse(thumbCenter.x - thumbSize/2, thumbCenter.y - thumbSize/2, thumbSize, thumbSize);
+
+        // Thumb highlight
+        g.setColour(juce::Colours::white.withAlpha(0.25f));
+        g.fillEllipse(thumbCenter.x - thumbSize/4, thumbCenter.y - thumbSize/4, thumbSize/2, thumbSize/2);
+    }
+
+    void drawPopupMenuBackground(juce::Graphics& g, int width, int height) override
+    {
+        using namespace GalleryColors;
+        g.fillAll(get(slotBg()));
+        g.setColour(get(borderGray()).withAlpha(0.3f));
+        g.drawRect(0, 0, width, height, 1);
+    }
+
+    void drawPopupMenuItem(juce::Graphics& g, const juce::Rectangle<int>& area,
+                           bool isSeparator, bool isActive, bool isHighlighted,
+                           bool isTicked, bool /*hasSubMenu*/,
+                           const juce::String& text, const juce::String& shortcutKeyText,
+                           const juce::Drawable* /*icon*/, const juce::Colour* textColourToUse) override
+    {
+        using namespace GalleryColors;
+
+        if (isSeparator)
+        {
+            auto sepArea = area.reduced(8, 0);
+            g.setColour(get(borderGray()).withAlpha(0.25f));
+            g.fillRect(sepArea.getX(), sepArea.getCentreY(), sepArea.getWidth(), 1);
+            return;
+        }
+
+        auto textArea = area.reduced(12, 0);
+
+        if (isHighlighted && isActive)
+        {
+            g.setColour(get(xoGold).withAlpha(0.15f));
+            g.fillRoundedRectangle(area.toFloat().reduced(2, 1), 3.0f);
+        }
+
+        auto textColour = isActive ? get(textDark()) : get(textMid()).withAlpha(0.5f);
+        if (textColourToUse) textColour = *textColourToUse;
+
+        g.setColour(textColour);
+        g.setFont(GalleryFonts::body(13.0f));
+        g.drawFittedText(text, textArea, juce::Justification::centredLeft, 1);
+
+        if (isTicked)
+        {
+            g.setColour(get(xoGold));
+            auto tickBounds = area.toFloat().removeFromLeft(24.0f).reduced(6.0f);
+            g.fillEllipse(tickBounds.getCentreX() - 3, tickBounds.getCentreY() - 3, 6, 6);
+        }
+
+        if (shortcutKeyText.isNotEmpty())
+        {
+            g.setColour(get(textMid()).withAlpha(0.45f));
+            g.setFont(GalleryFonts::value(10.0f));
+            g.drawFittedText(shortcutKeyText, textArea, juce::Justification::centredRight, 1);
+        }
+    }
 };
 
 } // namespace xolokun

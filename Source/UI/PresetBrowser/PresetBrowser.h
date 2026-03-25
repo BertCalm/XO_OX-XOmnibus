@@ -34,7 +34,7 @@ public:
     PresetBrowser(PresetManager& pm) : presetManager(pm)
     {
         // --- Search bar ---
-        searchBox.setTextToShowWhenEmpty("Search presets\xe2\x80\xa6",
+        searchBox.setTextToShowWhenEmpty("Search presets...",
                                          GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
         searchBox.setFont(GalleryFonts::body(13.0f));
         searchBox.addListener(this);

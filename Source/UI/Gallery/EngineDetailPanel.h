@@ -243,7 +243,10 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(slotBg()));
+
+        // Card background
+        g.setColour(get(slotBg()));
+        g.fillRoundedRectangle(getLocalBounds().toFloat(), 6.0f);
 
         // ── Ecological header: accent → midnight depth gradient ────────────
         {

@@ -19,6 +19,7 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
+#include "GalleryLookAndFeel.h"
 
 // Forward-declare processor so we can take a reference.
 // The full definition is in XOlokunProcessor.h, which is included by the editor
@@ -53,15 +54,16 @@ public:
         darkModeToggle.onClick = [this]
         {
             GalleryColors::darkMode() = darkModeToggle.getToggleState();
-            // Propagate theme change to the look-and-feel hierarchy.
-            if (auto* laf = dynamic_cast<juce::LookAndFeel_V4*>(
-                    &juce::LookAndFeel::getDefaultLookAndFeel()))
-                laf->setColour(juce::ResizableWindow::backgroundColourId,
-                               GalleryColors::get(GalleryColors::shellWhite()));
-            repaint();
-            // Walk up to the top-level editor and trigger a repaint.
+            // Save preference
+            settingsFile->setValue("darkMode", GalleryColors::darkMode());
+            settingsFile->saveIfNeeded();
+            // Re-apply theme to the entire component tree
             if (auto* top = getTopLevelComponent())
+            {
+                if (auto* laf = dynamic_cast<GalleryLookAndFeel*>(&top->getLookAndFeel()))
+                    laf->applyTheme();
                 top->repaint();
+            }
         };
         content.addAndMakeVisible(darkModeToggle);
 
@@ -75,6 +77,10 @@ public:
             opts.osxLibrarySubFolder = "Application Support";
             settingsFile = std::make_unique<juce::PropertiesFile>(opts);
         }
+        // Restore persisted dark mode preference (default true if not yet saved).
+        GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", true);
+        darkModeToggle.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
+
         reducedMotionToggle.setToggleState(
             settingsFile->getBoolValue("reducedMotion", false),
             juce::dontSendNotification);

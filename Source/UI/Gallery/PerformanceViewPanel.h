@@ -364,8 +364,8 @@ private:
             if (auto* tgtParam = apvts.getRawParameterValue (prefix + "target"))
                 tgtSlot = juce::roundToInt (tgtParam->load());
 
-            juce::String srcName = "\xe2\x80\x94";
-            juce::String tgtName = "\xe2\x80\x94";
+            juce::String srcName = "-";
+            juce::String tgtName = "-";
             if (auto* eng = processor.getEngine (srcSlot))
                 srcName = eng->getEngineId().toUpperCase();
             if (auto* eng = processor.getEngine (tgtSlot))

@@ -44,7 +44,7 @@ public:
         collectRegisteredEngines();
 
         // ── Search field ─────────────────────────────────────────────────────
-        searchField.setTextToShowWhenEmpty("Search engines\xe2\x80\xa6",
+        searchField.setTextToShowWhenEmpty("Search engines...",
             GalleryColors::get(GalleryColors::textMid()).withAlpha(0.40f));
         searchField.setColour(juce::TextEditor::backgroundColourId,
             GalleryColors::get(GalleryColors::slotBg()));

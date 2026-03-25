@@ -395,7 +395,7 @@ public:
                 double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
                 float pulse = 0.65f + 0.35f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
 
-                juce::String badge = "MIDI LEARN: move a controller to map \xe2\x80\xa2 right-click to cancel";
+                juce::String badge = "MIDI LEARN: move a controller to map * right-click to cancel";
                 auto badgeRect = juce::Rectangle<int>(165, 4, getWidth() - 360, headerH - 10);
 
                 g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.18f * pulse));
