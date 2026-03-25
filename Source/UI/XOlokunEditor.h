@@ -35,6 +35,8 @@
 #include "Gallery/PerformanceViewPanel.h"
 #include "Gallery/CouplingArcOverlay.h"
 #include "Gallery/ColumnLayoutManager.h"
+#include "Gallery/SidebarPanel.h"
+#include "Gallery/StatusBar.h"
 
 namespace xolokun {
 
@@ -183,6 +185,7 @@ public:
             macros.repaint();
             masterFXStrip.repaint();
             presetBrowser.repaint();
+            sidebar.repaint();
         };
 
         // Export button — launches ExportDialog as a CallOutBox
@@ -208,6 +211,16 @@ public:
             proc.getPresetManager().scanPresetDirectory(presetDir);
         presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
         presetBrowser.updateDisplay();
+
+        // ── Column C Sidebar ──────────────────────────────────────────────────
+        // Wire the PresetManager so C1 (Preset tab) has a live browser.
+        sidebar.setPresetManager(proc.getPresetManager());
+        addAndMakeVisible(sidebar);
+
+        // ── Status Bar ────────────────────────────────────────────────────────
+        // Trigger callbacks are stubs for now; wired to processor in a later step.
+        addAndMakeVisible(statusBar);
+        addKeyListener(statusBar.getKeyListener());
 
         // ── MIDI Learn wiring ─────────────────────────────────────────────────
         // Connect the processor's MIDILearnManager to every parameter knob in the UI.
@@ -249,6 +262,7 @@ public:
     ~XOlokunEditor() override
     {
         stopTimer();
+        removeKeyListener(statusBar.getKeyListener());
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
         setLookAndFeel(nullptr);
     }
@@ -408,16 +422,16 @@ public:
         // FieldMap — bottom strip of Column B (reserved by ColumnLayoutManager)
         fieldMap.setBounds(layout.getFieldMap());
 
-        // ── Column C — reserved space (components added in Step 9) ───────────
-        // layout.getColumnC() is valid but unused until Step 9 components exist.
+        // ── Column C — Tabbed Sidebar (SidebarPanel) ─────────────────────────
+        sidebar.setBounds(layout.getColumnC());
 
         // ── PlaySurface ───────────────────────────────────────────────────────
         // ColumnLayoutManager parks the surface below the window when invisible,
         // so we always apply the computed bounds unconditionally.
         playSurface.setBounds(layout.getPlaySurface());
 
-        // ── Status Bar — reserved (component added in later step) ────────────
-        // statusBar.setBounds(layout.getStatusBar());
+        // ── Status Bar ───────────────────────────────────────────────────────
+        statusBar.setBounds(layout.getStatusBar());
 
         // ── Coupling arc overlay — full editor bounds ─────────────────────────
         couplingArcs.setBounds(getLocalBounds());
@@ -667,6 +681,28 @@ private:
             }
             fieldMap.addNote(ev.midiNote, ev.velocity, colour);
         });
+
+        // ── Status Bar updates ────────────────────────────────────────────────
+        // Sum voice counts across all active slots and update slot indicator dots.
+        {
+            int totalVoices = 0;
+            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+            {
+                if (auto* eng = processor.getEngine(i))
+                {
+                    totalVoices += eng->getActiveVoiceCount();
+                    statusBar.setSlotActive(i, true, eng->getAccentColour());
+                }
+                else
+                {
+                    statusBar.setSlotActive(i, false, juce::Colours::transparentBlack);
+                }
+            }
+            statusBar.setVoiceCount(totalVoices);
+            // BPM and CPU: placeholder values until processor atomics are added.
+            statusBar.setBpm(120.0);
+            statusBar.setCpuPercent(0.0f);
+        }
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
@@ -694,6 +730,8 @@ private:
     juce::TextButton       exportBtn;
     PlaySurface            playSurface;
     CouplingArcOverlay     couplingArcs { processor };
+    SidebarPanel           sidebar;
+    StatusBar              statusBar;
 
     int selectedSlot = -1;
 

@@ -1,0 +1,300 @@
+#pragma once
+// SidebarPanel.h — Column C tabbed sidebar (320pt).
+//
+// Six tabs: PRESET | COUPLE | FX | PLAY | EXPORT | SETTINGS
+//
+// Tab bar spec:
+//   Height:    32pt
+//   Font:      Space Grotesk SemiBold 10pt ALL CAPS  (GalleryFonts::display)
+//   Active:    full-opacity text + 2px XO Gold underline
+//   Inactive:  rgba(80,76,70,0.75)  — WCAG-compliant (audit fix A-01)
+//   Bg:        GalleryColors::shellWhite()
+//
+// Keyboard navigation (audit A-09):
+//   Left/Right  — cycle tabs
+//   Enter/Space — activate focused tab
+//   Tab         — exit tab bar to content area
+//
+// V1: each non-Preset tab shows a placeholder label.
+//     PRESET tab embeds PresetBrowser (must be wired via setPresetManager()).
+
+#include <juce_gui_basics/juce_gui_basics.h>
+#include "../GalleryColors.h"
+// PresetBrowser.h is included by XOlokunEditor.h before SidebarPanel.h,
+// so xolokun::PresetBrowser is already declared.  Guard the direct include
+// so this header can also be compiled standalone without the full editor chain.
+#ifndef XOLOKUN_PRESET_BROWSER_INCLUDED
+#define XOLOKUN_PRESET_BROWSER_INCLUDED
+#include "../PresetBrowser/PresetBrowser.h"
+#endif
+
+namespace xolokun {
+
+//==============================================================================
+// SidebarPanel — tabbed Column C browser/inspector panel.
+//
+// Lifetime note: call setPresetManager() before the component becomes visible
+// so the C1 Preset tab can construct its PresetBrowser.
+//
+class SidebarPanel : public juce::Component
+{
+public:
+    //==========================================================================
+    enum Tab { Preset = 0, Couple, FX, Play, Export, Settings, NumTabs };
+
+    //==========================================================================
+    SidebarPanel()
+    {
+        // ── Tab buttons ───────────────────────────────────────────────────────
+        for (int i = 0; i < NumTabs; ++i)
+        {
+            auto* btn = tabButtons.add(new juce::TextButton(tabLabels[i]));
+            btn->setClickingTogglesState(false);
+            btn->setWantsKeyboardFocus(true);
+
+            // Accessibility
+            A11y::setup(*btn,
+                        juce::String(tabLabels[i]) + " tab",
+                        juce::String("Switch to ") + tabLabels[i] + " panel");
+
+            // Click handler — capture index by value
+            btn->onClick = [this, i] { selectTab(static_cast<Tab>(i)); };
+
+            addAndMakeVisible(btn);
+        }
+
+        // ── Placeholder labels (C2 – C6) ─────────────────────────────────────
+        setupPlaceholder(couplePlaceholder,   "Coupling Inspector — Coming Soon",
+                         "C2: Route visualizer, type selector, BAKE/CLR controls");
+        setupPlaceholder(fxPlaceholder,       "FX Inspector — Coming Soon",
+                         "C3: Per-slot FX chain, wet/dry, inline expansion");
+        setupPlaceholder(playPlaceholder,     "Play Panel — Coming Soon",
+                         "C4: Macro strips, Mod Wheel, Tide Controller, scale selector");
+        setupPlaceholder(exportPlaceholder,   "Export — Coming Soon",
+                         "C5: XPN pack builder, program selector, render queue");
+        setupPlaceholder(settingsPlaceholder, "Settings — Coming Soon",
+                         "C6: Theme, resize limits, MIDI channel, about");
+
+        // ── Content area accessibility ────────────────────────────────────────
+        contentArea.setTitle("Sidebar content area");
+        contentArea.setDescription("Content panel for the selected sidebar tab");
+        contentArea.setWantsKeyboardFocus(true);
+        addAndMakeVisible(contentArea);
+
+        // Default tab — Preset (shows placeholder until setPresetManager() called)
+        selectTab(Preset);
+    }
+
+    ~SidebarPanel() override = default;
+
+    //==========================================================================
+    // Wire the PresetBrowser for the C1 Preset tab.
+    // Must be called before the panel becomes visible.
+    // Pass the processor's PresetManager reference.
+    void setPresetManager(PresetManager& pm)
+    {
+        if (presetBrowser == nullptr)
+        {
+            presetBrowser = std::make_unique<PresetBrowser>(pm);
+            contentArea.addChildComponent(*presetBrowser);
+            presetBrowser->setVisible(activeTab == Preset);
+            presetPlaceholder.setVisible(false); // browser is now live
+            resized(); // reflow so browser gets bounds
+        }
+    }
+
+    //==========================================================================
+    Tab getActiveTab() const noexcept { return activeTab; }
+
+    void selectTab(Tab t)
+    {
+        activeTab = t;
+
+        // Show/hide content panels
+        bool havePresetBrowser = (presetBrowser != nullptr);
+        if (havePresetBrowser)
+            presetBrowser->setVisible(t == Preset);
+        presetPlaceholder.setVisible(!havePresetBrowser && t == Preset);
+        couplePlaceholder.setVisible(t == Couple);
+        fxPlaceholder.setVisible(t == FX);
+        playPlaceholder.setVisible(t == Play);
+        exportPlaceholder.setVisible(t == Export);
+        settingsPlaceholder.setVisible(t == Settings);
+
+        repaint();
+
+        // Move keyboard focus into the content area
+        if (auto* focusable = contentArea.getChildComponent(0))
+            focusable->grabKeyboardFocus();
+        else
+            contentArea.grabKeyboardFocus();
+    }
+
+    //==========================================================================
+    // Keyboard navigation — A-09 compliance
+    bool keyPressed(const juce::KeyPress& key) override
+    {
+        const int n = static_cast<int>(NumTabs);
+
+        if (key == juce::KeyPress::leftKey || key == juce::KeyPress::rightKey)
+        {
+            int next = static_cast<int>(activeTab)
+                       + (key == juce::KeyPress::rightKey ? 1 : -1);
+            next = (next + n) % n;
+            selectTab(static_cast<Tab>(next));
+
+            // Return focus to the newly active tab button
+            tabButtons[next]->grabKeyboardFocus();
+            return true;
+        }
+
+        if (key == juce::KeyPress::returnKey || key == juce::KeyPress(' '))
+        {
+            // Already on activeTab — move focus into content
+            contentArea.grabKeyboardFocus();
+            return true;
+        }
+
+        return false;
+    }
+
+    //==========================================================================
+    void paint(juce::Graphics& g) override
+    {
+        using namespace GalleryColors;
+
+        // Panel background
+        g.fillAll(get(shellWhite()));
+
+        // Left border separator from Column B
+        g.setColour(get(borderGray()));
+        g.drawVerticalLine(0, 0.0f, static_cast<float>(getHeight()));
+
+        // Tab bar background
+        g.setColour(get(shellWhite()));
+        g.fillRect(0, 0, getWidth(), kTabBarH);
+
+        // Bottom border under tab bar
+        g.setColour(get(borderGray()));
+        g.drawHorizontalLine(kTabBarH - 1, 0.0f, static_cast<float>(getWidth()));
+
+        // ── Active tab XO Gold underline ──────────────────────────────────────
+        if (tabButtons[activeTab] != nullptr)
+        {
+            auto btnBounds = tabButtons[activeTab]->getBounds();
+            g.setColour(get(xoGold));
+            g.fillRect(btnBounds.getX(),
+                       kTabBarH - kUnderlineH,
+                       btnBounds.getWidth(),
+                       kUnderlineH);
+        }
+
+        // ── Focus ring on focused tab button ─────────────────────────────────
+        for (int i = 0; i < NumTabs; ++i)
+        {
+            if (tabButtons[i] != nullptr && tabButtons[i]->hasKeyboardFocus(false))
+                A11y::drawFocusRing(g, tabButtons[i]->getBounds().toFloat(), 2.0f);
+        }
+    }
+
+    void resized() override
+    {
+        const int w = getWidth();
+
+        // ── Tab bar ───────────────────────────────────────────────────────────
+        // Distribute tabs evenly across the full width
+        const int tabW = w / NumTabs;
+        int x = 0;
+        for (int i = 0; i < NumTabs; ++i)
+        {
+            int thisW = (i == NumTabs - 1) ? (w - x) : tabW; // last tab absorbs remainder
+            tabButtons[i]->setBounds(x, 0, thisW, kTabBarH);
+            x += thisW;
+        }
+
+        // ── Content area ──────────────────────────────────────────────────────
+        auto content = juce::Rectangle<int>(0, kTabBarH, w, getHeight() - kTabBarH);
+        contentArea.setBounds(content);
+
+        // Layout each content child to fill the content area
+        auto inner = contentArea.getLocalBounds().reduced(8, 8);
+
+        if (presetBrowser != nullptr)
+            presetBrowser->setBounds(inner);
+
+        presetPlaceholder.setBounds(inner);
+        couplePlaceholder.setBounds(inner);
+        fxPlaceholder.setBounds(inner);
+        playPlaceholder.setBounds(inner);
+        exportPlaceholder.setBounds(inner);
+        settingsPlaceholder.setBounds(inner);
+    }
+
+    //==========================================================================
+    // lookAndFeelChanged() — repaint when the theme switches
+    void lookAndFeelChanged() override { repaint(); }
+
+private:
+    //==========================================================================
+    static constexpr int kTabBarH    = 32;
+    static constexpr int kUnderlineH = 2;
+
+    static constexpr const char* tabLabels[NumTabs] = {
+        "PRESET", "COUPLE", "FX", "PLAY", "EXPORT", "SETTINGS"
+    };
+
+    //==========================================================================
+    // Inactive tab text colour — WCAG AA on shellWhite (audit fix A-01)
+    static juce::Colour inactiveTabColour()
+    {
+        return juce::Colour(80, 76, 70).withAlpha(0.75f);
+    }
+
+    //==========================================================================
+    // Helper — configure a placeholder label for tabs without V1 content
+    void setupPlaceholder(juce::Label& lbl, const juce::String& title,
+                          const juce::String& subtitle)
+    {
+        lbl.setText(title + "\n\n" + subtitle, juce::dontSendNotification);
+        lbl.setFont(GalleryFonts::body(11.0f));
+        lbl.setColour(juce::Label::textColourId,
+                      GalleryColors::get(GalleryColors::textMid()));
+        lbl.setJustificationType(juce::Justification::centred);
+        lbl.setVisible(false);
+        contentArea.addChildComponent(lbl);
+    }
+
+    //==========================================================================
+    // Inner container for the content area — handles Tab key focus traversal
+    struct ContentArea : public juce::Component
+    {
+        ContentArea()
+        {
+            setTitle("Sidebar content");
+            setWantsKeyboardFocus(true);
+            setFocusContainerType(FocusContainerType::keyboardFocusContainer);
+        }
+        void paint(juce::Graphics&) override {} // transparent — parent paints bg
+    };
+
+    //==========================================================================
+    Tab                             activeTab      = Preset;
+    juce::OwnedArray<juce::TextButton> tabButtons;
+
+    ContentArea contentArea;
+
+    // C1 — Preset Browser (constructed lazily when setPresetManager() is called)
+    std::unique_ptr<PresetBrowser>  presetBrowser;
+
+    // V1 placeholder labels for C2 – C6
+    juce::Label presetPlaceholder;   // shown when presetBrowser is null
+    juce::Label couplePlaceholder;
+    juce::Label fxPlaceholder;
+    juce::Label playPlaceholder;
+    juce::Label exportPlaceholder;
+    juce::Label settingsPlaceholder;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SidebarPanel)
+};
+
+} // namespace xolokun
