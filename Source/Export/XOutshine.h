@@ -8,6 +8,7 @@
 #include "XPNVelocityCurves.h"
 
 #include <algorithm>
+#include <atomic>
 #include <cmath>
 #include <functional>
 #include <random>
@@ -172,7 +173,18 @@ struct OutshineSettings
     int            velocityLayers = 4;
     int            roundRobin     = 4;
     XPNVelocityCurve  velocityCurve  = XPNVelocityCurve::Musical;
-    float          lufsTarget     = -14.0f;
+    // Per-category LUFS targets (spec Section 6, Stage 5)
+    float lufsTargetDrum       = -14.0f;  // Kick, Snare, HiHat*, Clap, Tom, Percussion
+    float lufsTargetBass       = -16.0f;  // Bass
+    float lufsTargetPad        = -18.0f;  // Pad, String
+    float lufsTargetKeys       = -14.0f;  // Keys, Lead, Woodwind, Brass, Pluck, FX, Loop
+    float lufsTargetVocal      = -16.0f;  // Vocal
+
+    // Per-category true-peak ceilings (dBTP, negative values)
+    float truePeakDrum         = -0.5f;   // Kick, Snare, HiHat*, Clap, Tom, Percussion, Keys
+    float truePeakLeadPluck    = -0.4f;   // Lead, Pluck, Woodwind, Brass, FX, Loop
+    float truePeakPadBassVocal = -0.3f;   // Pad, String, Vocal, Bass
+
     bool           applyFadeGuards = true;
     bool           removeDC       = true;
     bool           applyDither    = true;
@@ -188,6 +200,12 @@ class XOutshine
 {
 public:
     XOutshine() = default;
+
+    ~XOutshine()
+    {
+        if (workDir_.isDirectory())
+            workDir_.deleteRecursively();
+    }
 
     //--------------------------------------------------------------------------
     // Run the full upgrade pipeline.
@@ -279,6 +297,76 @@ private:
             progressState_.overallProgress = p;
             progressState_.stage = msg;
             progress_(progressState_);
+        }
+    }
+
+    // Returns the LUFS target for a given category (per spec Section 6, Stage 5 table).
+    float getLufsTarget (SampleCategory c) const
+    {
+        switch (c) {
+            case SampleCategory::Kick:
+            case SampleCategory::Snare:
+            case SampleCategory::HiHatClosed:
+            case SampleCategory::HiHatOpen:
+            case SampleCategory::Clap:
+            case SampleCategory::Tom:
+            case SampleCategory::Percussion:
+                return settings_.lufsTargetDrum;
+
+            case SampleCategory::Bass:
+                return settings_.lufsTargetBass;
+
+            case SampleCategory::Pad:
+            case SampleCategory::String:
+                return settings_.lufsTargetPad;
+
+            case SampleCategory::Keys:
+            case SampleCategory::Lead:
+            case SampleCategory::Woodwind:
+            case SampleCategory::Brass:
+            case SampleCategory::Pluck:
+            case SampleCategory::FX:
+            case SampleCategory::Loop:
+                return settings_.lufsTargetKeys;
+
+            case SampleCategory::Vocal:
+                return settings_.lufsTargetVocal;
+
+            default:
+                return settings_.lufsTargetKeys;  // Unknown falls back to −14
+        }
+    }
+
+    // Returns the true-peak ceiling (dBTP) for a given category.
+    float getTruePeakCeiling (SampleCategory c) const
+    {
+        switch (c) {
+            case SampleCategory::Kick:
+            case SampleCategory::Snare:
+            case SampleCategory::HiHatClosed:
+            case SampleCategory::HiHatOpen:
+            case SampleCategory::Clap:
+            case SampleCategory::Tom:
+            case SampleCategory::Percussion:
+            case SampleCategory::Keys:
+                return settings_.truePeakDrum;
+
+            case SampleCategory::Lead:
+            case SampleCategory::Pluck:
+            case SampleCategory::Woodwind:
+            case SampleCategory::Brass:
+            case SampleCategory::FX:
+            case SampleCategory::Loop:
+                return settings_.truePeakLeadPluck;
+
+            case SampleCategory::Pad:
+            case SampleCategory::String:
+            case SampleCategory::Vocal:
+            case SampleCategory::Bass:
+                return settings_.truePeakPadBassVocal;
+
+            default:
+                return settings_.truePeakPadBassVocal;
         }
     }
 
@@ -844,7 +932,8 @@ private:
             float currentLufs = measureLufs(buf, reader->sampleRate);
             if (currentLufs < -80.0f) continue;
 
-            float gainDb = juce::jlimit(-24.0f, 24.0f, settings_.lufsTarget - currentLufs);
+            float lufsTarget = getLufsTarget(prog.category);
+            float gainDb = juce::jlimit(-24.0f, 24.0f, lufsTarget - currentLufs);
             float gain = dbToGain(gainDb);
 
             // Apply same gain to ALL layers (preserves velocity dynamics)
@@ -861,6 +950,16 @@ private:
                     auto* data = lb.getWritePointer(ch);
                     for (int i = 0; i < ln; ++i)
                         data[i] = juce::jlimit(-1.0f, 1.0f, data[i] * gain);
+                }
+
+                // Apply true-peak ceiling (simple peak clamp — not an oversampled true-peak limiter,
+                // but sufficient for Phase 1A. Phase 1B should use a 4x oversampled limiter.)
+                float ceiling = dbToGain(getTruePeakCeiling(prog.category));
+                float layerPeak = lb.getMagnitude(0, lb.getNumSamples());
+                if (layerPeak > ceiling && layerPeak > 0.0f)
+                {
+                    float limitGain = ceiling / layerPeak;
+                    lb.applyGain(limitGain);
                 }
 
                 // Bit depth: always write 24-bit integer.
