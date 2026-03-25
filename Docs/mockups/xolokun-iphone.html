@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<!--
+  XOlokun — iPhone Portrait End-State Prototype
+  UIX Design Studio: Ulf · Issea · Xavier · JUCE-y Lucy
+  Date: 2026-03-24
+  Spec: xolokun-spatial-architecture-v1.md §11 iPhone Portrait
+  Visual language: xolokun-v02-prototype.html
+
+  TABS: [Play ▶] [Sound ◉] [Browse ♫] [FX ⚡]
+  Viewport: 390×844pt (iPhone 14/15 standard)
+  Dark mode (#0E0E10), iOS-native feel, TE PO-inspired macro knobs
+
+  INTERACTIONS:
+  - Tab bar switches between Play / Sound / Browse / FX tabs
+  - MPC pad grid on Play tab with velocity-hover styling + mode buttons
+  - Macro knobs on Sound tab are drag-to-change (vertical drag)
+  - Preset list on Browse tab is scrollable with type-filter pills
+  - FX chain on FX tab with 6 slots and toggle buttons
+  - Preset arrow navigation in header
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, initial-scale=1.0, viewport-fit=cover">
+  <title>XOlokun — iPhone Portrait</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ══ Design Tokens ════════════════════════════════════════════════ */
+    :root {
+      /* Dark mode base (iPhone always dark mode) */
+      --bg:             #0E0E10;
+      --surface:        #1A1A1C;
+      --elevated:       #242426;
+      --raised:         #2E2E30;
+      --border:         rgba(255, 255, 255, 0.07);
+      --border-soft:    rgba(255, 255, 255, 0.04);
+
+      /* Text hierarchy */
+      --t1: #F0EDE8;
+      --t2: #9E9B97;
+      --t3: #5E5C59;
+      --t4: rgba(240, 237, 232, 0.25);
+
+      /* Brand gold */
+      --gold:           #E9C46A;
+      --gold-dim:       rgba(233, 196, 106, 0.12);
+      --gold-glow:      rgba(233, 196, 106, 0.28);
+
+      /* Engine accent — OBRIX Reef Jade default */
+      --accent:         #1E8B7E;
+      --accent-dim:     rgba(30, 139, 126, 0.12);
+      --accent-glow:    rgba(30, 139, 126, 0.30);
+      --accent-bright:  rgba(30, 139, 126, 0.85);
+
+      /* Typography */
+      --f-display: 'Space Grotesk', -apple-system, sans-serif;
+      --f-body:    'Inter', -apple-system, sans-serif;
+      --f-mono:    'JetBrains Mono', 'SF Mono', monospace;
+
+      /* Easing */
+      --ease-out:    cubic-bezier(0.0, 0.0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --dur-fast:    150ms;
+      --dur-med:     280ms;
+      --dur-slow:    400ms;
+
+      /* iOS safe areas (fallback values — will be overridden by CSS env()) */
+      --safe-top:    44px;
+      --safe-bottom: 34px;
+
+      /* Tab bar height */
+      --tab-bar-h:  83px;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #060608;
+    }
+
+    /* ── Page wrapper — centers the phone on desktop ─────────────── */
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 20% 15%, #12121A 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 85%, #0D0D14 0%, transparent 55%),
+        #060608;
+      padding: 24px;
+    }
+
+    /* ── Phone shell ─────────────────────────────────────────────── */
+    .phone-shell {
+      width: 390px;
+      height: 844px;
+      background: #0E0E10;
+      border-radius: 47px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 0.5px rgba(255,255,255,0.10),
+        0 0 0 1px rgba(0,0,0,0.8),
+        0 4px 8px  rgba(0,0,0,0.35),
+        0 12px 32px rgba(0,0,0,0.50),
+        0 40px 100px rgba(0,0,0,0.60);
+      font-family: var(--f-body);
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    /* Dynamic Island notch */
+    .dynamic-island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 35px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 100;
+    }
+
+    /* ══ iOS Status Bar ══════════════════════════════════════════════ */
+    .status-bar {
+      height: 59px; /* matches iPhone 14 status bar area */
+      min-height: 59px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 28px 8px;
+      background: var(--bg);
+      position: relative;
+      z-index: 50;
+      flex-shrink: 0;
+    }
+
+    .status-time {
+      font-family: var(--f-body);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--t1);
+      letter-spacing: -0.02em;
+    }
+
+    .status-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Signal bars */
+    .signal-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.5px;
+      height: 11px;
+    }
+    .signal-bar {
+      width: 3px;
+      background: var(--t1);
+      border-radius: 1px;
+    }
+    .signal-bar:nth-child(1) { height: 3px; }
+    .signal-bar:nth-child(2) { height: 5px; }
+    .signal-bar:nth-child(3) { height: 7px; }
+    .signal-bar:nth-child(4) { height: 9px; }
+    .signal-bar:nth-child(5) { height: 11px; opacity: 0.3; }
+
+    /* WiFi icon */
+    .wifi-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5px;
+      opacity: 0.9;
+    }
+    .wifi-arc {
+      border: 2px solid var(--t1);
+      border-radius: 50%;
+      border-bottom: none;
+      border-left: none;
+      border-right: none;
+    }
+    .wifi-arc:nth-child(1) { width: 10px; height: 6px; }
+    .wifi-arc:nth-child(2) { width: 6px; height: 4px; }
+    .wifi-arc:nth-child(3) { width: 2px; height: 2px; border-radius: 50%; background: var(--t1); border: none; }
+
+    /* Battery */
+    .battery {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .battery-body {
+      width: 25px;
+      height: 12px;
+      border: 1.5px solid var(--t1);
+      border-radius: 3px;
+      padding: 2px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .battery-fill {
+      width: 70%;
+      height: 100%;
+      background: var(--t1);
+      border-radius: 1px;
+    }
+    .battery-cap {
+      width: 2px;
+      height: 5px;
+      background: var(--t1);
+      border-radius: 0 1px 1px 0;
+      opacity: 0.5;
+    }
+
+    /* ══ App-level header (engine + preset) ═════════════════════════ */
+    .app-header {
+      height: 52px;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      gap: 10px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    /* Accent color bar at very top of app header */
+    .app-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent 70%);
+      opacity: 0.8;
+    }
+
+    .header-engine-name {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+    }
+
+    .header-preset-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      overflow: hidden;
+    }
+    .header-preset-arrow {
+      width: 22px;
+      height: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--t2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 9px;
+      transition: all var(--dur-fast) ease;
+      flex-shrink: 0;
+    }
+    .header-preset-arrow:active { background: rgba(255,255,255,0.09); }
+
+    .header-preset-name {
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--t1);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    .header-heart {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      color: var(--t3);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--dur-fast) ease;
+      flex-shrink: 0;
+    }
+    .header-heart.active { color: var(--gold); }
+
+    /* ══ Tab Content Area ════════════════════════════════════════════ */
+    .tab-content {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg);
+    }
+
+    .tab-pane {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-med) var(--ease-out);
+    }
+    .tab-pane.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ══ TAB: Play ═══════════════════════════════════════════════════ */
+
+    /* Mode selector at top of play tab */
+    .play-mode-bar {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 4px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .play-mode-btn {
+      flex: 1;
+      height: 32px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--t2);
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-out);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .play-mode-btn.active {
+      background: var(--elevated);
+      border-color: var(--border);
+      color: var(--accent);
+    }
+    .play-mode-btn:active { opacity: 0.7; }
+
+    /* MPC Pad grid */
+    .pad-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 16px 12px 12px;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .pad-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 8px;
+      flex: 1;
+    }
+
+    .pad {
+      background: var(--elevated);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 6px 7px;
+      cursor: pointer;
+      overflow: hidden;
+      transition:
+        background var(--dur-fast) ease,
+        border-color var(--dur-fast) ease,
+        transform var(--dur-fast) var(--ease-out);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Velocity glow layer */
+    .pad::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 50% 75%,
+        var(--accent-dim) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity var(--dur-fast) ease;
+      border-radius: inherit;
+    }
+
+    .pad:hover {
+      background: var(--raised);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .pad:hover::before { opacity: 1; }
+
+    .pad:active,
+    .pad.hit {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      transform: scale(0.96);
+    }
+    .pad:active::before,
+    .pad.hit::before { opacity: 1; }
+
+    /* Velocity accent bar at bottom of pad */
+    .pad::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      border-radius: 0 0 9px 9px;
+      transition: opacity var(--dur-fast) ease;
+    }
+    .pad:active::after,
+    .pad.hit::after { opacity: 0.6; }
+
+    .pad-number {
+      font-family: var(--f-mono);
+      font-size: 8px;
+      color: var(--t3);
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+
+    .pad-name {
+      font-family: var(--f-display);
+      font-weight: 500;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      color: var(--t2);
+      text-transform: uppercase;
+      line-height: 1.2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+
+    /* Some pads have accent color labels */
+    .pad.accent-pad .pad-name { color: var(--accent); }
+    .pad.accent-pad {
+      border-color: rgba(30, 139, 126, 0.18);
+    }
+
+    /* Performance bar below pads */
+    .play-bottom-bar {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      gap: 6px;
+    }
+
+    .play-bottom-btn {
+      flex: 1;
+      height: 32px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 9px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--t2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-bottom-btn:active { opacity: 0.65; }
+    .play-bottom-btn.highlight { color: var(--gold); border-color: rgba(233,196,106,0.18); }
+
+    /* ══ TAB: Sound (Macro Knobs) ════════════════════════════════════ */
+
+    .sound-tab-inner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 16px 12px;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .sound-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .sound-header-label {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+
+    .sound-header-hint {
+      font-family: var(--f-body);
+      font-size: 11px;
+      color: var(--t3);
+    }
+
+    /* TE PO-inspired 2×2 macro knob layout */
+    .macro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .macro-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px 16px 16px;
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      position: relative;
+      cursor: ns-resize;
+      transition: border-color var(--dur-fast) ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .macro-cell:hover {
+      border-color: rgba(255,255,255,0.12);
+    }
+    .macro-cell:active,
+    .macro-cell.dragging {
+      border-color: var(--accent);
+      background: rgba(30, 139, 126, 0.06);
+    }
+
+    /* TE PO macro label — top-left inside cell */
+    .macro-cell-id {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-family: var(--f-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      color: var(--t3);
+      text-transform: uppercase;
+    }
+
+    /* Large TE-style knob body */
+    .macro-knob-body {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+      /* Chunky TE PO feel */
+      background: radial-gradient(
+        circle at 38% 32%,
+        #3E3C40 0%,
+        #2A282D 38%,
+        #1E1C20 65%,
+        #141218 100%
+      );
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.5),
+        0 6px 16px rgba(0,0,0,0.35),
+        inset 0 1.5px 3px rgba(255,255,255,0.05),
+        inset 0 -1px 3px rgba(0,0,0,0.4);
+      transition: box-shadow var(--dur-fast) ease;
+    }
+    .macro-cell.dragging .macro-knob-body {
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.5),
+        0 6px 16px rgba(0,0,0,0.35),
+        inset 0 1.5px 3px rgba(255,255,255,0.05),
+        inset 0 -1px 3px rgba(0,0,0,0.4),
+        0 0 20px var(--accent-glow),
+        0 0 40px rgba(30,139,126,0.12);
+    }
+
+    /* SVG arc on macro knob */
+    .macro-knob-svg {
+      position: absolute;
+      inset: -5px;
+      pointer-events: none;
+    }
+
+    /* Knob indicator dot */
+    .macro-knob-dot {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--accent-glow);
+      /* Position computed by JS, fallback at 12 o'clock */
+      top: 5px;
+      left: calc(50% - 2.5px);
+      transition: background var(--dur-fast) ease;
+    }
+
+    /* Knob center engraving ring */
+    .macro-knob-ring {
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Value readout inside knob */
+    .macro-knob-value {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--f-mono);
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--t1);
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 12px rgba(255,255,255,0.15);
+    }
+
+    .macro-name {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+    }
+
+    /* ══ TAB: Browse ═════════════════════════════════════════════════ */
+
+    .browse-search-bar {
+      padding: 10px 12px 0;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 36px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0 12px 0 32px;
+      font-family: var(--f-body);
+      font-size: 14px;
+      color: var(--t1);
+      outline: none;
+      position: relative;
+    }
+    .search-input::placeholder { color: var(--t3); }
+    .search-wrapper {
+      position: relative;
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--t3);
+      font-size: 13px;
+      pointer-events: none;
+    }
+
+    /* Type filter pills */
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      padding: 10px 12px;
+      overflow-x: auto;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .filter-pills::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      flex-shrink: 0;
+      height: 28px;
+      padding: 0 12px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--t2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all var(--dur-fast) ease;
+      white-space: nowrap;
+    }
+    .filter-pill.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-pill:active { opacity: 0.7; }
+
+    /* Mood pills row */
+    .mood-pills {
+      display: flex;
+      gap: 5px;
+      padding: 8px 12px;
+      overflow-x: auto;
+      flex-shrink: 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .mood-pills::-webkit-scrollbar { display: none; }
+
+    .mood-pill {
+      flex-shrink: 0;
+      height: 24px;
+      padding: 0 10px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: var(--f-body);
+      font-size: 10px;
+      color: var(--t3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all var(--dur-fast) ease;
+      white-space: nowrap;
+    }
+    .mood-pill.active {
+      background: var(--gold-dim);
+      border-color: rgba(233,196,106,0.30);
+      color: var(--gold);
+    }
+    .mood-pill:active { opacity: 0.7; }
+
+    /* Preset list */
+    .preset-list {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 0 8px;
+    }
+    .preset-list::-webkit-scrollbar { display: none; }
+
+    .preset-row {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      height: 56px;
+      gap: 12px;
+      cursor: pointer;
+      transition: background var(--dur-fast) ease;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .preset-row:active { background: rgba(255,255,255,0.03); }
+    .preset-row.active-preset {
+      background: var(--accent-dim);
+    }
+
+    .preset-row-accent {
+      width: 3px;
+      height: 32px;
+      border-radius: 1.5px;
+      background: var(--t3);
+      flex-shrink: 0;
+      transition: background var(--dur-fast) ease;
+    }
+    .preset-row.active-preset .preset-row-accent {
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent-glow);
+    }
+
+    .preset-row-info {
+      flex: 1;
+      overflow: hidden;
+    }
+    .preset-row-name {
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--t1);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+    .preset-row.active-preset .preset-row-name {
+      color: var(--accent);
+    }
+    .preset-row-meta {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      color: var(--t3);
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .preset-row-heart {
+      font-size: 14px;
+      color: var(--t3);
+      cursor: pointer;
+      padding: 4px;
+      transition: color var(--dur-fast) ease;
+    }
+    .preset-row-heart.fav { color: var(--gold); }
+
+    /* Section header in preset list */
+    .preset-section-header {
+      padding: 12px 16px 4px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--t3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preset-section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ══ TAB: FX ═════════════════════════════════════════════════════ */
+
+    .fx-tab-inner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      gap: 8px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .fx-tab-inner::-webkit-scrollbar { display: none; }
+
+    .fx-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2px 4px 8px;
+    }
+    .fx-header-label {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+    .fx-header-clear {
+      font-family: var(--f-body);
+      font-size: 12px;
+      color: var(--t3);
+      cursor: pointer;
+    }
+    .fx-header-clear:active { opacity: 0.6; }
+
+    .fx-slot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color var(--dur-fast) ease;
+      cursor: pointer;
+    }
+    .fx-slot.active-slot {
+      border-color: var(--accent);
+      background: rgba(30, 139, 126, 0.04);
+    }
+    .fx-slot.empty-slot {
+      border-style: dashed;
+      border-color: var(--border);
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      flex-direction: row;
+      gap: 8px;
+    }
+    .fx-slot:active { opacity: 0.75; }
+
+    .fx-slot-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Colored type indicator */
+    .fx-type-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .fx-slot-info {
+      flex: 1;
+      overflow: hidden;
+    }
+    .fx-slot-name {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--t1);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .fx-slot-type {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      color: var(--t3);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* On/Off toggle */
+    .fx-toggle {
+      width: 44px;
+      height: 26px;
+      background: var(--elevated);
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background var(--dur-fast) ease;
+    }
+    .fx-toggle.on {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .fx-toggle-thumb {
+      width: 20px;
+      height: 20px;
+      background: var(--t1);
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: left var(--dur-fast) var(--ease-spring);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .fx-toggle.on .fx-toggle-thumb { left: 20px; }
+
+    /* Wet/Dry mini slider */
+    .fx-wet-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fx-wet-label {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--t3);
+      width: 22px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+    }
+    .fx-wet-track {
+      flex: 1;
+      height: 4px;
+      background: var(--elevated);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .fx-wet-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width var(--dur-fast) ease;
+    }
+    .fx-wet-value {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      color: var(--t3);
+      width: 28px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .fx-empty-label {
+      font-family: var(--f-display);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+    .fx-empty-icon {
+      font-size: 16px;
+      color: var(--t3);
+    }
+
+    /* FX slot order number */
+    .fx-slot-num {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      color: var(--t3);
+      width: 14px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* ══ Tab Bar (iOS-native) ════════════════════════════════════════ */
+    .tab-bar {
+      height: var(--tab-bar-h);
+      background: rgba(20, 20, 22, 0.96);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      padding-top: 8px;
+      padding-bottom: 0;
+      flex-shrink: 0;
+      /* backdrop-filter: blur(20px) saturate(180%); — visual enhancement */
+    }
+
+    .tab-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      cursor: pointer;
+      padding: 4px 0 0;
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity var(--dur-fast) ease;
+    }
+    .tab-item:active { opacity: 0.6; }
+
+    .tab-icon {
+      font-size: 22px;
+      line-height: 1;
+      color: var(--t3);
+      transition: color var(--dur-fast) ease;
+    }
+    .tab-item.active .tab-icon {
+      color: var(--accent);
+    }
+
+    .tab-label {
+      font-family: var(--f-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--t3);
+      transition: color var(--dur-fast) ease;
+    }
+    .tab-item.active .tab-label {
+      color: var(--accent);
+    }
+
+    /* Home indicator area */
+    .home-indicator {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 134px;
+      height: 5px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2.5px;
+    }
+
+    /* ══ Utility — engine accent color overrides ═════════════════════ */
+    [data-accent="obrix"]  { --accent: #1E8B7E; --accent-dim: rgba(30,139,126,0.12); --accent-glow: rgba(30,139,126,0.30); }
+    [data-accent="opera"]  { --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.12); --accent-glow: rgba(212,175,55,0.30); }
+    [data-accent="oxbow"]  { --accent: #1A6B5A; --accent-dim: rgba(26,107,90,0.12);  --accent-glow: rgba(26,107,90,0.30); }
+    [data-accent="oxyto"]  { --accent: #9B5DE5; --accent-dim: rgba(155,93,229,0.12); --accent-glow: rgba(155,93,229,0.30); }
+    [data-accent="onset"]  { --accent: #0066FF; --accent-dim: rgba(0,102,255,0.12);  --accent-glow: rgba(0,102,255,0.30); }
+    [data-accent="obrix"]  { --accent: #1E8B7E; }
+
+    /* ══ Scrollbar suppression ════════════════════════════════════════ */
+    * { scrollbar-width: none; }
+    *::-webkit-scrollbar { display: none; }
+
+    /* ══ Page annotation ══════════════════════════════════════════════ */
+    .page-annotation {
+      margin-top: 20px;
+      text-align: center;
+      font-family: var(--f-body);
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ── Phone shell ────────────────────────────────────────────── -->
+  <div class="phone-shell" id="phone" data-accent="obrix">
+
+    <!-- Dynamic Island -->
+    <div class="dynamic-island"></div>
+
+    <!-- iOS Status Bar -->
+    <div class="status-bar">
+      <div class="status-time">9:41</div>
+      <div class="status-right">
+        <!-- Signal bars -->
+        <div class="signal-bars">
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+          <div class="signal-bar"></div>
+        </div>
+        <!-- WiFi -->
+        <div class="wifi-icon">
+          <div class="wifi-arc" style="width:10px;height:5px;"></div>
+          <div class="wifi-arc" style="width:6px;height:4px;"></div>
+          <div class="wifi-arc" style="width:2px;height:2px;border-radius:50%;background:var(--t1);border:none;"></div>
+        </div>
+        <!-- Battery -->
+        <div class="battery">
+          <div class="battery-body">
+            <div class="battery-fill"></div>
+          </div>
+          <div class="battery-cap"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Header -->
+    <div class="app-header">
+      <div class="header-engine-name" id="engineName">OBRIX</div>
+      <div class="header-divider"></div>
+      <div class="header-preset-nav">
+        <button class="header-preset-arrow" id="prevPreset" aria-label="Previous preset">‹</button>
+        <div class="header-preset-name" id="presetName">Coral Breathe</div>
+        <button class="header-preset-arrow" id="nextPreset" aria-label="Next preset">›</button>
+      </div>
+      <div class="header-heart" id="heartBtn" aria-label="Favorite">♡</div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+
+      <!-- ── PLAY TAB ────────────────────────────────────────────── -->
+      <div class="tab-pane active" id="tab-play">
+        <!-- Mode bar -->
+        <div class="play-mode-bar">
+          <button class="play-mode-btn active" data-mode="mpc" onclick="setPlayMode(this)">
+            <span>⊞</span> MPC
+          </button>
+          <button class="play-mode-btn" data-mode="xouija" onclick="setPlayMode(this)">
+            <span>〜</span> XOuija
+          </button>
+          <button class="play-mode-btn" data-mode="keys" onclick="setPlayMode(this)">
+            <span>♩</span> Keys
+          </button>
+        </div>
+
+        <!-- MPC Pad area -->
+        <div class="pad-area" id="padArea">
+          <div class="pad-grid" id="padGrid">
+            <!-- 16 pads, built by JS -->
+          </div>
+          <!-- Performance controls -->
+          <div class="play-bottom-bar">
+            <button class="play-bottom-btn">Note Rpt</button>
+            <button class="play-bottom-btn">Full Vel</button>
+            <button class="play-bottom-btn highlight">16 Level</button>
+            <button class="play-bottom-btn">Choke</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SOUND TAB ───────────────────────────────────────────── -->
+      <div class="tab-pane" id="tab-sound">
+        <div class="sound-tab-inner">
+          <div class="sound-header">
+            <div class="sound-header-label">Macros</div>
+            <div class="sound-header-hint">Drag to adjust</div>
+          </div>
+          <div class="macro-grid" id="macroGrid">
+            <!-- 4 macro knobs built by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BROWSE TAB ──────────────────────────────────────────── -->
+      <div class="tab-pane" id="tab-browse">
+        <div class="browse-search-bar">
+          <div class="search-wrapper">
+            <span class="search-icon">⌕</span>
+            <input class="search-input" type="text" placeholder="Search presets…" id="searchInput">
+          </div>
+        </div>
+        <!-- Type filter pills -->
+        <div class="filter-pills" id="filterPills">
+          <button class="filter-pill active" data-type="all" onclick="setFilter(this)">All</button>
+          <button class="filter-pill" data-type="pad" onclick="setFilter(this)">Pad</button>
+          <button class="filter-pill" data-type="bass" onclick="setFilter(this)">Bass</button>
+          <button class="filter-pill" data-type="lead" onclick="setFilter(this)">Lead</button>
+          <button class="filter-pill" data-type="key" onclick="setFilter(this)">Keys</button>
+          <button class="filter-pill" data-type="perc" onclick="setFilter(this)">Perc</button>
+          <button class="filter-pill" data-type="atmo" onclick="setFilter(this)">Atmo</button>
+          <button class="filter-pill" data-type="fx" onclick="setFilter(this)">FX</button>
+        </div>
+        <!-- Mood pills -->
+        <div class="mood-pills" id="moodPills">
+          <button class="mood-pill active" data-mood="all" onclick="setMood(this)">All Moods</button>
+          <button class="mood-pill" data-mood="foundation" onclick="setMood(this)">Foundation</button>
+          <button class="mood-pill" data-mood="atmosphere" onclick="setMood(this)">Atmosphere</button>
+          <button class="mood-pill" data-mood="entangled" onclick="setMood(this)">Entangled</button>
+          <button class="mood-pill" data-mood="flux" onclick="setMood(this)">Flux</button>
+          <button class="mood-pill" data-mood="deep" onclick="setMood(this)">Deep</button>
+          <button class="mood-pill" data-mood="kinetic" onclick="setMood(this)">Kinetic</button>
+          <button class="mood-pill" data-mood="luminous" onclick="setMood(this)">Luminous</button>
+        </div>
+        <!-- Preset list -->
+        <div class="preset-list" id="presetList">
+          <!-- Built by JS -->
+        </div>
+      </div>
+
+      <!-- ── FX TAB ───────────────────────────────────────────────── -->
+      <div class="tab-pane" id="tab-fx">
+        <div class="fx-tab-inner" id="fxTabInner">
+          <div class="fx-header-row">
+            <div class="fx-header-label">FX Chain</div>
+            <div class="fx-header-clear">Reset</div>
+          </div>
+          <!-- 6 FX slots built by JS -->
+        </div>
+      </div>
+
+    </div><!-- /tab-content -->
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <div class="tab-item active" data-tab="play" onclick="switchTab(this)" role="tab" aria-selected="true">
+        <div class="tab-icon">▶</div>
+        <div class="tab-label">Play</div>
+      </div>
+      <div class="tab-item" data-tab="sound" onclick="switchTab(this)" role="tab">
+        <div class="tab-icon">◉</div>
+        <div class="tab-label">Sound</div>
+      </div>
+      <div class="tab-item" data-tab="browse" onclick="switchTab(this)" role="tab">
+        <div class="tab-icon">♫</div>
+        <div class="tab-label">Browse</div>
+      </div>
+      <div class="tab-item" data-tab="fx" onclick="switchTab(this)" role="tab">
+        <div class="tab-icon">⚡</div>
+        <div class="tab-label">FX</div>
+      </div>
+      <!-- Home indicator -->
+      <div class="home-indicator"></div>
+    </div>
+
+  </div><!-- /phone-shell -->
+
+  <div class="page-annotation">
+    XOlokun — iPhone Portrait · 390×844pt · §11 Form Factors<br>
+    Tap tabs to navigate · Drag knobs to adjust · Tap pads to trigger
+  </div>
+
+</div><!-- /page-wrapper -->
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════════════════════════ */
+const state = {
+  activeTab: 'play',
+  activePresetIndex: 2,
+  favPresets: new Set([0, 3, 7]),
+  heartActive: false,
+  playMode: 'mpc',
+  fxToggles: [true, true, false, true, false, false],
+  macroValues: [62, 45, 78, 33], // 0-100
+  activePad: -1,
+};
+
+/* ── Preset data ──────────────────────────────────────────────────── */
+const PRESETS = [
+  { name: 'Reef First Light',     engine: 'OBRIX', mood: 'Foundation',  type: 'pad'  },
+  { name: 'Brick Ecology',        engine: 'OBRIX', mood: 'Kinetic',     type: 'fx'   },
+  { name: 'Coral Breathe',        engine: 'OBRIX', mood: 'Atmosphere',  type: 'pad'  },
+  { name: 'Tide Protocol',        engine: 'OBRIX', mood: 'Deep',        type: 'bass' },
+  { name: 'Harmonic Field',       engine: 'OBRIX', mood: 'Entangled',   type: 'atmo' },
+  { name: 'Bleach Bloom',         engine: 'OBRIX', mood: 'Luminous',    type: 'lead' },
+  { name: 'Biophonic Rain',       engine: 'OBRIX', mood: 'Foundation',  type: 'pad'  },
+  { name: 'Symbiote Chain',       engine: 'OBRIX', mood: 'Entangled',   type: 'atmo' },
+  { name: 'Sub Pressure',         engine: 'OBRIX', mood: 'Deep',        type: 'bass' },
+  { name: 'Current Drift',        engine: 'OBRIX', mood: 'Flux',        type: 'fx'   },
+  { name: 'Void Membrane',        engine: 'OBRIX', mood: 'Deep',        type: 'pad'  },
+  { name: 'Resonance Node',       engine: 'OBRIX', mood: 'Kinetic',     type: 'lead' },
+  { name: 'Stasis Point',         engine: 'OBRIX', mood: 'Foundation',  type: 'key'  },
+  { name: 'Kelp Wave',            engine: 'OBRIX', mood: 'Atmosphere',  type: 'atmo' },
+  { name: 'Deep Turbidity',       engine: 'OBRIX', mood: 'Deep',        type: 'fx'   },
+  { name: 'Aquifer Bloom',        engine: 'OBRIX', mood: 'Luminous',    type: 'pad'  },
+  { name: 'Competition Pulse',    engine: 'OBRIX', mood: 'Kinetic',     type: 'lead' },
+  { name: 'Thermal Gradient',     engine: 'OBRIX', mood: 'Flux',        type: 'key'  },
+  { name: 'Night Bioluminescence',engine: 'OBRIX', mood: 'Deep',        type: 'atmo' },
+  { name: 'Parasite Hold',        engine: 'OBRIX', mood: 'Entangled',   type: 'bass' },
+];
+
+const PAD_NAMES = [
+  'KICK', 'SNARE', 'HI-HAT', 'OPEN HH',
+  'CLAP',  'RIMSHOT', 'TOM L', 'TOM H',
+  'PERC 1','PERC 2', 'SHAKER', 'FX 1',
+  'SAMP 1','SAMP 2', 'SAMP 3', 'FX 2',
+];
+
+const FX_DATA = [
+  { name: 'Tide Reverb',   type: 'REVERB', emoji: '🌊', color: '#1A6B5A', wetPct: 42 },
+  { name: 'Reef Delay',    type: 'DELAY',  emoji: '〰',  color: '#0066FF', wetPct: 28 },
+  { name: 'Algae Saturation', type: 'SAT', emoji: '🔥', color: '#CC6600', wetPct: 65 },
+  { name: 'Shimmer Mod',   type: 'MOD',    emoji: '✦',  color: '#9B5DE5', wetPct: 50 },
+  { name: '—',             type: 'EMPTY',  emoji: '+',  color: '',         wetPct: 0  },
+  { name: '—',             type: 'EMPTY',  emoji: '+',  color: '',         wetPct: 0  },
+];
+
+const MACRO_NAMES = ['CHARACTER', 'MOVEMENT', 'COUPLING', 'SPACE'];
+
+/* ══════════════════════════════════════════════════════════════════════
+   TAB SWITCHING
+══════════════════════════════════════════════════════════════════════ */
+function switchTab(el) {
+  const tab = el.dataset.tab;
+  if (tab === state.activeTab) return;
+  state.activeTab = tab;
+
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+  el.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   PLAY TAB — MPC PADS
+══════════════════════════════════════════════════════════════════════ */
+function buildPadGrid() {
+  const grid = document.getElementById('padGrid');
+  grid.innerHTML = '';
+  PAD_NAMES.forEach((name, i) => {
+    const pad = document.createElement('div');
+    pad.className = 'pad' + (i % 5 === 0 ? ' accent-pad' : '');
+    pad.innerHTML = `
+      <span class="pad-number">${String(i + 1).padStart(2, '0')}</span>
+      <span class="pad-name">${name}</span>
+    `;
+    pad.addEventListener('pointerdown', () => triggerPad(pad, i));
+    grid.appendChild(pad);
+  });
+}
+
+function triggerPad(el, idx) {
+  el.classList.add('hit');
+  setTimeout(() => el.classList.remove('hit'), 180);
+}
+
+function setPlayMode(btn) {
+  document.querySelectorAll('.play-mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  state.playMode = btn.dataset.mode;
+  // In a real impl: swap surface content
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   SOUND TAB — MACRO KNOBS
+══════════════════════════════════════════════════════════════════════ */
+function buildMacroGrid() {
+  const grid = document.getElementById('macroGrid');
+  grid.innerHTML = '';
+  MACRO_NAMES.forEach((name, i) => {
+    const cell = document.createElement('div');
+    cell.className = 'macro-cell';
+    cell.id = 'macroCell' + i;
+    cell.innerHTML = `
+      <div class="macro-cell-id">M${i + 1}</div>
+      <div class="macro-knob-body" id="macroKnob${i}">
+        <svg class="macro-knob-svg" viewBox="0 0 100 100" id="macroSvg${i}">
+          <!-- Track arc -->
+          <circle cx="50" cy="50" r="44"
+            fill="none"
+            stroke="rgba(255,255,255,0.06)"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-dasharray="232 276"
+            stroke-dashoffset="-22"
+            transform="rotate(135 50 50)"
+          />
+          <!-- Value arc -->
+          <circle cx="50" cy="50" r="44"
+            fill="none"
+            stroke="var(--accent)"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-dasharray="0 276"
+            stroke-dashoffset="-22"
+            transform="rotate(135 50 50)"
+            id="macroArc${i}"
+            opacity="0.75"
+          />
+        </svg>
+        <div class="macro-knob-ring"></div>
+        <div class="macro-knob-dot" id="macroDot${i}"></div>
+        <div class="macro-knob-value" id="macroVal${i}">—</div>
+      </div>
+      <div class="macro-name">${name}</div>
+    `;
+
+    // Drag interaction
+    let startY = 0;
+    let startVal = 0;
+    let dragging = false;
+
+    function onPointerDown(e) {
+      e.preventDefault();
+      dragging = true;
+      startY = e.clientY;
+      startVal = state.macroValues[i];
+      cell.classList.add('dragging');
+      cell.setPointerCapture(e.pointerId);
+    }
+    function onPointerMove(e) {
+      if (!dragging) return;
+      const delta = (startY - e.clientY) / 1.8; // px → value units
+      const newVal = Math.max(0, Math.min(100, Math.round(startVal + delta)));
+      state.macroValues[i] = newVal;
+      updateMacroDisplay(i);
+    }
+    function onPointerUp() {
+      dragging = false;
+      cell.classList.remove('dragging');
+    }
+
+    cell.addEventListener('pointerdown', onPointerDown);
+    cell.addEventListener('pointermove', onPointerMove);
+    cell.addEventListener('pointerup', onPointerUp);
+    cell.addEventListener('pointercancel', onPointerUp);
+
+    grid.appendChild(cell);
+    updateMacroDisplay(i);
+  });
+}
+
+function updateMacroDisplay(i) {
+  const val = state.macroValues[i];
+  const pct = val / 100;
+
+  // Arc: 232pt of a 276pt circumference (135° to 405° = 270° sweep)
+  const arcLen = 232;
+  const filled = pct * arcLen;
+  const arc = document.getElementById('macroArc' + i);
+  if (arc) arc.setAttribute('stroke-dasharray', `${filled} 276`);
+
+  // Dot position (knob goes from 135° to 405° = 270° sweep)
+  const angleRad = (135 + pct * 270) * (Math.PI / 180);
+  const r = 34; // px from center of 80px knob
+  const cx = 40; // center of knob body
+  const cy = 40;
+  const dotX = cx + Math.cos(angleRad) * r - 2.5; // -2.5 = half dot size
+  const dotY = cy + Math.sin(angleRad) * r - 2.5;
+  const dot = document.getElementById('macroDot' + i);
+  if (dot) {
+    dot.style.left = dotX + 'px';
+    dot.style.top  = dotY + 'px';
+  }
+
+  // Value text
+  const valEl = document.getElementById('macroVal' + i);
+  if (valEl) valEl.textContent = val;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   BROWSE TAB
+══════════════════════════════════════════════════════════════════════ */
+function buildPresetList() {
+  renderPresetList(PRESETS);
+}
+
+function renderPresetList(presets) {
+  const list = document.getElementById('presetList');
+  if (!list) return;
+  list.innerHTML = '';
+
+  // Group by mood
+  const byMood = {};
+  presets.forEach(p => {
+    if (!byMood[p.mood]) byMood[p.mood] = [];
+    byMood[p.mood].push(p);
+  });
+
+  Object.keys(byMood).forEach(mood => {
+    const header = document.createElement('div');
+    header.className = 'preset-section-header';
+    header.textContent = mood;
+    list.appendChild(header);
+
+    byMood[mood].forEach((preset, localIdx) => {
+      const globalIdx = PRESETS.indexOf(preset);
+      const row = document.createElement('div');
+      row.className = 'preset-row' + (globalIdx === state.activePresetIndex ? ' active-preset' : '');
+      row.id = 'presetRow' + globalIdx;
+      const isFav = state.favPresets.has(globalIdx);
+      row.innerHTML = `
+        <div class="preset-row-accent"></div>
+        <div class="preset-row-info">
+          <div class="preset-row-name">${preset.name}</div>
+          <div class="preset-row-meta">${preset.engine} · ${preset.type.toUpperCase()}</div>
+        </div>
+        <div class="preset-row-heart ${isFav ? 'fav' : ''}"
+             onclick="togglePresetFav(event,${globalIdx})">
+          ${isFav ? '♥' : '♡'}
+        </div>
+      `;
+      row.addEventListener('click', () => selectPreset(globalIdx));
+      list.appendChild(row);
+    });
+  });
+}
+
+function selectPreset(idx) {
+  state.activePresetIndex = idx;
+  document.getElementById('presetName').textContent = PRESETS[idx].name;
+  document.querySelectorAll('.preset-row').forEach(r => r.classList.remove('active-preset'));
+  const row = document.getElementById('presetRow' + idx);
+  if (row) row.classList.add('active-preset');
+}
+
+function togglePresetFav(e, idx) {
+  e.stopPropagation();
+  if (state.favPresets.has(idx)) {
+    state.favPresets.delete(idx);
+  } else {
+    state.favPresets.add(idx);
+  }
+  buildPresetList();
+}
+
+function setFilter(btn) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const type = btn.dataset.type;
+  const filtered = type === 'all' ? PRESETS : PRESETS.filter(p => p.type === type);
+  renderPresetList(filtered);
+}
+
+function setMood(btn) {
+  document.querySelectorAll('.mood-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const mood = btn.dataset.mood;
+  const filtered = mood === 'all' ? PRESETS : PRESETS.filter(p => p.mood.toLowerCase() === mood);
+  renderPresetList(filtered);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   FX TAB
+══════════════════════════════════════════════════════════════════════ */
+function buildFxSlots() {
+  const container = document.getElementById('fxTabInner');
+
+  // Clear existing slots (keep header row)
+  const existingSlots = container.querySelectorAll('.fx-slot');
+  existingSlots.forEach(s => s.remove());
+
+  FX_DATA.forEach((fx, i) => {
+    const slot = document.createElement('div');
+
+    if (fx.type === 'EMPTY') {
+      slot.className = 'fx-slot empty-slot';
+      slot.innerHTML = `
+        <span class="fx-slot-num">${i + 1}</span>
+        <span class="fx-empty-icon">+</span>
+        <span class="fx-empty-label">Add Effect</span>
+      `;
+    } else {
+      const isOn = state.fxToggles[i];
+      slot.className = 'fx-slot' + (isOn ? ' active-slot' : '');
+      slot.innerHTML = `
+        <div class="fx-slot-top">
+          <span class="fx-slot-num">${i + 1}</span>
+          <div class="fx-type-badge" style="background:${fx.color}18;border-radius:8px;">
+            <span style="font-size:16px;">${fx.emoji}</span>
+          </div>
+          <div class="fx-slot-info">
+            <div class="fx-slot-name">${fx.name}</div>
+            <div class="fx-slot-type">${fx.type}</div>
+          </div>
+          <div class="fx-toggle ${isOn ? 'on' : ''}" id="fxToggle${i}" onclick="toggleFx(event,${i})">
+            <div class="fx-toggle-thumb"></div>
+          </div>
+        </div>
+        <div class="fx-wet-row">
+          <div class="fx-wet-label">Wet</div>
+          <div class="fx-wet-track">
+            <div class="fx-wet-fill" id="fxWetFill${i}" style="width:${fx.wetPct}%;"></div>
+          </div>
+          <div class="fx-wet-value" id="fxWetVal${i}">${fx.wetPct}%</div>
+        </div>
+      `;
+    }
+
+    container.appendChild(slot);
+  });
+}
+
+function toggleFx(e, i) {
+  e.stopPropagation();
+  state.fxToggles[i] = !state.fxToggles[i];
+  const toggle = document.getElementById('fxToggle' + i);
+  if (toggle) {
+    toggle.classList.toggle('on', state.fxToggles[i]);
+    toggle.closest('.fx-slot').classList.toggle('active-slot', state.fxToggles[i]);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   HEADER — Preset navigation & heart
+══════════════════════════════════════════════════════════════════════ */
+document.getElementById('prevPreset').addEventListener('click', () => {
+  const next = (state.activePresetIndex - 1 + PRESETS.length) % PRESETS.length;
+  selectPreset(next);
+});
+document.getElementById('nextPreset').addEventListener('click', () => {
+  const next = (state.activePresetIndex + 1) % PRESETS.length;
+  selectPreset(next);
+});
+document.getElementById('heartBtn').addEventListener('click', () => {
+  state.heartActive = !state.heartActive;
+  const btn = document.getElementById('heartBtn');
+  btn.textContent = state.heartActive ? '♥' : '♡';
+  btn.classList.toggle('active', state.heartActive);
+  if (state.heartActive) {
+    btn.style.color = 'var(--gold)';
+    btn.style.textShadow = '0 0 8px var(--gold-glow)';
+  } else {
+    btn.style.color = '';
+    btn.style.textShadow = '';
+  }
+});
+
+/* ══════════════════════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════════════════════ */
+buildPadGrid();
+buildMacroGrid();
+buildPresetList();
+buildFxSlots();
+</script>
+</body>
+</html>
