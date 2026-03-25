@@ -66,95 +66,37 @@ public:
         menu.addSeparator();
         menu.addItem(5, "Cancel", true, false);
 
-        int result = menu.showAt(e.getScreenPosition());
-        if (result == 2) // MIDI Learn
-        {
-            manager.enterLearnMode(paramId);
-            if (auto* comp = e.eventComponent) comp->repaint();
-        }
-        else if (result == 1) // cancel while listening
-        {
-            manager.exitLearnMode();
-            if (auto* comp = e.eventComponent) comp->repaint();
-        }
-        else if (result == 4) // clear
-        {
-            manager.removeMappingForParam(paramId);
-            if (auto* comp = e.eventComponent) comp->repaint();
-        }
+        // Capture state for the async callback — no reference captures (lifetime unsafe)
+        juce::String pid    = paramId;
+        MIDILearnManager* mgr = &manager;
+        juce::Component::SafePointer<juce::Component> safeComp(e.eventComponent);
+
+        menu.showMenuAsync(juce::PopupMenu::Options()
+                               .withTargetScreenArea(juce::Rectangle<int>(e.getScreenX(), e.getScreenY(), 1, 1)),
+            [pid, mgr, safeComp](int result)
+            {
+                if (result == 2) // MIDI Learn
+                {
+                    mgr->enterLearnMode(pid);
+                    if (safeComp != nullptr) safeComp->repaint();
+                }
+                else if (result == 1) // cancel while listening
+                {
+                    mgr->exitLearnMode();
+                    if (safeComp != nullptr) safeComp->repaint();
+                }
+                else if (result == 4) // clear
+                {
+                    mgr->removeMappingForParam(pid);
+                    if (safeComp != nullptr) safeComp->repaint();
+                }
+            });
     }
 
 private:
     juce::String      paramId;
     MIDILearnManager& manager;
     JUCE_DECLARE_NON_COPYABLE(MidiLearnMouseListener)
-};
-
-//==============================================================================
-// MidiLearnSlider — juce::Slider that draws an amber ring when listening for CC,
-// or a soft green ring + "ML" badge when a CC mapping exists.
-// Used by ParameterGrid (replaces bare juce::Slider).
-//
-class MidiLearnSlider : public juce::Slider
-{
-public:
-    MidiLearnSlider() = default;
-
-    // Call after construction to wire up right-click MIDI Learn.
-    // The caller must store the returned pointer in a unique_ptr vector.
-    MidiLearnMouseListener* setupMidiLearn(const juce::String& pid, MIDILearnManager& mgr)
-    {
-        paramId      = pid;
-        learnManager = &mgr;
-        auto* ml     = new MidiLearnMouseListener(pid, mgr);
-        addMouseListener(ml, false);
-        return ml;
-    }
-
-    void paint(juce::Graphics& g) override
-    {
-        juce::Slider::paint(g);
-
-        if (!learnManager) return;
-
-        bool isListening = learnManager->isLearning() && learnManager->getLearningParam() == paramId;
-        bool isMapped    = learnManager->hasMapping(paramId);
-
-        if (!isListening && !isMapped) return;
-
-        juce::Colour ringCol = isListening
-            ? juce::Colour(0xFFE9C46A)                   // XO Gold while listening
-            : juce::Colour(0xFF4ADE80).withAlpha(0.50f); // soft green when mapped
-
-        if (isListening)
-        {
-            double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
-            float pulse = 0.55f + 0.45f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
-            ringCol = ringCol.withAlpha(pulse);
-            // Force continuous repaint while listening so the pulse animates
-            repaint();
-        }
-
-        auto b  = getLocalBounds().toFloat().reduced(3.0f);
-        float r = juce::jmin(b.getWidth(), b.getHeight()) * 0.5f;
-        g.setColour(ringCol);
-        g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r,
-                      r * 2.0f, r * 2.0f, isListening ? 2.5f : 1.5f);
-
-        // Tiny "ML" badge at lower-right for mapped-but-not-listening
-        if (isMapped && !isListening)
-        {
-            g.setFont(juce::Font(6.0f).boldened());
-            g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
-            g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9,
-                       juce::Justification::centred);
-        }
-    }
-
-private:
-    juce::String      paramId;
-    MIDILearnManager* learnManager = nullptr;
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MidiLearnSlider)
 };
 
 //==============================================================================
@@ -4018,6 +3960,26 @@ public:
                        juce::Justification::centredRight);
         }
 
+        // ── MIDI Learn status badge — appears in header when listening ──────
+        {
+            const auto& mlm = processor.getMIDILearnManager();
+            if (mlm.isLearning())
+            {
+                // Pulse the badge alpha at ~2Hz using system time
+                double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
+                float pulse = 0.65f + 0.35f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
+
+                juce::String badge = "MIDI LEARN: move a controller to map \xe2\x80\xa2 right-click to cancel";
+                auto badgeRect = juce::Rectangle<int>(165, 4, getWidth() - 360, kHeaderH - 10);
+
+                g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.18f * pulse));
+                g.fillRoundedRectangle(badgeRect.toFloat(), 4.0f);
+                g.setColour(juce::Colour(0xFFE9C46A).withAlpha(pulse));
+                g.setFont(GalleryFonts::heading(9.0f));
+                g.drawText(badge, badgeRect, juce::Justification::centred);
+            }
+        }
+
         // Sidebar separator
         int sepX = kSidebarW;
         g.setColour(get(borderGray()));
@@ -4287,6 +4249,28 @@ private:
             overview.refresh();
         if (performancePanel.isVisible())
             performancePanel.refresh();
+
+        // ── MIDI Learn: finalise pending learn captures ───────────────────────
+        // checkPendingLearn() is safe to call from the message thread at any rate.
+        // It reads a single atomic written by processMidi() on the audio thread
+        // and, if a CC was captured, creates the mapping and fires the callback.
+        {
+            auto& mlm = processor.getMIDILearnManager();
+            mlm.checkPendingLearn();
+
+            // While a learn is active, keep the timer running fast (10Hz) so the
+            // amber-pulse animation refreshes.  When idle, revert to 1Hz to avoid
+            // wasting cycles.
+            if (mlm.isLearning())
+            {
+                startTimerHz(10);
+                repaint(); // pulse the header badge + listening knob ring
+            }
+            else
+            {
+                startTimerHz(1);
+            }
+        }
 
         // Drain Field Map note events from the lock-free audio-thread queue.
         // Color is resolved here on the message thread (safe: getEngine / getAccentColour).
