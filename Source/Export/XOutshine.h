@@ -544,6 +544,17 @@ private:
             s.numSamples  = (int) reader->lengthInSamples;
             s.durationS   = s.numSamples / s.sampleRate;
 
+            // Sample rate guard — spec requires: pass ≤48 kHz, downsample 96 kHz, reject >96 kHz
+            if (s.sampleRate > 96000.0)
+            {
+                errors_.add("\"" + s.name + "\": sample rate "
+                    + juce::String((int)(s.sampleRate / 1000)) + " kHz is not supported. "
+                    + "Maximum is 96 kHz. File will be skipped.");
+                // Mark as invalid so downstream stages can skip it
+                s.bitDepth = -1;  // sentinel: invalid sample
+                continue;
+            }
+
             juce::AudioBuffer<float> buf((int) reader->numChannels, s.numSamples);
             reader->read(&buf, 0, s.numSamples, 0, true, true);
 
@@ -638,6 +649,9 @@ private:
 
         for (const auto& s : samples)
         {
+            // Skip samples that were flagged invalid in analyze()
+            if (s.bitDepth < 0) continue;
+
             std::unique_ptr<juce::AudioFormatReader> reader(fmgr.createReaderFor(s.sourceFile));
             if (!reader) continue;
 
@@ -814,7 +828,25 @@ private:
                     for (int i = 0; i < ln; ++i)
                         data[i] = juce::jlimit(-1.0f, 1.0f, data[i] * gain);
                 }
-                writeWav(l.file, lb, lr->sampleRate, (int) lr->bitsPerSample);
+
+                // Bit depth: always write 24-bit integer.
+                // 32-bit float → 24-bit: scale and truncate (dither applied in writeWav).
+                // 16-bit → 24-bit: zero-pad lower 8 bits (no dither needed on promotion).
+                int targetBitDepth = 24;
+
+                // Sample rate: downsample 96 kHz → 48 kHz via 2:1 decimation with LP filter.
+                // 44.1 kHz and 48 kHz pass through unchanged.
+                double targetSampleRate = lr->sampleRate;
+                if (lr->sampleRate > 48001.0)  // 96 kHz path
+                {
+                    juce::AudioBuffer<float> downsampled = downsampleBy2(lb);
+                    targetSampleRate = lr->sampleRate / 2.0;
+                    writeWav(l.file, downsampled, targetSampleRate, targetBitDepth);
+                }
+                else
+                {
+                    writeWav(l.file, lb, targetSampleRate, targetBitDepth);
+                }
             }
         }
     }
@@ -830,16 +862,32 @@ private:
 
         auto splits = getVelocitySplits(settings_.velocityCurve);
 
+        // Separate drum programs (one XPM per pad) from melodic programs (one XPM for all zones)
+        std::vector<UpgradedProgram*> drumProgs;
+        std::vector<UpgradedProgram*> melodicProgs;
         for (auto& prog : programs)
         {
-            juce::String xml;
             if (isDrumCategory(prog.category))
-                xml = buildDrumXPM(prog, splits);
+                drumProgs.push_back(&prog);
             else
-                xml = buildKeygroupXPM(prog, splits);
+                melodicProgs.push_back(&prog);
+        }
 
-            auto xpmFile = xpmDir.getChildFile(prog.name + ".xpm");
-            xpmFile.replaceWithText(xml);
+        // Write one drum XPM per drum program (unchanged behavior)
+        for (auto* prog : drumProgs)
+        {
+            auto xpmFile = xpmDir.getChildFile(prog->name + ".xpm");
+            xpmFile.replaceWithText(buildDrumXPM(*prog, splits));
+        }
+
+        // Write one keygroup XPM for all melodic programs combined
+        if (!melodicProgs.empty())
+        {
+            // Use the pack name as the program name; fall back to first sample name
+            juce::String melodicName = settings_.packName.isEmpty()
+                ? melodicProgs[0]->name : settings_.packName;
+            auto xpmFile = xpmDir.getChildFile(sanitizeForFAT32(melodicName) + ".xpm");
+            xpmFile.replaceWithText(buildKeygroupXPM(melodicProgs, splits, melodicName));
         }
     }
 
@@ -905,14 +953,67 @@ private:
         return xml;
     }
 
-    juce::String buildKeygroupXPM (const UpgradedProgram& prog,
-                                    const std::vector<VelocitySplit>& splits)
+    // Multi-zone keygroup builder — one <Keygroup> per melodic sample.
+    juce::String buildKeygroupXPM (const std::vector<UpgradedProgram*>& progs,
+                                    const std::vector<VelocitySplit>& splits,
+                                    const juce::String& programName)
     {
+        // Sort by detected MIDI note (ascending)
+        std::vector<UpgradedProgram*> sorted = progs;
+        std::sort(sorted.begin(), sorted.end(),
+                  [](const UpgradedProgram* a, const UpgradedProgram* b) {
+                      return a->sourceInfo.detectedMidiNote < b->sourceInfo.detectedMidiNote;
+                  });
+
+        // Compute zone boundaries: midpoint rule.
+        // lowNote[i]  = (rootNote[i-1] + rootNote[i]) / 2 + 1  (exclusive upper of previous zone)
+        // highNote[i] = (rootNote[i] + rootNote[i+1]) / 2       (inclusive upper of this zone)
+        // Edge cases: first zone low = 0, last zone high = 127.
+        int n = (int)sorted.size();
+        std::vector<int> lowNotes(n), highNotes(n);
+
+        if (n == 1)
+        {
+            // Single sample: full range
+            lowNotes[0]  = 0;
+            highNotes[0] = 127;
+        }
+        else
+        {
+            for (int i = 0; i < n; ++i)
+            {
+                int root = sorted[i]->sourceInfo.detectedMidiNote;
+
+                // Low boundary
+                if (i == 0)
+                    lowNotes[i] = 0;
+                else
+                {
+                    int prevRoot = sorted[i - 1]->sourceInfo.detectedMidiNote;
+                    lowNotes[i] = (prevRoot + root) / 2 + 1;  // round down, then +1 for exclusive upper
+                }
+
+                // High boundary
+                if (i == n - 1)
+                    highNotes[i] = 127;
+                else
+                {
+                    int nextRoot = sorted[i + 1]->sourceInfo.detectedMidiNote;
+                    highNotes[i] = (root + nextRoot) / 2;      // inclusive upper of this zone
+                }
+
+                // Clamp
+                lowNotes[i]  = juce::jlimit(0, 127, lowNotes[i]);
+                highNotes[i] = juce::jlimit(0, 127, highNotes[i]);
+            }
+        }
+
+        // Build XPM XML
         juce::String xml;
         xml << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         xml << "<MPCVObject type=\"com.akaipro.mpc.keygroup.program\">\n";
         xml << "  <Version>1.7</Version>\n";
-        xml << "  <ProgramName>" << xmlEscape(prog.name) << "</ProgramName>\n";
+        xml << "  <ProgramName>" << xmlEscape(programName) << "</ProgramName>\n";
         xml << "  <AfterTouch>\n";
         xml << "    <Destination>FilterResonance</Destination>\n";
         xml << "    <Amount>40</Amount>\n";
@@ -923,58 +1024,78 @@ private:
         xml << "  </ModWheel>\n";
         xml << "  <PitchBendRange>24</PitchBendRange>\n";
         xml << "  <Keygroups>\n";
-        xml << "    <Keygroup index=\"0\">\n";
-        xml << "      <LowNote>0</LowNote>\n";
-        xml << "      <HighNote>127</HighNote>\n";
-        xml << "      <Layers>\n";
 
-        int layerIdx = 0;
-        for (int v = 0; v < prog.numVelocityLayers && v < (int) splits.size(); ++v)
+        for (int i = 0; i < n; ++i)
         {
-            auto rrs = getLayersForVel(prog.layers, v);
-            for (const auto& l : rrs)
+            const auto& prog = *sorted[i];
+            int root = prog.sourceInfo.detectedMidiNote;
+
+            xml << "    <Keygroup index=\"" << i << "\">\n";
+            xml << "      <LowNote>" << lowNotes[i] << "</LowNote>\n";
+            xml << "      <HighNote>" << highNotes[i] << "</HighNote>\n";
+
+            xml << "      <Layers>\n";
+            int layerIdx = 0;
+
+            for (int v = 0; v < prog.numVelocityLayers && v < (int)splits.size(); ++v)
+            {
+                auto rrs = getLayersForVel(prog.layers, v);
+                for (const auto* l : rrs)
+                {
+                    xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
+                    xml << "          <SampleName>" << l->filename << "</SampleName>\n";
+                    xml << "          <VelStart>" << splits[v].start << "</VelStart>\n";
+                    xml << "          <VelEnd>" << splits[v].end << "</VelEnd>\n";
+                    xml << "          <Volume>" << juce::String(splits[v].volume, 2) << "</Volume>\n";
+                    xml << "          <RootNote>" << root << "</RootNote>\n";
+                    xml << "          <KeyTrack>True</KeyTrack>\n";
+                    xml << "          <TuneCoarse>0</TuneCoarse>\n";
+                    xml << "          <TuneFine>0</TuneFine>\n";
+                    if (prog.sourceInfo.isLoopable)
+                    {
+                        xml << "          <LoopStart>" << prog.sourceInfo.loopStart << "</LoopStart>\n";
+                        xml << "          <LoopEnd>" << prog.sourceInfo.loopEnd << "</LoopEnd>\n";
+                        xml << "          <LoopCrossfade>100</LoopCrossfade>\n";
+                    }
+                    else
+                    {
+                        xml << "          <LoopStart>-1</LoopStart>\n";
+                        xml << "          <LoopEnd>-1</LoopEnd>\n";
+                    }
+                    if (rrs.size() > 1)
+                    {
+                        xml << "          <CycleType>RoundRobin</CycleType>\n";
+                        xml << "          <CycleGroup>" << (v + 1) << "</CycleGroup>\n";
+                    }
+                    xml << "        </Layer>\n";
+                }
+            }
+
+            // Empty layers must have VelStart = 0 (XPM hardware requirement)
+            for (int v = prog.numVelocityLayers; v < 4; ++v)
             {
                 xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
-                xml << "          <SampleName>" << l->filename << "</SampleName>\n";
-                xml << "          <VelStart>" << splits[v].start << "</VelStart>\n";
-                xml << "          <VelEnd>" << splits[v].end << "</VelEnd>\n";
-                xml << "          <Volume>" << juce::String(splits[v].volume, 2) << "</Volume>\n";
-                xml << "          <RootNote>" << juce::String(prog.sourceInfo.detectedMidiNote) << "</RootNote>\n";
-                xml << "          <KeyTrack>True</KeyTrack>\n";
-                xml << "          <TuneCoarse>0</TuneCoarse>\n";
-                xml << "          <TuneFine>0</TuneFine>\n";
-                if (prog.sourceInfo.isLoopable)
-                {
-                    xml << "          <LoopStart>" << prog.sourceInfo.loopStart << "</LoopStart>\n";
-                    xml << "          <LoopEnd>" << prog.sourceInfo.loopEnd << "</LoopEnd>\n";
-                    xml << "          <LoopCrossfade>100</LoopCrossfade>\n";
-                }
-                else
-                {
-                    xml << "          <LoopStart>-1</LoopStart>\n";
-                    xml << "          <LoopEnd>-1</LoopEnd>\n";
-                }
-                if (rrs.size() > 1)
-                {
-                    xml << "          <CycleType>RoundRobin</CycleType>\n";
-                    xml << "          <CycleGroup>" << (v + 1) << "</CycleGroup>\n";
-                }
+                xml << "          <VelStart>0</VelStart>\n";
+                xml << "          <VelEnd>0</VelEnd>\n";
                 xml << "        </Layer>\n";
             }
+
+            xml << "      </Layers>\n";
+            xml << "    </Keygroup>\n";
         }
-        // Empty layers get VelStart = 0 (critical XPM rule #3)
-        for (int v = prog.numVelocityLayers; v < 4; ++v)
-        {
-            xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
-            xml << "          <VelStart>0</VelStart>\n";
-            xml << "          <VelEnd>0</VelEnd>\n";
-            xml << "        </Layer>\n";
-        }
-        xml << "      </Layers>\n";
-        xml << "    </Keygroup>\n";
+
         xml << "  </Keygroups>\n";
         xml << "</MPCVObject>\n";
         return xml;
+    }
+
+    // Single-sample overload — delegates to the multi-zone builder.
+    // Preserves backward compatibility with any callers that pass a single UpgradedProgram.
+    juce::String buildKeygroupXPM (const UpgradedProgram& prog,
+                                    const std::vector<VelocitySplit>& splits)
+    {
+        std::vector<UpgradedProgram*> single = { const_cast<UpgradedProgram*>(&prog) };
+        return buildKeygroupXPM(single, splits, prog.name);
     }
 
     //==========================================================================
