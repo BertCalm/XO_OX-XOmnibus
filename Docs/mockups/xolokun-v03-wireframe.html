@@ -620,8 +620,33 @@
   .verify-item.warn { color: #fc8; }
   .verify-item.ok { color: #8f8; }
 
-  /* Single engine mode */
-  #col-a.single-engine { width: 80px; }
+  /* Single engine mode — minimal strip */
+  #col-a.single-engine { width: 80px; overflow: hidden; }
+  #col-a.single-engine .slot-tile {
+    padding: 4px 2px;
+    min-height: 40px;
+    max-height: 50px;
+  }
+  #col-a.single-engine .slot-tile .slot-waveform,
+  #col-a.single-engine .slot-tile .slot-macros,
+  #col-a.single-engine .slot-tile .slot-fx-indicator,
+  #col-a.single-engine .slot-tile .slot-cpu,
+  #col-a.single-engine .slot-tile .slot-expanded-content,
+  #col-a.single-engine .slot-tile .creature-icon,
+  #col-a.single-engine .coupling-mini-graph,
+  #col-a.single-engine .engine-browser-btn {
+    display: none !important;
+  }
+  #col-a.single-engine .slot-tile .slot-header {
+    font-size: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #col-a.single-engine .slot-tile .slot-name {
+    font-size: 9px;
+    writing-mode: horizontal-tb;
+  }
   #col-b.single-engine-expanded { }
 
   /* Responsive sizes */
@@ -1663,6 +1688,7 @@ function toggleSingleEngine() {
   singleEngineMode = !singleEngineMode;
   const colA = document.getElementById('col-a');
   colA.style.width = singleEngineMode ? '80px' : '260px';
+  colA.classList.toggle('single-engine', singleEngineMode);
   document.getElementById('btn-se').textContent = singleEngineMode
     ? '[Exit Single Engine Mode]'
     : '[Toggle Single Engine Mode]';
