@@ -44,7 +44,6 @@ public:
     CPUMeter()
     {
         setInterceptsMouseClicks(false, false);
-        setTooltip("CPU load of the audio process block");
     }
 
     // Called from XOlokunEditor::timerCallback() (message thread, ~1Hz is fine).
@@ -122,7 +121,6 @@ public:
     MIDIActivityIndicator()
     {
         setInterceptsMouseClicks(false, false);
-        setTooltip("MIDI activity — flashes on note-on; amber pulse during MIDI Learn");
 
         // Initialize flash color to a neutral fallback (overwritten on first flash).
         flashColor = juce::Colour(GalleryColors::xoGold);

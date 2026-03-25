@@ -308,6 +308,10 @@ target_sources(XOlokun PRIVATE
     Source/UI/Gallery/PlayControlPanel.h
     Source/UI/Gallery/SettingsPanel.h
     Source/UI/Gallery/ExportTabPanel.h
+    Source/UI/Gallery/DepthZoneDial.h
+    Source/UI/Gallery/ABCompare.h
+    Source/UI/Gallery/HeaderIndicators.h
+    Source/UI/Gallery/MiniCouplingGraph.h
 
     # Oscar (OddOscar animated companion) — requires Rive, added conditionally below
 

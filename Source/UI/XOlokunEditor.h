@@ -40,6 +40,10 @@
 #include "Gallery/WaveformDisplay.h"
 #include "Gallery/EnginePickerPopup.h"
 #include "Gallery/CouplingPopover.h"
+#include "Gallery/DepthZoneDial.h"
+#include "Gallery/ABCompare.h"
+#include "Gallery/HeaderIndicators.h"
+#include "Gallery/MiniCouplingGraph.h"
 
 namespace xolokun {
 
@@ -232,6 +236,13 @@ public:
         addAndMakeVisible(statusBar);
         addKeyListener(statusBar.getKeyListener());
 
+        // ── Tier 1 Gallery components ─────────────────────────────────────────
+        addAndMakeVisible(depthDial);
+        addAndMakeVisible(abCompare);
+        addAndMakeVisible(cpuMeter);
+        addAndMakeVisible(midiIndicator);
+        addAndMakeVisible(miniCouplingGraph);
+
         // ── MIDI Learn wiring ─────────────────────────────────────────────────
         // Connect the processor's MIDILearnManager to every parameter knob in the UI.
         // This enables right-click → MIDI Learn on all rotary controls.
@@ -248,6 +259,27 @@ public:
         // after the first poll cycle that finds nothing pending.
         proc.getMIDILearnManager().setLearnCompleteCallback(
             [this](const juce::String&, int) { startTimerHz(10); });
+
+        // ── DepthZoneDial wiring ──────────────────────────────────────────────
+        // Default to slot 0 — updated in selectSlot() when the user picks a tile.
+        depthDial.setSlot(0);
+        depthDial.onEngineSelected = [this](const juce::String& engineId)
+        {
+            // selectedSlot tracks the currently focused slot (-1 = overview).
+            // When no tile is selected, the dial operates on slot 0.
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots)
+                           ? selectedSlot : 0;
+            processor.loadEngine(slot, engineId.toStdString());
+            if (slot < kNumPrimarySlots && tiles[slot])
+                tiles[slot]->refresh();
+            if (detail.isVisible())
+                detail.loadSlot(slot);
+            overview.refresh();
+        };
+
+        // ── ABCompare wiring ─────────────────────────────────────────────────
+        // Fire onPresetLoaded() whenever any preset navigation path applies a preset.
+        presetBrowser.onPresetLoaded = [this]() { abCompare.onPresetLoaded(); };
 
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
         proc.onEngineChanged = [this](int slot)
@@ -393,25 +425,41 @@ public:
 
         // ── Header: toggle buttons and preset browser strip (right side) ─────
         auto header = layout.getHeader();
+        // Right zone — peel off from right edge inward:
         presetBrowser.setBounds(header.removeFromRight(220).reduced(4, 10));
         exportBtn.setBounds(header.removeFromRight(46).reduced(4, 12));
         themeToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         surfaceToggleBtn.setBounds(header.removeFromRight(36).reduced(2, 12));
+        // CPU meter (60×20) and MIDI dot (8×8) sit between PS toggle and CM/P buttons
+        {
+            auto midiSlice = header.removeFromRight(16);
+            midiIndicator.setBounds(midiSlice.withSizeKeepingCentre(8, 8));
+        }
+        cpuMeter.setBounds(header.removeFromRight(64).withSizeKeepingCentre(60, 20));
         perfToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
+        // A/B compare widget (56×24) sits between CM toggle and the macro area
+        abCompare.setBounds(header.removeFromRight(64).withSizeKeepingCentre(56, 24));
 
         // ── Macro knobs in header — between title area and button strip ───────
         // All right-side buttons have been sliced above; what remains in 'header'
-        // spans from x=0 to the left edge of the CM toggle button.
-        // Skip the first 165px (logo + title text area).
+        // spans from x=0 to the left edge of the A/B compare widget.
+        // Skip the first 220px (logo + title text area + DepthDial).
         {
-            auto macroHeader = header; // copy of what's left after right buttons removed
-            macroHeader.removeFromLeft(165);
+            auto leftZone = header.removeFromLeft(220);
+            // DepthZoneDial: 48×48, centred vertically, anchored right of logo.
+            depthDial.setBounds(leftZone.removeFromRight(56).withSizeKeepingCentre(48, 48));
+
+            auto macroHeader = header; // what remains between DepthDial and A/B
             macros.setBounds(macroHeader.reduced(8, 8));
         }
 
         // ── Column A — Engine Rack (full height, MacroSection now in header) ──
         auto colA = layout.getColumnA();
+
+        // Reserve bottom 80px for MiniCouplingGraph before dividing tile space.
+        static constexpr int kMiniGraphH = 80;
+        miniCouplingGraph.setBounds(colA.removeFromBottom(kMiniGraphH));
 
         // Divide Column A among the 4 primary tiles.
         // The ghost tile sits below tile[3] at the same height, but only takes
@@ -492,6 +540,7 @@ private:
             return; // already showing this one
 
         selectedSlot = slot;
+        depthDial.setSlot(juce::jlimit(0, 3, slot)); // DepthDial tracks the selected slot
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
@@ -753,6 +802,7 @@ private:
                     colour = eng->getAccentColour();
             }
             fieldMap.addNote(ev.midiNote, ev.velocity, colour);
+            midiIndicator.flash(colour); // flash on every incoming note event
         });
 
         // ── Status Bar updates ────────────────────────────────────────────────
@@ -794,6 +844,24 @@ private:
             statusBar.setBpm(120.0);
             statusBar.setCpuPercent(0.0f);
         }
+
+        // ── Header indicators ─────────────────────────────────────────────────
+        // CPU meter — push the same placeholder used by StatusBar until the
+        // processor exposes a getCpuPercent() atomic.
+        cpuMeter.setCpuPercent(0.0f);
+
+        // MIDI indicator learn state — keeps amber pulse in sync.
+        midiIndicator.setLearning(processor.getMIDILearnManager().isLearning());
+
+        // ── MiniCouplingGraph ─────────────────────────────────────────────────
+        miniCouplingGraph.refresh();
+        for (int i = 0; i < kNumPrimarySlots; ++i)
+        {
+            if (tiles[i])
+                miniCouplingGraph.setNodeCenter(i, (float)tiles[i]->getBounds().getCentreY());
+        }
+        if (ghostTile.isVisible())
+            miniCouplingGraph.setNodeCenter(4, (float)ghostTile.getBounds().getCentreY());
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
@@ -877,6 +945,13 @@ private:
     CouplingArcHitTester   couplingHitTester { processor };
     SidebarPanel           sidebar;
     StatusBar              statusBar;
+
+    // ── Tier 1 Gallery components ─────────────────────────────────────────────
+    DepthZoneDial          depthDial    { processor };
+    ABCompare              abCompare    { processor };
+    CPUMeter               cpuMeter;
+    MIDIActivityIndicator  midiIndicator;
+    MiniCouplingGraph      miniCouplingGraph { processor };
 
     int selectedSlot = -1;
 

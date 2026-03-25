@@ -19,6 +19,10 @@ class PresetBrowserStrip : public juce::Component,
                            private PresetManager::Listener
 {
 public:
+    // Fires on the message thread after any preset is applied (prev, next, or
+    // browser selection). The editor uses this to notify ABCompare.
+    std::function<void()> onPresetLoaded;
+
     PresetBrowserStrip(XOlokunProcessor& proc)
         : processor(proc)
     {
@@ -56,6 +60,7 @@ public:
             processor.applyPreset(preset);
             if (macroSection && !preset.macroLabels.isEmpty())
                 macroSection->setLabels(preset.macroLabels);
+            if (onPresetLoaded) onPresetLoaded();
         };
 
         nextBtn.onClick = [this]
@@ -66,6 +71,7 @@ public:
             processor.applyPreset(preset);
             if (macroSection && !preset.macroLabels.isEmpty())
                 macroSection->setLabels(preset.macroLabels);
+            if (onPresetLoaded) onPresetLoaded();
         };
 
         browseBtn.onClick = [this] { openBrowser(); };
@@ -138,6 +144,7 @@ private:
                 safeThis->nameLabel.setText(preset.name, juce::dontSendNotification);
                 if (safeThis->macroSection && !preset.macroLabels.isEmpty())
                     safeThis->macroSection->setLabels(preset.macroLabels);
+                if (safeThis->onPresetLoaded) safeThis->onPresetLoaded();
             }
         };
 

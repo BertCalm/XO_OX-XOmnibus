@@ -51,8 +51,6 @@ public:
                     "A/B Compare",
                     "Compare two preset states. Click A or B to enter compare mode.",
                     /*wantsKeyFocus=*/true);
-
-        setTooltip("A/B Compare — click A or B to enter compare mode");
     }
 
     ~ABCompare() override = default;
