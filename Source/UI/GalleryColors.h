@@ -33,15 +33,28 @@ namespace GalleryColors {
         constexpr uint32_t xoGoldText = 0xFF9E7C2E;   // WCAG AA on shellWhite
     }
 
-    // Dark palette (from master spec section 6.2–6.4)
+    // Dark palette (matched to xolokun-v04-polished.html CSS variables exactly)
     namespace Dark {
-        constexpr uint32_t shellWhite = 0xFF1A1A1A;
-        constexpr uint32_t textDark   = 0xFFEEEEEE;
-        constexpr uint32_t textMid    = 0xFFC8C8C8;
-        constexpr uint32_t borderGray = 0xFF4A4A4A;
-        constexpr uint32_t slotBg     = 0xFF2D2D2D;
-        constexpr uint32_t emptySlot  = 0xFF363636;
-        constexpr uint32_t xoGoldText = 0xFFE9C46A;
+        // Core backgrounds
+        static constexpr uint32_t bg          = 0xFF0E0E10;  // --bg (plugin shell)
+        static constexpr uint32_t surface     = 0xFF1A1A1C;  // --surface (header, status bar)
+        static constexpr uint32_t elevated    = 0xFF242426;  // --elevated (cards, pills)
+        static constexpr uint32_t raised      = 0xFF2C2C2F;  // --raised (tooltips)
+
+        // Text hierarchy (4-level tonal scale)
+        static constexpr uint32_t t1          = 0xFFF0EDE8;  // primary text (headings, active)
+        static constexpr uint32_t t2          = 0xFF9E9B97;  // secondary (labels)
+        static constexpr uint32_t t3          = 0xFF5E5C5A;  // tertiary (disabled, muted)
+        static constexpr uint32_t t4          = 0xFF3A3938;  // quaternary (very subtle)
+
+        // Legacy accessor-mapped values
+        static constexpr uint32_t shellWhite  = bg;           // shell background
+        static constexpr uint32_t textDark    = t1;           // primary text
+        static constexpr uint32_t textMid     = t2;           // secondary text
+        static constexpr uint32_t borderGray  = t4;           // borders (use border() for alpha version)
+        static constexpr uint32_t slotBg      = elevated;     // card / slot backgrounds
+        static constexpr uint32_t emptySlot   = t4;           // empty slot indicator
+        static constexpr uint32_t xoGoldText  = 0xFFE9C46A;
     }
 
     // Brand constants — unchanged between modes
@@ -55,6 +68,19 @@ namespace GalleryColors {
     inline uint32_t slotBg()     { return darkMode() ? Dark::slotBg     : Light::slotBg; }
     inline uint32_t emptySlot()  { return darkMode() ? Dark::emptySlot  : Light::emptySlot; }
     inline uint32_t xoGoldText() { return darkMode() ? Dark::xoGoldText : Light::xoGoldText; }
+
+    // New tonal accessors (prototype v04)
+    inline uint32_t surface()  { return darkMode() ? Dark::surface  : Light::shellWhite; }
+    inline uint32_t elevated() { return darkMode() ? Dark::elevated : 0xFFEEEBE6; }
+    inline uint32_t raised()   { return darkMode() ? Dark::raised   : 0xFFE4E1DC; }
+    inline uint32_t t1()       { return darkMode() ? Dark::t1       : Light::textDark; }
+    inline uint32_t t2()       { return darkMode() ? Dark::t2       : Light::textMid; }
+    inline uint32_t t3()       { return darkMode() ? Dark::t3       : 0xFF888580; }
+    inline uint32_t t4()       { return darkMode() ? Dark::t4       : Light::borderGray; }
+
+    // Prototype-spec border helpers (alpha-over-background blends)
+    inline juce::Colour border()   { return juce::Colour(0xFFFFFFFF).withAlpha(darkMode() ? 0.07f : 0.12f); }
+    inline juce::Colour borderMd() { return juce::Colour(0xFFFFFFFF).withAlpha(darkMode() ? 0.11f : 0.18f); }
 
     // Backward compatibility constants
     constexpr uint32_t shellWhite_v = 0xFFF8F6F3;

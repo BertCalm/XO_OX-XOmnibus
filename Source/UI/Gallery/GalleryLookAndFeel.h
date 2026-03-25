@@ -6,6 +6,7 @@ namespace xolokun {
 
 //==============================================================================
 // GalleryLookAndFeel — Gallery Model visual language (WCAG 2.1 AA compliant)
+// Matched to xolokun-v04-polished.html prototype exactly.
 class GalleryLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
@@ -15,166 +16,205 @@ public:
     void applyTheme()
     {
         using namespace GalleryColors;
-        setColour(juce::Slider::rotarySliderFillColourId,        get(xoGold));
-        setColour(juce::Slider::rotarySliderOutlineColourId,     get(borderGray()));
-        setColour(juce::Slider::textBoxTextColourId,             get(textMid()));
-        setColour(juce::Slider::textBoxBackgroundColourId,       juce::Colours::transparentBlack);
-        setColour(juce::Slider::textBoxOutlineColourId,          juce::Colours::transparentBlack);
-        setColour(juce::TextButton::buttonColourId,              get(shellWhite()));
-        setColour(juce::TextButton::buttonOnColourId,            get(xoGold));
-        setColour(juce::TextButton::textColourOffId,             get(textDark()));
-        setColour(juce::ComboBox::backgroundColourId,            get(shellWhite()));
-        setColour(juce::ComboBox::outlineColourId,               get(borderGray()));
-        setColour(juce::PopupMenu::backgroundColourId,           get(shellWhite()));
-        setColour(juce::PopupMenu::textColourId,                 get(textDark()));
-        setColour(juce::PopupMenu::highlightedBackgroundColourId,get(xoGold).withAlpha(0.25f));
-        setColour(juce::ScrollBar::thumbColourId,                get(borderGray()));
-        setColour(juce::Label::textColourId,                     get(textDark()));
+
+        // Rotary sliders
+        setColour(juce::Slider::rotarySliderFillColourId,    get(xoGold));
+        setColour(juce::Slider::rotarySliderOutlineColourId, juce::Colour(t3()));
+        setColour(juce::Slider::textBoxTextColourId,         juce::Colour(t2()));
+        setColour(juce::Slider::textBoxBackgroundColourId,   juce::Colours::transparentBlack);
+        setColour(juce::Slider::textBoxOutlineColourId,      juce::Colours::transparentBlack);
+
+        // Buttons
+        setColour(juce::TextButton::buttonColourId,          juce::Colour(elevated()));
+        setColour(juce::TextButton::buttonOnColourId,        get(xoGold));
+        setColour(juce::TextButton::textColourOffId,         juce::Colour(t1()));
+        setColour(juce::TextButton::textColourOnId,          juce::Colour(darkMode() ? Dark::bg : Light::textDark));
+
+        // ComboBox
+        setColour(juce::ComboBox::backgroundColourId,        juce::Colour(elevated()));
+        setColour(juce::ComboBox::outlineColourId,           border());
+        setColour(juce::ComboBox::textColourId,              juce::Colour(t1()));
+        setColour(juce::ComboBox::arrowColourId,             juce::Colour(t2()));
+
+        // PopupMenu
+        setColour(juce::PopupMenu::backgroundColourId,       juce::Colour(elevated()));
+        setColour(juce::PopupMenu::textColourId,             juce::Colour(t1()));
+        setColour(juce::PopupMenu::highlightedBackgroundColourId, get(xoGold).withAlpha(0.15f));
+        setColour(juce::PopupMenu::highlightedTextColourId,  juce::Colour(t1()));
+
+        // ScrollBar
+        setColour(juce::ScrollBar::thumbColourId,            juce::Colour(t4()));
+        setColour(juce::ScrollBar::backgroundColourId,       juce::Colour(elevated()));
+
+        // Labels
+        setColour(juce::Label::textColourId,                 juce::Colour(t1()));
+        setColour(juce::Label::backgroundColourId,           juce::Colours::transparentBlack);
+        setColour(juce::Label::outlineColourId,              juce::Colours::transparentBlack);
+
+        // ListBox / table
+        setColour(juce::ListBox::backgroundColourId,         juce::Colour(elevated()));
+        setColour(juce::ListBox::textColourId,               juce::Colour(t1()));
+        setColour(juce::ListBox::outlineColourId,            border());
     }
 
-    // Ecological Instrument paradigm — zone arcs + setpoint marker + value arc.
-    // Visual language mirrors the web PlaySurface:
-    //   Track ring   : faint full-sweep baseline
-    //   Zone arcs    : Sunlit/Twilight/Midnight depth bands at 0.22 opacity
-    //   Value arc    : engine accent color, shows current parameter value
-    //   Setpoint ▲   : XO Gold triangle pointing outward at current position
-    //   Center disc  : warm white inner field (Gallery Model shell)
-    void drawRotarySlider(juce::Graphics& g, int x, int y, int w, int h,
-                          float sliderPos, float startAngle, float endAngle,
+    //==========================================================================
+    // drawRotarySlider — matches prototype knob exactly
+    // Body: radial gradient (circle at 38% 32%, #4A4A4E 0%, #3A3A3E 25%, #282830 55%, #141418 100%)
+    // Arc track: 1.4px, T3 (#5E5C5A)
+    // Arc fill: 1.8px, engine accent
+    // Indicator dot: r=1.8 at arc endpoint
+    void drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height,
+                          float sliderPos, float rotaryStartAngle, float rotaryEndAngle,
                           juce::Slider& slider) override
     {
-        auto bounds = juce::Rectangle<float>((float)x, (float)y, (float)w, (float)h).reduced(6.0f);
-        float r     = juce::jmin(bounds.getWidth(), bounds.getHeight()) * 0.5f;
-        float cx    = bounds.getCentreX();
-        float cy    = bounds.getCentreY();
-        float sweep = endAngle - startAngle;
-        float fillAngle = startAngle + sliderPos * sweep;
-        float arcR  = r - 2.0f;
+        using namespace GalleryColors;
 
-        // Focus ring (WCAG 2.4.7)
-        if (slider.hasKeyboardFocus(true))
-            A11y::drawCircularFocusRing(g, cx, cy, r + 2.0f);
+        auto bounds  = juce::Rectangle<int>(x, y, width, height).toFloat();
+        float diameter = juce::jmin(bounds.getWidth(), bounds.getHeight());
+        float radius = diameter * 0.5f;
+        float cx     = bounds.getCentreX();
+        float cy     = bounds.getCentreY();
 
-        // ── 1. Ecological depth zone arcs ────────────────────────────────
-        // Wider than the track so they create a soft halo behind it.
-        // Sunlit 0–55% | Twilight 55–80% | Midnight 80–100% of sweep.
-        struct ZoneBand { float normStart, normEnd; uint32_t rgba; };
-        constexpr ZoneBand kZones[3] = {
-            { 0.00f, 0.55f, 0xFF48CAE4 },   // Sunlit  — tropical cyan
-            { 0.55f, 0.80f, 0xFF0096C7 },   // Twilight — deep blue
-            { 0.80f, 1.00f, 0xFF7B2FBE }    // Midnight — bioluminescent violet
-        };
-        for (const auto& z : kZones)
+        // ── 1. Knob body — radial gradient matching prototype ──────────────
         {
-            float a0 = startAngle + z.normStart * sweep;
-            float a1 = startAngle + z.normEnd   * sweep;
-            juce::Path zp;
-            zp.addCentredArc(cx, cy, arcR, arcR, 0.0f, a0, a1, true);
-            g.setColour(juce::Colour(z.rgba).withAlpha(0.22f));
-            g.strokePath(zp, juce::PathStrokeType(4.5f, juce::PathStrokeType::curved,
-                                                    juce::PathStrokeType::rounded));
+            // Radial gradient: highlight at 38% left / 32% top, dark at far corner
+            juce::ColourGradient grad(
+                juce::Colour(0xFF4A4A4E),
+                cx - radius * 0.24f,   // 38% from left of bounding box
+                cy - radius * 0.36f,   // 32% from top of bounding box
+                juce::Colour(0xFF141418),
+                cx + radius, cy + radius,
+                true /* radial */);
+            grad.addColour(0.25, juce::Colour(0xFF3A3A3E));
+            grad.addColour(0.55, juce::Colour(0xFF282830));
+            g.setGradientFill(grad);
+            g.fillEllipse(cx - radius, cy - radius, diameter, diameter);
         }
 
-        // ── 2. Track ring — full-sweep baseline ──────────────────────────
+        // ── 2. Outer border ring — prototype: 1px rgba(255,255,255,0.07) ───
+        g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.07f));
+        g.drawEllipse(cx - radius, cy - radius, diameter, diameter, 1.0f);
+
+        // ── 3. Inner highlight — top-left specular ──────────────────────────
+        g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.09f));
+        g.drawEllipse(cx - radius + 1.0f, cy - radius + 1.0f,
+                      diameter - 2.0f, diameter - 2.0f, 0.5f);
+
+        // ── 4. Arc track — 1.4px, T3 (#5E5C5A) ────────────────────────────
+        float arcRadius = radius - 3.0f;
         {
-            juce::Path track;
-            track.addCentredArc(cx, cy, arcR, arcR, 0.0f, startAngle, endAngle, true);
-            g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.40f));
-            g.strokePath(track, juce::PathStrokeType(1.5f, juce::PathStrokeType::curved,
-                                                      juce::PathStrokeType::rounded));
+            juce::Path trackArc;
+            trackArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
+                                   rotaryStartAngle, rotaryEndAngle, true);
+            g.setColour(juce::Colour(0xFF5E5C5A));
+            g.strokePath(trackArc, juce::PathStrokeType(1.4f, juce::PathStrokeType::curved,
+                                                         juce::PathStrokeType::rounded));
         }
 
-        // ── 3. Value arc — engine accent color ───────────────────────────
+        // ── 5. Arc fill — 1.8px, engine accent ────────────────────────────
+        float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
         if (sliderPos > 0.001f)
         {
-            juce::Path fill;
-            fill.addCentredArc(cx, cy, arcR, arcR, 0.0f, startAngle, fillAngle, true);
-            auto accent = slider.findColour(juce::Slider::rotarySliderFillColourId);
-            g.setColour(accent);
-            g.strokePath(fill, juce::PathStrokeType(3.0f, juce::PathStrokeType::curved,
-                                                      juce::PathStrokeType::rounded));
+            juce::Path fillArc;
+            fillArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
+                                  rotaryStartAngle, fillEnd, true);
+
+            auto fillColour = slider.findColour(juce::Slider::rotarySliderFillColourId);
+            if (fillColour.isTransparent()) fillColour = get(xoGold);
+
+            g.setColour(fillColour);
+            g.strokePath(fillArc, juce::PathStrokeType(1.8f, juce::PathStrokeType::curved,
+                                                        juce::PathStrokeType::rounded));
+
+            // ── 6. Indicator dot at arc endpoint ────────────────────────────
+            // Screen coords: x = cx + r*cos(angle - pi/2), y = cy + r*sin(angle - pi/2)
+            float dotX = cx + arcRadius * std::cos(fillEnd - juce::MathConstants<float>::halfPi);
+            float dotY = cy + arcRadius * std::sin(fillEnd - juce::MathConstants<float>::halfPi);
+            g.setColour(fillColour.withAlpha(0.9f));
+            g.fillEllipse(dotX - 1.8f, dotY - 1.8f, 3.6f, 3.6f);
         }
 
-        // ── 4. Center disc — Gallery Model warm white inner field ────────
+        // ── 7. Focus ring (WCAG 2.4.7) ────────────────────────────────────
+        if (slider.hasKeyboardFocus(true))
         {
-            float discR = r * 0.44f;
-            g.setColour(GalleryColors::get(GalleryColors::shellWhite()));
-            g.fillEllipse(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f);
-            g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.35f));
-            g.drawEllipse(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f, 1.0f);
-
-            // Live value readout during interaction — center disc becomes the face
-            if (slider.isMouseButtonDown() || slider.isMouseOverOrDragging())
-            {
-                juce::String valStr;
-                double val = slider.getValue();
-                // Integers for whole-number ranges (e.g. semitones, MIDI CCs);
-                // one decimal place for continuous parameters.
-                if (slider.getInterval() >= 1.0 && slider.getMaximum() <= 127.0)
-                    valStr = juce::String((int)val);
-                else
-                    valStr = juce::String(val, 1);
-
-                float fontSize = juce::jmax(7.0f, discR * 0.7f);
-                g.setFont(GalleryFonts::value(fontSize));
-                g.setColour(GalleryColors::get(GalleryColors::textDark()).withAlpha(0.85f));
-                g.drawText(valStr,
-                           juce::Rectangle<float>(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f),
-                           juce::Justification::centred);
-            }
+            g.setColour(A11y::focusRingColour().withAlpha(0.6f));
+            g.drawEllipse(cx - radius - 2.0f, cy - radius - 2.0f,
+                          diameter + 4.0f, diameter + 4.0f, 1.5f);
         }
 
-        // ── 5. Setpoint triangle ▲ — XO Gold marker at player's intent ──
-        // Tip at the arc edge, base pointing inward. Screen coords: Y increases downward,
-        // so point at angle θ = (cx + arcR·sin θ, cy − arcR·cos θ).
+        // ── 8. Live value readout (during interaction) ─────────────────────
+        if (slider.isMouseButtonDown() || slider.isMouseOverOrDragging())
         {
-            float tipR   = arcR + 1.5f;
-            float tipX   = cx + tipR * std::sin(fillAngle);
-            float tipY   = cy - tipR * std::cos(fillAngle);
+            float discR = radius * 0.44f;
+            juce::String valStr;
+            double val = slider.getValue();
+            if (slider.getInterval() >= 1.0 && slider.getMaximum() <= 127.0)
+                valStr = juce::String((int)val);
+            else
+                valStr = juce::String(val, 1);
 
-            // Unit vectors: radial outward (rdx,rdy) and perpendicular (pdx,pdy)
-            float rdx =  std::sin(fillAngle);
-            float rdy = -std::cos(fillAngle);
-            float pdx = -rdy;   // rotate radial 90° CCW in screen space
-            float pdy =  rdx;
-
-            constexpr float kTriH = 5.5f;   // height (depth into arc)
-            constexpr float kTriW = 3.2f;   // half-width of base
-
-            juce::Path tri;
-            tri.startNewSubPath(tipX, tipY);
-            tri.lineTo(tipX - rdx * kTriH + pdx * kTriW,
-                       tipY - rdy * kTriH + pdy * kTriW);
-            tri.lineTo(tipX - rdx * kTriH - pdx * kTriW,
-                       tipY - rdy * kTriH - pdy * kTriW);
-            tri.closeSubPath();
-
-            g.setColour(juce::Colour(GalleryColors::xoGold));
-            g.fillPath(tri);
+            float fontSize = juce::jmax(7.0f, discR * 0.7f);
+            g.setFont(GalleryFonts::value(fontSize));
+            g.setColour(juce::Colour(GalleryColors::t1()).withAlpha(0.85f));
+            g.drawText(valStr,
+                       juce::Rectangle<float>(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f),
+                       juce::Justification::centred);
         }
     }
 
+    //==========================================================================
+    // drawButtonBackground — matches prototype button styles
     void drawButtonBackground(juce::Graphics& g, juce::Button& btn,
-                              const juce::Colour& bg, bool highlighted, bool down) override
+                              const juce::Colour& /*bgColour*/, bool isOver, bool isDown) override
     {
-        auto b = btn.getLocalBounds().toFloat().reduced(0.5f);
-        g.setColour(down ? GalleryColors::get(GalleryColors::xoGold)
-                         : highlighted ? bg.brighter(0.06f) : bg);
-        g.fillRoundedRectangle(b, 5.0f);
+        using namespace GalleryColors;
 
-        // Focus ring (WCAG 2.4.7) — use focus colour instead of border when focused
-        if (btn.hasKeyboardFocus (true))
+        auto bounds = btn.getLocalBounds().toFloat();
+        const juce::String name = btn.getName();
+
+        bool isExport = name.containsIgnoreCase("export");
+        bool isPanic  = name.containsIgnoreCase("panic");
+
+        juce::Colour bg, borderCol;
+
+        if (isExport)
         {
-            g.setColour (A11y::focusRingColour());
-            g.drawRoundedRectangle (b, 5.0f, 2.0f);
+            bg        = isDown ? get(xoGold).darker(0.15f)
+                               : (isOver ? get(xoGold).brighter(0.05f) : get(xoGold));
+            borderCol = get(xoGold).darker(0.2f);
+        }
+        else if (isPanic)
+        {
+            bg        = isDown ? juce::Colour(0xFFFF6B6B)
+                               : juce::Colour(elevated());
+            borderCol = juce::Colour(0xFFFF6B6B).withAlpha(isDown ? 0.60f : 0.25f);
         }
         else
         {
-            g.setColour(GalleryColors::get(GalleryColors::borderGray()));
-            g.drawRoundedRectangle(b, 5.0f, 1.0f);
+            bg        = isDown ? juce::Colour(raised())
+                               : (isOver ? juce::Colour(elevated()).brighter(0.03f)
+                                         : juce::Colour(elevated()));
+            borderCol = isOver ? borderMd() : border();
+        }
+
+        g.setColour(bg);
+        g.fillRoundedRectangle(bounds, 4.0f);
+
+        // Focus ring (WCAG 2.4.7) — overrides border when focused
+        if (btn.hasKeyboardFocus(true))
+        {
+            g.setColour(A11y::focusRingColour().withAlpha(0.8f));
+            g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.5f);
+        }
+        else
+        {
+            g.setColour(borderCol);
+            g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.0f);
         }
     }
 
+    //==========================================================================
+    // drawComboBox — elevated card with T3 arrow, prototype-spec colors
     void drawComboBox(juce::Graphics& g, int width, int height, bool isButtonDown,
                       int /*buttonX*/, int /*buttonY*/, int /*buttonW*/, int /*buttonH*/,
                       juce::ComboBox& box) override
@@ -182,24 +222,26 @@ public:
         using namespace GalleryColors;
         auto bounds = juce::Rectangle<int>(0, 0, width, height).toFloat();
 
-        // Rounded container
-        g.setColour(get(slotBg()));
+        // Fill
+        g.setColour(juce::Colour(elevated()));
         g.fillRoundedRectangle(bounds, 4.0f);
 
-        // Border
-        g.setColour(get(borderGray()).withAlpha(box.hasKeyboardFocus(true) ? 0.8f : 0.4f));
+        // Border — brighter when focused
+        g.setColour(box.hasKeyboardFocus(true) ? borderMd() : border());
         g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.0f);
 
-        // Dropdown arrow (right side)
-        auto arrowZone = bounds.removeFromRight(height * 0.7f).reduced(height * 0.25f);
+        // Dropdown arrow
+        auto arrowZone = bounds.removeFromRight((float)height * 0.7f).reduced((float)height * 0.25f);
         juce::Path arrow;
-        arrow.addTriangle(arrowZone.getX(), arrowZone.getY(),
-                          arrowZone.getRight(), arrowZone.getY(),
-                          arrowZone.getCentreX(), arrowZone.getBottom());
-        g.setColour(get(textMid()).withAlpha(isButtonDown ? 0.9f : 0.55f));
+        arrow.addTriangle(arrowZone.getX(),         arrowZone.getY(),
+                          arrowZone.getRight(),      arrowZone.getY(),
+                          arrowZone.getCentreX(),    arrowZone.getBottom());
+        g.setColour(juce::Colour(t2()).withAlpha(isButtonDown ? 0.9f : 0.55f));
         g.fillPath(arrow);
     }
 
+    //==========================================================================
+    // drawLinearSlider — track T4, fill accent, thumb with specular
     void drawLinearSlider(juce::Graphics& g, int x, int y, int width, int height,
                           float sliderPos, float /*minSliderPos*/, float /*maxSliderPos*/,
                           juce::Slider::SliderStyle style, juce::Slider& slider) override
@@ -208,18 +250,17 @@ public:
 
         bool isHorizontal = (style == juce::Slider::LinearHorizontal ||
                              style == juce::Slider::LinearBar);
-
         auto bounds = juce::Rectangle<int>(x, y, width, height).toFloat();
 
-        // Track background
+        // Track background — T4 at 35% opacity
         auto trackBounds = isHorizontal
             ? bounds.withSizeKeepingCentre(bounds.getWidth(), 4.0f)
             : bounds.withSizeKeepingCentre(4.0f, bounds.getHeight());
 
-        g.setColour(get(borderGray()).withAlpha(0.3f));
+        g.setColour(juce::Colour(t4()).withAlpha(0.35f));
         g.fillRoundedRectangle(trackBounds, 2.0f);
 
-        // Filled portion
+        // Filled portion — accent color
         auto fillColour = slider.findColour(juce::Slider::rotarySliderFillColourId);
         if (fillColour.isTransparent()) fillColour = get(xoGold);
 
@@ -233,34 +274,50 @@ public:
         g.fillRoundedRectangle(filledBounds, 2.0f);
 
         // Thumb
-        float thumbSize = isHorizontal ? 12.0f : 12.0f;
+        constexpr float thumbSize = 12.0f;
         juce::Point<float> thumbCenter;
         if (isHorizontal)
             thumbCenter = { sliderPos, bounds.getCentreY() };
         else
             thumbCenter = { bounds.getCentreX(), sliderPos };
 
-        // Shadow
-        g.setColour(juce::Colours::black.withAlpha(0.15f));
-        g.fillEllipse(thumbCenter.x - thumbSize/2 + 1, thumbCenter.y - thumbSize/2 + 1, thumbSize, thumbSize);
+        // Drop shadow
+        g.setColour(juce::Colours::black.withAlpha(0.4f));
+        g.fillEllipse(thumbCenter.x - thumbSize * 0.5f + 1.0f,
+                      thumbCenter.y - thumbSize * 0.5f + 1.0f,
+                      thumbSize, thumbSize);
 
-        // Thumb body
-        g.setColour(fillColour.brighter(0.15f));
-        g.fillEllipse(thumbCenter.x - thumbSize/2, thumbCenter.y - thumbSize/2, thumbSize, thumbSize);
+        // Body
+        g.setColour(fillColour.brighter(0.1f));
+        g.fillEllipse(thumbCenter.x - thumbSize * 0.5f,
+                      thumbCenter.y - thumbSize * 0.5f,
+                      thumbSize, thumbSize);
 
-        // Thumb highlight
-        g.setColour(juce::Colours::white.withAlpha(0.25f));
-        g.fillEllipse(thumbCenter.x - thumbSize/4, thumbCenter.y - thumbSize/4, thumbSize/2, thumbSize/2);
+        // Border
+        g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.07f));
+        g.drawEllipse(thumbCenter.x - thumbSize * 0.5f,
+                      thumbCenter.y - thumbSize * 0.5f,
+                      thumbSize, thumbSize, 1.0f);
+
+        // Specular highlight
+        g.setColour(juce::Colours::white.withAlpha(0.22f));
+        g.fillEllipse(thumbCenter.x - thumbSize * 0.25f,
+                      thumbCenter.y - thumbSize * 0.25f,
+                      thumbSize * 0.5f, thumbSize * 0.5f);
     }
 
+    //==========================================================================
+    // drawPopupMenuBackground — elevated card, T4 border
     void drawPopupMenuBackground(juce::Graphics& g, int width, int height) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(slotBg()));
-        g.setColour(get(borderGray()).withAlpha(0.3f));
+        g.fillAll(juce::Colour(elevated()));
+        g.setColour(border());
         g.drawRect(0, 0, width, height, 1);
     }
 
+    //==========================================================================
+    // drawPopupMenuItem — T1 text, gold highlight, T3 separator
     void drawPopupMenuItem(juce::Graphics& g, const juce::Rectangle<int>& area,
                            bool isSeparator, bool isActive, bool isHighlighted,
                            bool isTicked, bool /*hasSubMenu*/,
@@ -272,20 +329,19 @@ public:
         if (isSeparator)
         {
             auto sepArea = area.reduced(8, 0);
-            g.setColour(get(borderGray()).withAlpha(0.25f));
+            g.setColour(border());
             g.fillRect(sepArea.getX(), sepArea.getCentreY(), sepArea.getWidth(), 1);
             return;
         }
 
-        auto textArea = area.reduced(12, 0);
-
         if (isHighlighted && isActive)
         {
             g.setColour(get(xoGold).withAlpha(0.15f));
-            g.fillRoundedRectangle(area.toFloat().reduced(2, 1), 3.0f);
+            g.fillRoundedRectangle(area.toFloat().reduced(2.0f, 1.0f), 3.0f);
         }
 
-        auto textColour = isActive ? get(textDark()) : get(textMid()).withAlpha(0.5f);
+        auto textArea    = area.reduced(12, 0);
+        auto textColour  = isActive ? juce::Colour(t1()) : juce::Colour(t2()).withAlpha(0.5f);
         if (textColourToUse) textColour = *textColourToUse;
 
         g.setColour(textColour);
@@ -296,12 +352,12 @@ public:
         {
             g.setColour(get(xoGold));
             auto tickBounds = area.toFloat().removeFromLeft(24.0f).reduced(6.0f);
-            g.fillEllipse(tickBounds.getCentreX() - 3, tickBounds.getCentreY() - 3, 6, 6);
+            g.fillEllipse(tickBounds.getCentreX() - 3.0f, tickBounds.getCentreY() - 3.0f, 6.0f, 6.0f);
         }
 
         if (shortcutKeyText.isNotEmpty())
         {
-            g.setColour(get(textMid()).withAlpha(0.45f));
+            g.setColour(juce::Colour(t2()).withAlpha(0.45f));
             g.setFont(GalleryFonts::value(10.0f));
             g.drawFittedText(shortcutKeyText, textArea, juce::Justification::centredRight, 1);
         }

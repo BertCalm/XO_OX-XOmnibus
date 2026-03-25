@@ -244,28 +244,31 @@ public:
             juce::Colour secCol  = sectionColour(run.sec);
             juce::String secText = sectionName(run.sec);
 
-            // ── Separator line above every section except the first ─────────
+            // ── Separator between sections — border() = rgba(255,255,255,0.07) ─
             if (!firstSec)
             {
-                g.setColour(secCol.withAlpha(0.20f));
+                g.setColour(GalleryColors::border());
                 g.drawHorizontalLine(y, 4.0f, (float)(getWidth() - 4));
             }
             firstSec = false;
 
-            // ── Section header background tint ─────────────────────────────
-            g.setColour(secCol.withAlpha(0.06f));
+            // ── Section header background — rgba(255,255,255,0.03) when expanded ─
+            // Prototype: very subtle tint for expanded section headers
+            g.setColour(juce::Colour(0x08FFFFFF)); // rgba(255,255,255,0.03) — no accessor for this
             g.fillRect(0, y, getWidth(), kHeaderRowH);
 
-            // ── Color dot (6×6 circle, vertically centered in header row) ──
-            const int dotSize = 6;
+            // ── Color dot — 7×7px, section accent color ───────────────────────
+            // Prototype: 7×7px color dot (vs previous 6×6)
+            const int dotSize = 7;
             const int dotX    = 10;
             const int dotY    = y + (kHeaderRowH - dotSize) / 2;
             g.setColour(secCol);
             g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
-            // ── Section name — Space Grotesk Bold 10pt, ALL CAPS ───────────
-            g.setColour(secCol.brighter(0.15f));
-            g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(10.0f));
+            // ── Section title — 9.5px, weight 600, Display, uppercase, T2 text ─
+            // Prototype: section headers use T2 text color, not section color
+            g.setColour(GalleryColors::get(GalleryColors::t2())); // T2 text
+            g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(9.5f));
             g.drawText(secText,
                        dotX + dotSize + 6, y,
                        getWidth() - dotX - dotSize - 16, kHeaderRowH,
@@ -278,7 +281,7 @@ public:
             {
                 if (flatIdx >= (int)knobBounds.size()) break;
                 auto [cx, cy] = knobBounds[flatIdx];
-                g.setColour(secCol.withAlpha(0.50f));
+                g.setColour(secCol.withAlpha(0.45f));
                 g.fillRect(cx, cy + 2, 3, kCellH - 4);
             }
 

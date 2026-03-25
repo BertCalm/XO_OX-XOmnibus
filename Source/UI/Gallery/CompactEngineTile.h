@@ -155,24 +155,29 @@ public:
         auto b = getLocalBounds().toFloat().reduced(3.0f, 2.0f);
         bool hovered = isMouseOver();
 
-        // ── Tile background ───────────────────────────────────────────────
+        // ── Tile background ── prototype: rgba(255,255,255,0.04) active, transparent inactive
         if (isSelected && hasEngine)
         {
-            juce::ColourGradient grad(accent.withAlpha(0.10f), b.getX(), b.getCentreY(),
-                                      juce::Colour(0xFF7B2FBE).withAlpha(0.04f),
+            // Active tile: subtle accent tint + faint white fill for depth
+            g.setColour(juce::Colour(0x0AFFFFFF)); // rgba(255,255,255,0.04)
+            g.fillRoundedRectangle(b, 4.0f);
+            // Overlay a soft accent gradient
+            juce::ColourGradient grad(accent.withAlpha(0.09f), b.getX(), b.getCentreY(),
+                                      juce::Colours::transparentBlack,
                                       b.getRight(), b.getCentreY(), false);
             g.setGradientFill(grad);
-            g.fillRoundedRectangle(b, 8.0f);
+            g.fillRoundedRectangle(b, 4.0f);
         }
-        else
+        else if (hovered)
         {
-            g.setColour(hovered ? get(slotBg()).brighter(0.025f) : get(slotBg()));
-            g.fillRoundedRectangle(b, 8.0f);
+            g.setColour(juce::Colour(0x07FFFFFF)); // rgba(255,255,255,0.028) hover
+            g.fillRoundedRectangle(b, 4.0f);
         }
+        // Empty/inactive: transparent background — tile sits on body bg #080809
 
-        // Border — accent when selected, subtle otherwise
-        g.setColour(isSelected ? accent : (hovered ? accent.withAlpha(0.35f) : get(borderGray())));
-        g.drawRoundedRectangle(b, 8.0f, isSelected ? 2.0f : 1.0f);
+        // Bottom border — 1px rgba(255,255,255,0.07) layer separator
+        g.setColour(juce::Colour(0x12FFFFFF)); // rgba(255,255,255,0.07)
+        g.fillRect(b.getX(), b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
         if (isLoading)
         {
@@ -199,13 +204,26 @@ public:
             float ringStroke = 1.0f  + voiceDensity * 1.0f;
             float stripAlpha = 0.38f + voiceDensity * 0.50f;
 
-            // ── Left accent strip — voice activity indicator ───────────────
-            // Shifted right by 24pt to clear the mute toggle zone
+            // ── Left accent bar — 3px wide, engine accent color, rounded right edge ─
+            // Prototype: 3px wide, border-radius 0 2px 2px 0 on the right side
             float stripX = b.getX() + 24.0f + 1.5f;
-            float stripH = b.getHeight() * 0.55f;
+            float stripH = b.getHeight() * 0.80f; // taller for more presence
             float stripY = b.getCentreY() - stripH * 0.5f;
             g.setColour(accent.withAlpha(stripAlpha));
             g.fillRoundedRectangle(stripX, stripY, 3.0f, stripH, 1.5f);
+
+            // Active glow behind accent bar (prototype: box-shadow 0 0 8px accent)
+            if (isSelected)
+            {
+                // Paint a soft blurred glow behind the strip using layered rects
+                for (int gx = 1; gx <= 6; ++gx)
+                {
+                    float glowAlpha = (0.12f / (float)gx) * (stripAlpha * 1.4f);
+                    g.setColour(accent.withAlpha(juce::jmin(glowAlpha, 0.18f)));
+                    g.fillRoundedRectangle(stripX - (float)gx, stripY - 1.0f,
+                                           3.0f + (float)(gx * 2), stripH + 2.0f, 2.0f);
+                }
+            }
 
             // ── Porthole circle — 8pt right of the strip ──────────────────
             const float porW = 30.0f;
@@ -231,19 +249,22 @@ public:
                                                        juce::PathStrokeType::rounded));
             }
 
-            // Slot number inside porthole
+            // Slot number inside porthole — 9px mono, T3 color
             g.setFont(GalleryFonts::value(9.0f));
-            g.setColour(accent.withAlpha(0.38f + voiceDensity * 0.37f));
+            g.setColour(juce::Colour(0xFF5E5C5A).withAlpha(0.50f + voiceDensity * 0.37f)); // T3
             g.drawText(juce::String(slot + 1),
                        (int)(porCx - porR), (int)(porCy - porR),
                        (int)porW, (int)porW, juce::Justification::centred);
 
             // ── Engine name — right of porthole ────────────────────────────
+            // Prototype: 11px, weight 600 (Space Grotesk SemiBold), uppercase,
+            //            engine accent color, letter-spacing ~1.5px
             float nameX = porCx + porR + 7.0f;
             // Reserve 24pt on right for voice dots; leave room for bars/dots below
             float nameW = b.getRight() - 24.0f - nameX - 4.0f;
-            g.setFont(GalleryFonts::heading(11.0f));
-            g.setColour(isSelected ? accent : get(textDark()));
+            g.setFont(GalleryFonts::display(11.0f)); // Space Grotesk Bold for weight
+            // Always use accent color for engine name (prototype spec)
+            g.setColour(hasEngine ? accent : juce::Colour(0xFF3A3938)); // T4 when empty
             // Name draws in the upper portion of the tile
             float nameH = b.getHeight() * 0.40f;
             float nameY = b.getY();
@@ -276,11 +297,24 @@ public:
         }
         else
         {
-            // Empty slot — soft "+" affordance
+            // Empty slot — dashed border + "+" affordance
+            // Prototype: 1px dashed rgba(255,255,255,0.11) border, "+" text T4
+            // JUCE doesn't support native dashed borders; simulate with dotted segments
+            juce::Colour dashCol(0x1CFFFFFF); // rgba(255,255,255,0.11)
+            g.setColour(dashCol);
+            // Draw a dashed rectangle manually using short segments
+            const float dashLen = 6.0f, gap = 4.0f, radius = 4.0f;
+            juce::Path dashedRect;
+            dashedRect.addRoundedRectangle(b, radius);
+            juce::PathStrokeType stroke(1.0f);
+            float dashPattern[] = { dashLen, gap };
+            stroke.createDashedStroke(dashedRect, dashedRect, dashPattern, 2);
+            g.strokePath(dashedRect, stroke);
+
+            // "+" icon center
             float cx = b.getCentreX(), cy = b.getCentreY();
-            float armLen = 7.0f, armW = 1.5f;
-            juce::Colour plusCol = GalleryColors::get(GalleryColors::textMid()).withAlpha(0.28f);
-            g.setColour(plusCol);
+            float armLen = 6.0f, armW = 1.5f;
+            g.setColour(juce::Colour(0xFF3A3938)); // T4 text
             g.fillRoundedRectangle(cx - armLen, cy - armW * 0.5f, armLen * 2.0f, armW, armW * 0.5f);
             g.fillRoundedRectangle(cx - armW * 0.5f, cy - armLen, armW, armLen * 2.0f, armW * 0.5f);
         }

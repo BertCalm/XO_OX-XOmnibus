@@ -263,8 +263,8 @@ public:
     {
         using namespace GalleryColors;
 
-        // ── Panel background — shell bg layer (#0E0E10) ───────────────────────
-        g.fillAll(juce::Colour(0xFF0E0E10)); // shell bg — dark layer
+        // ── Panel background — shell bg (GalleryColors::shellWhite() = #0E0E10 dark) ─
+        g.fillAll(get(shellWhite())); // shell bg in dark mode
 
         if (getWidth() <= 48)
         {
@@ -290,17 +290,16 @@ public:
             return;
         }
 
-        // ── Left border separator from Column B ───────────────────────────────
-        // 1px rgba(255,255,255,0.07) — subtle layer separator
-        g.setColour(juce::Colour(0x12FFFFFF)); // rgba(255,255,255,0.07)
+        // ── Left border separator from Column B — border() layer separator ───
+        g.setColour(border());
         g.drawVerticalLine(0, 0.0f, static_cast<float>(getHeight()));
 
-        // ── Tab bar background — surface layer (#1A1A1C) ─────────────────────
-        g.setColour(juce::Colour(0xFF1A1A1C)); // surface color — one level above shell
+        // ── Tab bar background — surface layer (GalleryColors::surface()) ────
+        g.setColour(get(surface())); // surface color — one level above shell
         g.fillRect(0, 0, getWidth(), kTabBarH);
 
-        // ── Bottom border under tab bar — 1px rgba(255,255,255,0.07) ─────────
-        g.setColour(juce::Colour(0x12FFFFFF)); // rgba(255,255,255,0.07)
+        // ── Bottom border under tab bar — border() separator ──────────────────
+        g.setColour(border());
         g.drawHorizontalLine(kTabBarH - 1, 0.0f, static_cast<float>(getWidth()));
 
         // ── Active tab accent underline — 2px engine accent (XO Gold) ────────
@@ -321,13 +320,11 @@ public:
         for (int i = 0; i < NumTabs; ++i)
         {
             if (tabButtons[i] == nullptr) continue;
-            bool active = (i == static_cast<int>(activeTab));
+            bool isActive = (i == static_cast<int>(activeTab));
             // Update button text colors to match prototype
             tabButtons[i]->setColour(juce::TextButton::textColourOffId,
-                                     juce::Colour(0xFF5E5C5A)); // T3 inactive
-            tabButtons[i]->setColour(juce::TextButton::textColourOnId,
-                                     juce::Colour(0xFFF0EDE8)); // T1 active
-            (void)active; // tab button rendering handled by JUCE TextButton
+                                     isActive ? get(t1()) : get(t3()));
+            tabButtons[i]->setColour(juce::TextButton::textColourOnId, get(t1()));
         }
 
         // ── Focus ring on focused tab button ─────────────────────────────────

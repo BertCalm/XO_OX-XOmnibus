@@ -80,6 +80,10 @@ public:
         // Restore persisted dark mode preference (default true if not yet saved).
         GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", true);
         darkModeToggle.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
+        // Re-apply theme after reading persisted preference
+        if (auto* top = getTopLevelComponent())
+            if (auto* galleryLaf = dynamic_cast<GalleryLookAndFeel*>(&top->getLookAndFeel()))
+                galleryLaf->applyTheme();
 
         reducedMotionToggle.setToggleState(
             settingsFile->getBoolValue("reducedMotion", false),

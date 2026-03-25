@@ -61,7 +61,8 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(slotBg()));
+        // ── Shell background — GalleryColors::shellWhite() = #0E0E10 in dark ─
+        g.fillAll(get(shellWhite()));
 
         // Reserve the bottom 48pt for CouplingChainView — don't paint into that strip.
         constexpr float kChainH = 48.0f;
@@ -118,9 +119,10 @@ public:
         // Portrait zone: top 38% of the panel
         float portraitH = h * 0.38f;
 
-        // Engine name — large display font, anchored to bottom of portrait zone
+        // Engine name — restrained display font matching prototype density
+        // Prototype shows 18-20pt feels more premium than large 28pt
         g.setColour(accent);
-        g.setFont(GalleryFonts::display(28.0f));
+        g.setFont(GalleryFonts::display(20.0f));
         g.drawFittedText(engineId.toUpperCase(),
                          juce::Rectangle<int>(12, 0, (int)w - 20, (int)(portraitH * 0.72f)),
                          juce::Justification::centredBottom, 1);
@@ -282,11 +284,13 @@ public:
             }
 
             // Draw engine node circles (4 primary + Ghost Slot)
+            // Prototype: inactive nodes use T4 (#3A3938), active use engine accent
             for (int i = 0; i < MegaCouplingMatrix::MaxSlots; ++i)
             {
                 bool hasEng = (i < (int)cachedActiveEngines.size());
+                // T4 for inactive nodes — matches prototype coupling node graph spec
                 juce::Colour nodeCol = hasEng ? cachedActiveEngines[static_cast<size_t>(i)].second
-                                              : get(emptySlot());
+                                              : juce::Colour(0xFF3A3938); // T4
                 g.setColour(nodeCol.withAlpha(0.70f));
                 g.fillEllipse(nodePos[i].x - 6.0f, nodePos[i].y - 6.0f, 12.0f, 12.0f);
                 g.setColour(nodeCol);

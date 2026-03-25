@@ -244,20 +244,22 @@ public:
     {
         using namespace GalleryColors;
 
-        // Card background
-        g.setColour(get(slotBg()));
+        // ── Card background — elevated layer (GalleryColors::elevated()), 6px radius ─
+        g.setColour(get(elevated()));
         g.fillRoundedRectangle(getLocalBounds().toFloat(), 6.0f);
 
-        // ── Ecological header: accent → midnight depth gradient ────────────
+        // ── Header gradient: accent color → shell bg ─────────────────────────
+        // Prototype: keep accent→midnight gradient but over dark bg
         {
-            juce::ColourGradient grad(accentColour, 0.0f, 0.0f,
-                                      juce::Colour(0xFF1A0A2E), (float)getWidth(), 0.0f, false);
+            juce::ColourGradient grad(accentColour.withAlpha(0.75f), 0.0f, 0.0f,
+                                      get(shellWhite()), (float)getWidth(), 0.0f, false);
             g.setGradientFill(grad);
-            g.fillRect(0, 0, getWidth(), kHeaderH);
+            g.fillRoundedRectangle(0.0f, 0.0f, (float)getWidth(), (float)kHeaderH, 6.0f);
+            // Square off bottom corners of header (rounded rect only at top)
+            g.fillRect(0, kHeaderH / 2, getWidth(), kHeaderH / 2);
         }
 
-        // ── Zone depth bands — three 2px horizontal strips at header bottom ─
-        // Visualizes Sunlit / Twilight / Midnight split across the header width
+        // ── Zone depth bands — three 2px strips at header bottom ─────────────
         {
             const int stripH = 2;
             const int stripY = kHeaderH - stripH;
@@ -265,23 +267,28 @@ public:
             const uint32_t zoneColors[3] = { 0xFF48CAE4, 0xFF0096C7, 0xFF7B2FBE };
             for (int z = 0; z < 3; ++z)
             {
-                g.setColour(juce::Colour(zoneColors[z]).withAlpha(0.55f));
+                g.setColour(juce::Colour(zoneColors[z]).withAlpha(0.45f));
                 g.fillRect((int)(z * zoneW), stripY, (int)zoneW, stripH);
             }
         }
 
-        // ── Engine name ────────────────────────────────────────────────────
-        g.setColour(juce::Colours::white);
-        g.setFont(GalleryFonts::display(16.0f));
+        // ── Engine name — 13px, weight 700, engine accent, letter-spacing ~3px ─
+        // Prototype: 13px display font, engine accent color, letter-spacing ~3px
+        g.setColour(accentColour);
+        g.setFont(GalleryFonts::display(13.0f));
         g.drawText(engineId.toUpperCase(),
                    12, 0, getWidth() - 100, kHeaderH,
                    juce::Justification::centredLeft);
 
-        // ── "PARAMETERS" right label ────────────────────────────────────────
-        g.setColour(juce::Colours::white.withAlpha(0.45f));
-        g.setFont(GalleryFonts::body(8.5f));
+        // ── "PARAMETERS" right label — T3 color, 8px body ─────────────────────
+        g.setColour(get(t3()));
+        g.setFont(GalleryFonts::body(8.0f));
         g.drawText("PARAMETERS", 0, 0, getWidth() - 10, kHeaderH,
                    juce::Justification::centredRight);
+
+        // ── Bottom border of header — border() separator ──────────────────────
+        g.setColour(border());
+        g.fillRect(0, kHeaderH, getWidth(), 1);
     }
 
     void resized() override

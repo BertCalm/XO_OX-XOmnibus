@@ -133,17 +133,18 @@ public:
     {
         using namespace GalleryColors;
 
-        // Background — slightly darker than the slot background
-        g.setColour(get(slotBg()).darker(0.15f));
+        // ── Background — surface layer (GalleryColors::surface()) ───────────
+        // Prototype: status bar shares the surface color with header and tab bar
+        g.setColour(get(surface()));
         g.fillRect(getLocalBounds());
 
-        // Top border — 1px borderGray at 40% alpha
-        g.setColour(get(borderGray()).withAlpha(0.40f));
+        // ── Top border — border() = rgba(255,255,255,0.07) layer separator ───
+        g.setColour(border());
         g.drawHorizontalLine(0, 0.0f, (float)getWidth());
 
-        // ── Slot dots (right side, before lock button) ──────────────────────
-        // Drawn in paint() because they are tiny geometry, not interactive children.
-        const int dotR       = 5;
+        // ── Slot dots (right side, before lock button) ────────────────────────
+        // Prototype: 7×7px dots, T4 default, accent when active with 0 0 5px glow
+        const int dotR       = 4; // 7px diameter = radius 3.5, use 4 for clickability
         const int dotDia     = dotR * 2;
         const int dotSpacing = 4;
         const int dotsWidth  = kNumSlots * dotDia + (kNumSlots - 1) * dotSpacing;
@@ -156,22 +157,67 @@ public:
         for (int i = 0; i < kNumSlots; ++i)
         {
             int cx = dotsLeft + i * (dotDia + dotSpacing) + dotR;
-            juce::Colour dotColour = slotActive[i]
-                ? slotAccents[i]
-                : get(emptySlot());
 
-            g.setColour(dotColour);
-            g.fillEllipse((float)(cx - dotR), (float)(dotY - dotR),
-                          (float)dotDia, (float)dotDia);
-
-            // Subtle ring around active dots for clarity on bright accents
             if (slotActive[i])
             {
-                g.setColour(dotColour.darker(0.3f).withAlpha(0.6f));
-                g.drawEllipse((float)(cx - dotR), (float)(dotY - dotR),
-                              (float)dotDia, (float)dotDia, 1.0f);
+                // Active: accent color with soft glow layers (simulates box-shadow 0 0 5px accent)
+                juce::Colour ac = slotAccents[i];
+                // Glow rings behind the dot
+                for (int gx = 3; gx >= 1; --gx)
+                {
+                    float glowAlpha = 0.08f / (float)gx;
+                    g.setColour(ac.withAlpha(glowAlpha));
+                    float gR = (float)(dotR + gx);
+                    g.fillEllipse((float)(cx - dotR) - (float)gx,
+                                  (float)(dotY - dotR) - (float)gx,
+                                  (float)dotDia + (float)(gx * 2),
+                                  (float)dotDia + (float)(gx * 2));
+                }
+                // Core dot
+                g.setColour(ac);
+                g.fillEllipse((float)(cx - dotR), (float)(dotY - dotR),
+                              (float)dotDia, (float)dotDia);
+            }
+            else
+            {
+                // Inactive: T4 color (GalleryColors::t4())
+                g.setColour(get(t4()));
+                g.fillEllipse((float)(cx - dotR), (float)(dotY - dotR),
+                              (float)dotDia, (float)dotDia);
             }
         }
+
+        // ── Update trigger button colors to match prototype ───────────────────
+        // Prototype: elevated bg (GalleryColors::elevated()), border at 7%, 3px radius
+
+        // FIRE button style — accent tint (XO Gold)
+        fireBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        fireBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        fireBtn.setColour(juce::TextButton::textColourOffId,  get(xoGold));
+        fireBtn.setColour(juce::TextButton::textColourOnId,   get(xoGold));
+
+        // XOSEND button — T3 text default, T1 on active
+        xoSendBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        xoSendBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        xoSendBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
+        xoSendBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
+
+        // ECHO CUT button — T3 text default, T1 on active
+        echoCutBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        echoCutBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        echoCutBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
+        echoCutBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
+
+        // PANIC button — #FF6B6B red (B041: always 100% opacity, never-dim)
+        panicBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        panicBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        panicBtn.setColour(juce::TextButton::textColourOffId,  juce::Colour(0xFFFF6B6B));
+        panicBtn.setColour(juce::TextButton::textColourOnId,   juce::Colour(0xFFFF6B6B));
+
+        // Update label colors to match prototype typography
+        bpmLabel.setColour(juce::Label::textColourId,   get(t2())); // T2
+        voiceLabel.setColour(juce::Label::textColourId, get(t3())); // T3
+        cpuLabel.setColour(juce::Label::textColourId,   get(t3())); // T3
     }
 
     void resized() override

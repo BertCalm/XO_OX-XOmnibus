@@ -85,6 +85,9 @@ public:
           presetBrowser(proc),
           ghostTile(proc, 4)   // Ghost Slot — 5th tile, slot index 4
     {
+        // Force dark mode on startup — override any stale persistence
+        GalleryColors::darkMode() = true;
+
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
 
@@ -357,29 +360,36 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(shellWhite()));
+
+        // ── Body background — deepest layer (body bg #080809) ────────────────
+        // Note: Dark::bg is #0E0E10 (shell); body is one level darker.
+        g.fillAll(juce::Colour(0xFF080809)); // body bg — below shell layer
 
         const int headerH = ColumnLayoutManager::kHeaderH;
 
-        // Header area
+        // ── Header area — surface layer, 52px nominal height ─────────────────
         auto header = getLocalBounds().removeFromTop(headerH).toFloat();
-        g.setColour(get(shellWhite()));
+
+        // Surface fill — GalleryColors::surface() = #1A1A1C in dark mode
+        g.setColour(get(surface()));
         g.fillRect(header);
 
-        // XO Gold stripe
-        g.setColour(get(xoGold));
-        g.fillRect(header.removeFromBottom(3.0f));
+        // Bottom border — border() = rgba(255,255,255,0.07) in dark mode
+        g.setColour(border());
+        g.fillRect(header.getX(), header.getBottom() - 1.0f, header.getWidth(), 1.0f);
 
-        g.setColour(get(textDark()));
-        g.setFont(GalleryFonts::display(19.0f));
+        // Engine name / brand — T1 text
+        g.setColour(get(t1()));
+        g.setFont(GalleryFonts::display(14.0f));
         g.drawText("XOlokun",
-                   juce::Rectangle<int>(16, 0, 160, headerH - 3),
+                   juce::Rectangle<int>(16, 0, 160, headerH),
                    juce::Justification::centredLeft);
 
-        g.setColour(get(xoGoldText())); // Darkened gold — meets WCAG AA on shellWhite
-        g.setFont(GalleryFonts::heading(8.5f));
+        // Subtitle — "XO_OX Designs" at 8px, T3 color
+        g.setColour(get(t3()));
+        g.setFont(GalleryFonts::body(8.0f));
         g.drawText("XO_OX Designs",
-                   juce::Rectangle<int>(16, headerH - 18, 110, 12),
+                   juce::Rectangle<int>(16, headerH / 2 + 2, 110, 14),
                    juce::Justification::centredLeft);
 
         // NOTE: Coupling stats / engine-count text has been moved out of paint().
@@ -406,11 +416,11 @@ public:
             }
         }
 
-        // Column A / Column B separator line
+        // Column A / Column B separator line — border() = rgba(255,255,255,0.07)
         const int sepX = layout.getColumnAWidth();
         if (sepX > 0)
         {
-            g.setColour(get(borderGray()));
+            g.setColour(border());
             g.drawVerticalLine(sepX, (float)headerH, (float)getHeight());
         }
     }
