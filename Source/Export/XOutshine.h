@@ -1298,6 +1298,42 @@ private:
         }
     }
 
+    // 2:1 decimation with a simple 5-tap LP FIR anti-alias filter.
+    // Cutoff is approximately 0.45 * Nyquist of the output rate.
+    // Suitable for 96 kHz → 48 kHz. Not suitable for >2:1 ratios.
+    static juce::AudioBuffer<float> downsampleBy2 (const juce::AudioBuffer<float>& src)
+    {
+        int nch  = src.getNumChannels();
+        int nIn  = src.getNumSamples();
+        int nOut = nIn / 2;
+        juce::AudioBuffer<float> out(nch, nOut);
+
+        // 5-tap symmetric LP FIR: h = [0.0625, 0.25, 0.375, 0.25, 0.0625]
+        // Designed for cutoff ~0.45 * Nyquist_out. Provides ~50 dB stopband attenuation.
+        constexpr float h[5] = { 0.0625f, 0.25f, 0.375f, 0.25f, 0.0625f };
+
+        for (int ch = 0; ch < nch; ++ch)
+        {
+            auto* src_ch = src.getReadPointer(ch);
+            auto* dst_ch = out.getWritePointer(ch);
+
+            for (int i = 0; i < nOut; ++i)
+            {
+                // Input sample index for output sample i is 2*i.
+                // Filter window centered at 2*i, taps at 2*i-2 to 2*i+2.
+                float acc = 0.0f;
+                for (int k = 0; k < 5; ++k)
+                {
+                    int srcIdx = 2 * i + (k - 2);
+                    if (srcIdx >= 0 && srcIdx < nIn)
+                        acc += h[k] * src_ch[srcIdx];
+                }
+                dst_ch[i] = acc;
+            }
+        }
+        return out;
+    }
+
     static std::vector<const EnhancedLayer*> getLayersForVel (
         const std::vector<EnhancedLayer>& layers, int velLayer)
     {
