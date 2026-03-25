@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+<!--
+  XOlokun — MPC Hardware End-State Prototype
+  Form Factor: MPC One (7-inch) / MPC Live II (10-inch) — 800×480pt viewport
+  Architecture: 2-column (160pt Col A engine rack + 640pt Col B/C contextual)
+  Spec ref: Docs/design/xolokun-spatial-architecture-v1.md §11
+  Date: 2026-03-24
+
+  LAYOUT:
+  [Status bar 20pt]
+  [Col A 160pt | Col B/C 640pt] — fills remaining 440pt
+  [Bottom tab bar 40pt] — inside Col B/C
+
+  TAB CONTENT (640×400pt each):
+  ENGINE — slot detail with 4 macros + params grid + mini-waveform
+  PRESET — scrollable preset browser with mood pills
+  COUPLE — coupling graph + type/amount controls
+  FX      — 6-slot FX chain with inline wet/dry
+  EXPORT  — export options
+
+  TOUCH-ONLY:
+  - No hover states (touch-down = active)
+  - 40pt pads, 44pt touch targets
+  - Dark Cockpit on touch-down
+  - All hit targets ≥44pt even if visual is smaller
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=800, initial-scale=1.0">
+  <title>XOlokun — MPC Hardware</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       DESIGN TOKENS — MPC Dark Variant
+    ═══════════════════════════════════════════════════════════════ */
+    :root {
+      /* MPC-style dark surfaces (darker than desktop) */
+      --bg:           #080809;
+      --surface:      #0F0F11;
+      --elevated:     #161618;
+      --raised:       #1C1C1F;
+      --border:       rgba(255, 255, 255, 0.06);
+      --border-hi:    rgba(255, 255, 255, 0.10);
+
+      /* Text tiers */
+      --t1:  #E8E5E0;
+      --t2:  #8A8784;
+      --t3:  #5A5856;
+      --t4:  #3A3836;
+
+      /* Brand */
+      --gold:      #E9C46A;
+      --gold-dim:  rgba(233, 196, 106, 0.14);
+      --gold-glow: rgba(233, 196, 106, 0.28);
+
+      /* Engine accent (runtime-mutable) */
+      --accent:     #1E8B7E;
+      --accent-dim: rgba(30, 139, 126, 0.14);
+      --accent-glow:rgba(30, 139, 126, 0.32);
+
+      /* Status colors */
+      --green:  #3FCF92;
+      --amber:  #F59E0B;
+      --red:    #EF4444;
+
+      /* Typography */
+      --f-disp: 'Space Grotesk', -apple-system, sans-serif;
+      --f-body: 'Inter', -apple-system, sans-serif;
+      --f-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+      /* Timing */
+      --dur-fast:  80ms;
+      --dur-touch: 120ms;
+      --ease-out:  cubic-bezier(0.0, 0.0, 0.2, 1);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PAGE SHELL — centered MPC screen
+    ═══════════════════════════════════════════════════════════════ */
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background: #030304;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--f-body);
+      -webkit-font-smoothing: antialiased;
+      color: var(--t1);
+      user-select: none;
+      padding: 20px;
+      gap: 12px;
+    }
+
+    /* Context label above screen */
+    .screen-label {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.18);
+      text-transform: uppercase;
+    }
+
+    /* MPC screen bezel */
+    .mpc-bezel {
+      background: #0A0A0B;
+      border-radius: 8px;
+      padding: 6px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 2px 6px rgba(0,0,0,0.5),
+        0 12px 40px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN — 800×480pt
+    ═══════════════════════════════════════════════════════════════ */
+    .screen {
+      width:  800px;
+      height: 480px;
+      background: var(--bg);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      /* Subtle scanline texture for CRT feel */
+      background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.0) 0px,
+        rgba(255,255,255,0.0) 1px,
+        rgba(0,0,0,0.03) 1px,
+        rgba(0,0,0,0.03) 2px
+      );
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       STATUS BAR — 20pt (thin, info-dense)
+    ═══════════════════════════════════════════════════════════════ */
+    .status-bar {
+      height: 20px;
+      min-height: 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 0;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 20;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .status-logo {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .status-logo svg { width: 12px; height: 12px; opacity: 0.6; }
+    .status-logo-text {
+      font-family: var(--f-disp);
+      font-weight: 700;
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .status-divider {
+      width: 1px;
+      height: 10px;
+      background: var(--border);
+    }
+
+    .status-item {
+      font-family: var(--f-mono);
+      font-size: 8px;
+      color: var(--t3);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+    .status-item.live { color: var(--t2); }
+    .status-item.warn { color: var(--amber); }
+
+    .status-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .status-dot.warn { background: var(--amber); }
+    .status-dot.off  { background: var(--t4); }
+
+    /* CPU meter */
+    .cpu-bar {
+      width: 28px;
+      height: 4px;
+      background: var(--raised);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .cpu-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--green), var(--amber));
+      width: 32%;
+      transition: width 0.5s ease;
+    }
+
+    .status-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Voice dots */
+    .voice-dots {
+      display: flex;
+      gap: 2px;
+    }
+    .voice-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--t4);
+    }
+    .voice-dot.active { background: var(--accent); }
+
+    /* BPM display */
+    .bpm-display {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--t2);
+      letter-spacing: 0.05em;
+    }
+    .bpm-display span {
+      color: var(--t1);
+      font-size: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       MAIN BODY — fills remaining 420pt (480 - 20 status - 40 tabs)
+    ═══════════════════════════════════════════════════════════════ */
+    .body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       COLUMN A — Engine Rack (160pt)
+    ═══════════════════════════════════════════════════════════════ */
+    .col-a {
+      width: 160px;
+      min-width: 160px;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    /* Col A header */
+    .col-a-header {
+      height: 22px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      border-bottom: 1px solid var(--border);
+      background: var(--elevated);
+      flex-shrink: 0;
+    }
+    .col-a-label {
+      font-family: var(--f-disp);
+      font-weight: 600;
+      font-size: 7px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+    .col-a-count {
+      margin-left: auto;
+      font-family: var(--f-mono);
+      font-size: 7px;
+      color: var(--t4);
+    }
+
+    /* Engine slot tiles */
+    .slot-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .slot-tile {
+      height: 84px;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      position: relative;
+      transition: background var(--dur-touch) var(--ease-out);
+      flex-shrink: 0;
+      /* Touch target = full tile */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .slot-tile::before {
+      /* Left accent bar */
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity var(--dur-touch) ease;
+    }
+    .slot-tile.active {
+      background: var(--elevated);
+    }
+    .slot-tile.active::before {
+      opacity: 1;
+    }
+    .slot-tile:active {
+      background: var(--raised);
+    }
+
+    .tile-top {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tile-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .tile-name {
+      font-family: var(--f-disp);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color var(--dur-touch) ease;
+    }
+    .tile-on {
+      margin-left: auto;
+      width: 20px; height: 12px;
+      border-radius: 6px;
+      background: var(--raised);
+      border: 1px solid var(--border-hi);
+      position: relative;
+      flex-shrink: 0;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .tile-on::after {
+      content: '';
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      top: 1px;
+      left: 1px;
+      background: var(--t4);
+      transition: left var(--dur-fast) ease, background var(--dur-fast) ease;
+    }
+    .tile-on.on { border-color: var(--accent); }
+    .tile-on.on::after { left: 9px; background: var(--accent); }
+
+    .tile-preset {
+      font-family: var(--f-body);
+      font-size: 9px;
+      color: var(--t2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Mini waveform in tile */
+    .tile-waveform {
+      height: 22px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Tile CPU badge */
+    .tile-cpu {
+      position: absolute;
+      bottom: 6px;
+      right: 8px;
+      font-family: var(--f-mono);
+      font-size: 7px;
+      color: var(--t3);
+    }
+
+    /* Add engine slot */
+    .slot-add {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      touch-action: manipulation;
+      color: var(--t3);
+      font-family: var(--f-disp);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      transition: color var(--dur-touch) ease, background var(--dur-touch) ease;
+    }
+    .slot-add:active { background: var(--elevated); color: var(--t1); }
+    .slot-add svg { width: 12px; height: 12px; }
+
+    /* Mini coupling graph at bottom of Col A */
+    .coupling-mini {
+      height: 60px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .coupling-mini-label {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--f-mono);
+      font-size: 7px;
+      color: var(--t4);
+      white-space: nowrap;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       COLUMN B/C — Contextual area (640pt)
+    ═══════════════════════════════════════════════════════════════ */
+    .col-bc {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Tab content area */
+    .tab-content {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tab-panel {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .tab-panel.active {
+      display: flex;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       BOTTOM TAB BAR — 40pt
+    ═══════════════════════════════════════════════════════════════ */
+    .tab-bar {
+      height: 40px;
+      min-height: 40px;
+      display: flex;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .tab-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      background: transparent;
+      border: none;
+      border-top: 2px solid transparent;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--dur-touch) ease;
+      min-height: 44px; /* touch target — extends above visible area */
+      padding: 0;
+    }
+    .tab-btn:active { background: var(--elevated); }
+    .tab-btn.active {
+      border-top-color: var(--gold);
+      background: var(--elevated);
+    }
+
+    .tab-icon {
+      font-size: 11px;
+      line-height: 1;
+      opacity: 0.5;
+      transition: opacity var(--dur-touch) ease;
+    }
+    .tab-btn.active .tab-icon { opacity: 1; }
+
+    .tab-label {
+      font-family: var(--f-disp);
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--t3);
+      transition: color var(--dur-touch) ease;
+    }
+    .tab-btn.active .tab-label { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TAB: ENGINE
+    ═══════════════════════════════════════════════════════════════ */
+    .engine-panel {
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Engine nameplate */
+    .engine-nameplate {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .engine-name-large {
+      font-family: var(--f-disp);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-shadow: 0 0 16px var(--accent-glow);
+      transition: color var(--dur-touch) ease, text-shadow var(--dur-touch) ease;
+    }
+    .engine-preset-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+    .preset-arrow-btn {
+      width: 28px; height: 28px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--t2);
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      touch-action: manipulation;
+      min-height: 44px; min-width: 44px;
+      transition: background var(--dur-touch) ease;
+    }
+    .preset-arrow-btn:active { background: var(--raised); }
+    .preset-name-display {
+      font-family: var(--f-body);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--t1);
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 4px;
+    }
+    .fav-btn {
+      width: 28px; height: 28px;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px; min-width: 44px;
+      opacity: 0.4;
+      transition: opacity var(--dur-touch) ease;
+    }
+    .fav-btn.active, .fav-btn:active { opacity: 1; }
+
+    /* Signal flow strip */
+    .signal-flow {
+      height: 22px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 4px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .sf-node {
+      font-family: var(--f-mono);
+      font-size: 7px;
+      color: var(--t3);
+      white-space: nowrap;
+    }
+    .sf-arrow {
+      color: var(--t4);
+      font-size: 7px;
+    }
+    .sf-node.active { color: var(--accent); }
+
+    /* Macro row — 4 knobs */
+    .macro-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Touch knob */
+    .t-knob {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      touch-action: none;
+      -webkit-tap-highlight-color: transparent;
+      /* Ensure 44pt touch target (macro knobs) */
+      min-height: 72px;
+      justify-content: center;
+    }
+    .t-knob-body {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      position: relative;
+      background: radial-gradient(
+        circle at 38% 32%,
+        #2E2E32 0%,
+        #222226 40%,
+        #18181C 70%,
+        #111114 100%
+      );
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.5),
+        0 -0.5px 1px rgba(255,255,255,0.03),
+        inset 0 1px 3px rgba(0,0,0,0.4);
+      transition: box-shadow var(--dur-fast) ease;
+    }
+    .t-knob:active .t-knob-body {
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.5),
+        0 -0.5px 1px rgba(255,255,255,0.03),
+        inset 0 1px 3px rgba(0,0,0,0.4),
+        0 0 10px var(--accent-dim);
+    }
+    .t-knob.macro .t-knob-body { width: 52px; height: 52px; }
+    .t-knob.small  .t-knob-body { width: 36px; height: 36px; }
+
+    /* Knob arc (SVG overlay) */
+    .t-knob-arc {
+      position: absolute;
+      inset: -4px;
+      pointer-events: none;
+    }
+    .t-knob-arc circle {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-linecap: round;
+      opacity: 0.75;
+      transition: stroke var(--dur-touch) ease;
+    }
+    .t-knob.macro .t-knob-arc circle {
+      stroke: var(--gold);
+      stroke-width: 2.5;
+      opacity: 0.9;
+    }
+
+    /* Knob indicator dot */
+    .t-knob-dot {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 4px var(--accent-glow);
+      transition: background var(--dur-touch) ease;
+    }
+    .t-knob.macro .t-knob-dot { background: var(--gold); }
+
+    .t-knob-label {
+      font-family: var(--f-disp);
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--t2);
+      text-align: center;
+    }
+    .t-knob.macro .t-knob-label { color: var(--gold); }
+    .t-knob-val {
+      font-family: var(--f-mono);
+      font-size: 8px;
+      color: var(--t3);
+      text-align: center;
+    }
+
+    /* Param grid — dense 4-column */
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+    .param-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      touch-action: none;
+      min-height: 44px;
+      justify-content: center;
+    }
+
+    /* Waveform strip */
+    .waveform-strip {
+      height: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .waveform-strip canvas { width: 100%; height: 100%; }
+
+    /* ADSR strip */
+    .adsr-strip {
+      height: 26px;
+      flex-shrink: 0;
+    }
+    .adsr-strip svg { width: 100%; height: 100%; }
+
+    /* Section divider */
+    .section-div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .section-div-label {
+      font-family: var(--f-disp);
+      font-weight: 600;
+      font-size: 7px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--t4);
+      white-space: nowrap;
+    }
+    .section-div-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TAB: PRESET
+    ═══════════════════════════════════════════════════════════════ */
+    .preset-panel {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .preset-search-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .preset-search {
+      flex: 1;
+      height: 30px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--t1);
+      font-family: var(--f-body);
+      font-size: 11px;
+      padding: 0 10px;
+      outline: none;
+    }
+    .preset-search::placeholder { color: var(--t4); }
+    .preset-search:focus { border-color: var(--gold); }
+
+    .preset-filter-btn {
+      height: 30px;
+      padding: 0 10px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--t2);
+      font-family: var(--f-disp);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 44px;
+      touch-action: manipulation;
+      white-space: nowrap;
+    }
+    .preset-filter-btn:active { background: var(--raised); }
+
+    /* Mood pills */
+    .mood-pills {
+      display: flex;
+      gap: 5px;
+      padding: 6px 12px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      scrollbar-width: none;
+    }
+    .mood-pills::-webkit-scrollbar { display: none; }
+
+    .mood-pill {
+      height: 22px;
+      padding: 0 10px;
+      border-radius: 11px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      color: var(--t2);
+      font-family: var(--f-disp);
+      font-weight: 500;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      touch-action: manipulation;
+      white-space: nowrap;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      transition: background var(--dur-touch) ease;
+    }
+    .mood-pill.active {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .mood-pill:active { background: var(--raised); }
+
+    /* Preset list */
+    .preset-list {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--raised) transparent;
+    }
+
+    .preset-item {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--dur-touch) ease;
+    }
+    .preset-item:active { background: var(--elevated); }
+    .preset-item.selected { background: var(--elevated); }
+    .preset-item.selected::after {
+      content: '';
+      position: absolute;
+      right: 0;
+    }
+
+    .pi-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .pi-name {
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 11px;
+      color: var(--t1);
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .pi-mood {
+      font-family: var(--f-mono);
+      font-size: 8px;
+      color: var(--t4);
+      flex-shrink: 0;
+    }
+    .pi-fav {
+      font-size: 10px;
+      opacity: 0.3;
+      flex-shrink: 0;
+    }
+    .pi-fav.on { opacity: 1; }
+
+    /* DNA bar */
+    .dna-bar {
+      display: flex;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .dna-seg {
+      width: 3px;
+      height: 10px;
+      border-radius: 1px;
+      background: var(--t4);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TAB: COUPLE
+    ═══════════════════════════════════════════════════════════════ */
+    .couple-panel {
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    /* Coupling graph */
+    .couple-graph {
+      flex: 1;
+      background: rgba(255,255,255,0.015);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      min-height: 180px;
+    }
+
+    /* Coupling route rows */
+    .couple-routes {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .route-row {
+      height: 36px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background var(--dur-touch) ease;
+    }
+    .route-row:active { background: var(--raised); }
+    .route-row.active-route { border-color: var(--gold); }
+
+    .route-from, .route-to {
+      font-family: var(--f-disp);
+      font-weight: 700;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .route-arrow {
+      font-size: 9px;
+      color: var(--t4);
+    }
+    .route-type {
+      font-family: var(--f-mono);
+      font-size: 8px;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid rgba(233, 196, 106, 0.2);
+      padding: 2px 7px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Amount mini-knobs in route row */
+    .route-controls {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .route-mini-knob {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+      cursor: pointer;
+      touch-action: none;
+    }
+    .route-mini-body {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .route-mini-label {
+      font-family: var(--f-mono);
+      font-size: 7px;
+      color: var(--t4);
+      text-transform: uppercase;
+    }
+
+    /* Couple add btn */
+    .couple-add-btn {
+      height: 30px;
+      background: var(--elevated);
+      border: 1px dashed var(--border-hi);
+      border-radius: 4px;
+      color: var(--t3);
+      font-family: var(--f-disp);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-height: 44px;
+      touch-action: manipulation;
+      flex-shrink: 0;
+    }
+    .couple-add-btn:active { background: var(--raised); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TAB: FX
+    ═══════════════════════════════════════════════════════════════ */
+    .fx-panel {
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      overflow-y: auto;
+    }
+
+    .fx-slot {
+      height: 52px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+      cursor: pointer;
+      touch-action: manipulation;
+      flex-shrink: 0;
+      transition: background var(--dur-touch) ease;
+    }
+    .fx-slot:active { background: var(--raised); }
+    .fx-slot.active-fx { border-color: var(--accent); }
+
+    .fx-power {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1.5px solid var(--border-hi);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      min-width: 44px; min-height: 44px;
+      margin: -12px;
+    }
+    .fx-power-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--t4);
+    }
+    .fx-power.on .fx-power-dot { background: var(--green); }
+    .fx-power.on { border-color: var(--green); }
+
+    .fx-label {
+      width: 56px;
+      flex-shrink: 0;
+    }
+    .fx-type {
+      font-family: var(--f-disp);
+      font-weight: 700;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--t1);
+    }
+    .fx-name {
+      font-family: var(--f-body);
+      font-size: 8px;
+      color: var(--t3);
+      margin-top: 1px;
+    }
+
+    /* Wet fader */
+    .fx-fader {
+      flex: 1;
+      height: 4px;
+      background: var(--surface);
+      border-radius: 2px;
+      position: relative;
+      cursor: pointer;
+      touch-action: none;
+      /* Expand touch target */
+      margin: 20px 0;
+    }
+    .fx-fader-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent));
+      transition: width var(--dur-touch) ease;
+    }
+    .fx-fader-thumb {
+      position: absolute;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--t1);
+      top: -3px;
+      transform: translateX(-50%);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .fx-wet-val {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      color: var(--t2);
+      width: 28px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* FX param knobs (mini) */
+    .fx-params {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TAB: EXPORT
+    ═══════════════════════════════════════════════════════════════ */
+    .export-panel {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .export-target-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .export-target {
+      height: 56px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      cursor: pointer;
+      touch-action: manipulation;
+      min-height: 56px;
+      transition: background var(--dur-touch) ease, border-color var(--dur-touch) ease;
+    }
+    .export-target:active { background: var(--raised); }
+    .export-target.selected {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+    .et-icon { font-size: 16px; line-height: 1; }
+    .et-label {
+      font-family: var(--f-disp);
+      font-weight: 600;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--t2);
+    }
+    .export-target.selected .et-label { color: var(--gold); }
+
+    .export-options {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .export-opt-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 32px;
+    }
+    .export-opt-label {
+      font-family: var(--f-body);
+      font-size: 10px;
+      color: var(--t2);
+      flex: 1;
+    }
+    .export-opt-val {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      color: var(--t1);
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 4px 8px;
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      touch-action: manipulation;
+    }
+    .export-opt-val:active { background: var(--surface); }
+
+    .export-go-btn {
+      height: 44px;
+      background: var(--accent);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-family: var(--f-disp);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-shrink: 0;
+      touch-action: manipulation;
+      transition: opacity var(--dur-touch) ease;
+    }
+    .export-go-btn:active { opacity: 0.75; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       MPC PADS — 4×4 grid (hidden in ENGINE/PRESET, shown in PLAY)
+       Actually the architecture doesn't have a PLAY tab per se —
+       pads appear inline at the bottom of ENGINE tab on drums
+    ═══════════════════════════════════════════════════════════════ */
+    .pad-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .pad {
+      /* 40pt pads, 44pt touch targets */
+      height: 40px;
+      border-radius: 4px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 4px 5px;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      /* Expand touch target without growing visual */
+      min-height: 44px;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--dur-fast) ease;
+    }
+    .pad::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity var(--dur-fast) ease;
+    }
+    .pad:active {
+      background: var(--raised);
+    }
+    .pad:active::before { opacity: 1; }
+    .pad.hit { background: var(--accent-dim); border-color: var(--accent); }
+    .pad.hit::before { opacity: 1; }
+
+    .pad-num {
+      font-family: var(--f-mono);
+      font-size: 7px;
+      color: var(--t4);
+      position: absolute;
+      top: 3px;
+      right: 4px;
+    }
+    .pad-name {
+      font-family: var(--f-disp);
+      font-weight: 600;
+      font-size: 7px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--t2);
+      z-index: 1;
+    }
+    .pad-vel {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0.4;
+      transform-origin: left;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ACCENT COLOR OVERRIDES
+    ═══════════════════════════════════════════════════════════════ */
+    .ac-obrix     { --accent: #1E8B7E; --accent-dim: rgba(30,139,126,0.14); --accent-glow: rgba(30,139,126,0.32); }
+    .ac-opera     { --accent: #D4AF37; --accent-dim: rgba(212,175,55,0.14); --accent-glow: rgba(212,175,55,0.32); }
+    .ac-oxytocin  { --accent: #9B5DE5; --accent-dim: rgba(155,93,229,0.14); --accent-glow: rgba(155,93,229,0.32); }
+    .ac-opensky   { --accent: #FF8C00; --accent-dim: rgba(255,140,0,0.14);  --accent-glow: rgba(255,140,0,0.32); }
+    .ac-onset     { --accent: #0066FF; --accent-dim: rgba(0,102,255,0.14);  --accent-glow: rgba(0,102,255,0.32); }
+    .ac-oware     { --accent: #B5883E; --accent-dim: rgba(181,136,62,0.14); --accent-glow: rgba(181,136,62,0.32); }
+    .ac-offering  { --accent: #E5B80B; --accent-dim: rgba(229,184,11,0.14); --accent-glow: rgba(229,184,11,0.32); }
+    .ac-orbweave  { --accent: #8E4585; --accent-dim: rgba(142,69,133,0.14); --accent-glow: rgba(142,69,133,0.32); }
+    .ac-oceandeep { --accent: #4B2D8A; --accent-dim: rgba(75,45,138,0.14);  --accent-glow: rgba(75,45,138,0.32); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TOUCH RIPPLE EFFECT
+    ═══════════════════════════════════════════════════════════════ */
+    .ripple-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      transform: scale(0);
+      animation: ripple-expand 400ms ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes ripple-expand {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════════════════════════════ */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    .pulse { animation: pulse-dot 2s ease-in-out infinite; }
+
+    @keyframes waveform-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes corridor-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.9; }
+    }
+
+    /* Dark cockpit — on touch-down, non-target areas dim */
+    .cockpit-dim { opacity: 0.25 !important; pointer-events: none; }
+    .cockpit-secondary { opacity: 0.55 !important; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--raised); border-radius: 2px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+  </style>
+</head>
+<body>
+
+  <div class="screen-label">XOlokun · MPC Hardware · 800×480 · §11 Form Factor</div>
+
+  <!-- MPC screen bezel -->
+  <div class="mpc-bezel">
+  <div class="screen ac-obrix" id="screen">
+
+    <!-- ══ STATUS BAR (20pt) ══════════════════════════════════════ -->
+    <div class="status-bar">
+      <div class="status-left">
+        <div class="status-logo">
+          <svg viewBox="0 0 12 12" fill="none">
+            <circle cx="4" cy="6" r="3" stroke="var(--gold)" stroke-width="1.2" opacity="0.8"/>
+            <circle cx="8" cy="6" r="3" stroke="var(--gold)" stroke-width="1.2" opacity="0.8"/>
+            <line x1="5.5" y1="4.8" x2="6.5" y2="4.8" stroke="var(--gold)" stroke-width="1"/>
+            <line x1="5.5" y1="7.2" x2="6.5" y2="7.2" stroke="var(--gold)" stroke-width="1"/>
+          </svg>
+          <span class="status-logo-text">XOlokun</span>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-item live">
+          <div class="status-dot pulse"></div>
+          AU ACTIVE
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-item">
+          CPU
+          <div class="cpu-bar"><div class="cpu-fill" id="cpuFill"></div></div>
+          <span id="cpuVal">3.2%</span>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-item">MIDI ●</div>
+      </div>
+      <div class="status-right">
+        <div class="status-item">
+          VOICES
+          <div class="voice-dots" id="voiceDots">
+            <div class="voice-dot active"></div>
+            <div class="voice-dot active"></div>
+            <div class="voice-dot active"></div>
+            <div class="voice-dot"></div>
+            <div class="voice-dot"></div>
+            <div class="voice-dot"></div>
+            <div class="voice-dot"></div>
+            <div class="voice-dot"></div>
+          </div>
+        </div>
+        <div class="status-divider"></div>
+        <div class="bpm-display"><span id="bpmVal">128</span> BPM</div>
+      </div>
+    </div>
+
+    <!-- ══ BODY (160 + 640) ═══════════════════════════════════════ -->
+    <div class="body">
+
+      <!-- ══ COL A: ENGINE RACK (160pt) ══════════════════════════ -->
+      <div class="col-a">
+        <div class="col-a-header">
+          <span class="col-a-label">Engines</span>
+          <span class="col-a-count">4 SLOTS</span>
+        </div>
+
+        <div class="slot-list">
+
+          <!-- Slot 1: OBRIX — active -->
+          <div class="slot-tile active" id="tile1" onclick="selectSlot(1, 'OBRIX', '#1E8B7E', 'ac-obrix', 'Coral Cathedral')">
+            <div class="tile-top">
+              <div class="tile-dot" style="background:#1E8B7E;box-shadow:0 0 5px rgba(30,139,126,0.5)"></div>
+              <span class="tile-name" style="color:#1E8B7E">OBRIX</span>
+              <div class="tile-on on" id="on1"></div>
+            </div>
+            <div class="tile-preset">Coral Cathedral</div>
+            <div class="tile-waveform">
+              <canvas id="tw1" width="136" height="22"></canvas>
+            </div>
+            <span class="tile-cpu">3.2%</span>
+          </div>
+
+          <!-- Slot 2: OPERA -->
+          <div class="slot-tile" id="tile2" onclick="selectSlot(2, 'OPERA', '#D4AF37', 'ac-opera', 'Aria Nocturne')">
+            <div class="tile-top">
+              <div class="tile-dot" style="background:#D4AF37;box-shadow:0 0 5px rgba(212,175,55,0.4)"></div>
+              <span class="tile-name" style="color:#D4AF37">OPERA</span>
+              <div class="tile-on on" id="on2"></div>
+            </div>
+            <div class="tile-preset">Aria Nocturne</div>
+            <div class="tile-waveform">
+              <canvas id="tw2" width="136" height="22"></canvas>
+            </div>
+            <span class="tile-cpu">4.1%</span>
+          </div>
+
+          <!-- Slot 3: OXYTOCIN -->
+          <div class="slot-tile" id="tile3" onclick="selectSlot(3, 'OXYTO', '#9B5DE5', 'ac-oxytocin', 'Praya Siphon')">
+            <div class="tile-top">
+              <div class="tile-dot" style="background:#9B5DE5;box-shadow:0 0 5px rgba(155,93,229,0.4)"></div>
+              <span class="tile-name" style="color:#9B5DE5">OXYTO</span>
+              <div class="tile-on on" id="on3"></div>
+            </div>
+            <div class="tile-preset">Praya Siphon</div>
+            <div class="tile-waveform">
+              <canvas id="tw3" width="136" height="22"></canvas>
+            </div>
+            <span class="tile-cpu">2.7%</span>
+          </div>
+
+          <!-- Slot 4: empty -->
+          <div class="slot-add" onclick="openEngineSelector()">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/>
+            </svg>
+            ADD ENGINE
+          </div>
+
+          <!-- Mini coupling graph -->
+          <div class="coupling-mini">
+            <canvas id="miniCoupling" width="140" height="52"></canvas>
+            <span class="coupling-mini-label">OBRIX → OPERA · ENTANGLE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ COL B/C: CONTEXTUAL (640pt) ════════════════════════ -->
+      <div class="col-bc">
+
+        <!-- Tab content -->
+        <div class="tab-content">
+
+          <!-- ─────────────── TAB: ENGINE ──────────────────────── -->
+          <div class="tab-panel active engine-panel" id="panel-engine">
+
+            <!-- Nameplate + preset nav -->
+            <div class="engine-nameplate">
+              <span class="engine-name-large" id="engineNameLarge">OBRIX</span>
+              <div class="engine-preset-row">
+                <button class="preset-arrow-btn">◂</button>
+                <span class="preset-name-display" id="presetNameDisplay">Coral Cathedral</span>
+                <button class="preset-arrow-btn">▸</button>
+                <button class="fav-btn active">♥</button>
+              </div>
+            </div>
+
+            <!-- Signal flow -->
+            <div class="signal-flow">
+              <span class="sf-node active">OSC×2</span>
+              <span class="sf-arrow">→</span>
+              <span class="sf-node active">BRICK STACK</span>
+              <span class="sf-arrow">→</span>
+              <span class="sf-node">SVF</span>
+              <span class="sf-arrow">→</span>
+              <span class="sf-node">HARM FIELD</span>
+              <span class="sf-arrow">→</span>
+              <span class="sf-node">ENV FX</span>
+              <span class="sf-arrow">→</span>
+              <span class="sf-node">OUT</span>
+            </div>
+
+            <!-- Macro row (4 knobs) -->
+            <div class="section-div">
+              <span class="section-div-label">Macros</span>
+              <div class="section-div-line"></div>
+            </div>
+            <div class="macro-row">
+              <div class="t-knob macro" onmousedown="knobTouch(this, 'CHAR')" ontouchstart="knobTouch(this, 'CHAR')">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="27" stroke-dasharray="95 170" stroke-dashoffset="-38"/>
+                  </svg>
+                  <div class="t-knob-dot" style="top:calc(50% - 1.5px + sin(-2.1rad)*21px);left:calc(50% - 1.5px + cos(-2.1rad)*21px)"></div>
+                </div>
+                <span class="t-knob-label">CHAR</span>
+                <span class="t-knob-val">0.72</span>
+              </div>
+              <div class="t-knob macro" onmousedown="knobTouch(this, 'MOVE')" ontouchstart="knobTouch(this, 'MOVE')">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="27" stroke-dasharray="60 170" stroke-dashoffset="-38"/>
+                  </svg>
+                  <div class="t-knob-dot" style="top:calc(50% - 1.5px + sin(-3.0rad)*21px);left:calc(50% - 1.5px + cos(-3.0rad)*21px)"></div>
+                </div>
+                <span class="t-knob-label">MOVE</span>
+                <span class="t-knob-val">0.45</span>
+              </div>
+              <div class="t-knob macro" onmousedown="knobTouch(this, 'COUP')" ontouchstart="knobTouch(this, 'COUP')">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="27" stroke-dasharray="115 170" stroke-dashoffset="-38"/>
+                  </svg>
+                  <div class="t-knob-dot" style="top:calc(50% - 1.5px + sin(-1.2rad)*21px);left:calc(50% - 1.5px + cos(-1.2rad)*21px)"></div>
+                </div>
+                <span class="t-knob-label">COUP</span>
+                <span class="t-knob-val">0.88</span>
+              </div>
+              <div class="t-knob macro" onmousedown="knobTouch(this, 'SPACE')" ontouchstart="knobTouch(this, 'SPACE')">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="27" stroke-dasharray="75 170" stroke-dashoffset="-38"/>
+                  </svg>
+                  <div class="t-knob-dot" style="top:calc(50% - 1.5px + sin(-2.6rad)*21px);left:calc(50% - 1.5px + cos(-2.6rad)*21px)"></div>
+                </div>
+                <span class="t-knob-label">SPACE</span>
+                <span class="t-knob-val">0.55</span>
+              </div>
+            </div>
+
+            <!-- Core params section -->
+            <div class="section-div">
+              <span class="section-div-label">Engine Params</span>
+              <div class="section-div-line"></div>
+            </div>
+            <div class="param-grid">
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="72 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">SRC</span>
+                <span class="t-knob-val">SAW</span>
+              </div>
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="55 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">FREQ</span>
+                <span class="t-knob-val">4.2k</span>
+              </div>
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="88 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">RESO</span>
+                <span class="t-knob-val">0.65</span>
+              </div>
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="42 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">FIELD</span>
+                <span class="t-knob-val">0.30</span>
+              </div>
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="60 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">DRIVE</span>
+                <span class="t-knob-val">0.48</span>
+              </div>
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="35 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">REEF</span>
+                <span class="t-knob-val">SYM</span>
+              </div>
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="78 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">ATK</span>
+                <span class="t-knob-val">12ms</span>
+              </div>
+              <div class="t-knob small param-cell">
+                <div class="t-knob-body">
+                  <svg class="t-knob-arc" viewBox="0 0 44 44">
+                    <circle cx="22" cy="22" r="19" stroke-dasharray="50 120" stroke-dashoffset="-28"/>
+                  </svg>
+                </div>
+                <span class="t-knob-label">REL</span>
+                <span class="t-knob-val">820ms</span>
+              </div>
+            </div>
+
+            <!-- Waveform + ADSR -->
+            <div class="waveform-strip">
+              <canvas id="mainWaveform" width="628" height="32"></canvas>
+            </div>
+            <div class="adsr-strip">
+              <svg viewBox="0 0 628 26" fill="none" preserveAspectRatio="none">
+                <path d="M0,24 L30,3 L80,10 L380,13 L628,24" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent-dim)" opacity="0.8"/>
+              </svg>
+            </div>
+
+          </div><!-- /panel-engine -->
+
+          <!-- ─────────────── TAB: PRESET ──────────────────────── -->
+          <div class="tab-panel preset-panel" id="panel-preset">
+            <div class="preset-search-row">
+              <input class="preset-search" type="text" placeholder="Search presets…" id="presetSearch">
+              <button class="preset-filter-btn">
+                DRUMS ▾
+              </button>
+              <button class="preset-filter-btn">
+                DNA ▾
+              </button>
+            </div>
+            <div class="mood-pills" id="moodPills">
+              <button class="mood-pill active" onclick="selectMood(this)">All</button>
+              <button class="mood-pill" onclick="selectMood(this)">Foundation</button>
+              <button class="mood-pill" onclick="selectMood(this)">Atmosphere</button>
+              <button class="mood-pill" onclick="selectMood(this)">Entangled</button>
+              <button class="mood-pill" onclick="selectMood(this)">Prism</button>
+              <button class="mood-pill" onclick="selectMood(this)">Flux</button>
+              <button class="mood-pill" onclick="selectMood(this)">Aether</button>
+              <button class="mood-pill" onclick="selectMood(this)">Submerged</button>
+              <button class="mood-pill" onclick="selectMood(this)">Deep</button>
+              <button class="mood-pill" onclick="selectMood(this)">Kinetic</button>
+              <button class="mood-pill" onclick="selectMood(this)">Luminous</button>
+            </div>
+            <div class="preset-list" id="presetList">
+              <!-- Populated by JS -->
+            </div>
+          </div><!-- /panel-preset -->
+
+          <!-- ─────────────── TAB: COUPLE ──────────────────────── -->
+          <div class="tab-panel couple-panel" id="panel-couple">
+            <!-- Coupling graph -->
+            <div class="couple-graph">
+              <canvas id="couplingGraph" width="616" height="180"></canvas>
+            </div>
+
+            <!-- Route list -->
+            <div class="couple-routes">
+              <div class="route-row active-route" onclick="selectRoute(this)">
+                <span class="route-from" style="color:#1E8B7E">OBRIX</span>
+                <span class="route-arrow">→</span>
+                <span class="route-to" style="color:#D4AF37">OPERA</span>
+                <span class="route-type">ENTANGLE</span>
+                <div class="route-controls">
+                  <div class="route-mini-knob" ontouchstart="knobTouch(this,'AMT')">
+                    <div class="route-mini-body">
+                      <svg style="position:absolute;inset:-3px" viewBox="0 0 34 34">
+                        <circle cx="17" cy="17" r="15" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="52 95" stroke-dashoffset="-24" stroke-linecap="round" opacity="0.8"/>
+                      </svg>
+                    </div>
+                    <span class="route-mini-label">AMT</span>
+                  </div>
+                  <div class="route-mini-knob" ontouchstart="knobTouch(this,'DPT')">
+                    <div class="route-mini-body">
+                      <svg style="position:absolute;inset:-3px" viewBox="0 0 34 34">
+                        <circle cx="17" cy="17" r="15" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="38 95" stroke-dashoffset="-24" stroke-linecap="round" opacity="0.8"/>
+                      </svg>
+                    </div>
+                    <span class="route-mini-label">DPT</span>
+                  </div>
+                </div>
+              </div>
+              <div class="route-row" onclick="selectRoute(this)">
+                <span class="route-from" style="color:#D4AF37">OPERA</span>
+                <span class="route-arrow">→</span>
+                <span class="route-to" style="color:#9B5DE5">OXYTO</span>
+                <span class="route-type">PHASE</span>
+                <div class="route-controls">
+                  <div class="route-mini-knob">
+                    <div class="route-mini-body">
+                      <svg style="position:absolute;inset:-3px" viewBox="0 0 34 34">
+                        <circle cx="17" cy="17" r="15" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="28 95" stroke-dashoffset="-24" stroke-linecap="round" opacity="0.5"/>
+                      </svg>
+                    </div>
+                    <span class="route-mini-label">AMT</span>
+                  </div>
+                  <div class="route-mini-knob">
+                    <div class="route-mini-body">
+                      <svg style="position:absolute;inset:-3px" viewBox="0 0 34 34">
+                        <circle cx="17" cy="17" r="15" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="44 95" stroke-dashoffset="-24" stroke-linecap="round" opacity="0.5"/>
+                      </svg>
+                    </div>
+                    <span class="route-mini-label">DPT</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add route -->
+            <div class="couple-add-btn" onclick="addRoute()">
+              <svg width="10" height="10" viewBox="0 0 10 10" stroke="currentColor" stroke-width="1.5">
+                <line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/>
+              </svg>
+              ADD COUPLING ROUTE
+            </div>
+          </div><!-- /panel-couple -->
+
+          <!-- ─────────────── TAB: FX ──────────────────────────── -->
+          <div class="tab-panel fx-panel" id="panel-fx">
+            <!-- 6 FX slots per engine -->
+            <div class="section-div">
+              <span class="section-div-label" style="color:var(--accent)">OBRIX</span>
+              <span class="section-div-label" style="margin-left:4px">— FX Chain</span>
+              <div class="section-div-line"></div>
+            </div>
+
+            <div class="fx-slot active-fx">
+              <div class="fx-power on"><div class="fx-power-dot"></div></div>
+              <div class="fx-label">
+                <div class="fx-type">SAT</div>
+                <div class="fx-name">Reef Drive</div>
+              </div>
+              <div class="fx-fader" ontouchstart="faderTouch(event, this)">
+                <div class="fx-fader-fill" style="width:68%"></div>
+                <div class="fx-fader-thumb" style="left:68%"></div>
+              </div>
+              <span class="fx-wet-val">68%</span>
+            </div>
+
+            <div class="fx-slot">
+              <div class="fx-power on"><div class="fx-power-dot"></div></div>
+              <div class="fx-label">
+                <div class="fx-type">DELAY</div>
+                <div class="fx-name">Tide Echo</div>
+              </div>
+              <div class="fx-fader">
+                <div class="fx-fader-fill" style="width:40%"></div>
+                <div class="fx-fader-thumb" style="left:40%"></div>
+              </div>
+              <span class="fx-wet-val">40%</span>
+            </div>
+
+            <div class="fx-slot">
+              <div class="fx-power on"><div class="fx-power-dot"></div></div>
+              <div class="fx-label">
+                <div class="fx-type">REVERB</div>
+                <div class="fx-name">Fathom Hall</div>
+              </div>
+              <div class="fx-fader">
+                <div class="fx-fader-fill" style="width:55%"></div>
+                <div class="fx-fader-thumb" style="left:55%"></div>
+              </div>
+              <span class="fx-wet-val">55%</span>
+            </div>
+
+            <div class="fx-slot">
+              <div class="fx-power"><div class="fx-power-dot"></div></div>
+              <div class="fx-label">
+                <div class="fx-type">MOD</div>
+                <div class="fx-name" style="color:var(--t4)">— empty —</div>
+              </div>
+              <div class="fx-fader">
+                <div class="fx-fader-fill" style="width:0%"></div>
+                <div class="fx-fader-thumb" style="left:0%"></div>
+              </div>
+              <span class="fx-wet-val">0%</span>
+            </div>
+
+            <div class="fx-slot">
+              <div class="fx-power"><div class="fx-power-dot"></div></div>
+              <div class="fx-label">
+                <div class="fx-type">COMP</div>
+                <div class="fx-name" style="color:var(--t4)">— empty —</div>
+              </div>
+              <div class="fx-fader">
+                <div class="fx-fader-fill" style="width:0%"></div>
+                <div class="fx-fader-thumb" style="left:0%"></div>
+              </div>
+              <span class="fx-wet-val">0%</span>
+            </div>
+
+            <div class="fx-slot">
+              <div class="fx-power"><div class="fx-power-dot"></div></div>
+              <div class="fx-label">
+                <div class="fx-type">SEQ</div>
+                <div class="fx-name" style="color:var(--t4)">— empty —</div>
+              </div>
+              <div class="fx-fader">
+                <div class="fx-fader-fill" style="width:0%"></div>
+                <div class="fx-fader-thumb" style="left:0%"></div>
+              </div>
+              <span class="fx-wet-val">0%</span>
+            </div>
+
+          </div><!-- /panel-fx -->
+
+          <!-- ─────────────── TAB: EXPORT ──────────────────────── -->
+          <div class="tab-panel export-panel" id="panel-export">
+
+            <div class="section-div">
+              <span class="section-div-label">Export Target</span>
+              <div class="section-div-line"></div>
+            </div>
+
+            <div class="export-target-row">
+              <div class="export-target selected" onclick="selectExport(this)">
+                <span class="et-icon">🥁</span>
+                <span class="et-label">MPC XPM</span>
+              </div>
+              <div class="export-target" onclick="selectExport(this)">
+                <span class="et-icon">🎹</span>
+                <span class="et-label">MIDI</span>
+              </div>
+              <div class="export-target" onclick="selectExport(this)">
+                <span class="et-icon">🌊</span>
+                <span class="et-label">WAV Stem</span>
+              </div>
+            </div>
+
+            <div class="export-options">
+              <div class="section-div" style="margin-bottom:2px">
+                <span class="section-div-label">Options</span>
+                <div class="section-div-line"></div>
+              </div>
+              <div class="export-opt-row">
+                <span class="export-opt-label">Sample Rate</span>
+                <div class="export-opt-val">44.1 kHz ▾</div>
+              </div>
+              <div class="export-opt-row">
+                <span class="export-opt-label">Bit Depth</span>
+                <div class="export-opt-val">24-bit ▾</div>
+              </div>
+              <div class="export-opt-row">
+                <span class="export-opt-label">Velocity Layers</span>
+                <div class="export-opt-val">4 ▾</div>
+              </div>
+              <div class="export-opt-row">
+                <span class="export-opt-label">Round-Robin</span>
+                <div class="export-opt-val">Off ▾</div>
+              </div>
+            </div>
+
+            <button class="export-go-btn" onclick="exportNow()">
+              EXPORT PACK
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 1v8M3 6l4 4 4-4M2 11h10"/>
+              </svg>
+            </button>
+
+          </div><!-- /panel-export -->
+
+        </div><!-- /tab-content -->
+
+        <!-- ══ BOTTOM TAB BAR (40pt) ══════════════════════════════ -->
+        <div class="tab-bar" id="tabBar">
+          <button class="tab-btn active" data-tab="engine" onclick="switchTab(this)">
+            <span class="tab-icon">⚙</span>
+            <span class="tab-label">Engine</span>
+          </button>
+          <button class="tab-btn" data-tab="preset" onclick="switchTab(this)">
+            <span class="tab-icon">◈</span>
+            <span class="tab-label">Preset</span>
+          </button>
+          <button class="tab-btn" data-tab="couple" onclick="switchTab(this)">
+            <span class="tab-icon">⟳</span>
+            <span class="tab-label">Couple</span>
+          </button>
+          <button class="tab-btn" data-tab="fx" onclick="switchTab(this)">
+            <span class="tab-icon">≋</span>
+            <span class="tab-label">FX</span>
+          </button>
+          <button class="tab-btn" data-tab="export" onclick="switchTab(this)">
+            <span class="tab-icon">↓</span>
+            <span class="tab-label">Export</span>
+          </button>
+        </div>
+
+      </div><!-- /col-bc -->
+    </div><!-- /body -->
+
+  </div><!-- /screen -->
+  </div><!-- /mpc-bezel -->
+
+  <!-- Engine selector label below screen -->
+  <div class="screen-label" id="activeEngineLabel">Active: OBRIX · Slot 1 · Coral Cathedral · ENTANGLE with OPERA</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// ACCENT COLORS
+// ══════════════════════════════════════════════════════════════════
+const ENGINES = {
+  OBRIX:  { color: '#1E8B7E', cls: 'ac-obrix',    glow: 'rgba(30,139,126,0.4)'  },
+  OPERA:  { color: '#D4AF37', cls: 'ac-opera',    glow: 'rgba(212,175,55,0.4)'  },
+  OXYTO:  { color: '#9B5DE5', cls: 'ac-oxytocin', glow: 'rgba(155,93,229,0.4)'  },
+  ONSET:  { color: '#0066FF', cls: 'ac-onset',    glow: 'rgba(0,102,255,0.4)'   },
+  OWARE:  { color: '#B5883E', cls: 'ac-oware',    glow: 'rgba(181,136,62,0.4)'  },
+  OPENSKY:{ color: '#FF8C00', cls: 'ac-opensky',  glow: 'rgba(255,140,0,0.4)'   },
+  OFFERING:{ color:'#E5B80B', cls: 'ac-offering', glow: 'rgba(229,184,11,0.4)'  },
+};
+
+let activeSlot = 1;
+let activeAccentCls = 'ac-obrix';
+let activeEngine = 'OBRIX';
+
+// ══════════════════════════════════════════════════════════════════
+// TAB SWITCHING
+// ══════════════════════════════════════════════════════════════════
+function switchTab(btn) {
+  const tab = btn.dataset.tab;
+  // Update tab buttons
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Update panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  // Touch ripple
+  spawnRipple(btn);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// SLOT SELECTION
+// ══════════════════════════════════════════════════════════════════
+function selectSlot(num, engine, color, accentCls, preset) {
+  // Remove active from all tiles
+  document.querySelectorAll('.slot-tile').forEach(t => t.classList.remove('active'));
+  document.getElementById('tile' + num).classList.add('active');
+  activeSlot = num;
+  activeEngine = engine;
+
+  // Update accent
+  const screen = document.getElementById('screen');
+  // Remove all ac-* classes
+  screen.className = screen.className.replace(/\bac-\S+/g, '').trim();
+  screen.classList.add(accentCls);
+  activeAccentCls = accentCls;
+
+  // Update engine name in ENGINE tab
+  document.getElementById('engineNameLarge').textContent = engine;
+  document.getElementById('engineNameLarge').style.color = color;
+  document.getElementById('engineNameLarge').style.textShadow = `0 0 20px ${color}50`;
+  document.getElementById('presetNameDisplay').textContent = preset;
+
+  // Update status label
+  document.getElementById('activeEngineLabel').textContent =
+    `Active: ${engine} · Slot ${num} · ${preset}`;
+
+  // Redraw waveforms
+  drawAllWaveforms();
+  drawCouplingGraph();
+  drawMiniCoupling();
+  spawnRipple(document.getElementById('tile' + num));
+}
+
+// ══════════════════════════════════════════════════════════════════
+// PRESET MOOD PILLS
+// ══════════════════════════════════════════════════════════════════
+function selectMood(pill) {
+  document.querySelectorAll('.mood-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  populatePresets(pill.textContent.trim());
+}
+
+const PRESET_DATA = {
+  OBRIX: [
+    ['Coral Cathedral',   'Foundation', true,  [0.9,0.4,0.3,0.2,0.8,0.5]],
+    ['Reef Pulse',        'Kinetic',    false, [0.7,0.5,0.8,0.4,0.3,0.9]],
+    ['Bleach Event',      'Aether',     false, [0.3,0.8,0.2,0.7,0.9,0.1]],
+    ['Symbiote Drift',    'Entangled',  true,  [0.6,0.6,0.6,0.5,0.5,0.5]],
+    ['Midnight Atoll',    'Deep',       false, [0.2,0.9,0.4,0.8,0.1,0.7]],
+    ['Harmonic Field 5L', 'Prism',      false, [0.8,0.3,0.7,0.2,0.6,0.4]],
+    ['Brick Ecology',     'Organic',    true,  [0.5,0.7,0.5,0.6,0.4,0.8]],
+    ['Parasite Mode',     'Flux',       false, [0.4,0.6,0.9,0.3,0.7,0.2]],
+    ['First Breath',      'Foundation', true,  [0.5,0.5,0.5,0.5,0.5,0.5]],
+  ]
+};
+
+const DNA_LABELS = ['BRT','WRM','MOV','DEN','SPC','AGG'];
+const DNA_COLORS = ['#48CAE4','#E9C46A','#3FCF92','#BF40FF','#00B4A0','#EF4444'];
+
+function populatePresets(mood) {
+  const list = document.getElementById('presetList');
+  const engine = activeEngine in PRESET_DATA ? activeEngine : 'OBRIX';
+  const presets = (PRESET_DATA[engine] || PRESET_DATA.OBRIX).filter(p =>
+    mood === 'All' || p[1] === mood
+  );
+  list.innerHTML = '';
+  presets.forEach((p, i) => {
+    const [name, moodTag, fav, dna] = p;
+    const item = document.createElement('div');
+    item.className = 'preset-item' + (i === 0 ? ' selected' : '');
+    item.style.position = 'relative';
+    // DNA bar
+    const dnaHtml = dna.map((v, j) =>
+      `<div class="dna-seg" style="height:${Math.round(v*14)+2}px;background:${DNA_COLORS[j]};opacity:0.7"></div>`
+    ).join('');
+    item.innerHTML = `
+      <div class="pi-dot" style="background:var(--accent)"></div>
+      <span class="pi-name">${name}</span>
+      <div class="dna-bar">${dnaHtml}</div>
+      <span class="pi-mood">${moodTag}</span>
+      <span class="pi-fav ${fav ? 'on' : ''}">♥</span>
+    `;
+    item.onclick = () => {
+      document.querySelectorAll('.preset-item').forEach(el => el.classList.remove('selected'));
+      item.classList.add('selected');
+      document.getElementById('presetNameDisplay').textContent = name;
+      spawnRipple(item);
+    };
+    list.appendChild(item);
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════
+// WAVEFORM RENDERING
+// ══════════════════════════════════════════════════════════════════
+function drawWaveform(canvas, color, glow, type) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  ctx.beginPath();
+  for (let x = 0; x <= W; x++) {
+    const t = x / W;
+    let y;
+    if (type === 'sine') {
+      y = Math.sin(t * Math.PI * 6) * 0.4 + Math.sin(t * Math.PI * 2.3) * 0.25;
+    } else if (type === 'saw') {
+      y = ((t * 4) % 1) * 2 - 1 + Math.sin(t * Math.PI * 8) * 0.2;
+    } else if (type === 'noise') {
+      y = (Math.sin(t * 137.5) + Math.sin(t * 89.3) + Math.sin(t * 211.1)) / 3;
+    } else {
+      // Organic/wavetable
+      y = Math.sin(t * Math.PI * 4) * 0.5 +
+          Math.sin(t * Math.PI * 9.3) * 0.2 +
+          Math.sin(t * Math.PI * 17.1) * 0.1;
+    }
+    const py = H / 2 + y * (H / 2 - 2);
+    if (x === 0) ctx.moveTo(x, py); else ctx.lineTo(x, py);
+  }
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  ctx.shadowColor = glow;
+  ctx.shadowBlur = 4;
+  ctx.stroke();
+
+  // Fill under
+  ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+  ctx.fillStyle = color.replace(')', ', 0.08)').replace('rgb', 'rgba').replace('#', '');
+  // Simple alpha fill
+  ctx.globalAlpha = 0.12;
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+}
+
+function drawAllWaveforms() {
+  const types = ['saw', 'sine', 'noise', 'saw'];
+  const colors = ['#1E8B7E', '#D4AF37', '#9B5DE5', '#808080'];
+  const glows  = ['rgba(30,139,126,0.5)', 'rgba(212,175,55,0.5)', 'rgba(155,93,229,0.5)', 'rgba(128,128,128,0.3)'];
+
+  for (let i = 1; i <= 3; i++) {
+    const c = document.getElementById('tw' + i);
+    if (c) drawWaveform(c, colors[i-1], glows[i-1], types[i-1]);
+  }
+  const main = document.getElementById('mainWaveform');
+  if (main) drawWaveform(main, 'var(--accent)', 'rgba(30,139,126,0.3)', 'saw');
+
+  // Re-render main with current accent (approximate)
+  const accentColors = {
+    'ac-obrix': '#1E8B7E', 'ac-opera': '#D4AF37', 'ac-oxytocin': '#9B5DE5',
+    'ac-opensky': '#FF8C00', 'ac-onset': '#0066FF', 'ac-oware': '#B5883E',
+    'ac-offering': '#E5B80B', 'ac-orbweave': '#8E4585',
+  };
+  const col = accentColors[activeAccentCls] || '#1E8B7E';
+  if (main) drawWaveform(main, col, col + '60', 'saw');
+}
+
+// ══════════════════════════════════════════════════════════════════
+// COUPLING GRAPH
+// ══════════════════════════════════════════════════════════════════
+function drawCouplingGraph() {
+  const canvas = document.getElementById('couplingGraph');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // Node positions (triangle layout for 3 engines)
+  const nodes = [
+    { name: 'OBRIX',  color: '#1E8B7E', x: W * 0.2,  y: H * 0.5 },
+    { name: 'OPERA',  color: '#D4AF37', x: W * 0.6,  y: H * 0.22 },
+    { name: 'OXYTO',  color: '#9B5DE5', x: W * 0.78, y: H * 0.65 },
+  ];
+
+  // Coupling routes
+  const routes = [
+    { from: 0, to: 1, type: 'ENTANGLE', amount: 0.72 },
+    { from: 1, to: 2, type: 'PHASE',    amount: 0.38 },
+  ];
+
+  // Draw arcs
+  routes.forEach(r => {
+    const a = nodes[r.from], b = nodes[r.to];
+    const cx = (a.x + b.x) / 2 + (b.y - a.y) * 0.3;
+    const cy = (a.y + b.y) / 2 - (b.x - a.x) * 0.3;
+
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.quadraticCurveTo(cx, cy, b.x, b.y);
+    const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+    grad.addColorStop(0, a.color + 'A0');
+    grad.addColorStop(1, b.color + 'A0');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 2 + r.amount * 2;
+    ctx.shadowColor = a.color;
+    ctx.shadowBlur = 6;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Type label on arc midpoint
+    const mx = cx * 0.5 + (a.x + b.x) * 0.25;
+    const my = cy * 0.5 + (a.y + b.y) * 0.25;
+    ctx.font = '500 9px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#E9C46A';
+    ctx.textAlign = 'center';
+    ctx.fillText(r.type, mx, my);
+  });
+
+  // Draw nodes
+  nodes.forEach((n, i) => {
+    // Outer glow ring
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, 20, 0, Math.PI * 2);
+    ctx.strokeStyle = n.color;
+    ctx.lineWidth = 1.5;
+    ctx.globalAlpha = 0.3;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    // Node circle
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, 16, 0, Math.PI * 2);
+    ctx.fillStyle = '#0F0F11';
+    ctx.fill();
+    ctx.strokeStyle = n.color;
+    ctx.lineWidth = 2;
+    ctx.shadowColor = n.color;
+    ctx.shadowBlur = 10;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Slot number
+    ctx.font = '700 8px "Space Grotesk", sans-serif';
+    ctx.fillStyle = n.color;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('S' + (i + 1), n.x, n.y);
+    ctx.textBaseline = 'alphabetic';
+
+    // Engine name below
+    ctx.font = '600 9px "Space Grotesk", sans-serif';
+    ctx.fillStyle = n.color;
+    ctx.fillText(n.name, n.x, n.y + 28);
+  });
+
+  // Empty slot placeholder
+  ctx.beginPath();
+  ctx.arc(W * 0.45, H * 0.82, 14, 0, Math.PI * 2);
+  ctx.strokeStyle = '#3A3836';
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([3, 3]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.font = '500 9px "Space Grotesk", sans-serif';
+  ctx.fillStyle = '#3A3836';
+  ctx.textAlign = 'center';
+  ctx.fillText('+ S4', W * 0.45, H * 0.82 + 4);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// MINI COUPLING (Col A bottom)
+// ══════════════════════════════════════════════════════════════════
+function drawMiniCoupling() {
+  const canvas = document.getElementById('miniCoupling');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height - 14;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const nodes = [
+    { color: '#1E8B7E', x: W*0.2, y: H*0.5 },
+    { color: '#D4AF37', x: W*0.6, y: H*0.3 },
+    { color: '#9B5DE5', x: W*0.85, y: H*0.65 },
+  ];
+
+  // Draw arcs
+  [[0,1],[1,2]].forEach(([a, b]) => {
+    ctx.beginPath();
+    ctx.moveTo(nodes[a].x, nodes[a].y);
+    ctx.quadraticCurveTo(
+      (nodes[a].x+nodes[b].x)/2, (nodes[a].y+nodes[b].y)/2 - 10,
+      nodes[b].x, nodes[b].y
+    );
+    const g = ctx.createLinearGradient(nodes[a].x, nodes[a].y, nodes[b].x, nodes[b].y);
+    g.addColorStop(0, nodes[a].color + '90');
+    g.addColorStop(1, nodes[b].color + '90');
+    ctx.strokeStyle = g;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  });
+
+  // Draw nodes
+  nodes.forEach(n => {
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, 6, 0, Math.PI * 2);
+    ctx.fillStyle = '#0F0F11';
+    ctx.fill();
+    ctx.strokeStyle = n.color;
+    ctx.lineWidth = 1.5;
+    ctx.shadowColor = n.color;
+    ctx.shadowBlur = 5;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  });
+
+  // Empty dot
+  ctx.beginPath();
+  ctx.arc(W*0.4, H*0.75, 5, 0, Math.PI * 2);
+  ctx.strokeStyle = '#3A3836';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([2,2]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// LIVE INDICATORS
+// ══════════════════════════════════════════════════════════════════
+let cpuBase = 3.2;
+let bpm = 128;
+
+function animateStatus() {
+  // CPU fluctuation
+  cpuBase += (Math.random() - 0.5) * 0.4;
+  cpuBase = Math.max(2.1, Math.min(12, cpuBase));
+  const pct = cpuBase;
+  document.getElementById('cpuVal').textContent = pct.toFixed(1) + '%';
+  const bar = document.getElementById('cpuFill');
+  bar.style.width = Math.min(pct * 5, 100) + '%';
+  bar.style.background = pct > 8
+    ? 'linear-gradient(90deg, #F59E0B, #EF4444)'
+    : 'linear-gradient(90deg, #3FCF92, #F59E0B)';
+
+  // BPM tap flicker
+  document.getElementById('bpmVal').textContent = bpm;
+
+  // Random voice activity
+  const dots = document.querySelectorAll('.voice-dot');
+  const activeCount = Math.floor(Math.random() * 5) + 1;
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i < activeCount);
+  });
+
+  setTimeout(animateStatus, 800 + Math.random() * 400);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// RIPPLE EFFECT (touch feedback)
+// ══════════════════════════════════════════════════════════════════
+function spawnRipple(el) {
+  const r = document.createElement('div');
+  r.className = 'ripple';
+  r.style.width = r.style.height = '40px';
+  r.style.left = '50%';
+  r.style.top = '50%';
+  r.style.marginLeft = '-20px';
+  r.style.marginTop = '-20px';
+  // Wrap in container
+  let container = el.querySelector('.ripple-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'ripple-container';
+    el.appendChild(container);
+  }
+  container.appendChild(r);
+  r.addEventListener('animationend', () => r.remove());
+}
+
+// ══════════════════════════════════════════════════════════════════
+// KNOB TOUCH (visual feedback)
+// ══════════════════════════════════════════════════════════════════
+function knobTouch(el, paramName) {
+  el.classList.add('active');
+  setTimeout(() => el.classList.remove('active'), 300);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// FX FADER TOUCH
+// ══════════════════════════════════════════════════════════════════
+function faderTouch(e, fader) {
+  const rect = fader.getBoundingClientRect();
+  const handler = (ev) => {
+    const clientX = ev.touches ? ev.touches[0].clientX : ev.clientX;
+    const pct = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+    fader.querySelector('.fx-fader-fill').style.width = pct + '%';
+    fader.querySelector('.fx-fader-thumb').style.left = pct + '%';
+    fader.nextElementSibling.textContent = Math.round(pct) + '%';
+  };
+  const up = () => {
+    document.removeEventListener('mousemove', handler);
+    document.removeEventListener('touchmove', handler);
+    document.removeEventListener('mouseup', up);
+    document.removeEventListener('touchend', up);
+  };
+  document.addEventListener('mousemove', handler);
+  document.addEventListener('touchmove', handler, { passive: true });
+  document.addEventListener('mouseup', up);
+  document.addEventListener('touchend', up);
+  handler(e);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// ROUTE + EXPORT INTERACTIONS
+// ══════════════════════════════════════════════════════════════════
+function selectRoute(row) {
+  document.querySelectorAll('.route-row').forEach(r => r.classList.remove('active-route'));
+  row.classList.add('active-route');
+  spawnRipple(row);
+}
+
+function addRoute() {
+  // Stub — would open coupling picker
+  const btn = document.querySelector('.couple-add-btn');
+  btn.style.color = 'var(--gold)';
+  setTimeout(() => btn.style.color = '', 400);
+}
+
+function selectExport(target) {
+  document.querySelectorAll('.export-target').forEach(t => t.classList.remove('selected'));
+  target.classList.add('selected');
+  spawnRipple(target);
+}
+
+function exportNow() {
+  const btn = document.querySelector('.export-go-btn');
+  btn.textContent = 'EXPORTING…';
+  btn.style.opacity = '0.7';
+  setTimeout(() => {
+    btn.innerHTML = `EXPORT PACK <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v8M3 6l4 4 4-4M2 11h10"/></svg>`;
+    btn.style.opacity = '';
+  }, 1800);
+}
+
+function openEngineSelector() {
+  const add = document.querySelector('.slot-add');
+  add.style.color = 'var(--gold)';
+  setTimeout(() => add.style.color = '', 400);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// PAD ANIMATIONS (ONSET mode visual demo)
+// ══════════════════════════════════════════════════════════════════
+function flashPad(idx) {
+  const pads = document.querySelectorAll('.pad');
+  if (!pads[idx]) return;
+  pads[idx].classList.add('hit');
+  setTimeout(() => pads[idx].classList.remove('hit'), 120);
+}
+
+// Simulated beat pattern for ONSET demo
+const beatPattern = [0, 4, 8, 12, 2, 10, 5, 13];
+let beatIdx = 0;
+let beatInterval = null;
+
+function startBeat() {
+  if (beatInterval) return;
+  beatInterval = setInterval(() => {
+    flashPad(beatPattern[beatIdx % beatPattern.length]);
+    beatIdx++;
+  }, 187); // ~128 BPM 16th notes
+}
+
+// ══════════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', () => {
+  drawAllWaveforms();
+  drawCouplingGraph();
+  drawMiniCoupling();
+  populatePresets('All');
+  animateStatus();
+
+  // Auto-start beat demo after a moment
+  setTimeout(startBeat, 1000);
+
+  // Touch events for tiles
+  document.querySelectorAll('.slot-tile').forEach(tile => {
+    tile.addEventListener('touchstart', () => tile.classList.add('active'), { passive: true });
+    tile.addEventListener('touchend', () => {}, { passive: true });
+  });
+
+  // Tab bar active border — extend upward touch target
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('touchstart', () => spawnRipple(btn), { passive: true });
+  });
+});
+
+// Redraw on resize
+window.addEventListener('resize', () => {
+  drawAllWaveforms();
+  drawCouplingGraph();
+  drawMiniCoupling();
+});
+</script>
+</body>
+</html>
