@@ -32,6 +32,7 @@
 #include "PlayControlPanel.h"
 #include "SettingsPanel.h"
 #include "ExportTabPanel.h"
+#include "../Outshine/OutshineSidebarPanel.h"
 
 namespace xolokun {
 
@@ -129,6 +130,13 @@ public:
             exportPlaceholder.setVisible(false); // live panel replaces placeholder
         }
 
+        if (outshineSidebar == nullptr)
+        {
+            outshineSidebar = std::make_unique<OutshineSidebarPanel>(proc);
+            contentArea.addChildComponent(*outshineSidebar);
+            outshineSidebar->setVisible(activeTab == Export);
+        }
+
         if (couplingPanel == nullptr)
         {
             couplingPanel = std::make_unique<CouplingInspectorPanel>(proc);
@@ -204,6 +212,8 @@ public:
             exportPanel->setVisible(t == Export);
         exportPlaceholder.setVisible(!haveExportPanel && t == Export);
 
+        if (outshineSidebar) outshineSidebar->setVisible(t == Export);
+
         if (settingsPanel) settingsPanel->setVisible(t == Settings);
         settingsPlaceholder.setVisible(t == Settings && !settingsPanel);
 
@@ -253,8 +263,8 @@ public:
     {
         using namespace GalleryColors;
 
-        // Panel background
-        g.fillAll(get(shellWhite()));
+        // ── Panel background — shell bg layer (#0E0E10) ───────────────────────
+        g.fillAll(juce::Colour(0xFF0E0E10)); // shell bg — dark layer
 
         if (getWidth() <= 48)
         {
@@ -264,34 +274,37 @@ public:
             {
                 auto y = i * tabH;
                 bool active = (i == static_cast<int>(activeTab));
-                g.setColour(active ? get(xoGold)
-                                   : inactiveTabColour());
+                // Active: T1, inactive: T3
+                g.setColour(active ? juce::Colour(0xFFF0EDE8)  // T1
+                                   : juce::Colour(0xFF5E5C5A)); // T3
                 g.setFont(GalleryFonts::display(11.0f));
-                // Single letter icon: P, C, F, P, E, S
                 juce::String icon(tabLabels[i][0]);
                 g.drawText(icon, 0, y, getWidth(), tabH, juce::Justification::centred);
                 if (active)
                 {
+                    // Engine accent bar for active tab in collapsed mode
                     g.setColour(get(xoGold));
-                    g.fillRect(0, y, 2, tabH);  // Left accent bar
+                    g.fillRect(0, y, 2, tabH);
                 }
             }
             return;
         }
 
-        // Left border separator from Column B
-        g.setColour(get(borderGray()));
+        // ── Left border separator from Column B ───────────────────────────────
+        // 1px rgba(255,255,255,0.07) — subtle layer separator
+        g.setColour(juce::Colour(0x12FFFFFF)); // rgba(255,255,255,0.07)
         g.drawVerticalLine(0, 0.0f, static_cast<float>(getHeight()));
 
-        // Tab bar background
-        g.setColour(get(shellWhite()));
+        // ── Tab bar background — surface layer (#1A1A1C) ─────────────────────
+        g.setColour(juce::Colour(0xFF1A1A1C)); // surface color — one level above shell
         g.fillRect(0, 0, getWidth(), kTabBarH);
 
-        // Bottom border under tab bar
-        g.setColour(get(borderGray()));
+        // ── Bottom border under tab bar — 1px rgba(255,255,255,0.07) ─────────
+        g.setColour(juce::Colour(0x12FFFFFF)); // rgba(255,255,255,0.07)
         g.drawHorizontalLine(kTabBarH - 1, 0.0f, static_cast<float>(getWidth()));
 
-        // ── Active tab XO Gold underline ──────────────────────────────────────
+        // ── Active tab accent underline — 2px engine accent (XO Gold) ────────
+        // Prototype: 2px bottom border in engine accent color
         if (tabButtons[activeTab] != nullptr)
         {
             auto btnBounds = tabButtons[activeTab]->getBounds();
@@ -300,6 +313,21 @@ public:
                        kTabBarH - kUnderlineH,
                        btnBounds.getWidth(),
                        kUnderlineH);
+        }
+
+        // ── Tab text — paint over the buttons for correct font/color ─────────
+        // Prototype: 9.5px, weight 600, Display (Space Grotesk), uppercase, ~1.5px letter-spacing
+        // Active: T1 text, Inactive: T3 text
+        for (int i = 0; i < NumTabs; ++i)
+        {
+            if (tabButtons[i] == nullptr) continue;
+            bool active = (i == static_cast<int>(activeTab));
+            // Update button text colors to match prototype
+            tabButtons[i]->setColour(juce::TextButton::textColourOffId,
+                                     juce::Colour(0xFF5E5C5A)); // T3 inactive
+            tabButtons[i]->setColour(juce::TextButton::textColourOnId,
+                                     juce::Colour(0xFFF0EDE8)); // T1 active
+            (void)active; // tab button rendering handled by JUCE TextButton
         }
 
         // ── Focus ring on focused tab button ─────────────────────────────────
@@ -338,9 +366,22 @@ public:
         if (presetBrowser != nullptr)
             presetBrowser->setBounds(inner);
 
-        // ExportTabPanel: no padding — it owns its own header bar and internal gutters
+        // ExportTabPanel + OutshineSidebarPanel: split the Export tab area vertically
         if (exportPanel != nullptr)
-            exportPanel->setBounds(contentArea.getLocalBounds());
+        {
+            auto exportArea = contentArea.getLocalBounds();
+            if (outshineSidebar != nullptr)
+            {
+                // Outshine panel takes 180pt from the bottom
+                static constexpr int kOutshineSidebarH = 180;
+                outshineSidebar->setBounds(exportArea.removeFromBottom(kOutshineSidebarH));
+            }
+            exportPanel->setBounds(exportArea);
+        }
+        else if (outshineSidebar != nullptr)
+        {
+            outshineSidebar->setBounds(contentArea.getLocalBounds());
+        }
 
         if (couplingPanel != nullptr)
             couplingPanel->setBounds(inner);
@@ -429,6 +470,9 @@ private:
 
     // C5 — Export Tab Panel (constructed lazily when setProcessor() is called)
     std::unique_ptr<ExportTabPanel>         exportPanel;
+
+    // Outshine sidebar — attached to Export tab below ExportTabPanel
+    std::unique_ptr<OutshineSidebarPanel>   outshineSidebar;
 
     // C6 — Settings (constructed lazily when setProcessor() is called)
     std::unique_ptr<SettingsPanel>          settingsPanel;

@@ -165,6 +165,25 @@ struct OutshineProgress {
 using ProgressCallback = std::function<void (OutshineProgress&)>;
 
 //------------------------------------------------------------------------------
+// Export format selection
+//------------------------------------------------------------------------------
+
+enum class ExportFormat { XPNPack, WAVFolder, XPMOnly };
+
+//------------------------------------------------------------------------------
+// MPE expression route configuration (for UI — not embedded in XPM)
+//------------------------------------------------------------------------------
+
+struct MPEExpressionRoutes
+{
+    float slideAmount    = 0.8f;   // CC74 → Filter Cutoff
+    float pressureAmount = 0.4f;   // Pressure → Filter Resonance
+    float pitchBendRange = 24;     // ±semitones
+    bool  velocityToFilter = true; // Velocity → brightness
+    float modWheelAmount = 0.5f;   // ModWheel → Filter Cutoff
+};
+
+//------------------------------------------------------------------------------
 // XOutshine configuration
 //------------------------------------------------------------------------------
 
@@ -907,13 +926,34 @@ private:
             juce::AudioBuffer<float> original(nch, n);
             reader->read(&original, 0, n, 0, true, true);
 
-            // DC offset removal — reuse XOriginate's shared utility
+            // DC offset removal — inline implementation
             if (settings_.removeDC)
-                XOriginate::removeDCOffset(original);
+            {
+                for (int ch = 0; ch < nch; ++ch)
+                {
+                    auto* data = original.getWritePointer(ch);
+                    float dc = 0.0f;
+                    for (int i = 0; i < n; ++i) dc += data[i];
+                    dc /= (float)n;
+                    for (int i = 0; i < n; ++i) data[i] -= dc;
+                }
+            }
 
-            // Fade guards — reuse XOriginate's shared utility
+            // Fade guards — 64-sample linear fade in/out to prevent clicks
             if (settings_.applyFadeGuards)
-                XOriginate::applyFadeGuards(original, reader->sampleRate);
+            {
+                const int fadeLen = juce::jmin(64, n / 2);
+                for (int ch = 0; ch < nch; ++ch)
+                {
+                    auto* data = original.getWritePointer(ch);
+                    for (int i = 0; i < fadeLen; ++i)
+                    {
+                        float g = (float)i / (float)fadeLen;
+                        data[i] *= g;
+                        data[n - 1 - i] *= g;
+                    }
+                }
+            }
 
             UpgradedProgram prog;
             prog.name = sanitizeForFAT32(s.name.substring(0, 20));
