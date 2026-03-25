@@ -218,70 +218,190 @@ public:
               const OutshineSettings& settings,
               ProgressCallback progress = nullptr)
     {
-        settings_ = settings;
-        progress_ = progress;
+        OutshineSettings s = settings;
+        if (s.packName.isEmpty())
+            s.packName = inputPath.getFileNameWithoutExtension();
 
-        if (settings_.packName.isEmpty())
-            settings_.packName = inputPath.getFileNameWithoutExtension();
+        // Stage 1: INGEST — handle .xpn and directory inputs.
+        // analyzeGrains() takes a flat file list; run() must expand the input first.
+        juce::File tempWorkDir = juce::File::getSpecialLocation(juce::File::tempDirectory)
+            .getChildFile("xoutshine_run_" + juce::String(juce::Random::getSystemRandom().nextInt()));
+        tempWorkDir.createDirectory();
 
-        auto workDir = juce::File::getSpecialLocation(
-            juce::File::tempDirectory).getChildFile("xoutshine_" + juce::String(juce::Random::getSystemRandom().nextInt()));
-        workDir.createDirectory();
+        auto ingested = ingest(inputPath, tempWorkDir);
+        if (ingested.empty()) { tempWorkDir.deleteRecursively(); return false; }
 
-        bool ok = true;
+        // Build a StringArray of the ingested WAV paths for analyzeGrains()
+        juce::StringArray paths;
+        for (const auto& sample : ingested)
+            paths.add(sample.sourceFile.getFullPathName());
 
-        progressState_ = OutshineProgress{};
+        // analyzeGrains() manages its own workDir_ — clean up the temporary ingest dir first
+        tempWorkDir.deleteRecursively();
 
-        // Stage 1: INGEST
-        report(0.0f, "Ingesting samples...");
-        auto samples = ingest(inputPath, workDir);
-        if (samples.empty()) { workDir.deleteRecursively(); return false; }
+        if (!analyzeGrains(paths, s, progress))
+            return false;
 
-        progressState_.totalSamples = (int) samples.size();
-
-        // Stage 2: CLASSIFY
-        report(0.15f, "Classifying " + juce::String(samples.size()) + " samples...");
-        classify(samples);
-
-        // Stage 3: ANALYZE
-        report(0.25f, "Analyzing audio...");
-        analyze(samples);
-
-        // Stage 4: ENHANCE
-        report(0.35f, "Enhancing — velocity layers + round-robin...");
-        auto programs = enhance(samples, workDir);
-
-        // Stage 5: NORMALIZE
-        report(0.60f, "LUFS normalizing...");
-        normalize(programs);
-
-        // Stage 6: MAP
-        report(0.75f, "Building XPM programs...");
-        buildPrograms(programs, workDir);
-
-        // Stage 7: PACKAGE
-        report(0.85f, "Packaging...");
-        if (outputPath.getFileExtension().equalsIgnoreCase(".xpn"))
-            ok = packageXPN(programs, workDir, outputPath);
-        else
-            ok = packageFolder(programs, workDir, outputPath);
-
-        // Stage 8: VALIDATE
-        report(0.95f, "Validating...");
-        int issues = validate(programs);
-
-        report(1.0f, "XOutshine complete — " + juce::String(programs.size()) +
-               " programs, " + juce::String(issues) + " issues.");
-
-        workDir.deleteRecursively();
-        return ok && issues == 0 && !progressState_.cancelled;
+        return exportPearl(outputPath, s, progress);
     }
 
     //--------------------------------------------------------------------------
-    // Access results after run()
+    // Access results after run() / analyzeGrains() / exportPearl()
     //--------------------------------------------------------------------------
     int getNumPrograms() const { return (int) programs_.size(); }
     const juce::StringArray& getErrors() const { return errors_; }
+
+    // Returns the samples analyzed by the last analyzeGrains() call.
+    // Empty until analyzeGrains() has been called successfully.
+    const std::vector<AnalyzedSample>& getAnalyzedSamples() const { return analyzedSamples_; }
+
+    // Returns the upgraded programs produced by the last exportPearl() call.
+    // Empty until exportPearl() has been called successfully.
+    const std::vector<UpgradedProgram>& getPrograms() const { return programs_; }
+
+    //--------------------------------------------------------------------------
+    // Stage 1-3: Ingest + Classify + Analyze.
+    // Populates analyzedSamples_ for preview panel access.
+    // filePaths: flat list of WAV file paths (caller resolves folders/XPNs before calling).
+    // Returns true on success (even if some samples produced warnings).
+    //--------------------------------------------------------------------------
+    bool analyzeGrains (const juce::StringArray& filePaths,
+                        const OutshineSettings& settings,
+                        ProgressCallback progress = nullptr)
+    {
+        settings_ = settings;
+        progress_ = progress;
+        cancelRequested_.store(false);
+        errors_.clear();
+        analyzedSamples_.clear();
+        programs_.clear();
+
+        // Clean up any previous workDir
+        if (workDir_.isDirectory())
+            workDir_.deleteRecursively();
+
+        workDir_ = juce::File::getSpecialLocation(juce::File::tempDirectory)
+                       .getChildFile("xoutshine_" + juce::String(juce::Random::getSystemRandom().nextInt()));
+        workDir_.createDirectory();
+
+        auto wavDir = workDir_.getChildFile("ingested");
+        wavDir.createDirectory();
+
+        // Build AnalyzedSample list from flat file list (files already on disk — no unzip needed)
+        std::vector<AnalyzedSample> samples;
+        for (const auto& path : filePaths)
+        {
+            if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+            juce::File f(path);
+            if (!f.existsAsFile()) continue;
+
+            // Copy to workDir for consistent handling
+            auto dest = wavDir.getChildFile(f.getFileName());
+            f.copyFileTo(dest);
+
+            AnalyzedSample as;
+            as.sourceFile = dest;
+            as.name = dest.getFileNameWithoutExtension();
+            samples.push_back(as);
+        }
+
+        if (samples.empty()) return false;
+
+        progressState_ = OutshineProgress{};
+        report(0.0f, "Opening grains...");
+        progressState_.totalSamples = (int) samples.size();
+
+        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+
+        report(0.15f, "Classifying " + juce::String(samples.size()) + " samples...");
+        classify(samples);
+
+        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+
+        report(0.25f, "Analyzing root notes...");
+        analyze(samples);
+
+        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+
+        analyzedSamples_ = samples;
+        report(1.0f, "Analysis complete — " + juce::String(samples.size()) + " samples ready.");
+        return true;
+    }
+
+    //--------------------------------------------------------------------------
+    // Stage 4-8: Enhance + Normalize + Map + Package + Validate.
+    // Operates on the retained analyzedSamples_ from the last analyzeGrains() call.
+    // outputPath: .xpn file or folder.
+    // Returns true on success.
+    //--------------------------------------------------------------------------
+    bool exportPearl (const juce::File& outputPath,
+                      const OutshineSettings& settings,
+                      ProgressCallback progress = nullptr)
+    {
+        if (analyzedSamples_.empty())
+        {
+            errors_.add("exportPearl() called before analyzeGrains() — no samples to export.");
+            return false;
+        }
+
+        settings_ = settings;
+        progress_ = progress;
+        cancelRequested_.store(false);
+
+        if (settings_.packName.isEmpty())
+            settings_.packName = analyzedSamples_[0].name;
+
+        // Reuse workDir_ from analyzeGrains(). If it was cleaned up, fail gracefully.
+        if (!workDir_.isDirectory())
+        {
+            errors_.add("exportPearl() called but workDir no longer exists. Call analyzeGrains() again.");
+            return false;
+        }
+
+        bool ok = true;
+
+        report(0.35f, "Enhancing — velocity layers + round-robin...");
+        auto programs = enhance(analyzedSamples_, workDir_);
+        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+
+        report(0.60f, "LUFS normalizing...");
+        normalize(programs);
+        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+
+        report(0.75f, "Building XPM programs...");
+        buildPrograms(programs, workDir_);
+        if (cancelRequested_.load()) { workDir_.deleteRecursively(); return false; }
+
+        report(0.85f, "Packaging...");
+        if (outputPath.getFileExtension().equalsIgnoreCase(".xpn"))
+            ok = packageXPN(programs, workDir_, outputPath);
+        else
+            ok = packageFolder(programs, workDir_, outputPath);
+
+        if (cancelRequested_.load())
+        {
+            workDir_.deleteRecursively();
+            return false;
+        }
+
+        report(0.95f, "Validating...");
+        int issues = validate(programs);
+
+        report(1.0f, "Pearl complete — " + juce::String(programs.size())
+               + " programs, " + juce::String(issues) + " issues.");
+
+        programs_ = programs;
+
+        // Clean up workDir after successful export
+        workDir_.deleteRecursively();
+        return ok && issues == 0 && !cancelRequested_.load();
+    }
+
+    //--------------------------------------------------------------------------
+    // Signal the current analyzeGrains() or exportPearl() call to abort.
+    // Safe to call from any thread.
+    //--------------------------------------------------------------------------
+    void cancel() { cancelRequested_.store(true); }
 
 private:
     OutshineSettings settings_;
@@ -289,6 +409,11 @@ private:
     OutshineProgress progressState_;
     std::vector<UpgradedProgram> programs_;
     juce::StringArray errors_;
+
+    // Staged API state
+    std::vector<AnalyzedSample> analyzedSamples_;   // populated by analyzeGrains()
+    juce::File workDir_;                            // retained between analyzeGrains() and exportPearl()
+    std::atomic<bool> cancelRequested_{ false };    // set true to abort current operation
 
     void report (float p, const juce::String& msg)
     {
