@@ -61,3 +61,7 @@ firebase-debug.*.log
 
 # Superpowers (AI agent workspace — not version controlled)
 .superpowers/
+
+# Social pipeline generated output (keep structure, ignore generated content)
+Tools/social/output/*
+!Tools/social/output/.gitkeep

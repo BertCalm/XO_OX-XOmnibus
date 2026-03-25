@@ -46,6 +46,13 @@ This document is authoritative over:
 
 When code and this spec conflict, **this spec wins** until a new spec version is published.
 
+### 1.2.1 Implementation Note (2026-03-25)
+
+The Python CLI (`Tools/xoutshine.py`) is the **PROTOTYPE** implementation. The C++ header
+(`Source/Export/XOutshine.h`) is the **CANONICAL** implementation for the XOlokun desktop
+application. When behavior diverges, the C++ implementation is authoritative. The Python CLI
+may be used for batch processing and testing but is not the primary delivery path.
+
 ### 1.3 Version History
 
 | Version | Date | Changes |
