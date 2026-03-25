@@ -631,6 +631,40 @@ private:
                 }
             }
         }
+
+        // Channel validation: all melodic samples must have matching channel counts.
+        // Mixed mono/stereo causes MPC to reject the program.
+        {
+            int melodicChannels = -1;  // -1 = not yet set
+            bool mismatchFound = false;
+
+            for (auto& s : samples)
+            {
+                if (s.bitDepth < 0) continue;  // already flagged invalid (Task 4 sentinel)
+                if (isDrumCategory(s.category)) continue;  // drums map to separate pads; no constraint
+
+                if (melodicChannels < 0)
+                {
+                    melodicChannels = s.numChannels;
+                }
+                else if (s.numChannels != melodicChannels)
+                {
+                    mismatchFound = true;
+                    errors_.add("Channel mismatch: \"" + s.name + "\" is "
+                        + juce::String(s.numChannels) + "-channel but other melodic samples are "
+                        + juce::String(melodicChannels) + "-channel. "
+                        + "MPC requires all layers in a keygroup to match. "
+                        + "Mixed-channel samples will be excluded.");
+                    s.bitDepth = -1;  // reuse sentinel to exclude from enhance()
+                }
+            }
+
+            if (mismatchFound)
+            {
+                errors_.add("Channel validation failed: some samples excluded. "
+                            "Convert all melodic samples to the same channel count before running Outshine.");
+            }
+        }
     }
 
     //==========================================================================
