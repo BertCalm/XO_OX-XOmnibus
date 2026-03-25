@@ -92,7 +92,7 @@ private:
                 { "opera_voiceCount",        "VOICES"  },
                 { "opera_chorusSync",        "CHORUS"  },
                 { "opera_stageWidth",        "STAGE"   },
-                { "opera_conductorMode",     "CONDUCT" },
+                { "opera_arcMode",           "CONDUCT" },
                 { "opera_conductorTimescale","ARC"     },
                 { "opera_conductorPeak",     "PEAK"    },
                 { "opera_conductorJitter",   "JITTER"  },

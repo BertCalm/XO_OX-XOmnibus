@@ -37,6 +37,9 @@
 #include "Gallery/ColumnLayoutManager.h"
 #include "Gallery/SidebarPanel.h"
 #include "Gallery/StatusBar.h"
+#include "Gallery/WaveformDisplay.h"
+#include "Gallery/EnginePickerPopup.h"
+#include "Gallery/CouplingPopover.h"
 
 namespace xolokun {
 
@@ -75,17 +78,24 @@ public:
           performancePanel(proc),
           macros(proc.getAPVTS()),
           masterFXStrip(proc.getAPVTS()),
-          presetBrowser(proc)
+          presetBrowser(proc),
+          ghostTile(proc, 4)   // Ghost Slot — 5th tile, slot index 4
     {
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
 
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        // Primary tiles (slots 0-3)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
         {
             tiles[i] = std::make_unique<CompactEngineTile>(proc, i);
             tiles[i]->onSelect = [this](int slot) { selectSlot(slot); };
             addAndMakeVisible(*tiles[i]);
         }
+
+        // Ghost tile (slot 4) — hidden until collection detection fires
+        ghostTile.onSelect = [this](int slot) { selectSlot(slot); };
+        addAndMakeVisible(ghostTile);
+        ghostTile.setVisible(false);
 
         addAndMakeVisible(fieldMap);
         addAndMakeVisible(overview);
@@ -99,6 +109,7 @@ public:
         // Coupling arc overlay: must be added AFTER tiles so it paints on top.
         // setInterceptsMouseClicks(false,false) means tiles still receive clicks.
         addAndMakeVisible(couplingArcs);
+        addAndMakeVisible(couplingHitTester);
 
         detail.setVisible(false);
         detail.setAlpha(0.0f);
@@ -176,8 +187,9 @@ public:
             GalleryColors::darkMode() = themeToggleBtn.getToggleState();
             laf->applyTheme();
             repaint();
-            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+            for (int i = 0; i < kNumPrimarySlots; ++i)
                 tiles[i]->repaint();
+            ghostTile.repaint();
             overview.repaint();
             detail.repaint();
             chordPanel.repaint();
@@ -240,11 +252,15 @@ public:
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
         proc.onEngineChanged = [this](int slot)
         {
-            if (slot >= 0 && slot < XOlokunProcessor::MaxSlots)
+            if (slot >= 0 && slot < kNumPrimarySlots)
                 tiles[slot]->refresh();
+            else if (slot == 4)
+                ghostTile.refresh();
             overview.refresh();
             if (performancePanel.isVisible())
                 performancePanel.refresh();
+            // Re-evaluate ghost tile visibility whenever any slot changes.
+            checkCollectionUnlock();
         };
 
         setSize(1100, 700);
@@ -272,8 +288,8 @@ public:
 
     bool keyPressed(const juce::KeyPress& key) override
     {
-        // Keys 1-4 jump directly to engine slots
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        // Keys 1-4 jump directly to primary engine slots
+        for (int i = 0; i < kNumPrimarySlots; ++i)
         {
             if (key == juce::KeyPress('1' + i))
             {
@@ -281,6 +297,13 @@ public:
                     selectSlot(i);
                 return true;
             }
+        }
+        // Key 5 jumps to ghost slot when visible
+        if (key == juce::KeyPress('5') && ghostTile.isVisible())
+        {
+            if (processor.getEngine(4) != nullptr)
+                selectSlot(4);
+            return true;
         }
         // Escape returns to overview
         if (key == juce::KeyPress::escapeKey)
@@ -382,12 +405,28 @@ public:
         // ── Column A — Engine Rack (full height, MacroSection now in header) ──
         auto colA = layout.getColumnA();
 
-        // Remaining Column A for engine tiles
-        int tileH = colA.getHeight() / XOlokunProcessor::MaxSlots;
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        // Divide Column A among the 4 primary tiles.
+        // The ghost tile sits below tile[3] at the same height, but only takes
+        // space when visible — when hidden it receives zero-height bounds so it
+        // doesn't steal hit-test area from anything beneath it.
+        int tileH = colA.getHeight() / kNumPrimarySlots;
+        for (int i = 0; i < kNumPrimarySlots; ++i)
         {
             tiles[i]->setBounds(colA.getX(), colA.getY() + i * tileH,
                                 colA.getWidth(), tileH);
+        }
+
+        // Ghost tile — positioned below tile[3] when visible, zero-height when hidden.
+        if (ghostTile.isVisible())
+        {
+            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH,
+                                colA.getWidth(), tileH);
+        }
+        else
+        {
+            // Park off-screen (zero height) — no layout impact when hidden.
+            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH,
+                                colA.getWidth(), 0);
         }
 
         // ── Column B — Panel stack + MasterFX strip + FieldMap ───────────────
@@ -420,19 +459,26 @@ public:
 
         // ── Coupling arc overlay — full editor bounds ─────────────────────────
         couplingArcs.setBounds(getLocalBounds());
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
         {
             if (tiles[i])
                 couplingArcs.setTileCenter(i, tiles[i]->getBounds().getCentre().toFloat());
         }
+        // Ghost tile (slot 4): only register its center when visible so arcs draw correctly.
+        if (ghostTile.isVisible())
+            couplingArcs.setTileCenter(4, ghostTile.getBounds().getCentre().toFloat());
+
+        // ── Coupling arc hit-tester — covers the OverviewPanel bounds ─────────
+        couplingHitTester.setBounds(overview.getBounds());
     }
 
 private:
     void selectSlot(int slot)
     {
-        // Deselect all tiles
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        // Deselect all tiles (primary + ghost)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setSelected(i == slot);
+        ghostTile.setSelected(slot == 4);
 
         if (slot == selectedSlot && detail.isVisible())
             return; // already showing this one
@@ -500,8 +546,9 @@ private:
     void showOverview()
     {
         selectedSlot = -1;
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setSelected(false);
+        ghostTile.setSelected(false);
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
@@ -529,8 +576,9 @@ private:
     void showChordMachine()
     {
         selectedSlot = -1;
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setSelected(false);
+        ghostTile.setSelected(false);
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
         juce::Component* outgoing = detail.isVisible() ? static_cast<juce::Component*>(&detail)
@@ -562,8 +610,9 @@ private:
     void showPerformanceView()
     {
         selectedSlot = -1;
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setSelected(false);
+        ghostTile.setSelected(false);
 
         performancePanel.refresh();
 
@@ -623,12 +672,39 @@ private:
 
     void timerCallback() override
     {
-        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->refresh();
+        if (ghostTile.isVisible())
+            ghostTile.refresh();
+        checkCollectionUnlock();
         if (!detail.isVisible())
             overview.refresh();
         if (performancePanel.isVisible())
             performancePanel.refresh();
+
+        // ── Update coupling hit tester with current arc data ─────────────────
+        {
+            auto routes = processor.getCouplingMatrix().getRoutes();
+            std::array<juce::Point<float>, EngineRegistry::MaxSlots> nodeCenters;
+            // Compute node centers matching OverviewPanel's diamond layout
+            float w = (float)overview.getWidth();
+            float h = (float)overview.getHeight();
+            float portraitH = h * 0.38f;
+            float chainY = portraitH + (h - portraitH) * 0.28f;
+            float routeY = chainY + 12.0f + 12.0f;
+            float padding = 16.0f;
+            auto nodeArea = juce::Rectangle<float>(padding, routeY, w - 2.0f * padding, 60.0f);
+            nodeCenters[0] = nodeArea.getTopLeft().translated(8.0f, 8.0f);
+            nodeCenters[1] = nodeArea.getTopRight().translated(-8.0f, 8.0f);
+            nodeCenters[2] = nodeArea.getBottomLeft().translated(8.0f, -8.0f);
+            nodeCenters[3] = nodeArea.getBottomRight().translated(-8.0f, -8.0f);
+            // Ghost Slot position — below the 4 primary nodes if visible
+            if (ghostTile.isVisible())
+                nodeCenters[4] = ghostTile.getBounds().getCentre().toFloat() - overview.getPosition().toFloat();
+            else
+                nodeCenters[4] = nodeCenters[3].translated(0.0f, 20.0f); // fallback
+            couplingHitTester.updateArcs(routes, nodeCenters);
+        }
 
         // ── MIDI Learn: finalise pending learn captures ───────────────────────
         // checkPendingLearn() is safe to call from the message thread at any rate.
@@ -659,6 +735,7 @@ private:
         processor.drainNoteEvents([&](const XOlokunProcessor::NoteMapEvent& ev)
         {
             juce::Colour colour = kXOGold;
+            // MaxSlots now includes the Ghost Slot (4) — safe to query all 5.
             if (ev.slot >= 0 && ev.slot < XOlokunProcessor::MaxSlots)
             {
                 if (auto* eng = processor.getEngine(ev.slot))
@@ -669,9 +746,10 @@ private:
 
         // ── Status Bar updates ────────────────────────────────────────────────
         // Sum voice counts across all active slots and update slot indicator dots.
+        // Ghost slot (4) dot is only shown when the ghost tile is visible.
         {
             int totalVoices = 0;
-            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+            for (int i = 0; i < kNumPrimarySlots; ++i)
             {
                 if (auto* eng = processor.getEngine(i))
                 {
@@ -683,6 +761,23 @@ private:
                     statusBar.setSlotActive(i, false, juce::Colours::transparentBlack);
                 }
             }
+            // Ghost slot dot
+            if (ghostTile.isVisible())
+            {
+                if (auto* eng = processor.getEngine(4))
+                {
+                    totalVoices += eng->getActiveVoiceCount();
+                    statusBar.setSlotActive(4, true, eng->getAccentColour());
+                }
+                else
+                {
+                    statusBar.setSlotActive(4, false, juce::Colours::transparentBlack);
+                }
+            }
+            else
+            {
+                statusBar.setSlotActive(4, false, juce::Colours::transparentBlack);
+            }
             statusBar.setVoiceCount(totalVoices);
             // BPM and CPU: placeholder values until processor atomics are added.
             statusBar.setBpm(120.0);
@@ -692,13 +787,64 @@ private:
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
     // Use ColumnLayoutManager::kHeaderH (64) and ColumnLayoutManager::kFieldMapH (65).
-    static constexpr int kMasterFXH = 68;  // MasterFX compact strip at bottom of Column B
-    static constexpr int kFadeMs    = 150; // Panel cross-fade duration (ms)
+    static constexpr int kMasterFXH      = 68;  // MasterFX compact strip at bottom of Column B
+    static constexpr int kFadeMs         = 150; // Panel cross-fade duration (ms)
+    // kNumPrimarySlots: the 4 slots always visible (indices 0-3).
+    // The Ghost Slot (index 4) is conditional — managed by checkCollectionUnlock().
+    static constexpr int kNumPrimarySlots = 4;
+
+    // ── Ghost Slot: collection detection + materialise/dematerialise animation ──
+    //
+    // Reads engine IDs for slots 0-3 and calls EngineRegistry::detectCollection().
+    // When the collection condition is newly met, fades in the ghost tile.
+    // When the condition is lost, fades out and hides it.
+    //
+    // Safe to call at any frequency; internally guards on visibility state changes
+    // to avoid redundant animation calls.
+    //
+    void checkCollectionUnlock()
+    {
+        std::array<juce::String, 4> ids;
+        for (int i = 0; i < kNumPrimarySlots; ++i)
+        {
+            auto* eng = processor.getEngine(i);
+            ids[static_cast<size_t>(i)] = eng ? eng->getEngineId() : juce::String();
+        }
+
+        const auto collection  = EngineRegistry::detectCollection(ids);
+        const bool shouldShow  = collection.isNotEmpty();
+        auto& anim             = juce::Desktop::getInstance().getAnimator();
+
+        if (shouldShow && !ghostTile.isVisible())
+        {
+            // Materialise: set alpha 0, make visible, animate to alpha 1.
+            ghostTile.setAlpha(0.0f);
+            ghostTile.setVisible(true);
+            resized(); // give the ghost tile its bounds before animating
+            anim.animateComponent(&ghostTile, ghostTile.getBounds(),
+                                  1.0f, 500, false, 1.0, 0.0);
+        }
+        else if (!shouldShow && ghostTile.isVisible())
+        {
+            // Dematerialise: fade out, then hide and recompute layout.
+            anim.animateComponent(&ghostTile, ghostTile.getBounds(),
+                                  0.0f, 100, false, 1.0, 0.0);
+            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
+            juce::Timer::callAfterDelay(120, [safeThis]()
+            {
+                if (safeThis == nullptr) return;
+                if (safeThis->ghostTile.getAlpha() < 0.05f)
+                    safeThis->ghostTile.setVisible(false);
+                // resized() is NOT called here — hiding a zero-height off-screen
+                // tile has no visual impact on the 4 primary tiles.
+            });
+        }
+    }
 
     XOlokunProcessor& processor;
     std::unique_ptr<GalleryLookAndFeel> laf;
 
-    std::array<std::unique_ptr<CompactEngineTile>, XOlokunProcessor::MaxSlots> tiles;
+    std::array<std::unique_ptr<CompactEngineTile>, kNumPrimarySlots> tiles;
     FieldMapPanel          fieldMap;
     OverviewPanel          overview;
     EngineDetailPanel      detail;
@@ -707,6 +853,9 @@ private:
     MacroSection           macros;
     MasterFXSection        masterFXStrip;
     PresetBrowserStrip     presetBrowser;
+    // Ghost Slot tile — declared after presetBrowser to match constructor MIL order.
+    // Hidden until EngineRegistry::detectCollection() returns a non-empty collection.
+    CompactEngineTile      ghostTile;
     juce::TextButton       cmToggleBtn;
     juce::TextButton       perfToggleBtn;
     juce::TextButton       surfaceToggleBtn;
@@ -714,6 +863,7 @@ private:
     juce::TextButton       exportBtn;
     PlaySurface            playSurface;
     CouplingArcOverlay     couplingArcs { processor };
+    CouplingArcHitTester   couplingHitTester { processor };
     SidebarPanel           sidebar;
     StatusBar              statusBar;
 

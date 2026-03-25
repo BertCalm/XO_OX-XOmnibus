@@ -254,7 +254,7 @@ static void testProcessBlock()
         src.prepare(44100.0, blockSize);
         dst.prepare(44100.0, blockSize);
 
-        std::array<SynthEngine*, 4> engines = { &src, &dst, nullptr, nullptr };
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
         matrix.setEngines(engines);
 
         auto routes = matrix.loadRoutes();
@@ -275,7 +275,7 @@ static void testProcessBlock()
         dst.prepare(44100.0, blockSize);
         src.fillOutput(0.5f);
 
-        std::array<SynthEngine*, 4> engines = { &src, &dst, nullptr, nullptr };
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
         matrix.setEngines(engines);
 
         MegaCouplingMatrix::CouplingRoute route;
@@ -310,7 +310,7 @@ static void testProcessBlock()
         dst.prepare(44100.0, blockSize);
         src.fillOutput(0.5f);
 
-        std::array<SynthEngine*, 4> engines = { &src, &dst, nullptr, nullptr };
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &src, &dst, nullptr, nullptr, nullptr };
         matrix.setEngines(engines);
 
         MegaCouplingMatrix::CouplingRoute route;
@@ -337,7 +337,7 @@ static void testProcessBlock()
         TestEngine eng("Eng");
         eng.prepare(44100.0, blockSize);
 
-        std::array<SynthEngine*, 4> engines = { &eng, nullptr, nullptr, nullptr };
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { &eng, nullptr, nullptr, nullptr, nullptr };
         matrix.setEngines(engines);
 
         MegaCouplingMatrix::CouplingRoute route;
@@ -360,7 +360,7 @@ static void testProcessBlock()
         matrix.prepare(blockSize);
 
         // All engine pointers are null
-        std::array<SynthEngine*, 4> engines = { nullptr, nullptr, nullptr, nullptr };
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> engines = { nullptr, nullptr, nullptr, nullptr, nullptr };
         matrix.setEngines(engines);
 
         MegaCouplingMatrix::CouplingRoute route;

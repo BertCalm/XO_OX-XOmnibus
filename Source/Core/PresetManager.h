@@ -354,7 +354,7 @@ struct PresetData {
     int schemaVersion = 1;
     juce::String name;
     juce::String mood;                     // 15 moods: Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|Coupling|Crystalline|Deep|Ethereal|Kinetic|Luminous|Organic|User
-    juce::StringArray engines;             // 1-4 engine names (MaxSlots = 4)
+    juce::StringArray engines;             // 1-5 engine names (MaxSlots = 5)
     juce::String author;
     juce::String version;
     juce::String description;
@@ -767,8 +767,8 @@ private:
         }
         if (out.engines.isEmpty())
             return false;
-        // Cap at 4 engines — matches EngineRegistry::MaxSlots and MegaCouplingMatrix::MaxSlots.
-        while (out.engines.size() > 4)
+        // Cap at MaxSlots engines — matches EngineRegistry::MaxSlots and MegaCouplingMatrix::MaxSlots (both = 5).
+        while (out.engines.size() > 5)
             out.engines.remove(out.engines.size() - 1);
 
         // author

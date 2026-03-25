@@ -1014,6 +1014,47 @@ All questions resolved. Implementation may proceed.
 | CrossFeedMatrix | POST-V1 | OCELOT |
 | FiveMacroDisplay | V1-REQUIRED | OVERBITE |
 | DualVoiceAlgoPanel | POST-V1 | OUIE |
+| 5th Slot (Ghost Slot) | V1-REQUIRED | All collections (Kitchen Fusion first) |
+| CouplingChainView | V1-REQUIRED | All engines (OverviewPanel enhancement) |
+
+---
+
+## 8B. 5TH SLOT (Ghost Slot Architecture)
+
+### Unlock Mechanic
+When all 4 engine slots contain engines from the same collection (e.g., Kitchen quad: OVEN, OCHRE, OBELISK, OPALINE), a 5th slot materializes with a collection-specific animation.
+
+### Implementation Requirements
+
+| Element | Data Source | Status | Thread Safety | Notes |
+|---------|-----------|--------|---------------|-------|
+| `MaxSlots` constant change (4 → 5) | `EngineRegistry.h`, `MegaCouplingMatrix.h`, `XOlokunProcessor.h` | BUILD | [UI + AUDIO] | Compile-time constant. All slot arrays, FIFOs, coupling matrices expand automatically. |
+| Collection detection | `EngineRegistry` — check if slots 0-3 contain engines from same collection | BUILD | [UI] | New method: `EngineRegistry::detectCollection(engineIds[4])` returns collection name or empty. |
+| 5th slot CompactEngineTile | Conditional visibility based on collection detection | BUILD | [UI] | Hidden by default (`setVisible(false)`). Materializes with collection-specific animation on detection. |
+| Ghost Slot coupling | Spectral Fingerprint Cache — metadata coupling, NOT audio routing | BUILD | [UI] | MegaCouplingMatrix stays 4×4 for audio. 5th slot uses fingerprint-based modulation only. |
+| Collection-specific unlock animation | Per-collection animation spec | BUILD | [UI] | Kitchen: 500ms XO Gold shimmer. Creature: 1000ms rise-from-below. Each collection unique. |
+| WaveformFifo for slot 5 | Already handled — `MaxSlots` change expands `waveformFifos` array | EXISTS | [FIFO] | Array-based; automatic. |
+| Removal animation | Any Kitchen engine removed → 5th slot fades out (100ms) | BUILD | [UI] | Graceful teardown: fade opacity, then `setVisible(false)`. |
+
+### CPU Budget
+- Ghost Slot uses shared voice budget: 32 voices across 5 engines
+- 5th slot engine ≤ 10% CPU
+- Spectral Fingerprint Cache eliminates need for 4 additional audio coupling streams
+
+---
+
+## 8C. COUPLING CHAIN VIEW (OverviewPanel Enhancement)
+
+### Purpose
+Visual signal-flow representation showing active coupling routes as a readable chain: `[ENGINE A] → [coupling type] → [ENGINE B] → [master FX] → [OUT]`
+
+| Element | Data Source | Status | Thread Safety | Notes |
+|---------|-----------|--------|---------------|-------|
+| Chain diagram component | `MegaCouplingMatrix::getRoutes()` + engine IDs | BUILD | [UI] | Horizontal strip (520×48pt) below the coupling node graph in OverviewPanel. Shows audio path left-to-right. |
+| Engine boxes | Per-slot accent color + engine name | BUILD | [UI] | Rounded rect, accent color border, 8pt engine name. Active: 100% opacity. |
+| Coupling type arrows | Route type → arrow label | BUILD | [UI] | Thin arrow with coupling type abbreviated label (reuse `couplingTypeLabel()`). |
+| OBRIX insert indicator | When OBRIX receives coupling input | BUILD | [UI] | Special icon showing "programmable processor" role. |
+| Master FX → OUT | Static | BUILD | [UI] | Final arrow to speaker icon. |
 
 ---
 

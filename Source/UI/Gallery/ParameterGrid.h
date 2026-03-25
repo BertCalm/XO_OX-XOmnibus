@@ -17,7 +17,13 @@ namespace xolokun
 // MACRO / OTHER) based on keywords in the parameter inner name.  Each section
 // gets a Space Grotesk Bold 10pt ALL-CAPS header with a color dot, and every
 // knob cell receives a subtle 3px left-border bar in the section color.
-class ParameterGrid : public juce::Component
+//
+// Lazy attachment: GalleryKnob / Label / SliderAttachment are only created when
+// a slot scrolls within kVisibilityMargin px of the visible area.  Slots that
+// scroll back out of range are torn down.  paint() and getRequiredHeight() still
+// use the full param list so scrolling geometry is always correct.
+class ParameterGrid : public juce::Component,
+                      private juce::Timer
 {
 public:
     // ── Section identity ────────────────────────────────────────────────────
@@ -90,22 +96,25 @@ public:
     }
 
     // ── Constructor ─────────────────────────────────────────────────────────
+    // Collects all matching parameter IDs and sorts them into sections, but
+    // does NOT create any GalleryKnob / Label / SliderAttachment yet.
     // midiLearn: optional — when non-null every knob gets a right-click MIDI
     // learn context menu and shows visual feedback (amber ring / green badge).
-    ParameterGrid(XOlokunProcessor& proc,
+    ParameterGrid(XOlokunProcessor& proc_,
                   const juce::String& engId,
                   const juce::String& enginePrefix,
-                  juce::Colour accentColour,
-                  MIDILearnManager* midiLearn = nullptr)
+                  juce::Colour accentColour_,
+                  MIDILearnManager* midiLearn_ = nullptr)
+        : proc(proc_)
+        , accentColour(accentColour_)
+        , midiLearn(midiLearn_)
     {
-        auto& apvts = proc.getAPVTS();
         auto& rawParams = proc.getParameters(); // juce::AudioProcessor::getParameters()
         juce::String pfx = enginePrefix + "_";
 
         // ── Collect params into per-section buckets ─────────────────────────
-        struct ParamEntry { juce::String pid; juce::String shortLabel; Section sec; };
         // 6 buckets — index matches Section enum value (OSC=0 … OTHER=5)
-        std::vector<ParamEntry> buckets[6];
+        std::vector<ParamSlot> buckets[6];
 
         for (auto* p : rawParams)
         {
@@ -136,54 +145,38 @@ public:
             auto& bucket = buckets[static_cast<int>(orderedSec)];
             if (bucket.empty()) continue;
 
-            int startIdx = (int)sliders.size();
+            int startIdx = (int)paramSlots.size();
 
             for (auto& entry : bucket)
-            {
-                auto* rp = dynamic_cast<juce::RangedAudioParameter*>(
-                    apvts.getParameter(entry.pid));
-                if (!rp) continue;
+                paramSlots.push_back(entry);
 
-                auto slider = std::make_unique<GalleryKnob>();
-                slider->setSliderStyle(juce::Slider::RotaryVerticalDrag);
-                slider->setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
-                slider->setColour(juce::Slider::rotarySliderFillColourId, accentColour);
-                slider->setTooltip(rp->getName(64));
-                A11y::setup(*slider, rp->getName(64),
-                            rp->getName(64) + " (" + entry.pid + ")");
-                addAndMakeVisible(*slider);
-
-                auto label = std::make_unique<juce::Label>();
-                label->setText(entry.shortLabel, juce::dontSendNotification);
-                label->setFont(GalleryFonts::label(8.0f));
-                label->setColour(juce::Label::textColourId,
-                                 GalleryColors::get(GalleryColors::textMid()));
-                label->setJustificationType(juce::Justification::centred);
-                label->setInterceptsMouseClicks(false, false);
-                addAndMakeVisible(*label);
-
-                attachments.push_back(
-                    std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                        apvts, entry.pid, *slider));
-
-                enableKnobReset (*slider, apvts, entry.pid);
-
-                // Wire MIDI learn if manager is available
-                if (midiLearn)
-                {
-                    auto* ml = slider->setupMidiLearn(entry.pid, *midiLearn);
-                    midiLearnListeners.emplace_back(ml);
-                }
-
-                sliders.push_back(std::move(slider));
-                labels.push_back(std::move(label));
-            }
-
-            sectionRuns.push_back({ orderedSec, startIdx, (int)sliders.size() - startIdx });
+            sectionRuns.push_back({ orderedSec, startIdx,
+                                    (int)paramSlots.size() - startIdx });
         }
+
+        // Pre-allocate live knob slots (all null at start)
+        liveKnobs.resize(paramSlots.size());
+
+        // Start 10 Hz timer for visibility checks
+        startTimerHz(10);
+    }
+
+    ~ParameterGrid() override
+    {
+        stopTimer();
+        // Tear down all live knobs in safe destruction order
+        for (auto& lk : liveKnobs)
+            destroyLiveKnob(lk);
+    }
+
+    // ── Viewport linkage ────────────────────────────────────────────────────
+    void setParentViewport(juce::Viewport* vp)
+    {
+        parentViewport = vp;
     }
 
     // ── Height calculation — accounts for per-section header rows ───────────
+    // Always returns the full height as if all knobs exist (viewport needs this).
     int getRequiredHeight(int availableWidth) const
     {
         int cols = juce::jmax(1, availableWidth / kCellW);
@@ -205,7 +198,7 @@ public:
         int offsetX = (getWidth() - cols * kCellW) / 2;
         int y       = kPad;
 
-        knobBounds.resize(sliders.size());
+        knobBounds.resize(paramSlots.size());
         int flatIdx = 0;
 
         for (auto& run : sectionRuns)
@@ -219,17 +212,26 @@ public:
                 int cx  = offsetX + col * kCellW;
                 int cy  = y + row * kCellH;
 
-                sliders[flatIdx]->setBounds(cx + 6, cy + 4, kCellW - 12, kCellW - 12);
-                labels[flatIdx]->setBounds(cx, cy + kCellW - 4, kCellW, 14);
                 knobBounds[flatIdx] = { cx, cy };
+
+                // If the live knob already exists, update its bounds immediately
+                if (auto& lk = liveKnobs[flatIdx]; lk != nullptr)
+                {
+                    lk->knob->setBounds(cx + 6, cy + 4, kCellW - 12, kCellW - 12);
+                    lk->label->setBounds(cx, cy + kCellW - 4, kCellW, 14);
+                }
             }
 
             int rows = (run.count + cols - 1) / cols;
             y += rows * kCellH;
         }
+
+        // After geometry changes, immediately update which knobs are live
+        updateVisibleAttachments();
     }
 
     // ── Paint — section headers + left-border bars on each knob cell ────────
+    // Knob widgets are painted by JUCE automatically; this draws the chrome.
     void paint(juce::Graphics& g) override
     {
         int cols      = juce::jmax(1, getWidth() / kCellW);
@@ -286,8 +288,32 @@ public:
     }
 
 private:
+    // ── Per-parameter metadata (never destroyed after construction) ──────────
+    struct ParamSlot
+    {
+        juce::String pid;
+        juce::String shortLabel;
+        Section      sec;
+    };
+
+    // ── Live widget bundle — created/destroyed lazily ────────────────────────
+    // Destruction order inside destroyLiveKnob():
+    //   1. attachment (references the slider — must die first)
+    //   2. midiLearnListener (references the knob — must die before knob)
+    //   3. label
+    //   4. knob
+    struct LiveKnob
+    {
+        std::unique_ptr<GalleryKnob>   knob;
+        std::unique_ptr<juce::Label>   label;
+        std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attachment;
+        std::unique_ptr<MidiLearnMouseListener> midiLearnListener;
+    };
+
     // Section run descriptor — one entry per non-empty section, in display order
     struct SectionRun { Section sec; int startIdx; int count; };
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
 
     // "filterCutoff" → "CUTOFF", "level" → "LEVEL", "ampAttack" → "ATTACK"
     static juce::String makeShortLabel(const juce::String& inner)
@@ -298,23 +324,167 @@ private:
         return inner.toUpperCase();
     }
 
-    static constexpr int kCellW      = 82;
-    static constexpr int kCellH      = 90;
-    static constexpr int kPad        = 12;
-    static constexpr int kHeaderRowH = 22; // height of each section header strip
+    // Safely tear down one live knob bundle.
+    // Must be called on the message thread.
+    void destroyLiveKnob(std::unique_ptr<LiveKnob>& lk)
+    {
+        if (!lk) return;
+        // 1. Attachment must die before slider (it holds a reference to the slider)
+        lk->attachment.reset();
+        // 2. De-register the MIDI learn mouse listener from the knob BEFORE deleting
+        //    the listener — the knob's internal listener list holds a raw pointer.
+        if (lk->midiLearnListener && lk->knob)
+            lk->knob->removeMouseListener(lk->midiLearnListener.get());
+        lk->midiLearnListener.reset();
+        // 3. Label — remove from component hierarchy, then destroy
+        if (lk->label)
+        {
+            removeChildComponent(lk->label.get());
+            lk->label.reset();
+        }
+        // 4. Knob — remove from component hierarchy, then destroy
+        if (lk->knob)
+        {
+            removeChildComponent(lk->knob.get());
+            lk->knob.reset();
+        }
+        lk.reset();
+    }
 
-    // Destruction order matters: listeners → attachments → sliders.
-    // Members are destroyed in reverse declaration order.
-    std::vector<std::unique_ptr<GalleryKnob>> sliders;
-    std::vector<std::unique_ptr<juce::Label>>  labels;
-    std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> attachments;
-    // MIDI learn mouse listeners — owned here, attached to individual sliders.
-    // Must be declared AFTER sliders so listeners are destroyed before sliders.
-    std::vector<std::unique_ptr<MidiLearnMouseListener>> midiLearnListeners;
+    // Create a live knob for paramSlots[idx] and place it at knobBounds[idx].
+    // Must be called on the message thread.
+    void createLiveKnob(int idx)
+    {
+        jassert(idx >= 0 && idx < (int)paramSlots.size());
+        jassert(!liveKnobs[idx]);
 
-    // Section layout metadata — populated during construction / resized()
-    std::vector<SectionRun>         sectionRuns; // ordered section descriptors
-    std::vector<std::pair<int,int>>  knobBounds;  // (cx, cy) per slider, filled in resized()
+        auto& slot    = paramSlots[idx];
+        auto& apvts   = proc.getAPVTS();
+        auto* rp      = dynamic_cast<juce::RangedAudioParameter*>(
+                            apvts.getParameter(slot.pid));
+        if (!rp) return; // should never happen
+
+        auto lk = std::make_unique<LiveKnob>();
+
+        // ── Knob ────────────────────────────────────────────────────────────
+        lk->knob = std::make_unique<GalleryKnob>();
+        lk->knob->setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        lk->knob->setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+        lk->knob->setColour(juce::Slider::rotarySliderFillColourId, accentColour);
+        lk->knob->setTooltip(rp->getName(64));
+        A11y::setup(*lk->knob, rp->getName(64),
+                    rp->getName(64) + " (" + slot.pid + ")");
+        addAndMakeVisible(*lk->knob);
+
+        // ── Label ────────────────────────────────────────────────────────────
+        lk->label = std::make_unique<juce::Label>();
+        lk->label->setText(slot.shortLabel, juce::dontSendNotification);
+        lk->label->setFont(GalleryFonts::label(8.0f));
+        lk->label->setColour(juce::Label::textColourId,
+                             GalleryColors::get(GalleryColors::textMid()));
+        lk->label->setJustificationType(juce::Justification::centred);
+        lk->label->setInterceptsMouseClicks(false, false);
+        addAndMakeVisible(*lk->label);
+
+        // ── SliderAttachment (must come AFTER knob + label exist) ────────────
+        lk->attachment =
+            std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+                apvts, slot.pid, *lk->knob);
+
+        enableKnobReset(*lk->knob, apvts, slot.pid);
+
+        // ── MIDI learn ───────────────────────────────────────────────────────
+        if (midiLearn)
+        {
+            auto* ml = lk->knob->setupMidiLearn(slot.pid, *midiLearn);
+            // setupMidiLearn returns a raw pointer; take ownership here.
+            // The listener is already registered on the knob — we just own it.
+            lk->midiLearnListener.reset(ml);
+        }
+
+        // ── Position ─────────────────────────────────────────────────────────
+        if (idx < (int)knobBounds.size())
+        {
+            auto [cx, cy] = knobBounds[idx];
+            lk->knob->setBounds(cx + 6, cy + 4, kCellW - 12, kCellW - 12);
+            lk->label->setBounds(cx, cy + kCellW - 4, kCellW, 14);
+        }
+
+        liveKnobs[idx] = std::move(lk);
+    }
+
+    // Called by the 10 Hz timer and from resized().
+    // Creates knobs that entered the padded-visible-rect, destroys those that left.
+    void updateVisibleAttachments()
+    {
+        if (knobBounds.empty()) return;
+
+        // Work out the visible rect in our own coordinate space.
+        // If no viewport is set we treat the entire component as visible.
+        juce::Rectangle<int> visibleInSelf;
+        if (parentViewport)
+        {
+            // getViewArea() is in viewport coords; translate to our coords.
+            auto viewArea = parentViewport->getViewArea();
+            // Our position relative to the viewport's content area origin:
+            auto ourOrigin = getPosition(); // relative to our parent (usually the viewport's content component)
+            visibleInSelf = viewArea.translated(-ourOrigin.x, -ourOrigin.y);
+        }
+        else
+        {
+            visibleInSelf = getLocalBounds();
+        }
+
+        // Expand by margin to pre-create knobs just before they appear
+        auto paddedRect = visibleInSelf.expanded(0, kVisibilityMargin);
+
+        for (int i = 0; i < (int)paramSlots.size(); ++i)
+        {
+            if (i >= (int)knobBounds.size()) break;
+
+            auto [cx, cy] = knobBounds[i];
+            juce::Rectangle<int> cellRect(cx, cy, kCellW, kCellH);
+
+            bool shouldBeAlive = paddedRect.intersects(cellRect);
+
+            if (shouldBeAlive && !liveKnobs[i])
+                createLiveKnob(i);
+            else if (!shouldBeAlive && liveKnobs[i])
+                destroyLiveKnob(liveKnobs[i]);
+        }
+    }
+
+    // juce::Timer callback at 10 Hz
+    void timerCallback() override
+    {
+        updateVisibleAttachments();
+    }
+
+    // ── Layout constants ──────────────────────────────────────────────────────
+    static constexpr int kCellW           = 82;
+    static constexpr int kCellH           = 90;
+    static constexpr int kPad             = 12;
+    static constexpr int kHeaderRowH      = 22;  // height of each section header strip
+    static constexpr int kVisibilityMargin = 100; // px preload margin for smooth scrolling
+
+    // ── Construction-time state captured for lazy creation ───────────────────
+    XOlokunProcessor& proc;
+    juce::Colour      accentColour;
+    MIDILearnManager* midiLearn = nullptr;
+
+    // ── Parameter metadata (stable, never modified after construction) ────────
+    std::vector<ParamSlot>  paramSlots;  // flat ordered list of all params
+    std::vector<SectionRun> sectionRuns; // ordered section descriptors
+
+    // ── Live widget state (created/destroyed lazily) ──────────────────────────
+    // Parallel to paramSlots — index i corresponds to paramSlots[i].
+    std::vector<std::unique_ptr<LiveKnob>> liveKnobs;
+
+    // ── Layout geometry (pre-computed in resized()) ───────────────────────────
+    std::vector<std::pair<int,int>> knobBounds; // (cx, cy) per slot
+
+    // ── Viewport reference ────────────────────────────────────────────────────
+    juce::Viewport* parentViewport = nullptr;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ParameterGrid)
 };

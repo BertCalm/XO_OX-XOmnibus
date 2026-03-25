@@ -222,21 +222,22 @@ public:
             int numActive = (int)std::count_if(routes.begin(), routes.end(),
                                                [](const auto& r){ return r.active && r.amount >= 0.005f; });
 
-            // 4 engine nodes at corners of an 80×60 sub-rect in the panel bottom
+            // Engine nodes: 4 primary at corners + 1 Ghost Slot at bottom-centre
             auto nodeArea = juce::Rectangle<float>(padding, routeY, w - 2.0f * padding, 60.0f);
-            juce::Point<float> nodePos[4] = {
+            juce::Point<float> nodePos[MegaCouplingMatrix::MaxSlots] = {
                 nodeArea.getTopLeft().translated(8.0f, 8.0f),
                 nodeArea.getTopRight().translated(-8.0f, 8.0f),
                 nodeArea.getBottomLeft().translated(8.0f, -8.0f),
                 nodeArea.getBottomRight().translated(-8.0f, -8.0f),
+                { nodeArea.getCentreX(), nodeArea.getBottom() - 8.0f },  // Ghost Slot
             };
 
             // Draw Bézier arcs for each active coupling route
             for (const auto& route : routes)
             {
                 if (!route.active || route.amount < 0.005f) continue;
-                if (route.sourceSlot < 0 || route.sourceSlot >= 4) continue;
-                if (route.destSlot   < 0 || route.destSlot   >= 4) continue;
+                if (route.sourceSlot < 0 || route.sourceSlot >= MegaCouplingMatrix::MaxSlots) continue;
+                if (route.destSlot   < 0 || route.destSlot   >= MegaCouplingMatrix::MaxSlots) continue;
 
                 auto from = nodePos[route.sourceSlot];
                 auto to   = nodePos[route.destSlot];
@@ -269,8 +270,8 @@ public:
                 g.strokePath(arc, juce::PathStrokeType(1.5f));
             }
 
-            // Draw engine node circles (4 corner positions)
-            for (int i = 0; i < 4; ++i)
+            // Draw engine node circles (4 primary + Ghost Slot)
+            for (int i = 0; i < MegaCouplingMatrix::MaxSlots; ++i)
             {
                 bool hasEng = (i < (int)cachedActiveEngines.size());
                 juce::Colour nodeCol = hasEng ? cachedActiveEngines[static_cast<size_t>(i)].second

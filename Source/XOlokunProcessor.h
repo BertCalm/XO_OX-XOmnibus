@@ -18,6 +18,75 @@
 
 namespace xolokun {
 
+// ── Per-slot waveform FIFO ─────────────────────────────────────────────────
+// Lock-free SPSC ring: audio thread writes (push), UI thread reads
+// (readLatest) at ~30Hz for oscilloscope display.  Power-of-two size for
+// fast bitwise-AND masking — no modulo, no allocation.
+//
+// Thread-safety contract:
+//   push()       — called ONLY from the audio thread
+//   readLatest() — called ONLY from the message/UI thread
+//
+// Overwrite policy: if the UI hasn't drained since the last push the oldest
+// data is silently overwritten.  This is intentional — stale waveform pixels
+// are less harmful than blocking the audio thread.
+struct WaveformFifo
+{
+    static constexpr size_t kSize = 512; // power-of-two (~10 ms @ 48 kHz)
+
+    std::array<float, kSize> buffer {};
+    std::atomic<size_t>      writeHead { 0 };
+
+    // Default-constructible so it can live in a std::array.
+    WaveformFifo()  = default;
+
+    // Non-copyable — std::atomic is not copy/move-assignable.
+    WaveformFifo(const WaveformFifo&)            = delete;
+    WaveformFifo& operator=(const WaveformFifo&) = delete;
+
+    // Audio thread: copy `count` samples into the ring and advance writeHead.
+    // Never allocates.  Safe to call from processBlock with any block size.
+    //
+    // ARM memory ordering note: on ARMv7/AArch64, stores to the buffer array
+    // and the writeHead store may be reordered by the CPU unless we insert an
+    // explicit release fence between them.  Using memory_order_release on the
+    // store alone is sufficient on x86 (TSO), but on ARM the standard mandates
+    // only that the *store itself* is release-ordered with respect to subsequent
+    // acquires on the same atomic — it does not prevent earlier non-atomic stores
+    // (the buffer writes) from being observed after the atomic store.  The
+    // explicit fence + relaxed store pattern is the portable ARM-safe idiom.
+    void push(const float* samples, size_t count) noexcept
+    {
+        size_t head = writeHead.load(std::memory_order_relaxed);
+        for (size_t i = 0; i < count; ++i)
+            buffer[(head + i) & (kSize - 1)] = samples[i];
+        std::atomic_thread_fence(std::memory_order_release);  // ARM safety: flush buffer[] before advancing head
+        writeHead.store((head + count) & (kSize - 1),
+                        std::memory_order_relaxed);
+    }
+
+    // UI thread: copy the most recent `count` samples into dest[0..count-1],
+    // where dest[0] is the oldest sample in the window.
+    // If count > kSize the leading samples are zero-filled.
+    void readLatest(float* dest, size_t count) const noexcept
+    {
+        size_t head = writeHead.load(std::memory_order_acquire);
+        if (count > kSize)
+        {
+            size_t pad = count - kSize;
+            for (size_t i = 0; i < pad; ++i)
+                dest[i] = 0.0f;
+            dest  += pad;
+            count  = kSize;
+        }
+        // Walk backwards from writeHead to find the start of the window,
+        // then read forward so dest[0] is oldest and dest[count-1] is newest.
+        size_t start = (head - count) & (kSize - 1);
+        for (size_t i = 0; i < count; ++i)
+            dest[i] = buffer[(start + i) & (kSize - 1)];
+    }
+};
+
 class XOlokunProcessor : public juce::AudioProcessor
 {
 public:
@@ -53,7 +122,8 @@ public:
     void applyPreset(const PresetData& preset);
 
     // Engine slot management (message thread only)
-    static constexpr int MaxSlots = 4;
+    // Slot 4 (0-indexed) is the Ghost Slot — see EngineRegistry::detectCollection().
+    static constexpr int MaxSlots = 5;
     static constexpr float CrossfadeMs = 50.0f;
     void loadEngine(int slot, const std::string& engineId);
     void unloadEngine(int slot);
@@ -70,7 +140,7 @@ public:
     struct NoteMapEvent {
         int   midiNote;   // 0–127
         float velocity;   // 0.0–1.0
-        int   slot;       // 0–3 (which engine slot played the note)
+        int   slot;       // 0–4 (which engine slot played the note; 4 = Ghost Slot)
     };
     static constexpr size_t kNoteQueueSize = 1024; // power-of-two
 
@@ -97,6 +167,21 @@ public:
             tail = (tail + 1) & (kNoteQueueSize - 1);
         }
         noteQueueTail.store(tail, std::memory_order_release);
+    }
+
+    // ── Per-slot waveform FIFOs ────────────────────────────────────────────
+    // One WaveformFifo per engine slot.  After each engine renders its block
+    // in processBlock, call:
+    //   waveformFifos[slot].push(engineBuffers[slot].getReadPointer(0),
+    //                            static_cast<size_t>(numSamples));
+    // The UI oscilloscope component calls getWaveformFifo(slot).readLatest()
+    // at its ~30Hz repaint timer to grab the latest window of samples.
+    std::array<WaveformFifo, MaxSlots> waveformFifos;
+
+    // UI-thread accessor — returns a const reference; safe to call at any time.
+    const WaveformFifo& getWaveformFifo(int slot) const noexcept
+    {
+        return waveformFifos[static_cast<size_t>(slot)];
     }
 
     // Coupling matrix — access for the UI visualization (message thread)

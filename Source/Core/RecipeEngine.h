@@ -12,7 +12,7 @@ namespace xolokun {
 // RecipeEngine — One-touch configuration of the entire XOlokun architecture.
 //
 // A Recipe (.xorecipe) is a "Scene Architect" that sets up:
-//   - Which engines load into the 4 slots
+//   - Which engines load into the 5 slots
 //   - Per-engine parameters (or reference to engine presets)
 //   - Coupling matrix (types, routings, intensities)
 //   - Master FX chain (all 18 stages)
@@ -97,7 +97,7 @@ public:
         int schemaVersion = 1;
         juce::String created;                         // ISO date
 
-        // Engine configuration (1-4 slots)
+        // Engine configuration (1-5 slots)
         std::vector<EngineSlot> engines;
 
         // Coupling matrix
@@ -385,7 +385,7 @@ public:
         bool allEnginesLoaded = true;
 
         // 1. Load engines into slots
-        for (int i = 0; i < static_cast<int> (recipe.engines.size()) && i < 4; ++i)
+        for (int i = 0; i < static_cast<int> (recipe.engines.size()) && i < 5; ++i)
         {
             const auto& slot = recipe.engines[static_cast<size_t> (i)];
 

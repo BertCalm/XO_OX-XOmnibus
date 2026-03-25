@@ -27,12 +27,12 @@ namespace xolokun {
 //
 class MegaCouplingMatrix {
 public:
-    static constexpr int MaxSlots = 4;
+    static constexpr int MaxSlots = 5;  // 4 primary + 1 Ghost Slot
     static constexpr int MaxRoutes = 64;
 
     struct CouplingRoute {
-        int sourceSlot;            // 0-3
-        int destSlot;              // 0-3
+        int sourceSlot;            // 0-4 (slot 4 = Ghost Slot)
+        int destSlot;              // 0-4 (slot 4 = Ghost Slot)
         CouplingType type;
         float amount;              // 0.0 to 1.0
         bool isNormalled;          // true = default, false = user-defined

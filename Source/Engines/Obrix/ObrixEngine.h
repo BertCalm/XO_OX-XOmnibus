@@ -1262,8 +1262,9 @@ public:
         auto fieldPrimeChoices = juce::StringArray { "3-Limit (Pythagorean)", "5-Limit (Extended JI)", "7-Limit (Harmonic)" };
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_fieldStrength", 1 }, "Obrix Field Strength",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_fieldPolarity", 1 }, "Obrix Field Polarity",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 1.0f)); // 1=attractor, 0=repulsor
+        params.push_back (std::make_unique<juce::AudioParameterBool> (
+            juce::ParameterID { "obrix_fieldPolarity", 1 }, "Obrix Field Polarity",
+            true)); // true=attractor, false=repulsor
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_fieldRate", 1 }, "Obrix Field Rate",
             juce::NormalisableRange<float> (0.001f, 0.1f, 0.001f, 0.3f), 0.01f));
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_fieldPrimeLimit", 1 }, "Obrix Field Prime Limit",

@@ -145,7 +145,7 @@ public:
         };
 
         std::vector<CouplingRoute> activeRoutes;
-        std::array<juce::String, 4> engineIds;  // engines in each slot
+        std::array<juce::String, MegaCouplingMatrix::MaxSlots> engineIds;  // engines in each slot
         juce::String snapshotName;
 
         bool hasActiveCoupling() const { return !activeRoutes.empty(); }
@@ -169,9 +169,9 @@ public:
                 const auto& r = activeRoutes[i];
                 if (i > 0) summary += "; ";
 
-                auto srcName = (r.sourceSlot >= 0 && r.sourceSlot < 4)
+                auto srcName = (r.sourceSlot >= 0 && r.sourceSlot < MegaCouplingMatrix::MaxSlots)
                     ? engineIds[(size_t)r.sourceSlot] : juce::String("?");
-                auto dstName = (r.destSlot >= 0 && r.destSlot < 4)
+                auto dstName = (r.destSlot >= 0 && r.destSlot < MegaCouplingMatrix::MaxSlots)
                     ? engineIds[(size_t)r.destSlot] : juce::String("?");
 
                 int typeIdx = juce::jlimit(0, 13, r.couplingType);
@@ -205,7 +205,7 @@ public:
 
         // Populate engineIds so getSummary() can label each slot
         const auto& engines = matrix.getActiveEngines();
-        for (int slot = 0; slot < 4; ++slot)
+        for (int slot = 0; slot < MegaCouplingMatrix::MaxSlots; ++slot)
         {
             if (engines[(size_t)slot] != nullptr)
                 snapshot.engineIds[(size_t)slot] = engines[(size_t)slot]->getEngineId().toUpperCase();

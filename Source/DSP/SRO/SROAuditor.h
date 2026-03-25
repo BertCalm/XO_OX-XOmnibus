@@ -10,9 +10,9 @@ namespace xolokun {
 // SROAuditor — Sustainability & Resource Optimization diagnostic.
 //
 // Sits on top of EngineProfiler to provide the "Earn Your Place" cost-benefit
-// analysis. Monitors all 4 engine slots and reports:
+// analysis. Monitors all 5 engine slots and reports:
 //   - Per-slot CPU % and ROI (creative value / performance cost)
-//   - Total 4-slot CPU budget utilization
+//   - Total 5-slot CPU budget utilization
 //   - Silence gate status per slot (active / bypassed)
 //   - Control-rate vs audio-rate ratio recommendations
 //
@@ -34,7 +34,7 @@ namespace xolokun {
 class SROAuditor
 {
 public:
-    static constexpr int MaxSlots = 4;
+    static constexpr int MaxSlots = 5;  // 4 primary + 1 Ghost Slot
     static constexpr float kDefaultBudgetPercent = 70.0f; // alarm at 70% total
 
     struct SlotReport

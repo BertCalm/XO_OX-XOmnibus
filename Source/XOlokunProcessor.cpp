@@ -1349,6 +1349,11 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         // SRO: Record slot stats for auditor (CPU + silence gate state)
         sroAuditor.recordSlot(i, engineProfilers[i].getStats(),
                               enginePtrs[i]->isSilenceGateBypassed());
+
+        // Waveform FIFO push — capture raw engine output (pre-coupling, pre-master FX)
+        // for the UI oscilloscope.  No allocation; O(n) copy is fine at 512 samples.
+        waveformFifos[i].push(engineBuffers[i].getReadPointer(0),
+                              static_cast<size_t>(numSamples));
     }
 
     // Apply coupling matrix between engines.

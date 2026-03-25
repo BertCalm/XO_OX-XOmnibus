@@ -3,6 +3,8 @@
 #include "../../XOlokunProcessor.h"
 #include "../../Core/EngineRegistry.h"
 #include "../GalleryColors.h"
+#include "WaveformDisplay.h"
+#include "EnginePickerPopup.h"
 
 namespace xolokun
 {
@@ -16,11 +18,12 @@ public:
     std::function<void(int)> onSelect; // called with slot index when clicked
 
     CompactEngineTile(XOlokunProcessor& proc, int slotIndex)
-        : processor(proc), slot(slotIndex)
+        : processor(proc), slot(slotIndex), miniWave(proc)
     {
         A11y::setup (*this, "Engine Slot " + juce::String (slotIndex + 1),
                      "Click to select engine, right-click for options");
         setExplicitFocusOrder (slotIndex + 1);
+        addAndMakeVisible(miniWave);
         refresh();
         startTimerHz(10); // poll voice count at 10Hz (sufficient for visual feedback)
     }
@@ -44,6 +47,8 @@ public:
                              : "Slot " + juce::String(slot + 1) + ": empty — click to load engine");
         accent    = hasEngine ? eng->getAccentColour()
                               : GalleryColors::get(GalleryColors::emptySlot());
+        miniWave.setSlot(slot);
+        if (eng) miniWave.setAccentColour(eng->getAccentColour());
         repaint();
     }
 
@@ -190,6 +195,13 @@ public:
             A11y::drawFocusRing(g, b, 8.0f);
     }
 
+    void resized() override
+    {
+        // MiniWaveform: 32x16pt, bottom-right corner of the tile
+        auto b = getLocalBounds().reduced(3, 2);
+        miniWave.setBounds(b.getRight() - 34, b.getBottom() - 18, 32, 16);
+    }
+
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
     void mouseExit(const juce::MouseEvent&)  override { repaint(); }
     void focusGained (juce::Component::FocusChangeType) override { repaint(); }
@@ -278,48 +290,22 @@ public:
 private:
     void showLoadMenu()
     {
-        // Dynamically query the registry — no hardcoded ID list to keep in sync.
-        auto registeredIds = EngineRegistry::instance().getRegisteredIds();
-
-        juce::PopupMenu menu;
-        menu.addSectionHeader("LOAD INTO SLOT " + juce::String(slot + 1));
-        menu.addSeparator();
-
-        for (int i = 0; i < (int)registeredIds.size(); ++i)
+        auto* picker = new EnginePickerPopup();
+        picker->onEngineSelected = [this](const juce::String& engineId)
         {
-            juce::String id(registeredIds[static_cast<size_t>(i)].c_str());
-            auto colour = GalleryColors::accentForEngine(id);
-            menu.addColouredItem(i + 1, id, colour, true, false);
-        }
-
-        if (hasEngine)
-        {
-            menu.addSeparator();
-            menu.addItem(9999, "Remove Engine from Slot " + juce::String(slot + 1));
-        }
-
-        menu.showMenuAsync(juce::PopupMenu::Options().withTargetComponent(this),
-            [this, registeredIds](int result)
+            isLoading = true;
+            repaint(); // show "LOADING..." immediately
+            processor.loadEngine(slot, engineId.toStdString());
+            // Navigate to detail panel on the next message loop tick.
+            juce::Timer::callAfterDelay(0, [this]
             {
-                if (result == 9999)
-                {
-                    processor.unloadEngine(slot);
-                    return;
-                }
-
-                if (result >= 1 && result <= (int)registeredIds.size())
-                {
-                    isLoading = true;
-                    repaint(); // show "LOADING..." immediately
-                    processor.loadEngine(slot, registeredIds[static_cast<size_t>(result - 1)]);
-                    // Refresh is driven by onEngineChanged (event-driven, via callAsync).
-                    // Navigate to detail panel on the next message loop tick.
-                    juce::Timer::callAfterDelay(0, [this]
-                    {
-                        if (onSelect) onSelect(slot);
-                    });
-                }
+                if (onSelect) onSelect(slot);
             });
+        };
+        picker->setSize(280, 400);
+        juce::CallOutBox::launchAsynchronously(
+            std::unique_ptr<juce::Component>(picker),
+            getScreenBounds(), nullptr);
     }
 
     XOlokunProcessor& processor;
@@ -330,6 +316,7 @@ private:
     bool isSelected = false;
     bool isLoading  = false; // true between loadEngine() call and onEngineChanged callback
     int  voiceCount = 0;     // updated by timerCallback at 20Hz
+    MiniWaveform miniWave;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CompactEngineTile)
 };

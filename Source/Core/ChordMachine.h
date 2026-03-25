@@ -9,15 +9,23 @@
 namespace xolokun {
 
 //==============================================================================
-// Chord Machine — distributes chord voicings across XOlokun's 4 engine slots.
+// Chord Machine — distributes chord voicings across XOlokun's 4 primary engine slots.
 //
-// One MIDI note in → 4 engine-specific MIDI notes out.
+// One MIDI note in → 4 engine-specific MIDI notes out (primary slots only).
 // Each slot voices a different chord tone through its own synthesis engine.
+// The Ghost Slot (slot 4) does not participate in chord distribution.
 //
 // Thread safety:
 //   - processBlock() runs on the audio thread — no allocation, no locks.
 //   - State setters use std::atomic for cross-thread visibility.
 //   - Voice leading uses brute-force permutation (24 iterations for 4 slots).
+//
+// kChordSlots: the number of primary engine slots (fixed at 4).
+// The outputMidi array size is parameterised via kOutputMidiSlots so that the
+// caller (XOlokunProcessor) can pass the full MaxSlots array — ChordMachine
+// only writes into indices 0..kChordSlots-1.
+static constexpr int kChordSlots       = 4;   // number of chord voices / primary slots
+static constexpr int kOutputMidiSlots  = 5;   // output array size = XOlokunProcessor::MaxSlots
 //
 
 //==============================================================================
@@ -329,7 +337,7 @@ public:
     //-- Main processing (audio thread) ----------------------------------------
 
     void processBlock (const juce::MidiBuffer& inputMidi,
-                       std::array<juce::MidiBuffer, 4>& outputMidi,
+                       std::array<juce::MidiBuffer, kOutputMidiSlots>& outputMidi,
                        int numSamples)
     {
         for (auto& buf : outputMidi)
@@ -629,7 +637,7 @@ private:
     //==========================================================================
 
     void processLiveMode (const juce::MidiBuffer& inputMidi,
-                          std::array<juce::MidiBuffer, 4>& outputMidi,
+                          std::array<juce::MidiBuffer, kOutputMidiSlots>& outputMidi,
                           PaletteType pal, VoicingMode voic, float spr)
     {
         for (const auto metadata : inputMidi)
@@ -666,7 +674,7 @@ private:
     //==========================================================================
 
     void processSequencerMode (const juce::MidiBuffer& inputMidi,
-                               std::array<juce::MidiBuffer, 4>& outputMidi,
+                               std::array<juce::MidiBuffer, kOutputMidiSlots>& outputMidi,
                                int numSamples,
                                PaletteType pal, VoicingMode voic, float spr)
     {
@@ -804,7 +812,7 @@ private:
     void triggerChord (int noteNumber, float velocity,
                        PaletteType pal, VoicingMode voic, float spr,
                        int samplePos,
-                       std::array<juce::MidiBuffer, 4>& outputMidi)
+                       std::array<juce::MidiBuffer, kOutputMidiSlots>& outputMidi)
     {
         if (hasActiveChord)
             releaseCurrentChord (samplePos, outputMidi);
@@ -868,7 +876,7 @@ private:
     }
 
     void releaseCurrentChord (int samplePos,
-                              std::array<juce::MidiBuffer, 4>& outputMidi)
+                              std::array<juce::MidiBuffer, kOutputMidiSlots>& outputMidi)
     {
         if (! hasActiveChord)
             return;
@@ -888,7 +896,7 @@ private:
     }
 
     void releaseAllNotes (int samplePos,
-                          std::array<juce::MidiBuffer, 4>& outputMidi)
+                          std::array<juce::MidiBuffer, kOutputMidiSlots>& outputMidi)
     {
         releaseCurrentChord (samplePos, outputMidi);
         currentAssignment = {};

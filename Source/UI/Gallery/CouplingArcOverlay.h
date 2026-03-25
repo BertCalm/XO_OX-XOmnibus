@@ -68,7 +68,7 @@ public:
             float      amount = 0.0f;
             CouplingType type  = CouplingType::AmpToFilter;
         };
-        std::array<ArcInfo, 12> arcMap {}; // 4 slots × 3 destination bits → 12 max pairs
+        std::array<ArcInfo, 12> arcMap {}; // C(5,2)=10 unique pairs with 5 slots; 12 for safety
 
         int arcCount = 0; // number of unique active pairs
         std::array<std::pair<int,int>, 12> arcPairs {};
@@ -88,9 +88,9 @@ public:
             int hi = juce::jmax(route.sourceSlot, route.destSlot);
             if (lo == hi) continue; // same slot — skip
 
-            // Map (lo, hi) to a flat index.  4 slots → max 6 unique pairs.
+            // Map (lo, hi) to a flat index.  5 slots → max 10 unique pairs.
             // We use a simple linear search over the live arcPairs array
-            // because the count is always ≤ 6 — no hashmap overhead.
+            // because the count is always ≤ 10 — no hashmap overhead.
             int found = -1;
             for (int k = 0; k < arcCount; ++k)
                 if (arcPairs[static_cast<size_t>(k)].first == lo && arcPairs[static_cast<size_t>(k)].second == hi)

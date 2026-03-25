@@ -295,6 +295,14 @@ target_sources(XOlokun PRIVATE
     Source/UI/CouplingStrip/CouplingStripEditor.h
     Source/UI/OpticVisualizer/OpticVisualizer.h
     Source/UI/PresetBrowser/PresetBrowser.h
+    Source/UI/Gallery/ObrixDetailPanel.h
+    Source/UI/Gallery/EnginePickerPopup.h
+    Source/UI/Gallery/CouplingPopover.h
+    Source/UI/Gallery/WaveformDisplay.h
+    Source/UI/Gallery/CouplingChainView.h
+    Source/UI/Gallery/DrumPadGrid.h
+    Source/UI/Gallery/SpecializedWidgets.h
+    Source/UI/Gallery/SpecializedDisplays.h
 
     # Oscar (OddOscar animated companion) — requires Rive, added conditionally below
 

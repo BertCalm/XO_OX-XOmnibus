@@ -252,7 +252,7 @@ public:
     juce::KeyListener* getKeyListener() { return &shortcutListener; }
 
 private:
-    static constexpr int kNumSlots = XOlokunProcessor::MaxSlots; // 4
+    static constexpr int kNumSlots = XOlokunProcessor::MaxSlots; // 5 (4 primary + Ghost Slot)
 
     // ── Trigger pad buttons ──────────────────────────────────────────────────
     juce::TextButton fireBtn;
@@ -268,6 +268,7 @@ private:
     // ── Slot dot state ───────────────────────────────────────────────────────
     std::array<bool,         kNumSlots> slotActive  = {};
     std::array<juce::Colour, kNumSlots> slotAccents = { juce::Colours::transparentBlack,
+                                                         juce::Colours::transparentBlack,
                                                          juce::Colours::transparentBlack,
                                                          juce::Colours::transparentBlack,
                                                          juce::Colours::transparentBlack };

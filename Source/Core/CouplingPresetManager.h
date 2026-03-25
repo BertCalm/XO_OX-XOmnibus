@@ -568,7 +568,7 @@ private:
             return -1;
 
         juce::String canonical = resolveEngineAlias(engineId);
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < MegaCouplingMatrix::MaxSlots; ++i)
         {
             juce::String slotEngine = getEngineIdForSlot(i);
             if (slotEngine.isNotEmpty()

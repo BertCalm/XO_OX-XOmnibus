@@ -5,6 +5,8 @@
 #include "MacroHeroStrip.h"
 #include "ParameterGrid.h"
 #include "MidiLearnMouseListener.h"
+#include "ObrixDetailPanel.h"
+#include "WaveformDisplay.h"
 
 namespace xolokun
 {
@@ -17,10 +19,11 @@ class EngineDetailPanel : public juce::Component
 {
 public:
     explicit EngineDetailPanel(XOlokunProcessor& proc)
-        : processor(proc), macroHero(proc)
+        : processor(proc), macroHero(proc), waveformDisplay(proc)
     {
         addAndMakeVisible(macroHero);
         addAndMakeVisible(viewport);
+        addAndMakeVisible(waveformDisplay);
     }
 
     // Optional: wire MIDI learn manager before the first loadSlot() call.
@@ -44,13 +47,24 @@ public:
         auto prefix = GalleryColors::prefixForEngine(engineId);
         macroHero.loadEngine(engineId, prefix, accentColour);
 
-        // Rebuild parameter grid for this engine (pass MIDI learn manager)
-        auto* newGrid = new ParameterGrid(processor, engineId, prefix, accentColour, learnManager);
-        viewport.setViewedComponent(newGrid, /*takeOwnership=*/true);
+        // Configure waveform display for this slot
+        waveformDisplay.setSlot(slot);
+        waveformDisplay.setAccentColour(accentColour);
+        waveformDisplay.setEngineId(engineId);
 
-        int gridW = juce::jmax(200, viewport.getWidth()
-                                    - viewport.getScrollBarThickness() - 4);
-        newGrid->setSize(gridW, newGrid->getRequiredHeight(gridW));
+        // OBRIX gets a custom panel instead of the generic ParameterGrid
+        if (engineId.equalsIgnoreCase("Obrix"))
+        {
+            obrixPanel = std::make_unique<ObrixDetailPanel>(processor, learnManager);
+            viewport.setViewedComponent(obrixPanel.release(), true);
+        }
+        else
+        {
+            auto* newGrid = new ParameterGrid(processor, engineId, prefix, accentColour, learnManager);
+            newGrid->setParentViewport(&viewport);
+            viewport.setViewedComponent(newGrid, true);
+        }
+
         viewport.setViewPosition(0, 0);
 
         resized();
@@ -114,15 +128,29 @@ public:
             macroHero.setBounds(0, 0, 0, 0);
         }
 
+        // Waveform oscilloscope display (200x80pt, or less if narrow)
+        {
+            int waveH = 80;
+            int waveW = juce::jmin(200, area.getWidth() - 16);
+            auto waveArea = area.removeFromTop(waveH + 4);
+            waveformDisplay.setBounds(waveArea.withSizeKeepingCentre(waveW, waveH));
+        }
+
         viewport.setBounds(area);
 
-        // Resize grid content if it exists
-        if (auto* grid = viewport.getViewedComponent())
+        // Resize viewport content: support both ParameterGrid and ObrixDetailPanel
+        if (auto* grid = dynamic_cast<ParameterGrid*>(viewport.getViewedComponent()))
         {
-            int gridW = juce::jmax(200, viewport.getWidth()
-                                        - viewport.getScrollBarThickness() - 4);
-            int gridH = static_cast<ParameterGrid*>(grid)->getRequiredHeight(gridW);
+            grid->setParentViewport(&viewport);
+            int gridW = juce::jmax(200, viewport.getWidth() - viewport.getScrollBarThickness() - 4);
+            int gridH = grid->getRequiredHeight(gridW);
             grid->setSize(gridW, gridH);
+        }
+        else if (auto* obrix = dynamic_cast<ObrixDetailPanel*>(viewport.getViewedComponent()))
+        {
+            int gridW = juce::jmax(200, viewport.getWidth() - viewport.getScrollBarThickness() - 4);
+            int gridH = obrix->getRequiredHeight(gridW);
+            obrix->setSize(gridW, gridH);
         }
     }
 
@@ -132,6 +160,8 @@ private:
 
     XOlokunProcessor&  processor;
     MacroHeroStrip     macroHero;
+    WaveformDisplay    waveformDisplay;
+    std::unique_ptr<ObrixDetailPanel> obrixPanel; // only created when OBRIX is loaded
     juce::Viewport     viewport;
     juce::String       engineId  { "—" };
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };

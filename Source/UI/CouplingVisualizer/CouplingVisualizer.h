@@ -14,7 +14,7 @@ namespace xolokun {
 //
 // Architecture: Docs/coupling-ui-architecture-2026-03-21.md
 //
-// 4 engine slots render as nodes at the cardinal points of an inscribed diamond.
+// Up to 5 engine slots render as nodes (4 primary at cardinal points + Ghost Slot at bottom-centre).
 // Active coupling routes render as animated cubic Bézier arcs coloured by type.
 // Arc brightness pulses in real time, driven by per-route RMS atomics written
 // by the audio thread (std::memory_order_relaxed reads — no locks).
