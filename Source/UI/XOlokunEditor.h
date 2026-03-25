@@ -34,6 +34,7 @@
 #include "Gallery/ChordMachinePanel.h"
 #include "Gallery/PerformanceViewPanel.h"
 #include "Gallery/CouplingArcOverlay.h"
+#include "Gallery/ColumnLayoutManager.h"
 
 namespace xolokun {
 
@@ -235,9 +236,9 @@ public:
                 performancePanel.refresh();
         };
 
-        setSize(880, 562);
+        setSize(1100, 700);
         setResizable(true, true);
-        setResizeLimits(720, 460, 1400, 900);
+        setResizeLimits(960, 600, 1600, 1000);
         setWantsKeyboardFocus(true);
         setTitle ("XOlokun Synthesizer");
         setDescription ("Multi-engine synthesizer with cross-engine coupling. "
@@ -278,8 +279,10 @@ public:
         using namespace GalleryColors;
         g.fillAll(get(shellWhite()));
 
+        const int headerH = ColumnLayoutManager::kHeaderH;
+
         // Header area
-        auto header = getLocalBounds().removeFromTop(kHeaderH).toFloat();
+        auto header = getLocalBounds().removeFromTop(headerH).toFloat();
         g.setColour(get(shellWhite()));
         g.fillRect(header);
 
@@ -290,13 +293,13 @@ public:
         g.setColour(get(textDark()));
         g.setFont(GalleryFonts::display(19.0f));
         g.drawText("XOlokun",
-                   juce::Rectangle<int>(16, 0, 160, kHeaderH - 3),
+                   juce::Rectangle<int>(16, 0, 160, headerH - 3),
                    juce::Justification::centredLeft);
 
         g.setColour(get(xoGoldText())); // Darkened gold — meets WCAG AA on shellWhite
         g.setFont(GalleryFonts::heading(8.5f));
         g.drawText("XO_OX Designs",
-                   juce::Rectangle<int>(16, kHeaderH - 18, 110, 12),
+                   juce::Rectangle<int>(16, headerH - 18, 110, 12),
                    juce::Justification::centredLeft);
 
         // Active coupling route count in header
@@ -322,7 +325,7 @@ public:
             g.setColour(activeRoutes > 0 ? get(xoGoldText()) : get(textMid()).withAlpha(0.5f));
             g.setFont(GalleryFonts::body(9.0f));
             g.drawText(routeLabel,
-                       juce::Rectangle<int>(getWidth() - 310, 0, 298, kHeaderH - 6),
+                       juce::Rectangle<int>(getWidth() - 310, 0, 298, headerH - 6),
                        juce::Justification::centredRight);
         }
 
@@ -336,7 +339,7 @@ public:
                 float pulse = 0.65f + 0.35f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
 
                 juce::String badge = "MIDI LEARN: move a controller to map \xe2\x80\xa2 right-click to cancel";
-                auto badgeRect = juce::Rectangle<int>(165, 4, getWidth() - 360, kHeaderH - 10);
+                auto badgeRect = juce::Rectangle<int>(165, 4, getWidth() - 360, headerH - 10);
 
                 g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.18f * pulse));
                 g.fillRoundedRectangle(badgeRect.toFloat(), 4.0f);
@@ -346,18 +349,25 @@ public:
             }
         }
 
-        // Sidebar separator
-        int sepX = kSidebarW;
-        g.setColour(get(borderGray()));
-        g.drawVerticalLine(sepX, (float)kHeaderH, (float)(getHeight() - kMacroH));
+        // Column A / Column B separator line
+        const int sepX = layout.getColumnAWidth();
+        if (sepX > 0)
+        {
+            g.setColour(get(borderGray()));
+            g.drawVerticalLine(sepX, (float)headerH, (float)getHeight());
+        }
     }
 
     void resized() override
     {
-        auto area = getLocalBounds();
+        // ── Sync layout state ────────────────────────────────────────────────
+        layout.playSurfaceVisible = playSurface.isVisible();
+        // columnCCollapsed and cinematicMode are toggled by their respective buttons
+        // (not yet wired — Column C is reserved space only in this step)
+        layout.compute(getWidth(), getHeight());
 
-        // Header: reserve space for toggle buttons and preset browser (right side)
-        auto header = area.removeFromTop(kHeaderH);
+        // ── Header: toggle buttons and preset browser strip (right side) ─────
+        auto header = layout.getHeader();
         presetBrowser.setBounds(header.removeFromRight(220).reduced(4, 10));
         exportBtn.setBounds(header.removeFromRight(46).reduced(4, 12));
         themeToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
@@ -365,51 +375,56 @@ public:
         perfToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
 
-        // PlaySurface — when visible it occupies ~40% of the content height at the
-        // very bottom of the editor (below the macros + masterFX strips), spanning
-        // the full editor width.  Its own dark palette (PS::kSurfaceBg 0xFF1A1A1A)
-        // provides a clear visual break from the Gallery shell above.
-        const int contentH = area.getHeight();
-        const int surfaceH = (int)(contentH * 0.40f);  // 40% of content area
-        if (playSurface.isVisible())
-            playSurface.setBounds(area.removeFromBottom(surfaceH));
-        else
-            playSurface.setBounds(0, getHeight(), getWidth(), surfaceH); // parked below visible area
+        // ── Column A — Engine Rack + MacroSection at bottom ──────────────────
+        // Grab a mutable copy so we can slice the bottom for macros.
+        auto colA = layout.getColumnA();
 
-        // Bottom strips (from bottom up)
-        masterFXStrip.setBounds(area.removeFromBottom(kMasterFXH).reduced(6, 3));
-        macros.setBounds(area.removeFromBottom(kMacroH).reduced(6, 4));
+        // MacroSection stays at bottom of Column A (moves to header in Step 11)
+        auto macroArea = colA.removeFromBottom(kMacroH).reduced(6, 4);
+        macros.setBounds(macroArea);
 
-        // Left sidebar tiles
-        auto sidebar = area.removeFromLeft(kSidebarW);
-        int tileH = sidebar.getHeight() / XOlokunProcessor::MaxSlots;
+        // Remaining Column A for engine tiles
+        int tileH = colA.getHeight() / XOlokunProcessor::MaxSlots;
         for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
-            tiles[i]->setBounds(sidebar.removeFromTop(tileH));
-
-        // Field Map — fixed strip at the bottom of the right-panel area.
-        // Always visible beneath the panel stack. Height matches ~2 octaves of screen.
-        auto fieldMapArea = area.removeFromBottom(kFieldMapH);
-        fieldMap.setBounds(fieldMapArea);
-
-        // Right panels (stacked, only one visible at a time — above Field Map)
-        overview.setBounds(area);
-        detail.setBounds(area);
-        chordPanel.setBounds(area);
-        performancePanel.setBounds(area);
-
-        // Coupling arc overlay covers the full editor so it can draw arcs across
-        // the sidebar tile column.  Tile centres are expressed in local (overlay)
-        // coordinates, which match editor-local coordinates because the overlay
-        // is sized to the full editor bounds.
-        couplingArcs.setBounds(getLocalBounds());
         {
-            // Recompute tile centre positions in overlay-local coordinates.
-            // Tiles were laid out above; retrieve their current bounds.
-            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
-            {
-                auto tileBounds = tiles[i]->getBounds(); // editor-local
-                couplingArcs.setTileCenter(i, tileBounds.getCentre().toFloat());
-            }
+            tiles[i]->setBounds(colA.getX(), colA.getY() + i * tileH,
+                                colA.getWidth(), tileH);
+        }
+
+        // ── Column B — Panel stack + MasterFX strip + FieldMap ───────────────
+        // getColumnBPanel() already excludes the FieldMap strip at the bottom.
+        auto colBPanel = layout.getColumnBPanel();
+
+        // MasterFX strip at bottom of Column B panel area
+        auto masterFXBounds = colBPanel.removeFromBottom(kMasterFXH).reduced(6, 3);
+        masterFXStrip.setBounds(masterFXBounds);
+
+        // Remaining Column B panel area for the view stack (stacked, one visible at a time)
+        overview.setBounds(colBPanel);
+        detail.setBounds(colBPanel);
+        chordPanel.setBounds(colBPanel);
+        performancePanel.setBounds(colBPanel);
+
+        // FieldMap — bottom strip of Column B (reserved by ColumnLayoutManager)
+        fieldMap.setBounds(layout.getFieldMap());
+
+        // ── Column C — reserved space (components added in Step 9) ───────────
+        // layout.getColumnC() is valid but unused until Step 9 components exist.
+
+        // ── PlaySurface ───────────────────────────────────────────────────────
+        // ColumnLayoutManager parks the surface below the window when invisible,
+        // so we always apply the computed bounds unconditionally.
+        playSurface.setBounds(layout.getPlaySurface());
+
+        // ── Status Bar — reserved (component added in later step) ────────────
+        // statusBar.setBounds(layout.getStatusBar());
+
+        // ── Coupling arc overlay — full editor bounds ─────────────────────────
+        couplingArcs.setBounds(getLocalBounds());
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+        {
+            if (tiles[i])
+                couplingArcs.setTileCenter(i, tiles[i]->getBounds().getCentre().toFloat());
         }
     }
 
@@ -654,12 +669,11 @@ private:
         });
     }
 
-    static constexpr int kHeaderH   = 50;
-    static constexpr int kMacroH    = 105;
-    static constexpr int kMasterFXH = 68;
-    static constexpr int kSidebarW  = 155;
-    static constexpr int kFadeMs    = 150;
-    static constexpr int kFieldMapH = 110; // Field Map panel height (pixels)
+    // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
+    // Use ColumnLayoutManager::kHeaderH (64) and ColumnLayoutManager::kFieldMapH (65).
+    static constexpr int kMacroH    = 105; // MacroSection strip height — moves to header in Step 11
+    static constexpr int kMasterFXH = 68;  // MasterFX compact strip at bottom of Column B
+    static constexpr int kFadeMs    = 150; // Panel cross-fade duration (ms)
 
     XOlokunProcessor& processor;
     std::unique_ptr<GalleryLookAndFeel> laf;
@@ -682,6 +696,8 @@ private:
     CouplingArcOverlay     couplingArcs { processor };
 
     int selectedSlot = -1;
+
+    ColumnLayoutManager layout;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunEditor)
 };
