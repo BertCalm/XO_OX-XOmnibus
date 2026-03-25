@@ -1,0 +1,30 @@
+[
+  {
+    "depth": "midnight",
+    "text": "For the builders: XOlokun ships with a full SDK in SDK/include/xolokun/. JUCE-free headers. Build your own engine, plug it in. KnotTopology included. github.com/XO-OX",
+    "platform": "reddit",
+    "tone": "developer-facing",
+    "notes": "Good for r/gameaudio, r/DSP, audio dev communities"
+  },
+  {
+    "depth": "twilight",
+    "text": "Thursday deep listen: find a preset in the Entangled mood. Play it slowly. Then fast. Notice what the coupling changes at different tempos. That's Amp->Pitch at work.",
+    "platform": "discord",
+    "tone": "guided listening",
+    "notes": "Instructional but experiential — not a tutorial"
+  },
+  {
+    "depth": "surface",
+    "text": "🌊 Every engine in XOlokun has a character. The coupling gives them a relationship. What character are you drawn to today? #XOlokun",
+    "platform": "twitter",
+    "tone": "brand character",
+    "notes": "Light engagement post, points at engine identity"
+  },
+  {
+    "depth": "abyss",
+    "text": "Guru Bin says: ERA Portamento at 0.5–1.5 seconds transforms instant vertex switches into slow morphs. Combined with ERA drift, the triangle becomes a living creature.",
+    "platform": "discord",
+    "tone": "lore / technical depth",
+    "notes": "Thursday is good for deeper posts — community has warmed up by midweek"
+  }
+]

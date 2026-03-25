@@ -1,0 +1,30 @@
+[
+  {
+    "depth": "surface",
+    "text": "🐚 Friday release energy. What did you finish this week? Drop it. We want to hear it.",
+    "platform": "discord",
+    "tone": "celebratory / community",
+    "notes": "End-of-week share prompt — encourage music drops in server"
+  },
+  {
+    "depth": "surface",
+    "text": "Made something with XOlokun this week? Share it. We'll boost it. #XOlokun",
+    "platform": "twitter",
+    "tone": "user-generated content prompt",
+    "notes": "Good for building community content volume"
+  },
+  {
+    "depth": "twilight",
+    "text": "End of week signal: {new_preset_count} new presets live this week. Spotlight: {spotlight_preset}. Full factory library at github.com/XO-OX",
+    "platform": "twitter",
+    "tone": "weekly recap",
+    "notes": "Uses preset count variable — swap manually if not running the pipeline"
+  },
+  {
+    "depth": "midnight",
+    "text": "Weekly build complete. Commits in the log, presets in the registry. The fleet is ready. See you Sunday for the next assembly. #XOlokun",
+    "platform": "discord",
+    "tone": "ritual / community pacing",
+    "notes": "Close the week. Set the expectation of Sunday assembly."
+  }
+]

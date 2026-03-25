@@ -1,0 +1,30 @@
+[
+  {
+    "depth": "surface",
+    "text": "🌊 What coupling combination surprised you this week? Drop the pair below.",
+    "platform": "discord",
+    "tone": "open-ended question",
+    "notes": "Monday energy — open the week with curiosity"
+  },
+  {
+    "depth": "surface",
+    "text": "Two engines. One connection. What happens in the space between them? #XOlokun",
+    "platform": "twitter",
+    "tone": "intriguing",
+    "notes": "Tease the coupling concept without explaining it"
+  },
+  {
+    "depth": "twilight",
+    "text": "Quick signal: what's the last preset that stopped you mid-session? Name it.",
+    "platform": "twitter",
+    "tone": "community prompt",
+    "notes": "Invite engagement without requiring technical knowledge"
+  },
+  {
+    "depth": "surface",
+    "text": "The deep is quiet today. What are you building?",
+    "platform": "discord",
+    "tone": "ambient / open",
+    "notes": "Use when there's genuinely nothing to post — the silence is the content"
+  }
+]
