@@ -55,7 +55,15 @@ public:
         waveformDisplay.setAccentColour(accentColour);
         waveformDisplay.setEngineId(engineId);
 
-        // OVERBITE gets FiveMacroDisplay instead of standard MacroHeroStrip
+        // ── Reset ALL specialized components before recreating ────────────────
+        fiveMacroDisplay.reset();
+        drumGrid.reset();
+        trianglePad.reset();
+        conductorArc.reset();
+        modeSelector.reset();
+        axisBar.reset();
+
+        // ── OVERBITE gets FiveMacroDisplay instead of standard MacroHeroStrip ─
         if (engineId.equalsIgnoreCase("Overbite"))
         {
             fiveMacroDisplay = std::make_unique<FiveMacroDisplay>(processor.getAPVTS(), learnManager);
@@ -64,11 +72,10 @@ public:
         }
         else
         {
-            fiveMacroDisplay.reset();
             macroHero.setVisible(true);
         }
 
-        // Percussion engines get a DrumPadGrid above the ParameterGrid
+        // ── Percussion engines get a DrumPadGrid above the ParameterGrid ─────
         bool isPercEngine = (engineId.equalsIgnoreCase("Onset") ||
                              engineId.equalsIgnoreCase("Offering"));
         if (isPercEngine)
@@ -77,12 +84,143 @@ public:
             drumGrid = std::make_unique<DrumPadGrid>(processor, prefix, accentColour, numVoices);
             addAndMakeVisible(*drumGrid);
         }
-        else
+
+        // ── TriangleXYPad — OVERWORLD (ERA triangle) and OXYTOCIN (love triangle)
+        if (engineId.equalsIgnoreCase("Overworld"))
         {
-            drumGrid.reset();
+            // Verify both params exist before creating (graceful degradation).
+            auto* px = processor.getAPVTS().getParameter("ow_era");
+            auto* py = processor.getAPVTS().getParameter("ow_eraY");
+            if (px && py)
+            {
+                trianglePad = std::make_unique<TriangleXYPad>(
+                    processor.getAPVTS(),
+                    "ow_era",    // X param — ERA horizontal blend
+                    "ow_eraY",   // Y param — ERA vertical blend
+                    std::array<juce::String, 3>{{ "ANALOG", "DIGITAL", "HYBRID" }},
+                    std::array<juce::Colour, 3>{{
+                        juce::Colour(0xFF39FF14),  // Neon Green (OVERWORLD accent)
+                        juce::Colour(0xFFBF40FF),  // Prism Violet
+                        juce::Colour(0xFFE9C46A)   // XO Gold
+                    }});
+                addAndMakeVisible(*trianglePad);
+            }
+        }
+        else if (engineId.equalsIgnoreCase("Oxytocin"))
+        {
+            // OXYTOCIN's love triangle uses oxy_intimacy (X) and oxy_passion (Y).
+            // These are the two independent love-triangle axes present in OxytocinAdapter.
+            auto* px = processor.getAPVTS().getParameter("oxy_intimacy");
+            auto* py = processor.getAPVTS().getParameter("oxy_passion");
+            if (px && py)
+            {
+                trianglePad = std::make_unique<TriangleXYPad>(
+                    processor.getAPVTS(),
+                    "oxy_intimacy",   // X param — Intimacy axis
+                    "oxy_passion",    // Y param — Passion axis
+                    std::array<juce::String, 3>{{ "RE-201", "MS-20", "MOOG" }},
+                    std::array<juce::Colour, 3>{{
+                        juce::Colour(0xFF9B5DE5),  // Synapse Violet (OXYTOCIN accent)
+                        juce::Colour(0xFFFF6B6B),  // Warm Red
+                        juce::Colour(0xFFE9C46A)   // XO Gold
+                    }});
+                addAndMakeVisible(*trianglePad);
+            }
         }
 
-        // OBRIX gets a custom panel instead of the generic ParameterGrid
+        // ── ConductorArcDisplay — OPERA autonomous dramatic arc visualizer ────
+        if (engineId.equalsIgnoreCase("Opera"))
+        {
+            conductorArc = std::make_unique<ConductorArcDisplay>(processor.getAPVTS());
+            addAndMakeVisible(*conductorArc);
+        }
+
+        // ── NamedModeSelector — engines with meaningful choice parameter names ─
+        // Note: ow_era is a float param (not a choice), so OVERWORLD's ERA
+        // blending is handled entirely by the TriangleXYPad above.
+        // NamedModeSelector requires an AudioParameterChoice to bind via
+        // ComboBoxAttachment — only wire it to genuine choice params.
+        if (engineId.equalsIgnoreCase("Ocelot"))
+        {
+            if (processor.getAPVTS().getParameter("ocelot_biome"))
+            {
+                modeSelector = std::make_unique<NamedModeSelector>(
+                    processor.getAPVTS(), "ocelot_biome",
+                    juce::StringArray{ "RAINFOREST", "SAVANNA", "TUNDRA", "REEF" },
+                    static_cast<const std::vector<juce::Colour>*>(nullptr),
+                    juce::Colour(0xFFC5832B)); // Ocelot Tawny
+                addAndMakeVisible(*modeSelector);
+            }
+        }
+        else if (engineId.equalsIgnoreCase("Oracle"))
+        {
+            auto* p = processor.getAPVTS().getParameter("oracle_maqam");
+            if (p)
+            {
+                if (auto* choice = dynamic_cast<juce::AudioParameterChoice*>(p))
+                {
+                    modeSelector = std::make_unique<NamedModeSelector>(
+                        processor.getAPVTS(), "oracle_maqam",
+                        choice->choices,
+                        static_cast<const std::vector<juce::Colour>*>(nullptr),
+                        juce::Colour(0xFF4B0082)); // Prophecy Indigo
+                    addAndMakeVisible(*modeSelector);
+                }
+            }
+        }
+        else if (engineId.equalsIgnoreCase("Orbweave"))
+        {
+            if (processor.getAPVTS().getParameter("weave_knotType"))
+            {
+                modeSelector = std::make_unique<NamedModeSelector>(
+                    processor.getAPVTS(), "weave_knotType",
+                    juce::StringArray{ "TREFOIL", "FIGURE-8", "TORUS", "SOLOMON" },
+                    static_cast<const std::vector<juce::Colour>*>(nullptr),
+                    juce::Colour(0xFF8E4585)); // Kelp Knot Purple (ORBWEAVE accent)
+                addAndMakeVisible(*modeSelector);
+            }
+        }
+
+        // ── BipolarAxisBar — engines with bipolar interaction axes ────────────
+        if (engineId.equalsIgnoreCase("Ouie"))
+        {
+            if (processor.getAPVTS().getParameter("ouie_macroHammer"))
+            {
+                axisBar = std::make_unique<BipolarAxisBar>(
+                    processor.getAPVTS(), "ouie_macroHammer",
+                    "STRIFE", "LOVE",
+                    juce::Colour(0xFFFF2D2D),  // Ouroboros Red (strife)
+                    juce::Colour(0xFFFF69B4)); // Pink (love)
+                addAndMakeVisible(*axisBar);
+            }
+        }
+        else if (engineId.equalsIgnoreCase("Obese"))
+        {
+            // OBESE mojo axis: fat_mojo is the real parameter ID (not fat_satMojo).
+            if (processor.getAPVTS().getParameter("fat_mojo"))
+            {
+                axisBar = std::make_unique<BipolarAxisBar>(
+                    processor.getAPVTS(), "fat_mojo",
+                    "ANALOG", "DIGITAL",
+                    juce::Colour(0xFFE9A84A),  // Warm amber
+                    juce::Colour(0xFFBF40FF)); // Prism Violet
+                addAndMakeVisible(*axisBar);
+            }
+        }
+        else if (engineId.equalsIgnoreCase("Oware"))
+        {
+            if (processor.getAPVTS().getParameter("owr_material"))
+            {
+                axisBar = std::make_unique<BipolarAxisBar>(
+                    processor.getAPVTS(), "owr_material",
+                    "SOFT", "HARD",
+                    juce::Colour(0xFF8B6914),  // Warm wood
+                    juce::Colour(0xFFC0C0C0)); // Metallic silver
+                addAndMakeVisible(*axisBar);
+            }
+        }
+
+        // ── OBRIX gets a custom panel instead of the generic ParameterGrid ────
         if (engineId.equalsIgnoreCase("Obrix"))
         {
             obrixPanel = std::make_unique<ObrixDetailPanel>(processor, learnManager);
@@ -148,7 +286,7 @@ public:
         auto area = getLocalBounds();
         area.removeFromTop(kHeaderH);
 
-        // Place macro hero strip (or FiveMacroDisplay for OVERBITE) below the header
+        // ── 1. MacroHeroStrip or FiveMacroDisplay ────────────────────────────
         if (fiveMacroDisplay && fiveMacroDisplay->isVisible())
         {
             fiveMacroDisplay->setBounds(area.removeFromTop(56).reduced(4, 2));
@@ -162,7 +300,7 @@ public:
             macroHero.setBounds(0, 0, 0, 0);
         }
 
-        // Waveform oscilloscope display (200x80pt, or less if narrow)
+        // ── 2. Waveform oscilloscope display (200×80pt, or less if narrow) ───
         {
             int waveH = 80;
             int waveW = juce::jmin(200, area.getWidth() - 16);
@@ -170,13 +308,40 @@ public:
             waveformDisplay.setBounds(waveArea.withSizeKeepingCentre(waveW, waveH));
         }
 
-        // DrumPadGrid — placed between the waveform display and the viewport
+        // ── 3. DrumPadGrid — ONSET / OFFERING ────────────────────────────────
         if (drumGrid)
         {
             int drumH = drumGrid->getRequiredHeight(area.getWidth());
             drumGrid->setBounds(area.removeFromTop(juce::jmin(drumH, 200)));
         }
 
+        // ── 4. TriangleXYPad — OVERWORLD / OXYTOCIN (144pt) ─────────────────
+        if (trianglePad)
+        {
+            auto padArea = area.removeFromTop(144);
+            trianglePad->setBounds(padArea.withSizeKeepingCentre(160, 140));
+        }
+
+        // ── 5. ConductorArcDisplay — OPERA (64pt) ────────────────────────────
+        if (conductorArc)
+        {
+            auto arcArea = area.removeFromTop(64);
+            conductorArc->setBounds(arcArea.withSizeKeepingCentre(200, 60));
+        }
+
+        // ── 6. NamedModeSelector — mode choice engines (36pt) ────────────────
+        if (modeSelector)
+        {
+            modeSelector->setBounds(area.removeFromTop(36).reduced(4, 2));
+        }
+
+        // ── 7. BipolarAxisBar — bipolar interaction axes (32pt) ──────────────
+        if (axisBar)
+        {
+            axisBar->setBounds(area.removeFromTop(32).reduced(4, 2));
+        }
+
+        // ── 8. Viewport with ParameterGrid (remaining space) ─────────────────
         viewport.setBounds(area);
 
         // Resize viewport content: support both ParameterGrid and ObrixDetailPanel
@@ -202,9 +367,13 @@ private:
     XOlokunProcessor&  processor;
     MacroHeroStrip     macroHero;
     WaveformDisplay    waveformDisplay;
-    std::unique_ptr<ObrixDetailPanel>  obrixPanel;      // only created when OBRIX is loaded
-    std::unique_ptr<DrumPadGrid>       drumGrid;        // created for ONSET, OFFERING
-    std::unique_ptr<FiveMacroDisplay>  fiveMacroDisplay; // created for OVERBITE
+    std::unique_ptr<ObrixDetailPanel>     obrixPanel;       // only created when OBRIX is loaded
+    std::unique_ptr<DrumPadGrid>          drumGrid;         // created for ONSET, OFFERING
+    std::unique_ptr<FiveMacroDisplay>     fiveMacroDisplay; // created for OVERBITE
+    std::unique_ptr<TriangleXYPad>        trianglePad;      // created for OVERWORLD, OXYTOCIN
+    std::unique_ptr<ConductorArcDisplay>  conductorArc;     // created for OPERA
+    std::unique_ptr<NamedModeSelector>    modeSelector;     // created for OVERWORLD, OCELOT, ORACLE, ORBWEAVE
+    std::unique_ptr<BipolarAxisBar>       axisBar;          // created for OUIE, OBESE, OWARE
     juce::Viewport     viewport;
     juce::String       engineId  { "—" };
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
