@@ -431,6 +431,99 @@ private:
         return SampleCategory::Pad;
     }
 
+    //--------------------------------------------------------------------------
+    // YIN pitch detection (de Cheveigne & Kawahara 2002)
+    // Returns MIDI note (0-127) on success, -1 on failure.
+    // confidence is set to 1 - CMNDF minimum (higher = more confident).
+    //--------------------------------------------------------------------------
+    static int yinDetectPitch (const float* data, int numSamples, double sampleRate, float& confidence)
+    {
+        confidence = 0.0f;
+        int minBuffer = (int)(2.0 * sampleRate / 40.0);
+        if (numSamples < minBuffer || numSamples < 512)
+            return -1;
+
+        int W = std::min(numSamples / 2, 4096);
+
+        // Step 1: Difference function
+        std::vector<double> d(W, 0.0);
+        for (int tau = 1; tau < W; ++tau)
+        {
+            double sum = 0.0;
+            for (int j = 0; j < W; ++j)
+            {
+                double diff = (double)data[j] - (double)data[j + tau];
+                sum += diff * diff;
+            }
+            d[tau] = sum;
+        }
+
+        // Step 2: Cumulative mean normalized difference function
+        std::vector<double> cmndf(W, 0.0);
+        cmndf[0] = 1.0;
+        double runningSum = 0.0;
+        for (int tau = 1; tau < W; ++tau)
+        {
+            runningSum += d[tau];
+            cmndf[tau] = (runningSum > 0.0) ? (d[tau] * tau / runningSum) : 1.0;
+        }
+
+        // Step 3: Absolute threshold (0.15)
+        constexpr double kThreshold = 0.15;
+        constexpr int kMinTau = 2;
+        int tauMin = (int)(sampleRate / 2000.0);
+        int tauMax = (int)(sampleRate / 40.0);
+        tauMin = std::max(tauMin, kMinTau);
+        tauMax = std::min(tauMax, W - 1);
+
+        int bestTau = -1;
+        double bestVal = 1.0;
+        for (int tau = tauMin; tau <= tauMax; ++tau)
+        {
+            if (cmndf[tau] < kThreshold)
+            {
+                bestTau = tau;
+                bestVal = cmndf[tau];
+                break;
+            }
+            if (cmndf[tau] < bestVal)
+            {
+                bestVal = cmndf[tau];
+                bestTau = tau;
+            }
+        }
+
+        if (bestTau <= 0)
+            return -1;
+
+        // Step 4: Parabolic interpolation
+        double tau0 = (double)bestTau;
+        if (bestTau > tauMin && bestTau < tauMax)
+        {
+            double alpha = cmndf[bestTau - 1];
+            double beta  = cmndf[bestTau];
+            double gamma = cmndf[bestTau + 1];
+            double denom = alpha - 2.0 * beta + gamma;
+            if (std::abs(denom) > 1e-10)
+                tau0 = bestTau - (gamma - alpha) / (2.0 * denom);
+        }
+
+        if (tau0 <= 0.0)
+            return -1;
+
+        double frequency = sampleRate / tau0;
+        if (frequency < 20.0 || frequency > 20000.0)
+            return -1;
+
+        double midiNote = 69.0 + 12.0 * std::log2(frequency / 440.0);
+        int midiNoteInt = (int)std::round(midiNote);
+        if (midiNoteInt < 0 || midiNoteInt > 127)
+            return -1;
+
+        confidence = (float)juce::jlimit(0.0, 1.0, 1.0 - bestVal);
+        return midiNoteInt;
+    }
+
     //==========================================================================
     // Stage 3: ANALYZE
     //==========================================================================
@@ -479,6 +572,34 @@ private:
                 if (std::abs(ch0[i]) > threshold) { lastActive = i; break; }
             }
             s.tailLengthS = (float) (n - lastActive) / (float) s.sampleRate;
+
+            // YIN pitch detection — skip drums and FX
+            if (!isDrumCategory(s.category) && s.category != SampleCategory::FX)
+            {
+                int detectLen = std::min(n, (int)(4.0 * s.sampleRate));
+                std::vector<float> mono(detectLen, 0.0f);
+                int nchMix = buf.getNumChannels();
+                for (int ch = 0; ch < nchMix; ++ch)
+                {
+                    auto* src = buf.getReadPointer(ch);
+                    for (int i = 0; i < detectLen; ++i)
+                        mono[i] += src[i] / (float)nchMix;
+                }
+
+                float confidence = 0.0f;
+                int detected = yinDetectPitch(mono.data(), detectLen, s.sampleRate, confidence);
+                if (detected >= 0)
+                {
+                    s.detectedMidiNote = detected;
+                    s.pitchConfidence  = confidence;
+                }
+                else
+                {
+                    s.detectedMidiNote = 60;
+                    s.pitchConfidence  = 0.0f;
+                    errors_.add("YIN detection failed for \"" + s.name + "\" — using C4 as provisional root.");
+                }
+            }
 
             // Loop detection for sustained sounds
             if (settings_.detectLoops && s.durationS > 2.0 && !isDrumCategory(s.category))
