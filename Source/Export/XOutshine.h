@@ -33,8 +33,14 @@ namespace xolokun {
 
 enum class SampleCategory
 {
+    // Drum / percussive
     Kick, Snare, HiHatClosed, HiHatOpen, Clap, Tom, Percussion, FX,
-    Bass, Pad, Lead, Keys, Pluck, String, Unknown
+    // Structural
+    Loop,
+    // Melodic
+    Bass, Pad, Lead, Keys, Pluck, String, Woodwind, Brass, Vocal,
+    // Fallback
+    Unknown
 };
 
 inline bool isDrumCategory (SampleCategory c)
@@ -56,6 +62,7 @@ inline int gmNoteForCategory (SampleCategory c)
         case SampleCategory::Tom:          return 41;
         case SampleCategory::Percussion:   return 43;
         case SampleCategory::FX:           return 49;
+        case SampleCategory::Loop:         return 60;
         default:                           return 60;
     }
 }
@@ -77,6 +84,10 @@ inline const char* categoryName (SampleCategory c)
         case SampleCategory::Keys:         return "Keys";
         case SampleCategory::Pluck:        return "Pluck";
         case SampleCategory::String:       return "String";
+        case SampleCategory::Loop:         return "Loop";
+        case SampleCategory::Woodwind:     return "Woodwind";
+        case SampleCategory::Brass:        return "Brass";
+        case SampleCategory::Vocal:        return "Vocal";
         default:                           return "Unknown";
     }
 }
@@ -111,6 +122,9 @@ struct AnalyzedSample
     bool   isLoopable  = false;
     int    loopStart   = 0;
     int    loopEnd     = 0;
+
+    int    detectedMidiNote = 60;  // YIN-detected root note (MIDI 0-127), default C4
+    float  pitchConfidence = 0.0f; // YIN confidence (0-1, higher = more confident)
 };
 
 //------------------------------------------------------------------------------
@@ -368,6 +382,21 @@ private:
             return SampleCategory::Pluck;
         if (nl.contains("string") || nl.contains("violin") || nl.contains("cello"))
             return SampleCategory::String;
+        if (nl.contains("loop") || nl.contains(" lp") || nl.contains("_lp") || nl.contains("phrase"))
+            return SampleCategory::Loop;
+        if (nl.contains("flute") || nl.contains("clarinet") || nl.contains("saxophone")
+            || nl.contains("_sax") || nl.contains(" sax") || nl.contains("oboe")
+            || nl.contains("bassoon") || nl.contains("recorder") || nl.contains("piccolo")
+            || nl.contains("fife"))
+            return SampleCategory::Woodwind;
+        if (nl.contains("trumpet") || nl.contains("trombone") || nl.contains("french horn")
+            || nl.contains("frenchhorn") || nl.contains("tuba") || nl.contains("cornet")
+            || nl.contains("flugelhorn") || nl.contains("_horn") || nl.contains(" horn"))
+            return SampleCategory::Brass;
+        if (nl.contains("vocal") || nl.contains("voice") || nl.contains("choir")
+            || nl.contains("singing") || nl.contains("_vox") || nl.contains(" vox")
+            || nl.contains("acapella") || nl.contains("spoken"))
+            return SampleCategory::Vocal;
         return SampleCategory::Unknown;
     }
 
@@ -505,7 +534,7 @@ private:
                 XOriginate::applyFadeGuards(original, reader->sampleRate);
 
             UpgradedProgram prog;
-            prog.name = s.name.substring(0, 30);
+            prog.name = sanitizeForFAT32(s.name.substring(0, 20));
             prog.category = s.category;
             prog.sourceInfo = s;
             prog.numVelocityLayers = settings_.velocityLayers;
@@ -526,10 +555,16 @@ private:
                     float amp = 0.2f + 0.8f * t;
                     for (int i = 0; i < n; ++i) dst[i] = src[i] * amp;
 
-                    // Simple one-pole low-pass for soft layers
-                    if (t < 0.7f)
+                    // Smooth velocity-to-filter taper (raised cosine, avoids brightness jump at layer boundary)
+                    float filterAmount = 1.0f; // 1.0 = no filtering (passthrough)
+                    if (t < 0.6f)
+                        filterAmount = 0.3f + 0.7f * (t / 0.6f); // linear ramp 0.3→1.0 over 0-0.6
+                    else if (t < 0.8f)
+                        filterAmount = 0.5f * (1.0f + std::cos(juce::MathConstants<float>::pi * (t - 0.6f) / 0.2f)); // cosine taper
+                    // else filterAmount stays 1.0 (no filtering for t >= 0.8)
+                    if (filterAmount < 1.0f)
                     {
-                        float alpha = 0.3f + 0.7f * t;
+                        float alpha = filterAmount;
                         float prev = 0.0f;
                         for (int i = 0; i < n; ++i)
                         {
@@ -551,8 +586,8 @@ private:
                         auto* src = shaped.getReadPointer(ch);
                         auto* dst = varied.getWritePointer(ch);
 
-                        // Micro-pitch (±5 cents via linear interpolation)
-                        float cents = dist(rng) * 5.0f;
+                        // Micro-pitch (±3 cents via linear interpolation)
+                        float cents = dist(rng) * 3.0f;
                         float ratio = fastPow2(cents / 1200.0f);
                         if (rr == 0) ratio = 1.0f; // original is untouched
 
@@ -572,7 +607,7 @@ private:
                         // Micro-gain (±0.5 dB) for rr > 0
                         if (rr > 0)
                         {
-                            float gainDb = dist(rng) * 0.25f;
+                            float gainDb = dist(rng) * 0.5f;
                             float gain = dbToGain(gainDb);
                             for (int i = 0; i < n; ++i) dst[i] *= gain;
                         }
@@ -591,7 +626,7 @@ private:
                     }
 
                     // Write WAV
-                    auto fname = s.name.substring(0, 20) + "__v" + juce::String(vel + 1)
+                    auto fname = sanitizeForFAT32(s.name.substring(0, 20)) + "__v" + juce::String(vel + 1)
                                  + "__c" + juce::String(rr + 1) + ".wav";
                     auto fpath = enhDir.getChildFile(fname);
                     writeWav(fpath, varied, reader->sampleRate, s.bitDepth);
@@ -694,10 +729,10 @@ private:
         xml << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         xml << "<MPCVObject type=\"com.akaipro.mpc.drum.program\">\n";
         xml << "  <Version>1.7</Version>\n";
-        xml << "  <ProgramName>" << prog.name << "</ProgramName>\n";
+        xml << "  <ProgramName>" << xmlEscape(prog.name) << "</ProgramName>\n";
         xml << "  <AfterTouch>\n";
-        xml << "    <Destination>FilterCutoff</Destination>\n";
-        xml << "    <Amount>30</Amount>\n";
+        xml << "    <Destination>ChokeSpeed</Destination>\n";
+        xml << "    <Amount>40</Amount>\n";
         xml << "  </AfterTouch>\n";
         xml << "  <Instruments>\n";
 
@@ -707,9 +742,10 @@ private:
         xml << "      <TriggerMode>OneShot</TriggerMode>\n";
         xml << "      <PadColor>#E9C46A</PadColor>\n";
 
-        if (prog.category == SampleCategory::HiHatClosed ||
-            prog.category == SampleCategory::HiHatOpen)
-            xml << "      <MuteGroup>1</MuteGroup>\n";
+        if (prog.category == SampleCategory::HiHatClosed)
+            xml << "      <ChokeSend>1</ChokeSend>\n";
+        else if (prog.category == SampleCategory::HiHatOpen)
+            xml << "      <ChokeReceive>1</ChokeReceive>\n";
 
         xml << "      <Layers>\n";
         int layerIdx = 0;
@@ -724,7 +760,7 @@ private:
                 xml << "          <VelEnd>" << splits[v].end << "</VelEnd>\n";
                 xml << "          <Volume>" << juce::String(splits[v].volume, 2) << "</Volume>\n";
                 xml << "          <RootNote>0</RootNote>\n";
-                xml << "          <KeyTrack>True</KeyTrack>\n";
+                xml << "          <KeyTrack>False</KeyTrack>\n";
                 if (rrs.size() > 1)
                 {
                     xml << "          <CycleType>RoundRobin</CycleType>\n";
@@ -755,16 +791,16 @@ private:
         xml << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         xml << "<MPCVObject type=\"com.akaipro.mpc.keygroup.program\">\n";
         xml << "  <Version>1.7</Version>\n";
-        xml << "  <ProgramName>" << prog.name << "</ProgramName>\n";
+        xml << "  <ProgramName>" << xmlEscape(prog.name) << "</ProgramName>\n";
         xml << "  <AfterTouch>\n";
-        xml << "    <Destination>FilterCutoff</Destination>\n";
-        xml << "    <Amount>50</Amount>\n";
+        xml << "    <Destination>FilterResonance</Destination>\n";
+        xml << "    <Amount>40</Amount>\n";
         xml << "  </AfterTouch>\n";
         xml << "  <ModWheel>\n";
         xml << "    <Destination>FilterCutoff</Destination>\n";
-        xml << "    <Amount>70</Amount>\n";
+        xml << "    <Amount>50</Amount>\n";
         xml << "  </ModWheel>\n";
-        xml << "  <PitchBendRange>12</PitchBendRange>\n";
+        xml << "  <PitchBendRange>24</PitchBendRange>\n";
         xml << "  <Keygroups>\n";
         xml << "    <Keygroup index=\"0\">\n";
         xml << "      <LowNote>0</LowNote>\n";
@@ -782,7 +818,7 @@ private:
                 xml << "          <VelStart>" << splits[v].start << "</VelStart>\n";
                 xml << "          <VelEnd>" << splits[v].end << "</VelEnd>\n";
                 xml << "          <Volume>" << juce::String(splits[v].volume, 2) << "</Volume>\n";
-                xml << "          <RootNote>0</RootNote>\n";
+                xml << "          <RootNote>" << juce::String(prog.sourceInfo.detectedMidiNote) << "</RootNote>\n";
                 xml << "          <KeyTrack>True</KeyTrack>\n";
                 xml << "          <TuneCoarse>0</TuneCoarse>\n";
                 xml << "          <TuneFine>0</TuneFine>\n";
@@ -833,7 +869,7 @@ private:
         juce::String manifest;
         manifest << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         manifest << "<Expansion>\n";
-        manifest << "  <Name>" << settings_.packName << "</Name>\n";
+        manifest << "  <Name>" << xmlEscape(settings_.packName) << "</Name>\n";
         manifest << "  <Author>XOutshine by XO_OX Designs</Author>\n";
         manifest << "  <Version>1.0</Version>\n";
         manifest << "  <Description>Upgraded by XOutshine</Description>\n";
@@ -925,6 +961,21 @@ private:
     //==========================================================================
     // Utility
     //==========================================================================
+
+    // XML-escape a string for safe embedding in XML element content
+    static juce::String xmlEscape (const juce::String& s)
+    {
+        return s.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;");
+    }
+
+    // Strip FAT32-illegal characters from a filename base (no extension)
+    static juce::String sanitizeForFAT32 (const juce::String& name)
+    {
+        return name.removeCharacters("?<>:\"/\\|*");
+    }
 
     static float measureLufs (const juce::AudioBuffer<float>& buf, double sr)
     {
