@@ -29,7 +29,11 @@ public:
         {
             bool on = enableBtn.getToggleState();
             if (auto* p = processor.getAPVTS().getParameter ("cm_enabled"))
+            {
+                p->beginChangeGesture();
                 p->setValueNotifyingHost (on ? 1.0f : 0.0f);
+                p->endChangeGesture();
+            }
             enableBtn.setButtonText (on ? "ON" : "OFF");
         };
 
@@ -41,7 +45,11 @@ public:
         {
             bool on = seqBtn.getToggleState();
             if (auto* p = processor.getAPVTS().getParameter ("cm_seq_running"))
+            {
+                p->beginChangeGesture();
                 p->setValueNotifyingHost (on ? 1.0f : 0.0f);
+                p->endChangeGesture();
+            }
         };
 
         // Palette selector
@@ -52,8 +60,12 @@ public:
         paletteBox.onChange = [this]
         {
             if (auto* p = processor.getAPVTS().getParameter ("cm_palette"))
+            {
+                p->beginChangeGesture();
                 p->setValueNotifyingHost (static_cast<float> (paletteBox.getSelectedItemIndex())
                                           / 7.0f);
+                p->endChangeGesture();
+            }
         };
 
         // Voicing selector
@@ -64,8 +76,12 @@ public:
         voicingBox.onChange = [this]
         {
             if (auto* p = processor.getAPVTS().getParameter ("cm_voicing"))
+            {
+                p->beginChangeGesture();
                 p->setValueNotifyingHost (static_cast<float> (voicingBox.getSelectedItemIndex())
                                           / 4.0f);
+                p->endChangeGesture();
+            }
         };
 
         // Pattern selector
@@ -78,7 +94,11 @@ public:
             auto idx = patternBox.getSelectedItemIndex();
             processor.getChordMachine().applyPattern (static_cast<RhythmPattern> (idx));
             if (auto* p = processor.getAPVTS().getParameter ("cm_seq_pattern"))
+            {
+                p->beginChangeGesture();
                 p->setValueNotifyingHost (static_cast<float> (idx) / 7.0f);
+                p->endChangeGesture();
+            }
         };
 
         // Velocity curve selector
@@ -88,8 +108,12 @@ public:
         velCurveBox.onChange = [this]
         {
             if (auto* p = processor.getAPVTS().getParameter ("cm_vel_curve"))
+            {
+                p->beginChangeGesture();
                 p->setValueNotifyingHost (static_cast<float> (velCurveBox.getSelectedItemIndex())
                                           / 3.0f);
+                p->endChangeGesture();
+            }
         };
 
         // Knobs
@@ -116,7 +140,11 @@ public:
         enoBtn.onClick = [this]
         {
             if (auto* p = processor.getAPVTS().getParameter ("cm_eno_mode"))
+            {
+                p->beginChangeGesture();
                 p->setValueNotifyingHost (enoBtn.getToggleState() ? 1.0f : 0.0f);
+                p->endChangeGesture();
+            }
         };
 
         startTimerHz (10);  // Reduced from 15Hz — sufficient for step highlighting

@@ -254,6 +254,64 @@ public:
         }
     }
 
+    // ValueTree serialization — used for DAW session state persistence.
+    // All six fields of MIDIMapping are round-tripped so that rangeMin/rangeMax
+    // and isPerPreset are preserved across save/restore cycles.
+    // Called on the message thread (getStateInformation / setStateInformation
+    // are message-thread calls per the JUCE audio processor contract).
+    juce::ValueTree toValueTree() const
+    {
+        juce::ValueTree tree("MIDILearn");
+        auto mappings = getMappings();
+        for (const auto& m : mappings)
+        {
+            juce::ValueTree child("Mapping");
+            child.setProperty("paramId",    m.paramId,                     nullptr);
+            child.setProperty("cc",         m.ccNumber,                    nullptr);
+            child.setProperty("channel",    m.channel,                     nullptr);
+            child.setProperty("rangeMin",   static_cast<double>(m.rangeMin), nullptr);
+            child.setProperty("rangeMax",   static_cast<double>(m.rangeMax), nullptr);
+            child.setProperty("perPreset",  m.isPerPreset,                 nullptr);
+            tree.appendChild(child, nullptr);
+        }
+        return tree;
+    }
+
+    // Restore mappings from a ValueTree previously created by toValueTree().
+    // If the tree is invalid or has no children (e.g. an old state blob that
+    // pre-dates this feature), the method does nothing and returns false so
+    // the caller can fall back to loadDefaultMappings().
+    bool fromValueTree(const juce::ValueTree& tree)
+    {
+        if (!tree.isValid() || !tree.hasType("MIDILearn"))
+            return false;
+
+        clearAllMappings();
+        for (int i = 0; i < tree.getNumChildren(); ++i)
+        {
+            auto child = tree.getChild(i);
+            if (!child.hasType("Mapping"))
+                continue;
+
+            MIDIMapping m;
+            m.paramId    = child["paramId"].toString();
+            m.ccNumber   = static_cast<int>(child["cc"]);
+            m.channel    = static_cast<int>(child["channel"]);
+            m.rangeMin   = static_cast<float>(static_cast<double>(child["rangeMin"]));
+            m.rangeMax   = static_cast<float>(static_cast<double>(child["rangeMax"]));
+            m.isPerPreset = static_cast<bool>(child["perPreset"]);
+
+            // Validate bounds before inserting — guard against corrupted saves.
+            if (m.ccNumber >= 0 && m.ccNumber <= 127
+             && m.channel  >= 0 && m.channel  <= 16
+             && m.paramId.isNotEmpty())
+            {
+                addMapping(m);
+            }
+        }
+        return true;
+    }
+
     //-- Default CC mappings (per spec) ------------------------------------------
 
     void loadDefaultMappings()

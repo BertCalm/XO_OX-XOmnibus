@@ -1707,7 +1707,22 @@ SynthEngine* XOlokunProcessor::getEngine(int slot) const
 
 void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
+    // Append supplementary state to the APVTS ValueTree *before* converting
+    // to XML so that all extra children are included in the binary blob.
     auto state = apvts.copyState();
+
+    // FIX 5 — Persist MIDI learn mappings as a ValueTree child.
+    // Using a structured child (rather than a JSON string attribute) avoids
+    // XML attribute string-length limits, survives round-trips through
+    // juce::ValueTree::fromXml(), and is the idiomatic JUCE pattern for
+    // supplementary plugin state.  The "MIDILearn" child is absent in saves
+    // from before this feature; setStateInformation handles that gracefully.
+    // Remove any stale MIDILearn child first (defensive — should not exist
+    // on a freshly copied state, but guards against double-save edge cases).
+    if (auto existing = state.getChildWithName("MIDILearn"); existing.isValid())
+        state.removeChild(existing, nullptr);
+    state.appendChild(midiLearnManager.toValueTree(), nullptr);
+
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
     {
@@ -1746,11 +1761,6 @@ void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
         // captures pattern-template selection but not custom per-step edits.
         juce::String cmStateJson = juce::JSON::toString(chordMachine.serializeState());
         xml->setAttribute("chordMachineState", cmStateJson);
-
-        // Persist MIDI learn mappings alongside APVTS state so DAW project
-        // recall restores CC → parameter assignments.
-        juce::String mappingsJson = juce::JSON::toString(midiLearnManager.toJSON());
-        xml->setAttribute("midiLearnMappings", mappingsJson);
 
         copyXmlToBinary(*xml, destData);
     }
@@ -1827,16 +1837,17 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
             }
         }
 
-        // Restore MIDI learn mappings; fall back to defaults if absent
-        // (e.g. projects saved before this feature was added).
-        if (xml->hasAttribute("midiLearnMappings"))
+        // FIX 5 — Restore MIDI learn mappings from the ValueTree child that
+        // was appended to the APVTS state in getStateInformation().
+        // apvts.replaceState() above has already reconstructed the full tree
+        // from XML, so the "MIDILearn" child is now accessible via apvts.state.
+        // fromValueTree() returns false when the child is absent (old sessions
+        // saved before this feature) or malformed — fall back to defaults so
+        // hardware users always have at least the spec-defined CC assignments.
         {
-            juce::var mappings = juce::JSON::parse(xml->getStringAttribute("midiLearnMappings"));
-            midiLearnManager.fromJSON(mappings);
-        }
-        else
-        {
-            midiLearnManager.loadDefaultMappings();
+            auto midiLearnTree = apvts.state.getChildWithName("MIDILearn");
+            if (!midiLearnManager.fromValueTree(midiLearnTree))
+                midiLearnManager.loadDefaultMappings();
         }
     }
 }
