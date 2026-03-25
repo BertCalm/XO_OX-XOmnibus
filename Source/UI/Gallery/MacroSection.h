@@ -12,24 +12,26 @@ public:
     explicit MacroSection(juce::AudioProcessorValueTreeState& apvts)
     {
         struct Def { const char* id; const char* label; };
+        // Short display labels (fit compact header); tooltips/a11y retain full names.
         static constexpr Def defs[4] = {
-            {"macro1","CHARACTER"}, {"macro2","MOVEMENT"},
-            {"macro3","COUPLING"},  {"macro4","SPACE"}
+            {"macro1","CHAR"}, {"macro2","MOVE"},
+            {"macro3","COUP"}, {"macro4","SPACE"}
         };
+        static constexpr const char* tooltipLabels[4] = {"CHARACTER","MOVEMENT","COUPLING","SPACE"};
         for (int i = 0; i < 4; ++i)
         {
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
                                GalleryColors::get(GalleryColors::xoGold));
-            knobs[i].setTooltip(juce::String("Macro ") + juce::String(i + 1) + ": " + defs[i].label);
-            A11y::setup (knobs[i], juce::String ("Macro ") + juce::String (i + 1) + " " + defs[i].label);
+            knobs[i].setTooltip(juce::String("Macro ") + juce::String(i + 1) + ": " + tooltipLabels[i]);
+            A11y::setup (knobs[i], juce::String ("Macro ") + juce::String (i + 1) + " " + tooltipLabels[i]);
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, defs[i].id, knobs[i]);
             enableKnobReset (knobs[i], apvts, defs[i].id);
 
-            lbls[i].setText(defs[i].label, juce::dontSendNotification);
+            lbls[i].setText(defs[i].label, juce::dontSendNotification); // short label (CHAR/MOVE/COUP/SPACE)
             lbls[i].setFont(GalleryFonts::heading(8.0f));
             lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
@@ -47,7 +49,7 @@ public:
             apvts, "masterVolume", master);
         enableKnobReset (master, apvts, "masterVolume");
 
-        masterLbl.setText("MASTER", juce::dontSendNotification);
+        masterLbl.setText("VOL", juce::dontSendNotification);
         masterLbl.setFont(GalleryFonts::heading(8.0f));
         masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         masterLbl.setJustificationType(juce::Justification::centred);
@@ -57,45 +59,40 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        auto b = getLocalBounds().toFloat();
-        g.setColour(get(shellWhite()));
-        g.fillRoundedRectangle(b, 6.0f);
-        g.setColour(get(borderGray()));
-        g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
-
-        // XO Gold top stripe — macros are brand constants, not ocean-depth values
-        g.setColour(get(xoGold));
-        g.fillRect(b.removeFromTop(3.0f));
-
-        // MACROS label
-        g.setColour(get(xoGoldText()));
-        g.setFont(GalleryFonts::heading(8.0f));
-        g.drawText("MACROS", getLocalBounds().removeFromTop(20), juce::Justification::centred);
+        // Subtle left separator — visually divides macro zone from title/logo area in header.
+        // No card background or gold stripe: the header already provides shellWhite + gold bottom stripe.
+        g.setColour(get(borderGray()).withAlpha(0.30f));
+        g.drawVerticalLine(0, 4.0f, (float)getHeight() - 4);
     }
 
     void resized() override
     {
-        auto b = getLocalBounds().reduced(6, 2);
-        b.removeFromTop(18);
-        const int kh = 50, lh = 13;
-        auto macroArea = b.removeFromLeft(b.getWidth() - 68);
-        int cw = macroArea.getWidth() / 4;
+        // Header integration: effective height ~48px (64pt header - 8px top pad - 8px bottom pad).
+        // All 5 knobs (4 macros + master) laid out in equal columns, no MACROS label.
+        auto b = getLocalBounds().reduced(4, 2);
+        constexpr int kh = 36, lh = 10;
+        int numKnobs = 5; // 4 macros + master
+        int cw = b.getWidth() / numKnobs;
+
         for (int i = 0; i < 4; ++i)
         {
-            auto col = macroArea.removeFromLeft(cw);
+            auto col = b.removeFromLeft(cw);
             int kx = col.getCentreX() - kh / 2;
             knobs[i].setBounds(kx, col.getY(), kh, kh);
-            lbls[i].setBounds(kx, col.getY() + kh + 1, kh, lh);
+            lbls[i].setBounds(kx - 4, col.getY() + kh + 1, kh + 8, lh);
         }
-        int mx = b.getCentreX() - 22;
-        master.setBounds(mx, b.getY(), 44, 44);
-        masterLbl.setBounds(mx, b.getY() + 45, 44, lh);
+        // Master volume in the remaining column
+        auto masterCol = b;
+        int mx = masterCol.getCentreX() - kh / 2;
+        master.setBounds(mx, masterCol.getY(), kh, kh);
+        masterLbl.setBounds(mx - 4, masterCol.getY() + kh + 1, kh + 8, lh);
     }
 
     // Called by PresetBrowserStrip when a preset with custom macroLabels is loaded.
+    // Short display names are used to fit the compact header layout.
     void setLabels(const juce::StringArray& labels)
     {
-        static const char* defaults[4] = {"CHARACTER","MOVEMENT","COUPLING","SPACE"};
+        static const char* defaults[4] = {"CHAR","MOVE","COUP","SPACE"};
         for (int i = 0; i < 4; ++i)
         {
             auto text = (i < labels.size() && labels[i].isNotEmpty())

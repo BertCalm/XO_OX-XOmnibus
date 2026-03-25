@@ -319,32 +319,9 @@ public:
                    juce::Rectangle<int>(16, headerH - 18, 110, 12),
                    juce::Justification::centredLeft);
 
-        // Active coupling route count in header
-        {
-            auto routes = processor.getCouplingMatrix().getRoutes();
-            int activeRoutes = 0;
-            for (const auto& r : routes) if (r.active && r.amount >= 0.001f) ++activeRoutes;
-
-            juce::String routeLabel = (activeRoutes > 0)
-                ? juce::String(activeRoutes) + " coupling route" + (activeRoutes > 1 ? "s" : "") + " active"
-                : ([this]() -> juce::String {
-                      int numEngines = (int)EngineRegistry::instance().getRegisteredIds().size();
-                      int numCoupling = 14;
-                      int numPresets = (int)processor.getPresetManager().getLibrary().size();
-                      juce::String presetStr = (numPresets > 0)
-                          ? juce::String(numPresets) + "+"
-                          : "18000+";
-                      return juce::String(numEngines) + " Engines \xc2\xb7 "
-                           + juce::String(numCoupling) + " Coupling Types \xc2\xb7 "
-                           + presetStr + " Presets";
-                  }());
-
-            g.setColour(activeRoutes > 0 ? get(xoGoldText()) : get(textMid()).withAlpha(0.5f));
-            g.setFont(GalleryFonts::body(9.0f));
-            g.drawText(routeLabel,
-                       juce::Rectangle<int>(getWidth() - 310, 0, 298, headerH - 6),
-                       juce::Justification::centredRight);
-        }
+        // NOTE: Coupling stats / engine-count text has been moved out of paint().
+        // It will be surfaced via StatusBar::setStatusText() in a future timerCallback() update
+        // (Step 12). For now the header is reserved for the macro knobs component.
 
         // ── MIDI Learn status badge — appears in header when listening ──────
         {
@@ -392,13 +369,18 @@ public:
         perfToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
 
-        // ── Column A — Engine Rack + MacroSection at bottom ──────────────────
-        // Grab a mutable copy so we can slice the bottom for macros.
-        auto colA = layout.getColumnA();
+        // ── Macro knobs in header — between title area and button strip ───────
+        // All right-side buttons have been sliced above; what remains in 'header'
+        // spans from x=0 to the left edge of the CM toggle button.
+        // Skip the first 165px (logo + title text area).
+        {
+            auto macroHeader = header; // copy of what's left after right buttons removed
+            macroHeader.removeFromLeft(165);
+            macros.setBounds(macroHeader.reduced(8, 8));
+        }
 
-        // MacroSection stays at bottom of Column A (moves to header in Step 11)
-        auto macroArea = colA.removeFromBottom(kMacroH).reduced(6, 4);
-        macros.setBounds(macroArea);
+        // ── Column A — Engine Rack (full height, MacroSection now in header) ──
+        auto colA = layout.getColumnA();
 
         // Remaining Column A for engine tiles
         int tileH = colA.getHeight() / XOlokunProcessor::MaxSlots;
@@ -710,7 +692,6 @@ private:
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
     // Use ColumnLayoutManager::kHeaderH (64) and ColumnLayoutManager::kFieldMapH (65).
-    static constexpr int kMacroH    = 105; // MacroSection strip height — moves to header in Step 11
     static constexpr int kMasterFXH = 68;  // MasterFX compact strip at bottom of Column B
     static constexpr int kFadeMs    = 150; // Panel cross-fade duration (ms)
 
