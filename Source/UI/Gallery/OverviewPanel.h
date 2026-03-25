@@ -3,12 +3,15 @@
 #include "../../XOlokunProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
+#include "CouplingChainView.h"
 
 namespace xolokun
 {
 
 //==============================================================================
-// Coupling type → short label, used by both OverviewPanel and CouplingPanel.
+// Coupling type → short label, used by OverviewPanel, CouplingChainView, CouplingPanel.
+#ifndef XOLOKUN_COUPLING_TYPE_LABEL_DEFINED
+#define XOLOKUN_COUPLING_TYPE_LABEL_DEFINED
 inline juce::String couplingTypeLabel(CouplingType t)
 {
     switch (t) {
@@ -27,13 +30,18 @@ inline juce::String couplingTypeLabel(CouplingType t)
         default:                             return "?";
     }
 }
+#endif
 
 //==============================================================================
 // OverviewPanel — right-side content when no engine is selected.
 class OverviewPanel : public juce::Component
 {
 public:
-    explicit OverviewPanel(XOlokunProcessor& proc) : processor(proc) {}
+    explicit OverviewPanel(XOlokunProcessor& proc)
+        : processor(proc), chainView(proc)
+    {
+        addAndMakeVisible(chainView);
+    }
 
     // Called by the editor when engine state or coupling routes change.
     // Avoids calling getRoutes() (which copies a vector) inside paint().
@@ -46,6 +54,7 @@ public:
             if (eng) cachedActiveEngines.push_back({eng->getEngineId(), eng->getAccentColour()});
         }
         cachedRoutes = processor.getCouplingMatrix().getRoutes();
+        chainView.refresh();
         repaint();
     }
 
@@ -54,7 +63,9 @@ public:
         using namespace GalleryColors;
         g.fillAll(get(slotBg()));
 
-        auto b = getLocalBounds().toFloat();
+        // Reserve the bottom 48pt for CouplingChainView — don't paint into that strip.
+        constexpr float kChainH = 48.0f;
+        auto b = getLocalBounds().toFloat().withTrimmedBottom(kChainH);
         float w = b.getWidth();
         float h = b.getHeight();
 
@@ -302,8 +313,15 @@ public:
         }
     }
 
+    void resized() override
+    {
+        // Place the chain view at the bottom 48pt of the panel.
+        chainView.setBounds(getLocalBounds().removeFromBottom(48));
+    }
+
 private:
     XOlokunProcessor& processor;
+    CouplingChainView chainView;
     // Cached state — updated in refresh(), never in paint()
     std::vector<std::pair<juce::String, juce::Colour>> cachedActiveEngines;
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes;

@@ -3,9 +3,30 @@
 #include "../../XOlokunProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
-#include "OverviewPanel.h"   // couplingTypeLabel()
-
 namespace xolokun {
+
+// Local couplingTypeLabel — avoids circular include with OverviewPanel.h
+#ifndef XOLOKUN_COUPLING_TYPE_LABEL_DEFINED
+#define XOLOKUN_COUPLING_TYPE_LABEL_DEFINED
+inline juce::String couplingTypeLabel(CouplingType t)
+{
+    switch (t) {
+        case CouplingType::AmpToFilter:      return "Amp->F";
+        case CouplingType::AmpToPitch:       return "Amp->P";
+        case CouplingType::LFOToPitch:       return "LFO->P";
+        case CouplingType::EnvToMorph:       return "Env->M";
+        case CouplingType::AudioToFM:        return "Au->FM";
+        case CouplingType::AudioToRing:      return "Ring";
+        case CouplingType::FilterToFilter:   return "F->F";
+        case CouplingType::AmpToChoke:       return "Choke";
+        case CouplingType::RhythmToBlend:    return "R->B";
+        case CouplingType::EnvToDecay:       return "Env->D";
+        case CouplingType::PitchToPitch:     return "P->P";
+        case CouplingType::AudioToWavetable: return "Au->W";
+        default:                             return "?";
+    }
+}
+#endif
 
 //==============================================================================
 // CouplingChainView — 520×48pt horizontal signal-flow diagram.

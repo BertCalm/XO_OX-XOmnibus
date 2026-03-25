@@ -7,6 +7,9 @@
 #include "MidiLearnMouseListener.h"
 #include "ObrixDetailPanel.h"
 #include "WaveformDisplay.h"
+#include "DrumPadGrid.h"
+#include "SpecializedDisplays.h"
+#include "SpecializedWidgets.h"
 
 namespace xolokun
 {
@@ -51,6 +54,33 @@ public:
         waveformDisplay.setSlot(slot);
         waveformDisplay.setAccentColour(accentColour);
         waveformDisplay.setEngineId(engineId);
+
+        // OVERBITE gets FiveMacroDisplay instead of standard MacroHeroStrip
+        if (engineId.equalsIgnoreCase("Overbite"))
+        {
+            fiveMacroDisplay = std::make_unique<FiveMacroDisplay>(processor.getAPVTS(), learnManager);
+            addAndMakeVisible(*fiveMacroDisplay);
+            macroHero.setVisible(false);
+        }
+        else
+        {
+            fiveMacroDisplay.reset();
+            macroHero.setVisible(true);
+        }
+
+        // Percussion engines get a DrumPadGrid above the ParameterGrid
+        bool isPercEngine = (engineId.equalsIgnoreCase("Onset") ||
+                             engineId.equalsIgnoreCase("Offering"));
+        if (isPercEngine)
+        {
+            int numVoices = 8; // both ONSET and OFFERING use 8 voices for now
+            drumGrid = std::make_unique<DrumPadGrid>(processor, prefix, accentColour, numVoices);
+            addAndMakeVisible(*drumGrid);
+        }
+        else
+        {
+            drumGrid.reset();
+        }
 
         // OBRIX gets a custom panel instead of the generic ParameterGrid
         if (engineId.equalsIgnoreCase("Obrix"))
@@ -118,8 +148,12 @@ public:
         auto area = getLocalBounds();
         area.removeFromTop(kHeaderH);
 
-        // Place macro hero strip below the header (120px tall if visible)
-        if (macroHero.isVisible())
+        // Place macro hero strip (or FiveMacroDisplay for OVERBITE) below the header
+        if (fiveMacroDisplay && fiveMacroDisplay->isVisible())
+        {
+            fiveMacroDisplay->setBounds(area.removeFromTop(56).reduced(4, 2));
+        }
+        else if (macroHero.isVisible())
         {
             macroHero.setBounds(area.removeFromTop(kHeroH).reduced(4, 2));
         }
@@ -134,6 +168,13 @@ public:
             int waveW = juce::jmin(200, area.getWidth() - 16);
             auto waveArea = area.removeFromTop(waveH + 4);
             waveformDisplay.setBounds(waveArea.withSizeKeepingCentre(waveW, waveH));
+        }
+
+        // DrumPadGrid — placed between the waveform display and the viewport
+        if (drumGrid)
+        {
+            int drumH = drumGrid->getRequiredHeight(area.getWidth());
+            drumGrid->setBounds(area.removeFromTop(juce::jmin(drumH, 200)));
         }
 
         viewport.setBounds(area);
@@ -161,7 +202,9 @@ private:
     XOlokunProcessor&  processor;
     MacroHeroStrip     macroHero;
     WaveformDisplay    waveformDisplay;
-    std::unique_ptr<ObrixDetailPanel> obrixPanel; // only created when OBRIX is loaded
+    std::unique_ptr<ObrixDetailPanel>  obrixPanel;      // only created when OBRIX is loaded
+    std::unique_ptr<DrumPadGrid>       drumGrid;        // created for ONSET, OFFERING
+    std::unique_ptr<FiveMacroDisplay>  fiveMacroDisplay; // created for OVERBITE
     juce::Viewport     viewport;
     juce::String       engineId  { "—" };
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };

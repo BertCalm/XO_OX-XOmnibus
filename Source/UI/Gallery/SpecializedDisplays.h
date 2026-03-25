@@ -684,7 +684,8 @@ public:
 
         // Thin Fang White top accent (OVERBITE accent color)
         g.setColour(juce::Colour(0xFFF0EDE8).withAlpha(0.70f));
-        g.fillRect(b.removeFromTop(2.0f));
+        auto accentStrip = b; accentStrip.setHeight(2.0f);
+        g.fillRect(accentStrip);
     }
 
     void resized() override
