@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>XOlokun V0.3 Wireframe Prototype</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Courier New', monospace; background: #ddd; padding: 20px; font-size: 11px; }
+
+  .test-controls {
+    background: #222; color: #fff; padding: 10px; margin-bottom: 12px;
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  }
+  .test-controls button {
+    background: #444; color: #fff; border: 1px solid #666; padding: 4px 10px;
+    font-family: monospace; font-size: 11px; cursor: pointer;
+  }
+  .test-controls button:hover { background: #666; }
+  .test-controls button.active { background: #0077cc; border-color: #0099ff; }
+  .test-label { color: #aaa; font-size: 10px; }
+
+  /* Main shell */
+  #xolokun-shell {
+    width: 1100px;
+    background: #f8f6f3;
+    border: 2px solid #999;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.2s, height 0.2s;
+  }
+
+  /* HEADER */
+  #header {
+    height: 52px;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 6px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .header-logo {
+    width: 48px; height: 32px;
+    background: #e0e0e0; border: 1px solid #ccc;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: bold; color: #333;
+  }
+  .header-btn {
+    height: 28px; padding: 0 8px;
+    background: #f0f0f0; border: 1px solid #ccc;
+    font-family: monospace; font-size: 10px; cursor: pointer;
+    display: flex; align-items: center;
+    white-space: nowrap;
+  }
+  .header-btn:hover { background: #e0e0e0; }
+  .header-preset-nav {
+    flex: 1; max-width: 220px;
+    height: 28px; background: #f0f0f0; border: 1px solid #ccc;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #333;
+  }
+  .header-ab {
+    width: 44px; height: 28px;
+    background: #f0f0f0; border: 1px solid #ccc;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; cursor: pointer;
+  }
+  .header-macro {
+    width: 40px; height: 40px;
+    background: #fff8e8; border: 1px solid #ccc;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 8px; color: #555;
+  }
+  .header-macro .macro-knob {
+    width: 24px; height: 24px;
+    border-radius: 50%; background: #e9c46a;
+    border: 1px solid #c9a44a;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: #333; font-weight: bold;
+  }
+  .header-macro .macro-label { font-size: 7px; color: #888; margin-top: 1px; }
+  .header-indicators {
+    display: flex; gap: 4px; align-items: center; margin-left: auto;
+  }
+  .indicator-pill {
+    height: 22px; padding: 0 6px;
+    background: #f0f0f0; border: 1px solid #ccc;
+    display: flex; align-items: center; font-size: 9px; color: #555;
+  }
+  .indicator-pill.gold {
+    background: #e9c46a; border-color: #c9a44a; color: #333; font-weight: bold;
+  }
+  .dim-label { font-size: 8px; color: #aaa; }
+
+  /* BODY ROW */
+  #body-row {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* COLUMN A */
+  #col-a {
+    width: 260px;
+    min-width: 80px;
+    background: #e8f0ff;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: width 0.2s;
+  }
+  .col-label {
+    font-size: 8px; color: #666; padding: 3px 6px;
+    background: rgba(0,0,0,0.05); border-bottom: 1px solid #ccc;
+    display: flex; justify-content: space-between;
+  }
+
+  /* Slot tiles */
+  .slot-tile {
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    padding: 4px 6px;
+    position: relative;
+    transition: background 0.1s;
+  }
+  .slot-tile:hover { background: #f5f8ff; }
+  .slot-tile.active { background: #e0ecff; border-left: 3px solid #4477cc; }
+  .slot-tile.empty { background: #f8f8f8; }
+  .slot-header {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 14px; font-size: 9px; color: #555;
+  }
+  .slot-num { font-weight: bold; color: #333; }
+  .slot-power {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #4a4; border: 1px solid #383;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: #fff; cursor: pointer;
+  }
+  .slot-power.off { background: #aaa; border-color: #888; }
+  .slot-name-row {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 16px; font-size: 10px; font-weight: bold; color: #222;
+  }
+  .slot-creature { font-size: 11px; }
+  .slot-macros {
+    display: flex; gap: 3px; height: 36px; align-items: center;
+    padding: 2px 0;
+  }
+  .mini-macro {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: #e9c46a; border: 1px solid #c9a44a;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: #333; font-weight: bold; cursor: pointer;
+  }
+  .slot-waveform {
+    height: 22px; background: #f0f4ff; border: 1px solid #ccd;
+    display: flex; align-items: center; padding: 0 4px;
+    font-size: 8px; color: #889; position: relative;
+    overflow: hidden;
+  }
+  .waveform-svg { width: 100%; height: 16px; }
+  .slot-bottom-row {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 20px; font-size: 8px; color: #667;
+  }
+  .macro-dots { display: flex; gap: 2px; }
+  .macro-dot { width: 5px; height: 5px; border-radius: 50%; background: #e9c46a; border: 1px solid #c9a44a; }
+  .fx-indicator {
+    font-size: 8px; color: #666; padding: 1px 4px;
+    background: #f0f0f0; border: 1px solid #ccc; cursor: pointer;
+    border-radius: 2px;
+  }
+  .fx-indicator:hover { background: #e0e0e0; }
+  .slot-cpu {
+    height: 4px; background: #e8f0ff; margin-top: 2px;
+    position: relative; overflow: hidden;
+  }
+  .slot-cpu-bar { height: 100%; background: #4488cc; }
+
+  .slot-add-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #f0f0f0; border: 2px dashed #bbb;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: #999; cursor: pointer; margin: auto;
+  }
+  .slot-add-btn:hover { background: #e8e8e8; border-color: #999; color: #555; }
+  .slot-empty-text { text-align: center; font-size: 9px; color: #aaa; margin-top: 4px; }
+
+  .coupling-dot {
+    height: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: #aab;
+  }
+
+  /* Coupling mini-graph */
+  #coupling-graph {
+    height: 80px; background: #fff; border-top: 1px solid #ccc;
+    padding: 4px; flex-shrink: 0;
+    position: relative;
+  }
+  .coupling-graph-label { font-size: 8px; color: #999; margin-bottom: 2px; }
+  .coupling-graph-inner {
+    width: 100%; height: 60px;
+    position: relative; border: 1px solid #dde; background: #f8f8ff;
+  }
+  .coupling-node {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: #fff; border: 1px solid #aab;
+    position: absolute; display: flex; align-items: center;
+    justify-content: center; font-size: 8px; font-weight: bold; color: #445;
+    cursor: pointer;
+  }
+  .coupling-node:hover { border-color: #4477cc; }
+  .coupling-arc-label { font-size: 7px; color: #99a; position: absolute; }
+
+  /* COLUMN B */
+  #col-b {
+    flex: 1;
+    background: #fffde8;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 300px;
+    transition: flex 0.2s;
+  }
+  .col-b-view { display: none; flex-direction: column; height: 100%; }
+  .col-b-view.active { display: flex; }
+
+  /* Engine detail sticky top */
+  .engine-detail-sticky-top {
+    flex-shrink: 0; background: #fff8e0; border-bottom: 1px solid #ddc;
+    padding: 4px 8px;
+  }
+  .signal-flow-strip {
+    height: 32px; background: #f0f0f0; border: 1px solid #ccc;
+    display: flex; align-items: center; padding: 0 6px; gap: 4px;
+    font-size: 9px; margin-bottom: 4px;
+  }
+  .signal-block {
+    padding: 2px 6px; background: #e8e8e8; border: 1px solid #bbb;
+    font-size: 9px; cursor: pointer; white-space: nowrap;
+  }
+  .signal-block:hover { background: #d8d8d8; }
+  .signal-block.active { background: #c8e8ff; border-color: #88aacc; }
+  .signal-arrow { color: #999; font-size: 10px; }
+  .section-nav {
+    display: flex; gap: 4px; height: 22px; align-items: center;
+    margin-top: 4px;
+  }
+  .section-nav-btn {
+    padding: 2px 8px; background: #f0f0f0; border: 1px solid #ccc;
+    font-size: 9px; cursor: pointer; font-family: monospace;
+  }
+  .section-nav-btn:hover { background: #e0e0e0; }
+  .section-nav-btn.active { background: #e9c46a; border-color: #c9a44a; }
+
+  .macro-row {
+    display: flex; gap: 8px; padding: 4px 0;
+    align-items: flex-end; height: 64px;
+  }
+  .macro-knob-lg {
+    width: 56px; display: flex; flex-direction: column; align-items: center;
+  }
+  .macro-knob-lg .knob-circle {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #e9c46a; border: 2px solid #c9a44a;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: bold; color: #333; cursor: pointer;
+  }
+  .macro-knob-lg .knob-label { font-size: 8px; color: #777; margin-top: 2px; text-align: center; }
+
+  /* Engine detail scrollable */
+  .engine-detail-scroll {
+    flex: 1; overflow-y: auto; padding: 4px 8px;
+  }
+  .collapsible-section {
+    border: 1px solid #ddc; margin-bottom: 4px; background: #fff;
+  }
+  .section-header {
+    height: 28px; background: #f8f4e0; border-bottom: 1px solid #ddc;
+    display: flex; align-items: center; padding: 0 8px; cursor: pointer;
+    font-size: 10px; font-weight: bold; color: #333; gap: 6px;
+  }
+  .section-header:hover { background: #f0ecd8; }
+  .section-toggle { font-size: 10px; color: #888; width: 12px; }
+  .section-dot { width: 8px; height: 8px; border-radius: 50%; background: #e9c46a; }
+  .section-content {
+    padding: 6px 8px; display: none;
+  }
+  .section-content.open { display: flex; flex-wrap: wrap; gap: 8px; }
+  .param-knob {
+    width: 48px; display: flex; flex-direction: column; align-items: center;
+  }
+  .param-knob .k { width: 32px; height: 32px; border-radius: 50%; background: #eee; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 7px; cursor: pointer; }
+  .param-knob .k:hover { background: #e0e0e0; }
+  .param-knob .lbl { font-size: 7px; color: #888; margin-top: 2px; text-align: center; }
+  .engine-nameplate {
+    height: 24px; display: flex; align-items: center; gap: 8px;
+    padding: 0 4px; font-size: 11px; font-weight: bold;
+  }
+  .engine-accent-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  /* Engine detail sticky bottom */
+  .engine-detail-sticky-bottom {
+    flex-shrink: 0; height: 80px; background: #fff8e0; border-top: 1px solid #ddc;
+    display: flex; gap: 4px; padding: 4px 8px; align-items: center;
+  }
+  .waveform-display {
+    flex: 1; height: 60px; background: #f0f4ff; border: 1px solid #ccd;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: #889; position: relative;
+  }
+  .waveform-display svg { width: 100%; height: 50px; }
+  .adsr-display {
+    flex: 1; height: 60px; background: #f0fff0; border: 1px solid #cdc;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: #898; position: relative;
+  }
+  .adsr-display svg { width: 100%; height: 50px; }
+
+  /* FX Chain view */
+  .fx-chain-header {
+    height: 36px; background: #fffff0; border-bottom: 1px solid #ddc;
+    display: flex; align-items: center; padding: 0 8px;
+    font-size: 11px; font-weight: bold; justify-content: space-between; flex-shrink: 0;
+  }
+  .fx-slot {
+    border-bottom: 1px solid #ddc; padding: 4px 8px;
+    background: #fff; transition: background 0.1s;
+    flex-shrink: 0;
+  }
+  .fx-slot:hover { background: #f8f8f0; }
+  .fx-slot-header {
+    display: flex; align-items: center; gap: 6px; height: 24px; cursor: pointer;
+  }
+  .fx-icon {
+    width: 24px; height: 24px; background: #e0e0e0; border: 1px solid #ccc;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: bold;
+  }
+  .fx-name { font-size: 10px; font-weight: bold; flex: 1; }
+  .fx-bypass {
+    width: 14px; height: 14px; border-radius: 50%; background: #4a4;
+    border: 1px solid #383; cursor: pointer;
+  }
+  .fx-bypass.off { background: #aaa; border-color: #888; }
+  .fx-wet { width: 44px; height: 14px; background: #f0f0f0; border: 1px solid #ccc; font-size: 8px; display: flex; align-items: center; justify-content: center; }
+  .fx-hero-params { display: flex; gap: 6px; padding: 4px 0 2px 30px; }
+  .fx-hero-knob { width: 32px; display: flex; flex-direction: column; align-items: center; }
+  .fx-hero-knob .k { width: 24px; height: 24px; border-radius: 50%; background: #eee; border: 1px solid #ccc; }
+  .fx-hero-knob .lbl { font-size: 7px; color: #888; }
+  .fx-master { height: 20px; display: flex; align-items: center; padding: 0 8px; gap: 6px; font-size: 8px; color: #666; border-top: 1px solid #ddc; flex-shrink: 0; }
+  .fx-master-bar { flex: 1; height: 8px; background: #e0e0e0; border: 1px solid #ccc; position: relative; overflow: hidden; }
+  .fx-master-fill { height: 100%; background: #88cc88; width: 70%; }
+
+  /* Export panel */
+  .export-header {
+    height: 36px; background: #fff8e0; border-bottom: 1px solid #ddc;
+    display: flex; align-items: center; padding: 0 8px; flex-shrink: 0;
+    font-size: 11px; font-weight: bold; justify-content: space-between;
+  }
+  .export-section { padding: 8px; border-bottom: 1px solid #eee; flex-shrink: 0; }
+  .export-row { display: flex; gap: 6px; margin-bottom: 6px; align-items: center; font-size: 9px; }
+  .export-select { padding: 2px 6px; background: #f0f0f0; border: 1px solid #ccc; font-size: 9px; font-family: monospace; }
+  .export-option-btn { padding: 2px 6px; background: #f0f0f0; border: 1px solid #ccc; font-size: 9px; cursor: pointer; font-family: monospace; }
+  .export-option-btn.active { background: #e9c46a; border-color: #c9a44a; }
+  .pad-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 4px; background: #eee; }
+  .pad-cell { height: 28px; background: #f8f8f8; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 7px; color: #888; cursor: pointer; }
+  .pad-cell:hover { background: #e8e8e8; }
+  .pad-cell.filled { background: #e0f0e0; border-color: #8ab; color: #446; }
+  .export-progress { margin: 4px 8px; }
+  .progress-bar { height: 16px; background: #e0e0e0; border: 1px solid #ccc; position: relative; overflow: hidden; }
+  .progress-fill { height: 100%; background: #e9c46a; width: 35%; }
+  .render-btn { margin: 8px; height: 40px; background: #e9c46a; border: 2px solid #c9a44a; font-size: 12px; font-weight: bold; font-family: monospace; cursor: pointer; }
+  .render-btn:hover { background: #d9b43a; }
+
+  /* COLUMN C */
+  #col-c {
+    width: 320px;
+    background: #e8ffe8;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: width 0.2s;
+  }
+  .tab-bar {
+    height: 32px; background: #d8f0d8; border-bottom: 1px solid #ccc;
+    display: flex; align-items: flex-end; padding: 0 4px; gap: 2px; flex-shrink: 0;
+  }
+  .tab-btn {
+    height: 28px; padding: 0 8px; background: #e8e8e8; border: 1px solid #ccc;
+    border-bottom: none; font-size: 9px; cursor: pointer; font-family: monospace;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { background: #d8d8d8; }
+  .tab-btn.active { background: #e8ffe8; border-bottom: 1px solid #e8ffe8; font-weight: bold; }
+  .tab-panel { display: none; flex: 1; flex-direction: column; overflow: hidden; }
+  .tab-panel.active { display: flex; }
+
+  /* Preset browser */
+  .preset-filter-row {
+    padding: 4px 6px; background: #f0fff0; border-bottom: 1px solid #ccc; flex-shrink: 0;
+  }
+  .filter-pills { display: flex; gap: 3px; flex-wrap: wrap; margin-bottom: 4px; }
+  .filter-pill {
+    padding: 2px 6px; background: #e0e0e0; border: 1px solid #bbb;
+    font-size: 8px; cursor: pointer; font-family: monospace;
+  }
+  .filter-pill:hover { background: #d0d0d0; }
+  .filter-pill.active { background: #4488cc; border-color: #2266aa; color: #fff; }
+  .mood-pills { display: flex; gap: 2px; flex-wrap: wrap; }
+  .mood-pill { padding: 1px 4px; font-size: 7px; cursor: pointer; border: 1px solid #bbb; background: #f0f0f0; }
+  .mood-pill:hover { background: #e0e0e0; }
+  .search-row { display: flex; gap: 4px; margin-bottom: 4px; }
+  .search-input { flex: 1; height: 22px; border: 1px solid #ccc; padding: 0 6px; font-size: 9px; font-family: monospace; background: #fff; }
+  .search-btn { padding: 0 6px; height: 22px; background: #f0f0f0; border: 1px solid #ccc; font-size: 8px; cursor: pointer; font-family: monospace; }
+  .preset-list { flex: 1; overflow-y: auto; }
+  .preset-card {
+    border-bottom: 1px solid #ddd; padding: 4px 6px; cursor: pointer; background: #fff;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .preset-card:hover { background: #f0fff0; }
+  .preset-card.active { background: #e0ffe0; border-left: 3px solid #44aa44; }
+  .preset-play { width: 20px; height: 20px; background: #f0f0f0; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+  .preset-play:hover { background: #e0e0e0; }
+  .preset-info { flex: 1; }
+  .preset-name { font-size: 10px; font-weight: bold; color: #222; }
+  .preset-meta { font-size: 8px; color: #888; }
+  .preset-actions { display: flex; gap: 2px; }
+  .preset-action { font-size: 10px; color: #aaa; cursor: pointer; }
+  .preset-action:hover { color: #555; }
+  .preset-browser-footer {
+    height: 32px; border-top: 1px solid #ccc; background: #f0fff0;
+    display: flex; gap: 4px; padding: 0 6px; align-items: center; flex-shrink: 0;
+  }
+  .footer-btn { flex: 1; height: 22px; background: #f0f0f0; border: 1px solid #ccc; font-size: 9px; cursor: pointer; font-family: monospace; }
+  .footer-btn:hover { background: #e0e0e0; }
+
+  /* Coupling inspector */
+  .coupling-inspector { flex: 1; overflow-y: auto; }
+  .coupling-header { padding: 4px 8px; background: #f0fff0; border-bottom: 1px solid #ccc; font-size: 10px; font-weight: bold; flex-shrink: 0; }
+  .coupling-route {
+    border-bottom: 1px solid #ddd; padding: 6px 8px; background: #fff;
+  }
+  .route-title { font-size: 10px; font-weight: bold; color: #333; margin-bottom: 4px; }
+  .route-params { display: flex; gap: 6px; align-items: center; margin-bottom: 3px; }
+  .route-select { padding: 2px 4px; background: #f0f0f0; border: 1px solid #ccc; font-size: 8px; font-family: monospace; }
+  .route-knob { width: 28px; height: 28px; border-radius: 50%; background: #eee; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 7px; }
+  .route-plain { font-size: 8px; color: #889; font-style: italic; }
+  .coupling-footer { height: 32px; border-top: 1px solid #ccc; background: #f0fff0; display: flex; gap: 4px; padding: 0 6px; align-items: center; flex-shrink: 0; }
+
+  /* Settings tab */
+  .settings-section { padding: 8px; border-bottom: 1px solid #ddd; }
+  .settings-title { font-size: 9px; font-weight: bold; color: #333; margin-bottom: 6px; text-transform: uppercase; }
+  .settings-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; font-size: 9px; color: #555; }
+  .settings-toggle { width: 28px; height: 14px; background: #4a4; border-radius: 7px; position: relative; cursor: pointer; }
+  .settings-toggle.off { background: #aaa; }
+  .settings-toggle-dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; position: absolute; top: 2px; right: 2px; }
+  .settings-toggle.off .settings-toggle-dot { right: auto; left: 2px; }
+
+  /* STATUS BAR */
+  #status-bar {
+    height: 28px;
+    background: #222;
+    border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .status-btn {
+    height: 20px; padding: 0 6px;
+    background: #333; border: 1px solid #555;
+    font-size: 9px; color: #ccc; cursor: pointer; font-family: monospace;
+  }
+  .status-btn:hover { background: #444; }
+  .status-btn.fire { border-color: #f44; color: #f88; }
+  .status-btn.xosend { border-color: #e9c; color: #e9c; }
+  .status-sep { width: 1px; height: 16px; background: #444; }
+  .status-info { font-size: 9px; color: #888; font-family: monospace; }
+  .status-info strong { color: #ccc; }
+  .status-slots { display: flex; gap: 3px; }
+  .status-slot-dot { width: 10px; height: 10px; border-radius: 50%; background: #444; border: 1px solid #555; }
+  .status-slot-dot.filled { background: #e9c46a; border-color: #c9a44a; }
+  .status-perf { height: 20px; padding: 0 6px; background: #333; border: 1px solid #666; font-size: 8px; color: #aaa; margin-left: auto; cursor: pointer; }
+
+  /* PLAYSURFACE */
+  #playsurface {
+    height: 0; overflow: hidden; background: #ede8ff;
+    border-top: 1px solid #ccc;
+    transition: height 0.2s;
+    flex-shrink: 0;
+    display: flex; flex-direction: column;
+  }
+  #playsurface.expanded { height: 220px; }
+  .ps-tab-bar {
+    height: 28px; background: #d8d0ff; border-bottom: 1px solid #ccc;
+    display: flex; align-items: flex-end; padding: 0 4px; gap: 2px; flex-shrink: 0;
+  }
+  .ps-tab-btn {
+    height: 24px; padding: 0 8px; background: #e8e8e8; border: 1px solid #ccc;
+    border-bottom: none; font-size: 9px; cursor: pointer; font-family: monospace;
+  }
+  .ps-tab-btn.active { background: #ede8ff; font-weight: bold; }
+  .ps-body {
+    flex: 1; display: flex; gap: 0; overflow: hidden;
+  }
+  .ps-surface {
+    flex: 1; background: #ede8ff; border-right: 1px solid #ccc;
+    display: flex; flex-direction: column; padding: 4px;
+  }
+  .ps-surface-label { font-size: 8px; color: #99a; margin-bottom: 4px; }
+  .ps-bank-row { display: flex; gap: 3px; margin-bottom: 4px; }
+  .ps-bank-btn {
+    padding: 2px 8px; background: #e0d8ff; border: 1px solid #bbb;
+    font-size: 8px; cursor: pointer; font-family: monospace;
+  }
+  .ps-bank-btn.active { background: #9b8ce8; border-color: #7b6cc8; color: #fff; }
+  .mpc-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 3px; flex: 1;
+  }
+  .mpc-pad {
+    background: #d8d0ff; border: 1px solid #bbb;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 8px; color: #556;
+    min-height: 28px;
+  }
+  .mpc-pad:hover { background: #c8c0ef; }
+  .mpc-pad.active { background: #9b8ce8; color: #fff; border-color: #7b6cc8; }
+  .ps-expr {
+    width: 180px; flex-shrink: 0; background: #e0d8ff; border-left: 1px solid #ccc;
+    padding: 4px; display: flex; flex-direction: column; gap: 4px;
+  }
+  .ps-expr-label { font-size: 8px; color: #99a; }
+  .ps-strip {
+    flex: 1; background: #d8d0ff; border: 1px solid #bbb;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: #889;
+  }
+  .ps-strips { display: flex; gap: 3px; flex: 1; }
+  .ps-strip-vert {
+    width: 28px; background: #d8d0ff; border: 1px solid #bbb;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    padding-bottom: 4px; font-size: 7px; color: #889; cursor: pointer;
+  }
+  .ps-strip-fill { width: 20px; background: #9b8ce8; border-radius: 2px; }
+
+  /* Engine browser overlay */
+  #engine-browser-overlay {
+    display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 100; align-items: center; justify-content: center;
+  }
+  #engine-browser-overlay.visible { display: flex; }
+  .engine-browser-modal {
+    width: 600px; max-height: 500px; background: #fff; border: 2px solid #888;
+    display: flex; flex-direction: column;
+  }
+  .eb-header {
+    height: 40px; background: #f0f0f0; border-bottom: 1px solid #ccc;
+    display: flex; align-items: center; padding: 0 12px; justify-content: space-between;
+    font-size: 12px; font-weight: bold; flex-shrink: 0;
+  }
+  .eb-close { font-size: 18px; cursor: pointer; color: #666; }
+  .eb-close:hover { color: #000; }
+  .eb-filters {
+    padding: 8px 12px; background: #f8f8f8; border-bottom: 1px solid #ccc; flex-shrink: 0;
+  }
+  .eb-search { width: 100%; height: 26px; border: 1px solid #ccc; padding: 0 8px; font-size: 10px; font-family: monospace; margin-bottom: 6px; }
+  .eb-cats { display: flex; gap: 4px; flex-wrap: wrap; }
+  .eb-cat { padding: 2px 8px; background: #e0e0e0; border: 1px solid #bbb; font-size: 9px; cursor: pointer; font-family: monospace; }
+  .eb-cat:hover { background: #d0d0d0; }
+  .eb-cat.active { background: #4488cc; border-color: #2266aa; color: #fff; }
+  .eb-grid { flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 8px; }
+  .eb-card {
+    border: 1px solid #ccc; background: #f8f8f8; padding: 8px;
+    cursor: pointer; display: flex; flex-direction: column; gap: 2px;
+  }
+  .eb-card:hover { background: #e8e8e8; border-color: #888; }
+  .eb-card-icon { font-size: 18px; }
+  .eb-card-name { font-size: 10px; font-weight: bold; }
+  .eb-card-meta { font-size: 8px; color: #888; }
+  .eb-card-badge { font-size: 7px; padding: 1px 4px; background: #e9c46a; border: 1px solid #c9a44a; align-self: flex-start; }
+
+  /* Coupling inline popover */
+  #coupling-popover {
+    display: none; position: absolute; background: #fff; border: 1px solid #888;
+    padding: 8px; z-index: 50; width: 200px; box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  }
+  #coupling-popover.visible { display: block; }
+  .popover-title { font-size: 10px; font-weight: bold; margin-bottom: 6px; }
+  .popover-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; font-size: 9px; }
+  .popover-knob { width: 28px; height: 28px; border-radius: 50%; background: #eee; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 7px; }
+  .popover-close { float: right; cursor: pointer; color: #666; font-size: 12px; }
+
+  /* Dimension labels */
+  .dim-tag {
+    position: absolute; font-size: 7px; color: #888; background: rgba(255,255,255,0.8);
+    padding: 1px 2px; pointer-events: none; z-index: 10;
+  }
+
+  /* Overflow warning */
+  .overflow-warn { background: #ffcccc; border: 1px solid #f88; font-size: 8px; color: #c00; padding: 2px 4px; }
+
+  /* Verification footer */
+  #verify-footer {
+    background: #222; color: #ccc; padding: 8px 12px; font-size: 9px;
+    font-family: monospace; margin-top: 12px; display: flex; gap: 20px; flex-wrap: wrap;
+  }
+  .verify-item { color: #8cf; }
+  .verify-item.warn { color: #fc8; }
+  .verify-item.ok { color: #8f8; }
+
+  /* Single engine mode */
+  #col-a.single-engine { width: 80px; }
+  #col-b.single-engine-expanded { }
+
+  /* Responsive sizes */
+  .size-label {
+    font-size: 8px; color: #88a; padding: 2px 6px;
+    background: rgba(0,0,0,0.05); border-bottom: 1px solid #ccc; text-align: right; flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="test-controls">
+  <span class="test-label">WINDOW SIZE:</span>
+  <button onclick="setSize(1100,700)" id="btn-1100" class="active">[1100×700] Default</button>
+  <button onclick="setSize(960,600)" id="btn-960">[960×600] Min</button>
+  <button onclick="setSize(800,480)" id="btn-800">[800×480] MPC</button>
+  <span class="test-label" style="margin-left:12px">MODES:</span>
+  <button onclick="togglePlaySurface()" id="btn-ps">[Toggle PlaySurface]</button>
+  <button onclick="toggleSingleEngine()" id="btn-se">[Toggle Single Engine Mode]</button>
+  <button onclick="toggleCinematic()" id="btn-cin">[Toggle Cinematic Mode]</button>
+  <span class="test-label" style="margin-left:12px">VIEWS:</span>
+  <button onclick="setColBView('engine-detail')">[Engine Detail]</button>
+  <button onclick="setColBView('fx-chain')">[FX Chain]</button>
+  <button onclick="setColBView('export-panel')">[Export Panel]</button>
+</div>
+
+<div id="xolokun-shell" style="display:flex; flex-direction:column;">
+
+  <!-- HEADER 52pt -->
+  <div id="header">
+    <div class="header-logo">XO<br>OX</div>
+    <button class="header-btn" onclick="showEngineBrowser()">≡ ENGINES</button>
+
+    <div class="header-preset-nav">
+      <span style="font-size:10px; color:#999">◄</span>
+      &nbsp;
+      <span style="font-size:10px; font-weight:bold">Coral Cathedral</span>
+      &nbsp;
+      <span style="font-size:10px; color:#999">►</span>
+    </div>
+
+    <button class="header-btn" style="font-size:12px">♡</button>
+    <button class="header-btn" style="font-size:9px">DNA</button>
+    <div class="header-ab" onclick="toggleAB(this)">
+      <span id="ab-a" style="font-weight:bold; color:#333">A</span>
+      <span style="color:#ccc">|</span>
+      <span id="ab-b" style="color:#888">B</span>
+    </div>
+    <button class="header-btn" style="font-size:12px" title="Undo (Cmd-Z)">↩</button>
+
+    <!-- Macro knobs -->
+    <div style="display:flex; gap:4px; margin-left:8px;">
+      <div class="header-macro"><div class="macro-knob">M1</div><div class="macro-label">CHAR</div></div>
+      <div class="header-macro"><div class="macro-knob">M2</div><div class="macro-label">MOVE</div></div>
+      <div class="header-macro"><div class="macro-knob">M3</div><div class="macro-label">COUP</div></div>
+      <div class="header-macro"><div class="macro-knob">M4</div><div class="macro-label">SPACE</div></div>
+    </div>
+
+    <div class="header-indicators">
+      <div class="indicator-pill">CPU 4.2%</div>
+      <div class="indicator-pill"><span style="color:#4a4">●</span> MIDI</div>
+      <div class="indicator-pill gold">EXPORT</div>
+      <div class="indicator-pill">⚙</div>
+    </div>
+    <div class="dim-tag" style="bottom:1px; right:4px; position:relative; font-size:7px; color:#bbb;">HEADER 1100×52pt</div>
+  </div>
+
+  <!-- BODY ROW -->
+  <div id="body-row" style="display:flex; flex:1; min-height:0;">
+
+    <!-- COLUMN A: 260pt Engine Rack -->
+    <div id="col-a">
+      <div class="col-label">
+        <span>COL A — ENGINE RACK</span>
+        <span id="col-a-dim">260×620pt</span>
+      </div>
+
+      <!-- Slot 1 (active) -->
+      <div class="slot-tile active" id="slot-1" onclick="selectSlot(1)">
+        <div class="slot-header">
+          <span class="slot-num">SLOT 1</span>
+          <div class="slot-power" title="Power"></div>
+        </div>
+        <div class="slot-name-row">
+          <span>OBRIX</span>
+          <span class="slot-creature">🪸</span>
+        </div>
+        <div class="slot-macros">
+          <div class="mini-macro" title="CHARACTER">CH</div>
+          <div class="mini-macro" title="MOVEMENT">MV</div>
+          <div class="mini-macro" title="COUPLING">CP</div>
+          <div class="mini-macro" title="SPACE">SP</div>
+        </div>
+        <div class="slot-waveform">
+          <svg class="waveform-svg" viewBox="0 0 200 16" preserveAspectRatio="none">
+            <polyline points="0,8 10,4 20,12 30,2 40,14 50,8 60,3 70,13 80,6 90,10 100,4 110,12 120,7 130,9 140,5 150,11 160,8 170,4 180,12 190,8 200,8" fill="none" stroke="#4488cc" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="slot-bottom-row">
+          <div class="macro-dots">
+            <div class="macro-dot"></div><div class="macro-dot"></div>
+            <div class="macro-dot"></div><div class="macro-dot"></div>
+          </div>
+          <div class="fx-indicator" onclick="event.stopPropagation(); showFXChain()">FX ●●○</div>
+        </div>
+        <div class="slot-cpu"><div class="slot-cpu-bar" style="width:21%"></div></div>
+      </div>
+      <div class="dim-tag" style="position:relative; text-align:right; color:#aab; padding:1px 4px; font-size:7px; background:rgba(200,220,255,0.5)">Slot tile ~145pt expanded</div>
+
+      <div class="coupling-dot">···</div>
+
+      <!-- Slot 2 -->
+      <div class="slot-tile" id="slot-2" onclick="selectSlot(2)">
+        <div class="slot-header">
+          <span class="slot-num">SLOT 2</span>
+          <div class="slot-power"></div>
+        </div>
+        <div class="slot-name-row">
+          <span>OPERA</span>
+          <span class="slot-creature">🎭</span>
+        </div>
+        <div class="slot-waveform">
+          <svg class="waveform-svg" viewBox="0 0 200 16" preserveAspectRatio="none">
+            <path d="M0,8 Q25,2 50,8 Q75,14 100,8 Q125,2 150,8 Q175,14 200,8" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="slot-bottom-row">
+          <div class="macro-dots">
+            <div class="macro-dot"></div><div class="macro-dot"></div>
+            <div class="macro-dot" style="background:#ddd; border-color:#ccc"></div>
+            <div class="macro-dot" style="background:#ddd; border-color:#ccc"></div>
+          </div>
+          <div class="fx-indicator" onclick="event.stopPropagation(); showFXChain()">FX ●○○</div>
+        </div>
+        <div class="slot-cpu"><div class="slot-cpu-bar" style="width:14%"></div></div>
+      </div>
+
+      <div class="coupling-dot">···</div>
+
+      <!-- Slot 3 -->
+      <div class="slot-tile" id="slot-3" onclick="selectSlot(3)">
+        <div class="slot-header">
+          <span class="slot-num">SLOT 3</span>
+          <div class="slot-power"></div>
+        </div>
+        <div class="slot-name-row">
+          <span>OXYTOCIN</span>
+          <span class="slot-creature">💜</span>
+        </div>
+        <div class="slot-waveform">
+          <svg class="waveform-svg" viewBox="0 0 200 16" preserveAspectRatio="none">
+            <polyline points="0,8 20,8 25,3 35,13 45,3 55,13 60,8 80,8 90,4 110,12 120,8 140,8 150,5 165,11 175,8 200,8" fill="none" stroke="#9b5de5" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="slot-bottom-row">
+          <div class="macro-dots">
+            <div class="macro-dot"></div><div class="macro-dot"></div>
+            <div class="macro-dot"></div>
+            <div class="macro-dot" style="background:#ddd; border-color:#ccc"></div>
+          </div>
+          <div class="fx-indicator" onclick="event.stopPropagation(); showFXChain()">FX ●●●</div>
+        </div>
+        <div class="slot-cpu"><div class="slot-cpu-bar" style="width:9%"></div></div>
+      </div>
+
+      <div class="coupling-dot">···</div>
+
+      <!-- Slot 4 (empty) -->
+      <div class="slot-tile empty" id="slot-4" onclick="showEngineBrowser()">
+        <div class="slot-header">
+          <span class="slot-num">SLOT 4</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; padding:8px 0;">
+          <div class="slot-add-btn">+</div>
+          <div class="slot-empty-text">Add Engine<br><span style="font-size:7px; color:#bbb">44pt touch target</span></div>
+        </div>
+      </div>
+
+      <!-- Coupling mini-graph -->
+      <div id="coupling-graph">
+        <div class="coupling-graph-label">COUPLING MINI-GRAPH (260×80pt)</div>
+        <div class="coupling-graph-inner">
+          <!-- Nodes -->
+          <div class="coupling-node" style="left:20px; top:8px;" onclick="showCouplingPopover(event)">1</div>
+          <div class="coupling-node" style="right:20px; top:8px;" onclick="showCouplingPopover(event)">2</div>
+          <div class="coupling-node" style="left:20px; bottom:8px;">3</div>
+          <div class="coupling-node" style="right:20px; bottom:8px; background:#eee; border-style:dashed; color:#bbb;">4</div>
+          <!-- Arc lines via SVG -->
+          <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
+            <line x1="40" y1="18" x2="220" y2="18" stroke="#e9c46a" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <line x1="40" y1="18" x2="40" y2="42" stroke="#88aacc" stroke-width="1" stroke-dasharray="2,3"/>
+          </svg>
+          <div class="coupling-arc-label" style="left:90px; top:4px;">Entangle 0.72</div>
+          <div class="coupling-arc-label" style="left:4px; top:28px; font-size:6px;">Gravity</div>
+        </div>
+      </div>
+
+      <!-- Engine add button -->
+      <div style="padding:6px; text-align:center; flex-shrink:0;">
+        <button onclick="showEngineBrowser()" style="width:100%; height:28px; background:#f0f0f0; border:1px dashed #bbb; font-size:9px; cursor:pointer; font-family:monospace;">+ ENGINE BROWSER</button>
+      </div>
+    </div><!-- /col-a -->
+
+    <!-- COLUMN B: 520pt Main Canvas -->
+    <div id="col-b">
+      <div class="col-label">
+        <span>COL B — MAIN CANVAS</span>
+        <span id="col-b-dim">520×620pt (contextual)</span>
+      </div>
+
+      <!-- ENGINE DETAIL VIEW (default) -->
+      <div class="col-b-view active" id="view-engine-detail" style="height:100%;">
+        <!-- Sticky top: signal flow + macros + section nav -->
+        <div class="engine-detail-sticky-top">
+          <!-- Engine nameplate -->
+          <div class="engine-nameplate">
+            <div class="engine-accent-dot" style="background:#1e8b7e;"></div>
+            <span>OBRIX</span>
+            <span style="font-size:9px; color:#888;">— Reef Jade · Modular · 81 params</span>
+            <span style="margin-left:auto; font-size:9px; cursor:pointer; color:#888;" title="Randomize">⚄</span>
+          </div>
+          <!-- Signal flow strip 520×32pt -->
+          <div class="signal-flow-strip">
+            <span style="font-size:8px; color:#aaa; margin-right:4px;">SIGNAL:</span>
+            <div class="signal-block active" onclick="scrollToSection('osc')">SRC1</div>
+            <span class="signal-arrow">→</span>
+            <div class="signal-block" onclick="scrollToSection('osc')">SRC2</div>
+            <span class="signal-arrow">→</span>
+            <div class="signal-block" onclick="scrollToSection('filter')">FILTER</div>
+            <span class="signal-arrow">→</span>
+            <div class="signal-block" onclick="scrollToSection('mod')">SHAPER</div>
+            <span class="signal-arrow">→</span>
+            <div class="signal-block" onclick="showFXChain()">FX</div>
+            <span class="signal-arrow">→</span>
+            <div class="signal-block">OUT</div>
+            <span style="font-size:7px; color:#bbb; margin-left:auto;">520×32pt</span>
+          </div>
+          <!-- 4 Macro knobs -->
+          <div class="macro-row">
+            <div class="macro-knob-lg">
+              <div class="knob-circle">56</div>
+              <div class="knob-label">CHARACTER</div>
+            </div>
+            <div class="macro-knob-lg">
+              <div class="knob-circle">56</div>
+              <div class="knob-label">MOVEMENT</div>
+            </div>
+            <div class="macro-knob-lg">
+              <div class="knob-circle">56</div>
+              <div class="knob-label">COUPLING</div>
+            </div>
+            <div class="macro-knob-lg">
+              <div class="knob-circle">56</div>
+              <div class="knob-label">SPACE</div>
+            </div>
+            <div class="section-nav" style="margin-left:auto; height:auto; flex-direction:column; align-items:flex-start; gap:2px;">
+              <div style="font-size:7px; color:#aaa;">JUMP TO:</div>
+              <div style="display:flex; gap:3px;">
+                <div class="section-nav-btn active" onclick="scrollToSection('osc')">OSC</div>
+                <div class="section-nav-btn" onclick="scrollToSection('filter')">FILT</div>
+                <div class="section-nav-btn" onclick="scrollToSection('mod')">MOD</div>
+                <div class="section-nav-btn" onclick="showFXChain()">FX</div>
+                <div class="section-nav-btn">★</div>
+              </div>
+            </div>
+          </div>
+          <div style="font-size:7px; color:#bbb; text-align:right; padding:1px 0;">STICKY TOP ~88pt</div>
+        </div>
+
+        <!-- Scrollable param sections -->
+        <div class="engine-detail-scroll" id="param-scroll">
+
+          <!-- OSC Section -->
+          <div class="collapsible-section" id="section-osc">
+            <div class="section-header" onclick="toggleSection('osc-content')">
+              <span class="section-toggle" id="toggle-osc-content">▸</span>
+              <div class="section-dot"></div>
+              <span>OSCILLATOR / SOURCE</span>
+              <span style="font-size:8px; color:#aaa; margin-left:auto;">~60pt collapsed · click to expand</span>
+            </div>
+            <div class="section-content" id="osc-content">
+              <div class="param-knob"><div class="k">SRC1</div><div class="lbl">Src 1 Type</div></div>
+              <div class="param-knob"><div class="k">SRC2</div><div class="lbl">Src 2 Type</div></div>
+              <div class="param-knob"><div class="k">MIX</div><div class="lbl">Osc Mix</div></div>
+              <div class="param-knob"><div class="k">TUNE</div><div class="lbl">Tune</div></div>
+              <div class="param-knob"><div class="k">OCT</div><div class="lbl">Octave</div></div>
+              <div class="param-knob"><div class="k">FINE</div><div class="lbl">Fine</div></div>
+              <div class="param-knob"><div class="k">SEMI</div><div class="lbl">Semi</div></div>
+              <div class="param-knob"><div class="k">PHASE</div><div class="lbl">Phase</div></div>
+            </div>
+          </div>
+
+          <!-- FILTER Section -->
+          <div class="collapsible-section" id="section-filter">
+            <div class="section-header" onclick="toggleSection('filter-content')">
+              <span class="section-toggle" id="toggle-filter-content">▸</span>
+              <div class="section-dot" style="background:#4488cc;"></div>
+              <span>FILTER</span>
+              <span style="font-size:8px; color:#aaa; margin-left:auto;">~60pt collapsed</span>
+            </div>
+            <div class="section-content" id="filter-content">
+              <div class="param-knob"><div class="k">CUTOFF</div><div class="lbl">Cutoff</div></div>
+              <div class="param-knob"><div class="k">RES</div><div class="lbl">Resonance</div></div>
+              <div class="param-knob"><div class="k">ENV</div><div class="lbl">Env Amt</div></div>
+              <div class="param-knob"><div class="k">DRIVE</div><div class="lbl">Drive</div></div>
+              <div class="param-knob"><div class="k">TYPE</div><div class="lbl">Type</div></div>
+              <div class="param-knob"><div class="k">KEY</div><div class="lbl">Key Track</div></div>
+            </div>
+          </div>
+
+          <!-- MOD Section -->
+          <div class="collapsible-section" id="section-mod">
+            <div class="section-header" onclick="toggleSection('mod-content')">
+              <span class="section-toggle" id="toggle-mod-content">▸</span>
+              <div class="section-dot" style="background:#cc44aa;"></div>
+              <span>MODULATION</span>
+              <span style="font-size:8px; color:#aaa; margin-left:auto;">~60pt collapsed</span>
+            </div>
+            <div class="section-content" id="mod-content">
+              <div class="param-knob"><div class="k">LFO1</div><div class="lbl">LFO1 Rate</div></div>
+              <div class="param-knob"><div class="k">L1D</div><div class="lbl">LFO1 Depth</div></div>
+              <div class="param-knob"><div class="k">LFO2</div><div class="lbl">LFO2 Rate</div></div>
+              <div class="param-knob"><div class="k">L2D</div><div class="lbl">LFO2 Depth</div></div>
+              <div class="param-knob"><div class="k">ENV1</div><div class="lbl">Env1 Atk</div></div>
+              <div class="param-knob"><div class="k">E1D</div><div class="lbl">Env1 Dep</div></div>
+            </div>
+          </div>
+
+          <!-- SPECIAL Section (engine-specific) -->
+          <div class="collapsible-section" id="section-special">
+            <div class="section-header" onclick="toggleSection('special-content')">
+              <span class="section-toggle" id="toggle-special-content">▸</span>
+              <div class="section-dot" style="background:#1e8b7e;"></div>
+              <span>SPECIAL — BRICK ECOLOGY</span>
+              <span style="font-size:8px; color:#aaa; margin-left:auto;">engine-specific · variable</span>
+            </div>
+            <div class="section-content" id="special-content">
+              <div class="param-knob"><div class="k">TEMP</div><div class="lbl">Env Temp</div></div>
+              <div class="param-knob"><div class="k">PRES</div><div class="lbl">Pressure</div></div>
+              <div class="param-knob"><div class="k">COMP</div><div class="lbl">Compete</div></div>
+              <div class="param-knob"><div class="k">SYMB</div><div class="lbl">Symbiosis</div></div>
+              <div class="param-knob"><div class="k">RSDT</div><div class="lbl">Resident</div></div>
+              <div class="param-knob"><div class="k">RSTR</div><div class="lbl">Res Str</div></div>
+              <div class="param-knob"><div class="k">HARM</div><div class="lbl">HarmField</div></div>
+              <div class="param-knob"><div class="k">FPLY</div><div class="lbl">FieldPol</div></div>
+            </div>
+          </div>
+
+          <!-- Show All -->
+          <div style="padding:6px; text-align:center;">
+            <button style="padding:3px 16px; background:#f0f0f0; border:1px solid #ccc; font-size:9px; cursor:pointer; font-family:monospace;">Show All Parameters (81 total)</button>
+          </div>
+        </div>
+
+        <!-- Sticky bottom: waveform + ADSR 80pt -->
+        <div class="engine-detail-sticky-bottom">
+          <div class="waveform-display">
+            <svg viewBox="0 0 240 40" preserveAspectRatio="none">
+              <polyline points="0,20 15,10 25,30 35,5 50,35 65,20 80,12 100,28 115,15 130,25 145,10 165,30 180,20 200,18 220,22 240,20" fill="none" stroke="#4488cc" stroke-width="1.5"/>
+            </svg>
+            <span style="position:absolute; bottom:2px; left:4px; font-size:7px; color:#bbb;">WAVEFORM 240×40pt</span>
+          </div>
+          <div class="adsr-display">
+            <svg viewBox="0 0 240 40" preserveAspectRatio="none">
+              <polyline points="0,38 20,5 60,20 120,20 180,35 240,38" fill="none" stroke="#44aa44" stroke-width="1.5"/>
+              <text x="5" y="38" font-size="6" fill="#888">A</text>
+              <text x="35" y="38" font-size="6" fill="#888">D</text>
+              <text x="85" y="38" font-size="6" fill="#888">S</text>
+              <text x="190" y="38" font-size="6" fill="#888">R</text>
+            </svg>
+            <span style="position:absolute; bottom:2px; left:4px; font-size:7px; color:#bbb;">ADSR 240×40pt</span>
+          </div>
+        </div>
+        <div style="font-size:7px; color:#bbb; text-align:right; padding:1px 4px; background:#fff8e0; border-top:1px solid #eee;">STICKY BOTTOM ~80pt</div>
+      </div><!-- /engine-detail -->
+
+      <!-- FX CHAIN VIEW -->
+      <div class="col-b-view" id="view-fx-chain" style="height:100%;">
+        <div class="fx-chain-header">
+          <span>OBRIX — FX CHAIN</span>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <button style="padding:2px 8px; background:#f0f0f0; border:1px solid #ccc; font-size:9px; cursor:pointer; font-family:monospace;">Serial ⟷ Parallel</button>
+            <span style="font-size:8px; color:#aaa;">6 slots · 520×464pt total</span>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto;">
+          <!-- SAT slot -->
+          <div class="fx-slot">
+            <div class="fx-slot-header" onclick="toggleFXSlot(this)">
+              <div class="fx-icon">SAT</div>
+              <span class="fx-name">Saturation</span>
+              <span style="font-size:8px; color:#aaa; margin-right:6px;">drag ⠿</span>
+              <div class="fx-bypass"></div>
+              <div class="fx-wet">wet 80%</div>
+            </div>
+            <div class="fx-hero-params">
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Drive</div></div>
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Tone</div></div>
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Mix</div></div>
+            </div>
+          </div>
+          <!-- DLY slot -->
+          <div class="fx-slot">
+            <div class="fx-slot-header" onclick="toggleFXSlot(this)">
+              <div class="fx-icon">DLY</div>
+              <span class="fx-name">Delay Time</span>
+              <span style="font-size:8px; color:#aaa; margin-right:6px;">drag ⠿</span>
+              <div class="fx-bypass"></div>
+              <div class="fx-wet">wet 35%</div>
+            </div>
+            <div class="fx-hero-params">
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Time</div></div>
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Feedback</div></div>
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Mix</div></div>
+            </div>
+          </div>
+          <!-- REV slot -->
+          <div class="fx-slot">
+            <div class="fx-slot-header" onclick="toggleFXSlot(this)">
+              <div class="fx-icon">REV</div>
+              <span class="fx-name">Reverb Hall</span>
+              <span style="font-size:8px; color:#aaa; margin-right:6px;">drag ⠿</span>
+              <div class="fx-bypass"></div>
+              <div class="fx-wet">wet 55%</div>
+            </div>
+            <div class="fx-hero-params">
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Size</div></div>
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Decay</div></div>
+              <div class="fx-hero-knob"><div class="k"></div><div class="lbl">Damp</div></div>
+            </div>
+          </div>
+          <!-- MOD slot -->
+          <div class="fx-slot">
+            <div class="fx-slot-header" onclick="toggleFXSlot(this)">
+              <div class="fx-icon">MOD</div>
+              <span class="fx-name">Chorus</span>
+              <span style="font-size:8px; color:#aaa; margin-right:6px;">drag ⠿</span>
+              <div class="fx-bypass off"></div>
+              <div class="fx-wet">wet 0%</div>
+            </div>
+          </div>
+          <!-- CMP slot -->
+          <div class="fx-slot">
+            <div class="fx-slot-header" onclick="toggleFXSlot(this)">
+              <div class="fx-icon">CMP</div>
+              <span class="fx-name">Compressor</span>
+              <span style="font-size:8px; color:#aaa; margin-right:6px;">drag ⠿</span>
+              <div class="fx-bypass off"></div>
+              <div class="fx-wet">wet 0%</div>
+            </div>
+          </div>
+          <!-- SEQ slot -->
+          <div class="fx-slot">
+            <div class="fx-slot-header" onclick="toggleFXSlot(this)">
+              <div class="fx-icon">SEQ</div>
+              <span class="fx-name">Sequencer FX</span>
+              <span style="font-size:8px; color:#aaa; margin-right:6px;">drag ⠿</span>
+              <div class="fx-bypass off"></div>
+              <div class="fx-wet">wet 0%</div>
+            </div>
+          </div>
+        </div>
+        <div class="fx-master">
+          <span>MASTER OUT</span>
+          <div class="fx-master-bar"><div class="fx-master-fill"></div></div>
+          <span>-3.2dB</span>
+          <span style="margin-left:auto; font-size:7px; color:#bbb;">6×68 + 36 + 20 = 464pt</span>
+        </div>
+      </div><!-- /fx-chain -->
+
+      <!-- EXPORT PANEL VIEW -->
+      <div class="col-b-view" id="view-export-panel" style="height:100%;">
+        <div class="export-header">
+          <span>EXPORT PANEL — XPN Pack Builder</span>
+          <span style="font-size:8px; color:#aaa;">(persistent, survives focus loss)</span>
+        </div>
+        <div style="flex:1; overflow-y:auto;">
+          <div class="export-section">
+            <div class="export-row">
+              <span>Select Presets:</span>
+              <select class="export-select"><option>Coral Cathedral</option><option>All OBRIX</option><option>Custom...</option></select>
+              <span>Engines:</span>
+              <select class="export-select"><option>OBRIX</option><option>All Active</option></select>
+            </div>
+            <div class="export-row">
+              <span>Velocity Layers:</span>
+              <button class="export-option-btn">1</button>
+              <button class="export-option-btn active">4</button>
+              <button class="export-option-btn">8</button>
+              <button class="export-option-btn">16</button>
+              <span style="margin-left:8px">Bit:</span>
+              <button class="export-option-btn">16</button>
+              <button class="export-option-btn active">24</button>
+              <span style="margin-left:8px">Rate:</span>
+              <button class="export-option-btn active">44.1</button>
+              <button class="export-option-btn">48</button>
+              <button class="export-option-btn">96</button>
+            </div>
+            <div class="export-row">
+              <label><input type="checkbox"> Entangled Mode: Couple engines during render</label>
+            </div>
+          </div>
+          <div class="export-section">
+            <div style="font-size:9px; font-weight:bold; margin-bottom:4px;">PAD ASSIGNMENT GRID — drag presets to pads A01–D16 (~200pt)</div>
+            <div class="pad-grid">
+              <div class="pad-cell filled">A01<br>Coral Cath</div>
+              <div class="pad-cell filled">A02<br>Reef Pulse</div>
+              <div class="pad-cell">A03</div>
+              <div class="pad-cell">A04</div>
+              <div class="pad-cell">B01</div>
+              <div class="pad-cell">B02</div>
+              <div class="pad-cell">B03</div>
+              <div class="pad-cell">B04</div>
+              <div class="pad-cell">C01</div>
+              <div class="pad-cell">C02</div>
+              <div class="pad-cell">C03</div>
+              <div class="pad-cell">C04</div>
+              <div class="pad-cell">D01</div>
+              <div class="pad-cell">D02</div>
+              <div class="pad-cell">D03</div>
+              <div class="pad-cell">D04</div>
+            </div>
+          </div>
+          <div class="export-section">
+            <div class="export-row">
+              <span>Output Path: ~/Desktop/XPN/</span>
+              <button class="export-option-btn">Browse...</button>
+            </div>
+            <div class="export-progress">
+              <div style="font-size:9px; margin-bottom:3px;">RENDER PROGRESS — ONSET Kick · Layer 4/8 · 00:23 elapsed</div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+            <div style="font-size:8px; color:#888; padding:4px 0;">Render History: last 10 exports with re-render ↻</div>
+          </div>
+        </div>
+        <button class="render-btn" style="width:calc(100% - 16px)">▶ START RENDER</button>
+      </div><!-- /export-panel -->
+
+    </div><!-- /col-b -->
+
+    <!-- COLUMN C: 320pt Browser/Inspector -->
+    <div id="col-c">
+      <div class="col-label">
+        <span>COL C — BROWSER/INSPECTOR</span>
+        <span>320×620pt</span>
+      </div>
+
+      <!-- Tab bar -->
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('preset', this)">PRESET</button>
+        <button class="tab-btn" onclick="switchTab('couple', this)">COUPLE</button>
+        <button class="tab-btn" onclick="switchTab('fx', this)">FX</button>
+        <button class="tab-btn" onclick="switchTab('export', this)">EXPORT</button>
+        <button class="tab-btn" onclick="switchTab('settings', this)">⚙</button>
+      </div>
+
+      <!-- PRESET tab -->
+      <div class="tab-panel active" id="tab-preset">
+        <div class="preset-filter-row">
+          <div class="filter-pills">
+            <div class="filter-pill active" onclick="togglePill(this)">ALL</div>
+            <div class="filter-pill" onclick="togglePill(this)">DRUMS</div>
+            <div class="filter-pill" onclick="togglePill(this)">BASS</div>
+            <div class="filter-pill" onclick="togglePill(this)">PADS</div>
+            <div class="filter-pill" onclick="togglePill(this)">LEADS</div>
+            <div class="filter-pill" onclick="togglePill(this)">TEXTURES</div>
+            <div class="filter-pill" onclick="togglePill(this)">KEYS</div>
+            <div class="filter-pill" onclick="togglePill(this)">FX</div>
+          </div>
+          <div class="search-row">
+            <input class="search-input" type="text" placeholder="Search presets...">
+            <button class="search-btn">🔍 DNA</button>
+            <button class="search-btn">♻ Similar</button>
+          </div>
+          <div class="mood-pills">
+            <div class="mood-pill" style="background:#e8f0ff;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Foundation</div>
+            <div class="mood-pill" style="background:#e8ffe8;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Atmosphere</div>
+            <div class="mood-pill" style="background:#fff0e8;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Entangled</div>
+            <div class="mood-pill" style="background:#f8e8ff;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Prism</div>
+            <div class="mood-pill" style="background:#ffe8e8;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Flux</div>
+            <div class="mood-pill" style="background:#e8f8ff;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Aether</div>
+            <div class="mood-pill" style="background:#fff8e0;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Family</div>
+            <div class="mood-pill" style="background:#e0e8ff;" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">Submerged</div>
+            <div class="mood-pill" onclick="this.style.fontWeight=this.style.fontWeight=='bold'?'':'bold'">+7 more</div>
+          </div>
+        </div>
+        <div class="preset-list">
+          <div class="preset-card active">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Coral Cathedral</div>
+              <div class="preset-meta">OBRIX · Foundation · DNA: 8A 3F C2 11 7E 44</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Aria Infinita</div>
+              <div class="preset-meta">OPERA · Atmosphere · DNA: 2B 8E 44 C1 3A 77</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Reef Pulse</div>
+              <div class="preset-meta">OBRIX · Kinetic · DNA: 9C 1A 88 4D 2F 66</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Bond Resonance</div>
+              <div class="preset-meta">OXYTOCIN · Luminous · DNA: 5F 3B 99 AA 11 88</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Bioluminescent Dawn</div>
+              <div class="preset-meta">OXBOW · Deep · DNA: 1A 6B 5A 3C 22 9E</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">City at 3AM</div>
+              <div class="preset-meta">OFFERING · Flux · DNA: 7D 2E 11 5F 88 33</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Kelp Knot Dream</div>
+              <div class="preset-meta">ORBWEAVE · Entangled · DNA: 4A 8C 77 2B 9F 11</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Trench Walker</div>
+              <div class="preset-meta">OCEANDEEP · Submerged · DNA: 3B 1A 5E 88 44 CC</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Eucalyptus Memory</div>
+              <div class="preset-meta">OPAL · Organic · DNA: 6E 3C AA 11 77 2F</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+          <div class="preset-card">
+            <div class="preset-play">▶</div>
+            <div class="preset-info">
+              <div class="preset-name">Phantom Protocol</div>
+              <div class="preset-meta">ORACLE · Crystalline · DNA: 88 5A 2B 4C 11 FF</div>
+            </div>
+            <div class="preset-actions"><span class="preset-action">★</span><span class="preset-action">♡</span></div>
+          </div>
+        </div>
+        <div class="preset-browser-footer">
+          <button class="footer-btn">SAVE</button>
+          <button class="footer-btn">SAVE AS...</button>
+        </div>
+      </div>
+
+      <!-- COUPLE tab -->
+      <div class="tab-panel" id="tab-couple">
+        <div class="coupling-header">COUPLING ROUTES (C2)</div>
+        <div class="coupling-inspector">
+          <div class="coupling-route">
+            <div class="route-title">SLOT 1 → SLOT 2</div>
+            <div class="route-params">
+              <select class="route-select"><option>Entangle</option><option>Gravitational</option><option>Phase</option><option>More types...</option></select>
+              <div class="route-knob" title="Amount">Amt</div>
+              <div class="route-knob" title="Depth">Dep</div>
+              <span style="font-size:9px; color:#555;">0.72</span>
+            </div>
+            <div class="route-plain">"Engines breathe together"</div>
+          </div>
+          <div class="coupling-route">
+            <div class="route-title">SLOT 1 → SLOT 3</div>
+            <div class="route-params">
+              <select class="route-select"><option>Gravitational</option><option>Entangle</option><option>Phase</option></select>
+              <div class="route-knob" title="Amount">Amt</div>
+              <div class="route-knob" title="Depth">Dep</div>
+              <span style="font-size:9px; color:#555;">0.45</span>
+            </div>
+            <div class="route-plain">"One follows the other's pitch"</div>
+          </div>
+          <div class="coupling-route" style="background:#f8f8f8; border:1px dashed #ddd; margin:6px 8px; display:flex; align-items:center; justify-content:center; height:40px; cursor:pointer;" onclick="this.textContent='+ Click to define route'">
+            <span style="font-size:9px; color:#aaa;">+ Add Route</span>
+          </div>
+          <div style="padding:6px 8px; font-size:8px; color:#aaa;">
+            Tip: Click arc in mini-graph → inline popover for quick edit.<br>
+            Full 15 coupling types in dropdown → "More types..."
+          </div>
+        </div>
+        <div class="coupling-footer">
+          <button class="footer-btn">+ Add Route</button>
+          <button class="footer-btn">Clear All</button>
+        </div>
+      </div>
+
+      <!-- FX tab -->
+      <div class="tab-panel" id="tab-fx">
+        <div style="padding:8px; font-size:9px; color:#666; border-bottom:1px solid #ddd;">
+          <strong>FX INSPECTOR (C3)</strong><br>
+          Cross-engine FX routing only.<br>Per-FX deep params expand inline in Column B.
+        </div>
+        <div style="padding:8px; flex:1; font-size:9px; color:#aaa;">
+          No cross-engine FX routes active.<br><br>
+          <em>Load engines into all 4 slots and define coupling routes to enable cross-engine FX send/return.</em>
+        </div>
+      </div>
+
+      <!-- EXPORT tab -->
+      <div class="tab-panel" id="tab-export">
+        <div style="padding:8px; font-size:9px; color:#666; border-bottom:1px solid #ddd;">
+          <strong>EXPORT CONFIG (C4)</strong><br>
+          Same Export Panel as Column B → opens B3.
+        </div>
+        <div style="padding:8px; font-size:9px; color:#aaa;">
+          Click EXPORT in header or status bar XOSEND to open the Export Panel.<br><br>
+          All 3 entry points open the same B3 Export Panel.
+        </div>
+      </div>
+
+      <!-- SETTINGS tab -->
+      <div class="tab-panel" id="tab-settings">
+        <div style="flex:1; overflow-y:auto;">
+          <div class="settings-section">
+            <div class="settings-title">Audio Device</div>
+            <div class="settings-row"><span>Output Device</span><select style="font-size:9px; font-family:monospace;"><option>BlackHole 2ch</option><option>Built-in Output</option></select></div>
+            <div class="settings-row"><span>Sample Rate</span><select style="font-size:9px; font-family:monospace;"><option>44100 Hz</option><option>48000 Hz</option><option>96000 Hz</option></select></div>
+            <div class="settings-row"><span>Buffer Size</span><select style="font-size:9px; font-family:monospace;"><option>256</option><option>512</option><option>1024</option></select></div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title">MIDI Config</div>
+            <div class="settings-row"><span>MPE Zone</span><select style="font-size:9px; font-family:monospace;"><option>Lower (Ch 1)</option><option>Upper (Ch 16)</option><option>Off</option></select></div>
+            <div class="settings-row"><span>Velocity Curve</span><select style="font-size:9px; font-family:monospace;"><option>Linear</option><option>Exponential</option><option>Soft</option></select></div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title">Display</div>
+            <div class="settings-row"><span>Dark Cockpit</span><div class="settings-toggle" onclick="this.classList.toggle('off')"><div class="settings-toggle-dot"></div></div></div>
+            <div class="settings-row"><span>Reduced Motion</span><div class="settings-toggle off" onclick="this.classList.toggle('off')"><div class="settings-toggle-dot"></div></div></div>
+            <div class="settings-row"><span>Accessibility Mode</span><div class="settings-toggle off" onclick="this.classList.toggle('off')"><div class="settings-toggle-dot"></div></div></div>
+            <div class="settings-row"><span>Dark Mode</span><div class="settings-toggle off" onclick="this.classList.toggle('off')"><div class="settings-toggle-dot"></div></div></div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title">Tuning</div>
+            <div class="settings-row"><span>Temperament</span><select style="font-size:9px; font-family:monospace;"><option>Equal</option><option>Just Intonation</option><option>Import Scala...</option></select></div>
+          </div>
+          <div class="settings-section" style="font-size:8px; color:#aaa;">
+            XOlokun V1.0 · "for all"<br>
+            © XO_OX Designs 2026<br>
+            AU ID: aumu Xomn XoOx<br>
+            73 engines registered
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /col-c -->
+  </div><!-- /body-row -->
+
+  <!-- PLAYSURFACE 220pt collapsible -->
+  <div id="playsurface">
+    <div class="ps-tab-bar">
+      <button class="ps-tab-btn active">XOUIJA</button>
+      <button class="ps-tab-btn" onclick="this.parentElement.querySelectorAll('.ps-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active')">MPC</button>
+      <button class="ps-tab-btn" onclick="this.parentElement.querySelectorAll('.ps-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active')">KEYS</button>
+      <span style="margin-left:auto; font-size:7px; color:#99a; line-height:24px; padding-right:6px;">PLAYSURFACE 1100×220pt</span>
+    </div>
+    <div class="ps-body">
+      <!-- Main surface area -->
+      <div class="ps-surface">
+        <div class="ps-surface-label">ACTIVE SURFACE 860pt wide × 192pt · MPC 16-PAD MODE</div>
+        <div class="ps-bank-row">
+          <button class="ps-bank-btn active">A</button>
+          <button class="ps-bank-btn">B</button>
+          <button class="ps-bank-btn">C</button>
+          <button class="ps-bank-btn">D</button>
+          <span style="font-size:8px; color:#99a; margin-left:8px;">16 pads × 4 banks | right-click = MIDI Learn</span>
+        </div>
+        <div class="mpc-grid">
+          <div class="mpc-pad active">A13<br>Kick</div>
+          <div class="mpc-pad">A14<br>Snare</div>
+          <div class="mpc-pad">A15<br>HH Cl</div>
+          <div class="mpc-pad">A16<br>HH Op</div>
+          <div class="mpc-pad">A09<br>Tom 1</div>
+          <div class="mpc-pad">A10<br>Tom 2</div>
+          <div class="mpc-pad">A11<br>Ride</div>
+          <div class="mpc-pad">A12<br>Crash</div>
+          <div class="mpc-pad">A05<br>Clap</div>
+          <div class="mpc-pad">A06<br>Rim</div>
+          <div class="mpc-pad">A07<br>Perc 1</div>
+          <div class="mpc-pad">A08<br>Perc 2</div>
+          <div class="mpc-pad">A01<br>Bass</div>
+          <div class="mpc-pad">A02<br>FX 1</div>
+          <div class="mpc-pad">A03<br>FX 2</div>
+          <div class="mpc-pad">A04<br>FX 3</div>
+        </div>
+      </div>
+      <!-- Expression zone -->
+      <div class="ps-expr">
+        <div class="ps-expr-label">EXPRESSION ZONE 240pt wide</div>
+        <div class="ps-strips" style="flex:1;">
+          <div class="ps-strip-vert">
+            <div class="ps-strip-fill" style="height:60px;"></div>
+            <span>MOD</span>
+          </div>
+          <div class="ps-strip-vert">
+            <div class="ps-strip-fill" style="height:35px; background:#d8c0ff;"></div>
+            <span>PITCH</span>
+          </div>
+          <div class="ps-strip-vert">
+            <div class="ps-strip-fill" style="height:45px; background:#e9c46a;"></div>
+            <span>M1</span>
+          </div>
+          <div class="ps-strip-vert">
+            <div class="ps-strip-fill" style="height:20px; background:#e9c46a;"></div>
+            <span>M2</span>
+          </div>
+          <div class="ps-strip-vert">
+            <div class="ps-strip-fill" style="height:70px; background:#e9c46a;"></div>
+            <span>M3</span>
+          </div>
+          <div class="ps-strip-vert">
+            <div class="ps-strip-fill" style="height:30px; background:#e9c46a;"></div>
+            <span>M4</span>
+          </div>
+        </div>
+        <div style="height:60px; background:#e0d8ff; border:1px solid #bbb; display:flex; align-items:center; justify-content:center; font-size:8px; color:#889;">
+          TIDE<br>CONTROLLER<br>100×100pt
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS BAR 28pt -->
+  <div id="status-bar">
+    <button class="status-btn fire">FIRE</button>
+    <button class="status-btn xosend">XOSEND</button>
+    <button class="status-btn">ECHO</button>
+    <button class="status-btn" style="color:#f88; border-color:#f44;">PANIC</button>
+    <div class="status-sep"></div>
+    <div class="status-info">BPM <strong>120</strong></div>
+    <div class="status-sep"></div>
+    <div class="status-info">Voices <strong>4/8</strong></div>
+    <div class="status-sep"></div>
+    <div class="status-info">CPU <strong>4.2%</strong></div>
+    <div class="status-sep"></div>
+    <div class="status-slots">
+      <div class="status-slot-dot filled" title="Slot 1: OBRIX"></div>
+      <div class="status-slot-dot filled" title="Slot 2: OPERA"></div>
+      <div class="status-slot-dot filled" title="Slot 3: OXYTOCIN"></div>
+      <div class="status-slot-dot" title="Slot 4: Empty"></div>
+    </div>
+    <div class="status-sep"></div>
+    <div class="status-info" id="status-dim-label">1100×700pt total</div>
+    <button class="status-perf">🔒 PERF LOCK</button>
+  </div>
+
+</div><!-- /xolokun-shell -->
+
+<!-- ENGINE BROWSER OVERLAY -->
+<div id="engine-browser-overlay" onclick="if(event.target===this)hideEngineBrowser()">
+  <div class="engine-browser-modal">
+    <div class="eb-header">
+      ENGINE BROWSER — 73 engines
+      <span class="eb-close" onclick="hideEngineBrowser()">✕</span>
+    </div>
+    <div class="eb-filters">
+      <input class="eb-search" type="text" placeholder="Search engines... (try: drums, bass, granular)">
+      <div class="eb-cats">
+        <div class="eb-cat active" onclick="toggleEbCat(this)">ALL</div>
+        <div class="eb-cat" onclick="toggleEbCat(this)">DRUMS</div>
+        <div class="eb-cat" onclick="toggleEbCat(this)">BASS</div>
+        <div class="eb-cat" onclick="toggleEbCat(this)">PADS</div>
+        <div class="eb-cat" onclick="toggleEbCat(this)">LEADS</div>
+        <div class="eb-cat" onclick="toggleEbCat(this)">TEXTURES</div>
+        <div class="eb-cat" onclick="toggleEbCat(this)">KEYS</div>
+        <div class="eb-cat" onclick="toggleEbCat(this)">FX/UTILITY</div>
+      </div>
+    </div>
+    <div class="eb-grid">
+      <div class="eb-card" onclick="loadEngine('OBRIX', this)"><div class="eb-card-icon">🪸</div><div class="eb-card-name">OBRIX</div><div class="eb-card-meta">Modular · 81 params</div><div class="eb-card-badge">Flagship</div></div>
+      <div class="eb-card" onclick="loadEngine('ONSET', this)"><div class="eb-card-icon">🥁</div><div class="eb-card-name">ONSET</div><div class="eb-card-meta">Drums · 111 params</div><div class="eb-card-badge">Flagship</div></div>
+      <div class="eb-card" onclick="loadEngine('OPERA', this)"><div class="eb-card-icon">🎭</div><div class="eb-card-name">OPERA</div><div class="eb-card-meta">Vocal-Additive · 9.85</div><div class="eb-card-badge">★ Pick</div></div>
+      <div class="eb-card" onclick="loadEngine('OXYTOCIN', this)"><div class="eb-card-icon">💜</div><div class="eb-card-name">OXYTOCIN</div><div class="eb-card-meta">Circuit-Love · 29 params</div><div class="eb-card-badge">★ Pick</div></div>
+      <div class="eb-card" onclick="loadEngine('OXBOW', this)"><div class="eb-card-icon">🌊</div><div class="eb-card-name">OXBOW</div><div class="eb-card-meta">Entangled Reverb · Pads</div><div class="eb-card-badge">Standard</div></div>
+      <div class="eb-card" onclick="loadEngine('OWARE', this)"><div class="eb-card-icon">🪘</div><div class="eb-card-name">OWARE</div><div class="eb-card-meta">Tuned Perc · Mallet</div><div class="eb-card-badge">Standard</div></div>
+      <div class="eb-card" onclick="loadEngine('OPAL', this)"><div class="eb-card-icon">✨</div><div class="eb-card-name">OPAL</div><div class="eb-card-meta">Granular · 150 presets</div><div class="eb-card-badge">Standard</div></div>
+      <div class="eb-card" onclick="loadEngine('OPTIC', this)"><div class="eb-card-icon">👁</div><div class="eb-card-name">OPTIC</div><div class="eb-card-meta">Visual Mod · 0 audio</div><div class="eb-card-badge">Standard</div></div>
+      <div class="eb-card"><div class="eb-card-icon">🏺</div><div class="eb-card-name">OBLONG</div><div class="eb-card-meta">Synth · Lead</div><div class="eb-card-badge">Standard</div></div>
+      <div class="eb-card"><div class="eb-card-icon">🌿</div><div class="eb-card-name">ORGANISM</div><div class="eb-card-meta">Cellular Automata</div><div class="eb-card-badge">Standard</div></div>
+      <div class="eb-card"><div class="eb-card-icon">🔵</div><div class="eb-card-name">ORBWEAVE</div><div class="eb-card-meta">Knot Topology · Pads</div><div class="eb-card-badge">Standard</div></div>
+      <div class="eb-card"><div class="eb-card-icon">🎹</div><div class="eb-card-name">OVEN</div><div class="eb-card-meta">Piano · Steinway</div><div class="eb-card-badge">Standard</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COUPLING INLINE POPOVER -->
+<div id="coupling-popover">
+  <div class="popover-title">
+    SLOT 1 → SLOT 2 <span class="popover-close" onclick="hideCouplingPopover()">✕</span>
+  </div>
+  <div class="popover-row">
+    <select style="font-size:9px; font-family:monospace; flex:1;">
+      <option>Entangle — "breathe together"</option>
+      <option>Gravitational — "follow pitch"</option>
+      <option>Phase — "sync rhythms"</option>
+      <option>More types... (15 total)</option>
+    </select>
+  </div>
+  <div class="popover-row">
+    <span style="width:40px;">Amount</span>
+    <div class="popover-knob">Amt</div>
+    <span>0.72</span>
+  </div>
+  <div class="popover-row">
+    <span style="width:40px;">Depth</span>
+    <div class="popover-knob">Dep</div>
+    <span>0.45</span>
+  </div>
+  <div style="font-size:8px; color:#aaa; margin-top:4px;">Synced with Column C Inspector</div>
+</div>
+
+<!-- VERIFICATION FOOTER -->
+<div id="verify-footer">
+  <div>
+    <div style="color:#fff; font-weight:bold; margin-bottom:4px;">VERIFICATION — PIXEL MATH</div>
+    <div class="verify-item ok" id="v-header">✓ Header: 1100×52pt</div>
+    <div class="verify-item ok" id="v-body">✓ Body: 260+520+320 = 1100pt ✓</div>
+    <div class="verify-item ok" id="v-status">✓ Status: 1100×28pt</div>
+    <div class="verify-item ok" id="v-total">✓ TOTAL: 1100×700pt (52+620+28)</div>
+    <div class="verify-item ok" id="v-ps">✓ PlaySurface: 1100×220pt (collapsed: 0)</div>
+  </div>
+  <div>
+    <div style="color:#fff; font-weight:bold; margin-bottom:4px;">COLUMN ZONES</div>
+    <div class="verify-item ok">✓ Col A: 260pt — Engine Rack + 4 tiles + coupling graph (120×80pt)</div>
+    <div class="verify-item ok">✓ Col B: 520pt — Engine Detail / FX Chain / Export Panel</div>
+    <div class="verify-item ok">✓ Col C: 320pt — Preset/Couple/FX/Export/Settings tabs</div>
+    <div class="verify-item ok">✓ Slot tiles: compact 95pt / expanded ~145pt</div>
+    <div class="verify-item ok">✓ Sticky top: ~88pt | Sticky bottom: ~80pt | Scrollable: ~352pt+</div>
+  </div>
+  <div>
+    <div style="color:#fff; font-weight:bold; margin-bottom:4px;">INTERACTIVE BEHAVIORS</div>
+    <div class="verify-item">→ Click slot tiles → Col B switches engine detail</div>
+    <div class="verify-item">→ Click FX pill → Col B FX Chain view</div>
+    <div class="verify-item">→ Col C tabs → PRESET/COUPLE/FX/EXPORT/⚙</div>
+    <div class="verify-item">→ Toggle PlaySurface → 220pt expansion</div>
+    <div class="verify-item">→ Click arc in coupling graph → inline popover</div>
+    <div class="verify-item">→ + slot → Engine Browser overlay (73 engines)</div>
+    <div class="verify-item">→ Section headers in Col B → expand/collapse</div>
+  </div>
+  <div>
+    <div style="color:#fff; font-weight:bold; margin-bottom:4px;">CURRENT WINDOW</div>
+    <div class="verify-item ok" id="v-current-size">1100 × 700pt</div>
+    <div class="verify-item" id="v-overflow-check">No overflow detected</div>
+  </div>
+</div>
+
+<script>
+// --- State ---
+let currentSlot = 1;
+let playSurfaceOpen = false;
+let singleEngineMode = false;
+let cinematicMode = false;
+let currentColBView = 'engine-detail';
+let currentWindowW = 1100;
+let currentWindowH = 700;
+
+// --- Window resize ---
+function setSize(w, h) {
+  currentWindowW = w;
+  currentWindowH = h;
+  const shell = document.getElementById('xolokun-shell');
+  shell.style.width = w + 'px';
+
+  // Update button states
+  document.querySelectorAll('.test-controls button[onclick^="setSize"]').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // Update Col A dim
+  document.getElementById('col-a-dim').textContent = (w===800 ? '160' : '260') + '×' + (h-80) + 'pt';
+  document.getElementById('col-b-dim').textContent = (w===800 ? '640' : '520') + '×' + (h-80) + 'pt';
+  document.getElementById('status-dim-label').textContent = w + '×' + h + 'pt total';
+
+  // MPC mode: 2 column
+  if (w === 800) {
+    document.getElementById('col-a').style.width = '160px';
+    document.getElementById('col-c').style.width = '0px';
+    document.getElementById('col-c').style.overflow = 'hidden';
+  } else {
+    document.getElementById('col-a').style.width = singleEngineMode ? '80px' : '260px';
+    document.getElementById('col-c').style.width = cinematicMode ? '0px' : '320px';
+    document.getElementById('col-c').style.overflow = '';
+  }
+
+  updateVerify(w, h);
+}
+
+function updateVerify(w, h) {
+  document.getElementById('v-current-size').textContent = w + ' × ' + h + 'pt';
+  const headerH = 52;
+  const statusH = 28;
+  const psH = playSurfaceOpen ? 220 : 0;
+  const bodyH = h - headerH - statusH - psH;
+  const isOk = bodyH > 0 && (w === 1100 || w === 960 || w === 800);
+  document.getElementById('v-overflow-check').textContent = isOk
+    ? '✓ No overflow · body=' + bodyH + 'pt'
+    : '⚠ Check body height: ' + bodyH + 'pt';
+  document.getElementById('v-overflow-check').className = 'verify-item ' + (isOk ? 'ok' : 'warn');
+  document.getElementById('v-ps').textContent = (playSurfaceOpen ? '✓' : '○') + ' PlaySurface: ' + (playSurfaceOpen ? '1100×220pt EXPANDED' : 'collapsed 0pt');
+}
+
+// --- PlaySurface toggle ---
+function togglePlaySurface() {
+  playSurfaceOpen = !playSurfaceOpen;
+  const ps = document.getElementById('playsurface');
+  ps.classList.toggle('expanded', playSurfaceOpen);
+  document.getElementById('btn-ps').textContent = playSurfaceOpen
+    ? '[Collapse PlaySurface]'
+    : '[Toggle PlaySurface]';
+  updateVerify(currentWindowW, currentWindowH);
+}
+
+// --- Single engine mode ---
+function toggleSingleEngine() {
+  singleEngineMode = !singleEngineMode;
+  const colA = document.getElementById('col-a');
+  colA.style.width = singleEngineMode ? '80px' : '260px';
+  document.getElementById('btn-se').textContent = singleEngineMode
+    ? '[Exit Single Engine Mode]'
+    : '[Toggle Single Engine Mode]';
+  document.getElementById('col-a-dim').textContent =
+    (singleEngineMode ? '80' : '260') + '×' + (currentWindowH - 80) + 'pt';
+}
+
+// --- Cinematic mode ---
+function toggleCinematic() {
+  cinematicMode = !cinematicMode;
+  const colA = document.getElementById('col-a');
+  const colC = document.getElementById('col-c');
+  if (cinematicMode) {
+    colA.style.width = '0px'; colA.style.overflow = 'hidden';
+    colC.style.width = '0px'; colC.style.overflow = 'hidden';
+  } else {
+    colA.style.width = '260px'; colA.style.overflow = '';
+    colC.style.width = '320px'; colC.style.overflow = '';
+  }
+  document.getElementById('btn-cin').textContent = cinematicMode
+    ? '[Exit Cinematic Mode]'
+    : '[Toggle Cinematic Mode]';
+  document.getElementById('col-b-dim').textContent = cinematicMode
+    ? '1100×620pt (CINEMATIC)' : '520×620pt (contextual)';
+}
+
+// --- Slot selection ---
+const engineData = {
+  1: { name:'OBRIX', creature:'🪸', color:'#1e8b7e', preset:'Coral Cathedral', cpu:21 },
+  2: { name:'OPERA', creature:'🎭', color:'#d4af37', preset:'Aria Infinita', cpu:14 },
+  3: { name:'OXYTOCIN', creature:'💜', color:'#9b5de5', preset:'Bond Resonance', cpu:9 },
+  4: null,
+};
+
+function selectSlot(n) {
+  currentSlot = n;
+  document.querySelectorAll('.slot-tile').forEach(t => t.classList.remove('active'));
+  document.getElementById('slot-' + n).classList.add('active');
+
+  if (n === 4) { showEngineBrowser(); return; }
+  const eng = engineData[n];
+  if (!eng) return;
+
+  // Update Col B nameplate
+  const nameplate = document.querySelector('.engine-nameplate');
+  nameplate.innerHTML = `<div class="engine-accent-dot" style="background:${eng.color};"></div>
+    <span>${eng.name}</span>
+    <span style="font-size:9px; color:#888;">— preset: ${eng.preset}</span>
+    <span style="margin-left:auto; font-size:9px; cursor:pointer; color:#888;" title="Randomize">⚄</span>`;
+
+  setColBView('engine-detail');
+}
+
+// --- Col B view switching ---
+function setColBView(viewId) {
+  currentColBView = viewId;
+  document.querySelectorAll('.col-b-view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + viewId).classList.add('active');
+}
+
+function showFXChain() { setColBView('fx-chain'); }
+
+// --- Tab switching ---
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  btn.classList.add('active');
+}
+
+// --- Section expand/collapse ---
+function toggleSection(contentId) {
+  const content = document.getElementById(contentId);
+  const toggle = document.getElementById('toggle-' + contentId);
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  if (toggle) toggle.textContent = isOpen ? '▸' : '▾';
+}
+
+// --- Filter pills ---
+function togglePill(el) {
+  el.parentElement.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// --- Engine browser ---
+function showEngineBrowser() {
+  document.getElementById('engine-browser-overlay').classList.add('visible');
+}
+function hideEngineBrowser() {
+  document.getElementById('engine-browser-overlay').classList.remove('visible');
+}
+function loadEngine(name, card) {
+  hideEngineBrowser();
+  // Load into slot 4 if that was the trigger
+  const slot4 = document.getElementById('slot-4');
+  slot4.classList.remove('empty');
+  slot4.innerHTML = `
+    <div class="slot-header"><span class="slot-num">SLOT 4</span><div class="slot-power"></div></div>
+    <div class="slot-name-row"><span>${name}</span></div>
+    <div class="slot-waveform"><svg class="waveform-svg" viewBox="0 0 200 16" preserveAspectRatio="none">
+      <polyline points="0,8 20,5 40,11 60,4 80,12 100,8 120,6 140,10 160,7 180,9 200,8" fill="none" stroke="#888" stroke-width="1"/>
+    </svg></div>
+    <div class="slot-bottom-row"><div class="macro-dots">
+      <div class="macro-dot"></div><div class="macro-dot"></div>
+      <div class="macro-dot" style="background:#ddd;border-color:#ccc"></div>
+      <div class="macro-dot" style="background:#ddd;border-color:#ccc"></div>
+    </div><div class="fx-indicator" onclick="event.stopPropagation();showFXChain()">FX ○○○</div></div>
+    <div class="slot-cpu"><div class="slot-cpu-bar" style="width:5%"></div></div>
+  `;
+  slot4.onclick = () => selectSlot(4);
+  document.querySelectorAll('.status-slot-dot')[3].classList.add('filled');
+}
+
+function toggleEbCat(el) {
+  el.parentElement.querySelectorAll('.eb-cat').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// --- A/B toggle ---
+function toggleAB(el) {
+  const a = document.getElementById('ab-a');
+  const b = document.getElementById('ab-b');
+  if (a.style.fontWeight === 'bold' || !a.style.fontWeight) {
+    a.style.color='#888'; a.style.fontWeight='';
+    b.style.color='#333'; b.style.fontWeight='bold';
+  } else {
+    a.style.color='#333'; a.style.fontWeight='bold';
+    b.style.color='#888'; b.style.fontWeight='';
+  }
+}
+
+// --- Coupling popover ---
+function showCouplingPopover(e) {
+  const pop = document.getElementById('coupling-popover');
+  const rect = e.target.getBoundingClientRect();
+  const shellRect = document.getElementById('xolokun-shell').getBoundingClientRect();
+  pop.style.left = (rect.left - shellRect.left + 24) + 'px';
+  pop.style.top = (rect.top - shellRect.top + 24) + 'px';
+  pop.classList.add('visible');
+  e.stopPropagation();
+}
+function hideCouplingPopover() {
+  document.getElementById('coupling-popover').classList.remove('visible');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('coupling-popover').contains(e.target)) {
+    hideCouplingPopover();
+  }
+});
+
+// --- FX slot expand inline ---
+function toggleFXSlot(header) {
+  const slot = header.parentElement;
+  const existing = slot.querySelector('.fx-expanded');
+  if (existing) { existing.remove(); return; }
+  const expanded = document.createElement('div');
+  expanded.className = 'fx-expanded';
+  expanded.style.cssText = 'padding:6px 8px 6px 36px; background:#f8f8e8; border-top:1px solid #eee; display:flex; flex-wrap:wrap; gap:6px;';
+  const params = ['Drive','Tone','Character','Bias','Output','Mix'];
+  params.forEach(p => {
+    expanded.innerHTML += `<div class="param-knob"><div class="k" style="border-color:#cca;">${p.slice(0,3)}</div><div class="lbl">${p}</div></div>`;
+  });
+  slot.appendChild(expanded);
+}
+
+// --- Scroll to section ---
+function scrollToSection(id) {
+  const el = document.getElementById('section-' + id);
+  if (el) {
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+    toggleSection(id + '-content');
+  }
+}
+
+// Init
+updateVerify(1100, 700);
+// Open first section by default
+toggleSection('osc-content');
+</script>
+</body>
+</html>
