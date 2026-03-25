@@ -1,0 +1,113 @@
+#pragma once
+#include <juce_audio_processors/juce_audio_processors.h>
+#include "../GalleryColors.h"
+#include "MidiLearnMouseListener.h"
+
+namespace xolokun {
+
+//==============================================================================
+// GalleryKnob — juce::Slider subclass that adds:
+//   • double-click + Cmd+click reset to default value
+//   • right-click MIDI Learn context menu (when wired via setupMidiLearn)
+//   • amber pulsing ring while listening for CC; green "ML" badge when mapped
+//
+class GalleryKnob : public juce::Slider
+{
+public:
+    GalleryKnob() = default;
+
+    // Store the denormalized default value for Cmd+click reset.
+    void setDefaultValue (double v) { defaultValue = v; }
+
+    // Wire up MIDI Learn for this knob.  Call after SliderAttachment is created.
+    // The caller must store the returned listener pointer in a unique_ptr vector.
+    MidiLearnMouseListener* setupMidiLearn(const juce::String& pid, MIDILearnManager& mgr)
+    {
+        paramId      = pid;
+        learnManager = &mgr;
+        auto* ml     = new MidiLearnMouseListener(pid, mgr);
+        addMouseListener(ml, false);
+        return ml;
+    }
+
+    void mouseDown (const juce::MouseEvent& e) override
+    {
+        // Right-click is handled by MidiLearnMouseListener — don't swallow it here.
+        if (e.mods.isRightButtonDown())
+            return;
+
+        // Cmd+click (macOS Command key) → reset to default immediately.
+        if (e.mods.isCommandDown())
+        {
+            setValue (defaultValue, juce::sendNotificationAsync);
+            return;
+        }
+        juce::Slider::mouseDown (e);
+    }
+
+    void paint (juce::Graphics& g) override
+    {
+        juce::Slider::paint(g);
+        drawMidiLearnOverlay(g);
+    }
+
+private:
+    void drawMidiLearnOverlay(juce::Graphics& g)
+    {
+        if (!learnManager) return;
+        bool isListening = learnManager->isLearning() && learnManager->getLearningParam() == paramId;
+        bool isMapped    = learnManager->hasMapping(paramId);
+        if (!isListening && !isMapped) return;
+
+        juce::Colour ringCol = isListening
+            ? juce::Colour(0xFFE9C46A)                   // XO Gold while listening
+            : juce::Colour(0xFF4ADE80).withAlpha(0.50f); // soft green when mapped
+
+        if (isListening)
+        {
+            double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
+            float pulse = 0.55f + 0.45f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
+            ringCol = ringCol.withAlpha(pulse);
+            repaint(); // keep pulsing until learn mode exits
+        }
+
+        auto b  = getLocalBounds().toFloat().reduced(3.0f);
+        float r = juce::jmin(b.getWidth(), b.getHeight()) * 0.5f;
+        g.setColour(ringCol);
+        g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r,
+                      r * 2.0f, r * 2.0f, isListening ? 2.5f : 1.5f);
+
+        if (isMapped && !isListening)
+        {
+            g.setFont(juce::Font(6.0f).boldened());
+            g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
+            g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9,
+                       juce::Justification::centred);
+        }
+    }
+
+    double            defaultValue = 0.0;
+    juce::String      paramId;
+    MIDILearnManager* learnManager = nullptr;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GalleryKnob)
+};
+
+//==============================================================================
+// enableKnobReset — convenience helper: reads the parameter default value and
+// wires up both double-click and Cmd+click reset on a GalleryKnob.
+//
+// Must be called AFTER SliderAttachment is created (the attachment sets the
+// slider range, which is needed to correctly interpret the default value).
+static inline void enableKnobReset (GalleryKnob& knob,
+                                    juce::AudioProcessorValueTreeState& apvts,
+                                    const juce::String& paramId)
+{
+    if (auto* rp = dynamic_cast<juce::RangedAudioParameter*> (apvts.getParameter (paramId)))
+    {
+        double defaultVal = rp->getNormalisableRange().convertFrom0to1 (rp->getDefaultValue());
+        knob.setDefaultValue (defaultVal);
+        knob.setDoubleClickReturnValue (true, defaultVal);
+    }
+}
+
+} // namespace xolokun
