@@ -10,8 +10,29 @@ namespace xolokun
 {
 
 //==============================================================================
-// CompactEngineTile — slim tile in the left sidebar column.
-// Shows engine identity. Click to select (or load engine if empty).
+// CompactEngineTile — slim tile in the left Column A (260pt wide).
+//
+// Layout at 260pt width:
+//   [4pt margin][16pt toggle][8pt gap][porthole 30pt][8pt gap][name+bars+dots][auto][24pt voice dots][4pt margin]
+//
+//   Left section  (24pt): On/Off mute toggle (16×16pt, top-left, 4pt margin)
+//   Center section: porthole + engine name (top), mini waveform (32×16pt),
+//                   macro indicator bars (4×40×3pt), coupling dots (4×4pt)
+//   Right section (24pt): Voice activity dots (right edge)
+//
+// Per-tile enhancements added 2026-03-25:
+//   • Mute toggle — visual-only (16×16pt, top-left). No APVTS param yet; calls
+//     nothing on the processor. Active = accent-filled circle, Muted = gray
+//     circle with diagonal line, 40% opacity. Stored in isMuted member.
+//   • Macro indicator bars — 4 × (40×3pt) horizontal bars below engine name.
+//     Colors: M1=XO Gold #E9C46A, M2=Phosphor Green #00FF41,
+//             M3=Prism Violet #BF40FF, M4=Teal #00B4A0.
+//     Fill proportional to macro1–macro4 APVTS values (0–1). Updated in
+//     timerCallback() at 10Hz (same timer as voice count).
+//   • Coupling dots — up to 4 dots (4×4pt) in a row. Color per coupling
+//     category: XO Gold = modulation, Twilight Blue = audio-rate,
+//     Midnight Violet = KnotTopology. Count = active routes touching this slot.
+//     Updated in timerCallback().
 class CompactEngineTile : public juce::Component, public juce::SettableTooltipClient, private juce::Timer
 {
 public:
@@ -24,8 +45,9 @@ public:
                      "Click to select engine, right-click for options");
         setExplicitFocusOrder (slotIndex + 1);
         addAndMakeVisible(miniWave);
+        macroValues.fill(0.0f);
         refresh();
-        startTimerHz(10); // poll voice count at 10Hz (sufficient for visual feedback)
+        startTimerHz(10); // poll voice count + macros + coupling at 10Hz
     }
 
     ~CompactEngineTile() override { stopTimer(); }
@@ -54,13 +76,75 @@ public:
 
     void timerCallback() override
     {
+        bool needsRepaint = false;
+
+        // ── Voice count ────────────────────────────────────────────────────────
         auto* eng = processor.getEngine(slot);
         int newCount = eng ? eng->getActiveVoiceCount() : 0;
         if (newCount != voiceCount)
         {
             voiceCount = newCount;
-            repaint();
+            needsRepaint = true;
         }
+
+        // ── Macro values (APVTS, message-thread safe) ──────────────────────────
+        if (hasEngine)
+        {
+            auto& apvts = processor.getAPVTS();
+            for (int m = 0; m < 4; ++m)
+            {
+                auto* p = apvts.getRawParameterValue("macro" + juce::String(m + 1));
+                float newVal = p ? p->load() : 0.0f;
+                if (std::abs(newVal - macroValues[m]) > 0.001f)
+                {
+                    macroValues[m] = newVal;
+                    needsRepaint = true;
+                }
+            }
+        }
+
+        // ── Coupling route count ───────────────────────────────────────────────
+        {
+            auto routes = processor.getCouplingMatrix().getRoutes();
+            int modCount  = 0; // LFO/Env/Amp/Filter/Pitch/Rhythm
+            int audioCount = 0; // AudioTo*
+            int knotCount  = 0; // KnotTopology
+            for (const auto& r : routes)
+            {
+                if (!r.active) continue;
+                if (r.sourceSlot != slot && r.destSlot != slot) continue;
+
+                switch (r.type)
+                {
+                    case CouplingType::AudioToFM:
+                    case CouplingType::AudioToRing:
+                    case CouplingType::AudioToWavetable:
+                    case CouplingType::AudioToBuffer:
+                        audioCount = juce::jmin(audioCount + 1, 4);
+                        break;
+                    case CouplingType::KnotTopology:
+                        knotCount = juce::jmin(knotCount + 1, 4);
+                        break;
+                    default:
+                        modCount = juce::jmin(modCount + 1, 4);
+                        break;
+                }
+            }
+            int totalDots = juce::jmin(modCount + audioCount + knotCount, 4);
+            if (totalDots != couplingDotCount
+                || modCount  != couplingModCount
+                || audioCount != couplingAudioCount
+                || knotCount  != couplingKnotCount)
+            {
+                couplingDotCount   = totalDots;
+                couplingModCount   = modCount;
+                couplingAudioCount = audioCount;
+                couplingKnotCount  = knotCount;
+                needsRepaint = true;
+            }
+        }
+
+        if (needsRepaint) repaint();
     }
 
     // Ecological tile: porthole circle + accent strip + depth-zone gradient on select.
@@ -74,7 +158,6 @@ public:
         // ── Tile background ───────────────────────────────────────────────
         if (isSelected && hasEngine)
         {
-            // Depth-zone gradient: engine accent (sunlit) → midnight violet
             juce::ColourGradient grad(accent.withAlpha(0.10f), b.getX(), b.getCentreY(),
                                       juce::Colour(0xFF7B2FBE).withAlpha(0.04f),
                                       b.getRight(), b.getCentreY(), false);
@@ -100,6 +183,9 @@ public:
             return;
         }
 
+        // ── Mute toggle — top-left corner, 4pt margin ─────────────────────
+        paintMuteToggle(g, b);
+
         if (hasEngine)
         {
             // Voice density: smooth sqrt ramp 0 (silent) → 1 (full polyphony)
@@ -108,34 +194,32 @@ public:
                 ? juce::jmin(1.0f, std::sqrt((float)voiceCount / kMaxVoices))
                 : 0.0f;
 
-            // Derived alphas / stroke — replace binary ternaries with smooth curves
-            float fillAlpha  = 0.09f + voiceDensity * 0.19f;  // 0.09 (silent) → 0.28 (full)
-            float ringAlpha  = 0.38f + voiceDensity * 0.52f;  // 0.38 → 0.90
-            float ringStroke = 1.0f  + voiceDensity * 1.0f;   // 1.0  → 2.0
-            float stripAlpha = 0.38f + voiceDensity * 0.50f;  // 0.38 → 0.88
+            float fillAlpha  = 0.09f + voiceDensity * 0.19f;
+            float ringAlpha  = 0.38f + voiceDensity * 0.52f;
+            float ringStroke = 1.0f  + voiceDensity * 1.0f;
+            float stripAlpha = 0.38f + voiceDensity * 0.50f;
 
             // ── Left accent strip — voice activity indicator ───────────────
-            float stripX = b.getX() + 1.5f;
+            // Shifted right by 24pt to clear the mute toggle zone
+            float stripX = b.getX() + 24.0f + 1.5f;
             float stripH = b.getHeight() * 0.55f;
             float stripY = b.getCentreY() - stripH * 0.5f;
             g.setColour(accent.withAlpha(stripAlpha));
             g.fillRoundedRectangle(stripX, stripY, 3.0f, stripH, 1.5f);
 
-            // ── Porthole circle ────────────────────────────────────────────
+            // ── Porthole circle — 8pt right of the strip ──────────────────
             const float porW = 30.0f;
-            float porCx = b.getX() + 20.0f + porW * 0.5f;
+            float porCx = stripX + 3.0f + 8.0f + porW * 0.5f;
             float porCy = b.getCentreY();
             float porR  = porW * 0.5f;
 
-            // Inner fill — brightest when voices active
             g.setColour(accent.withAlpha(fillAlpha));
             g.fillEllipse(porCx - porR, porCy - porR, porW, porW);
 
-            // Porthole ring
             g.setColour(accent.withAlpha(ringAlpha));
             g.drawEllipse(porCx - porR, porCy - porR, porW, porW, ringStroke);
 
-            // Glass highlight arc — top-left arc (porthole glass illusion)
+            // Glass highlight arc
             {
                 float hR = porR - 2.0f;
                 juce::Path hl;
@@ -149,19 +233,30 @@ public:
 
             // Slot number inside porthole
             g.setFont(GalleryFonts::value(9.0f));
-            g.setColour(accent.withAlpha(0.38f + voiceDensity * 0.37f));  // 0.38 → 0.75
+            g.setColour(accent.withAlpha(0.38f + voiceDensity * 0.37f));
             g.drawText(juce::String(slot + 1),
                        (int)(porCx - porR), (int)(porCy - porR),
                        (int)porW, (int)porW, juce::Justification::centred);
 
-            // ── Engine name ────────────────────────────────────────────────
+            // ── Engine name — right of porthole ────────────────────────────
             float nameX = porCx + porR + 7.0f;
-            float nameW = b.getRight() - nameX - 18.0f;
+            // Reserve 24pt on right for voice dots; leave room for bars/dots below
+            float nameW = b.getRight() - 24.0f - nameX - 4.0f;
             g.setFont(GalleryFonts::heading(11.0f));
             g.setColour(isSelected ? accent : get(textDark()));
+            // Name draws in the upper portion of the tile
+            float nameH = b.getHeight() * 0.40f;
+            float nameY = b.getY();
             g.drawText(engineId.toUpperCase(),
-                       (int)nameX, (int)b.getY(), (int)nameW, (int)b.getHeight(),
+                       (int)nameX, (int)nameY, (int)nameW, (int)nameH,
                        juce::Justification::centredLeft);
+
+            // ── Macro indicator bars ───────────────────────────────────────
+            paintMacroBars(g, nameX, nameY + nameH + 2.0f);
+
+            // ── Coupling dots ──────────────────────────────────────────────
+            float dotsY = nameY + nameH + 2.0f + 4 * 5.0f + 2.0f; // below bars
+            paintCouplingDots(g, nameX, dotsY);
 
             // ── Voice activity dots — right edge ───────────────────────────
             if (voiceCount > 0)
@@ -181,10 +276,10 @@ public:
         }
         else
         {
-            // Empty slot — soft "+" affordance (warmer invite than a slot number)
+            // Empty slot — soft "+" affordance
             float cx = b.getCentreX(), cy = b.getCentreY();
             float armLen = 7.0f, armW = 1.5f;
-            juce::Colour plusCol = get(textMid()).withAlpha(0.28f);
+            juce::Colour plusCol = GalleryColors::get(GalleryColors::textMid()).withAlpha(0.28f);
             g.setColour(plusCol);
             g.fillRoundedRectangle(cx - armLen, cy - armW * 0.5f, armLen * 2.0f, armW, armW * 0.5f);
             g.fillRoundedRectangle(cx - armW * 0.5f, cy - armLen, armW, armLen * 2.0f, armW * 0.5f);
@@ -197,9 +292,20 @@ public:
 
     void resized() override
     {
-        // MiniWaveform: 32x16pt, bottom-right corner of the tile
+        // MiniWaveform: 32×16pt, positioned below engine name in center section.
+        // Center section starts after 24pt toggle zone + 4pt strip + 38pt porthole.
+        // Place waveform in bottom-center of the content area (right of porthole).
         auto b = getLocalBounds().reduced(3, 2);
-        miniWave.setBounds(b.getRight() - 34, b.getBottom() - 18, 32, 16);
+
+        // The strip is at b.getX()+24+1.5, porthole right edge is at:
+        //   stripX + 3 + 8 + 30 = b.getX() + 24 + 1.5 + 3 + 8 + 30 = b.getX() + 66.5
+        // Content right is b.getRight() - 24 (voice dots zone).
+        // Place miniWave at bottom of content zone, left-aligned after porthole.
+        int contentLeft = b.getX() + 68; // right of porthole
+        int waveW = 40, waveH = 16;
+        int waveX = contentLeft;
+        int waveY = b.getBottom() - waveH - 2;
+        miniWave.setBounds(waveX, waveY, waveW, waveH);
     }
 
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
@@ -207,7 +313,6 @@ public:
     void focusGained (juce::Component::FocusChangeType) override { repaint(); }
     void focusLost   (juce::Component::FocusChangeType) override { repaint(); }
 
-    // Keyboard activation (WCAG 2.1.1 — all interactive elements operable via keyboard)
     bool keyPressed (const juce::KeyPress& key) override
     {
         if (key == juce::KeyPress::returnKey || key == juce::KeyPress::spaceKey)
@@ -225,6 +330,22 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
+        // Check if click is on the mute toggle (top-left 16×16pt, 4pt margin)
+        auto toggleBounds = getMuteToggleBounds();
+        if (toggleBounds.contains(e.getPosition()))
+        {
+            // Handle mute toggle click — toggle the muted state
+            if (!e.mods.isPopupMenu())
+            {
+                isMuted = !isMuted;
+                // NOTE: No APVTS param wired yet. Visual-only for now.
+                // When slot_enabled params are added, call:
+                //   processor.setSlotEnabled(slot, !isMuted);
+                repaint();
+                return;
+            }
+        }
+
         if (!e.mods.isPopupMenu() || !hasEngine)
             return;
 
@@ -255,7 +376,6 @@ public:
                 else if (result >= 200 && result < 204)
                 {
                     int targetSlot = result - 200;
-                    // Get current engine ID before unloading
                     auto* eng = processor.getEngine(slot);
                     if (eng != nullptr)
                     {
@@ -275,6 +395,11 @@ public:
         if (e.mods.isPopupMenu())
             return;  // right-click handled by mouseDown
 
+        // Don't navigate to engine if mute toggle was clicked
+        auto toggleBounds = getMuteToggleBounds();
+        if (toggleBounds.contains(e.getPosition()))
+            return;
+
         if (hasEngine)
         {
             if (onSelect) onSelect(slot);
@@ -288,15 +413,119 @@ public:
     void setSelected(bool sel) { isSelected = sel; repaint(); }
 
 private:
+    // ── Mute toggle geometry ─────────────────────────────────────────────────
+    // 16×16pt circle, 4pt from top-left of the tile bounds (after reduction).
+    juce::Rectangle<int> getMuteToggleBounds() const
+    {
+        auto b = getLocalBounds().reduced(3, 2);
+        return { b.getX() + 4, b.getY() + (b.getHeight() - 16) / 2, 16, 16 };
+    }
+
+    void paintMuteToggle(juce::Graphics& g, juce::Rectangle<float> tileBounds) const
+    {
+        // Position: 4pt inset from tile left edge, vertically centred
+        float tx = tileBounds.getX() + 4.0f;
+        float ty = tileBounds.getCentreY() - 8.0f;
+        float tw = 16.0f, th = 16.0f;
+
+        if (!hasEngine)
+            return; // no toggle on empty slot
+
+        if (!isMuted)
+        {
+            // Active: accent-filled circle, 100% opacity
+            g.setColour(accent);
+            g.fillEllipse(tx, ty, tw, th);
+            // Thin white ring inside for depth
+            g.setColour(juce::Colours::white.withAlpha(0.30f));
+            g.drawEllipse(tx + 1.5f, ty + 1.5f, tw - 3.0f, th - 3.0f, 1.0f);
+        }
+        else
+        {
+            // Muted: gray filled circle with diagonal line, 40% opacity
+            g.setColour(juce::Colour(0xFF888888).withAlpha(0.40f));
+            g.fillEllipse(tx, ty, tw, th);
+            g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.55f));
+            // Diagonal line from top-right to bottom-left (mute convention)
+            g.drawLine(tx + tw * 0.75f, ty + th * 0.15f,
+                       tx + tw * 0.25f, ty + th * 0.85f, 1.5f);
+        }
+    }
+
+    // ── Macro indicator bars ─────────────────────────────────────────────────
+    // 4 horizontal bars, each 40×3pt, stacked with 2pt gap.
+    // Colors: M1=XO Gold, M2=Phosphor Green, M3=Prism Violet, M4=Teal.
+    void paintMacroBars(juce::Graphics& g, float startX, float startY) const
+    {
+        if (!hasEngine) return;
+
+        static constexpr uint32_t macroColors[4] = {
+            0xFFE9C46A,  // M1 — XO Gold
+            0xFF00FF41,  // M2 — Phosphor Green
+            0xFFBF40FF,  // M3 — Prism Violet
+            0xFF00B4A0   // M4 — Teal
+        };
+
+        const float barMaxW = 40.0f;
+        const float barH    = 3.0f;
+        const float gap     = 2.0f;
+
+        for (int m = 0; m < 4; ++m)
+        {
+            float barY = startY + static_cast<float>(m) * (barH + gap);
+            float fillW = juce::jlimit(0.0f, barMaxW, macroValues[m] * barMaxW);
+
+            // Background track (dim)
+            g.setColour(juce::Colour(macroColors[m]).withAlpha(0.15f));
+            g.fillRoundedRectangle(startX, barY, barMaxW, barH, 1.0f);
+
+            // Filled portion
+            if (fillW > 0.5f)
+            {
+                g.setColour(juce::Colour(macroColors[m]).withAlpha(0.70f));
+                g.fillRoundedRectangle(startX, barY, fillW, barH, 1.0f);
+            }
+        }
+    }
+
+    // ── Coupling indicator dots ──────────────────────────────────────────────
+    // Up to 4 dots (4×4pt) in a row. Color per coupling category:
+    //   XO Gold (#E9C46A)        — modulation routes (LFO/Env/Amp/Filter/Pitch/Rhythm)
+    //   Twilight Blue (#1B4F8A)  — audio-rate routes (AudioTo*)
+    //   Midnight Violet (#7B2FBE) — KnotTopology routes
+    void paintCouplingDots(juce::Graphics& g, float startX, float startY) const
+    {
+        if (!hasEngine || couplingDotCount == 0) return;
+
+        // Build a color list: mod dots first, then audio, then knot
+        juce::Colour dotColors[4];
+        int idx = 0;
+        for (int i = 0; i < couplingModCount   && idx < 4; ++i, ++idx)
+            dotColors[idx] = juce::Colour(0xFFE9C46A); // XO Gold
+        for (int i = 0; i < couplingAudioCount && idx < 4; ++i, ++idx)
+            dotColors[idx] = juce::Colour(0xFF1B4F8A); // Twilight Blue
+        for (int i = 0; i < couplingKnotCount  && idx < 4; ++i, ++idx)
+            dotColors[idx] = juce::Colour(0xFF7B2FBE); // Midnight Violet
+
+        const float dotSize    = 4.0f;
+        const float dotSpacing = 6.0f;
+
+        for (int d = 0; d < couplingDotCount && d < 4; ++d)
+        {
+            float dotX = startX + static_cast<float>(d) * dotSpacing;
+            g.setColour(dotColors[d].withAlpha(0.85f));
+            g.fillEllipse(dotX, startY, dotSize, dotSize);
+        }
+    }
+
     void showLoadMenu()
     {
         auto* picker = new EnginePickerPopup();
         picker->onEngineSelected = [this](const juce::String& engineId)
         {
             isLoading = true;
-            repaint(); // show "LOADING..." immediately
+            repaint();
             processor.loadEngine(slot, engineId.toStdString());
-            // Navigate to detail panel on the next message loop tick.
             juce::Timer::callAfterDelay(0, [this]
             {
                 if (onSelect) onSelect(slot);
@@ -314,8 +543,19 @@ private:
     juce::Colour accent;
     bool hasEngine  = false;
     bool isSelected = false;
-    bool isLoading  = false; // true between loadEngine() call and onEngineChanged callback
-    int  voiceCount = 0;     // updated by timerCallback at 20Hz
+    bool isLoading  = false;
+    bool isMuted    = false; // visual-only; no APVTS param yet
+    int  voiceCount = 0;
+
+    // Macro bar values — updated in timerCallback at 10Hz
+    std::array<float, 4> macroValues {};
+
+    // Coupling dot state — updated in timerCallback at 10Hz
+    int couplingDotCount   = 0;
+    int couplingModCount   = 0;
+    int couplingAudioCount = 0;
+    int couplingKnotCount  = 0;
+
     MiniWaveform miniWave;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CompactEngineTile)
