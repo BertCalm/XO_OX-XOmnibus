@@ -52,6 +52,10 @@ public:
             btn->setClickingTogglesState(false);
             btn->setWantsKeyboardFocus(true);
 
+            // Apply WCAG A-01 compliant colours (audit fix A-01)
+            btn->setColour(juce::TextButton::textColourOffId, inactiveTabColour());
+            btn->setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
+
             // Accessibility
             A11y::setup(*btn,
                         juce::String(tabLabels[i]) + " tab",
@@ -62,6 +66,8 @@ public:
 
             addAndMakeVisible(btn);
         }
+
+        setWantsKeyboardFocus(true);
 
         // ── Placeholder labels (C2 – C6) ─────────────────────────────────────
         setupPlaceholder(couplePlaceholder,   "Coupling Inspector — Coming Soon",
@@ -166,6 +172,29 @@ public:
         // Panel background
         g.fillAll(get(shellWhite()));
 
+        if (getWidth() <= 48)
+        {
+            // Draw vertical icon strip: single letter per tab
+            auto tabH = getHeight() / NumTabs;
+            for (int i = 0; i < NumTabs; ++i)
+            {
+                auto y = i * tabH;
+                bool active = (i == static_cast<int>(activeTab));
+                g.setColour(active ? get(xoGold)
+                                   : inactiveTabColour());
+                g.setFont(GalleryFonts::display(11.0f));
+                // Single letter icon: P, C, F, P, E, S
+                juce::String icon(tabLabels[i][0]);
+                g.drawText(icon, 0, y, getWidth(), tabH, juce::Justification::centred);
+                if (active)
+                {
+                    g.setColour(get(xoGold));
+                    g.fillRect(0, y, 2, tabH);  // Left accent bar
+                }
+            }
+            return;
+        }
+
         // Left border separator from Column B
         g.setColour(get(borderGray()));
         g.drawVerticalLine(0, 0.0f, static_cast<float>(getHeight()));
@@ -199,6 +228,9 @@ public:
 
     void resized() override
     {
+        if (getWidth() <= 48)
+            return;  // Collapsed icon strip — layout degenerates, skip
+
         const int w = getWidth();
 
         // ── Tab bar ───────────────────────────────────────────────────────────

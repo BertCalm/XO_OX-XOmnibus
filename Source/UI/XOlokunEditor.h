@@ -213,8 +213,6 @@ public:
         presetBrowser.updateDisplay();
 
         // ── Column C Sidebar ──────────────────────────────────────────────────
-        // Wire the PresetManager so C1 (Preset tab) has a live browser.
-        sidebar.setPresetManager(proc.getPresetManager());
         addAndMakeVisible(sidebar);
 
         // ── Status Bar ────────────────────────────────────────────────────────
@@ -250,6 +248,11 @@ public:
         };
 
         setSize(1100, 700);
+
+        // ── Column C Sidebar: wire PresetManager AFTER setSize() so sidebar
+        // has valid bounds when setPresetManager() calls resized() internally.
+        sidebar.setPresetManager(proc.getPresetManager());
+
         setResizable(true, true);
         setResizeLimits(960, 600, 1600, 1000);
         setWantsKeyboardFocus(true);

@@ -78,7 +78,7 @@ struct ColumnLayoutManager
             {
                 // Auto-collapse: not enough room for columns + PlaySurface
                 playSurfaceAutoCollapsed = true;
-                playSurfaceBounds = { 0, bodyBottom, totalW, kPlaySurfaceH }; // parked off-screen
+                playSurfaceBounds = { 0, totalH, totalW, kPlaySurfaceH }; // parked fully off-screen (consistent with hidden case)
             }
             else
             {
@@ -153,6 +153,8 @@ struct ColumnLayoutManager
 
         // Column B panel area: Column B minus FieldMap
         columnBPanelBounds = { colAWidth, bodyTop, colBWidth, bodyH - kFieldMapH };
+        if (columnBPanelBounds.getHeight() < 0)
+            columnBPanelBounds.setHeight(0);
     }
 
     // ── Accessors ──────────────────────────────────────────────
@@ -166,7 +168,7 @@ struct ColumnLayoutManager
     juce::Rectangle<int> getFieldMap()      const { return fieldMapBounds; }
 
     bool isPlaySurfaceAutoCollapsed() const { return playSurfaceAutoCollapsed; }
-    bool isMpcMode()        const { return totalW <= kMpcMaxWidth; }
+    bool isMpcMode()        const { return !cinematicMode && totalW <= kMpcMaxWidth; }
     bool isCinematic()      const { return cinematicMode; }
     bool isColumnCVisible() const { return colCWidth > kMinColC; }
 
