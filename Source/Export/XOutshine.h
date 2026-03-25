@@ -1139,9 +1139,7 @@ private:
     bool packageXPN (const std::vector<UpgradedProgram>& programs,
                      const juce::File& workDir, const juce::File& output)
     {
-        juce::ZipFile::Builder builder;
-
-        // Manifest
+        // Build manifest first (small, always in memory)
         juce::String manifest;
         manifest << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         manifest << "<Expansion>\n";
@@ -1149,28 +1147,56 @@ private:
         manifest << "  <Author>XOutshine by XO_OX Designs</Author>\n";
         manifest << "  <Version>1.0</Version>\n";
         manifest << "  <Description>Upgraded by XOutshine</Description>\n";
-        manifest << "  <ProgramCount>" << (int) programs.size() << "</ProgramCount>\n";
+        manifest << "  <ProgramCount>" << (int)programs.size() << "</ProgramCount>\n";
         manifest << "</Expansion>\n";
 
         auto manifestFile = workDir.getChildFile("Manifest.xml");
         manifestFile.replaceWithText(manifest);
+
+        // Enumerate all files to add. Order: Manifest, XPMs, WAVs.
+        // juce::ZipFile::Builder reads each file from disk during writeToStream()
+        // using a FileInputStream — one file at a time. Peak memory = one compressed chunk.
+        juce::ZipFile::Builder builder;
         builder.addFile(manifestFile, 9, "Expansions/Manifest.xml");
 
         auto xpmDir = workDir.getChildFile("programs");
+        int totalFiles = 1;  // manifest
+
         for (const auto& prog : programs)
         {
             auto xpmFile = xpmDir.getChildFile(prog.name + ".xpm");
             if (xpmFile.existsAsFile())
+            {
                 builder.addFile(xpmFile, 9, "Programs/" + prog.name + ".xpm");
-
+                ++totalFiles;
+            }
             for (const auto& l : prog.layers)
+            {
                 if (l.file.existsAsFile())
-                    builder.addFile(l.file, 9, "Samples/" + prog.name + "/" + l.filename);
+                {
+                    // WAV files: use compression level 0 (store) to avoid re-encoding.
+                    // WAV is already compressed at 24-bit integer; zlib compression of PCM
+                    // yields <1% reduction and wastes CPU. MPC unzips faster at level 0.
+                    builder.addFile(l.file, 0, "Samples/" + prog.name + "/" + l.filename);
+                    ++totalFiles;
+                }
+            }
         }
 
         juce::FileOutputStream fos(output);
-        if (!fos.openedOk()) return false;
-        return builder.writeToStream(fos, nullptr) != false;
+        if (!fos.openedOk())
+        {
+            errors_.add("Package failed: cannot open output for writing: " + output.getFullPathName());
+            return false;
+        }
+
+        // writeToStream() streams files from disk one at a time.
+        // The double* progress parameter (0.0-1.0) is optional; pass nullptr.
+        bool ok = (builder.writeToStream(fos, nullptr) > 0);
+        if (!ok)
+            errors_.add("Package failed: ZIP write error for " + output.getFullPathName());
+
+        return ok;
     }
 
     bool packageFolder (const std::vector<UpgradedProgram>& programs,
