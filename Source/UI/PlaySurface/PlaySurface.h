@@ -9,6 +9,13 @@
 namespace xolokun {
 
 //==============================================================================
+// Helper: lighten a colour toward white by [amount] (0=no change, 1=white)
+static inline juce::Colour lightenColour(juce::Colour c, float amount)
+{
+    return c.interpolatedWith(juce::Colours::white, amount);
+}
+
+//==============================================================================
 // Forward declarations for color/font access from XOlokunEditor.h.
 // When PlaySurface.h is included from within XOlokunEditor.h the full
 // GalleryColors namespace is already defined; guard the stub so we don't
@@ -89,6 +96,11 @@ public:
     // (top = max pressure, bottom = min pressure, matching MPC convention).
     std::function<void(int note, float pressure)> onAftertouch;
 
+    // Engine accent colour — set by PlaySurface::setAccentColour().
+    // Default: XO Gold.
+    juce::Colour accentColour { 0xFFE9C46A };
+    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
+
     //----------------------------------------------------------------------
     // Bank selection (A=0, B=1, C=2, D=3).
     // In Pad mode: note = bankBaseNote(bank) + pad position
@@ -131,7 +143,17 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace PS;
-        g.fillAll(juce::Colour(kSurfaceBg));
+        auto b = getLocalBounds().toFloat();
+
+        // Radial gradient background: accent @ 0.04 center → kSurfaceBg edge
+        {
+            float cx = b.getCentreX(), cy = b.getCentreY();
+            float r  = juce::jmax(b.getWidth(), b.getHeight()) * 0.7f;
+            juce::ColourGradient bg(accentColour.withAlpha(0.04f), cx, cy,
+                                    juce::Colour(kSurfaceBg), cx + r, cy, true);
+            g.setGradientFill(bg);
+            g.fillRect(b);
+        }
 
         if (mode == Mode::Pad || mode == Mode::Drum)
             paintPadGrid(g);
@@ -148,8 +170,9 @@ public:
             // P0-3: on fretless release, reset pitch bend to 0 first
             if (mode == Mode::Fretless && midiCollector)
             {
-                midiCollector->addMessageToQueue(
-                    juce::MidiMessage::pitchWheel(midiChannel, 0));
+                auto msg = juce::MidiMessage::pitchWheel(midiChannel, 0);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                midiCollector->addMessageToQueue(msg);
             }
             // Zero-out aftertouch before note-off to prevent stuck pressure
             if (mode == Mode::Pad || mode == Mode::Drum)
@@ -189,12 +212,10 @@ private:
     {
         if (midiCollector)
         {
-            // MidiMessageCollector::addMessageToQueue requires a timestamp in
-            // samples. Passing 0 is safe — the collector will sort by sample
-            // position when removeNextBlockOfMessages is called.
-            midiCollector->addMessageToQueue(
-                juce::MidiMessage::noteOn(midiChannel, note,
-                                          static_cast<float>(velocity)));
+            auto msg = juce::MidiMessage::noteOn(midiChannel, note,
+                                                  static_cast<float>(velocity));
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+            midiCollector->addMessageToQueue(msg);
         }
         else if (onNoteOn)
         {
@@ -206,8 +227,9 @@ private:
     {
         if (midiCollector)
         {
-            midiCollector->addMessageToQueue(
-                juce::MidiMessage::noteOff(midiChannel, note));
+            auto msg = juce::MidiMessage::noteOff(midiChannel, note);
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+            midiCollector->addMessageToQueue(msg);
         }
         else if (onNoteOff)
         {
@@ -223,8 +245,9 @@ private:
         uint8_t midiPressure = (uint8_t)juce::jlimit(0, 127, (int)(pressure * 127.0f));
         if (midiCollector)
         {
-            midiCollector->addMessageToQueue(
-                juce::MidiMessage::aftertouchChange(midiChannel, note, midiPressure));
+            auto msg = juce::MidiMessage::aftertouchChange(midiChannel, note, midiPressure);
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+            midiCollector->addMessageToQueue(msg);
         }
         else if (onAftertouch)
         {
@@ -339,8 +362,12 @@ private:
         row = juce::jlimit(0, PS::kPadRows - 1, row);
         int pad = row * PS::kPadCols + col;
 
-        // Velocity: Y position within the grid (grid top = hard, grid bottom = soft).
-        float velocity = juce::jlimit(0.3f, 1.0f, 1.0f - ly / gridH);
+        // Velocity: Y position within the specific pad cell (top of pad = hard, bottom = soft).
+        float padH2 = gridH / PS::kPadRows;
+        int displayRow = PS::kPadRows - 1 - row;
+        float padTopY = displayRow * padH2;
+        float yInPad = juce::jlimit(0.0f, 1.0f, (ly - padTopY) / padH2);
+        float velocity = juce::jlimit(0.05f, 1.0f, 1.0f - yInPad);
         int note = midiNoteForPad(pad);
 
         if (isDown || note != lastNote)
@@ -398,8 +425,11 @@ private:
             lastNote = note;
             // Reset pitch bend to centre before the new note.
             if (midiCollector)
-                midiCollector->addMessageToQueue(
-                    juce::MidiMessage::pitchWheel(midiChannel, 0));
+            {
+                auto msg = juce::MidiMessage::pitchWheel(midiChannel, 0);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                midiCollector->addMessageToQueue(msg);
+            }
             fireNoteOn(note, expression);
         }
         else
@@ -425,16 +455,16 @@ private:
 
                 if (midiCollector)
                 {
-                    midiCollector->addMessageToQueue(
-                        juce::MidiMessage::pitchWheel(midiChannel, pitchWheelValue));
+                    auto msg = juce::MidiMessage::pitchWheel(midiChannel, pitchWheelValue);
+                    msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                    midiCollector->addMessageToQueue(msg);
                 }
             }
         }
     }
 
-    // Pad grid with ecological depth zone coloring.
-    // Row 3 (top/high notes) = Sunlit zone (cyan), Row 0 (bottom/low) = Midnight (violet).
-    // Pads are always square: the grid is centered within the available bounds.
+    // Pad grid — Engine Accent Adaptive style.
+    // Pads are always square (1:1 aspect ratio), grid centered within available bounds.
     void paintPadGrid(juce::Graphics& g)
     {
         using namespace PS;
@@ -448,17 +478,8 @@ private:
         float originX = b.getX() + (b.getWidth()  - gridW) * 0.5f;
         float originY = b.getY() + (b.getHeight() - gridH) * 0.5f;
 
-        // Alias as padW/padH so the rest of the function compiles unchanged
         float padW = padSide;
         float padH = padSide;
-
-        // Depth zone colors mapped to rows (displayRow 0=top=sunlit, 3=bottom=midnight)
-        const juce::Colour kZoneColors[4] = {
-            juce::Colour(0xFF48CAE4),  // row 0 display (top — Sunlit)
-            juce::Colour(0xFF0096C7),  // row 1 (Twilight upper)
-            juce::Colour(0xFF0070AA),  // row 2 (Twilight lower)
-            juce::Colour(0xFF7B2FBE),  // row 3 (Midnight)
-        };
 
         for (int row = 0; row < kPadRows; ++row)
         {
@@ -470,33 +491,50 @@ private:
                 float y = originY + displayRow * padH;
                 auto padRect = juce::Rectangle<float>(x, y, padW, padH).reduced(2.0f);
 
-                juce::Colour zoneCol = kZoneColors[displayRow];
-
-                // Base color — very dark, with zone tint
-                g.setColour(juce::Colour(kSurfaceBg).interpolatedWith(zoneCol, 0.06f));
-                g.fillRoundedRectangle(padRect, 4.0f);
-
-                // Zone border — subtle color classification
-                g.setColour(zoneCol.withAlpha(0.18f));
-                g.drawRoundedRectangle(padRect, 4.0f, 1.0f);
-
-                // Velocity heatmap glow — zone-colored fill only (no competing highlight layer)
                 float vel = padVelocity[(size_t)pad];
-                if (vel > 0.01f)
+                bool isHit = (vel > 0.01f);
+
+                if (isHit)
                 {
-                    g.setColour(zoneCol.withAlpha(vel * 0.65f));
+                    // Hit pad: radial gradient from accent @ 0.42 center to accent @ 0.07 edge
+                    float cx = padRect.getCentreX(), cy = padRect.getCentreY();
+                    float r  = padRect.getWidth() * 0.7f;
+                    juce::ColourGradient grad(accentColour.withAlpha(0.07f + vel * 0.35f), cx, cy,
+                                             accentColour.withAlpha(0.07f), cx + r, cy, true);
+                    g.setGradientFill(grad);
                     g.fillRoundedRectangle(padRect, 4.0f);
+
+                    // Hit border: accent @ 0.50
+                    g.setColour(accentColour.withAlpha(0.50f));
+                    g.drawRoundedRectangle(padRect, 4.0f, 1.5f);
+
+                    // Glow shadow: wider fill at low opacity
+                    g.setColour(accentColour.withAlpha(vel * 0.25f));
+                    g.fillRoundedRectangle(padRect.expanded(3.0f), 5.0f);
+                }
+                else
+                {
+                    // Non-hit pad: accent @ 0.07 fill
+                    g.setColour(accentColour.withAlpha(0.07f));
+                    g.fillRoundedRectangle(padRect, 4.0f);
+
+                    // Accent @ 0.18 border
+                    g.setColour(accentColour.withAlpha(0.18f));
+                    g.drawRoundedRectangle(padRect, 4.0f, 1.0f);
                 }
 
-                // Warm memory ghost circles
+                // Warm memory ghost circles — radial gradient using accent
                 for (const auto& wm : warmMemory)
                 {
                     if (wm.pad == pad && wm.age < kWarmMemoryDur)
                     {
-                        float alpha = (1.0f - wm.age / kWarmMemoryDur) * 0.4f;
-                        g.setColour(juce::Colours::white.withAlpha(alpha));
-                        float cx = padRect.getCentreX(), cy = padRect.getCentreY();
-                        g.drawEllipse(cx - 8, cy - 8, 16, 16, 1.5f);
+                        float alpha = (1.0f - wm.age / kWarmMemoryDur) * 0.15f;
+                        float pcx = padRect.getCentreX(), pcy = padRect.getCentreY();
+                        float gr = 10.0f;
+                        juce::ColourGradient ghostGrad(accentColour.withAlpha(alpha * 2.0f), pcx, pcy,
+                                                       accentColour.withAlpha(0.0f), pcx + gr, pcy, true);
+                        g.setGradientFill(ghostGrad);
+                        g.fillEllipse(pcx - gr, pcy - gr, gr * 2, gr * 2);
                     }
                 }
 
@@ -520,21 +558,20 @@ private:
                     label = juce::String(noteNames[note % 12]) + juce::String(note / 12 - 1);
                 }
 
-                // Note label — zone-tinted
-                g.setColour(zoneCol.withAlpha(vel > 0.01f ? 0.95f : 0.55f));
+                // Note label: white on hit, accent @ 0.55 otherwise
+                g.setColour(isHit ? juce::Colours::white : accentColour.withAlpha(0.55f));
                 g.setFont(juce::Font(9.0f));
                 g.drawText(label, padRect, juce::Justification::centred);
             }
         }
 
-        // Bank badge — top-right corner of the grid showing active bank (A/B/C/D).
-        // Uses XO Gold so performers can identify bank at a glance during play.
+        // Bank badge — top-right corner, accent-tinted
         {
             static const char* kBankNames[] = { "A", "B", "C", "D" };
             juce::String badge = juce::String("BNK ") + kBankNames[(int)currentBank];
             auto badgeRect = juce::Rectangle<float>(
                 originX + gridW - 50.0f, originY, 48.0f, 16.0f);
-            g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.75f)); // XO Gold
+            g.setColour(accentColour.withAlpha(0.75f));
             g.setFont(juce::Font(9.0f).boldened());
             g.drawText(badge, badgeRect, juce::Justification::centredRight);
         }
@@ -674,18 +711,16 @@ public:
 
     void setPhysicsMode(PhysicsMode m) { physMode = m; repaint(); }
 
+    // Engine accent colour — set by PlaySurface::setAccentColour()
+    juce::Colour accentColour { 0xFFE9C46A };
+    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
+
     void paint(juce::Graphics& g) override
     {
         using namespace PS;
 
-        // ── Tab strip (18px) ──────────────────────────────────────────────
+        // ── Tab strip (18px) — accent-adaptive ───────────────────────────
         static constexpr float kTabH = 18.0f;
-        // Chromatophore Amber (OUTWIT accent) for active tab
-        static constexpr uint32_t kTabActive    = 0xFFCC6600;
-        static constexpr uint32_t kTabActiveTxt = 0xFF1A1A1A;
-        static constexpr uint32_t kTabInactive  = 0xFF2D2D2D;  // kSurfaceCard
-        static constexpr uint32_t kTabBorder    = 0xFF444444;
-        static constexpr uint32_t kTabInactTxt  = 0xFF888888;  // kTextDim
 
         const char* tabLabels[3] = { "FREE", "LOCK", "SNAP" };
         float tabW = (float)getWidth() / 3.0f;
@@ -694,12 +729,15 @@ public:
         {
             bool active = (int)physMode == i;
             auto tabR = juce::Rectangle<float>(i * tabW, 0.0f, tabW, kTabH);
-            g.setColour(juce::Colour(active ? kTabActive : kTabInactive));
+
+            // Active tab: accent @ 0.12 background, accent @ 0.95 text
+            // Inactive tab: kSurfaceCard background, accent @ 0.40 text
+            g.setColour(active ? accentColour.withAlpha(0.12f) : juce::Colour(kSurfaceCard));
             g.fillRect(tabR);
-            g.setColour(juce::Colour(kTabBorder));
+            g.setColour(accentColour.withAlpha(0.20f));
             g.drawRect(tabR, 0.5f);
-            g.setFont(juce::Font(7.0f).boldened());
-            g.setColour(juce::Colour(active ? kTabActiveTxt : kTabInactTxt));
+            g.setFont(juce::Font(9.0f).boldened());
+            g.setColour(active ? accentColour.withAlpha(0.95f) : accentColour.withAlpha(0.40f));
             g.drawText(tabLabels[i], tabR, juce::Justification::centred);
         }
 
@@ -707,51 +745,70 @@ public:
         auto orbitBounds = getLocalBounds().withTrimmedTop((int)kTabH).toFloat();
         float cx = orbitBounds.getCentreX();
         float cy = orbitBounds.getCentreY();
-        float radius = kOrbitDiameter * 0.5f;
+        float diam = juce::jmin(orbitBounds.getWidth(), orbitBounds.getHeight()) * 0.85f;
+        float radius = diam * 0.5f;
 
         // Background
         g.setColour(juce::Colour(kSurfaceBg));
         g.fillRect(orbitBounds);
 
-        // Boundary ring
-        g.setColour(juce::Colours::white.withAlpha(0.1f));
+        // Ring interior: radial gradient accent @ 0.05 center → transparent
+        {
+            juce::ColourGradient ringFill(accentColour.withAlpha(0.05f), cx, cy,
+                                          accentColour.withAlpha(0.0f), cx + radius, cy, true);
+            g.setGradientFill(ringFill);
+            g.fillEllipse(cx - radius, cy - radius, radius * 2, radius * 2);
+        }
+
+        // Ring border: accent @ 0.22
+        g.setColour(accentColour.withAlpha(0.22f));
         g.drawEllipse(cx - radius, cy - radius, radius * 2, radius * 2, 1.0f);
 
-        // Center crosshair
-        g.setColour(juce::Colours::white.withAlpha(0.06f));
+        // Center crosshair: accent @ 0.07
+        g.setColour(accentColour.withAlpha(0.07f));
         g.drawHorizontalLine((int)cy, cx - radius, cx + radius);
         g.drawVerticalLine((int)cx, cy - radius, cy + radius);
 
-        // Trail
-        for (int i = 0; i < kOrbitTrailSize; ++i)
+        // Trail — 2 ghost points with accent @ 0.22 and @ 0.12
+        // (Draw only the last 2 meaningful trail points from the ring buffer)
         {
-            int idx = (trailHead - i + kOrbitTrailSize) % kOrbitTrailSize;
-            if (trail[idx].x == 0.0f && trail[idx].y == 0.0f && i > 0) continue;
-            float alpha = (1.0f - (float)i / kOrbitTrailSize) * 0.6f;
-            float size = 2.0f + 4.0f * (1.0f - (float)i / kOrbitTrailSize);
-            float tx = cx + trail[idx].x * radius;
-            float ty = cy + trail[idx].y * radius;
-            g.setColour(juce::Colour(kAmber).withAlpha(alpha));
-            g.fillEllipse(tx - size * 0.5f, ty - size * 0.5f, size, size);
+            int drawn = 0;
+            for (int i = 1; i < kOrbitTrailSize && drawn < 2; ++i)
+            {
+                int idx = (trailHead - i + kOrbitTrailSize) % kOrbitTrailSize;
+                if (trail[idx].x == 0.0f && trail[idx].y == 0.0f) continue;
+                float alpha = (drawn == 0) ? 0.22f : 0.12f;
+                float size  = (drawn == 0) ? 8.0f  : 6.0f;
+                float tx = cx + trail[idx].x * radius;
+                float ty = cy + trail[idx].y * radius;
+                // Box-shadow approximation: slightly larger translucent circle behind
+                g.setColour(accentColour.withAlpha(alpha * 0.4f));
+                g.fillEllipse(tx - size, ty - size, size * 2, size * 2);
+                g.setColour(accentColour.withAlpha(alpha));
+                g.fillEllipse(tx - size * 0.5f, ty - size * 0.5f, size, size);
+                ++drawn;
+            }
         }
 
-        // Cursor
+        // Cursor: 13px, radial gradient from lighten(accent,60%) center → accent @ 0.50 edge
         float cursorX = cx + posX * radius;
         float cursorY = cy + posY * radius;
+        {
+            const float cursorR = 6.5f; // 13px diameter
+            juce::Colour cursorCenter = lightenColour(accentColour, 0.60f);
+            juce::ColourGradient cursorGrad(cursorCenter, cursorX, cursorY,
+                                            accentColour.withAlpha(0.50f),
+                                            cursorX + cursorR, cursorY, true);
+            g.setGradientFill(cursorGrad);
+            g.fillEllipse(cursorX - cursorR, cursorY - cursorR, cursorR * 2, cursorR * 2);
+        }
 
-        // Glow
-        g.setColour(juce::Colour(kAmber).withAlpha(0.15f));
-        g.fillEllipse(cursorX - 16, cursorY - 16, 32, 32);
-        // Cursor dot
-        g.setColour(juce::Colour(kAmber));
-        g.fillEllipse(cursorX - 6, cursorY - 6, 12, 12);
-
-        // ── LOCK mode: amber anchor dot at center ─────────────────────────
+        // ── LOCK mode: accent anchor dot at center ────────────────────────
         if (physMode == PhysicsMode::Lock)
         {
-            g.setColour(juce::Colour(kTabActive).withAlpha(0.9f));
+            g.setColour(accentColour.withAlpha(0.9f));
             g.fillEllipse(cx - 4.0f, cy - 4.0f, 8.0f, 8.0f);
-            g.setColour(juce::Colour(kTabActive).withAlpha(0.35f));
+            g.setColour(accentColour.withAlpha(0.35f));
             g.drawEllipse(cx - 8.0f, cy - 8.0f, 16.0f, 16.0f, 1.0f);
         }
 
@@ -776,17 +833,17 @@ public:
                 juce::PathStrokeType stroke(1.0f);
                 float dashLengths[] = { 3.0f, 3.0f };
                 stroke.createDashedStroke(springPath, springPath, dashLengths, 2);
-                g.setColour(juce::Colour(kTabActive).withAlpha(0.4f));
+                g.setColour(accentColour.withAlpha(0.40f));
                 g.strokePath(springPath, stroke);
                 // Small spring-return target dot at center
-                g.setColour(juce::Colour(kTabActive).withAlpha(0.6f));
+                g.setColour(accentColour.withAlpha(0.60f));
                 g.fillEllipse(cx - 3.0f, cy - 3.0f, 6.0f, 6.0f);
             }
         }
 
-        // Axis labels
-        g.setColour(juce::Colour(kTextDim).withAlpha(0.5f));
-        g.setFont(juce::Font(7.0f));
+        // Axis labels: accent @ 0.25
+        g.setColour(accentColour.withAlpha(0.25f));
+        g.setFont(juce::Font(9.0f));
         g.drawText("CUTOFF", juce::Rectangle<float>(cx - radius, cy + radius + 2, radius * 2, 12),
                    juce::Justification::centred);
         g.drawText("RES", juce::Rectangle<float>(cx + radius + 2, cy - 6, 30, 12),
@@ -863,7 +920,8 @@ private:
         auto orbitBounds = getLocalBounds().withTrimmedTop(18).toFloat();
         float cx = orbitBounds.getCentreX();
         float cy = orbitBounds.getCentreY();
-        float radius = PS::kOrbitDiameter * 0.5f;
+        float diam = juce::jmin(orbitBounds.getWidth(), orbitBounds.getHeight()) * 0.85f;
+        float radius = diam * 0.5f;
 
         float newX = (e.x - cx) / radius;
         float newY = (e.y - cy) / radius;
@@ -912,39 +970,36 @@ public:
         repaint();
     }
 
+    // Engine accent colour — set by PlaySurface::setAccentColour()
+    juce::Colour accentColour { 0xFFE9C46A };
+    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
+
     void paint(juce::Graphics& g) override
     {
         using namespace PS;
         auto b = getLocalBounds().toFloat();
 
-        // Background gradient per mode
-        switch (stripMode)
+        // Background: linear gradient accent @ 0.08 top → accent @ 0.03 bottom
         {
-            case StripMode::DubSpace:
-                g.setGradientFill(juce::ColourGradient(
-                    juce::Colour(kTerracotta), b.getX(), b.getCentreY(),
-                    juce::Colour(kTeal), b.getRight(), b.getCentreY(), false));
-                break;
-            case StripMode::FilterSweep:
-                g.setColour(juce::Colour(kSurfaceCard));
-                break;
-            case StripMode::Coupling:
-            {
-                auto mid = b.getCentreX();
-                g.setGradientFill(juce::ColourGradient(
-                    juce::Colour(kTerracotta), b.getX(), b.getCentreY(),
-                    juce::Colour(kTeal), b.getRight(), b.getCentreY(), false));
-                break;
-            }
-            case StripMode::DubSiren:
-                g.setColour(juce::Colour(kSurfaceCard));
-                break;
+            juce::ColourGradient bg(accentColour.withAlpha(0.08f), b.getX(), b.getY(),
+                                    accentColour.withAlpha(0.03f), b.getX(), b.getBottom(), false);
+            g.setGradientFill(bg);
+            g.fillRect(b);
         }
-        g.setOpacity(0.3f);
-        g.fillRect(b);
-        g.setOpacity(1.0f);
 
-        // Gesture trail
+        // Mode-specific tint overlay (preserves per-mode colour identity)
+        {
+            static constexpr uint32_t kStripModeTints[] = {
+                0xFF2D4D5A,  // DubSpace  — dark teal
+                0xFF00A6D6,  // FilterSweep — teal
+                0xFFE9C46A,  // Coupling — XO Gold
+                0xFFFF6B6B,  // DubSiren — warm red
+            };
+            g.setColour(juce::Colour(kStripModeTints[(int)stripMode]).withAlpha(0.08f));
+            g.fillRect(b);
+        }
+
+        // Gesture trail — accent coloured
         for (int i = 0; i < kStripTrailSize; ++i)
         {
             int idx = (stripTrailHead - i + kStripTrailSize) % kStripTrailSize;
@@ -953,25 +1008,42 @@ public:
             float alpha = (1.0f - pt.age / kWarmMemoryDur) * 0.5f;
             float sx = b.getX() + pt.x * b.getWidth();
             float sy = b.getY() + (1.0f - pt.y) * b.getHeight();
-            g.setColour(juce::Colour(kAmber).withAlpha(alpha));
+            g.setColour(accentColour.withAlpha(alpha));
             g.fillEllipse(sx - 2, sy - 2, 4, 4);
         }
 
-        // Cursor
-        float cx = b.getX() + stripX * b.getWidth();
-        float cy = b.getY() + (1.0f - stripY) * b.getHeight();
-        g.setColour(juce::Colour(kAmber).withAlpha(0.2f));
-        g.fillEllipse(cx - 12, cy - 12, 24, 24);
-        g.setColour(juce::Colour(kAmber));
-        g.fillEllipse(cx - 5, cy - 5, 10, 10);
+        // Bar indicator: 3px wide vertical bar at stripX, linear gradient accent @ 0.70 bottom → transparent top
+        {
+            float barX = b.getX() + stripX * b.getWidth() - 1.5f;
+            juce::ColourGradient barGrad(accentColour.withAlpha(0.70f), barX, b.getBottom(),
+                                         accentColour.withAlpha(0.0f),  barX, b.getY(), false);
+            g.setGradientFill(barGrad);
+            g.fillRect(juce::Rectangle<float>(barX, b.getY(), 3.0f, b.getHeight()));
 
-        // Mode label
-        g.setColour(juce::Colour(kTextLight).withAlpha(0.5f));
+            // Floor glow: 18px wide radial gradient under the bar
+            float floorY = b.getBottom() - 4.0f;
+            float glowCx = barX + 1.5f;
+            juce::ColourGradient floorGlow(accentColour.withAlpha(0.08f), glowCx, floorY,
+                                           accentColour.withAlpha(0.0f), glowCx + 9.0f, floorY, true);
+            g.setGradientFill(floorGlow);
+            g.fillEllipse(glowCx - 9.0f, floorY - 4.0f, 18.0f, 8.0f);
+        }
+
+        // Cursor dot
+        float cursorCx = b.getX() + stripX * b.getWidth();
+        float cursorCy = b.getY() + (1.0f - stripY) * b.getHeight();
+        g.setColour(accentColour.withAlpha(0.20f));
+        g.fillEllipse(cursorCx - 12, cursorCy - 12, 24, 24);
+        g.setColour(accentColour);
+        g.fillEllipse(cursorCx - 5, cursorCy - 5, 10, 10);
+
+        // Mode label: accent @ 0.40
+        g.setColour(accentColour.withAlpha(0.40f));
         g.setFont(juce::Font(8.0f));
         static const char* modeNames[] = { "DUB SPACE", "FILTER SWEEP", "COUPLING", "DUB SIREN" };
         g.drawText(modeNames[(int)stripMode], b.reduced(4), juce::Justification::topLeft);
 
-        // Axis labels
+        // Axis labels: accent @ 0.40
         static const char* xLabels[] = { "DELAY FB", "CUTOFF", "X>O PUMP", "ECHO" };
         static const char* yLabels[] = { "REVERB", "RESONANCE", "O>X DRIFT", "PITCH" };
         g.drawText(xLabels[(int)stripMode], b.reduced(4), juce::Justification::bottomLeft);
@@ -1054,40 +1126,69 @@ public:
     std::function<void(bool held)> onEchoCut;
     std::function<void()> onPanic;
 
+    // Engine accent colour — set by PlaySurface::setAccentColour()
+    juce::Colour accentColour { 0xFFE9C46A };
+    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
+
     void paint(juce::Graphics& g) override
     {
         using namespace PS;
         auto b = getLocalBounds().toFloat();
         float padH = b.getHeight() / 4.0f;
 
-        struct PadDef { const char* label; uint32_t color; };
-        static const PadDef pads[] = {
-            { "FIRE",     kFireGreen },
-            { "XOSEND",   kAmber },
-            { "ECHO CUT", kAmber },
-            { "PANIC",    kPanicRed },
-        };
+        static const char* labels[] = { "FIRE", "XOSEND", "ECHO CUT", "PANIC" };
+        static const char* keys[]   = { "Z", "X", "C", "V" };
 
         for (int i = 0; i < 4; ++i)
         {
             auto rect = juce::Rectangle<float>(b.getX(), b.getY() + i * padH, b.getWidth(), padH).reduced(3.0f);
-            auto col = juce::Colour(pads[i].color);
             bool pressed = padStates[i];
 
-            g.setColour(pressed ? col : col.withAlpha(0.15f));
-            g.fillRoundedRectangle(rect, 6.0f);
-            g.setColour(col.withAlpha(pressed ? 1.0f : 0.5f));
-            g.drawRoundedRectangle(rect, 6.0f, 2.0f);
+            if (i == 3)
+            {
+                // PANIC: always red, independent of engine accent
+                juce::Colour panicCol = juce::Colour(kPanicRed);
+                g.setColour(pressed ? panicCol : panicCol.withAlpha(0.15f));
+                g.fillRoundedRectangle(rect, 6.0f);
+                g.setColour(panicCol.withAlpha(pressed ? 1.0f : 0.35f));
+                g.drawRoundedRectangle(rect, 6.0f, 2.0f);
+                g.setColour(pressed ? juce::Colours::black : panicCol);
+                g.setFont(juce::Font(10.0f).boldened());
+                g.drawText(labels[i], rect, juce::Justification::centred);
+                // Keyboard hint: panic uses red @ 0.45
+                g.setColour(panicCol.withAlpha(0.45f));
+                g.setFont(juce::Font(9.0f));
+                g.drawText(keys[i], rect.reduced(4), juce::Justification::bottomRight);
+            }
+            else
+            {
+                // FIRE / X-SEND / ECHO: engine accent @ 0.06 bg, @ 0.15 border, @ 0.55 text
+                if (pressed)
+                {
+                    g.setColour(accentColour.withAlpha(0.25f));
+                    g.fillRoundedRectangle(rect, 6.0f);
+                    g.setColour(accentColour.withAlpha(0.50f));
+                    g.drawRoundedRectangle(rect, 6.0f, 2.0f);
+                    // Active text: lighten(accent, 60%)
+                    g.setColour(lightenColour(accentColour, 0.60f));
+                }
+                else
+                {
+                    g.setColour(accentColour.withAlpha(0.06f));
+                    g.fillRoundedRectangle(rect, 6.0f);
+                    g.setColour(accentColour.withAlpha(0.15f));
+                    g.drawRoundedRectangle(rect, 6.0f, 2.0f);
+                    // Normal text: accent @ 0.55
+                    g.setColour(accentColour.withAlpha(0.55f));
+                }
+                g.setFont(juce::Font(10.0f).boldened());
+                g.drawText(labels[i], rect, juce::Justification::centred);
 
-            g.setColour(pressed ? juce::Colours::black : col);
-            g.setFont(juce::Font(10.0f).boldened());
-            g.drawText(pads[i].label, rect, juce::Justification::centred);
-
-            // Keyboard hint
-            static const char* keys[] = { "Z", "X", "C", "V" };
-            g.setColour(col.withAlpha(0.3f));
-            g.setFont(juce::Font(7.0f));
-            g.drawText(keys[i], rect.reduced(4), juce::Justification::bottomRight);
+                // Keyboard hint: accent @ 0.45
+                g.setColour(accentColour.withAlpha(0.45f));
+                g.setFont(juce::Font(9.0f));
+                g.drawText(keys[i], rect.reduced(4), juce::Justification::bottomRight);
+            }
         }
     }
 
@@ -1095,14 +1196,16 @@ public:
     {
         int pad = padFromY(e.y);
         if (pad < 0 || pad > 3) return;
+        activePad = pad;
         padStates[(size_t)pad] = true;
         firePad(pad, true);
         repaint();
     }
 
-    void mouseUp(const juce::MouseEvent& e) override
+    void mouseUp(const juce::MouseEvent&) override
     {
-        int pad = padFromY(e.y);
+        int pad = activePad;
+        activePad = -1;
         if (pad < 0 || pad > 3) return;
         padStates[(size_t)pad] = false;
         firePad(pad, false);
@@ -1126,6 +1229,7 @@ public:
 
 private:
     std::array<bool, 4> padStates {};
+    int activePad = -1;
 
     int padFromY(int y) const
     {
@@ -1260,7 +1364,22 @@ public:
             };
         }
 
-        startTimerHz(30);
+        // F11: Explicit button colors — override default JUCE styling
+        {
+            auto applyBtnColors = [](juce::TextButton& btn) {
+                btn.setColour(juce::TextButton::buttonColourId,   juce::Colour(0xFF2D2D2D));
+                btn.setColour(juce::TextButton::buttonOnColourId, juce::Colour(0xFFE9C46A));
+                btn.setColour(juce::TextButton::textColourOffId,  juce::Colour(0xFFAAAAAA));
+                btn.setColour(juce::TextButton::textColourOnId,   juce::Colour(0xFF1A1A1A));
+            };
+            for (int i = 0; i < 3; ++i) applyBtnColors(modeButtons[i]);
+            for (int i = 0; i < 4; ++i) applyBtnColors(bankButtons[i]);
+            for (int i = 0; i < 4; ++i) applyBtnColors(stripModeButtons[i]);
+            applyBtnColors(octDownBtn);
+            applyBtnColors(octUpBtn);
+        }
+
+        // Timer is started in visibilityChanged() when the window becomes visible.
     }
 
     ~PlaySurface() override { stopTimer(); }
@@ -1274,6 +1393,18 @@ public:
     {
         noteInput.midiCollector = collector;
         noteInput.midiChannel   = channel;
+    }
+
+    // Engine Accent Adaptive: propagate accent colour to all four zones.
+    // Call this from XOlokunEditor::timerCallback() when the active engine changes.
+    void setAccentColour(juce::Colour c)
+    {
+        accentColour = c;
+        noteInput.setAccentColour(c);
+        orbitPath.setAccentColour(c);
+        strip.setAccentColour(c);
+        perfPads.setAccentColour(c);
+        repaint();
     }
 
     // Public zone accessors for wiring callbacks
@@ -1318,8 +1449,9 @@ public:
         auto mainArea = area;
         int mainH = mainArea.getHeight();
 
-        // Give Zone 1 a square region (side = mainH so the 4x4 grid fills it exactly)
-        int z1w = mainH;
+        // Give Zone 1 a square region clamped so it never overflows at narrow aspect ratios
+        int z1w = std::min(mainH, mainArea.getWidth() - PS::kZone4W - 60);
+        z1w = std::max(z1w, 120);  // minimum usable pad size
         // Zone 4 fixed width
         int z4w = std::min(PS::kZone4W, mainArea.getWidth() - z1w - 40);
         z4w = std::max(z4w, 60); // floor so it stays usable
@@ -1332,6 +1464,21 @@ public:
     void paint(juce::Graphics& g) override
     {
         g.fillAll(juce::Colour(PS::kSurfaceBg));
+    }
+
+    void visibilityChanged() override
+    {
+        if (isVisible())
+            startTimerHz(30);
+        else
+            stopTimer();
+    }
+
+    void focusLost(FocusChangeType) override
+    {
+        // Release all held performance pads when focus leaves the PlaySurface.
+        for (int i = 0; i < 4; ++i)
+            perfPads.handleKey(juce::KeyPress('z' + i), false);
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -1364,6 +1511,8 @@ private:
         orbitPath.tick();
         strip.tick();
     }
+
+    juce::Colour accentColour { 0xFFE9C46A }; // Default: XO Gold
 
     NoteInputZone      noteInput;
     OrbitPathZone      orbitPath;
@@ -1412,6 +1561,10 @@ public:
     static constexpr int kMaxW      = 1200;
     static constexpr int kMaxH      = 1200;
 
+    // Optional callback fired when the window is closed/hidden by the user.
+    // XOlokunEditor uses this to sync the "PS" toggle button state.
+    std::function<void()> onClosed;
+
     PlaySurfaceWindow()
         : juce::DocumentWindow (
               "PlaySurface",
@@ -1431,11 +1584,20 @@ public:
         // Position initially centered on the main screen.
         centreWithSize (kDefaultW, kDefaultH);
 
-        // Keep the window behind the plugin editor on first open.
-        setAlwaysOnTop (false);
+        // Performance tool window — keep it visible above the DAW.
+        setAlwaysOnTop (true);
     }
 
     ~PlaySurfaceWindow() override = default;
+
+    //----------------------------------------------------------------------
+    // Grab keyboard focus when the window becomes visible so keyboard
+    // shortcuts (Z/X/C/V pads, octave keys) work immediately on open.
+    void visibilityChanged() override
+    {
+        if (isVisible())
+            getPlaySurface().grabKeyboardFocus();
+    }
 
     //----------------------------------------------------------------------
     // Returns a reference to the embedded PlaySurface for wiring MIDI etc.
@@ -1450,6 +1612,7 @@ public:
     void closeButtonPressed() override
     {
         setVisible (false);
+        if (onClosed) onClosed();
     }
 
     //----------------------------------------------------------------------
@@ -1459,6 +1622,7 @@ public:
         if (key == juce::KeyPress::escapeKey)
         {
             setVisible (false);
+            if (onClosed) onClosed();
             return true;
         }
         return juce::DocumentWindow::keyPressed (key);

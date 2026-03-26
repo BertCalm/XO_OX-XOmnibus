@@ -771,8 +771,10 @@ public:
 
                     modeFreq *= prep.freqMul;
 
-                    // Stone Q: very high, modified by preparation and density
-                    float modeQ = baseQ * prep.qMul;
+                    // Stone Q: very high, modified by preparation, density smoother, and mode index
+                    // densNow smoothly tracks effectiveDensity per sample (vs block-rate baseQ)
+                    float perSampleQ = 200.0f + densNow * 800.0f;
+                    float modeQ = perSampleQ * prep.qMul;
                     // Higher modes have slightly lower Q (radiation damping)
                     modeQ /= (1.0f + static_cast<float> (m) * 0.15f);
                     modeQ = std::max (modeQ, 1.0f);
@@ -843,8 +845,10 @@ public:
                     resonanceSum += hfNoise * effectiveHFNoise * 0.3f;
                 }
 
-                // Amplitude envelope: stone has long natural decay
-                voice.ampLevel *= baseDecayCoeff;
+                // Amplitude envelope: stone has long natural decay.
+                // dampNow smoothly tracks pDamping per sample for responsive damping control.
+                float perSampleDecayCoeff = std::exp (-1.0f / (std::max (pDecay * (1.0f - dampNow * 0.8f), 0.01f) * srf));
+                voice.ampLevel *= perSampleDecayCoeff;
                 voice.ampLevel = flushDenormal (voice.ampLevel);
                 if (voice.ampLevel < 1e-7f) { voice.active = false; continue; }
 

@@ -75,7 +75,7 @@ public:
 
         float effectiveBitDepth = std::clamp(snap.bitDepth + biome.understoryBitShift,
                                               4.0f, 16.0f);
-        float effectiveSampleRateRed = std::clamp(snap.sampleRateRed, 4000.0f, 44100.0f);
+        float effectiveSampleRateRed = std::clamp(snap.sampleRateRed, 4000.0f, 192000.0f);
         float effectiveWobble = std::clamp(snap.tapeWobble + biome.understoryWobbleBase,
                                             0.0f, 1.0f);
 

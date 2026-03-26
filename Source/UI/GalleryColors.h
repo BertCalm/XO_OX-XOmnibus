@@ -15,10 +15,10 @@
 namespace xolokun {
 namespace GalleryColors {
 
-    // Theme state — dark by default
+    // Theme state — light by default (brand rule: light mode is primary)
     inline bool& darkMode()
     {
-        static bool dark = true;
+        static bool dark = false;
         return dark;
     }
 
@@ -127,16 +127,50 @@ namespace GalleryColors {
         if (id == "Obbligato") return juce::Colour(0xFFFF8A7A);
         if (id == "Ottoni")    return juce::Colour(0xFF5B8A72);
         if (id == "Ole")       return juce::Colour(0xFFC9377A);
-        if (id == "XOverlap")  return juce::Colour(0xFF00FFB4);
-        if (id == "XOutwit")   return juce::Colour(0xFFCC6600);
+        if (id == "Overlap")   return juce::Colour(0xFF00FFB4);
+        if (id == "Outwit")    return juce::Colour(0xFFCC6600);
         if (id == "OpenSky")   return juce::Colour(0xFFFF8C00);
         if (id == "Ostinato")  return juce::Colour(0xFFE8701A);
-        if (id == "Oceandeep") return juce::Colour(0xFF2D0A4E);
+        if (id == "OceanDeep") return juce::Colour(0xFF2D0A4E);
         if (id == "Ouie")      return juce::Colour(0xFF708090);
         if (id == "Obrix")     return juce::Colour(0xFF1E8B7E);
         if (id == "Orbweave")  return juce::Colour(0xFF8E4585);
         if (id == "Overtone")  return juce::Colour(0xFFA8D8EA);
         if (id == "Organism")  return juce::Colour(0xFFC6E377);
+        if (id == "Oaken")     return juce::Colour(0xFF9C6B30);
+        if (id == "Oasis")     return juce::Colour(0xFF00827F);
+        if (id == "Obelisk")   return juce::Colour(0xFFFFFFF0);
+        if (id == "Ochre")     return juce::Colour(0xFFCC7722);
+        if (id == "Octave")    return juce::Colour(0xFF8B6914);
+        if (id == "Octopus")   return juce::Colour(0xFFE040FB);
+        if (id == "Oddfellow") return juce::Colour(0xFFB87333);
+        if (id == "Offering")  return juce::Colour(0xFFE5B80B);
+        if (id == "Ogre")      return juce::Colour(0xFF0D0D0D);
+        if (id == "Olate")     return juce::Colour(0xFF5C3317);
+        if (id == "Oleg")      return juce::Colour(0xFFC0392B);
+        if (id == "Ombre")     return juce::Colour(0xFF7B6B8A);
+        if (id == "Omega")     return juce::Colour(0xFF003366);
+        if (id == "Onkolo")    return juce::Colour(0xFFFFBF00);
+        if (id == "Opaline")   return juce::Colour(0xFFB7410E);
+        if (id == "Opcode")    return juce::Colour(0xFF00CED1);
+        if (id == "Opera")     return juce::Colour(0xFFD4AF37);
+        if (id == "Orca")      return juce::Colour(0xFF1B2838);
+        if (id == "Orchard")   return juce::Colour(0xFFFFB7C5);
+        if (id == "Osier")     return juce::Colour(0xFFC0C8C8);
+        if (id == "Osmosis")   return juce::Colour(0xFFC0C0C0);
+        if (id == "Otis")      return juce::Colour(0xFFD4A017);
+        if (id == "Oto")       return juce::Colour(0xFFF5F0E8);
+        if (id == "Outlook")   return juce::Colour(0xFF4169E1);
+        if (id == "Oven")      return juce::Colour(0xFF1C1C1C);
+        if (id == "Overcast")  return juce::Colour(0xFF778899);
+        if (id == "Overflow")  return juce::Colour(0xFF1A3A5C);
+        if (id == "Overgrow")  return juce::Colour(0xFF228B22);
+        if (id == "Overwash")  return juce::Colour(0xFFF0F8FF);
+        if (id == "Overworn")  return juce::Colour(0xFF808080);
+        if (id == "Oware")     return juce::Colour(0xFFB5883E);
+        if (id == "Oxalis")    return juce::Colour(0xFF9B59B6);
+        if (id == "Oxbow")     return juce::Colour(0xFF1A6B5A);
+        if (id == "Oxytocin")  return juce::Colour(0xFF9B5DE5);
         return get(borderGray());
     }
 

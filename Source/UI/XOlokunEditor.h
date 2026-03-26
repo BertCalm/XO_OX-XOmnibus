@@ -85,9 +85,7 @@ public:
           presetBrowser(proc),
           ghostTile(proc, 4)   // Ghost Slot — 5th tile, slot index 4
     {
-        // Force dark mode on startup — override any stale persistence
-        GalleryColors::darkMode() = true;
-
+        // Light mode is the default (brand rule); SettingsPanel restores user's saved preference.
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
 
@@ -129,9 +127,9 @@ public:
         addAndMakeVisible(enginesBtn);
         enginesBtn.setButtonText(juce::String("ENGINES ") + juce::String(juce::CharPointer_UTF8("\xe2\x96\xbe")));
         enginesBtn.setTooltip("Select engine for focused slot");
-        // Style: T2 text (secondary color), matches prototype .engines-btn
-        enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::Dark::t2));
-        enginesBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::Dark::t1));
+        // Style: T2 text (secondary color), matches prototype .engines-btn — use theme-aware accessors
+        enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t2()));
+        enginesBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
         A11y::setup (enginesBtn, "Engines Button", "Open engine selection for the focused slot");
         enginesBtn.onClick = [this]
         {
@@ -823,10 +821,18 @@ private:
         if (playSurfaceWindow == nullptr)
         {
             playSurfaceWindow = std::make_unique<PlaySurfaceWindow>();
+            // F10: Propagate LookAndFeel to all child components in the popup tree.
+            if (laf)
+                playSurfaceWindow->setLookAndFeel (laf.get());
             // Wire MIDI: PlaySurface note events flow through the processor's
             // MidiMessageCollector, drained into processBlock each audio callback.
             playSurfaceWindow->getPlaySurface()
                 .setMidiCollector (&processor.getMidiCollector(), 1);
+            // Sync the PS toggle button when the window is closed by the user.
+            playSurfaceWindow->onClosed = [this]
+            {
+                surfaceToggleBtn.setToggleState(false, juce::dontSendNotification);
+            };
         }
 
         playSurfaceWindow->setVisible (true);
@@ -986,6 +992,22 @@ private:
         }
         if (ghostTile.isVisible())
             miniCouplingGraph.setNodeCenter(4, (float)ghostTile.getBounds().getCentreY());
+
+        // ── PlaySurface accent colour — track the first loaded engine ─────────
+        if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
+        {
+            static const juce::Colour kXOGoldAccent(0xFFE9C46A);
+            juce::Colour accent = kXOGoldAccent;
+            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+            {
+                if (auto* eng = processor.getEngine(i))
+                {
+                    accent = eng->getAccentColour();
+                    break;
+                }
+            }
+            playSurfaceWindow->getPlaySurface().setAccentColour(accent);
+        }
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.

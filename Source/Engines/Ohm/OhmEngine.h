@@ -154,22 +154,31 @@ struct OhmDelay {
 // Simple reverb (Schroeder-style allpass + comb)
 struct OhmReverb {
     // 4 comb filters + 2 allpass
+    // Reference delay lengths tuned at 44100 Hz — scaled at runtime for any sample rate.
+    static constexpr double kRefSampleRate = 44100.0;
     static constexpr int kNumCombs = 4;
-    static constexpr int kCombLens[4] = { 1116, 1188, 1277, 1356 };
-    static constexpr int kAP1Len = 225, kAP2Len = 556;
+    static constexpr int kCombLensRef[4] = { 1116, 1188, 1277, 1356 };
+    static constexpr int kAP1LenRef = 225, kAP2LenRef = 556;
+
+    // Runtime-scaled lengths (set in prepare())
+    int combLens[kNumCombs] = { 1116, 1188, 1277, 1356 };
+    int ap1Len = 225, ap2Len = 556;
 
     std::vector<float> combBuf[kNumCombs], ap1Buf, ap2Buf;
     int combPos[kNumCombs] = {}, ap1Pos = 0, ap2Pos = 0;
     float combState[kNumCombs] = {};
 
-    void prepare(double /*sampleRate*/) {
+    void prepare(double sampleRate) {
         for (int i = 0; i < kNumCombs; ++i) {
-            combBuf[i].assign(kCombLens[i], 0.0f);
+            combLens[i] = static_cast<int>(kCombLensRef[i] * sampleRate / kRefSampleRate + 0.5);
+            combBuf[i].assign(combLens[i], 0.0f);
             combPos[i] = 0;
             combState[i] = 0.0f;
         }
-        ap1Buf.assign(kAP1Len, 0.0f); ap1Pos = 0;
-        ap2Buf.assign(kAP2Len, 0.0f); ap2Pos = 0;
+        ap1Len = static_cast<int>(kAP1LenRef * sampleRate / kRefSampleRate + 0.5);
+        ap2Len = static_cast<int>(kAP2LenRef * sampleRate / kRefSampleRate + 0.5);
+        ap1Buf.assign(ap1Len, 0.0f); ap1Pos = 0;
+        ap2Buf.assign(ap2Len, 0.0f); ap2Pos = 0;
     }
     void reset() {
         for (int i = 0; i < kNumCombs; ++i) {
@@ -185,7 +194,7 @@ struct OhmReverb {
             float rd = combBuf[i][combPos[i]];
             combState[i] = flushDenormal(rd * 0.84f + combState[i] * 0.16f);
             combBuf[i][combPos[i]] = flushDenormal(in + combState[i] * 0.75f);
-            combPos[i] = (combPos[i] + 1) % kCombLens[i];
+            combPos[i] = (combPos[i] + 1) % combLens[i];
             comb += rd;
         }
         comb *= 0.25f;
@@ -193,18 +202,18 @@ struct OhmReverb {
         float ap1rd = ap1Buf[ap1Pos];
         ap1Buf[ap1Pos] = flushDenormal(comb + ap1rd * 0.5f);
         float ap1out = ap1rd - comb * 0.5f;
-        ap1Pos = (ap1Pos + 1) % kAP1Len;
+        ap1Pos = (ap1Pos + 1) % ap1Len;
         // Allpass 2
         float ap2rd = ap2Buf[ap2Pos];
         ap2Buf[ap2Pos] = flushDenormal(ap1out + ap2rd * 0.5f);
         float ap2out = ap2rd - ap1out * 0.5f;
-        ap2Pos = (ap2Pos + 1) % kAP2Len;
+        ap2Pos = (ap2Pos + 1) % ap2Len;
 
         return in * (1.0f - mix) + flushDenormal(ap2out) * mix;
     }
 };
 
-constexpr int OhmReverb::kCombLens[4];
+constexpr int OhmReverb::kCombLensRef[4];
 
 // Single OHM voice
 struct OhmAdapterVoice {

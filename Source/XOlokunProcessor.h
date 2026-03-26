@@ -335,6 +335,12 @@ private:
     // PlaySurface MIDI collector — message thread enqueues, processBlock drains.
     juce::MidiMessageCollector playSurfaceMidiCollector;
 
+    // Set to true once setStateInformation() successfully restores saved state.
+    // Used by prepareToPlay() to load a default engine on first launch (no saved state).
+    // Must be atomic: setStateInformation runs on the message thread, prepareToPlay
+    // can be called from any thread depending on host. (Audit P0-2 CRITICAL-1)
+    std::atomic<bool> hasRestoredState { false };
+
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);
 

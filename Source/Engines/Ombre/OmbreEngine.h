@@ -427,7 +427,7 @@ public:
                     case OmbreVoice::EnvStage::Attack:
                         envTarget = 1.0f;
                         envRate = (attack > 0.001f) ? (1.0f / (attack * srf)) : 1.0f;
-                        voice.envLevel += envRate;
+                        voice.envLevel += (envTarget - voice.envLevel) * envRate;
                         if (voice.envLevel >= 1.0f)
                         {
                             voice.envLevel = 1.0f;
@@ -447,8 +447,9 @@ public:
                         voice.envLevel = sustain;
                         break;
                     case OmbreVoice::EnvStage::Release:
+                        envTarget = 0.0f;
                         envRate = (release > 0.001f) ? (1.0f / (release * srf)) : 1.0f;
-                        voice.envLevel -= envRate;
+                        voice.envLevel += (envTarget - voice.envLevel) * envRate;
                         if (voice.envLevel <= 0.0f)
                         {
                             voice.envLevel = 0.0f;

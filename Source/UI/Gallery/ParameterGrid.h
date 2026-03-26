@@ -111,7 +111,7 @@ public:
         , midiLearn(midiLearn_)
     {
         auto& rawParams = proc.getParameters(); // juce::AudioProcessor::getParameters()
-        juce::String pfx = enginePrefix + "_";
+        juce::String pfx = enginePrefix.endsWith("_") ? enginePrefix : (enginePrefix + "_");
 
         // ── Collect params into per-section buckets ─────────────────────────
         // 6 buckets — index matches Section enum value (OSC=0 … OTHER=5)

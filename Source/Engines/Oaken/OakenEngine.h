@@ -592,6 +592,7 @@ public:
                 // Output brightness filter
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 4000.0f;
                 float cutoff = std::clamp (brightNow + envMod + lfo1Val * 2000.0f
+                                           + lfo2Val * 2000.0f
                                            + voice.velocity * 2000.0f, 200.0f, 20000.0f);
                 voice.outputFilter.setMode (CytomicSVF::Mode::LowPass);
                 voice.outputFilter.setCoefficients (cutoff, 0.3f, srf);

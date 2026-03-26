@@ -642,7 +642,14 @@ public:
                     voiceSignal = voiceSignal * (1.0f - smoothedCrushMix) + countershaded * smoothedCrushMix;
                 }
 
-                // --- Main filter ---
+                // --- Main filter (LFO2 modulates cutoff per sample) ---
+                {
+                    static constexpr float kMaxCutoffOffsetInner = 3000.0f;
+                    float baseCutoff = clamp (effectiveCutoff + pVelCutoffAmt * voice.velocity * kMaxCutoffOffsetInner,
+                                             20.0f, 20000.0f);
+                    float lfo2Cutoff = clamp (baseCutoff + lfo2Val * 2000.0f, 20.0f, 20000.0f);
+                    voice.mainFilter.setCoefficients (lfo2Cutoff, effectiveReso, srf);
+                }
                 voiceSignal = voice.mainFilter.processSample (voiceSignal);
 
                 // --- AudioToRing coupling: ring-modulate voice signal ---

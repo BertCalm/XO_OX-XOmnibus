@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cstring>
 #include <cstdint>
+#include <vector>
 
 namespace xolokun {
 
@@ -247,44 +248,73 @@ struct OrgFilter {
 
 // ---------------------------------------------------------------------------
 // OrgReverb — minimal allpass diffusion reverb (emergence shimmer)
+// Reference delay lengths tuned at 44100 Hz — scaled at runtime for any sample rate.
 // ---------------------------------------------------------------------------
 struct OrgReverb {
-    static constexpr int kAP1Len = 347, kAP2Len = 673;
-    static constexpr int kAP3Len = 1021, kAP4Len = 1471;
-    static constexpr int kComb1 = 1741, kComb2 = 1951;
-    static constexpr int kComb3 = 2129, kComb4 = 2311;
+    // Reference lengths at 44100 Hz (do not change — these define the reverb character)
+    static constexpr double kRefSampleRate = 44100.0;
+    static constexpr int kAP1LenRef = 347,  kAP2LenRef = 673;
+    static constexpr int kAP3LenRef = 1021, kAP4LenRef = 1471;
+    static constexpr int kComb1Ref  = 1741, kComb2Ref  = 1951;
+    static constexpr int kComb3Ref  = 2129, kComb4Ref  = 2311;
 
-    float ap1L[kAP1Len]={}, ap1R[kAP1Len]={};
-    float ap2L[kAP2Len]={}, ap2R[kAP2Len]={};
-    float ap3L[kAP3Len]={}, ap3R[kAP3Len]={};
-    float ap4L[kAP4Len]={}, ap4R[kAP4Len]={};
-    float c1L[kComb1]={}, c1R[kComb1]={};
-    float c2L[kComb2]={}, c2R[kComb2]={};
-    float c3L[kComb3]={}, c3R[kComb3]={};
-    float c4L[kComb4]={}, c4R[kComb4]={};
+    // Runtime-scaled lengths (set in prepare())
+    int ap1Len = kAP1LenRef, ap2Len = kAP2LenRef;
+    int ap3Len = kAP3LenRef, ap4Len = kAP4LenRef;
+    int comb1Len = kComb1Ref, comb2Len = kComb2Ref;
+    int comb3Len = kComb3Ref, comb4Len = kComb4Ref;
+
+    // Delay buffers — heap-allocated so they can resize for any sample rate
+    std::vector<float> ap1L, ap1R;
+    std::vector<float> ap2L, ap2R;
+    std::vector<float> ap3L, ap3R;
+    std::vector<float> ap4L, ap4R;
+    std::vector<float> c1L, c1R;
+    std::vector<float> c2L, c2R;
+    std::vector<float> c3L, c3R;
+    std::vector<float> c4L, c4R;
+
     int p1L=0,p1R=0,p2L=0,p2R=0,p3L=0,p3R=0,p4L=0,p4R=0;
     int pc1L=0,pc1R=0,pc2L=0,pc2R=0,pc3L=0,pc3R=0,pc4L=0,pc4R=0;
     float cs1L=0.f,cs1R=0.f,cs2L=0.f,cs2R=0.f;
     float cs3L=0.f,cs3R=0.f,cs4L=0.f,cs4R=0.f;
 
     void reset() {
-        std::fill(ap1L, ap1L+kAP1Len, 0.f); std::fill(ap1R, ap1R+kAP1Len, 0.f);
-        std::fill(ap2L, ap2L+kAP2Len, 0.f); std::fill(ap2R, ap2R+kAP2Len, 0.f);
-        std::fill(ap3L, ap3L+kAP3Len, 0.f); std::fill(ap3R, ap3R+kAP3Len, 0.f);
-        std::fill(ap4L, ap4L+kAP4Len, 0.f); std::fill(ap4R, ap4R+kAP4Len, 0.f);
-        std::fill(c1L, c1L+kComb1, 0.f); std::fill(c1R, c1R+kComb1, 0.f);
-        std::fill(c2L, c2L+kComb2, 0.f); std::fill(c2R, c2R+kComb2, 0.f);
-        std::fill(c3L, c3L+kComb3, 0.f); std::fill(c3R, c3R+kComb3, 0.f);
-        std::fill(c4L, c4L+kComb4, 0.f); std::fill(c4R, c4R+kComb4, 0.f);
+        auto clr = [](std::vector<float>& v){ std::fill(v.begin(), v.end(), 0.f); };
+        clr(ap1L); clr(ap1R); clr(ap2L); clr(ap2R);
+        clr(ap3L); clr(ap3R); clr(ap4L); clr(ap4R);
+        clr(c1L);  clr(c1R);  clr(c2L);  clr(c2R);
+        clr(c3L);  clr(c3R);  clr(c4L);  clr(c4R);
         p1L=p1R=p2L=p2R=p3L=p3R=p4L=p4R=0;
         pc1L=pc1R=pc2L=pc2R=pc3L=pc3R=pc4L=pc4R=0;
         cs1L=cs1R=cs2L=cs2R=cs3L=cs3R=cs4L=cs4R=0.f;
     }
 
-    void prepare(double /*sr*/) { reset(); }
+    void prepare(double sampleRate) {
+        auto scale = [&](int ref) {
+            return static_cast<int>(ref * sampleRate / kRefSampleRate + 0.5);
+        };
+        ap1Len   = scale(kAP1LenRef);  ap2Len   = scale(kAP2LenRef);
+        ap3Len   = scale(kAP3LenRef);  ap4Len   = scale(kAP4LenRef);
+        comb1Len = scale(kComb1Ref);   comb2Len = scale(kComb2Ref);
+        comb3Len = scale(kComb3Ref);   comb4Len = scale(kComb4Ref);
+
+        ap1L.assign(ap1Len, 0.f);   ap1R.assign(ap1Len, 0.f);
+        ap2L.assign(ap2Len, 0.f);   ap2R.assign(ap2Len, 0.f);
+        ap3L.assign(ap3Len, 0.f);   ap3R.assign(ap3Len, 0.f);
+        ap4L.assign(ap4Len, 0.f);   ap4R.assign(ap4Len, 0.f);
+        c1L.assign(comb1Len, 0.f);  c1R.assign(comb1Len, 0.f);
+        c2L.assign(comb2Len, 0.f);  c2R.assign(comb2Len, 0.f);
+        c3L.assign(comb3Len, 0.f);  c3R.assign(comb3Len, 0.f);
+        c4L.assign(comb4Len, 0.f);  c4R.assign(comb4Len, 0.f);
+
+        p1L=p1R=p2L=p2R=p3L=p3R=p4L=p4R=0;
+        pc1L=pc1R=pc2L=pc2R=pc3L=pc3R=pc4L=pc4R=0;
+        cs1L=cs1R=cs2L=cs2R=cs3L=cs3R=cs4L=cs4R=0.f;
+    }
 
     // ap: generic allpass node
-    static float runAP(float* buf, int& pos, int len, float g, float in) {
+    static float runAP(std::vector<float>& buf, int& pos, int len, float g, float in) {
         float rd = buf[pos];
         float wr = in + g * rd;
         wr = flushDenormal(wr);
@@ -294,7 +324,7 @@ struct OrgReverb {
     }
 
     // comb with LP damping
-    static float runComb(float* buf, int& pos, float& state,
+    static float runComb(std::vector<float>& buf, int& pos, float& state,
                          int len, float fb, float damp, float in) {
         float rd = buf[pos];
         state = flushDenormal(rd * (1.f - damp) + state * damp);
@@ -311,24 +341,24 @@ struct OrgReverb {
         float damp = 0.25f;
 
         float wL = 0.f, wR = 0.f;
-        wL += runComb(c1L, pc1L, cs1L, kComb1, fb, damp, inL);
-        wR += runComb(c1R, pc1R, cs1R, kComb1, fb, damp, inR);
-        wL += runComb(c2L, pc2L, cs2L, kComb2, fb, damp, inL);
-        wR += runComb(c2R, pc2R, cs2R, kComb2, fb, damp, inR);
-        wL += runComb(c3L, pc3L, cs3L, kComb3, fb, damp, inL);
-        wR += runComb(c3R, pc3R, cs3R, kComb3, fb, damp, inR);
-        wL += runComb(c4L, pc4L, cs4L, kComb4, fb, damp, inL);
-        wR += runComb(c4R, pc4R, cs4R, kComb4, fb, damp, inR);
+        wL += runComb(c1L, pc1L, cs1L, comb1Len, fb, damp, inL);
+        wR += runComb(c1R, pc1R, cs1R, comb1Len, fb, damp, inR);
+        wL += runComb(c2L, pc2L, cs2L, comb2Len, fb, damp, inL);
+        wR += runComb(c2R, pc2R, cs2R, comb2Len, fb, damp, inR);
+        wL += runComb(c3L, pc3L, cs3L, comb3Len, fb, damp, inL);
+        wR += runComb(c3R, pc3R, cs3R, comb3Len, fb, damp, inR);
+        wL += runComb(c4L, pc4L, cs4L, comb4Len, fb, damp, inL);
+        wR += runComb(c4R, pc4R, cs4R, comb4Len, fb, damp, inR);
         wL *= 0.25f; wR *= 0.25f;
 
-        wL = runAP(ap1L, p1L, kAP1Len, 0.5f, wL);
-        wR = runAP(ap1R, p1R, kAP1Len, 0.5f, wR);
-        wL = runAP(ap2L, p2L, kAP2Len, 0.5f, wL);
-        wR = runAP(ap2R, p2R, kAP2Len, 0.5f, wR);
-        wL = runAP(ap3L, p3L, kAP3Len, 0.45f, wL);
-        wR = runAP(ap3R, p3R, kAP3Len, 0.45f, wR);
-        wL = runAP(ap4L, p4L, kAP4Len, 0.45f, wL);
-        wR = runAP(ap4R, p4R, kAP4Len, 0.45f, wR);
+        wL = runAP(ap1L, p1L, ap1Len, 0.5f, wL);
+        wR = runAP(ap1R, p1R, ap1Len, 0.5f, wR);
+        wL = runAP(ap2L, p2L, ap2Len, 0.5f, wL);
+        wR = runAP(ap2R, p2R, ap2Len, 0.5f, wR);
+        wL = runAP(ap3L, p3L, ap3Len, 0.45f, wL);
+        wR = runAP(ap3R, p3R, ap3Len, 0.45f, wR);
+        wL = runAP(ap4L, p4L, ap4Len, 0.45f, wL);
+        wR = runAP(ap4R, p4R, ap4Len, 0.45f, wR);
 
         inL = dryL * (1.f - mix) + wL * mix;
         inR = dryR * (1.f - mix) + wR * mix;

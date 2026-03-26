@@ -77,8 +77,8 @@ public:
             opts.osxLibrarySubFolder = "Application Support";
             settingsFile = std::make_unique<juce::PropertiesFile>(opts);
         }
-        // Restore persisted dark mode preference (default true if not yet saved).
-        GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", true);
+        // Restore persisted dark mode preference (default false — light mode is brand default).
+        GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", false);
         darkModeToggle.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
         // Re-apply theme after reading persisted preference
         if (auto* top = getTopLevelComponent())

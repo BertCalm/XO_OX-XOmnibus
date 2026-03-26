@@ -323,18 +323,26 @@ struct TavernRoom
         float fb2 = sum - d2 * 0.5f;
         float fb3 = sum - d3 * 0.5f;
 
-        // Apply absorption filter to the mixed signal
-        float filtered = absorptionFilter.processSample (sum);
+        // Apply absorption filter to the mixed signal — damps high frequencies
+        // in the FDN feedback path, simulating air absorption in the reverb tail.
+        float filtered = flushDenormal (absorptionFilter.processSample (sum));
+
+        // Recompute feedback contributions using the filtered (absorbed) sum so
+        // the absorption filter actually shapes the reverb tail.
+        float fbf0 = filtered - d0 * 0.5f;
+        float fbf1 = filtered - d1 * 0.5f;
+        float fbf2 = filtered - d2 * 0.5f;
+        float fbf3 = filtered - d3 * 0.5f;
 
         // Write to delays: staggered input gain (1.0, 0.7, 0.5, 0.3) creates
         // early reflection density variation across delay lines.
         // flushDenormal prevents feedback paths from accumulating subnormal
         // floats, which cause severe CPU spikes on x86 (up to 100x slowdown)
         // when the FPU falls back to microcode for denormal arithmetic.
-        writeDelay (0, input + flushDenormal (fb0 * feedback));
-        writeDelay (1, input * 0.7f + flushDenormal (fb1 * feedback));
-        writeDelay (2, input * 0.5f + flushDenormal (fb2 * feedback));
-        writeDelay (3, input * 0.3f + flushDenormal (fb3 * feedback));
+        writeDelay (0, input + flushDenormal (fbf0 * feedback));
+        writeDelay (1, input * 0.7f + flushDenormal (fbf1 * feedback));
+        writeDelay (2, input * 0.5f + flushDenormal (fbf2 * feedback));
+        writeDelay (3, input * 0.3f + flushDenormal (fbf3 * feedback));
 
         delayWritePos = (delayWritePos + 1) % kMaxDelay;
 

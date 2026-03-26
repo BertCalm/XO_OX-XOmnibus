@@ -1177,6 +1177,24 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
                                     silenceGateHoldMs(eng->getEngineId()));
         }
     }
+
+    // On first launch (no saved state), load Obrix into Slot 0 so the plugin
+    // opens with a working engine rather than silence.
+    //
+    // NOTE: This is NOT guaranteed to run only once per session. auval calls
+    // prepareToPlay without calling setStateInformation, so hasRestoredState
+    // will be false during AU validation. The engines[0] == nullptr guard
+    // ensures loadEngine() is called at most once in that path.
+    //
+    // In real DAW sessions, setStateInformation() typically runs before the
+    // first prepareToPlay(), setting hasRestoredState = true and bypassing
+    // this block. However, this ordering is host-dependent and not part of
+    // the JUCE AudioProcessor contract. (Audit P0-2 CRITICAL-2)
+    if (!hasRestoredState.load(std::memory_order_acquire)
+        && std::atomic_load(&engines[0]) == nullptr)
+    {
+        loadEngine(0, "Obrix");
+    }
 }
 
 void XOlokunProcessor::releaseResources()
@@ -1828,6 +1846,7 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml && xml->hasTagName(apvts.state.getType()))
     {
+        hasRestoredState = true;  // Mark that saved state exists — skip default-engine load in prepareToPlay.
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
 
         // FIX 4 — Read schema version so we can gate new restore blocks
@@ -1989,6 +2008,146 @@ void XOlokunProcessor::applyPreset(const PresetData& preset)
         syncParam("cm_humanize", chordMachine.getHumanize());
         syncParam("cm_sidechain_duck", chordMachine.getSidechainDuck());
         syncBool("cm_eno_mode", chordMachine.isEnoMode());
+    }
+
+    // Restore coupling routes from preset data.
+    // This is the primary differentiator for XOlokun — coupling routes MUST
+    // be restored when a preset is applied, or the patch will sound wrong.
+    //
+    // Strategy:
+    //   1. Clear all existing routes.
+    //   2. For each CouplingPair, find the slot indices for engineA and engineB
+    //      by comparing getEngineId() against the resolved canonical name.
+    //   3. Convert the type string to a CouplingType enum value.
+    //   4. Add the route if both slots are valid and distinct.
+    //
+    // Edge cases handled:
+    //   - Engine not loaded in any slot → route is skipped (not a crash)
+    //   - Self-coupling (sourceSlot == destSlot) → route is skipped
+    //   - Unknown type string → route is skipped (already validated by parseJSON,
+    //     but we guard here for safety)
+    if (!preset.couplingPairs.empty())
+    {
+        // Helper: convert a validated coupling type string to CouplingType enum.
+        // Handles both CamelCase ("AmpToFilter") and arrow-notation
+        // ("Amp->Filter") forms — both are accepted by parseJSON/validCouplingTypes.
+        auto stringToCouplingType = [](const juce::String& s, CouplingType& out) -> bool
+        {
+            // CamelCase canonical forms (primary)
+            if (s == "AmpToFilter")        { out = CouplingType::AmpToFilter;       return true; }
+            if (s == "AmpToPitch")         { out = CouplingType::AmpToPitch;        return true; }
+            if (s == "LFOToPitch")         { out = CouplingType::LFOToPitch;        return true; }
+            if (s == "EnvToMorph")         { out = CouplingType::EnvToMorph;        return true; }
+            if (s == "AudioToFM")          { out = CouplingType::AudioToFM;         return true; }
+            if (s == "AudioToRing")        { out = CouplingType::AudioToRing;       return true; }
+            if (s == "FilterToFilter")     { out = CouplingType::FilterToFilter;    return true; }
+            if (s == "AmpToChoke")         { out = CouplingType::AmpToChoke;        return true; }
+            if (s == "RhythmToBlend")      { out = CouplingType::RhythmToBlend;     return true; }
+            if (s == "EnvToDecay")         { out = CouplingType::EnvToDecay;        return true; }
+            if (s == "PitchToPitch")       { out = CouplingType::PitchToPitch;      return true; }
+            if (s == "AudioToWavetable")   { out = CouplingType::AudioToWavetable;  return true; }
+            if (s == "AudioToBuffer")      { out = CouplingType::AudioToBuffer;     return true; }
+            if (s == "KnotTopology")       { out = CouplingType::KnotTopology;      return true; }
+            if (s == "TriangularCoupling") { out = CouplingType::TriangularCoupling; return true; }
+            // Legacy arrow-notation aliases
+            if (s == "Amp->Filter")        { out = CouplingType::AmpToFilter;       return true; }
+            if (s == "Amp->Pitch")         { out = CouplingType::AmpToPitch;        return true; }
+            if (s == "LFO->Pitch")         { out = CouplingType::LFOToPitch;        return true; }
+            if (s == "Env->Morph")         { out = CouplingType::EnvToMorph;        return true; }
+            if (s == "Audio->FM")          { out = CouplingType::AudioToFM;         return true; }
+            if (s == "Audio->Ring")        { out = CouplingType::AudioToRing;       return true; }
+            if (s == "Filter->Filter")     { out = CouplingType::FilterToFilter;    return true; }
+            if (s == "Amp->Choke")         { out = CouplingType::AmpToChoke;        return true; }
+            if (s == "Rhythm->Blend")      { out = CouplingType::RhythmToBlend;     return true; }
+            if (s == "Env->Decay")         { out = CouplingType::EnvToDecay;        return true; }
+            if (s == "Pitch->Pitch")       { out = CouplingType::PitchToPitch;      return true; }
+            if (s == "Audio->Wavetable")   { out = CouplingType::AudioToWavetable;  return true; }
+            if (s == "Audio->Buffer")      { out = CouplingType::AudioToBuffer;     return true; }
+            if (s == "Knot->Topology")     { out = CouplingType::KnotTopology;      return true; }
+            if (s == "Triangular->Coupling") { out = CouplingType::TriangularCoupling; return true; }
+            return false; // unknown type string — caller should skip this route
+        };
+
+        // Build routes into a pending list first — only clear the matrix
+        // if we successfully resolve at least one route. This prevents
+        // unconditional clearing when a preset references engines that
+        // aren't currently loaded (audit finding: P0-1 CRITICAL-2).
+        std::vector<MegaCouplingMatrix::CouplingRoute> pendingRoutes;
+
+        for (const auto& cp : preset.couplingPairs)
+        {
+            // Resolve legacy aliases so old presets still work.
+            const juce::String canonA = resolveEngineAlias(cp.engineA);
+            const juce::String canonB = resolveEngineAlias(cp.engineB);
+
+            // Find slot indices for both engines by scanning active slots.
+            int slotA = -1;
+            int slotB = -1;
+            for (int i = 0; i < MaxSlots; ++i)
+            {
+                auto eng = std::atomic_load(&engines[i]);
+                if (eng == nullptr)
+                    continue;
+                const juce::String engId = eng->getEngineId();
+                if (slotA < 0 && engId == canonA)
+                    slotA = i;
+                if (slotB < 0 && engId == canonB)
+                    slotB = i;
+            }
+
+            if (slotA < 0 || slotB < 0)
+            {
+                DBG("applyPreset: coupling route skipped — engineA='" + canonA
+                    + "' (slot=" + juce::String(slotA) + ") engineB='" + canonB
+                    + "' (slot=" + juce::String(slotB) + ") not found in active slots");
+                continue;
+            }
+
+            if (slotA == slotB)
+                continue;
+
+            CouplingType couplingType {};
+            if (!stringToCouplingType(cp.type, couplingType))
+            {
+                DBG("applyPreset: unknown coupling type '" + cp.type + "' — route skipped");
+                continue;
+            }
+
+            // Preserve bipolar amounts for types that use them (e.g. AmpToPitch,
+            // PitchToPitch). Only force unipolar for inherently one-directional types.
+            // Audit finding: P0-1 CRITICAL-1 — std::abs() was destroying negative amounts.
+            const bool unipolarOnly = (couplingType == CouplingType::AmpToChoke
+                                    || couplingType == CouplingType::AudioToBuffer
+                                    || couplingType == CouplingType::AudioToWavetable);
+            const float clampedAmount = unipolarOnly
+                ? juce::jlimit(0.0f, 1.0f, std::abs(cp.amount))
+                : juce::jlimit(-1.0f, 1.0f, cp.amount);
+
+            MegaCouplingMatrix::CouplingRoute route;
+            route.sourceSlot  = slotA;
+            route.destSlot    = slotB;
+            route.type        = couplingType;
+            route.amount      = clampedAmount;
+            route.isNormalled = false;
+            route.active      = true;
+
+            pendingRoutes.push_back(route);
+        }
+
+        // Only clear + replace routes if we resolved at least one, OR if the
+        // preset explicitly has no coupling pairs (intentional uncoupled preset).
+        if (!pendingRoutes.empty() || preset.couplingPairs.empty())
+        {
+            couplingMatrix.clearRoutes();
+            for (const auto& r : pendingRoutes)
+                couplingMatrix.addRoute(r);
+        }
+        else if (!preset.couplingPairs.empty())
+        {
+            DBG("applyPreset: " + juce::String((int)preset.couplingPairs.size())
+                + " coupling routes could not be restored — required engines not loaded. "
+                + "Existing coupling routes preserved.");
+        }
     }
 }
 

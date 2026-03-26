@@ -187,7 +187,7 @@ inline void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParamete
     I(chopRate,        "Chop Rate",       1, 32,          8);
     F(chopSwing,       "Chop Swing",      0.0f, 1.0f,   0.1f);
     F(bitDepth,        "Bit Depth",       4.0f, 16.0f,  16.0f);
-    F(sampleRateRed,   "Sample Rate Red", 4000.0f, 44100.0f, 44100.0f, 0.3f);
+    F(sampleRateRed,   "Sample Rate Red", 4000.0f, 192000.0f, 44100.0f, 0.3f);
     F(tapeWobble,      "Tape Wobble",     0.0f, 1.0f,   0.0f);
     F(tapeAge,         "Tape Age",        0.0f, 1.0f,   0.1f);
     F(dustLevel,       "Dust Level",      0.0f, 1.0f,   0.1f);

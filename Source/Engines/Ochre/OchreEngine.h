@@ -122,7 +122,8 @@ static constexpr float kCopperModeAmps[16] = {
 struct OchreHammerModel
 {
     void trigger (float velocity, float hardness, float conductivity,
-                  float baseFreq, float sampleRate) noexcept
+                  float baseFreq, float sampleRate,
+                  float caramelParam = 0.3f) noexcept
     {
         active = true;
         sampleCounter = 0;
@@ -135,8 +136,9 @@ struct OchreHammerModel
         // Higher conductivity → more HF content in excitation
         noiseMix = hardness * hardness * (0.3f + conductivity * 0.7f);
 
-        // Caramel saturation amount — velocity-driven sweetening
-        caramelAmount = velocity * velocity * (0.5f + conductivity * 0.5f);
+        // Caramel saturation amount — velocity-driven sweetening, scaled by
+        // the caramel parameter (user control over initial transient warmth)
+        caramelAmount = velocity * velocity * (0.5f + conductivity * 0.5f) * (0.5f + caramelParam * 0.5f);
 
         // Mallet contact lowpass — copper transmits more HF than iron
         float cutoffMult = 2.0f + hardness * 22.0f + conductivity * 8.0f;
@@ -780,8 +782,8 @@ public:
         v.glide.snapTo (freq);
         v.ampLevel = 1.0f;
 
-        // Trigger hammer (Pillar 1)
-        v.hammer.trigger (vel, hardNow, condNow, freq, srf);
+        // Trigger hammer (Pillar 1) — caramelNow shapes initial transient warmth
+        v.hammer.trigger (vel, hardNow, condNow, freq, srf, caramelNow);
 
         // Filter envelope: copper = shorter decay than iron
         v.filterEnv.prepare (srf);

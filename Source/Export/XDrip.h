@@ -166,7 +166,9 @@ private:
     {
         // Lower thread priority so we don't compete with audio
 #if JUCE_MAC || JUCE_IOS
-        pthread_setschedparam(pthread_self(), SCHED_OTHER, nullptr);
+        struct sched_param sp = {};
+        sp.sched_priority = 0;
+        pthread_setschedparam(pthread_self(), SCHED_OTHER, &sp);
 #endif
 
         const double sr         = pendingSampleRate_;

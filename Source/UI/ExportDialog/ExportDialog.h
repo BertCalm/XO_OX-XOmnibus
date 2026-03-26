@@ -594,6 +594,7 @@ private:
         // Sample rate
         sampleRateBox.addItem("44.1 kHz", 1);
         sampleRateBox.addItem("48 kHz", 2);
+        sampleRateBox.addItem("96 kHz", 3);
         sampleRateBox.setSelectedId(2);
         sampleRateBox.setTooltip("WAV sample rate");
         A11y::setup(sampleRateBox, "Sample Rate", "Audio sample rate in kHz");
@@ -805,7 +806,7 @@ private:
 
         s.velocityLayers = velLayersBox.getSelectedId();
         s.bitDepth = (bitDepthBox.getSelectedId() == 1) ? 16 : 24;
-        s.sampleRate = (sampleRateBox.getSelectedId() == 1) ? 44100.0 : 48000.0;
+        s.sampleRate = (sampleRateBox.getSelectedId() == 1) ? 44100.0 : (sampleRateBox.getSelectedId() == 3) ? 96000.0 : 48000.0;
         s.useSoundShapes = soundShapeToggle.getToggleState();
 
         return s;

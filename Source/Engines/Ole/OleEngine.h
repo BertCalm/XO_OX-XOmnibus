@@ -195,9 +195,12 @@ public:
                 if (v.isHusband) {
                     exc = v.pluck.tick(voiceBright * 0.6f) * effIntens;
                 } else if (v.auntIdx == 0) {
-                    // Aunt 1 (Tres Cubano): uses strum rate param
-                    // Re-trigger strum on note-on handled in noteOn; strumRate affects brightness/energy
-                    exc = v.strum.tick(voiceBright * pFu) * effIntens;
+                    // Aunt 1 (Tres Cubano): strum rate shapes brightness — faster strum (higher pA1Sr)
+                    // produces tighter, brighter pluck energy. Boost is zero at default rate (8 Hz)
+                    // and ramps to 1.0 at max (30 Hz), preserving existing preset compatibility.
+                    // (Audit P0-6: original used min(pA1Sr/30, 1) which was non-zero at default)
+                    float strumBrightBoost = std::min (std::max (pA1Sr - 8.0f, 0.0f) / 22.0f, 1.0f);
+                    exc = v.strum.tick(voiceBright * pFu * (1.0f + strumBrightBoost * 0.3f)) * effIntens;
                 } else {
                     exc = v.strum.tick(voiceBright * pFu) * effIntens;
                 }

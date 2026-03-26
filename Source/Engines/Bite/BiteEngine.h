@@ -1255,6 +1255,7 @@ public:
                     + bellyCutoffMod + playDeadCutoff
                     + filterMod * 2000.0f
                     + lfo2val * 500.0f * macroScurry
+                    + lfo3val * 2000.0f
                     + modEnvVal * 3000.0f
                     + keyTrackOffset;
                 modCutoff = clamp (modCutoff, 20.0f, 18000.0f);

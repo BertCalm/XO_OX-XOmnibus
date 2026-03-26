@@ -258,7 +258,8 @@ public:
     void processSample (float inputL, float inputR,
                         float& outL, float& outR,
                         float size, float damping,
-                        float shimmerMix, float shimmerFeedback) noexcept
+                        float shimmerMix, float shimmerFeedback,
+                        float octBal = 0.6f) noexcept
     {
         float input = (inputL + inputR) * 0.5f;
 
@@ -272,7 +273,7 @@ public:
         // Fifth up: read at 1.5x speed
         float shimmerFifth = readShimmerGrain (shimmerPhaseFifth, 1.5f);
 
-        float shimmerOut = (shimmerOct * 0.6f + shimmerFifth * 0.4f) * shimmerMix;
+        float shimmerOut = (shimmerOct * octBal + shimmerFifth * (1.0f - octBal)) * shimmerMix;
         lastShimmerOut = flushDenormal (shimmerOut);
 
         // Feed shimmer into the reverb network
@@ -879,7 +880,8 @@ public:
                 float shimOutL = 0.0f, shimOutR = 0.0f;
                 shimmerL.processSample (mixL, mixR, shimOutL, shimOutR,
                                        effectiveShimmerSize, shimmerDamp,
-                                       effectiveShimmerMix, effectiveShimmerFB);
+                                       effectiveShimmerMix, effectiveShimmerFB,
+                                       shimmerOctBal);
 
                 // Blend shimmer with dry signal
                 float wetDry = effectiveShimmerMix;
