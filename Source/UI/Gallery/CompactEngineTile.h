@@ -46,6 +46,12 @@ public:
         setExplicitFocusOrder (slotIndex + 1);
         addAndMakeVisible(miniWave);
         macroValues.fill(0.0f);
+
+        // P10 fix: cache parameter ID strings once in constructor to avoid
+        // 4 juce::String allocations per tile per 10Hz tick.
+        for (int m = 0; m < 4; ++m)
+            cachedMacroIds[m] = "macro" + juce::String(m + 1);
+
         refresh();
         startTimerHz(10); // poll voice count + macros + coupling at 10Hz
     }
@@ -88,12 +94,13 @@ public:
         }
 
         // ── Macro values (APVTS, message-thread safe) ──────────────────────────
+        // P10 fix: use pre-built cachedMacroIds — no juce::String allocation here.
         if (hasEngine)
         {
             auto& apvts = processor.getAPVTS();
             for (int m = 0; m < 4; ++m)
             {
-                auto* p = apvts.getRawParameterValue("macro" + juce::String(m + 1));
+                auto* p = apvts.getRawParameterValue(cachedMacroIds[m]);
                 float newVal = p ? p->load() : 0.0f;
                 if (std::abs(newVal - macroValues[m]) > 0.001f)
                 {
@@ -104,9 +111,14 @@ public:
         }
 
         // ── Coupling route count ───────────────────────────────────────────────
+        // P3 fix: only check coupling routes every 5th tick (2Hz effective) to
+        // avoid copying the full routes vector 50×/sec across all tiles.
+        ++couplingCheckCounter;
+        if (couplingCheckCounter >= 5)
         {
+            couplingCheckCounter = 0;
             auto routes = processor.getCouplingMatrix().getRoutes();
-            int modCount  = 0; // LFO/Env/Amp/Filter/Pitch/Rhythm
+            int modCount   = 0; // LFO/Env/Amp/Filter/Pitch/Rhythm
             int audioCount = 0; // AudioTo*
             int knotCount  = 0; // KnotTopology
             for (const auto& r : routes)
@@ -132,7 +144,7 @@ public:
             }
             int totalDots = juce::jmin(modCount + audioCount + knotCount, 4);
             if (totalDots != couplingDotCount
-                || modCount  != couplingModCount
+                || modCount   != couplingModCount
                 || audioCount != couplingAudioCount
                 || knotCount  != couplingKnotCount)
             {
@@ -299,17 +311,11 @@ public:
         {
             // Empty slot — dashed border + "+" affordance
             // Prototype: 1px dashed rgba(255,255,255,0.11) border, "+" text T4
-            // JUCE doesn't support native dashed borders; simulate with dotted segments
+            // P8 fix: use cachedDashedPath built once in resized() instead of
+            // recreating it (createDashedStroke allocates) on every paint call.
             juce::Colour dashCol(0x1CFFFFFF); // rgba(255,255,255,0.11)
             g.setColour(dashCol);
-            // Draw a dashed rectangle manually using short segments
-            const float dashLen = 6.0f, gap = 4.0f, radius = 4.0f;
-            juce::Path dashedRect;
-            dashedRect.addRoundedRectangle(b, radius);
-            juce::PathStrokeType stroke(1.0f);
-            float dashPattern[] = { dashLen, gap };
-            stroke.createDashedStroke(dashedRect, dashedRect, dashPattern, 2);
-            g.strokePath(dashedRect, stroke);
+            g.strokePath(cachedDashedPath, juce::PathStrokeType(1.0f));
 
             // "+" icon center
             float cx = b.getCentreX(), cy = b.getCentreY();
@@ -340,6 +346,19 @@ public:
         int waveX = contentLeft;
         int waveY = b.getBottom() - waveH - 2;
         miniWave.setBounds(waveX, waveY, waveW, waveH);
+
+        // P8 fix: pre-compute the dashed border path for empty slots here so
+        // paint() can blit it cheaply without calling createDashedStroke every frame.
+        {
+            auto bf = b.toFloat();
+            const float dashLen = 6.0f, gap = 4.0f, radius = 4.0f;
+            juce::Path roundRect;
+            roundRect.addRoundedRectangle(bf, radius);
+            juce::PathStrokeType stroke(1.0f);
+            float dashPattern[] = { dashLen, gap };
+            cachedDashedPath.clear();
+            stroke.createDashedStroke(cachedDashedPath, roundRect, dashPattern, 2);
+        }
     }
 
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
@@ -372,9 +391,12 @@ public:
             if (!e.mods.isPopupMenu())
             {
                 isMuted = !isMuted;
-                // NOTE: No APVTS param wired yet. Visual-only for now.
-                // When slot_enabled params are added, call:
-                //   processor.setSlotEnabled(slot, !isMuted);
+                // W06: Mute toggle currently visual-only — processor.setSlotMuted() not yet implemented.
+                // When the APVTS slot_mute param is added, replace this stub with:
+                //   if (auto* p = processor.getAPVTS().getRawParameterValue(
+                //           "slot" + juce::String(slot) + "_mute"))
+                //       p->store(isMuted ? 1.0f : 0.0f);
+                // TODO: processor.setSlotMuted(slot, isMuted);
                 repaint();
                 return;
             }
@@ -555,14 +577,19 @@ private:
     void showLoadMenu()
     {
         auto* picker = new EnginePickerPopup();
-        picker->onEngineSelected = [this](const juce::String& engineId)
+        // Use SafePointer so the callback is a no-op if the tile is destroyed
+        // before the CallOutBox closes (e.g. rapid slot changes or window close).
+        auto safeThis = juce::Component::SafePointer<CompactEngineTile>(this);
+        picker->onEngineSelected = [safeThis](const juce::String& engineId)
         {
-            isLoading = true;
-            repaint();
-            processor.loadEngine(slot, engineId.toStdString());
-            juce::Timer::callAfterDelay(0, [this]
+            if (safeThis == nullptr) return;
+            safeThis->isLoading = true;
+            safeThis->repaint();
+            safeThis->processor.loadEngine(safeThis->slot, engineId.toStdString());
+            juce::Timer::callAfterDelay(0, [safeThis]
             {
-                if (onSelect) onSelect(slot);
+                if (safeThis == nullptr) return;
+                if (safeThis->onSelect) safeThis->onSelect(safeThis->slot);
             });
         };
         picker->setSize(280, 400);
@@ -589,6 +616,15 @@ private:
     int couplingModCount   = 0;
     int couplingAudioCount = 0;
     int couplingKnotCount  = 0;
+
+    // P3 fix: tick counter to run coupling check only every 5th tick (2Hz effective)
+    int couplingCheckCounter = 0;
+
+    // P10 fix: pre-built parameter ID strings — avoids 4 allocations/tick/tile
+    std::array<juce::String, 4> cachedMacroIds;
+
+    // P8 fix: dashed border path for empty slot — built once in resized()
+    juce::Path cachedDashedPath;
 
     MiniWaveform miniWave;
 

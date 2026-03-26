@@ -63,10 +63,10 @@ public:
     ~DepthZoneDial() override { stopTimer(); }
 
     //==========================================================================
-    // Set the slot index this dial controls (0–3).
+    // Set the slot index this dial controls (0–4, where 4 is the Ghost Slot). W17: clamp now includes index 4.
     void setSlot(int slot)
     {
-        currentSlot = juce::jlimit(0, 3, slot);
+        currentSlot = juce::jlimit(0, 4, slot); // W17: extended to include Ghost Slot (index 4)
         refresh();
     }
 
@@ -84,6 +84,8 @@ public:
 
         currentEngineId = newId;
         currentAccent   = newAccent;
+        // P7 fix: mark ring cache dirty so paint() will rebuild it once.
+        ringCacheDirty = true;
 
         // Re-locate within engineOrder so the position dot is correct.
         currentIndex = -1;
@@ -116,47 +118,52 @@ public:
         using namespace GalleryColors;
 
         // ── Outer ring — depth-zone radial gradient ──────────────────────────
-        // We draw the ring as a filled circle then cut out the inner disc.
-        // The ring gradient runs from Sunlit (top) through Twilight to Midnight.
-        //
-        // Strategy: fill the ring with three arc segments.  Each segment is a
-        // thin pie-slice filled with the zone colour, then the inner disc is
-        // subtracted via a clipped fill.  Using a ColourGradient achieves the
-        // blended look with a single draw call and is GPU-friendly.
-        //
-        // Zone arcs (angles measured from top = -π/2):
-        //   Sunlit   — top 1/3   of arc (−π/2 to  π/6)   = 120°
-        //   Twilight — middle 1/3 of arc ( π/6 to  5π/6)  = 120°
-        //   Midnight — bottom 1/3 of arc ( 5π/6 to 3π/2)  = 120°
-        //
-        // We achieve the gradient by drawing a radial ColourGradient from the
-        // top to the bottom of the circle, using a vertical gradient that
-        // blends Sunlit → Twilight → Midnight.  This matches the water-column
-        // metaphor perfectly.
-
-        // Outer ring clip path
-        juce::Path ringPath;
-        ringPath.addEllipse(cx - outer, cy - outer, outer * 2.0f, outer * 2.0f);
-        ringPath.addEllipse(cx - inner, cy - inner, inner * 2.0f, inner * 2.0f);
-        ringPath.setUsingNonZeroWinding(false); // subtract inner hole
-
+        // P7 fix: cache the ring as a juce::Image — the gradient + border never
+        // change between engine selections. Rebuild only when ringCacheDirty is
+        // set (in refresh()). In steady-state, paint() just blits the image.
+        if (ringCacheDirty || !ringCache.isValid())
         {
-            juce::Graphics::ScopedSaveState ss(g);
-            g.reduceClipRegion(ringPath);
+            // Rebuild the ring into an off-screen image at device pixel resolution.
+            ringCache = juce::Image(juce::Image::ARGB,
+                                    getWidth() > 0 ? getWidth() : kDialSize,
+                                    getHeight() > 0 ? getHeight() : kDialSize,
+                                    true /* clearImage */);
+            juce::Graphics rg(ringCache);
 
-            // Multi-stop gradient: Sunlit (top) → Twilight (mid) → Midnight (bottom)
-            juce::ColourGradient grad(
-                kSunlitColor,  cx, cy - outer,   // top
-                kMidnightColor, cx, cy + outer,   // bottom
-                false);
-            grad.addColour(0.5, kTwilightColor);
-            g.setGradientFill(grad);
-            g.fillRect(getLocalBounds().toFloat());
+            const float rcx = ringCache.getWidth()  * 0.5f;
+            const float rcy = ringCache.getHeight() * 0.5f;
+
+            // Outer ring clip path
+            juce::Path ringPath;
+            ringPath.addEllipse(rcx - outer, rcy - outer, outer * 2.0f, outer * 2.0f);
+            ringPath.addEllipse(rcx - inner, rcy - inner, inner * 2.0f, inner * 2.0f);
+            ringPath.setUsingNonZeroWinding(false); // subtract inner hole
+
+            {
+                juce::Graphics::ScopedSaveState ss(rg);
+                rg.reduceClipRegion(ringPath);
+
+                // Multi-stop gradient: Sunlit (top) → Twilight (mid) → Midnight (bottom)
+                juce::ColourGradient grad(
+                    kSunlitColor,   rcx, rcy - outer,
+                    kMidnightColor, rcx, rcy + outer,
+                    false);
+                grad.addColour(0.5, kTwilightColor);
+                rg.setGradientFill(grad);
+                rg.fillRect(juce::Rectangle<float>(0.0f, 0.0f,
+                                                   (float)ringCache.getWidth(),
+                                                   (float)ringCache.getHeight()));
+            }
+
+            // Subtle border on the outer ring edge
+            rg.setColour(juce::Colours::black.withAlpha(0.18f));
+            rg.drawEllipse(rcx - outer, rcy - outer, outer * 2.0f, outer * 2.0f, 1.0f);
+
+            ringCacheDirty = false;
         }
 
-        // Subtle border on the outer ring edge
-        g.setColour(juce::Colours::black.withAlpha(0.18f));
-        g.drawEllipse(cx - outer, cy - outer, outer * 2.0f, outer * 2.0f, 1.0f);
+        // Blit cached ring image
+        g.drawImageAt(ringCache, 0, 0);
 
         // ── Inner disc — engine accent color ─────────────────────────────────
         const bool hasEngine = currentEngineId.isNotEmpty();
@@ -272,6 +279,8 @@ public:
     void resized() override
     {
         // Fixed 48×48pt — nothing to lay out.
+        // P7 fix: invalidate ring cache if component is ever resized.
+        ringCacheDirty = true;
     }
 
     //==========================================================================
@@ -580,6 +589,10 @@ private:
     float accumulatedDelta = 0.0f;
     float wheelAccumulator = 0.0f;
     bool  isDragging       = false;
+
+    // P7 fix: cached ring image — rebuilt only when engine changes (ringCacheDirty=true)
+    juce::Image ringCache;
+    bool        ringCacheDirty = true;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DepthZoneDial)
 };

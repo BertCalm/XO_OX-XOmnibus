@@ -79,7 +79,7 @@ public:
     {
         using namespace GalleryColors;
 
-        const float cornerR = 5.0f;
+        const float cornerR = 4.0f;
 
         // ── A button ─────────────────────────────────────────────────────────
         paintButton(g, btnABounds, "A",
@@ -292,7 +292,7 @@ private:
             textCol = get(textMid()).withAlpha(0.45f);
         }
 
-        g.setFont(GalleryFonts::label(11.0f));
+        g.setFont(GalleryFonts::value(10.0f));
         g.setColour(textCol);
         g.drawText(label, bounds, juce::Justification::centred, false);
     }

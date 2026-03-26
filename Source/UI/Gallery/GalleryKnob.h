@@ -68,7 +68,9 @@ private:
             double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
             float pulse = 0.55f + 0.45f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
             ringCol = ringCol.withAlpha(pulse);
-            repaint(); // keep pulsing until learn mode exits
+            // NOTE: do NOT call repaint() here — we are inside paint(), which
+            // would create a busy-loop (repaint storm). The editor's 10Hz timer
+            // already schedules repaints during MIDI learn mode.
         }
 
         auto b  = getLocalBounds().toFloat().reduced(3.0f);

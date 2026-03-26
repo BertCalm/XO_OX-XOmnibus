@@ -21,6 +21,16 @@ class MacroHeroStrip : public juce::Component
 public:
     explicit MacroHeroStrip(XOlokunProcessor& proc) : processor(proc) {}
 
+    // Remove MIDI learn mouse listeners from their sliders before the
+    // unique_ptrs are destroyed — prevents use-after-free if a Slider still
+    // holds a raw pointer to the deleted listener during teardown.
+    ~MacroHeroStrip() override
+    {
+        for (int i = 0; i < (int)pillarLearnListeners.size() && i < 4; ++i)
+            if (pillarLearnListeners[i])
+                pillars[i].removeMouseListener(pillarLearnListeners[i].get());
+    }
+
     // Optional: wire MIDI learn before the first loadEngine() call.
     void setMidiLearnManager(MIDILearnManager* mgr) { learnManager = mgr; }
 
@@ -95,8 +105,9 @@ public:
                 A11y::setup(pillars[i], foundNames[i]);
 
                 pillarLabels[i].setText(foundNames[i], juce::dontSendNotification);
-                pillarLabels[i].setFont(GalleryFonts::heading(8.0f));
-                pillarLabels[i].setColour(juce::Label::textColourId, accent.darker(0.2f));
+                pillarLabels[i].setFont(GalleryFonts::value(8.0f));
+                pillarLabels[i].setColour(juce::Label::textColourId,
+                                          juce::Colour(GalleryColors::xoGold).withAlpha(0.75f));
                 pillarLabels[i].setJustificationType(juce::Justification::centred);
 
                 attachments[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
@@ -136,6 +147,14 @@ public:
         g.setColour(get(shellWhite()));
         g.fillRoundedRectangle(b, 4.0f);
 
+        // Gradient overlay — subtle top-down highlight
+        {
+            juce::ColourGradient overlay(juce::Colour(0x04FFFFFF), 0.0f, 0.0f,
+                                         juce::Colours::transparentBlack, 0.0f, b.getHeight(), false);
+            g.setGradientFill(overlay);
+            g.fillRoundedRectangle(b, 4.0f);
+        }
+
         // Accent top strip
         g.setColour(accentColour);
         g.fillRect(b.removeFromTop(3.0f));
@@ -151,6 +170,9 @@ public:
         g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.45f));
         g.drawHorizontalLine(kHeaderH, 8.0f, (float)(getWidth() - 8));
     }
+
+    // W25: Repaint when the LookAndFeel (theme) changes so colours update.
+    void lookAndFeelChanged() override { repaint(); }
 
     void resized() override
     {

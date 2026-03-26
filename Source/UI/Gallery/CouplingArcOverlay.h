@@ -52,7 +52,20 @@ public:
             tileCenters[static_cast<size_t>(slot)] = centre;
     }
 
-    void timerCallback() override { repaint(); }
+    void timerCallback() override
+    {
+        // P1 fix: skip repaint when no active routes exist — avoids full
+        // 1100×700 overlay redraw at 30Hz when the matrix is empty.
+        const auto routes = processor.getCouplingMatrix().getRoutes();
+        bool hasActive = false;
+        for (const auto& r : routes)
+        {
+            if (r.active && r.amount >= 0.001f)
+            { hasActive = true; break; }
+        }
+        if (hasActive)
+            repaint();
+    }
 
     void paint(juce::Graphics& g) override
     {

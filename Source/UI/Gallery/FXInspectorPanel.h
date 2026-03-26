@@ -194,13 +194,15 @@ private:
 
         bool expandedKnobsBuilt = false;
 
-        // Safe teardown in correct order (atts before knobs).
+        // Safe teardown in correct order: attachments MUST be destroyed
+        // before the sliders they reference (JUCE contract).
+        // paramAtts → paramKnobs, then mixAtt → mixKnob.
         void teardown()
         {
-            paramAtts.clear();
-            paramKnobs.clear();
-            mixAtt.reset();
-            mixKnob.reset();
+            paramAtts.clear();   // expanded param attachments first
+            paramKnobs.clear();  // then expanded knobs
+            mixAtt.reset();      // mix attachment before mix knob
+            mixKnob.reset();     // mix knob last
         }
     };
 
@@ -243,8 +245,8 @@ private:
                 g.fillRoundedRectangle(headerR, 5.0f);
             }
 
-            // Bypass LED (12×12 circle, left-aligned)
-            float ledSize  = 12.0f;
+            // Bypass LED (7×7 circle, left-aligned)
+            float ledSize  = 7.0f;
             float ledX     = headerR.getX() + 8.0f;
             float ledY     = headerR.getCentreY() - ledSize * 0.5f;
             g.setColour(slot.expanded

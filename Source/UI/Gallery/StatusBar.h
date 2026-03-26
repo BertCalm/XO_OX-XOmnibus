@@ -38,26 +38,19 @@ public:
         // ── Trigger pads ──────────────────────────────────────────────────────
         auto makePad = [&](juce::TextButton& btn,
                            const juce::String& label,
-                           const juce::String& tooltip,
-                           juce::Colour fillCol)
+                           const juce::String& tooltip)
         {
             btn.setButtonText(label);
             btn.setTooltip(tooltip);
-            btn.setColour(juce::TextButton::buttonColourId,   fillCol);
-            btn.setColour(juce::TextButton::buttonOnColourId, fillCol.brighter(0.15f));
-            btn.setColour(juce::TextButton::textColourOffId,  juce::Colours::black.withAlpha(0.85f));
-            btn.setColour(juce::TextButton::textColourOnId,   juce::Colours::black.withAlpha(0.85f));
             addAndMakeVisible(btn);
         };
 
-        // FIRE — green (#4ADE80)
-        makePad(fireBtn,    "FIRE",     "Fire chord machine one-shot (Z)",   juce::Colour(0xFF4ADE80));
-        // XOSEND — warm amber
-        makePad(xoSendBtn,  "XOSEND",  "Trigger coupling burst (X)",        juce::Colour(0xFFF5C97A));
-        // ECHO CUT — warm amber
-        makePad(echoCutBtn, "ECHO CUT","Kill delay tails (C)",              juce::Colour(0xFFF5C97A));
-        // PANIC — red, always 100% opacity (B041 never-dim)
-        makePad(panicBtn,   "PANIC",   "All notes off / reset engines (V)", juce::Colour(0xFFEF4444));
+        // Colors are applied once in applyTheme() — matching what paint() expects:
+        // background = elevated (#242426), border = border(), text per button type.
+        makePad(fireBtn,    "FIRE",     "Fire chord machine one-shot (Z)");
+        makePad(xoSendBtn,  "XOSEND",  "Trigger coupling burst (X)");
+        makePad(echoCutBtn, "ECHO CUT","Kill delay tails (C)");
+        makePad(panicBtn,   "PANIC",   "All notes off / reset engines (V)");
 
         fireBtn.onClick    = [this] { if (onFire)    onFire();    };
         xoSendBtn.onClick  = [this] { if (onXoSend)  onXoSend();  };
@@ -69,8 +62,6 @@ public:
         {
             lbl.setText(text, juce::dontSendNotification);
             lbl.setFont(GalleryFonts::value(10.0f));
-            lbl.setColour(juce::Label::textColourId,
-                          GalleryColors::get(GalleryColors::textMid()));
             lbl.setJustificationType(juce::Justification::centred);
             lbl.setInterceptsMouseClicks(false, false);
             addAndMakeVisible(lbl);
@@ -84,14 +75,58 @@ public:
         lockBtn.setButtonText(juce::CharPointer_UTF8("\xf0\x9f\x94\x92")); // UTF-8 padlock
         lockBtn.setTooltip("Performance Lock — block parameter changes during performance");
         lockBtn.setClickingTogglesState(true);
-        lockBtn.setColour(juce::TextButton::buttonColourId,
-                          GalleryColors::get(GalleryColors::emptySlot()));
-        lockBtn.setColour(juce::TextButton::buttonOnColourId,
-                          GalleryColors::get(GalleryColors::xoGold));
         addAndMakeVisible(lockBtn);
 
         // Slot dots are drawn in paint() from slotAccents[] / slotActive[].
         // No child components needed for the dots — pure paint geometry.
+
+        // Apply initial theme colours (moved out of paint() to avoid repaint cascades).
+        applyTheme();
+    }
+
+    //==========================================================================
+    // applyTheme() — sets all child component colours once.
+    // Called from constructor and lookAndFeelChanged() so that colour updates
+    // happen at the right time without triggering repaint() inside paint().
+    void applyTheme()
+    {
+        using namespace GalleryColors;
+
+        // ── Trigger pad buttons ───────────────────────────────────────────────
+        // Prototype: elevated bg, border at 7%, 3px radius
+
+        // FIRE button style — accent tint (XO Gold)
+        fireBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        fireBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        fireBtn.setColour(juce::TextButton::textColourOffId,  get(xoGold));
+        fireBtn.setColour(juce::TextButton::textColourOnId,   get(xoGold));
+
+        // XOSEND button — T3 text default, T1 on active
+        xoSendBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        xoSendBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        xoSendBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
+        xoSendBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
+
+        // ECHO CUT button — T3 text default, T1 on active
+        echoCutBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        echoCutBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        echoCutBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
+        echoCutBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
+
+        // PANIC button — #FF6B6B red (B041: always 100% opacity, never-dim)
+        panicBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
+        panicBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        panicBtn.setColour(juce::TextButton::textColourOffId,  juce::Colour(0xFFFF6B6B));
+        panicBtn.setColour(juce::TextButton::textColourOnId,   juce::Colour(0xFFFF6B6B));
+
+        // ── Status label colours ──────────────────────────────────────────────
+        bpmLabel.setColour(juce::Label::textColourId,   get(t2())); // T2
+        voiceLabel.setColour(juce::Label::textColourId, get(t3())); // T3
+        cpuLabel.setColour(juce::Label::textColourId,   get(t3())); // T3
+
+        // ── Lock button ───────────────────────────────────────────────────────
+        lockBtn.setColour(juce::TextButton::buttonColourId,   get(emptySlot()));
+        lockBtn.setColour(juce::TextButton::buttonOnColourId, get(xoGold));
     }
 
     //==========================================================================
@@ -142,7 +177,7 @@ public:
         g.setColour(border());
         g.drawHorizontalLine(0, 0.0f, (float)getWidth());
 
-        // ── Slot dots (right side, before lock button) ────────────────────────
+        // ── Slot dots (right side, before lock button) — paint() is READ-ONLY ──
         // Prototype: 7×7px dots, T4 default, accent when active with 0 0 5px glow
         const int dotR       = 4; // 7px diameter = radius 3.5, use 4 for clickability
         const int dotDia     = dotR * 2;
@@ -187,37 +222,6 @@ public:
             }
         }
 
-        // ── Update trigger button colors to match prototype ───────────────────
-        // Prototype: elevated bg (GalleryColors::elevated()), border at 7%, 3px radius
-
-        // FIRE button style — accent tint (XO Gold)
-        fireBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        fireBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
-        fireBtn.setColour(juce::TextButton::textColourOffId,  get(xoGold));
-        fireBtn.setColour(juce::TextButton::textColourOnId,   get(xoGold));
-
-        // XOSEND button — T3 text default, T1 on active
-        xoSendBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        xoSendBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
-        xoSendBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
-        xoSendBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
-
-        // ECHO CUT button — T3 text default, T1 on active
-        echoCutBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        echoCutBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
-        echoCutBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
-        echoCutBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
-
-        // PANIC button — #FF6B6B red (B041: always 100% opacity, never-dim)
-        panicBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        panicBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
-        panicBtn.setColour(juce::TextButton::textColourOffId,  juce::Colour(0xFFFF6B6B));
-        panicBtn.setColour(juce::TextButton::textColourOnId,   juce::Colour(0xFFFF6B6B));
-
-        // Update label colors to match prototype typography
-        bpmLabel.setColour(juce::Label::textColourId,   get(t2())); // T2
-        voiceLabel.setColour(juce::Label::textColourId, get(t3())); // T3
-        cpuLabel.setColour(juce::Label::textColourId,   get(t3())); // T3
     }
 
     void resized() override
@@ -259,6 +263,11 @@ public:
         voiceLabel.setBounds( centreLeft + labelW,     0, labelW, labelH);
         cpuLabel.setBounds(   centreLeft + labelW * 2, 0, labelW, labelH);
     }
+
+    // Re-apply theme colours when the LookAndFeel changes (avoids colour drift
+    // and keeps setColour() calls out of paint() where they would trigger
+    // recursive repaint cascades).
+    void lookAndFeelChanged() override { applyTheme(); }
 
     //==========================================================================
     // Inner KeyListener — registered with the editor so Z/X/C/V fire anywhere

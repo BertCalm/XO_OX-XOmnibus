@@ -222,6 +222,17 @@ public:
     ~CouplingInspectorPanel() override = default;
 
     //==========================================================================
+    // W20: Stop the miniViz timer when this panel is hidden, restart when shown.
+    // Prevents the CouplingVisualizer animation timer from running off-screen.
+    void visibilityChanged() override
+    {
+        if (isVisible())
+            miniViz.start();
+        else
+            miniViz.stop();
+    }
+
+    //==========================================================================
     // Called by SidebarPanel when the COUPLE tab becomes active.
     void refresh()
     {
@@ -570,7 +581,12 @@ private:
             return;
         }
 
-        // Name input dialog
+        // Name input dialog.
+        // takeOwnership=true in enterModalState transfers lifetime to JUCE's
+        // modal component stack, so the AlertWindow is deleted when the modal
+        // session ends — even if this component is destroyed while the dialog
+        // is open. The raw ptr inside the lambda is therefore safe for the
+        // lifetime of the modal session, and we must NOT call delete dlg.
         auto* dlg = new juce::AlertWindow (
             "Bake Coupling Preset",
             "Enter a name for this coupling configuration:",
@@ -591,9 +607,9 @@ private:
                             name = "Untitled Coupling";
                         safeThis->performBake (name);
                     }
-                    delete dlg;
+                    // dlg is owned by JUCE (takeOwnership=true below) — do NOT delete here.
                 }),
-            false);
+            true /*takeOwnership — JUCE deletes dlg when modal session ends*/);
     }
 
     void performBake (const juce::String& presetName)
@@ -647,7 +663,14 @@ private:
         if (preset)
         {
             cpm.loadBakedCoupling (*preset);
+
+            // W14: Collapse all route cards after a preset load so stale
+            // expanded states don't mislead the user about the new routing.
+            for (int r = 0; r < kNumRoutes; ++r)
+                routeCards[r].expanded = false;
+
             miniViz.refresh();
+            resized();  // re-layout to collapsed card heights
             repaint();
         }
     }

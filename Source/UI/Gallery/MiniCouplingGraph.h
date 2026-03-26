@@ -152,13 +152,21 @@ public:
         if (pulsePhase > juce::MathConstants<float>::twoPi)
             pulsePhase -= juce::MathConstants<float>::twoPi;
 
-        repaint();
+        // P9 fix: only repaint when there are active arcs to animate.
+        // With no routes the phase advance is still kept current for when
+        // routes appear, but we skip the 260×80pt repaint while idle.
+        if (!arcs.empty())
+            repaint();
     }
 
     //--------------------------------------------------------------------------
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
+
+        // Border-top separator — visual separation from tile list above
+        g.setColour(GalleryColors::border());
+        g.fillRect(0.0f, 0.0f, (float)getWidth(), 1.0f);
 
         const float w    = static_cast<float>(getWidth());
         const float nodeX = w * 0.5f;  // nodes centred horizontally

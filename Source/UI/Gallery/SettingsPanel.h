@@ -392,7 +392,7 @@ private:
         g.drawHorizontalLine(y + kHeaderH - 2, static_cast<float>(x), static_cast<float>(x + w));
 
         // Label
-        g.setFont(GalleryFonts::display(10.0f));
+        g.setFont(GalleryFonts::display(9.5f));
         g.setColour(get(textMid()));
         g.drawText(title.toUpperCase(), x, y, w, kHeaderH - 4,
                    juce::Justification::bottomLeft, false);

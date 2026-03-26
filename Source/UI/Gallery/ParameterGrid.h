@@ -195,6 +195,9 @@ public:
         return y + kPad;
     }
 
+    // W25: Repaint when the LookAndFeel (theme) changes so colours update.
+    void lookAndFeelChanged() override { repaint(); }
+
     void resized() override
     {
         int cols    = juce::jmax(1, getWidth() / kCellW);
@@ -279,8 +282,15 @@ public:
             g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
             // ── Section title — 9.5px, weight 600, Display, uppercase, T2 text ─
+            // P6 fix: cache the section font and arrow strings as static locals
+            // to avoid reconstructing them on every paint() call.
+            static const juce::Font kSectionFont =
+                juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(9.5f);
+            static const juce::String kArrowCollapsed (juce::CharPointer_UTF8("\xe2\x96\xb8")); // ▸
+            static const juce::String kArrowExpanded  (juce::CharPointer_UTF8("\xe2\x96\xbe")); // ▾
+
             g.setColour(GalleryColors::get(GalleryColors::t2())); // T2 text
-            g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(9.5f));
+            g.setFont(kSectionFont);
             g.drawText(secText,
                        dotX + dotSize + 6, y,
                        getWidth() - dotX - dotSize - 16, kHeaderRowH,
@@ -288,11 +298,9 @@ public:
 
             // ── Collapse indicator arrow — right-aligned, T3 color, 9px ───────
             {
-                const juce::String arrow = collapsed ? juce::String(juce::CharPointer_UTF8("\xe2\x96\xb8"))   // ▸
-                                                     : juce::String(juce::CharPointer_UTF8("\xe2\x96\xbe")); // ▾
                 g.setColour(GalleryColors::get(GalleryColors::t3()));
                 g.setFont(juce::Font(9.0f));
-                g.drawText(arrow,
+                g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded,
                            0, y, getWidth() - 10, kHeaderRowH,
                            juce::Justification::centredRight);
             }

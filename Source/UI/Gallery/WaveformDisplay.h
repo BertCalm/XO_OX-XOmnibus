@@ -59,9 +59,20 @@ public:
     void timerCallback() override
     {
         // NEVER allocate here — waveformBuffer is pre-allocated in the constructor.
-        processor.getWaveformFifo(currentSlot).readLatest(waveformBuffer.data(),
+        std::array<float, kDisplaySamples> newBuf;
+        processor.getWaveformFifo(currentSlot).readLatest(newBuf.data(),
                                                           kDisplaySamples);
-        repaint();
+
+        // P2 fix: only repaint when the waveform data actually changed —
+        // spot-check 8 evenly-spaced samples to avoid a full 256-sample compare.
+        bool changed = false;
+        for (size_t i = 0; i < kDisplaySamples; i += 32)
+        {
+            if (newBuf[i] != waveformBuffer[i]) { changed = true; break; }
+        }
+        waveformBuffer = newBuf;
+        if (changed)
+            repaint();
     }
 
     void paint(juce::Graphics& g) override
@@ -71,15 +82,9 @@ public:
         const float h     = bounds.getHeight();
         const float midY  = h * 0.5f;
 
-        // ── Background gradient ──────────────────────────────────────────────
-        {
-            const juce::Colour topColour    = GalleryColors::get(GalleryColors::slotBg());
-            const juce::Colour bottomColour = topColour.darker(0.08f);
-            g.setGradientFill(juce::ColourGradient(topColour,    0.0f, 0.0f,
-                                                   bottomColour, 0.0f, h,
-                                                   false));
-            g.fillRoundedRectangle(bounds, 3.0f);
-        }
+        // ── Background — flat surface() fill ────────────────────────────────
+        g.setColour(GalleryColors::get(GalleryColors::surface()));
+        g.fillRoundedRectangle(bounds, 3.0f);
 
         // ── Center line (1px, 50% opacity) ──────────────────────────────────
         g.setColour(accent.withAlpha(0.50f));
@@ -189,9 +194,20 @@ public:
     void timerCallback() override
     {
         // NEVER allocate here — miniBuffer is pre-allocated in the constructor.
-        processor.getWaveformFifo(currentSlot).readLatest(miniBuffer.data(),
-                                                         kMiniSamples);
-        repaint();
+        std::array<float, kMiniSamples> newBuf;
+        processor.getWaveformFifo(currentSlot).readLatest(newBuf.data(),
+                                                          kMiniSamples);
+
+        // P2 fix (MiniWaveform): spot-check 4 evenly-spaced samples; only
+        // repaint when data actually changed to avoid 30Hz idle repaints.
+        bool changed = false;
+        for (size_t i = 0; i < kMiniSamples; i += 16)
+        {
+            if (newBuf[i] != miniBuffer[i]) { changed = true; break; }
+        }
+        miniBuffer = newBuf;
+        if (changed)
+            repaint();
     }
 
     void paint(juce::Graphics& g) override

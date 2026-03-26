@@ -46,7 +46,7 @@ public:
         }
 
         nameLabel.setJustificationType(juce::Justification::centred);
-        nameLabel.setFont(GalleryFonts::heading(10.5f));
+        nameLabel.setFont(GalleryFonts::body(12.5f));
         nameLabel.setColour(juce::Label::textColourId,
                             GalleryColors::get(GalleryColors::textDark()));
         nameLabel.setInterceptsMouseClicks(false, false);

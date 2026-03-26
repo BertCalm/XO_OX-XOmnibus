@@ -43,6 +43,10 @@ public:
         auto* eng = processor.getEngine(slot);
         if (!eng) return false;
 
+        // W11: Track whether the engine actually changed so we only reset scroll
+        // position on a genuine engine switch (not on parameter-only refreshes).
+        const bool engineChanged = (eng->getEngineId() != engineId);
+
         engineId     = eng->getEngineId();
         accentColour = eng->getAccentColour();
 
@@ -223,6 +227,13 @@ public:
         // ── OBRIX gets a custom panel instead of the generic ParameterGrid ────
         if (engineId.equalsIgnoreCase("Obrix"))
         {
+            // Clear the viewport BEFORE resetting obrixPanel to avoid a dangling
+            // pointer: if a previous OBRIX load transferred ownership to the
+            // viewport via release(), the viewport holds the raw ptr. Clearing
+            // first lets the viewport delete that component safely before we
+            // create a new one.
+            viewport.setViewedComponent(nullptr, false);
+            obrixPanel.reset(); // safe: viewport no longer references it
             obrixPanel = std::make_unique<ObrixDetailPanel>(processor, learnManager);
             viewport.setViewedComponent(obrixPanel.release(), true);
         }
@@ -233,7 +244,9 @@ public:
             viewport.setViewedComponent(newGrid, true);
         }
 
-        viewport.setViewPosition(0, 0);
+        // W11: Only reset scroll to top when the engine actually changed.
+        if (engineChanged)
+            viewport.setViewPosition(0, 0);
 
         resized();
         repaint();
@@ -251,7 +264,7 @@ public:
         // ── Header gradient: accent color → shell bg ─────────────────────────
         // Prototype: keep accent→midnight gradient but over dark bg
         {
-            juce::ColourGradient grad(accentColour.withAlpha(0.75f), 0.0f, 0.0f,
+            juce::ColourGradient grad(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
                                       get(shellWhite()), (float)getWidth(), 0.0f, false);
             g.setGradientFill(grad);
             g.fillRoundedRectangle(0.0f, 0.0f, (float)getWidth(), (float)kHeaderH, 6.0f);
@@ -283,9 +296,9 @@ public:
             juce::Font nameFont = GalleryFonts::engineName(14.0f);
             g.setFont(nameFont);
             auto nameRect = juce::Rectangle<int>(12, 0, getWidth() - 100, kHeaderH);
-            // Glow layer — accent at low opacity, offset 0,0, painted twice for intensity
+            // Glow layer — accent at low opacity, no offset, painted twice for intensity
             g.setColour(accentColour.withAlpha(0.25f));
-            g.drawText(name, nameRect.translated(0, 1), juce::Justification::centredLeft);
+            g.drawText(name, nameRect, juce::Justification::centredLeft);
             // Primary text — full accent color
             g.setColour(accentColour);
             g.drawText(name, nameRect, juce::Justification::centredLeft);
@@ -383,7 +396,7 @@ public:
 
 private:
     static constexpr int kHeaderH = 38;
-    static constexpr int kHeroH   = 120; // height of the macro hero strip
+    static constexpr int kHeroH   = 88; // height of the macro hero strip
 
     XOlokunProcessor&  processor;
     MacroHeroStrip     macroHero;

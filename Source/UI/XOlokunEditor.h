@@ -251,9 +251,21 @@ public:
         addAndMakeVisible(sidebar);
 
         // ── Status Bar ────────────────────────────────────────────────────────
-        // Trigger callbacks are stubs for now; wired to processor in a later step.
         addAndMakeVisible(statusBar);
         addKeyListener(statusBar.getKeyListener());
+
+        // W01: Wire trigger-pad callbacks.
+        // onPanic: sends All Notes Off on all 16 MIDI channels via the MidiCollector.
+        // onFire / onXoSend / onEchoCut: processor methods not yet implemented.
+        statusBar.onFire    = [this] { /* TODO: processor.fireChordMachine(); */ };
+        statusBar.onXoSend  = [this] { /* TODO: processor.triggerCouplingBurst(); */ };
+        statusBar.onEchoCut = [this] { /* TODO: processor.killDelayTails(); */ };
+        statusBar.onPanic   = [this]
+        {
+            for (int ch = 1; ch <= 16; ++ch)
+                processor.getMidiCollector()
+                    .addMessageToQueue(juce::MidiMessage::allNotesOff(ch));
+        };
 
         // ── Tier 1 Gallery components ─────────────────────────────────────────
         addAndMakeVisible(depthDial);
@@ -297,8 +309,17 @@ public:
         };
 
         // ── ABCompare wiring ─────────────────────────────────────────────────
-        // Fire onPresetLoaded() whenever any preset navigation path applies a preset.
-        presetBrowser.onPresetLoaded = [this]() { abCompare.onPresetLoaded(); };
+        // W04: Fire onPresetLoaded() and also refresh tiles + detail panel.
+        presetBrowser.onPresetLoaded = [this]()
+        {
+            abCompare.onPresetLoaded();
+            // Refresh all primary tiles so engine names/accents update immediately.
+            for (int i = 0; i < kNumPrimarySlots; ++i)
+                if (tiles[i]) tiles[i]->refresh();
+            // Refresh detail panel if it is currently visible.
+            if (detail.isVisible())
+                detail.loadSlot(selectedSlot);
+        };
 
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
         proc.onEngineChanged = [this](int slot)
@@ -326,7 +347,15 @@ public:
         // Wire MIDILearnManager into the Settings panel so the MIDI mappings
         // table stays live and the Clear All button is functional.
         if (auto* sp = sidebar.getSettingsPanel())
+        {
             sp->setMidiLearnManager(&proc.getMIDILearnManager());
+            // W02: Wire Performance Lock callback.
+            // TODO: forward locked state to StatusBar lockBtn once StatusBar exposes setLocked().
+            sp->onPerformanceLockChanged = [this](bool /*locked*/)
+            {
+                /* TODO: statusBar.setLocked(locked); */
+            };
+        }
 
         setResizable(true, true);
         setResizeLimits(960, 600, 1600, 1000);
@@ -893,14 +922,26 @@ private:
                 statusBar.setSlotActive(4, false, juce::Colours::transparentBlack);
             }
             statusBar.setVoiceCount(totalVoices);
-            // BPM and CPU: placeholder values until processor atomics are added.
-            statusBar.setBpm(120.0);
+
+            // W03: BPM — read from host transport if available; 0.0 means "not connected".
+            {
+                double bpm = 0.0;
+                if (auto* ph = processor.getPlayHead())
+                {
+                    auto pos = ph->getPosition();
+                    if (pos.hasValue() && pos->getBpm().hasValue())
+                        bpm = *pos->getBpm();
+                }
+                statusBar.setBpm(bpm);
+            }
+
+            // W03: CPU — processor.getProcessingLoad() not yet implemented; leave at 0.
+            // TODO: replace with processor.getProcessingLoad() when added.
             statusBar.setCpuPercent(0.0f);
         }
 
         // ── Header indicators ─────────────────────────────────────────────────
-        // CPU meter — push the same placeholder used by StatusBar until the
-        // processor exposes a getCpuPercent() atomic.
+        // CPU meter — TODO: replace 0.0f with processor.getProcessingLoad() when added.
         cpuMeter.setCpuPercent(0.0f);
 
         // MIDI indicator learn state — keeps amber pulse in sync.

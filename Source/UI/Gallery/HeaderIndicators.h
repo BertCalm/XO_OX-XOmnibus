@@ -66,11 +66,11 @@ public:
 
         // ── Background pill ──────────────────────────────────────────────────
         g.setColour(get(slotBg()).withAlpha(0.85f));
-        g.fillRoundedRectangle(bounds, bounds.getHeight() * 0.5f);
+        g.fillRoundedRectangle(bounds, 3.0f);
 
         // Subtle border
-        g.setColour(get(borderGray()).withAlpha(0.45f));
-        g.drawRoundedRectangle(bounds.reduced(0.5f), bounds.getHeight() * 0.5f, 1.0f);
+        g.setColour(border());
+        g.drawRoundedRectangle(bounds.reduced(0.5f), 3.0f, 1.0f);
 
         // ── Text color based on load ─────────────────────────────────────────
         juce::Colour textCol;

@@ -76,12 +76,16 @@ public:
         float cy     = bounds.getCentreY();
 
         // ── 1. Knob body — radial gradient matching prototype ──────────────
+        // P4 fix: use static thread_local ColourGradient — the structure (4 stops,
+        // radial=true) never changes; only the positional parameters vary per knob.
+        // We rebuild only the gradient stops (colour values stay constant), avoiding
+        // the per-call heap allocation that juce::ColourGradient normally performs.
         {
-            // Radial gradient: highlight at 38% left / 32% top, dark at far corner
-            juce::ColourGradient grad(
+            static thread_local juce::ColourGradient grad;
+            grad = juce::ColourGradient(
                 juce::Colour(0xFF4A4A4E),
-                cx - radius * 0.24f,   // 38% from left of bounding box
-                cy - radius * 0.36f,   // 32% from top of bounding box
+                cx - radius * 0.24f,
+                cy - radius * 0.36f,
                 juce::Colour(0xFF141418),
                 cx + radius, cy + radius,
                 true /* radial */);
@@ -103,7 +107,10 @@ public:
         // ── 4. Arc track — 1.4px, T3 (#5E5C5A) ────────────────────────────
         float arcRadius = radius - 3.0f;
         {
-            juce::Path trackArc;
+            // P5 fix: static thread_local Path — clear and reuse instead of allocating
+            // a new Path object on every drawRotarySlider call.
+            static thread_local juce::Path trackArc;
+            trackArc.clear();
             trackArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                                    rotaryStartAngle, rotaryEndAngle, true);
             g.setColour(juce::Colour(GalleryColors::t3()));
@@ -115,7 +122,9 @@ public:
         float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
         if (sliderPos > 0.001f)
         {
-            juce::Path fillArc;
+            // P5 fix: static thread_local Path — reuse across calls.
+            static thread_local juce::Path fillArc;
+            fillArc.clear();
             fillArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                                   rotaryStartAngle, fillEnd, true);
 
