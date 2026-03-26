@@ -133,6 +133,9 @@ public:
         octaveOffset = 0;
     }
 
+    enum class ScaleMode { Off, Filter, Highlight };
+    ScaleMode scaleMode = ScaleMode::Off;
+
     void setMode(Mode m) { mode = m; repaint(); }
     Mode getMode() const { return mode; }
     void setOctave(int oct) { octaveOffset = juce::jlimit(PS::kMinOctave, PS::kMaxOctave, oct); repaint(); }
@@ -291,6 +294,11 @@ private:
             int bankOffset = (int)currentBank * 16;
             return juce::jlimit(0, 127, kDrumNotes[pad] + bankOffset);
         }
+
+        // FILTER mode: pads show consecutive in-scale degrees only
+        if (scaleMode == ScaleMode::Filter)
+            return scaleNoteForPad(pad);
+
         // Pad mode: MPC-standard Bank A starts at note 36 (C2).
         // Each bank adds 16: A=36, B=52, C=68, D=84.
         // Layout: left-to-right within a row, bottom-to-top rows (MPC standard).
@@ -318,6 +326,52 @@ private:
             }
         }
         return juce::jlimit(0, 127, best);
+    }
+
+    // Returns true if 'note' is in the current scale (relative to rootKey).
+    // Chromatic scale (index 0) always returns true.
+    bool isNoteInScale(int note) const
+    {
+        if (currentScale == 0) return true;
+        auto& intervals = scales[(size_t)currentScale].intervals;
+        int relativeToRoot = ((note % 12) - rootKey + 12) % 12;
+        for (auto interval : intervals)
+            if (interval == relativeToRoot) return true;
+        return false;
+    }
+
+    // FILTER mode: compute MIDI note for pad by walking up only in-scale semitones.
+    // padIndex 0 = lowest in-scale note at or above the bank+octave base.
+    int scaleNoteForPad(int padIndex) const
+    {
+        static constexpr int kBankBase[4] = { 36, 52, 68, 84 };
+        int baseNote = kBankBase[(int)currentBank] + (octaveOffset * 12);
+
+        if (currentScale == 0)
+        {
+            // Chromatic — every note is in scale; same as normal layout
+            int row = padIndex / PS::kPadCols;
+            int col = padIndex % PS::kPadCols;
+            return juce::jlimit(0, 127, baseNote + (row * PS::kPadCols) + col);
+        }
+
+        auto& intervals = scales[(size_t)currentScale].intervals;
+        int degree = 0;
+        for (int n = baseNote; n <= 127; ++n)
+        {
+            int relativeToRoot = ((n % 12) - rootKey + 12) % 12;
+            bool inScale = false;
+            for (auto interval : intervals)
+                if (interval == relativeToRoot) { inScale = true; break; }
+            if (inScale)
+            {
+                if (degree == padIndex)
+                    return juce::jlimit(0, 127, n);
+                ++degree;
+            }
+        }
+        // Fallback: return base note if we ran out of range
+        return juce::jlimit(0, 127, baseNote);
     }
 
     void handleTouch(const juce::MouseEvent& e, bool isDown)
@@ -369,6 +423,10 @@ private:
         float yInPad = juce::jlimit(0.0f, 1.0f, (ly - padTopY) / padH2);
         float velocity = juce::jlimit(0.05f, 1.0f, 1.0f - yInPad);
         int note = midiNoteForPad(pad);
+
+        // HIGHLIGHT mode: quantize out-of-scale notes to nearest in-scale note
+        if (scaleMode == ScaleMode::Highlight && mode != Mode::Drum)
+            note = quantizeToScale(note);
 
         if (isDown || note != lastNote)
         {
@@ -514,13 +572,33 @@ private:
                 }
                 else
                 {
+                    // Determine scale visibility for this pad (only in Pad mode, not Drum)
+                    int padNote = midiNoteForPad(pad);
+                    bool inScale = (mode == Mode::Drum) || isNoteInScale(padNote);
+                    bool dimPad  = (scaleMode == ScaleMode::Highlight && mode != Mode::Drum && !inScale);
+
+                    float borderAlpha = dimPad ? 0.08f : 0.18f;
+
                     // Non-hit pad: accent @ 0.07 fill
                     g.setColour(accentColour.withAlpha(0.07f));
                     g.fillRoundedRectangle(padRect, 4.0f);
 
-                    // Accent @ 0.18 border
-                    g.setColour(accentColour.withAlpha(0.18f));
+                    // Border: dimmed or normal
+                    g.setColour(accentColour.withAlpha(borderAlpha));
                     g.drawRoundedRectangle(padRect, 4.0f, 1.0f);
+
+                    // Root key accent: XO Gold 2px bottom border
+                    bool isRootPad = (scaleMode != ScaleMode::Off && mode != Mode::Drum
+                                      && (padNote % 12) == rootKey);
+                    if (isRootPad)
+                    {
+                        juce::Colour xoGold(0xFFE9C46A);
+                        float bx = padRect.getX();
+                        float by = padRect.getBottom() - 2.0f;
+                        float bw = padRect.getWidth();
+                        g.setColour(xoGold);
+                        g.fillRect(bx, by, bw, 2.0f);
+                    }
                 }
 
                 // Warm memory ghost circles — radial gradient using accent
@@ -558,8 +636,11 @@ private:
                     label = juce::String(noteNames[note % 12]) + juce::String(note / 12 - 1);
                 }
 
-                // Note label: white on hit, accent @ 0.55 otherwise
-                g.setColour(isHit ? juce::Colours::white : accentColour.withAlpha(0.55f));
+                // Note label: white on hit; dimmed (0.25) for out-of-scale pads in Highlight mode; accent @ 0.55 otherwise
+                float labelAlpha = 0.55f;
+                if (!isHit && scaleMode == ScaleMode::Highlight && mode != Mode::Drum && !isNoteInScale(note))
+                    labelAlpha = 0.25f;
+                g.setColour(isHit ? juce::Colours::white : accentColour.withAlpha(labelAlpha));
                 g.setFont(juce::Font(9.0f));
                 g.drawText(label, padRect, juce::Justification::centred);
             }
@@ -1343,6 +1424,27 @@ public:
             };
         }
 
+        // Scale mode button — cycles Off → Filter → Highlight → Off
+        scaleModeBtn.setButtonText("SCL");
+        addAndMakeVisible(scaleModeBtn);
+        scaleModeBtn.onClick = [this]
+        {
+            auto& ni = noteInput;
+            if (ni.scaleMode == NoteInputZone::ScaleMode::Off)
+                ni.scaleMode = NoteInputZone::ScaleMode::Filter;
+            else if (ni.scaleMode == NoteInputZone::ScaleMode::Filter)
+                ni.scaleMode = NoteInputZone::ScaleMode::Highlight;
+            else
+                ni.scaleMode = NoteInputZone::ScaleMode::Off;
+
+            switch (ni.scaleMode) {
+                case NoteInputZone::ScaleMode::Off:       scaleModeBtn.setButtonText("SCL"); break;
+                case NoteInputZone::ScaleMode::Filter:    scaleModeBtn.setButtonText("FLT"); break;
+                case NoteInputZone::ScaleMode::Highlight: scaleModeBtn.setButtonText("HLT"); break;
+            }
+            noteInput.repaint();
+        };
+
         // Strip mode buttons
         for (int i = 0; i < 4; ++i)
         {
@@ -1377,6 +1479,7 @@ public:
             for (int i = 0; i < 4; ++i) applyBtnColors(stripModeButtons[i]);
             applyBtnColors(octDownBtn);
             applyBtnColors(octUpBtn);
+            applyBtnColors(scaleModeBtn);
         }
 
         // Timer is started in visibilityChanged() when the window becomes visible.
@@ -1431,6 +1534,10 @@ public:
         header.removeFromLeft(8); // small gap
         for (int i = 0; i < 4; ++i)
             bankButtons[i].setBounds(header.removeFromLeft(24).reduced(2));
+
+        // Scale mode button — 40px wide, after bank buttons
+        header.removeFromLeft(8); // small gap
+        scaleModeBtn.setBounds(header.removeFromLeft(40).reduced(2));
 
         // Strip mode buttons at right of header
         for (int i = 3; i >= 0; --i)
@@ -1524,6 +1631,7 @@ private:
     std::array<juce::TextButton, 4> bankButtons;  // A / B / C / D bank selectors
     juce::TextButton octDownBtn, octUpBtn;
     juce::Label      octLabel;
+    juce::TextButton scaleModeBtn;  // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaySurface)
 };
