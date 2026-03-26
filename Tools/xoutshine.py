@@ -1068,7 +1068,12 @@ _REBIRTH_TRANSFORMS = {
 def rebirth_transform(sample_info, channels: List[List[float]], sr: int,
                        profile_name: str, rng: random.Random,
                        intensity: float = 0.7) -> List[List[float]]:
-    """Apply a rebirth engine profile to audio channels.
+    """⚠️  DEPRECATED: Rebirth Mode in the Python CLI is a prototype implementation.
+    Production Rebirth Mode with proper gain staging, preview, and engine-inspired
+    FX chains is available in the XOlokun desktop app (Phase 1B).
+    This CLI implementation will be removed in a future release.
+
+    Apply a rebirth engine profile to audio channels.
 
     1. Looks up the profile
     2. For each transform in the profile, randomizes parameters within the specified ranges
@@ -2017,8 +2022,10 @@ Rebirth engines: OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB
 
     # Rebirth Mode flags
     parser.add_argument("--rebirth", action="store_true",
-                        help="Enable Rebirth Mode: reprocess samples through XOlokun-style "
-                             "DSP transforms instead of preserving original character")
+                        help="[DEPRECATED] Enable Rebirth Mode: reprocess samples through XOlokun-style "
+                             "DSP transforms. DEPRECATED — Production Rebirth Mode with proper gain staging, "
+                             "preview, and engine-inspired FX chains is available in the XOlokun desktop app "
+                             "(Phase 1B). This CLI implementation will be removed in a future release.")
     parser.add_argument("--rebirth-engine", default="OBESE",
                         choices=list(REBIRTH_PROFILES.keys()),
                         help="Which engine profile to apply in Rebirth Mode (default: OBESE)")
