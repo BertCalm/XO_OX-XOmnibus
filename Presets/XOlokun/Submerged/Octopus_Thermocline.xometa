@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermocline",
+  "name": "Thermocline (Octopus)",
   "mood": "Submerged",
   "engines": [
     "Octopus"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Warm Haze",
+  "name": "Warm Haze (Atm)",
   "mood": "Atmosphere",
   "engines": [
     "OddOscar"

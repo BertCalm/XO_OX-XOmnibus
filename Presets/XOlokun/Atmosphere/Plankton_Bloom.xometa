@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Plankton Bloom",
+  "name": "Plankton Bloom (Atm)",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.35,

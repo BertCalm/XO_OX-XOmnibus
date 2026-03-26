@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Cold Seep",
+  "name": "Cold Seep (Submerged)",
   "mood": "Submerged",
   "engines": [
     "Oceanic"

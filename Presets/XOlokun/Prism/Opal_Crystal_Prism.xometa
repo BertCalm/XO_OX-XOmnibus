@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Crystal Prism",
+  "name": "Crystal Prism (Opal)",
   "mood": "Prism",
   "engines": [
     "Opal"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pressure Gradient",
+  "name": "Pressure Gradient (Foundation)",
   "mood": "Foundation",
   "engines": [
     "Outwit"

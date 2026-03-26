@@ -279,7 +279,7 @@ public:
 
 private:
     double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
+    float invSR = 1.0f / static_cast<float> (sr);  // overwritten by prepare()
     float cutoffHz = 2000.0f;
     float resonance = 0.2f;
     float drive = 0.0f;
@@ -760,8 +760,8 @@ public:
         // M4 CRUSH macro: reduces crush depth and rate for lo-fi character
         const float crushDepth  = clamp (((pCrushDepth != nullptr) ? pCrushDepth->load() : 16.0f)
                                          - macroCrush * 8.0f, 2.0f, 16.0f);
-        const float crushRate   = clamp (((pCrushRate != nullptr) ? pCrushRate->load() : 44100.0f)
-                                         - macroCrush * 20000.0f, 500.0f, 44100.0f);
+        const float crushRate   = clamp (((pCrushRate != nullptr) ? pCrushRate->load() : srf)
+                                         - macroCrush * 20000.0f, 500.0f, srf);
 
         const int   arpOn       = (pArpOn != nullptr) ? static_cast<int> (pArpOn->load()) : 0;
         const int   arpPattern  = (pArpPattern != nullptr) ? static_cast<int> (pArpPattern->load()) : 0;

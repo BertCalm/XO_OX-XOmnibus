@@ -520,7 +520,7 @@ public:
 
 private:
     double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
+    float invSR = 1.0f / static_cast<float> (sr);  // overwritten by prepare()
     float pinkState[3] = {};
     float brownState = 0.0f;
     float hissState = 0.0f;
@@ -753,7 +753,7 @@ public:
 
 private:
     double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
+    float invSR = 1.0f / static_cast<float> (sr);  // overwritten by prepare()
     float phase = 0.0f;
     float rate = 1.0f;
     int shape = 0;

@@ -64,7 +64,7 @@ public:
             btn->setColour(juce::TextButton::buttonOnColourId,
                            GalleryColors::get(GalleryColors::xoGold));
             btn->setColour(juce::TextButton::textColourOnId,
-                           juce::Colour(0xFF1A1A1A));
+                           GalleryColors::get(GalleryColors::textDark()));
             btn->setColour(juce::TextButton::textColourOffId,
                            GalleryColors::get(GalleryColors::textMid()));
             btn->onClick = [this] { similarActive = false; applyFilters(); };

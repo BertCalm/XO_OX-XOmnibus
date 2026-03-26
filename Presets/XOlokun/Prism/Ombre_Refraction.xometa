@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Refraction",
+  "name": "Refraction (Prism)",
   "mood": "Prism",
   "engines": [
     "Ombre"

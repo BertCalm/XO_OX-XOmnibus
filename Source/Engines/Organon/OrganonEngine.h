@@ -667,7 +667,7 @@ public:
 
 private:
     double cachedSampleRate = 44100.0;
-    double inverseSampleRate = 1.0 / 44100.0;
+    double inverseSampleRate = 1.0 / cachedSampleRate;  // overwritten by prepare()
 
     // Dirty-flag cache for setFundamental: avoid 32× std::pow when stable
     float cachedFundamental = -1.0f;    // Last computed fundamental (Hz); -1 = invalid

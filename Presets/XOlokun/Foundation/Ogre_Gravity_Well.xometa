@@ -7,7 +7,7 @@
   "engines": ["Ogre"],
   "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
   "mood": "Foundation",
-  "name": "Gravity Well",
+  "name": "Gravity Well (Ogre)",
   "parameters": {
     "Ogre": {
       "ogre_oscMix": 0.25, "ogre_drive": 0.35, "ogre_rootDepth": 0.6, "ogre_bodyResonance": 0.4,

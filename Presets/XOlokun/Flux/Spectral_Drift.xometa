@@ -24,7 +24,7 @@
     "MEADOW"
   ],
   "mood": "Flux",
-  "name": "Spectral Drift",
+  "name": "Spectral Drift (Flux)",
   "parameters": {
     "Ohm": {
       "ohm_bodyMaterial": 3,

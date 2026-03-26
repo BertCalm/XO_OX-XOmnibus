@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Atmosphere",
-  "name": "Thermocline",
+  "name": "Thermocline (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 1,

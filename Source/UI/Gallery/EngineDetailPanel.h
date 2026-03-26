@@ -112,7 +112,7 @@ public:
                     std::array<juce::Colour, 3>{{
                         juce::Colour(0xFF39FF14),  // Neon Green (OVERWORLD accent)
                         juce::Colour(0xFFBF40FF),  // Prism Violet
-                        juce::Colour(0xFFE9C46A)   // XO Gold
+                        juce::Colour(GalleryColors::xoGold)   // XO Gold
                     }});
                 addAndMakeVisible(*trianglePad);
             }
@@ -133,7 +133,7 @@ public:
                     std::array<juce::Colour, 3>{{
                         juce::Colour(0xFF9B5DE5),  // Synapse Violet (OXYTOCIN accent)
                         juce::Colour(0xFFFF6B6B),  // Warm Red
-                        juce::Colour(0xFFE9C46A)   // XO Gold
+                        juce::Colour(GalleryColors::xoGold)   // XO Gold
                     }});
                 addAndMakeVisible(*trianglePad);
             }

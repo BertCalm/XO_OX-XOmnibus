@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Phase Shift",
+  "name": "Phase Shift (Flux2)",
   "mood": "Flux",
   "engines": [
     "Organon"

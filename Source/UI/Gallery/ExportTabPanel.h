@@ -134,7 +134,7 @@ public:
         auto headerArea = getLocalBounds().removeFromTop(kHeaderH);
         g.setColour(get(xoGold));
         g.fillRect(headerArea);
-        g.setColour(juce::Colour(Light::textDark));
+        g.setColour(GalleryColors::get(GalleryColors::textDark()));
         g.setFont(GalleryFonts::display(11.0f));
         g.drawText("EXPORT", headerArea.reduced(12, 0), juce::Justification::centredLeft);
 

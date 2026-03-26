@@ -23,6 +23,8 @@ static inline juce::Colour lightenColour(juce::Colour c, float amount)
 #ifndef XOLOKUN_GALLERY_COLORS_DEFINED
 namespace GalleryColors {
     inline juce::Colour get(uint32_t hex) { return juce::Colour(hex); }
+    constexpr uint32_t xoGold = 0xFFE9C46A;
+    inline uint32_t textDark() { return 0xFF1A1A1A; }
 }
 #endif
 
@@ -1483,9 +1485,9 @@ public:
         {
             auto applyBtnColors = [](juce::TextButton& btn) {
                 btn.setColour(juce::TextButton::buttonColourId,   juce::Colour(0xFF2D2D2D));
-                btn.setColour(juce::TextButton::buttonOnColourId, juce::Colour(0xFFE9C46A));
+                btn.setColour(juce::TextButton::buttonOnColourId, GalleryColors::get(GalleryColors::xoGold));
                 btn.setColour(juce::TextButton::textColourOffId,  juce::Colour(0xFFAAAAAA));
-                btn.setColour(juce::TextButton::textColourOnId,   juce::Colour(0xFF1A1A1A));
+                btn.setColour(juce::TextButton::textColourOnId,   GalleryColors::get(GalleryColors::textDark()));
             };
             for (int i = 0; i < 3; ++i) applyBtnColors(modeButtons[i]);
             for (int i = 0; i < 4; ++i) applyBtnColors(bankButtons[i]);

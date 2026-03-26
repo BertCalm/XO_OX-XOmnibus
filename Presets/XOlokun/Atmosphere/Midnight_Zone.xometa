@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Midnight Zone",
+  "name": "Midnight Zone (Atmosphere)",
   "mood": "Atmosphere",
   "engines": [
     "Orca"

@@ -5,6 +5,8 @@
 #include "MobileLayoutManager.h"
 #include "HapticEngine.h"
 #include "SensorManager.h"
+#define XOLOKUN_GALLERY_COLORS_DEFINED 1
+#include "../GalleryColors.h"
 #include "../PlaySurface/PlaySurface.h"
 #include "DisplayLink_iOS.h"
 #include <array>
@@ -140,7 +142,7 @@ public:
         auto bounds = getLocalBounds().toFloat();
 
         // Background
-        g.setColour(juce::Colour(0xFFF8F6F3));  // Gallery shell white
+        g.setColour(GalleryColors::get(GalleryColors::shellWhite()));  // Gallery shell white
         g.fillRect(bounds);
 
         if (carousel)
@@ -648,15 +650,15 @@ private:
 
                 // Pad background with heatmap
                 float heat = padHeat[static_cast<size_t>(idx)];
-                auto baseColor = juce::Colour(0xFFEBE8E3);  // Light warm grey
-                auto hotColor = juce::Colour(0xFFE9C46A);   // XO Gold
+                auto baseColor = GalleryColors::get(GalleryColors::emptySlot());  // Light warm grey
+                auto hotColor = GalleryColors::get(GalleryColors::xoGold);   // XO Gold
                 auto padColor = baseColor.interpolatedWith(hotColor, heat);
 
                 g.setColour(padColor);
                 g.fillRoundedRectangle(x, y, w, h, 6.0f);
 
                 // Pad border
-                g.setColour(juce::Colour(0xFFDDDAD5));
+                g.setColour(GalleryColors::get(GalleryColors::borderGray()));
                 g.drawRoundedRectangle(x, y, w, h, 6.0f, 1.0f);
 
                 // Note label
@@ -668,7 +670,7 @@ private:
                 juce::String label = juce::String(noteNames[note % 12])
                     + juce::String(note / 12 - 1);
 
-                g.setColour(juce::Colour(0xFF1A1A1A).withAlpha(0.6f + heat * 0.4f));
+                g.setColour(GalleryColors::get(GalleryColors::textDark()).withAlpha(0.6f + heat * 0.4f));
                 g.setFont(11.0f);
                 g.drawText(label, static_cast<int>(x), static_cast<int>(y),
                     static_cast<int>(w), static_cast<int>(h),
@@ -681,8 +683,8 @@ private:
     {
         // Gradient ribbon: low (warm) at bottom, high (cool) at top
         juce::ColourGradient grad(
-            juce::Colour(0xFFE9C46A), area.getX(), area.getBottom(),  // Gold (low)
-            juce::Colour(0xFFA78BFA), area.getX(), area.getY(),       // Lavender (high)
+            GalleryColors::get(GalleryColors::xoGold), area.getX(), area.getBottom(),  // Gold (low)
+            juce::Colour(0xFFA78BFA), area.getX(), area.getY(),       // Lavender (high, OPAL accent)
             false);
         g.setGradientFill(grad);
         g.fillRoundedRectangle(area, 8.0f);
@@ -730,10 +732,10 @@ private:
                 g.setColour(padColor);
                 g.fillRoundedRectangle(x, y, w, h, 8.0f);
 
-                g.setColour(juce::Colour(0xFFDDDAD5));
+                g.setColour(GalleryColors::get(GalleryColors::borderGray()));
                 g.drawRoundedRectangle(x, y, w, h, 8.0f, 1.0f);
 
-                g.setColour(juce::Colour(0xFF1A1A1A).withAlpha(0.5f + heat * 0.5f));
+                g.setColour(GalleryColors::get(GalleryColors::textDark()).withAlpha(0.5f + heat * 0.5f));
                 g.setFont(9.0f);
                 g.drawText(drumLabels[idx],
                     static_cast<int>(x), static_cast<int>(y),
@@ -768,12 +770,12 @@ private:
         float cursorY = cy + orbitY * diam * 0.5f;
         float cursorSize = 16.0f;
 
-        g.setColour(juce::Colour(0xFFE9C46A));  // XO Gold
+        g.setColour(GalleryColors::get(GalleryColors::xoGold));  // XO Gold
         g.fillEllipse(cursorX - cursorSize * 0.5f, cursorY - cursorSize * 0.5f,
             cursorSize, cursorSize);
 
         // Position readout
-        g.setColour(juce::Colour(0xFF1A1A1A));
+        g.setColour(GalleryColors::get(GalleryColors::textDark()));
         g.setFont(10.0f);
         g.drawText(juce::String::formatted("X: %.2f  Y: %.2f", orbitX, orbitY),
             static_cast<int>(cx - 60), static_cast<int>(cy + diam * 0.5f + 8),
@@ -794,7 +796,7 @@ private:
 
         float cursorX = cx + orbitX * diam * 0.5f;
         float cursorY = cy + orbitY * diam * 0.5f;
-        g.setColour(juce::Colour(0xFFE9C46A));
+        g.setColour(GalleryColors::get(GalleryColors::xoGold));
         g.fillEllipse(cursorX - 8, cursorY - 8, 16, 16);
     }
 

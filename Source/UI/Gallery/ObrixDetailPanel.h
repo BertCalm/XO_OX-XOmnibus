@@ -112,7 +112,7 @@ public:
             btn.setColour(juce::TextButton::textColourOffId,
                           GalleryColors::get(GalleryColors::textDark()));
             btn.setColour(juce::TextButton::textColourOnId,
-                          juce::Colours::white);
+                          juce::Colours::white);  // white-on-accent for contrast on Reef Jade
             btn.setToggleable(true);
             btn.setClickingTogglesState(true);
             (void)onText; // toggled text update handled via paint if needed

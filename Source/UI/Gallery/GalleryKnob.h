@@ -60,7 +60,7 @@ private:
         if (!isListening && !isMapped) return;
 
         juce::Colour ringCol = isListening
-            ? juce::Colour(0xFFE9C46A)                   // XO Gold while listening
+            ? juce::Colour(GalleryColors::xoGold)        // XO Gold while listening
             : juce::Colour(0xFF4ADE80).withAlpha(0.50f); // soft green when mapped
 
         if (isListening)

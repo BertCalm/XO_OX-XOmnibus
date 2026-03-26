@@ -609,7 +609,7 @@ public:
 
 private:
     double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
+    float invSR = 1.0f / static_cast<float> (sr);  // overwritten by prepare()
     int mode = 0;
     float cutoffHz = 8000.0f;
     float resonance = 0.3f;
@@ -751,7 +751,7 @@ public:
 
 private:
     double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
+    float invSR = 1.0f / static_cast<float> (sr);  // overwritten by prepare()
     float voiceOffset = 0.0f;
 
     // StandardLFO handles phase accumulation and waveform generation for

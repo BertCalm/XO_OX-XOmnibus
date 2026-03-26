@@ -65,7 +65,7 @@ public:
                       const juce::String&                  paramId,
                       const juce::StringArray&              modeNames,
                       const std::vector<juce::Colour>*      modeColors  = nullptr,
-                      juce::Colour                          defaultAccent = juce::Colour(0xFFE9C46A))
+                      juce::Colour                          defaultAccent = juce::Colour(GalleryColors::xoGold))
         : apvtsRef(apvts),
           pid(paramId),
           names(modeNames),

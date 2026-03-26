@@ -263,7 +263,7 @@ public:
 
             // Slot number inside porthole — 9px mono, T3 color
             g.setFont(GalleryFonts::value(9.0f));
-            g.setColour(juce::Colour(0xFF5E5C5A).withAlpha(0.50f + voiceDensity * 0.37f)); // T3
+            g.setColour(GalleryColors::get(GalleryColors::t3()).withAlpha(0.50f + voiceDensity * 0.37f)); // T3
             g.drawText(juce::String(slot + 1),
                        (int)(porCx - porR), (int)(porCy - porR),
                        (int)porW, (int)porW, juce::Justification::centred);
@@ -276,7 +276,7 @@ public:
             float nameW = b.getRight() - 24.0f - nameX - 4.0f;
             g.setFont(GalleryFonts::display(11.0f)); // Space Grotesk Bold for weight
             // Always use accent color for engine name (prototype spec)
-            g.setColour(hasEngine ? accent : juce::Colour(0xFF3A3938)); // T4 when empty
+            g.setColour(hasEngine ? accent : GalleryColors::get(GalleryColors::t4())); // T4 when empty
             // Name draws in the upper portion of the tile
             float nameH = b.getHeight() * 0.40f;
             float nameY = b.getY();
@@ -320,7 +320,7 @@ public:
             // "+" icon center
             float cx = b.getCentreX(), cy = b.getCentreY();
             float armLen = 6.0f, armW = 1.5f;
-            g.setColour(juce::Colour(0xFF3A3938)); // T4 text
+            g.setColour(GalleryColors::get(GalleryColors::t4())); // T4 text
             g.fillRoundedRectangle(cx - armLen, cy - armW * 0.5f, armLen * 2.0f, armW, armW * 0.5f);
             g.fillRoundedRectangle(cx - armW * 0.5f, cy - armLen, armW, armLen * 2.0f, armW * 0.5f);
         }
@@ -511,10 +511,10 @@ private:
         if (!hasEngine) return;
 
         static constexpr uint32_t macroColors[4] = {
-            0xFFE9C46A,  // M1 — XO Gold
-            0xFF00FF41,  // M2 — Phosphor Green
-            0xFFBF40FF,  // M3 — Prism Violet
-            0xFF00B4A0   // M4 — Teal
+            GalleryColors::xoGold,  // M1 — XO Gold
+            0xFF00FF41,             // M2 — Phosphor Green
+            0xFFBF40FF,             // M3 — Prism Violet
+            0xFF00B4A0              // M4 — Teal
         };
 
         const float barMaxW = 40.0f;
@@ -552,7 +552,7 @@ private:
         juce::Colour dotColors[4];
         int idx = 0;
         for (int i = 0; i < couplingModCount   && idx < 4; ++i, ++idx)
-            dotColors[idx] = juce::Colour(0xFFE9C46A); // XO Gold
+            dotColors[idx] = juce::Colour(GalleryColors::xoGold); // XO Gold
         for (int i = 0; i < couplingAudioCount && idx < 4; ++i, ++idx)
             dotColors[idx] = juce::Colour(0xFF1B4F8A); // Twilight Blue
         for (int i = 0; i < couplingKnotCount  && idx < 4; ++i, ++idx)

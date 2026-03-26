@@ -268,7 +268,7 @@ private:
     // voice is being reused (stolen). Decremented per-sample in renderBlock over
     // a 5ms ramp, then stays at 0. Prevents hard-cut clicks on voice-full polyphony.
     float  stealFadeGain = 0.0f;
-    float  stealFadeRate_ = 1.0f / (0.005f * 44100.0f);  // computed in prepare(); default safe for 44.1kHz
+    float  stealFadeRate_ = 1.0f / (0.005f * static_cast<float> (sr));  // overwritten by prepare()
 
     // D005 fix: autonomous ecosystem drift LFO — predator-prey population cycle
     // Modulates ecosystemDepth at 0.07 Hz (~14 sec cycle). Requires no parameter.

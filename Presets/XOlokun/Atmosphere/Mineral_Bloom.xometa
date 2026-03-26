@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Mineral Bloom",
+  "name": "Mineral Bloom (Atmosphere)",
   "mood": "Atmosphere",
   "engines": [
     "Obsidian"
