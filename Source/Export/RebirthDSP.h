@@ -1,12 +1,10 @@
 #pragma once
 #include <juce_audio_basics/juce_audio_basics.h>
-#include <juce_dsp/juce_dsp.h>
 #include "../DSP/FastMath.h"
 
 #include <algorithm>
 #include <array>
 #include <cmath>
-#include <complex>
 #include <vector>
 
 namespace xolokun {
@@ -17,17 +15,17 @@ namespace xolokun {
 // (tanh(0.7)/tanh(0.7) = 1.0 at the normalization point).
 // Insert between any two stages that add gain to prevent hard clipping.
 //==============================================================================
-inline float softClip (float x) noexcept
+inline float rebirthSoftClip (float x) noexcept
 {
     constexpr float kDrive = 0.7f;
     constexpr float kNorm  = 0.6043677f; // 1.0f / tanh(0.7f)
     return std::tanh (x * kDrive) * kNorm;
 }
 
-inline void softClipBlock (float* data, int numSamples) noexcept
+inline void rebirthSoftClipBlock (float* data, int numSamples) noexcept
 {
     for (int i = 0; i < numSamples; ++i)
-        data[i] = softClip (data[i]);
+        data[i] = rebirthSoftClip (data[i]);
 }
 
 //==============================================================================
@@ -274,6 +272,62 @@ private:
 };
 
 //==============================================================================
+// inlineRadix2FFT — Cooley-Tukey radix-2 DIT in-place FFT.
+//
+// Takes separate float* real and float* imag arrays of length N (must be a
+// power of 2). Computes the forward DFT in-place. Uses std::sin/std::cos
+// for twiddle factors — avoids <complex> entirely.
+//
+// Complexity: O(N log N). Sufficient for N=2048 formant analysis.
+//==============================================================================
+inline void inlineRadix2FFT (float* re, float* im, int N) noexcept
+{
+    // Bit-reversal permutation
+    for (int i = 1, j = 0; i < N; ++i)
+    {
+        int bit = N >> 1;
+        for (; j & bit; bit >>= 1)
+            j ^= bit;
+        j ^= bit;
+        if (i < j) { std::swap (re[i], re[j]); std::swap (im[i], im[j]); }
+    }
+
+    // Cooley-Tukey butterfly stages
+    for (int len = 2; len <= N; len <<= 1)
+    {
+        float angle = -2.0f * 3.14159265358979323846f / (float) len;
+        float wRe   = std::cos (angle);
+        float wIm   = std::sin (angle);
+
+        for (int i = 0; i < N; i += len)
+        {
+            float curRe = 1.0f;
+            float curIm = 0.0f;
+            int half = len >> 1;
+
+            for (int k = 0; k < half; ++k)
+            {
+                float uRe = re[i + k];
+                float uIm = im[i + k];
+                float tRe = curRe * re[i + k + half] - curIm * im[i + k + half];
+                float tIm = curRe * im[i + k + half] + curIm * re[i + k + half];
+
+                re[i + k]        = uRe + tRe;
+                im[i + k]        = uIm + tIm;
+                re[i + k + half] = uRe - tRe;
+                im[i + k + half] = uIm - tIm;
+
+                // Advance twiddle factor
+                float nextRe = curRe * wRe - curIm * wIm;
+                float nextIm = curRe * wIm + curIm * wRe;
+                curRe = nextRe;
+                curIm = nextIm;
+            }
+        }
+    }
+}
+
+//==============================================================================
 // FormantResonator — FFT formant estimator + parallel bandpass resonator bank.
 //
 // Step 1: Analyze the entire source buffer with a windowed 2048-point FFT.
@@ -342,21 +396,20 @@ public:
             window[i] = s * w;
         }
 
-        // Real FFT using juce::dsp::FFT
-        // juce::dsp::FFT requires a buffer of 2*N floats (interleaved real/imag)
-        std::vector<float> fftBuf (kFFTSize * 2, 0.0f);
-        for (int i = 0; i < kFFTSize; ++i) fftBuf[i * 2] = window[i];
+        // Real FFT using inline radix-2 Cooley-Tukey (avoids juce_dsp / <complex>)
+        std::vector<float> fftRe (kFFTSize, 0.0f);
+        std::vector<float> fftIm (kFFTSize, 0.0f);
+        for (int i = 0; i < kFFTSize; ++i) fftRe[i] = window[i];
 
-        juce::dsp::FFT fft (11); // 2^11 = 2048
-        fft.performRealOnlyForwardTransform (fftBuf.data());
+        inlineRadix2FFT (fftRe.data(), fftIm.data(), kFFTSize);
 
         // Compute magnitude spectrum (first N/2 bins)
         int halfN = kFFTSize / 2;
         std::vector<float> mag (halfN, 0.0f);
         for (int i = 0; i < halfN; ++i)
         {
-            float re = fftBuf[i * 2];
-            float im = fftBuf[i * 2 + 1];
+            float re = fftRe[i];
+            float im = fftIm[i];
             mag[i]   = std::sqrt (re * re + im * im);
         }
 

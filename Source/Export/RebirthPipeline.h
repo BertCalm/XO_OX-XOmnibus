@@ -20,7 +20,7 @@
 //
 // Dependencies (all already committed):
 //   Source/Export/RebirthDSP.h       — AllpassDiffuser, FormantResonator,
-//                                      NoiseBurst, softClip/softClipBlock
+//                                      NoiseBurst, softClip/rebirthSoftClipBlock
 //   Source/Export/RebirthLUFS.h      — computeIntegratedLUFS()
 //   Source/Export/RebirthProfiles.h  — RebirthProfileID, RebirthProfile,
 //                                      DSPModuleConfig, RebirthSettings,
@@ -36,7 +36,6 @@
 //==============================================================================
 
 #include <juce_audio_basics/juce_audio_basics.h>
-#include <juce_dsp/juce_dsp.h>
 
 #include "RebirthDSP.h"
 #include "RebirthLUFS.h"
@@ -422,16 +421,17 @@ private:
                 // Centre-ish window
                 int start = std::max (0, (numSamps - kFFTSize) / 2);
 
-                std::vector<float> fftBuf (kFFTSize * 2, 0.0f);
+                std::vector<float> fftRe (kFFTSize, 0.0f);
+                std::vector<float> fftIm (kFFTSize, 0.0f);
                 for (int i = 0; i < kFFTSize; ++i)
                 {
                     float w = 0.5f * (1.0f - std::cos (2.0f * juce::MathConstants<float>::pi
                                                        * (float) i / (float) (kFFTSize - 1)));
-                    fftBuf[(size_t) (i * 2)] = mono[(size_t) (start + i)] * w;
+                    fftRe[(size_t) i] = mono[(size_t) (start + i)] * w;
                 }
 
-                juce::dsp::FFT fft (11); // 2^11 = 2048
-                fft.performRealOnlyForwardTransform (fftBuf.data());
+                // Inline radix-2 FFT from RebirthDSP.h (avoids juce_dsp / <complex>)
+                inlineRadix2FFT (fftRe.data(), fftIm.data(), kFFTSize);
 
                 int halfN = kFFTSize / 2;
                 float binHz = (float) sampleRate / (float) kFFTSize;
@@ -443,8 +443,8 @@ private:
 
                 for (int i = 1; i < halfN; ++i)  // skip DC bin
                 {
-                    float re  = fftBuf[(size_t) (i * 2)];
-                    float im  = fftBuf[(size_t) (i * 2 + 1)];
+                    float re  = fftRe[(size_t) i];
+                    float im  = fftIm[(size_t) i];
                     float mag = std::sqrt (re * re + im * im) + kEps;
                     float hz  = (float) i * binHz;
 
@@ -621,8 +621,8 @@ private:
                 //--------------------------------------------------------------
                 case RebirthDSPModuleID::SoftClipGuard:
                 {
-                    softClipBlock (L, numSamps);
-                    softClipBlock (R, numSamps);
+                    rebirthSoftClipBlock (L, numSamps);
+                    rebirthSoftClipBlock (R, numSamps);
                     break;
                 }
 

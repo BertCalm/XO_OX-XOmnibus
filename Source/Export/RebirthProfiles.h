@@ -1,6 +1,6 @@
 #pragma once
 #include "RebirthDSP.h"
-#include "XOutshine.h"  // SampleCategory
+#include "SampleCategory.h"
 
 #include <string>
 #include <unordered_map>
