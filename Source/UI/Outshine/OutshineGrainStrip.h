@@ -110,7 +110,7 @@ private:
                 shortName = shortName.substring(0, 18) + juce::String(juce::CharPointer_UTF8("\xe2\x80\xa6"));
 
             auto* chip = new juce::TextButton(shortName + "  " + juce::String(juce::CharPointer_UTF8("\xc3\x97")));
-            chip->setSize((int)GalleryFonts::body(12.0f).getStringWidthFloat(shortName) + 48, kChipH);
+            chip->setSize(juce::roundToInt(GalleryFonts::body(12.0f).getStringWidthFloat(shortName)) + 48, kChipH);
             chip->setTopLeftPosition(x, (getHeight() - kChipH) / 2);
             chip->setColour(juce::TextButton::buttonColourId,
                             GalleryColors::get(GalleryColors::borderGray()));

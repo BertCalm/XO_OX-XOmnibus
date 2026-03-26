@@ -157,8 +157,8 @@ public:
 
             for (auto* btn : moodButtons)
             {
-                int pillW = juce::jmax(36, (int)GalleryFonts::body(9.0f)
-                            .getStringWidthFloat(btn->getButtonText()) + 20);
+                int pillW = juce::jmax(36, juce::roundToInt(GalleryFonts::body(9.0f)
+                            .getStringWidthFloat(btn->getButtonText())) + 20);
                 if (px + pillW > maxX && btn != moodButtons.getFirst())
                 {
                     px = area.getX();

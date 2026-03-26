@@ -135,6 +135,8 @@ public:
 
     enum class ScaleMode { Off, Filter, Highlight };
     ScaleMode scaleMode = ScaleMode::Off;
+    // P2-2: setter so callers don't access scaleMode directly
+    void setScaleMode(ScaleMode m) { scaleMode = m; repaint(); }
 
     void setMode(Mode m) { mode = m; repaint(); }
     Mode getMode() const { return mode; }
@@ -321,6 +323,7 @@ private:
             for (int interval : intervals)
             {
                 int candidate = rootKey + interval + ((note / 12) + octSearch) * 12;
+                if (candidate < 0) continue; // P1-3: skip negative candidates
                 int dist = std::abs(candidate - note);
                 if (dist < bestDist) { bestDist = dist; best = candidate; }
             }
@@ -554,6 +557,10 @@ private:
 
                 if (isHit)
                 {
+                    // P1-4: Draw glow shadow FIRST so subsequent pads paint over any bleed
+                    g.setColour(accentColour.withAlpha(vel * 0.25f));
+                    g.fillRoundedRectangle(padRect.expanded(3.0f), 5.0f);
+
                     // Hit pad: radial gradient from accent @ 0.42 center to accent @ 0.07 edge
                     float cx = padRect.getCentreX(), cy = padRect.getCentreY();
                     float r  = padRect.getWidth() * 0.7f;
@@ -565,10 +572,6 @@ private:
                     // Hit border: accent @ 0.50
                     g.setColour(accentColour.withAlpha(0.50f));
                     g.drawRoundedRectangle(padRect, 4.0f, 1.5f);
-
-                    // Glow shadow: wider fill at low opacity
-                    g.setColour(accentColour.withAlpha(vel * 0.25f));
-                    g.fillRoundedRectangle(padRect.expanded(3.0f), 5.0f);
                 }
                 else
                 {
@@ -588,8 +591,11 @@ private:
                     g.drawRoundedRectangle(padRect, 4.0f, 1.0f);
 
                     // Root key accent: XO Gold 2px bottom border
+                    // P2-3: In HIGHLIGHT mode use quantized note for root detection
+                    int rootCheckNote = (scaleMode == ScaleMode::Highlight && mode != Mode::Drum)
+                                        ? quantizeToScale(padNote) : padNote;
                     bool isRootPad = (scaleMode != ScaleMode::Off && mode != Mode::Drum
-                                      && (padNote % 12) == rootKey);
+                                      && (rootCheckNote % 12) == rootKey);
                     if (isRootPad)
                     {
                         juce::Colour xoGold(0xFFE9C46A);
@@ -608,7 +614,7 @@ private:
                     {
                         float alpha = (1.0f - wm.age / kWarmMemoryDur) * 0.15f;
                         float pcx = padRect.getCentreX(), pcy = padRect.getCentreY();
-                        float gr = 10.0f;
+                        float gr = padRect.getWidth() * 0.22f; // P2-6: dynamic radius
                         juce::ColourGradient ghostGrad(accentColour.withAlpha(alpha * 2.0f), pcx, pcy,
                                                        accentColour.withAlpha(0.0f), pcx + gr, pcy, true);
                         g.setGradientFill(ghostGrad);
@@ -633,7 +639,11 @@ private:
                 }
                 else
                 {
-                    label = juce::String(noteNames[note % 12]) + juce::String(note / 12 - 1);
+                    // P1-1: In HIGHLIGHT mode the fired note is quantized, so show
+                    // the quantized note as the label so the display matches what plays.
+                    int displayNote = (scaleMode == ScaleMode::Highlight)
+                                      ? quantizeToScale(note) : note;
+                    label = juce::String(noteNames[displayNote % 12]) + juce::String(displayNote / 12 - 1);
                 }
 
                 // Note label: white on hit; dimmed (0.25) for out-of-scale pads in Highlight mode; accent @ 0.55 otherwise
@@ -641,7 +651,7 @@ private:
                 if (!isHit && scaleMode == ScaleMode::Highlight && mode != Mode::Drum && !isNoteInScale(note))
                     labelAlpha = 0.25f;
                 g.setColour(isHit ? juce::Colours::white : accentColour.withAlpha(labelAlpha));
-                g.setFont(juce::Font(9.0f));
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
                 g.drawText(label, padRect, juce::Justification::centred);
             }
         }
@@ -653,7 +663,7 @@ private:
             auto badgeRect = juce::Rectangle<float>(
                 originX + gridW - 50.0f, originY, 48.0f, 16.0f);
             g.setColour(accentColour.withAlpha(0.75f));
-            g.setFont(juce::Font(9.0f).boldened());
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)).boldened());
             g.drawText(badge, badgeRect, juce::Justification::centredRight);
         }
     }
@@ -714,7 +724,7 @@ private:
                 g.setColour(zoneColor.withAlpha(0.35f));
                 g.drawHorizontalLine((int)y, b.getX(), b.getRight());
                 int octNum = (24 + semi) / 12 - 1;
-                g.setFont(juce::Font(8.0f));
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
                 g.setColour(zoneColor.withAlpha(0.55f));
                 g.drawText("C" + juce::String(octNum),
                     juce::Rectangle<float>(4, y - 10, 24, 12),
@@ -753,12 +763,12 @@ private:
             g.setColour(zoneColor.withAlpha(0.20f));
             g.fillEllipse(cx - glowR, noteY - glowR, glowR * 2, glowR * 2);
 
-            // XO Gold ring — 2.5px for Retina clarity
-            g.setColour(juce::Colour(0xFFE9C46A));
+            // P1-2: Use accentColour (not hardcoded XO Gold) for fretless cursor
+            g.setColour(accentColour);
             g.drawEllipse(cx - ringR, noteY - ringR, ringR * 2, ringR * 2, 2.5f);
 
             // Center dot
-            g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.7f));
+            g.setColour(accentColour.withAlpha(0.7f));
             g.fillEllipse(cx - 3, noteY - 3, 6, 6);
 
             // Velocity arc indicator — 60° sweep at top of ring, alpha proportional to velocity
@@ -770,7 +780,7 @@ private:
                                juce::degreesToRadians(startDeg),
                                juce::degreesToRadians(startDeg + arcSweepDeg),
                                true);
-                g.setColour(juce::Colour(0xFFE9C46A).withAlpha(lastFretlessVelocity_ * 0.9f));
+                g.setColour(accentColour.withAlpha(lastFretlessVelocity_ * 0.9f));
                 g.strokePath(arcPath, juce::PathStrokeType(3.0f));
             }
         }
@@ -817,7 +827,7 @@ public:
             g.fillRect(tabR);
             g.setColour(accentColour.withAlpha(0.20f));
             g.drawRect(tabR, 0.5f);
-            g.setFont(juce::Font(9.0f).boldened());
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)).boldened());
             g.setColour(active ? accentColour.withAlpha(0.95f) : accentColour.withAlpha(0.40f));
             g.drawText(tabLabels[i], tabR, juce::Justification::centred);
         }
@@ -924,7 +934,7 @@ public:
 
         // Axis labels: accent @ 0.25
         g.setColour(accentColour.withAlpha(0.25f));
-        g.setFont(juce::Font(9.0f));
+        g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
         g.drawText("CUTOFF", juce::Rectangle<float>(cx - radius, cy + radius + 2, radius * 2, 12),
                    juce::Justification::centred);
         g.drawText("RES", juce::Rectangle<float>(cx + radius + 2, cy - 6, 30, 12),
@@ -1120,7 +1130,7 @@ public:
 
         // Mode label: accent @ 0.40
         g.setColour(accentColour.withAlpha(0.40f));
-        g.setFont(juce::Font(8.0f));
+        g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
         static const char* modeNames[] = { "DUB SPACE", "FILTER SWEEP", "COUPLING", "DUB SIREN" };
         g.drawText(modeNames[(int)stripMode], b.reduced(4), juce::Justification::topLeft);
 
@@ -1234,11 +1244,11 @@ public:
                 g.setColour(panicCol.withAlpha(pressed ? 1.0f : 0.35f));
                 g.drawRoundedRectangle(rect, 6.0f, 2.0f);
                 g.setColour(pressed ? juce::Colours::black : panicCol);
-                g.setFont(juce::Font(10.0f).boldened());
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(10.0f)).boldened());
                 g.drawText(labels[i], rect, juce::Justification::centred);
                 // Keyboard hint: panic uses red @ 0.45
                 g.setColour(panicCol.withAlpha(0.45f));
-                g.setFont(juce::Font(9.0f));
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
                 g.drawText(keys[i], rect.reduced(4), juce::Justification::bottomRight);
             }
             else
@@ -1262,12 +1272,12 @@ public:
                     // Normal text: accent @ 0.55
                     g.setColour(accentColour.withAlpha(0.55f));
                 }
-                g.setFont(juce::Font(10.0f).boldened());
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(10.0f)).boldened());
                 g.drawText(labels[i], rect, juce::Justification::centred);
 
                 // Keyboard hint: accent @ 0.45
                 g.setColour(accentColour.withAlpha(0.45f));
-                g.setFont(juce::Font(9.0f));
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
                 g.drawText(keys[i], rect.reduced(4), juce::Justification::bottomRight);
             }
         }
@@ -1429,20 +1439,23 @@ public:
         addAndMakeVisible(scaleModeBtn);
         scaleModeBtn.onClick = [this]
         {
+            // P2-2: use setter rather than direct mutation of scaleMode field
             auto& ni = noteInput;
+            NoteInputZone::ScaleMode next;
             if (ni.scaleMode == NoteInputZone::ScaleMode::Off)
-                ni.scaleMode = NoteInputZone::ScaleMode::Filter;
+                next = NoteInputZone::ScaleMode::Filter;
             else if (ni.scaleMode == NoteInputZone::ScaleMode::Filter)
-                ni.scaleMode = NoteInputZone::ScaleMode::Highlight;
+                next = NoteInputZone::ScaleMode::Highlight;
             else
-                ni.scaleMode = NoteInputZone::ScaleMode::Off;
+                next = NoteInputZone::ScaleMode::Off;
+
+            ni.setScaleMode(next);
 
             switch (ni.scaleMode) {
                 case NoteInputZone::ScaleMode::Off:       scaleModeBtn.setButtonText("SCL"); break;
                 case NoteInputZone::ScaleMode::Filter:    scaleModeBtn.setButtonText("FLT"); break;
                 case NoteInputZone::ScaleMode::Highlight: scaleModeBtn.setButtonText("HLT"); break;
             }
-            noteInput.repaint();
         };
 
         // Strip mode buttons
@@ -1502,11 +1515,25 @@ public:
     // Call this from XOlokunEditor::timerCallback() when the active engine changes.
     void setAccentColour(juce::Colour c)
     {
+        if (c == accentColour) return; // B1: early-return guard — skip repaints if unchanged
         accentColour = c;
         noteInput.setAccentColour(c);
         orbitPath.setAccentColour(c);
         strip.setAccentColour(c);
         perfPads.setAccentColour(c);
+
+        // P2-1: also update header button "on" colours so mode/bank/strip buttons
+        // reflect the current engine accent when toggled.
+        auto updateBtnAccent = [&](juce::TextButton& btn) {
+            btn.setColour(juce::TextButton::buttonOnColourId, c);
+        };
+        for (int i = 0; i < 3; ++i) updateBtnAccent(modeButtons[i]);
+        for (int i = 0; i < 4; ++i) updateBtnAccent(bankButtons[i]);
+        for (int i = 0; i < 4; ++i) updateBtnAccent(stripModeButtons[i]);
+        updateBtnAccent(octDownBtn);
+        updateBtnAccent(octUpBtn);
+        updateBtnAccent(scaleModeBtn);
+
         repaint();
     }
 
@@ -1521,27 +1548,30 @@ public:
         auto area = getLocalBounds();
 
         // Header bar
+        // P0-1: Reduced button widths to fit within 520px default window.
+        // Budget: 3×48 mode + 4px gap + 24oct- + 36label + 24oct+ + 4px gap +
+        //         4×20 bank + 4px gap + 32 scale + 4×36 strip = ~494px — fits in 520px.
         auto header = area.removeFromTop(PS::kHeaderH);
-        int btnW = 60;
+        int btnW = 48; // was 60 — P0-1 reduced
         for (int i = 0; i < 3; ++i)
             modeButtons[i].setBounds(header.removeFromLeft(btnW).reduced(2));
-        header.removeFromLeft(10);
-        octDownBtn.setBounds(header.removeFromLeft(32).reduced(2));
-        octLabel.setBounds(header.removeFromLeft(44).reduced(2));
-        octUpBtn.setBounds(header.removeFromLeft(32).reduced(2));
+        header.removeFromLeft(4); // was 10 — P0-1 reduced gap
+        octDownBtn.setBounds(header.removeFromLeft(24).reduced(2)); // was 32
+        octLabel.setBounds(header.removeFromLeft(36).reduced(2));   // was 44
+        octUpBtn.setBounds(header.removeFromLeft(24).reduced(2));   // was 32
 
-        // Bank selector buttons — 24px each, immediately after octave controls
-        header.removeFromLeft(8); // small gap
+        // Bank selector buttons — 20px each (was 24) — P0-1
+        header.removeFromLeft(4); // was 8 — P0-1 reduced gap
         for (int i = 0; i < 4; ++i)
-            bankButtons[i].setBounds(header.removeFromLeft(24).reduced(2));
+            bankButtons[i].setBounds(header.removeFromLeft(20).reduced(2));
 
-        // Scale mode button — 40px wide, after bank buttons
-        header.removeFromLeft(8); // small gap
-        scaleModeBtn.setBounds(header.removeFromLeft(40).reduced(2));
+        // Scale mode button — 32px wide (was 40) — P0-1
+        header.removeFromLeft(4); // was 8 — P0-1 reduced gap
+        scaleModeBtn.setBounds(header.removeFromLeft(32).reduced(2));
 
-        // Strip mode buttons at right of header
+        // Strip mode buttons at right of header — 36px each (was 48) — P0-1
         for (int i = 3; i >= 0; --i)
-            stripModeButtons[i].setBounds(header.removeFromRight(48).reduced(2));
+            stripModeButtons[i].setBounds(header.removeFromRight(36).reduced(2));
 
         // Bottom strip — performance strip (full width below main zones)
         auto stripArea = area.removeFromBottom(PS::kZone3H);

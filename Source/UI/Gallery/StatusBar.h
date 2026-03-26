@@ -47,16 +47,15 @@ public:
 
         // Colors are applied once in applyTheme() — matching what paint() expects:
         // background = elevated (#242426), border = border(), text per button type.
-        makePad(fireBtn,    "FIRE",     "Fire chord machine (coming soon)");
-        makePad(xoSendBtn,  "XOSEND",  "Trigger coupling burst (coming soon)");
-        makePad(echoCutBtn, "ECHO CUT","Kill delay tails (coming soon)");
+        makePad(fireBtn,    "FIRE",     "Fire chord machine (Z)");
+        makePad(xoSendBtn,  "XOSEND",  "Trigger coupling burst (X)");
+        makePad(echoCutBtn, "ECHO CUT","Kill delay tails (C)");
         makePad(panicBtn,   "PANIC",   "All notes off / reset engines (V)");
 
-        // UX02: FIRE / XOSEND / ECHO CUT are unimplemented stubs — grey them out
-        // until the processor methods are wired. PANIC remains fully active.
-        fireBtn.setEnabled(false);
-        xoSendBtn.setEnabled(false);
-        echoCutBtn.setEnabled(false);
+        // Buttons are now wired to processor methods — all enabled.
+        fireBtn.setEnabled(true);
+        xoSendBtn.setEnabled(true);
+        echoCutBtn.setEnabled(true);
 
         fireBtn.onClick    = [this] { if (onFire)    onFire();    };
         xoSendBtn.onClick  = [this] { if (onXoSend)  onXoSend();  };
@@ -269,6 +268,18 @@ public:
         voiceLabel.setBounds( centreLeft + labelW,     0, labelW, labelH);
         cpuLabel.setBounds(   centreLeft + labelW * 2, 0, labelW, labelH);
     }
+
+    //==========================================================================
+    // setLocked() — sync the lock button's toggle state from an external source
+    // (e.g. the Settings panel's onPerformanceLockChanged callback).
+    // Must be called on the message thread.
+    void setLocked(bool locked)
+    {
+        if (lockBtn.getToggleState() != locked)
+            lockBtn.setToggleState(locked, juce::dontSendNotification);
+    }
+
+    bool isLocked() const noexcept { return lockBtn.getToggleState(); }
 
     // Re-apply theme colours when the LookAndFeel changes (avoids colour drift
     // and keeps setColour() calls out of paint() where they would trigger

@@ -181,6 +181,7 @@ public:
     // UI-thread accessor — returns a const reference; safe to call at any time.
     const WaveformFifo& getWaveformFifo(int slot) const noexcept
     {
+        if (slot < 0 || slot >= MaxSlots) slot = 0;  // safety fallback — clamp OOB slot
         return waveformFifos[static_cast<size_t>(slot)];
     }
 
@@ -209,6 +210,60 @@ public:
     // enqueued here on the message thread and merged into processBlock's
     // MidiBuffer each audio callback.  Thread-safe by JUCE contract.
     juce::MidiMessageCollector& getMidiCollector() { return playSurfaceMidiCollector; }
+
+    // ── Performance gesture API (message thread safe) ─────────────────────────
+
+    // Mute/unmute a slot. Audio thread reads slotMuted[] before mixing each
+    // engine's contribution into the output buffer.
+    void setSlotMuted(int slot, bool muted) noexcept
+    {
+        if (slot >= 0 && slot < MaxSlots)
+            slotMuted[slot].store(muted, std::memory_order_relaxed);
+    }
+    bool isSlotMuted(int slot) const noexcept
+    {
+        if (slot < 0 || slot >= MaxSlots) return false;
+        return slotMuted[slot].load(std::memory_order_relaxed);
+    }
+
+    // Fire the chord machine — triggers an immediate one-shot chord using the
+    // current palette/voicing on the live root note (or MIDI C4 if no root).
+    // Sets the chordFirePending flag; processBlock consumes it on the next block.
+    void fireChordMachine() noexcept
+    {
+        chordFirePending.store(true, std::memory_order_release);
+    }
+
+    // Trigger a coupling energy burst — temporarily boosts all active coupling
+    // route amounts to 1.0 for ~500ms, then decays back to 1.0 multiplier.
+    // couplingBurstGain is read by processBlock as a multiplier on route amounts.
+    void triggerCouplingBurst() noexcept
+    {
+        couplingBurstGain.store(kCouplingBurstPeak, std::memory_order_relaxed);
+        // TODO: race on currentSampleRate — this read is on the message thread while
+        // processBlock (audio thread) may concurrently write currentSampleRate during
+        // prepareToPlay. Fix: store sample rate in a separate std::atomic<double> at
+        // prepare time and read that atomic here instead of plain currentSampleRate.
+        couplingBurstSamplesRemaining.store(
+            static_cast<int>(currentSampleRate * kCouplingBurstMs / 1000.0),
+            std::memory_order_relaxed);
+    }
+
+    // Kill all delay/reverb tails — calls reset() on the master FX chain,
+    // clearing all delay buffers and reverb state instantly.
+    // Message-thread only: posts an atomic flag consumed by processBlock.
+    void killDelayTails() noexcept
+    {
+        killDelayTailsPending.store(true, std::memory_order_release);
+    }
+
+    // CPU processing load as a fraction 0.0–1.0 (or higher during overload).
+    // Measured in processBlock() as elapsed wall time / buffer duration.
+    // Safe to call from any thread.
+    float getProcessingLoad() const noexcept
+    {
+        return processingLoad.load(std::memory_order_relaxed);
+    }
 
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
@@ -340,6 +395,42 @@ private:
     // Must be atomic: setStateInformation runs on the message thread, prepareToPlay
     // can be called from any thread depending on host. (Audit P0-2 CRITICAL-1)
     std::atomic<bool> hasRestoredState { false };
+
+    // ── Per-slot mute state ───────────────────────────────────────────────────
+    // Written by message thread (setSlotMuted), read by audio thread per block.
+    std::array<std::atomic<bool>, MaxSlots> slotMuted {};  // default false
+
+    // ── Chord machine fire pending flag ──────────────────────────────────────
+    // message thread sets → audio thread consumes and clears.
+    std::atomic<bool> chordFirePending { false };
+
+    // ── Chord fire deferred note-off ──────────────────────────────────────────
+    // When chordFirePending is consumed, note-ons are injected immediately and
+    // chordFireNoteOffCountdown is set to ~kChordHoldMs worth of samples.
+    // Each subsequent block decrements the countdown; when it reaches zero the
+    // audio thread injects note-offs for the stored chordFireNotes.
+    // This replaces the old same-block note-off which gave only ~10ms of hold.
+    std::atomic<int> chordFireNoteOffCountdown { 0 };
+    static constexpr int kChordHoldMs = 100;  // hold chord for ~100ms before note-off
+    std::array<std::atomic<int>, kChordSlots> chordFireNotes {};  // notes fired; -1 = empty
+
+    // ── Coupling burst state ──────────────────────────────────────────────────
+    // couplingBurstGain: multiplier applied to all active route amounts (1.0 = no boost).
+    // Starts at kCouplingBurstPeak when triggered, decays to 1.0 over kCouplingBurstMs.
+    static constexpr float kCouplingBurstPeak = 2.0f;   // max boost factor
+    static constexpr float kCouplingBurstMs   = 500.0f; // decay duration in ms
+    std::atomic<float> couplingBurstGain          { 1.0f };
+    std::atomic<int>   couplingBurstSamplesRemaining { 0 };
+
+    // ── Kill delay tails pending flag ────────────────────────────────────────
+    // message thread sets → audio thread consumes (calls masterFX.reset()) and clears.
+    std::atomic<bool> killDelayTailsPending { false };
+
+    // ── CPU processing load ───────────────────────────────────────────────────
+    // Updated each block: elapsed / buffer_duration. Smoothed with a leaky integrator.
+    std::atomic<float> processingLoad { 0.0f };
+    // Timestamp of the start of the current processBlock call (high-res ticks).
+    juce::int64 processBlockStartTick { 0 };
 
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);

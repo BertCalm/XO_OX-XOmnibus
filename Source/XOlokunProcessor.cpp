@@ -872,7 +872,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_modMode", 1), "Master Mod Mode",
-        juce::NormalisableRange<float>(0.0f, 3.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 4.0f, 1.0f), 0.0f));  // 0=Chorus 1=Flanger 2=Ensemble 3=Drift 4=Phaser
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_modFeedback", 1), "Master Mod Feedback",
         juce::NormalisableRange<float>(0.0f, 0.85f), 0.0f));
@@ -1215,6 +1215,17 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     juce::ScopedNoDenormals noDenormals;
     const int numSamples = buffer.getNumSamples();
 
+    // CPU load measurement: record start time (high-res ticks)
+    processBlockStartTick = juce::Time::getHighResolutionTicks();
+
+    // Consume kill-delay-tails request — must run before any audio processing
+    // so the reset takes effect before any FX contributes this block.
+    if (killDelayTailsPending.load(std::memory_order_acquire))
+    {
+        masterFX.reset();
+        killDelayTailsPending.store(false, std::memory_order_release);
+    }
+
     // Capture external audio input before clearing the buffer.
     // externalInputBuffer was pre-allocated in prepareToPlay — no setSize here.
     // ORDERING CONTRACT: setExternalInput() on Osmosis must be called AFTER this
@@ -1343,6 +1354,73 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // When disabled, each slot gets a copy of the input MIDI (previous behavior).
     // When enabled, each slot gets its own chord-distributed note.
     chordMachine.processBlock(midi, slotMidi, numSamples);
+
+    // Consume chord-fire request: inject a note-on for the current live root
+    // (or MIDI C4 = 60 if no chord has been played yet) into all slot buffers.
+    // This fires the current palette/voicing as a one-shot performance gesture.
+    if (chordFirePending.load(std::memory_order_acquire))
+    {
+        chordFirePending.store(false, std::memory_order_release);
+        if (chordMachine.isEnabled())
+        {
+            // ChordMachine already distributed notes via processBlock above.
+            // A fire gesture injects an extra note-on at sample 0 into each slot
+            // using the current assignment so the user hears the chord immediately.
+            // Note-offs are deferred via chordFireNoteOffCountdown (~100ms hold).
+            const auto& assign = chordMachine.getCurrentAssignment();
+            const float vel = 0.8f;
+            for (int s = 0; s < kChordSlots; ++s)
+            {
+                int note = assign.midiNotes[s];
+                if (note < 0 || note > 127)
+                    note = 60; // fallback: C4
+                slotMidi[s].addEvent(
+                    juce::MidiMessage::noteOn(1, note, vel), 0);
+                // Store fired note for deferred note-off
+                chordFireNotes[s].store(note, std::memory_order_relaxed);
+            }
+        }
+        else
+        {
+            // Chord machine disabled: fire C4 on all slots as a raw trigger.
+            // Note-offs deferred via chordFireNoteOffCountdown.
+            for (int s = 0; s < kChordSlots; ++s)
+            {
+                slotMidi[s].addEvent(
+                    juce::MidiMessage::noteOn(1, 60, 0.8f), 0);
+                chordFireNotes[s].store(60, std::memory_order_relaxed);
+            }
+        }
+        // Arm the note-off countdown: hold for ~kChordHoldMs milliseconds
+        chordFireNoteOffCountdown.store(
+            static_cast<int>(currentSampleRate * kChordHoldMs / 1000.0),
+            std::memory_order_release);
+    }
+
+    // Deferred note-off for chord fire gesture.
+    // Decrement the countdown each block; inject note-offs when it reaches zero.
+    {
+        int countdown = chordFireNoteOffCountdown.load(std::memory_order_acquire);
+        if (countdown > 0)
+        {
+            const int newCountdown = countdown - numSamples;
+            if (newCountdown <= 0)
+            {
+                // Countdown expired — inject note-offs for all fired chord notes
+                chordFireNoteOffCountdown.store(0, std::memory_order_release);
+                for (int s = 0; s < kChordSlots; ++s)
+                {
+                    const int note = chordFireNotes[s].load(std::memory_order_relaxed);
+                    if (note >= 0 && note <= 127)
+                        slotMidi[s].addEvent(juce::MidiMessage::noteOff(1, note), 0);
+                }
+            }
+            else
+            {
+                chordFireNoteOffCountdown.store(newCountdown, std::memory_order_relaxed);
+            }
+        }
+    }
 
     // Feed external audio to Osmosis if loaded in any slot.
     // Uses virtual isAnalysisEngine() instead of dynamic_cast to avoid RTTI on audio thread.
@@ -1536,17 +1614,70 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
 
+    // Decay coupling burst gain toward 1.0 each block.
+    {
+        int burstRemaining = couplingBurstSamplesRemaining.load(std::memory_order_relaxed);
+        if (burstRemaining > 0)
+        {
+            const int newRemaining = std::max(0, burstRemaining - numSamples);
+            couplingBurstSamplesRemaining.store(newRemaining, std::memory_order_relaxed);
+            if (newRemaining == 0)
+                couplingBurstGain.store(1.0f, std::memory_order_relaxed);
+            else
+            {
+                // Linear decay from kCouplingBurstPeak to 1.0 over the burst window.
+                const int totalBurstSamples = static_cast<int>(
+                    currentSampleRate * kCouplingBurstMs / 1000.0);
+                const float progress = 1.0f - static_cast<float>(newRemaining)
+                                            / static_cast<float>(std::max(1, totalBurstSamples));
+                const float decayed = kCouplingBurstPeak - (kCouplingBurstPeak - 1.0f) * progress;
+                couplingBurstGain.store(decayed, std::memory_order_relaxed);
+            }
+        }
+    }
+
+    // Apply couplingBurstGain to all active route amounts before processing.
+    // This is the actual application of the burst multiplier — without this, the
+    // burst gain is computed and decayed above but never heard.
+    {
+        const float burstGain = couplingBurstGain.load(std::memory_order_relaxed);
+        if (burstGain != 1.0f && couplingRoutes)
+        {
+            // couplingRoutes may point to either the baseline shared_ptr or
+            // mergedRoutePtr (pre-allocated, already writable this block).
+            // We must not mutate the baseline shared_ptr's vector directly
+            // (it is shared across threads), so only apply when couplingRoutes
+            // points to our own mergedRoutePtr — otherwise copy into it first.
+            if (couplingRoutes != mergedRoutePtr)
+            {
+                auto& merged = *mergedRoutePtr;
+                merged.clear();
+                merged.assign(couplingRoutes->begin(), couplingRoutes->end());
+                couplingRoutes = mergedRoutePtr;
+            }
+            for (auto& route : *couplingRoutes)
+            {
+                if (route.active)
+                    route.amount *= burstGain;
+            }
+        }
+    }
+
     couplingMatrix.processBlock(numSamples, couplingRoutes);
 
     // Apply family bleed between Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE)
     processFamilyBleed(enginePtrs);
 
-    // Mix all engine outputs to master
+    // Mix all engine outputs to master — skip muted slots.
     const float masterVol = cachedParams.masterVolume->load();
 
     for (int i = 0; i < MaxSlots; ++i)
     {
         if (!enginePtrs[i])
+            continue;
+
+        // Respect per-slot mute state (written by message thread via setSlotMuted)
+        if (slotMuted[i].load(std::memory_order_relaxed))
             continue;
 
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
@@ -1610,6 +1741,20 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
+
+    // CPU load measurement: elapsed / buffer_duration, smoothed with a leaky integrator.
+    // Uses high-resolution ticks so measurements are host-independent.
+    if (currentSampleRate > 0.0 && numSamples > 0)
+    {
+        const juce::int64 endTick     = juce::Time::getHighResolutionTicks();
+        const double ticksPerSec      = static_cast<double>(juce::Time::getHighResolutionTicksPerSecond());
+        const double elapsedSec       = static_cast<double>(endTick - processBlockStartTick) / ticksPerSec;
+        const double bufferDurationSec = static_cast<double>(numSamples) / currentSampleRate;
+        const float  rawLoad           = static_cast<float>(elapsedSec / bufferDurationSec);
+        // Leaky integrator: 90% previous + 10% new — smooths out single-block spikes.
+        const float  prevLoad = processingLoad.load(std::memory_order_relaxed);
+        processingLoad.store(prevLoad * 0.9f + rawLoad * 0.1f, std::memory_order_relaxed);
+    }
 }
 
 void XOlokunProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)
@@ -1723,12 +1868,11 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
     auto shared = std::shared_ptr<SynthEngine>(std::move(newEngine));
     std::atomic_store(&engines[slot], shared);
 
-    // Suspend coupling routes that are incompatible with the new engine.
-    // AudioToBuffer routes require OpalEngine as the destination — any other
-    // engine as dest will silently fail the dynamic_cast in processAudioRoute().
-    // This marks such routes inactive so the UI can surface them as orphaned
-    // and the user can reconnect them. Safe to call after the atomic swap.
-    couplingMatrix.notifyCouplingMatrixOfSwap(slot, engineId);
+    // Update coupling matrix with the new engine pointer so it can resolve
+    // IAudioBufferSink capabilities and activate/suspend AudioToBuffer routes.
+    // Must pass the raw pointer so activeEngines[] is updated before sink resolution.
+    // (W2 Audit CRITICAL-1: was reading stale activeEngines without this)
+    couplingMatrix.notifyCouplingMatrixOfSwap(slot, engineId, shared.get());
 
     if (onEngineChanged)
         juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
@@ -1895,6 +2039,9 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
 
                     // Bounds-check before adding to prevent corrupted saves
                     // from crashing or creating self-routing loops.
+                    // addRoute() also enforces graph-level cycle detection for
+                    // audio-rate types, so corrupted saves cannot install a
+                    // feedback loop even if the self-route check is bypassed.
                     if (r.sourceSlot >= 0 && r.sourceSlot < MaxSlots
                      && r.destSlot   >= 0 && r.destSlot   < MaxSlots
                      && r.sourceSlot != r.destSlot)
@@ -2130,6 +2277,31 @@ void XOlokunProcessor::applyPreset(const PresetData& preset)
             route.amount      = clampedAmount;
             route.isNormalled = false;
             route.active      = true;
+
+            // Cycle detection: skip any audio-rate route that would form a
+            // directed feedback loop (A→B→A) in the pending route set.
+            //
+            // We build a temporary scratch matrix, add the routes accepted so
+            // far, and ask wouldCreateCycle() whether this new route closes a
+            // cycle. This is correct because pendingRoutes will replace the
+            // current matrix entirely on commit — we must check against the
+            // routes we are about to install, not the stale live matrix.
+            {
+                MegaCouplingMatrix scratchMatrix;
+                for (const auto& accepted : pendingRoutes)
+                    scratchMatrix.addRoute(accepted);
+
+                if (scratchMatrix.wouldCreateCycle(route.sourceSlot,
+                                                   route.destSlot,
+                                                   route.type))
+                {
+                    DBG("applyPreset: audio-rate cycle detected — skipping route "
+                        + canonA + "(slot " + juce::String(slotA) + ") → "
+                        + canonB + "(slot " + juce::String(slotB) + ") ["
+                        + cp.type + "]");
+                    continue;
+                }
+            }
 
             pendingRoutes.push_back(route);
         }

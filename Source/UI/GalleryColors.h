@@ -233,13 +233,13 @@ namespace GalleryFonts {
         return tf;
     }
 
-    inline juce::Font display    (float size) { return juce::Font(spaceGroteskBold()).withHeight(size); }
-    inline juce::Font heading    (float size) { return juce::Font(interBold()).withHeight(size); }
-    inline juce::Font body       (float size) { return juce::Font(interRegular()).withHeight(size); }
-    inline juce::Font label      (float size) { return juce::Font(interMedium()).withHeight(size); }
-    inline juce::Font value      (float size) { return juce::Font(jetBrainsMono()).withHeight(size); }
+    inline juce::Font display    (float size) { return juce::Font(juce::FontOptions{}.withTypeface(spaceGroteskBold()).withHeight(size)); }
+    inline juce::Font heading    (float size) { return juce::Font(juce::FontOptions{}.withTypeface(interBold()).withHeight(size)); }
+    inline juce::Font body       (float size) { return juce::Font(juce::FontOptions{}.withTypeface(interRegular()).withHeight(size)); }
+    inline juce::Font label      (float size) { return juce::Font(juce::FontOptions{}.withTypeface(interMedium()).withHeight(size)); }
+    inline juce::Font value      (float size) { return juce::Font(juce::FontOptions{}.withTypeface(jetBrainsMono()).withHeight(size)); }
     // Overbit — engine nameplate display font (accent-colored, Column B hero text)
-    inline juce::Font engineName (float size) { return juce::Font(overbitRegular()).withHeight(size); }
+    inline juce::Font engineName (float size) { return juce::Font(juce::FontOptions{}.withTypeface(overbitRegular()).withHeight(size)); }
 
 } // namespace GalleryFonts
 

@@ -89,6 +89,18 @@ public:
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
 
+        // Read persisted theme preference before any component styling.
+        // SettingsPanel will also read this later, but we need it now so
+        // setColour() calls use the correct theme from the start.
+        {
+            juce::PropertiesFile::Options opts;
+            opts.applicationName     = "XOlokun";
+            opts.filenameSuffix      = "settings";
+            opts.osxLibrarySubFolder = "Application Support";
+            juce::PropertiesFile earlySettings(opts);
+            GalleryColors::darkMode() = earlySettings.getBoolValue("darkMode", false);
+        }
+
         // Primary tiles (slots 0-3)
         for (int i = 0; i < kNumPrimarySlots; ++i)
         {
@@ -212,10 +224,14 @@ public:
             masterFXStrip.repaint();
             presetBrowser.repaint();
             sidebar.repaint();
-            // Also repaint the PlaySurface popup window if it is open.
+            // Also repaint the PlaySurface content (not the window frame) if open.
+            // B4: calling repaint() on the DocumentWindow only repaints the title-bar frame;
+            // the content component must be repainted directly.
             if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
-                playSurfaceWindow->repaint();
+                playSurfaceWindow->getPlaySurface().repaint();
         };
+        // Sync toggle visual state to the preference we read early in the constructor.
+        themeToggleBtn.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
 
         // Export button — launches ExportDialog as a CallOutBox
         addAndMakeVisible(exportBtn);
@@ -250,10 +266,9 @@ public:
 
         // W01: Wire trigger-pad callbacks.
         // onPanic: sends All Notes Off on all 16 MIDI channels via the MidiCollector.
-        // onFire / onXoSend / onEchoCut: processor methods not yet implemented.
-        statusBar.onFire    = [this] { /* TODO: processor.fireChordMachine(); */ };
-        statusBar.onXoSend  = [this] { /* TODO: processor.triggerCouplingBurst(); */ };
-        statusBar.onEchoCut = [this] { /* TODO: processor.killDelayTails(); */ };
+        statusBar.onFire    = [this] { processor.fireChordMachine(); };
+        statusBar.onXoSend  = [this] { processor.triggerCouplingBurst(); };
+        statusBar.onEchoCut = [this] { processor.killDelayTails(); };
         statusBar.onPanic   = [this]
         {
             for (int ch = 1; ch <= 16; ++ch)
@@ -350,11 +365,10 @@ public:
         if (auto* sp = sidebar.getSettingsPanel())
         {
             sp->setMidiLearnManager(&proc.getMIDILearnManager());
-            // W02: Wire Performance Lock callback.
-            // TODO: forward locked state to StatusBar lockBtn once StatusBar exposes setLocked().
-            sp->onPerformanceLockChanged = [this](bool /*locked*/)
+            // W02: Wire Performance Lock callback — syncs StatusBar lock button visual state.
+            sp->onPerformanceLockChanged = [this](bool locked)
             {
-                /* TODO: statusBar.setLocked(locked); */
+                statusBar.setLocked(locked);
             };
         }
 
@@ -424,6 +438,16 @@ public:
             return true;
         }
         return false;
+    }
+
+    // Re-apply theme-sensitive colours to components that use explicit setColour()
+    // calls at construction time. This fires whenever applyTheme() propagates a
+    // LookAndFeel change through the component tree (e.g., user toggles dark mode).
+    void lookAndFeelChanged() override
+    {
+        enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t2()));
+        enginesBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
+        // Re-apply any other explicit setColour() calls that use theme-aware values here.
     }
 
     void paint(juce::Graphics& g) override
@@ -837,6 +861,23 @@ private:
 
         playSurfaceWindow->setVisible (true);
         playSurfaceWindow->toFront (true);
+
+        // P2-4: Set accent immediately so there is no 1-frame XO Gold flash on first open.
+        // The timerCallback will keep it updated, but it may not have fired yet at this point.
+        {
+            juce::Colour accent(0xFFE9C46A);
+            if (selectedSlot >= 0 && selectedSlot < XOlokunProcessor::MaxSlots)
+            {
+                if (auto* eng = processor.getEngine(selectedSlot))
+                    accent = eng->getAccentColour();
+            }
+            else
+            {
+                for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+                    if (auto* eng = processor.getEngine(i)) { accent = eng->getAccentColour(); break; }
+            }
+            playSurfaceWindow->getPlaySurface().setAccentColour(accent);
+        }
     }
 
     void hidePlaySurface()
@@ -971,14 +1012,13 @@ private:
                 statusBar.setBpm(bpm);
             }
 
-            // W03: CPU — processor.getProcessingLoad() not yet implemented; leave at 0.
-            // TODO: replace with processor.getProcessingLoad() when added.
-            statusBar.setCpuPercent(0.0f);
+            // W03: CPU — read from processor's measured processBlock load.
+            statusBar.setCpuPercent(processor.getProcessingLoad() * 100.0f);
         }
 
         // ── Header indicators ─────────────────────────────────────────────────
-        // CPU meter — TODO: replace 0.0f with processor.getProcessingLoad() when added.
-        cpuMeter.setCpuPercent(0.0f);
+        // CPU meter — read from processor's measured processBlock load.
+        cpuMeter.setCpuPercent(processor.getProcessingLoad() * 100.0f);
 
         // MIDI indicator learn state — keeps amber pulse in sync.
         midiIndicator.setLearning(processor.getMIDILearnManager().isLearning());
@@ -993,17 +1033,27 @@ private:
         if (ghostTile.isVisible())
             miniCouplingGraph.setNodeCenter(4, (float)ghostTile.getBounds().getCentreY());
 
-        // ── PlaySurface accent colour — track the first loaded engine ─────────
+        // ── PlaySurface accent colour — tracks focused slot (B3 fix) ──────────
+        // B3: prefer selectedSlot's engine accent; fall back to first loaded engine
+        // so the PlaySurface colour matches whatever engine the performer is focused on.
         if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
         {
             static const juce::Colour kXOGoldAccent(0xFFE9C46A);
             juce::Colour accent = kXOGoldAccent;
-            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+            if (selectedSlot >= 0 && selectedSlot < XOlokunProcessor::MaxSlots)
             {
-                if (auto* eng = processor.getEngine(i))
-                {
+                if (auto* eng = processor.getEngine(selectedSlot))
                     accent = eng->getAccentColour();
-                    break;
+            }
+            else
+            {
+                for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
+                {
+                    if (auto* eng = processor.getEngine(i))
+                    {
+                        accent = eng->getAccentColour();
+                        break;
+                    }
                 }
             }
             playSurfaceWindow->getPlaySurface().setAccentColour(accent);
