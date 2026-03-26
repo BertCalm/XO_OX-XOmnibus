@@ -328,6 +328,62 @@ public:
         reefCouplingBufLen_ = 0;
     }
 
+    // ═══ SIGNAL TRACER ═══
+    // Tap-point system for OBRIX Pocket's learning mode.
+    // Read-only observers on the signal path — zero impact when disabled.
+
+    enum class TracerTap : uint8_t {
+        Src1Output   = 0,   // After oscillator 1
+        Src2Output   = 1,   // After oscillator 2
+        Proc1Output  = 2,   // After processor 1 (filter on Src1)
+        Proc2Output  = 3,   // After processor 2 (filter on Src2)
+        PostMix      = 4,   // After Src1+Src2 blend
+        Proc3Output  = 5,   // After post-mix insert
+        PostFX       = 6,   // After effects chain
+        PostSpatial  = 7,   // After distance + air filters
+        kNumTaps     = 8
+    };
+
+    // Lock-free tap control — set from UI thread, read from audio thread
+    std::atomic<int> activeTap_ { -1 };           // -1 = tracing disabled
+    std::atomic<bool> tracerEnabled_ { false };
+
+    // Ring buffer per tap: stores last N samples for UI visualization
+    static constexpr int kTapBufferSize = 512;
+    std::array<std::array<float, kTapBufferSize>, 8> tapBuffers_ {};
+    std::array<std::atomic<int>, 8> tapWritePos_ {};
+
+    // Called from UI thread
+    void enableTracer(int tapIndex) {
+        activeTap_.store(tapIndex, std::memory_order_release);
+        tracerEnabled_.store(true, std::memory_order_release);
+    }
+
+    void disableTracer() {
+        tracerEnabled_.store(false, std::memory_order_release);
+        activeTap_.store(-1, std::memory_order_release);
+    }
+
+    // Called from audio thread — inlined for zero overhead when disabled
+    inline void recordTap(TracerTap tap, float sample) noexcept {
+        if (!tracerEnabled_.load(std::memory_order_relaxed)) return;
+        if (activeTap_.load(std::memory_order_relaxed) != static_cast<int>(tap)) return;
+        auto idx = static_cast<size_t>(tap);
+        int pos = tapWritePos_[idx].load(std::memory_order_relaxed);
+        tapBuffers_[idx][static_cast<size_t>(pos)] = sample;
+        tapWritePos_[idx].store((pos + 1) % kTapBufferSize, std::memory_order_relaxed);
+    }
+
+    // Called from UI thread to read tap data for visualization
+    void getTapData(TracerTap tap, float* dest, int numSamples) const {
+        auto idx = static_cast<size_t>(tap);
+        int writePos = tapWritePos_[idx].load(std::memory_order_acquire);
+        for (int i = 0; i < numSamples && i < kTapBufferSize; ++i) {
+            int readIdx = (writePos - numSamples + i + kTapBufferSize) % kTapBufferSize;
+            dest[i] = tapBuffers_[idx][static_cast<size_t>(readIdx)];
+        }
+    }
+
     //==========================================================================
     // Audio — The Constructive Collision
     // ARCHITECTURE NOTE (Wave 5 target): This method is intentionally monolithic
@@ -829,6 +885,7 @@ public:
 
                 // --- Source 1 (rendered first — drives FM into Src2) ---
                 float src1 = renderSourceSample (src1Type, voice, 0, freq1, effPW1, 0.0f, wtBankVal);
+                recordTap(TracerTap::Src1Output, src1);
 
                 // --- Source 2 (Src1 FM-modulates Src2 frequency at audio rate) ---
                 float src2 = 0.0f;
@@ -853,6 +910,7 @@ public:
                     }
                     src2 = renderSourceSample (src2Type, voice, 1, freq2, effPW2, fmSemitones, wtBankVal);
                 }
+                recordTap(TracerTap::Src2Output, src2);
 
                 // === SPLIT PROCESSOR ROUTING (the Constructive Collision) ===
 
@@ -878,6 +936,7 @@ public:
                     voice.procFbState[0] = flushDenormal (filtOut);
                     sig1 = filtOut;
                 }
+                recordTap(TracerTap::Proc1Output, sig1);
 
                 // Proc2 processes Source 2 independently (with optional feedback)
                 float sig2 = src2;
@@ -898,6 +957,7 @@ public:
                     voice.procFbState[1] = flushDenormal (filtOut);
                     sig2 = filtOut;
                 }
+                recordTap(TracerTap::Proc2Output, sig2);
 
                 // === BRICK ECOLOGY: Competition (Biophonic Phase 3) ===
                 // Cross-suppression: the louder brick suppresses the quieter one.
@@ -928,6 +988,7 @@ public:
                 float signal = (src2Type > 0)
                     ? sig1 * srcMix + sig2 * (1.0f - srcMix)
                     : sig1;
+                recordTap(TracerTap::PostMix, signal);
 
                 // Proc3: post-mix insert (wavefolder / ring mod / filter)
                 if (proc3Type > 0 && proc3Type <= 3)
@@ -957,6 +1018,7 @@ public:
                 bool doRing = (proc1Type == 5 || proc2Type == 5 || proc3Type == 5);
                 if (doRing && src2Type > 0)
                     signal = src1 * src2;
+                recordTap(TracerTap::Proc3Output, signal);
 
                 // --- Amp envelope ---
                 float ampLevel = voice.ampEnv.process();
@@ -1016,6 +1078,7 @@ public:
                 mixL = dryL + wetSumL * normGain;
                 mixR = dryR + wetSumR * normGain;
             }
+            recordTap(TracerTap::PostFX, mixL);
 
             // === PER-BRICK SPATIAL (Wave 3) — Tomita's scene-making ===
             //
@@ -1047,6 +1110,7 @@ public:
                 mixL = airFiltL_ * airLpGain + hpL * airHpGain;
                 mixR = airFiltR_ * airLpGain + hpR * airHpGain;
             }
+            recordTap(TracerTap::PostSpatial, mixL);
 
             mixL *= level;
             mixR *= level;

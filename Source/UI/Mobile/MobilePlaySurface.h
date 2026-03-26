@@ -6,6 +6,7 @@
 #include "HapticEngine.h"
 #include "SensorManager.h"
 #include "../PlaySurface/PlaySurface.h"
+#include "DisplayLink_iOS.h"
 #include <array>
 #include <cmath>
 
@@ -42,10 +43,30 @@ public:
 
     MobilePlaySurface()
     {
-        startTimerHz(30);  // Animation tick for trails, momentum, heatmap decay
+#if JUCE_IOS
+        // Use display-synced animation instead of timer
+        xolokun::display_link::start([this](double timestamp, double targetTimestamp) {
+            juce::ignoreUnused(timestamp, targetTimestamp);
+            // Same work as timerCallback but display-synced
+            updatePhysics();
+            updateTrails();
+            updateHeatmap();
+            repaint();
+        });
+        xolokun::display_link::setPreferredFrameRate(60); // 60Hz default, 30Hz under CPU pressure
+#else
+        startTimerHz(30);  // Desktop fallback: animation tick for trails, momentum, heatmap decay
+#endif
     }
 
-    ~MobilePlaySurface() override { stopTimer(); }
+    ~MobilePlaySurface() override
+    {
+#if JUCE_IOS
+        xolokun::display_link::stop();
+#else
+        stopTimer();
+#endif
+    }
 
     //-- Configuration -----------------------------------------------------------
 
@@ -445,9 +466,11 @@ private:
         repaint();
     }
 
-    //-- Timer callback (animation + physics) ------------------------------------
+    //-- Animation frame helpers -------------------------------------------------
+    // Called each frame by either timerCallback() (desktop) or the DisplayLink
+    // callback (iOS).  Each helper returns true if a repaint is needed.
 
-    void timerCallback() override
+    bool updatePhysics()
     {
         bool needsRepaint = false;
 
@@ -476,16 +499,22 @@ private:
             needsRepaint = true;
         }
 
-        // Pad heatmap decay
-        for (auto& h : padHeat)
+        // Sensor-driven orbit (gyroscope mode)
+        if (sensors && sensors->getMotionMode() == SensorManager::MotionMode::Gyroscope
+            && !touchHandler.isTouchActiveInZone(orbitZoneId))
         {
-            if (h > 0.0f)
-            {
-                h *= 0.92f;
-                if (h < 0.01f) h = 0.0f;
-                needsRepaint = true;
-            }
+            orbitX = sensors->getGyroX();
+            orbitY = sensors->getGyroY();
+            if (modCallback) modCallback(orbitX, orbitY, 2);
+            needsRepaint = true;
         }
+
+        return needsRepaint;
+    }
+
+    bool updateTrails()
+    {
+        bool needsRepaint = false;
 
         // Trail aging
         for (auto& tp : trailPoints)
@@ -497,18 +526,54 @@ private:
             }
         }
 
-        // Sensor-driven orbit (gyroscope mode)
-        if (sensors && sensors->getMotionMode() == SensorManager::MotionMode::Gyroscope
-            && !touchHandler.isTouchActiveInZone(orbitZoneId))
+        return needsRepaint;
+    }
+
+    bool updateHeatmap()
+    {
+        bool needsRepaint = false;
+
+        // Pad heatmap decay
+        for (auto& h : padHeat)
         {
-            orbitX = sensors->getGyroX();
-            orbitY = sensors->getGyroY();
-            if (modCallback) modCallback(orbitX, orbitY, 2);
-            needsRepaint = true;
+            if (h > 0.0f)
+            {
+                h *= 0.92f;
+                if (h < 0.01f) h = 0.0f;
+                needsRepaint = true;
+            }
         }
 
+        return needsRepaint;
+    }
+
+    //-- Timer callback (animation + physics) — desktop fallback ----------------
+
+    void timerCallback() override
+    {
+        bool needsRepaint = false;
+        needsRepaint |= updatePhysics();
+        needsRepaint |= updateTrails();
+        needsRepaint |= updateHeatmap();
         if (needsRepaint) repaint();
     }
+
+public:
+    //-- Animation quality -------------------------------------------------------
+
+    // Call with reduced=true when the host detects CPU pressure (e.g. from
+    // ProcessInfo::thermalState on iOS).  Drops the frame rate to 30Hz to
+    // relieve render load without stopping animation entirely.
+    void reducedAnimationMode(bool reduced)
+    {
+#if JUCE_IOS
+        xolokun::display_link::setPreferredFrameRate(reduced ? 30 : 60);
+#else
+        if (reduced) startTimerHz(15); else startTimerHz(30);
+#endif
+    }
+
+private:
 
     //-- Scale table -------------------------------------------------------------
 

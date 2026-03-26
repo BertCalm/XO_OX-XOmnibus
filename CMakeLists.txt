@@ -17,6 +17,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
 endif()
 
 # Platform detection
+# iOS build: cmake -B build-ios -G Xcode -DCMAKE_TOOLCHAIN_FILE=cmake/ios-toolchain.cmake
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(XO_MOBILE ON)
     set(XO_FORMATS AUv3 Standalone)
@@ -52,8 +53,8 @@ else()
     set(XO_HAS_OSCAR OFF)
 endif()
 
-# Typography — Space Grotesk (display), Inter (body), JetBrains Mono (values).
-# All OFL-licensed. Embedded as C++ binary data via JUCE.
+# Typography — Space Grotesk (display), Inter (body), JetBrains Mono (values),
+# Overbit (engine nameplate display). All embedded as C++ binary data via JUCE.
 juce_add_binary_data(XOlokunFont
     NAMESPACE "FontData"
     SOURCES
@@ -63,6 +64,7 @@ juce_add_binary_data(XOlokunFont
     Assets/fonts/Inter-Medium.ttf
     Assets/fonts/Inter-Bold.ttf
     Assets/fonts/JetBrainsMono-Regular.ttf
+    Assets/fonts/Overbit-Regular.otf
 )
 
 juce_add_plugin(XOlokun
@@ -100,6 +102,7 @@ target_sources(XOlokun PRIVATE
     Source/DSP/PolyBLEP.h
     Source/DSP/WavetableOscillator.h
     Source/DSP/EngineProfiler.h
+    Source/DSP/ThreadInit.h
 
     # Effects (shared, pure C++)
     Source/DSP/Effects/DubDelay.h
@@ -324,6 +327,24 @@ target_sources(XOlokun PRIVATE
     Source/UI/Mobile/MobilePlaySurface.h
     Source/UI/Mobile/ParameterDrawer.h
 
+    # iOS platform bridge implementations (Objective-C++)
+    # .mm files are only compiled by Clang on Apple platforms; #if JUCE_IOS guards
+    # inside each file further restrict runtime behaviour to iOS only.
+    Source/UI/Mobile/HapticEngine_iOS.mm
+    Source/UI/Mobile/SensorManager_iOS.mm
+    Source/UI/Mobile/AudioSession_iOS.h
+    Source/UI/Mobile/AudioSession_iOS.mm
+    Source/UI/Mobile/TouchForce_iOS.mm
+    Source/UI/Mobile/DisplayLink_iOS.mm
+
+    # SpriteKit Companion Layer — OBRIX Pocket reef + creatures + particles
+    # ReefBridge.h compiles on all platforms (no-op stubs for macOS).
+    # ReefBridge.mm requires SpriteKit; linked conditionally in the XO_MOBILE block.
+    # CreatureBehaviorTimer.h is a pure JUCE header — compiles everywhere.
+    Source/UI/Mobile/ReefBridge.h
+    Source/UI/Mobile/ReefBridge.mm
+    Source/UI/Mobile/CreatureBehaviorTimer.h
+
     # Kitchen Collection — Chef (Organs) engines
     Source/Engines/Oto/OtoEngine.h
     Source/Engines/Octave/OctaveEngine.h
@@ -415,6 +436,12 @@ endif()
 if(XO_MOBILE)
     target_link_libraries(XOlokun PRIVATE
         juce::juce_audio_plugin_client
+    )
+    target_link_libraries(XOlokun PRIVATE
+        "-framework CoreMotion"
+        "-framework CoreHaptics"
+        "-framework AVFoundation"
+        "-framework SpriteKit"   # ReefBridge.mm — SpriteKit companion layer
     )
 endif()
 

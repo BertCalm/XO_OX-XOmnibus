@@ -19,10 +19,16 @@ namespace xolokun {
 //   - Output values are atomic — safe to read from audio thread
 //
 // Platform integration:
-//   - On iOS: wraps CMMotionManager via Objective-C++ bridge
-//   - On macOS: disabled (no motion sensors)
+//   - On iOS: wraps CMMotionManager via Objective-C++ bridge (SensorManager_iOS.mm)
+//   - On macOS: start()/stop() are no-ops; motion data is never delivered
 //   - The bridge layer calls feedAccelerometer() and feedGyroscope()
-//     from the CMMotionManager callback
+//     from the CMMotionManager callback thread
+//
+// Lifecycle:
+//   1. Construct SensorManager
+//   2. Call setConfig() with the desired Config
+//   3. Call start() — begins CMMotionManager updates on iOS
+//   4. Call stop() before destroying the instance (or at plugin shutdown)
 //
 class SensorManager {
 public:
@@ -57,6 +63,37 @@ public:
 
     void setMotionMode(MotionMode mode) { motionMode = mode; }
     MotionMode getMotionMode() const { return motionMode; }
+
+    //-- Lifecycle ---------------------------------------------------------------
+
+    // Start motion sensor updates.
+    // On iOS: delegates to sensor_platform::startMotionUpdates(), which allocates
+    //   a CMMotionManager singleton and begins device-motion callbacks.  The
+    //   callbacks will call feedAccelerometer() / feedGyroscope() on this instance.
+    // On other platforms: no-op (no motion hardware available).
+    //
+    // May be called multiple times; each call replaces the previous session.
+    // config.motionEnabled must be true for this to have any effect.
+    void start()
+    {
+#if JUCE_IOS
+        sensor_platform::startMotionUpdates(this, config);
+#endif
+    }
+
+    // Stop motion sensor updates and release platform resources.
+    // On iOS: delegates to sensor_platform::stopMotionUpdates(), which stops
+    //   CMMotionManager and cancels any pending callbacks.
+    // On other platforms: no-op.
+    //
+    // Idempotent. Must be called before this SensorManager instance is destroyed
+    // whenever start() was previously called.
+    void stop()
+    {
+#if JUCE_IOS
+        sensor_platform::stopMotionUpdates();
+#endif
+    }
 
     //-- Calibration -------------------------------------------------------------
 
@@ -188,3 +225,37 @@ private:
 };
 
 } // namespace xolokun
+
+// ---------------------------------------------------------------------------
+// sensor_platform — iOS platform bridge forward declarations
+//
+// Defined in SensorManager_iOS.mm (Objective-C++).
+//
+// Placed AFTER the full SensorManager class definition so that
+// SensorManager::Config is a complete type when these signatures are parsed.
+//
+// Non-iOS translation units that include this header see only the declarations
+// (under the #if guard).  They will never be called because start()/stop()
+// are also guarded by #if JUCE_IOS.  The linker only pulls in the .mm on iOS
+// targets, so there are no link errors on macOS/desktop builds.
+// ---------------------------------------------------------------------------
+#if JUCE_IOS
+namespace sensor_platform {
+
+// Start motion updates feeding into |sm| using the supplied Config.
+// |sm| must outlive the motion update session.
+void startMotionUpdates(xolokun::SensorManager* sm,
+                        const xolokun::SensorManager::Config& config);
+
+// Stop all motion updates and release CMMotionManager resources.
+void stopMotionUpdates();
+
+// Returns true if the current device has a gyroscope.
+// Safe to call before startMotionUpdates().
+bool isGyroscopeAvailable();
+
+// Returns true if motion updates are currently active.
+bool isRunning();
+
+} // namespace sensor_platform
+#endif // JUCE_IOS

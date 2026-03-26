@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Bundle identification -->
+    <key>CFBundleDisplayName</key>
+    <string>XOlokun</string>
+    <key>CFBundleIdentifier</key>
+    <string>org.xo-ox.xolokun.auv3</string>
+    <key>CFBundleName</key>
+    <string>XOlokun</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>CFBundlePackageType</key>
+    <string>XPC!</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+
+    <!-- Minimum iOS deployment target -->
+    <key>MinimumOSVersion</key>
+    <string>15.0</string>
+
+    <!-- NSExtension configuration for Audio Unit extension -->
+    <key>NSExtension</key>
+    <dict>
+        <key>NSExtensionPointIdentifier</key>
+        <string>com.apple.AudioUnit-UI</string>
+        <key>NSExtensionPrincipalClass</key>
+        <string>$(PRODUCT_MODULE_NAME).XOlokunAudioUnitViewController</string>
+        <key>NSExtensionAttributes</key>
+        <dict>
+            <!-- AudioComponents registration -->
+            <key>AudioComponents</key>
+            <array>
+                <dict>
+                    <!-- Manufacturer: XOox (4-char code) -->
+                    <key>manufacturer</key>
+                    <string>XOox</string>
+                    <!-- Type: aumu = music instrument -->
+                    <key>type</key>
+                    <string>aumu</string>
+                    <!-- Subtype: XOlk -->
+                    <key>subtype</key>
+                    <string>XOlk</string>
+                    <key>name</key>
+                    <string>XO-OX: XOlokun</string>
+                    <key>version</key>
+                    <integer>65536</integer>
+                    <!-- Sandbox-safe: required for iOS AUv3 -->
+                    <key>sandboxSafe</key>
+                    <true/>
+                    <!-- Tags for AU catalog discovery -->
+                    <key>tags</key>
+                    <array>
+                        <string>Synthesizer</string>
+                        <string>Multi-Instrument</string>
+                        <string>Percussion</string>
+                    </array>
+                </dict>
+            </array>
+        </dict>
+    </dict>
+
+    <!-- Supported audio channel layouts -->
+    <!-- Output: stereo (2ch) -->
+    <key>AVAudioSessionCategoryOptionsKey</key>
+    <string>AVAudioSessionCategoryPlayback</string>
+    <!-- Channel configuration: stereo output, no required input -->
+    <key>AudioComponentSupportedChannelLayouts</key>
+    <array>
+        <!-- Stereo output -->
+        <dict>
+            <key>outputChannels</key>
+            <integer>2</integer>
+            <key>inputChannels</key>
+            <integer>0</integer>
+        </dict>
+        <!-- Mono output fallback -->
+        <dict>
+            <key>outputChannels</key>
+            <integer>1</integer>
+            <key>inputChannels</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+</dict>
+</plist>

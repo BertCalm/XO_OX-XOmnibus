@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "description": "OBRIX Pocket creature state machine — maps each creature to its driver synthesis parameter. Creatures teach synthesis through behavior: the user learns what a parameter does by watching what it does to their creature.",
+  "depthZoneAtlas": {
+    "sunlit":   { "range_m": [0, 200],    "light": "full daylight", "engineArchetype": "OpenSky / Overdub" },
+    "twilight":  { "range_m": [200, 1000], "light": "dim blue-green", "engineArchetype": "Obrix / Overlap" },
+    "midnight":  { "range_m": [1000, 4000],"light": "bioluminescence only", "engineArchetype": "OceanDeep / Outwit" },
+    "abyss":     { "range_m": [4000, 11000],"light": "absolute darkness", "engineArchetype": "Orca / Owlfish" }
+  },
+  "stateThresholds": {
+    "sleeping": {
+      "trigger": "idle_timeout",
+      "timeoutSeconds": 45,
+      "description": "No user interaction for 45 seconds. The creature finds a crevice and goes still. Minimal looping animation, muted colors."
+    },
+    "idle": {
+      "paramRange": [0.0, 0.40],
+      "description": "Driver parameter in lower 40% of its range. Creature rests in its default posture. Gentle ambient breathing animation."
+    },
+    "curious": {
+      "paramRange": [0.40, 0.65],
+      "description": "Driver parameter crosses 40%. The creature notices something. Eyes open wider, slow exploratory movement toward the parameter source."
+    },
+    "excited": {
+      "paramRange": [0.65, 0.90],
+      "description": "Driver parameter crosses 65%. The creature is activated — color flush, rapid movement, display behavior."
+    },
+    "singing": {
+      "trigger": "note_on_active",
+      "description": "A note is held (note-on received, no note-off yet). Overrides all other states regardless of driver param value. The creature performs its full vocal/visual display."
+    }
+  },
+  "creatures": [
+    {
+      "id": "creature_001",
+      "name": "Vela",
+      "species": "Filter Sailfin — a translucent membrane fish whose body opens like a sail",
+      "depthZone": "sunlit",
+      "driverParam": "obrix_proc1Cutoff",
+      "driverParamRange": [20.0, 20000.0],
+      "driverNormalization": "log",
+      "driverDescription": "Proc 1 filter cutoff frequency (20 Hz – 20 kHz). As cutoff opens, Vela's translucent body-fin unfurls from a tight fold to full sail. Closing the filter collapses the fin back in. The user learns: opening the cutoff lets high frequencies through — the sound brightens as Vela wakes.",
+      "discoveryCondition": "Load any patch with Proc 1 set to LPFilter and play a note. Vela appears immediately on first interaction.",
+      "spriteSheet": "creature_001_vela_sheet.png",
+      "frameCount": { "idle": 8, "curious": 6, "excited": 10, "singing": 12, "sleeping": 4 },
+      "accentColor": "#1E8B7E",
+      "personality": "Vela is the first creature the player meets — she opens herself completely when you trust her with brightness, and draws inward when the world goes dark."
+    },
+    {
+      "id": "creature_002",
+      "name": "Knock",
+      "species": "Attack Mantis — a stomatopod whose strike limbs snap at different speeds",
+      "depthZone": "sunlit",
+      "driverParam": "obrix_ampAttack",
+      "driverParamRange": [0.0, 10.0],
+      "driverNormalization": "linear",
+      "driverDescription": "Amplitude envelope attack time (0 – 10 s). At low attack, Knock's strike limbs are cocked back tight — when a note fires they snap forward in a single frame. As attack time increases, the limbs extend slowly, building tension before they reach full extension. The user learns: short attack = percussive snap; long attack = swelling bloom.",
+      "discoveryCondition": "Set ampAttack below 0.05 s and play a note with high velocity. Knock appears, frozen mid-strike, waiting for the next hit.",
+      "spriteSheet": "creature_002_knock_sheet.png",
+      "frameCount": { "idle": 6, "curious": 8, "excited": 10, "singing": 14, "sleeping": 3 },
+      "accentColor": "#CC7722",
+      "personality": "Knock is impatient and precise — she has made her point before you finish your thought, and she prefers it that way."
+    },
+    {
+      "id": "creature_003",
+      "name": "Weave",
+      "species": "Drift Eel — a ribbon-bodied creature that undulates with the current",
+      "depthZone": "twilight",
+      "driverParam": "obrix_mod1Rate",
+      "driverParamRange": [0.01, 30.0],
+      "driverNormalization": "log",
+      "driverDescription": "Modulator 1 LFO rate (0.01 – 30 Hz). Weave's body undulation cycle directly mirrors the LFO rate — at 0.01 Hz it barely moves, a single slow roll over minutes; at 30 Hz it becomes a blurred vibration. The user learns: LFO rate controls how fast the modulation wobbles, and that fast LFO rates become FM/vibrato rather than slow waves.",
+      "discoveryCondition": "Set Mod 1 Type to LFO and set the rate above 0.1 Hz while a note is held. Weave drifts in from the left edge of the screen.",
+      "spriteSheet": "creature_003_weave_sheet.png",
+      "frameCount": { "idle": 12, "curious": 10, "excited": 16, "singing": 20, "sleeping": 6 },
+      "accentColor": "#8E4585",
+      "personality": "Weave never stops moving — even asleep she oscillates, tracing slow sine curves in the dark water without destination or urgency."
+    },
+    {
+      "id": "creature_004",
+      "name": "Reson",
+      "species": "Resonance Pufferfish — a spherical body that inflates when excited",
+      "depthZone": "sunlit",
+      "driverParam": "obrix_proc1Reso",
+      "driverParamRange": [0.0, 1.0],
+      "driverNormalization": "linear",
+      "driverDescription": "Proc 1 filter resonance (0 – 1). As resonance increases, Reson's body slowly inflates — her belly swells, her spines extend. Near self-oscillation (resonance → 1.0) she glows and her body hums with an internal light. The user learns: resonance emphasizes the cutoff frequency, adding a singing quality until the filter self-oscillates.",
+      "discoveryCondition": "Raise proc1Reso above 0.3 while Proc 1 is set to LPFilter. Reson puffs up and emerges from behind a coral cluster.",
+      "spriteSheet": "creature_004_reson_sheet.png",
+      "frameCount": { "idle": 6, "curious": 8, "excited": 10, "singing": 12, "sleeping": 4 },
+      "accentColor": "#FF8A7A",
+      "personality": "Reson is a creature of tension — she is always one parameter away from either deflating completely or ringing herself into pure tonal transcendence."
+    },
+    {
+      "id": "creature_005",
+      "name": "Flux",
+      "species": "FM Cuttlefish — a body that shifts color patterns based on frequency ratio",
+      "depthZone": "twilight",
+      "driverParam": "obrix_fmDepth",
+      "driverParamRange": [-1.0, 1.0],
+      "driverNormalization": "bipolar",
+      "driverDescription": "Source-to-source FM depth (−1 to +1, maps to ±24 semitones deviation). At zero, Flux's skin is plain; moving fmDepth positive makes warm copper chromatophore patterns cascade; moving it negative inverts to cold blue-silver ripples. The absolute value of fmDepth drives state transitions — at ±0.65 Flux is in full display. The user learns: FM depth controls how strongly Source 1 modulates Source 2's frequency; positive and negative produce different timbral characters.",
+      "discoveryCondition": "Set Src2Type to Sine (or any non-Off type) and move fmDepth away from 0. Flux materializes when |fmDepth| > 0.1.",
+      "spriteSheet": "creature_005_flux_sheet.png",
+      "frameCount": { "idle": 8, "curious": 10, "excited": 14, "singing": 18, "sleeping": 4 },
+      "accentColor": "#E040FB",
+      "personality": "Flux has no fixed identity — she is whatever frequency ratio currently runs through her nervous system, and she considers this a form of freedom."
+    },
+    {
+      "id": "creature_006",
+      "name": "Silt",
+      "species": "Turbidity Nudibranch — a slow benthic crawler that trails a cloud of fine particles",
+      "depthZone": "midnight",
+      "driverParam": "obrix_envTurbidity",
+      "driverParamRange": [0.0, 1.0],
+      "driverNormalization": "linear",
+      "driverDescription": "Environmental turbidity — spectral noise injected into the signal (0 – 1). At zero, Silt moves cleanly across the screen, body crisp. As turbidity increases, her body trail fills with suspended particle animation and the creature itself becomes partially obscured. At full turbidity the creature is nearly invisible behind noise clouds. The user learns: turbidity adds spectral noise across the full audio output — dust in the water, static in the air.",
+      "discoveryCondition": "Raise envTurbidity above 0.15. Silt emerges from the silt-floor at the bottom of the screen and begins her slow crawl.",
+      "spriteSheet": "creature_006_silt_sheet.png",
+      "frameCount": { "idle": 5, "curious": 6, "excited": 8, "singing": 10, "sleeping": 3 },
+      "accentColor": "#708090",
+      "personality": "Silt is patient. She has been moving across this same patch of reef floor for longer than the other creatures have existed, and she will still be moving when they are gone."
+    },
+    {
+      "id": "creature_007",
+      "name": "Drift",
+      "species": "Drift-Bus Jellyfish — a glassy bell that wanders on ultra-slow currents",
+      "depthZone": "twilight",
+      "driverParam": "obrix_driftDepth",
+      "driverParamRange": [0.0, 1.0],
+      "driverNormalization": "linear",
+      "driverDescription": "Drift depth — how much the ultra-slow drift LFO (0.001–0.05 Hz) modulates pitch and filter cutoff (0 – 1). At zero, Drift floats motionless. As driftDepth increases, Drift begins her slow orbital wander — tiny pitch and filter shifts create the classic Berlin School analog ensemble instability. At full depth her path becomes large looping arcs that take minutes to complete. The user learns: slow modulation at sub-0.05 Hz produces the organic drift that makes analog synths sound 'alive' compared to DCOs.",
+      "discoveryCondition": "Set driftDepth above 0.1. Drift descends from the upper-middle of the screen on invisible currents.",
+      "spriteSheet": "creature_007_drift_sheet.png",
+      "frameCount": { "idle": 10, "curious": 8, "excited": 12, "singing": 16, "sleeping": 6 },
+      "accentColor": "#A8D8EA",
+      "personality": "Drift has no agenda — she goes where the long currents take her, content in the knowledge that every journey at this speed is measured in minutes, not moments."
+    },
+    {
+      "id": "creature_008",
+      "name": "Knot",
+      "species": "Field Nautilus — a spiral-shelled creature whose chambers tune to harmonic ratios",
+      "depthZone": "abyss",
+      "driverParam": "obrix_fieldStrength",
+      "driverParamRange": [0.0, 1.0],
+      "driverNormalization": "linear",
+      "driverDescription": "Harmonic Field strength — how strongly each voice is pulled toward the nearest just-intonation ratio (0 – 1). At zero, Knot's shell chambers are loosely wound, gaps between them irregular. As fieldStrength increases, the chambers close toward the mathematically precise golden spiral — the creature literally tightens into pure ratio. At maximum, the polyphony locks into a shimmering JI chord cluster. The user learns: the Harmonic Field is a tuning attractor — voices drift toward or away from integer ratios, making chords that ring rather than beat.",
+      "discoveryCondition": "Play at least two simultaneous notes with fieldStrength above 0.2. Knot ascends from the abyss — she can only appear in a polyphonic context.",
+      "spriteSheet": "creature_008_knot_sheet.png",
+      "frameCount": { "idle": 8, "curious": 10, "excited": 14, "singing": 16, "sleeping": 5 },
+      "accentColor": "#D4AF37",
+      "personality": "Knot is ancient — she predates the reef, predates the engines, predates the current. She is what mathematics looks like when it chooses to live in water."
+    }
+  ],
+  "implementationNotes": {
+    "driverNormalizationSchemes": {
+      "linear": "Divide (currentValue - rangeMin) by (rangeMax - rangeMin) to get 0..1 normalized value for state threshold comparison.",
+      "log": "Use log-scale normalization: normalizedValue = log(currentValue / rangeMin) / log(rangeMax / rangeMin). Required for cutoff frequency and LFO rate which are perceptually log-scaled.",
+      "bipolar": "Take abs(currentValue) then divide by rangeMax (1.0) to get 0..1 magnitude. Both positive and negative extremes drive the creature toward excited state."
+    },
+    "statePriority": "singing > excited > curious > idle > sleeping. Singing always overrides; sleeping can only activate after idle_timeout with no note-on events.",
+    "discoveryPersistence": "Once a creature is discovered it persists in the player's creature roster. It does not need to be re-discovered on subsequent sessions.",
+    "animationContract": "All sprite sheets use 64x64px frames, horizontal strip layout, transparent background. frameCount values are per-state frame counts for the animation controller.",
+    "futureCreatures": "Reserve IDs creature_009 through creature_081 for one creature per OBRIX parameter (81 params total). Priority order for next 8: obrix_ampRelease (creature_009), obrix_unisonDetune (creature_010), obrix_srcMix (creature_011), obrix_ampSustain (creature_012), obrix_proc1Feedback (creature_013), obrix_envCurrent (creature_014), obrix_competitionStrength (creature_015), obrix_symbiosisStrength (creature_016)."
+  }
+}

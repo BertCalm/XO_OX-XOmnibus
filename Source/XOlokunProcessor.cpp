@@ -81,6 +81,7 @@
 #include "Engines/Oxytocin/OxytocinAdapter.h"
 // OUTLOOK — panoramic visionary synth
 #include "Engines/Outlook/OutlookEngine.h"
+#include "DSP/ThreadInit.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -1171,6 +1172,7 @@ void XOlokunProcessor::releaseResources()
 void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                                       juce::MidiBuffer& midi)
 {
+    xolokun::dsp::initAudioThreadOnce();  // ARM64 FPCR.FZ — see ThreadInit.h
     juce::ScopedNoDenormals noDenormals;
     const int numSamples = buffer.getNumSamples();
 
