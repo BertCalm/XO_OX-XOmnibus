@@ -42,6 +42,8 @@ public:
     {
         setInterceptsMouseClicks(false, false); // pass-through; read-only diagram
 
+        A11y::setup(*this, "Coupling Graph", "Mini visualization of active engine coupling routes");
+
         // Default node Y positions: evenly spaced placeholders.
         // Overwritten by setNodeCenter() once tile bounds are finalised.
         for (int i = 0; i < MegaCouplingMatrix::MaxSlots; ++i)

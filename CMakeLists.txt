@@ -484,3 +484,17 @@ target_compile_definitions(XOlokunTests PRIVATE
 
 enable_testing()
 add_test(NAME XOlokunTests COMMAND XOlokunTests)
+
+# ==============================================================================
+# Installer package (macOS only)
+# Builds Installer/XOlokun-Installer.pkg using pkgbuild + productbuild.
+# Usage:  cmake --build build --target package
+# ==============================================================================
+if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    add_custom_target(package
+        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/Installer/build_pkg.sh ${CMAKE_BUILD_TYPE}
+        DEPENDS XOlokun_AU XOlokun_Standalone
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Building XOlokun installer package..."
+    )
+endif()

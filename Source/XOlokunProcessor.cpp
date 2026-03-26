@@ -1009,6 +1009,48 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // Stage 19.5: Parametric EQ (post-compressor, pre-limiter)
+    // Band 1: Low shelf (20–500 Hz, ±12 dB, Q 0.5–5.0)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB1Freq", 1), "EQ Band 1 Freq",
+        juce::NormalisableRange<float>(20.0f, 500.0f, 0.0f, 0.35f), 100.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB1Gain", 1), "EQ Band 1 Gain",
+        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB1Q", 1), "EQ Band 1 Q",
+        juce::NormalisableRange<float>(0.5f, 5.0f, 0.0f, 0.4f), 0.707f));
+    // Band 2: Low-mid peak (100–5000 Hz, ±12 dB, Q 0.5–10.0)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB2Freq", 1), "EQ Band 2 Freq",
+        juce::NormalisableRange<float>(100.0f, 5000.0f, 0.0f, 0.35f), 400.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB2Gain", 1), "EQ Band 2 Gain",
+        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB2Q", 1), "EQ Band 2 Q",
+        juce::NormalisableRange<float>(0.5f, 10.0f, 0.0f, 0.4f), 1.0f));
+    // Band 3: High-mid peak (500–15000 Hz, ±12 dB, Q 0.5–10.0)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB3Freq", 1), "EQ Band 3 Freq",
+        juce::NormalisableRange<float>(500.0f, 15000.0f, 0.0f, 0.35f), 3000.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB3Gain", 1), "EQ Band 3 Gain",
+        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB3Q", 1), "EQ Band 3 Q",
+        juce::NormalisableRange<float>(0.5f, 10.0f, 0.0f, 0.4f), 1.0f));
+    // Band 4: High shelf (2000–20000 Hz, ±12 dB, Q 0.5–5.0)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB4Freq", 1), "EQ Band 4 Freq",
+        juce::NormalisableRange<float>(2000.0f, 20000.0f, 0.0f, 0.35f), 10000.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB4Gain", 1), "EQ Band 4 Gain",
+        juce::NormalisableRange<float>(-12.0f, 12.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_eqB4Q", 1), "EQ Band 4 Q",
+        juce::NormalisableRange<float>(0.5f, 5.0f, 0.0f, 0.4f), 0.707f));
+
     // Stage 20: Brickwall Limiter
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_limCeiling", 1), "Master Limiter Ceiling",
@@ -1138,6 +1180,10 @@ static float silenceGateHoldMs(const juce::String& engineId)
 
 void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
+    // Guard against non-compliant hosts or test harnesses passing invalid values.
+    if (sampleRate <= 0.0) sampleRate = 44100.0;
+    if (samplesPerBlock <= 0) samplesPerBlock = 512;
+
     currentSampleRate = sampleRate;
     currentBlockSize = samplesPerBlock;
 

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>XOlokun Installed</title>
+    <style>
+        body {
+            font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+            background: #F8F6F3;
+            color: #1A1A1A;
+            margin: 0;
+            padding: 32px 40px;
+            line-height: 1.6;
+        }
+
+        .checkmark {
+            width: 56px;
+            height: 56px;
+            background: #34C759;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .checkmark svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 4px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #666;
+            margin: 0 0 24px 0;
+        }
+
+        h2 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin: 24px 0 10px 0;
+        }
+
+        p {
+            font-size: 13px;
+            color: #333;
+            margin: 0 0 14px 0;
+        }
+
+        ol {
+            font-size: 13px;
+            color: #333;
+            margin: 0 0 16px 0;
+            padding-left: 20px;
+        }
+
+        ol li {
+            margin-bottom: 6px;
+        }
+
+        .code-block {
+            background: #1A1A1A;
+            color: #E9C46A;
+            font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+            font-size: 12px;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0 20px 0;
+            letter-spacing: 0.3px;
+        }
+
+        .tip {
+            background: #EEF6FF;
+            border-left: 3px solid #0066CC;
+            border-radius: 0 6px 6px 0;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #333;
+            margin-top: 16px;
+        }
+
+        a {
+            color: #0066CC;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkmark">
+        <!-- Simple checkmark SVG -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="4,13 9,18 20,7" stroke="white" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <h1>Installation complete!</h1>
+    <p class="subtitle">XOlokun is ready to use.</p>
+
+    <h2>Next steps</h2>
+
+    <ol>
+        <li>
+            <strong>AU Plugin users</strong> — open your DAW and run a plugin scan (or re-scan the
+            AU plug-ins folder). XOlokun will appear under <em>XO_OX Designs</em> in your
+            instrument list.
+        </li>
+        <li>
+            <strong>Standalone users</strong> — launch XOlokun from your Applications folder or
+            Launchpad.
+        </li>
+        <li>
+            Load one of the 15 mood preset categories and start exploring. The
+            <strong>COUPLING</strong> macro routes modulation between engines in real time.
+        </li>
+    </ol>
+
+    <h2>AU identification code</h2>
+    <p>
+        If your DAW requires manual entry, use the following Audio Unit code to locate XOlokun:
+    </p>
+    <div class="code-block">aumu Xolk XoOx</div>
+
+    <p>
+        To validate the AU from Terminal run:
+    </p>
+    <div class="code-block">auval -v aumu Xolk XoOx</div>
+
+    <div class="tip">
+        Documentation, field guides, and community forums are available at
+        <a href="https://xo-ox.org">xo-ox.org</a>.
+        Support XOlokun development on
+        <a href="https://www.patreon.com/cw/XO_OX">Patreon</a>.
+    </div>
+
+</body>
+</html>

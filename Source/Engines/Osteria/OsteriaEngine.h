@@ -314,14 +314,9 @@ struct TavernRoom
         float d2 = readDelay (2);
         float d3 = readDelay (3);
 
-        // Householder-like mixing matrix: each feedback signal is the average
-        // of all lines minus half of itself. This provides good decorrelation
-        // without requiring a full unitary matrix multiply.
+        // Householder-like mixing matrix: compute the unfiltered sum used as
+        // input to the absorption filter.
         float sum = (d0 + d1 + d2 + d3) * 0.25f;
-        float fb0 = sum - d0 * 0.5f;
-        float fb1 = sum - d1 * 0.5f;
-        float fb2 = sum - d2 * 0.5f;
-        float fb3 = sum - d3 * 0.5f;
 
         // Apply absorption filter to the mixed signal — damps high frequencies
         // in the FDN feedback path, simulating air absorption in the reverb tail.

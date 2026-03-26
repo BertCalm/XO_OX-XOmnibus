@@ -23,6 +23,7 @@
 #include "../DSP/Effects/fXOnslaught.h"
 #include "../DSP/Effects/fXFormant.h"
 #include "../DSP/Effects/fXBreath.h"
+#include "../DSP/Effects/ParametricEQ.h"
 #include "../DSP/Effects/BrickwallLimiter.h"
 #include "../DSP/Effects/DCBlocker.h"
 #include "MasterFXSequencer.h"
@@ -34,7 +35,7 @@ namespace xolokun {
 //==============================================================================
 // MasterFXChain — Post-mix master effects for XOlokun.
 //
-// Signal chain (22 stages, fixed order):
+// Signal chain (23 stages, fixed order):
 //   1.  Saturation        — Tape/Tube/Digital/FoldBack via Saturator (mode select)
 //   2.  Corroder          — Digital erosion: bitcrush + SR reduce + FM distortion
 //   3.  Vibe Knob         — Bipolar character: GRIT(+) ←→ SWEET(−) in one dial
@@ -54,6 +55,7 @@ namespace xolokun {
 //   17. Stereo Sculptor   — M/S frequency-dependent stereo field shaping
 //   18. Psychoacoustic Width — Haas + complementary comb decorrelation
 //   19. Bus Compressor    — Single-band output glue (parallel blend)
+//   19.5 Parametric EQ   — 4-band surgical EQ (shelf + 2×peak + shelf)
 //   20. Brickwall Limiter — True-peak safety limiter (1ms lookahead, ∞:1)
 //   21. DC Blocker        — 10 Hz HPF removes any residual DC offset
 //   22. Sequenced Mod     — Rhythmic parameter animation (non-audio)
@@ -151,6 +153,9 @@ public:
         compressor.setThreshold (-12.0f);
         compressor.setKnee (6.0f);
         compressor.setMakeupGain (0.0f);
+
+        // Stage 19.5: Parametric EQ (post-compressor, pre-limiter)
+        parametricEQ.prepare (sampleRate);
 
         // Stage 20: Brickwall Limiter
         limiter.prepare (sampleRate, samplesPerBlock);
@@ -330,6 +335,20 @@ public:
         const float compAttack   = pCompAttack->load();
         const float compRelease  = pCompRelease->load();
         const float compMix      = pCompMix->load();
+
+        // Stage 19.5: Parametric EQ
+        const float eqB1Freq  = pEQB1Freq  ? pEQB1Freq->load()  : 100.0f;
+        const float eqB1Gain  = pEQB1Gain  ? pEQB1Gain->load()  : 0.0f;
+        const float eqB1Q     = pEQB1Q     ? pEQB1Q->load()     : 0.707f;
+        const float eqB2Freq  = pEQB2Freq  ? pEQB2Freq->load()  : 400.0f;
+        const float eqB2Gain  = pEQB2Gain  ? pEQB2Gain->load()  : 0.0f;
+        const float eqB2Q     = pEQB2Q     ? pEQB2Q->load()     : 1.0f;
+        const float eqB3Freq  = pEQB3Freq  ? pEQB3Freq->load()  : 3000.0f;
+        const float eqB3Gain  = pEQB3Gain  ? pEQB3Gain->load()  : 0.0f;
+        const float eqB3Q     = pEQB3Q     ? pEQB3Q->load()     : 1.0f;
+        const float eqB4Freq  = pEQB4Freq  ? pEQB4Freq->load()  : 10000.0f;
+        const float eqB4Gain  = pEQB4Gain  ? pEQB4Gain->load()  : 0.0f;
+        const float eqB4Q     = pEQB4Q     ? pEQB4Q->load()     : 0.707f;
 
         // Stage 20: Brickwall Limiter
         const float limCeiling   = pLimCeiling   ? pLimCeiling->load()   : -0.3f;
@@ -812,6 +831,21 @@ public:
         }
 
         // ====================================================================
+        // Stage 19.5: Parametric EQ (post-compressor, pre-limiter)
+        // ====================================================================
+        {
+            // Only engage if at least one band has a non-trivial gain.
+            // setBand() is cheap (just sets smoother targets) so we always push
+            // the current values — the EQ itself handles the zero-CPU bypass
+            // when all gains are flat.
+            parametricEQ.setBand (0, eqB1Freq, eqB1Gain, eqB1Q);
+            parametricEQ.setBand (1, eqB2Freq, eqB2Gain, eqB2Q);
+            parametricEQ.setBand (2, eqB3Freq, eqB3Gain, eqB3Q);
+            parametricEQ.setBand (3, eqB4Freq, eqB4Gain, eqB4Q);
+            parametricEQ.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
         // Stage 20: Brickwall Limiter (always active — safety net)
         // ====================================================================
         limiter.setCeiling (limCeiling);
@@ -860,6 +894,7 @@ public:
         stereoSculptor.reset();
         psychoWidth.reset();
         compressor.reset();
+        parametricEQ.reset();
         limiter.reset();
         dcBlocker.reset();
         sequencer.reset();
@@ -1030,6 +1065,20 @@ private:
         pCompRelease  = apvts.getRawParameterValue ("master_compRelease");
         pCompMix      = apvts.getRawParameterValue ("master_compMix");
 
+        // Stage 19.5: Parametric EQ
+        pEQB1Freq     = apvts.getRawParameterValue ("master_eqB1Freq");
+        pEQB1Gain     = apvts.getRawParameterValue ("master_eqB1Gain");
+        pEQB1Q        = apvts.getRawParameterValue ("master_eqB1Q");
+        pEQB2Freq     = apvts.getRawParameterValue ("master_eqB2Freq");
+        pEQB2Gain     = apvts.getRawParameterValue ("master_eqB2Gain");
+        pEQB2Q        = apvts.getRawParameterValue ("master_eqB2Q");
+        pEQB3Freq     = apvts.getRawParameterValue ("master_eqB3Freq");
+        pEQB3Gain     = apvts.getRawParameterValue ("master_eqB3Gain");
+        pEQB3Q        = apvts.getRawParameterValue ("master_eqB3Q");
+        pEQB4Freq     = apvts.getRawParameterValue ("master_eqB4Freq");
+        pEQB4Gain     = apvts.getRawParameterValue ("master_eqB4Gain");
+        pEQB4Q        = apvts.getRawParameterValue ("master_eqB4Q");
+
         // Stage 20: Brickwall Limiter
         pLimCeiling   = apvts.getRawParameterValue ("master_limCeiling");
         pLimRelease   = apvts.getRawParameterValue ("master_limRelease");
@@ -1073,6 +1122,7 @@ private:
     StereoSculptor       stereoSculptor;     // 17
     PsychoacousticWidth  psychoWidth;        // 18
     Compressor           compressor;         // 19
+    ParametricEQ         parametricEQ;       // 19.5 — 4-band surgical EQ
     BrickwallLimiter     limiter;            // 20 — Safety
     DCBlocker            dcBlocker;          // 21 — Safety
     MasterFXSequencer    sequencer;          // 22
@@ -1220,6 +1270,19 @@ private:
     std::atomic<float>* pCompAttack  = nullptr;
     std::atomic<float>* pCompRelease = nullptr;
     std::atomic<float>* pCompMix     = nullptr;
+    // Stage 19.5: Parametric EQ
+    std::atomic<float>* pEQB1Freq    = nullptr;
+    std::atomic<float>* pEQB1Gain    = nullptr;
+    std::atomic<float>* pEQB1Q       = nullptr;
+    std::atomic<float>* pEQB2Freq    = nullptr;
+    std::atomic<float>* pEQB2Gain    = nullptr;
+    std::atomic<float>* pEQB2Q       = nullptr;
+    std::atomic<float>* pEQB3Freq    = nullptr;
+    std::atomic<float>* pEQB3Gain    = nullptr;
+    std::atomic<float>* pEQB3Q       = nullptr;
+    std::atomic<float>* pEQB4Freq    = nullptr;
+    std::atomic<float>* pEQB4Gain    = nullptr;
+    std::atomic<float>* pEQB4Q       = nullptr;
     // Stage 20: Brickwall Limiter
     std::atomic<float>* pLimCeiling  = nullptr;
     std::atomic<float>* pLimRelease  = nullptr;

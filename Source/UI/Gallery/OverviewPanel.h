@@ -140,6 +140,7 @@ public:
                 if (id.containsIgnoreCase(key)) { cachedTagline = desc; break; }
         }
 
+        arcPathDirty = true;
         chainView.refresh();
         repaint();
     }
@@ -279,42 +280,79 @@ public:
                 { nodeArea.getCentreX(), nodeArea.getBottom() - 8.0f },  // Ghost Slot
             };
 
-            // Draw Bézier arcs for each active coupling route
-            for (const auto& route : routes)
+            // Rebuild cached Bézier arc path only when routes have changed.
+            // arcPathDirty is set in refresh() whenever cachedRoutes is updated.
+            if (arcPathDirty)
             {
-                if (!route.active || route.amount < 0.005f) continue;
-                if (route.sourceSlot < 0 || route.sourceSlot >= MegaCouplingMatrix::MaxSlots) continue;
-                if (route.destSlot   < 0 || route.destSlot   >= MegaCouplingMatrix::MaxSlots) continue;
+                cachedArcPath.clear();
+                cachedArcColors.clear();
+                cachedArcAlphas.clear();
 
-                auto from = nodePos[route.sourceSlot];
-                auto to   = nodePos[route.destSlot];
-                float midX = (from.x + to.x) * 0.5f;
-                float midY = (from.y + to.y) * 0.5f - 12.0f; // bow upward
-
-                juce::Path arc;
-                arc.startNewSubPath(from);
-                arc.quadraticTo(juce::Point<float>(midX, midY), to);
-
-                // Color by coupling type — mirrors CouplingArcOverlay palette
-                juce::Colour arcCol;
-                switch (route.type)
+                for (const auto& route : routes)
                 {
-                    case CouplingType::AudioToFM:
-                    case CouplingType::AudioToRing:
-                    case CouplingType::AudioToWavetable:
-                    case CouplingType::AudioToBuffer:
-                        arcCol = juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate
-                        break;
-                    case CouplingType::KnotTopology:
-                        arcCol = juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional
-                        break;
-                    default:
-                        arcCol = juce::Colour(0xFFE9C46A); // XO Gold — modulation
-                        break;
+                    if (!route.active || route.amount < 0.005f) continue;
+                    if (route.sourceSlot < 0 || route.sourceSlot >= MegaCouplingMatrix::MaxSlots) continue;
+                    if (route.destSlot   < 0 || route.destSlot   >= MegaCouplingMatrix::MaxSlots) continue;
+
+                    auto from = nodePos[route.sourceSlot];
+                    auto to   = nodePos[route.destSlot];
+                    float midX = (from.x + to.x) * 0.5f;
+                    float midY = (from.y + to.y) * 0.5f - 12.0f; // bow upward
+
+                    juce::Path arc;
+                    arc.startNewSubPath(from);
+                    arc.quadraticTo(juce::Point<float>(midX, midY), to);
+                    cachedArcPath.addPath(arc);
+
+                    // Color by coupling type — mirrors CouplingArcOverlay palette
+                    juce::Colour arcCol;
+                    switch (route.type)
+                    {
+                        case CouplingType::AudioToFM:
+                        case CouplingType::AudioToRing:
+                        case CouplingType::AudioToWavetable:
+                        case CouplingType::AudioToBuffer:
+                            arcCol = juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate
+                            break;
+                        case CouplingType::KnotTopology:
+                            arcCol = juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional
+                            break;
+                        default:
+                            arcCol = juce::Colour(0xFFE9C46A); // XO Gold — modulation
+                            break;
+                    }
+                    cachedArcColors.push_back(arcCol);
+                    cachedArcAlphas.push_back(0.35f + route.amount * 0.45f);
                 }
 
-                g.setColour(arcCol.withAlpha(0.35f + route.amount * 0.45f));
-                g.strokePath(arc, juce::PathStrokeType(1.5f));
+                arcPathDirty = false;
+            }
+
+            // Draw each cached arc segment using its stored colour and alpha.
+            {
+                int arcIdx = 0;
+                for (const auto& route : routes)
+                {
+                    if (!route.active || route.amount < 0.005f) continue;
+                    if (route.sourceSlot < 0 || route.sourceSlot >= MegaCouplingMatrix::MaxSlots) continue;
+                    if (route.destSlot   < 0 || route.destSlot   >= MegaCouplingMatrix::MaxSlots) continue;
+
+                    if (arcIdx >= (int)cachedArcColors.size()) break;
+
+                    auto from = nodePos[route.sourceSlot];
+                    auto to   = nodePos[route.destSlot];
+                    float midX = (from.x + to.x) * 0.5f;
+                    float midY = (from.y + to.y) * 0.5f - 12.0f;
+
+                    juce::Path arc;
+                    arc.startNewSubPath(from);
+                    arc.quadraticTo(juce::Point<float>(midX, midY), to);
+
+                    g.setColour(cachedArcColors[static_cast<size_t>(arcIdx)]
+                                    .withAlpha(cachedArcAlphas[static_cast<size_t>(arcIdx)]));
+                    g.strokePath(arc, juce::PathStrokeType(1.5f));
+                    ++arcIdx;
+                }
             }
 
             // Draw engine node circles (4 primary + Ghost Slot)
@@ -366,6 +404,14 @@ private:
     std::vector<std::pair<juce::String, juce::Colour>> cachedActiveEngines;
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes;
     juce::String cachedTagline; // P13: archetype tagline resolved in refresh()
+
+    // Bézier arc path cache — rebuilt only when arcPathDirty is set by refresh().
+    // Avoids re-computing quadratic Bézier geometry on every paint() call.
+    mutable juce::Path cachedArcPath;
+    mutable std::vector<juce::Colour> cachedArcColors;
+    mutable std::vector<float>        cachedArcAlphas;
+    mutable bool arcPathDirty = true;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverviewPanel)
 };
 

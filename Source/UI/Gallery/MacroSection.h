@@ -11,6 +11,8 @@ class MacroSection : public juce::Component
 public:
     explicit MacroSection(juce::AudioProcessorValueTreeState& apvts)
     {
+        A11y::setup(*this, "Macro Controls", "Four macro knobs: Character, Movement, Coupling, Space");
+
         struct Def { const char* id; const char* label; };
         // Short display labels (fit compact header); tooltips/a11y retain full names.
         static constexpr Def defs[4] = {

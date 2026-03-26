@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Product metadata                                                     -->
+    <!-- ------------------------------------------------------------------ -->
+    <title>XOlokun — for all</title>
+    <organization>org.xo-ox</organization>
+    <domains enable_localSystem="true" enable_currentUserHome="true"/>
+    <options customize="allow" require-scripts="false" rootVolumeOnly="false"/>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Installer UI pages                                                   -->
+    <!-- ------------------------------------------------------------------ -->
+    <welcome    file="welcome.html"    mime-type="text/html"/>
+    <conclusion file="conclusion.html" mime-type="text/html"/>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- OS + hardware requirements                                           -->
+    <!-- ------------------------------------------------------------------ -->
+    <os-version min="12.0"/>
+
+    <allowed-os-versions>
+        <!-- macOS 12 Monterey and later -->
+        <os-version min="12.0"/>
+    </allowed-os-versions>
+
+    <!-- Accept both Apple Silicon and Intel (universal binary) -->
+    <volume-check>
+        <allowed-architectures>
+            <architecture>x86_64</architecture>
+            <architecture>arm64</architecture>
+        </allowed-architectures>
+    </volume-check>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Package references                                                   -->
+    <!-- ------------------------------------------------------------------ -->
+    <pkg-ref id="org.xo-ox.xolokun.au"
+             version="1.0.0"
+             onConclusion="none">XOlokun-AU.pkg</pkg-ref>
+
+    <pkg-ref id="org.xo-ox.xolokun.standalone"
+             version="1.0.0"
+             onConclusion="none">XOlokun-Standalone.pkg</pkg-ref>
+
+    <pkg-ref id="org.xo-ox.xolokun.presets"
+             version="1.0.0"
+             onConclusion="none">XOlokun-Presets.pkg</pkg-ref>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Choice declarations                                                  -->
+    <!-- ------------------------------------------------------------------ -->
+
+    <!-- AU Plugin (required) -->
+    <choice id="org.xo-ox.xolokun.choice.au"
+            title="AU Plugin"
+            description="Installs XOlokun.component to /Library/Audio/Plug-Ins/Components/ for use in any AU-compatible DAW (Logic Pro, GarageBand, Ableton Live, Bitwig, etc.)."
+            start_selected="true"
+            start_enabled="false"
+            start_visible="true">
+        <pkg-ref id="org.xo-ox.xolokun.au"/>
+    </choice>
+
+    <!-- Standalone App (optional) -->
+    <choice id="org.xo-ox.xolokun.choice.standalone"
+            title="Standalone Application"
+            description="Installs XOlokun.app to /Applications/ for use without a DAW."
+            start_selected="true"
+            start_enabled="true"
+            start_visible="true">
+        <pkg-ref id="org.xo-ox.xolokun.standalone"/>
+    </choice>
+
+    <!-- Factory Presets (default on) -->
+    <choice id="org.xo-ox.xolokun.choice.presets"
+            title="Factory Presets"
+            description="Installs ~17,250 factory presets (15 mood categories) to ~/Library/Audio/Presets/XO_OX/XOlokun/."
+            start_selected="true"
+            start_enabled="true"
+            start_visible="true">
+        <pkg-ref id="org.xo-ox.xolokun.presets"/>
+    </choice>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Choice outline                                                       -->
+    <!-- ------------------------------------------------------------------ -->
+    <choices-outline>
+        <line choice="org.xo-ox.xolokun.choice.au"/>
+        <line choice="org.xo-ox.xolokun.choice.standalone"/>
+        <line choice="org.xo-ox.xolokun.choice.presets"/>
+    </choices-outline>
+
+</installer-gui-script>

@@ -189,6 +189,7 @@ public:
     const MegaCouplingMatrix& getCouplingMatrix() const { return couplingMatrix; }
     MegaCouplingMatrix& getCouplingMatrix() { return couplingMatrix; }
     void addCouplingRoute(MegaCouplingMatrix::CouplingRoute route) { couplingMatrix.addRoute(route); }
+    // DEPRECATED: no external callers — everyone uses getCouplingMatrix().removeUserRoute() directly.
     void removeCouplingRoute(int srcSlot, int dstSlot, CouplingType type) { couplingMatrix.removeUserRoute(srcSlot, dstSlot, type); }
 
     // Chord Machine — read access for UI, state control from message thread
@@ -201,6 +202,8 @@ public:
     MIDILearnManager& getMIDILearnManager() { return midiLearnManager; }
 
     // SRO: CPU profiling and resource optimization report (UI thread safe)
+    // NOTE: SRO profiling runs in processBlock but no UI surface reads this report yet.
+    // Wire to a StatusBar or debug panel in V1.1.
     SROAuditor::Report getSROReport() const { return sroAuditor.getReport(); }
 
     // Coupling preset management — bake, save, load coupling presets (UI thread only)
