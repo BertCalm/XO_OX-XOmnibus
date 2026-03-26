@@ -59,6 +59,13 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
+
+        // Macro row top-highlight gradient (prototype spec)
+        juce::ColourGradient grad(juce::Colour(0xFFFFFFFF).withAlpha(0.04f), 0.0f, 0.0f,
+                                   juce::Colours::transparentBlack, 0.0f, (float)getHeight(), false);
+        g.setGradientFill(grad);
+        g.fillRect(getLocalBounds());
+
         // Subtle left separator — visually divides macro zone from title/logo area in header.
         // No card background or gold stripe: the header already provides shellWhite + gold bottom stripe.
         g.setColour(get(borderGray()).withAlpha(0.30f));
@@ -67,10 +74,10 @@ public:
 
     void resized() override
     {
-        // Header integration: effective height ~48px (64pt header - 8px top pad - 8px bottom pad).
-        // All 5 knobs (4 macros + master) laid out in equal columns, no MACROS label.
+        // Header integration: effective height ~44px (52pt header - 4px reduced).
+        // Prototype: KNOB_HEADER = 32px
         auto b = getLocalBounds().reduced(4, 2);
-        constexpr int kh = 36, lh = 10;
+        constexpr int kh = 32, lh = 10;
         int numKnobs = 5; // 4 macros + master
         int cw = b.getWidth() / numKnobs;
 

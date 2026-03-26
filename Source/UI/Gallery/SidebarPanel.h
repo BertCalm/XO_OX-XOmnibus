@@ -59,7 +59,7 @@ public:
             btn->setWantsKeyboardFocus(true);
 
             // Apply WCAG A-01 compliant colours (audit fix A-01)
-            btn->setColour(juce::TextButton::textColourOffId, inactiveTabColour());
+            btn->setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::t3()));
             btn->setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
 
             // Accessibility
@@ -192,6 +192,17 @@ public:
     {
         activeTab = t;
 
+        // Update tab button colors once here — avoids setColour() calls inside paint()
+        for (int i = 0; i < NumTabs; ++i)
+        {
+            bool isActive = (i == static_cast<int>(activeTab));
+            tabButtons[i]->setColour(juce::TextButton::textColourOffId,
+                                     isActive ? GalleryColors::get(GalleryColors::t1())
+                                              : GalleryColors::get(GalleryColors::t3()));
+            tabButtons[i]->setColour(juce::TextButton::textColourOnId,
+                                     GalleryColors::get(GalleryColors::t1()));
+        }
+
         // Show/hide content panels
         bool havePresetBrowser = (presetBrowser != nullptr);
         if (havePresetBrowser)
@@ -275,8 +286,7 @@ public:
                 auto y = i * tabH;
                 bool active = (i == static_cast<int>(activeTab));
                 // Active: T1, inactive: T3
-                g.setColour(active ? juce::Colour(0xFFF0EDE8)  // T1
-                                   : juce::Colour(0xFF5E5C5A)); // T3
+                g.setColour(juce::Colour(active ? GalleryColors::t1() : GalleryColors::t3()));
                 g.setFont(GalleryFonts::display(11.0f));
                 juce::String icon(tabLabels[i][0]);
                 g.drawText(icon, 0, y, getWidth(), tabH, juce::Justification::centred);
@@ -314,20 +324,8 @@ public:
                        kUnderlineH);
         }
 
-        // ── Tab text — paint over the buttons for correct font/color ─────────
-        // Prototype: 9.5px, weight 600, Display (Space Grotesk), uppercase, ~1.5px letter-spacing
-        // Active: T1 text, Inactive: T3 text
-        for (int i = 0; i < NumTabs; ++i)
-        {
-            if (tabButtons[i] == nullptr) continue;
-            bool isActive = (i == static_cast<int>(activeTab));
-            // Update button text colors to match prototype
-            tabButtons[i]->setColour(juce::TextButton::textColourOffId,
-                                     isActive ? get(t1()) : get(t3()));
-            tabButtons[i]->setColour(juce::TextButton::textColourOnId, get(t1()));
-        }
-
         // ── Focus ring on focused tab button ─────────────────────────────────
+        // (Tab button colors are set in selectTab() to avoid setColour() calls inside paint())
         for (int i = 0; i < NumTabs; ++i)
         {
             if (tabButtons[i] != nullptr && tabButtons[i]->hasKeyboardFocus(false))
@@ -342,13 +340,21 @@ public:
 
         const int w = getWidth();
 
-        // ── Tab bar ───────────────────────────────────────────────────────────
-        // Distribute tabs evenly across the full width
-        const int tabW = w / NumTabs;
+        // ── Tab bar — proportional widths so labels don't truncate ──────────
+        // Measure each label's natural width, then scale proportionally to fill.
+        juce::Font tabFont = GalleryFonts::display(9.5f);
+        float totalNatural = 0.0f;
+        float natWidths[NumTabs];
+        for (int i = 0; i < NumTabs; ++i)
+        {
+            natWidths[i] = tabFont.getStringWidthFloat(tabLabels[i]) + 22.0f; // 11px padding each side
+            totalNatural += natWidths[i];
+        }
+        const float scale = (totalNatural > 0.0f) ? (float)w / totalNatural : 1.0f;
         int x = 0;
         for (int i = 0; i < NumTabs; ++i)
         {
-            int thisW = (i == NumTabs - 1) ? (w - x) : tabW; // last tab absorbs remainder
+            int thisW = (i == NumTabs - 1) ? (w - x) : juce::roundToInt(natWidths[i] * scale);
             tabButtons[i]->setBounds(x, 0, thisW, kTabBarH);
             x += thisW;
         }
@@ -406,7 +412,8 @@ public:
 
 private:
     //==========================================================================
-    static constexpr int kTabBarH    = 32;
+    // Prototype: 38px tab bar, 2px accent underline
+    static constexpr int kTabBarH    = 38;
     static constexpr int kUnderlineH = 2;
 
     static constexpr const char* tabLabels[NumTabs] = {

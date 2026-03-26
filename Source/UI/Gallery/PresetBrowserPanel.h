@@ -2,6 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../Core/PresetManager.h"
 #include "../GalleryColors.h"
+#include "GalleryLookAndFeel.h"
 
 namespace xolokun {
 
@@ -20,12 +21,13 @@ public:
         // Search field
         searchField.setTextToShowWhenEmpty("Search presets...",
                                            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
+        // Prototype: elevated bg, border, T1 text
         searchField.setColour(juce::TextEditor::backgroundColourId,
-                              GalleryColors::get(GalleryColors::slotBg()));
+                              GalleryColors::get(GalleryColors::elevated()));
         searchField.setColour(juce::TextEditor::outlineColourId,
-                              GalleryColors::get(GalleryColors::borderGray()));
+                              GalleryColors::border());
         searchField.setColour(juce::TextEditor::textColourId,
-                              GalleryColors::get(GalleryColors::textDark()));
+                              GalleryColors::get(GalleryColors::t1()));
         searchField.setFont(GalleryFonts::body(11.0f));
         searchField.onTextChange = [this] { updateFilter(); };
         addAndMakeVisible(searchField);
@@ -39,12 +41,15 @@ public:
         {
             moodBtns[i].setButtonText(moodLabels[i]);
             moodBtns[i].setClickingTogglesState(false);
+            // Prototype: transparent default bg, t3 text, gold-dim active bg + gold text
             moodBtns[i].setColour(juce::TextButton::buttonColourId,
-                                  GalleryColors::get(GalleryColors::shellWhite()));
+                                  juce::Colours::transparentBlack);
             moodBtns[i].setColour(juce::TextButton::textColourOffId,
-                                  GalleryColors::get(GalleryColors::textMid()));
+                                  GalleryColors::get(GalleryColors::t3()));
+            moodBtns[i].setColour(juce::TextButton::textColourOnId,
+                                  GalleryColors::get(GalleryColors::xoGold));
             moodBtns[i].setColour(juce::TextButton::buttonOnColourId,
-                                  GalleryColors::get(GalleryColors::xoGold).withAlpha(0.2f));
+                                  GalleryColors::get(GalleryColors::xoGold).withAlpha(0.14f));
             moodBtns[i].onClick = [this, i]
             {
                 activeMood = i;
@@ -52,17 +57,19 @@ public:
                     moodBtns[j].setToggleState(j == i, juce::dontSendNotification);
                 updateFilter();
             };
+            GalleryLookAndFeel::setMoodPillStyle(moodBtns[i]);
             addAndMakeVisible(moodBtns[i]);
         }
         moodBtns[0].setToggleState(true, juce::dontSendNotification);
 
         // Preset list
         listBox.setModel(this);
-        listBox.setRowHeight(24);
+        listBox.setRowHeight(32); // Prototype: ~32px rows (7px padding + content)
+        // Prototype: transparent bg (parent paints bg), subtle border
         listBox.setColour(juce::ListBox::backgroundColourId,
-                          GalleryColors::get(GalleryColors::slotBg()));
+                          juce::Colours::transparentBlack);
         listBox.setColour(juce::ListBox::outlineColourId,
-                          GalleryColors::get(GalleryColors::borderGray()));
+                          GalleryColors::border());
         listBox.setOutlineThickness(1);
         addAndMakeVisible(listBox);
 
@@ -90,11 +97,12 @@ public:
         using namespace GalleryColors;
 
         if (selected)
-            g.fillAll(get(xoGold).withAlpha(0.22f));
-        else if (row % 2 == 0)
-            g.fillAll(get(shellWhite()));
-        else
-            g.fillAll(get(slotBg()));
+        {
+            g.fillAll(juce::Colour(0x0BFFFFFF)); // rgba(255,255,255,0.045)
+            // 2px accent left border on selected row
+            g.setColour(juce::Colour(0xFF1E8B7E)); // default accent — overridden per-engine if available
+            g.fillRect(0, 0, 2, h);
+        }
 
         // Mood accent dot
         static const juce::Colour moodColors[] = {
@@ -122,12 +130,13 @@ public:
         for (int mi = 0; mi < 15; ++mi)
             if (preset.mood == moodIds[mi]) { dot = moodColors[mi]; break; }
 
+        // Prototype: 5×5px mood pip
         g.setColour(dot.withAlpha(0.7f));
-        g.fillEllipse(8.0f, h * 0.5f - 3.5f, 7.0f, 7.0f);
+        g.fillEllipse(10.0f, h * 0.5f - 2.5f, 5.0f, 5.0f);
 
         // Preset name
-        g.setColour(get(selected ? textDark() : textMid()));
-        g.setFont(GalleryFonts::body(10.5f));
+        g.setColour(get(selected ? t1() : t2()));
+        g.setFont(GalleryFonts::body(11.5f)); // Prototype: Inter 11.5px
         g.drawText(preset.name, 22, 0, w - 36, h,
                    juce::Justification::centredLeft, true);
 
@@ -135,8 +144,9 @@ public:
         if (!preset.engines.isEmpty() && preset.engines[0].isNotEmpty())
         {
             auto tag = preset.engines[0].substring(0, juce::jmin(3, preset.engines[0].length())).toUpperCase();
-            g.setColour(get(textMid()).withAlpha(0.50f));
-            g.setFont(GalleryFonts::label(7.5f));
+            // Prototype: JetBrains Mono 8px for engine badge
+            g.setColour(get(t3()).withAlpha(0.50f));
+            g.setFont(GalleryFonts::value(8.0f));
             g.drawText(tag, w - 28, 0, 26, h, juce::Justification::centredRight);
         }
     }
@@ -159,8 +169,8 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        using namespace GalleryColors;
-        g.fillAll(get(shellWhite()));
+        // Shell bg — shellWhite() resolves to #0E0E10 in dark mode
+        g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
     }
 
     void resized() override
@@ -174,11 +184,32 @@ public:
 
         b.removeFromTop(4);
 
-        // Mood tabs row
-        auto moodRow = b.removeFromTop(24);
-        int bw = moodRow.getWidth() / kNumMoods;
-        for (int i = 0; i < kNumMoods; ++i)
-            moodBtns[i].setBounds(moodRow.removeFromLeft(bw).reduced(1, 0));
+        // Mood pills — wrap into rows of ~6 per line
+        // Prototype: flex-wrap, pill shapes (border-radius 10px), Inter 9px, 2px 8px padding
+        {
+            const int pillH   = 20;
+            const int hGap    = 4;
+            const int vGap    = 4;
+            int px = b.getX();
+            int py = b.getY();
+            const int maxX = b.getRight();
+
+            for (int i = 0; i < kNumMoods; ++i)
+            {
+                // Measure pill width from text
+                int pillW = juce::jmax(32, (int)GalleryFonts::body(9.0f)
+                            .getStringWidthFloat(moodBtns[i].getButtonText()) + 18);
+
+                if (px + pillW > maxX && i > 0)
+                {
+                    px = b.getX();
+                    py += pillH + vGap;
+                }
+                moodBtns[i].setBounds(px, py, pillW, pillH);
+                px += pillW + hGap;
+            }
+            b.removeFromTop(py - b.getY() + pillH); // no extra vGap — b.removeFromTop(4) below handles spacing
+        }
 
         b.removeFromTop(4);
 

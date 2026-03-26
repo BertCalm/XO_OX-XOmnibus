@@ -106,7 +106,7 @@ public:
             juce::Path trackArc;
             trackArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                                    rotaryStartAngle, rotaryEndAngle, true);
-            g.setColour(juce::Colour(0xFF5E5C5A));
+            g.setColour(juce::Colour(GalleryColors::t3()));
             g.strokePath(trackArc, juce::PathStrokeType(1.4f, juce::PathStrokeType::curved,
                                                          juce::PathStrokeType::rounded));
         }
@@ -143,7 +143,9 @@ public:
         }
 
         // ── 8. Live value readout (during interaction) ─────────────────────
-        if (slider.isMouseButtonDown() || slider.isMouseOverOrDragging())
+        // 32px knobs (diameter < 40) suppress in-knob readout — disc would be
+        // only 14px wide with ~9.8px text, which clips. Tooltip handles it instead.
+        if (diameter >= 40.0f && (slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
         {
             float discR = radius * 0.44f;
             juce::String valStr;
@@ -163,6 +165,19 @@ public:
     }
 
     //==========================================================================
+    // Mood pill style helpers
+    // Call this on any TextButton to opt it in to pill rendering.
+    static void setMoodPillStyle(juce::TextButton& btn)
+    {
+        btn.getProperties().set("moodPill", true);
+    }
+
+    static bool isMoodPill(const juce::Button& btn)
+    {
+        return btn.getProperties()["moodPill"];
+    }
+
+    //==========================================================================
     // drawButtonBackground — matches prototype button styles
     void drawButtonBackground(juce::Graphics& g, juce::Button& btn,
                               const juce::Colour& /*bgColour*/, bool isOver, bool isDown) override
@@ -170,6 +185,42 @@ public:
         using namespace GalleryColors;
 
         auto bounds = btn.getLocalBounds().toFloat();
+
+        // ── Mood pill rendering ──────────────────────────────────────────────
+        if (isMoodPill(btn))
+        {
+            const bool toggled = btn.getToggleState();
+            constexpr float pillRadius = 10.0f; // half of 20px pill height
+
+            // Background
+            juce::Colour bg;
+            if (toggled)
+                bg = juce::Colour(0xFFE9C46A).withAlpha(0.14f); // gold-dim active
+            else if (isOver)
+                bg = juce::Colour(0xFFFFFFFF).withAlpha(0.03f); // hover
+            else
+                bg = juce::Colours::transparentBlack;            // default
+
+            g.setColour(bg);
+            g.fillRoundedRectangle(bounds, pillRadius);
+
+            // Border
+            juce::Colour borderCol;
+            if (btn.hasKeyboardFocus(true))
+                borderCol = A11y::focusRingColour().withAlpha(0.8f);
+            else if (toggled)
+                borderCol = juce::Colour(0xFFE9C46A).withAlpha(0.35f); // gold active border
+            else
+                borderCol = juce::Colour(0xFFFFFFFF).withAlpha(0.07f); // default subtle border
+
+            float borderThickness = btn.hasKeyboardFocus(true) ? 1.5f : 1.0f;
+            g.setColour(borderCol);
+            g.drawRoundedRectangle(bounds.reduced(0.5f), pillRadius, borderThickness);
+
+            return;
+        }
+
+        // ── Standard button rendering ────────────────────────────────────────
         const juce::String name = btn.getName();
 
         bool isExport = name.containsIgnoreCase("export");
@@ -211,6 +262,29 @@ public:
             g.setColour(borderCol);
             g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.0f);
         }
+    }
+
+    //==========================================================================
+    // drawButtonText — pill buttons use Inter 9px; standard buttons use default
+    void drawButtonText(juce::Graphics& g, juce::TextButton& btn,
+                        bool /*isOver*/, bool /*isDown*/) override
+    {
+        if (isMoodPill(btn))
+        {
+            const bool toggled = btn.getToggleState();
+            auto textColour = btn.findColour(toggled ? juce::TextButton::textColourOnId
+                                                     : juce::TextButton::textColourOffId);
+            g.setColour(textColour);
+            g.setFont(GalleryFonts::body(9.0f));
+            g.drawFittedText(btn.getButtonText(),
+                             btn.getLocalBounds(),
+                             juce::Justification::centred,
+                             1);
+            return;
+        }
+
+        // Default JUCE text rendering for all other buttons
+        juce::LookAndFeel_V4::drawButtonText(g, btn, false, false);
     }
 
     //==========================================================================
@@ -305,6 +379,10 @@ public:
                       thumbCenter.y - thumbSize * 0.25f,
                       thumbSize * 0.5f, thumbSize * 0.5f);
     }
+
+    //==========================================================================
+    // getDefaultScrollbarWidth — 4px slim scrollbar matching prototype
+    int getDefaultScrollbarWidth() override { return 4; }
 
     //==========================================================================
     // drawPopupMenuBackground — elevated card, T4 border

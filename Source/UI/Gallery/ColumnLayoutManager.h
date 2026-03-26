@@ -8,7 +8,7 @@ namespace xolokun {
 // Used by XOlokunEditor::resized() to get bounds for all zones.
 //
 // Default proportions at 1100x700:
-//   Header: 64pt
+//   Header: 52pt
 //   Column A (Engine Rack): 260pt
 //   Column B (Main Canvas): 520pt
 //   Column C (Browser/Inspector): 320pt
@@ -29,7 +29,8 @@ namespace xolokun {
 struct ColumnLayoutManager
 {
     // ── Configuration ──────────────────────────────────────────
-    static constexpr int kHeaderH          = 64;
+    // Prototype: 52px header
+    static constexpr int kHeaderH          = 52;
     static constexpr int kStatusBarH       = 28;
     static constexpr int kPlaySurfaceH     = 220;
     static constexpr int kFieldMapH        = 65;

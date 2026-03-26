@@ -400,6 +400,7 @@ private:
         repaint();
     }
 
+public:
     //==========================================================================
     // Open the full engine picker in a CallOutBox.
     void openEnginePickerPopup()
@@ -440,6 +441,7 @@ private:
             nullptr);
     }
 
+private:
     //==========================================================================
     // Build the water-column engine order:
     //   1. All Sunlit  engines (depthZone == 0) — alphabetical

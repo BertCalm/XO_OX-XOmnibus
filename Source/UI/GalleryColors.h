@@ -44,7 +44,7 @@ namespace GalleryColors {
         // Text hierarchy (4-level tonal scale)
         static constexpr uint32_t t1          = 0xFFF0EDE8;  // primary text (headings, active)
         static constexpr uint32_t t2          = 0xFF9E9B97;  // secondary (labels)
-        static constexpr uint32_t t3          = 0xFF5E5C5A;  // tertiary (disabled, muted)
+        static constexpr uint32_t t3          = 0xFF8A8784;  // tertiary (disabled, muted) — WCAG AA ~4.6:1 on #0E0E10
         static constexpr uint32_t t4          = 0xFF3A3938;  // quaternary (very subtle)
 
         // Legacy accessor-mapped values
@@ -188,12 +188,20 @@ namespace GalleryFonts {
                                        FontData::JetBrainsMonoRegular_ttfSize);
         return tf;
     }
+    inline juce::Typeface::Ptr overbitRegular()
+    {
+        static auto tf = loadTypeface(FontData::OverbitRegular_otf,
+                                       FontData::OverbitRegular_otfSize);
+        return tf;
+    }
 
-    inline juce::Font display (float size) { return juce::Font(spaceGroteskBold()).withHeight(size); }
-    inline juce::Font heading (float size) { return juce::Font(interBold()).withHeight(size); }
-    inline juce::Font body    (float size) { return juce::Font(interRegular()).withHeight(size); }
-    inline juce::Font label   (float size) { return juce::Font(interMedium()).withHeight(size); }
-    inline juce::Font value   (float size) { return juce::Font(jetBrainsMono()).withHeight(size); }
+    inline juce::Font display    (float size) { return juce::Font(spaceGroteskBold()).withHeight(size); }
+    inline juce::Font heading    (float size) { return juce::Font(interBold()).withHeight(size); }
+    inline juce::Font body       (float size) { return juce::Font(interRegular()).withHeight(size); }
+    inline juce::Font label      (float size) { return juce::Font(interMedium()).withHeight(size); }
+    inline juce::Font value      (float size) { return juce::Font(jetBrainsMono()).withHeight(size); }
+    // Overbit — engine nameplate display font (accent-colored, Column B hero text)
+    inline juce::Font engineName (float size) { return juce::Font(overbitRegular()).withHeight(size); }
 
 } // namespace GalleryFonts
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/PresetManager.h"
+#include "../Gallery/GalleryLookAndFeel.h"
 // NOTE: GalleryColors, GalleryFonts, A11y, and PresetData are defined in
 // XOlokunEditor.h, which includes this file.  The circular include is avoided
 // intentionally — those symbols are already in scope when this header is
@@ -69,6 +70,7 @@ public:
             btn->onClick = [this] { similarActive = false; applyFilters(); };
             A11y::setup(*btn, juce::String("Filter: ") + mood,
                         juce::String("Show only ") + mood + " presets");
+            GalleryLookAndFeel::setMoodPillStyle(*btn);
             addAndMakeVisible(btn);
         }
 
@@ -77,9 +79,9 @@ public:
 
         // --- Preset list ---
         listBox.setModel(this);
-        listBox.setRowHeight(48);
+        listBox.setRowHeight(36);
         listBox.setColour(juce::ListBox::backgroundColourId,
-                          GalleryColors::get(GalleryColors::shellWhite()));
+                          juce::Colours::transparentBlack);
         listBox.setColour(juce::ListBox::outlineColourId,
                           GalleryColors::get(GalleryColors::borderGray()));
         listBox.setOutlineThickness(1);
@@ -144,11 +146,30 @@ public:
         searchBox.setBounds(area.removeFromTop(32));
         area.removeFromTop(6);
 
-        // Mood buttons row
-        auto moodRow = area.removeFromTop(28);
-        int btnW = moodRow.getWidth() / juce::jmax(1, moodButtons.size());
-        for (auto* btn : moodButtons)
-            btn->setBounds(moodRow.removeFromLeft(btnW).reduced(2, 0));
+        // Mood pills — flex-wrap layout
+        {
+            const int pillH = 22;
+            const int hGap  = 4;
+            const int vGap  = 4;
+            int px = area.getX();
+            int py = area.getY();
+            const int maxX = area.getRight();
+
+            for (auto* btn : moodButtons)
+            {
+                int pillW = juce::jmax(36, (int)GalleryFonts::body(9.0f)
+                            .getStringWidthFloat(btn->getButtonText()) + 20);
+                if (px + pillW > maxX && btn != moodButtons.getFirst())
+                {
+                    px = area.getX();
+                    py += pillH + vGap;
+                }
+                btn->setBounds(px, py, pillW, pillH);
+                px += pillW + hGap;
+            }
+            int moodHeight = py - area.getY() + pillH;
+            area.removeFromTop(moodHeight);
+        }
         area.removeFromTop(6);
 
         // Bottom bar: status + similar button
@@ -184,31 +205,36 @@ public:
 
         // Row background
         if (isSelected)
-            g.fillAll(GalleryColors::get(GalleryColors::xoGold).withAlpha(0.2f));
+        {
+            g.fillAll(juce::Colour(0x0BFFFFFF)); // rgba(255,255,255,0.045)
+            // 2px accent left border on selected row
+            g.setColour(juce::Colour(0xFF1E8B7E));
+            g.fillRect(0, 0, 2, h);
+        }
         else if (row % 2 != 0)
-            g.fillAll(GalleryColors::get(GalleryColors::slotBg()));
+            g.fillAll(juce::Colour(0x05FFFFFF)); // very subtle zebra
 
-        // Mood accent dot
+        // Mood accent dot (5px to match prototype)
         g.setColour(moodColour(preset.mood).withAlpha(0.75f));
-        g.fillEllipse(10.0f, h * 0.5f - 4.0f, 8.0f, 8.0f);
+        g.fillEllipse(10.0f, h * 0.5f - 2.5f, 5.0f, 5.0f);
 
-        // Preset name
-        g.setFont(GalleryFonts::body(13.0f));
+        // Preset name — Inter 11.5px
+        g.setFont(GalleryFonts::body(11.5f));
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
-        g.drawText(preset.name, 26, 4, w - 38, 20,
+        g.drawText(preset.name, 22, 0, w - 34, h,
                    juce::Justification::centredLeft, true);
 
-        // Mood + engine tags (second line)
-        g.setFont(GalleryFonts::label(10.0f));
+        // Engine tag badge — JetBrains Mono 9px, right-aligned
+        g.setFont(GalleryFonts::value(9.0f));
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
 
         juce::String meta = preset.mood;
         for (const auto& eng : preset.engines)
         {
             if (eng.isNotEmpty())
-                meta += "  \xc2\xb7  " + eng;  // middle dot separator
+                meta += juce::String::fromUTF8("  \xc2\xb7  ") + eng;  // middle dot separator
         }
-        g.drawText(meta, 26, 24, w - 38, 16,
+        g.drawText(meta, 22, h / 2, w - 34, h / 2,
                    juce::Justification::centredLeft, true);
 
         // Bottom separator

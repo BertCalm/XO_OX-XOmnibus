@@ -264,21 +264,32 @@ public:
             const int stripH = 2;
             const int stripY = kHeaderH - stripH;
             const float zoneW = getWidth() / 3.0f;
-            const uint32_t zoneColors[3] = { 0xFF48CAE4, 0xFF0096C7, 0xFF7B2FBE };
+            const juce::Colour zoneColors[3] = {
+                accentColour.withAlpha(0.45f),
+                accentColour.darker(0.2f).withAlpha(0.40f),
+                accentColour.darker(0.5f).withAlpha(0.35f)
+            };
             for (int z = 0; z < 3; ++z)
             {
-                g.setColour(juce::Colour(zoneColors[z]).withAlpha(0.45f));
+                g.setColour(zoneColors[z]);
                 g.fillRect((int)(z * zoneW), stripY, (int)zoneW, stripH);
             }
         }
 
-        // ── Engine name — 13px, weight 700, engine accent, letter-spacing ~3px ─
-        // Prototype: 13px display font, engine accent color, letter-spacing ~3px
-        g.setColour(accentColour);
-        g.setFont(GalleryFonts::display(13.0f));
-        g.drawText(engineId.toUpperCase(),
-                   12, 0, getWidth() - 100, kHeaderH,
-                   juce::Justification::centredLeft);
+        // ── Engine name — Overbit display font, engine accent + glow ──────────
+        // Prototype: accent color text with text-shadow glow
+        {
+            juce::String name = engineId.toUpperCase();
+            juce::Font nameFont = GalleryFonts::engineName(14.0f);
+            g.setFont(nameFont);
+            auto nameRect = juce::Rectangle<int>(12, 0, getWidth() - 100, kHeaderH);
+            // Glow layer — accent at low opacity, offset 0,0, painted twice for intensity
+            g.setColour(accentColour.withAlpha(0.25f));
+            g.drawText(name, nameRect.translated(0, 1), juce::Justification::centredLeft);
+            // Primary text — full accent color
+            g.setColour(accentColour);
+            g.drawText(name, nameRect, juce::Justification::centredLeft);
+        }
 
         // ── "PARAMETERS" right label — T3 color, 8px body ─────────────────────
         g.setColour(get(t3()));

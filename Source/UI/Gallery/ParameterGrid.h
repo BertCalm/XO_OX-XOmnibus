@@ -5,6 +5,7 @@
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 #include "MidiLearnMouseListener.h"
+#include <set>
 
 namespace xolokun
 {
@@ -176,7 +177,7 @@ public:
     }
 
     // ── Height calculation — accounts for per-section header rows ───────────
-    // Always returns the full height as if all knobs exist (viewport needs this).
+    // Collapsed sections contribute only kHeaderRowH (no knob rows).
     int getRequiredHeight(int availableWidth) const
     {
         int cols = juce::jmax(1, availableWidth / kCellW);
@@ -184,7 +185,9 @@ public:
 
         for (auto& run : sectionRuns)
         {
-            y += kHeaderRowH; // section header strip
+            y += kHeaderRowH; // section header strip always visible
+            if (collapsedSections.count(run.sec))
+                continue; // header only, no knob rows
             int rows = (run.count + cols - 1) / cols;
             y += rows * kCellH;
         }
@@ -205,6 +208,15 @@ public:
         {
             y += kHeaderRowH; // skip over section header
 
+            if (collapsedSections.count(run.sec))
+            {
+                // Section is collapsed — place all knobs off-screen so
+                // updateVisibleAttachments() will tear them down.
+                for (int i = 0; i < run.count; ++i, ++flatIdx)
+                    knobBounds[flatIdx] = { -1000, -1000 };
+                continue; // header strip only — no knob rows added to y
+            }
+
             for (int i = 0; i < run.count; ++i, ++flatIdx)
             {
                 int col = i % cols;
@@ -217,8 +229,9 @@ public:
                 // If the live knob already exists, update its bounds immediately
                 if (auto& lk = liveKnobs[flatIdx]; lk != nullptr)
                 {
-                    lk->knob->setBounds(cx + 6, cy + 4, kCellW - 12, kCellW - 12);
-                    lk->label->setBounds(cx, cy + kCellW - 4, kCellW, 14);
+                    const int knobX = cx + (kCellW - kKnobSize) / 2;
+                    lk->knob->setBounds(knobX, cy, kKnobSize, kKnobSize);
+                    lk->label->setBounds(cx, cy + kKnobSize + 3, kCellW, 12);
                 }
             }
 
@@ -243,6 +256,7 @@ public:
         {
             juce::Colour secCol  = sectionColour(run.sec);
             juce::String secText = sectionName(run.sec);
+            bool collapsed       = collapsedSections.count(run.sec) > 0;
 
             // ── Separator between sections — border() = rgba(255,255,255,0.07) ─
             if (!firstSec)
@@ -252,13 +266,12 @@ public:
             }
             firstSec = false;
 
-            // ── Section header background — rgba(255,255,255,0.03) when expanded ─
-            // Prototype: very subtle tint for expanded section headers
-            g.setColour(juce::Colour(0x08FFFFFF)); // rgba(255,255,255,0.03) — no accessor for this
+            // ── Section header background — slightly brighter when collapsed ───
+            g.setColour(collapsed ? juce::Colour(0x10FFFFFF)   // a touch more visible
+                                  : juce::Colour(0x08FFFFFF)); // rgba(255,255,255,0.03)
             g.fillRect(0, y, getWidth(), kHeaderRowH);
 
             // ── Color dot — 7×7px, section accent color ───────────────────────
-            // Prototype: 7×7px color dot (vs previous 6×6)
             const int dotSize = 7;
             const int dotX    = 10;
             const int dotY    = y + (kHeaderRowH - dotSize) / 2;
@@ -266,7 +279,6 @@ public:
             g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
             // ── Section title — 9.5px, weight 600, Display, uppercase, T2 text ─
-            // Prototype: section headers use T2 text color, not section color
             g.setColour(GalleryColors::get(GalleryColors::t2())); // T2 text
             g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(9.5f));
             g.drawText(secText,
@@ -274,7 +286,25 @@ public:
                        getWidth() - dotX - dotSize - 16, kHeaderRowH,
                        juce::Justification::centredLeft);
 
+            // ── Collapse indicator arrow — right-aligned, T3 color, 9px ───────
+            {
+                const juce::String arrow = collapsed ? juce::String(juce::CharPointer_UTF8("\xe2\x96\xb8"))   // ▸
+                                                     : juce::String(juce::CharPointer_UTF8("\xe2\x96\xbe")); // ▾
+                g.setColour(GalleryColors::get(GalleryColors::t3()));
+                g.setFont(juce::Font(9.0f));
+                g.drawText(arrow,
+                           0, y, getWidth() - 10, kHeaderRowH,
+                           juce::Justification::centredRight);
+            }
+
             y += kHeaderRowH;
+
+            if (collapsed)
+            {
+                // Skip knob cells — advance flatIdx only, no y advance
+                flatIdx += run.count;
+                continue;
+            }
 
             // ── 3px left-border bar on each knob cell ──────────────────────
             for (int i = 0; i < run.count; ++i, ++flatIdx)
@@ -288,6 +318,63 @@ public:
             int rows = (run.count + cols - 1) / cols;
             y += rows * kCellH;
         }
+    }
+
+    // ── Mouse handling — toggle collapse on header click ────────────────────
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        int y = kPad;
+        for (auto& run : sectionRuns)
+        {
+            if (e.y >= y && e.y < y + kHeaderRowH)
+            {
+                // Toggle this section
+                if (collapsedSections.count(run.sec))
+                    collapsedSections.erase(run.sec);
+                else
+                    collapsedSections.insert(run.sec);
+
+                // Recalculate layout and resize to new required height
+                // setSize triggers resized() automatically — no explicit resized() needed
+                if (parentViewport)
+                {
+                    setSize(getWidth(), getRequiredHeight(getWidth()));
+                    parentViewport->setViewPosition(
+                        0, juce::jmax(0, y - 10));
+                }
+                repaint();
+                return;
+            }
+
+            y += kHeaderRowH;
+            if (!collapsedSections.count(run.sec))
+            {
+                int cols = juce::jmax(1, getWidth() / kCellW);
+                int rows = (run.count + cols - 1) / cols;
+                y += rows * kCellH;
+            }
+        }
+    }
+
+    // ── Cursor change — pointing hand over section headers ──────────────────
+    void mouseMove(const juce::MouseEvent& e) override
+    {
+        int y = kPad;
+        for (auto& run : sectionRuns)
+        {
+            if (e.y >= y && e.y < y + kHeaderRowH)
+            {
+                setMouseCursor(juce::MouseCursor::PointingHandCursor);
+                return;
+            }
+            y += kHeaderRowH;
+            if (!collapsedSections.count(run.sec))
+            {
+                int cols = juce::jmax(1, getWidth() / kCellW);
+                y += (run.count + cols - 1) / cols * kCellH;
+            }
+        }
+        setMouseCursor(juce::MouseCursor::NormalCursor);
     }
 
 private:
@@ -382,9 +469,10 @@ private:
         // ── Label ────────────────────────────────────────────────────────────
         lk->label = std::make_unique<juce::Label>();
         lk->label->setText(slot.shortLabel, juce::dontSendNotification);
-        lk->label->setFont(GalleryFonts::label(8.0f));
+        // Prototype: JetBrains Mono 8px, T3 color (#5E5C5A)
+        lk->label->setFont(GalleryFonts::value(8.0f));
         lk->label->setColour(juce::Label::textColourId,
-                             GalleryColors::get(GalleryColors::textMid()));
+                             GalleryColors::get(GalleryColors::t3()));
         lk->label->setJustificationType(juce::Justification::centred);
         lk->label->setInterceptsMouseClicks(false, false);
         addAndMakeVisible(*lk->label);
@@ -409,8 +497,9 @@ private:
         if (idx < (int)knobBounds.size())
         {
             auto [cx, cy] = knobBounds[idx];
-            lk->knob->setBounds(cx + 6, cy + 4, kCellW - 12, kCellW - 12);
-            lk->label->setBounds(cx, cy + kCellW - 4, kCellW, 14);
+            const int knobX = cx + (kCellW - kKnobSize) / 2;
+            lk->knob->setBounds(knobX, cy + 2, kKnobSize, kKnobSize);
+            lk->label->setBounds(cx, cy + kKnobSize + 4, kCellW, 12);
         }
 
         liveKnobs[idx] = std::move(lk);
@@ -464,11 +553,18 @@ private:
     }
 
     // ── Layout constants ──────────────────────────────────────────────────────
-    static constexpr int kCellW           = 82;
-    static constexpr int kCellH           = 90;
-    static constexpr int kPad             = 12;
+    // Prototype: 32px knobs in ~58px groups, flex-wrap with 10px/14px gap.
+    // 60×52 cells fit ~8 cols in Column B's ~490px — matching the dense grid.
+    static constexpr int kCellW           = 60;
+    static constexpr int kCellH           = 52;
+    static constexpr int kKnobSize        = 32;
+    static constexpr int kPad             = 8;
     static constexpr int kHeaderRowH      = 22;  // height of each section header strip
     static constexpr int kVisibilityMargin = 100; // px preload margin for smooth scrolling
+
+    // ── Collapse state — which sections are currently collapsed ──────────────
+    // All sections start expanded by default (set is empty at construction).
+    std::set<Section> collapsedSections;
 
     // ── Construction-time state captured for lazy creation ───────────────────
     XOlokunProcessor& proc;

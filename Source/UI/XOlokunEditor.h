@@ -125,6 +125,22 @@ public:
         performancePanel.setVisible(false);
         performancePanel.setAlpha(0.0f);
 
+        // "ENGINES" button in header — engine selection shortcut
+        addAndMakeVisible(enginesBtn);
+        enginesBtn.setButtonText(juce::String("ENGINES ") + juce::String(juce::CharPointer_UTF8("\xe2\x96\xbe")));
+        enginesBtn.setTooltip("Select engine for focused slot");
+        // Style: T2 text (secondary color), matches prototype .engines-btn
+        enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::Dark::t2));
+        enginesBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::Dark::t1));
+        A11y::setup (enginesBtn, "Engines Button", "Open engine selection for the focused slot");
+        enginesBtn.onClick = [this]
+        {
+            // Open the engine picker for the focused slot
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : 0;
+            depthDial.setSlot(slot);
+            depthDial.openEnginePickerPopup();
+        };
+
         // "CM" toggle button in header area
         addAndMakeVisible(cmToggleBtn);
         cmToggleBtn.setButtonText("CM");
@@ -378,18 +394,35 @@ public:
         g.setColour(border());
         g.fillRect(header.getX(), header.getBottom() - 1.0f, header.getWidth(), 1.0f);
 
-        // Engine name / brand — T1 text
+        // ── XO_OX Dual-Circle Logo Mark (30×30px) ───────────────────────────
+        // Left circle: engine accent (#1E8B7E Reef Jade), Right circle: XO Gold (#E9C46A)
+        // Overlap by ~6px; right circle offset 12px right from left circle origin
+        {
+            const int logoX = 14;
+            const int logoY = (headerH - 18) / 2;   // vertically centred in 52px header
+            const float circR = 9.0f;               // radius = 18px diameter / 2
+
+            // Left circle — Reef Jade accent at 0.85 alpha
+            g.setColour(juce::Colour(0xFF1E8B7E).withAlpha(0.85f));
+            g.fillEllipse((float)logoX, (float)logoY, circR * 2.0f, circR * 2.0f);
+
+            // Right circle — XO Gold at 0.85 alpha (offset 12px right)
+            g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.85f));
+            g.fillEllipse((float)(logoX + 12), (float)logoY, circR * 2.0f, circR * 2.0f);
+        }
+
+        // Engine name — T1 text, vertically stacked in 52px header (shifted right by 34px)
         g.setColour(get(t1()));
-        g.setFont(GalleryFonts::display(14.0f));
+        g.setFont(GalleryFonts::display(12.0f));
         g.drawText("XOlokun",
-                   juce::Rectangle<int>(16, 0, 160, headerH),
+                   juce::Rectangle<int>(48, 6, 100, 20),
                    juce::Justification::centredLeft);
 
-        // Subtitle — "XO_OX Designs" at 8px, T3 color
+        // Subtitle — "XO_OX Designs" at 8px, T3 color (shifted right by 34px)
         g.setColour(get(t3()));
         g.setFont(GalleryFonts::body(8.0f));
         g.drawText("XO_OX Designs",
-                   juce::Rectangle<int>(16, headerH / 2 + 2, 110, 14),
+                   juce::Rectangle<int>(48, 26, 100, 14),
                    juce::Justification::centredLeft);
 
         // NOTE: Coupling stats / engine-count text has been moved out of paint().
@@ -405,8 +438,8 @@ public:
                 double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
                 float pulse = 0.65f + 0.35f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
 
-                juce::String badge = "MIDI LEARN: move a controller to map * right-click to cancel";
-                auto badgeRect = juce::Rectangle<int>(165, 4, getWidth() - 360, headerH - 10);
+                juce::String badge = "MIDI LEARN: move controller to map";
+                auto badgeRect = juce::Rectangle<int>(200, 4, getWidth() - 400, headerH - 8);
 
                 g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.18f * pulse));
                 g.fillRoundedRectangle(badgeRect.toFloat(), 4.0f);
@@ -433,35 +466,45 @@ public:
         // (not yet wired — Column C is reserved space only in this step)
         layout.compute(getWidth(), getHeight());
 
-        // ── Header: toggle buttons and preset browser strip (right side) ─────
+        // ── Header (52px): tighter layout for prototype match ──────────────
         auto header = layout.getHeader();
         // Right zone — peel off from right edge inward:
-        presetBrowser.setBounds(header.removeFromRight(220).reduced(4, 10));
-        exportBtn.setBounds(header.removeFromRight(46).reduced(4, 12));
-        themeToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
-        surfaceToggleBtn.setBounds(header.removeFromRight(36).reduced(2, 12));
-        // CPU meter (60×20) and MIDI dot (8×8) sit between PS toggle and CM/P buttons
+        presetBrowser.setBounds(header.removeFromRight(200).reduced(4, 8));
+        exportBtn.setBounds(header.removeFromRight(44).reduced(4, 10));
+        // ── Icon strip: 4 compact 24×24 toggle buttons ─────────────────────
+        // Prototype: indicator-pill sized controls, grouped tightly
         {
-            auto midiSlice = header.removeFromRight(16);
+            static constexpr int iconSz = 24;
+            static constexpr int iconGap = 3;
+            static constexpr int stripW = 4 * iconSz + 3 * iconGap; // 108
+            auto strip = header.removeFromRight(stripW + 4); // +4 for edge padding
+            int ix = strip.getX() + 2;
+            int iy = (strip.getHeight() - iconSz) / 2;
+            cmToggleBtn.setBounds(ix, iy, iconSz, iconSz);        ix += iconSz + iconGap;
+            perfToggleBtn.setBounds(ix, iy, iconSz, iconSz);      ix += iconSz + iconGap;
+            surfaceToggleBtn.setBounds(ix, iy, iconSz, iconSz);   ix += iconSz + iconGap;
+            themeToggleBtn.setBounds(ix, iy, iconSz, iconSz);
+        }
+        // CPU meter (60×20) and MIDI dot (8×8)
+        {
+            auto midiSlice = header.removeFromRight(14);
             midiIndicator.setBounds(midiSlice.withSizeKeepingCentre(8, 8));
         }
-        cpuMeter.setBounds(header.removeFromRight(64).withSizeKeepingCentre(60, 20));
-        perfToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
-        cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
+        cpuMeter.setBounds(header.removeFromRight(62).withSizeKeepingCentre(60, 20));
         // A/B compare widget (56×24) sits between CM toggle and the macro area
-        abCompare.setBounds(header.removeFromRight(64).withSizeKeepingCentre(56, 24));
+        abCompare.setBounds(header.removeFromRight(60).withSizeKeepingCentre(56, 24));
 
         // ── Macro knobs in header — between title area and button strip ───────
-        // All right-side buttons have been sliced above; what remains in 'header'
-        // spans from x=0 to the left edge of the A/B compare widget.
-        // Skip the first 220px (logo + title text area + DepthDial).
+        // Prototype: 140px logo/title area + ENGINES btn (70×22) + 44px DepthDial → macros
         {
-            auto leftZone = header.removeFromLeft(220);
-            // DepthZoneDial: 48×48, centred vertically, anchored right of logo.
-            depthDial.setBounds(leftZone.removeFromRight(56).withSizeKeepingCentre(48, 48));
+            auto leftZone = header.removeFromLeft(200); // logo(30) + title(48) + ENGINES(74) + DepthDial(48)
+            // DepthZoneDial: 44×44, centred vertically, anchored right of logo area.
+            depthDial.setBounds(leftZone.removeFromRight(48).withSizeKeepingCentre(44, 44));
+            // ENGINES button: 70×22, vertically centred, sits after logo text (after ~30+34=64px logo+text)
+            enginesBtn.setBounds(leftZone.removeFromLeft(74).withSizeKeepingCentre(70, 22));
 
             auto macroHeader = header; // what remains between DepthDial and A/B
-            macros.setBounds(macroHeader.reduced(8, 8));
+            macros.setBounds(macroHeader.reduced(6, 4));
         }
 
         // ── Column A — Engine Rack (full height, MacroSection now in header) ──
@@ -875,7 +918,7 @@ private:
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
-    // Use ColumnLayoutManager::kHeaderH (64) and ColumnLayoutManager::kFieldMapH (65).
+    // Use ColumnLayoutManager::kHeaderH (52) and ColumnLayoutManager::kFieldMapH (65).
     static constexpr int kMasterFXH      = 68;  // MasterFX compact strip at bottom of Column B
     static constexpr int kFadeMs         = 150; // Panel cross-fade duration (ms)
     // kNumPrimarySlots: the 4 slots always visible (indices 0-3).
@@ -945,6 +988,7 @@ private:
     // Ghost Slot tile — declared after presetBrowser to match constructor MIL order.
     // Hidden until EngineRegistry::detectCollection() returns a non-empty collection.
     CompactEngineTile      ghostTile;
+    juce::TextButton       enginesBtn;
     juce::TextButton       cmToggleBtn;
     juce::TextButton       perfToggleBtn;
     juce::TextButton       surfaceToggleBtn;
