@@ -1,6 +1,7 @@
 #pragma once
 #include "SynthEngine.h"
 #include <array>
+#include <atomic>
 
 namespace xolokun {
 
@@ -30,7 +31,7 @@ public:
 
     void prepare(double sampleRate, int /*maxBlockSize*/)
     {
-        currentSampleRate = sampleRate;
+        currentSampleRate.store(sampleRate, std::memory_order_relaxed);
 
         for (auto& slot : slots)
             slot.reset();
@@ -128,7 +129,7 @@ public:
                         float* outputBuffer,
                         int numSamples)
     {
-        if (currentSampleRate <= 0.0) return;
+        if (currentSampleRate.load(std::memory_order_relaxed) <= 0.0) return;
 
         if (prevBuffer == nullptr || nextBuffer == nullptr || outputBuffer == nullptr || numSamples <= 0)
             return;
@@ -148,7 +149,7 @@ public:
 
         // Convert duration from ms to samples.
         const float durationSamples = (slot.crossfadeDuration * 0.001f)
-                                    * static_cast<float>(currentSampleRate);
+                                    * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
         const float invDuration = (durationSamples > 0.0f)
                                 ? 1.0f / durationSamples
                                 : 1.0f;
@@ -199,7 +200,7 @@ public:
             return;
 
         const float durationSamples = (slot.crossfadeDuration * 0.001f)
-                                    * static_cast<float>(currentSampleRate);
+                                    * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
         slot.crossfadeProgress += static_cast<float>(numSamples);
 
         if (slot.crossfadeProgress >= durationSamples)
@@ -218,7 +219,7 @@ public:
             return 1.0f;
 
         const float durationSamples = (slot.crossfadeDuration * 0.001f)
-                                    * static_cast<float>(currentSampleRate);
+                                    * static_cast<float>(currentSampleRate.load(std::memory_order_relaxed));
         if (durationSamples <= 0.0f)
             return 1.0f;
 
@@ -297,7 +298,7 @@ private:
     };
 
     std::array<RouteSlot, MaxRouteSlots> slots {};
-    double currentSampleRate = 0.0;
+    std::atomic<double> currentSampleRate { 0.0 };
 };
 
 } // namespace xolokun

@@ -111,7 +111,7 @@ namespace GalleryColors {
         if (id == "Organon")   return juce::Colour(0xFF00CED1);
         if (id == "Ouroboros") return juce::Colour(0xFFFF2D2D);
         if (id == "Obsidian")  return juce::Colour(0xFFE8E0D8);
-        if (id == "Overbite")  return juce::Colour(0xFFF0EDE8);
+        if (id == "Overbite")  return juce::Colour(0xFFC9B8A8);  // AgedBone
         if (id == "Origami")   return juce::Colour(0xFFE63946);
         if (id == "Oracle")    return juce::Colour(0xFF4B0082);
         if (id == "Obscura")   return juce::Colour(0xFF8A9BA8);
@@ -152,7 +152,7 @@ namespace GalleryColors {
         if (id == "Omega")     return juce::Colour(0xFF003366);
         if (id == "Onkolo")    return juce::Colour(0xFFFFBF00);
         if (id == "Opaline")   return juce::Colour(0xFFB7410E);
-        if (id == "Opcode")    return juce::Colour(0xFF00CED1);
+        if (id == "Opcode")    return juce::Colour(0xFF5F9EA0); // CadetBlue
         if (id == "Opera")     return juce::Colour(0xFFD4AF37);
         if (id == "Orca")      return juce::Colour(0xFF1B2838);
         if (id == "Orchard")   return juce::Colour(0xFFFFB7C5);
