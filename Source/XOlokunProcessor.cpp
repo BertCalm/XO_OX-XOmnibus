@@ -1411,7 +1411,7 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
                 for (int s = 0; s < kChordSlots; ++s)
                 {
                     const int note = chordFireNotes[s].load(std::memory_order_relaxed);
-                    if (note >= 0 && note <= 127)
+                    if (note > 0 && note <= 127)  // 0 = sentinel (empty); MIDI note C-1 excluded
                         slotMidi[s].addEvent(juce::MidiMessage::noteOff(1, note), 0);
                 }
             }

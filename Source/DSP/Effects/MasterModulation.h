@@ -379,7 +379,7 @@ private:
                 const float w2 = w * w;
                 const float tanW = w * (1.0f + w2 * (0.33333333f + w2 * 0.13333333f));
                 const float denom = tanW + 1.0f;
-                if (denom < 1e-6f) return 0.0f;  // degenerate — treat as flat allpass
+                if (denom < 1e-6f) return 0.0f;  // degenerate — near-transparent allpass (defensive; unreachable given fc clamp)
                 return clamp((tanW - 1.0f) / denom, -0.9999f, 0.9999f);
             };
 
@@ -395,7 +395,7 @@ private:
                 phaserStateL[s] = flushDenormal (xL - aL * yn);
                 xL = yn;
             }
-            xL = clamp(xL, -4.0f, 4.0f);  // prevent Inf/NaN from allpass runaway
+            xL = clamp(xL, -4.0f, 4.0f);  // hard clip: prevents Inf/NaN from allpass runaway; may crunch at max feedback + resonance (by design)
             phaserFBL = flushDenormal (xL);
             L[i] = L[i] * (1.0f - mix) + xL * mix;
 
@@ -407,7 +407,7 @@ private:
                 phaserStateR[s] = flushDenormal (xR - aR * yn);
                 xR = yn;
             }
-            xR = clamp(xR, -4.0f, 4.0f);  // prevent Inf/NaN from allpass runaway
+            xR = clamp(xR, -4.0f, 4.0f);  // hard clip: prevents Inf/NaN from allpass runaway; may crunch at max feedback + resonance (by design)
             phaserFBR = flushDenormal (xR);
             R[i] = R[i] * (1.0f - mix) + xR * mix;
         }

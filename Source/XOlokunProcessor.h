@@ -412,7 +412,7 @@ private:
     // This replaces the old same-block note-off which gave only ~10ms of hold.
     std::atomic<int> chordFireNoteOffCountdown { 0 };
     static constexpr int kChordHoldMs = 100;  // hold chord for ~100ms before note-off
-    std::array<std::atomic<int>, kChordSlots> chordFireNotes {};  // notes fired; -1 = empty
+    std::array<std::atomic<int>, kChordSlots> chordFireNotes {};  // notes fired; 0 = empty (MIDI note 0 / C-1 excluded as sentinel)
 
     // ── Coupling burst state ──────────────────────────────────────────────────
     // couplingBurstGain: multiplier applied to all active route amounts (1.0 = no boost).

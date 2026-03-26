@@ -100,6 +100,8 @@ public:
 
             // Cap correction to prevent extreme amplification at sub-Hz frequencies
             // (e.g., if PolyBLEP is used for LFO triangle). Max +12 dB.
+            // At 1 Hz / 44100 Hz the uncapped correction is ~11x; this caps to 4x.
+            // Sub-Hz triangle amplitude will be +12 dB above nominal, not unity.
             triLeakCorrection = std::min (triLeakCorrection, 4.0f);
         }
         else
