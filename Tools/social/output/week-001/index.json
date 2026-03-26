@@ -1,0 +1,17 @@
+{
+  "week_id": "2026-W13",
+  "week_num": 1,
+  "generated_at": "2026-03-25T12:15:05.633804",
+  "files": [
+    "Tools/social/output/week-001/twitter-surface.txt",
+    "Tools/social/output/week-001/twitter-twilight.txt",
+    "Tools/social/output/week-001/reddit-twilight.txt",
+    "Tools/social/output/week-001/reddit-midnight.txt",
+    "Tools/social/output/week-001/discord-surface.txt",
+    "Tools/social/output/week-001/discord-twilight.txt",
+    "Tools/social/output/week-001/discord-midnight.txt",
+    "Tools/social/output/week-001/discord-abyss.txt",
+    "Tools/social/output/week-001/patreon-midnight.txt",
+    "Tools/social/output/week-001/forum-twilight.txt"
+  ]
+}

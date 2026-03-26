@@ -73,7 +73,7 @@
 #include "Engines/Overflow/OverflowEngine.h"
 #include "Engines/Overcast/OvercastEngine.h"
 // FUSION Quad Collection
-#include "Engines/Oasis/OasisEngine.h"
+#include "Engines/Okeanos/OkeanosEngine.h"
 #include "Engines/Oddfellow/OddfellowEngine.h"
 #include "Engines/Onkolo/OnkoloEngine.h"
 #include "Engines/Opcode/OpcodeEngine.h"
@@ -81,6 +81,9 @@
 #include "Engines/Oxytocin/OxytocinAdapter.h"
 // OUTLOOK — panoramic visionary synth
 #include "Engines/Outlook/OutlookEngine.h"
+// Dual Engine Integration — OASIS + OUTFLOW
+#include "Engines/Oasis/OasisEngine.h"
+#include "Engines/Outflow/OutflowEngine.h"
 #include "DSP/ThreadInit.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
@@ -382,7 +385,12 @@ static bool registered_Overcast = xolokun::EngineRegistry::instance().registerEn
     "Overcast", []() -> std::unique_ptr<xolokun::SynthEngine> {
         return std::make_unique<xolokun::OvercastEngine>();
     });
-// FUSION Quad Collection — OASIS
+// FUSION Quad Collection — OKEANOS (formerly Oasis, renamed to free ID for ecosystem engine)
+static bool registered_Okeanos = xolokun::EngineRegistry::instance().registerEngine(
+    "Okeanos", []() -> std::unique_ptr<xolokun::SynthEngine> {
+        return std::make_unique<xolokun::OkeanosEngine>();
+    });
+// FUSION Quad Collection — OASIS (bioluminescent ecosystem engine)
 static bool registered_Oasis = xolokun::EngineRegistry::instance().registerEngine(
     "Oasis", []() -> std::unique_ptr<xolokun::SynthEngine> {
         return std::make_unique<xolokun::OasisEngine>();
@@ -416,6 +424,11 @@ static bool registered_Oxytocin = xolokun::EngineRegistry::instance().registerEn
 static bool registered_Outlook = xolokun::EngineRegistry::instance().registerEngine(
     "Outlook", []() -> std::unique_ptr<xolokun::SynthEngine> {
         return std::make_unique<xolokun::OutlookEngine>();
+    });
+// Dual Engine Integration — OUTFLOW (Predictive Spatial Vacuum, engine #49)
+static bool registered_Outflow = xolokun::EngineRegistry::instance().registerEngine(
+    "Outflow", []() -> std::unique_ptr<xolokun::SynthEngine> {
+        return std::make_unique<xolokun::OutflowEngine>();
     });
 
 namespace xolokun {
@@ -604,7 +617,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OverflowEngine::addParameters(params);
     OvercastEngine::addParameters(params);
     // FUSION Quad Collection
-    OasisEngine::addParameters(params);
+    OkeanosEngine::addParameters(params);
     OddfellowEngine::addParameters(params);
     OnkoloEngine::addParameters(params);
     OpcodeEngine::addParameters(params);

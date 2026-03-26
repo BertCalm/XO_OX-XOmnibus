@@ -1,0 +1,24 @@
+**Weekly Build Report** — 2026-W13
+
+• Fix MIDI Learn persistence and DAW automation gesture brackets
+• Fix two P0 audio-thread safety violations found in Quantum Audit
+• Split XOlokunEditor.h into 17 Gallery components + add UI Wiring Manifest
+• Save session state: wiring sprint mandate + purpose statement
+• V0.4 polished plugin prototype: end-state visual design at 1100×700
+• iPad landscape end-state prototype: drawer-based touch-optimized layout
+• Expand battle plan: +150 tracks (300 total) across Opus/Sonnet/Haiku
+• Full MIDI Learn system: right-click any knob to map CC
+• MPC hardware end-state prototype: 800×480 touch-first 2-column layout
+• iPhone end-state prototype: 4-tab iOS app with TE PO-inspired macros
+
+**Recipe of the week:** Drum Teaches Bass
+`ONSET` × `OVERBITE` via `Amp->Filter` at 0.50
+
+ONSET's kick transients drive three simultaneous processes on OVERBITE: the filter opens (making the bass briefly brighter on every hit), FM depth increases (adding harmonic bite on the attack), and decay extends (making the bass ring longer on loud hits). The snare creates a different signature from the kick — sharper filter hit, less decay extension. What results is a sidechain-coupled bass that does not duck. It breathes.
+
+**Preset spotlight:** *Opcode Tokyo City Pop*
+
+---
+
+**From the Book of Bin:**
+> *The mechanical event has a voice.*

@@ -1,0 +1,33 @@
+**[XOlokun] Weekly Coupling Recipe — Drum Teaches Bass**
+
+Hi all,
+
+Sharing this week's coupling recipe from the XOlokun cookbook. These are all free to use — the plugin is open source.
+
+---
+
+**Recipe: Drum Teaches Bass**
+
+- **Engine A:** ONSET (XOnset) — Slot 1
+- **Engine B:** OVERBITE (XOverbite) — Slot 2
+- **Coupling Type:** `Amp->Filter`
+- **Amount:** 0.50
+- **Direction:** A→B
+- **Genre context:** Hip-hop, trap
+
+**How it works:**
+ONSET's kick transients drive three simultaneous processes on OVERBITE: the filter opens (making the bass briefly brighter on every hit), FM depth increases (adding harmonic bite on the attack), and decay extends (making the bass ring longer on loud hits). The snare creates a different signature from the kick — sharper filter hit, less decay extension. What results is a sidechain-coupled bass that does not duck. It breathes.
+
+---
+
+**Preset of the week:** *Opcode Tokyo City Pop*
+
+**New presets this week:** 9467
+
+---
+
+XOlokun is a free, open-source multi-engine synthesizer with ONSET and OVERBITE among 73 registered engines. Coupling lets one engine rewrite another in real time.
+
+Download + source: github.com/XO-OX
+Reddit community: reddit.com/r/XO_OX
+Discord: discord.gg/xolokun

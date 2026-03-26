@@ -1,0 +1,195 @@
+<h2>Outshine Phase 1A — Full Design</h2>
+<p class="subtitle">The Core Loop: Grain → Oyster → Pearl → MPC</p>
+
+<div class="section">
+  <h3>1. Data Flow</h3>
+  <div style="font-family:monospace; font-size:12px; line-height:2.2; padding:16px; background:rgba(255,255,255,0.02); border-radius:6px;">
+    <span style="color:#E9C46A;">DROP</span> WAV files / folder / .xpn archive<br>
+    &nbsp;&nbsp;↓<br>
+    <span style="color:#E9C46A;">CLASSIFY</span> auto-detect: drums vs melodic vs pad vs fx (3-pass: filename → spectral → pitch)<br>
+    &nbsp;&nbsp;↓<br>
+    <span style="color:#E9C46A;">ANALYZE</span> root note (autocorrelation) • RMS/peak • tail length • loop points • formant bounds<br>
+    &nbsp;&nbsp;↓<br>
+    <span style="color:#E9C46A;">MAP</span> zone boundaries (midpoint rule) • velocity layers (4 default) • MPE expression routes<br>
+    &nbsp;&nbsp;↓<br>
+    <span style="color:#E9C46A;">ENHANCE</span> round-robin micro-variation • fade guards • DC removal<br>
+    &nbsp;&nbsp;↓<br>
+    <span style="color:#E9C46A;">NORMALIZE</span> LUFS per category (drums −14, pads −18) • true-peak −0.3 dBTP • TPDF dither<br>
+    &nbsp;&nbsp;↓<br>
+    <span style="color:#E9C46A;">PACKAGE</span> XPM program (keygroup or drum) + WAVs + Manifest.xml → .xpn archive<br>
+    &nbsp;&nbsp;↓<br>
+    <span style="color:#48CAE4;">PEARL READY</span> → transfer to MPC Live/III/One+ via USB or MPC Control
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <h3>2. MPE Expression Mapping (Phase 1A — Critical)</h3>
+  <div style="background:rgba(233,196,106,0.05); border:1px solid rgba(233,196,106,0.15); border-radius:6px; padding:16px;">
+    <p style="font-size:12px; opacity:0.7; margin-bottom:12px;">Every pearl ships with MPE expression pre-wired. The Seaboard plays it immediately.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:12px;">
+      <div>
+        <div style="color:#E9C46A; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Melodic Defaults</div>
+        <div style="line-height:2;">
+          <strong>Slide (CC74)</strong> → Filter cutoff sweep<br>
+          <strong>Pressure</strong> → Filter resonance + amp boost<br>
+          <strong>Pitch bend</strong> → ±48 semitones (Seaboard range)<br>
+          <strong>Velocity</strong> → Amplitude + brightness (spectral tilt)
+        </div>
+      </div>
+      <div>
+        <div style="color:#E9C46A; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Drum Defaults</div>
+        <div style="line-height:2;">
+          <strong>Slide (CC74)</strong> → Pitch offset (±2 semi)<br>
+          <strong>Pressure</strong> → Choke speed<br>
+          <strong>Pitch bend</strong> → Disabled (one-shots)<br>
+          <strong>Velocity</strong> → Amplitude + saturation drive
+        </div>
+      </div>
+    </div>
+    <p style="font-size:11px; opacity:0.4; margin-top:12px;">Expression defaults are category-aware. Manual override available in Phase 1C Design Mode.</p>
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <h3>3. XPN Output Spec (MPC Hardware Compatibility)</h3>
+  <div style="font-size:12px; line-height:2.0; padding:16px; background:rgba(255,255,255,0.02); border-radius:6px;">
+    <strong>Keygroup programs:</strong><br>
+    <span style="opacity:0.6;">• KeyTrack=True (always) • RootNote from autocorrelation (not hardcoded 60)</span><br>
+    <span style="opacity:0.6;">• VelStart=0 on empty layers (MPC requirement) • Up to 4 velocity layers</span><br>
+    <span style="opacity:0.6;">• MPE: slide→CC74 filter, pressure→aftertouch filter depth, bend range=48</span><br><br>
+    <strong>Drum programs:</strong><br>
+    <span style="opacity:0.6;">• GM note mapping (kick=C2, snare=D2, hat=F#2, clap=D#2)</span><br>
+    <span style="opacity:0.6;">• Choke groups: closed hat mutes open hat (auto-detected)</span><br>
+    <span style="opacity:0.6;">• One-shot=True for all drum hits • Mute groups for hats</span><br><br>
+    <strong>WAV specs:</strong><br>
+    <span style="opacity:0.6;">• 44.1kHz or 48kHz (match source, never upsample) • 24-bit preferred, 16-bit with TPDF dither</span><br>
+    <span style="opacity:0.6;">• LUFS normalized per category • True-peak ceiling −0.3 dBTP</span><br><br>
+    <strong>Tested on:</strong> MPC Live II, MPC III, MPC One+, MPC Control (your hardware fleet)
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <h3>4. Window Layout (900×660)</h3>
+  <div class="mockup">
+    <div class="mockup-header" style="background:#E9C46A; color:#1A1A1A; display:flex; justify-content:space-between; align-items:center;">
+      <span>OUTSHINE</span>
+      <span style="font-size:10px; opacity:0.6;">Pearl & Export</span>
+    </div>
+    <div class="mockup-body" style="display:flex; min-height:380px;">
+      <!-- Left: Grains -->
+      <div style="width:260px; border-right:1px solid rgba(255,255,255,0.07); padding:12px; display:flex; flex-direction:column; gap:6px;">
+        <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.4;">GRAINS</div>
+        <div style="background:rgba(233,196,106,0.08); border:1px solid rgba(233,196,106,0.15); border-radius:4px; padding:8px;">
+          <div style="font-size:11px; color:#E9C46A;">Rhodes_C3.wav</div>
+          <div style="font-size:10px; opacity:0.4;">Keys • C3 • 2.4s • 44.1kHz</div>
+        </div>
+        <div style="background:rgba(233,196,106,0.08); border:1px solid rgba(233,196,106,0.15); border-radius:4px; padding:8px;">
+          <div style="font-size:11px; color:#E9C46A;">Rhodes_C4.wav</div>
+          <div style="font-size:10px; opacity:0.4;">Keys • C4 • 2.1s • 44.1kHz</div>
+        </div>
+        <div style="background:rgba(233,196,106,0.08); border:1px solid rgba(233,196,106,0.15); border-radius:4px; padding:8px;">
+          <div style="font-size:11px; color:#E9C46A;">Rhodes_C5.wav</div>
+          <div style="font-size:10px; opacity:0.4;">Keys • C5 • 1.8s • 44.1kHz</div>
+        </div>
+        <div style="flex:1;"></div>
+        <div style="text-align:center; opacity:0.3; font-size:10px;">3 grains • 6.3s total</div>
+        <button class="mock-button" style="font-size:10px;">+ Add Grains</button>
+      </div>
+
+      <!-- Right: Pearl Preview -->
+      <div style="flex:1; padding:16px; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.4;">PEARL PREVIEW</div>
+          <div style="font-size:10px; color:#E9C46A;">Auto Mode</div>
+        </div>
+
+        <!-- Classification -->
+        <div style="display:flex; gap:16px; font-size:11px;">
+          <div><span style="opacity:0.4;">Type:</span> <span style="color:#E9C46A;">Melodic Keys</span></div>
+          <div><span style="opacity:0.4;">Zones:</span> 3</div>
+          <div><span style="opacity:0.4;">Vel layers:</span> 4</div>
+          <div><span style="opacity:0.4;">RR:</span> 2×</div>
+        </div>
+
+        <!-- Zone Map -->
+        <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:4px; padding:10px;">
+          <div style="font-size:10px; opacity:0.3; margin-bottom:6px;">ZONE MAP</div>
+          <div style="display:flex; height:36px; gap:2px;">
+            <div style="flex:2; background:rgba(72,202,228,0.12); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:10px; font-family:monospace;">C1 — B3 <span style="opacity:0.4; margin-left:4px;">(C3 root)</span></div>
+            <div style="flex:2; background:rgba(72,202,228,0.20); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:10px; font-family:monospace;">C4 — B4 <span style="opacity:0.4; margin-left:4px;">(C4 root)</span></div>
+            <div style="flex:3; background:rgba(72,202,228,0.12); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:10px; font-family:monospace;">C5 — C8 <span style="opacity:0.4; margin-left:4px;">(C5 root)</span></div>
+          </div>
+        </div>
+
+        <!-- MPE -->
+        <div style="background:rgba(233,196,106,0.05); border:1px solid rgba(233,196,106,0.12); border-radius:4px; padding:10px;">
+          <div style="font-size:10px; color:#E9C46A; margin-bottom:6px;">MPE EXPRESSION</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:11px;">
+            <div><span style="opacity:0.4;">Slide:</span> Filter cutoff</div>
+            <div><span style="opacity:0.4;">Pressure:</span> Filter depth</div>
+            <div><span style="opacity:0.4;">Bend:</span> ±48 semi</div>
+            <div><span style="opacity:0.4;">Velocity:</span> Amp + brightness</div>
+          </div>
+        </div>
+
+        <!-- Naming -->
+        <div style="display:flex; gap:8px; align-items:center; margin-top:auto;">
+          <div style="font-size:10px; opacity:0.4;">Pearl name:</div>
+          <input class="mock-input" value="Rhodes Pearl" style="flex:1; font-size:11px;">
+        </div>
+
+        <!-- Export -->
+        <div style="display:flex; gap:8px; align-items:center;">
+          <select class="mock-input" style="width:140px; font-size:11px;">
+            <option>XPN Pack</option>
+            <option>WAV Folder</option>
+            <option>XPM Only</option>
+          </select>
+          <div style="flex:1;"></div>
+          <button class="mock-button" style="background:#E9C46A; color:#1A1A1A; font-weight:600; padding:8px 20px;">Pearl & Export</button>
+        </div>
+
+        <!-- Progress -->
+        <div style="height:3px; background:rgba(255,255,255,0.05); border-radius:2px; overflow:hidden;">
+          <div style="width:0%; height:100%; background:#E9C46A; border-radius:2px; transition:width 0.3s;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <h3>5. What Phase 1A Delivers</h3>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div style="background:rgba(72,202,228,0.05); border:1px solid rgba(72,202,228,0.15); border-radius:6px; padding:16px;">
+      <div style="color:#48CAE4; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">INCLUDED</div>
+      <div style="font-size:12px; line-height:2.0;">
+        ✓ Drag-drop WAV/folder/XPN ingest<br>
+        ✓ Auto classification (melodic/drum/pad/fx)<br>
+        ✓ Root note detection (autocorrelation)<br>
+        ✓ Multi-zone keygroup mapping<br>
+        ✓ 4 velocity layers (amplitude + filter)<br>
+        ✓ 2× round-robin micro-variation<br>
+        ✓ MPE expression pre-wired (Seaboard-ready)<br>
+        ✓ LUFS normalization per category<br>
+        ✓ XPN export (MPC hardware-ready)<br>
+        ✓ Oyster shell empty state + drag UX<br>
+        ✓ Sidebar mini-panel in EXPORT tab
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:6px; padding:16px;">
+      <div style="opacity:0.4; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">DEFERRED TO PHASE 1B/1C</div>
+      <div style="font-size:12px; line-height:2.0; opacity:0.4;">
+        ○ Rebirth Mode (engine processing) → 1B<br>
+        ○ XPN upgrade pipeline → 1B<br>
+        ○ Spectral velocity shaping → 1B<br>
+        ○ Manual zone editing (Design Mode) → 1C<br>
+        ○ Full expression routing UI → 1C<br>
+        ○ Contextual presets (Natural/Ghost) → 1C<br>
+        ○ Composite multi-source keygroups → 1C<br>
+        ○ Formant detection (LPC) → 1C
+      </div>
+    </div>
+  </div>
+</div>
+</content>

@@ -1,0 +1,10 @@
+**Coupling of the Week** 🔗
+
+**Drum Teaches Bass**
+`ONSET` (Amp->Filter, 0.50) → `OVERBITE`
+
+ONSET's kick transients drive three simultaneous processes on OVERBITE: the filter opens (making the bass briefly brighter on every hit), FM depth increases (ad…
+
+**This week:** 9467 new presets | Spotlight: *Opcode Tokyo City Pop*
+
+Full recipe on Reddit → reddit.com/r/XO_OX

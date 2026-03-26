@@ -45,13 +45,15 @@ inline const juce::StringArray validEngineNames {
     // BROTH Quad Collection
     "Overwash", "Overworn", "Overflow", "Overcast",
     // FUSION Quad Collection
-    "Oasis", "Oddfellow", "Onkolo", "Opcode",
+    "Okeanos", "Oddfellow", "Onkolo", "Opcode",
     // Membrane Collection
     "Osmosis",
     // Love Triangle Circuit Synth
     "Oxytocin",
     // Panoramic visionary synth
     "Outlook",
+    // Dual Engine Integration
+    "Oasis", "Outflow",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -99,6 +101,8 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         // Phase 4 engine aliases
         { "XOverlap",    "Overlap"   },
         { "XOutwit",     "Outwit"    },
+        // FUSION Quad rename
+        { "Oasis",       "Okeanos"   },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
@@ -192,7 +196,7 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Overflow",    "flow_"   },
         { "Overcast",    "cast_"   },
         // FUSION Quad Collection
-        { "Oasis",       "oasis_"  },
+        { "Okeanos",     "oasis_"  },  // Frozen prefix stays oasis_ (was "Oasis" before rename)
         { "Oddfellow",   "oddf_"   },
         { "Onkolo",      "onko_"   },
         { "Opcode",      "opco_"   },
@@ -202,6 +206,9 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Oxytocin",    "oxy"     },
         // Panoramic Visionary Synth
         { "Outlook",     "look_"   },
+        // Dual Engine Integration
+        { "Oasis",       "oas_"    },
+        { "Outflow",     "out_"    },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

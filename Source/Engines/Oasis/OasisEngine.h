@@ -5,53 +5,33 @@
 //  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
-//      XOasis is the Rhodes electric piano that traveled the Spice Route —
-//      from Harold Rhodes' Army rehabilitation workshop through Chicago jazz
-//      clubs, across the Atlantic to Tokyo kissaten, down to Lagos Afrobeat
-//      sessions, and back through neo-soul and lo-fi. Every note carries
-//      the warm bell-tone of the tine, shaped by every tradition it passed
-//      through. A traveler's instrument. An instrument that belongs everywhere
-//      because it is made of fundamentals everyone can understand.
+//      XOasis is an entropy-driven bioluminescent ecosystem. It actively
+//      monitors the player's rhythmic and harmonic slop, dynamically shifting
+//      from rigid sub-bass to shimmering biophonic granular swarms. Perfect
+//      sequencing starves the ecosystem; human slop feeds it. The engine
+//      lives between the grid and the garden.
 //
 //  ENGINE CONCEPT:
-//      A physical model of the Rhodes tine-and-pickup system. A hammer
-//      strikes a tine, the tine vibrates near a magnetic pickup, and the
-//      electromagnetic induction captures the vibration. The warm bell-tone
-//      comes from the tine's characteristic partial distribution — dominant
-//      fundamental, clear third partial, rapidly decaying upper partials.
-//      Velocity controls bark (asymmetric clipping from the amp stage).
-//      The migration parameter opens the engine to cultural influences
-//      from coupled engines via the Spectral Fingerprint Cache.
+//      Hybrid architecture: subtractive sub-bass oscillator feeds a resonator
+//      bank and a granular canopy delay network. An entropy analyzer measures
+//      timing deviations from expected MIDI patterns. High entropy splinters
+//      sub-bass partials into the delay network (Mycelial Morphing). Voice
+//      stealing dumps harmonic energy into an ASMR noise floor (Harmonic
+//      Culling). Ecological Memory means the ecosystem evolves — perfect
+//      playing makes it rigid, imperfect playing makes it bloom.
 //
-//  SOURCE TRADITION TEST:
-//      Must pass as a playable jazz EP in a straight-ahead context. Can
-//      someone play McCoy Tyner's "Afro Blue" voicings and have it feel right?
-//
-//  FUSION QUAD — KITCHEN COLLECTION:
-//      Part of the 4-engine FUSION family. Unlocked via the 5th-slot mechanic
-//      when all 4 Kitchen engines (XOven, XOchre, XObelisk, XOpaline) are loaded.
-//      Migratory coupling via Cultural Artifact Bus. Spectral Fingerprint Cache
-//      enables coupling without audio routing to slot 5.
-//
-//  Accent: Cardamom Gold #C49B3F
-//  Parameter prefix: oasis_
+//  Accent: Bioluminescent Cyan #00FFFF
+//  Parameter prefix: oas_
 //
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
-#include "../../Core/PolyAftertouch.h"
-#include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/CytomicSVF.h"
 #include "../../DSP/StandardLFO.h"
-#include "../../DSP/FilterEnvelope.h"
-#include "../../DSP/GlideProcessor.h"
-#include "../../DSP/ParameterSmoother.h"
-#include "../../DSP/VoiceAllocator.h"
 #include "../../DSP/PitchBendUtil.h"
-#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
-#include <algorithm>
 
 namespace xolokun {
 
@@ -328,358 +308,440 @@ struct OasisVoice
 class OasisEngine : public SynthEngine
 {
 public:
-    static constexpr int kMaxVoices = 8;
+    OasisEngine() = default;
 
+    //-- Identity --------------------------------------------------------------
     juce::String getEngineId() const override { return "Oasis"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFC49B3F); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFF00FFFF); }
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
-    //--------------------------------------------------------------------------
-    // Spectral Fingerprint — FUSION 5th-slot coupling metadata
-    //--------------------------------------------------------------------------
-    SpectralFingerprint getSpectralFingerprint() const noexcept
+    int getActiveVoiceCount() const override
     {
-        SpectralFingerprint fp;
-        // Populate from current voice state
-        int voiceCount = 0;
-        float centroidNum = 0.0f, centroidDen = 0.0f;
-        float rmsSum = 0.0f;
-
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            const auto& v = voices[i];
-            if (!v.active) continue;
-            voiceCount++;
-
-            float freq = v.glide.getFreq();
-            float amp = v.ampEnv.getLevel();
-            rmsSum += amp * amp;
-
-            if (voiceCount <= 8)
-            {
-                fp.modalFrequencies[voiceCount - 1] = freq;
-                fp.modalAmplitudes[voiceCount - 1] = amp;
-            }
-            centroidNum += freq * amp;
-            centroidDen += amp;
-        }
-
-        fp.activeVoiceCount = static_cast<float>(voiceCount);
-        fp.rmsLevel = std::sqrt (rmsSum / std::max (voiceCount, 1));
-        fp.spectralCentroid = (centroidDen > 0.001f) ? centroidNum / centroidDen : 1000.0f;
-        fp.impedanceEstimate = 0.3f;  // Rhodes: moderate impedance (tine metal)
-        fp.temperature = fp.rmsLevel;
-        fp.harmonicDensity = 0.85f;   // Rhodes: highly harmonic
-        fp.fundamentalFreq = (voiceCount > 0) ? fp.modalFrequencies[0] : 440.0f;
-        fp.attackTransience = attackTransientTracker;
-
-        return fp;
+        int count = 0;
+        for (int v = 0; v < kMaxVoices; ++v)
+            if (voices_[v].active) count++;
+        return count;
     }
 
+    //-- Lifecycle -------------------------------------------------------------
     void prepare (double sampleRate, int maxBlockSize) override
     {
-        sr = sampleRate;
-        srf = static_cast<float>(sr);
+        sr_ = sampleRate;
+        srF_ = static_cast<float> (sampleRate);
+        blockSize_ = maxBlockSize;
 
-        for (int i = 0; i < kMaxVoices; ++i)
+        // Canopy delay network (1 second at max sample rate)
+        int maxDelaySamples = static_cast<int> (sr_) + 1;
+        for (int t = 0; t < kCanopyTaps; ++t)
         {
-            voices[i].reset();
-            voices[i].tine.prepare (srf);
-            voices[i].amp.prepare (srf);   // DC blocker coefficient derived from sampleRate
-            voices[i].ampEnv.prepare (srf);
-            voices[i].filterEnv.prepare (srf);
-            voices[i].tremoloLFO.setShape (StandardLFO::Sine);
-            voices[i].tremoloLFO.reset (static_cast<float>(i) / static_cast<float>(kMaxVoices));
+            canopyBufL_[t].assign (static_cast<size_t> (maxDelaySamples), 0.0f);
+            canopyBufR_[t].assign (static_cast<size_t> (maxDelaySamples), 0.0f);
+            canopySize_[t] = maxDelaySamples;
+            canopyWritePos_[t] = 0;
         }
 
-        smoothWarmth.prepare (srf);
-        smoothBell.prepare (srf);
-        smoothBrightness.prepare (srf);
-        smoothTremRate.prepare (srf);
-        smoothTremDepth.prepare (srf);
-        smoothMigration.prepare (srf);
+        // Set tap delay times (prime-based, 30–400ms)
+        static constexpr float tapDelaysMs[kCanopyTaps] = {
+            31.0f, 67.0f, 113.0f, 179.0f, 251.0f, 353.0f
+        };
+        for (int t = 0; t < kCanopyTaps; ++t)
+            canopyDelaySamples_[t] = static_cast<int> (tapDelaysMs[t] * 0.001f * srF_);
 
-        prepareSilenceGate (sr, maxBlockSize, 500.0f);  // EP has sustain tails
+        // Filters
+        subFilter_.setMode (CytomicSVF::Mode::LowPass);
+        subFilter_.setCoefficients (200.0f, 0.707f, srF_);
+        subFilter_.reset();
+
+        canopyLP_.setMode (CytomicSVF::Mode::LowPass);
+        canopyLP_.setCoefficients (8000.0f, 0.5f, srF_);
+        canopyLP_.reset();
+
+        resonatorBank_.setMode (CytomicSVF::Mode::BandPass);
+        resonatorBank_.setCoefficients (400.0f, 4.0f, srF_);
+        resonatorBank_.reset();
+
+        // LFOs
+        biolumLFO_.setShape (StandardLFO::Sine);
+        biolumLFO_.setRate (0.08f, srF_);  // D005: sub-audible breathing
+        biolumLFO_.reset();
+
+        tidalLFO_.setShape (StandardLFO::Triangle);
+        tidalLFO_.setRate (0.003f, srF_);  // Ultra-slow ecosystem tide
+        tidalLFO_.reset();
+
+        // Entropy state
+        entropy_ = 0.0f;
+        ecologicalHealth_ = 0.5f;
+        culledEnergy_ = 0.0f;
+        lastNoteOnTime_ = 0;
+        expectedInterval_ = 0;
+        sampleCounter_ = 0;
+        noiseRng_ = 42u;
+
+        // Voices
+        for (int v = 0; v < kMaxVoices; ++v)
+            voices_[v] = {};
+
+        // Coupling state
+        lastSampleL_ = lastSampleR_ = 0.0f;
+        extFilterMod_ = 0.0f;
+        extPitchMod_ = 0.0f;
+        aftertouch_ = 0.0f;
+        modWheel_ = 0.0f;
+        pitchBendNorm_ = 0.0f;
+
+        // Silence gate: 500ms (reverb-tail category due to canopy delay)
+        silenceGate.prepare (sr_, maxBlockSize);
+        silenceGate.setHoldTime (500.0f);
     }
 
     void releaseResources() override {}
 
     void reset() override
     {
-        for (auto& v : voices) v.reset();
-        pitchBendNorm = 0.0f;
-        modWheelAmount = 0.0f;
-        aftertouchAmount = 0.0f;
-        attackTransientTracker = 0.0f;
-    }
-
-    float getSampleForCoupling (int channel, int sampleIndex) const override
-    {
-        (void) sampleIndex;
-        return (channel == 0) ? couplingCacheL : couplingCacheR;
-    }
-
-    void applyCouplingInput (CouplingType type, float amount,
-                            const float* buf, int numSamples) override
-    {
-        if (!buf || numSamples <= 0) return;
-        float val = buf[numSamples - 1] * amount;
-        switch (type) {
-            case CouplingType::AmpToFilter:  couplingFilterMod += val * 2000.0f; break;
-            case CouplingType::LFOToPitch:   couplingPitchMod += val * 2.0f; break;
-            case CouplingType::AmpToPitch:   couplingPitchMod += val; break;
-            case CouplingType::EnvToMorph:   couplingWarmthMod += val; break;
-            default: break;
+        for (int t = 0; t < kCanopyTaps; ++t)
+        {
+            std::fill (canopyBufL_[t].begin(), canopyBufL_[t].end(), 0.0f);
+            std::fill (canopyBufR_[t].begin(), canopyBufR_[t].end(), 0.0f);
+            canopyWritePos_[t] = 0;
         }
+        subFilter_.reset();
+        canopyLP_.reset();
+        resonatorBank_.reset();
+        biolumLFO_.reset();
+        tidalLFO_.reset();
+        entropy_ = 0.0f;
+        ecologicalHealth_ = 0.5f;
+        culledEnergy_ = 0.0f;
+        lastSampleL_ = lastSampleR_ = 0.0f;
+        for (int v = 0; v < kMaxVoices; ++v)
+            voices_[v] = {};
     }
 
-    //==========================================================================
-    // Render
-    //==========================================================================
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
+    //-- Audio -----------------------------------------------------------------
+    void renderBlock (juce::AudioBuffer<float>& buffer,
+                      juce::MidiBuffer& midi,
                       int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
-        for (const auto metadata : midi)
+
+        // 1. Parse MIDI
+        for (const auto& meta : midi)
         {
-            const auto msg = metadata.getMessage();
-            if (msg.isNoteOn())          { noteOn (msg.getNoteNumber(), msg.getFloatVelocity()); wakeSilenceGate(); }
-            else if (msg.isNoteOff())    noteOff (msg.getNoteNumber());
-            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
-            else if (msg.isChannelPressure()) aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
+            auto msg = meta.getMessage();
+            if (msg.isNoteOn())
+            {
+                silenceGate.wake();
+
+                // Entropy analysis: measure timing deviation from expected grid
+                int timeSinceLastNote = sampleCounter_ - lastNoteOnTime_;
+                if (expectedInterval_ > 0)
+                {
+                    float deviation = std::fabs (static_cast<float> (timeSinceLastNote - expectedInterval_))
+                                      / static_cast<float> (expectedInterval_ + 1);
+                    // Smooth entropy tracking
+                    entropy_ = entropy_ * 0.85f + deviation * 0.15f;
+                    entropy_ = clamp (entropy_, 0.0f, 1.0f);
+                }
+                expectedInterval_ = timeSinceLastNote;
+                lastNoteOnTime_ = sampleCounter_;
+
+                // Ecological memory: slop feeds health, perfection starves it
+                ecologicalHealth_ = ecologicalHealth_ * 0.95f + entropy_ * 0.05f;
+                ecologicalHealth_ = clamp (ecologicalHealth_, 0.05f, 1.0f);
+
+                // Allocate voice (steal oldest if full)
+                int slot = -1;
+                for (int v = 0; v < kMaxVoices; ++v)
+                {
+                    if (!voices_[v].active) { slot = v; break; }
+                }
+                if (slot < 0)
+                {
+                    // Voice stealing — Harmonic Culling: dump energy into ASMR floor
+                    slot = 0;
+                    int oldest = voices_[0].noteAge;
+                    for (int v = 1; v < kMaxVoices; ++v)
+                    {
+                        if (voices_[v].noteAge > oldest)
+                        {
+                            oldest = voices_[v].noteAge;
+                            slot = v;
+                        }
+                    }
+                    culledEnergy_ += voices_[slot].amplitude * 0.5f;
+                }
+
+                auto& voice = voices_[slot];
+                voice.active = true;
+                voice.note = msg.getNoteNumber();
+                voice.velocity = msg.getFloatVelocity();
+                voice.phase = 0.0;
+                voice.amplitude = msg.getFloatVelocity();
+                voice.noteAge = 0;
+                float freq = 440.0f * std::pow (2.0f, (voice.note - 69) / 12.0f);
+                voice.phaseDelta = freq / sr_;
+            }
+            else if (msg.isNoteOff())
+            {
+                int noteNum = msg.getNoteNumber();
+                for (int v = 0; v < kMaxVoices; ++v)
+                {
+                    if (voices_[v].active && voices_[v].note == noteNum)
+                    {
+                        voices_[v].releasing = true;
+                        break;
+                    }
+                }
+            }
+            else if (msg.isAftertouch() || msg.isChannelPressure())
+            {
+                aftertouch_ = msg.isAftertouch()
+                    ? msg.getAfterTouchValue() / 127.0f
+                    : msg.getChannelPressureValue() / 127.0f;
+            }
             else if (msg.isController() && msg.getControllerNumber() == 1)
-                modWheelAmount = msg.getControllerValue() / 127.0f;
+            {
+                modWheel_ = msg.getControllerValue() / 127.0f;
+            }
+            else if (msg.isPitchWheel())
+            {
+                pitchBendNorm_ = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+            }
         }
 
-        if (isSilenceGateBypassed()) {
-            buffer.clear (0, numSamples);
-            couplingCacheL = couplingCacheR = 0.0f;
+        // 2. Silence gate bypass
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
             return;
         }
 
-        auto loadP = [] (std::atomic<float>* p, float def) {
-            return p ? p->load (std::memory_order_relaxed) : def;
-        };
+        // 3. Read parameters (ParamSnapshot pattern)
+        float pEntropySens  = pEntropySensParam_  ? pEntropySensParam_->load()  : 0.5f;
+        float pBreeze       = pBreezeParam_       ? pBreezeParam_->load()       : 0.2f;
+        float pSwarmDensity = pSwarmDensityParam_ ? pSwarmDensityParam_->load() : 0.4f;
+        float pLagoonDepth  = pLagoonDepthParam_  ? pLagoonDepthParam_->load()  : 0.3f;
+        float pSubDrive     = pSubDriveParam_     ? pSubDriveParam_->load()     : 0.3f;
+        float pResonatorQ   = pResonatorQParam_   ? pResonatorQParam_->load()   : 4.0f;
+        float pCullDecay    = pCullDecayParam_    ? pCullDecayParam_->load()    : 0.995f;
+        float pCanopyFB     = pCanopyFBParam_     ? pCanopyFBParam_->load()     : 0.4f;
+        float pFilterCutoff = pFilterCutoffParam_ ? pFilterCutoffParam_->load() : 2000.0f;
+        float pFilterEnvAmt = pFilterEnvAmtParam_ ? pFilterEnvAmtParam_->load() : 0.5f;
 
-        const float pWarmth      = loadP (paramWarmth, 0.3f);
-        const float pBell        = loadP (paramBell, 0.5f);
-        const float pBrightness  = loadP (paramBrightness, 6000.0f);
-        const float pTremRate    = loadP (paramTremRate, 4.0f);
-        const float pTremDepth   = loadP (paramTremDepth, 0.0f);
-        const float pAttack      = loadP (paramAttack, 0.005f);
-        const float pDecay       = loadP (paramDecay, 0.8f);
-        const float pSustain     = loadP (paramSustain, 0.6f);
-        const float pRelease     = loadP (paramRelease, 0.5f);
-        const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.4f);
-        const float pBendRange   = loadP (paramBendRange, 2.0f);
-        const float pMigration   = loadP (paramMigration, 0.0f);
-        const float pStereoWidth = loadP (paramStereoWidth, 0.5f);
+        // Macros
+        float pM1 = pMacroCharacterParam_ ? pMacroCharacterParam_->load() : 0.0f;
+        float pM2 = pMacroMovementParam_  ? pMacroMovementParam_->load()  : 0.0f;
+        float pM3 = pMacroCouplingParam_  ? pMacroCouplingParam_->load()  : 0.0f;
+        float pM4 = pMacroSpaceParam_     ? pMacroSpaceParam_->load()     : 0.0f;
 
-        const float macroChar    = loadP (paramMacroCharacter, 0.0f);
-        const float macroMove    = loadP (paramMacroMovement, 0.0f);
-        const float macroCoup    = loadP (paramMacroCoupling, 0.0f);
-        const float macroSpace   = loadP (paramMacroSpace, 0.0f);
+        // Macro → parameter mapping
+        // M1 CHARACTER → entropy sensitivity + sub drive
+        pEntropySens = clamp (pEntropySens + pM1 * 0.4f, 0.0f, 1.0f);
+        pSubDrive    = clamp (pSubDrive + pM1 * 0.3f, 0.0f, 1.0f);
 
-        // D006: mod wheel -> warmth, aftertouch -> brightness
-        float effectiveWarmth = std::clamp (pWarmth + macroChar * 0.6f
-                                + modWheelAmount * 0.4f + couplingWarmthMod, 0.0f, 1.0f);
-        float effectiveBright = std::clamp (pBrightness + macroMove * 4000.0f
-                                + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
-        float effectiveTremDepth = std::clamp (pTremDepth + macroMove * 0.3f, 0.0f, 1.0f);
-        float effectiveMigration = std::clamp (pMigration + macroCoup * 0.5f, 0.0f, 1.0f);
+        // M2 MOVEMENT → breeze (ASMR noise) + bioluminescent LFO depth
+        pBreeze = clamp (pBreeze + pM2 * 0.5f, 0.0f, 1.0f);
 
-        smoothWarmth.set (effectiveWarmth);
-        smoothBell.set (pBell);
-        smoothBrightness.set (effectiveBright);
-        smoothTremRate.set (pTremRate);
-        smoothTremDepth.set (effectiveTremDepth);
-        smoothMigration.set (effectiveMigration);
+        // M3 COUPLING → swarm density
+        pSwarmDensity = clamp (pSwarmDensity + pM3 * 0.5f, 0.0f, 1.0f);
 
-        couplingFilterMod = 0.0f;
-        couplingPitchMod = 0.0f;
-        couplingWarmthMod = 0.0f;
+        // M4 SPACE → lagoon depth (comb filter feedback)
+        pLagoonDepth = clamp (pLagoonDepth + pM4 * 0.5f, 0.0f, 1.0f);
 
-        const float bendSemitones = pitchBendNorm * pBendRange;
+        // Expression: aftertouch → entropy sensitivity (D006)
+        pEntropySens = clamp (pEntropySens + aftertouch_ * 0.3f, 0.0f, 1.0f);
+        // Mod wheel → canopy feedback / swarm (D006)
+        pCanopyFB = clamp (pCanopyFB + modWheel_ * 0.4f, 0.0f, 0.95f);
 
-        // LFO params once per block
-        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f);
-        const float lfo1Depth = loadP (paramLfo1Depth, 0.0f);
-        const int   lfo1Shape = static_cast<int>(loadP (paramLfo1Shape, 0.0f));
-        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f);
-        const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
-        const int   lfo2Shape = static_cast<int>(loadP (paramLfo2Shape, 0.0f));
+        // Coupling modulation
+        pFilterCutoff = clamp (pFilterCutoff + extFilterMod_, 60.0f, 16000.0f);
 
-        for (auto& voice : voices)
-        {
-            if (!voice.active) continue;
-            voice.lfo1.setRate (lfo1Rate, srf);
-            voice.lfo1.setShape (lfo1Shape);
-            voice.lfo2.setRate (lfo2Rate, srf);
-            voice.lfo2.setShape (lfo2Shape);
-        }
+        // Effective entropy (sensitivity-scaled)
+        float ent = entropy_ * pEntropySens;
+
+        // Update resonator bank frequency based on ecological health
+        float resBankFreq = 200.0f + ecologicalHealth_ * 800.0f;
+        resonatorBank_.setCoefficients (resBankFreq, pResonatorQ, srF_);
 
         float* outL = buffer.getWritePointer (0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
 
-        // Decay attack transient tracker (~50ms decay)
-        float transientDecay = std::exp (-1.0f / (srf * 0.05f));
-
-        for (int s = 0; s < numSamples; ++s)
+        for (int i = 0; i < numSamples; ++i)
         {
-            float warmthNow   = smoothWarmth.process();
-            float bellNow     = smoothBell.process();
-            float brightNow   = smoothBrightness.process();
-            float tremRateNow = smoothTremRate.process();
-            float tremDepthNow = smoothTremDepth.process();
-            float migrationNow = smoothMigration.process();
+            sampleCounter_++;
 
-            float mixL = 0.0f, mixR = 0.0f;
+            // LFO modulation
+            float biolumMod = biolumLFO_.process();
+            float tidalMod = tidalLFO_.process();
 
-            for (auto& voice : voices)
+            // Pitch bend ratio for this sample
+            float bendRatio = PitchBendUtil::semitonesToFreqRatio (pitchBendNorm_ * 2.0f);
+
+            // === VOICE SYNTHESIS ===
+            float subMix = 0.0f;
+            float canopySendL = 0.0f;
+            float canopySendR = 0.0f;
+
+            for (int v = 0; v < kMaxVoices; ++v)
             {
+                auto& voice = voices_[v];
                 if (!voice.active) continue;
 
-                float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
+                voice.noteAge++;
 
-                // LFO1 -> pitch vibrato (subtle, +-50 cents at full depth)
-                float lfo1Val = voice.lfo1.process() * lfo1Depth;
-                freq *= PitchBendUtil::semitonesToFreqRatio (lfo1Val * 0.5f);
-
-                // LFO2 -> tremolo depth modulation
-                float lfo2Val = voice.lfo2.process() * lfo2Depth;
-
-                // Tine synthesis
-                float tineOut = voice.tine.process (freq);
-
-                // Pickup model — bell param controls tine-tip vs base position
-                float pickupOut = voice.pickup.process (tineOut, bellNow);
-
-                // Amp stage — warmth and velocity-dependent bark
-                float ampOut = voice.amp.process (pickupOut, warmthNow, voice.velocity);
-
-                // Tremolo (Rhodes' optional built-in stereo vibrato)
-                voice.tremoloLFO.setRate (tremRateNow, srf);
-                float tremVal = voice.tremoloLFO.process();
-                float tremGain = 1.0f - tremDepthNow * 0.5f * (1.0f + tremVal);
-
-                // Migration modulation: when coupled, absorb spectral characteristics
-                // from other engines. This blends the tine character subtly.
-                if (migrationNow > 0.01f)
+                // Envelope
+                if (voice.releasing)
                 {
-                    // Migration adds subtle harmonic complexity (even harmonics)
-                    float migrationHarmonics = fastSin (freq * 2.0f / srf * 6.28318530718f
-                                                        * voice.tine.phases[0]) * migrationNow * 0.15f;
-                    ampOut += migrationHarmonics;
+                    voice.amplitude *= 0.9995f;
+                    voice.amplitude = flushDenormal (voice.amplitude);
+                    if (voice.amplitude < 0.0001f) { voice.active = false; continue; }
                 }
 
-                // Amplitude envelope
-                float ampLevel = voice.ampEnv.process();
-                if (!voice.ampEnv.isActive()) { voice.active = false; continue; }
+                // Phase accumulation with pitch bend
+                double freq = 440.0 * std::pow (2.0, (voice.note - 69) / 12.0);
+                voice.phaseDelta = freq * static_cast<double> (bendRatio) / sr_;
+                voice.phase += voice.phaseDelta;
+                if (voice.phase >= 1.0) voice.phase -= 1.0;
 
-                // Filter envelope + brightness
-                float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
-                // D001: velocity shapes filter brightness
-                float velBright = voice.velocity * 4000.0f;
-                float cutoff = std::clamp (brightNow + fEnvMod + velBright
-                                + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode (CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients (cutoff, 0.15f, srf);
-                float filtered = voice.svf.processSample (ampOut);
+                float phaseF = static_cast<float> (voice.phase) * 6.28318530718f;
 
-                float output = filtered * ampLevel * tremGain;
+                // Sub-bass: fundamental + sub-octave
+                float rawSub = fastSin (phaseF) + 0.5f * fastSin (phaseF * 0.5f);
 
-                // Stereo: tremolo pans slightly with width parameter
-                float stereoTrem = tremVal * pStereoWidth * 0.3f;
-                mixL += output * (voice.panL + stereoTrem);
-                mixR += output * (voice.panR - stereoTrem);
+                // Power supply sag: low entropy → more sag → warmer distortion
+                float sagAmount = (1.0f - ent) * voice.velocity;
+                float distortedSub = fastTanh (rawSub * (1.0f + sagAmount * pSubDrive * 4.0f));
+
+                // Velocity → filter brightness (D001)
+                float velBright = 0.5f + voice.velocity * 0.5f;
+                float envCutoff = pFilterCutoff * velBright + pFilterEnvAmt * voice.amplitude * 4000.0f;
+                envCutoff = clamp (envCutoff + extFilterMod_, 60.0f, 16000.0f);
+
+                // Mycelial Morphing: entropy splinters sub-bass into canopy
+                float mycelialSend = distortedSub * ent * pEntropySens;
+                float directOut = distortedSub * (1.0f - ent * 0.6f) * voice.amplitude;
+
+                subMix += directOut;
+
+                // Stereo canopy send with voice spread
+                float pan = static_cast<float> (v) / static_cast<float> (kMaxVoices - 1);
+                canopySendL += mycelialSend * (1.0f - pan) * voice.amplitude;
+                canopySendR += mycelialSend * pan * voice.amplitude;
             }
 
-            outL[s] = mixL;
-            if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // Sub-bass filter (with velocity-driven cutoff modulation)
+            float subCutoff = clamp (pFilterCutoff + pFilterEnvAmt * std::fabs (subMix) * 2000.0f
+                                     + biolumMod * 400.0f, 60.0f, 16000.0f);
+            subFilter_.setCoefficients_fast (subCutoff, 0.707f, srF_);
+            float filteredSub = subFilter_.processSample (subMix);
 
-            attackTransientTracker *= transientDecay;
-        }
+            // Resonator bank (entropy-modulated)
+            float resSample = resonatorBank_.processSample (filteredSub) * ent * 0.5f;
 
-        int count = 0;
-        for (const auto& v : voices) if (v.active) ++count;
-        activeVoiceCount.store (count);
-        analyzeForSilenceGate (buffer, numSamples);
-    }
+            // === CANOPY DELAY NETWORK (Granular Swarm) ===
+            float canopyOutL = 0.0f;
+            float canopyOutR = 0.0f;
+            int activeTaps = 1 + static_cast<int> (pSwarmDensity * (kCanopyTaps - 1));
 
-    //==========================================================================
-    // Note management
-    //==========================================================================
-    void noteOn (int note, float vel) noexcept
-    {
-        int idx = VoiceAllocator::findFreeVoice (voices, kMaxVoices);
-        auto& v = voices[idx];
-
-        float freq = 440.0f * std::pow (2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
-
-        v.active = true;
-        v.currentNote = note;
-        v.velocity = vel;
-        v.startTime = ++voiceCounter;
-        v.glide.snapTo (freq);
-
-        // Tine trigger with velocity-dependent bell
-        float bell = paramBell ? paramBell->load() : 0.5f;
-        v.tine.prepare (srf);
-        v.tine.trigger (vel, bell);
-        v.pickup.reset();
-        v.amp.prepare (srf);  // ensure DC blocker coefficient is current for this sample rate
-        v.amp.reset();
-
-        // Amp envelope — Rhodes has fast attack, velocity-sensitive decay
-        float attack = paramAttack ? paramAttack->load() : 0.005f;
-        float decay  = paramDecay  ? paramDecay->load()  : 0.8f;
-        float sustain = paramSustain ? paramSustain->load() : 0.6f;
-        float release = paramRelease ? paramRelease->load() : 0.5f;
-        v.ampEnv.prepare (srf);
-        v.ampEnv.setADSR (attack, decay, sustain, release);
-        v.ampEnv.triggerHard();
-
-        // Filter envelope — velocity-scaled
-        v.filterEnv.prepare (srf);
-        v.filterEnv.setADSR (0.001f, 0.3f + (1.0f - vel) * 0.5f, 0.0f, 0.3f);
-        v.filterEnv.triggerHard();
-
-        v.svf.reset();
-
-        // Stereo placement based on note position (piano-like L-R spread)
-        float pan = static_cast<float>(note - 36) / 60.0f;  // Low notes left, high right
-        pan = std::clamp (pan, 0.0f, 1.0f);
-        v.panL = std::cos (pan * 1.5707963f);
-        v.panR = std::sin (pan * 1.5707963f);
-
-        // Attack transient tracker
-        attackTransientTracker = vel;
-    }
-
-    void noteOff (int note) noexcept
-    {
-        for (auto& v : voices)
-        {
-            if (v.active && v.currentNote == note)
+            for (int t = 0; t < activeTaps; ++t)
             {
-                v.ampEnv.release();
-                v.filterEnv.release();
+                // Read from delay
+                int readPos = (canopyWritePos_[t] - canopyDelaySamples_[t]
+                               + canopySize_[t]) % canopySize_[t];
+                float tapL = canopyBufL_[t][static_cast<size_t> (readPos)];
+                float tapR = canopyBufR_[t][static_cast<size_t> (readPos)];
+
+                // Lagoon: comb filter with feedback (watery resonance)
+                float lagoonFB = pLagoonDepth * 0.85f;
+                float feedL = canopySendL + tapL * lagoonFB;
+                float feedR = canopySendR + tapR * lagoonFB;
+
+                // Write to delay
+                canopyBufL_[t][static_cast<size_t> (canopyWritePos_[t])] = flushDenormal (feedL);
+                canopyBufR_[t][static_cast<size_t> (canopyWritePos_[t])] = flushDenormal (feedR);
+                canopyWritePos_[t] = (canopyWritePos_[t] + 1) % canopySize_[t];
+
+                // Tidal drift modulates tap contribution
+                float tapGain = 1.0f / static_cast<float> (activeTaps);
+                tapGain *= (1.0f + tidalMod * 0.2f);
+                canopyOutL += tapL * tapGain;
+                canopyOutR += tapR * tapGain;
             }
+
+            // Canopy lowpass (smooth the granular taps)
+            float canopyCutoff = 4000.0f + ecologicalHealth_ * 8000.0f + biolumMod * 1000.0f;
+            canopyLP_.setCoefficients_fast (clamp (canopyCutoff, 200.0f, srF_ * 0.49f), 0.5f, srF_);
+            canopyOutL = canopyLP_.processSample (canopyOutL);
+            // Second pass for R uses same filter state which is fine for subtle stereo
+
+            // === ASMR BREEZE (Harmonic Culling noise floor) ===
+            noiseRng_ ^= noiseRng_ << 13;
+            noiseRng_ ^= noiseRng_ >> 17;
+            noiseRng_ ^= noiseRng_ << 5;
+            float noise = (static_cast<float> (noiseRng_ & 0xFFFF) / 32768.0f - 1.0f);
+            float breezeL = noise * (pBreeze * 0.1f + culledEnergy_ * 0.3f) * (1.0f + biolumMod * 0.3f);
+
+            noiseRng_ ^= noiseRng_ << 13;
+            noiseRng_ ^= noiseRng_ >> 17;
+            noiseRng_ ^= noiseRng_ << 5;
+            float noiseR = (static_cast<float> (noiseRng_ & 0xFFFF) / 32768.0f - 1.0f);
+            float breezeR = noiseR * (pBreeze * 0.1f + culledEnergy_ * 0.3f) * (1.0f - biolumMod * 0.3f);
+
+            // Decay culled energy
+            culledEnergy_ *= pCullDecay;
+            culledEnergy_ = flushDenormal (culledEnergy_);
+
+            // === FINAL MIX ===
+            float sampleL = filteredSub + resSample + canopyOutL * pSwarmDensity + breezeL;
+            float sampleR = filteredSub + resSample + canopyOutR * pSwarmDensity + breezeR;
+
+            // Cache for coupling
+            lastSampleL_ = sampleL;
+            lastSampleR_ = sampleR;
+
+            // Accumulate into buffer
+            outL[i] += sampleL;
+            if (outR) outR[i] += sampleR;
+        }
+
+        // Reset coupling mods
+        extFilterMod_ = 0.0f;
+        extPitchMod_ = 0.0f;
+
+        // Silence gate analysis
+        const float* rL = buffer.getReadPointer (0);
+        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr;
+        silenceGate.analyzeBlock (rL, rR, numSamples);
+    }
+
+    //-- Coupling ---------------------------------------------------------------
+    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    {
+        return (channel == 0) ? lastSampleL_ : lastSampleR_;
+    }
+
+    void applyCouplingInput (CouplingType type, float amount,
+                             const float* sourceBuffer, int /*numSamples*/) override
+    {
+        switch (type)
+        {
+            case CouplingType::AmpToFilter:
+                extFilterMod_ = amount * 4000.0f;
+                break;
+            case CouplingType::AmpToPitch:
+                extPitchMod_ = amount;
+                break;
+            case CouplingType::AudioToRing:
+                // Ring mod against sub-bass
+                if (sourceBuffer) extFilterMod_ += sourceBuffer[0] * amount * 1000.0f;
+                break;
+            default:
+                break;
         }
     }
 
-    //==========================================================================
-    // Parameters — 28 total
-    //==========================================================================
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
-    {
-        addParametersImpl (params);
-    }
-
+    //-- Parameters -------------------------------------------------------------
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
@@ -687,141 +749,173 @@ public:
         return { params.begin(), params.end() };
     }
 
+    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl (params);
+    }
+
     static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
-        using PI = juce::AudioParameterInt;
 
-        // Core tone
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_warmth", 1 }, "Oasis Warmth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bell", 1 }, "Oasis Bell",
+        // Core ecosystem params
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_entropySens", 1 }, "Entropy Sensitivity",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_brightness", 1 }, "Oasis Brightness",
-            juce::NormalisableRange<float> (200.0f, 20000.0f, 0.0f, 0.3f), 6000.0f));
 
-        // Tremolo (Rhodes vibrato circuit)
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremRate", 1 }, "Oasis Tremolo Rate",
-            juce::NormalisableRange<float> (0.5f, 12.0f, 0.01f), 4.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremDepth", 1 }, "Oasis Tremolo Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_breeze", 1 }, "Breeze",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
 
-        // Amp envelope
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_attack", 1 }, "Oasis Attack",
-            juce::NormalisableRange<float> (0.001f, 0.5f, 0.0f, 0.3f), 0.005f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_decay", 1 }, "Oasis Decay",
-            juce::NormalisableRange<float> (0.05f, 5.0f, 0.0f, 0.4f), 0.8f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_sustain", 1 }, "Oasis Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_release", 1 }, "Oasis Release",
-            juce::NormalisableRange<float> (0.01f, 5.0f, 0.0f, 0.4f), 0.5f));
-
-        // Filter
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_filterEnvAmt", 1 }, "Oasis Filter Env Amount",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_swarmDensity", 1 }, "Swarm Density",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
 
-        // FUSION
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_migration", 1 }, "Oasis Migration",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_stereoWidth", 1 }, "Oasis Stereo Width",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_lagoonDepth", 1 }, "Lagoon Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+
+        // Sub-bass shaping
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_subDrive", 1 }, "Sub Drive",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_resonatorQ", 1 }, "Resonator Q",
+            juce::NormalisableRange<float> (0.5f, 20.0f, 0.0f, 0.4f), 4.0f));
+
+        // Canopy network
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_cullDecay", 1 }, "Cull Decay",
+            juce::NormalisableRange<float> (0.9f, 0.9999f), 0.995f));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_canopyFB", 1 }, "Canopy Feedback",
+            juce::NormalisableRange<float> (0.0f, 0.95f), 0.4f));
+
+        // Filter
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_filterCutoff", 1 }, "Filter Cutoff",
+            juce::NormalisableRange<float> (60.0f, 16000.0f, 0.0f, 0.3f), 2000.0f));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_filterEnvAmt", 1 }, "Filter Env Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
-        // Pitch
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bendRange", 1 }, "Oasis Pitch Bend Range",
-            juce::NormalisableRange<float> (1.0f, 24.0f, 1.0f), 2.0f));
-
-        // Macros
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCharacter", 1 }, "Oasis Macro CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroMovement", 1 }, "Oasis Macro MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCoupling", 1 }, "Oasis Macro COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroSpace", 1 }, "Oasis Macro SPACE",
+        // Macros (CHARACTER / MOVEMENT / COUPLING / SPACE)
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_macroCharacter", 1 }, "Character",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
-        // LFOs (D002/D005)
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Rate", 1 }, "Oasis LFO1 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Depth", 1 }, "Oasis LFO1 Depth",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_macroMovement", 1 }, "Movement",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo1Shape", 1 }, "Oasis LFO1 Shape", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Rate", 1 }, "Oasis LFO2 Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Depth", 1 }, "Oasis LFO2 Depth",
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_macroCoupling", 1 }, "Coupling",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo2Shape", 1 }, "Oasis LFO2 Shape", 0, 4, 0));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_macroSpace", 1 }, "Space",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
-        paramWarmth       = apvts.getRawParameterValue ("oasis_warmth");
-        paramBell         = apvts.getRawParameterValue ("oasis_bell");
-        paramBrightness   = apvts.getRawParameterValue ("oasis_brightness");
-        paramTremRate     = apvts.getRawParameterValue ("oasis_tremRate");
-        paramTremDepth    = apvts.getRawParameterValue ("oasis_tremDepth");
-        paramAttack       = apvts.getRawParameterValue ("oasis_attack");
-        paramDecay        = apvts.getRawParameterValue ("oasis_decay");
-        paramSustain      = apvts.getRawParameterValue ("oasis_sustain");
-        paramRelease      = apvts.getRawParameterValue ("oasis_release");
-        paramFilterEnvAmt = apvts.getRawParameterValue ("oasis_filterEnvAmt");
-        paramMigration    = apvts.getRawParameterValue ("oasis_migration");
-        paramStereoWidth  = apvts.getRawParameterValue ("oasis_stereoWidth");
-        paramBendRange    = apvts.getRawParameterValue ("oasis_bendRange");
-        paramMacroCharacter = apvts.getRawParameterValue ("oasis_macroCharacter");
-        paramMacroMovement  = apvts.getRawParameterValue ("oasis_macroMovement");
-        paramMacroCoupling  = apvts.getRawParameterValue ("oasis_macroCoupling");
-        paramMacroSpace     = apvts.getRawParameterValue ("oasis_macroSpace");
-        paramLfo1Rate     = apvts.getRawParameterValue ("oasis_lfo1Rate");
-        paramLfo1Depth    = apvts.getRawParameterValue ("oasis_lfo1Depth");
-        paramLfo1Shape    = apvts.getRawParameterValue ("oasis_lfo1Shape");
-        paramLfo2Rate     = apvts.getRawParameterValue ("oasis_lfo2Rate");
-        paramLfo2Depth    = apvts.getRawParameterValue ("oasis_lfo2Depth");
-        paramLfo2Shape    = apvts.getRawParameterValue ("oasis_lfo2Shape");
+        pEntropySensParam_    = apvts.getRawParameterValue ("oas_entropySens");
+        pBreezeParam_         = apvts.getRawParameterValue ("oas_breeze");
+        pSwarmDensityParam_   = apvts.getRawParameterValue ("oas_swarmDensity");
+        pLagoonDepthParam_    = apvts.getRawParameterValue ("oas_lagoonDepth");
+        pSubDriveParam_       = apvts.getRawParameterValue ("oas_subDrive");
+        pResonatorQParam_     = apvts.getRawParameterValue ("oas_resonatorQ");
+        pCullDecayParam_      = apvts.getRawParameterValue ("oas_cullDecay");
+        pCanopyFBParam_       = apvts.getRawParameterValue ("oas_canopyFB");
+        pFilterCutoffParam_   = apvts.getRawParameterValue ("oas_filterCutoff");
+        pFilterEnvAmtParam_   = apvts.getRawParameterValue ("oas_filterEnvAmt");
+        pMacroCharacterParam_ = apvts.getRawParameterValue ("oas_macroCharacter");
+        pMacroMovementParam_  = apvts.getRawParameterValue ("oas_macroMovement");
+        pMacroCouplingParam_  = apvts.getRawParameterValue ("oas_macroCoupling");
+        pMacroSpaceParam_     = apvts.getRawParameterValue ("oas_macroSpace");
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    //--------------------------------------------------------------------------
+    static constexpr int kMaxVoices = 8;
+    static constexpr int kCanopyTaps = 6;
 
-    std::array<OasisVoice, kMaxVoices> voices;
-    uint64_t voiceCounter = 0;
-    std::atomic<int> activeVoiceCount { 0 };
+    struct Voice
+    {
+        bool active = false;
+        bool releasing = false;
+        int note = 60;
+        float velocity = 0.0f;
+        float amplitude = 0.0f;
+        double phase = 0.0;
+        double phaseDelta = 0.0;
+        int noteAge = 0;
+    };
 
-    ParameterSmoother smoothWarmth, smoothBell, smoothBrightness;
-    ParameterSmoother smoothTremRate, smoothTremDepth, smoothMigration;
+    double sr_ = 44100.0;
+    float srF_ = 44100.0f;
+    int blockSize_ = 512;
 
-    float pitchBendNorm = 0.0f;
-    float modWheelAmount = 0.0f;
-    float aftertouchAmount = 0.0f;
-    float attackTransientTracker = 0.0f;
+    // Voices
+    Voice voices_[kMaxVoices];
 
-    float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingWarmthMod = 0.0f;
-    float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
+    // Canopy delay network
+    std::vector<float> canopyBufL_[kCanopyTaps];
+    std::vector<float> canopyBufR_[kCanopyTaps];
+    int canopySize_[kCanopyTaps] {};
+    int canopyWritePos_[kCanopyTaps] {};
+    int canopyDelaySamples_[kCanopyTaps] {};
 
-    std::atomic<float>* paramWarmth = nullptr;
-    std::atomic<float>* paramBell = nullptr;
-    std::atomic<float>* paramBrightness = nullptr;
-    std::atomic<float>* paramTremRate = nullptr;
-    std::atomic<float>* paramTremDepth = nullptr;
-    std::atomic<float>* paramAttack = nullptr;
-    std::atomic<float>* paramDecay = nullptr;
-    std::atomic<float>* paramSustain = nullptr;
-    std::atomic<float>* paramRelease = nullptr;
-    std::atomic<float>* paramFilterEnvAmt = nullptr;
-    std::atomic<float>* paramMigration = nullptr;
-    std::atomic<float>* paramStereoWidth = nullptr;
-    std::atomic<float>* paramBendRange = nullptr;
-    std::atomic<float>* paramMacroCharacter = nullptr;
-    std::atomic<float>* paramMacroMovement = nullptr;
-    std::atomic<float>* paramMacroCoupling = nullptr;
-    std::atomic<float>* paramMacroSpace = nullptr;
-    std::atomic<float>* paramLfo1Rate = nullptr;
-    std::atomic<float>* paramLfo1Depth = nullptr;
-    std::atomic<float>* paramLfo1Shape = nullptr;
-    std::atomic<float>* paramLfo2Rate = nullptr;
-    std::atomic<float>* paramLfo2Depth = nullptr;
-    std::atomic<float>* paramLfo2Shape = nullptr;
+    // Filters
+    CytomicSVF subFilter_;
+    CytomicSVF canopyLP_;
+    CytomicSVF resonatorBank_;
+
+    // LFOs
+    StandardLFO biolumLFO_;
+    StandardLFO tidalLFO_;
+
+    // Entropy / Ecological state
+    float entropy_ = 0.0f;
+    float ecologicalHealth_ = 0.5f;
+    float culledEnergy_ = 0.0f;
+    int lastNoteOnTime_ = 0;
+    int expectedInterval_ = 0;
+    int sampleCounter_ = 0;
+    uint32_t noiseRng_ = 42u;
+
+    // Coupling state
+    float lastSampleL_ = 0.0f;
+    float lastSampleR_ = 0.0f;
+    float extFilterMod_ = 0.0f;
+    float extPitchMod_ = 0.0f;
+
+    // Expression state
+    float aftertouch_ = 0.0f;
+    float modWheel_ = 0.0f;
+    float pitchBendNorm_ = 0.0f;
+
+    // Parameter pointers
+    std::atomic<float>* pEntropySensParam_    = nullptr;
+    std::atomic<float>* pBreezeParam_         = nullptr;
+    std::atomic<float>* pSwarmDensityParam_   = nullptr;
+    std::atomic<float>* pLagoonDepthParam_    = nullptr;
+    std::atomic<float>* pSubDriveParam_       = nullptr;
+    std::atomic<float>* pResonatorQParam_     = nullptr;
+    std::atomic<float>* pCullDecayParam_      = nullptr;
+    std::atomic<float>* pCanopyFBParam_       = nullptr;
+    std::atomic<float>* pFilterCutoffParam_   = nullptr;
+    std::atomic<float>* pFilterEnvAmtParam_   = nullptr;
+    std::atomic<float>* pMacroCharacterParam_ = nullptr;
+    std::atomic<float>* pMacroMovementParam_  = nullptr;
+    std::atomic<float>* pMacroCouplingParam_  = nullptr;
+    std::atomic<float>* pMacroSpaceParam_     = nullptr;
+
+    //--------------------------------------------------------------------------
+    static float clamp (float v, float lo, float hi) { return v < lo ? lo : (v > hi ? hi : v); }
 };
 
 } // namespace xolokun
