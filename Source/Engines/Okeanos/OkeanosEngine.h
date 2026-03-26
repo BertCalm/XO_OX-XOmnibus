@@ -53,7 +53,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // SpectralFingerprint — 152-byte metadata struct for FUSION inter-engine coupling.
@@ -68,8 +68,8 @@ namespace xomnibus {
 // The coupling engine uses these to model energy transfer (PLATE coupling)
 // without running audio through the coupled engine's processing chain.
 //==============================================================================
-#ifndef XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
-#define XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
+#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
+#define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
 struct SpectralFingerprint
 {
     float modalFrequencies[8] = {};   // Top 8 modal frequencies (Hz)
@@ -105,6 +105,8 @@ struct SpectralFingerprint
 //   - Loris/Smith (2003), "Spectral analysis of Rhodes tones"
 //   - Paspaliaris (2015), "Physical modeling of the Rhodes piano"
 //==============================================================================
+#ifndef XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
+#define XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
 struct RhodesToneGenerator
 {
     static constexpr int kNumPartials = 6;
@@ -282,6 +284,7 @@ struct RhodesAmpStage
     float dcBlock = 0.0f;
     float dcCoeff = 0.000713f;  // default for 44100 Hz (2*pi*5/44100); updated in prepare()
 };
+#endif // XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
 
 //==============================================================================
 // OkeanosVoice
@@ -823,4 +826,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

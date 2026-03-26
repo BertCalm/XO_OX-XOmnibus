@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdint>
 #include <algorithm>
+#include "../FastMath.h"
 #include "../CytomicSVF.h"
 #include "../ParameterSmoother.h"
 
@@ -106,6 +107,7 @@ public:
             // One-pole envelope follower
             const float coeff = (mono > envState_) ? attack : release;
             envState_ = coeff * envState_ + (1.0f - coeff) * mono;
+            envState_ = xolokun::flushDenormal(envState_);
 
             // Scale by sensitivity: sensitivity=0 → 1x, sensitivity=1 → 10x (clamped)
             const float envScaled = std::min (envState_ * (1.0f + sensitivity_ * 9.0f), 1.0f);

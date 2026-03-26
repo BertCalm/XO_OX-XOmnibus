@@ -56,6 +56,19 @@ public:
         addAndMakeVisible(masterLbl);
     }
 
+    // W45 fix: remove MIDI learn mouse listeners from knobs before the unique_ptrs
+    // are destroyed.  Member destruction order (reverse of declaration) would delete
+    // macroLearnListeners BEFORE knobs, leaving dangling raw pointers in the knobs'
+    // listener lists.  Explicit removal here prevents use-after-free.
+    ~MacroSection() override
+    {
+        for (int i = 0; i < 4; ++i)
+            if (macroLearnListeners[i])
+                knobs[i].removeMouseListener(macroLearnListeners[i].get());
+        if (masterLearnListener)
+            master.removeMouseListener(masterLearnListener.get());
+    }
+
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 
+#include "../../DSP/FastMath.h"
 #include "OxytocinLoveEnvelope.h"
 #include "OxytocinThermal.h"
 #include "OxytocinDrive.h"
@@ -356,6 +357,7 @@ public:
                     float entFB = snap.feedback * (1.0f + boostedC * entAmt);
                     entFB = std::clamp (entFB, 0.0f, 0.95f);
                     fbSample *= entFB;
+                    fbSample = xolokun::flushDenormal(fbSample);
                     break;
                 }
 

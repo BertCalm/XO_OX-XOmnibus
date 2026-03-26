@@ -129,8 +129,8 @@ public:
                 pR = (pR + 1) % delaySamps;
 
                 // Denormal protection
-                yL += 1e-25f; yL -= 1e-25f;
-                yR += 1e-25f; yR -= 1e-25f;
+                yL = xolokun::flushDenormal(yL);
+                yR = xolokun::flushDenormal(yR);
 
                 xL = yL;
                 xR = yR;

@@ -131,9 +131,7 @@ private:
         // Transient softener: one-pole LPF with amount-dependent cutoff
         // Full sweet = ~4kHz smoothing (gentle), less sweet = more transparent
         float softFreq = 20000.0f - amount * 16000.0f; // 20k → 4k
-        float rc = 1.0f / (2.0f * kPi * softFreq);
-        float dt = 1.0f / static_cast<float> (sr);
-        softCoeff = dt / (rc + dt);
+        softCoeff = 1.0f - fastExp (-6.28318530718f * softFreq / static_cast<float> (sr));
 
         // Phase thickening: slight allpass-like smear for stereo bloom
         phaseCoeff = 0.1f * amount;

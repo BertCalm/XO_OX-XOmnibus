@@ -7,6 +7,8 @@
 #include "XPNCoverArt.h"
 #include "XPNVelocityCurves.h"
 
+#include "../DSP/ThreadInit.h"
+
 #include <atomic>
 #include <cmath>
 #include <mutex>
@@ -924,6 +926,7 @@ private:
     IOResult renderNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
                              const RenderSettings& settings, const juce::File& outputFile)
     {
+        xolokun::dsp::ScopedAudioThreadInit audioInit;
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
         int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
 
@@ -1037,6 +1040,7 @@ private:
     IOResult renderCoupledNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
                                     const RenderSettings& settings, const juce::File& outputFile)
     {
+        xolokun::dsp::ScopedAudioThreadInit audioInit;
         // If no coupling matrix, fall back to standard render
         if (!ctx.couplingMatrix)
             return renderNoteToWav(ctx, note, velocity, settings, outputFile);

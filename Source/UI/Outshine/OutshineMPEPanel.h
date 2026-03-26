@@ -87,7 +87,7 @@ private:
         }
 
         // Gold left border for active routes
-        if (route.active && route.amount > 0.0f)
+        if (route.active && route.amount != 0.0f)
         {
             g.setColour(GalleryColors::get(GalleryColors::xoGold));
             g.fillRect(rowBounds.removeFromLeft(2));
@@ -121,13 +121,13 @@ private:
                    juce::Justification::centredLeft);
 
         // Mini progress bar
-        if (route.active && route.amount > 0.0f)
+        if (route.active && route.amount != 0.0f)
         {
             auto barBounds = rowBounds.removeFromLeft(64).reduced(0, 6);
             g.setColour(GalleryColors::get(GalleryColors::borderGray()));
             g.fillRoundedRectangle(barBounds.toFloat(), 3.0f);
             g.setColour(GalleryColors::get(GalleryColors::xoGold));
-            g.fillRoundedRectangle(barBounds.toFloat().withWidth(barBounds.getWidth() * route.amount), 3.0f);
+            g.fillRoundedRectangle(barBounds.toFloat().withWidth(barBounds.getWidth() * std::abs(route.amount)), 3.0f);
         }
 
         // "(manual config)" annotation

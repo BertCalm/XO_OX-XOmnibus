@@ -190,13 +190,9 @@ public:
 private:
     void updateHPCoefficient()
     {
-        // 1st-order high-pass at ~80Hz
-        // RC = 1 / (2 * pi * fc), alpha = RC / (RC + dt)
+        // 1st-order high-pass at ~80Hz — matched-Z coefficient
         constexpr float hpFreq = 80.0f;
-        constexpr float twoPi = 6.28318530718f;
-        float rc = 1.0f / (twoPi * hpFreq);
-        float dt = 1.0f / static_cast<float> (sr);
-        hpCoeff = flushDenormal (rc / (rc + dt));
+        hpCoeff = flushDenormal (fastExp (-6.28318530718f * hpFreq / static_cast<float> (sr)));
     }
 
     double sr = 44100.0;

@@ -86,9 +86,7 @@ public:
             // Near: cutoff ~18kHz (transparent), Far: cutoff ~800Hz (muffled)
             // SRO: fastExp replaces std::pow (pow(0.044,d) = exp(d*ln(0.044)) = exp(d*-3.1242))
             float cutoff = 18000.0f * fastExp (dist * -3.1242f);
-            float rc = 1.0f / (2.0f * 3.14159265f * cutoff);
-            float dt = 1.0f / static_cast<float> (sr);
-            float alpha = dt / (rc + dt);
+            float alpha = 1.0f - fastExp (-6.28318530718f * cutoff / static_cast<float> (sr));
 
             lpfL += alpha * (wetL - lpfL);
             lpfR += alpha * (wetR - lpfR);

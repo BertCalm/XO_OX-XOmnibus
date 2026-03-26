@@ -177,7 +177,8 @@ public:
         // Pressure decay: matched-Z per-sample coefficient derived from sample rate.
         // Time constant ~2.27 sec (tau = 100000 samples at 44100 Hz).
         // exp(-1/tau_samples) = exp(-sampleRate / (100000 * 44100)) ≈ 1 - sampleRate/4.41e9.
-        pressureDecayCoeff = std::exp (-static_cast<float> (sampleRate) / (100000.0f * 44100.0f));
+        constexpr float tauSec = 100000.0f / 44100.0f;  // ~2.268 seconds
+        pressureDecayCoeff = std::exp (-1.0f / (tauSec * static_cast<float> (sampleRate)));
 
         pressureState.reset();
         noteCounter = 0;

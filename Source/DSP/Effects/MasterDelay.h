@@ -338,10 +338,8 @@ private:
 
     void updateHPCoefficient (float freq)
     {
-        constexpr float twoPi = 6.28318530718f;
-        float rc = 1.0f / (twoPi * freq);
-        float dt = 1.0f / static_cast<float> (sr);
-        hpCoeff = flushDenormal (rc / (rc + dt));
+        // 1st-order high-pass — matched-Z coefficient
+        hpCoeff = flushDenormal (fastExp (-6.28318530718f * freq / static_cast<float> (sr)));
     }
 
     //--------------------------------------------------------------------------

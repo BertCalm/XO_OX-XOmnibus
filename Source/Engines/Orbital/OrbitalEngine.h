@@ -465,7 +465,7 @@ public:
 
             //-- EnvToDecay: external envelope damps group envelope levels --------
             case CouplingType::EnvToDecay:
-                externalDecayMod = juce::jlimit (0.0f, 1.0f, amount);
+                externalDecayMod = juce::jlimit (-1.0f, 1.0f, amount);
                 break;
 
             //-- RhythmToBlend: rhythmic pattern drives morph position -----------
@@ -827,7 +827,7 @@ public:
                     // another engine's envelope is coupled via EnvToDecay.
                     // The 0.001 scale keeps the damping subtle per sample — it
                     // accumulates over hundreds of samples for a smooth effect.
-                    if (externalDecayMod > 0.0f)
+                    if (externalDecayMod != 0.0f)
                         voice.groupEnvLevel[groupIdx] = std::max (kGroupSustainFloor[groupIdx],
                             voice.groupEnvLevel[groupIdx] * (1.0f - externalDecayMod * 0.001f));
 

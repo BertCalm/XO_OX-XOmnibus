@@ -91,8 +91,11 @@ public:
         patternBox.setSelectedId (2, juce::dontSendNotification);
         patternBox.onChange = [this]
         {
+            // W13 fix: do NOT call applyPattern() directly from the UI thread —
+            // it races with the audio thread reading steps[].active.
+            // Instead, write the APVTS parameter; processBlock() syncs it via
+            // chordMachine.applyPattern() on every block (W12 fix, XOlokunProcessor.cpp).
             auto idx = patternBox.getSelectedItemIndex();
-            processor.getChordMachine().applyPattern (static_cast<RhythmPattern> (idx));
             if (auto* p = processor.getAPVTS().getParameter ("cm_seq_pattern"))
             {
                 p->beginChangeGesture();

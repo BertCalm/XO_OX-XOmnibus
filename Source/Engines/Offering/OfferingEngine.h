@@ -479,7 +479,7 @@ public:
     void applyCouplingInput (CouplingType type, float amount,
                              const float* sourceBuffer, int numSamples) override
     {
-        if (amount < 0.001f || sourceBuffer == nullptr) return;
+        if (std::abs (amount) < 0.001f || sourceBuffer == nullptr) return;
 
         // Compute RMS of source for block-level coupling
         float rms = 0.0f;

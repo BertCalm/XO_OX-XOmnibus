@@ -142,6 +142,16 @@ public:
         };
     }
 
+    // W45 fix: remove MIDI learn mouse listeners from knobs before unique_ptrs
+    // are destroyed.  fxLearnListeners (declared after knobs) would be destroyed
+    // first by default, leaving dangling raw pointers in the knobs' listener lists.
+    ~MasterFXSection() override
+    {
+        for (int i = 0; i < kNumPrimaryKnobs; ++i)
+            if (fxLearnListeners[i])
+                knobs[i].removeMouseListener(fxLearnListeners[i].get());
+    }
+
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;

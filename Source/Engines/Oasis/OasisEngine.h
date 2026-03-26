@@ -30,6 +30,8 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/GlideProcessor.h"
+#include "../../DSP/FilterEnvelope.h"
 #include <array>
 #include <cmath>
 
@@ -85,6 +87,8 @@ struct SpectralFingerprint
 //   - Loris/Smith (2003), "Spectral analysis of Rhodes tones"
 //   - Paspaliaris (2015), "Physical modeling of the Rhodes piano"
 //==============================================================================
+#ifndef XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
+#define XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
 struct RhodesToneGenerator
 {
     static constexpr int kNumPartials = 6;
@@ -262,6 +266,7 @@ struct RhodesAmpStage
     float dcBlock = 0.0f;
     float dcCoeff = 0.000713f;  // default for 44100 Hz (2*pi*5/44100); updated in prepare()
 };
+#endif // XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
 
 //==============================================================================
 // OasisVoice

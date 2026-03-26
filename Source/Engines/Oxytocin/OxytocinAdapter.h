@@ -90,7 +90,7 @@ public:
 
             // Apply block-rate coupling modulations to snap before processing
             // AmpToFilter → modulate cutoff
-            if (couplingAmpToFilterMod_ > 0.0f)
+            if (couplingAmpToFilterMod_ != 0.0f)
                 snap_.cutoff = std::clamp (snap_.cutoff + couplingAmpToFilterMod_ * 4000.0f,
                                            20.0f, 20000.0f);
 
@@ -100,12 +100,12 @@ public:
                                           -24.0f, 24.0f);
 
             // AudioToFM → modulate entanglement depth
-            if (couplingAudioToFMMod_ > 0.0f)
+            if (couplingAudioToFMMod_ != 0.0f)
                 snap_.entanglement = std::clamp (snap_.entanglement + couplingAudioToFMMod_ * 0.4f,
                                                  0.0f, 1.0f);
 
             // TriangularCoupling (#15) → modulate I/P/C from source engine's love triangle
-            if (couplingTriangularMod_ > 0.0f)
+            if (couplingTriangularMod_ != 0.0f)
             {
                 snap_.intimacy   = std::clamp (snap_.intimacy   + couplingTriangularMod_ * 0.3f, 0.0f, 1.0f);
                 snap_.passion    = std::clamp (snap_.passion    + couplingTriangularMod_ * 0.2f, 0.0f, 1.0f);
@@ -150,7 +150,7 @@ public:
     void applyCouplingInput (CouplingType type, float amount,
                              const float* sourceBuffer, int numSamples) override
     {
-        if (amount < 0.001f || sourceBuffer == nullptr) return;
+        if (std::abs (amount) < 0.001f || sourceBuffer == nullptr) return;
 
         // Compute RMS of source block
         float rms = 0.0f;

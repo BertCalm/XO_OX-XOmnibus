@@ -62,6 +62,8 @@ struct ParameterSmoother
     float process() noexcept
     {
         currentValue += (targetValue - currentValue) * coeff;
+        if (std::fabs(currentValue - targetValue) < 1e-7f)
+            currentValue = targetValue;
         return currentValue;
     }
 

@@ -624,6 +624,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // OXYTOCIN — circuit-modeling love-triangle synth (Engine #48)
     OxytocinAdapter::addParameters(params);
 
+    // W07 fix: OVERLAP, OUTWIT, OSMOSIS, OUTLOOK were using createParameterLayout()
+    // instead of addParameters(), so their params were never registered in the shared
+    // APVTS.  Adding them here so ParameterGrid shows knobs for these engines.
+    XOverlapEngine::addParameters(params);
+    XOutwitEngine::addParameters(params);
+    OsmosisEngine::addParameters(params);
+    OutlookEngine::addParameters(params);
+
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.
     // These are ephemeral live-performance controls that overlay preset coupling.
@@ -1271,6 +1279,17 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     chordMachine.setHumanize(cachedParams.cmHumanize->load());
     chordMachine.setSidechainDuck(cachedParams.cmSidechainDuck->load());
     chordMachine.setEnoMode(cachedParams.cmEnoMode->load() >= 0.5f);
+    // W12 fix: sync pattern from APVTS on every block.  applyPattern() is safe to
+    // call from the audio thread — it writes to steps[].active (benign race as
+    // documented in ChordMachine.h) and updates activePattern atomic.
+    // We only call applyPattern when the pattern index changes to avoid clobbering
+    // per-step edits the user may have made (Eno mutations, UI step overrides).
+    {
+        const auto newPat = static_cast<RhythmPattern>(
+            static_cast<int>(cachedParams.cmSeqPattern->load()));
+        if (newPat != chordMachine.getPattern())
+            chordMachine.applyPattern(newPat);
+    }
 
     // Sync MPE manager from cached APVTS parameters (no hash lookups)
     if (cachedParams.mpeEnabled)

@@ -34,7 +34,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 class OutflowEngine : public SynthEngine
@@ -623,4 +623,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

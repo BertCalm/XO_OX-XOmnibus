@@ -175,12 +175,12 @@ public:
                 showOverview();
         };
 
-        // "PS" toggle button — PlaySurface (4-zone performance interface)
+        // "PS" toggle button — PlaySurface popup window (4-zone performance interface)
         addAndMakeVisible(surfaceToggleBtn);
         surfaceToggleBtn.setButtonText("PS");
-        surfaceToggleBtn.setTooltip("PlaySurface — 4-zone performance interface (pads, orbit, strip, triggers)");
+        surfaceToggleBtn.setTooltip("PlaySurface — floating 4-zone performance interface (pads, orbit, strip, triggers)");
         A11y::setup (surfaceToggleBtn, "PlaySurface Toggle",
-                     "Toggle the PlaySurface performance panel at the bottom of the editor");
+                     "Show or hide the PlaySurface popup window");
         surfaceToggleBtn.setClickingTogglesState(true);
         surfaceToggleBtn.onClick = [this]
         {
@@ -189,15 +189,8 @@ public:
             else
                 hidePlaySurface();
         };
-
-        // PlaySurface — hidden by default; revealed via surfaceToggleBtn
-        addAndMakeVisible(playSurface);
-        playSurface.setVisible(false);
-        playSurface.setAlpha(0.0f);
-
-        // Wire MIDI: PlaySurface note events flow through the processor's
-        // MidiMessageCollector, which is drained into processBlock each audio callback.
-        playSurface.setMidiCollector(&proc.getMidiCollector(), 1);
+        // PlaySurface window is created lazily in showPlaySurface() on first press.
+        // No addAndMakeVisible() or MIDI wiring here — happens on first open.
 
         // Dark mode toggle — light is default (brand rule)
         addAndMakeVisible(themeToggleBtn);
@@ -221,6 +214,9 @@ public:
             masterFXStrip.repaint();
             presetBrowser.repaint();
             sidebar.repaint();
+            // Also repaint the PlaySurface popup window if it is open.
+            if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
+                playSurfaceWindow->repaint();
         };
 
         // Export button — launches ExportDialog as a CallOutBox
@@ -378,6 +374,10 @@ public:
         stopTimer();
         removeKeyListener(statusBar.getKeyListener());
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
+        // Destroy the PlaySurface popup window before the processor goes away.
+        // This ensures the MidiMessageCollector pointer inside the window is
+        // not accessed after the processor is deallocated.
+        playSurfaceWindow.reset();
         setLookAndFeel(nullptr);
     }
 
@@ -400,9 +400,28 @@ public:
                 selectSlot(4);
             return true;
         }
-        // Escape returns to overview
+        // 'P' toggles the PlaySurface popup window
+        if (key == juce::KeyPress('p') || key == juce::KeyPress('P'))
+        {
+            bool nowVisible = (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible());
+            surfaceToggleBtn.setToggleState(!nowVisible, juce::dontSendNotification);
+            if (!nowVisible)
+                showPlaySurface();
+            else
+                hidePlaySurface();
+            return true;
+        }
+        // Escape returns to overview (and also hides PlaySurface popup if open)
         if (key == juce::KeyPress::escapeKey)
         {
+            // If the PlaySurface window is in front, close it first;
+            // otherwise fall through to the overview.
+            if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
+            {
+                hidePlaySurface();
+                surfaceToggleBtn.setToggleState(false, juce::dontSendNotification);
+                return true;
+            }
             showOverview();
             return true;
         }
@@ -497,7 +516,9 @@ public:
     void resized() override
     {
         // ── Sync layout state ────────────────────────────────────────────────
-        layout.playSurfaceVisible = playSurface.isVisible();
+        // PlaySurface is now a floating popup window — not an embedded component,
+        // so playSurfaceVisible is always false for layout purposes.
+        layout.playSurfaceVisible = false;
         // columnCCollapsed and cinematicMode are toggled by their respective buttons
         // (not yet wired — Column C is reserved space only in this step)
         layout.compute(getWidth(), getHeight());
@@ -597,10 +618,7 @@ public:
         // ── Column C — Tabbed Sidebar (SidebarPanel) ─────────────────────────
         sidebar.setBounds(layout.getColumnC());
 
-        // ── PlaySurface ───────────────────────────────────────────────────────
-        // ColumnLayoutManager parks the surface below the window when invisible,
-        // so we always apply the computed bounds unconditionally.
-        playSurface.setBounds(layout.getPlaySurface());
+        // PlaySurface is now a floating popup window — no embedded bounds to set.
 
         // ── Status Bar ───────────────────────────────────────────────────────
         statusBar.setBounds(layout.getStatusBar());
@@ -794,31 +812,31 @@ private:
         }
     }
 
-    // ── PlaySurface show/hide ──────────────────────────────────────────────────
-    // The PlaySurface overlays the bottom ~40% of the editor.  Showing it
-    // triggers a resized() so the layout pushes up the macros/masterFX strips;
-    // hiding it restores the original layout.  Both use the standard 150ms fade.
+    // ── PlaySurface show/hide (popup window) ──────────────────────────────────
+    // On first call, the window is created lazily and MIDI is wired.
+    // Subsequent calls simply show/hide the existing window so mode selections,
+    // bank, and octave state survive hide/show cycles.
 
     void showPlaySurface()
     {
-        auto& anim = juce::Desktop::getInstance().getAnimator();
-        playSurface.setAlpha(0.0f);
-        playSurface.setVisible(true);
-        resized(); // recalculate layout so PlaySurface gets its bounds before fading in
-        anim.fadeIn(&playSurface, kFadeMs);
+        // Lazy creation: build window and wire MIDI on first show.
+        if (playSurfaceWindow == nullptr)
+        {
+            playSurfaceWindow = std::make_unique<PlaySurfaceWindow>();
+            // Wire MIDI: PlaySurface note events flow through the processor's
+            // MidiMessageCollector, drained into processBlock each audio callback.
+            playSurfaceWindow->getPlaySurface()
+                .setMidiCollector (&processor.getMidiCollector(), 1);
+        }
+
+        playSurfaceWindow->setVisible (true);
+        playSurfaceWindow->toFront (true);
     }
 
     void hidePlaySurface()
     {
-        auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component::SafePointer<XOlokunEditor> safeThis(this);
-        anim.fadeOut(&playSurface, kFadeMs);
-        juce::Timer::callAfterDelay(kFadeMs, [safeThis]
-        {
-            if (safeThis == nullptr) return;
-            safeThis->playSurface.setVisible(false);
-            safeThis->resized(); // restore layout once panel is hidden
-        });
+        if (playSurfaceWindow != nullptr)
+            playSurfaceWindow->setVisible (false);
     }
 
     void timerCallback() override
@@ -1047,7 +1065,8 @@ private:
     juce::TextButton       surfaceToggleBtn;
     juce::TextButton       themeToggleBtn;
     juce::TextButton       exportBtn;
-    PlaySurface            playSurface;
+    // PlaySurface lives in a floating DocumentWindow popup (created lazily on first show).
+    std::unique_ptr<PlaySurfaceWindow> playSurfaceWindow;
     CouplingArcOverlay     couplingArcs { processor };
     CouplingArcHitTester   couplingHitTester { processor };
     SidebarPanel           sidebar;

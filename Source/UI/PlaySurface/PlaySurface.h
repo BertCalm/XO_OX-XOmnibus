@@ -305,18 +305,42 @@ private:
             return;
         }
 
-        auto b = getLocalBounds();
-        float padW = (float)b.getWidth()  / PS::kPadCols;
-        float padH = (float)b.getHeight() / PS::kPadRows;
+        auto b = getLocalBounds().toFloat();
 
-        int col = (int)((float)e.x / b.getWidth() * PS::kPadCols);
-        int row = PS::kPadRows - 1 - (int)((float)e.y / b.getHeight() * PS::kPadRows);
+        // Square grid: match the same centering used in paintPadGrid().
+        float padSide  = juce::jmin(b.getWidth() / PS::kPadCols, b.getHeight() / PS::kPadRows);
+        float gridW    = padSide * PS::kPadCols;
+        float gridH    = padSide * PS::kPadRows;
+        float originX  = b.getX() + (b.getWidth()  - gridW) * 0.5f;
+        float originY  = b.getY() + (b.getHeight() - gridH) * 0.5f;
+
+        // Map mouse position into grid-local space, ignoring clicks outside the grid.
+        float lx = (float)e.x - originX;
+        float ly = (float)e.y - originY;
+        if (lx < 0.0f || lx >= gridW || ly < 0.0f || ly >= gridH)
+        {
+            // Outside the grid area — fire note-off if we had one active.
+            if (isDown && lastNote >= 0)
+            {
+                fireAftertouch(lastNote, 0.0f);
+                fireNoteOff(lastNote);
+                lastNote = -1;
+                lastPad  = -1;
+            }
+            return;
+        }
+
+        float padW = padSide;
+        float padH = padSide;
+
+        int col = (int)(lx / padSide);
+        int row = PS::kPadRows - 1 - (int)(ly / padSide);
         col = juce::jlimit(0, PS::kPadCols - 1, col);
         row = juce::jlimit(0, PS::kPadRows - 1, row);
         int pad = row * PS::kPadCols + col;
 
-        // Velocity: Y position within the entire zone (top = hard, bottom = soft).
-        float velocity = juce::jlimit(0.3f, 1.0f, 1.0f - (float)e.y / b.getHeight());
+        // Velocity: Y position within the grid (grid top = hard, grid bottom = soft).
+        float velocity = juce::jlimit(0.3f, 1.0f, 1.0f - ly / gridH);
         int note = midiNoteForPad(pad);
 
         if (isDown || note != lastNote)
@@ -340,8 +364,7 @@ private:
             // top of cell = maximum pressure (1.0), bottom = minimum (0.0).
             int displayRow = PS::kPadRows - 1 - row; // flip: row 0 is rendered at top
             float padTopY = displayRow * padH;
-            float yInPad  = juce::jlimit(0.0f, 1.0f,
-                                         ((float)e.y - padTopY) / padH);
+            float yInPad  = juce::jlimit(0.0f, 1.0f, (ly - padTopY) / padH);
             // Top of pad → pressure 1.0; bottom → 0.0
             float pressure = juce::jlimit(0.0f, 1.0f, 1.0f - yInPad);
             fireAftertouch(lastNote, pressure);
@@ -411,12 +434,23 @@ private:
 
     // Pad grid with ecological depth zone coloring.
     // Row 3 (top/high notes) = Sunlit zone (cyan), Row 0 (bottom/low) = Midnight (violet).
+    // Pads are always square: the grid is centered within the available bounds.
     void paintPadGrid(juce::Graphics& g)
     {
         using namespace PS;
         auto b = getLocalBounds().toFloat();
-        float padW = b.getWidth() / kPadCols;
-        float padH = b.getHeight() / kPadRows;
+
+        // Enforce square pads: compute the largest square cell that fits
+        float padSide = juce::jmin(b.getWidth() / kPadCols, b.getHeight() / kPadRows);
+        float gridW   = padSide * kPadCols;
+        float gridH   = padSide * kPadRows;
+        // Center the grid within available bounds
+        float originX = b.getX() + (b.getWidth()  - gridW) * 0.5f;
+        float originY = b.getY() + (b.getHeight() - gridH) * 0.5f;
+
+        // Alias as padW/padH so the rest of the function compiles unchanged
+        float padW = padSide;
+        float padH = padSide;
 
         // Depth zone colors mapped to rows (displayRow 0=top=sunlit, 3=bottom=midnight)
         const juce::Colour kZoneColors[4] = {
@@ -432,8 +466,8 @@ private:
             {
                 int pad = row * kPadCols + col;
                 int displayRow = kPadRows - 1 - row; // flip for bottom-left origin
-                float x = col * padW;
-                float y = displayRow * padH;
+                float x = originX + col * padW;
+                float y = originY + displayRow * padH;
                 auto padRect = juce::Rectangle<float>(x, y, padW, padH).reduced(2.0f);
 
                 juce::Colour zoneCol = kZoneColors[displayRow];
@@ -493,14 +527,13 @@ private:
             }
         }
 
-        // Bank badge — top-right corner overlay showing active bank (A/B/C/D).
+        // Bank badge — top-right corner of the grid showing active bank (A/B/C/D).
         // Uses XO Gold so performers can identify bank at a glance during play.
         {
             static const char* kBankNames[] = { "A", "B", "C", "D" };
             juce::String badge = juce::String("BNK ") + kBankNames[(int)currentBank];
-            auto badgeRect = b.withHeight(16.0f).withWidth(48.0f)
-                              .withRightX(b.getRight())
-                              .withY(b.getY());
+            auto badgeRect = juce::Rectangle<float>(
+                originX + gridW - 50.0f, originY, 48.0f, 16.0f);
             g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.75f)); // XO Gold
             g.setFont(juce::Font(9.0f).boldened());
             g.drawText(badge, badgeRect, juce::Justification::centredRight);
@@ -1118,6 +1151,8 @@ private:
 // PlaySurface — Unified 4-zone playing interface
 //
 // Composes the four zones with a header bar for mode/scale/octave controls.
+// Designed to live inside a PlaySurfaceWindow (DocumentWindow popup).
+// Default popup size: 520×520px (square), so pads are 1:1 ratio.
 //
 class PlaySurface : public juce::Component, private juce::Timer
 {
@@ -1270,23 +1305,28 @@ public:
         for (int i = 3; i >= 0; --i)
             stripModeButtons[i].setBounds(header.removeFromRight(48).reduced(2));
 
-        // Bottom strip
+        // Bottom strip — performance strip (full width below main zones)
         auto stripArea = area.removeFromBottom(PS::kZone3H);
         strip.setBounds(stripArea);
 
-        // Main zones (left to right)
+        // Main zones (left to right).
+        // Zone 1 (NoteInputZone): the pad grid is always drawn as a 4x4 square grid
+        // centered within whatever bounds it receives, so we give it a square region
+        // here equal to the available height × height to produce square pads at any size.
+        // Zone 4 (PerformancePads): fixed 100px wide strip on the right.
+        // Zone 2 (OrbitPath): center gets the remainder.
         auto mainArea = area;
-        // Scale zones proportionally
-        float totalW = (float)mainArea.getWidth();
-        float z1frac = (float)PS::kZone1W / (PS::kZone1W + PS::kZone2W + PS::kZone4W);
-        float z2frac = (float)PS::kZone2W / (PS::kZone1W + PS::kZone2W + PS::kZone4W);
+        int mainH = mainArea.getHeight();
 
-        int z1w = (int)(totalW * z1frac);
-        int z4w = (int)(totalW * (1.0f - z1frac - z2frac));
+        // Give Zone 1 a square region (side = mainH so the 4x4 grid fills it exactly)
+        int z1w = mainH;
+        // Zone 4 fixed width
+        int z4w = std::min(PS::kZone4W, mainArea.getWidth() - z1w - 40);
+        z4w = std::max(z4w, 60); // floor so it stays usable
 
         noteInput.setBounds(mainArea.removeFromLeft(z1w));
         perfPads.setBounds(mainArea.removeFromRight(z4w));
-        orbitPath.setBounds(mainArea); // center gets the rest
+        orbitPath.setBounds(mainArea); // center gets the rest (OrbitPath scales)
     }
 
     void paint(juce::Graphics& g) override
@@ -1337,6 +1377,95 @@ private:
     juce::Label      octLabel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaySurface)
+};
+
+//==============================================================================
+// PlaySurfaceWindow — floating popup window containing the PlaySurface.
+//
+// Default size: 520×520px (square, so the 4x4 pad grid renders as square pads).
+// Resizable with setResizeLimits(); aspect ratio is NOT locked by default so the
+// user can expand horizontally to reveal more OrbitPath space, but the pad grid
+// itself always self-centers as squares.
+//
+// Usage in XOlokunEditor:
+//   std::unique_ptr<PlaySurfaceWindow> playSurfaceWindow;
+//
+//   // Create lazily on first toggle press:
+//   if (!playSurfaceWindow)
+//   {
+//       playSurfaceWindow = std::make_unique<PlaySurfaceWindow>();
+//       playSurfaceWindow->getPlaySurface().setMidiCollector(
+//           &processor.getMidiCollector(), 1);
+//   }
+//   playSurfaceWindow->setVisible(true);
+//   playSurfaceWindow->toFront(true);
+//
+class PlaySurfaceWindow : public juce::DocumentWindow
+{
+public:
+    //----------------------------------------------------------------------
+    // Default popup dimensions: 520×520 so each pad cell is 4×4 of 130px squares
+    // (header 32px + strip 80px = 112px overhead; pads get ~408px => ~102px/pad).
+    static constexpr int kDefaultW  = 520;
+    static constexpr int kDefaultH  = 520;
+    static constexpr int kMinSize   = 320;
+    static constexpr int kMaxW      = 1200;
+    static constexpr int kMaxH      = 1200;
+
+    PlaySurfaceWindow()
+        : juce::DocumentWindow (
+              "PlaySurface",
+              juce::Colour (PS::kSurfaceBg),
+              juce::DocumentWindow::allButtons,
+              true /* addToDesktop */)
+    {
+        setUsingNativeTitleBar (true);
+        setResizable (true, true);
+        setResizeLimits (kMinSize, kMinSize, kMaxW, kMaxH);
+
+        // Own the PlaySurface content component.
+        // resizeToFitContent=false: we size the window explicitly via centreWithSize().
+        auto* content = new PlaySurface();
+        setContentOwned (content, true);
+
+        // Position initially centered on the main screen.
+        centreWithSize (kDefaultW, kDefaultH);
+
+        // Keep the window behind the plugin editor on first open.
+        setAlwaysOnTop (false);
+    }
+
+    ~PlaySurfaceWindow() override = default;
+
+    //----------------------------------------------------------------------
+    // Returns a reference to the embedded PlaySurface for wiring MIDI etc.
+    PlaySurface& getPlaySurface()
+    {
+        return *static_cast<PlaySurface*>(getContentComponent());
+    }
+
+    //----------------------------------------------------------------------
+    // Closing hides the window rather than deleting it so MIDI state,
+    // mode selections, and bank selections survive hide/show cycles.
+    void closeButtonPressed() override
+    {
+        setVisible (false);
+    }
+
+    //----------------------------------------------------------------------
+    // Escape key closes the popup (hides it).
+    bool keyPressed (const juce::KeyPress& key) override
+    {
+        if (key == juce::KeyPress::escapeKey)
+        {
+            setVisible (false);
+            return true;
+        }
+        return juce::DocumentWindow::keyPressed (key);
+    }
+
+private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaySurfaceWindow)
 };
 
 } // namespace xolokun

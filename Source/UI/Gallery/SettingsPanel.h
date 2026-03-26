@@ -308,6 +308,25 @@ public:
     }
 
     //==========================================================================
+    // parentHierarchyChanged — called once the component is added to the UI tree.
+    // W04 fix: the constructor tries to apply the persisted theme via
+    // getTopLevelComponent(), but that returns nullptr at construction time.
+    // Re-apply the theme here, when the hierarchy is guaranteed to exist.
+    void parentHierarchyChanged() override
+    {
+        // Sync toggle to the persisted (already-read) darkMode value.
+        darkModeToggle.setToggleState(GalleryColors::darkMode(),
+                                      juce::dontSendNotification);
+        // Apply theme to the top-level component tree now that we are in it.
+        if (auto* top = getTopLevelComponent())
+        {
+            if (auto* laf = dynamic_cast<GalleryLookAndFeel*>(&top->getLookAndFeel()))
+                laf->applyTheme();
+            top->repaint();
+        }
+    }
+
+    //==========================================================================
     // lookAndFeelChanged — refresh colour-dependent labels when theme switches.
     void lookAndFeelChanged() override
     {

@@ -229,6 +229,41 @@ public:
     }
 
     //-- Parameters ------------------------------------------------------------
+    // W07 fix: addParameters — called by XOlokunProcessor::createParameterLayout()
+    // to register all osmo_ params in the shared APVTS.
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_permeability", 1}, "Permeability",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_selectivity", 1}, "Selectivity",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_reactivity", 1}, "Reactivity",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_memory", 1}, "Memory",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+
+        // Macro mapping (M1-M4)
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_macro1", 1}, "PERMEABILITY",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_macro2", 1}, "SELECTIVITY",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_macro3", 1}, "REACTIVITY",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"osmo_macro4", 1}, "MEMORY",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         juce::AudioProcessorValueTreeState::ParameterLayout layout;

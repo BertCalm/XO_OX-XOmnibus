@@ -101,8 +101,8 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         // Phase 4 engine aliases
         { "XOverlap",    "Overlap"   },
         { "XOutwit",     "Outwit"    },
-        // FUSION Quad rename
-        { "Oasis",       "Okeanos"   },
+        // NOTE: "Oasis" → "Okeanos" alias removed — new Oasis engine (Fusion EP) now uses this name.
+        // Old Okeanos presets should reference "Okeanos" directly.
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
