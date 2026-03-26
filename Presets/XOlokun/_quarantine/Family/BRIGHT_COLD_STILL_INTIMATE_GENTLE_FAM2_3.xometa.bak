@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.197
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.938,
+    "density": 0.333,
+    "movement": 0.029,
+    "space": 0.091,
+    "warmth": 0.025
+  },
+  "engines": [
+    "Obbligato",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.481,
+    "COUPLING": 0.197,
+    "MOVEMENT": 0.029,
+    "SPACE": 0.091
+  },
+  "mood": "Family",
+  "name": "BRIGHT COLD STILL INTIMATE ... (Obbligato I)",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.481,
+      "macro_coupling": 0.197,
+      "macro_movement": 0.029,
+      "macro_space": 0.091
+    },
+    "Osteria": {
+      "macro_character": 0.48,
+      "macro_coupling": 0.201,
+      "macro_movement": 0.065,
+      "macro_space": 0.114
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "still",
+    "intimate",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

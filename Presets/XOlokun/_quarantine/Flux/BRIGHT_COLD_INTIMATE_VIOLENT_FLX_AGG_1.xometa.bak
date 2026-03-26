@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Opal",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.85
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.954,
+    "brightness": 0.976,
+    "density": 0.363,
+    "movement": 0.448,
+    "space": 0.112,
+    "warmth": 0.117
+  },
+  "engines": [
+    "Organon",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.67,
+    "COUPLING": 0.907,
+    "MOVEMENT": 0.448,
+    "SPACE": 0.112
+  },
+  "mood": "Flux",
+  "name": "Frost Force",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.745,
+      "macro_coupling": 0.875,
+      "macro_movement": 0.491,
+      "macro_space": 0.15
+    },
+    "Organon": {
+      "macro_character": 0.595,
+      "macro_coupling": 0.907,
+      "macro_movement": 0.465,
+      "macro_space": 0.117
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "bright",
+    "cold",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

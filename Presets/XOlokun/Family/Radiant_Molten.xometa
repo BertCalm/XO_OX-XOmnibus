@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Ole",
-        "type": "FILTER_LINK",
+        "type": "FilterToFilter",
         "amount": 0.562
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, warm sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Warm and familiar, shimmering, warm sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

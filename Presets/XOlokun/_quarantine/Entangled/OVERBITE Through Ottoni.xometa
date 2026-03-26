@@ -6,7 +6,7 @@
         "amount": 0.612,
         "engineA": "Ottoni",
         "engineB": "Overbite",
-        "type": "Env->Level"
+        "type": "EnvToDecay"
       }
     ]
   },

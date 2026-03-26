@@ -5,23 +5,23 @@
       {
         "amount": 0.849,
         "description": "ORCA echo depth routes into OSTERIA hall reverb; OWLFISH shimmer expands with ORCA pod sync intensity",
-        "source": "Orca",
-        "target": "Osteria",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Orca",
+        "engineB": "Osteria"
       },
       {
         "amount": 0.628,
         "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch",
-        "source": "Orca",
-        "target": "Owlfish",
-        "type": "RhythmToBlend"
+        "type": "RhythmToBlend",
+        "engineA": "Orca",
+        "engineB": "Owlfish"
       },
       {
         "amount": 0.569,
         "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer",
-        "source": "Osteria",
-        "target": "Owlfish",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "Owlfish"
       }
     ]
   },

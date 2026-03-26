@@ -51,7 +51,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Ohm",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.55
       },
       {

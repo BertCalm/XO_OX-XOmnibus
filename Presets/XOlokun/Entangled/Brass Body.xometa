@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Oblong",
-        "target": "Ottoni",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch",
+        "engineA": "Oblong",
+        "engineB": "Ottoni"
       }
     ]
   },

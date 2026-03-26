@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Odyssey",
-        "type": "RHYTHM_GATE",
+        "type": "AmpToChoke",
         "amount": 0.63
       }
     ]

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.96
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.662,
+    "brightness": 0.521,
+    "density": 0.887,
+    "movement": 0.031,
+    "space": 0.653,
+    "warmth": 0.918
+  },
+  "engines": [
+    "Obscura",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.673,
+    "MOVEMENT": 0.031,
+    "SPACE": 0.653
+  },
+  "mood": "Atmosphere",
+  "name": "Poised Mahogany",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.72,
+      "macro_coupling": 0.673,
+      "macro_movement": 0.031,
+      "macro_space": 0.653
+    },
+    "Ouroboros": {
+      "macro_character": 0.745,
+      "macro_coupling": 0.705,
+      "macro_movement": 0.0,
+      "macro_space": 0.595
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Orphica",
-        "type": "SPATIAL_BLEND",
+        "type": "AudioToWavetable",
         "amount": 0.649
       }
     ]

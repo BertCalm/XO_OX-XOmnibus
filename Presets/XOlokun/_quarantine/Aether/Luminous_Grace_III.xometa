@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Orphica",
-        "type": "LFO_SYNC",
+        "type": "LFOToPitch",
         "amount": 0.71
       }
     ]

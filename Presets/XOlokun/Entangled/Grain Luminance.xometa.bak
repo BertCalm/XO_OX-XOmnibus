@@ -1,0 +1,79 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "HARMONIC_BLEND"
+      },
+      {
+        "amount": 0.4,
+        "engineA": "Opal",
+        "engineB": "Optic",
+        "type": "RhythmGate"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OPTIC brightness envelope feeding OPAL's grain scatter — each cloud of particles lit from within by reactive phosphor.",
+  "dna": {
+    "aggression": 0.223,
+    "brightness": 0.81,
+    "density": 0.445,
+    "movement": 0.7,
+    "space": 0.8,
+    "warmth": 0.345
+  },
+  "engines": [
+    "Optic",
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Grain Luminance",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.03,
+      "opal_ampRelease": 1.5,
+      "opal_filterCutoff": 2800.0,
+      "opal_filterReso": 0.3
+    },
+    "Optic": {
+      "optic_autoPulse": 0,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.6,
+      "optic_pulseRate": 0.45,
+      "optic_pulseShape": 0.5,
+      "optic_reactivity": 0.7,
+      "optic_vizFeedback": 0.5,
+      "optic_vizIntensity": 0.65,
+      "optic_vizMode": 1,
+      "optic_vizSpeed": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "optic",
+    "opal",
+    "phosphor",
+    "visual-modulation",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

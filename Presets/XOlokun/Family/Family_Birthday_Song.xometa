@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.34,
-      "destination": "Obbligato",
-      "source": "Ole",
-      "type": "EnvToMorph"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.34,
+        "type": "EnvToMorph",
+        "engineA": "Ole",
+        "engineB": "Obbligato"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "DRAMA builds. Sweep past 0.7 and the husbands enter the room.",

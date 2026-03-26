@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obbligato",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.829
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.671,
+    "brightness": 0.935,
+    "density": 0.023,
+    "movement": 0.489,
+    "space": 0.957,
+    "warmth": 0.871
+  },
+  "engines": [
+    "Obbligato",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "COUPLING": 0.354,
+    "MOVEMENT": 0.512,
+    "SPACE": 0.968
+  },
+  "mood": "Family",
+  "name": "Golden Expanse 2",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.894,
+      "macro_coupling": 0.371,
+      "macro_movement": 0.512,
+      "macro_space": 0.975
+    },
+    "Organon": {
+      "macro_character": 0.906,
+      "macro_coupling": 0.336,
+      "macro_movement": 0.511,
+      "macro_space": 0.96
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "sparse",
+    "vast",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

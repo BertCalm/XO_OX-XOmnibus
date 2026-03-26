@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Ocelot",
         "engineB": "Overworld",
-        "type": "EnvToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.45,
         "engineA": "Overworld",
         "engineB": "Ocelot",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

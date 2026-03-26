@@ -6,7 +6,7 @@
         "amount": 0.523,
         "engineA": "Obsidian",
         "engineB": "Overworld",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.604,
+        "engineA": "Oracle",
+        "engineB": "Orphica",
+        "type": "FREQUENCY_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Prophetic grain harp. ORACLE stochastic micro-gestures shimmer through ORPHICA.",
+  "dna": {
+    "aggression": 0.348,
+    "brightness": 0.599,
+    "density": 0.588,
+    "movement": 0.715,
+    "space": 0.73,
+    "warmth": 0.479
+  },
+  "engines": [
+    "Oracle",
+    "Orphica"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Augury Spectral",
+  "parameters": {
+    "Oracle": {
+      "oracle_aggression": 0.37,
+      "oracle_brightness": 0.367,
+      "oracle_density": 0.611,
+      "oracle_level": 0.737,
+      "oracle_movement": 0.683,
+      "oracle_space": 0.642,
+      "oracle_warmth": 0.465
+    },
+    "Orphica": {
+      "orph_aggression": 0.21,
+      "orph_brightness": 0.758,
+      "orph_density": 0.4,
+      "orph_level": 0.749,
+      "orph_movement": 0.765,
+      "orph_space": 0.68,
+      "orph_warmth": 0.465
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oracle",
+    "orphica",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

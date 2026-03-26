@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Odyssey",
-        "target": "Owlfish",
-        "type": "SPECTRAL_TRANSFER"
+        "type": "EnvToMorph",
+        "engineA": "Odyssey",
+        "engineB": "Owlfish"
       }
     ]
   },

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9736,
-        "source": "Ottoni",
-        "target": "OddOscar",
-        "type": "FORMANT_BRIDGE"
+        "type": "EnvToMorph",
+        "engineA": "Ottoni",
+        "engineB": "OddOscar"
       }
     ]
   },

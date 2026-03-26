@@ -6,7 +6,7 @@
         "amount": 0.87,
         "engineA": "Overlap",
         "engineB": "Ouroboros",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph"
       }
     ]
   },

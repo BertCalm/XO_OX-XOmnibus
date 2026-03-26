@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oblong",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.64
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.32,
+    "density": 0.84,
+    "movement": 0.67,
+    "space": 0.19,
+    "warmth": 0.96
+  },
+  "engines": [
+    "Organon",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.96,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.73,
+    "SPACE": 0.25
+  },
+  "mood": "Entangled",
+  "name": "Organ Slab",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.69,
+      "macro_space": 0.19,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Organon": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.77,
+      "macro_space": 0.31
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, warm, dense bass. Macro sweeps reveal shifting timbral landscapes."
+}

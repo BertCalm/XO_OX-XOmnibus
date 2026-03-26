@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.733
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.071,
+    "brightness": 0.549,
+    "density": 0.033,
+    "movement": 0.072,
+    "space": 0.634,
+    "warmth": 0.046
+  },
+  "engines": [
+    "Orbital",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.298,
+    "COUPLING": 0.934,
+    "MOVEMENT": 0.072,
+    "SPACE": 0.634
+  },
+  "mood": "Aether",
+  "name": "COLD STILL SPARSE BALANCED ... (Orbital I)",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.298,
+      "macro_coupling": 0.934,
+      "macro_movement": 0.072,
+      "macro_space": 0.634
+    },
+    "Organon": {
+      "macro_character": 0.311,
+      "macro_coupling": 0.914,
+      "macro_movement": 0.089,
+      "macro_space": 0.623
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

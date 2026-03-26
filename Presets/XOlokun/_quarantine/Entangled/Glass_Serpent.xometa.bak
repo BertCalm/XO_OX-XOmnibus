@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.76
+      }
+    ]
+  },
+  "description": "ORPHICA's harmonic folding braids with OUROBOROS's self-consuming loop — brightness 0.90.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.9,
+    "density": 0.55,
+    "movement": 0.64,
+    "space": 0.7,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Orphica",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.76,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.62,
+    "SPACE": 0.68
+  },
+  "mood": "Entangled",
+  "name": "Glass Serpent",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.76,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.62,
+      "macro_space": 0.68
+    },
+    "Ouroboros": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.7,
+      "macro_space": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "orphica",
+    "ouroboros",
+    "harmonic",
+    "glass"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

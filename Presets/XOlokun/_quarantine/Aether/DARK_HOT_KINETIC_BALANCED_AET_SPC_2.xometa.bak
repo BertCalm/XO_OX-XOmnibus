@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.55
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.982,
+    "brightness": 0.113,
+    "density": 0.559,
+    "movement": 0.984,
+    "space": 0.396,
+    "warmth": 0.884
+  },
+  "engines": [
+    "Orbital",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.498,
+    "COUPLING": 0.876,
+    "MOVEMENT": 0.984,
+    "SPACE": 0.396
+  },
+  "mood": "Aether",
+  "name": "DARK HOT KINETIC BALANCED A... (Orbital)",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.527,
+      "macro_coupling": 0.879,
+      "macro_movement": 0.969,
+      "macro_space": 0.389
+    },
+    "Orbital": {
+      "macro_character": 0.498,
+      "macro_coupling": 0.876,
+      "macro_movement": 0.984,
+      "macro_space": 0.396
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

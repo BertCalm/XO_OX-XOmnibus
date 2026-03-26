@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.634,
+        "engineA": "Obbligato",
+        "engineB": "Oceanic",
+        "type": "LFO->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OCEANIC separation engine holds OBBLIGATO's dual voices in obligate aquatic suspension via BOND.",
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.603,
+    "density": 0.312,
+    "movement": 0.86,
+    "space": 0.971,
+    "warmth": 0.597
+  },
+  "engines": [
+    "Obbligato",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Coral Double Reed × Oceanic",
+  "parameters": {
+    "obbl_breathA": 0.724,
+    "obbl_breathB": 0.716,
+    "obbl_macroBond": 0.699
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "oceanic",
+    "bioluminescent",
+    "aquatic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Overworld",
+        "type": "PITCH_SYNC",
+        "amount": 0.885
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.104,
+    "brightness": 0.382,
+    "density": 0.403,
+    "movement": 0.083,
+    "space": 0.928,
+    "warmth": 0.892
+  },
+  "engines": [
+    "Overdub",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.254,
+    "COUPLING": 0.669,
+    "MOVEMENT": 0.083,
+    "SPACE": 0.928
+  },
+  "mood": "Flux",
+  "name": "Ember Dome",
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.645,
+      "macro_coupling": 0.887,
+      "macro_movement": 0.074,
+      "macro_space": 0.988,
+      "dub_lfoDepth": 0.12
+    },
+    "Overworld": {
+      "macro_character": 0.587,
+      "macro_coupling": 0.911,
+      "macro_movement": 0.086,
+      "macro_space": 0.939
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "warm",
+    "vast",
+    "gentle",
+    "suspended-chaos"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, warm, still atmosphere. Let it breathe — the space is the instrument."
+}

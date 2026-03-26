@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Lateral Bond",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouie"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Lateral line bond between two hammerheads sharing electroreceptive data.",
+  "tags": [
+    "entangled",
+    "lateral",
+    "shared",
+    "electroreceptive"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.55,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.04,
+      "ouie_ampDec": 0.4,
+      "ouie_ampSus": 0.72,
+      "ouie_ampRel": 0.88,
+      "ouie_filterACutoff": 4200,
+      "ouie_filterARes": 0.38,
+      "ouie_filterBCutoff": 4800,
+      "ouie_filterBRes": 0.35,
+      "ouie_hammerDepth": 0.6,
+      "ouie_hammerPos": 0.55,
+      "ouie_lfo1Rate": 0.9,
+      "ouie_lfo1Depth": 0.25,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.6,
+      "ouie_lfo2Depth": 0.2,
+      "ouie_portaAuto": 0.22,
+      "ouie_macroHammer": 0.6,
+      "ouie_macroCartilage": 0.6,
+      "ouie_macroAmpullae": 0.75,
+      "ouie_macroCurrent": 0.68
+    }
+  },
+  "macros": {
+    "HAMMER": 0.6,
+    "CARTILAGE": 0.6,
+    "AMPULLAE": 0.75,
+    "CURRENT": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

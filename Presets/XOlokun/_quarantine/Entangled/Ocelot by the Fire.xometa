@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Osteria",
         "engineB": "Ocelot",
-        "type": "Env->Amp"
+        "type": "AmpToFilter"
       }
     ]
   },

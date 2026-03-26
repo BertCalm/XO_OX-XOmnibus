@@ -5,9 +5,9 @@
       {
         "amount": 0.47,
         "description": "Orca drives OddfeliX via SpectralMorph",
-        "source": "Orca",
-        "target": "OddfeliX",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "OddfeliX"
       }
     ]
   },

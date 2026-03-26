@@ -5,9 +5,9 @@
       {
         "amount": 0.849,
         "description": "Osteria drives Overbite via RhythmToBlend",
-        "source": "Osteria",
-        "target": "Overbite",
-        "type": "RhythmToBlend"
+        "type": "RhythmToBlend",
+        "engineA": "Osteria",
+        "engineB": "Overbite"
       }
     ]
   },

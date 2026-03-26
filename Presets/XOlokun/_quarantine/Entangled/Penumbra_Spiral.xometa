@@ -23,7 +23,7 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.045,
@@ -42,7 +42,7 @@
       {
         "engineA": "Onset",
         "engineB": "Ottoni",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.657
       }
     ]

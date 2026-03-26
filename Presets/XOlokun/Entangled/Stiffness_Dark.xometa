@@ -6,7 +6,7 @@
         "amount": 0.734,
         "engineA": "Obscura",
         "engineB": "Obsidian",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },

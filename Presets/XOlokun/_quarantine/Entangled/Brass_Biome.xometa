@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.74
       }
     ]
@@ -60,5 +60,6 @@
     "ecosystem"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

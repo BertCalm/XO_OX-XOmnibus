@@ -6,7 +6,7 @@
         "amount": 0.63,
         "engineA": "Ohm",
         "engineB": "Obsidian",
-        "type": "Spectral->Harmonic"
+        "type": "EnvToMorph"
       }
     ]
   },

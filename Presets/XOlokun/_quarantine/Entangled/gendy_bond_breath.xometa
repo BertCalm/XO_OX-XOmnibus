@@ -6,7 +6,7 @@
         "amount": 0.87,
         "engineA": "Obbligato",
         "engineB": "Oracle",
-        "type": "Spectral->Harmonic"
+        "type": "EnvToMorph"
       }
     ]
   },

@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Odyssey",
+        "type": "BREATH_COUPLING",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "The obligate bond sustained across drift distance — two reeds in FM orbit",
+  "engines": [
+    "Odyssey",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Obligate Voyage",
+  "parameters": {
+    "Odyssey": {},
+    "Obbligato": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "obbligato",
+    "wavetable"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

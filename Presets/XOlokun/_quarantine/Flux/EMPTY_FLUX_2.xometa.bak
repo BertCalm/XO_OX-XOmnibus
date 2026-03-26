@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Opal",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.6079
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8833,
+    "brightness": 0.2507,
+    "density": 0.033,
+    "movement": 0.6611,
+    "space": 0.0258,
+    "warmth": 0.1745
+  },
+  "engines": [
+    "Outwit",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1091,
+    "COUPLING": 0.9454,
+    "MOVEMENT": 0.5038,
+    "SPACE": 0.0434
+  },
+  "mood": "Flux",
+  "name": "EMPTY FLUX 2",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.5261,
+      "macro_coupling": 0.4762,
+      "macro_movement": 0.7457,
+      "macro_space": 0.778
+    },
+    "Outwit": {
+      "macro_character": 0.3238,
+      "macro_coupling": 0.0524,
+      "macro_movement": 0.1742,
+      "macro_space": 0.7417
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

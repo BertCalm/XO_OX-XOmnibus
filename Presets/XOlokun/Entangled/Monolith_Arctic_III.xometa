@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Osprey",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.142
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, crystalline sound. Responds expressively to velocity and modulation."
+  "description": "Interwoven and coupled, dark, crystalline sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

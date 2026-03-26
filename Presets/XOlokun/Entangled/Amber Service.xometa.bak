@@ -1,0 +1,97 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.686,
+        "description": "Osteria drives Oblong via EnvToMod",
+        "source": "Osteria",
+        "target": "Oblong",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OBLONG's amber warmth matches OSTERIA's porto tone — two warm-spectrum engines in sympathy, the session lit from both sides.",
+  "dna": {
+    "aggression": 0.339,
+    "brightness": 0.639,
+    "density": 0.587,
+    "movement": 0.369,
+    "space": 0.569,
+    "warmth": 0.718
+  },
+  "engines": [
+    "Osteria",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Amber Service",
+  "parameters": {
+    "Oblong": {
+      "bob_attack": 0.019,
+      "bob_fltCutoff": 0.467,
+      "bob_fltReso": 0.321,
+      "bob_lfoRate": 0.212,
+      "bob_macroCharacter": 0.001,
+      "bob_macroCoupling": 0.107,
+      "bob_release": 1.0,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Osteria": {
+      "osteria_attack": 0.244,
+      "osteria_bassLevel": 0.751,
+      "osteria_blendMode": 0.18,
+      "osteria_chorus": 0.339,
+      "osteria_decay": 0.713,
+      "osteria_ensWidth": 0.565,
+      "osteria_filterEnvDepth": 0.178,
+      "osteria_hall": 0.506,
+      "osteria_harmLevel": 0.602,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.576,
+      "osteria_murmur": 0.44,
+      "osteria_oceanBleed": 0.262,
+      "osteria_patina": 0.384,
+      "osteria_porto": 0.47,
+      "osteria_qBassShore": 0.611,
+      "osteria_qElastic": 0.722,
+      "osteria_qHarmShore": 0.495,
+      "osteria_qMelShore": 0.248,
+      "osteria_qMemory": 0.439,
+      "osteria_qRhythmShore": 0.224,
+      "osteria_qStretch": 0.379,
+      "osteria_qSympathy": 0.624,
+      "osteria_release": 1.39,
+      "osteria_rhythmLevel": 0.325,
+      "osteria_sessionDelay": 0.171,
+      "osteria_smoke": 0.294,
+      "osteria_sustain": 0.586,
+      "osteria_tape": 0.147,
+      "osteria_tavernMix": 0.581,
+      "osteria_tavernShore": 0.492,
+      "osteria_warmth": 0.893
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "oblong"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

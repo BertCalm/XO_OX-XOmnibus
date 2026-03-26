@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7678
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3569,
+    "brightness": 0.4063,
+    "density": 0.8879,
+    "movement": 0.8838,
+    "space": 0.038,
+    "warmth": 0.0418
+  },
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4062,
+    "COUPLING": 0.7678,
+    "MOVEMENT": 0.8916,
+    "SPACE": 0.038
+  },
+  "mood": "Aether",
+  "name": "Signal Heavy 2",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.3867,
+      "macro_coupling": 0.8651,
+      "macro_movement": 0.8741,
+      "macro_space": 0.042
+    },
+    "Opal": {
+      "macro_character": 0.4258,
+      "macro_coupling": 0.8842,
+      "macro_movement": 0.9091,
+      "macro_space": 0.0361
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "cold",
+    "kinetic",
+    "dense",
+    "mechanical"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

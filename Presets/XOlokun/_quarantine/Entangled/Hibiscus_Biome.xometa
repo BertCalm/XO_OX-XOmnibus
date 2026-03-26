@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Organon",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.76
       }
     ]
@@ -60,5 +60,6 @@
     "tropical"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

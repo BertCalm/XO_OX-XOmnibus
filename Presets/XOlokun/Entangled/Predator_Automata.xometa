@@ -6,7 +6,7 @@
         "amount": 0.715,
         "engineA": "Outwit",
         "engineB": "Orca",
-        "type": "SYNC_LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

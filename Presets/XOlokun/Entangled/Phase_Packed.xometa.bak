@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7722,
+        "source": "Obscura",
+        "target": "Orca",
+        "type": "SPECTRAL_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Dark Kinetic Dense Gentle character entanglement — OBSCURA × ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.0622,
+    "density": 0.9096,
+    "movement": 0.902,
+    "space": 0.533,
+    "warmth": 0.4787
+  },
+  "engines": [
+    "Obscura",
+    "Orca"
+  ],
+  "macroLabels": [
+    "SHADOW",
+    "VEIL",
+    "BLUR",
+    "MIST"
+  ],
+  "macros": {
+    "CHARACTER": 0.2705,
+    "COUPLING": 0.7722,
+    "MOVEMENT": 0.902,
+    "SPACE": 0.533
+  },
+  "mood": "Entangled",
+  "name": "Phase Packed",
+  "parameters": {
+    "Obscura": {
+      "amp_attack": 0.1108,
+      "amp_release": 0.435,
+      "coupling_level": 0.5815,
+      "density": 0.8873,
+      "drive": 0.1058,
+      "filter_cutoff": 0.2773,
+      "filter_resonance": 0.1725,
+      "macro_character": 0.5235,
+      "macro_coupling": 0.6018,
+      "macro_movement": 0.8992,
+      "macro_space": 0.5479,
+      "output_level": 0.964,
+      "reverb_mix": 0.4543,
+      "reverb_size": 0.5551
+    },
+    "Orca": {
+      "amp_attack": 0.1134,
+      "amp_release": 0.4458,
+      "coupling_level": 0.5855,
+      "density": 0.9326,
+      "drive": 0.1241,
+      "filter_cutoff": 0.2765,
+      "filter_resonance": 0.1621,
+      "macro_character": 0.5065,
+      "macro_coupling": 0.6189,
+      "macro_movement": 0.9411,
+      "macro_space": 0.5492,
+      "output_level": 0.9294,
+      "reverb_mix": 0.4641,
+      "reverb_size": 0.5342
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "kinetic",
+    "dense",
+    "gentle",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,59 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Osteria",
+        "engineB": "Ouroboros",
+        "type": "Audio->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Ouroboros cycles beneath floorboards of the osteria — ancient depths in an old building.",
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.53,
+    "density": 0.6,
+    "movement": 0.52,
+    "space": 0.54,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Osteria",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.55
+  },
+  "mood": "Entangled",
+  "name": "Serpent in the Cellar",
+  "parameters": {
+    "Osteria": {},
+    "Ouroboros": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "osteria",
+    "ouroboros",
+    "cyclic",
+    "deep",
+    "ancient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

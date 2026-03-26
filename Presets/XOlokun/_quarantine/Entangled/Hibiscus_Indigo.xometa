@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Oracle",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.74
       }
     ]
@@ -60,5 +60,6 @@
     "hibiscus"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

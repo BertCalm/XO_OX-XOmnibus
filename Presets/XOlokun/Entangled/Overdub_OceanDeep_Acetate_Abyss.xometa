@@ -2,21 +2,40 @@
   "schema_version": 1,
   "name": "Acetate Abyss",
   "mood": "Entangled",
-  "engines": ["Overdub", "OceanDeep"],
+  "engines": [
+    "Overdub",
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "OVERDUB as the surface signal — tape-warm, dub groove — with OCEANDEEP as its deep-pressure shadow. OVERDUB plays what is heard above the thermocline; OCEANDEEP shapes what exists beneath it. The coupling carries the brightness envelope from OVERDUB's filter down into OCEANDEEP's hydrostatic compressor.",
-  "tags": ["overdub", "oceandeep", "entangled", "coupling", "deep", "tape", "ocean", "transcendental"],
+  "tags": [
+    "overdub",
+    "oceandeep",
+    "entangled",
+    "coupling",
+    "deep",
+    "tape",
+    "ocean",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-2: The Echo Serves the Silence"],
+    "scripture": [
+      "Scripture VII-2: The Echo Serves the Silence"
+    ],
     "revelation": "The dub signal and the ocean deep signal are the same note at two depths — the high pressure changes the timbre but not the intention.",
     "diagnosis": "Acetate Abyss is an Entangled preset pairing OVERDUB's tape character with OCEANDEEP's Darkness Filter Ceiling (B031). When OVERDUB's filter opens on a hard hit, the brightness coupling feeds OCEANDEEP's exciter, briefly lifting the abyss ceiling."
   },
-  "macroLabels": ["SURFACE TONE", "DEPTH PRESSURE", "COUPLING BRIDGE", "REVERB BLEND"],
-  "couplingIntensity": "Medium",
+  "macroLabels": [
+    "SURFACE TONE",
+    "DEPTH PRESSURE",
+    "COUPLING BRIDGE",
+    "REVERB BLEND"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.18,
@@ -75,10 +94,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Overdub",
-        "target": "OceanDeep",
-        "type": "FilterEnvelope",
-        "amount": 0.55
+        "type": "FilterToFilter",
+        "amount": 0.55,
+        "engineA": "Overdub",
+        "engineB": "OceanDeep"
       }
     ]
   },

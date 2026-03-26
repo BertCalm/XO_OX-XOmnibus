@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-16",
   "description": "Cryptobiosis — the organism suspends metabolism entirely, waiting for conditions to permit revival. ORGANON's metabolicRate at floor, lockIn maximum to prevent accidental activation. OPAL's granular synthesis models the spore coat: thousands of tiny grains encapsulating a suspended future. The coupling is one-directional: OPAL feeds ORGANON's membrane just enough information to remember it's alive.",
   "dna": {

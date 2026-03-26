@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Origami",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.763
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

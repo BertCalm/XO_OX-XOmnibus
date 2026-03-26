@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Octopus",
-        "target": "Organon",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Octopus",
+        "engineB": "Organon"
       }
     ]
   },

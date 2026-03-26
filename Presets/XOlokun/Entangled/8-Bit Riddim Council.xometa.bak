@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "8-Bit Riddim Council",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Onset",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Dancehall-influenced beat architecture. ONSET lays the one-drop pattern, OBLONG decorates offbeats with amber warmth, OVERWORLD's FM bass occupies the low register. Dub space grows between hits.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "onset",
+    "overworld",
+    "marquee",
+    "riddim",
+    "dub",
+    "chiptune"
+  ],
+  "macroLabels": [
+    "RIDDIM",
+    "WEIGHT",
+    "FM DEPTH",
+    "DUB SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 100,
+  "dna": {
+    "brightness": 0.683,
+    "warmth": 0.55,
+    "movement": 0.667,
+    "density": 0.633,
+    "space": 0.55,
+    "aggression": 0.533
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_swing": 0.5,
+      "bob_density": 0.55,
+      "bob_warmth": 0.7,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Onset": {
+      "perc_v1_level": 0.9,
+      "perc_v2_level": 0.5,
+      "perc_macro_punch": 0.65,
+      "perc_macro_space": 0.5
+    },
+    "Overworld": {
+      "ow_eraCross": 0.25,
+      "ow_subOct": 1,
+      "ow_filterCut": 4000.0,
+      "ow_reverbMix": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblong",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Oblong",
+        "engineB": "Overworld",
+        "type": "Rhythm->Blend",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Overworld",
+        "engineB": "Onset",
+        "type": "Pitch->Velocity",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

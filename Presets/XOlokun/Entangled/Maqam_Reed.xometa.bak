@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.681,
+        "engineA": "Oracle",
+        "engineB": "Obbligato",
+        "type": "FILTER_COUPLING"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Oracle breathes necessity. Prophecy through OBBLIGATO wind bond obligation.",
+  "dna": {
+    "aggression": 0.443,
+    "brightness": 0.502,
+    "density": 0.676,
+    "movement": 0.668,
+    "space": 0.674,
+    "warmth": 0.531
+  },
+  "engines": [
+    "Oracle",
+    "Obbligato"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Maqam Reed",
+  "parameters": {
+    "Obbligato": {
+      "obbl_aggression": 0.521,
+      "obbl_brightness": 0.53,
+      "obbl_density": 0.612,
+      "obbl_level": 0.721,
+      "obbl_movement": 0.592,
+      "obbl_space": 0.644,
+      "obbl_warmth": 0.709
+    },
+    "Oracle": {
+      "oracle_aggression": 0.393,
+      "oracle_brightness": 0.326,
+      "oracle_density": 0.6,
+      "oracle_level": 0.886,
+      "oracle_movement": 0.659,
+      "oracle_space": 0.756,
+      "oracle_warmth": 0.467
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oracle",
+    "obbligato",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.5916
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5191,
+    "brightness": 0.0486,
+    "density": 0.0773,
+    "movement": 0.406,
+    "space": 0.9632,
+    "warmth": 0.0954
+  },
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0776,
+    "COUPLING": 0.6573,
+    "MOVEMENT": 0.3798,
+    "SPACE": 0.8348
+  },
+  "mood": "Flux",
+  "name": "Expanse Charcoal",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.1088,
+      "macro_coupling": 0.4998,
+      "macro_movement": 0.497,
+      "macro_space": 0.8287
+    },
+    "Overworld": {
+      "macro_character": 0.0776,
+      "macro_coupling": 0.6573,
+      "macro_movement": 0.3798,
+      "macro_space": 0.8348
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "low-warmth",
+    "low-density",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

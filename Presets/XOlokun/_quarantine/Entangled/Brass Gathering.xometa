@@ -6,7 +6,7 @@
         "amount": 0.635,
         "engineA": "Ohm",
         "engineB": "Ottoni",
-        "type": "Env->Level"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -65,7 +65,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Osprey",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.6
       }
     ]

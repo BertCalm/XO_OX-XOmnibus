@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.64
+      }
+    ]
+  },
+  "description": "Oracle shifts Obscura's resonant frequencies into cold augury — reading the stiffness of ice.",
+  "dna": {
+    "aggression": 0.11,
+    "brightness": 0.14,
+    "density": 0.16,
+    "movement": 0.58,
+    "space": 0.87,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "COUPLING": 0.64,
+    "MOVEMENT": 0.58,
+    "SPACE": 0.87
+  },
+  "mood": "Entangled",
+  "name": "Cold Augur",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.19,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.53,
+      "macro_space": 0.9
+    },
+    "Oracle": {
+      "macro_character": 0.22,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.58,
+      "macro_space": 0.87
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "augur",
+    "spectral"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

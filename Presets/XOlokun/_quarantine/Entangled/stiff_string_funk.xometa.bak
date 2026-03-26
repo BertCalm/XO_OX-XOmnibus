@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "MODULATION_SHARE",
+        "amount": 0.684
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.7,
+    "density": 0.55,
+    "movement": 0.85,
+    "space": 0.35,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Obscura",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.684,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.575
+  },
+  "mood": "Entangled",
+  "name": "Stiff String Funk",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.73,
+      "macro_space": 0.53
+    },
+    "Obscura": {
+      "macro_character": 0.37,
+      "macro_coupling": 0.57,
+      "macro_movement": 0.27,
+      "macro_space": 0.62
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "funk"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

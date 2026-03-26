@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Owlfish",
+        "type": "PITCH_SYNC",
+        "amount": 0.609
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5785,
+    "brightness": 0.0965,
+    "density": 0.5519,
+    "movement": 0.9197,
+    "space": 0.8933,
+    "warmth": 0.028
+  },
+  "engines": [
+    "Ohm",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3033,
+    "COUPLING": 0.5519,
+    "MOVEMENT": 0.9197,
+    "SPACE": 0.8933
+  },
+  "mood": "Prism",
+  "name": "Grain Shimmer 2",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.3033,
+      "macro_coupling": 0.5519,
+      "macro_movement": 0.9197,
+      "macro_space": 0.8933
+    },
+    "Owlfish": {
+      "macro_character": 0.3183,
+      "macro_coupling": 0.5807,
+      "macro_movement": 0.9511,
+      "macro_space": 0.9241
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

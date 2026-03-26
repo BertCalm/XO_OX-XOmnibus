@@ -5,7 +5,7 @@
       {
         "engineA": "Ohm",
         "engineB": "OddOscar",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.89
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

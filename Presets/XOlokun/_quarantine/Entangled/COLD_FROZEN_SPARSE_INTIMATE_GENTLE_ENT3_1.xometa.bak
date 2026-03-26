@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Octopus",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7534
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: COLD_FROZEN_SPARSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0404,
+    "brightness": 0.3483,
+    "density": 0.0789,
+    "movement": 0.022,
+    "space": 0.1038,
+    "warmth": 0.0412
+  },
+  "engines": [
+    "Ocelot",
+    "Octopus"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.808,
+    "COUPLING": 0.9206,
+    "MOVEMENT": 0.0212,
+    "SPACE": 0.549
+  },
+  "mood": "Entangled",
+  "name": "Fragment Phase",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.6355,
+      "macro_coupling": 0.8915,
+      "macro_movement": 0.0259,
+      "macro_space": 0.7462
+    },
+    "Octopus": {
+      "macro_character": 0.9805,
+      "macro_coupling": 0.9498,
+      "macro_movement": 0.0164,
+      "macro_space": 0.3518
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "cold",
+    "gentle",
+    "sparse",
+    "intimate"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

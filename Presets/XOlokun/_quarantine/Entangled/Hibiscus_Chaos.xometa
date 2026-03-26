@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Ouroboros",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.88
       }
     ]
@@ -60,5 +60,6 @@
     "chaos"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

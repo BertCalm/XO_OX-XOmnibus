@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Obese",
-        "target": "Outwit",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable",
+        "engineA": "Obese",
+        "engineB": "Outwit"
       }
     ]
   },

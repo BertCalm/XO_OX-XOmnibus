@@ -5,9 +5,9 @@
       {
         "amount": 0.461,
         "description": "Orca drives Origami via EnvToMod",
-        "source": "Orca",
-        "target": "Origami",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Orca",
+        "engineB": "Origami"
       }
     ]
   },

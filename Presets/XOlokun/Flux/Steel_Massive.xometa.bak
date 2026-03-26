@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Overdub",
+        "type": "ENVELOPE_SLAVE",
+        "amount": 0.9
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.937,
+    "brightness": 0.055,
+    "density": 0.953,
+    "movement": 0.947,
+    "space": 0.487,
+    "warmth": 0.046
+  },
+  "engines": [
+    "Owlfish",
+    "Overdub"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Steel Massive",
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.87,
+      "macro_space": 0.17,
+      "dub_lfoDepth": 0.12
+    },
+    "Owlfish": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.68,
+      "macro_space": 0.17
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

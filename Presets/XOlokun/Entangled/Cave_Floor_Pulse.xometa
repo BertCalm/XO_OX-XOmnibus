@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Oblong",
-        "type": "FEEDBACK",
+        "type": "AudioToRing",
         "amount": 0.94
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

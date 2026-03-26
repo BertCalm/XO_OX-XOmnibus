@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.467
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.333,
+    "brightness": 0.957,
+    "density": 0.669,
+    "movement": 0.064,
+    "space": 0.968,
+    "warmth": 0.915
+  },
+  "engines": [
+    "Osprey",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.943,
+    "COUPLING": 0.497,
+    "MOVEMENT": 0.057,
+    "SPACE": 0.954
+  },
+  "mood": "Family",
+  "name": "Sunrise Canyon 2",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.957,
+      "macro_coupling": 0.502,
+      "macro_movement": 0.059,
+      "macro_space": 0.949
+    },
+    "Osprey": {
+      "macro_character": 0.928,
+      "macro_coupling": 0.492,
+      "macro_movement": 0.055,
+      "macro_space": 0.959
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "vast",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

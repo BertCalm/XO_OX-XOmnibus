@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.5,
-      "destination": "Ottoni",
-      "source": "Ole",
-      "type": "AmpToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "type": "AmpToFilter",
+        "engineA": "Ole",
+        "engineB": "Ottoni"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Three aunts, no sides taken yet. Charango, Cubano, and Berimbau in casual harmony.",

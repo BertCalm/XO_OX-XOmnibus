@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Jam Blend",
+  "mood": "Family",
+  "engines": [
+    "Ohm",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.67,
+      "macro_movement": 0.92,
+      "macro_coupling": 0.67,
+      "macro_space": 0.39
+    },
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_movement": 0.79,
+      "macro_coupling": 0.52,
+      "macro_space": 0.42
+    }
+  },
+  "coupling": {
+    "type": "FM_CROSS",
+    "source": "OHM",
+    "target": "OTTONI",
+    "amount": 0.71
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.954,
+    "warmth": 0.945,
+    "movement": 0.068,
+    "density": 0.056,
+    "space": 0.915,
+    "aggression": 0.519
+  }
+}

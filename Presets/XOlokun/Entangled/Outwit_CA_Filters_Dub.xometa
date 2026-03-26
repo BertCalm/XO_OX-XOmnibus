@@ -6,9 +6,9 @@
     "Outwit",
     "Overdub"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT filter modulation sent to OVERDUB's filter cutoff \u2014 the cellular automaton's chromatophore response shapes the dub tape delay character.",
+  "description": "OUTWIT filter modulation sent to OVERDUB's filter cutoff — the cellular automaton's chromatophore response shapes the dub tape delay character.",
   "tags": [
     "entangled",
     "filter-to-filter",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Overdub",
         "type": "FilterToFilter",
         "amount": 0.5,
-        "description": "Outwit chromatophore filter shapes Overdub tape character"
+        "description": "Outwit chromatophore filter shapes Overdub tape character",
+        "engineA": "Outwit",
+        "engineB": "Overdub"
       }
     ]
   },

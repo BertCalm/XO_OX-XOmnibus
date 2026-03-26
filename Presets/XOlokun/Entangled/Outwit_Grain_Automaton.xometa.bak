@@ -1,0 +1,83 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "description": "Outwit CA arm density drives Opal grain scatter position",
+        "source": "Outwit",
+        "target": "Opal",
+        "type": "DensityToScatter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Outwit's Rule 110 complexity modulates Opal's grain scatter and position. The cellular automaton becomes a grain sequencer — life patterns at the edge of chaos decide where each granule lands. Two alien intelligences building one texture.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.7,
+    "space": 0.7,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Outwit",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Grain Automaton",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.15,
+      "opal_ampRelease": 1.5,
+      "opal_filterCutoff": 0.65,
+      "opal_filterRes": 0.25,
+      "opal_grainDensity": 0.6,
+      "opal_grainPitch": 0.0,
+      "opal_grainPosition": 0.5,
+      "opal_grainScatter": 0.5,
+      "opal_grainSize": 0.35
+    },
+    "Outwit": {
+      "owit_ampAttack": 0.2,
+      "owit_ampDecay": 0.4,
+      "owit_ampRelease": 1.8,
+      "owit_ampSustain": 0.8,
+      "owit_armBalance": 0.5,
+      "owit_armSpread": 0.65,
+      "owit_chaos": 0.3,
+      "owit_density": 0.6,
+      "owit_feedbackAmt": 0.35,
+      "owit_filterCutoff": 0.65,
+      "owit_filterRes": 0.3,
+      "owit_lfoDepth": 0.18,
+      "owit_lfoRate": 0.07,
+      "owit_macroChaos": 0.0,
+      "owit_macroCharacter": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0,
+      "owit_mutationRate": 0.25,
+      "owit_rule": 110,
+      "owit_sync": 0.45
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "granular",
+    "complex",
+    "automaton",
+    "grain",
+    "layered"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

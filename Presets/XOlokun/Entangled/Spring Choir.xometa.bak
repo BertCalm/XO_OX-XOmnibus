@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Spring Choir",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBSCURA coupling. Warm 4-voice unison choir designed to receive mass-spring perturbation across its wide stereo field. Each unison voice responds differently to OBSCURA's spring constants, creating a choir where each singer wobbles at a different rate. The collective is held together by Kuramoto coupling; OBSCURA pulls them apart. The tension is the music.",
+  "tags": [
+    "entangled",
+    "obscura",
+    "choir",
+    "spring",
+    "wide"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.6,
+    "density": 0.7,
+    "space": 0.45,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.4,
+      "opera_voice": 0.5,
+      "opera_stage": 0.45,
+      "opera_vowelA": 0,
+      "opera_vowelB": 3,
+      "opera_breath": 0.15,
+      "opera_effort": 0.45,
+      "opera_partials": 24,
+      "opera_resSens": 0.55,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 5.5,
+      "opera_vibDepth": 0.25,
+      "opera_tilt": 0.0,
+      "opera_filterCutoff": 7000.0,
+      "opera_filterRes": 0.05,
+      "opera_filterEnvAmt": 0.3,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.25,
+      "opera_filterS": 0.55,
+      "opera_filterR": 0.6,
+      "opera_ampA": 0.08,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.85,
+      "opera_ampR": 0.8,
+      "opera_lfo1Rate": 0.1,
+      "opera_lfo1Depth": 0.15,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 3.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.35,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.15,
+      "opera_portamento": 0.0,
+      "opera_unison": 4,
+      "opera_width": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Obscura",
+        "target": "Opera",
+        "type": "PhaseModulation",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

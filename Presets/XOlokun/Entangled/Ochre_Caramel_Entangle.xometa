@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Caramel Entangle",
   "mood": "Entangled",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High sympathetic resonance with COUPLING macro at maximum. The copper upright fully open to the room — every note draws neighboring strings into vibration. Designed for coupling: route another engine here and hear the copper body respond.",
-  "tags": ["piano", "copper", "coupling", "sympathetic", "entangled", "resonant", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "piano",
+    "copper",
+    "coupling",
+    "sympathetic",
+    "entangled",
+    "resonant",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

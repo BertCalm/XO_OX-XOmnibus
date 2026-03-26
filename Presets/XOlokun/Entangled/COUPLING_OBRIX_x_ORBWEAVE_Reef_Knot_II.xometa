@@ -24,7 +24,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.32,
@@ -168,10 +168,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": 0,
-        "target": 1,
         "type": "FilterToFilter",
-        "amount": 0.14
+        "amount": 0.14,
+        "engineA": 0,
+        "engineB": 1
       }
     ]
   },

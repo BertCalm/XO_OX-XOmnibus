@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.66,
+      "destination": "OVERBITE",
+      "source": "ONSET",
+      "type": "HARMONIC_FOLD"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, bright, warm, kinetic.",
+  "dna": {
+    "aggression": 0.597,
+    "brightness": 0.952,
+    "density": 0.494,
+    "movement": 0.922,
+    "space": 0.955,
+    "warmth": 0.934
+  },
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Aether",
+  "name": "Infinite Glint II",
+  "parameters": {
+    "Onset": {
+      "level": 0.759,
+      "pan": 0.018
+    },
+    "Overbite": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "bright",
+    "warm",
+    "kinetic",
+    "vast",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

@@ -6,7 +6,7 @@
         "amount": 0.779,
         "engineA": "Obsidian",
         "engineB": "Onset",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend"
       }
     ]
   },

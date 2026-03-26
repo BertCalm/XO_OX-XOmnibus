@@ -6,7 +6,7 @@
         "amount": 0.689,
         "engineA": "Outwit",
         "engineB": "Obbligato",
-        "type": "ENVELOPE_SHARE"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.648,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Ohm",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.735
       }
     ]

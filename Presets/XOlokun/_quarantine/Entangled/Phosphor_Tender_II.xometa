@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.954,
@@ -42,7 +42,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Octopus",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.617
       }
     ]

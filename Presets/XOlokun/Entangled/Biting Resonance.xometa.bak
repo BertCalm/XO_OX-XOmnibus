@@ -1,0 +1,79 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.558,
+        "description": "Owlfish drives Overbite via LFO_SYNC",
+        "source": "Owlfish",
+        "target": "Overbite",
+        "type": "LFO_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OVERBITE's transient bite triggers OWLFISH's resonant ring — the fang that starts the oscillator, the tone that follows the strike.",
+  "dna": {
+    "aggression": 0.628,
+    "brightness": 0.438,
+    "density": 0.617,
+    "movement": 0.581,
+    "space": 0.431,
+    "warmth": 0.505
+  },
+  "engines": [
+    "Owlfish",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Biting Resonance",
+  "parameters": {
+    "Overbite": {
+      "poss_filterCutoff": 0.471,
+      "poss_macroBite": 0.098
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.483,
+      "owl_ampAttack": 0.19,
+      "owl_ampDecay": 0.79,
+      "owl_ampRelease": 2.99,
+      "owl_ampSustain": 0.553,
+      "owl_envDepth": 0.354,
+      "owl_filterCutoff": 0.474,
+      "owl_filterRes": 0.376,
+      "owl_hall": 0.409,
+      "owl_lfoDepth": 0.169,
+      "owl_lfoRate": 0.099,
+      "owl_lfoShape": 0.854,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.605,
+      "owl_mixturSpread": 0.644,
+      "owl_oscLevel": 0.534,
+      "owl_oscPitch": 0.581,
+      "owl_resonantFeedback": 0.462,
+      "owl_resonantPitch": 0.302,
+      "owl_shimmer": 0.357,
+      "owl_subLevel": 0.311
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "overbite"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

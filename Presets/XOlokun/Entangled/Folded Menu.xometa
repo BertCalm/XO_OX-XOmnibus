@@ -5,9 +5,9 @@
       {
         "amount": 0.832,
         "description": "Osteria drives Origami via WavetableSync",
-        "source": "Osteria",
-        "target": "Origami",
-        "type": "WavetableSync"
+        "type": "AudioToWavetable",
+        "engineA": "Osteria",
+        "engineB": "Origami"
       }
     ]
   },

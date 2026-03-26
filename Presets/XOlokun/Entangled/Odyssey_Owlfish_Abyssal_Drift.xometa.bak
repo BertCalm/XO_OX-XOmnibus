@@ -1,0 +1,83 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Odyssey",
+        "target": "Owlfish",
+        "type": "ENVELOPE_SHARING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Mixtur-Trautonium subharmonics lock the FM ratio — depth-pressure tuning the overtone series.",
+  "dna": {
+    "aggression": 0.411,
+    "brightness": 0.465,
+    "density": 0.617,
+    "movement": 0.514,
+    "space": 0.624,
+    "warmth": 0.598
+  },
+  "engines": [
+    "Odyssey",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Abyssal Drift II",
+  "parameters": {
+    "Odyssey": {
+      "drift_ampAttack": 0.0919,
+      "drift_ampDecay": 0.371,
+      "drift_ampRelease": 1.497,
+      "drift_ampSustain": 0.753,
+      "drift_chorus": 0.397,
+      "drift_filterCutoff": 1260.1,
+      "drift_filterEnvAmt": 0.567,
+      "drift_filterReso": 0.44,
+      "drift_fmDepth": 0.515,
+      "drift_fmRatio": 2.0,
+      "drift_level": 0.721,
+      "drift_lfo1Depth": 0.488,
+      "drift_lfo1Rate": 0.19,
+      "drift_lfo1Shape": 0.25,
+      "drift_lfo2Depth": 0.385,
+      "drift_lfo2Rate": 0.655,
+      "drift_modAttack": 0.0683,
+      "drift_modDecay": 0.431,
+      "drift_modRelease": 0.33,
+      "drift_modSustain": 0.281,
+      "drift_oscA_level": 0.758,
+      "drift_oscA_mode": 0.75,
+      "drift_oscA_pitch": -0.178,
+      "drift_oscB_level": 0.755,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_pitch": 0.495,
+      "drift_reverbMix": 0.104,
+      "drift_wtMorph": 0.258,
+      "drift_wtPosition": 0.814
+    },
+    "Owlfish": {
+      "owl_filterCutoff": 8178.9,
+      "owl_level": 0.812
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "owlfish"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

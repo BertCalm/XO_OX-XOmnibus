@@ -5,9 +5,9 @@
       {
         "amount": 0.845,
         "description": "Owlfish drives Oblong via LFO_SYNC",
-        "source": "Owlfish",
-        "target": "Oblong",
-        "type": "LFO_SYNC"
+        "type": "LFOToPitch",
+        "engineA": "Owlfish",
+        "engineB": "Oblong"
       }
     ]
   },

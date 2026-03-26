@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Fragile Bond",
   "mood": "Entangled",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "COUPLING macro at maximum — the glass grows more breakable the more it is connected. Designed for Kitchen quad coupling: as another engine feeds energy in, fragility rises. Play with another Kitchen engine routed here and watch the glass edge toward shattering.",
-  "tags": ["glass", "coupling", "fragile", "entangled", "celesta", "breakable", "kitchen", "opaline"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "glass",
+    "coupling",
+    "fragile",
+    "entangled",
+    "celesta",
+    "breakable",
+    "kitchen",
+    "opaline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.7,

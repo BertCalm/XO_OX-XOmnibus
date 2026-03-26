@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.101,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Organon",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.723
       }
     ]

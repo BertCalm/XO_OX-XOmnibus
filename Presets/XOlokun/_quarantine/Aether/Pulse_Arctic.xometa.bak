@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Organon",
+        "type": "HARMONIC_STACK",
+        "amount": 0.79
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.907,
+    "brightness": 0.078,
+    "density": 0.932,
+    "movement": 0.959,
+    "space": 0.561,
+    "warmth": 0.064
+  },
+  "engines": [
+    "Overworld",
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Pulse Arctic",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.98,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.65,
+      "macro_space": 0.27
+    },
+    "Overworld": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.66,
+      "macro_space": 0.11
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

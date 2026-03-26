@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Oblong",
-        "target": "Ottoni",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable",
+        "engineA": "Oblong",
+        "engineB": "Ottoni"
       }
     ]
   },

@@ -6,7 +6,7 @@
         "amount": 0.662,
         "engineA": "Obbligato",
         "engineB": "Organon",
-        "type": "Env->LFO Rate"
+        "type": "LFOToPitch"
       }
     ]
   },

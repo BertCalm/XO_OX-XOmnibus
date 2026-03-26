@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Odyssey",
-        "type": "PITCH_FOLLOW",
+        "type": "PitchToPitch",
         "amount": 0.67
       }
     ]

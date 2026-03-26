@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7625
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9666,
+    "brightness": 0.6364,
+    "density": 0.8966,
+    "movement": 0.5961,
+    "space": 0.0722,
+    "warmth": 0.9048
+  },
+  "engines": [
+    "Oblong",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5942,
+    "COUPLING": 0.944,
+    "MOVEMENT": 0.5375,
+    "SPACE": 0.1106
+  },
+  "mood": "Flux",
+  "name": "Peach Storm",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.5942,
+      "macro_coupling": 0.944,
+      "macro_movement": 0.5375,
+      "macro_space": 0.1106,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Origami": {
+      "macro_character": 0.6675,
+      "macro_coupling": 0.9486,
+      "macro_movement": 0.6801,
+      "macro_space": 0.1372
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-warmth",
+    "high-density",
+    "low-space",
+    "high-aggression"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, warm, dense sound. Drives through the mix with presence and bite."
+}

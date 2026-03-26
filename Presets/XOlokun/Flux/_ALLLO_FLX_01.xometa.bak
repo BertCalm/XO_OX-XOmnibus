@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.249
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.048,
+    "brightness": 0.544,
+    "density": 0.026,
+    "movement": 0.094,
+    "space": 0.035,
+    "warmth": 0.102
+  },
+  "engines": [
+    "Overdub",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.323,
+    "COUPLING": 0.042,
+    "MOVEMENT": 0.06,
+    "SPACE": 0.035
+  },
+  "mood": "Flux",
+  "name": "ALLLO FLX 01",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.323,
+      "macro_coupling": 0.042,
+      "macro_movement": 0.06,
+      "macro_space": 0.035
+    },
+    "Overdub": {
+      "macro_character": 0.323,
+      "macro_coupling": 0.042,
+      "macro_movement": 0.06,
+      "macro_space": 0.035,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, crystalline, ethereal sound. Responds expressively to velocity and modulation."
+}

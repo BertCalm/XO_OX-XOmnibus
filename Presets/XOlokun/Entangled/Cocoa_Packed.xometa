@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7059,
-        "source": "Ottoni",
-        "target": "Obbligato",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM",
+        "engineA": "Ottoni",
+        "engineB": "Obbligato"
       }
     ]
   },

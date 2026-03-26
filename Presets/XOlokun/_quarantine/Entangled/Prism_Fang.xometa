@@ -6,7 +6,7 @@
         "amount": 0.85,
         "engineA": "Oblique",
         "engineB": "Overbite",
-        "type": "FREQUENCY_SMEAR"
+        "type": "AudioToFM"
       }
     ]
   },

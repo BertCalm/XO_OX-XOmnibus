@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Bass Culture Dual",
   "mood": "Entangled",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Overdub sub frequency modulates a paired engine's filter — the bass instructs the melody.",
-  "tags": ["entangled", "coupling", "bass", "modulation", "filter", "instruction"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "entangled",
+    "coupling",
+    "bass",
+    "modulation",
+    "filter",
+    "instruction"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -52,11 +70,28 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.1, "COUPLING": 0.82, "SPACE": 0.32},
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.82,
+    "SPACE": 0.32
+  },
   "coupling": {
     "pairs": [
-      {"source": "Overdub", "target": "Odyssey", "type": "FilterMod", "intensity": 0.75}
+      {
+        "type": "FilterToFilter",
+        "intensity": 0.75,
+        "engineA": "Overdub",
+        "engineB": "Odyssey"
+      }
     ]
   },
-  "dna": {"brightness": 0.15, "warmth": 0.88, "movement": 0.15, "density": 0.78, "space": 0.35, "aggression": 0.28}
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.88,
+    "movement": 0.15,
+    "density": 0.78,
+    "space": 0.35,
+    "aggression": 0.28
+  }
 }

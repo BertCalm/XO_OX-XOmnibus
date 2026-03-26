@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Ottoni",
         "engineB": "Obscura",
-        "type": "SPATIAL_COUPLE"
+        "type": "AudioToWavetable"
       }
     ]
   },

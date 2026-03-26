@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Overlap",
-        "type": "GRANULAR_EXCHANGE",
+        "type": "AudioToBuffer",
         "amount": 0.737
       }
     ]
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

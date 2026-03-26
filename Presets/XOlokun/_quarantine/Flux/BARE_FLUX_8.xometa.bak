@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overlap",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8165
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.685,
+    "brightness": 0.2897,
+    "density": 0.0827,
+    "movement": 0.0295,
+    "space": 0.8047,
+    "warmth": 0.9567
+  },
+  "engines": [
+    "Orphica",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9754,
+    "COUPLING": 0.3705,
+    "MOVEMENT": 0.1308,
+    "SPACE": 0.5617
+  },
+  "mood": "Flux",
+  "name": "BARE FLUX 8",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.0599,
+      "macro_coupling": 0.4843,
+      "macro_movement": 0.4396,
+      "macro_space": 0.204
+    },
+    "Overlap": {
+      "macro_character": 0.6067,
+      "macro_coupling": 0.7184,
+      "macro_movement": 0.3126,
+      "macro_space": 0.7342
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "PITCH_SYNC",
+        "amount": 0.9148
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4827,
+    "brightness": 0.905,
+    "density": 0.4889,
+    "movement": 0.9279,
+    "space": 0.0532,
+    "warmth": 0.9546
+  },
+  "engines": [
+    "Obscura",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9198,
+    "COUPLING": 0.9148,
+    "MOVEMENT": 0.935,
+    "SPACE": 0.0532
+  },
+  "mood": "Aether",
+  "name": "Honey Stream",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.934,
+      "macro_coupling": 0.5323,
+      "macro_movement": 0.9194,
+      "macro_space": 0.054
+    },
+    "Obscura": {
+      "macro_character": 0.9055,
+      "macro_coupling": 0.5107,
+      "macro_movement": 0.9507,
+      "macro_space": 0.0398
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "kinetic",
+    "celestial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

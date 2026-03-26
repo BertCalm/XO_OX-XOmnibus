@@ -4,16 +4,16 @@
     "pairs": [
       {
         "engine": "Organon",
-        "type": "Organic"
+        "type": "TriangularCoupling"
       },
       {
         "engine": "Ouroboros",
-        "type": "Feedback"
+        "type": "AudioToRing"
       }
     ]
   },
   "couplingIntensity": "Subtle",
-  "description": "Trefoil pad with wide spread \u2014 fills the coupling space with gentle warmth.",
+  "description": "Trefoil pad with wide spread — fills the coupling space with gentle warmth.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.58,

@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Ocelot",
         "engineB": "Organon",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.45,
         "engineA": "Organon",
         "engineB": "Ocelot",
-        "type": "EnvToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

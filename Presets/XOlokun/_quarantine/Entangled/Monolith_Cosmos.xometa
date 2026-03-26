@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.881,
@@ -42,7 +42,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Ouroboros",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.776
       }
     ]

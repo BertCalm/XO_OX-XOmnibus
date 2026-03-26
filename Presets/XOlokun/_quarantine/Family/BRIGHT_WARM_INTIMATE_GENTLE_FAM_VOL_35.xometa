@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Ole",
-        "type": "ENVELOPE_MIRROR",
+        "type": "EnvToDecay",
         "amount": 0.756
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

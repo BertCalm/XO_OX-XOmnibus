@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Octopus",
-        "target": "Odyssey",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM",
+        "engineA": "Octopus",
+        "engineB": "Odyssey"
       }
     ]
   },

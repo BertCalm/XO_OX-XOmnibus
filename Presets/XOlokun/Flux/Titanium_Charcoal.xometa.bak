@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Optic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7933
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5861,
+    "brightness": 0.0432,
+    "density": 0.0849,
+    "movement": 0.5313,
+    "space": 0.9035,
+    "warmth": 0.0386
+  },
+  "engines": [
+    "Overdub",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.084,
+    "COUPLING": 0.6563,
+    "MOVEMENT": 0.5105,
+    "SPACE": 0.8288
+  },
+  "mood": "Flux",
+  "name": "Titanium Charcoal",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.1443,
+      "macro_coupling": 0.6383,
+      "macro_movement": 0.5185,
+      "macro_space": 0.8926
+    },
+    "Overdub": {
+      "macro_character": 0.084,
+      "macro_coupling": 0.6563,
+      "macro_movement": 0.5105,
+      "macro_space": 0.8288,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "low-warmth",
+    "low-density",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, dark, crystalline atmosphere. Let it breathe — the space is the instrument."
+}

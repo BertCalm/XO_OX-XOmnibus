@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Organon",
+        "type": "FEEDBACK",
+        "amount": 0.95
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.32,
+    "brightness": 0.05,
+    "density": 0.61,
+    "movement": 0.49,
+    "space": 0.21,
+    "warmth": 0.83
+  },
+  "engines": [
+    "OddOscar",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.29,
+    "COUPLING": 0.95,
+    "MOVEMENT": 0.49,
+    "SPACE": 0.21
+  },
+  "mood": "Entangled",
+  "name": "Dark Ember Coupling",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.79,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.35,
+      "macro_space": 0.62
+    },
+    "Organon": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.52,
+      "macro_movement": 0.76,
+      "macro_space": 0.23
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

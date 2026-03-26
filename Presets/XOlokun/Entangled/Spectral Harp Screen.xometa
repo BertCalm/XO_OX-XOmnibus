@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Optic",
         "engineB": "Orphica",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.4,

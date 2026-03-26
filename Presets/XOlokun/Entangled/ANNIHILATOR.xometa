@@ -5,7 +5,7 @@
       {
         "engineA": "Ombre",
         "engineB": "Oblong",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.342
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, shimmering, crystalline lead. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, shimmering, crystalline lead. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

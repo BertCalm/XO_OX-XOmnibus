@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Orphica",
+        "type": "FILTER_LINK",
+        "amount": 0.841
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.36,
+    "brightness": 0.931,
+    "density": 0.501,
+    "movement": 0.118,
+    "space": 0.891,
+    "warmth": 0.895
+  },
+  "engines": [
+    "Overdub",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.909,
+    "COUPLING": 0.448,
+    "MOVEMENT": 0.099,
+    "SPACE": 0.887
+  },
+  "mood": "Family",
+  "name": "Halo Void",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.885,
+      "macro_coupling": 0.445,
+      "macro_movement": 0.088,
+      "macro_space": 0.899
+    },
+    "Overdub": {
+      "macro_character": 0.934,
+      "macro_coupling": 0.45,
+      "macro_movement": 0.109,
+      "macro_space": 0.875,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "vast",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Warm and familiar, shimmering, warm atmosphere. Let it breathe — the space is the instrument."
+}

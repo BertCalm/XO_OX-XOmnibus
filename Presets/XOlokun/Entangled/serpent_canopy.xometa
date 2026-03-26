@@ -6,7 +6,7 @@
         "amount": 0.89,
         "engineA": "Overlap",
         "engineB": "Ouroboros",
-        "type": "SPATIAL_COUPLE"
+        "type": "AudioToWavetable"
       }
     ]
   },

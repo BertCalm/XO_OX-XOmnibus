@@ -5,7 +5,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Ombre",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.805
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

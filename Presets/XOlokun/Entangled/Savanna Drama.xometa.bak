@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ocelot",
+        "engineB": "Ole",
+        "type": "AudioToFM"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Ole",
+        "engineB": "Ocelot",
+        "type": "SpectralMorph"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OLE's Afro-Latin drama rooted in OCELOT's warm savanna — the dance belongs to this landscape.",
+  "dna": {
+    "aggression": 0.545,
+    "brightness": 0.645,
+    "density": 0.605,
+    "movement": 0.712,
+    "space": 0.522,
+    "warmth": 0.627
+  },
+  "engines": [
+    "Ocelot",
+    "Ole"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Savanna Drama",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_ampAttack": 0.04,
+      "ocelot_ampRelease": 1.8,
+      "ocelot_biomeShift": 0.5,
+      "ocelot_filterCutoff": 2400.0,
+      "ocelot_filterReso": 0.3,
+      "ocelot_movement": 0.6,
+      "ocelot_predatorDepth": 0.55,
+      "ocelot_warmth": 0.65
+    },
+    "Ole": {
+      "ole_ampAttack": 0.03,
+      "ole_ampRelease": 1.5,
+      "ole_filterCutoff": 2800.0,
+      "ole_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "ocelot",
+    "ole",
+    "biome-shift",
+    "tawny",
+    "apex",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

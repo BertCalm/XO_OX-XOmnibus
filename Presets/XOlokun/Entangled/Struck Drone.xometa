@@ -5,9 +5,9 @@
       {
         "amount": 0.809,
         "description": "Owlfish drives Onset via WavetableSync",
-        "source": "Owlfish",
-        "target": "Onset",
-        "type": "WavetableSync"
+        "type": "AudioToWavetable",
+        "engineA": "Owlfish",
+        "engineB": "Onset"
       }
     ]
   },

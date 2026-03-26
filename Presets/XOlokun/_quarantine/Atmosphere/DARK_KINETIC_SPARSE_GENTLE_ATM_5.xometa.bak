@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.557
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.073,
+    "density": 0.033,
+    "movement": 0.911,
+    "space": 0.498,
+    "warmth": 0.539
+  },
+  "engines": [
+    "Orbital",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.615,
+    "COUPLING": 0.52,
+    "MOVEMENT": 0.891,
+    "SPACE": 0.528
+  },
+  "mood": "Atmosphere",
+  "name": "Grain Drift 2",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.681,
+      "macro_coupling": 0.629,
+      "macro_movement": 0.848,
+      "macro_space": 0.565
+    },
+    "Orbital": {
+      "macro_character": 0.615,
+      "macro_coupling": 0.52,
+      "macro_movement": 0.891,
+      "macro_space": 0.528
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "kinetic",
+    "sparse",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

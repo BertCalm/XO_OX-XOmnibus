@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Haze Bounce",
   "mood": "Entangled",
-  "engines": ["Oblique", "Odyssey"],
+  "engines": [
+    "Oblique",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ODYSSEY's haze depth modulating OBLIQUE's bounce damping — more haze means longer bounce decay, atmospheric depth and geometric momentum in sync.",
-  "tags": ["haze", "bounce", "damp", "depth", "entangled"],
-  "macroLabels": ["BOUNCE", "HAZE", "SCATTER", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "haze",
+    "bounce",
+    "damp",
+    "depth",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "HAZE",
+    "SCATTER",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.55, "movement": 0.5, "density": 0.58, "space": 0.65, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.58,
+    "space": 0.65,
+    "aggression": 0.25
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.65,
@@ -82,11 +103,26 @@
       "drift_level": 0.72
     }
   },
-  "macros": {"BOUNCE": 0.52, "HAZE": 0.52, "SCATTER": 0.48, "SPACE": 0.65},
+  "macros": {
+    "BOUNCE": 0.52,
+    "HAZE": 0.52,
+    "SCATTER": 0.48,
+    "SPACE": 0.65
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Odyssey", "engineB": "Oblique", "type": "AmpToFilter", "amount": 0.52},
-      {"engineA": "Oblique", "engineB": "Odyssey", "type": "LFOToFilter", "amount": 0.38}
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.52
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.38
+      }
     ]
   }
 }

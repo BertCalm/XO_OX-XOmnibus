@@ -6,7 +6,7 @@
         "amount": 0.68,
         "engineA": "Ole",
         "engineB": "Obscura",
-        "type": "SPATIAL_COUPLE"
+        "type": "AudioToWavetable"
       }
     ]
   },

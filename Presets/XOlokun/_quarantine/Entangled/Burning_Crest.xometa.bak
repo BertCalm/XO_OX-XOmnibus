@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.791,
+        "engineA": "Origami",
+        "engineB": "Oceanic",
+        "type": "CHAOS_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.595,
+    "density": 0.37,
+    "movement": 0.7,
+    "space": 0.705,
+    "warmth": 0.47
+  },
+  "engines": [
+    "Oceanic",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "COUPLING": 0.408,
+    "MOVEMENT": 0.49,
+    "SPACE": 0.69
+  },
+  "mood": "Entangled",
+  "name": "Burning Crest",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.322,
+      "macro_coupling": 0.857,
+      "macro_movement": 0.408,
+      "macro_space": 0.437
+    },
+    "Origami": {
+      "macro_character": 0.57,
+      "macro_coupling": 0.676,
+      "macro_movement": 0.686,
+      "macro_space": 0.467
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oceanic",
+    "origami"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

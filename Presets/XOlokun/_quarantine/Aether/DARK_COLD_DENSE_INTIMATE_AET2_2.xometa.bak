@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.658
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3116,
+    "brightness": 0.0942,
+    "density": 0.9489,
+    "movement": 0.5774,
+    "space": 0.0687,
+    "warmth": 0.0812
+  },
+  "engines": [
+    "Orbital",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0967,
+    "COUPLING": 0.658,
+    "MOVEMENT": 0.5903,
+    "SPACE": 0.0687
+  },
+  "mood": "Aether",
+  "name": "Wave Deep",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.1183,
+      "macro_coupling": 0.9081,
+      "macro_movement": 0.6246,
+      "macro_space": 0.0717
+    },
+    "Orbital": {
+      "macro_character": 0.0751,
+      "macro_coupling": 0.9583,
+      "macro_movement": 0.556,
+      "macro_space": 0.0429
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "cold",
+    "dense",
+    "compressed"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

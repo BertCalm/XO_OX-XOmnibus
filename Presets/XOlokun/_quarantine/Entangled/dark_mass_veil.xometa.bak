@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Obscura",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.1,
+    "density": 0.9,
+    "movement": 0.4,
+    "space": 0.2,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Obese",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Dark Mass Veil",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.1,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.4,
+      "macro_space": 0.2
+    },
+    "Obscura": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.4,
+      "macro_space": 0.2
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "obese",
+    "obscura"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

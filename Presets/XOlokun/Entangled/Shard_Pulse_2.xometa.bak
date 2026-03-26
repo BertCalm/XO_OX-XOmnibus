@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9377,
+        "source": "Orbital",
+        "target": "Oblique",
+        "type": "SUBHARMONIC_WEAVE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Dark Cold Kinetic Intimate character entanglement — ORBITAL × OBLIQUE via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.4954,
+    "brightness": 0.0865,
+    "density": 0.5537,
+    "movement": 0.8944,
+    "space": 0.049,
+    "warmth": 0.0989
+  },
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "SPIN",
+    "HARMONIC",
+    "SPHERE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0927,
+    "COUPLING": 0.9377,
+    "MOVEMENT": 0.8944,
+    "SPACE": 0.049
+  },
+  "mood": "Entangled",
+  "name": "Shard Pulse 2",
+  "parameters": {
+    "Oblique": {
+      "amp_attack": 0.1159,
+      "amp_release": 0.1583,
+      "coupling_level": 0.7789,
+      "density": 0.5219,
+      "drive": 0.4263,
+      "filter_cutoff": 0.2453,
+      "filter_resonance": 0.3796,
+      "macro_character": 0.3923,
+      "macro_coupling": 0.7452,
+      "macro_movement": 0.901,
+      "macro_space": 0.0192,
+      "output_level": 0.8608,
+      "reverb_mix": 0.2088,
+      "reverb_size": 0.2062
+    },
+    "Orbital": {
+      "amp_attack": 0.1115,
+      "amp_release": 0.1335,
+      "coupling_level": 0.7518,
+      "density": 0.5843,
+      "drive": 0.4123,
+      "filter_cutoff": 0.2716,
+      "filter_resonance": 0.3287,
+      "macro_character": 0.3594,
+      "macro_coupling": 0.7337,
+      "macro_movement": 0.8765,
+      "macro_space": 0.0707,
+      "output_level": 0.8707,
+      "reverb_mix": 0.1711,
+      "reverb_size": 0.1902
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "kinetic",
+    "intimate",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

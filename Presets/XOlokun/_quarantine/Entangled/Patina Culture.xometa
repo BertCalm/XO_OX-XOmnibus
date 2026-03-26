@@ -6,7 +6,7 @@
         "amount": 0.58,
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph"
       }
     ]
   },

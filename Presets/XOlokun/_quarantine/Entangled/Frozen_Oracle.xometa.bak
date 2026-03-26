@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.85
+      }
+    ]
+  },
+  "description": "Obsidian's envelope freezes Oracle's timing — the prophecy delivered once, then silent.",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.05,
+    "density": 0.0,
+    "movement": 0.14,
+    "space": 0.97,
+    "warmth": 0.319
+  },
+  "engines": [
+    "Obsidian",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.08,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.14,
+    "SPACE": 0.97
+  },
+  "mood": "Entangled",
+  "name": "Frozen Oracle II",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.08,
+      "macro_coupling": 0.85,
+      "macro_movement": 0.14,
+      "macro_space": 0.97
+    },
+    "Oracle": {
+      "macro_character": 0.05,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.09,
+      "macro_space": 1.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "frozen",
+    "oracle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

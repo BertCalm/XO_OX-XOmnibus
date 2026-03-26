@@ -6,7 +6,7 @@
         "amount": 0.617,
         "engineA": "Overlap",
         "engineB": "Orca",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable"
       }
     ]
   },

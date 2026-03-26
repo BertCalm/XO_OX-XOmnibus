@@ -5,9 +5,9 @@
       {
         "amount": 0.845,
         "description": "Owlfish drives OddfeliX via EnvToMod",
-        "source": "Owlfish",
-        "target": "OddfeliX",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Owlfish",
+        "engineB": "OddfeliX"
       }
     ]
   },

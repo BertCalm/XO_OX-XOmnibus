@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.655,
+        "engineA": "Obsidian",
+        "engineB": "Orca",
+        "type": "AMPLITUDE_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Crystal sonar pulse couples with ORCA deep-strike predatory force.",
+  "dna": {
+    "aggression": 0.392,
+    "brightness": 0.691,
+    "density": 0.572,
+    "movement": 0.446,
+    "space": 0.606,
+    "warmth": 0.256
+  },
+  "engines": [
+    "Obsidian",
+    "Orca"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Vitreous Breach",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.155,
+      "obsidian_brightness": 0.825,
+      "obsidian_density": 0.515,
+      "obsidian_level": 0.799,
+      "obsidian_movement": 0.325,
+      "obsidian_space": 0.662,
+      "obsidian_warmth": 0.243
+    },
+    "Orca": {
+      "orca_aggression": 0.702,
+      "orca_brightness": 0.415,
+      "orca_density": 0.802,
+      "orca_level": 0.786,
+      "orca_movement": 0.593,
+      "orca_space": 0.534,
+      "orca_warmth": 0.419
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "orca",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

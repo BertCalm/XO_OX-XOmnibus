@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Octopus",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.836
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.876,
+    "brightness": 0.902,
+    "density": 0.531,
+    "movement": 0.987,
+    "space": 0.391,
+    "warmth": 0.949
+  },
+  "engines": [
+    "OddOscar",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.551,
+    "COUPLING": 0.923,
+    "MOVEMENT": 0.987,
+    "SPACE": 0.391
+  },
+  "mood": "Entangled",
+  "name": "Solar Pulse",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.56,
+      "macro_coupling": 0.929,
+      "macro_movement": 0.961,
+      "macro_space": 0.411
+    },
+    "OddOscar": {
+      "macro_character": 0.542,
+      "macro_coupling": 0.923,
+      "macro_movement": 0.975,
+      "macro_space": 0.423
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

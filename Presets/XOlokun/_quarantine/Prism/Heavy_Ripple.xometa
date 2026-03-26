@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Origami",
-        "type": "SPECTRAL_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.6
       }
     ]

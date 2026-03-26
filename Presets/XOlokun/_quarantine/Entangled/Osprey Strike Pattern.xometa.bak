@@ -1,0 +1,59 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Osprey",
+        "engineB": "Onset",
+        "type": "Env->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Drum hit triggers osprey's plunge; attack and impact fused into one gesture.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.59,
+    "density": 0.58,
+    "movement": 0.66,
+    "space": 0.61,
+    "warmth": 0.51
+  },
+  "engines": [
+    "Osprey",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.5,
+    "SPACE": 0.75,
+    "PUNCH": 0.5,
+    "MUTATE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Osprey Strike Pattern",
+  "parameters": {
+    "Osprey": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "osprey",
+    "onset",
+    "percussive",
+    "attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

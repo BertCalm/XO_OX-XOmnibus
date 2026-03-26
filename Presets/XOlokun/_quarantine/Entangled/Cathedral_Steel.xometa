@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.644,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Obsidian",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.763
       }
     ]

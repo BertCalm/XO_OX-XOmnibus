@@ -6,7 +6,7 @@
         "amount": 0.578,
         "engineA": "Owlfish",
         "engineB": "Ole",
-        "type": "RHYTHM_LOCK"
+        "type": "RhythmToBlend"
       }
     ]
   },

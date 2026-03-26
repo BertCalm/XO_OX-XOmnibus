@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Origami",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.888
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.943,
+    "brightness": 0.899,
+    "density": 0.372,
+    "movement": 0.952,
+    "space": 0.891,
+    "warmth": 0.465
+  },
+  "engines": [
+    "Overbite",
+    "Origami"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.563,
+    "COUPLING": 0.869,
+    "MOVEMENT": 0.952,
+    "SPACE": 0.891
+  },
+  "mood": "Entangled",
+  "name": "Tone Flutter 5",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.623,
+      "macro_coupling": 0.882,
+      "macro_movement": 0.948,
+      "macro_space": 0.931
+    },
+    "Overbite": {
+      "macro_character": 0.503,
+      "macro_coupling": 0.869,
+      "macro_movement": 0.925,
+      "macro_space": 0.905
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "kinetic",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

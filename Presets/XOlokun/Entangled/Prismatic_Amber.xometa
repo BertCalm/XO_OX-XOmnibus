@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9659,
-        "source": "Orbital",
-        "target": "Organon",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Orbital",
+        "engineB": "Organon"
       }
     ]
   },

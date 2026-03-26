@@ -5,9 +5,9 @@
       {
         "amount": 0.611,
         "description": "Osteria drives Overworld via TimbreShare",
-        "source": "Osteria",
-        "target": "Overworld",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "Overworld"
       }
     ]
   },

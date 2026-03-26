@@ -6,7 +6,7 @@
         "amount": 0.71,
         "engineA": "Outwit",
         "engineB": "Oracle",
-        "type": "SPATIAL_COUPLE"
+        "type": "AudioToWavetable"
       }
     ]
   },

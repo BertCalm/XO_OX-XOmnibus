@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.27,
-      "destination": "Ottoni",
-      "source": "Ole",
-      "type": "AudioToFM"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.27,
+        "type": "AudioToFM",
+        "engineA": "Ole",
+        "engineB": "Ottoni"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Alliance and drama both in motion. The family gathering is escalating.",

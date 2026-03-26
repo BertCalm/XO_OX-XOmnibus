@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Oblong",
-        "target": "Octopus",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Oblong",
+        "engineB": "Octopus"
       }
     ]
   },

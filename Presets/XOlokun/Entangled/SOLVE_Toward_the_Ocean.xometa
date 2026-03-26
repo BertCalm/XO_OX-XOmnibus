@@ -6,10 +6,10 @@
     "Outwit",
     "OceanDeep"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "SOLVE=0.5 with targetWarmth=0.7 and targetSpace=0.8 steers OUTWIT toward warm, spacious character \u2014 reducing brightness, increasing den mix. OUTWIT CA amplitude opens OceanDeep's Darkness Filter Ceiling via AmpToFilter: trigger density momentarily lifts the 50-800 Hz ceiling, allowing brief high-frequency transients to emerge from the pressure zone. OceanDeep's envelope drives OUTWIT chromatophore via EnvToMorph \u2014 the bioluminescent exciter's light pulses color the octopus. Discrete CA triggers become raw material for deep-pressure synthesis.",
+  "description": "SOLVE=0.5 with targetWarmth=0.7 and targetSpace=0.8 steers OUTWIT toward warm, spacious character — reducing brightness, increasing den mix. OUTWIT CA amplitude opens OceanDeep's Darkness Filter Ceiling via AmpToFilter: trigger density momentarily lifts the 50-800 Hz ceiling, allowing brief high-frequency transients to emerge from the pressure zone. OceanDeep's envelope drives OUTWIT chromatophore via EnvToMorph — the bioluminescent exciter's light pulses color the octopus. Discrete CA triggers become raw material for deep-pressure synthesis.",
   "tags": [
     "entangled",
     "solve",
@@ -25,7 +25,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.38,
@@ -162,18 +162,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "OceanDeep",
         "type": "AmpToFilter",
         "amount": 0.5,
-        "description": "OUTWIT CA trigger amplitude momentarily lifts OceanDeep Darkness Filter Ceiling \u2014 brief high-frequency transients emerge from the pressure zone when CA density peaks"
+        "description": "OUTWIT CA trigger amplitude momentarily lifts OceanDeep Darkness Filter Ceiling — brief high-frequency transients emerge from the pressure zone when CA density peaks",
+        "engineA": "Outwit",
+        "engineB": "OceanDeep"
       },
       {
-        "source": "OceanDeep",
-        "target": "Outwit",
         "type": "EnvToMorph",
         "amount": 0.35,
-        "description": "OceanDeep bioluminescent exciter envelope drives OUTWIT chromatophore \u2014 deep-sea light pulses color the octopus arms"
+        "description": "OceanDeep bioluminescent exciter envelope drives OUTWIT chromatophore — deep-sea light pulses color the octopus arms",
+        "engineA": "OceanDeep",
+        "engineB": "Outwit"
       }
     ]
   },

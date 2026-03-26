@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Ottoni",
+        "type": "AmpToFilter"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Ottoni",
+        "engineB": "Oblique",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OTTONI's growing brass chords spread through OBLIQUE's prism — the fanfare explodes into colored vectors.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.705,
+    "density": 0.6,
+    "movement": 0.733,
+    "space": 0.6,
+    "warmth": 0.473
+  },
+  "engines": [
+    "Oblique",
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Brass Prism Fanfare",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Ottoni": {
+      "otto_ampAttack": 0.03,
+      "otto_ampRelease": 1.5,
+      "otto_filterCutoff": 2800.0,
+      "otto_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oblique",
+    "ottoni",
+    "prism",
+    "rtj",
+    "funk",
+    "tame-impala",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

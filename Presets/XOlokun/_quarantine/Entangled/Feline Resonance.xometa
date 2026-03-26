@@ -5,7 +5,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Orphica",
-        "type": "PREDATOR_STALK",
+        "type": "AudioToFM",
         "amount": 0.55
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

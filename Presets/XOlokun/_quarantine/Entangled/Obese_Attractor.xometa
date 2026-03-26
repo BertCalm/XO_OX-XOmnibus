@@ -6,7 +6,7 @@
         "amount": 0.94,
         "engineA": "Obese",
         "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

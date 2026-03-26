@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Obese",
-        "target": "Overlap",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch",
+        "engineA": "Obese",
+        "engineB": "Overlap"
       }
     ]
   },

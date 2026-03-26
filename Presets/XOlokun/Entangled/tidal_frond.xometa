@@ -6,7 +6,7 @@
         "amount": 0.82,
         "engineA": "Overlap",
         "engineB": "Oceanic",
-        "type": "AMPLITUDE_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

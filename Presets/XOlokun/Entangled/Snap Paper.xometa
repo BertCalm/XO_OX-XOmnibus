@@ -7,7 +7,7 @@
         "amount": 0.57,
         "engineA": "Overbite",
         "engineB": "Origami",
-        "type": "Filter->Drive"
+        "type": "FilterToFilter"
       }
     ],
     "type": "Filter->Drive"

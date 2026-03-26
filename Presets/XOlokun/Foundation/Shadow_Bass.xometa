@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Oblong",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.443
       }
     ]
@@ -64,5 +64,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, dark, warm atmosphere. Let it breathe \u2014 the space is the instrument."
+  "description": "Anchored and grounding, dark, warm atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

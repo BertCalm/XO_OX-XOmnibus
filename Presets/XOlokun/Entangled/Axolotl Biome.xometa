@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OddOscar's warm gill-pink morphology absorbs XOcelot's biome-driven filter's timbre \u2014 organic resonance blending into a single breathing, living texture.",
+  "description": "OddOscar's warm gill-pink morphology absorbs XOcelot's biome-driven filter's timbre — organic resonance blending into a single breathing, living texture.",
   "tags": [
     "entangled",
     "coupling",
@@ -65,7 +65,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Ocelot",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.6
       }
     ]

@@ -6,7 +6,7 @@
         "amount": 0.673,
         "engineA": "Obbligato",
         "engineB": "Oblong",
-        "type": "LFO->Pan"
+        "type": "LFOToPitch"
       }
     ]
   },

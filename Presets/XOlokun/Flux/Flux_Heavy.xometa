@@ -5,7 +5,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Oblong",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.818
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, crystalline bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Restless and kinetic, dark, crystalline bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

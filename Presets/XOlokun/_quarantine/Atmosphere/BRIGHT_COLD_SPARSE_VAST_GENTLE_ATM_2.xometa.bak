@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.893
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1181,
+    "brightness": 0.9371,
+    "density": 0.0687,
+    "movement": 0.6021,
+    "space": 0.9678,
+    "warmth": 0.0549
+  },
+  "engines": [
+    "Osprey",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5074,
+    "COUPLING": 0.0622,
+    "MOVEMENT": 0.6093,
+    "SPACE": 0.964
+  },
+  "mood": "Atmosphere",
+  "name": "Mirror Abyss",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.5043,
+      "macro_coupling": 0.07,
+      "macro_movement": 0.618,
+      "macro_space": 0.9754
+    },
+    "Osprey": {
+      "macro_character": 0.5106,
+      "macro_coupling": 0.0543,
+      "macro_movement": 0.6006,
+      "macro_space": 0.9526
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

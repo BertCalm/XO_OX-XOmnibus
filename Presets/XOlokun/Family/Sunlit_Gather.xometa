@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Origami",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.775
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, warm sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Warm and familiar, shimmering, warm sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

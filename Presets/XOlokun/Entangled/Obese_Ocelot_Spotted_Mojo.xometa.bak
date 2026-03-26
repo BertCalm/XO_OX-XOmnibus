@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "source": "Obese",
+        "target": "Ocelot",
+        "type": "RHYTHMIC_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Ocelot biome ID selects saturation algorithm — each biome a different distortion character.",
+  "dna": {
+    "aggression": 0.722,
+    "brightness": 0.53,
+    "density": 0.687,
+    "movement": 0.634,
+    "space": 0.394,
+    "warmth": 0.624
+  },
+  "engines": [
+    "Obese",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Spotted Mojo",
+  "parameters": {
+    "Obese": {
+      "fat_ampAttack": 0.0486,
+      "fat_ampDecay": 0.574,
+      "fat_ampRelease": 0.194,
+      "fat_ampSustain": 0.604,
+      "fat_analogDigital": 0.433,
+      "fat_distType": 0.75,
+      "fat_filterCutoff": 6982.1,
+      "fat_filterEnvAmt": 0.426,
+      "fat_filterReso": 0.147,
+      "fat_level": 0.637,
+      "fat_lfo1Depth": 0.106,
+      "fat_lfo1Rate": 4.344,
+      "fat_lfo1Shape": 0.0,
+      "fat_modAttack": 0.0106,
+      "fat_modDecay": 0.366,
+      "fat_modRelease": 0.624,
+      "fat_modSustain": 0.626,
+      "fat_mojoControl": 0.256,
+      "fat_oscDetune": -0.341,
+      "fat_oscWave": 0.33,
+      "fat_reverbMix": 0.252,
+      "fat_satDrive": 0.528,
+      "fat_satMix": 0.421,
+      "fat_subOscLevel": 0.601
+    },
+    "Ocelot": {
+      "ocelot_filterCutoff": 9802.7,
+      "ocelot_level": 0.836
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "obese",
+    "ocelot"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

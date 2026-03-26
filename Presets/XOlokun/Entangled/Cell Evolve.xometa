@@ -6,7 +6,7 @@
         "amount": 0.518,
         "engineA": "Outwit",
         "engineB": "Origami",
-        "type": "SYNC_LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

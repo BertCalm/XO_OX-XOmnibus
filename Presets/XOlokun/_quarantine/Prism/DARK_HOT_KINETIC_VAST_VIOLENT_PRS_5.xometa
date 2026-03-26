@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Ocelot",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.652
       }
     ]

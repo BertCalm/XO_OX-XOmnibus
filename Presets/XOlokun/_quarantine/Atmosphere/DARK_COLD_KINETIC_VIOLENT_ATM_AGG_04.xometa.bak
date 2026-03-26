@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.888
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.89,
+    "brightness": 0.128,
+    "density": 0.564,
+    "movement": 0.885,
+    "space": 0.679,
+    "warmth": 0.079
+  },
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.124,
+    "COUPLING": 0.873,
+    "MOVEMENT": 0.86,
+    "SPACE": 0.661
+  },
+  "mood": "Atmosphere",
+  "name": "DARK COLD KINETIC VIOLENT A... (Orbital I)",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.125,
+      "macro_coupling": 0.859,
+      "macro_movement": 0.863,
+      "macro_space": 0.646
+    },
+    "Orbital": {
+      "macro_character": 0.123,
+      "macro_coupling": 0.886,
+      "macro_movement": 0.857,
+      "macro_space": 0.675
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Violent Fang Mesh",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.69,
+      "macro_movement": 0.89,
+      "macro_coupling": 0.83,
+      "macro_space": 0.32
+    },
+    "Ohm": {
+      "macro_character": 0.77,
+      "macro_movement": 0.87,
+      "macro_coupling": 0.53,
+      "macro_space": 0.3
+    }
+  },
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "OVERBITE",
+    "target": "OHM",
+    "amount": 0.61
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.075,
+    "movement": 0.914,
+    "density": 0.913,
+    "space": 0.44,
+    "aggression": 0.938
+  }
+}

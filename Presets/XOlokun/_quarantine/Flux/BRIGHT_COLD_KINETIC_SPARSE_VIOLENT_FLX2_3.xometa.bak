@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.486
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.983,
+    "brightness": 0.9151,
+    "density": 0.0543,
+    "movement": 0.8889,
+    "space": 0.4298,
+    "warmth": 0.0699
+  },
+  "engines": [
+    "Oblique",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4979,
+    "COUPLING": 0.0392,
+    "MOVEMENT": 0.8786,
+    "SPACE": 0.4195
+  },
+  "mood": "Flux",
+  "name": "Silver Crush",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.5078,
+      "macro_coupling": 0.0292,
+      "macro_movement": 0.8619,
+      "macro_space": 0.4264
+    },
+    "Oracle": {
+      "macro_character": 0.4879,
+      "macro_coupling": 0.0492,
+      "macro_movement": 0.8953,
+      "macro_space": 0.4127
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "cold",
+    "kinetic",
+    "sparse",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Obbligato",
-        "type": "HARMONIC_MESH",
+        "type": "KnotTopology",
         "amount": 0.901
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

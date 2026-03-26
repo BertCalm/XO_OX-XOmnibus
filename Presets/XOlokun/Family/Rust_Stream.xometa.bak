@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oblong",
+        "type": "CHAOS_INJECT",
+        "amount": 0.771
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.884,
+    "brightness": 0.054,
+    "density": 0.39,
+    "movement": 0.919,
+    "space": 0.637,
+    "warmth": 0.872
+  },
+  "engines": [
+    "Overdub",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.918,
+    "COUPLING": 0.442,
+    "MOVEMENT": 0.739,
+    "SPACE": 0.91
+  },
+  "mood": "Family",
+  "name": "Rust Stream",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.897,
+      "macro_coupling": 0.434,
+      "macro_movement": 0.76,
+      "macro_space": 0.908,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overdub": {
+      "macro_character": 0.918,
+      "macro_coupling": 0.442,
+      "macro_movement": 0.739,
+      "macro_space": 0.91,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Warm and familiar, dark, warm texture. Macro sweeps reveal shifting timbral landscapes."
+}

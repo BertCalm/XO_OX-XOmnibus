@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Ouroboros",
+        "engineB": "Ocelot",
+        "type": "CV->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ocelot's sprint rhythm governed by attractor cycle period. Hunt sequences trace chaotic arcs.",
+  "dna": {
+    "aggression": 0.409,
+    "brightness": 0.0,
+    "density": 0.391,
+    "movement": 0.805,
+    "space": 0.445,
+    "warmth": 0.46
+  },
+  "engines": [
+    "Ouroboros",
+    "Ocelot"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Predator Attractor",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 0,
+      "ocelot_camouflage": 0.4,
+      "ocelot_sprint": 0.5
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.5,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.35,
+      "ouro_rate": 90.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "predator",
+    "sprint",
+    "hunt",
+    "entangled",
+    "ouroboros",
+    "ocelot"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

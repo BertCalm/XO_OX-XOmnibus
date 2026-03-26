@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obsidian",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.5
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.8,
+    "density": 0.3,
+    "movement": 0.6,
+    "space": 0.9,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Odyssey",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.5,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.9
+  },
+  "mood": "Entangled",
+  "name": "Pale Fracture Map",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.5,
+      "macro_space": 0.9
+    },
+    "Odyssey": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.6,
+      "macro_space": 0.9
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "obsidian"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

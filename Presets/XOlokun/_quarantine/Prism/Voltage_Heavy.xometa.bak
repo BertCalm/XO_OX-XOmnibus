@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "Optic",
+    "targetEngine": null,
+    "type": "FM"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: DARK COLD DENSE OPEN PRI 1.",
+  "dna": {
+    "aggression": 0.958,
+    "brightness": 0.109,
+    "density": 0.95,
+    "movement": 0.506,
+    "space": 0.572,
+    "warmth": 0.083
+  },
+  "engines": [
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Voltage Heavy",
+  "parameters": {
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.856
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.903,
+    "brightness": 0.903,
+    "density": 0.364,
+    "movement": 0.961,
+    "space": 0.921,
+    "warmth": 0.648
+  },
+  "engines": [
+    "Orbital",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.851,
+    "COUPLING": 0.815,
+    "MOVEMENT": 0.927,
+    "SPACE": 0.863
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT KINETIC VAST VIOLENT... (Orbital)",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.846,
+      "macro_coupling": 0.806,
+      "macro_movement": 0.943,
+      "macro_space": 0.875
+    },
+    "Origami": {
+      "macro_character": 0.857,
+      "macro_coupling": 0.823,
+      "macro_movement": 0.911,
+      "macro_space": 0.851
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

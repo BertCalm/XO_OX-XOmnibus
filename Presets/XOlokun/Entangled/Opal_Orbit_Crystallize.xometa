@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Opal Orbit Crystallize",
   "mood": "Entangled",
-  "engines": ["Opal", "Orbital"],
+  "engines": [
+    "Opal",
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's warm-red orbit feeds OPAL via AudioToWavetable, then OPAL applies freeze-and-granularize: EnvToDecay coupling from ORBITAL's envelope holds opal_freeze at 0.75 whenever ORBITAL notes sustain. The granulator orbits the frozen ORBITAL snapshot at 120ms grain size, density=18. shimmer=0.55 adds crystal architecture to ORBITAL's analog warmth. When ORBITAL releases, freeze dissolves and new material flows into the buffer. Catch → crystallize → release → catch again.",
-  "tags": ["orbital", "freeze", "crystallize", "entangled", "shimmer", "analog-warmth", "audiotowavetable"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "orbital",
+    "freeze",
+    "crystallize",
+    "entangled",
+    "shimmer",
+    "analog-warmth",
+    "audiotowavetable"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

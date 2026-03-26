@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.672
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.064,
+    "brightness": 0.969,
+    "density": 0.926,
+    "movement": 0.476,
+    "space": 0.441,
+    "warmth": 0.121
+  },
+  "engines": [
+    "Orbital",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.545,
+    "COUPLING": 0.536,
+    "MOVEMENT": 0.476,
+    "SPACE": 0.441
+  },
+  "mood": "Aether",
+  "name": "BRIGHT COLD DENSE BALANCED ... (Orbital)",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.517,
+      "macro_coupling": 0.525,
+      "macro_movement": 0.472,
+      "macro_space": 0.426
+    },
+    "Orbital": {
+      "macro_character": 0.545,
+      "macro_coupling": 0.536,
+      "macro_movement": 0.476,
+      "macro_space": 0.441
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

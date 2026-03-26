@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Oracle",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.5954
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

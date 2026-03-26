@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.477,
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "Gate->Env"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OHM and ORPHICA coupled via Gate->Env. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.231,
+    "brightness": 0.693,
+    "density": 0.557,
+    "movement": 0.692,
+    "space": 0.735,
+    "warmth": 0.601
+  },
+  "engines": [
+    "Ohm",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Overtone Pluck",
+  "parameters": {
+    "Ohm": {},
+    "Orphica": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "orphica"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

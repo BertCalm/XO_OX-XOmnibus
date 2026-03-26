@@ -6,7 +6,7 @@
         "amount": 0.777,
         "engineA": "Obsidian",
         "engineB": "Orbital",
-        "type": "Envelope->Filter"
+        "type": "EnvToDecay"
       }
     ]
   },

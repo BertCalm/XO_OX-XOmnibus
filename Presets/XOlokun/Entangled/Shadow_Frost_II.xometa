@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.867,
-        "source": "OddfeliX",
-        "target": "Octopus",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "OddfeliX",
+        "engineB": "Octopus"
       }
     ]
   },

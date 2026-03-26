@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ohm",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.46
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.038,
+    "brightness": 0.034,
+    "density": 0.881,
+    "movement": 0.053,
+    "space": 0.599,
+    "warmth": 0.046
+  },
+  "engines": [
+    "Organon",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.04,
+    "COUPLING": 0.46,
+    "MOVEMENT": 0.053,
+    "SPACE": 0.599
+  },
+  "mood": "Family",
+  "name": "DARK COLD STILL DENSE GENTL...",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.053,
+      "macro_coupling": 0.433,
+      "macro_movement": 0.077,
+      "macro_space": 0.657
+    },
+    "Organon": {
+      "macro_character": 0.04,
+      "macro_coupling": 0.46,
+      "macro_movement": 0.053,
+      "macro_space": 0.599
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

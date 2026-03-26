@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ombre",
+        "type": "LFO_SYNC",
+        "amount": 0.75
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.71,
+    "brightness": 0.09,
+    "density": 0.82,
+    "movement": 0.35,
+    "space": 0.16,
+    "warmth": 0.52
+  },
+  "engines": [
+    "Ombre",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.16
+  },
+  "mood": "Entangled",
+  "name": "Lead Curtain Low",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.85,
+      "macro_movement": 0.85,
+      "macro_space": 0.38
+    },
+    "Ombre": {
+      "macro_character": 0.18,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.44,
+      "macro_space": 0.38
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

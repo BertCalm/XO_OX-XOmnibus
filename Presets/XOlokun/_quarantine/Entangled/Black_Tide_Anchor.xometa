@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Overworld",
-        "type": "FEEDBACK",
+        "type": "AudioToRing",
         "amount": 0.5
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

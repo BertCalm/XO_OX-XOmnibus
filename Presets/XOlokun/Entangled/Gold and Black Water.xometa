@@ -5,23 +5,23 @@
       {
         "amount": 0.697,
         "description": "OWLFISH Mixtur-Trautonium oscillator phase-locks to ORCA wavetable; OSTERIA patina level tints the shared spectral blend",
-        "source": "Orca",
-        "target": "Osteria",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Osteria"
       },
       {
         "amount": 0.482,
         "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch",
-        "source": "Orca",
-        "target": "Owlfish",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Owlfish"
       },
       {
         "amount": 0.591,
         "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer",
-        "source": "Osteria",
-        "target": "Owlfish",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Osteria",
+        "engineB": "Owlfish"
       }
     ]
   },

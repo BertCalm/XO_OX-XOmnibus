@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ombre",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.8769
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9737,
+    "brightness": 0.1214,
+    "density": 0.9755,
+    "movement": 0.466,
+    "space": 0.5031,
+    "warmth": 0.931
+  },
+  "engines": [
+    "Orbital",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5262,
+    "COUPLING": 0.8769,
+    "MOVEMENT": 0.466,
+    "SPACE": 0.5031
+  },
+  "mood": "Aether",
+  "name": "Layered Impact II",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.5633,
+      "macro_coupling": 0.7722,
+      "macro_movement": 0.4493,
+      "macro_space": 0.4829
+    },
+    "Orbital": {
+      "macro_character": 0.6349,
+      "macro_coupling": 0.8489,
+      "macro_movement": 0.695,
+      "macro_space": 0.5349
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

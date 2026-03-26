@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9417,
-        "source": "Oblique",
-        "target": "Optic",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM",
+        "engineA": "Oblique",
+        "engineB": "Optic"
       }
     ]
   },

@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.782,
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "pitch_follow"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OBESE feedback loop entangles OUROBOROS infinite recursion. Eternal saturation.",
+  "dna": {
+    "aggression": 0.785,
+    "brightness": 0.539,
+    "density": 0.777,
+    "movement": 0.755,
+    "space": 0.49,
+    "warmth": 0.556
+  },
+  "engines": [
+    "Obese",
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Compress Loop",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.258,
+      "fat_compress": 0.58,
+      "fat_couplingIn": 0.657,
+      "fat_couplingOut": 0.591,
+      "fat_digital": 0.671,
+      "fat_macro1": 0.399,
+      "fat_macro2": 0.498,
+      "fat_macro3": 0.43,
+      "fat_macro4": 0.476,
+      "fat_mojoCtrl": 0.449,
+      "fat_outputLevel": 0.853,
+      "fat_outputPan": -0.019,
+      "fat_satDrive": 0.709
+    },
+    "Ouroboros": {
+      "ouro_couplingIn": 0.658,
+      "ouro_couplingOut": 0.589,
+      "ouro_macro1": 0.494,
+      "ouro_macro2": 0.65,
+      "ouro_macro3": 0.599,
+      "ouro_macro4": 0.329,
+      "ouro_outputLevel": 0.865,
+      "ouro_outputPan": 0.019
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "ouroboros",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
+}

@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.885
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.725,
+    "brightness": 0.823,
+    "density": 0.972,
+    "movement": 0.948,
+    "space": 0.642,
+    "warmth": 0.074
+  },
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "COUPLING": 0.345,
+    "MOVEMENT": 0.948,
+    "SPACE": 0.878
+  },
+  "mood": "Entangled",
+  "name": "SEISMIC",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.935,
+      "macro_space": 0.526
+    },
+    "Origami": {
+      "macro_character": 0.612,
+      "macro_coupling": 0.086,
+      "macro_movement": 0.96,
+      "macro_space": 0.309
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "chaotic",
+    "high-energy"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

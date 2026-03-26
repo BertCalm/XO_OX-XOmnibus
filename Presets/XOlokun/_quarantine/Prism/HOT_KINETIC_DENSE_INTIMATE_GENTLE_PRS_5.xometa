@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Oracle",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.641
       }
     ]

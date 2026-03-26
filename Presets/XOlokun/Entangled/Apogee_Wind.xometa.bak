@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.598,
+        "engineA": "Orbital",
+        "engineB": "Obbligato",
+        "type": "harmonic_lock"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Orbital × Obbligato coupling (spectral cross). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.447,
+    "brightness": 0.53,
+    "density": 0.615,
+    "movement": 0.623,
+    "space": 0.585,
+    "warmth": 0.613
+  },
+  "engines": [
+    "Orbital",
+    "Obbligato"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Apogee Wind",
+  "parameters": {
+    "Obbligato": {
+      "obbl_couplingIn": 0.577,
+      "obbl_couplingOut": 0.516,
+      "obbl_macro1": 0.449,
+      "obbl_macro2": 0.682,
+      "obbl_macro3": 0.644,
+      "obbl_macro4": 0.604
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.399,
+      "orb_brightness": 0.57,
+      "orb_couplingIn": 0.437,
+      "orb_groupEnv": 0.621,
+      "orb_harmonicAmt": 0.473,
+      "orb_macro1": 0.49,
+      "orb_macro2": 0.476,
+      "orb_macro3": 0.538,
+      "orb_macro4": 0.334,
+      "orb_phaseSpread": 0.363,
+      "orb_resonantPeak": 0.304
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "obbligato",
+    "spectral-cross",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
+}

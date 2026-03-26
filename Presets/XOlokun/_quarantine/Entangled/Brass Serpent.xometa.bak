@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Chaos from the ouroboros bites into OTTONI brass — unpredictable fanfare.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.45,
+    "density": 0.6,
+    "movement": 0.7,
+    "space": 0.38,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Ottoni",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.625,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.415
+  },
+  "mood": "Entangled",
+  "name": "Brass Serpent",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.5,
+      "macro_space": 0.38
+    },
+    "Ouroboros": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.7,
+      "macro_space": 0.45
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "chaos",
+    "serpent",
+    "tension"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

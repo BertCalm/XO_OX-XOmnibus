@@ -5,7 +5,7 @@
       {
         "engineA": "Oracle",
         "engineB": "OddfeliX",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.847
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

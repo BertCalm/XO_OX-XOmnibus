@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Chip Wind Duo",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Obbligato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD provides the chip melody line, OBBLIGATO adds obligatory wind accompaniment. Two voices that cannot exist without each other.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overworld",
+    "obbligato",
+    "chip",
+    "wind",
+    "duo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.52,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraCross": 0.4,
+      "ow_oscWave": 0,
+      "ow_arpRate": 90.0
+    },
+    "Obbligato": {
+      "obbl_bond": 0.65,
+      "obbl_breathRate": 0.55,
+      "obbl_windMix": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obbligato",
+        "type": "Pitch->Character",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Obbligato",
+        "engineB": "Overworld",
+        "type": "Rhythm->Blend",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

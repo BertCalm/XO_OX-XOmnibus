@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Orphica",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.693
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Orphica pluck brightness modulates OVERLAP filter cutoff — string attack shapes the reverb tone",
+  "engines": [
+    "Overlap",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.59,
+    "COUPLING": 0.69,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.81
+  },
+  "mood": "Entangled",
+  "name": "Tangled Bloom",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.691,
+      "olap_damping": 0.599,
+      "olap_decay": 0.753,
+      "olap_diffusion": 0.669,
+      "olap_earlyMix": 0.479,
+      "olap_filterCutoff": 0.55,
+      "olap_filterReso": 0.144,
+      "olap_lateMix": 0.517,
+      "olap_modDepth": 0.343,
+      "olap_modRate": 0.321,
+      "olap_outputLevel": 0.756,
+      "olap_preDelay": 0.011,
+      "olap_size": 0.589
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "orphica",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.321,
+    "density": 0.5,
+    "space": 0.011,
+    "aggression": 0.3
+  },
+  "tempo": null
+}

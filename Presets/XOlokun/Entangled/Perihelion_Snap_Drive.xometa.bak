@@ -1,0 +1,106 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.715,
+        "engineA": "Orbital",
+        "engineB": "Overbite",
+        "type": "pitch_follow"
+      },
+      {
+        "amount": 0.747,
+        "engineA": "Orbital",
+        "engineB": "Obese",
+        "type": "amplitude_sidechain"
+      },
+      {
+        "amount": 0.59,
+        "engineA": "Overbite",
+        "engineB": "Obese",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "ORBITAL perihelion triggers OVERBITE snap; OBESE drive saturates the moment of closest approach. Dangerous warmth.",
+  "dna": {
+    "aggression": 0.602,
+    "brightness": 0.534,
+    "density": 0.72,
+    "movement": 0.549,
+    "space": 0.438,
+    "warmth": 0.591
+  },
+  "engines": [
+    "Orbital",
+    "Overbite",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Perihelion Snap Drive",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.296,
+      "fat_compress": 0.535,
+      "fat_couplingIn": 0.592,
+      "fat_couplingOut": 0.777,
+      "fat_digital": 0.419,
+      "fat_macro1": 0.511,
+      "fat_macro2": 0.479,
+      "fat_macro3": 0.421,
+      "fat_macro4": 0.396,
+      "fat_mojoCtrl": 0.305,
+      "fat_outputLevel": 0.866,
+      "fat_outputPan": -0.018,
+      "fat_satDrive": 0.487
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.668,
+      "orb_couplingIn": 0.664,
+      "orb_couplingOut": 0.555,
+      "orb_groupEnv": 0.683,
+      "orb_harmonicAmt": 0.747,
+      "orb_macro1": 0.488,
+      "orb_macro2": 0.376,
+      "orb_macro3": 0.531,
+      "orb_macro4": 0.676,
+      "orb_outputLevel": 0.845,
+      "orb_outputPan": -0.024,
+      "orb_phaseSpread": 0.327,
+      "orb_resonantPeak": 0.353
+    },
+    "Overbite": {
+      "poss_gnashAmount": 0.635,
+      "poss_macroBelly": 0.567,
+      "poss_macroBite": 0.436,
+      "poss_macroScurry": 0.558,
+      "poss_macroTrash": 0.377,
+      "poss_level": 0.786,
+      "poss_pan": -0.012
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "overbite",
+    "obese",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
+}

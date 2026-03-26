@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Odyssey",
-        "target": "Ombre",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer",
+        "engineA": "Odyssey",
+        "engineB": "Ombre"
       }
     ]
   },

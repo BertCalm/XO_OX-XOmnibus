@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Optic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.777
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.966,
+    "brightness": 0.051,
+    "density": 0.949,
+    "movement": 0.876,
+    "space": 0.409,
+    "warmth": 0.645
+  },
+  "engines": [
+    "Ottoni",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.049,
+    "COUPLING": 0.915,
+    "MOVEMENT": 0.827,
+    "SPACE": 0.398
+  },
+  "mood": "Prism",
+  "name": "DARK KINETIC DENSE VIOLENT ... (Ottoni II)",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.048,
+      "macro_coupling": 0.93,
+      "macro_movement": 0.819,
+      "macro_space": 0.388
+    },
+    "Ottoni": {
+      "macro_character": 0.049,
+      "macro_coupling": 0.901,
+      "macro_movement": 0.834,
+      "macro_space": 0.408
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

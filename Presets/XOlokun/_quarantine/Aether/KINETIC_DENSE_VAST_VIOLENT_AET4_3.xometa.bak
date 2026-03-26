@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8163
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9487,
+    "brightness": 0.5649,
+    "density": 0.98,
+    "movement": 0.9496,
+    "space": 0.9072,
+    "warmth": 0.3516
+  },
+  "engines": [
+    "Organon",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4582,
+    "COUPLING": 0.8163,
+    "MOVEMENT": 0.9496,
+    "SPACE": 0.9072
+  },
+  "mood": "Aether",
+  "name": "Flux Packed 2",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.7028,
+      "macro_coupling": 0.2137,
+      "macro_movement": 0.5814,
+      "macro_space": 0.4316
+    },
+    "Organon": {
+      "macro_character": 0.9103,
+      "macro_coupling": 0.8843,
+      "macro_movement": 0.9479,
+      "macro_space": 0.2701
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "kinetic",
+    "dense",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

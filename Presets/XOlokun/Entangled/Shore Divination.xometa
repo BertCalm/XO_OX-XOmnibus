@@ -5,9 +5,9 @@
       {
         "amount": 0.819,
         "description": "Osteria drives Oracle via RhythmToBlend",
-        "source": "Osteria",
-        "target": "Oracle",
-        "type": "RhythmToBlend"
+        "type": "RhythmToBlend",
+        "engineA": "Osteria",
+        "engineB": "Oracle"
       }
     ]
   },

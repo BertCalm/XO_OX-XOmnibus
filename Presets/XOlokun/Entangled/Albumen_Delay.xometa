@@ -6,7 +6,7 @@
         "amount": 0.718,
         "engineA": "Obscura",
         "engineB": "Overdub",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },

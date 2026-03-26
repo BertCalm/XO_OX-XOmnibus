@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Onset",
+        "type": "FILTER_MOD",
+        "amount": 0.592
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_DENSE_VAST_GENTLE. Variant 2.",
+  "dna": {
+    "aggression": 0.123,
+    "brightness": 0.13,
+    "density": 0.896,
+    "movement": 0.329,
+    "space": 0.902,
+    "warmth": 0.99
+  },
+  "engines": [
+    "Overbite",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.21,
+    "COUPLING": 1.0,
+    "MOVEMENT": 0.311,
+    "SPACE": 0.886
+  },
+  "mood": "Foundation",
+  "name": "Rust Cavern",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.256,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.282,
+      "macro_space": 0.95
+    },
+    "Overbite": {
+      "macro_character": 0.164,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.34,
+      "macro_space": 0.823
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "hot",
+    "extreme",
+    "dark",
+    "diversity",
+    "vast",
+    "gentle",
+    "foundation",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

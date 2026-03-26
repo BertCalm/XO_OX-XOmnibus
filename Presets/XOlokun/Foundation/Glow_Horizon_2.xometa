@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Oblong",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.476
       }
     ]

@@ -5,23 +5,23 @@
       {
         "amount": 0.653,
         "description": "ORCA wavetable position locks to OSTERIA rhythm level; OWLFISH resonant pitch tracks the combined filter state",
-        "source": "Orca",
-        "target": "Osteria",
-        "type": "WavetableSync"
+        "type": "AudioToWavetable",
+        "engineA": "Orca",
+        "engineB": "Osteria"
       },
       {
         "amount": 0.529,
         "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch",
-        "source": "Orca",
-        "target": "Owlfish",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Owlfish"
       },
       {
         "amount": 0.504,
         "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer",
-        "source": "Osteria",
-        "target": "Owlfish",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Osteria",
+        "engineB": "Owlfish"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.68
       }
     ]
@@ -60,5 +60,6 @@
     "catalyst"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

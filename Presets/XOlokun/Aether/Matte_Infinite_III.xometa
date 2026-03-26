@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.459,
-      "destination": "OUTWIT",
-      "source": "OBBLIGATO",
-      "type": "FILTER_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.459,
+        "type": "AmpToFilter",
+        "engineA": "OBBLIGATO",
+        "engineB": "OUTWIT"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — aether, dark, cold, kinetic.",

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.48,
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "Mod->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Latent coastal image. Collodion suspension meets phosphorescent wave.",
+  "dna": {
+    "aggression": 0.284,
+    "brightness": 0.503,
+    "density": 0.583,
+    "movement": 0.396,
+    "space": 0.701,
+    "warmth": 0.576
+  },
+  "engines": [
+    "Obscura",
+    "Oceanic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Fixed Image Phosphor",
+  "parameters": {
+    "Obscura": {
+      "obscura_aggression": 0.23,
+      "obscura_brightness": 0.367,
+      "obscura_density": 0.564,
+      "obscura_level": 0.849,
+      "obscura_movement": 0.375,
+      "obscura_space": 0.661,
+      "obscura_warmth": 0.676
+    },
+    "Oceanic": {
+      "ocean_aggression": 0.348,
+      "ocean_brightness": 0.578,
+      "ocean_density": 0.615,
+      "ocean_level": 0.821,
+      "ocean_movement": 0.499,
+      "ocean_space": 0.716,
+      "ocean_warmth": 0.567
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obscura",
+    "oceanic",
+    "daguerreotype",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

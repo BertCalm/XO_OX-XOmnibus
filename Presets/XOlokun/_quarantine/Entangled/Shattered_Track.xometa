@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Origami",
         "engineB": "OddOscar",
-        "type": "TEXTURE_WEAVE"
+        "type": "EnvToMorph"
       }
     ]
   },

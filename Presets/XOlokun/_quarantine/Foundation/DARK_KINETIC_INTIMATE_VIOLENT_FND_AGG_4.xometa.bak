@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obsidian",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.771
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.934,
+    "brightness": 0.027,
+    "density": 0.491,
+    "movement": 0.876,
+    "space": 0.121,
+    "warmth": 0.425
+  },
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.384,
+    "COUPLING": 0.861,
+    "MOVEMENT": 0.655,
+    "SPACE": 0.391
+  },
+  "mood": "Foundation",
+  "name": "Wave Crush 2",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.341,
+      "macro_coupling": 0.851,
+      "macro_movement": 0.691,
+      "macro_space": 0.435
+    },
+    "Origami": {
+      "macro_character": 0.384,
+      "macro_coupling": 0.861,
+      "macro_movement": 0.655,
+      "macro_space": 0.391
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "kinetic",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

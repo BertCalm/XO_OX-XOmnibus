@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obsidian",
+        "type": "AMP_MOD",
+        "amount": 0.67
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.11,
+    "density": 0.78,
+    "movement": 0.37,
+    "space": 0.18,
+    "warmth": 0.48
+  },
+  "engines": [
+    "Obsidian",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.38,
+    "COUPLING": 0.82,
+    "MOVEMENT": 0.37,
+    "SPACE": 0.18
+  },
+  "mood": "Entangled",
+  "name": "Black Soil Resonance",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.47,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.64,
+      "macro_space": 0.17
+    },
+    "Overworld": {
+      "macro_character": 0.15,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.17,
+      "macro_space": 0.34
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

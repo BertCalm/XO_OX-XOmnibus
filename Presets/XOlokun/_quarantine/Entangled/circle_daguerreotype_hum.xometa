@@ -6,7 +6,7 @@
         "amount": 0.63,
         "engineA": "Ohm",
         "engineB": "Obscura",
-        "type": "Amp->Drive"
+        "type": "AmpToFilter"
       }
     ]
   },

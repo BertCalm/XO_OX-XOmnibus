@@ -6,7 +6,7 @@
         "amount": 0.806,
         "engineA": "Ottoni",
         "engineB": "Ole",
-        "type": "Env->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

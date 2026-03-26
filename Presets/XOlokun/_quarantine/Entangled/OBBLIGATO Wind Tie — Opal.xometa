@@ -6,7 +6,7 @@
         "amount": 0.561,
         "engineA": "Obbligato",
         "engineB": "Opal",
-        "type": "LFO->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

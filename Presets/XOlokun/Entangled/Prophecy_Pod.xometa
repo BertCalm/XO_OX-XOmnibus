@@ -6,7 +6,7 @@
         "amount": 0.79,
         "engineA": "Oracle",
         "engineB": "Orca",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM"
       }
     ]
   },

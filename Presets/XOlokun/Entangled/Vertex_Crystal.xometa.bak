@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.568,
+        "engineA": "Origami",
+        "engineB": "Obsidian",
+        "type": "amplitude_sidechain"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Origami × Obsidian coupling (amplitude sidechain). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.555,
+    "density": 0.61,
+    "movement": 0.486,
+    "space": 0.599,
+    "warmth": 0.508
+  },
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Vertex Crystal",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_couplingIn": 0.463,
+      "obsidian_couplingOut": 0.799,
+      "obsidian_macro1": 0.343,
+      "obsidian_macro2": 0.386,
+      "obsidian_macro3": 0.496,
+      "obsidian_macro4": 0.457
+    },
+    "Origami": {
+      "origami_couplingOut": 0.749,
+      "origami_crease": 0.532,
+      "origami_foldPoint": 0.515,
+      "origami_macro1": 0.398,
+      "origami_macro2": 0.534,
+      "origami_macro3": 0.442,
+      "origami_macro4": 0.597,
+      "origami_pleatRate": 0.419,
+      "origami_tessellate": 0.678,
+      "origami_valleyDepth": 0.735
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "origami",
+    "obsidian",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
+}

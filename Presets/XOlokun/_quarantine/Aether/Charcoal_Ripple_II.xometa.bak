@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.8394
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6217,
+    "brightness": 0.0602,
+    "density": 0.8897,
+    "movement": 0.9302,
+    "space": 0.9027,
+    "warmth": 0.6777
+  },
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.369,
+    "COUPLING": 0.8394,
+    "MOVEMENT": 0.9302,
+    "SPACE": 0.9027
+  },
+  "mood": "Aether",
+  "name": "Charcoal Ripple II",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.8343,
+      "macro_coupling": 0.2677,
+      "macro_movement": 0.618,
+      "macro_space": 0.4959
+    },
+    "Origami": {
+      "macro_character": 0.3692,
+      "macro_coupling": 0.7058,
+      "macro_movement": 0.7072,
+      "macro_space": 0.4981
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "vast",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

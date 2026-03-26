@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.9208
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6395,
+    "brightness": 0.5471,
+    "density": 0.0688,
+    "movement": 0.0346,
+    "space": 0.9525,
+    "warmth": 0.8627
+  },
+  "engines": [
+    "Oblique",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6551,
+    "COUPLING": 0.7882,
+    "MOVEMENT": 0.0853,
+    "SPACE": 0.8961
+  },
+  "mood": "Flux",
+  "name": "Anchored Ocean",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.6551,
+      "macro_coupling": 0.7882,
+      "macro_movement": 0.0853,
+      "macro_space": 0.8961
+    },
+    "Organon": {
+      "macro_character": 0.5342,
+      "macro_coupling": 0.5455,
+      "macro_movement": 0.0642,
+      "macro_space": 0.8954
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-warmth",
+    "low-movement",
+    "low-density",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

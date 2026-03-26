@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.947
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.349,
+    "density": 0.958,
+    "movement": 0.954,
+    "space": 0.66,
+    "warmth": 0.084
+  },
+  "engines": [
+    "Oblique",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.681,
+    "COUPLING": 0.709,
+    "MOVEMENT": 0.823,
+    "SPACE": 0.608
+  },
+  "mood": "Atmosphere",
+  "name": "Signal Titan 3",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.681,
+      "macro_coupling": 0.709,
+      "macro_movement": 0.823,
+      "macro_space": 0.608
+    },
+    "Orbital": {
+      "macro_character": 0.796,
+      "macro_coupling": 0.873,
+      "macro_movement": 0.824,
+      "macro_space": 0.551
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "cold",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

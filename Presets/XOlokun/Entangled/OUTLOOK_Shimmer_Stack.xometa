@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Shimmer formation \u2014 super-saw width ready for OPENSKY AmpToFilter coupling. M3 at 0.5 amplifies coupling input 2.5x. Pair with OPENSKY for ascending luminosity.",
+  "description": "Shimmer formation — super-saw width ready for OPENSKY AmpToFilter coupling. M3 at 0.5 amplifies coupling input 2.5x. Pair with OPENSKY for ascending luminosity.",
   "tags": [
     "coupling",
     "shimmer",
@@ -20,7 +20,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "sonicDNA": {
     "brightness": 0.65,

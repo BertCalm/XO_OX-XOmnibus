@@ -5,7 +5,7 @@
       {
         "engineA": "Overworld",
         "engineB": "OddfeliX",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.795
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.85,
+        "engineA": "Oblique",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "RTJ-mode prism with velocity coupling to Onset — percussive light cascade.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.82,
+    "density": 0.74,
+    "movement": 0.84,
+    "space": 0.24,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Oblique",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.82,
+    "SPACE": 0.85,
+    "PUNCH": 0.84,
+    "MUTATE": 0.24
+  },
+  "mood": "Entangled",
+  "name": "Bounce Cascade",
+  "parameters": {
+    "Oblique": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "onset",
+    "bounce"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "tier": "awakening"
+}

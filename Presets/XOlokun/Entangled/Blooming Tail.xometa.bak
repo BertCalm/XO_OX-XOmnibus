@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.858
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Oracle resonance feeds OVERLAP early reflections — prophecy echoes in the FDN's first bounce",
+  "engines": [
+    "Overlap",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.56,
+    "COUPLING": 0.86,
+    "MOVEMENT": 0.68,
+    "SPACE": 0.79
+  },
+  "mood": "Entangled",
+  "name": "Blooming Tail",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.722,
+      "olap_damping": 0.509,
+      "olap_decay": 0.718,
+      "olap_diffusion": 0.845,
+      "olap_earlyMix": 0.308,
+      "olap_filterCutoff": 0.628,
+      "olap_filterReso": 0.187,
+      "olap_lateMix": 0.7,
+      "olap_modDepth": 0.389,
+      "olap_modRate": 0.071,
+      "olap_outputLevel": 0.675,
+      "olap_preDelay": 0.041,
+      "olap_size": 0.72
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "oracle",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.628,
+    "warmth": 0.5,
+    "movement": 0.071,
+    "density": 0.5,
+    "space": 0.041,
+    "aggression": 0.3
+  },
+  "tempo": null
+}

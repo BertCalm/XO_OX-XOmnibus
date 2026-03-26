@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Oblong",
-        "target": "Ohm",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM",
+        "engineA": "Oblong",
+        "engineB": "Ohm"
       }
     ]
   },

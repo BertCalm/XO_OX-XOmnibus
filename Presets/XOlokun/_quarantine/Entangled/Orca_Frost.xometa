@@ -6,7 +6,7 @@
         "amount": 0.93,
         "engineA": "Obsidian",
         "engineB": "Orca",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Opal",
         "engineB": "Odyssey",
-        "type": "ENVELOPE_MIRROR",
+        "type": "EnvToDecay",
         "amount": 0.492
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

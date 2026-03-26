@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.458,
-      "destination": "OBBLIGATO",
-      "source": "OPTIC",
-      "type": "CHAOS_INJECT"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.458,
+        "type": "AudioToFM",
+        "engineA": "OPTIC",
+        "engineB": "OBBLIGATO"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "dna": {
     "aggression": 0.069,
     "brightness": 0.949,

@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Stone Coupling",
   "mood": "Entangled",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "COUPLING macro at full — preparation depth grows with coupling intensity. The monolith is prepared by what plays next to it. Each coupled engine inserts its own bolt deeper into the stone's strings. Glass preparation: what is added becomes part of the stone.",
-  "tags": ["stone", "coupling", "prepared", "entangled", "glass", "marble", "kitchen"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "stone",
+    "coupling",
+    "prepared",
+    "entangled",
+    "glass",
+    "marble",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -45,6 +60,5 @@
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

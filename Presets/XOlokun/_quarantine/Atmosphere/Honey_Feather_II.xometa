@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Oracle",
-        "type": "FM_CROSS",
+        "type": "AudioToFM",
         "amount": 0.73
       }
     ]

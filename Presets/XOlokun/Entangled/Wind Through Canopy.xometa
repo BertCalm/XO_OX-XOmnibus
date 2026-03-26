@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Ocelot",
         "engineB": "Obbligato",
-        "type": "RhythmGate"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.45,
         "engineA": "Obbligato",
         "engineB": "Ocelot",
-        "type": "PitchSync"
+        "type": "PitchToPitch"
       }
     ]
   },

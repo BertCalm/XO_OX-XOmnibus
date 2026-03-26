@@ -6,7 +6,7 @@
         "amount": 0.509,
         "engineA": "Outwit",
         "engineB": "Ouroboros",
-        "type": "FM_CROSS"
+        "type": "AudioToFM"
       }
     ]
   },

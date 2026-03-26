@@ -5,7 +5,7 @@
       {
         "engineA": "Ouroboros",
         "engineB": "Opal",
-        "type": "RING_MOD",
+        "type": "AudioToRing",
         "amount": 0.88
       }
     ]

@@ -6,7 +6,7 @@
         "amount": 0.65,
         "engineA": "Organon",
         "engineB": "OddOscar",
-        "type": "Envelope->Env"
+        "type": "EnvToDecay"
       }
     ]
   },

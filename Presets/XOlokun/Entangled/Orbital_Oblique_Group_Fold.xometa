@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Group Fold",
   "mood": "Entangled",
-  "engines": ["Orbital", "Oblique"],
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's group stagger modulating OBLIQUE's fold amount — each group bloom triggering a different fold state, harmonic density and waveshaping tightly coupled.",
-  "tags": ["group", "fold", "stagger", "coupled", "entangled"],
-  "macroLabels": ["GROUP", "FOLD", "SPECTRAL", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "group",
+    "fold",
+    "stagger",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "GROUP",
+    "FOLD",
+    "SPECTRAL",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.6, "movement": 0.52, "density": 0.65, "space": 0.5, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.6,
+    "movement": 0.52,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.38
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.6,
@@ -74,11 +95,26 @@
       "oblq_level": 0.72
     }
   },
-  "macros": {"GROUP": 0.52, "FOLD": 0.55, "SPECTRAL": 0.65, "SPACE": 0.5},
+  "macros": {
+    "GROUP": 0.52,
+    "FOLD": 0.55,
+    "SPECTRAL": 0.65,
+    "SPACE": 0.5
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Orbital", "engineB": "Oblique", "type": "AmpToFilter", "amount": 0.58},
-      {"engineA": "Oblique", "engineB": "Orbital", "type": "LFOToFilter", "amount": 0.38}
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.58
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.38
+      }
     ]
   }
 }

@@ -4,11 +4,11 @@
     "pairs": [
       {
         "engine": "OddfeliX",
-        "type": "Harmonic"
+        "type": "EnvToMorph"
       },
       {
         "engine": "Odyssey",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },

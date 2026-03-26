@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT DRY QUIET OPEN ATM 3.",
+  "dna": {
+    "aggression": 0.056,
+    "brightness": 0.952,
+    "density": 0.095,
+    "movement": 0.508,
+    "space": 0.891,
+    "warmth": 0.437
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Solar Silk II",
+  "parameters": {
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-high-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

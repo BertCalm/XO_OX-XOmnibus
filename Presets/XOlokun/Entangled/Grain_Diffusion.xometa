@@ -6,7 +6,7 @@
         "amount": 0.708,
         "engineA": "Overlap",
         "engineB": "Opal",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable"
       }
     ]
   },

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7249,
-        "source": "OddOscar",
-        "target": "Ouroboros",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM",
+        "engineA": "OddOscar",
+        "engineB": "Ouroboros"
       }
     ]
   },

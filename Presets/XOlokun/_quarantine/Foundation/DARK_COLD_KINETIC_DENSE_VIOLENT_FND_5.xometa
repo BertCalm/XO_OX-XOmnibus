@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Obsidian",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.903
       }
     ]

@@ -5,9 +5,9 @@
       {
         "amount": 0.643,
         "description": "Osteria drives Ocelot via FilterToGrain",
-        "source": "Osteria",
-        "target": "Ocelot",
-        "type": "FilterToGrain"
+        "type": "AudioToBuffer",
+        "engineA": "Osteria",
+        "engineB": "Ocelot"
       }
     ]
   },

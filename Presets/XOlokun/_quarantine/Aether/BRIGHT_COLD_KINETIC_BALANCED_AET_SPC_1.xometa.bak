@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.749
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.931,
+    "brightness": 0.904,
+    "density": 0.575,
+    "movement": 0.911,
+    "space": 0.606,
+    "warmth": 0.043
+  },
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.474,
+    "COUPLING": 0.873,
+    "MOVEMENT": 0.911,
+    "SPACE": 0.606
+  },
+  "mood": "Aether",
+  "name": "BRIGHT COLD KINETIC BALANCE...",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.447,
+      "macro_coupling": 0.851,
+      "macro_movement": 0.901,
+      "macro_space": 0.635
+    },
+    "Orbital": {
+      "macro_character": 0.474,
+      "macro_coupling": 0.873,
+      "macro_movement": 0.911,
+      "macro_space": 0.606
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

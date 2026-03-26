@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.906
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.035,
+    "brightness": 0.882,
+    "density": 0.105,
+    "movement": 0.651,
+    "space": 0.423,
+    "warmth": 0.672
+  },
+  "engines": [
+    "Onset",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.777,
+    "SPACE": 0.839,
+    "PUNCH": 0.651,
+    "MUTATE": 0.423
+  },
+  "mood": "Foundation",
+  "name": "Grace Mist",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.777,
+      "macro_coupling": 0.839,
+      "macro_movement": 0.651,
+      "macro_space": 0.423
+    },
+    "Osteria": {
+      "macro_character": 0.653,
+      "macro_coupling": 0.744,
+      "macro_movement": 0.647,
+      "macro_space": 0.501
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

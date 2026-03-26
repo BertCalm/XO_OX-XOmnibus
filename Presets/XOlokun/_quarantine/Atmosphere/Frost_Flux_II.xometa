@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Ole",
-        "type": "FILTER_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.61
       }
     ]

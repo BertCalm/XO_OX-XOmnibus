@@ -6,7 +6,7 @@
         "amount": 0.53,
         "engineA": "Origami",
         "engineB": "Osprey",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },

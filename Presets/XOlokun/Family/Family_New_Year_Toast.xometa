@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.31,
-      "destination": "Orphica",
-      "source": "Ohm",
-      "type": "EnvToMorph"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.31,
+        "type": "EnvToMorph",
+        "engineA": "Ohm",
+        "engineB": "Orphica"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Dad's warm physical presence grounds the room. MEDDLING at rest — the family is at peace.",

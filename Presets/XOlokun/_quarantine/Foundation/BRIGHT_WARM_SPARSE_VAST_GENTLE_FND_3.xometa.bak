@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "FILTER_MOD",
+        "amount": 0.91
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_SPARSE_VAST_GENTLE. Variant 3.",
+  "dna": {
+    "aggression": 0.091,
+    "brightness": 0.943,
+    "density": 0.071,
+    "movement": 0.554,
+    "space": 0.954,
+    "warmth": 0.948
+  },
+  "engines": [
+    "Onset",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 1.0,
+    "SPACE": 0.052,
+    "PUNCH": 0.562,
+    "MUTATE": 0.994
+  },
+  "mood": "Foundation",
+  "name": "Halo Vast",
+  "parameters": {
+    "Obese": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.047,
+      "macro_movement": 0.643,
+      "macro_space": 1.0
+    },
+    "Onset": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.057,
+      "macro_movement": 0.481,
+      "macro_space": 0.988
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "sparse",
+    "extreme",
+    "diversity",
+    "bright",
+    "vast",
+    "warm",
+    "foundation",
+    "gentle"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

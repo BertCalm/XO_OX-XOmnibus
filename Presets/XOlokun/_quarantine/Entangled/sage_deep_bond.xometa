@@ -6,7 +6,7 @@
         "amount": 0.71,
         "engineA": "Ohm",
         "engineB": "Obsidian",
-        "type": "Macro->Param"
+        "type": "LFOToPitch"
       }
     ]
   },

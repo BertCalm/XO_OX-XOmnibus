@@ -5,7 +5,7 @@
       {
         "engineA": "Ombre",
         "engineB": "Opal",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.8773
       }
     ]

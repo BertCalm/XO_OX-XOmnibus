@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Organon",
-        "type": "AMP_MOD",
+        "type": "AmpToFilter",
         "amount": 0.9
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

@@ -6,7 +6,7 @@
         "amount": 0.622,
         "engineA": "Overlap",
         "engineB": "Oblique",
-        "type": "FM_CROSS"
+        "type": "AudioToFM"
       }
     ]
   },

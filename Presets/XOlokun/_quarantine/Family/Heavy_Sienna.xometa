@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Overlap",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.632
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

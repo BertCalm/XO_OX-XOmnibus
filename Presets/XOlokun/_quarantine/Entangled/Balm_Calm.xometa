@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.442,
@@ -42,7 +42,7 @@
       {
         "engineA": "Ombre",
         "engineB": "Oceanic",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.862
       }
     ]

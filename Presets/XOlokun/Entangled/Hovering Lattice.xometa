@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Outwit",
-        "type": "CHAOS_INJECTION",
+        "type": "AudioToFM",
         "amount": 0.792
       }
     ]

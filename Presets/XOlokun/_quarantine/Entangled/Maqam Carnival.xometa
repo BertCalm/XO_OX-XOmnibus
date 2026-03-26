@@ -6,7 +6,7 @@
         "amount": 0.62,
         "engineA": "Ole",
         "engineB": "Oracle",
-        "type": "PITCH_SYNC"
+        "type": "PitchToPitch"
       }
     ]
   },

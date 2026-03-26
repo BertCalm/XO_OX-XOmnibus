@@ -6,9 +6,9 @@
     "Outwit",
     "Opal"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT and OPAL in mutualist coupling \u2014 CA density drives grain scatter (OUTWIT\u2192OPAL) while granular amplitude feeds back to CA trigger threshold (OPAL\u2192OUTWIT). A self-regulating ecosystem.",
+  "description": "OUTWIT and OPAL in mutualist coupling — CA density drives grain scatter (OUTWIT→OPAL) while granular amplitude feeds back to CA trigger threshold (OPAL→OUTWIT). A self-regulating ecosystem.",
   "tags": [
     "entangled",
     "mutualist",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -66,18 +66,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
-        "type": "DensityToScatter",
+        "type": "AudioToBuffer",
         "amount": 0.6,
-        "description": "CA density drives grain scatter"
+        "description": "CA density drives grain scatter",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       },
       {
-        "source": "Opal",
-        "target": "Outwit",
         "type": "AmpToFilter",
         "amount": 0.4,
-        "description": "Granular amplitude feeds back to CA filter"
+        "description": "Granular amplitude feeds back to CA filter",
+        "engineA": "Opal",
+        "engineB": "Outwit"
       }
     ]
   },

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.456
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0574,
+    "brightness": 0.9407,
+    "density": 0.6223,
+    "movement": 0.8708,
+    "space": 0.9538,
+    "warmth": 0.109
+  },
+  "engines": [
+    "Obscura",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5075,
+    "COUPLING": 0.6063,
+    "MOVEMENT": 0.8653,
+    "SPACE": 0.9594
+  },
+  "mood": "Atmosphere",
+  "name": "Crystal Cavern 2",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.5176,
+      "macro_coupling": 0.6129,
+      "macro_movement": 0.8623,
+      "macro_space": 0.9397
+    },
+    "Oceanic": {
+      "macro_character": 0.4975,
+      "macro_coupling": 0.5998,
+      "macro_movement": 0.8684,
+      "macro_space": 0.9791
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "kinetic",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

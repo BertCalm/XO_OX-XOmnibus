@@ -5,16 +5,16 @@
       {
         "amount": 0.8,
         "description": "Onset kick trigger snaps Orca wavetable position — each drum hit is a breach event; kick velocity scales wavetable displacement",
-        "source": "Onset",
-        "target": "Orca",
-        "type": "RhythmToBlend"
+        "type": "RhythmToBlend",
+        "engineA": "Onset",
+        "engineB": "Orca"
       },
       {
         "amount": 0.5,
         "description": "Onset percussion amplitude opens Orca filter at impact — predator breach cuts through with full spectral clarity",
-        "source": "Onset",
-        "target": "Orca",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Onset",
+        "engineB": "Orca"
       }
     ]
   },

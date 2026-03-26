@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Onset",
-        "type": "FILTER_COUPLING",
+        "type": "FilterToFilter",
         "amount": 0.525
       }
     ]
@@ -83,5 +83,6 @@
     "aggression": 0.4
   },
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

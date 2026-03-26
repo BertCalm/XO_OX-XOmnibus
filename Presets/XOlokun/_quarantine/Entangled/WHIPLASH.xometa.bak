@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Owlfish",
+        "type": "PITCH_SYNC",
+        "amount": 0.747
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.782,
+    "brightness": 0.754,
+    "density": 0.449,
+    "movement": 0.899,
+    "space": 0.924,
+    "warmth": 0.76
+  },
+  "engines": [
+    "Orbital",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.635,
+    "COUPLING": 0.625,
+    "MOVEMENT": 0.899,
+    "SPACE": 0.864
+  },
+  "mood": "Entangled",
+  "name": "Whiplash",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.197,
+      "macro_coupling": 0.602,
+      "macro_movement": 0.904,
+      "macro_space": 0.76
+    },
+    "Owlfish": {
+      "macro_character": 0.656,
+      "macro_coupling": 0.177,
+      "macro_movement": 0.895,
+      "macro_space": 0.773
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "wild",
+    "movement"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

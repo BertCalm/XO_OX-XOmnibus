@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.754,
+        "engineA": "Obsidian",
+        "engineB": "Oblique",
+        "type": "FILTER_COUPLING"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Ice-clear signal hits a slanted plane. OBSIDIAN purity couples with OBLIQUE angular drift.",
+  "dna": {
+    "aggression": 0.232,
+    "brightness": 0.732,
+    "density": 0.518,
+    "movement": 0.423,
+    "space": 0.664,
+    "warmth": 0.305
+  },
+  "engines": [
+    "Obsidian",
+    "Oblique"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Clear Slant",
+  "parameters": {
+    "Oblique": {
+      "oblq_aggression": 0.425,
+      "oblq_brightness": 0.545,
+      "oblq_density": 0.615,
+      "oblq_level": 0.822,
+      "oblq_movement": 0.504,
+      "oblq_space": 0.644,
+      "oblq_warmth": 0.579
+    },
+    "Obsidian": {
+      "obsidian_aggression": 0.159,
+      "obsidian_brightness": 0.902,
+      "obsidian_density": 0.535,
+      "obsidian_level": 0.717,
+      "obsidian_movement": 0.351,
+      "obsidian_space": 0.614,
+      "obsidian_warmth": 0.114
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "oblique",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

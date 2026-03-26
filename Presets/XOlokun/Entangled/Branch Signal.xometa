@@ -6,7 +6,7 @@
         "amount": 0.719,
         "engineA": "Outwit",
         "engineB": "Obbligato",
-        "type": "PITCH_MOD"
+        "type": "AmpToPitch"
       }
     ]
   },

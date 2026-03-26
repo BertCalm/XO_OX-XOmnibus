@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Flock State",
+  "mood": "Family",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm and familiar, gentle sound. Responds expressively to velocity and modulation.",
+  "tags": [
+    "colony",
+    "generative",
+    "living",
+    "communal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.56,
+    "movement": 0.58,
+    "density": 0.58,
+    "space": 0.5,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 44000,
+      "org_stepRate": 6.0,
+      "org_scope": 7,
+      "org_mutate": 0.015,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.38,
+      "org_velCutoff": 0.55,
+      "org_ampAtk": 0.012,
+      "org_ampDec": 0.3,
+      "org_ampSus": 0.7,
+      "org_ampRel": 0.85,
+      "org_lfo1Rate": 0.72,
+      "org_lfo1Depth": 0.28,
+      "org_lfo2Rate": 0.48,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.35,
+      "org_macroRule": 0.32,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.62,
+      "org_macroMutate": 0.04
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.62,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

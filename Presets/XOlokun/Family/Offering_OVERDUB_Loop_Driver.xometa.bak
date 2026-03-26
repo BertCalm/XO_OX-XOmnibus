@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-21",
+  "description": "OFFERING driving OVERDUB's loop engine. Kick transients reset loop points, snare triggers new overdub layers. Detroit drunk timing creates a natural breathing imprecision in the loops — they age and drift together.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.4,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.7
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Family",
+  "name": "OVERDUB Loop Driver",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 1,
+      "ofr_cityIntensity": 0.55,
+      "ofr_cityBlend": 0.2,
+      "ofr_transientSnap": 0.65,
+      "ofr_transientSat": 0.2,
+      "ofr_dustTape": 0.12,
+      "ofr_dustVinyl": 0.15,
+      "ofr_dustWobble": 0.08,
+      "ofr_digCuriosity": 0.5,
+      "ofr_digFlow": 0.55,
+      "ofr_v0_decay": 0.4,
+      "ofr_v1_decay": 0.24,
+      "ofr_v3_level": 0.8,
+      "ofr_masterWidth": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["overdub", "coupling", "loops", "detroit", "tape", "family"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.5, "M2": 0.3, "M3": 0.0, "M4": 0.25}
+}

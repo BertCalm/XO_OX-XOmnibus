@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Odyssey",
+        "type": "ANGULAR_DEFLECT",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Oblique strategy intercepts drift FM — calculated redirection of an uncontrolled journey",
+  "engines": [
+    "Odyssey",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Drift Fragment",
+  "parameters": {
+    "Odyssey": {},
+    "Oblique": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "oblique",
+    "wavetable"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

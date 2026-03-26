@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.919
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.962,
+    "brightness": 0.468,
+    "density": 0.953,
+    "movement": 0.94,
+    "space": 0.607,
+    "warmth": 0.979
+  },
+  "engines": [
+    "Oblique",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.724,
+    "COUPLING": 0.634,
+    "MOVEMENT": 0.94,
+    "SPACE": 0.607
+  },
+  "mood": "Aether",
+  "name": "HOT KINETIC DENSE BALANCED ... (Oblique II)",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.724,
+      "macro_coupling": 0.634,
+      "macro_movement": 0.94,
+      "macro_space": 0.607
+    },
+    "Origami": {
+      "macro_character": 0.717,
+      "macro_coupling": 0.654,
+      "macro_movement": 0.963,
+      "macro_space": 0.609
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

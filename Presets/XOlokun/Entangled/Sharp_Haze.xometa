@@ -6,7 +6,7 @@
         "amount": 0.66,
         "engineA": "Obsidian",
         "engineB": "Ombre",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable"
       }
     ]
   },

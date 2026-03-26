@@ -5,23 +5,23 @@
       {
         "amount": 0.841,
         "description": "ORCA breach amount triggers OSTERIA murmur ducking; OWLFISH amp release extends with each ORCA pod sync pulse",
-        "source": "Orca",
-        "target": "Osteria",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Orca",
+        "engineB": "Osteria"
       },
       {
         "amount": 0.627,
         "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch",
-        "source": "Orca",
-        "target": "Owlfish",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Orca",
+        "engineB": "Owlfish"
       },
       {
         "amount": 0.459,
         "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer",
-        "source": "Osteria",
-        "target": "Owlfish",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "Owlfish"
       }
     ]
   },

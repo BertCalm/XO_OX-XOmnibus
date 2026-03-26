@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Octopus",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.844
       }
     ]

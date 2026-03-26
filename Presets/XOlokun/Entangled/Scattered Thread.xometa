@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Onset",
-        "type": "WAVETABLE_MORPH",
+        "type": "AudioToWavetable",
         "amount": 0.813
       }
     ]

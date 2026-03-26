@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.731
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.038,
+    "brightness": 0.111,
+    "density": 0.886,
+    "movement": 0.04,
+    "space": 0.692,
+    "warmth": 0.875
+  },
+  "engines": [
+    "Ombre",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.502,
+    "COUPLING": 0.731,
+    "MOVEMENT": 0.042,
+    "SPACE": 0.665
+  },
+  "mood": "Entangled",
+  "name": "Ember Thick",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.865,
+      "macro_movement": 0.044,
+      "macro_space": 0.664
+    },
+    "Overbite": {
+      "macro_character": 0.485,
+      "macro_coupling": 0.882,
+      "macro_movement": 0.041,
+      "macro_space": 0.665
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "warm",
+    "dense",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

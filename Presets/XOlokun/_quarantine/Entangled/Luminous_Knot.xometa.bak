@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obbligato",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.8
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.77,
+    "density": 0.6,
+    "movement": 0.42,
+    "space": 0.45,
+    "warmth": 0.89
+  },
+  "engines": [
+    "Orbital",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "COUPLING": 0.73,
+    "MOVEMENT": 0.31,
+    "SPACE": 0.47
+  },
+  "mood": "Entangled",
+  "name": "Luminous Knot",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.26,
+      "macro_space": 0.53
+    },
+    "Orbital": {
+      "macro_character": 0.73,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.36,
+      "macro_space": 0.42
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

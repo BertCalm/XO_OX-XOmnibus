@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.8
+      }
+    ]
+  },
+  "description": "OLE's percussive frequency spikes drive ORGANON into metabolic overdrive — aggression 0.86.",
+  "dna": {
+    "aggression": 0.86,
+    "brightness": 0.62,
+    "density": 0.68,
+    "movement": 0.75,
+    "space": 0.38,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.72,
+    "SPACE": 0.38
+  },
+  "mood": "Entangled",
+  "name": "Drama Metabolism II",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.72,
+      "macro_space": 0.38
+    },
+    "Organon": {
+      "macro_character": 0.58,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.7,
+      "macro_space": 0.52
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ole",
+    "organon",
+    "frequency",
+    "drama"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

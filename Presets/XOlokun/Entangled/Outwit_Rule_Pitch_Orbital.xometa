@@ -6,9 +6,9 @@
     "Outwit",
     "Orbital"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT pitch coupling drives ORBITAL harmony \u2014 the CA arm pitch offsets translate to harmonic intervals in the orbital voice, creating cellular-defined chord voicings.",
+  "description": "OUTWIT pitch coupling drives ORBITAL harmony — the CA arm pitch offsets translate to harmonic intervals in the orbital voice, creating cellular-defined chord voicings.",
   "tags": [
     "entangled",
     "pitch",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.62,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbital",
         "type": "PitchToPitch",
         "amount": 0.5,
-        "description": "Outwit arm pitch offsets create cellular-defined harmony in Orbital"
+        "description": "Outwit arm pitch offsets create cellular-defined harmony in Orbital",
+        "engineA": "Outwit",
+        "engineB": "Orbital"
       }
     ]
   },

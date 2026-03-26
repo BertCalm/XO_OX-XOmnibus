@@ -6,7 +6,7 @@
         "amount": 0.515,
         "engineA": "Orbital",
         "engineB": "Ouroboros",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

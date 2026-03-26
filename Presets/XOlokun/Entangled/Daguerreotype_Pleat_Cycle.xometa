@@ -6,19 +6,19 @@
         "amount": 0.618,
         "engineA": "Obscura",
         "engineB": "Origami",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.458,
         "engineA": "Obscura",
         "engineB": "Orbital",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.664,
         "engineA": "Origami",
         "engineB": "Orbital",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

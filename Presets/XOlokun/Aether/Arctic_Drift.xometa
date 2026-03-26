@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.667,
-      "destination": "ORPHICA",
-      "source": "OCELOT",
-      "type": "HARMONIC_FOLD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.667,
+        "type": "EnvToMorph",
+        "engineA": "OCELOT",
+        "engineB": "ORPHICA"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "dna": {
     "aggression": 0.063,
     "brightness": 0.908,

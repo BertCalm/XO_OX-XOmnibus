@@ -22,7 +22,7 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Onset",
         "type": "AudioToFM",
         "amount": 0.6,
-        "description": "Outwit CA transients trigger micro-percussion events in Onset"
+        "description": "Outwit CA transients trigger micro-percussion events in Onset",
+        "engineA": "Outwit",
+        "engineB": "Onset"
       }
     ]
   },

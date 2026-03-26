@@ -5,7 +5,7 @@
       {
         "engineA": "Octopus",
         "engineB": "OddOscar",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.665
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

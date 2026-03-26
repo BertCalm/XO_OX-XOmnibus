@@ -8,7 +8,7 @@
         "engineA": "Oracle",
         "engineB": "Osprey",
         "notes": "oracle_gravity drives osprey_shoreBlend — high gravity (anchored maqam) pulls shore toward land; low gravity (drifting waveform) opens the coast to open sea",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

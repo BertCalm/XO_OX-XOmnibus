@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Odyssey",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.967
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, warm texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, dark, warm texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

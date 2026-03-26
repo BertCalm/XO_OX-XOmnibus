@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Ombre",
-        "target": "Oceanic",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Ombre",
+        "engineB": "Oceanic"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Orca",
         "engineB": "Ouroboros",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.9452
       }
     ]

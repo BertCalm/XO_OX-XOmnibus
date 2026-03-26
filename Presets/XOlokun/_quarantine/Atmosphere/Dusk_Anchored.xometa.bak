@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.543
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.68,
+    "brightness": 0.044,
+    "density": 0.535,
+    "movement": 0.063,
+    "space": 0.097,
+    "warmth": 0.083
+  },
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.665,
+    "COUPLING": 0.684,
+    "MOVEMENT": 0.126,
+    "SPACE": 0.079
+  },
+  "mood": "Atmosphere",
+  "name": "Dusk Anchored",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.097,
+      "macro_space": 0.111
+    },
+    "Origami": {
+      "macro_character": 0.665,
+      "macro_coupling": 0.684,
+      "macro_movement": 0.126,
+      "macro_space": 0.079
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "cold",
+    "still",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

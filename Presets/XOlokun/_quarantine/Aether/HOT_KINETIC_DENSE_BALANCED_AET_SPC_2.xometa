@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Origami",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.692
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

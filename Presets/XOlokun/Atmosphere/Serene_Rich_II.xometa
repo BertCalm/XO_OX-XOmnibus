@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Orca",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.939
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Spacious and ambient, warm, dense pad. Let it breathe — the space is the instrument."
+  "description": "Spacious and ambient, warm, dense pad. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

@@ -5,7 +5,7 @@
       {
         "engineA": "Optic",
         "engineB": "Oblong",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.9035
       }
     ]
@@ -64,5 +64,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, crystalline, ethereal texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Restless and kinetic, crystalline, ethereal texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

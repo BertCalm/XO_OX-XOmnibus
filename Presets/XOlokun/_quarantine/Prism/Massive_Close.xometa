@@ -5,7 +5,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Oblique",
-        "type": "ENVELOPE_SLAVE",
+        "type": "EnvToDecay",
         "amount": 0.86
       }
     ]

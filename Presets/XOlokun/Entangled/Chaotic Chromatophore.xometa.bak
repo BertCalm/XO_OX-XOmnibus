@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Ouroboros",
+        "engineB": "Oceanic",
+        "type": "LFO->LFO"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ouroboros topology maps to Oceanic's chromatophore modulator (B013). Colour change by chaos.",
+  "dna": {
+    "aggression": 0.803,
+    "brightness": 0.515,
+    "density": 0.858,
+    "movement": 0.648,
+    "space": 0.445,
+    "warmth": 0.46
+  },
+  "engines": [
+    "Ouroboros",
+    "Oceanic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Chaotic Chromatophore",
+  "parameters": {
+    "Oceanic": {
+      "ocean_chromatophore": 0.6,
+      "ocean_depth": 0.5,
+      "ocean_separation": 0.5
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.5,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.45,
+      "ouro_rate": 80.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "chromatophore",
+    "colour",
+    "B013",
+    "entangled",
+    "ouroboros",
+    "oceanic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

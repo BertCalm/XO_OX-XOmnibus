@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -162,11 +162,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Organism",
         "type": "AudioToFM",
         "amount": 0.11,
-        "description": "OUTWIT slow arm cycling creates meditative FM drift in ORGANISM colony \u2014 gradual convergence"
+        "description": "OUTWIT slow arm cycling creates meditative FM drift in ORGANISM colony — gradual convergence",
+        "engineA": "Outwit",
+        "engineB": "Organism"
       }
     ]
   },

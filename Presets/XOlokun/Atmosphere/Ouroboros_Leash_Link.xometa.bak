@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Leash Link",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two leashed attractors linked by their constraints — the leash itself becomes the coupling mechanism.",
+  "tags": [
+    "leash",
+    "link",
+    "constrained",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.42,
+    "density": 0.62,
+    "space": 0.65,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 2,
+      "ouro_rate": 0.42,
+      "ouro_chaosIndex": 0.4,
+      "ouro_leash": 0.62,
+      "ouro_theta": 0.4,
+      "ouro_phi": 0.6,
+      "ouro_damping": 0.38,
+      "ouro_injection": 0.45
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.78,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

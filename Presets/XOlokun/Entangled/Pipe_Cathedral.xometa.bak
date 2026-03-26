@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.823,
+        "engineA": "Overlap",
+        "engineB": "Organon",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Organon pipe resonance propagates through OVERLAP web — the pipe organ acquires an infinite cave",
+  "dna": {
+    "aggression": 0.003,
+    "brightness": 0.55,
+    "density": 0.928,
+    "movement": 0.475,
+    "space": 1.0,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Overlap",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.628,
+    "COUPLING": 0.745,
+    "MOVEMENT": 0.536,
+    "SPACE": 0.813
+  },
+  "mood": "Entangled",
+  "name": "Pipe Cathedral",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.756,
+      "olap_crossfeedAmt": 0.511,
+      "olap_damping": 0.644,
+      "olap_decay": 0.518,
+      "olap_diffusion": 0.745,
+      "olap_earlyMix": 0.401,
+      "olap_filterCutoff": 0.542,
+      "olap_filterReso": 0.24,
+      "olap_frondDensity": 0.746,
+      "olap_lateMix": 0.723,
+      "olap_modDepth": 0.407,
+      "olap_modRate": 0.209,
+      "olap_nodeCount": 7,
+      "olap_outputLevel": 0.684,
+      "olap_preDelay": 0.266,
+      "olap_shimmerMix": 0.322,
+      "olap_size": 0.609,
+      "olap_spinRate": 0.07
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "organon",
+    "pipe",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

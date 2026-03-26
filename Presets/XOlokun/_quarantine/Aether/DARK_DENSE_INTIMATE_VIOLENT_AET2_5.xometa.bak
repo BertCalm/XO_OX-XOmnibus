@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.7608
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9454,
+    "brightness": 0.0993,
+    "density": 0.9491,
+    "movement": 0.5585,
+    "space": 0.0871,
+    "warmth": 0.6614
+  },
+  "engines": [
+    "Orbital",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.09,
+    "COUPLING": 0.7608,
+    "MOVEMENT": 0.5278,
+    "SPACE": 0.0871
+  },
+  "mood": "Aether",
+  "name": "Amber Heavy",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.1132,
+      "macro_coupling": 0.9368,
+      "macro_movement": 0.5339,
+      "macro_space": 0.1019
+    },
+    "Origami": {
+      "macro_character": 0.0669,
+      "macro_coupling": 0.953,
+      "macro_movement": 0.5217,
+      "macro_space": 0.1342
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "dense",
+    "violent",
+    "abyssal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

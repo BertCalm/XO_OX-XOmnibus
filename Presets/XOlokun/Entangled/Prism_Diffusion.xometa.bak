@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.617,
+        "engineA": "Overlap",
+        "engineB": "Oblique",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBLIQUE prism angle refracts OVERLAP early reflections — oblique geometry in spatial web",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.5,
+    "density": 0.575,
+    "movement": 0.5,
+    "space": 0.7,
+    "warmth": 0.525
+  },
+  "engines": [
+    "Overlap",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.898,
+    "MOVEMENT": 0.472,
+    "SPACE": 0.453
+  },
+  "mood": "Entangled",
+  "name": "Prism Diffusion",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.57,
+      "olap_crossfeedAmt": 0.452,
+      "olap_damping": 0.551,
+      "olap_decay": 0.755,
+      "olap_diffusion": 0.541,
+      "olap_earlyMix": 0.319,
+      "olap_filterCutoff": 0.476,
+      "olap_filterReso": 0.402,
+      "olap_frondDensity": 0.546,
+      "olap_lateMix": 0.834,
+      "olap_modDepth": 0.105,
+      "olap_modRate": 0.15,
+      "olap_nodeCount": 15,
+      "olap_outputLevel": 0.676,
+      "olap_preDelay": 0.144,
+      "olap_shimmerMix": 0.06,
+      "olap_size": 0.928,
+      "olap_spinRate": 0.032
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oblique",
+    "prism",
+    "geometric"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

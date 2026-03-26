@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ocelot",
+        "type": "FILTER_MOD",
+        "amount": 0.724
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.971,
+    "density": 0.529,
+    "movement": 0.929,
+    "space": 0.584,
+    "warmth": 0.963
+  },
+  "engines": [
+    "Ole",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.941,
+    "COUPLING": 0.807,
+    "MOVEMENT": 0.929,
+    "SPACE": 0.584
+  },
+  "mood": "Prism",
+  "name": "Sunrise Drift 2",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.47,
+      "macro_coupling": 0.446,
+      "macro_movement": 0.929,
+      "macro_space": 0.584
+    },
+    "Ole": {
+      "macro_character": 0.941,
+      "macro_coupling": 0.807,
+      "macro_movement": 0.929,
+      "macro_space": 0.584
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "kinetic",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

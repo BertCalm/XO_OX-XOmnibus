@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.948
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.056,
+    "brightness": 0.069,
+    "density": 0.952,
+    "movement": 0.695,
+    "space": 0.922,
+    "warmth": 0.354
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.785,
+    "COUPLING": 0.717,
+    "MOVEMENT": 0.733,
+    "SPACE": 0.914
+  },
+  "mood": "Atmosphere",
+  "name": "Dense Gentle",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.785,
+      "macro_coupling": 0.717,
+      "macro_movement": 0.733,
+      "macro_space": 0.914
+    },
+    "Oracle": {
+      "macro_character": 0.783,
+      "macro_coupling": 0.613,
+      "macro_movement": 0.696,
+      "macro_space": 0.749
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "dense",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

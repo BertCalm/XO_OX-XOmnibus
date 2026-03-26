@@ -6,7 +6,7 @@
         "amount": 0.473,
         "engineA": "Origami",
         "engineB": "Oblique",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },

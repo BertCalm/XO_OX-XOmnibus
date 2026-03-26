@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.864,
+        "engineA": "Outwit",
+        "engineB": "Overbite",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Overbite bite transient triggers OUTWIT arm mutation — every bite rewrites an arm's cellular law",
+  "dna": {
+    "aggression": 0.625,
+    "brightness": 0.55,
+    "density": 0.7,
+    "movement": 0.75,
+    "space": 0.5,
+    "warmth": 0.475
+  },
+  "engines": [
+    "Outwit",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.436,
+    "COUPLING": 0.63,
+    "MOVEMENT": 0.531,
+    "SPACE": 0.553
+  },
+  "mood": "Entangled",
+  "name": "Bite Code",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.124,
+      "owit_ampRelease": 0.356,
+      "owit_armStagger": 0.397,
+      "owit_arms": 4,
+      "owit_borderMode": 0,
+      "owit_cellSize": 0.245,
+      "owit_chroma1": 0.691,
+      "owit_chroma2": 0.761,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.651,
+      "owit_density": 0.417,
+      "owit_evolveRate": 0.313,
+      "owit_filterCutoff": 0.656,
+      "owit_filterReso": 0.252,
+      "owit_inkCloudMix": 0.384,
+      "owit_mutateProb": 0.234,
+      "owit_outputLevel": 0.766,
+      "owit_pitchSpread": 0.463,
+      "owit_polyDepth": 0.66,
+      "owit_rule": 54
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "overbite",
+    "bite",
+    "mutation"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

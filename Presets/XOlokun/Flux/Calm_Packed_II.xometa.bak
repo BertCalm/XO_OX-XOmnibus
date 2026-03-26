@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.658
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.545,
+    "brightness": 0.126,
+    "density": 0.97,
+    "movement": 0.014,
+    "space": 0.636,
+    "warmth": 0.957
+  },
+  "engines": [
+    "Oblong",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.758,
+    "COUPLING": 0.744,
+    "MOVEMENT": 0.014,
+    "SPACE": 0.636
+  },
+  "mood": "Flux",
+  "name": "Calm Packed II",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.934,
+      "macro_movement": 0.013,
+      "macro_space": 0.632,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Origami": {
+      "macro_character": 0.822,
+      "macro_coupling": 0.808,
+      "macro_movement": 0.015,
+      "macro_space": 0.648
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "warm",
+    "dense",
+    "suspended-chaos"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, dark, warm pad. Let it breathe — the space is the instrument."
+}

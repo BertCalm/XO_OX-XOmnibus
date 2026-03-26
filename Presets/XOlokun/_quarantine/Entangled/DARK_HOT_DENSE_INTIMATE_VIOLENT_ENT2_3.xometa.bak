@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ombre",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.944
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.933,
+    "brightness": 0.077,
+    "density": 0.955,
+    "movement": 0.696,
+    "space": 0.024,
+    "warmth": 0.962
+  },
+  "engines": [
+    "Owlfish",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.519,
+    "COUPLING": 0.944,
+    "MOVEMENT": 0.696,
+    "SPACE": 0.024
+  },
+  "mood": "Entangled",
+  "name": "DARK HOT DENSE INTIMATE VIO... (Owlfish I)",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.51,
+      "macro_coupling": 0.933,
+      "macro_movement": 0.68,
+      "macro_space": 0.027
+    },
+    "Owlfish": {
+      "macro_character": 0.519,
+      "macro_coupling": 0.944,
+      "macro_movement": 0.696,
+      "macro_space": 0.024
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

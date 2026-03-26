@@ -6,7 +6,7 @@
         "amount": 0.48,
         "engineA": "Obsidian",
         "engineB": "Obbligato",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

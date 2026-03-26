@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.719
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9476,
+    "brightness": 0.0993,
+    "density": 0.9454,
+    "movement": 0.9706,
+    "space": 0.6614,
+    "warmth": 0.0925
+  },
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0931,
+    "COUPLING": 0.9405,
+    "MOVEMENT": 0.9472,
+    "SPACE": 0.6829
+  },
+  "mood": "Flux",
+  "name": "Shard Drift 2",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.0764,
+      "macro_coupling": 0.9478,
+      "macro_movement": 0.9485,
+      "macro_space": 0.6897
+    },
+    "Optic": {
+      "macro_character": 0.1098,
+      "macro_coupling": 0.9331,
+      "macro_movement": 0.946,
+      "macro_space": 0.6762
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

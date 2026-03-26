@@ -6,7 +6,7 @@
         "amount": 0.464,
         "engineA": "Orbital",
         "engineB": "Odyssey",
-        "type": "CHAOS_SYNC"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -5,9 +5,9 @@
       {
         "amount": 0.751,
         "description": "Osteria drives OddOscar via HARMONIC_BLEND",
-        "source": "Osteria",
-        "target": "OddOscar",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "OddOscar"
       }
     ]
   },

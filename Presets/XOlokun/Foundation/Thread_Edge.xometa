@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Ouroboros",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.532
       }
     ]

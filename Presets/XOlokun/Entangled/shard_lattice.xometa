@@ -6,7 +6,7 @@
         "amount": 0.51,
         "engineA": "Overlap",
         "engineB": "Obsidian",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

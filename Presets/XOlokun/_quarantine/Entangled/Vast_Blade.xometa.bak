@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.929
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.954,
+    "brightness": 0.95,
+    "density": 0.905,
+    "movement": 0.41,
+    "space": 0.961,
+    "warmth": 0.883
+  },
+  "engines": [
+    "Orbital",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.916,
+    "COUPLING": 0.929,
+    "MOVEMENT": 0.41,
+    "SPACE": 0.961
+  },
+  "mood": "Entangled",
+  "name": "Vast Blade",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.916,
+      "macro_coupling": 0.929,
+      "macro_movement": 0.41,
+      "macro_space": 0.961
+    },
+    "Overbite": {
+      "macro_character": 0.886,
+      "macro_coupling": 0.916,
+      "macro_movement": 0.411,
+      "macro_space": 0.937
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

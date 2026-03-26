@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Whisper",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-21",
   "description": "OCELOT's jungle ecosystem LFO outputs — derived from multi-stratum population dynamics (floor, understory, canopy, emergent) — drive pitch modulation in OWARE's tuned percussion via LFOToPitch coupling. The ecosystem breathes: population fluctuations across biome strata create subtle pitch drift in the mallet tones, as if the instruments themselves are responding to the forest's rhythmic life.",
   "dna": {

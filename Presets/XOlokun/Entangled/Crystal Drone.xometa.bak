@@ -1,0 +1,84 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.47,
+        "description": "Owlfish drives Obsidian via RhythmToBlend",
+        "source": "Owlfish",
+        "target": "Obsidian",
+        "type": "RhythmToBlend"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OBSIDIAN's crystal stillness and OWLFISH's sustained tone \u2014 the most static possible pairing, resonance and crystal in equilibrium.",
+  "dna": {
+    "aggression": 0.426,
+    "brightness": 0.538,
+    "density": 0.664,
+    "movement": 0.185,
+    "space": 0.473,
+    "warmth": 0.582
+  },
+  "engines": [
+    "Owlfish",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Crystal Drone",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_attack": 0.177,
+      "obsidian_depth": 0.59,
+      "obsidian_filterCutoff": 1200.5,
+      "obsidian_lfoRate": 0.0,
+      "obsidian_macroCharacter": 0.0,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.401,
+      "owl_ampAttack": 0.034,
+      "owl_ampDecay": 0.79,
+      "owl_ampRelease": 2.83,
+      "owl_ampSustain": 0.508,
+      "owl_envDepth": 0.396,
+      "owl_filterCutoff": 0.817,
+      "owl_filterRes": 0.691,
+      "owl_hall": 0.518,
+      "owl_lfoDepth": 0.101,
+      "owl_lfoRate": 0.017,
+      "owl_lfoShape": 0.802,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.643,
+      "owl_mixturSpread": 0.64,
+      "owl_oscLevel": 0.627,
+      "owl_oscPitch": 0.41,
+      "owl_resonantFeedback": 0.396,
+      "owl_resonantPitch": 0.64,
+      "owl_shimmer": 0.445,
+      "owl_subLevel": 0.246
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "obsidian"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

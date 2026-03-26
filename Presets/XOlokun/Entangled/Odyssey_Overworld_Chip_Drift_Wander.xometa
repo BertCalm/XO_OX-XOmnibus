@@ -9,7 +9,7 @@
         "sourceParam": "ow_era",
         "targetEngine": "Odyssey",
         "targetParam": "drift_drift_rate",
-        "type": "LFOSync"
+        "type": "LFOToPitch"
       },
       {
         "amount": 0.45,
@@ -18,7 +18,7 @@
         "sourceParam": "ow_eraX",
         "targetEngine": "Odyssey",
         "targetParam": "drift_lfo1Rate",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Opal",
         "engineB": "Ombre",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.987
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

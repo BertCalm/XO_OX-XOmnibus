@@ -6,11 +6,11 @@
         "amount": 0.729,
         "engineA": "Optic",
         "engineB": "OddfeliX",
-        "type": "AMPLITUDE_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "description": "Optic × OddFelix — Amplitude Mod coupling at extreme DNA corner.",
   "dna": {
     "aggression": 0.385,

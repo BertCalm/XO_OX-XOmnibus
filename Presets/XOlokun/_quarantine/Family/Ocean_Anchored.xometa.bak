@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "RHYTHM_GATE",
+        "amount": 0.83
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.44,
+    "brightness": 0.912,
+    "density": 0.069,
+    "movement": 0.055,
+    "space": 0.951,
+    "warmth": 0.901
+  },
+  "engines": [
+    "Onset",
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Family",
+  "name": "Ocean Anchored",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.73,
+      "macro_space": 0.38
+    },
+    "Optic": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.57,
+      "macro_movement": 0.74,
+      "macro_space": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "family"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

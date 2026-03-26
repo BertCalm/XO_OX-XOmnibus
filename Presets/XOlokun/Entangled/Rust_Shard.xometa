@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ottoni",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.9575
       }
     ]

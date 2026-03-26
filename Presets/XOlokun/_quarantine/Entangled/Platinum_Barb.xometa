@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.532,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.707
       }
     ]

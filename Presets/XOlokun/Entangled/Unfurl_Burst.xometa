@@ -6,11 +6,11 @@
         "amount": 0.636,
         "engineA": "Origami",
         "engineB": "Onset",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Origami × Onset coupling (pitch follow). Stub preset — sound-design pass pending.",
   "dna": {

@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.681,
+        "engineA": "Obese",
+        "engineB": "Octopus",
+        "type": "pitch_follow"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OBESE analog heat warms OCTOPUS chromatophore arm adaptations. Fat alien.",
+  "dna": {
+    "aggression": 0.659,
+    "brightness": 0.551,
+    "density": 0.734,
+    "movement": 0.613,
+    "space": 0.454,
+    "warmth": 0.624
+  },
+  "engines": [
+    "Obese",
+    "Octopus"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Analog Heat Tentacle",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.601,
+      "fat_compress": 0.425,
+      "fat_couplingIn": 0.566,
+      "fat_couplingOut": 0.787,
+      "fat_digital": 0.026,
+      "fat_macro1": 0.668,
+      "fat_macro2": 0.401,
+      "fat_macro3": 0.324,
+      "fat_macro4": 0.399,
+      "fat_mojoCtrl": 0.686,
+      "fat_outputLevel": 0.885,
+      "fat_outputPan": 0.014,
+      "fat_satDrive": 0.52
+    },
+    "Octopus": {
+      "octo_couplingIn": 0.566,
+      "octo_couplingOut": 0.664,
+      "octo_macro1": 0.442,
+      "octo_macro2": 0.617,
+      "octo_macro3": 0.441,
+      "octo_macro4": 0.623,
+      "octo_outputLevel": 0.775,
+      "octo_outputPan": 0.027
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "octopus",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 110,
+  "version": "1.0.0"
+}

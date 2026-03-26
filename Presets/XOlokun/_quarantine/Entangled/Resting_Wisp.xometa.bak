@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ottoni",
+        "type": "CHAOS_INJECT",
+        "amount": 0.138
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.079,
+    "brightness": 0.069,
+    "density": 0.059,
+    "movement": 0.046,
+    "space": 0.072,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Ocelot",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.209,
+    "COUPLING": 0.075,
+    "MOVEMENT": 0.052,
+    "SPACE": 0.072
+  },
+  "mood": "Entangled",
+  "name": "Resting Wisp",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.209,
+      "macro_coupling": 0.075,
+      "macro_movement": 0.052,
+      "macro_space": 0.072
+    },
+    "Ottoni": {
+      "macro_character": 0.209,
+      "macro_coupling": 0.075,
+      "macro_movement": 0.052,
+      "macro_space": 0.072
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

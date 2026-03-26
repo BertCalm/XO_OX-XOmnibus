@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.599,
+        "engineA": "Ohm",
+        "engineB": "Obbligato",
+        "type": "Env->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OHM and OBBLIGATO coupled via Env->Filter. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.367,
+    "brightness": 0.559,
+    "density": 0.58,
+    "movement": 0.64,
+    "space": 0.62,
+    "warmth": 0.688
+  },
+  "engines": [
+    "Ohm",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "BLOOM",
+    "ENTANGLE",
+    "AIR"
+  ],
+  "mood": "Entangled",
+  "name": "Woodsmoke Oboe",
+  "parameters": {
+    "Ohm": {},
+    "Obbligato": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "obbligato"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

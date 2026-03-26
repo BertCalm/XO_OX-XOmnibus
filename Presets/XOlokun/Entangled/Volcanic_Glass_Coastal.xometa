@@ -6,7 +6,7 @@
         "amount": 0.74,
         "engineA": "Obsidian",
         "engineB": "Oceanic",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

@@ -6,7 +6,7 @@
         "amount": 0.71,
         "engineA": "Obbligato",
         "engineB": "Origami",
-        "type": "Macro->Param"
+        "type": "LFOToPitch"
       }
     ]
   },

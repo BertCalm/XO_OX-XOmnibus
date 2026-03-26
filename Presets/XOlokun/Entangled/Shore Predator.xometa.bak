@@ -1,0 +1,90 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.849,
+        "description": "Osteria drives Overbite via RhythmToBlend",
+        "source": "Osteria",
+        "target": "Overbite",
+        "type": "RhythmToBlend"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OVERBITE's fang architecture contrasts OSTERIA's warm hospitality — the guest who bites, the host who offers more.",
+  "dna": {
+    "aggression": 0.502,
+    "brightness": 0.437,
+    "density": 0.611,
+    "movement": 0.588,
+    "space": 0.462,
+    "warmth": 0.581
+  },
+  "engines": [
+    "Osteria",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Shore Predator",
+  "parameters": {
+    "Osteria": {
+      "osteria_attack": 0.155,
+      "osteria_bassLevel": 0.555,
+      "osteria_blendMode": 0.291,
+      "osteria_chorus": 0.27,
+      "osteria_decay": 0.768,
+      "osteria_ensWidth": 0.443,
+      "osteria_filterEnvDepth": 0.407,
+      "osteria_hall": 0.301,
+      "osteria_harmLevel": 0.667,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.424,
+      "osteria_murmur": 0.418,
+      "osteria_oceanBleed": 0.235,
+      "osteria_patina": 0.214,
+      "osteria_porto": 0.34,
+      "osteria_qBassShore": 0.292,
+      "osteria_qElastic": 0.518,
+      "osteria_qHarmShore": 0.278,
+      "osteria_qMelShore": 0.546,
+      "osteria_qMemory": 0.745,
+      "osteria_qRhythmShore": 0.221,
+      "osteria_qStretch": 0.405,
+      "osteria_qSympathy": 0.4,
+      "osteria_release": 1.69,
+      "osteria_rhythmLevel": 0.37,
+      "osteria_sessionDelay": 0.371,
+      "osteria_smoke": 0.366,
+      "osteria_sustain": 0.881,
+      "osteria_tape": 0.25,
+      "osteria_tavernMix": 0.458,
+      "osteria_tavernShore": 0.219,
+      "osteria_warmth": 0.839
+    },
+    "Overbite": {
+      "poss_filterCutoff": 0.434,
+      "poss_macroBite": 0.098
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "overbite"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

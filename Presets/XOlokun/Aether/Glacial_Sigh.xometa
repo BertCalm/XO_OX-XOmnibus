@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.455,
-      "destination": "OHM",
-      "source": "OCEANIC",
-      "type": "ENVELOPE_LINK"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.455,
+        "type": "EnvToDecay",
+        "engineA": "OCEANIC",
+        "engineB": "OHM"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "dna": {
     "aggression": 0.067,
     "brightness": 0.945,

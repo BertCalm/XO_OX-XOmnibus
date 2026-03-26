@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Odyssey",
-        "target": "Ole",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable",
+        "engineA": "Odyssey",
+        "engineB": "Ole"
       }
     ]
   },

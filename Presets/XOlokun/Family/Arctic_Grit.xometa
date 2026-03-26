@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Oblong",
-        "type": "HARMONIC_MESH",
+        "type": "KnotTopology",
         "amount": 0.477
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, crystalline sound. Drives through the mix with presence and bite."
+  "description": "Warm and familiar, shimmering, crystalline sound. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

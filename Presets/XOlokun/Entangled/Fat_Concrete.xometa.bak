@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.69
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.74,
+    "brightness": 0.48,
+    "density": 0.77,
+    "movement": 0.43,
+    "space": 0.26,
+    "warmth": 0.95
+  },
+  "engines": [
+    "Obese",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.83,
+    "COUPLING": 0.64,
+    "MOVEMENT": 0.34,
+    "SPACE": 0.26
+  },
+  "mood": "Entangled",
+  "name": "Fat Concrete",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.98,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.3,
+      "macro_space": 0.38
+    },
+    "Oblong": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.57,
+      "macro_movement": 0.39,
+      "macro_space": 0.13,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, warm, dense sound. Drives through the mix with presence and bite."
+}

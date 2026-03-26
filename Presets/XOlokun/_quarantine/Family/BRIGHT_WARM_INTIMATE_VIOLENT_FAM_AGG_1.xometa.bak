@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.749
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.953,
+    "brightness": 0.922,
+    "density": 0.649,
+    "movement": 0.553,
+    "space": 0.069,
+    "warmth": 0.882
+  },
+  "engines": [
+    "Osprey",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.892,
+    "COUPLING": 0.828,
+    "MOVEMENT": 0.378,
+    "SPACE": 0.526
+  },
+  "mood": "Family",
+  "name": "Sunrise Blade",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.879,
+      "macro_coupling": 0.831,
+      "macro_movement": 0.343,
+      "macro_space": 0.533
+    },
+    "Osprey": {
+      "macro_character": 0.892,
+      "macro_coupling": 0.828,
+      "macro_movement": 0.378,
+      "macro_space": 0.526
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

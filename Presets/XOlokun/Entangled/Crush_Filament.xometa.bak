@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.754,
+        "engineA": "Obese",
+        "engineB": "Orphica",
+        "type": "filter_modulation"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OBESE saturation into ORPHICA gossamer filament. Fat microsound paradox.",
+  "dna": {
+    "aggression": 0.446,
+    "brightness": 0.624,
+    "density": 0.598,
+    "movement": 0.683,
+    "space": 0.586,
+    "warmth": 0.606
+  },
+  "engines": [
+    "Obese",
+    "Orphica"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Crush Filament",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.629,
+      "fat_compress": 0.335,
+      "fat_couplingIn": 0.569,
+      "fat_couplingOut": 0.535,
+      "fat_digital": 0.467,
+      "fat_macro1": 0.532,
+      "fat_macro2": 0.509,
+      "fat_macro3": 0.59,
+      "fat_macro4": 0.521,
+      "fat_mojoCtrl": 0.37,
+      "fat_outputLevel": 0.813,
+      "fat_outputPan": -0.015,
+      "fat_satDrive": 0.502
+    },
+    "Orphica": {
+      "orph_couplingIn": 0.486,
+      "orph_couplingOut": 0.441,
+      "orph_macro1": 0.399,
+      "orph_macro2": 0.545,
+      "orph_macro3": 0.398,
+      "orph_macro4": 0.488,
+      "orph_outputLevel": 0.808,
+      "orph_outputPan": -0.025
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "orphica",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
+}

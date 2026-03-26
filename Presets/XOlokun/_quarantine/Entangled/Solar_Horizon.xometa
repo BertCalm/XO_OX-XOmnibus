@@ -6,7 +6,7 @@
         "amount": 0.674,
         "engineA": "Osprey",
         "engineB": "Orca",
-        "type": "FORMANT_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

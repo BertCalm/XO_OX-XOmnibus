@@ -5,9 +5,9 @@
       {
         "amount": 0.706,
         "description": "Owlfish drives Obese via ResonanceChain",
-        "source": "Owlfish",
-        "target": "Obese",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Owlfish",
+        "engineB": "Obese"
       }
     ]
   },

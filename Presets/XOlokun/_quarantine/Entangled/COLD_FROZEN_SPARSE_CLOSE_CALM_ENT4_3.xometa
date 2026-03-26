@@ -5,7 +5,7 @@
       {
         "engineA": "Optic",
         "engineB": "Onset",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.954
       }
     ]
@@ -63,5 +63,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

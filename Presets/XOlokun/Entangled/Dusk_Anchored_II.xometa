@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7925,
-        "source": "Orca",
-        "target": "Opal",
-        "type": "TIMBRAL_BLEED"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Opal"
       }
     ]
   },

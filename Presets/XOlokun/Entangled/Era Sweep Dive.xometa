@@ -53,7 +53,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Overworld",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.45
       }
     ]

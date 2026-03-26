@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.54,
-      "destination": "Ole",
-      "source": "Obbligato",
-      "type": "AudioToFM"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.54,
+        "type": "AudioToFM",
+        "engineA": "Obbligato",
+        "engineB": "Ole"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Peter's bright flute cuts through Wolf's reed warmth. BOND mid — tension without conflict.",

@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.773,
+        "engineA": "Orbital",
+        "engineB": "Oracle",
+        "type": "amplitude_sidechain"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "ORBITAL ephemeris modulates ORACLE breakpoint stochastic grid. Foreseen arc.",
+  "dna": {
+    "aggression": 0.486,
+    "brightness": 0.579,
+    "density": 0.698,
+    "movement": 0.589,
+    "space": 0.597,
+    "warmth": 0.489
+  },
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Transit Signal",
+  "parameters": {
+    "Oracle": {
+      "oracle_couplingIn": 0.404,
+      "oracle_couplingOut": 0.617,
+      "oracle_macro1": 0.578,
+      "oracle_macro2": 0.311,
+      "oracle_macro3": 0.567,
+      "oracle_macro4": 0.582,
+      "oracle_outputLevel": 0.833,
+      "oracle_outputPan": -0.038
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.693,
+      "orb_couplingIn": 0.404,
+      "orb_couplingOut": 0.75,
+      "orb_groupEnv": 0.76,
+      "orb_harmonicAmt": 0.679,
+      "orb_macro1": 0.526,
+      "orb_macro2": 0.604,
+      "orb_macro3": 0.338,
+      "orb_macro4": 0.476,
+      "orb_outputLevel": 0.783,
+      "orb_outputPan": -0.01,
+      "orb_phaseSpread": 0.367,
+      "orb_resonantPeak": 0.403
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "oracle",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 95,
+  "version": "1.0.0"
+}

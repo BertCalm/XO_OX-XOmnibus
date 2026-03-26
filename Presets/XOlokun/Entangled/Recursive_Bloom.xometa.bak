@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.549,
+        "engineA": "Overlap",
+        "engineB": "Ouroboros",
+        "type": "FM_CROSS"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Ouroboros serpent cycle extends OVERLAP decay — each loop feeds the next, tail touching tail",
+  "dna": {
+    "aggression": 0.375,
+    "brightness": 0.475,
+    "density": 0.7,
+    "movement": 0.575,
+    "space": 0.675,
+    "warmth": 0.525
+  },
+  "engines": [
+    "Overlap",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.656,
+    "COUPLING": 0.769,
+    "MOVEMENT": 0.559,
+    "SPACE": 0.524
+  },
+  "mood": "Entangled",
+  "name": "Recursive Bloom",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.598,
+      "olap_crossfeedAmt": 0.304,
+      "olap_damping": 0.462,
+      "olap_decay": 0.686,
+      "olap_diffusion": 0.724,
+      "olap_earlyMix": 0.485,
+      "olap_filterCutoff": 0.563,
+      "olap_filterReso": 0.417,
+      "olap_frondDensity": 0.731,
+      "olap_lateMix": 0.801,
+      "olap_modDepth": 0.227,
+      "olap_modRate": 0.314,
+      "olap_nodeCount": 13,
+      "olap_outputLevel": 0.753,
+      "olap_preDelay": 0.133,
+      "olap_shimmerMix": 0.255,
+      "olap_size": 0.603,
+      "olap_spinRate": 0.077
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "ouroboros",
+    "recursive",
+    "serpent"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

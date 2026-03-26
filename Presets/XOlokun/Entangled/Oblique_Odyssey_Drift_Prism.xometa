@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Drift Prism",
   "mood": "Entangled",
-  "engines": ["Oblique", "Odyssey"],
+  "engines": [
+    "Oblique",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ODYSSEY's drift oscillation modulates OBLIQUE's prism delay time — drift cycles create rhythmic prismatic echo patterns, violet wavetable feeding the bounce cascade.",
-  "tags": ["drift", "prism", "coupled", "violet", "entangled"],
-  "macroLabels": ["DRIFT", "BOUNCE", "PRISM", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "drift",
+    "prism",
+    "coupled",
+    "violet",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "BOUNCE",
+    "PRISM",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.48, "movement": 0.65, "density": 0.6, "space": 0.55, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.65,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.35
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -87,19 +108,24 @@
       "drift_level": 0.72
     }
   },
-  "macros": {"DRIFT": 0.65, "BOUNCE": 0.28, "PRISM": 0.72, "SPACE": 0.55},
+  "macros": {
+    "DRIFT": 0.65,
+    "BOUNCE": 0.28,
+    "PRISM": 0.72,
+    "SPACE": 0.55
+  },
   "coupling": {
     "pairs": [
       {
         "engineA": "Odyssey",
         "engineB": "Oblique",
-        "type": "LFOToDelay",
+        "type": "LFOToPitch",
         "amount": 0.6
       },
       {
         "engineA": "Odyssey",
         "engineB": "Oblique",
-        "type": "PitchToFilter",
+        "type": "AmpToFilter",
         "amount": 0.4
       }
     ]

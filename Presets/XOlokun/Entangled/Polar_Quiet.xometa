@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Obbligato",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.103
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, crystalline, ethereal sound. Responds expressively to velocity and modulation."
+  "description": "Interwoven and coupled, crystalline, ethereal sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

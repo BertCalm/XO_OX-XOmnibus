@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8183,
-        "source": "Obbligato",
-        "target": "Obese",
-        "type": "TIMBRAL_BLEED"
+        "type": "EnvToMorph",
+        "engineA": "Obbligato",
+        "engineB": "Obese"
       }
     ]
   },

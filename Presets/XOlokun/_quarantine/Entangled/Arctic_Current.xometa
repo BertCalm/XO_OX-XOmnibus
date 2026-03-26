@@ -6,7 +6,7 @@
         "amount": 0.829,
         "engineA": "Owlfish",
         "engineB": "Orphica",
-        "type": "CHAOS_SYNC"
+        "type": "AudioToFM"
       }
     ]
   },

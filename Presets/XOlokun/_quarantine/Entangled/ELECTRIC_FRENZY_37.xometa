@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Octopus",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.908
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

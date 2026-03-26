@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.589,
+      "destination": "OLE",
+      "source": "OSPREY",
+      "type": "CHAOS_INJECT"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, warm, vast.",
+  "dna": {
+    "aggression": 0.072,
+    "brightness": 0.956,
+    "density": 0.508,
+    "movement": 0.454,
+    "space": 0.915,
+    "warmth": 0.903
+  },
+  "engines": [
+    "Osprey",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Radiant Balm",
+  "parameters": {
+    "Ole": {
+      "level": 0.687,
+      "pan": -0.104
+    },
+    "Osprey": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "vast",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Spice Route Thumb",
   "mood": "Entangled",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Onkolo with SpectralFingerprint migration engaged — the string model broadcasting its percussive transient fingerprint to coupled Fusion engines. Coupling is the point; the clavi is the transmitter.",
-  "tags": ["clavinet", "coupling", "migration", "fusion-quad", "entangled", "transmitter"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "clavinet",
+    "coupling",
+    "migration",
+    "fusion-quad",
+    "entangled",
+    "transmitter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

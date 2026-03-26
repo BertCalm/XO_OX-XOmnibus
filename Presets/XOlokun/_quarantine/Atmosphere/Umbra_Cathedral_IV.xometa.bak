@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddOscar",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.777
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.078,
+    "brightness": 0.042,
+    "density": 0.441,
+    "movement": 0.109,
+    "space": 0.927,
+    "warmth": 0.592
+  },
+  "engines": [
+    "Orbital",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.717,
+    "COUPLING": 0.854,
+    "MOVEMENT": 0.275,
+    "SPACE": 0.932
+  },
+  "mood": "Atmosphere",
+  "name": "Umbra Cathedral IV",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.601,
+      "macro_coupling": 0.593,
+      "macro_movement": 0.146,
+      "macro_space": 0.773
+    },
+    "Orbital": {
+      "macro_character": 0.717,
+      "macro_coupling": 0.854,
+      "macro_movement": 0.275,
+      "macro_space": 0.932
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "still",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

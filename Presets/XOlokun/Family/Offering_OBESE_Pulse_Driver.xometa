@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "OFFERING driving OBESE bass. Kick transients feed AmpToFilter coupling — every stomp opens a fat filter sweep on the bass. NY gate keeps the low end tight between hits. The drums are the hand that squeezes the bass.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.4,
     "warmth": 0.6
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OBESE Pulse Driver",
   "parameters": {
@@ -45,8 +52,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["obese", "coupling", "amp-to-filter", "kick", "NY", "family"],
+  "tags": [
+    "obese",
+    "coupling",
+    "amp-to-filter",
+    "kick",
+    "NY",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.5, "M2": 0.25, "M3": 0.0, "M4": 0.1}
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.25,
+    "M3": 0.0,
+    "M4": 0.1
+  }
 }

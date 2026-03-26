@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Timbral",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme hot warmth, extreme violent aggression, extreme kinetic movement. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.941,
+    "brightness": 0.949,
+    "density": 0.58,
+    "movement": 0.946,
+    "space": 0.498,
+    "warmth": 0.928
+  },
+  "engines": [
+    "Overdub"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Shimmer Current",
+  "parameters": {
+    "Overdub": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "bright",
+    "warm",
+    "aggressive",
+    "kinetic",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

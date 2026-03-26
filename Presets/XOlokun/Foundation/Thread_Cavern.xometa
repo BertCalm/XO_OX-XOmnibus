@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Obsidian",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.501
       }
     ]

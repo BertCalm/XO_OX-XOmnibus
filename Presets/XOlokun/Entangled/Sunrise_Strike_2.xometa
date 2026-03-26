@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9714,
-        "source": "OddOscar",
-        "target": "Overlap",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "OddOscar",
+        "engineB": "Overlap"
       }
     ]
   },

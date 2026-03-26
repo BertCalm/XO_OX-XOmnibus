@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overlap",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.703
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.732,
+    "brightness": 0.454,
+    "density": 0.158,
+    "movement": 0.912,
+    "space": 0.416,
+    "warmth": 0.689
+  },
+  "engines": [
+    "Oblong",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.34,
+    "COUPLING": 0.144,
+    "MOVEMENT": 0.912,
+    "SPACE": 0.861
+  },
+  "mood": "Entangled",
+  "name": "GLITCH CASCADE 74",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.889,
+      "macro_coupling": 0.546,
+      "macro_movement": 0.942,
+      "macro_space": 0.642,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overlap": {
+      "macro_character": 0.302,
+      "macro_coupling": 0.245,
+      "macro_movement": 0.883,
+      "macro_space": 0.807
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "wild",
+    "movement"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, ethereal, evolving texture. Macro sweeps reveal shifting timbral landscapes."
+}

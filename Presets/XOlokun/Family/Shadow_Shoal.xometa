@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.543,
-      "destination": "OBBLIGATO",
-      "source": "OPTIC",
-      "type": "ENVELOPE_LINK"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.543,
+        "type": "EnvToDecay",
+        "engineA": "OPTIC",
+        "engineB": "OBBLIGATO"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, dark, still, sparse.",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
   "dna": {
     "aggression": 0.099,
     "brightness": 0.095,

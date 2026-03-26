@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9657,
-        "source": "Overdub",
-        "target": "Orphica",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM",
+        "engineA": "Overdub",
+        "engineB": "Orphica"
       }
     ]
   },

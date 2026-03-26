@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.562
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.975,
+    "brightness": 0.926,
+    "density": 0.979,
+    "movement": 0.678,
+    "space": 0.063,
+    "warmth": 0.33
+  },
+  "engines": [
+    "Ohm",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.951,
+    "COUPLING": 0.645,
+    "MOVEMENT": 0.678,
+    "SPACE": 0.063
+  },
+  "mood": "Prism",
+  "name": "Quartz Solid",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.951,
+      "macro_coupling": 0.645,
+      "macro_movement": 0.678,
+      "macro_space": 0.063
+    },
+    "Origami": {
+      "macro_character": 0.524,
+      "macro_coupling": 0.896,
+      "macro_movement": 0.678,
+      "macro_space": 0.063
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "dense",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

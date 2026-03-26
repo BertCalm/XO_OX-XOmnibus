@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Owlfish",
+        "type": "PITCH_SYNC",
+        "amount": 0.731
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.923,
+    "density": 0.436,
+    "movement": 0.897,
+    "space": 0.433,
+    "warmth": 0.907
+  },
+  "engines": [
+    "Ole",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.901,
+    "COUPLING": 0.388,
+    "MOVEMENT": 0.897,
+    "SPACE": 0.433
+  },
+  "mood": "Prism",
+  "name": "Candlelight Cascade 2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.901,
+      "macro_coupling": 0.388,
+      "macro_movement": 0.897,
+      "macro_space": 0.433
+    },
+    "Owlfish": {
+      "macro_character": 0.478,
+      "macro_coupling": 0.418,
+      "macro_movement": 0.897,
+      "macro_space": 0.433
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "kinetic",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

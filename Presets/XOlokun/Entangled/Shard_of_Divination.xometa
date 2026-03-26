@@ -6,7 +6,7 @@
         "amount": 0.709,
         "engineA": "Obsidian",
         "engineB": "Oracle",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM"
       }
     ]
   },

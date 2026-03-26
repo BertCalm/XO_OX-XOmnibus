@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obese",
+        "type": "FILTER_MOD",
+        "amount": 0.486
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.538,
+    "brightness": 0.895,
+    "density": 0.862,
+    "movement": 0.517,
+    "space": 0.943,
+    "warmth": 0.927
+  },
+  "engines": [
+    "Oblong",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.827,
+    "COUPLING": 0.14,
+    "MOVEMENT": 0.188,
+    "SPACE": 0.669
+  },
+  "mood": "Foundation",
+  "name": "Infinite Mahogany II",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.127,
+      "macro_coupling": 0.159,
+      "macro_movement": 0.579,
+      "macro_space": 0.81
+    },
+    "Oblong": {
+      "macro_character": 0.607,
+      "macro_coupling": 0.855,
+      "macro_movement": 0.355,
+      "macro_space": 0.158,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "dense",
+    "vast",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, shimmering, warm atmosphere. Let it breathe — the space is the instrument."
+}

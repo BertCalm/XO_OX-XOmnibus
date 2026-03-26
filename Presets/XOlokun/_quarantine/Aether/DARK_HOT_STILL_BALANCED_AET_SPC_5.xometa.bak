@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.457
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.093,
+    "brightness": 0.08,
+    "density": 0.623,
+    "movement": 0.128,
+    "space": 0.509,
+    "warmth": 0.906
+  },
+  "engines": [
+    "OddfeliX",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.493,
+    "COUPLING": 0.895,
+    "MOVEMENT": 0.128,
+    "SPACE": 0.509
+  },
+  "mood": "Aether",
+  "name": "DARK HOT STILL BALANCED AET... (OddfeliX I)",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.493,
+      "macro_coupling": 0.895,
+      "macro_movement": 0.128,
+      "macro_space": 0.509
+    },
+    "Orbital": {
+      "macro_character": 0.479,
+      "macro_coupling": 0.91,
+      "macro_movement": 0.151,
+      "macro_space": 0.488
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "warm"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

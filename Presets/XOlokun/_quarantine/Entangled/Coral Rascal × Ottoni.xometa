@@ -6,7 +6,7 @@
         "amount": 0.536,
         "engineA": "Obbligato",
         "engineB": "Ottoni",
-        "type": "Env->Pitch"
+        "type": "EnvToDecay"
       }
     ]
   },

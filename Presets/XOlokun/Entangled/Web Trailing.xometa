@@ -6,7 +6,7 @@
         "amount": 0.704,
         "engineA": "Overlap",
         "engineB": "Orbital",
-        "type": "PITCH_MOD"
+        "type": "AmpToPitch"
       }
     ]
   },

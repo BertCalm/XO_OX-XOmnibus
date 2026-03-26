@@ -6,7 +6,7 @@
         "amount": 0.75,
         "engineA": "Obbligato",
         "engineB": "Organon",
-        "type": "Amp->Drive"
+        "type": "AmpToFilter"
       }
     ]
   },

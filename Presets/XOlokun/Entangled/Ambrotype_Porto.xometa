@@ -6,11 +6,11 @@
         "amount": 0.612,
         "engineA": "Obscura",
         "engineB": "Osteria",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Obscura × Osteria coupling (filter modulation). Stub preset — sound-design pass pending.",
   "dna": {

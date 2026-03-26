@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.341,
-      "destination": "ODYSSEY",
-      "source": "ORCA",
-      "type": "TIMBRE_BLEND"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.341,
+        "type": "EnvToMorph",
+        "engineA": "ORCA",
+        "engineB": "ODYSSEY"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "dna": {
     "aggression": 0.924,
     "brightness": 0.513,

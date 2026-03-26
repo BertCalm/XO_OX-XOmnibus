@@ -4,15 +4,15 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Ombre",
-        "target": "Odyssey",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer",
+        "engineA": "Ombre",
+        "engineB": "Odyssey"
       }
     ]
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Wavetable position as a sundial hand \u2014 the oscillator drifts from afternoon gold to evening violet.",
+  "description": "Wavetable position as a sundial hand — the oscillator drifts from afternoon gold to evening violet.",
   "dna": {
     "aggression": 0.381,
     "brightness": 0.511,

@@ -5,9 +5,9 @@
       {
         "amount": 0.841,
         "description": "Osteria drives Opal via DriftLock",
-        "source": "Osteria",
-        "target": "Opal",
-        "type": "DriftLock"
+        "type": "AudioToWavetable",
+        "engineA": "Osteria",
+        "engineB": "Opal"
       }
     ]
   },

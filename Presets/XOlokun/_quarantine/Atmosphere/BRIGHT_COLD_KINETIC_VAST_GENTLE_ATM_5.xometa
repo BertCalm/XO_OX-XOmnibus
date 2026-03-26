@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "OddfeliX",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.618
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

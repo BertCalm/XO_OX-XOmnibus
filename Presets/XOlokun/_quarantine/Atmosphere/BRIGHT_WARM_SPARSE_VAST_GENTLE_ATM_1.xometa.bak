@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.488
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0252,
+    "brightness": 0.9179,
+    "density": 0.076,
+    "movement": 0.699,
+    "space": 0.8809,
+    "warmth": 0.8963
+  },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9116,
+    "COUPLING": 0.0741,
+    "MOVEMENT": 0.6945,
+    "SPACE": 0.8971
+  },
+  "mood": "Atmosphere",
+  "name": "Honey Abyss",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.9052,
+      "macro_coupling": 0.0792,
+      "macro_movement": 0.6841,
+      "macro_space": 0.9074
+    },
+    "Oracle": {
+      "macro_character": 0.9179,
+      "macro_coupling": 0.0691,
+      "macro_movement": 0.7048,
+      "macro_space": 0.8867
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

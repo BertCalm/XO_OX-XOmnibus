@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.672
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9157,
+    "brightness": 0.9727,
+    "density": 0.4892,
+    "movement": 0.9082,
+    "space": 0.9796,
+    "warmth": 0.9193
+  },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9434,
+    "COUPLING": 0.4927,
+    "MOVEMENT": 0.9064,
+    "SPACE": 0.9835
+  },
+  "mood": "Atmosphere",
+  "name": "Bloom Orbit",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.9685,
+      "macro_coupling": 0.4908,
+      "macro_movement": 0.9046,
+      "macro_space": 0.977
+    },
+    "OddfeliX": {
+      "macro_character": 0.9182,
+      "macro_coupling": 0.4946,
+      "macro_movement": 0.9083,
+      "macro_space": 0.99
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "kinetic",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

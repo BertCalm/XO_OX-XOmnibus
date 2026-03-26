@@ -6,7 +6,7 @@
         "amount": 0.542,
         "engineA": "Obbligato",
         "engineB": "Odyssey",
-        "type": "LFO->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

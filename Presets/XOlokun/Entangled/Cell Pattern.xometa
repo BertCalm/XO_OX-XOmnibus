@@ -6,7 +6,7 @@
         "amount": 0.782,
         "engineA": "Outwit",
         "engineB": "Optic",
-        "type": "PITCH_MOD"
+        "type": "AmpToPitch"
       }
     ]
   },

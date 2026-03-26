@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.9119
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4886,
+    "brightness": 0.0491,
+    "density": 0.9599,
+    "movement": 0.8848,
+    "space": 0.9142,
+    "warmth": 0.4524
+  },
+  "engines": [
+    "OddOscar",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2508,
+    "COUPLING": 0.9119,
+    "MOVEMENT": 0.8848,
+    "SPACE": 0.9142
+  },
+  "mood": "Aether",
+  "name": "Opaque Matte IV",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.366,
+      "macro_coupling": 0.8179,
+      "macro_movement": 0.2474,
+      "macro_space": 0.882
+    },
+    "OddfeliX": {
+      "macro_character": 0.4266,
+      "macro_coupling": 0.3048,
+      "macro_movement": 0.5062,
+      "macro_space": 0.9097
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "vast",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

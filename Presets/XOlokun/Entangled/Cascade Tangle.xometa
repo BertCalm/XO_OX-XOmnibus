@@ -6,7 +6,7 @@
         "amount": 0.814,
         "engineA": "Overlap",
         "engineB": "Oracle",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8074,
-        "source": "Ole",
-        "target": "Overworld",
-        "type": "PITCH_ENTANGLE"
+        "type": "PitchToPitch",
+        "engineA": "Ole",
+        "engineB": "Overworld"
       }
     ]
   },

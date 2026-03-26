@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Orbital",
-        "type": "LFO_SYNC",
+        "type": "LFOToPitch",
         "amount": 0.74
       }
     ]

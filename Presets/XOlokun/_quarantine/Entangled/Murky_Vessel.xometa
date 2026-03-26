@@ -6,7 +6,7 @@
         "amount": 0.718,
         "engineA": "Orca",
         "engineB": "Ombre",
-        "type": "ENVELOPE_FOLLOW"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Organon",
         "engineB": "Ole",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph"
       }
     ]
   },

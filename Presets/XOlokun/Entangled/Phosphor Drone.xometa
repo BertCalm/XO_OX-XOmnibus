@@ -5,9 +5,9 @@
       {
         "amount": 0.489,
         "description": "Owlfish drives Oceanic via SpectralMorph",
-        "source": "Owlfish",
-        "target": "Oceanic",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph",
+        "engineA": "Owlfish",
+        "engineB": "Oceanic"
       }
     ]
   },

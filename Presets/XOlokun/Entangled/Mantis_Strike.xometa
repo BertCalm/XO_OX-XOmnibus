@@ -6,25 +6,25 @@
         "amount": 0.687,
         "engineA": "Orbital",
         "engineB": "Overbite",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.502,
         "engineA": "Orbital",
         "engineB": "Obese",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.64,
         "engineA": "Overbite",
         "engineB": "Obese",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "A three-body entanglement \u2014 ORBITAL's group envelope kindles OVERBITE's fang, OBESE saturates the exchange. Dense, characterful, unstoppable.",
+  "description": "A three-body entanglement — ORBITAL's group envelope kindles OVERBITE's fang, OBESE saturates the exchange. Dense, characterful, unstoppable.",
   "dna": {
     "aggression": 0.615,
     "brightness": 0.541,

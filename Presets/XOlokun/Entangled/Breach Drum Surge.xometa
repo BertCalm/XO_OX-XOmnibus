@@ -57,7 +57,7 @@
       {
         "engineA": "Orca",
         "engineB": "Onset",
-        "type": "Pitch->Velocity",
+        "type": "AmpToFilter",
         "amount": 0.5
       }
     ]

@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Obese",
+        "type": "PITCH_SYNC",
+        "amount": 0.7764
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0836,
+    "brightness": 0.9455,
+    "density": 0.9487,
+    "movement": 0.0366,
+    "space": 0.6888,
+    "warmth": 0.9416
+  },
+  "engines": [
+    "Optic",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8491,
+    "COUPLING": 0.7882,
+    "MOVEMENT": 0.0296,
+    "SPACE": 0.6566
+  },
+  "mood": "Entangled",
+  "name": "Solar Massive",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.9122,
+      "macro_coupling": 0.7855,
+      "macro_movement": 0.0179,
+      "macro_space": 0.6786
+    },
+    "Optic": {
+      "macro_character": 0.7859,
+      "macro_coupling": 0.7909,
+      "macro_movement": 0.0414,
+      "macro_space": 0.6347
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "gentle",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

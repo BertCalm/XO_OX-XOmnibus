@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Odyssey",
-        "target": "Ohm",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend",
+        "engineA": "Odyssey",
+        "engineB": "Ohm"
       }
     ]
   },

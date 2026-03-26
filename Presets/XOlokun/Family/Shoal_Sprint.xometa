@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.399,
-      "destination": "OPTIC",
-      "source": "OBSIDIAN",
-      "type": "SPECTRAL_MORPH"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.399,
+        "type": "EnvToMorph",
+        "engineA": "OBSIDIAN",
+        "engineB": "OPTIC"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
   "dna": {
     "aggression": 0.538,
     "brightness": 0.905,

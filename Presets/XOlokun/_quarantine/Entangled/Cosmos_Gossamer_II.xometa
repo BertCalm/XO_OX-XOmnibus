@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.452,
@@ -42,7 +42,7 @@
       {
         "engineA": "Origami",
         "engineB": "Obbligato",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.589
       }
     ]

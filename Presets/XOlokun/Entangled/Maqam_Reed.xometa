@@ -6,7 +6,7 @@
         "amount": 0.681,
         "engineA": "Oracle",
         "engineB": "Obbligato",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter"
       }
     ]
   },

@@ -58,7 +58,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Onset",
-        "type": "Env->Character",
+        "type": "EnvToMorph",
         "amount": 0.5
       }
     ]

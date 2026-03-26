@@ -1,0 +1,84 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.776,
+        "description": "Owlfish drives Optic via HARMONIC_BLEND",
+        "source": "Owlfish",
+        "target": "Optic",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OPTIC's visual pulse frequency harmonically related to OWLFISH's Mixtur-Trautonium — the oscillator you can see, the visual engine you can hear.",
+  "dna": {
+    "aggression": 0.445,
+    "brightness": 0.528,
+    "density": 0.5,
+    "movement": 0.566,
+    "space": 0.561,
+    "warmth": 0.404
+  },
+  "engines": [
+    "Owlfish",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Light Oscillator",
+  "parameters": {
+    "Optic": {
+      "optic_attack": 0.034,
+      "optic_filterCutoff": 0.535,
+      "optic_lfoRate": 0.119,
+      "optic_macroCharacter": 0.0,
+      "optic_macroCoupling": 0.034,
+      "optic_pulseRate": 0.489,
+      "optic_release": 0.385
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.344,
+      "owl_ampAttack": 0.361,
+      "owl_ampDecay": 0.783,
+      "owl_ampRelease": 1.79,
+      "owl_ampSustain": 0.818,
+      "owl_envDepth": 0.443,
+      "owl_filterCutoff": 0.309,
+      "owl_filterRes": 0.373,
+      "owl_hall": 0.354,
+      "owl_lfoDepth": 0.156,
+      "owl_lfoRate": 0.208,
+      "owl_lfoShape": 0.119,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.397,
+      "owl_mixturSpread": 0.562,
+      "owl_oscLevel": 0.501,
+      "owl_oscPitch": 0.591,
+      "owl_resonantFeedback": 0.59,
+      "owl_resonantPitch": 0.658,
+      "owl_shimmer": 0.189,
+      "owl_subLevel": 0.472
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "optic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

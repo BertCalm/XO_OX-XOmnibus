@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.79,
+        "engineA": "Oracle",
+        "engineB": "Owlfish",
+        "type": "SPATIAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Arcane vision descends into OWLFISH deep filament. Prophet in the abyss.",
+  "dna": {
+    "aggression": 0.27,
+    "brightness": 0.392,
+    "density": 0.662,
+    "movement": 0.602,
+    "space": 0.766,
+    "warmth": 0.551
+  },
+  "engines": [
+    "Oracle",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Oracle Bioluminescent",
+  "parameters": {
+    "Oracle": {
+      "oracle_aggression": 0.426,
+      "oracle_brightness": 0.452,
+      "oracle_density": 0.645,
+      "oracle_level": 0.883,
+      "oracle_movement": 0.754,
+      "oracle_space": 0.724,
+      "oracle_warmth": 0.437
+    },
+    "Owlfish": {
+      "owl_aggression": 0.169,
+      "owl_brightness": 0.47,
+      "owl_density": 0.541,
+      "owl_level": 0.838,
+      "owl_movement": 0.419,
+      "owl_space": 0.869,
+      "owl_warmth": 0.521
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oracle",
+    "owlfish",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

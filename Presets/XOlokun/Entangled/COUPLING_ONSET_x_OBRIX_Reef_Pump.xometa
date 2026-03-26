@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Dialogue",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "ONSET kick and snare transients pump the OBRIX coral reef filter on every hit. The drums dictate the spectral character of the modular brick synthesis — the reef brightens with the kick, darkens between beats. No sidechain compressor. The filter follows the drum's amplitude envelope directly, creating a biological push-pull between percussion and synthesis.",
   "dna": {

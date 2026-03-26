@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "source": "Ombre",
+        "target": "Oblique",
+        "type": "ENVELOPE_SHARING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Oblique refractions at low solar angle — a prism spectrum collapsing to a single shadow band.",
+  "dna": {
+    "aggression": 0.346,
+    "brightness": 0.537,
+    "density": 0.629,
+    "movement": 0.591,
+    "space": 0.548,
+    "warmth": 0.492
+  },
+  "engines": [
+    "Ombre",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Prismatic Dusk",
+  "parameters": {
+    "Oblique": {
+      "oblq_filterCutoff": 3944.7,
+      "oblq_level": 0.84
+    },
+    "Ombre": {
+      "ombre_ampAttack": 0.14,
+      "ombre_ampDecay": 0.588,
+      "ombre_ampRelease": 1.3,
+      "ombre_ampSustain": 0.444,
+      "ombre_blend": 0.748,
+      "ombre_crossfadeRate": 0.252,
+      "ombre_duskPosition": 0.705,
+      "ombre_filterCutoff": 2207.9,
+      "ombre_filterReso": 0.104,
+      "ombre_forgetRate": 0.514,
+      "ombre_level": 0.785,
+      "ombre_lfo1Depth": 0.564,
+      "ombre_lfo1Rate": 0.812,
+      "ombre_lfo2Depth": 0.188,
+      "ombre_lfo2Rate": 0.514,
+      "ombre_memoryDepth": 0.592,
+      "ombre_modAttack": 0.0123,
+      "ombre_modDecay": 0.503,
+      "ombre_modRelease": 1.309,
+      "ombre_modSustain": 0.589,
+      "ombre_narrativeA": 0.829,
+      "ombre_narrativeB": 0.302,
+      "ombre_reverbDamp": 0.441,
+      "ombre_reverbSize": 0.81,
+      "ombre_shadowAmount": 0.308,
+      "ombre_spaceMix": 0.782,
+      "ombre_toneA": 7213.3,
+      "ombre_toneB": 1267.1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "oblique",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

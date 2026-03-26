@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Owlfish",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.731
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

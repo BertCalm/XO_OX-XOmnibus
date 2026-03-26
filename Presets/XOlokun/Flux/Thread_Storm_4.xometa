@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Odyssey",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.815
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, dense bass. Let it breathe — the space is the instrument."
+  "description": "Restless and kinetic, dark, dense bass. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

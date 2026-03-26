@@ -5,7 +5,7 @@
       {
         "engineA": "Orbital",
         "engineB": "Ombre",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.6037
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

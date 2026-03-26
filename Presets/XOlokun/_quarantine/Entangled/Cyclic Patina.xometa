@@ -6,7 +6,7 @@
         "amount": 0.62,
         "engineA": "Ouroboros",
         "engineB": "Ottoni",
-        "type": "PITCH_SYNC"
+        "type": "PitchToPitch"
       }
     ]
   },

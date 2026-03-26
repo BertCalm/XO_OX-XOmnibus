@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_MESH",
+        "amount": 0.901
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.947,
+    "brightness": 0.94,
+    "density": 0.061,
+    "movement": 0.303,
+    "space": 0.593,
+    "warmth": 0.89
+  },
+  "engines": [
+    "Obbligato",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.931,
+    "COUPLING": 0.498,
+    "MOVEMENT": 0.305,
+    "SPACE": 0.587
+  },
+  "mood": "Family",
+  "name": "Golden Strike 2",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.922,
+      "macro_coupling": 0.496,
+      "macro_movement": 0.328,
+      "macro_space": 0.577
+    },
+    "OddfeliX": {
+      "macro_character": 0.941,
+      "macro_coupling": 0.501,
+      "macro_movement": 0.283,
+      "macro_space": 0.596
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "sparse",
+    "aggressive",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "OddfeliX",
+        "type": "AMPLITUDE_MODULATION",
+        "amount": 0.788
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Neon tetra spectral brightness modulates OVERLAP filter cutoff — fin flash tunes the reverb color",
+  "engines": [
+    "Overlap",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.48,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.62,
+    "SPACE": 0.71
+  },
+  "mood": "Entangled",
+  "name": "Drifting Hall",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.683,
+      "olap_damping": 0.526,
+      "olap_decay": 0.803,
+      "olap_diffusion": 0.745,
+      "olap_earlyMix": 0.278,
+      "olap_filterCutoff": 0.522,
+      "olap_filterReso": 0.274,
+      "olap_lateMix": 0.677,
+      "olap_modDepth": 0.272,
+      "olap_modRate": 0.288,
+      "olap_outputLevel": 0.745,
+      "olap_preDelay": 0.023,
+      "olap_size": 0.745
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "oddfelix",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.522,
+    "warmth": 0.5,
+    "movement": 0.288,
+    "density": 0.5,
+    "space": 0.023,
+    "aggression": 0.3
+  },
+  "tempo": null
+}

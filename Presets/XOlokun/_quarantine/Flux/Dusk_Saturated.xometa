@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Orca",
-        "type": "SPECTRAL_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.69
       }
     ]

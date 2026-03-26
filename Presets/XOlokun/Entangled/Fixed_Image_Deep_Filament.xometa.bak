@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.541,
+        "engineA": "Obscura",
+        "engineB": "Owlfish",
+        "type": "Mod->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Daguerreotype and abyssal filament — stiffness meets deep bioluminescence.",
+  "dna": {
+    "aggression": 0.228,
+    "brightness": 0.406,
+    "density": 0.6,
+    "movement": 0.385,
+    "space": 0.686,
+    "warmth": 0.577
+  },
+  "engines": [
+    "Obscura",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Fixed Image Deep Filament",
+  "parameters": {
+    "Obscura": {
+      "obscura_aggression": 0.276,
+      "obscura_brightness": 0.379,
+      "obscura_density": 0.649,
+      "obscura_level": 0.864,
+      "obscura_movement": 0.362,
+      "obscura_space": 0.705,
+      "obscura_warmth": 0.642
+    },
+    "Owlfish": {
+      "owl_aggression": 0.163,
+      "owl_brightness": 0.418,
+      "owl_density": 0.719,
+      "owl_level": 0.736,
+      "owl_movement": 0.324,
+      "owl_space": 0.853,
+      "owl_warmth": 0.623
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obscura",
+    "owlfish",
+    "daguerreotype",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

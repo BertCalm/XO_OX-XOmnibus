@@ -6,7 +6,7 @@
         "amount": 0.68,
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

@@ -6,11 +6,11 @@
         "amount": 0.79,
         "engineA": "Obbligato",
         "engineB": "Origami",
-        "type": "Env->Cutoff"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Two reeds fold themselves into geometry — OBBLIGATO's BOND creases through ORIGAMI's architectural patience.",
   "dna": {

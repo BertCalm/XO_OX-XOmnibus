@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Oblique",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.9493
       }
     ]

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8549,
-        "source": "Oracle",
-        "target": "Osteria",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Oracle",
+        "engineB": "Osteria"
       }
     ]
   },

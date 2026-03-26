@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC",
+        "amount": 0.809
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.911,
+    "brightness": 0.97,
+    "density": 0.581,
+    "movement": 0.892,
+    "space": 0.424,
+    "warmth": 0.902
+  },
+  "engines": [
+    "Ottoni",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.354,
+    "COUPLING": 0.69,
+    "MOVEMENT": 0.872,
+    "SPACE": 0.59
+  },
+  "mood": "Family",
+  "name": "Sunrise Crush 2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.318,
+      "macro_coupling": 0.643,
+      "macro_movement": 0.885,
+      "macro_space": 0.615
+    },
+    "Ottoni": {
+      "macro_character": 0.354,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.872,
+      "macro_space": 0.59
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

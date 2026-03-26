@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.47,
-      "destination": "Ohm",
-      "source": "Ottoni",
-      "type": "PitchToPitch"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.47,
+        "type": "PitchToPitch",
+        "engineA": "Ottoni",
+        "engineB": "Ohm"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Teen harmonic detail in full voice. French horn and trombone overtones stack cleanly.",

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.759,
-        "source": "Overdub",
-        "target": "Odyssey",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Overdub",
+        "engineB": "Odyssey"
       }
     ]
   },

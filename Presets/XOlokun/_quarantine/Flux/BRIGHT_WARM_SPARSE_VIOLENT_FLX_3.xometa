@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Ouroboros",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.668
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

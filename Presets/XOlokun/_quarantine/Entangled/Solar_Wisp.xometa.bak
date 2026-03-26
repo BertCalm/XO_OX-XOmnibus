@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.707
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.117,
+    "brightness": 0.937,
+    "density": 0.069,
+    "movement": 0.583,
+    "space": 0.594,
+    "warmth": 0.631
+  },
+  "engines": [
+    "Onset",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.784,
+    "SPACE": 0.535,
+    "PUNCH": 0.583,
+    "MUTATE": 0.594
+  },
+  "mood": "Entangled",
+  "name": "Solar Wisp",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.784,
+      "macro_coupling": 0.535,
+      "macro_movement": 0.583,
+      "macro_space": 0.594
+    },
+    "Osteria": {
+      "macro_character": 0.795,
+      "macro_coupling": 0.785,
+      "macro_movement": 0.578,
+      "macro_space": 0.663
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

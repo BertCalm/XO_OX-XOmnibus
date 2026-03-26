@@ -6,7 +6,7 @@
         "amount": 0.843,
         "engineA": "Orbital",
         "engineB": "OddfeliX",
-        "type": "RHYTHM_LOCK"
+        "type": "RhythmToBlend"
       }
     ]
   },

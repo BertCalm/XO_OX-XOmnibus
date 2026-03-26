@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Obbligato",
+        "engineB": "Organon",
+        "type": "Amp->Drive"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Obligatory reeds breathe through variational metabolism — OBBLIGATO's BOND macro drives ORGANON's cellular respiration.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.65,
+    "density": 0.55,
+    "movement": 0.92,
+    "space": 0.65,
+    "warmth": 0.82
+  },
+  "engines": [
+    "Obbligato",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.735,
+    "COUPLING": 0.715,
+    "MOVEMENT": 0.92,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Living Bond Breath",
+  "parameters": {
+    "obbl_breathA": 0.764,
+    "obbl_breathB": 0.52,
+    "obbl_macroBond": 0.787,
+    "organon_metabolicRate": 0.86,
+    "organon_variationalEnergy": 0.792
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "bond",
+    "wind",
+    "coral",
+    "organon",
+    "metabolic",
+    "bioluminescent"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

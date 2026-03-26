@@ -5,9 +5,9 @@
       {
         "amount": 0.645,
         "description": "Orca drives Odyssey via LFO_SYNC",
-        "source": "Orca",
-        "target": "Odyssey",
-        "type": "LFO_SYNC"
+        "type": "LFOToPitch",
+        "engineA": "Orca",
+        "engineB": "Odyssey"
       }
     ]
   },

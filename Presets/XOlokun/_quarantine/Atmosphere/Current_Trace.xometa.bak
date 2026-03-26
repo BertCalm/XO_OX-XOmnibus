@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oceanic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.752
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.074,
+    "density": 0.059,
+    "movement": 0.968,
+    "space": 0.46,
+    "warmth": 0.49
+  },
+  "engines": [
+    "OddfeliX",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.64,
+    "COUPLING": 0.461,
+    "MOVEMENT": 0.885,
+    "SPACE": 0.434
+  },
+  "mood": "Atmosphere",
+  "name": "Current Trace",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.698,
+      "macro_coupling": 0.742,
+      "macro_movement": 0.87,
+      "macro_space": 0.444
+    },
+    "OddfeliX": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.461,
+      "macro_movement": 0.885,
+      "macro_space": 0.434
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "kinetic",
+    "sparse",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

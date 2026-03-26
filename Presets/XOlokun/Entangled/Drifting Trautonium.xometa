@@ -5,9 +5,9 @@
       {
         "amount": 0.598,
         "description": "Owlfish drives Odyssey via LFO_SYNC",
-        "source": "Owlfish",
-        "target": "Odyssey",
-        "type": "LFO_SYNC"
+        "type": "LFOToPitch",
+        "engineA": "Owlfish",
+        "engineB": "Odyssey"
       }
     ]
   },

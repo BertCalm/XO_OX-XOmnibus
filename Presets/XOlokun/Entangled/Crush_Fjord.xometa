@@ -6,7 +6,7 @@
         "amount": 0.787,
         "engineA": "Obese",
         "engineB": "Orca",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },

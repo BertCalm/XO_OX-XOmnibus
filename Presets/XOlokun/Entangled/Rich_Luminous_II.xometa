@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6873,
-        "source": "Obsidian",
-        "target": "Optic",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Obsidian",
+        "engineB": "Optic"
       }
     ]
   },

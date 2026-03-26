@@ -5,16 +5,16 @@
       {
         "amount": 0.85,
         "description": "Octopus arm modulation outputs feed Ouroboros chaotic attractor — eight independent signals destabilize a single strange attractor into constant bifurcation",
-        "source": "Octopus",
-        "target": "Ouroboros",
-        "type": "ModToMod"
+        "type": "EnvToDecay",
+        "engineA": "Octopus",
+        "engineB": "Ouroboros"
       },
       {
         "amount": 0.55,
         "description": "Ouroboros attractor cycle syncs Octopus arm rate — the system feeds back, arms speeding or slowing as the attractor breathes",
-        "source": "Ouroboros",
-        "target": "Octopus",
-        "type": "LFOSync"
+        "type": "LFOToPitch",
+        "engineA": "Ouroboros",
+        "engineB": "Octopus"
       }
     ]
   },

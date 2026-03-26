@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.388,
@@ -42,7 +42,7 @@
       {
         "engineA": "Orbital",
         "engineB": "Oracle",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.884
       }
     ]

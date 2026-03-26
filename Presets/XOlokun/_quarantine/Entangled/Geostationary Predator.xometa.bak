@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.85
+      }
+    ]
+  },
+  "description": "A predator in geostationary orbit — watching, still, ferociously present.",
+  "engines": [
+    "Orbital",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.04,
+    "SPACE": 0.48
+  },
+  "mood": "Entangled",
+  "name": "Geostationary Predator",
+  "parameters": {
+    "Orbital": {},
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "strategy": "Still Aggressive",
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "orbital",
+    "predator"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Osprey",
         "engineB": "Obsidian",
-        "type": "Env->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

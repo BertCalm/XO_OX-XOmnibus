@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Oracle",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.74
       }
     ]
@@ -60,5 +60,6 @@
     "siren"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

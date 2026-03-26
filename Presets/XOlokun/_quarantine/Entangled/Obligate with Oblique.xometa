@@ -6,7 +6,7 @@
         "amount": 0.666,
         "engineA": "Obbligato",
         "engineB": "Oblique",
-        "type": "Pitch->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "OddfeliX",
-        "type": "AMPLITUDE_MODULATION",
+        "type": "AmpToFilter",
         "amount": 0.788
       }
     ]

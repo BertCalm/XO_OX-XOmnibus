@@ -2,14 +2,29 @@
   "schema_version": 1,
   "name": "Trefoil Bloom (Orbweave)",
   "mood": "Entangled",
-  "engines": ["Orbweave", "Oxbow"],
+  "engines": [
+    "Orbweave",
+    "Oxbow"
+  ],
   "author": "Guru Bin — ORBWEAVE Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "ORBWEAVE Trefoil at braidDepth=0.82 feeds OXBOW's Chiasmus FDN via AmpToFilter coupling. The periodic crystallizations and dissolutions of the Trefoil's phase lock create amplitude events that reshape OXBOW's entangled reverb character. Two types of entanglement: phase entanglement inside ORBWEAVE, amplitude coupling between ORBWEAVE and OXBOW.",
-  "tags": ["trefoil", "oxbow", "chiasmus-fdn", "amp-to-filter", "entangled", "reverb"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "trefoil",
+    "oxbow",
+    "chiasmus-fdn",
+    "amp-to-filter",
+    "entangled",
+    "reverb"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -64,11 +79,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Orbweave",
-        "target": "Oxbow",
         "type": "AmpToFilter",
         "amount": 0.35,
-        "description": "ORBWEAVE phase-lock amplitude events reshape OXBOW Chiasmus FDN filter ceiling — topology becomes reverb architecture"
+        "description": "ORBWEAVE phase-lock amplitude events reshape OXBOW Chiasmus FDN filter ceiling — topology becomes reverb architecture",
+        "engineA": "Orbweave",
+        "engineB": "Oxbow"
       }
     ]
   },

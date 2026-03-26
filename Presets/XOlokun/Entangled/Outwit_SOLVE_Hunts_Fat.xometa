@@ -6,9 +6,9 @@
     "Outwit",
     "Obese"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT's SOLVE GA output drives OBESE's saturation drive \u2014 the genetic algorithm hunting brighter DNA translates to more harmonic saturation in the fat synth.",
+  "description": "OUTWIT's SOLVE GA output drives OBESE's saturation drive — the genetic algorithm hunting brighter DNA translates to more harmonic saturation in the fat synth.",
   "tags": [
     "entangled",
     "solve",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.68,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Obese",
         "type": "EnvToMorph",
         "amount": 0.65,
-        "description": "Outwit SOLVE evolution drives Obese saturation intensity"
+        "description": "Outwit SOLVE evolution drives Obese saturation intensity",
+        "engineA": "Outwit",
+        "engineB": "Obese"
       }
     ]
   },

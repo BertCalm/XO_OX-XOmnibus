@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Oblong",
-        "type": "AMPLITUDE_MODULATION",
+        "type": "AmpToFilter",
         "amount": 0.835
       }
     ]

@@ -1,0 +1,82 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.645,
+        "description": "Orca drives Odyssey via LFO_SYNC",
+        "source": "Orca",
+        "target": "Odyssey",
+        "type": "LFO_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "ORCA scans the wavetable while ODYSSEY drifts the oscillators — a predator moving through a dreaming seascape, motion indistinguishable from current.",
+  "dna": {
+    "aggression": 0.518,
+    "brightness": 0.319,
+    "density": 0.698,
+    "movement": 0.566,
+    "space": 0.643,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Orca",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Drift Predator",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 0.276,
+      "drift_driftDepth": 0.377,
+      "drift_filterCutoff": 1.0,
+      "drift_macroCharacter": 0.0,
+      "drift_macroCoupling": 0.0,
+      "drift_oscA_level": 0.527,
+      "drift_oscA_mode": 0,
+      "drift_release": 1.0
+    },
+    "Orca": {
+      "orca_ampAttack": 0.0596,
+      "orca_ampDecay": 0.682,
+      "orca_ampRelease": 2.46,
+      "orca_ampSustain": 0.64,
+      "orca_breachAmt": 0.632,
+      "orca_echoDepth": 0.528,
+      "orca_filterCutoff": 0.744,
+      "orca_filterRes": 0.215,
+      "orca_huntMacro": 0.37,
+      "orca_lfo1Depth": 0.171,
+      "orca_lfo1Rate": 0.298,
+      "orca_lfo2Depth": 0.061,
+      "orca_lfo2Rate": 0.0234,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.002,
+      "orca_podSync": 0.333,
+      "orca_wavetablePos": 0.378,
+      "orca_wavetableScan": 0.387
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "odyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

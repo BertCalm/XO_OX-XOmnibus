@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.84,
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "GROW macro timbral-warped by Ouroboros topology — brass expansion without harmonic ceiling.",
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.76,
+    "density": 0.74,
+    "movement": 0.78,
+    "space": 0.18,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Ottoni",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "COUPLING": 0.84,
+    "MOVEMENT": 0.78,
+    "SPACE": 0.18
+  },
+  "mood": "Entangled",
+  "name": "Grow Singularity",
+  "parameters": {
+    "Ottoni": {},
+    "Ouroboros": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "ottoni",
+    "ouroboros",
+    "grow"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

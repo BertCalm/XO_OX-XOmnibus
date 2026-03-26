@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Outwit",
         "engineB": "Obsidian",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph"
       }
     ]
   },

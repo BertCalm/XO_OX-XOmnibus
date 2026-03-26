@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Dialogue",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "ORGANISM's cellular automata engine generates non-repeating LFO-like population wave outputs that drive OVERTONE's pitch via LFOToPitch coupling. The continued-fraction spectral engine wobbles at rates and shapes determined by the rule set of the cellular colony — not by a waveform oscillator. Change org_ruleSet to change the modulation character entirely. The colony pilots the timbre.",
   "dna": {

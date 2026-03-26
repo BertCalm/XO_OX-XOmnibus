@@ -6,7 +6,7 @@
         "amount": 0.82,
         "engineA": "Oblong",
         "engineB": "Ouroboros",
-        "type": "FREQUENCY_SMEAR"
+        "type": "AudioToFM"
       }
     ]
   },

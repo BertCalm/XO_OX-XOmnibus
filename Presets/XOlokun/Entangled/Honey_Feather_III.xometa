@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.711,
-        "source": "Orca",
-        "target": "Overdub",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Overdub"
       }
     ]
   },

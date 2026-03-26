@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Ombre",
-        "type": "ENVELOPE_SHARING",
+        "type": "EnvToDecay",
         "amount": 0.746
       }
     ]
@@ -82,5 +82,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

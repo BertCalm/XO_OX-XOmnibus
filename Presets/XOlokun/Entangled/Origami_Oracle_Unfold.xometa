@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Oracle",
-        "target": "Origami",
-        "type": "SpectralFeed"
+        "type": "EnvToMorph",
+        "engineA": "Oracle",
+        "engineB": "Origami"
       }
     ]
   },

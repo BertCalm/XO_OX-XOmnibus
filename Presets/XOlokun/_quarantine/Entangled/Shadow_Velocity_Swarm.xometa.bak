@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overworld",
+        "type": "PITCH_MOD",
+        "amount": 0.86
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.13,
+    "density": 0.69,
+    "movement": 0.79,
+    "space": 0.25,
+    "warmth": 0.46
+  },
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "COUPLING": 0.67,
+    "MOVEMENT": 0.79,
+    "SPACE": 0.25
+  },
+  "mood": "Entangled",
+  "name": "Shadow Velocity Swarm",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.32,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.89,
+      "macro_space": 0.79
+    },
+    "Overworld": {
+      "macro_character": 0.71,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.62,
+      "macro_space": 0.39
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

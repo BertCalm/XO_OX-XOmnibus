@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orbital",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.7887
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8728,
+    "brightness": 0.3773,
+    "density": 0.9654,
+    "movement": 0.4313,
+    "space": 0.0382,
+    "warmth": 0.9066
+  },
+  "engines": [
+    "Oracle",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.355,
+    "COUPLING": 0.7887,
+    "MOVEMENT": 0.4693,
+    "SPACE": 0.0382
+  },
+  "mood": "Aether",
+  "name": "Rust Heavy",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.3713,
+      "macro_coupling": 0.9676,
+      "macro_movement": 0.4602,
+      "macro_space": 0.0646
+    },
+    "Orbital": {
+      "macro_character": 0.3388,
+      "macro_coupling": 0.9333,
+      "macro_movement": 0.4783,
+      "macro_space": 0.0845
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "hot",
+    "dense",
+    "violent",
+    "compressed"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

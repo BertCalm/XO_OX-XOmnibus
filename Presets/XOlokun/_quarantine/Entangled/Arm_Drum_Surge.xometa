@@ -6,7 +6,7 @@
         "amount": 0.88,
         "engineA": "Octopus",
         "engineB": "Onset",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

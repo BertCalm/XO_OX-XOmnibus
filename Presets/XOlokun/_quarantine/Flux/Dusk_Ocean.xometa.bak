@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Osprey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.881
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.519,
+    "brightness": 0.037,
+    "density": 0.41,
+    "movement": 0.886,
+    "space": 0.937,
+    "warmth": 0.543
+  },
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.29,
+    "COUPLING": 0.563,
+    "MOVEMENT": 0.886,
+    "SPACE": 0.937
+  },
+  "mood": "Flux",
+  "name": "Dusk Ocean",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.299,
+      "macro_coupling": 0.929,
+      "macro_movement": 0.872,
+      "macro_space": 0.817
+    },
+    "Ottoni": {
+      "macro_character": 0.29,
+      "macro_coupling": 0.563,
+      "macro_movement": 0.886,
+      "macro_space": 0.937
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

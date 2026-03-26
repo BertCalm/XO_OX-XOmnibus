@@ -1,0 +1,77 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblong",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7803
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9727,
+    "brightness": 0.1226,
+    "density": 0.0463,
+    "movement": 0.1081,
+    "space": 0.4532,
+    "warmth": 0.1157
+  },
+  "engines": [
+    "Overworld",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8201,
+    "COUPLING": 0.9019,
+    "MOVEMENT": 0.0988,
+    "SPACE": 0.7653
+  },
+  "mood": "Entangled",
+  "name": "Thread Edge 2",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.9843,
+      "macro_coupling": 0.9402,
+      "macro_movement": 0.0942,
+      "macro_space": 0.6542,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overworld": {
+      "macro_character": 0.6559,
+      "macro_coupling": 0.8635,
+      "macro_movement": 0.1033,
+      "macro_space": 0.8764
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "cold",
+    "violent",
+    "sparse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

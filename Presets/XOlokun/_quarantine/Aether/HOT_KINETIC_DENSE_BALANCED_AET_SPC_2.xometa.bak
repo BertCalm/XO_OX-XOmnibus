@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.692
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.885,
+    "brightness": 0.622,
+    "density": 0.937,
+    "movement": 0.926,
+    "space": 0.625,
+    "warmth": 0.954
+  },
+  "engines": [
+    "Obscura",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.788,
+    "COUPLING": 0.752,
+    "MOVEMENT": 0.926,
+    "SPACE": 0.625
+  },
+  "mood": "Aether",
+  "name": "HOT KINETIC DENSE BALANCED ... (Obscura)",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.788,
+      "macro_coupling": 0.752,
+      "macro_movement": 0.926,
+      "macro_space": 0.625
+    },
+    "Origami": {
+      "macro_character": 0.777,
+      "macro_coupling": 0.749,
+      "macro_movement": 0.941,
+      "macro_space": 0.644
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

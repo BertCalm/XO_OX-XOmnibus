@@ -1,0 +1,80 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Osprey",
+        "type": "EnvToMod"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Osprey",
+        "engineB": "Oblique",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OSPREY's dive recalculated through OBLIQUE's angular engine — the strike arrives from the unexpected quadrant.",
+  "dna": {
+    "aggression": 0.528,
+    "brightness": 0.728,
+    "density": 0.51,
+    "movement": 0.778,
+    "space": 0.69,
+    "warmth": 0.405
+  },
+  "engines": [
+    "Oblique",
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Dive Vector",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Osprey": {
+      "osprey_ampAttack": 0.03,
+      "osprey_ampRelease": 1.5,
+      "osprey_filterTilt": 0.715
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oblique",
+    "osprey",
+    "prism",
+    "rtj",
+    "funk",
+    "tame-impala",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

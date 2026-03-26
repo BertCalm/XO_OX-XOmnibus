@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.541,
@@ -42,7 +42,7 @@
       {
         "engineA": "Orca",
         "engineB": "Overdub",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.607
       }
     ]

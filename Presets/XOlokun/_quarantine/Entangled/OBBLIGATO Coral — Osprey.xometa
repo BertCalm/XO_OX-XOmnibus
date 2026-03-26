@@ -6,7 +6,7 @@
         "amount": 0.555,
         "engineA": "Obbligato",
         "engineB": "Osprey",
-        "type": "Pitch->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

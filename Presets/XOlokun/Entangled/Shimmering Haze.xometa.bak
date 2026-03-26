@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.659
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Oscar axolotl morph depth drives OVERLAP diffusion density — the more the morph, the denser the web",
+  "engines": [
+    "Overlap",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.51,
+    "COUPLING": 0.66,
+    "MOVEMENT": 0.48,
+    "SPACE": 0.73
+  },
+  "mood": "Entangled",
+  "name": "Shimmering Haze",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.794,
+      "olap_damping": 0.351,
+      "olap_decay": 0.608,
+      "olap_diffusion": 0.546,
+      "olap_earlyMix": 0.467,
+      "olap_filterCutoff": 0.487,
+      "olap_filterReso": 0.245,
+      "olap_lateMix": 0.474,
+      "olap_modDepth": 0.167,
+      "olap_modRate": 0.086,
+      "olap_outputLevel": 0.795,
+      "olap_preDelay": 0.134,
+      "olap_size": 0.831
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "oddoscar",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.487,
+    "warmth": 0.5,
+    "movement": 0.086,
+    "density": 0.5,
+    "space": 0.134,
+    "aggression": 0.3
+  },
+  "tempo": null
+}

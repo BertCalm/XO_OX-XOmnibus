@@ -6,23 +6,23 @@
         "amount": 0.567,
         "engineA": "Obscura",
         "engineB": "Orbital",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.736,
         "engineA": "Obscura",
         "engineB": "Origami",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.409,
         "engineA": "Orbital",
         "engineB": "Origami",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Obscura × Orbital + Origami coupling (spectral cross). Stub preset — sound-design pass pending.",
   "dna": {

@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.817,
+        "engineA": "Obbligato",
+        "engineB": "Oblique",
+        "type": "LFO->Pan"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Oblique bounce geometry modulates OBBLIGATO's dual voices; BOND knots them into prismatic coral.",
+  "dna": {
+    "aggression": 0.495,
+    "brightness": 0.64,
+    "density": 0.877,
+    "movement": 0.977,
+    "space": 0.6,
+    "warmth": 0.317
+  },
+  "engines": [
+    "Obbligato",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Coral Coral Thread × Oblique",
+  "parameters": {
+    "obbl_breathA": 0.527,
+    "obbl_breathB": 0.663,
+    "obbl_macroBond": 0.618
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "oblique",
+    "prism",
+    "prismatic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

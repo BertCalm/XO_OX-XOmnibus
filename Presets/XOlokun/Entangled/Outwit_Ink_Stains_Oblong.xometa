@@ -6,9 +6,9 @@
     "Outwit",
     "Oblong"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT ink cloud audio output ring-modulates OBLONG's oscillator \u2014 the expelled ink creates a ring modulation texture around the bob synth.",
+  "description": "OUTWIT ink cloud audio output ring-modulates OBLONG's oscillator — the expelled ink creates a ring modulation texture around the bob synth.",
   "tags": [
     "entangled",
     "ring-mod",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Oblong",
         "type": "AudioToRing",
         "amount": 0.5,
-        "description": "Outwit ink cloud ring-modulates Oblong oscillator"
+        "description": "Outwit ink cloud ring-modulates Oblong oscillator",
+        "engineA": "Outwit",
+        "engineB": "Oblong"
       }
     ]
   },

@@ -8,7 +8,7 @@
         "engineA": "Ouroboros",
         "engineB": "Oracle",
         "notes": "Ouroboros chaos index output drives oracle_timeStep — attractor divergence directly scales GENDY step magnitude, making chaos the prophecy's pace-setter",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

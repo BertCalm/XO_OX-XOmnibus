@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orca",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.753
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.974,
+    "brightness": 0.874,
+    "density": 0.033,
+    "movement": 0.033,
+    "space": 0.609,
+    "warmth": 0.881
+  },
+  "engines": [
+    "OddfeliX",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.865,
+    "COUPLING": 0.753,
+    "MOVEMENT": 0.036,
+    "SPACE": 0.615
+  },
+  "mood": "Entangled",
+  "name": "Bloom Storm",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.869,
+      "macro_coupling": 0.041,
+      "macro_movement": 0.038,
+      "macro_space": 0.625
+    },
+    "Orca": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.059,
+      "macro_movement": 0.034,
+      "macro_space": 0.605
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "sparse",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

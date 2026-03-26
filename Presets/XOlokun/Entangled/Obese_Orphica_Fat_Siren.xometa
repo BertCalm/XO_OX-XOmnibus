@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Obese",
-        "target": "Orphica",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Obese",
+        "engineB": "Orphica"
       }
     ]
   },

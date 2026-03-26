@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Oblique",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.611
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

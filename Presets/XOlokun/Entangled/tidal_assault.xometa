@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Outwit",
         "engineB": "Oceanic",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Warm Scatter",
   "mood": "Entangled",
-  "engines": ["Orbital", "Oblique"],
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's warm-red amplitude modulates OBLIQUE's bounce scatter — every swell sends the prism ricocheting further, heat and geometry in mutual coupling.",
-  "tags": ["warm", "scatter", "bounce", "coupled", "entangled"],
-  "macroLabels": ["SPECTRAL", "BOUNCE", "SCATTER", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "warm",
+    "scatter",
+    "bounce",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "BOUNCE",
+    "SCATTER",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.65, "movement": 0.58, "density": 0.62, "space": 0.55, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.65,
+    "movement": 0.58,
+    "density": 0.62,
+    "space": 0.55,
+    "aggression": 0.32
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.6,
@@ -74,11 +95,26 @@
       "oblq_level": 0.72
     }
   },
-  "macros": {"SPECTRAL": 0.62, "BOUNCE": 0.52, "SCATTER": 0.58, "SPACE": 0.55},
+  "macros": {
+    "SPECTRAL": 0.62,
+    "BOUNCE": 0.52,
+    "SCATTER": 0.58,
+    "SPACE": 0.55
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Orbital", "engineB": "Oblique", "type": "AmpToFilter", "amount": 0.6},
-      {"engineA": "Oblique", "engineB": "Orbital", "type": "LFOToFilter", "amount": 0.4}
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.4
+      }
     ]
   }
 }

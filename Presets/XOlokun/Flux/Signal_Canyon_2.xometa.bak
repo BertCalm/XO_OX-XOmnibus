@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Optic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.682
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.899,
+    "brightness": 0.495,
+    "density": 0.398,
+    "movement": 0.02,
+    "space": 0.988,
+    "warmth": 0.065
+  },
+  "engines": [
+    "Overdub",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.649,
+    "COUPLING": 0.839,
+    "MOVEMENT": 0.02,
+    "SPACE": 0.988
+  },
+  "mood": "Flux",
+  "name": "Signal Canyon 2",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.636,
+      "macro_coupling": 0.823,
+      "macro_movement": 0.018,
+      "macro_space": 0.971
+    },
+    "Overdub": {
+      "macro_character": 0.574,
+      "macro_coupling": 0.724,
+      "macro_movement": 0.019,
+      "macro_space": 1.0,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "cold",
+    "vast",
+    "violent",
+    "frozen-instability"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, crystalline, still atmosphere. Let it breathe — the space is the instrument."
+}

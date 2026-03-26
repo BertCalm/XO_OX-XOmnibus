@@ -4,9 +4,10 @@
     "intensity": "Extreme",
     "sourceEngine": "Ohm",
     "targetEngine": null,
-    "type": "Rhythmic"
+    "type": "Rhythmic",
+    "pairs": []
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Ultra-diverse Atmosphere preset: DARK WIDE KINETIC VIOLENT ATM 4.",
   "dna": {

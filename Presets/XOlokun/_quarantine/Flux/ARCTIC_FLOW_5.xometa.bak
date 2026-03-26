@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overlap",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.3766
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5461,
+    "brightness": 0.8534,
+    "density": 0.419,
+    "movement": 0.9534,
+    "space": 0.8809,
+    "warmth": 0.0953
+  },
+  "engines": [
+    "Orphica",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6223,
+    "COUPLING": 0.394,
+    "MOVEMENT": 0.027,
+    "SPACE": 0.5644
+  },
+  "mood": "Flux",
+  "name": "ARCTIC FLOW 5",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.2194,
+      "macro_coupling": 0.029,
+      "macro_movement": 0.4358,
+      "macro_space": 0.3361
+    },
+    "Overlap": {
+      "macro_character": 0.6791,
+      "macro_coupling": 0.165,
+      "macro_movement": 0.4043,
+      "macro_space": 0.4674
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

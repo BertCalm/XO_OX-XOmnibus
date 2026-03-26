@@ -6,7 +6,7 @@
         "amount": 0.64,
         "engineA": "Obese",
         "engineB": "Oblique",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },

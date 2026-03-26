@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.14,
-        "source": "Obrix",
-        "target": "Onset",
-        "type": "AmpToChoke"
+        "type": "AmpToChoke",
+        "engineA": "Obrix",
+        "engineB": "Onset"
       }
     ]
   },

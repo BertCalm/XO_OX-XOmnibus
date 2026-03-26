@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ottoni",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.964
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm bass. Drives through the mix with presence and bite."
+  "description": "Warm and familiar, dark, warm bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

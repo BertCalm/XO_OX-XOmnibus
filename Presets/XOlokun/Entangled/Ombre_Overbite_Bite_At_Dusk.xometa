@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Ombre",
-        "target": "Overbite",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable",
+        "engineA": "Ombre",
+        "engineB": "Overbite"
       }
     ]
   },

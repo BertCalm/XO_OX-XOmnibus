@@ -6,7 +6,7 @@
         "amount": 0.668,
         "engineA": "Origami",
         "engineB": "Overdub",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

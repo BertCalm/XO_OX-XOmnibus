@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Obscura",
         "engineB": "Ottoni",
-        "type": "ENVELOPE_LINK"
+        "type": "EnvToDecay"
       }
     ]
   },

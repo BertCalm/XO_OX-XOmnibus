@@ -5,7 +5,7 @@
       {
         "engineA": "Opal",
         "engineB": "Obbligato",
-        "type": "PHASE_COUPLE",
+        "type": "PitchToPitch",
         "amount": 0.502
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

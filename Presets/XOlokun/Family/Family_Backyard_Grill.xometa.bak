@@ -1,0 +1,102 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.49,
+      "destination": "Obbligato",
+      "source": "Ole",
+      "type": "PitchToPitch"
+    }
+  ],
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-14",
+  "description": "Strum and pluck in easy agreement. DRAMA low — the husbands stay outside.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.43,
+    "density": 0.45,
+    "movement": 0.04,
+    "space": 0.24,
+    "warmth": 0.63
+  },
+  "engines": [
+    "Ole",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Backyard Grill",
+  "parameters": {
+    "Obbligato": {
+      "obbl_airFlutterA": 0.203,
+      "obbl_bodySizeA": 0.455,
+      "obbl_bodySizeB": 0.306,
+      "obbl_bondIntensity": 0.351,
+      "obbl_bondRate": 0.275,
+      "obbl_bondStage": 0.395,
+      "obbl_breathA": 0.837,
+      "obbl_breathB": 0.568,
+      "obbl_damping": 0.994,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.092,
+      "obbl_embouchureA": 0.513,
+      "obbl_fxABrightDelay": 0.219,
+      "obbl_fxAChorus": 0.202,
+      "obbl_fxAExciter": 0.091,
+      "obbl_fxAPlate": 0.238,
+      "obbl_fxBDarkDelay": 0.154,
+      "obbl_fxBPhaser": 0.257,
+      "obbl_fxBSpring": 0.26,
+      "obbl_fxBTapeSat": 0.091,
+      "obbl_instrumentA": 6,
+      "obbl_instrumentB": 6,
+      "obbl_macroBond": 0.045,
+      "obbl_macroBreath": 0.698,
+      "obbl_macroMischief": 0.0,
+      "obbl_macroWind": 0.099,
+      "obbl_reedBite": 0.444,
+      "obbl_reedStiffness": 0.604,
+      "obbl_sympatheticAmt": 0.353,
+      "obbl_voiceRouting": 1
+    },
+    "Ole": {
+      "ole_allianceBlend": 0.584,
+      "ole_allianceConfig": 0,
+      "ole_aunt1Brightness": 0.689,
+      "ole_aunt1Level": 0.638,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt2CoinPress": 0.114,
+      "ole_aunt2GourdSize": 0.578,
+      "ole_aunt2Level": 0.678,
+      "ole_aunt3Brightness": 0.579,
+      "ole_aunt3Level": 0.692,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_damping": 0.995,
+      "ole_driftDepth": 1.0,
+      "ole_driftRate": 0.068,
+      "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
+      "ole_husbandPinLevel": 0.0,
+      "ole_macroDrama": 0.024,
+      "ole_macroFuego": 0.34,
+      "ole_macroIsla": 0.201,
+      "ole_macroSides": 0.189,
+      "ole_sympatheticAmt": 0.278
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "foundation"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

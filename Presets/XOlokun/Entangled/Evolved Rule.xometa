@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Overworld",
-        "type": "SPECTRAL_TRANSFER",
+        "type": "EnvToMorph",
         "amount": 0.707
       }
     ]

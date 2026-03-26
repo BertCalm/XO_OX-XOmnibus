@@ -6,7 +6,7 @@
         "amount": 0.79,
         "engineA": "Obbligato",
         "engineB": "Ole",
-        "type": "Pitch->Mod"
+        "type": "PitchToPitch"
       }
     ]
   },

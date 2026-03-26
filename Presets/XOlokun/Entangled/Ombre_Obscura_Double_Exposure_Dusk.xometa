@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Ombre",
-        "target": "Obscura",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Ombre",
+        "engineB": "Obscura"
       }
     ]
   },

@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.777
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.122,
+    "brightness": 0.946,
+    "density": 0.485,
+    "movement": 0.899,
+    "space": 0.431,
+    "warmth": 0.934
+  },
+  "engines": [
+    "Ombre",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.94,
+    "COUPLING": 0.879,
+    "MOVEMENT": 0.899,
+    "SPACE": 0.431
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM KINETIC BALANCE... (Ombre I)",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.957,
+      "macro_coupling": 0.851,
+      "macro_movement": 0.883,
+      "macro_space": 0.42
+    },
+    "Ombre": {
+      "macro_character": 0.94,
+      "macro_coupling": 0.879,
+      "macro_movement": 0.899,
+      "macro_space": 0.431
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

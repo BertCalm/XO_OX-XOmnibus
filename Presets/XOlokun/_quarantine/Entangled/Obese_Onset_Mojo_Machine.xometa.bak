@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "SIDECHAIN_DUCK",
+        "amount": 0.82
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.25,
+    "density": 0.9,
+    "movement": 0.65,
+    "space": 0.2,
+    "warmth": 0.8
+  },
+  "engines": [
+    "Obese",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.8,
+    "SPACE": 0.72,
+    "PUNCH": 0.65,
+    "MUTATE": 0.25
+  },
+  "mood": "Entangled",
+  "name": "Mojo Machine",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.65,
+      "macro_space": 0.25
+    },
+    "Onset": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.7,
+      "macro_space": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "obese",
+    "onset",
+    "bass",
+    "mojo",
+    "machine"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

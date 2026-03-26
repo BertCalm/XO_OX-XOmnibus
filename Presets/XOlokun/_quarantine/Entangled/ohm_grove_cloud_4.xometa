@@ -6,11 +6,11 @@
         "amount": 0.79,
         "engineA": "Ohm",
         "engineB": "Oracle",
-        "type": "Env->Cutoff"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Hippie sage wisdom meets stochastic prophecy — OHM's COMMUNE axis channels through ORACLE's GENDY breakpoints.",
   "dna": {

@@ -6,7 +6,7 @@
         "amount": 0.515,
         "engineA": "Obbligato",
         "engineB": "Oracle",
-        "type": "Pitch->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

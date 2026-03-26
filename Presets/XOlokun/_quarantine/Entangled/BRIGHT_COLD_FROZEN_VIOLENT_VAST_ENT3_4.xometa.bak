@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblique",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8073
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_VIOLENT_VAST. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.8982,
+    "brightness": 0.9853,
+    "density": 0.538,
+    "movement": 0.0286,
+    "space": 0.951,
+    "warmth": 0.0288
+  },
+  "engines": [
+    "Ouroboros",
+    "Oblique"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7803,
+    "COUPLING": 0.7927,
+    "MOVEMENT": 0.0352,
+    "SPACE": 0.2457
+  },
+  "mood": "Entangled",
+  "name": "Arctic Dome",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.777,
+      "macro_coupling": 0.8259,
+      "macro_movement": 0.0354,
+      "macro_space": 0.3217
+    },
+    "Ouroboros": {
+      "macro_character": 0.7837,
+      "macro_coupling": 0.7595,
+      "macro_movement": 0.0349,
+      "macro_space": 0.1697
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "cold",
+    "violent",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

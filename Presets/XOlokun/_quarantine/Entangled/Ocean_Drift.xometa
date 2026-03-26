@@ -6,7 +6,7 @@
         "amount": 0.832,
         "engineA": "Obsidian",
         "engineB": "Overbite",
-        "type": "AMPLITUDE_LOCK"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Odyssey",
-        "type": "RHYTHMIC_SYNC",
+        "type": "RhythmToBlend",
         "amount": 0.715
       }
     ]

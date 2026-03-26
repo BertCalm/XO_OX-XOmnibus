@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Ombre",
-        "target": "Ocelot",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Ombre",
+        "engineB": "Ocelot"
       }
     ]
   },

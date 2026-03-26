@@ -4,11 +4,11 @@
     "pairs": [
       {
         "engine": "Ohm",
-        "type": "Harmonic"
+        "type": "EnvToMorph"
       },
       {
         "engine": "Orphica",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },

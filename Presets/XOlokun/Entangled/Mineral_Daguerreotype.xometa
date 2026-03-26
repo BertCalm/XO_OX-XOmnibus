@@ -6,7 +6,7 @@
         "amount": 0.597,
         "engineA": "Obsidian",
         "engineB": "Obscura",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

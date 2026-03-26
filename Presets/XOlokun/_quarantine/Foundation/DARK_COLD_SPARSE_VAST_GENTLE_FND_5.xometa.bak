@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "FILTER_MOD",
+        "amount": 0.832
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_SPARSE_VAST_GENTLE. Variant 5.",
+  "dna": {
+    "aggression": 0.095,
+    "brightness": 0.085,
+    "density": 0.097,
+    "movement": 0.397,
+    "space": 0.906,
+    "warmth": 0.111
+  },
+  "engines": [
+    "Obese",
+    "Overbite"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.053,
+    "COUPLING": 0.089,
+    "MOVEMENT": 0.428,
+    "SPACE": 0.865
+  },
+  "mood": "Foundation",
+  "name": "Signal Canyon",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.0,
+      "macro_coupling": 0.094,
+      "macro_movement": 0.381,
+      "macro_space": 0.893
+    },
+    "Overbite": {
+      "macro_character": 0.107,
+      "macro_coupling": 0.085,
+      "macro_movement": 0.475,
+      "macro_space": 0.837
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "sparse",
+    "extreme",
+    "cold",
+    "dark",
+    "diversity",
+    "vast",
+    "foundation",
+    "gentle"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

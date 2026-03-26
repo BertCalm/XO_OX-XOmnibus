@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Ole",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.7811
       }
     ]

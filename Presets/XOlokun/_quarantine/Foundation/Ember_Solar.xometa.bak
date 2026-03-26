@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Overdub",
+        "type": "PITCH_SYNC",
+        "amount": 0.951
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.898,
+    "brightness": 0.948,
+    "density": 0.913,
+    "movement": 0.895,
+    "space": 0.437,
+    "warmth": 0.96
+  },
+  "engines": [
+    "Overbite",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.954,
+    "COUPLING": 0.667,
+    "MOVEMENT": 0.904,
+    "SPACE": 0.437
+  },
+  "mood": "Foundation",
+  "name": "Ember Solar",
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.954,
+      "macro_coupling": 0.667,
+      "macro_movement": 0.904,
+      "macro_space": 0.437
+    },
+    "Overdub": {
+      "macro_character": 0.954,
+      "macro_coupling": 0.667,
+      "macro_movement": 0.904,
+      "macro_space": 0.437
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

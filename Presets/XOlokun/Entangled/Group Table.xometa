@@ -5,9 +5,9 @@
       {
         "amount": 0.702,
         "description": "Osteria drives Orbital via DriftLock",
-        "source": "Osteria",
-        "target": "Orbital",
-        "type": "DriftLock"
+        "type": "AudioToWavetable",
+        "engineA": "Osteria",
+        "engineB": "Orbital"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Ouroboros",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.74
       }
     ]
@@ -60,5 +60,6 @@
     "recursion"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

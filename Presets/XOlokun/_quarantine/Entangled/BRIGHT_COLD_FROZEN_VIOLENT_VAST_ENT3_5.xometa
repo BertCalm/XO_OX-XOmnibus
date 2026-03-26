@@ -5,7 +5,7 @@
       {
         "engineA": "Orca",
         "engineB": "Organon",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.9188
       }
     ]

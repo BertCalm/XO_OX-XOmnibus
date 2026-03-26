@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.74
+      }
+    ]
+  },
+  "description": "Envelope linking: OLE's sustain bloom triggers ORACLE's GENDY glissando arc.",
+  "dna": {
+    "aggression": 0.692,
+    "brightness": 1.0,
+    "density": 0.66,
+    "movement": 0.68,
+    "space": 0.617,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Ole",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "COUPLING": 0.74,
+    "MOVEMENT": 0.66,
+    "SPACE": 0.44
+  },
+  "mood": "Entangled",
+  "name": "Hibiscus Indigo",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.66,
+      "macro_space": 0.44
+    },
+    "Oracle": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.62,
+      "macro_space": 0.52
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ole",
+    "oracle",
+    "envelope",
+    "hibiscus"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

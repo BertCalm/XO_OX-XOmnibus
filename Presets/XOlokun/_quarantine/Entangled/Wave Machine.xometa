@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Oceanic",
         "engineB": "Onset",
-        "type": "Env->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

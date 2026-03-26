@@ -6,7 +6,7 @@
         "amount": 0.712,
         "engineA": "Orbital",
         "engineB": "Oblong",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

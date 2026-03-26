@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7722,
-        "source": "Obscura",
-        "target": "Orca",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Obscura",
+        "engineB": "Orca"
       }
     ]
   },

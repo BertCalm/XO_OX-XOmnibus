@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.554,
@@ -42,7 +42,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Orphica",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.699
       }
     ]

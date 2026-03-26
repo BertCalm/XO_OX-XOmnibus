@@ -6,7 +6,7 @@
         "amount": 0.677,
         "engineA": "Octopus",
         "engineB": "Obbligato",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM"
       }
     ]
   },

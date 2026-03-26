@@ -5,9 +5,9 @@
       {
         "amount": 0.833,
         "description": "Orca drives Onset via PitchToPosition",
-        "source": "Orca",
-        "target": "Onset",
-        "type": "PitchToPosition"
+        "type": "PitchToPitch",
+        "engineA": "Orca",
+        "engineB": "Onset"
       }
     ]
   },

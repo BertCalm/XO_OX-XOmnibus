@@ -5,9 +5,9 @@
       {
         "amount": 0.467,
         "description": "Orca drives Oracle via FilterToGrain",
-        "source": "Orca",
-        "target": "Oracle",
-        "type": "FilterToGrain"
+        "type": "AudioToBuffer",
+        "engineA": "Orca",
+        "engineB": "Oracle"
       }
     ]
   },

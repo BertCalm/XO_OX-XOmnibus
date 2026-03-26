@@ -6,7 +6,7 @@
         "amount": 0.655,
         "engineA": "Obsidian",
         "engineB": "Orca",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Coupled Seed",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Restless and kinetic, balanced sound. Macro sweeps reveal shifting timbral landscapes.",
+  "tags": [
+    "cellular",
+    "coupled",
+    "generative",
+    "emergent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.53,
+    "warmth": 0.47,
+    "movement": 0.64,
+    "density": 0.58,
+    "space": 0.46,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 57000,
+      "org_stepRate": 9.5,
+      "org_scope": 4,
+      "org_mutate": 0.026,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.22,
+      "org_filterCutoff": 4200.0,
+      "org_filterRes": 0.5,
+      "org_velCutoff": 0.68,
+      "org_ampAtk": 0.006,
+      "org_ampDec": 0.16,
+      "org_ampSus": 0.56,
+      "org_ampRel": 0.44,
+      "org_lfo1Rate": 2.6,
+      "org_lfo1Depth": 0.44,
+      "org_lfo2Rate": 1.6,
+      "org_lfo2Depth": 0.4,
+      "org_reverbMix": 0.24,
+      "org_macroRule": 0.56,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.87,
+      "org_macroMutate": 0.072
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.87,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

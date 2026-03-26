@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.675,
-        "source": "Ouroboros",
-        "target": "Obsidian",
-        "type": "SUBHARMONIC_WEAVE"
+        "type": "AudioToBuffer",
+        "engineA": "Ouroboros",
+        "engineB": "Obsidian"
       }
     ]
   },

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Mahogany Poised",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overbite × Oracle — Spectral Morph coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "overbite",
+    "oracle",
+    "spectral-morph",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.954,
+    "movement": 0.053,
+    "density": 0.899,
+    "space": 0.642,
+    "aggression": 0.575
+  },
+  "parameters": {
+    "Overbite": {},
+    "Oracle": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.929
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Osteria",
         "engineB": "Opal",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

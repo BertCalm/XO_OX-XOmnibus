@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.547
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.965,
+    "brightness": 0.121,
+    "density": 0.646,
+    "movement": 0.976,
+    "space": 0.433,
+    "warmth": 0.931
+  },
+  "engines": [
+    "Oblique",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.526,
+    "COUPLING": 0.501,
+    "MOVEMENT": 0.976,
+    "SPACE": 0.433
+  },
+  "mood": "Aether",
+  "name": "DARK HOT KINETIC BALANCED A... (Oblique I)",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.526,
+      "macro_coupling": 0.501,
+      "macro_movement": 0.976,
+      "macro_space": 0.433
+    },
+    "Organon": {
+      "macro_character": 0.54,
+      "macro_coupling": 0.506,
+      "macro_movement": 0.99,
+      "macro_space": 0.443
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

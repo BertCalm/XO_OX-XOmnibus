@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Organon",
         "engineB": "Ohm",
-        "type": "LFO->LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.57
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6766,
+    "brightness": 0.0614,
+    "density": 0.9074,
+    "movement": 0.4298,
+    "space": 0.0326,
+    "warmth": 0.0699
+  },
+  "engines": [
+    "OddOscar",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0653,
+    "COUPLING": 0.57,
+    "MOVEMENT": 0.4216,
+    "SPACE": 0.0326
+  },
+  "mood": "Aether",
+  "name": "Tone Deep",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.0767,
+      "macro_coupling": 0.8823,
+      "macro_movement": 0.4028,
+      "macro_space": 0.0292
+    },
+    "Oracle": {
+      "macro_character": 0.0538,
+      "macro_coupling": 0.8988,
+      "macro_movement": 0.4405,
+      "macro_space": 0.01
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "cold",
+    "dense",
+    "compressed"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

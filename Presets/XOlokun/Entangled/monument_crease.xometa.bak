@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.2,
+    "density": 0.9,
+    "movement": 0.4,
+    "space": 0.2,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Oblong",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Monument Crease",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.4,
+      "macro_space": 0.2,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Origami": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.4,
+      "macro_space": 0.2
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "oblong",
+    "origami"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite."
+}

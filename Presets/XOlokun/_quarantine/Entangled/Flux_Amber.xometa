@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.576,
@@ -42,7 +42,7 @@
       {
         "engineA": "Orbital",
         "engineB": "Organon",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.735
       }
     ]

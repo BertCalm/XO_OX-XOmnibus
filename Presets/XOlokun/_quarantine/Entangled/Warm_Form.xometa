@@ -6,7 +6,7 @@
         "amount": 0.83,
         "engineA": "Obbligato",
         "engineB": "Orca",
-        "type": "SPECTRAL_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

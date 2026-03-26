@@ -6,7 +6,7 @@
         "amount": 0.892,
         "engineA": "Overlap",
         "engineB": "Obese",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

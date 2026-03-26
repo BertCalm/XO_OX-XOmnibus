@@ -5,9 +5,9 @@
       {
         "amount": 0.491,
         "description": "Osteria drives Obscura via HARMONIC_BLEND",
-        "source": "Osteria",
-        "target": "Obscura",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "Obscura"
       }
     ]
   },

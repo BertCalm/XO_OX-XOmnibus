@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Resonant",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.536,
+    "brightness": 0.065,
+    "density": 0.466,
+    "movement": 0.949,
+    "space": 0.892,
+    "warmth": 0.926
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Flux Shadow",
+  "parameters": {
+    "Origami": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "dark",
+    "warm",
+    "kinetic",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-16",
   "legacy": {
@@ -49,7 +49,8 @@
     "type": "LFO_SYNC",
     "source": "OSTERIA",
     "target": "OUROBOROS",
-    "amount": 0.72
+    "amount": 0.72,
+    "pairs": []
   },
   "sequencer": null,
   "dna": {

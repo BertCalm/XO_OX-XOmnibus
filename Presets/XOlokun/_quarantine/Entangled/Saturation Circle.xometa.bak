@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Obese",
+        "type": "SATURATION_FEED",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Ohm commune runs through fat saturation drive — communal warmth becomes communal fire",
+  "engines": [
+    "Ohm",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Saturation Circle",
+  "parameters": {
+    "Ohm": {},
+    "Obese": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "obese",
+    "hippy"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

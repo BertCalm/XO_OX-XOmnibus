@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.402,
-      "destination": "OBSIDIAN",
-      "source": "OBESE",
-      "type": "PITCH_SYNC"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.402,
+        "type": "PitchToPitch",
+        "engineA": "OBESE",
+        "engineB": "OBSIDIAN"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — aether, dark, warm, vast.",

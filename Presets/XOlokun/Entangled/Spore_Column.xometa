@@ -6,12 +6,12 @@
         "amount": 0.871,
         "engineA": "Outwit",
         "engineB": "Obese",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },
   "couplingIntensity": "Deep",
-  "description": "Obese density maximum seeds OUTWIT with a maximally-populated initial row \u2014 mass becomes pattern",
+  "description": "Obese density maximum seeds OUTWIT with a maximally-populated initial row — mass becomes pattern",
   "dna": {
     "aggression": 0.675,
     "brightness": 0.625,

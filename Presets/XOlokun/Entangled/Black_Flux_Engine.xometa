@@ -5,7 +5,7 @@
       {
         "engineA": "Optic",
         "engineB": "Oblong",
-        "type": "PHASE_MOD",
+        "type": "PitchToPitch",
         "amount": 0.91
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, evolving texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, dark, evolving texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

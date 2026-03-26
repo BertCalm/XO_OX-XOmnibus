@@ -6,7 +6,7 @@
         "amount": 0.454,
         "engineA": "Obsidian",
         "engineB": "Orbital",
-        "type": "Pitch->Rate"
+        "type": "LFOToPitch"
       }
     ]
   },

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.841,
+        "engineA": "Orca",
+        "engineB": "Obbligato",
+        "type": "ENVELOPE_FOLLOW"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.595,
+    "brightness": 0.405,
+    "density": 0.995,
+    "movement": 0.665,
+    "space": 0.6,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Obbligato",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.462,
+    "COUPLING": 0.708,
+    "MOVEMENT": 0.644,
+    "SPACE": 0.481
+  },
+  "mood": "Entangled",
+  "name": "Strange Core",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.699,
+      "macro_coupling": 0.693,
+      "macro_movement": 0.597,
+      "macro_space": 0.573
+    },
+    "Orca": {
+      "macro_character": 0.516,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.75,
+      "macro_space": 0.395
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "orca"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

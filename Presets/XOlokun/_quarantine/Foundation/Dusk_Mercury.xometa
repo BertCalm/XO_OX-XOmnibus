@@ -5,7 +5,7 @@
       {
         "engineA": "Orbital",
         "engineB": "Obbligato",
-        "type": "RING_MOD",
+        "type": "AudioToRing",
         "amount": 0.93
       }
     ]

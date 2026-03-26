@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.958
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.949,
+    "brightness": 0.491,
+    "density": 0.853,
+    "movement": 0.925,
+    "space": 0.452,
+    "warmth": 0.123
+  },
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.445,
+    "COUPLING": 0.088,
+    "MOVEMENT": 0.925,
+    "SPACE": 0.682
+  },
+  "mood": "Entangled",
+  "name": "TORRENT",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.446,
+      "macro_coupling": 0.996,
+      "macro_movement": 0.919,
+      "macro_space": 0.286,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Origami": {
+      "macro_character": 0.562,
+      "macro_coupling": 0.262,
+      "macro_movement": 0.93,
+      "macro_space": 0.26
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "wild",
+    "movement"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, crystalline, dense texture. Macro sweeps reveal shifting timbral landscapes."
+}

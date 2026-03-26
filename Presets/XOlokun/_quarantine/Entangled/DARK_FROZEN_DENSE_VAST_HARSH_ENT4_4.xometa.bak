@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.786
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.097,
+    "density": 0.979,
+    "movement": 0.1,
+    "space": 0.881,
+    "warmth": 0.679
+  },
+  "engines": [
+    "Outwit",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.416,
+    "COUPLING": 0.786,
+    "MOVEMENT": 0.095,
+    "SPACE": 0.881
+  },
+  "mood": "Entangled",
+  "name": "Smoke Massive",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.418,
+      "macro_coupling": 0.967,
+      "macro_movement": 0.093,
+      "macro_space": 0.898
+    },
+    "Outwit": {
+      "macro_character": 0.415,
+      "macro_coupling": 0.99,
+      "macro_movement": 0.097,
+      "macro_space": 0.863
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "dense",
+    "vast",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

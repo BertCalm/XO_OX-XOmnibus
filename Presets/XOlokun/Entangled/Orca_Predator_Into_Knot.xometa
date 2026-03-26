@@ -2,19 +2,35 @@
   "schema_version": 1,
   "name": "Predator Into Knot",
   "mood": "Entangled",
-  "engines": ["Orca", "Overlap"],
+  "engines": [
+    "Orca",
+    "Overlap"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "ORCA as the predator; OVERLAP as the topological space it hunts through. AmpToFilter coupling: ORCA amplitude raises OVERLAP filter cutoff — the more intense the hunt, the more the Trefoil FDN reveals its high-frequency spectral content. The predator changes the acoustic character of the space it occupies.",
-  "tags": ["orca", "overlap", "entangled", "hunt", "topology", "coupling", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "orca",
+    "overlap",
+    "entangled",
+    "hunt",
+    "topology",
+    "coupling",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.52,
     "MOVEMENT": 0.48,
     "COUPLING": 0.68,
     "SPACE": 0.72
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

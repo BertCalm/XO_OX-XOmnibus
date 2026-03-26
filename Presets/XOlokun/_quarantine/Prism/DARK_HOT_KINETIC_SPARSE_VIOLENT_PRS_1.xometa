@@ -5,7 +5,7 @@
       {
         "engineA": "Owlfish",
         "engineB": "Ole",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.611
       }
     ]

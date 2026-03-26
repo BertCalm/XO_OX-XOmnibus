@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.68
+      }
+    ]
+  },
+  "description": "Pitch-locked brass harmonics synchronize ORGANON's enzymatic cascade.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.52,
+    "density": 0.62,
+    "movement": 0.58,
+    "space": 0.44,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Ottoni",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.58,
+    "SPACE": 0.48
+  },
+  "mood": "Entangled",
+  "name": "Copper Catalyst",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.62,
+      "macro_space": 0.5
+    },
+    "Ottoni": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.58,
+      "macro_space": 0.48
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ottoni",
+    "organon",
+    "pitch",
+    "catalyst"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

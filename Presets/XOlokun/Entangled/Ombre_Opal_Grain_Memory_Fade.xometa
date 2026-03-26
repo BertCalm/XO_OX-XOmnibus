@@ -4,15 +4,15 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Ombre",
-        "target": "Opal",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay",
+        "engineA": "Ombre",
+        "engineB": "Opal"
       }
     ]
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Granular position scrubbing backward through a memory \u2014 each grain a slightly older moment.",
+  "description": "Granular position scrubbing backward through a memory — each grain a slightly older moment.",
   "dna": {
     "aggression": 0.116,
     "brightness": 0.452,

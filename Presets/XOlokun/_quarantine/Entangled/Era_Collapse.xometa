@@ -6,7 +6,7 @@
         "amount": 0.86,
         "engineA": "Overworld",
         "engineB": "Ouroboros",
-        "type": "FREQUENCY_SMEAR"
+        "type": "AudioToFM"
       }
     ]
   },

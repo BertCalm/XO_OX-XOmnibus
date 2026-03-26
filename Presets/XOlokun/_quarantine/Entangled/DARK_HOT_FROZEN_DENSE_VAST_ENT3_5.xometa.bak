@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8976
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.4175,
+    "brightness": 0.0291,
+    "density": 0.9894,
+    "movement": 0.0531,
+    "space": 0.8917,
+    "warmth": 0.9209
+  },
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6212,
+    "COUPLING": 0.8387,
+    "MOVEMENT": 0.062,
+    "SPACE": 0.4796
+  },
+  "mood": "Entangled",
+  "name": "Amber Deep 2",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.5817,
+      "macro_coupling": 0.8565,
+      "macro_movement": 0.0622,
+      "macro_space": 0.4801
+    },
+    "Organon": {
+      "macro_character": 0.6607,
+      "macro_coupling": 0.821,
+      "macro_movement": 0.0618,
+      "macro_space": 0.479
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "warm",
+    "dense",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

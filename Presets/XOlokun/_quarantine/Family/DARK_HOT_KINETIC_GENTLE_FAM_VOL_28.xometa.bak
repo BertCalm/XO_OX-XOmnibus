@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.422
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.074,
+    "brightness": 0.062,
+    "density": 0.617,
+    "movement": 0.984,
+    "space": 0.45,
+    "warmth": 0.888
+  },
+  "engines": [
+    "Obbligato",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.478,
+    "COUPLING": 0.341,
+    "MOVEMENT": 0.974,
+    "SPACE": 0.454
+  },
+  "mood": "Family",
+  "name": "Smoke Swirl 2",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.491,
+      "macro_coupling": 0.359,
+      "macro_movement": 0.99,
+      "macro_space": 0.48
+    },
+    "Organon": {
+      "macro_character": 0.465,
+      "macro_coupling": 0.323,
+      "macro_movement": 0.958,
+      "macro_space": 0.428
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "gentle",
+    "dark"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

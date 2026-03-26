@@ -6,7 +6,7 @@
         "amount": 0.477,
         "engineA": "Ohm",
         "engineB": "Orphica",
-        "type": "Gate->Env"
+        "type": "AmpToChoke"
       }
     ]
   },

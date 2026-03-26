@@ -6,7 +6,7 @@
         "amount": 0.9,
         "engineA": "Origami",
         "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Oblong",
-        "type": "LFO_SYNC",
+        "type": "LFOToPitch",
         "amount": 0.68
       }
     ]
@@ -61,5 +61,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "OddfeliX",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.785
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

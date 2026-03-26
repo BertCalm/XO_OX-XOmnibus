@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.49,
-      "destination": "OCTOPUS",
-      "source": "OHM",
-      "type": "SPECTRAL_MORPH"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.49,
+        "type": "EnvToMorph",
+        "engineA": "OHM",
+        "engineB": "OCTOPUS"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, bright, warm, vast.",

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.729,
+        "engineA": "Overlap",
+        "engineB": "Oceanic",
+        "type": "SYNC_LFO"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OVERLAP frond-spread follows OCEANIC current rate — slow drift, infinite room",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.769,
+    "density": 0.966,
+    "movement": 0.5,
+    "space": 1.0,
+    "warmth": 0.625
+  },
+  "engines": [
+    "Overlap",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Web Tangle",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.601,
+      "olap_damping": 0.405,
+      "olap_decay": 0.827,
+      "olap_diffusion": 0.732,
+      "olap_earlyMix": 0.232,
+      "olap_filterCutoff": 0.509,
+      "olap_filterReso": 0.281,
+      "olap_lateMix": 0.621,
+      "olap_modDepth": 0.429,
+      "olap_modRate": 0.09,
+      "olap_outputLevel": 0.794,
+      "olap_preDelay": 0.029,
+      "olap_size": 0.553
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oceanic",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

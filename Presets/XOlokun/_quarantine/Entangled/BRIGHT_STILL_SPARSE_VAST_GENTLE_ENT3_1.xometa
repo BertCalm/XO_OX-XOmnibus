@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Osprey",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.7668
       }
     ]

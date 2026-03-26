@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9851,
-        "source": "Ombre",
-        "target": "Overdub",
-        "type": "FORMANT_BRIDGE"
+        "type": "EnvToMorph",
+        "engineA": "Ombre",
+        "engineB": "Overdub"
       }
     ]
   },

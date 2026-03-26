@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Ohm",
+        "engineB": "Oracle",
+        "type": "Spectral->Harmonic"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Hippie sage wisdom meets stochastic prophecy — OHM's COMMUNE axis channels through ORACLE's GENDY breakpoints.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.45,
+    "density": 0.6,
+    "movement": 0.88,
+    "space": 0.72,
+    "warmth": 0.38
+  },
+  "engines": [
+    "Ohm",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.415,
+    "COUPLING": 0.73,
+    "MOVEMENT": 0.88,
+    "SPACE": 0.72
+  },
+  "mood": "Entangled",
+  "name": "OHM Prophetic Commune",
+  "parameters": {
+    "ohm_droneFund": 0.54,
+    "ohm_macroCommune": 0.614,
+    "ohm_macroMeddling": 0.752,
+    "ohm_orgHarmonics": 0.46,
+    "oracle_breakpoints": 0.74,
+    "oracle_stochasticRate": 0.752
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "oracle",
+    "stochastic",
+    "prophetic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Organon",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.72
       }
     ]
@@ -60,5 +60,6 @@
     "afro"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

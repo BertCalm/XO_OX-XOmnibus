@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Ohm",
-        "type": "GRANULAR_EXCHANGE",
+        "type": "AudioToBuffer",
         "amount": 0.602
       }
     ]

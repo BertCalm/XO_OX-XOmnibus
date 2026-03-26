@@ -5,9 +5,9 @@
       {
         "amount": 0.706,
         "description": "Owlfish drives Orbital via ResonanceChain",
-        "source": "Owlfish",
-        "target": "Orbital",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Owlfish",
+        "engineB": "Orbital"
       }
     ]
   },

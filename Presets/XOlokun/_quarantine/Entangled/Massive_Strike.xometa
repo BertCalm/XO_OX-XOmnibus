@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.352,
@@ -42,7 +42,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Oceanic",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.811
       }
     ]

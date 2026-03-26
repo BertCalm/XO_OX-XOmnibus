@@ -6,19 +6,19 @@
         "amount": 0.56,
         "engineA": "Orbital",
         "engineB": "Overbite",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       },
       {
         "amount": 0.867,
         "engineA": "Orbital",
         "engineB": "Obese",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.674,
         "engineA": "Overbite",
         "engineB": "Obese",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Oracle",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.747
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

@@ -5,7 +5,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Organon",
-        "type": "HARMONIC_STACK",
+        "type": "EnvToMorph",
         "amount": 0.79
       }
     ]

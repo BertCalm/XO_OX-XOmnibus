@@ -5,7 +5,7 @@
       {
         "engineA": "Orca",
         "engineB": "Odyssey",
-        "type": "ECHOLOCATION_SYNC",
+        "type": "RhythmToBlend",
         "amount": 0.65
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

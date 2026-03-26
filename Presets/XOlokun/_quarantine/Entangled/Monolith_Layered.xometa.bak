@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Monolith Layered",
+  "mood": "Entangled",
+  "engines": [
+    "Optic",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Optic × Onset — Timbre Blend coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "optic",
+    "onset",
+    "timbre-blend",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.632,
+    "warmth": 0.928,
+    "movement": 0.056,
+    "density": 0.937,
+    "space": 0.516,
+    "aggression": 0.432
+  },
+  "parameters": {
+    "Optic": {},
+    "Onset": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Onset",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.767
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

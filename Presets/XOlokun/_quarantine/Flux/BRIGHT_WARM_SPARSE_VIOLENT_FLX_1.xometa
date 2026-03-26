@@ -5,7 +5,7 @@
       {
         "engineA": "Ouroboros",
         "engineB": "Oceanic",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.6409
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

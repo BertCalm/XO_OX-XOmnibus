@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.952
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.966,
+    "brightness": 0.584,
+    "density": 0.022,
+    "movement": 0.884,
+    "space": 0.909,
+    "warmth": 0.467
+  },
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.571,
+    "COUPLING": 0.938,
+    "MOVEMENT": 0.851,
+    "SPACE": 0.859
+  },
+  "mood": "Aether",
+  "name": "KINETIC SPARSE VAST VIOLENT...",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.577,
+      "macro_coupling": 0.918,
+      "macro_movement": 0.83,
+      "macro_space": 0.874
+    },
+    "OddOscar": {
+      "macro_character": 0.566,
+      "macro_coupling": 0.957,
+      "macro_movement": 0.872,
+      "macro_space": 0.843
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

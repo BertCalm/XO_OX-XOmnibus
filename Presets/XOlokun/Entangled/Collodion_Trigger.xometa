@@ -6,7 +6,7 @@
         "amount": 0.587,
         "engineA": "Obscura",
         "engineB": "Onset",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

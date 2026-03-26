@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Origami",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Origami fold velocity coupled into Onset percussion — paper crane at drumstick speed.",
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.7,
+    "density": 0.69,
+    "movement": 0.9,
+    "space": 0.18,
+    "warmth": 0.26
+  },
+  "engines": [
+    "Origami",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.83,
+    "SPACE": 0.87,
+    "PUNCH": 0.9,
+    "MUTATE": 0.18
+  },
+  "mood": "Entangled",
+  "name": "Fold Velocity",
+  "parameters": {
+    "Origami": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "onset",
+    "fold"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "tier": "awakening"
+}

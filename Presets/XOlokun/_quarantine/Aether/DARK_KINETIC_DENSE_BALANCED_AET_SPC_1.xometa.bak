@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.939
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.127,
+    "brightness": 0.104,
+    "density": 0.928,
+    "movement": 0.896,
+    "space": 0.567,
+    "warmth": 0.374
+  },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.239,
+    "COUPLING": 0.875,
+    "MOVEMENT": 0.896,
+    "SPACE": 0.567
+  },
+  "mood": "Aether",
+  "name": "DARK KINETIC DENSE BALANCED...",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.227,
+      "macro_coupling": 0.863,
+      "macro_movement": 0.888,
+      "macro_space": 0.579
+    },
+    "OddfeliX": {
+      "macro_character": 0.239,
+      "macro_coupling": 0.875,
+      "macro_movement": 0.896,
+      "macro_space": 0.567
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

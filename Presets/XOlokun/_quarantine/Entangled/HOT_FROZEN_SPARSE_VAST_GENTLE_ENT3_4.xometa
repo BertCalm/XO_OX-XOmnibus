@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Orbital",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.7683
       }
     ]

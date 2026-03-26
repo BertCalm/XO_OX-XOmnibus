@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Ombre",
-        "type": "FM_CROSS",
+        "type": "AudioToFM",
         "amount": 0.89
       }
     ]

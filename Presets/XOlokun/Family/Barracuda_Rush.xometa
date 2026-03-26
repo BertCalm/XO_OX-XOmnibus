@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.607,
-      "destination": "ODDOSCAR",
-      "source": "OLE",
-      "type": "FILTER_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.607,
+        "type": "AmpToFilter",
+        "engineA": "OLE",
+        "engineB": "ODDOSCAR"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "dna": {
     "aggression": 0.932,
     "brightness": 0.559,

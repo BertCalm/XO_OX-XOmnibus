@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.506,
-      "destination": "ORACLE",
-      "source": "OPAL",
-      "type": "HARMONIC_FOLD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.506,
+        "type": "EnvToMorph",
+        "engineA": "OPAL",
+        "engineB": "ORACLE"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, dark, cold, vast.",

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.454,
+        "engineA": "Obsidian",
+        "engineB": "Orbital",
+        "type": "Pitch->Rate"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Volcanic glass rotates in gravitational loop. Crystal orbital path.",
+  "dna": {
+    "aggression": 0.301,
+    "brightness": 0.762,
+    "density": 1.0,
+    "movement": 0.403,
+    "space": 0.586,
+    "warmth": 0.701
+  },
+  "engines": [
+    "Obsidian",
+    "Orbital"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Crystal Looping",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.023,
+      "obsidian_brightness": 0.881,
+      "obsidian_density": 0.46,
+      "obsidian_level": 0.808,
+      "obsidian_movement": 0.353,
+      "obsidian_space": 0.533,
+      "obsidian_warmth": 0.24
+    },
+    "Orbital": {
+      "orb_aggression": 0.541,
+      "orb_brightness": 0.68,
+      "orb_density": 0.645,
+      "orb_level": 0.89,
+      "orb_movement": 0.574,
+      "orb_space": 0.624,
+      "orb_warmth": 0.626
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "orbital",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

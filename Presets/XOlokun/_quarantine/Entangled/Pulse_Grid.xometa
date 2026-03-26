@@ -6,7 +6,7 @@
         "amount": 0.64,
         "engineA": "OddOscar",
         "engineB": "Obsidian",
-        "type": "FORMANT_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

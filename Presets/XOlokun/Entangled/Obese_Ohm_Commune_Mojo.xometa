@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Obese",
-        "target": "Ohm",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer",
+        "engineA": "Obese",
+        "engineB": "Ohm"
       }
     ]
   },

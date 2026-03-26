@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.496
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.118,
+    "brightness": 0.888,
+    "density": 0.965,
+    "movement": 0.637,
+    "space": 0.511,
+    "warmth": 0.99
+  },
+  "engines": [
+    "OddfeliX",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.933,
+    "COUPLING": 0.547,
+    "MOVEMENT": 0.641,
+    "SPACE": 0.511
+  },
+  "mood": "Family",
+  "name": "Solar Packed",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.935,
+      "macro_coupling": 0.57,
+      "macro_movement": 0.63,
+      "macro_space": 0.501
+    },
+    "Odyssey": {
+      "macro_character": 0.932,
+      "macro_coupling": 0.524,
+      "macro_movement": 0.651,
+      "macro_space": 0.521
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "dense",
+    "gentle",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

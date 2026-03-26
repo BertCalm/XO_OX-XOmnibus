@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Oracle",
+        "type": "PHASE_LOCK",
+        "amount": 0.72
+      }
+    ]
+  },
+  "description": "BITE code locked to Oracle's still vision — aggressive ground state.",
+  "engines": [
+    "Overbite",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.06,
+    "SPACE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Bass Oracle Bite",
+  "parameters": {
+    "Overbite": {},
+    "Oracle": {}
+  },
+  "schema_version": 1,
+  "strategy": "Still Aggressive",
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "bass",
+    "locked"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

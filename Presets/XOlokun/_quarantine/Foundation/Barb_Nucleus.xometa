@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "OddfeliX",
-        "type": "SPECTRAL_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.93
       }
     ]

@@ -1,0 +1,77 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8,
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "Chaos->Timbre"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Strange attractor trajectories trigger Onset percussion events. Rhythm emerges from topology.",
+  "dna": {
+    "aggression": 0.332,
+    "brightness": 0.684,
+    "density": 0.685,
+    "movement": 0.805,
+    "space": 0.0,
+    "warmth": 0.46
+  },
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.6,
+    "SPACE": 0.65,
+    "PUNCH": 0.75,
+    "MUTATE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Percussion Orbit",
+  "parameters": {
+    "Onset": {
+      "perc_decay": 0.4,
+      "perc_noiseLevel": 0.6,
+      "perc_pitch": 0.5
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.75,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.35,
+      "ouro_rate": 120.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "percussion",
+    "rhythm",
+    "topology",
+    "entangled",
+    "ouroboros",
+    "onset"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 1.0,
+        "engineA": "Ouroboros",
+        "engineB": "Organon",
+        "type": "Chaos->Timbre"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "B011 meets B003: the organism's variational free energy landscape IS the strange attractor. Genuinely novel synthesis.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.525,
+    "density": 0.954,
+    "movement": 0.775,
+    "space": 0.794,
+    "warmth": 0.814
+  },
+  "engines": [
+    "Ouroboros",
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 1.0,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.55
+  },
+  "mood": "Entangled",
+  "name": "Publishable Attractor",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 1.2,
+      "organon_dampingCoeff": 0.4,
+      "organon_enzymeSelect": 600.0,
+      "organon_isotopeBalance": 0.6,
+      "organon_lockIn": 0.5,
+      "organon_membrane": 0.55,
+      "organon_metabolicRate": 3.5,
+      "organon_noiseColor": 0.7,
+      "organon_phasonShift": 0.5,
+      "organon_signalFlux": 0.8
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.75,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.5,
+      "ouro_phi": 0.7,
+      "ouro_rate": 80.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "marquee",
+    "B003",
+    "B011",
+    "publishable",
+    "deep-coupling",
+    "flagship",
+    "entangled",
+    "ouroboros-organon"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

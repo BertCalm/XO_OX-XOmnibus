@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.528,
-      "destination": "OLE",
-      "source": "OSPREY",
-      "type": "SPATIAL_COUPLE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.528,
+        "type": "AudioToWavetable",
+        "engineA": "OSPREY",
+        "engineB": "OLE"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
   "dna": {
     "aggression": 0.537,
     "brightness": 0.511,

@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Onset",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.606
       }
     ]

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.961
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.922,
+    "brightness": 0.694,
+    "density": 0.893,
+    "movement": 0.978,
+    "space": 0.318,
+    "warmth": 0.884
+  },
+  "engines": [
+    "Oblong",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.616,
+    "COUPLING": 0.915,
+    "MOVEMENT": 0.978,
+    "SPACE": 0.318
+  },
+  "mood": "Flux",
+  "name": "Peach Cascade",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.673,
+      "macro_coupling": 0.901,
+      "macro_movement": 0.994,
+      "macro_space": 0.299
+    },
+    "Oblong": {
+      "macro_character": 0.558,
+      "macro_coupling": 0.915,
+      "macro_movement": 0.964,
+      "macro_space": 0.275,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "hot",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, warm, dense texture. Macro sweeps reveal shifting timbral landscapes."
+}

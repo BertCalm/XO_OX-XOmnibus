@@ -6,7 +6,7 @@
         "amount": 0.8,
         "engineA": "Ouroboros",
         "engineB": "Organon",
-        "type": "Envelope->Env"
+        "type": "EnvToDecay"
       }
     ]
   },

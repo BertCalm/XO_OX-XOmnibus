@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Obscura",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.9
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, warm bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, dark, warm bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

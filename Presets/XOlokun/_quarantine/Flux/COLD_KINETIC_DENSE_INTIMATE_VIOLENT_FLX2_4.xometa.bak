@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.736
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9193,
+    "brightness": 0.6325,
+    "density": 0.8899,
+    "movement": 0.9671,
+    "space": 0.0681,
+    "warmth": 0.1048
+  },
+  "engines": [
+    "Oceanic",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3902,
+    "COUPLING": 0.894,
+    "MOVEMENT": 0.9841,
+    "SPACE": 0.0511
+  },
+  "mood": "Flux",
+  "name": "Quartz Stream",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.3838,
+      "macro_coupling": 0.8739,
+      "macro_movement": 0.9841,
+      "macro_space": 0.0525
+    },
+    "Origami": {
+      "macro_character": 0.3966,
+      "macro_coupling": 0.9141,
+      "macro_movement": 0.9842,
+      "macro_space": 0.0497
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "cold",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

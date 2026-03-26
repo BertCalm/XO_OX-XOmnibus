@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "OFFERING as tidal engine beneath OCEANIC's bioluminescent texture. Kick hits trigger OCEANIC's chromatophore modulator. Toronto sidechain creates a rhythmic tidal pull — each kick opens a window of clarity in the phosphorescent wash.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.65,
     "warmth": 0.65
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OCEANIC Tidal Kick",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["oceanic", "coupling", "tidal", "toronto", "bioluminescent", "family"],
+  "tags": [
+    "oceanic",
+    "coupling",
+    "tidal",
+    "toronto",
+    "bioluminescent",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.55, "M2": 0.45, "M3": 0.0, "M4": 0.1}
+  "macros": {
+    "M1": 0.55,
+    "M2": 0.45,
+    "M3": 0.0,
+    "M4": 0.1
+  }
 }

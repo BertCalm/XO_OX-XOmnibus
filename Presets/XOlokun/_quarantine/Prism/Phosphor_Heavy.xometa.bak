@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.538
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.056,
+    "brightness": 0.976,
+    "density": 0.954,
+    "movement": 0.601,
+    "space": 0.394,
+    "warmth": 0.933
+  },
+  "engines": [
+    "Origami",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.516,
+    "COUPLING": 0.781,
+    "MOVEMENT": 0.601,
+    "SPACE": 0.394
+  },
+  "mood": "Prism",
+  "name": "Phosphor Heavy",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.04,
+      "macro_coupling": 0.383,
+      "macro_movement": 0.601,
+      "macro_space": 0.394
+    },
+    "Origami": {
+      "macro_character": 0.516,
+      "macro_coupling": 0.781,
+      "macro_movement": 0.601,
+      "macro_space": 0.394
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "dense",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

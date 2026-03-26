@@ -76,7 +76,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Onset",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.35
       }
     ]

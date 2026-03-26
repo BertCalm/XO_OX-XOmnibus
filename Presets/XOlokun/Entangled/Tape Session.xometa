@@ -5,9 +5,9 @@
       {
         "amount": 0.793,
         "description": "Osteria drives Overdub via TimbreShare",
-        "source": "Osteria",
-        "target": "Overdub",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "Overdub"
       }
     ]
   },

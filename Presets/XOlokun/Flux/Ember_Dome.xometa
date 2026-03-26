@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Overworld",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.885
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, warm, still atmosphere. Let it breathe — the space is the instrument."
+  "description": "Restless and kinetic, warm, still atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

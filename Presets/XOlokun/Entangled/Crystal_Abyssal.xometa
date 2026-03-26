@@ -6,7 +6,7 @@
         "amount": 0.623,
         "engineA": "Obsidian",
         "engineB": "Owlfish",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable"
       }
     ]
   },

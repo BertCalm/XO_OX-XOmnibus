@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.773
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.079,
+    "density": 0.95,
+    "movement": 0.537,
+    "space": 0.88,
+    "warmth": 0.663
+  },
+  "engines": [
+    "Oblong",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.87,
+    "COUPLING": 0.506,
+    "MOVEMENT": 0.459,
+    "SPACE": 0.546
+  },
+  "mood": "Foundation",
+  "name": "Rust Molten",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.87,
+      "macro_coupling": 0.506,
+      "macro_movement": 0.459,
+      "macro_space": 0.546,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Origami": {
+      "macro_character": 0.865,
+      "macro_coupling": 0.544,
+      "macro_movement": 0.443,
+      "macro_space": 0.524
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "dense",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, dark, dense bass. Let it breathe — the space is the instrument."
+}

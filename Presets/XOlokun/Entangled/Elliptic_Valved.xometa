@@ -6,7 +6,7 @@
         "amount": 0.784,
         "engineA": "Orbital",
         "engineB": "Ottoni",
-        "type": "rhythm_sync"
+        "type": "RhythmToBlend"
       }
     ]
   },

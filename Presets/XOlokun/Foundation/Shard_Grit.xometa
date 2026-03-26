@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "OddfeliX",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.552
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, evolving lead. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Anchored and grounding, shimmering, evolving lead. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ocelot",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7984
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0847,
+    "brightness": 0.0757,
+    "density": 0.6634,
+    "movement": 0.9156,
+    "space": 0.9057,
+    "warmth": 0.6103
+  },
+  "engines": [
+    "Owlfish",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3475,
+    "COUPLING": 0.6634,
+    "MOVEMENT": 0.9156,
+    "SPACE": 0.9057
+  },
+  "mood": "Prism",
+  "name": "Ember Ripple",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.3563,
+      "macro_coupling": 0.6992,
+      "macro_movement": 0.9348,
+      "macro_space": 0.8823
+    },
+    "Owlfish": {
+      "macro_character": 0.3475,
+      "macro_coupling": 0.6634,
+      "macro_movement": 0.9156,
+      "macro_space": 0.9057
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "kinetic",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,9 +5,9 @@
       {
         "amount": 0.781,
         "description": "Orca drives Obese via FilterToGrain",
-        "source": "Orca",
-        "target": "Obese",
-        "type": "FilterToGrain"
+        "type": "AudioToBuffer",
+        "engineA": "Orca",
+        "engineB": "Obese"
       }
     ]
   },

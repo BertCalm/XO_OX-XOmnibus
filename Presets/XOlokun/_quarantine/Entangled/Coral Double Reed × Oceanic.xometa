@@ -6,7 +6,7 @@
         "amount": 0.634,
         "engineA": "Obbligato",
         "engineB": "Oceanic",
-        "type": "LFO->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Overlap",
-        "type": "ENVELOPE_SHARING",
+        "type": "EnvToDecay",
         "amount": 0.75
       }
     ]

@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.928,
@@ -42,7 +42,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Optic",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.759
       }
     ]

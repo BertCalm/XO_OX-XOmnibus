@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "OddfeliX",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.6991
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6509,
+    "brightness": 0.6054,
+    "density": 0.0654,
+    "movement": 0.7018,
+    "space": 0.8528,
+    "warmth": 0.9509
+  },
+  "engines": [
+    "Overbite",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.3743,
+    "COUPLING": 0.923,
+    "MOVEMENT": 0.1526,
+    "SPACE": 0.0671
+  },
+  "mood": "Flux",
+  "name": "THIN FLOW 3",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.4535,
+      "macro_coupling": 0.0951,
+      "macro_movement": 0.416,
+      "macro_space": 0.4268
+    },
+    "Overbite": {
+      "macro_character": 0.215,
+      "macro_coupling": 0.2285,
+      "macro_movement": 0.4516,
+      "macro_space": 0.3389
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

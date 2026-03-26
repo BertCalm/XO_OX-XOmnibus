@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Ohm",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8052
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_DENSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.6716,
+    "brightness": 0.1242,
+    "density": 0.9428,
+    "movement": 0.0628,
+    "space": 0.1261,
+    "warmth": 0.0382
+  },
+  "engines": [
+    "Oceanic",
+    "Ohm"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7084,
+    "COUPLING": 0.8603,
+    "MOVEMENT": 0.0612,
+    "SPACE": 0.2859
+  },
+  "mood": "Entangled",
+  "name": "Node Thick 2",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.6955,
+      "macro_coupling": 0.9112,
+      "macro_movement": 0.0788,
+      "macro_space": 0.4174
+    },
+    "Ohm": {
+      "macro_character": 0.7212,
+      "macro_coupling": 0.8095,
+      "macro_movement": 0.0436,
+      "macro_space": 0.1544
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "cold",
+    "dense",
+    "intimate"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

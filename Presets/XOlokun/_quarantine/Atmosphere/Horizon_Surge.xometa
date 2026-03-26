@@ -4,9 +4,10 @@
     "intensity": "Low",
     "sourceEngine": "Obbligato",
     "targetEngine": null,
-    "type": "Granular"
+    "type": "Granular",
+    "pairs": []
   },
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-16",
   "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 3.",
   "dna": {

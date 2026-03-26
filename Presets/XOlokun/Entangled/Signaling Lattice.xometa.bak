@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Orphica",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.649
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Orphica microsound event density clocks OUTWIT — each grain becomes a cellular timestep",
+  "engines": [
+    "Outwit",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.68,
+    "SPACE": 0.63
+  },
+  "mood": "Entangled",
+  "name": "Signaling Lattice",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.064,
+      "owit_ampRelease": 0.601,
+      "owit_arms": 7,
+      "owit_cellSize": 0.315,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.717,
+      "owit_density": 0.657,
+      "owit_evolveRate": 0.62,
+      "owit_filterCutoff": 0.459,
+      "owit_filterReso": 0.27,
+      "owit_mutateProb": 0.274,
+      "owit_outputLevel": 0.81,
+      "owit_pitchSpread": 0.395,
+      "owit_rule": 45
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "orphica",
+    "outwit-led",
+    "wolfram",
+    "cellular-automata"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.459,
+    "warmth": 0.5,
+    "movement": 0.62,
+    "density": 0.657,
+    "space": 0.5,
+    "aggression": 0.064
+  },
+  "tempo": null
+}

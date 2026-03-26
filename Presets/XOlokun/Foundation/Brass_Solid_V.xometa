@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Overworld",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.86
       }
     ]
@@ -64,5 +64,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, warm atmosphere. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Anchored and grounding, shimmering, warm atmosphere. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

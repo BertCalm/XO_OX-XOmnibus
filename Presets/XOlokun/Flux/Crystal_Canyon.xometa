@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Optic",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.602
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, shimmering, crystalline atmosphere. Let it breathe — the space is the instrument."
+  "description": "Restless and kinetic, shimmering, crystalline atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

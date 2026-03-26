@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ouroboros",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.942
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, dense bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Restless and kinetic, dark, dense bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

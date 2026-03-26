@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT audio output drives ORGANISM's CA FM input \u2014 the octopus's arm rhythms become the excitation signal for the coral colony's cellular automata. Arm patterns create generative rhythm in the CA field.",
+  "description": "OUTWIT audio output drives ORGANISM's CA FM input — the octopus's arm rhythms become the excitation signal for the coral colony's cellular automata. Arm patterns create generative rhythm in the CA field.",
   "tags": [
     "entangled",
     "audio-to-fm",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -162,11 +162,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Organism",
         "type": "AudioToFM",
         "amount": 0.14,
-        "description": "OUTWIT arm output drives ORGANISM CA FM input \u2014 octopus arm rhythms excite the coral colony"
+        "description": "OUTWIT arm output drives ORGANISM CA FM input — octopus arm rhythms excite the coral colony",
+        "engineA": "Outwit",
+        "engineB": "Organism"
       }
     ]
   },

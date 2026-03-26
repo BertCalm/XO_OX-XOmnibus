@@ -6,7 +6,7 @@
         "amount": 0.779,
         "engineA": "Obsidian",
         "engineB": "Oracle",
-        "type": "CV->Depth"
+        "type": "FilterToFilter"
       }
     ]
   },

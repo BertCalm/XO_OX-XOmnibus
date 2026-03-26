@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Odyssey",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.8414
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

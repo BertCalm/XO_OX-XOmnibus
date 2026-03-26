@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Oblong",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.468
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm atmosphere. Let it breathe — the space is the instrument."
+  "description": "Warm and familiar, dark, warm atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

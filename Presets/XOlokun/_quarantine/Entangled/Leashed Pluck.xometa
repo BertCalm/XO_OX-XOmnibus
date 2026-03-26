@@ -6,7 +6,7 @@
         "amount": 0.75,
         "engineA": "Ouroboros",
         "engineB": "Orphica",
-        "type": "ENVELOPE_LINK"
+        "type": "EnvToDecay"
       }
     ]
   },

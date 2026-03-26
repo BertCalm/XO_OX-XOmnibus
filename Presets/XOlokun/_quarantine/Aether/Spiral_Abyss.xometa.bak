@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Orbital",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7661
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4876,
+    "brightness": 0.0837,
+    "density": 0.4265,
+    "movement": 0.9758,
+    "space": 0.9472,
+    "warmth": 0.0949
+  },
+  "engines": [
+    "Osprey",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0893,
+    "COUPLING": 0.7661,
+    "MOVEMENT": 0.9758,
+    "SPACE": 0.9472
+  },
+  "mood": "Aether",
+  "name": "Spiral Abyss",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.4766,
+      "macro_coupling": 0.6835,
+      "macro_movement": 0.4153,
+      "macro_space": 0.933
+    },
+    "Osprey": {
+      "macro_character": 0.464,
+      "macro_coupling": 0.5463,
+      "macro_movement": 0.2556,
+      "macro_space": 0.2282
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "cold",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

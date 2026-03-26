@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7546,
-        "source": "Orbital",
-        "target": "Obsidian",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Orbital",
+        "engineB": "Obsidian"
       }
     ]
   },

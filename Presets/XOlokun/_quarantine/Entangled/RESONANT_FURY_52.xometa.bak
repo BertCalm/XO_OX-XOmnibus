@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "OddfeliX",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.591
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.986,
+    "brightness": 0.143,
+    "density": 0.07,
+    "movement": 0.944,
+    "space": 0.741,
+    "warmth": 0.657
+  },
+  "engines": [
+    "Ombre",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.092,
+    "COUPLING": 0.53,
+    "MOVEMENT": 0.944,
+    "SPACE": 0.376
+  },
+  "mood": "Entangled",
+  "name": "RESONANT FURY 52",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.762,
+      "macro_coupling": 0.922,
+      "macro_movement": 0.946,
+      "macro_space": 0.351
+    },
+    "Ombre": {
+      "macro_character": 0.693,
+      "macro_coupling": 0.029,
+      "macro_movement": 0.941,
+      "macro_space": 0.273
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "rupture",
+    "intensity"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

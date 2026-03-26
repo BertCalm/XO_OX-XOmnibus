@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Track Base",
+  "mood": "Foundation",
+  "engines": [
+    "Ocelot",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.96,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.89,
+      "macro_space": 0.25
+    },
+    "Overbite": {
+      "macro_character": 0.74,
+      "macro_movement": 0.91,
+      "macro_coupling": 0.86,
+      "macro_space": 0.43
+    }
+  },
+  "coupling": {
+    "type": "LFO_SYNC",
+    "source": "OCELOT",
+    "target": "OVERBITE",
+    "amount": 0.62
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.948,
+    "warmth": 0.944,
+    "movement": 0.072,
+    "density": 0.098,
+    "space": 0.923,
+    "aggression": 0.507
+  }
+}

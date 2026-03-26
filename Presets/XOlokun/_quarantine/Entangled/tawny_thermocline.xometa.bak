@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_CHAIN",
+        "amount": 0.678
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.4,
+    "density": 0.6,
+    "movement": 0.5,
+    "space": 0.8,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Ocelot",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.475,
+    "COUPLING": 0.678,
+    "MOVEMENT": 0.525,
+    "SPACE": 0.625
+  },
+  "mood": "Entangled",
+  "name": "Tawny Thermocline",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.31,
+      "macro_coupling": 0.46,
+      "macro_movement": 0.36,
+      "macro_space": 0.81
+    },
+    "Ocelot": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.69,
+      "macro_space": 0.44
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "aquatic",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Organon",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.841
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, crystalline, dense texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Restless and kinetic, crystalline, dense texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

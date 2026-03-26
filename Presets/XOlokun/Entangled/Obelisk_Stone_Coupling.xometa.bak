@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Stone Coupling",
+  "mood": "Entangled",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "COUPLING macro at full — preparation depth grows with coupling intensity. The monolith is prepared by what plays next to it. Each coupled engine inserts its own bolt deeper into the stone's strings. Glass preparation: what is added becomes part of the stone.",
+  "tags": ["stone", "coupling", "prepared", "entangled", "glass", "marble", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.25,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.65,
+      "obel_stoneTone": 0.5,
+      "obel_brightness": 6000.0,
+      "obel_damping": 0.2,
+      "obel_decay": 4.0,
+      "obel_hfNoise": 0.3,
+      "obel_hardness": 0.55,
+      "obel_prepType": 3,
+      "obel_prepPosition": 0.5,
+      "obel_prepDepth": 0.35,
+      "obel_filterEnvAmount": 0.4,
+      "obel_thermalDrift": 0.15,
+      "obel_bendRange": 2,
+      "obel_macroCoupling": 0.6,
+      "obel_macroSpace": 0.4,
+      "obel_lfo1Rate": 0.12,
+      "obel_lfo1Depth": 0.1,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.3,
+      "obel_lfo2Depth": 0.2,
+      "obel_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

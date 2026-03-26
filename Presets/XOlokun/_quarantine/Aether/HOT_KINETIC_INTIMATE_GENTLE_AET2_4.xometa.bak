@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8996
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.092,
+    "brightness": 0.6511,
+    "density": 0.5205,
+    "movement": 0.9652,
+    "space": 0.0292,
+    "warmth": 0.9216
+  },
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6391,
+    "COUPLING": 0.8996,
+    "MOVEMENT": 0.9657,
+    "SPACE": 0.0292
+  },
+  "mood": "Aether",
+  "name": "Honey Pulse",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.6324,
+      "macro_coupling": 0.496,
+      "macro_movement": 0.9465,
+      "macro_space": 0.0746
+    },
+    "Oceanic": {
+      "macro_character": 0.6459,
+      "macro_coupling": 0.5144,
+      "macro_movement": 0.9848,
+      "macro_space": 0.043
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "hot",
+    "kinetic",
+    "gentle",
+    "tender"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

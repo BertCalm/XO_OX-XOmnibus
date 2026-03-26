@@ -6,7 +6,7 @@
         "amount": 0.699,
         "engineA": "Origami",
         "engineB": "OddfeliX",
-        "type": "ENVELOPE_FOLLOW"
+        "type": "EnvToDecay"
       }
     ]
   },

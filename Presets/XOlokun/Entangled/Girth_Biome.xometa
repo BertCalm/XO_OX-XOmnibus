@@ -6,7 +6,7 @@
         "amount": 0.761,
         "engineA": "Obese",
         "engineB": "Ocelot",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },

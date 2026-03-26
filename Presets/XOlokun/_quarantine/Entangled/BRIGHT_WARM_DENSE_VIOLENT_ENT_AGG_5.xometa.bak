@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ole",
+        "type": "CHAOS_INJECT",
+        "amount": 0.878
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.886,
+    "brightness": 0.945,
+    "density": 0.876,
+    "movement": 0.477,
+    "space": 0.407,
+    "warmth": 0.93
+  },
+  "engines": [
+    "Onset",
+    "Ole"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.584,
+    "SPACE": 0.866,
+    "PUNCH": 0.477,
+    "MUTATE": 0.407
+  },
+  "mood": "Entangled",
+  "name": "Bloom Strike",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.702,
+      "macro_coupling": 0.851,
+      "macro_movement": 0.498,
+      "macro_space": 0.358
+    },
+    "Onset": {
+      "macro_character": 0.465,
+      "macro_coupling": 0.866,
+      "macro_movement": 0.49,
+      "macro_space": 0.437
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

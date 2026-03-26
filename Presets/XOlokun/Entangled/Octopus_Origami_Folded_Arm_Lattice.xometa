@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Octopus",
-        "target": "Origami",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend",
+        "engineA": "Octopus",
+        "engineB": "Origami"
       }
     ]
   },

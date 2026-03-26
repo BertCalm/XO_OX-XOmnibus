@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -42,7 +42,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Odyssey",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.668
       }
     ]

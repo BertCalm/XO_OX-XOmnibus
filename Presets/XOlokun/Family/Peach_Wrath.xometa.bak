@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ohm",
+        "type": "MODULATION_FLOW",
+        "amount": 0.555
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.948,
+    "brightness": 0.942,
+    "density": 0.582,
+    "movement": 0.894,
+    "space": 0.66,
+    "warmth": 0.913
+  },
+  "engines": [
+    "Ohm",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.932,
+    "COUPLING": 0.765,
+    "MOVEMENT": 0.899,
+    "SPACE": 0.65
+  },
+  "mood": "Family",
+  "name": "Peach Wrath",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.934,
+      "macro_coupling": 0.793,
+      "macro_movement": 0.886,
+      "macro_space": 0.65,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ohm": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.737,
+      "macro_movement": 0.913,
+      "macro_space": 0.65
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "aggressive",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Warm and familiar, shimmering, warm texture. Macro sweeps reveal shifting timbral landscapes."
+}

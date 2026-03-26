@@ -5,7 +5,7 @@
       {
         "engineA": "Overbite",
         "engineB": "Oracle",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.766
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

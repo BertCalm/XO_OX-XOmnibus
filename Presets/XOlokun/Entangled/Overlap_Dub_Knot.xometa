@@ -8,7 +8,7 @@
         "sourceParam": "dub_sendAmount",
         "targetEngine": "Overlap",
         "targetParam": "olap_delayFeedback",
-        "type": "Multiplicative"
+        "type": "EnvToMorph"
       }
     ]
   },

@@ -1,0 +1,91 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.54,
+        "engineA": "Outwit",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Spatial Couple.",
+  "dna": {
+    "aggression": 0.36,
+    "brightness": 0.07,
+    "density": 0.63,
+    "movement": 0.76,
+    "space": 0.51,
+    "warmth": 0.39
+  },
+  "engines": [
+    "Outwit",
+    "Organon"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "CHAOS",
+    "COUPLING",
+    "DENSITY"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "COUPLING": 0.57,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Predicate Strike",
+  "parameters": {
+    "Organon": {
+      "organon_ampAttack": 0.29,
+      "organon_ampRelease": 0.56,
+      "organon_ampSustain": 0.58,
+      "organon_character": 0.31,
+      "organon_coupling": 0.76,
+      "organon_couplingLevel": 0.64,
+      "organon_filterCutoff": 0.78,
+      "organon_filterReso": 0.38,
+      "organon_movement": 0.43,
+      "organon_outputLevel": 0.85,
+      "organon_reverbMix": 0.19,
+      "organon_space": 0.47
+    },
+    "Outwit": {
+      "owit_ampAttack": 0.03,
+      "owit_ampRelease": 0.27,
+      "owit_armStagger": 0.37,
+      "owit_arms": 8,
+      "owit_borderMode": 0,
+      "owit_cellSize": 0.33,
+      "owit_chroma1": 0.43,
+      "owit_chroma2": 0.66,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.57,
+      "owit_density": 0.46,
+      "owit_evolveRate": 0.41,
+      "owit_filterCutoff": 0.5,
+      "owit_filterReso": 0.16,
+      "owit_inkCloudMix": 0.15,
+      "owit_mutateProb": 0.26,
+      "owit_outputLevel": 0.79,
+      "owit_outputPan": -0.09,
+      "owit_pitchSpread": 0.26,
+      "owit_polyDepth": 0.8,
+      "owit_rule": 90
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "organon",
+    "chaotic",
+    "generative"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

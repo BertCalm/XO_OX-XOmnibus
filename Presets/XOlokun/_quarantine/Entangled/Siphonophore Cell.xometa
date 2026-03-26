@@ -6,7 +6,7 @@
         "amount": 0.65,
         "engineA": "Organon",
         "engineB": "Orphica",
-        "type": "ENVELOPE_LINK"
+        "type": "EnvToDecay"
       }
     ]
   },

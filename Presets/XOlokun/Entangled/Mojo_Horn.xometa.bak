@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.655,
+        "engineA": "Obese",
+        "engineB": "Ottoni",
+        "type": "filter_modulation"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OBESE saturation into OTTONI brass flare. Thick fanfare, overloaded.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.56,
+    "density": 0.785,
+    "movement": 0.542,
+    "space": 0.474,
+    "warmth": 0.632
+  },
+  "engines": [
+    "Obese",
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Mojo Horn",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.278,
+      "fat_compress": 0.359,
+      "fat_couplingIn": 0.439,
+      "fat_couplingOut": 0.723,
+      "fat_digital": 0.456,
+      "fat_macro1": 0.394,
+      "fat_macro2": 0.341,
+      "fat_macro3": 0.456,
+      "fat_macro4": 0.558,
+      "fat_mojoCtrl": 0.323,
+      "fat_outputLevel": 0.801,
+      "fat_outputPan": 0.036,
+      "fat_satDrive": 0.683
+    },
+    "Ottoni": {
+      "otto_couplingIn": 0.738,
+      "otto_couplingOut": 0.668,
+      "otto_macro1": 0.373,
+      "otto_macro2": 0.695,
+      "otto_macro3": 0.487,
+      "otto_macro4": 0.501,
+      "otto_outputLevel": 0.915,
+      "otto_outputPan": 0.027
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "ottoni",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
+}

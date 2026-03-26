@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Ombre",
-        "target": "Overdub",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable",
+        "engineA": "Ombre",
+        "engineB": "Overdub"
       }
     ]
   },

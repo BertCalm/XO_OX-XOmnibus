@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.16,
-        "source": "Obrix",
-        "target": "Overdub",
-        "type": "FilterToFilter"
+        "type": "FilterToFilter",
+        "engineA": "Obrix",
+        "engineB": "Overdub"
       }
     ]
   },

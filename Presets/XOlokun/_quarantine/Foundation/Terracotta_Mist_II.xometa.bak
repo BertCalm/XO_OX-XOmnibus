@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overworld",
+        "type": "CHAOS_INJECT",
+        "amount": 0.455
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.477,
+    "brightness": 0.137,
+    "density": 0.052,
+    "movement": 0.51,
+    "space": 0.884,
+    "warmth": 0.96
+  },
+  "engines": [
+    "OddOscar",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.521,
+    "COUPLING": 0.51,
+    "MOVEMENT": 0.195,
+    "SPACE": 0.292
+  },
+  "mood": "Foundation",
+  "name": "Terracotta Mist II",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.799,
+      "macro_coupling": 0.603,
+      "macro_movement": 0.496,
+      "macro_space": 0.139
+    },
+    "Overworld": {
+      "macro_character": 0.856,
+      "macro_coupling": 0.32,
+      "macro_movement": 0.707,
+      "macro_space": 0.402
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "hot",
+    "sparse",
+    "vast",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

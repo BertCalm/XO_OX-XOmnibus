@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Osprey",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.8744
       }
     ]

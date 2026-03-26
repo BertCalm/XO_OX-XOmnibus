@@ -5,7 +5,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Overdub",
-        "type": "HARMONIC_MESH",
+        "type": "KnotTopology",
         "amount": 0.753
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm bass. Drives through the mix with presence and bite."
+  "description": "Warm and familiar, dark, warm bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

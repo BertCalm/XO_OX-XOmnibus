@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Ombre",
-        "target": "Owlfish",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM",
+        "engineA": "Ombre",
+        "engineB": "Owlfish"
       }
     ]
   },

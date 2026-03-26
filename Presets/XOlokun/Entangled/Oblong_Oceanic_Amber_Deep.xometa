@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Oblong",
-        "target": "Oceanic",
-        "type": "SPECTRAL_TRANSFER"
+        "type": "EnvToMorph",
+        "engineA": "Oblong",
+        "engineB": "Oceanic"
       }
     ]
   },

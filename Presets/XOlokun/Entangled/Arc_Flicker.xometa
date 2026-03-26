@@ -6,7 +6,7 @@
         "amount": 0.787,
         "engineA": "Orbital",
         "engineB": "Optic",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },

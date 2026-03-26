@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Opal",
-        "type": "CHAOS_INJECTION",
+        "type": "AudioToFM",
         "amount": 0.875
       }
     ]

@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.421,
-      "destination": "OTTONI",
-      "source": "OBLIQUE",
-      "type": "RESONANCE_SHARE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.421,
+        "type": "FilterToFilter",
+        "engineA": "OBLIQUE",
+        "engineB": "OTTONI"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
   "dna": {
     "aggression": 0.543,
     "brightness": 0.431,

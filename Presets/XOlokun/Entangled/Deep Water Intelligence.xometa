@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Overlap",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.72
       }
     ]

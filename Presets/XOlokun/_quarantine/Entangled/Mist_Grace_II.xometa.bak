@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Mist Grace II",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Ocelot"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Outwit × Ocelot — Chaos Inject coupling at extreme DNA corner.",
+  "tags": [
+    "still",
+    "outwit",
+    "ocelot",
+    "chaos-inject",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.644,
+    "warmth": 0.6,
+    "movement": 0.05,
+    "density": 0.044,
+    "space": 0.441,
+    "aggression": 0.044
+  },
+  "parameters": {
+    "Outwit": {},
+    "Ocelot": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ocelot",
+        "type": "CHAOS_INJECT",
+        "amount": 0.85
+      }
+    ]
+  },
+  "sequencer": null
+}

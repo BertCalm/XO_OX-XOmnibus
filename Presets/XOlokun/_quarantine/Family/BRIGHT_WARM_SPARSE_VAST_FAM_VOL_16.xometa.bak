@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ohm",
+        "type": "MODULATION_FLOW",
+        "amount": 0.609
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.647,
+    "brightness": 0.958,
+    "density": 0.1,
+    "movement": 0.612,
+    "space": 0.928,
+    "warmth": 0.967
+  },
+  "engines": [
+    "Ohm",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.972,
+    "COUPLING": 0.394,
+    "MOVEMENT": 0.609,
+    "SPACE": 0.948
+  },
+  "mood": "Family",
+  "name": "Bloom Void",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.968,
+      "macro_coupling": 0.4,
+      "macro_movement": 0.584,
+      "macro_space": 0.957
+    },
+    "Ole": {
+      "macro_character": 0.977,
+      "macro_coupling": 0.387,
+      "macro_movement": 0.634,
+      "macro_space": 0.938
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "sparse",
+    "vast",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

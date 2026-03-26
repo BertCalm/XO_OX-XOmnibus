@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8047,
-        "source": "Ombre",
-        "target": "Organon",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Ombre",
+        "engineB": "Organon"
       }
     ]
   },

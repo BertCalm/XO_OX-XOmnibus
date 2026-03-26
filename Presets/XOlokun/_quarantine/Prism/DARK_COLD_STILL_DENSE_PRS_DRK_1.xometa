@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Ocelot",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.5541
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

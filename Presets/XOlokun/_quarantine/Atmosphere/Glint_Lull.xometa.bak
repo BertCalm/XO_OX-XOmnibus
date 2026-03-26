@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.774
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.115,
+    "brightness": 0.905,
+    "density": 0.118,
+    "movement": 0.46,
+    "space": 0.514,
+    "warmth": 0.557
+  },
+  "engines": [
+    "Onset",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.731,
+    "SPACE": 0.458,
+    "PUNCH": 0.46,
+    "MUTATE": 0.514
+  },
+  "mood": "Atmosphere",
+  "name": "Glint Lull",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.731,
+      "macro_coupling": 0.458,
+      "macro_movement": 0.46,
+      "macro_space": 0.514
+    },
+    "Osteria": {
+      "macro_character": 0.635,
+      "macro_coupling": 0.815,
+      "macro_movement": 0.599,
+      "macro_space": 0.397
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

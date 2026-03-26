@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Oracle",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.588
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, warm lead. Let it breathe — the space is the instrument."
+  "description": "Anchored and grounding, shimmering, warm lead. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

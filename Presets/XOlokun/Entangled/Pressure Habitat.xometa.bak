@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ocelot",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_BLEND"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Owlfish",
+        "engineB": "Ocelot",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OCELOT's surface biome pressed down by OWLFISH's deep pressure — where ecosystems meet at the thermocline.",
+  "dna": {
+    "aggression": 0.455,
+    "brightness": 0.578,
+    "density": 0.605,
+    "movement": 0.623,
+    "space": 0.59,
+    "warmth": 0.583
+  },
+  "engines": [
+    "Ocelot",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Pressure Habitat",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_ampAttack": 0.04,
+      "ocelot_ampRelease": 1.8,
+      "ocelot_biomeShift": 0.5,
+      "ocelot_filterCutoff": 2400.0,
+      "ocelot_filterReso": 0.3,
+      "ocelot_movement": 0.6,
+      "ocelot_predatorDepth": 0.55,
+      "ocelot_warmth": 0.65
+    },
+    "Owlfish": {
+      "owlf_ampAttack": 0.03,
+      "owlf_ampRelease": 1.5,
+      "owlf_filterCutoff": 2800.0,
+      "owlf_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "ocelot",
+    "owlfish",
+    "biome-shift",
+    "tawny",
+    "apex",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

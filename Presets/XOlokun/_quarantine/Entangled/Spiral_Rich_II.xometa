@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.434,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Obese",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.893
       }
     ]

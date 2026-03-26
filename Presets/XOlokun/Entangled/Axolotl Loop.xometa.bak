@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Ouroboros",
+        "engineB": "OddOscar",
+        "type": "LFO->LFO"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "The serpent regenerates endlessly; the axolotl morphs through the shed skins. Mutual metamorphosis.",
+  "dna": {
+    "aggression": 1.0,
+    "brightness": 0.718,
+    "density": 0.461,
+    "movement": 0.805,
+    "space": 0.445,
+    "warmth": 0.46
+  },
+  "engines": [
+    "Ouroboros",
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Axolotl Loop",
+  "parameters": {
+    "OddOscar": {
+      "morph_envAttack": 0.3,
+      "morph_filterCutoff": 0.55,
+      "morph_morph": 0.5
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.5,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.45,
+      "ouro_rate": 80.0,
+      "ouro_theta": 0.4,
+      "ouro_topology": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "regeneration",
+    "morph",
+    "loop",
+    "entangled",
+    "ouroboros",
+    "oddoscar"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

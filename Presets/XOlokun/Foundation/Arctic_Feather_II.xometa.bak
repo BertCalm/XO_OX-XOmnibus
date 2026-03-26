@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Onset",
+        "type": "PITCH_SYNC",
+        "amount": 0.73
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.044,
+    "brightness": 0.861,
+    "density": 0.632,
+    "movement": 0.049,
+    "space": 0.698,
+    "warmth": 0.038
+  },
+  "engines": [
+    "Overdub",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.684,
+    "SPACE": 0.775,
+    "PUNCH": 0.255,
+    "MUTATE": 0.665
+  },
+  "mood": "Foundation",
+  "name": "Arctic Feather II",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.236,
+      "macro_coupling": 0.667,
+      "macro_movement": 0.124,
+      "macro_space": 0.27
+    },
+    "Overdub": {
+      "macro_character": 0.401,
+      "macro_coupling": 0.471,
+      "macro_movement": 0.617,
+      "macro_space": 0.893,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "cold",
+    "still",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, shimmering, crystalline pad. Let it breathe — the space is the instrument.",
+  "tier": "awakening"
+}

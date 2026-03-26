@@ -1,0 +1,59 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Oceanic",
+        "engineB": "Ohm",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OHM's drone holds the tone of the water column — the ocean's fundamental frequency.",
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.54,
+    "density": 0.55,
+    "movement": 0.53,
+    "space": 0.66,
+    "warmth": 0.61
+  },
+  "engines": [
+    "Oceanic",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.8
+  },
+  "mood": "Entangled",
+  "name": "OHM Depth",
+  "parameters": {
+    "Oceanic": {},
+    "Ohm": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "oceanic",
+    "ohm",
+    "drone",
+    "fundamental",
+    "depth"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -6,7 +6,7 @@
         "amount": 0.782,
         "engineA": "Obese",
         "engineB": "Ouroboros",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

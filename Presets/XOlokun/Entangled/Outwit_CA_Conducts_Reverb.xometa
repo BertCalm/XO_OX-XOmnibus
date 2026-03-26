@@ -6,9 +6,9 @@
     "Outwit",
     "Overdub"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT arm events trigger OVERDUB's reverb send level \u2014 the CA rhythm becomes a reverb envelope. Rule 30 chaos modulates the amount of spring echo.",
+  "description": "OUTWIT arm events trigger OVERDUB's reverb send level — the CA rhythm becomes a reverb envelope. Rule 30 chaos modulates the amount of spring echo.",
   "tags": [
     "entangled",
     "ca-to-reverb",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Overdub",
         "type": "RhythmToBlend",
         "amount": 0.55,
-        "description": "Outwit CA steps trigger Overdub reverb send"
+        "description": "Outwit CA steps trigger Overdub reverb send",
+        "engineA": "Outwit",
+        "engineB": "Overdub"
       }
     ]
   },

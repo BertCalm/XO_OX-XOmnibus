@@ -5,7 +5,7 @@
       {
         "engineA": "Odyssey",
         "engineB": "Oblong",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.767
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, shimmering, warm atmosphere. Let it breathe — the space is the instrument."
+  "description": "Restless and kinetic, shimmering, warm atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

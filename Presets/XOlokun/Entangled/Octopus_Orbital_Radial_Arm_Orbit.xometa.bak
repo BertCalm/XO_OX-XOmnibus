@@ -1,0 +1,95 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8,
+        "source": "Octopus",
+        "target": "Orbital",
+        "type": "FREQUENCY_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Arms locked into orbital period ratios — a living solar system modulating its own warmth.",
+  "dna": {
+    "aggression": 0.543,
+    "brightness": 0.654,
+    "density": 0.799,
+    "movement": 0.732,
+    "space": 0.533,
+    "warmth": 0.579
+  },
+  "engines": [
+    "Octopus",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Radial Arm Orbit",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.0292,
+      "octo_ampDecay": 0.716,
+      "octo_ampRelease": 1.248,
+      "octo_ampSustain": 0.771,
+      "octo_armBaseRate": 0.883,
+      "octo_armCount": 6.0,
+      "octo_armDepth": 0.748,
+      "octo_armSpread": 0.713,
+      "octo_chromaDepth": 0.529,
+      "octo_chromaFreq": 2753.0,
+      "octo_chromaMorph": 0.669,
+      "octo_chromaSens": 0.516,
+      "octo_chromaSpeed": 0.623,
+      "octo_filterCutoff": 5361.9,
+      "octo_filterReso": 0.496,
+      "octo_inkDecay": 0.413,
+      "octo_inkDensity": 0.683,
+      "octo_inkMix": 0.456,
+      "octo_inkThreshold": 0.479,
+      "octo_level": 0.709,
+      "octo_lfo1Depth": 0.531,
+      "octo_lfo1Rate": 1.631,
+      "octo_lfo1Shape": 0.75,
+      "octo_lfo2Depth": 0.369,
+      "octo_lfo2Rate": 1.456,
+      "octo_lfo2Shape": 0.5,
+      "octo_modAttack": 0.0363,
+      "octo_modDecay": 0.172,
+      "octo_modRelease": 0.684,
+      "octo_modSustain": 0.425,
+      "octo_shiftDrift": 0.524,
+      "octo_shiftGlide": 0.091,
+      "octo_shiftMicro": 0.303,
+      "octo_suckerDecay": 0.183,
+      "octo_suckerFreq": 2742.9,
+      "octo_suckerMix": 0.257,
+      "octo_suckerReso": 0.417,
+      "octo_wtPosition": 0.887,
+      "octo_wtScanRate": 0.381
+    },
+    "Orbital": {
+      "orb_filterCutoff": 9490.3,
+      "orb_level": 0.749
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "orbital",
+    "alien",
+    "decentralized"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

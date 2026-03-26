@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Optic",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.557
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Oblong",
+        "type": "PITCH_SYNC",
+        "amount": 0.6325
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4292,
+    "brightness": 0.0164,
+    "density": 0.0797,
+    "movement": 0.8837,
+    "space": 0.1436,
+    "warmth": 0.5154
+  },
+  "engines": [
+    "Owlfish",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3905,
+    "COUPLING": 0.6357,
+    "MOVEMENT": 0.4701,
+    "SPACE": 0.981
+  },
+  "mood": "Flux",
+  "name": "BARE FLUX 6",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.0677,
+      "macro_coupling": 0.5073,
+      "macro_movement": 0.5261,
+      "macro_space": 0.9883,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Owlfish": {
+      "macro_character": 0.4166,
+      "macro_coupling": 0.0856,
+      "macro_movement": 0.6644,
+      "macro_space": 0.9747
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, dark, ethereal texture. Macro sweeps reveal shifting timbral landscapes."
+}

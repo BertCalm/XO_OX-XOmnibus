@@ -5,7 +5,7 @@
       {
         "engineA": "Ouroboros",
         "engineB": "Overlap",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.602
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

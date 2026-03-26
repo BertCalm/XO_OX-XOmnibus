@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Odyssey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.8
+      }
+    ]
+  },
+  "description": "Origami paper timbres blend into cold Odyssey drift — paper dissolves into wavetable space.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.06,
+    "density": 0.367,
+    "movement": 0.22,
+    "space": 0.641,
+    "warmth": 0.05
+  },
+  "engines": [
+    "Odyssey",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.95
+  },
+  "mood": "Entangled",
+  "name": "Drift Crease",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.1,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.22,
+      "macro_space": 0.95
+    },
+    "Origami": {
+      "macro_character": 0.07,
+      "macro_coupling": 0.85,
+      "macro_movement": 0.17,
+      "macro_space": 0.98
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "drift",
+    "crease"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,77 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7588
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.5864,
+    "brightness": 0.0953,
+    "density": 0.8919,
+    "movement": 0.0579,
+    "space": 0.8862,
+    "warmth": 0.9877
+  },
+  "engines": [
+    "Orca",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8006,
+    "COUPLING": 0.8171,
+    "MOVEMENT": 0.0496,
+    "SPACE": 0.6051
+  },
+  "mood": "Entangled",
+  "name": "Mahogany Molten 2",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.9574,
+      "macro_coupling": 0.8737,
+      "macro_movement": 0.0596,
+      "macro_space": 0.9408,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Orca": {
+      "macro_character": 0.6438,
+      "macro_coupling": 0.7605,
+      "macro_movement": 0.0396,
+      "macro_space": 0.2695
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "warm",
+    "dense",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

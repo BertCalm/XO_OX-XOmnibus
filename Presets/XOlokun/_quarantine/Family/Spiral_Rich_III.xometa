@@ -5,7 +5,7 @@
       {
         "engineA": "Odyssey",
         "engineB": "Obsidian",
-        "type": "SPECTRAL_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.83
       }
     ]

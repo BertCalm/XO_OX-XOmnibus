@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.71
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.53,
+    "density": 0.84,
+    "movement": 0.33,
+    "space": 0.37,
+    "warmth": 0.87
+  },
+  "engines": [
+    "Organon",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "COUPLING": 0.66,
+    "MOVEMENT": 0.38,
+    "SPACE": 0.46
+  },
+  "mood": "Entangled",
+  "name": "Bellows Wall",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.41,
+      "macro_space": 0.43,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Organon": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.34,
+      "macro_space": 0.49
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, warm, dense sound. Sits warmly in any arrangement without fighting for space."
+}

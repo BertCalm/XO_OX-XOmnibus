@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Feather II",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Osteria × Orbital — Timbre Blend coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "osteria",
+    "orbital",
+    "timbre-blend",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.054,
+    "warmth": 0.394,
+    "movement": 0.409,
+    "density": 0.102,
+    "space": 0.578,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Osteria": {},
+    "Orbital": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Orbital",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.843
+      }
+    ]
+  },
+  "sequencer": null
+}

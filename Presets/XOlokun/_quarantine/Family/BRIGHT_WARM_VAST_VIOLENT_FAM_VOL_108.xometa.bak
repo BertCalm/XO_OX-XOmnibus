@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_BIND",
+        "amount": 0.67
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.974,
+    "density": 0.575,
+    "movement": 0.555,
+    "space": 0.91,
+    "warmth": 0.887
+  },
+  "engines": [
+    "Obbligato",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.935,
+    "COUPLING": 0.731,
+    "MOVEMENT": 0.579,
+    "SPACE": 0.907
+  },
+  "mood": "Family",
+  "name": "Glow Fang",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.953,
+      "macro_coupling": 0.723,
+      "macro_movement": 0.577,
+      "macro_space": 0.898
+    },
+    "OddfeliX": {
+      "macro_character": 0.917,
+      "macro_coupling": 0.739,
+      "macro_movement": 0.582,
+      "macro_space": 0.917
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "vast",
+    "aggressive",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

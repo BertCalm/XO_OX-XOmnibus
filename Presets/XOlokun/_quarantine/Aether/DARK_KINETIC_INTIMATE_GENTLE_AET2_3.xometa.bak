@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8469
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0411,
+    "brightness": 0.1246,
+    "density": 0.362,
+    "movement": 0.911,
+    "space": 0.0813,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1479,
+    "COUPLING": 0.8469,
+    "MOVEMENT": 0.9041,
+    "SPACE": 0.0813
+  },
+  "mood": "Aether",
+  "name": "Smoke Cascade",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.1512,
+      "macro_coupling": 0.3497,
+      "macro_movement": 0.8741,
+      "macro_space": 0.0475
+    },
+    "Orbital": {
+      "macro_character": 0.1447,
+      "macro_coupling": 0.3343,
+      "macro_movement": 0.934,
+      "macro_space": 0.0715
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "kinetic",
+    "gentle",
+    "stirring"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

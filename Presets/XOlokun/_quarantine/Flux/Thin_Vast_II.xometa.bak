@@ -1,0 +1,42 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Rhythmic",
+  "description": "Ultra-diverse Flux preset — extreme gentle aggression, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.107,
+    "brightness": 0.502,
+    "density": 0.086,
+    "movement": 0.092,
+    "space": 0.91,
+    "warmth": 0.559
+  },
+  "engines": [
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Thin Vast II",
+  "parameters": {
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "gentle",
+    "static",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "tier": "awakening"
+}

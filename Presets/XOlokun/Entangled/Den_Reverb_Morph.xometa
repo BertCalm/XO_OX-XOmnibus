@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT den reverb tail envelope feeds into OPAL grain morph \u2014 the octopus's den acoustic space extends into the granular field. Long den decay creates long grain position sweeps. SPACE macro brings both environments together.",
+  "description": "OUTWIT den reverb tail envelope feeds into OPAL grain morph — the octopus's den acoustic space extends into the granular field. Long den decay creates long grain position sweeps. SPACE macro brings both environments together.",
   "tags": [
     "entangled",
     "env-to-morph",
@@ -24,7 +24,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -144,11 +144,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "EnvToMorph",
         "amount": 0.1,
-        "description": "OUTWIT den reverb tail modulates OPAL grain morph \u2014 den space extends into the granular field"
+        "description": "OUTWIT den reverb tail modulates OPAL grain morph — den space extends into the granular field",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

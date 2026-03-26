@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Odyssey",
-        "target": "Osprey",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Odyssey",
+        "engineB": "Osprey"
       }
     ]
   },

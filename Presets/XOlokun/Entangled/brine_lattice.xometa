@@ -6,7 +6,7 @@
         "amount": 0.78,
         "engineA": "Overlap",
         "engineB": "Oceanic",
-        "type": "ENVELOPE_LINK"
+        "type": "EnvToDecay"
       }
     ]
   },

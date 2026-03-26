@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Obbligato",
-        "type": "DAGUERREOTYPE_BLUR",
+        "type": "AudioToFM",
         "amount": 0.6
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

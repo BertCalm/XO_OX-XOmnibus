@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Opal",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.937
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.942,
+    "brightness": 0.979,
+    "density": 0.932,
+    "movement": 0.403,
+    "space": 0.934,
+    "warmth": 0.873
+  },
+  "engines": [
+    "Osteria",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.926,
+    "COUPLING": 0.937,
+    "MOVEMENT": 0.403,
+    "SPACE": 0.934
+  },
+  "mood": "Entangled",
+  "name": "Neon Impact",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.895,
+      "macro_coupling": 0.953,
+      "macro_movement": 0.362,
+      "macro_space": 0.916
+    },
+    "Osteria": {
+      "macro_character": 0.926,
+      "macro_coupling": 0.937,
+      "macro_movement": 0.403,
+      "macro_space": 0.934
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

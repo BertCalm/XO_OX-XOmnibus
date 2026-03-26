@@ -6,7 +6,7 @@
         "amount": 0.509,
         "engineA": "Orbital",
         "engineB": "Osteria",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },

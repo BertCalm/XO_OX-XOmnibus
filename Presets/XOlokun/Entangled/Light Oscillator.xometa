@@ -5,9 +5,9 @@
       {
         "amount": 0.776,
         "description": "Owlfish drives Optic via HARMONIC_BLEND",
-        "source": "Owlfish",
-        "target": "Optic",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Owlfish",
+        "engineB": "Optic"
       }
     ]
   },

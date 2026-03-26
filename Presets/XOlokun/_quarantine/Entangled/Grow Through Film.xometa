@@ -6,7 +6,7 @@
         "amount": 0.63,
         "engineA": "Ottoni",
         "engineB": "Obscura",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

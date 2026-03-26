@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Organon",
-        "type": "SPECTRAL_BRAID",
+        "type": "EnvToMorph",
         "amount": 0.79
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense bass. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, warm, dense bass. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7002,
-        "source": "Odyssey",
-        "target": "Obese",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Odyssey",
+        "engineB": "Obese"
       }
     ]
   },

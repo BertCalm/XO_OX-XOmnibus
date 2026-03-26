@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.752,
+        "description": "Orca drives Overworld via AmpToFilter",
+        "source": "Orca",
+        "target": "Overworld",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "XOverworld's chip-era oscillators tuned to ORCA's pod frequencies — the NES 2A03 pulse waves that a pod of orcas would compose.",
+  "dna": {
+    "aggression": 0.643,
+    "brightness": 0.372,
+    "density": 0.68,
+    "movement": 0.65,
+    "space": 0.536,
+    "warmth": 0.303
+  },
+  "engines": [
+    "Orca",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Chip Pod",
+  "parameters": {
+    "Orca": {
+      "orca_ampAttack": 0.0271,
+      "orca_ampDecay": 0.753,
+      "orca_ampRelease": 2.46,
+      "orca_ampSustain": 0.495,
+      "orca_breachAmt": 0.554,
+      "orca_echoDepth": 0.55,
+      "orca_filterCutoff": 0.656,
+      "orca_filterRes": 0.694,
+      "orca_huntMacro": 0.239,
+      "orca_lfo1Depth": 0.184,
+      "orca_lfo1Rate": 0.185,
+      "orca_lfo2Depth": 0.074,
+      "orca_lfo2Rate": 0.0673,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.18,
+      "orca_podSync": 0.27,
+      "orca_wavetablePos": 0.187,
+      "orca_wavetableScan": 0.333
+    },
+    "Overworld": {
+      "ow_attack": 0.0,
+      "ow_era": 0.563,
+      "ow_filterCutoff": 0.616,
+      "ow_lfoRate": 0.036,
+      "ow_macroCharacter": 0.087,
+      "ow_macroCoupling": 0.053,
+      "ow_release": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "overworld"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7449,
-        "source": "Obsidian",
-        "target": "Ocelot",
-        "type": "TIMBRAL_BLEED"
+        "type": "EnvToMorph",
+        "engineA": "Obsidian",
+        "engineB": "Ocelot"
       }
     ]
   },

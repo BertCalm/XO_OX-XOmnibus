@@ -6,7 +6,7 @@
         "amount": 0.584,
         "engineA": "Owlfish",
         "engineB": "Osteria",
-        "type": "RHYTHM_LOCK"
+        "type": "RhythmToBlend"
       }
     ]
   },

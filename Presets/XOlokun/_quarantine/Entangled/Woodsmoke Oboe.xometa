@@ -6,7 +6,7 @@
         "amount": 0.599,
         "engineA": "Ohm",
         "engineB": "Obbligato",
-        "type": "Env->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

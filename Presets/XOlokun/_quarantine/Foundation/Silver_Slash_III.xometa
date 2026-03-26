@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Oceanic",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.984
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

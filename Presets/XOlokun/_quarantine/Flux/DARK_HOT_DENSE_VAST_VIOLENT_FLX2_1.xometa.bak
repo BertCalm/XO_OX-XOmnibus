@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Overworld",
+        "type": "PITCH_SYNC",
+        "amount": 0.587
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9228,
+    "brightness": 0.1085,
+    "density": 0.8788,
+    "movement": 0.419,
+    "space": 0.8772,
+    "warmth": 0.9522
+  },
+  "engines": [
+    "Odyssey",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5151,
+    "COUPLING": 0.8812,
+    "MOVEMENT": 0.4268,
+    "SPACE": 0.8923
+  },
+  "mood": "Flux",
+  "name": "Rust Force",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.509,
+      "macro_coupling": 0.868,
+      "macro_movement": 0.4407,
+      "macro_space": 0.9065
+    },
+    "Overworld": {
+      "macro_character": 0.5211,
+      "macro_coupling": 0.8944,
+      "macro_movement": 0.4129,
+      "macro_space": 0.8781
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

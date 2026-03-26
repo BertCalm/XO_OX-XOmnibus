@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Organon",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.7
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, balanced sound. Responds expressively to velocity and modulation."
+  "description": "Interwoven and coupled, balanced sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

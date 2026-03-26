@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.72,
-        "source": "Ouroboros",
-        "target": "Origami",
-        "type": "ChaosModulation"
+        "type": "AudioToFM",
+        "engineA": "Ouroboros",
+        "engineB": "Origami"
       }
     ]
   },

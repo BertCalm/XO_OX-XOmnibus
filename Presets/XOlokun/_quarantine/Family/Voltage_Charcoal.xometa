@@ -5,7 +5,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Onset",
-        "type": "FILTER_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.71
       }
     ]

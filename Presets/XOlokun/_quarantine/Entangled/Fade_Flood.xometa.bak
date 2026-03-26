@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.464,
+        "engineA": "Orbital",
+        "engineB": "Odyssey",
+        "type": "CHAOS_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.335,
+    "brightness": 0.6,
+    "density": 0.4,
+    "movement": 0.8,
+    "space": 1.0,
+    "warmth": 0.435
+  },
+  "engines": [
+    "Odyssey",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.501,
+    "COUPLING": 0.365,
+    "MOVEMENT": 0.66,
+    "SPACE": 0.92
+  },
+  "mood": "Entangled",
+  "name": "Fade Flood",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.715,
+      "macro_coupling": 0.584,
+      "macro_movement": 0.707,
+      "macro_space": 0.316
+    },
+    "Orbital": {
+      "macro_character": 0.386,
+      "macro_coupling": 0.658,
+      "macro_movement": 0.498,
+      "macro_space": 0.203
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "odyssey",
+    "orbital"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

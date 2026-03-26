@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Floor Tom Stalk",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Ocelot"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCELOT's predator-gate threshold triggered by OBLONG's low-frequency pulses. Deep amber floor tom meets hunting-cat envelope snap.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "ocelot",
+    "beat",
+    "drum",
+    "predator"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.72,
+    "space": 0.4,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_density": 0.7,
+      "bob_warmth": 0.65,
+      "bob_groove": 0.5,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ocelot": {
+      "oct_gate": 0.6,
+      "oct_attack": 0.001,
+      "oct_decay": 0.4,
+      "oct_ratio": 4.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ocelot",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Obese",
-        "target": "Ocelot",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM",
+        "engineA": "Obese",
+        "engineB": "Ocelot"
       }
     ]
   },

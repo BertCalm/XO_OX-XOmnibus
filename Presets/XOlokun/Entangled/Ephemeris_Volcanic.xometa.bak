@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.461,
+        "engineA": "Orbital",
+        "engineB": "Obsidian",
+        "type": "pitch_follow"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Orbital × Obsidian coupling (harmonic lock). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.421,
+    "brightness": 0.439,
+    "density": 0.714,
+    "movement": 0.464,
+    "space": 0.599,
+    "warmth": 0.487
+  },
+  "engines": [
+    "Orbital",
+    "Obsidian"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Ephemeris Volcanic",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_couplingIn": 0.462,
+      "obsidian_couplingOut": 0.462,
+      "obsidian_macro1": 0.592,
+      "obsidian_macro2": 0.586,
+      "obsidian_macro3": 0.354,
+      "obsidian_macro4": 0.588
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.785,
+      "orb_brightness": 0.726,
+      "orb_couplingIn": 0.406,
+      "orb_groupEnv": 0.6,
+      "orb_harmonicAmt": 0.368,
+      "orb_macro1": 0.31,
+      "orb_macro2": 0.564,
+      "orb_macro3": 0.545,
+      "orb_macro4": 0.692,
+      "orb_phaseSpread": 0.444,
+      "orb_resonantPeak": 0.458
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "obsidian",
+    "harmonic-lock",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 110,
+  "version": "1.0.0"
+}

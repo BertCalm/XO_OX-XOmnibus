@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Orca",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.943
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, crystalline atmosphere. Let it breathe — the space is the instrument."
+  "description": "Interwoven and coupled, dark, crystalline atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

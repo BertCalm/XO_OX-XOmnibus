@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Onset",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.73
       }
     ]
@@ -63,5 +63,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "Anchored and grounding, shimmering, crystalline pad. Let it breathe — the space is the instrument.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

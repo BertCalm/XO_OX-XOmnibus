@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Owlfish",
+        "type": "FILTER_MOD",
+        "amount": 0.92
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.873,
+    "brightness": 0.876,
+    "density": 0.989,
+    "movement": 0.394,
+    "space": 0.45,
+    "warmth": 0.93
+  },
+  "engines": [
+    "Oblique",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.843,
+    "COUPLING": 0.845,
+    "MOVEMENT": 0.381,
+    "SPACE": 0.441
+  },
+  "mood": "Prism",
+  "name": "BRIGHT WARM DENSE VIOLENT P... (Oblique)",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.871,
+      "macro_coupling": 0.836,
+      "macro_movement": 0.389,
+      "macro_space": 0.442
+    },
+    "Owlfish": {
+      "macro_character": 0.816,
+      "macro_coupling": 0.855,
+      "macro_movement": 0.372,
+      "macro_space": 0.439
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

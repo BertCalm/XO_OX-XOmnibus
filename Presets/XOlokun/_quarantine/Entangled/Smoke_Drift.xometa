@@ -6,7 +6,7 @@
         "amount": 0.707,
         "engineA": "Obbligato",
         "engineB": "Ombre",
-        "type": "HARMONIC_SYNC"
+        "type": "EnvToMorph"
       }
     ]
   },

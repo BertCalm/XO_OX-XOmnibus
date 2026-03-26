@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.405
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.89,
+    "brightness": 0.053,
+    "density": 0.962,
+    "movement": 0.575,
+    "space": 0.502,
+    "warmth": 0.068
+  },
+  "engines": [
+    "Ohm",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.472,
+    "COUPLING": 0.631,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.502
+  },
+  "mood": "Prism",
+  "name": "Massive Umbra",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.472,
+      "macro_coupling": 0.631,
+      "macro_movement": 0.575,
+      "macro_space": 0.502
+    },
+    "Orphica": {
+      "macro_character": 0.918,
+      "macro_coupling": 0.557,
+      "macro_movement": 0.575,
+      "macro_space": 0.502
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

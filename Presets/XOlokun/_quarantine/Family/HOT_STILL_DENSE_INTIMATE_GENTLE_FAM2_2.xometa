@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Ottoni",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.518
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

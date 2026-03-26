@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Oceanic",
         "engineB": "Orbital",
-        "type": "LFO->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

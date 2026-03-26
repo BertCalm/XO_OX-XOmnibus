@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Flux Shadow II",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obsidian × Ole — Filter Mod coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "obsidian",
+    "ole",
+    "filter-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.108,
+    "warmth": 0.405,
+    "movement": 0.932,
+    "density": 0.612,
+    "space": 0.888,
+    "aggression": 0.592
+  },
+  "parameters": {
+    "Obsidian": {},
+    "Ole": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ole",
+        "type": "FILTER_MOD",
+        "amount": 0.967
+      }
+    ]
+  },
+  "sequencer": null
+}

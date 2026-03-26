@@ -6,7 +6,7 @@
         "amount": 0.554,
         "engineA": "Ohm",
         "engineB": "Owlfish",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

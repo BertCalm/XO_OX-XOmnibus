@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.431,
-      "destination": "ORBITAL",
-      "source": "OVERDUB",
-      "type": "FILTER_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.431,
+        "type": "AmpToFilter",
+        "engineA": "OVERDUB",
+        "engineB": "ORBITAL"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — aether, dark, cold, dense.",

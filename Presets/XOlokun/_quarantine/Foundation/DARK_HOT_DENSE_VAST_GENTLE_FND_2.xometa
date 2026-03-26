@@ -5,7 +5,7 @@
       {
         "engineA": "Overbite",
         "engineB": "Onset",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.592
       }
     ]

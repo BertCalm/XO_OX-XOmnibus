@@ -6,7 +6,7 @@
         "amount": 0.62,
         "engineA": "Oracle",
         "engineB": "Orphica",
-        "type": "AMPLITUDE_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -28,7 +28,7 @@
     "SPACE": 0.82,
     "MUTATE": 0.32
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.42,

@@ -2,19 +2,35 @@
   "schema_version": 1,
   "name": "Breach and Bloom",
   "mood": "Entangled",
-  "engines": ["Orca", "Oxbow"],
+  "engines": [
+    "Orca",
+    "Oxbow"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "ORCA's breach event (ratio 16, threshold -8dB) triggers OXBOW's entangled reverb tail via AmpToChoke coupling. Two physical timescales: the impact (ORCA's instantaneous violent sidechain displacement) and the room (OXBOW's 45-second structural reverb evolution). The most physically cinematic preset in the fleet.",
-  "tags": ["orca", "oxbow", "entangled", "breach", "reverb", "cinematic", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "orca",
+    "oxbow",
+    "entangled",
+    "breach",
+    "reverb",
+    "cinematic",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
     "MOVEMENT": 0.38,
     "COUPLING": 0.82,
     "SPACE": 0.88
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.42,

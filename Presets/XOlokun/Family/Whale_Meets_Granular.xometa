@@ -5,9 +5,9 @@
       {
         "amount": 0.12,
         "description": "Whale amplitude opens Opal grain density — as FAT swells, granular shimmer emerges",
-        "source": "Obese",
-        "target": "Opal",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Obese",
+        "engineB": "Opal"
       }
     ]
   },

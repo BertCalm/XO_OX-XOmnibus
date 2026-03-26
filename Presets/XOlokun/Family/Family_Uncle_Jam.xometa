@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.34,
-      "destination": "Ohm",
-      "source": "Obbligato",
-      "type": "AudioToFM"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.34,
+        "type": "AudioToFM",
+        "engineA": "Obbligato",
+        "engineB": "Ohm"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Breath sustains through long phrases. WIND high — the air path reverbs into wide space.",

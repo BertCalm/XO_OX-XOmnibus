@@ -6,7 +6,7 @@
         "amount": 0.699,
         "engineA": "Obscura",
         "engineB": "Orbital",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

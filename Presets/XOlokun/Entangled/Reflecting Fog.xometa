@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Octopus",
-        "type": "SPECTRAL_TRANSFER",
+        "type": "EnvToMorph",
         "amount": 0.695
       }
     ]

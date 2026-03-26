@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Oracle",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.94
       }
     ]

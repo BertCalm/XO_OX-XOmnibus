@@ -5,7 +5,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Organon",
-        "type": "FILTER_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.94
       }
     ]

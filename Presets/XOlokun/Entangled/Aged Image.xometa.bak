@@ -1,0 +1,95 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.491,
+        "description": "Osteria drives Obscura via HARMONIC_BLEND",
+        "source": "Osteria",
+        "target": "Obscura",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OBSCURA's daguerreotype silver tones OSTERIA's warmth into aged memory — the photograph of a tavern session that existed forty years ago.",
+  "dna": {
+    "aggression": 0.296,
+    "brightness": 0.357,
+    "density": 0.65,
+    "movement": 0.448,
+    "space": 0.608,
+    "warmth": 0.656
+  },
+  "engines": [
+    "Osteria",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Aged Image",
+  "parameters": {
+    "Obscura": {
+      "obscura_attack": 0.095,
+      "obscura_filterCutoff": 0.555,
+      "obscura_lfoRate": 0.0,
+      "obscura_macroCharacter": 0.0,
+      "obscura_macroCoupling": 0.057,
+      "obscura_release": 1.0,
+      "obscura_stiffness": 0.506
+    },
+    "Osteria": {
+      "osteria_attack": 0.295,
+      "osteria_bassLevel": 0.572,
+      "osteria_blendMode": 0.419,
+      "osteria_chorus": 0.193,
+      "osteria_decay": 0.361,
+      "osteria_ensWidth": 0.546,
+      "osteria_filterEnvDepth": 0.468,
+      "osteria_hall": 0.312,
+      "osteria_harmLevel": 0.51,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.694,
+      "osteria_murmur": 0.194,
+      "osteria_oceanBleed": 0.207,
+      "osteria_patina": 0.388,
+      "osteria_porto": 0.401,
+      "osteria_qBassShore": 0.218,
+      "osteria_qElastic": 0.694,
+      "osteria_qHarmShore": 0.465,
+      "osteria_qMelShore": 0.633,
+      "osteria_qMemory": 0.663,
+      "osteria_qRhythmShore": 0.351,
+      "osteria_qStretch": 0.392,
+      "osteria_qSympathy": 0.74,
+      "osteria_release": 1.39,
+      "osteria_rhythmLevel": 0.397,
+      "osteria_sessionDelay": 0.276,
+      "osteria_smoke": 0.13,
+      "osteria_sustain": 0.852,
+      "osteria_tape": 0.143,
+      "osteria_tavernMix": 0.329,
+      "osteria_tavernShore": 0.464,
+      "osteria_warmth": 0.649
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "obscura"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

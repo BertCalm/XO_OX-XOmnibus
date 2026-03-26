@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.955
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.99,
+    "brightness": 0.931,
+    "density": 0.92,
+    "movement": 0.954,
+    "space": 0.498,
+    "warmth": 0.088
+  },
+  "engines": [
+    "OddfeliX",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.51,
+    "COUPLING": 0.955,
+    "MOVEMENT": 0.954,
+    "SPACE": 0.498
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT COLD KINETIC DENSE V... (OddfeliX I)",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.51,
+      "macro_coupling": 0.955,
+      "macro_movement": 0.954,
+      "macro_space": 0.498
+    },
+    "Orbital": {
+      "macro_character": 0.495,
+      "macro_coupling": 0.946,
+      "macro_movement": 0.931,
+      "macro_space": 0.427
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

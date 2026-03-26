@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.86
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.44,
+    "brightness": 0.18,
+    "density": 0.93,
+    "movement": 0.57,
+    "space": 0.29,
+    "warmth": 0.95
+  },
+  "engines": [
+    "Overdub",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.76,
+    "COUPLING": 0.72,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.22
+  },
+  "mood": "Entangled",
+  "name": "Oxide Drift",
+  "parameters": {
+    "Osprey": {
+      "osprey_macroCharacter": 0.7,
+      "osprey_macroCoupling": 0.74,
+      "osprey_macroMovement": 0.63,
+      "osprey_macroSpace": 0.13
+    },
+    "Overdub": {
+      "macro_character": 0.82,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.47,
+      "macro_space": 0.31,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, warm bass. Sits warmly in any arrangement without fighting for space."
+}

@@ -5,9 +5,9 @@
       {
         "amount": 0.654,
         "description": "Owlfish drives OddOscar via EnvToMod",
-        "source": "Owlfish",
-        "target": "OddOscar",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Owlfish",
+        "engineB": "OddOscar"
       }
     ]
   },

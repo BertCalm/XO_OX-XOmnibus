@@ -6,7 +6,7 @@
         "amount": 0.61,
         "engineA": "Overlap",
         "engineB": "Organon",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

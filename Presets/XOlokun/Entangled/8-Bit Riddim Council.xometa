@@ -75,7 +75,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Onset",
-        "type": "Pitch->Velocity",
+        "type": "AmpToFilter",
         "amount": 0.4
       }
     ]

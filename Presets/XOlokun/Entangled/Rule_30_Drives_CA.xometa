@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT with Rule 30 (chaotic CA) on all 8 arms drives ORGANISM's CA field via AudioToFM. Rule 30 is statistically random \u2014 its audio output is maximally unpredictable, creating a constantly shifting FM excitation that keeps ORGANISM in permanent creative flux.",
+  "description": "OUTWIT with Rule 30 (chaotic CA) on all 8 arms drives ORGANISM's CA field via AudioToFM. Rule 30 is statistically random — its audio output is maximally unpredictable, creating a constantly shifting FM excitation that keeps ORGANISM in permanent creative flux.",
   "tags": [
     "entangled",
     "audio-to-fm",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -162,11 +162,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Organism",
         "type": "AudioToFM",
         "amount": 0.15,
-        "description": "OUTWIT Rule-30 chaos (8 arms) FM-drives ORGANISM \u2014 statistically random output keeps colony in permanent flux"
+        "description": "OUTWIT Rule-30 chaos (8 arms) FM-drives ORGANISM — statistically random output keeps colony in permanent flux",
+        "engineA": "Outwit",
+        "engineB": "Organism"
       }
     ]
   },

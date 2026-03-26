@@ -123,10 +123,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Onset",
-        "target": "Opal",
         "type": "AmpToFilter",
-        "amount": 0.7
+        "amount": 0.7,
+        "engineA": "Onset",
+        "engineB": "Opal"
       }
     ]
   },

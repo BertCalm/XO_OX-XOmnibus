@@ -6,7 +6,7 @@
         "amount": 0.54,
         "engineA": "Outwit",
         "engineB": "Ouroboros",
-        "type": "PITCH_SYNC"
+        "type": "PitchToPitch"
       }
     ]
   },

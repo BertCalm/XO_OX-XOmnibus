@@ -6,23 +6,23 @@
         "amount": 0.683,
         "engineA": "Orbital",
         "engineB": "Overbite",
-        "type": "rhythm_sync"
+        "type": "RhythmToBlend"
       },
       {
         "amount": 0.737,
         "engineA": "Orbital",
         "engineB": "Obese",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.366,
         "engineA": "Overbite",
         "engineB": "Obese",
-        "type": "rhythm_sync"
+        "type": "RhythmToBlend"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OBESE velvet compression wraps ORBITAL's harmonic resonance; OVERBITE clench punctuates every cycle. Plush ferocity.",
   "dna": {

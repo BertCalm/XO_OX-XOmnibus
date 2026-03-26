@@ -21,7 +21,7 @@
     "GLOW",
     "AIR"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "OddOscar",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.103
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, crystalline, ethereal sound. Responds expressively to velocity and modulation."
+  "description": "Interwoven and coupled, crystalline, ethereal sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

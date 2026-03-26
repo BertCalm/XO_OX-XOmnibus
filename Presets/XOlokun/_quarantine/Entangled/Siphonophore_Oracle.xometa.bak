@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.68
+      }
+    ]
+  },
+  "description": "Envelope linking: ORPHICA's sustain whisper triggers ORACLE's prophetic glissando arc.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.86,
+    "density": 0.148,
+    "movement": 0.54,
+    "space": 1.0,
+    "warmth": 0.37
+  },
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "COUPLING": 0.68,
+    "MOVEMENT": 0.54,
+    "SPACE": 0.75
+  },
+  "mood": "Entangled",
+  "name": "Siphonophore Oracle",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.54,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.59,
+      "macro_space": 0.59
+    },
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.54,
+      "macro_space": 0.75
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "orphica",
+    "oracle",
+    "envelope",
+    "siphonophore"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -6,7 +6,7 @@
         "amount": 0.669,
         "engineA": "Owlfish",
         "engineB": "Orca",
-        "type": "TEXTURE_WEAVE"
+        "type": "EnvToMorph"
       }
     ]
   },

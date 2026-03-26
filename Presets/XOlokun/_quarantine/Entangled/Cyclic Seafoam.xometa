@@ -6,7 +6,7 @@
         "amount": 0.58,
         "engineA": "Ouroboros",
         "engineB": "Orphica",
-        "type": "FREQUENCY_SHIFT"
+        "type": "AudioToFM"
       }
     ]
   },

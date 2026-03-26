@@ -6,11 +6,11 @@
         "amount": 0.79,
         "engineA": "Obbligato",
         "engineB": "Obscura",
-        "type": "Pitch->Mod"
+        "type": "PitchToPitch"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Coral wind on silver plate — OBBLIGATO's dual voice exposed through OBSCURA's daguerreotype age.",
   "dna": {

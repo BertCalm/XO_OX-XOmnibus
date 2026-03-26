@@ -6,7 +6,7 @@
         "amount": 0.77,
         "engineA": "Overlap",
         "engineB": "Organon",
-        "type": "ENVELOPE_LINK"
+        "type": "EnvToDecay"
       }
     ]
   },

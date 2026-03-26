@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Obese",
-        "target": "Octopus",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend",
+        "engineA": "Obese",
+        "engineB": "Octopus"
       }
     ]
   },

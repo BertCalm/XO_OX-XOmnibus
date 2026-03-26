@@ -6,11 +6,11 @@
         "amount": 0.6,
         "engineA": "Origami",
         "engineB": "Oracle",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Origami × Oracle coupling (rhythm sync). Stub preset — sound-design pass pending.",
   "dna": {

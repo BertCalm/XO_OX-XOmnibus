@@ -6,11 +6,11 @@
         "amount": 0.843,
         "engineA": "Orbital",
         "engineB": "Orphica",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "ORBITAL phase spread plucks ORPHICA gossamer filaments. Aerial microsound arc.",
   "dna": {

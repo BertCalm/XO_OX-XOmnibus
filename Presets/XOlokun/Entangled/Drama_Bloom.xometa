@@ -6,7 +6,7 @@
         "amount": 0.683,
         "engineA": "Overlap",
         "engineB": "Ole",
-        "type": "AMP_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

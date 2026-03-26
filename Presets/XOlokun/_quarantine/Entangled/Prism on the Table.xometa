@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Osteria",
         "engineB": "Optic",
-        "type": "Pitch->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

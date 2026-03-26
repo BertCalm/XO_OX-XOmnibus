@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.497,
-      "destination": "OBESE",
-      "source": "OVERLAP",
-      "type": "HARMONIC_FOLD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.497,
+        "type": "EnvToMorph",
+        "engineA": "OVERLAP",
+        "engineB": "OBESE"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, bright, cold, sparse.",

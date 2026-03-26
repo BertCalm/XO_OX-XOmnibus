@@ -12,7 +12,7 @@
         "amount": 0.55,
         "engineA": "Osprey",
         "engineB": "Osteria",
-        "type": "Audio->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Violent Omen Blend",
+  "mood": "Family",
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "family"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.82,
+      "macro_movement": 0.88,
+      "macro_coupling": 0.61,
+      "macro_space": 0.49
+    },
+    "Onset": {
+      "macro_character": 0.68,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.71,
+      "macro_space": 0.27
+    }
+  },
+  "coupling": {
+    "type": "FILTER_SHARE",
+    "source": "ORACLE",
+    "target": "ONSET",
+    "amount": 0.71
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.097,
+    "movement": 0.503,
+    "density": 0.903,
+    "space": 0.055,
+    "aggression": 0.951
+  },
+  "tier": "awakening"
+}

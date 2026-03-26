@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.6026
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1174,
+    "brightness": 0.8795,
+    "density": 0.3769,
+    "movement": 0.4447,
+    "space": 0.0703,
+    "warmth": 0.9052
+  },
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8621,
+    "COUPLING": 0.6026,
+    "MOVEMENT": 0.4389,
+    "SPACE": 0.0703
+  },
+  "mood": "Aether",
+  "name": "Golden Wave",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.8573,
+      "macro_coupling": 0.3634,
+      "macro_movement": 0.4583,
+      "macro_space": 0.0573
+    },
+    "Oracle": {
+      "macro_character": 0.8669,
+      "macro_coupling": 0.3609,
+      "macro_movement": 0.4195,
+      "macro_space": 0.0464
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "gentle",
+    "celestial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

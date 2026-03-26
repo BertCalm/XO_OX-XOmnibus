@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.687,
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "OBESE saturation clips OPTIC photon luminance. Overdriven light scan.",
+  "dna": {
+    "aggression": 0.549,
+    "brightness": 0.642,
+    "density": 0.598,
+    "movement": 0.692,
+    "space": 0.498,
+    "warmth": 0.502
+  },
+  "engines": [
+    "Obese",
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Heft Beam",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.087,
+      "fat_compress": 0.454,
+      "fat_couplingIn": 0.486,
+      "fat_couplingOut": 0.659,
+      "fat_digital": 0.887,
+      "fat_macro1": 0.445,
+      "fat_macro2": 0.406,
+      "fat_macro3": 0.326,
+      "fat_macro4": 0.632,
+      "fat_mojoCtrl": 0.674,
+      "fat_outputLevel": 0.803,
+      "fat_outputPan": 0.001,
+      "fat_satDrive": 0.8
+    },
+    "Optic": {
+      "optic_couplingIn": 0.627,
+      "optic_couplingOut": 0.471,
+      "optic_macro1": 0.543,
+      "optic_macro2": 0.45,
+      "optic_macro3": 0.38,
+      "optic_macro4": 0.558,
+      "optic_outputLevel": 0.88,
+      "optic_outputPan": -0.027
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "optic",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 130,
+  "version": "1.0.0"
+}

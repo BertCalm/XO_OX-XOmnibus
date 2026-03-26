@@ -5,9 +5,9 @@
       {
         "amount": 0.452,
         "description": "Osteria drives Ouroboros via HARMONIC_BLEND",
-        "source": "Osteria",
-        "target": "Ouroboros",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "Ouroboros"
       }
     ]
   },

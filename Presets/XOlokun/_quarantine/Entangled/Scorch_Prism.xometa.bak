@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ohm",
+        "type": "SPECTRAL_BRAID",
+        "amount": 0.79
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.74,
+    "density": 0.47,
+    "movement": 0.46,
+    "space": 0.47,
+    "warmth": 0.91
+  },
+  "engines": [
+    "Ottoni",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.76,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.46,
+    "SPACE": 0.4
+  },
+  "mood": "Entangled",
+  "name": "Scorch Prism",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.47,
+      "macro_space": 0.44
+    },
+    "Ottoni": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.46,
+      "macro_space": 0.35
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

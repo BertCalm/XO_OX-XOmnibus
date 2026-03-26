@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Ouroboros",
         "engineB": "Ole",
-        "type": "AMPLITUDE_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

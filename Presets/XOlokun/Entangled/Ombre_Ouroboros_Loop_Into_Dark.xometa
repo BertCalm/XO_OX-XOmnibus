@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Ombre",
-        "target": "Ouroboros",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM",
+        "engineA": "Ombre",
+        "engineB": "Ouroboros"
       }
     ]
   },

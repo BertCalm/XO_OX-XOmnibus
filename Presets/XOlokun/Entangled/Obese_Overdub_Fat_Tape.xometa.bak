@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overdub",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.75
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.3,
+    "density": 0.88,
+    "movement": 0.6,
+    "space": 0.4,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Obese",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.3
+  },
+  "mood": "Entangled",
+  "name": "Fat Tape",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.55,
+      "macro_space": 0.3
+    },
+    "Overdub": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.7,
+      "macro_space": 0.55,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "obese",
+    "overdub",
+    "bass",
+    "tape",
+    "fat"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, warm, dense bass. Drives through the mix with presence and bite."
+}

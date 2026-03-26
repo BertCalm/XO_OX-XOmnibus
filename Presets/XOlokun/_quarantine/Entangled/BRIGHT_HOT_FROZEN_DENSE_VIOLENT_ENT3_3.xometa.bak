@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.8497
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9491,
+    "brightness": 0.9123,
+    "density": 0.9513,
+    "movement": 0.0721,
+    "space": 0.5884,
+    "warmth": 0.9464
+  },
+  "engines": [
+    "Obsidian",
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8634,
+    "COUPLING": 0.9154,
+    "MOVEMENT": 0.0668,
+    "SPACE": 0.2696
+  },
+  "mood": "Entangled",
+  "name": "Sunrise Titan 2",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.9427,
+      "macro_coupling": 0.9051,
+      "macro_movement": 0.0697,
+      "macro_space": 0.3626
+    },
+    "Organon": {
+      "macro_character": 0.784,
+      "macro_coupling": 0.9258,
+      "macro_movement": 0.0639,
+      "macro_space": 0.1766
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "violent",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

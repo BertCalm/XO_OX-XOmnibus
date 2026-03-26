@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9438,
-        "source": "Ouroboros",
-        "target": "Orca",
-        "type": "FORMANT_BRIDGE"
+        "type": "EnvToMorph",
+        "engineA": "Ouroboros",
+        "engineB": "Orca"
       }
     ]
   },

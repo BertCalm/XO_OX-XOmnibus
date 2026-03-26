@@ -1,0 +1,92 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engine": "Overbite",
+        "type": "Harmonic"
+      },
+      {
+        "engine": "Obese",
+        "type": "Spectral"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Cinquefoil companion — warm mid-range presence that supports lead engines.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.35,
+    "space": 0.45,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Family",
+  "name": "Thread Companion",
+  "parameters": {
+    "Overlap": {
+      "olap_knot": 3,
+      "olap_tangleDepth": 0.38,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 0.5,
+      "olap_entrain": 0.25,
+      "olap_spread": 0.55,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 11.0,
+      "olap_dampening": 0.55,
+      "olap_feedback": 0.58,
+      "olap_brightness": 0.42,
+      "olap_bioluminescence": 0.25,
+      "olap_current": 0.08,
+      "olap_currentRate": 0.02,
+      "olap_attack": 0.03,
+      "olap_decay": 1.3,
+      "olap_sustain": 0.7,
+      "olap_release": 2.5,
+      "olap_filterCutoff": 4500.0,
+      "olap_filterRes": 0.12,
+      "olap_filterEnvAmt": 0.18,
+      "olap_filterEnvDecay": 0.6,
+      "olap_lfo1Rate": 0.25,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.1,
+      "olap_lfo1Dest": 0,
+      "olap_lfo2Rate": 0.05,
+      "olap_lfo2Shape": 1,
+      "olap_lfo2Depth": 0.08,
+      "olap_lfo2Dest": 2,
+      "olap_chorusMix": 0.2,
+      "olap_chorusRate": 0.08,
+      "olap_diffusion": 0.3,
+      "olap_macroKnot": 0.0,
+      "olap_macroPulse": 0.0,
+      "olap_macroEntrain": 0.0,
+      "olap_macroBloom": 0.0,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.5,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "companion",
+    "warm",
+    "support",
+    "mid-range"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

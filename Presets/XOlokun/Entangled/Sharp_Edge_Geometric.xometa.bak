@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.651,
+        "engineA": "Obsidian",
+        "engineB": "Origami",
+        "type": "CV->Depth"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Sharp facets fold. Obsidian geometry meets paper crease mathematics.",
+  "dna": {
+    "aggression": 0.306,
+    "brightness": 0.792,
+    "density": 0.504,
+    "movement": 0.44,
+    "space": 0.563,
+    "warmth": 0.279
+  },
+  "engines": [
+    "Obsidian",
+    "Origami"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Sharp Edge Geometric",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.085,
+      "obsidian_brightness": 0.842,
+      "obsidian_density": 0.533,
+      "obsidian_level": 0.809,
+      "obsidian_movement": 0.331,
+      "obsidian_space": 0.53,
+      "obsidian_warmth": 0.157
+    },
+    "Origami": {
+      "origami_aggression": 0.581,
+      "origami_brightness": 0.687,
+      "origami_density": 0.615,
+      "origami_level": 0.871,
+      "origami_movement": 0.637,
+      "origami_space": 0.563,
+      "origami_warmth": 0.403
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "origami",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

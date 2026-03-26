@@ -6,7 +6,7 @@
         "amount": 0.836,
         "engineA": "Orphica",
         "engineB": "Ottoni",
-        "type": "Pitch->Mod"
+        "type": "PitchToPitch"
       }
     ]
   },

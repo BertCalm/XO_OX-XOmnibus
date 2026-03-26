@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -143,11 +143,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "EnvToMorph",
         "amount": 0.18,
-        "description": "OUTWIT high-synapse inter-arm energy drives rapid OPAL grain morph micro-variations"
+        "description": "OUTWIT high-synapse inter-arm energy drives rapid OPAL grain morph micro-variations",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Algorithm Migration",
   "mood": "Entangled",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "XOpcode with SpectralFingerprint migration active — the FM spectrum broadcasting its mathematical fingerprint into the FUSION quad. Series algorithm, moderate migration, receives spectral data from coupled engines.",
-  "tags": ["fm", "dx7", "coupling", "migration", "fusion-quad", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "fm",
+    "dx7",
+    "coupling",
+    "migration",
+    "fusion-quad",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

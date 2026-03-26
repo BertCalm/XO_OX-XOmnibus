@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.594,
+        "engineA": "Outwit",
+        "engineB": "Ocelot",
+        "type": "AMP_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OCELOT leap transient triggers OUTWIT rule mutation — the hunt reshapes the automata",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.625,
+    "density": 0.6,
+    "movement": 0.825,
+    "space": 0.5,
+    "warmth": 0.475
+  },
+  "engines": [
+    "Outwit",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Signal Cell",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.023,
+      "owit_ampRelease": 0.409,
+      "owit_arms": 5,
+      "owit_cellSize": 0.288,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.701,
+      "owit_density": 0.628,
+      "owit_evolveRate": 0.666,
+      "owit_filterCutoff": 0.604,
+      "owit_filterReso": 0.272,
+      "owit_mutateProb": 0.095,
+      "owit_outputLevel": 0.717,
+      "owit_pitchSpread": 0.434,
+      "owit_rule": 30
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "ocelot",
+    "cellular-automata",
+    "wolfram"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.622,
-      "destination": "OMBRE",
-      "source": "OSTERIA",
-      "type": "RESONANCE_SHARE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.622,
+        "type": "FilterToFilter",
+        "engineA": "OSTERIA",
+        "engineB": "OMBRE"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, bright, warm, vast.",

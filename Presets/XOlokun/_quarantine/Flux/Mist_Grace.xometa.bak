@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.948
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.052,
+    "brightness": 0.94,
+    "density": 0.032,
+    "movement": 0.539,
+    "space": 0.615,
+    "warmth": 0.557
+  },
+  "engines": [
+    "Onset",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.748,
+    "SPACE": 0.463,
+    "PUNCH": 0.539,
+    "MUTATE": 0.615
+  },
+  "mood": "Flux",
+  "name": "Mist Grace",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.748,
+      "macro_coupling": 0.463,
+      "macro_movement": 0.539,
+      "macro_space": 0.615
+    },
+    "Osteria": {
+      "macro_character": 0.619,
+      "macro_coupling": 0.594,
+      "macro_movement": 0.619,
+      "macro_space": 0.53
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

@@ -6,7 +6,7 @@
         "amount": 0.498,
         "engineA": "Obsidian",
         "engineB": "Orphica",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer"
       }
     ]
   },

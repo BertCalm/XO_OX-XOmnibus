@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.044,
@@ -42,7 +42,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Obese",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.918
       }
     ]

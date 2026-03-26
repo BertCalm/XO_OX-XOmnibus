@@ -8,7 +8,7 @@
         "sourceParam": "opal_grainDensity",
         "targetEngine": "Overlap",
         "targetParam": "olap_diffusion",
-        "type": "Additive"
+        "type": "EnvToMorph"
       }
     ]
   },

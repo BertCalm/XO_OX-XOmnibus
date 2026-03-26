@@ -59,7 +59,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Oblong",
-        "type": "Env->Character",
+        "type": "EnvToMorph",
         "amount": 0.5
       }
     ]

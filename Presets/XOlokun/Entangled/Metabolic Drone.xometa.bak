@@ -1,0 +1,84 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.634,
+        "description": "Owlfish drives Organon via RhythmToBlend",
+        "source": "Owlfish",
+        "target": "Organon",
+        "type": "RhythmToBlend"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "ORGANON's variational metabolism drives OWLFISH's drone evolution — the organism that tunes itself, the oscillator that breathes.",
+  "dna": {
+    "aggression": 0.467,
+    "brightness": 0.432,
+    "density": 0.818,
+    "movement": 0.458,
+    "space": 0.412,
+    "warmth": 0.674
+  },
+  "engines": [
+    "Owlfish",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Metabolic Drone",
+  "parameters": {
+    "Organon": {
+      "organon_attack": 0.077,
+      "organon_filterCutoff": 0.55,
+      "organon_lfoRate": 0.052,
+      "organon_macroCharacter": 0.103,
+      "organon_macroCoupling": 0.049,
+      "organon_metabolicRate": 0.427,
+      "organon_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.215,
+      "owl_ampAttack": 0.235,
+      "owl_ampDecay": 0.941,
+      "owl_ampRelease": 1.76,
+      "owl_ampSustain": 0.576,
+      "owl_envDepth": 0.224,
+      "owl_filterCutoff": 0.388,
+      "owl_filterRes": 0.673,
+      "owl_hall": 0.35,
+      "owl_lfoDepth": 0.1,
+      "owl_lfoRate": 0.074,
+      "owl_lfoShape": 0.786,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.6,
+      "owl_mixturSpread": 0.681,
+      "owl_oscLevel": 0.886,
+      "owl_oscPitch": 0.508,
+      "owl_resonantFeedback": 0.512,
+      "owl_resonantPitch": 0.336,
+      "owl_shimmer": 0.2,
+      "owl_subLevel": 0.223
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "organon"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

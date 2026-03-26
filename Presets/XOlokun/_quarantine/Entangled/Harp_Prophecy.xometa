@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Oracle",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.68
       }
     ]
@@ -60,5 +60,6 @@
     "prophecy"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

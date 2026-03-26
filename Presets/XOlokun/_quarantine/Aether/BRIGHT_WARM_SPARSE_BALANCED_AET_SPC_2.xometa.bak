@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.64
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.944,
+    "brightness": 0.925,
+    "density": 0.077,
+    "movement": 0.37,
+    "space": 0.545,
+    "warmth": 0.888
+  },
+  "engines": [
+    "OddfeliX",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.907,
+    "COUPLING": 0.829,
+    "MOVEMENT": 0.37,
+    "SPACE": 0.545
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM SPARSE BALANCED... (OddfeliX)",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.907,
+      "macro_coupling": 0.829,
+      "macro_movement": 0.37,
+      "macro_space": 0.545
+    },
+    "Origami": {
+      "macro_character": 0.893,
+      "macro_coupling": 0.849,
+      "macro_movement": 0.391,
+      "macro_space": 0.52
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "warm"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ouroboros",
+        "type": "FILTER_MOD",
+        "amount": 0.644
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.066,
+    "density": 0.034,
+    "movement": 0.057,
+    "space": 0.494,
+    "warmth": 0.044
+  },
+  "engines": [
+    "Overworld",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.292,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.057,
+    "SPACE": 0.494
+  },
+  "mood": "Flux",
+  "name": "Flux Force 2",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.555,
+      "macro_coupling": 0.727,
+      "macro_movement": 0.046,
+      "macro_space": 0.529
+    },
+    "Overworld": {
+      "macro_character": 0.664,
+      "macro_coupling": 0.858,
+      "macro_movement": 0.064,
+      "macro_space": 0.532
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "cold",
+    "sparse",
+    "imperceptible-morph"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

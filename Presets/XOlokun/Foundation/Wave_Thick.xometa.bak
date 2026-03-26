@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.799
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.894,
+    "brightness": 0.095,
+    "density": 0.942,
+    "movement": 0.444,
+    "space": 0.125,
+    "warmth": 0.473
+  },
+  "engines": [
+    "Oblong",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.378,
+    "COUPLING": 0.366,
+    "MOVEMENT": 0.833,
+    "SPACE": 0.665
+  },
+  "mood": "Foundation",
+  "name": "Wave Thick",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.659,
+      "macro_coupling": 0.346,
+      "macro_movement": 0.864,
+      "macro_space": 0.802,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overdub": {
+      "macro_character": 0.235,
+      "macro_coupling": 0.717,
+      "macro_movement": 0.123,
+      "macro_space": 0.626,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "dense",
+    "intimate",
+    "violent",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, dark, dense bass. Drives through the mix with presence and bite."
+}

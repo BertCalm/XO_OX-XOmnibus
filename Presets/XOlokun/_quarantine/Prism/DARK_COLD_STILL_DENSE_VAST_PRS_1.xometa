@@ -5,7 +5,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Oracle",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.621
       }
     ]

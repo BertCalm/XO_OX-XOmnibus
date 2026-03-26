@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Optic",
-        "type": "RHYTHM_GATE",
+        "type": "AmpToChoke",
         "amount": 0.83
       }
     ]

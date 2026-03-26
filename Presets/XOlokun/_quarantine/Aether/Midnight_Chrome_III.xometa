@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Oceanic",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.871
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

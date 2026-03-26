@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Oblong",
-        "target": "Oblique",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Oblong",
+        "engineB": "Oblique"
       }
     ]
   },

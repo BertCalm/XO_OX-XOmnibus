@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "source": "Ombre",
+        "target": "Ocelot",
+        "type": "AMPLITUDE_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Rosette patterns dissolve into shadow at the golden hour — predator camouflage shifting from biome to darkness.",
+  "dna": {
+    "aggression": 0.307,
+    "brightness": 0.535,
+    "density": 0.476,
+    "movement": 0.654,
+    "space": 0.48,
+    "warmth": 0.606
+  },
+  "engines": [
+    "Ombre",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Spotted Dusk",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_filterCutoff": 4949.3,
+      "ocelot_level": 0.655
+    },
+    "Ombre": {
+      "ombre_ampAttack": 0.141,
+      "ombre_ampDecay": 0.396,
+      "ombre_ampRelease": 1.321,
+      "ombre_ampSustain": 0.643,
+      "ombre_blend": 0.339,
+      "ombre_crossfadeRate": 0.459,
+      "ombre_duskPosition": 0.664,
+      "ombre_filterCutoff": 3977.6,
+      "ombre_filterReso": 0.494,
+      "ombre_forgetRate": 0.561,
+      "ombre_level": 0.723,
+      "ombre_lfo1Depth": 0.337,
+      "ombre_lfo1Rate": 0.105,
+      "ombre_lfo2Depth": 0.128,
+      "ombre_lfo2Rate": 0.732,
+      "ombre_memoryDepth": 0.51,
+      "ombre_modAttack": 0.019,
+      "ombre_modDecay": 0.525,
+      "ombre_modRelease": 1.194,
+      "ombre_modSustain": 0.616,
+      "ombre_narrativeA": 0.837,
+      "ombre_narrativeB": 0.394,
+      "ombre_reverbDamp": 0.446,
+      "ombre_reverbSize": 0.507,
+      "ombre_shadowAmount": 0.778,
+      "ombre_spaceMix": 0.749,
+      "ombre_toneA": 7242.8,
+      "ombre_toneB": 812.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "ocelot",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

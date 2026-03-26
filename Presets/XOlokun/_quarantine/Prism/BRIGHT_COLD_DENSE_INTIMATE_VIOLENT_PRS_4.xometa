@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Optic",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.899
       }
     ]

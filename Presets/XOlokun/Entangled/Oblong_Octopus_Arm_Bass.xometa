@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Oblong",
-        "target": "Octopus",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Oblong",
+        "engineB": "Octopus"
       }
     ]
   },

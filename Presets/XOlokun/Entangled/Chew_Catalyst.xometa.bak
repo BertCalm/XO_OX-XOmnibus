@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.68,
+        "engineA": "Overbite",
+        "engineB": "Organon",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "OVERBITE gnaw feeds ORGANON metabolic enzyme. Living bite, organic density.",
+  "dna": {
+    "aggression": 0.558,
+    "brightness": 0.5,
+    "density": 0.711,
+    "movement": 0.616,
+    "space": 0.485,
+    "warmth": 0.54
+  },
+  "engines": [
+    "Overbite",
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Chew Catalyst",
+  "parameters": {
+    "Organon": {
+      "organon_couplingIn": 0.521,
+      "organon_couplingOut": 0.657,
+      "organon_macro1": 0.614,
+      "organon_macro2": 0.369,
+      "organon_macro3": 0.336,
+      "organon_macro4": 0.689,
+      "organon_outputLevel": 0.817,
+      "organon_outputPan": -0.037
+    },
+    "Overbite": {
+      "poss_gnashAmount": 0.484,
+      "poss_macroBelly": 0.667,
+      "poss_macroBite": 0.546,
+      "poss_macroScurry": 0.676,
+      "poss_macroTrash": 0.363,
+      "poss_level": 0.832,
+      "poss_pan": 0.03
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "overbite",
+    "organon",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
+}

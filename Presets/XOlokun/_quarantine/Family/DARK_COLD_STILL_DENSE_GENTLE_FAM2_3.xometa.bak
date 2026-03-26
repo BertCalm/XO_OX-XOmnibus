@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.448
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.023,
+    "density": 0.876,
+    "movement": 0.021,
+    "space": 0.583,
+    "warmth": 0.041
+  },
+  "engines": [
+    "Osprey",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.032,
+    "COUPLING": 0.448,
+    "MOVEMENT": 0.021,
+    "SPACE": 0.583
+  },
+  "mood": "Family",
+  "name": "DARK COLD STILL DENSE GENTL... (Osprey I)",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.042,
+      "macro_coupling": 0.41,
+      "macro_movement": 0.02,
+      "macro_space": 0.588
+    },
+    "Osprey": {
+      "macro_character": 0.032,
+      "macro_coupling": 0.448,
+      "macro_movement": 0.021,
+      "macro_space": 0.583
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

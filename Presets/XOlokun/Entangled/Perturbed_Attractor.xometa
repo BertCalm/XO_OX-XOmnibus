@@ -5,9 +5,9 @@
       {
         "amount": 0.18,
         "description": "Onset velocity output perturbs Ouroboros attractor trajectory — drum hits push the chaos",
-        "source": "Onset",
-        "target": "Ouroboros",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Onset",
+        "engineB": "Ouroboros"
       }
     ]
   },

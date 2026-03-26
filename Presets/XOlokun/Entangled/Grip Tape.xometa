@@ -7,7 +7,7 @@
         "amount": 0.74,
         "engineA": "Overbite",
         "engineB": "Overdub",
-        "type": "Amp->Amp"
+        "type": "AmpToFilter"
       }
     ],
     "type": "Amp->Amp"

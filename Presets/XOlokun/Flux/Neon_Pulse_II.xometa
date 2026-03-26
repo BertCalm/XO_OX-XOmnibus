@@ -5,7 +5,7 @@
       {
         "engineA": "Organon",
         "engineB": "Overdub",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.813
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, shimmering, dense texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Restless and kinetic, shimmering, dense texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

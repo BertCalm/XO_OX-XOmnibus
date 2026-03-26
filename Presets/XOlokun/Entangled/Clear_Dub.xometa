@@ -6,7 +6,7 @@
         "amount": 0.756,
         "engineA": "Obsidian",
         "engineB": "Overdub",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter"
       }
     ]
   },

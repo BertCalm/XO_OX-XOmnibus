@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.557,
@@ -42,7 +42,7 @@
       {
         "engineA": "Optic",
         "engineB": "Ottoni",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.559
       }
     ]

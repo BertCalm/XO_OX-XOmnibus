@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT ink-cloud envelope triggers OPAL grain morph \u2014 the octopus ejects ink bursts that scatter the grain cloud into new positions. High inkCloud setting means large morph sweeps.",
+  "description": "OUTWIT ink-cloud envelope triggers OPAL grain morph — the octopus ejects ink bursts that scatter the grain cloud into new positions. High inkCloud setting means large morph sweeps.",
   "tags": [
     "entangled",
     "env-to-morph",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -143,11 +143,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "EnvToMorph",
         "amount": 0.16,
-        "description": "OUTWIT ink-cloud envelope drives OPAL grain morph \u2014 ink bursts scatter the grain cloud"
+        "description": "OUTWIT ink-cloud envelope drives OPAL grain morph — ink bursts scatter the grain cloud",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

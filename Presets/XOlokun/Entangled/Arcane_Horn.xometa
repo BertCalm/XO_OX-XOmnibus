@@ -6,7 +6,7 @@
         "amount": 0.56,
         "engineA": "Oracle",
         "engineB": "Ottoni",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch"
       }
     ]
   },

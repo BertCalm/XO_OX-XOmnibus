@@ -6,11 +6,11 @@
         "amount": 0.858,
         "engineA": "Obese",
         "engineB": "Osteria",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OBESE woolly warmth ferments in OSTERIA cask. Dense slow vintage heat.",
   "dna": {

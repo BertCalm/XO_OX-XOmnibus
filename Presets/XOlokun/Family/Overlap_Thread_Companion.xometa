@@ -4,11 +4,11 @@
     "pairs": [
       {
         "engine": "Overbite",
-        "type": "Harmonic"
+        "type": "EnvToMorph"
       },
       {
         "engine": "Obese",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },

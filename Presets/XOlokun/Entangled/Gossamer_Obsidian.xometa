@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7002,
-        "source": "Overworld",
-        "target": "Ohm",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Overworld",
+        "engineB": "Ohm"
       }
     ]
   },

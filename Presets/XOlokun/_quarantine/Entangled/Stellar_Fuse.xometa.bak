@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.63
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.81,
+    "density": 0.41,
+    "movement": 0.42,
+    "space": 0.51,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Ottoni",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.54,
+    "MOVEMENT": 0.52,
+    "SPACE": 0.38
+  },
+  "mood": "Entangled",
+  "name": "Stellar Fuse",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.59,
+      "macro_movement": 0.47,
+      "macro_space": 0.38
+    },
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.49,
+      "macro_movement": 0.56,
+      "macro_space": 0.37
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

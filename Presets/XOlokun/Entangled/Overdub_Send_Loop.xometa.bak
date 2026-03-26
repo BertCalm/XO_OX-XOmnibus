@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Send Loop",
+  "mood": "Entangled",
+  "engines": ["Overdub"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High send level creates a permanent coupling loop — whatever Overdub plays, the paired engine echoes.",
+  "tags": ["entangled", "send", "loop", "echo", "coupled", "call-response"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-17",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.35,
+      "dub_noiseLevel": 0.02,
+      "dub_drift": 0.25,
+      "dub_level": 0.82,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 2800,
+      "dub_filterReso": 0.38,
+      "dub_filterEnvAmt": 0.42,
+      "dub_attack": 0.008,
+      "dub_decay": 0.45,
+      "dub_sustain": 0.65,
+      "dub_release": 0.85,
+      "dub_pitchEnvDepth": 0.08,
+      "dub_pitchEnvDecay": 0.12,
+      "dub_lfoRate": 0.55,
+      "dub_lfoDepth": 0.12,
+      "dub_lfoDest": 0,
+      "dub_sendLevel": 0.88,
+      "dub_returnLevel": 0.82,
+      "dub_dryLevel": 0.7,
+      "dub_driveAmount": 0.28,
+      "dub_delayTime": 0.48,
+      "dub_delayFeedback": 0.52,
+      "dub_delayWear": 0.65,
+      "dub_delayWow": 0.32,
+      "dub_delayMix": 0.45,
+      "dub_reverbSize": 0.55,
+      "dub_reverbDamp": 0.45,
+      "dub_reverbMix": 0.42,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.18,
+      "dub_polyphony": 1
+    }
+  },
+  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.18, "COUPLING": 0.88, "SPACE": 0.62},
+  "coupling": {
+    "pairs": [
+      {"source": "Overdub", "target": "Orbital", "type": "SendFeed", "intensity": 0.82},
+      {"source": "Orbital", "target": "Overdub", "type": "PitchMod", "intensity": 0.35}
+    ]
+  },
+  "dna": {"brightness": 0.38, "warmth": 0.8, "movement": 0.25, "density": 0.58, "space": 0.65, "aggression": 0.3}
+}

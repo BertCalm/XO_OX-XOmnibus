@@ -8,7 +8,7 @@
         "engineA": "Oracle",
         "engineB": "Overworld",
         "notes": "Oracle maqam index modulates Overworld pitch quantization grid — only maqam-approved notes pass through to the ERA triangle chips",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.42,
@@ -16,7 +16,7 @@
         "engineA": "Oracle",
         "engineB": "Overworld",
         "notes": "Oracle stochastic barrier probability modulates ow_eraPortamento — higher barrier = slower ERA glide between chip voices, oracle pacing controls chip responsiveness",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

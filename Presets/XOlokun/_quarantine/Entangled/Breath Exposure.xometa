@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Obbligato",
-        "type": "SPATIAL_BLEND",
+        "type": "AudioToWavetable",
         "amount": 0.695
       }
     ]
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

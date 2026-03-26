@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Oceanic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6747
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.315,
+    "brightness": 0.9758,
+    "density": 0.917,
+    "movement": 0.5214,
+    "space": 0.0508,
+    "warmth": 0.0893
+  },
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8982,
+    "COUPLING": 0.1811,
+    "MOVEMENT": 0.5216,
+    "SPACE": 0.1897
+  },
+  "mood": "Flux",
+  "name": "Quartz Saturated",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.8352,
+      "macro_coupling": 0.3929,
+      "macro_movement": 0.4944,
+      "macro_space": 0.1781
+    },
+    "Oracle": {
+      "macro_character": 0.8982,
+      "macro_coupling": 0.1811,
+      "macro_movement": 0.5216,
+      "macro_space": 0.1897
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "low-warmth",
+    "high-density",
+    "low-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

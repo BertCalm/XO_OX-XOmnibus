@@ -5,9 +5,9 @@
       {
         "amount": 0.847,
         "description": "Owlfish drives Ocelot via TimbreShare",
-        "source": "Owlfish",
-        "target": "Ocelot",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Owlfish",
+        "engineB": "Ocelot"
       }
     ]
   },

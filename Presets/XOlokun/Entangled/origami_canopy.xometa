@@ -6,7 +6,7 @@
         "amount": 0.77,
         "engineA": "Overlap",
         "engineB": "Origami",
-        "type": "SPATIAL_COUPLE"
+        "type": "AudioToWavetable"
       }
     ]
   },

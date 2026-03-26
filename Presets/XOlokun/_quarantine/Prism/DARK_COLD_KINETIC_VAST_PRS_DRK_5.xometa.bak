@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ohm",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6537
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5191,
+    "brightness": 0.1002,
+    "density": 0.5019,
+    "movement": 0.9563,
+    "space": 0.9697,
+    "warmth": 0.0874
+  },
+  "engines": [
+    "Oracle",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3033,
+    "COUPLING": 0.5019,
+    "MOVEMENT": 0.9563,
+    "SPACE": 0.9697
+  },
+  "mood": "Prism",
+  "name": "Flux Vast",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.2831,
+      "macro_coupling": 0.5232,
+      "macro_movement": 0.9673,
+      "macro_space": 0.9714
+    },
+    "Oracle": {
+      "macro_character": 0.3033,
+      "macro_coupling": 0.5019,
+      "macro_movement": 0.9563,
+      "macro_space": 0.9697
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Oblong",
-        "type": "RHYTHMIC_SYNC",
+        "type": "RhythmToBlend",
         "amount": 0.7
       }
     ]

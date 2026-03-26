@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Odyssey",
-        "type": "FILTER_COUPLING",
+        "type": "FilterToFilter",
         "amount": 0.625
       }
     ]

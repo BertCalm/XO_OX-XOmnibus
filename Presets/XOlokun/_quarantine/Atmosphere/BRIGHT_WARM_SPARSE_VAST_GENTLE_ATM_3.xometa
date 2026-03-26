@@ -5,7 +5,7 @@
       {
         "engineA": "Organon",
         "engineB": "Opal",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.578
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

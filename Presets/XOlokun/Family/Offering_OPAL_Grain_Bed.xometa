@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-21",
   "description": "OFFERING percussion as the rhythmic spine beneath OPAL's granular cloud. Curiosity is dialed up high so drum hits shift with each pass, keeping the grain bed from hardening. LA parallel compression balances the grain density against the kick.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.6,
     "warmth": 0.6
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OPAL Grain Bed",
   "parameters": {
@@ -44,8 +51,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["opal", "coupling", "granular", "LA", "texture", "family"],
+  "tags": [
+    "opal",
+    "coupling",
+    "granular",
+    "LA",
+    "texture",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.75, "M2": 0.4, "M3": 0.0, "M4": 0.08}
+  "macros": {
+    "M1": 0.75,
+    "M2": 0.4,
+    "M3": 0.0,
+    "M4": 0.08
+  }
 }

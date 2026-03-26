@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Ole",
-        "type": "DYNAMIC_CROSS",
+        "type": "AmpToFilter",
         "amount": 0.616
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Warm and familiar, dark, warm bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

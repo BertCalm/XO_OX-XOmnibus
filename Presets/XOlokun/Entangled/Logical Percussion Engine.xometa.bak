@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Logical Percussion Engine",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANON's rule-based intelligence structures ONSET output. Every drum hit has a grammatical role — subject, predicate, object.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "organon",
+    "drum",
+    "logical",
+    "structured"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.75,
+    "density": 0.72,
+    "space": 0.4,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_level": 0.8,
+      "perc_v2_level": 0.7,
+      "perc_macro_punch": 0.65
+    },
+    "Organon": {
+      "organon_logic": 0.6,
+      "organon_density": 0.65,
+      "organon_filterCut": 5500.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Organon",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Organon",
+        "engineB": "Onset",
+        "type": "Pitch->Character",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

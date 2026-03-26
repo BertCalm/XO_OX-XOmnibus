@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.376,
-      "destination": "OVERBITE",
-      "source": "ONSET",
-      "type": "FILTER_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.376,
+        "type": "AmpToFilter",
+        "engineA": "ONSET",
+        "engineB": "OVERBITE"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, dark, warm, dense.",

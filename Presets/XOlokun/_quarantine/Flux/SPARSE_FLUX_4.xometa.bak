@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.3823
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4299,
+    "brightness": 0.1082,
+    "density": 0.0686,
+    "movement": 0.7549,
+    "space": 0.1138,
+    "warmth": 0.2732
+  },
+  "engines": [
+    "Overworld",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2555,
+    "COUPLING": 0.0077,
+    "MOVEMENT": 0.3281,
+    "SPACE": 0.747
+  },
+  "mood": "Flux",
+  "name": "SPARSE FLUX 4",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.5993,
+      "macro_coupling": 0.3014,
+      "macro_movement": 0.0077,
+      "macro_space": 0.2112
+    },
+    "Overworld": {
+      "macro_character": 0.4866,
+      "macro_coupling": 0.0454,
+      "macro_movement": 0.6671,
+      "macro_space": 0.3953
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

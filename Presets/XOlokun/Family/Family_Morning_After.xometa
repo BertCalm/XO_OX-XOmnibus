@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.44,
-      "destination": "Ottoni",
-      "source": "Ole",
-      "type": "FilterToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.44,
+        "type": "FilterToFilter",
+        "engineA": "Ole",
+        "engineB": "Ottoni"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "SIDES locked — a clean split between the odd aunt and the paired duo.",

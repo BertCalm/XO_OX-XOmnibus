@@ -6,7 +6,7 @@
         "amount": 0.666,
         "engineA": "Outwit",
         "engineB": "Organon",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -6,7 +6,7 @@
         "amount": 0.77,
         "engineA": "Outwit",
         "engineB": "Obscura",
-        "type": "PITCH_SYNC"
+        "type": "PitchToPitch"
       }
     ]
   },

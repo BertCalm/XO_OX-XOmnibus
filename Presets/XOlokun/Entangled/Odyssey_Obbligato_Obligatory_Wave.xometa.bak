@@ -1,0 +1,83 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "source": "Odyssey",
+        "target": "Obbligato",
+        "type": "PITCH_TRACKING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Wavetable scan locked to obbligato BOND macro tension — the harmonic cannot escape the wind.",
+  "dna": {
+    "aggression": 0.393,
+    "brightness": 0.493,
+    "density": 0.666,
+    "movement": 0.522,
+    "space": 0.574,
+    "warmth": 0.481
+  },
+  "engines": [
+    "Odyssey",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Obligatory Wave",
+  "parameters": {
+    "Obbligato": {
+      "obbl_filterCutoff": 5403.7,
+      "obbl_level": 0.687
+    },
+    "Odyssey": {
+      "drift_ampAttack": 0.1109,
+      "drift_ampDecay": 0.665,
+      "drift_ampRelease": 0.341,
+      "drift_ampSustain": 0.698,
+      "drift_chorus": 0.025,
+      "drift_filterCutoff": 9783.0,
+      "drift_filterEnvAmt": 0.377,
+      "drift_filterReso": 0.346,
+      "drift_fmDepth": 0.678,
+      "drift_fmRatio": 7.0,
+      "drift_level": 0.716,
+      "drift_lfo1Depth": 0.375,
+      "drift_lfo1Rate": 3.638,
+      "drift_lfo1Shape": 1.0,
+      "drift_lfo2Depth": 0.235,
+      "drift_lfo2Rate": 1.229,
+      "drift_modAttack": 0.0247,
+      "drift_modDecay": 0.187,
+      "drift_modRelease": 0.941,
+      "drift_modSustain": 0.499,
+      "drift_oscA_level": 0.63,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pitch": -0.392,
+      "drift_oscB_level": 0.45,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_pitch": 0.32,
+      "drift_reverbMix": 0.184,
+      "drift_wtMorph": 0.205,
+      "drift_wtPosition": 0.594
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "obbligato"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

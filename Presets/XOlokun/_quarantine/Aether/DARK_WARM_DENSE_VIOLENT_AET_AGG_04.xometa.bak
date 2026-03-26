@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.922
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.951,
+    "brightness": 0.066,
+    "density": 0.911,
+    "movement": 0.505,
+    "space": 0.344,
+    "warmth": 0.896
+  },
+  "engines": [
+    "OddOscar",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.065,
+    "COUPLING": 0.866,
+    "MOVEMENT": 0.477,
+    "SPACE": 0.333
+  },
+  "mood": "Aether",
+  "name": "DARK WARM DENSE VIOLENT AET... (OddOscar I)",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.064,
+      "macro_coupling": 0.872,
+      "macro_movement": 0.486,
+      "macro_space": 0.323
+    },
+    "Origami": {
+      "macro_character": 0.066,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.467,
+      "macro_space": 0.342
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "dark",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

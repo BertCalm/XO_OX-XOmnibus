@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "OFFERING rhythm section synced to OddfeliX neon-tetra lead. Snare hits modulate ODDFELIX filter cutoff via RhythmToFilter coupling. NY feedback gate ensures every snare snap translates cleanly into the filter sweep.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.45,
     "warmth": 0.5
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "ODDFELIX Rhythm Feed",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["oddfelix", "coupling", "rhythm-to-filter", "NY", "snare", "family"],
+  "tags": [
+    "oddfelix",
+    "coupling",
+    "rhythm-to-filter",
+    "NY",
+    "snare",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.5, "M2": 0.2, "M3": 0.0, "M4": 0.08}
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.2,
+    "M3": 0.0,
+    "M4": 0.08
+  }
 }

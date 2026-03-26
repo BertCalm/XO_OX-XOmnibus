@@ -6,7 +6,7 @@
         "amount": 0.874,
         "engineA": "Outwit",
         "engineB": "Optic",
-        "type": "SPECTRAL_CROSS"
+        "type": "EnvToMorph"
       }
     ]
   },

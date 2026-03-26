@@ -4,15 +4,15 @@
     "pairs": [
       {
         "amount": 0.4,
-        "source": "OddfeliX",
-        "target": "OddOscar",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar"
       },
       {
         "amount": 0.35,
-        "source": "OddOscar",
-        "target": "OddfeliX",
-        "type": "LFOToPitch"
+        "type": "LFOToPitch",
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX"
       }
     ]
   },

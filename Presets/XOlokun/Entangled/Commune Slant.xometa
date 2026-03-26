@@ -6,13 +6,13 @@
         "amount": 0.65,
         "engineA": "Oblique",
         "engineB": "Ohm",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.45,
         "engineA": "Ohm",
         "engineB": "Oblique",
-        "type": "RhythmGate"
+        "type": "AmpToChoke"
       }
     ]
   },

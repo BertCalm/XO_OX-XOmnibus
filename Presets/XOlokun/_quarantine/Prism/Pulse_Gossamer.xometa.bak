@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ottoni",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.735
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.647,
+    "brightness": 0.344,
+    "density": 0.035,
+    "movement": 0.973,
+    "space": 0.954,
+    "warmth": 0.92
+  },
+  "engines": [
+    "Osteria",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "COUPLING": 0.344,
+    "MOVEMENT": 0.973,
+    "SPACE": 0.954
+  },
+  "mood": "Prism",
+  "name": "Pulse Gossamer",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.495,
+      "macro_coupling": 0.344,
+      "macro_movement": 0.973,
+      "macro_space": 0.954
+    },
+    "Ottoni": {
+      "macro_character": 0.651,
+      "macro_coupling": 0.348,
+      "macro_movement": 0.973,
+      "macro_space": 0.954
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "hot",
+    "kinetic",
+    "vast",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

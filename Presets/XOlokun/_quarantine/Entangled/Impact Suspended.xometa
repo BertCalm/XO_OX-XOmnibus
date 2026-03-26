@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Oblong",
-        "type": "TIMBRAL_WARP",
+        "type": "EnvToMorph",
         "amount": 0.72
       }
     ]
@@ -52,5 +52,6 @@
     "aggression": 0.4
   },
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

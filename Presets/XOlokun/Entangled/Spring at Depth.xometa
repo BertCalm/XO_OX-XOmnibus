@@ -5,9 +5,9 @@
       {
         "amount": 0.556,
         "description": "Orca drives Overdub via TimbreShare",
-        "source": "Orca",
-        "target": "Overdub",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Overdub"
       }
     ]
   },

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.553
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.873,
+    "brightness": 0.968,
+    "density": 0.618,
+    "movement": 0.907,
+    "space": 0.418,
+    "warmth": 0.071
+  },
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.519,
+    "COUPLING": 0.531,
+    "MOVEMENT": 0.907,
+    "SPACE": 0.418
+  },
+  "mood": "Aether",
+  "name": "BRIGHT COLD KINETIC BALANCE... (Oceanic I)",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.535,
+      "macro_coupling": 0.532,
+      "macro_movement": 0.898,
+      "macro_space": 0.429
+    },
+    "Oceanic": {
+      "macro_character": 0.519,
+      "macro_coupling": 0.531,
+      "macro_movement": 0.907,
+      "macro_space": 0.418
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "created": "2026-03-21",
   "description": "OFFERING boom bap locking OUROBOROS chaos engine. Kick hits provide a chaos injection — the attractor resets on the one. High curiosity keeps the drum pattern from feeling mechanical. NY gate prevents chaos bleed from obscuring the downbeat.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.4,
     "warmth": 0.5
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OUROBOROS Chaos Lock",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["ouroboros", "coupling", "chaos", "NY", "aggression", "family"],
+  "tags": [
+    "ouroboros",
+    "coupling",
+    "chaos",
+    "NY",
+    "aggression",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.7, "M2": 0.15, "M3": 0.0, "M4": 0.05}
+  "macros": {
+    "M1": 0.7,
+    "M2": 0.15,
+    "M3": 0.0,
+    "M4": 0.05
+  }
 }

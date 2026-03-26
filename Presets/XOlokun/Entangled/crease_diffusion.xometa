@@ -6,7 +6,7 @@
         "amount": 0.56,
         "engineA": "Overlap",
         "engineB": "Origami",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.67,
+        "engineA": "Obsidian",
+        "engineB": "Obscura",
+        "type": "Gate->Env"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Pure volcanic edge etches a latent image into collodion suspension.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.615,
+    "density": 0.567,
+    "movement": 0.33,
+    "space": 0.602,
+    "warmth": 0.433
+  },
+  "engines": [
+    "Obsidian",
+    "Obscura"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Pure Silver",
+  "parameters": {
+    "Obscura": {
+      "obscura_aggression": 0.199,
+      "obscura_brightness": 0.389,
+      "obscura_density": 0.68,
+      "obscura_level": 0.851,
+      "obscura_movement": 0.328,
+      "obscura_space": 0.592,
+      "obscura_warmth": 0.613
+    },
+    "Obsidian": {
+      "obsidian_aggression": 0.106,
+      "obsidian_brightness": 0.962,
+      "obsidian_density": 0.442,
+      "obsidian_level": 0.849,
+      "obsidian_movement": 0.243,
+      "obsidian_space": 0.639,
+      "obsidian_warmth": 0.223
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "obscura",
+    "crystal",
+    "daguerreotype",
+    "marquee",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

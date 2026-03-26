@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ole",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.974
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.84,
+    "brightness": 0.075,
+    "density": 0.363,
+    "movement": 0.932,
+    "space": 0.801,
+    "warmth": 0.638
+  },
+  "engines": [
+    "Outwit",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.953,
+    "COUPLING": 0.143,
+    "MOVEMENT": 0.932,
+    "SPACE": 0.608
+  },
+  "mood": "Entangled",
+  "name": "KINETIC STORM 7",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.998,
+      "macro_coupling": 0.275,
+      "macro_movement": 0.915,
+      "macro_space": 0.98
+    },
+    "Outwit": {
+      "macro_character": 0.042,
+      "macro_coupling": 0.87,
+      "macro_movement": 0.949,
+      "macro_space": 0.353
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "rupture",
+    "intensity"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

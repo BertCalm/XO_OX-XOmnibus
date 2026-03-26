@@ -6,7 +6,7 @@
         "amount": 0.58,
         "engineA": "Orbital",
         "engineB": "Owlfish",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

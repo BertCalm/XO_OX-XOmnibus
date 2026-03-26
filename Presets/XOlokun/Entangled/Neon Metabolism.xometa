@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Organon",
         "engineB": "OddfeliX",
-        "type": "CV->Filter"
+        "type": "FilterToFilter"
       }
     ]
   },

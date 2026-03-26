@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.977,
+    "brightness": 0.023,
+    "density": 0.595,
+    "movement": 0.897,
+    "space": 0.571,
+    "warmth": 0.05
+  },
+  "engines": [
+    "Oceanic",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.452,
+    "COUPLING": 0.757,
+    "MOVEMENT": 0.897,
+    "SPACE": 0.571
+  },
+  "mood": "Flux",
+  "name": "Phase Blade 2",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.385,
+      "macro_coupling": 0.757,
+      "macro_movement": 0.87,
+      "macro_space": 0.581
+    },
+    "Oracle": {
+      "macro_character": 0.519,
+      "macro_coupling": 0.774,
+      "macro_movement": 0.903,
+      "macro_space": 0.591
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "dark",
+    "cold"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -6,7 +6,7 @@
         "amount": 0.558,
         "engineA": "Obbligato",
         "engineB": "Oblong",
-        "type": "Env->Pitch"
+        "type": "EnvToDecay"
       }
     ]
   },

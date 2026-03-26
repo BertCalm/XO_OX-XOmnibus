@@ -1,0 +1,90 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.78,
+        "engineA": "Overlap",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Lion's Mane knot-topology FDN entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Envelope Link.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.53,
+    "density": 0.63,
+    "movement": 0.52,
+    "space": 0.13,
+    "warmth": 0.29
+  },
+  "engines": [
+    "Overlap",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "TOPOLOGY",
+    "DIFFUSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.72,
+    "MOVEMENT": 0.67,
+    "SPACE": 0.48
+  },
+  "mood": "Entangled",
+  "name": "Brine Lattice",
+  "parameters": {
+    "Oceanic": {
+      "ocean_ampAttack": 0.25,
+      "ocean_ampRelease": 0.58,
+      "ocean_ampSustain": 0.76,
+      "ocean_character": 0.79,
+      "ocean_coupling": 0.57,
+      "ocean_couplingLevel": 0.68,
+      "ocean_filterCutoff": 0.32,
+      "ocean_filterReso": 0.39,
+      "ocean_movement": 0.53,
+      "ocean_outputLevel": 0.83,
+      "ocean_reverbMix": 0.23,
+      "ocean_space": 0.29
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.6,
+      "olap_crossfeedAmt": 0.33,
+      "olap_damping": 0.29,
+      "olap_decay": 0.9,
+      "olap_diffusion": 0.67,
+      "olap_earlyMix": 0.46,
+      "olap_filterCutoff": 0.68,
+      "olap_filterReso": 0.28,
+      "olap_frondDensity": 0.52,
+      "olap_lateMix": 0.53,
+      "olap_modDepth": 0.33,
+      "olap_modRate": 0.17,
+      "olap_nodeCount": 12,
+      "olap_outputLevel": 0.82,
+      "olap_outputPan": -0.18,
+      "olap_preDelay": 0.07,
+      "olap_shimmerMix": 0.31,
+      "olap_size": 0.81,
+      "olap_spinRate": 0.25
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "oceanic",
+    "spatial",
+    "lush"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

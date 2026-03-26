@@ -2,21 +2,41 @@
   "schema_version": 1,
   "name": "Crossing Migration",
   "mood": "Entangled",
-  "engines": ["Odyssey", "Orbweave"],
+  "engines": [
+    "Odyssey",
+    "Orbweave"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "ODYSSEY as the drifting FM migrant; ORBWEAVE as the topological network that catches and routes the migration. When ODYSSEY's FM drift creates a spectral event, ORBWEAVE's Knot Phase Coupling Matrix redirects it through a different topological path — the migration route is rewritten by the network.",
-  "tags": ["odyssey", "orbweave", "entangled", "drift", "fm", "topological", "migration", "coupling", "transcendental"],
+  "tags": [
+    "odyssey",
+    "orbweave",
+    "entangled",
+    "drift",
+    "fm",
+    "topological",
+    "migration",
+    "coupling",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-9: When Seven Voices Drift Together, They Are One Migration"],
+    "scripture": [
+      "Scripture VII-9: When Seven Voices Drift Together, They Are One Migration"
+    ],
     "revelation": "ORBWEAVE's topological routing and ODYSSEY's FM drift are both about paths through parameter space. When they couple, the path through FM space is redirected by the path through topological space.",
     "diagnosis": "Crossing Migration pairs ODYSSEY's FM migration with ORBWEAVE's knot coupling. ODYSSEY provides the drifting FM source; ORBWEAVE receives it through FilterEnvelope coupling and redistributes the spectral content through its knot matrix. Two migration systems in dialogue."
   },
-  "macroLabels": ["FM MIGRATION", "KNOT TOPOLOGY", "DRIFT SPEED", "NETWORK DEPTH"],
-  "couplingIntensity": "Medium",
+  "macroLabels": [
+    "FM MIGRATION",
+    "KNOT TOPOLOGY",
+    "DRIFT SPEED",
+    "NETWORK DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -84,10 +104,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Odyssey",
-        "target": "Orbweave",
-        "type": "FilterEnvelope",
-        "amount": 0.55
+        "type": "FilterToFilter",
+        "amount": 0.55,
+        "engineA": "Odyssey",
+        "engineB": "Orbweave"
       }
     ]
   },

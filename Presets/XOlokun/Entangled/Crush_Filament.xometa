@@ -6,7 +6,7 @@
         "amount": 0.754,
         "engineA": "Obese",
         "engineB": "Orphica",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },

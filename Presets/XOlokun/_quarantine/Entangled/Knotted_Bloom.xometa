@@ -6,7 +6,7 @@
         "amount": 0.588,
         "engineA": "Overbite",
         "engineB": "Obsidian",
-        "type": "TEXTURE_WEAVE"
+        "type": "EnvToMorph"
       }
     ]
   },

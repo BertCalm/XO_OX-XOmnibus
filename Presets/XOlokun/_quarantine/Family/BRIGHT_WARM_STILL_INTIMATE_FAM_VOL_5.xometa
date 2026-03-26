@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "OddOscar",
-        "type": "MODULATION_FLOW",
+        "type": "EnvToMorph",
         "amount": 0.433
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

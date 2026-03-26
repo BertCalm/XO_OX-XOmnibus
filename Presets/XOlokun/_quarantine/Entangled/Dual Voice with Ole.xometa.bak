@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.634,
+        "engineA": "Obbligato",
+        "engineB": "Ole",
+        "type": "LFO->Pan"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Afro-Latin DRAMA ignites OBBLIGATO's BOND, fusing the dual reeds into a percussive coral call.",
+  "dna": {
+    "aggression": 0.778,
+    "brightness": 1.0,
+    "density": 0.353,
+    "movement": 0.685,
+    "space": 0.6,
+    "warmth": 0.679
+  },
+  "engines": [
+    "Obbligato",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Dual Voice with Ole",
+  "parameters": {
+    "obbl_breathA": 0.553,
+    "obbl_breathB": 0.712,
+    "obbl_macroBond": 0.558
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "ole",
+    "afro-latin",
+    "rhythmic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

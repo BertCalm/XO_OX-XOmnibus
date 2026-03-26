@@ -6,7 +6,7 @@
         "amount": 0.528,
         "engineA": "Obbligato",
         "engineB": "Octopus",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Oceanic",
-        "type": "FILTER_COUPLING",
+        "type": "FilterToFilter",
         "amount": 0.841
       }
     ]
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

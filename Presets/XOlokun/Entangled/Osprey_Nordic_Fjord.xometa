@@ -12,7 +12,7 @@
         "amount": 0.35,
         "engineA": "Obsidian",
         "engineB": "Osprey",
-        "type": "PitchToFilter"
+        "type": "AmpToFilter"
       }
     ]
   },

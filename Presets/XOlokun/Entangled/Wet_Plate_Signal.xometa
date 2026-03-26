@@ -6,7 +6,7 @@
         "amount": 0.591,
         "engineA": "Obscura",
         "engineB": "Oracle",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

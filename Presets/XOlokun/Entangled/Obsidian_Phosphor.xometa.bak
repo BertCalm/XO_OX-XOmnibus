@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.73,
+        "engineA": "Obsidian",
+        "engineB": "Oceanic",
+        "type": "Pitch->Rate"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Crystal edge meets phosphorescent teal. Mineral dissolves into coast.",
+  "dna": {
+    "aggression": 0.186,
+    "brightness": 0.795,
+    "density": 0.557,
+    "movement": 0.37,
+    "space": 0.65,
+    "warmth": 0.343
+  },
+  "engines": [
+    "Obsidian",
+    "Oceanic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Obsidian Phosphor",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.072,
+      "obsidian_brightness": 0.94,
+      "obsidian_density": 0.474,
+      "obsidian_level": 0.798,
+      "obsidian_movement": 0.327,
+      "obsidian_space": 0.599,
+      "obsidian_warmth": 0.211
+    },
+    "Oceanic": {
+      "ocean_aggression": 0.309,
+      "ocean_brightness": 0.627,
+      "ocean_density": 0.565,
+      "ocean_level": 0.803,
+      "ocean_movement": 0.465,
+      "ocean_space": 0.811,
+      "ocean_warmth": 0.511
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "oceanic",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

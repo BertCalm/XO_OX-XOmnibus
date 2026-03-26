@@ -6,7 +6,7 @@
         "amount": 0.529,
         "engineA": "Orbital",
         "engineB": "Onset",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },

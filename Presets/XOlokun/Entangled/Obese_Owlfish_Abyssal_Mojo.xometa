@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Obese",
-        "target": "Owlfish",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable",
+        "engineA": "Obese",
+        "engineB": "Owlfish"
       }
     ]
   },

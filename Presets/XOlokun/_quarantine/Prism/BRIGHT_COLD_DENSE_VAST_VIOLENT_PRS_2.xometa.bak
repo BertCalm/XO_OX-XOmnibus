@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblique",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.617
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_VAST_VIOLENT. Variant 2.",
+  "dna": {
+    "aggression": 0.879,
+    "brightness": 0.97,
+    "density": 0.943,
+    "movement": 0.451,
+    "space": 0.875,
+    "warmth": 0.026
+  },
+  "engines": [
+    "Overworld",
+    "Oblique"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.984,
+    "COUPLING": 0.927,
+    "MOVEMENT": 0.423,
+    "SPACE": 0.914
+  },
+  "mood": "Prism",
+  "name": "Silver Titan",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.969,
+      "macro_coupling": 0.854,
+      "macro_movement": 0.472,
+      "macro_space": 0.958
+    },
+    "Overworld": {
+      "macro_character": 1.0,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.374,
+      "macro_space": 0.871
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "cold",
+    "diversity",
+    "bright",
+    "vast",
+    "violent",
+    "prism",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

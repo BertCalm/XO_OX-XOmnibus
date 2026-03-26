@@ -6,7 +6,7 @@
         "amount": 0.594,
         "engineA": "Outwit",
         "engineB": "Ocelot",
-        "type": "AMP_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

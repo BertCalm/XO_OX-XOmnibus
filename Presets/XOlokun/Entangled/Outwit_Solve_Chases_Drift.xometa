@@ -6,9 +6,9 @@
     "Outwit",
     "Odyssey"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT SOLVE GA chasing a bright target while ODYSSEY mirrors its movement \u2014 the genetic algorithm's evolutionary state and the drift synth's wavetable position evolve in parallel.",
+  "description": "OUTWIT SOLVE GA chasing a bright target while ODYSSEY mirrors its movement — the genetic algorithm's evolutionary state and the drift synth's wavetable position evolve in parallel.",
   "tags": [
     "entangled",
     "solve",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -65,11 +65,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Odyssey",
         "type": "EnvToMorph",
         "amount": 0.65,
-        "description": "Outwit SOLVE GA state drives Odyssey wavetable morphing in parallel evolution"
+        "description": "Outwit SOLVE GA state drives Odyssey wavetable morphing in parallel evolution",
+        "engineA": "Outwit",
+        "engineB": "Odyssey"
       }
     ]
   },

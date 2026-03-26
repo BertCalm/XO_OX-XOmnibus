@@ -6,7 +6,7 @@
         "amount": 0.729,
         "engineA": "Oceanic",
         "engineB": "Origami",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

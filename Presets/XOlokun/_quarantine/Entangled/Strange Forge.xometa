@@ -6,7 +6,7 @@
         "amount": 0.78,
         "engineA": "Ottoni",
         "engineB": "Ouroboros",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

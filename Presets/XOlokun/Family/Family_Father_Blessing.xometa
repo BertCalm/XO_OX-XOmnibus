@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.52,
-      "destination": "Orphica",
-      "source": "Ole",
-      "type": "AmpToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.52,
+        "type": "AmpToFilter",
+        "engineA": "Ole",
+        "engineB": "Orphica"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "One aunt stands apart in prismatic clarity. The other two strum together.",

@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Ohm",
+        "engineB": "Ouroboros",
+        "type": "Env->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "The hippie circle and the serpent — OHM's drone locks into OUROBOROS's recursive chaos with a gentle leash.",
+  "dna": {
+    "aggression": 0.58,
+    "brightness": 0.55,
+    "density": 0.7,
+    "movement": 0.93,
+    "space": 0.47,
+    "warmth": 0.67
+  },
+  "engines": [
+    "Ohm",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.61,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.93,
+    "SPACE": 0.47
+  },
+  "mood": "Entangled",
+  "name": "Strange Drift Circle",
+  "parameters": {
+    "ohm_droneFund": 0.58,
+    "ohm_macroCommune": 0.701,
+    "ohm_macroMeddling": 0.772,
+    "ohm_orgHarmonics": 0.54,
+    "ouro_chaosLeash": 0.71,
+    "ouro_topology": 0.648
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "ouroboros",
+    "chaotic",
+    "recursive",
+    "serpent"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

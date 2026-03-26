@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Bounce Mineral",
   "mood": "Entangled",
-  "engines": ["Oblique", "Obsidian"],
+  "engines": [
+    "Oblique",
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBLIQUE's bounce geometry coupling with OBSIDIAN's mineral density — each ricochet striking a crystalline surface, prismatic scatter from a mineral body.",
-  "tags": ["bounce", "mineral", "crystal", "ricochet", "entangled"],
-  "macroLabels": ["BOUNCE", "MINERAL", "COLOR", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "bounce",
+    "mineral",
+    "crystal",
+    "ricochet",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "MINERAL",
+    "COLOR",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.65, "density": 0.68, "space": 0.45, "aggression": 0.48},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.65,
+    "density": 0.68,
+    "space": 0.45,
+    "aggression": 0.48
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.68,
@@ -75,11 +96,26 @@
       "obsidian_macroSpace": 0.45
     }
   },
-  "macros": {"BOUNCE": 0.65, "MINERAL": 0.68, "COLOR": 0.68, "SPACE": 0.45},
+  "macros": {
+    "BOUNCE": 0.65,
+    "MINERAL": 0.68,
+    "COLOR": 0.68,
+    "SPACE": 0.45
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Oblique", "engineB": "Obsidian", "type": "AmpToFilter", "amount": 0.62},
-      {"engineA": "Obsidian", "engineB": "Oblique", "type": "SpectralToFilter", "amount": 0.45}
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter",
+        "amount": 0.62
+      },
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.45
+      }
     ]
   }
 }

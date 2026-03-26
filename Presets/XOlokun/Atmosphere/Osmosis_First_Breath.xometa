@@ -24,7 +24,9 @@
     "mfx_breathTilt": 0.6,
     "mfx_breathSens": 0.5
   },
-  "coupling": [],
+  "coupling": {
+    "pairs": []
+  },
   "macros": {
     "M1": "PERMEABILITY",
     "M2": "SELECTIVITY",
@@ -45,7 +47,7 @@
     "external",
     "air"
   ],
-  "description": "The membrane breathes. External audio passes through with gentle formant coloring and organic breath texture. Origami in slot 2 loaded with defaults \u2014 ready for coupling.",
+  "description": "The membrane breathes. External audio passes through with gentle formant coloring and organic breath texture. Origami in slot 2 loaded with defaults — ready for coupling.",
   "author": "XO_OX Designs",
   "dna": {
     "brightness": 0.5,

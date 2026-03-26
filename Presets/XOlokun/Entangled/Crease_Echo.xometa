@@ -6,7 +6,7 @@
         "amount": 0.887,
         "engineA": "Overlap",
         "engineB": "Origami",
-        "type": "ENVELOPE_SHARE"
+        "type": "EnvToDecay"
       }
     ]
   },

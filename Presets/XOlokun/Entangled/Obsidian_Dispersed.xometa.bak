@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.437,
+        "engineA": "Obsidian",
+        "engineB": "Opal",
+        "type": "Envelope->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Vitreous shards scatter into granular iridescence. Crystal dispersal field.",
+  "dna": {
+    "aggression": 0.126,
+    "brightness": 0.804,
+    "density": 0.499,
+    "movement": 0.463,
+    "space": 0.701,
+    "warmth": 0.317
+  },
+  "engines": [
+    "Obsidian",
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Obsidian Dispersed",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.161,
+      "obsidian_brightness": 0.939,
+      "obsidian_density": 0.422,
+      "obsidian_level": 0.881,
+      "obsidian_movement": 0.288,
+      "obsidian_space": 0.532,
+      "obsidian_warmth": 0.208
+    },
+    "Opal": {
+      "opal_aggression": 0.169,
+      "opal_brightness": 0.707,
+      "opal_density": 0.394,
+      "opal_level": 0.88,
+      "opal_movement": 0.763,
+      "opal_space": 0.74,
+      "opal_warmth": 0.554
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "opal",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Odyssey",
         "engineB": "Oblique",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.409
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

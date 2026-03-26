@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orphica",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.783
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.931,
+    "brightness": 0.98,
+    "density": 0.885,
+    "movement": 0.07,
+    "space": 0.119,
+    "warmth": 0.549
+  },
+  "engines": [
+    "Overworld",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.766,
+    "COUPLING": 0.783,
+    "MOVEMENT": 0.07,
+    "SPACE": 0.126
+  },
+  "mood": "Entangled",
+  "name": "Flux Grit 3",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.789,
+      "macro_coupling": 0.873,
+      "macro_movement": 0.072,
+      "macro_space": 0.122
+    },
+    "Overworld": {
+      "macro_character": 0.742,
+      "macro_coupling": 0.911,
+      "macro_movement": 0.068,
+      "macro_space": 0.13
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "dense",
+    "close",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

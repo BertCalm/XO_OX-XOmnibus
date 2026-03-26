@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8842,
-        "source": "Orphica",
-        "target": "Overlap",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Orphica",
+        "engineB": "Overlap"
       }
     ]
   },

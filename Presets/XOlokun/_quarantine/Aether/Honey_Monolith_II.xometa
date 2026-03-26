@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Ouroboros",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.767
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

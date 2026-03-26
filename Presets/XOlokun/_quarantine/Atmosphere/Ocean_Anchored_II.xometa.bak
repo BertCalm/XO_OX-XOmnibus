@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.92
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.099,
+    "brightness": 0.068,
+    "density": 0.615,
+    "movement": 0.063,
+    "space": 0.972,
+    "warmth": 0.303
+  },
+  "engines": [
+    "Oceanic",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.382,
+    "COUPLING": 0.525,
+    "MOVEMENT": 0.156,
+    "SPACE": 0.909
+  },
+  "mood": "Atmosphere",
+  "name": "Ocean Anchored II",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.382,
+      "macro_coupling": 0.525,
+      "macro_movement": 0.156,
+      "macro_space": 0.909
+    },
+    "Orbital": {
+      "macro_character": 0.619,
+      "macro_coupling": 0.743,
+      "macro_movement": 0.212,
+      "macro_space": 0.886
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "still",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

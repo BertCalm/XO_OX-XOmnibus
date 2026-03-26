@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.182
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.059,
+    "brightness": 0.107,
+    "density": 0.511,
+    "movement": 0.093,
+    "space": 0.064,
+    "warmth": 0.044
+  },
+  "engines": [
+    "Oracle",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.075,
+    "COUPLING": 0.061,
+    "MOVEMENT": 0.302,
+    "SPACE": 0.064
+  },
+  "mood": "Prism",
+  "name": "ALLLO PRS 04",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.075,
+      "macro_coupling": 0.061,
+      "macro_movement": 0.302,
+      "macro_space": 0.064
+    },
+    "Oracle": {
+      "macro_character": 0.075,
+      "macro_coupling": 0.061,
+      "macro_movement": 0.302,
+      "macro_space": 0.064
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Onset",
-        "target": "Overbite",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Onset",
+        "engineB": "Overbite"
       }
     ]
   },

@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.45,
+        "source": "OddfeliX",
+        "target": "OddOscar",
+        "type": "AmpToFilter"
+      },
+      {
+        "amount": 0.15,
+        "source": "OddOscar",
+        "target": "OddfeliX",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Neon tetra meets axolotl — feliX's bright snap drives Oscar's filter open. The siblings circle each other in iridescent water, their signals intertwined at the AmpToFilter junction.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.75,
+    "density": 0.5,
+    "movement": 0.5,
+    "space": 0.6,
+    "warmth": 0.55
+  },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "OddPair Neon Axolotl",
+  "parameters": {
+    "OddOscar": {
+      "morph_envAttack": 0.04,
+      "morph_envDecay": 0.4,
+      "morph_envRelease": 0.8,
+      "morph_envSustain": 0.7,
+      "morph_filterCutoff": 900,
+      "morph_filterRes": 0.3,
+      "morph_morph": 0.6
+    },
+    "OddfeliX": {
+      "snap_envAttack": 0.01,
+      "snap_envDecay": 0.25,
+      "snap_envRelease": 0.5,
+      "snap_envSustain": 0.6,
+      "snap_filterCutoff": 2400,
+      "snap_filterRes": 0.45,
+      "snap_lfo1Depth": 0.35,
+      "snap_lfo1Rate": 0.18,
+      "snap_oscWave": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "oddfelix",
+    "oddoscar",
+    "neon",
+    "axolotl",
+    "coupling",
+    "bright"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

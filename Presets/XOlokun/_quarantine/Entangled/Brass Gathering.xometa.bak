@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.635,
+        "engineA": "Ohm",
+        "engineB": "Ottoni",
+        "type": "Env->Level"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OHM and OTTONI coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.486,
+    "brightness": 0.56,
+    "density": 0.582,
+    "movement": 0.454,
+    "space": 0.698,
+    "warmth": 0.596
+  },
+  "engines": [
+    "Ohm",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "PULSE",
+    "BRIDGE",
+    "DEPTH"
+  ],
+  "mood": "Entangled",
+  "name": "Brass Gathering",
+  "parameters": {
+    "Ohm": {},
+    "Ottoni": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "ottoni"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

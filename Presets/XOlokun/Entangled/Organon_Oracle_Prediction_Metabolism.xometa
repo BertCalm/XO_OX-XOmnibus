@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Prediction Metabolism",
   "mood": "Entangled",
-  "engines": ["Organon", "Oracle"],
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Organon VFE metabolism driven by Oracle breakpoints — predictive coding made biochemical.",
-  "tags": ["entangled", "prediction", "oracle", "vfe", "metabolism", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "entangled",
+    "prediction",
+    "oracle",
+    "vfe",
+    "metabolism",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.5, "movement": 0.6, "density": 0.6, "space": 0.5, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.45
+  },
   "parameters": {
     "Organon": {
       "organon_metabolicRate": 0.6,
@@ -25,6 +47,15 @@
       "organon_lockIn": 0.7
     }
   },
-  "coupling": {"pairs": [{"source": "Oracle", "target": "Organon", "type": "PredictiveCoupling", "amount": 0.75}]},
+  "coupling": {
+    "pairs": [
+      {
+        "type": "KnotTopology",
+        "amount": 0.75,
+        "engineA": "Oracle",
+        "engineB": "Organon"
+      }
+    ]
+  },
   "sequencer": null
 }

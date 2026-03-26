@@ -6,7 +6,7 @@
         "amount": 0.604,
         "engineA": "Overbite",
         "engineB": "Optic",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },

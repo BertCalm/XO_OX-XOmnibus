@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ohm",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.582
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.537,
+    "brightness": 0.032,
+    "density": 0.978,
+    "movement": 0.897,
+    "space": 0.445,
+    "warmth": 0.922
+  },
+  "engines": [
+    "Ottoni",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "COUPLING": 0.77,
+    "MOVEMENT": 0.899,
+    "SPACE": 0.459
+  },
+  "mood": "Family",
+  "name": "Velvet Packed 2",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.488,
+      "macro_coupling": 0.774,
+      "macro_movement": 0.898,
+      "macro_space": 0.474
+    },
+    "Ottoni": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.765,
+      "macro_movement": 0.899,
+      "macro_space": 0.444
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "dense",
+    "dark"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

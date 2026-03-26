@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.94,
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OBESE BELLY maxed, MOJO maxed — Ouroboros strange attractor as the engine's own heartbeat.",
+  "dna": {
+    "aggression": 1.0,
+    "brightness": 0.54,
+    "density": 0.96,
+    "movement": 0.68,
+    "space": 0.05,
+    "warmth": 0.36
+  },
+  "engines": [
+    "Obese",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 1.0,
+    "COUPLING": 0.94,
+    "MOVEMENT": 0.68,
+    "SPACE": 0.05
+  },
+  "mood": "Entangled",
+  "name": "Obese Attractor",
+  "parameters": {
+    "Obese": {},
+    "Ouroboros": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "obese",
+    "ouroboros",
+    "attractor"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.887
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.088,
+    "brightness": 0.872,
+    "density": 0.357,
+    "movement": 0.032,
+    "space": 0.922,
+    "warmth": 0.932
+  },
+  "engines": [
+    "Oblique",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.911,
+    "COUPLING": 0.887,
+    "MOVEMENT": 0.03,
+    "SPACE": 0.934
+  },
+  "mood": "Entangled",
+  "name": "Golden Expanse",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.903,
+      "macro_coupling": 0.384,
+      "macro_movement": 0.029,
+      "macro_space": 0.925
+    },
+    "Overworld": {
+      "macro_character": 0.919,
+      "macro_coupling": 0.328,
+      "macro_movement": 0.032,
+      "macro_space": 0.944
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Ombre",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.8672
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

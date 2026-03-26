@@ -6,7 +6,7 @@
         "amount": 0.89,
         "engineA": "Orca",
         "engineB": "Ouroboros",
-        "type": "FREQUENCY_SMEAR"
+        "type": "AudioToFM"
       }
     ]
   },

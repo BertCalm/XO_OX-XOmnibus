@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Overdub",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.626
       }
     ]

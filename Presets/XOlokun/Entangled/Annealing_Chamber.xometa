@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Oblong",
-        "type": "ENVELOPE_MIRROR",
+        "type": "EnvToDecay",
         "amount": 0.76
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, warm, dense sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

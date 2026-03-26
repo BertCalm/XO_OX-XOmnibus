@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orphica",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.757
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.918,
+    "density": 0.532,
+    "movement": 0.061,
+    "space": 0.875,
+    "warmth": 0.124
+  },
+  "engines": [
+    "Onset",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.522,
+    "SPACE": 0.757,
+    "PUNCH": 0.057,
+    "MUTATE": 0.867
+  },
+  "mood": "Entangled",
+  "name": "Arctic Fang",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.534,
+      "macro_coupling": 0.526,
+      "macro_movement": 0.056,
+      "macro_space": 0.885
+    },
+    "Orphica": {
+      "macro_character": 0.509,
+      "macro_coupling": 0.547,
+      "macro_movement": 0.057,
+      "macro_space": 0.849
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "cold",
+    "vast",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

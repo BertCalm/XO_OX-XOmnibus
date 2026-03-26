@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Oblique",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.649
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, warm texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Restless and kinetic, dark, warm texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

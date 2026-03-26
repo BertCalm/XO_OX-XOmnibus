@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.646,
-      "destination": "OVERLAP",
-      "source": "ORPHICA",
-      "type": "AMPLITUDE_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.646,
+        "type": "AmpToFilter",
+        "engineA": "ORPHICA",
+        "engineB": "OVERLAP"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — aether, dark, cold, kinetic.",

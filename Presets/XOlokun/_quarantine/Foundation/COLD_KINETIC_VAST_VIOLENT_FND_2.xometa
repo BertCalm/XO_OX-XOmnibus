@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Onset",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.606
       }
     ]
@@ -64,5 +64,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

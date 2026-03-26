@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7059,
+        "source": "Ottoni",
+        "target": "Obbligato",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Dark Kinetic Dense Gentle character entanglement — OBBLIGATO × OTTONI via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0422,
+    "brightness": 0.0598,
+    "density": 0.9695,
+    "movement": 0.8835,
+    "space": 0.6612,
+    "warmth": 0.6669
+  },
+  "engines": [
+    "Obbligato",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "WIND",
+    "BOND",
+    "FLOW",
+    "AIR"
+  ],
+  "macros": {
+    "CHARACTER": 0.3634,
+    "COUPLING": 0.7059,
+    "MOVEMENT": 0.8835,
+    "SPACE": 0.6612
+  },
+  "mood": "Entangled",
+  "name": "Cocoa Packed",
+  "parameters": {
+    "Obbligato": {
+      "amp_attack": 0.0611,
+      "amp_release": 0.4673,
+      "coupling_level": 0.5286,
+      "density": 0.9833,
+      "drive": 0.0885,
+      "filter_cutoff": 0.2738,
+      "filter_resonance": 0.1167,
+      "macro_character": 0.58,
+      "macro_coupling": 0.6322,
+      "macro_movement": 0.8979,
+      "macro_space": 0.6603,
+      "output_level": 0.9271,
+      "reverb_mix": 0.5069,
+      "reverb_size": 0.6018
+    },
+    "Ottoni": {
+      "amp_attack": 0.0999,
+      "amp_release": 0.4615,
+      "coupling_level": 0.5377,
+      "density": 0.9525,
+      "drive": 0.0816,
+      "filter_cutoff": 0.2358,
+      "filter_resonance": 0.1371,
+      "macro_character": 0.5651,
+      "macro_coupling": 0.5922,
+      "macro_movement": 0.8437,
+      "macro_space": 0.627,
+      "output_level": 0.9168,
+      "reverb_mix": 0.5452,
+      "reverb_size": 0.6356
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "kinetic",
+    "dense",
+    "gentle",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

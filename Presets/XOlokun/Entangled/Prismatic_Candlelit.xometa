@@ -6,7 +6,7 @@
         "amount": 0.588,
         "engineA": "Obsidian",
         "engineB": "Osteria",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter"
       }
     ]
   },

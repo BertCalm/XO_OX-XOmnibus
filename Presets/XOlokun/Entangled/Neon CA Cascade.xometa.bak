@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Neon CA Cascade",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's neon-bright harmonics dissolve into XOutwit's 8-arm Wolfram CA's character \u2014 a clinical-electric tonal union that sharpens both engines into one coherent voice.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "outwit",
+    "harmonic",
+    "blend",
+    "tonal"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OUTWIT",
+    "BLEND",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.6
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.867,
+    "warmth": 0.0,
+    "movement": 0.652,
+    "density": 0.517,
+    "space": 0.895,
+    "aggression": 0.385
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Outwit": {
+      "owit_caRule": 30,
+      "owit_filterCutoff": 3000.0,
+      "owit_lfoRate": 0.35,
+      "owit_drive": 0.45,
+      "owit_armDepth": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Outwit",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

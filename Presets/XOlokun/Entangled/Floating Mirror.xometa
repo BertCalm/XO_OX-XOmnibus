@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Overdub",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.729
       }
     ]

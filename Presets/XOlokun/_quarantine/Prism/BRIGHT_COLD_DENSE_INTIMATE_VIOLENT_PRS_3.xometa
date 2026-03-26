@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Owlfish",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.489
       }
     ]

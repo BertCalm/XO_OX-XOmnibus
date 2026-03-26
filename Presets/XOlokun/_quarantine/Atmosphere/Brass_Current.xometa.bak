@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.651
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.913,
+    "brightness": 0.091,
+    "density": 0.65,
+    "movement": 0.925,
+    "space": 0.379,
+    "warmth": 0.971
+  },
+  "engines": [
+    "Organon",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.365,
+    "COUPLING": 0.678,
+    "MOVEMENT": 0.814,
+    "SPACE": 0.307
+  },
+  "mood": "Atmosphere",
+  "name": "Brass Current",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.365,
+      "macro_coupling": 0.678,
+      "macro_movement": 0.814,
+      "macro_space": 0.307
+    },
+    "Origami": {
+      "macro_character": 0.682,
+      "macro_coupling": 0.837,
+      "macro_movement": 0.849,
+      "macro_space": 0.388
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "warm",
+    "kinetic",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

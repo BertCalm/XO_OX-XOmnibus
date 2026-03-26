@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.931,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Overbite",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.871
       }
     ]

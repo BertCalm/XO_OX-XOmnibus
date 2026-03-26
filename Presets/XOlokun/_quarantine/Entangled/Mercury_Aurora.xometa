@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.89,
@@ -42,7 +42,7 @@
       {
         "engineA": "Orbital",
         "engineB": "Osprey",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.827
       }
     ]

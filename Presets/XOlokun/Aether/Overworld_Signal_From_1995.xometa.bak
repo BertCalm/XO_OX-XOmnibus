@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Signal From 1995",
+  "mood": "Aether",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A transmission still traveling through space — the SPC700 signature of a 1995 SNES RPG that fewer and fewer people remember but which shaped everyone who heard it. The signal is faint, the space is immense, the coupling creates ghost harmonics that weren't in the original score. Some sounds don't fade. They just travel further.",
+  "tags": [
+    "snes",
+    "1995",
+    "aether",
+    "ghost",
+    "signal",
+    "travel",
+    "memory",
+    "SPC700",
+    "space"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.65,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.98,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macro_era": 1.0,
+      "ow_macro_chaos": 0.08,
+      "ow_macro_couple": 0.42,
+      "ow_macro_space": 0.98,
+      "ow_outputLevel": 0.74,
+      "ow_couplingLevel": 0.35,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {
+    "ERA": 1.0,
+    "CHAOS": 0.08,
+    "COUPLE": 0.42,
+    "SPACE": 0.98
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -6,11 +6,11 @@
         "amount": 0.472,
         "engineA": "Obese",
         "engineB": "Ombre",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OBESE velvet density through OMBRE gradient. Saturated twilight fade.",
   "dna": {

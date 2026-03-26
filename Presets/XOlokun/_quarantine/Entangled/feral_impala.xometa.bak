@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.584
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.87,
+    "brightness": 0.7,
+    "density": 0.3,
+    "movement": 0.85,
+    "space": 0.55,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ocelot",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.725,
+    "COUPLING": 0.584,
+    "MOVEMENT": 0.725,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Feral Impala",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.73,
+      "macro_space": 0.53
+    },
+    "Ocelot": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.57,
+      "macro_movement": 0.72,
+      "macro_space": 0.47
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "aggressive",
+    "tame-impala"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

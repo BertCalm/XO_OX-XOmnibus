@@ -6,7 +6,7 @@
         "amount": 0.708,
         "engineA": "Obscura",
         "engineB": "Ouroboros",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },

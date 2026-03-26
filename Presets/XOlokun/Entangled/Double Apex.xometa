@@ -5,9 +5,9 @@
       {
         "amount": 0.693,
         "description": "Orca drives Overbite via AmpToFilter",
-        "source": "Orca",
-        "target": "Overbite",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Orca",
+        "engineB": "Overbite"
       }
     ]
   },

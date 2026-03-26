@@ -6,9 +6,9 @@
     "Outwit",
     "Opal"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT arm density amplitude chokes OPAL \u2014 when CA density spikes, grain density drops. An inverse relationship that creates rhythmic holes in the granular texture.",
+  "description": "OUTWIT arm density amplitude chokes OPAL — when CA density spikes, grain density drops. An inverse relationship that creates rhythmic holes in the granular texture.",
   "tags": [
     "entangled",
     "choke",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -66,11 +66,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "AmpToChoke",
         "amount": 0.55,
-        "description": "Outwit density amplitude inverts Opal granular density"
+        "description": "Outwit density amplitude inverts Opal granular density",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

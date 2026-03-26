@@ -6,12 +6,12 @@
         "amount": 0.736,
         "engineA": "Outwit",
         "engineB": "Obsidian",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },
   "couplingIntensity": "Deep",
-  "description": "Obsidian aggression drives OUTWIT rule toward maximum entropy \u2014 dark crystals shatter into chaos",
+  "description": "Obsidian aggression drives OUTWIT rule toward maximum entropy — dark crystals shatter into chaos",
   "dna": {
     "aggression": 0.65,
     "brightness": 0.45,

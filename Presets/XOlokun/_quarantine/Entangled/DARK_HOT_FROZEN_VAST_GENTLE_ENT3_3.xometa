@@ -5,7 +5,7 @@
       {
         "engineA": "Ouroboros",
         "engineB": "Orca",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.7665
       }
     ]

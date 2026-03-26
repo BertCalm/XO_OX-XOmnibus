@@ -5,9 +5,9 @@
       {
         "amount": 0.752,
         "description": "Orca drives Overworld via AmpToFilter",
-        "source": "Orca",
-        "target": "Overworld",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Orca",
+        "engineB": "Overworld"
       }
     ]
   },

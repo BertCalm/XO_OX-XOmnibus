@@ -8,7 +8,7 @@
         "engineA": "Obscura",
         "engineB": "Ohm",
         "notes": "Obscura resonant pitch output drives ohm_tuning — physical string's actual vibrating frequency (shaped by stiffness, boundary, and excitePos) becomes the commune's tuning reference rather than the MIDI note",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

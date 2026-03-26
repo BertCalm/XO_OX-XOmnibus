@@ -6,7 +6,7 @@
         "amount": 0.63,
         "engineA": "Outwit",
         "engineB": "Obsidian",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph"
       }
     ]
   },

@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.48,
-      "destination": "OSTERIA",
-      "source": "ORACLE",
-      "type": "AMPLITUDE_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.48,
+        "type": "AmpToFilter",
+        "engineA": "ORACLE",
+        "engineB": "OSTERIA"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
   "dna": {
     "aggression": 0.451,
     "brightness": 0.949,

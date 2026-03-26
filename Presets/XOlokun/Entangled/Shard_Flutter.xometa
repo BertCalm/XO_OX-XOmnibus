@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.752,
-        "source": "Obese",
-        "target": "OddfeliX",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Obese",
+        "engineB": "OddfeliX"
       }
     ]
   },

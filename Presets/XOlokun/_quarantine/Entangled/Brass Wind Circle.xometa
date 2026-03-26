@@ -6,7 +6,7 @@
         "amount": 0.461,
         "engineA": "Obbligato",
         "engineB": "Ottoni",
-        "type": "Pitch->Mod"
+        "type": "PitchToPitch"
       }
     ]
   },

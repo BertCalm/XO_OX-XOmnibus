@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obbligato",
+        "type": "PHASE_COUPLE",
+        "amount": 0.502
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.586,
+    "brightness": 0.06,
+    "density": 0.937,
+    "movement": 0.126,
+    "space": 0.438,
+    "warmth": 0.05
+  },
+  "engines": [
+    "Obbligato",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.043,
+    "COUPLING": 0.758,
+    "MOVEMENT": 0.104,
+    "SPACE": 0.451
+  },
+  "mood": "Family",
+  "name": "Phase Heavy",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.031,
+      "macro_coupling": 0.733,
+      "macro_movement": 0.11,
+      "macro_space": 0.438
+    },
+    "Opal": {
+      "macro_character": 0.055,
+      "macro_coupling": 0.783,
+      "macro_movement": 0.098,
+      "macro_space": 0.464
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

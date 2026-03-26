@@ -6,7 +6,7 @@
         "amount": 0.595,
         "engineA": "Overlap",
         "engineB": "Orphica",
-        "type": "SPECTRAL_CROSS"
+        "type": "EnvToMorph"
       }
     ]
   },

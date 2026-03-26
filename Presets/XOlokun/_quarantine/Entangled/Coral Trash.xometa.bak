@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Obbligato",
+        "type": "BITE_TRIGGER",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "OBBLIGATO BOND macro linked to overbite TRASH macro — necessary connection, chaotic content",
+  "engines": [
+    "Obbligato",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Coral Trash",
+  "parameters": {
+    "Obbligato": {},
+    "Overbite": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "overbite",
+    "wind"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

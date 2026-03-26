@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Orphica",
         "engineB": "Obscura",
-        "type": "SPATIAL_COUPLE"
+        "type": "AudioToWavetable"
       }
     ]
   },

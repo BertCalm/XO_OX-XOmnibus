@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ole",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.506
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.326,
+    "brightness": 0.115,
+    "density": 0.293,
+    "movement": 0.954,
+    "space": 0.369,
+    "warmth": 0.359
+  },
+  "engines": [
+    "Oblique",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.798,
+    "COUPLING": 0.57,
+    "MOVEMENT": 0.452,
+    "SPACE": 0.54
+  },
+  "mood": "Flux",
+  "name": "Void Pulse (Oblique)",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.687,
+      "macro_coupling": 0.505,
+      "macro_movement": 0.853,
+      "macro_space": 0.251
+    },
+    "Ole": {
+      "macro_character": 0.908,
+      "macro_coupling": 0.634,
+      "macro_movement": 0.051,
+      "macro_space": 0.829
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "extreme",
+    "high-movement"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

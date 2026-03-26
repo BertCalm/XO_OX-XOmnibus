@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6926,
-        "source": "Ouroboros",
-        "target": "Oceanic",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM",
+        "engineA": "Ouroboros",
+        "engineB": "Oceanic"
       }
     ]
   },

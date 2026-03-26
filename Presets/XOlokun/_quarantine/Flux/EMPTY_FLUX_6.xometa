@@ -5,7 +5,7 @@
       {
         "engineA": "Odyssey",
         "engineB": "Orca",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.5208
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

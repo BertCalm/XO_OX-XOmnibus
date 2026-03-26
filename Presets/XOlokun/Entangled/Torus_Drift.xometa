@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT slow arm drift coupled to ORBWEAVE Torus (P=2, Q=3) topology. The toroidal surface wraps twice around the hole and three times through \u2014 OUTWIT's hunt-rate creates a slow spiraling drift through the toroidal space.",
+  "description": "OUTWIT slow arm drift coupled to ORBWEAVE Torus (P=2, Q=3) topology. The toroidal surface wraps twice around the hole and three times through — OUTWIT's hunt-rate creates a slow spiraling drift through the toroidal space.",
   "tags": [
     "entangled",
     "knot-topology",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,
@@ -176,18 +176,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbweave",
         "type": "KnotTopology",
         "amount": 0.12,
-        "description": "OUTWIT slow hunt-rate creates spiraling drift through ORBWEAVE Torus (P=2, Q=3) topology"
+        "description": "OUTWIT slow hunt-rate creates spiraling drift through ORBWEAVE Torus (P=2, Q=3) topology",
+        "engineA": "Outwit",
+        "engineB": "Orbweave"
       },
       {
-        "source": "Orbweave",
-        "target": "Outwit",
         "type": "KnotTopology",
         "amount": 0.1,
-        "description": "ORBWEAVE Torus wrapping feeds toroidal phase back into OUTWIT arm space"
+        "description": "ORBWEAVE Torus wrapping feeds toroidal phase back into OUTWIT arm space",
+        "engineA": "Orbweave",
+        "engineB": "Outwit"
       }
     ]
   },

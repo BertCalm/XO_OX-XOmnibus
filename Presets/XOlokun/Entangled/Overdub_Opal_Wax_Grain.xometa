@@ -2,21 +2,40 @@
   "schema_version": 1,
   "name": "Wax Grain Couple",
   "mood": "Entangled",
-  "engines": ["Overdub", "Opal"],
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "OVERDUB as the aging carrier signal — tape-worn and drifting — with OPAL's granular engine reading it as a buffer source. OVERDUB degrades; OPAL samples the degradation. Two machines at two different points in entropy, coupled.",
-  "tags": ["overdub", "opal", "entangled", "granular", "tape", "aging", "coupling", "transcendental"],
+  "tags": [
+    "overdub",
+    "opal",
+    "entangled",
+    "granular",
+    "tape",
+    "aging",
+    "coupling",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible"],
+    "scripture": [
+      "Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible"
+    ],
     "revelation": "OPAL captures what OVERDUB forgets. When OVERDUB is the source and OPAL is the memory, the coupling runs in the direction of time.",
     "diagnosis": "Wax Grain Couple places OVERDUB in heavy degradation mode (high wow/flutter/wear) with OPAL coupled to receive it as a granular source. The OVERDUB parameters here are deliberately rough — the grain cloud that OPAL creates from a worn tape signal is the target sound."
   },
-  "macroLabels": ["TAPE AGE", "GRAIN CLOUD", "FILTER DUO", "REVERB DEPTH"],
-  "couplingIntensity": "Medium",
+  "macroLabels": [
+    "TAPE AGE",
+    "GRAIN CLOUD",
+    "FILTER DUO",
+    "REVERB DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.32,
@@ -85,10 +104,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Overdub",
-        "target": "Opal",
         "type": "AudioToBuffer",
-        "amount": 0.65
+        "amount": 0.65,
+        "engineA": "Overdub",
+        "engineB": "Opal"
       }
     ]
   },

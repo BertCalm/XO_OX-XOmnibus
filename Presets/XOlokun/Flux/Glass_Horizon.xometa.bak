@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.83
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.567,
+    "brightness": 0.966,
+    "density": 0.484,
+    "movement": 0.046,
+    "space": 0.898,
+    "warmth": 0.074
+  },
+  "engines": [
+    "Oblong",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.525,
+    "COUPLING": 0.839,
+    "MOVEMENT": 0.046,
+    "SPACE": 0.898
+  },
+  "mood": "Flux",
+  "name": "Glass Horizon",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.387,
+      "macro_coupling": 0.715,
+      "macro_movement": 0.045,
+      "macro_space": 0.89,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Odyssey": {
+      "macro_character": 0.574,
+      "macro_coupling": 0.662,
+      "macro_movement": 0.053,
+      "macro_space": 0.863
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "cold",
+    "vast",
+    "imperceptible-morph"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, shimmering, crystalline atmosphere. Let it breathe — the space is the instrument."
+}

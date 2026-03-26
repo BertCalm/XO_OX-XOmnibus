@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.719
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.055,
+    "brightness": 0.915,
+    "density": 0.109,
+    "movement": 0.503,
+    "space": 0.646,
+    "warmth": 0.669
+  },
+  "engines": [
+    "Onset",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.792,
+    "SPACE": 0.795,
+    "PUNCH": 0.503,
+    "MUTATE": 0.646
+  },
+  "mood": "Prism",
+  "name": "Balm Radiant II",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.792,
+      "macro_coupling": 0.795,
+      "macro_movement": 0.503,
+      "macro_space": 0.646
+    },
+    "Osteria": {
+      "macro_character": 0.922,
+      "macro_coupling": 0.703,
+      "macro_movement": 0.505,
+      "macro_space": 0.581
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Ouroboros",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.88
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, crystalline pad. Drives through the mix with presence and bite."
+  "description": "Restless and kinetic, dark, crystalline pad. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

@@ -6,7 +6,7 @@
         "amount": 0.668,
         "engineA": "Obsidian",
         "engineB": "Opal",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer"
       }
     ]
   },

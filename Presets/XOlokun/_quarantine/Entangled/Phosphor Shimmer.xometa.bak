@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Opal",
+        "type": "TIDAL_MODULATION",
+        "amount": 0.75
+      }
+    ]
+  },
+  "description": "Bioluminescent wake illuminates the grain field — opal shimmer as living ocean light",
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Phosphor Shimmer",
+  "parameters": {
+    "Opal": {},
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "oceanic",
+    "granular"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

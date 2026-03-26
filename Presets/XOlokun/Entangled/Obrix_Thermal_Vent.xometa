@@ -28,7 +28,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Collision",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Organon",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.7
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, balanced sound. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, balanced sound. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

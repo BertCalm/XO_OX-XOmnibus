@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Odyssey",
-        "target": "Ole",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable",
+        "engineA": "Odyssey",
+        "engineB": "Ole"
       }
     ]
   },

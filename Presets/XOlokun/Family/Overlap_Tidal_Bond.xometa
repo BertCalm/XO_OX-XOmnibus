@@ -4,11 +4,11 @@
     "pairs": [
       {
         "engine": "Ole",
-        "type": "Rhythmic"
+        "type": "RhythmToBlend"
       },
       {
         "engine": "Ombre",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },

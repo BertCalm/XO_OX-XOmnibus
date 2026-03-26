@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.535,
@@ -42,7 +42,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Ouroboros",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.841
       }
     ]

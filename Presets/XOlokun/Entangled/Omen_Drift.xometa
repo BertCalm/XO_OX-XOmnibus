@@ -6,7 +6,7 @@
         "amount": 0.551,
         "engineA": "Oracle",
         "engineB": "Ohm",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer"
       }
     ]
   },

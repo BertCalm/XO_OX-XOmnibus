@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.525
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.103,
+    "brightness": 0.044,
+    "density": 0.502,
+    "movement": 0.074,
+    "space": 0.951,
+    "warmth": 0.498
+  },
+  "engines": [
+    "Opal",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.667,
+    "COUPLING": 0.675,
+    "MOVEMENT": 0.092,
+    "SPACE": 0.762
+  },
+  "mood": "Atmosphere",
+  "name": "Penumbra Abyss II",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.667,
+      "macro_coupling": 0.675,
+      "macro_movement": 0.092,
+      "macro_space": 0.762
+    },
+    "Organon": {
+      "macro_character": 0.514,
+      "macro_coupling": 0.826,
+      "macro_movement": 0.116,
+      "macro_space": 0.827
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "still",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

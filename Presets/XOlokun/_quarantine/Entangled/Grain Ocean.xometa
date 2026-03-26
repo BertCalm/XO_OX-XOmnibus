@@ -6,7 +6,7 @@
         "amount": 0.75,
         "engineA": "Oceanic",
         "engineB": "Opal",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

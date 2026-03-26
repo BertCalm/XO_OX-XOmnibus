@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Owlfish",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.358
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.948,
+    "brightness": 0.513,
+    "density": 0.058,
+    "movement": 0.039,
+    "space": 0.98,
+    "warmth": 0.932
+  },
+  "engines": [
+    "Obbligato",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.723,
+    "COUPLING": 0.964,
+    "MOVEMENT": 0.049,
+    "SPACE": 0.98
+  },
+  "mood": "Entangled",
+  "name": "Cathedral Frozen",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.723,
+      "macro_coupling": 0.964,
+      "macro_movement": 0.049,
+      "macro_space": 0.98
+    },
+    "Owlfish": {
+      "macro_character": 0.723,
+      "macro_coupling": 0.964,
+      "macro_movement": 0.049,
+      "macro_space": 0.98
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

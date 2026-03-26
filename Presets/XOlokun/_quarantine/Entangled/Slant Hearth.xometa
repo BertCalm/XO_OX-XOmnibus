@@ -5,7 +5,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Oblique",
-        "type": "ANGULAR_DEFLECT",
+        "type": "FilterToFilter",
         "amount": 0.55
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

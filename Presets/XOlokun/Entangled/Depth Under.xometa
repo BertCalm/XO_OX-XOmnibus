@@ -5,9 +5,9 @@
       {
         "amount": 0.743,
         "description": "Orca drives Oblong via EnvToMod",
-        "source": "Orca",
-        "target": "Oblong",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Orca",
+        "engineB": "Oblong"
       }
     ]
   },

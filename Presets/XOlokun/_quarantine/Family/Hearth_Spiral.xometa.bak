@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_SLAVE",
+        "amount": 0.62
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.917,
+    "brightness": 0.537,
+    "density": 0.916,
+    "movement": 0.938,
+    "space": 0.045,
+    "warmth": 0.071
+  },
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Hearth Spiral",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.87,
+      "macro_coupling": 0.53,
+      "macro_movement": 0.84,
+      "macro_space": 0.45
+    },
+    "Ottoni": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.81,
+      "macro_space": 0.47
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "family"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

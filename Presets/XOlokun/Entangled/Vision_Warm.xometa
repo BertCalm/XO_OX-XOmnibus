@@ -6,7 +6,7 @@
         "amount": 0.702,
         "engineA": "Oracle",
         "engineB": "Osteria",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay"
       }
     ]
   },

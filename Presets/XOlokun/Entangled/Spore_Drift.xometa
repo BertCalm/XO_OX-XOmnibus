@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM coupling. Breathy, atmospheric voice with ORGANISM's automata creating slow, sparse partial activation patterns. Like spores drifting on wind \u2014 only a few partials are alive at any moment, and which ones depends on the organism's generational state. High space, low effort, maximum gentleness. The voice is barely there, but what is there is alive.",
+  "description": "ORGANISM coupling. Breathy, atmospheric voice with ORGANISM's automata creating slow, sparse partial activation patterns. Like spores drifting on wind — only a few partials are alive at any moment, and which ones depends on the organism's generational state. High space, low effort, maximum gentleness. The voice is barely there, but what is there is alive.",
   "tags": [
     "entangled",
     "organism",
@@ -21,7 +21,7 @@
     "CHORUS",
     "STAGE"
   ],
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -82,10 +82,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Organism",
-        "target": "Opera",
-        "type": "AmplitudeModulation",
-        "amount": 0.35
+        "type": "AmpToFilter",
+        "amount": 0.35,
+        "engineA": "Organism",
+        "engineB": "Opera"
       }
     ]
   },

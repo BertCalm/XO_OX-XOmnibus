@@ -6,11 +6,11 @@
         "amount": 0.538,
         "engineA": "Obese",
         "engineB": "Owlfish",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OBESE drive warms OWLFISH abyssal lantern. Fat depth, gold light.",
   "dna": {

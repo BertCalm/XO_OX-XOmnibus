@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.49,
-      "destination": "Obbligato",
-      "source": "Ole",
-      "type": "PitchToPitch"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.49,
+        "type": "PitchToPitch",
+        "engineA": "Ole",
+        "engineB": "Obbligato"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Strum and pluck in easy agreement. DRAMA low — the husbands stay outside.",

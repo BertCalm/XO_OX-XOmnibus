@@ -6,7 +6,7 @@
         "amount": 0.654,
         "engineA": "Obbligato",
         "engineB": "Overdub",
-        "type": "Amp->Space"
+        "type": "AmpToFilter"
       }
     ]
   },

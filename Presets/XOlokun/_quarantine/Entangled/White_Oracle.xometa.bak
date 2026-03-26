@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obsidian",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.69
+      }
+    ]
+  },
+  "description": "Oracle indigo bleeds into Obsidian white — the prophecy crystallises as it speaks.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.1,
+    "density": 0.12,
+    "movement": 0.42,
+    "space": 0.91,
+    "warmth": 0.0
+  },
+  "engines": [
+    "Obsidian",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.17,
+    "COUPLING": 0.69,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.91
+  },
+  "mood": "Entangled",
+  "name": "White Oracle",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.17,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.42,
+      "macro_space": 0.91
+    },
+    "Oracle": {
+      "macro_character": 0.14,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.37,
+      "macro_space": 0.94
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "white",
+    "oracle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

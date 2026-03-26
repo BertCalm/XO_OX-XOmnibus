@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Looking backward and forward \u2014 sine foundation with formant vowels. Designed for OMBRE EnvToMorph coupling: OMBRE's memory shifts OUTLOOK's horizon, changing its voice.",
+  "description": "Looking backward and forward — sine foundation with formant vowels. Designed for OMBRE EnvToMorph coupling: OMBRE's memory shifts OUTLOOK's horizon, changing its voice.",
   "tags": [
     "coupling",
     "memory",
@@ -20,7 +20,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "sonicDNA": {
     "brightness": 0.5,

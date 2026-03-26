@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Organon",
-        "type": "HARMONIC_LOCK",
+        "type": "EnvToMorph",
         "amount": 0.68
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, expansive sound. Let it breathe \u2014 the space is the instrument."
+  "description": "Interwoven and coupled, warm, expansive sound. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

@@ -5,7 +5,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Ottoni",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.8329
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

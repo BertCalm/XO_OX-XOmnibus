@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Dialogue",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "OWARE mallet strikes pump OXBOW's Chiasmus FDN filter open on every transient, then let it close as the resonance tail decays. The reverb breathes with the physics of the instrument rather than a fixed envelope. Set COUPLING macro to zero to hear two independent engines; raise it to hear the relationship emerge.",
   "dna": {

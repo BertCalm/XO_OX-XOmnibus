@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Opal",
-        "type": "SPECTRAL_BRAID",
+        "type": "EnvToMorph",
         "amount": 0.78
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, expansive atmosphere. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, warm, expansive atmosphere. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

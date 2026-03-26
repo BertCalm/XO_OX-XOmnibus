@@ -1,0 +1,95 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "source": "Octopus",
+        "target": "Opal",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Granular clouds seeded by chromatophore pulses; the octopus breathes and the opal scatters light.",
+  "dna": {
+    "aggression": 0.377,
+    "brightness": 0.728,
+    "density": 0.56,
+    "movement": 0.777,
+    "space": 0.7,
+    "warmth": 0.459
+  },
+  "engines": [
+    "Octopus",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Grain Chromatophore",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.0757,
+      "octo_ampDecay": 0.39,
+      "octo_ampRelease": 1.132,
+      "octo_ampSustain": 0.417,
+      "octo_armBaseRate": 0.72,
+      "octo_armCount": 8.0,
+      "octo_armDepth": 0.749,
+      "octo_armSpread": 0.794,
+      "octo_chromaDepth": 0.504,
+      "octo_chromaFreq": 2806.4,
+      "octo_chromaMorph": 0.505,
+      "octo_chromaSens": 0.673,
+      "octo_chromaSpeed": 0.679,
+      "octo_filterCutoff": 7329.0,
+      "octo_filterReso": 0.343,
+      "octo_inkDecay": 0.785,
+      "octo_inkDensity": 0.714,
+      "octo_inkMix": 0.301,
+      "octo_inkThreshold": 0.464,
+      "octo_level": 0.785,
+      "octo_lfo1Depth": 0.587,
+      "octo_lfo1Rate": 2.318,
+      "octo_lfo1Shape": 0.5,
+      "octo_lfo2Depth": 0.597,
+      "octo_lfo2Rate": 1.712,
+      "octo_lfo2Shape": 0.5,
+      "octo_modAttack": 0.0073,
+      "octo_modDecay": 0.13,
+      "octo_modRelease": 0.881,
+      "octo_modSustain": 0.66,
+      "octo_shiftDrift": 0.452,
+      "octo_shiftGlide": 0.355,
+      "octo_shiftMicro": 0.311,
+      "octo_suckerDecay": 0.07,
+      "octo_suckerFreq": 2538.9,
+      "octo_suckerMix": 0.48,
+      "octo_suckerReso": 0.306,
+      "octo_wtPosition": 0.199,
+      "octo_wtScanRate": 0.42
+    },
+    "Opal": {
+      "opal_filterCutoff": 5114.0,
+      "opal_level": 0.705
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "opal",
+    "alien",
+    "decentralized"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

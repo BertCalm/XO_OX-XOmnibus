@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Ember Silk",
+  "mood": "Entangled",
+  "engines": [
+    "Optic",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Optic × Orphica — Amplitude Mod coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "optic",
+    "orphica",
+    "amplitude-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.118,
+    "warmth": 0.931,
+    "movement": 0.508,
+    "density": 0.581,
+    "space": 0.597,
+    "aggression": 0.076
+  },
+  "parameters": {
+    "Optic": {},
+    "Orphica": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.605
+      }
+    ]
+  },
+  "sequencer": null
+}

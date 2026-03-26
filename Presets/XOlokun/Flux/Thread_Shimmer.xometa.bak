@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.826
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9321,
+    "brightness": 0.9077,
+    "density": 0.8731,
+    "movement": 0.9853,
+    "space": 0.0405,
+    "warmth": 0.4115
+  },
+  "engines": [
+    "Overdub",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6806,
+    "COUPLING": 0.8655,
+    "MOVEMENT": 0.9677,
+    "SPACE": 0.036
+  },
+  "mood": "Flux",
+  "name": "Thread Shimmer",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.6895,
+      "macro_coupling": 0.8512,
+      "macro_movement": 0.9673,
+      "macro_space": 0.02
+    },
+    "Overdub": {
+      "macro_character": 0.6718,
+      "macro_coupling": 0.8798,
+      "macro_movement": 0.9682,
+      "macro_space": 0.0521,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, shimmering, dense texture. Macro sweeps reveal shifting timbral landscapes."
+}

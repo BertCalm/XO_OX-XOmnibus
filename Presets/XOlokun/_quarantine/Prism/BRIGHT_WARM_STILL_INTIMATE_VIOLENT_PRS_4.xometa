@@ -5,7 +5,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Ottoni",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.77
       }
     ]

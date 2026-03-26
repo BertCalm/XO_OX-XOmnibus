@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Obese",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.91
       }
     ]

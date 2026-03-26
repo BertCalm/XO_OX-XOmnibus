@@ -18,7 +18,7 @@
         "sourceParam": "ocelot_ecosystemDepth",
         "targetEngine": "Orbital",
         "targetParam": "orb_ringDepth",
-        "type": "AudioToShape"
+        "type": "AudioToBuffer"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Ottoni",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.936
       }
     ]

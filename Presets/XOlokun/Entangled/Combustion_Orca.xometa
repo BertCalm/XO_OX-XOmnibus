@@ -5,7 +5,7 @@
       {
         "engineA": "Orca",
         "engineB": "Oblong",
-        "type": "DYNAMICS_SHARE",
+        "type": "AmpToFilter",
         "amount": 0.89
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense bass. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, warm, dense bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

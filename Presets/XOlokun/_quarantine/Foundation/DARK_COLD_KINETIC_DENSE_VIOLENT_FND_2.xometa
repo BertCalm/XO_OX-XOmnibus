@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Ouroboros",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.962
       }
     ]

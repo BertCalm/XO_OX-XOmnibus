@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -176,18 +176,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbweave",
         "type": "KnotTopology",
         "amount": 0.12,
-        "description": "OUTWIT three-arm triad modulates ORBWEAVE Trefoil braid \u2014 arms mirror the 3-strand ring"
+        "description": "OUTWIT three-arm triad modulates ORBWEAVE Trefoil braid — arms mirror the 3-strand ring",
+        "engineA": "Outwit",
+        "engineB": "Orbweave"
       },
       {
-        "source": "Orbweave",
-        "target": "Outwit",
         "type": "KnotTopology",
         "amount": 0.1,
-        "description": "ORBWEAVE Trefoil phase feedback colors OUTWIT arm filter \u2014 knot writhe becomes chromatophore pulse"
+        "description": "ORBWEAVE Trefoil phase feedback colors OUTWIT arm filter — knot writhe becomes chromatophore pulse",
+        "engineA": "Orbweave",
+        "engineB": "Outwit"
       }
     ]
   },

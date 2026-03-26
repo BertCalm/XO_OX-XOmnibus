@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Rule Meets Orbital",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Orbital"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "OUTWIT CA filter output drives ORBITAL's envelope brightness. The cellular automaton determines how much velocity expression reaches the orbital voice.",
+  "tags": [
+    "entangled",
+    "ca-to-envelope",
+    "brightness",
+    "filter",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 126,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.18,
+      "owit_armSpread": 0.55,
+      "owit_sync": 0.45,
+      "owit_feedbackAmt": 0.35,
+      "owit_chaos": 0.35,
+      "owit_density": 0.55,
+      "owit_ampAttack": 0.06,
+      "owit_ampDecay": 0.25,
+      "owit_ampSustain": 0.78,
+      "owit_ampRelease": 1.2,
+      "owit_filterCutoff": 0.68,
+      "owit_filterRes": 0.38,
+      "owit_lfoRate": 0.12,
+      "owit_lfoDepth": 0.2,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    },
+    "Orbital": {
+      "orb_brightness": 0.6,
+      "orb_filterCutoff": 0.65,
+      "orb_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Outwit",
+        "target": "Orbital",
+        "type": "FilterToFilter",
+        "amount": 0.55,
+        "description": "Outwit filter cutoff drives Orbital brightness envelope"
+      }
+    ]
+  },
+  "sequencer": null
+}

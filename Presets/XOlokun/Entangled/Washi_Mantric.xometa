@@ -6,11 +6,11 @@
         "amount": 0.649,
         "engineA": "Origami",
         "engineB": "Ohm",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Origami × Ohm coupling (filter modulation). Stub preset — sound-design pass pending.",
   "dna": {

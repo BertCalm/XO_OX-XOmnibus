@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX in parasite mode \u2014 stress accumulation drives the ORBWEAVE braid tension. Higher OBRIX note velocity = more stress = tighter braid = more harmonically dense knot pattern. Figure-eight knot (2).",
+  "description": "OBRIX in parasite mode — stress accumulation drives the ORBWEAVE braid tension. Higher OBRIX note velocity = more stress = tighter braid = more harmonically dense knot pattern. Figure-eight knot (2).",
   "tags": [
     "coupling",
     "obrix",
@@ -24,7 +24,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.28,
@@ -168,10 +168,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": 0,
-        "target": 1,
         "type": "KnotTopology",
-        "amount": 0.15
+        "amount": 0.15,
+        "engineA": 0,
+        "engineB": 1
       }
     ]
   },

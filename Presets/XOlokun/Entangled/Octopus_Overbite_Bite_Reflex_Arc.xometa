@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Octopus",
-        "target": "Overbite",
-        "type": "SPECTRAL_TRANSFER"
+        "type": "EnvToMorph",
+        "engineA": "Octopus",
+        "engineB": "Overbite"
       }
     ]
   },

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8099,
-        "source": "Overbite",
-        "target": "Ocelot",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM",
+        "engineA": "Overbite",
+        "engineB": "Ocelot"
       }
     ]
   },

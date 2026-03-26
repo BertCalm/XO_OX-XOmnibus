@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Origami",
-        "type": "HARMONIC_STACK",
+        "type": "EnvToMorph",
         "amount": 0.64
       }
     ]

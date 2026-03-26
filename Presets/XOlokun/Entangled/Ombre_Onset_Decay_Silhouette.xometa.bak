@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "source": "Ombre",
+        "target": "Onset",
+        "type": "AMPLITUDE_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Percussion decay curves traced against the ombre gradient — each hit leaves a darkening tail.",
+  "dna": {
+    "aggression": 0.453,
+    "brightness": 0.492,
+    "density": 0.688,
+    "movement": 0.71,
+    "space": 0.563,
+    "warmth": 0.541
+  },
+  "engines": [
+    "Ombre",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Entangled",
+  "name": "Decay Silhouette",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 0.1976,
+      "ombre_ampDecay": 0.544,
+      "ombre_ampRelease": 1.218,
+      "ombre_ampSustain": 0.749,
+      "ombre_blend": 0.733,
+      "ombre_crossfadeRate": 0.49,
+      "ombre_duskPosition": 0.696,
+      "ombre_filterCutoff": 8817.0,
+      "ombre_filterReso": 0.454,
+      "ombre_forgetRate": 0.557,
+      "ombre_level": 0.8,
+      "ombre_lfo1Depth": 0.359,
+      "ombre_lfo1Rate": 0.425,
+      "ombre_lfo2Depth": 0.483,
+      "ombre_lfo2Rate": 0.692,
+      "ombre_memoryDepth": 0.708,
+      "ombre_modAttack": 0.079,
+      "ombre_modDecay": 0.614,
+      "ombre_modRelease": 1.404,
+      "ombre_modSustain": 0.302,
+      "ombre_narrativeA": 0.817,
+      "ombre_narrativeB": 0.499,
+      "ombre_reverbDamp": 0.6,
+      "ombre_reverbSize": 0.848,
+      "ombre_shadowAmount": 0.757,
+      "ombre_spaceMix": 0.515,
+      "ombre_toneA": 2778.2,
+      "ombre_toneB": 2840.0
+    },
+    "Onset": {
+      "perc_filterCutoff": 4870.6,
+      "perc_level": 0.662
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "onset",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

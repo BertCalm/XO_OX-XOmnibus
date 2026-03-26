@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Oblong",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.63
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, warm, dense sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

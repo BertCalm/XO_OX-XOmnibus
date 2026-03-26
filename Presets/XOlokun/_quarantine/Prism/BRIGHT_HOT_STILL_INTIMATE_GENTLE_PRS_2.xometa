@@ -5,7 +5,7 @@
       {
         "engineA": "Optic",
         "engineB": "Ole",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.884
       }
     ]

@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Oblong",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.89
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, warm pad. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, dark, warm pad. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

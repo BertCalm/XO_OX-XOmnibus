@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Ouroboros",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.729
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, crystalline atmosphere. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Anchored and grounding, shimmering, crystalline atmosphere. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

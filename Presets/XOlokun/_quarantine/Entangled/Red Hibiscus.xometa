@@ -6,7 +6,7 @@
         "amount": 0.58,
         "engineA": "Ole",
         "engineB": "Ouroboros",
-        "type": "FREQUENCY_SHIFT"
+        "type": "AudioToFM"
       }
     ]
   },

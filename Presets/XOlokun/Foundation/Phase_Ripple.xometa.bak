@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obese",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.297
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.911,
+    "brightness": 0.085,
+    "density": 0.423,
+    "movement": 0.94,
+    "space": 0.485,
+    "warmth": 0.085
+  },
+  "engines": [
+    "Overdub",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.511,
+    "COUPLING": 0.524,
+    "MOVEMENT": 0.29,
+    "SPACE": 0.41
+  },
+  "mood": "Foundation",
+  "name": "Phase Ripple",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.554,
+      "macro_coupling": 0.791,
+      "macro_movement": 0.846,
+      "macro_space": 0.655
+    },
+    "Overdub": {
+      "macro_character": 0.529,
+      "macro_coupling": 0.241,
+      "macro_movement": 0.844,
+      "macro_space": 0.222,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "cold",
+    "kinetic",
+    "violent",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, dark, crystalline texture. Macro sweeps reveal shifting timbral landscapes."
+}

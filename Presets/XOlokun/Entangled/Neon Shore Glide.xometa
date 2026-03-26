@@ -64,7 +64,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Osprey",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.65
       }
     ]

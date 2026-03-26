@@ -6,7 +6,7 @@
         "amount": 0.66,
         "engineA": "Ottoni",
         "engineB": "Ouroboros",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

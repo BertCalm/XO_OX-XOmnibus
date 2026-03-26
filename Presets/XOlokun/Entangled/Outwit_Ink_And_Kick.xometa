@@ -5,9 +5,9 @@
       {
         "amount": 0.55,
         "description": "Outwit CA density modulates Onset trigger probability",
-        "source": "Outwit",
-        "target": "Onset",
-        "type": "ChaosToTrigger"
+        "type": "AudioToFM",
+        "engineA": "Outwit",
+        "engineB": "Onset"
       }
     ]
   },

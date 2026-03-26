@@ -6,7 +6,7 @@
         "amount": 0.538,
         "engineA": "Obsidian",
         "engineB": "Organon",
-        "type": "Pitch->Rate"
+        "type": "LFOToPitch"
       }
     ]
   },

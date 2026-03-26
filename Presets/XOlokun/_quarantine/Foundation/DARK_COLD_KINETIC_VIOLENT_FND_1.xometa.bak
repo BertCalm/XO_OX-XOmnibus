@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ouroboros",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.515
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.886,
+    "brightness": 0.052,
+    "density": 0.517,
+    "movement": 0.915,
+    "space": 0.389,
+    "warmth": 0.107
+  },
+  "engines": [
+    "OddfeliX",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.296,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.877,
+    "SPACE": 0.347
+  },
+  "mood": "Foundation",
+  "name": "Wave Pulse",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.63,
+      "macro_coupling": 0.225,
+      "macro_movement": 0.228,
+      "macro_space": 0.565
+    },
+    "Ouroboros": {
+      "macro_character": 0.345,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.159,
+      "macro_space": 0.596
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "cold",
+    "kinetic",
+    "violent",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

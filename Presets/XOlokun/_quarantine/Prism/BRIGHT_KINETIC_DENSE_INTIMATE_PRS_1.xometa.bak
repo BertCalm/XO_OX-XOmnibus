@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Optic",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.401
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.315,
+    "brightness": 0.863,
+    "density": 0.93,
+    "movement": 0.891,
+    "space": 0.138,
+    "warmth": 0.651
+  },
+  "engines": [
+    "Origami",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.589,
+    "COUPLING": 0.453,
+    "MOVEMENT": 0.891,
+    "SPACE": 0.138
+  },
+  "mood": "Prism",
+  "name": "Bloom Saturated",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.226,
+      "macro_coupling": 0.725,
+      "macro_movement": 0.891,
+      "macro_space": 0.138
+    },
+    "Origami": {
+      "macro_character": 0.589,
+      "macro_coupling": 0.453,
+      "macro_movement": 0.891,
+      "macro_space": 0.138
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

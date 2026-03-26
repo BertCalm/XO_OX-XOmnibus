@@ -5,9 +5,9 @@
       {
         "amount": 0.716,
         "description": "Owlfish drives Obscura via HARMONIC_BLEND",
-        "source": "Owlfish",
-        "target": "Obscura",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Owlfish",
+        "engineB": "Obscura"
       }
     ]
   },

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9617,
-        "source": "Ohm",
-        "target": "Ocelot",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Ohm",
+        "engineB": "Ocelot"
       }
     ]
   },

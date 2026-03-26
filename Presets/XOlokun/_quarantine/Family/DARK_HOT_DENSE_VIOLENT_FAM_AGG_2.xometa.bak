@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.788
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.951,
+    "brightness": 0.102,
+    "density": 0.947,
+    "movement": 0.452,
+    "space": 0.449,
+    "warmth": 0.901
+  },
+  "engines": [
+    "Opal",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.633,
+    "COUPLING": 0.916,
+    "MOVEMENT": 0.722,
+    "SPACE": 0.547
+  },
+  "mood": "Family",
+  "name": "Mahogany Storm",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.644,
+      "macro_coupling": 0.93,
+      "macro_movement": 0.737,
+      "macro_space": 0.543
+    },
+    "Opal": {
+      "macro_character": 0.633,
+      "macro_coupling": 0.916,
+      "macro_movement": 0.722,
+      "macro_space": 0.547
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "hot",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

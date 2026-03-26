@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8425,
-        "source": "Overlap",
-        "target": "Ouroboros",
-        "type": "FORMANT_BRIDGE"
+        "type": "EnvToMorph",
+        "engineA": "Overlap",
+        "engineB": "Ouroboros"
       }
     ]
   },

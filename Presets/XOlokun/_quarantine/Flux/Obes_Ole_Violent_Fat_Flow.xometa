@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-16",
   "legacy": {
@@ -49,7 +49,8 @@
     "type": "HARMONIC_STACK",
     "source": "OBESE",
     "target": "OLE",
-    "amount": 0.76
+    "amount": 0.76,
+    "pairs": []
   },
   "sequencer": null,
   "dna": {

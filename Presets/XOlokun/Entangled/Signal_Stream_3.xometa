@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8977,
-        "source": "Overlap",
-        "target": "Octopus",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Overlap",
+        "engineB": "Octopus"
       }
     ]
   },

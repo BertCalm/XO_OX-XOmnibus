@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Tape Web",
   "mood": "Entangled",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bidirectional delay feedback web — two engines sharing time-space through tape circuits.",
-  "tags": ["entangled", "tape", "web", "bidirectional", "delay", "circuit"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "entangled",
+    "tape",
+    "web",
+    "bidirectional",
+    "delay",
+    "circuit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,12 +70,34 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.2, "COUPLING": 0.68, "SPACE": 0.6},
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.68,
+    "SPACE": 0.6
+  },
   "coupling": {
     "pairs": [
-      {"source": "Overdub", "target": "Oceanic", "type": "ReverbShare", "intensity": 0.55},
-      {"source": "Oceanic", "target": "Overdub", "type": "FilterMod", "intensity": 0.45}
+      {
+        "type": "FilterToFilter",
+        "intensity": 0.55,
+        "engineA": "Overdub",
+        "engineB": "Oceanic"
+      },
+      {
+        "type": "FilterToFilter",
+        "intensity": 0.45,
+        "engineA": "Oceanic",
+        "engineB": "Overdub"
+      }
     ]
   },
-  "dna": {"brightness": 0.35, "warmth": 0.82, "movement": 0.28, "density": 0.52, "space": 0.65, "aggression": 0.22}
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.82,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.65,
+    "aggression": 0.22
+  }
 }

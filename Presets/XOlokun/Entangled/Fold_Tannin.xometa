@@ -6,7 +6,7 @@
         "amount": 0.431,
         "engineA": "Origami",
         "engineB": "Osteria",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },

@@ -6,7 +6,7 @@
         "amount": 0.833,
         "engineA": "Ombre",
         "engineB": "Orca",
-        "type": "SPECTRAL_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

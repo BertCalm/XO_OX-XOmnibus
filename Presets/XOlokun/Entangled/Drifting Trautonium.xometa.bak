@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.598,
+        "description": "Owlfish drives Odyssey via LFO_SYNC",
+        "source": "Owlfish",
+        "target": "Odyssey",
+        "type": "LFO_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "ODYSSEY's drift modulation applied to OWLFISH's resonant feedback — the oscillator drifting like a current, the tone never settling.",
+  "dna": {
+    "aggression": 0.264,
+    "brightness": 0.467,
+    "density": 0.593,
+    "movement": 0.442,
+    "space": 0.627,
+    "warmth": 0.577
+  },
+  "engines": [
+    "Owlfish",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Drifting Trautonium",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 0.409,
+      "drift_driftDepth": 0.284,
+      "drift_filterCutoff": 1.0,
+      "drift_macroCharacter": 0.092,
+      "drift_macroCoupling": 0.0,
+      "drift_oscA_level": 0.547,
+      "drift_oscA_mode": 0,
+      "drift_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.353,
+      "owl_ampAttack": 0.134,
+      "owl_ampDecay": 0.925,
+      "owl_ampRelease": 1.62,
+      "owl_ampSustain": 0.554,
+      "owl_envDepth": 0.505,
+      "owl_filterCutoff": 0.485,
+      "owl_filterRes": 0.494,
+      "owl_hall": 0.292,
+      "owl_lfoDepth": 0.288,
+      "owl_lfoRate": 0.138,
+      "owl_lfoShape": 0.541,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.742,
+      "owl_mixturSpread": 0.36,
+      "owl_oscLevel": 0.636,
+      "owl_oscPitch": 0.567,
+      "owl_resonantFeedback": 0.477,
+      "owl_resonantPitch": 0.681,
+      "owl_shimmer": 0.25,
+      "owl_subLevel": 0.453
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "odyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ole",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.819
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.326,
+    "brightness": 0.957,
+    "density": 0.433,
+    "movement": 0.112,
+    "space": 0.943,
+    "warmth": 0.902
+  },
+  "engines": [
+    "Ole",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.924,
+    "COUPLING": 0.392,
+    "MOVEMENT": 0.119,
+    "SPACE": 0.935
+  },
+  "mood": "Family",
+  "name": "Solar Vast",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.905,
+      "macro_coupling": 0.398,
+      "macro_movement": 0.14,
+      "macro_space": 0.958
+    },
+    "Opal": {
+      "macro_character": 0.944,
+      "macro_coupling": 0.386,
+      "macro_movement": 0.098,
+      "macro_space": 0.913
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "vast",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

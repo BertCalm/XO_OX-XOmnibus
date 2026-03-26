@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Octopus",
-        "target": "Onset",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable",
+        "engineA": "Octopus",
+        "engineB": "Onset"
       }
     ]
   },

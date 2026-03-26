@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.32,
-      "destination": "Orphica",
-      "source": "Ole",
-      "type": "FilterToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.32,
+        "type": "FilterToFilter",
+        "engineA": "Ole",
+        "engineB": "Orphica"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Warm strum with ocean air. DRAMA simmering but nothing boiling yet.",

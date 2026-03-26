@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.458,
+      "destination": "OBBLIGATO",
+      "source": "OPTIC",
+      "type": "CHAOS_INJECT"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "dna": {
+    "aggression": 0.069,
+    "brightness": 0.949,
+    "density": 0.102,
+    "movement": 0.591,
+    "space": 0.529,
+    "warmth": 0.056
+  },
+  "engines": [
+    "Optic",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Polar Bloom",
+  "parameters": {
+    "Obbligato": {
+      "level": 0.784,
+      "pan": 0.138
+    },
+    "Optic": {
+      "level": 0.807,
+      "pan": 0.105
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "bright",
+    "cold",
+    "sparse",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

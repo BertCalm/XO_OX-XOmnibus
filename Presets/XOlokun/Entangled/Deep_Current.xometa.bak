@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.608,
+        "engineA": "Overlap",
+        "engineB": "Oceanic",
+        "type": "SPATIAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Two deep-water engines merge — OCEANIC pressure gradient feeds OVERLAP room expansion",
+  "dna": {
+    "aggression": 0.175,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.4,
+    "space": 0.875,
+    "warmth": 0.625
+  },
+  "engines": [
+    "Overlap",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.492,
+    "COUPLING": 0.648,
+    "MOVEMENT": 0.453,
+    "SPACE": 0.668
+  },
+  "mood": "Entangled",
+  "name": "Deep Current IV",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.733,
+      "olap_crossfeedAmt": 0.398,
+      "olap_damping": 0.443,
+      "olap_decay": 0.715,
+      "olap_diffusion": 0.674,
+      "olap_earlyMix": 0.491,
+      "olap_filterCutoff": 0.791,
+      "olap_filterReso": 0.185,
+      "olap_frondDensity": 0.489,
+      "olap_lateMix": 0.439,
+      "olap_modDepth": 0.392,
+      "olap_modRate": 0.144,
+      "olap_nodeCount": 6,
+      "olap_outputLevel": 0.757,
+      "olap_preDelay": 0.256,
+      "olap_shimmerMix": 0.195,
+      "olap_size": 0.873,
+      "olap_spinRate": 0.095
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oceanic",
+    "deep"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

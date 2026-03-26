@@ -6,7 +6,7 @@
         "amount": 0.546,
         "engineA": "Ohm",
         "engineB": "Obbligato",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.512,
+        "engineA": "Overbite",
+        "engineB": "Orphica",
+        "type": "envelope_share"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OVERBITE canine clips ORPHICA lyre filament. Severed gossamer resonance.",
+  "dna": {
+    "aggression": 0.451,
+    "brightness": 0.597,
+    "density": 0.54,
+    "movement": 0.6,
+    "space": 0.525,
+    "warmth": 0.509
+  },
+  "engines": [
+    "Overbite",
+    "Orphica"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Fang Aether",
+  "parameters": {
+    "Orphica": {
+      "orph_couplingIn": 0.682,
+      "orph_couplingOut": 0.571,
+      "orph_macro1": 0.596,
+      "orph_macro2": 0.635,
+      "orph_macro3": 0.302,
+      "orph_macro4": 0.489,
+      "orph_outputLevel": 0.819,
+      "orph_outputPan": -0.033
+    },
+    "Overbite": {
+      "poss_gnashAmount": 0.642,
+      "poss_macroBelly": 0.376,
+      "poss_macroBite": 0.367,
+      "poss_macroScurry": 0.66,
+      "poss_macroTrash": 0.326,
+      "poss_level": 0.769,
+      "poss_pan": -0.016
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "overbite",
+    "orphica",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 130,
+  "version": "1.0.0"
+}

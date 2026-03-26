@@ -6,7 +6,7 @@
         "amount": 0.722,
         "engineA": "Obbligato",
         "engineB": "Organon",
-        "type": "Filter->Pitch"
+        "type": "AmpToPitch"
       }
     ]
   },

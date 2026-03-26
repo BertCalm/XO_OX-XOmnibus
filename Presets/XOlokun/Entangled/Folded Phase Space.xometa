@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Ouroboros",
         "engineB": "Origami",
-        "type": "CV->Pitch"
+        "type": "AmpToPitch"
       }
     ]
   },

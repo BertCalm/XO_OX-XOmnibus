@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.52,
-      "destination": "Ohm",
-      "source": "Obbligato",
-      "type": "PitchToPitch"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.52,
+        "type": "PitchToPitch",
+        "engineA": "Obbligato",
+        "engineB": "Ohm"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "The argument dissolved. What remains is pure wind, two voices breathing as one.",

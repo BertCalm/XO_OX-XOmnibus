@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.568,
+        "engineA": "Outwit",
+        "engineB": "Obese",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Obese saturation density seeds OUTWIT initial row population — thick signal, thick cellular mass",
+  "dna": {
+    "aggression": 0.675,
+    "brightness": 0.625,
+    "density": 0.775,
+    "movement": 0.8,
+    "space": 0.425,
+    "warmth": 0.425
+  },
+  "engines": [
+    "Outwit",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.735,
+    "COUPLING": 0.71,
+    "MOVEMENT": 0.626,
+    "SPACE": 0.536
+  },
+  "mood": "Entangled",
+  "name": "Fat Emergence",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.059,
+      "owit_ampRelease": 0.157,
+      "owit_armStagger": 0.339,
+      "owit_arms": 8,
+      "owit_borderMode": 0,
+      "owit_cellSize": 0.492,
+      "owit_chroma1": 0.867,
+      "owit_chroma2": 0.893,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.815,
+      "owit_density": 0.629,
+      "owit_evolveRate": 0.37,
+      "owit_filterCutoff": 0.531,
+      "owit_filterReso": 0.202,
+      "owit_inkCloudMix": 0.033,
+      "owit_mutateProb": 0.323,
+      "owit_outputLevel": 0.835,
+      "owit_pitchSpread": 0.264,
+      "owit_polyDepth": 0.45,
+      "owit_rule": 54
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "obese",
+    "fat",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

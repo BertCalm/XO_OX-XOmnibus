@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "AudioToFM"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Oracle",
+        "engineB": "Oblique",
+        "type": "PitchSync"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "ORACLE's output arriving at an oblique angle — the prediction is correct but the path is never direct.",
+  "dna": {
+    "aggression": 0.46,
+    "brightness": 0.705,
+    "density": 0.555,
+    "movement": 0.733,
+    "space": 0.667,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oblique",
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Slanted Prophecy",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Oracle": {
+      "oracle_ampAttack": 0.03,
+      "oracle_ampRelease": 1.5,
+      "oracle_filterCutoff": 2800.0,
+      "oracle_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oblique",
+    "oracle",
+    "prism",
+    "rtj",
+    "funk",
+    "tame-impala",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

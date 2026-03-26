@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8977,
+        "source": "Overlap",
+        "target": "Octopus",
+        "type": "HARMONIC_FOLD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Dark Cold Kinetic Intimate character entanglement — OVERLAP × OCTOPUS via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.3434,
+    "brightness": 0.0327,
+    "density": 0.685,
+    "movement": 0.8914,
+    "space": 0.0492,
+    "warmth": 0.1267
+  },
+  "engines": [
+    "Overlap",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "FOLD",
+    "WEAVE",
+    "HALL"
+  ],
+  "macros": {
+    "CHARACTER": 0.0797,
+    "COUPLING": 0.8977,
+    "MOVEMENT": 0.8914,
+    "SPACE": 0.0492
+  },
+  "mood": "Entangled",
+  "name": "Signal Stream 3",
+  "parameters": {
+    "Octopus": {
+      "amp_attack": 0.0781,
+      "amp_release": 0.1222,
+      "coupling_level": 0.7016,
+      "density": 0.6786,
+      "drive": 0.2949,
+      "filter_cutoff": 0.2405,
+      "filter_resonance": 0.2557,
+      "macro_character": 0.3736,
+      "macro_coupling": 0.7053,
+      "macro_movement": 0.8778,
+      "macro_space": 0.077,
+      "output_level": 0.9064,
+      "reverb_mix": 0.1693,
+      "reverb_size": 0.2132
+    },
+    "Overlap": {
+      "amp_attack": 0.0535,
+      "amp_release": 0.1635,
+      "coupling_level": 0.653,
+      "density": 0.6987,
+      "drive": 0.3441,
+      "filter_cutoff": 0.2033,
+      "filter_resonance": 0.2884,
+      "macro_character": 0.369,
+      "macro_coupling": 0.711,
+      "macro_movement": 0.8923,
+      "macro_space": 0.0553,
+      "output_level": 0.8603,
+      "reverb_mix": 0.1802,
+      "reverb_size": 0.2471
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "kinetic",
+    "intimate",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

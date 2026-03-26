@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.58,
+        "engineA": "Ouroboros",
+        "engineB": "Orphica",
+        "type": "FREQUENCY_SHIFT"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Ouroboros cyclic topology frequency-shifts ORPHICA strings — eternal pluck.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.78,
+    "density": 0.42,
+    "movement": 0.65,
+    "space": 0.73,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Ouroboros",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.615,
+    "COUPLING": 0.58,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.595
+  },
+  "mood": "Entangled",
+  "name": "Cyclic Seafoam",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.5,
+      "macro_space": 0.75
+    },
+    "Ouroboros": {
+      "macro_character": 0.58,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.7,
+      "macro_space": 0.44
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "cycle",
+    "seafoam",
+    "frequency"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

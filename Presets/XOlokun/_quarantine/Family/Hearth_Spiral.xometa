@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "OddfeliX",
-        "type": "ENVELOPE_SLAVE",
+        "type": "EnvToDecay",
         "amount": 0.62
       }
     ]

@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.72,
+        "engineA": "Ole",
+        "engineB": "Obscura",
+        "type": "ENVELOPE_LINK"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OLE envelope drama linked into Obscura's decay — passionate slow fade.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.52,
+    "density": 0.6,
+    "movement": 0.65,
+    "space": 0.62,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Ole",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.62,
+    "COUPLING": 0.72,
+    "MOVEMENT": 0.615,
+    "SPACE": 0.515
+  },
+  "mood": "Entangled",
+  "name": "Drama In Silver",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.58,
+      "macro_space": 0.68
+    },
+    "Ole": {
+      "macro_character": 0.72,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.65,
+      "macro_space": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "envelope",
+    "drama",
+    "silver"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

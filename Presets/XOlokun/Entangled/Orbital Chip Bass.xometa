@@ -52,7 +52,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Owlfish",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.6
       },
       {

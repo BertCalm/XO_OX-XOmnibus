@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oracle",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Oracle Maqam scales pitch-sync ORPHICA — siren song in ancient tuning.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.84,
+    "density": 0.42,
+    "movement": 0.58,
+    "space": 0.75,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Oracle",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.61,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.69
+  },
+  "mood": "Entangled",
+  "name": "Maqam Siren",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.54,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.65,
+      "macro_space": 0.62
+    },
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.5,
+      "macro_space": 0.76
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "maqam",
+    "siren",
+    "pitch"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

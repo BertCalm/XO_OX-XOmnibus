@@ -6,7 +6,7 @@
         "amount": 0.821,
         "engineA": "Orca",
         "engineB": "Octopus",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM"
       }
     ]
   },

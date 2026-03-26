@@ -6,11 +6,11 @@
         "amount": 0.469,
         "engineA": "Obscura",
         "engineB": "Obbligato",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Obscura × Obbligato coupling (rhythm sync). Stub preset — sound-design pass pending.",
   "dna": {

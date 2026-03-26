@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Organon",
-        "type": "SPATIAL_BIND",
+        "type": "FilterToFilter",
         "amount": 0.74
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Warm and familiar, dark, warm sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

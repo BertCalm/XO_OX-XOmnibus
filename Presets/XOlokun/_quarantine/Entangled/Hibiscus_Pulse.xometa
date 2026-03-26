@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Organon",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.74
       }
     ]
@@ -60,5 +60,6 @@
     "pulse"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

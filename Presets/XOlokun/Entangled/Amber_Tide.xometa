@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -137,11 +137,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Oceanic",
         "type": "FilterToFilter",
         "amount": 0.14,
-        "description": "OUTWIT filter sweep drives OCEANIC chromatophore cutoff \u2014 amber skin pulses create tidal filter waves"
+        "description": "OUTWIT filter sweep drives OCEANIC chromatophore cutoff — amber skin pulses create tidal filter waves",
+        "engineA": "Outwit",
+        "engineB": "Oceanic"
       }
     ]
   },

@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.667,
-      "destination": "ORCA",
-      "source": "OWLFISH",
-      "type": "SPATIAL_COUPLE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.667,
+        "type": "AudioToWavetable",
+        "engineA": "OWLFISH",
+        "engineB": "ORCA"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, bright, warm, vast.",

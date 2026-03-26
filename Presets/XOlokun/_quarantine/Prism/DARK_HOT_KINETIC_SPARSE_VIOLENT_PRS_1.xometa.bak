@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ole",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.611
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_SPARSE_VIOLENT. Variant 1.",
+  "dna": {
+    "aggression": 0.951,
+    "brightness": 0.087,
+    "density": 0.063,
+    "movement": 0.98,
+    "space": 0.61,
+    "warmth": 0.914
+  },
+  "engines": [
+    "Owlfish",
+    "Ole"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.143,
+    "COUPLING": 0.015,
+    "MOVEMENT": 0.998,
+    "SPACE": 0.605
+  },
+  "mood": "Prism",
+  "name": "Shadow Cascade",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.231,
+      "macro_coupling": 0.031,
+      "macro_movement": 1.0,
+      "macro_space": 0.629
+    },
+    "Owlfish": {
+      "macro_character": 0.054,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.997,
+      "macro_space": 0.58
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "sparse",
+    "hot",
+    "extreme",
+    "kinetic",
+    "dark",
+    "diversity",
+    "violent",
+    "prism"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

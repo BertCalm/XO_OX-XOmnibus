@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osteria",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.846
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.901,
+    "brightness": 0.111,
+    "density": 0.102,
+    "movement": 0.091,
+    "space": 0.927,
+    "warmth": 0.519
+  },
+  "engines": [
+    "Oblique",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.312,
+    "COUPLING": 0.846,
+    "MOVEMENT": 0.086,
+    "SPACE": 0.909
+  },
+  "mood": "Entangled",
+  "name": "Tone Vast",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.323,
+      "macro_coupling": 0.077,
+      "macro_movement": 0.086,
+      "macro_space": 0.914
+    },
+    "Osteria": {
+      "macro_character": 0.301,
+      "macro_coupling": 0.104,
+      "macro_movement": 0.087,
+      "macro_space": 0.905
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "sparse",
+    "vast",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

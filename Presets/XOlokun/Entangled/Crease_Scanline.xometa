@@ -6,11 +6,11 @@
         "amount": 0.442,
         "engineA": "Origami",
         "engineB": "Overworld",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Origami × Overworld coupling (amplitude sidechain). Stub preset — sound-design pass pending.",
   "dna": {

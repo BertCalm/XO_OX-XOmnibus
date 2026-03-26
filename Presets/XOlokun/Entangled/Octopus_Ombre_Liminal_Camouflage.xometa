@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Octopus",
-        "target": "Ombre",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Octopus",
+        "engineB": "Ombre"
       }
     ]
   },

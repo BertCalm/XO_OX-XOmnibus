@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.632,
@@ -42,7 +42,7 @@
       {
         "engineA": "Optic",
         "engineB": "Onset",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.767
       }
     ]

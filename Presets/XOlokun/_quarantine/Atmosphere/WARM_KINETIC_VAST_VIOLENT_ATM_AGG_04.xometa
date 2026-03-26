@@ -5,7 +5,7 @@
       {
         "engineA": "Optic",
         "engineB": "Osprey",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.893
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

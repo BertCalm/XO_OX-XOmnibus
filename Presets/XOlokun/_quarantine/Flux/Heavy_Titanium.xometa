@@ -5,7 +5,7 @@
       {
         "engineA": "Ouroboros",
         "engineB": "Opal",
-        "type": "FILTER_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.66
       }
     ]

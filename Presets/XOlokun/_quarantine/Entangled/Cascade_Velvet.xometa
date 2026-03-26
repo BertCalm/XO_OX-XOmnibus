@@ -6,11 +6,11 @@
         "amount": 0.738,
         "engineA": "OddfeliX",
         "engineB": "Octopus",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "description": "OddFelix × Octopus — Harmonic Fold coupling at extreme DNA corner.",
   "dna": {
     "aggression": 0.886,

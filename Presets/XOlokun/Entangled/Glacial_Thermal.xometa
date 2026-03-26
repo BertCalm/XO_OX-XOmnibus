@@ -6,7 +6,7 @@
         "amount": 0.482,
         "engineA": "Obsidian",
         "engineB": "Osprey",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch"
       }
     ]
   },

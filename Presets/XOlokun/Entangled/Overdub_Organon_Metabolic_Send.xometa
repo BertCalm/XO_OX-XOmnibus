@@ -9,7 +9,7 @@
         "sourceParam": "organon_metabolicRate",
         "targetEngine": "Overdub",
         "targetParam": "dub_sendAmount",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.45,

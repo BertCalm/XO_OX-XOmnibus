@@ -4,9 +4,10 @@
     "intensity": "Extreme",
     "sourceEngine": "Orphica",
     "targetEngine": null,
-    "type": "Filter"
+    "type": "Filter",
+    "pairs": []
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Ultra-diverse Prism preset: HOT TIGHT KINETIC DENSE PRI 1.",
   "dna": {

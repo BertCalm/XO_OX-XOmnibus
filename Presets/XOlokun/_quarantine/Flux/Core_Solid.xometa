@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Osteria",
-        "type": "RING_MOD",
+        "type": "AudioToRing",
         "amount": 0.74
       }
     ]

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "8-Arm Pixel Grid",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD's 8-bit arpeggio notes distributed across OCTOPUS's 8 arms. Each arm handles one note of the sequence. Distributed pixel intelligence.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overworld",
+    "octopus",
+    "chip",
+    "arp",
+    "distributed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.4,
+    "movement": 0.75,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_arpRate": 95.0,
+      "ow_eraCross": 0.5,
+      "ow_oscWave": 1
+    },
+    "Octopus": {
+      "oct_armBalance": 0.55,
+      "oct_intelRate": 0.65,
+      "oct_inkDensity": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Octopus",
+        "type": "Rhythm->Blend",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Octopus",
+        "engineB": "Overworld",
+        "type": "Env->Character",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

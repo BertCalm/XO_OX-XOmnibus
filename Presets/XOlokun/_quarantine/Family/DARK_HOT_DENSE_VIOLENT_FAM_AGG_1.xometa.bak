@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Odyssey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.736
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.986,
+    "brightness": 0.102,
+    "density": 0.986,
+    "movement": 0.346,
+    "space": 0.356,
+    "warmth": 0.911
+  },
+  "engines": [
+    "Orphica",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.866,
+    "COUPLING": 0.938,
+    "MOVEMENT": 0.785,
+    "SPACE": 0.93
+  },
+  "mood": "Family",
+  "name": "Dusk Solid",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.896,
+      "macro_coupling": 0.967,
+      "macro_movement": 0.772,
+      "macro_space": 0.881
+    },
+    "Orphica": {
+      "macro_character": 0.866,
+      "macro_coupling": 0.938,
+      "macro_movement": 0.785,
+      "macro_space": 0.93
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "hot",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

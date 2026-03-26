@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.638
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.446,
+    "brightness": 0.877,
+    "density": 0.576,
+    "movement": 0.889,
+    "space": 0.876,
+    "warmth": 0.952
+  },
+  "engines": [
+    "Organon",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.898,
+    "COUPLING": 0.514,
+    "MOVEMENT": 0.884,
+    "SPACE": 0.867
+  },
+  "mood": "Family",
+  "name": "Candlelight Shimmer 2",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.493,
+      "macro_movement": 0.86,
+      "macro_space": 0.863
+    },
+    "Origami": {
+      "macro_character": 0.896,
+      "macro_coupling": 0.534,
+      "macro_movement": 0.908,
+      "macro_space": 0.87
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "vast",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oblique",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.601
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.122,
+    "brightness": 0.663,
+    "density": 0.655,
+    "movement": 0.955,
+    "space": 0.883,
+    "warmth": 0.866
+  },
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.546,
+    "COUPLING": 0.591,
+    "MOVEMENT": 0.782,
+    "SPACE": 0.742
+  },
+  "mood": "Atmosphere",
+  "name": "Ripple Expanse",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.654,
+      "macro_coupling": 0.499,
+      "macro_movement": 0.856,
+      "macro_space": 0.875
+    },
+    "OddOscar": {
+      "macro_character": 0.546,
+      "macro_coupling": 0.591,
+      "macro_movement": 0.782,
+      "macro_space": 0.742
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

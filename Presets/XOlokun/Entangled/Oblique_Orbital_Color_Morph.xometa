@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Color Morph",
   "mood": "Entangled",
-  "engines": ["Oblique", "Orbital"],
+  "engines": [
+    "Oblique",
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's morph crossfade modulating OBLIQUE's prism color — harmonic profile shift driving color shift, warm-red and violet in simultaneous transformation.",
-  "tags": ["color", "morph", "crossfade", "warm", "entangled"],
-  "macroLabels": ["COLOR", "MORPH", "SPECTRAL", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "color",
+    "morph",
+    "crossfade",
+    "warm",
+    "entangled"
+  ],
+  "macroLabels": [
+    "COLOR",
+    "MORPH",
+    "SPECTRAL",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.6, "movement": 0.48, "density": 0.6, "space": 0.58, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.6,
+    "movement": 0.48,
+    "density": 0.6,
+    "space": 0.58,
+    "aggression": 0.2
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.7,
@@ -74,11 +95,26 @@
       "orb_level": 0.72
     }
   },
-  "macros": {"COLOR": 0.7, "MORPH": 0.5, "SPECTRAL": 0.6, "SPACE": 0.58},
+  "macros": {
+    "COLOR": 0.7,
+    "MORPH": 0.5,
+    "SPECTRAL": 0.6,
+    "SPACE": 0.58
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Orbital", "engineB": "Oblique", "type": "LFOToFilter", "amount": 0.5},
-      {"engineA": "Oblique", "engineB": "Orbital", "type": "AmpToFilter", "amount": 0.38}
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.38
+      }
     ]
   }
 }

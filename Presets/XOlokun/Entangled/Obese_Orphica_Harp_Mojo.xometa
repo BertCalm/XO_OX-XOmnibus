@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Obese",
-        "target": "Orphica",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Obese",
+        "engineB": "Orphica"
       }
     ]
   },

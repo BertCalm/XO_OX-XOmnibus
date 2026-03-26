@@ -5,7 +5,7 @@
       {
         "engineA": "Optic",
         "engineB": "Oblong",
-        "type": "ENVELOPE_SLAVE",
+        "type": "EnvToDecay",
         "amount": 0.94
       }
     ]

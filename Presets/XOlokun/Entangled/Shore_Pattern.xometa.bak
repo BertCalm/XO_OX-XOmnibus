@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.523,
+        "engineA": "Outwit",
+        "engineB": "Osprey",
+        "type": "FILTER_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Osprey shore blend index selects OUTWIT rule biome \u2014 each coastline its own cellular ecosystem",
+  "dna": {
+    "aggression": 0.475,
+    "brightness": 0.575,
+    "density": 0.65,
+    "movement": 0.7,
+    "space": 0.575,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Outwit",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.71,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.487,
+    "SPACE": 0.627
+  },
+  "mood": "Entangled",
+  "name": "Shore Pattern",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.15,
+      "owit_ampRelease": 0.179,
+      "owit_armStagger": 0.094,
+      "owit_arms": 4,
+      "owit_borderMode": 2,
+      "owit_cellSize": 0.39,
+      "owit_chroma1": 0.391,
+      "owit_chroma2": 0.337,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.7,
+      "owit_density": 0.79,
+      "owit_evolveRate": 0.295,
+      "owit_filterCutoff": 0.59,
+      "owit_filterReso": 0.482,
+      "owit_inkCloudMix": 0.214,
+      "owit_mutateProb": 0.224,
+      "owit_outputLevel": 0.859,
+      "owit_pitchSpread": 0.373,
+      "owit_polyDepth": 0.352,
+      "owit_rule": 150
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "osprey",
+    "shore",
+    "cultural"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

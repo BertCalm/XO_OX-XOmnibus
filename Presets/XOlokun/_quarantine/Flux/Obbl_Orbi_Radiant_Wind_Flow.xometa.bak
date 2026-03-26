@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Wind Flow",
+  "mood": "Flux",
+  "engines": [
+    "Obbligato",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.93,
+      "macro_movement": 0.67,
+      "macro_coupling": 0.88,
+      "macro_space": 0.15
+    },
+    "Orbital": {
+      "macro_character": 0.69,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.53,
+      "macro_space": 0.25
+    }
+  },
+  "coupling": {
+    "type": "LFO_SYNC",
+    "source": "OBBLIGATO",
+    "target": "ORBITAL",
+    "amount": 0.74
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.909,
+    "warmth": 0.956,
+    "movement": 0.092,
+    "density": 0.099,
+    "space": 0.949,
+    "aggression": 0.553
+  }
+}

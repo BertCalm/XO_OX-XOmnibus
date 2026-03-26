@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Group Drift",
   "mood": "Entangled",
-  "engines": ["Orbital", "Odyssey"],
+  "engines": [
+    "Orbital",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's group stagger pacing locks to ODYSSEY's drift oscillator movement — four groups blooming at different rates through violet haze, warm-red and violet intertwined.",
-  "tags": ["group", "drift", "coupled", "warm", "violet", "entangled"],
-  "macroLabels": ["SPECTRAL", "DRIFT", "GROUP", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "group",
+    "drift",
+    "coupled",
+    "warm",
+    "violet",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "DRIFT",
+    "GROUP",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.68, "movement": 0.52, "density": 0.58, "space": 0.72, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.52,
+    "density": 0.58,
+    "space": 0.72,
+    "aggression": 0.12
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.5,
@@ -87,11 +109,26 @@
       "drift_level": 0.7
     }
   },
-  "macros": {"SPECTRAL": 0.55, "DRIFT": 0.55, "GROUP": 0.52, "SPACE": 0.72},
+  "macros": {
+    "SPECTRAL": 0.55,
+    "DRIFT": 0.55,
+    "GROUP": 0.52,
+    "SPACE": 0.72
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Orbital", "engineB": "Odyssey", "type": "LFOToFilter", "amount": 0.5},
-      {"engineA": "Odyssey", "engineB": "Orbital", "type": "AmpToFilter", "amount": 0.35}
+      {
+        "engineA": "Orbital",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Odyssey",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.35
+      }
     ]
   }
 }

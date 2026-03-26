@@ -5,7 +5,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Onset",
-        "type": "RHYTHM_GATE",
+        "type": "AmpToChoke",
         "amount": 0.7
       }
     ]
@@ -52,5 +52,6 @@
     "aggression": 0.4
   },
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

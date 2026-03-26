@@ -6,7 +6,7 @@
         "amount": 0.71,
         "engineA": "Ohm",
         "engineB": "Ouroboros",
-        "type": "Rhythm->Gate"
+        "type": "RhythmToBlend"
       }
     ]
   },

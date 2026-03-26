@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Obsidian",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.657
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

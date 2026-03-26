@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Oracle",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.76
       }
     ]
@@ -60,5 +60,6 @@
     "indigo"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

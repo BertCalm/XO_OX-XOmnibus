@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.207
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.041,
+    "density": 0.08,
+    "movement": 0.488,
+    "space": 0.101,
+    "warmth": 0.077
+  },
+  "engines": [
+    "Ombre",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.059,
+    "COUPLING": 0.082,
+    "MOVEMENT": 0.284,
+    "SPACE": 0.101
+  },
+  "mood": "Aether",
+  "name": "Penumbra Grace",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.059,
+      "macro_coupling": 0.082,
+      "macro_movement": 0.284,
+      "macro_space": 0.101
+    },
+    "Ombre": {
+      "macro_character": 0.059,
+      "macro_coupling": 0.082,
+      "macro_movement": 0.284,
+      "macro_space": 0.101
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

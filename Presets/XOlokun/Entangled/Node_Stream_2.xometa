@@ -5,7 +5,7 @@
       {
         "engineA": "Ombre",
         "engineB": "Oblong",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.982
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, dense bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, dark, dense bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

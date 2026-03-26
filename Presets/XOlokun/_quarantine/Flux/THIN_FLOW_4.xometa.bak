@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Octopus",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.3691
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8062,
+    "brightness": 0.3802,
+    "density": 0.0376,
+    "movement": 0.5003,
+    "space": 0.8334,
+    "warmth": 0.132
+  },
+  "engines": [
+    "Origami",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0209,
+    "COUPLING": 0.8013,
+    "MOVEMENT": 0.3248,
+    "SPACE": 0.6181
+  },
+  "mood": "Flux",
+  "name": "THIN FLOW 4",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.5758,
+      "macro_coupling": 0.7095,
+      "macro_movement": 0.5734,
+      "macro_space": 0.4177
+    },
+    "Origami": {
+      "macro_character": 0.0423,
+      "macro_coupling": 0.9212,
+      "macro_movement": 0.0187,
+      "macro_space": 0.8621
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

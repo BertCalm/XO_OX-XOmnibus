@@ -6,7 +6,7 @@
         "amount": 0.75,
         "engineA": "Organon",
         "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

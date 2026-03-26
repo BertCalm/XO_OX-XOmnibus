@@ -42,7 +42,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.62,

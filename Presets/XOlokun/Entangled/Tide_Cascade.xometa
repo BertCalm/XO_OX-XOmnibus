@@ -6,7 +6,7 @@
         "amount": 0.543,
         "engineA": "Overlap",
         "engineB": "Odyssey",
-        "type": "SYNC_LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

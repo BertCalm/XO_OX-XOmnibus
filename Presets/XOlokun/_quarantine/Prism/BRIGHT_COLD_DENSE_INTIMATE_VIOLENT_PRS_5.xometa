@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Ocelot",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.723
       }
     ]

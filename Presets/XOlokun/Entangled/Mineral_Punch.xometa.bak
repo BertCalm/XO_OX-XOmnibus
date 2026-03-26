@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.779,
+        "engineA": "Obsidian",
+        "engineB": "Onset",
+        "type": "RHYTHMIC_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Crystal crack meets ONSET percussive attack. Pure mineral impact.",
+  "dna": {
+    "aggression": 0.391,
+    "brightness": 0.688,
+    "density": 0.624,
+    "movement": 0.476,
+    "space": 0.531,
+    "warmth": 0.337
+  },
+  "engines": [
+    "Obsidian",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Entangled",
+  "name": "Mineral Punch",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.175,
+      "obsidian_brightness": 0.838,
+      "obsidian_density": 0.524,
+      "obsidian_level": 0.715,
+      "obsidian_movement": 0.237,
+      "obsidian_space": 0.614,
+      "obsidian_warmth": 0.221
+    },
+    "Onset": {
+      "perc_aggression": 0.716,
+      "perc_brightness": 0.566,
+      "perc_density": 0.821,
+      "perc_level": 0.766,
+      "perc_movement": 0.627,
+      "perc_space": 0.302,
+      "perc_warmth": 0.516
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "onset",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

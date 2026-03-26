@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.788
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.527,
+    "brightness": 0.911,
+    "density": 0.025,
+    "movement": 0.415,
+    "space": 0.897,
+    "warmth": 0.046
+  },
+  "engines": [
+    "Ole",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.482,
+    "COUPLING": 0.26,
+    "MOVEMENT": 0.404,
+    "SPACE": 0.885
+  },
+  "mood": "Family",
+  "name": "Ice Cathedral 2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.457,
+      "macro_coupling": 0.253,
+      "macro_movement": 0.394,
+      "macro_space": 0.894
+    },
+    "Origami": {
+      "macro_character": 0.506,
+      "macro_coupling": 0.267,
+      "macro_movement": 0.414,
+      "macro_space": 0.876
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

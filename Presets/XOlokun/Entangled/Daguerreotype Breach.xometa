@@ -5,9 +5,9 @@
       {
         "amount": 0.586,
         "description": "Orca drives Obscura via WavetableSync",
-        "source": "Orca",
-        "target": "Obscura",
-        "type": "WavetableSync"
+        "type": "AudioToWavetable",
+        "engineA": "Orca",
+        "engineB": "Obscura"
       }
     ]
   },

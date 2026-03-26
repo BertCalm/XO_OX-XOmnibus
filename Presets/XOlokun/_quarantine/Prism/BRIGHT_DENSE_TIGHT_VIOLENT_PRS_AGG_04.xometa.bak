@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ohm",
+        "type": "PITCH_SYNC",
+        "amount": 0.973
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.913,
+    "brightness": 0.933,
+    "density": 0.979,
+    "movement": 0.369,
+    "space": 0.058,
+    "warmth": 0.426
+  },
+  "engines": [
+    "Ottoni",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.91,
+    "COUPLING": 0.852,
+    "MOVEMENT": 0.353,
+    "SPACE": 0.057
+  },
+  "mood": "Prism",
+  "name": "BRIGHT DENSE TIGHT VIOLENT ... (Ottoni II)",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.904,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.345,
+      "macro_space": 0.056
+    },
+    "Ottoni": {
+      "macro_character": 0.916,
+      "macro_coupling": 0.874,
+      "macro_movement": 0.361,
+      "macro_space": 0.057
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "dense",
+    "tight"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

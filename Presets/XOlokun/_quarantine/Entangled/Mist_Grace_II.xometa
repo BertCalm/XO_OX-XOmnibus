@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.644,
@@ -42,7 +42,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Ocelot",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.85
       }
     ]

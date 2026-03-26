@@ -6,7 +6,7 @@
         "amount": 0.706,
         "engineA": "Oracle",
         "engineB": "Overworld",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM"
       }
     ]
   },

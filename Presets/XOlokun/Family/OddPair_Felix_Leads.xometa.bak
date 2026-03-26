@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.3,
+        "source": "OddfeliX",
+        "target": "OddOscar",
+        "type": "LFOToPitch"
+      },
+      {
+        "amount": 0.35,
+        "source": "OddfeliX",
+        "target": "OddOscar",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OddfeliX takes the melody — bright, snapping, decisive. OddOscar swells behind, providing morphic texture that follows the elder sibling's LFO pitch pulls. A neon tetra leading a gentle axolotl through open water.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.85,
+    "density": 0.45,
+    "movement": 0.55,
+    "space": 0.65,
+    "warmth": 0.45
+  },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "OddPair Felix Leads",
+  "parameters": {
+    "OddOscar": {
+      "morph_envAttack": 0.06,
+      "morph_envDecay": 0.45,
+      "morph_envRelease": 1.0,
+      "morph_envSustain": 0.72,
+      "morph_filterCutoff": 1100,
+      "morph_filterRes": 0.25,
+      "morph_morph": 0.5
+    },
+    "OddfeliX": {
+      "snap_envAttack": 0.005,
+      "snap_envDecay": 0.2,
+      "snap_envRelease": 0.4,
+      "snap_envSustain": 0.65,
+      "snap_filterCutoff": 3200,
+      "snap_filterRes": 0.5,
+      "snap_lfo1Depth": 0.4,
+      "snap_lfo1Rate": 0.22,
+      "snap_oscWave": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "oddfelix",
+    "oddoscar",
+    "melody",
+    "lead",
+    "bright",
+    "lfo"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

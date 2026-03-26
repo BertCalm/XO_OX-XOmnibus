@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.712,
+        "engineA": "Orbital",
+        "engineB": "Ouroboros",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "ORBITAL cycle feeds OUROBOROS infinite loop. The orbit devours itself.",
+  "dna": {
+    "aggression": 0.653,
+    "brightness": 0.542,
+    "density": 0.733,
+    "movement": 0.716,
+    "space": 0.487,
+    "warmth": 0.513
+  },
+  "engines": [
+    "Orbital",
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Ephemeris Feed",
+  "parameters": {
+    "Orbital": {
+      "orb_arcDecay": 0.67,
+      "orb_couplingIn": 0.511,
+      "orb_couplingOut": 0.763,
+      "orb_groupEnv": 0.409,
+      "orb_harmonicAmt": 0.734,
+      "orb_macro1": 0.464,
+      "orb_macro2": 0.401,
+      "orb_macro3": 0.461,
+      "orb_macro4": 0.684,
+      "orb_outputLevel": 0.903,
+      "orb_outputPan": -0.034,
+      "orb_phaseSpread": 0.359,
+      "orb_resonantPeak": 0.386
+    },
+    "Ouroboros": {
+      "ouro_couplingIn": 0.467,
+      "ouro_couplingOut": 0.569,
+      "ouro_macro1": 0.671,
+      "ouro_macro2": 0.533,
+      "ouro_macro3": 0.659,
+      "ouro_macro4": 0.61,
+      "ouro_outputLevel": 0.826,
+      "ouro_outputPan": -0.032
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "ouroboros",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
+}

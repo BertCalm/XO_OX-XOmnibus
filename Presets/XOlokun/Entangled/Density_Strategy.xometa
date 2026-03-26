@@ -6,7 +6,7 @@
         "amount": 0.769,
         "engineA": "Obese",
         "engineB": "Outwit",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },

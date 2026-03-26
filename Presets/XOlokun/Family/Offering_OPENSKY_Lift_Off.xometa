@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-21",
   "description": "OFFERING as the launch pad beneath OPENSKY's euphoric shimmer. Kick provides lift, hi-hats measure altitude. Toronto sidechain lets the bass breathe each time OPENSKY's shimmer tail blooms — the drums make room for ascension.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.7,
     "warmth": 0.5
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OPENSKY Lift Off",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["opensky", "coupling", "shimmer", "toronto", "lift", "family"],
+  "tags": [
+    "opensky",
+    "coupling",
+    "shimmer",
+    "toronto",
+    "lift",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.5, "M2": 0.45, "M3": 0.0, "M4": 0.05}
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.45,
+    "M3": 0.0,
+    "M4": 0.05
+  }
 }

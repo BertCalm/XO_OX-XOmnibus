@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Octopus",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.871
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Vast and otherworldly, shimmering, warm sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Vast and otherworldly, shimmering, warm sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

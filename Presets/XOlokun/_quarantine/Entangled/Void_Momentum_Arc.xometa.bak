@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Origami",
+        "type": "PITCH_MOD",
+        "amount": 0.74
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.63,
+    "brightness": 0.1,
+    "density": 0.46,
+    "movement": 0.76,
+    "space": 0.23,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Origami",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.57,
+    "COUPLING": 0.69,
+    "MOVEMENT": 0.76,
+    "SPACE": 0.23
+  },
+  "mood": "Entangled",
+  "name": "Void Momentum Arc",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.36,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.16,
+      "macro_space": 0.34
+    },
+    "Origami": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.31,
+      "macro_space": 0.83
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

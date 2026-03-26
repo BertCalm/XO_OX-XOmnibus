@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -137,11 +137,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Oceanic",
         "type": "FilterToFilter",
         "amount": 0.15,
-        "description": "OUTWIT chromatophore modulation sweeps OCEANIC filter \u2014 color changes become frequency changes"
+        "description": "OUTWIT chromatophore modulation sweeps OCEANIC filter — color changes become frequency changes",
+        "engineA": "Outwit",
+        "engineB": "Oceanic"
       }
     ]
   },

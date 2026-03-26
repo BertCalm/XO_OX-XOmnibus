@@ -6,7 +6,7 @@
         "amount": 0.66,
         "engineA": "Outwit",
         "engineB": "Orphica",
-        "type": "GRAIN_SYNC"
+        "type": "AudioToBuffer"
       }
     ]
   },

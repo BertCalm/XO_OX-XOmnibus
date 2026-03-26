@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Opal",
-        "type": "FREQUENCY_MODULATION",
+        "type": "AudioToFM",
         "amount": 0.8
       }
     ]

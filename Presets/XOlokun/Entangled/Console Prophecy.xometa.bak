@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Console Prophecy",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORACLE reads OVERWORLD's ERA blend and prophesies the next era shift. The chip synth knows its own console history. Self-aware retro.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overworld",
+    "oracle",
+    "chip",
+    "era",
+    "prophecy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.4,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.52,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraCross": 0.55,
+      "ow_arpRate": 80.0,
+      "ow_glitch": 0.2
+    },
+    "Oracle": {
+      "oracle_prophecy": 0.6,
+      "oracle_morphRate": 0.45,
+      "oracle_resonance": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oracle",
+        "type": "Env->Morph",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Oracle",
+        "engineB": "Overworld",
+        "type": "Pitch->Character",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

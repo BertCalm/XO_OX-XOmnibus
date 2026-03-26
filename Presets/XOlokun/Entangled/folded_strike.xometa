@@ -6,7 +6,7 @@
         "amount": 0.84,
         "engineA": "Outwit",
         "engineB": "Origami",
-        "type": "FREQUENCY_SHIFT"
+        "type": "AudioToFM"
       }
     ]
   },

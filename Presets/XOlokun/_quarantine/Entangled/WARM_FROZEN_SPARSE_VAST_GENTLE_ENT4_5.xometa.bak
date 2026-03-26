@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ombre",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.824
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.089,
+    "brightness": 0.67,
+    "density": 0.089,
+    "movement": 0.067,
+    "space": 0.974,
+    "warmth": 0.938
+  },
+  "engines": [
+    "Origami",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.792,
+    "COUPLING": 0.824,
+    "MOVEMENT": 0.064,
+    "SPACE": 0.982
+  },
+  "mood": "Entangled",
+  "name": "Peach Cavern 2",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.793,
+      "macro_coupling": 0.062,
+      "macro_movement": 0.066,
+      "macro_space": 0.99
+    },
+    "Origami": {
+      "macro_character": 0.792,
+      "macro_coupling": 0.062,
+      "macro_movement": 0.062,
+      "macro_space": 0.974
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

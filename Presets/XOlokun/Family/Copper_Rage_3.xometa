@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Orphica",
-        "type": "SPECTRAL_WEAVE",
+        "type": "EnvToMorph",
         "amount": 0.939
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm pad. Let it breathe — the space is the instrument."
+  "description": "Warm and familiar, dark, warm pad. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

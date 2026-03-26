@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Oblong",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.918
       }
     ]

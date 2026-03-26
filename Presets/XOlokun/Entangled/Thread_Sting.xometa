@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7014,
-        "source": "Ouroboros",
-        "target": "Obscura",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Ouroboros",
+        "engineB": "Obscura"
       }
     ]
   },

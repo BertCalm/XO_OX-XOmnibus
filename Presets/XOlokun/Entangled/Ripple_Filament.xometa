@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8533,
-        "source": "Oblong",
-        "target": "Orbital",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Oblong",
+        "engineB": "Orbital"
       }
     ]
   },

@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.547,
-      "destination": "ORBITAL",
-      "source": "OVERDUB",
-      "type": "SPECTRAL_MORPH"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.547,
+        "type": "EnvToMorph",
+        "engineA": "OVERDUB",
+        "engineB": "ORBITAL"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, dark, warm, dense.",

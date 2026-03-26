@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Odyssey",
-        "target": "Osteria",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Odyssey",
+        "engineB": "Osteria"
       }
     ]
   },

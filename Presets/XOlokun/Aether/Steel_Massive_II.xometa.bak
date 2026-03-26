@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.606,
+      "destination": "OPAL",
+      "source": "ODDOSCAR",
+      "type": "AMPLITUDE_MOD"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
+  "dna": {
+    "aggression": 0.898,
+    "brightness": 0.094,
+    "density": 0.907,
+    "movement": 0.517,
+    "space": 0.523,
+    "warmth": 0.093
+  },
+  "engines": [
+    "OddOscar",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Steel Massive II",
+  "parameters": {
+    "OddOscar": {
+      "level": 0.813,
+      "pan": -0.015
+    },
+    "Opal": {
+      "level": 0.813,
+      "pan": 0.056
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

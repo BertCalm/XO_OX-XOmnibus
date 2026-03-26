@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Phase Lock (Organism)",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Restless and kinetic, balanced sound. Macro sweeps reveal shifting timbral landscapes.",
+  "tags": [
+    "cellular",
+    "coupled",
+    "pattern",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.46,
+    "movement": 0.66,
+    "density": 0.58,
+    "space": 0.44,
+    "aggression": 0.46
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 27000,
+      "org_stepRate": 7.0,
+      "org_scope": 6,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.26,
+      "org_filterCutoff": 3800.0,
+      "org_filterRes": 0.46,
+      "org_velCutoff": 0.66,
+      "org_ampAtk": 0.009,
+      "org_ampDec": 0.22,
+      "org_ampSus": 0.6,
+      "org_ampRel": 0.55,
+      "org_lfo1Rate": 1.8,
+      "org_lfo1Depth": 0.4,
+      "org_lfo2Rate": 1.1,
+      "org_lfo2Depth": 0.36,
+      "org_reverbMix": 0.28,
+      "org_macroRule": 0.46,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.85,
+      "org_macroMutate": 0.06
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.85,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

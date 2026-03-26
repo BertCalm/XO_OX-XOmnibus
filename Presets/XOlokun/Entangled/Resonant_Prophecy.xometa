@@ -6,7 +6,7 @@
         "amount": 0.83,
         "engineA": "Overlap",
         "engineB": "Oracle",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM"
       }
     ]
   },

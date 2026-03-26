@@ -6,7 +6,7 @@
         "amount": 0.65,
         "engineA": "Organon",
         "engineB": "Ole",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

@@ -1,0 +1,95 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.614,
+        "description": "Osteria drives Oceanic via WavetableSync",
+        "source": "Osteria",
+        "target": "Oceanic",
+        "type": "WavetableSync"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OCEANIC's phosphorescent teal meets OSTERIA's porto wine — the harbor at night, the tavern lit, the two colors resolving into each other.",
+  "dna": {
+    "aggression": 0.36,
+    "brightness": 0.526,
+    "density": 0.738,
+    "movement": 0.486,
+    "space": 0.69,
+    "warmth": 0.659
+  },
+  "engines": [
+    "Osteria",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Teal and Wine",
+  "parameters": {
+    "Oceanic": {
+      "ocean_attack": 0.164,
+      "ocean_filterCutoff": 0.563,
+      "ocean_lfoRate": 0.122,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_release": 1.0,
+      "ocean_separation": 0.424
+    },
+    "Osteria": {
+      "osteria_attack": 0.123,
+      "osteria_bassLevel": 0.556,
+      "osteria_blendMode": 0.495,
+      "osteria_chorus": 0.152,
+      "osteria_decay": 0.632,
+      "osteria_ensWidth": 0.514,
+      "osteria_filterEnvDepth": 0.162,
+      "osteria_hall": 0.488,
+      "osteria_harmLevel": 0.514,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.396,
+      "osteria_murmur": 0.24,
+      "osteria_oceanBleed": 0.246,
+      "osteria_patina": 0.544,
+      "osteria_porto": 0.219,
+      "osteria_qBassShore": 0.453,
+      "osteria_qElastic": 0.776,
+      "osteria_qHarmShore": 0.41,
+      "osteria_qMelShore": 0.478,
+      "osteria_qMemory": 0.569,
+      "osteria_qRhythmShore": 0.476,
+      "osteria_qStretch": 0.521,
+      "osteria_qSympathy": 0.552,
+      "osteria_release": 2.13,
+      "osteria_rhythmLevel": 0.408,
+      "osteria_sessionDelay": 0.294,
+      "osteria_smoke": 0.228,
+      "osteria_sustain": 0.751,
+      "osteria_tape": 0.109,
+      "osteria_tavernMix": 0.33,
+      "osteria_tavernShore": 0.304,
+      "osteria_warmth": 0.711
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "oceanic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

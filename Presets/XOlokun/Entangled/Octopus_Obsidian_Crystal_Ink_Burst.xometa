@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Octopus",
-        "target": "Obsidian",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay",
+        "engineA": "Octopus",
+        "engineB": "Obsidian"
       }
     ]
   },

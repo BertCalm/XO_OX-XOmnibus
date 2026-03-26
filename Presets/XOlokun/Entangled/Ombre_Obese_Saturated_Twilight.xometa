@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Ombre",
-        "target": "Obese",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Ombre",
+        "engineB": "Obese"
       }
     ]
   },

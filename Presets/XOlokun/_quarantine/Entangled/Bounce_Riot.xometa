@@ -6,7 +6,7 @@
         "amount": 0.88,
         "engineA": "Oblique",
         "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

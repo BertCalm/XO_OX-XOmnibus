@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.51,
+        "engineA": "Oracle",
+        "engineB": "Odyssey",
+        "type": "PITCH_TRACKING"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Oracle charts the voyage. Prophetic heading through ODYSSEY long drift.",
+  "dna": {
+    "aggression": 0.317,
+    "brightness": 0.47,
+    "density": 0.597,
+    "movement": 0.68,
+    "space": 0.686,
+    "warmth": 0.507
+  },
+  "engines": [
+    "Oracle",
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Foretold Waypoint",
+  "parameters": {
+    "Odyssey": {
+      "drift_aggression": 0.276,
+      "drift_brightness": 0.534,
+      "drift_density": 0.523,
+      "drift_level": 0.829,
+      "drift_movement": 0.602,
+      "drift_space": 0.71,
+      "drift_warmth": 0.462
+    },
+    "Oracle": {
+      "oracle_aggression": 0.439,
+      "oracle_brightness": 0.47,
+      "oracle_density": 0.585,
+      "oracle_level": 0.856,
+      "oracle_movement": 0.664,
+      "oracle_space": 0.702,
+      "oracle_warmth": 0.459
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oracle",
+    "odyssey",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

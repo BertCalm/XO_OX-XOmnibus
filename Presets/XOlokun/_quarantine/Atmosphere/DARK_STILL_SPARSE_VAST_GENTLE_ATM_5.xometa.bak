@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.627
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1287,
+    "brightness": 0.0546,
+    "density": 0.0645,
+    "movement": 0.1267,
+    "space": 0.9318,
+    "warmth": 0.4293
+  },
+  "engines": [
+    "OddfeliX",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2404,
+    "COUPLING": 0.0737,
+    "MOVEMENT": 0.1137,
+    "SPACE": 0.9484
+  },
+  "mood": "Atmosphere",
+  "name": "Node Horizon 3",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.2232,
+      "macro_coupling": 0.0799,
+      "macro_movement": 0.1184,
+      "macro_space": 0.9393
+    },
+    "Organon": {
+      "macro_character": 0.2575,
+      "macro_coupling": 0.0675,
+      "macro_movement": 0.1089,
+      "macro_space": 0.9575
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "still",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Odyssey",
-        "type": "FILTER_COUPLING",
+        "type": "FilterToFilter",
         "amount": 0.625
       }
     ]
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

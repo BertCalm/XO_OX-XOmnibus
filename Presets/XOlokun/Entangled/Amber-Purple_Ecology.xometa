@@ -6,10 +6,10 @@
     "Outwit",
     "Orbweave"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT CA amplitude drives ORBWEAVE filter via AmpToFilter; ORBWEAVE audio drives OUTWIT step rate via AudioToFM. Rule 110 computation creates complex amplitude patterns that open and close the ORBWEAVE filter correspondingly. When the Solomon knot topology produces dense, high-amplitude moments, OUTWIT steps faster. Two distributed systems in feedback \u2014 cellular automaton density reshapes topological coupling; knot output reshapes CA speed.",
+  "description": "OUTWIT CA amplitude drives ORBWEAVE filter via AmpToFilter; ORBWEAVE audio drives OUTWIT step rate via AudioToFM. Rule 110 computation creates complex amplitude patterns that open and close the ORBWEAVE filter correspondingly. When the Solomon knot topology produces dense, high-amplitude moments, OUTWIT steps faster. Two distributed systems in feedback — cellular automaton density reshapes topological coupling; knot output reshapes CA speed.",
   "tags": [
     "entangled",
     "bidirectional",
@@ -24,7 +24,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -165,18 +165,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbweave",
         "type": "AmpToFilter",
         "amount": 0.4,
-        "description": "OUTWIT CA amplitude opens ORBWEAVE filter \u2014 Rule 110 computation rhythm drives knot-filtered output"
+        "description": "OUTWIT CA amplitude opens ORBWEAVE filter — Rule 110 computation rhythm drives knot-filtered output",
+        "engineA": "Outwit",
+        "engineB": "Orbweave"
       },
       {
-        "source": "Orbweave",
-        "target": "Outwit",
         "type": "AudioToFM",
         "amount": 0.25,
-        "description": "ORBWEAVE audio drives OUTWIT step rate \u2014 high-amplitude knot moments accelerate CA stepping"
+        "description": "ORBWEAVE audio drives OUTWIT step rate — high-amplitude knot moments accelerate CA stepping",
+        "engineA": "Orbweave",
+        "engineB": "Outwit"
       }
     ]
   },

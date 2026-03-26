@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Optic",
         "engineB": "Opal",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.4,
         "engineA": "Opal",
         "engineB": "Optic",
-        "type": "RhythmGate"
+        "type": "AmpToChoke"
       }
     ]
   },

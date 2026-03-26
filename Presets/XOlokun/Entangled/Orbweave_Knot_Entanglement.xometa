@@ -2,14 +2,29 @@
   "schema_version": 1,
   "name": "Knot Entanglement (Orbweave)",
   "mood": "Entangled",
-  "engines": ["Orbweave", "Outwit"],
+  "engines": [
+    "Orbweave",
+    "Outwit"
+  ],
   "author": "Guru Bin — ORBWEAVE Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "OUTWIT arm CA rhythms (Rule 110 complex computation + Rule 30 chaos) feed ORBWEAVE's phase via AudioToFM coupling. Solomon's doubly-linked rings distribute the incoming CA signal across both ring pairs differently. The cellular automaton is feeding the knot. ORBWEAVE's audio drives OUTWIT's chromatophore — knot geometry colors the octopus.",
-  "tags": ["solomon", "outwit", "ca-topology", "bidirectional", "entangled", "distributed"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "solomon",
+    "outwit",
+    "ca-topology",
+    "bidirectional",
+    "entangled",
+    "distributed"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -162,18 +177,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbweave",
         "type": "AudioToFM",
         "amount": 0.25,
-        "description": "OUTWIT CA amplitude drives ORBWEAVE strand frequency — CA step events modulate the knot topology"
+        "description": "OUTWIT CA amplitude drives ORBWEAVE strand frequency — CA step events modulate the knot topology",
+        "engineA": "Outwit",
+        "engineB": "Orbweave"
       },
       {
-        "source": "Orbweave",
-        "target": "Outwit",
         "type": "EnvToMorph",
         "amount": 0.3,
-        "description": "ORBWEAVE topology amplitude drives OUTWIT chromatophore — knot geometry colors the octopus"
+        "description": "ORBWEAVE topology amplitude drives OUTWIT chromatophore — knot geometry colors the octopus",
+        "engineA": "Orbweave",
+        "engineB": "Outwit"
       }
     ]
   },

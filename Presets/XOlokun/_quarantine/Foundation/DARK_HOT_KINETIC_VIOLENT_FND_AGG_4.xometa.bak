@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.81
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.888,
+    "brightness": 0.11,
+    "density": 0.552,
+    "movement": 0.879,
+    "space": 0.321,
+    "warmth": 0.918
+  },
+  "engines": [
+    "Ouroboros",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.688,
+    "COUPLING": 0.946,
+    "MOVEMENT": 0.532,
+    "SPACE": 0.421
+  },
+  "mood": "Foundation",
+  "name": "Mahogany Blade",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.714,
+      "macro_coupling": 0.975,
+      "macro_movement": 0.543,
+      "macro_space": 0.394
+    },
+    "Ouroboros": {
+      "macro_character": 0.688,
+      "macro_coupling": 0.946,
+      "macro_movement": 0.532,
+      "macro_space": 0.421
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

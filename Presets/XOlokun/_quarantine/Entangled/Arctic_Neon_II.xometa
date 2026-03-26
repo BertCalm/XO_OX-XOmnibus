@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.914,
@@ -42,7 +42,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Opal",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.959
       }
     ]

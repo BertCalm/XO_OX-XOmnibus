@@ -6,13 +6,13 @@
         "amount": 0.65,
         "engineA": "Oblique",
         "engineB": "Owlfish",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.45,
         "engineA": "Owlfish",
         "engineB": "Oblique",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

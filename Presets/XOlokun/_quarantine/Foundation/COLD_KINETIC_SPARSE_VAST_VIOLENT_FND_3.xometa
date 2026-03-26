@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Ouroboros",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.538
       }
     ]

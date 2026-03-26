@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblong",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.553
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_SPARSE_VAST_GENTLE. Variant 4.",
+  "dna": {
+    "aggression": 0.094,
+    "brightness": 0.124,
+    "density": 0.037,
+    "movement": 0.308,
+    "space": 0.885,
+    "warmth": 0.042
+  },
+  "engines": [
+    "Onset",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.22,
+    "SPACE": 0.08,
+    "PUNCH": 0.282,
+    "MUTATE": 0.881
+  },
+  "mood": "Foundation",
+  "name": "Thread Orbit",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.26,
+      "macro_coupling": 0.159,
+      "macro_movement": 0.323,
+      "macro_space": 0.86,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Onset": {
+      "macro_character": 0.18,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.241,
+      "macro_space": 0.901
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "sparse",
+    "extreme",
+    "cold",
+    "dark",
+    "diversity",
+    "vast",
+    "foundation",
+    "gentle"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.4495
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, shimmering, crystalline sound. Responds expressively to velocity and modulation."
+  "description": "Restless and kinetic, shimmering, crystalline sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

@@ -20,7 +20,7 @@
     "CIRCLE",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": 120.0,
   "dna": {
     "brightness": 0.5,

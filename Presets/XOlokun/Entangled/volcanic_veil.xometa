@@ -6,7 +6,7 @@
         "amount": 0.79,
         "engineA": "Overlap",
         "engineB": "Obsidian",
-        "type": "FREQUENCY_SHIFT"
+        "type": "AudioToFM"
       }
     ]
   },

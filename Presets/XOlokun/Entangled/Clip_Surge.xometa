@@ -6,7 +6,7 @@
         "amount": 0.514,
         "engineA": "Obese",
         "engineB": "Ole",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "created": "2026-03-21",
   "description": "OFFERING drums as ecological pressure on OBRIX's reef. Kick amplitude feeds OBRIX's Parasite mode — the coral ecosystem responds to the rhythmic predator. Heavy curiosity keeps the drum pattern evolving like a changing current.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.45,
     "warmth": 0.55
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OBRIX Reef Pulse",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["obrix", "coupling", "reef", "ecology", "LA", "family"],
+  "tags": [
+    "obrix",
+    "coupling",
+    "reef",
+    "ecology",
+    "LA",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.7, "M2": 0.45, "M3": 0.0, "M4": 0.08}
+  "macros": {
+    "M1": 0.7,
+    "M2": 0.45,
+    "M3": 0.0,
+    "M4": 0.08
+  }
 }

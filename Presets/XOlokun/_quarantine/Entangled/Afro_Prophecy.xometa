@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Oracle",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.68
       }
     ]
@@ -60,5 +60,6 @@
     "afro"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

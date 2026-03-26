@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.79
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.59,
+    "brightness": 0.23,
+    "density": 0.97,
+    "movement": 0.71,
+    "space": 0.54,
+    "warmth": 0.91
+  },
+  "engines": [
+    "Overdub",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.68,
+    "MOVEMENT": 0.71,
+    "SPACE": 0.56
+  },
+  "mood": "Entangled",
+  "name": "Woolen Delay",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.63,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.66,
+      "macro_space": 0.58,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overdub": {
+      "macro_character": 0.92,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.76,
+      "macro_space": 0.55,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, warm bass. Macro sweeps reveal shifting timbral landscapes."
+}

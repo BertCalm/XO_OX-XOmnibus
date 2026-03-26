@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.699,
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_FOLLOW"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 1.0,
+    "density": 0.37,
+    "movement": 0.7,
+    "space": 0.6,
+    "warmth": 0.4
+  },
+  "engines": [
+    "OddfeliX",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.64,
+    "COUPLING": 0.408,
+    "MOVEMENT": 0.58,
+    "SPACE": 0.606
+  },
+  "mood": "Entangled",
+  "name": "Glass Hook",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.687,
+      "macro_coupling": 0.609,
+      "macro_movement": 0.33,
+      "macro_space": 0.641
+    },
+    "Origami": {
+      "macro_character": 0.513,
+      "macro_coupling": 0.594,
+      "macro_movement": 0.753,
+      "macro_space": 0.513
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddfelix",
+    "origami"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

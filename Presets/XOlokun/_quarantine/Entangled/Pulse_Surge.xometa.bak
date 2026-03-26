@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.531,
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.44,
+    "density": 0.56,
+    "movement": 0.505,
+    "space": 0.535,
+    "warmth": 0.96
+  },
+  "engines": [
+    "OddOscar",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.752,
+    "COUPLING": 0.54,
+    "MOVEMENT": 0.482,
+    "SPACE": 0.516
+  },
+  "mood": "Entangled",
+  "name": "Pulse Surge",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.735,
+      "macro_coupling": 0.773,
+      "macro_movement": 0.568,
+      "macro_space": 0.635
+    },
+    "Origami": {
+      "macro_character": 0.647,
+      "macro_coupling": 0.459,
+      "macro_movement": 0.795,
+      "macro_space": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddoscar",
+    "origami"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

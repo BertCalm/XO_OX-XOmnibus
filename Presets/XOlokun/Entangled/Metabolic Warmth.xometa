@@ -5,9 +5,9 @@
       {
         "amount": 0.768,
         "description": "Osteria drives Organon via FilterToGrain",
-        "source": "Osteria",
-        "target": "Organon",
-        "type": "FilterToGrain"
+        "type": "AudioToBuffer",
+        "engineA": "Osteria",
+        "engineB": "Organon"
       }
     ]
   },

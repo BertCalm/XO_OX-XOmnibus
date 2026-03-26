@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.958
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.934,
+    "brightness": 0.408,
+    "density": 0.377,
+    "movement": 0.884,
+    "space": 0.033,
+    "warmth": 0.048
+  },
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.539,
+    "COUPLING": 0.802,
+    "MOVEMENT": 0.884,
+    "SPACE": 0.033
+  },
+  "mood": "Flux",
+  "name": "Signal Wrath",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.424,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.91,
+      "macro_space": 0.081
+    },
+    "Opal": {
+      "macro_character": 0.655,
+      "macro_coupling": 0.802,
+      "macro_movement": 0.862,
+      "macro_space": 0.042
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "cold",
+    "kinetic",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

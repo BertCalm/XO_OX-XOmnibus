@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8657,
-        "source": "Organon",
-        "target": "Oblong",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Organon",
+        "engineB": "Oblong"
       }
     ]
   },

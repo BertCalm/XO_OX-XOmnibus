@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.461,
+        "description": "Orca drives Origami via EnvToMod",
+        "source": "Orca",
+        "target": "Origami",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "ORIGAMI's fold point determines where ORCA's wavetable creases — the geometry of a breach is origami at scale.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.358,
+    "density": 0.72,
+    "movement": 0.71,
+    "space": 0.648,
+    "warmth": 0.359
+  },
+  "engines": [
+    "Orca",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Fold Line",
+  "parameters": {
+    "Orca": {
+      "orca_ampAttack": 0.0629,
+      "orca_ampDecay": 0.476,
+      "orca_ampRelease": 0.91,
+      "orca_ampSustain": 0.46,
+      "orca_breachAmt": 0.894,
+      "orca_echoDepth": 0.763,
+      "orca_filterCutoff": 0.578,
+      "orca_filterRes": 0.489,
+      "orca_huntMacro": 0.36,
+      "orca_lfo1Depth": 0.303,
+      "orca_lfo1Rate": 0.385,
+      "orca_lfo2Depth": 0.051,
+      "orca_lfo2Rate": 0.0595,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.118,
+      "orca_podSync": 0.413,
+      "orca_wavetablePos": 0.434,
+      "orca_wavetableScan": 0.409
+    },
+    "Origami": {
+      "origami_attack": 0.012,
+      "origami_filterCutoff": 0.433,
+      "origami_foldPoint": 0.414,
+      "origami_lfoRate": 0.138,
+      "origami_macroCharacter": 0.0,
+      "origami_macroCoupling": 0.109,
+      "origami_release": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "origami"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

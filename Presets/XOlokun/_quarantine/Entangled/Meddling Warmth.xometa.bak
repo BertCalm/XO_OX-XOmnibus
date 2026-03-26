@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Opal",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.8
+      }
+    ]
+  },
+  "description": "OHM's meddling warmth deeply folded into Opal's open grain field.",
+  "engines": [
+    "Ohm",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.78
+  },
+  "mood": "Entangled",
+  "name": "Meddling Warmth",
+  "parameters": {
+    "Ohm": {},
+    "Opal": {}
+  },
+  "schema_version": 1,
+  "strategy": "Warm Sparse",
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "meditative",
+    "ohm"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

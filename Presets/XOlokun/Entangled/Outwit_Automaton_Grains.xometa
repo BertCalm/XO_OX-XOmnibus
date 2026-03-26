@@ -6,9 +6,9 @@
     "Outwit",
     "Opal"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT CA density patterns control OPAL granular scatter \u2014 the cellular automaton's rhythmic density decides where grains are scattered in space and time.",
+  "description": "OUTWIT CA density patterns control OPAL granular scatter — the cellular automaton's rhythmic density decides where grains are scattered in space and time.",
   "tags": [
     "entangled",
     "ca-to-granular",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -66,11 +66,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
-        "type": "DensityToScatter",
+        "type": "AudioToBuffer",
         "amount": 0.7,
-        "description": "Outwit CA density scatters Opal grains across space"
+        "description": "Outwit CA density scatters Opal grains across space",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

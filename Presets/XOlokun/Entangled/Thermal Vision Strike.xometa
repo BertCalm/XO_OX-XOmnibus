@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Optic",
         "engineB": "Osprey",
-        "type": "EnvToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.4,
         "engineA": "Osprey",
         "engineB": "Optic",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph"
       }
     ]
   },

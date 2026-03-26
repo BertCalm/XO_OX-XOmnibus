@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-21",
   "description": "OFFERING boom bap meeting OWARE tuned percussion. The kick and snare lay the foundation; OWARE's sympathetic resonance network adds melodic shimmer between beats. Toronto sidechain ensures the tonal elements breathe around the kick.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.6,
     "warmth": 0.7
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OWARE Mallet Meet",
   "parameters": {
@@ -44,8 +51,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["oware", "coupling", "mallet", "toronto", "tonal", "family"],
+  "tags": [
+    "oware",
+    "coupling",
+    "mallet",
+    "toronto",
+    "tonal",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.55, "M2": 0.4, "M3": 0.0, "M4": 0.12}
+  "macros": {
+    "M1": 0.55,
+    "M2": 0.4,
+    "M3": 0.0,
+    "M4": 0.12
+  }
 }

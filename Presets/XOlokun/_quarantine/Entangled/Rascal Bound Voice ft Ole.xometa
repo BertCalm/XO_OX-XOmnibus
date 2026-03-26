@@ -6,7 +6,7 @@
         "amount": 0.527,
         "engineA": "Obbligato",
         "engineB": "Ole",
-        "type": "LFO->Pan"
+        "type": "LFOToPitch"
       }
     ]
   },

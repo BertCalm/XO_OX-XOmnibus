@@ -6,7 +6,7 @@
         "amount": 0.633,
         "engineA": "Odyssey",
         "engineB": "Orbital",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

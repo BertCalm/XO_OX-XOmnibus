@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8512,
-        "source": "Obscura",
-        "target": "Optic",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Obscura",
+        "engineB": "Optic"
       }
     ]
   },

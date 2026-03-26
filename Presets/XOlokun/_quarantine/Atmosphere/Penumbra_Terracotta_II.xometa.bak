@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.638
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.892,
+    "brightness": 0.042,
+    "density": 0.489,
+    "movement": 0.865,
+    "space": 0.329,
+    "warmth": 0.941
+  },
+  "engines": [
+    "Opal",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.729,
+    "COUPLING": 0.719,
+    "MOVEMENT": 0.725,
+    "SPACE": 0.413
+  },
+  "mood": "Atmosphere",
+  "name": "Penumbra Terracotta II",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.401,
+      "macro_coupling": 0.598,
+      "macro_movement": 0.836,
+      "macro_space": 0.375
+    },
+    "Opal": {
+      "macro_character": 0.729,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.725,
+      "macro_space": 0.413
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "warm",
+    "kinetic",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

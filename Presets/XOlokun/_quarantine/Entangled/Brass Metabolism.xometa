@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph"
       }
     ]
   },

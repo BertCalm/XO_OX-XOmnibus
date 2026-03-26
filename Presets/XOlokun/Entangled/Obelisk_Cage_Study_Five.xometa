@@ -2,33 +2,49 @@
   "schema_version": 1,
   "name": "Cage Study Five",
   "mood": "Entangled",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bolt at position 0.20 — maximally affecting modes 5, 10, 15. Strong quintal/pentatonic character from preparation physics alone. The mathematics of the position formula produces an interval structure. Best for coupling with XOpaline's glass harp modes.",
-  "tags": ["stone", "prepared", "bolt", "position", "quintal", "Cage", "entangled", "coupling"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "stone",
+    "prepared",
+    "bolt",
+    "position",
+    "quintal",
+    "Cage",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.48,
-    "warmth": 0.30,
-    "movement": 0.20,
-    "density": 0.60,
+    "warmth": 0.3,
+    "movement": 0.2,
+    "density": 0.6,
     "space": 0.55,
     "aggression": 0.35
   },
   "parameters": {
     "Obelisk": {
       "obel_density": 0.65,
-      "obel_stoneTone": 0.50,
+      "obel_stoneTone": 0.5,
       "obel_brightness": 7500.0,
       "obel_damping": 0.18,
       "obel_decay": 4.5,
       "obel_hfNoise": 0.25,
       "obel_hardness": 0.45,
       "obel_prepType": 1,
-      "obel_prepPosition": 0.20,
+      "obel_prepPosition": 0.2,
       "obel_prepDepth": 0.65,
       "obel_filterEnvAmount": 0.32,
       "obel_thermalDrift": 0.25,
@@ -36,13 +52,12 @@
       "obel_lfo1Rate": 0.12,
       "obel_lfo1Depth": 0.05,
       "obel_lfo1Shape": 0,
-      "obel_lfo2Rate": 0.50,
+      "obel_lfo2Rate": 0.5,
       "obel_lfo2Depth": 0.0,
       "obel_lfo2Shape": 0
     }
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

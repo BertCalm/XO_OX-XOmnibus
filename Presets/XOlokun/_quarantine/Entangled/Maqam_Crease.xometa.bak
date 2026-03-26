@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.68
+      }
+    ]
+  },
+  "description": "Maqam intervals folded along Origami creases — microtonal architecture in paper.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.32,
+    "density": 0.398,
+    "movement": 0.44,
+    "space": 0.9,
+    "warmth": 0.249
+  },
+  "engines": [
+    "Oracle",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.19,
+    "COUPLING": 0.68,
+    "MOVEMENT": 0.44,
+    "SPACE": 0.9
+  },
+  "mood": "Entangled",
+  "name": "Maqam Crease",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.19,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.44,
+      "macro_space": 0.9
+    },
+    "Origami": {
+      "macro_character": 0.16,
+      "macro_coupling": 0.73,
+      "macro_movement": 0.39,
+      "macro_space": 0.93
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "maqam",
+    "crease"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

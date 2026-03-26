@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Octopus",
-        "type": "AMPLITUDE_SYNC",
+        "type": "AmpToFilter",
         "amount": 0.79
       }
     ]

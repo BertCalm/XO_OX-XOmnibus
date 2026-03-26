@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Origami",
+        "type": "PITCH_MOD",
+        "amount": 0.67
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.11,
+    "density": 0.58,
+    "movement": 0.75,
+    "space": 0.53,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Origami",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.33,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.53
+  },
+  "mood": "Entangled",
+  "name": "Black Tide Motion",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.76,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.36,
+      "macro_space": 0.25
+    },
+    "Ouroboros": {
+      "macro_character": 0.71,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.43,
+      "macro_space": 0.45
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

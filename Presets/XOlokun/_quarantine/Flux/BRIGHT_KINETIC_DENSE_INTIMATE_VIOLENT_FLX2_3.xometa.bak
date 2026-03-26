@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.551
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9744,
+    "brightness": 0.9423,
+    "density": 0.9122,
+    "movement": 0.9528,
+    "space": 0.0247,
+    "warmth": 0.4704
+  },
+  "engines": [
+    "Opal",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7167,
+    "COUPLING": 0.9049,
+    "MOVEMENT": 0.9753,
+    "SPACE": 0.0425
+  },
+  "mood": "Flux",
+  "name": "Phase Rage",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.6981,
+      "macro_coupling": 0.923,
+      "macro_movement": 0.9709,
+      "macro_space": 0.0519
+    },
+    "Opal": {
+      "macro_character": 0.7352,
+      "macro_coupling": 0.8867,
+      "macro_movement": 0.9797,
+      "macro_space": 0.033
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

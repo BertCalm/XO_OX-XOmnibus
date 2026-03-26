@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "OddfeliX",
+        "type": "FILTER_MOD",
+        "amount": 0.825
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.936,
+    "brightness": 0.87,
+    "density": 0.901,
+    "movement": 0.555,
+    "space": 0.596,
+    "warmth": 0.963
+  },
+  "engines": [
+    "Overbite",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.607,
+    "COUPLING": 0.395,
+    "MOVEMENT": 0.356,
+    "SPACE": 0.88
+  },
+  "mood": "Foundation",
+  "name": "Bloom Blade",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.647,
+      "macro_coupling": 0.428,
+      "macro_movement": 0.361,
+      "macro_space": 0.888
+    },
+    "Overbite": {
+      "macro_character": 0.607,
+      "macro_coupling": 0.395,
+      "macro_movement": 0.356,
+      "macro_space": 0.88
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

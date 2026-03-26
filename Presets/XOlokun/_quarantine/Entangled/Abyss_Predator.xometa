@@ -6,7 +6,7 @@
         "amount": 0.95,
         "engineA": "Obsidian",
         "engineB": "Orca",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

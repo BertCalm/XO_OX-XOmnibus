@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.822
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.876,
+    "brightness": 0.464,
+    "density": 0.921,
+    "movement": 0.676,
+    "space": 0.98,
+    "warmth": 0.975
+  },
+  "engines": [
+    "Obbligato",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.47,
+    "COUPLING": 0.775,
+    "MOVEMENT": 0.676,
+    "SPACE": 0.98
+  },
+  "mood": "Entangled",
+  "name": "Thread Void",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.465,
+      "macro_coupling": 0.775,
+      "macro_movement": 0.641,
+      "macro_space": 0.978
+    },
+    "Ouroboros": {
+      "macro_character": 0.475,
+      "macro_coupling": 0.763,
+      "macro_movement": 0.711,
+      "macro_space": 0.986
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "hot",
+    "dense",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

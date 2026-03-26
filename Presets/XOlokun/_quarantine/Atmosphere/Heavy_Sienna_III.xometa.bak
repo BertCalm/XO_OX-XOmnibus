@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.788
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.544,
+    "brightness": 0.105,
+    "density": 0.976,
+    "movement": 0.476,
+    "space": 0.947,
+    "warmth": 0.952
+  },
+  "engines": [
+    "Orbital",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.332,
+    "COUPLING": 0.486,
+    "MOVEMENT": 0.492,
+    "SPACE": 0.87
+  },
+  "mood": "Atmosphere",
+  "name": "Heavy Sienna III",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.332,
+      "macro_coupling": 0.486,
+      "macro_movement": 0.492,
+      "macro_space": 0.87
+    },
+    "Origami": {
+      "macro_character": 0.698,
+      "macro_coupling": 0.793,
+      "macro_movement": 0.58,
+      "macro_space": 0.784
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "warm",
+    "dense",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,9 +5,9 @@
       {
         "amount": 0.765,
         "description": "Orca drives Orbital via HARMONIC_BLEND",
-        "source": "Orca",
-        "target": "Orbital",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Orbital"
       }
     ]
   },

@@ -1,0 +1,95 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.731,
+        "description": "Osteria drives Onset via ResonanceChain",
+        "source": "Osteria",
+        "target": "Onset",
+        "type": "ResonanceChain"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "ONSET's drum kit as OSTERIA kitchen percussion — the rhythmic underpinning of the cultural shore meal, cook and musician as one role.",
+  "dna": {
+    "aggression": 0.447,
+    "brightness": 0.632,
+    "density": 0.697,
+    "movement": 0.628,
+    "space": 0.567,
+    "warmth": 0.615
+  },
+  "engines": [
+    "Osteria",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Entangled",
+  "name": "Kitchen Percussion",
+  "parameters": {
+    "Onset": {
+      "perc_kickDecay": 0.36,
+      "perc_kickPunch": 0.786,
+      "perc_kickTune": 0.376,
+      "perc_macroMachine": 0.0,
+      "perc_macroPunch": 0.092,
+      "perc_noiseLevel": 0.23
+    },
+    "Osteria": {
+      "osteria_attack": 0.276,
+      "osteria_bassLevel": 0.507,
+      "osteria_blendMode": 0.503,
+      "osteria_chorus": 0.317,
+      "osteria_decay": 0.539,
+      "osteria_ensWidth": 0.463,
+      "osteria_filterEnvDepth": 0.382,
+      "osteria_hall": 0.433,
+      "osteria_harmLevel": 0.701,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.416,
+      "osteria_murmur": 0.471,
+      "osteria_oceanBleed": 0.066,
+      "osteria_patina": 0.503,
+      "osteria_porto": 0.463,
+      "osteria_qBassShore": 0.592,
+      "osteria_qElastic": 0.78,
+      "osteria_qHarmShore": 0.551,
+      "osteria_qMelShore": 0.519,
+      "osteria_qMemory": 0.739,
+      "osteria_qRhythmShore": 0.394,
+      "osteria_qStretch": 0.343,
+      "osteria_qSympathy": 0.609,
+      "osteria_release": 2.5,
+      "osteria_rhythmLevel": 0.348,
+      "osteria_sessionDelay": 0.198,
+      "osteria_smoke": 0.133,
+      "osteria_sustain": 0.643,
+      "osteria_tape": 0.003,
+      "osteria_tavernMix": 0.456,
+      "osteria_tavernShore": 0.517,
+      "osteria_warmth": 0.895
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "onset"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

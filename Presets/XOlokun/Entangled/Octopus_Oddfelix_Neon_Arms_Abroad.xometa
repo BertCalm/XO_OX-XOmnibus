@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Octopus",
-        "target": "OddfeliX",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay",
+        "engineA": "Octopus",
+        "engineB": "OddfeliX"
       }
     ]
   },

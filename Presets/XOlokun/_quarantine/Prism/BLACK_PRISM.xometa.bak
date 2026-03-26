@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.546
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.014,
+    "brightness": 0.093,
+    "density": 0.965,
+    "movement": 0.783,
+    "space": 0.663,
+    "warmth": 0.477
+  },
+  "engines": [
+    "Overbite",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.554,
+    "COUPLING": 0.398,
+    "MOVEMENT": 0.278,
+    "SPACE": 0.67
+  },
+  "mood": "Prism",
+  "name": "Black Prism (Overbite)",
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.771,
+      "macro_coupling": 0.713,
+      "macro_movement": 0.934,
+      "macro_space": 0.108
+    },
+    "Overlap": {
+      "macro_character": 0.009,
+      "macro_coupling": 0.393,
+      "macro_movement": 0.28,
+      "macro_space": 0.981
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

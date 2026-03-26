@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9723,
-        "source": "Ombre",
-        "target": "Oblique",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Ombre",
+        "engineB": "Oblique"
       }
     ]
   },

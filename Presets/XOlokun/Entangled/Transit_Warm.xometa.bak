@@ -1,0 +1,77 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.712,
+        "engineA": "Orbital",
+        "engineB": "Oblong",
+        "type": "pitch_follow"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Orbital × Oblong coupling (spectral cross). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.461,
+    "brightness": 0.581,
+    "density": 0.66,
+    "movement": 0.515,
+    "space": 0.562,
+    "warmth": 0.595
+  },
+  "engines": [
+    "Orbital",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Transit Warm",
+  "parameters": {
+    "Oblong": {
+      "bob_couplingIn": 0.778,
+      "bob_couplingOut": 0.582,
+      "bob_macro1": 0.609,
+      "bob_macro2": 0.672,
+      "bob_macro3": 0.549,
+      "bob_macro4": 0.487,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.744,
+      "orb_brightness": 0.791,
+      "orb_couplingIn": 0.488,
+      "orb_groupEnv": 0.396,
+      "orb_harmonicAmt": 0.52,
+      "orb_macro1": 0.642,
+      "orb_macro2": 0.596,
+      "orb_macro3": 0.375,
+      "orb_macro4": 0.484,
+      "orb_phaseSpread": 0.732,
+      "orb_resonantPeak": 0.592
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "oblong",
+    "spectral-cross",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
+}

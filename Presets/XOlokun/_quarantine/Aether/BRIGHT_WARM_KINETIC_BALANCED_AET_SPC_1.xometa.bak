@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.632
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.094,
+    "brightness": 0.947,
+    "density": 0.389,
+    "movement": 0.903,
+    "space": 0.571,
+    "warmth": 0.873
+  },
+  "engines": [
+    "OddfeliX",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.91,
+    "COUPLING": 0.513,
+    "MOVEMENT": 0.903,
+    "SPACE": 0.571
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM KINETIC BALANCE...",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.91,
+      "macro_coupling": 0.513,
+      "macro_movement": 0.903,
+      "macro_space": 0.571
+    },
+    "Oracle": {
+      "macro_character": 0.893,
+      "macro_coupling": 0.485,
+      "macro_movement": 0.903,
+      "macro_space": 0.553
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

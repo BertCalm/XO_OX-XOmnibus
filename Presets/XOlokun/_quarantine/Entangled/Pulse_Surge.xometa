@@ -6,7 +6,7 @@
         "amount": 0.531,
         "engineA": "OddOscar",
         "engineB": "Origami",
-        "type": "AMPLITUDE_LOCK"
+        "type": "AmpToFilter"
       }
     ]
   },

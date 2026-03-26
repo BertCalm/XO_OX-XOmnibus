@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.47
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.927,
+    "brightness": 0.529,
+    "density": 0.685,
+    "movement": 0.911,
+    "space": 0.881,
+    "warmth": 0.137
+  },
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.196,
+    "COUPLING": 0.845,
+    "MOVEMENT": 0.314,
+    "SPACE": 0.819
+  },
+  "mood": "Foundation",
+  "name": "Flux Force",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.25,
+      "macro_coupling": 0.846,
+      "macro_movement": 0.33,
+      "macro_space": 0.841
+    },
+    "Overworld": {
+      "macro_character": 0.592,
+      "macro_coupling": 0.735,
+      "macro_movement": 0.811,
+      "macro_space": 0.274
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "cold",
+    "kinetic",
+    "vast",
+    "violent",
+    "aggressive",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

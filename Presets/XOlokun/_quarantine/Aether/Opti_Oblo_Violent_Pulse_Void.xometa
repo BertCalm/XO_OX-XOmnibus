@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-16",
   "legacy": {
@@ -49,7 +49,8 @@
     "type": "RING_MOD",
     "source": "OPTIC",
     "target": "OBLONG",
-    "amount": 0.71
+    "amount": 0.71,
+    "pairs": []
   },
   "sequencer": null,
   "dna": {

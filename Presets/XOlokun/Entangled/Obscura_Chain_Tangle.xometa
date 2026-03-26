@@ -98,7 +98,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Obscura",
-        "type": "LFO->ExcitePos",
+        "type": "LFOToPitch",
         "amount": 0.35
       }
     ]

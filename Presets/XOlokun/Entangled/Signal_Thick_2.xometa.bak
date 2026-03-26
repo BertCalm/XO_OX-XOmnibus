@@ -1,0 +1,77 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
+        "type": "PITCH_SYNC",
+        "amount": 0.8115
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.8782,
+    "brightness": 0.0717,
+    "density": 0.9842,
+    "movement": 0.0152,
+    "space": 0.8969,
+    "warmth": 0.5996
+  },
+  "engines": [
+    "Oblong",
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7635,
+    "COUPLING": 0.8542,
+    "MOVEMENT": 0.01,
+    "SPACE": 0.3483
+  },
+  "mood": "Entangled",
+  "name": "Signal Thick 2",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.9653,
+      "macro_coupling": 0.7978,
+      "macro_movement": 0.01,
+      "macro_space": 0.1173,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "OddOscar": {
+      "macro_character": 0.5618,
+      "macro_coupling": 0.9107,
+      "macro_movement": 0.01,
+      "macro_space": 0.5794
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "violent",
+    "dense",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

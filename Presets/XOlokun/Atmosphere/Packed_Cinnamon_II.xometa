@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Octopus",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.862
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Spacious and ambient, shimmering, warm sound. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Spacious and ambient, shimmering, warm sound. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

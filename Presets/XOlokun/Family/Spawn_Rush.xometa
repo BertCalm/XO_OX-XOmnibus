@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.715,
-      "destination": "OVERDUB",
-      "source": "OMBRE",
-      "type": "PITCH_SYNC"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.715,
+        "type": "PitchToPitch",
+        "engineA": "OMBRE",
+        "engineB": "OVERDUB"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "dna": {
     "aggression": 0.897,
     "brightness": 0.492,

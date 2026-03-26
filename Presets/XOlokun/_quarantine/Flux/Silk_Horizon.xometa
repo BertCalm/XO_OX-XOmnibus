@@ -5,7 +5,7 @@
       {
         "engineA": "Opal",
         "engineB": "OddOscar",
-        "type": "PITCH_FOLLOW",
+        "type": "PitchToPitch",
         "amount": 0.61
       }
     ]

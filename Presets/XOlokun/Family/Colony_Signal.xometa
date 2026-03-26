@@ -4,16 +4,16 @@
     "pairs": [
       {
         "engine": "Orca",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       },
       {
         "engine": "Octopus",
-        "type": "Harmonic"
+        "type": "EnvToMorph"
       }
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Cinquefoil signal tone \u2014 designed as coupling sender for group performances.",
+  "description": "Cinquefoil signal tone — designed as coupling sender for group performances.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.45,

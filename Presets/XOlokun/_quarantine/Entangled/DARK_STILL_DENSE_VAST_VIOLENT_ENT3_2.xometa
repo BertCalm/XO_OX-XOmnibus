@@ -5,7 +5,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Opal",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.9556
       }
     ]

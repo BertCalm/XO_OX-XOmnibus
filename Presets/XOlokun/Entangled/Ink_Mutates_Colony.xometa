@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -162,11 +162,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Organism",
         "type": "AudioToFM",
         "amount": 0.16,
-        "description": "OUTWIT ink bursts drive ORGANISM mutation events \u2014 ink ejections force colony into new rule configurations"
+        "description": "OUTWIT ink bursts drive ORGANISM mutation events — ink ejections force colony into new rule configurations",
+        "engineA": "Outwit",
+        "engineB": "Organism"
       }
     ]
   },

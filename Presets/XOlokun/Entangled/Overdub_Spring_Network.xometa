@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Spring Network",
   "mood": "Entangled",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Overdub's spring reverb becomes a shared bus for a paired engine — two instruments in one room.",
-  "tags": ["entangled", "spring", "reverb", "shared", "room", "network"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "entangled",
+    "spring",
+    "reverb",
+    "shared",
+    "room",
+    "network"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,11 +70,28 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.15, "COUPLING": 0.75, "SPACE": 0.7},
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.75,
+    "SPACE": 0.7
+  },
   "coupling": {
     "pairs": [
-      {"source": "Overdub", "target": "Oblong", "type": "ReverbShare", "intensity": 0.68}
+      {
+        "type": "FilterToFilter",
+        "intensity": 0.68,
+        "engineA": "Overdub",
+        "engineB": "Oblong"
+      }
     ]
   },
-  "dna": {"brightness": 0.32, "warmth": 0.85, "movement": 0.2, "density": 0.5, "space": 0.72, "aggression": 0.18}
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.72,
+    "aggression": 0.18
+  }
 }

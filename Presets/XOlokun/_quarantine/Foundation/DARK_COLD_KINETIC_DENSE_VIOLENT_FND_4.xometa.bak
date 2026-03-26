@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.497
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_KINETIC_DENSE_VIOLENT. Variant 4.",
+  "dna": {
+    "aggression": 0.956,
+    "brightness": 0.109,
+    "density": 0.98,
+    "movement": 0.878,
+    "space": 0.527,
+    "warmth": 0.064
+  },
+  "engines": [
+    "OddOscar",
+    "Origami"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.167,
+    "COUPLING": 1.0,
+    "MOVEMENT": 0.868,
+    "SPACE": 0.484
+  },
+  "mood": "Foundation",
+  "name": "Thread Massive",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.158,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.886,
+      "macro_space": 0.513
+    },
+    "Origami": {
+      "macro_character": 0.176,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.85,
+      "macro_space": 0.455
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "cold",
+    "kinetic",
+    "dark",
+    "diversity",
+    "violent",
+    "foundation",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

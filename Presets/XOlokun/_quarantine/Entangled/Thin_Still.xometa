@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.381,
@@ -42,7 +42,7 @@
       {
         "engineA": "Opal",
         "engineB": "Octopus",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.722
       }
     ]

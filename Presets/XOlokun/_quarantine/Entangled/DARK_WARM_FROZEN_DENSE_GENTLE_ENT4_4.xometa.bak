@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osteria",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.896
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.115,
+    "brightness": 0.023,
+    "density": 0.982,
+    "movement": 0.04,
+    "space": 0.621,
+    "warmth": 0.958
+  },
+  "engines": [
+    "Oblique",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.499,
+    "COUPLING": 0.896,
+    "MOVEMENT": 0.034,
+    "SPACE": 0.623
+  },
+  "mood": "Entangled",
+  "name": "Amber Thick",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.483,
+      "macro_coupling": 0.98,
+      "macro_movement": 0.031,
+      "macro_space": 0.603
+    },
+    "Osteria": {
+      "macro_character": 0.516,
+      "macro_coupling": 0.99,
+      "macro_movement": 0.037,
+      "macro_space": 0.643
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "warm",
+    "dense",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

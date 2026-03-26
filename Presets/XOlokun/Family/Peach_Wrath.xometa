@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ohm",
-        "type": "MODULATION_FLOW",
+        "type": "EnvToMorph",
         "amount": 0.555
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, warm texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Warm and familiar, shimmering, warm texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

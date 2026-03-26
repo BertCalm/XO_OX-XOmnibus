@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -137,11 +137,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Oceanic",
         "type": "FilterToFilter",
         "amount": 0.17,
-        "description": "OUTWIT ink-cloud ejection triggers cutoff drops in OCEANIC \u2014 ink obscures both organisms"
+        "description": "OUTWIT ink-cloud ejection triggers cutoff drops in OCEANIC — ink obscures both organisms",
+        "engineA": "Outwit",
+        "engineB": "Oceanic"
       }
     ]
   },

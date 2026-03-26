@@ -5,7 +5,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Osprey",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.9564
       }
     ]

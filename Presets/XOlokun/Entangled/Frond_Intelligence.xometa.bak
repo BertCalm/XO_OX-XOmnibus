@@ -1,0 +1,98 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.756,
+        "engineA": "Overlap",
+        "engineB": "Outwit",
+        "type": "SPATIAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Lion's Mane FDN meets Giant Pacific CA — space and emergent pattern entangled at the reef's edge",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.55,
+    "density": 0.675,
+    "movement": 0.325,
+    "space": 0.989,
+    "warmth": 0.74
+  },
+  "engines": [
+    "Overlap",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "COUPLING": 0.574,
+    "MOVEMENT": 0.427,
+    "SPACE": 0.698
+  },
+  "mood": "Entangled",
+  "name": "Frond Intelligence",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.171,
+      "owit_ampRelease": 0.573,
+      "owit_armStagger": 0.268,
+      "owit_arms": 5,
+      "owit_borderMode": 1,
+      "owit_cellSize": 0.414,
+      "owit_chroma1": 0.476,
+      "owit_chroma2": 0.677,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.755,
+      "owit_density": 0.503,
+      "owit_evolveRate": 0.328,
+      "owit_filterCutoff": 0.346,
+      "owit_filterReso": 0.139,
+      "owit_inkCloudMix": 0.035,
+      "owit_mutateProb": 0.337,
+      "owit_outputLevel": 0.836,
+      "owit_pitchSpread": 0.351,
+      "owit_polyDepth": 0.743,
+      "owit_rule": 30
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.61,
+      "olap_crossfeedAmt": 0.368,
+      "olap_damping": 0.339,
+      "olap_decay": 0.61,
+      "olap_diffusion": 0.795,
+      "olap_earlyMix": 0.348,
+      "olap_filterCutoff": 0.459,
+      "olap_filterReso": 0.277,
+      "olap_frondDensity": 0.625,
+      "olap_lateMix": 0.413,
+      "olap_modDepth": 0.371,
+      "olap_modRate": 0.362,
+      "olap_nodeCount": 14,
+      "olap_outputLevel": 0.656,
+      "olap_preDelay": 0.026,
+      "olap_shimmerMix": 0.111,
+      "olap_size": 0.56,
+      "olap_spinRate": 0.123
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "outwit",
+    "marquee",
+    "space",
+    "generative"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Organon",
         "engineB": "Overdub",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.659
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, shimmering, dense pad. Drives through the mix with presence and bite."
+  "description": "Restless and kinetic, shimmering, dense pad. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

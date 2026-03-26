@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.854
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.949,
+    "density": 0.962,
+    "movement": 0.6,
+    "space": 0.343,
+    "warmth": 0.021
+  },
+  "engines": [
+    "Oceanic",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.889,
+    "COUPLING": 0.865,
+    "MOVEMENT": 0.595,
+    "SPACE": 0.328
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT COLD DENSE VIOLENT A...",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.892,
+      "macro_coupling": 0.861,
+      "macro_movement": 0.593,
+      "macro_space": 0.338
+    },
+    "Oceanic": {
+      "macro_character": 0.886,
+      "macro_coupling": 0.868,
+      "macro_movement": 0.598,
+      "macro_space": 0.317
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

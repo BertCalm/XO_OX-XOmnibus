@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Ombre",
-        "target": "Orbital",
-        "type": "SPECTRAL_TRANSFER"
+        "type": "EnvToMorph",
+        "engineA": "Ombre",
+        "engineB": "Orbital"
       }
     ]
   },

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Odyssey",
-        "target": "Oceanic",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter",
+        "engineA": "Odyssey",
+        "engineB": "Oceanic"
       }
     ]
   },

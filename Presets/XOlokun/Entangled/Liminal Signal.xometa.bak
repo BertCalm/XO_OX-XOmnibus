@@ -1,0 +1,87 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.87
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OUTWIT CA arm patterns route through OVERLAP FDN nodes — cellular topology becomes spatial topology",
+  "engines": [
+    "Outwit",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.51,
+    "COUPLING": 0.87,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.53
+  },
+  "mood": "Entangled",
+  "name": "Liminal Signal",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.14,
+      "owit_ampRelease": 0.671,
+      "owit_arms": 5,
+      "owit_cellSize": 0.263,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.709,
+      "owit_density": 0.568,
+      "owit_evolveRate": 0.646,
+      "owit_filterCutoff": 0.351,
+      "owit_filterReso": 0.237,
+      "owit_mutateProb": 0.276,
+      "owit_outputLevel": 0.707,
+      "owit_pitchSpread": 0.266,
+      "owit_rule": 184
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.78,
+      "olap_damping": 0.515,
+      "olap_decay": 0.813,
+      "olap_diffusion": 0.685,
+      "olap_earlyMix": 0.458,
+      "olap_filterCutoff": 0.525,
+      "olap_filterReso": 0.115,
+      "olap_lateMix": 0.424,
+      "olap_modDepth": 0.166,
+      "olap_modRate": 0.115,
+      "olap_outputLevel": 0.745,
+      "olap_preDelay": 0.015,
+      "olap_size": 0.842
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "overlap",
+    "outwit-led",
+    "wolfram",
+    "cellular-automata"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.351,
+    "warmth": 0.5,
+    "movement": 0.646,
+    "density": 0.568,
+    "space": 0.015,
+    "aggression": 0.14
+  },
+  "tempo": null
+}

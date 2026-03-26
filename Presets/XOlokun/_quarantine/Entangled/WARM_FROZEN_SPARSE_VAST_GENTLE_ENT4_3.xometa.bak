@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.847
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.113,
+    "brightness": 0.621,
+    "density": 0.121,
+    "movement": 0.085,
+    "space": 0.881,
+    "warmth": 0.944
+  },
+  "engines": [
+    "Oblique",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.77,
+    "COUPLING": 0.847,
+    "MOVEMENT": 0.083,
+    "SPACE": 0.877
+  },
+  "mood": "Entangled",
+  "name": "Radiant Dome",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.776,
+      "macro_coupling": 0.111,
+      "macro_movement": 0.081,
+      "macro_space": 0.871
+    },
+    "Overbite": {
+      "macro_character": 0.763,
+      "macro_coupling": 0.098,
+      "macro_movement": 0.085,
+      "macro_space": 0.882
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

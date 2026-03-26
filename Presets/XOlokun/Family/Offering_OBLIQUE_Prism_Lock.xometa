@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "OFFERING locking OBLIQUE's prismatic bounce. Snare hits redirect the prism angle — each crack refracts a new harmonic. High collage flip setting means OFFERING samples itself mid-groove, keeping OBLIQUE's input unpredictable.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.55,
     "warmth": 0.45
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OBLIQUE Prism Lock",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["oblique", "coupling", "prism", "LA", "collage", "family"],
+  "tags": [
+    "oblique",
+    "coupling",
+    "prism",
+    "LA",
+    "collage",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.65, "M2": 0.45, "M3": 0.45, "M4": 0.05}
+  "macros": {
+    "M1": 0.65,
+    "M2": 0.45,
+    "M3": 0.45,
+    "M4": 0.05
+  }
 }

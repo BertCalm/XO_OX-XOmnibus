@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6618,
-        "source": "Oceanic",
-        "target": "Obbligato",
-        "type": "FORMANT_BRIDGE"
+        "type": "EnvToMorph",
+        "engineA": "Oceanic",
+        "engineB": "Obbligato"
       }
     ]
   },

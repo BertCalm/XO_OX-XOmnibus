@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Prismatic Dust",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPAL coupling. Alien formant with high tilt — the upper partials dominate and OPAL's granular FM scatters them into prismatic sprays of inharmonic color. The result is not a voice but a spectral dust cloud that retains the memory of vocal formant shapes. Bright, crystalline, and entirely alien. Each grain is a splinter of a vowel.",
+  "tags": [
+    "entangled",
+    "opal",
+    "alien",
+    "prismatic",
+    "spectral"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.35,
+      "opera_voice": 0.6,
+      "opera_stage": 0.5,
+      "opera_vowelA": 5,
+      "opera_vowelB": 2,
+      "opera_breath": 0.1,
+      "opera_effort": 0.5,
+      "opera_partials": 28,
+      "opera_resSens": 0.55,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 7,
+      "opera_vibRate": 5.0,
+      "opera_vibDepth": 0.15,
+      "opera_tilt": 0.35,
+      "opera_filterCutoff": 12000.0,
+      "opera_filterRes": 0.15,
+      "opera_filterEnvAmt": 0.3,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.2,
+      "opera_filterS": 0.5,
+      "opera_filterR": 0.5,
+      "opera_ampA": 0.05,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.8,
+      "opera_ampR": 0.7,
+      "opera_lfo1Rate": 0.15,
+      "opera_lfo1Depth": 0.25,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 4.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.4,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.1,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Opal",
+        "target": "Opera",
+        "type": "FrequencyModulation",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ole",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.707
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.775,
+    "brightness": 0.717,
+    "density": 0.771,
+    "movement": 0.918,
+    "space": 0.005,
+    "warmth": 0.101
+  },
+  "engines": [
+    "Obsidian",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.929,
+    "COUPLING": 0.407,
+    "MOVEMENT": 0.918,
+    "SPACE": 0.935
+  },
+  "mood": "Entangled",
+  "name": "FRANTIC PULSE 35",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.587,
+      "macro_coupling": 0.242,
+      "macro_movement": 0.894,
+      "macro_space": 0.67
+    },
+    "Ole": {
+      "macro_character": 0.531,
+      "macro_coupling": 0.638,
+      "macro_movement": 0.942,
+      "macro_space": 0.052
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "rupture",
+    "intensity"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

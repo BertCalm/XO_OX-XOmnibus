@@ -6,7 +6,7 @@
         "amount": 0.88,
         "engineA": "Overworld",
         "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

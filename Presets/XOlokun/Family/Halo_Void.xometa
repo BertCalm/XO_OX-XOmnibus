@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Orphica",
-        "type": "FILTER_LINK",
+        "type": "FilterToFilter",
         "amount": 0.841
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, warm atmosphere. Let it breathe — the space is the instrument."
+  "description": "Warm and familiar, shimmering, warm atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

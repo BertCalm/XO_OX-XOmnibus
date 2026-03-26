@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.951
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.952,
+    "brightness": 0.984,
+    "density": 0.525,
+    "movement": 0.486,
+    "space": 0.084,
+    "warmth": 0.089
+  },
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.655,
+    "COUPLING": 0.987,
+    "MOVEMENT": 0.486,
+    "SPACE": 0.084
+  },
+  "mood": "Entangled",
+  "name": "Crystal Fang",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.607,
+      "macro_coupling": 0.985,
+      "macro_movement": 0.48,
+      "macro_space": 0.097
+    },
+    "Opal": {
+      "macro_character": 0.703,
+      "macro_coupling": 0.987,
+      "macro_movement": 0.533,
+      "macro_space": 0.066
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "cold",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

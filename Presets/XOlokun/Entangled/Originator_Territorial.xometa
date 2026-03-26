@@ -6,7 +6,7 @@
         "amount": 0.752,
         "engineA": "Origami",
         "engineB": "Ocelot",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

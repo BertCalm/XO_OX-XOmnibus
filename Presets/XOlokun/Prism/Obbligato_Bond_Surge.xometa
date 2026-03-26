@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Tight",
+  "couplingIntensity": "Moderate",
   "description": "The BOND macro is a live weapon. At rest the two winds breathe apart; mod wheel pushes BOND to 1.0 and they fuse into a single unstoppable voice. Play the merge like an instrument.",
   "dna": {
     "aggression": 0.6,

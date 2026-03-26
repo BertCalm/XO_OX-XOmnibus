@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Orca",
+        "type": "FILTER_COUPLING",
+        "amount": 0.583
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Orca breach transient scatters OVERLAP pre-delay — the apex impact opens the room instantaneously",
+  "engines": [
+    "Overlap",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "COUPLING": 0.58,
+    "MOVEMENT": 0.54,
+    "SPACE": 0.75
+  },
+  "mood": "Entangled",
+  "name": "Trailing Spread",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.768,
+      "olap_damping": 0.322,
+      "olap_decay": 0.591,
+      "olap_diffusion": 0.505,
+      "olap_earlyMix": 0.394,
+      "olap_filterCutoff": 0.451,
+      "olap_filterReso": 0.361,
+      "olap_lateMix": 0.679,
+      "olap_modDepth": 0.287,
+      "olap_modRate": 0.132,
+      "olap_outputLevel": 0.748,
+      "olap_preDelay": 0.244,
+      "olap_size": 0.628
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "orca",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.451,
+    "warmth": 0.5,
+    "movement": 0.132,
+    "density": 0.5,
+    "space": 0.244,
+    "aggression": 0.3
+  },
+  "tempo": null
+}

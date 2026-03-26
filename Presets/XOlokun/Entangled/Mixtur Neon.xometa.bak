@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Mixtur Neon",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's neon-bright harmonics dissolve into XOwlfish's Mixtur-Trautonium oscillator's character \u2014 a clinical-electric tonal union that sharpens both engines into one coherent voice.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "owlfish",
+    "harmonic",
+    "blend",
+    "tonal"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OWLFISH",
+    "BLEND",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.6
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.885,
+    "warmth": 0.0,
+    "movement": 0.802,
+    "density": 0.517,
+    "space": 0.825,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Owlfish": {
+      "owl_filterCutoff": 3500.0,
+      "owl_filterReso": 0.4,
+      "owl_drive": 0.35,
+      "owl_lfoRate": 0.2,
+      "owl_mixturDepth": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

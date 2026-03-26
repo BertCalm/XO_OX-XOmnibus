@@ -5,7 +5,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Organon",
-        "type": "ENVELOPE_SHARE",
+        "type": "EnvToDecay",
         "amount": 0.7
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6949,
+        "source": "Obbligato",
+        "target": "Owlfish",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Bright Dense Vast Gentle character entanglement — OWLFISH × OBBLIGATO via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0423,
+    "brightness": 0.8849,
+    "density": 0.8701,
+    "movement": 0.4765,
+    "space": 0.985,
+    "warmth": 0.6431
+  },
+  "engines": [
+    "Owlfish",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+  "macros": {
+    "CHARACTER": 0.764,
+    "COUPLING": 0.6949,
+    "MOVEMENT": 0.4765,
+    "SPACE": 0.985
+  },
+  "mood": "Entangled",
+  "name": "Cathedral Caress",
+  "parameters": {
+    "Obbligato": {
+      "amp_attack": 0.275,
+      "amp_release": 0.7164,
+      "coupling_level": 0.5854,
+      "density": 0.8358,
+      "drive": 0.0544,
+      "filter_cutoff": 0.8338,
+      "filter_resonance": 0.0819,
+      "macro_character": 0.7828,
+      "macro_coupling": 0.5854,
+      "macro_movement": 0.4746,
+      "macro_space": 0.9631,
+      "output_level": 0.9081,
+      "reverb_mix": 0.7309,
+      "reverb_size": 0.7848
+    },
+    "Owlfish": {
+      "amp_attack": 0.2917,
+      "amp_release": 0.6642,
+      "coupling_level": 0.5832,
+      "density": 0.8488,
+      "drive": 0.0998,
+      "filter_cutoff": 0.7994,
+      "filter_resonance": 0.1109,
+      "macro_character": 0.7954,
+      "macro_coupling": 0.5967,
+      "macro_movement": 0.5111,
+      "macro_space": 0.9974,
+      "output_level": 0.9299,
+      "reverb_mix": 0.6835,
+      "reverb_size": 0.7754
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "dense",
+    "vast",
+    "gentle",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

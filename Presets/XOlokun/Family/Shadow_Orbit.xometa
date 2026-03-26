@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "OddfeliX",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.618
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm atmosphere. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Warm and familiar, dark, warm atmosphere. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

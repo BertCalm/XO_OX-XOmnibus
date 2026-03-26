@@ -6,11 +6,11 @@
         "amount": 0.687,
         "engineA": "Obese",
         "engineB": "Optic",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OBESE saturation clips OPTIC photon luminance. Overdriven light scan.",
   "dna": {

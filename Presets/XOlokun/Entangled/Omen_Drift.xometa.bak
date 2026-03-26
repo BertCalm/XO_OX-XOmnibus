@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.551,
+        "engineA": "Oracle",
+        "engineB": "Ohm",
+        "type": "GRANULAR_EXCHANGE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Oracle communes in silence. Stochastic maqam dissolves into OHM still drone.",
+  "dna": {
+    "aggression": 0.367,
+    "brightness": 0.407,
+    "density": 0.595,
+    "movement": 0.671,
+    "space": 0.664,
+    "warmth": 0.594
+  },
+  "engines": [
+    "Oracle",
+    "Ohm"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Omen Drift",
+  "parameters": {
+    "Ohm": {
+      "ohm_aggression": 0.334,
+      "ohm_brightness": 0.528,
+      "ohm_density": 0.535,
+      "ohm_level": 0.789,
+      "ohm_movement": 0.483,
+      "ohm_space": 0.7,
+      "ohm_warmth": 0.712
+    },
+    "Oracle": {
+      "oracle_aggression": 0.457,
+      "oracle_brightness": 0.36,
+      "oracle_density": 0.658,
+      "oracle_level": 0.877,
+      "oracle_movement": 0.645,
+      "oracle_space": 0.652,
+      "oracle_warmth": 0.43
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oracle",
+    "ohm",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

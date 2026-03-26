@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Outwit",
+        "type": "FEEDBACK",
+        "amount": 0.83
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.07,
+    "density": 0.46,
+    "movement": 0.81,
+    "space": 0.52,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Oblong",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.81,
+    "SPACE": 0.52
+  },
+  "mood": "Entangled",
+  "name": "Phantom Automata",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.22,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.5,
+      "macro_space": 0.82,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Outwit": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.48,
+      "macro_space": 0.68
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, evolving texture. Macro sweeps reveal shifting timbral landscapes."
+}

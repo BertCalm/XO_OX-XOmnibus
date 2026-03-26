@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Microsound Amber Harp",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORPHICA's microsound harp strings respond to OBLONG's amber pulse triggers. Percussive plucks scatter into microsonic clouds.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "orphica",
+    "beat",
+    "microsound",
+    "harp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.62,
+    "movement": 0.65,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_curiousRate": 0.5,
+      "bob_groove": 0.5,
+      "bob_density": 0.6,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Orphica": {
+      "orph_grainSize": 0.3,
+      "orph_scatter": 0.55,
+      "orph_harpDensity": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orphica",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Orphica",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

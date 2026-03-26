@@ -12,7 +12,7 @@
         "amount": 0.45,
         "engineA": "Ole",
         "engineB": "Oblique",
-        "type": "PitchSync"
+        "type": "PitchToPitch"
       }
     ]
   },

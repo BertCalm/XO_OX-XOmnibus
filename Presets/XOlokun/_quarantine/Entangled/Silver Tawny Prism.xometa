@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Oblique",
-        "type": "SPECTRAL_TRANSFER",
+        "type": "EnvToMorph",
         "amount": 0.711
       }
     ]
@@ -128,5 +128,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

@@ -5,9 +5,9 @@
       {
         "amount": 0.613,
         "description": "Orca drives Ouroboros via EnvToMod",
-        "source": "Orca",
-        "target": "Ouroboros",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Orca",
+        "engineB": "Ouroboros"
       }
     ]
   },

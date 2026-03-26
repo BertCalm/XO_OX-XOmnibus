@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7774,
-        "source": "Overlap",
-        "target": "Owlfish",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Overlap",
+        "engineB": "Owlfish"
       }
     ]
   },

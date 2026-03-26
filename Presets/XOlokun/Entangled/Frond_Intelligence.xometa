@@ -6,7 +6,7 @@
         "amount": 0.756,
         "engineA": "Overlap",
         "engineB": "Outwit",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable"
       }
     ]
   },

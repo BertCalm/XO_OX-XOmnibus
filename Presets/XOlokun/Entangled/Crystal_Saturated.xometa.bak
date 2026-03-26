@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8056,
+        "source": "Owlfish",
+        "target": "Orbital",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Cold Still Intimate Gentle character entanglement — OWLFISH × ORBITAL via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0269,
+    "brightness": 0.6117,
+    "density": 0.5527,
+    "movement": 0.0965,
+    "space": 0.1093,
+    "warmth": 0.0711
+  },
+  "engines": [
+    "Owlfish",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3414,
+    "COUPLING": 0.8056,
+    "MOVEMENT": 0.0965,
+    "SPACE": 0.1093
+  },
+  "mood": "Entangled",
+  "name": "Crystal Saturated",
+  "parameters": {
+    "Orbital": {
+      "amp_attack": 0.4493,
+      "amp_release": 0.1653,
+      "coupling_level": 0.5271,
+      "density": 0.5768,
+      "drive": 0.073,
+      "filter_cutoff": 0.6598,
+      "filter_resonance": 0.1044,
+      "macro_character": 0.482,
+      "macro_coupling": 0.6406,
+      "macro_movement": 0.0859,
+      "macro_space": 0.1288,
+      "output_level": 0.8564,
+      "reverb_mix": 0.2099,
+      "reverb_size": 0.2995
+    },
+    "Owlfish": {
+      "amp_attack": 0.4148,
+      "amp_release": 0.1459,
+      "coupling_level": 0.5474,
+      "density": 0.5752,
+      "drive": 0.0601,
+      "filter_cutoff": 0.6294,
+      "filter_resonance": 0.1526,
+      "macro_character": 0.4755,
+      "macro_coupling": 0.5728,
+      "macro_movement": 0.0725,
+      "macro_space": 0.144,
+      "output_level": 0.8675,
+      "reverb_mix": 0.2304,
+      "reverb_size": 0.2409
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold",
+    "still",
+    "intimate",
+    "gentle",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

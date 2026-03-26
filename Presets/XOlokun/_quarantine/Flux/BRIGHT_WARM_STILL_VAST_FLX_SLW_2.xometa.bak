@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overworld",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.677
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.572,
+    "brightness": 0.948,
+    "density": 0.326,
+    "movement": 0.099,
+    "space": 0.981,
+    "warmth": 0.918
+  },
+  "engines": [
+    "Ouroboros",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.449,
+    "COUPLING": 0.694,
+    "MOVEMENT": 0.099,
+    "SPACE": 0.981
+  },
+  "mood": "Flux",
+  "name": "Solar Horizon 2",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.494,
+      "macro_coupling": 0.935,
+      "macro_movement": 0.09,
+      "macro_space": 1.0
+    },
+    "Overworld": {
+      "macro_character": 0.328,
+      "macro_coupling": 0.764,
+      "macro_movement": 0.086,
+      "macro_space": 1.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "warm",
+    "vast",
+    "suspended-chaos"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

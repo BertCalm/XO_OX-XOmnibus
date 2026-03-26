@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Obese",
-        "target": "Oceanic",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable",
+        "engineA": "Obese",
+        "engineB": "Oceanic"
       }
     ]
   },

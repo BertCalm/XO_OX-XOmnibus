@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Outwit",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.793
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.986,
+    "brightness": 0.062,
+    "density": 0.561,
+    "movement": 0.081,
+    "space": 0.888,
+    "warmth": 0.129
+  },
+  "engines": [
+    "Obsidian",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.069,
+    "COUPLING": 0.793,
+    "MOVEMENT": 0.081,
+    "SPACE": 0.915
+  },
+  "mood": "Entangled",
+  "name": "Grain Grit 2",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.072,
+      "macro_coupling": 0.537,
+      "macro_movement": 0.088,
+      "macro_space": 0.913
+    },
+    "Outwit": {
+      "macro_character": 0.066,
+      "macro_coupling": 0.583,
+      "macro_movement": 0.074,
+      "macro_space": 0.916
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "cold",
+    "vast",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

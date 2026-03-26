@@ -5,9 +5,9 @@
       {
         "amount": 0.784,
         "description": "Osteria drives Optic via PitchToPosition",
-        "source": "Osteria",
-        "target": "Optic",
-        "type": "PitchToPosition"
+        "type": "PitchToPitch",
+        "engineA": "Osteria",
+        "engineB": "Optic"
       }
     ]
   },

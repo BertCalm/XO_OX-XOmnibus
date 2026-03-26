@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Organon",
+        "type": "FILTER_LINK",
+        "amount": 0.856
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.878,
+    "brightness": 0.985,
+    "density": 0.51,
+    "movement": 0.039,
+    "space": 0.49,
+    "warmth": 0.936
+  },
+  "engines": [
+    "Ottoni",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.949,
+    "COUPLING": 0.687,
+    "MOVEMENT": 0.04,
+    "SPACE": 0.49
+  },
+  "mood": "Family",
+  "name": "Radiant Blade",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.947,
+      "macro_coupling": 0.698,
+      "macro_movement": 0.051,
+      "macro_space": 0.518
+    },
+    "Ottoni": {
+      "macro_character": 0.951,
+      "macro_coupling": 0.676,
+      "macro_movement": 0.029,
+      "macro_space": 0.461
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "aggressive",
+    "bright"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

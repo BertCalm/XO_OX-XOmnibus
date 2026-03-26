@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "created": "2026-03-21",
   "description": "OFFERING triggering ORCA breach events. Kick hits sync with ORCA's apex predator wavetable — the breach happens on the one. Detroit's drunk timing means the orca never breaches exactly where expected. Hunting rhythm.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.5,
     "warmth": 0.5
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "ORCA Breach Sync",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["orca", "coupling", "breach", "detroit", "predator", "family"],
+  "tags": [
+    "orca",
+    "coupling",
+    "breach",
+    "detroit",
+    "predator",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.6, "M2": 0.3, "M3": 0.0, "M4": 0.1}
+  "macros": {
+    "M1": 0.6,
+    "M2": 0.3,
+    "M3": 0.0,
+    "M4": 0.1
+  }
 }

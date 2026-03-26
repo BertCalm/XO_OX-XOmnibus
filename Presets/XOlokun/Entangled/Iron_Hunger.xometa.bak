@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ouroboros",
+        "type": "DYNAMICS_SHARE",
+        "amount": 0.78
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.71,
+    "brightness": 0.39,
+    "density": 0.67,
+    "movement": 0.64,
+    "space": 0.48,
+    "warmth": 0.96
+  },
+  "engines": [
+    "Oblong",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.71,
+    "SPACE": 0.49
+  },
+  "mood": "Entangled",
+  "name": "Iron Hunger",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.96,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.75,
+      "macro_space": 0.44,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ouroboros": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.77,
+      "macro_movement": 0.66,
+      "macro_space": 0.54
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, warm, aggressive sound. Macro sweeps reveal shifting timbral landscapes."
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Overworld",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.695
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

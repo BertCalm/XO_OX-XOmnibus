@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Optic",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.754
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.936,
+    "brightness": 0.95,
+    "density": 0.438,
+    "movement": 0.936,
+    "space": 0.13,
+    "warmth": 0.448
+  },
+  "engines": [
+    "Oceanic",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.915,
+    "COUPLING": 0.883,
+    "MOVEMENT": 0.89,
+    "SPACE": 0.126
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT KINETIC TIGHT VIOLEN... (Oceanic)",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.901,
+      "macro_coupling": 0.858,
+      "macro_movement": 0.895,
+      "macro_space": 0.122
+    },
+    "Optic": {
+      "macro_character": 0.929,
+      "macro_coupling": 0.907,
+      "macro_movement": 0.885,
+      "macro_space": 0.129
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "tight"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

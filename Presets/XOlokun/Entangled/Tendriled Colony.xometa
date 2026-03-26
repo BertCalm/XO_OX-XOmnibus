@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Obbligato",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.6
       }
     ]

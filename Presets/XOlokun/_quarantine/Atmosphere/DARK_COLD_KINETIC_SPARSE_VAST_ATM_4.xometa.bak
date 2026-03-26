@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.577
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.472,
+    "brightness": 0.0877,
+    "density": 0.02,
+    "movement": 0.9358,
+    "space": 0.9044,
+    "warmth": 0.0531
+  },
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0824,
+    "COUPLING": 0.0251,
+    "MOVEMENT": 0.9482,
+    "SPACE": 0.9067
+  },
+  "mood": "Atmosphere",
+  "name": "Node Cascade 3",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.098,
+      "macro_coupling": 0.0295,
+      "macro_movement": 0.95,
+      "macro_space": 0.8914
+    },
+    "Origami": {
+      "macro_character": 0.0669,
+      "macro_coupling": 0.0207,
+      "macro_movement": 0.9463,
+      "macro_space": 0.922
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "cold",
+    "kinetic",
+    "sparse",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

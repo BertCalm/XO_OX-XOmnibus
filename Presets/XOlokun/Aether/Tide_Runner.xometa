@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.338,
-      "destination": "OBESE",
-      "source": "OVERLAP",
-      "type": "RESONANCE_SHARE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.338,
+        "type": "FilterToFilter",
+        "engineA": "OVERLAP",
+        "engineB": "OBESE"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
   "dna": {
     "aggression": 0.563,
     "brightness": 0.903,

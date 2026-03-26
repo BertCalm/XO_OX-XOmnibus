@@ -6,7 +6,7 @@
         "amount": 0.773,
         "engineA": "Orbital",
         "engineB": "Oracle",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

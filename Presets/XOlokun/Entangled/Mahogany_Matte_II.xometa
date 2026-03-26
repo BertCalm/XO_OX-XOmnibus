@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.837,
-        "source": "Obscura",
-        "target": "Overlap",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM",
+        "engineA": "Obscura",
+        "engineB": "Overlap"
       }
     ]
   },

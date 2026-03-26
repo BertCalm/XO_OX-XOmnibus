@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.778
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.929,
+    "brightness": 0.329,
+    "density": 0.893,
+    "movement": 0.946,
+    "space": 0.559,
+    "warmth": 0.92
+  },
+  "engines": [
+    "Oceanic",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.625,
+    "COUPLING": 0.902,
+    "MOVEMENT": 0.946,
+    "SPACE": 0.559
+  },
+  "mood": "Aether",
+  "name": "HOT KINETIC DENSE BALANCED ...",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.647,
+      "macro_coupling": 0.919,
+      "macro_movement": 0.969,
+      "macro_space": 0.542
+    },
+    "Oceanic": {
+      "macro_character": 0.625,
+      "macro_coupling": 0.902,
+      "macro_movement": 0.946,
+      "macro_space": 0.559
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

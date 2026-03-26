@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Osprey",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.81
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

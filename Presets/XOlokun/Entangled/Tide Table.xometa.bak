@@ -1,0 +1,152 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.653,
+        "description": "ORCA wavetable position locks to OSTERIA rhythm level; OWLFISH resonant pitch tracks the combined filter state",
+        "source": "Orca",
+        "target": "Osteria",
+        "type": "WavetableSync"
+      },
+      {
+        "amount": 0.529,
+        "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch",
+        "source": "Orca",
+        "target": "Owlfish",
+        "type": "SpectralMorph"
+      },
+      {
+        "amount": 0.504,
+        "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer",
+        "source": "Osteria",
+        "target": "Owlfish",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "The tide schedule governs all three: ORCA's wavetable scans with each swell, OSTERIA's tavern murmur rises and falls with the water line, OWLFISH's oscillator drones at the intertidal threshold.",
+  "dna": {
+    "aggression": 0.542,
+    "brightness": 0.421,
+    "density": 0.626,
+    "movement": 0.411,
+    "space": 0.497,
+    "warmth": 0.568
+  },
+  "engines": [
+    "Orca",
+    "Osteria",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "TIDE",
+    "SHORE",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "mood": "Entangled",
+  "name": "Tide Table",
+  "parameters": {
+    "Orca": {
+      "orca_ampAttack": 0.0722,
+      "orca_ampDecay": 0.461,
+      "orca_ampRelease": 1.3,
+      "orca_ampSustain": 0.422,
+      "orca_breachAmt": 0.642,
+      "orca_echoDepth": 0.41,
+      "orca_filterCutoff": 0.805,
+      "orca_filterRes": 0.411,
+      "orca_huntMacro": 0.078,
+      "orca_lfo1Depth": 0.371,
+      "orca_lfo1Rate": 0.239,
+      "orca_lfo2Depth": 0.091,
+      "orca_lfo2Rate": 0.0618,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.155,
+      "orca_podSync": 0.413,
+      "orca_wavetablePos": 0.517,
+      "orca_wavetableScan": 0.411
+    },
+    "Osteria": {
+      "osteria_attack": 0.071,
+      "osteria_bassLevel": 0.6,
+      "osteria_blendMode": 0.28,
+      "osteria_chorus": 0.205,
+      "osteria_decay": 0.321,
+      "osteria_ensWidth": 0.53,
+      "osteria_filterEnvDepth": 0.22,
+      "osteria_hall": 0.282,
+      "osteria_harmLevel": 0.669,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.451,
+      "osteria_murmur": 0.42,
+      "osteria_oceanBleed": 0.115,
+      "osteria_patina": 0.247,
+      "osteria_porto": 0.477,
+      "osteria_qBassShore": 0.565,
+      "osteria_qElastic": 0.686,
+      "osteria_qHarmShore": 0.266,
+      "osteria_qMelShore": 0.545,
+      "osteria_qMemory": 0.472,
+      "osteria_qRhythmShore": 0.456,
+      "osteria_qStretch": 0.366,
+      "osteria_qSympathy": 0.694,
+      "osteria_release": 1.3,
+      "osteria_rhythmLevel": 0.368,
+      "osteria_sessionDelay": 0.255,
+      "osteria_smoke": 0.338,
+      "osteria_sustain": 0.766,
+      "osteria_tape": 0.125,
+      "osteria_tavernMix": 0.499,
+      "osteria_tavernShore": 0.558,
+      "osteria_warmth": 0.844
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.429,
+      "owl_ampAttack": 0.082,
+      "owl_ampDecay": 0.608,
+      "owl_ampRelease": 2.2,
+      "owl_ampSustain": 0.762,
+      "owl_envDepth": 0.228,
+      "owl_filterCutoff": 0.471,
+      "owl_filterRes": 0.535,
+      "owl_hall": 0.322,
+      "owl_lfoDepth": 0.093,
+      "owl_lfoRate": 0.212,
+      "owl_lfoShape": 0.312,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.454,
+      "owl_mixturSpread": 0.231,
+      "owl_oscLevel": 0.846,
+      "owl_oscPitch": 0.576,
+      "owl_resonantFeedback": 0.36,
+      "owl_resonantPitch": 0.687,
+      "owl_shimmer": 0.378,
+      "owl_subLevel": 0.466
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "three-way",
+    "tidal",
+    "organic",
+    "cycling",
+    "marquee"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

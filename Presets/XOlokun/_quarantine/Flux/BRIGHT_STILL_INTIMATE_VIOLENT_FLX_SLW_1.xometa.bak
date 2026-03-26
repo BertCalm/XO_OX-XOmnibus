@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.931
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.946,
+    "brightness": 0.99,
+    "density": 0.37,
+    "movement": 0.042,
+    "space": 0.125,
+    "warmth": 0.445
+  },
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.658,
+    "COUPLING": 0.724,
+    "MOVEMENT": 0.042,
+    "SPACE": 0.125
+  },
+  "mood": "Flux",
+  "name": "Thread Force",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.513,
+      "macro_coupling": 0.948,
+      "macro_movement": 0.036,
+      "macro_space": 0.122
+    },
+    "Overworld": {
+      "macro_character": 0.624,
+      "macro_coupling": 0.882,
+      "macro_movement": 0.039,
+      "macro_space": 0.116
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "intimate",
+    "violent",
+    "frozen-instability"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

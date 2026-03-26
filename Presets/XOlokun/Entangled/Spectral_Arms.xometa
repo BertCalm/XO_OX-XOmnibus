@@ -6,7 +6,7 @@
         "amount": 0.706,
         "engineA": "Outwit",
         "engineB": "Orbital",
-        "type": "FM_CROSS"
+        "type": "AudioToFM"
       }
     ]
   },

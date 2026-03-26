@@ -10,7 +10,7 @@
         "sourceParam": "ocelot_couplingLevel",
         "targetEngine": "Ouroboros",
         "targetParam": "ouro_leash",
-        "type": "VelocityToTimbre"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.35,
@@ -19,7 +19,7 @@
         "sourceParam": "ocelot_density",
         "targetEngine": "Ouroboros",
         "targetParam": "ouro_speed",
-        "type": "AudioToDensity"
+        "type": "AudioToBuffer"
       }
     ]
   },

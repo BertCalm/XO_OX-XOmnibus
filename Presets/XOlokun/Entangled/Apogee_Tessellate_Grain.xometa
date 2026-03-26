@@ -6,19 +6,19 @@
         "amount": 0.628,
         "engineA": "Orbital",
         "engineB": "Origami",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       },
       {
         "amount": 0.764,
         "engineA": "Orbital",
         "engineB": "Obscura",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       },
       {
         "amount": 0.5,
         "engineA": "Origami",
         "engineB": "Obscura",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

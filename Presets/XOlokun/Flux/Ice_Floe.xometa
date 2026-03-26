@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Origami",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.8392
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, warm, ethereal atmosphere. Let it breathe \u2014 the space is the instrument."
+  "description": "Restless and kinetic, warm, ethereal atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

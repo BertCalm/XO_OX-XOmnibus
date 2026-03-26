@@ -1,0 +1,59 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Osprey",
+        "engineB": "Optic",
+        "type": "Pitch->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OPTIC prismatic scatter turns each wingbeat into a spectral event.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.71,
+    "density": 0.46,
+    "movement": 0.66,
+    "space": 0.71,
+    "warmth": 0.47
+  },
+  "engines": [
+    "Osprey",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Prismatic Wingspan",
+  "parameters": {
+    "Osprey": {},
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "osprey",
+    "optic",
+    "prismatic",
+    "light",
+    "aerial"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

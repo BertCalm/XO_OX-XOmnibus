@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Overbite",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.9711
       }
     ]

@@ -6,7 +6,7 @@
         "amount": 0.59,
         "engineA": "Orphica",
         "engineB": "Ottoni",
-        "type": "Gate->Env"
+        "type": "AmpToChoke"
       }
     ]
   },

@@ -5,9 +5,9 @@
       {
         "amount": 0.12,
         "description": "Attractor velocity output (B007) shapes Opal grain scatter — chaos organizes the cloud",
-        "source": "Ouroboros",
-        "target": "Opal",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Ouroboros",
+        "engineB": "Opal"
       }
     ]
   },

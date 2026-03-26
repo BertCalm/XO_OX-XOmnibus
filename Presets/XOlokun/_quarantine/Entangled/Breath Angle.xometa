@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Obbligato",
-        "type": "CHAOS_INJECTION",
+        "type": "AudioToFM",
         "amount": 0.724
       }
     ]
@@ -82,5 +82,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

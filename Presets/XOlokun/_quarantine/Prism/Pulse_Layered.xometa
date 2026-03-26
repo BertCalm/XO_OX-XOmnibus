@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "OddfeliX",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.63
       }
     ]

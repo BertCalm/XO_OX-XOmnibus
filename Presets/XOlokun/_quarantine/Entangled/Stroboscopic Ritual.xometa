@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Obscura",
-        "type": "PHASE_LOCK",
+        "type": "AudioToFM",
         "amount": 0.58
       }
     ]
@@ -52,5 +52,6 @@
     "aggression": 0.4
   },
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

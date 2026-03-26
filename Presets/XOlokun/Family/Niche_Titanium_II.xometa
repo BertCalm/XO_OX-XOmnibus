@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "OddOscar",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.011
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, crystalline, ethereal sound. Responds expressively to velocity and modulation."
+  "description": "Warm and familiar, crystalline, ethereal sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

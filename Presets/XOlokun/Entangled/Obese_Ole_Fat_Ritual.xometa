@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Obese",
-        "target": "Ole",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay",
+        "engineA": "Obese",
+        "engineB": "Ole"
       }
     ]
   },

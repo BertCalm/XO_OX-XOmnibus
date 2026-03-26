@@ -5,7 +5,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Onset",
-        "type": "AMPLITUDE_MODULATION",
+        "type": "AmpToFilter",
         "amount": 0.504
       }
     ]
@@ -82,5 +82,6 @@
     "aggression": 0.4
   },
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

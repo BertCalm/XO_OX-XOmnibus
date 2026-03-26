@@ -1,0 +1,90 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.51,
+        "engineA": "Overlap",
+        "engineB": "Obsidian",
+        "type": "TIMBRE_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Lion's Mane knot-topology FDN entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Timbre Blend.",
+  "dna": {
+    "aggression": 0.36,
+    "brightness": 0.13,
+    "density": 0.33,
+    "movement": 0.43,
+    "space": 0.9,
+    "warmth": 0.36
+  },
+  "engines": [
+    "Overlap",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "TOPOLOGY",
+    "DIFFUSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.36,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.82
+  },
+  "mood": "Entangled",
+  "name": "Shard Lattice",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_ampAttack": 0.14,
+      "obsidian_ampRelease": 0.5,
+      "obsidian_ampSustain": 0.88,
+      "obsidian_character": 0.32,
+      "obsidian_coupling": 0.55,
+      "obsidian_couplingLevel": 0.77,
+      "obsidian_filterCutoff": 885.9,
+      "obsidian_filterReso": 0.25,
+      "obsidian_movement": 0.52,
+      "obsidian_outputLevel": 0.79,
+      "obsidian_reverbMix": 0.26,
+      "obsidian_space": 0.36
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.86,
+      "olap_crossfeedAmt": 0.44,
+      "olap_damping": 0.52,
+      "olap_decay": 0.52,
+      "olap_diffusion": 0.81,
+      "olap_earlyMix": 0.21,
+      "olap_filterCutoff": 0.5,
+      "olap_filterReso": 0.12,
+      "olap_frondDensity": 0.35,
+      "olap_lateMix": 0.67,
+      "olap_modDepth": 0.33,
+      "olap_modRate": 0.16,
+      "olap_nodeCount": 9,
+      "olap_outputLevel": 0.75,
+      "olap_outputPan": -0.22,
+      "olap_preDelay": 0.27,
+      "olap_shimmerMix": 0.02,
+      "olap_size": 0.87,
+      "olap_spinRate": 0.1
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "obsidian",
+    "spatial",
+    "lush"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

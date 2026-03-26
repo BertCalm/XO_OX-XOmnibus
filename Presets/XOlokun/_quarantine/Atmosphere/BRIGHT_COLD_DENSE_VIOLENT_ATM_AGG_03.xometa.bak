@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.813
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.923,
+    "density": 0.91,
+    "movement": 0.394,
+    "space": 0.657,
+    "warmth": 0.098
+  },
+  "engines": [
+    "Oceanic",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.87,
+    "COUPLING": 0.807,
+    "MOVEMENT": 0.374,
+    "SPACE": 0.612
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT COLD DENSE VIOLENT A... (Oceanic I)",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.791,
+      "macro_movement": 0.375,
+      "macro_space": 0.616
+    },
+    "Optic": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.824,
+      "macro_movement": 0.373,
+      "macro_space": 0.608
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

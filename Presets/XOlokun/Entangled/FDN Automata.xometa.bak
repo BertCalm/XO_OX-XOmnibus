@@ -1,0 +1,82 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.528,
+        "engineA": "Overlap",
+        "engineB": "Outwit",
+        "type": "AMP_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERLAP decay length modulates OUTWIT generation rate — the longer the tail, the faster the evolution",
+  "dna": {
+    "aggression": 0.375,
+    "brightness": 0.369,
+    "density": 1.0,
+    "movement": 0.7,
+    "space": 0.7,
+    "warmth": 0.695
+  },
+  "engines": [
+    "Overlap",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "FDN Automata",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.055,
+      "owit_ampRelease": 0.234,
+      "owit_arms": 7,
+      "owit_cellSize": 0.491,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.629,
+      "owit_density": 0.666,
+      "owit_evolveRate": 0.582,
+      "owit_filterCutoff": 0.47,
+      "owit_filterReso": 0.11,
+      "owit_mutateProb": 0.075,
+      "owit_outputLevel": 0.722,
+      "owit_pitchSpread": 0.267,
+      "owit_rule": 30
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.607,
+      "olap_damping": 0.487,
+      "olap_decay": 0.77,
+      "olap_diffusion": 0.834,
+      "olap_earlyMix": 0.362,
+      "olap_filterCutoff": 0.494,
+      "olap_filterReso": 0.305,
+      "olap_lateMix": 0.647,
+      "olap_modDepth": 0.319,
+      "olap_modRate": 0.316,
+      "olap_outputLevel": 0.707,
+      "olap_preDelay": 0.122,
+      "olap_size": 0.681
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "outwit",
+    "marquee",
+    "fdn",
+    "wolfram",
+    "cellular-automata"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

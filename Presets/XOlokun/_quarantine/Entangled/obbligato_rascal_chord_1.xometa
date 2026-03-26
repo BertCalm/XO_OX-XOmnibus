@@ -6,11 +6,11 @@
         "amount": 0.79,
         "engineA": "Obbligato",
         "engineB": "Ouroboros",
-        "type": "Amp->Drive"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Coral wind tangles the serpent — OBBLIGATO's dual breath couples into OUROBOROS's recursive topology.",
   "dna": {

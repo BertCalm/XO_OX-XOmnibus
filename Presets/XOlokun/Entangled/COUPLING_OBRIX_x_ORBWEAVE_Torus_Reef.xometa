@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX driving ORBWEAVE into torus knot pattern (P=3, Q=2). The reef's environmental current parameter creates directional bias in the torus topology. Coupling amount 0.12 \u2014 gentle suggestion rather than domination.",
+  "description": "OBRIX driving ORBWEAVE into torus knot pattern (P=3, Q=2). The reef's environmental current parameter creates directional bias in the torus topology. Coupling amount 0.12 — gentle suggestion rather than domination.",
   "tags": [
     "coupling",
     "obrix",
@@ -24,7 +24,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.3,
@@ -168,10 +168,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": 0,
-        "target": 1,
         "type": "KnotTopology",
-        "amount": 0.12
+        "amount": 0.12,
+        "engineA": 0,
+        "engineB": 1
       }
     ]
   },

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6988,
-        "source": "Organon",
-        "target": "Ouroboros",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Organon",
+        "engineB": "Ouroboros"
       }
     ]
   },

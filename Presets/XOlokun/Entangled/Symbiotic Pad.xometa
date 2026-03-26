@@ -21,7 +21,7 @@
     "CHORUS",
     "STAGE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

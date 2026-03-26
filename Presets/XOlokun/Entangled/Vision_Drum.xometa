@@ -6,7 +6,7 @@
         "amount": 0.471,
         "engineA": "Oracle",
         "engineB": "Onset",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend"
       }
     ]
   },

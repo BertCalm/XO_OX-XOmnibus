@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Obbligato",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.084
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.125,
+    "brightness": 0.916,
+    "density": 0.042,
+    "movement": 0.318,
+    "space": 0.913,
+    "warmth": 0.932
+  },
+  "engines": [
+    "Orphica",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.924,
+    "COUPLING": 0.084,
+    "MOVEMENT": 0.318,
+    "SPACE": 0.913
+  },
+  "mood": "Family",
+  "name": "BRIGHT WARM SPARSE VAST GEN... (Orphica I)",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.916,
+      "macro_coupling": 0.11,
+      "macro_movement": 0.393,
+      "macro_space": 0.915
+    },
+    "Orphica": {
+      "macro_character": 0.924,
+      "macro_coupling": 0.084,
+      "macro_movement": 0.318,
+      "macro_space": 0.913
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

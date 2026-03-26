@@ -18,7 +18,7 @@
         "sourceParam": "ouro_chaos",
         "targetEngine": "Overdub",
         "targetParam": "dub_tapeWow",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

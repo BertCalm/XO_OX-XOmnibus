@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Octopus",
-        "target": "Orbital",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Octopus",
+        "engineB": "Orbital"
       }
     ]
   },

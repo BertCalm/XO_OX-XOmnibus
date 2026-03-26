@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.71
+      }
+    ]
+  },
+  "description": "Single grains drift through Odyssey wavetable space — cloud becomes singular trajectory.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.07,
+    "density": 0.0,
+    "movement": 0.48,
+    "space": 0.92,
+    "warmth": 0.318
+  },
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.15,
+    "COUPLING": 0.71,
+    "MOVEMENT": 0.48,
+    "SPACE": 0.92
+  },
+  "mood": "Entangled",
+  "name": "Grain Drift",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.12,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.43,
+      "macro_space": 0.95
+    },
+    "Opal": {
+      "macro_character": 0.15,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.48,
+      "macro_space": 0.92
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "grain",
+    "drift"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

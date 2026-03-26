@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6949,
-        "source": "Obbligato",
-        "target": "Owlfish",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Obbligato",
+        "engineB": "Owlfish"
       }
     ]
   },

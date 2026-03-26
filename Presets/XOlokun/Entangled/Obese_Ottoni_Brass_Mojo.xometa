@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Obese",
-        "target": "Ottoni",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Obese",
+        "engineB": "Ottoni"
       }
     ]
   },

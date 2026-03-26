@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Owlfish",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.939
       }
     ]

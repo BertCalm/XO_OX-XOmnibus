@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Onset",
-        "type": "SPECTRAL_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.68
       }
     ]
@@ -52,5 +52,6 @@
     "aggression": 0.4
   },
   "tempo": null,
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

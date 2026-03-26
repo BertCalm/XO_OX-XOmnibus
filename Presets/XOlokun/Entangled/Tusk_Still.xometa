@@ -6,7 +6,7 @@
         "amount": 0.462,
         "engineA": "Overbite",
         "engineB": "Ohm",
-        "type": "rhythm_sync"
+        "type": "RhythmToBlend"
       }
     ]
   },

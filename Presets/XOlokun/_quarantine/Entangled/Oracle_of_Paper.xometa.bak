@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC",
+        "amount": 0.79
+      }
+    ]
+  },
+  "description": "Paper geometry anchors prophecy pitch — the oracle cannot deviate from the crease.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.09,
+    "density": 0.279,
+    "movement": 0.28,
+    "space": 0.707,
+    "warmth": 0.06
+  },
+  "engines": [
+    "Oracle",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.13,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.28,
+    "SPACE": 0.95
+  },
+  "mood": "Entangled",
+  "name": "Oracle of Paper",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.13,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.28,
+      "macro_space": 0.95
+    },
+    "Origami": {
+      "macro_character": 0.1,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.23,
+      "macro_space": 0.98
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "oracle",
+    "paper"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

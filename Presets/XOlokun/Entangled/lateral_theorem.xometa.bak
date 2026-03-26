@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.8
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.5,
+    "density": 0.7,
+    "movement": 0.5,
+    "space": 0.4,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Oblong",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.4
+  },
+  "mood": "Entangled",
+  "name": "Lateral Theorem",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.5,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.5,
+      "macro_space": 0.4,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Organon": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.5,
+      "macro_space": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "oblong",
+    "organon"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, balanced sound. Responds expressively to velocity and modulation."
+}

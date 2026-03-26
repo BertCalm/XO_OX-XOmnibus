@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblong",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.612
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.897,
+    "brightness": 0.1,
+    "density": 0.499,
+    "movement": 0.049,
+    "space": 0.631,
+    "warmth": 0.079
+  },
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.698,
+    "COUPLING": 0.741,
+    "MOVEMENT": 0.049,
+    "SPACE": 0.631
+  },
+  "mood": "Flux",
+  "name": "Node Blade",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.601,
+      "macro_coupling": 0.705,
+      "macro_movement": 0.048,
+      "macro_space": 0.618,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Oceanic": {
+      "macro_character": 0.625,
+      "macro_coupling": 0.918,
+      "macro_movement": 0.046,
+      "macro_space": 0.604
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "cold",
+    "violent",
+    "frozen-instability"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, dark, crystalline sound. Let it breathe — the space is the instrument."
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.963
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.915,
+    "brightness": 0.9383,
+    "density": 0.0742,
+    "movement": 0.6424,
+    "space": 0.5501,
+    "warmth": 0.9514
+  },
+  "engines": [
+    "Oblique",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8757,
+    "COUPLING": 0.8186,
+    "MOVEMENT": 0.6764,
+    "SPACE": 0.6947
+  },
+  "mood": "Flux",
+  "name": "Bloom Grit",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.8757,
+      "macro_coupling": 0.8186,
+      "macro_movement": 0.6764,
+      "macro_space": 0.6947
+    },
+    "Oracle": {
+      "macro_character": 0.8416,
+      "macro_coupling": 0.8733,
+      "macro_movement": 0.5725,
+      "macro_space": 0.4156
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-warmth",
+    "low-density",
+    "high-aggression"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

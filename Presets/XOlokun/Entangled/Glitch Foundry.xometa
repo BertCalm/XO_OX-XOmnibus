@@ -64,7 +64,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Oblong",
-        "type": "Env->Character",
+        "type": "EnvToMorph",
         "amount": 0.75
       },
       {

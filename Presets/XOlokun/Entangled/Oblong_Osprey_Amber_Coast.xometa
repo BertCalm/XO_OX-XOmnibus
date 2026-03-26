@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Oblong",
-        "target": "Osprey",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter",
+        "engineA": "Oblong",
+        "engineB": "Osprey"
       }
     ]
   },

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Octopus",
+        "type": "FILTER_MOD",
+        "amount": 0.735
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.483,
+    "brightness": 0.933,
+    "density": 0.92,
+    "movement": 0.65,
+    "space": 0.51,
+    "warmth": 0.958
+  },
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.946,
+    "COUPLING": 0.761,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.51
+  },
+  "mood": "Prism",
+  "name": "Ember Solar II",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.992,
+      "macro_coupling": 0.596,
+      "macro_movement": 0.546,
+      "macro_space": 0.651
+    },
+    "Overdub": {
+      "macro_character": 0.946,
+      "macro_coupling": 0.761,
+      "macro_movement": 0.65,
+      "macro_space": 0.51,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Bright and refractive, shimmering, warm sound. Macro sweeps reveal shifting timbral landscapes."
+}

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.789
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0316,
+    "brightness": 0.4482,
+    "density": 0.1135,
+    "movement": 0.9109,
+    "space": 0.9687,
+    "warmth": 0.9307
+  },
+  "engines": [
+    "Oblique",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6967,
+    "COUPLING": 0.127,
+    "MOVEMENT": 0.9191,
+    "SPACE": 0.9598
+  },
+  "mood": "Atmosphere",
+  "name": "Fragment Cathedral",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.6856,
+      "macro_coupling": 0.1414,
+      "macro_movement": 0.9249,
+      "macro_space": 0.9549
+    },
+    "OddfeliX": {
+      "macro_character": 0.7079,
+      "macro_coupling": 0.1125,
+      "macro_movement": 0.9132,
+      "macro_space": 0.9648
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

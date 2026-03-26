@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.585,
-      "destination": "OCELOT",
-      "source": "OUROBOROS",
-      "type": "CHAOS_INJECT"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.585,
+        "type": "AudioToFM",
+        "engineA": "OUROBOROS",
+        "engineB": "OCELOT"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
   "dna": {
     "aggression": 0.482,
     "brightness": 0.936,

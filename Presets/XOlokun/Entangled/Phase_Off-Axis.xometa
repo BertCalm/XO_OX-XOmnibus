@@ -6,11 +6,11 @@
         "amount": 0.658,
         "engineA": "Orbital",
         "engineB": "Oblique",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "ORBITAL arc decay bends OBLIQUE's prism angle. Off-axis harmonic trajectories.",
   "dna": {

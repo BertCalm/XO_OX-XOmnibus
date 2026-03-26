@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Octopus",
-        "target": "Ocelot",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable",
+        "engineA": "Octopus",
+        "engineB": "Ocelot"
       }
     ]
   },

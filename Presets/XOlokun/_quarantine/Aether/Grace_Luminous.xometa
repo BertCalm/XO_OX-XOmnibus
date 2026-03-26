@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Osteria",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.781
       }
     ]
@@ -62,5 +62,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oceanic",
+        "type": "FILTER_MOD",
+        "amount": 0.8618
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9771,
+    "brightness": 0.918,
+    "density": 0.6542,
+    "movement": 0.6442,
+    "space": 0.075,
+    "warmth": 0.0362
+  },
+  "engines": [
+    "Oblique",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9049,
+    "COUPLING": 0.8618,
+    "MOVEMENT": 0.6248,
+    "SPACE": 0.075
+  },
+  "mood": "Aether",
+  "name": "Glass Crush",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.9298,
+      "macro_coupling": 0.6576,
+      "macro_movement": 0.6421,
+      "macro_space": 0.1
+    },
+    "Oceanic": {
+      "macro_character": 0.8801,
+      "macro_coupling": 0.6507,
+      "macro_movement": 0.6075,
+      "macro_space": 0.0781
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "cold",
+    "violent",
+    "crystalline"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

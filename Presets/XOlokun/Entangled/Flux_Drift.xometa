@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9497,
-        "source": "Oracle",
-        "target": "Overworld",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM",
+        "engineA": "Oracle",
+        "engineB": "Overworld"
       }
     ]
   },

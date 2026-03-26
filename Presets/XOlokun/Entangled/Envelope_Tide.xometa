@@ -6,7 +6,7 @@
         "amount": 0.676,
         "engineA": "Orbital",
         "engineB": "Osprey",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },

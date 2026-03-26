@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overdub",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.966
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.967,
+    "brightness": 0.046,
+    "density": 0.959,
+    "movement": 0.317,
+    "space": 0.582,
+    "warmth": 0.105
+  },
+  "engines": [
+    "Oblique",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.559,
+    "COUPLING": 0.947,
+    "MOVEMENT": 0.317,
+    "SPACE": 0.582
+  },
+  "mood": "Entangled",
+  "name": "Wave Wrath",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.504,
+      "macro_coupling": 0.947,
+      "macro_movement": 0.317,
+      "macro_space": 0.536
+    },
+    "Overdub": {
+      "macro_character": 0.615,
+      "macro_coupling": 0.954,
+      "macro_movement": 0.317,
+      "macro_space": 0.619,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "dark",
+    "cold",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, crystalline pad. Drives through the mix with presence and bite."
+}

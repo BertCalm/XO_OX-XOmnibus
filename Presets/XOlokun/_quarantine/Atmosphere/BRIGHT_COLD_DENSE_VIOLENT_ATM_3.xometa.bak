@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orbital",
+        "type": "PITCH_SYNC",
+        "amount": 0.543
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.876,
+    "brightness": 0.962,
+    "density": 0.926,
+    "movement": 0.522,
+    "space": 0.504,
+    "warmth": 0.089
+  },
+  "engines": [
+    "Oracle",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.695,
+    "COUPLING": 0.803,
+    "MOVEMENT": 0.47,
+    "SPACE": 0.408
+  },
+  "mood": "Atmosphere",
+  "name": "Prism Packed",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.695,
+      "macro_coupling": 0.803,
+      "macro_movement": 0.47,
+      "macro_space": 0.408
+    },
+    "Orbital": {
+      "macro_character": 0.474,
+      "macro_coupling": 0.799,
+      "macro_movement": 0.451,
+      "macro_space": 0.47
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

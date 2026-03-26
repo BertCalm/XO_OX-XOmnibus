@@ -2,15 +2,39 @@
   "schema_version": 1,
   "name": "Coral Bond",
   "mood": "Entangled",
-  "engines": ["Oblong", "Orbweave"],
+  "engines": [
+    "Oblong",
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBLONG amber warmth woven into ORBWEAVE's Kelp Knot topology — two organic reef systems sharing a resonance. OBLONG's warm saw feeds ORBWEAVE's knot matrix; the topological coupling creates a slowly evolving interference pattern where Bob's voice is both itself and the knot's reflection.",
-  "tags": ["entangled", "oblong", "orbweave", "amber", "knot", "reef", "organic", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "entangled",
+    "oblong",
+    "orbweave",
+    "amber",
+    "knot",
+    "reef",
+    "organic",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.72, "movement": 0.48, "density": 0.65, "space": 0.65, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.72,
+    "movement": 0.48,
+    "density": 0.65,
+    "space": 0.65,
+    "aggression": 0.25
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 2,
@@ -60,14 +84,19 @@
       "weave_level": 0.52
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.48, "COUPLING": 0.15, "SPACE": 0.65},
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.15,
+    "SPACE": 0.65
+  },
   "coupling": {
     "pairs": [
       {
-        "source": "Oblong",
-        "target": "Orbweave",
-        "type": "SPECTRAL_TRANSFER",
-        "amount": 0.15
+        "type": "EnvToMorph",
+        "amount": 0.15,
+        "engineA": "Oblong",
+        "engineB": "Orbweave"
       }
     ]
   }

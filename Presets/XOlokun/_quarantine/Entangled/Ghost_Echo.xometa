@@ -6,7 +6,7 @@
         "amount": 0.751,
         "engineA": "Orca",
         "engineB": "Osprey",
-        "type": "PITCH_TRACK"
+        "type": "PitchToPitch"
       }
     ]
   },

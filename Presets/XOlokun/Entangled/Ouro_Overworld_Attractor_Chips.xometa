@@ -8,7 +8,7 @@
         "engineA": "Ouroboros",
         "engineB": "Overworld",
         "notes": "Ouroboros X-axis output drives ow_era (ERA triangle horizontal position) — attractor orbit choreographs NES↔Genesis axis in real time",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.65,
@@ -16,7 +16,7 @@
         "engineA": "Ouroboros",
         "engineB": "Overworld",
         "notes": "Ouroboros Y-axis output drives ow_eraY (ERA triangle vertical position) — attractor's second dimension selects SNES depth independently",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

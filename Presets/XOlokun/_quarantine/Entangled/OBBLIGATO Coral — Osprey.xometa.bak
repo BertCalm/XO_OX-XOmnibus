@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.555,
+        "engineA": "Obbligato",
+        "engineB": "Osprey",
+        "type": "Pitch->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "BOND makes OBBLIGATO's two winds an obligate coastal dialogue with OSPREY's ShoreSystem.",
+  "dna": {
+    "aggression": 0.575,
+    "brightness": 1.0,
+    "density": 0.627,
+    "movement": 0.394,
+    "space": 0.647,
+    "warmth": 0.603
+  },
+  "engines": [
+    "Obbligato",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "OBBLIGATO Coral — Osprey",
+  "parameters": {
+    "obbl_breathA": 0.51,
+    "obbl_breathB": 0.537,
+    "obbl_macroBond": 0.927
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "osprey",
+    "shore",
+    "coastal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -6,7 +6,7 @@
         "amount": 0.761,
         "engineA": "Obscura",
         "engineB": "Osprey",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },

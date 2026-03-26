@@ -6,9 +6,9 @@
     "Outwit",
     "Odyssey"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT's CA arm density modulates ODYSSEY's wavetable position \u2014 the octopus intelligence sculpts the drift synth's spectral journey. Rule 110 complexity becomes Odyssey timbral motion.",
+  "description": "OUTWIT's CA arm density modulates ODYSSEY's wavetable position — the octopus intelligence sculpts the drift synth's spectral journey. Rule 110 complexity becomes Odyssey timbral motion.",
   "tags": [
     "entangled",
     "ca-to-wavetable",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -65,11 +65,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Odyssey",
-        "type": "DensityToMorph",
+        "type": "EnvToMorph",
         "amount": 0.65,
-        "description": "Outwit CA density sculpts Odyssey wavetable position"
+        "description": "Outwit CA density sculpts Odyssey wavetable position",
+        "engineA": "Outwit",
+        "engineB": "Odyssey"
       }
     ]
   },

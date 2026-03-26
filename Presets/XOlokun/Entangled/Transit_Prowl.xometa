@@ -6,7 +6,7 @@
         "amount": 0.566,
         "engineA": "Orbital",
         "engineB": "Ocelot",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },

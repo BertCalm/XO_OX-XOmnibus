@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Octopus",
-        "target": "Obscura",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch",
+        "engineA": "Octopus",
+        "engineB": "Obscura"
       }
     ]
   },

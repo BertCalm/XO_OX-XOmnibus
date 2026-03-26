@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.787,
+        "engineA": "Obese",
+        "engineB": "Orca",
+        "type": "spectral_cross"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OBESE crush amplitude into ORCA sonar hunt. Heavy apex impact.",
+  "dna": {
+    "aggression": 0.753,
+    "brightness": 0.494,
+    "density": 0.81,
+    "movement": 0.647,
+    "space": 0.464,
+    "warmth": 0.565
+  },
+  "engines": [
+    "Obese",
+    "Orca"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Crush Fjord",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.004,
+      "fat_compress": 0.361,
+      "fat_couplingIn": 0.557,
+      "fat_couplingOut": 0.745,
+      "fat_digital": 0.343,
+      "fat_macro1": 0.5,
+      "fat_macro2": 0.547,
+      "fat_macro3": 0.645,
+      "fat_macro4": 0.603,
+      "fat_mojoCtrl": 0.488,
+      "fat_outputLevel": 0.764,
+      "fat_outputPan": -0.002,
+      "fat_satDrive": 0.738
+    },
+    "Orca": {
+      "orca_couplingIn": 0.727,
+      "orca_couplingOut": 0.452,
+      "orca_macro1": 0.425,
+      "orca_macro2": 0.365,
+      "orca_macro3": 0.697,
+      "orca_macro4": 0.456,
+      "orca_outputLevel": 0.893,
+      "orca_outputPan": 0.029
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "orca",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 110,
+  "version": "1.0.0"
+}

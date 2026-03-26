@@ -6,7 +6,7 @@
         "amount": 0.443,
         "engineA": "Origami",
         "engineB": "Opal",
-        "type": "rhythm_sync"
+        "type": "RhythmToBlend"
       }
     ]
   },

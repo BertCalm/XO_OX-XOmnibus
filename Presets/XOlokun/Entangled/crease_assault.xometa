@@ -6,7 +6,7 @@
         "amount": 0.85,
         "engineA": "Outwit",
         "engineB": "Origami",
-        "type": "PITCH_SYNC"
+        "type": "PitchToPitch"
       }
     ]
   },

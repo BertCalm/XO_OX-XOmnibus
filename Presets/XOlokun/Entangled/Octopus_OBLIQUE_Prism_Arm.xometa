@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "OBLIQUE Prism Arm",
   "mood": "Entangled",
-  "engines": ["Octopus", "Oblique"],
+  "engines": [
+    "Octopus",
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBLIQUE's prismatic bounce quality feeding into OCTOPUS arm rate modulation. The prismatic energy accelerates arm LFOs — each bounce becomes an arm pulse. RTJ funk meets alien distributed intelligence.",
-  "tags": ["octopus", "oblique", "entangled", "prism", "arms", "bounce", "funk"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "octopus",
+    "oblique",
+    "entangled",
+    "prism",
+    "arms",
+    "bounce",
+    "funk"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-17",
   "parameters": {

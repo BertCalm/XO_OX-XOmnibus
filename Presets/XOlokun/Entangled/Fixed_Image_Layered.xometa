@@ -6,7 +6,7 @@
         "amount": 0.402,
         "engineA": "Obscura",
         "engineB": "Overdub",
-        "type": "Gate->Env"
+        "type": "AmpToChoke"
       }
     ]
   },

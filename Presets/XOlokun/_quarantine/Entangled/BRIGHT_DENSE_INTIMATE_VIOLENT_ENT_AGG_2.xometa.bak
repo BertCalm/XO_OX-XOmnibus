@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ole",
+        "type": "CHAOS_INJECT",
+        "amount": 0.947
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.917,
+    "brightness": 0.878,
+    "density": 0.989,
+    "movement": 0.503,
+    "space": 0.081,
+    "warmth": 0.51
+  },
+  "engines": [
+    "Onset",
+    "Ole"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.571,
+    "SPACE": 0.985,
+    "PUNCH": 0.503,
+    "MUTATE": 0.081
+  },
+  "mood": "Entangled",
+  "name": "Signal Solid",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.604,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.487,
+      "macro_space": 0.094
+    },
+    "Onset": {
+      "macro_character": 0.538,
+      "macro_coupling": 0.985,
+      "macro_movement": 0.455,
+      "macro_space": 0.11
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "dense",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

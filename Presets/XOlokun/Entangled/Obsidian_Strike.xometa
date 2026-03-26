@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Obese",
-        "type": "HARMONIC_LOCK",
+        "type": "EnvToMorph",
         "amount": 0.58
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, warm, dense bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

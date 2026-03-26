@@ -5,9 +5,9 @@
       {
         "amount": 0.625,
         "description": "Osteria drives Odyssey via DriftLock",
-        "source": "Osteria",
-        "target": "Odyssey",
-        "type": "DriftLock"
+        "type": "AudioToWavetable",
+        "engineA": "Osteria",
+        "engineB": "Odyssey"
       }
     ]
   },

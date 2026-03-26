@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overbite",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.959,
+    "brightness": 0.115,
+    "density": 0.548,
+    "movement": 0.907,
+    "space": 0.544,
+    "warmth": 0.989
+  },
+  "engines": [
+    "Ouroboros",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.919,
+    "COUPLING": 0.477,
+    "MOVEMENT": 0.475,
+    "SPACE": 0.746
+  },
+  "mood": "Foundation",
+  "name": "Smoke Grit",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.919,
+      "macro_coupling": 0.477,
+      "macro_movement": 0.475,
+      "macro_space": 0.746
+    },
+    "Overbite": {
+      "macro_character": 0.885,
+      "macro_coupling": 0.435,
+      "macro_movement": 0.442,
+      "macro_space": 0.696
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

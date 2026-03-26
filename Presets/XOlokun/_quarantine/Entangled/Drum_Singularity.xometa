@@ -6,7 +6,7 @@
         "amount": 0.91,
         "engineA": "Ouroboros",
         "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

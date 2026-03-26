@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.791
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.843,
+    "brightness": 0.065,
+    "density": 0.432,
+    "movement": 0.165,
+    "space": 0.914,
+    "warmth": 0.409
+  },
+  "engines": [
+    "Obbligato",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.118,
+    "MOVEMENT": 0.709,
+    "SPACE": 0.914
+  },
+  "mood": "Entangled",
+  "name": "Radio Telescope (Obbligato)",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.457,
+      "macro_coupling": 0.683,
+      "macro_movement": 0.066,
+      "macro_space": 0.912
+    },
+    "Oracle": {
+      "macro_character": 0.553,
+      "macro_coupling": 0.631,
+      "macro_movement": 0.653,
+      "macro_space": 0.904
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "vast",
+    "cosmic",
+    "xhigh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

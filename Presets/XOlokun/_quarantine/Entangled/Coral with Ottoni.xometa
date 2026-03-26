@@ -6,7 +6,7 @@
         "amount": 0.729,
         "engineA": "Obbligato",
         "engineB": "Ottoni",
-        "type": "Amp->Drive"
+        "type": "AmpToFilter"
       }
     ]
   },

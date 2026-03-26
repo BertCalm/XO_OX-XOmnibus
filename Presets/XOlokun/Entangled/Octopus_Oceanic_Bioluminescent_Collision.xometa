@@ -5,16 +5,16 @@
       {
         "amount": 0.75,
         "description": "Octopus chromatophore pulse rate modulates Oceanic school reorganization — bioluminescent signals reorient the boid colony",
-        "source": "Octopus",
-        "target": "Oceanic",
-        "type": "RhythmToBlend"
+        "type": "RhythmToBlend",
+        "engineA": "Octopus",
+        "engineB": "Oceanic"
       },
       {
         "amount": 0.45,
         "description": "Oceanic swarm amplitude modulates Octopus filter — the school's density colours the cephalopod's skin in return",
-        "source": "Oceanic",
-        "target": "Octopus",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Oceanic",
+        "engineB": "Octopus"
       }
     ]
   },

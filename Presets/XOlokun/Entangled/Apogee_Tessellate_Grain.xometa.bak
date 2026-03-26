@@ -1,0 +1,97 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.628,
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "pitch_follow"
+      },
+      {
+        "amount": 0.764,
+        "engineA": "Orbital",
+        "engineB": "Obscura",
+        "type": "harmonic_lock"
+      },
+      {
+        "amount": 0.5,
+        "engineA": "Origami",
+        "engineB": "Obscura",
+        "type": "amplitude_sidechain"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Orbital × Origami + Obscura coupling (amplitude sidechain). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.411,
+    "brightness": 0.625,
+    "density": 0.605,
+    "movement": 0.528,
+    "space": 0.55,
+    "warmth": 0.493
+  },
+  "engines": [
+    "Orbital",
+    "Origami",
+    "Obscura"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Apogee Tessellate Grain",
+  "parameters": {
+    "Obscura": {
+      "obscura_couplingIn": 0.766,
+      "obscura_couplingOut": 0.713,
+      "obscura_macro1": 0.502,
+      "obscura_macro2": 0.334,
+      "obscura_macro3": 0.567,
+      "obscura_macro4": 0.674
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.701,
+      "orb_brightness": 0.648,
+      "orb_couplingIn": 0.597,
+      "orb_groupEnv": 0.601,
+      "orb_harmonicAmt": 0.362,
+      "orb_macro1": 0.425,
+      "orb_macro2": 0.533,
+      "orb_macro3": 0.608,
+      "orb_macro4": 0.68,
+      "orb_phaseSpread": 0.774,
+      "orb_resonantPeak": 0.518
+    },
+    "Origami": {
+      "origami_couplingIn": 0.75,
+      "origami_couplingOut": 0.783,
+      "origami_macro1": 0.588,
+      "origami_macro2": 0.354,
+      "origami_macro3": 0.389,
+      "origami_macro4": 0.535
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "origami",
+    "obscura",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
+}

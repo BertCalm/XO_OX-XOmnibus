@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "BROTH Crystal Seed",
   "mood": "Foundation",
-  "engines": ["Overcast"],
+  "engines": [
+    "Overcast"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BROTH family entry — crystal seeding tuned to respond to spectralMass from Overworn. Mass becomes freeze nuclei.",
-  "tags": ["pad", "broth", "foundation", "coupling", "seed"],
-  "macroLabels": ["PURITY", "CRACKLE", "LATTICE", "FROST"],
-  "couplingIntensity": "Low",
+  "tags": [
+    "pad",
+    "broth",
+    "foundation",
+    "coupling",
+    "seed"
+  ],
+  "macroLabels": [
+    "PURITY",
+    "CRACKLE",
+    "LATTICE",
+    "FROST"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.45, "movement": 0.2, "density": 0.5, "space": 0.6, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overcast": {
       "cast_freezeRate": 0.25,
@@ -39,7 +59,9 @@
       "cast_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

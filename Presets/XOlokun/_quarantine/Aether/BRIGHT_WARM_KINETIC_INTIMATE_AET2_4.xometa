@@ -5,7 +5,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Ombre",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.7229
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Oblong",
-        "type": "RHYTHM_LOCK",
+        "type": "RhythmToBlend",
         "amount": 0.76
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense pad. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, warm, dense pad. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

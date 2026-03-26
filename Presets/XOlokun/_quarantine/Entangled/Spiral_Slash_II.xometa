@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.077,
@@ -42,7 +42,7 @@
       {
         "engineA": "Orca",
         "engineB": "OddOscar",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.61
       }
     ]

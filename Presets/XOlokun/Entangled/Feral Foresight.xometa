@@ -12,7 +12,7 @@
         "amount": 0.45,
         "engineA": "Oracle",
         "engineB": "Ocelot",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Overbite",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.527
       }
     ]

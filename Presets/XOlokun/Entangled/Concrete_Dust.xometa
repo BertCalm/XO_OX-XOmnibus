@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Opal",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.63
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, warm, dense texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

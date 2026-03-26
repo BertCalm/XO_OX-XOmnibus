@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8878
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6333,
+    "brightness": 0.1022,
+    "density": 0.9544,
+    "movement": 0.5001,
+    "space": 0.0504,
+    "warmth": 0.0393
+  },
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0922,
+    "COUPLING": 0.8878,
+    "MOVEMENT": 0.4893,
+    "SPACE": 0.0504
+  },
+  "mood": "Aether",
+  "name": "Phase Molten 2",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.1098,
+      "macro_coupling": 0.9753,
+      "macro_movement": 0.5074,
+      "macro_space": 0.0422
+    },
+    "Organon": {
+      "macro_character": 0.0747,
+      "macro_coupling": 0.9797,
+      "macro_movement": 0.4712,
+      "macro_space": 0.0721
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "cold",
+    "dense",
+    "compressed"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

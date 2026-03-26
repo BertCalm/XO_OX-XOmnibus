@@ -6,7 +6,7 @@
         "amount": 0.53,
         "engineA": "Obbligato",
         "engineB": "Origami",
-        "type": "LFO->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

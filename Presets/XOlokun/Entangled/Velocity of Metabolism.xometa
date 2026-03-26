@@ -6,7 +6,7 @@
         "amount": 0.9,
         "engineA": "Ouroboros",
         "engineB": "Organon",
-        "type": "Audio->AM"
+        "type": "AudioToRing"
       }
     ]
   },

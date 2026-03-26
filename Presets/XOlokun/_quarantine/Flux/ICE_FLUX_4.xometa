@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Osteria",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.7024
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

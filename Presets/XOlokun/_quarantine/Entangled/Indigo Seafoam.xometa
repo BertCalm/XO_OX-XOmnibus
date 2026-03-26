@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Orphica",
         "engineB": "Oracle",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph"
       }
     ]
   },

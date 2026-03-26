@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7465,
-        "source": "Ohm",
-        "target": "Obscura",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Ohm",
+        "engineB": "Obscura"
       }
     ]
   },

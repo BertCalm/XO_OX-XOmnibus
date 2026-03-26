@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ottoni",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.8834
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, shimmering, crystalline lead. Drives through the mix with presence and bite."
+  "description": "Restless and kinetic, shimmering, crystalline lead. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

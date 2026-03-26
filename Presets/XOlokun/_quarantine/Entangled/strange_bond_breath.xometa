@@ -6,7 +6,7 @@
         "amount": 0.87,
         "engineA": "Obbligato",
         "engineB": "Ouroboros",
-        "type": "Env->Cutoff"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Orca",
         "engineB": "Ombre",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.8986
       }
     ]

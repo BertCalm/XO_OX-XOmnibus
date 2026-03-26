@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Ole",
         "engineB": "Obscura",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

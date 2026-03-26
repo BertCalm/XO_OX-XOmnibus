@@ -1,0 +1,83 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Odyssey",
+        "target": "Orca",
+        "type": "GRANULAR_EXCHANGE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Orca echolocation timing becomes FM clock rate — each return pulse a new ratio.",
+  "dna": {
+    "aggression": 0.562,
+    "brightness": 0.488,
+    "density": 0.571,
+    "movement": 0.612,
+    "space": 0.506,
+    "warmth": 0.372
+  },
+  "engines": [
+    "Odyssey",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Echolocation Drift",
+  "parameters": {
+    "Odyssey": {
+      "drift_ampAttack": 0.0775,
+      "drift_ampDecay": 0.391,
+      "drift_ampRelease": 1.055,
+      "drift_ampSustain": 0.39,
+      "drift_chorus": 0.43,
+      "drift_filterCutoff": 9536.8,
+      "drift_filterEnvAmt": 0.334,
+      "drift_filterReso": 0.288,
+      "drift_fmDepth": 0.582,
+      "drift_fmRatio": 3.0,
+      "drift_level": 0.791,
+      "drift_lfo1Depth": 0.386,
+      "drift_lfo1Rate": 1.084,
+      "drift_lfo1Shape": 0.5,
+      "drift_lfo2Depth": 0.361,
+      "drift_lfo2Rate": 1.941,
+      "drift_modAttack": 0.0623,
+      "drift_modDecay": 0.333,
+      "drift_modRelease": 0.983,
+      "drift_modSustain": 0.205,
+      "drift_oscA_level": 0.677,
+      "drift_oscA_mode": 0.75,
+      "drift_oscA_pitch": 0.175,
+      "drift_oscB_level": 0.542,
+      "drift_oscB_mode": 0.5,
+      "drift_oscB_pitch": -0.408,
+      "drift_reverbMix": 0.281,
+      "drift_wtMorph": 0.671,
+      "drift_wtPosition": 0.262
+    },
+    "Orca": {
+      "orca_filterCutoff": 5639.3,
+      "orca_level": 0.726
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "orca"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

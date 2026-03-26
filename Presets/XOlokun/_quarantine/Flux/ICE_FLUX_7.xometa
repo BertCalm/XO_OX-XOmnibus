@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Overbite",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.4389
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

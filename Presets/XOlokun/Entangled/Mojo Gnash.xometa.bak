@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.75,
+    "pairs": [
+      {
+        "amount": 0.75,
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "Amp->Amp"
+      }
+    ],
+    "type": "Amp->Amp"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OBESE Mojo macro locks to OVERBITE gnash envelope. High-character sync.",
+  "dna": {
+    "aggression": 0.735,
+    "brightness": 0.486,
+    "density": 0.727,
+    "movement": 0.465,
+    "space": 0.431,
+    "warmth": 0.664
+  },
+  "engines": [
+    "Obese",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Mojo Gnash",
+  "parameters": {
+    "Obese": {
+      "fat_aggression": 0.735,
+      "fat_brightness": 0.507,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.63,
+      "fat_outputLevel": 0.78,
+      "fat_outputPan": -0.05,
+      "fat_warmth": 0.696
+    },
+    "Overbite": {
+      "poss_level": 0.79,
+      "poss_pan": -0.03
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "overbite",
+    "mojo",
+    "gnash"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

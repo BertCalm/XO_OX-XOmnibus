@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Obese",
-        "type": "PHASE_LOCK",
+        "type": "AudioToFM",
         "amount": 0.64
       }
     ]

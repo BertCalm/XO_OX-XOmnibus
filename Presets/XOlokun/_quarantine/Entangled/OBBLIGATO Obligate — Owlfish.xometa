@@ -6,7 +6,7 @@
         "amount": 0.776,
         "engineA": "Obbligato",
         "engineB": "Owlfish",
-        "type": "Env->LFO Rate"
+        "type": "LFOToPitch"
       }
     ]
   },

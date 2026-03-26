@@ -6,7 +6,7 @@
         "amount": 0.728,
         "engineA": "Orbital",
         "engineB": "Oracle",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Optic",
-        "type": "PITCH_FOLLOW",
+        "type": "PitchToPitch",
         "amount": 0.91
       }
     ]

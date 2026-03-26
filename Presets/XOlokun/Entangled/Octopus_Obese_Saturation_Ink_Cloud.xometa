@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Octopus",
-        "target": "Obese",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable",
+        "engineA": "Octopus",
+        "engineB": "Obese"
       }
     ]
   },

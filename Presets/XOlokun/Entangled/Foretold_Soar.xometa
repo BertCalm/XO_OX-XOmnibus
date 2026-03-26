@@ -6,7 +6,7 @@
         "amount": 0.819,
         "engineA": "Oracle",
         "engineB": "Osprey",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter"
       }
     ]
   },

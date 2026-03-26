@@ -6,13 +6,13 @@
         "amount": 0.65,
         "engineA": "Oblique",
         "engineB": "Osteria",
-        "type": "PitchSync"
+        "type": "PitchToPitch"
       },
       {
         "amount": 0.45,
         "engineA": "Osteria",
         "engineB": "Oblique",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph"
       }
     ]
   },

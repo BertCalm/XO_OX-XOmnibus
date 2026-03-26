@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ottoni",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.701
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.76,
+    "brightness": 0.04,
+    "density": 0.714,
+    "movement": 0.891,
+    "space": 0.804,
+    "warmth": 0.039
+  },
+  "engines": [
+    "Onset",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.149,
+    "SPACE": 0.893,
+    "PUNCH": 0.891,
+    "MUTATE": 0.14
+  },
+  "mood": "Entangled",
+  "name": "BREAKNECK",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.373,
+      "macro_coupling": 0.987,
+      "macro_movement": 0.893,
+      "macro_space": 0.558
+    },
+    "Ottoni": {
+      "macro_character": 0.366,
+      "macro_coupling": 0.144,
+      "macro_movement": 0.89,
+      "macro_space": 0.602
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "wild",
+    "movement"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

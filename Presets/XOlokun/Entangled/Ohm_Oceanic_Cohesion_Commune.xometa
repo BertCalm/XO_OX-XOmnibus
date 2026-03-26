@@ -18,7 +18,7 @@
         "sourceParam": "ocean_scatter",
         "targetEngine": "Ohm",
         "targetParam": "ohm_spread",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

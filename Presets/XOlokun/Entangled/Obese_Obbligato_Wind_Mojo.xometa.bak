@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "source": "Obese",
+        "target": "Obbligato",
+        "type": "FREQUENCY_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Obbligato BOND macro tension sets MOJO drive — the wind holds the saturation taut.",
+  "dna": {
+    "aggression": 0.561,
+    "brightness": 0.582,
+    "density": 0.774,
+    "movement": 0.582,
+    "space": 0.521,
+    "warmth": 0.718
+  },
+  "engines": [
+    "Obese",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Wind Mojo",
+  "parameters": {
+    "Obbligato": {
+      "obbl_filterCutoff": 3749.3,
+      "obbl_level": 0.782
+    },
+    "Obese": {
+      "fat_ampAttack": 0.0305,
+      "fat_ampDecay": 0.196,
+      "fat_ampRelease": 0.405,
+      "fat_ampSustain": 0.51,
+      "fat_analogDigital": 0.823,
+      "fat_distType": 0.5,
+      "fat_filterCutoff": 2438.8,
+      "fat_filterEnvAmt": 0.672,
+      "fat_filterReso": 0.124,
+      "fat_level": 0.61,
+      "fat_lfo1Depth": 0.546,
+      "fat_lfo1Rate": 3.685,
+      "fat_lfo1Shape": 0.5,
+      "fat_modAttack": 0.04,
+      "fat_modDecay": 0.142,
+      "fat_modRelease": 0.505,
+      "fat_modSustain": 0.636,
+      "fat_mojoControl": 0.349,
+      "fat_oscDetune": 0.36,
+      "fat_oscWave": 0.67,
+      "fat_reverbMix": 0.115,
+      "fat_satDrive": 0.892,
+      "fat_satMix": 0.418,
+      "fat_subOscLevel": 0.567
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "obese",
+    "obbligato"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

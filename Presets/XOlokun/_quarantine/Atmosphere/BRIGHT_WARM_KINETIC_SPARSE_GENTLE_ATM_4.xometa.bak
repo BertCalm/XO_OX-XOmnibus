@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.62
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0257,
+    "brightness": 0.9747,
+    "density": 0.0685,
+    "movement": 0.9263,
+    "space": 0.3737,
+    "warmth": 0.9389
+  },
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9459,
+    "COUPLING": 0.0699,
+    "MOVEMENT": 0.9243,
+    "SPACE": 0.3518
+  },
+  "mood": "Atmosphere",
+  "name": "Bloom Stream 2",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.9606,
+      "macro_coupling": 0.0981,
+      "macro_movement": 0.9145,
+      "macro_space": 0.3508
+    },
+    "Orbital": {
+      "macro_character": 0.9312,
+      "macro_coupling": 0.0417,
+      "macro_movement": 0.9341,
+      "macro_space": 0.3527
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "kinetic",
+    "sparse",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

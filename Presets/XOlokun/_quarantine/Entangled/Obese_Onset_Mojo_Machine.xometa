@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Obese",
-        "type": "SIDECHAIN_DUCK",
+        "type": "AmpToChoke",
         "amount": 0.82
       }
     ]
@@ -62,5 +62,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

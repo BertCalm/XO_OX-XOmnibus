@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Owlfish",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.878
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.029,
+    "density": 0.935,
+    "movement": 0.969,
+    "space": 0.428,
+    "warmth": 0.541
+  },
+  "engines": [
+    "Origami",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.028,
+    "COUPLING": 0.808,
+    "MOVEMENT": 0.917,
+    "SPACE": 0.416
+  },
+  "mood": "Prism",
+  "name": "DARK KINETIC DENSE VIOLENT ... (Origami I)",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.028,
+      "macro_coupling": 0.838,
+      "macro_movement": 0.915,
+      "macro_space": 0.408
+    },
+    "Owlfish": {
+      "macro_character": 0.028,
+      "macro_coupling": 0.779,
+      "macro_movement": 0.919,
+      "macro_space": 0.424
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

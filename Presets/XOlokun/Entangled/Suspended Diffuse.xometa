@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Obbligato",
-        "type": "SPECTRAL_TRANSFER",
+        "type": "EnvToMorph",
         "amount": 0.779
       }
     ]

@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.557,
+        "engineA": "Outwit",
+        "engineB": "Owlfish",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Owlfish subharmonic depth aligns OUTWIT arm frequencies — abyssal intelligence meets digital cells",
+  "dna": {
+    "aggression": 0.425,
+    "brightness": 0.575,
+    "density": 0.7,
+    "movement": 0.675,
+    "space": 0.55,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Outwit",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.357,
+    "COUPLING": 0.883,
+    "MOVEMENT": 0.474,
+    "SPACE": 0.554
+  },
+  "mood": "Entangled",
+  "name": "Abyssal Automata",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.16,
+      "owit_ampRelease": 0.719,
+      "owit_armStagger": 0.369,
+      "owit_arms": 6,
+      "owit_borderMode": 2,
+      "owit_cellSize": 0.535,
+      "owit_chroma1": 0.356,
+      "owit_chroma2": 0.702,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.79,
+      "owit_density": 0.664,
+      "owit_evolveRate": 0.446,
+      "owit_filterCutoff": 0.455,
+      "owit_filterReso": 0.251,
+      "owit_inkCloudMix": 0.411,
+      "owit_mutateProb": 0.224,
+      "owit_outputLevel": 0.804,
+      "owit_pitchSpread": 0.622,
+      "owit_polyDepth": 0.554,
+      "owit_rule": 184
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "owlfish",
+    "abyssal",
+    "subharmonic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

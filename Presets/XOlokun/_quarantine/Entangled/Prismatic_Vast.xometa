@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.96,
@@ -42,7 +42,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Oceanic",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.752
       }
     ]

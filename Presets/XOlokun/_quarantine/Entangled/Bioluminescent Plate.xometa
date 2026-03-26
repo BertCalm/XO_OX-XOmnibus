@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Oceanic",
-        "type": "SPECTRAL_TRANSFER",
+        "type": "EnvToMorph",
         "amount": 0.535
       }
     ]
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

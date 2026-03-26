@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Overbite",
-        "type": "BITE_TRIGGER",
+        "type": "AmpToChoke",
         "amount": 0.65
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

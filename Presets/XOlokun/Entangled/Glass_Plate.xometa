@@ -6,7 +6,7 @@
         "amount": 0.81,
         "engineA": "Obsidian",
         "engineB": "Obscura",
-        "type": "Env->Amp"
+        "type": "AmpToFilter"
       }
     ]
   },

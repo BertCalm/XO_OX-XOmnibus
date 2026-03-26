@@ -5,7 +5,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Oblique",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.9469
       }
     ]

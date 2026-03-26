@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Odyssey",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.509
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, warm, dense sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Warm and familiar, warm, dense sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

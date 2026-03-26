@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "AMPLITUDE_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

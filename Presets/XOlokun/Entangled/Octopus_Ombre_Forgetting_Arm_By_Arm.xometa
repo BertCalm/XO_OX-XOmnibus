@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Octopus",
-        "target": "Ombre",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter",
+        "engineA": "Octopus",
+        "engineB": "Ombre"
       }
     ]
   },

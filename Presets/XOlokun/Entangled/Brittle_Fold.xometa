@@ -6,7 +6,7 @@
         "amount": 0.502,
         "engineA": "Obsidian",
         "engineB": "Origami",
-        "type": "SPECTRAL_TRANSFER"
+        "type": "EnvToMorph"
       }
     ]
   },

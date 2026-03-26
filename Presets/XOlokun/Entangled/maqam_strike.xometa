@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Outwit",
         "engineB": "Oracle",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

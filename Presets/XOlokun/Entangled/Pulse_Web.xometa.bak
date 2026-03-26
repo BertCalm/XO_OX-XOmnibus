@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.557,
+        "engineA": "Overlap",
+        "engineB": "Optic",
+        "type": "SPECTRAL_CROSS"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OPTIC auto-pulse rate modulates OVERLAP spin rate \u2014 light pulses weave through the spatial web",
+  "dna": {
+    "aggression": 0.325,
+    "brightness": 0.65,
+    "density": 0.525,
+    "movement": 0.525,
+    "space": 0.675,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Overlap",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.675,
+    "COUPLING": 0.802,
+    "MOVEMENT": 0.724,
+    "SPACE": 0.485
+  },
+  "mood": "Entangled",
+  "name": "Pulse Web",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.565,
+      "olap_crossfeedAmt": 0.367,
+      "olap_damping": 0.645,
+      "olap_decay": 0.628,
+      "olap_diffusion": 0.638,
+      "olap_earlyMix": 0.237,
+      "olap_filterCutoff": 0.411,
+      "olap_filterReso": 0.257,
+      "olap_frondDensity": 0.773,
+      "olap_lateMix": 0.509,
+      "olap_modDepth": 0.259,
+      "olap_modRate": 0.316,
+      "olap_nodeCount": 15,
+      "olap_outputLevel": 0.682,
+      "olap_preDelay": 0.154,
+      "olap_shimmerMix": 0.361,
+      "olap_size": 0.895,
+      "olap_spinRate": 0.241
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "optic",
+    "pulse",
+    "visual"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

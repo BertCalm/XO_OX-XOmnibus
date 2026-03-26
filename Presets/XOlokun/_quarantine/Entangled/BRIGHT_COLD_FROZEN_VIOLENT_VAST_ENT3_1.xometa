@@ -5,7 +5,7 @@
       {
         "engineA": "Organon",
         "engineB": "Obese",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.9599
       }
     ]

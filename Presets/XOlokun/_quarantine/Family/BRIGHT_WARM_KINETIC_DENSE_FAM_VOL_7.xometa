@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "OddfeliX",
-        "type": "MODULATION_FLOW",
+        "type": "EnvToMorph",
         "amount": 0.635
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8122,
+        "source": "Owlfish",
+        "target": "Ohm",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Bright Cold Vast Violent character entanglement — OHM × OWLFISH via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9757,
+    "brightness": 0.9699,
+    "density": 0.6784,
+    "movement": 0.6079,
+    "space": 0.8723,
+    "warmth": 0.0628
+  },
+  "engines": [
+    "Ohm",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "COMMUNE",
+    "MEDDLING",
+    "RESONANCE",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5163,
+    "COUPLING": 0.8122,
+    "MOVEMENT": 0.6079,
+    "SPACE": 0.8723
+  },
+  "mood": "Entangled",
+  "name": "Barb Radiant",
+  "parameters": {
+    "Ohm": {
+      "amp_attack": 0.2308,
+      "amp_release": 0.6552,
+      "coupling_level": 0.9642,
+      "density": 0.6695,
+      "drive": 0.8295,
+      "filter_cutoff": 0.882,
+      "filter_resonance": 0.6066,
+      "macro_character": 0.6,
+      "macro_coupling": 0.9728,
+      "macro_movement": 0.5991,
+      "macro_space": 0.8992,
+      "output_level": 0.8831,
+      "reverb_mix": 0.6289,
+      "reverb_size": 0.7052
+    },
+    "Owlfish": {
+      "amp_attack": 0.2142,
+      "amp_release": 0.6364,
+      "coupling_level": 0.9265,
+      "density": 0.6529,
+      "drive": 0.8599,
+      "filter_cutoff": 0.8816,
+      "filter_resonance": 0.6204,
+      "macro_character": 0.634,
+      "macro_coupling": 0.9751,
+      "macro_movement": 0.6351,
+      "macro_space": 0.9108,
+      "output_level": 0.8504,
+      "reverb_mix": 0.5965,
+      "reverb_size": 0.7177
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "vast",
+    "violent",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

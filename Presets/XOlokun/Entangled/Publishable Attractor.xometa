@@ -6,7 +6,7 @@
         "amount": 1.0,
         "engineA": "Ouroboros",
         "engineB": "Organon",
-        "type": "Chaos->Timbre"
+        "type": "AudioToFM"
       }
     ]
   },

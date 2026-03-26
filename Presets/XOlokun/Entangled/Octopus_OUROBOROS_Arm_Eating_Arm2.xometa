@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Ouroboros Arm Loop",
   "mood": "Entangled",
-  "engines": ["Octopus", "Ouroboros"],
+  "engines": [
+    "Octopus",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OUROBOROS's feedback loop topology feeding OCTOPUS arm modulation — the strange attractor accelerates arm activity, creating a self-feeding cycle. Chaos eating chaos, arm eating arm.",
-  "tags": ["octopus", "ouroboros", "entangled", "feedback", "loop", "chaos", "arms"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "octopus",
+    "ouroboros",
+    "entangled",
+    "feedback",
+    "loop",
+    "chaos",
+    "arms"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-17",
   "parameters": {

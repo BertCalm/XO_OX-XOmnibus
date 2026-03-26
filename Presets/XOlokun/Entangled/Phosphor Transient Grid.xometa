@@ -12,7 +12,7 @@
         "amount": 0.4,
         "engineA": "Onset",
         "engineB": "Optic",
-        "type": "PitchSync"
+        "type": "PitchToPitch"
       }
     ]
   },

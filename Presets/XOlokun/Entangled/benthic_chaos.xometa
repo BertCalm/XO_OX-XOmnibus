@@ -6,7 +6,7 @@
         "amount": 0.73,
         "engineA": "Outwit",
         "engineB": "Oceanic",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph"
       }
     ]
   },

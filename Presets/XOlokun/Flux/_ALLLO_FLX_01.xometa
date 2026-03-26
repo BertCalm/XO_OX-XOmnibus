@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Origami",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.249
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, crystalline, ethereal sound. Responds expressively to velocity and modulation."
+  "description": "Restless and kinetic, crystalline, ethereal sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

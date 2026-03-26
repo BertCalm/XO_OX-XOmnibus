@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Obsidian",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.8809
       }
     ]

@@ -6,11 +6,11 @@
         "amount": 0.509,
         "engineA": "Orbital",
         "engineB": "Osprey",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "ORBITAL perihelion triggers OSPREY's dive vector. Tidal arc, coastal descent.",
   "dna": {

@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.847,
+        "engineA": "Overlap",
+        "engineB": "Origami",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Origami fold topology restructures OVERLAP early reflection pattern — geometry becomes acoustics",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.55,
+    "space": 0.725,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Overlap",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.652,
+    "COUPLING": 0.62,
+    "MOVEMENT": 0.73,
+    "SPACE": 0.409
+  },
+  "mood": "Entangled",
+  "name": "Fold Echo",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.566,
+      "olap_crossfeedAmt": 0.46,
+      "olap_damping": 0.381,
+      "olap_decay": 0.604,
+      "olap_diffusion": 0.682,
+      "olap_earlyMix": 0.533,
+      "olap_filterCutoff": 0.767,
+      "olap_filterReso": 0.265,
+      "olap_frondDensity": 0.776,
+      "olap_lateMix": 0.59,
+      "olap_modDepth": 0.235,
+      "olap_modRate": 0.358,
+      "olap_nodeCount": 9,
+      "olap_outputLevel": 0.822,
+      "olap_preDelay": 0.083,
+      "olap_shimmerMix": 0.261,
+      "olap_size": 0.623,
+      "olap_spinRate": 0.2
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "origami",
+    "geometric",
+    "fold"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

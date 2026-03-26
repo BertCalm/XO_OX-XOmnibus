@@ -6,7 +6,7 @@
         "amount": 0.8,
         "engineA": "Overlap",
         "engineB": "Outwit",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

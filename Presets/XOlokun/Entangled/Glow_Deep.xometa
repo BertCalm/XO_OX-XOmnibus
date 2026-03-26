@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8138,
-        "source": "Octopus",
-        "target": "Overworld",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM",
+        "engineA": "Octopus",
+        "engineB": "Overworld"
       }
     ]
   },

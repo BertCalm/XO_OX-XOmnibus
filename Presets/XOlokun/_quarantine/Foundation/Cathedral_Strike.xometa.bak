@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.822
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.945,
+    "brightness": 0.572,
+    "density": 0.9,
+    "movement": 0.904,
+    "space": 0.964,
+    "warmth": 0.914
+  },
+  "engines": [
+    "OddOscar",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.743,
+    "COUPLING": 0.954,
+    "MOVEMENT": 0.902,
+    "SPACE": 0.964
+  },
+  "mood": "Foundation",
+  "name": "Cathedral Strike",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.743,
+      "macro_coupling": 0.954,
+      "macro_movement": 0.902,
+      "macro_space": 0.964
+    },
+    "OddfeliX": {
+      "macro_character": 0.743,
+      "macro_coupling": 0.954,
+      "macro_movement": 0.902,
+      "macro_space": 0.964
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

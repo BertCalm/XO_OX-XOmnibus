@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Osprey",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.82
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, warm bass. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, dark, warm bass. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

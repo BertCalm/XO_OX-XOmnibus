@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Onset",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.606
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.898,
+    "brightness": 0.368,
+    "density": 0.444,
+    "movement": 0.871,
+    "space": 0.881,
+    "warmth": 0.088
+  },
+  "engines": [
+    "OddOscar",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.519,
+    "SPACE": 0.343,
+    "PUNCH": 0.709,
+    "MUTATE": 0.829
+  },
+  "mood": "Foundation",
+  "name": "Node Edge",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.414,
+      "macro_coupling": 0.49,
+      "macro_movement": 0.329,
+      "macro_space": 0.168
+    },
+    "Onset": {
+      "macro_character": 0.858,
+      "macro_coupling": 0.499,
+      "macro_movement": 0.296,
+      "macro_space": 0.181
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "cold",
+    "kinetic",
+    "vast",
+    "violent",
+    "aggressive",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "String Metabolism",
   "mood": "Entangled",
-  "engines": ["Obscura", "Organon"],
+  "engines": [
+    "Obscura",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Obscura's high-stiffness string vibrations fully colonize Organon's per-voice FM intake and filter. The physical model no longer plays alone — it is digested, its resonant harmonics reprocessed by a living variational organism into something between catgut and enzyme cascade.",
-  "tags": ["coupling", "Obscura-pair", "physical-model", "organic", "possession", "extreme", "harmonic"],
-  "macroLabels": ["MATERIAL", "METABOLISM", "COUPLING", "SPACE"],
-  "couplingIntensity": "Extreme",
+  "tags": [
+    "coupling",
+    "Obscura-pair",
+    "physical-model",
+    "organic",
+    "possession",
+    "extreme",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",
   "legacy": {

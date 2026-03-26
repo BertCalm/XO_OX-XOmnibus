@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6655,
-        "source": "Ottoni",
-        "target": "Obsidian",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Ottoni",
+        "engineB": "Obsidian"
       }
     ]
   },

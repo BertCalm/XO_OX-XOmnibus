@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Odyssey",
-        "target": "Ottoni",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch",
+        "engineA": "Odyssey",
+        "engineB": "Ottoni"
       }
     ]
   },

@@ -4,9 +4,10 @@
     "intensity": "Extreme",
     "sourceEngine": "Oblique",
     "targetEngine": null,
-    "type": "FM"
+    "type": "FM",
+    "pairs": []
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Ultra-diverse Prism preset: HOT OPEN KINETIC BRIGHT PRI 3.",
   "dna": {

@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.374,
-      "destination": "ORBITAL",
-      "source": "OVERDUB",
-      "type": "FREQUENCY_SHIFT"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.374,
+        "type": "AudioToFM",
+        "engineA": "OVERDUB",
+        "engineB": "ORBITAL"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — aether, dark, warm, vast.",

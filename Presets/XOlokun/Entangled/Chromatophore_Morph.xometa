@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT arm-0 envelope drives OPAL grain morph position. The octopus flashes color patterns that directly reshape the grain cloud texture \u2014 slow chromatophore ripples become slow grain sweeps.",
+  "description": "OUTWIT arm-0 envelope drives OPAL grain morph position. The octopus flashes color patterns that directly reshape the grain cloud texture — slow chromatophore ripples become slow grain sweeps.",
   "tags": [
     "entangled",
     "env-to-morph",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -143,11 +143,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "EnvToMorph",
         "amount": 0.14,
-        "description": "OUTWIT arm envelope drives OPAL grain morph position \u2014 chromatophore pulse shapes granular texture"
+        "description": "OUTWIT arm envelope drives OPAL grain morph position — chromatophore pulse shapes granular texture",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

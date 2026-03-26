@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Obsidian",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.633
       }
     ]

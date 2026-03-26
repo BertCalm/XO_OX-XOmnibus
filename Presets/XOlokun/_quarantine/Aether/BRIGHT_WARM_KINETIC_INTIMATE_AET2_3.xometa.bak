@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.718
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4959,
+    "brightness": 0.9685,
+    "density": 0.6996,
+    "movement": 0.9404,
+    "space": 0.0439,
+    "warmth": 0.9039
+  },
+  "engines": [
+    "Obscura",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9742,
+    "COUPLING": 0.718,
+    "MOVEMENT": 0.9724,
+    "SPACE": 0.0439
+  },
+  "mood": "Aether",
+  "name": "Halo Drift",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.9584,
+      "macro_coupling": 0.6922,
+      "macro_movement": 0.9562,
+      "macro_space": 0.0699
+    },
+    "Origami": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.6735,
+      "macro_movement": 0.9885,
+      "macro_space": 0.0322
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "kinetic",
+    "celestial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

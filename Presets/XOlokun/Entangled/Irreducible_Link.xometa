@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "Bidirectional KnotTopology coupling between OUTWIT and ORBWEAVE. The amber octopus and the kelp knot become topologically entangled \u2014 neither can change without affecting the other. Both engines mutually drive each other's phase space.",
+  "description": "Bidirectional KnotTopology coupling between OUTWIT and ORBWEAVE. The amber octopus and the kelp knot become topologically entangled — neither can change without affecting the other. Both engines mutually drive each other's phase space.",
   "tags": [
     "entangled",
     "knot-topology",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -176,18 +176,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbweave",
         "type": "KnotTopology",
         "amount": 0.13,
-        "description": "OUTWIT arm rhythms modulate ORBWEAVE braid topology \u2014 octopus patterns reshape the knot"
+        "description": "OUTWIT arm rhythms modulate ORBWEAVE braid topology — octopus patterns reshape the knot",
+        "engineA": "Outwit",
+        "engineB": "Orbweave"
       },
       {
-        "source": "Orbweave",
-        "target": "Outwit",
         "type": "KnotTopology",
         "amount": 0.11,
-        "description": "ORBWEAVE phase feedback modulates OUTWIT arm filter space \u2014 knot geometry colors the chromatophore"
+        "description": "ORBWEAVE phase feedback modulates OUTWIT arm filter space — knot geometry colors the chromatophore",
+        "engineA": "Orbweave",
+        "engineB": "Outwit"
       }
     ]
   },

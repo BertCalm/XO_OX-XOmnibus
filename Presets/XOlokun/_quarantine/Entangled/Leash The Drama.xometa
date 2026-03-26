@@ -6,7 +6,7 @@
         "amount": 0.78,
         "engineA": "Ouroboros",
         "engineB": "Ole",
-        "type": "ENVELOPE_LINK"
+        "type": "EnvToDecay"
       }
     ]
   },

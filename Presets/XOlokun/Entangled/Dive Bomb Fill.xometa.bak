@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Dive Bomb Fill",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSPREY's pitch-dive triggered per ONSET fill pattern. Tom rolls become cascading aerial dives. Dynamic drum fills.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "osprey",
+    "drum",
+    "fill",
+    "pitch-dive"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.82,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v4_level": 0.75,
+      "perc_v5_level": 0.7,
+      "perc_macro_punch": 0.65
+    },
+    "Osprey": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osprey",
+        "type": "Rhythm->Blend",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Osprey",
+        "engineB": "Onset",
+        "type": "Pitch->Velocity",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

@@ -6,7 +6,7 @@
         "amount": 0.5,
         "engineA": "Obsidian",
         "engineB": "Optic",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM"
       }
     ]
   },

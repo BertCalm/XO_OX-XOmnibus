@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Octopus",
-        "target": "Owlfish",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter",
+        "engineA": "Octopus",
+        "engineB": "Owlfish"
       }
     ]
   },

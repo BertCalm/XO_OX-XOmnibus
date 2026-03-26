@@ -6,7 +6,7 @@
         "amount": 0.94,
         "engineA": "OddOscar",
         "engineB": "Ouroboros",
-        "type": "FREQUENCY_SMEAR"
+        "type": "AudioToFM"
       }
     ]
   },

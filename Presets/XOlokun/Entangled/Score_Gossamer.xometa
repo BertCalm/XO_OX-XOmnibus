@@ -6,7 +6,7 @@
         "amount": 0.781,
         "engineA": "Origami",
         "engineB": "Orphica",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },

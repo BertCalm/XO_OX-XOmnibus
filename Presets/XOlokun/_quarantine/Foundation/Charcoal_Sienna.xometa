@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Onset",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.505
       }
     ]
@@ -62,5 +62,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

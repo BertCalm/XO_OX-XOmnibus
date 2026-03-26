@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Spice Route Reed",
   "mood": "Entangled",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oddfellow with SpectralFingerprint migration active — the reed ready to receive and transmit timbre across the Fusion quad. Moderate migration, balanced parameters, coupling at medium intensity.",
-  "tags": ["wurlitzer", "coupling", "migration", "fusion-quad", "entangled", "spectral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "wurlitzer",
+    "coupling",
+    "migration",
+    "fusion-quad",
+    "entangled",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

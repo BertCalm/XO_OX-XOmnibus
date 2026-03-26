@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.726,
-      "destination": "OHM",
-      "source": "OCEANIC",
-      "type": "PITCH_SYNC"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.726,
+        "type": "PitchToPitch",
+        "engineA": "OCEANIC",
+        "engineB": "OHM"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, dark, still, sparse.",

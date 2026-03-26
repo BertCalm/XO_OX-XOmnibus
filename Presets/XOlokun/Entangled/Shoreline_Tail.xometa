@@ -6,7 +6,7 @@
         "amount": 0.806,
         "engineA": "Overlap",
         "engineB": "Osprey",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable"
       }
     ]
   },

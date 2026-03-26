@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Ocelot",
         "engineB": "Osprey",
-        "type": "EnvToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.45,
         "engineA": "Osprey",
         "engineB": "Ocelot",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

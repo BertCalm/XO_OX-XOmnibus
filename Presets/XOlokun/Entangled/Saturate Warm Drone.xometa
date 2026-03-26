@@ -7,7 +7,7 @@
         "amount": 0.78,
         "engineA": "Obese",
         "engineB": "Ohm",
-        "type": "Filter->Drive"
+        "type": "FilterToFilter"
       }
     ],
     "type": "Filter->Drive"

@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.589
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_KINETIC_INTIMATE_VIOLENT. Variant 4.",
+  "dna": {
+    "aggression": 0.896,
+    "brightness": 0.099,
+    "density": 0.441,
+    "movement": 0.942,
+    "space": 0.084,
+    "warmth": 0.127
+  },
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.166,
+    "COUPLING": 0.441,
+    "MOVEMENT": 0.986,
+    "SPACE": 0.159
+  },
+  "mood": "Foundation",
+  "name": "Grain Surge",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.16,
+      "macro_coupling": 0.583,
+      "macro_movement": 1.0,
+      "macro_space": 0.148
+    },
+    "Overbite": {
+      "macro_character": 0.172,
+      "macro_coupling": 0.299,
+      "macro_movement": 0.971,
+      "macro_space": 0.17
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "cold",
+    "kinetic",
+    "dark",
+    "diversity",
+    "violent",
+    "intimate",
+    "foundation"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

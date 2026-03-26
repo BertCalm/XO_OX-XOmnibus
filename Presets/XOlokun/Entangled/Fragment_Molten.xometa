@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7433,
-        "source": "Osteria",
-        "target": "Outwit",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Osteria",
+        "engineB": "Outwit"
       }
     ]
   },

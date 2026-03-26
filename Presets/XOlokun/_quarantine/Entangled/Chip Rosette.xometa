@@ -5,7 +5,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Overworld",
-        "type": "AMPLITUDE_MODULATION",
+        "type": "AmpToFilter",
         "amount": 0.511
       }
     ]
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

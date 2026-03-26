@@ -6,7 +6,7 @@
         "amount": 0.9,
         "engineA": "Overlap",
         "engineB": "Origami",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

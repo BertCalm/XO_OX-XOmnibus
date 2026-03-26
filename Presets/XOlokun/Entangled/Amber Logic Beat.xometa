@@ -59,7 +59,7 @@
       {
         "engineA": "Organon",
         "engineB": "Oblong",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.45
       }
     ]

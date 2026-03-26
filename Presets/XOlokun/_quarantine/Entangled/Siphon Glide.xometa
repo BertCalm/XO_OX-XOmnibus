@@ -5,7 +5,7 @@
       {
         "engineA": "Osprey",
         "engineB": "Orphica",
-        "type": "PHASE_LOCK",
+        "type": "AudioToFM",
         "amount": 0.72
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

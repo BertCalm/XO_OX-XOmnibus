@@ -6,7 +6,7 @@
         "amount": 0.87,
         "engineA": "Ohm",
         "engineB": "Origami",
-        "type": "Pitch->Mod"
+        "type": "PitchToPitch"
       }
     ]
   },

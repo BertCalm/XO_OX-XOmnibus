@@ -6,7 +6,7 @@
         "amount": 0.48,
         "engineA": "Obscura",
         "engineB": "Oceanic",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

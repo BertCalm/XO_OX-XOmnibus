@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Odyssey",
-        "target": "Obbligato",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM",
+        "engineA": "Odyssey",
+        "engineB": "Obbligato"
       }
     ]
   },

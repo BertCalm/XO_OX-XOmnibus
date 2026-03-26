@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.65,
-        "source": "Odyssey",
-        "target": "Oceanic",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay",
+        "engineA": "Odyssey",
+        "engineB": "Oceanic"
       }
     ]
   },

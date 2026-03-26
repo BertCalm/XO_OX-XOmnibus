@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.88
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.09,
+    "brightness": 0.034,
+    "density": 0.905,
+    "movement": 0.877,
+    "space": 0.633,
+    "warmth": 0.318
+  },
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.176,
+    "COUPLING": 0.758,
+    "MOVEMENT": 0.877,
+    "SPACE": 0.633
+  },
+  "mood": "Aether",
+  "name": "DARK KINETIC DENSE BALANCED... (Overworld)",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.174,
+      "macro_coupling": 0.739,
+      "macro_movement": 0.873,
+      "macro_space": 0.606
+    },
+    "Overworld": {
+      "macro_character": 0.176,
+      "macro_coupling": 0.758,
+      "macro_movement": 0.877,
+      "macro_space": 0.633
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

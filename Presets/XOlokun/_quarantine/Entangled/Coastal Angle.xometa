@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Osprey",
-        "type": "FREQUENCY_MODULATION",
+        "type": "AudioToFM",
         "amount": 0.763
       }
     ]
@@ -82,5 +82,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

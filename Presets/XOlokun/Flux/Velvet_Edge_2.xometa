@@ -5,7 +5,7 @@
       {
         "engineA": "Opal",
         "engineB": "Overdub",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.44
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, warm bass. Let it breathe — the space is the instrument."
+  "description": "Restless and kinetic, dark, warm bass. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

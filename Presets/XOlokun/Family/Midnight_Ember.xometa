@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.593,
-      "destination": "ORGANON",
-      "source": "ODYSSEY",
-      "type": "VELOCITY_COUPLE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.593,
+        "type": "AmpToChoke",
+        "engineA": "ODYSSEY",
+        "engineB": "ORGANON"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, dark, warm, dense.",

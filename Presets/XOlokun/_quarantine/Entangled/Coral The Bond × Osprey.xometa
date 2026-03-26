@@ -6,7 +6,7 @@
         "amount": 0.451,
         "engineA": "Obbligato",
         "engineB": "Osprey",
-        "type": "LFO->Pan"
+        "type": "LFOToPitch"
       }
     ]
   },

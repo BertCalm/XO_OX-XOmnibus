@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Opal",
+        "type": "GRANULAR_WEAVE",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Opal grain cloud shaped by OBBLIGATO breath envelope — each breath a new grain cluster",
+  "engines": [
+    "Obbligato",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Grain Breath",
+  "parameters": {
+    "Obbligato": {},
+    "Opal": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "opal",
+    "wind"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

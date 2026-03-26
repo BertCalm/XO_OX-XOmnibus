@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "SPACE_BLEND",
+        "amount": 0.786
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.8,
+    "density": 0.35,
+    "movement": 0.6,
+    "space": 0.9,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Oblique",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.786,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.625
+  },
+  "mood": "Entangled",
+  "name": "Violet Orbit",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.83,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.78,
+      "macro_space": 0.58
+    },
+    "Orbital": {
+      "macro_character": 0.37,
+      "macro_coupling": 0.47,
+      "macro_movement": 0.52,
+      "macro_space": 0.67
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "cosmic",
+    "violet"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

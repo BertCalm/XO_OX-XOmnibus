@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Oceanic",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.832
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, warm, dense sound. Drives through the mix with presence and bite."
+  "description": "Restless and kinetic, warm, dense sound. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Oracle",
         "engineB": "Ole",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

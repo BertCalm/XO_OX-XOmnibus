@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblong",
+        "type": "LFO_SYNC",
+        "amount": 0.68
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.07,
+    "density": 0.94,
+    "movement": 0.38,
+    "space": 0.34,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Onset",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.52,
+    "SPACE": 0.84,
+    "PUNCH": 0.38,
+    "MUTATE": 0.34
+  },
+  "mood": "Entangled",
+  "name": "Tungsten Core Throb",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.48,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.26,
+      "macro_space": 0.38,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Onset": {
+      "macro_character": 0.25,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.53,
+      "macro_space": 0.39
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite.",
+  "tier": "awakening"
+}

@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT fast arm cycling drives OCEANIC filter at medium coupling \u2014 the octopus's rapid arm patterns create an oscillating current through the teal field. Filter resonance on both sides magnifies the effect.",
+  "description": "OUTWIT fast arm cycling drives OCEANIC filter at medium coupling — the octopus's rapid arm patterns create an oscillating current through the teal field. Filter resonance on both sides magnifies the effect.",
   "tags": [
     "entangled",
     "filter-to-filter",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -137,11 +137,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Oceanic",
         "type": "FilterToFilter",
         "amount": 0.16,
-        "description": "OUTWIT fast arm cycling oscillates OCEANIC filter \u2014 rapid arm patterns create pulsing current"
+        "description": "OUTWIT fast arm cycling oscillates OCEANIC filter — rapid arm patterns create pulsing current",
+        "engineA": "Outwit",
+        "engineB": "Oceanic"
       }
     ]
   },

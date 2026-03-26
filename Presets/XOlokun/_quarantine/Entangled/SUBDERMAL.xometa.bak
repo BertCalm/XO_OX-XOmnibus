@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ohm",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.578
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.059,
+    "brightness": 0.716,
+    "density": 0.939,
+    "movement": 0.363,
+    "space": 0.097,
+    "warmth": 0.659
+  },
+  "engines": [
+    "Ocelot",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.986,
+    "COUPLING": 0.879,
+    "MOVEMENT": 0.905,
+    "SPACE": 0.097
+  },
+  "mood": "Entangled",
+  "name": "SUBDERMAL",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.837,
+      "macro_coupling": 0.924,
+      "macro_movement": 0.065,
+      "macro_space": 0.116
+    },
+    "Ohm": {
+      "macro_character": 0.199,
+      "macro_coupling": 0.982,
+      "macro_movement": 0.479,
+      "macro_space": 0.097
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "claustrophobic",
+    "intimate",
+    "xlow"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

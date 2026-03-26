@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Optic",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.7933
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, crystalline atmosphere. Let it breathe — the space is the instrument."
+  "description": "Restless and kinetic, dark, crystalline atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

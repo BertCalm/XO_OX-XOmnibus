@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Obese",
-        "target": "Osteria",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch",
+        "engineA": "Obese",
+        "engineB": "Osteria"
       }
     ]
   },

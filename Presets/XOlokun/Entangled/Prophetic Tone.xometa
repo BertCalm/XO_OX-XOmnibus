@@ -5,9 +5,9 @@
       {
         "amount": 0.831,
         "description": "Owlfish drives Oracle via TimbreShare",
-        "source": "Owlfish",
-        "target": "Oracle",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Owlfish",
+        "engineB": "Oracle"
       }
     ]
   },

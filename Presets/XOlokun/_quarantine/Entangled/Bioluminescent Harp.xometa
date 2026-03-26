@@ -6,7 +6,7 @@
         "amount": 0.72,
         "engineA": "Orphica",
         "engineB": "Organon",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

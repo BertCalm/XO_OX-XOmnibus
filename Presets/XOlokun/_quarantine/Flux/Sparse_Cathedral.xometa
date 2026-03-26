@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Owlfish",
-        "type": "PHASE_LOCK",
+        "type": "AudioToFM",
         "amount": 0.93
       }
     ]

@@ -5,7 +5,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Orphica",
-        "type": "GRANULAR_EXCHANGE",
+        "type": "AudioToBuffer",
         "amount": 0.696
       }
     ]
@@ -81,5 +81,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

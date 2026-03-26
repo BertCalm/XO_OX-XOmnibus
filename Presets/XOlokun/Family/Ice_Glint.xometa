@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.398,
-      "destination": "OVERWORLD",
-      "source": "ODDFELIX",
-      "type": "RESONANCE_SHARE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.398,
+        "type": "FilterToFilter",
+        "engineA": "ODDFELIX",
+        "engineB": "OVERWORLD"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, bright, cold, sparse.",

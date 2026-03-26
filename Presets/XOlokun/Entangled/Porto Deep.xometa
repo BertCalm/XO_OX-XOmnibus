@@ -5,23 +5,23 @@
       {
         "amount": 0.608,
         "description": "OSTERIA porto and warmth bias ORCA filter toward the high-harmonic shelf; OWLFISH abyssal drive calibrates the shared resonance floor",
-        "source": "Orca",
-        "target": "Osteria",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Osteria"
       },
       {
         "amount": 0.492,
         "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch",
-        "source": "Orca",
-        "target": "Owlfish",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Orca",
+        "engineB": "Owlfish"
       },
       {
         "amount": 0.546,
         "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer",
-        "source": "Osteria",
-        "target": "Owlfish",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Osteria",
+        "engineB": "Owlfish"
       }
     ]
   },

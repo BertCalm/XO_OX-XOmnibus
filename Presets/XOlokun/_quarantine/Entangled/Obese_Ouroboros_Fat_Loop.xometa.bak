@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obese",
+        "type": "FEEDBACK_RING",
+        "amount": 0.88
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.15,
+    "density": 1.0,
+    "movement": 0.75,
+    "space": 0.1,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Obese",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.1
+  },
+  "mood": "Entangled",
+  "name": "Fat Loop",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.95,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.7,
+      "macro_space": 0.1
+    },
+    "Ouroboros": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.85,
+      "macro_movement": 0.8,
+      "macro_space": 0.2
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "obese",
+    "ouroboros",
+    "bass",
+    "feedback",
+    "extreme",
+    "fat"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

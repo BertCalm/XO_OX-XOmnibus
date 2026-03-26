@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.3,
-      "destination": "Ole",
-      "source": "Orphica",
-      "type": "PitchToPitch"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.3,
+        "type": "PitchToPitch",
+        "engineA": "Orphica",
+        "engineB": "Ole"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Microsound triggers chase the pluck. FRACTURE sweeping opens new stutter territory.",

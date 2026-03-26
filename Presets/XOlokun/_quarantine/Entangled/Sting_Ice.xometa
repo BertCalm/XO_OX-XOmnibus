@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.595,
@@ -42,7 +42,7 @@
       {
         "engineA": "Origami",
         "engineB": "Obsidian",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.701
       }
     ]

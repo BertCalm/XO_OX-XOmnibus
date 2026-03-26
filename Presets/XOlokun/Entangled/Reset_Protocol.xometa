@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Reset Protocol",
   "mood": "Entangled",
-  "engines": ["Overworn"],
+  "engines": [
+    "Overworn"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The stateReset infusion event fires — spectral mass cleared, session returns to full richness. A complete breath reset for BROTH coupling contexts.",
-  "tags": ["pad", "entangled", "reset", "broth", "starting-state"],
-  "macroLabels": ["RICHNESS", "REDUCTION", "CONCENTRATE", "DEPTH"],
-  "couplingIntensity": "Low",
+  "tags": [
+    "pad",
+    "entangled",
+    "reset",
+    "broth",
+    "starting-state"
+  ],
+  "macroLabels": [
+    "RICHNESS",
+    "REDUCTION",
+    "CONCENTRATE",
+    "DEPTH"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.6, "movement": 0.3, "density": 0.65, "space": 0.6, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overworn": {
       "worn_reductionRate": 0.4,
@@ -45,7 +65,9 @@
       "worn_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": "Overworn"
 }

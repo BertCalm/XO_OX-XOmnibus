@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.609,
-      "destination": "ORIGAMI",
-      "source": "OVERWORLD",
-      "type": "PITCH_SYNC"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.609,
+        "type": "PitchToPitch",
+        "engineA": "OVERWORLD",
+        "engineB": "ORIGAMI"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
   "dna": {
     "aggression": 0.573,
     "brightness": 0.896,

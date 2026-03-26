@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.464
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8868,
+    "brightness": 0.8776,
+    "density": 0.9063,
+    "movement": 0.9791,
+    "space": 0.4633,
+    "warmth": 0.9689
+  },
+  "engines": [
+    "Ouroboros",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9287,
+    "COUPLING": 0.9042,
+    "MOVEMENT": 0.9857,
+    "SPACE": 0.4621
+  },
+  "mood": "Flux",
+  "name": "Solar Surge",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.9502,
+      "macro_coupling": 0.9087,
+      "macro_movement": 0.99,
+      "macro_space": 0.4685
+    },
+    "Ouroboros": {
+      "macro_character": 0.9073,
+      "macro_coupling": 0.8996,
+      "macro_movement": 0.9814,
+      "macro_space": 0.4556
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "warm",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

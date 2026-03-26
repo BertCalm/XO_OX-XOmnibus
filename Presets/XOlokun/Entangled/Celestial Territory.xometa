@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Ocelot",
         "engineB": "Orbital",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.45,

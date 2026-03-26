@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Ombre",
+        "engineB": "Orca",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Orca predator chaos injected into Ombre dual narrative — the hunt as cold memory.",
+  "dna": {
+    "aggression": 0.94,
+    "brightness": 0.13,
+    "density": 0.87,
+    "movement": 0.72,
+    "space": 0.12,
+    "warmth": 0.16
+  },
+  "engines": [
+    "Ombre",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.86,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.72,
+    "SPACE": 0.12
+  },
+  "mood": "Entangled",
+  "name": "Ombre Machine",
+  "parameters": {
+    "Ombre": {},
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "orca",
+    "machine"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

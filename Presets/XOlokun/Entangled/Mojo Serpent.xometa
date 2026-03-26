@@ -6,7 +6,7 @@
         "amount": 0.75,
         "engineA": "Ouroboros",
         "engineB": "Obese",
-        "type": "CV->Filter"
+        "type": "FilterToFilter"
       }
     ]
   },

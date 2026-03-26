@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Osprey",
+        "type": "COASTAL_DIVE",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Shore winds carry the dub delay out to sea — osprey plunge timed to the echo",
+  "engines": [
+    "Overdub",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Coastal Dub",
+  "parameters": {
+    "Overdub": {},
+    "Osprey": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "osprey",
+    "dub"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

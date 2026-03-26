@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.479,
+        "engineA": "Obbligato",
+        "engineB": "Oracle",
+        "type": "Filter->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Prophecy indigo speaks through OBBLIGATO's coral reeds; BOND makes the dual breath an obligate response.",
+  "dna": {
+    "aggression": 0.428,
+    "brightness": 0.528,
+    "density": 0.44,
+    "movement": 0.6,
+    "space": 0.644,
+    "warmth": 0.0
+  },
+  "engines": [
+    "Obbligato",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "OBBLIGATO Obligate — Oracle",
+  "parameters": {
+    "obbl_breathA": 0.624,
+    "obbl_breathB": 0.48,
+    "obbl_macroBond": 0.798
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "oracle",
+    "stochastic",
+    "maqam"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

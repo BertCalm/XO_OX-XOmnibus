@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Ombre",
-        "target": "Obsidian",
-        "type": "PITCH_TRACKING"
+        "type": "PitchToPitch",
+        "engineA": "Ombre",
+        "engineB": "Obsidian"
       }
     ]
   },

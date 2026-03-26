@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Organon",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.6
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, shimmering, crystalline lead. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Interwoven and coupled, shimmering, crystalline lead. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

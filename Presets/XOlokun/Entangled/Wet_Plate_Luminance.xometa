@@ -6,11 +6,11 @@
         "amount": 0.838,
         "engineA": "Obscura",
         "engineB": "Optic",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Obscura × Optic coupling (harmonic lock). Stub preset — sound-design pass pending.",
   "dna": {

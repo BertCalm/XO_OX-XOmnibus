@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Overworld",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.512
       }
     ]

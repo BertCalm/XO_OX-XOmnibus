@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Oblique",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.729
       }
     ]

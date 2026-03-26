@@ -5,7 +5,7 @@
       {
         "engineA": "Organon",
         "engineB": "Oblong",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.67
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, warm pad. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, dark, warm pad. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

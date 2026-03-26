@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Orbital",
-        "type": "RESONANCE_CHAIN",
+        "type": "FilterToFilter",
         "amount": 0.554
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

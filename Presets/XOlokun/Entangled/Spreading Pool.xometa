@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Ole",
-        "type": "ENVELOPE_SHARING",
+        "type": "EnvToDecay",
         "amount": 0.744
       }
     ]

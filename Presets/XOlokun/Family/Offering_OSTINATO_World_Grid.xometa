@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-21",
   "description": "OFFERING boom bap grid locked to OSTINATO world rhythms. RhythmToBlend coupling lets OSTINATO's modal membrane patterns float above the kick-snare foundation. Bay Area fog processing keeps both voices in the same room.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.55,
     "warmth": 0.6
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OSTINATO World Grid",
   "parameters": {
@@ -45,8 +52,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["ostinato", "coupling", "rhythm-to-blend", "world", "bay-area", "family"],
+  "tags": [
+    "ostinato",
+    "coupling",
+    "rhythm-to-blend",
+    "world",
+    "bay-area",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.6, "M2": 0.55, "M3": 0.0, "M4": 0.15}
+  "macros": {
+    "M1": 0.6,
+    "M2": 0.55,
+    "M3": 0.0,
+    "M4": 0.15
+  }
 }

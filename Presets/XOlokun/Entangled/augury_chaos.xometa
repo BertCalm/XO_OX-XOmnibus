@@ -6,7 +6,7 @@
         "amount": 0.76,
         "engineA": "Outwit",
         "engineB": "Oracle",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Octopus",
         "engineB": "Origami",
-        "type": "PHASE_MOD",
+        "type": "PitchToPitch",
         "amount": 0.62
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

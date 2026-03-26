@@ -5,9 +5,9 @@
       {
         "amount": 0.558,
         "description": "Owlfish drives Overbite via LFO_SYNC",
-        "source": "Owlfish",
-        "target": "Overbite",
-        "type": "LFO_SYNC"
+        "type": "LFOToPitch",
+        "engineA": "Owlfish",
+        "engineB": "Overbite"
       }
     ]
   },

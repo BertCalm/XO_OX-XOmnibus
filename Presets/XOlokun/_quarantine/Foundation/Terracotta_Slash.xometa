@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Obese",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.525
       }
     ]
@@ -60,5 +60,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

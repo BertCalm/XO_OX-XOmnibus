@@ -5,7 +5,7 @@
       {
         "engineA": "Organon",
         "engineB": "Oceanic",
-        "type": "PITCH_FOLLOW",
+        "type": "PitchToPitch",
         "amount": 0.66
       }
     ]

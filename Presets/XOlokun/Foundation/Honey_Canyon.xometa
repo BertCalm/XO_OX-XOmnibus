@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Oblong",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.618
       }
     ]

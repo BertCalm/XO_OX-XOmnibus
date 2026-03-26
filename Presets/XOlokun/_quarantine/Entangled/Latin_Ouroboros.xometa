@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Ouroboros",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.78
       }
     ]
@@ -60,5 +60,6 @@
     "latin"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

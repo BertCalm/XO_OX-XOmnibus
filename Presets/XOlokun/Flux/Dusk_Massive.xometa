@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Oblong",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.942
       }
     ]
@@ -64,5 +64,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, warm, dense bass. Drives through the mix with presence and bite."
+  "description": "Restless and kinetic, warm, dense bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

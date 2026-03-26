@@ -6,7 +6,7 @@
         "amount": 0.674,
         "engineA": "Obbligato",
         "engineB": "Orphica",
-        "type": "Env->Pitch"
+        "type": "EnvToDecay"
       }
     ]
   },

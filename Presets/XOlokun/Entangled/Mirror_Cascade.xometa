@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8129,
-        "source": "Overdub",
-        "target": "Octopus",
-        "type": "PITCH_ENTANGLE"
+        "type": "PitchToPitch",
+        "engineA": "Overdub",
+        "engineB": "Octopus"
       }
     ]
   },

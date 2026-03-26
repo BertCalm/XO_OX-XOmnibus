@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "OddOscar",
+    "targetEngine": null,
+    "type": "Harmonic"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK WIDE KINETIC VIOLENT ATM 3.",
+  "dna": {
+    "aggression": 0.945,
+    "brightness": 0.08,
+    "density": 0.405,
+    "movement": 0.915,
+    "space": 0.956,
+    "warmth": 0.403
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "DARK WIDE KINETIC VIOLENT A... (OddOscar I)",
+  "parameters": {
+    "OddOscar": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-high-aggression",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

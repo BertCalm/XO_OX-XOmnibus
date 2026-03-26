@@ -5,7 +5,7 @@
       {
         "engineA": "Overbite",
         "engineB": "Octopus",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.55
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

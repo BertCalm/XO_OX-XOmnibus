@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "OPAL Grain Morph",
   "mood": "Entangled",
-  "engines": ["Octopus", "Opal"],
+  "engines": [
+    "Octopus",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPAL's granular texture feeding into OCTOPUS chromatophore modulation — each grain becomes a skin color flicker. The wavetable position modulated by OPAL grain density. Granular meets alien intelligence.",
-  "tags": ["octopus", "opal", "entangled", "granular", "grain", "chromatophore", "morph"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "octopus",
+    "opal",
+    "entangled",
+    "granular",
+    "grain",
+    "chromatophore",
+    "morph"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-17",
   "parameters": {

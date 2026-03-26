@@ -6,7 +6,7 @@
         "amount": 0.604,
         "engineA": "Oracle",
         "engineB": "Orphica",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM"
       }
     ]
   },

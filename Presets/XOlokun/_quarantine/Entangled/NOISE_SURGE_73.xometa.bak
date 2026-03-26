@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Odyssey",
+        "type": "FILTER_MOD",
+        "amount": 0.989
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.924,
+    "brightness": 0.359,
+    "density": 0.19,
+    "movement": 0.9,
+    "space": 0.122,
+    "warmth": 0.398
+  },
+  "engines": [
+    "Obese",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.455,
+    "COUPLING": 0.663,
+    "MOVEMENT": 0.9,
+    "SPACE": 0.642
+  },
+  "mood": "Entangled",
+  "name": "NOISE SURGE 73",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.443,
+      "macro_coupling": 0.951,
+      "macro_movement": 0.883,
+      "macro_space": 0.855
+    },
+    "Odyssey": {
+      "macro_character": 0.099,
+      "macro_coupling": 0.686,
+      "macro_movement": 0.917,
+      "macro_space": 0.544
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "kinetic",
+    "turbulent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Oceanic",
-        "type": "MODULATION_SHARE",
+        "type": "EnvToMorph",
         "amount": 0.575
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

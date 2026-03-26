@@ -6,7 +6,7 @@
         "amount": 0.67,
         "engineA": "Obsidian",
         "engineB": "Obscura",
-        "type": "Gate->Env"
+        "type": "AmpToChoke"
       }
     ]
   },

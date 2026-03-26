@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.537
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8761,
+    "brightness": 0.0317,
+    "density": 0.924,
+    "movement": 0.349,
+    "space": 0.8869,
+    "warmth": 0.899
+  },
+  "engines": [
+    "Oblong",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4707,
+    "COUPLING": 0.9187,
+    "MOVEMENT": 0.3467,
+    "SPACE": 0.8897
+  },
+  "mood": "Flux",
+  "name": "Mahogany Heavy",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.4541,
+      "macro_coupling": 0.9239,
+      "macro_movement": 0.3648,
+      "macro_space": 0.8878
+    },
+    "Oblong": {
+      "macro_character": 0.4873,
+      "macro_coupling": 0.9136,
+      "macro_movement": 0.3286,
+      "macro_space": 0.8916,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, dark, warm pad. Let it breathe — the space is the instrument."
+}

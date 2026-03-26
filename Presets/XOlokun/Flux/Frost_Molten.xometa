@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Overdub",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.7019
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, shimmering, crystalline sound. Drives through the mix with presence and bite."
+  "description": "Restless and kinetic, shimmering, crystalline sound. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

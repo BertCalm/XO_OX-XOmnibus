@@ -6,7 +6,7 @@
         "amount": 0.652,
         "engineA": "Overlap",
         "engineB": "OddfeliX",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

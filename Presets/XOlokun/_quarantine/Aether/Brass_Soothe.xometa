@@ -5,7 +5,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Ouroboros",
-        "type": "FM_CROSS",
+        "type": "AudioToFM",
         "amount": 0.9
       }
     ]

@@ -5,7 +5,7 @@
       {
         "engineA": "Ouroboros",
         "engineB": "Overdub",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.549
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, dense bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Restless and kinetic, dark, dense bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

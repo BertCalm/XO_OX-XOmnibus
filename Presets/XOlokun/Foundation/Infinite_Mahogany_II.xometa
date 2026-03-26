@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Obese",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.486
       }
     ]
@@ -64,5 +64,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, warm atmosphere. Let it breathe — the space is the instrument."
+  "description": "Anchored and grounding, shimmering, warm atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

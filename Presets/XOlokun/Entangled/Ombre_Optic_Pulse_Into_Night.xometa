@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Ombre",
-        "target": "Optic",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter",
+        "engineA": "Ombre",
+        "engineB": "Optic"
       }
     ]
   },

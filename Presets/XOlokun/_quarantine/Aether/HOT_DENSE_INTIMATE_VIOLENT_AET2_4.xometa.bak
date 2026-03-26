@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ombre",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.645
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.87,
+    "brightness": 0.4148,
+    "density": 0.9061,
+    "movement": 0.472,
+    "space": 0.0638,
+    "warmth": 0.9439
+  },
+  "engines": [
+    "OddOscar",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.436,
+    "COUPLING": 0.645,
+    "MOVEMENT": 0.489,
+    "SPACE": 0.0638
+  },
+  "mood": "Aether",
+  "name": "Thread Solid",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.4113,
+      "macro_coupling": 0.9068,
+      "macro_movement": 0.4825,
+      "macro_space": 0.0814
+    },
+    "Ombre": {
+      "macro_character": 0.4608,
+      "macro_coupling": 0.922,
+      "macro_movement": 0.4956,
+      "macro_space": 0.0422
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "hot",
+    "dense",
+    "violent",
+    "compressed"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Oblong",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.553
       }
     ]

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ocelot",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.801
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.953,
+    "brightness": 0.051,
+    "density": 0.598,
+    "movement": 0.317,
+    "space": 0.582,
+    "warmth": 0.1
+  },
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.075,
+    "COUPLING": 0.593,
+    "MOVEMENT": 0.317,
+    "SPACE": 0.582
+  },
+  "mood": "Prism",
+  "name": "Fracture Dusk",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.171,
+      "macro_coupling": 0.731,
+      "macro_movement": 0.461,
+      "macro_space": 0.443
+    },
+    "Overbite": {
+      "macro_character": 0.075,
+      "macro_coupling": 0.593,
+      "macro_movement": 0.317,
+      "macro_space": 0.582
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

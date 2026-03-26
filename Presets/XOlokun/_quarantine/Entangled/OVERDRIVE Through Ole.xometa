@@ -6,7 +6,7 @@
         "amount": 0.643,
         "engineA": "Ole",
         "engineB": "Overdub",
-        "type": "Env->Level"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -6,7 +6,7 @@
         "amount": 0.78,
         "engineA": "Outwit",
         "engineB": "Oracle",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

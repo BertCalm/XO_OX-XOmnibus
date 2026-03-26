@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Ocelot",
         "engineB": "Orphica",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.45,
         "engineA": "Orphica",
         "engineB": "Ocelot",
-        "type": "EnvToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

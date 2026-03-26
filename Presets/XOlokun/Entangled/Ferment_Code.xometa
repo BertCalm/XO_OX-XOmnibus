@@ -6,7 +6,7 @@
         "amount": 0.569,
         "engineA": "Outwit",
         "engineB": "Osteria",
-        "type": "ENVELOPE_SHARE"
+        "type": "EnvToDecay"
       }
     ]
   },

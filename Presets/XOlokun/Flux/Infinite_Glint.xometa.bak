@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.9335
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1394,
+    "brightness": 0.918,
+    "density": 0.6505,
+    "movement": 0.0891,
+    "space": 0.9288,
+    "warmth": 0.6609
+  },
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8221,
+    "COUPLING": 0.1675,
+    "MOVEMENT": 0.0577,
+    "SPACE": 0.8242
+  },
+  "mood": "Flux",
+  "name": "Infinite Glint",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.7838,
+      "macro_coupling": 0.2604,
+      "macro_movement": 0.1403,
+      "macro_space": 0.8138,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Origami": {
+      "macro_character": 0.8221,
+      "macro_coupling": 0.1675,
+      "macro_movement": 0.0577,
+      "macro_space": 0.8242
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "low-movement",
+    "high-space",
+    "low-aggression"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, shimmering, still pad. Let it breathe — the space is the instrument."
+}

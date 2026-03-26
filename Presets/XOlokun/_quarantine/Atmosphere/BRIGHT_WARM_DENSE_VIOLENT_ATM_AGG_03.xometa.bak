@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC",
+        "amount": 0.981
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.981,
+    "brightness": 0.974,
+    "density": 0.87,
+    "movement": 0.366,
+    "space": 0.456,
+    "warmth": 0.978
+  },
+  "engines": [
+    "Orbital",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.957,
+    "COUPLING": 0.933,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.436
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT WARM DENSE VIOLENT A... (Orbital I)",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.957,
+      "macro_coupling": 0.921,
+      "macro_movement": 0.356,
+      "macro_space": 0.426
+    },
+    "Orbital": {
+      "macro_character": 0.957,
+      "macro_coupling": 0.945,
+      "macro_movement": 0.345,
+      "macro_space": 0.446
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

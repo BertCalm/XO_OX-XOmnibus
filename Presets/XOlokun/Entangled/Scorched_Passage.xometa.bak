@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Opal",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.57
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.68,
+    "density": 0.55,
+    "movement": 0.69,
+    "space": 0.61,
+    "warmth": 0.91
+  },
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "COUPLING": 0.54,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.59
+  },
+  "mood": "Entangled",
+  "name": "Scorched Passage",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.77,
+      "macro_coupling": 0.59,
+      "macro_movement": 0.76,
+      "macro_space": 0.51
+    },
+    "Overdub": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.49,
+      "macro_movement": 0.74,
+      "macro_space": 0.68,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, warm sound. Macro sweeps reveal shifting timbral landscapes."
+}

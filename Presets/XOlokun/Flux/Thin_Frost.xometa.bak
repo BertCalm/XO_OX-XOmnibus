@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7842
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6603,
+    "brightness": 0.5195,
+    "density": 0.0643,
+    "movement": 0.8982,
+    "space": 0.8822,
+    "warmth": 0.0906
+  },
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6016,
+    "COUPLING": 0.6692,
+    "MOVEMENT": 0.8578,
+    "SPACE": 0.9403
+  },
+  "mood": "Flux",
+  "name": "Thin Frost",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.3947,
+      "macro_coupling": 0.7916,
+      "macro_movement": 0.9397,
+      "macro_space": 0.907
+    },
+    "Overdub": {
+      "macro_character": 0.6016,
+      "macro_coupling": 0.6692,
+      "macro_movement": 0.8578,
+      "macro_space": 0.9403,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-warmth",
+    "high-movement",
+    "low-density",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, crystalline, ethereal texture. Macro sweeps reveal shifting timbral landscapes."
+}

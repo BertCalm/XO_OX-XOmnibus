@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Odyssey",
-        "target": "Optic",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph",
+        "engineA": "Odyssey",
+        "engineB": "Optic"
       }
     ]
   },

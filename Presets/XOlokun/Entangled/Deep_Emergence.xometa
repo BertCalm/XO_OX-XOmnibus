@@ -6,7 +6,7 @@
         "amount": 0.609,
         "engineA": "Outwit",
         "engineB": "Oceanic",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable"
       }
     ]
   },

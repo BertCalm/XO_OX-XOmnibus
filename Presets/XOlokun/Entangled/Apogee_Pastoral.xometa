@@ -6,7 +6,7 @@
         "amount": 0.42,
         "engineA": "Orbital",
         "engineB": "Ohm",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },

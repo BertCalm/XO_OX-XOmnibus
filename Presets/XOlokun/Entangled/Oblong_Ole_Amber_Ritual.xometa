@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7,
-        "source": "Oblong",
-        "target": "Ole",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable",
+        "engineA": "Oblong",
+        "engineB": "Ole"
       }
     ]
   },

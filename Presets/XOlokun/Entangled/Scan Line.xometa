@@ -5,9 +5,9 @@
       {
         "amount": 0.606,
         "description": "Orca drives Optic via EnvToMod",
-        "source": "Orca",
-        "target": "Optic",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Orca",
+        "engineB": "Optic"
       }
     ]
   },

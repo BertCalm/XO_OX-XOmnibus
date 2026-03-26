@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblique",
+        "type": "PITCH_SYNC",
+        "amount": 0.5424
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3972,
+    "brightness": 0.9282,
+    "density": 0.9759,
+    "movement": 0.9347,
+    "space": 0.0779,
+    "warmth": 0.5305
+  },
+  "engines": [
+    "Origami",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9106,
+    "COUPLING": 0.5424,
+    "MOVEMENT": 0.938,
+    "SPACE": 0.0779
+  },
+  "mood": "Aether",
+  "name": "Flux Dense",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.8836,
+      "macro_coupling": 0.99,
+      "macro_movement": 0.95,
+      "macro_space": 0.034
+    },
+    "Origami": {
+      "macro_character": 0.9377,
+      "macro_coupling": 0.9706,
+      "macro_movement": 0.926,
+      "macro_space": 0.0997
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "kinetic",
+    "dense",
+    "ethereal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

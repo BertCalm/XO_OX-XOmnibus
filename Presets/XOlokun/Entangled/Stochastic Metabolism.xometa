@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Organon",
         "engineB": "Oracle",
-        "type": "Chaos->Timbre"
+        "type": "AudioToFM"
       }
     ]
   },

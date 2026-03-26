@@ -6,11 +6,11 @@
         "amount": 0.658,
         "engineA": "Orbital",
         "engineB": "Ole",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "ORBITAL transit sparks OLELÉ drama. Flamencoid orbit, hibiscus arc.",
   "dna": {

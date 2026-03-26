@@ -6,7 +6,7 @@
         "amount": 0.587,
         "engineA": "Orphica",
         "engineB": "Owlfish",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

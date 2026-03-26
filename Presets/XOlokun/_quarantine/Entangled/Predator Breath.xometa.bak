@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Ocelot",
+        "type": "PREDATOR_STALK",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Ocelot stalk rhythm obligated to OBBLIGATO breath gate — the cat moves only when the wind allows",
+  "engines": [
+    "Obbligato",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Predator Breath",
+  "parameters": {
+    "Obbligato": {},
+    "Ocelot": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "ocelot",
+    "wind"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

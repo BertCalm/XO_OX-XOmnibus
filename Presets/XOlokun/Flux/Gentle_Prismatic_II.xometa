@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Osprey",
-        "type": "RHYTHM_GATE",
+        "type": "AmpToChoke",
         "amount": 0.81
       }
     ]

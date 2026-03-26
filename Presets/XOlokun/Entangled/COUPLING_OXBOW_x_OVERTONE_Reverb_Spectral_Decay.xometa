@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Dialogue",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-21",
   "description": "OXBOW's Chiasmus FDN reverb envelope controls OVERTONE's spectral decay time via EnvToDecay coupling. A long reverb tail in OXBOW extends OVERTONE's continued-fraction spectral sustain; a short, dry room shortens it. The space around the sound and the spectral character of the sound share a single decay law. Two forms of time-domain behavior collapsed into one.",
   "dna": {

@@ -9,7 +9,7 @@
         "sourceParam": "ocelot_biome",
         "targetEngine": "Obese",
         "targetParam": "fat_satDrive",
-        "type": "VelocityToTimbre"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.25,

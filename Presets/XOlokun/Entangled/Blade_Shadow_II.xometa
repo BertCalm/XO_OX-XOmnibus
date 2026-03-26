@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7394,
-        "source": "Organon",
-        "target": "Octopus",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Organon",
+        "engineB": "Octopus"
       }
     ]
   },

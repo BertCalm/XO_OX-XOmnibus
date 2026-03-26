@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Osteria",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.563
       }
     ]

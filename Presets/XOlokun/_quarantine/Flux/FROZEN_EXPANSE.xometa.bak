@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orphica",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.642
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.417,
+    "brightness": 0.066,
+    "density": 0.318,
+    "movement": 0.351,
+    "space": 0.857,
+    "warmth": 0.115
+  },
+  "engines": [
+    "Organon",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.277,
+    "COUPLING": 0.966,
+    "MOVEMENT": 0.341,
+    "SPACE": 0.804
+  },
+  "mood": "Flux",
+  "name": "Frozen Expanse (Organon)",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.277,
+      "macro_coupling": 0.966,
+      "macro_movement": 0.341,
+      "macro_space": 0.804
+    },
+    "Orphica": {
+      "macro_character": 0.318,
+      "macro_coupling": 0.847,
+      "macro_movement": 0.417,
+      "macro_space": 0.658
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "vast",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.341,
-      "destination": "OWLFISH",
-      "source": "OBSCURA",
-      "type": "FILTER_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.341,
+        "type": "AmpToFilter",
+        "engineA": "OBSCURA",
+        "engineB": "OWLFISH"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, dark, still, sparse.",

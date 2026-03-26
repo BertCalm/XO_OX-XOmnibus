@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "Pitch->Mod"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Two reeds fold themselves into geometry — OBBLIGATO's BOND creases through ORIGAMI's architectural patience.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.8,
+    "density": 0.87,
+    "movement": 0.5,
+    "space": 0.44,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Obbligato",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "COUPLING": 0.811,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.44
+  },
+  "mood": "Entangled",
+  "name": "Unfolded Bond Breath",
+  "parameters": {
+    "obbl_breathA": 0.575,
+    "obbl_breathB": 0.648,
+    "obbl_macroBond": 0.738,
+    "origami_creaseDensity": 0.748,
+    "origami_foldPoint": 0.722
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "bond",
+    "wind",
+    "coral",
+    "origami",
+    "folded",
+    "geometric"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

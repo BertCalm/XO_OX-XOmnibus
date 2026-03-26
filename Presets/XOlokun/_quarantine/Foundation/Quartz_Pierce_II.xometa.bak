@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.944
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.951,
+    "brightness": 0.076,
+    "density": 0.344,
+    "movement": 0.319,
+    "space": 0.551,
+    "warmth": 0.038
+  },
+  "engines": [
+    "Obbligato",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.057,
+    "COUPLING": 0.611,
+    "MOVEMENT": 0.319,
+    "SPACE": 0.551
+  },
+  "mood": "Foundation",
+  "name": "Quartz Pierce II",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.057,
+      "macro_coupling": 0.611,
+      "macro_movement": 0.319,
+      "macro_space": 0.551
+    },
+    "Origami": {
+      "macro_character": 0.021,
+      "macro_coupling": 0.441,
+      "macro_movement": 0.468,
+      "macro_space": 0.692
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

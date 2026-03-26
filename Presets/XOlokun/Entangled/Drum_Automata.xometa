@@ -6,7 +6,7 @@
         "amount": 0.9,
         "engineA": "Outwit",
         "engineB": "Onset",
-        "type": "ENVELOPE_SHARE"
+        "type": "EnvToDecay"
       }
     ]
   },

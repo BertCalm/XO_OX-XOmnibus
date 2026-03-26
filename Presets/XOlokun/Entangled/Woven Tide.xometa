@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Overdub",
-        "type": "GRANULAR_EXCHANGE",
+        "type": "AudioToBuffer",
         "amount": 0.83
       }
     ]

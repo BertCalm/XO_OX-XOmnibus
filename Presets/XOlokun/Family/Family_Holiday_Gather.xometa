@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.35,
-      "destination": "Ole",
-      "source": "Orphica",
-      "type": "AmpToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.35,
+        "type": "AmpToFilter",
+        "engineA": "Orphica",
+        "engineB": "Ole"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Maximum FRACTURE — nothing remains of the original harp shape. Pure microsound.",

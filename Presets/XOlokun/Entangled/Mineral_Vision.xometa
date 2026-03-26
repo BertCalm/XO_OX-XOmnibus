@@ -6,7 +6,7 @@
         "amount": 0.796,
         "engineA": "Obsidian",
         "engineB": "Oracle",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM"
       }
     ]
   },

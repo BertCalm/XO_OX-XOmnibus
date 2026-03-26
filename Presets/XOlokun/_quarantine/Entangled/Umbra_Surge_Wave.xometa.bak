@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "AMP_MOD",
+        "amount": 0.71
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.36,
+    "brightness": 0.05,
+    "density": 0.62,
+    "movement": 0.84,
+    "space": 0.31,
+    "warmth": 0.26
+  },
+  "engines": [
+    "Optic",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.3,
+    "SPACE": 0.66,
+    "PUNCH": 0.84,
+    "MUTATE": 0.31
+  },
+  "mood": "Entangled",
+  "name": "Umbra Surge Wave",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.57,
+      "macro_coupling": 0.78,
+      "macro_movement": 0.27,
+      "macro_space": 0.63
+    },
+    "Optic": {
+      "macro_character": 0.32,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.57,
+      "macro_space": 0.71
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

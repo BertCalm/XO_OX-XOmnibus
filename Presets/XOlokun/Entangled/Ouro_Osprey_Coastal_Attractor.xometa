@@ -8,7 +8,7 @@
         "engineA": "Ouroboros",
         "engineB": "Osprey",
         "notes": "Ouroboros X-axis output maps to Osprey shore blend (osprey_shore) — attractor position determines whether you are at sea or on shore",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.45,
@@ -16,7 +16,7 @@
         "engineA": "Ouroboros",
         "engineB": "Osprey",
         "notes": "Ouroboros Y-axis output maps to Osprey seaState — attractor velocity controls sea surface turbulence in real time",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.806
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.978,
+    "brightness": 0.438,
+    "density": 0.694,
+    "movement": 0.922,
+    "space": 0.884,
+    "warmth": 0.964
+  },
+  "engines": [
+    "Origami",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.42,
+    "COUPLING": 0.942,
+    "MOVEMENT": 0.875,
+    "SPACE": 0.857
+  },
+  "mood": "Atmosphere",
+  "name": "WARM KINETIC VAST VIOLENT A... (Origami)",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.41,
+      "macro_coupling": 0.912,
+      "macro_movement": 0.852,
+      "macro_space": 0.85
+    },
+    "Osprey": {
+      "macro_character": 0.431,
+      "macro_coupling": 0.971,
+      "macro_movement": 0.899,
+      "macro_space": 0.865
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "kinetic",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5416
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.7846,
+    "brightness": 0.1323,
+    "density": 0.571,
+    "movement": 0.9355,
+    "space": 0.8767,
+    "warmth": 0.0414
+  },
+  "engines": [
+    "Osteria",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3393,
+    "COUPLING": 0.2487,
+    "MOVEMENT": 0.8617,
+    "SPACE": 0.1902
+  },
+  "mood": "Flux",
+  "name": "ARCTIC FLOW 2",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.0969,
+      "macro_coupling": 0.4236,
+      "macro_movement": 0.4311,
+      "macro_space": 0.467
+    },
+    "Overworld": {
+      "macro_character": 0.7291,
+      "macro_coupling": 0.9842,
+      "macro_movement": 0.6734,
+      "macro_space": 0.0984
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

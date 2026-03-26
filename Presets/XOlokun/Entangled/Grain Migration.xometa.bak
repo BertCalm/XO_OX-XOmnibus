@@ -1,0 +1,82 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.678,
+        "description": "Orca drives Opal via SpectralMorph",
+        "source": "Orca",
+        "target": "Opal",
+        "type": "SpectralMorph"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OPAL's granular cloud parts for the whale — ORCA's wavetable breaches through grain density, each position-snap displacing a field of scattered sound.",
+  "dna": {
+    "aggression": 0.526,
+    "brightness": 0.375,
+    "density": 0.76,
+    "movement": 0.503,
+    "space": 0.571,
+    "warmth": 0.351
+  },
+  "engines": [
+    "Orca",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Grain Migration",
+  "parameters": {
+    "Opal": {
+      "opal_attack": 0.294,
+      "opal_filterCutoff": 0.556,
+      "opal_grainDensity": 0.59,
+      "opal_grainPitch": 0.0,
+      "opal_grainSize": 0.363,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_release": 1.0
+    },
+    "Orca": {
+      "orca_ampAttack": 0.0533,
+      "orca_ampDecay": 0.478,
+      "orca_ampRelease": 2.65,
+      "orca_ampSustain": 0.577,
+      "orca_breachAmt": 0.515,
+      "orca_echoDepth": 0.37,
+      "orca_filterCutoff": 0.59,
+      "orca_filterRes": 0.216,
+      "orca_huntMacro": 0.406,
+      "orca_lfo1Depth": 0.496,
+      "orca_lfo1Rate": 0.162,
+      "orca_lfo2Depth": 0.243,
+      "orca_lfo2Rate": 0.0274,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.193,
+      "orca_podSync": 0.353,
+      "orca_wavetablePos": 0.499,
+      "orca_wavetableScan": 0.203
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "opal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

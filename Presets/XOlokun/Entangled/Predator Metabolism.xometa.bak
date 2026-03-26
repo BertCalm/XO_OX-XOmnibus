@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Organon",
+        "engineB": "Ocelot",
+        "type": "CV->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ocelot camouflage patterns timed to Organon enzyme cycles. The cat hunts by biochemistry.",
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.844,
+    "density": 0.665,
+    "movement": 0.905,
+    "space": 0.505,
+    "warmth": 0.54
+  },
+  "engines": [
+    "Organon",
+    "Ocelot"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.55
+  },
+  "mood": "Entangled",
+  "name": "Predator Metabolism",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 0,
+      "ocelot_camouflage": 0.4,
+      "ocelot_sprint": 0.5
+    },
+    "Organon": {
+      "organon_catalystDrive": 1.3,
+      "organon_dampingCoeff": 0.4,
+      "organon_enzymeSelect": 550.0,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.55,
+      "organon_metabolicRate": 3.5,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.25,
+      "organon_signalFlux": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "predator",
+    "camouflage",
+    "enzyme",
+    "entangled",
+    "organon",
+    "ocelot"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

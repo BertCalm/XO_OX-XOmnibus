@@ -4,16 +4,16 @@
     "pairs": [
       {
         "engine": "Obbligato",
-        "type": "Harmonic"
+        "type": "EnvToMorph"
       },
       {
         "engine": "Ottoni",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Trefoil with gentle pulse \u2014 rhythmic coupling signal for partner engines.",
+  "description": "Trefoil with gentle pulse — rhythmic coupling signal for partner engines.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,

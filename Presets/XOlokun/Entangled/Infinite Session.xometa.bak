@@ -1,0 +1,95 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.452,
+        "description": "Osteria drives Ouroboros via HARMONIC_BLEND",
+        "source": "Osteria",
+        "target": "Ouroboros",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OUROBOROS's recursive topology in OSTERIA's circular session structure — the session that never ends, the song that feeds itself.",
+  "dna": {
+    "aggression": 0.484,
+    "brightness": 0.402,
+    "density": 0.787,
+    "movement": 0.585,
+    "space": 0.496,
+    "warmth": 0.556
+  },
+  "engines": [
+    "Osteria",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Infinite Session",
+  "parameters": {
+    "Osteria": {
+      "osteria_attack": 0.268,
+      "osteria_bassLevel": 0.637,
+      "osteria_blendMode": 0.393,
+      "osteria_chorus": 0.054,
+      "osteria_decay": 0.356,
+      "osteria_ensWidth": 0.457,
+      "osteria_filterEnvDepth": 0.206,
+      "osteria_hall": 0.358,
+      "osteria_harmLevel": 0.444,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.597,
+      "osteria_murmur": 0.491,
+      "osteria_oceanBleed": 0.087,
+      "osteria_patina": 0.296,
+      "osteria_porto": 0.115,
+      "osteria_qBassShore": 0.204,
+      "osteria_qElastic": 0.664,
+      "osteria_qHarmShore": 0.402,
+      "osteria_qMelShore": 0.475,
+      "osteria_qMemory": 0.433,
+      "osteria_qRhythmShore": 0.423,
+      "osteria_qStretch": 0.268,
+      "osteria_qSympathy": 0.667,
+      "osteria_release": 1.98,
+      "osteria_rhythmLevel": 0.291,
+      "osteria_sessionDelay": 0.284,
+      "osteria_smoke": 0.268,
+      "osteria_sustain": 0.555,
+      "osteria_tape": 0.239,
+      "osteria_tavernMix": 0.581,
+      "osteria_tavernShore": 0.345,
+      "osteria_warmth": 0.613
+    },
+    "Ouroboros": {
+      "ouro_attack": 0.135,
+      "ouro_filterCutoff": 0.563,
+      "ouro_lfoRate": 0.104,
+      "ouro_macroCharacter": 0.0,
+      "ouro_macroCoupling": 0.026,
+      "ouro_release": 1.0,
+      "ouro_topology": 0.516
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "ouroboros"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

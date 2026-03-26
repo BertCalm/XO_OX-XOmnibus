@@ -6,7 +6,7 @@
         "amount": 0.748,
         "engineA": "Obbligato",
         "engineB": "Oceanic",
-        "type": "Env->LFO Rate"
+        "type": "LFOToPitch"
       }
     ]
   },

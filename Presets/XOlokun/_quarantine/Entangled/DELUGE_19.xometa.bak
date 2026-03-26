@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Ombre",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.742
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.725,
+    "density": 0.525,
+    "movement": 0.899,
+    "space": 0.283,
+    "warmth": 0.977
+  },
+  "engines": [
+    "Oceanic",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.194,
+    "COUPLING": 0.227,
+    "MOVEMENT": 0.899,
+    "SPACE": 0.179
+  },
+  "mood": "Entangled",
+  "name": "DELUGE 19",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.193,
+      "macro_coupling": 0.12,
+      "macro_movement": 0.905,
+      "macro_space": 0.536
+    },
+    "Ombre": {
+      "macro_character": 0.762,
+      "macro_coupling": 0.185,
+      "macro_movement": 0.892,
+      "macro_space": 0.216
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "kinetic",
+    "turbulent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

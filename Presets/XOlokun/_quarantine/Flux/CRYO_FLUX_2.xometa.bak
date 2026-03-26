@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.459
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0579,
+    "brightness": 0.9291,
+    "density": 0.8317,
+    "movement": 0.9826,
+    "space": 0.3075,
+    "warmth": 0.0219
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8724,
+    "COUPLING": 0.2118,
+    "MOVEMENT": 0.4231,
+    "SPACE": 0.5393
+  },
+  "mood": "Flux",
+  "name": "CRYO FLUX 2",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.0857,
+      "macro_coupling": 0.0692,
+      "macro_movement": 0.486,
+      "macro_space": 0.7606
+    },
+    "Oracle": {
+      "macro_character": 0.7658,
+      "macro_coupling": 0.4753,
+      "macro_movement": 0.1284,
+      "macro_space": 0.5498
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

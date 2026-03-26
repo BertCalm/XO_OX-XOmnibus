@@ -6,7 +6,7 @@
         "amount": 0.671,
         "engineA": "Outwit",
         "engineB": "Oblique",
-        "type": "AMP_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

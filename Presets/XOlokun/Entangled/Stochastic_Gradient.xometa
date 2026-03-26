@@ -6,7 +6,7 @@
         "amount": 0.472,
         "engineA": "Oracle",
         "engineB": "Ombre",
-        "type": "SPECTRAL_TRANSFER"
+        "type": "EnvToMorph"
       }
     ]
   },

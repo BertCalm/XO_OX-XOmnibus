@@ -28,7 +28,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Dialogue",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.7,

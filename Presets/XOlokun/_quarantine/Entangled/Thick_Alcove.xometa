@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.648,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Ohm",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.849
       }
     ]

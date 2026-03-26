@@ -1,0 +1,51 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-21",
+  "description": "OFFERING kit shaped to complement OddOscar's regenerative morph. Snare velocity feeds ODDOSCAR resonance via VelocityToCoupling. The axolotl absorbs each hit and slowly regenerates a new texture. Moderate collage adds biological variation.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.6,
+    "space": 0.5,
+    "warmth": 0.65
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Family",
+  "name": "ODDOSCAR Axolotl Kit",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.42,
+      "ofr_cityBlend": 0.2,
+      "ofr_transientSnap": 0.62,
+      "ofr_transientPitch": 0.38,
+      "ofr_transientSat": 0.12,
+      "ofr_flipLayers": 2,
+      "ofr_flipChop": 0.18,
+      "ofr_digCuriosity": 0.6,
+      "ofr_digComplexity": 0.45,
+      "ofr_digFlow": 0.55,
+      "ofr_velToSnap": 0.68,
+      "ofr_velToBody": 0.35,
+      "ofr_v1_decay": 0.22,
+      "ofr_masterWidth": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["oddoscar", "coupling", "axolotl", "bay-area", "morph", "family"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.6, "M2": 0.5, "M3": 0.25, "M4": 0.08}
+}

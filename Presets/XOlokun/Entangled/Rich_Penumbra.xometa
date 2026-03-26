@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7388,
-        "source": "Optic",
-        "target": "OddOscar",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Optic",
+        "engineB": "OddOscar"
       }
     ]
   },

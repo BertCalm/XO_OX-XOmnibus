@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Ouroboros",
-        "type": "AMPLITUDE_MODULATION",
+        "type": "AmpToFilter",
         "amount": 0.769
       }
     ]

@@ -6,12 +6,12 @@
         "amount": 0.557,
         "engineA": "Overlap",
         "engineB": "Optic",
-        "type": "SPECTRAL_CROSS"
+        "type": "EnvToMorph"
       }
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "OPTIC auto-pulse rate modulates OVERLAP spin rate \u2014 light pulses weave through the spatial web",
+  "description": "OPTIC auto-pulse rate modulates OVERLAP spin rate — light pulses weave through the spatial web",
   "dna": {
     "aggression": 0.325,
     "brightness": 0.65,

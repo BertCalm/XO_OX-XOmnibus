@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ohm",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.7
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, warm, dense sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

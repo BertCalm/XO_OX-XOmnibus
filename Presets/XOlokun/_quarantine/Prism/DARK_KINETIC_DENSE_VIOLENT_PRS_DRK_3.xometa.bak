@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7267
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9465,
+    "brightness": 0.0283,
+    "density": 0.8704,
+    "movement": 0.9032,
+    "space": 0.6084,
+    "warmth": 0.4694
+  },
+  "engines": [
+    "Ocelot",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7079,
+    "COUPLING": 0.8704,
+    "MOVEMENT": 0.9032,
+    "SPACE": 0.6084
+  },
+  "mood": "Prism",
+  "name": "Tone Edge",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.7079,
+      "macro_coupling": 0.8704,
+      "macro_movement": 0.9032,
+      "macro_space": 0.6084
+    },
+    "Oracle": {
+      "macro_character": 0.7244,
+      "macro_coupling": 0.8393,
+      "macro_movement": 0.9081,
+      "macro_space": 0.644
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Odyssey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.76
+      }
+    ]
+  },
+  "description": "A long-exposure photograph of a cold drift — blurred with silver chemistry.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.0,
+    "density": 0.09,
+    "movement": 0.059,
+    "space": 0.94,
+    "warmth": 0.06
+  },
+  "engines": [
+    "Odyssey",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.14,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.24,
+    "SPACE": 0.94
+  },
+  "mood": "Entangled",
+  "name": "Slow Exposure",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.11,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.19,
+      "macro_space": 0.97
+    },
+    "Odyssey": {
+      "macro_character": 0.14,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.24,
+      "macro_space": 0.94
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "exposure",
+    "slow"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

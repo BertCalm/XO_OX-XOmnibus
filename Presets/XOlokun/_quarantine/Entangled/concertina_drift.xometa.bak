@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.7,
+    "density": 0.7,
+    "movement": 0.3,
+    "space": 0.4,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Odyssey",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.4
+  },
+  "mood": "Entangled",
+  "name": "Concertina Drift",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.3,
+      "macro_space": 0.4
+    },
+    "Origami": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.3,
+      "macro_space": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "origami"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Ohm",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.8052
       }
     ]

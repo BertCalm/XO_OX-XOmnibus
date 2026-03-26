@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "OTTONI's amplitude envelope breathes life into ORGANON's cellular texture.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.62,
+    "space": 0.45,
+    "warmth": 0.82
+  },
+  "engines": [
+    "Ottoni",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.68,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Patina Pulse",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.55,
+      "macro_movement": 0.7,
+      "macro_space": 0.48
+    },
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.6,
+      "macro_space": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ottoni",
+    "organon",
+    "warmth",
+    "pulse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

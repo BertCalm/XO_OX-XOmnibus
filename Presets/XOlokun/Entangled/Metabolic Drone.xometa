@@ -5,9 +5,9 @@
       {
         "amount": 0.634,
         "description": "Owlfish drives Organon via RhythmToBlend",
-        "source": "Owlfish",
-        "target": "Organon",
-        "type": "RhythmToBlend"
+        "type": "RhythmToBlend",
+        "engineA": "Owlfish",
+        "engineB": "Organon"
       }
     ]
   },

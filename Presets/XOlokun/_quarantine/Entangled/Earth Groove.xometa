@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Ohm",
         "engineB": "Ole",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

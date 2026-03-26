@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7292,
+        "source": "Orphica",
+        "target": "Octopus",
+        "type": "SPECTRAL_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Dark Kinetic Dense Gentle character entanglement — ORPHICA × OCTOPUS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.1196,
+    "brightness": 0.0499,
+    "density": 0.8987,
+    "movement": 0.9589,
+    "space": 0.3203,
+    "warmth": 0.3437
+  },
+  "engines": [
+    "Orphica",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SCATTER",
+    "RESONATE",
+    "HALL"
+  ],
+  "macros": {
+    "CHARACTER": 0.1968,
+    "COUPLING": 0.7292,
+    "MOVEMENT": 0.9589,
+    "SPACE": 0.3203
+  },
+  "mood": "Entangled",
+  "name": "Signal Cascade",
+  "parameters": {
+    "Octopus": {
+      "amp_attack": 0.0294,
+      "amp_release": 0.3259,
+      "coupling_level": 0.6208,
+      "density": 0.8616,
+      "drive": 0.1804,
+      "filter_cutoff": 0.254,
+      "filter_resonance": 0.1878,
+      "macro_character": 0.4171,
+      "macro_coupling": 0.6541,
+      "macro_movement": 0.9804,
+      "macro_space": 0.2989,
+      "output_level": 0.9516,
+      "reverb_mix": 0.3196,
+      "reverb_size": 0.4192
+    },
+    "Orphica": {
+      "amp_attack": 0.039,
+      "amp_release": 0.3044,
+      "coupling_level": 0.5806,
+      "density": 0.9192,
+      "drive": 0.1577,
+      "filter_cutoff": 0.2721,
+      "filter_resonance": 0.198,
+      "macro_character": 0.4388,
+      "macro_coupling": 0.6564,
+      "macro_movement": 0.9567,
+      "macro_space": 0.2913,
+      "output_level": 0.9077,
+      "reverb_mix": 0.3567,
+      "reverb_size": 0.3903
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "kinetic",
+    "dense",
+    "gentle",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

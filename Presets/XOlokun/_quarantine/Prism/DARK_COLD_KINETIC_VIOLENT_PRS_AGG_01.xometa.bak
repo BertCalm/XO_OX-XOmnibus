@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ocelot",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.885
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.953,
+    "brightness": 0.125,
+    "density": 0.305,
+    "movement": 0.957,
+    "space": 0.561,
+    "warmth": 0.053
+  },
+  "engines": [
+    "Ohm",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.118,
+    "COUPLING": 0.897,
+    "MOVEMENT": 0.919,
+    "SPACE": 0.532
+  },
+  "mood": "Prism",
+  "name": "DARK COLD KINETIC VIOLENT P...",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.12,
+      "macro_coupling": 0.919,
+      "macro_movement": 0.949,
+      "macro_space": 0.53
+    },
+    "Ohm": {
+      "macro_character": 0.116,
+      "macro_coupling": 0.874,
+      "macro_movement": 0.889,
+      "macro_space": 0.534
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

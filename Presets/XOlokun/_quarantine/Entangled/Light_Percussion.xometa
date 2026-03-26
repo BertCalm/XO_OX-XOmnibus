@@ -6,7 +6,7 @@
         "amount": 0.9,
         "engineA": "Optic",
         "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

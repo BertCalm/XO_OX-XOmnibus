@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Orca",
-        "type": "SPECTRAL_TRANSFER",
+        "type": "EnvToMorph",
         "amount": 0.841
       }
     ]

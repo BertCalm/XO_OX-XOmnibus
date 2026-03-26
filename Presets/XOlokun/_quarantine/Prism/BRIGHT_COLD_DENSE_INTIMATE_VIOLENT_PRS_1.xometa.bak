@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overworld",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.512
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_INTIMATE_VIOLENT. Variant 1.",
+  "dna": {
+    "aggression": 0.923,
+    "brightness": 0.944,
+    "density": 0.949,
+    "movement": 0.409,
+    "space": 0.073,
+    "warmth": 0.094
+  },
+  "engines": [
+    "Orphica",
+    "Overworld"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.903,
+    "COUPLING": 0.909,
+    "MOVEMENT": 0.369,
+    "SPACE": 0.012
+  },
+  "mood": "Prism",
+  "name": "Frost Deep",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.853,
+      "macro_coupling": 0.979,
+      "macro_movement": 0.388,
+      "macro_space": 0.0
+    },
+    "Overworld": {
+      "macro_character": 0.954,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.351,
+      "macro_space": 0.024
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "cold",
+    "diversity",
+    "bright",
+    "violent",
+    "intimate",
+    "prism",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

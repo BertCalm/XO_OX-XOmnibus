@@ -9,7 +9,7 @@
         "sourceParam": "osprey_geoFrequency",
         "targetEngine": "Ohm",
         "targetParam": "ohm_tuning",
-        "type": "FreqToColor"
+        "type": "AudioToFM"
       },
       {
         "amount": 0.22,

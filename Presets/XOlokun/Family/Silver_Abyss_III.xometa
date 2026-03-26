@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Ohm",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.731
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, crystalline atmosphere. Let it breathe — the space is the instrument."
+  "description": "Warm and familiar, shimmering, crystalline atmosphere. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

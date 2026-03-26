@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX symbiote drives ORBWEAVE knot topology coupling. The reef's biophonic amplitude feeds into the knot oscillation depth \u2014 coral biology expressed as topological string patterns. Trefoil knot (1). Coupling amount 0.13.",
+  "description": "OBRIX symbiote drives ORBWEAVE knot topology coupling. The reef's biophonic amplitude feeds into the knot oscillation depth — coral biology expressed as topological string patterns. Trefoil knot (1). Coupling amount 0.13.",
   "tags": [
     "coupling",
     "obrix",
@@ -24,7 +24,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.3,
@@ -168,10 +168,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": 0,
-        "target": 1,
         "type": "KnotTopology",
-        "amount": 0.13
+        "amount": 0.13,
+        "engineA": 0,
+        "engineB": 1
       }
     ]
   },

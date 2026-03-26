@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.924
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.546,
+    "brightness": 0.323,
+    "density": 0.958,
+    "movement": 0.037,
+    "space": 0.642,
+    "warmth": 0.955
+  },
+  "engines": [
+    "OddfeliX",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.639,
+    "COUPLING": 0.654,
+    "MOVEMENT": 0.037,
+    "SPACE": 0.642
+  },
+  "mood": "Aether",
+  "name": "Resting Thick",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.639,
+      "macro_coupling": 0.654,
+      "macro_movement": 0.037,
+      "macro_space": 0.642
+    },
+    "Overlap": {
+      "macro_character": 0.655,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.125,
+      "macro_space": 0.627
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

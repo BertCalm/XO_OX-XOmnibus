@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Golden Resonance",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OXBOW coupling. OXBOW's entangled reverb modulates Kuramoto coupling weights — synchrony ebbs and flows with the reverberant field. Warm formant with high stage presence. The golden ratio reverb of OXBOW makes the voice shimmer with recursive self-similarity. Every echo reinforces a different cluster of partials.",
+  "tags": [
+    "entangled",
+    "oxbow",
+    "golden",
+    "reverberant",
+    "knot-topology"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.75,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.35,
+      "opera_voice": 0.5,
+      "opera_stage": 0.7,
+      "opera_vowelA": 0,
+      "opera_vowelB": 3,
+      "opera_breath": 0.15,
+      "opera_effort": 0.45,
+      "opera_partials": 32,
+      "opera_resSens": 0.55,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 5.0,
+      "opera_vibDepth": 0.2,
+      "opera_tilt": 0.0,
+      "opera_filterCutoff": 6500.0,
+      "opera_filterRes": 0.05,
+      "opera_filterEnvAmt": 0.25,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.3,
+      "opera_filterS": 0.55,
+      "opera_filterR": 0.8,
+      "opera_ampA": 0.1,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.85,
+      "opera_ampR": 1.2,
+      "opera_lfo1Rate": 0.06,
+      "opera_lfo1Depth": 0.2,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 2.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.4,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.4,
+      "opera_velToFilter": 0.3,
+      "opera_velToEffort": 0.25,
+      "opera_detune": 0.1,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Oxbow",
+        "target": "Opera",
+        "type": "KnotTopology",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

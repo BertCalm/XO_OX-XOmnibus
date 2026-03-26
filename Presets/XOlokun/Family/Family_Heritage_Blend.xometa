@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.5,
-      "destination": "Orphica",
-      "source": "Obbligato",
-      "type": "EnvToMorph"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "type": "EnvToMorph",
+        "engineA": "Obbligato",
+        "engineB": "Orphica"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Long airborne sustain from both brothers. Space fills between flute and reed.",

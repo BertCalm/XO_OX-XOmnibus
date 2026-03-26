@@ -5,9 +5,9 @@
       {
         "amount": 0.614,
         "description": "Osteria drives Oceanic via WavetableSync",
-        "source": "Osteria",
-        "target": "Oceanic",
-        "type": "WavetableSync"
+        "type": "AudioToWavetable",
+        "engineA": "Osteria",
+        "engineB": "Oceanic"
       }
     ]
   },

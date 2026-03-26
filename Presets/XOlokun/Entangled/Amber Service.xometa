@@ -5,9 +5,9 @@
       {
         "amount": 0.686,
         "description": "Osteria drives Oblong via EnvToMod",
-        "source": "Osteria",
-        "target": "Oblong",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Osteria",
+        "engineB": "Oblong"
       }
     ]
   },

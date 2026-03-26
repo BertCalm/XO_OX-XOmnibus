@@ -5,16 +5,16 @@
       {
         "amount": 0.72,
         "description": "Ouroboros attractor output modulates Ombre blend axis — chaos intensity drives memory/forgetting position",
-        "source": "Ouroboros",
-        "target": "Ombre",
-        "type": "ModToMod"
+        "type": "EnvToDecay",
+        "engineA": "Ouroboros",
+        "engineB": "Ombre"
       },
       {
         "amount": 0.45,
         "description": "Ouroboros amplitude envelope opens Ombre filter during chaotic bursts — perception brightens at peak chaos",
-        "source": "Ouroboros",
-        "target": "Ombre",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Ouroboros",
+        "engineB": "Ombre"
       }
     ]
   },

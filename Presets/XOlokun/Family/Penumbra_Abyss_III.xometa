@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.676,
-      "destination": "ORIGAMI",
-      "source": "OVERWORLD",
-      "type": "ENVELOPE_LINK"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.676,
+        "type": "EnvToDecay",
+        "engineA": "OVERWORLD",
+        "engineB": "ORIGAMI"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — family, dark, cold, vast.",

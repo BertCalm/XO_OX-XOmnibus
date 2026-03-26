@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overlap",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.832
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.953,
+    "density": 0.902,
+    "movement": 0.619,
+    "space": 0.029,
+    "warmth": 0.447
+  },
+  "engines": [
+    "Obscura",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.635,
+    "COUPLING": 0.793,
+    "MOVEMENT": 0.619,
+    "SPACE": 0.029
+  },
+  "mood": "Entangled",
+  "name": "Signal Grit 2",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.522,
+      "macro_coupling": 0.793,
+      "macro_movement": 0.579,
+      "macro_space": 0.012
+    },
+    "Overlap": {
+      "macro_character": 0.748,
+      "macro_coupling": 0.789,
+      "macro_movement": 0.599,
+      "macro_space": 0.051
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "dense",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

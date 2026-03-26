@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT phase-sync parameter coupled to ORBWEAVE braid depth via KnotTopology \u2014 as OUTWIT arms sync, the braid tightens. As arms desync, the braid loosens. The octopus's synchronization state continuously reshapes the knot geometry.",
+  "description": "OUTWIT phase-sync parameter coupled to ORBWEAVE braid depth via KnotTopology — as OUTWIT arms sync, the braid tightens. As arms desync, the braid loosens. The octopus's synchronization state continuously reshapes the knot geometry.",
   "tags": [
     "entangled",
     "knot-topology",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -176,18 +176,18 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbweave",
         "type": "KnotTopology",
         "amount": 0.13,
-        "description": "OUTWIT sync state modulates ORBWEAVE braid depth \u2014 arm synchronization reshapes the Figure-Eight knot"
+        "description": "OUTWIT sync state modulates ORBWEAVE braid depth — arm synchronization reshapes the Figure-Eight knot",
+        "engineA": "Outwit",
+        "engineB": "Orbweave"
       },
       {
-        "source": "Orbweave",
-        "target": "Outwit",
         "type": "KnotTopology",
         "amount": 0.11,
-        "description": "ORBWEAVE Figure-Eight crossing feeds OUTWIT phase \u2014 knot over/under pattern modulates arm sync"
+        "description": "ORBWEAVE Figure-Eight crossing feeds OUTWIT phase — knot over/under pattern modulates arm sync",
+        "engineA": "Orbweave",
+        "engineB": "Outwit"
       }
     ]
   },

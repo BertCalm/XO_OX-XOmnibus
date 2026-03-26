@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.935
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.321,
+    "brightness": 0.042,
+    "density": 0.952,
+    "movement": 0.343,
+    "space": 0.928,
+    "warmth": 0.957
+  },
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.665,
+    "COUPLING": 0.432,
+    "MOVEMENT": 0.282,
+    "SPACE": 0.83
+  },
+  "mood": "Atmosphere",
+  "name": "Matte Mahogany",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.342,
+      "macro_coupling": 0.853,
+      "macro_movement": 0.308,
+      "macro_space": 0.842
+    },
+    "Origami": {
+      "macro_character": 0.665,
+      "macro_coupling": 0.432,
+      "macro_movement": 0.282,
+      "macro_space": 0.83
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "warm",
+    "dense",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

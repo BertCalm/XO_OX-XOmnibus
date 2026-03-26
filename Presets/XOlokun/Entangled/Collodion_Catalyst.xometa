@@ -6,7 +6,7 @@
         "amount": 0.56,
         "engineA": "Obscura",
         "engineB": "Organon",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },

@@ -6,7 +6,7 @@
         "amount": 0.569,
         "engineA": "Obsidian",
         "engineB": "Owlfish",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

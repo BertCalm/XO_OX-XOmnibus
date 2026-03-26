@@ -5,9 +5,9 @@
       {
         "amount": 0.654,
         "description": "Orca drives Oceanic via EnvToMod",
-        "source": "Orca",
-        "target": "Oceanic",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Orca",
+        "engineB": "Oceanic"
       }
     ]
   },

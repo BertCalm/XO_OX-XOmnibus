@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.748,
+        "engineA": "Obbligato",
+        "engineB": "Oceanic",
+        "type": "Env->LFO Rate"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Coral reef breath: BOND ties OBBLIGATO's wind pair to OCEANIC's chromophore shimmer column.",
+  "dna": {
+    "aggression": 0.583,
+    "brightness": 0.941,
+    "density": 0.799,
+    "movement": 0.553,
+    "space": 0.67,
+    "warmth": 0.603
+  },
+  "engines": [
+    "Obbligato",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "OBBLIGATO The Bond — Oceanic",
+  "parameters": {
+    "obbl_breathA": 0.558,
+    "obbl_breathB": 0.567,
+    "obbl_macroBond": 0.992
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "oceanic",
+    "bioluminescent",
+    "aquatic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

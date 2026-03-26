@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Overlap",
-        "type": "FREQUENCY_MODULATION",
+        "type": "AudioToFM",
         "amount": 0.78
       }
     ]

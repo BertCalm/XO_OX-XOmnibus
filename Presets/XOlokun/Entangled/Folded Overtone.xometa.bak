@@ -1,0 +1,84 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.757,
+        "description": "Owlfish drives Origami via ResonanceChain",
+        "source": "Owlfish",
+        "target": "Origami",
+        "type": "ResonanceChain"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "ORIGAMI's fold point mapping to OWLFISH's Mixtur-Trautonium partial spectrum — spectral folding as timbral origami.",
+  "dna": {
+    "aggression": 0.388,
+    "brightness": 0.543,
+    "density": 0.657,
+    "movement": 0.356,
+    "space": 0.485,
+    "warmth": 0.593
+  },
+  "engines": [
+    "Owlfish",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Folded Overtone",
+  "parameters": {
+    "Origami": {
+      "origami_attack": 0.132,
+      "origami_filterCutoff": 0.557,
+      "origami_foldPoint": 0.439,
+      "origami_lfoRate": 0.022,
+      "origami_macroCharacter": 0.097,
+      "origami_macroCoupling": 0.016,
+      "origami_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.205,
+      "owl_ampAttack": 0.38,
+      "owl_ampDecay": 0.979,
+      "owl_ampRelease": 2.95,
+      "owl_ampSustain": 0.707,
+      "owl_envDepth": 0.252,
+      "owl_filterCutoff": 0.623,
+      "owl_filterRes": 0.657,
+      "owl_hall": 0.428,
+      "owl_lfoDepth": 0.067,
+      "owl_lfoRate": 0.195,
+      "owl_lfoShape": 0.103,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.538,
+      "owl_mixturSpread": 0.296,
+      "owl_oscLevel": 0.713,
+      "owl_oscPitch": 0.431,
+      "owl_resonantFeedback": 0.292,
+      "owl_resonantPitch": 0.401,
+      "owl_shimmer": 0.447,
+      "owl_subLevel": 0.37
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "origami"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

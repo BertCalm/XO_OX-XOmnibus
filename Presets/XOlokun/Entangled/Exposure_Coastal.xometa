@@ -6,7 +6,7 @@
         "amount": 0.626,
         "engineA": "Obscura",
         "engineB": "Oceanic",
-        "type": "Pitch->Rate"
+        "type": "LFOToPitch"
       }
     ]
   },

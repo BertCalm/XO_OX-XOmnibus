@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Owlfish",
+        "type": "CHAOS_INJECT",
+        "amount": 0.999
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.096,
+    "brightness": 0.928,
+    "density": 0.052,
+    "movement": 0.56,
+    "space": 0.345,
+    "warmth": 0.459
+  },
+  "engines": [
+    "Odyssey",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.694,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.56,
+    "SPACE": 0.345
+  },
+  "mood": "Family",
+  "name": "Filament Phosphor",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.694,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.56,
+      "macro_space": 0.345
+    },
+    "Owlfish": {
+      "macro_character": 0.713,
+      "macro_coupling": 0.521,
+      "macro_movement": 0.489,
+      "macro_space": 0.329
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

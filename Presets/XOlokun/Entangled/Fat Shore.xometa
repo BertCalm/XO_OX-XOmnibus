@@ -5,9 +5,9 @@
       {
         "amount": 0.807,
         "description": "Osteria drives Obese via EnvToMod",
-        "source": "Osteria",
-        "target": "Obese",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Osteria",
+        "engineB": "Obese"
       }
     ]
   },

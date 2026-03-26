@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Opal",
-        "type": "GRAIN_SCATTER",
+        "type": "AudioToBuffer",
         "amount": 0.75
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

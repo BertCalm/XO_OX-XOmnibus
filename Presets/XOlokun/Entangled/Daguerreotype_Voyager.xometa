@@ -6,7 +6,7 @@
         "amount": 0.796,
         "engineA": "Obscura",
         "engineB": "Odyssey",
-        "type": "Env->Amp"
+        "type": "AmpToFilter"
       }
     ]
   },

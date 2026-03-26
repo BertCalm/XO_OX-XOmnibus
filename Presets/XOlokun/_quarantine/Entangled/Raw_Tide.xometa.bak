@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.626,
+        "engineA": "Osteria",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.53,
+    "density": 0.6,
+    "movement": 0.435,
+    "space": 0.57,
+    "warmth": 0.695
+  },
+  "engines": [
+    "Osteria",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.629,
+    "COUPLING": 0.592,
+    "MOVEMENT": 0.304,
+    "SPACE": 0.536
+  },
+  "mood": "Entangled",
+  "name": "Raw Tide",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.454,
+      "macro_coupling": 0.526,
+      "macro_movement": 0.776,
+      "macro_space": 0.266
+    },
+    "Owlfish": {
+      "macro_character": 0.314,
+      "macro_coupling": 0.573,
+      "macro_movement": 0.407,
+      "macro_space": 0.567
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "osteria",
+    "owlfish"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

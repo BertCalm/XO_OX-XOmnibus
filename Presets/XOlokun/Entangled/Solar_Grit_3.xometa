@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.664,
-        "source": "Oblique",
-        "target": "Obsidian",
-        "type": "TIMBRAL_BLEED"
+        "type": "EnvToMorph",
+        "engineA": "Oblique",
+        "engineB": "Obsidian"
       }
     ]
   },

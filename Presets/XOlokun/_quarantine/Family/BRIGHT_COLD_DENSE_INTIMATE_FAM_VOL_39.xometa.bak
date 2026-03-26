@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.835
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.431,
+    "brightness": 0.875,
+    "density": 0.883,
+    "movement": 0.606,
+    "space": 0.027,
+    "warmth": 0.021
+  },
+  "engines": [
+    "OddfeliX",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.463,
+    "COUPLING": 0.677,
+    "MOVEMENT": 0.602,
+    "SPACE": 0.01
+  },
+  "mood": "Family",
+  "name": "Ice Titan",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.467,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.604,
+      "macro_space": 0.01
+    },
+    "Origami": {
+      "macro_character": 0.459,
+      "macro_coupling": 0.675,
+      "macro_movement": 0.6,
+      "macro_space": 0.01
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "bright",
+    "dense",
+    "intimate",
+    "cool"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7115,
-        "source": "Osprey",
-        "target": "Obsidian",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Osprey",
+        "engineB": "Obsidian"
       }
     ]
   },

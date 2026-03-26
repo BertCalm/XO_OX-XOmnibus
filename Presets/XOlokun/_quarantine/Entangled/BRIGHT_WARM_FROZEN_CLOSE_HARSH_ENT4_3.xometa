@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Oceanic",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.851
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

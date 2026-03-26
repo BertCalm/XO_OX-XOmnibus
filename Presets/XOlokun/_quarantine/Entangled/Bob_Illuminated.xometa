@@ -6,7 +6,7 @@
         "amount": 0.8,
         "engineA": "Oblong",
         "engineB": "Optic",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

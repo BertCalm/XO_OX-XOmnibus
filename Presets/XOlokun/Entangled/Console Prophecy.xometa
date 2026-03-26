@@ -57,7 +57,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Overworld",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.5
       }
     ]

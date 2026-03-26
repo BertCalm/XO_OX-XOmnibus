@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Spice Route Full Migration",
   "mood": "Entangled",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "XOasis with SpectralFingerprint migration at full engagement — the Rhodes broadcasting 152 bytes of spectral identity across the Fusion quad. modalFrequencies, impedanceEstimate, harmonicDensity all live in the shared bus.",
-  "tags": ["rhodes", "coupling", "migration", "fusion-quad", "entangled", "spectral-fingerprint"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "rhodes",
+    "coupling",
+    "migration",
+    "fusion-quad",
+    "entangled",
+    "spectral-fingerprint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Overbite",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.813
       }
     ]

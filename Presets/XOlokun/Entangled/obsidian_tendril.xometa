@@ -6,7 +6,7 @@
         "amount": 0.88,
         "engineA": "Overlap",
         "engineB": "Obsidian",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Organon",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.8016
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

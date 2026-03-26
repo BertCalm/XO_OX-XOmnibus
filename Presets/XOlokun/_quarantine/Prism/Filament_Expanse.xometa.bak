@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ocelot",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.625
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.629,
+    "brightness": 0.941,
+    "density": 0.032,
+    "movement": 0.535,
+    "space": 0.952,
+    "warmth": 0.125
+  },
+  "engines": [
+    "Osteria",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.785,
+    "COUPLING": 0.881,
+    "MOVEMENT": 0.535,
+    "SPACE": 0.952
+  },
+  "mood": "Prism",
+  "name": "Filament Expanse",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.344,
+      "macro_coupling": 0.582,
+      "macro_movement": 0.535,
+      "macro_space": 0.952
+    },
+    "Osteria": {
+      "macro_character": 0.785,
+      "macro_coupling": 0.881,
+      "macro_movement": 0.535,
+      "macro_space": 0.952
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "cold",
+    "sparse",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

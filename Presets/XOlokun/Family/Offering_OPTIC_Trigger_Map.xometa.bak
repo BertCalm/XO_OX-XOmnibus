@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Low",
+  "created": "2026-03-21",
+  "description": "OFFERING drums mapped to OPTIC visual triggers. Each hit ignites a phosphor pulse — kick is a floor flash, snare is a burst, hi-hats are the steady shimmer. LA parallel compression keeps the visual engine fed with consistent amplitude.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.7,
+    "density": 0.5,
+    "movement": 0.6,
+    "space": 0.5,
+    "warmth": 0.4
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Family",
+  "name": "OPTIC Trigger Map",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 2,
+      "ofr_cityIntensity": 0.5,
+      "ofr_cityBlend": 0.3,
+      "ofr_transientSnap": 0.7,
+      "ofr_transientPitch": 0.45,
+      "ofr_transientSat": 0.08,
+      "ofr_digCuriosity": 0.55,
+      "ofr_digFlow": 0.65,
+      "ofr_velToSnap": 0.7,
+      "ofr_velToBody": 0.25,
+      "ofr_v2_level": 0.85,
+      "ofr_v2_decay": 0.06,
+      "ofr_v3_level": 0.75,
+      "ofr_masterWidth": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["optic", "coupling", "visual", "LA", "trigger", "family"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.55, "M2": 0.45, "M3": 0.0, "M4": 0.05}
+}

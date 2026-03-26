@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Ombre",
-        "target": "Oblique",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay",
+        "engineA": "Ombre",
+        "engineB": "Oblique"
       }
     ]
   },

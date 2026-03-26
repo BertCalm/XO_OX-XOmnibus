@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.89,
+        "engineA": "Origami",
+        "engineB": "Onset",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Origami crane chaos-injected into Onset trigger rate — folded paper as weaponized percussion.",
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.74,
+    "density": 0.67,
+    "movement": 0.93,
+    "space": 0.16,
+    "warmth": 0.22
+  },
+  "engines": [
+    "Origami",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.84,
+    "SPACE": 0.89,
+    "PUNCH": 0.93,
+    "MUTATE": 0.16
+  },
+  "mood": "Entangled",
+  "name": "Shuriken Barrage",
+  "parameters": {
+    "Origami": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "onset",
+    "shuriken"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "tier": "awakening"
+}

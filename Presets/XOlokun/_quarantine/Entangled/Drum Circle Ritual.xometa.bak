@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Onset",
+        "type": "RHYTHM_GATE",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "Ohm groove finally finds its percussion section — sage drone locked to kick and clap",
+  "engines": [
+    "Ohm",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.7,
+    "SPACE": 0.7,
+    "PUNCH": 0.55,
+    "MUTATE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Drum Circle Ritual",
+  "parameters": {
+    "Ohm": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "onset",
+    "hippy"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null,
+  "tier": "awakening"
+}

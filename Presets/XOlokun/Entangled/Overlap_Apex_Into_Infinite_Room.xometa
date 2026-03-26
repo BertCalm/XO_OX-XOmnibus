@@ -2,19 +2,35 @@
   "schema_version": 1,
   "name": "Apex Into Infinite Room",
   "mood": "Entangled",
-  "engines": ["Orca", "Overlap"],
+  "engines": [
+    "Orca",
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "ORCA's echolocation clicks into OVERLAP's near-infinite FDN. EnvToMorph coupling: ORCA's mod envelope peaks drive OVERLAP's Kuramoto pulse rate higher, briefly synchronizing the six FDN voices. Each orca click generates a Trefoil-matrix FDN tail — the sonar maps a space defined by topology, not physics.",
-  "tags": ["orca", "overlap", "entangled", "echolocation", "infinite", "sonar", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "orca",
+    "overlap",
+    "entangled",
+    "echolocation",
+    "infinite",
+    "sonar",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.42,
     "MOVEMENT": 0.55,
     "COUPLING": 0.72,
     "SPACE": 0.78
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

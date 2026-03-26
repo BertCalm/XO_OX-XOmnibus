@@ -59,7 +59,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Oblong",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.4
       }
     ]

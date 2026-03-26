@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overworld",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.707
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Overworld ERA state selects OUTWIT rule set — each chip era carries a different cellular DNA",
+  "engines": [
+    "Outwit",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "COUPLING": 0.71,
+    "MOVEMENT": 0.51,
+    "SPACE": 0.47
+  },
+  "mood": "Entangled",
+  "name": "Evolved Rule",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.043,
+      "owit_ampRelease": 0.402,
+      "owit_arms": 5,
+      "owit_cellSize": 0.436,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.524,
+      "owit_density": 0.497,
+      "owit_evolveRate": 0.611,
+      "owit_filterCutoff": 0.526,
+      "owit_filterReso": 0.35,
+      "owit_mutateProb": 0.171,
+      "owit_outputLevel": 0.829,
+      "owit_pitchSpread": 0.296,
+      "owit_rule": 22
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "overworld",
+    "outwit-led",
+    "wolfram",
+    "cellular-automata"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.526,
+    "warmth": 0.5,
+    "movement": 0.611,
+    "density": 0.497,
+    "space": 0.5,
+    "aggression": 0.043
+  },
+  "tempo": null
+}

@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.63
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.45,
+    "density": 0.5,
+    "movement": 0.53,
+    "space": 0.83,
+    "warmth": 0.92
+  },
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "COUPLING": 0.62,
+    "MOVEMENT": 0.41,
+    "SPACE": 0.84
+  },
+  "mood": "Entangled",
+  "name": "Ignis Expanse",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.38,
+      "macro_space": 0.78
+    },
+    "Opal": {
+      "macro_character": 0.71,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.44,
+      "macro_space": 0.91
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.8
+      }
+    ]
+  },
+  "description": "Opal shimmer refracted through prismatic lens — grain cloud split to spectral rays",
+  "engines": [
+    "Opal",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.8
+  },
+  "mood": "Entangled",
+  "name": "Crystal Spectrum II",
+  "parameters": {
+    "Opal": {},
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "optic",
+    "granular"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

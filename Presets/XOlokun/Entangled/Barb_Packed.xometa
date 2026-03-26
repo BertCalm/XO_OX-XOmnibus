@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.84,
-        "source": "Optic",
-        "target": "Oblong",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Optic",
+        "engineB": "Oblong"
       }
     ]
   },

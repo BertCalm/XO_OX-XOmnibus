@@ -5,7 +5,7 @@
       {
         "engineA": "Owlfish",
         "engineB": "Overdub",
-        "type": "ENVELOPE_SLAVE",
+        "type": "EnvToDecay",
         "amount": 0.9
       }
     ]

@@ -6,7 +6,7 @@
         "amount": 0.652,
         "engineA": "Obscura",
         "engineB": "Orphica",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       }
     ]
   },

@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.571,
@@ -42,7 +42,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.919
       }
     ]

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obese",
+        "type": "CHAOS_INJECT",
+        "amount": 0.969
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.99,
+    "brightness": 0.931,
+    "density": 0.948,
+    "movement": 0.918,
+    "space": 0.444,
+    "warmth": 0.059
+  },
+  "engines": [
+    "Organon",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "COUPLING": 0.969,
+    "MOVEMENT": 0.918,
+    "SPACE": 0.444
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT COLD KINETIC DENSE V... (Organon I)",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.516,
+      "macro_coupling": 0.942,
+      "macro_movement": 0.887,
+      "macro_space": 0.45
+    },
+    "Organon": {
+      "macro_character": 0.495,
+      "macro_coupling": 0.969,
+      "macro_movement": 0.918,
+      "macro_space": 0.444
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

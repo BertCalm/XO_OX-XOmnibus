@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.15,
-        "source": "Obrix",
-        "target": "Opal",
-        "type": "AudioToBuffer"
+        "type": "AudioToBuffer",
+        "engineA": "Obrix",
+        "engineB": "Opal"
       }
     ]
   },

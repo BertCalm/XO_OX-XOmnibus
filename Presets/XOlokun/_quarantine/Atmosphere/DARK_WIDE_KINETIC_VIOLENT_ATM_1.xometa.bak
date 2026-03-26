@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Low",
+    "sourceEngine": "Osteria",
+    "targetEngine": null,
+    "type": "Envelope"
+  },
+  "couplingIntensity": "Low",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK WIDE KINETIC VIOLENT ATM 1.",
+  "dna": {
+    "aggression": 0.915,
+    "brightness": 0.071,
+    "density": 0.427,
+    "movement": 0.894,
+    "space": 0.897,
+    "warmth": 0.513
+  },
+  "engines": [
+    "Osteria"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "DARK WIDE KINETIC VIOLENT A...",
+  "parameters": {
+    "Osteria": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-high-aggression",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

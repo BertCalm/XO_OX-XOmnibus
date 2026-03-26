@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.943
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_SPARSE_VIOLENT. Variant 3.",
+  "dna": {
+    "aggression": 0.889,
+    "brightness": 0.024,
+    "density": 0.034,
+    "movement": 0.962,
+    "space": 0.451,
+    "warmth": 0.91
+  },
+  "engines": [
+    "Owlfish",
+    "Origami"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.12,
+    "COUPLING": 0.077,
+    "MOVEMENT": 1.0,
+    "SPACE": 0.395
+  },
+  "mood": "Prism",
+  "name": "Rust Surge",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.167,
+      "macro_coupling": 0.155,
+      "macro_movement": 1.0,
+      "macro_space": 0.39
+    },
+    "Owlfish": {
+      "macro_character": 0.074,
+      "macro_coupling": 0.0,
+      "macro_movement": 1.0,
+      "macro_space": 0.399
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "sparse",
+    "hot",
+    "extreme",
+    "kinetic",
+    "dark",
+    "diversity",
+    "violent",
+    "prism"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

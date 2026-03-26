@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.805
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.926,
+    "brightness": 0.965,
+    "density": 0.981,
+    "movement": 0.63,
+    "space": 0.476,
+    "warmth": 0.941
+  },
+  "engines": [
+    "Obese",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.491,
+    "COUPLING": 0.815,
+    "MOVEMENT": 0.63,
+    "SPACE": 0.476
+  },
+  "mood": "Entangled",
+  "name": "Sunrise Dense",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.472,
+      "macro_coupling": 0.815,
+      "macro_movement": 0.624,
+      "macro_space": 0.486
+    },
+    "Oracle": {
+      "macro_character": 0.511,
+      "macro_coupling": 0.834,
+      "macro_movement": 0.669,
+      "macro_space": 0.486
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

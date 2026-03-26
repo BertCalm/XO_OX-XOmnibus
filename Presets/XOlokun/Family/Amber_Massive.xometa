@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Organon",
-        "type": "PHASE_COUPLE",
+        "type": "PitchToPitch",
         "amount": 0.523
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, warm bass. Sits warmly in any arrangement without fighting for space."
+  "description": "Warm and familiar, dark, warm bass. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

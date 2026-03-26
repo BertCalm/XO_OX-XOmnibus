@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.567
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_STILL_DENSE_VAST_GENTLE. Variant 3.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.064,
+    "density": 0.919,
+    "movement": 0.073,
+    "space": 0.919,
+    "warmth": 0.587
+  },
+  "engines": [
+    "Orphica",
+    "Overworld"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.149,
+    "COUPLING": 0.89,
+    "MOVEMENT": 0.038,
+    "SPACE": 0.922
+  },
+  "mood": "Prism",
+  "name": "Thread Massive 2",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.118,
+      "macro_coupling": 0.92,
+      "macro_movement": 0.0,
+      "macro_space": 0.993
+    },
+    "Overworld": {
+      "macro_character": 0.18,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.077,
+      "macro_space": 0.851
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "dark",
+    "diversity",
+    "vast",
+    "prism",
+    "gentle",
+    "still",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

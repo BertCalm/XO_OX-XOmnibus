@@ -9,7 +9,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "OUTWIT solve-hunt mechanism applies downward filter pressure to OCEANIC \u2014 as the octopus converges on a timbral target, it compresses the filter sweep into lower frequencies. Lower SOLVE = looser, higher SOLVE = darker, more confined.",
+  "description": "OUTWIT solve-hunt mechanism applies downward filter pressure to OCEANIC — as the octopus converges on a timbral target, it compresses the filter sweep into lower frequencies. Lower SOLVE = looser, higher SOLVE = darker, more confined.",
   "tags": [
     "entangled",
     "filter-to-filter",
@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
@@ -137,11 +137,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Oceanic",
         "type": "FilterToFilter",
         "amount": 0.13,
-        "description": "OUTWIT solve-hunt convergence applies downward filter pressure to OCEANIC depth zone"
+        "description": "OUTWIT solve-hunt convergence applies downward filter pressure to OCEANIC depth zone",
+        "engineA": "Outwit",
+        "engineB": "Oceanic"
       }
     ]
   },

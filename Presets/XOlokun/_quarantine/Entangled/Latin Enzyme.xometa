@@ -6,7 +6,7 @@
         "amount": 0.75,
         "engineA": "Ole",
         "engineB": "Organon",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

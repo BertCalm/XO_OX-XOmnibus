@@ -6,7 +6,7 @@
         "amount": 0.71,
         "engineA": "Obbligato",
         "engineB": "Oracle",
-        "type": "Rhythm->Gate"
+        "type": "RhythmToBlend"
       }
     ]
   },

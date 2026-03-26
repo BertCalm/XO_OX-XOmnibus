@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Outwit",
+        "type": "AMP_MOD",
+        "amount": 0.57
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.08,
+    "density": 0.48,
+    "movement": 0.8,
+    "space": 0.45,
+    "warmth": 0.32
+  },
+  "engines": [
+    "Outwit",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.37,
+    "SPACE": 0.86,
+    "PUNCH": 0.8,
+    "MUTATE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Black Water Churn",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.38,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.1,
+      "macro_space": 0.63
+    },
+    "Outwit": {
+      "macro_character": 0.53,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.89,
+      "macro_space": 0.33
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

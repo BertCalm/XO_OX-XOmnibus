@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Octopus",
-        "target": "Osteria",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Octopus",
+        "engineB": "Osteria"
       }
     ]
   },

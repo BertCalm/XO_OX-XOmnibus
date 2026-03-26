@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Spice Route Full Migration",
+  "mood": "Entangled",
+  "engines": ["Oasis"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "XOasis with SpectralFingerprint migration at full engagement — the Rhodes broadcasting 152 bytes of spectral identity across the Fusion quad. modalFrequencies, impedanceEstimate, harmonicDensity all live in the shared bus.",
+  "tags": ["rhodes", "coupling", "migration", "fusion-quad", "entangled", "spectral-fingerprint"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.48,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oasis": {
+      "oasis_warmth": 0.52,
+      "oasis_bell": 0.45,
+      "oasis_brightness": 5800.0,
+      "oasis_tremRate": 5.0,
+      "oasis_tremDepth": 0.42,
+      "oasis_attack": 0.004,
+      "oasis_decay": 1.2,
+      "oasis_sustain": 0.52,
+      "oasis_release": 0.65,
+      "oasis_filterEnvAmt": 0.38,
+      "oasis_migration": 0.85,
+      "oasis_stereoWidth": 0.6,
+      "oasis_bendRange": 2.0,
+      "oasis_macroCharacter": 0.48,
+      "oasis_macroMovement": 0.48,
+      "oasis_macroCoupling": 0.85,
+      "oasis_macroSpace": 0.58,
+      "oasis_lfo1Rate": 0.4,
+      "oasis_lfo1Depth": 0.07,
+      "oasis_lfo1Shape": 0,
+      "oasis_lfo2Rate": 1.2,
+      "oasis_lfo2Depth": 0.08,
+      "oasis_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

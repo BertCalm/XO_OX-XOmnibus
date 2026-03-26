@@ -5,16 +5,16 @@
       {
         "amount": 0.6,
         "description": "Orca echolocation signal feeds Overdub spring reverb send — clicks become physical ocean resonance in the tank",
-        "source": "Orca",
-        "target": "Overdub",
-        "type": "AudioToFM"
+        "type": "AudioToFM",
+        "engineA": "Orca",
+        "engineB": "Overdub"
       },
       {
         "amount": 0.4,
         "description": "Orca amplitude gates Overdub tape delay return — the echo only speaks when the predator calls",
-        "source": "Orca",
-        "target": "Overdub",
-        "type": "AmpToAmp"
+        "type": "AmpToFilter",
+        "engineA": "Orca",
+        "engineB": "Overdub"
       }
     ]
   },

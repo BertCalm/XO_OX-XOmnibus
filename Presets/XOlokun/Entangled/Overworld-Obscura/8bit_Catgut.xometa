@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "8bit Catgut",
   "mood": "Entangled",
-  "engines": ["Overworld", "Obscura"],
+  "engines": [
+    "Overworld",
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Overworld's Sega YM2612 FM operators fully colonize Obscura's spring stiffness and scan position — the FM waveform's amplitude envelope rewrites the physical model's resonant geometry on every note. The string no longer knows what it is made of: catgut, or register data.",
-  "tags": ["coupling", "Overworld-pair", "physical-model", "chip", "FM", "possession", "extreme"],
-  "macroLabels": ["ERA", "MATERIAL", "COUPLING", "SPACE"],
-  "couplingIntensity": "Extreme",
+  "tags": [
+    "coupling",
+    "Overworld-pair",
+    "physical-model",
+    "chip",
+    "FM",
+    "possession",
+    "extreme"
+  ],
+  "macroLabels": [
+    "ERA",
+    "MATERIAL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",
   "legacy": {

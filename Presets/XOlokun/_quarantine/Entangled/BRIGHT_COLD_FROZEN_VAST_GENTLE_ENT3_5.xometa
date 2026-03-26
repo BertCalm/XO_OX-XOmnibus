@@ -5,7 +5,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Opal",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.7937
       }
     ]

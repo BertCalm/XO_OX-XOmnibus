@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Ouroboros",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.82
       }
     ]
@@ -60,5 +60,6 @@
     "serpent"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

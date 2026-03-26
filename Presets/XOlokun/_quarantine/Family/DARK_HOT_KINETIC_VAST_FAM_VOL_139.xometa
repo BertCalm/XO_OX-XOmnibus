@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Odyssey",
-        "type": "HARMONIC_MESH",
+        "type": "KnotTopology",
         "amount": 0.713
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

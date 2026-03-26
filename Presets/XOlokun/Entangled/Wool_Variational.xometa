@@ -6,7 +6,7 @@
         "amount": 0.581,
         "engineA": "Obese",
         "engineB": "Organon",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

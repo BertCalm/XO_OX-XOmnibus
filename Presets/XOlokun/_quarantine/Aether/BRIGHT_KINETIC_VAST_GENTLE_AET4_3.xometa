@@ -5,7 +5,7 @@
       {
         "engineA": "Overworld",
         "engineB": "Origami",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.8049
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

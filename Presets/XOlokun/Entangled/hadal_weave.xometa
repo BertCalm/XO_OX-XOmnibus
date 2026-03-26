@@ -6,7 +6,7 @@
         "amount": 0.71,
         "engineA": "Overlap",
         "engineB": "Oceanic",
-        "type": "PITCH_SYNC"
+        "type": "PitchToPitch"
       }
     ]
   },

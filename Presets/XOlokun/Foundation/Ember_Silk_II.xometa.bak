@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obese",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.89
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.086,
+    "brightness": 0.312,
+    "density": 0.871,
+    "movement": 0.55,
+    "space": 0.863,
+    "warmth": 0.972
+  },
+  "engines": [
+    "Oblong",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.833,
+    "COUPLING": 0.493,
+    "MOVEMENT": 0.735,
+    "SPACE": 0.679
+  },
+  "mood": "Foundation",
+  "name": "Ember Silk II",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.888,
+      "macro_coupling": 0.724,
+      "macro_movement": 0.651,
+      "macro_space": 0.586
+    },
+    "Oblong": {
+      "macro_character": 0.32,
+      "macro_coupling": 0.432,
+      "macro_movement": 0.765,
+      "macro_space": 0.57,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "hot",
+    "dense",
+    "vast",
+    "gentle",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, warm, dense bass. Let it breathe — the space is the instrument."
+}

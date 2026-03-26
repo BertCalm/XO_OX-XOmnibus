@@ -6,7 +6,7 @@
         "amount": 0.55,
         "engineA": "Ouroboros",
         "engineB": "Obscura",
-        "type": "Audio->AM"
+        "type": "AudioToRing"
       }
     ]
   },

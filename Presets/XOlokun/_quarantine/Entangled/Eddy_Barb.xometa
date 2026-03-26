@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.562,
@@ -42,7 +42,7 @@
       {
         "engineA": "Owlfish",
         "engineB": "Ombre",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.689
       }
     ]

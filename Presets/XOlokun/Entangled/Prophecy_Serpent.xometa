@@ -6,7 +6,7 @@
         "amount": 0.433,
         "engineA": "Oracle",
         "engineB": "Ouroboros",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -6,7 +6,7 @@
     "Outwit",
     "Orbital"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "OUTWIT CA filter output drives ORBITAL's envelope brightness. The cellular automaton determines how much velocity expression reaches the orbital voice.",
   "tags": [
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Orbital",
         "type": "FilterToFilter",
         "amount": 0.55,
-        "description": "Outwit filter cutoff drives Orbital brightness envelope"
+        "description": "Outwit filter cutoff drives Orbital brightness envelope",
+        "engineA": "Outwit",
+        "engineB": "Orbital"
       }
     ]
   },

@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.534,
-      "destination": "OUROBOROS",
-      "source": "OBLONG",
-      "type": "FILTER_MOD"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.534,
+        "type": "AmpToFilter",
+        "engineA": "OBLONG",
+        "engineB": "OUROBOROS"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — aether, dark, warm, vast.",

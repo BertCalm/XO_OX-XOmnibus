@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Optic",
-        "type": "AMPLITUDE_SYNC",
+        "type": "AmpToFilter",
         "amount": 0.7
       }
     ]

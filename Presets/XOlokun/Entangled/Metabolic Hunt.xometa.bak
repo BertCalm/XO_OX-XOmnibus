@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.508,
+        "description": "Orca drives Organon via EnvToMod",
+        "source": "Orca",
+        "target": "Organon",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "ORGANON's variational free energy metabolism tracks ORCA's hunt pattern — predatory efficiency as biological optimization.",
+  "dna": {
+    "aggression": 0.639,
+    "brightness": 0.328,
+    "density": 0.721,
+    "movement": 0.6,
+    "space": 0.498,
+    "warmth": 0.353
+  },
+  "engines": [
+    "Orca",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Metabolic Hunt",
+  "parameters": {
+    "Orca": {
+      "orca_ampAttack": 0.0209,
+      "orca_ampDecay": 0.542,
+      "orca_ampRelease": 2.87,
+      "orca_ampSustain": 0.644,
+      "orca_breachAmt": 0.519,
+      "orca_echoDepth": 0.424,
+      "orca_filterCutoff": 0.583,
+      "orca_filterRes": 0.512,
+      "orca_huntMacro": 0.137,
+      "orca_lfo1Depth": 0.492,
+      "orca_lfo1Rate": 0.114,
+      "orca_lfo2Depth": 0.136,
+      "orca_lfo2Rate": 0.0749,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.077,
+      "orca_podSync": 0.447,
+      "orca_wavetablePos": 0.41,
+      "orca_wavetableScan": 0.208
+    },
+    "Organon": {
+      "organon_attack": 0.228,
+      "organon_filterCutoff": 0.567,
+      "organon_lfoRate": 0.036,
+      "organon_macroCharacter": 0.0,
+      "organon_macroCoupling": 0.0,
+      "organon_metabolicRate": 0.544,
+      "organon_release": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "organon"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

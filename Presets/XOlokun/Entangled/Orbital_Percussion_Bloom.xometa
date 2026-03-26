@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.62,
-        "source": "Onset",
-        "target": "Orbital",
-        "type": "RhythmicTrigger"
+        "type": "RhythmToBlend",
+        "engineA": "Onset",
+        "engineB": "Orbital"
       }
     ]
   },

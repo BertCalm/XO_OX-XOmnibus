@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Oblong",
-        "target": "Oceanic",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay",
+        "engineA": "Oblong",
+        "engineB": "Oceanic"
       }
     ]
   },

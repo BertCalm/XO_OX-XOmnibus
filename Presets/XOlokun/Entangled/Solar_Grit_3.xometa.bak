@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.664,
+        "source": "Oblique",
+        "target": "Obsidian",
+        "type": "TIMBRAL_BLEED"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Bright Warm Intimate Violent character entanglement — OBSIDIAN × OBLIQUE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9105,
+    "brightness": 0.941,
+    "density": 0.5498,
+    "movement": 0.3685,
+    "space": 0.1192,
+    "warmth": 0.9397
+  },
+  "engines": [
+    "Obsidian",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "BLADE",
+    "EDGE",
+    "SHARD",
+    "VOID"
+  ],
+  "macros": {
+    "CHARACTER": 0.9404,
+    "COUPLING": 0.664,
+    "MOVEMENT": 0.3685,
+    "SPACE": 0.1192
+  },
+  "mood": "Entangled",
+  "name": "Solar Grit 3",
+  "parameters": {
+    "Oblique": {
+      "amp_attack": 0.2898,
+      "amp_release": 0.143,
+      "coupling_level": 0.9351,
+      "density": 0.5374,
+      "drive": 0.8174,
+      "filter_cutoff": 0.8519,
+      "filter_resonance": 0.5525,
+      "macro_character": 0.9507,
+      "macro_coupling": 0.9338,
+      "macro_movement": 0.3648,
+      "macro_space": 0.0918,
+      "output_level": 0.8293,
+      "reverb_mix": 0.2445,
+      "reverb_size": 0.257
+    },
+    "Obsidian": {
+      "amp_attack": 0.312,
+      "amp_release": 0.1339,
+      "coupling_level": 0.9388,
+      "density": 0.534,
+      "drive": 0.7898,
+      "filter_cutoff": 0.8356,
+      "filter_resonance": 0.5611,
+      "macro_character": 0.9247,
+      "macro_coupling": 0.9404,
+      "macro_movement": 0.4044,
+      "macro_space": 0.1004,
+      "output_level": 0.817,
+      "reverb_mix": 0.2467,
+      "reverb_size": 0.2751
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "intimate",
+    "violent",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

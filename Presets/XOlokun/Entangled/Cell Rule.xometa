@@ -6,7 +6,7 @@
         "amount": 0.619,
         "engineA": "Outwit",
         "engineB": "Overworld",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

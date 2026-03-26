@@ -6,7 +6,7 @@
         "amount": 0.62,
         "engineA": "Obscura",
         "engineB": "Ole",
-        "type": "FREQUENCY_SHIFT"
+        "type": "AudioToFM"
       }
     ]
   },

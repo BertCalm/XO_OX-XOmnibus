@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.853
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.883,
+    "brightness": 0.411,
+    "density": 0.935,
+    "movement": 0.989,
+    "space": 0.619,
+    "warmth": 0.988
+  },
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.87,
+    "COUPLING": 0.565,
+    "MOVEMENT": 0.429,
+    "SPACE": 0.823
+  },
+  "mood": "Family",
+  "name": "Fragment Stream 2",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.879,
+      "macro_coupling": 0.542,
+      "macro_movement": 0.381,
+      "macro_space": 0.786
+    },
+    "Ottoni": {
+      "macro_character": 0.87,
+      "macro_coupling": 0.565,
+      "macro_movement": 0.429,
+      "macro_space": 0.823
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "hot",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,9 +5,9 @@
       {
         "amount": 0.508,
         "description": "Orca drives Organon via EnvToMod",
-        "source": "Orca",
-        "target": "Organon",
-        "type": "EnvToMod"
+        "type": "EnvToDecay",
+        "engineA": "Orca",
+        "engineB": "Organon"
       }
     ]
   },

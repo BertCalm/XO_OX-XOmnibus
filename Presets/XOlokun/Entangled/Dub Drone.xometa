@@ -5,9 +5,9 @@
       {
         "amount": 0.828,
         "description": "Owlfish drives Overdub via AmpToFilter",
-        "source": "Owlfish",
-        "target": "Overdub",
-        "type": "AmpToFilter"
+        "type": "AmpToFilter",
+        "engineA": "Owlfish",
+        "engineB": "Overdub"
       }
     ]
   },

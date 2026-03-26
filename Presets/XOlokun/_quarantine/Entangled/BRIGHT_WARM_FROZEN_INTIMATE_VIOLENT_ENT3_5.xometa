@@ -5,7 +5,7 @@
       {
         "engineA": "Owlfish",
         "engineB": "Outwit",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.961
       }
     ]

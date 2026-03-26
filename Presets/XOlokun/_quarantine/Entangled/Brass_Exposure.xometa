@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Obscura",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.72
       }
     ]
@@ -60,5 +60,6 @@
     "exposure"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

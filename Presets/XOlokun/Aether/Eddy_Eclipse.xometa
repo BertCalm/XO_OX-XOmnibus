@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.442,
-      "destination": "ODDOSCAR",
-      "source": "OLE",
-      "type": "TIMBRE_BLEND"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.442,
+        "type": "EnvToMorph",
+        "engineA": "OLE",
+        "engineB": "ODDOSCAR"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Extreme DNA corners — aether, dark, cold, kinetic.",

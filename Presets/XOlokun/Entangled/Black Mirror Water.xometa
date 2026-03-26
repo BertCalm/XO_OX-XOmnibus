@@ -5,15 +5,15 @@
       {
         "amount": 0.815,
         "description": "Orca drives Obsidian via SpectralMorph",
-        "source": "Orca",
-        "target": "Obsidian",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Obsidian"
       }
     ]
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "OBSIDIAN's crystal stillness meets ORCA's dark aggression \u2014 the surface before and after a breach, obsidian-calm and shattered.",
+  "description": "OBSIDIAN's crystal stillness meets ORCA's dark aggression — the surface before and after a breach, obsidian-calm and shattered.",
   "dna": {
     "aggression": 0.49,
     "brightness": 0.291,

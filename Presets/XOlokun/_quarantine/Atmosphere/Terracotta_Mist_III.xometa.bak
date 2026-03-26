@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.509
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.037,
+    "brightness": 0.363,
+    "density": 0.036,
+    "movement": 0.301,
+    "space": 0.954,
+    "warmth": 0.966
+  },
+  "engines": [
+    "Orbital",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.714,
+    "COUPLING": 0.465,
+    "MOVEMENT": 0.295,
+    "SPACE": 0.795
+  },
+  "mood": "Atmosphere",
+  "name": "Terracotta Mist III",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.527,
+      "macro_coupling": 0.847,
+      "macro_movement": 0.337,
+      "macro_space": 0.851
+    },
+    "Orbital": {
+      "macro_character": 0.714,
+      "macro_coupling": 0.465,
+      "macro_movement": 0.295,
+      "macro_space": 0.795
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

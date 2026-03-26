@@ -5,9 +5,9 @@
       {
         "amount": 0.678,
         "description": "Orca drives Opal via SpectralMorph",
-        "source": "Orca",
-        "target": "Opal",
-        "type": "SpectralMorph"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "Opal"
       }
     ]
   },

@@ -4,11 +4,11 @@
     "pairs": [
       {
         "engine": "Orbital",
-        "type": "Harmonic"
+        "type": "EnvToMorph"
       },
       {
         "engine": "Origami",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },

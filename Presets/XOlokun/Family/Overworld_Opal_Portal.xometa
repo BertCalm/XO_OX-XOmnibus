@@ -5,9 +5,9 @@
       {
         "amount": 0.1,
         "description": "Opal granular output modulates Overworld FM vertex mix — the grains inform the chip character",
-        "source": "Opal",
-        "target": "Overworld",
-        "type": "AudioToFM"
+        "type": "AudioToFM",
+        "engineA": "Opal",
+        "engineB": "Overworld"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Obbligato",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.626
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, crystalline sound. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Warm and familiar, shimmering, crystalline sound. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

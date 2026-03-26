@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Outwit",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8795
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_DENSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.5888,
+    "brightness": 0.1045,
+    "density": 0.889,
+    "movement": 0.0394,
+    "space": 0.0204,
+    "warmth": 0.0574
+  },
+  "engines": [
+    "Osprey",
+    "Outwit"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8929,
+    "COUPLING": 0.8718,
+    "MOVEMENT": 0.0394,
+    "SPACE": 0.2298
+  },
+  "mood": "Entangled",
+  "name": "Phase Massive",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.8734,
+      "macro_coupling": 0.8718,
+      "macro_movement": 0.0444,
+      "macro_space": 0.1904
+    },
+    "Outwit": {
+      "macro_character": 0.9124,
+      "macro_coupling": 0.8718,
+      "macro_movement": 0.0344,
+      "macro_space": 0.2691
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "cold",
+    "dense",
+    "intimate"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -6,7 +6,7 @@
         "amount": 0.9,
         "engineA": "Obsidian",
         "engineB": "Ouroboros",
-        "type": "FREQUENCY_SMEAR"
+        "type": "AudioToFM"
       }
     ]
   },

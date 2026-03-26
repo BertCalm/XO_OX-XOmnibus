@@ -110,7 +110,7 @@
       {
         "engineA": "Oracle",
         "engineB": "OddfeliX",
-        "type": "Stoch->GroupMix",
+        "type": "AudioToWavetable",
         "amount": 0.45
       }
     ]

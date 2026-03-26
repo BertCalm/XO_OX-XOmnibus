@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "source": "Oblong",
+        "target": "Osteria",
+        "type": "FILTER_COUPLING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Porto wine resonance meets Bob's bass warmth — deep tavern frequency.",
+  "dna": {
+    "aggression": 0.328,
+    "brightness": 0.509,
+    "density": 0.625,
+    "movement": 0.446,
+    "space": 0.508,
+    "warmth": 0.724
+  },
+  "engines": [
+    "Oblong",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Taverna Bass",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 0.0398,
+      "bob_ampDecay": 0.752,
+      "bob_ampRelease": 0.96,
+      "bob_ampSustain": 0.728,
+      "bob_chordMode": 1.0,
+      "bob_distDrive": 0.249,
+      "bob_distMix": 0.417,
+      "bob_fltCutoff": 6819.0,
+      "bob_fltEnvAmt": 0.29,
+      "bob_fltReso": 0.43,
+      "bob_level": 0.777,
+      "bob_lfo1Depth": 0.467,
+      "bob_lfo1Rate": 2.545,
+      "bob_lfo1Shape": 0.25,
+      "bob_modAttack": 0.0253,
+      "bob_modDecay": 0.169,
+      "bob_modRelease": 0.705,
+      "bob_modSustain": 0.649,
+      "bob_oscDetune": -0.19,
+      "bob_oscWave": 0.33,
+      "bob_reverbMix": 0.164,
+      "bob_scaleMode": 1.0,
+      "bob_subOscLevel": 0.591,
+      "bob_curAmount": 0.2
+    },
+    "Osteria": {
+      "osteria_filterCutoff": 7387.1,
+      "osteria_level": 0.759
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "oblong",
+    "osteria"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

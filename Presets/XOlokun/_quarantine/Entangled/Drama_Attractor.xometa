@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Ouroboros",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.9
       }
     ]
@@ -60,5 +60,6 @@
     "drama"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

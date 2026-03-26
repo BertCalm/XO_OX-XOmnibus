@@ -6,7 +6,7 @@
         "amount": 0.746,
         "engineA": "Obscura",
         "engineB": "Ocelot",
-        "type": "Gate->Env"
+        "type": "AmpToChoke"
       }
     ]
   },

@@ -1,0 +1,96 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.625,
+        "description": "Osteria drives Odyssey via DriftLock",
+        "source": "Osteria",
+        "target": "Odyssey",
+        "type": "DriftLock"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OSTERIA's tavern fades into ODYSSEY's drift — the session becoming memory, the shore becoming a dreaming pad.",
+  "dna": {
+    "aggression": 0.151,
+    "brightness": 0.567,
+    "density": 0.654,
+    "movement": 0.512,
+    "space": 0.676,
+    "warmth": 0.671
+  },
+  "engines": [
+    "Osteria",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Shore Dream",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 0.37,
+      "drift_driftDepth": 0.292,
+      "drift_filterCutoff": 1.0,
+      "drift_macroCharacter": 0.114,
+      "drift_macroCoupling": 0.037,
+      "drift_oscA_level": 0.416,
+      "drift_oscA_mode": 0,
+      "drift_release": 1.0
+    },
+    "Osteria": {
+      "osteria_attack": 0.136,
+      "osteria_bassLevel": 0.643,
+      "osteria_blendMode": 0.197,
+      "osteria_chorus": 0.039,
+      "osteria_decay": 0.677,
+      "osteria_ensWidth": 0.496,
+      "osteria_filterEnvDepth": 0.283,
+      "osteria_hall": 0.591,
+      "osteria_harmLevel": 0.464,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.731,
+      "osteria_murmur": 0.357,
+      "osteria_oceanBleed": 0.224,
+      "osteria_patina": 0.518,
+      "osteria_porto": 0.267,
+      "osteria_qBassShore": 0.556,
+      "osteria_qElastic": 0.739,
+      "osteria_qHarmShore": 0.439,
+      "osteria_qMelShore": 0.668,
+      "osteria_qMemory": 0.616,
+      "osteria_qRhythmShore": 0.458,
+      "osteria_qStretch": 0.203,
+      "osteria_qSympathy": 0.712,
+      "osteria_release": 1.64,
+      "osteria_rhythmLevel": 0.361,
+      "osteria_sessionDelay": 0.29,
+      "osteria_smoke": 0.308,
+      "osteria_sustain": 0.738,
+      "osteria_tape": 0.182,
+      "osteria_tavernMix": 0.301,
+      "osteria_tavernShore": 0.238,
+      "osteria_warmth": 0.799
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "odyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

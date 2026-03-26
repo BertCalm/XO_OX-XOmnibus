@@ -6,7 +6,7 @@
         "amount": 0.632,
         "engineA": "Obsidian",
         "engineB": "Owlfish",
-        "type": "Env->Amp"
+        "type": "AmpToFilter"
       }
     ]
   },

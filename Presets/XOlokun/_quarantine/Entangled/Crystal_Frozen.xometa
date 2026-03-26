@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Orphica",
-        "type": "PHASE_LOCK",
+        "type": "AudioToFM",
         "amount": 0.87
       }
     ]

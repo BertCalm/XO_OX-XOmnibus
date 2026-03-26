@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "FOLD_MODULATE",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Origami fold point obligated to OBBLIGATO breath phase — the paper folds when the wind blows",
+  "engines": [
+    "Obbligato",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Folded Reed",
+  "parameters": {
+    "Obbligato": {},
+    "Origami": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "origami",
+    "wind"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

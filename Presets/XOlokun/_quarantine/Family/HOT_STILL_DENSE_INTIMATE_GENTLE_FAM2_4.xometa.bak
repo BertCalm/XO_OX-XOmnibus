@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Osprey",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.534
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.078,
+    "brightness": 0.533,
+    "density": 0.99,
+    "movement": 0.047,
+    "space": 0.045,
+    "warmth": 0.936
+  },
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.735,
+    "COUPLING": 0.534,
+    "MOVEMENT": 0.047,
+    "SPACE": 0.045
+  },
+  "mood": "Family",
+  "name": "HOT STILL DENSE INTIMATE GE... (Ottoni I)",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.744,
+      "macro_coupling": 0.543,
+      "macro_movement": 0.04,
+      "macro_space": 0.037
+    },
+    "Ottoni": {
+      "macro_character": 0.735,
+      "macro_coupling": 0.534,
+      "macro_movement": 0.047,
+      "macro_space": 0.045
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

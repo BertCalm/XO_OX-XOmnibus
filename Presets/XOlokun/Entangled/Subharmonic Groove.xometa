@@ -60,7 +60,7 @@
       {
         "engineA": "Owlfish",
         "engineB": "Oblong",
-        "type": "Pitch->Character",
+        "type": "PitchToPitch",
         "amount": 0.5
       }
     ]

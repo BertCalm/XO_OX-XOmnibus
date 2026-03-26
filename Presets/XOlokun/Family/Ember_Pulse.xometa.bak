@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.661
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.68,
+    "brightness": 0.051,
+    "density": 0.888,
+    "movement": 0.957,
+    "space": 0.343,
+    "warmth": 0.974
+  },
+  "engines": [
+    "Ottoni",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.51,
+    "COUPLING": 0.808,
+    "MOVEMENT": 0.946,
+    "SPACE": 0.324
+  },
+  "mood": "Family",
+  "name": "Ember Pulse",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.485,
+      "macro_coupling": 0.811,
+      "macro_movement": 0.957,
+      "macro_space": 0.334,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ottoni": {
+      "macro_character": 0.535,
+      "macro_coupling": 0.805,
+      "macro_movement": 0.935,
+      "macro_space": 0.314
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "dense",
+    "dark"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Warm and familiar, dark, warm bass. Macro sweeps reveal shifting timbral landscapes."
+}

@@ -6,7 +6,7 @@
         "amount": 0.65,
         "engineA": "Organon",
         "engineB": "Opal",
-        "type": "LFO->LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

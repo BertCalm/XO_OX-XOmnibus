@@ -1,0 +1,92 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engine": "Oblong",
+        "type": "Harmonic"
+      },
+      {
+        "engine": "Overworld",
+        "type": "Spectral"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Figure-8 bridge tone — connects two engines with harmonic glue.",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.52,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Family",
+  "name": "Harmonic Bridge",
+  "parameters": {
+    "Overlap": {
+      "olap_knot": 2,
+      "olap_tangleDepth": 0.42,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 0.6,
+      "olap_entrain": 0.3,
+      "olap_spread": 0.65,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 10.0,
+      "olap_dampening": 0.5,
+      "olap_feedback": 0.62,
+      "olap_brightness": 0.48,
+      "olap_bioluminescence": 0.3,
+      "olap_current": 0.1,
+      "olap_currentRate": 0.03,
+      "olap_attack": 0.025,
+      "olap_decay": 1.2,
+      "olap_sustain": 0.65,
+      "olap_release": 2.2,
+      "olap_filterCutoff": 5500.0,
+      "olap_filterRes": 0.15,
+      "olap_filterEnvAmt": 0.22,
+      "olap_filterEnvDecay": 0.55,
+      "olap_lfo1Rate": 0.3,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.1,
+      "olap_lfo1Dest": 0,
+      "olap_lfo2Rate": 0.06,
+      "olap_lfo2Shape": 0,
+      "olap_lfo2Depth": 0.08,
+      "olap_lfo2Dest": 2,
+      "olap_chorusMix": 0.22,
+      "olap_chorusRate": 0.08,
+      "olap_diffusion": 0.32,
+      "olap_macroKnot": 0.0,
+      "olap_macroPulse": 0.0,
+      "olap_macroEntrain": 0.0,
+      "olap_macroBloom": 0.0,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.5,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bridge",
+    "harmonic",
+    "glue",
+    "connector"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

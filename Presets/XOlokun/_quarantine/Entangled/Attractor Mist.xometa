@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Orphica",
         "engineB": "Ouroboros",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

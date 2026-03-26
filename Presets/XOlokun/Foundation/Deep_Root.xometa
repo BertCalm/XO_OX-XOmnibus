@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Oblong",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.4
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, dark, dense bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Anchored and grounding, dark, dense bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

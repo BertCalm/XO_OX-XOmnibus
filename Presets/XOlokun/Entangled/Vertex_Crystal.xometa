@@ -6,7 +6,7 @@
         "amount": 0.568,
         "engineA": "Origami",
         "engineB": "Obsidian",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

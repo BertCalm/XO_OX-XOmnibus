@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.882
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.893,
+    "brightness": 0.503,
+    "density": 0.954,
+    "movement": 0.909,
+    "space": 0.522,
+    "warmth": 0.95
+  },
+  "engines": [
+    "Overworld",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.559,
+    "COUPLING": 0.93,
+    "MOVEMENT": 0.909,
+    "SPACE": 0.522
+  },
+  "mood": "Flux",
+  "name": "Flux Titan 3",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.89,
+      "macro_movement": 0.914,
+      "macro_space": 0.501
+    },
+    "Overworld": {
+      "macro_character": 0.616,
+      "macro_coupling": 0.93,
+      "macro_movement": 0.921,
+      "macro_space": 0.502
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "hot",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

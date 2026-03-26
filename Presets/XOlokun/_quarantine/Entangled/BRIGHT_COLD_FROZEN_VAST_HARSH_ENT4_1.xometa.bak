@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.778
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.893,
+    "brightness": 0.882,
+    "density": 0.645,
+    "movement": 0.041,
+    "space": 0.9,
+    "warmth": 0.064
+  },
+  "engines": [
+    "Ombre",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.467,
+    "COUPLING": 0.778,
+    "MOVEMENT": 0.041,
+    "SPACE": 0.921
+  },
+  "mood": "Entangled",
+  "name": "Glass Cavern 2",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.476,
+      "macro_coupling": 0.675,
+      "macro_movement": 0.032,
+      "macro_space": 0.92
+    },
+    "Ombre": {
+      "macro_character": 0.458,
+      "macro_coupling": 0.642,
+      "macro_movement": 0.049,
+      "macro_space": 0.922
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "cold",
+    "vast",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

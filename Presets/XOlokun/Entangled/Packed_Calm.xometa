@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9685,
-        "source": "Oblique",
-        "target": "Osteria",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Oblique",
+        "engineB": "Osteria"
       }
     ]
   },

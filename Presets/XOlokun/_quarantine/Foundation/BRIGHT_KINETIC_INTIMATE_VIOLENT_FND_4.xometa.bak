@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.817
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.862,
+    "brightness": 0.917,
+    "density": 0.535,
+    "movement": 0.877,
+    "space": 0.068,
+    "warmth": 0.662
+  },
+  "engines": [
+    "Overbite",
+    "Origami"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "COUPLING": 0.776,
+    "MOVEMENT": 0.81,
+    "SPACE": 0.839
+  },
+  "mood": "Foundation",
+  "name": "Sunrise Surge",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.576,
+      "macro_coupling": 0.729,
+      "macro_movement": 0.305,
+      "macro_space": 0.2
+    },
+    "Overbite": {
+      "macro_character": 0.521,
+      "macro_coupling": 0.829,
+      "macro_movement": 0.142,
+      "macro_space": 0.347
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "kinetic",
+    "intimate",
+    "violent",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

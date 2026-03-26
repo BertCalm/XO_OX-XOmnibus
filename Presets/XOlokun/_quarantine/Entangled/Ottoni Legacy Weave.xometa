@@ -6,7 +6,7 @@
         "amount": 0.708,
         "engineA": "Ottoni",
         "engineB": "Overbite",
-        "type": "Pitch->Mod"
+        "type": "PitchToPitch"
       }
     ]
   },

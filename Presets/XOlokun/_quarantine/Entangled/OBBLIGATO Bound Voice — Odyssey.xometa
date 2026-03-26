@@ -6,7 +6,7 @@
         "amount": 0.801,
         "engineA": "Obbligato",
         "engineB": "Odyssey",
-        "type": "Amp->Space"
+        "type": "AmpToFilter"
       }
     ]
   },

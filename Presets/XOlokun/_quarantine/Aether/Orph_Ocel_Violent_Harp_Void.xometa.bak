@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Violent Harp Void",
+  "mood": "Aether",
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.69,
+      "macro_movement": 0.86,
+      "macro_coupling": 0.76,
+      "macro_space": 0.14
+    },
+    "Ocelot": {
+      "macro_character": 0.76,
+      "macro_movement": 0.64,
+      "macro_coupling": 0.61,
+      "macro_space": 0.28
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_SLAVE",
+    "source": "ORPHICA",
+    "target": "OCELOT",
+    "amount": 0.65
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.058,
+    "movement": 0.908,
+    "density": 0.925,
+    "space": 0.096,
+    "aggression": 0.941
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8914
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.5707,
+    "brightness": 0.9467,
+    "density": 0.8968,
+    "movement": 0.0375,
+    "space": 0.9584,
+    "warmth": 0.873
+  },
+  "engines": [
+    "Orbital",
+    "Overbite"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.6453,
+    "COUPLING": 0.8471,
+    "MOVEMENT": 0.0379,
+    "SPACE": 0.497
+  },
+  "mood": "Entangled",
+  "name": "Candlelight Cavern",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.5156,
+      "macro_coupling": 0.7725,
+      "macro_movement": 0.0416,
+      "macro_space": 0.2978
+    },
+    "Overbite": {
+      "macro_character": 0.775,
+      "macro_coupling": 0.9218,
+      "macro_movement": 0.0343,
+      "macro_space": 0.6961
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "dense",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

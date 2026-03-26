@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "OddOscar",
+        "type": "CHAOS_INJECT",
+        "amount": 0.976
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.912,
+    "brightness": 0.973,
+    "density": 0.434,
+    "movement": 0.984,
+    "space": 0.959,
+    "warmth": 0.952
+  },
+  "engines": [
+    "Ohm",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.962,
+    "COUPLING": 0.935,
+    "MOVEMENT": 0.709,
+    "SPACE": 0.959
+  },
+  "mood": "Family",
+  "name": "Eddy Radiant",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.962,
+      "macro_coupling": 0.935,
+      "macro_movement": 0.709,
+      "macro_space": 0.959
+    },
+    "Ohm": {
+      "macro_character": 0.962,
+      "macro_coupling": 0.935,
+      "macro_movement": 0.709,
+      "macro_space": 0.959
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX biophonic synthesis (coral noise src1Type=5) driving OUROBOROS FM injection via AudioToFM. The reef's biological amplitude modulates the chaos attractor injection parameter \u2014 more coral activity = more chaotic FM.",
+  "description": "OBRIX biophonic synthesis (coral noise src1Type=5) driving OUROBOROS FM injection via AudioToFM. The reef's biological amplitude modulates the chaos attractor injection parameter — more coral activity = more chaotic FM.",
   "tags": [
     "coupling",
     "obrix",
@@ -24,7 +24,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
@@ -138,10 +138,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": 0,
-        "target": 1,
         "type": "AudioToFM",
-        "amount": 0.14
+        "amount": 0.14,
+        "engineA": 0,
+        "engineB": 1
       }
     ]
   },

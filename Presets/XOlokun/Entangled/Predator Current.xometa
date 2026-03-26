@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Oblong",
-        "target": "Orca",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer",
+        "engineA": "Oblong",
+        "engineB": "Orca"
       }
     ]
   },

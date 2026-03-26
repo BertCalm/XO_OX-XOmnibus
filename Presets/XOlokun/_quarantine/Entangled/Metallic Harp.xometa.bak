@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.836,
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "Pitch->Mod"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "ORPHICA and OTTONI coupled via Pitch->Mod. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.482,
+    "brightness": 0.684,
+    "density": 0.635,
+    "movement": 0.587,
+    "space": 0.6,
+    "warmth": 0.545
+  },
+  "engines": [
+    "Orphica",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "BLOOM",
+    "ENTANGLE",
+    "AIR"
+  ],
+  "mood": "Entangled",
+  "name": "Metallic Harp",
+  "parameters": {
+    "Orphica": {},
+    "Ottoni": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "constellation",
+    "orphica",
+    "ottoni"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

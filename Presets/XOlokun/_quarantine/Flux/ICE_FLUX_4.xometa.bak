@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osteria",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.7024
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6062,
+    "brightness": 0.1084,
+    "density": 0.9039,
+    "movement": 0.4346,
+    "space": 0.3137,
+    "warmth": 0.0465
+  },
+  "engines": [
+    "Oceanic",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3642,
+    "COUPLING": 0.6642,
+    "MOVEMENT": 0.07,
+    "SPACE": 0.3302
+  },
+  "mood": "Flux",
+  "name": "ICE FLUX 4",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.5766,
+      "macro_coupling": 0.7088,
+      "macro_movement": 0.2547,
+      "macro_space": 0.0017
+    },
+    "Osteria": {
+      "macro_character": 0.9256,
+      "macro_coupling": 0.7194,
+      "macro_movement": 0.5385,
+      "macro_space": 0.742
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

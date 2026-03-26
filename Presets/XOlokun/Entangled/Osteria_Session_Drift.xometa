@@ -111,7 +111,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Odyssey",
-        "type": "Sympathy->DriftDepth",
+        "type": "AudioToWavetable",
         "amount": 0.4
       }
     ]

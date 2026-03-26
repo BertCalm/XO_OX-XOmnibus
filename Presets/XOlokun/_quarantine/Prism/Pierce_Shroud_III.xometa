@@ -5,7 +5,7 @@
       {
         "engineA": "Orbital",
         "engineB": "Obbligato",
-        "type": "FILTER_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.9
       }
     ]

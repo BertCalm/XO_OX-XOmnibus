@@ -5,9 +5,9 @@
       {
         "amount": 0.731,
         "description": "Osteria drives Onset via ResonanceChain",
-        "source": "Osteria",
-        "target": "Onset",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Osteria",
+        "engineB": "Onset"
       }
     ]
   },

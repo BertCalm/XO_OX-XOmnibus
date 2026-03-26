@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.308,
-      "destination": "OCELOT",
-      "source": "OUROBOROS",
-      "type": "SPATIAL_COUPLE"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.308,
+        "type": "AudioToWavetable",
+        "engineA": "OUROBOROS",
+        "engineB": "OCELOT"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
   "dna": {
     "aggression": 0.407,
     "brightness": 0.919,

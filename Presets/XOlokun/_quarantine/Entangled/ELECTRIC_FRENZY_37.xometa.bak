@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Octopus",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.908
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.937,
+    "brightness": 0.801,
+    "density": 0.25,
+    "movement": 0.946,
+    "space": 0.641,
+    "warmth": 0.138
+  },
+  "engines": [
+    "Obese",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.555,
+    "COUPLING": 0.103,
+    "MOVEMENT": 0.946,
+    "SPACE": 0.846
+  },
+  "mood": "Entangled",
+  "name": "ELECTRIC FRENZY 37",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.984,
+      "macro_coupling": 0.462,
+      "macro_movement": 0.917,
+      "macro_space": 0.282
+    },
+    "Octopus": {
+      "macro_character": 0.382,
+      "macro_coupling": 0.527,
+      "macro_movement": 0.975,
+      "macro_space": 0.966
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frantic",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

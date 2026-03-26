@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.635,
+        "engineA": "Outwit",
+        "engineB": "Opal",
+        "type": "GRAIN_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OPAL grain scatter rate syncs OUTWIT evolve steps — granular cloud breathes with the 8-arm pattern",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.65,
+    "density": 0.65,
+    "movement": 0.775,
+    "space": 0.65,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Outwit",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.605,
+    "COUPLING": 0.786,
+    "MOVEMENT": 0.499,
+    "SPACE": 0.612
+  },
+  "mood": "Entangled",
+  "name": "Grain Automata",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.163,
+      "owit_ampRelease": 0.406,
+      "owit_armStagger": 0.268,
+      "owit_arms": 7,
+      "owit_borderMode": 1,
+      "owit_cellSize": 0.533,
+      "owit_chroma1": 0.749,
+      "owit_chroma2": 0.457,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.505,
+      "owit_density": 0.413,
+      "owit_evolveRate": 0.733,
+      "owit_filterCutoff": 0.79,
+      "owit_filterReso": 0.487,
+      "owit_inkCloudMix": 0.166,
+      "owit_mutateProb": 0.307,
+      "owit_outputLevel": 0.832,
+      "owit_pitchSpread": 0.526,
+      "owit_polyDepth": 0.491,
+      "owit_rule": 54
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "opal",
+    "granular",
+    "emergent"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

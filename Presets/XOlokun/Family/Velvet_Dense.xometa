@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "OddfeliX",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.897
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, dense bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Warm and familiar, dark, dense bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

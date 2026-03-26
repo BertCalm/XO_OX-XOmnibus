@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Osprey",
         "engineB": "Orphica",
-        "type": "LFO->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

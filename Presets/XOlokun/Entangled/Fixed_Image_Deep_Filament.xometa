@@ -6,7 +6,7 @@
         "amount": 0.541,
         "engineA": "Obscura",
         "engineB": "Owlfish",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

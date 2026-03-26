@@ -6,9 +6,9 @@
     "Outwit",
     "Opal"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT step rate modulates OPAL granular position \u2014 faster CA stepping moves the read head through the grain cloud. The octopus conducts the granular texture.",
+  "description": "OUTWIT step rate modulates OPAL granular position — faster CA stepping moves the read head through the grain cloud. The octopus conducts the granular texture.",
   "tags": [
     "entangled",
     "ca-to-position",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -66,11 +66,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "AudioToFM",
         "amount": 0.45,
-        "description": "Outwit step rate modulates Opal granular position read head"
+        "description": "Outwit step rate modulates Opal granular position read head",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

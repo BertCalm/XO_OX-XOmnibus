@@ -6,7 +6,7 @@
         "amount": 0.686,
         "engineA": "Obbligato",
         "engineB": "Ohm",
-        "type": "LFO->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

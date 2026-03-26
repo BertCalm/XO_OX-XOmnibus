@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ouroboros",
+        "engineB": "Osprey",
+        "type": "CV->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "ShoreSystem coastlines (B012) navigated by chaotic flight paths. The serpent dives like a raptor.",
+  "dna": {
+    "aggression": 0.63,
+    "brightness": 0.853,
+    "density": 1.0,
+    "movement": 0.805,
+    "space": 0.445,
+    "warmth": 0.46
+  },
+  "engines": [
+    "Ouroboros",
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Coastal Chaos",
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 2.0
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.6,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.35,
+      "ouro_rate": 80.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "shore",
+    "coastal",
+    "B012",
+    "entangled",
+    "ouroboros",
+    "osprey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

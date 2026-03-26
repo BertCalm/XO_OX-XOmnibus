@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Oracle",
-        "type": "FREQUENCY_MODULATION",
+        "type": "AudioToFM",
         "amount": 0.558
       }
     ]

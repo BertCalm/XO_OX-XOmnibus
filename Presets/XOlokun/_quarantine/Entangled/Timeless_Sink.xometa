@@ -6,7 +6,7 @@
         "amount": 0.652,
         "engineA": "Owlfish",
         "engineB": "Ottoni",
-        "type": "ENVELOPE_FOLLOW"
+        "type": "EnvToDecay"
       }
     ]
   },

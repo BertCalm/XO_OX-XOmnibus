@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8,
-        "source": "Octopus",
-        "target": "Overdub",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend",
+        "engineA": "Octopus",
+        "engineB": "Overdub"
       }
     ]
   },

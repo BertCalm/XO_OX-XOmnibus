@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obsidian",
+        "type": "PITCH_MOD",
+        "amount": 0.78
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.11,
+    "density": 0.32,
+    "movement": 0.48,
+    "space": 0.73,
+    "warmth": 0.28
+  },
+  "engines": [
+    "Obsidian",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "COUPLING": 0.77,
+    "MOVEMENT": 0.48,
+    "SPACE": 0.73
+  },
+  "mood": "Entangled",
+  "name": "Night Tide Expanse",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.83,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.35,
+      "macro_space": 0.35
+    },
+    "Oceanic": {
+      "macro_character": 0.21,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.12,
+      "macro_space": 0.89
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

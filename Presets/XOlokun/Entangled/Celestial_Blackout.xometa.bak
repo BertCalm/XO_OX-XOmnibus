@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Overdub",
+        "type": "RING_MOD",
+        "amount": 0.61
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.13,
+    "density": 0.53,
+    "movement": 0.49,
+    "space": 0.79,
+    "warmth": 0.31
+  },
+  "engines": [
+    "Ombre",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.49,
+    "SPACE": 0.79
+  },
+  "mood": "Entangled",
+  "name": "Celestial Blackout",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.26,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.4,
+      "macro_space": 0.36
+    },
+    "Overdub": {
+      "macro_character": 0.73,
+      "macro_coupling": 0.77,
+      "macro_movement": 0.52,
+      "macro_space": 0.16,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, expansive sound. Let it breathe — the space is the instrument."
+}

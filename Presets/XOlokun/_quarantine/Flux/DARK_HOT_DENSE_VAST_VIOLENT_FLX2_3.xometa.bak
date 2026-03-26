@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.427
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.986,
+    "brightness": 0.0749,
+    "density": 0.9834,
+    "movement": 0.3093,
+    "space": 0.9307,
+    "warmth": 0.907
+  },
+  "engines": [
+    "Origami",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4779,
+    "COUPLING": 0.9749,
+    "MOVEMENT": 0.2975,
+    "SPACE": 0.9249
+  },
+  "mood": "Flux",
+  "name": "Rust Storm",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.4781,
+      "macro_coupling": 0.9598,
+      "macro_movement": 0.2798,
+      "macro_space": 0.9087
+    },
+    "Origami": {
+      "macro_character": 0.4778,
+      "macro_coupling": 0.99,
+      "macro_movement": 0.3152,
+      "macro_space": 0.9411
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

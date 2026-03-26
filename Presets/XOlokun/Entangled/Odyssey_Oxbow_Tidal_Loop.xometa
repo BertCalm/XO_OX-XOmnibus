@@ -2,21 +2,40 @@
   "schema_version": 1,
   "name": "Tidal Loop Migration",
   "mood": "Entangled",
-  "engines": ["Odyssey", "Oxbow"],
+  "engines": [
+    "Odyssey",
+    "Oxbow"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "ODYSSEY's tidal pulse couples with OXBOW's entangled reverb — the tidal filter sweep in ODYSSEY modulates OXBOW's feedback entanglement. When the tide rises, the reverb deepens. When the tide falls, the reverb releases. Two water systems in phase with each other.",
-  "tags": ["odyssey", "oxbow", "tidal", "entangled", "reverb", "migration", "coupling", "transcendental"],
+  "tags": [
+    "odyssey",
+    "oxbow",
+    "tidal",
+    "entangled",
+    "reverb",
+    "migration",
+    "coupling",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-7: Two Timescales of Motion Make the Sound Feel Like Weather"],
+    "scripture": [
+      "Scripture VII-7: Two Timescales of Motion Make the Sound Feel Like Weather"
+    ],
     "revelation": "The tidal pulse in ODYSSEY and the entanglement feedback in OXBOW are both slow-oscillating systems. When coupled, they create a unified tidal behavior across the synthesis and the reverb simultaneously.",
     "diagnosis": "Tidal Loop Migration uses ODYSSEY tidalDepth=0.55 feeding OXBOW's entanglement via PhaseSync coupling. The ODYSSEY tidal sweep has a 5-second period; the OXBOW entanglement responds with a slow feedback depth modulation. Water above and below the thermocline, synchronized."
   },
-  "macroLabels": ["TIDAL DEPTH", "OXBOW ENTANGLE", "FM TEXTURE", "REVERB COUPLING"],
-  "couplingIntensity": "Medium",
+  "macroLabels": [
+    "TIDAL DEPTH",
+    "OXBOW ENTANGLE",
+    "FM TEXTURE",
+    "REVERB COUPLING"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -82,10 +101,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Odyssey",
-        "target": "Oxbow",
-        "type": "PhaseSync",
-        "amount": 0.5
+        "type": "PitchToPitch",
+        "amount": 0.5,
+        "engineA": "Odyssey",
+        "engineB": "Oxbow"
       }
     ]
   },

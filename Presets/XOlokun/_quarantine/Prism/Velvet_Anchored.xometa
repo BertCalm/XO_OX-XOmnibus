@@ -5,7 +5,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Ottoni",
-        "type": "LFO_SYNC",
+        "type": "LFOToPitch",
         "amount": 0.71
       }
     ]

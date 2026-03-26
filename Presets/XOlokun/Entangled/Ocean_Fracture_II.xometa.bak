@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8074,
+        "source": "Ole",
+        "target": "Overworld",
+        "type": "PITCH_ENTANGLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Cold Sparse Vast Violent character entanglement — OVERWORLD × OLE via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9607,
+    "brightness": 0.6971,
+    "density": 0.1277,
+    "movement": 0.3509,
+    "space": 0.9702,
+    "warmth": 0.0632
+  },
+  "engines": [
+    "Overworld",
+    "Ole"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "CHIP",
+    "CRT"
+  ],
+  "macros": {
+    "CHARACTER": 0.3802,
+    "COUPLING": 0.8074,
+    "MOVEMENT": 0.3509,
+    "SPACE": 0.9702
+  },
+  "mood": "Entangled",
+  "name": "Ocean Fracture II",
+  "parameters": {
+    "Ole": {
+      "amp_attack": 0.2731,
+      "amp_release": 0.6772,
+      "coupling_level": 0.913,
+      "density": 0.0989,
+      "drive": 0.8407,
+      "filter_cutoff": 0.7178,
+      "filter_resonance": 0.56,
+      "macro_character": 0.4998,
+      "macro_coupling": 0.9319,
+      "macro_movement": 0.3584,
+      "macro_space": 0.984,
+      "output_level": 0.7714,
+      "reverb_mix": 0.6868,
+      "reverb_size": 0.8025
+    },
+    "Overworld": {
+      "amp_attack": 0.3396,
+      "amp_release": 0.7033,
+      "coupling_level": 0.9136,
+      "density": 0.1626,
+      "drive": 0.8278,
+      "filter_cutoff": 0.6604,
+      "filter_resonance": 0.5555,
+      "macro_character": 0.5283,
+      "macro_coupling": 0.9146,
+      "macro_movement": 0.3412,
+      "macro_space": 0.9671,
+      "output_level": 0.763,
+      "reverb_mix": 0.6462,
+      "reverb_size": 0.7949
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "cold",
+    "sparse",
+    "vast",
+    "violent",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

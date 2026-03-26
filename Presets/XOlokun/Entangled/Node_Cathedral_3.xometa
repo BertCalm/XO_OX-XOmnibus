@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Oblong",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.7573
       }
     ]

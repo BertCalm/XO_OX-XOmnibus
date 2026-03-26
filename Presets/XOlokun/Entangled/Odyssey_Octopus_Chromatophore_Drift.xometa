@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Odyssey",
-        "target": "Octopus",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Odyssey",
+        "engineB": "Octopus"
       }
     ]
   },

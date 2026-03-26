@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Obscura",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.6115
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3337,
+    "brightness": 0.9849,
+    "density": 0.9705,
+    "movement": 0.693,
+    "space": 0.0849,
+    "warmth": 0.9241
+  },
+  "engines": [
+    "Osprey",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9767,
+    "COUPLING": 0.6115,
+    "MOVEMENT": 0.6804,
+    "SPACE": 0.0849
+  },
+  "mood": "Aether",
+  "name": "Radiant Thick",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.9722,
+      "macro_coupling": 0.9614,
+      "macro_movement": 0.6713,
+      "macro_space": 0.0687
+    },
+    "Osprey": {
+      "macro_character": 0.9812,
+      "macro_coupling": 0.9719,
+      "macro_movement": 0.6894,
+      "macro_space": 0.0644
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "dense",
+    "lush"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

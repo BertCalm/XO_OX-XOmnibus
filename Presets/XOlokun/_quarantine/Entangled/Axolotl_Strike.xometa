@@ -6,7 +6,7 @@
         "amount": 0.89,
         "engineA": "OddOscar",
         "engineB": "Orca",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

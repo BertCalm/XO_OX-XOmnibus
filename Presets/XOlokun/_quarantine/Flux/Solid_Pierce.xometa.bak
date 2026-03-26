@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Chaotic",
+  "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.916,
+    "brightness": 0.493,
+    "density": 0.957,
+    "movement": 0.521,
+    "space": 0.09,
+    "warmth": 0.908
+  },
+  "engines": [
+    "Optic"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Solid Pierce",
+  "parameters": {
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "warm",
+    "aggressive",
+    "dense",
+    "tight",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

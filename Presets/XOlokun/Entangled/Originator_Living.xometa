@@ -6,7 +6,7 @@
         "amount": 0.458,
         "engineA": "Origami",
         "engineB": "Organon",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },

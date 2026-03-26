@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.5668
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0319,
+    "brightness": 0.585,
+    "density": 0.4774,
+    "movement": 0.9717,
+    "space": 0.0541,
+    "warmth": 0.9898
+  },
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5678,
+    "COUPLING": 0.5668,
+    "MOVEMENT": 0.9803,
+    "SPACE": 0.0541
+  },
+  "mood": "Aether",
+  "name": "Grain Ripple 2",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.5626,
+      "macro_coupling": 0.4825,
+      "macro_movement": 0.9792,
+      "macro_space": 0.0668
+    },
+    "Organon": {
+      "macro_character": 0.5731,
+      "macro_coupling": 0.4569,
+      "macro_movement": 0.9814,
+      "macro_space": 0.0547
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "hot",
+    "kinetic",
+    "gentle",
+    "tender"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

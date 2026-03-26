@@ -6,7 +6,7 @@
         "amount": 0.695,
         "engineA": "Obsidian",
         "engineB": "Optic",
-        "type": "Env->Amp"
+        "type": "AmpToFilter"
       }
     ]
   },

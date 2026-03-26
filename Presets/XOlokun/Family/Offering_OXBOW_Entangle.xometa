@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "created": "2026-03-21",
   "description": "OFFERING drums entangled with OXBOW reverb engine. Each kick hit seeds the FDN with new phase energy — the reverb tail becomes rhythmically informed, not just a wash. Bay Area fog softens the initial transients for a seamless drum-space conversation.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.75,
     "warmth": 0.65
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OXBOW Entangle",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["oxbow", "coupling", "reverb", "bay-area", "space", "family"],
+  "tags": [
+    "oxbow",
+    "coupling",
+    "reverb",
+    "bay-area",
+    "space",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.55, "M2": 0.55, "M3": 0.0, "M4": 0.1}
+  "macros": {
+    "M1": 0.55,
+    "M2": 0.55,
+    "M3": 0.0,
+    "M4": 0.1
+  }
 }

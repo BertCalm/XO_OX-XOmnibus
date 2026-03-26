@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7292,
-        "source": "Orphica",
-        "target": "Octopus",
-        "type": "SPECTRAL_MORPH"
+        "type": "EnvToMorph",
+        "engineA": "Orphica",
+        "engineB": "Octopus"
       }
     ]
   },

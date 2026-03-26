@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.717,
-        "source": "Outwit",
-        "target": "Origami",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Outwit",
+        "engineB": "Origami"
       }
     ]
   },

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX stress accumulator (parasite mode) driving ORGANISM CA rule parameter via EnvToMorph. High velocity OBRIX notes \u2192 stress accumulation \u2192 CA rule shifts between different cellular automata patterns. The reef is evolving the colony.",
+  "description": "OBRIX stress accumulator (parasite mode) driving ORGANISM CA rule parameter via EnvToMorph. High velocity OBRIX notes → stress accumulation → CA rule shifts between different cellular automata patterns. The reef is evolving the colony.",
   "tags": [
     "coupling",
     "obrix",
@@ -25,7 +25,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
@@ -155,10 +155,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": 0,
-        "target": 1,
         "type": "EnvToMorph",
-        "amount": 0.14
+        "amount": 0.14,
+        "engineA": 0,
+        "engineB": 1
       }
     ]
   },

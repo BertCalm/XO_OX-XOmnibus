@@ -12,7 +12,7 @@
         "amount": 0.45,
         "engineA": "Onset",
         "engineB": "Ocelot",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

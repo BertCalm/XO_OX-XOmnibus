@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.899
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.839,
+    "brightness": 0.607,
+    "density": 0.637,
+    "movement": 0.943,
+    "space": 0.621,
+    "warmth": 0.352
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.721,
+    "COUPLING": 0.659,
+    "MOVEMENT": 0.943,
+    "SPACE": 0.838
+  },
+  "mood": "Entangled",
+  "name": "BREAKNECK 33",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.745,
+      "macro_coupling": 0.049,
+      "macro_movement": 0.937,
+      "macro_space": 0.606
+    },
+    "Oracle": {
+      "macro_character": 0.497,
+      "macro_coupling": 0.904,
+      "macro_movement": 0.949,
+      "macro_space": 0.286
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frantic",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

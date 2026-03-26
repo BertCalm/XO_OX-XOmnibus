@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Underwater Impact",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET transients filter through OCEANIC's pressure model. Drum hits compress and expand as if heard from underwater. Sonar percussion.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "oceanic",
+    "drum",
+    "underwater",
+    "sonar"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.75,
+    "density": 0.68,
+    "space": 0.58,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_level": 0.85,
+      "perc_v3_level": 0.6,
+      "perc_macro_punch": 0.7
+    },
+    "Oceanic": {
+      "oce_depth": 0.6,
+      "oce_pressure": 0.5,
+      "oce_filterCut": 3000.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oceanic",
+        "type": "Amp->Filter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Oceanic",
+        "engineB": "Onset",
+        "type": "Env->Character",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

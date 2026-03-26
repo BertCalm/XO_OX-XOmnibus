@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.62
       }
     ]
@@ -60,5 +60,6 @@
     "memory"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

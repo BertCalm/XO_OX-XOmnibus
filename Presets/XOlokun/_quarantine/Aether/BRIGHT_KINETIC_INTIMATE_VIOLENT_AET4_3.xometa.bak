@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5074
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9046,
+    "brightness": 0.9573,
+    "density": 0.6176,
+    "movement": 0.9333,
+    "space": 0.0322,
+    "warmth": 0.3191
+  },
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6382,
+    "COUPLING": 0.5074,
+    "MOVEMENT": 0.9333,
+    "SPACE": 0.0322
+  },
+  "mood": "Aether",
+  "name": "Quartz Drift 2",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.6611,
+      "macro_coupling": 0.5124,
+      "macro_movement": 0.3804,
+      "macro_space": 0.6983
+    },
+    "Origami": {
+      "macro_character": 0.5865,
+      "macro_coupling": 0.3077,
+      "macro_movement": 0.3815,
+      "macro_space": 0.5219
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

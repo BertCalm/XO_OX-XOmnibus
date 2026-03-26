@@ -6,7 +6,7 @@
         "amount": 0.748,
         "engineA": "Outwit",
         "engineB": "Optic",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

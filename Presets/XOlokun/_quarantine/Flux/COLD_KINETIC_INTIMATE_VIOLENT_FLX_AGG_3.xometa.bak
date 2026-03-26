@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Origami",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.983
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.877,
+    "brightness": 0.444,
+    "density": 0.351,
+    "movement": 0.955,
+    "space": 0.025,
+    "warmth": 0.053
+  },
+  "engines": [
+    "Optic",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.598,
+    "COUPLING": 0.903,
+    "MOVEMENT": 0.955,
+    "SPACE": 0.025
+  },
+  "mood": "Flux",
+  "name": "Node Stream",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.467,
+      "macro_coupling": 0.903,
+      "macro_movement": 0.915,
+      "macro_space": 0.0
+    },
+    "Origami": {
+      "macro_character": 0.728,
+      "macro_coupling": 0.901,
+      "macro_movement": 0.933,
+      "macro_space": 0.009
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "cold",
+    "kinetic",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

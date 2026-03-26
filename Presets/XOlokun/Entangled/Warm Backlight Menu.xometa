@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Optic",
         "engineB": "Osteria",
-        "type": "PitchSync"
+        "type": "PitchToPitch"
       },
       {
         "amount": 0.4,
         "engineA": "Osteria",
         "engineB": "Optic",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

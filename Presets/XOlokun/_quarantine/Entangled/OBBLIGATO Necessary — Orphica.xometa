@@ -6,7 +6,7 @@
         "amount": 0.668,
         "engineA": "Obbligato",
         "engineB": "Orphica",
-        "type": "LFO->Pan"
+        "type": "LFOToPitch"
       }
     ]
   },

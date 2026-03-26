@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Opal",
+        "type": "RHYTHMIC_LOCK",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Ole drama macro erupts inside opal cloud — the carnival explosion granularized",
+  "engines": [
+    "Opal",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Festival Shimmer",
+  "parameters": {
+    "Opal": {},
+    "Ole": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "ole",
+    "granular"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

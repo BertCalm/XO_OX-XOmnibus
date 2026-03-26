@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Oceanic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.679
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6283,
+    "brightness": 0.0162,
+    "density": 0.0454,
+    "movement": 0.3448,
+    "space": 0.9529,
+    "warmth": 0.7885
+  },
+  "engines": [
+    "Orca",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8115,
+    "COUPLING": 0.7762,
+    "MOVEMENT": 0.0631,
+    "SPACE": 0.4577
+  },
+  "mood": "Flux",
+  "name": "Dusk Ethereal",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.1751,
+      "macro_coupling": 0.4646,
+      "macro_movement": 0.7791,
+      "macro_space": 0.6954
+    },
+    "Orca": {
+      "macro_character": 0.3325,
+      "macro_coupling": 0.546,
+      "macro_movement": 0.0443,
+      "macro_space": 0.8135
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

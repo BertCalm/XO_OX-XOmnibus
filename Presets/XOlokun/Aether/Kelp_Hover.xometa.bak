@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.577,
+      "destination": "ORCA",
+      "source": "OWLFISH",
+      "type": "VELOCITY_COUPLE"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "dna": {
+    "aggression": 0.587,
+    "brightness": 0.419,
+    "density": 0.938,
+    "movement": 0.049,
+    "space": 0.08,
+    "warmth": 0.892
+  },
+  "engines": [
+    "Owlfish",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Kelp Hover",
+  "parameters": {
+    "Orca": {
+      "level": 0.771,
+      "pan": 0.046
+    },
+    "Owlfish": {
+      "level": 0.72,
+      "pan": 0.084
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

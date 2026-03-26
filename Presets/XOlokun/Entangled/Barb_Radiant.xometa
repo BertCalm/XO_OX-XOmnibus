@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8122,
-        "source": "Owlfish",
-        "target": "Ohm",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM",
+        "engineA": "Owlfish",
+        "engineB": "Ohm"
       }
     ]
   },

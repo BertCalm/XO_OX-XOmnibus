@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Resonant Fault",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBSCURA coupling. Dark, low-register voice sitting directly on the Kuramoto critical boundary. OBSCURA's spring system creates fault lines through the partial field — groups of partials snap in and out of sync as the springs oscillate. Moderate ResSens ensures acausal clusters form along the fault boundaries. The geology of a singing earthquake.",
+  "tags": [
+    "entangled",
+    "obscura",
+    "dark",
+    "resonant",
+    "fault-line"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.4,
+      "opera_voice": 0.3,
+      "opera_stage": 0.45,
+      "opera_vowelA": 3,
+      "opera_vowelB": 4,
+      "opera_breath": 0.2,
+      "opera_effort": 0.55,
+      "opera_partials": 36,
+      "opera_resSens": 0.65,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": -7,
+      "opera_vibRate": 4.5,
+      "opera_vibDepth": 0.25,
+      "opera_tilt": -0.25,
+      "opera_filterCutoff": 4500.0,
+      "opera_filterRes": 0.1,
+      "opera_filterEnvAmt": 0.25,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.35,
+      "opera_filterS": 0.5,
+      "opera_filterR": 0.7,
+      "opera_ampA": 0.08,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.85,
+      "opera_ampR": 0.8,
+      "opera_lfo1Rate": 0.07,
+      "opera_lfo1Depth": 0.15,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 2.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.35,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.12,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Obscura",
+        "target": "Opera",
+        "type": "PhaseModulation",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

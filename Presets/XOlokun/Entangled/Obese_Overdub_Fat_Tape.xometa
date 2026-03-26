@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Overdub",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.75
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, dense bass. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, warm, dense bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

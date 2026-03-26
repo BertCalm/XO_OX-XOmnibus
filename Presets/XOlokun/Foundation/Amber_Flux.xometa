@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Overdub",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.942
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, dark, warm bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Anchored and grounding, dark, warm bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

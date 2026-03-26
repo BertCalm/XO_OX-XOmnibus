@@ -6,9 +6,9 @@
     "Outwit",
     "Odyssey"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT's chaotic LFO sent as pitch modulation to ODYSSEY \u2014 the rule-30 chaos pattern becomes a pitch-bend source. Organized chaos as expression input.",
+  "description": "OUTWIT's chaotic LFO sent as pitch modulation to ODYSSEY — the rule-30 chaos pattern becomes a pitch-bend source. Organized chaos as expression input.",
   "tags": [
     "entangled",
     "pitch-mod",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -65,11 +65,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Odyssey",
         "type": "LFOToPitch",
         "amount": 0.45,
-        "description": "Outwit rule-30 chaos drives Odyssey pitch modulation"
+        "description": "Outwit rule-30 chaos drives Odyssey pitch modulation",
+        "engineA": "Outwit",
+        "engineB": "Odyssey"
       }
     ]
   },

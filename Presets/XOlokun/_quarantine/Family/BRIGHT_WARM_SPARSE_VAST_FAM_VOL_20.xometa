@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Osprey",
-        "type": "ENVELOPE_MIRROR",
+        "type": "EnvToDecay",
         "amount": 0.909
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

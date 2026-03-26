@@ -6,12 +6,12 @@
         "amount": 0.574,
         "engineA": "Overlap",
         "engineB": "OddOscar",
-        "type": "AMP_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Axolotl gill pulse feeds OVERLAP modulation rate \u2014 regenerative rhythm in deep reflective water",
+  "description": "Axolotl gill pulse feeds OVERLAP modulation rate — regenerative rhythm in deep reflective water",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.525,

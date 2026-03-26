@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.54,
-      "destination": "Obbligato",
-      "source": "Ottoni",
-      "type": "EnvToMorph"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.54,
+        "type": "EnvToMorph",
+        "engineA": "Ottoni",
+        "engineB": "Obbligato"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "The Great Lakes swallow the brass. FOREIGN at maximum — no longer earthly cousins.",

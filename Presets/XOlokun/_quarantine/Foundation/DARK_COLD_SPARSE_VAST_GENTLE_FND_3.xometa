@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Obsidian",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.842
       }
     ]

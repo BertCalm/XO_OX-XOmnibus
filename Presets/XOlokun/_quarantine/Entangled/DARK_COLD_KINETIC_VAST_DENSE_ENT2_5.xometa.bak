@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orca",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.662
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.334,
+    "brightness": 0.087,
+    "density": 0.99,
+    "movement": 0.985,
+    "space": 0.983,
+    "warmth": 0.132
+  },
+  "engines": [
+    "Onset",
+    "Orca"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.11,
+    "SPACE": 0.662,
+    "PUNCH": 0.985,
+    "MUTATE": 0.983
+  },
+  "mood": "Entangled",
+  "name": "DARK COLD KINETIC VAST DENS... (Onset I)",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.11,
+      "macro_coupling": 0.662,
+      "macro_movement": 0.985,
+      "macro_space": 0.983
+    },
+    "Orca": {
+      "macro_character": 0.146,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.955,
+      "macro_space": 0.98
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "kinetic",
+    "dense",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

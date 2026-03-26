@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Jam Split",
+  "mood": "Prism",
+  "engines": [
+    "Ohm",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.62,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.89,
+      "macro_space": 0.43
+    },
+    "Ottoni": {
+      "macro_character": 0.86,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.54,
+      "macro_space": 0.13
+    }
+  },
+  "coupling": {
+    "type": "LFO_SYNC",
+    "source": "OHM",
+    "target": "OTTONI",
+    "amount": 0.71
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.914,
+    "warmth": 0.924,
+    "movement": 0.08,
+    "density": 0.472,
+    "space": 0.919,
+    "aggression": 0.085
+  }
+}

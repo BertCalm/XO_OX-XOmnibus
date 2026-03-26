@@ -6,7 +6,7 @@
         "amount": 0.53,
         "engineA": "Outwit",
         "engineB": "Optic",
-        "type": "SYNC_LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

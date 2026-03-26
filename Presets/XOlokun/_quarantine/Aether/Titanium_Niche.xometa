@@ -5,7 +5,7 @@
       {
         "engineA": "Overbite",
         "engineB": "Ohm",
-        "type": "FILTER_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.75
       }
     ]

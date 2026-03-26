@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Onset",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.68
+      }
+    ]
+  },
+  "description": "Oblique's angular cuts driving Onset's drums into a cold relentless storm.",
+  "engines": [
+    "Oblique",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.75,
+    "SPACE": 0.72,
+    "PUNCH": 0.93,
+    "MUTATE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Angular Percussion Storm",
+  "parameters": {
+    "Oblique": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "strategy": "Fast Cold",
+  "tags": [
+    "entangled",
+    "cold",
+    "fast",
+    "angular",
+    "percussive"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null,
+  "tier": "awakening"
+}

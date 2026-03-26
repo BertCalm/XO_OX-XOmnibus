@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC",
+        "amount": 0.821
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.607,
+    "brightness": 0.912,
+    "density": 0.984,
+    "movement": 0.089,
+    "space": 0.425,
+    "warmth": 0.965
+  },
+  "engines": [
+    "Ouroboros",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.795,
+    "COUPLING": 0.673,
+    "MOVEMENT": 0.089,
+    "SPACE": 0.425
+  },
+  "mood": "Flux",
+  "name": "Peach Molten",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.909,
+      "macro_coupling": 0.692,
+      "macro_movement": 0.104,
+      "macro_space": 0.414
+    },
+    "Ouroboros": {
+      "macro_character": 0.901,
+      "macro_coupling": 0.699,
+      "macro_movement": 0.073,
+      "macro_space": 0.455
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "warm",
+    "dense",
+    "suspended-chaos"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

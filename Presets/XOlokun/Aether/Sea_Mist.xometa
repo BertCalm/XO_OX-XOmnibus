@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.388,
-      "destination": "OSTERIA",
-      "source": "ORACLE",
-      "type": "PITCH_SYNC"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.388,
+        "type": "PitchToPitch",
+        "engineA": "ORACLE",
+        "engineB": "OSTERIA"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "dna": {
     "aggression": 0.064,
     "brightness": 0.93,

@@ -6,7 +6,7 @@
         "amount": 0.743,
         "engineA": "Overbite",
         "engineB": "Osteria",
-        "type": "rhythm_sync"
+        "type": "RhythmToBlend"
       }
     ]
   },

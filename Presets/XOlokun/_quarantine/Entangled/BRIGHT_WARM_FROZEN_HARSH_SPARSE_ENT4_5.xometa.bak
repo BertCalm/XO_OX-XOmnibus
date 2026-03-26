@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Obsidian",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.777
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.981,
+    "brightness": 0.97,
+    "density": 0.081,
+    "movement": 0.032,
+    "space": 0.453,
+    "warmth": 0.988
+  },
+  "engines": [
+    "Outwit",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.99,
+    "COUPLING": 0.777,
+    "MOVEMENT": 0.029,
+    "SPACE": 0.456
+  },
+  "mood": "Entangled",
+  "name": "Honey Strike",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.069,
+      "macro_movement": 0.028,
+      "macro_space": 0.458
+    },
+    "Outwit": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.107,
+      "macro_movement": 0.03,
+      "macro_space": 0.453
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "sparse",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

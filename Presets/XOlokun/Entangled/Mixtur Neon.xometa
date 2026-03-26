@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OddfeliX's neon-bright harmonics dissolve into XOwlfish's Mixtur-Trautonium oscillator's character \u2014 a clinical-electric tonal union that sharpens both engines into one coherent voice.",
+  "description": "OddfeliX's neon-bright harmonics dissolve into XOwlfish's Mixtur-Trautonium oscillator's character — a clinical-electric tonal union that sharpens both engines into one coherent voice.",
   "tags": [
     "entangled",
     "coupling",
@@ -64,7 +64,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Owlfish",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.65
       }
     ]

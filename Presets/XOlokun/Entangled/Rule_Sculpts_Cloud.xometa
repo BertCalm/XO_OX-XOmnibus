@@ -23,7 +23,7 @@
     "CHROMATOPHORE",
     "DEN"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -143,11 +143,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "EnvToMorph",
         "amount": 0.12,
-        "description": "OUTWIT CA rule envelope slowly sculpts OPAL grain morph \u2014 each rule finds a new cloud position"
+        "description": "OUTWIT CA rule envelope slowly sculpts OPAL grain morph — each rule finds a new cloud position",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

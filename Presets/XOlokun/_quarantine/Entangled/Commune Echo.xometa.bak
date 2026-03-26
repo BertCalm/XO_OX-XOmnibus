@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ohm",
+        "type": "SYMPATHETIC_RESONANCE",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Folk warmth held inside a dub delay loop — communal presence echoing forward in time",
+  "engines": [
+    "Overdub",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Commune Echo",
+  "parameters": {
+    "Overdub": {},
+    "Ohm": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "ohm",
+    "dub"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

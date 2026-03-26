@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obsidian",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.521
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.874,
+    "brightness": 0.955,
+    "density": 0.924,
+    "movement": 0.923,
+    "space": 0.656,
+    "warmth": 0.079
+  },
+  "engines": [
+    "Oracle",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.214,
+    "COUPLING": 0.828,
+    "MOVEMENT": 0.923,
+    "SPACE": 0.271
+  },
+  "mood": "Entangled",
+  "name": "SONIC SHOCKWAVE 50",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.345,
+      "macro_coupling": 0.773,
+      "macro_movement": 0.937,
+      "macro_space": 0.146
+    },
+    "Oracle": {
+      "macro_character": 0.543,
+      "macro_coupling": 0.896,
+      "macro_movement": 0.909,
+      "macro_space": 0.395
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "explosive",
+    "unstable"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

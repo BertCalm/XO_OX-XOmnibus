@@ -5,7 +5,7 @@
       {
         "engineA": "Orphica",
         "engineB": "Overworld",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.567
       }
     ]

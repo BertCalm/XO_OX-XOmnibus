@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.73,
+        "engineA": "Overbite",
+        "engineB": "Ombre",
+        "type": "spectral_cross"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OVERBITE bite fades through OMBRE shadow gradient. Penumbral gnash.",
+  "dna": {
+    "aggression": 0.512,
+    "brightness": 0.446,
+    "density": 0.642,
+    "movement": 0.536,
+    "space": 0.481,
+    "warmth": 0.576
+  },
+  "engines": [
+    "Overbite",
+    "Ombre"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Canine Penumbra",
+  "parameters": {
+    "Ombre": {
+      "ombre_couplingIn": 0.777,
+      "ombre_couplingOut": 0.735,
+      "ombre_macro1": 0.384,
+      "ombre_macro2": 0.448,
+      "ombre_macro3": 0.517,
+      "ombre_macro4": 0.447,
+      "ombre_outputLevel": 0.881,
+      "ombre_outputPan": 0.032
+    },
+    "Overbite": {
+      "poss_gnashAmount": 0.37,
+      "poss_macroBelly": 0.409,
+      "poss_macroBite": 0.459,
+      "poss_macroScurry": 0.676,
+      "poss_macroTrash": 0.675,
+      "poss_level": 0.791,
+      "poss_pan": -0.018
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "overbite",
+    "ombre",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
+}

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8833
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0359,
+    "brightness": 0.882,
+    "density": 0.6126,
+    "movement": 0.9793,
+    "space": 0.8718,
+    "warmth": 0.688
+  },
+  "engines": [
+    "Oblique",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.785,
+    "COUPLING": 0.8833,
+    "MOVEMENT": 0.9793,
+    "SPACE": 0.8718
+  },
+  "mood": "Aether",
+  "name": "Solar Stream",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.8393,
+      "macro_coupling": 0.485,
+      "macro_movement": 0.8445,
+      "macro_space": 0.4375
+    },
+    "Osprey": {
+      "macro_character": 0.739,
+      "macro_coupling": 0.8543,
+      "macro_movement": 0.7696,
+      "macro_space": 0.2269
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

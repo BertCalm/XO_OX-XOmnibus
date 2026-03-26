@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.868
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9514,
+    "brightness": 0.5392,
+    "density": 0.8779,
+    "movement": 0.9477,
+    "space": 0.0304,
+    "warmth": 0.1068
+  },
+  "engines": [
+    "Optic",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3418,
+    "COUPLING": 0.8617,
+    "MOVEMENT": 0.9633,
+    "SPACE": 0.0299
+  },
+  "mood": "Flux",
+  "name": "Flux Fang",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.3509,
+      "macro_coupling": 0.8569,
+      "macro_movement": 0.9539,
+      "macro_space": 0.02
+    },
+    "Overworld": {
+      "macro_character": 0.3328,
+      "macro_coupling": 0.8665,
+      "macro_movement": 0.9727,
+      "macro_space": 0.0398
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "cold",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

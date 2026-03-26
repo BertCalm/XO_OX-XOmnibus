@@ -5,9 +5,9 @@
       {
         "amount": 0.792,
         "description": "Owlfish drives Opal via TimbreShare",
-        "source": "Owlfish",
-        "target": "Opal",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Owlfish",
+        "engineB": "Opal"
       }
     ]
   },

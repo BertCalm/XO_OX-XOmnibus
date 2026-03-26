@@ -6,7 +6,7 @@
         "amount": 0.87,
         "engineA": "Ouroboros",
         "engineB": "Overbite",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Titanium Voltage",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oracle × Organon — Spatial Couple coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "oracle",
+    "organon",
+    "spatial-couple",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.101,
+    "warmth": 0.044,
+    "movement": 0.628,
+    "density": 0.556,
+    "space": 0.416,
+    "aggression": 0.946
+  },
+  "parameters": {
+    "Oracle": {},
+    "Organon": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.723
+      }
+    ]
+  },
+  "sequencer": null
+}

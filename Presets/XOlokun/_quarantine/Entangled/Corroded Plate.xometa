@@ -6,7 +6,7 @@
         "amount": 0.68,
         "engineA": "Obscura",
         "engineB": "Ottoni",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

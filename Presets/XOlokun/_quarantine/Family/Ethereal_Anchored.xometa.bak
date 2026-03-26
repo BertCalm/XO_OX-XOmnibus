@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ole",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.103
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.11,
+    "density": 0.03,
+    "movement": 0.058,
+    "space": 0.564,
+    "warmth": 0.096
+  },
+  "engines": [
+    "OddfeliX",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.103,
+    "COUPLING": 0.312,
+    "MOVEMENT": 0.044,
+    "SPACE": 0.564
+  },
+  "mood": "Family",
+  "name": "Ethereal Anchored",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.103,
+      "macro_coupling": 0.312,
+      "macro_movement": 0.044,
+      "macro_space": 0.564
+    },
+    "Ole": {
+      "macro_character": 0.103,
+      "macro_coupling": 0.312,
+      "macro_movement": 0.044,
+      "macro_space": 0.564
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

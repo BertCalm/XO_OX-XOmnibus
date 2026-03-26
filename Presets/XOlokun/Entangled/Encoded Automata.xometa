@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Ohm",
-        "type": "PITCH_TRACKING",
+        "type": "PitchToPitch",
         "amount": 0.847
       }
     ]

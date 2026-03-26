@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Gill Bond Wind",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Obbligato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar's warm gill-pink morphology absorbs XObbligato's dual-wind bond's timbre \u2014 organic resonance blending into a single breathing, living texture.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "morph",
+    "obbligato",
+    "harmonic",
+    "blend",
+    "tonal"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "OBBLIGATO",
+    "BLEND",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.6
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 1.0,
+    "movement": 0.535,
+    "density": 0.667,
+    "space": 0.676,
+    "aggression": 0.463
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.45,
+      "morph_attack": 0.12,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.55,
+      "morph_release": 1.2,
+      "morph_level": 0.75
+    },
+    "Obbligato": {
+      "obbl_breathA": 0.55,
+      "obbl_filterCutoff": 3000.0,
+      "obbl_lfoRate": 0.22,
+      "obbl_drive": 0.3,
+      "obbl_reverbMix": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

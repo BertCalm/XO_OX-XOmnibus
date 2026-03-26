@@ -4,11 +4,11 @@
     "pairs": [
       {
         "engine": "Oblong",
-        "type": "Harmonic"
+        "type": "EnvToMorph"
       },
       {
         "engine": "Overworld",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },

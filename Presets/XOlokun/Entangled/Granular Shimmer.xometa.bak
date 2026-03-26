@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.792,
+        "description": "Owlfish drives Opal via TimbreShare",
+        "source": "Owlfish",
+        "target": "Opal",
+        "type": "TimbreShare"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OPAL's grain shimmer extends OWLFISH's abyssal gold tone — individual grains as overtone components of the drone.",
+  "dna": {
+    "aggression": 0.319,
+    "brightness": 0.553,
+    "density": 0.617,
+    "movement": 0.371,
+    "space": 0.621,
+    "warmth": 0.592
+  },
+  "engines": [
+    "Owlfish",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Granular Shimmer",
+  "parameters": {
+    "Opal": {
+      "opal_attack": 0.082,
+      "opal_filterCutoff": 0.551,
+      "opal_grainDensity": 0.586,
+      "opal_grainPitch": 0.098,
+      "opal_grainSize": 0.526,
+      "opal_macroCharacter": 0.056,
+      "opal_macroCoupling": 0.0,
+      "opal_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.432,
+      "owl_ampAttack": 0.309,
+      "owl_ampDecay": 0.715,
+      "owl_ampRelease": 1.92,
+      "owl_ampSustain": 0.755,
+      "owl_envDepth": 0.368,
+      "owl_filterCutoff": 0.653,
+      "owl_filterRes": 0.467,
+      "owl_hall": 0.577,
+      "owl_lfoDepth": 0.298,
+      "owl_lfoRate": 0.219,
+      "owl_lfoShape": 0.583,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.775,
+      "owl_mixturSpread": 0.497,
+      "owl_oscLevel": 0.585,
+      "owl_oscPitch": 0.496,
+      "owl_resonantFeedback": 0.56,
+      "owl_resonantPitch": 0.409,
+      "owl_shimmer": 0.338,
+      "owl_subLevel": 0.491
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "opal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ohm",
+        "type": "PITCH_SYNC",
+        "amount": 0.695
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.042,
+    "brightness": 0.891,
+    "density": 0.947,
+    "movement": 0.52,
+    "space": 0.511,
+    "warmth": 0.96
+  },
+  "engines": [
+    "Osteria",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.467,
+    "COUPLING": 0.802,
+    "MOVEMENT": 0.52,
+    "SPACE": 0.511
+  },
+  "mood": "Prism",
+  "name": "Cinnamon Balm",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.075,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.52,
+      "macro_space": 0.511
+    },
+    "Osteria": {
+      "macro_character": 0.467,
+      "macro_coupling": 0.802,
+      "macro_movement": 0.52,
+      "macro_space": 0.511
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "dense",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

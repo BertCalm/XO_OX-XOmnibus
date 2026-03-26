@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "OddOscar",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.486
       }
     ]

@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Overlap",
         "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

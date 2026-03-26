@@ -1,0 +1,113 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.43,
+      "destination": "Obbligato",
+      "source": "Orphica",
+      "type": "FilterToFilter"
+    }
+  ],
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-14",
+  "description": "Granular fragments chase the pluck across registers. Surface and fracture are equally matched.",
+  "dna": {
+    "aggression": 0.24,
+    "brightness": 0.6,
+    "density": 0.67,
+    "movement": 0.61,
+    "space": 0.34,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Orphica",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Family Reunion",
+  "parameters": {
+    "Obbligato": {
+      "obbl_airFlutterA": 0.266,
+      "obbl_bodySizeA": 0.372,
+      "obbl_bodySizeB": 0.461,
+      "obbl_bondIntensity": 0.627,
+      "obbl_bondRate": 0.154,
+      "obbl_bondStage": 0.1,
+      "obbl_breathA": 0.646,
+      "obbl_breathB": 0.607,
+      "obbl_damping": 0.996,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.135,
+      "obbl_embouchureA": 0.567,
+      "obbl_fxABrightDelay": 0.234,
+      "obbl_fxAChorus": 0.2,
+      "obbl_fxAExciter": 0.101,
+      "obbl_fxAPlate": 0.162,
+      "obbl_fxBDarkDelay": 0.376,
+      "obbl_fxBPhaser": 0.193,
+      "obbl_fxBSpring": 0.216,
+      "obbl_fxBTapeSat": 0.18,
+      "obbl_instrumentA": 2,
+      "obbl_instrumentB": 2,
+      "obbl_macroBond": 0.086,
+      "obbl_macroBreath": 0.672,
+      "obbl_macroMischief": 0.041,
+      "obbl_macroWind": 0.13,
+      "obbl_reedBite": 0.24,
+      "obbl_reedStiffness": 0.525,
+      "obbl_sympatheticAmt": 0.384,
+      "obbl_voiceRouting": 2
+    },
+    "Orphica": {
+      "orph_bodySize": 0.635,
+      "orph_crossoverBlend": 1,
+      "orph_crossoverNote": 1,
+      "orph_crystalChorusDpth": 0.312,
+      "orph_crystalChorusRate": 1.0,
+      "orph_damping": 0.995,
+      "orph_darkDelayFb": 0.371,
+      "orph_darkDelayTime": 0.409,
+      "orph_deepPlateMix": 0.047,
+      "orph_driftDepth": 1.0,
+      "orph_driftRate": 0.083,
+      "orph_highLevel": 0.724,
+      "orph_lowLevel": 0.732,
+      "orph_macroDivine": 0.118,
+      "orph_macroFracture": 0.0,
+      "orph_macroPluck": 0.325,
+      "orph_macroSurface": 0.516,
+      "orph_microDelayTime": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microMix": 0.0,
+      "orph_microMode": 2,
+      "orph_microRate": 0.0,
+      "orph_microScatter": 0.214,
+      "orph_microSize": 1.0,
+      "orph_pluckBrightness": 0.325,
+      "orph_pluckPosition": 0.478,
+      "orph_shimmerMix": 0.245,
+      "orph_spectralSmear": 0.0,
+      "orph_stringCount": 1,
+      "orph_stringMaterial": 2,
+      "orph_subAmount": 0.089,
+      "orph_sympatheticAmt": 0.251,
+      "orph_tapeSat": 0.227
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "entangled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

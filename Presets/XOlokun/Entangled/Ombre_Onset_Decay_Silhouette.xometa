@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Ombre",
-        "target": "Onset",
-        "type": "AMPLITUDE_MODULATION"
+        "type": "AmpToFilter",
+        "engineA": "Ombre",
+        "engineB": "Onset"
       }
     ]
   },

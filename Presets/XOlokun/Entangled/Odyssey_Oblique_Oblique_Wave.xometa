@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Odyssey",
-        "target": "Oblique",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Odyssey",
+        "engineB": "Oblique"
       }
     ]
   },

@@ -6,11 +6,11 @@
         "amount": 0.79,
         "engineA": "Obbligato",
         "engineB": "Organon",
-        "type": "Spectral->Harmonic"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Obligatory reeds breathe through variational metabolism — OBBLIGATO's BOND macro drives ORGANON's cellular respiration.",
   "dna": {

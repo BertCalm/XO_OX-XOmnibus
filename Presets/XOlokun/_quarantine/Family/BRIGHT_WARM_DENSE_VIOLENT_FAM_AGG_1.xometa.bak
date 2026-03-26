@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Odyssey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.94
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.898,
+    "brightness": 0.874,
+    "density": 0.973,
+    "movement": 0.413,
+    "space": 0.328,
+    "warmth": 0.905
+  },
+  "engines": [
+    "Orphica",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.509,
+    "COUPLING": 0.704,
+    "MOVEMENT": 0.825,
+    "SPACE": 0.832
+  },
+  "mood": "Family",
+  "name": "Sunrise Saturated 3",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.479,
+      "macro_coupling": 0.676,
+      "macro_movement": 0.786,
+      "macro_space": 0.797
+    },
+    "Orphica": {
+      "macro_character": 0.509,
+      "macro_coupling": 0.704,
+      "macro_movement": 0.825,
+      "macro_space": 0.832
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

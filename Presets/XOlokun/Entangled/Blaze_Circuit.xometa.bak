@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Owlfish",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.797
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.833,
+    "brightness": 0.582,
+    "density": 0.941,
+    "movement": 0.22,
+    "space": 0.631,
+    "warmth": 0.976
+  },
+  "engines": [
+    "Oblong",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.739,
+    "COUPLING": 0.526,
+    "MOVEMENT": 0.685,
+    "SPACE": 0.646
+  },
+  "mood": "Entangled",
+  "name": "Blaze Circuit",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.392,
+      "macro_coupling": 0.938,
+      "macro_movement": 0.595,
+      "macro_space": 0.31,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Owlfish": {
+      "macro_character": 0.377,
+      "macro_coupling": 0.813,
+      "macro_movement": 0.792,
+      "macro_space": 0.67
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "hot",
+    "molten",
+    "furnace"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, warm, dense pad. Let it breathe — the space is the instrument."
+}

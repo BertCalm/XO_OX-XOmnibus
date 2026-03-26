@@ -6,23 +6,23 @@
         "amount": 0.411,
         "engineA": "Obscura",
         "engineB": "Origami",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       },
       {
         "amount": 0.564,
         "engineA": "Obscura",
         "engineB": "Orbital",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.386,
         "engineA": "Origami",
         "engineB": "Orbital",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Obscura × Origami + Orbital coupling (harmonic lock). Stub preset — sound-design pass pending.",
   "dna": {

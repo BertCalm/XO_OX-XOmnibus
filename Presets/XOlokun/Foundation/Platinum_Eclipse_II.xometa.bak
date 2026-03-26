@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.115
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.101,
+    "brightness": 0.044,
+    "density": 0.044,
+    "movement": 0.518,
+    "space": 0.073,
+    "warmth": 0.042
+  },
+  "engines": [
+    "Ouroboros",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.043,
+    "COUPLING": 0.087,
+    "MOVEMENT": 0.281,
+    "SPACE": 0.073
+  },
+  "mood": "Foundation",
+  "name": "Platinum Eclipse II",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.043,
+      "macro_coupling": 0.087,
+      "macro_movement": 0.281,
+      "macro_space": 0.073,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ouroboros": {
+      "macro_character": 0.043,
+      "macro_coupling": 0.087,
+      "macro_movement": 0.281,
+      "macro_space": 0.073
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, dark, crystalline sound. Responds expressively to velocity and modulation."
+}

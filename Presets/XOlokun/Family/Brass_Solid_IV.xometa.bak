@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Octopus",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.843
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.33,
+    "brightness": 0.912,
+    "density": 0.968,
+    "movement": 0.41,
+    "space": 0.679,
+    "warmth": 0.97
+  },
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.941,
+    "COUPLING": 0.719,
+    "MOVEMENT": 0.41,
+    "SPACE": 0.679
+  },
+  "mood": "Family",
+  "name": "Brass Solid IV",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.718,
+      "macro_movement": 0.464,
+      "macro_space": 0.572
+    },
+    "Overdub": {
+      "macro_character": 0.941,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.41,
+      "macro_space": 0.679,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Warm and familiar, shimmering, warm sound. Let it breathe — the space is the instrument."
+}

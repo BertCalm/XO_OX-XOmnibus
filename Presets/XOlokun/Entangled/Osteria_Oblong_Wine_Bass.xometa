@@ -18,7 +18,7 @@
         "sourceParam": "osteria_porto",
         "targetEngine": "Oblong",
         "targetParam": "bob_fltChar",
-        "type": "VelocityToTimbre"
+        "type": "AmpToChoke"
       }
     ]
   },

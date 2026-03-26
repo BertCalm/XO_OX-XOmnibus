@@ -6,7 +6,7 @@
         "amount": 0.609,
         "engineA": "Orbital",
         "engineB": "Ohm",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },

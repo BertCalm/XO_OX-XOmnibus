@@ -6,7 +6,7 @@
         "amount": 0.823,
         "engineA": "Overlap",
         "engineB": "Organon",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM"
       }
     ]
   },

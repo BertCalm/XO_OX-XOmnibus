@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Overlap",
-        "type": "WAVETABLE_MORPH",
+        "type": "AudioToWavetable",
         "amount": 0.87
       }
     ]

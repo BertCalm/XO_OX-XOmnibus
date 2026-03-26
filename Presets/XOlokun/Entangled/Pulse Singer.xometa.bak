@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Singer",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSTINATO coupling. Rhythmic patterns modulate sync timing — the voice pulses with the drum circle. OSTINATO's phase modulation creates rhythmic swells in the Kuramoto field, making the choir surge and retreat in time with the pattern. The voice becomes a rhythmic instrument while retaining its vocal character. Moderate effort, clean formant, steady foundation.",
+  "tags": [
+    "entangled",
+    "ostinato",
+    "rhythmic",
+    "pulsing",
+    "phase-mod"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.4,
+      "opera_voice": 0.5,
+      "opera_stage": 0.3,
+      "opera_vowelA": 0,
+      "opera_vowelB": 1,
+      "opera_breath": 0.1,
+      "opera_effort": 0.55,
+      "opera_partials": 28,
+      "opera_resSens": 0.45,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 5.5,
+      "opera_vibDepth": 0.15,
+      "opera_tilt": 0.0,
+      "opera_filterCutoff": 7500.0,
+      "opera_filterRes": 0.1,
+      "opera_filterEnvAmt": 0.35,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.2,
+      "opera_filterS": 0.5,
+      "opera_filterR": 0.4,
+      "opera_ampA": 0.04,
+      "opera_ampD": 0.15,
+      "opera_ampS": 0.8,
+      "opera_ampR": 0.5,
+      "opera_lfo1Rate": 0.1,
+      "opera_lfo1Depth": 0.1,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 3.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.45,
+      "opera_velToEffort": 0.35,
+      "opera_detune": 0.08,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Ostinato",
+        "target": "Opera",
+        "type": "PhaseModulation",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

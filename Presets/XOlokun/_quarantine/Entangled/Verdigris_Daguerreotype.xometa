@@ -5,7 +5,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Obscura",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.8
       }
     ]
@@ -60,5 +60,6 @@
     "daguerreotype"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

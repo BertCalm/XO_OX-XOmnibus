@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Oblong",
-        "type": "AMPLITUDE_MOD",
+        "type": "AmpToFilter",
         "amount": 0.8
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, warm bass. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, dark, warm bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

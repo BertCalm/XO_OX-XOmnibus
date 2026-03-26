@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.47,
-      "destination": "Ohm",
-      "source": "Ole",
-      "type": "EnvToMorph"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.47,
+        "type": "EnvToMorph",
+        "engineA": "Ole",
+        "engineB": "Ohm"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Berimbau isolated, Cubano and Charango paired. A crisp 2-vs-1 with full BLEND.",

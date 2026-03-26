@@ -6,12 +6,12 @@
         "amount": 0.688,
         "engineA": "Overlap",
         "engineB": "Osteria",
-        "type": "ENVELOPE_SHARE"
+        "type": "EnvToDecay"
       }
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Osteria warmth and density settle into OVERLAP room size \u2014 Porto wine in a vaulted FDN hall",
+  "description": "Osteria warmth and density settle into OVERLAP room size — Porto wine in a vaulted FDN hall",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.475,

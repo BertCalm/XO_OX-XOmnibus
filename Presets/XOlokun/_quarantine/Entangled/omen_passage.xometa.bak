@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.2,
+    "density": 0.6,
+    "movement": 0.8,
+    "space": 0.5,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Odyssey",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.8,
+    "SPACE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Omen Passage",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.8,
+      "macro_space": 0.5
+    },
+    "Oracle": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.8,
+      "macro_space": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "oracle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Origami",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.9
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite."
+  "description": "Interwoven and coupled, dark, dense bass. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

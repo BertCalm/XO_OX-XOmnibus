@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.769,
+        "engineA": "Obese",
+        "engineB": "Outwit",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OBESE mojo drives OUTWIT Wolfram arm evolution. Saturated cellular pattern.",
+  "dna": {
+    "aggression": 0.677,
+    "brightness": 0.548,
+    "density": 0.722,
+    "movement": 0.733,
+    "space": 0.472,
+    "warmth": 0.559
+  },
+  "engines": [
+    "Obese",
+    "Outwit"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Density Strategy",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.817,
+      "fat_compress": 0.698,
+      "fat_couplingIn": 0.53,
+      "fat_couplingOut": 0.644,
+      "fat_digital": 0.43,
+      "fat_macro1": 0.332,
+      "fat_macro2": 0.301,
+      "fat_macro3": 0.663,
+      "fat_macro4": 0.364,
+      "fat_mojoCtrl": 0.505,
+      "fat_outputLevel": 0.875,
+      "fat_outputPan": -0.039,
+      "fat_satDrive": 0.791
+    },
+    "Outwit": {
+      "owit_couplingIn": 0.523,
+      "owit_couplingOut": 0.675,
+      "owit_macro1": 0.311,
+      "owit_macro2": 0.329,
+      "owit_macro3": 0.558,
+      "owit_macro4": 0.328,
+      "owit_outputLevel": 0.799,
+      "owit_outputPan": 0.001
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "outwit",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
+}

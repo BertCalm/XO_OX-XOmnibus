@@ -6,7 +6,7 @@
         "amount": 0.65,
         "engineA": "Ottoni",
         "engineB": "Organon",
-        "type": "ENVELOPE_LINK"
+        "type": "EnvToDecay"
       }
     ]
   },

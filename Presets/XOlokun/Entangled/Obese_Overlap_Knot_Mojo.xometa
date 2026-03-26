@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Obese",
-        "target": "Overlap",
-        "type": "CHAOS_INJECTION"
+        "type": "AudioToFM",
+        "engineA": "Obese",
+        "engineB": "Overlap"
       }
     ]
   },

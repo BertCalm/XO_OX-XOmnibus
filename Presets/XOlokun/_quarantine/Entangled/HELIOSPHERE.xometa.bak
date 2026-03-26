@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overworld",
+        "type": "PITCH_SYNC",
+        "amount": 0.908
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.204,
+    "brightness": 0.948,
+    "density": 0.235,
+    "movement": 0.201,
+    "space": 0.917,
+    "warmth": 0.393
+  },
+  "engines": [
+    "Overworld",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.838,
+    "COUPLING": 0.528,
+    "MOVEMENT": 0.504,
+    "SPACE": 0.917
+  },
+  "mood": "Entangled",
+  "name": "HELIOSPHERE",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.519,
+      "macro_coupling": 0.096,
+      "macro_movement": 0.549,
+      "macro_space": 0.911
+    },
+    "Overworld": {
+      "macro_character": 0.669,
+      "macro_coupling": 0.177,
+      "macro_movement": 0.949,
+      "macro_space": 0.943
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "vast",
+    "cosmic",
+    "xhigh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

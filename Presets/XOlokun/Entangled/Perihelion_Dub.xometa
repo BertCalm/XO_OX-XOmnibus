@@ -6,11 +6,11 @@
         "amount": 0.417,
         "engineA": "Orbital",
         "engineB": "Overdub",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Orbital × Overdub coupling (envelope share). Stub preset — sound-design pass pending.",
   "dna": {

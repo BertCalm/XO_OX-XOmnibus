@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8272,
-        "source": "Odyssey",
-        "target": "Orca",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke",
+        "engineA": "Odyssey",
+        "engineB": "Orca"
       }
     ]
   },

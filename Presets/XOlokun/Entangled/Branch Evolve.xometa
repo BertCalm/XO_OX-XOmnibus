@@ -6,7 +6,7 @@
         "amount": 0.535,
         "engineA": "Outwit",
         "engineB": "Overworld",
-        "type": "PITCH_MOD"
+        "type": "AmpToPitch"
       }
     ]
   },

@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.632
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.021,
+    "brightness": 0.948,
+    "density": 0.536,
+    "movement": 0.896,
+    "space": 0.593,
+    "warmth": 0.935
+  },
+  "engines": [
+    "Overworld",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.942,
+    "COUPLING": 0.625,
+    "MOVEMENT": 0.896,
+    "SPACE": 0.593
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM KINETIC BALANCE... (Overworld)",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.925,
+      "macro_coupling": 0.601,
+      "macro_movement": 0.912,
+      "macro_space": 0.586
+    },
+    "Overworld": {
+      "macro_character": 0.942,
+      "macro_coupling": 0.625,
+      "macro_movement": 0.896,
+      "macro_space": 0.593
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

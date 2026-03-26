@@ -6,11 +6,11 @@
         "amount": 0.63,
         "engineA": "Overbite",
         "engineB": "Osprey",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OVERBITE jaw locks OSPREY dive thermal. Bass-forward coastal impact.",
   "dna": {

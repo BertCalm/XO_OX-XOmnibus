@@ -6,11 +6,11 @@
         "amount": 0.837,
         "engineA": "OddfeliX",
         "engineB": "Onset",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "description": "OddFelix × Onset — Timbre Blend coupling at extreme DNA corner.",
   "dna": {
     "aggression": 0.517,

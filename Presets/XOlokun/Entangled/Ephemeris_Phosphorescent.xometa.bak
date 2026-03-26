@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.634,
+        "engineA": "Orbital",
+        "engineB": "Oceanic",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "ORBITAL group envelope rides OCEANIC thermal column. Bioluminescent sweep.",
+  "dna": {
+    "aggression": 0.404,
+    "brightness": 0.597,
+    "density": 0.584,
+    "movement": 0.581,
+    "space": 0.633,
+    "warmth": 0.649
+  },
+  "engines": [
+    "Orbital",
+    "Oceanic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Ephemeris Phosphorescent",
+  "parameters": {
+    "Oceanic": {
+      "ocean_couplingIn": 0.572,
+      "ocean_couplingOut": 0.487,
+      "ocean_macro1": 0.697,
+      "ocean_macro2": 0.628,
+      "ocean_macro3": 0.338,
+      "ocean_macro4": 0.605,
+      "ocean_outputLevel": 0.763,
+      "ocean_outputPan": -0.038
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.485,
+      "orb_couplingIn": 0.544,
+      "orb_couplingOut": 0.562,
+      "orb_groupEnv": 0.846,
+      "orb_harmonicAmt": 0.538,
+      "orb_macro1": 0.66,
+      "orb_macro2": 0.629,
+      "orb_macro3": 0.464,
+      "orb_macro4": 0.483,
+      "orb_outputLevel": 0.87,
+      "orb_outputPan": 0.014,
+      "orb_phaseSpread": 0.272,
+      "orb_resonantPeak": 0.596
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "oceanic",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 110,
+  "version": "1.0.0"
+}

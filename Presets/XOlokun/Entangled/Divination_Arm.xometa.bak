@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.687,
+        "engineA": "Oracle",
+        "engineB": "Octopus",
+        "type": "WAVETABLE_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "ORACLE stochastic feeds OCTOPUS Wolfram cellular arms. Distributed prophecy.",
+  "dna": {
+    "aggression": 0.484,
+    "brightness": 0.449,
+    "density": 0.707,
+    "movement": 0.742,
+    "space": 0.606,
+    "warmth": 0.512
+  },
+  "engines": [
+    "Oracle",
+    "Octopus"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Divination Arm",
+  "parameters": {
+    "Octopus": {
+      "oct_aggression": 0.654,
+      "oct_brightness": 0.628,
+      "oct_density": 0.739,
+      "oct_level": 0.862,
+      "oct_movement": 0.771,
+      "oct_space": 0.501,
+      "oct_warmth": 0.544
+    },
+    "Oracle": {
+      "oracle_aggression": 0.329,
+      "oracle_brightness": 0.369,
+      "oracle_density": 0.629,
+      "oracle_level": 0.701,
+      "oracle_movement": 0.702,
+      "oracle_space": 0.681,
+      "oracle_warmth": 0.46
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oracle",
+    "octopus",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obese",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9312
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0824,
+    "brightness": 0.4679,
+    "density": 0.0994,
+    "movement": 0.047,
+    "space": 0.9632,
+    "warmth": 0.9109
+  },
+  "engines": [
+    "Orbital",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6466,
+    "COUPLING": 0.8915,
+    "MOVEMENT": 0.0369,
+    "SPACE": 0.3791
+  },
+  "mood": "Entangled",
+  "name": "Shard Orbit",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.7171,
+      "macro_coupling": 0.8518,
+      "macro_movement": 0.0436,
+      "macro_space": 0.616
+    },
+    "Orbital": {
+      "macro_character": 0.5762,
+      "macro_coupling": 0.9311,
+      "macro_movement": 0.0303,
+      "macro_space": 0.1423
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "warm",
+    "gentle",
+    "sparse",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

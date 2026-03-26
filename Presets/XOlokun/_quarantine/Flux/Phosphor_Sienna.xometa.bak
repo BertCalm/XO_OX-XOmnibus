@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.899
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.559,
+    "brightness": 0.945,
+    "density": 0.937,
+    "movement": 0.635,
+    "space": 0.661,
+    "warmth": 0.939
+  },
+  "engines": [
+    "Oblique",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.942,
+    "COUPLING": 0.554,
+    "MOVEMENT": 0.635,
+    "SPACE": 0.661
+  },
+  "mood": "Flux",
+  "name": "Phosphor Sienna",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.942,
+      "macro_coupling": 0.554,
+      "macro_movement": 0.635,
+      "macro_space": 0.661
+    },
+    "Obsidian": {
+      "macro_character": 0.966,
+      "macro_coupling": 0.497,
+      "macro_movement": 0.705,
+      "macro_space": 0.6
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

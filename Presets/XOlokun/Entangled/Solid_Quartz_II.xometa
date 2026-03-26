@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8896,
-        "source": "Overlap",
-        "target": "Oblong",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter",
+        "engineA": "Overlap",
+        "engineB": "Oblong"
       }
     ]
   },

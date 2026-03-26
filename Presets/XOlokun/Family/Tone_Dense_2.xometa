@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Oblong",
-        "type": "RHYTHM_LOCK",
+        "type": "RhythmToBlend",
         "amount": 0.821
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, crystalline bass. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Warm and familiar, dark, crystalline bass. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

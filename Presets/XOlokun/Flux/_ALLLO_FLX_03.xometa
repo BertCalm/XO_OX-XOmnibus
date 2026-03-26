@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Opal",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.3
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Restless and kinetic, dark, crystalline sound. Responds expressively to velocity and modulation."
+  "description": "Restless and kinetic, dark, crystalline sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

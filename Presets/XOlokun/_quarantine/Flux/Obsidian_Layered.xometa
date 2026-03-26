@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Ole",
-        "type": "HARMONIC_STACK",
+        "type": "EnvToMorph",
         "amount": 0.76
       }
     ]

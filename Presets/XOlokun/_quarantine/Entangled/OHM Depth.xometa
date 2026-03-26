@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Oceanic",
         "engineB": "Ohm",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

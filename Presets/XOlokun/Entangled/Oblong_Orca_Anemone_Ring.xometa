@@ -2,15 +2,39 @@
   "schema_version": 1,
   "name": "Anemone Ring",
   "mood": "Entangled",
-  "engines": ["Oblong", "Orca"],
+  "engines": [
+    "Oblong",
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBLONG warm amber base entangled with ORCA's apex pressure — Bob's warmth inside predator territory. OBLONG provides the Oblong Sine fundamental; ORCA's deep ocean resonance feeds back through the coupling as LFO-to-pitch, making the anchor frequency gently destabilized by the larger animal's presence.",
-  "tags": ["entangled", "oblong", "orca", "warm", "predator", "bob", "amber", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "entangled",
+    "oblong",
+    "orca",
+    "warm",
+    "predator",
+    "bob",
+    "amber",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.78, "movement": 0.38, "density": 0.65, "space": 0.6, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.78,
+    "movement": 0.38,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.35
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 0,
@@ -60,14 +84,19 @@
       "orca_level": 0.45
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.38, "COUPLING": 0.14, "SPACE": 0.6},
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.14,
+    "SPACE": 0.6
+  },
   "coupling": {
     "pairs": [
       {
-        "source": "Oblong",
-        "target": "Orca",
-        "type": "AMP_TO_FILTER",
-        "amount": 0.13
+        "type": "AmpToFilter",
+        "amount": 0.13,
+        "engineA": "Oblong",
+        "engineB": "Orca"
       }
     ]
   }

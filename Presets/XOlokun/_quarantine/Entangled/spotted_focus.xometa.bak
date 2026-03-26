@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Optic",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.607
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.86,
+    "density": 0.55,
+    "movement": 0.5,
+    "space": 0.6,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ocelot",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.607,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.475
+  },
+  "mood": "Entangled",
+  "name": "Spotted Focus",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.686,
+      "macro_coupling": 0.586,
+      "macro_movement": 0.736,
+      "macro_space": 0.486
+    },
+    "Optic": {
+      "macro_character": 0.464,
+      "macro_coupling": 0.564,
+      "macro_movement": 0.414,
+      "macro_space": 0.464
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

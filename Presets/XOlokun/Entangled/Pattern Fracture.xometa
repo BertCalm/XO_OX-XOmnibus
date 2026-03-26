@@ -6,7 +6,7 @@
         "amount": 0.576,
         "engineA": "Outwit",
         "engineB": "Origami",
-        "type": "AMP_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

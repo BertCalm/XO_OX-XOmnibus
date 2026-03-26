@@ -5,9 +5,9 @@
       {
         "amount": 0.501,
         "description": "Osteria drives OddfeliX via TimbreShare",
-        "source": "Osteria",
-        "target": "OddfeliX",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Osteria",
+        "engineB": "OddfeliX"
       }
     ]
   },

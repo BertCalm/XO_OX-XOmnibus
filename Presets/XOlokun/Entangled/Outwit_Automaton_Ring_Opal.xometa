@@ -6,9 +6,9 @@
     "Outwit",
     "Opal"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OUTWIT CA audio ring-modulates OPAL granular output \u2014 sideband frequencies appear at the intersection of cellular pattern and granular cloud.",
+  "description": "OUTWIT CA audio ring-modulates OPAL granular output — sideband frequencies appear at the intersection of cellular pattern and granular cloud.",
   "tags": [
     "entangled",
     "ring-mod",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -66,11 +66,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Opal",
         "type": "AudioToRing",
         "amount": 0.5,
-        "description": "Outwit CA audio ring-modulates Opal granular output creating sideband textures"
+        "description": "Outwit CA audio ring-modulates Opal granular output creating sideband textures",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

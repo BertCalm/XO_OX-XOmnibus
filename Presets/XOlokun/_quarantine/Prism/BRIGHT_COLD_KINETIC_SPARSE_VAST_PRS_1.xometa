@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Oblique",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.753
       }
     ]

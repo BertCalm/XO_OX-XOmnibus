@@ -6,7 +6,7 @@
         "amount": 0.834,
         "engineA": "Overbite",
         "engineB": "Ottoni",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

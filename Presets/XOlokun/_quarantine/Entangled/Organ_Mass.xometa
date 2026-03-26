@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "Organon",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.56
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

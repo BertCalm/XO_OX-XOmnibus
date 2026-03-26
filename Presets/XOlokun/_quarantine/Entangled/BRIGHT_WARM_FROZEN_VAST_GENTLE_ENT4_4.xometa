@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Overbite",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.781
       }
     ]
@@ -63,5 +63,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

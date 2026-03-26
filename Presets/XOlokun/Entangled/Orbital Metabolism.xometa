@@ -6,7 +6,7 @@
         "amount": 0.7,
         "engineA": "Organon",
         "engineB": "Orbital",
-        "type": "Envelope->Env"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.952
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: COLD_KINETIC_SPARSE_VAST_VIOLENT. Variant 1.",
+  "dna": {
+    "aggression": 0.935,
+    "brightness": 0.496,
+    "density": 0.058,
+    "movement": 0.935,
+    "space": 0.936,
+    "warmth": 0.036
+  },
+  "engines": [
+    "Onset",
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.464,
+    "SPACE": 0.137,
+    "PUNCH": 0.976,
+    "MUTATE": 0.999
+  },
+  "mood": "Foundation",
+  "name": "Thread Expanse",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.523,
+      "macro_coupling": 0.154,
+      "macro_movement": 0.968,
+      "macro_space": 1.0
+    },
+    "Onset": {
+      "macro_character": 0.405,
+      "macro_coupling": 0.12,
+      "macro_movement": 0.984,
+      "macro_space": 0.998
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "sparse",
+    "extreme",
+    "cold",
+    "kinetic",
+    "diversity",
+    "vast",
+    "violent",
+    "foundation"
+  ],
+  "tempo": null,
+  "version": "1.0.0",
+  "tier": "awakening"
+}

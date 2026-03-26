@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orca",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.876
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.988,
+    "brightness": 0.898,
+    "density": 0.888,
+    "movement": 0.083,
+    "space": 0.025,
+    "warmth": 0.424
+  },
+  "engines": [
+    "Opal",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.657,
+    "COUPLING": 0.876,
+    "MOVEMENT": 0.08,
+    "SPACE": 0.026
+  },
+  "mood": "Entangled",
+  "name": "Phase Rage 2",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.643,
+      "macro_coupling": 0.888,
+      "macro_movement": 0.087,
+      "macro_space": 0.01
+    },
+    "Orca": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.903,
+      "macro_movement": 0.073,
+      "macro_space": 0.041
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "dense",
+    "close",
+    "harsh"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

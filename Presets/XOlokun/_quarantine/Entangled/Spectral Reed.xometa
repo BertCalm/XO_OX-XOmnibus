@@ -6,7 +6,7 @@
         "amount": 0.555,
         "engineA": "Orphica",
         "engineB": "Obbligato",
-        "type": "Env->Level"
+        "type": "EnvToDecay"
       }
     ]
   },

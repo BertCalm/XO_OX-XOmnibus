@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.64,
+        "engineA": "OddOscar",
+        "engineB": "Obsidian",
+        "type": "FORMANT_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.605,
+    "brightness": 0.0,
+    "density": 0.735,
+    "movement": 0.4,
+    "space": 0.5,
+    "warmth": 0.625
+  },
+  "engines": [
+    "Obsidian",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.375,
+    "COUPLING": 0.628,
+    "MOVEMENT": 0.461,
+    "SPACE": 0.453
+  },
+  "mood": "Entangled",
+  "name": "Pulse Grid",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.892,
+      "macro_movement": 0.665,
+      "macro_space": 0.551
+    },
+    "OddOscar": {
+      "macro_character": 0.742,
+      "macro_coupling": 0.535,
+      "macro_movement": 0.532,
+      "macro_space": 0.402
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obsidian",
+    "oddoscar"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

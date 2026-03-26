@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8701
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5996,
+    "brightness": 0.8808,
+    "density": 0.4474,
+    "movement": 0.0634,
+    "space": 0.0412,
+    "warmth": 0.0336
+  },
+  "engines": [
+    "Orbital",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9132,
+    "COUPLING": 0.8701,
+    "MOVEMENT": 0.0547,
+    "SPACE": 0.0412
+  },
+  "mood": "Aether",
+  "name": "Silver Edge",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.9192,
+      "macro_coupling": 0.4889,
+      "macro_movement": 0.0695,
+      "macro_space": 0.0133
+    },
+    "Orbital": {
+      "macro_character": 0.9072,
+      "macro_coupling": 0.4314,
+      "macro_movement": 0.0399,
+      "macro_space": 0.0127
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "cold",
+    "still",
+    "frozen"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6675,
-        "source": "Overdub",
-        "target": "Orbital",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM",
+        "engineA": "Overdub",
+        "engineB": "Orbital"
       }
     ]
   },

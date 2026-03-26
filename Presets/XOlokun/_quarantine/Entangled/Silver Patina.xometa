@@ -6,7 +6,7 @@
         "amount": 0.62,
         "engineA": "Ottoni",
         "engineB": "Obscura",
-        "type": "TIMBRE_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

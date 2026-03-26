@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.545
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.364,
+    "brightness": 0.076,
+    "density": 0.964,
+    "movement": 0.893,
+    "space": 0.604,
+    "warmth": 0.914
+  },
+  "engines": [
+    "Overworld",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "COUPLING": 0.515,
+    "MOVEMENT": 0.893,
+    "SPACE": 0.604
+  },
+  "mood": "Prism",
+  "name": "Heavy Charcoal",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.644,
+      "macro_coupling": 0.506,
+      "macro_movement": 0.893,
+      "macro_space": 0.604
+    },
+    "Overworld": {
+      "macro_character": 0.22,
+      "macro_coupling": 0.515,
+      "macro_movement": 0.893,
+      "macro_space": 0.604
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

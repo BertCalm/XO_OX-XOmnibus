@@ -6,7 +6,7 @@
         "amount": 0.64,
         "engineA": "Overbite",
         "engineB": "Octopus",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       }
     ]
   },

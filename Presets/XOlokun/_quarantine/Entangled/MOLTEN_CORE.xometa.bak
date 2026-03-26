@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.665
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.627,
+    "brightness": 0.277,
+    "density": 0.145,
+    "movement": 0.592,
+    "space": 0.827,
+    "warmth": 0.925
+  },
+  "engines": [
+    "Overlap",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.066,
+    "COUPLING": 0.633,
+    "MOVEMENT": 0.275,
+    "SPACE": 0.548
+  },
+  "mood": "Entangled",
+  "name": "Molten Core",
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.49,
+      "macro_coupling": 0.073,
+      "macro_movement": 0.91,
+      "macro_space": 0.081
+    },
+    "Overlap": {
+      "macro_character": 0.061,
+      "macro_coupling": 0.402,
+      "macro_movement": 0.479,
+      "macro_space": 0.686
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "hot",
+    "molten",
+    "furnace"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Osprey",
-        "type": "PHASE_LOCK",
+        "type": "AudioToFM",
         "amount": 0.86
       }
     ]

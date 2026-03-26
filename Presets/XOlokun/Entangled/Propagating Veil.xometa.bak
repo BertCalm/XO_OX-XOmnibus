@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Ouroboros",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.756
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Ouroboros loop phase modulates OVERLAP decay length — the coil's rotation is the reverb's clock",
+  "engines": [
+    "Overlap",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.38,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.71
+  },
+  "mood": "Entangled",
+  "name": "Propagating Veil",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.688,
+      "olap_damping": 0.47,
+      "olap_decay": 0.581,
+      "olap_diffusion": 0.853,
+      "olap_earlyMix": 0.541,
+      "olap_filterCutoff": 0.496,
+      "olap_filterReso": 0.148,
+      "olap_lateMix": 0.644,
+      "olap_modDepth": 0.253,
+      "olap_modRate": 0.259,
+      "olap_outputLevel": 0.76,
+      "olap_preDelay": 0.03,
+      "olap_size": 0.854
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "ouroboros",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.496,
+    "warmth": 0.5,
+    "movement": 0.259,
+    "density": 0.5,
+    "space": 0.03,
+    "aggression": 0.3
+  },
+  "tempo": null
+}

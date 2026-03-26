@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.713,
+        "engineA": "Overlap",
+        "engineB": "Oracle",
+        "type": "AMP_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Oracle resonance feeds OVERLAP early reflections — prophecy echoed in cavern walls",
+  "dna": {
+    "aggression": 0.275,
+    "brightness": 0.36,
+    "density": 0.65,
+    "movement": 0.55,
+    "space": 1.0,
+    "warmth": 0.356
+  },
+  "engines": [
+    "Overlap",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Spread Diffuse",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.629,
+      "olap_damping": 0.357,
+      "olap_decay": 0.792,
+      "olap_diffusion": 0.633,
+      "olap_earlyMix": 0.405,
+      "olap_filterCutoff": 0.71,
+      "olap_filterReso": 0.169,
+      "olap_lateMix": 0.737,
+      "olap_modDepth": 0.446,
+      "olap_modRate": 0.242,
+      "olap_outputLevel": 0.656,
+      "olap_preDelay": 0.139,
+      "olap_size": 0.618
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oracle",
+    "fdn",
+    "reverb"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

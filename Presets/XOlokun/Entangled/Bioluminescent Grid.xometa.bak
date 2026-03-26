@@ -1,0 +1,79 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Optic",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_BLEND"
+      },
+      {
+        "amount": 0.4,
+        "engineA": "Owlfish",
+        "engineB": "Optic",
+        "type": "RhythmGate"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OWLFISH's deep-sea bioluminescence as OPTIC input signal — pressure-triggered phosphor in absolute dark.",
+  "dna": {
+    "aggression": 0.29,
+    "brightness": 0.743,
+    "density": 0.468,
+    "movement": 0.677,
+    "space": 0.755,
+    "warmth": 0.39
+  },
+  "engines": [
+    "Optic",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Bioluminescent Grid",
+  "parameters": {
+    "Optic": {
+      "optic_autoPulse": 0,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.6,
+      "optic_pulseRate": 0.45,
+      "optic_pulseShape": 0.5,
+      "optic_reactivity": 0.7,
+      "optic_vizFeedback": 0.5,
+      "optic_vizIntensity": 0.65,
+      "optic_vizMode": 1,
+      "optic_vizSpeed": 0.55
+    },
+    "Owlfish": {
+      "owlf_ampAttack": 0.03,
+      "owlf_ampRelease": 1.5,
+      "owlf_filterCutoff": 2800.0,
+      "owlf_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "optic",
+    "owlfish",
+    "phosphor",
+    "visual-modulation",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

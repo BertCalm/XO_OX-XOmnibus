@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Oblong",
-        "target": "Owlfish",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend",
+        "engineA": "Oblong",
+        "engineB": "Owlfish"
       }
     ]
   },

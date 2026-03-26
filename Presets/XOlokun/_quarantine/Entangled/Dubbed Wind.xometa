@@ -5,7 +5,7 @@
       {
         "engineA": "Obbligato",
         "engineB": "Overdub",
-        "type": "TAPE_ECHO_LOCK",
+        "type": "KnotTopology",
         "amount": 0.65
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Overbite",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.888
       }
     ]
@@ -60,5 +60,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

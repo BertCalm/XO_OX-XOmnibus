@@ -6,7 +6,7 @@
         "amount": 0.557,
         "engineA": "Obbligato",
         "engineB": "Oracle",
-        "type": "Env->LFO Rate"
+        "type": "LFOToPitch"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Orca",
         "engineB": "Overworld",
-        "type": "LFO_SYNC",
+        "type": "LFOToPitch",
         "amount": 0.83
       }
     ]

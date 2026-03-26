@@ -59,7 +59,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "Oblong",
-        "type": "Env->Character",
+        "type": "EnvToMorph",
         "amount": 0.45
       }
     ]

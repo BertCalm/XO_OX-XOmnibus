@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9899,
+        "source": "Orbital",
+        "target": "Orphica",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — ORPHICA × ORBITAL via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0782,
+    "brightness": 0.3876,
+    "density": 0.0264,
+    "movement": 0.9634,
+    "space": 0.6966,
+    "warmth": 0.9775
+  },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SCATTER",
+    "RESONATE",
+    "HALL"
+  ],
+  "macros": {
+    "CHARACTER": 0.6825,
+    "COUPLING": 0.9899,
+    "MOVEMENT": 0.9634,
+    "SPACE": 0.6966
+  },
+  "mood": "Entangled",
+  "name": "Ember Drift 2",
+  "parameters": {
+    "Orbital": {
+      "amp_attack": 0.1004,
+      "amp_release": 0.5231,
+      "coupling_level": 0.566,
+      "density": 0.0569,
+      "drive": 0.1516,
+      "filter_cutoff": 0.4336,
+      "filter_resonance": 0.1551,
+      "macro_character": 0.8147,
+      "macro_coupling": 0.6432,
+      "macro_movement": 0.9879,
+      "macro_space": 0.7297,
+      "output_level": 0.706,
+      "reverb_mix": 0.5381,
+      "reverb_size": 0.5931
+    },
+    "Orphica": {
+      "amp_attack": 0.1043,
+      "amp_release": 0.4956,
+      "coupling_level": 0.5554,
+      "density": 0.0535,
+      "drive": 0.101,
+      "filter_cutoff": 0.5047,
+      "filter_resonance": 0.1036,
+      "macro_character": 0.7753,
+      "macro_coupling": 0.6087,
+      "macro_movement": 0.9759,
+      "macro_space": 0.7219,
+      "output_level": 0.7342,
+      "reverb_mix": 0.5608,
+      "reverb_size": 0.6418
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "warm",
+    "kinetic",
+    "sparse",
+    "gentle",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

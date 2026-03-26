@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.86
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.889,
+    "brightness": 0.078,
+    "density": 0.919,
+    "movement": 0.589,
+    "space": 0.562,
+    "warmth": 0.07
+  },
+  "engines": [
+    "Ombre",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.638,
+    "COUPLING": 0.831,
+    "MOVEMENT": 0.589,
+    "SPACE": 0.562
+  },
+  "mood": "Entangled",
+  "name": "Grain Solid",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.538,
+      "macro_coupling": 0.831,
+      "macro_movement": 0.604,
+      "macro_space": 0.597
+    },
+    "Organon": {
+      "macro_character": 0.738,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.624,
+      "macro_space": 0.55
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "dark",
+    "cold",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

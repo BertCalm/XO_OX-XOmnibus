@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.911
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.978,
+    "density": 0.645,
+    "movement": 0.948,
+    "space": 0.894,
+    "warmth": 0.916
+  },
+  "engines": [
+    "OddOscar",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.947,
+    "COUPLING": 0.922,
+    "MOVEMENT": 0.796,
+    "SPACE": 0.894
+  },
+  "mood": "Entangled",
+  "name": "Prismatic Blade",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.947,
+      "macro_coupling": 0.922,
+      "macro_movement": 0.796,
+      "macro_space": 0.894
+    },
+    "Ouroboros": {
+      "macro_character": 0.947,
+      "macro_coupling": 0.922,
+      "macro_movement": 0.796,
+      "macro_space": 0.894
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

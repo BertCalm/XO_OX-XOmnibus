@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Oblong",
+        "target": "Ole",
+        "type": "WAVETABLE_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OLE DRAMA macro strikes Bob's accent layer — Afro-Latin accent bass.",
+  "dna": {
+    "aggression": 0.484,
+    "brightness": 0.638,
+    "density": 0.693,
+    "movement": 0.673,
+    "space": 0.462,
+    "warmth": 0.708
+  },
+  "engines": [
+    "Oblong",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Drama Pressure",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 0.0073,
+      "bob_ampDecay": 0.26,
+      "bob_ampRelease": 0.448,
+      "bob_ampSustain": 0.705,
+      "bob_chordMode": 0.33,
+      "bob_distDrive": 0.304,
+      "bob_distMix": 0.103,
+      "bob_fltCutoff": 5746.3,
+      "bob_fltEnvAmt": 0.488,
+      "bob_fltReso": 0.164,
+      "bob_level": 0.741,
+      "bob_lfo1Depth": 0.372,
+      "bob_lfo1Rate": 0.651,
+      "bob_lfo1Shape": 1.0,
+      "bob_modAttack": 0.027,
+      "bob_modDecay": 0.483,
+      "bob_modRelease": 0.465,
+      "bob_modSustain": 0.462,
+      "bob_oscDetune": 0.237,
+      "bob_oscWave": 0.0,
+      "bob_reverbMix": 0.156,
+      "bob_scaleMode": 0.6,
+      "bob_subOscLevel": 0.471,
+      "bob_curAmount": 0.2
+    },
+    "Ole": {
+      "ole_filterCutoff": 4177.9,
+      "ole_level": 0.821
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "oblong",
+    "ole"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

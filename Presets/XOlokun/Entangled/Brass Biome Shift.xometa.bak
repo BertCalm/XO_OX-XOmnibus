@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ocelot",
+        "engineB": "Ottoni",
+        "type": "AmpToFilter"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Ottoni",
+        "engineB": "Ocelot",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OTTONI's triple brass calling across OCELOT's shifting biome — a fanfare announcing the ecosystem change.",
+  "dna": {
+    "aggression": 0.522,
+    "brightness": 0.623,
+    "density": 0.627,
+    "movement": 0.623,
+    "space": 0.545,
+    "warmth": 0.583
+  },
+  "engines": [
+    "Ocelot",
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Brass Biome Shift",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_ampAttack": 0.04,
+      "ocelot_ampRelease": 1.8,
+      "ocelot_biomeShift": 0.5,
+      "ocelot_filterCutoff": 2400.0,
+      "ocelot_filterReso": 0.3,
+      "ocelot_movement": 0.6,
+      "ocelot_predatorDepth": 0.55,
+      "ocelot_warmth": 0.65
+    },
+    "Ottoni": {
+      "otto_ampAttack": 0.03,
+      "otto_ampRelease": 1.5,
+      "otto_filterCutoff": 2800.0,
+      "otto_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "ocelot",
+    "ottoni",
+    "biome-shift",
+    "tawny",
+    "apex",
+    "entangled",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

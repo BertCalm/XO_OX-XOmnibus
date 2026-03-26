@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "Octopus",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.708
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, shimmering, warm sound. Sits warmly in any arrangement without fighting for space."
+  "description": "Interwoven and coupled, shimmering, warm sound. Sits warmly in any arrangement without fighting for space.",
+  "couplingIntensity": "Moderate"
 }

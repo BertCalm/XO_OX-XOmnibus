@@ -5,7 +5,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Ottoni",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.7592
       }
     ]

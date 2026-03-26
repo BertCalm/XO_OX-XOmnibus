@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.768
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.935,
+    "brightness": 0.439,
+    "density": 0.927,
+    "movement": 0.403,
+    "space": 0.894,
+    "warmth": 0.069
+  },
+  "engines": [
+    "Ocelot",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.43,
+    "COUPLING": 0.868,
+    "MOVEMENT": 0.386,
+    "SPACE": 0.863
+  },
+  "mood": "Prism",
+  "name": "COLD DENSE VAST VIOLENT PRS...",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.437,
+      "macro_coupling": 0.838,
+      "macro_movement": 0.393,
+      "macro_space": 0.867
+    },
+    "Origami": {
+      "macro_character": 0.424,
+      "macro_coupling": 0.898,
+      "macro_movement": 0.379,
+      "macro_space": 0.86
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dense",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

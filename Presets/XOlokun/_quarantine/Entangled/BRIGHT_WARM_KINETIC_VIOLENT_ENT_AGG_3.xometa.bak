@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.966
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.931,
+    "brightness": 0.917,
+    "density": 0.537,
+    "movement": 0.971,
+    "space": 0.503,
+    "warmth": 0.944
+  },
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.56,
+    "COUPLING": 0.864,
+    "MOVEMENT": 0.971,
+    "SPACE": 0.503
+  },
+  "mood": "Entangled",
+  "name": "Honey Flutter",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.575,
+      "macro_coupling": 0.849,
+      "macro_movement": 0.963,
+      "macro_space": 0.543
+    },
+    "Orphica": {
+      "macro_character": 0.546,
+      "macro_coupling": 0.864,
+      "macro_movement": 0.954,
+      "macro_space": 0.464
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

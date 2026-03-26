@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.862
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.061,
+    "brightness": 0.472,
+    "density": 0.379,
+    "movement": 0.966,
+    "space": 0.871,
+    "warmth": 0.979
+  },
+  "engines": [
+    "Oceanic",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.768,
+    "COUPLING": 0.855,
+    "MOVEMENT": 0.862,
+    "SPACE": 0.763
+  },
+  "mood": "Atmosphere",
+  "name": "Mahogany Undulation III",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.768,
+      "macro_coupling": 0.855,
+      "macro_movement": 0.862,
+      "macro_space": 0.763
+    },
+    "Origami": {
+      "macro_character": 0.43,
+      "macro_coupling": 0.892,
+      "macro_movement": 0.852,
+      "macro_space": 0.698
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

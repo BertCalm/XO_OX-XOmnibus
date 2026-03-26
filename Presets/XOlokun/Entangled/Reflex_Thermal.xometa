@@ -6,7 +6,7 @@
         "amount": 0.464,
         "engineA": "Overbite",
         "engineB": "Oceanic",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

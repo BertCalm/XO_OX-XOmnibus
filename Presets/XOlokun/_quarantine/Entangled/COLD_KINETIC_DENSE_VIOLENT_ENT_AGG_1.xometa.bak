@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.928
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.357,
+    "density": 0.96,
+    "movement": 0.874,
+    "space": 0.386,
+    "warmth": 0.09
+  },
+  "engines": [
+    "Odyssey",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.492,
+    "COUPLING": 0.923,
+    "MOVEMENT": 0.874,
+    "SPACE": 0.386
+  },
+  "mood": "Entangled",
+  "name": "Node Titan",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.486,
+      "macro_coupling": 0.923,
+      "macro_movement": 0.881,
+      "macro_space": 0.344
+    },
+    "Opal": {
+      "macro_character": 0.498,
+      "macro_coupling": 0.896,
+      "macro_movement": 0.829,
+      "macro_space": 0.398
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "cold",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Warm Formant",
   "mood": "Entangled",
-  "engines": ["Orbital", "Obsidian"],
+  "engines": [
+    "Orbital",
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's warm harmonic density modulating OBSIDIAN's formant resonance — every spectral bloom amplifies the formant ring, warm-red heat activating crystal resonance.",
-  "tags": ["warm", "formant", "spectral", "resonance", "entangled"],
-  "macroLabels": ["SPECTRAL", "FORMANT", "WARMTH", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "warm",
+    "formant",
+    "spectral",
+    "resonance",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "FORMANT",
+    "WARMTH",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.68, "movement": 0.38, "density": 0.65, "space": 0.55, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.68,
+    "movement": 0.38,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.22
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.62,
@@ -80,11 +101,26 @@
       "obsidian_macroSpace": 0.55
     }
   },
-  "macros": {"SPECTRAL": 0.65, "FORMANT": 0.75, "WARMTH": 0.68, "SPACE": 0.55},
+  "macros": {
+    "SPECTRAL": 0.65,
+    "FORMANT": 0.75,
+    "WARMTH": 0.68,
+    "SPACE": 0.55
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Orbital", "engineB": "Obsidian", "type": "AmpToFilter", "amount": 0.55},
-      {"engineA": "Obsidian", "engineB": "Orbital", "type": "SpectralToFilter", "amount": 0.38}
+      {
+        "engineA": "Orbital",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Obsidian",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.38
+      }
     ]
   }
 }

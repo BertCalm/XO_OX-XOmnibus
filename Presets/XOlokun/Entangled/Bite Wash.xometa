@@ -123,10 +123,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Overbite",
-        "target": "Opal",
         "type": "AudioToWavetable",
-        "amount": 0.7
+        "amount": 0.7,
+        "engineA": "Overbite",
+        "engineB": "Opal"
       }
     ]
   },

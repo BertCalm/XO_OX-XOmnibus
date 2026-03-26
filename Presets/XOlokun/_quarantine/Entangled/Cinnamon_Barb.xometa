@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.438,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Odyssey",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.764
       }
     ]

@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Oblique",
-        "type": "HARMONIC_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.821
       }
     ]
@@ -128,5 +128,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Brass Amber Pocket",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OTTONI's triple brass attack gates are triggered and shaped by OBLONG's amber pocket groove. GROW macro expands with each drum accent.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "ottoni",
+    "beat",
+    "brass",
+    "grow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_groove": 0.6,
+      "bob_density": 0.65,
+      "bob_amberMix": 0.6,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ottoni": {
+      "otto_grow": 0.6,
+      "otto_brassAttack": 0.2,
+      "otto_ensemble": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ottoni",
+        "type": "Amp->Filter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "ORCA Echolocation Ink",
   "mood": "Entangled",
-  "engines": ["Octopus", "Orca"],
+  "engines": [
+    "Octopus",
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORCA's echolocation pulse triggers OCTOPUS's ink cloud defense. The predator's sonar click hits the arms before the body registers danger — a tightly coupled predator/prey entanglement.",
-  "tags": ["octopus", "orca", "entangled", "predator", "prey", "ink", "echolocation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "octopus",
+    "orca",
+    "entangled",
+    "predator",
+    "prey",
+    "ink",
+    "echolocation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-17",
   "parameters": {

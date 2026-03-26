@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Spectral Bounce",
   "mood": "Entangled",
-  "engines": ["Oblique", "Orbital"],
+  "engines": [
+    "Oblique",
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's warm spectral density modulates OBLIQUE's prism color — every harmonic swell shifts the bounce's spectral hue, creating a coupled warm-red prismatic cascade.",
-  "tags": ["spectral", "bounce", "coupled", "warm", "entangled"],
-  "macroLabels": ["BOUNCE", "SPECTRAL", "PRISM", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "spectral",
+    "bounce",
+    "coupled",
+    "warm",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "SPECTRAL",
+    "PRISM",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.62, "movement": 0.55, "density": 0.68, "space": 0.52, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.62,
+    "movement": 0.55,
+    "density": 0.68,
+    "space": 0.52,
+    "aggression": 0.38
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 1,
@@ -79,13 +100,18 @@
       "orb_level": 0.72
     }
   },
-  "macros": {"BOUNCE": 0.42, "SPECTRAL": 0.68, "PRISM": 0.62, "SPACE": 0.52},
+  "macros": {
+    "BOUNCE": 0.42,
+    "SPECTRAL": 0.68,
+    "PRISM": 0.62,
+    "SPACE": 0.52
+  },
   "coupling": {
     "pairs": [
       {
         "engineA": "Orbital",
         "engineB": "Oblique",
-        "type": "SpectralToFilter",
+        "type": "AmpToFilter",
         "amount": 0.65
       },
       {

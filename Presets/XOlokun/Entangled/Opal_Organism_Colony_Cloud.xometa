@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Opal Organism Colony Cloud",
   "mood": "Entangled",
-  "engines": ["Opal", "Organism"],
+  "engines": [
+    "Opal",
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORGANISM's cellular automata audio output feeds OPAL's grain buffer via AudioToWavetable. The cellular patterns — emergent, aperiodic, structurally complex — become the source material for granulation at 200ms Hann window grains, density=22. ORGANISM's rule-set generates audio that was never composed; OPAL granularizes that unplanned material at human-scale timing. RhythmToBlend coupling from ORGANISM drives opal_density modulation — cell birth/death rates directly pulse the grain scheduler. Colony breath as grain rhythm.",
-  "tags": ["organism", "cellular-automata", "entangled", "emergent", "rhythmtoblend", "colony", "granular-cloud"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "organism",
+    "cellular-automata",
+    "entangled",
+    "emergent",
+    "rhythmtoblend",
+    "colony",
+    "granular-cloud"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

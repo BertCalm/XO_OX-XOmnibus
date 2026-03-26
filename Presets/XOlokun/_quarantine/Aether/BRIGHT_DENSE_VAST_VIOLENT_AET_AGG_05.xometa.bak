@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.758
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.978,
+    "brightness": 0.951,
+    "density": 0.971,
+    "movement": 0.564,
+    "space": 0.945,
+    "warmth": 0.588
+  },
+  "engines": [
+    "OddOscar",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.927,
+    "COUPLING": 0.903,
+    "MOVEMENT": 0.528,
+    "SPACE": 0.919
+  },
+  "mood": "Aether",
+  "name": "BRIGHT DENSE VAST VIOLENT A... (OddOscar I)",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.924,
+      "macro_coupling": 0.912,
+      "macro_movement": 0.533,
+      "macro_space": 0.913
+    },
+    "Orbital": {
+      "macro_character": 0.931,
+      "macro_coupling": 0.895,
+      "macro_movement": 0.523,
+      "macro_space": 0.926
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "dense",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

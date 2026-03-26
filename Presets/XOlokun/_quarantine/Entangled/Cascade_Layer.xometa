@@ -6,7 +6,7 @@
         "amount": 0.495,
         "engineA": "Orca",
         "engineB": "Owlfish",
-        "type": "AMPLITUDE_LOCK"
+        "type": "AmpToFilter"
       }
     ]
   },

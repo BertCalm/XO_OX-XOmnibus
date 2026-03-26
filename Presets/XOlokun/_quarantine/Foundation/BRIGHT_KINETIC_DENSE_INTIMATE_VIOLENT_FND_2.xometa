@@ -5,7 +5,7 @@
       {
         "engineA": "OddfeliX",
         "engineB": "Overbite",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.622
       }
     ]

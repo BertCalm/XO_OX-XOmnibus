@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Obese",
-        "target": "Oblique",
-        "type": "RHYTHMIC_SYNC"
+        "type": "RhythmToBlend",
+        "engineA": "Obese",
+        "engineB": "Oblique"
       }
     ]
   },

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.293
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.321,
+    "density": 0.971,
+    "movement": 0.582,
+    "space": 0.952,
+    "warmth": 0.925
+  },
+  "engines": [
+    "OddfeliX",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.618,
+    "COUPLING": 0.46,
+    "MOVEMENT": 0.241,
+    "SPACE": 0.701
+  },
+  "mood": "Foundation",
+  "name": "Packed Nebula",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.115,
+      "macro_coupling": 0.332,
+      "macro_movement": 0.531,
+      "macro_space": 0.423
+    },
+    "OddfeliX": {
+      "macro_character": 0.375,
+      "macro_coupling": 0.145,
+      "macro_movement": 0.732,
+      "macro_space": 0.253
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "hot",
+    "dense",
+    "vast",
+    "gentle",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

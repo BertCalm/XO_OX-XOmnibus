@@ -5,9 +5,9 @@
       {
         "amount": 0.583,
         "description": "Owlfish drives Overworld via TimbreShare",
-        "source": "Owlfish",
-        "target": "Overworld",
-        "type": "TimbreShare"
+        "type": "EnvToMorph",
+        "engineA": "Owlfish",
+        "engineB": "Overworld"
       }
     ]
   },

@@ -21,7 +21,7 @@
     "CHORUS",
     "STAGE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -82,10 +82,10 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Opal",
-        "target": "Opera",
-        "type": "FrequencyModulation",
-        "amount": 0.5
+        "type": "AudioToFM",
+        "amount": 0.5,
+        "engineA": "Opal",
+        "engineB": "Opera"
       }
     ]
   },

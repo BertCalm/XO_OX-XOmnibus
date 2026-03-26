@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "CHAOS_INJECT",
+        "amount": 0.872
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.883,
+    "brightness": 0.475,
+    "density": 0.247,
+    "movement": 0.972,
+    "space": 0.638,
+    "warmth": 0.259
+  },
+  "engines": [
+    "Onset",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.521,
+    "SPACE": 0.627,
+    "PUNCH": 0.972,
+    "MUTATE": 0.275
+  },
+  "mood": "Entangled",
+  "name": "MAELSTROM",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.613,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.975,
+      "macro_space": 0.505
+    },
+    "Osteria": {
+      "macro_character": 0.831,
+      "macro_coupling": 0.548,
+      "macro_movement": 0.969,
+      "macro_space": 0.897
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frantic",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

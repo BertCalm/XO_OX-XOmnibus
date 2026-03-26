@@ -6,7 +6,7 @@
         "amount": 0.51,
         "engineA": "Overlap",
         "engineB": "Obscura",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
+        "type": "PHASE_MOD",
+        "amount": 0.73
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.07,
+    "density": 0.48,
+    "movement": 0.78,
+    "space": 0.3,
+    "warmth": 0.33
+  },
+  "engines": [
+    "Oblong",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "COUPLING": 0.68,
+    "MOVEMENT": 0.78,
+    "SPACE": 0.3
+  },
+  "mood": "Entangled",
+  "name": "Hollow Motion Engine",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.39,
+      "macro_space": 0.47,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ouroboros": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.12,
+      "macro_space": 0.7
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Interwoven and coupled, dark, evolving texture. Macro sweeps reveal shifting timbral landscapes."
+}

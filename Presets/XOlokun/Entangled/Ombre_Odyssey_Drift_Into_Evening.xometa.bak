@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "source": "Ombre",
+        "target": "Odyssey",
+        "type": "GRANULAR_EXCHANGE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Wavetable position as a sundial hand \u2014 the oscillator drifts from afternoon gold to evening violet.",
+  "dna": {
+    "aggression": 0.381,
+    "brightness": 0.511,
+    "density": 0.564,
+    "movement": 0.634,
+    "space": 0.728,
+    "warmth": 0.596
+  },
+  "engines": [
+    "Ombre",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Drift Into Evening II",
+  "parameters": {
+    "Odyssey": {
+      "drift_filterCutoff": 4541.8,
+      "drift_level": 0.826
+    },
+    "Ombre": {
+      "ombre_ampAttack": 0.1217,
+      "ombre_ampDecay": 0.318,
+      "ombre_ampRelease": 1.396,
+      "ombre_ampSustain": 0.649,
+      "ombre_blend": 0.638,
+      "ombre_crossfadeRate": 0.412,
+      "ombre_duskPosition": 0.643,
+      "ombre_filterCutoff": 6641.5,
+      "ombre_filterReso": 0.155,
+      "ombre_forgetRate": 0.664,
+      "ombre_level": 0.687,
+      "ombre_lfo1Depth": 0.453,
+      "ombre_lfo1Rate": 1.057,
+      "ombre_lfo2Depth": 0.28,
+      "ombre_lfo2Rate": 0.692,
+      "ombre_memoryDepth": 0.634,
+      "ombre_modAttack": 0.0369,
+      "ombre_modDecay": 0.516,
+      "ombre_modRelease": 1.15,
+      "ombre_modSustain": 0.347,
+      "ombre_narrativeA": 0.831,
+      "ombre_narrativeB": 0.123,
+      "ombre_reverbDamp": 0.43,
+      "ombre_reverbSize": 0.472,
+      "ombre_shadowAmount": 0.305,
+      "ombre_spaceMix": 0.447,
+      "ombre_toneA": 7630.0,
+      "ombre_toneB": 1856.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "odyssey",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

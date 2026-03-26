@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.201
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.609,
+    "brightness": 0.023,
+    "density": 0.03,
+    "movement": 0.043,
+    "space": 0.09,
+    "warmth": 0.028
+  },
+  "engines": [
+    "Oblong",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.026,
+    "COUPLING": 0.349,
+    "MOVEMENT": 0.036,
+    "SPACE": 0.09
+  },
+  "mood": "Flux",
+  "name": "ALLLO FLX 06",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.026,
+      "macro_coupling": 0.349,
+      "macro_movement": 0.036,
+      "macro_space": 0.09,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overdub": {
+      "macro_character": 0.026,
+      "macro_coupling": 0.349,
+      "macro_movement": 0.036,
+      "macro_space": 0.09,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, dark, crystalline sound. Drives through the mix with presence and bite."
+}

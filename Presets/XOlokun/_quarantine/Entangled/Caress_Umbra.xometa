@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.096,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oracle",
         "engineB": "Overworld",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.636
       }
     ]

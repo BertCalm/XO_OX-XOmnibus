@@ -6,13 +6,13 @@
         "amount": 0.65,
         "engineA": "Oblique",
         "engineB": "Opal",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.45,
         "engineA": "Opal",
         "engineB": "Oblique",
-        "type": "GrainToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

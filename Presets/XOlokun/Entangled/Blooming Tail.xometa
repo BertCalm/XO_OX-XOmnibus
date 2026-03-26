@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Oracle",
-        "type": "ENVELOPE_SHARING",
+        "type": "EnvToDecay",
         "amount": 0.858
       }
     ]

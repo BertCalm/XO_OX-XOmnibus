@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Oblong",
+        "type": "PHASE_COUPLE",
+        "amount": 0.906
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.659,
+    "brightness": 0.037,
+    "density": 0.941,
+    "movement": 0.988,
+    "space": 0.346,
+    "warmth": 0.975
+  },
+  "engines": [
+    "Oblong",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.784,
+    "MOVEMENT": 0.986,
+    "SPACE": 0.362
+  },
+  "mood": "Family",
+  "name": "Amber Stream",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.503,
+      "macro_coupling": 0.774,
+      "macro_movement": 0.983,
+      "macro_space": 0.364
+    },
+    "Oblong": {
+      "macro_character": 0.498,
+      "macro_coupling": 0.795,
+      "macro_movement": 0.99,
+      "macro_space": 0.36,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "dense",
+    "dark"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Warm and familiar, dark, warm bass. Macro sweeps reveal shifting timbral landscapes."
+}

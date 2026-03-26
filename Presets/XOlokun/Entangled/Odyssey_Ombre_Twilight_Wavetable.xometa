@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.6,
-        "source": "Odyssey",
-        "target": "Ombre",
-        "type": "SPATIAL_BLEND"
+        "type": "AudioToWavetable",
+        "engineA": "Odyssey",
+        "engineB": "Ombre"
       }
     ]
   },

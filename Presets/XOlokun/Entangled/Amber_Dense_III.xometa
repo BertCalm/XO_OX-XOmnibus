@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9012,
-        "source": "OddfeliX",
-        "target": "Ocelot",
-        "type": "TIMBRAL_BLEED"
+        "type": "EnvToMorph",
+        "engineA": "OddfeliX",
+        "engineB": "Ocelot"
       }
     ]
   },

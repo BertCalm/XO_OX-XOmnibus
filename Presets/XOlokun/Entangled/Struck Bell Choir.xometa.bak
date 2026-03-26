@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Struck Bell Choir",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET coupling. High-register voice with bright tilt designed to respond to ONSET's percussive transients like a bell being struck. Each drum hit from ONSET disrupts the phase field, and the high, crystalline partials ring and decay like struck metal. Near-total sync (drama=0.5) means the bell tone is clear, but each impact sends ripples through the harmonic series.",
+  "tags": [
+    "entangled",
+    "onset",
+    "bell",
+    "crystalline",
+    "struck"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.35,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.5,
+      "opera_voice": 0.65,
+      "opera_stage": 0.45,
+      "opera_vowelA": 2,
+      "opera_vowelB": 1,
+      "opera_breath": 0.05,
+      "opera_effort": 0.5,
+      "opera_partials": 24,
+      "opera_resSens": 0.45,
+      "opera_arcMode": 0,
+      "opera_arcShape": 1,
+      "opera_arcTime": 8.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 12,
+      "opera_vibRate": 5.0,
+      "opera_vibDepth": 0.1,
+      "opera_tilt": 0.4,
+      "opera_filterCutoff": 12000.0,
+      "opera_filterRes": 0.15,
+      "opera_filterEnvAmt": 0.3,
+      "opera_filterA": 0.005,
+      "opera_filterD": 0.3,
+      "opera_filterS": 0.4,
+      "opera_filterR": 0.6,
+      "opera_ampA": 0.01,
+      "opera_ampD": 0.3,
+      "opera_ampS": 0.6,
+      "opera_ampR": 0.8,
+      "opera_lfo1Rate": 0.12,
+      "opera_lfo1Depth": 0.1,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 4.0,
+      "opera_lfo2Depth": 0.0,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.4,
+      "opera_velToFilter": 0.5,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.06,
+      "opera_portamento": 0.0,
+      "opera_unison": 2,
+      "opera_width": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Onset",
+        "target": "Opera",
+        "type": "PhaseModulation",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "tier": "awakening"
+}

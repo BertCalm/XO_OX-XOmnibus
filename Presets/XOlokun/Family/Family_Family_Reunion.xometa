@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.43,
-      "destination": "Obbligato",
-      "source": "Orphica",
-      "type": "FilterToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.43,
+        "type": "FilterToFilter",
+        "engineA": "Orphica",
+        "engineB": "Obbligato"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Granular fragments chase the pluck across registers. Surface and fracture are equally matched.",

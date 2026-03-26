@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.55,
-        "source": "Octopus",
-        "target": "Ouroboros",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter",
+        "engineA": "Octopus",
+        "engineB": "Ouroboros"
       }
     ]
   },

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.505
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9352,
+    "brightness": 0.8939,
+    "density": 0.9318,
+    "movement": 0.982,
+    "space": 0.1288,
+    "warmth": 0.3168
+  },
+  "engines": [
+    "Optic",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5898,
+    "COUPLING": 0.9545,
+    "MOVEMENT": 0.982,
+    "SPACE": 0.131
+  },
+  "mood": "Flux",
+  "name": "Mirror Pulse (Optic)",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.5968,
+      "macro_coupling": 0.9537,
+      "macro_movement": 0.99,
+      "macro_space": 0.1187
+    },
+    "Ouroboros": {
+      "macro_character": 0.5828,
+      "macro_coupling": 0.9552,
+      "macro_movement": 0.9741,
+      "macro_space": 0.1434
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

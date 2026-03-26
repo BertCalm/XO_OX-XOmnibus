@@ -6,7 +6,7 @@
         "amount": 0.851,
         "engineA": "Outwit",
         "engineB": "Osprey",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

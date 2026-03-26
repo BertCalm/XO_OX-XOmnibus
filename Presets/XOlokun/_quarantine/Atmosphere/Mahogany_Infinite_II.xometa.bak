@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.942
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.895,
+    "brightness": 0.915,
+    "density": 0.608,
+    "movement": 0.934,
+    "space": 0.945,
+    "warmth": 0.982
+  },
+  "engines": [
+    "Optic",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.949,
+    "COUPLING": 0.92,
+    "MOVEMENT": 0.771,
+    "SPACE": 0.945
+  },
+  "mood": "Atmosphere",
+  "name": "Mahogany Infinite II",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.949,
+      "macro_coupling": 0.92,
+      "macro_movement": 0.771,
+      "macro_space": 0.945
+    },
+    "Orbital": {
+      "macro_character": 0.949,
+      "macro_coupling": 0.92,
+      "macro_movement": 0.771,
+      "macro_space": 0.945
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

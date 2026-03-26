@@ -6,7 +6,7 @@
         "amount": 0.754,
         "engineA": "Obsidian",
         "engineB": "Oblique",
-        "type": "FILTER_COUPLING"
+        "type": "FilterToFilter"
       }
     ]
   },

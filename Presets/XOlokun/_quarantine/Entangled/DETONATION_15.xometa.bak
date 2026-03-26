@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ohm",
+        "type": "FILTER_MOD",
+        "amount": 0.622
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.998,
+    "brightness": 0.664,
+    "density": 0.553,
+    "movement": 0.92,
+    "space": 0.344,
+    "warmth": 0.369
+  },
+  "engines": [
+    "Onset",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.55,
+    "SPACE": 0.352,
+    "PUNCH": 0.92,
+    "MUTATE": 0.454
+  },
+  "mood": "Entangled",
+  "name": "DETONATION 15",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.017,
+      "macro_coupling": 0.294,
+      "macro_movement": 0.904,
+      "macro_space": 0.404
+    },
+    "Onset": {
+      "macro_character": 0.476,
+      "macro_coupling": 0.712,
+      "macro_movement": 0.936,
+      "macro_space": 0.448
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "explosive",
+    "unstable"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

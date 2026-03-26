@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Overbite",
+        "type": "CHAOS_INJECT",
+        "amount": 0.85
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.415,
+    "brightness": 0.912,
+    "density": 0.114,
+    "movement": 0.082,
+    "space": 0.659,
+    "warmth": 0.971
+  },
+  "engines": [
+    "Overworld",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.63,
+    "COUPLING": 0.443,
+    "MOVEMENT": 0.296,
+    "SPACE": 0.385
+  },
+  "mood": "Foundation",
+  "name": "Sienna Suspended",
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.155,
+      "macro_coupling": 0.302,
+      "macro_movement": 0.295,
+      "macro_space": 0.753
+    },
+    "Overworld": {
+      "macro_character": 0.211,
+      "macro_coupling": 0.173,
+      "macro_movement": 0.242,
+      "macro_space": 0.542
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "still",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Octopus",
-        "target": "OddOscar",
-        "type": "SPECTRAL_TRANSFER"
+        "type": "EnvToMorph",
+        "engineA": "Octopus",
+        "engineB": "OddOscar"
       }
     ]
   },

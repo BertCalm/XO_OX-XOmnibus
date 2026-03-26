@@ -6,7 +6,7 @@
         "amount": 0.512,
         "engineA": "Overbite",
         "engineB": "Orphica",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },

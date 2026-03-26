@@ -7,7 +7,7 @@
         "amount": 0.75,
         "engineA": "Obese",
         "engineB": "Overbite",
-        "type": "Amp->Amp"
+        "type": "AmpToFilter"
       }
     ],
     "type": "Amp->Amp"

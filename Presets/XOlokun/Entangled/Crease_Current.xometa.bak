@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.53,
+        "engineA": "Origami",
+        "engineB": "Osprey",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Origami × Osprey coupling (timbral blend). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.429,
+    "brightness": 0.616,
+    "density": 0.596,
+    "movement": 0.577,
+    "space": 0.579,
+    "warmth": 0.479
+  },
+  "engines": [
+    "Origami",
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Crease Current",
+  "parameters": {
+    "Origami": {
+      "origami_couplingOut": 0.547,
+      "origami_crease": 0.53,
+      "origami_foldPoint": 0.459,
+      "origami_macro1": 0.382,
+      "origami_macro2": 0.323,
+      "origami_macro3": 0.392,
+      "origami_macro4": 0.32,
+      "origami_pleatRate": 0.772,
+      "origami_tessellate": 0.403,
+      "origami_valleyDepth": 0.749
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.648,
+      "osprey_macroMovement": 0.548,
+      "osprey_macroCoupling": 0.482,
+      "osprey_macroSpace": 0.57
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "origami",
+    "osprey",
+    "timbral-blend",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
+}

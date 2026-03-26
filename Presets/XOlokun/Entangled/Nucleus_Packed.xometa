@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.8579,
-        "source": "Obese",
-        "target": "Orbital",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM",
+        "engineA": "Obese",
+        "engineB": "Orbital"
       }
     ]
   },

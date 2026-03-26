@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ole",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.181
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, dark, ethereal sound. Responds expressively to velocity and modulation."
+  "description": "Warm and familiar, dark, ethereal sound. Responds expressively to velocity and modulation.",
+  "couplingIntensity": "Moderate"
 }

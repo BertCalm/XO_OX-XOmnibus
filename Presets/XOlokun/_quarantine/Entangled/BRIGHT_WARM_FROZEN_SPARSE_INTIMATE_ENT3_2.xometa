@@ -5,7 +5,7 @@
       {
         "engineA": "Octopus",
         "engineB": "Oceanic",
-        "type": "SPECTRAL_MORPH",
+        "type": "EnvToMorph",
         "amount": 0.9423
       }
     ]

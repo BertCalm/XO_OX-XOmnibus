@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Sync",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.955,
+    "brightness": 0.919,
+    "density": 0.919,
+    "movement": 0.556,
+    "space": 0.534,
+    "warmth": 0.053
+  },
+  "engines": [
+    "Orca"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Fracture Mercury",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "bright",
+    "cold",
+    "aggressive",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -6,7 +6,7 @@
         "amount": 0.607,
         "engineA": "Orbital",
         "engineB": "Overworld",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },

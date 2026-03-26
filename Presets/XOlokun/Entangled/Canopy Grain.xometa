@@ -6,7 +6,7 @@
         "amount": 0.6,
         "engineA": "Ocelot",
         "engineB": "Opal",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.45,

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.71,
+        "engineA": "Ohm",
+        "engineB": "Obsidian",
+        "type": "Macro->Param"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Sage smoke drifts through crystal fractures — OHM's communal hum resonates inside OBSIDIAN's glassy depth.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.92,
+    "density": 0.75,
+    "movement": 0.35,
+    "space": 0.82,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Ohm",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.71,
+    "COUPLING": 0.775,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.82
+  },
+  "mood": "Entangled",
+  "name": "Sage Deep Bond",
+  "parameters": {
+    "obsidian_crystalResonance": 0.76,
+    "obsidian_depth": 0.828,
+    "ohm_droneFund": 0.6,
+    "ohm_macroCommune": 0.65,
+    "ohm_macroMeddling": 0.54,
+    "ohm_orgHarmonics": 0.836
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "obsidian",
+    "crystal",
+    "glassy"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

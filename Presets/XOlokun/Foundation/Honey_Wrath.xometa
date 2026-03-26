@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Overdub",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.479
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, shimmering, evolving texture. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Anchored and grounding, shimmering, evolving texture. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

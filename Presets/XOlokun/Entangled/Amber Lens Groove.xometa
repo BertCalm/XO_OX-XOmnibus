@@ -59,7 +59,7 @@
       {
         "engineA": "Optic",
         "engineB": "Oblong",
-        "type": "Env->Character",
+        "type": "EnvToMorph",
         "amount": 0.4
       }
     ]

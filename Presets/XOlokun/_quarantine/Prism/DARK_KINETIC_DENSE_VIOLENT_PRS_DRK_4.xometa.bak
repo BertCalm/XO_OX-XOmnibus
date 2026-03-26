@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ocelot",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.9096
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9216,
+    "brightness": 0.0822,
+    "density": 0.9143,
+    "movement": 0.8743,
+    "space": 0.521,
+    "warmth": 0.3596
+  },
+  "engines": [
+    "Oblique",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6406,
+    "COUPLING": 0.9143,
+    "MOVEMENT": 0.8743,
+    "SPACE": 0.521
+  },
+  "mood": "Prism",
+  "name": "Signal Crush",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.6406,
+      "macro_coupling": 0.9143,
+      "macro_movement": 0.8743,
+      "macro_space": 0.521
+    },
+    "Ocelot": {
+      "macro_character": 0.6643,
+      "macro_coupling": 0.9462,
+      "macro_movement": 0.9032,
+      "macro_space": 0.4978
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

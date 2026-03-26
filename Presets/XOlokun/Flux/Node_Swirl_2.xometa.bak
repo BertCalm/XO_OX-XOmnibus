@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overdub",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.469
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9001,
+    "brightness": 0.5837,
+    "density": 0.1184,
+    "movement": 0.9829,
+    "space": 0.9715,
+    "warmth": 0.9115
+  },
+  "engines": [
+    "Oceanic",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.755,
+    "COUPLING": 0.1232,
+    "MOVEMENT": 0.9736,
+    "SPACE": 0.9682
+  },
+  "mood": "Flux",
+  "name": "Node Swirl 2",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.7358,
+      "macro_coupling": 0.1186,
+      "macro_movement": 0.9849,
+      "macro_space": 0.9516
+    },
+    "Overdub": {
+      "macro_character": 0.7741,
+      "macro_coupling": 0.1279,
+      "macro_movement": 0.9622,
+      "macro_space": 0.9847,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "warm",
+    "kinetic",
+    "sparse",
+    "vast",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, warm, ethereal texture. Macro sweeps reveal shifting timbral landscapes."
+}

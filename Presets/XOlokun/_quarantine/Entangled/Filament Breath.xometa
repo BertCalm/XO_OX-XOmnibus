@@ -6,7 +6,7 @@
         "amount": 0.848,
         "engineA": "Orphica",
         "engineB": "Obbligato",
-        "type": "Env->Filter"
+        "type": "AmpToFilter"
       }
     ]
   },

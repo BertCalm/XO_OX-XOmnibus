@@ -28,7 +28,7 @@
     "COUPLING": 0.68,
     "SPACE": 0.45
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "dna": {
     "brightness": 0.48,
     "warmth": 0.62,

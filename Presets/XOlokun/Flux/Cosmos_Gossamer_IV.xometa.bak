@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "PITCH_SYNC",
+        "amount": 0.9035
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.486,
+    "brightness": 0.4976,
+    "density": 0.0609,
+    "movement": 0.8688,
+    "space": 0.9682,
+    "warmth": 0.1235
+  },
+  "engines": [
+    "Optic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5509,
+    "COUPLING": 0.6064,
+    "MOVEMENT": 0.8644,
+    "SPACE": 0.8511
+  },
+  "mood": "Flux",
+  "name": "Cosmos Gossamer IV",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.405,
+      "macro_coupling": 0.5382,
+      "macro_movement": 0.8354,
+      "macro_space": 0.848,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Optic": {
+      "macro_character": 0.5509,
+      "macro_coupling": 0.6064,
+      "macro_movement": 0.8644,
+      "macro_space": 0.8511
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-warmth",
+    "high-movement",
+    "low-density",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, crystalline, ethereal texture. Macro sweeps reveal shifting timbral landscapes."
+}

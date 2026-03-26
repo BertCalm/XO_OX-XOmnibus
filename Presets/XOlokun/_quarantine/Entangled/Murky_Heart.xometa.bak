@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.677,
+        "engineA": "Octopus",
+        "engineB": "Obbligato",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.53,
+    "brightness": 0.535,
+    "density": 0.63,
+    "movement": 1.0,
+    "space": 0.535,
+    "warmth": 0.435
+  },
+  "engines": [
+    "Obbligato",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.475,
+    "COUPLING": 0.628,
+    "MOVEMENT": 0.859,
+    "SPACE": 0.502
+  },
+  "mood": "Entangled",
+  "name": "Murky Heart",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.327,
+      "macro_coupling": 0.584,
+      "macro_movement": 0.522,
+      "macro_space": 0.608
+    },
+    "Octopus": {
+      "macro_character": 0.685,
+      "macro_coupling": 0.406,
+      "macro_movement": 0.776,
+      "macro_space": 0.361
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "octopus"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

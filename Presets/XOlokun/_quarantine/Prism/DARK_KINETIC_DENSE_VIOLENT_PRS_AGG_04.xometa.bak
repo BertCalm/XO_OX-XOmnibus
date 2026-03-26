@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ocelot",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.806
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.932,
+    "brightness": 0.09,
+    "density": 0.951,
+    "movement": 0.877,
+    "space": 0.462,
+    "warmth": 0.617
+  },
+  "engines": [
+    "Owlfish",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.088,
+    "COUPLING": 0.829,
+    "MOVEMENT": 0.828,
+    "SPACE": 0.445
+  },
+  "mood": "Prism",
+  "name": "DARK KINETIC DENSE VIOLENT ... (Owlfish I)",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.088,
+      "macro_coupling": 0.834,
+      "macro_movement": 0.838,
+      "macro_space": 0.434
+    },
+    "Owlfish": {
+      "macro_character": 0.088,
+      "macro_coupling": 0.824,
+      "macro_movement": 0.818,
+      "macro_space": 0.456
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ouroboros",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.914
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.031,
+    "brightness": 0.887,
+    "density": 0.65,
+    "movement": 0.068,
+    "space": 0.937,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Onset",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.9,
+    "SPACE": 0.914,
+    "PUNCH": 0.069,
+    "MUTATE": 0.931
+  },
+  "mood": "Entangled",
+  "name": "Candlelight Abyss",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.629,
+      "macro_movement": 0.076,
+      "macro_space": 0.933
+    },
+    "Ouroboros": {
+      "macro_character": 0.92,
+      "macro_coupling": 0.647,
+      "macro_movement": 0.062,
+      "macro_space": 0.928
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

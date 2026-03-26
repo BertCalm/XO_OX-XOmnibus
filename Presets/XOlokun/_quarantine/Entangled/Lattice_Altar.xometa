@@ -6,7 +6,7 @@
         "amount": 0.585,
         "engineA": "OddOscar",
         "engineB": "Orbital",
-        "type": "PITCH_TRACK"
+        "type": "PitchToPitch"
       }
     ]
   },

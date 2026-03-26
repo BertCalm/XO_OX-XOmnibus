@@ -1,16 +1,18 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.561,
-      "destination": "OBLONG",
-      "source": "OCTOPUS",
-      "type": "CHAOS_INJECT"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.561,
+        "type": "AudioToFM",
+        "engineA": "OCTOPUS",
+        "engineB": "OBLONG"
+      }
+    ]
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
   "dna": {
     "aggression": 0.472,
     "brightness": 0.957,

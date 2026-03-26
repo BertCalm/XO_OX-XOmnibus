@@ -5,7 +5,7 @@
       {
         "engineA": "Ohm",
         "engineB": "Oracle",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.62
       }
     ]
@@ -58,5 +58,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

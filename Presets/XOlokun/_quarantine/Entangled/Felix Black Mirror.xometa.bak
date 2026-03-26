@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "PHASE_LOCK",
+        "amount": 0.75
+      }
+    ]
+  },
+  "description": "OddFelix's bright eccentricity reflected back through Obsidian's volcanic black.",
+  "engines": [
+    "OddfeliX",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Felix Black Mirror",
+  "parameters": {
+    "OddfeliX": {},
+    "Obsidian": {}
+  },
+  "schema_version": 1,
+  "strategy": "Bright Dark",
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "character",
+    "obsidian"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

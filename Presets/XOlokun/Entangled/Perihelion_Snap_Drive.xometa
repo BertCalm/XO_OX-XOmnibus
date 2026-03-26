@@ -6,19 +6,19 @@
         "amount": 0.715,
         "engineA": "Orbital",
         "engineB": "Overbite",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       },
       {
         "amount": 0.747,
         "engineA": "Orbital",
         "engineB": "Obese",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.59,
         "engineA": "Overbite",
         "engineB": "Obese",
-        "type": "rhythm_sync"
+        "type": "RhythmToBlend"
       }
     ]
   },

@@ -22,7 +22,7 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.62,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Onset",
         "type": "AmpToFilter",
         "amount": 0.6,
-        "description": "Outwit amplitude opens Onset drum filter — CA breathing controls drum brightness"
+        "description": "Outwit amplitude opens Onset drum filter — CA breathing controls drum brightness",
+        "engineA": "Outwit",
+        "engineB": "Onset"
       }
     ]
   },

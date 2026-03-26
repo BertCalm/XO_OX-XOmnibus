@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.532
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.139,
+    "brightness": 0.952,
+    "density": 0.056,
+    "movement": 0.446,
+    "space": 0.913,
+    "warmth": 0.539
+  },
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.425,
+    "COUPLING": 0.544,
+    "MOVEMENT": 0.403,
+    "SPACE": 0.825
+  },
+  "mood": "Atmosphere",
+  "name": "Node Horizon 2",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.636,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.531,
+      "macro_space": 0.81
+    },
+    "Origami": {
+      "macro_character": 0.425,
+      "macro_coupling": 0.544,
+      "macro_movement": 0.403,
+      "macro_space": 0.825
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bright",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

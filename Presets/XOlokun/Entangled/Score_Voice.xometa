@@ -6,7 +6,7 @@
         "amount": 0.491,
         "engineA": "Origami",
         "engineB": "Obbligato",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       }
     ]
   },

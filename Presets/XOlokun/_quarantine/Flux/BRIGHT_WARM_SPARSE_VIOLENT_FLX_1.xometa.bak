@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC",
+        "amount": 0.6409
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8737,
+    "brightness": 0.8833,
+    "density": 0.0346,
+    "movement": 0.4553,
+    "space": 0.6734,
+    "warmth": 0.9041
+  },
+  "engines": [
+    "Ouroboros",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8327,
+    "COUPLING": 0.9472,
+    "MOVEMENT": 0.4738,
+    "SPACE": 0.6016
+  },
+  "mood": "Flux",
+  "name": "Peach Force",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.8599,
+      "macro_coupling": 0.7756,
+      "macro_movement": 0.3623,
+      "macro_space": 0.697
+    },
+    "Ouroboros": {
+      "macro_character": 0.8327,
+      "macro_coupling": 0.9472,
+      "macro_movement": 0.4738,
+      "macro_space": 0.6016
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-warmth",
+    "low-density",
+    "high-aggression"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

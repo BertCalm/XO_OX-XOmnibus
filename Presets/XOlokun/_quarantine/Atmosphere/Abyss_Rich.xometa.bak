@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.74
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.123,
+    "brightness": 0.114,
+    "density": 0.889,
+    "movement": 0.696,
+    "space": 0.903,
+    "warmth": 0.568
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.341,
+    "COUPLING": 0.617,
+    "MOVEMENT": 0.732,
+    "SPACE": 0.755
+  },
+  "mood": "Atmosphere",
+  "name": "Abyss Rich",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.341,
+      "macro_coupling": 0.617,
+      "macro_movement": 0.732,
+      "macro_space": 0.755
+    },
+    "Oracle": {
+      "macro_character": 0.303,
+      "macro_coupling": 0.821,
+      "macro_movement": 0.735,
+      "macro_space": 0.893
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "dark",
+    "dense",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

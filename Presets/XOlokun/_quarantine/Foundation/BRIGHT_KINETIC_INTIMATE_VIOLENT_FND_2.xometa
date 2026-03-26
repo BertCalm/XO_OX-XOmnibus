@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Overbite",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.809
       }
     ]
@@ -63,5 +63,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Onset",
-        "type": "CHAOS_INJECT",
+        "type": "AudioToFM",
         "amount": 0.801
       }
     ]
@@ -63,5 +63,6 @@
   "version": "1.0.0",
   "tempo": null,
   "description": "Anchored and grounding, shimmering, warm sound. Let it breathe — the space is the instrument.",
-  "tier": "awakening"
+  "tier": "awakening",
+  "couplingIntensity": "Moderate"
 }

@@ -12,7 +12,7 @@
         "amount": 0.45,
         "engineA": "Obsidian",
         "engineB": "Oblique",
-        "type": "EnvToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

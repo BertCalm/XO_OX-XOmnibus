@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9311
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.1254,
+    "brightness": 0.5533,
+    "density": 0.1054,
+    "movement": 0.0294,
+    "space": 0.9121,
+    "warmth": 0.9337
+  },
+  "engines": [
+    "Origami",
+    "Oblique"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7112,
+    "COUPLING": 0.7897,
+    "MOVEMENT": 0.025,
+    "SPACE": 0.578
+  },
+  "mood": "Entangled",
+  "name": "Tone Cathedral",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.872,
+      "macro_coupling": 0.7681,
+      "macro_movement": 0.0345,
+      "macro_space": 0.9086
+    },
+    "Origami": {
+      "macro_character": 0.5504,
+      "macro_coupling": 0.8114,
+      "macro_movement": 0.0155,
+      "macro_space": 0.2475
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "warm",
+    "gentle",
+    "sparse",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

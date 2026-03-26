@@ -5,9 +5,9 @@
       {
         "amount": 0.65,
         "description": "Outwit CA arm density drives Opal grain scatter position",
-        "source": "Outwit",
-        "target": "Opal",
-        "type": "DensityToScatter"
+        "type": "AudioToBuffer",
+        "engineA": "Outwit",
+        "engineB": "Opal"
       }
     ]
   },

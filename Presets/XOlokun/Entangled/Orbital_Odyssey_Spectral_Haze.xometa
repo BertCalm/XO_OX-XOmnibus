@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Spectral Haze",
   "mood": "Entangled",
-  "engines": ["Orbital", "Odyssey"],
+  "engines": [
+    "Orbital",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's harmonic spectral content feeds into ODYSSEY's haze engine — warm-red partials dissolving into violet drift, spectral richness becoming atmospheric depth.",
-  "tags": ["spectral", "haze", "atmosphere", "coupled", "entangled"],
-  "macroLabels": ["SPECTRAL", "HAZE", "DEPTH", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "spectral",
+    "haze",
+    "atmosphere",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "HAZE",
+    "DEPTH",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.65, "movement": 0.42, "density": 0.6, "space": 0.78, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.6,
+    "space": 0.78,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.45,
@@ -87,11 +108,26 @@
       "drift_level": 0.7
     }
   },
-  "macros": {"SPECTRAL": 0.72, "HAZE": 0.62, "DEPTH": 0.6, "SPACE": 0.78},
+  "macros": {
+    "SPECTRAL": 0.72,
+    "HAZE": 0.62,
+    "DEPTH": 0.6,
+    "SPACE": 0.78
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Orbital", "engineB": "Odyssey", "type": "SpectralToFilter", "amount": 0.62},
-      {"engineA": "Odyssey", "engineB": "Orbital", "type": "LFOToFilter", "amount": 0.42}
+      {
+        "engineA": "Orbital",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.62
+      },
+      {
+        "engineA": "Odyssey",
+        "engineB": "Orbital",
+        "type": "AmpToFilter",
+        "amount": 0.42
+      }
     ]
   }
 }

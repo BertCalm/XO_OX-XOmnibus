@@ -6,7 +6,7 @@
         "amount": 0.545,
         "engineA": "Oracle",
         "engineB": "Oblique",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

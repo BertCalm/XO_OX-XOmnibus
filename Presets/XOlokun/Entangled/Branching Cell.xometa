@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "OddfeliX",
-        "type": "RHYTHMIC_SYNC",
+        "type": "RhythmToBlend",
         "amount": 0.718
       }
     ]

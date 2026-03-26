@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7034
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.102,
+    "brightness": 0.4905,
+    "density": 0.6112,
+    "movement": 0.959,
+    "space": 0.0621,
+    "warmth": 0.8763
+  },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4901,
+    "COUPLING": 0.7034,
+    "MOVEMENT": 0.9526,
+    "SPACE": 0.0621
+  },
+  "mood": "Aether",
+  "name": "Wave Drift",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.5064,
+      "macro_coupling": 0.6255,
+      "macro_movement": 0.9392,
+      "macro_space": 0.0152
+    },
+    "OddfeliX": {
+      "macro_character": 0.4738,
+      "macro_coupling": 0.6248,
+      "macro_movement": 0.9659,
+      "macro_space": 0.0866
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "hot",
+    "kinetic",
+    "gentle",
+    "tender"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

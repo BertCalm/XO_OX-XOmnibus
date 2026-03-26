@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Osprey",
+        "type": "COASTAL_DIVE",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Drift FM lands at the shoreline — osprey plunge marks the destination of the voyage",
+  "engines": [
+    "Odyssey",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Shore Odyssey",
+  "parameters": {
+    "Odyssey": {},
+    "Osprey": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "osprey",
+    "wavetable"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

@@ -6,7 +6,7 @@
         "amount": 0.89,
         "engineA": "Overworld",
         "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

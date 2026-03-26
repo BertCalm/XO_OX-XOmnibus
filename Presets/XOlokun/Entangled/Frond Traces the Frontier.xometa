@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Overlap",
-        "type": "PITCH_TRACKING",
+        "type": "PitchToPitch",
         "amount": 0.68
       }
     ]

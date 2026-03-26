@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.509
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.067,
+    "brightness": 0.961,
+    "density": 0.899,
+    "movement": 0.446,
+    "space": 0.081,
+    "warmth": 0.311
+  },
+  "engines": [
+    "Oblong",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.162,
+    "COUPLING": 0.145,
+    "MOVEMENT": 0.336,
+    "SPACE": 0.314
+  },
+  "mood": "Foundation",
+  "name": "Quartz Titan",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.413,
+      "macro_coupling": 0.762,
+      "macro_movement": 0.259,
+      "macro_space": 0.125,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overbite": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "dense",
+    "intimate",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Anchored and grounding, shimmering, dense sound. Responds expressively to velocity and modulation."
+}

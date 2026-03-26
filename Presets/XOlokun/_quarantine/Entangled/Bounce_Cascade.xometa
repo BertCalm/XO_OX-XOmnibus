@@ -6,7 +6,7 @@
         "amount": 0.85,
         "engineA": "Oblique",
         "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

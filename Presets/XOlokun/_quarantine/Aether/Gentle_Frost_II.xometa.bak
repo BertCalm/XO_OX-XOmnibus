@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.068
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.043,
+    "brightness": 0.06,
+    "density": 0.542,
+    "movement": 0.073,
+    "space": 0.058,
+    "warmth": 0.051
+  },
+  "engines": [
+    "Obscura",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.055,
+    "COUPLING": 0.051,
+    "MOVEMENT": 0.307,
+    "SPACE": 0.058
+  },
+  "mood": "Aether",
+  "name": "Gentle Frost II",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.055,
+      "macro_coupling": 0.051,
+      "macro_movement": 0.307,
+      "macro_space": 0.058
+    },
+    "Oracle": {
+      "macro_character": 0.055,
+      "macro_coupling": 0.051,
+      "macro_movement": 0.307,
+      "macro_space": 0.058
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

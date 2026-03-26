@@ -5,16 +5,16 @@
       {
         "amount": 0.65,
         "description": "Opal grain scatter density modulates Ombre blend point — sparse grains shift toward forgetting, dense clouds toward memory",
-        "source": "Opal",
-        "target": "Ombre",
-        "type": "VelToGrain"
+        "type": "AudioToBuffer",
+        "engineA": "Opal",
+        "engineB": "Ombre"
       },
       {
         "amount": 0.35,
         "description": "Opal granular output softly FM-modulates Ombre oscillator — the texture of memory carries a granular timbre",
-        "source": "Opal",
-        "target": "Ombre",
-        "type": "AudioToFM"
+        "type": "AudioToFM",
+        "engineA": "Opal",
+        "engineB": "Ombre"
       }
     ]
   },

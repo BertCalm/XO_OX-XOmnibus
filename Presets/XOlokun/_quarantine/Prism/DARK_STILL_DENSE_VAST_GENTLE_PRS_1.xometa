@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Optic",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.681
       }
     ]

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Oto Khene River Coupling",
+  "mood": "Entangled",
+  "engines": [
+    "Oto",
+    "Ostinato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene folk drone (Lao bamboo paired pipes) entangled with OSTINATO's rhythmic membrane percussion. The Khene's natural pipe-pair beating feeds LFOToPitch coupling into OSTINATO, causing the membrane to waver in microtonal sympathy. River current and drum — one organism.",
+  "tier": "awakening",
+  "tags": [
+    "entangled",
+    "coupling",
+    "khene",
+    "folk",
+    "rhythmic",
+    "ostinato",
+    "drone",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "FLUTTER",
+    "ENTANGLE",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.7,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oto",
+        "engineB": "Ostinato",
+        "type": "LFOToPitch",
+        "amount": 0.45
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.62,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.6,
+      "oto_chiff": 0.4,
+      "oto_detune": 0.22,
+      "oto_buzz": 0.25,
+      "oto_pressure": 0.35,
+      "oto_crosstalk": 0.15,
+      "oto_filterCutoff": 5500.0,
+      "oto_filterRes": 0.15,
+      "oto_attack": 0.02,
+      "oto_decay": 0.4,
+      "oto_sustain": 0.75,
+      "oto_release": 0.3,
+      "oto_lfo1Rate": 0.8,
+      "oto_lfo1Depth": 0.18,
+      "oto_competition": 0.3,
+      "oto_macroA": 0.0,
+      "oto_macroB": 0.0,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.0
+    },
+    "Ostinato": {}
+  },
+  "tempo": null
+}

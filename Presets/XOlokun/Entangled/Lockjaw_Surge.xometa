@@ -6,11 +6,11 @@
         "amount": 0.598,
         "engineA": "Overbite",
         "engineB": "Ole",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OVERBITE reflex strikes OLELÉ drama pulse. Bitten flamencoid surge.",
   "dna": {

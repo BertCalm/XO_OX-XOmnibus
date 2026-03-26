@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.88,
+        "engineA": "Oblique",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Prism walls chaos-injected by Ouroboros — the bounce has no predictable reflection.",
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.87,
+    "density": 0.74,
+    "movement": 0.85,
+    "space": 0.2,
+    "warmth": 0.14
+  },
+  "engines": [
+    "Oblique",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "COUPLING": 0.88,
+    "MOVEMENT": 0.85,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Bounce Riot",
+  "parameters": {
+    "Oblique": {},
+    "Ouroboros": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "ouroboros",
+    "bounce"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

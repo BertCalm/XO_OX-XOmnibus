@@ -6,7 +6,7 @@
         "amount": 0.515,
         "engineA": "Outwit",
         "engineB": "Odyssey",
-        "type": "SYNC_LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

@@ -5,7 +5,7 @@
       {
         "engineA": "Orca",
         "engineB": "Orbital",
-        "type": "SPECTRAL_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.85
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

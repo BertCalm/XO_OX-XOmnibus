@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Optic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.675
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.75,
+    "density": 0.45,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.85
+  },
+  "engines": [
+    "Ocelot",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.675,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.475
+  },
+  "mood": "Entangled",
+  "name": "Amber Optic",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.675,
+      "macro_coupling": 0.575,
+      "macro_movement": 0.725,
+      "macro_space": 0.475
+    },
+    "Optic": {
+      "macro_character": 0.475,
+      "macro_coupling": 0.575,
+      "macro_movement": 0.425,
+      "macro_space": 0.475
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "warm",
+    "optical"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

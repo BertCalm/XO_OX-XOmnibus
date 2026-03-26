@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.783
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.968,
+    "brightness": 0.925,
+    "density": 0.933,
+    "movement": 0.453,
+    "space": 0.687,
+    "warmth": 0.051
+  },
+  "engines": [
+    "Ottoni",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.831,
+    "COUPLING": 0.5,
+    "MOVEMENT": 0.433,
+    "SPACE": 0.735
+  },
+  "mood": "Family",
+  "name": "Silver Storm",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.868,
+      "macro_coupling": 0.46,
+      "macro_movement": 0.438,
+      "macro_space": 0.77
+    },
+    "Ottoni": {
+      "macro_character": 0.831,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.433,
+      "macro_space": 0.735
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "cold",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.462,
+        "engineA": "Overbite",
+        "engineB": "Ohm",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OVERBITE bass warmth into OHM commune. Grounded drone, tooth on sage.",
+  "dna": {
+    "aggression": 0.495,
+    "brightness": 0.48,
+    "density": 0.677,
+    "movement": 0.533,
+    "space": 0.559,
+    "warmth": 0.651
+  },
+  "engines": [
+    "Overbite",
+    "Ohm"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Tusk Still",
+  "parameters": {
+    "Ohm": {
+      "ohm_couplingIn": 0.794,
+      "ohm_couplingOut": 0.664,
+      "ohm_macro1": 0.381,
+      "ohm_macro2": 0.466,
+      "ohm_macro3": 0.572,
+      "ohm_macro4": 0.613,
+      "ohm_outputLevel": 0.911,
+      "ohm_outputPan": -0.014
+    },
+    "Overbite": {
+      "poss_gnashAmount": 0.591,
+      "poss_macroBelly": 0.314,
+      "poss_macroBite": 0.692,
+      "poss_macroScurry": 0.594,
+      "poss_macroTrash": 0.306,
+      "poss_level": 0.778,
+      "poss_pan": 0.016
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "overbite",
+    "ohm",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
+}

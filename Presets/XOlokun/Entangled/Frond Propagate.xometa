@@ -6,7 +6,7 @@
         "amount": 0.604,
         "engineA": "Overlap",
         "engineB": "Overworld",
-        "type": "PITCH_MOD"
+        "type": "AmpToPitch"
       }
     ]
   },

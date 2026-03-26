@@ -6,23 +6,23 @@
         "amount": 0.84,
         "engineA": "Orbital",
         "engineB": "Overbite",
-        "type": "spectral_cross"
+        "type": "EnvToMorph"
       },
       {
         "amount": 0.489,
         "engineA": "Orbital",
         "engineB": "Obese",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       },
       {
         "amount": 0.604,
         "engineA": "Overbite",
         "engineB": "Obese",
-        "type": "timbral_blend"
+        "type": "EnvToMorph"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Full bidirectional entanglement across all three. ORBITAL sustains the orbit, OVERBITE gnaws its edges, OBESE crushes the debris into heat.",
   "dna": {

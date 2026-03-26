@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Genome Drift",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Anchored and grounding, balanced sound. Macro sweeps reveal shifting timbral landscapes.",
+  "tags": [
+    "cellular",
+    "coupled",
+    "generative",
+    "mutating"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.5,
+    "movement": 0.68,
+    "density": 0.6,
+    "space": 0.48,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 61000,
+      "org_stepRate": 7.5,
+      "org_scope": 5,
+      "org_mutate": 0.028,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.26,
+      "org_filterCutoff": 3600.0,
+      "org_filterRes": 0.48,
+      "org_velCutoff": 0.66,
+      "org_ampAtk": 0.008,
+      "org_ampDec": 0.2,
+      "org_ampSus": 0.6,
+      "org_ampRel": 0.52,
+      "org_lfo1Rate": 2.0,
+      "org_lfo1Depth": 0.42,
+      "org_lfo2Rate": 1.2,
+      "org_lfo2Depth": 0.38,
+      "org_reverbMix": 0.28,
+      "org_macroRule": 0.48,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.84,
+      "org_macroMutate": 0.075
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.66,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.84,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

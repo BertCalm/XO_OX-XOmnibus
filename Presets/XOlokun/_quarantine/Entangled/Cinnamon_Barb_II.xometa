@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.533,
@@ -42,7 +42,7 @@
       {
         "engineA": "Ottoni",
         "engineB": "OddOscar",
-        "type": "ENVELOPE_LINK",
+        "type": "EnvToDecay",
         "amount": 0.794
       }
     ]

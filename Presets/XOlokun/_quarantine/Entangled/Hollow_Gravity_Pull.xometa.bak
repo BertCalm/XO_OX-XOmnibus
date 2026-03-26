@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obscura",
+        "type": "FEEDBACK",
+        "amount": 0.77
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.04,
+    "density": 0.87,
+    "movement": 0.46,
+    "space": 0.33,
+    "warmth": 0.51
+  },
+  "engines": [
+    "Obscura",
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.86,
+    "SPACE": 0.71,
+    "PUNCH": 0.46,
+    "MUTATE": 0.33
+  },
+  "mood": "Entangled",
+  "name": "Hollow Gravity Pull",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.55,
+      "macro_movement": 0.85,
+      "macro_space": 0.47
+    },
+    "Onset": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.77,
+      "macro_movement": 0.21,
+      "macro_space": 0.76
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

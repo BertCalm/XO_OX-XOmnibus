@@ -4,15 +4,15 @@
     "pairs": [
       {
         "amount": 0.75,
-        "source": "Odyssey",
-        "target": "Optic",
-        "type": "GRANULAR_EXCHANGE"
+        "type": "AudioToBuffer",
+        "engineA": "Odyssey",
+        "engineB": "Optic"
       }
     ]
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Phosphor-green pulse rate clocks the drift oscillator \u2014 visual timing becoming pitch timing.",
+  "description": "Phosphor-green pulse rate clocks the drift oscillator — visual timing becoming pitch timing.",
   "dna": {
     "aggression": 0.358,
     "brightness": 0.689,

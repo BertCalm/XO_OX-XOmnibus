@@ -6,7 +6,7 @@
         "amount": 0.655,
         "engineA": "Overlap",
         "engineB": "Ombre",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

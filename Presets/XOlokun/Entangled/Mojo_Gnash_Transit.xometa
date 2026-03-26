@@ -6,23 +6,23 @@
         "amount": 0.472,
         "engineA": "Orbital",
         "engineB": "Overbite",
-        "type": "filter_modulation"
+        "type": "AmpToFilter"
       },
       {
         "amount": 0.823,
         "engineA": "Orbital",
         "engineB": "Obese",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.688,
         "engineA": "Overbite",
         "engineB": "Obese",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OBESE Mojo macro drives OVERBITE into lockjaw while ORBITAL's arc decay shapes the release. Analog heat with a bite.",
   "dna": {

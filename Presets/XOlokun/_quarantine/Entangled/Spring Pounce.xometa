@@ -5,7 +5,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Overdub",
-        "type": "PREDATOR_STALK",
+        "type": "AudioToFM",
         "amount": 0.6
       }
     ]
@@ -51,5 +51,6 @@
     "space": 0.5,
     "aggression": 0.4
   },
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

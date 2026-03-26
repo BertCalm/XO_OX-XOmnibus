@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.6779
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5108,
+    "brightness": 0.0764,
+    "density": 0.9514,
+    "movement": 0.5373,
+    "space": 0.0289,
+    "warmth": 0.058
+  },
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0612,
+    "COUPLING": 0.6779,
+    "MOVEMENT": 0.5104,
+    "SPACE": 0.0289
+  },
+  "mood": "Aether",
+  "name": "Tone Heavy",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.0401,
+      "macro_coupling": 0.9342,
+      "macro_movement": 0.5129,
+      "macro_space": 0.01
+    },
+    "Orbital": {
+      "macro_character": 0.0824,
+      "macro_coupling": 0.9395,
+      "macro_movement": 0.5078,
+      "macro_space": 0.0116
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "cold",
+    "dense",
+    "compressed"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

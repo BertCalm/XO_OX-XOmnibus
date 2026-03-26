@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.817
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.976,
+    "density": 0.304,
+    "movement": 0.903,
+    "space": 0.124,
+    "warmth": 0.58
+  },
+  "engines": [
+    "Oblique",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.951,
+    "COUPLING": 0.856,
+    "MOVEMENT": 0.866,
+    "SPACE": 0.118
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT KINETIC TIGHT VIOLEN...",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.954,
+      "macro_coupling": 0.854,
+      "macro_movement": 0.866,
+      "macro_space": 0.121
+    },
+    "Optic": {
+      "macro_character": 0.948,
+      "macro_coupling": 0.858,
+      "macro_movement": 0.866,
+      "macro_space": 0.115
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "tight"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

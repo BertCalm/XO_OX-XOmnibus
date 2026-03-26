@@ -5,9 +5,9 @@
       {
         "amount": 0.787,
         "description": "Orca drives OddOscar via FilterToGrain",
-        "source": "Orca",
-        "target": "OddOscar",
-        "type": "FilterToGrain"
+        "type": "AudioToBuffer",
+        "engineA": "Orca",
+        "engineB": "OddOscar"
       }
     ]
   },

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.953
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.934,
+    "brightness": 0.094,
+    "density": 0.329,
+    "movement": 0.952,
+    "space": 0.554,
+    "warmth": 0.097
+  },
+  "engines": [
+    "Opal",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.492,
+    "COUPLING": 0.815,
+    "MOVEMENT": 0.952,
+    "SPACE": 0.554
+  },
+  "mood": "Flux",
+  "name": "Fragment Ripple",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.448,
+      "macro_coupling": 0.815,
+      "macro_movement": 0.924,
+      "macro_space": 0.536
+    },
+    "Origami": {
+      "macro_character": 0.535,
+      "macro_coupling": 0.779,
+      "macro_movement": 0.979,
+      "macro_space": 0.586
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "dark",
+    "cold"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

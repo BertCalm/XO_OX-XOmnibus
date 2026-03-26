@@ -6,7 +6,7 @@
         "amount": 0.643,
         "engineA": "Outwit",
         "engineB": "Obbligato",
-        "type": "AMP_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

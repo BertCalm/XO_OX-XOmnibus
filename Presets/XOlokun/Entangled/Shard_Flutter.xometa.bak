@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.752,
+        "source": "Obese",
+        "target": "OddfeliX",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Dark Cold Kinetic Intimate character entanglement — OBESE × ODDFELIX via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.4583,
+    "brightness": 0.0775,
+    "density": 0.5865,
+    "movement": 0.8945,
+    "space": 0.0463,
+    "warmth": 0.1228
+  },
+  "engines": [
+    "Obese",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "FAT",
+    "PULSE",
+    "BIND",
+    "MASS"
+  ],
+  "macros": {
+    "CHARACTER": 0.1002,
+    "COUPLING": 0.752,
+    "MOVEMENT": 0.8945,
+    "SPACE": 0.0463
+  },
+  "mood": "Entangled",
+  "name": "Shard Flutter",
+  "parameters": {
+    "Obese": {
+      "amp_attack": 0.0693,
+      "amp_release": 0.109,
+      "coupling_level": 0.76,
+      "density": 0.5761,
+      "drive": 0.4469,
+      "filter_cutoff": 0.294,
+      "filter_resonance": 0.295,
+      "macro_character": 0.3925,
+      "macro_coupling": 0.7571,
+      "macro_movement": 0.8603,
+      "macro_space": 0.0862,
+      "output_level": 0.8192,
+      "reverb_mix": 0.2102,
+      "reverb_size": 0.2583
+    },
+    "OddfeliX": {
+      "amp_attack": 0.0762,
+      "amp_release": 0.1409,
+      "coupling_level": 0.7151,
+      "density": 0.5551,
+      "drive": 0.3858,
+      "filter_cutoff": 0.2149,
+      "filter_resonance": 0.3545,
+      "macro_character": 0.3887,
+      "macro_coupling": 0.7994,
+      "macro_movement": 0.9034,
+      "macro_space": 0.0586,
+      "output_level": 0.8509,
+      "reverb_mix": 0.2106,
+      "reverb_size": 0.1985
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "kinetic",
+    "intimate",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

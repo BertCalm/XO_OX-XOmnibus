@@ -23,7 +23,7 @@
     "CHAOS",
     "MOTION"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.899,
@@ -42,7 +42,7 @@
       {
         "engineA": "Onset",
         "engineB": "Octopus",
-        "type": "RESONANCE_SHARE",
+        "type": "FilterToFilter",
         "amount": 0.784
       }
     ]

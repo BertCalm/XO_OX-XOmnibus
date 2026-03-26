@@ -5,7 +5,7 @@
       {
         "engineA": "Origami",
         "engineB": "Ottoni",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.958
       }
     ]

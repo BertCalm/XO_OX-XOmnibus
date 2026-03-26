@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.073,
@@ -42,7 +42,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Odyssey",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.744
       }
     ]

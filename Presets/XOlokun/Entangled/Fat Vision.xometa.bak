@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "pairs": [
+      {
+        "amount": 0.8,
+        "engineA": "Obese",
+        "engineB": "Oracle",
+        "type": "Amp->Amp"
+      }
+    ],
+    "type": "Amp->Amp"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OBESE mojo reveals ORACLE vision. Saturated prophecy. [Amp->Amp]",
+  "dna": {
+    "aggression": 0.609,
+    "brightness": 0.521,
+    "density": 0.744,
+    "movement": 0.529,
+    "space": 0.537,
+    "warmth": 0.519
+  },
+  "engines": [
+    "Obese",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Fat Vision",
+  "parameters": {
+    "Obese": {
+      "fat_aggression": 0.686,
+      "fat_brightness": 0.502,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.57,
+      "fat_outputLevel": 0.86,
+      "fat_outputPan": -0.05,
+      "fat_warmth": 0.662
+    },
+    "Oracle": {
+      "oracle_aggression": 0.465,
+      "oracle_brightness": 0.476,
+      "oracle_couplingBus": 0,
+      "oracle_couplingLevel": 0.74,
+      "oracle_outputLevel": 0.79,
+      "oracle_outputPan": -0.04,
+      "oracle_warmth": 0.415
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oracle",
+    "fat"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

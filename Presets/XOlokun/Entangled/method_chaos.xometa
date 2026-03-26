@@ -6,7 +6,7 @@
         "amount": 0.61,
         "engineA": "Outwit",
         "engineB": "Organon",
-        "type": "VELOCITY_COUPLE"
+        "type": "AmpToChoke"
       }
     ]
   },

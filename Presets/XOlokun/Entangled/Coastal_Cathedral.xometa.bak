@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.564,
+        "engineA": "Overlap",
+        "engineB": "Osprey",
+        "type": "SPATIAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Osprey shore system feeds OVERLAP room character — five coastlines, five distinct acoustic spaces",
+  "dna": {
+    "aggression": 0.275,
+    "brightness": 0.525,
+    "density": 0.575,
+    "movement": 0.45,
+    "space": 0.75,
+    "warmth": 0.525
+  },
+  "engines": [
+    "Overlap",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.703,
+    "COUPLING": 0.817,
+    "MOVEMENT": 0.641,
+    "SPACE": 0.565
+  },
+  "mood": "Entangled",
+  "name": "Coastal Cathedral",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.803,
+      "olap_crossfeedAmt": 0.415,
+      "olap_damping": 0.602,
+      "olap_decay": 0.687,
+      "olap_diffusion": 0.699,
+      "olap_earlyMix": 0.284,
+      "olap_filterCutoff": 0.374,
+      "olap_filterReso": 0.198,
+      "olap_frondDensity": 0.636,
+      "olap_lateMix": 0.663,
+      "olap_modDepth": 0.136,
+      "olap_modRate": 0.188,
+      "olap_nodeCount": 10,
+      "olap_outputLevel": 0.787,
+      "olap_preDelay": 0.137,
+      "olap_shimmerMix": 0.172,
+      "olap_size": 0.948,
+      "olap_spinRate": 0.215
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "osprey",
+    "shore",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

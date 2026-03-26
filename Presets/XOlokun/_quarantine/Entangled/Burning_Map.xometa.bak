@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.812,
+        "engineA": "OddfeliX",
+        "engineB": "Orbital",
+        "type": "HARMONIC_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.73,
+    "density": 0.465,
+    "movement": 1.0,
+    "space": 0.705,
+    "warmth": 0.4
+  },
+  "engines": [
+    "OddfeliX",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.532,
+    "COUPLING": 0.475,
+    "MOVEMENT": 0.79,
+    "SPACE": 0.671
+  },
+  "mood": "Entangled",
+  "name": "Burning Map",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.446,
+      "macro_coupling": 0.667,
+      "macro_movement": 0.794,
+      "macro_space": 0.541
+    },
+    "Orbital": {
+      "macro_character": 0.481,
+      "macro_coupling": 0.649,
+      "macro_movement": 0.608,
+      "macro_space": 0.215
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddfelix",
+    "orbital"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

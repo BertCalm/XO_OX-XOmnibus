@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "OddfeliX",
-        "type": "SPECTRAL_WEAVE",
+        "type": "EnvToMorph",
         "amount": 0.762
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

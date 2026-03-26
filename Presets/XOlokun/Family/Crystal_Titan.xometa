@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Ottoni",
-        "type": "PITCH_SYNC",
+        "type": "PitchToPitch",
         "amount": 0.807
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, crystalline sound. Drives through the mix with presence and bite."
+  "description": "Warm and familiar, shimmering, crystalline sound. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

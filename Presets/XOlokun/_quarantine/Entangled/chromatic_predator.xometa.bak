@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Optic",
+        "type": "PITCH_WARP",
+        "amount": 0.686
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.78,
+    "density": 0.5,
+    "movement": 0.85,
+    "space": 0.35,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Ocelot",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.686,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.475
+  },
+  "mood": "Entangled",
+  "name": "Chromatic Predator",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.678,
+      "macro_coupling": 0.578,
+      "macro_movement": 0.728,
+      "macro_space": 0.478
+    },
+    "Optic": {
+      "macro_character": 0.472,
+      "macro_coupling": 0.572,
+      "macro_movement": 0.422,
+      "macro_space": 0.472
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

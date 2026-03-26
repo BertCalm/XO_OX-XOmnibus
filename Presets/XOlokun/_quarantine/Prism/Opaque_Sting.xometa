@@ -4,9 +4,10 @@
     "intensity": "Extreme",
     "sourceEngine": "Orphica",
     "targetEngine": null,
-    "type": "Granular"
+    "type": "Granular",
+    "pairs": []
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Ultra-diverse Prism preset: DARK COLD DENSE OPEN PRI 2.",
   "dna": {

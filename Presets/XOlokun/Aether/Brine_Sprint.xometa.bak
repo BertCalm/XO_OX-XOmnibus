@@ -1,0 +1,58 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.561,
+      "destination": "OBLONG",
+      "source": "OCTOPUS",
+      "type": "CHAOS_INJECT"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "dna": {
+    "aggression": 0.472,
+    "brightness": 0.957,
+    "density": 0.914,
+    "movement": 0.948,
+    "space": 0.44,
+    "warmth": 0.056
+  },
+  "engines": [
+    "Octopus",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Brine Sprint",
+  "parameters": {
+    "Oblong": {
+      "level": 0.745,
+      "pan": 0.087,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Octopus": {
+      "level": 0.777,
+      "pan": 0.015
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "bright",
+    "cold",
+    "kinetic",
+    "dense",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

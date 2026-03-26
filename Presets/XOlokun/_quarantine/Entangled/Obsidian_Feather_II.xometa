@@ -23,7 +23,7 @@
     "FLUX",
     "FIELD"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.054,
@@ -42,7 +42,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Orbital",
-        "type": "TIMBRE_BLEND",
+        "type": "EnvToMorph",
         "amount": 0.843
       }
     ]

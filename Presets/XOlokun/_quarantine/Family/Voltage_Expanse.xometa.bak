@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.371
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.977,
+    "brightness": 0.449,
+    "density": 0.08,
+    "movement": 0.052,
+    "space": 0.965,
+    "warmth": 0.902
+  },
+  "engines": [
+    "Obbligato",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.675,
+    "COUPLING": 0.971,
+    "MOVEMENT": 0.066,
+    "SPACE": 0.965
+  },
+  "mood": "Family",
+  "name": "Voltage Expanse",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.675,
+      "macro_coupling": 0.971,
+      "macro_movement": 0.066,
+      "macro_space": 0.965
+    },
+    "Ole": {
+      "macro_character": 0.675,
+      "macro_coupling": 0.971,
+      "macro_movement": 0.066,
+      "macro_space": 0.965
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

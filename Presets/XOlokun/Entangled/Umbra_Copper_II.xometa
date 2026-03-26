@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7342,
-        "source": "Overworld",
-        "target": "Owlfish",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Overworld",
+        "engineB": "Owlfish"
       }
     ]
   },

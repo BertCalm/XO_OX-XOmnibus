@@ -5,7 +5,7 @@
       {
         "engineA": "Oblong",
         "engineB": "Origami",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.773
       }
     ]
@@ -62,5 +62,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, dark, dense bass. Let it breathe — the space is the instrument."
+  "description": "Anchored and grounding, dark, dense bass. Let it breathe — the space is the instrument.",
+  "couplingIntensity": "Moderate"
 }

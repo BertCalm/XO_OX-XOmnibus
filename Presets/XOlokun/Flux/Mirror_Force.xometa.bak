@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oceanic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.876
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.975,
+    "brightness": 0.974,
+    "density": 0.615,
+    "movement": 0.407,
+    "space": 0.032,
+    "warmth": 0.109
+  },
+  "engines": [
+    "Oblong",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.566,
+    "COUPLING": 0.946,
+    "MOVEMENT": 0.407,
+    "SPACE": 0.032
+  },
+  "mood": "Flux",
+  "name": "Mirror Force",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.693,
+      "macro_coupling": 0.946,
+      "macro_movement": 0.392,
+      "macro_space": 0.064,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Oceanic": {
+      "macro_character": 0.439,
+      "macro_coupling": 0.924,
+      "macro_movement": 0.444,
+      "macro_space": 0.048
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "violent",
+    "bright",
+    "cold",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, shimmering, crystalline sound. Drives through the mix with presence and bite."
+}

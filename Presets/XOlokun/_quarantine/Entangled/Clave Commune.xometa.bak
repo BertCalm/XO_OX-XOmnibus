@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.493,
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "Env->Level"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OHM and OLE coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.447,
+    "brightness": 0.589,
+    "density": 0.667,
+    "movement": 0.687,
+    "space": 0.727,
+    "warmth": 0.686
+  },
+  "engines": [
+    "Ohm",
+    "Ole"
+  ],
+  "macroLabels": [
+    "VOICE",
+    "SWELL",
+    "WEAVE",
+    "SPREAD"
+  ],
+  "mood": "Entangled",
+  "name": "Clave Commune",
+  "parameters": {
+    "Ohm": {},
+    "Ole": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "ole"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

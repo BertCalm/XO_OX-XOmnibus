@@ -6,7 +6,7 @@
         "amount": 0.5,
         "engineA": "Outwit",
         "engineB": "OddfeliX",
-        "type": "CHAOS_INJECT"
+        "type": "AudioToFM"
       }
     ]
   },

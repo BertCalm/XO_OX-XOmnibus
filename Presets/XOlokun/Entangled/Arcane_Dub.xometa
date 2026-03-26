@@ -6,7 +6,7 @@
         "amount": 0.539,
         "engineA": "Oracle",
         "engineB": "Overdub",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay"
       }
     ]
   },

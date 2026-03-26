@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Low",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-21",
   "description": "OFFERING as rhythm section beneath OPERA's Kuramoto vocal field. The drums are the timekeeper the Conductor works against — tension between strict boom bap grid and autonomous dramatic arc. Bay Area fog softens the percussive attack so the vocal partials breathe.",
   "dna": {
@@ -14,13 +14,20 @@
     "space": 0.65,
     "warmth": 0.6
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Family",
   "name": "OPERA Score Keep",
   "parameters": {
@@ -43,8 +50,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["opera", "coupling", "vocal", "bay-area", "narrative", "family"],
+  "tags": [
+    "opera",
+    "coupling",
+    "vocal",
+    "bay-area",
+    "narrative",
+    "family"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.45, "M2": 0.55, "M3": 0.0, "M4": 0.05}
+  "macros": {
+    "M1": 0.45,
+    "M2": 0.55,
+    "M3": 0.0,
+    "M4": 0.05
+  }
 }

@@ -6,11 +6,11 @@
         "amount": 0.749,
         "engineA": "Origami",
         "engineB": "Optic",
-        "type": "pitch_follow"
+        "type": "PitchToPitch"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Origami × Optic coupling (spectral cross). Stub preset — sound-design pass pending.",
   "dna": {

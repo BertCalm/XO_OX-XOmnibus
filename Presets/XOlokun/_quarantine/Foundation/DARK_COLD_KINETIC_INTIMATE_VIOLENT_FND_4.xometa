@@ -5,7 +5,7 @@
       {
         "engineA": "Onset",
         "engineB": "Overbite",
-        "type": "VELOCITY_COUPLE",
+        "type": "AmpToChoke",
         "amount": 0.589
       }
     ]

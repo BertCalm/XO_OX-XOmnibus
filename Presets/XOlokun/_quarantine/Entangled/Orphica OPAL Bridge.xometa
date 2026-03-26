@@ -6,7 +6,7 @@
         "amount": 0.467,
         "engineA": "Orphica",
         "engineB": "Opal",
-        "type": "Mod->Cutoff"
+        "type": "FilterToFilter"
       }
     ]
   },

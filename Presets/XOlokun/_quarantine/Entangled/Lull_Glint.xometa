@@ -23,7 +23,7 @@
     "SCURRY",
     "TRASH"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.92,
@@ -42,7 +42,7 @@
       {
         "engineA": "Ocelot",
         "engineB": "Overbite",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.916
       }
     ]

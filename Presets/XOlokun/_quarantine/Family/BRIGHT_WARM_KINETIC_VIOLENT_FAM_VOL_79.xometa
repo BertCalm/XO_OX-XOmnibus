@@ -5,7 +5,7 @@
       {
         "engineA": "Organon",
         "engineB": "OddfeliX",
-        "type": "RHYTHM_LOCK",
+        "type": "RhythmToBlend",
         "amount": 0.826
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

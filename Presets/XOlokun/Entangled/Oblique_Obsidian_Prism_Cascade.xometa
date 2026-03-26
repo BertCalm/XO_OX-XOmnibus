@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Prism Cascade",
   "mood": "Entangled",
-  "engines": ["Oblique", "Obsidian"],
+  "engines": [
+    "Oblique",
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBSIDIAN's cascade blend modulation feeding into OBLIQUE's color — mineral cascade texture driving prismatic color shifts, white crystal and violet prism cascading together.",
-  "tags": ["prism", "cascade", "crystal", "mineral", "entangled"],
-  "macroLabels": ["CASCADE", "COLOR", "CRYSTAL", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "prism",
+    "cascade",
+    "crystal",
+    "mineral",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CASCADE",
+    "COLOR",
+    "CRYSTAL",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.48, "movement": 0.55, "density": 0.68, "space": 0.48, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.68,
+    "space": 0.48,
+    "aggression": 0.38
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.75,
@@ -75,11 +96,26 @@
       "obsidian_macroSpace": 0.48
     }
   },
-  "macros": {"CASCADE": 0.72, "COLOR": 0.75, "CRYSTAL": 0.68, "SPACE": 0.48},
+  "macros": {
+    "CASCADE": 0.72,
+    "COLOR": 0.75,
+    "CRYSTAL": 0.68,
+    "SPACE": 0.48
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Obsidian", "engineB": "Oblique", "type": "SpectralToFilter", "amount": 0.6},
-      {"engineA": "Oblique", "engineB": "Obsidian", "type": "AmpToFilter", "amount": 0.42}
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter",
+        "amount": 0.42
+      }
     ]
   }
 }

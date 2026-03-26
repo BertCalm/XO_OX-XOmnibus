@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Onset",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.598
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.927,
+    "brightness": 0.091,
+    "density": 0.522,
+    "movement": 0.931,
+    "space": 0.345,
+    "warmth": 0.051
+  },
+  "engines": [
+    "Overbite",
+    "Onset"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.327,
+    "COUPLING": 0.236,
+    "MOVEMENT": 0.89,
+    "SPACE": 0.686
+  },
+  "mood": "Foundation",
+  "name": "Wave Cascade",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.419,
+      "macro_coupling": 0.481,
+      "macro_movement": 0.881,
+      "macro_space": 0.163
+    },
+    "Overbite": {
+      "macro_character": 0.128,
+      "macro_coupling": 0.855,
+      "macro_movement": 0.849,
+      "macro_space": 0.499
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "cold",
+    "kinetic",
+    "violent",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

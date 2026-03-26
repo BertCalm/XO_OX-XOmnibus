@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "PITCH_SYNC",
+        "amount": 0.9593
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0853,
+    "brightness": 0.9818,
+    "density": 0.944,
+    "movement": 0.0493,
+    "space": 0.637,
+    "warmth": 0.9082
+  },
+  "engines": [
+    "Outwit",
+    "Overlap"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8388,
+    "COUPLING": 0.9035,
+    "MOVEMENT": 0.0526,
+    "SPACE": 0.6947
+  },
+  "mood": "Entangled",
+  "name": "Bloom Dense",
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.8473,
+      "macro_coupling": 0.8219,
+      "macro_movement": 0.044,
+      "macro_space": 0.7934
+    },
+    "Overlap": {
+      "macro_character": 0.8302,
+      "macro_coupling": 0.9852,
+      "macro_movement": 0.0612,
+      "macro_space": 0.5961
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "gentle",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

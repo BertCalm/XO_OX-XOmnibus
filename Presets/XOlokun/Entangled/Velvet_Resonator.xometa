@@ -6,11 +6,11 @@
         "amount": 0.526,
         "engineA": "Obese",
         "engineB": "Overlap",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OBESE saturation feeds OVERLAP FDN resonator mesh. Dense entangled bloom.",
   "dna": {

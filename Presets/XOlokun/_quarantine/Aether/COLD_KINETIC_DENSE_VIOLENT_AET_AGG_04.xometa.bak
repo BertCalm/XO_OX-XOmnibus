@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.729
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.949,
+    "brightness": 0.579,
+    "density": 0.957,
+    "movement": 0.94,
+    "space": 0.654,
+    "warmth": 0.079
+  },
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.568,
+    "COUPLING": 0.914,
+    "MOVEMENT": 0.896,
+    "SPACE": 0.615
+  },
+  "mood": "Aether",
+  "name": "COLD KINETIC DENSE VIOLENT ... (Osprey I)",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.565,
+      "macro_coupling": 0.886,
+      "macro_movement": 0.881,
+      "macro_space": 0.614
+    },
+    "Osprey": {
+      "macro_character": 0.571,
+      "macro_coupling": 0.942,
+      "macro_movement": 0.911,
+      "macro_space": 0.616
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

@@ -23,7 +23,7 @@
     "FURY",
     "DENSITY"
   ],
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.382,
@@ -42,7 +42,7 @@
       {
         "engineA": "Organon",
         "engineB": "Optic",
-        "type": "HARMONIC_FOLD",
+        "type": "EnvToMorph",
         "amount": 0.594
       }
     ]

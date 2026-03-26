@@ -6,7 +6,7 @@
         "amount": 0.637,
         "engineA": "Owlfish",
         "engineB": "Osprey",
-        "type": "PHASE_LOCK"
+        "type": "AudioToFM"
       }
     ]
   },

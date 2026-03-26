@@ -5,7 +5,7 @@
       {
         "engineA": "Osteria",
         "engineB": "Overdub",
-        "type": "PHASE_COUPLE",
+        "type": "PitchToPitch",
         "amount": 0.691
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Warm and familiar, shimmering, warm lead. Macro sweeps reveal shifting timbral landscapes."
+  "description": "Warm and familiar, shimmering, warm lead. Macro sweeps reveal shifting timbral landscapes.",
+  "couplingIntensity": "Moderate"
 }

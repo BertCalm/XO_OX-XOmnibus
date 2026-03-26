@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORBITAL's warm density filtering through ODYSSEY's haze engine \u2014 red warmth softening into violet mist, harmonic body dissolving into atmospheric depth.",
+  "description": "ORBITAL's warm density filtering through ODYSSEY's haze engine — red warmth softening into violet mist, harmonic body dissolving into atmospheric depth.",
   "tags": [
     "warm",
     "haze",
@@ -22,7 +22,7 @@
     "SPECTRAL",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -125,7 +125,7 @@
       {
         "engineA": "Odyssey",
         "engineB": "Orbital",
-        "type": "LFOToFilter",
+        "type": "AmpToFilter",
         "amount": 0.38
       }
     ]

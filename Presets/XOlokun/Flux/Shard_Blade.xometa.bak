@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overdub",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.651
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.978,
+    "brightness": 0.52,
+    "density": 0.425,
+    "movement": 0.059,
+    "space": 0.892,
+    "warmth": 0.055
+  },
+  "engines": [
+    "Oceanic",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.702,
+    "COUPLING": 0.684,
+    "MOVEMENT": 0.059,
+    "SPACE": 0.892
+  },
+  "mood": "Flux",
+  "name": "Shard Blade",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.546,
+      "macro_coupling": 0.85,
+      "macro_movement": 0.057,
+      "macro_space": 0.822
+    },
+    "Overdub": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.833,
+      "macro_movement": 0.058,
+      "macro_space": 0.883,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "cold",
+    "vast",
+    "violent",
+    "frozen-instability"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "Restless and kinetic, crystalline, still atmosphere. Let it breathe — the space is the instrument."
+}

@@ -5,7 +5,7 @@
       {
         "engineA": "Overworld",
         "engineB": "OddOscar",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.47
       }
     ]
@@ -63,5 +63,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

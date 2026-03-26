@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.587
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.976,
+    "brightness": 0.048,
+    "density": 0.952,
+    "movement": 0.677,
+    "space": 0.384,
+    "warmth": 0.081
+  },
+  "engines": [
+    "Overworld",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.065,
+    "COUPLING": 0.632,
+    "MOVEMENT": 0.677,
+    "SPACE": 0.384
+  },
+  "mood": "Aether",
+  "name": "DARK COLD DENSE BALANCED AE... (Overworld I)",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.044,
+      "macro_coupling": 0.645,
+      "macro_movement": 0.647,
+      "macro_space": 0.397
+    },
+    "Overworld": {
+      "macro_character": 0.065,
+      "macro_coupling": 0.632,
+      "macro_movement": 0.677,
+      "macro_space": 0.384
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

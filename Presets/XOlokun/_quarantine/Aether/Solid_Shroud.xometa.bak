@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Overworld",
+        "type": "FILTER_MOD",
+        "amount": 0.8984
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4677,
+    "brightness": 0.0535,
+    "density": 0.9765,
+    "movement": 0.9291,
+    "space": 0.8817,
+    "warmth": 0.4815
+  },
+  "engines": [
+    "Ombre",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2675,
+    "COUPLING": 0.8984,
+    "MOVEMENT": 0.9291,
+    "SPACE": 0.8817
+  },
+  "mood": "Aether",
+  "name": "Solid Shroud",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.6912,
+      "macro_coupling": 0.6617,
+      "macro_movement": 0.8253,
+      "macro_space": 0.9043
+    },
+    "Overworld": {
+      "macro_character": 0.4098,
+      "macro_coupling": 0.363,
+      "macro_movement": 0.7177,
+      "macro_space": 0.5335
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "vast",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

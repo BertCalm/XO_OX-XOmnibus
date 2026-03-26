@@ -5,7 +5,7 @@
       {
         "engineA": "Outwit",
         "engineB": "Organon",
-        "type": "ENVELOPE_SHARING",
+        "type": "EnvToDecay",
         "amount": 0.86
       }
     ]

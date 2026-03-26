@@ -4,11 +4,11 @@
     "pairs": [
       {
         "engine": "Opal",
-        "type": "Granular"
+        "type": "AudioToBuffer"
       },
       {
         "engine": "Oceanic",
-        "type": "Spectral"
+        "type": "EnvToMorph"
       }
     ]
   },

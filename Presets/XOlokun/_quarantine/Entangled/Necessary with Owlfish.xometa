@@ -6,7 +6,7 @@
         "amount": 0.546,
         "engineA": "Obbligato",
         "engineB": "Owlfish",
-        "type": "Amp->Space"
+        "type": "AmpToFilter"
       }
     ]
   },

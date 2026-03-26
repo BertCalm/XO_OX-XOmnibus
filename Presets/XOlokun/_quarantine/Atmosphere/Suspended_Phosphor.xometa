@@ -5,7 +5,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Ombre",
-        "type": "LFO_SYNC",
+        "type": "LFOToPitch",
         "amount": 0.89
       }
     ]

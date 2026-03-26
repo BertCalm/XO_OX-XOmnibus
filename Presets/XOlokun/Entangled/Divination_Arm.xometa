@@ -6,7 +6,7 @@
         "amount": 0.687,
         "engineA": "Oracle",
         "engineB": "Octopus",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable"
       }
     ]
   },

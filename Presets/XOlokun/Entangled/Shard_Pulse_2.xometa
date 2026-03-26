@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.9377,
-        "source": "Orbital",
-        "target": "Oblique",
-        "type": "SUBHARMONIC_WEAVE"
+        "type": "AudioToBuffer",
+        "engineA": "Orbital",
+        "engineB": "Oblique"
       }
     ]
   },

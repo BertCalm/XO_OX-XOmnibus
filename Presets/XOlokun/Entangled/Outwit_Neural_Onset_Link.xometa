@@ -22,7 +22,7 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -64,11 +64,11 @@
   "coupling": {
     "pairs": [
       {
-        "source": "Outwit",
-        "target": "Onset",
         "type": "RhythmToBlend",
         "amount": 0.65,
-        "description": "Outwit synapse state modulates Onset drum trigger density"
+        "description": "Outwit synapse state modulates Onset drum trigger density",
+        "engineA": "Outwit",
+        "engineB": "Onset"
       }
     ]
   },

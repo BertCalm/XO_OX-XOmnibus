@@ -5,7 +5,7 @@
       {
         "engineA": "Obese",
         "engineB": "OddfeliX",
-        "type": "FREQUENCY_SHIFT",
+        "type": "AudioToFM",
         "amount": 0.548
       }
     ]

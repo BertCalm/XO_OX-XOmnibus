@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.94
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.459,
+    "brightness": 0.89,
+    "density": 0.941,
+    "movement": 0.425,
+    "space": 0.683,
+    "warmth": 0.882
+  },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.886,
+    "COUPLING": 0.758,
+    "MOVEMENT": 0.425,
+    "SPACE": 0.683
+  },
+  "mood": "Entangled",
+  "name": "Massive Crystal II",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.943,
+      "macro_coupling": 0.319,
+      "macro_movement": 0.463,
+      "macro_space": 0.765
+    },
+    "Orphica": {
+      "macro_character": 0.886,
+      "macro_coupling": 0.758,
+      "macro_movement": 0.425,
+      "macro_space": 0.683
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

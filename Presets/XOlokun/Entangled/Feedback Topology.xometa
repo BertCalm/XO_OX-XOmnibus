@@ -5,9 +5,9 @@
       {
         "amount": 0.569,
         "description": "Owlfish drives Ouroboros via FilterToGrain",
-        "source": "Owlfish",
-        "target": "Ouroboros",
-        "type": "FilterToGrain"
+        "type": "AudioToBuffer",
+        "engineA": "Owlfish",
+        "engineB": "Ouroboros"
       }
     ]
   },

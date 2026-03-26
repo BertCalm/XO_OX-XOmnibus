@@ -6,11 +6,11 @@
         "amount": 0.598,
         "engineA": "Orbital",
         "engineB": "Obbligato",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Orbital × Obbligato coupling (spectral cross). Stub preset — sound-design pass pending.",
   "dna": {

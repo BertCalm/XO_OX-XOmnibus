@@ -6,11 +6,11 @@
         "amount": 0.836,
         "engineA": "Overbite",
         "engineB": "Owlfish",
-        "type": "harmonic_lock"
+        "type": "FilterToFilter"
       }
     ]
   },
-  "couplingIntensity": "Extreme",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OVERBITE latch onto OWLFISH Mixtur overtone. Deep bass pressure.",
   "dna": {

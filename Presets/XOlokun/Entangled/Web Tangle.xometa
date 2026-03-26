@@ -6,7 +6,7 @@
         "amount": 0.729,
         "engineA": "Overlap",
         "engineB": "Oceanic",
-        "type": "SYNC_LFO"
+        "type": "LFOToPitch"
       }
     ]
   },

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLIQUE's prism color modulation drifting through ODYSSEY's oscillator space \u2014 violet prism and violet drift in complementary coupling, two expressions of the same hue.",
+  "description": "OBLIQUE's prism color modulation drifting through ODYSSEY's oscillator space — violet prism and violet drift in complementary coupling, two expressions of the same hue.",
   "tags": [
     "prism",
     "drift",
@@ -22,7 +22,7 @@
     "COLOR",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -114,7 +114,7 @@
       {
         "engineA": "Oblique",
         "engineB": "Odyssey",
-        "type": "LFOToFilter",
+        "type": "AmpToFilter",
         "amount": 0.52
       },
       {

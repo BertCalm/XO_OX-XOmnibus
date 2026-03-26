@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.54,
-      "destination": "Ottoni",
-      "source": "Orphica",
-      "type": "FilterToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.54,
+        "type": "FilterToFilter",
+        "engineA": "Orphica",
+        "engineB": "Ottoni"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Register and fracture shift continuously. The goddess moves through the room.",

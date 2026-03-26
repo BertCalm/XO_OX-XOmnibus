@@ -6,7 +6,7 @@
         "amount": 0.76,
         "engineA": "Oracle",
         "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

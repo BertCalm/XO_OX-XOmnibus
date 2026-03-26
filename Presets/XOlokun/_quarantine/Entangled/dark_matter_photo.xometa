@@ -5,7 +5,7 @@
       {
         "engineA": "Obscura",
         "engineB": "Orbital",
-        "type": "SPECTRAL_SHIFT",
+        "type": "EnvToMorph",
         "amount": 0.473
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": ""
+  "description": "",
+  "couplingIntensity": "Moderate"
 }

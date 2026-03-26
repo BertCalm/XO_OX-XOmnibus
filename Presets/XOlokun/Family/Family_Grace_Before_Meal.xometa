@@ -1,13 +1,15 @@
 {
   "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.28,
-      "destination": "Ohm",
-      "source": "Obbligato",
-      "type": "AmpToFilter"
-    }
-  ],
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.28,
+        "type": "AmpToFilter",
+        "engineA": "Obbligato",
+        "engineB": "Ohm"
+      }
+    ]
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "The argument peaks and resolves. Sweep BOND through its arc and feel the narrative.",

@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Phosphorescence",
   "mood": "Aether",
-  "engines": ["Optic", "Odyssey"],
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Near-zero pulse rate, maximum viz feedback and speed — the long aether tail of bioluminescent light. OPTIC barely moves, Odyssey floats in maximum reverb space. The comb jelly's ghost.",
-  "tags": ["optic", "aether", "transcendent", "slow", "space", "phosphorescence", "ghost"],
-  "macroLabels": ["LUMINOSITY", "REVERB", "FILTER", "DRIFT"],
-  "couplingIntensity": "Minimal",
+  "tags": [
+    "optic",
+    "aether",
+    "transcendent",
+    "slow",
+    "space",
+    "phosphorescence",
+    "ghost"
+  ],
+  "macroLabels": [
+    "LUMINOSITY",
+    "REVERB",
+    "FILTER",
+    "DRIFT"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.35,
@@ -61,7 +81,12 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "AmpToFilter", "amount": 0.15 }
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.15
+      }
     ]
   },
   "sequencer": null,

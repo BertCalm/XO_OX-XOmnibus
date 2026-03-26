@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.5,
-        "source": "Odyssey",
-        "target": "Osprey",
-        "type": "FREQUENCY_MODULATION"
+        "type": "AudioToFM",
+        "engineA": "Odyssey",
+        "engineB": "Osprey"
       }
     ]
   },

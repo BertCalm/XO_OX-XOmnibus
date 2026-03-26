@@ -1,0 +1,59 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "engineA": "Oceanic",
+        "engineB": "Obsidian",
+        "type": "Env->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Oceanic phosphorescence against obsidian black of the trench — maximum depth contrast.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.5,
+    "density": 0.61,
+    "movement": 0.57,
+    "space": 0.64,
+    "warmth": 0.49
+  },
+  "engines": [
+    "Oceanic",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Obsidian Trench",
+  "parameters": {
+    "Oceanic": {},
+    "Obsidian": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "oceanic",
+    "obsidian",
+    "dark",
+    "trench",
+    "abyss"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

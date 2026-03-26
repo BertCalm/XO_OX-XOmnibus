@@ -5,7 +5,7 @@
       {
         "engineA": "Ole",
         "engineB": "Obscura",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.7
       }
     ]
@@ -60,5 +60,6 @@
     "hibiscus"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "couplingIntensity": "Moderate"
 }

@@ -6,7 +6,7 @@
         "amount": 0.733,
         "engineA": "Oracle",
         "engineB": "Origami",
-        "type": "WAVETABLE_MORPH"
+        "type": "AudioToWavetable"
       }
     ]
   },

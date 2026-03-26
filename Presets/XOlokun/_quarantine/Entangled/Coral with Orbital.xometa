@@ -6,7 +6,7 @@
         "amount": 0.794,
         "engineA": "Obbligato",
         "engineB": "Orbital",
-        "type": "Env->Pitch"
+        "type": "EnvToDecay"
       }
     ]
   },

@@ -6,13 +6,13 @@
         "amount": 0.6,
         "engineA": "Optic",
         "engineB": "Ouroboros",
-        "type": "RhythmGate"
+        "type": "AmpToChoke"
       },
       {
         "amount": 0.4,
         "engineA": "Ouroboros",
         "engineB": "Optic",
-        "type": "EnvToMod"
+        "type": "EnvToDecay"
       }
     ]
   },

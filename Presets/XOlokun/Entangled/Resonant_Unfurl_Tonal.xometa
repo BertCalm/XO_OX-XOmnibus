@@ -6,19 +6,19 @@
         "amount": 0.781,
         "engineA": "Orbital",
         "engineB": "Origami",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.653,
         "engineA": "Orbital",
         "engineB": "Obscura",
-        "type": "envelope_share"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.394,
         "engineA": "Origami",
         "engineB": "Obscura",
-        "type": "amplitude_sidechain"
+        "type": "AmpToChoke"
       }
     ]
   },

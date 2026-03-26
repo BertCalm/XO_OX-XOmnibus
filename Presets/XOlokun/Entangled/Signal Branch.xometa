@@ -6,7 +6,7 @@
         "amount": 0.769,
         "engineA": "Outwit",
         "engineB": "Oracle",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

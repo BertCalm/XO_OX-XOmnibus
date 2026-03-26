@@ -5,7 +5,7 @@
       {
         "engineA": "Overlap",
         "engineB": "Overworld",
-        "type": "FILTER_COUPLING",
+        "type": "FilterToFilter",
         "amount": 0.713
       }
     ]

@@ -6,7 +6,7 @@
         "amount": 0.522,
         "engineA": "Obsidian",
         "engineB": "Oblong",
-        "type": "ENVELOPE_SHARING"
+        "type": "EnvToDecay"
       }
     ]
   },

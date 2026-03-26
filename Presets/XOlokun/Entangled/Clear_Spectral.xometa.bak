@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.498,
+        "engineA": "Obsidian",
+        "engineB": "Orphica",
+        "type": "GRANULAR_EXCHANGE"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Crystal facets scatter into ORPHICA shimmer. Cold grain harp from vitreous shards.",
+  "dna": {
+    "aggression": 0.136,
+    "brightness": 0.832,
+    "density": 0.483,
+    "movement": 0.418,
+    "space": 0.67,
+    "warmth": 0.332
+  },
+  "engines": [
+    "Obsidian",
+    "Orphica"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Clear Spectral",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.166,
+      "obsidian_brightness": 0.853,
+      "obsidian_density": 0.43,
+      "obsidian_level": 0.894,
+      "obsidian_movement": 0.282,
+      "obsidian_space": 0.698,
+      "obsidian_warmth": 0.2
+    },
+    "Orphica": {
+      "orph_aggression": 0.191,
+      "orph_brightness": 0.737,
+      "orph_density": 0.495,
+      "orph_level": 0.784,
+      "orph_movement": 0.626,
+      "orph_space": 0.713,
+      "orph_warmth": 0.462
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "orphica",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

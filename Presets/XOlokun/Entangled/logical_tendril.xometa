@@ -6,7 +6,7 @@
         "amount": 0.81,
         "engineA": "Overlap",
         "engineB": "Organon",
-        "type": "PITCH_SYNC"
+        "type": "PitchToPitch"
       }
     ]
   },

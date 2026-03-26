@@ -6,7 +6,7 @@
         "amount": 0.69,
         "engineA": "Outwit",
         "engineB": "Obsidian",
-        "type": "RESONANCE_SHARE"
+        "type": "FilterToFilter"
       }
     ]
   },

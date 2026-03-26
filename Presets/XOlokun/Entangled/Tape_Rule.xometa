@@ -6,7 +6,7 @@
         "amount": 0.735,
         "engineA": "Outwit",
         "engineB": "Overdub",
-        "type": "FILTER_MOD"
+        "type": "AmpToFilter"
       }
     ]
   },

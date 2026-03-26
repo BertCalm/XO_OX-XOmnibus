@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.595,
+        "engineA": "Origami",
+        "engineB": "Ole",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Origami × Ole coupling (amplitude sidechain). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.525,
+    "brightness": 0.634,
+    "density": 0.566,
+    "movement": 0.702,
+    "space": 0.533,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Origami",
+    "Ole"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Facet Surge",
+  "parameters": {
+    "Ole": {
+      "ole_couplingIn": 0.655,
+      "ole_couplingOut": 0.705,
+      "ole_macro1": 0.522,
+      "ole_macro2": 0.51,
+      "ole_macro3": 0.619,
+      "ole_macro4": 0.515
+    },
+    "Origami": {
+      "origami_couplingOut": 0.775,
+      "origami_crease": 0.645,
+      "origami_foldPoint": 0.705,
+      "origami_macro1": 0.325,
+      "origami_macro2": 0.56,
+      "origami_macro3": 0.65,
+      "origami_macro4": 0.381,
+      "origami_pleatRate": 0.611,
+      "origami_tessellate": 0.576,
+      "origami_valleyDepth": 0.495
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "origami",
+    "ole",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
+}

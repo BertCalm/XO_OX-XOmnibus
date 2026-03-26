@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.695,
+        "engineA": "Obsidian",
+        "engineB": "Optic",
+        "type": "Env->Amp"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Faceted obsidian refracts phosphor pulse. Sharp visual artifact.",
+  "dna": {
+    "aggression": 0.284,
+    "brightness": 0.86,
+    "density": 0.463,
+    "movement": 0.591,
+    "space": 0.593,
+    "warmth": 0.252
+  },
+  "engines": [
+    "Obsidian",
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Vitreous Visual",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.027,
+      "obsidian_brightness": 0.867,
+      "obsidian_density": 0.533,
+      "obsidian_level": 0.711,
+      "obsidian_movement": 0.268,
+      "obsidian_space": 0.54,
+      "obsidian_warmth": 0.178
+    },
+    "Optic": {
+      "optic_aggression": 0.372,
+      "optic_brightness": 0.817,
+      "optic_density": 0.44,
+      "optic_level": 0.757,
+      "optic_movement": 0.922,
+      "optic_space": 0.436,
+      "optic_warmth": 0.371
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obsidian",
+    "optic",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

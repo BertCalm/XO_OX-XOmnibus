@@ -12,7 +12,7 @@
         "amount": 0.4,
         "engineA": "Oracle",
         "engineB": "Optic",
-        "type": "HARMONIC_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

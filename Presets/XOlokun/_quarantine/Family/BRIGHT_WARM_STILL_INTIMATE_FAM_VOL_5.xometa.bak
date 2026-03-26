@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "OddOscar",
+        "type": "MODULATION_FLOW",
+        "amount": 0.433
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.361,
+    "brightness": 0.897,
+    "density": 0.618,
+    "movement": 0.049,
+    "space": 0.069,
+    "warmth": 0.909
+  },
+  "engines": [
+    "Ole",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.905,
+    "COUPLING": 0.486,
+    "MOVEMENT": 0.022,
+    "SPACE": 0.072
+  },
+  "mood": "Family",
+  "name": "Golden Titan 2",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.502,
+      "macro_movement": 0.021,
+      "macro_space": 0.074
+    },
+    "Ole": {
+      "macro_character": 0.929,
+      "macro_coupling": 0.471,
+      "macro_movement": 0.024,
+      "macro_space": 0.071
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "warm",
+    "intimate",
+    "bright",
+    "still"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

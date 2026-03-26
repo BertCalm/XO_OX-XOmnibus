@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.72
+      }
+    ]
+  },
+  "description": "Osteria's warm hearth melting into Oceanic's open horizon — salt and embers.",
+  "engines": [
+    "Osteria",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.8
+  },
+  "mood": "Entangled",
+  "name": "Tavern Tide",
+  "parameters": {
+    "Osteria": {},
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "strategy": "Warm Sparse",
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "coastal",
+    "nostalgic"
+  ],
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "tempo": null
+}

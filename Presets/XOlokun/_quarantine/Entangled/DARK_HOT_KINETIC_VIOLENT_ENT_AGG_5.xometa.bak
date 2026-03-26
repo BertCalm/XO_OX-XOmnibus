@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obsidian",
+        "type": "CHAOS_INJECT",
+        "amount": 0.845
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.926,
+    "brightness": 0.024,
+    "density": 0.632,
+    "movement": 0.927,
+    "space": 0.604,
+    "warmth": 0.98
+  },
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.654,
+    "COUPLING": 0.755,
+    "MOVEMENT": 0.927,
+    "SPACE": 0.604
+  },
+  "mood": "Entangled",
+  "name": "Copper Pulse",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.712,
+      "macro_coupling": 0.749,
+      "macro_movement": 0.938,
+      "macro_space": 0.632
+    },
+    "Origami": {
+      "macro_character": 0.596,
+      "macro_coupling": 0.755,
+      "macro_movement": 0.892,
+      "macro_space": 0.648
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

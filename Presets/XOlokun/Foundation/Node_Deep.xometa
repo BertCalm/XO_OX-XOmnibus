@@ -5,7 +5,7 @@
       {
         "engineA": "OddOscar",
         "engineB": "Overdub",
-        "type": "SPATIAL_COUPLE",
+        "type": "AudioToWavetable",
         "amount": 0.787
       }
     ]
@@ -61,5 +61,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, crystalline, dense sound. Drives through the mix with presence and bite."
+  "description": "Anchored and grounding, crystalline, dense sound. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.685,
+        "engineA": "Outwit",
+        "engineB": "OddOscar",
+        "type": "AMP_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Axolotl regeneration rate clocks OUTWIT generation steps — biological renewal as cellular law",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.575,
+    "density": 0.7,
+    "movement": 0.7,
+    "space": 0.55,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Outwit",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.553,
+    "COUPLING": 0.649,
+    "MOVEMENT": 0.678,
+    "SPACE": 0.534
+  },
+  "mood": "Entangled",
+  "name": "Axolotl Arms",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.115,
+      "owit_ampRelease": 0.419,
+      "owit_armStagger": 0.44,
+      "owit_arms": 5,
+      "owit_borderMode": 0,
+      "owit_cellSize": 0.324,
+      "owit_chroma1": 0.774,
+      "owit_chroma2": 0.549,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.678,
+      "owit_density": 0.672,
+      "owit_evolveRate": 0.504,
+      "owit_filterCutoff": 0.79,
+      "owit_filterReso": 0.197,
+      "owit_inkCloudMix": 0.124,
+      "owit_mutateProb": 0.125,
+      "owit_outputLevel": 0.862,
+      "owit_pitchSpread": 0.576,
+      "owit_polyDepth": 0.767,
+      "owit_rule": 54
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "oddoscar",
+    "organic",
+    "generative"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

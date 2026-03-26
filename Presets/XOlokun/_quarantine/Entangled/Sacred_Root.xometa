@@ -6,7 +6,7 @@
         "amount": 0.679,
         "engineA": "Orbital",
         "engineB": "OddOscar",
-        "type": "FORMANT_BLEND"
+        "type": "EnvToMorph"
       }
     ]
   },

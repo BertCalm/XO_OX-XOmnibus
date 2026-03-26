@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Opal",
+        "type": "GRANULAR_SYNC",
+        "amount": 0.7
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.35,
+    "density": 0.87,
+    "movement": 0.65,
+    "space": 0.45,
+    "warmth": 0.78
+  },
+  "engines": [
+    "Obese",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Fat Grain",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.78,
+      "macro_movement": 0.45,
+      "macro_space": 0.2
+    },
+    "Opal": {
+      "macro_character": 0.5,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.75,
+      "macro_space": 0.65
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "obese",
+    "opal",
+    "bass",
+    "granular",
+    "fat"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

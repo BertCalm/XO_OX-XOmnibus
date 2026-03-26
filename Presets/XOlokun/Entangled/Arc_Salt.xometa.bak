@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.509,
+        "engineA": "Orbital",
+        "engineB": "Osprey",
+        "type": "filter_modulation"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "ORBITAL perihelion triggers OSPREY's dive vector. Tidal arc, coastal descent.",
+  "dna": {
+    "aggression": 0.475,
+    "brightness": 0.579,
+    "density": 0.654,
+    "movement": 0.595,
+    "space": 0.55,
+    "warmth": 0.607
+  },
+  "engines": [
+    "Orbital",
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Arc Salt",
+  "parameters": {
+    "Orbital": {
+      "orb_arcDecay": 0.504,
+      "orb_couplingIn": 0.485,
+      "orb_couplingOut": 0.657,
+      "orb_groupEnv": 0.47,
+      "orb_harmonicAmt": 0.439,
+      "orb_macro1": 0.313,
+      "orb_macro2": 0.583,
+      "orb_macro3": 0.616,
+      "orb_macro4": 0.581,
+      "orb_outputLevel": 0.817,
+      "orb_outputPan": -0.03,
+      "orb_phaseSpread": 0.264,
+      "orb_resonantPeak": 0.517
+    },
+    "Osprey": {
+      "osprey_macroCharacter": 0.486,
+      "osprey_macroMovement": 0.399,
+      "osprey_macroCoupling": 0.409,
+      "osprey_macroSpace": 0.458
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orbital",
+    "osprey",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 95,
+  "version": "1.0.0"
+}

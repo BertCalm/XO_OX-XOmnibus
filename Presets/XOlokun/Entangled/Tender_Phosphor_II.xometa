@@ -4,9 +4,9 @@
     "pairs": [
       {
         "amount": 0.7724,
-        "source": "Orca",
-        "target": "OddOscar",
-        "type": "HARMONIC_FOLD"
+        "type": "EnvToMorph",
+        "engineA": "Orca",
+        "engineB": "OddOscar"
       }
     ]
   },

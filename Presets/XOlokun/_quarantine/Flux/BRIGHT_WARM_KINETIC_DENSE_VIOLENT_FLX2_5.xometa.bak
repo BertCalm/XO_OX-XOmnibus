@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overworld",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.934
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9495,
+    "brightness": 0.9178,
+    "density": 0.9718,
+    "movement": 0.8847,
+    "space": 0.4819,
+    "warmth": 0.8928
+  },
+  "engines": [
+    "Oceanic",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8829,
+    "COUPLING": 0.9826,
+    "MOVEMENT": 0.8896,
+    "SPACE": 0.4931
+  },
+  "mood": "Flux",
+  "name": "Halo Saturated",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.8783,
+      "macro_coupling": 0.99,
+      "macro_movement": 0.8747,
+      "macro_space": 0.4991
+    },
+    "Overworld": {
+      "macro_character": 0.8876,
+      "macro_coupling": 0.9751,
+      "macro_movement": 0.9045,
+      "macro_space": 0.4871
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "warm",
+    "kinetic",
+    "dense",
+    "violent"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

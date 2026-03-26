@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.307,
+      "destination": "OMBRE",
+      "source": "OSTERIA",
+      "type": "SPECTRAL_MORPH"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "dna": {
+    "aggression": 0.413,
+    "brightness": 0.455,
+    "density": 0.912,
+    "movement": 0.06,
+    "space": 0.058,
+    "warmth": 0.949
+  },
+  "engines": [
+    "Osteria",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Mangrove Stillness",
+  "parameters": {
+    "Ombre": {
+      "level": 0.805,
+      "pan": -0.026
+    },
+    "Osteria": {
+      "level": 0.732,
+      "pan": 0.119
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

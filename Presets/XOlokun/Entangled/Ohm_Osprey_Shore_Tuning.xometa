@@ -9,7 +9,7 @@
         "sourceParam": "osprey_shoreBlend",
         "targetEngine": "Ohm",
         "targetParam": "ohm_tuning",
-        "type": "ModToMod"
+        "type": "EnvToDecay"
       },
       {
         "amount": 0.38,
@@ -18,7 +18,7 @@
         "sourceParam": "osprey_tidalRate",
         "targetEngine": "Ohm",
         "targetParam": "ohm_lfo1Rate",
-        "type": "LFOSync"
+        "type": "LFOToPitch"
       }
     ]
   },

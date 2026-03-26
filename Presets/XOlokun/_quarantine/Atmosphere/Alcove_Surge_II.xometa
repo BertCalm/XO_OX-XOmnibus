@@ -5,7 +5,7 @@
       {
         "engineA": "Oceanic",
         "engineB": "Osteria",
-        "type": "ENVELOPE_SLAVE",
+        "type": "EnvToDecay",
         "amount": 0.71
       }
     ]

@@ -2,13 +2,30 @@
   "schema_version": 1,
   "name": "Opal Obrix Granular Shred",
   "mood": "Entangled",
-  "engines": ["Opal", "Obrix"],
+  "engines": [
+    "Opal",
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBRIX feeds its coral-reef modular output directly into OPAL's grain buffer via AudioToWavetable. With opal_externalMix=1.0 and opal_source=5, OPAL granularizes OBRIX's harmonic brick architecture at 15ms grain size and density=80. The coral reef becomes shredded — each modular harmonic event captured, sliced, and re-emitted as a 15ms spectral fragment. OBRIX's rich harmonic content is archaeologically scattered. Short grains reveal OBRIX's spectral fingerprint in ways OBRIX alone cannot.",
-  "tags": ["obrix", "granular", "external", "entangled", "shred", "harmonic", "short-grains", "audiotowavetable"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
-  "couplingIntensity": "High",
+  "tags": [
+    "obrix",
+    "granular",
+    "external",
+    "entangled",
+    "shred",
+    "harmonic",
+    "short-grains",
+    "audiotowavetable"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.7,

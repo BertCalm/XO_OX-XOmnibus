@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "OVERDUB Tape Ink",
   "mood": "Entangled",
-  "engines": ["Octopus", "Overdub"],
+  "engines": [
+    "Octopus",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OVERDUB's tape delay saturation feeding into OCTOPUS ink cloud density. As the tape saturates, the ink cloud density increases. The dub delay becomes ink. Warm distortion becomes dark noise.",
-  "tags": ["octopus", "overdub", "entangled", "tape", "ink", "saturation", "dub"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "octopus",
+    "overdub",
+    "entangled",
+    "tape",
+    "ink",
+    "saturation",
+    "dub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-17",
   "parameters": {

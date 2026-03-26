@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Amber Lens Groove",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG's rhythmic curiosity feeds OPTIC's lens-flare modulation. Every bob-pattern shift bends the light differently. Warm stroboscopic groove.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "optic",
+    "beat",
+    "warm",
+    "lens"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.7,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_groove": 0.6,
+      "bob_swing": 0.35,
+      "bob_amberMix": 0.65,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Optic": {
+      "optic_lensFlare": 0.5,
+      "optic_aberration": 0.3,
+      "optic_filterCut": 5500.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Optic",
+        "type": "Rhythm->Blend",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

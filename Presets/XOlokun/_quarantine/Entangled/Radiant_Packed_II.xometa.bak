@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC",
+        "amount": 0.765
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.977,
+    "density": 0.972,
+    "movement": 0.912,
+    "space": 0.936,
+    "warmth": 0.608
+  },
+  "engines": [
+    "Onset",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.792,
+    "SPACE": 0.929,
+    "PUNCH": 0.942,
+    "MUTATE": 0.936
+  },
+  "mood": "Entangled",
+  "name": "Radiant Packed II",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.792,
+      "macro_coupling": 0.929,
+      "macro_movement": 0.942,
+      "macro_space": 0.936
+    },
+    "Orphica": {
+      "macro_character": 0.792,
+      "macro_coupling": 0.929,
+      "macro_movement": 0.942,
+      "macro_space": 0.936
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": "",
+  "tier": "awakening"
+}

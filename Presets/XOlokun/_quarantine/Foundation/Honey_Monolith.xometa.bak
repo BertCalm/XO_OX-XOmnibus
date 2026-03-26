@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.529
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.479,
+    "brightness": 0.906,
+    "density": 0.138,
+    "movement": 0.054,
+    "space": 0.561,
+    "warmth": 0.967
+  },
+  "engines": [
+    "OddOscar",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.512,
+    "COUPLING": 0.242,
+    "MOVEMENT": 0.216,
+    "SPACE": 0.121
+  },
+  "mood": "Foundation",
+  "name": "Honey Monolith",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.503,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.886,
+      "macro_space": 0.512
+    },
+    "Origami": {
+      "macro_character": 0.851,
+      "macro_coupling": 0.389,
+      "macro_movement": 0.295,
+      "macro_space": 0.858
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "still",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

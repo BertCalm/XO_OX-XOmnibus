@@ -5,7 +5,7 @@
       {
         "engineA": "Overdub",
         "engineB": "OddOscar",
-        "type": "FILTER_MOD",
+        "type": "AmpToFilter",
         "amount": 0.157
       }
     ]
@@ -60,5 +60,6 @@
   ],
   "version": "1.0.0",
   "tempo": null,
-  "description": "Anchored and grounding, dark, crystalline sound. Drives through the mix with presence and bite."
+  "description": "Anchored and grounding, dark, crystalline sound. Drives through the mix with presence and bite.",
+  "couplingIntensity": "Moderate"
 }

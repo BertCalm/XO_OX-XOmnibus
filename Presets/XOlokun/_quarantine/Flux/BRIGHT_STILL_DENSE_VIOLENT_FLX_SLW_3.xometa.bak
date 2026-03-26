@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.604
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.872,
+    "brightness": 0.912,
+    "density": 0.907,
+    "movement": 0.025,
+    "space": 0.658,
+    "warmth": 0.377
+  },
+  "engines": [
+    "Odyssey",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.889,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.025,
+    "SPACE": 0.658
+  },
+  "mood": "Flux",
+  "name": "Glass Massive 2",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.986,
+      "macro_coupling": 0.794,
+      "macro_movement": 0.028,
+      "macro_space": 0.676
+    },
+    "Organon": {
+      "macro_character": 0.822,
+      "macro_coupling": 0.665,
+      "macro_movement": 0.03,
+      "macro_space": 0.603
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "dense",
+    "violent",
+    "frozen-instability"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "description": ""
+}

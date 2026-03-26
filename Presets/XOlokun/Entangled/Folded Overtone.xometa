@@ -5,9 +5,9 @@
       {
         "amount": 0.757,
         "description": "Owlfish drives Origami via ResonanceChain",
-        "source": "Owlfish",
-        "target": "Origami",
-        "type": "ResonanceChain"
+        "type": "FilterToFilter",
+        "engineA": "Owlfish",
+        "engineB": "Origami"
       }
     ]
   },
