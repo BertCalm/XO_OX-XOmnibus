@@ -35,15 +35,15 @@
             <key>AudioComponents</key>
             <array>
                 <dict>
-                    <!-- Manufacturer: XOox (4-char code) -->
+                    <!-- Manufacturer: XoOx (4-char code) -->
                     <key>manufacturer</key>
-                    <string>XOox</string>
+                    <string>XoOx</string>
                     <!-- Type: aumu = music instrument -->
                     <key>type</key>
                     <string>aumu</string>
-                    <!-- Subtype: XOlk -->
+                    <!-- Subtype: Xolk -->
                     <key>subtype</key>
-                    <string>XOlk</string>
+                    <string>Xolk</string>
                     <key>name</key>
                     <string>XO-OX: XOlokun</string>
                     <key>version</key>

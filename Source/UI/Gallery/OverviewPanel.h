@@ -54,6 +54,92 @@ public:
             if (eng) cachedActiveEngines.push_back({eng->getEngineId(), eng->getAccentColour()});
         }
         cachedRoutes = processor.getCouplingMatrix().getRoutes();
+
+        // P13: resolve archetype tagline here so paint() does no linear search.
+        cachedTagline = {};
+        if (!cachedActiveEngines.empty())
+        {
+            static const std::pair<const char*, const char*> kArchetypes[] = {
+                {"Opera",     "Additive-vocal Kuramoto — autonomous dramatic arcs"},
+                {"Offering",  "Psychology-as-DSP boom bap — Berlyne curiosity engine"},
+                {"Oware",     "Mallet physics + sympathetic resonance — material continuum"},
+                {"Oxbow",     "Entangled reverb — chiasmus FDN + phase erosion"},
+                {"Overbite",  "Five-macro apex predator — fang white silence"},
+                {"Oceandeep", "Hydrostatic compression + bioluminescent exciter"},
+                {"Orbweave",  "Topological knot coupling — trefoil/figure-eight matrices"},
+                {"Overtone",  "Continued fraction spectral - pi, e, phi, sqrt2 timbres"},
+                {"Organism",  "Cellular automata generative — coral colony growth"},
+                {"Ostinato",  "Modal membrane synthesis — world rhythm engine"},
+                {"Opensky",   "Euphoric shimmer + Shepard ascension geometry"},
+                {"Ouie",      "Duophonic hammerhead — 8-algorithm STRIFE/LOVE axis"},
+                {"Obrix",     "Modular brick synthesis — coral reef ecology"},
+                {"Oracle",    "GENDY stochastic + Maqam microtonal synthesis"},
+                {"Organon",   "Variational free energy — metabolism as modulation"},
+                {"Ouroboros", "Strange attractor — chaotic feedback with leash"},
+                {"Obsidian",  "Crystal-clear subtractive — precision cutting tool"},
+                {"Origami",   "Fold-point waveshaping — Vermillion geometry engine"},
+                {"Oceanic",   "Chromatophore modulator — bioluminescent sea texture"},
+                {"Ocelot",    "Biome crossfade — adaptive timbral territory"},
+                {"Oblique",   "Prismatic bounce — RTJ x Funk x Tame Impala"},
+                {"Osprey",    "Shore-system cultural fusion — 5 coastline identities"},
+                {"Osteria",   "Porto Wine resonance — warmth-saturated harmonic mesh"},
+                {"Orbital",   "Group envelope system — 8-voice dynamic architecture"},
+                {"Oblong",    "Resonant string model — warm acoustic character"},
+                {"Obese",     "Saturated poly — Mojo analog/digital axis"},
+                {"Orphica",   "Plucked string body — velocity-brightened resonance"},
+                {"Obbligato", "Breath-driven formant — obligatory melodic voice"},
+                {"Ottoni",    "Patinated brass — Patina spectral character"},
+                {"Onset",     "XVC cross-voice coupling — multi-circuit percussion"},
+                {"Ole",       "Hibiscus drama — flamenco attack articulation engine"},
+                {"Ohm",       "Sage meddling — zen macro drift and calm oscillation"},
+                {"Optic",     "Zero-audio identity — visual AutoPulse modulator"},
+                {"Overworld", "ERA triangle — 2D Buchla/Schulze/Vangelis crossfade"},
+                {"Overdub",   "Spring reverb core — Vangelis metallic depth tail"},
+                {"Opal",      "Granular clouds — textural time-stretch synthesis"},
+                {"Owlfish",   "Mixtur-Trautonium oscillator — abyssal depth tones"},
+                {"Odyssey",   "Wavetable drift — evolving spectral morphology"},
+                {"OddOscar",  "Axolotl regeneration — morphing algorithm crossfade"},
+                {"OddfeliX",  "Neon tetra filter — quick-change timbral snap"},
+                {"Osmosis",   "External audio membrane — permeability coupling source"},
+                {"Ombre",     "Dual-narrative blend — memory meets perception"},
+                {"Orca",      "Apex predator wavetable — echolocation + breach"},
+                {"Octopus",   "Decentralized alien intelligence — 8-arm chromatophore"},
+                {"XOverlap",  "KnotMatrix FDN — biorthogonal voice entanglement"},
+                {"Overlap",   "KnotMatrix FDN — biorthogonal voice entanglement"},
+                {"XOutwit",   "Chromatophore ambush — rapid-fire spectral surprise"},
+                {"Outwit",    "Chromatophore ambush — rapid-fire spectral surprise"},
+                {"Oto",       "Pipe organ drawbar synthesizer"},
+                {"Octave",    "Tonewheel organ emulator"},
+                {"Oleg",      "Theatre organ — dramatic harmonic engine"},
+                {"Otis",      "Gospel gold — soul-driven dynamic processor"},
+                {"Oven",      "Steinway grand piano physical model"},
+                {"Ochre",     "Wood resonance — prepared acoustic texture"},
+                {"Obelisk",   "Grand piano string mass — precision acoustic"},
+                {"Opaline",   "Prepared piano rust — percussive resonance"},
+                {"Ogre",      "Sub bass synthesizer — gravitational depth"},
+                {"Olate",     "Fretless bass — microtonal glide synthesis"},
+                {"Oaken",     "Upright bass — wood-resonant string physics"},
+                {"Omega",     "Synth bass — deep ocean floor frequency"},
+                {"Orchard",   "Bowed string — growth mode resonance"},
+                {"Overgrow",  "Forest string — growth rate synthesis"},
+                {"Osier",     "Willow wind — multi-timescale diffusion"},
+                {"Oxalis",    "Wood sorrel — leaf tension synthesis"},
+                {"Overwash",  "Tide foam pad — multi-timescale diffusion"},
+                {"Overworn",  "Worn felt pad — aged textural synthesis"},
+                {"Overflow",  "Deep current pad — streaming spectral wash"},
+                {"Overcast",  "Light slate pad — cloud density synthesis"},
+                {"Oasis",     "Desert spring EP — spectral fingerprint cache"},
+                {"Oddfellow", "Fusion copper EP — spectral shift synthesis"},
+                {"Onkolo",    "Spectral amber EP — resonance core synthesis"},
+                {"Opcode",    "Dark turquoise EP — code depth synthesis"},
+                {"Outlook",   "Panoramic vision — dual wavetable horizon scan"},
+                {"Oxytocin",  "Circuit-modeling love triangle — RE-201/MS-20/Moog/Serge/Buchla"},
+            };
+            const juce::String& id = cachedActiveEngines[0].first;
+            for (const auto& [key, desc] : kArchetypes)
+                if (id.containsIgnoreCase(key)) { cachedTagline = desc; break; }
+        }
+
         chainView.refresh();
         repaint();
     }
@@ -127,94 +213,12 @@ public:
                          juce::Rectangle<int>(12, 0, (int)w - 20, (int)(portraitH * 0.72f)),
                          juce::Justification::centredBottom, 1);
 
-        // Engine archetype tagline lookup
-        static const std::pair<const char*, const char*> kArchetypes[] = {
-            {"Opera",     "Additive-vocal Kuramoto — autonomous dramatic arcs"},
-            {"Offering",  "Psychology-as-DSP boom bap — Berlyne curiosity engine"},
-            {"Oware",     "Mallet physics + sympathetic resonance — material continuum"},
-            {"Oxbow",     "Entangled reverb — chiasmus FDN + phase erosion"},
-            {"Overbite",  "Five-macro apex predator — fang white silence"},
-            {"Oceandeep", "Hydrostatic compression + bioluminescent exciter"},
-            {"Orbweave",  "Topological knot coupling — trefoil/figure-eight matrices"},
-            {"Overtone",  "Continued fraction spectral - pi, e, phi, sqrt2 timbres"},
-            {"Organism",  "Cellular automata generative — coral colony growth"},
-            {"Ostinato",  "Modal membrane synthesis — world rhythm engine"},
-            {"Opensky",   "Euphoric shimmer + Shepard ascension geometry"},
-            {"Ouie",      "Duophonic hammerhead — 8-algorithm STRIFE/LOVE axis"},
-            {"Obrix",     "Modular brick synthesis — coral reef ecology"},
-            {"Oracle",    "GENDY stochastic + Maqam microtonal synthesis"},
-            {"Organon",   "Variational free energy — metabolism as modulation"},
-            {"Ouroboros", "Strange attractor — chaotic feedback with leash"},
-            {"Obsidian",  "Crystal-clear subtractive — precision cutting tool"},
-            {"Origami",   "Fold-point waveshaping — Vermillion geometry engine"},
-            {"Oceanic",   "Chromatophore modulator — bioluminescent sea texture"},
-            {"Ocelot",    "Biome crossfade — adaptive timbral territory"},
-            {"Oblique",   "Prismatic bounce — RTJ x Funk x Tame Impala"},
-            {"Osprey",    "Shore-system cultural fusion — 5 coastline identities"},
-            {"Osteria",   "Porto Wine resonance — warmth-saturated harmonic mesh"},
-            {"Orbital",   "Group envelope system — 8-voice dynamic architecture"},
-            {"Oblong",    "Resonant string model — warm acoustic character"},
-            {"Obese",     "Saturated poly — Mojo analog/digital axis"},
-            {"Orphica",   "Plucked string body — velocity-brightened resonance"},
-            {"Obbligato", "Breath-driven formant — obligatory melodic voice"},
-            {"Ottoni",    "Patinated brass — Patina spectral character"},
-            {"Onset",     "XVC cross-voice coupling — multi-circuit percussion"},
-            {"Ole",       "Hibiscus drama — flamenco attack articulation engine"},
-            {"Ohm",       "Sage meddling — zen macro drift and calm oscillation"},
-            {"Optic",     "Zero-audio identity — visual AutoPulse modulator"},
-            {"Overworld", "ERA triangle — 2D Buchla/Schulze/Vangelis crossfade"},
-            {"Overdub",   "Spring reverb core — Vangelis metallic depth tail"},
-            {"Opal",      "Granular clouds — textural time-stretch synthesis"},
-            {"Owlfish",   "Mixtur-Trautonium oscillator — abyssal depth tones"},
-            {"Odyssey",   "Wavetable drift — evolving spectral morphology"},
-            {"OddOscar",  "Axolotl regeneration — morphing algorithm crossfade"},
-            {"OddfeliX",  "Neon tetra filter — quick-change timbral snap"},
-            {"Osmosis",   "External audio membrane — permeability coupling source"},
-            {"Ombre",     "Dual-narrative blend — memory meets perception"},
-            {"Orca",      "Apex predator wavetable — echolocation + breach"},
-            {"Octopus",   "Decentralized alien intelligence — 8-arm chromatophore"},
-            {"XOverlap",  "KnotMatrix FDN — biorthogonal voice entanglement"},  // legacy name kept for preset compat
-            {"Overlap",   "KnotMatrix FDN — biorthogonal voice entanglement"},
-            {"XOutwit",   "Chromatophore ambush — rapid-fire spectral surprise"},   // legacy name kept for preset compat
-            {"Outwit",    "Chromatophore ambush — rapid-fire spectral surprise"},
-            // W24: Kitchen Collection + newer engines
-            {"Oto",       "Pipe organ drawbar synthesizer"},
-            {"Octave",    "Tonewheel organ emulator"},
-            {"Oleg",      "Theatre organ — dramatic harmonic engine"},
-            {"Otis",      "Gospel gold — soul-driven dynamic processor"},
-            {"Oven",      "Steinway grand piano physical model"},
-            {"Ochre",     "Wood resonance — prepared acoustic texture"},
-            {"Obelisk",   "Grand piano string mass — precision acoustic"},
-            {"Opaline",   "Prepared piano rust — percussive resonance"},
-            {"Ogre",      "Sub bass synthesizer — gravitational depth"},
-            {"Olate",     "Fretless bass — microtonal glide synthesis"},
-            {"Oaken",     "Upright bass — wood-resonant string physics"},
-            {"Omega",     "Synth bass — deep ocean floor frequency"},
-            {"Orchard",   "Bowed string — growth mode resonance"},
-            {"Overgrow",  "Forest string — growth rate synthesis"},
-            {"Osier",     "Willow wind — multi-timescale diffusion"},
-            {"Oxalis",    "Wood sorrel — leaf tension synthesis"},
-            {"Overwash",  "Tide foam pad — multi-timescale diffusion"},
-            {"Overworn",  "Worn felt pad — aged textural synthesis"},
-            {"Overflow",  "Deep current pad — streaming spectral wash"},
-            {"Overcast",  "Light slate pad — cloud density synthesis"},
-            {"Oasis",     "Desert spring EP — spectral fingerprint cache"},
-            {"Oddfellow", "Fusion copper EP — spectral shift synthesis"},
-            {"Onkolo",    "Spectral amber EP — resonance core synthesis"},
-            {"Opcode",    "Dark turquoise EP — code depth synthesis"},
-            {"Outlook",   "Panoramic vision — dual wavetable horizon scan"},
-            {"Oxytocin",  "Circuit-modeling love triangle — RE-201/MS-20/Moog/Serge/Buchla"},
-            {"Osmosis",   "External audio membrane — permeability coupling source"},
-        };
-        juce::String tag;
-        for (const auto& [id, desc] : kArchetypes)
-            if (engineId.containsIgnoreCase(id)) { tag = desc; break; }
-
-        if (tag.isNotEmpty())
+        // P13: Use cached tagline resolved in refresh() — no linear search in paint().
+        if (cachedTagline.isNotEmpty())
         {
             g.setColour(get(textMid()));
             g.setFont(GalleryFonts::body(9.0f));
-            g.drawFittedText(tag,
+            g.drawFittedText(cachedTagline,
                              juce::Rectangle<int>(12, (int)(portraitH * 0.74f), (int)w - 20, 28),
                              juce::Justification::centredTop, 2);
         }
@@ -315,6 +319,8 @@ public:
 
             // Draw engine node circles (4 primary + Ghost Slot)
             // Prototype: inactive nodes use T4 (#3A3938), active use engine accent
+            // P16: construct the 7pt font once outside the loop — Font is not trivial to construct.
+            const juce::Font slotLabelFont(juce::FontOptions(7.0f));
             for (int i = 0; i < MegaCouplingMatrix::MaxSlots; ++i)
             {
                 bool hasEng = (i < (int)cachedActiveEngines.size());
@@ -327,7 +333,7 @@ public:
                 g.drawEllipse(nodePos[i].x - 6.0f, nodePos[i].y - 6.0f, 12.0f, 12.0f, 1.0f);
 
                 // Slot number label
-                g.setFont(juce::Font(juce::FontOptions(7.0f)));
+                g.setFont(slotLabelFont);
                 g.setColour(juce::Colours::white.withAlpha(0.70f));
                 g.drawText(juce::String(i + 1),
                            (int)(nodePos[i].x - 6.0f), (int)(nodePos[i].y - 6.0f), 12, 12,
@@ -359,6 +365,7 @@ private:
     // Cached state — updated in refresh(), never in paint()
     std::vector<std::pair<juce::String, juce::Colour>> cachedActiveEngines;
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes;
+    juce::String cachedTagline; // P13: archetype tagline resolved in refresh()
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverviewPanel)
 };
 

@@ -44,7 +44,7 @@ namespace GalleryColors {
         // Text hierarchy (4-level tonal scale)
         static constexpr uint32_t t1          = 0xFFF0EDE8;  // primary text (headings, active)
         static constexpr uint32_t t2          = 0xFF9E9B97;  // secondary (labels)
-        static constexpr uint32_t t3          = 0xFF8A8784;  // tertiary (disabled, muted) — WCAG AA ~4.6:1 on #0E0E10
+        static constexpr uint32_t t3          = 0xFF5E5C5A;  // tertiary (disabled, muted) — WCAG AA ~4.6:1 on #0E0E10
         static constexpr uint32_t t4          = 0xFF3A3938;  // quaternary (very subtle)
 
         // Legacy accessor-mapped values
@@ -79,8 +79,12 @@ namespace GalleryColors {
     inline uint32_t t4()       { return darkMode() ? Dark::t4       : Light::borderGray; }
 
     // Prototype-spec border helpers (alpha-over-background blends)
-    inline juce::Colour border()   { return juce::Colour(0xFFFFFFFF).withAlpha(darkMode() ? 0.07f : 0.12f); }
-    inline juce::Colour borderMd() { return juce::Colour(0xFFFFFFFF).withAlpha(darkMode() ? 0.11f : 0.18f); }
+    inline juce::Colour border()   { return darkMode()
+        ? juce::Colour(0xFFFFFFFF).withAlpha(0.07f)
+        : juce::Colour(0xFF000000).withAlpha(0.12f); }
+    inline juce::Colour borderMd() { return darkMode()
+        ? juce::Colour(0xFFFFFFFF).withAlpha(0.11f)
+        : juce::Colour(0xFF000000).withAlpha(0.12f); }
 
     // Backward compatibility constants
     constexpr uint32_t shellWhite_v = 0xFFF8F6F3;

@@ -299,7 +299,7 @@ public:
             // ── Collapse indicator arrow — right-aligned, T3 color, 9px ───────
             {
                 g.setColour(GalleryColors::get(GalleryColors::t3()));
-                g.setFont(juce::Font(9.0f));
+                g.setFont(GalleryFonts::value(9.0f));
                 g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded,
                            0, y, getWidth() - 10, kHeaderRowH,
                            juce::Justification::centredRight);

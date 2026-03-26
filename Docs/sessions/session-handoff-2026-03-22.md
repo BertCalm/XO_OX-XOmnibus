@@ -119,7 +119,7 @@ a863d4088  Add Oware to CMakeLists.txt + Opera engine scaffold
 
 ### Git Gotchas
 - **macOS case-insensitive staging**: `git diff HEAD -- "Path/File.h" | git apply --cached`
-- **auval codes are case-sensitive**: Always `aumu Xomn XoOx`
+- **auval codes are case-sensitive**: Always `aumu Xolk XoOx`
 - **Duplicate main() linker error**: Test files with own `main()` need separate `add_executable()`
 - **New engines need CMakeLists.txt entry**: Both .h and .cpp (one-line `#include` stub) required
 

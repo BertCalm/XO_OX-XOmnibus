@@ -144,7 +144,7 @@ public:
         auto b = getLocalBounds().toFloat();
 
         // Background — slightly tinted with accent
-        g.setColour(get(shellWhite()));
+        g.setColour(get(elevated()));
         g.fillRoundedRectangle(b, 4.0f);
 
         // Gradient overlay — subtle top-down highlight

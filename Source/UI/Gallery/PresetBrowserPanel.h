@@ -163,8 +163,9 @@ public:
 
     void selectedRowsChanged(int) override
     {
-        int row = listBox.getSelectedRow();
-        selectRow(row);
+        // UX03: single-click only highlights; double-click (listBoxItemDoubleClicked)
+        // is the sole path that calls selectRow() / onPresetSelected.
+        // Nothing to do here — row highlight is handled by the ListBox itself.
     }
 
     void paint(juce::Graphics& g) override

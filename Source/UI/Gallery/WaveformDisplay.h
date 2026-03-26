@@ -91,7 +91,7 @@ public:
         g.drawHorizontalLine(juce::roundToInt(midY), 0.0f, w);
 
         // ── Build waveform path ──────────────────────────────────────────────
-        juce::Path wavePath;
+        wavePath.clear();
         const float xStep = w / static_cast<float>(kDisplaySamples - 1);
 
         for (size_t i = 0; i < kDisplaySamples; ++i)
@@ -149,6 +149,7 @@ private:
     juce::Colour                       accent;
     juce::String                       engineId;
     bool                               crtMode = false;
+    juce::Path                         wavePath; // P10: cached to avoid alloc per paint()
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(WaveformDisplay)
 };
@@ -226,7 +227,7 @@ public:
         const float h    = static_cast<float>(getHeight());
         const float midY = h * 0.5f;
 
-        juce::Path p;
+        miniPath.clear();
         const int iw = getWidth();
         for (int x = 0; x < iw; ++x)
         {
@@ -239,13 +240,13 @@ public:
             const float y = midY - sample * midY * 0.9f; // 90% height scaling
 
             if (x == 0)
-                p.startNewSubPath(static_cast<float>(x), y);
+                miniPath.startNewSubPath(static_cast<float>(x), y);
             else
-                p.lineTo(static_cast<float>(x), y);
+                miniPath.lineTo(static_cast<float>(x), y);
         }
 
         g.setColour(accent);
-        g.strokePath(p, juce::PathStrokeType(1.0f));
+        g.strokePath(miniPath, juce::PathStrokeType(1.0f));
     }
 
 private:
@@ -253,6 +254,7 @@ private:
     std::array<float, kMiniSamples> miniBuffer {};
     int                             currentSlot = 0;
     juce::Colour                    accent;
+    juce::Path                      miniPath; // P11: cached to avoid alloc per paint()
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MiniWaveform)
 };

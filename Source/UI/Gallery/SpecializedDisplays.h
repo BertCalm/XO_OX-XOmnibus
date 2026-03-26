@@ -89,6 +89,13 @@ public:
         using namespace GalleryColors;
         const auto tri = buildTriangle();
 
+        // P20: Rebuild the cached triangle path only when dirty (resized or first paint).
+        if (triPathDirty)
+        {
+            cachedTriPath = trianglePath(tri);
+            triPathDirty  = false;
+        }
+
         // ── Interior gradient fill ────────────────────────────────────────────
         // We approximate the 3-colour barycentric blend with two ColourGradients
         // (a single pass composited as a rough visual approximation; exact
@@ -105,33 +112,33 @@ public:
 
             // Fill with a subtle unified background first
             g.setColour(get(slotBg()).withAlpha(0.90f));
-            g.fillPath(trianglePath(tri));
+            g.fillPath(cachedTriPath);
 
             // Top-vertex glow
             juce::ColourGradient grad0(colors[0].withAlpha(0.22f), v0.x, v0.y,
                                        colors[0].withAlpha(0.0f),  midBottom.x, midBottom.y,
                                        false);
             g.setGradientFill(grad0);
-            g.fillPath(trianglePath(tri));
+            g.fillPath(cachedTriPath);
 
             // Bottom-left glow
             juce::ColourGradient grad1(colors[1].withAlpha(0.22f), v1.x, v1.y,
                                        colors[1].withAlpha(0.0f),  v2.x, v2.y,
                                        false);
             g.setGradientFill(grad1);
-            g.fillPath(trianglePath(tri));
+            g.fillPath(cachedTriPath);
 
             // Bottom-right glow
             juce::ColourGradient grad2(colors[2].withAlpha(0.22f), v2.x, v2.y,
                                        colors[2].withAlpha(0.0f),  v1.x, v1.y,
                                        false);
             g.setGradientFill(grad2);
-            g.fillPath(trianglePath(tri));
+            g.fillPath(cachedTriPath);
         }
 
         // ── Triangle border ───────────────────────────────────────────────────
         g.setColour(get(borderGray()).withAlpha(0.80f));
-        g.strokePath(trianglePath(tri), juce::PathStrokeType(1.2f));
+        g.strokePath(cachedTriPath, juce::PathStrokeType(1.2f));
 
         // ── Lines from each vertex to the current position (20 % opacity) ────
         {
@@ -208,6 +215,8 @@ public:
         // Hidden sliders live at zero size — they only exist for attachments.
         hiddenSliderX.setBounds(0, 0, 1, 1);
         hiddenSliderY.setBounds(0, 0, 1, 1);
+        // P20: invalidate cached triangle path so paint() rebuilds it at new size.
+        triPathDirty = true;
     }
 
 private:
@@ -331,6 +340,10 @@ private:
     // triangle pad drawn in paint().
     juce::Slider hiddenSliderX, hiddenSliderY;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attachX, attachY;
+
+    // P20: cached triangle path — rebuilt in paint() only when triPathDirty is set.
+    mutable juce::Path cachedTriPath;
+    mutable bool       triPathDirty = true;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TriangleXYPad)
 };

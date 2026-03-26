@@ -201,8 +201,8 @@ public:
 
         // Dark mode toggle — light is default (brand rule)
         addAndMakeVisible(themeToggleBtn);
-        themeToggleBtn.setButtonText("D");
-        themeToggleBtn.setTooltip("Toggle dark mode");
+        themeToggleBtn.setButtonText("DK");
+        themeToggleBtn.setTooltip("Toggle dark/light theme");
         A11y::setup (themeToggleBtn, "Dark Mode Toggle", "Switch between light and dark theme");
         themeToggleBtn.setClickingTogglesState(true);
         themeToggleBtn.onClick = [this]
@@ -288,8 +288,11 @@ public:
         // When a mapping is completed (audio thread captured a CC), bump the
         // timer to 10Hz so visual feedback updates promptly.  Reverts to 1Hz
         // after the first poll cycle that finds nothing pending.
+        // CQ16: setLearnCompleteCallback fires from a non-message thread — marshal to message thread.
         proc.getMIDILearnManager().setLearnCompleteCallback(
-            [this](const juce::String&, int) { startTimerHz(10); });
+            [this](const juce::String&, int) {
+                juce::MessageManager::callAsync([this] { startTimerHz(10); });
+            });
 
         // ── DepthZoneDial wiring ──────────────────────────────────────────────
         // Default to slot 0 — updated in selectSlot() when the user picks a tile.
@@ -322,17 +325,21 @@ public:
         };
 
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
+        // CQ02: callback fires from the audio thread — marshal all UI calls to the message thread.
         proc.onEngineChanged = [this](int slot)
         {
-            if (slot >= 0 && slot < kNumPrimarySlots)
-                tiles[slot]->refresh();
-            else if (slot == 4)
-                ghostTile.refresh();
-            overview.refresh();
-            if (performancePanel.isVisible())
-                performancePanel.refresh();
-            // Re-evaluate ghost tile visibility whenever any slot changes.
-            checkCollectionUnlock();
+            juce::MessageManager::callAsync([this, slot]
+            {
+                if (slot >= 0 && slot < kNumPrimarySlots)
+                    tiles[slot]->refresh();
+                else if (slot == 4)
+                    ghostTile.refresh();
+                overview.refresh();
+                if (performancePanel.isVisible())
+                    performancePanel.refresh();
+                // Re-evaluate ghost tile visibility whenever any slot changes.
+                checkCollectionUnlock();
+            });
         };
 
         setSize(1100, 700);
@@ -547,11 +554,14 @@ public:
         // The ghost tile sits below tile[3] at the same height, but only takes
         // space when visible — when hidden it receives zero-height bounds so it
         // doesn't steal hit-test area from anything beneath it.
+        // CQ11: last tile absorbs the remainder to prevent a pixel gap from integer division.
         int tileH = colA.getHeight() / kNumPrimarySlots;
         for (int i = 0; i < kNumPrimarySlots; ++i)
         {
-            tiles[i]->setBounds(colA.getX(), colA.getY() + i * tileH,
-                                colA.getWidth(), tileH);
+            int h = (i == kNumPrimarySlots - 1)
+                    ? colA.getBottom() - (colA.getY() + i * tileH)
+                    : tileH;
+            tiles[i]->setBounds(colA.getX(), colA.getY() + i * tileH, colA.getWidth(), h);
         }
 
         // Ghost tile — positioned below tile[3] when visible, zero-height when hidden.
@@ -645,6 +655,7 @@ private:
             {
                 if (safeThis == nullptr) return;
                 auto& self = *safeThis;
+                if (slot != self.selectedSlot) return;  // CQ17: user clicked elsewhere during fade
                 if (self.detail.loadSlot(slot))
                 {
                     self.overview.setVisible(false);
@@ -666,6 +677,7 @@ private:
             {
                 if (safeThis == nullptr) return;
                 auto& self = *safeThis;
+                if (slot != self.selectedSlot) return;  // CQ17: user clicked elsewhere during fade
                 if (self.detail.loadSlot(slot))
                 {
                     self.overview.setVisible(false);

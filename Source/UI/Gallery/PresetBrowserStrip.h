@@ -108,9 +108,9 @@ public:
     void resized() override
     {
         auto b = getLocalBounds();
-        prevBtn.setBounds(b.removeFromLeft(22));
+        prevBtn.setBounds(b.removeFromLeft(30));   // UX11: widened from 22px for easier targeting
         browseBtn.setBounds(b.removeFromRight(30));
-        nextBtn.setBounds(b.removeFromRight(22));
+        nextBtn.setBounds(b.removeFromRight(30));  // UX11: widened from 22px for easier targeting
         nameLabel.setBounds(b);
     }
 
@@ -133,19 +133,17 @@ private:
         // Build the full PresetBrowser (search + DNA + 48px rows).
         auto browser = std::make_unique<PresetBrowser>(pm);
 
-        // Wire the onPresetSelected callback — same logic as the old panel.
-        browser->onPresetSelected = [safeThis, &proc = processor](const PresetData& preset)
+        // CQ13: removed &proc capture — dangling if strip is destroyed while CallOutBox is open.
+        // All processor access now guarded through safeThis so the lambda is safe after strip death.
+        browser->onPresetSelected = [safeThis](const PresetData& preset)
         {
-            proc.getPresetManager().setCurrentPreset(preset);
-            proc.applyPreset(preset);
-            // Only touch UI members if the strip is still alive.
-            if (safeThis != nullptr)
-            {
-                safeThis->nameLabel.setText(preset.name, juce::dontSendNotification);
-                if (safeThis->macroSection && !preset.macroLabels.isEmpty())
-                    safeThis->macroSection->setLabels(preset.macroLabels);
-                if (safeThis->onPresetLoaded) safeThis->onPresetLoaded();
-            }
+            if (safeThis == nullptr) return;
+            safeThis->processor.getPresetManager().setCurrentPreset(preset);
+            safeThis->processor.applyPreset(preset);
+            safeThis->nameLabel.setText(preset.name, juce::dontSendNotification);
+            if (safeThis->macroSection && !preset.macroLabels.isEmpty())
+                safeThis->macroSection->setLabels(preset.macroLabels);
+            if (safeThis->onPresetLoaded) safeThis->onPresetLoaded();
         };
 
         // Size: 560 wide × 520 tall — accommodates 48px rows, search bar,

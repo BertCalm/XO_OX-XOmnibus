@@ -50,6 +50,13 @@ public:
         engineId     = eng->getEngineId();
         accentColour = eng->getAccentColour();
 
+        // P30: cache toUpperCase() result to avoid String alloc in paint().
+        cachedEngineName = engineId.toUpperCase();
+        // P29: cache header gradient — rebuilt here and in resized(), not in paint().
+        cachedHeaderGrad = juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
+                                                GalleryColors::get(GalleryColors::shellWhite()),
+                                                (float)getWidth(), 0.0f, false);
+
         // Load macro hero strip — it shows/hides itself based on discovery
         auto prefix = GalleryColors::prefixForEngine(engineId);
         macroHero.loadEngine(engineId, prefix, accentColour);
@@ -262,11 +269,9 @@ public:
         g.fillRoundedRectangle(getLocalBounds().toFloat(), 6.0f);
 
         // ── Header gradient: accent color → shell bg ─────────────────────────
-        // Prototype: keep accent→midnight gradient but over dark bg
+        // P29: use cachedHeaderGrad (built in loadSlot + resized) — no alloc in paint().
         {
-            juce::ColourGradient grad(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                      get(shellWhite()), (float)getWidth(), 0.0f, false);
-            g.setGradientFill(grad);
+            g.setGradientFill(cachedHeaderGrad);
             g.fillRoundedRectangle(0.0f, 0.0f, (float)getWidth(), (float)kHeaderH, 6.0f);
             // Square off bottom corners of header (rounded rect only at top)
             g.fillRect(0, kHeaderH / 2, getWidth(), kHeaderH / 2);
@@ -290,18 +295,17 @@ public:
         }
 
         // ── Engine name — Overbit display font, engine accent + glow ──────────
-        // Prototype: accent color text with text-shadow glow
+        // P30: use cachedEngineName (set in loadSlot) — no String alloc in paint().
         {
-            juce::String name = engineId.toUpperCase();
             juce::Font nameFont = GalleryFonts::engineName(14.0f);
             g.setFont(nameFont);
             auto nameRect = juce::Rectangle<int>(12, 0, getWidth() - 100, kHeaderH);
             // Glow layer — accent at low opacity, no offset, painted twice for intensity
             g.setColour(accentColour.withAlpha(0.25f));
-            g.drawText(name, nameRect, juce::Justification::centredLeft);
+            g.drawText(cachedEngineName, nameRect, juce::Justification::centredLeft);
             // Primary text — full accent color
             g.setColour(accentColour);
-            g.drawText(name, nameRect, juce::Justification::centredLeft);
+            g.drawText(cachedEngineName, nameRect, juce::Justification::centredLeft);
         }
 
         // ── "PARAMETERS" right label — T3 color, 8px body ─────────────────────
@@ -319,6 +323,11 @@ public:
     {
         auto area = getLocalBounds();
         area.removeFromTop(kHeaderH);
+
+        // P29: rebuild header gradient when width changes.
+        cachedHeaderGrad = juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
+                                                GalleryColors::get(GalleryColors::shellWhite()),
+                                                (float)getWidth(), 0.0f, false);
 
         // ── 1. MacroHeroStrip or FiveMacroDisplay ────────────────────────────
         if (fiveMacroDisplay && fiveMacroDisplay->isVisible())
@@ -412,6 +421,10 @@ private:
     juce::String       engineId  { "—" };
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
     MIDILearnManager*  learnManager = nullptr;
+    // P29: cached header gradient — rebuilt in loadSlot() and resized().
+    juce::ColourGradient cachedHeaderGrad;
+    // P30: cached uppercase engine name — set in loadSlot(), used in paint().
+    juce::String         cachedEngineName { "—" };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };

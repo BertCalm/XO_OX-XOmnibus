@@ -47,10 +47,16 @@ public:
 
         // Colors are applied once in applyTheme() — matching what paint() expects:
         // background = elevated (#242426), border = border(), text per button type.
-        makePad(fireBtn,    "FIRE",     "Fire chord machine one-shot (Z)");
-        makePad(xoSendBtn,  "XOSEND",  "Trigger coupling burst (X)");
-        makePad(echoCutBtn, "ECHO CUT","Kill delay tails (C)");
+        makePad(fireBtn,    "FIRE",     "Fire chord machine (coming soon)");
+        makePad(xoSendBtn,  "XOSEND",  "Trigger coupling burst (coming soon)");
+        makePad(echoCutBtn, "ECHO CUT","Kill delay tails (coming soon)");
         makePad(panicBtn,   "PANIC",   "All notes off / reset engines (V)");
+
+        // UX02: FIRE / XOSEND / ECHO CUT are unimplemented stubs — grey them out
+        // until the processor methods are wired. PANIC remains fully active.
+        fireBtn.setEnabled(false);
+        xoSendBtn.setEnabled(false);
+        echoCutBtn.setEnabled(false);
 
         fireBtn.onClick    = [this] { if (onFire)    onFire();    };
         xoSendBtn.onClick  = [this] { if (onXoSend)  onXoSend();  };
@@ -228,7 +234,7 @@ public:
     {
         // ── Left: trigger pads ────────────────────────────────────────────────
         const int padW   = 52;
-        const int padH   = 20;
+        const int padH   = 26; // UX12: increased from 20 for better touch target size
         const int padGap = 4;
         const int padTop = (getHeight() - padH) / 2;
 

@@ -30,7 +30,11 @@ public:
     FieldMapPanel()
     {
         sessionStart = juce::Time::getCurrentTime();
-        startTimerHz(30);
+        // A11Y05: respect reduced-motion preference — drop to 1Hz refresh when active
+        if (A11y::prefersReducedMotion())
+            startTimerHz(1);
+        else
+            startTimerHz(30);
     }
 
     ~FieldMapPanel() override { stopTimer(); }

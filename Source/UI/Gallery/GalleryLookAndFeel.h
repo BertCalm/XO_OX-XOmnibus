@@ -258,18 +258,18 @@ public:
         }
 
         g.setColour(bg);
-        g.fillRoundedRectangle(bounds, 4.0f);
+        g.fillRoundedRectangle(bounds, 5.0f);
 
         // Focus ring (WCAG 2.4.7) — overrides border when focused
         if (btn.hasKeyboardFocus(true))
         {
             g.setColour(A11y::focusRingColour().withAlpha(0.8f));
-            g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.5f);
+            g.drawRoundedRectangle(bounds.reduced(0.5f), 5.0f, 1.5f);
         }
         else
         {
             g.setColour(borderCol);
-            g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.0f);
+            g.drawRoundedRectangle(bounds.reduced(0.5f), 5.0f, 1.0f);
         }
     }
 
@@ -349,7 +349,7 @@ public:
 
         auto filledBounds = trackBounds;
         if (isHorizontal)
-            filledBounds.setWidth(sliderPos - (float)x);
+            filledBounds.setWidth(juce::jmax(0.0f, sliderPos - (float)x)); // CQ04: clamp to zero — sliderPos can be left of x at minimum
         else
             filledBounds = filledBounds.withTop(sliderPos);
 
@@ -398,9 +398,10 @@ public:
     void drawPopupMenuBackground(juce::Graphics& g, int width, int height) override
     {
         using namespace GalleryColors;
-        g.fillAll(juce::Colour(elevated()));
+        g.setColour(juce::Colour(elevated()));
+        g.fillRoundedRectangle(juce::Rectangle<int>(0, 0, width, height).toFloat(), 4.0f);
         g.setColour(border());
-        g.drawRect(0, 0, width, height, 1);
+        g.drawRoundedRectangle(juce::Rectangle<int>(0, 0, width, height).toFloat().reduced(0.5f), 4.0f, 1.0f);
     }
 
     //==========================================================================

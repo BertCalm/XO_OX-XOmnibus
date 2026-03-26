@@ -2,6 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../XOlokunProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
+#include "../GalleryColors.h"
 
 namespace xolokun {
 
@@ -39,7 +40,11 @@ public:
     explicit CouplingArcOverlay(XOlokunProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(false, false); // pass-through to tiles beneath
-        startTimerHz(30);
+        // A11Y06: respect reduced-motion preference — drop to 1Hz refresh when active
+        if (A11y::prefersReducedMotion())
+            startTimerHz(1);
+        else
+            startTimerHz(30);
     }
 
     ~CouplingArcOverlay() override { stopTimer(); }
@@ -56,9 +61,10 @@ public:
     {
         // P1 fix: skip repaint when no active routes exist — avoids full
         // 1100×700 overlay redraw at 30Hz when the matrix is empty.
-        const auto routes = processor.getCouplingMatrix().getRoutes();
+        // P26 fix: cache the routes here so paint() doesn't call getRoutes() again.
+        cachedRoutes = processor.getCouplingMatrix().getRoutes();
         bool hasActive = false;
-        for (const auto& r : routes)
+        for (const auto& r : cachedRoutes)
         {
             if (r.active && r.amount >= 0.001f)
             { hasActive = true; break; }
@@ -69,8 +75,8 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        // Snapshot coupling routes on the message thread — safe (getRoutes() uses atomic_load)
-        const auto routes = processor.getCouplingMatrix().getRoutes();
+        // Use the routes snapshot captured in timerCallback() — no extra copy.
+        const auto& routes = cachedRoutes;
         if (routes.empty())
             return;
 
@@ -137,8 +143,9 @@ public:
             const auto from = tileCenters[static_cast<size_t>(lo)];
             const auto to   = tileCenters[static_cast<size_t>(hi)];
 
-            // Skip degenerate arcs (tile center not yet set)
-            if (from.isOrigin() && to.isOrigin())
+            // CQ12: skip if EITHER endpoint is at origin (tile center not yet set).
+            // Using && was too permissive — a valid arc could still draw toward (0,0).
+            if (from.isOrigin() || to.isOrigin())
                 continue;
 
             // Choose arc color by coupling type category
@@ -189,6 +196,7 @@ private:
     XOlokunProcessor& processor;
     std::array<juce::Point<float>, MegaCouplingMatrix::MaxSlots> tileCenters {};
     float pulsePhase[12] {}; // one phase accumulator per unique arc pair (max 6 pairs, 12 for safety)
+    std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes; // P26: populated in timerCallback()
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingArcOverlay)
 };
