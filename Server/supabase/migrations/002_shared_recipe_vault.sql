@@ -131,7 +131,10 @@ CREATE POLICY "anon_read_recipes"
 CREATE POLICY "anon_insert_recipes"
     ON shared_recipes FOR INSERT
     TO anon
-    WITH CHECK (true);
+    WITH CHECK (
+        is_staff_pick = false
+        AND thumbs_up = 0
+    );
 
 -- Only the author can delete (matched by hashed token)
 CREATE POLICY "author_delete_recipes"

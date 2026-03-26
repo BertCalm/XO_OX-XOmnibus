@@ -149,7 +149,12 @@ class PackContext:
             )
             # More precise: root-level means no directory separator
             self.zip_root_has_expansion_json = "expansion.json" in names
-            zf.extractall(self._pack_dir)
+            extract_root = self._pack_dir.resolve()
+            for member in zf.infolist():
+                dest = (extract_root / member.filename).resolve()
+                if not str(dest).startswith(str(extract_root)):
+                    raise ValueError(f"Zip slip detected: {member.filename}")
+                zf.extract(member, extract_root)
 
     @property
     def pack_dir(self) -> Path:

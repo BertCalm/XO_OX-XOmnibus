@@ -391,12 +391,7 @@ public:
             if (!e.mods.isPopupMenu())
             {
                 isMuted = !isMuted;
-                // W06: Mute toggle currently visual-only — processor.setSlotMuted() not yet implemented.
-                // When the APVTS slot_mute param is added, replace this stub with:
-                //   if (auto* p = processor.getAPVTS().getRawParameterValue(
-                //           "slot" + juce::String(slot) + "_mute"))
-                //       p->store(isMuted ? 1.0f : 0.0f);
-                // TODO: processor.setSlotMuted(slot, isMuted);
+                processor.setSlotMuted(slot, isMuted);
                 repaint();
                 return;
             }

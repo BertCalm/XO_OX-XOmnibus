@@ -151,7 +151,7 @@ public:
                                         ? voiceLabels[i]
                                         : ("V" + juce::String(i + 1));
             g.setColour(juce::Colours::white.withAlpha(0.85f));
-            g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(9.0f));
+            g.setFont(juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.0f)));
             g.drawText(voiceName, cell.bounds, juce::Justification::centred);
         }
 
@@ -160,7 +160,7 @@ public:
         {
             int stripY = getParamStripY();
             g.setColour(accentColour.withAlpha(0.80f));
-            g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(9.0f));
+            g.setFont(juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.0f)));
             juce::String header = "VOICE " + juce::String(selectedPad + 1);
             g.drawText(header, kPadGap, stripY - kParamHeaderH, getWidth() - kPadGap * 2, kParamHeaderH,
                        juce::Justification::centredLeft);

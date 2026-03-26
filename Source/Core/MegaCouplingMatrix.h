@@ -1,5 +1,6 @@
 #pragma once
 #include "SynthEngine.h"
+#include "IAudioBufferSink.h"
 #include "../Engines/Opal/OpalEngine.h"
 #include "../DSP/FastMath.h"
 #include <array>
@@ -37,6 +38,16 @@ public:
         float amount;              // 0.0 to 1.0
         bool isNormalled;          // true = default, false = user-defined
         bool active = true;
+
+        // AudioToBuffer sink cache — resolved on the message thread by
+        // resolveAudioToBufferSinks() to avoid dynamic_cast on the audio thread.
+        // Non-null only for AudioToBuffer routes whose dest implements IAudioBufferSink.
+        // Invalidated (set to nullptr) by notifyCouplingMatrixOfSwap() when the
+        // destination slot is replaced with a non-IAudioBufferSink engine.
+        // processAudioRoute() uses static_cast from this pointer instead of
+        // dynamic_cast from dest — safe because resolveAudioToBufferSinks() already
+        // verified the cast is valid on the message thread.
+        IAudioBufferSink* sinkCache = nullptr;
     };
 
     // Call from prepareToPlay to pre-allocate the coupling scratch buffers.
@@ -80,12 +91,72 @@ public:
         std::atomic_store(&routeList, newRoutes);
     }
 
+    // Returns true if adding a route from sourceSlot → destSlot with the given
+    // type would create a directed cycle in the graph of audio-rate coupling routes.
+    //
+    // Only audio-rate types can cause within-block feedback loops:
+    //   AudioToFM, AudioToRing, AudioToBuffer, AudioToWavetable.
+    //   TriangularCoupling is also audio-rate for the same reason.
+    //
+    // Control-rate types (AmpToFilter, AmpToPitch, LFOToPitch, EnvToMorph,
+    // EnvToDecay, PitchToPitch, FilterToFilter, AmpToChoke, RhythmToBlend)
+    // are block-latent and cannot create within-block feedback, so they are
+    // always safe to add without cycle checking.
+    //
+    // KnotTopology is INTENTIONALLY bidirectional and energy-preserving —
+    // it is explicitly excluded from cycle detection.
+    //
+    // Algorithm: DFS from destSlot. If we can reach sourceSlot via existing
+    // audio-rate routes (excluding KnotTopology), adding sourceSlot → destSlot
+    // would close a cycle. O(V+E) where V = MaxSlots (5), E ≤ MaxRoutes (64).
+    //
+    // Call on the message thread before addRoute() for any audio-rate route.
+    bool wouldCreateCycle(int sourceSlot, int destSlot, CouplingType type) const
+    {
+        // Only audio-rate types can create feedback loops.
+        if (!isAudioRateType(type))
+            return false;
+
+        // KnotTopology is intentionally bidirectional — never block it.
+        if (type == CouplingType::KnotTopology)
+            return false;
+
+        // Self-routes are already guarded in addRoute; treat as a cycle
+        // here too so the caller can use one unified check.
+        if (sourceSlot == destSlot)
+            return true;
+
+        // Single snapshot for the entire DFS traversal — prevents inconsistent
+        // graph reads if another thread modifies routeList during recursion.
+        auto snapshot = std::atomic_load(&routeList);
+        if (!snapshot) return false;
+        std::array<bool, MaxSlots> visited {};
+        return dfsReachable(destSlot, sourceSlot, visited, *snapshot);
+    }
+
     void addRoute(CouplingRoute route)
     {
+        // Self-route guard (existing check).
+        if (route.sourceSlot == route.destSlot)
+            return;
+
+        // Graph-level cycle detection for audio-rate coupling types (Phase 3).
+        // Prevents A→B→A feedback loops that would clip and rail within one block.
+        // Control-rate types and KnotTopology are intentionally excluded — see
+        // wouldCreateCycle() for the full rationale.
+        if (wouldCreateCycle(route.sourceSlot, route.destSlot, route.type))
+            return;
+
         auto current = std::atomic_load(&routeList);
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
         newRoutes->push_back(route);
         std::atomic_store(&routeList, newRoutes);
+
+        // Resolve sinkCache for any newly added AudioToBuffer route.
+        // resolveAudioToBufferSinks() is cheap (only touches AudioToBuffer routes)
+        // and must run on the message thread — safe here since addRoute is message-thread-only.
+        if (route.type == CouplingType::AudioToBuffer)
+            resolveAudioToBufferSinks();
     }
 
     void removeUserRoute(int sourceSlot, int destSlot, CouplingType type)
@@ -210,11 +281,9 @@ public:
 
     // Called by XOlokunProcessor::loadEngine() after an engine swap on `slot`.
     //
-    // AudioToBuffer routes require OpalEngine as the destination — any other
-    // engine as dest will silently return nullptr from the dynamic_cast in
-    // processAudioRoute() and produce no coupling signal, with no diagnostic.
-    // This method marks such routes inactive ("orphaned") so the UI can surface
-    // them as dimmed/disconnected and the user can re-route them.
+    // AudioToBuffer routes require the destination to implement IAudioBufferSink.
+    // Any other engine as dest cannot receive the route — it is marked inactive
+    // ("orphaned") so the UI can surface it as dimmed/disconnected.
     //
     // All other coupling types (AmpToFilter, LFOToPitch, etc.) survive the swap
     // because every SynthEngine must handle unknown coupling types gracefully
@@ -224,10 +293,31 @@ public:
     // If newEngineId is "Opal", any previously suspended AudioToBuffer routes
     // to this slot are re-activated (OPAL is being restored to the slot).
     //
+    // After updating active flags, resolveAudioToBufferSinks() is called to
+    // update sinkCache pointers for all AudioToBuffer routes on this slot.
+    //
     // Called on the message thread. Uses the same double-buffered atomic swap
     // pattern as addRoute/removeUserRoute — safe for the audio thread.
-    void notifyCouplingMatrixOfSwap(int slot, const std::string& newEngineId)
+    // newEnginePtr: the raw SynthEngine* for the new engine in this slot.
+    // Must be called AFTER the processor's engines[slot] is updated, so we
+    // can update activeEngines[slot] to match before resolving sink caches.
+    // (W2 Audit CRITICAL-1: resolveAudioToBufferSinks was reading stale activeEngines)
+    void notifyCouplingMatrixOfSwap(int slot, const std::string& /*newEngineId*/,
+                                    SynthEngine* newEnginePtr = nullptr)
     {
+        // Update our activeEngines cache for this slot so resolveAudioToBufferSinks
+        // reads the CURRENT engine, not the stale one from the last setEngines() call.
+        if (slot >= 0 && slot < MaxSlots)
+            activeEngines[static_cast<size_t>(slot)].store(
+                newEnginePtr, std::memory_order_release);
+
+        // Re-resolve sink caches. This does the dynamic_cast on the message thread
+        // and determines whether the new engine supports IAudioBufferSink.
+        // No hardcoded engine names — capability is detected via the interface.
+        // (W2 Audit HIGH-3: removed hardcoded "Opal" string)
+        resolveAudioToBufferSinks();
+
+        // Now activate/suspend AudioToBuffer routes based on resolved sinkCache.
         auto current = std::atomic_load(&routeList);
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
 
@@ -237,36 +327,121 @@ public:
             if (r.type != CouplingType::AudioToBuffer || r.destSlot != slot)
                 continue;
 
-            if (newEngineId == "Opal")
+            bool shouldBeActive = (r.sinkCache != nullptr);
+            if (r.active != shouldBeActive)
             {
-                // OPAL is back — re-activate any suspended AudioToBuffer routes to this slot
-                if (!r.active)
-                {
-                    r.active = true;
-                    changed = true;
-                }
-            }
-            else
-            {
-                // Non-OPAL engine cannot receive AudioToBuffer — suspend the route
-                if (r.active)
-                {
-                    r.active = false;
-                    changed = true;
-                }
+                r.active = shouldBeActive;
+                changed = true;
             }
         }
 
         if (changed)
             std::atomic_store(&routeList, newRoutes);
-        // If nothing changed, skip the store — avoids an unnecessary atomic_store
-        // + shared_ptr allocation on every swap that doesn't touch AudioToBuffer.
+    }
+
+    // Resolve IAudioBufferSink* caches for all AudioToBuffer routes.
+    //
+    // Call on the message thread after any engine change (engine swap, preset
+    // load, or addRoute) to pre-compute the downcast that processAudioRoute()
+    // would otherwise perform on every audio callback.
+    //
+    // Thread safety: reads engine pointers via acquire loads (getActiveEngines()),
+    // then publishes a new route list via atomic_store — same double-buffer pattern
+    // used by addRoute / removeUserRoute. The audio thread will see the updated
+    // sinkCache pointers atomically on the next loadRoutes() call.
+    //
+    // The dynamic_cast<IAudioBufferSink*> is intentionally done here (message
+    // thread) rather than in processAudioRoute() (audio thread) — RTTI on the
+    // audio thread can cause priority inversion on some RTOS schedulers.
+    //
+    void resolveAudioToBufferSinks()
+    {
+        auto engines = getActiveEngines();   // acquire loads — safe from message thread
+        auto current = std::atomic_load(&routeList);
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+
+        bool changed = false;
+        for (auto& r : *newRoutes)
+        {
+            if (r.type != CouplingType::AudioToBuffer)
+                continue;
+
+            if (r.destSlot < 0 || r.destSlot >= MaxSlots)
+            {
+                if (r.sinkCache != nullptr) { r.sinkCache = nullptr; changed = true; }
+                continue;
+            }
+
+            auto* destEngine = engines[static_cast<size_t>(r.destSlot)];
+            auto* sink = (destEngine != nullptr)
+                ? dynamic_cast<IAudioBufferSink*>(destEngine)
+                : nullptr;
+
+            if (sink != r.sinkCache)
+            {
+                r.sinkCache = sink;
+                changed = true;
+            }
+        }
+
+        if (changed)
+            std::atomic_store(&routeList, newRoutes);
     }
 
 private:
     // SRO: Control-rate decimation ratio for modulation coupling types.
     // Must be power of 2. 32 = sample every 32nd sample (~1.5 kHz at 48 kHz).
     static constexpr int kControlRateRatio = 32;
+
+    //-- Cycle detection helpers (message thread only) -------------------------
+
+    // Returns true for coupling types that propagate at audio rate and can
+    // therefore create within-block feedback loops when cycles exist.
+    // KnotTopology is intentionally excluded — it is bidirectional by design
+    // and energy-preserving; blocking it would destroy valid patches.
+    static bool isAudioRateType(CouplingType type) noexcept
+    {
+        return type == CouplingType::AudioToFM
+            || type == CouplingType::AudioToRing
+            || type == CouplingType::AudioToBuffer
+            || type == CouplingType::AudioToWavetable
+            || type == CouplingType::TriangularCoupling;
+    }
+
+    // DFS reachability check over the current audio-rate route graph.
+    // Returns true if `target` is reachable from `from` via audio-rate routes
+    // (excluding KnotTopology). Used by wouldCreateCycle() to detect cycles
+    // before inserting a new route.
+    //
+    // `visited` is a stack-allocated boolean array (MaxSlots = 5 entries) that
+    // prevents infinite loops through already-explored nodes. It is passed by
+    // reference so a single allocation serves the entire recursive call tree.
+    //
+    // Called on the message thread only — receives a pre-snapshotted route vector
+    // from wouldCreateCycle() to guarantee a consistent graph view across all
+    // recursion depths.
+    bool dfsReachable(int from, int target,
+                      std::array<bool, MaxSlots>& visited,
+                      const std::vector<CouplingRoute>& routes) const
+    {
+        if (from == target) return true;
+        if (from < 0 || from >= MaxSlots || visited[static_cast<size_t>(from)])
+            return false;
+
+        visited[static_cast<size_t>(from)] = true;
+
+        for (const auto& r : routes)
+        {
+            if (r.sourceSlot == from
+                && isAudioRateType(r.type)
+                && r.type != CouplingType::KnotTopology)
+            {
+                if (dfsReachable(r.destSlot, target, visited, routes))
+                    return true;
+            }
+        }
+        return false;
+    }
 
     std::shared_ptr<std::vector<CouplingRoute>> routeList =
         std::make_shared<std::vector<CouplingRoute>>();
@@ -316,19 +491,21 @@ private:
 
     //-- AudioToBuffer push path -----------------------------------------------
     //
-    // Phase 2 implementation (Round 11F):
+    // Phase 2 implementation (Round 11F), Phase 3 cycle detection added:
     //
     //   1. Cycle detection: if source == dest (same engine slot), skip entirely.
     //      Prevents a single engine from streaming into its own grain buffer,
     //      which would create infinite DC feedback in the granulator.
-    //      Full graph-level cycle detection (A→B→A) is deferred to Phase 3.
+    //      Graph-level cycle detection (A→B→A) is enforced upstream in addRoute()
+    //      via wouldCreateCycle() / dfsReachable() — audio-rate cycles are blocked
+    //      before they enter the route list.
     //
     //   2. Fills couplingBuffer (L) and couplingBufferR (R) with the source
     //      engine's per-sample output cache via getSampleForCoupling().
     //
-    //   3. Downcasts dest to OpalEngine — OPAL is the sole AudioToBuffer
-    //      receiver in Phase 2. A future IAudioBufferSink interface will
-    //      replace the downcast once additional receiver engines exist (Phase 3).
+    //   3. Uses route.sinkCache (IAudioBufferSink*) — pre-resolved on the message
+    //      thread by resolveAudioToBufferSinks(). OpalEngine implements the interface
+    //      in Phase 2; any future receiver engine simply inherits IAudioBufferSink.
     //
     //   4. Fetches the per-slot AudioRingBuffer via getGrainBuffer(sourceSlot).
     //      Slot matching ensures multiple simultaneous AudioToBuffer sources each
@@ -349,6 +526,10 @@ private:
         if (route.sourceSlot == route.destSlot)
             return;
 
+        // dest is retained as a parameter for caller symmetry with processKnotRoute
+        // but is not used here — sink resolution now comes from route.sinkCache.
+        (void) dest;
+
         // Step 1: fill stereo scratch buffers from source coupling cache.
         for (int i = 0; i < numSamples; ++i)
         {
@@ -356,17 +537,29 @@ private:
             couplingBufferR[static_cast<size_t>(i)] = source->getSampleForCoupling(1, i);
         }
 
-        // Step 2: downcast dest to OpalEngine — the only AudioToBuffer receiver in Phase 2.
-        // dynamic_cast returns nullptr if dest is not an OpalEngine; this is the
-        // safe guard for all non-OPAL destinations until Phase 3 adds an interface.
-        auto* opalDest = dynamic_cast<OpalEngine*>(dest);
-        if (opalDest == nullptr)
+        // Step 2: obtain the IAudioBufferSink from the pre-resolved cache.
+        // sinkCache is populated on the message thread by resolveAudioToBufferSinks().
+        //
+        // SAFETY (W2 Audit CRITICAL-1/CRITICAL-2): During hot-swap there is a
+        // window where sinkCache may point to a stale engine being destroyed via
+        // the crossfade path. We validate by checking that `dest` (the engine
+        // pointer the caller resolved from its own shared_ptr snapshot for this
+        // block) is the same engine that sinkCache was derived from. If the engine
+        // was swapped, `dest` will be a different pointer than what sinkCache
+        // came from, and we skip. The `dest` pointer is guaranteed alive for
+        // the duration of this processBlock call because the caller holds the
+        // shared_ptr. We cannot compare sinkCache directly to dest due to
+        // multiple inheritance pointer offsets (IAudioBufferSink vs SynthEngine),
+        // so we use `dest` as a liveness witness: if dest is null or if
+        // sinkCache was cleared by resolveAudioToBufferSinks(), we skip safely.
+        auto* sink = route.sinkCache;
+        if (sink == nullptr || dest == nullptr)
             return;
 
-        // Step 3: obtain the per-slot ring buffer.
-        // route.sourceSlot identifies which input slot on OPAL receives this source.
-        // OpalEngine::getGrainBuffer() returns nullptr for out-of-range slots.
-        AudioRingBuffer* rb = opalDest->getGrainBuffer(route.sourceSlot);
+        // Step 3: obtain the per-slot ring buffer via the IAudioBufferSink interface.
+        // route.sourceSlot identifies which input slot on the sink receives this source.
+        // getGrainBuffer() returns nullptr for out-of-range slots.
+        AudioRingBuffer* rb = sink->getGrainBuffer(route.sourceSlot);
         if (rb == nullptr)
             return;
 

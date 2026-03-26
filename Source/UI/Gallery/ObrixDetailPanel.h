@@ -678,7 +678,7 @@ public:
             g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
             g.setColour(col.brighter(0.15f));
-            g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(10.0f));
+            g.setFont(juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(10.0f)));
             g.drawText(name,
                        dotX + dotSize + 6, headerY,
                        getWidth() - dotX - dotSize - 16, kSectionHeaderH,

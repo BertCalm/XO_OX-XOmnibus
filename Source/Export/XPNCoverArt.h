@@ -634,7 +634,7 @@ private:
         float textY = size * 0.06f;
 
         // --- Pack title (drop shadow + white) ---
-        g.setFont(juce::Font(titleSize).boldened());
+        g.setFont(juce::Font(juce::FontOptions{}.withHeight(titleSize)).boldened());
         g.setColour(juce::Colours::black.withAlpha(0.55f));
         g.drawText(packName, (int)(textX + 3), (int)(textY + 3),
                    size - (int)textX - (int)pad, (int)titleSize + 4,
@@ -649,9 +649,9 @@ private:
         float pillPadX = size * 0.015f;
         float pillPadY = size * 0.008f;
         juce::String label(eng.label);
-        auto labelFont = juce::Font(labelSize).boldened();
+        auto labelFont = juce::Font(juce::FontOptions{}.withHeight(labelSize)).boldened();
         g.setFont(labelFont);
-        float labelW = labelFont.getStringWidthFloat(label);
+        float labelW = static_cast<float>(labelFont.getStringWidth(label));
         float labelH = labelFont.getHeight();
 
         auto pillRect = juce::Rectangle<float>(
@@ -666,7 +666,7 @@ private:
 
         // --- Preset count + version (bottom left) ---
         float metaY = size - pad - size * 0.06f;
-        auto metaFont = juce::Font(metaSize);
+        auto metaFont = juce::Font(juce::FontOptions{}.withHeight(metaSize));
         g.setFont(metaFont);
 
         juce::String countText = juce::String(presetCount) + " PRESETS";
@@ -684,9 +684,9 @@ private:
                    300, (int)metaSize + 4, juce::Justification::topLeft);
 
         // --- XO_OX watermark (bottom right, subtle) ---
-        auto wmFont = juce::Font(wmSize);
+        auto wmFont = juce::Font(juce::FontOptions{}.withHeight(wmSize));
         g.setFont(wmFont);
-        float wmW = wmFont.getStringWidthFloat("XO_OX");
+        float wmW = static_cast<float>(wmFont.getStringWidth("XO_OX"));
         g.setColour(juce::Colours::white.withAlpha(0.08f));
         g.drawText("XO_OX",
                    size - (int)pad - (int)wmW - 2, size - (int)pad - (int)wmSize - 2,

@@ -142,14 +142,15 @@ Input → Modulated delay line (0.5–40ms) → Feedback → Mix with dry
 | `master_modRate` | 0.05–10.0 Hz | 0.8 Hz | LFO rate |
 | `master_modDepth` | 0.0–1.0 | 0.0 | Modulation depth (0 = bypass) |
 | `master_modMix` | 0.0–1.0 | 0.0 | Wet/dry blend |
-| `master_modMode` | 0–3 (enum) | 0 | Chorus, Flanger, Ensemble, Drift |
-| `master_modFeedback` | 0.0–0.85 | 0.0 | Flanger resonance / ensemble thickening |
+| `master_modMode` | 0–4 (enum) | 0 | Chorus, Flanger, Ensemble, Drift, Phaser |
+| `master_modFeedback` | 0.0–0.85 | 0.0 | Flanger resonance / ensemble thickening / phaser notch depth |
 
 **Mode descriptions:**
 - **Chorus:** Classic 2-voice BBD-style chorus. Short delay (5–15ms), sine LFO, no feedback. Warm and wide.
 - **Flanger:** Short delay (0.5–5ms), triangle LFO, feedback for comb filtering. Jet-engine sweep.
 - **Ensemble:** 3-voice chorus with phase-offset LFOs (0°/120°/240°). Thick, orchestral widening. Inspired by Roland Dimension D.
 - **Drift:** Random walk LFO (smoothed S&H) with slow rate. Produces analog tape wow/flutter. Inspired by Warped Vinyl and Chase Bliss.
+- **Phaser:** 6-stage first-order allpass cascade. LFO sweeps allpass pole frequency (~100–1500 Hz). Feedback controls notch depth (0 = gentle colour, 0.85 = deep resonant notches). Stereo: L/R LFO offset by 90°. Matched-Z coefficient design is sample-rate independent (works at 44100/48000/96000 Hz). Inspired by MXR Phase 90, EHX Small Stone.
 
 **Key design decisions:**
 - Modulated delay line uses linear interpolation (adequate for short delays at these rates)
@@ -297,7 +298,7 @@ Engine Mix Bus
 | `master_modRate` | float | 0.05–10.0 Hz | 0.8 |
 | `master_modDepth` | float | 0.0–1.0 | 0.0 |
 | `master_modMix` | float | 0.0–1.0 | 0.0 |
-| `master_modMode` | choice | Chorus,Flanger,Ensemble,Drift | Chorus |
+| `master_modMode` | choice | Chorus,Flanger,Ensemble,Drift,Phaser | Chorus |
 | `master_modFeedback` | float | 0.0–0.85 | 0.0 |
 | `master_seqEnabled` | bool | 0/1 | 0 |
 | `master_seqRate` | choice | 1/1..1/32,triplet,dotted | 1/4 |

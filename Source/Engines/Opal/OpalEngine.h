@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/IAudioBufferSink.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../Core/AudioRingBuffer.h"
 #include "../../Core/PolyAftertouch.h"
@@ -802,7 +803,7 @@ private:
 //                   RhythmToBlend, EnvToDecay
 // Coupling output:  Post-filter cloud stereo, normalized ±1
 //==============================================================================
-class OpalEngine : public SynthEngine
+class OpalEngine : public SynthEngine, public IAudioBufferSink
 {
 public:
     OpalEngine() = default;
@@ -1407,18 +1408,23 @@ public:
         }
     }
 
-    //-- AudioToBuffer public API ----------------------------------------------
+    //-- IAudioBufferSink implementation ---------------------------------------
     //
-    // getGrainBuffer(slot) — called by MegaCouplingMatrix::processAudioRoute()
-    // to obtain the per-slot ring buffer into which it will push audio.
-    // slot 0–3 correspond to MegaCouplingMatrix::MaxSlots source positions.
-    // Returns nullptr if slot is out of range (defensive guard).
+    // OpalEngine implements IAudioBufferSink so MegaCouplingMatrix can cache
+    // the sink pointer at route-creation time (message thread) and avoid a
+    // dynamic_cast on every processBlock call. See MegaCouplingMatrix.h §Fix1.
     //
-    AudioRingBuffer* getGrainBuffer (int slot) noexcept
+    // getGrainBuffer(slot) — returns the per-slot ring buffer for the given
+    // source slot index (0–kOpalInputSlots-1). Called on the audio thread by
+    // MegaCouplingMatrix::processAudioRoute(). Real-time safe, no allocation.
+    //
+    AudioRingBuffer* getGrainBuffer (int slot) noexcept override
     {
         if (slot < 0 || slot >= kOpalInputSlots) return nullptr;
         return &inputBuffers[static_cast<size_t>(slot)];
     }
+
+    int getNumInputSlots() const noexcept override { return kOpalInputSlots; }
 
     // receiveAudioBuffer — called by any subsystem that has already filled an
     // AudioRingBuffer and wants OPAL to adopt its content directly. Reads a full
@@ -1434,7 +1440,7 @@ public:
     // `mix` is pre-read from pExternalMix by the caller to avoid double-load.
     //
     void receiveAudioBuffer (const AudioRingBuffer& src, int numSamples,
-                             float mix, bool frozen) noexcept
+                             float mix, bool frozen) noexcept override
     {
         // `frozen` is reserved for Phase 3 FREEZE state machine integration.
         // When frozen, this method will hold the blend cache at its last valid

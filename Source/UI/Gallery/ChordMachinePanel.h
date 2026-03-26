@@ -272,7 +272,7 @@ public:
         // Spread label (dynamic)
         float curSpread = cm.getSpread();
         g.setColour (get (xoGold));
-        g.setFont (GalleryFonts::label(8.0f).withStyle (juce::Font::bold));
+        g.setFont (GalleryFonts::heading(8.0f));
         auto spreadLabelR = knobArea.withWidth (knobW).removeFromBottom (12);
         g.drawText (ChordMachine::spreadLabel (curSpread), spreadLabelR,
                     juce::Justification::centred);

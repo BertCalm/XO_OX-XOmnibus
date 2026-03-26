@@ -195,39 +195,39 @@
   --engine-OXYTOCIN: #9B5DE5;   /* Synapse Violet            — XOxytocin */
 
   /* --- Kitchen Collection — Chef Quad (Organs / Adversarial coupling) --- */
-  --engine-OTO:      #7BA05B;   /* Bamboo Green              — XOto */
-  --engine-OCTAVE:   #6B2D3E;   /* Bordeaux                  — XOctave */
-  --engine-OLEG:     #C5A036;   /* Orthodox Gold             — XOleg */
-  --engine-OTIS:     #DAA520;   /* Soul Gold                 — XOtis */
+  --engine-OTO:      #F5F0E8;   /* Pipe Organ Ivory          — XOto */
+  --engine-OCTAVE:   #8B6914;   /* Hammond Teak              — XOctave */
+  --engine-OLEG:     #C0392B;   /* Theatre Red               — XOleg */
+  --engine-OTIS:     #D4A017;   /* Gospel Gold               — XOtis */
 
   /* --- Kitchen Collection — Kitchen Quad (Pianos / Resonant coupling) --- */
-  --engine-OVEN:     #2C2C2C;   /* Cast Iron Black           — XOven */
+  --engine-OVEN:     #1C1C1C;   /* Steinway Ebony            — XOven */
   --engine-OCHRE:    #CC7722;   /* Ochre Pigment             — XOchre */
-  --engine-OBELISK:  #4A4A4A;   /* Obsidian Slate            — XObelisk */
-  --engine-OPALINE:  #B8D4E3;   /* Crystal Blue              — XOpaline */
+  --engine-OBELISK:  #FFFFF0;   /* Grand Ivory               — XObelisk */
+  --engine-OPALINE:  #B7410E;   /* Prepared Rust             — XOpaline */
 
   /* --- Kitchen Collection — Cellar Quad (Bass / Gravitational coupling) --- */
-  --engine-OGRE:     #4A2C0A;   /* Deep Earth Brown          — XOgre */
-  --engine-OLATE:    #6B1A2A;   /* Burgundy                  — XOlate */
-  --engine-OAKEN:    #3D2412;   /* Dark Walnut               — XOaken */
-  --engine-OMEGA:    #B04010;   /* Copper Still              — XOmega */
+  --engine-OGRE:     #0D0D0D;   /* Sub Bass Black            — XOgre */
+  --engine-OLATE:    #5C3317;   /* Fretless Walnut           — XOlate */
+  --engine-OAKEN:    #9C6B30;   /* Upright Oak               — XOaken */
+  --engine-OMEGA:    #003366;   /* Synth Bass Blue           — XOmega */
 
   /* --- Kitchen Collection — Garden Quad (Strings / Evolutionary coupling) --- */
-  --engine-ORCHARD:  #DAA520;   /* Harvest Gold              — XOrchard (matches OTIS; distinct enough at engine level) */
-  --engine-OVERGROW: #3A5F0B;   /* Vine Green                — XOvergrow */
-  --engine-OSIER:    #6B8E23;   /* Willow Green              — XOsier */
-  --engine-OXALIS:   #6A0DAD;   /* Clover Purple             — XOxalis */
+  --engine-ORCHARD:  #FFB7C5;   /* Orchard Blossom           — XOrchard */
+  --engine-OVERGROW: #228B22;   /* Forest Green              — XOvergrow */
+  --engine-OSIER:    #C0C8C8;   /* Willow Silver             — XOsier */
+  --engine-OXALIS:   #9B59B6;   /* Wood Sorrel Lilac         — XOxalis */
 
   /* --- Kitchen Collection — Broth Quad (Pads / Cooperative coupling) --- */
-  --engine-OVERWASH: #D4A76A;   /* Tea Amber                 — XOverwash */
-  --engine-OVERWORN: #4A1A2E;   /* Reduced Wine              — XOverworn */
-  --engine-OVERFLOW: #E8E8E8;   /* Steam White               — XOverflow */
+  --engine-OVERWASH: #F0F8FF;   /* Tide Foam White           — XOverwash */
+  --engine-OVERWORN: #808080;   /* Worn Felt Grey            — XOverworn */
+  --engine-OVERFLOW: #1A3A5C;   /* Deep Current Blue         — XOverflow */
   --engine-OVERCAST: #778899;   /* Light Slate Gray          — XOvercast */
 
   /* --- Kitchen Collection — Fusion Quad (Electric Piano / Migratory coupling) --- */
-  --engine-OASIS:    #C49B3F;   /* Cardamom Gold             — XOasis */
-  --engine-ODDFELLOW:#FF6B35;   /* Neon Night                — XOddfellow */
-  --engine-ONKOLO:   #FFB300;   /* Kente Gold                — XOnkolo */
+  --engine-OASIS:    #00827F;   /* Desert Spring Teal        — XOasis */
+  --engine-ODDFELLOW:#B87333;   /* Fusion Copper             — XOddfellow */
+  --engine-ONKOLO:   #FFBF00;   /* Spectral Amber            — XOnkolo */
   --engine-OPCODE:   #00CED1;   /* Dark Turquoise            — XOpcode */
   --engine-OUTLOOK:  #4169E1;   /* Horizon Indigo            — XOutlook */
 }

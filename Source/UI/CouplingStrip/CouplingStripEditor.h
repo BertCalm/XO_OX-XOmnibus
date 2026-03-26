@@ -43,7 +43,7 @@ public:
 
         // Header
         g.setColour(juce::Colour(0xFFE9C46A));
-        g.setFont(juce::Font(10.0f).boldened());
+        g.setFont(juce::Font(juce::FontOptions{}.withHeight(10.0f)).boldened());
         g.drawText("COUPLING MATRIX", b.removeFromTop(20), juce::Justification::centred);
 
         // Draw engine nodes
@@ -69,7 +69,7 @@ public:
             g.drawEllipse(cx - nodeRadius, cy - nodeRadius, nodeRadius * 2, nodeRadius * 2, 2.0f);
 
             // Slot number
-            g.setFont(juce::Font(8.0f));
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
             g.drawText(juce::String(i + 1), cx - 4, cy + nodeRadius + 2, 10, 10,
                        juce::Justification::centred);
 
@@ -77,14 +77,14 @@ public:
             if (hasEngine)
             {
                 g.setColour(juce::Colour(0xFFEEEEEE));
-                g.setFont(juce::Font(9.0f).boldened());
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)).boldened());
                 g.drawText(name, cx - nodeRadius, cy - 6, nodeRadius * 2, 12,
                            juce::Justification::centred);
             }
             else
             {
                 g.setColour(juce::Colour(0xFF999999));  // Raised from #666 for WCAG contrast on #1E1E1E
-                g.setFont(juce::Font(8.0f));
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
                 g.drawText("empty", cx - nodeRadius, cy - 5, nodeRadius * 2, 10,
                            juce::Justification::centred);
             }
@@ -131,7 +131,7 @@ public:
                 // Type label at midpoint (WCAG: min 8pt for readability)
                 float midX = (srcPos.x + dstPos.x) * 0.5f;
                 float midY = (srcPos.y + dstPos.y) * 0.5f + yOff * 1.5f - nodeRadius;
-                g.setFont(juce::Font(8.0f).boldened());
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)).boldened());
                 g.drawText(couplingTypeShortLabel(route.type),
                           (int)(midX - 24), (int)(midY - 6), 48, 12,
                           juce::Justification::centred);
@@ -145,7 +145,7 @@ public:
                 if (r.active && r.amount >= 0.001f) ++activeCount;
 
         g.setColour(juce::Colour(0xFFAAAAAA));  // Raised for WCAG contrast on dark bg
-        g.setFont(juce::Font(8.0f));
+        g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
         g.drawText(juce::String(activeCount) + " active route" + (activeCount != 1 ? "s" : ""),
                    getLocalBounds().removeFromBottom(14).toFloat(),
                    juce::Justification::centred);

@@ -293,7 +293,7 @@ private:
 
         for (const auto& eng : engineChipLabels)
         {
-            int chipW = static_cast<int>(GalleryFonts::label(9.0f).getStringWidthFloat(eng))
+            int chipW = juce::roundToInt(GalleryFonts::label(9.0f).getStringWidthFloat(eng))
                         + chipPadX * 2;
 
             // Wrap to next row if needed

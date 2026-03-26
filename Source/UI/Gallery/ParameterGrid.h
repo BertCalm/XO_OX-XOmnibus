@@ -285,7 +285,7 @@ public:
             // P6 fix: cache the section font and arrow strings as static locals
             // to avoid reconstructing them on every paint() call.
             static const juce::Font kSectionFont =
-                juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(9.5f);
+                juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.5f));
             static const juce::String kArrowCollapsed (juce::CharPointer_UTF8("\xe2\x96\xb8")); // ▸
             static const juce::String kArrowExpanded  (juce::CharPointer_UTF8("\xe2\x96\xbe")); // ▾
 

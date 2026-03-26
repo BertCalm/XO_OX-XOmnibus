@@ -47,6 +47,22 @@ public:
             GalleryColors::get(GalleryColors::borderGray()));
         addAndMakeVisible(viewport);
 
+        // ── Persistent settings file — created FIRST so darkModeToggle.onClick
+        // can safely call settingsFile->setValue() without a null deref.
+        {
+            juce::PropertiesFile::Options opts;
+            opts.applicationName     = "XOlokun";
+            opts.filenameSuffix      = "settings";
+            opts.osxLibrarySubFolder = "Application Support";
+            settingsFile = std::make_unique<juce::PropertiesFile>(opts);
+        }
+        // Restore persisted dark mode preference (default false — light mode is brand default).
+        // Note: XOlokunEditor also reads this early in its constructor so that all
+        // setColour() calls during construction use the correct theme.  Both reads
+        // open the same file and produce the same value; the editor's read wins
+        // because it happens first.
+        GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", false);
+
         // ── 1. THEME ─────────────────────────────────────────────────────────
         styleToggle(darkModeToggle, "Dark Mode");
         darkModeToggle.setToggleState(GalleryColors::darkMode(),
@@ -68,22 +84,10 @@ public:
         content.addAndMakeVisible(darkModeToggle);
 
         // ── 2. ACCESSIBILITY ─────────────────────────────────────────────────
+        // Note: getTopLevelComponent() always returns nullptr in the constructor
+        // (the component has not yet been added to the hierarchy).  The theme is
+        // applied in parentHierarchyChanged() below, once the hierarchy exists.
         styleToggle(reducedMotionToggle, "Reduced Motion (WCAG 2.3.3)");
-        // Read stored value (falls back to false if key absent or private browsing).
-        {
-            juce::PropertiesFile::Options opts;
-            opts.applicationName     = "XOlokun";
-            opts.filenameSuffix      = "settings";
-            opts.osxLibrarySubFolder = "Application Support";
-            settingsFile = std::make_unique<juce::PropertiesFile>(opts);
-        }
-        // Restore persisted dark mode preference (default false — light mode is brand default).
-        GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", false);
-        darkModeToggle.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
-        // Re-apply theme after reading persisted preference
-        if (auto* top = getTopLevelComponent())
-            if (auto* galleryLaf = dynamic_cast<GalleryLookAndFeel*>(&top->getLookAndFeel()))
-                galleryLaf->applyTheme();
 
         reducedMotionToggle.setToggleState(
             settingsFile->getBoolValue("reducedMotion", false),

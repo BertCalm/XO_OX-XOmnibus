@@ -783,10 +783,12 @@ public:
             shoreTargets[i] = clamp (shoreTargets[i] + channelLfo * kUserLfoShoreDepth, 0.0f, 4.0f);
         }
 
-        // Setup tavern room
+        // Setup tavern room character — tc is computed here and used after the
+        // aftertouch update below. setCharacter() is called only once, after
+        // effectiveTavern receives its final value from the aftertouch path,
+        // to avoid a redundant std::pow / filter-coefficient calculation per block.
         ShoreMorphState tavernMorph = decomposeShore (pTavernShore);
         TavernCharacter tc = morphTavern (tavernMorph);
-        tavernRoom.setCharacter (tc, effectiveTavern, srf);
 
         // D001: filter envelope — compute peak velocity × ampLevel across active voices.
         // This is the primary mechanism for D001 compliance in Osteria: harder/fresher
@@ -865,6 +867,10 @@ public:
         // (sensitivity 0.25). Full pressure adds up to +0.25 to effectiveTavern, pulling
         // the ensemble deeper into the FDN tavern room — the ensemble absorbs into the pub.
         effectiveTavern = clamp (effectiveTavern + atPressure * 0.25f, 0.0f, 1.0f);
+        // Single setCharacter() call per block — called here with the final effectiveTavern
+        // after all MIDI/aftertouch processing is complete. Calling it earlier (pre-MIDI)
+        // would require a second call here anyway, doubling the std::pow + SVF coefficient
+        // work. tc was computed above; only mix changes via aftertouch. RT-safe: no alloc.
         tavernRoom.setCharacter (tc, effectiveTavern, srf);
 
         float peakEnv = 0.0f;

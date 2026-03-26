@@ -476,6 +476,9 @@ public:
         filter.reset();
         reverb.prepare(sampleRate);
 
+        // SR-dependent smooth coefficient: ~3ms time constant, sample-rate correct
+        cellSmoothCoeff = 1.0f - std::exp(-1.0f / (0.003f * static_cast<float>(sampleRate)));
+
         // Initialise automaton
         caState       = 0x0042u; // default seed=42
         stepCounter   = 0;
@@ -782,13 +785,12 @@ public:
                 }
             }
 
-            // --- Smooth automaton outputs (one-pole ~3ms at 44.1kHz) ---
+            // --- Smooth automaton outputs (one-pole ~3ms, sample-rate correct) ---
             // Prevents clicks from sudden parameter jumps when the automaton steps.
-            constexpr float kSmoothCoeff = 0.005f;
-            cellFilterOut += kSmoothCoeff * (cellFilterTarget - cellFilterOut);
-            cellAmpRate   += kSmoothCoeff * (cellAmpTarget   - cellAmpRate);
-            cellPitchOut  += kSmoothCoeff * (cellPitchTarget  - cellPitchOut);
-            cellFXOut     += kSmoothCoeff * (cellFXTarget     - cellFXOut);
+            cellFilterOut += cellSmoothCoeff * (cellFilterTarget - cellFilterOut);
+            cellAmpRate   += cellSmoothCoeff * (cellAmpTarget   - cellAmpRate);
+            cellPitchOut  += cellSmoothCoeff * (cellPitchTarget  - cellPitchOut);
+            cellFXOut     += cellSmoothCoeff * (cellFXTarget     - cellFXOut);
 
             // --- LFO 1: modulates filter cutoff for additional movement ---
             float lfo1Val = lfo1.process(); // StandardLFO sine [-1, +1]
@@ -972,6 +974,7 @@ private:
     float          cellAmpTarget    = 0.5f;
     float          cellPitchTarget  = 0.f;
     float          cellFXTarget     = 0.5f;
+    float          cellSmoothCoeff  = 0.005f; // SR-dependent; set in prepare()
 
     // LCG for mutation + seeding
     uint32_t rng = 0xDEADBEEFu;

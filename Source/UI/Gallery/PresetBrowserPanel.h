@@ -198,8 +198,8 @@ public:
             for (int i = 0; i < kNumMoods; ++i)
             {
                 // Measure pill width from text
-                int pillW = juce::jmax(32, (int)GalleryFonts::body(9.0f)
-                            .getStringWidthFloat(moodBtns[i].getButtonText()) + 18);
+                int pillW = juce::jmax(32, juce::roundToInt(GalleryFonts::body(9.0f)
+                            .getStringWidthFloat(moodBtns[i].getButtonText())) + 18);
 
                 if (px + pillW > maxX && i > 0)
                 {

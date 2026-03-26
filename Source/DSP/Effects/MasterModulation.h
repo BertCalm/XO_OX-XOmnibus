@@ -10,11 +10,12 @@ namespace xolokun {
 //==============================================================================
 // MasterModulation — Multi-mode modulation processor for the Master FX chain.
 //
-// Four modes:
+// Five modes:
 //   1. Chorus:   Classic 2-voice BBD-style chorus (warm, wide)
 //   2. Flanger:  Short delay + feedback comb filtering (jet-engine sweep)
 //   3. Ensemble: 3-voice phase-offset chorus (Roland Dimension D inspired)
 //   4. Drift:    Random-walk LFO wow/flutter (Chase Bliss Warped Vinyl)
+//   5. Phaser:   6-stage allpass phaser (MXR Phase 90 / Small Stone inspired)
 //
 // Features:
 //   - BBD character: optional bandwidth limiting + subtle noise
@@ -22,8 +23,17 @@ namespace xolokun {
 //   - Denormal protection on all feedback/state
 //   - Zero CPU when depth = 0
 //
+// Phaser design:
+//   - 6 first-order allpass stages per channel
+//   - allpass coefficient 'a' swept by sine LFO between low/high frequency poles
+//   - Feedback from phaser output back to input (resonance / notch depth)
+//   - Stereo: R channel LFO offset by 90° for natural width
+//   - Matched-Z coefficient: a = (tan(pi*fc/sr) - 1) / (tan(pi*fc/sr) + 1)
+//   - Depth parameter controls sweep range width
+//   - Rate parameter is shared with other modes (0.01–15 Hz)
+//
 // Inspired by: Walrus Julia, Chase Bliss Warped Vinyl, OBNE Visitor,
-//              Roland Dimension D
+//              Roland Dimension D, MXR Phase 90, EHX Small Stone
 //==============================================================================
 class MasterModulation
 {
@@ -34,6 +44,7 @@ public:
         Flanger,
         Ensemble,
         Drift,
+        Phaser,
         NumModes
     };
 
@@ -70,6 +81,12 @@ public:
 
         // Random seed from sample rate bits for deterministic-ish behavior
         randState = static_cast<uint32_t> (sr * 1000.0) ^ 0xDEADBEEF;
+
+        // Phaser state reset
+        phaserLfoPhaseL = 0.0f;
+        phaserLfoPhaseR = 0.25f;
+        for (int s = 0; s < kPhaserStages; ++s) { phaserStateL[s] = 0.0f; phaserStateR[s] = 0.0f; }
+        phaserFBL = phaserFBR = 0.0f;
     }
 
     //--------------------------------------------------------------------------
@@ -84,6 +101,14 @@ public:
     void processBlock (float* L, float* R, int numSamples)
     {
         if (maxDelayLen <= 0) return;
+
+        // Phaser mode uses allpass stages, not delay lines — handle separately
+        if (mode == Mode::Phaser)
+        {
+            if (sr <= 0.0) return;  // not prepared
+            processPhaserBlock (L, R, numSamples);
+            return;
+        }
 
         // Determine voice count and delay range based on mode
         int numVoices = 1;
@@ -245,6 +270,17 @@ public:
         bbdLP_L = bbdLP_R = 0.0f;
         driftState = driftTarget = 0.0f;
         driftCounter = 0;
+
+        // Phaser state
+        phaserLfoPhaseL = 0.0f;
+        phaserLfoPhaseR = 0.25f;  // 90° offset for stereo width
+        for (int s = 0; s < kPhaserStages; ++s)
+        {
+            phaserStateL[s] = 0.0f;
+            phaserStateR[s] = 0.0f;
+        }
+        phaserFBL = 0.0f;
+        phaserFBR = 0.0f;
     }
 
 private:
@@ -278,6 +314,106 @@ private:
     }
 
     //--------------------------------------------------------------------------
+    // Phaser mode: 6-stage first-order allpass cascade with feedback.
+    //
+    // Each allpass stage implements the transfer function:
+    //   H(z) = (a + z^-1) / (1 + a * z^-1)
+    //
+    // where 'a' is the allpass coefficient derived from a target frequency fc:
+    //   a = (tan(pi * fc / sr) - 1) / (tan(pi * fc / sr) + 1)
+    //
+    // This matched-Z design keeps the allpass pole/zero pair correctly placed
+    // in the z-plane across all sample rates (44100 / 48000 / 96000 Hz).
+    //
+    // The LFO sweeps fc between fcLow and fcHigh. Depth scales the sweep range
+    // symmetrically around the centre frequency. Feedback (signed, 0..0.85)
+    // controls notch depth: positive feedback deepens notches; negative
+    // feedback inverts the comb for a classic "flanged phaser" character.
+    //
+    // Stereo: L and R share the same LFO frequency but their phase is offset
+    // by 90° so the notch positions diverge slowly, giving natural width.
+    //--------------------------------------------------------------------------
+    void processPhaserBlock (float* L, float* R, int numSamples)
+    {
+        // Frequency sweep bounds (Hz). Centre ~800 Hz, depth widens the sweep.
+        // At depth=0 the coefficient is constant (phaser still colours tone).
+        // At depth=1 the sweep spans fcLow..fcHigh for maximum notch movement.
+        constexpr float fcCentre = 800.0f;
+        constexpr float fcSweepMax = 700.0f;  // max deviation from centre
+
+        const float fcLow  = fcCentre - fcSweepMax * depth;
+        const float fcHigh = fcCentre + fcSweepMax * depth;
+
+        const float srF = static_cast<float> (sr);
+        const float phaseInc = rate / srF;
+
+        // Feedback: scale so 0.85 → ~0.75 internal (leaves headroom)
+        const float fb = feedback * 0.88f;
+
+        for (int i = 0; i < numSamples; ++i)
+        {
+            // Advance LFO phases
+            phaserLfoPhaseL += phaseInc;
+            if (phaserLfoPhaseL >= 1.0f) phaserLfoPhaseL -= 1.0f;
+            phaserLfoPhaseR += phaseInc;
+            if (phaserLfoPhaseR >= 1.0f) phaserLfoPhaseR -= 1.0f;
+
+            // Sine LFO in [0, 1]
+            const float lfoL = fastSin (phaserLfoPhaseL * 6.28318530718f) * 0.5f + 0.5f;
+            const float lfoR = fastSin (phaserLfoPhaseR * 6.28318530718f) * 0.5f + 0.5f;
+
+            // Target allpass frequencies for L and R
+            const float fcL = fcLow + lfoL * (fcHigh - fcLow);
+            const float fcR = fcLow + lfoR * (fcHigh - fcLow);
+
+            // Matched-Z allpass coefficient: a = (tan(pi*fc/sr) - 1) / (tan(pi*fc/sr) + 1)
+            // tan() is expensive; use a fast polynomial approximation valid for fc < sr/4.
+            // For fc in [100, 1500] Hz at sr >= 44100, pi*fc/sr < 0.107 rad, well within
+            // the tan(x) ≈ x + x^3/3 + 2*x^5/15 domain (Maclaurin, < 0.1% for |w| < pi/4).
+            auto allpassCoeff = [&] (float fc) -> float
+            {
+                // Clamp fc to avoid coefficient approaching ±1 (would cause instability)
+                const float fcClamped = clamp (fc, 20.0f, srF * 0.25f);
+                const float w = 3.14159265359f * fcClamped / srF;
+                // tan(w) via fast polynomial (accurate to < 0.1% for w < pi/4)
+                const float w2 = w * w;
+                const float tanW = w * (1.0f + w2 * (0.33333333f + w2 * 0.13333333f));
+                const float denom = tanW + 1.0f;
+                if (denom < 1e-6f) return 0.0f;  // degenerate — treat as flat allpass
+                return clamp((tanW - 1.0f) / denom, -0.9999f, 0.9999f);
+            };
+
+            const float aL = allpassCoeff (fcL);
+            const float aR = allpassCoeff (fcR);
+
+            // --- Process Left channel ---
+            float xL = flushDenormal (L[i] + phaserFBL * fb);
+            // 6 cascaded allpass stages
+            for (int s = 0; s < kPhaserStages; ++s)
+            {
+                const float yn = aL * xL + phaserStateL[s];
+                phaserStateL[s] = flushDenormal (xL - aL * yn);
+                xL = yn;
+            }
+            xL = clamp(xL, -4.0f, 4.0f);  // prevent Inf/NaN from allpass runaway
+            phaserFBL = flushDenormal (xL);
+            L[i] = L[i] * (1.0f - mix) + xL * mix;
+
+            // --- Process Right channel ---
+            float xR = flushDenormal (R[i] + phaserFBR * fb);
+            for (int s = 0; s < kPhaserStages; ++s)
+            {
+                const float yn = aR * xR + phaserStateR[s];
+                phaserStateR[s] = flushDenormal (xR - aR * yn);
+                xR = yn;
+            }
+            xR = clamp(xR, -4.0f, 4.0f);  // prevent Inf/NaN from allpass runaway
+            phaserFBR = flushDenormal (xR);
+            R[i] = R[i] * (1.0f - mix) + xR * mix;
+        }
+    }
+
+    //--------------------------------------------------------------------------
     static constexpr int kMaxVoices = 3;
 
     double sr = 44100.0;
@@ -303,6 +439,15 @@ private:
 
     // PRNG state
     uint32_t randState = 0xDEADBEEF;
+
+    // Phaser mode state
+    static constexpr int kPhaserStages = 6;
+    float phaserLfoPhaseL = 0.0f;
+    float phaserLfoPhaseR = 0.25f;           // 90° offset for stereo width
+    float phaserStateL[kPhaserStages] {};    // allpass z^-1 state, L
+    float phaserStateR[kPhaserStages] {};    // allpass z^-1 state, R
+    float phaserFBL = 0.0f;                  // feedback sample, L
+    float phaserFBR = 0.0f;                  // feedback sample, R
 
     // Parameters
     Mode mode = Mode::Chorus;
