@@ -53,6 +53,7 @@ settings:
       - -framework SpriteKit
       - -framework Metal
       - -framework Accelerate
+      - -framework WeatherKit
 
 targets:
   ObrixPocket:

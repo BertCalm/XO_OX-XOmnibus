@@ -10,6 +10,7 @@ final class AudioEngineManager: ObservableObject {
     @Published var hasPlayedFirstNote = false
 
     private var audioSessionConfigured = false
+    private let midiOutput = MIDIOutputManager()
 
     init() {
         configureAudioSession()
@@ -34,6 +35,7 @@ final class AudioEngineManager: ObservableObject {
         // Map slot index to MIDI note: C3 + slot index (gives C3-D#4 for 16 slots)
         let note = 60 + slotIndex
         ObrixBridge.shared.noteOn(Int32(note), velocity: velocity)
+        midiOutput.sendNoteOn(note: UInt8(note), velocity: UInt8(velocity * 127), channel: UInt8(slotIndex % 16))
         if !hasPlayedFirstNote {
             hasPlayedFirstNote = true
         }
@@ -42,6 +44,7 @@ final class AudioEngineManager: ObservableObject {
     func noteOff(slotIndex: Int) {
         let note = 60 + slotIndex
         ObrixBridge.shared.noteOff(Int32(note))
+        midiOutput.sendNoteOff(note: UInt8(note), channel: UInt8(slotIndex % 16))
     }
 
     func allNotesOff() {
