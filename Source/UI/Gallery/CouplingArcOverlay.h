@@ -34,6 +34,22 @@ namespace xolokun {
 //   glowAlpha = 0.45 + 0.25 * sin(pulsePhase)  → range [0.20, 0.70]
 //   pulsePhase advances 0.08 rad / timer tick (≈ 2.4 rad/s, ≈ 0.38 Hz)
 //
+// Coupling Currents (Vision Quest 015):
+//   Each active arc also renders NumParticlesPerArc animated dots flowing
+//   along the Bézier path from source to destination.
+//
+//   FlowParticle.t ∈ [0, 1) tracks position along the path.
+//   Speed scales with coupling amount: speed = 0.005 + amount * 0.03
+//     → Low coupling:  lazy drift  (~0.005 / tick)
+//     → High coupling: rapid flow  (~0.035 / tick at amount=1)
+//
+//   Render per particle:
+//     Glow pass:  8px circle, arcColor @ 0.30 * particle.alpha
+//     Core pass:  3–5px circle (lerped by t), arcColor @ particle.alpha
+//
+//   Particles are initialised once per arc slot with evenly-spaced t values
+//   and re-initialised whenever a previously-inactive arc becomes active.
+//
 class CouplingArcOverlay : public juce::Component, private juce::Timer
 {
 public:
@@ -189,13 +205,87 @@ public:
             // Pass 2: bright animated core
             g.setColour(arcColor.withAlpha(glowAlpha));
             g.strokePath(arc, juce::PathStrokeType(2.0f));
+
+            // ----------------------------------------------------------------
+            // Coupling Currents — particle flow (Vision Quest 015)
+            // ----------------------------------------------------------------
+
+            // Lazily initialise particles for this arc slot when first activated
+            // or when the slot was previously unused (all t values are 0 together,
+            // which would cluster every particle at the source — spread them out).
+            auto& particles = flowParticles[static_cast<size_t>(k)];
+            if (!particleInitialised[static_cast<size_t>(k)])
+            {
+                for (int p = 0; p < NumParticlesPerArc; ++p)
+                {
+                    particles[static_cast<size_t>(p)].t     = static_cast<float>(p) / static_cast<float>(NumParticlesPerArc);
+                    particles[static_cast<size_t>(p)].alpha = 0.6f;
+                }
+                particleInitialised[static_cast<size_t>(k)] = true;
+            }
+
+            // Speed scales with coupling amount so high-coupling feels energetic.
+            const float speed = 0.005f + ai.amount * 0.03f;
+
+            // Pre-compute arc path length for getPointAlongPath() calls.
+            const float arcLength = arc.getLength();
+
+            for (int p = 0; p < NumParticlesPerArc; ++p)
+            {
+                auto& particle = particles[static_cast<size_t>(p)];
+
+                // Advance position and wrap
+                particle.t += speed;
+                if (particle.t >= 1.0f)
+                    particle.t -= 1.0f;
+
+                // Evaluate position on the Bézier path via JUCE's arc-length
+                // parameterisation (t=0 → source, t=1 → destination).
+                const float distAlongPath = particle.t * arcLength;
+                const auto  pos = arc.getPointAlongPath(distAlongPath);
+
+                // Particle diameter interpolates from 3px (near source) to 5px
+                // (near destination) to indicate flow direction.
+                const float diameter = 3.0f + particle.t * 2.0f;
+                const float radius   = diameter * 0.5f;
+
+                // Glow pass: larger halo at 30% of particle alpha
+                g.setColour(arcColor.withAlpha(particle.alpha * 0.30f));
+                g.fillEllipse(pos.x - 4.0f, pos.y - 4.0f, 8.0f, 8.0f);
+
+                // Core dot pass: solid filled circle
+                g.setColour(arcColor.withAlpha(particle.alpha));
+                g.fillEllipse(pos.x - radius, pos.y - radius, diameter, diameter);
+            }
         }
+
+        // Clear initialisation flags for arc slots that were not active this frame
+        // so their particles will be re-spread when the route re-activates later.
+        for (int k = arcCount; k < MaxArcSlots; ++k)
+            particleInitialised[static_cast<size_t>(k)] = false;
     }
 
 private:
+    // -------------------------------------------------------------------------
+    // FlowParticle — one animated dot travelling along a coupling arc
+    // -------------------------------------------------------------------------
+    struct FlowParticle
+    {
+        float t     = 0.0f; // normalised position along path: 0 = source, 1 = dest
+        float alpha = 0.6f; // particle opacity (fixed; could be modulated in future)
+    };
+
+    static constexpr int NumParticlesPerArc = 12; // particles per unique arc pair
+    static constexpr int MaxArcSlots        = 12; // must match arcMap / arcPairs size
+
     XOlokunProcessor& processor;
     std::array<juce::Point<float>, MegaCouplingMatrix::MaxSlots> tileCenters {};
-    float pulsePhase[12] {}; // one phase accumulator per unique arc pair (max 6 pairs, 12 for safety)
+    float pulsePhase[MaxArcSlots] {}; // one phase accumulator per unique arc pair
+
+    // Particle state — indexed [arcSlot][particleIndex]
+    std::array<std::array<FlowParticle, NumParticlesPerArc>, MaxArcSlots> flowParticles {};
+    bool particleInitialised[MaxArcSlots] {}; // false → spread particles evenly on next paint
+
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes; // P26: populated in timerCallback()
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingArcOverlay)
