@@ -455,6 +455,7 @@ add_executable(XOlokunTests
     Tests/PresetTests/PresetRoundTripTests.cpp
     Tests/ExportTests/XPNExportTests.cpp
     Tests/DoctrineTests/DoctrineTests.cpp
+    Tests/PlaySurfaceTests/HarmonicFieldTests.cpp
 )
 
 # FamilyWaveguideTest is a standalone executable (has its own main())
