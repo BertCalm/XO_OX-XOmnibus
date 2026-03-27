@@ -489,6 +489,25 @@ public:
         // Note: Dark::bg is #0E0E10 (shell); body is one level darker.
         g.fillAll(juce::Colour(0xFF080809)); // body bg — below shell layer
 
+        // ── Plugin shell — rounded rect with depth shadow ────────────────────
+        // Leave 4px on each edge for shadow bleed. Shadow layers painted BEFORE shell.
+        auto shellBounds = getLocalBounds().toFloat().reduced(4.0f);
+
+        // Shadow layer 1 — widest, lowest alpha
+        g.setColour(juce::Colour(0x66000000)); // ~40% black
+        g.fillRoundedRectangle(shellBounds.expanded(3.0f), 14.0f);
+        // Shadow layer 2 — tighter
+        g.setColour(juce::Colour(0x33000000)); // ~20% black
+        g.fillRoundedRectangle(shellBounds.expanded(1.5f), 13.0f);
+
+        // Shell fill — Dark::bg (#0E0E10)
+        g.setColour(juce::Colour(Dark::bg));
+        g.fillRoundedRectangle(shellBounds, 12.0f);
+
+        // Shell border — 1px subtle highlight
+        g.setColour(juce::Colour(0x0EFFFFFF));
+        g.drawRoundedRectangle(shellBounds, 12.0f, 1.0f);
+
         const int headerH = ColumnLayoutManager::kHeaderH;
 
         // ── Header area — surface layer, 52px nominal height ─────────────────
@@ -503,20 +522,27 @@ public:
         g.fillRect(header.getX(), header.getBottom() - 1.0f, header.getWidth(), 1.0f);
 
         // ── XO_OX Dual-Circle Logo Mark (30×30px) ───────────────────────────
-        // Left circle: engine accent (#1E8B7E Reef Jade), Right circle: XO Gold (#E9C46A)
-        // Overlap by ~6px; right circle offset 12px right from left circle origin
+        // Two stroke rings with filled center dots; overlap ~8px horizontally.
+        // Left circle: Reef Jade (#1E8B7E), Right circle: XO Gold (#E9C46A)
         {
-            const int logoX = 14;
-            const int logoY = (headerH - 18) / 2;   // vertically centred in 52px header
-            const float circR = 9.0f;               // radius = 18px diameter / 2
+            const float circR    = 7.0f;            // ring radius
+            const float dotR     = 2.5f;            // center dot radius
+            const float strokeW  = 1.5f;            // ring stroke width
+            const float cx1      = 14.0f + circR;   // center x of left circle
+            const float cx2      = cx1 + 8.0f;      // center x of right circle (offset 8px)
+            const float cy       = (float)(headerH / 2);  // vertically centred in header
 
-            // Left circle — Reef Jade accent at 0.85 alpha
+            // Left ring — Reef Jade stroke
             g.setColour(juce::Colour(0xFF1E8B7E).withAlpha(0.85f));
-            g.fillEllipse((float)logoX, (float)logoY, circR * 2.0f, circR * 2.0f);
+            g.drawEllipse(cx1 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
+            // Left center dot
+            g.fillEllipse(cx1 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
 
-            // Right circle — XO Gold at 0.85 alpha (offset 12px right)
+            // Right ring — XO Gold stroke
             g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.85f));
-            g.fillEllipse((float)(logoX + 12), (float)logoY, circR * 2.0f, circR * 2.0f);
+            g.drawEllipse(cx2 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
+            // Right center dot
+            g.fillEllipse(cx2 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
         }
 
         // Engine name — T1 text, vertically stacked in 52px header (shifted right by 34px)

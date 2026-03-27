@@ -254,7 +254,14 @@ public:
         }
 
         using namespace GalleryColors;
-        auto b = getLocalBounds().toFloat().reduced(3.0f, 2.0f);
+        // P0-5: asymmetric padding — 9px top, 11px right, 8px bottom, 14px left
+        auto content = getLocalBounds().toFloat();
+        content.removeFromTop(9.0f);
+        content.removeFromRight(11.0f);
+        content.removeFromBottom(8.0f);
+        content.removeFromLeft(14.0f);
+        // Keep b as a reduced rect for border / background (uses full local bounds)
+        auto b = getLocalBounds().toFloat().reduced(1.0f, 0.0f);
         bool hovered = isMouseOver();
 
         // ── Tile background ── prototype: rgba(255,255,255,0.04) active, transparent inactive
@@ -290,8 +297,8 @@ public:
             return;
         }
 
-        // ── Mute toggle — top-left corner, 4pt margin ─────────────────────
-        paintMuteToggle(g, b);
+        // ── Mute toggle — placed inside content area (left side, after padding) ─
+        paintMuteToggle(g, content);
 
         if (hasEngine)
         {
@@ -306,11 +313,10 @@ public:
             float ringStroke = 1.0f  + voiceDensity * 1.0f;
             float stripAlpha = 0.38f + voiceDensity * 0.50f;
 
-            // ── Left accent bar — 3px wide, engine accent color, rounded right edge ─
-            // Prototype: 3px wide, border-radius 0 2px 2px 0 on the right side
-            float stripX = b.getX() + 24.0f + 1.5f;
-            float stripH = b.getHeight() * 0.80f; // taller for more presence
-            float stripY = b.getCentreY() - stripH * 0.5f;
+            // P0-6: left accent bar flush to absolute left edge (x=0), full tile height
+            float stripX = 0.0f;
+            float stripH = (float)getHeight();
+            float stripY = 0.0f;
             g.setColour(accent.withAlpha(stripAlpha));
             g.fillRoundedRectangle(stripX, stripY, 3.0f, stripH, 1.5f);
 
@@ -322,15 +328,17 @@ public:
                 {
                     float glowAlpha = (0.12f / (float)gx) * (stripAlpha * 1.4f);
                     g.setColour(accent.withAlpha(juce::jmin(glowAlpha, 0.18f)));
-                    g.fillRoundedRectangle(stripX - (float)gx, stripY - 1.0f,
+                    g.fillRoundedRectangle(stripX, stripY - 1.0f,
                                            3.0f + (float)(gx * 2), stripH + 2.0f, 2.0f);
                 }
             }
 
             // ── Porthole circle — 8pt right of the strip ──────────────────
             const float porW = 30.0f;
-            float porCx = stripX + 3.0f + 8.0f + porW * 0.5f;
-            float porCy = b.getCentreY();
+            // Porthole positioned relative to content area (after 14px left padding)
+            // Strip is at x=0 (3px wide); porthole 8px right of strip within content
+            float porCx = content.getX() + 8.0f + porW * 0.5f;
+            float porCy = content.getCentreY();
             float porR  = porW * 0.5f;
 
             g.setColour(accent.withAlpha(fillAlpha));
@@ -390,13 +398,13 @@ public:
             //            engine accent color, letter-spacing ~1.5px
             float nameX = porCx + porR + 7.0f;
             // Reserve 24pt on right for voice dots; leave room for bars/dots below
-            float nameW = b.getRight() - 24.0f - nameX - 4.0f;
+            float nameW = content.getRight() - 24.0f - nameX - 4.0f;
             g.setFont(GalleryFonts::display(11.0f)); // Space Grotesk Bold for weight
             // Always use accent color for engine name (prototype spec)
             g.setColour(hasEngine ? accent : GalleryColors::get(GalleryColors::t4())); // T4 when empty
-            // Name draws in the upper portion of the tile
-            float nameH = b.getHeight() * 0.40f;
-            float nameY = b.getY();
+            // Name draws in the upper portion of the content area
+            float nameH = content.getHeight() * 0.40f;
+            float nameY = content.getY();
             g.drawText(engineId.toUpperCase(),
                        (int)nameX, (int)nameY, (int)nameW, (int)nameH,
                        juce::Justification::centredLeft);
@@ -408,12 +416,12 @@ public:
             float dotsY = nameY + nameH + 2.0f + 4 * 5.0f + 2.0f; // below bars
             paintCouplingDots(g, nameX, dotsY);
 
-            // ── Voice activity dots — right edge ───────────────────────────
+            // ── Voice activity dots — right edge of content area ──────────
             if (voiceCount > 0)
             {
                 const float dotR = 2.5f, dotSpacing = 5.5f;
-                float dotX = b.getRight() - 7.0f;
-                float dotY = b.getCentreY() - dotR;
+                float dotX = content.getRight() - 7.0f;
+                float dotY = content.getCentreY() - dotR;
                 int maxDots = std::min(voiceCount, 4);
                 for (int d = 0; d < maxDots; ++d)
                 {
@@ -426,20 +434,45 @@ public:
         }
         else
         {
-            // Empty slot — dashed border + "+" affordance
-            // Prototype: 1px dashed rgba(255,255,255,0.11) border, "+" text T4
-            // P8 fix: use cachedDashedPath built once in resized() instead of
-            // recreating it (createDashedStroke allocates) on every paint call.
-            juce::Colour dashCol(0x1CFFFFFF); // rgba(255,255,255,0.11)
-            g.setColour(dashCol);
-            g.strokePath(cachedDashedPath, juce::PathStrokeType(1.0f));
+            // P0-11: Empty slot — 28×28 dashed rounded rect centered, "+" inside,
+            // "Add engine" label below. T4 color throughout.
+            juce::Colour t4col = GalleryColors::get(GalleryColors::t4());
 
-            // "+" icon center
-            float cx = b.getCentreX(), cy = b.getCentreY();
-            float armLen = 6.0f, armW = 1.5f;
-            g.setColour(GalleryColors::get(GalleryColors::t4())); // T4 text
-            g.fillRoundedRectangle(cx - armLen, cy - armW * 0.5f, armLen * 2.0f, armW, armW * 0.5f);
-            g.fillRoundedRectangle(cx - armW * 0.5f, cy - armLen, armW, armLen * 2.0f, armW * 0.5f);
+            // Center of the full tile for the "+" button
+            float tileCx = (float)getWidth() * 0.5f;
+            float tileCy = (float)getHeight() * 0.5f;
+
+            // 28×28 rounded rect (6px radius) centered in tile
+            const float btnW = 28.0f, btnH = 28.0f, btnR = 6.0f;
+            float btnX = tileCx - btnW * 0.5f;
+            float btnY = tileCy - btnH * 0.5f - 7.0f; // shift up slightly to leave room for label
+
+            // Dashed border: build a dashed stroke around the rounded rect
+            // P8 cachedDashedPath covers the full tile outline — draw separate path here
+            {
+                juce::Path btnRect;
+                btnRect.addRoundedRectangle(btnX, btnY, btnW, btnH, btnR);
+                juce::PathStrokeType stroke(1.0f);
+                float dashPattern[] = { 4.0f, 3.0f };
+                juce::Path dashedBtn;
+                stroke.createDashedStroke(dashedBtn, btnRect, dashPattern, 2);
+                g.setColour(t4col.withAlpha(0.70f));
+                g.strokePath(dashedBtn, juce::PathStrokeType(1.0f));
+            }
+
+            // "+" character centered inside the rounded rect (16px, T4)
+            g.setFont(GalleryFonts::body(16.0f));
+            g.setColour(t4col);
+            g.drawText("+", (int)btnX, (int)btnY, (int)btnW, (int)btnH,
+                       juce::Justification::centred);
+
+            // "Add engine" label below the button (10px Inter/body, T4)
+            g.setFont(GalleryFonts::body(10.0f));
+            g.setColour(t4col.withAlpha(0.70f));
+            float labelY = btnY + btnH + 4.0f;
+            g.drawText("Add engine",
+                       (int)(tileCx - 40.0f), (int)labelY, 80, 14,
+                       juce::Justification::centred);
         }
 
         // Focus ring (WCAG 2.4.7)
@@ -449,25 +482,26 @@ public:
 
     void resized() override
     {
-        // MiniWaveform: 32×16pt, positioned below engine name in center section.
-        // Center section starts after 24pt toggle zone + 4pt strip + 38pt porthole.
-        // Place waveform in bottom-center of the content area (right of porthole).
-        auto b = getLocalBounds().reduced(3, 2);
+        // P0-5: asymmetric padding — 9px top, 11px right, 8px bottom, 14px left
+        auto content = getLocalBounds();
+        content.removeFromTop(9);
+        content.removeFromRight(11);
+        content.removeFromBottom(8);
+        content.removeFromLeft(14);
 
-        // The strip is at b.getX()+24+1.5, porthole right edge is at:
-        //   stripX + 3 + 8 + 30 = b.getX() + 24 + 1.5 + 3 + 8 + 30 = b.getX() + 66.5
-        // Content right is b.getRight() - 24 (voice dots zone).
-        // Place miniWave at bottom of content zone, left-aligned after porthole.
-        int contentLeft = b.getX() + 68; // right of porthole
+        // MiniWaveform: 40×16pt, placed at the bottom of the content area after the porthole.
+        // Porthole center is at content.getX() + 8 + 15 = content.getX() + 23.
+        // Porthole right edge is at content.getX() + 23 + 15 = content.getX() + 38.
+        int contentLeft = content.getX() + 38 + 7; // 7px gap after porthole right edge
         int waveW = 40, waveH = 16;
         int waveX = contentLeft;
-        int waveY = b.getBottom() - waveH - 2;
+        int waveY = content.getBottom() - waveH;
         miniWave.setBounds(waveX, waveY, waveW, waveH);
 
-        // P8 fix: pre-compute the dashed border path for empty slots here so
+        // P8 fix: pre-compute the dashed border path for empty slots (tile outline)
         // paint() can blit it cheaply without calling createDashedStroke every frame.
         {
-            auto bf = b.toFloat();
+            auto bf = getLocalBounds().toFloat().reduced(1.0f, 0.0f);
             const float dashLen = 6.0f, gap = 4.0f, radius = 4.0f;
             juce::Path roundRect;
             roundRect.addRoundedRectangle(bf, radius);
@@ -613,22 +647,23 @@ public:
 private:
     // ── Mute toggle geometry ─────────────────────────────────────────────────
     // Hit area: 24×24pt, centered on the 16×16pt paint circle.
-    // Paint circle: 16×16pt, centered within the 24×24 hit rect.
+    // Paint circle: 16×16pt, centered within the content area (after asymmetric padding).
+    // P0-5: content starts at x=14, y=9, so toggle cx = 14 + 4 + 8 = 26.
     juce::Rectangle<int> getMuteToggleBounds() const
     {
-        auto b = getLocalBounds().reduced(3, 2);
-        // Center of the 16×16 paint circle: x = b.getX()+4+8, y = b.getCentreY()
-        int cx = b.getX() + 4 + 8;
-        int cy = b.getCentreY();
+        // content.getX() = 14, toggle center x = 14 + 4 + 8 = 26
+        // content centre y = getHeight()/2 (roughly — ignore top/bottom asymmetry for hit test)
+        int cx = 14 + 4 + 8;
+        int cy = getHeight() / 2;
         return { cx - 12, cy - 12, 24, 24 };
     }
 
-    void paintMuteToggle(juce::Graphics& g, juce::Rectangle<float> tileBounds) const
+    void paintMuteToggle(juce::Graphics& g, juce::Rectangle<float> contentBounds) const
     {
-        // Paint a 16×16pt circle centered within the 24×24 hit area.
-        // Hit area center: x = tileBounds.getX()+4+8, y = tileBounds.getCentreY()
-        float cx = tileBounds.getX() + 4.0f + 8.0f;
-        float cy = tileBounds.getCentreY();
+        // Paint a 16×16pt circle at left side of content area.
+        // Center: x = contentBounds.getX()+4+8, y = contentBounds.getCentreY()
+        float cx = contentBounds.getX() + 4.0f + 8.0f;
+        float cy = contentBounds.getCentreY();
         float tw = 16.0f, th = 16.0f;
         float tx = cx - 8.0f;
         float ty = cy - 8.0f;

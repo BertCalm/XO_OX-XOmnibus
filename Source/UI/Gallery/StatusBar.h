@@ -101,10 +101,10 @@ public:
         // ── Trigger pad buttons ───────────────────────────────────────────────
         // Prototype: elevated bg, border at 7%, 3px radius
 
-        // FIRE button style — accent tint (XO Gold)
+        // FIRE button style — teal accent-bright (rgba 30,139,126 @ 70%)
         fireBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        fireBtn.setColour(juce::TextButton::buttonOnColourId, get(xoGold).withAlpha(0.85f));
-        fireBtn.setColour(juce::TextButton::textColourOffId,  get(xoGold));
+        fireBtn.setColour(juce::TextButton::buttonOnColourId, juce::Colour(30, 139, 126).withAlpha(0.85f));
+        fireBtn.setColour(juce::TextButton::textColourOffId,  juce::Colour(30, 139, 126).withAlpha(0.70f));
         fireBtn.setColour(juce::TextButton::textColourOnId,   get(surface()));
 
         // XOSEND button — T3 text default, T1 on active
@@ -185,19 +185,19 @@ public:
 
         // ── Slot dots (right side, before lock button) — paint() is READ-ONLY ──
         // Prototype: 7×7px dots, T4 default, accent when active with 0 0 5px glow
-        const int dotR       = 4; // 7px diameter = radius 3.5, use 4 for clickability
-        const int dotDia     = dotR * 2;
-        const int dotSpacing = 4;
-        const int dotsWidth  = kNumSlots * dotDia + (kNumSlots - 1) * dotSpacing;
+        const float dotR       = 3.5f; // 7px diameter
+        const float dotDia     = dotR * 2.0f;
+        const int   dotSpacing = 4;
+        const int   dotsWidth  = juce::roundToInt((float)kNumSlots * dotDia) + (kNumSlots - 1) * dotSpacing;
         const int lockW      = 22;
         const int lockPad    = 6;
         int dotsRight = getWidth() - lockPad - lockW - lockPad - 2;
         int dotsLeft  = dotsRight - dotsWidth;
-        int dotY      = getHeight() / 2;
+        float dotY    = (float)(getHeight() / 2);
 
         for (int i = 0; i < kNumSlots; ++i)
         {
-            int cx = dotsLeft + i * (dotDia + dotSpacing) + dotR;
+            float cx = (float)dotsLeft + (float)i * (dotDia + (float)dotSpacing) + dotR;
 
             if (slotActive[i])
             {
@@ -208,23 +208,21 @@ public:
                 {
                     float glowAlpha = 0.08f / (float)gx;
                     g.setColour(ac.withAlpha(glowAlpha));
-                    float gR = (float)(dotR + gx);
-                    g.fillEllipse((float)(cx - dotR) - (float)gx,
-                                  (float)(dotY - dotR) - (float)gx,
-                                  (float)dotDia + (float)(gx * 2),
-                                  (float)dotDia + (float)(gx * 2));
+                    float expand = (float)gx;
+                    g.fillEllipse(cx - dotR - expand,
+                                  dotY - dotR - expand,
+                                  dotDia + expand * 2.0f,
+                                  dotDia + expand * 2.0f);
                 }
                 // Core dot
                 g.setColour(ac);
-                g.fillEllipse((float)(cx - dotR), (float)(dotY - dotR),
-                              (float)dotDia, (float)dotDia);
+                g.fillEllipse(cx - dotR, dotY - dotR, dotDia, dotDia);
             }
             else
             {
                 // Inactive: T4 color (GalleryColors::t4())
                 g.setColour(get(t4()));
-                g.fillEllipse((float)(cx - dotR), (float)(dotY - dotR),
-                              (float)dotDia, (float)dotDia);
+                g.fillEllipse(cx - dotR, dotY - dotR, dotDia, dotDia);
             }
         }
 
