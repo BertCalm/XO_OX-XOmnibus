@@ -45,6 +45,20 @@
 #include "HarmonicField.h"
 #include "GestureTrailBuffer.h"
 
+#if JUCE_MAC
+#include <CoreFoundation/CoreFoundation.h>  // CFPreferencesGetAppBooleanValue
+#endif
+
+#if JUCE_IOS
+// Forward declaration of the Objective-C++ bridge for UIAccessibility.isReduceMotionEnabled.
+// Implemented in HapticEngine_iOS.mm; also forward-declared in GalleryColors.h.
+// Duplicated here so XOuijaPanel.h can call syncReducedMotionFromSystem() without
+// requiring a full GalleryColors.h include.
+namespace xolokun::a11y_platform {
+    bool isReduceMotionEnabled();
+}
+#endif
+
 namespace xolokun {
 
 //==============================================================================
@@ -402,9 +416,10 @@ private:
     bool          driftEnabled_;
     juce::String  displayText_;
 
-    // WCAG Fix 3: reduced motion path — when true, skip Lissajous drift animation.
-    // TODO: wire to macOS NSWorkspace.accessibilityDisplayShouldReduceMotion via
-    //       an NSApplicationDelegate callback. Currently opt-in only via setReducedMotion().
+    // WCAG Fix 3 (RESOLVED): reduced motion path — when true, skip Lissajous drift animation.
+    // Initialised via XOuijaPanel::syncReducedMotionFromSystem() on construction.
+    // macOS: reads CFPreferences "reduceMotion" / "com.apple.universalaccess" (pure C).
+    // iOS:   reads UIAccessibilityIsReduceMotionEnabled() via HapticEngine_iOS.mm bridge.
     bool          reducedMotion_ = false;
 
     // Cached font — initialized in constructor, avoids per-paint construction
@@ -763,8 +778,16 @@ public:
             repaint();
         };
 
-        // Wire default XOuija button bank
-        setupDefaultButtonBank();
+        // Wire all four gesture button banks (XOuija active by default)
+        setupDefaultButtonBank();      // Bank 0: FREEZE / HOME / DRIFT
+        setupDubButtonBank();          // Bank 1: LOOP / MUTE / RESET
+        setupCouplingButtonBank();     // Bank 2: BOOST / INVERT / CLEAR
+        setupPerformanceButtonBank();  // Bank 3: PANIC / LATCH / BYPASS
+
+        // WCAG Fix 3 (resolved): sync reduced-motion flag from system accessibility
+        // setting so the planchette skips Lissajous drift when the user has enabled
+        // Settings > Accessibility > Reduce Motion.
+        syncReducedMotionFromSystem();
 
         setWantsKeyboardFocus (true);
 
@@ -825,6 +848,51 @@ public:
     }
 
     juce::Colour getAccentColour() const noexcept { return accentColour_; }
+
+    /** Switch the GestureButtonBar to a named bank and load its button definitions.
+        Banks:
+          XOuija     — FREEZE / HOME / DRIFT  (XOuija-specific; default)
+          Dub        — LOOP / MUTE / RESET    (DubSpace strip mode helpers)
+          Coupling   — BOOST / INVERT / CLEAR (Coupling strip mode helpers)
+          Performance— PANIC / LATCH / BYPASS (global performance emergencies)
+        Respects the GestureButtonBar's bank-lock pin: if locked, this is a no-op. */
+    void activateGestureBank (GestureButtonBar::Bank bank)
+    {
+        switchGestureBank (bank);
+    }
+
+    /** Propagate a reduced-motion preference to the planchette's animation path.
+        Call this once after construction (and again if the system setting changes).
+        Reads the system "Reduce Motion" accessibility setting when no argument is
+        supplied — macOS: CFPreferences "reduceMotion" / com.apple.universalaccess;
+        iOS: wired via A11y::prefersReducedMotion() in GalleryColors.h. */
+    void setReducedMotion (bool on)
+    {
+        planchette_.setReducedMotion (on);
+    }
+
+    /** Query the OS and update the planchette's reduced-motion flag accordingly.
+        Safe to call at construction time — uses only pure C (CFPreferences on
+        macOS) or returns false on unsupported platforms. */
+    void syncReducedMotionFromSystem()
+    {
+#if JUCE_MAC
+        Boolean keyExists = false;
+        Boolean val = CFPreferencesGetAppBooleanValue (
+            CFSTR ("reduceMotion"),
+            CFSTR ("com.apple.universalaccess"),
+            &keyExists);
+        planchette_.setReducedMotion (keyExists && static_cast<bool> (val));
+#else
+        // iOS: call through the ObjC++ bridge declared in GalleryColors.h and
+        // implemented in HapticEngine_iOS.mm. On all other non-Mac platforms, default false.
+#if JUCE_IOS
+        planchette_.setReducedMotion (xolokun::a11y_platform::isReduceMotionEnabled());
+#else
+        planchette_.setReducedMotion (false);
+#endif
+#endif
+    }
 
     /** Drive circleX from an external source (e.g. incoming CC 85). */
     void setCirclePosition (float x)
@@ -996,6 +1064,23 @@ private:
     // Task 7 — Gesture button bar and GOODBYE button
     GestureButtonBar   gestureButtons_;
     GoodbyeButton      goodbyeButton_;
+
+    // Per-bank button definitions: indexed by GestureButtonBar::Bank enum.
+    // Populated in setupDefaultButtonBank() / setupDubButtonBank() /
+    // setupCouplingButtonBank() / setupPerformanceButtonBank().
+    // Active bank is loaded into gestureButtons_ by switchGestureBank().
+    std::array<std::array<GestureButtonBar::ButtonDef, 3>, 4> bankDefs_;
+
+    // Stateful toggle flags for Dub bank buttons
+    bool dubLoopActive_   = false;
+    bool dubMuteActive_   = false;
+
+    // Stateful toggle flags for Coupling bank buttons
+    bool couplingInverted_ = false;
+
+    // Stateful toggle flags for Performance bank buttons
+    bool perfLatchActive_  = false;
+    bool perfBypassActive_ = false;
 
     // ── Cached marker fonts (Fix #10: avoid per-paint Font construction) ─────
     // 4 size brackets corresponding to HarmonicField::markerProperties() output:
@@ -1273,11 +1358,25 @@ private:
     }
 
     //==========================================================================
+    // switchGestureBank — load per-bank button defs into the GestureButtonBar.
+    // Respects the GestureButtonBar lock pin: if locked, this is a no-op.
+    //==========================================================================
+    void switchGestureBank (GestureButtonBar::Bank bank)
+    {
+        if (gestureButtons_.isBankLocked())
+            return;  // Lock pin engaged — don't change the active bank or buttons
+
+        gestureButtons_.setBank (bank);
+        gestureButtons_.setButtons (bankDefs_[static_cast<std::size_t> (bank)]);
+    }
+
+    //==========================================================================
     // Setup default XOuija button bank (FREEZE / HOME / DRIFT)
     //==========================================================================
     void setupDefaultButtonBank()
     {
-        std::array<GestureButtonBar::ButtonDef, 3> defs;
+        std::array<GestureButtonBar::ButtonDef, 3>& defs =
+            bankDefs_[static_cast<std::size_t> (GestureButtonBar::Bank::XOuija)];
 
         // Slot 0: FREEZE (F) — toggle trail freeze/unfreeze + CC 88
         defs[0].label       = "FREEZE [F]";
@@ -1327,7 +1426,133 @@ private:
             if (onCCOutput) onCCOutput (90, newState ? 127 : 0);
         };
 
+        // Load XOuija bank as the initial active bank
         gestureButtons_.setButtons (defs);
+    }
+
+    //==========================================================================
+    // Setup Dub button bank — DUB LOOP / MUTE / RESET
+    // These are live dub-space performance actions that fire CC 91-93.
+    //   CC 91: DUB LOOP toggle (0=off, 127=on)
+    //   CC 92: DUB MUTE toggle (0=unmuted, 127=muted)
+    //   CC 93: DUB RESET (momentary 127 pulse)
+    //==========================================================================
+    void setupDubButtonBank()
+    {
+        std::array<GestureButtonBar::ButtonDef, 3>& defs =
+            bankDefs_[static_cast<std::size_t> (GestureButtonBar::Bank::Dub)];
+
+        // Slot 0: LOOP (L) — toggle delay loop capture in DubSpace strip mode
+        defs[0].label       = "LOOP [L]";
+        defs[0].shortcutKey = 'L';
+        defs[0].action      = [this]()
+        {
+            dubLoopActive_ = !dubLoopActive_;
+            if (onCCOutput) onCCOutput (91, dubLoopActive_ ? 127 : 0);
+        };
+
+        // Slot 1: MUTE (M) — mute DubSpace XY output (hold to momentary mute)
+        defs[1].label       = "MUTE [M]";
+        defs[1].shortcutKey = 'M';
+        defs[1].action      = [this]()
+        {
+            dubMuteActive_ = !dubMuteActive_;
+            if (onCCOutput) onCCOutput (92, dubMuteActive_ ? 127 : 0);
+        };
+
+        // Slot 2: RESET (R) — send CC 93 momentary pulse to reset dub state
+        defs[2].label       = "RESET [R]";
+        defs[2].shortcutKey = 'R';
+        defs[2].action      = [this]()
+        {
+            dubLoopActive_ = false;
+            dubMuteActive_ = false;
+            if (onCCOutput) onCCOutput (93, 127);
+        };
+    }
+
+    //==========================================================================
+    // Setup Coupling button bank — BOOST / INVERT / CLEAR
+    // Controls the coupling influence surface while in Coupling strip mode.
+    //   CC 94: BOOST — push coupling depth to maximum for one bar
+    //   CC 95: INVERT — invert coupling polarity (CC value: 0=normal, 127=inverted)
+    //   CC 96: CLEAR — momentary: clear all active coupling routes
+    //==========================================================================
+    void setupCouplingButtonBank()
+    {
+        std::array<GestureButtonBar::ButtonDef, 3>& defs =
+            bankDefs_[static_cast<std::size_t> (GestureButtonBar::Bank::Coupling)];
+
+        // Slot 0: BOOST (B) — momentary coupling depth surge (CC 94 pulse)
+        defs[0].label       = "BOOST [B]";
+        defs[0].shortcutKey = 'B';
+        defs[0].action      = [this]()
+        {
+            if (onCCOutput) onCCOutput (94, 127);
+        };
+
+        // Slot 1: INVERT (I) — toggle coupling polarity (CC 95)
+        defs[1].label       = "INVERT [I]";
+        defs[1].shortcutKey = 'I';
+        defs[1].action      = [this]()
+        {
+            couplingInverted_ = !couplingInverted_;
+            if (onCCOutput) onCCOutput (95, couplingInverted_ ? 127 : 0);
+        };
+
+        // Slot 2: CLEAR (C) — momentary: signal all coupling routes clear (CC 96)
+        defs[2].label       = "CLEAR [C]";
+        defs[2].shortcutKey = 'C';
+        defs[2].action      = [this]()
+        {
+            couplingInverted_ = false;
+            if (onCCOutput) onCCOutput (96, 127);
+        };
+    }
+
+    //==========================================================================
+    // Setup Performance button bank — PANIC / LATCH / BYPASS
+    // Global performance emergency actions.
+    //   CC 99: PANIC momentary pulse (value 127 = all notes off triggered)
+    //   CC 97: LATCH toggle — hold notes on (0=off, 127=on)
+    //   CC 98: BYPASS toggle — bypass all FX (0=active, 127=bypassed)
+    // PANIC also fires onGoodbye() for All Notes Off on channels 1-16.
+    //==========================================================================
+    void setupPerformanceButtonBank()
+    {
+        std::array<GestureButtonBar::ButtonDef, 3>& defs =
+            bankDefs_[static_cast<std::size_t> (GestureButtonBar::Bank::Performance)];
+
+        // Slot 0: PANIC (P) — All Notes Off on channels 1-16.
+        // CC 99 value 127 = PANIC event (dedicated, no collision with LATCH CC 97).
+        defs[0].label       = "PANIC [P]";
+        defs[0].shortcutKey = 'P';
+        defs[0].action      = [this]()
+        {
+            // Fire GOODBYE (All Notes Off) via the existing onGoodbye pathway
+            if (onGoodbye)
+                onGoodbye();
+            // CC 99 value 127 = dedicated PANIC event signal
+            if (onCCOutput) onCCOutput (99, 127);
+        };
+
+        // Slot 1: LATCH (T) — toggle note latch (hold notes sustained)
+        defs[1].label       = "LATCH [T]";
+        defs[1].shortcutKey = 'T';
+        defs[1].action      = [this]()
+        {
+            perfLatchActive_ = !perfLatchActive_;
+            if (onCCOutput) onCCOutput (97, perfLatchActive_ ? 127 : 0);
+        };
+
+        // Slot 2: BYPASS (Y) — toggle FX chain bypass
+        defs[2].label       = "BYPASS [Y]";
+        defs[2].shortcutKey = 'Y';
+        defs[2].action      = [this]()
+        {
+            perfBypassActive_ = !perfBypassActive_;
+            if (onCCOutput) onCCOutput (98, perfBypassActive_ ? 127 : 0);
+        };
     }
 
     //==========================================================================

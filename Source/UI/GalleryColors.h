@@ -12,6 +12,18 @@
 #include "BinaryData.h"              // FontData:: namespace (embedded fonts via juce_add_binary_data)
 #include "../Core/PresetManager.h"   // frozenPrefixForEngine()
 
+#if JUCE_MAC
+#include <CoreFoundation/CoreFoundation.h>  // CFPreferencesGetAppBooleanValue for A11y::prefersReducedMotion()
+#endif
+
+#if JUCE_IOS
+// Forward declaration of the Objective-C++ bridge for UIAccessibility.isReduceMotionEnabled.
+// Definition lives in HapticEngine_iOS.mm, compiled only on iOS.
+namespace xolokun::a11y_platform {
+    bool isReduceMotionEnabled();
+}
+#endif
+
 namespace xolokun {
 namespace GalleryColors {
 
@@ -289,12 +301,24 @@ namespace A11y {
     inline bool prefersReducedMotion()
     {
 #if JUCE_MAC
-        // Correct API: NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
-        // Cannot call ObjC from pure header — return false and document
-        // TODO: Move to .mm file for correct macOS API
-        return false;
+        // Read the "Reduce Motion" accessibility preference via CoreFoundation.
+        // CFPreferencesGetAppBooleanValue is a pure-C API callable from C++ without ObjC.
+        // Key:    "reduceMotion"
+        // Domain: "com.apple.universalaccess"
+        // This is the same preference that NSWorkspace.accessibilityDisplayShouldReduceMotion
+        // reads, but accessible without an ObjC runtime call.
+        // CoreFoundation.h is included at the top of this file under #if JUCE_MAC.
+        Boolean keyExists = false;
+        Boolean val = CFPreferencesGetAppBooleanValue(
+            CFSTR("reduceMotion"),
+            CFSTR("com.apple.universalaccess"),
+            &keyExists);
+        return keyExists && static_cast<bool>(val);
 #elif JUCE_IOS
-        return false; // TODO: UIAccessibility.isReduceMotionEnabled
+        // UIAccessibility.isReduceMotionEnabled — implemented in HapticEngine_iOS.mm
+        // via xolokun::a11y_platform::isReduceMotionEnabled() bridge function.
+        // The definition is in that .mm file compiled only on iOS.
+        return xolokun::a11y_platform::isReduceMotionEnabled();
 #else
         return false;
 #endif

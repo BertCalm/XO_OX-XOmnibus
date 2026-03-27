@@ -1246,6 +1246,21 @@ public:
             stripModeButtons[i].onClick = [this, i]
             {
                 strip.setStripMode(static_cast<PerformanceStrip::StripMode>(i));
+
+                // Auto-follow: switch XOuija gesture bank to match strip mode context
+                // (respects the GestureButtonBar lock pin — no-op if locked).
+                // Strip mode → GestureButtonBar::Bank mapping:
+                //   0=DubSpace  → Bank::Dub
+                //   1=FilterSweep → Bank::XOuija  (XOuija surface most relevant)
+                //   2=Coupling  → Bank::Coupling
+                //   3=DubSiren  → Bank::Dub        (siren is a dub mode variant)
+                static constexpr GestureButtonBar::Bank kStripBankMap[] = {
+                    GestureButtonBar::Bank::Dub,        // DubSpace
+                    GestureButtonBar::Bank::XOuija,     // FilterSweep
+                    GestureButtonBar::Bank::Coupling,   // Coupling
+                    GestureButtonBar::Bank::Dub,        // DubSiren
+                };
+                xouijaPanel_.activateGestureBank(kStripBankMap[i]);
             };
         }
 

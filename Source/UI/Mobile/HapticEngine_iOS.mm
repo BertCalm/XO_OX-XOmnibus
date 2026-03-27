@@ -207,4 +207,22 @@ void fireSelection()
 
 } // namespace xolokun::haptic_platform
 
+// ---------------------------------------------------------------------------
+// A11y platform bridge — UIAccessibility.isReduceMotionEnabled
+// ---------------------------------------------------------------------------
+// Declared as xolokun::a11y_platform::isReduceMotionEnabled() in GalleryColors.h.
+// Reads the system-level "Reduce Motion" accessibility setting via UIAccessibility.
+// Returns true when the user has enabled Settings > Accessibility > Reduce Motion.
+namespace xolokun::a11y_platform {
+
+bool isReduceMotionEnabled()
+{
+    @autoreleasepool
+    {
+        return UIAccessibilityIsReduceMotionEnabled();
+    }
+}
+
+} // namespace xolokun::a11y_platform
+
 #endif // JUCE_IOS
