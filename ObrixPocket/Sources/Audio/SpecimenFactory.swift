@@ -117,9 +117,11 @@ final class SpecimenFactory {
 
         // Rarity affects parameter extremes
         if rarity == .rare || rarity == .legendary {
-            // Rare specimens have more extreme/interesting parameter values
+            // Rare specimens have more extreme/interesting parameter values.
+            // Guard: only push params that are normalized 0-1; skip raw values like tune (-12…12)
+            // or shape (0…3) to avoid clamping them into nonsensical values.
             for key in params.keys {
-                if let val = params[key], val > 0.3 && val < 0.7 {
+                if let val = params[key], val >= 0.0, val <= 1.0, val > 0.3, val < 0.7 {
                     // Push away from center — more character
                     params[key] = val < 0.5 ? val * 0.5 : val + (1.0 - val) * 0.5
                 }
@@ -146,8 +148,8 @@ final class SpecimenFactory {
     ]
 
     private static func generateName(category: SpecimenCategory, biome: Biome) -> String {
-        let adj = adjectives.randomElement()!
-        let noun = nouns.randomElement()!
+        let adj = adjectives.randomElement() ?? "Luminous"
+        let noun = nouns.randomElement() ?? "Shell"
         return "\(adj) \(noun)"
     }
 }

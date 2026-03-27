@@ -16,6 +16,7 @@ struct CatchTab: View {
     @StateObject private var biomeDetector = BiomeDetector()
     @StateObject private var spectralCapture = SpectralCapture()
     @State private var spawnManager: SpawnManager?
+    @State private var wildSpecimens: [WildSpecimen] = []
     @State private var showingCatch: WildSpecimen?
     @State private var catchPhase: CatchPhase = .idle
 
@@ -80,11 +81,9 @@ struct CatchTab: View {
                     .frame(width: 12, height: 12)
 
                 // Wild specimen pips
-                if let manager = spawnManager {
-                    ForEach(manager.wildSpecimens) { wild in
-                        SpecimenPip(specimen: wild, radarSize: radarSize)
-                            .onTapGesture { handlePipTap(wild) }
-                    }
+                ForEach(wildSpecimens) { wild in
+                    SpecimenPip(specimen: wild, radarSize: radarSize)
+                        .onTapGesture { handlePipTap(wild) }
                 }
             }
             .frame(width: radarSize, height: radarSize)
@@ -128,6 +127,8 @@ struct CatchTab: View {
         spawnManager?.checkDailyDrift()
         spawnManager?.checkLoginMilestone()
         spawnManager?.checkTimeOfDay()
+        // Snapshot wildSpecimens into @State so SwiftUI re-renders the radar
+        wildSpecimens = spawnManager?.wildSpecimens ?? []
         biomeDetector.requestAuthorization()
     }
 
@@ -164,8 +165,9 @@ private struct SpecimenPip: View {
 
     var body: some View {
         let normalizedDist = CGFloat(min(specimen.distance / 500.0, 1.0)) // 500m = radar edge
-        let x = CGFloat(cos(specimen.direction)) * normalizedDist * radarSize / 2
-        let y = CGFloat(sin(specimen.direction)) * normalizedDist * radarSize / 2
+        // Compass bearing: 0 = north = up. sin(bearing) → x, -cos(bearing) → y (screen y inverted).
+        let x = CGFloat(sin(specimen.direction)) * normalizedDist * radarSize / 2
+        let y = -CGFloat(cos(specimen.direction)) * normalizedDist * radarSize / 2
 
         Circle()
             .fill(categoryColor)

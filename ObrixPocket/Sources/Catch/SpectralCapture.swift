@@ -28,6 +28,10 @@ final class SpectralCapture: ObservableObject {
     /// Actual duration may vary slightly with device sample rate and buffer size.
     private let targetFrames = 256
 
+    // Persistent FFT setup — allocated once per capture session, not per buffer.
+    private var fftSetup: OpaquePointer?
+    private var fftLog2n: vDSP_Length = 0
+
     // MARK: - Public API
 
     /// Start a ~5-second ambient spectral capture.
@@ -100,6 +104,11 @@ final class SpectralCapture: ObservableObject {
         do {
             try engine.start()
             audioEngine = engine
+            // Build FFT setup once using the actual buffer size from the tap format.
+            // Use 2048 (the requested tap bufferSize) as the nominal frame length.
+            let nominalLog2n = vDSP_Length(floor(log2(Float(2048))))
+            fftLog2n = nominalLog2n
+            fftSetup = vDSP_create_fftsetup(nominalLog2n, FFTRadix(kFFTRadix2))
         } catch {
             print("[SpectralCapture] Engine start failed: \(error)")
             isCapturing = false
@@ -141,13 +150,12 @@ final class SpectralCapture: ObservableObject {
         let frameLength = Int(buffer.frameLength)
         guard frameLength >= 64 else { return } // Too short to FFT
 
-        // frameLength must be a power of 2 for vDSP_fft_zrip
-        let log2n = vDSP_Length(floor(log2(Float(frameLength))))
+        // Use the stored FFT setup (created once per capture session).
+        // Clamp to the setup's log2n to handle buffers smaller than the nominal 2048 samples.
+        let log2n = min(vDSP_Length(floor(log2(Float(frameLength)))), fftLog2n)
         let fftSize = 1 << Int(log2n) // largest power-of-2 ≤ frameLength
         guard fftSize >= 64 else { return }
-
-        guard let fftSetup = vDSP_create_fftsetup(log2n, FFTRadix(kFFTRadix2)) else { return }
-        defer { vDSP_destroy_fftsetup(fftSetup) }
+        guard let fftSetup else { return }
 
         let halfSize = fftSize / 2
 
@@ -198,6 +206,11 @@ final class SpectralCapture: ObservableObject {
         audioEngine?.inputNode.removeTap(onBus: 0)
         audioEngine?.stop()
         audioEngine = nil
+        if let setup = fftSetup {
+            vDSP_destroy_fftsetup(setup)
+            fftSetup = nil
+        }
+        fftLog2n = 0
     }
 
     // MARK: - Neutral Profile ("Studio Caught")

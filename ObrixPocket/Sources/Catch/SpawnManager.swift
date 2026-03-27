@@ -145,11 +145,11 @@ final class SpawnManager: ObservableObject {
 
     /// Awards a Rare+ specimen of any category when entering a previously unvisited 500m cell.
     func checkExplorationBonus(at location: CLLocationCoordinate2D) {
-        let hash = simpleGeohash(location, precision: 4) // ~500m cell
+        let hash = simpleGeohash(location, precision: 3) // ~600m cell (2^15 = 32768 buckets, 180/32768 ≈ 610m)
         guard !visitedGeohashes.contains(hash) else { return }
         visitedGeohashes.insert(hash)
 
-        let category = SpecimenCategory.allCases.randomElement()!
+        let category = SpecimenCategory.allCases.randomElement() ?? .source
         // Exploration guarantees Rare or better
         let rarity: SpecimenRarity = Bool.random() ? .rare : .legendary
         wildSpecimens.append(generateWildSpecimen(
@@ -183,7 +183,7 @@ final class SpawnManager: ObservableObject {
 
         return WildSpecimen(
             category: category,
-            subtype: subtypes.randomElement()!,
+            subtype: subtypes.randomElement() ?? subtypes[0],
             rarity: rarity,
             biome: biomeDetector.currentBiome,
             spawnSource: source,
