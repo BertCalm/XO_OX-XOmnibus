@@ -37,19 +37,9 @@ struct ContentView: View {
     }
 }
 
-// Placeholder tabs for Phase 0
-struct CatchTab: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "antenna.radiowaves.left.and.right")
-                .font(.system(size: 48))
-                .foregroundColor(.secondary)
-            Text("Catch — Phase 1")
-                .foregroundColor(.secondary)
-        }
-    }
-}
+// CatchTab is defined in Sources/Catch/CatchTab.swift
 
+// Placeholder tabs for Phase 0
 struct DiveTab: View {
     var body: some View {
         VStack {
