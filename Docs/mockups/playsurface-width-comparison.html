@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlaySurface V2 — Width Comparison: 700px vs 1100px</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0E0E10;
+      color: #C8C8D0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      padding: 40px 20px;
+      min-width: 1200px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E9C46A;
+      margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 0.1em;
+      margin-bottom: 48px;
+    }
+
+    /* ────────────────────────────────────────────
+       SECTION WRAPPER
+    ──────────────────────────────────────────── */
+    .comparison-section {
+      margin-bottom: 56px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E9C46A;
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      color: #555;
+      letter-spacing: 0.06em;
+    }
+
+    /* proportion labels */
+    .proportion-bar {
+      display: flex;
+      height: 28px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .prop-xouija {
+      background: #1A1A22;
+      border-right: 1px solid #E9C46A44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #E9C46A;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .prop-noteinput {
+      background: #161620;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #88B4C8;
+      flex: 1;
+      font-weight: 600;
+    }
+
+    /* ────────────────────────────────────────────
+       PLAYSURFACE SHELL
+    ──────────────────────────────────────────── */
+    .playsurface {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #2A2A36;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #111116;
+      box-shadow: 0 0 0 1px #0008;
+    }
+
+    .ps-main {
+      display: flex;
+      flex: 1;
+      height: 340px;
+    }
+
+    /* ────────────────────────────────────────────
+       XOUIJA PANEL — fixed 165px
+    ──────────────────────────────────────────── */
+    .xouija-panel {
+      width: 165px;
+      min-width: 165px;
+      background: #0F0F14;
+      border-right: 1px solid #2A2A36;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 10px 10px;
+      gap: 10px;
+      position: relative;
+    }
+
+    .xouija-label {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #E9C46A99;
+      font-weight: 600;
+    }
+
+    /* Circle-of-fifths placeholder */
+    .cof-ring {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+
+    .cof-ring svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .cof-ring .planchette {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: #E9C46A;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #E9C46A88;
+    }
+
+    /* Freeze / Home / Drift buttons */
+    .xouija-btn-row {
+      display: flex;
+      gap: 5px;
+      width: 100%;
+    }
+
+    .xouija-btn {
+      flex: 1;
+      height: 24px;
+      background: #18181F;
+      border: 1px solid #2E2E3C;
+      border-radius: 3px;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8888AA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .xouija-btn.freeze { border-color: #3A2E1A; color: #E9C46A88; }
+    .xouija-btn.home   { border-color: #1A2E3A; color: #88B4C888; }
+
+    /* Goodbye */
+    .goodbye-btn {
+      width: 100%;
+      height: 20px;
+      background: #18181F;
+      border: 1px solid #2A2A36;
+      border-radius: 3px;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #444456;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .xouija-width-label {
+      position: absolute;
+      bottom: 28px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 8px;
+      color: #E9C46A55;
+      letter-spacing: 0.08em;
+    }
+
+    /* ────────────────────────────────────────────
+       NOTE INPUT ZONE
+    ──────────────────────────────────────────── */
+    .note-input-zone {
+      flex: 1;
+      background: #0C0C11;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .ni-zone-label {
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #88B4C866;
+    }
+
+    .ni-px-label {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: #88B4C855;
+    }
+
+    /* 4×4 Pad Grid */
+    .pad-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .pad {
+      background: #1A1A24;
+      border: 1px solid #2C2C3C;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #3A3A50;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle corner dot accent */
+    .pad::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #2E2E44;
+    }
+
+    /* ── 700px pad sizing ── */
+    .layout-700 .pad-grid {
+      width: 388px;   /* 535px zone - 2×20px padding - (3×6gap) ≈ 388px */
+      height: 260px;
+    }
+
+    /* ── 1100px pad sizing ── */
+    .layout-1100 .pad-grid {
+      width: 700px;   /* 935px zone - 2×20px padding ≈ wider */
+      height: 280px;
+    }
+
+    /* ────────────────────────────────────────────
+       PERFORMANCE STRIP — bottom, 64px
+    ──────────────────────────────────────────── */
+    .perf-strip {
+      height: 64px;
+      background: #0A0A0F;
+      border-top: 1px solid #2A2A36;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 14px;
+      position: relative;
+    }
+
+    .strip-height-label {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      color: #444456;
+    }
+
+    /* Mode tabs */
+    .mode-tabs {
+      display: flex;
+      gap: 3px;
+      margin-right: 16px;
+    }
+
+    .mode-tab {
+      height: 28px;
+      padding: 0 10px;
+      background: #14141C;
+      border: 1px solid #222230;
+      border-radius: 3px;
+      font-size: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #555568;
+      display: flex;
+      align-items: center;
+    }
+
+    .mode-tab.active {
+      background: #1C1C28;
+      border-color: #E9C46A55;
+      color: #E9C46A99;
+    }
+
+    /* XY crosshair */
+    .xy-area {
+      flex: 1;
+      height: 42px;
+      background: #111118;
+      border: 1px solid #222230;
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .xy-area::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #2A2A3A;
+    }
+
+    .xy-area::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #2A2A3A;
+    }
+
+    .xy-dot {
+      position: absolute;
+      top: 35%;
+      left: 40%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E9C46A;
+      box-shadow: 0 0 6px #E9C46A88;
+      transform: translate(-50%, -50%);
+    }
+
+    .xy-label {
+      position: absolute;
+      bottom: 3px;
+      right: 6px;
+      font-size: 7px;
+      letter-spacing: 0.12em;
+      color: #333348;
+      text-transform: uppercase;
+    }
+
+    /* ────────────────────────────────────────────
+       DIMENSION RULER ANNOTATIONS
+    ──────────────────────────────────────────── */
+    .ruler-row {
+      display: flex;
+      height: 20px;
+      position: relative;
+      font-size: 9px;
+      color: #444456;
+      margin-top: 6px;
+    }
+
+    .ruler-xouija {
+      width: 165px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid #333344;
+      position: relative;
+    }
+
+    .ruler-xouija::before,
+    .ruler-xouija::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      width: 1px;
+      height: 6px;
+      background: #333344;
+    }
+    .ruler-xouija::before { left: 0; }
+    .ruler-xouija::after  { right: 0; }
+
+    .ruler-noteinput {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid #333344;
+      position: relative;
+      color: #88B4C855;
+    }
+
+    .ruler-noteinput::before,
+    .ruler-noteinput::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      width: 1px;
+      height: 6px;
+      background: #333344;
+    }
+    .ruler-noteinput::before { left: 0; }
+    .ruler-noteinput::after  { right: 0; }
+
+    /* ────────────────────────────────────────────
+       DIFFERENCE CALLOUT
+    ──────────────────────────────────────────── */
+    .diff-callout {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #121218;
+      border: 1px solid #2A2A3A;
+      border-radius: 5px;
+      padding: 14px 20px;
+      margin-top: 14px;
+    }
+
+    .diff-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .diff-label {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555566;
+    }
+
+    .diff-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #E9C46A;
+      letter-spacing: 0.04em;
+    }
+
+    .diff-value.blue { color: #88B4C8; }
+    .diff-value.green { color: #6AC885; }
+
+    .diff-sep {
+      width: 1px;
+      height: 36px;
+      background: #2A2A3A;
+    }
+
+    .diff-note {
+      font-size: 10px;
+      color: #555566;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .diff-note strong {
+      color: #88B4C8;
+    }
+
+    /* ────────────────────────────────────────────
+       SPECIFIC LAYOUT WIDTHS
+    ──────────────────────────────────────────── */
+    .layout-700 { width: 700px; }
+    .layout-1100 { width: 1100px; }
+
+    /* center layouts horizontally */
+    .layout-700 {
+      margin: 0 auto;
+    }
+
+    .layout-1100 {
+      margin: 0 auto;
+    }
+
+    /* Note: 1100px layout is wider so scroll if needed */
+
+    .comparison-section .section-container {
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PlaySurface V2 — Width Comparison</h1>
+  <p class="page-subtitle">XOuija panel (165px fixed) · Note Input Zone (fills remaining) · Performance Strip (64px)</p>
+
+  <!-- ═══════════════════════════════════════════════
+       LAYOUT A: 700px (current)
+  ═══════════════════════════════════════════════ -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <span class="section-title">700px — current compact layout</span>
+      <span class="section-subtitle">XOuija 23.6% · NoteInput 76.4% (535px)</span>
+    </div>
+
+    <div class="section-container">
+      <div class="layout-700">
+
+        <!-- Proportion bar -->
+        <div class="proportion-bar">
+          <div class="prop-xouija" style="width:165px;">165px · 23.6%</div>
+          <div class="prop-noteinput">535px · 76.4%</div>
+        </div>
+
+        <!-- PlaySurface -->
+        <div class="playsurface">
+          <div class="ps-main">
+
+            <!-- XOuija Panel -->
+            <div class="xouija-panel">
+              <div class="xouija-label">XOuija</div>
+
+              <!-- Circle of Fifths -->
+              <div class="cof-ring">
+                <svg viewBox="0 0 100 100">
+                  <!-- outer ring -->
+                  <circle cx="50" cy="50" r="46" fill="none" stroke="#1E1E2A" stroke-width="10"/>
+                  <!-- key markers — 12 dots -->
+                  <g fill="#2E2E3E">
+                    <circle cx="50" cy="8"  r="3.5"/>
+                    <circle cx="73" cy="16" r="3.5"/>
+                    <circle cx="89" cy="38" r="3.5"/>
+                    <circle cx="89" cy="62" r="3.5"/>
+                    <circle cx="73" cy="84" r="3.5"/>
+                    <circle cx="50" cy="92" r="3.5"/>
+                    <circle cx="27" cy="84" r="3.5"/>
+                    <circle cx="11" cy="62" r="3.5"/>
+                    <circle cx="11" cy="38" r="3.5"/>
+                    <circle cx="27" cy="16" r="3.5"/>
+                  </g>
+                  <!-- active key highlight -->
+                  <circle cx="50" cy="8" r="3.5" fill="#E9C46A" filter="url(#glow)"/>
+                  <!-- active arc segment -->
+                  <path d="M 35 4 A 46 46 0 0 1 65 4" fill="none" stroke="#E9C46A44" stroke-width="9" stroke-linecap="round"/>
+                  <!-- inner ring -->
+                  <circle cx="50" cy="50" r="28" fill="none" stroke="#18181F" stroke-width="6"/>
+                  <defs>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="2" result="blur"/>
+                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                </svg>
+                <div class="planchette"></div>
+              </div>
+
+              <!-- Buttons row -->
+              <div class="xouija-btn-row">
+                <div class="xouija-btn freeze">FRZ</div>
+                <div class="xouija-btn home">HOME</div>
+                <div class="xouija-btn">DFT</div>
+              </div>
+
+              <div class="goodbye-btn">GOODBYE</div>
+            </div>
+
+            <!-- Note Input Zone -->
+            <div class="note-input-zone">
+              <div class="ni-zone-label">Note Input</div>
+              <div class="ni-px-label">535px</div>
+              <div class="pad-grid">
+                <!-- 16 pads -->
+                <div class="pad">1</div>
+                <div class="pad">2</div>
+                <div class="pad">3</div>
+                <div class="pad">4</div>
+                <div class="pad">5</div>
+                <div class="pad">6</div>
+                <div class="pad">7</div>
+                <div class="pad">8</div>
+                <div class="pad">9</div>
+                <div class="pad">10</div>
+                <div class="pad">11</div>
+                <div class="pad">12</div>
+                <div class="pad">13</div>
+                <div class="pad">14</div>
+                <div class="pad">15</div>
+                <div class="pad">16</div>
+              </div>
+            </div>
+
+          </div><!-- .ps-main -->
+
+          <!-- Performance Strip -->
+          <div class="perf-strip">
+            <div class="mode-tabs">
+              <div class="mode-tab active">Play</div>
+              <div class="mode-tab">Step</div>
+              <div class="mode-tab">Chord</div>
+              <div class="mode-tab">Scale</div>
+            </div>
+            <div class="xy-area">
+              <div class="xy-dot"></div>
+              <div class="xy-label">XY</div>
+            </div>
+            <div class="strip-height-label">64px strip</div>
+          </div>
+        </div><!-- .playsurface -->
+
+        <!-- Ruler row -->
+        <div class="ruler-row">
+          <div class="ruler-xouija">←165px→</div>
+          <div class="ruler-noteinput">←535px→</div>
+        </div>
+
+        <!-- Callout -->
+        <div class="diff-callout">
+          <div class="diff-item">
+            <div class="diff-label">Total width</div>
+            <div class="diff-value">700px</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-item">
+            <div class="diff-label">XOuija</div>
+            <div class="diff-value">165px</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-item">
+            <div class="diff-label">Note Input</div>
+            <div class="diff-value blue">535px</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-item">
+            <div class="diff-label">Pad area</div>
+            <div class="diff-value" style="font-size:11px;color:#888">compressed</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-note">
+            Pads are squeezed into the 535px zone. The XOuija panel consumes <strong>23.6%</strong> of total width — a heavy proportion at this size.
+          </div>
+        </div>
+
+      </div><!-- .layout-700 -->
+    </div>
+  </div><!-- .comparison-section -->
+
+
+  <!-- ═══════════════════════════════════════════════
+       LAYOUT B: 1100px (prototype target)
+  ═══════════════════════════════════════════════ -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <span class="section-title">1100px — prototype target</span>
+      <span class="section-subtitle">XOuija 15% (same 165px) · NoteInput 85% (935px) · <span style="color:#6AC885;">+400px breathing room</span></span>
+    </div>
+
+    <div class="section-container">
+      <div class="layout-1100">
+
+        <!-- Proportion bar -->
+        <div class="proportion-bar">
+          <div class="prop-xouija" style="width:165px;">165px · 15%</div>
+          <div class="prop-noteinput">935px · 85%</div>
+        </div>
+
+        <!-- PlaySurface -->
+        <div class="playsurface">
+          <div class="ps-main">
+
+            <!-- XOuija Panel (identical 165px) -->
+            <div class="xouija-panel">
+              <div class="xouija-label">XOuija</div>
+
+              <div class="cof-ring">
+                <svg viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="46" fill="none" stroke="#1E1E2A" stroke-width="10"/>
+                  <g fill="#2E2E3E">
+                    <circle cx="50" cy="8"  r="3.5"/>
+                    <circle cx="73" cy="16" r="3.5"/>
+                    <circle cx="89" cy="38" r="3.5"/>
+                    <circle cx="89" cy="62" r="3.5"/>
+                    <circle cx="73" cy="84" r="3.5"/>
+                    <circle cx="50" cy="92" r="3.5"/>
+                    <circle cx="27" cy="84" r="3.5"/>
+                    <circle cx="11" cy="62" r="3.5"/>
+                    <circle cx="11" cy="38" r="3.5"/>
+                    <circle cx="27" cy="16" r="3.5"/>
+                  </g>
+                  <circle cx="50" cy="8" r="3.5" fill="#E9C46A" filter="url(#glow2)"/>
+                  <path d="M 35 4 A 46 46 0 0 1 65 4" fill="none" stroke="#E9C46A44" stroke-width="9" stroke-linecap="round"/>
+                  <circle cx="50" cy="50" r="28" fill="none" stroke="#18181F" stroke-width="6"/>
+                  <defs>
+                    <filter id="glow2">
+                      <feGaussianBlur stdDeviation="2" result="blur"/>
+                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                </svg>
+                <div class="planchette"></div>
+              </div>
+
+              <div class="xouija-btn-row">
+                <div class="xouija-btn freeze">FRZ</div>
+                <div class="xouija-btn home">HOME</div>
+                <div class="xouija-btn">DFT</div>
+              </div>
+
+              <div class="goodbye-btn">GOODBYE</div>
+            </div>
+
+            <!-- Note Input Zone — wider -->
+            <div class="note-input-zone">
+              <div class="ni-zone-label">Note Input</div>
+              <div class="ni-px-label" style="color:#88B4C8AA;">935px</div>
+              <div class="pad-grid">
+                <!-- 16 pads — visually larger via CSS override -->
+                <div class="pad">1</div>
+                <div class="pad">2</div>
+                <div class="pad">3</div>
+                <div class="pad">4</div>
+                <div class="pad">5</div>
+                <div class="pad">6</div>
+                <div class="pad">7</div>
+                <div class="pad">8</div>
+                <div class="pad">9</div>
+                <div class="pad">10</div>
+                <div class="pad">11</div>
+                <div class="pad">12</div>
+                <div class="pad">13</div>
+                <div class="pad">14</div>
+                <div class="pad">15</div>
+                <div class="pad">16</div>
+              </div>
+            </div>
+
+          </div><!-- .ps-main -->
+
+          <!-- Performance Strip -->
+          <div class="perf-strip">
+            <div class="mode-tabs">
+              <div class="mode-tab active">Play</div>
+              <div class="mode-tab">Step</div>
+              <div class="mode-tab">Chord</div>
+              <div class="mode-tab">Scale</div>
+            </div>
+            <div class="xy-area">
+              <div class="xy-dot"></div>
+              <div class="xy-label">XY</div>
+            </div>
+            <div class="strip-height-label">64px strip</div>
+          </div>
+        </div><!-- .playsurface -->
+
+        <!-- Ruler row -->
+        <div class="ruler-row">
+          <div class="ruler-xouija">←165px→</div>
+          <div class="ruler-noteinput" style="color:#88B4C888;">←935px→</div>
+        </div>
+
+        <!-- Callout -->
+        <div class="diff-callout">
+          <div class="diff-item">
+            <div class="diff-label">Total width</div>
+            <div class="diff-value">1100px</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-item">
+            <div class="diff-label">XOuija</div>
+            <div class="diff-value">165px</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-item">
+            <div class="diff-label">Note Input</div>
+            <div class="diff-value blue">935px</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-item">
+            <div class="diff-label">Extra vs 700</div>
+            <div class="diff-value green">+400px</div>
+          </div>
+          <div class="diff-sep"></div>
+          <div class="diff-note">
+            The XOuija panel is <strong>identical</strong> — still 165px. All 400px of gain goes directly to pads. At 85% NoteInput, the pad grid can breathe and each pad grows substantially.
+          </div>
+        </div>
+
+      </div><!-- .layout-1100 -->
+    </div>
+  </div><!-- .comparison-section -->
+
+
+  <!-- ═══════════════════════════════════════════════
+       SUMMARY TABLE
+  ═══════════════════════════════════════════════ -->
+  <div style="max-width:900px; margin:0 auto; padding:24px 0 40px;">
+    <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#E9C46A; margin-bottom:14px;">Summary</div>
+    <table style="width:100%; border-collapse:collapse; font-size:11px; color:#888; letter-spacing:0.06em;">
+      <thead>
+        <tr style="border-bottom:1px solid #2A2A3A;">
+          <th style="text-align:left; padding:8px 12px; color:#666; font-weight:500;">Metric</th>
+          <th style="text-align:center; padding:8px 12px; color:#888;">700px current</th>
+          <th style="text-align:center; padding:8px 12px; color:#88B4C8;">1100px target</th>
+          <th style="text-align:center; padding:8px 12px; color:#6AC885;">Delta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #1A1A24;">
+          <td style="padding:8px 12px; color:#555;">XOuija panel width</td>
+          <td style="padding:8px 12px; text-align:center;">165px</td>
+          <td style="padding:8px 12px; text-align:center; color:#88B4C8;">165px</td>
+          <td style="padding:8px 12px; text-align:center; color:#555;">0 (fixed)</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1A1A24;">
+          <td style="padding:8px 12px; color:#555;">Note Input width</td>
+          <td style="padding:8px 12px; text-align:center;">535px</td>
+          <td style="padding:8px 12px; text-align:center; color:#88B4C8;">935px</td>
+          <td style="padding:8px 12px; text-align:center; color:#6AC885;">+400px</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1A1A24;">
+          <td style="padding:8px 12px; color:#555;">XOuija % of total</td>
+          <td style="padding:8px 12px; text-align:center;">23.6%</td>
+          <td style="padding:8px 12px; text-align:center; color:#88B4C8;">15.0%</td>
+          <td style="padding:8px 12px; text-align:center; color:#6AC885;">−8.6pp</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1A1A24;">
+          <td style="padding:8px 12px; color:#555;">Performance strip height</td>
+          <td style="padding:8px 12px; text-align:center;">64px</td>
+          <td style="padding:8px 12px; text-align:center; color:#88B4C8;">64px</td>
+          <td style="padding:8px 12px; text-align:center; color:#555;">0 (fixed)</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px; color:#555;">Per-pad area (approx)</td>
+          <td style="padding:8px 12px; text-align:center;">~24×22px</td>
+          <td style="padding:8px 12px; text-align:center; color:#88B4C8;">~44×30px</td>
+          <td style="padding:8px 12px; text-align:center; color:#6AC885;">~2× larger</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
