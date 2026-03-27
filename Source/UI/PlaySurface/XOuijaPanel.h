@@ -13,6 +13,8 @@
       - YES / NO labels in Georgia italic 9px at opacity 0.20
       - Planchette (B042): translucent oval lens with Lissajous idle drift,
         spring lock-on, warm memory hold, and interior text
+      - GestureButtonBar (Task 7): FREEZE/HOME/DRIFT buttons with bank system
+      - GoodbyeButton (Task 7): warm terracotta GOODBYE button
 
     Mouse input:
       - mouseDown/mouseDrag: updates circleX_ and influenceY_, fires
@@ -20,12 +22,12 @@
         via onCCOutput. Also drives Planchette spring/move.
       - mouseUp: clears touching_ flag, triggers planchette release.
 
-    Layout reservations (for Tasks 5-7):
-      - Bottom 34px: future GestureButtonBar
-      - Bottom 32px above that: future GOODBYE button
+    Layout (bottom-up):
+      - Bottom 32px: GoodbyeButton
+      - Above that 34px: GestureButtonBar (28px buttons + 6px padding)
       - Harmonic surface occupies remaining area above
 
-    B042 — Task 5 of 13 (XOuija PlaySurface V2)
+    B042 — Task 7 of 13 (XOuija PlaySurface V2)
     Namespace: xolokun
     JUCE 8, C++17
 */
@@ -37,6 +39,8 @@
 #include <utility>
 #include <random>
 #include <cmath>
+#include <array>
+#include <cctype>
 
 #include "HarmonicField.h"
 #include "GestureTrailBuffer.h"
@@ -350,6 +354,250 @@ private:
 };
 
 //==============================================================================
+/** GestureButtonBar (Task 7 — Spec Section 6)
+    Three configurable gesture buttons (FREEZE / HOME / DRIFT in default XOuija
+    bank) with a 4-bank system and an optional lock pin.
+
+    Auto-follows PerformanceStrip mode when unlocked. Each button has a label,
+    single-character keyboard shortcut, and action callback.
+*/
+class GestureButtonBar : public juce::Component
+{
+public:
+    //==========================================================================
+    enum class Bank { XOuija, Dub, Coupling, Performance };
+
+    struct ButtonDef
+    {
+        juce::String        label;
+        char                shortcutKey  = 0;
+        std::function<void()> action;
+    };
+
+    //==========================================================================
+    GestureButtonBar()
+    {
+        // Default bank buttons are populated by XOuijaPanel::setupDefaultButtonBank()
+        // so they remain empty here.
+    }
+
+    ~GestureButtonBar() override = default;
+
+    //==========================================================================
+    // Public API
+    //==========================================================================
+
+    /** Switch bank; respects the lock pin. */
+    void setBank (Bank bank)
+    {
+        if (bankLocked_)
+            return;
+        currentBank_ = bank;
+        repaint();
+    }
+
+    Bank getBank() const noexcept { return currentBank_; }
+
+    void setBankLocked (bool locked) { bankLocked_ = locked; repaint(); }
+    bool isBankLocked() const noexcept { return bankLocked_; }
+
+    /** Set the 3 button definitions for the current active bank (XOuija bank). */
+    void setButtons (const std::array<ButtonDef, 3>& defs)
+    {
+        buttons_ = defs;
+        repaint();
+    }
+
+    /** Check shortcut key; fire action and return true if handled. */
+    bool handleKey (char c)
+    {
+        for (auto& btn : buttons_)
+        {
+            if (btn.shortcutKey != 0 &&
+                std::toupper (static_cast<unsigned char> (c)) ==
+                std::toupper (static_cast<unsigned char> (btn.shortcutKey)))
+            {
+                if (btn.action)
+                    btn.action();
+                pressedIndex_ = -1;  // no persistent highlight for key events
+                repaint();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //==========================================================================
+    // Component overrides
+    //==========================================================================
+
+    void paint (juce::Graphics& g) override
+    {
+        const auto b = getLocalBounds().toFloat();
+        const float w = b.getWidth();
+        const float h = b.getHeight();
+
+        // ---- Lock button (top-right, ~14px) ----
+        const float lockSize = 14.0f;
+        const float lockX = w - lockSize - 2.0f;
+        const float lockY = 2.0f;
+        g.setColour (juce::Colours::white.withAlpha (0.45f));
+        g.setFont (juce::Font (lockSize, juce::Font::plain));
+        // Simple text indicator; use ASCII fallback if emoji not available
+        g.drawText (bankLocked_ ? "L" : "U",
+                    juce::Rectangle<float> (lockX, lockY, lockSize, lockSize),
+                    juce::Justification::centred, false);
+
+        // ---- Three button slots ----
+        const float gutter     = 4.0f;
+        const float buttonH    = 28.0f;
+        const float buttonTop  = h - buttonH;
+        const float totalGutters = gutter * 4.0f;          // left + 2 mid + right
+        const float buttonW    = (w - totalGutters) / 3.0f;
+        const float cornerR    = 3.0f;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            const float bx = gutter + static_cast<float> (i) * (buttonW + gutter);
+            const juce::Rectangle<float> buttonRect (bx, buttonTop, buttonW, buttonH);
+
+            const bool pressed = (pressedIndex_ == i);
+
+            // Background
+            if (pressed)
+                g.setColour (accentColour_.withAlpha (0.30f));
+            else
+                g.setColour (juce::Colour::fromFloatRGBA (1.0f, 1.0f, 1.0f, 0.06f));
+            g.fillRoundedRectangle (buttonRect, cornerR);
+
+            // Border (inactive only)
+            if (! pressed)
+            {
+                g.setColour (juce::Colour::fromFloatRGBA (1.0f, 1.0f, 1.0f, 0.12f));
+                g.drawRoundedRectangle (buttonRect, cornerR, 1.0f);
+            }
+
+            // Label
+            const float textAlpha = pressed ? 1.0f : 0.65f;
+            g.setColour (juce::Colours::white.withAlpha (textAlpha));
+            g.setFont (juce::Font (9.0f, juce::Font::plain));
+            g.drawText (buttons_[static_cast<std::size_t> (i)].label.toUpperCase(),
+                        buttonRect,
+                        juce::Justification::centred,
+                        false);
+        }
+    }
+
+    void mouseDown (const juce::MouseEvent& e) override
+    {
+        pressedIndex_ = hitTestButton (e.position.x, e.position.y);
+        repaint();
+    }
+
+    void mouseUp (const juce::MouseEvent& e) override
+    {
+        const int idx = hitTestButton (e.position.x, e.position.y);
+        if (idx >= 0 && idx == pressedIndex_)
+        {
+            const auto& btn = buttons_[static_cast<std::size_t> (idx)];
+            if (btn.action)
+                btn.action();
+        }
+        pressedIndex_ = -1;
+        repaint();
+    }
+
+    void setAccentColour (juce::Colour c) { accentColour_ = c; repaint(); }
+
+private:
+    //==========================================================================
+    int hitTestButton (float mx, float my) const
+    {
+        const float w = static_cast<float> (getWidth());
+        const float h = static_cast<float> (getHeight());
+        const float gutter  = 4.0f;
+        const float buttonH = 28.0f;
+        const float buttonTop = h - buttonH;
+
+        if (my < buttonTop)
+            return -1;
+
+        const float totalGutters = gutter * 4.0f;
+        const float buttonW = (w - totalGutters) / 3.0f;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            const float bx = gutter + static_cast<float> (i) * (buttonW + gutter);
+            if (mx >= bx && mx < bx + buttonW)
+                return i;
+        }
+        return -1;
+    }
+
+    //==========================================================================
+    std::array<ButtonDef, 3>  buttons_;
+    Bank                      currentBank_   = Bank::XOuija;
+    bool                      bankLocked_    = false;
+    int                       pressedIndex_  = -1;
+    juce::Colour              accentColour_  { juce::Colour (0xFFE9C46A) };
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GestureButtonBar)
+};
+
+//==============================================================================
+/** GoodbyeButton (Task 7 — Spec Section 7)
+    Warm Terracotta full-width button that resets the XOuija session.
+    Color: #E07A5F at 80% opacity normally, 100% on press.
+    Text: "GOODBYE" in Georgia italic 11px, white at 90% opacity.
+*/
+class GoodbyeButton : public juce::Component
+{
+public:
+    //==========================================================================
+    GoodbyeButton() = default;
+    ~GoodbyeButton() override = default;
+
+    //==========================================================================
+    std::function<void()> onGoodbye;
+
+    //==========================================================================
+    void paint (juce::Graphics& g) override
+    {
+        const auto  b      = getLocalBounds().toFloat();
+        const float alpha  = pressed_ ? 1.0f : 0.80f;
+        const juce::Colour base { 0xFFE07A5F };  // Warm Terracotta
+
+        // Background — no border
+        g.setColour (base.withAlpha (alpha));
+        g.fillRoundedRectangle (b, 4.0f);
+
+        // Label
+        g.setColour (juce::Colours::white.withAlpha (0.90f));
+        g.setFont (juce::Font ("Georgia", 11.0f, juce::Font::italic));
+        g.drawText ("GOODBYE", b, juce::Justification::centred, false);
+    }
+
+    void mouseDown (const juce::MouseEvent& /*e*/) override
+    {
+        pressed_ = true;
+        repaint();
+        if (onGoodbye)
+            onGoodbye();
+    }
+
+    void mouseUp (const juce::MouseEvent& /*e*/) override
+    {
+        pressed_ = false;
+        repaint();
+    }
+
+private:
+    bool pressed_ = false;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GoodbyeButton)
+};
+
+//==============================================================================
 class XOuijaPanel : public juce::Component
 {
 public:
@@ -382,6 +630,48 @@ public:
         addAndMakeVisible (planchette_);
         planchette_.setAccentColour (accentColour_);
         updatePlanchetteText();
+
+        // Task 7: gesture button bar and GOODBYE button
+        addAndMakeVisible (gestureButtons_);
+        gestureButtons_.setAccentColour (accentColour_);
+
+        addAndMakeVisible (goodbyeButton_);
+
+        // Wire GOODBYE action
+        goodbyeButton_.onGoodbye = [this]()
+        {
+            // Reset position state
+            circleX_    = 0.5f;
+            influenceY_ = 0.0f;
+
+            // Animate planchette to bottom-centre (influenceY=0 → bottom)
+            planchette_.springTo (0.5f, 0.0f);
+
+            // Clear trail buffer
+            trailBuffer_.clear();
+
+            // Emit CC resets: CC 85→64 (centre), CC 86→0 (no influence), CC 88→0
+            if (onCCOutput)
+            {
+                onCCOutput (85, 64);
+                onCCOutput (86, 0);
+                onCCOutput (88, 0);
+            }
+
+            // Update planchette text
+            updatePlanchetteText();
+
+            // Notify PlaySurface (for All Notes Off etc.)
+            if (onGoodbye)
+                onGoodbye();
+
+            repaint();
+        };
+
+        // Wire default XOuija button bank
+        setupDefaultButtonBank();
+
+        setWantsKeyboardFocus (true);
     }
 
     ~XOuijaPanel() override = default;
@@ -427,6 +717,7 @@ public:
     {
         accentColour_ = c;
         planchette_.setAccentColour (c);
+        gestureButtons_.setAccentColour (c);
         repaint();
     }
 
@@ -454,10 +745,16 @@ public:
     {
         // Compute harmonic surface area — the area used for marker layout
         // excludes the two reserved strips at the bottom.
-        const auto b = getLocalBounds();
+        auto b = getLocalBounds();
         const int reservedBottom = kGestureBarH + kGoodbyeH;  // 66px
 
         harmonicSurfaceBounds_ = b.withTrimmedBottom (reservedBottom);
+
+        // GOODBYE button: 32px at the very bottom, full width
+        goodbyeButton_.setBounds (b.removeFromBottom (kGoodbyeH));
+
+        // GestureButtonBar: 34px above GOODBYE, full width
+        gestureButtons_.setBounds (b.removeFromBottom (kGestureBarH));
 
         // Planchette manages its own setBounds() inside timerCallback via
         // updateBounds(). No explicit positioning needed here.
@@ -557,6 +854,22 @@ public:
         planchette_.release();
     }
 
+    bool keyPressed (const juce::KeyPress& key) override
+    {
+        const char c = static_cast<char> (
+            std::toupper (static_cast<unsigned char> (key.getTextCharacter())));
+
+        if (c == 'V')
+        {
+            // Trigger GOODBYE action directly
+            if (goodbyeButton_.onGoodbye)
+                goodbyeButton_.onGoodbye();
+            return true;
+        }
+
+        return gestureButtons_.handleKey (c);
+    }
+
 private:
     //==========================================================================
     // State
@@ -576,6 +889,10 @@ private:
     GestureTrailBuffer trailBuffer_;
     float              lastTrailPixelX_ = 0.0f;
     float              lastTrailPixelY_ = 0.0f;
+
+    // Task 7 — Gesture button bar and GOODBYE button
+    GestureButtonBar   gestureButtons_;
+    GoodbyeButton      goodbyeButton_;
 
     //==========================================================================
     // Note names for planchette display text (12-entry, indexed by semitone)
@@ -830,6 +1147,64 @@ private:
             onCCOutput (85, ccX);
             onCCOutput (86, ccY);
         }
+    }
+
+    //==========================================================================
+    // Setup default XOuija button bank (FREEZE / HOME / DRIFT)
+    //==========================================================================
+    void setupDefaultButtonBank()
+    {
+        std::array<GestureButtonBar::ButtonDef, 3> defs;
+
+        // Slot 0: FREEZE (Z) — toggle trail freeze/unfreeze + CC 88
+        defs[0].label       = "FREEZE";
+        defs[0].shortcutKey = 'Z';
+        defs[0].action      = [this]()
+        {
+            if (trailBuffer_.isFrozen())
+            {
+                trailBuffer_.unfreeze();
+                if (onCCOutput) onCCOutput (88, 0);
+            }
+            else
+            {
+                trailBuffer_.freeze();
+                if (onCCOutput) onCCOutput (88, 127);
+            }
+            repaint();
+        };
+
+        // Slot 1: HOME (X) — snap planchette to centre + fire position callbacks
+        defs[1].label       = "HOME";
+        defs[1].shortcutKey = 'X';
+        defs[1].action      = [this]()
+        {
+            planchette_.snapHome();
+            circleX_    = 0.5f;
+            influenceY_ = 0.5f;
+            updatePlanchetteText();
+            fireCallbacks();
+            // CC 89→127 signals "home" event
+            if (onCCOutput)
+            {
+                onCCOutput (85, 64);
+                onCCOutput (86, 64);
+                onCCOutput (89, 127);
+            }
+            repaint();
+        };
+
+        // Slot 2: DRIFT (C) — toggle Lissajous drift + CC 90
+        defs[2].label       = "DRIFT";
+        defs[2].shortcutKey = 'C';
+        defs[2].action      = [this]()
+        {
+            const bool newState = ! planchette_.isDriftEnabled();
+            planchette_.setDriftEnabled (newState);
+            if (onCCOutput) onCCOutput (90, newState ? 127 : 0);
+        };
+
+        gestureButtons_.setButtons (defs);
     }
 
     //==========================================================================
