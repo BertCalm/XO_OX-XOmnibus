@@ -27,10 +27,10 @@ namespace xolokun::a11y_platform {
 namespace xolokun {
 namespace GalleryColors {
 
-    // Theme state — light by default (brand rule: light mode is primary)
+    // Theme state — dark by default (dark mode is the primary presentation)
     inline bool& darkMode()
     {
-        static bool dark = false;
+        static bool dark = true;
         return dark;
     }
 

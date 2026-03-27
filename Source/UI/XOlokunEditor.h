@@ -100,7 +100,7 @@ public:
             opts.filenameSuffix      = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile earlySettings(opts);
-            GalleryColors::darkMode() = earlySettings.getBoolValue("darkMode", false);
+            GalleryColors::darkMode() = earlySettings.getBoolValue("darkMode", true);
         }
 
         // Primary tiles (slots 0-3)

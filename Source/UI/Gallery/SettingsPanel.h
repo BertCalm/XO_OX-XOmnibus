@@ -61,7 +61,7 @@ public:
         // setColour() calls during construction use the correct theme.  Both reads
         // open the same file and produce the same value; the editor's read wins
         // because it happens first.
-        GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", false);
+        GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", true);
 
         // ── 1. THEME ─────────────────────────────────────────────────────────
         styleToggle(darkModeToggle, "Dark Mode");
