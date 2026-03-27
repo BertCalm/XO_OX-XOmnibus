@@ -11,6 +11,19 @@ namespace xolokun
 {
 
 //==============================================================================
+// CreatureState — animation state for the procedural creature in each tile's
+// porthole zone. Advances in timerCallback() and drives paint(). Will be
+// replaced by pixel-art sprites (generated via /pixel-artist) in a future pass;
+// this struct is the drop-in scaffold those sprites will slot into.
+struct CreatureState
+{
+    float breathPhase     = 0.0f;  // 0–2π, advances each timer tick
+    float breathRate      = 0.5f;  // Hz — default 0.5 Hz (one breath / 2 s)
+    float pulseIntensity  = 0.0f;  // 0–1, smoothed toward voiceCount > 0
+    float couplingLean    = 0.0f;  // -1 to +1 — eye shifts toward coupled partner
+};
+
+//==============================================================================
 // CompactEngineTile — slim tile in the left Column A (260pt wide).
 //
 // Layout at 260pt width:
@@ -157,6 +170,18 @@ public:
             }
         }
 
+        // ── Creature animation ─────────────────────────────────────────────────
+        // Timer runs at 10 Hz → divisor = 10.
+        creatureState_.breathPhase += creatureState_.breathRate
+                                      * 2.0f * juce::MathConstants<float>::pi / 10.0f;
+        if (creatureState_.breathPhase > juce::MathConstants<float>::twoPi)
+            creatureState_.breathPhase -= juce::MathConstants<float>::twoPi;
+
+        float targetPulse = (voiceCount > 0) ? 1.0f : 0.0f;
+        creatureState_.pulseIntensity += 0.1f * (targetPulse - creatureState_.pulseIntensity);
+
+        needsRepaint = true; // creature breathes every tick regardless of other state
+
         if (needsRepaint) repaint();
     }
 
@@ -274,6 +299,32 @@ public:
                 g.setColour(juce::Colours::white.withAlpha(0.20f));
                 g.strokePath(hl, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
                                                        juce::PathStrokeType::rounded));
+            }
+
+            // ── Creature animation — procedural placeholder (VQ 015) ──────────
+            // Scales and breathes inside the porthole. Eye shifts on couplingLean.
+            // Will be replaced by pixel-art sprites generated via /pixel-artist.
+            if (hasEngine)
+            {
+                const float portraitSize = porW; // porthole diameter is the portrait zone
+                float breathScale = 1.0f + 0.1f * std::sin(creatureState_.breathPhase);
+                float creatureRadius = portraitSize * 0.3f * breathScale;
+
+                // Soft glow halo — accent color at ~20% opacity, modulated by pulse
+                float haloAlpha = 0.20f * (0.5f + 0.5f * creatureState_.pulseIntensity);
+                g.setColour(accent.withAlpha(haloAlpha));
+                g.fillEllipse(porCx - creatureRadius * 2.0f, porCy - creatureRadius * 2.0f,
+                              creatureRadius * 4.0f, creatureRadius * 4.0f);
+
+                // Body — accent color at 70% opacity
+                g.setColour(accent.withAlpha(0.70f));
+                g.fillEllipse(porCx - creatureRadius, porCy - creatureRadius,
+                              creatureRadius * 2.0f, creatureRadius * 2.0f);
+
+                // Eye — white dot that shifts horizontally with couplingLean
+                float eyeOffsetX = creatureRadius * 0.3f * creatureState_.couplingLean;
+                g.setColour(juce::Colours::white.withAlpha(0.90f));
+                g.fillEllipse(porCx + eyeOffsetX - 2.0f, porCy - 2.0f, 4.0f, 4.0f);
             }
 
             // Slot number inside porthole — 9px mono, T3 color
@@ -665,6 +716,9 @@ private:
 
     // P8 fix: dashed border path for empty slot — built once in resized()
     juce::Path cachedDashedPath;
+
+    // Creature animation state — VQ 015 breathing scaffold
+    CreatureState creatureState_;
 
     MiniWaveform miniWave;
 
