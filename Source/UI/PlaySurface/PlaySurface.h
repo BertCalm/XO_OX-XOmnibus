@@ -5,6 +5,7 @@
 #include <vector>
 #include <cmath>
 #include <atomic>
+#include "KeysMode.h"
 
 namespace xolokun {
 
@@ -76,7 +77,7 @@ namespace PS {
 class NoteInputZone : public juce::Component
 {
 public:
-    enum class Mode { Pad, Fretless, Drum };
+    enum class Mode { Pad, Fretless, Drum, Keys };
 
     //----------------------------------------------------------------------
     // P0-1: MIDI pipeline wiring.
