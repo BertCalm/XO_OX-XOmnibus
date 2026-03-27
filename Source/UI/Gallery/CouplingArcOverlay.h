@@ -29,14 +29,16 @@ namespace xolokun {
 //   KnotTopology  (bidirectional entanglement)                        → Midnight Violet #7B2FBE
 //
 // Two-pass glow painting (Bézier cubic):
-//   Pass 1: arcColor @ 0.08 alpha, 6px stroke — soft outer glow halo
-//   Pass 2: arcColor @ glowAlpha, 2px stroke  — bright animated core
-//   glowAlpha = 0.45 + 0.25 * sin(pulsePhase)  → range [0.20, 0.70]
+//   Pass 1: arcColor @ 0.08 alpha, (strokeWidth+2)px — soft outer glow halo
+//   Pass 2: arcColor @ glowAlpha,  (strokeWidth*0.5)px — bright animated core
+//   strokeWidth = 4 + amount*4  → range [4px, 8px]
+//   baseAlpha   = 0.15 + amount*0.55  → range [0.15, 0.70]
+//   glowAlpha   = baseAlpha * (0.8 + 0.2*sin(pulsePhase))
 //   pulsePhase advances 0.08 rad / timer tick (≈ 2.4 rad/s, ≈ 0.38 Hz)
 //
 // Coupling Currents (Vision Quest 015):
-//   Each active arc also renders NumParticlesPerArc animated dots flowing
-//   along the Bézier path from source to destination.
+//   Each active arc renders 3 + amount*9 animated dots (capped at NumParticlesPerArc)
+//   flowing along the Bézier path from source to destination.
 //
 //   FlowParticle.t ∈ [0, 1) tracks position along the path.
 //   Speed scales with coupling amount: speed = 0.005 + amount * 0.03
@@ -197,15 +199,21 @@ public:
             if (pulsePhase[static_cast<size_t>(k)] > juce::MathConstants<float>::twoPi)
                 pulsePhase[static_cast<size_t>(k)] -= juce::MathConstants<float>::twoPi;
 
-            const float glowAlpha = 0.45f + 0.25f * std::sin(pulsePhase[static_cast<size_t>(k)]);
+            // Amount-weighted glow: low coupling = subtle, high coupling = vivid.
+            // baseAlpha range: 0.15 (amount=0) → 0.70 (amount=1).
+            const float baseAlpha  = 0.15f + ai.amount * 0.55f;
+            const float glowAlpha  = baseAlpha * (0.8f + 0.2f * std::sin(pulsePhase[static_cast<size_t>(k)]));
+
+            // Stroke width scales with coupling amount: 4px (0%) → 8px (100%).
+            const float strokeWidth = 4.0f + ai.amount * 4.0f;
 
             // Pass 1: wide soft glow halo
             g.setColour(arcColor.withAlpha(0.08f));
-            g.strokePath(arc, juce::PathStrokeType(6.0f));
+            g.strokePath(arc, juce::PathStrokeType(strokeWidth + 2.0f));
 
             // Pass 2: bright animated core
             g.setColour(arcColor.withAlpha(glowAlpha));
-            g.strokePath(arc, juce::PathStrokeType(2.0f));
+            g.strokePath(arc, juce::PathStrokeType(strokeWidth * 0.5f));
 
             // ----------------------------------------------------------------
             // Coupling Currents — particle flow (Vision Quest 015)
@@ -228,10 +236,13 @@ public:
             // Speed scales with coupling amount so high-coupling feels energetic.
             const float speed = 0.005f + ai.amount * 0.03f;
 
+            // Particle count scales with coupling amount: 3 (amount≈0) → 12 (amount=1).
+            const int nParticles = std::min(3 + static_cast<int>(ai.amount * 9.0f), NumParticlesPerArc);
+
             // Pre-compute arc path length for getPointAlongPath() calls.
             const float arcLength = arc.getLength();
 
-            for (int p = 0; p < NumParticlesPerArc; ++p)
+            for (int p = 0; p < nParticles; ++p)
             {
                 auto& particle = particles[static_cast<size_t>(p)];
 

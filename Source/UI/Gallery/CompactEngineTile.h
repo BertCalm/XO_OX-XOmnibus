@@ -91,6 +91,9 @@ public:
                               : GalleryColors::get(GalleryColors::emptySlot());
         miniWave.setSlot(slot);
         if (eng) miniWave.setAccentColour(eng->getAccentColour());
+        // Sync mute state from processor so tile visual matches processor state
+        // after preset load, session restore, or any external state change.
+        isMuted = processor.isSlotMuted(slot);
         repaint();
     }
 
@@ -166,6 +169,25 @@ public:
                 couplingModCount   = modCount;
                 couplingAudioCount = audioCount;
                 couplingKnotCount  = knotCount;
+                needsRepaint = true;
+            }
+
+            // ── Coupling lean — eye shift direction for creature animation ────
+            // Sum amount-weighted directions of active routes where this slot is
+            // the destination. Routes from lower-indexed slots pull left (negative),
+            // routes from higher-indexed slots pull right (positive).
+            float lean = 0.0f;
+            for (const auto& r : routes)
+            {
+                if (!r.active || r.amount < 0.001f) continue;
+                if (r.destSlot != slot) continue;
+                float direction = (r.sourceSlot < slot) ? -1.0f : 1.0f;
+                lean += direction * r.amount;
+            }
+            lean = std::clamp(lean, -1.0f, 1.0f);
+            if (std::abs(lean - creatureState_.couplingLean) > 0.001f)
+            {
+                creatureState_.couplingLean = lean;
                 needsRepaint = true;
             }
         }
@@ -722,7 +744,7 @@ private:
     bool hasEngine  = false;
     bool isSelected = false;
     bool isLoading  = false;
-    bool isMuted    = false; // visual-only; no APVTS param yet
+    bool isMuted    = false; // synced to processor.slotMuted[] via setSlotMuted/isSlotMuted
     int  voiceCount = 0;
 
     // Macro bar values — updated in timerCallback at 10Hz
