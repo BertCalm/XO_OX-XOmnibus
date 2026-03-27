@@ -248,6 +248,37 @@ public:
         // Sync toggle visual state to the preference we read early in the constructor.
         themeToggleBtn.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
 
+        // P0-3: Slim preset nav — prev/next arrow buttons
+        addAndMakeVisible(presetPrevBtn);
+        presetPrevBtn.setButtonText(juce::String(juce::CharPointer_UTF8("\xe2\x97\x80")));
+        presetPrevBtn.setTooltip("Previous preset");
+        A11y::setup(presetPrevBtn, "Previous Preset", "Go to previous preset");
+        presetPrevBtn.onClick = [this]
+        {
+            repaint(); // placeholder: step to previous preset
+        };
+
+        addAndMakeVisible(presetNextBtn);
+        presetNextBtn.setButtonText(juce::String(juce::CharPointer_UTF8("\xe2\x96\xb6")));
+        presetNextBtn.setTooltip("Next preset");
+        A11y::setup(presetNextBtn, "Next Preset", "Go to next preset");
+        presetNextBtn.onClick = [this]
+        {
+            repaint(); // placeholder: step to next preset
+        };
+
+        // P0-4: Settings gear button — far-right header
+        addAndMakeVisible(settingsBtn);
+        settingsBtn.setButtonText(juce::String(juce::CharPointer_UTF8("\xe2\x9a\x99")));
+        settingsBtn.setTooltip("Settings");
+        A11y::setup(settingsBtn, "Settings", "Open settings panel");
+        settingsBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t3()));
+        settingsBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
+        settingsBtn.onClick = [this]
+        {
+            // placeholder: switch sidebar to settings tab
+        };
+
         // Export button — launches ExportDialog as a CallOutBox
         addAndMakeVisible(exportBtn);
         exportBtn.setButtonText("XPN");
@@ -478,6 +509,9 @@ public:
     {
         enginesBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t2()));
         enginesBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
+        // P0-4: Settings gear — T3 text, re-apply on theme change
+        settingsBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t3()));
+        settingsBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
         // Re-apply any other explicit setColour() calls that use theme-aware values here.
     }
 
@@ -590,6 +624,173 @@ public:
             g.setColour(border());
             g.drawVerticalLine(sepX, (float)headerH, (float)getHeight());
         }
+
+        // ── P0-3: Preset name text — centered between prev/next arrow buttons ──
+        // Draw centered preset name between presetPrevBtn and presetNextBtn.
+        if (presetPrevBtn.isVisible() && presetNextBtn.isVisible())
+        {
+            int nameX = presetPrevBtn.getRight();
+            int nameW = presetNextBtn.getX() - nameX;
+            int nameY = presetPrevBtn.getY();
+            int nameH = presetPrevBtn.getHeight();
+
+            juce::String presetName = processor.getPresetManager().getCurrentPreset().name;
+            if (presetName.isEmpty())
+                presetName = "— No Preset —";
+
+            g.setColour(get(t1()));
+            g.setFont(GalleryFonts::body(12.0f));
+            // Truncate with ellipsis if too long
+            juce::String truncated = presetName;
+            {
+                auto font = GalleryFonts::body(12.0f);
+                if (font.getStringWidth(presetName) > nameW - 8)
+                {
+                    while (truncated.length() > 1 &&
+                           font.getStringWidth(truncated + "...") > nameW - 8)
+                        truncated = truncated.dropLastCharacters(1);
+                    truncated += "...";
+                }
+            }
+            g.drawText(truncated, nameX, nameY, nameW, nameH, juce::Justification::centred, false);
+        }
+
+        // ── P0-12: Signal flow breadcrumb strip in Column B ───────────────────
+        {
+            auto colBPanelFull = layout.getColumnBPanel();
+            // Strip sits at the very top of Column B panel (below header edge)
+            auto stripBounds = colBPanelFull.removeFromTop(kSignalFlowStripH).toFloat();
+
+            // Subtle gradient background: rgba(255,255,255,0.015) → transparent
+            {
+                juce::ColourGradient grad(
+                    juce::Colour(0xFFFFFFFF).withAlpha(0.015f), stripBounds.getX(), stripBounds.getY(),
+                    juce::Colour(0x00FFFFFF),                    stripBounds.getX(), stripBounds.getBottom(),
+                    false);
+                g.setGradientFill(grad);
+                g.fillRect(stripBounds);
+            }
+
+            // Section labels: SRC1 → SRC2 → FILTER → SHAPER → FX → OUT
+            static const juce::String kSections[] = { "SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT" };
+            static const int kNumSections = 6;
+            const int activeSection = 0; // P0-12: default active = SRC1 (index 0)
+
+            const float hPad = 12.0f;
+            const float usableW = stripBounds.getWidth() - hPad * 2.0f;
+            const float cy = stripBounds.getCentreY();
+
+            // Count total text + arrow widths to distribute evenly
+            g.setFont(GalleryFonts::value(8.5f));
+            float totalTextW = 0.0f;
+            for (int i = 0; i < kNumSections; ++i)
+                totalTextW += g.getCurrentFont().getStringWidthFloat(kSections[i]);
+            const float arrowW = g.getCurrentFont().getStringWidthFloat(" \xe2\x86\x92 "); // " → "
+            float totalW = totalTextW + arrowW * (kNumSections - 1);
+            float startX = stripBounds.getX() + hPad + (usableW - totalW) * 0.5f;
+
+            for (int i = 0; i < kNumSections; ++i)
+            {
+                bool active = (i == activeSection);
+                g.setColour(active ? get(t1()) : get(t3()));
+                g.setFont(GalleryFonts::value(8.5f));
+
+                float secW = g.getCurrentFont().getStringWidthFloat(kSections[i]);
+                g.drawText(kSections[i],
+                           juce::Rectangle<float>(startX, cy - 8.0f, secW + 2.0f, 16.0f),
+                           juce::Justification::centredLeft, false);
+                startX += secW;
+
+                // Draw arrow separator (not after last)
+                if (i < kNumSections - 1)
+                {
+                    g.setColour(get(t3()));
+                    juce::String arrow(juce::CharPointer_UTF8(" \xe2\x86\x92 "));
+                    float aW = g.getCurrentFont().getStringWidthFloat(arrow);
+                    g.drawText(arrow,
+                               juce::Rectangle<float>(startX, cy - 8.0f, aW + 2.0f, 16.0f),
+                               juce::Justification::centredLeft, false);
+                    startX += aW;
+                }
+            }
+        }
+
+        // ── P0-13: Macro knobs row — visual placeholder below signal flow strip ─
+        {
+            auto colBPanelFull = layout.getColumnBPanel();
+            colBPanelFull.removeFromTop(kSignalFlowStripH); // skip signal flow strip
+            auto rowBounds = colBPanelFull.removeFromTop(kMacroKnobsRowH).toFloat();
+
+            // Top border — 1px in border color
+            g.setColour(border());
+            g.fillRect(rowBounds.getX(), rowBounds.getY(), rowBounds.getWidth(), 1.0f);
+
+            // Subtle top-down gradient background
+            {
+                juce::ColourGradient grad(
+                    juce::Colour(0xFFFFFFFF).withAlpha(0.015f), rowBounds.getX(), rowBounds.getY(),
+                    juce::Colour(0x00FFFFFF),                    rowBounds.getX(), rowBounds.getBottom(),
+                    false);
+                g.setGradientFill(grad);
+                g.fillRect(rowBounds.withTrimmedTop(1.0f));
+            }
+
+            // 4 macro knob placeholders
+            static const char* kMacroLabels[] = { "CHARACTER", "MOVEMENT", "COUPLING", "SPACE" };
+            const int kNumMacros = 4;
+            const float knobD = 48.0f;   // knob diameter
+            const float knobR = knobD * 0.5f;
+            const float trackW = 1.4f;   // arc track stroke width
+            const float fillW  = 1.8f;   // arc fill stroke width
+            const float fillPos = 0.40f; // 40% placeholder value
+
+            // Evenly space 4 knobs across the row
+            float cellW = rowBounds.getWidth() / (float)kNumMacros;
+            const float labelH = 12.0f;
+            const float valueH = 12.0f;
+            const float totalKnobH = labelH + knobD + valueH + 4.0f; // label + knob + value + gaps
+            const float knobAreaY = rowBounds.getY() + (rowBounds.getHeight() - totalKnobH) * 0.5f;
+
+            juce::Colour goldColor = juce::Colour(GalleryColors::xoGold);
+
+            for (int k = 0; k < kNumMacros; ++k)
+            {
+                float cellX = rowBounds.getX() + k * cellW;
+                float cellCX = cellX + cellW * 0.5f;
+
+                // Label above — JetBrains Mono 7px, xoGold at 0.65 alpha
+                g.setColour(goldColor.withAlpha(0.65f));
+                g.setFont(GalleryFonts::value(7.0f));
+                g.drawText(kMacroLabels[k],
+                           juce::Rectangle<float>(cellX, knobAreaY, cellW, labelH),
+                           juce::Justification::centred, false);
+
+                // Arc track — full circle in T3
+                float cx = cellCX;
+                float cy2 = knobAreaY + labelH + knobR + 2.0f;
+                const float startAngle = juce::MathConstants<float>::pi * 1.25f; // 225°
+                const float endAngle   = juce::MathConstants<float>::pi * 2.75f; // 495° (315° sweep)
+
+                juce::Path trackPath;
+                trackPath.addArc(cx - knobR, cy2 - knobR, knobD, knobD, startAngle, endAngle, true);
+                g.setColour(get(t3()));
+                g.strokePath(trackPath, juce::PathStrokeType(trackW));
+
+                // Arc fill — xoGold at fillPos (40%)
+                float fillAngle = startAngle + (endAngle - startAngle) * fillPos;
+                juce::Path fillPath;
+                fillPath.addArc(cx - knobR, cy2 - knobR, knobD, knobD, startAngle, fillAngle, true);
+                g.setColour(goldColor);
+                g.strokePath(fillPath, juce::PathStrokeType(fillW));
+
+                // Value text below — "0.40" in mono 8px, T2 color
+                g.setColour(get(t2()));
+                g.setFont(GalleryFonts::value(8.0f));
+                g.drawText("0.40",
+                           juce::Rectangle<float>(cellX, cy2 + knobR + 2.0f, cellW, valueH),
+                           juce::Justification::centred, false);
+            }
+        }
     }
 
     void resized() override
@@ -605,8 +806,22 @@ public:
         // ── Header (52px): tighter layout for prototype match ──────────────
         auto header = layout.getHeader();
         // Right zone — peel off from right edge inward:
-        presetBrowser.setBounds(header.removeFromRight(200).reduced(4, 8));
+        // P0-4: Settings gear button — far right, 8px from edge
+        {
+            auto gearSlice = header.removeFromRight(28 + 8); // 8px right margin
+            settingsBtn.setBounds(gearSlice.removeFromRight(28).withSizeKeepingCentre(28, 28));
+        }
         exportBtn.setBounds(header.removeFromRight(44).reduced(4, 10));
+        // P0-3: Slim inline preset nav strip — 180px wide, 22px tall, centred vertically
+        {
+            auto presetSlice = header.removeFromRight(180);
+            int arrowSz = 22;
+            int iy = (presetSlice.getHeight() - arrowSz) / 2;
+            presetPrevBtn.setBounds(presetSlice.getX(), presetSlice.getY() + iy, arrowSz, arrowSz);
+            presetNextBtn.setBounds(presetSlice.getRight() - arrowSz, presetSlice.getY() + iy, arrowSz, arrowSz);
+        }
+        // Hide the old wide preset browser strip — it is replaced by the slim nav above.
+        presetBrowser.setBounds(0, -200, 0, 0); // parked off-screen (zero-width)
         // ── Icon strip: 5 compact 24×24 toggle buttons ─────────────────────
         // Prototype: indicator-pill sized controls, grouped tightly
         {
@@ -685,6 +900,10 @@ public:
         // MasterFX strip at bottom of Column B panel area
         auto masterFXBounds = colBPanel.removeFromBottom(kMasterFXH).reduced(6, 3);
         masterFXStrip.setBounds(masterFXBounds);
+
+        // P0-12 + P0-13: Reserve signal flow strip (28px) + macro knobs row (64px) at top.
+        // These are painted directly in paint() below — no child components needed.
+        colBPanel.removeFromTop(kSignalFlowStripH + kMacroKnobsRowH);
 
         // Remaining Column B panel area for the view stack (stacked, one visible at a time)
         overview.setBounds(colBPanel);
@@ -1134,8 +1353,10 @@ private:
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
     // Use ColumnLayoutManager::kHeaderH (52) and ColumnLayoutManager::kFieldMapH (65).
-    static constexpr int kMasterFXH      = 68;  // MasterFX compact strip at bottom of Column B
-    static constexpr int kFadeMs         = 150; // Panel cross-fade duration (ms)
+    static constexpr int kMasterFXH        = 68;  // MasterFX compact strip at bottom of Column B
+    static constexpr int kSignalFlowStripH = 28;  // P0-12: signal flow breadcrumb strip
+    static constexpr int kMacroKnobsRowH   = 64;  // P0-13: macro knobs row placeholder
+    static constexpr int kFadeMs           = 150; // Panel cross-fade duration (ms)
     // kNumPrimarySlots: the 4 slots always visible (indices 0-3).
     // The Ghost Slot (index 4) is conditional — managed by checkCollectionUnlock().
     static constexpr int kNumPrimarySlots = 4;
@@ -1210,6 +1431,11 @@ private:
     juce::TextButton       surfaceToggleBtn;
     juce::TextButton       themeToggleBtn;
     juce::TextButton       exportBtn;
+    // P0-3: Slim inline preset nav
+    juce::TextButton       presetPrevBtn;
+    juce::TextButton       presetNextBtn;
+    // P0-4: Settings gear button
+    juce::TextButton       settingsBtn;
     // PlaySurface lives in a floating DocumentWindow popup (created lazily on first show).
     std::unique_ptr<PlaySurfaceWindow> playSurfaceWindow;
     CouplingArcOverlay     couplingArcs { processor };

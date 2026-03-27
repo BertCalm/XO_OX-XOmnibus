@@ -412,9 +412,106 @@ public:
             // ── Macro indicator bars ───────────────────────────────────────
             paintMacroBars(g, nameX, nameY + nameH + 2.0f);
 
-            // ── Coupling dots ──────────────────────────────────────────────
-            float dotsY = nameY + nameH + 2.0f + 4 * 5.0f + 2.0f; // below bars
-            paintCouplingDots(g, nameX, dotsY);
+            // ── P0-7: Mini knob arcs (SRC1 / FILT / ENV / FX) ─────────────
+            // Positioned above the mood/FX row, bottom-anchored layout.
+            // Knob arc top = content.getBottom() - 3 (CPU) - 3 (gap) - 6 (mood row)
+            //                - 3 (gap) - 8 (label) - 16 (arc) = content.getBottom() - 39
+            {
+                const float arcDiam   = 16.0f;
+                const float arcRadius = arcDiam * 0.5f;
+                const float arcGap    = 4.0f;
+                const float arcStep   = arcDiam + arcGap;
+                const float knobbArcTop = content.getBottom() - 39.0f;
+
+                // Start knobs at nameX, aligned left under macro bars
+                float kx = nameX;
+
+                static const char* kLabels[4] = { "SRC1", "FILT", "ENV", "FX" };
+
+                for (int k = 0; k < 4; ++k)
+                {
+                    float cx = kx + arcRadius;
+                    float cy = knobbArcTop + arcRadius;
+
+                    // Arc sweep: 270° starting at ~135° (bottom-left), sweeping CW
+                    const float startAngle  = juce::MathConstants<float>::pi * 0.75f;
+                    const float sweepAngle  = juce::MathConstants<float>::pi * 1.5f; // 270°
+                    const float fillPos     = 0.5f; // placeholder — 50%
+
+                    // Track arc (T4 color, 1.2px stroke)
+                    juce::Path trackArc;
+                    trackArc.addCentredArc(cx, cy, arcRadius - 1.0f, arcRadius - 1.0f,
+                                           0.0f, startAngle, startAngle + sweepAngle, true);
+                    g.setColour(GalleryColors::get(GalleryColors::t4()));
+                    g.strokePath(trackArc, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
+                                                                 juce::PathStrokeType::rounded));
+
+                    // Fill arc (accent color, 1.6px stroke, from start to fillPos)
+                    juce::Path fillArc;
+                    fillArc.addCentredArc(cx, cy, arcRadius - 1.0f, arcRadius - 1.0f,
+                                          0.0f, startAngle, startAngle + sweepAngle * fillPos, true);
+                    g.setColour(accent.withAlpha(0.85f));
+                    g.strokePath(fillArc, juce::PathStrokeType(1.6f, juce::PathStrokeType::curved,
+                                                                juce::PathStrokeType::rounded));
+
+                    // Label below arc (7px mono, T3 color)
+                    g.setFont(GalleryFonts::value(7.0f));
+                    g.setColour(GalleryColors::get(GalleryColors::t3()));
+                    g.drawText(kLabels[k],
+                               (int)(kx - 1.0f), (int)(knobbArcTop + arcDiam + 1.0f),
+                               (int)(arcDiam + 4.0f), 8,
+                               juce::Justification::centred);
+
+                    kx += arcStep;
+                }
+            }
+
+            // ── P0-8: Mood dots + P0-10: FX indicator — same row ──────────
+            // Row sits 3px above CPU bar: y = content.getBottom() - 3 (cpu) - 3 (gap) - 6 (dots)
+            {
+                const float moodDotDiam    = 6.0f;
+                const float moodDotSpacing = 9.0f; // center-to-center
+                const float moodRowY       = content.getBottom() - 12.0f;
+
+                // 4 mood dots starting at nameX
+                for (int d = 0; d < 4; ++d)
+                {
+                    float dotX = nameX + static_cast<float>(d) * moodDotSpacing;
+                    float alpha = (d < 2) ? 0.60f : 0.22f; // first 2 filled, last 2 dim
+                    g.setColour(accent.withAlpha(alpha));
+                    g.fillEllipse(dotX, moodRowY, moodDotDiam, moodDotDiam);
+                }
+
+                // P0-10: FX label + dot at right of mood dots
+                float fxLabelX = nameX + 4.0f * moodDotSpacing + 4.0f;
+                g.setFont(GalleryFonts::value(8.0f));
+                g.setColour(GalleryColors::get(GalleryColors::t4()));
+                g.drawText("FX", (int)fxLabelX, (int)(moodRowY - 1.0f), 14, 8,
+                           juce::Justification::centredLeft);
+
+                // FX active dot: 5px, xoGold at 0.7 alpha
+                float fxDotX = fxLabelX + 16.0f;
+                float fxDotY = moodRowY + (moodDotDiam - 5.0f) * 0.5f;
+                g.setColour(GalleryColors::get(GalleryColors::xoGold).withAlpha(0.70f));
+                g.fillEllipse(fxDotX, fxDotY, 5.0f, 5.0f);
+            }
+
+            // ── P0-9: Per-slot CPU bar — very bottom of content area ──────
+            {
+                float barX = content.getX();
+                float barW = content.getWidth();
+                float barY = content.getBottom() - 3.0f;
+                float barH = 3.0f;
+
+                // Track: rgba(255,255,255,0.06)
+                g.setColour(juce::Colour(0x0FFFFFFF));
+                g.fillRoundedRectangle(barX, barY, barW, barH, 2.0f);
+
+                // Fill: accent at 0.55 alpha, 30% width placeholder
+                float fillW = barW * 0.30f;
+                g.setColour(accent.withAlpha(0.55f));
+                g.fillRoundedRectangle(barX, barY, fillW, barH, 2.0f);
+            }
 
             // ── Voice activity dots — right edge of content area ──────────
             if (voiceCount > 0)
@@ -489,13 +586,22 @@ public:
         content.removeFromBottom(8);
         content.removeFromLeft(14);
 
-        // MiniWaveform: 40×16pt, placed at the bottom of the content area after the porthole.
+        // MiniWaveform: 40×16pt, placed above the new bottom elements.
+        // Bottom element stack (P0-7 through P0-9), from bottom up:
+        //   CPU bar    : 3px  at content.getBottom() - 3
+        //   gap        : 3px
+        //   Mood/FX row: 6px  at content.getBottom() - 12
+        //   gap        : 3px
+        //   Knob arcs  : 16px arc + 8px label = 24px, top at content.getBottom() - 39
+        //   gap        : 3px
+        //   Waveform   : 16px at content.getBottom() - 58
+        //
         // Porthole center is at content.getX() + 8 + 15 = content.getX() + 23.
         // Porthole right edge is at content.getX() + 23 + 15 = content.getX() + 38.
         int contentLeft = content.getX() + 38 + 7; // 7px gap after porthole right edge
         int waveW = 40, waveH = 16;
         int waveX = contentLeft;
-        int waveY = content.getBottom() - waveH;
+        int waveY = content.getBottom() - 58;
         miniWave.setBounds(waveX, waveY, waveW, waveH);
 
         // P8 fix: pre-compute the dashed border path for empty slots (tile outline)
