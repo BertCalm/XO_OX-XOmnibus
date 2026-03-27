@@ -85,7 +85,11 @@ fingerprints. The fingerprint IS the provenance, visualized. Rendered via Sprite
 shader (radial path from 64 amplitude values, ~20 lines of Metal shader code).
 
 ### 3.5 Phantoms (Bleached Specimens)
-Health decays at 1 point/day (100-day cycle). At 0 health, the specimen **bleaches** — it doesn't die, it TRANSFORMS:
+Health enters DORMANCY if the app is not opened for 7+ days. During dormancy, health decays at 1 point/day. Opening the app pauses dormancy for 7 days (the "weekly check-in" window). Active play further extends the window.
+
+Effective cycle: a specimen goes from full health (100) to Phantom in ~107 days of COMPLETE abandonment (7-day grace + 100-day decay). A player who opens the app once a week never experiences health decay at all.
+
+At 0 health, the specimen **bleaches** — it doesn't die, it TRANSFORMS:
 - The pixel creature goes translucent/ghostly
 - Synthesis character inverts (bright → dark, rhythmic → sustained, filtered → raw)
 - The phantom fills spectral gaps the living specimens leave
@@ -167,6 +171,19 @@ The 4x4 grid doubles as the instrument interface. No separate PlaySurface screen
 - Modulator specimens modulate adjacent specimens' parameters
 - Effect specimens process the mixed output (parallel or serial, configurable)
 - The reef's audio output is the sum of all coupled chains
+
+### 5.3 Audio Export
+- **Record Reef**: Long-press the reef name → "Record" option. Records reef audio output for up to 60 seconds.
+- **Format**: M4A (AAC 256kbps) via AVAudioEngine offline render tap.
+- **Share**: On stop, share sheet appears (AirDrop, Files, Messages, social media).
+- **Silent export**: Works in silent mode — renders to file without speaker output if needed.
+- **15-second clip mode**: Quick-share option generates a 15-second ambient clip from the reef's current state, optimized for Instagram Stories / TikTok. Auto-fades in/out.
+
+### 5.4 MIDI Output
+- **CoreMIDI virtual port**: OBRIX Pocket creates a virtual MIDI source visible to other apps (AUM, GarageBand, etc.)
+- **Note mapping**: Each reef slot emits on a configurable MIDI channel. Tap velocity maps from the touch-speed curve.
+- **No MIDI input**: The reef IS the controller. External MIDI input is intentionally excluded to preserve the phone-as-instrument identity.
+- **Ableton Link** (Phase 3): Optional clock sync for LFO and ambient drone tempo-locking.
 
 **Reef ambient mode** (app backgrounded):
 - All coupled specimens produce a slow, generative drone
@@ -293,7 +310,7 @@ Each source gives exclusive CATEGORIES to prevent cannibalization:
 | Sink | Mechanism |
 |------|-----------|
 | Reef capacity (16 slots) | Must RELEASE a specimen to catch when full |
-| Health decay (1pt/day) | Neglected specimens bleach → Phantom (gameplay-limited) |
+| Health decay (dormancy model) | After 7-day grace + 1pt/day decay → Phantom (gameplay-limited) |
 | The Dive | Failed dives bleach specimens |
 | Release to wild | Released specimens re-enter spawn pool for other players (with provenance) |
 | Prestige | Voluntary reef dissolution for meta-progression |
@@ -593,6 +610,7 @@ If a permission is denied:
 - [ ] Musical catch duet (generative phrase + touch strip + harmonic detection)
 - [ ] Organic reef layout (pseudo-random offsets + Bézier coupling + breathing animation)
 - [ ] Spectral fingerprint visualization (radial waveform shader from 64-float profile)
+- [ ] Audio export (60-sec reef recording to M4A + share sheet)
 - Deliverable: TestFlight beta — catch specimens, build reef, play it
 
 ### Phase 2: The Dive + Polish (3-4 weeks)
@@ -606,6 +624,8 @@ If a permission is denied:
 - [ ] Haptic feedback (CoreHaptics tied to coupling)
 - [ ] Dive sonic zones (per-zone master FX processing: LP filter, reverb, pitch, stripping)
 - [ ] Soul Imprint accumulation (16-float behavioral vector, UserDefaults persistence). Soul Imprint accumulation begins silently (no user-visible effect until Phase 3 ambient drone tinting).
+- [ ] MIDI output (CoreMIDI virtual port, per-slot channel mapping)
+- [ ] Specimen card sharing (PNG: pixel creature + spectral fingerprint + provenance text → share sheet)
 - Deliverable: Feature-complete beta
 
 ### Phase 3: Social + Reef Link (3-4 weeks)
@@ -624,6 +644,7 @@ If a permission is denied:
 - [ ] Reef Visits (view other players' reefs)
 - [ ] Coupling Discovery spawn mechanic
 - [ ] Tide parameter (Colony View) on desktop
+- [ ] Reef Bounce: on-device 16 one-shot render (one per specimen, 2-3 sec each) + AirDrop to MPC as WAV + XPM bundle
 
 ## 15. Risk Register
 
