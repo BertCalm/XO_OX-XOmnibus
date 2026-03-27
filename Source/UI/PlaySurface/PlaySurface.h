@@ -40,7 +40,7 @@ namespace PS {
     static constexpr int kZone1W       = 480;
     static constexpr int kZone2W       = 200;
     static constexpr int kZone4W       = 100;
-    static constexpr int kZone3H       = 80;
+    static constexpr int kZone3H       = 64;
     static constexpr int kMainZoneH    = 240;
     static constexpr int kPadCols      = 4;
     static constexpr int kPadRows      = 4;
@@ -1140,60 +1140,93 @@ public:
             g.fillRect(b);
         }
 
-        // Gesture trail — accent coloured
+        // Mode tabs inside strip (Spec Section 9.2) — rendered at left edge
+        {
+            constexpr const char* kModeTabNames[] = { "DubSpace", "FilterSweep", "Coupling", "DubSiren" };
+            constexpr float tabW = 72.0f;
+            constexpr float tabH = 22.0f;
+            float tabY = (b.getHeight() - tabH) / 2.0f + b.getY();
+
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+            for (int i = 0; i < 4; ++i)
+            {
+                auto tabRect = juce::Rectangle<float>(b.getX() + i * tabW + 4.0f, tabY, tabW - 4.0f, tabH);
+                bool active = (i == static_cast<int>(stripMode));
+
+                if (active)
+                {
+                    g.setColour(accentColour.withAlpha(0.25f));
+                    g.fillRoundedRectangle(tabRect, 3.0f);
+                }
+
+                g.setColour(juce::Colours::white.withAlpha(active ? 1.0f : 0.45f));
+                g.drawText(kModeTabNames[i], tabRect, juce::Justification::centred);
+            }
+        }
+
+        // Gestural area is to the right of the 4 tabs (4 × 72 = 288px offset)
+        auto gestureArea = b.withTrimmedLeft(288.0f + 4.0f);
+
+        // Crosshair gridlines (Spec Section 9.3) — opacity 0.10, 1px white
+        g.setColour(juce::Colours::white.withAlpha(0.10f));
+        float midY = gestureArea.getCentreY();
+        float midX = gestureArea.getCentreX();
+        g.drawHorizontalLine(static_cast<int>(midY), gestureArea.getX(), gestureArea.getRight());
+        g.drawVerticalLine(static_cast<int>(midX), gestureArea.getY(), gestureArea.getBottom());
+
+        // Gesture trail — accent coloured (constrained to gestureArea)
         for (int i = 0; i < kStripTrailSize; ++i)
         {
             int idx = (stripTrailHead - i + kStripTrailSize) % kStripTrailSize;
             auto& pt = stripTrail[idx];
             if (pt.age > kWarmMemoryDur) continue;
             float alpha = (1.0f - pt.age / kWarmMemoryDur) * 0.5f;
-            float sx = b.getX() + pt.x * b.getWidth();
-            float sy = b.getY() + (1.0f - pt.y) * b.getHeight();
+            float sx = gestureArea.getX() + pt.x * gestureArea.getWidth();
+            float sy = gestureArea.getY() + (1.0f - pt.y) * gestureArea.getHeight();
             g.setColour(accentColour.withAlpha(alpha));
             g.fillEllipse(sx - 2, sy - 2, 4, 4);
         }
 
-        // Bar indicator: 3px wide vertical bar at stripX, linear gradient accent @ 0.70 bottom → transparent top
-        {
-            float barX = b.getX() + stripX * b.getWidth() - 1.5f;
-            juce::ColourGradient barGrad(accentColour.withAlpha(0.70f), barX, b.getBottom(),
-                                         accentColour.withAlpha(0.0f),  barX, b.getY(), false);
-            g.setGradientFill(barGrad);
-            g.fillRect(juce::Rectangle<float>(barX, b.getY(), 3.0f, b.getHeight()));
+        // Cursor position mapped to gestureArea
+        float cx = gestureArea.getX() + stripX * gestureArea.getWidth();
+        float cy = gestureArea.getY() + (1.0f - stripY) * gestureArea.getHeight();
 
-            // Floor glow: 18px wide radial gradient under the bar
-            float floorY = b.getBottom() - 4.0f;
-            float glowCx = barX + 1.5f;
-            juce::ColourGradient floorGlow(accentColour.withAlpha(0.08f), glowCx, floorY,
-                                           accentColour.withAlpha(0.0f), glowCx + 9.0f, floorY, true);
-            g.setGradientFill(floorGlow);
-            g.fillEllipse(glowCx - 9.0f, floorY - 4.0f, 18.0f, 8.0f);
-        }
+        // Vertical bar from cursor to strip floor (Spec Section 9.3)
+        g.setColour(accentColour.withAlpha(0.30f));
+        g.drawVerticalLine(static_cast<int>(cx), cy, gestureArea.getBottom());
 
-        // Cursor dot
-        float cursorCx = b.getX() + stripX * b.getWidth();
-        float cursorCy = b.getY() + (1.0f - stripY) * b.getHeight();
-        g.setColour(accentColour.withAlpha(0.20f));
-        g.fillEllipse(cursorCx - 12, cursorCy - 12, 24, 24);
+        // Floor glow (horizontal ellipse at bottom of vertical bar)
+        g.setColour(accentColour.withAlpha(0.30f));
+        g.fillEllipse(cx - 8.0f, gestureArea.getBottom() - 4.0f, 16.0f, 4.0f);
+
+        // Glow halo (16px diameter, 60% opacity)
+        g.setColour(accentColour.withAlpha(0.60f));
+        g.fillEllipse(cx - 8.0f, cy - 8.0f, 16.0f, 16.0f);
+
+        // Core dot (10px diameter, full accent)
         g.setColour(accentColour);
-        g.fillEllipse(cursorCx - 5, cursorCy - 5, 10, 10);
+        g.fillEllipse(cx - 5.0f, cy - 5.0f, 10.0f, 10.0f);
 
-        // Mode label: accent @ 0.40
-        g.setColour(accentColour.withAlpha(0.40f));
+        // Axis labels — 8px uppercase, 35% opacity, at the edges of gestureArea (Spec Section 9.4)
+        // Mode-specific: X axis = bottom-left of gestureArea, Y axis = top-right of gestureArea
         g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
-        static const char* modeNames[] = { "DUB SPACE", "FILTER SWEEP", "COUPLING", "DUB SIREN" };
-        g.drawText(modeNames[(int)stripMode], b.reduced(4), juce::Justification::topLeft);
-
-        // Axis labels: accent @ 0.40
-        static const char* xLabels[] = { "DELAY FB", "CUTOFF", "X>O PUMP", "ECHO" };
-        static const char* yLabels[] = { "REVERB", "RESONANCE", "O>X DRIFT", "PITCH" };
-        g.drawText(xLabels[(int)stripMode], b.reduced(4), juce::Justification::bottomLeft);
-        g.drawText(yLabels[(int)stripMode], b.reduced(4), juce::Justification::topRight);
+        g.setColour(juce::Colours::white.withAlpha(0.35f));
+        static const char* xLabels[] = { "DELAY FB", "CUTOFF",  "SPREAD",  "PITCH" };
+        static const char* yLabels[] = { "REVERB",   "RESONANCE", "DEPTH", "SIREN DEPTH" };
+        g.drawText(xLabels[(int)stripMode], gestureArea.reduced(4), juce::Justification::bottomLeft);
+        g.drawText(yLabels[(int)stripMode], gestureArea.reduced(4), juce::Justification::topRight);
     }
 
     void mouseDown(const juce::MouseEvent& e) override { updateStrip(e); touching = true; }
     void mouseDrag(const juce::MouseEvent& e) override { if (touching) updateStrip(e); }
-    void mouseUp(const juce::MouseEvent&) override { touching = false; }
+    void mouseUp(const juce::MouseEvent&) override
+    {
+        touching = false;
+        // Record release position as spring-back start; reset elapsed to begin 250ms ease-out
+        springStartX_  = stripX;
+        springStartY_  = stripY;
+        springElapsed_ = 0.0f;
+    }
 
     void tick()
     {
@@ -1201,11 +1234,19 @@ public:
 
         if (!touching)
         {
-            // Spring-back
+            // Spring-back: 250ms quadratic ease-out (Spec Section 9.5)
+            // kSpringDuration = 0.250s; timer runs at 30fps → each tick = 1/30s
+            constexpr float kSpringDuration = 0.250f;  // seconds
             float targetX = springTargets[(int)stripMode].x;
             float targetY = springTargets[(int)stripMode].y;
-            stripX += (targetX - stripX) * PS::kSnapSpring;
-            stripY += (targetY - stripY) * PS::kSnapSpring;
+
+            springElapsed_ += 1.0f / 30.0f;
+            float t = juce::jlimit(0.0f, 1.0f, springElapsed_ / kSpringDuration);
+            // Quadratic ease-out: starts fast, decelerates to target
+            float eased = 1.0f - std::pow(1.0f - t, 2.0f);
+
+            stripX = springStartX_ + (targetX - springStartX_) * eased;
+            stripY = springStartY_ + (targetY - springStartY_) * eased;
         }
 
         // Age trail
@@ -1230,6 +1271,11 @@ private:
     float stripX = 0.3f, stripY = 0.2f;
     bool  touching = false;
 
+    // Spring-back animation state (250ms ease-out)
+    float springElapsed_ = 999.0f;   // Start in "done" state
+    float springStartX_  = 0.3f;
+    float springStartY_  = 0.2f;
+
     struct SpringTarget { float x, y; };
     static constexpr SpringTarget springTargets[] = {
         { 0.3f, 0.2f },  // DubSpace
@@ -1244,8 +1290,11 @@ private:
 
     void updateStrip(const juce::MouseEvent& e)
     {
+        // Gestural area is to the right of the 4 mode tabs (4 × 72 + 4px padding = 292px)
         auto b = getLocalBounds().toFloat();
-        stripX = juce::jlimit(0.0f, 1.0f, (e.x - b.getX()) / b.getWidth());
+        auto gestureArea = b.withTrimmedLeft(292.0f);
+        float gx = juce::jlimit(gestureArea.getX(), gestureArea.getRight(), static_cast<float>(e.x));
+        stripX = juce::jlimit(0.0f, 1.0f, (gx - gestureArea.getX()) / gestureArea.getWidth());
         stripY = juce::jlimit(0.0f, 1.0f, 1.0f - (e.y - b.getY()) / b.getHeight());
 
         stripTrail[(size_t)stripTrailHead] = { stripX, stripY, 0.0f };
