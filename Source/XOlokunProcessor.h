@@ -14,6 +14,7 @@
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include <atomic>
+#include <array>
 #include <memory>
 
 namespace xolokun {
@@ -103,7 +104,7 @@ public:
 
     const juce::String getName() const override { return "XOlokun"; }
     bool acceptsMidi() const override { return true; }
-    bool producesMidi() const override { return false; }
+    bool producesMidi() const override { return true; }
     double getTailLengthSeconds() const override { return 6.0; }
 
     int getNumPrograms() override { return 1; }
@@ -213,6 +214,21 @@ public:
     // enqueued here on the message thread and merged into processBlock's
     // MidiBuffer each audio callback.  Thread-safe by JUCE contract.
     juce::MidiMessageCollector& getMidiCollector() { return playSurfaceMidiCollector; }
+
+    // ── CC Output queue (UI thread → audio thread) ───────────────────────────
+    // Push a CC event from the UI/message thread; emitted as MIDI output in the
+    // next processBlock call. Lock-free SPSC — never blocks the UI thread.
+    // Drop semantics: if the queue is full (256 events pending) the event is
+    // silently discarded — acceptable for CC output which is not audio-critical.
+    void pushCCOutput(uint8_t channel, uint8_t cc, uint8_t value) noexcept
+    {
+        size_t head = ccOutputHead_.load(std::memory_order_relaxed);
+        size_t next = (head + 1) % kCCQueueSize;
+        if (next == ccOutputTail_.load(std::memory_order_acquire))
+            return; // queue full — drop (acceptable for CC)
+        ccOutputQueue_[head] = { channel, cc, value };
+        ccOutputHead_.store(next, std::memory_order_release);
+    }
 
     // ── Performance gesture API (message thread safe) ─────────────────────────
 
@@ -390,6 +406,19 @@ private:
     std::atomic<size_t> noteQueueHead { 0 };
     std::atomic<size_t> noteQueueTail { 0 };
 
+    // ── CC Output SPSC queue (UI-thread write / audio-thread read) ────────────
+    // Carries CC events from XOuija (message thread) to MIDI output (audio thread).
+    // Head written by UI thread; tail read/advanced by audio thread.
+    struct CCOutputEvent {
+        uint8_t channel    = 0;   // 0-15 (MIDI channel minus 1)
+        uint8_t controller = 0;   // CC number (85-90 for XOuija)
+        uint8_t value      = 0;   // 0-127
+    };
+    static constexpr size_t kCCQueueSize = 256;
+    std::array<CCOutputEvent, kCCQueueSize> ccOutputQueue_ {};
+    std::atomic<size_t> ccOutputHead_ { 0 };   // written by UI thread
+    std::atomic<size_t> ccOutputTail_ { 0 };   // read by audio thread
+
     // PlaySurface MIDI collector — message thread enqueues, processBlock drains.
     juce::MidiMessageCollector playSurfaceMidiCollector;
 
@@ -437,6 +466,25 @@ private:
 
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);
+
+    // Drain the CC output queue into the MIDI output buffer.
+    // Called from the audio thread at the end of processBlock.
+    // Events are placed at numSamples-1 (end of block) so they don't
+    // precede audio events generated earlier in the same block.
+    void drainCCOutput(juce::MidiBuffer& midiOut, int numSamples) noexcept
+    {
+        size_t tail = ccOutputTail_.load(std::memory_order_relaxed);
+        size_t head = ccOutputHead_.load(std::memory_order_acquire);
+        while (tail != head)
+        {
+            const auto& evt = ccOutputQueue_[tail];
+            midiOut.addEvent(
+                juce::MidiMessage::controllerEvent(evt.channel + 1, evt.controller, evt.value),
+                numSamples - 1);
+            tail = (tail + 1) % kCCQueueSize;
+        }
+        ccOutputTail_.store(tail, std::memory_order_release);
+    }
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunProcessor)
 };

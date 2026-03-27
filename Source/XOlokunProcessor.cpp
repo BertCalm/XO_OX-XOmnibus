@@ -1801,6 +1801,9 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         const float  prevLoad = processingLoad.load(std::memory_order_relaxed);
         processingLoad.store(prevLoad * 0.9f + rawLoad * 0.1f, std::memory_order_relaxed);
     }
+
+    // Emit any pending CC output events from the XOuija UI (lock-free SPSC drain).
+    drainCCOutput(midi, numSamples);
 }
 
 void XOlokunProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)
