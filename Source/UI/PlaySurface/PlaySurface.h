@@ -9,6 +9,14 @@
 #include "HarmonicField.h"
 #include "XOuijaPanel.h"
 
+// Forward declaration — PlaySurface stores a pointer to XOlokunProcessor so it
+// can forward XOuija CC output events.  We also include the processor header
+// here so the inline wireOnCCOutput() lambda can call pushCCOutput() without
+// requiring callers to pre-include it.  XOlokunProcessor.h has no UI includes
+// so there is no circular dependency.
+namespace xolokun { class XOlokunProcessor; }
+#include "../../XOlokunProcessor.h"
+
 namespace xolokun {
 
 //==============================================================================
@@ -1645,10 +1653,50 @@ public:
             applyBtnColors(scaleModeBtn);
         }
 
+        // Wire XOuija CC output — processor_ is null at this point; the lambda
+        // will forward once setProcessor() is called from the editor.
+        wireOnCCOutput();
+
         // Timer is started in visibilityChanged() when the window becomes visible.
     }
 
     ~PlaySurface() override { stopTimer(); }
+
+    // ── Task 12: Processor wiring ─────────────────────────────────────────────
+    // Call setProcessor() from XOlokunEditor after construction so that XOuija
+    // CC output events (CC 85-90) are forwarded to the audio thread via the
+    // processor's lock-free CC queue.  The processor pointer is NOT owned here.
+    void setProcessor (XOlokunProcessor* p)
+    {
+        processor_ = p;
+        // Re-wire the onCCOutput callback now that we have the processor.
+        wireOnCCOutput();
+    }
+
+    // Handle incoming CC for remote planchette control.
+    // Call this from XOlokunEditor::handleIncomingMidi() to allow external
+    // hardware controllers to drive the XOuija planchette.
+    //
+    //   CC 86 — influence depth  (0-127 → 0.0-1.0)
+    //   CC 89 — home snap        (value==127 → reset planchette to centre)
+    //   CC 90 — drift toggle     (future use; state stored but not yet consumed)
+    void handleIncomingCC (int cc, int value)
+    {
+        if (cc == 86)
+        {
+            xouijaPanel_.setInfluenceDepth (value / 127.0f);
+        }
+        else if (cc == 89 && value == 127)
+        {
+            xouijaPanel_.setCirclePosition  (0.5f);
+            xouijaPanel_.setInfluenceDepth  (0.5f);
+        }
+        else if (cc == 90)
+        {
+            // Drift toggle — store for Task 13 verification.
+            driftToggleState_ = (value >= 64);
+        }
+    }
 
     // P0-1: Wire the MIDI pipeline.
     // Call this from XOlokunEditor after construction, passing the processor's
@@ -1804,7 +1852,24 @@ private:
         strip.tick();
     }
 
+    // Wire xouijaPanel_.onCCOutput → processor_->pushCCOutput().
+    // Called once by setProcessor() and once in the constructor (no-op until
+    // the processor is set, but the lambda captures processor_ by pointer so
+    // the live value is used at call time).
+    void wireOnCCOutput()
+    {
+        xouijaPanel_.onCCOutput = [this](uint8_t cc, uint8_t value)
+        {
+            if (processor_)
+                processor_->pushCCOutput(0, cc, value); // channel 0 = MIDI ch 1
+        };
+    }
+
     juce::Colour accentColour { 0xFFE9C46A }; // Default: XO Gold
+
+    // ── Task 12: processor pointer for CC output forwarding ──────────────────
+    XOlokunProcessor* processor_       = nullptr;
+    bool              driftToggleState_ = false;  // CC 90 state — used by Task 13
 
     NoteInputZone      noteInput;
     // V1 DEPRECATED — remove after V2 stabilizes

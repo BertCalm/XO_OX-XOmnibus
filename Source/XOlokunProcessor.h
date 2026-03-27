@@ -214,6 +214,32 @@ public:
     // MidiBuffer each audio callback.  Thread-safe by JUCE contract.
     juce::MidiMessageCollector& getMidiCollector() { return playSurfaceMidiCollector; }
 
+    // ── XOuija CC output queue (message thread → audio thread) ───────────────
+    // PlaySurface calls pushCCOutput() on the message thread when the XOuija
+    // planchette emits a CC (e.g. CC 85-90 for harmonic navigation).
+    // processBlock() drains the queue each block and injects CC messages into
+    // the outgoing MidiBuffer so DAW automation lanes capture XOuija gestures.
+    //
+    // SPSC lock-free ring — same pattern as noteQueue above.
+    // channel is 0-indexed (0 = MIDI channel 1).
+    struct CCOutputEvent {
+        uint8_t channel;
+        uint8_t cc;
+        uint8_t value;
+    };
+    static constexpr size_t kCCQueueSize = 256; // power-of-two
+
+    // Push from message thread (non-blocking; drops if full)
+    void pushCCOutput(uint8_t channel, uint8_t cc, uint8_t value) noexcept
+    {
+        size_t head = ccQueueHead.load(std::memory_order_relaxed);
+        size_t tail = ccQueueTail.load(std::memory_order_acquire);
+        size_t nextHead = (head + 1) & (kCCQueueSize - 1);
+        if (nextHead == tail) return; // full — drop rather than block
+        ccQueue[head] = { channel, cc, value };
+        ccQueueHead.store(nextHead, std::memory_order_release);
+    }
+
     // ── Performance gesture API (message thread safe) ─────────────────────────
 
     // Mute/unmute a slot. Audio thread reads slotMuted[] before mixing each
@@ -392,6 +418,11 @@ private:
 
     // PlaySurface MIDI collector — message thread enqueues, processBlock drains.
     juce::MidiMessageCollector playSurfaceMidiCollector;
+
+    // XOuija CC output queue storage (message-thread write / audio-thread read)
+    std::array<CCOutputEvent, kCCQueueSize> ccQueue {};
+    std::atomic<size_t> ccQueueHead { 0 };
+    std::atomic<size_t> ccQueueTail { 0 };
 
     // Set to true once setStateInformation() successfully restores saved state.
     // Used by prepareToPlay() to load a default engine on first launch (no saved state).
