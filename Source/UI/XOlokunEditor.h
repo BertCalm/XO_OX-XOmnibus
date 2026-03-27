@@ -185,6 +185,19 @@ public:
                 showOverview();
         };
 
+        // "CI" Cinematic Mode toggle button — collapses Columns A+C, Column B fills full width
+        addAndMakeVisible(cinematicToggleBtn);
+        cinematicToggleBtn.setButtonText("CI");
+        cinematicToggleBtn.setTooltip("Cinematic Mode — collapse side columns so Column B fills full width (key: M)");
+        A11y::setup (cinematicToggleBtn, "Cinematic Mode Toggle",
+                     "Toggle cinematic mode: collapse Columns A and C so Column B fills the full width");
+        cinematicToggleBtn.setClickingTogglesState(true);
+        cinematicToggleBtn.onClick = [this]
+        {
+            layout.cinematicMode = cinematicToggleBtn.getToggleState();
+            resized();
+        };
+
         // "PS" toggle button — PlaySurface popup window (4-zone performance interface)
         addAndMakeVisible(surfaceToggleBtn);
         surfaceToggleBtn.setButtonText("PS");
@@ -412,6 +425,15 @@ public:
                 selectSlot(4);
             return true;
         }
+        // 'M' toggles Cinematic Mode
+        if (key == juce::KeyPress('m') || key == juce::KeyPress('M'))
+        {
+            bool nowCinematic = cinematicToggleBtn.getToggleState();
+            cinematicToggleBtn.setToggleState(!nowCinematic, juce::dontSendNotification);
+            layout.cinematicMode = !nowCinematic;
+            resized();
+            return true;
+        }
         // 'P' toggles the PlaySurface popup window
         if (key == juce::KeyPress('p') || key == juce::KeyPress('P'))
         {
@@ -541,8 +563,8 @@ public:
         // PlaySurface is now a floating popup window — not an embedded component,
         // so playSurfaceVisible is always false for layout purposes.
         layout.playSurfaceVisible = false;
-        // columnCCollapsed and cinematicMode are toggled by their respective buttons
-        // (not yet wired — Column C is reserved space only in this step)
+        // cinematicMode is toggled by cinematicToggleBtn (CI button in header).
+        // columnCCollapsed is reserved for a future Column C collapse button.
         layout.compute(getWidth(), getHeight());
 
         // ── Header (52px): tighter layout for prototype match ──────────────
@@ -550,15 +572,16 @@ public:
         // Right zone — peel off from right edge inward:
         presetBrowser.setBounds(header.removeFromRight(200).reduced(4, 8));
         exportBtn.setBounds(header.removeFromRight(44).reduced(4, 10));
-        // ── Icon strip: 4 compact 24×24 toggle buttons ─────────────────────
+        // ── Icon strip: 5 compact 24×24 toggle buttons ─────────────────────
         // Prototype: indicator-pill sized controls, grouped tightly
         {
             static constexpr int iconSz = 24;
             static constexpr int iconGap = 3;
-            static constexpr int stripW = 4 * iconSz + 3 * iconGap; // 108
+            static constexpr int stripW = 5 * iconSz + 4 * iconGap; // 132
             auto strip = header.removeFromRight(stripW + 4); // +4 for edge padding
             int ix = strip.getX() + 2;
             int iy = (strip.getHeight() - iconSz) / 2;
+            cinematicToggleBtn.setBounds(ix, iy, iconSz, iconSz); ix += iconSz + iconGap;
             cmToggleBtn.setBounds(ix, iy, iconSz, iconSz);        ix += iconSz + iconGap;
             perfToggleBtn.setBounds(ix, iy, iconSz, iconSz);      ix += iconSz + iconGap;
             surfaceToggleBtn.setBounds(ix, iy, iconSz, iconSz);   ix += iconSz + iconGap;
@@ -1132,6 +1155,7 @@ private:
     // Hidden until EngineRegistry::detectCollection() returns a non-empty collection.
     CompactEngineTile      ghostTile;
     juce::TextButton       enginesBtn;
+    juce::TextButton       cinematicToggleBtn;
     juce::TextButton       cmToggleBtn;
     juce::TextButton       perfToggleBtn;
     juce::TextButton       surfaceToggleBtn;
