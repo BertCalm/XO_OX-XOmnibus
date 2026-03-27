@@ -29,14 +29,15 @@ namespace xolokun {
 //
 class PresetBrowser : public juce::Component,
                       public juce::ListBoxModel,
-                      public juce::TextEditor::Listener
+                      public juce::TextEditor::Listener,
+                      public juce::Timer
 {
 public:
     PresetBrowser(PresetManager& pm) : presetManager(pm)
     {
         // --- Search bar ---
         searchBox.setTextToShowWhenEmpty("Search presets...",
-                                         GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
+                                         GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
         searchBox.setFont(GalleryFonts::body(13.0f));
         searchBox.addListener(this);
         searchBox.setColour(juce::TextEditor::backgroundColourId,
@@ -85,7 +86,7 @@ public:
         listBox.setColour(juce::ListBox::outlineColourId,
                           GalleryColors::get(GalleryColors::borderGray()));
         listBox.setOutlineThickness(1);
-        A11y::setup(listBox, "Preset list", "Scrollable list of presets — double-click to load");
+        A11y::setup(listBox, "Preset list", "Scrollable list of presets — click to load");
         addAndMakeVisible(listBox);
 
         // --- Similar button (DNA distance) ---
@@ -195,6 +196,13 @@ public:
         return static_cast<int>(filteredPresets.size());
     }
 
+    juce::String getNameForRow(int row) override
+    {
+        if (row < 0 || row >= static_cast<int>(filteredPresets.size())) return {};
+        const auto& p = filteredPresets[static_cast<size_t>(row)];
+        return p.name + (p.mood.isEmpty() ? "" : ", " + p.mood);
+    }
+
     void paintListBoxItem(int row, juce::Graphics& g, int w, int h,
                           bool isSelected) override
     {
@@ -245,16 +253,26 @@ public:
     void listBoxItemClicked(int row, const juce::MouseEvent&) override
     {
         if (row >= 0 && row < static_cast<int>(filteredPresets.size()))
-            selectedIndex = row;
-    }
-
-    void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
-    {
-        if (row >= 0 && row < static_cast<int>(filteredPresets.size()))
         {
             selectedIndex = row;
             if (onPresetSelected)
                 onPresetSelected(filteredPresets[static_cast<size_t>(row)]);
+        }
+    }
+
+    void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
+    {
+        // Single-click now loads; double-click is a no-op.
+        (void)row;
+    }
+
+    void returnKeyPressed(int lastRowSelected) override
+    {
+        if (lastRowSelected >= 0 && lastRowSelected < static_cast<int>(filteredPresets.size()))
+        {
+            selectedIndex = lastRowSelected;
+            if (onPresetSelected)
+                onPresetSelected(filteredPresets[static_cast<size_t>(lastRowSelected)]);
         }
     }
 
@@ -290,7 +308,16 @@ public:
     void textEditorTextChanged(juce::TextEditor&) override
     {
         similarActive = false;
-        applyFilters();
+        startTimer(150); // debounce — timerCallback calls applyFilters()
+    }
+
+    // juce::Timer
+    void timerCallback() override
+    {
+        stopTimer();
+        juce::Component::SafePointer<PresetBrowser> safe(this);
+        if (safe != nullptr)
+            safe->applyFilters();
     }
 
     //==========================================================================

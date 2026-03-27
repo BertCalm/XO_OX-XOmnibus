@@ -112,7 +112,7 @@ and mutate into sounds impossible with any single synth. **73 engines** are regi
 | OASIS | XOasis | Desert Spring Teal `#00827F` |
 | ODDFELLOW | XOddfellow | Fusion Copper `#B87333` |
 | ONKOLO | XOnkolo | Spectral Amber `#FFBF00` |
-| OPCODE | XOpcode | Dark Turquoise `#00CED1` |
+| OPCODE | XOpcode | Cadet Blue `#5F9EA0` |
 | OUTLOOK | XOutlook | Horizon Indigo `#4169E1` |
 
 ### Engine ID vs Parameter Prefix

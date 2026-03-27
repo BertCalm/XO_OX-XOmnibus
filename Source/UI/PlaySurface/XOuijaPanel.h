@@ -39,6 +39,7 @@
 #include <cmath>
 
 #include "HarmonicField.h"
+#include "GestureTrailBuffer.h"
 
 namespace xolokun {
 
@@ -495,6 +496,12 @@ public:
         // 4. YES / NO labels
         // ------------------------------------------------------------------
         paintYesNoLabels (g);
+
+        // ------------------------------------------------------------------
+        // 5. Bioluminescent gesture trail (spec Section 4.5)
+        //    Rendered after static elements, below planchette (child component).
+        // ------------------------------------------------------------------
+        paintTrail (g);
     }
 
     //==========================================================================
@@ -508,6 +515,10 @@ public:
         circleX_    = nx;
         influenceY_ = ny;
 
+        // Reset trail tracking so the first drag step doesn't record a giant jump
+        lastTrailPixelX_ = e.position.x;
+        lastTrailPixelY_ = e.position.y;
+
         planchette_.springTo (nx, ny);
         updatePlanchetteText();
 
@@ -520,6 +531,18 @@ public:
         auto [nx, ny] = mouseToNormalized (e);
         circleX_    = nx;
         influenceY_ = ny;
+
+        // Record trail point with distance-based spacing (~4px minimum)
+        const float dx = e.position.x - lastTrailPixelX_;
+        const float dy = e.position.y - lastTrailPixelY_;
+        if (dx * dx + dy * dy >= 16.0f)  // 4px distance threshold (squared)
+        {
+            const double now = juce::Time::getMillisecondCounterHiRes() / 1000.0;
+            const float vel = std::clamp (std::sqrt (dx * dx + dy * dy) / 50.0f, 0.0f, 1.0f);
+            trailBuffer_.push (circleX_, influenceY_, vel, now);
+            lastTrailPixelX_ = e.position.x;
+            lastTrailPixelY_ = e.position.y;
+        }
 
         planchette_.moveTo (nx, ny);
         updatePlanchetteText();
@@ -548,6 +571,11 @@ private:
 
     // B042 — Planchette child component
     Planchette   planchette_;
+
+    // B043 — Gesture trail ring buffer + last-recorded pixel position
+    GestureTrailBuffer trailBuffer_;
+    float              lastTrailPixelX_ = 0.0f;
+    float              lastTrailPixelY_ = 0.0f;
 
     //==========================================================================
     // Note names for planchette display text (12-entry, indexed by semitone)
@@ -686,6 +714,74 @@ private:
                     juce::Rectangle<float> (b.getX(), noY, b.getWidth(), 14.0f),
                     juce::Justification::centred,
                     false);
+    }
+
+    //==========================================================================
+    // Bioluminescent trail rendering (B043 — spec Section 4.5)
+    //==========================================================================
+    void paintTrail (juce::Graphics& g)
+    {
+        const int n = trailBuffer_.count();
+        if (n == 0)
+            return;
+
+        const float w = static_cast<float> (getWidth());
+        const float h = static_cast<float> (getHeight());
+        const double now = juce::Time::getMillisecondCounterHiRes() / 1000.0;
+
+        // ------------------------------------------------------------------
+        // Frozen trail replay at 50% opacity (all frozen points, 4px, 25% alpha)
+        // ------------------------------------------------------------------
+        if (trailBuffer_.isFrozen())
+        {
+            const int fc = trailBuffer_.frozenCount();
+            for (int i = 0; i < fc; ++i)
+            {
+                const TrailPoint pt = trailBuffer_.frozenPointAt (i);
+                const float px = pt.x * w;
+                const float py = (1.0f - pt.y) * h;
+                const float radius = 2.0f;  // 4px diameter
+
+                g.setColour (accentColour_.withAlpha (0.25f));
+                g.fillEllipse (px - radius, py - radius,
+                               radius * 2.0f, radius * 2.0f);
+            }
+        }
+
+        // ------------------------------------------------------------------
+        // Live trail: up to 12 most recent points, exponential fade over 1.5s
+        // ------------------------------------------------------------------
+        const int maxPoints = std::min (n, 12);
+        for (int age = 0; age < maxPoints; ++age)
+        {
+            const TrailPoint pt = trailBuffer_.pointByAge (age);
+            const double ptAge = now - pt.timestamp;
+
+            // Skip if older than 1.5 seconds
+            if (ptAge > 1.5)
+                continue;
+
+            // Alpha: exponential decay — reaches near-zero at 1.5s
+            const float alpha = static_cast<float> (std::exp (-ptAge * 2.0));
+
+            // Pixel position (Y-flipped: normalised 0=bottom, 1=top)
+            const float px = pt.x * w;
+            const float py = (1.0f - pt.y) * h;
+
+            // Core radius: shrinks from ~5px to 1px as alpha decays
+            const float coreRadius = 5.0f * alpha + 1.0f;
+
+            // --- Pass A: outer glow (3× radius, 50% of alpha) ---
+            const float glowRadius = coreRadius * 3.0f;
+            g.setColour (accentColour_.withAlpha (alpha * 0.50f));
+            g.fillEllipse (px - glowRadius, py - glowRadius,
+                           glowRadius * 2.0f, glowRadius * 2.0f);
+
+            // --- Pass B: core (1× radius, full alpha) ---
+            g.setColour (accentColour_.withAlpha (alpha));
+            g.fillEllipse (px - coreRadius, py - coreRadius,
+                           coreRadius * 2.0f, coreRadius * 2.0f);
+        }
     }
 
     //==========================================================================

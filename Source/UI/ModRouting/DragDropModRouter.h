@@ -426,10 +426,10 @@ public:
         g.drawText(depthStr, width - 42, 0, 38, height, juce::Justification::centredRight);
     }
 
-    void listBoxItemClicked(int /*row*/, const juce::MouseEvent& e) override
+    void listBoxItemClicked(int row, const juce::MouseEvent& e) override
     {
         if (e.mods.isRightButtonDown())
-            showContextMenu(listBox.getSelectedRow());
+            showContextMenu(row);
     }
 
     void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override

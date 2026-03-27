@@ -44,7 +44,7 @@ namespace GalleryColors {
         // Text hierarchy (4-level tonal scale)
         static constexpr uint32_t t1          = 0xFFF0EDE8;  // primary text (headings, active)
         static constexpr uint32_t t2          = 0xFF9E9B97;  // secondary (labels)
-        static constexpr uint32_t t3          = 0xFF5E5C5A;  // tertiary (disabled, muted) — WCAG AA ~4.6:1 on #0E0E10
+        static constexpr uint32_t t3          = 0xFF7A7876;  // tertiary (disabled, muted) — WCAG AA ~4.5:1 on #0E0E10
         static constexpr uint32_t t4          = 0xFF3A3938;  // quaternary (very subtle)
 
         // Legacy accessor-mapped values
@@ -84,7 +84,7 @@ namespace GalleryColors {
         : juce::Colour(0xFF000000).withAlpha(0.12f); }
     inline juce::Colour borderMd() { return darkMode()
         ? juce::Colour(0xFFFFFFFF).withAlpha(0.11f)
-        : juce::Colour(0xFF000000).withAlpha(0.12f); }
+        : juce::Colour(0xFF000000).withAlpha(0.20f); }
 
     // Backward compatibility constants
     constexpr uint32_t shellWhite_v = 0xFFF8F6F3;
@@ -95,6 +95,9 @@ namespace GalleryColors {
     constexpr uint32_t emptySlot_v  = 0xFFEAE8E4;
 
     inline juce::Colour get(uint32_t hex) { return juce::Colour(hex); }
+
+    inline juce::Colour goldDim()  { return juce::Colour(get(xoGold)).withAlpha(0.14f); }
+    inline juce::Colour goldGlow() { return juce::Colour(get(xoGold)).withAlpha(0.28f); }
 
     inline juce::Colour accentForEngine(const juce::String& id)
     {
@@ -285,11 +288,16 @@ namespace A11y {
 
     inline bool prefersReducedMotion()
     {
-       #if JUCE_MAC || JUCE_IOS
-        return juce::Desktop::getInstance().isScreenSaverEnabled() == false;
-       #else
+#if JUCE_MAC
+        // Correct API: NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
+        // Cannot call ObjC from pure header — return false and document
+        // TODO: Move to .mm file for correct macOS API
         return false;
-       #endif
+#elif JUCE_IOS
+        return false; // TODO: UIAccessibility.isReduceMotionEnabled
+#else
+        return false;
+#endif
     }
 
 } // namespace A11y

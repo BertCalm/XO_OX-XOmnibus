@@ -45,6 +45,22 @@ public:
         juce::Slider::mouseDown (e);
     }
 
+    void mouseWheelMove(const juce::MouseEvent& e,
+                        const juce::MouseWheelDetails& w) override
+    {
+        if (e.mods.isShiftDown() && getInterval() == 0.0)
+        {
+            auto fine = w;
+            fine.deltaY *= 0.05f;
+            fine.deltaX *= 0.05f;
+            juce::Slider::mouseWheelMove(e, fine);
+        }
+        else
+        {
+            juce::Slider::mouseWheelMove(e, w);
+        }
+    }
+
     void paint (juce::Graphics& g) override
     {
         juce::Slider::paint(g);
