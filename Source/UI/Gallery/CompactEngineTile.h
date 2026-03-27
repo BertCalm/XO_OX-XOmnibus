@@ -6,6 +6,7 @@
 #include "WaveformDisplay.h"
 #include "EnginePickerPopup.h"
 #include "CockpitHost.h"
+#include "CreatureRenderer.h"
 
 namespace xolokun
 {
@@ -350,30 +351,31 @@ public:
                                                        juce::PathStrokeType::rounded));
             }
 
-            // ── Creature animation — procedural placeholder (VQ 015) ──────────
-            // Scales and breathes inside the porthole. Eye shifts on couplingLean.
-            // Will be replaced by pixel-art sprites generated via /pixel-artist.
+            // ── Creature animation — procedural sprite via CreatureRenderer ─────
+            // Scales and breathes inside the porthole. Each engine archetype draws
+            // a distinctive creature. Eye/lean shifts on couplingLean.
             // Fix #23: outer if (hasEngine) block guarantees hasEngine here — no redundant check.
             {
-                const float portraitSize = porW; // porthole diameter is the portrait zone
                 float breathScale = 1.0f + 0.1f * std::sin(creatureState_.breathPhase);
-                float creatureRadius = portraitSize * 0.3f * breathScale;
 
-                // Soft glow halo — accent color at ~20% opacity, modulated by pulse
-                float haloAlpha = 0.20f * (0.5f + 0.5f * creatureState_.pulseIntensity);
-                g.setColour(accent.withAlpha(haloAlpha));
-                g.fillEllipse(porCx - creatureRadius * 2.0f, porCy - creatureRadius * 2.0f,
-                              creatureRadius * 4.0f, creatureRadius * 4.0f);
+                // Portrait bounds: the porthole circle, inset slightly so creatures
+                // stay inside the ring border.
+                juce::Rectangle<float> portrait (porCx - porR + 2.0f,
+                                                  porCy - porR + 2.0f,
+                                                  porW - 4.0f,
+                                                  porW - 4.0f);
 
-                // Body — accent color at 70% opacity
-                g.setColour(accent.withAlpha(0.70f));
-                g.fillEllipse(porCx - creatureRadius, porCy - creatureRadius,
-                              creatureRadius * 2.0f, creatureRadius * 2.0f);
+                // Clip to porthole before drawing so strokes never bleed outside
+                {
+                    juce::Graphics::ScopedSaveState clip (g);
+                    juce::Path clipCircle;
+                    clipCircle.addEllipse(porCx - porR, porCy - porR, porW, porW);
+                    g.reduceClipRegion(clipCircle);
 
-                // Eye — white dot that shifts horizontally with couplingLean
-                float eyeOffsetX = creatureRadius * 0.3f * creatureState_.couplingLean;
-                g.setColour(juce::Colours::white.withAlpha(0.90f));
-                g.fillEllipse(porCx + eyeOffsetX - 2.0f, porCy - 2.0f, 4.0f, 4.0f);
+                    CreatureRenderer::drawCreature (g, portrait, engineId, accent,
+                                                   breathScale,
+                                                   creatureState_.couplingLean);
+                }
             }
 
             // Slot number inside porthole — 9px mono, T3 color

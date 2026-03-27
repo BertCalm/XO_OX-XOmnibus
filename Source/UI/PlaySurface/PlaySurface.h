@@ -884,9 +884,8 @@ class PerformanceStrip : public juce::Component
 {
 public:
     PerformanceStrip()
-        // Cache fonts once — avoids per-paint Font construction (UIX Fix 1C)
-        : tabFont_  (juce::Font (juce::FontOptions{}.withHeight (8.0f)))
-        , axisFont_ (juce::Font (juce::FontOptions{}.withHeight (8.0f)))
+        // Cache font once — avoids per-paint Font construction (UIX Fix 1C)
+        : axisFont_ (juce::Font (juce::FontOptions{}.withHeight (8.0f)))
     {}
     enum class StripMode { DubSpace, FilterSweep, Coupling, DubSiren };
 
@@ -927,32 +926,8 @@ public:
             g.fillRect(b);
         }
 
-        // Mode tabs inside strip (Spec Section 9.2) — rendered at left edge
-        {
-            constexpr const char* kModeTabNames[] = { "DubSpace", "FilterSweep", "Coupling", "DubSiren" };
-            constexpr float tabW = 72.0f;
-            constexpr float tabH = 26.0f;  // WCAG Fix 5: raised from 22px to meet WCAG 2.5.8 minimum 24px touch target
-            float tabY = (b.getHeight() - tabH) / 2.0f + b.getY();
-
-            g.setFont(tabFont_);  // cached — avoids per-paint Font construction (UIX Fix 1C)
-            for (int i = 0; i < 4; ++i)
-            {
-                auto tabRect = juce::Rectangle<float>(b.getX() + i * tabW + 4.0f, tabY, tabW - 4.0f, tabH);
-                bool active = (i == static_cast<int>(stripMode));
-
-                if (active)
-                {
-                    g.setColour(accentColour.withAlpha(0.25f));
-                    g.fillRoundedRectangle(tabRect, 3.0f);
-                }
-
-                g.setColour(juce::Colours::white.withAlpha(active ? 1.0f : 0.45f));
-                g.drawText(kModeTabNames[i], tabRect, juce::Justification::centred);
-            }
-        }
-
-        // Gestural area is to the right of the 4 tabs (4 × 72 = 288px offset)
-        auto gestureArea = b.withTrimmedLeft(kGestureAreaLeft);
+        // Full strip is the gestural area — mode tabs moved to PlaySurface header (UIX ruling)
+        auto gestureArea = b;
 
         // Crosshair gridlines (Spec Section 9.3) — opacity 0.10, 1px white
         g.setColour(juce::Colours::white.withAlpha(0.10f));
@@ -1054,13 +1029,11 @@ public:
     }
 
 private:
-    static constexpr float kGestureAreaLeft = 292.0f; // 4 tabs × 72px + 4px padding
     StripMode stripMode = StripMode::DubSpace;
     float stripX = 0.3f, stripY = 0.2f;
     bool  touching = false;
 
-    // Cached fonts — initialized in constructor, avoids per-paint construction (UIX Fix 1C)
-    juce::Font tabFont_;   // 8px — mode tab labels
+    // Cached font — initialized in constructor, avoids per-paint construction (UIX Fix 1C)
     juce::Font axisFont_;  // 8px — gesture area axis labels
 
     // Spring-back animation state (250ms ease-out)
@@ -1082,9 +1055,9 @@ private:
 
     void updateStrip(const juce::MouseEvent& e)
     {
-        // Gestural area is to the right of the 4 mode tabs (4 × 72 + 4px padding = 292px)
+        // Full strip is the gestural area — mode tabs are in the PlaySurface header
         auto b = getLocalBounds().toFloat();
-        auto gestureArea = b.withTrimmedLeft(kGestureAreaLeft);
+        auto gestureArea = b;
         float gx = juce::jlimit(gestureArea.getX(), gestureArea.getRight(), static_cast<float>(e.x));
         stripX = juce::jlimit(0.0f, 1.0f, (gx - gestureArea.getX()) / gestureArea.getWidth());
         stripY = juce::jlimit(0.0f, 1.0f, 1.0f - (e.y - b.getY()) / b.getHeight());
