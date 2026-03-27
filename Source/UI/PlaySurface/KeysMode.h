@@ -115,7 +115,8 @@ public:
 
     std::function<void(int midiNote, float velocity)> onNoteOn;
     std::function<void(int midiNote)>                  onNoteOff;
-    std::function<void(float pitchBend)>               onPitchBend; // -1..+1
+    std::function<void(float pitchBend)>               onPitchBend;   // -1..+1
+    std::function<void(float aftertouch)>              onAftertouch;  // 0..+1
 
     /** If set, MIDI events are enqueued here (thread-safe delivery to audio thread). */
     juce::MidiMessageCollector* midiCollector = nullptr;
@@ -192,8 +193,15 @@ public:
         if (hit < 0)
             return;
 
-        activeNote_   = hit;
-        pressOriginX_ = static_cast<float> (e.x);
+        // Polyphony guard: if already at max voices, ignore
+        if (activeKeyCount_ >= kMaxPolyphony)
+            return;
+
+        // Add to active keys array
+        activeKeys_[activeKeyCount_] = { hit,
+                                         static_cast<float> (e.x),
+                                         static_cast<float> (e.y) };
+        ++activeKeyCount_;
 
         float velocity = yToVelocity (static_cast<float> (e.y));
         sendNoteOn (hit, velocity);
@@ -202,10 +210,12 @@ public:
 
     void mouseDrag (const juce::MouseEvent& e) override
     {
-        if (activeNote_ < 0)
+        if (activeKeyCount_ == 0)
             return;
 
-        float dx        = static_cast<float> (e.x) - pressOriginX_;
+        // Pitch bend driven from the most recently added key's originX
+        int lastKeyIdx = activeKeyCount_ - 1;
+        float dx        = static_cast<float> (e.x) - activeKeys_[lastKeyIdx].originX;
         float panelW    = static_cast<float> (getWidth());
         float bendFloat = dx / (panelW / kPitchGlideSensitivity);
         bendFloat       = juce::jlimit (-1.0f, 1.0f, bendFloat);
@@ -221,28 +231,75 @@ public:
 
         if (midiCollector != nullptr)
         {
-            auto msg = juce::MidiMessage::pitchWheel (midiChannel, wheelValue);
-            midiCollector->addMessageToQueue (msg);
-        }
-    }
-
-    void mouseUp (const juce::MouseEvent& /*e*/) override
-    {
-        if (activeNote_ >= 0)
-        {
-            sendNoteOff (activeNote_);
-            activeNote_ = -1;
+            auto pitchMsg = juce::MidiMessage::pitchWheel (midiChannel, wheelValue);
+            midiCollector->addMessageToQueue (pitchMsg);
         }
 
-        // Reset pitch wheel to centre
+        // Aftertouch from Y-drag (downward = more pressure)
+        float dy         = static_cast<float> (e.y) - activeKeys_[lastKeyIdx].originY;
+        float aftertouch = std::clamp (dy / (static_cast<float> (getHeight()) * 0.3f),
+                                       0.0f, 1.0f);
+        int atValue      = static_cast<int> (aftertouch * 127.0f);
+
         if (midiCollector != nullptr)
         {
-            auto msg = juce::MidiMessage::pitchWheel (midiChannel, 8192);
-            midiCollector->addMessageToQueue (msg);
+            auto atMsg = juce::MidiMessage::channelPressureChange (midiChannel, atValue);
+            midiCollector->addMessageToQueue (atMsg);
         }
 
-        if (onPitchBend)
-            onPitchBend (0.0f);
+        if (onAftertouch)
+            onAftertouch (aftertouch);
+    }
+
+    void mouseUp (const juce::MouseEvent& e) override
+    {
+        if (activeKeyCount_ == 0)
+        {
+            repaint();
+            return;
+        }
+
+        // Find which active key to release — prefer the most recently added that
+        // hit-tests to the current release position; fall back to the last slot.
+        int hitNote = hitTestKey (e.x, e.y);
+        int releaseIdx = activeKeyCount_ - 1; // default: most recent
+
+        for (int i = activeKeyCount_ - 1; i >= 0; --i)
+        {
+            if (activeKeys_[i].midiNote == hitNote)
+            {
+                releaseIdx = i;
+                break;
+            }
+        }
+
+        int releasedNote = activeKeys_[releaseIdx].midiNote;
+        sendNoteOff (releasedNote);
+
+        // Compact the array: move last slot into the released slot
+        if (releaseIdx != activeKeyCount_ - 1)
+            activeKeys_[releaseIdx] = activeKeys_[activeKeyCount_ - 1];
+        activeKeys_[activeKeyCount_ - 1] = {}; // zero out vacated tail
+        --activeKeyCount_;
+
+        // Reset pitch wheel and aftertouch only when all keys released
+        if (activeKeyCount_ == 0)
+        {
+            if (midiCollector != nullptr)
+            {
+                auto pitchMsg = juce::MidiMessage::pitchWheel (midiChannel, 8192);
+                midiCollector->addMessageToQueue (pitchMsg);
+
+                auto atMsg = juce::MidiMessage::channelPressureChange (midiChannel, 0);
+                midiCollector->addMessageToQueue (atMsg);
+            }
+
+            if (onPitchBend)
+                onPitchBend (0.0f);
+
+            if (onAftertouch)
+                onAftertouch (0.0f);
+        }
 
         repaint();
     }
@@ -260,10 +317,19 @@ private:
     //==========================================================================
     // State
 
+    struct ActiveKey
+    {
+        int   midiNote  = -1;
+        float originX   = 0.0f;
+        float originY   = 0.0f;
+    };
+
+    static constexpr int kMaxPolyphony = 8;
+
     int   rootKey_      = 0;   // C
     int   baseOctave_   = 3;   // default C3-B4
-    int   activeNote_   = -1;
-    float pressOriginX_ = 0.0f;
+    std::array<ActiveKey, kMaxPolyphony> activeKeys_ {};
+    int   activeKeyCount_ = 0;
     juce::Colour accent_;
 
     //==========================================================================
@@ -299,7 +365,10 @@ private:
     {
         bool inKey  = HarmonicField::isInKey (midiNote, rootKey_);
         bool isRoot = HarmonicField::isRoot  (midiNote, rootKey_);
-        bool active = (midiNote == activeNote_);
+
+        bool active = false;
+        for (int ki = 0; ki < activeKeyCount_; ++ki)
+            if (activeKeys_[ki].midiNote == midiNote) { active = true; break; }
 
         // --- Base fill -------------------------------------------------------
         juce::Colour baseColor = sharp ? juce::Colour (kSharpKeyColor)
