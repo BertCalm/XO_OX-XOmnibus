@@ -248,9 +248,12 @@ public:
         // Sync toggle visual state to the preference we read early in the constructor.
         themeToggleBtn.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
 
+        // Make icon buttons wider (28px) so 2-char labels don't truncate to "..."
+        // (Font size is controlled by GalleryLookAndFeel; buttons just need enough width)
+
         // P0-3: Slim preset nav — prev/next arrow buttons
         addAndMakeVisible(presetPrevBtn);
-        presetPrevBtn.setButtonText(juce::String(juce::CharPointer_UTF8("\xe2\x97\x80")));
+        presetPrevBtn.setButtonText("<");
         presetPrevBtn.setTooltip("Previous preset");
         A11y::setup(presetPrevBtn, "Previous Preset", "Go to previous preset");
         presetPrevBtn.onClick = [this]
@@ -259,7 +262,7 @@ public:
         };
 
         addAndMakeVisible(presetNextBtn);
-        presetNextBtn.setButtonText(juce::String(juce::CharPointer_UTF8("\xe2\x96\xb6")));
+        presetNextBtn.setButtonText(">");
         presetNextBtn.setTooltip("Next preset");
         A11y::setup(presetNextBtn, "Next Preset", "Go to next preset");
         presetNextBtn.onClick = [this]
@@ -825,9 +828,9 @@ public:
         // ── Icon strip: 5 compact 24×24 toggle buttons ─────────────────────
         // Prototype: indicator-pill sized controls, grouped tightly
         {
-            static constexpr int iconSz = 24;
-            static constexpr int iconGap = 3;
-            static constexpr int stripW = 5 * iconSz + 4 * iconGap; // 132
+            static constexpr int iconSz = 36;
+            static constexpr int iconGap = 2;
+            static constexpr int stripW = 5 * iconSz + 4 * iconGap; // 188
             auto strip = header.removeFromRight(stripW + 4); // +4 for edge padding
             int ix = strip.getX() + 2;
             int iy = (strip.getHeight() - iconSz) / 2;
@@ -843,19 +846,18 @@ public:
             midiIndicator.setBounds(midiSlice.withSizeKeepingCentre(8, 8));
         }
         cpuMeter.setBounds(header.removeFromRight(62).withSizeKeepingCentre(60, 20));
-        // A/B compare widget (56×24) sits between CM toggle and the macro area
-        abCompare.setBounds(header.removeFromRight(60).withSizeKeepingCentre(56, 24));
+        // A/B compare hidden — not wired to functionality yet
+        abCompare.setBounds(0, -100, 0, 0);
 
-        // ── Macro knobs in header — between title area and button strip ───────
-        // Prototype: 140px logo/title area + ENGINES btn (70×22) + 44px DepthDial → macros
+        // ── Macro knobs in header — between title/ENGINES and icon strip ───────
+        // DepthZoneDial removed — engine selection consolidated into ENGINES button.
+        // A/B compare hidden — not wired to functionality.
         {
-            auto leftZone = header.removeFromLeft(200); // logo(30) + title(48) + ENGINES(74) + DepthDial(48)
-            // DepthZoneDial: 44×44, centred vertically, anchored right of logo area.
-            depthDial.setBounds(leftZone.removeFromRight(48).withSizeKeepingCentre(44, 44));
-            // ENGINES button: 70×22, vertically centred, sits after logo text (after ~30+34=64px logo+text)
+            auto leftZone = header.removeFromLeft(140); // logo(30) + title(36) + ENGINES(74)
+            depthDial.setBounds(0, -100, 0, 0); // hidden off-screen
             enginesBtn.setBounds(leftZone.removeFromLeft(74).withSizeKeepingCentre(70, 22));
 
-            auto macroHeader = header; // what remains between DepthDial and A/B
+            auto macroHeader = header; // remaining space for macros
             macros.setBounds(macroHeader.reduced(6, 4));
         }
 
