@@ -59,9 +59,10 @@ namespace PS {
     static constexpr int kZone3H       = 64;        // same as kStripH
 
     // Pad grid constants (unchanged)
-    static constexpr int kPadCols      = 4;
-    static constexpr int kPadRows      = 4;
-    static constexpr int kNumPads      = kPadCols * kPadRows;
+    static constexpr int   kPadCols      = 4;
+    static constexpr int   kPadRows      = 4;
+    static constexpr int   kNumPads      = kPadCols * kPadRows;
+    static constexpr float kPadGap       = 4.0f;  // pixel gap between adjacent pads
 
     // Animation
     static constexpr float kVelDecay        = 0.92f;
@@ -441,12 +442,17 @@ private:
 
         auto b = getLocalBounds().toFloat();
 
-        // Square grid: match the same centering used in paintPadGrid().
-        float padSide  = juce::jmin(b.getWidth() / PS::kPadCols, b.getHeight() / PS::kPadRows);
-        float gridW    = padSide * PS::kPadCols;
-        float gridH    = padSide * PS::kPadRows;
+        // Square grid: match the same geometry used in paintPadGrid().
+        // Account for inter-pad gaps when computing the maximum square pad size.
+        const float gap    = PS::kPadGap;
+        float availW = b.getWidth()  - (PS::kPadCols - 1) * gap;
+        float availH = b.getHeight() - (PS::kPadRows - 1) * gap;
+        float padSize  = juce::jmin(availW / PS::kPadCols, availH / PS::kPadRows);
+        float gridW    = padSize * PS::kPadCols + gap * (PS::kPadCols - 1);
+        float gridH    = padSize * PS::kPadRows + gap * (PS::kPadRows - 1);
         float originX  = b.getX() + (b.getWidth()  - gridW) * 0.5f;
         float originY  = b.getY() + (b.getHeight() - gridH) * 0.5f;
+        float stride   = padSize + gap;  // distance from one pad origin to the next
 
         // Map mouse position into grid-local space, ignoring clicks outside the grid.
         float lx = (float)e.x - originX;
@@ -464,20 +470,16 @@ private:
             return;
         }
 
-        float padW = padSide;
-        float padH = padSide;
-
-        int col = (int)(lx / padSide);
-        int row = PS::kPadRows - 1 - (int)(ly / padSide);
+        int col = (int)(lx / stride);
+        int row = PS::kPadRows - 1 - (int)(ly / stride);
         col = juce::jlimit(0, PS::kPadCols - 1, col);
         row = juce::jlimit(0, PS::kPadRows - 1, row);
         int pad = row * PS::kPadCols + col;
 
         // Velocity: Y position within the specific pad cell (top of pad = hard, bottom = soft).
-        float padH2 = gridH / PS::kPadRows;
         int displayRow = PS::kPadRows - 1 - row;
-        float padTopY = displayRow * padH2;
-        float yInPad = juce::jlimit(0.0f, 1.0f, (ly - padTopY) / padH2);
+        float padTopY = displayRow * stride;
+        float yInPad = juce::jlimit(0.0f, 1.0f, (ly - padTopY) / padSize);
         float velocity = juce::jlimit(0.05f, 1.0f, 1.0f - yInPad);
         int note = midiNoteForPad(pad);
 
@@ -504,11 +506,11 @@ private:
             // Drag within the same pad: send aftertouch.
             // Aftertouch pressure = Y position within the pad cell.
             // top of cell = maximum pressure (1.0), bottom = minimum (0.0).
-            int displayRow = PS::kPadRows - 1 - row; // flip: row 0 is rendered at top
-            float padTopY = displayRow * padH;
-            float yInPad  = juce::jlimit(0.0f, 1.0f, (ly - padTopY) / padH);
+            int displayRow2 = PS::kPadRows - 1 - row; // flip: row 0 is rendered at top
+            float padTopY2  = displayRow2 * stride;
+            float yInPad2   = juce::jlimit(0.0f, 1.0f, (ly - padTopY2) / padSize);
             // Top of pad → pressure 1.0; bottom → 0.0
-            float pressure = juce::jlimit(0.0f, 1.0f, 1.0f - yInPad);
+            float pressure = juce::jlimit(0.0f, 1.0f, 1.0f - yInPad2);
             fireAftertouch(lastNote, pressure);
         }
     }
@@ -585,16 +587,18 @@ private:
         using namespace PS;
         auto b = getLocalBounds().toFloat();
 
-        // Enforce square pads: compute the largest square cell that fits
-        float padSide = juce::jmin(b.getWidth() / kPadCols, b.getHeight() / kPadRows);
-        float gridW   = padSide * kPadCols;
-        float gridH   = padSide * kPadRows;
-        // Center the grid within available bounds
+        // Enforce perfectly square pads (aspect-ratio: 1).
+        // Subtract inter-pad gaps from available space before computing cell size.
+        const float gap  = kPadGap;
+        float availW = b.getWidth()  - (kPadCols - 1) * gap;
+        float availH = b.getHeight() - (kPadRows - 1) * gap;
+        float padSize = juce::jmin(availW / kPadCols, availH / kPadRows);
+        float gridW   = padSize * kPadCols + gap * (kPadCols - 1);
+        float gridH   = padSize * kPadRows + gap * (kPadRows - 1);
+        // Center the grid within the available component bounds
         float originX = b.getX() + (b.getWidth()  - gridW) * 0.5f;
         float originY = b.getY() + (b.getHeight() - gridH) * 0.5f;
-
-        float padW = padSide;
-        float padH = padSide;
+        float stride  = padSize + gap;  // distance from one pad origin to the next
 
         for (int row = 0; row < kPadRows; ++row)
         {
@@ -602,9 +606,9 @@ private:
             {
                 int pad = row * kPadCols + col;
                 int displayRow = kPadRows - 1 - row; // flip for bottom-left origin
-                float x = originX + col * padW;
-                float y = originY + displayRow * padH;
-                auto padRect = juce::Rectangle<float>(x, y, padW, padH).reduced(2.0f);
+                float x = originX + col * stride;
+                float y = originY + displayRow * stride;
+                auto padRect = juce::Rectangle<float>(x, y, padSize, padSize).reduced(1.0f);
 
                 float vel = padVelocity[(size_t)pad];
                 bool isHit = (vel > 0.01f);
