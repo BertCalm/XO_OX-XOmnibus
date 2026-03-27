@@ -335,62 +335,43 @@ public:
                                                 GalleryColors::get(GalleryColors::shellWhite()),
                                                 (float)getWidth(), 0.0f, false);
 
-        // ── 1. MacroHeroStrip or FiveMacroDisplay ────────────────────────────
-        if (fiveMacroDisplay && fiveMacroDisplay->isVisible())
+        // MacroHeroStrip hidden — macros are in the header row.
+        macroHero.setBounds(0, 0, 0, 0);
+        macroHero.setVisible(false);
+        if (fiveMacroDisplay)
         {
-            fiveMacroDisplay->setBounds(area.removeFromTop(56).reduced(4, 2));
-        }
-        else if (macroHero.isVisible())
-        {
-            macroHero.setBounds(area.removeFromTop(kHeroH).reduced(4, 2));
-        }
-        else
-        {
-            macroHero.setBounds(0, 0, 0, 0);
+            fiveMacroDisplay->setBounds(0, 0, 0, 0);
+            fiveMacroDisplay->setVisible(false);
         }
 
-        // ── 2. Waveform oscilloscope display (200×80pt, or less if narrow) ───
+        // ── Bottom: Waveform oscilloscope (full width, 70px) ─────────────────
         {
-            int waveH = 80;
-            int waveW = juce::jmin(200, area.getWidth() - 16);
-            auto waveArea = area.removeFromTop(waveH + 4);
-            waveformDisplay.setBounds(waveArea.withSizeKeepingCentre(waveW, waveH));
+            int waveH = 70;
+            waveformDisplay.setBounds(area.removeFromBottom(waveH).reduced(4, 2));
         }
 
-        // ── 3. DrumPadGrid — ONSET / OFFERING ────────────────────────────────
+        // ── Specialized displays (engine-specific, above parameter grid) ─────
         if (drumGrid)
         {
             int drumH = drumGrid->getRequiredHeight(area.getWidth());
-            drumGrid->setBounds(area.removeFromTop(juce::jmin(drumH, 200)));
+            drumGrid->setBounds(area.removeFromTop(juce::jmin(drumH, 160)));
         }
-
-        // ── 4. TriangleXYPad — OVERWORLD / OXYTOCIN (144pt) ─────────────────
         if (trianglePad)
         {
             auto padArea = area.removeFromTop(144);
             trianglePad->setBounds(padArea.withSizeKeepingCentre(160, 140));
         }
-
-        // ── 5. ConductorArcDisplay — OPERA (64pt) ────────────────────────────
         if (conductorArc)
         {
             auto arcArea = area.removeFromTop(64);
             conductorArc->setBounds(arcArea.withSizeKeepingCentre(200, 60));
         }
-
-        // ── 6. NamedModeSelector — mode choice engines (36pt) ────────────────
         if (modeSelector)
-        {
             modeSelector->setBounds(area.removeFromTop(36).reduced(4, 2));
-        }
-
-        // ── 7. BipolarAxisBar — bipolar interaction axes (32pt) ──────────────
         if (axisBar)
-        {
             axisBar->setBounds(area.removeFromTop(32).reduced(4, 2));
-        }
 
-        // ── 8. Viewport with ParameterGrid (remaining space) ─────────────────
+        // ── Main area: Viewport with ParameterGrid (fills remaining space) ───
         viewport.setBounds(area);
 
         // Resize viewport content: support both ParameterGrid and ObrixDetailPanel

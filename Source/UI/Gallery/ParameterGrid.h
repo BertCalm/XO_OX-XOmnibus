@@ -71,6 +71,7 @@ public:
         return Section::OTHER;
     }
 
+    // Per-section semantic accent (used for left-border bars on knob cells)
     static juce::Colour sectionColour(Section s)
     {
         switch (s)
@@ -82,6 +83,19 @@ public:
             case Section::MACRO:  return juce::Colour(0xFFE9C46A); // XO Gold
             default:              return juce::Colour(0xFF9E9B97); // text-muted
         }
+    }
+
+    // ── Section-index dot colors — 4-color cycling palette from approved mockup ─
+    // orange → blue → purple → green, cycling by section display index
+    static juce::Colour sectionDotColour(int sectionIndex)
+    {
+        static constexpr uint32_t kDotColors[] = {
+            0xFFE9A84A,  // orange  (index 0 — OSC / first section)
+            0xFF00A6D6,  // blue    (index 1 — FILTER)
+            0xFF9B5DE5,  // purple  (index 2 — MOD)
+            0xFF1E8B7E,  // green   (index 3 — FX / MACRO / OTHER)
+        };
+        return juce::Colour(kDotColors[((unsigned)sectionIndex) % 4u]);
     }
 
     static const char* sectionName(Section s)
@@ -256,7 +270,7 @@ public:
                 {
                     const int knobX = cx + (kCellW - kKnobSize) / 2;
                     lk->knob->setBounds(knobX, cy, kKnobSize, kKnobSize);
-                    lk->label->setBounds(cx, cy + kKnobSize + 3, kCellW, 12);
+                    lk->label->setBounds(cx, cy + kKnobSize + 4, kCellW, 14);
                 }
             }
 
@@ -301,43 +315,49 @@ public:
         int cols      = juce::jmax(1, getWidth() / kCellW);
         int y         = kPad;
         int flatIdx   = 0;
-        bool firstSec = true;
+        int secIdx    = 0; // used to cycle dot colors by display order
 
         for (auto& run : sectionRuns)
         {
             juce::Colour secCol  = sectionColour(run.sec);
+            juce::Colour dotCol  = sectionDotColour(secIdx);
             juce::String secText = sectionName(run.sec);
             bool collapsed       = collapsedSections.count(run.sec) > 0;
 
-            // ── Separator between sections — border() = rgba(255,255,255,0.07) ─
-            if (!firstSec)
+            // ── Section header background — subtle white→transparent gradient ──
+            // Matches mockup: linear-gradient(rgba(255,255,255,0.02) → transparent)
             {
-                g.setColour(GalleryColors::border());
-                g.drawHorizontalLine(y, 4.0f, (float)(getWidth() - 4));
+                juce::ColourGradient hdrGrad(
+                    juce::Colour(0xFFFFFFFF).withAlpha(collapsed ? 0.04f : 0.02f),
+                    0.0f, (float)y,
+                    juce::Colours::transparentWhite,
+                    0.0f, (float)(y + kHeaderRowH),
+                    false /* linear */);
+                g.setGradientFill(hdrGrad);
+                g.fillRect(0, y, getWidth(), kHeaderRowH);
             }
-            firstSec = false;
 
-            // ── Section header background — slightly brighter when collapsed ───
-            g.setColour(collapsed ? juce::Colour(0x10FFFFFF)   // a touch more visible
-                                  : juce::Colour(0x08FFFFFF)); // rgba(255,255,255,0.03)
-            g.fillRect(0, y, getWidth(), kHeaderRowH);
+            // ── Bottom border on each section header — rgba(255,255,255,0.07) ─
+            g.setColour(GalleryColors::border());
+            g.drawHorizontalLine(y + kHeaderRowH - 1, 0.0f, (float)getWidth());
 
-            // ── Color dot — 7×7px, section accent color ───────────────────────
-            const int dotSize = 7;
+            // ── Color dot — 8×8px, 4-color cycling palette ────────────────────
+            const int dotSize = 8;
             const int dotX    = 10;
             const int dotY    = y + (kHeaderRowH - dotSize) / 2;
-            g.setColour(secCol);
+            g.setColour(dotCol);
             g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
-            // ── Section title — 9.5px, weight 600, Display, uppercase, T2 text ─
+            // ── Section title — 11px, Space Grotesk Bold, uppercase, T1 text ──
             // P6 fix: cache the section font and arrow strings as static locals
             // to avoid reconstructing them on every paint() call.
             static const juce::Font kSectionFont =
-                juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.5f));
+                juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(11.0f));
+            // ▼ DOWNWARD-POINTING TRIANGLE (expanded)  ▸ RIGHT-POINTING (collapsed)
             static const juce::String kArrowCollapsed (juce::CharPointer_UTF8("\xe2\x96\xb8")); // ▸
-            static const juce::String kArrowExpanded  (juce::CharPointer_UTF8("\xe2\x96\xbe")); // ▾
+            static const juce::String kArrowExpanded  (juce::CharPointer_UTF8("\xe2\x96\xbc")); // ▼
 
-            g.setColour(GalleryColors::get(GalleryColors::t2())); // T2 text
+            g.setColour(GalleryColors::get(GalleryColors::t1())); // T1 primary text
             g.setFont(kSectionFont);
             g.drawText(secText,
                        dotX + dotSize + 6, y,
@@ -354,6 +374,7 @@ public:
             }
 
             y += kHeaderRowH;
+            ++secIdx;
 
             if (collapsed)
             {
@@ -561,7 +582,7 @@ private:
             auto [cx, cy] = knobBounds[idx];
             const int knobX = cx + (kCellW - kKnobSize) / 2;
             lk->knob->setBounds(knobX, cy + 2, kKnobSize, kKnobSize);
-            lk->label->setBounds(cx, cy + kKnobSize + 3, kCellW, 12);
+            lk->label->setBounds(cx, cy + kKnobSize + 4, kCellW, 14);
         }
 
         liveKnobs[idx] = std::move(lk);
@@ -653,14 +674,14 @@ private:
     }
 
     // ── Layout constants ──────────────────────────────────────────────────────
-    // Prototype: 32px knobs in ~58px groups, flex-wrap with 10px/14px gap.
-    // 60×52 cells fit ~8 cols in Column B's ~490px — matching the dense grid.
-    static constexpr int kCellW           = 56;
-    static constexpr int kCellH           = 52;
-    static constexpr int kKnobSize        = 32;
+    // Mockup v04: 44px knobs in 68×64 cells, ~7 cols in Column B's ~490px.
+    // Header height 32px matches mockup spec (~32px section headers).
+    static constexpr int kCellW           = 68;
+    static constexpr int kCellH           = 64;
+    static constexpr int kKnobSize        = 44;
     static constexpr int kPad             = 8;
-    static constexpr int kHeaderRowH      = 28;  // height of each section header strip
-    static constexpr int kVisibilityMargin = 100; // px preload margin for smooth scrolling
+    static constexpr int kHeaderRowH      = 32;  // height of each section header strip
+    static constexpr int kVisibilityMargin = 120; // px preload margin for smooth scrolling
 
     // ── Collapse state — which sections are currently collapsed ──────────────
     // All sections start expanded by default (set is empty at construction).
