@@ -134,6 +134,18 @@ public:
     // The editor registers this to refresh only the affected tile immediately.
     std::function<void(int /*slot*/)> onEngineChanged;
 
+    // ── XOuija UI State persistence bridge ────────────────────────────────────
+    // PlaySurface registers these callbacks so the processor can include the
+    // XOuija panel state (active bank, toggle states, MIDI learn CC mappings)
+    // in getStateInformation() and restore it in setStateInformation().
+    //
+    // Usage (in PlaySurface::setProcessor()):
+    //   processor_->onGetXOuijaState = [this]() { return xouijaPanel_.toValueTree(); };
+    //   processor_->onSetXOuijaState = [this](const juce::ValueTree& t) {
+    //       xouijaPanel_.fromValueTree(t); };
+    std::function<juce::ValueTree()>                    onGetXOuijaState;
+    std::function<void(const juce::ValueTree& /*state*/)> onSetXOuijaState;
+
     // ── Field Map note event queue ─────────────────────────────────────────────
     // Lock-free SPSC ring: audio thread writes (pushNoteEvent), UI thread drains
     // (drainNoteEvents). Both ends use only std::atomic<size_t> indices — no mutex,

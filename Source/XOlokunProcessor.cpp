@@ -2016,6 +2016,21 @@ void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
         state.removeChild(existing, nullptr);
     state.appendChild(midiLearnManager.toValueTree(), nullptr);
 
+    // XOuija UI state — bank, toggle states, gesture button MIDI learn mappings.
+    // onGetXOuijaState is registered by PlaySurface when it connects to this processor.
+    // If the PlaySurface window is not open yet, the callback is null and the child
+    // is simply omitted (safe: setStateInformation falls back to defaults gracefully).
+    if (onGetXOuijaState)
+    {
+        auto uiState = onGetXOuijaState();
+        if (uiState.isValid())
+        {
+            if (auto existing = state.getChildWithName("XOuijaPanel"); existing.isValid())
+                state.removeChild(existing, nullptr);
+            state.appendChild(uiState, nullptr);
+        }
+    }
+
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
     {
@@ -2145,6 +2160,17 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
             auto midiLearnTree = apvts.state.getChildWithName("MIDILearn");
             if (!midiLearnManager.fromValueTree(midiLearnTree))
                 midiLearnManager.loadDefaultMappings();
+        }
+
+        // XOuija UI state — restore active bank, button toggles, gesture MIDI learn.
+        // onSetXOuijaState is registered by PlaySurface; if not yet registered (e.g.
+        // the PlaySurface window hasn't been opened for the first time), the state
+        // tree is stored in apvts.state and PlaySurface will read it on first
+        // construction via getChildWithName("XOuijaPanel") in its setProcessor() call.
+        {
+            auto uiStateTree = apvts.state.getChildWithName("XOuijaPanel");
+            if (uiStateTree.isValid() && onSetXOuijaState)
+                onSetXOuijaState (uiStateTree);
         }
     }
 }

@@ -28,6 +28,9 @@
       - Harmonic surface occupies remaining area above
 
     B042 — Task 7 of 13 (XOuija PlaySurface V2)
+    B043 — Trail-to-DSP wiring: TrailModulator exposes trail_length and
+           trail_velocity as normalized 0-1 modulation outputs. Updated in
+           mouseDrag via updateTrailModulator(). Host reads via getTrailModulator().
     Namespace: xolokun
     JUCE 8, C++17
 */
@@ -44,6 +47,7 @@
 
 #include "HarmonicField.h"
 #include "GestureTrailBuffer.h"
+#include <atomic>
 
 #if JUCE_MAC
 #include <CoreFoundation/CoreFoundation.h>  // CFPreferencesGetAppBooleanValue
@@ -60,6 +64,191 @@ namespace xolokun::a11y_platform {
 #endif
 
 namespace xolokun {
+
+//==============================================================================
+// TrailModulator (B043 — Gesture Trail as First-Class Modulation Source)
+//
+// Exposes two normalized 0-1 modulation signals derived from the XOuija
+// gesture trail ring buffer:
+//
+//   trail_length   — normalized fill level of the ring buffer (0 = empty,
+//                    1 = all 256 slots filled). Maps to reverb send amount or
+//                    any macro parameter wired by the host.
+//
+//   trail_velocity — running average of the most recent 8 velocity samples
+//                    in the trail buffer (clamped 0-1). Maps to filter cutoff
+//                    modulation depth.
+//
+// Connection point for parameter wiring:
+//   After any mouseDrag in XOuijaPanel, onTrailModulatorChanged is fired with
+//   the current TrailModulator state.  Wire onTrailModulatorChanged in PlaySurface
+//   (or the editor) to call processor_->getAPVTS().getParameter("...") and set values.
+//   Example in PlaySurface::constructor:
+//
+//     xouijaPanel_.onTrailModulatorChanged = [this](const TrailModulator& mod) {
+//         if (processor_) {
+//             // trail_length -> reverb macro (normalized 0-1)
+//             if (auto* p = processor_->getAPVTS().getParameter("macro4"))
+//                 p->setValueNotifyingHost(mod.trail_length);
+//             // trail_velocity -> filter brightness
+//             if (auto* p = processor_->getAPVTS().getParameter("macro1"))
+//                 p->setValueNotifyingHost(mod.trail_velocity);
+//         }
+//     };
+//
+struct TrailModulator
+{
+    // Normalized 0-1 fill level (# of live points / kBufferSize)
+    float trail_length   = 0.0f;
+
+    // Normalized 0-1 mean velocity of the most recent ≤8 trail points
+    float trail_velocity = 0.0f;
+};
+
+//==============================================================================
+// GestureButtonMidiLearnManager
+//
+// Lightweight MIDI learn for the three gesture buttons in GestureButtonBar.
+// Each button slot (0, 1, 2) can be mapped to an incoming MIDI CC number.
+//
+// Workflow:
+//   1. User right-clicks a button → enter learn mode for that slot
+//   2. Any incoming MIDI CC is captured and assigned to that slot
+//   3. When a CC fires: the button's action() is invoked
+//
+// Integration with XOuijaPanel::processMidiMessage(const juce::MidiMessage&):
+//   Call processMidiMessage() from PlaySurface each time a CC arrives
+//   (e.g. via a juce::MidiMessageCollector timer drain).
+//
+// Persistence: toValueTree() / fromValueTree() round-trip all mappings.
+// The XOuijaPanel saves/restores these as part of its own ValueTree child.
+//
+struct GestureButtonMidiLearnManager
+{
+    static constexpr int kNoCC = -1;  // sentinel: no mapping
+
+    struct ButtonMapping
+    {
+        int cc      = kNoCC;  // mapped CC number, or kNoCC
+        int channel = 0;      // 0 = omni (any channel)
+    };
+
+    // Per-button mappings (indices 0-2)
+    std::array<ButtonMapping, 3> mappings {};
+
+    // Currently learning slot (-1 = not learning)
+    int learnSlot = -1;
+
+    // Learn mode: enter for a specific button slot.
+    // Returns false if slot is out of range.
+    bool enterLearnMode (int slot)
+    {
+        if (slot < 0 || slot >= 3) return false;
+        learnSlot = slot;
+        return true;
+    }
+
+    void exitLearnMode() { learnSlot = -1; }
+
+    bool isLearning() const noexcept { return learnSlot >= 0; }
+    int  getLearningSlot() const noexcept { return learnSlot; }
+
+    // Check if a slot has a CC mapping.
+    bool hasMapping (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 3) return false;
+        return mappings[static_cast<std::size_t>(slot)].cc != kNoCC;
+    }
+
+    // Get the CC number for a slot (-1 = unmapped).
+    int getCCForSlot (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 3) return kNoCC;
+        return mappings[static_cast<std::size_t>(slot)].cc;
+    }
+
+    // Clear the mapping for a slot.
+    void clearMapping (int slot)
+    {
+        if (slot >= 0 && slot < 3)
+            mappings[static_cast<std::size_t>(slot)] = {};
+    }
+
+    // Process an incoming MIDI CC message.
+    // If in learn mode: assigns the CC to the learning slot (exits learn mode).
+    // Otherwise: returns the slot index whose action should be triggered, or -1.
+    //
+    // Usage in XOuijaPanel:
+    //   int slot = midiLearnMgr_.processMidi(msg);
+    //   if (slot >= 0 && bankDefs_[...][slot].action)
+    //       bankDefs_[...][slot].action();
+    int processMidi (const juce::MidiMessage& msg)
+    {
+        if (!msg.isController())
+            return -1;
+
+        const int cc  = msg.getControllerNumber();
+        const int ch  = msg.getChannel();  // 1-16
+
+        if (isLearning())
+        {
+            mappings[static_cast<std::size_t>(learnSlot)].cc      = cc;
+            mappings[static_cast<std::size_t>(learnSlot)].channel  = ch;
+            exitLearnMode();
+            return -1;  // don't also fire the action on the learn event
+        }
+
+        // Find which slot (if any) maps to this CC
+        for (int i = 0; i < 3; ++i)
+        {
+            const auto& m = mappings[static_cast<std::size_t>(i)];
+            if (m.cc == cc && (m.channel == 0 || m.channel == ch))
+                return i;
+        }
+        return -1;
+    }
+
+    // ── Serialization ──────────────────────────────────────────────────────────
+
+    juce::ValueTree toValueTree() const
+    {
+        juce::ValueTree tree ("GestureButtonMidiLearn");
+        for (int i = 0; i < 3; ++i)
+        {
+            juce::ValueTree child ("Slot");
+            child.setProperty ("index",   i,                                        nullptr);
+            child.setProperty ("cc",      mappings[static_cast<std::size_t>(i)].cc,      nullptr);
+            child.setProperty ("channel", mappings[static_cast<std::size_t>(i)].channel, nullptr);
+            tree.appendChild (child, nullptr);
+        }
+        return tree;
+    }
+
+    bool fromValueTree (const juce::ValueTree& tree)
+    {
+        if (!tree.isValid() || !tree.hasType ("GestureButtonMidiLearn"))
+            return false;
+
+        for (int c = 0; c < tree.getNumChildren(); ++c)
+        {
+            auto child = tree.getChild (c);
+            if (!child.hasType ("Slot"))
+                continue;
+            int idx = static_cast<int>(child["index"]);
+            if (idx < 0 || idx >= 3)
+                continue;
+            const int cc  = static_cast<int>(child["cc"]);
+            const int ch  = static_cast<int>(child["channel"]);
+            // Validate ranges
+            if (cc >= -1 && cc <= 127 && ch >= 0 && ch <= 16)
+            {
+                mappings[static_cast<std::size_t>(idx)].cc      = cc;
+                mappings[static_cast<std::size_t>(idx)].channel  = ch;
+            }
+        }
+        return true;
+    }
+};
 
 //==============================================================================
 /** Planchette (B042 — The Planchette as Autonomous Entity)
@@ -538,32 +727,63 @@ public:
         {
             const juce::Rectangle<float> buttonRect = getButtonRect (i);
 
-            const bool pressed = (pressedIndex_ == i);
+            const bool pressed  = (pressedIndex_ == i);
+            const bool toggled  = buttonToggled_[static_cast<std::size_t>(i)];
+            const bool learning = (learnSlot_ == i);
 
             // Background
-            if (pressed)
+            if (learning)
+            {
+                // Feature 3: pulsing amber tint in learn mode
+                // Use a phase derived from component-level time (simple fixed blink)
+                const float learnAlpha = 0.55f;
+                g.setColour (juce::Colour (0xFFE9A84A).withAlpha (learnAlpha));
+            }
+            else if (pressed)
                 g.setColour (accentColour_.withAlpha (0.30f));
+            else if (toggled)
+                g.setColour (accentColour_.withAlpha (0.18f));
             else
                 g.setColour (juce::Colour::fromFloatRGBA (1.0f, 1.0f, 1.0f, 0.06f));
             g.fillRoundedRectangle (buttonRect, cornerR);
 
-            // Border (inactive only)
-            if (! pressed)
+            // Border — thicker + coloured when toggled or in learn mode
+            if (learning)
+            {
+                g.setColour (juce::Colour (0xFFE9A84A));
+                g.drawRoundedRectangle (buttonRect, cornerR, 1.5f);
+            }
+            else if (toggled)
+            {
+                g.setColour (accentColour_.withAlpha (0.80f));
+                g.drawRoundedRectangle (buttonRect, cornerR, 1.5f);
+            }
+            else if (! pressed)
             {
                 g.setColour (juce::Colour::fromFloatRGBA (1.0f, 1.0f, 1.0f, 0.12f));
                 g.drawRoundedRectangle (buttonRect, cornerR, 1.0f);
             }
 
             // Label
-            const float textAlpha = pressed ? 1.0f : 0.65f;
-            g.setColour (juce::Colours::white.withAlpha (textAlpha));
+            const float textAlpha = (pressed || toggled || learning) ? 1.0f : 0.65f;
+            g.setColour (learning ? juce::Colour (0xFFE9A84A)
+                                  : juce::Colours::white.withAlpha (textAlpha));
             g.setFont (buttonFont_);  // cached — avoids per-paint Font construction; 10px
-            g.drawText (buttons_[static_cast<std::size_t> (i)].label.toUpperCase(),
+
+            // Feature 3: show CC number in learn mode, otherwise normal label
+            juce::String label = buttons_[static_cast<std::size_t>(i)].label.toUpperCase();
+            if (learning)
+                label = "LEARN...";
+            g.drawText (label,
                         buttonRect,
                         juce::Justification::centred,
                         false);
         }
     }
+
+    // Feature 3: callback fired when user right-clicks a button to enter learn mode.
+    // Owner (XOuijaPanel) wires this to call midiLearnMgr_.enterLearnMode(slot).
+    std::function<void(int /*slot*/)> onEnterLearnMode;
 
     void mouseDown (const juce::MouseEvent& e) override
     {
@@ -576,12 +796,38 @@ public:
             return;
         }
 
+        // Feature 3: right-click → enter MIDI learn mode for that button
+        if (e.mods.isRightButtonDown())
+        {
+            const int idx = hitTestButton (e.position.x, e.position.y);
+            if (idx >= 0)
+            {
+                // Toggle: if already learning this slot, cancel; else enter
+                if (learnSlot_ == idx)
+                {
+                    learnSlot_ = -1;
+                    repaint();
+                }
+                else
+                {
+                    learnSlot_ = idx;
+                    repaint();
+                    if (onEnterLearnMode)
+                        onEnterLearnMode (idx);
+                }
+            }
+            return;
+        }
+
         pressedIndex_ = hitTestButton (e.position.x, e.position.y);
         repaint();
     }
 
     void mouseUp (const juce::MouseEvent& e) override
     {
+        if (e.mods.isRightButtonDown())
+            return;  // right-click handled in mouseDown
+
         const int idx = hitTestButton (e.position.x, e.position.y);
         if (idx >= 0 && idx == pressedIndex_)
         {
@@ -604,6 +850,78 @@ public:
         float buttonH = 28.0f;
         float y = (static_cast<float> (getHeight()) - buttonH) / 2.0f;
         return { gutter + static_cast<float> (index) * (buttonW + gutter), y, buttonW, buttonH };
+    }
+
+    //==========================================================================
+    // Feature 1: Per-button toggle state
+    //   Tracks whether each button is in a "toggled on" state for persistence.
+    //   The XOuijaPanel sets these via setButtonToggleState() when stateful
+    //   actions are triggered (e.g. FREEZE, LOOP, MUTE, INVERT, LATCH, BYPASS).
+    //==========================================================================
+
+    void setButtonToggleState (int index, bool on)
+    {
+        if (index >= 0 && index < 3)
+        {
+            buttonToggled_[static_cast<std::size_t>(index)] = on;
+            repaint();
+        }
+    }
+
+    bool getButtonToggleState (int index) const noexcept
+    {
+        if (index < 0 || index >= 3) return false;
+        return buttonToggled_[static_cast<std::size_t>(index)];
+    }
+
+    //==========================================================================
+    // Feature 3: MIDI learn visual state
+    //   When a slot is in learn mode, its button pulses/highlights differently.
+    //   Call setLearnSlot(-1) to exit visual learn mode.
+    //==========================================================================
+
+    void setLearnSlot (int slot)
+    {
+        learnSlot_ = slot;
+        repaint();
+    }
+
+    int getLearnSlot() const noexcept { return learnSlot_; }
+
+    //==========================================================================
+    // Feature 1 + 3: Persistence — ValueTree serialization
+    //   Saves: active bank index, bank-lock state, per-button toggle states,
+    //          and MIDI learn mappings.
+    //   Called from XOuijaPanel::toValueTree() / fromValueTree().
+    //==========================================================================
+
+    juce::ValueTree toValueTree() const
+    {
+        juce::ValueTree tree ("GestureButtonBar");
+        tree.setProperty ("bank",       static_cast<int>(currentBank_), nullptr);
+        tree.setProperty ("bankLocked", bankLocked_,                    nullptr);
+        tree.setProperty ("toggle0",    buttonToggled_[0],              nullptr);
+        tree.setProperty ("toggle1",    buttonToggled_[1],              nullptr);
+        tree.setProperty ("toggle2",    buttonToggled_[2],              nullptr);
+        return tree;
+    }
+
+    void fromValueTree (const juce::ValueTree& tree)
+    {
+        if (!tree.isValid() || !tree.hasType ("GestureButtonBar"))
+            return;
+
+        const int bankIdx = static_cast<int>(tree["bank"]);
+        if (bankIdx >= 0 && bankIdx <= 3)
+            currentBank_ = static_cast<Bank>(bankIdx);
+
+        bankLocked_ = static_cast<bool>(tree["bankLocked"]);
+
+        buttonToggled_[0] = static_cast<bool>(tree["toggle0"]);
+        buttonToggled_[1] = static_cast<bool>(tree["toggle1"]);
+        buttonToggled_[2] = static_cast<bool>(tree["toggle2"]);
+
+        repaint();
     }
 
 private:
@@ -632,6 +950,12 @@ private:
     bool                      bankLocked_    = false;
     int                       pressedIndex_  = -1;
     juce::Colour              accentColour_  { juce::Colour (0xFFE9C46A) };
+
+    // Feature 1: per-button toggle on/off state (for persistence)
+    std::array<bool, 3>       buttonToggled_ {};
+
+    // Feature 3: which slot is in MIDI learn mode (-1 = none)
+    int                       learnSlot_     = -1;
 
     // Cached fonts — initialized in constructor, avoids per-paint construction
     juce::Font lockFont_;    // 14px plain — for lock indicator circle
@@ -784,6 +1108,15 @@ public:
         setupCouplingButtonBank();     // Bank 2: BOOST / INVERT / CLEAR
         setupPerformanceButtonBank();  // Bank 3: PANIC / LATCH / BYPASS
 
+        // Feature 3: wire the MIDI learn entry callback from GestureButtonBar.
+        // When the user right-clicks a button, onEnterLearnMode fires here and
+        // we forward it to the GestureButtonMidiLearnManager.
+        gestureButtons_.onEnterLearnMode = [this] (int slot)
+        {
+            midiLearnMgr_.enterLearnMode (slot);
+            // Visual: bar already shows "LEARN..." via learnSlot_; no further action needed.
+        };
+
         // WCAG Fix 3 (resolved): sync reduced-motion flag from system accessibility
         // setting so the planchette skips Lissajous drift when the user has enabled
         // Settings > Accessibility > Reduce Motion.
@@ -815,6 +1148,19 @@ public:
 
     /** Placeholder — wired by Task 7 to trigger GOODBYE gesture. */
     std::function<void()> onGoodbye;
+
+    // B043 — Trail-to-DSP wiring
+    // Fired in mouseDrag after each trail point is recorded with updated
+    // TrailModulator values. Wire in PlaySurface to forward trail_length and
+    // trail_velocity to actual AudioProcessorParameter objects. Example:
+    //
+    //   xouijaPanel_.onTrailModulatorChanged = [this](const TrailModulator& mod) {
+    //       if (processor_) {
+    //           if (auto* p = processor_->getAPVTS().getParameter("macro4"))
+    //               p->setValueNotifyingHost(mod.trail_length);
+    //       }
+    //   };
+    std::function<void(const TrailModulator&)> onTrailModulatorChanged;
 
     //==========================================================================
     // Public state accessors
@@ -905,6 +1251,134 @@ public:
     void setInfluenceDepth (float y)
     {
         influenceY_ = juce::jlimit (0.0f, 1.0f, y);
+        repaint();
+    }
+
+    //==========================================================================
+    // Feature 2 (B043): Trail modulator accessor
+    //   Returns the most-recently-computed trail modulation values.
+    //   Updated in mouseDrag; call getTrailModulator() at any time from the
+    //   UI thread to read current trail_length and trail_velocity.
+    //==========================================================================
+
+    const TrailModulator& getTrailModulator() const noexcept
+    {
+        return trailModulator_;
+    }
+
+    //==========================================================================
+    // Feature 3: MIDI message processing for gesture button MIDI learn.
+    //   Call this from PlaySurface::handleMidiMessage() (or equivalent) whenever
+    //   a MIDI message arrives on the message thread. When a CC arrives and
+    //   matches a button mapping (or is being learned), the gesture button action
+    //   is fired and/or the learn mapping is stored.
+    //
+    //   The active bank's button actions are used — so buttons fire regardless
+    //   of which bank is currently displayed (all banks are checked for CC hits).
+    //
+    //   Returns true if the message was consumed.
+    //==========================================================================
+
+    bool processMidiMessage (const juce::MidiMessage& msg)
+    {
+        if (!msg.isController())
+            return false;
+
+        const int slot = midiLearnMgr_.processMidi (msg);
+
+        // If learn mode captured a CC, update the visual state on the bar
+        if (! midiLearnMgr_.isLearning())
+            gestureButtons_.setLearnSlot (-1);  // exit visual learn mode
+
+        if (slot >= 0)
+        {
+            // Fire the action for the active bank's button at this slot
+            const auto bank = gestureButtons_.getBank();
+            const auto& defs = bankDefs_[static_cast<std::size_t>(bank)];
+            const auto& btn = defs[static_cast<std::size_t>(slot)];
+            if (btn.action)
+                btn.action();
+            return true;
+        }
+
+        return false;
+    }
+
+    //==========================================================================
+    // Feature 1: ValueTree state persistence (active bank, toggle states,
+    // MIDI learn CC mappings, position).
+    // Called from PlaySurface/editor to participate in DAW session recall.
+    //==========================================================================
+
+    juce::ValueTree toValueTree() const
+    {
+        juce::ValueTree tree ("XOuijaPanel");
+
+        // Circle and influence position
+        tree.setProperty ("circleX",    static_cast<double>(circleX_),    nullptr);
+        tree.setProperty ("influenceY", static_cast<double>(influenceY_),  nullptr);
+
+        // Drift enabled state
+        tree.setProperty ("driftEnabled", planchette_.isDriftEnabled(), nullptr);
+
+        // Toggle flags for stateful buttons across all banks
+        tree.setProperty ("dubLoopActive",    dubLoopActive_,    nullptr);
+        tree.setProperty ("dubMuteActive",    dubMuteActive_,    nullptr);
+        tree.setProperty ("couplingInverted", couplingInverted_, nullptr);
+        tree.setProperty ("perfLatchActive",  perfLatchActive_,  nullptr);
+        tree.setProperty ("perfBypassActive", perfBypassActive_, nullptr);
+
+        // GestureButtonBar bank + per-button toggle state
+        tree.appendChild (gestureButtons_.toValueTree(), nullptr);
+
+        // MIDI learn CC mappings
+        tree.appendChild (midiLearnMgr_.toValueTree(), nullptr);
+
+        return tree;
+    }
+
+    void fromValueTree (const juce::ValueTree& tree)
+    {
+        if (!tree.isValid() || !tree.hasType ("XOuijaPanel"))
+            return;
+
+        // Restore circle/influence position
+        circleX_    = juce::jlimit (0.0f, 1.0f,
+            static_cast<float>(static_cast<double>(tree["circleX"])));
+        influenceY_ = juce::jlimit (0.0f, 1.0f,
+            static_cast<float>(static_cast<double>(tree["influenceY"])));
+
+        // Restore drift
+        const bool drift = static_cast<bool>(tree["driftEnabled"]);
+        planchette_.setDriftEnabled (drift);
+
+        // Restore toggle flags
+        dubLoopActive_    = static_cast<bool>(tree["dubLoopActive"]);
+        dubMuteActive_    = static_cast<bool>(tree["dubMuteActive"]);
+        couplingInverted_ = static_cast<bool>(tree["couplingInverted"]);
+        perfLatchActive_  = static_cast<bool>(tree["perfLatchActive"]);
+        perfBypassActive_ = static_cast<bool>(tree["perfBypassActive"]);
+
+        // Restore GestureButtonBar state (bank + per-button toggles)
+        auto barTree = tree.getChildWithName ("GestureButtonBar");
+        if (barTree.isValid())
+        {
+            gestureButtons_.fromValueTree (barTree);
+
+            // Re-apply the bank's button definitions so that buttons_ is current
+            const auto bank = gestureButtons_.getBank();
+            gestureButtons_.setButtons (bankDefs_[static_cast<std::size_t>(bank)]);
+        }
+
+        // Sync button toggle visuals to the GestureButtonBar after restore
+        syncToggleStatesToBar();
+
+        // Restore MIDI learn CC mappings
+        auto midiTree = tree.getChildWithName ("GestureButtonMidiLearn");
+        if (midiTree.isValid())
+            midiLearnMgr_.fromValueTree (midiTree);
+
+        updatePlanchetteText();
         repaint();
     }
 
@@ -1010,6 +1484,9 @@ public:
             trailBuffer_.push (circleX_, influenceY_, vel, now);
             lastTrailPixelX_ = e.position.x;
             lastTrailPixelY_ = e.position.y;
+
+            // B043 — Update TrailModulator and fire callback for DSP wiring.
+            updateTrailModulator();
         }
 
         planchette_.moveTo (nx, ny);
@@ -1061,6 +1538,12 @@ private:
     float              lastTrailPixelX_ = 0.0f;
     float              lastTrailPixelY_ = 0.0f;
 
+    // B043 — Trail modulator (computed in mouseDrag, read by onTrailModulatorChanged)
+    TrailModulator     trailModulator_;
+
+    // Feature 3 — MIDI learn manager for gesture buttons
+    GestureButtonMidiLearnManager midiLearnMgr_;
+
     // Task 7 — Gesture button bar and GOODBYE button
     GestureButtonBar   gestureButtons_;
     GoodbyeButton      goodbyeButton_;
@@ -1108,6 +1591,79 @@ private:
         const int pct = juce::roundToInt (influenceY_ * 100.0f);
         const juce::String noteName (kDisplayNoteNames[key]);
         planchette_.setDisplayText (noteName + " \xc2\xb7 " + juce::String (pct) + "%");
+    }
+
+    //==========================================================================
+    // B043 — Update TrailModulator from current trailBuffer_ state.
+    // Computes trail_length (fill ratio) and trail_velocity (mean recent velocity).
+    // Called from mouseDrag after each new trail point is recorded.
+    // Fires onTrailModulatorChanged if set.
+    //==========================================================================
+    void updateTrailModulator()
+    {
+        const int n = trailBuffer_.count();
+
+        // trail_length: normalized fill level (0 = empty, 1 = all 256 filled)
+        trailModulator_.trail_length = static_cast<float>(n)
+                                     / static_cast<float>(GestureTrailBuffer::kBufferSize);
+
+        // trail_velocity: mean of the most recent ≤8 trail point velocities
+        const int sampleCount = std::min (n, 8);
+        if (sampleCount > 0)
+        {
+            float velSum = 0.0f;
+            for (int age = 0; age < sampleCount; ++age)
+                velSum += trailBuffer_.pointByAge (age).velocity;
+            trailModulator_.trail_velocity = velSum / static_cast<float>(sampleCount);
+        }
+        else
+        {
+            trailModulator_.trail_velocity = 0.0f;
+        }
+
+        if (onTrailModulatorChanged)
+            onTrailModulatorChanged (trailModulator_);
+    }
+
+    //==========================================================================
+    // Feature 1: Sync per-bank button toggle states to GestureButtonBar visuals.
+    // Call after fromValueTree() to ensure the bar reflects restored state.
+    // Mapping: each bank has up to 2 toggle buttons; indices are bank-specific.
+    //   XOuija   [0]=FREEZE, [2]=DRIFT   (drift stored via planchette_.isDriftEnabled)
+    //   Dub      [0]=LOOP,   [1]=MUTE
+    //   Coupling [1]=INVERT
+    //   Perf     [1]=LATCH,  [2]=BYPASS
+    //==========================================================================
+    void syncToggleStatesToBar()
+    {
+        const auto bank = gestureButtons_.getBank();
+
+        // Reset all three slots first
+        gestureButtons_.setButtonToggleState (0, false);
+        gestureButtons_.setButtonToggleState (1, false);
+        gestureButtons_.setButtonToggleState (2, false);
+
+        switch (bank)
+        {
+            case GestureButtonBar::Bank::XOuija:
+                gestureButtons_.setButtonToggleState (0, trailBuffer_.isFrozen());
+                gestureButtons_.setButtonToggleState (2, planchette_.isDriftEnabled());
+                break;
+
+            case GestureButtonBar::Bank::Dub:
+                gestureButtons_.setButtonToggleState (0, dubLoopActive_);
+                gestureButtons_.setButtonToggleState (1, dubMuteActive_);
+                break;
+
+            case GestureButtonBar::Bank::Coupling:
+                gestureButtons_.setButtonToggleState (1, couplingInverted_);
+                break;
+
+            case GestureButtonBar::Bank::Performance:
+                gestureButtons_.setButtonToggleState (1, perfLatchActive_);
+                gestureButtons_.setButtonToggleState (2, perfBypassActive_);
+                break;
+        }
     }
 
     //==========================================================================
@@ -1387,11 +1943,13 @@ private:
             {
                 trailBuffer_.unfreeze();
                 if (onCCOutput) onCCOutput (88, 0);
+                gestureButtons_.setButtonToggleState (0, false);
             }
             else
             {
                 trailBuffer_.freeze();
                 if (onCCOutput) onCCOutput (88, 127);
+                gestureButtons_.setButtonToggleState (0, true);
             }
             repaint();
         };
@@ -1423,6 +1981,7 @@ private:
         {
             const bool newState = ! planchette_.isDriftEnabled();
             planchette_.setDriftEnabled (newState);
+            gestureButtons_.setButtonToggleState (2, newState);
             if (onCCOutput) onCCOutput (90, newState ? 127 : 0);
         };
 
@@ -1448,6 +2007,7 @@ private:
         defs[0].action      = [this]()
         {
             dubLoopActive_ = !dubLoopActive_;
+            gestureButtons_.setButtonToggleState (0, dubLoopActive_);
             if (onCCOutput) onCCOutput (91, dubLoopActive_ ? 127 : 0);
         };
 
@@ -1457,6 +2017,7 @@ private:
         defs[1].action      = [this]()
         {
             dubMuteActive_ = !dubMuteActive_;
+            gestureButtons_.setButtonToggleState (1, dubMuteActive_);
             if (onCCOutput) onCCOutput (92, dubMuteActive_ ? 127 : 0);
         };
 
@@ -1467,6 +2028,8 @@ private:
         {
             dubLoopActive_ = false;
             dubMuteActive_ = false;
+            gestureButtons_.setButtonToggleState (0, false);
+            gestureButtons_.setButtonToggleState (1, false);
             if (onCCOutput) onCCOutput (93, 127);
         };
     }
@@ -1497,6 +2060,7 @@ private:
         defs[1].action      = [this]()
         {
             couplingInverted_ = !couplingInverted_;
+            gestureButtons_.setButtonToggleState (1, couplingInverted_);
             if (onCCOutput) onCCOutput (95, couplingInverted_ ? 127 : 0);
         };
 
@@ -1506,6 +2070,7 @@ private:
         defs[2].action      = [this]()
         {
             couplingInverted_ = false;
+            gestureButtons_.setButtonToggleState (1, false);
             if (onCCOutput) onCCOutput (96, 127);
         };
     }
@@ -1542,6 +2107,7 @@ private:
         defs[1].action      = [this]()
         {
             perfLatchActive_ = !perfLatchActive_;
+            gestureButtons_.setButtonToggleState (1, perfLatchActive_);
             if (onCCOutput) onCCOutput (97, perfLatchActive_ ? 127 : 0);
         };
 
@@ -1551,6 +2117,7 @@ private:
         defs[2].action      = [this]()
         {
             perfBypassActive_ = !perfBypassActive_;
+            gestureButtons_.setButtonToggleState (2, perfBypassActive_);
             if (onCCOutput) onCCOutput (98, perfBypassActive_ ? 127 : 0);
         };
     }

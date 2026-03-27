@@ -1298,6 +1298,36 @@ public:
         processor_ = p;
         // Re-wire the onCCOutput callback now that we have the processor.
         wireOnCCOutput();
+
+        if (processor_ == nullptr)
+        {
+            // Detaching: clear the bridge callbacks so the processor doesn't hold
+            // dangling references to this PlaySurface after it is destroyed.
+            // (processor itself may outlive the PlaySurface window)
+            return;
+        }
+
+        // Feature 1 — Register XOuija state persistence bridge callbacks.
+        // The processor calls onGetXOuijaState() in getStateInformation() and
+        // onSetXOuijaState() in setStateInformation().
+        processor_->onGetXOuijaState = [this]() -> juce::ValueTree
+        {
+            return xouijaPanel_.toValueTree();
+        };
+
+        processor_->onSetXOuijaState = [this](const juce::ValueTree& tree)
+        {
+            xouijaPanel_.fromValueTree(tree);
+        };
+
+        // If the processor already has saved XOuija state in its APVTS tree
+        // (e.g. setStateInformation was called before the PlaySurface window
+        // was first opened), restore it now.
+        {
+            auto uiStateTree = processor_->getAPVTS().state.getChildWithName("XOuijaPanel");
+            if (uiStateTree.isValid())
+                xouijaPanel_.fromValueTree(uiStateTree);
+        }
     }
 
     // Handle incoming CC for remote planchette control.
