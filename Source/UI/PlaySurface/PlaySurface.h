@@ -7,6 +7,7 @@
 #include <atomic>
 #include "KeysMode.h"
 #include "HarmonicField.h"
+#include "XOuijaPanel.h"
 
 namespace xolokun {
 
@@ -33,19 +34,25 @@ namespace GalleryColors {
 //==============================================================================
 // PlaySurface Constants
 namespace PS {
-    // Layout
-    static constexpr int kDesktopW     = 1060;
-    static constexpr int kDesktopH     = 344;
-    static constexpr int kHeaderH      = 32;  // WCAG 2.5.5: minimum 24px touch targets after padding
+    // V2 layout dimensions
+    static constexpr int kDesktopW     = 700;        // Narrower
+    static constexpr int kDesktopH     = 484;        // 420 (main) + 64 (strip)
+    static constexpr int kXOuijaW     = 165;        // XOuija panel width
+    static constexpr int kMainZoneH   = 420;        // Main content height
+    static constexpr int kStripH      = 64;         // Performance strip (matches kZone3H)
+    static constexpr int kHeaderH     = 28;         // Mode tab bar height
+
+    // V1 layout constants (kept for backward compatibility / OrbitPath / PerformancePads)
     static constexpr int kZone1W       = 480;
     static constexpr int kZone2W       = 200;
     static constexpr int kZone4W       = 100;
-    static constexpr int kZone3H       = 64;
-    static constexpr int kMainZoneH    = 240;
+    static constexpr int kZone3H       = 64;        // same as kStripH
+    static constexpr int kOrbitDiameter = 180;
+
+    // Pad grid constants (unchanged)
     static constexpr int kPadCols      = 4;
     static constexpr int kPadRows      = 4;
     static constexpr int kNumPads      = kPadCols * kPadRows;
-    static constexpr int kOrbitDiameter = 180;
 
     // Animation
     static constexpr float kOrbitFriction   = 0.98f;
@@ -1454,7 +1461,7 @@ public:
     PlaySurface()
     {
         setTitle ("PlaySurface");
-        setDescription ("4-zone performance interface: note input, orbit path, performance strip, and drum pads");
+        setDescription ("V2 performance interface: XOuija panel, note input / keys mode, performance strip");
         setWantsKeyboardFocus (true);
 
         noteInput.setTitle ("Note Input Zone");
@@ -1463,16 +1470,51 @@ public:
         orbitPath.setDescription ("XY controller with orbit physics for continuous modulation");
         strip.setTitle ("Performance Strip");
         strip.setDescription ("Touch strip for filter sweeps, coupling, and dub effects");
+        // V1 DEPRECATED — remove after V2 stabilizes
+        // perfPads wired but not made visible in V2 layout
         perfPads.setTitle ("Performance Pads");
         perfPads.setDescription ("4 trigger pads with keyboard shortcuts Z, X, C, V");
         perfPads.setWantsKeyboardFocus (true);
 
         addAndMakeVisible(noteInput);
-        addAndMakeVisible(orbitPath);
+        // V1 DEPRECATED — remove after V2 stabilizes
+        // addAndMakeVisible(orbitPath);  // Removed from V2 layout
+        // addAndMakeVisible(perfPads);   // Removed from V2 layout
         addAndMakeVisible(strip);
-        addAndMakeVisible(perfPads);
 
-        // Header controls: mode buttons
+        // V2: XOuija panel + KeysMode
+        addAndMakeVisible(xouijaPanel_);
+        addAndMakeVisible(keysMode_);
+        keysMode_.setVisible(false); // Initially hidden — shown when mode == Keys
+
+        // Wire XOuija position changes -> pad and keys coloring
+        xouijaPanel_.onPositionChanged = [this](float circleX, float /*influenceY*/)
+        {
+            int key     = HarmonicField::positionToKey(circleX);
+            int tension = HarmonicField::fifthsDistance(key, 0); // distance from C
+            noteInput.setHarmonicField(key, tension);
+            keysMode_.setRootKey(key);
+        };
+
+        // Wire GOODBYE -> All Notes Off CC #123 on channels 1-16
+        xouijaPanel_.onGoodbye = [this]()
+        {
+            if (auto* mc = noteInput.midiCollector)
+            {
+                double ts = juce::Time::getMillisecondCounterHiRes() / 1000.0;
+                for (int ch = 1; ch <= 16; ++ch)
+                {
+                    auto msg = juce::MidiMessage::controllerEvent(ch, 123, 0);
+                    msg.setTimeStamp(ts);
+                    mc->addMessageToQueue(msg);
+                }
+            }
+        };
+
+        // Wire KeysMode MIDI collector (same as NoteInputZone's)
+        keysMode_.midiCollector = noteInput.midiCollector;
+
+        // Header controls: mode buttons (V2: PAD | DRUM | KEYS — FRETLESS collapsed into PAD)
         for (int i = 0; i < 3; ++i)
         {
             modeButtons[i].setClickingTogglesState(true);
@@ -1480,17 +1522,26 @@ public:
             addAndMakeVisible(modeButtons[i]);
         }
         modeButtons[0].setButtonText("PAD");
-        modeButtons[1].setButtonText("FRETLESS");
-        modeButtons[2].setButtonText("DRUM");
+        modeButtons[1].setButtonText("DRUM");
+        modeButtons[2].setButtonText("KEYS");
         modeButtons[0].setToggleState(true, juce::dontSendNotification);
 
-        for (int i = 0; i < 3; ++i)
+        // V2 mode wiring: PAD=0, DRUM=2 (maps to NoteInputZone::Mode::Drum), KEYS=3
+        modeButtons[0].onClick = [this]()
         {
-            modeButtons[i].onClick = [this, i]
-            {
-                noteInput.setMode(static_cast<NoteInputZone::Mode>(i));
-            };
-        }
+            noteInput.setMode(NoteInputZone::Mode::Pad);
+            resized(); // swap NoteInputZone <-> KeysMode visibility
+        };
+        modeButtons[1].onClick = [this]()
+        {
+            noteInput.setMode(NoteInputZone::Mode::Drum);
+            resized();
+        };
+        modeButtons[2].onClick = [this]()
+        {
+            noteInput.setMode(NoteInputZone::Mode::Keys);
+            resized(); // show KeysMode, hide NoteInputZone
+        };
 
         // Octave controls
         octDownBtn.setButtonText("-");
@@ -1608,6 +1659,9 @@ public:
     {
         noteInput.midiCollector = collector;
         noteInput.midiChannel   = channel;
+        // V2: also wire KeysMode
+        keysMode_.midiCollector = collector;
+        keysMode_.midiChannel   = channel;
     }
 
     // Engine Accent Adaptive: propagate accent colour to all four zones.
@@ -1617,9 +1671,12 @@ public:
         if (c == accentColour) return; // B1: early-return guard — skip repaints if unchanged
         accentColour = c;
         noteInput.setAccentColour(c);
-        orbitPath.setAccentColour(c);
+        orbitPath.setAccentColour(c);   // V1 DEPRECATED — kept to avoid compile error
         strip.setAccentColour(c);
-        perfPads.setAccentColour(c);
+        perfPads.setAccentColour(c);    // V1 DEPRECATED — kept to avoid compile error
+        // V2 components
+        xouijaPanel_.setAccentColour(c);
+        keysMode_.setAccentColour(c);
 
         // P2-1: also update header button "on" colours so mode/bank/strip buttons
         // reflect the current engine accent when toggled.
@@ -1644,57 +1701,56 @@ public:
 
     void resized() override
     {
-        auto area = getLocalBounds();
+        auto bounds = getLocalBounds();
 
-        // Header bar
-        // P0-1: Reduced button widths to fit within 520px default window.
-        // Budget: 3×48 mode + 4px gap + 24oct- + 36label + 24oct+ + 4px gap +
-        //         4×20 bank + 4px gap + 32 scale + 4×36 strip = ~494px — fits in 520px.
-        auto header = area.removeFromTop(PS::kHeaderH);
-        int btnW = 48; // was 60 — P0-1 reduced
+        // ── Header bar (mode tabs + octave + bank + scale) ──────────────────
+        auto header = bounds.removeFromTop(PS::kHeaderH);
+        // V2 mode tabs: PAD | DRUM | KEYS
+        int btnW = 48;
         for (int i = 0; i < 3; ++i)
             modeButtons[i].setBounds(header.removeFromLeft(btnW).reduced(2));
-        header.removeFromLeft(4); // was 10 — P0-1 reduced gap
-        octDownBtn.setBounds(header.removeFromLeft(24).reduced(2)); // was 32
-        octLabel.setBounds(header.removeFromLeft(36).reduced(2));   // was 44
-        octUpBtn.setBounds(header.removeFromLeft(24).reduced(2));   // was 32
+        header.removeFromLeft(4);
+        octDownBtn.setBounds(header.removeFromLeft(24).reduced(2));
+        octLabel.setBounds(header.removeFromLeft(36).reduced(2));
+        octUpBtn.setBounds(header.removeFromLeft(24).reduced(2));
 
-        // Bank selector buttons — 20px each (was 24) — P0-1
-        header.removeFromLeft(4); // was 8 — P0-1 reduced gap
+        // Bank selector buttons
+        header.removeFromLeft(4);
         for (int i = 0; i < 4; ++i)
             bankButtons[i].setBounds(header.removeFromLeft(20).reduced(2));
 
-        // Scale mode button — 32px wide (was 40) — P0-1
-        header.removeFromLeft(4); // was 8 — P0-1 reduced gap
+        // Scale mode button
+        header.removeFromLeft(4);
         scaleModeBtn.setBounds(header.removeFromLeft(32).reduced(2));
 
-        // Strip mode buttons at right of header — 36px each (was 48) — P0-1
+        // Strip mode buttons at right of header
         for (int i = 3; i >= 0; --i)
             stripModeButtons[i].setBounds(header.removeFromRight(36).reduced(2));
 
-        // Bottom strip — performance strip (full width below main zones)
-        auto stripArea = area.removeFromBottom(PS::kZone3H);
-        strip.setBounds(stripArea);
+        // ── Performance Strip — full width, bottom ───────────────────────────
+        strip.setBounds(bounds.removeFromBottom(PS::kStripH));
 
-        // Main zones (left to right).
-        // Zone 1 (NoteInputZone): the pad grid is always drawn as a 4x4 square grid
-        // centered within whatever bounds it receives, so we give it a square region
-        // here equal to the available height × height to produce square pads at any size.
-        // Zone 4 (PerformancePads): fixed 100px wide strip on the right.
-        // Zone 2 (OrbitPath): center gets the remainder.
-        auto mainArea = area;
-        int mainH = mainArea.getHeight();
+        // ── XOuija Panel — left column ───────────────────────────────────────
+        int ouijaW = std::clamp(PS::kXOuijaW,
+                                XOuijaPanel::kMinWidth,
+                                XOuijaPanel::kMaxWidth);
+        xouijaPanel_.setBounds(bounds.removeFromLeft(ouijaW));
 
-        // Give Zone 1 a square region clamped so it never overflows at narrow aspect ratios
-        int z1w = std::min(mainH, mainArea.getWidth() - PS::kZone4W - 60);
-        z1w = std::max(z1w, 120);  // minimum usable pad size
-        // Zone 4 fixed width
-        int z4w = std::min(PS::kZone4W, mainArea.getWidth() - z1w - 40);
-        z4w = std::max(z4w, 60); // floor so it stays usable
+        // ── Note area — remaining space (NoteInputZone or KeysMode) ─────────
+        auto noteArea = bounds;
 
-        noteInput.setBounds(mainArea.removeFromLeft(z1w));
-        perfPads.setBounds(mainArea.removeFromRight(z4w));
-        orbitPath.setBounds(mainArea); // center gets the rest (OrbitPath scales)
+        bool showKeys = (noteInput.getMode() == NoteInputZone::Mode::Keys);
+        noteInput.setVisible(!showKeys);
+        keysMode_.setVisible(showKeys);
+
+        if (showKeys)
+            keysMode_.setBounds(noteArea);
+        else
+            noteInput.setBounds(noteArea);
+
+        // V1 DEPRECATED components — zero-size so they don't consume space
+        orbitPath.setBounds(juce::Rectangle<int>());
+        perfPads.setBounds(juce::Rectangle<int>());
     }
 
     void paint(juce::Graphics& g) override
@@ -1751,9 +1807,14 @@ private:
     juce::Colour accentColour { 0xFFE9C46A }; // Default: XO Gold
 
     NoteInputZone      noteInput;
-    OrbitPathZone      orbitPath;
+    // V1 DEPRECATED — remove after V2 stabilizes
+    OrbitPathZone      orbitPath;   // V1 orbit zone — no longer in V2 layout
+    PerformancePads    perfPads;    // V1 performance pads — no longer in V2 layout
+
+    // V2 layout components
     PerformanceStrip   strip;
-    PerformancePads    perfPads;
+    XOuijaPanel        xouijaPanel_;
+    KeysMode           keysMode_;
 
     std::array<juce::TextButton, 3> modeButtons;
     std::array<juce::TextButton, 4> stripModeButtons;
@@ -1790,13 +1851,15 @@ class PlaySurfaceWindow : public juce::DocumentWindow
 {
 public:
     //----------------------------------------------------------------------
-    // Default popup dimensions: 520×520 so each pad cell is 4×4 of 130px squares
-    // (header 32px + strip 80px = 112px overhead; pads get ~408px => ~102px/pad).
-    static constexpr int kDefaultW  = 520;
-    static constexpr int kDefaultH  = 520;
-    static constexpr int kMinSize   = 320;
+    // V2 popup dimensions: 700×484 (narrower, non-square — XOuija panel + pad grid)
+    // Was 520×520 in V1.
+    static constexpr int kDefaultW  = PS::kDesktopW; // 700
+    static constexpr int kDefaultH  = PS::kDesktopH; // 484
+    static constexpr int kMinW      = 500;
+    static constexpr int kMinH      = 400;
+    static constexpr int kMinSize   = 500;  // kept for backward compat
     static constexpr int kMaxW      = 1200;
-    static constexpr int kMaxH      = 1200;
+    static constexpr int kMaxH      = 900;
 
     // Optional callback fired when the window is closed/hidden by the user.
     // XOlokunEditor uses this to sync the "PS" toggle button state.
@@ -1811,7 +1874,7 @@ public:
     {
         setUsingNativeTitleBar (true);
         setResizable (true, true);
-        setResizeLimits (kMinSize, kMinSize, kMaxW, kMaxH);
+        setResizeLimits (kMinW, kMinH, kMaxW, kMaxH); // Was 320-1200 square in V1
 
         // Own the PlaySurface content component.
         // resizeToFitContent=false: we size the window explicitly via centreWithSize().
@@ -1819,6 +1882,7 @@ public:
         setContentOwned (content, true);
 
         // Position initially centered on the main screen.
+        // V2 default: 700×484 (was 520×520 in V1)
         centreWithSize (kDefaultW, kDefaultH);
 
         // Performance tool window — keep it visible above the DAW.
