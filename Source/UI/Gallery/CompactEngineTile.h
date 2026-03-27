@@ -191,13 +191,15 @@ public:
     {
         // Dark Cockpit B041: active/sounding tiles stay fully lit.
         // Non-active tiles dim with cockpit opacity.
+        // Fix #7: use cachedCockpitHost_ (set in parentHierarchyChanged()) instead
+        // of dynamic_cast walk on every paint() call.
         {
             bool isSounding = (voiceCount > 0);
             float opacity = 1.0f;
             if (!isSounding)
             {
-                if (auto* host = CockpitHost::find(this))
-                    opacity = host->getCockpitOpacity();
+                if (cachedCockpitHost_ != nullptr)
+                    opacity = cachedCockpitHost_->getCockpitOpacity();
                 if (opacity < 0.05f) return; // B041 performance optimization
             }
             g.setOpacity(opacity);
@@ -304,7 +306,7 @@ public:
             // ── Creature animation — procedural placeholder (VQ 015) ──────────
             // Scales and breathes inside the porthole. Eye shifts on couplingLean.
             // Will be replaced by pixel-art sprites generated via /pixel-artist.
-            if (hasEngine)
+            // Fix #23: outer if (hasEngine) block guarantees hasEngine here — no redundant check.
             {
                 const float portraitSize = porW; // porthole diameter is the portrait zone
                 float breathScale = 1.0f + 0.1f * std::sin(creatureState_.breathPhase);
@@ -425,6 +427,13 @@ public:
             cachedDashedPath.clear();
             stroke.createDashedStroke(cachedDashedPath, roundRect, dashPattern, 2);
         }
+    }
+
+    // Fix #7: cache CockpitHost pointer once when the component hierarchy is set up,
+    // avoiding a dynamic_cast walk on every paint() call (O(depth) per frame).
+    void parentHierarchyChanged() override
+    {
+        cachedCockpitHost_ = CockpitHost::find(this);
     }
 
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
@@ -716,6 +725,10 @@ private:
 
     // P8 fix: dashed border path for empty slot — built once in resized()
     juce::Path cachedDashedPath;
+
+    // Fix #7: cached CockpitHost pointer — set in parentHierarchyChanged(),
+    // used in paint() to avoid dynamic_cast walk on every frame.
+    CockpitHost* cachedCockpitHost_ = nullptr;
 
     // Creature animation state — VQ 015 breathing scaffold
     CreatureState creatureState_;

@@ -56,6 +56,7 @@ public:
     explicit CouplingArcOverlay(XOlokunProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(false, false); // pass-through to tiles beneath
+        cachedRoutes.reserve(16); // Fix #14: pre-allocate to avoid reallocation at steady state
         // A11Y06: respect reduced-motion preference — drop to 1Hz refresh when active
         if (A11y::prefersReducedMotion())
             startTimerHz(1);
