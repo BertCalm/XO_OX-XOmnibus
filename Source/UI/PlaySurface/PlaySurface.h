@@ -17,9 +17,7 @@
 namespace xolokun { class XOlokunProcessor; }
 #include "../../XOlokunProcessor.h"
 
-#include "HarmonicField.h"
 #include "GestureTrailBuffer.h"
-#include "XOuijaPanel.h"
 
 namespace xolokun {
 
@@ -54,12 +52,11 @@ namespace PS {
     static constexpr int kStripH      = 64;         // Performance strip (matches kZone3H)
     static constexpr int kHeaderH     = 28;         // Mode tab bar height
 
-    // V1 layout constants (kept for backward compatibility / OrbitPath / PerformancePads)
+    // V1 layout constants (kept for backward compatibility with any external references)
     static constexpr int kZone1W       = 480;
     static constexpr int kZone2W       = 200;
     static constexpr int kZone4W       = 100;
     static constexpr int kZone3H       = 64;        // same as kStripH
-    static constexpr int kOrbitDiameter = 180;
 
     // Pad grid constants (unchanged)
     static constexpr int kPadCols      = 4;
@@ -67,11 +64,8 @@ namespace PS {
     static constexpr int kNumPads      = kPadCols * kPadRows;
 
     // Animation
-    static constexpr float kOrbitFriction   = 0.98f;
-    static constexpr float kSnapSpring      = 0.08f;
     static constexpr float kVelDecay        = 0.92f;
     static constexpr float kWarmMemoryDur   = 1.5f;  // seconds
-    static constexpr int   kOrbitTrailSize  = 60;
     static constexpr int   kStripTrailSize  = 45;
 
     // Colors
@@ -143,7 +137,7 @@ public:
     // In Drum mode: bank selects an alternate drum kit offset (16 per bank).
     // kBaseNote (48) is unused in bank-aware mode; kept for legacy scale mode.
     enum class Bank { A = 0, B = 1, C = 2, D = 3 };
-    void setBank(Bank b) { currentBank = b; repaint(); }
+    void setBank(Bank b) { currentBank = b; scaleNotesDirty_ = true; repaint(); }
     Bank getBank() const { return currentBank; }
 
     NoteInputZone()
@@ -168,14 +162,14 @@ public:
     enum class ScaleMode { Off, Filter, Highlight };
     ScaleMode scaleMode = ScaleMode::Off;
     // P2-2: setter so callers don't access scaleMode directly
-    void setScaleMode(ScaleMode m) { scaleMode = m; repaint(); }
+    void setScaleMode(ScaleMode m) { scaleMode = m; scaleNotesDirty_ = true; repaint(); }
 
     void setMode(Mode m) { mode = m; repaint(); }
     Mode getMode() const { return mode; }
-    void setOctave(int oct) { octaveOffset = juce::jlimit(PS::kMinOctave, PS::kMaxOctave, oct); repaint(); }
+    void setOctave(int oct) { octaveOffset = juce::jlimit(PS::kMinOctave, PS::kMaxOctave, oct); scaleNotesDirty_ = true; repaint(); }
     int  getOctave() const { return octaveOffset; }
-    void setScale(int idx) { currentScale = juce::jlimit(0, (int)scales.size() - 1, idx); repaint(); }
-    void setRootKey(int key) { rootKey = juce::jlimit(0, 11, key); repaint(); }
+    void setScale(int idx) { currentScale = juce::jlimit(0, (int)scales.size() - 1, idx); scaleNotesDirty_ = true; repaint(); }
+    void setRootKey(int key) { rootKey = juce::jlimit(0, 11, key); scaleNotesDirty_ = true; repaint(); }
 
     void paint(juce::Graphics& g) override
     {
@@ -204,10 +198,11 @@ public:
     {
         if (lastNote >= 0)
         {
-            // P0-3: on fretless release, reset pitch bend to 0 first
+            // P0-3: on fretless release, reset pitch bend to centre (8192 = no bend).
+            // Value 0 would be maximum downward bend — do NOT use 0 here.
             if (mode == Mode::Fretless && midiCollector)
             {
-                auto msg = juce::MidiMessage::pitchWheel(midiChannel, 0);
+                auto msg = juce::MidiMessage::pitchWheel(midiChannel, 8192);
                 msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 midiCollector->addMessageToQueue(msg);
             }
@@ -308,6 +303,11 @@ private:
     std::array<WarmMemoryEntry, 8> warmMemory {};
     int warmMemIdx = 0;
 
+    // Fix #35: scale note cache — 16 pre-computed notes for FILTER mode.
+    // Marked mutable so const helpers can rebuild on demand.
+    mutable std::array<int, PS::kNumPads> cachedScaleNotes_ {};
+    mutable bool scaleNotesDirty_ = true;
+
     // XOuija harmonic field state (Spec Section 8.2)
     int harmonicRootKey_ = 0;  // current key from XOuija (semitone 0-11)
     int harmonicTension_ = 0;  // fifths distance from C for color temperature (0-6)
@@ -381,7 +381,25 @@ private:
 
     // FILTER mode: compute MIDI note for pad by walking up only in-scale semitones.
     // padIndex 0 = lowest in-scale note at or above the bank+octave base.
+    // Fix #35: returns from cache (rebuilt lazily when scale/root/bank/octave changes).
     int scaleNoteForPad(int padIndex) const
+    {
+        if (scaleNotesDirty_)
+            rebuildScaleNoteCache();
+        if (padIndex >= 0 && padIndex < PS::kNumPads)
+            return cachedScaleNotes_[static_cast<size_t>(padIndex)];
+        return computeScaleNoteForPad(padIndex); // fallback for out-of-range index
+    }
+
+    // Fix #35: cache rebuild helper — called once on first access after a dirty state change.
+    void rebuildScaleNoteCache() const
+    {
+        for (int i = 0; i < PS::kNumPads; ++i)
+            cachedScaleNotes_[static_cast<size_t>(i)] = computeScaleNoteForPad(i);
+        scaleNotesDirty_ = false;
+    }
+
+    int computeScaleNoteForPad(int padIndex) const
     {
         static constexpr int kBankBase[4] = { 36, 52, 68, 84 };
         int baseNote = kBankBase[(int)currentBank] + (octaveOffset * 12);
@@ -520,10 +538,10 @@ private:
             // Touch began: fire note-on at the initial Y-derived velocity.
             if (lastNote >= 0) fireNoteOff(lastNote);
             lastNote = note;
-            // Reset pitch bend to centre before the new note.
+            // Reset pitch bend to centre (8192 = no bend) before the new note.
             if (midiCollector)
             {
-                auto msg = juce::MidiMessage::pitchWheel(midiChannel, 0);
+                auto msg = juce::MidiMessage::pitchWheel(midiChannel, 8192);
                 msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 midiCollector->addMessageToQueue(msg);
             }
@@ -859,262 +877,8 @@ private:
 };
 
 //==============================================================================
-// Zone 2: Orbit Path — Physics-based circular XY expression
-//
-class OrbitPathZone : public juce::Component
-{
-public:
-    OrbitPathZone() = default;
-    enum class PhysicsMode { Free, Lock, Snap };
-
-    std::function<void(float x, float y)> onPositionChanged;
-
-    void setPhysicsMode(PhysicsMode m) { physMode = m; repaint(); }
-
-    // Engine accent colour — set by PlaySurface::setAccentColour()
-    juce::Colour accentColour { 0xFFE9C46A };
-    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
-
-    void paint(juce::Graphics& g) override
-    {
-        using namespace PS;
-
-        // ── Tab strip (18px) — accent-adaptive ───────────────────────────
-        static constexpr float kTabH = 18.0f;
-
-        const char* tabLabels[3] = { "FREE", "LOCK", "SNAP" };
-        float tabW = (float)getWidth() / 3.0f;
-
-        for (int i = 0; i < 3; ++i)
-        {
-            bool active = (int)physMode == i;
-            auto tabR = juce::Rectangle<float>(i * tabW, 0.0f, tabW, kTabH);
-
-            // Active tab: accent @ 0.12 background, accent @ 0.95 text
-            // Inactive tab: kSurfaceCard background, accent @ 0.40 text
-            g.setColour(active ? accentColour.withAlpha(0.12f) : juce::Colour(kSurfaceCard));
-            g.fillRect(tabR);
-            g.setColour(accentColour.withAlpha(0.20f));
-            g.drawRect(tabR, 0.5f);
-            g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)).boldened());
-            g.setColour(active ? accentColour.withAlpha(0.95f) : accentColour.withAlpha(0.40f));
-            g.drawText(tabLabels[i], tabR, juce::Justification::centred);
-        }
-
-        // ── Orbit area (below tab strip) ─────────────────────────────────
-        auto orbitBounds = getLocalBounds().withTrimmedTop((int)kTabH).toFloat();
-        float cx = orbitBounds.getCentreX();
-        float cy = orbitBounds.getCentreY();
-        float diam = juce::jmin(orbitBounds.getWidth(), orbitBounds.getHeight()) * 0.85f;
-        float radius = diam * 0.5f;
-
-        // Background
-        g.setColour(juce::Colour(kSurfaceBg));
-        g.fillRect(orbitBounds);
-
-        // Ring interior: radial gradient accent @ 0.05 center → transparent
-        {
-            juce::ColourGradient ringFill(accentColour.withAlpha(0.05f), cx, cy,
-                                          accentColour.withAlpha(0.0f), cx + radius, cy, true);
-            g.setGradientFill(ringFill);
-            g.fillEllipse(cx - radius, cy - radius, radius * 2, radius * 2);
-        }
-
-        // Ring border: accent @ 0.22
-        g.setColour(accentColour.withAlpha(0.22f));
-        g.drawEllipse(cx - radius, cy - radius, radius * 2, radius * 2, 1.0f);
-
-        // Center crosshair: accent @ 0.07
-        g.setColour(accentColour.withAlpha(0.07f));
-        g.drawHorizontalLine((int)cy, cx - radius, cx + radius);
-        g.drawVerticalLine((int)cx, cy - radius, cy + radius);
-
-        // Trail — 2 ghost points with accent @ 0.22 and @ 0.12
-        // (Draw only the last 2 meaningful trail points from the ring buffer)
-        {
-            int drawn = 0;
-            for (int i = 1; i < kOrbitTrailSize && drawn < 2; ++i)
-            {
-                int idx = (trailHead - i + kOrbitTrailSize) % kOrbitTrailSize;
-                if (trail[idx].x == 0.0f && trail[idx].y == 0.0f) continue;
-                float alpha = (drawn == 0) ? 0.22f : 0.12f;
-                float size  = (drawn == 0) ? 8.0f  : 6.0f;
-                float tx = cx + trail[idx].x * radius;
-                float ty = cy + trail[idx].y * radius;
-                // Box-shadow approximation: slightly larger translucent circle behind
-                g.setColour(accentColour.withAlpha(alpha * 0.4f));
-                g.fillEllipse(tx - size, ty - size, size * 2, size * 2);
-                g.setColour(accentColour.withAlpha(alpha));
-                g.fillEllipse(tx - size * 0.5f, ty - size * 0.5f, size, size);
-                ++drawn;
-            }
-        }
-
-        // Cursor: 13px, radial gradient from lighten(accent,60%) center → accent @ 0.50 edge
-        float cursorX = cx + posX * radius;
-        float cursorY = cy + posY * radius;
-        {
-            const float cursorR = 6.5f; // 13px diameter
-            juce::Colour cursorCenter = lightenColour(accentColour, 0.60f);
-            juce::ColourGradient cursorGrad(cursorCenter, cursorX, cursorY,
-                                            accentColour.withAlpha(0.50f),
-                                            cursorX + cursorR, cursorY, true);
-            g.setGradientFill(cursorGrad);
-            g.fillEllipse(cursorX - cursorR, cursorY - cursorR, cursorR * 2, cursorR * 2);
-        }
-
-        // ── LOCK mode: accent anchor dot at center ────────────────────────
-        if (physMode == PhysicsMode::Lock)
-        {
-            g.setColour(accentColour.withAlpha(0.9f));
-            g.fillEllipse(cx - 4.0f, cy - 4.0f, 8.0f, 8.0f);
-            g.setColour(accentColour.withAlpha(0.35f));
-            g.drawEllipse(cx - 8.0f, cy - 8.0f, 16.0f, 16.0f, 1.0f);
-        }
-
-        // ── SNAP mode: faint dotted arc from cursor toward center ─────────
-        if (physMode == PhysicsMode::Snap)
-        {
-            float dx = cx - cursorX;
-            float dy = cy - cursorY;
-            float dist = std::sqrt(dx * dx + dy * dy);
-            if (dist > 2.0f)
-            {
-                juce::Path springPath;
-                int steps = 12;
-                for (int s = 0; s <= steps; ++s)
-                {
-                    float t = (float)s / (float)steps;
-                    float px = cursorX + dx * t;
-                    float py = cursorY + dy * t;
-                    if (s == 0) springPath.startNewSubPath(px, py);
-                    else         springPath.lineTo(px, py);
-                }
-                juce::PathStrokeType stroke(1.0f);
-                float dashLengths[] = { 3.0f, 3.0f };
-                stroke.createDashedStroke(springPath, springPath, dashLengths, 2);
-                g.setColour(accentColour.withAlpha(0.40f));
-                g.strokePath(springPath, stroke);
-                // Small spring-return target dot at center
-                g.setColour(accentColour.withAlpha(0.60f));
-                g.fillEllipse(cx - 3.0f, cy - 3.0f, 6.0f, 6.0f);
-            }
-        }
-
-        // Axis labels: accent @ 0.25
-        g.setColour(accentColour.withAlpha(0.25f));
-        g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
-        g.drawText("CUTOFF", juce::Rectangle<float>(cx - radius, cy + radius + 2, radius * 2, 12),
-                   juce::Justification::centred);
-        g.drawText("RES", juce::Rectangle<float>(cx + radius + 2, cy - 6, 30, 12),
-                   juce::Justification::centredLeft);
-    }
-
-    void mouseDown(const juce::MouseEvent& e) override
-    {
-        // Tab strip click (top 18px)
-        if (e.y < 18)
-        {
-            int tab = (int)(e.x / ((float)getWidth() / 3.0f));
-            physMode = (PhysicsMode)juce::jlimit(0, 2, tab);
-            repaint();
-            return;
-        }
-        updateFromMouse(e);
-        dragging = true;
-    }
-    void mouseDrag(const juce::MouseEvent& e) override { if (dragging) updateFromMouse(e); }
-    void mouseUp(const juce::MouseEvent&) override { dragging = false; }
-
-    // Called at 30fps
-    void tick()
-    {
-        float prevX = posX, prevY = posY;
-
-        if (!dragging)
-        {
-            switch (physMode)
-            {
-                case PhysicsMode::Free:
-                    posX += velX;
-                    posY += velY;
-                    velX *= PS::kOrbitFriction;
-                    velY *= PS::kOrbitFriction;
-                    constrainToCircle();
-                    break;
-                case PhysicsMode::Snap:
-                    posX += (0.0f - posX) * PS::kSnapSpring;
-                    posY += (0.0f - posY) * PS::kSnapSpring;
-                    break;
-                case PhysicsMode::Lock:
-                    break; // Stay put
-            }
-        }
-
-        // Record trail
-        trail[(size_t)trailHead] = { posX, posY };
-        trailHead = (trailHead + 1) % PS::kOrbitTrailSize;
-
-        if (onPositionChanged)
-            onPositionChanged((posX + 1.0f) * 0.5f, (posY + 1.0f) * 0.5f);
-
-        // Only repaint when position actually moved (avoids idle redraws in Lock mode)
-        bool moved = std::fabs(posX - prevX) > 0.0001f || std::fabs(posY - prevY) > 0.0001f;
-        if (moved || dragging)
-            repaint();
-    }
-
-private:
-    PhysicsMode physMode = PhysicsMode::Free;
-    float posX = 0.0f, posY = 0.0f;
-    float velX = 0.0f, velY = 0.0f;
-    bool  dragging = false;
-
-    struct TrailPoint { float x = 0.0f, y = 0.0f; };
-    std::array<TrailPoint, PS::kOrbitTrailSize> trail {};
-    int trailHead = 0;
-
-    void updateFromMouse(const juce::MouseEvent& e)
-    {
-        // Orbit area sits below the 18px tab strip
-        auto orbitBounds = getLocalBounds().withTrimmedTop(18).toFloat();
-        float cx = orbitBounds.getCentreX();
-        float cy = orbitBounds.getCentreY();
-        float diam = juce::jmin(orbitBounds.getWidth(), orbitBounds.getHeight()) * 0.85f;
-        float radius = diam * 0.5f;
-
-        float newX = (e.x - cx) / radius;
-        float newY = (e.y - cy) / radius;
-
-        // Velocity from delta
-        velX = (newX - posX) * 0.3f;
-        velY = (newY - posY) * 0.3f;
-
-        posX = newX;
-        posY = newY;
-        constrainToCircle();
-    }
-
-    void constrainToCircle()
-    {
-        float dist = std::sqrt(posX * posX + posY * posY);
-        if (dist > 1.0f)
-        {
-            // Reflect off boundary
-            float nx = posX / dist, ny = posY / dist;
-            float dotVN = velX * nx + velY * ny;
-            velX -= 2.0f * dotVN * nx;
-            velY -= 2.0f * dotVN * ny;
-            posX = nx * 0.99f;
-            posY = ny * 0.99f;
-        }
-    }
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OrbitPathZone)
-};
-
-//==============================================================================
 // Zone 3: Performance Strip — Full-width XY gestural controller
+// (V1 OrbitPathZone removed — dead code, not used in V2 layout)
 //
 class PerformanceStrip : public juce::Component
 {
@@ -1323,142 +1087,7 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PerformanceStrip)
 };
 
-//==============================================================================
-// Zone 4: Performance Pads — FIRE, XOSEND, ECHO CUT, PANIC
-//
-class PerformancePads : public juce::Component
-{
-public:
-    PerformancePads() = default;
-    std::function<void()> onFire;
-    std::function<void(bool held)> onXoSend;
-    std::function<void(bool held)> onEchoCut;
-    std::function<void()> onPanic;
-
-    // Engine accent colour — set by PlaySurface::setAccentColour()
-    juce::Colour accentColour { 0xFFE9C46A };
-    void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
-
-    void paint(juce::Graphics& g) override
-    {
-        using namespace PS;
-        auto b = getLocalBounds().toFloat();
-        float padH = b.getHeight() / 4.0f;
-
-        static const char* labels[] = { "FIRE", "XOSEND", "ECHO CUT", "PANIC" };
-        static const char* keys[]   = { "Z", "X", "C", "V" };
-
-        for (int i = 0; i < 4; ++i)
-        {
-            auto rect = juce::Rectangle<float>(b.getX(), b.getY() + i * padH, b.getWidth(), padH).reduced(3.0f);
-            bool pressed = padStates[i];
-
-            if (i == 3)
-            {
-                // PANIC: always red, independent of engine accent
-                juce::Colour panicCol = juce::Colour(kPanicRed);
-                g.setColour(pressed ? panicCol : panicCol.withAlpha(0.15f));
-                g.fillRoundedRectangle(rect, 6.0f);
-                g.setColour(panicCol.withAlpha(pressed ? 1.0f : 0.35f));
-                g.drawRoundedRectangle(rect, 6.0f, 2.0f);
-                g.setColour(pressed ? juce::Colours::black : panicCol);
-                g.setFont(juce::Font(juce::FontOptions{}.withHeight(10.0f)).boldened());
-                g.drawText(labels[i], rect, juce::Justification::centred);
-                // Keyboard hint: panic uses red @ 0.45
-                g.setColour(panicCol.withAlpha(0.45f));
-                g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
-                g.drawText(keys[i], rect.reduced(4), juce::Justification::bottomRight);
-            }
-            else
-            {
-                // FIRE / X-SEND / ECHO: engine accent @ 0.06 bg, @ 0.15 border, @ 0.55 text
-                if (pressed)
-                {
-                    g.setColour(accentColour.withAlpha(0.25f));
-                    g.fillRoundedRectangle(rect, 6.0f);
-                    g.setColour(accentColour.withAlpha(0.50f));
-                    g.drawRoundedRectangle(rect, 6.0f, 2.0f);
-                    // Active text: lighten(accent, 60%)
-                    g.setColour(lightenColour(accentColour, 0.60f));
-                }
-                else
-                {
-                    g.setColour(accentColour.withAlpha(0.06f));
-                    g.fillRoundedRectangle(rect, 6.0f);
-                    g.setColour(accentColour.withAlpha(0.15f));
-                    g.drawRoundedRectangle(rect, 6.0f, 2.0f);
-                    // Normal text: accent @ 0.55
-                    g.setColour(accentColour.withAlpha(0.55f));
-                }
-                g.setFont(juce::Font(juce::FontOptions{}.withHeight(10.0f)).boldened());
-                g.drawText(labels[i], rect, juce::Justification::centred);
-
-                // Keyboard hint: accent @ 0.45
-                g.setColour(accentColour.withAlpha(0.45f));
-                g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
-                g.drawText(keys[i], rect.reduced(4), juce::Justification::bottomRight);
-            }
-        }
-    }
-
-    void mouseDown(const juce::MouseEvent& e) override
-    {
-        int pad = padFromY(e.y);
-        if (pad < 0 || pad > 3) return;
-        activePad = pad;
-        padStates[(size_t)pad] = true;
-        firePad(pad, true);
-        repaint();
-    }
-
-    void mouseUp(const juce::MouseEvent&) override
-    {
-        int pad = activePad;
-        activePad = -1;
-        if (pad < 0 || pad > 3) return;
-        padStates[(size_t)pad] = false;
-        firePad(pad, false);
-        repaint();
-    }
-
-    // Keyboard shortcut support (called from parent keyPressed)
-    bool handleKey(const juce::KeyPress& key, bool isDown)
-    {
-        int pad = -1;
-        if (key == juce::KeyPress('z') || key == juce::KeyPress('Z')) pad = 0;
-        if (key == juce::KeyPress('x') || key == juce::KeyPress('X')) pad = 1;
-        if (key == juce::KeyPress('c') || key == juce::KeyPress('C')) pad = 2;
-        if (key == juce::KeyPress('v') || key == juce::KeyPress('V')) pad = 3;
-        if (pad < 0) return false;
-        padStates[(size_t)pad] = isDown;
-        firePad(pad, isDown);
-        repaint();
-        return true;
-    }
-
-private:
-    std::array<bool, 4> padStates {};
-    int activePad = -1;
-
-    int padFromY(int y) const
-    {
-        float padH = getHeight() / 4.0f;
-        return juce::jlimit(0, 3, (int)(y / padH));
-    }
-
-    void firePad(int pad, bool pressed)
-    {
-        switch (pad)
-        {
-            case 0: if (pressed && onFire) onFire(); break;
-            case 1: if (onXoSend) onXoSend(pressed); break;
-            case 2: if (onEchoCut) onEchoCut(pressed); break;
-            case 3: if (pressed && onPanic) onPanic(); break;
-        }
-    }
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PerformancePads)
-};
+// V1 PerformancePads removed — dead code, not used in V2 layout (Fix #40).
 
 //==============================================================================
 // PlaySurface — Unified 4-zone playing interface
@@ -1478,20 +1107,10 @@ public:
 
         noteInput.setTitle ("Note Input Zone");
         noteInput.setDescription ("Pad grid or fretless strip for note input");
-        orbitPath.setTitle ("Orbit Path");
-        orbitPath.setDescription ("XY controller with orbit physics for continuous modulation");
         strip.setTitle ("Performance Strip");
         strip.setDescription ("Touch strip for filter sweeps, coupling, and dub effects");
-        // V1 DEPRECATED — remove after V2 stabilizes
-        // perfPads wired but not made visible in V2 layout
-        perfPads.setTitle ("Performance Pads");
-        perfPads.setDescription ("4 trigger pads with keyboard shortcuts Z, X, C, V");
-        perfPads.setWantsKeyboardFocus (true);
 
         addAndMakeVisible(noteInput);
-        // V1 DEPRECATED — remove after V2 stabilizes
-        // addAndMakeVisible(orbitPath);  // Removed from V2 layout
-        // addAndMakeVisible(perfPads);   // Removed from V2 layout
         addAndMakeVisible(strip);
 
         // V2: XOuija panel + KeysMode
@@ -1503,7 +1122,10 @@ public:
         xouijaPanel_.onPositionChanged = [this](float circleX, float /*influenceY*/)
         {
             int key     = HarmonicField::positionToKey(circleX);
-            int tension = HarmonicField::fifthsDistance(key, 0); // distance from C
+            // Tension = distance from C (tonal center). This is intentional:
+            // the XOuija circle measures harmonic distance from the global
+            // reference, not from any transposed root.
+            int tension = HarmonicField::fifthsDistance(key, 0);
             noteInput.setHarmonicField(key, tension);
             keysMode_.setRootKey(key);
         };
@@ -1723,9 +1345,7 @@ public:
         if (c == accentColour) return; // B1: early-return guard — skip repaints if unchanged
         accentColour = c;
         noteInput.setAccentColour(c);
-        orbitPath.setAccentColour(c);   // V1 DEPRECATED — kept to avoid compile error
         strip.setAccentColour(c);
-        perfPads.setAccentColour(c);    // V1 DEPRECATED — kept to avoid compile error
         // V2 components
         xouijaPanel_.setAccentColour(c);
         keysMode_.setAccentColour(c);
@@ -1747,9 +1367,7 @@ public:
 
     // Public zone accessors for wiring callbacks
     NoteInputZone&     getNoteInput()  { return noteInput; }
-    OrbitPathZone&     getOrbitPath()  { return orbitPath; }
     PerformanceStrip&  getStrip()     { return strip; }
-    PerformancePads&   getPerfPads()  { return perfPads; }
 
     void resized() override
     {
@@ -1799,10 +1417,6 @@ public:
             keysMode_.setBounds(noteArea);
         else
             noteInput.setBounds(noteArea);
-
-        // V1 DEPRECATED components — zero-size so they don't consume space
-        orbitPath.setBounds(juce::Rectangle<int>());
-        perfPads.setBounds(juce::Rectangle<int>());
     }
 
     void paint(juce::Graphics& g) override
@@ -1820,39 +1434,24 @@ public:
 
     void focusLost(FocusChangeType) override
     {
-        // Release all held performance pads when focus leaves the PlaySurface.
-        for (int i = 0; i < 4; ++i)
-            perfPads.handleKey(juce::KeyPress('z' + i), false);
+        // Nothing to release (V1 perfPads removed in V2 layout)
     }
 
-    bool keyPressed(const juce::KeyPress& key) override
+    bool keyPressed(const juce::KeyPress& /*key*/) override
     {
-        return perfPads.handleKey(key, true);
+        // V1 perfPads removed — XOuija and gesture buttons have their own key handling
+        return false;
     }
 
-    // P0-1 / audit 4.2: handle key release so XOSEND and ECHO CUT receive
-    // the isDown=false event and held-button state is cleared.
     bool keyStateChanged(bool /*isKeyDown*/) override
     {
-        bool handled = false;
-        // Check each of the four keys; dispatch release if no longer held.
-        const juce::KeyPress keys[] = {
-            juce::KeyPress('z'), juce::KeyPress('x'),
-            juce::KeyPress('c'), juce::KeyPress('v'),
-        };
-        for (int i = 0; i < 4; ++i)
-        {
-            if (!keys[i].isCurrentlyDown())
-                handled |= perfPads.handleKey(keys[i], false);
-        }
-        return handled;
+        return false;
     }
 
 private:
     void timerCallback() override
     {
         noteInput.tick();
-        orbitPath.tick();
         strip.tick();
     }
 
@@ -1876,9 +1475,6 @@ private:
     bool              driftToggleState_ = false;  // CC 90 state — used by Task 13
 
     NoteInputZone      noteInput;
-    // V1 DEPRECATED — remove after V2 stabilizes
-    OrbitPathZone      orbitPath;   // V1 orbit zone — no longer in V2 layout
-    PerformancePads    perfPads;    // V1 performance pads — no longer in V2 layout
 
     // V2 layout components
     PerformanceStrip   strip;

@@ -100,6 +100,8 @@ public:
         , state_ (State::Lissajous)
         , driftEnabled_ (true)
         , displayText_ ("C · 0%")
+        // Cache Georgia italic font once — avoids repeated construction in paint()
+        , textFont_ (juce::Font ("Georgia", 10.0f, juce::Font::italic))
     {
         setInterceptsMouseClicks (false, false);
         startTimerHz (60);
@@ -187,6 +189,12 @@ public:
     // Component overrides
     //==========================================================================
 
+    void visibilityChanged() override
+    {
+        if (isVisible()) startTimerHz(60);
+        else stopTimer();
+    }
+
     void paint (juce::Graphics& g) override
     {
         const auto bounds = getLocalBounds().toFloat();
@@ -213,9 +221,9 @@ public:
                        kPipDiameter);
 
         // 5. Interior text — Georgia italic 10px, accent at 85% opacity
-        //    Positioned below centre
+        //    Positioned below centre. Uses cached textFont_ (not rebuilt each paint).
         g.setColour (accentColour_.withAlpha (0.85f));
-        g.setFont (juce::Font ("Georgia", 10.0f, juce::Font::italic));
+        g.setFont (textFont_);
         const float textY = cy + kPipDiameter * 0.5f + 1.0f;
         g.drawText (displayText_,
                     juce::Rectangle<float> (bounds.getX(),
@@ -292,9 +300,26 @@ private:
                 displayX_ = driftAnchorX_ + driftX;
                 displayY_ = driftAnchorY_ + driftY;
 
-                // Clamp so planchette stays fully on screen
-                displayX_ = juce::jlimit (0.0f, 1.0f, displayX_);
-                displayY_ = juce::jlimit (0.0f, 1.0f, displayY_);
+                // Clamp so planchette stays fully on screen (Fix #20: use half-size margins
+                // so the planchette body never goes off-screen at the edges).
+                if (auto* parent = getParentComponent())
+                {
+                    const float parentW = static_cast<float> (parent->getWidth());
+                    const float parentH = static_cast<float> (parent->getHeight());
+                    const float marginX = (parentW > 0.0f)
+                                         ? static_cast<float> (kWidth)  / (2.0f * parentW)
+                                         : 0.0f;
+                    const float marginY = (parentH > 0.0f)
+                                         ? static_cast<float> (kHeight) / (2.0f * parentH)
+                                         : 0.0f;
+                    displayX_ = juce::jlimit (marginX, 1.0f - marginX, displayX_);
+                    displayY_ = juce::jlimit (marginY, 1.0f - marginY, displayY_);
+                }
+                else
+                {
+                    displayX_ = juce::jlimit (0.0f, 1.0f, displayX_);
+                    displayY_ = juce::jlimit (0.0f, 1.0f, displayY_);
+                }
 
                 updateBounds();
                 repaint();
@@ -349,6 +374,9 @@ private:
     State         state_;
     bool          driftEnabled_;
     juce::String  displayText_;
+
+    // Cached font — initialized in constructor, avoids per-paint construction
+    juce::Font    textFont_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Planchette)
 };
@@ -449,17 +477,11 @@ public:
                     juce::Justification::centred, false);
 
         // ---- Three button slots ----
-        const float gutter     = 4.0f;
-        const float buttonH    = 28.0f;
-        const float buttonTop  = h - buttonH;
-        const float totalGutters = gutter * 4.0f;          // left + 2 mid + right
-        const float buttonW    = (w - totalGutters) / 3.0f;
-        const float cornerR    = 3.0f;
+        const float cornerR = 3.0f;
 
         for (int i = 0; i < 3; ++i)
         {
-            const float bx = gutter + static_cast<float> (i) * (buttonW + gutter);
-            const juce::Rectangle<float> buttonRect (bx, buttonTop, buttonW, buttonH);
+            const juce::Rectangle<float> buttonRect = getButtonRect (i);
 
             const bool pressed = (pressedIndex_ == i);
 
@@ -509,26 +531,32 @@ public:
 
     void setAccentColour (juce::Colour c) { accentColour_ = c; repaint(); }
 
+    /** Returns the rect for button at index (0, 1, or 2). */
+    juce::Rectangle<float> getButtonRect (int index) const
+    {
+        float w = static_cast<float> (getWidth());
+        float gutter  = 4.0f;
+        float buttonW = (w - gutter * 4.0f) / 3.0f;
+        float buttonH = 28.0f;
+        float y = (static_cast<float> (getHeight()) - buttonH) / 2.0f;
+        return { gutter + static_cast<float> (index) * (buttonW + gutter), y, buttonW, buttonH };
+    }
+
 private:
     //==========================================================================
     int hitTestButton (float mx, float my) const
     {
-        const float w = static_cast<float> (getWidth());
         const float h = static_cast<float> (getHeight());
-        const float gutter  = 4.0f;
         const float buttonH = 28.0f;
         const float buttonTop = h - buttonH;
 
         if (my < buttonTop)
             return -1;
 
-        const float totalGutters = gutter * 4.0f;
-        const float buttonW = (w - totalGutters) / 3.0f;
-
         for (int i = 0; i < 3; ++i)
         {
-            const float bx = gutter + static_cast<float> (i) * (buttonW + gutter);
-            if (mx >= bx && mx < bx + buttonW)
+            auto r = getButtonRect (i);
+            if (mx >= r.getX() && mx < r.getRight())
                 return i;
         }
         return -1;
@@ -554,7 +582,10 @@ class GoodbyeButton : public juce::Component
 {
 public:
     //==========================================================================
-    GoodbyeButton() = default;
+    GoodbyeButton()
+        // Cache Georgia italic font once — avoids repeated construction in paint()
+        : labelFont_ (juce::Font ("Georgia", 11.0f, juce::Font::italic))
+    {}
     ~GoodbyeButton() override = default;
 
     //==========================================================================
@@ -571,28 +602,29 @@ public:
         g.setColour (base.withAlpha (alpha));
         g.fillRoundedRectangle (b, 4.0f);
 
-        // Label
+        // Label — uses cached labelFont_ (not rebuilt each paint)
         g.setColour (juce::Colours::white.withAlpha (0.90f));
-        g.setFont (juce::Font ("Georgia", 11.0f, juce::Font::italic));
+        g.setFont (labelFont_);
         g.drawText ("GOODBYE", b, juce::Justification::centred, false);
     }
 
-    void mouseDown (const juce::MouseEvent& /*e*/) override
+    void mouseDown (const juce::MouseEvent&) override
     {
         pressed_ = true;
         repaint();
-        if (onGoodbye)
-            onGoodbye();
     }
 
-    void mouseUp (const juce::MouseEvent& /*e*/) override
+    void mouseUp (const juce::MouseEvent& e) override
     {
+        if (getLocalBounds().toFloat().contains(e.position))
+            if (onGoodbye) onGoodbye();
         pressed_ = false;
         repaint();
     }
 
 private:
-    bool pressed_ = false;
+    bool       pressed_   = false;
+    juce::Font labelFont_; // cached in constructor — Georgia italic 11px
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GoodbyeButton)
 };
@@ -649,12 +681,13 @@ public:
             // Clear trail buffer
             trailBuffer_.clear();
 
-            // Emit CC resets: CC 85→64 (centre), CC 86→0 (no influence), CC 88→0
+            // Emit CC resets: CC 85→64 (centre), CC 86→0 (no influence)
+            // CC 88 = trail freeze state (Spec Section 11.1). GOODBYE unfreezes.
             if (onCCOutput)
             {
                 onCCOutput (85, 64);
                 onCCOutput (86, 0);
-                onCCOutput (88, 0);
+                onCCOutput (88, 0); // CC 88 = trail freeze state (Spec Section 11.1). GOODBYE unfreezes.
             }
 
             // Update planchette text
@@ -671,6 +704,15 @@ public:
         setupDefaultButtonBank();
 
         setWantsKeyboardFocus (true);
+
+        // ── Cache marker fonts (Fix #10: avoid per-paint Font construction) ──
+        // Sizes = kBaseFontSize (11.0) * sizeFactor from markerProperties()
+        constexpr float kBaseFontSize = 11.0f;
+        constexpr float kSizeFactors[4] = { 1.00f, 0.85f, 0.70f, 0.55f };
+        for (int i = 0; i < 4; ++i)
+            markerFonts_[i] = juce::Font ("Georgia",
+                                           kBaseFontSize * kSizeFactors[i],
+                                           juce::Font::italic);
     }
 
     ~XOuijaPanel() override = default;
@@ -857,9 +899,9 @@ public:
         const char c = static_cast<char> (
             std::toupper (static_cast<unsigned char> (key.getTextCharacter())));
 
-        if (c == 'V')
+        if (c == 'G')
         {
-            // Trigger GOODBYE action directly
+            // Trigger GOODBYE action directly (G for GOODBYE)
             if (goodbyeButton_.onGoodbye)
                 goodbyeButton_.onGoodbye();
             return true;
@@ -891,6 +933,15 @@ private:
     // Task 7 — Gesture button bar and GOODBYE button
     GestureButtonBar   gestureButtons_;
     GoodbyeButton      goodbyeButton_;
+
+    // ── Cached marker fonts (Fix #10: avoid per-paint Font construction) ─────
+    // 4 size brackets corresponding to HarmonicField::markerProperties() output:
+    //   [0] dist=0     → sizeFactor 1.00 → 11.0px  (home key)
+    //   [1] dist=1-2   → sizeFactor 0.85 → 9.35px
+    //   [2] dist=3-4   → sizeFactor 0.70 → 7.70px
+    //   [3] dist=5-6   → sizeFactor 0.55 → 6.05px
+    // Initialized in the constructor body after member initializers.
+    juce::Font markerFonts_[4];
 
     //==========================================================================
     // Note names for planchette display text (12-entry, indexed by semitone)
@@ -951,7 +1002,7 @@ private:
         // Marker band baseline: 40% from top of the harmonic surface
         const float baselineY = b.getY() + b.getHeight() * 0.40f;
 
-        // Base font size for the "full" (home) marker
+        // Base font size for the "full" (home) marker (used for text sizing only)
         constexpr float kBaseFontSize = 11.0f;
 
         // Current key — used to calculate tension distance for each marker
@@ -988,9 +1039,16 @@ private:
             const juce::String label (HarmonicField::kNoteNames[
                 static_cast<std::size_t> (idx)]);
 
+            // Select the cached font bracket (Fix #10: avoid per-marker Font construction).
+            // Brackets match HarmonicField::markerProperties() size factor tiers.
+            int fontBracket = 3;
+            if      (dist == 0) fontBracket = 0;
+            else if (dist <= 2) fontBracket = 1;
+            else if (dist <= 4) fontBracket = 2;
+
             // Draw
             g.setColour (markerColour);
-            g.setFont (juce::Font ("Georgia", fontSize, juce::Font::italic));
+            g.setFont (markerFonts_[fontBracket]);
 
             // Centre the text at (markerX, markerY)
             const float textW = fontSize * 2.2f;   // generous width for "F#" etc.
@@ -1013,7 +1071,9 @@ private:
         const auto b = getLocalBounds().toFloat();
         const juce::Colour labelColour = juce::Colours::white.withAlpha (0.20f);
         g.setColour (labelColour);
-        g.setFont (juce::Font ("Georgia", 9.0f, juce::Font::italic));
+        // Static local font — constructed once, shared across all paint() calls
+        static const juce::Font kYesNoFont ("Georgia", 9.0f, juce::Font::italic);
+        g.setFont (kYesNoFont);
 
         // YES — near the top of the component
         const float yesY = b.getY() + 10.0f;

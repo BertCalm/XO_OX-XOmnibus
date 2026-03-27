@@ -159,6 +159,27 @@ public:
         // Pre-allocate live knob slots (all null at start)
         liveKnobs.resize(paramSlots.size());
 
+        // ── Cache the cutoff parameter pointer once ──────────────────────────
+        // paint() reads this each frame for the Parameter Terrain tint.
+        // Scanning paramSlots in paint() is O(n) per frame — cache it here
+        // instead (Fix #8: APVTS scan in paint).
+        {
+            auto& apvts = proc.getAPVTS();
+            for (auto& slot : paramSlots)
+            {
+                auto inner = slot.pid.fromLastOccurrenceOf("_", false, false).toLowerCase();
+                juce::String pidLow = slot.pid.toLowerCase();
+                if (inner.contains("cutoff") || inner.contains("filter") ||
+                    inner.contains("flt")    || inner.contains("freq")   ||
+                    pidLow.contains("cutoff") || pidLow.contains("filtfreq"))
+                {
+                    cachedCutoffParam_ = dynamic_cast<juce::RangedAudioParameter*>(
+                                             apvts.getParameter(slot.pid));
+                    break;
+                }
+            }
+        }
+
         // Start 10 Hz timer for visibility checks
         startTimerHz(10);
     }
@@ -261,30 +282,11 @@ public:
         // ── Parameter Terrain (Vision Quest 015) ─────────────────────────────
         // Background shifts warm (XO Gold) when filter is open, cool (Teal) when
         // closed.  3.5% opacity — barely perceptible but felt on every repaint.
+        // cachedCutoffParam_ is resolved once at construction (Fix #8).
         {
             float cutoffNorm = 0.5f; // default: neutral (no filter param found)
-
-            // Scan paramSlots for the first parameter whose inner name (part after
-            // the prefix) matches typical filter-cutoff keywords.
-            auto& apvts = proc.getAPVTS();
-            for (auto& slot : paramSlots)
-            {
-                juce::String inner = slot.pid.fromLastOccurrenceOf("_", false, false)
-                                         .toLowerCase();
-                // Also try the full pid lowercased for single-segment prefixes
-                juce::String pidLow = slot.pid.toLowerCase();
-                if (inner.contains("cutoff") || inner.contains("filter") ||
-                    inner.contains("flt")    || inner.contains("freq")   ||
-                    pidLow.contains("cutoff") || pidLow.contains("filtfreq"))
-                {
-                    if (auto* rp = dynamic_cast<juce::RangedAudioParameter*>(
-                                       apvts.getParameter(slot.pid)))
-                    {
-                        cutoffNorm = rp->getValue(); // already 0-1 normalized
-                        break;
-                    }
-                }
-            }
+            if (cachedCutoffParam_ != nullptr)
+                cutoffNorm = cachedCutoffParam_->getValue(); // already 0-1 normalized
 
             // Warm = orange/gold tint when filter open (high cutoff)
             // Cool = teal tint when filter closed (low cutoff)
@@ -682,6 +684,10 @@ private:
 
     // ── Viewport reference ────────────────────────────────────────────────────
     juce::Viewport* parentViewport = nullptr;
+
+    // ── Cached cutoff parameter pointer (Fix #8: avoid APVTS scan in paint()) ─
+    // Resolved once at construction; nullptr if this engine has no filter param.
+    juce::RangedAudioParameter* cachedCutoffParam_ = nullptr;
 
     // ── Dirty-flag for 10 Hz timer (FIX 11) ──────────────────────────────────
     int lastViewY_ = -1; // cached scroll position; -1 forces first update

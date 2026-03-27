@@ -259,12 +259,12 @@ public:
     void triggerCouplingBurst() noexcept
     {
         couplingBurstGain.store(kCouplingBurstPeak, std::memory_order_relaxed);
-        // TODO: race on currentSampleRate — this read is on the message thread while
-        // processBlock (audio thread) may concurrently write currentSampleRate during
-        // prepareToPlay. Fix: store sample rate in a separate std::atomic<double> at
-        // prepare time and read that atomic here instead of plain currentSampleRate.
+        // Read sample rate via atomicSampleRate_ (safe on message thread).
+        // currentSampleRate is NOT used here — it may be concurrently written
+        // by prepareToPlay() on the audio thread (data race → UB).
         couplingBurstSamplesRemaining.store(
-            static_cast<int>(currentSampleRate * kCouplingBurstMs / 1000.0),
+            static_cast<int>(atomicSampleRate_.load(std::memory_order_relaxed)
+                             * kCouplingBurstMs / 1000.0),
             std::memory_order_relaxed);
     }
 
@@ -357,6 +357,11 @@ private:
     juce::AudioBuffer<float> externalInputBuffer;
 
     double currentSampleRate = 44100.0;
+    // atomicSampleRate_ mirrors currentSampleRate for safe cross-thread reads.
+    // Written in prepareToPlay() (same time as currentSampleRate), read on the
+    // message thread in triggerCouplingBurst(). Using a separate atomic avoids
+    // data-race UB without removing currentSampleRate (still used on audio thread).
+    std::atomic<double> atomicSampleRate_ { 44100.0 };
     int currentBlockSize = 512;
 
     // SRO: Per-slot CPU profiling + fleet-wide auditor

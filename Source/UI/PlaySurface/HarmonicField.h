@@ -215,9 +215,8 @@ struct HarmonicField
     }
 };
 
-// Out-of-class constexpr definitions (required for C++14 linkage; C++17 inline)
-constexpr std::array<int, 13>          HarmonicField::kFifthsSemitones;
-constexpr std::array<const char*, 13>  HarmonicField::kNoteNames;
-constexpr std::array<int, 7>           HarmonicField::kMajorScale;
+// Note: static constexpr members are implicitly inline in C++17 and do NOT
+// require out-of-class definitions. Providing them causes ODR violations when
+// this header is included in multiple translation units. They have been removed.
 
 } // namespace xolokun

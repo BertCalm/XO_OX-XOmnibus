@@ -1185,6 +1185,7 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     if (samplesPerBlock <= 0) samplesPerBlock = 512;
 
     currentSampleRate = sampleRate;
+    atomicSampleRate_.store(sampleRate, std::memory_order_relaxed);
     currentBlockSize = samplesPerBlock;
 
     // Reset the PlaySurface MIDI collector to the new sample rate so
