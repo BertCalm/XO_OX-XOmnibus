@@ -29,7 +29,8 @@ class ReefScene: SKScene {
     private var touchDownTimes: [Int: TimeInterval] = [:]
 
     // Breathing animation phase
-    private var breathPhase: CGFloat = 0
+    private var breathPhase: Float = 0
+    private var lastUpdateTime: TimeInterval = 0
 
     // Category colors
     private let categoryColors: [SpecimenCategory: SKColor] = [
@@ -89,15 +90,7 @@ class ReefScene: SKScene {
                     bg.strokeColor = color.withAlphaComponent(specimen.isPhantom ? 0.3 : 0.6)
                     bg.lineWidth = specimen.rarity == .legendary ? 3.0 : (specimen.rarity == .rare ? 2.0 : 1.0)
 
-                    // Creature placeholder (Phase 1: replace with .xogenome renderer)
-                    let creatureLabel = SKLabelNode(text: String(specimen.name.prefix(2)).uppercased())
-                    creatureLabel.fontSize = 14
-                    creatureLabel.fontName = "JetBrainsMono-Bold"
-                    creatureLabel.fontColor = specimen.isPhantom ? color.withAlphaComponent(0.4) : color
-                    creatureLabel.verticalAlignmentMode = .center
-                    slotNode.addChild(creatureLabel)
-
-                    // Health glow (bioluminescent aura)
+                    // Health glow (bioluminescent aura) — added first so it renders behind bg
                     if !specimen.isPhantom && specimen.health > 0 {
                         let glow = SKShapeNode(circleOfRadius: bgRadius * 1.2)
                         glow.fillColor = color.withAlphaComponent(0.05 * healthAlpha)
@@ -105,11 +98,26 @@ class ReefScene: SKScene {
                         glow.name = "glow_\(index)"
                         slotNode.addChild(glow)
                     }
+
+                    // bg added after glow so it renders on top of the glow
+                    slotNode.addChild(bg)
+
+                    // Creature placeholder (Phase 1: replace with .xogenome renderer)
+                    // Added last so it renders frontmost
+                    let creatureLabel = SKLabelNode(text: String(specimen.name.prefix(2)).uppercased())
+                    creatureLabel.fontSize = 14
+                    creatureLabel.fontName = "JetBrainsMono-Bold"
+                    creatureLabel.fontColor = specimen.isPhantom ? color.withAlphaComponent(0.4) : color
+                    creatureLabel.verticalAlignmentMode = .center
+                    slotNode.addChild(creatureLabel)
                 } else {
                     // Empty slot — faint "+" affordance
                     bg.fillColor = SKColor.white.withAlphaComponent(0.02)
                     bg.strokeColor = SKColor.white.withAlphaComponent(0.08)
                     bg.lineWidth = 1.0
+
+                    // bg first, then "+" label on top
+                    slotNode.addChild(bg)
 
                     let plus = SKLabelNode(text: "+")
                     plus.fontSize = 20
@@ -117,8 +125,6 @@ class ReefScene: SKScene {
                     plus.verticalAlignmentMode = .center
                     slotNode.addChild(plus)
                 }
-
-                slotNode.addChild(bg)
                 addChild(slotNode)
                 slotNodes.append(slotNode)
             }
@@ -128,7 +134,10 @@ class ReefScene: SKScene {
     // MARK: - Breathing Animation
 
     override func update(_ currentTime: TimeInterval) {
-        breathPhase += 0.003 // ~0.1Hz at 60fps
+        let delta = lastUpdateTime > 0 ? currentTime - lastUpdateTime : 0
+        lastUpdateTime = currentTime
+        breathPhase += Float(delta) * 2.0 * .pi * 0.1 // 0.1Hz regardless of frame rate
+        if breathPhase > .pi * 2 { breathPhase -= .pi * 2 }
         let breathScale = 1.0 + sin(breathPhase) * 0.015
 
         for (index, node) in slotNodes.enumerated() {
@@ -145,7 +154,8 @@ class ReefScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
-            if let slotIndex = slotIndex(at: location) {
+            if let slotIndex = slotIndex(at: location),
+               reefStore.specimens[slotIndex] != nil {
                 touchDownTimes[slotIndex] = touch.timestamp
             }
         }
@@ -165,10 +175,11 @@ class ReefScene: SKScene {
 
                 // Visual feedback — brief flash
                 if let bg = childNode(withName: "//slotBg_\(slotIndex)") as? SKShapeNode {
+                    let originalColor = bg.fillColor
                     let flash = SKAction.sequence([
                         SKAction.run { bg.fillColor = bg.strokeColor.withAlphaComponent(0.5) },
                         SKAction.wait(forDuration: 0.15),
-                        SKAction.run { [weak self] in self?.buildGrid() }
+                        SKAction.run { bg.fillColor = originalColor }
                     ])
                     bg.run(flash)
                 }

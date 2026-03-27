@@ -14,6 +14,13 @@ enum SpecimenCategory: String, Codable, CaseIterable {
     case effect      // Tide Pools — delay/chorus/reverb
 }
 
+struct ProvenanceEntry: Codable {
+    let fromPlayer: String
+    let toPlayer: String
+    let timestamp: Date
+    let location: String?
+}
+
 /// A single specimen in the reef
 struct Specimen: Identifiable, Codable {
     let id: UUID
@@ -23,6 +30,11 @@ struct Specimen: Identifiable, Codable {
     var health: Int // 0-100
     var isPhantom: Bool
     var phantomScar: Bool
+    var subtype: String // e.g., "PolyBLEP", "CytomicSVF", "StandardLFO"
+    var catchAccelPattern: [Float] // Movement signature from accelerometer at catch time
+
+    // Trade provenance chain
+    var provenance: [ProvenanceEntry]
 
     // Spectral DNA (64-float profile from catch environment)
     var spectralDNA: [Float]

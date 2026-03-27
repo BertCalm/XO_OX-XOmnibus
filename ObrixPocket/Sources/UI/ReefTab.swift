@@ -4,6 +4,7 @@ import SpriteKit
 struct ReefTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
+    @State private var reefScene: ReefScene?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -25,19 +26,26 @@ struct ReefTab: View {
             GeometryReader { geometry in
                 let gridSize = min(geometry.size.width * 0.9, geometry.size.height * 0.85)
 
-                SpriteView(scene: ReefScene(
-                    size: CGSize(width: gridSize, height: gridSize),
-                    reefStore: reefStore,
-                    onNoteOn: { slot, velocity in
-                        audioEngine.noteOn(slotIndex: slot, velocity: velocity)
-                    },
-                    onNoteOff: { slot in
-                        audioEngine.noteOff(slotIndex: slot)
-                    }
-                ))
-                .frame(width: gridSize, height: gridSize)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .position(x: geometry.size.width / 2, y: geometry.size.height * 0.45)
+                if let scene = reefScene {
+                    SpriteView(scene: scene)
+                        .frame(width: gridSize, height: gridSize)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.45)
+                } else {
+                    Color.clear
+                        .onAppear {
+                            reefScene = ReefScene(
+                                size: CGSize(width: gridSize, height: gridSize),
+                                reefStore: reefStore,
+                                onNoteOn: { slot, velocity in
+                                    audioEngine.noteOn(slotIndex: slot, velocity: velocity)
+                                },
+                                onNoteOff: { slot in
+                                    audioEngine.noteOff(slotIndex: slot)
+                                }
+                            )
+                        }
+                }
             }
 
             // Dive button

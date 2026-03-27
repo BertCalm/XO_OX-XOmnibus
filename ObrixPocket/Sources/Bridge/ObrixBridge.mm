@@ -11,22 +11,96 @@
 // Suppress JUCE GUI — we only use audio modules
 // JUCE_MODULE_AVAILABLE_juce_gui_basics is NOT defined
 
+// ── Thin adapter: wraps ObrixEngine as a juce::AudioProcessor ────────
+class ObrixProcessorAdapter : public juce::AudioProcessor
+{
+public:
+    struct NoteEvent {
+        int note;
+        float velocity; // 0 = note off, >0 = note on
+    };
+
+    ObrixProcessorAdapter(ObrixEngine& engine,
+                          std::atomic<float>& gainRef,
+                          NoteEvent* queueRef,
+                          std::atomic<int>& readPosRef,
+                          std::atomic<int>& writePosRef)
+        : eng(engine)
+        , _gainRef(gainRef)
+        , _queueRef(queueRef)
+        , _readPosRef(readPosRef)
+        , _writePosRef(writePosRef)
+    {}
+
+    const juce::String getName() const override { return "ObrixPocket"; }
+
+    void prepareToPlay(double sampleRate, int samplesPerBlock) override
+    {
+        eng.prepare(sampleRate, samplesPerBlock);
+    }
+
+    void releaseResources() override {}
+
+    void processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi) override
+    {
+        // Drain MIDI queue from touch thread
+        while (_readPosRef.load(std::memory_order_acquire) != _writePosRef.load(std::memory_order_acquire))
+        {
+            int readPos = _readPosRef.load(std::memory_order_relaxed);
+            auto& evt = _queueRef[readPos];
+            if (evt.velocity > 0.0f)
+                midi.addEvent(juce::MidiMessage::noteOn(1, evt.note, evt.velocity), 0);
+            else
+                midi.addEvent(juce::MidiMessage::noteOff(1, evt.note), 0);
+            _readPosRef.store((readPos + 1) % 256, std::memory_order_release);
+        }
+
+        eng.renderBlock(buffer, midi, buffer.getNumSamples());
+
+        // Apply output gain (for ducking under other media)
+        float gain = _gainRef.load(std::memory_order_relaxed);
+        if (gain < 0.99f)
+        {
+            for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+                juce::FloatVectorOperations::multiply(buffer.getWritePointer(ch), gain, buffer.getNumSamples());
+        }
+    }
+
+    // Required overrides (minimal — we're not a plugin, just hosting internally)
+    double getTailLengthSeconds() const override { return 0.0; }
+    bool acceptsMidi() const override { return true; }
+    bool producesMidi() const override { return false; }
+    juce::AudioProcessorEditor* createEditor() override { return nullptr; }
+    bool hasEditor() const override { return false; }
+    int getNumPrograms() override { return 1; }
+    int getCurrentProgram() override { return 0; }
+    void setCurrentProgram(int) override {}
+    const juce::String getProgramName(int) override { return {}; }
+    void changeProgramName(int, const juce::String&) override {}
+    void getStateInformation(juce::MemoryBlock&) override {}
+    void setStateInformation(const void*, int) override {}
+
+private:
+    ObrixEngine& eng;
+    std::atomic<float>& _gainRef;
+    NoteEvent* _queueRef;
+    std::atomic<int>& _readPosRef;
+    std::atomic<int>& _writePosRef;
+};
+
 @implementation ObrixBridge
 {
     std::unique_ptr<ObrixEngine> _engine;
     std::unique_ptr<juce::AudioDeviceManager> _deviceManager;
     std::unique_ptr<juce::AudioProcessorPlayer> _player;
+    std::unique_ptr<ObrixProcessorAdapter> _adapter;
     std::atomic<float> _outputGain;
     std::atomic<bool> _running;
 
     // Lock-free MIDI input queue (touch → audio thread)
     // Simple ring buffer for note events
-    struct NoteEvent {
-        int note;
-        float velocity; // 0 = note off, >0 = note on
-    };
     static constexpr int kMidiQueueSize = 256;
-    NoteEvent _midiQueue[kMidiQueueSize];
+    ObrixProcessorAdapter::NoteEvent _midiQueue[kMidiQueueSize];
     std::atomic<int> _midiWritePos;
     std::atomic<int> _midiReadPos;
 }
@@ -50,8 +124,8 @@
         _midiWritePos.store(0);
         _midiReadPos.store(0);
 
-        // Initialize JUCE
-        juce::initialiseJuce_GUI(); // Required even for audio-only on iOS
+        // Ensure JUCE message manager exists (required for audio callbacks)
+        juce::MessageManager::getInstance();
 
         // Create engine
         _engine = std::make_unique<ObrixEngine>();
@@ -62,10 +136,6 @@
 - (void)startAudio
 {
     if (_running.load()) return;
-
-    // TODO Phase 0 Week 2-3: Set up AudioDeviceManager for iOS
-    // This requires JUCE's iOS audio device type to be available.
-    // For now, create the device manager and attempt to open the default device.
 
     _deviceManager = std::make_unique<juce::AudioDeviceManager>();
 
@@ -82,17 +152,32 @@
         return;
     }
 
-    // Create processor player (hosts the engine as an AudioProcessor)
-    // Note: ObrixEngine implements SynthEngine which extends AudioProcessor-like interface
-    // TODO: Wrap ObrixEngine in a juce::AudioProcessor adapter for AudioProcessorPlayer
+    // Create adapter and player, wire engine to audio output
+    _adapter = std::make_unique<ObrixProcessorAdapter>(
+        *_engine,
+        _outputGain,
+        _midiQueue,
+        _midiReadPos,
+        _midiWritePos
+    );
+    _player = std::make_unique<juce::AudioProcessorPlayer>();
+    _player->setProcessor(_adapter.get());
+    _deviceManager->addAudioCallback(_player.get());
 
     _running.store(true);
-    NSLog(@"[ObrixBridge] Audio started. SR=%.0f", _deviceManager->getCurrentAudioDevice()->getCurrentSampleRate());
+
+    if (auto* dev = _deviceManager->getCurrentAudioDevice())
+        NSLog(@"[ObrixBridge] Audio started. SR=%.0f", dev->getCurrentSampleRate());
+    else
+        NSLog(@"[ObrixBridge] Audio started (device pending).");
 }
 
 - (void)stopAudio
 {
     if (!_running.load()) return;
+
+    if (_player)
+        _deviceManager->removeAudioCallback(_player.get());
 
     _deviceManager->closeAudioDevice();
     _running.store(false);

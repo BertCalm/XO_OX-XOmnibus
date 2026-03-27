@@ -50,7 +50,7 @@ final class AudioEngineManager: ObservableObject {
         let session = AVAudioSession.sharedInstance()
         do {
             // Start with playback — switch to playAndRecord when mic is needed (catch)
-            try session.setCategory(.playback, options: [.mixWithOthers])
+            try session.setCategory(.playback)
             try session.setPreferredIOBufferDuration(0.005) // 5ms = 256 samples at 48kHz
             try session.setActive(true)
             audioSessionConfigured = true
@@ -70,6 +70,13 @@ final class AudioEngineManager: ObservableObject {
                 name: AVAudioSession.silenceSecondaryAudioHintNotification,
                 object: session
             )
+
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(handleRouteChange),
+                name: AVAudioSession.routeChangeNotification,
+                object: session
+            )
         } catch {
             print("[ObrixPocket] Audio session config failed: \(error)")
         }
@@ -87,10 +94,26 @@ final class AudioEngineManager: ObservableObject {
             guard let optionsValue = info[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
             let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
             if options.contains(.shouldResume) {
+                do {
+                    try AVAudioSession.sharedInstance().setActive(true)
+                } catch {
+                    print("[ObrixPocket] Failed to reactivate audio session: \(error)")
+                }
                 start()
             }
         @unknown default:
             break
+        }
+    }
+
+    @objc private func handleRouteChange(_ notification: Notification) {
+        guard let info = notification.userInfo,
+              let reasonValue = info[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else { return }
+
+        if reason == .oldDeviceUnavailable {
+            // Headphones unplugged — pause to prevent unexpected speaker output
+            stop()
         }
     }
 
@@ -109,5 +132,9 @@ final class AudioEngineManager: ObservableObject {
         @unknown default:
             break
         }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
