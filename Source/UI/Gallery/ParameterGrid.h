@@ -258,6 +258,44 @@ public:
         if (opacity < 0.05f) return; // B041 performance optimization
         g.setOpacity(opacity);
 
+        // ── Parameter Terrain (Vision Quest 015) ─────────────────────────────
+        // Background shifts warm (XO Gold) when filter is open, cool (Teal) when
+        // closed.  3.5% opacity — barely perceptible but felt on every repaint.
+        {
+            float cutoffNorm = 0.5f; // default: neutral (no filter param found)
+
+            // Scan paramSlots for the first parameter whose inner name (part after
+            // the prefix) matches typical filter-cutoff keywords.
+            auto& apvts = proc.getAPVTS();
+            for (auto& slot : paramSlots)
+            {
+                juce::String inner = slot.pid.fromLastOccurrenceOf("_", false, false)
+                                         .toLowerCase();
+                // Also try the full pid lowercased for single-segment prefixes
+                juce::String pidLow = slot.pid.toLowerCase();
+                if (inner.contains("cutoff") || inner.contains("filter") ||
+                    inner.contains("flt")    || inner.contains("freq")   ||
+                    pidLow.contains("cutoff") || pidLow.contains("filtfreq"))
+                {
+                    if (auto* rp = dynamic_cast<juce::RangedAudioParameter*>(
+                                       apvts.getParameter(slot.pid)))
+                    {
+                        cutoffNorm = rp->getValue(); // already 0-1 normalized
+                        break;
+                    }
+                }
+            }
+
+            // Warm = orange/gold tint when filter open (high cutoff)
+            // Cool = teal tint when filter closed (low cutoff)
+            juce::Colour warm(0xffE9C46A); // XO Gold
+            juce::Colour cool(0xff2A9D8F); // Teal
+            juce::Colour terrain = warm.interpolatedWith(cool, 1.0f - cutoffNorm);
+
+            g.setColour(terrain.withAlpha(0.035f)); // 3.5% — felt, not seen
+            g.fillRect(getLocalBounds());
+        }
+
         int cols      = juce::jmax(1, getWidth() / kCellW);
         int y         = kPad;
         int flatIdx   = 0;
