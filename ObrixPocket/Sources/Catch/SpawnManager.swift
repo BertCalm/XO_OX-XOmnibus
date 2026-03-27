@@ -45,10 +45,21 @@ enum SpawnSource: String, Codable {
 final class SpawnManager: ObservableObject {
     @Published var wildSpecimens: [WildSpecimen] = []
     @Published var lastDriftDate: Date?
-    @Published var loginStreak: Int = 0
-    @Published var lastLoginDate: Date?
 
     private let biomeDetector: BiomeDetector
+    private let defaults = UserDefaults.standard
+    private let loginStreakKey = "obrix_login_streak"
+    private let lastLoginDateKey = "obrix_last_login_date"
+
+    var loginStreak: Int {
+        get { defaults.integer(forKey: loginStreakKey) }
+        set { defaults.set(newValue, forKey: loginStreakKey) }
+    }
+
+    var lastLoginDate: Date? {
+        get { defaults.object(forKey: lastLoginDateKey) as? Date }
+        set { defaults.set(newValue, forKey: lastLoginDateKey) }
+    }
 
     // MARK: - Specimen subtype rosters (spec Section 7.1)
 

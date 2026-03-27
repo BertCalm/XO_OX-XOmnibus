@@ -28,11 +28,10 @@ settings:
       - JUCE_MODULE_AVAILABLE_juce_data_structures=1
       - JUCE_MODULE_AVAILABLE_juce_dsp=1
       - JUCE_MODULE_AVAILABLE_juce_events=1
-      - JUCE_MODULE_AVAILABLE_juce_graphics=1
       - JUCE_DISPLAY_SPLASH_SCREEN=0
       - JUCE_USE_DARK_SPLASH_SCREEN=0
-      - JUCE_STANDALONE_APPLICATION=1
-      - JucePlugin_Build_Standalone=1
+      - JUCE_STANDALONE_APPLICATION=0
+      - JucePlugin_Build_Standalone=0
     HEADER_SEARCH_PATHS:
       - $(PROJECT_DIR)/../Libs/JUCE/modules
       - $(PROJECT_DIR)/../Source

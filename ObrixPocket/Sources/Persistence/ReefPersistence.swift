@@ -6,7 +6,7 @@ extension ReefStore {
 
     /// Save the entire reef state to database
     func save() {
-        let db = DatabaseManager.shared.db
+        guard let db = DatabaseManager.shared.db else { return }
         do {
             try db.write { db in
                 // Clear existing reef specimens and routes
@@ -38,6 +38,7 @@ extension ReefStore {
     /// Load reef state from database
     func load() {
         let db = DatabaseManager.shared.db
+        guard let db else { return }
         do {
             try db.read { db in
                 // Load reef specimens into their slots
@@ -55,15 +56,22 @@ extension ReefStore {
                         loadedSpecimens[slot] = specimen
                     }
                 }
-                specimens = loadedSpecimens
 
                 // Load coupling routes
                 let routeRecords = try CouplingRouteRecord.fetchAll(db)
-                couplingRoutes = routeRecords.compactMap { $0.toCouplingRoute() }
+                let loadedRoutes = routeRecords.compactMap { $0.toCouplingRoute() }
 
                 // Load metadata
-                reefName = try loadMetadata(db, key: "reefName") ?? "My Reef"
-                totalDiveDepth = Int(try loadMetadata(db, key: "totalDiveDepth") ?? "0") ?? 0
+                let reefNameValue = try loadMetadata(db, key: "reefName") ?? "My Reef"
+                let diveDepthValue = Int(try loadMetadata(db, key: "totalDiveDepth") ?? "0") ?? 0
+
+                // Publish on main thread
+                DispatchQueue.main.async { [weak self] in
+                    self?.specimens = loadedSpecimens
+                    self?.couplingRoutes = loadedRoutes
+                    self?.reefName = reefNameValue
+                    self?.totalDiveDepth = diveDepthValue
+                }
             }
         } catch {
             print("[ReefPersistence] Load failed: \(error)")
@@ -72,7 +80,7 @@ extension ReefStore {
 
     /// Save a single specimen to the collection (not in reef)
     func saveSpecimenToCollection(_ specimen: Specimen) {
-        let db = DatabaseManager.shared.db
+        guard let db = DatabaseManager.shared.db else { return }
         do {
             try db.write { db in
                 var record = SpecimenRecord(from: specimen)
@@ -85,7 +93,7 @@ extension ReefStore {
 
     /// Load all specimens (reef + collection + stasis)
     func loadAllSpecimens() -> [Specimen] {
-        let db = DatabaseManager.shared.db
+        guard let db = DatabaseManager.shared.db else { return [] }
         do {
             return try db.read { db in
                 try SpecimenRecord.fetchAll(db).compactMap { $0.toSpecimen() }
@@ -101,7 +109,7 @@ extension ReefStore {
         guard daysSinceLastOpen > 7 else { return } // 7-day grace window
 
         let decayDays = daysSinceLastOpen - 7 // Only decay past the grace window
-        let db = DatabaseManager.shared.db
+        guard let db = DatabaseManager.shared.db else { return }
 
         do {
             try db.write { db in
@@ -125,8 +133,10 @@ extension ReefStore {
                 }
             }
 
-            // Reload reef to reflect changes
-            load()
+            // Reload reef on main thread to reflect changes
+            DispatchQueue.main.async { [weak self] in
+                self?.load()
+            }
         } catch {
             print("[ReefPersistence] Dormancy decay failed: \(error)")
         }
@@ -134,7 +144,7 @@ extension ReefStore {
 
     /// Save exploration geohash
     func saveVisitedGeohash(_ hash: String) {
-        let db = DatabaseManager.shared.db
+        guard let db = DatabaseManager.shared.db else { return }
         do {
             try db.write { db in
                 try db.execute(sql: """
@@ -148,7 +158,7 @@ extension ReefStore {
 
     /// Load all visited geohashes
     func loadVisitedGeohashes() -> Set<String> {
-        let db = DatabaseManager.shared.db
+        guard let db = DatabaseManager.shared.db else { return [] }
         do {
             return try db.read { db in
                 let rows = try Row.fetchAll(db, sql: "SELECT hash FROM visitedGeohash")

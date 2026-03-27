@@ -213,9 +213,11 @@ private:
 
 - (void)allNotesOff
 {
-    // Send note-off for all 128 MIDI notes would flood the queue.
-    // Instead, the engine should support an all-notes-off message.
-    // For Phase 0: send CC 123 (All Notes Off) — TODO wire to engine
+    // Send note-off for all 128 possible MIDI notes via the lock-free queue.
+    for (int note = 0; note < 128; ++note)
+    {
+        [self noteOff:note];
+    }
 }
 
 - (void)setParameter:(NSString *)paramId value:(float)value

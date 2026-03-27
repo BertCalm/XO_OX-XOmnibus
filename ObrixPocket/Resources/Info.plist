@@ -33,7 +33,7 @@
     </array>
     <key>UIRequiredDeviceCapabilities</key>
     <array>
-        <string>armv7</string>
+        <string>arm64</string>
     </array>
     <key>UIBackgroundModes</key>
     <array>
@@ -45,8 +45,6 @@
     <string>OBRIX Pocket uses your location to flavor each specimen's sound with where you caught it. Your location is never shared.</string>
     <key>NSMotionUsageDescription</key>
     <string>OBRIX Pocket captures your movement pattern to give each specimen's modulation a unique character.</string>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>OBRIX Pocket uses Bluetooth to find nearby players for specimen trading.</string>
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
 </dict>

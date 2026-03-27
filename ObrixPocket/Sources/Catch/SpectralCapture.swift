@@ -23,6 +23,7 @@ final class SpectralCapture: ObservableObject {
     private var audioEngine: AVAudioEngine?
     private var spectralAccumulator: [Float] = Array(repeating: 0, count: 64)
     private var frameCount: Int = 0
+    private var captureWorkItem: DispatchWorkItem?
 
     /// Number of FFT frames to accumulate (~5 seconds at typical 256-sample callback rate).
     /// Actual duration may vary slightly with device sample rate and buffer size.
@@ -66,10 +67,14 @@ final class SpectralCapture: ObservableObject {
 
     /// Cancel a capture in progress. Cleans up the engine and resets state.
     func cancelCapture() {
+        captureWorkItem?.cancel()
+        captureWorkItem = nil
         stopEngine()
         isCapturing = false
         captureProgress = 0
         capturedProfile = nil
+        // Restore playback-only session on cancel
+        try? AVAudioSession.sharedInstance().setCategory(.playback)
     }
 
     // MARK: - Private: Capture Flow
@@ -117,7 +122,7 @@ final class SpectralCapture: ObservableObject {
         }
 
         // Collect for 5 seconds then finalize
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
+        let workItem = DispatchWorkItem { [weak self] in
             guard let self, self.isCapturing else { return }
             self.stopEngine()
 
@@ -134,12 +139,15 @@ final class SpectralCapture: ObservableObject {
             self.capturedProfile = normalized
             self.isCapturing = false
             self.captureProgress = 1.0
+            self.captureWorkItem = nil
 
             // Restore playback-only session
             try? AVAudioSession.sharedInstance().setCategory(.playback)
 
             completion(normalized)
         }
+        captureWorkItem = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: workItem)
     }
 
     // MARK: - Private: FFT Processing

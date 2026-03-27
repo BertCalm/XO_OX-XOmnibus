@@ -5,10 +5,15 @@ final class FirstLaunchManager: ObservableObject {
     @Published var isFirstLaunch: Bool
     @Published var hasSeenIntro = false
     @Published var starterSpecimenPlaced = false
-    @Published var secondSpecimenPlaced = false
 
     private let userDefaults = UserDefaults.standard
     private let firstLaunchKey = "obrix_pocket_first_launch_complete"
+    private let secondSpecimenKey = "obrix_pocket_second_specimen_placed"
+
+    var secondSpecimenPlaced: Bool {
+        get { userDefaults.bool(forKey: secondSpecimenKey) }
+        set { userDefaults.set(newValue, forKey: secondSpecimenKey) }
+    }
 
     init() {
         isFirstLaunch = !userDefaults.bool(forKey: firstLaunchKey)

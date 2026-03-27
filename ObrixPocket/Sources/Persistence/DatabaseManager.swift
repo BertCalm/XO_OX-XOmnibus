@@ -27,12 +27,7 @@ final class DatabaseManager {
         }
     }
 
-    var db: DatabaseQueue {
-        guard let dbQueue else {
-            fatalError("[DatabaseManager] Database not initialized")
-        }
-        return dbQueue
-    }
+    var db: DatabaseQueue? { dbQueue }
 
     // MARK: - Migrations
 
@@ -87,6 +82,7 @@ final class DatabaseManager {
             }
         }
 
-        try migrator.migrate(db)
+        guard let dbQueue else { return }
+        try migrator.migrate(dbQueue)
     }
 }
