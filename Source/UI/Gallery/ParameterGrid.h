@@ -5,6 +5,7 @@
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 #include "MidiLearnMouseListener.h"
+#include "CockpitHost.h"
 #include <set>
 
 namespace xolokun
@@ -250,6 +251,13 @@ public:
     // Knob widgets are painted by JUCE automatically; this draws the chrome.
     void paint(juce::Graphics& g) override
     {
+        // Dark Cockpit B041: apply performance opacity
+        float opacity = 1.0f;
+        if (auto* host = CockpitHost::find(this))
+            opacity = host->getCockpitOpacity();
+        if (opacity < 0.05f) return; // B041 performance optimization
+        g.setOpacity(opacity);
+
         int cols      = juce::jmax(1, getWidth() / kCellW);
         int y         = kPad;
         int flatIdx   = 0;

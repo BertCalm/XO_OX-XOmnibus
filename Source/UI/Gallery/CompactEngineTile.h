@@ -5,6 +5,7 @@
 #include "../GalleryColors.h"
 #include "WaveformDisplay.h"
 #include "EnginePickerPopup.h"
+#include "CockpitHost.h"
 
 namespace xolokun
 {
@@ -163,6 +164,20 @@ public:
     // Voice-reactive: porthole ring brightens and strip glows when voices are playing.
     void paint(juce::Graphics& g) override
     {
+        // Dark Cockpit B041: active/sounding tiles stay fully lit.
+        // Non-active tiles dim with cockpit opacity.
+        {
+            bool isSounding = (voiceCount > 0);
+            float opacity = 1.0f;
+            if (!isSounding)
+            {
+                if (auto* host = CockpitHost::find(this))
+                    opacity = host->getCockpitOpacity();
+                if (opacity < 0.05f) return; // B041 performance optimization
+            }
+            g.setOpacity(opacity);
+        }
+
         using namespace GalleryColors;
         auto b = getLocalBounds().toFloat().reduced(3.0f, 2.0f);
         bool hovered = isMouseOver();

@@ -1806,6 +1806,26 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         processingLoad.store(prevLoad * 0.9f + rawLoad * 0.1f, std::memory_order_relaxed);
     }
 
+    // Dark Cockpit B041: compute note activity from output RMS
+    {
+        float rms = 0.0f;
+        if (numSamples > 0)
+        {
+            for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            {
+                const float* data = buffer.getReadPointer(ch);
+                for (int i = 0; i < numSamples; ++i)
+                    rms += data[i] * data[i];
+            }
+            rms = std::sqrt(rms / (numSamples * std::max(1, buffer.getNumChannels())));
+        }
+        // Smooth with ~100ms attack, ~500ms release (one-pole filter)
+        float current = noteActivity_.load(std::memory_order_relaxed);
+        float target = std::clamp(rms * 4.0f, 0.0f, 1.0f); // scale RMS to 0-1 range
+        float coeff = (target > current) ? 0.3f : 0.05f; // fast attack, slow release
+        noteActivity_.store(current + coeff * (target - current), std::memory_order_relaxed);
+    }
+
     // Emit any pending CC output events from the XOuija UI (lock-free SPSC drain).
     drainCCOutput(midi, numSamples);
 }

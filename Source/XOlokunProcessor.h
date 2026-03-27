@@ -284,6 +284,11 @@ public:
         return processingLoad.load(std::memory_order_relaxed);
     }
 
+    // Dark Cockpit B041: note activity level (0.0 = silent, 1.0 = max activity).
+    // Computed from output RMS in processBlock() with ~100ms attack / ~500ms release.
+    // Safe to call from any thread.
+    float getNoteActivity() const noexcept { return noteActivity_.load(std::memory_order_relaxed); }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -461,6 +466,11 @@ private:
     // ── CPU processing load ───────────────────────────────────────────────────
     // Updated each block: elapsed / buffer_duration. Smoothed with a leaky integrator.
     std::atomic<float> processingLoad { 0.0f };
+
+    // ── Dark Cockpit B041: note activity ─────────────────────────────────────
+    // RMS-derived signal (0.0 = silent, 1.0 = maximum) smoothed with one-pole
+    // filter (~100ms attack, ~500ms release). Read by getCockpitOpacity() in editor.
+    std::atomic<float> noteActivity_ { 0.0f };
     // Timestamp of the start of the current processBlock call (high-res ticks).
     juce::int64 processBlockStartTick { 0 };
 

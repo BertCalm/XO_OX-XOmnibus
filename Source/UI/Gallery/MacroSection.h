@@ -3,6 +3,7 @@
 #include "../GalleryColors.h"
 #include "GalleryKnob.h"
 #include "MidiLearnMouseListener.h"
+#include "CockpitHost.h"
 
 namespace xolokun {
 
@@ -73,6 +74,13 @@ public:
 
     void paint(juce::Graphics& g) override
     {
+        // Dark Cockpit B041: apply performance opacity
+        float opacity = 1.0f;
+        if (auto* host = CockpitHost::find(this))
+            opacity = host->getCockpitOpacity();
+        if (opacity < 0.05f) return; // B041 performance optimization
+        g.setOpacity(opacity);
+
         using namespace GalleryColors;
 
         // Macro row top-highlight gradient (prototype spec)

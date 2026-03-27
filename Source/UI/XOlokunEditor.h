@@ -44,6 +44,7 @@
 #include "Gallery/ABCompare.h"
 #include "Gallery/HeaderIndicators.h"
 #include "Gallery/MiniCouplingGraph.h"
+#include "Gallery/CockpitHost.h"
 
 namespace xolokun {
 
@@ -70,6 +71,7 @@ namespace xolokun {
 // when switching between overview and engine detail, or between engines.
 //
 class XOlokunEditor : public juce::AudioProcessorEditor,
+                       public CockpitHost,  // B041: Dark Cockpit opacity interface
                        private juce::Timer
 {
 public:
@@ -857,6 +859,10 @@ private:
         }
     }
 
+    // Dark Cockpit B041: read current performance opacity for child panels.
+    // Panels call this in their paint() to dim non-essential controls during silence.
+    float getCockpitOpacity() const override { return cockpitOpacity_; }
+
     // ── PlaySurface show/hide (popup window) ──────────────────────────────────
     // On first call, the window is created lazily and MIDI is wired.
     // Subsequent calls simply show/hide the existing window so mode selections,
@@ -1081,6 +1087,14 @@ private:
             }
             playSurfaceWindow->getPlaySurface().setAccentColour(accent);
         }
+
+        // Dark Cockpit B041: compute UI opacity from note activity
+        {
+            float activity = processor.getNoteActivity();
+            // 5 levels: 0.15 (ghost) → 0.35 (tertiary) → 0.55 (secondary) → 0.80 (primary) → 1.0 (active)
+            // Map activity 0-1 to opacity with a floor of 0.15 (never fully invisible)
+            cockpitOpacity_ = 0.15f + activity * 0.85f;
+        }
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
@@ -1176,6 +1190,10 @@ private:
     MiniCouplingGraph      miniCouplingGraph { processor };
 
     int selectedSlot = -1;
+
+    // Dark Cockpit B041: current UI opacity derived from note activity.
+    // 0.15 (ghost, silent) → 1.0 (fully lit, maximum activity).
+    float cockpitOpacity_ = 0.2f;
 
     ColumnLayoutManager layout;
 
