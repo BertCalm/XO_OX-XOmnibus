@@ -31,6 +31,9 @@ struct ReefTab: View {
                         .frame(width: gridSize, height: gridSize)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.45)
+                        .onReceive(reefStore.objectWillChange) { _ in
+                            reefScene?.refreshGrid()
+                        }
                 } else {
                     Color.clear
                         .onAppear {

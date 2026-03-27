@@ -16,6 +16,7 @@ struct CatchTab: View {
     @EnvironmentObject var reefStore: ReefStore
     @StateObject private var biomeDetector = BiomeDetector()
     @StateObject private var spectralCapture = SpectralCapture()
+    @StateObject private var weatherService = WeatherService()
     @State private var spawnManager: SpawnManager?
     @State private var wildSpecimens: [WildSpecimen] = []
     @State private var showingCatch: WildSpecimen?
@@ -32,9 +33,18 @@ struct CatchTab: View {
             }
         }
         .onAppear(perform: onAppear)
+        .onChange(of: weatherService.isStormActive) { _, isStorm in
+            biomeDetector.updateStormBiome(isStorm: isStorm)
+        }
         .sheet(item: $showingCatch) { wild in
-            CatchScreen(specimen: wild, spectralCapture: spectralCapture, phase: $catchPhase)
-                .environmentObject(reefStore)
+            CatchScreen(
+                specimen: wild,
+                spectralCapture: spectralCapture,
+                phase: $catchPhase,
+                catchLocation: biomeDetector.lastLocation,
+                catchWeather: weatherService.bestAvailable
+            )
+            .environmentObject(reefStore)
         }
     }
 
@@ -124,6 +134,15 @@ struct CatchTab: View {
         if spawnManager == nil {
             spawnManager = SpawnManager(biomeDetector: biomeDetector)
         }
+
+        // Wire WeatherService into biomeDetector so storm state is available
+        biomeDetector.weatherService = weatherService
+
+        // Wire exploration bonus: fire checkExplorationBonus on every location update
+        biomeDetector.onLocationUpdate = { [weak spawnManager] coord in
+            spawnManager?.checkExplorationBonus(at: coord)
+        }
+
         // Prune first so we don't snapshot stale specimens
         spawnManager?.pruneExpired()
         spawnManager?.checkDailyDrift()
@@ -132,6 +151,11 @@ struct CatchTab: View {
         // Snapshot wildSpecimens into @State so SwiftUI re-renders the radar
         wildSpecimens = spawnManager?.wildSpecimens ?? []
         biomeDetector.requestAuthorization()
+
+        // Fetch weather for current location if already available
+        if let loc = biomeDetector.lastLocation {
+            Task { await weatherService.fetchWeather(at: loc) }
+        }
     }
 
     private func handlePipTap(_ wild: WildSpecimen) {
@@ -217,6 +241,8 @@ struct CatchScreen: View {
     let specimen: WildSpecimen
     @ObservedObject var spectralCapture: SpectralCapture
     @Binding var phase: CatchPhase
+    let catchLocation: CLLocationCoordinate2D?
+    let catchWeather: WeatherSnapshot
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var reefStore: ReefStore
 
@@ -327,9 +353,9 @@ struct CatchScreen: View {
             let newSpecimen = SpecimenFactory.create(
                 from: specimen,
                 spectralDNA: profile,
-                location: nil,      // Phase 1: wire BiomeDetector.lastLocation
-                weather: nil,       // Phase 1: wire WeatherKit
-                accelerometer: []   // Phase 1: wire CoreMotion
+                location: catchLocation,
+                weather: catchWeather,
+                accelerometer: []   // Phase 2: CoreMotion
             )
 
             // Add to reef (returns slot index, or nil when reef is full)

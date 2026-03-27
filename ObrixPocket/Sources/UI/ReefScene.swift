@@ -58,6 +58,12 @@ class ReefScene: SKScene {
 
     // MARK: - Grid Construction
 
+    /// Rebuild the grid when reefStore contents change.
+    /// Called from ReefTab via onReceive(reefStore.objectWillChange).
+    func refreshGrid() {
+        buildGrid()
+    }
+
     private func buildGrid() {
         removeAllChildren()
         slotNodes.removeAll()
@@ -157,6 +163,8 @@ class ReefScene: SKScene {
             if let slotIndex = slotIndex(at: location),
                reefStore.specimens[slotIndex] != nil {
                 touchDownTimes[slotIndex] = touch.timestamp
+                // Note-on immediately on touch down — sustained while held (B040)
+                onNoteOn(slotIndex, 0.8)
             }
         }
     }
@@ -167,11 +175,8 @@ class ReefScene: SKScene {
             if let slotIndex = slotIndex(at: location),
                reefStore.specimens[slotIndex] != nil {
 
-                // Calculate velocity from tap duration (fast tap = high velocity)
-                let duration = touch.timestamp - (touchDownTimes[slotIndex] ?? touch.timestamp)
-                let velocity = max(0.1, min(1.0, Float(1.0 - duration * 2.0))) // 0-0.5s maps to 1.0-0.0
-
-                onNoteOn(slotIndex, velocity)
+                // Note-off on touch up — note is sustained for the full hold duration
+                onNoteOff(slotIndex)
 
                 // Visual feedback — brief flash
                 if let bg = childNode(withName: "//slotBg_\(slotIndex)") as? SKShapeNode {
@@ -182,11 +187,6 @@ class ReefScene: SKScene {
                         SKAction.run { bg.fillColor = originalColor }
                     ])
                     bg.run(flash)
-                }
-
-                // Auto note-off after brief hold (Phase 1: implement hold for sustained notes)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-                    self?.onNoteOff(slotIndex)
                 }
 
                 touchDownTimes.removeValue(forKey: slotIndex)

@@ -20,16 +20,27 @@ public:
         float velocity; // 0 = note off, >0 = note on
     };
 
+    struct ParamEvent {
+        char paramId[64];
+        float value;
+    };
+
     ObrixProcessorAdapter(ObrixEngine& engine,
                           std::atomic<float>& gainRef,
                           NoteEvent* queueRef,
                           std::atomic<int>& readPosRef,
-                          std::atomic<int>& writePosRef)
+                          std::atomic<int>& writePosRef,
+                          ParamEvent* paramQueueRef,
+                          std::atomic<int>& paramReadPosRef,
+                          std::atomic<int>& paramWritePosRef)
         : eng(engine)
         , _gainRef(gainRef)
         , _queueRef(queueRef)
         , _readPosRef(readPosRef)
         , _writePosRef(writePosRef)
+        , _paramQueueRef(paramQueueRef)
+        , _paramReadRef(paramReadPosRef)
+        , _paramWriteRef(paramWritePosRef)
     {}
 
     const juce::String getName() const override { return "ObrixPocket"; }
@@ -43,6 +54,17 @@ public:
 
     void processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi) override
     {
+        // Drain parameter queue from touch/UI thread (before MIDI, before render)
+        while (_paramReadRef.load(std::memory_order_acquire) != _paramWriteRef.load(std::memory_order_acquire))
+        {
+            int readPos = _paramReadRef.load(std::memory_order_relaxed);
+            auto& evt = _paramQueueRef[readPos];
+            // TODO Phase 2: Map paramId string to engine parameter
+            // eng.setParameterByName(juce::String(evt.paramId), evt.value);
+            (void)evt; // suppress unused warning until Phase 2 wiring
+            _paramReadRef.store((readPos + 1) % kParamQueueSize, std::memory_order_release);
+        }
+
         // Drain MIDI queue from touch thread
         while (_readPosRef.load(std::memory_order_acquire) != _writePosRef.load(std::memory_order_acquire))
         {
@@ -80,12 +102,17 @@ public:
     void getStateInformation(juce::MemoryBlock&) override {}
     void setStateInformation(const void*, int) override {}
 
+    static constexpr int kParamQueueSize = 256;
+
 private:
     ObrixEngine& eng;
     std::atomic<float>& _gainRef;
     NoteEvent* _queueRef;
     std::atomic<int>& _readPosRef;
     std::atomic<int>& _writePosRef;
+    ParamEvent* _paramQueueRef;
+    std::atomic<int>& _paramReadRef;
+    std::atomic<int>& _paramWriteRef;
 };
 
 @implementation ObrixBridge
@@ -103,6 +130,12 @@ private:
     ObrixProcessorAdapter::NoteEvent _midiQueue[kMidiQueueSize];
     std::atomic<int> _midiWritePos;
     std::atomic<int> _midiReadPos;
+
+    // Lock-free parameter queue (UI thread → audio thread)
+    static constexpr int kParamQueueSize = 256;
+    ObrixProcessorAdapter::ParamEvent _paramQueue[kParamQueueSize];
+    std::atomic<int> _paramWritePos;
+    std::atomic<int> _paramReadPos;
 }
 
 + (instancetype)shared
@@ -123,6 +156,8 @@ private:
         _running.store(false);
         _midiWritePos.store(0);
         _midiReadPos.store(0);
+        _paramWritePos.store(0);
+        _paramReadPos.store(0);
 
         // Ensure JUCE message manager exists (required for audio callbacks)
         juce::MessageManager::getInstance();
@@ -158,7 +193,10 @@ private:
         _outputGain,
         _midiQueue,
         _midiReadPos,
-        _midiWritePos
+        _midiWritePos,
+        _paramQueue,
+        _paramReadPos,
+        _paramWritePos
     );
     _player = std::make_unique<juce::AudioProcessorPlayer>();
     _player->setProcessor(_adapter.get());
@@ -222,8 +260,16 @@ private:
 
 - (void)setParameter:(NSString *)paramId value:(float)value
 {
-    // TODO Phase 0 Week 3: Wire to engine's parameter system
-    // _engine->setParameter(juce::String([paramId UTF8String]), value);
+    // Lock-free enqueue to param queue; drained in adapter's processBlock before render
+    int writePos = _paramWritePos.load(std::memory_order_relaxed);
+    int nextPos = (writePos + 1) % kParamQueueSize;
+    if (nextPos == _paramReadPos.load(std::memory_order_acquire)) return; // queue full — drop silently
+
+    strncpy(_paramQueue[writePos].paramId, [paramId UTF8String], 63);
+    _paramQueue[writePos].paramId[63] = '\0';
+    _paramQueue[writePos].value = value;
+    _paramWritePos.store(nextPos, std::memory_order_release);
+    // TODO Phase 2: Map paramId string to engine parameter in processBlock drain loop
 }
 
 - (float)getParameter:(NSString *)paramId

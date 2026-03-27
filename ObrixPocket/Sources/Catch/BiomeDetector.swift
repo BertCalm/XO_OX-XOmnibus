@@ -67,6 +67,12 @@ final class BiomeDetector: NSObject, ObservableObject, CLLocationManagerDelegate
     @Published var locationAuthorized = false
     @Published var reefProximityEnabled = false
 
+    /// Injected by CatchTab so WeatherService storm state can drive the .storm biome.
+    var weatherService: WeatherService?
+
+    /// Callback fired on every location update — used by CatchTab to wire SpawnManager.
+    var onLocationUpdate: ((CLLocationCoordinate2D) -> Void)?
+
     private let locationManager = CLLocationManager()
     private var homeLocation: CLLocationCoordinate2D?
 
@@ -123,11 +129,31 @@ final class BiomeDetector: NSObject, ObservableObject, CLLocationManagerDelegate
         guard let location = locations.last else { return }
         lastLocation = location.coordinate
         detectBiomes(at: location.coordinate, altitude: location.altitude)
+        onLocationUpdate?(location.coordinate)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("[BiomeDetector] Location update failed: \(error.localizedDescription)")
         // Keep the last known biome — don't reset to urban on transient errors
+    }
+
+    // MARK: - Storm Biome (driven by WeatherService)
+
+    /// Toggle the .storm biome based on WeatherService real-time data.
+    /// Called from CatchTab via onChange(of: weatherService.isStormActive).
+    func updateStormBiome(isStorm: Bool) {
+        if isStorm {
+            activeBiomes.insert(.storm)
+        } else {
+            activeBiomes.remove(.storm)
+        }
+        // Rebuild convergence flag
+        if activeBiomes.count >= 2 {
+            activeBiomes.insert(.convergence)
+        } else {
+            activeBiomes.remove(.convergence)
+        }
+        currentBiome = resolvedBiome(from: activeBiomes)
     }
 
     // MARK: - Biome Detection

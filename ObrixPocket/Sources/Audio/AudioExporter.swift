@@ -13,6 +13,11 @@ final class AudioExporter: ObservableObject {
     private var recordTimer: Timer?
     private let maxDuration: TimeInterval = 60 // 60-second max per spec
 
+    // Ring buffer queue: audio tap enqueues here; writer timer drains on background queue.
+    private var pendingBuffers: [AVAudioPCMBuffer] = []
+    private let bufferLock = NSLock()
+    private var writerTimer: Timer?
+
     // MARK: - Recording
 
     /// Start recording reef audio output to M4A.
@@ -34,8 +39,8 @@ final class AudioExporter: ObservableObject {
             recordStartTime = Date()
 
             // Phase 1: ObrixBridge needs an output tap method to feed PCM buffers
-            // into audioFile via AVAudioFile.write(from:). The file and timer are
-            // set up here; the bridge tap calls writeBuffer(_:) on each render cycle.
+            // into audioFile via AVAudioFile.write(from:). The file and timers are
+            // set up here; the bridge tap calls queueBuffer(_:) on each render cycle.
 
             recordTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
                 guard let self, let start = self.recordStartTime else { return }
@@ -46,20 +51,49 @@ final class AudioExporter: ObservableObject {
                     self.stopRecording()
                 }
             }
+
+            // Drain pending buffers on a background queue every 50ms.
+            // This keeps AVAudioFile.write(from:) off the audio render thread.
+            writerTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+                self?.drainBuffers()
+            }
         } catch {
             print("[AudioExporter] Failed to start recording: \(error)")
         }
     }
 
-    /// Write a PCM buffer from the audio engine tap into the open M4A file.
-    /// Called from the render cycle — must not block.
-    func writeBuffer(_ buffer: AVAudioPCMBuffer) {
-        guard isRecording, let file = audioFile else { return }
-        do {
-            try file.write(from: buffer)
-        } catch {
-            // Non-fatal: one missed buffer is acceptable; log for diagnostics
-            print("[AudioExporter] Buffer write failed: \(error)")
+    /// Enqueue a PCM buffer from the audio engine tap.
+    /// Called from the render callback — copies the buffer immediately and returns,
+    /// so it is safe to use on the real-time audio thread.
+    func queueBuffer(_ buffer: AVAudioPCMBuffer) {
+        // Copy the buffer — the audio thread gives us a borrowed, short-lived buffer.
+        guard let copy = AVAudioPCMBuffer(pcmFormat: buffer.format, frameCapacity: buffer.frameLength) else { return }
+        copy.frameLength = buffer.frameLength
+        if let dst = copy.floatChannelData?[0], let src = buffer.floatChannelData?[0] {
+            memcpy(dst, src, Int(buffer.frameLength) * MemoryLayout<Float>.size)
+        }
+        if buffer.format.channelCount > 1,
+           let dst = copy.floatChannelData?[1],
+           let src = buffer.floatChannelData?[1] {
+            memcpy(dst, src, Int(buffer.frameLength) * MemoryLayout<Float>.size)
+        }
+
+        bufferLock.lock()
+        pendingBuffers.append(copy)
+        bufferLock.unlock()
+    }
+
+    /// Drain all queued buffers into the open AVAudioFile.
+    /// Called from the writer timer on the main/background RunLoop — never on the audio thread.
+    private func drainBuffers() {
+        bufferLock.lock()
+        let buffers = pendingBuffers
+        pendingBuffers.removeAll()
+        bufferLock.unlock()
+
+        guard let file = audioFile else { return }
+        for buffer in buffers {
+            try? file.write(from: buffer)
         }
     }
 
@@ -70,9 +104,14 @@ final class AudioExporter: ObservableObject {
 
         recordTimer?.invalidate()
         recordTimer = nil
+        writerTimer?.invalidate()
+        writerTimer = nil
         isRecording = false
         recordingDuration = 0
         recordStartTime = nil
+
+        // Flush any buffers that arrived between the last drain tick and now.
+        drainBuffers()
 
         if let file = audioFile {
             // AVAudioFile finalizes (closes) automatically on dealloc.
@@ -99,7 +138,30 @@ final class AudioExporter: ObservableObject {
             return
         }
 
-        startRecording()
+        // Capture the URL before starting — stopRecording sets lastExportURL asynchronously,
+        // so reading it in the asyncAfter closure would race against the async dispatch.
+        let clipURL = exportURL(name: "reef_clip_\(dateString())")
+
+        // Write to the pre-determined URL by initialising audioFile directly.
+        do {
+            let settings: [String: Any] = [
+                AVFormatIDKey: kAudioFormatMPEG4AAC,
+                AVSampleRateKey: 48000.0,
+                AVNumberOfChannelsKey: 2,
+                AVEncoderBitRateKey: 256000
+            ]
+            audioFile = try AVAudioFile(forWriting: clipURL, settings: settings)
+            isRecording = true
+            recordStartTime = Date()
+
+            writerTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+                self?.drainBuffers()
+            }
+        } catch {
+            print("[AudioExporter] generateClip: failed to open file: \(error)")
+            completion(nil)
+            return
+        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { [weak self] in
             guard let self else {
@@ -107,7 +169,7 @@ final class AudioExporter: ObservableObject {
                 return
             }
             self.stopRecording()
-            completion(self.lastExportURL)
+            completion(clipURL) // Use the known URL directly, not lastExportURL
         }
     }
 

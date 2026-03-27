@@ -19,6 +19,13 @@ final class AudioEngineManager: ObservableObject {
     func start() {
         guard !isRunning else { return }
 
+        // Activate audio session just before starting the bridge
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("[ObrixPocket] Failed to activate audio session: \(error)")
+        }
+
         // Phase 0: Start JUCE audio bridge
         ObrixBridge.shared.startAudio()
         isRunning = true
@@ -33,7 +40,8 @@ final class AudioEngineManager: ObservableObject {
 
     func noteOn(slotIndex: Int, velocity: Float) {
         // Map slot index to MIDI note: C3 + slot index (gives C3-D#4 for 16 slots)
-        let note = 60 + slotIndex
+        // Clamp to valid MIDI note range 0-127
+        let note = min(127, max(0, 60 + slotIndex))
         ObrixBridge.shared.noteOn(Int32(note), velocity: velocity)
         midiOutput.sendNoteOn(note: UInt8(note), velocity: UInt8(velocity * 127), channel: UInt8(slotIndex % 16))
         if !hasPlayedFirstNote {
@@ -42,7 +50,8 @@ final class AudioEngineManager: ObservableObject {
     }
 
     func noteOff(slotIndex: Int) {
-        let note = 60 + slotIndex
+        // Clamp to valid MIDI note range 0-127
+        let note = min(127, max(0, 60 + slotIndex))
         ObrixBridge.shared.noteOff(Int32(note))
         midiOutput.sendNoteOff(note: UInt8(note), channel: UInt8(slotIndex % 16))
     }
@@ -59,7 +68,7 @@ final class AudioEngineManager: ObservableObject {
             // Start with playback — switch to playAndRecord when mic is needed (catch)
             try session.setCategory(.playback)
             try session.setPreferredIOBufferDuration(0.005) // 5ms = 256 samples at 48kHz
-            try session.setActive(true)
+            // setActive(true) is deferred to start() — called just before JUCE bridge starts
             audioSessionConfigured = true
 
             // Interruption handling
@@ -119,8 +128,12 @@ final class AudioEngineManager: ObservableObject {
               let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else { return }
 
         if reason == .oldDeviceUnavailable {
-            // Headphones unplugged — pause to prevent unexpected speaker output
+            // Headphones unplugged — pause briefly then resume on speaker
             stop()
+            // Auto-resume on speaker after a brief delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.start()
+            }
         }
     }
 

@@ -39,7 +39,9 @@ struct ObrixPocketApp: App {
                     switch newPhase {
                     case .background:
                         reefStore.save()
-                        audioEngine.stop()
+                        // Don't stop audio — reef ambient continues in background per spec (Section 5.2)
+                        // UIBackgroundModes: audio in Info.plist permits this.
+                        // The interruption handler manages stop/restart on phone calls, etc.
                     case .active:
                         audioEngine.start()
                     default:

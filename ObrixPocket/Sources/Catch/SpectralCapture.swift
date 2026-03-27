@@ -24,6 +24,7 @@ final class SpectralCapture: ObservableObject {
     private var spectralAccumulator: [Float] = Array(repeating: 0, count: 64)
     private var frameCount: Int = 0
     private var captureWorkItem: DispatchWorkItem?
+    private let accumulatorLock = NSLock()
 
     /// Number of FFT frames to accumulate (~5 seconds at typical 256-sample callback rate).
     /// Actual duration may vary slightly with device sample rate and buffer size.
@@ -126,11 +127,17 @@ final class SpectralCapture: ObservableObject {
             guard let self, self.isCapturing else { return }
             self.stopEngine()
 
+            // Snapshot accumultor under lock — audio tap thread may still be writing
+            self.accumulatorLock.lock()
+            let accumulated = self.spectralAccumulator
+            let _ = self.frameCount
+            self.accumulatorLock.unlock()
+
             // Normalize: scale so the loudest band = 1.0
-            let maxVal = self.spectralAccumulator.max() ?? 0.0
+            let maxVal = accumulated.max() ?? 0.0
             let normalized: [Float]
             if maxVal > 0 {
-                normalized = self.spectralAccumulator.map { $0 / maxVal }
+                normalized = accumulated.map { $0 / maxVal }
             } else {
                 // Silent environment — use neutral profile
                 normalized = self.neutralProfile()
@@ -190,19 +197,26 @@ final class SpectralCapture: ObservableObject {
 
                 // Bin into 64 bands (linear frequency subdivision — fine for environmental capture)
                 let binsPerBand = max(1, halfSize / 64)
+                // Accumulate under lock — completion block reads these from main thread
+                self.accumulatorLock.lock()
                 for band in 0..<64 {
                     let start = band * binsPerBand
                     let end   = min(start + binsPerBand, halfSize)
                     guard end > start else { continue }
                     let slice = magnitudes[start..<end]
                     let avg = slice.reduce(0, +) / Float(slice.count)
-                    spectralAccumulator[band] += avg
+                    self.spectralAccumulator[band] += avg
                 }
+                self.frameCount += 1
+                self.accumulatorLock.unlock()
             }
         }
 
-        frameCount += 1
-        let progress = min(1.0, Float(frameCount) / Float(targetFrames))
+        let currentFrameCount: Int
+        accumulatorLock.lock()
+        currentFrameCount = frameCount
+        accumulatorLock.unlock()
+        let progress = min(1.0, Float(currentFrameCount) / Float(targetFrames))
         DispatchQueue.main.async { [weak self] in
             self?.captureProgress = progress
         }
