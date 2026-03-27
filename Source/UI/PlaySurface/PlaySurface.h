@@ -6,6 +6,10 @@
 #include <cmath>
 #include <atomic>
 
+#include "HarmonicField.h"
+#include "GestureTrailBuffer.h"
+#include "XOuijaPanel.h"
+
 namespace xolokun {
 
 //==============================================================================
