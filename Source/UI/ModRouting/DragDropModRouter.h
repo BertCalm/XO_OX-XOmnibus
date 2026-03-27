@@ -288,8 +288,7 @@ struct ModKnobOverlay
                 continue; // too small to draw
 
             // Draw: glow pass (wide, transparent) then core pass
-            static thread_local juce::Path arc;
-            arc.clear();
+            juce::Path arc;
             arc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                               arcStart, arcEnd, true);
 
