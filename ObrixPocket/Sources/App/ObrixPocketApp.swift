@@ -5,6 +5,7 @@ struct ObrixPocketApp: App {
     @StateObject private var audioEngine = AudioEngineManager()
     @StateObject private var reefStore = ReefStore()
     @StateObject private var firstLaunchManager = FirstLaunchManager()
+    @Environment(\.scenePhase) var scenePhase
 
     var body: some Scene {
         WindowGroup {
@@ -14,6 +15,45 @@ struct ObrixPocketApp: App {
                 .environmentObject(firstLaunchManager)
                 .onAppear {
                     audioEngine.start()
+
+                    if firstLaunchManager.isFirstLaunch {
+                        // First launch: place starter specimen and mark launch complete
+                        _ = firstLaunchManager.placeStarterSpecimen(in: reefStore)
+                        reefStore.save()
+                        firstLaunchManager.completeFirstLaunch()
+                    } else {
+                        // Returning user: restore persisted reef
+                        reefStore.load()
+
+                        // Apply health decay for days the app was closed
+                        let daysSince = firstLaunchManager.daysSinceLastOpen
+                        if daysSince > 0 {
+                            reefStore.applyDormancyDecay(daysSinceLastOpen: daysSince)
+                        }
+                    }
+
+                    firstLaunchManager.recordAppOpen()
+                }
+                // Save on background, manage audio on foreground
+                .onChange(of: scenePhase) { _, newPhase in
+                    switch newPhase {
+                    case .background:
+                        reefStore.save()
+                        audioEngine.stop()
+                    case .active:
+                        audioEngine.start()
+                    default:
+                        break
+                    }
+                }
+                // Place second specimen after the very first note is played
+                .onChange(of: audioEngine.hasPlayedFirstNote) { _, played in
+                    if played
+                        && !firstLaunchManager.secondSpecimenPlaced
+                    {
+                        _ = firstLaunchManager.placeSecondSpecimen(in: reefStore)
+                        reefStore.save()
+                    }
                 }
         }
     }

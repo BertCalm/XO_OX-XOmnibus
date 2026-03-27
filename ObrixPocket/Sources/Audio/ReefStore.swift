@@ -93,4 +93,59 @@ final class ReefStore: ObservableObject {
         }
         specimens[index] = nil
     }
+
+    // MARK: - Persistence
+
+    private let saveKey = "obrix_pocket_reef_store"
+
+    /// Persist current reef state to UserDefaults (JSON encoded).
+    func save() {
+        do {
+            let payload = ReefPayload(
+                specimens: specimens,
+                couplingRoutes: couplingRoutes,
+                reefName: reefName,
+                totalDiveDepth: totalDiveDepth
+            )
+            let data = try JSONEncoder().encode(payload)
+            UserDefaults.standard.set(data, forKey: saveKey)
+        } catch {
+            print("[ReefStore] save failed: \(error)")
+        }
+    }
+
+    /// Restore reef state from UserDefaults. No-op if no saved data exists.
+    func load() {
+        guard let data = UserDefaults.standard.data(forKey: saveKey) else { return }
+        do {
+            let payload = try JSONDecoder().decode(ReefPayload.self, from: data)
+            specimens = payload.specimens
+            couplingRoutes = payload.couplingRoutes
+            reefName = payload.reefName
+            totalDiveDepth = payload.totalDiveDepth
+        } catch {
+            print("[ReefStore] load failed: \(error)")
+        }
+    }
+
+    /// Apply health decay for specimens that were not visited for `daysSinceLastOpen` days.
+    /// Each absent day costs 5 health points (floor: 20 — dormant, never dies from neglect alone).
+    func applyDormancyDecay(daysSinceLastOpen: Int) {
+        guard daysSinceLastOpen > 0 else { return }
+        let decay = min(daysSinceLastOpen * 5, 80) // cap at 80 so floor = 20
+        for index in specimens.indices {
+            guard specimens[index] != nil else { continue }
+            let newHealth = max(20, specimens[index]!.health - decay)
+            specimens[index]?.health = newHealth
+        }
+    }
+}
+
+// MARK: - Codable payload
+
+private struct ReefPayload: Codable {
+    var specimens: [Specimen?]
+    var couplingRoutes: [CouplingRoute]
+    var reefName: String
+    var totalDiveDepth: Int
 }

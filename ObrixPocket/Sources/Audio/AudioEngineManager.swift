@@ -7,6 +7,7 @@ import Combine
 final class AudioEngineManager: ObservableObject {
     @Published var isRunning = false
     @Published var cpuLoad: Float = 0.0
+    @Published var hasPlayedFirstNote = false
 
     private var audioSessionConfigured = false
 
@@ -33,6 +34,9 @@ final class AudioEngineManager: ObservableObject {
         // Map slot index to MIDI note: C3 + slot index (gives C3-D#4 for 16 slots)
         let note = 60 + slotIndex
         ObrixBridge.shared.noteOn(Int32(note), velocity: velocity)
+        if !hasPlayedFirstNote {
+            hasPlayedFirstNote = true
+        }
     }
 
     func noteOff(slotIndex: Int) {

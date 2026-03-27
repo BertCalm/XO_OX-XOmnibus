@@ -13,6 +13,7 @@ import SwiftUI
 /// Tapping opens CatchScreen as a sheet.
 struct CatchTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
+    @EnvironmentObject var reefStore: ReefStore
     @StateObject private var biomeDetector = BiomeDetector()
     @StateObject private var spectralCapture = SpectralCapture()
     @State private var spawnManager: SpawnManager?
@@ -33,6 +34,7 @@ struct CatchTab: View {
         .onAppear(perform: onAppear)
         .sheet(item: $showingCatch) { wild in
             CatchScreen(specimen: wild, spectralCapture: spectralCapture, phase: $catchPhase)
+                .environmentObject(reefStore)
         }
     }
 
@@ -216,6 +218,7 @@ struct CatchScreen: View {
     @ObservedObject var spectralCapture: SpectralCapture
     @Binding var phase: CatchPhase
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var reefStore: ReefStore
 
     var body: some View {
         ZStack {
@@ -320,8 +323,24 @@ struct CatchScreen: View {
         guard phase == .singing || phase == .harmonizing || phase == .idle else { return }
         phase = .capturing
         spectralCapture.startCapture { profile in
-            // TODO Phase 1: Construct a Specimen from wild + profile, call ReefStore.addSpecimen()
-            phase = .caught
+            // Construct a Specimen from the wild encounter + ambient spectral profile
+            let newSpecimen = SpecimenFactory.create(
+                from: specimen,
+                spectralDNA: profile,
+                location: nil,      // Phase 1: wire BiomeDetector.lastLocation
+                weather: nil,       // Phase 1: wire WeatherKit
+                accelerometer: []   // Phase 1: wire CoreMotion
+            )
+
+            // Add to reef (returns slot index, or nil when reef is full)
+            if let _ = reefStore.addSpecimen(newSpecimen) {
+                phase = .caught
+                reefStore.save()
+            } else {
+                // Reef is full — specimen lost; surface a "reef full" alert in Phase 1
+                phase = .idle
+            }
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 dismiss()
             }
