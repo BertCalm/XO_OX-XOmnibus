@@ -639,7 +639,7 @@ public:
 
             juce::String presetName = processor.getPresetManager().getCurrentPreset().name;
             if (presetName.isEmpty())
-                presetName = "— No Preset —";
+                presetName = "No Preset";
 
             g.setColour(get(t1()));
             g.setFont(GalleryFonts::body(12.0f));
@@ -718,82 +718,7 @@ public:
             }
         }
 
-        // ── P0-13: Macro knobs row — visual placeholder below signal flow strip ─
-        {
-            auto colBPanelFull = layout.getColumnBPanel();
-            colBPanelFull.removeFromTop(kSignalFlowStripH); // skip signal flow strip
-            auto rowBounds = colBPanelFull.removeFromTop(kMacroKnobsRowH).toFloat();
-
-            // Top border — 1px in border color
-            g.setColour(border());
-            g.fillRect(rowBounds.getX(), rowBounds.getY(), rowBounds.getWidth(), 1.0f);
-
-            // Subtle top-down gradient background
-            {
-                juce::ColourGradient grad(
-                    juce::Colour(0xFFFFFFFF).withAlpha(0.015f), rowBounds.getX(), rowBounds.getY(),
-                    juce::Colour(0x00FFFFFF),                    rowBounds.getX(), rowBounds.getBottom(),
-                    false);
-                g.setGradientFill(grad);
-                g.fillRect(rowBounds.withTrimmedTop(1.0f));
-            }
-
-            // 4 macro knob placeholders
-            static const char* kMacroLabels[] = { "CHARACTER", "MOVEMENT", "COUPLING", "SPACE" };
-            const int kNumMacros = 4;
-            const float knobD = 48.0f;   // knob diameter
-            const float knobR = knobD * 0.5f;
-            const float trackW = 1.4f;   // arc track stroke width
-            const float fillW  = 1.8f;   // arc fill stroke width
-            const float fillPos = 0.40f; // 40% placeholder value
-
-            // Evenly space 4 knobs across the row
-            float cellW = rowBounds.getWidth() / (float)kNumMacros;
-            const float labelH = 12.0f;
-            const float valueH = 12.0f;
-            const float totalKnobH = labelH + knobD + valueH + 4.0f; // label + knob + value + gaps
-            const float knobAreaY = rowBounds.getY() + (rowBounds.getHeight() - totalKnobH) * 0.5f;
-
-            juce::Colour goldColor = juce::Colour(GalleryColors::xoGold);
-
-            for (int k = 0; k < kNumMacros; ++k)
-            {
-                float cellX = rowBounds.getX() + k * cellW;
-                float cellCX = cellX + cellW * 0.5f;
-
-                // Label above — JetBrains Mono 7px, xoGold at 0.65 alpha
-                g.setColour(goldColor.withAlpha(0.65f));
-                g.setFont(GalleryFonts::value(7.0f));
-                g.drawText(kMacroLabels[k],
-                           juce::Rectangle<float>(cellX, knobAreaY, cellW, labelH),
-                           juce::Justification::centred, false);
-
-                // Arc track — full circle in T3
-                float cx = cellCX;
-                float cy2 = knobAreaY + labelH + knobR + 2.0f;
-                const float startAngle = juce::MathConstants<float>::pi * 1.25f; // 225°
-                const float endAngle   = juce::MathConstants<float>::pi * 2.75f; // 495° (315° sweep)
-
-                juce::Path trackPath;
-                trackPath.addArc(cx - knobR, cy2 - knobR, knobD, knobD, startAngle, endAngle, true);
-                g.setColour(get(t3()));
-                g.strokePath(trackPath, juce::PathStrokeType(trackW));
-
-                // Arc fill — xoGold at fillPos (40%)
-                float fillAngle = startAngle + (endAngle - startAngle) * fillPos;
-                juce::Path fillPath;
-                fillPath.addArc(cx - knobR, cy2 - knobR, knobD, knobD, startAngle, fillAngle, true);
-                g.setColour(goldColor);
-                g.strokePath(fillPath, juce::PathStrokeType(fillW));
-
-                // Value text below — "0.40" in mono 8px, T2 color
-                g.setColour(get(t2()));
-                g.setFont(GalleryFonts::value(8.0f));
-                g.drawText("0.40",
-                           juce::Rectangle<float>(cellX, cy2 + knobR + 2.0f, cellW, valueH),
-                           juce::Justification::centred, false);
-            }
-        }
+        // Macro knobs row removed — EngineDetailPanel has real interactive MacroHeroStrip.
     }
 
     void resized() override
@@ -806,60 +731,38 @@ public:
         // columnCCollapsed is reserved for a future Column C collapse button.
         layout.compute(getWidth(), getHeight());
 
-        // ── Header (52px): tighter layout for prototype match ──────────────
+        // ── Header (52px): Logo | ENGINES | --- macros --- | CPU | PLAY | EXPORT | gear
         auto header = layout.getHeader();
-        // Right zone — peel off from right edge inward:
-        // P0-4: Settings gear button — far right, 8px from edge
-        {
-            auto gearSlice = header.removeFromRight(28 + 8); // 8px right margin
-            settingsBtn.setBounds(gearSlice.removeFromRight(28).withSizeKeepingCentre(28, 28));
-        }
-        exportBtn.setBounds(header.removeFromRight(44).reduced(4, 10));
-        // P0-3: Slim inline preset nav strip — 180px wide, 22px tall, centred vertically
-        {
-            auto presetSlice = header.removeFromRight(180);
-            int arrowSz = 22;
-            int iy = (presetSlice.getHeight() - arrowSz) / 2;
-            presetPrevBtn.setBounds(presetSlice.getX(), presetSlice.getY() + iy, arrowSz, arrowSz);
-            presetNextBtn.setBounds(presetSlice.getRight() - arrowSz, presetSlice.getY() + iy, arrowSz, arrowSz);
-        }
-        // Hide the old wide preset browser strip — it is replaced by the slim nav above.
-        presetBrowser.setBounds(0, -200, 0, 0); // parked off-screen (zero-width)
-        // ── Icon strip: 5 compact 24×24 toggle buttons ─────────────────────
-        // Prototype: indicator-pill sized controls, grouped tightly
-        {
-            static constexpr int iconSz = 36;
-            static constexpr int iconGap = 2;
-            static constexpr int stripW = 5 * iconSz + 4 * iconGap; // 188
-            auto strip = header.removeFromRight(stripW + 4); // +4 for edge padding
-            int ix = strip.getX() + 2;
-            int iy = (strip.getHeight() - iconSz) / 2;
-            cinematicToggleBtn.setBounds(ix, iy, iconSz, iconSz); ix += iconSz + iconGap;
-            cmToggleBtn.setBounds(ix, iy, iconSz, iconSz);        ix += iconSz + iconGap;
-            perfToggleBtn.setBounds(ix, iy, iconSz, iconSz);      ix += iconSz + iconGap;
-            surfaceToggleBtn.setBounds(ix, iy, iconSz, iconSz);   ix += iconSz + iconGap;
-            themeToggleBtn.setBounds(ix, iy, iconSz, iconSz);
-        }
-        // CPU meter (60×20) and MIDI dot (8×8)
-        {
-            auto midiSlice = header.removeFromRight(14);
-            midiIndicator.setBounds(midiSlice.withSizeKeepingCentre(8, 8));
-        }
-        cpuMeter.setBounds(header.removeFromRight(62).withSizeKeepingCentre(60, 20));
-        // A/B compare hidden — not wired to functionality yet
+
+        // Hide removed elements off-screen
+        depthDial.setBounds(0, -100, 0, 0);
         abCompare.setBounds(0, -100, 0, 0);
+        presetBrowser.setBounds(0, -200, 0, 0);
+        presetPrevBtn.setBounds(0, -100, 0, 0);
+        presetNextBtn.setBounds(0, -100, 0, 0);
+        cinematicToggleBtn.setBounds(0, -100, 0, 0);
+        cmToggleBtn.setBounds(0, -100, 0, 0);
+        perfToggleBtn.setBounds(0, -100, 0, 0);
+        themeToggleBtn.setBounds(0, -100, 0, 0);
+        midiIndicator.setBounds(0, -100, 0, 0);
 
-        // ── Macro knobs in header — between title/ENGINES and icon strip ───────
-        // DepthZoneDial removed — engine selection consolidated into ENGINES button.
-        // A/B compare hidden — not wired to functionality.
+        // ── Left: Logo (painted) + ENGINES button ──────────────────────────
+        header.removeFromLeft(150); // logo rings + "XOlokun" / "XO_OX Designs" text
+        enginesBtn.setBounds(header.removeFromLeft(74).withSizeKeepingCentre(70, 22));
+
+        // ── Right (from edge inward): gear | EXPORT | PLAY | CPU ───────────
         {
-            auto leftZone = header.removeFromLeft(140); // logo(30) + title(36) + ENGINES(74)
-            depthDial.setBounds(0, -100, 0, 0); // hidden off-screen
-            enginesBtn.setBounds(leftZone.removeFromLeft(74).withSizeKeepingCentre(70, 22));
-
-            auto macroHeader = header; // remaining space for macros
-            macros.setBounds(macroHeader.reduced(6, 4));
+            auto gearSlice = header.removeFromRight(36); // 8px margin included
+            settingsBtn.setBounds(gearSlice.withSizeKeepingCentre(28, 28));
         }
+        exportBtn.setBounds(header.removeFromRight(56).reduced(4, 10));
+        // PLAY button (was PS) — launches PlaySurface popup
+        surfaceToggleBtn.setButtonText("PLAY");
+        surfaceToggleBtn.setBounds(header.removeFromRight(52).withSizeKeepingCentre(48, 26));
+        cpuMeter.setBounds(header.removeFromRight(68).withSizeKeepingCentre(64, 20));
+
+        // ── Center: macros fill remaining space ────────────────────────────
+        macros.setBounds(header.reduced(8, 4));
 
         // ── Column A — Engine Rack (full height, MacroSection now in header) ──
         auto colA = layout.getColumnA();
@@ -903,9 +806,9 @@ public:
         auto masterFXBounds = colBPanel.removeFromBottom(kMasterFXH).reduced(6, 3);
         masterFXStrip.setBounds(masterFXBounds);
 
-        // P0-12 + P0-13: Reserve signal flow strip (28px) + macro knobs row (64px) at top.
-        // These are painted directly in paint() below — no child components needed.
-        colBPanel.removeFromTop(kSignalFlowStripH + kMacroKnobsRowH);
+        // Signal flow strip (28px) at top of Column B — painted in paint().
+        // Macro knobs row removed — redundant with EngineDetailPanel's MacroHeroStrip.
+        colBPanel.removeFromTop(kSignalFlowStripH);
 
         // Remaining Column B panel area for the view stack (stacked, one visible at a time)
         overview.setBounds(colBPanel);

@@ -34,10 +34,10 @@ public:
                 apvts, defs[i].id, knobs[i]);
             enableKnobReset (knobs[i], apvts, defs[i].id);
 
-            lbls[i].setText(defs[i].label, juce::dontSendNotification); // short label (CHAR/MOVE/COUP/SPACE)
-            lbls[i].setFont(GalleryFonts::value(7.0f));
-            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.65f));
-            lbls[i].setJustificationType(juce::Justification::centred);
+            lbls[i].setText(defs[i].label, juce::dontSendNotification);
+            lbls[i].setFont(GalleryFonts::value(9.0f));
+            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.75f));
+            lbls[i].setJustificationType(juce::Justification::centredRight);
             addAndMakeVisible(lbls[i]);
         }
 
@@ -53,9 +53,9 @@ public:
         enableKnobReset (master, apvts, "masterVolume");
 
         masterLbl.setText("VOL", juce::dontSendNotification);
-        masterLbl.setFont(GalleryFonts::value(7.0f));
-        masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.65f));
-        masterLbl.setJustificationType(juce::Justification::centred);
+        masterLbl.setFont(GalleryFonts::value(9.0f));
+        masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.75f));
+        masterLbl.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(masterLbl);
     }
 
@@ -97,25 +97,26 @@ public:
 
     void resized() override
     {
-        // Header integration: effective height ~44px (52pt header - 4px reduced).
-        // Prototype: KNOB_HEADER = 32px
+        // Layout: LABEL [KNOB] › LABEL [KNOB] › ... — label left of knob, tightly grouped
         auto b = getLocalBounds().reduced(4, 2);
-        constexpr int kh = 32, lh = 10;
-        int numKnobs = 5; // 4 macros + master
-        int cw = b.getWidth() / numKnobs;
+        constexpr int kh = 34;       // knob diameter
+        constexpr int lblW = 38;     // label width
+        constexpr int gap = 2;       // between label and knob
+        constexpr int groupGap = 6;  // between knob→next label
+        int ky = (b.getHeight() - kh) / 2; // vertically center knobs
 
+        int x = b.getX();
         for (int i = 0; i < 4; ++i)
         {
-            auto col = b.removeFromLeft(cw);
-            int kx = col.getCentreX() - kh / 2;
-            knobs[i].setBounds(kx, col.getY(), kh, kh);
-            lbls[i].setBounds(kx - 4, col.getY() + kh + 1, kh + 8, lh);
+            lbls[i].setBounds(x, ky, lblW, kh);
+            x += lblW + gap;
+            knobs[i].setBounds(x, b.getY() + ky, kh, kh);
+            x += kh + groupGap;
         }
-        // Master volume in the remaining column
-        auto masterCol = b;
-        int mx = masterCol.getCentreX() - kh / 2;
-        master.setBounds(mx, masterCol.getY(), kh, kh);
-        masterLbl.setBounds(mx - 4, masterCol.getY() + kh + 1, kh + 8, lh);
+        // Master volume
+        masterLbl.setBounds(x, ky, lblW - 8, kh); // VOL is shorter
+        x += (lblW - 8) + gap;
+        master.setBounds(x, b.getY() + ky, kh, kh);
     }
 
     // Called by PresetBrowserStrip when a preset with custom macroLabels is loaded.
