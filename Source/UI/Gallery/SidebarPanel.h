@@ -187,8 +187,8 @@ public:
 
     //==========================================================================
     // Engine accent color — used for active tab underline.
-    // Defaults to XO Gold; call setEngineAccent() when the loaded engine changes.
-    juce::Colour engineAccent { GalleryColors::get(GalleryColors::xoGold) };
+    // Defaults to Reef Jade teal (mockup --accent); call setEngineAccent() when the loaded engine changes.
+    juce::Colour engineAccent { juce::Colour(0xFF1E8B7E) };
 
     void setEngineAccent(juce::Colour c) { engineAccent = c; repaint(); }
 

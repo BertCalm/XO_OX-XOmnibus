@@ -396,6 +396,31 @@ public:
     }
 
     //==========================================================================
+    // drawTooltip — JetBrains Mono 9px, raised background, 2-layer shadow
+    void drawTooltip(juce::Graphics& g, const juce::String& text, int width, int height) override
+    {
+        using namespace GalleryColors;
+        auto bounds = juce::Rectangle<int>(0, 0, width, height).toFloat();
+
+        // Shadow (2 layers)
+        g.setColour(juce::Colour(0x66000000));
+        g.fillRoundedRectangle(bounds.translated(0, 2).expanded(2), 5.0f);
+
+        // Background
+        g.setColour(juce::Colour(raised()));
+        g.fillRoundedRectangle(bounds, 4.0f);
+
+        // Border
+        g.setColour(borderMd());
+        g.drawRoundedRectangle(bounds, 4.0f, 1.0f);
+
+        // Text — JetBrains Mono 9px
+        g.setColour(juce::Colour(t1()));
+        g.setFont(GalleryFonts::value(9.0f));
+        g.drawText(text, bounds.reduced(8, 4), juce::Justification::centredLeft, true);
+    }
+
+    //==========================================================================
     // getDefaultScrollbarWidth — 4px slim scrollbar matching prototype
     int getDefaultScrollbarWidth() override { return 4; }
 

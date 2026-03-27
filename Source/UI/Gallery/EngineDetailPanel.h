@@ -300,9 +300,15 @@ public:
             juce::Font nameFont = GalleryFonts::engineName(14.0f);
             g.setFont(nameFont);
             auto nameRect = juce::Rectangle<int>(12, 0, getWidth() - 100, kHeaderH);
-            // Glow layer — accent at low opacity, no offset, painted twice for intensity
-            g.setColour(accentColour.withAlpha(0.25f));
-            g.drawText(cachedEngineName, nameRect, juce::Justification::centredLeft);
+            // Glow layer — 4-direction 1px offset at alpha 0.15 for subtle text bloom
+            g.setColour(accentColour.withAlpha(0.15f));
+            for (const auto& offset : { juce::Point<int>(-1, 0), juce::Point<int>(1, 0),
+                                        juce::Point<int>(0, -1), juce::Point<int>(0, 1) })
+            {
+                g.drawText(cachedEngineName,
+                           nameRect.translated(offset.x, offset.y),
+                           juce::Justification::centredLeft);
+            }
             // Primary text — full accent color
             g.setColour(accentColour);
             g.drawText(cachedEngineName, nameRect, juce::Justification::centredLeft);

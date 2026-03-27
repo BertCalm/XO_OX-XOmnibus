@@ -35,8 +35,8 @@ public:
             enableKnobReset (knobs[i], apvts, defs[i].id);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification); // short label (CHAR/MOVE/COUP/SPACE)
-            lbls[i].setFont(GalleryFonts::value(8.0f));
-            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.75f));
+            lbls[i].setFont(GalleryFonts::value(7.0f));
+            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.65f));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
         }
@@ -53,8 +53,8 @@ public:
         enableKnobReset (master, apvts, "masterVolume");
 
         masterLbl.setText("VOL", juce::dontSendNotification);
-        masterLbl.setFont(GalleryFonts::value(8.0f));
-        masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.75f));
+        masterLbl.setFont(GalleryFonts::value(7.0f));
+        masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.65f));
         masterLbl.setJustificationType(juce::Justification::centred);
         addAndMakeVisible(masterLbl);
     }
