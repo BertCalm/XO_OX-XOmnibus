@@ -211,6 +211,7 @@ public:
 
         // ── Creature animation ─────────────────────────────────────────────────
         // Timer runs at 10 Hz → divisor = 10.
+        const float prevBreathPhase = creatureState_.breathPhase;
         creatureState_.breathPhase += creatureState_.breathRate
                                       * 2.0f * juce::MathConstants<float>::pi / 10.0f;
         if (creatureState_.breathPhase > juce::MathConstants<float>::twoPi)
@@ -219,7 +220,14 @@ public:
         float targetPulse = (voiceCount > 0) ? 1.0f : 0.0f;
         creatureState_.pulseIntensity += 0.1f * (targetPulse - creatureState_.pulseIntensity);
 
-        needsRepaint = true; // creature breathes every tick regardless of other state
+        // UIX Fix 5: Only request repaint if breath scale changed by a visible amount.
+        // Avoids unconditional repaint every tick when the tile is idle.
+        {
+            float prevBreathScale = 1.0f + 0.1f * std::sin (prevBreathPhase);
+            float newBreathScale  = 1.0f + 0.1f * std::sin (creatureState_.breathPhase);
+            if (std::abs (newBreathScale - prevBreathScale) > 0.005f)
+                needsRepaint = true;
+        }
 
         if (needsRepaint) repaint();
     }

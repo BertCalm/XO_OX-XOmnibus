@@ -57,6 +57,8 @@ public:
 
     //==========================================================================
     KeysMode()
+        // Cache range-label font once — avoids per-paint Font construction (UIX Fix 1B)
+        : rangeLabelFont_ (juce::Font (11.0f))
     {
         accent_ = juce::Colour (kXoGold);
         setOpaque (false);
@@ -181,7 +183,7 @@ public:
         auto labelBounds = getLocalBounds().reduced (4);
         auto labelStrip  = labelBounds.removeFromBottom (16);
         g.setColour (juce::Colour (0xFF888888));
-        g.setFont (juce::Font (11.0f));
+        g.setFont (rangeLabelFont_);  // cached — avoids per-paint Font construction (UIX Fix 1B)
         g.drawText (getVisibleRange(),
                     labelStrip.removeFromRight (60),
                     juce::Justification::bottomRight, false);
@@ -332,6 +334,9 @@ private:
     int   activeKeyCount_ = 0;
     juce::Colour accent_;
 
+    // Cached font — initialized in constructor, avoids per-paint construction (UIX Fix 1B)
+    juce::Font rangeLabelFont_;
+
     //==========================================================================
     // Helpers
 
@@ -383,7 +388,8 @@ private:
         // --- Accent glow overlay (in-key or active) --------------------------
         if (inKey || active)
         {
-            float glowAlpha = active ? 0.30f : 0.12f;
+            // Passive in-key glow raised 0.12 → 0.22: now perceptible without being garish (UIX Fix 3)
+            float glowAlpha = active ? 0.30f : 0.22f;
             g.setColour (accent_.withAlpha (glowAlpha));
             g.fillRect (rect);
         }

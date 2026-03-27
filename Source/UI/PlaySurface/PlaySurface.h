@@ -680,8 +680,8 @@ private:
                     }
                     else
                     {
-                        // In-key: glow with tension color
-                        g.setColour(tensionColour.withAlpha(0.15f));
+                        // In-key: glow with tension color — raised 0.15 → 0.22 (UIX Fix 3)
+                        g.setColour(tensionColour.withAlpha(0.22f));
                         g.fillRoundedRectangle(padRect, 4.0f);
                     }
 
@@ -883,7 +883,11 @@ private:
 class PerformanceStrip : public juce::Component
 {
 public:
-    PerformanceStrip() = default;
+    PerformanceStrip()
+        // Cache fonts once — avoids per-paint Font construction (UIX Fix 1C)
+        : tabFont_  (juce::Font (juce::FontOptions{}.withHeight (8.0f)))
+        , axisFont_ (juce::Font (juce::FontOptions{}.withHeight (8.0f)))
+    {}
     enum class StripMode { DubSpace, FilterSweep, Coupling, DubSiren };
 
     std::function<void(float x, float y)> onPositionChanged;
@@ -930,7 +934,7 @@ public:
             constexpr float tabH = 26.0f;  // WCAG Fix 5: raised from 22px to meet WCAG 2.5.8 minimum 24px touch target
             float tabY = (b.getHeight() - tabH) / 2.0f + b.getY();
 
-            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+            g.setFont(tabFont_);  // cached — avoids per-paint Font construction (UIX Fix 1C)
             for (int i = 0; i < 4; ++i)
             {
                 auto tabRect = juce::Rectangle<float>(b.getX() + i * tabW + 4.0f, tabY, tabW - 4.0f, tabH);
@@ -948,7 +952,7 @@ public:
         }
 
         // Gestural area is to the right of the 4 tabs (4 × 72 = 288px offset)
-        auto gestureArea = b.withTrimmedLeft(288.0f + 4.0f);
+        auto gestureArea = b.withTrimmedLeft(kGestureAreaLeft);
 
         // Crosshair gridlines (Spec Section 9.3) — opacity 0.10, 1px white
         g.setColour(juce::Colours::white.withAlpha(0.10f));
@@ -992,7 +996,7 @@ public:
 
         // Axis labels — 8px uppercase, 35% opacity, at the edges of gestureArea (Spec Section 9.4)
         // Mode-specific: X axis = bottom-left of gestureArea, Y axis = top-right of gestureArea
-        g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+        g.setFont(axisFont_);  // cached — avoids per-paint Font construction (UIX Fix 1C)
         g.setColour(juce::Colours::white.withAlpha(0.35f));
         static const char* xLabels[] = { "DELAY FB", "CUTOFF",  "SPREAD",  "PITCH" };
         static const char* yLabels[] = { "REVERB",   "RESONANCE", "DEPTH", "SIREN DEPTH" };
@@ -1050,9 +1054,14 @@ public:
     }
 
 private:
+    static constexpr float kGestureAreaLeft = 292.0f; // 4 tabs × 72px + 4px padding
     StripMode stripMode = StripMode::DubSpace;
     float stripX = 0.3f, stripY = 0.2f;
     bool  touching = false;
+
+    // Cached fonts — initialized in constructor, avoids per-paint construction (UIX Fix 1C)
+    juce::Font tabFont_;   // 8px — mode tab labels
+    juce::Font axisFont_;  // 8px — gesture area axis labels
 
     // Spring-back animation state (250ms ease-out)
     float springElapsed_ = 999.0f;   // Start in "done" state
@@ -1075,7 +1084,7 @@ private:
     {
         // Gestural area is to the right of the 4 mode tabs (4 × 72 + 4px padding = 292px)
         auto b = getLocalBounds().toFloat();
-        auto gestureArea = b.withTrimmedLeft(292.0f);
+        auto gestureArea = b.withTrimmedLeft(kGestureAreaLeft);
         float gx = juce::jlimit(gestureArea.getX(), gestureArea.getRight(), static_cast<float>(e.x));
         stripX = juce::jlimit(0.0f, 1.0f, (gx - gestureArea.getX()) / gestureArea.getWidth());
         stripY = juce::jlimit(0.0f, 1.0f, 1.0f - (e.y - b.getY()) / b.getHeight());

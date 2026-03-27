@@ -95,6 +95,7 @@ public:
         , springTargetX_ (0.5f)
         , springTargetY_ (0.5f)
         , springElapsedMs_ (0.0f)
+        , springDurationMs_ (kSpringMs)
         , warmHoldElapsedMs_ (0.0f)
         , driftTimeS_ (0.0f)
         , state_ (State::Lissajous)
@@ -133,7 +134,7 @@ public:
         repaint();
     }
 
-    /** Called on mouseDown — begin 150ms spring animation to (normX, normY). */
+    /** Called on mouseDown — begin 80ms spring animation to (normX, normY) (300ms for GOODBYE). */
     void springTo (float normX, float normY)
     {
         springStartX_    = displayX_;
@@ -141,7 +142,20 @@ public:
         springTargetX_   = normX;
         springTargetY_   = normY;
         springElapsedMs_ = 0.0f;
+        springDurationMs_ = kSpringMs;
         state_           = State::Springing;
+    }
+
+    /** Slower spring used for GOODBYE — slides planchette to bottom over 300ms. */
+    void springToSlow (float nx, float ny, float durationMs = 300.0f)
+    {
+        springStartX_     = displayX_;
+        springStartY_     = displayY_;
+        springTargetX_    = nx;
+        springTargetY_    = ny;
+        springElapsedMs_  = 0.0f;
+        springDurationMs_ = durationMs;
+        state_            = State::Springing;
     }
 
     /** Called on mouseDrag — snap to position once spring has completed. */
@@ -259,13 +273,13 @@ private:
             {
                 springElapsedMs_ += kDtMs;
                 const float t = juce::jlimit (0.0f, 1.0f,
-                                              springElapsedMs_ / kSpringMs);
+                                              springElapsedMs_ / springDurationMs_);
                 // Ease-out: 1 - (1-t)^2
                 const float ease = 1.0f - (1.0f - t) * (1.0f - t);
                 displayX_ = springStartX_ + (springTargetX_ - springStartX_) * ease;
                 displayY_ = springStartY_ + (springTargetY_ - springStartY_) * ease;
 
-                if (springElapsedMs_ >= kSpringMs)
+                if (springElapsedMs_ >= springDurationMs_)
                 {
                     displayX_ = springTargetX_;
                     displayY_ = springTargetY_;
@@ -376,6 +390,7 @@ private:
     float         springTargetX_;
     float         springTargetY_;
     float         springElapsedMs_;
+    float         springDurationMs_;  // kSpringMs normally; 300ms for GOODBYE
 
     // Warm hold
     float         warmHoldElapsedMs_;
@@ -421,6 +436,9 @@ public:
 
     //==========================================================================
     GestureButtonBar()
+        // Cache fonts once — avoids per-paint Font construction (UIX fix)
+        : lockFont_   (juce::Font (14.0f, juce::Font::plain))
+        , buttonFont_ (juce::Font (10.0f, juce::Font::plain))
     {
         // Default bank buttons are populated by XOuijaPanel::setupDefaultButtonBank()
         // so they remain empty here.
@@ -492,9 +510,9 @@ public:
         const float lockX = w - lockSize - 2.0f;
         const float lockY = 2.0f;
         g.setColour (juce::Colours::white.withAlpha (0.45f));
-        g.setFont (juce::Font (lockSize, juce::Font::plain));
-        // Simple text indicator; use ASCII fallback if emoji not available
-        g.drawText (bankLocked_ ? "L" : "U",
+        g.setFont (lockFont_);  // cached — avoids per-paint Font construction
+        // Filled circle (locked) / empty circle (unlocked) — universally understood
+        g.drawText (bankLocked_ ? "\xe2\x97\x8f" : "\xe2\x97\x8b",
                     juce::Rectangle<float> (lockX, lockY, lockSize, lockSize),
                     juce::Justification::centred, false);
 
@@ -524,7 +542,7 @@ public:
             // Label
             const float textAlpha = pressed ? 1.0f : 0.65f;
             g.setColour (juce::Colours::white.withAlpha (textAlpha));
-            g.setFont (juce::Font (9.0f, juce::Font::plain));
+            g.setFont (buttonFont_);  // cached — avoids per-paint Font construction; 10px
             g.drawText (buttons_[static_cast<std::size_t> (i)].label.toUpperCase(),
                         buttonRect,
                         juce::Justification::centred,
@@ -534,6 +552,15 @@ public:
 
     void mouseDown (const juce::MouseEvent& e) override
     {
+        // Check lock icon click first — sits above the button row
+        float lockX = static_cast<float> (getWidth()) - 18.0f;
+        if (e.position.x >= lockX && e.position.y < 18.0f)
+        {
+            bankLocked_ = !bankLocked_;
+            repaint();
+            return;
+        }
+
         pressedIndex_ = hitTestButton (e.position.x, e.position.y);
         repaint();
     }
@@ -590,6 +617,10 @@ private:
     bool                      bankLocked_    = false;
     int                       pressedIndex_  = -1;
     juce::Colour              accentColour_  { juce::Colour (0xFFE9C46A) };
+
+    // Cached fonts — initialized in constructor, avoids per-paint construction
+    juce::Font lockFont_;    // 14px plain — for lock indicator circle
+    juce::Font buttonFont_;  // 10px plain — for button labels
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GestureButtonBar)
 };
@@ -708,7 +739,7 @@ public:
             influenceY_ = 0.0f;
 
             // Animate planchette to bottom-centre (influenceY=0 → bottom)
-            planchette_.springTo (0.5f, 0.0f);
+            planchette_.springToSlow (0.5f, 0.0f, 300.0f);
 
             // Clear trail buffer
             trailBuffer_.clear();
@@ -1101,10 +1132,12 @@ private:
     void paintYesNoLabels (juce::Graphics& g)
     {
         const auto b = getLocalBounds().toFloat();
-        const juce::Colour labelColour = juce::Colours::white.withAlpha (0.20f);
+        // Opacity raised 0.20 → 0.45: still subtle but now readable (UIX Fix 2)
+        const juce::Colour labelColour = juce::Colours::white.withAlpha (0.45f);
         g.setColour (labelColour);
         // Static local font — constructed once, shared across all paint() calls
-        static const juce::Font kYesNoFont ("Georgia", 9.0f, juce::Font::italic);
+        // Font size raised 9px → 11px for improved legibility (UIX Fix 2)
+        static const juce::Font kYesNoFont ("Georgia", 11.0f, juce::Font::italic);
         g.setFont (kYesNoFont);
 
         // YES — near the top of the component
