@@ -77,7 +77,7 @@ public:
     static constexpr float kDriftPhase   = juce::MathConstants<float>::pi / 4.0f;  // π/4
 
     // Animation timing
-    static constexpr float kSpringMs    = 150.0f;  // spring duration ms
+    static constexpr float kSpringMs    = 80.0f;   // spring duration ms (QDD: was 150ms, reduced for snappier lock-on)
     static constexpr float kWarmHoldMs  = 400.0f;  // warm hold duration ms
 
     //==========================================================================
@@ -105,6 +105,11 @@ public:
     {
         setInterceptsMouseClicks (false, false);
         startTimerHz (60);
+
+        // WCAG Fix 1: accessibility API
+        setAccessible (true);
+        setTitle ("Planchette - Harmonic Position Indicator");
+        setDescription ("Shows current position on circle of fifths and influence depth");
     }
 
     ~Planchette() override
@@ -170,6 +175,12 @@ public:
 
     void setDriftEnabled (bool on) { driftEnabled_ = on; }
     bool isDriftEnabled()  const   { return driftEnabled_; }
+
+    /** WCAG Fix 3: when true, Lissajous idle drift is suppressed and the planchette
+        stays at its last anchor position. Wire to macOS accessibility preference
+        (NSWorkspace.accessibilityDisplayShouldReduceMotion) when available. */
+    void setReducedMotion (bool on) { reducedMotion_ = on; }
+    bool isReducedMotion()  const   { return reducedMotion_; }
 
     /** Spring to centre (0.5, 0.5). */
     void snapHome()
@@ -285,7 +296,8 @@ private:
 
             case State::Lissajous:
             {
-                if (! driftEnabled_)
+                // WCAG Fix 3: skip drift entirely when reduced motion is requested
+                if (! driftEnabled_ || reducedMotion_)
                     break;
 
                 driftTimeS_ += kDtMs * 0.001f;  // convert ms → seconds
@@ -375,6 +387,11 @@ private:
     bool          driftEnabled_;
     juce::String  displayText_;
 
+    // WCAG Fix 3: reduced motion path — when true, skip Lissajous drift animation.
+    // TODO: wire to macOS NSWorkspace.accessibilityDisplayShouldReduceMotion via
+    //       an NSApplicationDelegate callback. Currently opt-in only via setReducedMotion().
+    bool          reducedMotion_ = false;
+
     // Cached font — initialized in constructor, avoids per-paint construction
     juce::Font    textFont_;
 
@@ -407,6 +424,11 @@ public:
     {
         // Default bank buttons are populated by XOuijaPanel::setupDefaultButtonBank()
         // so they remain empty here.
+
+        // WCAG Fix 1: accessibility API
+        setAccessible (true);
+        setTitle ("Performance Gesture Buttons");
+        setDescription ("Three configurable performance buttons: Freeze, Home, Drift");
     }
 
     ~GestureButtonBar() override = default;
@@ -585,7 +607,12 @@ public:
     GoodbyeButton()
         // Cache Georgia italic font once — avoids repeated construction in paint()
         : labelFont_ (juce::Font ("Georgia", 11.0f, juce::Font::italic))
-    {}
+    {
+        // WCAG Fix 1: accessibility API
+        setAccessible (true);
+        setTitle ("Goodbye - All Notes Off");
+        setDescription ("Resets harmonic position and silences all voices");
+    }
     ~GoodbyeButton() override = default;
 
     //==========================================================================
@@ -656,6 +683,11 @@ public:
     {
         generateNoiseTexture();
         setOpaque (false);
+
+        // WCAG Fix 1: accessibility API
+        setAccessible (true);
+        setTitle ("XOuija Harmonic Navigator");
+        setDescription ("Circle of fifths harmonic navigation surface with influence depth control");
 
         // B042: add the planchette as a child — it manages its own bounds
         addAndMakeVisible (planchette_);
@@ -1214,9 +1246,9 @@ private:
     {
         std::array<GestureButtonBar::ButtonDef, 3> defs;
 
-        // Slot 0: FREEZE (Z) — toggle trail freeze/unfreeze + CC 88
-        defs[0].label       = "FREEZE";
-        defs[0].shortcutKey = 'Z';
+        // Slot 0: FREEZE (F) — toggle trail freeze/unfreeze + CC 88
+        defs[0].label       = "FREEZE [F]";
+        defs[0].shortcutKey = 'F';
         defs[0].action      = [this]()
         {
             if (trailBuffer_.isFrozen())
@@ -1232,9 +1264,9 @@ private:
             repaint();
         };
 
-        // Slot 1: HOME (X) — snap planchette to centre + fire position callbacks
-        defs[1].label       = "HOME";
-        defs[1].shortcutKey = 'X';
+        // Slot 1: HOME (H) — snap planchette to centre + fire position callbacks
+        defs[1].label       = "HOME [H]";
+        defs[1].shortcutKey = 'H';
         defs[1].action      = [this]()
         {
             planchette_.snapHome();
@@ -1252,9 +1284,9 @@ private:
             repaint();
         };
 
-        // Slot 2: DRIFT (C) — toggle Lissajous drift + CC 90
-        defs[2].label       = "DRIFT";
-        defs[2].shortcutKey = 'C';
+        // Slot 2: DRIFT (D) — toggle Lissajous drift + CC 90
+        defs[2].label       = "DRIFT [D]";
+        defs[2].shortcutKey = 'D';
         defs[2].action      = [this]()
         {
             const bool newState = ! planchette_.isDriftEnabled();

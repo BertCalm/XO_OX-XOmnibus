@@ -155,7 +155,7 @@ struct HarmonicField
         if (fifthsDist == 0)          return { 1.00f, 1.00f };
         if (fifthsDist <= 2)          return { 0.85f, 0.75f };
         if (fifthsDist <= 4)          return { 0.70f, 0.50f };
-        /* fifthsDist 5 or 6 */       return { 0.55f, 0.35f };
+        /* fifthsDist 5 or 6 */       return { 0.65f, 0.50f };  // WCAG Fix 4: raised from {0.55, 0.35} to meet WCAG 1.4.11 non-text contrast 3:1
     }
 
     // =========================================================================

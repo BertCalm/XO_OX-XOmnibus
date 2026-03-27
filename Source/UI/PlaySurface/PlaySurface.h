@@ -927,7 +927,7 @@ public:
         {
             constexpr const char* kModeTabNames[] = { "DubSpace", "FilterSweep", "Coupling", "DubSiren" };
             constexpr float tabW = 72.0f;
-            constexpr float tabH = 22.0f;
+            constexpr float tabH = 26.0f;  // WCAG Fix 5: raised from 22px to meet WCAG 2.5.8 minimum 24px touch target
             float tabY = (b.getHeight() - tabH) / 2.0f + b.getY();
 
             g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));

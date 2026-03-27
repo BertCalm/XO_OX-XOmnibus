@@ -60,6 +60,11 @@ public:
     {
         accent_ = juce::Colour (kXoGold);
         setOpaque (false);
+
+        // WCAG Fix 2: accessibility API
+        setAccessible (true);
+        setTitle ("Keyboard - Seaboard Style");
+        setDescription ("Two-octave keyboard with velocity from vertical position and pitch glide from horizontal drag");
     }
 
     ~KeysMode() override = default;
