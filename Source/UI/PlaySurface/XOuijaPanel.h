@@ -11,19 +11,21 @@
       - Circle-of-fifths markers (13 positions) with tension coloring and
         parabolic arc layout, using HarmonicField math
       - YES / NO labels in Georgia italic 9px at opacity 0.20
+      - Planchette (B042): translucent oval lens with Lissajous idle drift,
+        spring lock-on, warm memory hold, and interior text
 
     Mouse input:
       - mouseDown/mouseDrag: updates circleX_ and influenceY_, fires
         onPositionChanged, and emits CC 85 (circleX) and CC 86 (influenceY)
-        via onCCOutput
-      - mouseUp: clears touching_ flag
+        via onCCOutput. Also drives Planchette spring/move.
+      - mouseUp: clears touching_ flag, triggers planchette release.
 
     Layout reservations (for Tasks 5-7):
       - Bottom 34px: future GestureButtonBar
       - Bottom 32px above that: future GOODBYE button
       - Harmonic surface occupies remaining area above
 
-    B042 — Task 4 of 13 (XOuija PlaySurface V2)
+    B042 — Task 5 of 13 (XOuija PlaySurface V2)
     Namespace: xolokun
     JUCE 8, C++17
 */
@@ -34,10 +36,317 @@
 #include <cstdint>
 #include <utility>
 #include <random>
+#include <cmath>
 
 #include "HarmonicField.h"
 
 namespace xolokun {
+
+//==============================================================================
+/** Planchette (B042 — The Planchette as Autonomous Entity)
+    A translucent oval lens that drifts autonomously when idle and springs
+    to the performer's touch.
+
+    State machine:
+      Lissajous → [springTo] → Springing → [spring complete] → Touching
+      Touching   → [release]  → WarmHold  → [400ms elapsed]  → Lissajous
+
+    setInterceptsMouseClicks(false, false): XOuijaPanel handles all mouse
+    events and drives this component via the public API.
+*/
+class Planchette : public juce::Component,
+                   private juce::Timer
+{
+public:
+    //==========================================================================
+    // Sizing constants (spec Section 4)
+    //==========================================================================
+    static constexpr int   kWidth       = 68;
+    static constexpr int   kHeight      = 46;
+    static constexpr float kPipDiameter = 6.0f;
+
+    // Lissajous drift parameters
+    static constexpr float kDriftFreqX   = 0.3f;   // Hz
+    static constexpr float kDriftFreqY   = 0.2f;   // Hz
+    static constexpr float kDriftAmp     = 0.15f;  // fraction of parent dimension
+    static constexpr float kDriftPhase   = juce::MathConstants<float>::pi / 4.0f;  // π/4
+
+    // Animation timing
+    static constexpr float kSpringMs    = 150.0f;  // spring duration ms
+    static constexpr float kWarmHoldMs  = 400.0f;  // warm hold duration ms
+
+    //==========================================================================
+    enum class State { Lissajous, Springing, Touching, WarmHold };
+
+    //==========================================================================
+    Planchette()
+        : accentColour_ (juce::Colour (0xFFE9C46A))
+        , displayX_ (0.5f)
+        , displayY_ (0.5f)
+        , driftAnchorX_ (0.5f)
+        , driftAnchorY_ (0.5f)
+        , springStartX_ (0.5f)
+        , springStartY_ (0.5f)
+        , springTargetX_ (0.5f)
+        , springTargetY_ (0.5f)
+        , springElapsedMs_ (0.0f)
+        , warmHoldElapsedMs_ (0.0f)
+        , driftTimeS_ (0.0f)
+        , state_ (State::Lissajous)
+        , driftEnabled_ (true)
+        , displayText_ ("C · 0%")
+    {
+        setInterceptsMouseClicks (false, false);
+        startTimerHz (60);
+    }
+
+    ~Planchette() override
+    {
+        stopTimer();
+    }
+
+    //==========================================================================
+    // Public API
+    //==========================================================================
+
+    void setAccentColour (juce::Colour c)
+    {
+        accentColour_ = c;
+        repaint();
+    }
+
+    void setDisplayText (juce::String text)
+    {
+        displayText_ = text;
+        repaint();
+    }
+
+    /** Called on mouseDown — begin 150ms spring animation to (normX, normY). */
+    void springTo (float normX, float normY)
+    {
+        springStartX_    = displayX_;
+        springStartY_    = displayY_;
+        springTargetX_   = normX;
+        springTargetY_   = normY;
+        springElapsedMs_ = 0.0f;
+        state_           = State::Springing;
+    }
+
+    /** Called on mouseDrag — snap to position once spring has completed. */
+    void moveTo (float normX, float normY)
+    {
+        if (state_ == State::Springing || state_ == State::Touching)
+        {
+            // If still springing, update target; snap once touching
+            springTargetX_ = normX;
+            springTargetY_ = normY;
+            if (state_ == State::Touching)
+            {
+                displayX_ = normX;
+                displayY_ = normY;
+                updateBounds();
+                repaint();
+            }
+        }
+    }
+
+    /** Called on mouseUp — begin warm hold, then return to Lissajous drift. */
+    void release()
+    {
+        driftAnchorX_       = displayX_;
+        driftAnchorY_       = displayY_;
+        warmHoldElapsedMs_  = 0.0f;
+        // Reset drift phase so drift starts from anchor with zero displacement
+        driftTimeS_         = 0.0f;
+        state_              = State::WarmHold;
+    }
+
+    void setDriftEnabled (bool on) { driftEnabled_ = on; }
+    bool isDriftEnabled()  const   { return driftEnabled_; }
+
+    /** Spring to centre (0.5, 0.5). */
+    void snapHome()
+    {
+        springTo (0.5f, 0.5f);
+    }
+
+    float getDisplayX()  const noexcept { return displayX_; }
+    float getDisplayY()  const noexcept { return displayY_; }
+
+    bool isTouching() const noexcept
+    {
+        return state_ == State::Springing || state_ == State::Touching;
+    }
+
+    //==========================================================================
+    // Component overrides
+    //==========================================================================
+
+    void paint (juce::Graphics& g) override
+    {
+        const auto bounds = getLocalBounds().toFloat();
+
+        // 1. Translucent oval lens fill — accent at 15% opacity
+        g.setColour (accentColour_.withAlpha (0.15f));
+        g.fillEllipse (bounds);
+
+        // 2. Border — accent at full opacity, 1.5px stroke
+        g.setColour (accentColour_);
+        g.drawEllipse (bounds.reduced (0.75f), 1.5f);
+
+        // 3. Inner glow — accent at 40% opacity, slightly inset ellipse
+        g.setColour (accentColour_.withAlpha (0.40f));
+        g.drawEllipse (bounds.reduced (4.0f), 1.0f);
+
+        // 4. Center pip — 6px filled circle
+        const float cx = bounds.getCentreX();
+        const float cy = bounds.getCentreY();
+        g.setColour (accentColour_);
+        g.fillEllipse (cx - kPipDiameter * 0.5f,
+                       cy - kPipDiameter * 0.5f,
+                       kPipDiameter,
+                       kPipDiameter);
+
+        // 5. Interior text — Georgia italic 10px, accent at 85% opacity
+        //    Positioned below centre
+        g.setColour (accentColour_.withAlpha (0.85f));
+        g.setFont (juce::Font ("Georgia", 10.0f, juce::Font::italic));
+        const float textY = cy + kPipDiameter * 0.5f + 1.0f;
+        g.drawText (displayText_,
+                    juce::Rectangle<float> (bounds.getX(),
+                                            textY,
+                                            bounds.getWidth(),
+                                            12.0f),
+                    juce::Justification::centred,
+                    false);
+    }
+
+private:
+    //==========================================================================
+    // Timer callback — 60Hz state machine
+    //==========================================================================
+    void timerCallback() override
+    {
+        constexpr float kDtMs = 1000.0f / 60.0f;  // ~16.67 ms per tick
+
+        switch (state_)
+        {
+            case State::Springing:
+            {
+                springElapsedMs_ += kDtMs;
+                const float t = juce::jlimit (0.0f, 1.0f,
+                                              springElapsedMs_ / kSpringMs);
+                // Ease-out: 1 - (1-t)^2
+                const float ease = 1.0f - (1.0f - t) * (1.0f - t);
+                displayX_ = springStartX_ + (springTargetX_ - springStartX_) * ease;
+                displayY_ = springStartY_ + (springTargetY_ - springStartY_) * ease;
+
+                if (springElapsedMs_ >= kSpringMs)
+                {
+                    displayX_ = springTargetX_;
+                    displayY_ = springTargetY_;
+                    state_    = State::Touching;
+                }
+                updateBounds();
+                repaint();
+                break;
+            }
+
+            case State::Touching:
+                // Position is updated synchronously via moveTo(); nothing to do here.
+                break;
+
+            case State::WarmHold:
+            {
+                warmHoldElapsedMs_ += kDtMs;
+                if (warmHoldElapsedMs_ >= kWarmHoldMs)
+                {
+                    // Transition to drift: anchor is current displayX_/displayY_
+                    driftAnchorX_ = displayX_;
+                    driftAnchorY_ = displayY_;
+                    driftTimeS_   = 0.0f;
+                    state_        = State::Lissajous;
+                }
+                break;
+            }
+
+            case State::Lissajous:
+            {
+                if (! driftEnabled_)
+                    break;
+
+                driftTimeS_ += kDtMs * 0.001f;  // convert ms → seconds
+
+                // Compute Lissajous displacement as fraction of parent size
+                const float driftX = kDriftAmp *
+                    std::sin (juce::MathConstants<float>::twoPi * kDriftFreqX * driftTimeS_);
+                const float driftY = kDriftAmp *
+                    std::sin (juce::MathConstants<float>::twoPi * kDriftFreqY * driftTimeS_
+                               + kDriftPhase);
+
+                displayX_ = driftAnchorX_ + driftX;
+                displayY_ = driftAnchorY_ + driftY;
+
+                // Clamp so planchette stays fully on screen
+                displayX_ = juce::jlimit (0.0f, 1.0f, displayX_);
+                displayY_ = juce::jlimit (0.0f, 1.0f, displayY_);
+
+                updateBounds();
+                repaint();
+                break;
+            }
+        }
+    }
+
+    //==========================================================================
+    // Position the planchette within its parent using normalised coords.
+    //   px = displayX * parentW - kWidth/2
+    //   py = (1 - displayY) * parentH - kHeight/2   (Y-flip: 0=bottom, 1=top)
+    //==========================================================================
+    void updateBounds()
+    {
+        if (auto* parent = getParentComponent())
+        {
+            const float pw = static_cast<float> (parent->getWidth());
+            const float ph = static_cast<float> (parent->getHeight());
+
+            const int px = juce::roundToInt (displayX_ * pw - kWidth  * 0.5f);
+            const int py = juce::roundToInt ((1.0f - displayY_) * ph - kHeight * 0.5f);
+
+            setBounds (px, py, kWidth, kHeight);
+        }
+    }
+
+    //==========================================================================
+    // State
+    //==========================================================================
+    juce::Colour  accentColour_;
+    float         displayX_;
+    float         displayY_;
+
+    // Drift anchor — centre of Lissajous figure
+    float         driftAnchorX_;
+    float         driftAnchorY_;
+
+    // Spring animation
+    float         springStartX_;
+    float         springStartY_;
+    float         springTargetX_;
+    float         springTargetY_;
+    float         springElapsedMs_;
+
+    // Warm hold
+    float         warmHoldElapsedMs_;
+
+    // Drift time accumulator (seconds)
+    float         driftTimeS_;
+
+    State         state_;
+    bool          driftEnabled_;
+    juce::String  displayText_;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Planchette)
+};
 
 //==============================================================================
 class XOuijaPanel : public juce::Component
@@ -67,6 +376,11 @@ public:
     {
         generateNoiseTexture();
         setOpaque (false);
+
+        // B042: add the planchette as a child — it manages its own bounds
+        addAndMakeVisible (planchette_);
+        planchette_.setAccentColour (accentColour_);
+        updatePlanchetteText();
     }
 
     ~XOuijaPanel() override = default;
@@ -111,6 +425,7 @@ public:
     void setAccentColour (juce::Colour c)
     {
         accentColour_ = c;
+        planchette_.setAccentColour (c);
         repaint();
     }
 
@@ -143,8 +458,8 @@ public:
 
         harmonicSurfaceBounds_ = b.withTrimmedBottom (reservedBottom);
 
-        // Future tasks will call setBounds() on child components here.
-        // (No child components exist in Task 4.)
+        // Planchette manages its own setBounds() inside timerCallback via
+        // updateBounds(). No explicit positioning needed here.
     }
 
     void paint (juce::Graphics& g) override
@@ -189,17 +504,34 @@ public:
     void mouseDown (const juce::MouseEvent& e) override
     {
         touching_ = true;
-        updateFromMouse (e);
+        auto [nx, ny] = mouseToNormalized (e);
+        circleX_    = nx;
+        influenceY_ = ny;
+
+        planchette_.springTo (nx, ny);
+        updatePlanchetteText();
+
+        repaint();
+        fireCallbacks();
     }
 
     void mouseDrag (const juce::MouseEvent& e) override
     {
-        updateFromMouse (e);
+        auto [nx, ny] = mouseToNormalized (e);
+        circleX_    = nx;
+        influenceY_ = ny;
+
+        planchette_.moveTo (nx, ny);
+        updatePlanchetteText();
+
+        repaint();
+        fireCallbacks();
     }
 
     void mouseUp (const juce::MouseEvent& /*e*/) override
     {
         touching_ = false;
+        planchette_.release();
     }
 
 private:
@@ -213,6 +545,28 @@ private:
 
     juce::Image  noiseImage_;
     juce::Rectangle<int> harmonicSurfaceBounds_;
+
+    // B042 — Planchette child component
+    Planchette   planchette_;
+
+    //==========================================================================
+    // Note names for planchette display text (12-entry, indexed by semitone)
+    //==========================================================================
+    static constexpr const char* kDisplayNoteNames[12] =
+    {
+        "C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"
+    };
+
+    //==========================================================================
+    // Helper: format "Key · Pct%" and push to planchette
+    //==========================================================================
+    void updatePlanchetteText()
+    {
+        const int key = HarmonicField::positionToKey (circleX_);
+        const int pct = juce::roundToInt (influenceY_ * 100.0f);
+        const juce::String noteName (kDisplayNoteNames[key]);
+        planchette_.setDisplayText (noteName + " \xc2\xb7 " + juce::String (pct) + "%");
+    }
 
     //==========================================================================
     // Noise texture generation (deterministic, seed 42)
@@ -361,16 +715,10 @@ private:
     }
 
     //==========================================================================
-    // Update state from mouse and fire callbacks
+    // Fire onPositionChanged and onCCOutput callbacks
     //==========================================================================
-    void updateFromMouse (const juce::MouseEvent& e)
+    void fireCallbacks()
     {
-        auto [nx, ny] = mouseToNormalized (e);
-        circleX_    = nx;
-        influenceY_ = ny;
-
-        repaint();
-
         if (onPositionChanged)
             onPositionChanged (circleX_, influenceY_);
 
