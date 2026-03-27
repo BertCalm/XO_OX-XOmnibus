@@ -308,12 +308,12 @@ public:
 
         // ── MIDI Learn learn-complete notification ──────────────────────────
         // When a mapping is completed (audio thread captured a CC), bump the
-        // timer to 10Hz so visual feedback updates promptly.  Reverts to 1Hz
+        // timer to 30Hz so the pulse animation runs smoothly.  Reverts to 1Hz
         // after the first poll cycle that finds nothing pending.
         // CQ16: setLearnCompleteCallback fires from a non-message thread — marshal to message thread.
         proc.getMIDILearnManager().setLearnCompleteCallback(
             [this](const juce::String&, int) {
-                juce::MessageManager::callAsync([this] { startTimerHz(10); });
+                juce::MessageManager::callAsync([this] { startTimerHz(30); });
             });
 
         // ── DepthZoneDial wiring ──────────────────────────────────────────────
@@ -956,12 +956,12 @@ private:
             auto& mlm = processor.getMIDILearnManager();
             mlm.checkPendingLearn();
 
-            // While a learn is active, keep the timer running fast (10Hz) so the
-            // amber-pulse animation refreshes.  When idle, revert to 1Hz to avoid
-            // wasting cycles.
+            // While a learn is active, keep the timer running fast (30Hz) so the
+            // amber-pulse animation (2Hz sin oscillation rendered at 30fps) is
+            // visually smooth.  When idle, revert to 1Hz to avoid wasting cycles.
             if (mlm.isLearning())
             {
-                startTimerHz(10);
+                startTimerHz(30);
                 repaint(); // pulse the header badge + listening knob ring
             }
             else

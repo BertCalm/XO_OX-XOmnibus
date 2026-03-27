@@ -180,6 +180,32 @@ public:
             // Engine chips row
             paintEngineChips(g, kHeaderH + 42);
         }
+
+        // ── Export button gold glow — painted behind the child TextButton ─────
+        // Soft concentric ellipses simulate a blurred halo at 30% opacity total.
+        {
+            const int w    = getWidth();
+            const int btnY = kHeaderH + kKitInfoH + kFormatH + 10;
+            const int btnH = kExportBtnH - 20;
+
+            // Centre the glow on the button rectangle
+            float cx = w * 0.5f;
+            float cy = (float)btnY + btnH * 0.5f;
+            float rx = (w - 24) * 0.5f;  // matches exportBtn width / 2
+            float ry = btnH * 0.5f;
+
+            // Three concentric passes: outer (largest, most transparent) → inner
+            // Combined they approximate a soft Gaussian blur at ~30% peak alpha.
+            const juce::Colour goldBase = juce::Colour(0xffE9C46A);
+            g.setColour(goldBase.withAlpha(0.08f));
+            g.fillEllipse(cx - rx * 1.6f, cy - ry * 2.2f, rx * 3.2f, ry * 4.4f);
+
+            g.setColour(goldBase.withAlpha(0.12f));
+            g.fillEllipse(cx - rx * 1.3f, cy - ry * 1.7f, rx * 2.6f, ry * 3.4f);
+
+            g.setColour(goldBase.withAlpha(0.10f));
+            g.fillEllipse(cx - rx * 1.0f, cy - ry * 1.2f, rx * 2.0f, ry * 2.4f);
+        }
     }
 
     void resized() override

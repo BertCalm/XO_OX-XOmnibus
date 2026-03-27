@@ -13,6 +13,32 @@ namespace xolokun {
 // xolokun::PresetBrowser.
 
 //==============================================================================
+// NavButtonLookAndFeel — Space Grotesk SemiBold (Bold) with 0.16em letter-spacing
+// for the prev/next preset navigation buttons.
+class NavButtonLookAndFeel : public juce::LookAndFeel_V4
+{
+public:
+    void drawButtonText(juce::Graphics& g, juce::TextButton& btn,
+                        bool /*isMouseOver*/, bool /*isButtonDown*/) override
+    {
+        // Space Grotesk Bold at the button's height (clamped to 11–13px range)
+        const float fontSize = juce::jlimit(11.0f, 13.0f, (float)btn.getHeight() * 0.55f);
+        auto f = GalleryFonts::display(fontSize);
+        // setExtraKerningFactor maps 1.0 → 100% extra gap per character;
+        // 0.16 ≈ 0.16em matches the CSS letter-spacing spec.
+        f = f.withExtraKerningFactor(0.16f);
+        g.setFont(f);
+        g.setColour(btn.findColour(btn.getToggleState()
+                        ? juce::TextButton::textColourOnId
+                        : juce::TextButton::textColourOffId)
+                       .withMultipliedAlpha(btn.isEnabled() ? 1.0f : 0.5f));
+        g.drawFittedText(btn.getButtonText(),
+                         btn.getLocalBounds(),
+                         juce::Justification::centred, 1, 1.0f);
+    }
+};
+
+//==============================================================================
 // PresetBrowserStrip — prev/next navigation + preset name display.
 // Lives in the editor header. Calls processor.applyPreset() on navigation.
 class PresetBrowserStrip : public juce::Component,
@@ -35,6 +61,10 @@ public:
         A11y::setup (prevBtn, "Previous Preset");
         A11y::setup (nextBtn, "Next Preset");
         A11y::setup (browseBtn, "Browse Presets", "Open preset browser by mood category");
+
+        // Apply Space Grotesk SemiBold + 0.16em letter-spacing to nav buttons
+        prevBtn.setLookAndFeel(&navLAF);
+        nextBtn.setLookAndFeel(&navLAF);
 
         for (auto* btn : {&prevBtn, &nextBtn, &browseBtn})
         {
@@ -82,6 +112,10 @@ public:
 
     ~PresetBrowserStrip() override
     {
+        // JUCE requires LookAndFeel to be cleared before the owning component
+        // is destroyed — prevents dangling pointer in the LAF dispatch chain.
+        prevBtn.setLookAndFeel(nullptr);
+        nextBtn.setLookAndFeel(nullptr);
         processor.getPresetManager().removeListener(this);
     }
 
@@ -157,6 +191,7 @@ private:
     }
 
     XOlokunProcessor& processor;
+    NavButtonLookAndFeel navLAF;   // Space Grotesk + 0.16em kerning for prev/next
     juce::TextButton prevBtn, nextBtn, browseBtn;
     juce::Label nameLabel;
     MacroSection* macroSection = nullptr;

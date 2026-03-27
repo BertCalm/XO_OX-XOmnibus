@@ -342,14 +342,19 @@ public:
                 else
                     collapsedSections.insert(run.sec);
 
-                // Recalculate layout and resize to new required height
-                // setSize triggers resized() automatically — no explicit resized() needed
+                // Seed the animated height interpolation — start from current
+                // displayed height and glide to the new target over ~220ms.
+                currentAnimHeight_ = (float)getHeight();
+                targetAnimHeight_  = (float)getRequiredHeight(getWidth());
+                animating_         = true;
+                startTimerHz(30); // fast repaint during animation
+
+                // Kick the layout immediately so knob off-screen positions are
+                // updated (collapsed knobs get –1000,–1000) even before animation ends.
+                setSize(getWidth(), (int)currentAnimHeight_);
                 if (parentViewport)
-                {
-                    setSize(getWidth(), getRequiredHeight(getWidth()));
-                    parentViewport->setViewPosition(
-                        0, juce::jmax(0, y - 10));
-                }
+                    parentViewport->setViewPosition(0, juce::jmax(0, y - 10));
+
                 repaint();
                 return;
             }
@@ -555,9 +560,41 @@ private:
         }
     }
 
-    // juce::Timer callback at 10 Hz — only updates when scroll position changes
+    // juce::Timer callback — runs at 10 Hz idle, 30 Hz during animation.
+    // Handles two duties:
+    //   1. Visibility-range checks for lazy knob creation/destruction.
+    //   2. Height interpolation for smooth section collapse/expand (~220ms).
     void timerCallback() override
     {
+        // ── Section collapse/expand animation ────────────────────────────────
+        // Linear interpolation toward targetAnimHeight_.  Step size derived from
+        // a fixed 220ms duration at 30 Hz (~7 frames).
+        if (animating_)
+        {
+            constexpr float kDurMs   = 220.0f;
+            constexpr float kFps     = 30.0f;
+            const float     step     = std::abs(targetAnimHeight_ - currentAnimHeight_)
+                                       / (kDurMs / (1000.0f / kFps));
+            if (step < 1.0f || std::abs(targetAnimHeight_ - currentAnimHeight_) < 1.0f)
+            {
+                // Animation complete — snap to target and drop back to idle rate
+                currentAnimHeight_ = targetAnimHeight_;
+                animating_         = false;
+                startTimerHz(10);
+            }
+            else
+            {
+                if (currentAnimHeight_ < targetAnimHeight_)
+                    currentAnimHeight_ = juce::jmin(currentAnimHeight_ + step, targetAnimHeight_);
+                else
+                    currentAnimHeight_ = juce::jmax(currentAnimHeight_ - step, targetAnimHeight_);
+            }
+
+            setSize(getWidth(), (int)currentAnimHeight_);
+            repaint();
+        }
+
+        // ── Viewport scroll visibility update ────────────────────────────────
         if (!parentViewport) return;
         int viewY = parentViewport->getViewArea().getY();
         if (viewY != lastViewY_)
@@ -602,6 +639,13 @@ private:
 
     // ── Dirty-flag for 10 Hz timer (FIX 11) ──────────────────────────────────
     int lastViewY_ = -1; // cached scroll position; -1 forces first update
+
+    // ── Section collapse/expand animation state ───────────────────────────────
+    // When a section header is clicked, currentAnimHeight_ glides to
+    // targetAnimHeight_ over ~220ms at 30 Hz.
+    float currentAnimHeight_ = 0.0f;
+    float targetAnimHeight_  = 0.0f;
+    bool  animating_         = false;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ParameterGrid)
 };
