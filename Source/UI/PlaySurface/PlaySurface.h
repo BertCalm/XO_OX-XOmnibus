@@ -6,6 +6,7 @@
 #include <cmath>
 #include <atomic>
 #include "KeysMode.h"
+#include "HarmonicField.h"
 
 namespace xolokun {
 
@@ -103,6 +104,15 @@ public:
     // Default: XO Gold.
     juce::Colour accentColour { 0xFFE9C46A };
     void setAccentColour(juce::Colour c) { accentColour = c; repaint(); }
+
+    // XOuija-reactive coloring state (Spec Section 8.2)
+    // Updated by the XOuija planchette via PlaySurface::setHarmonicField().
+    void setHarmonicField(int rootKey, int tension)
+    {
+        harmonicRootKey_ = rootKey % 12;
+        harmonicTension_ = std::clamp(tension, 0, 6);
+        repaint();
+    }
 
     //----------------------------------------------------------------------
     // Bank selection (A=0, B=1, C=2, D=3).
@@ -278,6 +288,10 @@ private:
     std::array<float, PS::kNumPads> padVelocity {};
     std::array<WarmMemoryEntry, 8> warmMemory {};
     int warmMemIdx = 0;
+
+    // XOuija harmonic field state (Spec Section 8.2)
+    int harmonicRootKey_ = 0;  // current key from XOuija (semitone 0-11)
+    int harmonicTension_ = 0;  // fifths distance from C for color temperature (0-6)
 
     int midiNoteForPad(int pad) const
     {
@@ -607,6 +621,39 @@ private:
                         float bw = padRect.getWidth();
                         g.setColour(xoGold);
                         g.fillRect(bx, by, bw, 2.0f);
+                    }
+                }
+
+                // XOuija-reactive coloring (Spec Section 8.2)
+                // Additive overlay drawn after base pad rendering; only in Pad mode.
+                if (mode == Mode::Pad)
+                {
+                    int midiNote = midiNoteForPad(pad);
+                    bool inKey  = HarmonicField::isInKey(midiNote, harmonicRootKey_);
+                    bool isRoot = HarmonicField::isRoot(midiNote, harmonicRootKey_);
+
+                    auto [tr, tg, tb] = HarmonicField::tensionColor(harmonicTension_);
+                    juce::Colour tensionColour = juce::Colour::fromFloatRGBA(tr, tg, tb, 1.0f);
+
+                    if (!inKey)
+                    {
+                        // Out-of-key: dim to 20% opacity overlay
+                        g.setColour(juce::Colours::black.withAlpha(0.80f));
+                        g.fillRoundedRectangle(padRect, 4.0f);
+                    }
+                    else
+                    {
+                        // In-key: glow with tension color
+                        g.setColour(tensionColour.withAlpha(0.15f));
+                        g.fillRoundedRectangle(padRect, 4.0f);
+                    }
+
+                    if (isRoot)
+                    {
+                        // Root note: XO Gold bottom border (4px)
+                        g.setColour(juce::Colour(0xffE9C46A));
+                        auto borderRect = padRect;
+                        g.fillRect(borderRect.removeFromBottom(4.0f));
                     }
                 }
 
