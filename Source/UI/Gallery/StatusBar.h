@@ -46,14 +46,19 @@ public:
             addAndMakeVisible(btn);
         };
 
-        // Colors are applied once in applyTheme() — matching what paint() expects:
-        // background = elevated (#242426), border = border(), text per button type.
+        // Trigger pads hidden from status bar — they belong on PlaySurface pop-out.
+        // Callbacks (onFire, onXoSend, onEchoCut, onPanic) remain wired for
+        // keyboard shortcuts (Z/X/C/V) and future PlaySurface integration.
         makePad(fireBtn,    "FIRE",     "Fire chord machine (Z)");
         makePad(xoSendBtn,  "XOSEND",  "Trigger coupling burst (X)");
         makePad(echoCutBtn, "ECHO CUT","Kill delay tails (C)");
         makePad(panicBtn,   "PANIC",   "All notes off / reset engines (V)");
 
-        // Buttons are now wired to processor methods — all enabled.
+        fireBtn.setVisible(false);
+        xoSendBtn.setVisible(false);
+        echoCutBtn.setVisible(false);
+        panicBtn.setVisible(false);
+
         fireBtn.setEnabled(true);
         xoSendBtn.setEnabled(true);
         echoCutBtn.setEnabled(true);
@@ -243,21 +248,8 @@ public:
 
     void resized() override
     {
-        // ── Left: trigger pads ────────────────────────────────────────────────
-        const int padW   = 52;
-        const int padH   = 26; // UX12: increased from 20 for better touch target size
-        const int padGap = 4;
-        const int padTop = (getHeight() - padH) / 2;
-
-        int x = 6;
-        auto placePad = [&](juce::TextButton& btn) {
-            btn.setBounds(x, padTop, padW, padH);
-            x += padW + padGap;
-        };
-        placePad(fireBtn);
-        placePad(xoSendBtn);
-        placePad(echoCutBtn);
-        placePad(panicBtn);
+        // ── Trigger pads hidden (belong on PlaySurface pop-out) ────────────────
+        // Buttons are off-screen; callbacks still fire via keyboard shortcuts.
 
         // ── Right: lock button ───────────────────────────────────────────────
         const int lockW   = 22;
@@ -265,12 +257,11 @@ public:
         const int lockPad = 6;
         lockBtn.setBounds(getWidth() - lockPad - lockW, (getHeight() - lockH) / 2, lockW, lockH);
 
-        // ── Centre: status labels ─────────────────────────────────────────────
-        // Slot dots are in paint(); labels fill the gap between pads and dots.
+        // ── Left: status labels (now start from left edge) ───────────────────
         const int dotDia      = 10;
         const int dotSpacing2 = 4;
         const int dotsWidth   = kNumSlots * dotDia + (kNumSlots - 1) * dotSpacing2;
-        int centreLeft  = x + 6;
+        int centreLeft  = 12; // left padding
         int centreRight = getWidth() - lockPad - lockW - lockPad - dotsWidth - lockPad;
 
         int centreW = centreRight - centreLeft;
