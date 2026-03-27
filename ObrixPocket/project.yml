@@ -1,0 +1,70 @@
+name: ObrixPocket
+options:
+  bundleIdPrefix: org.xo-ox
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    CLANG_CXX_LANGUAGE_STANDARD: c++17
+    CLANG_CXX_LIBRARY: libc++
+    GCC_PREPROCESSOR_DEFINITIONS:
+      - JUCE_IOS=1
+      - JUCE_MODULE_AVAILABLE_juce_audio_basics=1
+      - JUCE_MODULE_AVAILABLE_juce_audio_devices=1
+      - JUCE_MODULE_AVAILABLE_juce_audio_formats=1
+      - JUCE_MODULE_AVAILABLE_juce_audio_processors=1
+      - JUCE_MODULE_AVAILABLE_juce_audio_utils=1
+      - JUCE_MODULE_AVAILABLE_juce_core=1
+      - JUCE_MODULE_AVAILABLE_juce_data_structures=1
+      - JUCE_MODULE_AVAILABLE_juce_dsp=1
+      - JUCE_MODULE_AVAILABLE_juce_events=1
+      - JUCE_MODULE_AVAILABLE_juce_graphics=1
+      - JUCE_DISPLAY_SPLASH_SCREEN=0
+      - JUCE_USE_DARK_SPLASH_SCREEN=0
+      - JUCE_STANDALONE_APPLICATION=1
+      - JucePlugin_Build_Standalone=1
+    HEADER_SEARCH_PATHS:
+      - $(PROJECT_DIR)/../Libs/JUCE/modules
+      - $(PROJECT_DIR)/../Source
+      - $(PROJECT_DIR)/../Source/DSP
+      - $(PROJECT_DIR)/../Source/Engines
+      - $(PROJECT_DIR)/../Source/Engines/Obrix
+      - $(PROJECT_DIR)/../Source/Core
+    SWIFT_OBJC_BRIDGING_HEADER: Sources/Bridge/ObrixPocket-Bridging-Header.h
+    OTHER_LDFLAGS:
+      - -framework AVFoundation
+      - -framework AudioToolbox
+      - -framework CoreAudio
+      - -framework CoreMIDI
+      - -framework CoreMotion
+      - -framework CoreLocation
+      - -framework CoreBluetooth
+      - -framework CoreHaptics
+      - -framework SpriteKit
+      - -framework Metal
+      - -framework Accelerate
+
+targets:
+  ObrixPocket:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        INFOPLIST_FILE: Resources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: org.xo-ox.obrix-pocket
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 1
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"  # iPhone only
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: false
+    entitlements:
+      path: Resources/ObrixPocket.entitlements
