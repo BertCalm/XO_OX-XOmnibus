@@ -214,8 +214,10 @@ public:
             onPitchBend (bendFloat);
 
         // Convert to MIDI pitch wheel (0-16383, centre=8192)
-        int wheelValue = static_cast<int> (8192.0f + bendFloat * 8191.0f);
-        wheelValue     = juce::jlimit (0, 16383, wheelValue);
+        // QDD Fix 7: use 8192.0f as full-scale factor so:
+        //   bend=-1 → 8192-8192=0, bend=0 → 8192, bend=+1 → 16384→clamped 16383
+        int wheelValue = static_cast<int> (std::round (8192.0f + bendFloat * 8192.0f));
+        wheelValue     = std::clamp (wheelValue, 0, 16383);
 
         if (midiCollector != nullptr)
         {

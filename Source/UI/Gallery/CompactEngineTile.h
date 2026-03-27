@@ -170,6 +170,23 @@ public:
             }
         }
 
+        // ── Creature breath rate — wired to LFO1 rate param (QDD Fix 5) ────────
+        if (hasEngine)
+        {
+            auto& apvts2 = processor.getAPVTS();
+            juce::String prefix = frozenPrefixForEngine(engineId);
+            if (prefix.isNotEmpty())
+            {
+                juce::String sep = prefix.endsWithChar('_') ? "" : "_";
+                juce::String lfo1Id = prefix + sep + "lfo1Rate";
+                if (auto* lfo1Rate = apvts2.getRawParameterValue(lfo1Id))
+                {
+                    float rate = lfo1Rate->load();
+                    creatureState_.breathRate = std::clamp(rate * 0.5f, 0.1f, 4.0f);
+                }
+            }
+        }
+
         // ── Creature animation ─────────────────────────────────────────────────
         // Timer runs at 10 Hz → divisor = 10.
         creatureState_.breathPhase += creatureState_.breathRate

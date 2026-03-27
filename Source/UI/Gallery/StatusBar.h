@@ -228,6 +228,19 @@ public:
             }
         }
 
+        // ── Cockpit bypass indicator — small text badge left of slot dots ─────
+        {
+            juce::String badge = cockpitBypassed_ ? "COCKPIT: OFF" : "COCKPIT: ON";
+            juce::Colour badgeColour = cockpitBypassed_
+                ? juce::Colour(0xFFFF6B6B)          // red when bypassed (full bright)
+                : get(t3());                          // T3 gray when active (dimming on)
+            g.setColour(badgeColour);
+            g.setFont(GalleryFonts::value(8.0f));
+            const int badgeW = 68;
+            const int badgeX = dotsLeft - badgeW - 6;
+            g.drawText(badge, badgeX, 0, badgeW, getHeight(), juce::Justification::centredRight);
+        }
+
     }
 
     void resized() override
@@ -281,6 +294,16 @@ public:
     }
 
     bool isLocked() const noexcept { return lockBtn.getToggleState(); }
+
+    // setCockpitBypass() — show/hide a small COCKPIT: ON/OFF badge in paint().
+    // Called from XOlokunEditor::timerCallback() (and from the 'B' keypress handler
+    // via repaint trigger) so the indicator stays in sync.
+    void setCockpitBypass(bool bypassed)
+    {
+        if (cockpitBypassed_ == bypassed) return;
+        cockpitBypassed_ = bypassed;
+        repaint();
+    }
 
     // Re-apply theme colours when the LookAndFeel changes (avoids colour drift
     // and keeps setColour() calls out of paint() where they would trigger
@@ -370,6 +393,9 @@ private:
 
     // ── Performance lock toggle ──────────────────────────────────────────────
     juce::TextButton lockBtn;
+
+    // ── Cockpit bypass state ─────────────────────────────────────────────────
+    bool cockpitBypassed_ = false;
 
     // ── Keyboard shortcut listener ───────────────────────────────────────────
     ShortcutListener   shortcutListener { *this };

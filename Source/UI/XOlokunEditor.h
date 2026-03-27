@@ -447,6 +447,13 @@ public:
                 hidePlaySurface();
             return true;
         }
+        // 'B' toggles Dark Cockpit bypass (fully lit regardless of audio activity)
+        if (key == juce::KeyPress('b') || key == juce::KeyPress('B'))
+        {
+            cockpitBypass_ = !cockpitBypass_;
+            repaint();
+            return true;
+        }
         // Escape returns to overview (and also hides PlaySurface popup if open)
         if (key == juce::KeyPress::escapeKey)
         {
@@ -1089,11 +1096,13 @@ private:
         }
 
         // Dark Cockpit B041: compute UI opacity from note activity
+        // When cockpitBypass_ is true, hold at 1.0 (fully lit regardless of activity)
         {
             float activity = processor.getNoteActivity();
             // 5 levels: 0.15 (ghost) → 0.35 (tertiary) → 0.55 (secondary) → 0.80 (primary) → 1.0 (active)
             // Map activity 0-1 to opacity with a floor of 0.15 (never fully invisible)
-            cockpitOpacity_ = 0.15f + activity * 0.85f;
+            cockpitOpacity_ = cockpitBypass_ ? 1.0f : (0.15f + activity * 0.85f);
+            statusBar.setCockpitBypass(cockpitBypass_);
         }
     }
 
@@ -1194,6 +1203,9 @@ private:
     // Dark Cockpit B041: current UI opacity derived from note activity.
     // 0.15 (ghost, silent) → 1.0 (fully lit, maximum activity).
     float cockpitOpacity_ = 0.2f;
+    // When true, cockpit is bypassed — UI held at full opacity regardless of activity.
+    // Toggle with 'B' key. Shown as COCKPIT: OFF in status bar paint.
+    bool cockpitBypass_ = false;
 
     ColumnLayoutManager layout;
 

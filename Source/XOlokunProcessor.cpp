@@ -1820,7 +1820,7 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             }
             rms = std::sqrt(rms / (numSamples * std::max(1, buffer.getNumChannels())));
         }
-        // Smooth with ~100ms attack, ~500ms release (one-pole filter)
+        // Smooth with ~35ms attack, ~213ms release at 512 samples/48kHz (one-pole filter)
         float current = noteActivity_.load(std::memory_order_relaxed);
         float target = std::clamp(rms * 4.0f, 0.0f, 1.0f); // scale RMS to 0-1 range
         float coeff = (target > current) ? 0.3f : 0.05f; // fast attack, slow release
