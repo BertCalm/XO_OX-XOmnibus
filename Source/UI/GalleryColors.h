@@ -56,7 +56,7 @@ namespace GalleryColors {
         // Text hierarchy (4-level tonal scale)
         static constexpr uint32_t t1          = 0xFFF0EDE8;  // primary text (headings, active)
         static constexpr uint32_t t2          = 0xFF9E9B97;  // secondary (labels)
-        static constexpr uint32_t t3          = 0xFF7A7876;  // tertiary (disabled, muted) — WCAG AA ~4.5:1 on #0E0E10
+        static constexpr uint32_t t3          = 0xFF5E5C5A;  // tertiary (disabled, muted) — matches prototype --t3
         static constexpr uint32_t t4          = 0xFF3A3938;  // quaternary (very subtle)
 
         // Legacy accessor-mapped values

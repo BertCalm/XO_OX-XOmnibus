@@ -14,7 +14,7 @@ namespace xolokun {
 //   Column C (Browser/Inspector): 320pt
 //   Status Bar: 28pt
 //   PlaySurface: 220pt (when visible)
-//   FieldMap: 65pt (within Column B)
+//   FieldMap: 80pt (within Column B)
 //
 // At minimum 960x600:
 //   Columns scale proportionally: 240/440/280
@@ -33,7 +33,7 @@ struct ColumnLayoutManager
     static constexpr int kHeaderH          = 52;
     static constexpr int kStatusBarH       = 28;
     static constexpr int kPlaySurfaceH     = 220;
-    static constexpr int kFieldMapH        = 65;
+    static constexpr int kFieldMapH        = 80;
 
     // Default column widths at reference width (1100)
     static constexpr int kRefWidth         = 1100;
