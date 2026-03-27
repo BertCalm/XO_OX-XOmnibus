@@ -6,48 +6,35 @@
 #include "WaveformDisplay.h"
 #include "EnginePickerPopup.h"
 #include "CockpitHost.h"
-#include "CreatureRenderer.h"
 
 namespace xolokun
 {
 
 //==============================================================================
-// CreatureState — animation state for the procedural creature in each tile's
-// porthole zone. Advances in timerCallback() and drives paint(). Will be
-// replaced by pixel-art sprites (generated via /pixel-artist) in a future pass;
-// this struct is the drop-in scaffold those sprites will slot into.
+// CreatureState — retained as a scaffold for future pixel-art sprite animations.
+// Porthole and creature painting removed 2026-03-27. Member kept so that any
+// future re-introduction of animated sprites has a ready drop-in home.
 struct CreatureState
 {
-    float breathPhase     = 0.0f;  // 0–2π, advances each timer tick
-    float breathRate      = 0.5f;  // Hz — default 0.5 Hz (one breath / 2 s)
-    float pulseIntensity  = 0.0f;  // 0–1, smoothed toward voiceCount > 0
-    float couplingLean    = 0.0f;  // -1 to +1 — eye shifts toward coupled partner
+    float breathPhase     = 0.0f;  // 0–2π, reserved for future use
+    float breathRate      = 0.5f;  // Hz — reserved
+    float pulseIntensity  = 0.0f;  // 0–1, reserved
+    float couplingLean    = 0.0f;  // -1 to +1, reserved
 };
 
 //==============================================================================
 // CompactEngineTile — slim tile in the left Column A (260pt wide).
 //
-// Layout at 260pt width:
-//   [4pt margin][16pt toggle][8pt gap][porthole 30pt][8pt gap][name+bars+dots][auto][24pt voice dots][4pt margin]
+// Layout (top to bottom, inside 9/11/8/14 px padding):
+//   1. Left accent bar (3px wide, full tile height, flush x=0)
+//   2. Header row: slot number (12px wide, 9px mono, T3) | engine name (flex, 11px bold, accent) | power button (16×16)
+//   3. Mini macro knobs row: 4 arcs (SRC1/FILT/ENV/FX), ~20px wide each, 5px gap
+//   4. Mini waveform: 22px tall, fake sine polyline, accent color
+//   5. Footer row: mood dots (4×6px) left | FX indicator (3 dots + "FX" label) right
+//   6. CPU bar: 3px tall, full content width, accent at 0.55 alpha
 //
-//   Left section  (24pt): On/Off mute toggle (16×16pt, top-left, 4pt margin)
-//   Center section: porthole + engine name (top), mini waveform (32×16pt),
-//                   macro indicator bars (4×40×3pt), coupling dots (4×4pt)
-//   Right section (24pt): Voice activity dots (right edge)
-//
-// Per-tile enhancements added 2026-03-25:
-//   • Mute toggle — visual-only (16×16pt, top-left). No APVTS param yet; calls
-//     nothing on the processor. Active = accent-filled circle, Muted = gray
-//     circle with diagonal line, 40% opacity. Stored in isMuted member.
-//   • Macro indicator bars — 4 × (40×3pt) horizontal bars below engine name.
-//     Colors: M1=XO Gold #E9C46A, M2=Phosphor Green #00FF41,
-//             M3=Prism Violet #BF40FF, M4=Teal #00B4A0.
-//     Fill proportional to macro1–macro4 APVTS values (0–1). Updated in
-//     timerCallback() at 10Hz (same timer as voice count).
-//   • Coupling dots — up to 4 dots (4×4pt) in a row. Color per coupling
-//     category: XO Gold = modulation, Twilight Blue = audio-rate,
-//     Midnight Violet = KnotTopology. Count = active routes touching this slot.
-//     Updated in timerCallback().
+// Redesigned 2026-03-27: Removed porthole circle and creature renderer.
+// Power button replaces mute toggle visually (same underlying isMuted state).
 class CompactEngineTile : public juce::Component, public juce::SettableTooltipClient, private juce::Timer
 {
 public:
@@ -59,7 +46,9 @@ public:
         A11y::setup (*this, "Engine Slot " + juce::String (slotIndex + 1),
                      "Click to select engine, right-click for options");
         setExplicitFocusOrder (slotIndex + 1);
-        addAndMakeVisible(miniWave);
+        // miniWave is kept as a member for potential future use but hidden —
+        // waveform is now painted directly in paint() per the mockup spec.
+        addChildComponent(miniWave); // add but invisible
         macroValues.fill(0.0f);
 
         // P10 fix: cache parameter ID strings once in constructor to avoid
@@ -173,68 +162,13 @@ public:
                 needsRepaint = true;
             }
 
-            // ── Coupling lean — eye shift direction for creature animation ────
-            // Sum amount-weighted directions of active routes where this slot is
-            // the destination. Routes from lower-indexed slots pull left (negative),
-            // routes from higher-indexed slots pull right (positive).
-            float lean = 0.0f;
-            for (const auto& r : routes)
-            {
-                if (!r.active || r.amount < 0.001f) continue;
-                if (r.destSlot != slot) continue;
-                float direction = (r.sourceSlot < slot) ? -1.0f : 1.0f;
-                lean += direction * r.amount;
-            }
-            lean = std::clamp(lean, -1.0f, 1.0f);
-            if (std::abs(lean - creatureState_.couplingLean) > 0.001f)
-            {
-                creatureState_.couplingLean = lean;
-                needsRepaint = true;
-            }
-        }
-
-        // ── Creature breath rate — wired to LFO1 rate param (QDD Fix 5) ────────
-        if (hasEngine)
-        {
-            auto& apvts2 = processor.getAPVTS();
-            juce::String prefix = frozenPrefixForEngine(engineId);
-            if (prefix.isNotEmpty())
-            {
-                juce::String sep = prefix.endsWithChar('_') ? "" : "_";
-                juce::String lfo1Id = prefix + sep + "lfo1Rate";
-                if (auto* lfo1Rate = apvts2.getRawParameterValue(lfo1Id))
-                {
-                    float rate = lfo1Rate->load();
-                    creatureState_.breathRate = std::clamp(rate * 0.5f, 0.1f, 4.0f);
-                }
-            }
-        }
-
-        // ── Creature animation ─────────────────────────────────────────────────
-        // Timer runs at 10 Hz → divisor = 10.
-        const float prevBreathPhase = creatureState_.breathPhase;
-        creatureState_.breathPhase += creatureState_.breathRate
-                                      * 2.0f * juce::MathConstants<float>::pi / 10.0f;
-        if (creatureState_.breathPhase > juce::MathConstants<float>::twoPi)
-            creatureState_.breathPhase -= juce::MathConstants<float>::twoPi;
-
-        float targetPulse = (voiceCount > 0) ? 1.0f : 0.0f;
-        creatureState_.pulseIntensity += 0.1f * (targetPulse - creatureState_.pulseIntensity);
-
-        // UIX Fix 5: Only request repaint if breath scale changed by a visible amount.
-        // Avoids unconditional repaint every tick when the tile is idle.
-        {
-            float prevBreathScale = 1.0f + 0.1f * std::sin (prevBreathPhase);
-            float newBreathScale  = 1.0f + 0.1f * std::sin (creatureState_.breathPhase);
-            if (std::abs (newBreathScale - prevBreathScale) > 0.005f)
-                needsRepaint = true;
         }
 
         if (needsRepaint) repaint();
     }
 
-    // Ecological tile: porthole circle + accent strip + depth-zone gradient on select.
-    // Voice-reactive: porthole ring brightens and strip glows when voices are playing.
+    // Mockup-matched tile: accent bar + header row + macro knobs + waveform + footer + CPU bar.
+    // No porthole, no creature renderer. Power button replaces old mute toggle visually.
     void paint(juce::Graphics& g) override
     {
         // Dark Cockpit B041: active/sounding tiles stay fully lit.
@@ -254,23 +188,21 @@ public:
         }
 
         using namespace GalleryColors;
-        // P0-5: asymmetric padding — 9px top, 11px right, 8px bottom, 14px left
+        // Asymmetric padding: 9px top, 11px right, 8px bottom, 14px left
         auto content = getLocalBounds().toFloat();
         content.removeFromTop(9.0f);
         content.removeFromRight(11.0f);
         content.removeFromBottom(8.0f);
         content.removeFromLeft(14.0f);
-        // Keep b as a reduced rect for border / background (uses full local bounds)
+
         auto b = getLocalBounds().toFloat().reduced(1.0f, 0.0f);
         bool hovered = isMouseOver();
 
-        // ── Tile background ── prototype: rgba(255,255,255,0.04) active, transparent inactive
+        // ── Tile background ──────────────────────────────────────────────────
         if (isSelected && hasEngine)
         {
-            // Active tile: subtle accent tint + faint white fill for depth
-            g.setColour(juce::Colour(0x0AFFFFFF)); // rgba(255,255,255,0.04)
+            g.setColour(juce::Colour(0x0AFFFFFF));
             g.fillRoundedRectangle(b, 4.0f);
-            // Overlay a soft accent gradient
             juce::ColourGradient grad(accent.withAlpha(0.09f), b.getX(), b.getCentreY(),
                                       juce::Colours::transparentBlack,
                                       b.getRight(), b.getCentreY(), false);
@@ -279,13 +211,12 @@ public:
         }
         else if (hovered)
         {
-            g.setColour(juce::Colour(0x07FFFFFF)); // rgba(255,255,255,0.028) hover
+            g.setColour(juce::Colour(0x07FFFFFF));
             g.fillRoundedRectangle(b, 4.0f);
         }
-        // Empty/inactive: transparent background — tile sits on body bg #080809
 
-        // Bottom border — 1px rgba(255,255,255,0.07) layer separator
-        g.setColour(juce::Colour(0x12FFFFFF)); // rgba(255,255,255,0.07)
+        // Bottom border — 1px separator
+        g.setColour(juce::Colour(0x12FFFFFF));
         g.fillRect(b.getX(), b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
         if (isLoading)
@@ -297,255 +228,197 @@ public:
             return;
         }
 
-        // ── Mute toggle — placed inside content area (left side, after padding) ─
-        paintMuteToggle(g, content);
-
         if (hasEngine)
         {
-            // Voice density: smooth sqrt ramp 0 (silent) → 1 (full polyphony)
+            // Voice density for reactive alpha (accent bar, power button)
             const float kMaxVoices = 8.0f;
             float voiceDensity = (voiceCount > 0)
                 ? juce::jmin(1.0f, std::sqrt((float)voiceCount / kMaxVoices))
                 : 0.0f;
-
-            float fillAlpha  = 0.09f + voiceDensity * 0.19f;
-            float ringAlpha  = 0.38f + voiceDensity * 0.52f;
-            float ringStroke = 1.0f  + voiceDensity * 1.0f;
             float stripAlpha = 0.38f + voiceDensity * 0.50f;
 
-            // P0-6: left accent bar flush to absolute left edge (x=0), full tile height
-            float stripX = 0.0f;
-            float stripH = (float)getHeight();
-            float stripY = 0.0f;
-            g.setColour(accent.withAlpha(stripAlpha));
-            g.fillRoundedRectangle(stripX, stripY, 3.0f, stripH, 1.5f);
-
-            // Active glow behind accent bar (prototype: box-shadow 0 0 8px accent)
-            if (isSelected)
+            // ── 1. Left accent bar ─────────────────────────────────────────
+            // 3px wide, full tile height, flush x=0, rounded-right corners
             {
-                // Paint a soft blurred glow behind the strip using layered rects
-                for (int gx = 1; gx <= 6; ++gx)
+                float stripH = (float)getHeight();
+                g.setColour(accent.withAlpha(stripAlpha));
+                g.fillRoundedRectangle(0.0f, 0.0f, 3.0f, stripH, 1.5f);
+
+                // Active glow (box-shadow: 0 0 8px accent) when selected
+                if (isSelected)
                 {
-                    float glowAlpha = (0.12f / (float)gx) * (stripAlpha * 1.4f);
-                    g.setColour(accent.withAlpha(juce::jmin(glowAlpha, 0.18f)));
-                    g.fillRoundedRectangle(stripX, stripY - 1.0f,
-                                           3.0f + (float)(gx * 2), stripH + 2.0f, 2.0f);
+                    for (int gx = 1; gx <= 6; ++gx)
+                    {
+                        float glowAlpha = (0.12f / (float)gx) * (stripAlpha * 1.4f);
+                        g.setColour(accent.withAlpha(juce::jmin(glowAlpha, 0.18f)));
+                        g.fillRoundedRectangle(0.0f, -1.0f,
+                                               3.0f + (float)(gx * 2), stripH + 2.0f, 2.0f);
+                    }
                 }
             }
 
-            // ── Porthole circle — 8pt right of the strip ──────────────────
-            const float porW = 30.0f;
-            // Porthole positioned relative to content area (after 14px left padding)
-            // Strip is at x=0 (3px wide); porthole 8px right of strip within content
-            float porCx = content.getX() + 8.0f + porW * 0.5f;
-            float porCy = content.getCentreY();
-            float porR  = porW * 0.5f;
-
-            g.setColour(accent.withAlpha(fillAlpha));
-            g.fillEllipse(porCx - porR, porCy - porR, porW, porW);
-
-            g.setColour(accent.withAlpha(ringAlpha));
-            g.drawEllipse(porCx - porR, porCy - porR, porW, porW, ringStroke);
-
-            // Glass highlight arc
+            // ── 2. Header row (inside content area) ───────────────────────
+            // Slot number | engine name (flex) | power button
+            // Row height: 14px, sits at content top
             {
-                float hR = porR - 2.0f;
-                juce::Path hl;
-                hl.addCentredArc(porCx, porCy, hR, hR, 0,
-                                  -juce::MathConstants<float>::pi * 1.15f,
-                                  -juce::MathConstants<float>::pi * 0.45f, true);
-                g.setColour(juce::Colours::white.withAlpha(0.20f));
-                g.strokePath(hl, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
-                                                       juce::PathStrokeType::rounded));
-            }
+                const float rowH   = 14.0f;
+                const float rowY   = content.getY();
+                const float slotW  = 12.0f;
+                const float pwrW   = 16.0f;
+                const float pwrH   = 16.0f;
 
-            // ── Creature animation — procedural sprite via CreatureRenderer ─────
-            // Scales and breathes inside the porthole. Each engine archetype draws
-            // a distinctive creature. Eye/lean shifts on couplingLean.
-            // Fix #23: outer if (hasEngine) block guarantees hasEngine here — no redundant check.
-            {
-                float breathScale = 1.0f + 0.1f * std::sin(creatureState_.breathPhase);
+                // Slot number — 9px mono, T3 color, 12px wide
+                g.setFont(GalleryFonts::value(9.0f));
+                g.setColour(GalleryColors::get(GalleryColors::t3()));
+                g.drawText(juce::String(slot + 1),
+                           (int)content.getX(), (int)rowY, (int)slotW, (int)rowH,
+                           juce::Justification::centredLeft);
 
-                // Portrait bounds: the porthole circle, inset slightly so creatures
-                // stay inside the ring border.
-                juce::Rectangle<float> portrait (porCx - porR + 2.0f,
-                                                  porCy - porR + 2.0f,
-                                                  porW - 4.0f,
-                                                  porW - 4.0f);
+                // Engine name — 14px Space Grotesk bold, uppercase, accent color
+                float nameX = content.getX() + slotW + 3.0f;
+                float nameW = content.getWidth() - slotW - 3.0f - pwrW - 3.0f;
+                g.setFont(GalleryFonts::display(14.0f));
+                g.setColour(accent);
+                g.drawText(engineId.toUpperCase(),
+                           (int)nameX, (int)rowY, (int)nameW, (int)rowH,
+                           juce::Justification::centredLeft);
 
-                // Clip to porthole before drawing so strokes never bleed outside
+                // Power button — 16×16 circle, right edge of content
+                // Active (unmuted): border + text in accent color
+                // Muted: border + text in T3 color
                 {
-                    juce::Graphics::ScopedSaveState clip (g);
-                    juce::Path clipCircle;
-                    clipCircle.addEllipse(porCx - porR, porCy - porR, porW, porW);
-                    g.reduceClipRegion(clipCircle);
-
-                    CreatureRenderer::drawCreature (g, portrait, engineId, accent,
-                                                   breathScale,
-                                                   creatureState_.couplingLean);
+                    float pwrX = content.getRight() - pwrW;
+                    float pwrY = rowY + (rowH - pwrH) * 0.5f;
+                    juce::Colour pwrColor = isMuted
+                        ? GalleryColors::get(GalleryColors::t3())
+                        : accent;
+                    g.setColour(pwrColor);
+                    g.drawEllipse(pwrX, pwrY, pwrW, pwrH, 1.0f);
+                    g.setFont(GalleryFonts::value(8.0f));
+                    g.drawText(isMuted ? "o" : "I",
+                               (int)pwrX, (int)pwrY, (int)pwrW, (int)pwrH,
+                               juce::Justification::centred);
                 }
             }
 
-            // Slot number inside porthole — 9px mono, T3 color
-            g.setFont(GalleryFonts::value(9.0f));
-            g.setColour(GalleryColors::get(GalleryColors::t3()).withAlpha(0.50f + voiceDensity * 0.37f)); // T3
-            g.drawText(juce::String(slot + 1),
-                       (int)(porCx - porR), (int)(porCy - porR),
-                       (int)porW, (int)porW, juce::Justification::centred);
+            // Top-down layout: each row stacks below the previous with 5px gaps.
+            // Waveform stretches to fill remaining space (most flexible element).
+            // Top-down layout: header → knobs → waveform (stretches to bottom).
+            // Mood dots, FX indicator, CPU bar removed — not functional yet, wasted space.
+            const float gap      = 4.0f;
+            const float knobArcDiam = 40.0f;
+            const float knobLblH    = 10.0f;
+            const float knobRowH    = knobArcDiam + knobLblH;
 
-            // ── Engine name — right of porthole ────────────────────────────
-            // Prototype: 11px, weight 600 (Space Grotesk SemiBold), uppercase,
-            //            engine accent color, letter-spacing ~1.5px
-            float nameX = porCx + porR + 7.0f;
-            // Reserve 24pt on right for voice dots; leave room for bars/dots below
-            float nameW = content.getRight() - 24.0f - nameX - 4.0f;
-            g.setFont(GalleryFonts::display(11.0f)); // Space Grotesk Bold for weight
-            // Always use accent color for engine name (prototype spec)
-            g.setColour(hasEngine ? accent : GalleryColors::get(GalleryColors::t4())); // T4 when empty
-            // Name draws in the upper portion of the content area
-            float nameH = content.getHeight() * 0.40f;
-            float nameY = content.getY();
-            g.drawText(engineId.toUpperCase(),
-                       (int)nameX, (int)nameY, (int)nameW, (int)nameH,
-                       juce::Justification::centredLeft);
+            float knobY   = content.getY() + 16.0f + gap;  // below header (16px for larger font)
+            float waveTop = knobY + knobRowH + gap;
+            float waveH   = content.getBottom() - gap - waveTop;  // stretches to bottom
+            float waveY   = waveTop;
+            if (waveH < 10.0f) waveH = 10.0f;
 
-            // ── Macro indicator bars ───────────────────────────────────────
-            paintMacroBars(g, nameX, nameY + nameH + 2.0f);
-
-            // ── P0-7: Mini knob arcs (SRC1 / FILT / ENV / FX) ─────────────
-            // Positioned above the mood/FX row, bottom-anchored layout.
-            // Knob arc top = content.getBottom() - 3 (CPU) - 3 (gap) - 6 (mood row)
-            //                - 3 (gap) - 8 (label) - 16 (arc) = content.getBottom() - 39
+            // ── 3. Mini macro knobs row ──────────────────────────────────
             {
-                const float arcDiam   = 16.0f;
+                const float arcDiam   = knobArcDiam;
                 const float arcRadius = arcDiam * 0.5f;
-                const float arcGap    = 4.0f;
+                const float arcGap    = 5.0f;
                 const float arcStep   = arcDiam + arcGap;
-                const float knobbArcTop = content.getBottom() - 39.0f;
 
-                // Start knobs at nameX, aligned left under macro bars
-                float kx = nameX;
+                // Left-align knobs (matches mockup)
+                float kx = content.getX();
 
                 static const char* kLabels[4] = { "SRC1", "FILT", "ENV", "FX" };
 
                 for (int k = 0; k < 4; ++k)
                 {
                     float cx = kx + arcRadius;
-                    float cy = knobbArcTop + arcRadius;
+                    float cy = knobY + arcRadius;
 
-                    // Arc sweep: 270° starting at ~135° (bottom-left), sweeping CW
-                    const float startAngle  = juce::MathConstants<float>::pi * 0.75f;
-                    const float sweepAngle  = juce::MathConstants<float>::pi * 1.5f; // 270°
-                    const float fillPos     = 0.5f; // placeholder — 50%
+                    // 270° arc sweep, starts at ~135° (bottom-left), sweeps CW
+                    const float startAngle = juce::MathConstants<float>::pi * 0.75f;
+                    const float sweepAngle = juce::MathConstants<float>::pi * 1.5f;
+                    const float fillPos    = 0.5f + (float)k * 0.067f; // stagger 50–70%
 
-                    // Track arc (T4 color, 1.2px stroke)
+                    // Track arc (T4 color, 2.0px)
                     juce::Path trackArc;
-                    trackArc.addCentredArc(cx, cy, arcRadius - 1.0f, arcRadius - 1.0f,
+                    trackArc.addCentredArc(cx, cy, arcRadius - 2.0f, arcRadius - 2.0f,
                                            0.0f, startAngle, startAngle + sweepAngle, true);
                     g.setColour(GalleryColors::get(GalleryColors::t4()));
-                    g.strokePath(trackArc, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
-                                                                 juce::PathStrokeType::rounded));
+                    g.strokePath(trackArc, juce::PathStrokeType(2.0f,
+                                 juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
-                    // Fill arc (accent color, 1.6px stroke, from start to fillPos)
+                    // Fill arc (accent, 2.5px)
                     juce::Path fillArc;
-                    fillArc.addCentredArc(cx, cy, arcRadius - 1.0f, arcRadius - 1.0f,
+                    fillArc.addCentredArc(cx, cy, arcRadius - 2.0f, arcRadius - 2.0f,
                                           0.0f, startAngle, startAngle + sweepAngle * fillPos, true);
                     g.setColour(accent.withAlpha(0.85f));
-                    g.strokePath(fillArc, juce::PathStrokeType(1.6f, juce::PathStrokeType::curved,
-                                                                juce::PathStrokeType::rounded));
+                    g.strokePath(fillArc, juce::PathStrokeType(2.5f,
+                                 juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
-                    // Label below arc (7px mono, T3 color)
-                    g.setFont(GalleryFonts::value(7.0f));
-                    g.setColour(GalleryColors::get(GalleryColors::t3()));
+                    // Label below arc (8px mono, T2 — lighter for legibility)
+                    g.setFont(GalleryFonts::value(8.0f));
+                    g.setColour(GalleryColors::get(GalleryColors::t2()));
                     g.drawText(kLabels[k],
-                               (int)(kx - 1.0f), (int)(knobbArcTop + arcDiam + 1.0f),
-                               (int)(arcDiam + 4.0f), 8,
+                               (int)(kx - 2.0f), (int)(knobY + arcDiam + 1.0f),
+                               (int)(arcDiam + 4.0f), (int)knobLblH,
                                juce::Justification::centred);
 
                     kx += arcStep;
                 }
             }
 
-            // ── P0-8: Mood dots + P0-10: FX indicator — same row ──────────
-            // Row sits 3px above CPU bar: y = content.getBottom() - 3 (cpu) - 3 (gap) - 6 (dots)
+            // ── 4. Mini waveform area ────────────────────────────────────
+            // 22px tall, fake sine polyline, accent at 0.7 alpha, 1.2px stroke
             {
-                const float moodDotDiam    = 6.0f;
-                const float moodDotSpacing = 9.0f; // center-to-center
-                const float moodRowY       = content.getBottom() - 12.0f;
+                float waveX = content.getX();
+                float waveW = content.getWidth();
 
-                // 4 mood dots starting at nameX
-                for (int d = 0; d < 4; ++d)
+                // Background
+                g.setColour(juce::Colour(0x06FFFFFF)); // rgba(255,255,255,0.025)
+                g.fillRoundedRectangle(waveX, waveY, waveW, waveH, 3.0f);
+
+                // Waveform polyline — ~20 points, sine-ish, ±8px amplitude
                 {
-                    float dotX = nameX + static_cast<float>(d) * moodDotSpacing;
-                    float alpha = (d < 2) ? 0.60f : 0.22f; // first 2 filled, last 2 dim
-                    g.setColour(accent.withAlpha(alpha));
-                    g.fillEllipse(dotX, moodRowY, moodDotDiam, moodDotDiam);
-                }
+                    const int   kPoints    = 20;
+                    const float amplitude  = 8.0f;
+                    const float cy         = waveY + waveH * 0.5f;
+                    const float xStep      = waveW / (float)(kPoints - 1);
+                    const float phaseOff   = (float)(slot * 37) * 0.1f; // per-slot visual variation
 
-                // P0-10: FX label + dot at right of mood dots
-                float fxLabelX = nameX + 4.0f * moodDotSpacing + 4.0f;
-                g.setFont(GalleryFonts::value(8.0f));
-                g.setColour(GalleryColors::get(GalleryColors::t4()));
-                g.drawText("FX", (int)fxLabelX, (int)(moodRowY - 1.0f), 14, 8,
-                           juce::Justification::centredLeft);
-
-                // FX active dot: 5px, xoGold at 0.7 alpha
-                float fxDotX = fxLabelX + 16.0f;
-                float fxDotY = moodRowY + (moodDotDiam - 5.0f) * 0.5f;
-                g.setColour(GalleryColors::get(GalleryColors::xoGold).withAlpha(0.70f));
-                g.fillEllipse(fxDotX, fxDotY, 5.0f, 5.0f);
-            }
-
-            // ── P0-9: Per-slot CPU bar — very bottom of content area ──────
-            {
-                float barX = content.getX();
-                float barW = content.getWidth();
-                float barY = content.getBottom() - 3.0f;
-                float barH = 3.0f;
-
-                // Track: rgba(255,255,255,0.06)
-                g.setColour(juce::Colour(0x0FFFFFFF));
-                g.fillRoundedRectangle(barX, barY, barW, barH, 2.0f);
-
-                // Fill: accent at 0.55 alpha, 30% width placeholder
-                float fillW = barW * 0.30f;
-                g.setColour(accent.withAlpha(0.55f));
-                g.fillRoundedRectangle(barX, barY, fillW, barH, 2.0f);
-            }
-
-            // ── Voice activity dots — right edge of content area ──────────
-            if (voiceCount > 0)
-            {
-                const float dotR = 2.5f, dotSpacing = 5.5f;
-                float dotX = content.getRight() - 7.0f;
-                float dotY = content.getCentreY() - dotR;
-                int maxDots = std::min(voiceCount, 4);
-                for (int d = 0; d < maxDots; ++d)
-                {
-                    float alpha = d == 0 ? 0.88f : juce::jmax(0.30f, 0.7f - d * 0.2f);
-                    g.setColour(accent.withAlpha(alpha));
-                    g.fillEllipse(dotX - static_cast<float>(d) * dotSpacing,
-                                  dotY, dotR * 2.0f, dotR * 2.0f);
+                    juce::Path wavePath;
+                    for (int i = 0; i < kPoints; ++i)
+                    {
+                        float px = waveX + (float)i * xStep;
+                        float t  = (float)i / (float)(kPoints - 1);
+                        // Sine-ish with a second harmonic for organic feel
+                        float py = cy - amplitude * (0.65f * std::sin(t * juce::MathConstants<float>::twoPi + phaseOff)
+                                                    + 0.35f * std::sin(t * juce::MathConstants<float>::twoPi * 2.0f + phaseOff * 1.3f));
+                        if (i == 0)
+                            wavePath.startNewSubPath(px, py);
+                        else
+                            wavePath.lineTo(px, py);
+                    }
+                    g.setColour(accent.withAlpha(0.7f));
+                    g.strokePath(wavePath, juce::PathStrokeType(1.2f,
+                                 juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
                 }
             }
+
+            // Footer (mood dots, FX indicator) and CPU bar removed —
+            // not wired to real data yet, reclaimed space for larger elements.
         }
         else
         {
-            // P0-11: Empty slot — 28×28 dashed rounded rect centered, "+" inside,
+            // Empty slot — 28×28 dashed rounded rect centered, "+" inside,
             // "Add engine" label below. T4 color throughout.
             juce::Colour t4col = GalleryColors::get(GalleryColors::t4());
 
-            // Center of the full tile for the "+" button
             float tileCx = (float)getWidth() * 0.5f;
             float tileCy = (float)getHeight() * 0.5f;
 
-            // 28×28 rounded rect (6px radius) centered in tile
             const float btnW = 28.0f, btnH = 28.0f, btnR = 6.0f;
             float btnX = tileCx - btnW * 0.5f;
-            float btnY = tileCy - btnH * 0.5f - 7.0f; // shift up slightly to leave room for label
+            float btnY = tileCy - btnH * 0.5f - 7.0f;
 
-            // Dashed border: build a dashed stroke around the rounded rect
-            // P8 cachedDashedPath covers the full tile outline — draw separate path here
             {
                 juce::Path btnRect;
                 btnRect.addRoundedRectangle(btnX, btnY, btnW, btnH, btnR);
@@ -557,13 +430,11 @@ public:
                 g.strokePath(dashedBtn, juce::PathStrokeType(1.0f));
             }
 
-            // "+" character centered inside the rounded rect (16px, T4)
             g.setFont(GalleryFonts::body(16.0f));
             g.setColour(t4col);
             g.drawText("+", (int)btnX, (int)btnY, (int)btnW, (int)btnH,
                        juce::Justification::centred);
 
-            // "Add engine" label below the button (10px Inter/body, T4)
             g.setFont(GalleryFonts::body(10.0f));
             g.setColour(t4col.withAlpha(0.70f));
             float labelY = btnY + btnH + 4.0f;
@@ -579,33 +450,10 @@ public:
 
     void resized() override
     {
-        // P0-5: asymmetric padding — 9px top, 11px right, 8px bottom, 14px left
-        auto content = getLocalBounds();
-        content.removeFromTop(9);
-        content.removeFromRight(11);
-        content.removeFromBottom(8);
-        content.removeFromLeft(14);
+        // miniWave is hidden (addChildComponent, not addAndMakeVisible) — waveform
+        // is drawn directly in paint(). No bounds to set.
 
-        // MiniWaveform: 40×16pt, placed above the new bottom elements.
-        // Bottom element stack (P0-7 through P0-9), from bottom up:
-        //   CPU bar    : 3px  at content.getBottom() - 3
-        //   gap        : 3px
-        //   Mood/FX row: 6px  at content.getBottom() - 12
-        //   gap        : 3px
-        //   Knob arcs  : 16px arc + 8px label = 24px, top at content.getBottom() - 39
-        //   gap        : 3px
-        //   Waveform   : 16px at content.getBottom() - 58
-        //
-        // Porthole center is at content.getX() + 8 + 15 = content.getX() + 23.
-        // Porthole right edge is at content.getX() + 23 + 15 = content.getX() + 38.
-        int contentLeft = content.getX() + 38 + 7; // 7px gap after porthole right edge
-        int waveW = 40, waveH = 16;
-        int waveX = contentLeft;
-        int waveY = content.getBottom() - 58;
-        miniWave.setBounds(waveX, waveY, waveW, waveH);
-
-        // P8 fix: pre-compute the dashed border path for empty slots (tile outline)
-        // paint() can blit it cheaply without calling createDashedStroke every frame.
+        // Pre-compute the dashed border path for empty slots — blit cheaply in paint().
         {
             auto bf = getLocalBounds().toFloat().reduced(1.0f, 0.0f);
             const float dashLen = 6.0f, gap = 4.0f, radius = 4.0f;
@@ -751,51 +599,17 @@ public:
     void setSelected(bool sel) { isSelected = sel; repaint(); }
 
 private:
-    // ── Mute toggle geometry ─────────────────────────────────────────────────
-    // Hit area: 24×24pt, centered on the 16×16pt paint circle.
-    // Paint circle: 16×16pt, centered within the content area (after asymmetric padding).
-    // P0-5: content starts at x=14, y=9, so toggle cx = 14 + 4 + 8 = 26.
+    // ── Power button hit area ────────────────────────────────────────────────
+    // 16×16 button, top-right of content area (right edge = getWidth()-11, top = 9).
+    // Hit area extended to 24×24 for touch comfort.
     juce::Rectangle<int> getMuteToggleBounds() const
     {
-        // content.getX() = 14, toggle center x = 14 + 4 + 8 = 26
-        // content centre y = getHeight()/2 (roughly — ignore top/bottom asymmetry for hit test)
-        int cx = 14 + 4 + 8;
-        int cy = getHeight() / 2;
-        return { cx - 12, cy - 12, 24, 24 };
-    }
-
-    void paintMuteToggle(juce::Graphics& g, juce::Rectangle<float> contentBounds) const
-    {
-        // Paint a 16×16pt circle at left side of content area.
-        // Center: x = contentBounds.getX()+4+8, y = contentBounds.getCentreY()
-        float cx = contentBounds.getX() + 4.0f + 8.0f;
-        float cy = contentBounds.getCentreY();
-        float tw = 16.0f, th = 16.0f;
-        float tx = cx - 8.0f;
-        float ty = cy - 8.0f;
-
-        if (!hasEngine)
-            return; // no toggle on empty slot
-
-        if (!isMuted)
-        {
-            // Active: accent-filled circle, 100% opacity
-            g.setColour(accent);
-            g.fillEllipse(tx, ty, tw, th);
-            // Thin white ring inside for depth
-            g.setColour(juce::Colours::white.withAlpha(0.30f));
-            g.drawEllipse(tx + 1.5f, ty + 1.5f, tw - 3.0f, th - 3.0f, 1.0f);
-        }
-        else
-        {
-            // Muted: gray filled circle with diagonal line, 40% opacity
-            g.setColour(juce::Colour(0xFF888888).withAlpha(0.40f));
-            g.fillEllipse(tx, ty, tw, th);
-            g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.55f));
-            // Diagonal line from top-right to bottom-left (mute convention)
-            g.drawLine(tx + tw * 0.75f, ty + th * 0.15f,
-                       tx + tw * 0.25f, ty + th * 0.85f, 1.5f);
-        }
+        // content right = getWidth() - 11; power button right-aligned there
+        // content top = 9; header row height = 14; button centered in row
+        int pwrRight = getWidth() - 11;
+        int pwrX     = pwrRight - 16;
+        int rowCy    = 9 + 7; // content top + half header row
+        return { pwrX - 4, rowCy - 12, 24, 24 };
     }
 
     // ── Macro indicator bars ─────────────────────────────────────────────────
