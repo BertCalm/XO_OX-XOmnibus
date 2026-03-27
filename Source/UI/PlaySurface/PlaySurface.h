@@ -17,6 +17,10 @@
 namespace xolokun { class XOlokunProcessor; }
 #include "../../XOlokunProcessor.h"
 
+#include "HarmonicField.h"
+#include "GestureTrailBuffer.h"
+#include "XOuijaPanel.h"
+
 namespace xolokun {
 
 //==============================================================================

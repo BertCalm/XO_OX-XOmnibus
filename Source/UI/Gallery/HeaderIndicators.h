@@ -64,14 +64,6 @@ public:
 
         auto bounds = getLocalBounds().toFloat();
 
-        // ── Background pill ──────────────────────────────────────────────────
-        g.setColour(get(slotBg()).withAlpha(0.85f));
-        g.fillRoundedRectangle(bounds, 3.0f);
-
-        // Subtle border
-        g.setColour(border());
-        g.drawRoundedRectangle(bounds.reduced(0.5f), 3.0f, 1.0f);
-
         // ── Text color based on load ─────────────────────────────────────────
         juce::Colour textCol;
         if (cpuPct < 30.0f)
@@ -85,7 +77,7 @@ public:
         // One decimal place for readability at 10pt; no flicker at ~1Hz update rate.
         juce::String text = "CPU: " + juce::String(cpuPct, 1) + "%";
 
-        g.setFont(GalleryFonts::value(10.0f));
+        g.setFont(GalleryFonts::value(9.0f));
         g.setColour(textCol);
         g.drawText(text, bounds.reduced(4.0f, 0.0f),
                    juce::Justification::centred, false);

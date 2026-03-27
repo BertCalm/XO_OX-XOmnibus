@@ -458,6 +458,7 @@ private:
 
         auto& slot    = paramSlots[idx];
         auto& apvts   = proc.getAPVTS();
+        // L-NEW-03: O(n) APVTS lookup per knob creation. Cache param pointers at init time.
         auto* rp      = dynamic_cast<juce::RangedAudioParameter*>(
                             apvts.getParameter(slot.pid));
         if (!rp) return; // should never happen
@@ -507,7 +508,7 @@ private:
             auto [cx, cy] = knobBounds[idx];
             const int knobX = cx + (kCellW - kKnobSize) / 2;
             lk->knob->setBounds(knobX, cy + 2, kKnobSize, kKnobSize);
-            lk->label->setBounds(cx, cy + kKnobSize + 4, kCellW, 12);
+            lk->label->setBounds(cx, cy + kKnobSize + 3, kCellW, 12);
         }
 
         liveKnobs[idx] = std::move(lk);
@@ -554,20 +555,26 @@ private:
         }
     }
 
-    // juce::Timer callback at 10 Hz
+    // juce::Timer callback at 10 Hz — only updates when scroll position changes
     void timerCallback() override
     {
-        updateVisibleAttachments();
+        if (!parentViewport) return;
+        int viewY = parentViewport->getViewArea().getY();
+        if (viewY != lastViewY_)
+        {
+            lastViewY_ = viewY;
+            updateVisibleAttachments();
+        }
     }
 
     // ── Layout constants ──────────────────────────────────────────────────────
     // Prototype: 32px knobs in ~58px groups, flex-wrap with 10px/14px gap.
     // 60×52 cells fit ~8 cols in Column B's ~490px — matching the dense grid.
-    static constexpr int kCellW           = 60;
+    static constexpr int kCellW           = 56;
     static constexpr int kCellH           = 52;
     static constexpr int kKnobSize        = 32;
     static constexpr int kPad             = 8;
-    static constexpr int kHeaderRowH      = 22;  // height of each section header strip
+    static constexpr int kHeaderRowH      = 28;  // height of each section header strip
     static constexpr int kVisibilityMargin = 100; // px preload margin for smooth scrolling
 
     // ── Collapse state — which sections are currently collapsed ──────────────
@@ -592,6 +599,9 @@ private:
 
     // ── Viewport reference ────────────────────────────────────────────────────
     juce::Viewport* parentViewport = nullptr;
+
+    // ── Dirty-flag for 10 Hz timer (FIX 11) ──────────────────────────────────
+    int lastViewY_ = -1; // cached scroll position; -1 forces first update
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ParameterGrid)
 };

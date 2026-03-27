@@ -11,7 +11,8 @@ namespace xolokun {
 // Provides mood tabs + name search + scrollable list.
 // Calls onPresetSelected callback when the user clicks a preset row.
 class PresetBrowserPanel : public juce::Component,
-                           public juce::ListBoxModel
+                           public juce::ListBoxModel,
+                           public juce::Timer
 {
 public:
     PresetBrowserPanel(const PresetManager& pm,
@@ -20,7 +21,7 @@ public:
     {
         // Search field
         searchField.setTextToShowWhenEmpty("Search presets...",
-                                           GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
+                                           GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
         // Prototype: elevated bg, border, T1 text
         searchField.setColour(juce::TextEditor::backgroundColourId,
                               GalleryColors::get(GalleryColors::elevated()));
@@ -29,7 +30,7 @@ public:
         searchField.setColour(juce::TextEditor::textColourId,
                               GalleryColors::get(GalleryColors::t1()));
         searchField.setFont(GalleryFonts::body(11.0f));
-        searchField.onTextChange = [this] { updateFilter(); };
+        searchField.onTextChange = [this] { startTimer(150); };
         addAndMakeVisible(searchField);
 
         // Mood filter buttons (ALL = index 0, then 15 moods)
@@ -151,22 +152,32 @@ public:
         }
     }
 
+    juce::String getNameForRow(int row) override
+    {
+        if (row < 0 || row >= (int)filtered.size()) return {};
+        const auto& p = filtered[(size_t)row];
+        return p.name + (p.mood.isEmpty() ? "" : ", " + p.mood);
+    }
+
     void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
     {
-        selectRow(row);
+        // Single-click now loads; double-click is a no-op (selectRow already called).
+        (void)row;
     }
 
     void listBoxItemClicked(int row, const juce::MouseEvent&) override
     {
         listBox.selectRow(row);
+        selectRow(row);
     }
 
-    void selectedRowsChanged(int) override
+    void returnKeyPressed(int lastRowSelected) override
     {
-        // UX03: single-click only highlights; double-click (listBoxItemDoubleClicked)
-        // is the sole path that calls selectRow() / onPresetSelected.
-        // Nothing to do here — row highlight is handled by the ListBox itself.
+        selectRow(lastRowSelected);
     }
+
+    void selectedRowsChanged(int) override {}
+
 
     void paint(juce::Graphics& g) override
     {
@@ -216,6 +227,15 @@ public:
 
         // Preset list
         listBox.setBounds(b);
+    }
+
+    // juce::Timer
+    void timerCallback() override
+    {
+        stopTimer();
+        juce::Component::SafePointer<PresetBrowserPanel> safe(this);
+        if (safe != nullptr)
+            safe->updateFilter();
     }
 
 private:

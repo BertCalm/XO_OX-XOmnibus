@@ -1335,22 +1335,9 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // exactly like host-generated MIDI events.
     playSurfaceMidiCollector.removeNextBlockOfMessages(midi, numSamples);
 
-    // Drain XOuija CC output queue — inject CC messages at sample 0 of the block.
+    // Drain XOuija CC output queue — inject CC messages at end of block.
     // This allows DAW automation lanes to capture XOuija planchette gestures.
-    {
-        size_t ccTail = ccQueueTail.load(std::memory_order_relaxed);
-        size_t ccHead = ccQueueHead.load(std::memory_order_acquire);
-        while (ccTail != ccHead)
-        {
-            const auto& ev = ccQueue[ccTail];
-            midi.addEvent(juce::MidiMessage::controllerEvent(
-                static_cast<int>(ev.channel) + 1, // 0-indexed → 1-indexed MIDI channel
-                static_cast<int>(ev.cc),
-                static_cast<int>(ev.value)), 0);
-            ccTail = (ccTail + 1) & (kCCQueueSize - 1);
-        }
-        ccQueueTail.store(ccTail, std::memory_order_release);
-    }
+    drainCCOutput(midi, numSamples);
 
     // Process MIDI learn CC → parameter routing (audio thread safe)
     midiLearnManager.processMidi(midi);
@@ -1818,6 +1805,9 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         const float  prevLoad = processingLoad.load(std::memory_order_relaxed);
         processingLoad.store(prevLoad * 0.9f + rawLoad * 0.1f, std::memory_order_relaxed);
     }
+
+    // Emit any pending CC output events from the XOuija UI (lock-free SPSC drain).
+    drainCCOutput(midi, numSamples);
 }
 
 void XOlokunProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)

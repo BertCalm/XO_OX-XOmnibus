@@ -41,6 +41,7 @@ public:
                            const juce::String& tooltip)
         {
             btn.setButtonText(label);
+            btn.setName(label);
             btn.setTooltip(tooltip);
             addAndMakeVisible(btn);
         };
@@ -77,7 +78,7 @@ public:
         makeLabel(cpuLabel,    "CPU: 0%");
 
         // ── Performance Lock icon ─────────────────────────────────────────────
-        lockBtn.setButtonText(juce::CharPointer_UTF8("\xf0\x9f\x94\x92")); // UTF-8 padlock
+        lockBtn.setButtonText("LK"); // plain ASCII — reliable cross-platform rendering
         lockBtn.setTooltip("Performance Lock — block parameter changes during performance");
         lockBtn.setClickingTogglesState(true);
         addAndMakeVisible(lockBtn);
@@ -102,27 +103,27 @@ public:
 
         // FIRE button style — accent tint (XO Gold)
         fireBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        fireBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        fireBtn.setColour(juce::TextButton::buttonOnColourId, get(xoGold).withAlpha(0.85f));
         fireBtn.setColour(juce::TextButton::textColourOffId,  get(xoGold));
-        fireBtn.setColour(juce::TextButton::textColourOnId,   get(xoGold));
+        fireBtn.setColour(juce::TextButton::textColourOnId,   get(surface()));
 
         // XOSEND button — T3 text default, T1 on active
         xoSendBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        xoSendBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        xoSendBtn.setColour(juce::TextButton::buttonOnColourId, get(t1()).withAlpha(0.25f));
         xoSendBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
         xoSendBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
 
         // ECHO CUT button — T3 text default, T1 on active
         echoCutBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        echoCutBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        echoCutBtn.setColour(juce::TextButton::buttonOnColourId, get(t1()).withAlpha(0.25f));
         echoCutBtn.setColour(juce::TextButton::textColourOffId,  get(t3()));
         echoCutBtn.setColour(juce::TextButton::textColourOnId,   get(t1()));
 
         // PANIC button — #FF6B6B red (B041: always 100% opacity, never-dim)
         panicBtn.setColour(juce::TextButton::buttonColourId,   get(elevated()));
-        panicBtn.setColour(juce::TextButton::buttonOnColourId, get(raised()));
+        panicBtn.setColour(juce::TextButton::buttonOnColourId, juce::Colour(0xFFFF6B6B).withAlpha(0.85f));
         panicBtn.setColour(juce::TextButton::textColourOffId,  juce::Colour(0xFFFF6B6B));
-        panicBtn.setColour(juce::TextButton::textColourOnId,   juce::Colour(0xFFFF6B6B));
+        panicBtn.setColour(juce::TextButton::textColourOnId,   juce::Colour(0xFFFFFFFF));
 
         // ── Status label colours ──────────────────────────────────────────────
         bpmLabel.setColour(juce::Label::textColourId,   get(t2())); // T2
@@ -286,6 +287,18 @@ public:
     // recursive repaint cascades).
     void lookAndFeelChanged() override { applyTheme(); }
 
+    ~StatusBar() override
+    {
+        // L-NEW-04: Remove the shortcut listener before this object is destroyed.
+        // Guards against UAF if the owning editor forgets to call removeKeyListener
+        // or if StatusBar is destroyed before the editor's destructor runs.
+        if (keyListenerOwner != nullptr)
+        {
+            keyListenerOwner->removeKeyListener(&shortcutListener);
+            keyListenerOwner = nullptr;
+        }
+    }
+
     //==========================================================================
     // Inner KeyListener — registered with the editor so Z/X/C/V fire anywhere
     // in the window without needing this component to have keyboard focus.
@@ -303,10 +316,11 @@ public:
         bool keyPressed(const juce::KeyPress& key,
                         juce::Component* /*originatingComponent*/) override
         {
-            // Don't fire triggers when a text input field has focus (KAI-P2-03)
-            if (auto* focused = juce::Component::getCurrentlyFocusedComponent())
-                if (dynamic_cast<juce::TextEditor*>(focused) != nullptr)
-                    return false;
+            // Don't fire triggers when a text input field or combo box has focus (KAI-P2-03)
+            auto* focused = juce::Component::getCurrentlyFocusedComponent();
+            if (dynamic_cast<juce::TextEditor*>(focused) != nullptr
+             || dynamic_cast<juce::ComboBox*>(focused) != nullptr)
+                return false;
 
             if (key == juce::KeyPress('z')) { if (bar.onFire)    bar.onFire();    return true; }
             if (key == juce::KeyPress('x')) { if (bar.onXoSend)  bar.onXoSend();  return true; }
@@ -320,7 +334,16 @@ public:
         StatusBar& bar;
     };
 
-    // Returns the KeyListener to register/remove with the editor.
+    // Register the shortcut listener with an editor component.
+    // StatusBar's destructor will automatically call removeKeyListener, preventing UAF.
+    void registerKeyListener(juce::Component* editorComponent)
+    {
+        jassert(keyListenerOwner == nullptr); // call once only
+        keyListenerOwner = editorComponent;
+        editorComponent->addKeyListener(&shortcutListener);
+    }
+
+    // Returns the KeyListener (for callers that manage registration themselves).
     juce::KeyListener* getKeyListener() { return &shortcutListener; }
 
 private:
@@ -349,7 +372,8 @@ private:
     juce::TextButton lockBtn;
 
     // ── Keyboard shortcut listener ───────────────────────────────────────────
-    ShortcutListener shortcutListener { *this };
+    ShortcutListener   shortcutListener { *this };
+    juce::Component*   keyListenerOwner { nullptr }; // set by registerKeyListener(); cleared in destructor (L-NEW-04)
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(StatusBar)
 };

@@ -362,7 +362,18 @@ public:
     }
 
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
-    void mouseExit(const juce::MouseEvent&)  override { repaint(); }
+    void mouseMove(const juce::MouseEvent& e) override
+    {
+        if (hasEngine && getMuteToggleBounds().contains(e.getPosition()))
+            setMouseCursor(juce::MouseCursor::PointingHandCursor);
+        else
+            setMouseCursor(juce::MouseCursor::NormalCursor);
+    }
+    void mouseExit(const juce::MouseEvent&) override
+    {
+        setMouseCursor(juce::MouseCursor::NormalCursor);
+        repaint();
+    }
     void focusGained (juce::Component::FocusChangeType) override { repaint(); }
     void focusLost   (juce::Component::FocusChangeType) override { repaint(); }
 
@@ -410,8 +421,20 @@ public:
         juce::PopupMenu moveMenu;
         for (int i = 0; i < 4; ++i)
         {
-            if (i != slot)
+            if (i == slot)
+                continue;
+            auto* targetEng = processor.getEngine(i);
+            if (targetEng != nullptr)
+            {
+                // Target slot is occupied — warn user inline via item label
+                juce::String occupantName = targetEng->getEngineId().toUpperCase();
+                moveMenu.addItem(200 + i,
+                    "Replace " + occupantName + " in Slot " + juce::String(i + 1));
+            }
+            else
+            {
                 moveMenu.addItem(200 + i, "Move to Slot " + juce::String(i + 1));
+            }
         }
         menu.addSubMenu("Move to Slot", moveMenu);
 
@@ -465,19 +488,26 @@ public:
 
 private:
     // ── Mute toggle geometry ─────────────────────────────────────────────────
-    // 16×16pt circle, 4pt from top-left of the tile bounds (after reduction).
+    // Hit area: 24×24pt, centered on the 16×16pt paint circle.
+    // Paint circle: 16×16pt, centered within the 24×24 hit rect.
     juce::Rectangle<int> getMuteToggleBounds() const
     {
         auto b = getLocalBounds().reduced(3, 2);
-        return { b.getX() + 4, b.getY() + (b.getHeight() - 16) / 2, 16, 16 };
+        // Center of the 16×16 paint circle: x = b.getX()+4+8, y = b.getCentreY()
+        int cx = b.getX() + 4 + 8;
+        int cy = b.getCentreY();
+        return { cx - 12, cy - 12, 24, 24 };
     }
 
     void paintMuteToggle(juce::Graphics& g, juce::Rectangle<float> tileBounds) const
     {
-        // Position: 4pt inset from tile left edge, vertically centred
-        float tx = tileBounds.getX() + 4.0f;
-        float ty = tileBounds.getCentreY() - 8.0f;
+        // Paint a 16×16pt circle centered within the 24×24 hit area.
+        // Hit area center: x = tileBounds.getX()+4+8, y = tileBounds.getCentreY()
+        float cx = tileBounds.getX() + 4.0f + 8.0f;
+        float cy = tileBounds.getCentreY();
         float tw = 16.0f, th = 16.0f;
+        float tx = cx - 8.0f;
+        float ty = cy - 8.0f;
 
         if (!hasEngine)
             return; // no toggle on empty slot

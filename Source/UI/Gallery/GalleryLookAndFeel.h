@@ -75,13 +75,15 @@ public:
         float cx     = bounds.getCentreX();
         float cy     = bounds.getCentreY();
 
+        // ── DPI scale factor — used for stroke widths throughout ───────────
+        const float dpiScale = juce::jmax(1.0f,
+            (float) juce::Desktop::getInstance().getDisplays()
+                .getDisplayForPoint(slider.getScreenBounds().getCentre())
+                ->scale);
+
         // ── 1. Knob body — radial gradient matching prototype ──────────────
-        // P4 fix: use static thread_local ColourGradient — the structure (4 stops,
-        // radial=true) never changes; only the positional parameters vary per knob.
-        // We rebuild only the gradient stops (colour values stay constant), avoiding
-        // the per-call heap allocation that juce::ColourGradient normally performs.
         {
-            static thread_local juce::ColourGradient grad;
+            juce::ColourGradient grad;
             grad = juce::ColourGradient(
                 juce::Colour(0xFF4A4A4E),
                 cx - radius * 0.24f,
@@ -107,14 +109,11 @@ public:
         // ── 4. Arc track — 1.4px, T3 (#5E5C5A) ────────────────────────────
         float arcRadius = radius - 3.0f;
         {
-            // P5 fix: static thread_local Path — clear and reuse instead of allocating
-            // a new Path object on every drawRotarySlider call.
-            static thread_local juce::Path trackArc;
-            trackArc.clear();
+            juce::Path trackArc;
             trackArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                                    rotaryStartAngle, rotaryEndAngle, true);
             g.setColour(juce::Colour(GalleryColors::t3()));
-            g.strokePath(trackArc, juce::PathStrokeType(1.4f, juce::PathStrokeType::curved,
+            g.strokePath(trackArc, juce::PathStrokeType(1.4f / dpiScale, juce::PathStrokeType::curved,
                                                          juce::PathStrokeType::rounded));
         }
 
@@ -122,9 +121,7 @@ public:
         float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
         if (sliderPos > 0.001f)
         {
-            // P5 fix: static thread_local Path — reuse across calls.
-            static thread_local juce::Path fillArc;
-            fillArc.clear();
+            juce::Path fillArc;
             fillArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                                   rotaryStartAngle, fillEnd, true);
 
@@ -132,29 +129,30 @@ public:
             if (fillColour.isTransparent()) fillColour = get(xoGold);
 
             g.setColour(fillColour);
-            g.strokePath(fillArc, juce::PathStrokeType(1.8f, juce::PathStrokeType::curved,
+            g.strokePath(fillArc, juce::PathStrokeType(1.8f / dpiScale, juce::PathStrokeType::curved,
                                                         juce::PathStrokeType::rounded));
 
             // ── 6. Indicator dot at arc endpoint ────────────────────────────
             // Screen coords: x = cx + r*cos(angle - pi/2), y = cy + r*sin(angle - pi/2)
             float dotX = cx + arcRadius * std::cos(fillEnd - juce::MathConstants<float>::halfPi);
             float dotY = cy + arcRadius * std::sin(fillEnd - juce::MathConstants<float>::halfPi);
+            float dotR = 1.8f / dpiScale;
             g.setColour(fillColour.withAlpha(0.9f));
-            g.fillEllipse(dotX - 1.8f, dotY - 1.8f, 3.6f, 3.6f);
+            g.fillEllipse(dotX - dotR, dotY - dotR, dotR * 2.0f, dotR * 2.0f);
         }
 
         // ── 7. Focus ring (WCAG 2.4.7) ────────────────────────────────────
         if (slider.hasKeyboardFocus(true))
         {
-            g.setColour(A11y::focusRingColour().withAlpha(0.6f));
+            g.setColour(A11y::focusRingColour().withAlpha(1.0f));
             g.drawEllipse(cx - radius - 2.0f, cy - radius - 2.0f,
-                          diameter + 4.0f, diameter + 4.0f, 1.5f);
+                          diameter + 4.0f, diameter + 4.0f, 2.0f / dpiScale);
         }
 
         // ── 8. Live value readout (during interaction) ─────────────────────
         // 32px knobs (diameter < 40) suppress in-knob readout — disc would be
         // only 14px wide with ~9.8px text, which clips. Tooltip handles it instead.
-        if (diameter >= 40.0f && (slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
+        if (diameter >= 28.0f && (slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
         {
             float discR = radius * 0.44f;
             juce::String valStr;
@@ -309,9 +307,17 @@ public:
         g.setColour(juce::Colour(elevated()));
         g.fillRoundedRectangle(bounds, 4.0f);
 
-        // Border — brighter when focused
-        g.setColour(box.hasKeyboardFocus(true) ? borderMd() : border());
-        g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.0f);
+        // Border — A11y focus ring when focused, standard border otherwise
+        if (box.hasKeyboardFocus(true))
+        {
+            g.setColour(A11y::focusRingColour());
+            g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 2.0f);
+        }
+        else
+        {
+            g.setColour(border());
+            g.drawRoundedRectangle(bounds.reduced(0.5f), 4.0f, 1.0f);
+        }
 
         // Dropdown arrow
         auto arrowZone = bounds.removeFromRight((float)height * 0.7f).reduced((float)height * 0.25f);

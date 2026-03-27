@@ -186,6 +186,13 @@ public:
     }
 
     //==========================================================================
+    // Engine accent color — used for active tab underline.
+    // Defaults to XO Gold; call setEngineAccent() when the loaded engine changes.
+    juce::Colour engineAccent { GalleryColors::get(GalleryColors::xoGold) };
+
+    void setEngineAccent(juce::Colour c) { engineAccent = c; repaint(); }
+
+    //==========================================================================
     Tab getActiveTab() const noexcept { return activeTab; }
 
     void selectTab(Tab t)
@@ -288,12 +295,14 @@ public:
                 // Active: T1, inactive: T3
                 g.setColour(juce::Colour(active ? GalleryColors::t1() : GalleryColors::t3()));
                 g.setFont(GalleryFonts::display(11.0f));
-                juce::String icon(tabLabels[i][0]);
+                // Use second character for PLAY ('L') to avoid collision with PRESET ('P')
+                juce::String icon(i == Play ? juce::String(tabLabels[i][1])
+                                            : juce::String(tabLabels[i][0]));
                 g.drawText(icon, 0, y, getWidth(), tabH, juce::Justification::centred);
                 if (active)
                 {
                     // Engine accent bar for active tab in collapsed mode
-                    g.setColour(get(xoGold));
+                    g.setColour(engineAccent);
                     g.fillRect(0, y, 2, tabH);
                 }
             }
@@ -312,12 +321,12 @@ public:
         g.setColour(border());
         g.drawHorizontalLine(kTabBarH - 1, 0.0f, static_cast<float>(getWidth()));
 
-        // ── Active tab accent underline — 2px engine accent (XO Gold) ────────
+        // ── Active tab accent underline — 2px engine accent ──────────────────
         // Prototype: 2px bottom border in engine accent color
         if (tabButtons[activeTab] != nullptr)
         {
             auto btnBounds = tabButtons[activeTab]->getBounds();
-            g.setColour(get(xoGold));
+            g.setColour(engineAccent);
             g.fillRect(btnBounds.getX(),
                        kTabBarH - kUnderlineH,
                        btnBounds.getWidth(),
