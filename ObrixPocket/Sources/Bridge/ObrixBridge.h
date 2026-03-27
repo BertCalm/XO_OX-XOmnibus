@@ -20,9 +20,15 @@
 - (void)noteOff:(int)note;
 - (void)allNotesOff;
 
-/// Parameter control
+/// Parameter control (queued — applied next audio callback)
 - (void)setParameter:(NSString *)paramId value:(float)value;
 - (float)getParameter:(NSString *)paramId;
+
+/// Immediate parameter write — bypasses the queue, writes directly to the
+/// atomic parameter value. Safe to call from any thread. Use this for
+/// bulk configuration (e.g., applying a reef chain) where all params must
+/// be set before the next noteOn.
+- (void)setParameterImmediate:(NSString *)paramId value:(float)value;
 
 /// Output gain (for ducking under other media)
 - (void)setOutputGain:(float)gain;

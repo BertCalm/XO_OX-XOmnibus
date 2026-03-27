@@ -26,6 +26,12 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
     var stasisSlotIndex: Int?
     var lastHealthUpdate: Date?
 
+    // A+B milestone fields
+    var cosmeticTier: String
+    var morphIndex: Int
+    var musicHash: String?
+    var sourceTrackTitle: String?
+
     // MARK: - Conversion to/from Specimen
 
     init(from specimen: Specimen, reefSlotIndex: Int? = nil, stasisSlotIndex: Int? = nil) {
@@ -49,6 +55,10 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
         self.reefSlotIndex = reefSlotIndex
         self.stasisSlotIndex = stasisSlotIndex
         self.lastHealthUpdate = Date()
+        self.cosmeticTier = specimen.cosmeticTier.rawValue
+        self.morphIndex = specimen.morphIndex
+        self.musicHash = specimen.musicHash
+        self.sourceTrackTitle = specimen.sourceTrackTitle
     }
 
     func toSpecimen() -> Specimen? {
@@ -73,7 +83,11 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
             catchLongitude: catchLongitude,
             catchTimestamp: catchTimestamp,
             catchWeatherDescription: catchWeatherDescription,
-            creatureGenomeData: creatureGenomeData
+            creatureGenomeData: creatureGenomeData,
+            cosmeticTier: CosmeticTier(rawValue: cosmeticTier) ?? .standard,
+            morphIndex: morphIndex,
+            musicHash: musicHash,
+            sourceTrackTitle: sourceTrackTitle
         )
     }
 

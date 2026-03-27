@@ -1,15 +1,16 @@
 import SwiftUI
+import MapKit
 
 // MARK: - CatchTab
 
-/// The Catch tab — circular radar showing nearby wild specimens.
+/// The Catch tab — MapKit map showing nearby wild specimens as pins.
 ///
 /// Layout:
 ///   - Biome indicator strip (top)
-///   - Radar view: concentric rings, user dot at center, specimen pips at bearing + distance
+///   - Map view: real MapKit map, user dot at current location, specimen pins at bearing + distance
 ///   - Reef Proximity toggle (bottom strip)
 ///
-/// Specimen pips are tappable when the specimen is within 50m (or always in Reef Proximity mode).
+/// Specimen pins are tappable when the specimen is within 50m (or always in Reef Proximity mode).
 /// Tapping opens CatchScreen as a sheet.
 struct CatchTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
@@ -20,7 +21,11 @@ struct CatchTab: View {
     @State private var spawnManager: SpawnManager?
     @State private var wildSpecimens: [WildSpecimen] = []
     @State private var showingCatch: WildSpecimen?
-    @State private var catchPhase: CatchPhase = .idle
+    @State private var catchPhase: CatchPhase = .intro
+    @State private var mapRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
+        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    )
 
     var body: some View {
         ZStack {
@@ -28,12 +33,12 @@ struct CatchTab: View {
 
             VStack(spacing: 16) {
                 biomeStrip
-                radarView
+                mapView
                 reefProximityStrip
             }
         }
         .onAppear(perform: onAppear)
-        .onChange(of: weatherService.isStormActive) { _, isStorm in
+        .onChange(of: weatherService.isStormActive) { isStorm in
             biomeDetector.updateStormBiome(isStorm: isStorm)
         }
         .sheet(item: $showingCatch) { wild in
@@ -72,35 +77,23 @@ struct CatchTab: View {
         .padding(.top, 12)
     }
 
-    private var radarView: some View {
-        GeometryReader { geometry in
-            let radarSize = min(geometry.size.width, geometry.size.height) * 0.85
-
-            ZStack {
-                // Radar rings (3 distance bands)
-                ForEach(1..<4) { ring in
-                    Circle()
-                        .stroke(Color.white.opacity(0.06), lineWidth: 1)
-                        .frame(
-                            width:  radarSize * CGFloat(ring) / 3,
-                            height: radarSize * CGFloat(ring) / 3
-                        )
-                }
-
-                // Player position — Reef Jade dot
-                Circle()
-                    .fill(Color(hex: "1E8B7E"))
-                    .frame(width: 12, height: 12)
-
-                // Wild specimen pips
-                ForEach(wildSpecimens) { wild in
-                    SpecimenPip(specimen: wild, radarSize: radarSize)
-                        .onTapGesture { handlePipTap(wild) }
-                }
+    private var mapView: some View {
+        Map(
+            coordinateRegion: $mapRegion,
+            showsUserLocation: true,
+            annotationItems: wildSpecimens
+        ) { specimen in
+            MapAnnotation(coordinate: specimenCoordinate(for: specimen)) {
+                SpecimenMapPin(specimen: specimen)
+                    .onTapGesture { handlePipTap(specimen) }
             }
-            .frame(width: radarSize, height: radarSize)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color(hex: "1E8B7E").opacity(0.2), lineWidth: 1)
+        )
+        .padding(.horizontal, 16)
     }
 
     private var reefProximityStrip: some View {
@@ -115,6 +108,11 @@ struct CatchTab: View {
                         // Use last known location as home, or a neutral coordinate if unavailable
                         let home = biomeDetector.lastLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                         biomeDetector.enableReefProximity(home: home)
+                        // Center map on the fixed home location
+                        mapRegion = MKCoordinateRegion(
+                            center: home,
+                            span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
+                        )
                     } else {
                         biomeDetector.disableReefProximity()
                     }
@@ -138,9 +136,18 @@ struct CatchTab: View {
         // Wire WeatherService into biomeDetector so storm state is available
         biomeDetector.weatherService = weatherService
 
-        // Wire exploration bonus: fire checkExplorationBonus on every location update
+        // Wire exploration bonus and map region update on every location update.
+        // Capture mapRegion as a binding-compatible setter on the main queue.
         biomeDetector.onLocationUpdate = { [weak spawnManager] coord in
             spawnManager?.checkExplorationBonus(at: coord)
+            // Pan map to follow the user (skip when Reef Proximity holds the map fixed)
+            DispatchQueue.main.async {
+                guard !biomeDetector.reefProximityEnabled else { return }
+                mapRegion = MKCoordinateRegion(
+                    center: coord,
+                    span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
+                )
+            }
         }
 
         // Prune first so we don't snapshot stale specimens
@@ -148,13 +155,18 @@ struct CatchTab: View {
         spawnManager?.checkDailyDrift()
         spawnManager?.checkLoginMilestone()
         spawnManager?.checkTimeOfDay()
-        // Snapshot wildSpecimens into @State so SwiftUI re-renders the radar
+        // Snapshot wildSpecimens into @State so SwiftUI re-renders the map
         wildSpecimens = spawnManager?.wildSpecimens ?? []
         biomeDetector.requestAuthorization()
 
         // Fetch weather for current location if already available
         if let loc = biomeDetector.lastLocation {
             Task { await weatherService.fetchWeather(at: loc) }
+            // Center map on actual user position immediately
+            mapRegion = MKCoordinateRegion(
+                center: loc,
+                span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
+            )
         }
     }
 
@@ -162,8 +174,32 @@ struct CatchTab: View {
         // Reef Proximity mode: all specimens are catchable regardless of distance
         let catchable = biomeDetector.reefProximityEnabled || wild.distance < 50
         guard catchable else { return }
-        catchPhase = .singing
+        catchPhase = .intro
         showingCatch = wild
+    }
+
+    // MARK: - Coordinate Conversion
+
+    /// Converts a WildSpecimen's bearing + distance to a real CLLocationCoordinate2D
+    /// relative to the user's (or home) position using spherical-earth haversine offsets.
+    private func specimenCoordinate(for specimen: WildSpecimen) -> CLLocationCoordinate2D {
+        guard let userLoc = biomeDetector.lastLocation else {
+            return CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        }
+        let earthRadius: Double = 6_371_000 // meters
+        let lat1 = userLoc.latitude * .pi / 180
+        let lon1 = userLoc.longitude * .pi / 180
+        let bearing = specimen.direction
+        let d = specimen.distance / earthRadius
+
+        let lat2 = asin(sin(lat1) * cos(d) + cos(lat1) * sin(d) * cos(bearing))
+        let lon2 = lon1 + atan2(sin(bearing) * sin(d) * cos(lat1),
+                                cos(d) - sin(lat1) * sin(lat2))
+
+        return CLLocationCoordinate2D(
+            latitude:  lat2 * 180 / .pi,
+            longitude: lon2 * 180 / .pi
+        )
     }
 
     // MARK: - Helpers
@@ -182,32 +218,37 @@ struct CatchTab: View {
     }
 }
 
-// MARK: - SpecimenPip
+// MARK: - SpecimenMapPin
 
-/// A pip on the radar representing one wild specimen at its bearing + distance.
-private struct SpecimenPip: View {
+/// A map annotation pin representing one wild specimen at its real-world coordinate.
+private struct SpecimenMapPin: View {
     let specimen: WildSpecimen
-    let radarSize: CGFloat
 
     var body: some View {
-        let normalizedDist = CGFloat(min(specimen.distance / 500.0, 1.0)) // 500m = radar edge
-        // Compass bearing: 0 = north = up. sin(bearing) → x, -cos(bearing) → y (screen y inverted).
-        let x = CGFloat(sin(specimen.direction)) * normalizedDist * radarSize / 2
-        let y = -CGFloat(cos(specimen.direction)) * normalizedDist * radarSize / 2
+        ZStack {
+            // Outer glow
+            Circle()
+                .fill(categoryColor.opacity(0.3))
+                .frame(width: pinSize + 8, height: pinSize + 8)
 
-        Circle()
-            .fill(categoryColor)
-            .frame(width: pipSize, height: pipSize)
-            .shadow(color: categoryColor.opacity(0.5), radius: 4)
-            .offset(x: x, y: y)
+            // Pin body
+            Circle()
+                .fill(categoryColor)
+                .frame(width: pinSize, height: pinSize)
+
+            // Rarity ring
+            Circle()
+                .stroke(Color.white.opacity(0.6), lineWidth: specimen.rarity == .legendary ? 2 : 1)
+                .frame(width: pinSize, height: pinSize)
+        }
     }
 
-    private var pipSize: CGFloat {
+    private var pinSize: CGFloat {
         switch specimen.rarity {
-        case .legendary: return 16
-        case .rare:      return 12
-        case .uncommon:  return 10
-        case .common:    return 8
+        case .legendary: return 24
+        case .rare:      return 20
+        case .uncommon:  return 16
+        case .common:    return 14
         }
     }
 
@@ -223,20 +264,20 @@ private struct SpecimenPip: View {
 
 // MARK: - CatchPhase
 
-/// Stages of a catch encounter.
 enum CatchPhase {
-    case idle         // Sheet just opened, nothing started
-    case singing      // Specimen plays its generative phrase; player interacts with touch strip
-    case capturing    // SpectralCapture running (5-second ambient mic snapshot)
-    case harmonizing  // Player achieved a harmonic lock during singing phase
-    case caught       // Success — brief celebration before dismiss
+    case intro       // Specimen appeared, waiting to start
+    case watching    // Pattern is playing — watch the sequence
+    case playing     // Player's turn — repeat the pattern
+    case success     // Pattern matched — catching!
+    case caught      // Added to reef
+    case escaped     // Failed the pattern — specimen fled
 }
 
-// MARK: - CatchScreen
+// MARK: - CatchScreen (Pattern Match Mini-Game)
 
-/// Full-screen sheet for a catch encounter: musical duet + spectral DNA capture.
-///
-/// Flow: singing → [harmonizing] → capturing → caught → auto-dismiss after 1.5s.
+/// Musical Simon Says catch challenge.
+/// Specimen plays a note sequence → player repeats on 4 pitch buttons.
+/// Difficulty scales with rarity.
 struct CatchScreen: View {
     let specimen: WildSpecimen
     @ObservedObject var spectralCapture: SpectralCapture
@@ -245,58 +286,106 @@ struct CatchScreen: View {
     let catchWeather: WeatherSnapshot
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var reefStore: ReefStore
+    @EnvironmentObject var audioEngine: AudioEngineManager
+
+    @State private var pattern: [Int] = []
+    @State private var playerInput: [Int] = []
+    @State private var currentPlaybackIndex = -1
+    @State private var showReefFullAlert = false
+
+    // Multi-round tracking
+    @State private var currentRound = 0
+    @State private var roundResults: [Bool] = [] // true = round won, false = round lost
+    @State private var roundFeedback: RoundFeedback = .none
+
+    enum RoundFeedback { case none, correct, wrong }
+
+    // Notes per round (pattern length) — scales with rarity
+    private var notesPerRound: Int {
+        switch specimen.rarity {
+        case .common: return 3; case .uncommon: return 4
+        case .rare: return 4; case .legendary: return 5
+        }
+    }
+
+    // Total rounds and required wins
+    private var totalRounds: Int {
+        switch specimen.rarity {
+        case .common: return 5; case .uncommon: return 5
+        case .rare: return 7; case .legendary: return 7
+        }
+    }
+
+    private var requiredWins: Int {
+        switch specimen.rarity {
+        case .common: return 3; case .uncommon: return 3
+        case .rare: return 5; case .legendary: return 5
+        }
+    }
+
+    private var roundsWon: Int { roundResults.filter { $0 }.count }
+    private var roundsLost: Int { roundResults.filter { !$0 }.count }
+    private var roundsPlayed: Int { roundResults.count }
+
+    // Can still win? Can still lose?
+    private var canStillWin: Bool { roundsWon + (totalRounds - roundsPlayed) >= requiredWins }
+    private var alreadyWon: Bool { roundsWon >= requiredWins }
+    private var alreadyLost: Bool { !canStillWin }
+
+    private var buttonColors: [Color] {
+        [catColor.opacity(0.5), catColor.opacity(0.7), catColor.opacity(0.85), catColor]
+    }
 
     var body: some View {
         ZStack {
             Color(hex: "0A0A0F").ignoresSafeArea()
 
-            VStack(spacing: 24) {
+            VStack(spacing: 20) {
                 Spacer()
-
-                specimenCreature
-                statusLabel
-
-                if spectralCapture.isCapturing {
-                    captureProgressBar
-                }
-
-                if phase == .singing || phase == .harmonizing {
-                    touchStrip
-                }
-
-                catchButton
+                specimenHeader
+                statusText
+                if phase != .intro { scoreIndicator }
+                pitchButtonGrid.padding(.horizontal, 40)
+                actionButton
                 Spacer()
             }
         }
-    }
-
-    // MARK: - Sub-views
-
-    private var specimenCreature: some View {
-        ZStack {
-            // Ambient glow ring — pulses with biome color during singing/harmonizing
-            Circle()
-                .fill(categoryColor.opacity(0.12))
-                .frame(width: 200, height: 200)
-
-            // Placeholder glyph — Phase 1 will render .xogenome pixel art here
-            Text(String(specimen.subtype.prefix(3)).uppercased())
-                .font(.custom("JetBrainsMono-Bold", size: 36))
-                .foregroundColor(categoryColor)
-
-            // Rarity ring
-            Circle()
-                .stroke(categoryColor.opacity(0.6), lineWidth: rarityRingWidth)
-                .frame(width: 180, height: 180)
+        .onAppear { phase = .intro }
+        .alert("Reef Full", isPresented: $showReefFullAlert) {
+            Button("OK") { dismiss() }
+        } message: {
+            Text("Your reef has no empty slots. Release a specimen to make room.")
         }
     }
 
-    private var statusLabel: some View {
+    private var specimenHeader: some View {
+        VStack(spacing: 8) {
+            ZStack {
+                Circle()
+                    .fill(catColor.opacity(0.12))
+                    .frame(width: 140, height: 140)
+                let cID = SpecimenCatalog.catalogSubtypeID(from: specimen.subtype)
+                SpecimenSprite(subtype: cID, category: specimen.category, size: 70)
+                Circle()
+                    .stroke(catColor.opacity(0.5), lineWidth: specimen.rarity == .legendary ? 4 : (specimen.rarity == .rare ? 3 : (specimen.rarity == .uncommon ? 2 : 1)))
+                    .frame(width: 130, height: 130)
+            }
+            let cID = SpecimenCatalog.catalogSubtypeID(from: specimen.subtype)
+            Text(SpecimenCatalog.entry(for: cID)?.creatureName ?? specimen.subtype)
+                .font(.custom("SpaceGrotesk-Bold", size: 18))
+                .foregroundColor(.white)
+            Text(specimen.rarity.rawValue.uppercased())
+                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .foregroundColor(Color(hex: "E9C46A"))
+        }
+    }
+
+    private var statusText: some View {
         VStack(spacing: 4) {
-            Text(phaseHeadline)
+            Text(headline)
                 .font(.custom("SpaceGrotesk-Bold", size: 16))
                 .foregroundColor(.white)
-            Text(phaseSubtext)
+            Text(subtext)
                 .font(.custom("Inter-Regular", size: 12))
                 .foregroundColor(.white.opacity(0.5))
                 .multilineTextAlignment(.center)
@@ -304,155 +393,217 @@ struct CatchScreen: View {
         }
     }
 
-    private var captureProgressBar: some View {
+    private var scoreIndicator: some View {
         VStack(spacing: 6) {
-            ProgressView(value: spectralCapture.captureProgress)
-                .tint(categoryColor)
-                .padding(.horizontal, 40)
-            Text("Capturing spectral DNA... \(Int(spectralCapture.captureProgress * 100))%")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+            // Round dots — one per total round
+            HStack(spacing: 6) {
+                ForEach(0..<totalRounds, id: \.self) { i in
+                    Circle()
+                        .fill(roundDotColor(at: i))
+                        .frame(width: 12, height: 12)
+                }
+            }
+            // Score text
+            Text("\(roundsWon) / \(requiredWins) rounds")
+                .font(.custom("JetBrainsMono-Regular", size: 11))
                 .foregroundColor(.white.opacity(0.4))
         }
     }
 
-    private var touchStrip: some View {
-        TouchStrip { velocity in
-            // Any touch during singing counts as a harmonic attempt
-            if phase == .singing {
-                phase = .harmonizing
+    private func roundDotColor(at index: Int) -> Color {
+        guard index < roundResults.count else {
+            return index == roundsPlayed ? catColor.opacity(0.4) : Color.white.opacity(0.1) // Current round slightly highlighted
+        }
+        return roundResults[index] ? Color(hex: "1E8B7E") : Color(hex: "FF4D4D")
+    }
+
+    private var pitchButtonGrid: some View {
+        let active = phase == .playing
+        return VStack(spacing: 12) {
+            HStack(spacing: 12) { pButton(0, active: active); pButton(1, active: active) }
+            HStack(spacing: 12) { pButton(2, active: active); pButton(3, active: active) }
+        }
+    }
+
+    private func pButton(_ idx: Int, active: Bool) -> some View {
+        let lit = currentPlaybackIndex == idx
+        let c = buttonColors[idx]
+        return Button(action: { if active { playerTap(idx) } }) {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(lit ? c : c.opacity(0.3))
+                .frame(height: 64)
+                .overlay(RoundedRectangle(cornerRadius: 12).stroke(lit ? Color.white.opacity(0.6) : c.opacity(0.4), lineWidth: lit ? 2 : 1))
+                .scaleEffect(lit ? 1.05 : 1.0)
+                .animation(.easeInOut(duration: 0.15), value: lit)
+        }
+        .disabled(!active)
+    }
+
+    @ViewBuilder
+    private var actionButton: some View {
+        switch phase {
+        case .intro:
+            Button(action: startChallenge) {
+                Text("BEGIN")
+                    .font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity).frame(height: 50)
+                    .background(RoundedRectangle(cornerRadius: 25).fill(catColor))
+            }.padding(.horizontal, 40)
+        case .watching:
+            Text("WATCH...").font(.custom("SpaceGrotesk-Bold", size: 14)).tracking(2).foregroundColor(catColor.opacity(0.6))
+        case .playing:
+            Text("Round \(roundsPlayed + 1) of \(totalRounds)  ·  \(playerInput.count)/\(notesPerRound) notes")
+                .font(.custom("JetBrainsMono-Regular", size: 12)).foregroundColor(.white.opacity(0.5))
+        case .success, .caught:
+            Text("CAUGHT!").font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2).foregroundColor(Color(hex: "1E8B7E"))
+        case .escaped:
+            Button(action: { dismiss() }) {
+                Text("IT ESCAPED")
+                    .font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2)
+                    .foregroundColor(.white.opacity(0.5))
+                    .frame(maxWidth: .infinity).frame(height: 50)
+                    .background(RoundedRectangle(cornerRadius: 25).fill(Color.white.opacity(0.06)))
+            }.padding(.horizontal, 40)
+        }
+    }
+
+    // MARK: - Game Logic (Multi-Round)
+
+    private func startChallenge() {
+        currentRound = 0
+        roundResults = []
+        roundFeedback = .none
+        startNextRound()
+    }
+
+    private func startNextRound() {
+        // Generate fresh pattern for this round
+        pattern = (0..<notesPerRound).map { _ in Int.random(in: 0...3) }
+        playerInput = []
+        roundFeedback = .none
+        phase = .watching
+        playPattern()
+    }
+
+    private func playPattern() {
+        for (i, note) in pattern.enumerated() {
+            let delay = Double(i) * 0.6 + 0.3
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                currentPlaybackIndex = note
+                audioEngine.noteOn(slotIndex: note, velocity: 0.7)
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay + 0.35) {
+                currentPlaybackIndex = -1
+                audioEngine.noteOff(slotIndex: note)
             }
         }
-        .frame(height: 60)
-        .padding(.horizontal, 20)
+        let total = Double(pattern.count) * 0.6 + 0.8
+        DispatchQueue.main.asyncAfter(deadline: .now() + total) { phase = .playing }
     }
 
-    private var catchButton: some View {
-        Button(action: attemptCatch) {
-            Text(catchButtonLabel)
-                .font(.custom("SpaceGrotesk-Bold", size: 16))
-                .tracking(2)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 50)
-                .background(
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(phase == .caught ? Color(hex: "1E8B7E") : categoryColor)
-                )
+    private func playerTap(_ idx: Int) {
+        guard phase == .playing, playerInput.count < pattern.count else { return }
+        let step = playerInput.count
+        playerInput.append(idx)
+
+        audioEngine.noteOn(slotIndex: idx, velocity: 0.8)
+        currentPlaybackIndex = idx
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            currentPlaybackIndex = -1; audioEngine.noteOff(slotIndex: idx)
         }
-        .disabled(phase == .capturing || phase == .caught)
-        .padding(.horizontal, 40)
+
+        let correct = idx == pattern[step]
+        if correct {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        } else {
+            UINotificationFeedbackGenerator().notificationOccurred(.warning)
+            // Wrong note — round is lost immediately, skip remaining notes
+            endRound(won: false)
+            return
+        }
+
+        // All notes correct → round won
+        if playerInput.count == pattern.count {
+            endRound(won: true)
+        }
     }
 
-    // MARK: - Catch Action
+    private func endRound(won: Bool) {
+        roundResults.append(won)
+        roundFeedback = won ? .correct : .wrong
 
-    private func attemptCatch() {
-        guard phase == .singing || phase == .harmonizing || phase == .idle else { return }
-        phase = .capturing
-        spectralCapture.startCapture { profile in
-            // Construct a Specimen from the wild encounter + ambient spectral profile
-            let newSpecimen = SpecimenFactory.create(
-                from: specimen,
-                spectralDNA: profile,
-                location: catchLocation,
-                weather: catchWeather,
-                accelerometer: []   // Phase 2: CoreMotion
-            )
+        if won {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        }
 
-            // Add to reef (returns slot index, or nil when reef is full)
-            if let _ = reefStore.addSpecimen(newSpecimen) {
-                phase = .caught
-                reefStore.save()
+        // Check if the game is decided
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            if alreadyWon {
+                phase = .success
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                catchSpecimen()
+            } else if alreadyLost {
+                phase = .escaped
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { dismiss() }
             } else {
-                // Reef is full — specimen lost; surface a "reef full" alert in Phase 1
-                phase = .idle
+                // More rounds to play
+                startNextRound()
             }
+        }
+    }
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                dismiss()
+    private func catchSpecimen() {
+        spectralCapture.startCapture { profile in
+            let newSpecimen = SpecimenFactory.create(
+                from: specimen, spectralDNA: profile,
+                location: catchLocation, weather: catchWeather, accelerometer: [])
+            if let _ = reefStore.addSpecimen(newSpecimen) {
+                phase = .caught; reefStore.save()
+            } else {
+                showReefFullAlert = true; return
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { dismiss() }
         }
     }
 
     // MARK: - Helpers
 
-    private var catchButtonLabel: String {
+    private var headline: String {
+        let name = SpecimenCatalog.entry(for: SpecimenCatalog.catalogSubtypeID(from: specimen.subtype))?.creatureName ?? specimen.subtype
         switch phase {
-        case .idle, .singing, .harmonizing: return "CATCH"
-        case .capturing:                    return "LISTENING..."
-        case .caught:                       return "CAUGHT!"
+        case .intro: return "A wild \(name) appeared!"
+        case .watching: return "Watch the pattern..."
+        case .playing: return "Your turn!"
+        case .success: return "Pattern matched!"
+        case .caught: return "Specimen caught!"
+        case .escaped: return "It escaped..."
         }
     }
 
-    private var phaseHeadline: String {
+    private var subtext: String {
         switch phase {
-        case .idle:        return "A wild \(specimen.subtype) appeared!"
-        case .singing:     return "The specimen is singing..."
-        case .capturing:   return "Capturing spectral DNA"
-        case .harmonizing: return "Harmonic lock!"
-        case .caught:      return "Specimen caught!"
+        case .intro: return "Match the musical pattern to catch it.\nWin \(requiredWins) out of \(totalRounds) rounds."
+        case .watching: return "Round \(roundsPlayed + 1) — listen and watch."
+        case .playing: return "Repeat the pattern! One wrong note ends the round."
+        case .success: return "Adding to your reef..."
+        case .caught: return "Added to your collection!"
+        case .escaped: return "Better luck next time."
         }
     }
 
-    private var phaseSubtext: String {
-        switch phase {
-        case .idle:        return "Tap CATCH to begin the encounter."
-        case .singing:     return "Play along on the touch strip to improve the catch."
-        case .capturing:   return "Hold still — the reef is listening."
-        case .harmonizing: return "Keep playing — lock is holding."
-        case .caught:      return "Added to your collection."
-        }
-    }
-
-    private var rarityRingWidth: CGFloat {
-        switch specimen.rarity {
-        case .legendary: return 4
-        case .rare:      return 3
-        case .uncommon:  return 2
-        case .common:    return 1
-        }
-    }
-
-    private var categoryColor: Color {
+    private var catColor: Color {
         switch specimen.category {
-        case .source:    return Color(hex: "3380FF")
+        case .source: return Color(hex: "3380FF")
         case .processor: return Color(hex: "FF4D4D")
         case .modulator: return Color(hex: "4DCC4D")
-        case .effect:    return Color(hex: "B34DFF")
+        case .effect: return Color(hex: "B34DFF")
         }
     }
 }
 
-// MARK: - TouchStrip
-
-/// Horizontal touch strip for the musical catch duet.
-/// The player drags left/right to play the specimen's generative phrase in key.
-/// Velocity (0–1) is reported via `onPlay`.
-struct TouchStrip: View {
-    let onPlay: (Float) -> Void
-
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.white.opacity(0.04))
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                Text("PLAY ALONG")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
-                    .tracking(2)
-                    .foregroundColor(.white.opacity(0.2))
-            }
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { value in
-                        let velocity = Float(max(0, min(1, value.location.x / geometry.size.width)))
-                        onPlay(velocity)
-                    }
-            )
-        }
-    }
-}
-
-// MARK: - CLLocationCoordinate2D import
+// MARK: - CoreLocation import
 
 import CoreLocation

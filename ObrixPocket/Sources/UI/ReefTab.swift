@@ -5,6 +5,7 @@ struct ReefTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
     @State private var reefScene: ReefScene?
+    @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
 
     var body: some View {
         VStack(spacing: 0) {
@@ -14,9 +15,17 @@ struct ReefTab: View {
                     .font(.custom("SpaceGrotesk-Bold", size: 18))
                     .foregroundColor(.white)
                 Spacer()
-                Text("Depth: \(reefStore.totalDiveDepth)m")
-                    .font(.custom("JetBrainsMono-Regular", size: 11))
-                    .foregroundColor(Color(hex: "7A7876"))
+                if !reefStore.couplingRoutes.isEmpty {
+                    Button(action: {
+                        reefStore.couplingRoutes.removeAll()
+                        reefStore.save()
+                        audioEngine.applyReefConfiguration(reefStore)
+                    }) {
+                        Text("Clear Wires")
+                            .font(.custom("Inter-Regular", size: 11))
+                            .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+                    }
+                }
             }
             .padding(.horizontal, 20)
             .padding(.top, 12)
@@ -41,37 +50,75 @@ struct ReefTab: View {
                                 size: CGSize(width: gridSize, height: gridSize),
                                 reefStore: reefStore,
                                 onNoteOn: { slot, velocity in
+                                    // If tapped specimen is a Source, make it the active keyboard source
+                                    if let spec = reefStore.specimens[slot], spec.category == .source {
+                                        activeSourceSlot = slot
+                                    }
                                     audioEngine.noteOn(slotIndex: slot, velocity: velocity)
                                 },
                                 onNoteOff: { slot in
                                     audioEngine.noteOff(slotIndex: slot)
+                                },
+                                onWiringChanged: {
+                                    audioEngine.applyReefConfiguration(reefStore)
                                 }
                             )
                         }
                 }
             }
 
-            // Dive button
-            Button(action: {
-                // Phase 2: Navigate to Dive
-            }) {
-                Text("DIVE")
-                    .font(.custom("SpaceGrotesk-Bold", size: 14))
-                    .tracking(2)
-                    .foregroundColor(reefStore.diveEligibleCount >= 4 ? .white : Color(hex: "7A7876"))
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 44)
-                    .background(
-                        RoundedRectangle(cornerRadius: 22)
-                            .fill(reefStore.diveEligibleCount >= 4
-                                  ? Color(hex: "1E8B7E")
-                                  : Color(hex: "1A1A1C"))
-                    )
+            // Play keyboard — plays through the active source's wired chain
+            if reefStore.diveEligibleCount >= 1 {
+                // Show which source is active
+                let slot = activeSourceSlot ?? firstSourceSlot
+                let sourceName = slot.flatMap { reefStore.specimens[$0]?.creatureName } ?? "—"
+
+                HStack {
+                    Text("Playing: \(sourceName)")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(Color(hex: "1E8B7E").opacity(0.7))
+                    Spacer()
+                    Text("Tap a source to switch")
+                        .font(.custom("Inter-Regular", size: 9))
+                        .foregroundColor(.white.opacity(0.25))
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 2)
+
+                PlayKeyboard(
+                    onNoteOn: { midiNote, velocity in
+                        let sourceSlot = activeSourceSlot ?? firstSourceSlot
+                        if let s = sourceSlot {
+                            audioEngine.applySlotChain(slotIndex: s, reefStore: reefStore)
+                        }
+                        ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
+                    },
+                    onNoteOff: { midiNote in
+                        ObrixBridge.shared()?.noteOff(Int32(midiNote))
+                    },
+                    accentColor: Color(hex: "1E8B7E")
+                )
+                .frame(height: 80)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding(.horizontal, 16)
+                .padding(.bottom, 8)
+            } else {
+                Text("Add a specimen to play")
+                    .font(.custom("Inter-Regular", size: 12))
+                    .foregroundColor(Color(hex: "7A7876"))
+                    .padding(.bottom, 16)
             }
-            .disabled(reefStore.diveEligibleCount < 4)
-            .padding(.horizontal, 40)
-            .padding(.bottom, 16)
         }
         .background(Color(hex: "0E0E10"))
+        .onAppear {
+            // Default to the first Source in the reef
+            if activeSourceSlot == nil {
+                activeSourceSlot = firstSourceSlot
+            }
+        }
+    }
+
+    private var firstSourceSlot: Int? {
+        reefStore.specimens.firstIndex(where: { $0?.category == .source })
     }
 }

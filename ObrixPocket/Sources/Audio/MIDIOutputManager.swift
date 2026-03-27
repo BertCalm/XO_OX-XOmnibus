@@ -106,7 +106,7 @@ final class MIDIOutputManager: ObservableObject {
             ptr.pointee = packet
         }
 
-        MIDIReceived(midiSource, &packetList)
+        MIDIReceivedEventList(midiSource, &packetList)
     }
 
     private func updateConnectionCount() {

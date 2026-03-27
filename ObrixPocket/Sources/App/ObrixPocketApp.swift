@@ -14,6 +14,7 @@ struct ObrixPocketApp: App {
                 .environmentObject(reefStore)
                 .environmentObject(firstLaunchManager)
                 .onAppear {
+                    audioEngine.reefStoreRef = reefStore
                     audioEngine.start()
 
                     if firstLaunchManager.isFirstLaunch {
@@ -32,10 +33,13 @@ struct ObrixPocketApp: App {
                         }
                     }
 
+                    // Push reef specimen parameters to OBRIX engine
+                    audioEngine.applyReefConfiguration(reefStore)
+
                     firstLaunchManager.recordAppOpen()
                 }
                 // Save on background, manage audio on foreground
-                .onChange(of: scenePhase) { _, newPhase in
+                .onChange(of: scenePhase) { newPhase in
                     switch newPhase {
                     case .background:
                         reefStore.save()
@@ -49,7 +53,7 @@ struct ObrixPocketApp: App {
                     }
                 }
                 // Place second specimen after the very first note is played
-                .onChange(of: audioEngine.hasPlayedFirstNote) { _, played in
+                .onChange(of: audioEngine.hasPlayedFirstNote) { played in
                     if played
                         && !firstLaunchManager.secondSpecimenPlaced
                     {

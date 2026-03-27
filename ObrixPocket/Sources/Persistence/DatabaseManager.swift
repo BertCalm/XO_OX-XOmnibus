@@ -82,6 +82,16 @@ final class DatabaseManager {
             }
         }
 
+        migrator.registerMigration("v2_monster_rancher_dna") { db in
+            // A+B milestone: cosmetic tier, morph, music hash, source track
+            try db.alter(table: "specimen") { t in
+                t.add(column: "cosmeticTier", .text).notNull().defaults(to: "standard")
+                t.add(column: "morphIndex", .integer).notNull().defaults(to: 0)
+                t.add(column: "musicHash", .text)
+                t.add(column: "sourceTrackTitle", .text)
+            }
+        }
+
         guard let dbQueue else { return }
         try migrator.migrate(dbQueue)
     }

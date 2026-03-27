@@ -1,12 +1,18 @@
 #import "ObrixBridge.h"
 
+// JUCE config — must be defined before any JUCE header is included
+#include "JuceConfig.h"
+
 // JUCE headers — only visible in this .mm translation unit
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_audio_processors/juce_audio_processors.h>
+#include <juce_audio_utils/juce_audio_utils.h>
 
 // The engine
 #include "../../Source/Engines/Obrix/ObrixEngine.h"
+
+using namespace xolokun;
 
 // Suppress JUCE GUI — we only use audio modules
 // JUCE_MODULE_AVAILABLE_juce_gui_basics is NOT defined
@@ -33,7 +39,9 @@ public:
                           ParamEvent* paramQueueRef,
                           std::atomic<int>& paramReadPosRef,
                           std::atomic<int>& paramWritePosRef)
-        : eng(engine)
+        : AudioProcessor(BusesProperties().withOutput("Output", juce::AudioChannelSet::stereo(), true))
+        , eng(engine)
+        , apvts(*this, nullptr, "ObrixPocketParams", engine.createParameterLayout())
         , _gainRef(gainRef)
         , _queueRef(queueRef)
         , _readPosRef(readPosRef)
@@ -41,7 +49,12 @@ public:
         , _paramQueueRef(paramQueueRef)
         , _paramReadRef(paramReadPosRef)
         , _paramWriteRef(paramWritePosRef)
-    {}
+    {
+        // Wire engine's atomic parameter pointers to the APVTS
+        eng.attachParameters(apvts);
+    }
+
+    juce::AudioProcessorValueTreeState apvts;
 
     const juce::String getName() const override { return "ObrixPocket"; }
 
@@ -59,9 +72,14 @@ public:
         {
             int readPos = _paramReadRef.load(std::memory_order_relaxed);
             auto& evt = _paramQueueRef[readPos];
-            // TODO Phase 2: Map paramId string to engine parameter
-            // eng.setParameterByName(juce::String(evt.paramId), evt.value);
-            (void)evt; // suppress unused warning until Phase 2 wiring
+
+            // Write directly to the atomic parameter value (audio-thread safe).
+            // getRawParameterValue returns std::atomic<float>* which the engine reads.
+            if (auto* rawValue = apvts.getRawParameterValue(juce::String(evt.paramId)))
+            {
+                rawValue->store(evt.value, std::memory_order_relaxed);
+            }
+
             _paramReadRef.store((readPos + 1) % kParamQueueSize, std::memory_order_release);
         }
 
@@ -115,6 +133,8 @@ private:
     std::atomic<int>& _paramWriteRef;
 };
 
+static const int kMidiQueueSize = 256;
+
 @implementation ObrixBridge
 {
     std::unique_ptr<ObrixEngine> _engine;
@@ -125,15 +145,12 @@ private:
     std::atomic<bool> _running;
 
     // Lock-free MIDI input queue (touch → audio thread)
-    // Simple ring buffer for note events
-    static constexpr int kMidiQueueSize = 256;
     ObrixProcessorAdapter::NoteEvent _midiQueue[kMidiQueueSize];
     std::atomic<int> _midiWritePos;
     std::atomic<int> _midiReadPos;
 
     // Lock-free parameter queue (UI thread → audio thread)
-    static constexpr int kParamQueueSize = 256;
-    ObrixProcessorAdapter::ParamEvent _paramQueue[kParamQueueSize];
+    ObrixProcessorAdapter::ParamEvent _paramQueue[ObrixProcessorAdapter::kParamQueueSize];
     std::atomic<int> _paramWritePos;
     std::atomic<int> _paramReadPos;
 }
@@ -262,7 +279,7 @@ private:
 {
     // Lock-free enqueue to param queue; drained in adapter's processBlock before render
     int writePos = _paramWritePos.load(std::memory_order_relaxed);
-    int nextPos = (writePos + 1) % kParamQueueSize;
+    int nextPos = (writePos + 1) % ObrixProcessorAdapter::kParamQueueSize;
     if (nextPos == _paramReadPos.load(std::memory_order_acquire)) return; // queue full — drop silently
 
     strncpy(_paramQueue[writePos].paramId, [paramId UTF8String], 63);
@@ -274,8 +291,20 @@ private:
 
 - (float)getParameter:(NSString *)paramId
 {
-    // TODO Phase 0 Week 3
+    if (_adapter) {
+        if (auto* raw = _adapter->apvts.getRawParameterValue(juce::String([paramId UTF8String])))
+            return raw->load(std::memory_order_relaxed);
+    }
     return 0.0f;
+}
+
+- (void)setParameterImmediate:(NSString *)paramId value:(float)value
+{
+    if (!_adapter) return;
+    if (auto* raw = _adapter->apvts.getRawParameterValue(juce::String([paramId UTF8String])))
+    {
+        raw->store(value, std::memory_order_relaxed);
+    }
 }
 
 - (void)setOutputGain:(float)gain

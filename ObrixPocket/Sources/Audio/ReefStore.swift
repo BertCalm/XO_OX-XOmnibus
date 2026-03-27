@@ -14,6 +14,15 @@ enum SpecimenCategory: String, Codable, CaseIterable {
     case effect      // Tide Pools — delay/chorus/reverb
 }
 
+/// Cosmetic tier — orthogonal to rarity (visual axis, not stat axis)
+enum CosmeticTier: String, Codable, CaseIterable {
+    case standard       // 85% — base art
+    case bioluminescent // 10% — glowing edges, pulsing light (night spawns)
+    case phantom        // 3%  — inverted palette, translucent, spectral trail
+    case fossilized     // 1.5% — stone texture, ancient markings (music hash ONLY)
+    case prismatic      // 0.5% — rainbow chromatic aberration (coupling discovery ONLY)
+}
+
 struct ProvenanceEntry: Codable {
     let fromPlayer: String
     let toPlayer: String
@@ -30,7 +39,7 @@ struct Specimen: Identifiable, Codable {
     var health: Int // 0-100
     var isPhantom: Bool
     var phantomScar: Bool
-    var subtype: String // e.g., "PolyBLEP", "CytomicSVF", "StandardLFO"
+    var subtype: String // e.g., "polyblep-saw", "svf-lp" (catalog subtype ID)
     var catchAccelPattern: [Float] // Movement signature from accelerometer at catch time
 
     // Trade provenance chain
@@ -51,7 +60,18 @@ struct Specimen: Identifiable, Codable {
     // Creature visual
     var creatureGenomeData: Data?
 
+    // Monster Rancher DNA system (A+B milestone)
+    var cosmeticTier: CosmeticTier
+    var morphIndex: Int          // 0 = Reef morph, 1 = Drift morph
+    var musicHash: String?       // SHA256 hex if born from music library
+    var sourceTrackTitle: String? // "Artist — Title" of the song that birthed it
+
     static let slotCount = 16
+
+    /// The catalog creature name for this specimen's subtype
+    var creatureName: String {
+        SpecimenCatalog.entry(for: subtype)?.creatureName ?? subtype
+    }
 }
 
 /// Coupling route between two specimens

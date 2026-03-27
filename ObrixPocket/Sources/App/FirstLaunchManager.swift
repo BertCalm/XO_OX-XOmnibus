@@ -34,17 +34,17 @@ final class FirstLaunchManager: ObservableObject {
         return index
     }
 
-    /// Create and place the second specimen (auto-spawned after first play)
+    /// Create and place the second specimen (auto-spawned after first play) — always a Common Curtain
     func placeSecondSpecimen(in reefStore: ReefStore) -> Int? {
         let second = Specimen(
             id: UUID(),
-            name: "Warm Coral",
+            name: "Curtain",
             category: .processor,
             rarity: .common,
             health: 100,
             isPhantom: false,
             phantomScar: false,
-            subtype: "SVF-LP",
+            subtype: "svf-lp",
             catchAccelPattern: Array(repeating: 0, count: 16),
             provenance: [],
             spectralDNA: Array(repeating: 0.4, count: 64),
@@ -57,7 +57,11 @@ final class FirstLaunchManager: ObservableObject {
             catchLongitude: nil,
             catchTimestamp: Date(),
             catchWeatherDescription: "First Launch",
-            creatureGenomeData: nil
+            creatureGenomeData: nil,
+            cosmeticTier: .standard,
+            morphIndex: 0,
+            musicHash: nil,
+            sourceTrackTitle: nil
         )
         let index = reefStore.addSpecimen(second)
         if index != nil {
@@ -77,5 +81,28 @@ final class FirstLaunchManager: ObservableObject {
     var daysSinceLastOpen: Int {
         guard let last = userDefaults.object(forKey: lastOpenKey) as? Date else { return 0 }
         return Calendar.current.dateComponents([.day], from: last, to: Date()).day ?? 0
+    }
+
+    // MARK: - Daily Music Catch Limit
+
+    private let lastMusicCatchKey = "obrix_pocket_last_music_catch_date"
+
+    /// Returns true if the user has not yet caught a song today.
+    var canMusicCatch: Bool {
+        guard let lastCatch = userDefaults.object(forKey: lastMusicCatchKey) as? Date else {
+            return true // Never caught — allow
+        }
+        return !Calendar.current.isDateInToday(lastCatch)
+    }
+
+    /// Records that the user has used their daily music catch (call after specimen is added to reef).
+    func recordMusicCatch() {
+        userDefaults.set(Date(), forKey: lastMusicCatchKey)
+    }
+
+    /// Returns the start of tomorrow if the catch has already been used today, nil otherwise.
+    var nextMusicCatchDate: Date? {
+        guard !canMusicCatch else { return nil }
+        return Calendar.current.startOfDay(for: Date().addingTimeInterval(86_400))
     }
 }

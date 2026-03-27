@@ -20,15 +20,20 @@ final class SpecimenFactory {
         // Generate creature name
         let name = generateName(category: wild.category, biome: wild.biome)
 
+        // Resolve catalog name from subtype
+        let catalogID = SpecimenCatalog.catalogSubtypeID(from: wild.subtype)
+        let catalogEntry = SpecimenCatalog.entry(for: catalogID)
+        let displayName = catalogEntry?.displayName(rarity: wild.rarity) ?? name
+
         return Specimen(
             id: UUID(),
-            name: name,
+            name: displayName,
             category: wild.category,
             rarity: wild.rarity,
             health: 100,
             isPhantom: false,
             phantomScar: false,
-            subtype: wild.subtype,
+            subtype: catalogID,
             catchAccelPattern: accelerometer,
             provenance: [],
             spectralDNA: spectralDNA,
@@ -37,26 +42,30 @@ final class SpecimenFactory {
             catchLongitude: location?.longitude,
             catchTimestamp: Date(),
             catchWeatherDescription: weather?.description,
-            creatureGenomeData: nil // Phase 1: .xogenome renderer
+            creatureGenomeData: nil,
+            cosmeticTier: .standard,
+            morphIndex: 0,
+            musicHash: nil,
+            sourceTrackTitle: nil
         )
     }
 
-    /// Create the starter specimen (first launch)
+    /// Create the starter specimen (first launch) — always a Common Sawfin
     static func createStarter() -> Specimen {
         Specimen(
             id: UUID(),
-            name: "First Light",
+            name: "Sawfin",
             category: .source,
             rarity: .common,
             health: 100,
             isPhantom: false,
             phantomScar: false,
-            subtype: "PolyBLEP-Saw",
+            subtype: "polyblep-saw",
             catchAccelPattern: Array(repeating: 0, count: 16),
             provenance: [],
-            spectralDNA: Array(repeating: 0.5, count: 64), // Neutral
+            spectralDNA: Array(repeating: 0.5, count: 64),
             parameterState: [
-                "obrix_src1Type": 0,       // PolyBLEP Saw
+                "obrix_src1Type": 0,
                 "obrix_src1Tune": 0,
                 "obrix_src1Level": 0.8,
                 "obrix_flt1Cutoff": 0.7,
@@ -72,7 +81,11 @@ final class SpecimenFactory {
             catchLongitude: nil,
             catchTimestamp: Date(),
             catchWeatherDescription: "First Launch",
-            creatureGenomeData: nil
+            creatureGenomeData: nil,
+            cosmeticTier: .standard,
+            morphIndex: 0,
+            musicHash: nil,
+            sourceTrackTitle: nil
         )
     }
 
@@ -87,14 +100,18 @@ final class SpecimenFactory {
         params["obrix_env1Sustain"] = Float.random(in: 0.2...0.9)
         params["obrix_env1Release"] = Float.random(in: 0.1...2.0)
 
+        // Resolve to catalog ID for matching
+        let catalogID = SpecimenCatalog.catalogSubtypeID(from: subtype)
+
         switch category {
         case .source:
-            let srcType: Float = subtype.contains("Saw") ? 0 :
-                                  subtype.contains("Square") ? 1 :
-                                  subtype.contains("Tri") ? 2 :
-                                  subtype.contains("Noise") ? 3 :
-                                  subtype.contains("Wavetable") ? 4 :
-                                  subtype.contains("FM") ? 5 : 0
+            let srcTypeMap: [String: Float] = [
+                "polyblep-saw": 0, "polyblep-square": 1, "polyblep-tri": 2,
+                "noise-white": 3, "noise-pink": 3,
+                "wt-analog": 4, "wt-vocal": 4,
+                "fm-basic": 5
+            ]
+            let srcType: Float = srcTypeMap[catalogID] ?? 0
             params["obrix_src1Type"] = srcType
             params["obrix_src1Tune"] = Float.random(in: -12...12)
             params["obrix_src1Level"] = Float.random(in: 0.5...1.0)

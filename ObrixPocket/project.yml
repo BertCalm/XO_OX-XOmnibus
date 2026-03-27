@@ -28,6 +28,12 @@ settings:
       - JUCE_MODULE_AVAILABLE_juce_data_structures=1
       - JUCE_MODULE_AVAILABLE_juce_dsp=1
       - JUCE_MODULE_AVAILABLE_juce_events=1
+      - JUCE_MODULE_AVAILABLE_juce_gui_basics=1
+      - JUCE_MODULE_AVAILABLE_juce_gui_extra=1
+      - JUCE_MODULE_AVAILABLE_juce_graphics=1
+      - JUCE_PLUGINHOST_AU=0
+      - JUCE_PLUGINHOST_VST3=0
+      - JUCE_PLUGINHOST_LV2=0
       - JUCE_DISPLAY_SPLASH_SCREEN=0
       - JUCE_USE_DARK_SPLASH_SCREEN=0
       - JUCE_STANDALONE_APPLICATION=0
@@ -53,6 +59,9 @@ settings:
       - -framework Metal
       - -framework Accelerate
       - -framework WeatherKit
+      - -framework MediaPlayer
+      - -framework CoreAudioKit
+      - -framework MapKit
 
 targets:
   ObrixPocket:
@@ -62,6 +71,44 @@ targets:
       - path: Sources
         excludes:
           - "**/*.md"
+          - "Bridge/JuceModule_AudioBasics.mm"
+          - "Bridge/JuceModule_AudioDevices.mm"
+          - "Bridge/JuceModule_AudioFormats.mm"
+          - "Bridge/JuceModule_AudioProcessors.mm"
+          - "Bridge/JuceModule_AudioUtils.mm"
+          - "Bridge/JuceModule_Core.mm"
+          - "Bridge/JuceModule_DSP.mm"
+          - "Bridge/JuceModule_Events.mm"
+          - "Bridge/JuceModule_Graphics.mm"
+          - "Bridge/JuceModule_GUI.mm"
+          - "Bridge/JuceModule_GuiExtra.mm"
+          - "Bridge/JuceModules.mm"
+          - "Bridge/ObrixBridge.mm"
+          - "Bridge/JuceModule_DataStructures.mm"
+          - "Bridge/JuceSheenBidi.c"
+          - "Bridge/JuceHarfBuzz.cc"
+          - "Bridge/JuceCompilationTime.cpp"
+      - path: Sources/Bridge
+        includes:
+          - "JuceModule_AudioBasics.mm"
+          - "JuceModule_AudioDevices.mm"
+          - "JuceModule_AudioFormats.mm"
+          - "JuceModule_AudioProcessors.mm"
+          - "JuceModule_AudioUtils.mm"
+          - "JuceModule_Core.mm"
+          - "JuceModule_DataStructures.mm"
+          - "JuceModule_DSP.mm"
+          - "JuceModule_Events.mm"
+          - "JuceModule_Graphics.mm"
+          - "JuceModule_GUI.mm"
+          - "JuceModule_GuiExtra.mm"
+          - "JuceModules.mm"
+          - "ObrixBridge.mm"
+          - "JuceSheenBidi.c"
+          - "JuceHarfBuzz.cc"
+          - "JuceCompilationTime.cpp"
+        compilerFlags: "-fno-objc-arc"
+      - path: Resources
     settings:
       base:
         INFOPLIST_FILE: Resources/Info.plist
