@@ -189,6 +189,16 @@ class ReefScene: SKScene {
                     roleLabel.verticalAlignmentMode = .top
                     roleLabel.position = CGPoint(x: 0, y: -bgRadius * 0.55)
                     slotNode.addChild(roleLabel)
+
+                    // Provenance label — shows autobiography context (source track, weather, or catch date)
+                    let provText = Self.provenanceLabel(for: specimen)
+                    let provLabel = SKLabelNode(text: provText)
+                    provLabel.fontSize = 6
+                    provLabel.fontName = "JetBrainsMono-Regular"
+                    provLabel.fontColor = SKColor.white.withAlphaComponent(0.25)
+                    provLabel.verticalAlignmentMode = .top
+                    provLabel.position = CGPoint(x: 0, y: -bgRadius * 0.55 - 10)
+                    slotNode.addChild(provLabel)
                 } else {
                     bg.fillColor = SKColor.white.withAlphaComponent(0.02)
                     bg.strokeColor = SKColor.white.withAlphaComponent(0.08)
@@ -213,8 +223,12 @@ class ReefScene: SKScene {
     // MARK: - Coupling Wire Rendering
 
     private func drawCouplingWires() {
-        // Remove old wires
-        children.filter { $0.name?.hasPrefix("wire_") == true }.forEach { $0.removeFromParent() }
+        // Remove old wires, wire labels, and flow dots
+        children.filter {
+            $0.name?.hasPrefix("wire_") == true ||
+            $0.name?.hasPrefix("wireLabel_") == true ||
+            $0.name?.hasPrefix("flowDot_") == true
+        }.forEach { $0.removeFromParent() }
 
         for route in reefStore.couplingRoutes {
             guard let srcIndex = slotIndexForSpecimen(id: route.sourceId),
@@ -224,12 +238,33 @@ class ReefScene: SKScene {
             let srcPos = slotNodes[srcIndex].position
             let dstPos = slotNodes[dstIndex].position
             let srcSpecimen = reefStore.specimens[srcIndex]
+            let dstSpecimen = reefStore.specimens[dstIndex]
             let color = categoryColors[srcSpecimen?.category ?? .source] ?? .white
 
             let wire = createWirePath(from: srcPos, to: dstPos, color: color)
             wire.name = "wire_\(route.sourceId.uuidString)_\(route.destId.uuidString)"
             wire.zPosition = 0.5 // Between background and slots
             addChild(wire)
+
+            // Wire label at midpoint — shows connection context
+            let midX = (srcPos.x + dstPos.x) / 2
+            let midY = (srcPos.y + dstPos.y) / 2
+            // Offset slightly along the perpendicular (same direction as the bezier curve control point)
+            let dx = dstPos.x - srcPos.x
+            let dy = dstPos.y - srcPos.y
+            let perpX = -dy * 0.1
+            let perpY = dx * 0.1
+            let labelText = Self.wireContextLabel(src: srcSpecimen, dst: dstSpecimen)
+            let wireLabel = SKLabelNode(text: labelText)
+            wireLabel.fontSize = 6
+            wireLabel.fontName = "JetBrainsMono-Regular"
+            wireLabel.fontColor = color.withAlphaComponent(0.4)
+            wireLabel.verticalAlignmentMode = .center
+            wireLabel.horizontalAlignmentMode = .center
+            wireLabel.position = CGPoint(x: midX + perpX, y: midY + perpY)
+            wireLabel.zPosition = 0.7
+            wireLabel.name = "wireLabel_\(route.sourceId.uuidString)_\(route.destId.uuidString)"
+            addChild(wireLabel)
 
             // Flow dots — small circles that pulse along the wire
             let flowDot = SKShapeNode(circleOfRadius: 3)
@@ -245,6 +280,35 @@ class ReefScene: SKScene {
             addChild(flowDot)
             flowDot.run(loop)
         }
+    }
+
+    /// Determine the contextual label for a wire between two specimens
+    private static func wireContextLabel(src: Specimen?, dst: Specimen?) -> String {
+        guard let s = src, let d = dst else { return "Wired" }
+
+        // Same source track → they share musical DNA
+        if let srcTitle = s.sourceTrackTitle, let dstTitle = d.sourceTrackTitle,
+           !srcTitle.isEmpty, !dstTitle.isEmpty, srcTitle == dstTitle {
+            return "Same song"
+        }
+
+        // Same category → they're family
+        if s.category == d.category {
+            return "Same family"
+        }
+
+        // Natural coupling pair: Source → Processor, Source → Effect, Modulator → anything
+        let naturalPairs: Set<[SpecimenCategory]> = [
+            [.source, .processor], [.source, .effect],
+            [.modulator, .source], [.modulator, .processor], [.modulator, .effect]
+        ]
+        let pair = [s.category, d.category]
+        let pairReversed = [d.category, s.category]
+        if naturalPairs.contains(pair) || naturalPairs.contains(pairReversed) {
+            return "Natural pair"
+        }
+
+        return "Wired"
     }
 
     private func createWirePath(from src: CGPoint, to dst: CGPoint, color: SKColor) -> SKShapeNode {
@@ -452,8 +516,8 @@ class ReefScene: SKScene {
             }
 
             if !alreadyConnected {
-                // Create the coupling route
-                let route = CouplingRoute(sourceId: srcSpec.id, destId: dstSpec.id, depth: 0.5)
+                // Create the coupling route with connection timestamp for spectral drift
+                let route = CouplingRoute(sourceId: srcSpec.id, destId: dstSpec.id, depth: 0.5, connectedSince: Date())
                 reefStore.couplingRoutes.append(route)
                 reefStore.save()
 
@@ -504,6 +568,14 @@ class ReefScene: SKScene {
         guard parts.count == 2,
               let srcId = UUID(uuidString: String(parts[0])),
               let dstId = UUID(uuidString: String(parts[1])) else { return }
+
+        // Apply spectral drift before removing the route — specimens co-evolve
+        if let route = reefStore.couplingRoutes.first(where: {
+            ($0.sourceId == srcId && $0.destId == dstId) ||
+            ($0.sourceId == dstId && $0.destId == srcId)
+        }) {
+            reefStore.applySpectralDrift(sourceId: route.sourceId, destId: route.destId, connectedSince: route.connectedSince)
+        }
 
         reefStore.couplingRoutes.removeAll {
             ($0.sourceId == srcId && $0.destId == dstId) ||
@@ -569,6 +641,21 @@ class ReefScene: SKScene {
             "reverb-hall": "FX: Reverb", "dist-warm": "FX: Dist",
         ]
         return subtypeLabels[specimen.subtype] ?? specimen.category.rawValue.uppercased()
+    }
+
+    /// Provenance text for a specimen — shows where it came from
+    private static func provenanceLabel(for specimen: Specimen) -> String {
+        if let title = specimen.sourceTrackTitle, !title.isEmpty {
+            // Truncate to ~20 chars for readability
+            return String(title.prefix(20)) + (title.count > 20 ? "..." : "")
+        }
+        if let weather = specimen.catchWeatherDescription, !weather.isEmpty {
+            return String(weather.prefix(20)) + (weather.count > 20 ? "..." : "")
+        }
+        // Fallback: catch date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, HH:mm"
+        return formatter.string(from: specimen.catchTimestamp)
     }
 
     private func isNear(_ point: CGPoint, to target: CGPoint) -> Bool {

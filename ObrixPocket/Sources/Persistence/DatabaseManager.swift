@@ -92,6 +92,12 @@ final class DatabaseManager {
             }
         }
 
+        migrator.registerMigration("v3_coupling_connected_since") { db in
+            try db.alter(table: "couplingRoute") { t in
+                t.add(column: "connectedSince", .datetime)
+            }
+        }
+
         guard let dbQueue else { return }
         try migrator.migrate(dbQueue)
     }

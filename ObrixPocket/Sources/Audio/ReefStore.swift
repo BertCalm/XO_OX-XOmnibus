@@ -79,6 +79,7 @@ struct CouplingRoute: Codable {
     let sourceId: UUID
     let destId: UUID
     var depth: Float // -1.0 to 1.0
+    var connectedSince: Date? // When the wire was created — used for spectral drift on disconnect
 }
 
 /// The reef — 16 specimen slots + coupling
@@ -112,6 +113,40 @@ final class ReefStore: ObservableObject {
             couplingRoutes.removeAll { $0.sourceId == specId || $0.destId == specId }
         }
         specimens[index] = nil
+    }
+
+    // MARK: - Spectral Drift on Disconnect
+
+    /// Apply spectral DNA drift to two specimens that were wired together.
+    /// Drift magnitude is proportional to connection duration — small but cumulative.
+    /// Each of the 64 spectral DNA bands shifts toward the other specimen's value.
+    /// Cap: min(0.05, hours * 0.002) per band per disconnect event.
+    func applySpectralDrift(sourceId: UUID, destId: UUID, connectedSince: Date?) {
+        guard let since = connectedSince else { return }
+
+        let durationHours = Date().timeIntervalSince(since) / 3600.0
+        guard durationHours > 0 else { return }
+
+        let driftAmount = Float(min(0.05, durationHours * 0.002))
+
+        guard let srcIdx = specimens.firstIndex(where: { $0?.id == sourceId }),
+              let dstIdx = specimens.firstIndex(where: { $0?.id == destId }),
+              var srcSpec = specimens[srcIdx],
+              var dstSpec = specimens[dstIdx] else { return }
+
+        let bandCount = min(srcSpec.spectralDNA.count, dstSpec.spectralDNA.count)
+        guard bandCount > 0 else { return }
+
+        for i in 0..<bandCount {
+            let srcVal = srcSpec.spectralDNA[i]
+            let dstVal = dstSpec.spectralDNA[i]
+            // Shift each toward the other by driftAmount
+            srcSpec.spectralDNA[i] = srcVal + (dstVal - srcVal) * driftAmount
+            dstSpec.spectralDNA[i] = dstVal + (srcVal - dstVal) * driftAmount
+        }
+
+        specimens[srcIdx] = srcSpec
+        specimens[dstIdx] = dstSpec
     }
 
 }

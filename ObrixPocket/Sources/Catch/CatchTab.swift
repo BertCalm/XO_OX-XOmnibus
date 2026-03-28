@@ -502,12 +502,75 @@ struct CatchScreen: View {
         }
     }
 
+    // MARK: - Specimen Sound Configuration
+
+    /// MIDI notes for the 4 catch buttons — C4, E4, G4, C5 (musical intervals)
+    private static let catchMidiNotes: [Int32] = [60, 64, 67, 72]
+
+    /// Configure the OBRIX engine to play the CAUGHT specimen's sonic character.
+    /// After this call, noteOn with catchMidiNotes produces the creature's sound.
+    private func configureEngineForSpecimen() {
+        guard let bridge = ObrixBridge.shared() else { return }
+        let cID = SpecimenCatalog.catalogSubtypeID(from: specimen.subtype)
+
+        // Reset all modules to off
+        for param in ["obrix_src1Type", "obrix_src2Type",
+                      "obrix_proc1Type", "obrix_proc2Type", "obrix_proc3Type",
+                      "obrix_fx1Type", "obrix_fx2Type", "obrix_fx3Type",
+                      "obrix_mod1Depth", "obrix_mod2Depth"] {
+            bridge.setParameterImmediate(param, value: 0)
+        }
+        // Ensure envelope is audible
+        bridge.setParameterImmediate("obrix_ampAttack", value: 0.01)
+        bridge.setParameterImmediate("obrix_ampDecay", value: 0.3)
+        bridge.setParameterImmediate("obrix_ampSustain", value: 0.7)
+        bridge.setParameterImmediate("obrix_ampRelease", value: 0.5)
+
+        // Always enable a source so you hear something
+        let srcTypeMap: [String: Float] = [
+            "polyblep-saw": 2, "polyblep-square": 3, "polyblep-tri": 4,
+            "noise-white": 5, "noise-pink": 5, "wt-analog": 6, "wt-vocal": 6, "fm-basic": 7
+        ]
+        bridge.setParameterImmediate("obrix_src1Type", value: srcTypeMap[cID] ?? 2)
+
+        // If processor, also enable a filter with audible cutoff
+        if specimen.category == .processor {
+            let procMap: [String: Float] = [
+                "svf-lp": 1, "svf-hp": 2, "svf-bp": 3,
+                "shaper-soft": 4, "shaper-hard": 4, "feedback": 5
+            ]
+            bridge.setParameterImmediate("obrix_proc1Type", value: procMap[cID] ?? 1)
+            bridge.setParameterImmediate("obrix_proc1Cutoff", value: 2000)
+        }
+
+        // If effect, enable FX
+        if specimen.category == .effect {
+            let fxMap: [String: Float] = [
+                "delay-stereo": 1, "chorus-lush": 2, "reverb-hall": 3, "dist-warm": 1
+            ]
+            bridge.setParameterImmediate("obrix_fx1Type", value: fxMap[cID] ?? 1)
+            bridge.setParameterImmediate("obrix_fx1Mix", value: 0.5)
+        }
+
+        // If modulator, add visible LFO modulation
+        if specimen.category == .modulator {
+            bridge.setParameterImmediate("obrix_mod2Type", value: 2) // LFO
+            bridge.setParameterImmediate("obrix_mod2Target", value: 2) // Filter cutoff
+            bridge.setParameterImmediate("obrix_mod2Depth", value: 0.4)
+            bridge.setParameterImmediate("obrix_mod2Rate", value: 3.0)
+            // Enable a filter so the LFO has something to sweep
+            bridge.setParameterImmediate("obrix_proc1Type", value: 1) // LP filter
+            bridge.setParameterImmediate("obrix_proc1Cutoff", value: 3000)
+        }
+    }
+
     // MARK: - Game Logic (Multi-Round)
 
     private func startChallenge() {
         currentRound = 0
         roundResults = []
         roundFeedback = .none
+        configureEngineForSpecimen()
         startNextRound()
     }
 
@@ -523,14 +586,15 @@ struct CatchScreen: View {
     private func playPattern() {
         for (i, note) in pattern.enumerated() {
             let delay = Double(i) * 0.6 + 0.3
+            let midiNote = Self.catchMidiNotes[note]
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 currentPlaybackIndex = note
-                audioEngine.noteOn(slotIndex: note, velocity: 0.7)
+                ObrixBridge.shared()?.note(on: midiNote, velocity: 0.7)
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + delay + 0.35) {
                 currentPlaybackIndex = -1
-                audioEngine.noteOff(slotIndex: note)
+                ObrixBridge.shared()?.noteOff(midiNote)
             }
         }
         let total = Double(pattern.count) * 0.6 + 0.8
@@ -542,10 +606,11 @@ struct CatchScreen: View {
         let step = playerInput.count
         playerInput.append(idx)
 
-        audioEngine.noteOn(slotIndex: idx, velocity: 0.8)
+        let midiNote = Self.catchMidiNotes[idx]
+        ObrixBridge.shared()?.note(on: midiNote, velocity: 0.8)
         currentPlaybackIndex = idx
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            currentPlaybackIndex = -1; audioEngine.noteOff(slotIndex: idx)
+            currentPlaybackIndex = -1; ObrixBridge.shared()?.noteOff(midiNote)
         }
 
         let correct = idx == pattern[step]

@@ -126,16 +126,18 @@ struct CouplingRouteRecord: Codable, FetchableRecord, PersistableRecord {
     var sourceSpecimenId: String
     var destSpecimenId: String
     var depth: Double
+    var connectedSince: Date?
 
     init(from route: CouplingRoute) {
         self.sourceSpecimenId = route.sourceId.uuidString
         self.destSpecimenId = route.destId.uuidString
         self.depth = Double(route.depth)
+        self.connectedSince = route.connectedSince
     }
 
     func toCouplingRoute() -> CouplingRoute? {
         guard let srcId = UUID(uuidString: sourceSpecimenId),
               let dstId = UUID(uuidString: destSpecimenId) else { return nil }
-        return CouplingRoute(sourceId: srcId, destId: dstId, depth: Float(depth))
+        return CouplingRoute(sourceId: srcId, destId: dstId, depth: Float(depth), connectedSince: connectedSince)
     }
 }
