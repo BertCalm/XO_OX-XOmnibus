@@ -31,7 +31,7 @@ public:
     };
 
     struct ParamEvent {
-        char paramId[64];
+        std::atomic<float>* target;  // Pre-resolved pointer (resolved on UI thread)
         float value;
     };
 
@@ -98,20 +98,17 @@ public:
 
     void processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi) override
     {
-        // Drain parameter queue from touch/UI thread (before MIDI, before render)
+        // Drain parameter queue from touch/UI thread (before MIDI, before render).
+        // Each event carries a pre-resolved std::atomic<float>* pointer — the UI
+        // thread did the string→pointer lookup at enqueue time. ProcessBlock does
+        // ZERO string operations, ZERO hash lookups, ZERO heap allocations.
         while (_paramReadRef.load(std::memory_order_acquire) != _paramWriteRef.load(std::memory_order_acquire))
         {
             int readPos = _paramReadRef.load(std::memory_order_relaxed);
             auto& evt = _paramQueueRef[readPos];
 
-            // Look up pre-cached pointer — zero allocation on audio thread.
-            // Eliminates the juce::String heap allocation that caused audio thread
-            // overrun when many params were pushed in a burst (e.g. applyReefConfiguration).
-            auto it = _paramCache.find(evt.paramId);
-            if (it != _paramCache.end())
-            {
-                it->second->store(evt.value, std::memory_order_relaxed);
-            }
+            if (evt.target)
+                evt.target->store(evt.value, std::memory_order_relaxed);
 
             _paramReadRef.store((readPos + 1) % kParamQueueSize, std::memory_order_release);
         }
@@ -190,7 +187,7 @@ public:
     static constexpr int kParamQueueSize = 256;
 
     // Direct param accessors for main-thread callers (setParameterImmediate / getParameter).
-    // Uses the same pre-cached map — no juce::String allocation on either path.
+    // String lookup happens on the calling thread (UI/main) — never on audio thread.
     void setParamDirect(const char* paramId, float value)
     {
         auto it = _paramCache.find(paramId);
@@ -205,6 +202,10 @@ public:
             return it->second->load(std::memory_order_relaxed);
         return 0.0f;
     }
+
+    /// Expose cache for setParameter: to resolve pointers on UI thread.
+    /// The map is immutable after construction — safe to read from any thread.
+    const std::unordered_map<std::string, std::atomic<float>*>& paramCache() const { return _paramCache; }
 
 private:
     ObrixEngine& eng;
@@ -407,16 +408,20 @@ static const int kMidiQueueSize = 256;
 
 - (void)setParameter:(NSString *)paramId value:(float)value
 {
-    // Lock-free enqueue to param queue; drained in adapter's processBlock before render
+    if (!_adapter) return;
+
+    // Resolve the parameter pointer NOW on the UI thread — processBlock
+    // will just dereference the pointer with zero string operations.
+    auto it = _adapter->paramCache().find([paramId UTF8String]);
+    if (it == _adapter->paramCache().end()) return; // Unknown param — ignore
+
     int writePos = _paramWritePos.load(std::memory_order_relaxed);
     int nextPos = (writePos + 1) % ObrixProcessorAdapter::kParamQueueSize;
-    if (nextPos == _paramReadPos.load(std::memory_order_acquire)) return; // queue full — drop silently
+    if (nextPos == _paramReadPos.load(std::memory_order_acquire)) return; // queue full
 
-    strncpy(_paramQueue[writePos].paramId, [paramId UTF8String], 63);
-    _paramQueue[writePos].paramId[63] = '\0';
+    _paramQueue[writePos].target = it->second;
     _paramQueue[writePos].value = value;
     _paramWritePos.store(nextPos, std::memory_order_release);
-    // TODO Phase 2: Map paramId string to engine parameter in processBlock drain loop
 }
 
 - (float)getParameter:(NSString *)paramId

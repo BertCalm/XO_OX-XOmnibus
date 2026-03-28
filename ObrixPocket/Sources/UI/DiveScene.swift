@@ -115,7 +115,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Player Geometry Constants
 
     private let playerRadius: CGFloat  = 16.0
-    private let playerYFraction: CGFloat = 0.25   // 25 % from bottom
+    private let playerYFraction: CGFloat = 0.75   // 75 % from bottom — player is near top, diving downward
     private let playerMinXFraction: CGFloat = 0.10
     private let playerMaxXFraction: CGFloat = 0.90
 
@@ -322,7 +322,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         let xRange = size.width * playerMinXFraction ... size.width * playerMaxXFraction
         node.position = CGPoint(
             x: CGFloat.random(in: xRange),
-            y: size.height + radius + 20
+            y: -(radius + 20)   // Spawn below visible area — scrolls upward past the descending player
         )
 
         let body = SKPhysicsBody(circleOfRadius: radius - 2)
@@ -334,7 +334,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
 
         addChild(node)
         obstacleNodes.insert(node)
-        animateObstacleDown(node: node, speed: scrollSpeedForZone())
+        animateObstacleUp(node: node, speed: scrollSpeedForZone())
     }
 
     private func spawnJellyfish() {
@@ -349,7 +349,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         let xRange = size.width * 0.15 ... size.width * 0.85
         node.position = CGPoint(
             x: CGFloat.random(in: xRange),
-            y: self.size.height + size2 + 20
+            y: -(size2 + 20)   // Spawn below visible area — scrolls upward
         )
 
         let body = SKPhysicsBody(rectangleOf: CGSize(width: size2 - 4, height: size2 * 0.75 - 4))
@@ -362,7 +362,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         addChild(node)
         obstacleNodes.insert(node)
         jellyfishPhases[node] = Double.random(in: 0 ..< .pi * 2)
-        animateObstacleDown(node: node, speed: scrollSpeedForZone() * 0.7)
+        animateObstacleUp(node: node, speed: scrollSpeedForZone() * 0.7)
     }
 
     private func spawnShark() {
@@ -376,8 +376,9 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         node.name        = "obstacle_shark"
         node.zPosition   = 5
 
-        // Sharks cross horizontally at a random Y in the upper 60% of the scene
-        let yPos = CGFloat.random(in: size.height * 0.4 ... size.height * 0.9)
+        // Sharks cross at the player's Y level (±30 pt) so they're always a real threat
+        let playerY = size.height * 0.75   // Matches playerYFraction
+        let yPos = playerY + CGFloat.random(in: -30...30)
         let goingRight = Bool.random()
 
         let startX: CGFloat = goingRight ? -(w * 0.5 + 10) : size.width + w * 0.5 + 10
@@ -462,7 +463,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
             x: goRight
                 ? CGFloat.random(in: size.width * 0.1 ... size.width * 0.45)
                 : CGFloat.random(in: size.width * 0.55 ... size.width * 0.9),
-            y: self.size.height + h * 0.5 + 20
+            y: -(h * 0.5 + 20)   // Spawn below visible area — scrolls upward
         )
 
         let body = SKPhysicsBody(rectangleOf: CGSize(width: w - 4, height: h - 4))
@@ -476,7 +477,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
 
         addChild(node)
         obstacleNodes.insert(node)
-        animateObstacleDown(node: node, speed: scrollSpeedForZone() * 0.8)
+        animateObstacleUp(node: node, speed: scrollSpeedForZone() * 0.8)
     }
 
     private func spawnCollectibleOrb() {
@@ -492,7 +493,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         let xRange = size.width * 0.15 ... size.width * 0.85
         node.position = CGPoint(
             x: CGFloat.random(in: xRange),
-            y: self.size.height + radius + 20
+            y: -(radius + 20)   // Spawn below visible area — scrolls upward past the player
         )
 
         // Physics
@@ -519,14 +520,14 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         scaleDown.timingMode = .easeInEaseOut
         node.run(.repeatForever(.sequence([scaleUp, scaleDown])))
 
-        // Scroll down with obstacles
-        animateObstacleDown(node: node, speed: scrollSpeedForZone() * 0.75)
+        // Scroll upward with obstacles (player is diving down)
+        animateObstacleUp(node: node, speed: scrollSpeedForZone() * 0.75)
     }
 
     // MARK: - Obstacle Motion Helpers
 
     private func scrollSpeedForZone() -> CGFloat {
-        // Points per second at which obstacles move downward
+        // Points per second at which obstacles scroll upward (player descends past them)
         switch currentZone {
         case .sunlit:   return CGFloat.random(in: 110...150)
         case .twilight: return CGFloat.random(in: 150...210)
@@ -535,12 +536,14 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    private func animateObstacleDown(node: SKNode, speed: CGFloat) {
-        // Distance to travel: from spawn Y to -50 (off bottom)
-        let distance = node.position.y + 50
+    private func animateObstacleUp(node: SKNode, speed: CGFloat) {
+        // Obstacles spawn below the screen (negative Y) and scroll upward past the player.
+        // Distance to travel: from spawn Y (negative) to size.height + 60 (off top).
+        let destination = size.height + 60
+        let distance    = destination - node.position.y
         guard speed > 0 else { return }
         let duration = TimeInterval(distance / speed)
-        let move    = SKAction.moveTo(y: -50, duration: duration)
+        let move    = SKAction.moveTo(y: destination, duration: duration)
         let cleanup = SKAction.run { [weak self, weak node] in
             guard let node else { return }
             self?.obstacleNodes.remove(node)
@@ -815,14 +818,15 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Off-Screen Cleanup
 
     private func pruneOffScreenNodes() {
-        let bottomEdge: CGFloat = -60
+        // Obstacles scroll upward — prune nodes that have passed above the top edge.
+        let topEdge: CGFloat = size.height + 60
         children
             .filter { node in
                 guard let name = node.name else { return false }
                 let isObstacle = name.hasPrefix("obstacle_") ||
                                  name == "collectible_orb" ||
                                  name == "shark_warning"
-                return isObstacle && node.position.y < bottomEdge
+                return isObstacle && node.position.y > topEdge
             }
             .forEach { node in
                 jellyfishPhases.removeValue(forKey: node)
