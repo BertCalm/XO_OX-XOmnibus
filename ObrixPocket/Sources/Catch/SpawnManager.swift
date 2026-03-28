@@ -3,7 +3,7 @@ import CoreLocation
 
 /// A wild specimen visible on the radar — available for catching.
 struct WildSpecimen: Identifiable {
-    let id = UUID()
+    let id: UUID
     let category: SpecimenCategory
     let subtype: String
     let rarity: SpecimenRarity
@@ -18,6 +18,41 @@ struct WildSpecimen: Identifiable {
 
     /// Catch-time spectral bias from the spawn biome
     var biomeBias: [Float] { biome.spectralBias }
+
+    /// Standard init — generates a fresh UUID automatically.
+    init(
+        category: SpecimenCategory,
+        subtype: String,
+        rarity: SpecimenRarity,
+        biome: Biome,
+        spawnSource: SpawnSource,
+        direction: Double,
+        distance: Double,
+        expiresAt: Date
+    ) {
+        self.id = UUID()
+        self.category = category
+        self.subtype = subtype
+        self.rarity = rarity
+        self.biome = biome
+        self.spawnSource = spawnSource
+        self.direction = direction
+        self.distance = distance
+        self.expiresAt = expiresAt
+    }
+
+    /// Refresh init — preserves the existing id so map annotations stay stable.
+    init(preservingID id: UUID, from source: WildSpecimen, expiresAt: Date) {
+        self.id = id
+        self.category = source.category
+        self.subtype = source.subtype
+        self.rarity = source.rarity
+        self.biome = source.biome
+        self.spawnSource = source.spawnSource
+        self.direction = source.direction
+        self.distance = source.distance
+        self.expiresAt = expiresAt
+    }
 }
 
 /// Which spawn subsystem created this specimen (spec Section 4 + 7.2)
@@ -204,6 +239,15 @@ final class SpawnManager: ObservableObject {
     /// Removes specimens whose 4-hour window has closed.
     func pruneExpired() {
         wildSpecimens.removeAll { $0.expiresAt < Date() }
+    }
+
+    // MARK: - Expiry Reset (escape/retry mechanic)
+
+    /// Replaces the wild specimen with the given id with an updated copy (e.g. refreshed expiry).
+    /// Called by CatchTab after a failed catch so the specimen stays on the map.
+    func updateSpecimen(_ updated: WildSpecimen, replacing oldID: UUID) {
+        guard let idx = wildSpecimens.firstIndex(where: { $0.id == oldID }) else { return }
+        wildSpecimens[idx] = updated
     }
 
     // MARK: - Generation
