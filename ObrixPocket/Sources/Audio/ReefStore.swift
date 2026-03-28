@@ -102,6 +102,11 @@ final class ReefStore: ObservableObject {
     @Published var reefName: String = "My Reef"
     @Published var totalDiveDepth: Int = 0
 
+    /// Monotonic counter incremented at the start of every load() call.
+    /// The async completion block checks this before writing to guard against
+    /// double-call races where an older load() resolves after a newer one.
+    var loadGeneration: Int = 0
+
     /// Count of non-nil, non-phantom specimens (for Dive eligibility)
     var diveEligibleCount: Int {
         specimens.compactMap { $0 }.filter { !$0.isPhantom }.count

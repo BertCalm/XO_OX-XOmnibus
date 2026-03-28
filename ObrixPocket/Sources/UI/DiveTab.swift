@@ -63,6 +63,8 @@ struct DiveTab: View {
     @State private var noteTimer: Timer?
     @State private var lastZone: DepthZone = .sunlit
     @State private var reefBonus: Float = 1.0
+    /// Incremented each time a dive starts; stale note-off closures check this before firing.
+    @State private var diveGeneration = 0
 
     enum DivePhase {
         case ready      // Before dive
@@ -108,6 +110,9 @@ struct DiveTab: View {
 
                 Spacer()
             }
+        }
+        .onDisappear {
+            if isDiving { endDive() }
         }
     }
 
@@ -249,7 +254,7 @@ struct DiveTab: View {
                 // Award XP to all reef specimens
                 for (index, spec) in reefStore.specimens.enumerated() {
                     if spec != nil {
-                        audioEngine.earnXP(slotIndex: index, amount: xpReward)
+                        audioEngine.awardBulkXP(slotIndex: index, amount: xpReward)
                     }
                 }
                 // Update total dive depth
@@ -284,6 +289,7 @@ struct DiveTab: View {
     // MARK: - Dive Logic
 
     private func startDive() {
+        diveGeneration += 1
         divePhase = .diving
         diveProgress = 0
         diveDepth = 0
@@ -384,7 +390,9 @@ struct DiveTab: View {
             case .abyssal:  noteDuration = Double.random(in: 1.0...4.0)  // Long, haunting
             }
 
+            let gen = diveGeneration
             DispatchQueue.main.asyncAfter(deadline: .now() + noteDuration) {
+                guard diveGeneration == gen else { return }
                 ObrixBridge.shared()?.noteOff(Int32(midiNote))
                 activeNotes.remove(midiNote)
             }

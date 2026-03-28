@@ -79,12 +79,15 @@ enum SpawnSource: String, Codable {
 ///   Community Events   → Special limited-edition (Phase 4)
 final class SpawnManager: ObservableObject {
     @Published var wildSpecimens: [WildSpecimen] = []
-    @Published var lastDriftDate: Date?
+
+    /// Weak reference to ReefStore — used for persisting visited geohashes across launches.
+    weak var reefStore: ReefStore?
 
     private let biomeDetector: BiomeDetector
     private let defaults = UserDefaults.standard
     private let loginStreakKey = "obrix_login_streak"
     private let lastLoginDateKey = "obrix_last_login_date"
+    private let lastDriftDateKey = "obrix_spawn_last_drift_date"
 
     var loginStreak: Int {
         get { defaults.integer(forKey: loginStreakKey) }
@@ -94,6 +97,12 @@ final class SpawnManager: ObservableObject {
     var lastLoginDate: Date? {
         get { defaults.object(forKey: lastLoginDateKey) as? Date }
         set { defaults.set(newValue, forKey: lastLoginDateKey) }
+    }
+
+    /// Persisted to UserDefaults so the daily drift window survives app restarts.
+    var lastDriftDate: Date? {
+        get { defaults.object(forKey: lastDriftDateKey) as? Date }
+        set { defaults.set(newValue, forKey: lastDriftDateKey) }
     }
 
     // MARK: - Specimen subtype rosters (spec Section 7.1)
@@ -218,11 +227,20 @@ final class SpawnManager: ObservableObject {
 
     private var visitedGeohashes: Set<String> = []
 
+    /// Populate in-memory visitedGeohashes from the DB on launch.
+    /// Call this once after setting reefStore, before the first checkExplorationBonus call.
+    func loadPersistedGeohashes() {
+        if let hashes = reefStore?.loadVisitedGeohashes() {
+            visitedGeohashes = hashes
+        }
+    }
+
     /// Awards a Rare+ specimen of any category when entering a previously unvisited 500m cell.
     func checkExplorationBonus(at location: CLLocationCoordinate2D) {
         let hash = simpleGeohash(location, precision: 3) // ~600m cell (2^15 = 32768 buckets, 180/32768 ≈ 610m)
         guard !visitedGeohashes.contains(hash) else { return }
         visitedGeohashes.insert(hash)
+        reefStore?.saveVisitedGeohash(hash)
 
         let category = SpecimenCategory.allCases.randomElement() ?? .source
         // Exploration guarantees Rare or better

@@ -71,6 +71,12 @@ class ReefScene: SKScene {
         buildGrid()
     }
 
+    override func willMove(from view: SKView) {
+        longPressTimer?.invalidate()
+        longPressTimer = nil
+        cancelWiring()
+    }
+
     // MARK: - Grid Construction
 
     func refreshGrid() {

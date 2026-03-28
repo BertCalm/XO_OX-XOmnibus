@@ -19,6 +19,10 @@ final class DatabaseManager {
 
             var config = Configuration()
             config.foreignKeysEnabled = true
+            // WAL journal mode: crash-safe partial writes, better read/write concurrency
+            config.prepareDatabase { db in
+                try db.execute(sql: "PRAGMA journal_mode=WAL")
+            }
 
             dbQueue = try DatabaseQueue(path: databaseURL.path, configuration: config)
             try migrate()

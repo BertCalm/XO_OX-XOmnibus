@@ -35,8 +35,13 @@ extension ReefStore {
         }
     }
 
-    /// Load reef state from database
+    /// Load reef state from database.
+    /// A generation counter guards against double-call races: if two load() calls
+    /// overlap, only the most-recent one's async write is applied.
     func load() {
+        loadGeneration += 1
+        let currentGeneration = loadGeneration
+
         let db = DatabaseManager.shared.db
         guard let db else { return }
         do {
@@ -65,12 +70,13 @@ extension ReefStore {
                 let reefNameValue = try loadMetadata(db, key: "reefName") ?? "My Reef"
                 let diveDepthValue = Int(try loadMetadata(db, key: "totalDiveDepth") ?? "0") ?? 0
 
-                // Publish on main thread
+                // Publish on main thread — bail if a newer load() has already started
                 DispatchQueue.main.async { [weak self] in
-                    self?.specimens = loadedSpecimens
-                    self?.couplingRoutes = loadedRoutes
-                    self?.reefName = reefNameValue
-                    self?.totalDiveDepth = diveDepthValue
+                    guard let self, self.loadGeneration == currentGeneration else { return }
+                    self.specimens = loadedSpecimens
+                    self.couplingRoutes = loadedRoutes
+                    self.reefName = reefNameValue
+                    self.totalDiveDepth = diveDepthValue
                 }
             }
         } catch {

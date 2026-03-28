@@ -59,7 +59,7 @@ final class PerformanceRecorder: ObservableObject {
     // MARK: - Playback
 
     func play(noteOn: @escaping (Int, Float) -> Void, noteOff: @escaping (Int) -> Void) {
-        guard hasRecording, !events.isEmpty else { return }
+        guard hasRecording, !events.isEmpty, !isPlaying else { return }
         isPlaying = true
         playbackIndex = 0
 

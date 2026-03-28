@@ -381,8 +381,42 @@ final class AudioEngineManager: ObservableObject {
     /// Records when each slot's note started (for duration-based XP on noteOff)
     private var noteOnTimestamps: [Int: Date] = [:]
 
+    /// Award XP from external sources (Dive rewards, daily energy).
+    /// Must be called on the main thread. Does a single atomic read-mutate-write.
+    func awardBulkXP(slotIndex: Int, amount: Int) {
+        assert(Thread.isMainThread, "awardBulkXP must be called on main thread")
+        guard let reefStore = reefStoreRef,
+              var specimen = reefStore.specimens[slotIndex] else { return }
+
+        let mult = Self.xpMultiplier(specimen.rarity)
+        specimen.xp += Int((Float(amount) * mult).rounded())
+
+        let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
+        if newLevel > specimen.level {
+            let oldLevel = specimen.level
+            specimen.level = newLevel
+            HapticEngine.levelUp()
+            let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
+                                          description: "Reached level \(newLevel)")
+            specimen.journal.append(levelEntry)
+            if newLevel >= 10 && oldLevel < 10 {
+                if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
+                    specimen.name = evolved.name
+                    HapticEngine.evolution()
+                    let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
+                                                   description: "Evolved into \(evolved.name)")
+                    specimen.journal.append(evolveEntry)
+                }
+            }
+        }
+
+        reefStore.specimens[slotIndex] = specimen
+    }
+
     /// Award XP to the specimen in the given slot, checking for level-up.
     /// Rarer specimens receive a multiplier so they progress faster (reward for harder catch).
+    @available(*, deprecated, renamed: "awardBulkXP(slotIndex:amount:)",
+               message: "Use awardBulkXP for external callers (Dive, daily energy). earnXP is called internally by noteOn/noteOff only.")
     func earnXP(slotIndex: Int, amount: Int) {
         guard let reefStore = reefStoreRef,
               var specimen = reefStore.specimens[slotIndex] else { return }
@@ -418,6 +452,7 @@ final class AudioEngineManager: ObservableObject {
     }
 
     func noteOn(slotIndex: Int, velocity: Float) {
+        assert(Thread.isMainThread, "noteOn must be called on main thread")
         guard let bridge = ObrixBridge.shared() else { return }
 
         // Fast path: blast cached params (no UUID matching, no chain walking per note).
@@ -487,6 +522,7 @@ final class AudioEngineManager: ObservableObject {
     }
 
     func noteOff(slotIndex: Int) {
+        assert(Thread.isMainThread, "noteOff must be called on main thread")
         // Clamp to valid MIDI note range 0-127
         let note = min(127, max(0, 60 + slotIndex))
         ObrixBridge.shared()?.noteOff(Int32(note))

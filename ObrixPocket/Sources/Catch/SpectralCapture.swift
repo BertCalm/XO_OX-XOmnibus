@@ -225,14 +225,23 @@ final class SpectralCapture: ObservableObject {
     // MARK: - Private: Engine Teardown
 
     private func stopEngine() {
+        // Nil out fftSetup FIRST so any processBuffer call that started before
+        // removeTap returns will see nil and exit early at the guard let fftSetup check.
+        // This prevents use-after-free when the tap thread races with teardown.
+        let setup = fftSetup
+        fftSetup = nil
+        fftLog2n = 0
+
+        // Now safe to remove the tap — no new processBuffer calls will start after this,
+        // and any in-flight calls have already exited via the fftSetup nil guard above.
         audioEngine?.inputNode.removeTap(onBus: 0)
         audioEngine?.stop()
         audioEngine = nil
-        if let setup = fftSetup {
+
+        // Destroy the FFT setup last — guaranteed no readers remain
+        if let setup {
             vDSP_destroy_fftsetup(setup)
-            fftSetup = nil
         }
-        fftLog2n = 0
     }
 
     // MARK: - Neutral Profile ("Studio Caught")

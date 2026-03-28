@@ -204,6 +204,9 @@ struct CatchTab: View {
     private func onAppear() {
         if spawnManager == nil {
             spawnManager = SpawnManager(biomeDetector: biomeDetector)
+            // Wire reefStore for geohash persistence and load any previously visited cells
+            spawnManager?.reefStore = reefStore
+            spawnManager?.loadPersistedGeohashes()
         }
 
         // Journey override: force the scripted next specimen during the tutorial

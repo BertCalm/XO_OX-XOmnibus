@@ -13,6 +13,7 @@ struct ReefTab: View {
     @StateObject private var ambientManager = ReefAmbientManager()
     @StateObject private var metronome = MetronomeManager()
     @State private var reefScene: ReefScene?
+    @State private var gridRefreshTimer: Timer?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
     @State private var octaveOffset: Int = 0      // Keyboard octave shift (-2 to +2)
@@ -151,7 +152,13 @@ struct ReefTab: View {
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.45)
                         .onReceive(reefStore.objectWillChange) { _ in
-                            reefScene?.refreshGrid()
+                            // Debounce: rapid @Published changes (e.g. slider drags)
+                            // collapse into one rebuild per 150ms instead of rebuilding
+                            // on every tick, which was causing frame drops.
+                            gridRefreshTimer?.invalidate()
+                            gridRefreshTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { _ in
+                                reefScene?.refreshGrid()
+                            }
                         }
                 } else {
                     Color.clear
@@ -461,7 +468,7 @@ struct ReefTab: View {
                         if firstLaunchManager.dailyEnergyEarned && !firstLaunchManager.energyDistributedToday {
                             for (index, spec) in reefStore.specimens.enumerated() {
                                 if spec != nil {
-                                    audioEngine.earnXP(slotIndex: index, amount: 25)
+                                    audioEngine.awardBulkXP(slotIndex: index, amount: 25)
                                 }
                             }
                             firstLaunchManager.recordEnergyDistribution()
