@@ -103,7 +103,7 @@ struct CollectionTab: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "0E0E10")
+                DesignTokens.background
                     .ignoresSafeArea()
 
                 ScrollView {
@@ -137,7 +137,7 @@ struct CollectionTab: View {
 
                         CollectionSection(
                             title: "Shells",
-                            categoryColor: Color(hex: "3380FF"),
+                            categoryColor: DesignTokens.sourceColor,
                             entries: coreSources,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
@@ -155,7 +155,7 @@ struct CollectionTab: View {
 
                         CollectionSection(
                             title: "Coral",
-                            categoryColor: Color(hex: "FF4D4D"),
+                            categoryColor: DesignTokens.errorRed,
                             entries: coreProcessors,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
@@ -173,7 +173,7 @@ struct CollectionTab: View {
 
                         CollectionSection(
                             title: "Currents",
-                            categoryColor: Color(hex: "4DCC4D"),
+                            categoryColor: DesignTokens.modulatorColor,
                             entries: coreModulators,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
@@ -191,7 +191,7 @@ struct CollectionTab: View {
 
                         CollectionSection(
                             title: "Tide Pools",
-                            categoryColor: Color(hex: "B34DFF"),
+                            categoryColor: DesignTokens.effectColor,
                             entries: coreEffects,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
@@ -223,13 +223,12 @@ struct CollectionTab: View {
             .navigationBarHidden(true)
             .alert("Reset All Data?", isPresented: $showResetConfirm) {
                 Button("Reset Everything", role: .destructive) {
+                    // Clear UserDefaults (streaks, badges, milestones, energy, etc.)
                     let domain = Bundle.main.bundleIdentifier!
                     UserDefaults.standard.removePersistentDomain(forName: domain)
-                    for i in 0..<ReefStore.maxSlots {
-                        reefStore.specimens[i] = nil
-                    }
-                    reefStore.couplingRoutes.removeAll()
-                    reefStore.save()
+
+                    // Clear all specimens (reef + stasis + collection) and wipe GRDB
+                    reefStore.resetAll()
                 }
                 Button("Cancel", role: .cancel) {}
             } message: {
@@ -247,7 +246,7 @@ struct CollectionTab: View {
             .sheet(isPresented: $showingCard) {
                 if let specimen = selectedSpecimen {
                     MicroscopeView(specimen: specimen)
-                        .background(Color(hex: "0E0E10").ignoresSafeArea())
+                        .background(DesignTokens.background.ignoresSafeArea())
                 }
             }
             .sheet(isPresented: $showExportShare) {
@@ -316,7 +315,7 @@ struct CollectionTab: View {
                 }) {
                     Text(compareMode ? "Cancel" : "Compare")
                         .font(.custom("Inter-Regular", size: 11))
-                        .foregroundColor(compareMode ? Color(hex: "FF4D4D") : Color(hex: "1E8B7E").opacity(0.6))
+                        .foregroundColor(compareMode ? DesignTokens.errorRed : DesignTokens.reefJade.opacity(0.6))
                 }
                 .accessibilityLabel(compareMode ? "Cancel compare" : "Compare specimens")
             }
@@ -328,7 +327,7 @@ struct CollectionTab: View {
                         .foregroundColor(.white.opacity(0.4))
                     Text("\(discoveredCoreCount) / 16")
                         .font(.custom("JetBrainsMono-Regular", size: 10))
-                        .foregroundColor(Color(hex: "1E8B7E"))
+                        .foregroundColor(DesignTokens.reefJade)
                 }
                 // Deep count
                 HStack(spacing: 4) {
@@ -337,7 +336,7 @@ struct CollectionTab: View {
                         .foregroundColor(.white.opacity(0.4))
                     Text("\(discoveredDeepCount) / 8")
                         .font(.custom("JetBrainsMono-Regular", size: 10))
-                        .foregroundColor(Color(hex: "7B5FD4"))
+                        .foregroundColor(DesignTokens.deepAccent)
                 }
                 Spacer()
             }
@@ -354,12 +353,12 @@ struct CollectionTab: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Image(systemName: "heart.fill")
-                        .foregroundColor(Color(hex: "FF4D4D"))
+                        .foregroundColor(DesignTokens.errorRed)
                         .font(.system(size: 10))
                     Text("FAVORITES")
                         .font(.custom("JetBrainsMono-Regular", size: 10))
                         .tracking(1.5)
-                        .foregroundColor(Color(hex: "FF4D4D"))
+                        .foregroundColor(DesignTokens.errorRed)
                 }
                 .padding(.horizontal, 20)
 
@@ -396,10 +395,10 @@ struct CollectionTab: View {
                 HStack(spacing: 6) {
                     Image(systemName: "crown.fill")
                         .font(.system(size: 12))
-                        .foregroundColor(Color(hex: "E9C46A"))
+                        .foregroundColor(DesignTokens.xoGold)
                     Text(masteryManager.masteryTitle)
                         .font(.custom("SpaceGrotesk-Bold", size: 14))
-                        .foregroundColor(Color(hex: "E9C46A"))
+                        .foregroundColor(DesignTokens.xoGold)
                     Text("Lv.\(masteryManager.masteryLevel)")
                         .font(.custom("JetBrainsMono-Regular", size: 11))
                         .foregroundColor(.white.opacity(0.5))
@@ -411,7 +410,7 @@ struct CollectionTab: View {
                         RoundedRectangle(cornerRadius: 2)
                             .fill(Color.white.opacity(0.06))
                         RoundedRectangle(cornerRadius: 2)
-                            .fill(Color(hex: "E9C46A").opacity(0.4))
+                            .fill(DesignTokens.xoGold.opacity(0.4))
                             .frame(width: geo.size.width * CGFloat(masteryManager.progressToNextLevel))
                     }
                 }
@@ -437,7 +436,7 @@ struct CollectionTab: View {
             Text("COLLECTION PROGRESS")
                 .font(.custom("JetBrainsMono-Regular", size: 10))
                 .tracking(1.5)
-                .foregroundColor(Color(hex: "E9C46A"))
+                .foregroundColor(DesignTokens.xoGold)
                 .padding(.horizontal, 4)
 
             ForEach(collectionTracker.milestones) { milestone in
@@ -448,7 +447,7 @@ struct CollectionTab: View {
                 HStack(spacing: 8) {
                     Image(systemName: claimed ? "checkmark.seal.fill" : (complete ? "seal.fill" : "circle"))
                         .font(.system(size: 12))
-                        .foregroundColor(claimed ? Color(hex: "1E8B7E") : (complete ? Color(hex: "E9C46A") : .white.opacity(0.2)))
+                        .foregroundColor(claimed ? DesignTokens.reefJade : (complete ? DesignTokens.xoGold : .white.opacity(0.2)))
 
                     VStack(alignment: .leading, spacing: 1) {
                         Text(milestone.title)
@@ -466,7 +465,7 @@ struct CollectionTab: View {
                             collectionTracker.claim(milestone)
                         }
                         .font(.custom("JetBrainsMono-Bold", size: 9))
-                        .foregroundColor(Color(hex: "E9C46A"))
+                        .foregroundColor(DesignTokens.xoGold)
                     }
                 }
                 .padding(.horizontal, 4)
@@ -483,7 +482,7 @@ struct CollectionTab: View {
                 Text("MILESTONES")
                     .font(.custom("JetBrainsMono-Regular", size: 10))
                     .tracking(1.5)
-                    .foregroundColor(Color(hex: "E9C46A"))
+                    .foregroundColor(DesignTokens.xoGold)
                 Spacer()
                 Text("\(milestoneManager.unlockedCount)/\(milestoneManager.totalCount)")
                     .font(.custom("JetBrainsMono-Regular", size: 10))
@@ -495,7 +494,7 @@ struct CollectionTab: View {
                 HStack(spacing: 10) {
                     Image(systemName: milestone.icon)
                         .font(.system(size: 14))
-                        .foregroundColor(milestone.unlocked ? Color(hex: "E9C46A") : .white.opacity(0.2))
+                        .foregroundColor(milestone.unlocked ? DesignTokens.xoGold : .white.opacity(0.2))
                         .frame(width: 24)
 
                     VStack(alignment: .leading, spacing: 2) {
@@ -511,7 +510,7 @@ struct CollectionTab: View {
 
                     if milestone.unlocked {
                         Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(Color(hex: "1E8B7E"))
+                            .foregroundColor(DesignTokens.reefJade)
                     } else {
                         Text("\(milestone.progress)/\(milestone.requirement)")
                             .font(.custom("JetBrainsMono-Regular", size: 9))
@@ -530,12 +529,12 @@ struct CollectionTab: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "arrow.left.arrow.right")
-                    .foregroundColor(Color(hex: "1E8B7E"))
+                    .foregroundColor(DesignTokens.reefJade)
                     .font(.system(size: 10))
                 Text("TRADING POST")
                     .font(.custom("JetBrainsMono-Regular", size: 10))
                     .tracking(1.5)
-                    .foregroundColor(Color(hex: "1E8B7E"))
+                    .foregroundColor(DesignTokens.reefJade)
                 Spacer()
                 Text("\(tradePost.offers.count) offers")
                     .font(.custom("JetBrainsMono-Regular", size: 9))
@@ -580,7 +579,7 @@ struct CollectionTab: View {
                             .foregroundColor(.white.opacity(0.5))
                         Text("\(offer.offeredRarity.rawValue) Lv.\(offer.offeredLevel)")
                             .font(.custom("JetBrainsMono-Regular", size: 7))
-                            .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+                            .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                     }
                     .frame(maxWidth: .infinity)
                 }
@@ -590,7 +589,7 @@ struct CollectionTab: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(Color(hex: "1E8B7E").opacity(0.15), lineWidth: 1)
+                        .strokeBorder(DesignTokens.reefJade.opacity(0.15), lineWidth: 1)
                 )
                 .padding(.horizontal, 20)
             }
@@ -641,7 +640,7 @@ struct CollectionTab: View {
                 Spacer()
                 Toggle("", isOn: $notificationsEnabled)
                     .labelsHidden()
-                    .tint(Color(hex: "1E8B7E"))
+                    .tint(DesignTokens.reefJade)
                     .onChange(of: notificationsEnabled) { enabled in
                         if enabled {
                             NotificationManager.shared.scheduleDailyEnergyReminder()
@@ -670,7 +669,7 @@ struct CollectionTab: View {
                 HStack(spacing: 10) {
                     Image(systemName: "wifi")
                         .font(.system(size: 14))
-                        .foregroundColor(oscSender.isConnected ? Color(hex: "1E8B7E") : .white.opacity(0.3))
+                        .foregroundColor(oscSender.isConnected ? DesignTokens.reefJade : .white.opacity(0.3))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("OSC Output")
                             .font(.custom("Inter-Medium", size: 13))
@@ -694,11 +693,11 @@ struct CollectionTab: View {
                 HStack(spacing: 10) {
                     Image(systemName: "square.and.arrow.up")
                         .font(.system(size: 14))
-                        .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                        .foregroundColor(DesignTokens.reefJade.opacity(0.6))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Export Reef (.xoreef)")
                             .font(.custom("Inter-Medium", size: 13))
-                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.7))
+                            .foregroundColor(DesignTokens.reefJade.opacity(0.7))
                         Text("Share or import to desktop XOceanus")
                             .font(.custom("Inter-Regular", size: 9))
                             .foregroundColor(.white.opacity(0.25))
@@ -717,11 +716,11 @@ struct CollectionTab: View {
                 HStack(spacing: 10) {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .font(.system(size: 14))
-                        .foregroundColor(Color(hex: "FF4D4D").opacity(0.5))
+                        .foregroundColor(DesignTokens.errorRed.opacity(0.5))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Reset All Data")
                             .font(.custom("Inter-Medium", size: 13))
-                            .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+                            .foregroundColor(DesignTokens.errorRed.opacity(0.6))
                         Text("Delete all specimens, wiring, and progress")
                             .font(.custom("Inter-Regular", size: 9))
                             .foregroundColor(.white.opacity(0.2))
@@ -796,11 +795,11 @@ struct CollectionTab: View {
                 HStack(spacing: 8) {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 9, weight: .medium))
-                        .foregroundColor(Color(hex: "7B5FD4"))
+                        .foregroundColor(DesignTokens.deepAccent)
 
                     Text("DEEP SPECIMENS")
                         .font(.custom("JetBrainsMono-Regular", size: 9))
-                        .foregroundColor(Color(hex: "7B5FD4"))
+                        .foregroundColor(DesignTokens.deepAccent)
                         .tracking(1.5)
 
                     Text("(\(discoveredDeepCount)/8 unlocked)")
@@ -903,8 +902,8 @@ private struct DeepSpecimensGrid: View {
                                 RoundedRectangle(cornerRadius: 8)
                                     .strokeBorder(
                                         isDiscovered
-                                            ? Color(hex: "7B5FD4").opacity(0.40)
-                                            : Color(hex: "7B5FD4").opacity(0.12),
+                                            ? DesignTokens.deepAccent.opacity(0.40)
+                                            : DesignTokens.deepAccent.opacity(0.12),
                                         lineWidth: 1
                                     )
                             )
@@ -937,15 +936,15 @@ private struct DeepSpecimenCard: View {
                 // Lock icon + unlock condition
                 ZStack {
                     Circle()
-                        .fill(Color(hex: "7B5FD4").opacity(0.08))
+                        .fill(DesignTokens.deepAccent.opacity(0.08))
                         .frame(width: 48, height: 48)
                     Image(systemName: "lock.fill")
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(Color(hex: "7B5FD4").opacity(0.5))
+                        .foregroundColor(DesignTokens.deepAccent.opacity(0.5))
                 }
                 Text(entry.unlockCondition)
                     .font(.custom("Inter-Regular", size: 8))
-                    .foregroundColor(Color(hex: "7B5FD4").opacity(0.55))
+                    .foregroundColor(DesignTokens.deepAccent.opacity(0.55))
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.7)

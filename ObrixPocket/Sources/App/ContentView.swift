@@ -36,7 +36,7 @@ struct ContentView: View {
                     }
                     .tag(3)
             }
-            .tint(Color(hex: "1E8B7E"))
+            .tint(DesignTokens.reefJade)
 
             // Floating music catch button — hidden on Reef tab (keyboard is there)
             if selectedTab != 0 {
@@ -69,11 +69,11 @@ struct ContentView: View {
     private var musicCatchButtonBackground: some View {
         if firstLaunchManager.canMusicCatch {
             Circle()
-                .fill(Color(hex: "1E8B7E"))
-                .shadow(color: Color(hex: "1E8B7E").opacity(0.4), radius: 8, y: 4)
+                .fill(DesignTokens.reefJade)
+                .shadow(color: DesignTokens.reefJade.opacity(0.4), radius: 8, y: 4)
         } else {
             Circle()
-                .fill(Color(hex: "0E0E10"))
+                .fill(DesignTokens.background)
                 .overlay(
                     Circle()
                         .stroke(Color.white.opacity(0.15), lineWidth: 1)

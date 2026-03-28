@@ -30,7 +30,7 @@ struct ShareButton: View {
                 Text("Share")
             }
             .font(.custom("Inter-Medium", size: 13))
-            .foregroundColor(Color(hex: "1E8B7E")) // Reef Jade
+            .foregroundColor(DesignTokens.reefJade) // Reef Jade
         }
         .sheet(isPresented: $showingShare) {
             ShareSheet(items: [url])
@@ -56,7 +56,7 @@ struct SpecimenCardShareButton: View {
                 Text("Share Card")
             }
             .font(.custom("Inter-Medium", size: 13))
-            .foregroundColor(Color(hex: "E9C46A")) // XO Gold
+            .foregroundColor(DesignTokens.xoGold) // XO Gold
         }
         .sheet(isPresented: $showingShare) {
             if let image = cardImage {

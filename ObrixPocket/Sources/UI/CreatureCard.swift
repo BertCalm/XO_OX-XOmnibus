@@ -5,13 +5,9 @@ import SwiftUI
 // MARK: - Category Color Helper
 
 /// Maps a specimen category to its canonical accent color.
+/// Delegates to DesignTokens.color(for:) — the single source of truth.
 func categoryColor(for category: SpecimenCategory) -> Color {
-    switch category {
-    case .source:    return Color(hex: "3380FF")
-    case .processor: return Color(hex: "FF4D4D")
-    case .modulator: return Color(hex: "4DCC4D")
-    case .effect:    return Color(hex: "B34DFF")
-    }
+    DesignTokens.color(for: category)
 }
 
 // MARK: - Cosmetic Tier Badge View
@@ -44,9 +40,9 @@ private struct CosmeticTierBadge: View {
     private var foregroundColor: Color {
         switch tier {
         case .standard:       return .white.opacity(0.5)
-        case .bioluminescent: return Color(hex: "00FFFF")
-        case .phantom:        return Color(hex: "C8C8D0").opacity(0.85)
-        case .fossilized:     return Color(hex: "D4954A")
+        case .bioluminescent: return DesignTokens.cosmeticBioluminescent
+        case .phantom:        return DesignTokens.cosmeticPhantom.opacity(0.85)
+        case .fossilized:     return DesignTokens.cosmeticFossilized
         case .prismatic:      return .white
         }
     }
@@ -57,21 +53,21 @@ private struct CosmeticTierBadge: View {
         case .standard:
             return AnyShapeStyle(Color.white.opacity(0.06))
         case .bioluminescent:
-            return AnyShapeStyle(Color(hex: "00FFFF").opacity(0.12))
+            return AnyShapeStyle(DesignTokens.cosmeticBioluminescent.opacity(0.12))
         case .phantom:
             return AnyShapeStyle(Color.white.opacity(0.08))
         case .fossilized:
-            return AnyShapeStyle(Color(hex: "D4954A").opacity(0.15))
+            return AnyShapeStyle(DesignTokens.cosmeticFossilized.opacity(0.15))
         case .prismatic:
             // Rainbow gradient cycling through spectrum hues
             return AnyShapeStyle(
                 LinearGradient(
                     colors: [
-                        Color(hex: "FF4D4D"),
+                        DesignTokens.errorRed,
                         Color(hex: "FFB84D"),
                         Color(hex: "4DFF91"),
                         Color(hex: "4DCCFF"),
-                        Color(hex: "B34DFF"),
+                        DesignTokens.effectColor,
                         Color(hex: "FF4DCC"),
                     ],
                     startPoint: .leading,
@@ -193,7 +189,7 @@ struct CreatureCard: View {
         .padding(.vertical, 20)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(hex: "0E0E10"))
+                .fill(DesignTokens.background)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
                         .strokeBorder(color.opacity(0.18), lineWidth: 1)
@@ -250,7 +246,7 @@ struct CreatureCard: View {
                     Text(isAggressive ? "Aggressive Evolution" : "Gentle Evolution")
                         .font(.custom("JetBrainsMono-Regular", size: 9))
                 }
-                .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
+                .foregroundColor(DesignTokens.xoGold.opacity(0.6))
                 .padding(.top, 2)
             }
 
@@ -261,7 +257,7 @@ struct CreatureCard: View {
                     .font(.custom("JetBrainsMono-Regular", size: 9))
                     .foregroundColor(
                         age == .ancient || age == .elder
-                            ? Color(hex: "E9C46A")
+                            ? DesignTokens.xoGold
                             : .white.opacity(0.4)
                     )
                     .padding(.top, 2)
@@ -299,29 +295,29 @@ struct CreatureCard: View {
         case .rare:
             Text(specimen.rarity.rawValue.uppercased())
                 .font(.custom("JetBrainsMono-Bold", size: 11))
-                .foregroundColor(Color(hex: "E9C46A"))
+                .foregroundColor(DesignTokens.xoGold)
                 .tracking(1.5)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 2)
                 .background(
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: "E9C46A").opacity(0.12))
+                        .fill(DesignTokens.xoGold.opacity(0.12))
                 )
 
         case .legendary:
             Text(specimen.rarity.rawValue.uppercased())
                 .font(.custom("JetBrainsMono-Bold", size: 12))
-                .foregroundColor(Color(hex: "E9C46A"))
+                .foregroundColor(DesignTokens.xoGold)
                 .tracking(2.0)
-                .shadow(color: Color(hex: "E9C46A").opacity(0.7), radius: 4)
+                .shadow(color: DesignTokens.xoGold.opacity(0.7), radius: 4)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 3)
                 .background(
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: "E9C46A").opacity(0.18))
+                        .fill(DesignTokens.xoGold.opacity(0.18))
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
-                                .strokeBorder(Color(hex: "E9C46A").opacity(0.35), lineWidth: 0.5)
+                                .strokeBorder(DesignTokens.xoGold.opacity(0.35), lineWidth: 0.5)
                         )
                 )
         }
@@ -346,7 +342,7 @@ struct CreatureCard: View {
                 Text("Lv.\(specimen.level) — \(xpLabel)")
                     .font(.custom("JetBrainsMono-Regular", size: 10))
                     .foregroundColor(specimen.level >= 5
-                        ? Color(hex: "E9C46A")
+                        ? DesignTokens.xoGold
                         : Color.white.opacity(0.45))
 
                 GeometryReader { geo in
@@ -355,7 +351,7 @@ struct CreatureCard: View {
                             .fill(Color.white.opacity(0.08))
                             .frame(height: 3)
                         RoundedRectangle(cornerRadius: 2)
-                            .fill(specimen.level >= 5 ? Color(hex: "E9C46A") : color.opacity(0.7))
+                            .fill(specimen.level >= 5 ? DesignTokens.xoGold : color.opacity(0.7))
                             .frame(width: geo.size.width * xpFraction, height: 3)
                     }
                 }
@@ -464,7 +460,7 @@ struct CreatureCard: View {
                     Text("Share")
                 }
                 .font(.custom("Inter-Medium", size: 12))
-                .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
+                .foregroundColor(DesignTokens.xoGold.opacity(0.6))
             }
             .buttonStyle(.plain)
         }
@@ -579,6 +575,6 @@ private func makePreviewSpecimenC() -> Specimen {
         }
         .padding()
     }
-    .background(Color(hex: "080810"))
+    .background(Color(hex: "080810")) // preview-only background
 }
 #endif

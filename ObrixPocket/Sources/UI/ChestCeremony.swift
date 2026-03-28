@@ -70,12 +70,7 @@ struct ChestCeremony: View {
     // MARK: Derived helpers
 
     private var categoryColor: Color {
-        switch category {
-        case .source:    return Color(hex: "#3380FF")
-        case .processor: return Color(hex: "#FF4D4D")
-        case .modulator: return Color(hex: "#4DCC4D")
-        case .effect:    return Color(hex: "#B34DFF")
-        }
+        DesignTokens.color(for: category)
     }
 
     private var rayCount: Int {
@@ -111,7 +106,7 @@ struct ChestCeremony: View {
     var body: some View {
         ZStack {
             // Background
-            Color(hex: "#0A0A0F")
+            DesignTokens.darkBackground
                 .ignoresSafeArea()
                 .opacity(backgroundOpacity)
 
@@ -192,12 +187,12 @@ struct ChestCeremony: View {
                 // Rarity badge
                 Text(rarityLabel)
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundColor(Color(hex: "#0A0A0F"))
+                    .foregroundColor(DesignTokens.darkBackground)
                     .padding(.horizontal, 14)
                     .padding(.vertical, 5)
                     .background(
                         Capsule()
-                            .fill(Color(hex: "#E9C46A"))
+                            .fill(DesignTokens.xoGold)
                     )
                     .opacity(badgeOpacity)
 
@@ -241,11 +236,8 @@ struct ChestCeremony: View {
 
     private var cosmeticTierColor: Color {
         switch cosmeticTier {
-        case .standard:       return .white
-        case .bioluminescent: return Color(hex: "#7FFFB2")
-        case .phantom:        return Color(hex: "#C8B8FF")
-        case .fossilized:     return Color(hex: "#C8A96E")
-        case .prismatic:      return Color(hex: "#FF9EF7")
+        case .standard: return .white
+        default:        return DesignTokens.cosmeticColor(cosmeticTier)
         }
     }
 

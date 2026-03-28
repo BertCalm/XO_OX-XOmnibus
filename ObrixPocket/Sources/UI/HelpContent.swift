@@ -60,7 +60,7 @@ struct HelpView: View {
                             HStack(spacing: 8) {
                                 Image(systemName: topic.icon)
                                     .font(.system(size: 14))
-                                    .foregroundColor(Color(hex: "1E8B7E"))
+                                    .foregroundColor(DesignTokens.reefJade)
                                     .frame(width: 24)
                                 Text(topic.title)
                                     .font(.custom("SpaceGrotesk-Bold", size: 14))
@@ -79,7 +79,7 @@ struct HelpView: View {
                     }
                 }
             }
-            .background(Color(hex: "0E0E10"))
+            .background(DesignTokens.background)
             .navigationTitle("Help")
             .navigationBarTitleDisplayMode(.inline)
         }

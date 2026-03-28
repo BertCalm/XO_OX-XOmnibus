@@ -30,7 +30,7 @@ struct CatchTab: View {
 
     var body: some View {
         ZStack {
-            Color(hex: "0E0E10").ignoresSafeArea()
+            DesignTokens.background.ignoresSafeArea()
 
             VStack(spacing: 16) {
                 biomeStrip
@@ -70,10 +70,10 @@ struct CatchTab: View {
             let category = firstLaunchManager.nextJourneyCategory
             HStack(spacing: 6) {
                 Image(systemName: "sparkle")
-                    .foregroundColor(Color(hex: "E9C46A"))
+                    .foregroundColor(DesignTokens.xoGold)
                 Text("Look for \(name)")
                     .font(.custom("Inter-Medium", size: 12))
-                    .foregroundColor(Color(hex: "E9C46A"))
+                    .foregroundColor(DesignTokens.xoGold)
                 Text("— \(categoryLabel(category))")
                     .font(.custom("Inter-Regular", size: 11))
                     .foregroundColor(.white.opacity(0.4))
@@ -109,7 +109,7 @@ struct CatchTab: View {
                     biomeDetector.requestAuthorization()
                 }
                 .font(.custom("Inter-Medium", size: 11))
-                .foregroundColor(Color(hex: "1E8B7E"))
+                .foregroundColor(DesignTokens.reefJade)
             }
         }
         .padding(.horizontal, 20)
@@ -136,7 +136,7 @@ struct CatchTab: View {
                         biomeDetector.requestAuthorization()
                     }
                     .font(.custom("SpaceGrotesk-Bold", size: 14))
-                    .foregroundColor(Color(hex: "1E8B7E"))
+                    .foregroundColor(DesignTokens.reefJade)
 
                     // Also offer Reef Proximity as alternative
                     Button("Use Reef Proximity Instead") {
@@ -147,7 +147,7 @@ struct CatchTab: View {
                     .foregroundColor(.white.opacity(0.4))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(hex: "0E0E10"))
+                .background(DesignTokens.background)
             } else {
                 Map(
                     coordinateRegion: $mapRegion,
@@ -162,7 +162,7 @@ struct CatchTab: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color(hex: "1E8B7E").opacity(0.2), lineWidth: 1)
+                        .stroke(DesignTokens.reefJade.opacity(0.2), lineWidth: 1)
                 )
                 .padding(.horizontal, 16)
             }
@@ -173,7 +173,7 @@ struct CatchTab: View {
         HStack(spacing: 8) {
             Image(systemName: "house.fill")
                 .font(.system(size: 12))
-                .foregroundColor(Color(hex: "7A7876"))
+                .foregroundColor(DesignTokens.mutedText)
             Toggle("Reef Proximity", isOn: Binding(
                 get: { biomeDetector.reefProximityEnabled },
                 set: { enabled in
@@ -192,8 +192,8 @@ struct CatchTab: View {
                 }
             ))
             .font(.custom("Inter-Regular", size: 12))
-            .foregroundColor(Color(hex: "7A7876"))
-            .tint(Color(hex: "1E8B7E"))
+            .foregroundColor(DesignTokens.mutedText)
+            .tint(DesignTokens.reefJade)
 
             Spacer()
 
@@ -213,7 +213,7 @@ struct CatchTab: View {
                         Text("Reroll (\(ReefEnergyManager.rerollCost)⚡)")
                             .font(.custom("JetBrainsMono-Regular", size: 9))
                     }
-                    .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+                    .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                 }
             }
         }
@@ -330,7 +330,7 @@ struct CatchTab: View {
         case .nocturnal:   return Color(hex: "2D0A4E")
         case .storm:       return Color(hex: "FF6B6B")
         case .liminal:     return Color(hex: "8A9BA8")
-        case .convergence: return Color(hex: "E9C46A")
+        case .convergence: return DesignTokens.xoGold
         }
     }
 }
@@ -386,12 +386,7 @@ private struct SpecimenMapPin: View {
     }
 
     private var categoryColor: Color {
-        switch specimen.category {
-        case .source:    return Color(hex: "3380FF") // Blue  — Shells
-        case .processor: return Color(hex: "FF4D4D") // Red   — Coral
-        case .modulator: return Color(hex: "4DCC4D") // Green — Currents
-        case .effect:    return Color(hex: "B34DFF") // Purple — Tide Pools
-        }
+        DesignTokens.color(for: specimen.category)
     }
 }
 
@@ -528,14 +523,14 @@ struct CatchScreen: View {
     private var biomeGradient: LinearGradient {
         let colors: [Color]
         switch specimen.biome {
-        case .coastal:     colors = [Color(hex: "0A0A0F"), Color(hex: "0A1520")] // Deep blue tint
-        case .forest:      colors = [Color(hex: "0A0A0F"), Color(hex: "0A150A")] // Deep green tint
-        case .urban:       colors = [Color(hex: "0A0A0F"), Color(hex: "12100A")] // Warm amber tint
-        case .elevation:   colors = [Color(hex: "0A0A0F"), Color(hex: "0F0A15")] // Cool purple tint
-        case .nocturnal:   colors = [Color(hex: "050508"), Color(hex: "0A0A0F")] // Extra dark
-        case .storm:       colors = [Color(hex: "0A0A0F"), Color(hex: "15100A")] // Storm amber
-        case .liminal:     colors = [Color(hex: "0A0A0F"), Color(hex: "0F0F12")] // Steel grey tint
-        case .convergence: colors = [Color(hex: "0A0A0F"), Color(hex: "14120A")] // Gold tint
+        case .coastal:     colors = [DesignTokens.darkBackground, Color(hex: "0A1520")] // Deep blue tint
+        case .forest:      colors = [DesignTokens.darkBackground, Color(hex: "0A150A")] // Deep green tint
+        case .urban:       colors = [DesignTokens.darkBackground, Color(hex: "12100A")] // Warm amber tint
+        case .elevation:   colors = [DesignTokens.darkBackground, Color(hex: "0F0A15")] // Cool purple tint
+        case .nocturnal:   colors = [Color(hex: "050508"), DesignTokens.darkBackground] // Extra dark
+        case .storm:       colors = [DesignTokens.darkBackground, Color(hex: "15100A")] // Storm amber
+        case .liminal:     colors = [DesignTokens.darkBackground, Color(hex: "0F0F12")] // Steel grey tint
+        case .convergence: colors = [DesignTokens.darkBackground, Color(hex: "14120A")] // Gold tint
         }
         return LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
     }
@@ -546,7 +541,7 @@ struct CatchScreen: View {
         return HStack(spacing: 4) {
             Image(systemName: isNight ? "moon.stars.fill" : "sun.max.fill")
                 .font(.system(size: 8))
-                .foregroundColor(isNight ? Color(hex: "A8D8EA").opacity(0.4) : Color(hex: "E9C46A").opacity(0.4))
+                .foregroundColor(isNight ? Color(hex: "A8D8EA").opacity(0.4) : DesignTokens.xoGold.opacity(0.4))
             Text(specimen.biome.displayName)
                 .font(.custom("JetBrainsMono-Regular", size: 8))
                 .foregroundColor(.white.opacity(0.2))
@@ -606,7 +601,7 @@ struct CatchScreen: View {
                 // CAUGHT: green glow halo behind the specimen
                 if phase == .caught || phase == .success {
                     Circle()
-                        .fill(Color(hex: "1E8B7E").opacity(0.15))
+                        .fill(DesignTokens.reefJade.opacity(0.15))
                         .frame(width: 180, height: 180)
                         .scaleEffect(1.2)
                         .animation(.easeInOut(duration: 0.5), value: phase == .caught || phase == .success)
@@ -640,7 +635,7 @@ struct CatchScreen: View {
                 .foregroundColor(.white)
             Text(specimen.rarity.rawValue.uppercased())
                 .font(.custom("JetBrainsMono-Regular", size: 10))
-                .foregroundColor(Color(hex: "E9C46A"))
+                .foregroundColor(DesignTokens.xoGold)
             // Ambient context — biome indicator with storm icon when relevant
             HStack(spacing: 4) {
                 if specimen.biome == .storm {
@@ -725,7 +720,7 @@ struct CatchScreen: View {
         guard index < roundResults.count else {
             return index == roundsPlayed ? catColor.opacity(0.4) : Color.white.opacity(0.1) // Current round slightly highlighted
         }
-        return roundResults[index] ? Color(hex: "1E8B7E") : Color(hex: "FF4D4D")
+        return roundResults[index] ? DesignTokens.reefJade : DesignTokens.errorRed
     }
 
     private var pitchButtonGrid: some View {
@@ -753,7 +748,7 @@ struct CatchScreen: View {
                         if let result = feedbackResult {
                             Image(systemName: result ? "checkmark" : "xmark")
                                 .font(.system(size: 16, weight: .bold))
-                                .foregroundColor(result ? Color(hex: "1E8B7E") : Color(hex: "FF4D4D"))
+                                .foregroundColor(result ? DesignTokens.reefJade : DesignTokens.errorRed)
                         }
                     }
                 )
@@ -783,7 +778,7 @@ struct CatchScreen: View {
         case .playing:
             playingStatusLine
         case .success, .caught:
-            Text("CAUGHT!").font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2).foregroundColor(Color(hex: "1E8B7E"))
+            Text("CAUGHT!").font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2).foregroundColor(DesignTokens.reefJade)
         case .escaped:
             VStack(spacing: 8) {
                 Button(action: {
@@ -876,7 +871,7 @@ struct CatchScreen: View {
                     // Player thumb
                     let thumbX = CGFloat(sweepPosition) * (geo.size.width - 20)
                     Circle()
-                        .fill(sweepMatched ? Color(hex: "1E8B7E") : catColor)
+                        .fill(sweepMatched ? DesignTokens.reefJade : catColor)
                         .frame(width: 20, height: 20)
                         .offset(x: max(0, min(geo.size.width - 20, thumbX)))
                         .animation(.interactiveSpring(), value: sweepPosition)
@@ -917,7 +912,7 @@ struct CatchScreen: View {
 
             Text(sweepMatched ? "MATCHED!" : "Find the frequency...")
                 .font(.custom("JetBrainsMono-Regular", size: 10))
-                .foregroundColor(sweepMatched ? Color(hex: "1E8B7E") : .white.opacity(0.4))
+                .foregroundColor(sweepMatched ? DesignTokens.reefJade : .white.opacity(0.4))
                 .animation(.easeInOut(duration: 0.15), value: sweepMatched)
         }
     }
@@ -1261,8 +1256,8 @@ struct CatchScreen: View {
 
     private func rhythmDotColor(_ i: Int) -> Color {
         switch rhythmHits[i] {
-        case .some(true):  return Color(hex: "1E8B7E")
-        case .some(false): return Color(hex: "FF4D4D")
+        case .some(true):  return DesignTokens.reefJade
+        case .some(false): return DesignTokens.errorRed
         case .none:        return i == rhythmBeatIndex ? catColor : catColor.opacity(0.2)
         }
     }
@@ -1434,12 +1429,7 @@ struct CatchScreen: View {
     }
 
     private var catColor: Color {
-        switch specimen.category {
-        case .source: return Color(hex: "3380FF")
-        case .processor: return Color(hex: "FF4D4D")
-        case .modulator: return Color(hex: "4DCC4D")
-        case .effect: return Color(hex: "B34DFF")
-        }
+        DesignTokens.color(for: specimen.category)
     }
 }
 

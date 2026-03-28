@@ -67,6 +67,48 @@ enum DesignTokens {
         }
     }
 
+    // MARK: - Semantic Aliases
+
+    /// Error / alert red — destructive actions, health warnings
+    static let errorRed = Color(hex: "FF4D4D")
+
+    /// Muted text — secondary labels, timestamps, metadata
+    static let mutedText = Color(hex: "7A7876")
+
+    /// Streak orange — streak rewards, fire imagery
+    static let streakOrange = Color(hex: "FF6B35")
+
+    /// Panel background — drawers, overlays, param panels
+    static let panelBackground = Color(hex: "141418")
+
+    /// Deep accent — deep specimens section, locked content, evolution panel
+    static let deepAccent = Color(hex: "7B5FD4")
+
+    // MARK: - Cosmetic Tier Colors
+
+    /// Bioluminescent cosmetic tier — teal glow
+    static let cosmeticBioluminescent = Color(hex: "7FFFB2")
+
+    /// Phantom cosmetic tier — soft purple
+    static let cosmeticPhantom = Color(hex: "C8B8FF")
+
+    /// Fossilized cosmetic tier — warm amber
+    static let cosmeticFossilized = Color(hex: "C8A96E")
+
+    /// Prismatic cosmetic tier — pink shimmer
+    static let cosmeticPrismatic = Color(hex: "FF9EF7")
+
+    /// Returns the display color for a cosmetic tier.
+    static func cosmeticColor(_ tier: CosmeticTier) -> Color {
+        switch tier {
+        case .standard:       return .white.opacity(0.5)
+        case .bioluminescent: return cosmeticBioluminescent
+        case .phantom:        return cosmeticPhantom
+        case .fossilized:     return cosmeticFossilized
+        case .prismatic:      return cosmeticPrismatic
+        }
+    }
+
     // MARK: - Typography
 
     /// SpaceGrotesk-Bold — display headings
@@ -77,6 +119,11 @@ enum DesignTokens {
     /// Inter-Regular — body copy, labels
     static func body(_ size: CGFloat) -> Font {
         .custom("Inter-Regular", size: size)
+    }
+
+    /// Inter-Medium — semi-bold body text, CTA labels
+    static func bodyMedium(_ size: CGFloat) -> Font {
+        .custom("Inter-Medium", size: size)
     }
 
     /// JetBrainsMono-Regular — numeric values, IDs, code

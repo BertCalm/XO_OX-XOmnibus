@@ -86,7 +86,7 @@ struct DiveHistoryList: View {
             .listStyle(.plain)
             .navigationTitle("Dive History")
             .navigationBarTitleDisplayMode(.inline)
-            .background(Color(hex: "0E0E10"))
+            .background(DesignTokens.background)
         }
     }
 }

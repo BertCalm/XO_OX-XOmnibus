@@ -122,7 +122,7 @@ struct ImportPreviewView: View {
 
             Text(reef.reefName)
                 .font(.custom("JetBrainsMono-Regular", size: 14))
-                .foregroundColor(Color(hex: "1E8B7E"))
+                .foregroundColor(DesignTokens.reefJade)
 
             let specCount = reef.specimens.compactMap { $0 }.count
             let routeCount = reef.routes.count
@@ -133,7 +133,7 @@ struct ImportPreviewView: View {
 
             Text("This will replace your current reef.")
                 .font(.custom("Inter-Regular", size: 11))
-                .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+                .foregroundColor(DesignTokens.errorRed.opacity(0.6))
 
             Button(action: onImport) {
                 Text("IMPORT")
@@ -141,7 +141,7 @@ struct ImportPreviewView: View {
                     .tracking(2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity).frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(Color(hex: "1E8B7E")))
+                    .background(RoundedRectangle(cornerRadius: 25).fill(DesignTokens.reefJade))
             }
             .padding(.horizontal, 40)
 
@@ -149,6 +149,6 @@ struct ImportPreviewView: View {
                 .foregroundColor(.white.opacity(0.3))
         }
         .padding(.vertical, 40)
-        .background(Color(hex: "0E0E10").ignoresSafeArea())
+        .background(DesignTokens.background.ignoresSafeArea())
     }
 }

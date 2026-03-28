@@ -45,7 +45,7 @@ struct MicroscopeView: View {
             }
             .padding(.vertical, 16)
         }
-        .background(Color(hex: "0E0E10"))
+        .background(DesignTokens.background)
     }
 
     // MARK: - Header
@@ -61,11 +61,11 @@ struct MicroscopeView: View {
             HStack(spacing: 8) {
                 Text(specimen.rarity.rawValue.uppercased())
                     .font(.custom("JetBrainsMono-Regular", size: 10))
-                    .foregroundColor(Color(hex: "E9C46A"))
+                    .foregroundColor(DesignTokens.xoGold)
 
                 Text("Lv.\(specimen.level)")
                     .font(.custom("JetBrainsMono-Regular", size: 10))
-                    .foregroundColor(specimen.level >= 5 ? Color(hex: "E9C46A") : .white.opacity(0.5))
+                    .foregroundColor(specimen.level >= 5 ? DesignTokens.xoGold : .white.opacity(0.5))
 
                 Text(categoryLabel(specimen.category))
                     .font(.custom("JetBrainsMono-Regular", size: 10))
@@ -85,10 +85,10 @@ struct MicroscopeView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "heart.fill")
                         .font(.system(size: 10))
-                        .foregroundColor(Color(hex: "FF4D4D"))
+                        .foregroundColor(DesignTokens.errorRed)
                     Text("Favorite")
                         .font(.custom("Inter-Regular", size: 10))
-                        .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+                        .foregroundColor(DesignTokens.errorRed.opacity(0.6))
                 }
             }
         }
@@ -227,7 +227,7 @@ struct MicroscopeView: View {
                         Text(isAggressive ? "Aggressive Evolution" : "Gentle Evolution")
                     }
                     .font(.custom("JetBrainsMono-Regular", size: 10))
-                    .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
+                    .foregroundColor(DesignTokens.xoGold.opacity(0.6))
 
                     Text("Could have been: \(isAggressive ? path.gentleName : path.aggressiveName)")
                         .font(.custom("Inter-Regular", size: 9))
@@ -297,14 +297,14 @@ struct MicroscopeView: View {
 
     private func journalColor(_ type: JournalEntry.JournalEventType) -> Color {
         switch type {
-        case .born:    return Color(hex: "1E8B7E")
-        case .wired:   return Color(hex: "3380FF")
-        case .unwired: return Color(hex: "FF4D4D")
-        case .levelUp: return Color(hex: "E9C46A")
-        case .evolved: return Color(hex: "E9C46A")
-        case .drifted: return Color(hex: "B34DFF")
-        case .played:  return Color(hex: "4DCC4D")
-        case .traded:  return Color(hex: "E9C46A")
+        case .born:    return DesignTokens.reefJade
+        case .wired:   return DesignTokens.sourceColor
+        case .unwired: return DesignTokens.errorRed
+        case .levelUp: return DesignTokens.xoGold
+        case .evolved: return DesignTokens.xoGold
+        case .drifted: return DesignTokens.effectColor
+        case .played:  return DesignTokens.modulatorColor
+        case .traded:  return DesignTokens.xoGold
         }
     }
 
@@ -410,6 +410,6 @@ struct MicroscopeView: View {
             isFavorite: false
         )
     )
-    .background(Color(hex: "0E0E10").ignoresSafeArea())
+    .background(DesignTokens.background.ignoresSafeArea())
 }
 #endif

@@ -6,7 +6,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            Color(hex: "0A0A0F").ignoresSafeArea()
+            DesignTokens.darkBackground.ignoresSafeArea()
 
             VStack(spacing: 0) {
                 TabView(selection: $currentPage) {
@@ -15,7 +15,7 @@ struct OnboardingView: View {
                         icon: "antenna.radiowaves.left.and.right",
                         title: "Catch",
                         subtitle: "Find aquatic specimens in the wild.\nEach one is a unique synth module.",
-                        color: Color(hex: "1E8B7E")
+                        color: DesignTokens.reefJade
                     ).tag(0)
 
                     // Page 2: Wire
@@ -23,7 +23,7 @@ struct OnboardingView: View {
                         icon: "point.3.connected.trianglepath.dotted",
                         title: "Wire",
                         subtitle: "Connect specimens on your reef.\nSources → Processors → Effects.\nBuild your signal chain.",
-                        color: Color(hex: "3380FF")
+                        color: DesignTokens.sourceColor
                     ).tag(1)
 
                     // Page 3: Play
@@ -31,7 +31,7 @@ struct OnboardingView: View {
                         icon: "pianokeys",
                         title: "Play",
                         subtitle: "Your reef IS your instrument.\nEvery wiring creates a new sound.",
-                        color: Color(hex: "E9C46A")
+                        color: DesignTokens.xoGold
                     ).tag(2)
 
                     // Page 4: Grow
@@ -39,7 +39,7 @@ struct OnboardingView: View {
                         icon: "leaf.fill",
                         title: "Grow",
                         subtitle: "Specimens level up through play.\nYour instrument evolves with you.",
-                        color: Color(hex: "4DCC4D")
+                        color: DesignTokens.modulatorColor
                     ).tag(3)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -48,7 +48,7 @@ struct OnboardingView: View {
                 HStack(spacing: 8) {
                     ForEach(0..<4, id: \.self) { i in
                         Circle()
-                            .fill(i == currentPage ? Color(hex: "1E8B7E") : Color.white.opacity(0.2))
+                            .fill(i == currentPage ? DesignTokens.reefJade : Color.white.opacity(0.2))
                             .frame(width: 8, height: 8)
                     }
                 }
@@ -70,7 +70,7 @@ struct OnboardingView: View {
                         .frame(height: 56)
                         .background(
                             RoundedRectangle(cornerRadius: 28)
-                                .fill(Color(hex: "1E8B7E"))
+                                .fill(DesignTokens.reefJade)
                         )
                 }
                 .padding(.horizontal, 40)

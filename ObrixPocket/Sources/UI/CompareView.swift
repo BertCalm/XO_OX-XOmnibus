@@ -33,7 +33,7 @@ struct CompareView: View {
                 provenanceComparison
             }
         }
-        .background(Color(hex: "0E0E10").ignoresSafeArea())
+        .background(DesignTokens.background.ignoresSafeArea())
     }
 
     private func specimenColumn(_ specimen: Specimen) -> some View {
@@ -47,7 +47,7 @@ struct CompareView: View {
 
             Text(specimen.rarity.rawValue.uppercased())
                 .font(.custom("JetBrainsMono-Regular", size: 9))
-                .foregroundColor(Color(hex: "E9C46A"))
+                .foregroundColor(DesignTokens.xoGold)
 
             Text("Lv.\(specimen.level)")
                 .font(.custom("JetBrainsMono-Regular", size: 9))
@@ -83,7 +83,7 @@ struct CompareView: View {
                     // A value
                     Text("\(valA)")
                         .font(.custom("JetBrainsMono-Regular", size: 10))
-                        .foregroundColor(valA > valB ? Color(hex: "1E8B7E") : .white.opacity(0.4))
+                        .foregroundColor(valA > valB ? DesignTokens.reefJade : .white.opacity(0.4))
                         .frame(width: 28, alignment: .trailing)
 
                     // A bar (right-aligned, grows left)
@@ -114,7 +114,7 @@ struct CompareView: View {
                     // B value
                     Text("\(valB)")
                         .font(.custom("JetBrainsMono-Regular", size: 10))
-                        .foregroundColor(valB > valA ? Color(hex: "1E8B7E") : .white.opacity(0.4))
+                        .foregroundColor(valB > valA ? DesignTokens.reefJade : .white.opacity(0.4))
                         .frame(width: 28, alignment: .leading)
                 }
                 .frame(height: 16)

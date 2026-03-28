@@ -44,9 +44,9 @@ struct MusicPicker: UIViewControllerRepresentable {
         // Reef Jade #1E8B7E accent). MPMediaPickerController is a UIKit
         // controller so we set the view's background and the navigation bar
         // tint once the view has loaded.
-        picker.view.backgroundColor = UIColor(hex: "0E0E10")
-        picker.navigationController?.navigationBar.barTintColor = UIColor(hex: "0E0E10")
-        picker.navigationController?.navigationBar.tintColor = UIColor(hex: "1E8B7E")
+        picker.view.backgroundColor = UIColor(red: 0x0E/255.0, green: 0x0E/255.0, blue: 0x10/255.0, alpha: 1)
+        picker.navigationController?.navigationBar.barTintColor = UIColor(red: 0x0E/255.0, green: 0x0E/255.0, blue: 0x10/255.0, alpha: 1)
+        picker.navigationController?.navigationBar.tintColor = UIColor(red: 0x1E/255.0, green: 0x8B/255.0, blue: 0x7E/255.0, alpha: 1)
         picker.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white,
             .font: UIFont(name: "SpaceGrotesk-Bold", size: 17)
@@ -134,7 +134,7 @@ extension View {
                 }
             )
             // Transparent background so the system picker chrome shows through.
-            .background(Color(hex: "0E0E10").ignoresSafeArea())
+            .background(DesignTokens.background.ignoresSafeArea())
         }
     }
 }

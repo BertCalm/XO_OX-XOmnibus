@@ -42,7 +42,7 @@ struct SpecimenParamPanel: View {
                     Text("Lv.\(spec.level)")
                         .font(.custom("JetBrainsMono-Bold", size: 10))
                         .foregroundColor(spec.level >= 5
-                            ? Color(hex: "E9C46A")
+                            ? DesignTokens.xoGold
                             : Color.white.opacity(0.4))
                         .padding(.horizontal, 5)
                         .padding(.vertical, 2)
@@ -62,7 +62,7 @@ struct SpecimenParamPanel: View {
                     }) {
                         Image(systemName: (reefStore.specimens[slotIndex]?.isFavorite ?? false) ? "heart.fill" : "heart")
                             .font(.system(size: 14))
-                            .foregroundColor((reefStore.specimens[slotIndex]?.isFavorite ?? false) ? Color(hex: "FF4D4D") : .white.opacity(0.3))
+                            .foregroundColor((reefStore.specimens[slotIndex]?.isFavorite ?? false) ? DesignTokens.errorRed : .white.opacity(0.3))
                     }
 
                     // Close button
@@ -121,7 +121,7 @@ struct SpecimenParamPanel: View {
                                 .font(.custom("JetBrainsMono-Regular", size: 9))
                         }
                         .foregroundColor(ReefEnergyManager.shared.canAfford(ReefEnergyManager.xpCost)
-                            ? Color(hex: "E9C46A") : .white.opacity(0.15))
+                            ? DesignTokens.xoGold : .white.opacity(0.15))
                     }
                     .disabled(!ReefEnergyManager.shared.canAfford(ReefEnergyManager.xpCost))
                     .padding(.top, 4)
@@ -138,7 +138,7 @@ struct SpecimenParamPanel: View {
                             Text("Move to Stasis")
                                 .font(.custom("Inter-Regular", size: 11))
                         }
-                        .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+                        .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                     }
                     .padding(.top, 4)
 
@@ -150,7 +150,7 @@ struct SpecimenParamPanel: View {
                             Text("Swap")
                                 .font(.custom("Inter-Regular", size: 11))
                         }
-                        .foregroundColor(Color(hex: "3380FF").opacity(0.5))
+                        .foregroundColor(DesignTokens.sourceColor.opacity(0.5))
                     }
                     .padding(.top, 4)
 
@@ -163,7 +163,7 @@ struct SpecimenParamPanel: View {
                                 Text("Fuse")
                                     .font(.custom("Inter-Regular", size: 11))
                             }
-                            .foregroundColor(Color(hex: "B34DFF").opacity(0.5))
+                            .foregroundColor(DesignTokens.effectColor.opacity(0.5))
                         }
                         .padding(.top, 4)
                     }
@@ -176,7 +176,7 @@ struct SpecimenParamPanel: View {
                             Text("Release")
                                 .font(.custom("Inter-Regular", size: 11))
                         }
-                        .foregroundColor(Color(hex: "FF4D4D").opacity(0.5))
+                        .foregroundColor(DesignTokens.errorRed.opacity(0.5))
                     }
                     .padding(.top, 4)
                 }
@@ -185,7 +185,7 @@ struct SpecimenParamPanel: View {
             }
             .background(
                 ZStack {
-                    Color(hex: "0E0E10")
+                    DesignTokens.background
                     if let panelBg = UIImage(named: "UIPanelBg") {
                         Image(uiImage: panelBg)
                             .resizable()
@@ -501,12 +501,7 @@ struct SpecimenParamPanel: View {
     }
 
     private func catColor(_ category: SpecimenCategory) -> Color {
-        switch category {
-        case .source:    return Color(hex: "3380FF")
-        case .processor: return Color(hex: "FF4D4D")
-        case .modulator: return Color(hex: "4DCC4D")
-        case .effect:    return Color(hex: "B34DFF")
-        }
+        DesignTokens.color(for: category)
     }
 }
 
@@ -573,7 +568,7 @@ struct SwapPickerView: View {
                                     HStack(spacing: 6) {
                                         Text(specimen.rarity.rawValue.uppercased())
                                             .font(.custom("JetBrainsMono-Regular", size: 8))
-                                            .foregroundColor(Color(hex: "E9C46A"))
+                                            .foregroundColor(DesignTokens.xoGold)
                                         Text("Lv.\(specimen.level)")
                                             .font(.custom("JetBrainsMono-Regular", size: 8))
                                             .foregroundColor(.white.opacity(0.4))
@@ -581,16 +576,16 @@ struct SwapPickerView: View {
                                 }
                                 Spacer()
                                 Image(systemName: "arrow.right.circle")
-                                    .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                                    .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                             }
                             .padding(.vertical, 4)
                         }
-                        .listRowBackground(Color(hex: "0E0E10"))
+                        .listRowBackground(DesignTokens.background)
                     }
                     .listStyle(.plain)
                 }
             }
-            .background(Color(hex: "0E0E10"))
+            .background(DesignTokens.background)
             .navigationTitle("Swap Specimen")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -633,7 +628,7 @@ struct FusionPickerView: View {
                     Spacer()
                     Text("× ?")
                         .font(.custom("SpaceGrotesk-Bold", size: 16))
-                        .foregroundColor(Color(hex: "B34DFF").opacity(0.5))
+                        .foregroundColor(DesignTokens.effectColor.opacity(0.5))
                 }
                 .padding(16)
                 .background(Color.white.opacity(0.03))
@@ -674,12 +669,12 @@ struct FusionPickerView: View {
                                 Spacer()
                             }
                         }
-                        .listRowBackground(Color(hex: "0E0E10"))
+                        .listRowBackground(DesignTokens.background)
                     }
                     .listStyle(.plain)
                 }
             }
-            .background(Color(hex: "0E0E10"))
+            .background(DesignTokens.background)
             .navigationTitle("Fuse Specimens")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

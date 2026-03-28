@@ -18,7 +18,7 @@ struct MusicCatchFlow: View {
 
     var body: some View {
         ZStack {
-            Color(hex: "0A0A0F").ignoresSafeArea()
+            DesignTokens.darkBackground.ignoresSafeArea()
 
             switch phase {
             case .picker:
@@ -91,7 +91,7 @@ struct MusicCatchFlow: View {
             // Animated DNA helix icon
             Image(systemName: "waveform.path.ecg")
                 .font(.system(size: 64))
-                .foregroundColor(Color(hex: "1E8B7E").opacity(0.4))
+                .foregroundColor(DesignTokens.reefJade.opacity(0.4))
                 .padding(.vertical, 40)
 
             // Open Library button
@@ -104,7 +104,7 @@ struct MusicCatchFlow: View {
                     .frame(height: 56)
                     .background(
                         RoundedRectangle(cornerRadius: 28)
-                            .fill(Color(hex: "1E8B7E"))
+                            .fill(DesignTokens.reefJade)
                     )
             }
             .padding(.horizontal, 40)
@@ -124,7 +124,7 @@ struct MusicCatchFlow: View {
             // Icon — dimmed
             Image(systemName: "moon.zzz")
                 .font(.system(size: 64))
-                .foregroundColor(Color(hex: "1E8B7E").opacity(0.25))
+                .foregroundColor(DesignTokens.reefJade.opacity(0.25))
                 .padding(.vertical, 20)
 
             VStack(spacing: 10) {
@@ -143,7 +143,7 @@ struct MusicCatchFlow: View {
                     let formatted = next.formatted(date: .omitted, time: .shortened)
                     Text("Next catch: tomorrow at \(formatted)")
                         .font(.custom("JetBrainsMono-Regular", size: 12))
-                        .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                        .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                         .padding(.top, 4)
                 }
             }
@@ -163,7 +163,7 @@ struct MusicCatchFlow: View {
                     VStack(spacing: 4) {
                         Text("Spend \(ReefEnergyManager.musicCatchCost)⚡ for another catch")
                             .font(.custom("Inter-Medium", size: 13))
-                            .foregroundColor(Color(hex: "E9C46A"))
+                            .foregroundColor(DesignTokens.xoGold)
                         Text("You have \(ReefEnergyManager.shared.currentEnergy) energy")
                             .font(.custom("JetBrainsMono-Regular", size: 10))
                             .foregroundColor(.white.opacity(0.3))
@@ -223,13 +223,13 @@ struct MusicCatchFlow: View {
             // Hash visualization — rotating ring of hex characters
             ZStack {
                 Circle()
-                    .stroke(Color(hex: "1E8B7E").opacity(0.2), lineWidth: 2)
+                    .stroke(DesignTokens.reefJade.opacity(0.2), lineWidth: 2)
                     .frame(width: 180, height: 180)
 
                 // Animated progress ring
                 Circle()
                     .trim(from: 0, to: CGFloat(hashAnimationProgress))
-                    .stroke(Color(hex: "1E8B7E"), lineWidth: 3)
+                    .stroke(DesignTokens.reefJade, lineWidth: 3)
                     .frame(width: 180, height: 180)
                     .rotationEffect(.degrees(-90))
 
@@ -237,7 +237,7 @@ struct MusicCatchFlow: View {
                 if let seed = hashSeed {
                     Text(String(seed.hashHex.prefix(12)) + "...")
                         .font(.custom("JetBrainsMono-Regular", size: 11))
-                        .foregroundColor(Color(hex: "1E8B7E").opacity(0.7))
+                        .foregroundColor(DesignTokens.reefJade.opacity(0.7))
                 }
 
                 Text("HASHING")
@@ -329,7 +329,7 @@ struct MusicCatchFlow: View {
                         .frame(height: 50)
                         .background(
                             RoundedRectangle(cornerRadius: 25)
-                                .fill(Color(hex: "1E8B7E"))
+                                .fill(DesignTokens.reefJade)
                         )
                 }
                 .padding(.horizontal, 40)

@@ -2,6 +2,8 @@ import Foundation
 import UIKit
 
 final class StreakManager: ObservableObject {
+    static let shared = StreakManager()
+
     @Published var currentStreak: Int = 0
     @Published var longestStreak: Int = 0
     @Published var todayRewardClaimed: Bool = false

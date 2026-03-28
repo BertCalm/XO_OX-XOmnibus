@@ -17,7 +17,7 @@ struct PerformanceMode: View {
 
     var body: some View {
         ZStack {
-            Color(hex: "0A0A0F").ignoresSafeArea()
+            DesignTokens.darkBackground.ignoresSafeArea()
 
             VStack(spacing: 0) {
                 // Minimal header — source name + close button
@@ -28,7 +28,7 @@ struct PerformanceMode: View {
                             SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 24)
                             Text(spec.creatureName)
                                 .font(.custom("JetBrainsMono-Regular", size: 11))
-                                .foregroundColor(Color(hex: "1E8B7E").opacity(0.7))
+                                .foregroundColor(DesignTokens.reefJade.opacity(0.7))
                         }
                     }
 
@@ -80,7 +80,7 @@ struct PerformanceMode: View {
                             }
                         }) {
                             Circle()
-                                .fill(isAudioRecording ? Color(hex: "FF4D4D") : Color(hex: "FF4D4D").opacity(0.3))
+                                .fill(isAudioRecording ? DesignTokens.errorRed : DesignTokens.errorRed.opacity(0.3))
                                 .frame(width: 16, height: 16)
                         }
 
@@ -107,7 +107,7 @@ struct PerformanceMode: View {
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))
                     },
-                    accentColor: Color(hex: "1E8B7E"),
+                    accentColor: DesignTokens.reefJade,
                     octaveOffset: $octaveOffset,
                     scale: keyboardScale,
                     mode: keyboardMode,

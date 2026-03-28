@@ -148,6 +148,29 @@ extension ReefStore {
         }
     }
 
+    /// Wipe all data — clears in-memory state and purges the entire GRDB database.
+    /// Called by the "Reset All Data" action in CollectionTab.
+    func resetAll() {
+        // Clear in-memory state
+        for i in 0..<Self.maxSlots { specimens[i] = nil }
+        couplingRoutes.removeAll()
+        reefName = "My Reef"
+        totalDiveDepth = 0
+
+        // Clear database (all specimens, routes, metadata, geohashes)
+        guard let db = DatabaseManager.shared.db else { return }
+        do {
+            try db.write { db in
+                try SpecimenRecord.deleteAll(db)
+                try CouplingRouteRecord.deleteAll(db)
+                try db.execute(sql: "DELETE FROM reefMeta")
+                try db.execute(sql: "DELETE FROM visitedGeohash")
+            }
+        } catch {
+            print("[ReefPersistence] Reset failed: \(error)")
+        }
+    }
+
     /// Save exploration geohash
     func saveVisitedGeohash(_ hash: String) {
         guard let db = DatabaseManager.shared.db else { return }

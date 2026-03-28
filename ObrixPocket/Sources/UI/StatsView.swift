@@ -13,7 +13,7 @@ struct StatsView: View {
                         HStack(spacing: 12) {
                             Image(systemName: icon)
                                 .font(.system(size: 14))
-                                .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                                .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                                 .frame(width: 24)
 
                             Text(label)
@@ -33,7 +33,7 @@ struct StatsView: View {
                     }
                 }
             }
-            .background(Color(hex: "0E0E10"))
+            .background(DesignTokens.background)
             .navigationTitle("Reef Statistics")
             .navigationBarTitleDisplayMode(.inline)
         }

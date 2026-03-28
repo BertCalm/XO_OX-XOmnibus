@@ -5,7 +5,7 @@ struct ProfileView: View {
     @EnvironmentObject var reefStore: ReefStore
 
     // Use a single StreakManager instance for the whole view lifetime
-    @StateObject private var streakManager = StreakManager()
+    @ObservedObject private var streakManager = StreakManager.shared
     @ObservedObject private var masteryManager = MasteryManager.shared
     @ObservedObject private var badgeManager = BadgeManager.shared
 
@@ -22,7 +22,7 @@ struct ProfileView: View {
                     // Mastery title
                     Text(masteryManager.masteryTitle)
                         .font(.custom("JetBrainsMono-Regular", size: 12))
-                        .foregroundColor(Color(hex: "E9C46A"))
+                        .foregroundColor(DesignTokens.xoGold)
 
                     // Total depth
                     Text("\(reefStore.totalDiveDepth)m total depth")
@@ -77,7 +77,7 @@ struct ProfileView: View {
                 Spacer(minLength: 40)
             }
         }
-        .background(Color(hex: "0E0E10").ignoresSafeArea())
+        .background(DesignTokens.background.ignoresSafeArea())
     }
 
     // MARK: - Subviews
@@ -86,7 +86,7 @@ struct ProfileView: View {
         VStack(spacing: 4) {
             Image(systemName: icon)
                 .font(.system(size: 14))
-                .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                .foregroundColor(DesignTokens.reefJade.opacity(0.5))
             Text(value)
                 .font(.custom("JetBrainsMono-Bold", size: 16))
                 .foregroundColor(.white)
@@ -158,7 +158,7 @@ struct ProfileView: View {
                 .foregroundColor(.white.opacity(0.2))
             HStack(spacing: 4) {
                 Image(systemName: "flame.fill")
-                    .foregroundColor(Color(hex: "FF6B35"))
+                    .foregroundColor(DesignTokens.streakOrange)
                 Text("\(streakManager.currentStreak) days")
                     .font(.custom("JetBrainsMono-Bold", size: 14))
                     .foregroundColor(.white)
@@ -192,10 +192,10 @@ struct ProfileView: View {
 
     private func categoryColor(for category: SpecimenCategory) -> Color {
         switch category {
-        case .source:    return Color(hex: "3380FF")   // Shells — blue
-        case .processor: return Color(hex: "FF4D4D")   // Coral — red
-        case .modulator: return Color(hex: "4DCC4D")   // Currents — green
-        case .effect:    return Color(hex: "B34DFF")   // Tide Pools — purple
+        case .source:    return DesignTokens.sourceColor   // Shells — blue
+        case .processor: return DesignTokens.errorRed   // Coral — red
+        case .modulator: return DesignTokens.modulatorColor   // Currents — green
+        case .effect:    return DesignTokens.effectColor   // Tide Pools — purple
         }
     }
 
@@ -237,7 +237,7 @@ struct ProfileView: View {
         switch tier {
         case .bronze:  return Color(hex: "CD7F32")
         case .silver:  return Color(hex: "C0C0C0")
-        case .gold:    return Color(hex: "E9C46A")
+        case .gold:    return DesignTokens.xoGold
         case .diamond: return Color(hex: "B9F2FF")
         }
     }

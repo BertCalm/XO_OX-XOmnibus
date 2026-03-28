@@ -102,7 +102,7 @@ struct DiveTab: View {
             // Background — changes color as you dive into deeper zones
             let zone = DepthZone.at(depth: diveDepth)
             LinearGradient(
-                colors: [Color(hex: "0A0A0F"), Color(hex: zone.bgColor)],
+                colors: [DesignTokens.darkBackground, Color(hex: zone.bgColor)],
                 startPoint: .top, endPoint: .bottom
             )
             .ignoresSafeArea()
@@ -117,7 +117,7 @@ struct DiveTab: View {
                     Spacer()
                     Text("\(diveDepth)m")
                         .font(.custom("JetBrainsMono-Bold", size: 16))
-                        .foregroundColor(Color(hex: "1E8B7E"))
+                        .foregroundColor(DesignTokens.reefJade)
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 12)
@@ -147,7 +147,7 @@ struct DiveTab: View {
         VStack(spacing: 20) {
             Image(systemName: "arrow.down.to.line")
                 .font(.system(size: 48))
-                .foregroundColor(Color(hex: "1E8B7E").opacity(0.4))
+                .foregroundColor(DesignTokens.reefJade.opacity(0.4))
 
             Text("Dive into your reef")
                 .font(.custom("SpaceGrotesk-Bold", size: 20))
@@ -178,7 +178,7 @@ struct DiveTab: View {
                     .frame(height: 56)
                     .background(
                         RoundedRectangle(cornerRadius: 28)
-                            .fill(totalCount >= 4 ? Color(hex: "1E8B7E") : Color(hex: "1A1A1C"))
+                            .fill(totalCount >= 4 ? DesignTokens.reefJade : Color(hex: "1A1A1C"))
                     )
             }
             .disabled(totalCount < 4)
@@ -213,7 +213,7 @@ struct DiveTab: View {
                         Text("WEEKLY CHALLENGES")
                             .font(.custom("JetBrainsMono-Regular", size: 9))
                             .tracking(1.5)
-                            .foregroundColor(Color(hex: "E9C46A"))
+                            .foregroundColor(DesignTokens.xoGold)
                         Spacer()
                         Text("\(weeklyChallenges.completedCount)/\(weeklyChallenges.challenges.count)")
                             .font(.custom("JetBrainsMono-Regular", size: 9))
@@ -224,7 +224,7 @@ struct DiveTab: View {
                         HStack(spacing: 8) {
                             Image(systemName: challenge.completed ? "checkmark.circle.fill" : "circle")
                                 .font(.system(size: 12))
-                                .foregroundColor(challenge.completed ? Color(hex: "1E8B7E") : .white.opacity(0.2))
+                                .foregroundColor(challenge.completed ? DesignTokens.reefJade : .white.opacity(0.2))
 
                             VStack(alignment: .leading, spacing: 1) {
                                 Text(challenge.title)
@@ -261,10 +261,10 @@ struct DiveTab: View {
             Spacer()
             Text("\(count)/\(required)")
                 .font(.custom("JetBrainsMono-Regular", size: 11))
-                .foregroundColor(count >= required ? Color(hex: "1E8B7E") : Color(hex: "FF4D4D"))
+                .foregroundColor(count >= required ? DesignTokens.reefJade : DesignTokens.errorRed)
             Image(systemName: count >= required ? "checkmark.circle.fill" : "xmark.circle")
                 .font(.system(size: 10))
-                .foregroundColor(count >= required ? Color(hex: "1E8B7E") : Color(hex: "FF4D4D").opacity(0.5))
+                .foregroundColor(count >= required ? DesignTokens.reefJade : DesignTokens.errorRed.opacity(0.5))
         }
     }
 
@@ -272,7 +272,7 @@ struct DiveTab: View {
         VStack(spacing: 2) {
             Text(value)
                 .font(.custom("JetBrainsMono-Bold", size: 16))
-                .foregroundColor(Color(hex: "1E8B7E"))
+                .foregroundColor(DesignTokens.reefJade)
             Text(label)
                 .font(.custom("Inter-Regular", size: 9))
                 .foregroundColor(.white.opacity(0.3))
@@ -299,7 +299,7 @@ struct DiveTab: View {
                         SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 20)
                         Text(spec.creatureName)
                             .font(.custom("JetBrainsMono-Regular", size: 10))
-                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                            .foregroundColor(DesignTokens.reefJade.opacity(0.6))
                     }
                 }
             }
@@ -307,7 +307,7 @@ struct DiveTab: View {
             // Depth counter (large, centered)
             Text("\(diveDepth)m")
                 .font(.custom("JetBrainsMono-Bold", size: 48))
-                .foregroundColor(Color(hex: "1E8B7E"))
+                .foregroundColor(DesignTokens.reefJade)
 
             // Progress bar
             GeometryReader { geo in
@@ -315,7 +315,7 @@ struct DiveTab: View {
                     RoundedRectangle(cornerRadius: 3)
                         .fill(Color.white.opacity(0.06))
                     RoundedRectangle(cornerRadius: 3)
-                        .fill(Color(hex: "1E8B7E").opacity(0.5))
+                        .fill(DesignTokens.reefJade.opacity(0.5))
                         .frame(width: geo.size.width * CGFloat(diveProgress))
                 }
             }
@@ -326,7 +326,7 @@ struct DiveTab: View {
             HStack(spacing: 8) {
                 ForEach(Array(activeNotes.sorted()), id: \.self) { _ in
                     Circle()
-                        .fill(Color(hex: "1E8B7E").opacity(0.6))
+                        .fill(DesignTokens.reefJade.opacity(0.6))
                         .frame(width: 8, height: 8)
                 }
             }
@@ -370,7 +370,7 @@ struct DiveTab: View {
                     // Finger cursor
                     if divePlayerActive {
                         Circle()
-                            .fill(Color(hex: "1E8B7E"))
+                            .fill(DesignTokens.reefJade)
                             .frame(width: 12, height: 12)
                             .offset(
                                 x: CGFloat(divePlayerPitch - 0.5) * 100,
@@ -383,7 +383,7 @@ struct DiveTab: View {
                         if divePlayerActive {
                             Text("STEERING")
                                 .font(.custom("JetBrainsMono-Regular", size: 8))
-                                .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                                .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                         } else {
                             Text("TOUCH TO STEER")
                                 .font(.custom("Inter-Regular", size: 9))
@@ -426,7 +426,7 @@ struct DiveTab: View {
             if isNewHighScore {
                 Text("NEW HIGH SCORE!")
                     .font(.custom("SpaceGrotesk-Bold", size: 16))
-                    .foregroundColor(Color(hex: "E9C46A"))
+                    .foregroundColor(DesignTokens.xoGold)
                     .padding(.bottom, 4)
             }
 
@@ -445,7 +445,7 @@ struct DiveTab: View {
             let xpReward = finalScore / 10
             Text("+\(xpReward) XP to all reef specimens")
                 .font(.custom("JetBrainsMono-Regular", size: 12))
-                .foregroundColor(Color(hex: "E9C46A"))
+                .foregroundColor(DesignTokens.xoGold)
 
             Button(action: {
                 // Award XP to all reef specimens
@@ -465,7 +465,7 @@ struct DiveTab: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(Color(hex: "1E8B7E")))
+                    .background(RoundedRectangle(cornerRadius: 25).fill(DesignTokens.reefJade))
             }
             .padding(.horizontal, 40)
         }
