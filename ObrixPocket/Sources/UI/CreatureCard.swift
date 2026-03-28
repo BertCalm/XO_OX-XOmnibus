@@ -505,7 +505,8 @@ struct CreatureCard: View {
                     level: 3,
                     aggressiveScore: 2.1,
                     gentleScore: 0.8,
-                    totalPlaySeconds: 420
+                    totalPlaySeconds: 420,
+                    journal: []
                 )
             )
 
@@ -550,7 +551,8 @@ struct CreatureCard: View {
                     level: 9,
                     aggressiveScore: 8.5,
                     gentleScore: 14.2,
-                    totalPlaySeconds: 7200
+                    totalPlaySeconds: 7200,
+                    journal: []
                 ),
                 showFullStats: true
             )
@@ -596,7 +598,8 @@ struct CreatureCard: View {
                     level: 1,
                     aggressiveScore: 0,
                     gentleScore: 0,
-                    totalPlaySeconds: 0
+                    totalPlaySeconds: 0,
+                    journal: []
                 )
             )
         }

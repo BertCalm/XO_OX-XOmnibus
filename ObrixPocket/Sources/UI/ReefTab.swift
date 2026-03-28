@@ -10,6 +10,7 @@ struct ReefTab: View {
     @StateObject private var motionController = MotionController()
     @StateObject private var challengeManager = DailyChallengeManager()
     @StateObject private var milestoneManager = MilestoneManager()
+    @StateObject private var ambientManager = ReefAmbientManager()
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
@@ -19,6 +20,8 @@ struct ReefTab: View {
     @State private var showSaveDialog = false
     @State private var showLoadSheet = false
     @State private var presetName = ""
+    @State private var ambientEnabled = false
+    @State private var ambientResumeTimer: Timer?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -271,6 +274,19 @@ struct ReefTab: View {
                             .font(.system(size: 12))
                             .foregroundColor(motionController.isEnabled ? Color(hex: "1E8B7E") : .white.opacity(0.3))
                     }
+                    // Ambient toggle
+                    Button(action: {
+                        ambientEnabled.toggle()
+                        if ambientEnabled {
+                            ambientManager.start(reefStore: reefStore, audioEngine: audioEngine)
+                        } else {
+                            ambientManager.stop()
+                        }
+                    }) {
+                        Image(systemName: ambientEnabled ? "speaker.wave.2.fill" : "speaker.slash")
+                            .font(.system(size: 11))
+                            .foregroundColor(ambientEnabled ? Color(hex: "1E8B7E") : .white.opacity(0.3))
+                    }
                     // Tilt position dot — only visible when motion is active
                     if motionController.isEnabled {
                         HStack(spacing: 4) {
@@ -404,10 +420,21 @@ struct ReefTab: View {
                             firstLaunchManager.recordEnergyDistribution()
                             HapticEngine.energyCollected()
                         }
+                        // Pause ambient while user is playing; cancel any pending resume
+                        ambientResumeTimer?.invalidate()
+                        ambientResumeTimer = nil
+                        if ambientEnabled { ambientManager.stop() }
                     },
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))
                         recorder.recordNoteOff(midiNote: midiNote)
+                        // Resume ambient 3 seconds after the last key release
+                        ambientResumeTimer?.invalidate()
+                        if ambientEnabled {
+                            ambientResumeTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+                                ambientManager.start(reefStore: reefStore, audioEngine: audioEngine)
+                            }
+                        }
                     },
                     accentColor: Color(hex: "1E8B7E"),
                     octaveOffset: $octaveOffset,
@@ -434,6 +461,9 @@ struct ReefTab: View {
         }
         .onDisappear {
             motionController.stop()
+            ambientManager.stop()
+            ambientResumeTimer?.invalidate()
+            ambientResumeTimer = nil
         }
         .alert("Save Reef Preset", isPresented: $showSaveDialog) {
             TextField("Preset name", text: $presetName)

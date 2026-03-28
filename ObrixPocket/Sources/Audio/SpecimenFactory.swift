@@ -25,6 +25,13 @@ final class SpecimenFactory {
         let catalogEntry = SpecimenCatalog.entry(for: catalogID)
         let displayName = catalogEntry?.displayName(rarity: wild.rarity) ?? name
 
+        let bornEntry = JournalEntry(
+            id: UUID(),
+            timestamp: Date(),
+            type: .born,
+            description: "Caught in the wild"
+        )
+
         return Specimen(
             id: UUID(),
             name: displayName,
@@ -51,13 +58,20 @@ final class SpecimenFactory {
             level: 1,
             aggressiveScore: 0,
             gentleScore: 0,
-            totalPlaySeconds: 0
+            totalPlaySeconds: 0,
+            journal: [bornEntry]
         )
     }
 
     /// Create the starter specimen (first launch) — always a Common Sawfin
     static func createStarter() -> Specimen {
-        Specimen(
+        let bornEntry = JournalEntry(
+            id: UUID(),
+            timestamp: Date(),
+            type: .born,
+            description: "Born on first launch"
+        )
+        return Specimen(
             id: UUID(),
             name: "Sawfin",
             category: .source,
@@ -95,7 +109,8 @@ final class SpecimenFactory {
             level: 1,
             aggressiveScore: 0,
             gentleScore: 0,
-            totalPlaySeconds: 0
+            totalPlaySeconds: 0,
+            journal: [bornEntry]
         )
     }
 

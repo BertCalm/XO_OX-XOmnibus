@@ -108,6 +108,12 @@ final class DatabaseManager {
             }
         }
 
+        migrator.registerMigration("v5_specimen_journal") { db in
+            try db.alter(table: "specimen") { t in
+                t.add(column: "journal", .text).notNull().defaults(to: "[]")
+            }
+        }
+
         guard let dbQueue else { return }
         try migrator.migrate(dbQueue)
     }

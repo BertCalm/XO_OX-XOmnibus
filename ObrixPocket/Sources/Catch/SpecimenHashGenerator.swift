@@ -145,6 +145,13 @@ enum SpecimenHashGenerator {
             spectralSeeds: seed.spectralSeeds
         )
 
+        let bornEntry = JournalEntry(
+            id: UUID(),
+            timestamp: Date(),
+            type: .born,
+            description: "Born from \(trackArtist) — \(trackTitle)"
+        )
+
         return Specimen(
             id: UUID(),
             name: displayName,
@@ -171,7 +178,8 @@ enum SpecimenHashGenerator {
             level: 1,
             aggressiveScore: 0,
             gentleScore: 0,
-            totalPlaySeconds: 0
+            totalPlaySeconds: 0,
+            journal: [bornEntry]
         )
     }
 

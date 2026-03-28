@@ -705,6 +705,11 @@ class ReefScene: SKScene {
                 // Create the coupling route with connection timestamp for spectral drift
                 let route = CouplingRoute(sourceId: srcSpec.id, destId: dstSpec.id, depth: 0.5, connectedSince: Date())
                 reefStore.couplingRoutes.append(route)
+
+                // Journal: record wiring event for both specimens
+                reefStore.addJournalEntry(to: srcSlot, type: .wired, description: "Connected to \(dstSpec.creatureName)")
+                reefStore.addJournalEntry(to: dstSlot, type: .wired, description: "Connected to \(srcSpec.creatureName)")
+
                 reefStore.save()
 
                 // Haptic success
@@ -777,6 +782,15 @@ class ReefScene: SKScene {
             ($0.sourceId == dstId && $0.destId == srcId)
         }) {
             reefStore.applySpectralDrift(sourceId: route.sourceId, destId: route.destId, connectedSince: route.connectedSince)
+        }
+
+        // Journal: record unwiring event for both specimens
+        if let srcIdx = reefStore.specimens.firstIndex(where: { $0?.id == srcId }),
+           let dstIdx = reefStore.specimens.firstIndex(where: { $0?.id == dstId }) {
+            let srcName = reefStore.specimens[srcIdx]?.creatureName ?? "Unknown"
+            let dstName = reefStore.specimens[dstIdx]?.creatureName ?? "Unknown"
+            reefStore.addJournalEntry(to: srcIdx, type: .unwired, description: "Disconnected from \(dstName)")
+            reefStore.addJournalEntry(to: dstIdx, type: .unwired, description: "Disconnected from \(srcName)")
         }
 
         reefStore.couplingRoutes.removeAll {

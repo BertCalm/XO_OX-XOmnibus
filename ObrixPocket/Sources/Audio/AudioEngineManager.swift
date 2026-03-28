@@ -380,6 +380,11 @@ final class AudioEngineManager: ObservableObject {
             specimen.level = newLevel
             HapticEngine.levelUp()
 
+            // Journal: level-up event (write into live specimen before assignment)
+            let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
+                                          description: "Reached level \(newLevel)")
+            specimen.journal.append(levelEntry)
+
             // EVOLUTION: reaching level 10 for the first time triggers a name/identity transformation.
             // oldLevel guards against re-triggering if earnXP is called again after already hitting 10.
             if newLevel >= 10 && oldLevel < 10 {
@@ -387,6 +392,11 @@ final class AudioEngineManager: ObservableObject {
                     specimen.name = evolved.name
                     // Keep original subtype — DSP stays the same; the evolved name is the reward
                     HapticEngine.evolution()
+
+                    // Journal: evolution event
+                    let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
+                                                   description: "Evolved into \(evolved.name)")
+                    specimen.journal.append(evolveEntry)
                 }
             }
         }

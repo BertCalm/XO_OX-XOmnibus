@@ -35,6 +35,9 @@ struct MicroscopeView: View {
                 // Provenance
                 provenanceSection
 
+                // Journal
+                journalSection
+
                 // Evolution info
                 if specimen.level >= 10 {
                     evolutionSection
@@ -211,6 +214,76 @@ struct MicroscopeView: View {
         }
     }
 
+    // MARK: - Journal
+
+    private var journalSection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("JOURNAL")
+                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .tracking(1.5)
+                .foregroundColor(.white.opacity(0.2))
+
+            if specimen.journal.isEmpty {
+                Text("No events recorded yet")
+                    .font(.custom("Inter-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.2))
+                    .italic()
+            } else {
+                let recentEntries = Array(specimen.journal.suffix(10).reversed())
+                ForEach(recentEntries) { entry in
+                    HStack(alignment: .top, spacing: 8) {
+                        Image(systemName: journalIcon(entry.type))
+                            .font(.system(size: 9))
+                            .foregroundColor(journalColor(entry.type))
+                            .frame(width: 16)
+
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(entry.description)
+                                .font(.custom("Inter-Regular", size: 10))
+                                .foregroundColor(.white.opacity(0.5))
+                            Text(entry.timestamp, style: .relative)
+                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .foregroundColor(.white.opacity(0.2))
+                        }
+                    }
+                }
+
+                if specimen.journal.count > 10 {
+                    Text("+ \(specimen.journal.count - 10) earlier events")
+                        .font(.custom("Inter-Regular", size: 9))
+                        .foregroundColor(.white.opacity(0.15))
+                }
+            }
+        }
+        .padding(.horizontal, 20)
+    }
+
+    private func journalIcon(_ type: JournalEntry.JournalEventType) -> String {
+        switch type {
+        case .born:    return "sparkle"
+        case .wired:   return "link"
+        case .unwired: return "link.badge.plus"
+        case .levelUp: return "arrow.up.circle"
+        case .evolved: return "sparkles"
+        case .drifted: return "waveform.path.ecg"
+        case .played:  return "music.note"
+        case .traded:  return "arrow.left.arrow.right"
+        }
+    }
+
+    private func journalColor(_ type: JournalEntry.JournalEventType) -> Color {
+        switch type {
+        case .born:    return Color(hex: "1E8B7E")
+        case .wired:   return Color(hex: "3380FF")
+        case .unwired: return Color(hex: "FF4D4D")
+        case .levelUp: return Color(hex: "E9C46A")
+        case .evolved: return Color(hex: "E9C46A")
+        case .drifted: return Color(hex: "B34DFF")
+        case .played:  return Color(hex: "4DCC4D")
+        case .traded:  return Color(hex: "E9C46A")
+        }
+    }
+
     // MARK: - Formatting
 
     private func formatHz(_ value: Float?) -> String {
@@ -303,7 +376,13 @@ struct MicroscopeView: View {
             level: 3,
             aggressiveScore: 2.1,
             gentleScore: 0.8,
-            totalPlaySeconds: 420
+            totalPlaySeconds: 420,
+            journal: [
+                JournalEntry(id: UUID(), timestamp: Date().addingTimeInterval(-86400 * 3), type: .born, description: "Born from John Coltrane — A Love Supreme"),
+                JournalEntry(id: UUID(), timestamp: Date().addingTimeInterval(-86400 * 2), type: .wired, description: "Connected to Curtain"),
+                JournalEntry(id: UUID(), timestamp: Date().addingTimeInterval(-3600), type: .levelUp, description: "Reached level 2"),
+                JournalEntry(id: UUID(), timestamp: Date().addingTimeInterval(-1800), type: .levelUp, description: "Reached level 3"),
+            ]
         )
     )
     .background(Color(hex: "0E0E10").ignoresSafeArea())

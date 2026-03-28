@@ -74,6 +74,9 @@ struct Specimen: Identifiable, Codable {
     var gentleScore: Float       // Cumulative gentle play (low velocity, sustained notes)
     var totalPlaySeconds: Double // Total seconds of play through this specimen
 
+    // Append-only biography — the soul of the specimen
+    var journal: [JournalEntry]
+
     static let slotCount = 16
 
     /// The catalog creature name for this specimen's subtype
@@ -154,6 +157,14 @@ final class ReefStore: ObservableObject {
             srcSpec.spectralDNA[i] = srcVal + (dstVal - srcVal) * driftAmount
             dstSpec.spectralDNA[i] = dstVal + (srcVal - dstVal) * driftAmount
         }
+
+        // Journal: spectral drift event for both specimens
+        let driftPct = Int((driftAmount * 100).rounded())
+        let driftDesc = "Spectral drift \(driftPct)% after \(String(format: "%.1f", durationHours))h coupling"
+        let srcDriftEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .drifted, description: driftDesc)
+        let dstDriftEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .drifted, description: driftDesc)
+        srcSpec.journal.append(srcDriftEntry)
+        dstSpec.journal.append(dstDriftEntry)
 
         specimens[srcIdx] = srcSpec
         specimens[dstIdx] = dstSpec
@@ -242,6 +253,17 @@ final class ReefStore: ObservableObject {
             print("[ReefStore] Stasis load single failed: \(error)")
             return nil
         }
+    }
+
+    // MARK: - Journal
+
+    /// Append a journal event to the specimen in the given reef slot.
+    func addJournalEntry(to slotIndex: Int, type: JournalEntry.JournalEventType, description: String) {
+        guard slotIndex >= 0, slotIndex < Self.maxSlots,
+              var specimen = specimens[slotIndex] else { return }
+        let entry = JournalEntry(id: UUID(), timestamp: Date(), type: type, description: description)
+        specimen.journal.append(entry)
+        specimens[slotIndex] = specimen
     }
 
 }

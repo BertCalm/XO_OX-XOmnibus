@@ -591,7 +591,8 @@ private func makePreviewStore() -> ReefStore {
         level: 1,
         aggressiveScore: 0,
         gentleScore: 0,
-        totalPlaySeconds: 0
+        totalPlaySeconds: 0,
+        journal: []
     )
     store.specimens[1] = Specimen(
         id: UUID(),
@@ -619,7 +620,8 @@ private func makePreviewStore() -> ReefStore {
         level: 1,
         aggressiveScore: 0,
         gentleScore: 0,
-        totalPlaySeconds: 0
+        totalPlaySeconds: 0,
+        journal: []
     )
     return store
 }

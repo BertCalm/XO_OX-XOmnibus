@@ -95,6 +95,12 @@ final class FirstLaunchManager: ObservableObject {
     /// Create and place the second specimen (auto-spawned after first play) — always a Common Curtain.
     /// Advances journey to step 2 (Curtain placed; first wild catch — Tidepulse — is next).
     func placeSecondSpecimen(in reefStore: ReefStore) -> Int? {
+        let bornEntry = JournalEntry(
+            id: UUID(),
+            timestamp: Date(),
+            type: .born,
+            description: "Born on first launch"
+        )
         let second = Specimen(
             id: UUID(),
             name: "Curtain",
@@ -125,7 +131,8 @@ final class FirstLaunchManager: ObservableObject {
             level: 1,
             aggressiveScore: 0,
             gentleScore: 0,
-            totalPlaySeconds: 0
+            totalPlaySeconds: 0,
+            journal: [bornEntry]
         )
         let index = reefStore.addSpecimen(second)
         if index != nil {

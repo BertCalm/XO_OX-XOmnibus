@@ -39,6 +39,9 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
     var gentleScore: Double
     var totalPlaySeconds: Double
 
+    // Specimen biography (append-only event log)
+    var journal: String // JSON-encoded [JournalEntry]
+
     // MARK: - Conversion to/from Specimen
 
     init(from specimen: Specimen, reefSlotIndex: Int? = nil, stasisSlotIndex: Int? = nil) {
@@ -71,6 +74,7 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
         self.aggressiveScore = Double(specimen.aggressiveScore)
         self.gentleScore = Double(specimen.gentleScore)
         self.totalPlaySeconds = specimen.totalPlaySeconds
+        self.journal = Self.encodeJournal(specimen.journal)
     }
 
     func toSpecimen() -> Specimen? {
@@ -104,7 +108,8 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
             level: level,
             aggressiveScore: Float(aggressiveScore),
             gentleScore: Float(gentleScore),
-            totalPlaySeconds: totalPlaySeconds
+            totalPlaySeconds: totalPlaySeconds,
+            journal: Self.decodeJournal(journal)
         )
     }
 
@@ -132,6 +137,18 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
 
     private static func decodeProvenance(_ json: String) -> [ProvenanceEntry] {
         (try? JSONDecoder().decode([ProvenanceEntry].self, from: Data(json.utf8))) ?? []
+    }
+
+    static func encodeJournal(_ entries: [JournalEntry]) -> String {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        return (try? encoder.encode(entries)).flatMap { String(data: $0, encoding: .utf8) } ?? "[]"
+    }
+
+    static func decodeJournal(_ json: String) -> [JournalEntry] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return (try? decoder.decode([JournalEntry].self, from: Data(json.utf8))) ?? []
     }
 }
 
