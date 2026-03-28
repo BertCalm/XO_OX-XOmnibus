@@ -13,6 +13,9 @@ struct ReefTab: View {
     @StateObject private var ambientManager = ReefAmbientManager()
     @StateObject private var metronome = MetronomeManager()
     @StateObject private var loopRecorder = LoopRecorder()
+    @StateObject private var streakManager = StreakManager()
+    @State private var showStreakReward = false
+    @State private var lastReward: StreakReward = .none
     @State private var reefScene: ReefScene?
     @State private var gridRefreshTimer: Timer?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
@@ -197,6 +200,47 @@ struct ReefTab: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 4)
             }
+
+            // Streak indicator
+            HStack(spacing: 6) {
+                Image(systemName: "flame.fill")
+                    .font(.system(size: 10))
+                    .foregroundColor(streakManager.currentStreak >= 7 ? Color(hex: "E9C46A") : Color(hex: "FF6B35").opacity(0.6))
+
+                Text("\(streakManager.currentStreak)")
+                    .font(.custom("JetBrainsMono-Bold", size: 12))
+                    .foregroundColor(.white.opacity(0.7))
+
+                if !streakManager.todayRewardClaimed {
+                    Button(action: {
+                        lastReward = streakManager.claimReward()
+                        if lastReward.xpAmount > 0 {
+                            // Distribute XP to all reef specimens
+                            for (index, spec) in reefStore.specimens.enumerated() {
+                                if spec != nil {
+                                    audioEngine.awardBulkXP(slotIndex: index, amount: lastReward.xpAmount)
+                                }
+                            }
+                            showStreakReward = true
+                        }
+                    }) {
+                        Text("CLAIM")
+                            .font(.custom("JetBrainsMono-Bold", size: 8))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 3)
+                            .background(RoundedRectangle(cornerRadius: 4).fill(Color(hex: "FF6B35")))
+                    }
+                }
+
+                Spacer()
+
+                Text("next milestone: day \(streakManager.nextMilestone)")
+                    .font(.custom("JetBrainsMono-Regular", size: 8))
+                    .foregroundColor(.white.opacity(0.2))
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 4)
 
             // The Reef Grid (SpriteKit scene)
             GeometryReader { geometry in
@@ -723,6 +767,11 @@ struct ReefTab: View {
                 }
             }
             Button("Cancel", role: .cancel) { presetName = "" }
+        }
+        .alert("Streak Reward!", isPresented: $showStreakReward) {
+            Button("Nice!") {}
+        } message: {
+            Text("Day \(streakManager.currentStreak): \(lastReward.description)")
         }
         .sheet(isPresented: $showLoadSheet) {
             ReefPresetList(

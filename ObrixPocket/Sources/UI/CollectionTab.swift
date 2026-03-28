@@ -15,6 +15,10 @@ struct CollectionTab: View {
     @State private var notificationsEnabled = true
     @StateObject private var milestoneManager = MilestoneManager()
 
+    @StateObject private var collectionTracker = CollectionTracker()
+    @State private var pendingRewards: [CollectionMilestone] = []
+    @State private var showRewardAlert = false
+
     // .xoreef export
     @State private var exportURL: URL?
     @State private var showExportShare = false
@@ -149,6 +153,9 @@ struct CollectionTab: View {
                         // MARK: Deep Specimens Section (collapsible)
                         deepSpecimensSection(discoveredSubtypes: subtypes)
 
+                        // MARK: Collection Progress Section
+                        collectionProgressSection
+
                         // MARK: Milestones Section
                         milestonesSection
 
@@ -157,6 +164,9 @@ struct CollectionTab: View {
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 32)
+                }
+                .onAppear {
+                    collectionTracker.refresh(reefStore: reefStore)
                 }
             }
             .navigationBarHidden(true)
@@ -241,6 +251,51 @@ struct CollectionTab: View {
             }
         }
         .padding(.top, 16)
+    }
+
+    // MARK: - Collection Progress Section
+
+    private var collectionProgressSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("COLLECTION PROGRESS")
+                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .tracking(1.5)
+                .foregroundColor(Color(hex: "E9C46A"))
+                .padding(.horizontal, 4)
+
+            ForEach(collectionTracker.milestones) { milestone in
+                let prog = collectionTracker.progress(for: milestone)
+                let complete = prog >= milestone.requiredCount
+                let claimed = collectionTracker.isClaimed(milestone.id)
+
+                HStack(spacing: 8) {
+                    Image(systemName: claimed ? "checkmark.seal.fill" : (complete ? "seal.fill" : "circle"))
+                        .font(.system(size: 12))
+                        .foregroundColor(claimed ? Color(hex: "1E8B7E") : (complete ? Color(hex: "E9C46A") : .white.opacity(0.2)))
+
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(milestone.title)
+                            .font(.custom("SpaceGrotesk-Bold", size: 12))
+                            .foregroundColor(claimed ? .white.opacity(0.4) : .white.opacity(0.7))
+                        Text("\(prog)/\(milestone.requiredCount) — \(milestone.reward)")
+                            .font(.custom("Inter-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.25))
+                    }
+
+                    Spacer()
+
+                    if complete && !claimed {
+                        Button("Claim") {
+                            collectionTracker.claim(milestone)
+                        }
+                        .font(.custom("JetBrainsMono-Bold", size: 9))
+                        .foregroundColor(Color(hex: "E9C46A"))
+                    }
+                }
+                .padding(.horizontal, 4)
+                .padding(.vertical, 4)
+            }
+        }
     }
 
     // MARK: - Milestones Section
