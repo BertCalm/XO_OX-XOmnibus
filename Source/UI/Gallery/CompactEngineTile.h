@@ -11,18 +11,6 @@ namespace xolokun
 {
 
 //==============================================================================
-// CreatureState — retained as a scaffold for future pixel-art sprite animations.
-// Porthole and creature painting removed 2026-03-27. Member kept so that any
-// future re-introduction of animated sprites has a ready drop-in home.
-struct CreatureState
-{
-    float breathPhase     = 0.0f;  // 0–2π, reserved for future use
-    float breathRate      = 0.5f;  // Hz — reserved
-    float pulseIntensity  = 0.0f;  // 0–1, reserved
-    float couplingLean    = 0.0f;  // -1 to +1, reserved
-};
-
-//==============================================================================
 // CompactEngineTile — slim tile in the left Column A (260pt wide).
 //
 // Layout (top to bottom, inside 9/11/8/14 px padding):
@@ -733,9 +721,6 @@ private:
     // Fix #7: cached CockpitHost pointer — set in parentHierarchyChanged(),
     // used in paint() to avoid dynamic_cast walk on every frame.
     CockpitHost* cachedCockpitHost_ = nullptr;
-
-    // Creature animation state — VQ 015 breathing scaffold
-    CreatureState creatureState_;
 
     MiniWaveform miniWave;
 

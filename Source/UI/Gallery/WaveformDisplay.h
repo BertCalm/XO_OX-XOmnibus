@@ -78,29 +78,44 @@ public:
     void paint(juce::Graphics& g) override
     {
         const auto bounds = getLocalBounds().toFloat();
-        const float w     = bounds.getWidth();
-        const float h     = bounds.getHeight();
-        const float midY  = h * 0.5f;
+
+        // Label removed: EngineDetailPanel already draws "OSCILLOSCOPE" in the
+        // 12px label row immediately above this component (duplicate fix).
+        // Waveform area is the full component bounds.
+        const auto waveArea  = bounds;
+        const float ww       = waveArea.getWidth();
+        const float wh       = waveArea.getHeight();
+        const float waveTop  = waveArea.getY();
+        const float midY     = waveTop + wh * 0.5f;
 
         // ── Background — flat surface() fill ────────────────────────────────
         g.setColour(GalleryColors::get(GalleryColors::surface()));
-        g.fillRoundedRectangle(bounds, 3.0f);
+        g.fillRoundedRectangle(waveArea, 3.0f);
 
-        // ── Center line (1px, 50% opacity) ──────────────────────────────────
-        g.setColour(accent.withAlpha(0.50f));
-        g.drawHorizontalLine(juce::roundToInt(midY), 0.0f, w);
+        // ── Center line (1px, 30% opacity) — always drawn ───────────────────
+        g.setColour(accent.withAlpha(0.30f));
+        g.drawHorizontalLine(juce::roundToInt(midY), waveArea.getX(), waveArea.getRight());
+
+        // ── Skip waveform path when FIFO is all zeros (idle/no engine) ───────
+        bool allZero = true;
+        for (const float s : waveformBuffer)
+        {
+            if (s != 0.0f) { allZero = false; break; }
+        }
+        if (allZero)
+            return;
 
         // ── Build waveform path ──────────────────────────────────────────────
         wavePath.clear();
-        const float xStep = w / static_cast<float>(kDisplaySamples - 1);
+        const float xStep = ww / static_cast<float>(kDisplaySamples - 1);
 
         for (size_t i = 0; i < kDisplaySamples; ++i)
         {
             // Clamp sample to [-1, +1] — guard against NaN/Inf from an
             // uninitialized or overdriven FIFO.
             const float sample = juce::jlimit(-1.0f, 1.0f, waveformBuffer[i]);
-            const float x = static_cast<float>(i) * xStep;
-            const float y = midY - sample * (midY * 0.90f); // 90% height scaling
+            const float x = waveArea.getX() + static_cast<float>(i) * xStep;
+            const float y = midY - sample * (wh * 0.45f); // 90% of half-height
 
             if (i == 0)
                 wavePath.startNewSubPath(x, y);
@@ -137,8 +152,8 @@ public:
         {
             const juce::Colour scanlineColour = juce::Colours::black.withAlpha(0.15f);
             g.setColour(scanlineColour);
-            for (float y = 0.0f; y < h; y += 2.0f)
-                g.drawHorizontalLine(juce::roundToInt(y), 0.0f, w);
+            for (float sy = waveTop; sy < waveTop + wh; sy += 2.0f)
+                g.drawHorizontalLine(juce::roundToInt(sy), waveArea.getX(), waveArea.getRight());
         }
     }
 

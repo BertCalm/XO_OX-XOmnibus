@@ -301,10 +301,14 @@ public:
             g.setColour (cardBorder);
             g.drawRoundedRectangle (cardRect, 6.0f, 1.0f);
 
-            // Active green left accent bar (3px, rounded)
+            // Active left accent bar (3px, rounded) — uses source engine accent (SHOULD A2-02)
             if (active)
             {
-                g.setColour (juce::Colour (0xFF52B788));  // mint green
+                int srcSlotForBar = getSlotIndex (r, "source");
+                auto* srcEngForBar = processor.getEngine (srcSlotForBar);
+                juce::Colour barColor = srcEngForBar ? srcEngForBar->getAccentColour()
+                                                     : juce::Colour (0xFF52B788); // fallback mint
+                g.setColour (barColor.withAlpha (0.9f));
                 g.fillRoundedRectangle (
                     cardRect.getX(),
                     cardRect.getY() + 5.0f,
@@ -327,26 +331,67 @@ public:
                             juce::Justification::centredLeft);
             }
 
-            // ── Collapsed summary: "SRC → TGT  ·  TypeShort" ─────────────────
+            // ── Collapsed summary: "SRC → TGT  ·  TypeShort" (MUST A2-01/A2-03) ─
             if (!routeCards[r].expanded)
             {
-                juce::String srcName    = slotName (getSlotIndex (r, "source"));
-                juce::String tgtName    = slotName (getSlotIndex (r, "target"));
-                juce::String typeShort  = getTypeShortLabel (r);
-                // Arrow: UTF-8 →
-                juce::String summary = srcName + " \xe2\x86\x92 " + tgtName;
-                if (typeShort.isNotEmpty())
-                    summary += "  \xc2\xb7 " + typeShort;
+                int srcSlot = getSlotIndex (r, "source");
+                int tgtSlot = getSlotIndex (r, "target");
+                juce::String srcName   = slotName (srcSlot);
+                juce::String tgtName   = slotName (tgtSlot);
+                juce::String typeShort = getTypeShortLabel (r);
+
+                auto* srcEng = processor.getEngine (srcSlot);
+                auto* tgtEng = processor.getEngine (tgtSlot);
+                // Source name uses src engine accent; target uses tgt engine accent.
+                // Fall back to T2 (active) or T3 (inactive) when slot is empty.
+                juce::Colour srcColor = srcEng ? srcEng->getAccentColour()
+                                               : get (active ? t2() : t3());
+                juce::Colour tgtColor = tgtEng ? tgtEng->getAccentColour()
+                                               : get (active ? t2() : t3());
 
                 g.setFont (GalleryFonts::body (9.5f));
-                g.setColour (active ? get (t2()) : get (t3()));
-                g.drawText (summary,
-                            juce::Rectangle<int> (
-                                (int) cardRect.getX() + kInnerPad + 30,
-                                (int) cardRect.getY(),
-                                (int) cardRect.getWidth() - kInnerPad - 58,
-                                kCardCollapsedH - kCardGap),
-                            juce::Justification::centredLeft, true);
+                auto font = g.getCurrentFont();
+
+                // Starting x for the summary segment
+                float sx = static_cast<float> (cardRect.getX()) + kInnerPad + 30.0f;
+                float sy = static_cast<float> (cardRect.getY());
+                float sh = static_cast<float> (kCardCollapsedH - kCardGap);
+
+                // Draw source name in src accent color
+                float srcW = font.getStringWidthFloat (srcName);
+                g.setColour (srcColor.withAlpha (active ? 1.0f : 0.6f));
+                g.drawText (srcName,
+                            juce::Rectangle<float> (sx, sy, srcW + 4.0f, sh),
+                            juce::Justification::centredLeft, false);
+                sx += srcW + 4.0f;
+
+                // Arrow in T4 (gold)
+                juce::String arrow (juce::CharPointer_UTF8 (" \xe2\x86\x92 "));
+                float arrowW = font.getStringWidthFloat (arrow);
+                g.setColour (get (active ? t3() : t4()));
+                g.drawText (arrow,
+                            juce::Rectangle<float> (sx, sy, arrowW + 2.0f, sh),
+                            juce::Justification::centredLeft, false);
+                sx += arrowW + 2.0f;
+
+                // Draw target name in tgt accent color
+                float tgtW = font.getStringWidthFloat (tgtName);
+                g.setColour (tgtColor.withAlpha (active ? 1.0f : 0.6f));
+                g.drawText (tgtName,
+                            juce::Rectangle<float> (sx, sy, tgtW + 4.0f, sh),
+                            juce::Justification::centredLeft, false);
+                sx += tgtW + 4.0f;
+
+                // Type badge (T3, dimmed)
+                if (typeShort.isNotEmpty())
+                {
+                    juce::String badge = juce::String (juce::CharPointer_UTF8 ("  \xc2\xb7 ")) + typeShort;
+                    float badgeW = font.getStringWidthFloat (badge);
+                    g.setColour (get (t3()).withAlpha (active ? 0.8f : 0.5f));
+                    g.drawText (badge,
+                                juce::Rectangle<float> (sx, sy, badgeW + 4.0f, sh),
+                                juce::Justification::centredLeft, false);
+                }
             }
 
             // ── Expand/collapse chevron ────────────────────────────────────────

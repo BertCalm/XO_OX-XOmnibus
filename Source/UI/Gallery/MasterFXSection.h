@@ -195,19 +195,21 @@ public:
         int h = b.getHeight();
 
         // Helper: lay out knobs in a section.
-        // With 96px strip height, reduced(6,3) outer + reduced(4,3) inner ≈ 84px h.
-        // Layout from top:
-        //   0-10  : section header label
-        //   10-60 : knob (36px) + label (10px), centred in the 50px zone
-        //   60-84 : 4px gap + ADV button (14px) + 6px bottom margin — clear of label
+        // With 68px strip height, reduced(4,3) inner ≈ 62px h.
+        // Layout from top (exact fit):
+        //   0-10  : section header label (10px)
+        //   10-38 : knob (28px), centred
+        //   38-47 : label (9px)
+        //   47-50 : 3px gap
+        //   50-62 : ADV button (12px)
         static constexpr int kHeaderH2  = 10;
-        static constexpr int kAdvBtnH   = 14;
+        static constexpr int kAdvBtnH   = 12;  // reduced from 14 to fit 68px strip
         static constexpr int kAdvBtnW   = 28;
-        static constexpr int kAdvBtnGap = 4;  // gap between bottom of label and top of ADV
+        static constexpr int kAdvBtnGap = 3;   // reduced from 4 to fit 68px strip
 
         // Knob + label zone: everything above the ADV button row
         auto layoutKnob = [&](int knobIdx, int sx, int sw) {
-            int kh = 36, lh = 10;
+            int kh = 28, lh = 9;  // reduced knob 36→28, label 10→9 to fit 68px
             int zoneH = h - kHeaderH2 - kAdvBtnH - kAdvBtnGap; // zone for knob+label
             int ky = topY + kHeaderH2 + (zoneH - kh - lh - 1) / 2;
             knobs[knobIdx].setBounds(sx + (sw - kh) / 2, ky, kh, kh);
@@ -268,7 +270,7 @@ public:
             int btnW = juce::jmin(sw - 4, 36);
             // Centre the SEQ toggle in the same knob+label zone used by other sections
             {
-                static constexpr int kSEQBtnH = 22;
+                static constexpr int kSEQBtnH = 18; // reduced 22→18 to fit 68px strip
                 int zoneH = h - kHeaderH2 - kAdvBtnH - kAdvBtnGap;
                 int toggleY = topY + kHeaderH2 + (zoneH - kSEQBtnH) / 2;
                 seqToggle.setBounds(sx + (sw - btnW) / 2, toggleY, btnW, kSEQBtnH);

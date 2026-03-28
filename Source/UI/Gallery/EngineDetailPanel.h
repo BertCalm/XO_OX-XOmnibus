@@ -112,6 +112,14 @@ public:
         macroHero.setMidiLearnManager(mgr);
     }
 
+    // Scroll the parameter grid viewport to a given section (MUST A1-05).
+    // Called by XOlokunEditor::scrollDetailPanelToSection().
+    void scrollToSection(ParameterGrid::Section s)
+    {
+        if (auto* grid = dynamic_cast<ParameterGrid*>(viewport.getViewedComponent()))
+            grid->scrollToSection(s);
+    }
+
     // Called when the user selects an engine slot to inspect.
     // Returns false if the slot is empty.
     bool loadSlot(int slot)

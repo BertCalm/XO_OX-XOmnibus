@@ -523,6 +523,68 @@ public:
         // Re-apply any other explicit setColour() calls that use theme-aware values here.
     }
 
+    // Signal flow strip mouse interaction (MUST A1-02)
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        if (signalFlowStripBounds.contains(e.position.toInt()))
+        {
+            for (int i = 0; i < 6; ++i)
+            {
+                if (sfHitRects[static_cast<size_t>(i)].contains(e.position))
+                {
+                    signalFlowActiveSection = i;
+                    scrollDetailPanelToSection(i);
+                    repaint(signalFlowStripBounds);
+                    return;
+                }
+            }
+        }
+    }
+
+    void mouseMove(const juce::MouseEvent& e) override
+    {
+        if (!signalFlowStripBounds.contains(e.position.toInt()))
+        {
+            if (signalFlowHoveredSection != -1)
+            {
+                signalFlowHoveredSection = -1;
+                repaint(signalFlowStripBounds);
+            }
+            return;
+        }
+        int newHovered = -1;
+        for (int i = 0; i < 6; ++i)
+        {
+            if (sfHitRects[static_cast<size_t>(i)].contains(e.position))
+            {
+                newHovered = i;
+                break;
+            }
+        }
+        if (newHovered != signalFlowHoveredSection)
+        {
+            signalFlowHoveredSection = newHovered;
+            repaint(signalFlowStripBounds);
+        }
+    }
+
+    // Scroll the EngineDetailPanel viewport to the section matching sfIndex (MUST A1-06)
+    void scrollDetailPanelToSection(int sfIndex)
+    {
+        // Map signal flow index → ParameterGrid::Section
+        // SRC1→OSC, SRC2→OSC, FILTER→FILTER, SHAPER→MOD, FX→FX, OUT→OTHER
+        static const ParameterGrid::Section kSfToSection[] = {
+            ParameterGrid::Section::OSC,
+            ParameterGrid::Section::OSC,
+            ParameterGrid::Section::FILTER,
+            ParameterGrid::Section::MOD,
+            ParameterGrid::Section::FX,
+            ParameterGrid::Section::OTHER
+        };
+        if (sfIndex < 0 || sfIndex >= 6) return;
+        detail.scrollToSection(kSfToSection[sfIndex]);
+    }
+
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
@@ -682,11 +744,21 @@ public:
             // Section labels: SRC1 → SRC2 → FILTER → SHAPER → FX → OUT
             static const juce::String kSections[] = { "SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT" };
             static const int kNumSections = 6;
-            const int activeSection = 0; // P0-12: default active = SRC1 (index 0)
+            const int activeSection = signalFlowActiveSection;
 
             const float hPad = 12.0f;
             const float usableW = stripBounds.getWidth() - hPad * 2.0f;
             const float cy = stripBounds.getCentreY();
+
+            // Determine engine accent color for the active label
+            juce::Colour activeAccent = get(t1());
+            {
+                if (selectedSlot >= 0)
+                {
+                    if (auto* eng = processor.getEngine(selectedSlot))
+                        activeAccent = eng->getAccentColour();
+                }
+            }
 
             // Count total text + arrow widths to distribute evenly
             g.setFont(GalleryFonts::value(8.5f));
@@ -699,14 +771,33 @@ public:
 
             for (int i = 0; i < kNumSections; ++i)
             {
-                bool active = (i == activeSection);
-                g.setColour(active ? get(t1()) : get(t3()));
+                bool active  = (i == activeSection);
+                bool hovered = (!active && i == signalFlowHoveredSection);
                 g.setFont(GalleryFonts::value(8.5f));
 
                 float secW = g.getCurrentFont().getStringWidthFloat(kSections[i]);
-                g.drawText(kSections[i],
-                           juce::Rectangle<float>(startX, cy - 8.0f, secW + 2.0f, 16.0f),
-                           juce::Justification::centredLeft, false);
+                juce::Rectangle<float> secRect(startX, cy - 8.0f, secW + 6.0f, 16.0f);
+
+                // Pill background for active label (4% white)
+                if (active)
+                {
+                    g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.04f));
+                    g.fillRoundedRectangle(secRect.reduced(-3.0f, -3.0f), 3.0f);
+                }
+
+                // Text color: active=accent, hover=T2, inactive=T3
+                if (active)
+                    g.setColour(activeAccent);
+                else if (hovered)
+                    g.setColour(get(t2()));
+                else
+                    g.setColour(get(t3()));
+
+                g.drawText(kSections[i], secRect, juce::Justification::centredLeft, false);
+
+                // Store hit rect for mouse interaction (populate sfHitRects)
+                sfHitRects[static_cast<size_t>(i)] = secRect.expanded(4.0f, 4.0f);
+
                 startX += secW;
 
                 // Draw arrow separator (not after last)
@@ -813,7 +904,7 @@ public:
 
         // Signal flow strip (28px) at top of Column B — painted in paint().
         // Macro knobs row removed — redundant with EngineDetailPanel's MacroHeroStrip.
-        colBPanel.removeFromTop(kSignalFlowStripH);
+        signalFlowStripBounds = colBPanel.removeFromTop(kSignalFlowStripH);
 
         // Remaining Column B panel area for the view stack (stacked, one visible at a time)
         overview.setBounds(colBPanel);
@@ -859,6 +950,9 @@ private:
             return; // already showing this one
 
         selectedSlot = slot;
+        signalFlowActiveSection  = 0; // Reset to SRC1 on engine switch (SHOULD A1-06)
+        signalFlowHoveredSection = -1;
+        repaint(signalFlowStripBounds);
         depthDial.setSlot(juce::jlimit(0, 3, slot)); // DepthDial tracks the selected slot
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
@@ -1360,6 +1454,12 @@ private:
     MiniCouplingGraph      miniCouplingGraph { processor };
 
     int selectedSlot = -1;
+
+    // Signal flow strip interaction state (MUST A1-01)
+    int signalFlowActiveSection  = 0;  // 0=SRC1 … 5=OUT
+    int signalFlowHoveredSection = -1; // -1 = none hovered
+    std::array<juce::Rectangle<float>, 6> sfHitRects; // populated in paint()
+    juce::Rectangle<int> signalFlowStripBounds;        // set in resized()
 
     // Dark Cockpit B041: current UI opacity derived from note activity.
     // 0.15 (ghost, silent) → 1.0 (fully lit, maximum activity).

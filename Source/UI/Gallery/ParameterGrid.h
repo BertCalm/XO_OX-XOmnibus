@@ -212,6 +212,28 @@ public:
         parentViewport = vp;
     }
 
+    // ── Scroll viewport to the first occurrence of a section (MUST A1-04) ───
+    // Iterates sectionRuns to compute the Y offset of target and scrolls.
+    void scrollToSection(Section target)
+    {
+        if (!parentViewport) return;
+        int y = kPad;
+        for (auto& run : sectionRuns)
+        {
+            if (run.sec == target)
+            {
+                parentViewport->setViewPosition(0, juce::jmax(0, y - 4));
+                return;
+            }
+            y += kHeaderRowH; // section header height
+            if (!collapsedSections.count(run.sec))
+            {
+                int cols = juce::jmax(1, getWidth() / kCellW);
+                y += (run.count + cols - 1) / cols * kCellH;
+            }
+        }
+    }
+
     // ── Height calculation — accounts for per-section header rows ───────────
     // Collapsed sections contribute only kHeaderRowH (no knob rows).
     int getRequiredHeight(int availableWidth) const
