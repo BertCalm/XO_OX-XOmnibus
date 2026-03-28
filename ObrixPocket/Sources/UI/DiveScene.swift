@@ -136,6 +136,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         buildPlayer()
         buildBubbleTrail()
         updateObstacleSpawnInterval()
+        updateBackgroundForZone(currentZone)
     }
 
     // MARK: - Build: Background
@@ -174,6 +175,31 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
             .forEach { $0.run(darken) }
 
         updateObstacleSpawnInterval()
+        updateBackgroundForZone(currentZone)
+    }
+
+    // MARK: - Zone Background Sprite
+
+    private func updateBackgroundForZone(_ zone: DepthZone) {
+        // Remove existing background sprite if any
+        childNode(withName: "dive_background")?.removeFromParent()
+
+        let bgName: String
+        switch zone {
+        case .sunlit:   bgName = "dive_bg_sunlit"
+        case .twilight: bgName = "dive_bg_twilight"
+        case .midnight: bgName = "dive_bg_midnight"
+        case .abyssal:  bgName = "dive_bg_abyssal"
+        }
+
+        let texture = SKTexture(imageNamed: bgName)
+        texture.filteringMode = .nearest  // Pixel art — no interpolation
+        let bg = SKSpriteNode(texture: texture, size: self.size)
+        bg.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        bg.zPosition = -100
+        bg.name = "dive_background"
+        bg.alpha = 0.4  // Semi-transparent so the gradient still shows through
+        addChild(bg)
     }
 
     // MARK: - Build: Screen Flash Overlay
@@ -308,24 +334,25 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func spawnCoral() {
-        let radius = currentZone == .abyssal
+        let coralSize = currentZone == .abyssal
             ? CGFloat.random(in: 22...38)
             : CGFloat.random(in: 12...24)
 
-        let node = SKShapeNode(circleOfRadius: radius)
-        node.fillColor   = SKColor(red: 0.85, green: 0.25, blue: 0.35, alpha: 0.9)
-        node.strokeColor = SKColor(red: 1.0,  green: 0.4,  blue: 0.5,  alpha: 0.6)
-        node.lineWidth   = 1.5
-        node.name        = "obstacle_coral"
-        node.zPosition   = 5
+        let coralNames = ["dive_coral_blue", "dive_coral_violet", "dive_coral_red", "dive_rock"]
+        let textureName = coralNames.randomElement()!
+        let texture = SKTexture(imageNamed: textureName)
+        texture.filteringMode = .nearest  // Pixel art — no interpolation
+        let node = SKSpriteNode(texture: texture, size: CGSize(width: coralSize, height: coralSize))
+        node.name      = "obstacle_coral"
+        node.zPosition = 5
 
         let xRange = size.width * playerMinXFraction ... size.width * playerMaxXFraction
         node.position = CGPoint(
             x: CGFloat.random(in: xRange),
-            y: -(radius + 20)   // Spawn below visible area — scrolls upward past the descending player
+            y: -(coralSize / 2 + 20)   // Spawn below visible area — scrolls upward past the descending player
         )
 
-        let body = SKPhysicsBody(circleOfRadius: radius - 2)
+        let body = SKPhysicsBody(circleOfRadius: coralSize / 2 - 2)
         body.isDynamic           = false
         body.categoryBitMask     = obstacleCategory
         body.contactTestBitMask  = playerCategory
@@ -338,21 +365,23 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func spawnJellyfish() {
-        let size2: CGFloat = CGFloat.random(in: 14...22)
-        let node = SKShapeNode(ellipseOf: CGSize(width: size2, height: size2 * 0.75))
-        node.fillColor   = SKColor(red: 0.6, green: 0.4, blue: 0.9, alpha: 0.7)
-        node.strokeColor = SKColor(red: 0.8, green: 0.6, blue: 1.0, alpha: 0.5)
-        node.lineWidth   = 1
-        node.name        = "obstacle_jellyfish"
-        node.zPosition   = 5
+        let jellySize: CGFloat = CGFloat.random(in: 28...40)
+
+        let sheet = SKTexture(imageNamed: "dive_jellyfish")
+        // Crop to first frame of 4-frame horizontal spritesheet
+        let texture = SKTexture(rect: CGRect(x: 0, y: 0, width: 0.25, height: 1.0), in: sheet)
+        texture.filteringMode = .nearest
+        let node = SKSpriteNode(texture: texture, size: CGSize(width: jellySize, height: jellySize * 0.75))
+        node.name      = "obstacle_jellyfish"
+        node.zPosition = 5
 
         let xRange = size.width * 0.15 ... size.width * 0.85
         node.position = CGPoint(
             x: CGFloat.random(in: xRange),
-            y: -(size2 + 20)   // Spawn below visible area — scrolls upward
+            y: -(jellySize * 0.75 / 2 + 20)   // Spawn below visible area — scrolls upward
         )
 
-        let body = SKPhysicsBody(rectangleOf: CGSize(width: size2 - 4, height: size2 * 0.75 - 4))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: jellySize - 4, height: jellySize * 0.75 - 4))
         body.isDynamic          = false
         body.categoryBitMask    = obstacleCategory
         body.contactTestBitMask = playerCategory
@@ -366,28 +395,27 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func spawnShark() {
-        let w: CGFloat = 50
-        let h: CGFloat = 20
-
-        let node = SKShapeNode(rectOf: CGSize(width: w, height: h), cornerRadius: 6)
-        node.fillColor   = SKColor(red: 0.3, green: 0.3, blue: 0.4, alpha: 0.9)
-        node.strokeColor = SKColor(red: 0.5, green: 0.5, blue: 0.7, alpha: 0.6)
-        node.lineWidth   = 1.5
-        node.name        = "obstacle_shark"
-        node.zPosition   = 5
+        let sheet = SKTexture(imageNamed: "dive_shark")
+        // Crop to first frame of 6-frame horizontal spritesheet
+        let texture = SKTexture(rect: CGRect(x: 0, y: 0, width: 1.0 / 6.0, height: 1.0), in: sheet)
+        texture.filteringMode = .nearest
+        let node = SKSpriteNode(texture: texture, size: CGSize(width: 48, height: 28))
+        node.name      = "obstacle_shark"
+        node.zPosition = 5
 
         // Sharks cross at the player's Y level (±30 pt) so they're always a real threat
         let playerY = size.height * 0.75   // Matches playerYFraction
         let yPos = playerY + CGFloat.random(in: -30...30)
         let goingRight = Bool.random()
 
+        let w: CGFloat = 48
         let startX: CGFloat = goingRight ? -(w * 0.5 + 10) : size.width + w * 0.5 + 10
         let endX:   CGFloat = goingRight ? size.width + w * 0.5 + 10 : -(w * 0.5 + 10)
 
         node.position = CGPoint(x: startX, y: yPos)
         node.xScale   = goingRight ? 1 : -1   // Flip facing direction
 
-        let body = SKPhysicsBody(rectangleOf: CGSize(width: w - 6, height: h - 4))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: w - 6, height: 24))
         body.isDynamic          = false
         body.categoryBitMask    = obstacleCategory
         body.contactTestBitMask = playerCategory
@@ -481,23 +509,20 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func spawnCollectibleOrb() {
-        let radius: CGFloat = 8
-
-        let node = SKShapeNode(circleOfRadius: radius)
-        node.fillColor   = SKColor(red: 0.49, green: 1.0, blue: 0.7, alpha: 0.9)
-        node.strokeColor = SKColor(red: 0.7,  green: 1.0, blue: 0.85, alpha: 0.6)
-        node.lineWidth   = 1.5
-        node.name        = "collectible_orb"
-        node.zPosition   = 6
+        let texture = SKTexture(imageNamed: "dive_pearl")
+        texture.filteringMode = .nearest
+        let node = SKSpriteNode(texture: texture, size: CGSize(width: 20, height: 20))
+        node.name      = "collectible_orb"
+        node.zPosition = 6
 
         let xRange = size.width * 0.15 ... size.width * 0.85
         node.position = CGPoint(
             x: CGFloat.random(in: xRange),
-            y: -(radius + 20)   // Spawn below visible area — scrolls upward past the player
+            y: -(20 + 20)   // Spawn below visible area — scrolls upward past the player
         )
 
         // Physics
-        let body = SKPhysicsBody(circleOfRadius: radius + 4)  // Slightly generous hitbox
+        let body = SKPhysicsBody(circleOfRadius: 14)  // Slightly generous hitbox
         body.isDynamic          = false
         body.categoryBitMask    = collectibleCategory
         body.contactTestBitMask = playerCategory
@@ -507,7 +532,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         addChild(node)
 
         // Outer glow ring
-        let glow = SKShapeNode(circleOfRadius: radius + 6)
+        let glow = SKShapeNode(circleOfRadius: 14)
         glow.fillColor   = .clear
         glow.strokeColor = SKColor(red: 0.49, green: 1.0, blue: 0.7, alpha: 0.3)
         glow.lineWidth   = 2
@@ -617,7 +642,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         isInvulnerable = true
         invulnerabilityTimer = invulnerabilityDuration
 
-        // Flash player red
+        // Flash player red (SKShapeNode supports colorize)
         let flashRed  = SKAction.colorize(with: .red, colorBlendFactor: 0.8, duration: 0.1)
         let restoreColor = SKAction.colorize(with: Self.skReefJade, colorBlendFactor: 0.0, duration: 0.3)
         playerNode.run(.sequence([flashRed, restoreColor]))
