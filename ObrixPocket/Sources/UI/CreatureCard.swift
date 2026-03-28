@@ -253,6 +253,19 @@ struct CreatureCard: View {
                 .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
                 .padding(.top, 2)
             }
+
+            // Age tier badge — hidden for newborns, gold for elder/ancient
+            let age = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
+            if age != .newborn {
+                Text(age.rawValue)
+                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .foregroundColor(
+                        age == .ancient || age == .elder
+                            ? Color(hex: "E9C46A")
+                            : .white.opacity(0.4)
+                    )
+                    .padding(.top, 2)
+            }
         }
     }
 

@@ -167,12 +167,24 @@ struct MicroscopeView: View {
                 provenanceLine("Weather", value: weather)
             }
             provenanceLine("Play time", value: formatPlayTime(specimen.totalPlaySeconds))
+            provenanceLine("Age", value: SpecimenAge.from(playSeconds: specimen.totalPlaySeconds).rawValue)
             provenanceLine("XP", value: "\(specimen.xp)")
 
             if specimen.aggressiveScore > 0 || specimen.gentleScore > 0 {
                 let total = specimen.aggressiveScore + specimen.gentleScore
                 let aggPct = total > 0 ? Int(specimen.aggressiveScore / total * 100) : 50
                 provenanceLine("Play style", value: "\(aggPct)% aggressive / \(100 - aggPct)% gentle")
+            }
+
+            if let entry = SpecimenCatalog.entry(for: specimen.subtype), !entry.preferredBiomes.isEmpty {
+                HStack(spacing: 4) {
+                    Text("Habitat:")
+                        .font(.custom("Inter-Regular", size: 10))
+                        .foregroundColor(.white.opacity(0.3))
+                    Text(entry.preferredBiomes.map { $0.displayName }.joined(separator: ", "))
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(.white.opacity(0.5))
+                }
             }
         }
         .padding(.horizontal, 20)

@@ -283,16 +283,40 @@ final class SpawnManager: ObservableObject {
         case .effect:    subtypes = Self.effectSubtypes
         }
 
+        // Weight selection by biome affinity — preferred biome specimens are 3x more likely
+        let currentBiome = biomeDetector.currentBiome
+        let weighted = subtypes.map { subtype -> (String, Float) in
+            let catalogID = SpecimenCatalog.catalogSubtypeID(from: subtype)
+            if let entry = SpecimenCatalog.entry(for: catalogID),
+               entry.preferredBiomes.contains(currentBiome) {
+                return (subtype, 3.0)
+            }
+            return (subtype, 1.0)
+        }
+
+        let selectedSubtype = weightedRandom(from: weighted) ?? subtypes[0]
+
         return WildSpecimen(
             category: category,
-            subtype: subtypes.randomElement() ?? subtypes[0],
+            subtype: selectedSubtype,
             rarity: rarity,
-            biome: biomeDetector.currentBiome,
+            biome: currentBiome,
             spawnSource: source,
             direction: Double.random(in: 0...(2 * .pi)),
             distance: Double.random(in: 20...400),
             expiresAt: Date().addingTimeInterval(4 * 3600) // 4-hour window
         )
+    }
+
+    private func weightedRandom(from items: [(String, Float)]) -> String? {
+        let totalWeight = items.map { $0.1 }.reduce(0, +)
+        guard totalWeight > 0 else { return nil }
+        var roll = Float.random(in: 0..<totalWeight)
+        for (item, weight) in items {
+            roll -= weight
+            if roll < 0 { return item }
+        }
+        return items.last?.0
     }
 
     // MARK: - Simple Geohash (exploration tracking only)

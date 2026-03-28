@@ -13,6 +13,7 @@ struct CatalogEntry {
     let isDeepSpecimen: Bool     // true = not available in normal spawns
     let unlockCondition: String  // Human-readable unlock hint (empty for core specimens)
     let defaultParams: [String: Float]  // Curated parameter preset for this specimen type
+    let preferredBiomes: [Biome] // Biomes where this specimen spawns more often (empty = spawns everywhere)
 
     init(
         subtypeID: String,
@@ -23,7 +24,8 @@ struct CatalogEntry {
         personalityLine: String = "",
         isDeepSpecimen: Bool = false,
         unlockCondition: String = "",
-        defaultParams: [String: Float] = [:]
+        defaultParams: [String: Float] = [:],
+        preferredBiomes: [Biome] = []
     ) {
         self.subtypeID = subtypeID
         self.creatureName = creatureName
@@ -34,6 +36,7 @@ struct CatalogEntry {
         self.isDeepSpecimen = isDeepSpecimen
         self.unlockCondition = unlockCondition
         self.defaultParams = defaultParams
+        self.preferredBiomes = preferredBiomes
     }
 
     /// Display name with rarity prefix
@@ -67,7 +70,8 @@ enum SpecimenCatalog {
                          "obrix_env1Attack": 0.01, "obrix_env1Decay": 0.3,
                          "obrix_env1Sustain": 0.7, "obrix_env1Release": 0.4,
                          "obrix_lfo1Rate": 0.3, "obrix_lfo1Depth": 0.1,
-                     ]),
+                     ],
+                     preferredBiomes: [.urban, .coastal]),
         // Boxjelly — hollow, woody, pulse-width modulated
         CatalogEntry(subtypeID: "polyblep-square",  creatureName: "Boxjelly",  category: .source,
                      sonicCharacter: "Hollow square wave — woody, clarinet-like",
@@ -79,7 +83,8 @@ enum SpecimenCatalog {
                          "obrix_env1Attack": 0.02, "obrix_env1Decay": 0.4,
                          "obrix_env1Sustain": 0.5, "obrix_env1Release": 0.6,
                          "obrix_lfo1Rate": 1.5, "obrix_lfo1Depth": 0.2,
-                     ]),
+                     ],
+                     preferredBiomes: [.nocturnal, .liminal]),
         // Foamspray — noisy, percussive, explosive
         CatalogEntry(subtypeID: "noise-white",      creatureName: "Foamspray", category: .source,
                      sonicCharacter: "Full-spectrum noise — ocean spray, breath, transients",
@@ -91,7 +96,8 @@ enum SpecimenCatalog {
                          "obrix_env1Attack": 0.001, "obrix_env1Decay": 0.15,
                          "obrix_env1Sustain": 0.1, "obrix_env1Release": 0.1,
                          "obrix_lfo1Rate": 0.0, "obrix_lfo1Depth": 0.0,
-                     ]),
+                     ],
+                     preferredBiomes: [.storm, .coastal]),
         // Bellcrab — metallic, bell-like, long sustain
         CatalogEntry(subtypeID: "fm-basic",         creatureName: "Bellcrab",  category: .source,
                      sonicCharacter: "FM synthesis — metallic bells, electric piano",
@@ -103,7 +109,8 @@ enum SpecimenCatalog {
                          "obrix_env1Attack": 0.001, "obrix_env1Decay": 0.8,
                          "obrix_env1Sustain": 0.3, "obrix_env1Release": 1.5,
                          "obrix_lfo1Rate": 0.1, "obrix_lfo1Depth": 0.05,
-                     ]),
+                     ],
+                     preferredBiomes: [.urban, .elevation]),
 
         // Deep (unlock required)
         CatalogEntry(subtypeID: "polyblep-tri",     creatureName: "Glider",    category: .source,
@@ -147,7 +154,8 @@ enum SpecimenCatalog {
                          "obrix_flt1EnvDepth": 0.3,
                          "obrix_env1Attack": 0.05, "obrix_env1Decay": 0.5,
                          "obrix_env1Sustain": 0.4, "obrix_env1Release": 0.5,
-                     ]),
+                     ],
+                     preferredBiomes: [.coastal, .forest]),
         // Bonecrush — aggressive, driven, fast attack
         CatalogEntry(subtypeID: "shaper-hard",      creatureName: "Bonecrush",  category: .processor,
                      sonicCharacter: "Hard clipping — aggressive distortion",
@@ -158,7 +166,8 @@ enum SpecimenCatalog {
                          "obrix_flt1EnvDepth": -0.2,
                          "obrix_env1Attack": 0.001, "obrix_env1Decay": 0.2,
                          "obrix_env1Sustain": 0.8, "obrix_env1Release": 0.3,
-                     ]),
+                     ],
+                     preferredBiomes: [.urban, .storm]),
         // Loopworm — plucky, feedback-rich, Karplus-Strong character
         CatalogEntry(subtypeID: "feedback",         creatureName: "Loopworm",   category: .processor,
                      sonicCharacter: "Feedback path — Karplus-Strong pluck, metallic tones",
@@ -169,7 +178,8 @@ enum SpecimenCatalog {
                          "obrix_flt1EnvDepth": 0.4,
                          "obrix_env1Attack": 0.001, "obrix_env1Decay": 0.6,
                          "obrix_env1Sustain": 0.0, "obrix_env1Release": 0.8,
-                     ]),
+                     ],
+                     preferredBiomes: [.liminal, .nocturnal]),
         // Prism — vocal, wah-like, narrow bandpass
         CatalogEntry(subtypeID: "svf-bp",           creatureName: "Prism",      category: .processor,
                      sonicCharacter: "Band-pass filter — wah-like, vocal",
@@ -180,7 +190,8 @@ enum SpecimenCatalog {
                          "obrix_flt1EnvDepth": 0.5,
                          "obrix_env1Attack": 0.03, "obrix_env1Decay": 0.3,
                          "obrix_env1Sustain": 0.6, "obrix_env1Release": 0.4,
-                     ]),
+                     ],
+                     preferredBiomes: [.elevation, .convergence]),
 
         // Deep (unlock required)
         CatalogEntry(subtypeID: "svf-hp",           creatureName: "Razorgill",  category: .processor,
@@ -211,7 +222,8 @@ enum SpecimenCatalog {
                          "obrix_lfo1Rate": 0.0, "obrix_lfo1Depth": 0.0,
                          "obrix_env1Attack": 0.001, "obrix_env1Decay": 0.08,
                          "obrix_env1Sustain": 0.0, "obrix_env1Release": 0.05,
-                     ]),
+                     ],
+                     preferredBiomes: [.urban, .storm]),
         // Tidepulse — slow, breathing, meditative
         CatalogEntry(subtypeID: "lfo-sine",         creatureName: "Tidepulse",     category: .modulator,
                      sonicCharacter: "Smooth sine LFO — vibrato, tremolo",
@@ -221,7 +233,8 @@ enum SpecimenCatalog {
                          "obrix_lfo1Rate": 0.2, "obrix_lfo1Depth": 0.4,
                          "obrix_env1Attack": 0.1, "obrix_env1Decay": 0.5,
                          "obrix_env1Sustain": 0.7, "obrix_env1Release": 1.0,
-                     ]),
+                     ],
+                     preferredBiomes: [.coastal, .forest]),
         // Strikescale — velocity-responsive, dynamic
         CatalogEntry(subtypeID: "vel-map",          creatureName: "Strikescale",   category: .modulator,
                      sonicCharacter: "Velocity mapping — harder = brighter/louder",
@@ -231,7 +244,8 @@ enum SpecimenCatalog {
                          "obrix_lfo1Rate": 0.0, "obrix_lfo1Depth": 0.0,
                          "obrix_env1Attack": 0.01, "obrix_env1Decay": 0.2,
                          "obrix_env1Sustain": 0.5, "obrix_env1Release": 0.3,
-                     ]),
+                     ],
+                     preferredBiomes: [.urban, .elevation]),
         // Scramble — chaotic, unpredictable, glitchy
         CatalogEntry(subtypeID: "lfo-random",       creatureName: "Scramble",      category: .modulator,
                      sonicCharacter: "Random/S&H LFO — unpredictable, glitchy",
@@ -241,7 +255,8 @@ enum SpecimenCatalog {
                          "obrix_lfo1Rate": 5.0, "obrix_lfo1Depth": 0.6,
                          "obrix_env1Attack": 0.01, "obrix_env1Decay": 0.15,
                          "obrix_env1Sustain": 0.3, "obrix_env1Release": 0.2,
-                     ]),
+                     ],
+                     preferredBiomes: [.storm, .convergence]),
 
         // Deep (unlock required)
         CatalogEntry(subtypeID: "adsr-slow",        creatureName: "Drifter",       category: .modulator,
@@ -272,7 +287,8 @@ enum SpecimenCatalog {
                          "obrix_fx1Mix": 0.4, "obrix_fx1Param1": 0.5,
                          "obrix_env1Attack": 0.01, "obrix_env1Decay": 0.3,
                          "obrix_env1Sustain": 0.6, "obrix_env1Release": 0.5,
-                     ]),
+                     ],
+                     preferredBiomes: [.elevation, .liminal]),
         // Shimmer — lush, wide, chorus-rich
         CatalogEntry(subtypeID: "chorus-lush",      creatureName: "Shimmer",    category: .effect,
                      sonicCharacter: "Rich chorus — doubles, detunes, widens",
@@ -282,7 +298,8 @@ enum SpecimenCatalog {
                          "obrix_fx1Mix": 0.5, "obrix_fx1Param1": 0.6,
                          "obrix_env1Attack": 0.05, "obrix_env1Decay": 0.5,
                          "obrix_env1Sustain": 0.8, "obrix_env1Release": 0.8,
-                     ]),
+                     ],
+                     preferredBiomes: [.coastal, .forest]),
         // Cathedral — vast, long tail, immersive
         CatalogEntry(subtypeID: "reverb-hall",      creatureName: "Cathedral",  category: .effect,
                      sonicCharacter: "Large hall reverb — vast, oceanic, immersive",
@@ -292,7 +309,8 @@ enum SpecimenCatalog {
                          "obrix_fx1Mix": 0.6, "obrix_fx1Param1": 0.8,
                          "obrix_env1Attack": 0.1, "obrix_env1Decay": 0.8,
                          "obrix_env1Sustain": 0.7, "obrix_env1Release": 2.0,
-                     ]),
+                     ],
+                     preferredBiomes: [.liminal, .nocturnal]),
         // Ember — warm, gritty, saturated
         CatalogEntry(subtypeID: "dist-warm",        creatureName: "Ember",      category: .effect,
                      sonicCharacter: "Warm analog distortion — tubes, tape, heat",
@@ -302,7 +320,8 @@ enum SpecimenCatalog {
                          "obrix_fx1Mix": 0.35, "obrix_fx1Param1": 0.7,
                          "obrix_env1Attack": 0.01, "obrix_env1Decay": 0.3,
                          "obrix_env1Sustain": 0.7, "obrix_env1Release": 0.4,
-                     ]),
+                     ],
+                     preferredBiomes: [.urban, .storm]),
     ]
 
     // MARK: - Unified Access

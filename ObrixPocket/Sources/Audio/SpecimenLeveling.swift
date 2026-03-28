@@ -1,5 +1,29 @@
 import Foundation
 
+// MARK: - Specimen Age
+
+/// Visual aging tier derived from total play time.
+/// Controls glow radius, border color, and breathing amplitude on the reef grid.
+enum SpecimenAge: String {
+    case newborn = "Newborn"     // < 1 min play time
+    case young   = "Young"       // 1–30 min
+    case mature  = "Mature"      // 30 min – 5 hours
+    case elder   = "Elder"       // 5–50 hours
+    case ancient = "Ancient"     // 50+ hours
+
+    static func from(playSeconds: Double) -> SpecimenAge {
+        switch playSeconds {
+        case ..<60:          return .newborn
+        case 60..<1800:      return .young
+        case 1800..<18000:   return .mature
+        case 18000..<180000: return .elder
+        default:             return .ancient
+        }
+    }
+}
+
+// MARK: - Specimen Leveling
+
 /// Leveling system constants and helpers for specimen progression (1–10).
 enum SpecimenLeveling {
 

@@ -321,6 +321,13 @@ private struct SpecimenMapPin: View {
 
     var body: some View {
         ZStack {
+            // Preferred-biome habitat glow — indicates this specimen is in its natural habitat
+            if isPreferred {
+                Circle()
+                    .fill(categoryColor.opacity(0.15))
+                    .frame(width: pinSize + 16, height: pinSize + 16)
+            }
+
             // Outer glow
             Circle()
                 .fill(categoryColor.opacity(0.3))
@@ -336,6 +343,15 @@ private struct SpecimenMapPin: View {
                 .stroke(Color.white.opacity(0.6), lineWidth: specimen.rarity == .legendary ? 2 : 1)
                 .frame(width: pinSize, height: pinSize)
         }
+    }
+
+    /// True when this specimen has spawned inside one of its preferred biomes.
+    private var isPreferred: Bool {
+        let catalogID = SpecimenCatalog.catalogSubtypeID(from: specimen.subtype)
+        if let entry = SpecimenCatalog.entry(for: catalogID) {
+            return entry.preferredBiomes.contains(specimen.biome)
+        }
+        return false
     }
 
     private var pinSize: CGFloat {

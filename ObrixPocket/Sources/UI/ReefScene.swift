@@ -197,9 +197,20 @@ class ReefScene: SKScene {
                 if let specimen = reefStore.specimens[index] {
                     let color = categoryColors[specimen.category] ?? .white
                     let healthAlpha = CGFloat(specimen.health) / 100.0
+                    let age = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
 
                     bg.fillColor = color.withAlphaComponent(specimen.isPhantom ? 0.15 : 0.25 * healthAlpha)
-                    bg.strokeColor = color.withAlphaComponent(specimen.isPhantom ? 0.3 : 0.6)
+
+                    // Elder and Ancient get a gold border accent; others use category color
+                    let borderColor: SKColor = {
+                        switch age {
+                        case .elder, .ancient:
+                            return SKColor(red: 0.914, green: 0.769, blue: 0.416, alpha: 0.6) // XO Gold
+                        default:
+                            return color.withAlphaComponent(specimen.isPhantom ? 0.3 : 0.6)
+                        }
+                    }()
+                    bg.strokeColor = borderColor
                     bg.lineWidth = specimen.rarity == .legendary ? 3.0 : (specimen.rarity == .rare ? 2.0 : 1.0)
 
                     if !specimen.isPhantom && specimen.health > 0 {
@@ -212,8 +223,18 @@ class ReefScene: SKScene {
                             case .legendary: return 1.8
                             }
                         }()
+                        // Age multiplier adds an additional halo boost for older specimens
+                        let ageGlowMultiplier: CGFloat = {
+                            switch age {
+                            case .newborn: return 1.0
+                            case .young:   return 1.1
+                            case .mature:  return 1.25
+                            case .elder:   return 1.4
+                            case .ancient: return 1.6
+                            }
+                        }()
                         // Glow shape matches the specimen category shape
-                        let glow = shapeForCategory(specimen.category, radius: bgRadius * glowRadiusMultiplier)
+                        let glow = shapeForCategory(specimen.category, radius: bgRadius * glowRadiusMultiplier * ageGlowMultiplier)
                         glow.fillColor = color.withAlphaComponent(0.05 * healthAlpha)
                         glow.strokeColor = .clear
                         glow.name = "glow_\(index)"
@@ -227,6 +248,16 @@ class ReefScene: SKScene {
                             outerGlow.lineWidth = 0.5
                             outerGlow.name = "outerGlow_\(index)"
                             slotNode.addChild(outerGlow)
+                        }
+
+                        // Ancient: add a second gold outer ring (age-based, independent of rarity)
+                        if age == .ancient {
+                            let ancientGlow = SKShapeNode(circleOfRadius: bgRadius * 1.7)
+                            ancientGlow.fillColor = SKColor(red: 0.914, green: 0.769, blue: 0.416, alpha: 0.03)
+                            ancientGlow.strokeColor = SKColor(red: 0.914, green: 0.769, blue: 0.416, alpha: 0.1)
+                            ancientGlow.lineWidth = 0.5
+                            ancientGlow.name = "ancientGlow_\(index)"
+                            slotNode.addChild(ancientGlow)
                         }
                     }
 
@@ -507,7 +538,16 @@ class ReefScene: SKScene {
                 case .legendary: return 0.06
                 }
             }()
-            let breathScale = 1.0 + sin(breathPhase) * rarityBreathAmplitude
+            // Age bonus — older specimens breathe more visibly
+            let ageBreathBonus: Float = {
+                let age = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
+                switch age {
+                case .ancient: return 0.03
+                case .elder:   return 0.015
+                default:       return 0
+                }
+            }()
+            let breathScale = 1.0 + sin(breathPhase) * (rarityBreathAmplitude + ageBreathBonus)
 
             if let glow = node.childNode(withName: "glow_\(index)") {
                 glow.setScale(CGFloat(breathScale))
@@ -517,6 +557,12 @@ class ReefScene: SKScene {
                let outerGlow = node.childNode(withName: "outerGlow_\(index)") {
                 let outerBreath = 1.0 + sin(breathPhase + 0.4) * 0.04
                 outerGlow.setScale(CGFloat(outerBreath))
+            }
+            // Ancient outer gold ring pulses slightly out of phase for shimmer effect
+            if SpecimenAge.from(playSeconds: specimen.totalPlaySeconds) == .ancient,
+               let ancientGlow = node.childNode(withName: "ancientGlow_\(index)") {
+                let ancientBreath = 1.0 + sin(breathPhase + 0.8) * 0.03
+                ancientGlow.setScale(CGFloat(ancientBreath))
             }
         }
     }
