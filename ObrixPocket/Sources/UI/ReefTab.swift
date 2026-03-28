@@ -12,6 +12,7 @@ struct ReefTab: View {
     @StateObject private var milestoneManager = MilestoneManager()
     @StateObject private var ambientManager = ReefAmbientManager()
     @StateObject private var metronome = MetronomeManager()
+    @StateObject private var loopRecorder = LoopRecorder()
     @State private var reefScene: ReefScene?
     @State private var gridRefreshTimer: Timer?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
@@ -454,6 +455,75 @@ struct ReefTab: View {
                     .padding(.bottom, 4)
                 }
 
+                // Loop recorder controls
+                HStack(spacing: 10) {
+                    // Loop record / overdub button
+                    Button(action: {
+                        if loopRecorder.isRecording { loopRecorder.stopRecording() }
+                        else { loopRecorder.startRecording() }
+                    }) {
+                        Circle()
+                            .fill(loopRecorder.isRecording ? Color(hex: "FF4D4D") : Color(hex: "FF4D4D").opacity(0.4))
+                            .frame(width: 20, height: 20)
+                            .overlay(
+                                loopRecorder.isRecording ?
+                                AnyView(RoundedRectangle(cornerRadius: 2).fill(.white).frame(width: 8, height: 8)) :
+                                AnyView(Circle().fill(.white).frame(width: 8, height: 8))
+                            )
+                    }
+
+                    // Play / stop loop playback
+                    Button(action: { loopRecorder.togglePlayback() }) {
+                        Image(systemName: loopRecorder.isPlaying ? "stop.fill" : "play.fill")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(hex: "1E8B7E"))
+                    }
+                    .disabled(loopRecorder.layerCount == 0 && !loopRecorder.isRecording)
+
+                    // Layer count badge
+                    if loopRecorder.layerCount > 0 {
+                        Text("\(loopRecorder.layerCount) layer\(loopRecorder.layerCount == 1 ? "" : "s")")
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+
+                    // Loop progress bar
+                    if loopRecorder.isPlaying {
+                        GeometryReader { geo in
+                            ZStack(alignment: .leading) {
+                                RoundedRectangle(cornerRadius: 2)
+                                    .fill(Color.white.opacity(0.06))
+                                RoundedRectangle(cornerRadius: 2)
+                                    .fill(Color(hex: "1E8B7E").opacity(0.4))
+                                    .frame(width: geo.size.width * CGFloat(loopRecorder.loopProgress))
+                            }
+                        }
+                        .frame(width: 60, height: 4)
+                    }
+
+                    // Undo last layer
+                    if loopRecorder.layerCount > 0 {
+                        Button(action: { loopRecorder.undoLastLayer() }) {
+                            Image(systemName: "arrow.uturn.backward")
+                                .font(.system(size: 10))
+                                .foregroundColor(.white.opacity(0.3))
+                        }
+                    }
+
+                    // Clear all layers
+                    if loopRecorder.layerCount > 0 {
+                        Button(action: { loopRecorder.clearAllLayers() }) {
+                            Image(systemName: "trash")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color(hex: "FF4D4D").opacity(0.4))
+                        }
+                    }
+
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 2)
+
                 // Metronome controls
                 HStack(spacing: 8) {
                     // Toggle
@@ -508,6 +578,7 @@ struct ReefTab: View {
                         }
                         ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
                         recorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
+                        loopRecorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
                         challengeManager.incrementProgress(type: .playNotes)
                         milestoneManager.increment("play_100")
                         milestoneManager.increment("play_1000")
@@ -532,6 +603,7 @@ struct ReefTab: View {
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))
                         recorder.recordNoteOff(midiNote: midiNote)
+                        loopRecorder.recordNoteOff(midiNote: midiNote)
                         // Resume ambient 3 seconds after the last key release
                         ambientResumeTimer?.invalidate()
                         if ambientEnabled {
@@ -544,7 +616,15 @@ struct ReefTab: View {
                     octaveOffset: $octaveOffset,
                     scale: keyboardScale,
                     mode: keyboardMode,
-                    syncBPM: metronome.isRunning ? metronome.bpm : nil
+                    syncBPM: metronome.isRunning ? metronome.bpm : nil,
+                    onExpression: { filterMod, pitchBend in
+                        // Y position (0=bottom, 1=top) modulates filter cutoff: low touch = closed, high = open
+                        ObrixBridge.shared()?.setParameterImmediate("obrix_proc1Cutoff",
+                                                                     value: 2000 + filterMod * 10000)
+                        // X position within key bends pitch ±2 semitones via src1 tuning
+                        ObrixBridge.shared()?.setParameterImmediate("obrix_src1Tune",
+                                                                     value: pitchBend * 2.0)
+                    }
                 )
                 .frame(height: 80)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -573,8 +653,21 @@ struct ReefTab: View {
             motionController.stop()
             ambientManager.stop()
             metronome.stop()
+            loopRecorder.clearAllLayers()
             ambientResumeTimer?.invalidate()
             ambientResumeTimer = nil
+        }
+        // Fire loop playback events at ~30 Hz from the main thread
+        .onReceive(Timer.publish(every: 1.0 / 30.0, on: .main, in: .common).autoconnect()) { _ in
+            guard loopRecorder.isPlaying else { return }
+            loopRecorder.playEvents(
+                noteOn: { note, vel in ObrixBridge.shared()?.note(on: Int32(note), velocity: vel) },
+                noteOff: { note in ObrixBridge.shared()?.noteOff(Int32(note)) }
+            )
+        }
+        // Sync loop duration to metronome BPM
+        .onChange(of: metronome.bpm) { newBPM in
+            loopRecorder.bpm = newBPM
         }
         .alert("Rename Reef", isPresented: $showReefRename) {
             TextField("Reef name", text: $editingReefName)

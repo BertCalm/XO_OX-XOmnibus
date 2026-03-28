@@ -76,6 +76,19 @@ final class KeyboardView: UIView {
     private var startNote: Int { 48 + (octaveOffset * 12) }
     private let whiteKeyCount = 14
 
+    // MARK: Expression Tracking
+
+    private struct TouchExpression {
+        var midiNote: Int
+        var yExpression: Float  // 0 = bottom of key, 1 = top — maps to filter mod
+        var xExpression: Float  // 0 = left edge, 1 = right edge — maps to pitch bend
+    }
+
+    /// Fires on every finger-move within the same key: (filterMod 0–1, pitchBend –1 to +1)
+    var onExpression: ((Float, Float) -> Void)?
+
+    private var activeTouchExpressions: [ObjectIdentifier: TouchExpression] = [:]
+
     // MARK: State
     /// Maps UITouch identity → MIDI note currently sounding for that finger
     private var activeTouches: [ObjectIdentifier: Int] = [:]
@@ -145,6 +158,21 @@ final class KeyboardView: UIView {
             ctx.stroke(CGRect(x: x, y: 0, width: whiteKeyWidth, height: bounds.height))
         }
 
+        // Draw expression indicators for active white keys (horizontal line at touch Y)
+        for i in 0..<whiteKeyCount {
+            let note    = startNote + whiteNoteOffsets[i]
+            guard activeNotes.contains(note) else { continue }
+            guard let expr = activeTouchExpressions.values.first(where: { $0.midiNote == note }) else { continue }
+            let x       = CGFloat(i) * whiteKeyWidth
+            let keyRect = CGRect(x: x, y: 0, width: whiteKeyWidth, height: bounds.height)
+            let indicatorY = CGFloat(1.0 - expr.yExpression) * bounds.height
+            ctx.setStrokeColor(UIColor.white.withAlphaComponent(0.35).cgColor)
+            ctx.setLineWidth(1.0)
+            ctx.move(to: CGPoint(x: keyRect.minX + 2, y: indicatorY))
+            ctx.addLine(to: CGPoint(x: keyRect.maxX - 2, y: indicatorY))
+            ctx.strokePath()
+        }
+
         // Draw black keys on top
         let dimBlackKeyColor = UIColor(red: 0.024, green: 0.024, blue: 0.032, alpha: 1) // Nearly invisible
         for (whiteIndex, blackOffset) in blackKeyForWhiteIndex {
@@ -179,7 +207,45 @@ final class KeyboardView: UIView {
             ctx.setLineWidth(0.5)
             ctx.addPath(path.cgPath)
             ctx.strokePath()
+
+            // Expression indicator for active black key
+            if activeNotes.contains(note),
+               let expr = activeTouchExpressions.values.first(where: { $0.midiNote == note }) {
+                let indicatorY = CGFloat(1.0 - expr.yExpression) * blackKeyHeight
+                ctx.setStrokeColor(UIColor.white.withAlphaComponent(0.4).cgColor)
+                ctx.setLineWidth(1.0)
+                ctx.move(to: CGPoint(x: keyRect.minX + 2, y: indicatorY))
+                ctx.addLine(to: CGPoint(x: keyRect.maxX - 2, y: indicatorY))
+                ctx.strokePath()
+            }
         }
+    }
+
+    // MARK: Key Rect Lookup
+
+    /// Return the bounding rect for a given MIDI note, or nil if the note is not visible on this keyboard.
+    func rectForNote(_ note: Int) -> CGRect? {
+        let offset = note - startNote
+        let whiteKeyWidth  = bounds.width / CGFloat(whiteKeyCount)
+        let blackKeyWidth  = whiteKeyWidth * 0.6
+        let blackKeyHeight = bounds.height * 0.6
+
+        // Check black keys
+        for (whiteIndex, blackOffset) in blackKeyForWhiteIndex {
+            if blackOffset == offset {
+                let whiteX = CGFloat(whiteIndex) * whiteKeyWidth
+                let blackX = whiteX + whiteKeyWidth - blackKeyWidth * 0.5
+                return CGRect(x: blackX, y: 0, width: blackKeyWidth, height: blackKeyHeight)
+            }
+        }
+        // Check white keys
+        for (i, whiteOffset) in whiteNoteOffsets.enumerated() {
+            if whiteOffset == offset {
+                return CGRect(x: CGFloat(i) * whiteKeyWidth, y: 0,
+                              width: whiteKeyWidth, height: bounds.height)
+            }
+        }
+        return nil
     }
 
     // MARK: Hit-testing
@@ -270,6 +336,24 @@ final class KeyboardView: UIView {
             } else {
                 activeTouches[id] = note
                 onNoteOn?(note, velocity)
+
+                // Capture initial expression position for single-mode touches
+                let loc = touch.location(in: self)
+                let yNorm = max(0, min(1, Float(1.0 - (loc.y / bounds.height))))
+                let xNorm: Float
+                if let keyRect = rectForNote(note), keyRect.width > 0 {
+                    xNorm = max(0, min(1, Float((loc.x - keyRect.minX) / keyRect.width)))
+                } else {
+                    xNorm = 0.5
+                }
+                activeTouchExpressions[id] = TouchExpression(
+                    midiNote: note,
+                    yExpression: yNorm,
+                    xExpression: xNorm
+                )
+                let filterMod = yNorm
+                let pitchBend = (xNorm - 0.5) * 2.0
+                onExpression?(filterMod, pitchBend)
             }
 
             HapticEngine.keyPress(velocity: velocity)
@@ -282,19 +366,38 @@ final class KeyboardView: UIView {
         for touch in touches {
             let id = ObjectIdentifier(touch)
 
-            // Chord and arp modes do not support glissando — skip movement handling
+            // Chord and arp modes do not support glissando or expression — skip movement handling
             if mode == .chord || mode == .arp { continue }
 
-            guard let newNote = keyAt(point: touch.location(in: self)) else {
+            let loc = touch.location(in: self)
+
+            guard let newNote = keyAt(point: loc) else {
                 // Finger moved off the keyboard — release whatever was held
                 if let oldNote = activeTouches.removeValue(forKey: id) {
                     onNoteOff?(oldNote)
+                    activeTouchExpressions.removeValue(forKey: id)
                     changed = true
                 }
                 continue
             }
             let oldNote = activeTouches[id]
-            if oldNote != newNote {
+            if oldNote == newNote {
+                // Same key — update expression in real time
+                let yNorm = max(0, min(1, Float(1.0 - (loc.y / bounds.height))))
+                let xNorm: Float
+                if let keyRect = rectForNote(newNote), keyRect.width > 0 {
+                    xNorm = max(0, min(1, Float((loc.x - keyRect.minX) / keyRect.width)))
+                } else {
+                    xNorm = 0.5
+                }
+                activeTouchExpressions[id]?.yExpression = yNorm
+                activeTouchExpressions[id]?.xExpression = xNorm
+
+                let filterMod = yNorm
+                let pitchBend = (xNorm - 0.5) * 2.0
+                onExpression?(filterMod, pitchBend)
+                setNeedsDisplay()  // Redraw expression indicator
+            } else if oldNote != newNote {
                 // Glissando: finger slid to a different key
                 if let prev = oldNote {
                     onNoteOff?(prev)
@@ -302,6 +405,23 @@ final class KeyboardView: UIView {
                 let velocity = velocityForTouch(touch)
                 onNoteOn?(newNote, velocity)
                 activeTouches[id] = newNote
+
+                // Reset expression for new key
+                let yNorm = max(0, min(1, Float(1.0 - (loc.y / bounds.height))))
+                let xNorm: Float
+                if let keyRect = rectForNote(newNote), keyRect.width > 0 {
+                    xNorm = max(0, min(1, Float((loc.x - keyRect.minX) / keyRect.width)))
+                } else {
+                    xNorm = 0.5
+                }
+                activeTouchExpressions[id] = TouchExpression(
+                    midiNote: newNote,
+                    yExpression: yNorm,
+                    xExpression: xNorm
+                )
+                let filterMod = yNorm
+                let pitchBend = (xNorm - 0.5) * 2.0
+                onExpression?(filterMod, pitchBend)
                 changed = true
             }
         }
@@ -314,14 +434,17 @@ final class KeyboardView: UIView {
 
             if mode == .chord, let notes = chordNotes.removeValue(forKey: id) {
                 activeTouches.removeValue(forKey: id)
+                activeTouchExpressions.removeValue(forKey: id)
                 for n in notes { onNoteOff?(n) }
             } else if mode == .arp {
                 activeTouches.removeValue(forKey: id)
+                activeTouchExpressions.removeValue(forKey: id)
                 stopArp()
             } else {
                 if let note = activeTouches.removeValue(forKey: id) {
                     onNoteOff?(note)
                 }
+                activeTouchExpressions.removeValue(forKey: id)
             }
         }
         setNeedsDisplay()
@@ -378,6 +501,7 @@ final class KeyboardView: UIView {
             onNoteOff?(note)
         }
         activeTouches.removeAll()
+        activeTouchExpressions.removeAll()
         setNeedsDisplay()
     }
 }
@@ -394,6 +518,7 @@ struct PlayKeyboard: UIViewRepresentable {
     var scale: KeyboardScale = .chromatic
     var mode: KeyboardMode = .single
     var syncBPM: Double? = nil  // External BPM sync (from metronome)
+    var onExpression: ((Float, Float) -> Void)? = nil  // (filterMod 0–1, pitchBend –1 to +1)
 
     func makeUIView(context: Context) -> KeyboardView {
         let view           = KeyboardView()
@@ -403,17 +528,19 @@ struct PlayKeyboard: UIViewRepresentable {
         view.octaveOffset  = octaveOffset
         view.scale         = scale
         view.mode          = mode
+        view.onExpression  = onExpression
         return view
     }
 
     func updateUIView(_ uiView: KeyboardView, context: Context) {
         // Push any SwiftUI-side changes down to the UIKit view
-        uiView.onNoteOn     = onNoteOn
-        uiView.onNoteOff    = onNoteOff
-        uiView.accentColor  = UIColor(accentColor)
-        uiView.scale        = scale
-        uiView.mode         = mode
-        uiView.syncBPM      = syncBPM
+        uiView.onNoteOn      = onNoteOn
+        uiView.onNoteOff     = onNoteOff
+        uiView.accentColor   = UIColor(accentColor)
+        uiView.scale         = scale
+        uiView.mode          = mode
+        uiView.syncBPM       = syncBPM
+        uiView.onExpression  = onExpression
 
         if uiView.octaveOffset != octaveOffset {
             // Release held notes before jumping octave — avoids stuck notes
