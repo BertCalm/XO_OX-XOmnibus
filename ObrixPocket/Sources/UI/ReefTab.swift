@@ -5,10 +5,14 @@ struct ReefTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
     @EnvironmentObject var firstLaunchManager: FirstLaunchManager
+    @StateObject private var presetManager = ReefPresetManager()
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
     @State private var octaveOffset: Int = 0      // Keyboard octave shift (-2 to +2)
+    @State private var showSaveDialog = false
+    @State private var showLoadSheet = false
+    @State private var presetName = ""
 
     var body: some View {
         VStack(spacing: 0) {
@@ -27,6 +31,21 @@ struct ReefTab: View {
                     Text("Depth: \(reefStore.totalDiveDepth)m")
                         .font(.custom("JetBrainsMono-Regular", size: 11))
                         .foregroundColor(Color(hex: "7A7876"))
+                }
+                // Save / Load preset buttons
+                HStack(spacing: 8) {
+                    Button(action: { showSaveDialog = true }) {
+                        Image(systemName: "square.and.arrow.down")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                    }
+                    if !presetManager.presets.isEmpty {
+                        Button(action: { showLoadSheet = true }) {
+                            Image(systemName: "square.and.arrow.up")
+                                .font(.system(size: 12))
+                                .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                        }
+                    }
                 }
                 if !reefStore.couplingRoutes.isEmpty {
                     Button(action: {
@@ -153,9 +172,73 @@ struct ReefTab: View {
                 activeSourceSlot = firstSourceSlot
             }
         }
+        .alert("Save Reef Preset", isPresented: $showSaveDialog) {
+            TextField("Preset name", text: $presetName)
+            Button("Save") {
+                if !presetName.isEmpty {
+                    presetManager.save(name: presetName, from: reefStore)
+                    presetName = ""
+                }
+            }
+            Button("Cancel", role: .cancel) { presetName = "" }
+        }
+        .sheet(isPresented: $showLoadSheet) {
+            ReefPresetList(
+                presetManager: presetManager,
+                reefStore: reefStore,
+                onDismiss: { showLoadSheet = false }
+            )
+        }
     }
 
     private var firstSourceSlot: Int? {
         reefStore.specimens.firstIndex(where: { $0?.category == .source })
+    }
+}
+
+// MARK: - ReefPresetList
+
+struct ReefPresetList: View {
+    @ObservedObject var presetManager: ReefPresetManager
+    let reefStore: ReefStore
+    let onDismiss: () -> Void
+
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(presetManager.presets) { preset in
+                    Button(action: {
+                        presetManager.restore(preset, to: reefStore)
+                        onDismiss()
+                    }) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(preset.name)
+                                .font(.custom("SpaceGrotesk-Bold", size: 14))
+                                .foregroundColor(.white)
+                            Text(preset.savedAt, style: .date)
+                                .font(.custom("JetBrainsMono-Regular", size: 10))
+                                .foregroundColor(.white.opacity(0.4))
+                            Text("\(preset.specimenSlots.compactMap { $0 }.count) specimens, \(preset.couplingRoutes.count) wires")
+                                .font(.custom("Inter-Regular", size: 10))
+                                .foregroundColor(.white.opacity(0.3))
+                        }
+                    }
+                }
+                .onDelete { indexSet in
+                    for index in indexSet {
+                        presetManager.delete(presetManager.presets[index])
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle("Reef Presets")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Done") { onDismiss() }
+                }
+            }
+            .background(Color(hex: "0E0E10"))
+        }
     }
 }

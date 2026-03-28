@@ -184,6 +184,7 @@ struct CreatureCard: View {
                 .background(Color.white.opacity(0.06))
                 .padding(.vertical, 12)
             statsSection
+            affinitySection
             bottomSection
         }
         .padding(.horizontal, 20)
@@ -386,6 +387,30 @@ struct CreatureCard: View {
             }
         }
         .buttonStyle(.plain)
+    }
+
+    // MARK: - Affinity Section: pairs well with
+
+    @ViewBuilder
+    private var affinitySection: some View {
+        let partners = CouplingAffinity.affinitySubtypes(for: specimen.subtype)
+            .compactMap { SpecimenCatalog.entry(for: $0) }
+
+        if !partners.isEmpty {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("PAIRS WELL WITH")
+                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .tracking(1)
+                    .foregroundColor(.white.opacity(0.2))
+                ForEach(partners, id: \.subtypeID) { partner in
+                    Text(partner.creatureName)
+                        .font(.custom("Inter-Regular", size: 11))
+                        .foregroundColor(categoryColor(for: partner.category).opacity(0.6))
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 10)
+        }
     }
 
     // MARK: - Bottom Section: catch date

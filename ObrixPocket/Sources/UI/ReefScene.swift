@@ -403,6 +403,11 @@ class ReefScene: SKScene {
     private static func wireContextLabel(src: Specimen?, dst: Specimen?) -> String {
         guard let s = src, let d = dst else { return "Wired" }
 
+        // High affinity pair takes precedence — the most meaningful label
+        if CouplingAffinity.between(s, d) == .high {
+            return "High affinity!"
+        }
+
         // Same source track → they share musical DNA
         if let srcTitle = s.sourceTrackTitle, let dstTitle = d.sourceTrackTitle,
            !srcTitle.isEmpty, !dstTitle.isEmpty, srcTitle == dstTitle {
@@ -664,13 +669,39 @@ class ReefScene: SKScene {
            let srcSpec = reefStore.specimens[srcSlot],
            let dstSpec = reefStore.specimens[dstSlot] {
 
+            // Slot positions for feedback label placement
+            let srcPos = srcSlot < slotNodes.count ? slotNodes[srcSlot].position : .zero
+            let dstPos = dstSlot < slotNodes.count ? slotNodes[dstSlot].position : point
+
             // Check for existing route between these two
             let alreadyConnected = reefStore.couplingRoutes.contains {
                 ($0.sourceId == srcSpec.id && $0.destId == dstSpec.id) ||
                 ($0.sourceId == dstSpec.id && $0.destId == srcSpec.id)
             }
 
+            // Block Source → Source connections entirely
+            if srcSpec.category == .source && dstSpec.category == .source {
+                showChainFeedback(text: "Invalid!", color: SKColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1),
+                                  near: srcPos, to: dstPos)
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                cancelWiring()
+                return
+            }
+
             if !alreadyConnected {
+                // Show chain quality feedback before creating the route
+                let quality = wireValidationColor(from: srcSpec.category, to: dstSpec.category)
+                let affinity = CouplingAffinity.between(srcSpec, dstSpec)
+                let qualityText: String
+                if affinity == .high {
+                    qualityText = "Perfect chain!"
+                } else if quality == SKColor(red: 0.3, green: 0.8, blue: 0.3, alpha: 1) {
+                    qualityText = "Good chain!"
+                } else {
+                    qualityText = "Unusual chain"
+                }
+                showChainFeedback(text: qualityText, color: quality, near: srcPos, to: dstPos)
+
                 // Create the coupling route with connection timestamp for spectral drift
                 let route = CouplingRoute(sourceId: srcSpec.id, destId: dstSpec.id, depth: 0.5, connectedSince: Date())
                 reefStore.couplingRoutes.append(route)
@@ -685,6 +716,23 @@ class ReefScene: SKScene {
         cancelWiring()
         buildGrid() // Rebuild to show new wires
         onWiringChanged?() // Push updated params to engine
+    }
+
+    /// Show a floating feedback label that fades out after 1 second.
+    private func showChainFeedback(text: String, color: SKColor, near srcPos: CGPoint, to dstPos: CGPoint) {
+        let feedback = SKLabelNode(text: text)
+        feedback.fontSize = 11
+        feedback.fontName = "SpaceGrotesk-Bold"
+        feedback.fontColor = color
+        feedback.position = CGPoint(x: (srcPos.x + dstPos.x) / 2,
+                                    y: (srcPos.y + dstPos.y) / 2 + 20)
+        feedback.zPosition = 10
+        addChild(feedback)
+        feedback.run(SKAction.sequence([
+            SKAction.wait(forDuration: 1.0),
+            SKAction.fadeOut(withDuration: 0.5),
+            SKAction.removeFromParent()
+        ]))
     }
 
     private func cancelWiring() {

@@ -134,12 +134,14 @@ final class ReefStore: ObservableObject {
         let durationHours = Date().timeIntervalSince(since) / 3600.0
         guard durationHours > 0 else { return }
 
-        let driftAmount = Float(min(0.05, durationHours * 0.002))
-
         guard let srcIdx = specimens.firstIndex(where: { $0?.id == sourceId }),
               let dstIdx = specimens.firstIndex(where: { $0?.id == destId }),
               var srcSpec = specimens[srcIdx],
               var dstSpec = specimens[dstIdx] else { return }
+
+        let affinity = CouplingAffinity.between(srcSpec, dstSpec)
+        let baseDrift = Float(min(0.05, durationHours * 0.002))
+        let driftAmount = baseDrift * affinity.driftMultiplier
 
         let bandCount = min(srcSpec.spectralDNA.count, dstSpec.spectralDNA.count)
         guard bandCount > 0 else { return }
