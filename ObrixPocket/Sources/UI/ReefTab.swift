@@ -7,6 +7,8 @@ struct ReefTab: View {
     @EnvironmentObject var firstLaunchManager: FirstLaunchManager
     @StateObject private var presetManager = ReefPresetManager()
     @StateObject private var recorder = PerformanceRecorder()
+    @StateObject private var motionController = MotionController()
+    @StateObject private var challengeManager = DailyChallengeManager()
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
@@ -64,6 +66,37 @@ struct ReefTab: View {
             .padding(.horizontal, 20)
             .padding(.top, 12)
             .padding(.bottom, 8)
+
+            // Daily challenges bar
+            HStack(spacing: 8) {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 9))
+                    .foregroundColor(Color(hex: "E9C46A"))
+
+                ForEach(challengeManager.challenges) { challenge in
+                    VStack(spacing: 2) {
+                        Text(challenge.description)
+                            .font(.custom("Inter-Regular", size: 8))
+                            .foregroundColor(challenge.isComplete ? Color(hex: "1E8B7E") : .white.opacity(0.4))
+                            .strikethrough(challenge.isComplete)
+                            .lineLimit(1)
+
+                        // Mini progress bar
+                        GeometryReader { geo in
+                            ZStack(alignment: .leading) {
+                                RoundedRectangle(cornerRadius: 1)
+                                    .fill(Color.white.opacity(0.06))
+                                RoundedRectangle(cornerRadius: 1)
+                                    .fill(challenge.isComplete ? Color(hex: "1E8B7E") : Color(hex: "E9C46A").opacity(0.5))
+                                    .frame(width: geo.size.width * CGFloat(challenge.progress) / CGFloat(challenge.target))
+                            }
+                        }
+                        .frame(height: 2)
+                    }
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 4)
 
             // The Reef Grid (SpriteKit scene)
             GeometryReader { geometry in
@@ -154,6 +187,28 @@ struct ReefTab: View {
                             .font(.custom("SpaceGrotesk-Bold", size: 16))
                             .foregroundColor(octaveOffset < 2 ? .white : .white.opacity(0.2))
                             .frame(width: 28, height: 28)
+                    }
+                    // Motion toggle
+                    Button(action: {
+                        if motionController.isEnabled { motionController.stop() }
+                        else { motionController.start() }
+                    }) {
+                        Image(systemName: "gyroscope")
+                            .font(.system(size: 12))
+                            .foregroundColor(motionController.isEnabled ? Color(hex: "1E8B7E") : .white.opacity(0.3))
+                    }
+                    // Tilt position dot — only visible when motion is active
+                    if motionController.isEnabled {
+                        HStack(spacing: 4) {
+                            Text("TILT")
+                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                            Circle()
+                                .fill(Color(hex: "1E8B7E"))
+                                .frame(width: 4, height: 4)
+                                .offset(x: CGFloat(motionController.tiltX) * 10,
+                                        y: CGFloat(-motionController.tiltY) * 10)
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
@@ -259,6 +314,7 @@ struct ReefTab: View {
                         }
                         ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
                         recorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
+                        challengeManager.incrementProgress(type: .playNotes)
                     },
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))
@@ -285,6 +341,9 @@ struct ReefTab: View {
             if activeSourceSlot == nil {
                 activeSourceSlot = firstSourceSlot
             }
+        }
+        .onDisappear {
+            motionController.stop()
         }
         .alert("Save Reef Preset", isPresented: $showSaveDialog) {
             TextField("Preset name", text: $presetName)

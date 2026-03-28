@@ -233,6 +233,19 @@ struct CreatureCard: View {
             // Level + XP progress
             LevelProgressView(specimen: specimen, color: color)
                 .padding(.top, 4)
+
+            // Evolution path badge — shown when specimen has reached level 10
+            if specimen.level >= 10, EvolutionCatalog.paths[specimen.subtype] != nil {
+                let isAggressive = specimen.aggressiveScore > specimen.gentleScore
+                HStack(spacing: 4) {
+                    Image(systemName: isAggressive ? "bolt.fill" : "leaf.fill")
+                        .font(.system(size: 9))
+                    Text(isAggressive ? "Aggressive Evolution" : "Gentle Evolution")
+                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                }
+                .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
+                .padding(.top, 2)
+            }
         }
     }
 

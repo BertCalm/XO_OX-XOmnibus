@@ -365,8 +365,22 @@ final class AudioEngineManager: ObservableObject {
         specimen.xp += multiplied
         let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
         if newLevel > specimen.level {
+            let oldLevel = specimen.level
             specimen.level = newLevel
             UINotificationFeedbackGenerator().notificationOccurred(.success)
+
+            // EVOLUTION: reaching level 10 for the first time triggers a name/identity transformation.
+            // oldLevel guards against re-triggering if earnXP is called again after already hitting 10.
+            if newLevel >= 10 && oldLevel < 10 {
+                if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
+                    specimen.name = evolved.name
+                    // Keep original subtype — DSP stays the same; the evolved name is the reward
+                    // Double haptic: a second heavy impact 300ms after the level-up notification
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    }
+                }
+            }
         }
         reefStore.specimens[slotIndex] = specimen
     }
