@@ -684,9 +684,11 @@ struct ReefTab: View {
             motionController.stop()
             ambientManager.stop()
             metronome.stop()
-            loopRecorder.clearAllLayers()
+            loopRecorder.stopPlayback() // Stop playback but KEEP layers
             ambientResumeTimer?.invalidate()
             ambientResumeTimer = nil
+            gridRefreshTimer?.invalidate()
+            gridRefreshTimer = nil
         }
         // Fire loop playback events at ~30 Hz from the main thread
         .onReceive(Timer.publish(every: 1.0 / 30.0, on: .main, in: .common).autoconnect()) { _ in

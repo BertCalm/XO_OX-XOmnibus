@@ -16,6 +16,7 @@ final class LoopRecorder: ObservableObject {
     private var playbackTimer: Timer?
     private var playbackStartTime: Date?
     private var autoStopWorkItem: DispatchWorkItem?
+    private var lastPlaybackPos: TimeInterval = -1
 
     struct NoteEvent: Codable {
         let timestamp: TimeInterval  // Seconds from loop start (0 to loopDuration)
@@ -87,6 +88,7 @@ final class LoopRecorder: ObservableObject {
         guard !layers.isEmpty || isRecording else { return }
         isPlaying = true
         playbackStartTime = Date()
+        lastPlaybackPos = -1
 
         playbackTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / 30.0, repeats: true) { [weak self] _ in
             guard let self, self.isPlaying, let start = self.playbackStartTime else { return }
@@ -103,6 +105,7 @@ final class LoopRecorder: ObservableObject {
         isPlaying = false
         loopProgress = 0
         currentBeat = 0
+        lastPlaybackPos = -1
 
         ObrixBridge.shared()?.allNotesOff()
     }
@@ -117,22 +120,30 @@ final class LoopRecorder: ObservableObject {
         guard isPlaying, let start = playbackStartTime else { return }
         let elapsed = Date().timeIntervalSince(start)
         let posInLoop = elapsed.truncatingRemainder(dividingBy: loopDuration)
-        let frameWindow: TimeInterval = 1.0 / 30.0  // ~33 ms
+
+        // Detect loop restart (position jumped backwards by more than jitter tolerance)
+        let loopRestarted = posInLoop < lastPlaybackPos - 0.1
+
+        let frameWindow: TimeInterval = 1.0 / 30.0
 
         for layer in layers {
             for event in layer {
                 let diff = event.timestamp - posInLoop
-                // Also handle wrap-around at loop boundary (last frame of a loop cycle)
-                let wrappedDiff = diff < 0 ? diff + loopDuration : diff
-                if wrappedDiff >= 0 && wrappedDiff < frameWindow {
-                    if event.velocity > 0 {
-                        noteOn(event.midiNote, event.velocity)
-                    } else {
-                        noteOff(event.midiNote)
-                    }
+
+                // Normal case: event falls in current frame window
+                let inWindow = diff >= 0 && diff < frameWindow
+
+                // Boundary case: we just looped and the event is near the start
+                let atBoundary = loopRestarted && event.timestamp < frameWindow
+
+                if inWindow || atBoundary {
+                    if event.velocity > 0 { noteOn(event.midiNote, event.velocity) }
+                    else { noteOff(event.midiNote) }
                 }
             }
         }
+
+        lastPlaybackPos = posInLoop
     }
 
     // MARK: - Export

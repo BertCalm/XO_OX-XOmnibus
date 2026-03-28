@@ -390,13 +390,16 @@ final class KeyboardView: UIView {
                 } else {
                     xNorm = 0.5
                 }
-                activeTouchExpressions[id]?.yExpression = yNorm
-                activeTouchExpressions[id]?.xExpression = xNorm
+                let oldExpr = activeTouchExpressions[id]
+                let yChanged = abs(yNorm - (oldExpr?.yExpression ?? 0)) > 0.005
+                let xChanged = abs(xNorm - (oldExpr?.xExpression ?? 0)) > 0.005
 
-                let filterMod = yNorm
-                let pitchBend = (xNorm - 0.5) * 2.0
-                onExpression?(filterMod, pitchBend)
-                setNeedsDisplay()  // Redraw expression indicator
+                if yChanged || xChanged {
+                    activeTouchExpressions[id]?.yExpression = yNorm
+                    activeTouchExpressions[id]?.xExpression = xNorm
+                    onExpression?(yNorm, (xNorm - 0.5) * 2.0)
+                    setNeedsDisplay()  // Redraw expression indicator
+                }
             } else if oldNote != newNote {
                 // Glissando: finger slid to a different key
                 if let prev = oldNote {
@@ -460,7 +463,7 @@ final class KeyboardView: UIView {
     private func startArp() {
         stopArp()
         let interval = 60.0 / (syncBPM ?? arpBPM)  // Quarter note interval; prefer external sync
-        arpTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
+        let timer = Timer(timeInterval: interval, repeats: true) { [weak self] _ in
             guard let self, !self.arpNotes.isEmpty else { return }
 
             // Note off previous
@@ -474,6 +477,8 @@ final class KeyboardView: UIView {
             self.currentArpNote = note
             self.arpIndex += 1
         }
+        RunLoop.main.add(timer, forMode: .common)
+        arpTimer = timer
     }
 
     private func stopArp() {

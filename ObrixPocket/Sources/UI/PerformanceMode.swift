@@ -103,5 +103,8 @@ struct PerformanceMode: View {
             }
         }
         .statusBarHidden()
+        .onDisappear {
+            ObrixBridge.shared()?.allNotesOff()
+        }
     }
 }

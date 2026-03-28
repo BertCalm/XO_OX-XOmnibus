@@ -21,7 +21,10 @@ enum MIDIExporter {
                 allEvents.append(MIDIEvent(timestamp: event.timestamp, note: event.midiNote, velocity: event.velocity))
             }
         }
-        allEvents.sort { $0.timestamp < $1.timestamp }
+        allEvents.sort {
+            if $0.timestamp != $1.timestamp { return $0.timestamp < $1.timestamp }
+            return $0.velocity > $1.velocity // note-on (velocity > 0) before note-off (velocity == 0)
+        }
         return buildMIDI(events: allEvents, bpm: bpm)
     }
 
