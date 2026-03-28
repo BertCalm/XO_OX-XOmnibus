@@ -2,7 +2,7 @@
 // CouplingInspectorPanel.h — C2 "COUPLE" tab content for SidebarPanel (320pt wide).
 //
 // Layout (top-to-bottom):
-//   1. Mini coupling graph (320 × 120pt) — CouplingVisualizer embedded at reduced height.
+//   1. Mini coupling graph (320 × 96pt) — CouplingVisualizer embedded at reduced height.
 //   2. Four collapsible route cards — each wired to cp_r{N}_{active,type,amount,source,target}.
 //   3. Action row (32pt) — BAKE | CLR | coupling preset dropdown.
 //
@@ -10,6 +10,7 @@
 // first shown (lazy construction mirrors the PresetBrowser pattern).
 //
 // Patterns followed: GalleryColors, GalleryFonts, GalleryKnob, A11y, enableKnobReset.
+// Visual polish pass (2026-03-27): dark theme, route card info density, gold BAKE.
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../XOlokunProcessor.h"
@@ -58,17 +59,18 @@ public:
             juce::String prefix = "cp_r" + juce::String (r + 1) + "_";
             juce::String routeLabel = "ROUTE " + juce::String (r + 1);
 
-            // Header — click anywhere on it to expand/collapse
+            // Header — transparent button so the card background shows through;
+            // text uses T1 for the route number, drawn directly in paint().
             card.headerBtn.setButtonText (routeLabel);
             card.headerBtn.setClickingTogglesState (false);
             card.headerBtn.setColour (juce::TextButton::buttonColourId,
-                                      GalleryColors::get (GalleryColors::shellWhite()));
+                                      juce::Colours::transparentBlack);
             card.headerBtn.setColour (juce::TextButton::buttonOnColourId,
-                                      GalleryColors::get (GalleryColors::shellWhite()));
+                                      juce::Colours::transparentBlack);
             card.headerBtn.setColour (juce::TextButton::textColourOffId,
-                                      GalleryColors::get (GalleryColors::textDark()));
+                                      juce::Colours::transparentBlack);  // drawn in paint()
             card.headerBtn.setColour (juce::TextButton::textColourOnId,
-                                      GalleryColors::get (GalleryColors::textDark()));
+                                      juce::Colours::transparentBlack);
             A11y::setup (card.headerBtn,
                          routeLabel + " expand/collapse",
                          "Toggle route " + juce::String (r + 1) + " detail view");
@@ -76,16 +78,17 @@ public:
             addAndMakeVisible (card.headerBtn);
 
             // Active toggle — right side of header row
+            // OFF: dark pill (raised bg, T3 text).  ON: green with white text.
             card.activeBtn.setButtonText ("ON");
             card.activeBtn.setClickingTogglesState (true);
             card.activeBtn.setColour (juce::TextButton::buttonColourId,
-                                      GalleryColors::get (GalleryColors::slotBg()));
+                                      GalleryColors::get (GalleryColors::raised()));
             card.activeBtn.setColour (juce::TextButton::buttonOnColourId,
-                                      GalleryColors::get (GalleryColors::xoGold));
+                                      juce::Colour (0xFF2D6A4F));  // muted forest green
             card.activeBtn.setColour (juce::TextButton::textColourOffId,
-                                      GalleryColors::get (GalleryColors::textMid()));
+                                      GalleryColors::get (GalleryColors::t3()));
             card.activeBtn.setColour (juce::TextButton::textColourOnId,
-                                      GalleryColors::get (GalleryColors::textDark()));
+                                      juce::Colour (0xFF52B788));  // bright mint when on
             A11y::setup (card.activeBtn,
                          "Route " + juce::String (r + 1) + " enable",
                          "Activate or deactivate coupling route " + juce::String (r + 1));
@@ -102,11 +105,13 @@ public:
             }, 1);
             card.typeBox.setTextWhenNoChoicesAvailable ("No types");
             card.typeBox.setColour (juce::ComboBox::backgroundColourId,
-                                    GalleryColors::get (GalleryColors::shellWhite()));
+                                    GalleryColors::get (GalleryColors::raised()));
             card.typeBox.setColour (juce::ComboBox::outlineColourId,
-                                    GalleryColors::get (GalleryColors::borderGray()));
+                                    GalleryColors::border().withAlpha (0.18f));
             card.typeBox.setColour (juce::ComboBox::textColourId,
-                                    GalleryColors::get (GalleryColors::textDark()));
+                                    GalleryColors::get (GalleryColors::t1()));
+            card.typeBox.setColour (juce::ComboBox::arrowColourId,
+                                    GalleryColors::get (GalleryColors::t3()));
             A11y::setup (card.typeBox,
                          "Route " + juce::String (r + 1) + " coupling type",
                          "Select the coupling modulation type for route " + juce::String (r + 1));
@@ -120,7 +125,7 @@ public:
             card.amountKnob.setColour (juce::Slider::rotarySliderFillColourId,
                                        GalleryColors::get (GalleryColors::xoGold));
             card.amountKnob.setColour (juce::Slider::rotarySliderOutlineColourId,
-                                       GalleryColors::get (GalleryColors::borderGray()));
+                                       GalleryColors::border().withAlpha (0.22f));
             card.amountKnob.setTooltip ("Route " + juce::String (r + 1) + " amount (bipolar)");
             A11y::setup (card.amountKnob,
                          "Route " + juce::String (r + 1) + " amount",
@@ -134,7 +139,7 @@ public:
             card.amountLabel.setText ("AMT", juce::dontSendNotification);
             card.amountLabel.setFont (GalleryFonts::heading (8.0f));
             card.amountLabel.setColour (juce::Label::textColourId,
-                                        GalleryColors::get (GalleryColors::textMid()));
+                                        GalleryColors::get (GalleryColors::t3()));
             card.amountLabel.setJustificationType (juce::Justification::centred);
             addChildComponent (card.amountLabel);  // hidden until expanded
 
@@ -142,11 +147,13 @@ public:
             card.sourceBox.addItemList (
                 { "Slot 1", "Slot 2", "Slot 3", "Slot 4", "Slot 5 (Ghost)" }, 1);
             card.sourceBox.setColour (juce::ComboBox::backgroundColourId,
-                                      GalleryColors::get (GalleryColors::shellWhite()));
+                                      GalleryColors::get (GalleryColors::raised()));
             card.sourceBox.setColour (juce::ComboBox::outlineColourId,
-                                      GalleryColors::get (GalleryColors::borderGray()));
+                                      GalleryColors::border().withAlpha (0.18f));
             card.sourceBox.setColour (juce::ComboBox::textColourId,
-                                      GalleryColors::get (GalleryColors::textDark()));
+                                      GalleryColors::get (GalleryColors::t1()));
+            card.sourceBox.setColour (juce::ComboBox::arrowColourId,
+                                      GalleryColors::get (GalleryColors::t3()));
             A11y::setup (card.sourceBox,
                          "Route " + juce::String (r + 1) + " source slot",
                          "Engine slot that is the coupling source for route " + juce::String (r + 1));
@@ -158,11 +165,13 @@ public:
             card.targetBox.addItemList (
                 { "Slot 1", "Slot 2", "Slot 3", "Slot 4", "Slot 5 (Ghost)" }, 1);
             card.targetBox.setColour (juce::ComboBox::backgroundColourId,
-                                      GalleryColors::get (GalleryColors::shellWhite()));
+                                      GalleryColors::get (GalleryColors::raised()));
             card.targetBox.setColour (juce::ComboBox::outlineColourId,
-                                      GalleryColors::get (GalleryColors::borderGray()));
+                                      GalleryColors::border().withAlpha (0.18f));
             card.targetBox.setColour (juce::ComboBox::textColourId,
-                                      GalleryColors::get (GalleryColors::textDark()));
+                                      GalleryColors::get (GalleryColors::t1()));
+            card.targetBox.setColour (juce::ComboBox::arrowColourId,
+                                      GalleryColors::get (GalleryColors::t3()));
             A11y::setup (card.targetBox,
                          "Route " + juce::String (r + 1) + " target slot",
                          "Engine slot that receives the coupling signal for route " + juce::String (r + 1));
@@ -174,26 +183,34 @@ public:
             card.expanded = false;
         }
 
-        // ── BAKE button ────────────────────────────────────────────────────────
+        // ── BAKE button — XO Gold accent, matches EXPORT button style ──────────
         addAndMakeVisible (bakeBtn);
         bakeBtn.setButtonText ("BAKE");
         bakeBtn.setTooltip ("Save current coupling routes as a reusable coupling preset");
         bakeBtn.setColour (juce::TextButton::buttonColourId,
-                           GalleryColors::get (GalleryColors::xoGold).withAlpha (0.15f));
+                           GalleryColors::get (GalleryColors::xoGold).withAlpha (0.18f));
+        bakeBtn.setColour (juce::TextButton::buttonOnColourId,
+                           GalleryColors::get (GalleryColors::xoGold).withAlpha (0.35f));
         bakeBtn.setColour (juce::TextButton::textColourOffId,
+                           GalleryColors::get (GalleryColors::xoGold));
+        bakeBtn.setColour (juce::TextButton::textColourOnId,
                            GalleryColors::get (GalleryColors::xoGold));
         A11y::setup (bakeBtn, "Bake Coupling",
                      "Save the current coupling route configuration as a named preset");
         bakeBtn.onClick = [this] { handleBake(); };
 
-        // ── CLR button ─────────────────────────────────────────────────────────
+        // ── CLR button — subtle T3 style ────────────────────────────────────────
         addAndMakeVisible (clearBtn);
         clearBtn.setButtonText ("CLR");
         clearBtn.setTooltip ("Clear all active coupling routes");
         clearBtn.setColour (juce::TextButton::buttonColourId,
-                            GalleryColors::get (GalleryColors::slotBg()));
+                            GalleryColors::get (GalleryColors::raised()));
+        clearBtn.setColour (juce::TextButton::buttonOnColourId,
+                            GalleryColors::get (GalleryColors::raised()).brighter (0.1f));
         clearBtn.setColour (juce::TextButton::textColourOffId,
-                            GalleryColors::get (GalleryColors::textMid()));
+                            GalleryColors::get (GalleryColors::t3()));
+        clearBtn.setColour (juce::TextButton::textColourOnId,
+                            GalleryColors::get (GalleryColors::t2()));
         A11y::setup (clearBtn, "Clear Coupling",
                      "Deactivate all coupling routes and reset the overlay");
         clearBtn.onClick = [this] {
@@ -207,11 +224,13 @@ public:
         couplingPresetBox.setTextWhenNothingSelected ("Coupling Presets...");
         couplingPresetBox.setTooltip ("Load a saved coupling preset");
         couplingPresetBox.setColour (juce::ComboBox::backgroundColourId,
-                                     GalleryColors::get (GalleryColors::shellWhite()));
+                                     GalleryColors::get (GalleryColors::raised()));
         couplingPresetBox.setColour (juce::ComboBox::outlineColourId,
-                                     GalleryColors::get (GalleryColors::borderGray()));
+                                     GalleryColors::border().withAlpha (0.18f));
         couplingPresetBox.setColour (juce::ComboBox::textColourId,
-                                     GalleryColors::get (GalleryColors::textDark()));
+                                     GalleryColors::get (GalleryColors::t2()));
+        couplingPresetBox.setColour (juce::ComboBox::arrowColourId,
+                                     GalleryColors::get (GalleryColors::t3()));
         A11y::setup (couplingPresetBox, "Coupling Preset Selector",
                      "Choose a saved coupling preset to load");
         couplingPresetBox.onChange = [this] { handlePresetSelected(); };
@@ -246,17 +265,26 @@ public:
     {
         using namespace GalleryColors;
 
-        g.fillAll (get (shellWhite()));
+        // Dark theme background — match the elevated surface behind the sidebar
+        g.fillAll (get (surface()));
 
         // ── Hairline separator below mini viz ─────────────────────────────────
-        g.setColour (get (borderGray()));
+        g.setColour (border());
         g.drawHorizontalLine (kMiniVizH, 0.0f, static_cast<float> (getWidth()));
+
+        // ── Section label above routes ─────────────────────────────────────────
+        g.setFont (GalleryFonts::heading (9.0f));
+        g.setColour (get (t3()));
+        g.drawText ("ROUTES",
+                    juce::Rectangle<int> (kCardMargin, kMiniVizH + 2, 60, kCardGap + 2),
+                    juce::Justification::centredLeft);
 
         // ── Route card backgrounds ─────────────────────────────────────────────
         int y = kMiniVizH + kCardGap;
         for (int r = 0; r < kNumRoutes; ++r)
         {
             int cardH = routeCards[r].expanded ? kCardExpandedH : kCardCollapsedH;
+            bool active = isRouteActive (r);
 
             juce::Rectangle<float> cardRect (
                 static_cast<float> (kCardMargin),
@@ -264,91 +292,116 @@ public:
                 static_cast<float> (getWidth() - kCardMargin * 2),
                 static_cast<float> (cardH - kCardGap));
 
-            g.setColour (get (slotBg()));
-            g.fillRoundedRectangle (cardRect, 4.0f);
-            g.setColour (get (borderGray()));
-            g.drawRoundedRectangle (cardRect, 4.0f, 0.5f);
+            // Card fill: elevated bg (#242426), slightly brighter when active
+            juce::Colour cardFill = get (elevated());
+            if (active)
+                cardFill = cardFill.brighter (0.04f);
 
-            // XO Gold left accent bar when active
-            bool active = isRouteActive (r);
+            g.setColour (cardFill);
+            g.fillRoundedRectangle (cardRect, 6.0f);
+
+            // Border: 1px rgba(255,255,255,0.07) — or slightly brighter when active
+            juce::Colour cardBorder = active ? border().withAlpha (0.14f) : border();
+            g.setColour (cardBorder);
+            g.drawRoundedRectangle (cardRect, 6.0f, 1.0f);
+
+            // Active green left accent bar (3px, rounded)
             if (active)
             {
-                g.setColour (get (xoGold));
+                g.setColour (juce::Colour (0xFF52B788));  // mint green
                 g.fillRoundedRectangle (
                     cardRect.getX(),
-                    cardRect.getY() + 4.0f,
+                    cardRect.getY() + 5.0f,
                     3.0f,
-                    cardRect.getHeight() - 8.0f,
+                    cardRect.getHeight() - 10.0f,
                     1.5f);
             }
 
-            // Expand/collapse chevron
-            auto chevronBounds = juce::Rectangle<float> (
-                cardRect.getRight() - 20.0f,
-                cardRect.getY() + (kCardCollapsedH - kCardGap) * 0.5f - 5.0f,
-                10.0f, 10.0f);
-
-            g.setColour (get (textMid()));
-            float cx = chevronBounds.getCentreX();
-            float cy = chevronBounds.getCentreY();
-            float hs = 4.0f; // half-span
-
-            if (routeCards[r].expanded)
+            // ── Route number label (T2 when inactive, T1 when active) ─────────
             {
-                // Up chevron ∧
-                g.drawLine (cx - hs, cy + 2.5f, cx, cy - 2.5f, 1.5f);
-                g.drawLine (cx, cy - 2.5f, cx + hs, cy + 2.5f, 1.5f);
-            }
-            else
-            {
-                // Down chevron ∨
-                g.drawLine (cx - hs, cy - 2.5f, cx, cy + 2.5f, 1.5f);
-                g.drawLine (cx, cy + 2.5f, cx + hs, cy - 2.5f, 1.5f);
-            }
-
-            // Source → target annotation when collapsed
-            if (!routeCards[r].expanded)
-            {
-                juce::String srcName = slotName (getSlotIndex (r, "source"));
-                juce::String tgtName = slotName (getSlotIndex (r, "target"));
-                juce::String routeSummary = srcName + " \xe2\x86\x92 " + tgtName;
-
-                g.setColour (get (textMid()));
-                g.setFont (GalleryFonts::body (9.0f));
-                g.drawText (routeSummary,
+                juce::String routeNumStr = "R" + juce::String (r + 1);
+                g.setFont (GalleryFonts::heading (9.0f));
+                g.setColour (active ? get (t1()) : get (t2()));
+                g.drawText (routeNumStr,
                             juce::Rectangle<int> (
-                                (int) cardRect.getX() + 52,
+                                (int) cardRect.getX() + kInnerPad + (active ? 5 : 3),
                                 (int) cardRect.getY(),
-                                (int) cardRect.getWidth() - 80,
+                                28,
                                 kCardCollapsedH - kCardGap),
                             juce::Justification::centredLeft);
             }
 
-            // Type badge when expanded
+            // ── Collapsed summary: "SRC → TGT  ·  TypeShort" ─────────────────
+            if (!routeCards[r].expanded)
+            {
+                juce::String srcName    = slotName (getSlotIndex (r, "source"));
+                juce::String tgtName    = slotName (getSlotIndex (r, "target"));
+                juce::String typeShort  = getTypeShortLabel (r);
+                // Arrow: UTF-8 →
+                juce::String summary = srcName + " \xe2\x86\x92 " + tgtName;
+                if (typeShort.isNotEmpty())
+                    summary += "  \xc2\xb7 " + typeShort;
+
+                g.setFont (GalleryFonts::body (9.5f));
+                g.setColour (active ? get (t2()) : get (t3()));
+                g.drawText (summary,
+                            juce::Rectangle<int> (
+                                (int) cardRect.getX() + kInnerPad + 30,
+                                (int) cardRect.getY(),
+                                (int) cardRect.getWidth() - kInnerPad - 58,
+                                kCardCollapsedH - kCardGap),
+                            juce::Justification::centredLeft, true);
+            }
+
+            // ── Expand/collapse chevron ────────────────────────────────────────
+            {
+                float chevX = cardRect.getRight() - 18.0f;
+                float chevY = cardRect.getY() + (kCardCollapsedH - kCardGap) * 0.5f;
+                float hs = 3.5f;
+
+                g.setColour (get (t3()));
+                if (routeCards[r].expanded)
+                {
+                    // Up chevron ∧
+                    g.drawLine (chevX - hs, chevY + 2.0f, chevX, chevY - 2.0f, 1.2f);
+                    g.drawLine (chevX, chevY - 2.0f, chevX + hs, chevY + 2.0f, 1.2f);
+                }
+                else
+                {
+                    // Down chevron ∨
+                    g.drawLine (chevX - hs, chevY - 2.0f, chevX, chevY + 2.0f, 1.2f);
+                    g.drawLine (chevX, chevY + 2.0f, chevX + hs, chevY - 2.0f, 1.2f);
+                }
+            }
+
+            // ── Expanded section labels (TYPE / SRC / TGT) ────────────────────
             if (routeCards[r].expanded)
             {
-                // "TYPE" label above the type combo
-                auto typeLabel = juce::Rectangle<int> (
-                    (int) cardRect.getX() + kInnerPad,
-                    (int) cardRect.getY() + kHeaderRowH + kRowGap,
-                    60, 12);
-                g.setColour (get (textMid()));
                 g.setFont (GalleryFonts::heading (8.0f));
-                g.drawText ("TYPE", typeLabel, juce::Justification::centredLeft);
+                g.setColour (get (t3()));
 
-                // "SRC / TGT" label above source/target row
-                auto srcTgtLabel = juce::Rectangle<int> (
-                    (int) cardRect.getX() + kInnerPad,
-                    (int) cardRect.getY() + kHeaderRowH + kRowGap + kLabelH + kTypeRowH + kRowGap,
-                    (int) cardRect.getWidth() - kInnerPad * 2, 12);
-                g.drawText ("SRC / TGT", srcTgtLabel, juce::Justification::centredLeft);
+                // "TYPE" label
+                g.drawText ("TYPE",
+                            juce::Rectangle<int> (
+                                (int) cardRect.getX() + kInnerPad,
+                                (int) cardRect.getY() + kHeaderRowH + kRowGap,
+                                50, kLabelH),
+                            juce::Justification::centredLeft);
+
+                // "SRC / TGT" label
+                g.drawText ("SRC \xe2\x86\x92 TGT",
+                            juce::Rectangle<int> (
+                                (int) cardRect.getX() + kInnerPad,
+                                (int) cardRect.getY() + kHeaderRowH + kRowGap + kLabelH + kTypeRowH + kRowGap,
+                                (int) cardRect.getWidth() - kInnerPad * 2, kLabelH),
+                            juce::Justification::centredLeft);
             }
 
             y += cardH;
         }
 
         // ── Hairline above action row ──────────────────────────────────────────
-        g.setColour (get (borderGray()));
+        g.setColour (border());
         g.drawHorizontalLine (getHeight() - kActionRowH, 0.0f,
                               static_cast<float> (getWidth()));
 
@@ -356,7 +409,7 @@ public:
         for (int r = 0; r < kNumRoutes; ++r)
         {
             if (routeCards[r].headerBtn.hasKeyboardFocus (false))
-                A11y::drawFocusRing (g, routeCards[r].headerBtn.getBounds().toFloat(), 3.0f);
+                A11y::drawFocusRing (g, routeCards[r].headerBtn.getBounds().toFloat(), 4.0f);
         }
     }
 
@@ -440,19 +493,19 @@ private:
     //==========================================================================
     // Layout constants
     //==========================================================================
-    static constexpr int kMiniVizH       = 120;  // mini graph height
-    static constexpr int kCardGap        = 4;    // vertical gap between cards
+    static constexpr int kMiniVizH       = 96;   // mini graph height (reduced from 120)
+    static constexpr int kCardGap        = 3;    // vertical gap between cards (tighter)
     static constexpr int kCardMargin     = 6;    // left/right inset for cards
     static constexpr int kInnerPad       = 8;    // inner padding inside card
-    static constexpr int kHeaderRowH     = 24;   // height of header row (label + toggle)
-    static constexpr int kActiveBtnW     = 38;   // width of ON/OFF toggle
-    static constexpr int kLabelH         = 12;   // micro-label height (TYPE / SRC/TGT)
+    static constexpr int kHeaderRowH     = 26;   // height of header row (label + toggle)
+    static constexpr int kActiveBtnW     = 34;   // width of ON/OFF toggle
+    static constexpr int kLabelH         = 11;   // micro-label height (TYPE / SRC/TGT)
     static constexpr int kTypeRowH       = 22;   // type combo height
     static constexpr int kComboRowH      = 22;   // source/target combo height
-    static constexpr int kKnobSize       = 36;   // amount knob square size
-    static constexpr int kArrowW         = 16;   // gap between source and target combos
-    static constexpr int kRowGap         = 4;    // gap between rows within card
-    static constexpr int kActionRowH     = 32;   // bottom action bar height
+    static constexpr int kKnobSize       = 34;   // amount knob square size
+    static constexpr int kArrowW         = 14;   // gap between source and target combos
+    static constexpr int kRowGap         = 3;    // gap between rows within card
+    static constexpr int kActionRowH     = 34;   // bottom action bar height
     static constexpr int kNumRoutes      = 4;
 
     // Collapsed card: header row + gaps + outer border allowance
@@ -539,7 +592,30 @@ private:
     }
 
     //==========================================================================
+    // Return a short type label string for the route summary badge.
+    // Reads the type APVTS param (1-based ComboBox index) and maps to abbreviation.
+    juce::String getTypeShortLabel (int r) const
+    {
+        juce::String paramId = "cp_r" + juce::String (r + 1) + "_type";
+        if (auto* param = apvts.getRawParameterValue (paramId))
+        {
+            // ComboBox attachment maps 1-based index → param value 0..N-1
+            int idx = juce::roundToInt (param->load());
+            static const char* kLabels[] = {
+                "Amp>F", "Amp>P", "LFO>P", "Env>M",
+                "FM",    "Ring",  "F>F",   "Choke",
+                "Rhy>B","Env>D", "P>P",   "WT",
+                "A>Buf", "KNOT", "TRI"
+            };
+            if (idx >= 0 && idx < 15)
+                return kLabels[idx];
+        }
+        return {};
+    }
+
+    //==========================================================================
     // Refresh the coupling preset dropdown from CouplingPresetManager library.
+    // When empty, use T3-colored placeholder text.
     void refreshPresetList()
     {
         couplingPresetBox.clear (juce::dontSendNotification);
@@ -548,11 +624,16 @@ private:
 
         if (names.isEmpty())
         {
-            couplingPresetBox.setTextWhenNothingSelected ("No presets saved");
+            couplingPresetBox.setTextWhenNothingSelected ("no presets saved");
+            // Dim text color for the empty-state hint
+            couplingPresetBox.setColour (juce::ComboBox::textColourId,
+                                         GalleryColors::get (GalleryColors::t3()));
         }
         else
         {
             couplingPresetBox.setTextWhenNothingSelected ("Coupling Presets...");
+            couplingPresetBox.setColour (juce::ComboBox::textColourId,
+                                         GalleryColors::get (GalleryColors::t2()));
             for (int i = 0; i < names.size(); ++i)
                 couplingPresetBox.addItem (names[i], i + 1);
         }
@@ -576,7 +657,7 @@ private:
                     if (safeThis)
                         safeThis->bakeBtn.setColour (
                             juce::TextButton::buttonColourId,
-                            GalleryColors::get (GalleryColors::xoGold).withAlpha (0.15f));
+                            GalleryColors::get (GalleryColors::xoGold).withAlpha (0.18f));
                 });
             return;
         }
@@ -638,14 +719,14 @@ private:
 
             // Brief XO Gold flash on the BAKE button as confirmation
             bakeBtn.setColour (juce::TextButton::buttonColourId,
-                               GalleryColors::get (GalleryColors::xoGold).withAlpha (0.6f));
+                               GalleryColors::get (GalleryColors::xoGold).withAlpha (0.65f));
             juce::Timer::callAfterDelay (
                 350,
                 [safeThis = juce::Component::SafePointer<CouplingInspectorPanel> (this)] {
                     if (safeThis)
                         safeThis->bakeBtn.setColour (
                             juce::TextButton::buttonColourId,
-                            GalleryColors::get (GalleryColors::xoGold).withAlpha (0.15f));
+                            GalleryColors::get (GalleryColors::xoGold).withAlpha (0.18f));
                 });
         }
     }
