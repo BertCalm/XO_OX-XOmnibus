@@ -441,7 +441,7 @@ private:
             // Build the label shown below this knob.
             auto lbl = std::make_unique<juce::Label>();
             lbl->setText(shortLabelForParamId(pid), juce::dontSendNotification);
-            lbl->setFont(GalleryFonts::value(9.0f));
+            lbl->setFont(GalleryFonts::value(11.0f));
             lbl->setColour(juce::Label::textColourId,
                            GalleryColors::get(GalleryColors::t2()));
             lbl->setJustificationType(juce::Justification::centred);
