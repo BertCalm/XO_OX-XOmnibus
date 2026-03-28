@@ -122,6 +122,30 @@ struct CollectionTab: View {
                         // Favorites section (if any)
                         favoritesSection
 
+                        // Compare mode slot indicator — shown between header and stats when active
+                        if compareMode {
+                            HStack(spacing: 8) {
+                                Circle()
+                                    .fill(compareSpecimenA != nil ? DesignTokens.reefJade : .white.opacity(0.15))
+                                    .frame(width: 8, height: 8)
+                                Text(compareSpecimenA != nil ? compareSpecimenA!.creatureName : "Tap first")
+                                    .font(DesignTokens.mono(9))
+                                    .foregroundColor(.white.opacity(0.4))
+
+                                Text("vs")
+                                    .font(DesignTokens.mono(8))
+                                    .foregroundColor(.white.opacity(0.2))
+
+                                Circle()
+                                    .fill(compareSpecimenB != nil ? DesignTokens.reefJade : .white.opacity(0.15))
+                                    .frame(width: 8, height: 8)
+                                Text(compareSpecimenB != nil ? "Ready!" : "Tap second")
+                                    .font(DesignTokens.mono(9))
+                                    .foregroundColor(.white.opacity(0.4))
+                            }
+                            .padding(.horizontal, 20)
+                        }
+
                         // Quick stats
                         HStack(spacing: 16) {
                             statBubble(value: "\(reefStore.specimens.compactMap { $0 }.count)", label: "In Reef")
@@ -144,7 +168,7 @@ struct CollectionTab: View {
                             .tracking(1.5)
 
                         CollectionSection(
-                            title: "Shells",
+                            title: "Shells (oscillators)",
                             categoryColor: DesignTokens.sourceColor,
                             entries: coreSources,
                             discoveredSubtypes: subtypes,
@@ -162,7 +186,7 @@ struct CollectionTab: View {
                         }
 
                         CollectionSection(
-                            title: "Coral",
+                            title: "Coral (filters)",
                             categoryColor: DesignTokens.errorRed,
                             entries: coreProcessors,
                             discoveredSubtypes: subtypes,
@@ -180,7 +204,7 @@ struct CollectionTab: View {
                         }
 
                         CollectionSection(
-                            title: "Currents",
+                            title: "Currents (modulators)",
                             categoryColor: DesignTokens.modulatorColor,
                             entries: coreModulators,
                             discoveredSubtypes: subtypes,
@@ -198,7 +222,7 @@ struct CollectionTab: View {
                         }
 
                         CollectionSection(
-                            title: "Tide Pools",
+                            title: "Tide Pools (effects)",
                             categoryColor: DesignTokens.effectColor,
                             entries: coreEffects,
                             discoveredSubtypes: subtypes,

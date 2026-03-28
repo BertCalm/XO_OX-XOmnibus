@@ -1,7 +1,8 @@
 import SwiftUI
 
-/// Reef header bar: tappable reef name, theme picker, gallery share, save/load preset, .xoreef export,
-/// clear-wires button, and the underwater decoration accent.
+/// Reef header bar: tappable reef name + single overflow menu.
+/// Secondary actions (theme, presets, export, gallery, clear wires) are collapsed
+/// into an ellipsis menu — keeping the header to 2 elements so the reef grid gets max space.
 struct ReefHeaderView: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
@@ -26,7 +27,7 @@ struct ReefHeaderView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                // Tappable reef name — opens rename alert
+                // Reef name — the primary element; taps to rename
                 Button(action: {
                     editingReefName = reefStore.reefName
                     showReefRename = true
@@ -34,38 +35,6 @@ struct ReefHeaderView: View {
                     Text(reefStore.reefName)
                         .font(DesignTokens.heading(18))
                         .foregroundColor(.white)
-                }
-
-                // Theme picker
-                Menu {
-                    ForEach(ReefTheme.allCases, id: \.self) { theme in
-                        Button(action: {
-                            reefTheme = theme
-                            onThemeChanged?(theme)
-                            UserDefaults.standard.set(theme.rawValue, forKey: "obrix_reef_theme")
-                        }) {
-                            HStack {
-                                Text(theme.rawValue)
-                                if theme == reefTheme {
-                                    Image(systemName: "checkmark")
-                                }
-                            }
-                        }
-                    }
-                } label: {
-                    Image(systemName: "paintpalette")
-                        .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.3))
-                }
-
-                // Gallery share button — generates a reef portrait image
-                Button(action: {
-                    galleryImage = ReefGalleryGenerator.generate(reefStore: reefStore)
-                    showGalleryShare = true
-                }) {
-                    Image(systemName: "photo.artframe")
-                        .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.3))
                 }
 
                 Spacer()
@@ -81,42 +50,70 @@ struct ReefHeaderView: View {
                         .foregroundColor(DesignTokens.mutedText)
                 }
 
-                // Save / Load preset buttons + .xoreef export
-                HStack(spacing: 8) {
+                // Overflow menu — all secondary actions
+                Menu {
+                    // Theme submenu
+                    Menu("Theme") {
+                        ForEach(ReefTheme.allCases, id: \.self) { theme in
+                            Button(action: {
+                                reefTheme = theme
+                                onThemeChanged?(theme)
+                                UserDefaults.standard.set(theme.rawValue, forKey: "obrix_reef_theme")
+                            }) {
+                                HStack {
+                                    Text(theme.rawValue)
+                                    if theme == reefTheme {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Preset save / load
                     Button(action: { showSaveDialog = true }) {
-                        Image(systemName: "square.and.arrow.down")
-                            .font(.system(size: 12))
-                            .foregroundColor(DesignTokens.reefJade.opacity(0.6))
+                        Label("Save Preset", systemImage: "square.and.arrow.down")
                     }
                     if !presetManager.presets.isEmpty {
                         Button(action: { showLoadSheet = true }) {
-                            Image(systemName: "list.bullet")
-                                .font(.system(size: 12))
-                                .foregroundColor(DesignTokens.reefJade.opacity(0.6))
+                            Label("Load Preset", systemImage: "list.bullet")
                         }
                     }
+
+                    Divider()
+
+                    // Export / share
                     Button(action: {
                         if let url = XOReefExporter.exportToFile(reefStore: reefStore) {
                             reefExportURL = url
                             showReefExport = true
                         }
                     }) {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 12))
-                            .foregroundColor(DesignTokens.reefJade.opacity(0.5))
+                        Label("Export .xoreef", systemImage: "square.and.arrow.up")
                     }
-                }
-
-                if !reefStore.couplingRoutes.isEmpty {
                     Button(action: {
-                        reefStore.couplingRoutes.removeAll()
-                        reefStore.save()
-                        audioEngine.applyReefConfiguration(reefStore)
+                        galleryImage = ReefGalleryGenerator.generate(reefStore: reefStore)
+                        showGalleryShare = true
                     }) {
-                        Text("Clear Wires")
-                            .font(DesignTokens.body(11))
-                            .foregroundColor(DesignTokens.errorRed.opacity(0.6))
+                        Label("Share Gallery", systemImage: "photo.artframe")
                     }
+
+                    // Clear wires — destructive, only shown when wires exist
+                    if !reefStore.couplingRoutes.isEmpty {
+                        Divider()
+
+                        Button(role: .destructive, action: {
+                            reefStore.couplingRoutes.removeAll()
+                            reefStore.save()
+                            audioEngine.applyReefConfiguration(reefStore)
+                        }) {
+                            Label("Clear Wires", systemImage: "link.badge.plus")
+                        }
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                        .font(.system(size: 16))
+                        .foregroundColor(.white.opacity(0.4))
                 }
             }
             .padding(.horizontal, 20)

@@ -301,9 +301,11 @@ struct ChestCeremony: View {
     private func runPhaseTwo() {
         phase = .crackOpen
 
-        // Start continuous ray rotation
-        withAnimation(.linear(duration: 6).repeatForever(autoreverses: false)) {
-            rayRotation = 360
+        // Start continuous ray rotation — skipped when reduce motion is enabled
+        if !UIAccessibility.isReduceMotionEnabled {
+            withAnimation(.linear(duration: 6).repeatForever(autoreverses: false)) {
+                rayRotation = 360
+            }
         }
 
         // Rays expand outward

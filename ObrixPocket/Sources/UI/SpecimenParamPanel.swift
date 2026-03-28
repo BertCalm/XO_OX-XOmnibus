@@ -17,6 +17,12 @@ struct SpecimenParamPanel: View {
     var body: some View {
         if let spec = specimen {
             VStack(spacing: 0) {
+                // Drag handle — visual cue for swipe-to-dismiss
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(Color.white.opacity(0.15))
+                    .frame(width: 36, height: 4)
+                    .padding(.top, 6)
+
                 // Header bar — distinct shade for section separation
                 HStack(spacing: 8) {
                     // Category icon — teaches the user what role this specimen plays
@@ -37,6 +43,10 @@ struct SpecimenParamPanel: View {
                         .font(DesignTokens.mono(10))
                         .tracking(1)
                         .foregroundColor(catColor(spec.category).opacity(0.6))
+
+                    Text(synthDescription(spec.category))
+                        .font(DesignTokens.mono(8))
+                        .foregroundColor(.white.opacity(0.15))
 
                     // Level badge
                     Text("Lv.\(spec.level)")
@@ -65,12 +75,17 @@ struct SpecimenParamPanel: View {
                             .foregroundColor((reefStore.specimens[slotIndex]?.isFavorite ?? false) ? DesignTokens.errorRed : .white.opacity(0.3))
                     }
 
-                    // Close button
+                    // Close button — 28pt visible area, 44pt tap target
                     Button(action: { onDismiss?() }) {
                         Image(systemName: "xmark")
-                            .font(.system(size: 10, weight: .bold))
-                            .foregroundColor(.white.opacity(0.3))
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundColor(.white.opacity(0.4))
+                            .frame(width: 28, height: 28)
+                            .background(Color.white.opacity(0.06))
+                            .clipShape(Circle())
                     }
+                    .frame(minWidth: 44, minHeight: 44)
+                    .contentShape(Rectangle())
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
@@ -200,6 +215,11 @@ struct SpecimenParamPanel: View {
             )
             .cornerRadius(12)
             .padding(.horizontal, 12)
+            .gesture(
+                DragGesture().onEnded { value in
+                    if value.translation.height > 50 { onDismiss?() }
+                }
+            )
             .sheet(isPresented: $showSwapPicker) {
                 if let spec = specimen {
                     SwapPickerView(
@@ -497,6 +517,17 @@ struct SpecimenParamPanel: View {
         case .processor: return "Shapes and transforms the sound"
         case .modulator: return "Moves parameters over time"
         case .effect:    return "Adds space, depth, or color"
+        }
+    }
+
+    /// Subtle synth vocabulary bridge — 8pt at 15% opacity in the header.
+    /// Bridges game category names to their synth equivalents for curious users.
+    private func synthDescription(_ category: SpecimenCategory) -> String {
+        switch category {
+        case .source:    return "oscillator"
+        case .processor: return "filter / shaper"
+        case .modulator: return "LFO / envelope"
+        case .effect:    return "delay / reverb / distortion"
         }
     }
 

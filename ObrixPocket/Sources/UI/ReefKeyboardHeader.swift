@@ -29,12 +29,27 @@ struct ReefKeyboardHeader: View {
 
     var body: some View {
         HStack {
-            // Source label
+            // Source label + subtle synth identity bridge
             let slot = activeSourceSlot ?? firstSourceSlot
             let sourceName = slot.flatMap { reefStore.specimens[$0]?.creatureName } ?? "—"
-            Text("Playing: \(sourceName)")
-                .font(DesignTokens.mono(10))
-                .foregroundColor(DesignTokens.reefJade.opacity(0.7))
+            let sourceSubtype = slot.flatMap { reefStore.specimens[$0]?.subtype }
+            VStack(alignment: .leading, spacing: 1) {
+                Text("Playing: \(sourceName)")
+                    .font(DesignTokens.mono(10))
+                    .foregroundColor(DesignTokens.reefJade.opacity(0.7))
+                if let subtype = sourceSubtype,
+                   let entry = SpecimenCatalog.entry(for: subtype) {
+                    // Derive short synth type from "Synth Name — detail" sonicCharacter format
+                    let synthType = entry.sonicCharacter
+                        .components(separatedBy: "—").first?
+                        .trimmingCharacters(in: .whitespaces) ?? ""
+                    if !synthType.isEmpty {
+                        Text("Source: \(synthType)")
+                            .font(DesignTokens.mono(8))
+                            .foregroundColor(.white.opacity(0.15))
+                    }
+                }
+            }
 
             Spacer()
 
@@ -74,13 +89,15 @@ struct ReefKeyboardHeader: View {
                     .foregroundColor(DesignTokens.reefJade.opacity(0.6))
             }
 
-            // Octave controls
+            // Octave controls — 44pt minimum tap targets
             Button(action: { if octaveOffset > -2 { octaveOffset -= 1 } }) {
                 Text("−")
                     .font(DesignTokens.heading(16))
                     .foregroundColor(octaveOffset > -2 ? .white : .white.opacity(0.2))
                     .frame(width: 28, height: 28)
             }
+            .frame(minWidth: 44, minHeight: 44)
+            .contentShape(Rectangle())
             .accessibilityLabel("Lower octave")
 
             Text("C\(4 + octaveOffset)")
@@ -94,6 +111,8 @@ struct ReefKeyboardHeader: View {
                     .foregroundColor(octaveOffset < 2 ? .white : .white.opacity(0.2))
                     .frame(width: 28, height: 28)
             }
+            .frame(minWidth: 44, minHeight: 44)
+            .contentShape(Rectangle())
             .accessibilityLabel("Higher octave")
 
             // Performance mode — fullscreen keyboard

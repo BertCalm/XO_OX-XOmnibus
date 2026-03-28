@@ -54,6 +54,7 @@ struct ContentView: View {
                         .accessibilityLabel("Song of the Day")
                         .accessibilityHint("Catch a specimen from your music library")
                         .opacity(firstLaunchManager.canMusicCatch ? 1.0 : 0.5)
+                        .disabled(!firstLaunchManager.canMusicCatch)
                         .padding(.trailing, 20)
                         .padding(.bottom, 60)
                     }
