@@ -563,6 +563,7 @@ class ReefScene: SKScene {
             // Normal tap — play note preview + flash
             if let slot = pendingTapSlot, reefStore.specimens[slot] != nil {
                 onNoteOn(slot, 0.8)
+                HapticEngine.specimenSelect()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
                     self?.onNoteOff(slot)
                 }
@@ -607,8 +608,7 @@ class ReefScene: SKScene {
         activeWireLine = line
 
         // Haptic feedback
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        HapticEngine.specimenSelect()
     }
 
     private func updateWireDrag(to point: CGPoint) {
@@ -708,8 +708,7 @@ class ReefScene: SKScene {
                 reefStore.save()
 
                 // Haptic success
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.success)
+                HapticEngine.wireCreated()
             }
         }
 
@@ -787,8 +786,7 @@ class ReefScene: SKScene {
         reefStore.save()
 
         // Haptic feedback
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
+        HapticEngine.wireDeleted()
 
         buildGrid() // Rebuild to remove wire visuals
         onWiringChanged?() // Push updated params to engine

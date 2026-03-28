@@ -14,6 +14,7 @@ struct ObrixPocketApp: App {
                 .environmentObject(reefStore)
                 .environmentObject(firstLaunchManager)
                 .onAppear {
+                    HapticEngine.prepare()
                     audioEngine.reefStoreRef = reefStore
                     audioEngine.start()
                     firstLaunchManager.resetDailyPlayIfNeeded()

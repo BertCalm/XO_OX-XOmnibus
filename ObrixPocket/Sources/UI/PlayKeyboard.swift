@@ -213,6 +213,7 @@ final class KeyboardView: UIView {
             let velocity = velocityForTouch(touch)
             activeTouches[id] = note
             onNoteOn?(note, velocity)
+            HapticEngine.keyPress(velocity: velocity)
         }
         setNeedsDisplay()
     }

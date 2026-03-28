@@ -384,7 +384,7 @@ struct ReefTab: View {
                                 }
                             }
                             firstLaunchManager.recordEnergyDistribution()
-                            UINotificationFeedbackGenerator().notificationOccurred(.success)
+                            HapticEngine.energyCollected()
                         }
                     },
                     onNoteOff: { midiNote in

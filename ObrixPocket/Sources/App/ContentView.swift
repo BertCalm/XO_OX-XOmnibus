@@ -10,28 +10,28 @@ struct ContentView: View {
             TabView(selection: $selectedTab) {
                 ReefTab()
                     .tabItem {
-                        Image(systemName: "waveform.circle.fill")
+                        Image(systemName: "water.waves")
                         Text("Reef")
                     }
                     .tag(0)
 
                 CatchTab()
                     .tabItem {
-                        Image(systemName: "antenna.radiowaves.left.and.right")
+                        Image(systemName: "map")
                         Text("Catch")
                     }
                     .tag(1)
 
                 DiveTab()
                     .tabItem {
-                        Image(systemName: "arrow.down.to.line")
+                        Image(systemName: "arrow.down.to.line.compact")
                         Text("Dive")
                     }
                     .tag(2)
 
                 CollectionTab()
                     .tabItem {
-                        Image(systemName: "square.grid.2x2.fill")
+                        Image(systemName: "square.grid.2x2")
                         Text("Collection")
                     }
                     .tag(3)
