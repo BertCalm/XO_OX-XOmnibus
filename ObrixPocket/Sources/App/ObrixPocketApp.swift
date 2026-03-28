@@ -7,12 +7,29 @@ struct ObrixPocketApp: App {
     @StateObject private var firstLaunchManager = FirstLaunchManager()
     @Environment(\.scenePhase) var scenePhase
 
+    @State private var importPreview: XOReefFile?
+    @State private var showImportPreview = false
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(audioEngine)
                 .environmentObject(reefStore)
                 .environmentObject(firstLaunchManager)
+                .onOpenURL { url in
+                    handleIncomingReefFile(url)
+                }
+                .sheet(isPresented: $showImportPreview) {
+                    if let reef = importPreview {
+                        ImportPreviewView(reef: reef, onImport: {
+                            XOReefImporter.importReef(reef, into: reefStore)
+                            audioEngine.rebuildParamCache(reefStore: reefStore)
+                            showImportPreview = false
+                        }, onCancel: {
+                            showImportPreview = false
+                        })
+                    }
+                }
                 .onAppear {
                     HapticEngine.prepare()
                     audioEngine.reefStoreRef = reefStore
@@ -73,5 +90,59 @@ struct ObrixPocketApp: App {
                     })
                 }
         }
+    }
+
+    private func handleIncomingReefFile(_ url: URL) {
+        guard url.pathExtension == "xoreef" else { return }
+        guard let data = try? Data(contentsOf: url) else { return }
+        guard let reef = XOReefImporter.parse(data: data) else { return }
+        importPreview = reef
+        showImportPreview = true
+    }
+}
+
+// MARK: - Import Preview Sheet
+
+struct ImportPreviewView: View {
+    let reef: XOReefFile
+    let onImport: () -> Void
+    let onCancel: () -> Void
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Import Reef")
+                .font(.custom("SpaceGrotesk-Bold", size: 20))
+                .foregroundColor(.white)
+
+            Text(reef.reefName)
+                .font(.custom("JetBrainsMono-Regular", size: 14))
+                .foregroundColor(Color(hex: "1E8B7E"))
+
+            let specCount = reef.specimens.compactMap { $0 }.count
+            let routeCount = reef.routes.count
+
+            Text("\(specCount) specimens · \(routeCount) wires · \(reef.totalDiveDepth)m depth")
+                .font(.custom("Inter-Regular", size: 12))
+                .foregroundColor(.white.opacity(0.4))
+
+            Text("This will replace your current reef.")
+                .font(.custom("Inter-Regular", size: 11))
+                .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+
+            Button(action: onImport) {
+                Text("IMPORT")
+                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .tracking(2)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity).frame(height: 50)
+                    .background(RoundedRectangle(cornerRadius: 25).fill(Color(hex: "1E8B7E")))
+            }
+            .padding(.horizontal, 40)
+
+            Button("Cancel", action: onCancel)
+                .foregroundColor(.white.opacity(0.3))
+        }
+        .padding(.vertical, 40)
+        .background(Color(hex: "0E0E10").ignoresSafeArea())
     }
 }

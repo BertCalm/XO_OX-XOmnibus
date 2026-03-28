@@ -49,6 +49,83 @@ struct XOReefFile: Codable {
     }
 }
 
+// MARK: - XOReefImporter
+
+enum XOReefImporter {
+
+    /// Parse a .xoreef JSON file
+    static func parse(data: Data) -> XOReefFile? {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return try? decoder.decode(XOReefFile.self, from: data)
+    }
+
+    /// Import a parsed reef into ReefStore (replaces current reef)
+    static func importReef(_ file: XOReefFile, into reefStore: ReefStore) {
+        // Clear current reef
+        for i in 0..<ReefStore.maxSlots {
+            reefStore.specimens[i] = nil
+        }
+        reefStore.couplingRoutes.removeAll()
+
+        // Import specimens into slots
+        for (index, specData) in file.specimens.enumerated() {
+            guard let data = specData, index < ReefStore.maxSlots else { continue }
+            guard let category = SpecimenCategory(rawValue: data.category),
+                  let rarity = SpecimenRarity(rawValue: data.rarity) else { continue }
+
+            let specimen = Specimen(
+                id: UUID(), // New UUID for imported specimens
+                name: data.name,
+                category: category,
+                rarity: rarity,
+                health: 100,
+                isPhantom: false,
+                phantomScar: false,
+                subtype: data.subtype,
+                catchAccelPattern: [],
+                provenance: [],
+                spectralDNA: data.spectralDNA,
+                parameterState: data.parameterState,
+                catchLatitude: nil,
+                catchLongitude: nil,
+                catchTimestamp: Date(),
+                catchWeatherDescription: "Imported",
+                creatureGenomeData: nil,
+                cosmeticTier: CosmeticTier(rawValue: data.cosmeticTier) ?? .standard,
+                morphIndex: 0,
+                musicHash: nil,
+                sourceTrackTitle: data.sourceTrackTitle,
+                xp: 0,       // Imported specimens start fresh
+                level: data.level, // But keep their level
+                aggressiveScore: 0,
+                gentleScore: 0,
+                totalPlaySeconds: 0,
+                journal: [JournalEntry(id: UUID(), timestamp: Date(), type: .born, description: "Imported from \(file.reefName)")]
+            )
+            reefStore.specimens[index] = specimen
+        }
+
+        // Import coupling routes
+        for route in file.routes {
+            guard route.sourceSlot < ReefStore.maxSlots,
+                  route.destSlot < ReefStore.maxSlots,
+                  let srcSpec = reefStore.specimens[route.sourceSlot],
+                  let dstSpec = reefStore.specimens[route.destSlot] else { continue }
+
+            reefStore.couplingRoutes.append(CouplingRoute(
+                sourceId: srcSpec.id,
+                destId: dstSpec.id,
+                depth: route.depth,
+                connectedSince: Date()
+            ))
+        }
+
+        reefStore.reefName = file.reefName
+        reefStore.save()
+    }
+}
+
 // MARK: - XOReefExporter
 
 enum XOReefExporter {

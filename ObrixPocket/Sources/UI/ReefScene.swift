@@ -42,9 +42,18 @@ class ReefScene: SKScene {
     private var breathPhase: Float = 0
     private var lastUpdateTime: TimeInterval = 0
 
-    // Background texture cache — only re-render when scene size changes
+    // Background texture cache — only re-render when scene size or theme changes
     private var cachedBgTexture: SKTexture?
     private var cachedBgSize: CGSize?
+
+    // Visual theme — changing it invalidates the cached background
+    var theme: ReefTheme = .ocean {
+        didSet {
+            cachedBgTexture = nil
+            cachedBgSize = nil
+            refreshGrid()
+        }
+    }
 
     // Category colors
     private let categoryColors: [SpecimenCategory: SKColor] = [
@@ -87,11 +96,7 @@ class ReefScene: SKScene {
         let bgSize = self.size
         let renderer = UIGraphicsImageRenderer(size: bgSize)
         let gradientImage = renderer.image { ctx in
-            let colors = [
-                UIColor(red: 0.04, green: 0.06, blue: 0.12, alpha: 1.0).cgColor,
-                UIColor(red: 0.06, green: 0.10, blue: 0.14, alpha: 1.0).cgColor,
-                UIColor(red: 0.05, green: 0.08, blue: 0.11, alpha: 1.0).cgColor,
-            ]
+            let colors = theme.gradientColors.map { $0.cgColor }
             let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
                                        colors: colors as CFArray,
                                        locations: [0.0, 0.5, 1.0])!

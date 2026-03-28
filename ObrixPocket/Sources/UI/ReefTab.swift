@@ -25,6 +25,13 @@ struct ReefTab: View {
     @State private var ambientEnabled = false
     @State private var ambientResumeTimer: Timer?
 
+    // Reef rename
+    @State private var showReefRename = false
+    @State private var editingReefName = ""
+
+    // Reef theme
+    @State private var reefTheme: ReefTheme = .ocean
+
     // .xoreef export
     @State private var reefExportURL: URL?
     @State private var showReefExport = false
@@ -33,9 +40,38 @@ struct ReefTab: View {
         VStack(spacing: 0) {
             // Reef name header
             HStack {
-                Text(reefStore.reefName)
-                    .font(.custom("SpaceGrotesk-Bold", size: 18))
-                    .foregroundColor(.white)
+                // Tappable reef name — opens rename alert
+                Button(action: {
+                    editingReefName = reefStore.reefName
+                    showReefRename = true
+                }) {
+                    Text(reefStore.reefName)
+                        .font(.custom("SpaceGrotesk-Bold", size: 18))
+                        .foregroundColor(.white)
+                }
+
+                // Theme picker
+                Menu {
+                    ForEach(ReefTheme.allCases, id: \.self) { theme in
+                        Button(action: {
+                            reefTheme = theme
+                            reefScene?.theme = theme
+                            UserDefaults.standard.set(theme.rawValue, forKey: "obrix_reef_theme")
+                        }) {
+                            HStack {
+                                Text(theme.rawValue)
+                                if theme == reefTheme {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    Image(systemName: "paintpalette")
+                        .font(.system(size: 12))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+
                 Spacer()
                 // Journey progress replaces depth counter until the tutorial is complete
                 if !firstLaunchManager.isJourneyComplete {
@@ -527,6 +563,11 @@ struct ReefTab: View {
             if activeSourceSlot == nil {
                 activeSourceSlot = firstSourceSlot
             }
+            // Restore saved reef theme
+            let savedRaw = UserDefaults.standard.string(forKey: "obrix_reef_theme") ?? "Ocean"
+            let saved = ReefTheme(rawValue: savedRaw) ?? .ocean
+            reefTheme = saved
+            reefScene?.theme = saved
         }
         .onDisappear {
             motionController.stop()
@@ -534,6 +575,18 @@ struct ReefTab: View {
             metronome.stop()
             ambientResumeTimer?.invalidate()
             ambientResumeTimer = nil
+        }
+        .alert("Rename Reef", isPresented: $showReefRename) {
+            TextField("Reef name", text: $editingReefName)
+            Button("Save") {
+                if !editingReefName.isEmpty {
+                    reefStore.reefName = editingReefName
+                    reefStore.save()
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Give your reef a name")
         }
         .alert("Save Reef Preset", isPresented: $showSaveDialog) {
             TextField("Preset name", text: $presetName)

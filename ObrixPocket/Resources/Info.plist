@@ -32,6 +32,41 @@
 	<string>OBRIX Pocket captures a sound fingerprint of your environment to give each specimen a unique sonic character. No audio is recorded or stored.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>OBRIX Pocket captures your movement pattern to give each specimen's modulation a unique character.</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>XO Reef Configuration</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.xo-ox.xoreef</string>
+			</array>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>XO Reef Configuration</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.xo-ox.xoreef</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xoreef</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
