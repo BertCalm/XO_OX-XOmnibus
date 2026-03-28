@@ -13,13 +13,31 @@
 //   juce::CallOutBox::launchAsynchronously(std::unique_ptr<Component>(popup),
 //                                          targetBounds, parentComp);
 //
-// Size: 280 x 400pt.
+// Size: 340 x 420pt.
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../Core/EngineRegistry.h"
 #include "../GalleryColors.h"
 
 namespace xolokun {
+
+//==============================================================================
+// Lightweight LookAndFeel override so category pill buttons render with a
+// compact 8pt label font without requiring a full LookAndFeel subclass elsewhere.
+struct PillButtonLookAndFeel : public juce::LookAndFeel_V4
+{
+    void drawButtonText(juce::Graphics& g, juce::TextButton& btn,
+                        bool /*isMouseOver*/, bool /*isButtonDown*/) override
+    {
+        g.setFont(GalleryFonts::label(8.0f));
+        g.setColour(btn.findColour(btn.getToggleState()
+                    ? juce::TextButton::textColourOnId
+                    : juce::TextButton::textColourOffId));
+        g.drawFittedText(btn.getButtonText(),
+                         btn.getLocalBounds().reduced(1, 0),
+                         juce::Justification::centred, 1, 0.9f);
+    }
+};
 
 //==============================================================================
 // EnginePickerPopup — header-only implementation
@@ -45,15 +63,15 @@ public:
 
         // ── Search field ─────────────────────────────────────────────────────
         searchField.setTextToShowWhenEmpty("Search engines...",
-            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.40f));
+            GalleryColors::get(GalleryColors::t3()).withAlpha(0.80f));
         searchField.setColour(juce::TextEditor::backgroundColourId,
-            GalleryColors::get(GalleryColors::slotBg()));
+            GalleryColors::get(GalleryColors::surface()));
         searchField.setColour(juce::TextEditor::outlineColourId,
-            GalleryColors::get(GalleryColors::borderGray()));
+            GalleryColors::borderMd());
         searchField.setColour(juce::TextEditor::focusedOutlineColourId,
             A11y::focusRingColour());
         searchField.setColour(juce::TextEditor::textColourId,
-            GalleryColors::get(GalleryColors::textDark()));
+            GalleryColors::get(GalleryColors::t1()));
         searchField.setFont(GalleryFonts::body(11.0f));
         searchField.setReturnKeyStartsNewLine(false);
         searchField.addListener(this);
@@ -61,13 +79,15 @@ public:
         addAndMakeVisible(searchField);
 
         // ── Category pill buttons ─────────────────────────────────────────────
+        // 3-letter abbreviations so pills never truncate in the 340pt popup.
         static const char* kCatLabels[] = {
-            "ALL", "SYNTH", "PERC", "BASS", "PAD", "STRING", "ORGAN", "VOCAL", "FX", "UTILITY"
+            "ALL", "SYN", "PRC", "BAS", "PAD", "STR", "ORG", "VOC", "FX", "UTL"
         };
         for (int i = 0; i < kNumCategories; ++i)
         {
             catBtns[i].setButtonText(kCatLabels[i]);
             catBtns[i].setClickingTogglesState(false);
+            catBtns[i].setLookAndFeel(&pillLnF);
             stylePillButton(catBtns[i], i == 0);
             const int catIdx = i;
             catBtns[i].onClick = [this, catIdx]
@@ -84,9 +104,9 @@ public:
         listBox.setModel(this);
         listBox.setRowHeight(kRowHeight);
         listBox.setColour(juce::ListBox::backgroundColourId,
-            GalleryColors::get(GalleryColors::slotBg()));
+            GalleryColors::get(GalleryColors::elevated()));
         listBox.setColour(juce::ListBox::outlineColourId,
-            GalleryColors::get(GalleryColors::borderGray()));
+            GalleryColors::border());
         listBox.setOutlineThickness(1);
         listBox.addKeyListener(this);
         addAndMakeVisible(listBox);
@@ -99,7 +119,7 @@ public:
         addAndMakeVisible(countLabel);
 
         updateFilter();
-        setSize(280, 400);
+        setSize(340, 420);
 
         // Focus the search field immediately so the user can start typing.
         // SafePointer guards against the rare case where the CallOutBox dismisses
@@ -117,6 +137,9 @@ public:
         // if JUCE's component destruction order tries to broadcast a final key event.
         searchField.removeKeyListener(this);
         listBox.removeKeyListener(this);
+        // Detach custom LookAndFeel before it destructs (JUCE requirement).
+        for (auto& btn : catBtns)
+            btn.setLookAndFeel(nullptr);
     }
 
     //==========================================================================
@@ -136,16 +159,16 @@ public:
         // ── Section header rows ───────────────────────────────────────────────
         if (fr.isSectionHeader)
         {
-            // Subtle tinted header background
-            g.fillAll(fr.headerColor.withAlpha(0.07f));
+            // Subtle tinted header background — raised above the list bg
+            g.fillAll(get(raised()).withAlpha(darkMode() ? 1.0f : 0.6f));
 
             // Left accent stripe
-            g.setColour(fr.headerColor.withAlpha(0.60f));
+            g.setColour(fr.headerColor.withAlpha(0.70f));
             g.fillRect(0, 0, 3, h);
 
-            // Header label
+            // Header label — uppercase, T3 tonal color with zone hue blended in
             g.setFont(GalleryFonts::label(8.0f));
-            g.setColour(fr.headerColor.withAlpha(0.85f));
+            g.setColour(get(t3()).interpolatedWith(fr.headerColor, 0.35f));
             g.drawText(fr.headerLabel.toUpperCase(), 10, 0, w - 14, h,
                        juce::Justification::centredLeft, true);
             return;
@@ -153,11 +176,11 @@ public:
 
         // ── Engine rows ───────────────────────────────────────────────────────
         if (isSelected)
-            g.fillAll(get(xoGold).withAlpha(0.20f));
+            g.fillAll(get(xoGold).withAlpha(0.18f));
         else if (row % 2 == 0)
-            g.fillAll(get(shellWhite()));
+            g.fillAll(get(elevated()));
         else
-            g.fillAll(get(slotBg()));
+            g.fillAll(get(surface()));
 
         // Accent dot
         const float dotR = 4.0f;
@@ -168,16 +191,16 @@ public:
 
         // Engine name
         g.setFont(GalleryFonts::display(11.0f));
-        g.setColour(isSelected ? fr.accent : get(textDark()));
+        g.setColour(isSelected ? fr.accent : get(t1()));
         g.drawText(fr.engineId.toUpperCase(),
-                   24, 0, w - 70, h,
+                   24, 0, w - 74, h,
                    juce::Justification::centredLeft, true);
 
-        // Category badge — right side, muted
+        // Category badge — right side, T3 muted
         g.setFont(GalleryFonts::label(7.5f));
-        g.setColour(get(textMid()).withAlpha(0.55f));
+        g.setColour(get(t3()));
         g.drawText(fr.category,
-                   w - 62, 0, 58, h,
+                   w - 66, 0, 62, h,
                    juce::Justification::centredRight, true);
     }
 
@@ -271,7 +294,8 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(shellWhite()));
+        // Use elevated surface so the popup reads as a raised card in both themes.
+        g.fillAll(get(elevated()));
     }
 
     void resized() override
@@ -633,13 +657,15 @@ private:
     {
         using namespace GalleryColors;
         btn.setColour(juce::TextButton::buttonColourId,
-                      active ? get(xoGold).withAlpha(0.18f)
-                              : get(shellWhite()));
+                      active ? get(xoGold).withAlpha(0.22f)
+                              : get(surface()));
         btn.setColour(juce::TextButton::textColourOffId,
                       active ? get(xoGoldText())
-                              : get(textMid()));
+                              : get(t2()));
+        btn.setColour(juce::TextButton::textColourOnId,
+                      get(xoGoldText()));
         btn.setColour(juce::TextButton::buttonOnColourId,
-                      get(xoGold).withAlpha(0.18f));
+                      get(xoGold).withAlpha(0.22f));
         btn.setToggleState(active, juce::dontSendNotification);
     }
 
@@ -657,6 +683,9 @@ private:
 
     // Flat display rows (headers interleaved with engine rows)
     std::vector<FlatRow> flatRows;
+
+    // LookAndFeel for compact pill buttons (must outlive catBtns[])
+    PillButtonLookAndFeel pillLnF;
 
     // UI
     juce::TextEditor  searchField;
