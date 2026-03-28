@@ -13,6 +13,9 @@ enum DesignTokens {
     /// XO Gold — macro strip, active states, reward text
     static let xoGold = Color(hex: "E9C46A")
 
+    /// Legendary Gold — pure gold, brighter + more saturated than xoGold; reserved for legendary rarity tier
+    static let legendaryGold = Color(hex: "FFD700")
+
     /// Primary background — app canvas
     static let background = Color(hex: "0E0E10")
 
@@ -63,7 +66,7 @@ enum DesignTokens {
         case .common:    return .white.opacity(0.5)
         case .uncommon:  return .white.opacity(0.75)
         case .rare:      return xoGold
-        case .legendary: return xoGold
+        case .legendary: return legendaryGold
         }
     }
 

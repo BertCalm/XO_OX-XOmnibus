@@ -67,6 +67,7 @@ struct DiveTab: View {
     @State private var currentSourceIndex = 0
     /// Incremented each time a dive starts; stale note-off closures check this before firing.
     @State private var diveGeneration = 0
+    @State private var isCollectingRewards = false
 
     // MARK: - Player Interaction State
 
@@ -448,6 +449,9 @@ struct DiveTab: View {
                 .foregroundColor(DesignTokens.xoGold)
 
             Button(action: {
+                guard !isCollectingRewards else { return }
+                isCollectingRewards = true
+
                 // Award XP to all reef specimens
                 for (index, spec) in reefStore.specimens.enumerated() {
                     if spec != nil {
@@ -458,6 +462,7 @@ struct DiveTab: View {
                 reefStore.totalDiveDepth += diveDepth
                 reefStore.save()
                 divePhase = .ready
+                isCollectingRewards = false // Reset for next dive
             }) {
                 Text("COLLECT REWARDS")
                     .font(.custom("SpaceGrotesk-Bold", size: 16))
@@ -467,6 +472,7 @@ struct DiveTab: View {
                     .frame(height: 50)
                     .background(RoundedRectangle(cornerRadius: 25).fill(DesignTokens.reefJade))
             }
+            .disabled(isCollectingRewards)
             .padding(.horizontal, 40)
         }
     }

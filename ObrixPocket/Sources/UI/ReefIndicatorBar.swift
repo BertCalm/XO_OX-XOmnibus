@@ -10,7 +10,7 @@ struct ReefIndicatorBar: View {
     // Passed in from ReefTab so the PlayKeyboard callback can also increment progress
     @ObservedObject var challengeManager: DailyChallengeManager
 
-    @StateObject private var streakManager = StreakManager()
+    @ObservedObject private var streakManager = StreakManager.shared
     @ObservedObject private var energyManager = ReefEnergyManager.shared
 
     @State private var showStreakReward = false

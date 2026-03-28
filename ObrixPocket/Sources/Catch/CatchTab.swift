@@ -140,7 +140,7 @@ struct CatchTab: View {
 
                     // Also offer Reef Proximity as alternative
                     Button("Use Reef Proximity Instead") {
-                        let home = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+                        let home = biomeDetector.lastLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                         biomeDetector.enableReefProximity(home: home)
                     }
                     .font(.custom("Inter-Regular", size: 12))
