@@ -25,6 +25,10 @@ struct ReefTab: View {
     @State private var ambientEnabled = false
     @State private var ambientResumeTimer: Timer?
 
+    // .xoreef export
+    @State private var reefExportURL: URL?
+    @State private var showReefExport = false
+
     var body: some View {
         VStack(spacing: 0) {
             // Reef name header
@@ -43,7 +47,7 @@ struct ReefTab: View {
                         .font(.custom("JetBrainsMono-Regular", size: 11))
                         .foregroundColor(Color(hex: "7A7876"))
                 }
-                // Save / Load preset buttons
+                // Save / Load preset buttons + .xoreef export
                 HStack(spacing: 8) {
                     Button(action: { showSaveDialog = true }) {
                         Image(systemName: "square.and.arrow.down")
@@ -52,10 +56,20 @@ struct ReefTab: View {
                     }
                     if !presetManager.presets.isEmpty {
                         Button(action: { showLoadSheet = true }) {
-                            Image(systemName: "square.and.arrow.up")
+                            Image(systemName: "list.bullet")
                                 .font(.system(size: 12))
                                 .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
                         }
+                    }
+                    Button(action: {
+                        if let url = XOReefExporter.exportToFile(reefStore: reefStore) {
+                            reefExportURL = url
+                            showReefExport = true
+                        }
+                    }) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
                     }
                 }
                 if !reefStore.couplingRoutes.isEmpty {
@@ -537,6 +551,11 @@ struct ReefTab: View {
                 reefStore: reefStore,
                 onDismiss: { showLoadSheet = false }
             )
+        }
+        .sheet(isPresented: $showReefExport) {
+            if let url = reefExportURL {
+                ShareSheet(items: [url])
+            }
         }
     }
 

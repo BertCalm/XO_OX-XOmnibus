@@ -73,6 +73,8 @@ struct DiveTab: View {
     @State private var divePlayerActive = false
     @State private var divePlayerPitch: Float = 0.5   // 0=low, 1=high
     @State private var divePlayerVelocity: Float = 0.5
+    @State private var lastSteerPosition: CGPoint = .zero
+    @State private var steerMovementThreshold: CGFloat = 5.0  // Minimum pixels moved per frame
 
     // Engagement tracking (per-tick frames)
     @State private var activeFrames = 0
@@ -350,10 +352,18 @@ struct DiveTab: View {
                                     let yNorm = 1.0 - Float(value.location.y / geo.size.height)
                                     divePlayerVelocity = max(0, min(1, yNorm))
 
-                                    divePlayerActive = true
+                                    // Only count as active if finger actually moved —
+                                    // holding still does NOT earn the interaction bonus
+                                    let moved = hypot(
+                                        value.location.x - lastSteerPosition.x,
+                                        value.location.y - lastSteerPosition.y
+                                    )
+                                    divePlayerActive = moved > steerMovementThreshold
+                                    lastSteerPosition = value.location
                                 }
                                 .onEnded { _ in
                                     divePlayerActive = false
+                                    lastSteerPosition = .zero
                                 }
                         )
 
@@ -498,7 +508,7 @@ struct DiveTab: View {
         // Compute reef quality bonus from specimen count and coupling wires
         let specimenCount = reefStore.specimens.compactMap { $0 }.count
         let wireCount = reefStore.couplingRoutes.count
-        reefBonus = max(1.0, Float(specimenCount) * 0.1 + Float(wireCount) * 0.15)
+        reefBonus = min(2.0, max(1.0, Float(specimenCount) * 0.1 + Float(wireCount) * 0.15))
 
         // Collect all source slots for zone-based switching
         availableSources = reefStore.specimens.enumerated()
@@ -550,6 +560,7 @@ struct DiveTab: View {
 
     private func scheduleNextNote(startTime: Date) {
         guard isDiving else { return }
+        let capturedGeneration = diveGeneration  // Capture current generation
 
         let elapsed = Date().timeIntervalSince(startTime)
         let zone = DepthZone.at(depth: diveDepth)
@@ -567,7 +578,7 @@ struct DiveTab: View {
 
         // Timer fires on main run loop — safe to mutate @State directly
         noteTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [self] _ in
-            guard isDiving else { return }
+            guard isDiving, diveGeneration == capturedGeneration else { return }
 
             // Re-read zone at the moment the note fires (depth has advanced)
             let currentZone = DepthZone.at(depth: diveDepth)

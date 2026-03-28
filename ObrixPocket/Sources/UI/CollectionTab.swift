@@ -14,6 +14,10 @@ struct CollectionTab: View {
     @State private var showResetConfirm = false
     @StateObject private var milestoneManager = MilestoneManager()
 
+    // .xoreef export
+    @State private var exportURL: URL?
+    @State private var showExportShare = false
+
     // Compute the set of discovered subtype IDs once per render.
     // A type is "discovered" if found in the reef OR in the full collection.
     private var discoveredSubtypes: Set<String> {
@@ -165,6 +169,11 @@ struct CollectionTab: View {
                         .background(Color(hex: "0E0E10").ignoresSafeArea())
                 }
             }
+            .sheet(isPresented: $showExportShare) {
+                if let url = exportURL {
+                    ShareSheet(items: [url])
+                }
+            }
         }
         .navigationViewStyle(.stack)
     }
@@ -270,6 +279,30 @@ struct CollectionTab: View {
             settingsRow(icon: "waveform", title: "Audio Quality", detail: "Low Latency (5ms)")
             settingsRow(icon: "house.fill", title: "Reef Proximity", detail: "Uses home location")
             settingsRow(icon: "music.note", title: "Daily Music Catches", detail: "1 per day")
+
+            Button(action: {
+                if let url = XOReefExporter.exportToFile(reefStore: reefStore) {
+                    exportURL = url
+                    showExportShare = true
+                }
+            }) {
+                HStack(spacing: 10) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 14))
+                        .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Export Reef (.xoreef)")
+                            .font(.custom("Inter-Medium", size: 13))
+                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.7))
+                        Text("Share or import to desktop XOceanus")
+                            .font(.custom("Inter-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.25))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 4)
+            }
 
             Button(action: { showResetConfirm = true }) {
                 HStack(spacing: 10) {
