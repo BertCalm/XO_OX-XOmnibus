@@ -194,16 +194,30 @@ public:
         int topY = b.getY();
         int h = b.getHeight();
 
-        // Helper: lay out knobs in a section
+        // Helper: lay out knobs in a section.
+        // With 96px strip height, reduced(6,3) outer + reduced(4,3) inner ≈ 84px h.
+        // Layout from top:
+        //   0-10  : section header label
+        //   10-60 : knob (36px) + label (10px), centred in the 50px zone
+        //   60-84 : 4px gap + ADV button (14px) + 6px bottom margin — clear of label
+        static constexpr int kHeaderH2  = 10;
+        static constexpr int kAdvBtnH   = 14;
+        static constexpr int kAdvBtnW   = 28;
+        static constexpr int kAdvBtnGap = 4;  // gap between bottom of label and top of ADV
+
+        // Knob + label zone: everything above the ADV button row
         auto layoutKnob = [&](int knobIdx, int sx, int sw) {
             int kh = 36, lh = 10;
-            int ky = topY + 10 + (h - 10 - kh - lh) / 2;
+            int zoneH = h - kHeaderH2 - kAdvBtnH - kAdvBtnGap; // zone for knob+label
+            int ky = topY + kHeaderH2 + (zoneH - kh - lh - 1) / 2;
             knobs[knobIdx].setBounds(sx + (sw - kh) / 2, ky, kh, kh);
             lbls[knobIdx].setBounds(sx, ky + kh + 1, sw, lh);
         };
 
-        auto layoutAdvBtn = [&](juce::TextButton& btn, int sx, int sw, int topOff) {
-            btn.setBounds(sx + (sw - 28) / 2, topY + h - 16 + topOff, 28, 13);
+        // ADV button sits just above the strip bottom, below labels.
+        auto layoutAdvBtn = [&](juce::TextButton& btn, int sx, int sw, int /*topOff*/) {
+            int advY = topY + h - kAdvBtnH - 1;
+            btn.setBounds(sx + (sw - kAdvBtnW) / 2, advY, kAdvBtnW, kAdvBtnH);
         };
 
         // Section 0: SAT — 1 knob (DRIVE)
@@ -252,7 +266,13 @@ public:
             int sx = sectionX[5], sw = sectionX[6] - sectionX[5];
             sectionHdrs[5].setBounds(sx, topY, sw, 10);
             int btnW = juce::jmin(sw - 4, 36);
-            seqToggle.setBounds(sx + (sw - btnW) / 2, topY + 14, btnW, 22);
+            // Centre the SEQ toggle in the same knob+label zone used by other sections
+            {
+                static constexpr int kSEQBtnH = 22;
+                int zoneH = h - kHeaderH2 - kAdvBtnH - kAdvBtnGap;
+                int toggleY = topY + kHeaderH2 + (zoneH - kSEQBtnH) / 2;
+                seqToggle.setBounds(sx + (sw - btnW) / 2, toggleY, btnW, kSEQBtnH);
+            }
             layoutAdvBtn(advBtnSeq, sx, sw, 0);
         }
     }

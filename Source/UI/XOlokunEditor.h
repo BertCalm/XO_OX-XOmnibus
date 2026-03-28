@@ -1263,7 +1263,7 @@ private:
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
     // Use ColumnLayoutManager::kHeaderH (52) and ColumnLayoutManager::kFieldMapH (65).
-    static constexpr int kMasterFXH        = 68;  // MasterFX compact strip at bottom of Column B
+    static constexpr int kMasterFXH        = 96;  // MasterFX compact strip at bottom of Column B (96px: extra height prevents ADV buttons from overlapping knob labels)
     static constexpr int kSignalFlowStripH = 28;  // P0-12: signal flow breadcrumb strip
     static constexpr int kMacroKnobsRowH   = 64;  // P0-13: macro knobs row placeholder
     static constexpr int kFadeMs           = 150; // Panel cross-fade duration (ms)

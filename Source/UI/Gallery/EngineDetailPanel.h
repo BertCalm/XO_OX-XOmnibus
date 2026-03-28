@@ -278,6 +278,17 @@ public:
             g.setColour(accentColour.withAlpha(0.5f));
             g.fillRect(12, kHeaderH - 2, getWidth() - 24, 2);
         }
+
+        // ── "OSCILLOSCOPE" label above waveform display ───────────────────────
+        if (!oscLabelBounds.isEmpty())
+        {
+            g.setFont(GalleryFonts::value(9.0f));
+            g.setColour(get(t3()));
+            g.drawText("OSCILLOSCOPE",
+                       oscLabelBounds.withTrimmedLeft(8),
+                       juce::Justification::centredLeft,
+                       false);
+        }
     }
 
     void resized() override
@@ -299,10 +310,13 @@ public:
             fiveMacroDisplay->setVisible(false);
         }
 
-        // ── Bottom: Waveform oscilloscope (full width, 70px) ─────────────────
+        // ── Bottom: "OSCILLOSCOPE" label (10px) + waveform display (70px) ────
         {
-            int waveH = 70;
-            waveformDisplay.setBounds(area.removeFromBottom(waveH).reduced(4, 2));
+            int waveH     = 70;
+            int labelH    = 12;
+            auto waveArea = area.removeFromBottom(waveH + labelH);
+            oscLabelBounds = waveArea.removeFromTop(labelH);  // painted in paint()
+            waveformDisplay.setBounds(waveArea.reduced(4, 2));
         }
 
         // ── Specialized displays (engine-specific, above parameter grid) ─────
@@ -367,6 +381,8 @@ private:
     juce::ColourGradient cachedHeaderGrad;
     // P30: cached uppercase engine name — set in loadSlot(), used in paint().
     juce::String         cachedEngineName { "—" };
+    // Bounds for the "OSCILLOSCOPE" label painted above the waveform display.
+    juce::Rectangle<int> oscLabelBounds;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };
