@@ -92,7 +92,23 @@ struct SpecimenParamPanel: View {
                     sectionHeader("ENVELOPE")
                     envelopeParams(spec)
 
-                    // Release button — lets user free up a full reef slot
+                    // Move to Stasis button — preserves the specimen without occupying a reef slot
+                    Button(action: {
+                        reefStore.moveToStasis(at: slotIndex)
+                        reefStore.save()
+                        onDismiss?()
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "archivebox")
+                                .font(.system(size: 10))
+                            Text("Move to Stasis")
+                                .font(.custom("Inter-Regular", size: 11))
+                        }
+                        .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+                    }
+                    .padding(.top, 4)
+
+                    // Release button — lets user free up a full reef slot (destructive)
                     Button(action: { showReleaseConfirm = true }) {
                         HStack(spacing: 4) {
                             Image(systemName: "arrow.uturn.backward")
@@ -102,7 +118,7 @@ struct SpecimenParamPanel: View {
                         }
                         .foregroundColor(Color(hex: "FF4D4D").opacity(0.5))
                     }
-                    .padding(.top, 8)
+                    .padding(.top, 4)
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)

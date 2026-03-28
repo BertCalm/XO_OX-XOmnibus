@@ -137,11 +137,20 @@ struct ReefTab: View {
                 }
             }
 
-            // Parameter panel — shows when a specimen is tapped
-            if let slot = selectedSlot, reefStore.specimens[slot] != nil {
-                SpecimenParamPanel(slotIndex: slot, onDismiss: { selectedSlot = nil })
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-                    .animation(.easeInOut(duration: 0.2), value: selectedSlot)
+            // Parameter panel OR stasis browser — shows when a slot is tapped
+            if let slot = selectedSlot {
+                if reefStore.specimens[slot] != nil {
+                    // Occupied slot — show param panel
+                    SpecimenParamPanel(slotIndex: slot, onDismiss: { selectedSlot = nil })
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .animation(.easeInOut(duration: 0.2), value: selectedSlot)
+                } else {
+                    // Empty slot — show stasis browser to place a specimen from stasis
+                    StasisBrowser(targetSlot: slot, onDismiss: { selectedSlot = nil })
+                        .environmentObject(reefStore)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .animation(.easeInOut(duration: 0.2), value: selectedSlot)
+                }
             }
 
             // Play keyboard — plays through the active source's wired chain
@@ -370,6 +379,79 @@ struct ReefTab: View {
 
     private var firstSourceSlot: Int? {
         reefStore.specimens.firstIndex(where: { $0?.category == .source })
+    }
+}
+
+// MARK: - StasisBrowser
+
+/// Shown when an empty reef slot is tapped — lets the player place a stasis specimen into it.
+struct StasisBrowser: View {
+    let targetSlot: Int
+    var onDismiss: (() -> Void)?
+    @EnvironmentObject var reefStore: ReefStore
+
+    @State private var stasisSpecimens: [Specimen] = []
+
+    var body: some View {
+        VStack(spacing: 8) {
+            HStack {
+                Text("STASIS")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .tracking(1.5)
+                    .foregroundColor(Color(hex: "E9C46A"))
+                Text("— tap to place in slot \(targetSlot + 1)")
+                    .font(.custom("Inter-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.3))
+                Spacer()
+                Button(action: { onDismiss?() }) {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+            }
+            .padding(.horizontal, 16)
+
+            if stasisSpecimens.isEmpty {
+                Text("No specimens in stasis")
+                    .font(.custom("Inter-Regular", size: 11))
+                    .foregroundColor(.white.opacity(0.3))
+                    .padding(.vertical, 12)
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(stasisSpecimens) { specimen in
+                            Button(action: {
+                                reefStore.moveFromStasis(specimenId: specimen.id, toSlot: targetSlot)
+                                reefStore.save()
+                                onDismiss?()
+                            }) {
+                                VStack(spacing: 4) {
+                                    SpecimenSprite(subtype: specimen.subtype,
+                                                  category: specimen.category,
+                                                  size: 36)
+                                    Text(specimen.creatureName)
+                                        .font(.custom("Inter-Regular", size: 8))
+                                        .foregroundColor(.white.opacity(0.6))
+                                        .lineLimit(1)
+                                    Text("Lv.\(specimen.level)")
+                                        .font(.custom("JetBrainsMono-Regular", size: 7))
+                                        .foregroundColor(.white.opacity(0.3))
+                                }
+                                .frame(width: 56)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                }
+            }
+        }
+        .padding(.vertical, 8)
+        .background(Color(hex: "141418"))
+        .cornerRadius(12)
+        .padding(.horizontal, 12)
+        .onAppear {
+            stasisSpecimens = reefStore.loadStasisSpecimens()
+        }
     }
 }
 

@@ -412,6 +412,7 @@ struct CatchScreen: View {
     @State private var showReefFullAlert = false
     @State private var isPerfectMatch = false
     @State private var attemptNumber = 1
+    @State private var addedToStasis = false
 
     // Multi-round tracking (shared across all game types)
     @State private var currentRound = 0
@@ -535,11 +536,6 @@ struct CatchScreen: View {
         .onAppear {
             phase = .intro
             gameType = CatchGameType.forCategory(specimen.category)
-        }
-        .alert("Reef Full", isPresented: $showReefFullAlert) {
-            Button("OK") { dismiss() }
-        } message: {
-            Text("Your reef has no empty slots. Release a specimen to make room.")
         }
     }
 
@@ -1219,6 +1215,8 @@ struct CatchScreen: View {
             }
 
             if let _ = reefStore.addSpecimen(newSpecimen) {
+                // Reef has a free slot — place it directly
+                addedToStasis = false
                 phase = .caught
                 reefStore.save()
                 // Advance the guided journey when a scripted specimen is caught
@@ -1226,7 +1224,14 @@ struct CatchScreen: View {
                     firstLaunchManager.advanceJourney()
                 }
             } else {
-                showReefFullAlert = true; return
+                // Reef is full — save to stasis so the specimen is never lost
+                reefStore.saveSpecimenToStasis(newSpecimen)
+                addedToStasis = true
+                phase = .caught
+                // Journey advancement still applies even when sent to stasis
+                if !firstLaunchManager.isJourneyComplete {
+                    firstLaunchManager.advanceJourney()
+                }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { dismiss() }
         }
@@ -1246,7 +1251,9 @@ struct CatchScreen: View {
             case .rhythmTap:                 return "Tap with the beat!"
             }
         case .success: return isPerfectMatch ? "PERFECT MATCH!" : "Well done!"
-        case .caught:  return isPerfectMatch ? "Rarity upgraded!" : "Specimen caught!"
+        case .caught:
+            if addedToStasis { return "Sent to Stasis" }
+            return isPerfectMatch ? "Rarity upgraded!" : "Specimen caught!"
         case .escaped: return "It got away!"
         }
     }
@@ -1279,7 +1286,9 @@ struct CatchScreen: View {
                 return "Rarity upgraded! → \(upgraded.rawValue.capitalized)"
             }
             return "Adding to your reef..."
-        case .caught: return isPerfectMatch ? "Added to your reef with a bonus!" : "Added to your collection!"
+        case .caught:
+            if addedToStasis { return "Reef full — preserved in stasis. Visit the reef to place it." }
+            return isPerfectMatch ? "Added to your reef with a bonus!" : "Added to your collection!"
         case .escaped: return "Try again later."
         }
     }

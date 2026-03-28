@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import GRDB
 
 /// Specimen rarity tiers
 enum SpecimenRarity: String, Codable, CaseIterable {
@@ -156,6 +157,91 @@ final class ReefStore: ObservableObject {
 
         specimens[srcIdx] = srcSpec
         specimens[dstIdx] = dstSpec
+    }
+
+    // MARK: - Stasis Management
+
+    /// Move a specimen from reef to stasis (preserve it without active slot)
+    func moveToStasis(at slotIndex: Int) {
+        guard slotIndex >= 0, slotIndex < Self.maxSlots,
+              let specimen = specimens[slotIndex] else { return }
+        // Remove coupling routes involving this specimen
+        couplingRoutes.removeAll { $0.sourceId == specimen.id || $0.destId == specimen.id }
+        // Save to stasis in DB
+        saveSpecimenToStasis(specimen)
+        // Clear reef slot
+        specimens[slotIndex] = nil
+    }
+
+    /// Move a specimen from stasis to a specific reef slot
+    func moveFromStasis(specimenId: UUID, toSlot slotIndex: Int) {
+        guard slotIndex >= 0, slotIndex < Self.maxSlots,
+              specimens[slotIndex] == nil else { return }
+        // Load from stasis
+        guard let specimen = loadStasisSpecimen(id: specimenId) else { return }
+        specimens[slotIndex] = specimen
+        // Remove from stasis in DB
+        removeFromStasis(specimenId: specimenId)
+    }
+
+    /// Get all stasis specimens (those with stasisSlotIndex set and reefSlotIndex nil)
+    func loadStasisSpecimens() -> [Specimen] {
+        guard let db = DatabaseManager.shared.db else { return [] }
+        do {
+            return try db.read { db in
+                try SpecimenRecord
+                    .filter(Column("stasisSlotIndex") != nil)
+                    .filter(Column("reefSlotIndex") == nil)
+                    .fetchAll(db)
+                    .compactMap { $0.toSpecimen() }
+            }
+        } catch {
+            print("[ReefStore] Stasis load failed: \(error)")
+            return []
+        }
+    }
+
+    // MARK: - Stasis Persistence Helpers
+
+    func saveSpecimenToStasis(_ specimen: Specimen) {
+        guard let db = DatabaseManager.shared.db else { return }
+        do {
+            try db.write { db in
+                var record = SpecimenRecord(from: specimen, stasisSlotIndex: 0)
+                record.reefSlotIndex = nil // Not in reef
+                try record.save(db)
+            }
+        } catch {
+            print("[ReefStore] Stasis save failed: \(error)")
+        }
+    }
+
+    private func removeFromStasis(specimenId: UUID) {
+        guard let db = DatabaseManager.shared.db else { return }
+        do {
+            try db.write { db in
+                try SpecimenRecord
+                    .filter(Column("id") == specimenId.uuidString)
+                    .deleteAll(db)
+            }
+        } catch {
+            print("[ReefStore] Stasis remove failed: \(error)")
+        }
+    }
+
+    private func loadStasisSpecimen(id: UUID) -> Specimen? {
+        guard let db = DatabaseManager.shared.db else { return nil }
+        do {
+            return try db.read { db in
+                try SpecimenRecord
+                    .filter(Column("id") == id.uuidString)
+                    .fetchOne(db)?
+                    .toSpecimen()
+            }
+        } catch {
+            print("[ReefStore] Stasis load single failed: \(error)")
+            return nil
+        }
     }
 
 }

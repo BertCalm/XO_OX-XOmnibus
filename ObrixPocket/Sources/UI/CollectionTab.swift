@@ -133,11 +133,8 @@ struct CollectionTab: View {
             .navigationBarHidden(true)
             .sheet(isPresented: $showingCard) {
                 if let specimen = selectedSpecimen {
-                    ScrollView {
-                        CreatureCard(specimen: specimen)
-                            .padding(20)
-                    }
-                    .background(Color(hex: "0E0E10").ignoresSafeArea())
+                    MicroscopeView(specimen: specimen)
+                        .background(Color(hex: "0E0E10").ignoresSafeArea())
                 }
             }
         }
