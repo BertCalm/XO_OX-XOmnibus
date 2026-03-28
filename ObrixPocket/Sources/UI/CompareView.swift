@@ -209,7 +209,8 @@ struct CompareView: View {
         aggressiveScore: 2.1,
         gentleScore: 0.8,
         totalPlaySeconds: 420,
-        journal: []
+        journal: [],
+        isFavorite: false
     )
     let specimenB = Specimen(
         id: UUID(),
@@ -248,7 +249,8 @@ struct CompareView: View {
         aggressiveScore: 0.5,
         gentleScore: 1.8,
         totalPlaySeconds: 190,
-        journal: []
+        journal: [],
+        isFavorite: false
     )
     return CompareView(specimenA: specimenA, specimenB: specimenB)
 }

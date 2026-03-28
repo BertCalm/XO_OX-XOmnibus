@@ -39,7 +39,13 @@ public:
                           ParamEvent* paramQueueRef,
                           std::atomic<int>& paramReadPosRef,
                           std::atomic<int>& paramWritePosRef,
-                          std::atomic<bool>& allNotesOffRef)
+                          std::atomic<bool>& allNotesOffRef,
+                          std::atomic<bool>& tapActiveRef,
+                          float* tapBufA,
+                          float* tapBufB,
+                          std::atomic<float*>& tapReadyBufferRef,
+                          std::atomic<int>& tapReadyFramesRef,
+                          std::atomic<int>& tapReadyChannelsRef)
         : AudioProcessor(BusesProperties().withOutput("Output", juce::AudioChannelSet::stereo(), true))
         , eng(engine)
         , apvts(*this, nullptr, "ObrixPocketParams", engine.createParameterLayout())
@@ -51,6 +57,12 @@ public:
         , _paramReadRef(paramReadPosRef)
         , _paramWriteRef(paramWritePosRef)
         , _allNotesOffRef(allNotesOffRef)
+        , _tapActiveRef(tapActiveRef)
+        , _tapBufARef(tapBufA)
+        , _tapBufBRef(tapBufB)
+        , _tapReadyBufferRef(tapReadyBufferRef)
+        , _tapReadyFramesRef(tapReadyFramesRef)
+        , _tapReadyChannelsRef(tapReadyChannelsRef)
     {
         // Wire engine's atomic parameter pointers to the APVTS
         eng.attachParameters(apvts);
@@ -114,6 +126,33 @@ public:
             for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
                 juce::FloatVectorOperations::multiply(buffer.getWritePointer(ch), gain, buffer.getNumSamples());
         }
+
+        // ── Output tap ──────────────────────────────────────────────────
+        // Only execute if the main thread has enabled the tap.
+        if (_tapActiveRef.load(std::memory_order_relaxed))
+        {
+            int frames   = buffer.getNumSamples();
+            int channels = std::min(buffer.getNumChannels(), 2);
+            int required = frames * channels;
+
+            // Guard against oversized blocks (tap buffers are 8192 floats = 4096 frames × 2 ch)
+            if (required <= 8192)
+            {
+                // Pick the write buffer: the one NOT currently published as ready.
+                float* readyNow = _tapReadyBufferRef.load(std::memory_order_relaxed);
+                float* writeBuf = (readyNow == _tapBufARef) ? _tapBufBRef : _tapBufARef;
+
+                // Interleave: [L0 R0 L1 R1 ...]
+                for (int i = 0; i < frames; ++i)
+                    for (int ch = 0; ch < channels; ++ch)
+                        writeBuf[i * channels + ch] = buffer.getReadPointer(ch)[i];
+
+                _tapReadyFramesRef.store(frames,   std::memory_order_relaxed);
+                _tapReadyChannelsRef.store(channels, std::memory_order_relaxed);
+                // Publish — main thread reads this with acquire
+                _tapReadyBufferRef.store(writeBuf, std::memory_order_release);
+            }
+        }
     }
 
     // Required overrides (minimal — we're not a plugin, just hosting internally)
@@ -142,6 +181,13 @@ private:
     std::atomic<int>& _paramReadRef;
     std::atomic<int>& _paramWriteRef;
     std::atomic<bool>& _allNotesOffRef;
+    // Tap references — point into the ObrixBridge ivar storage
+    std::atomic<bool>& _tapActiveRef;
+    float* const _tapBufARef;
+    float* const _tapBufBRef;
+    std::atomic<float*>& _tapReadyBufferRef;
+    std::atomic<int>& _tapReadyFramesRef;
+    std::atomic<int>& _tapReadyChannelsRef;
 };
 
 static const int kMidiQueueSize = 256;
@@ -168,6 +214,24 @@ static const int kMidiQueueSize = 256;
     // Atomic flag: set by allNotesOff on the UI thread, consumed (exchanged) by processBlock.
     // Avoids flooding the 256-slot MIDI ring buffer with 128 individual note-offs.
     std::atomic<bool> _allNotesOffFlag;
+
+    // ── Output tap (double-buffer, lock-free) ──────────────────────────────
+    // Audio thread writes interleaved PCM into whichever buffer is NOT the
+    // current _tapReadyBuffer, then atomically publishes it.
+    // Main thread (AudioExporter) calls -drainTapInto: to swap the pointer.
+    //
+    // kTapBufSize: max frames × 2 channels. 4 096 frames × 2 = 8 192 floats.
+    // At 48 kHz / 256-sample blocks this wraps ~187 times/sec — plenty of
+    // headroom for the 60 Hz polling timer in AudioExporter.
+    // (Plain array size — static constexpr not valid in ObjC ivar block)
+    float _tapBufA[8192]; // 4 096 frames × 2 ch
+    float _tapBufB[8192];
+    std::atomic<bool> _tapActive;
+    // Pointer to the last fully-written buffer (nullptr if none ready).
+    // Written only on the audio thread; read and cleared on the main thread.
+    std::atomic<float*> _tapReadyBuffer;
+    std::atomic<int> _tapReadyFrames;
+    std::atomic<int> _tapReadyChannels;
 }
 
 + (instancetype)shared
@@ -191,6 +255,10 @@ static const int kMidiQueueSize = 256;
         _paramWritePos.store(0);
         _paramReadPos.store(0);
         _allNotesOffFlag.store(false);
+        _tapActive.store(false);
+        _tapReadyBuffer.store(nullptr);
+        _tapReadyFrames.store(0);
+        _tapReadyChannels.store(0);
 
         // Ensure JUCE message manager exists (required for audio callbacks)
         juce::MessageManager::getInstance();
@@ -230,7 +298,13 @@ static const int kMidiQueueSize = 256;
         _paramQueue,
         _paramReadPos,
         _paramWritePos,
-        _allNotesOffFlag
+        _allNotesOffFlag,
+        _tapActive,
+        _tapBufA,
+        _tapBufB,
+        _tapReadyBuffer,
+        _tapReadyFrames,
+        _tapReadyChannels
     );
     _player = std::make_unique<juce::AudioProcessorPlayer>();
     _player->setProcessor(_adapter.get());
@@ -360,6 +434,49 @@ static const int kMidiQueueSize = 256;
     if (_deviceManager && _deviceManager->getCurrentAudioDevice())
         return (float)_deviceManager->getCurrentAudioDevice()->getCurrentSampleRate();
     return 48000.0f;
+}
+
+// MARK: - Output tap
+
+- (void)startOutputTap
+{
+    // Clear any stale ready-buffer pointer so the first drain doesn't return
+    // leftover data from before the tap started.
+    _tapReadyBuffer.store(nullptr, std::memory_order_release);
+    _tapReadyFrames.store(0, std::memory_order_relaxed);
+    _tapReadyChannels.store(0, std::memory_order_relaxed);
+    // Enable last — the audio thread checks this flag first.
+    _tapActive.store(true, std::memory_order_release);
+}
+
+- (void)stopOutputTap
+{
+    // Disable first so the audio thread stops writing.
+    _tapActive.store(false, std::memory_order_release);
+    // Then clear the ready pointer so a late drain returns 0 frames.
+    _tapReadyBuffer.store(nullptr, std::memory_order_release);
+}
+
+- (int)drainTapInto:(float *)dest
+          maxFrames:(int)maxFrames
+        outChannels:(int *)outChannels
+{
+    // Atomically claim the ready buffer (swap to nullptr).
+    // This is the ONLY place the ready pointer is cleared on the reader side,
+    // which ensures each captured block is returned exactly once.
+    float* buf = _tapReadyBuffer.exchange(nullptr, std::memory_order_acquire);
+    if (!buf) {
+        *outChannels = 0;
+        return 0;
+    }
+
+    int frames   = _tapReadyFrames.load(std::memory_order_relaxed);
+    int channels = _tapReadyChannels.load(std::memory_order_relaxed);
+    int toCopy   = std::min(frames, maxFrames);
+
+    memcpy(dest, buf, (size_t)(toCopy * channels) * sizeof(float));
+    *outChannels = channels;
+    return toCopy;
 }
 
 @end

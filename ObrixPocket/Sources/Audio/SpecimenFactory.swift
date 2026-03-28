@@ -59,7 +59,8 @@ final class SpecimenFactory {
             aggressiveScore: 0,
             gentleScore: 0,
             totalPlaySeconds: 0,
-            journal: [bornEntry]
+            journal: [bornEntry],
+            isFavorite: false
         )
     }
 
@@ -110,7 +111,8 @@ final class SpecimenFactory {
             aggressiveScore: 0,
             gentleScore: 0,
             totalPlaySeconds: 0,
-            journal: [bornEntry]
+            journal: [bornEntry],
+            isFavorite: false
         )
     }
 

@@ -474,147 +474,107 @@ struct CreatureCard: View {
 // MARK: - Preview
 
 #if DEBUG
+private func makePreviewSpecimenA() -> Specimen {
+    Specimen(
+        id: UUID(),
+        name: "Sawfin",
+        category: .source,
+        rarity: .common,
+        health: 82,
+        isPhantom: false,
+        phantomScar: false,
+        subtype: "polyblep-saw",
+        catchAccelPattern: [],
+        provenance: [],
+        spectralDNA: (0..<64).map { i in 0.4 + 0.5 * sin(Float(i) * 0.4) * cos(Float(i) * 0.15) },
+        parameterState: [
+            "obrix_flt1Cutoff": 0.78, "obrix_flt1Resonance": 0.35,
+            "obrix_env1Attack": 0.05, "obrix_env1Decay": 0.4,
+            "obrix_env1Release": 0.5, "obrix_src1Level": 0.9,
+            "obrix_src1Type": 1.0, "obrix_lfo1Rate": 3.2,
+            "obrix_fx1Param1": 0.2, "obrix_fx1Mix": 0.4,
+        ],
+        catchLatitude: 37.7749, catchLongitude: -122.4194,
+        catchTimestamp: Date().addingTimeInterval(-86400 * 3),
+        catchWeatherDescription: "clear sky",
+        creatureGenomeData: nil,
+        cosmeticTier: .standard, morphIndex: 0,
+        musicHash: nil, sourceTrackTitle: nil,
+        xp: 85, level: 3, aggressiveScore: 2.1, gentleScore: 0.8,
+        totalPlaySeconds: 420, journal: [], isFavorite: false
+    )
+}
+
+private func makePreviewSpecimenB() -> Specimen {
+    Specimen(
+        id: UUID(),
+        name: "Abyssal Cathedral",
+        category: .effect,
+        rarity: .legendary,
+        health: 95,
+        isPhantom: false,
+        phantomScar: false,
+        subtype: "reverb-hall",
+        catchAccelPattern: [],
+        provenance: [],
+        spectralDNA: (0..<64).map { i in 0.5 + 0.45 * sin(Float(i) * 0.25) },
+        parameterState: [
+            "obrix_flt1Cutoff": 0.55, "obrix_flt1Resonance": 0.6,
+            "obrix_env1Attack": 0.3, "obrix_env1Decay": 0.7,
+            "obrix_env1Release": 0.9, "obrix_src1Level": 0.85,
+            "obrix_src1Type": 3.0, "obrix_lfo1Rate": 0.8,
+            "obrix_fx1Param1": 0.65, "obrix_fx1Mix": 0.8,
+        ],
+        catchLatitude: nil, catchLongitude: nil,
+        catchTimestamp: Date().addingTimeInterval(-86400 * 10),
+        catchWeatherDescription: nil,
+        creatureGenomeData: nil,
+        cosmeticTier: .bioluminescent, morphIndex: 0,
+        musicHash: "a3f9b12c45de67890abc",
+        sourceTrackTitle: "John Coltrane — A Love Supreme",
+        xp: 1450, level: 9, aggressiveScore: 8.5, gentleScore: 14.2,
+        totalPlaySeconds: 7200, journal: [], isFavorite: false
+    )
+}
+
+private func makePreviewSpecimenC() -> Specimen {
+    Specimen(
+        id: UUID(),
+        name: "Spectral Tidepulse",
+        category: .modulator,
+        rarity: .rare,
+        health: 71,
+        isPhantom: false,
+        phantomScar: true,
+        subtype: "lfo-sine",
+        catchAccelPattern: [],
+        provenance: [],
+        spectralDNA: (0..<64).map { i in abs(sin(Float(i) * 0.5)) },
+        parameterState: [
+            "obrix_flt1Cutoff": 0.42, "obrix_flt1Resonance": 0.28,
+            "obrix_env1Attack": 0.15, "obrix_env1Decay": 0.3,
+            "obrix_env1Release": 0.6, "obrix_src1Level": 0.6,
+            "obrix_src1Type": 2.0, "obrix_lfo1Rate": 5.5,
+            "obrix_fx1Param1": 0.45, "obrix_fx1Mix": 0.55,
+        ],
+        catchLatitude: 51.5074, catchLongitude: -0.1278,
+        catchTimestamp: Date(),
+        catchWeatherDescription: "light rain",
+        creatureGenomeData: nil,
+        cosmeticTier: .prismatic, morphIndex: 1,
+        musicHash: nil,
+        sourceTrackTitle: "Boards of Canada — Roygbiv",
+        xp: 0, level: 1, aggressiveScore: 0, gentleScore: 0,
+        totalPlaySeconds: 0, journal: [], isFavorite: false
+    )
+}
+
 #Preview {
     ScrollView {
         VStack(spacing: 20) {
-            // Common source specimen
-            CreatureCard(
-                specimen: Specimen(
-                    id: UUID(),
-                    name: "Sawfin",
-                    category: .source,
-                    rarity: .common,
-                    health: 82,
-                    isPhantom: false,
-                    phantomScar: false,
-                    subtype: "polyblep-saw",
-                    catchAccelPattern: [],
-                    provenance: [],
-                    spectralDNA: (0..<64).map { i in
-                        0.4 + 0.5 * sin(Float(i) * 0.4) * cos(Float(i) * 0.15)
-                    },
-                    parameterState: [
-                        "obrix_flt1Cutoff": 0.78,
-                        "obrix_flt1Resonance": 0.35,
-                        "obrix_env1Attack": 0.05,
-                        "obrix_env1Decay": 0.4,
-                        "obrix_env1Release": 0.5,
-                        "obrix_src1Level": 0.9,
-                        "obrix_src1Type": 1.0,
-                        "obrix_lfo1Rate": 3.2,
-                        "obrix_fx1Param1": 0.2,
-                        "obrix_fx1Mix": 0.4,
-                    ],
-                    catchLatitude: 37.7749,
-                    catchLongitude: -122.4194,
-                    catchTimestamp: Date().addingTimeInterval(-86400 * 3),
-                    catchWeatherDescription: "clear sky",
-                    creatureGenomeData: nil,
-                    cosmeticTier: .standard,
-                    morphIndex: 0,
-                    musicHash: nil,
-                    sourceTrackTitle: nil,
-                    xp: 85,
-                    level: 3,
-                    aggressiveScore: 2.1,
-                    gentleScore: 0.8,
-                    totalPlaySeconds: 420,
-                    journal: []
-                )
-            )
-
-            // Legendary effect specimen, bioluminescent, born from music
-            CreatureCard(
-                specimen: Specimen(
-                    id: UUID(),
-                    name: "Abyssal Cathedral",
-                    category: .effect,
-                    rarity: .legendary,
-                    health: 95,
-                    isPhantom: false,
-                    phantomScar: false,
-                    subtype: "reverb-hall",
-                    catchAccelPattern: [],
-                    provenance: [],
-                    spectralDNA: (0..<64).map { i in
-                        0.5 + 0.45 * sin(Float(i) * 0.25)
-                    },
-                    parameterState: [
-                        "obrix_flt1Cutoff": 0.55,
-                        "obrix_flt1Resonance": 0.6,
-                        "obrix_env1Attack": 0.3,
-                        "obrix_env1Decay": 0.7,
-                        "obrix_env1Release": 0.9,
-                        "obrix_src1Level": 0.85,
-                        "obrix_src1Type": 3.0,
-                        "obrix_lfo1Rate": 0.8,
-                        "obrix_fx1Param1": 0.65,
-                        "obrix_fx1Mix": 0.8,
-                    ],
-                    catchLatitude: nil,
-                    catchLongitude: nil,
-                    catchTimestamp: Date().addingTimeInterval(-86400 * 10),
-                    catchWeatherDescription: nil,
-                    creatureGenomeData: nil,
-                    cosmeticTier: .bioluminescent,
-                    morphIndex: 0,
-                    musicHash: "a3f9b12c45de67890abc",
-                    sourceTrackTitle: "John Coltrane — A Love Supreme",
-                    xp: 1450,
-                    level: 9,
-                    aggressiveScore: 8.5,
-                    gentleScore: 14.2,
-                    totalPlaySeconds: 7200,
-                    journal: []
-                ),
-                showFullStats: true
-            )
-
-            // Rare modulator, prismatic cosmetic tier
-            CreatureCard(
-                specimen: Specimen(
-                    id: UUID(),
-                    name: "Spectral Tidepulse",
-                    category: .modulator,
-                    rarity: .rare,
-                    health: 71,
-                    isPhantom: false,
-                    phantomScar: true,
-                    subtype: "lfo-sine",
-                    catchAccelPattern: [],
-                    provenance: [],
-                    spectralDNA: (0..<64).map { i in
-                        abs(sin(Float(i) * 0.5))
-                    },
-                    parameterState: [
-                        "obrix_flt1Cutoff": 0.42,
-                        "obrix_flt1Resonance": 0.28,
-                        "obrix_env1Attack": 0.15,
-                        "obrix_env1Decay": 0.3,
-                        "obrix_env1Release": 0.6,
-                        "obrix_src1Level": 0.6,
-                        "obrix_src1Type": 2.0,
-                        "obrix_lfo1Rate": 5.5,
-                        "obrix_fx1Param1": 0.45,
-                        "obrix_fx1Mix": 0.55,
-                    ],
-                    catchLatitude: 51.5074,
-                    catchLongitude: -0.1278,
-                    catchTimestamp: Date(),
-                    catchWeatherDescription: "light rain",
-                    creatureGenomeData: nil,
-                    cosmeticTier: .prismatic,
-                    morphIndex: 1,
-                    musicHash: nil,
-                    sourceTrackTitle: "Boards of Canada — Roygbiv",
-                    xp: 0,
-                    level: 1,
-                    aggressiveScore: 0,
-                    gentleScore: 0,
-                    totalPlaySeconds: 0,
-                    journal: []
-                )
-            )
+            CreatureCard(specimen: makePreviewSpecimenA())
+            CreatureCard(specimen: makePreviewSpecimenB(), showFullStats: true)
+            CreatureCard(specimen: makePreviewSpecimenC())
         }
         .padding()
     }

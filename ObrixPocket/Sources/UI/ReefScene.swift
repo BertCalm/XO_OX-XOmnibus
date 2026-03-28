@@ -359,6 +359,18 @@ class ReefScene: SKScene {
                     levelBadge.horizontalAlignmentMode = .right
                     levelBadge.position = CGPoint(x: bgRadius * 0.7, y: bgRadius * 0.7)
                     slotNode.addChild(levelBadge)
+
+                    // Favorite heart badge — top-left corner of slot
+                    if specimen.isFavorite {
+                        let heart = SKLabelNode(text: "♥")
+                        heart.fontSize = 10
+                        heart.fontColor = SKColor(red: 1, green: 0.3, blue: 0.3, alpha: 0.8)
+                        heart.verticalAlignmentMode = .top
+                        heart.horizontalAlignmentMode = .left
+                        heart.position = CGPoint(x: -bgRadius * 0.65, y: bgRadius * 0.7)
+                        heart.zPosition = 3
+                        slotNode.addChild(heart)
+                    }
                 } else {
                     bg.fillColor = SKColor.white.withAlphaComponent(0.02)
                     bg.strokeColor = SKColor.white.withAlphaComponent(0.08)

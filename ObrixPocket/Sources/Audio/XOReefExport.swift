@@ -101,7 +101,8 @@ enum XOReefImporter {
                 aggressiveScore: 0,
                 gentleScore: 0,
                 totalPlaySeconds: 0,
-                journal: [JournalEntry(id: UUID(), timestamp: Date(), type: .born, description: "Imported from \(file.reefName)")]
+                journal: [JournalEntry(id: UUID(), timestamp: Date(), type: .born, description: "Imported from \(file.reefName)")],
+                isFavorite: false
             )
             reefStore.specimens[index] = specimen
         }

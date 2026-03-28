@@ -38,6 +38,25 @@
 - (int)activeVoiceCount;
 - (float)sampleRate;
 
+// MARK: - Output tap (for AudioExporter live recording)
+
+/// Start capturing processed audio output into the double-buffer tap.
+/// Safe to call from any thread. No-op if tap is already active.
+- (void)startOutputTap;
+
+/// Stop the output tap and clear the ready buffer pointer.
+/// Safe to call from any thread.
+- (void)stopOutputTap;
+
+/// Drain the latest captured interleaved PCM block into dest.
+/// Returns the number of frames written (0 if no new buffer is available).
+/// dest must be at least (maxFrames * 2) floats.
+/// outChannels is set to the captured channel count (always ≤ 2).
+/// Safe to call from the main thread only — never from the audio thread.
+- (int)drainTapInto:(float * _Nonnull)dest
+          maxFrames:(int)maxFrames
+        outChannels:(int * _Nonnull)outChannels;
+
 @end
 
 #endif

@@ -101,6 +101,9 @@ struct CollectionTab: View {
                         // Header
                         collectionHeader
 
+                        // Favorites section (if any)
+                        favoritesSection
+
                         // Quick stats
                         HStack(spacing: 16) {
                             statBubble(value: "\(reefStore.specimens.compactMap { $0 }.count)", label: "In Reef")
@@ -290,6 +293,48 @@ struct CollectionTab: View {
             }
         }
         .padding(.top, 16)
+    }
+
+    // MARK: - Favorites Section
+
+    @ViewBuilder
+    private var favoritesSection: some View {
+        let favorites = reefStore.specimens.compactMap { $0 }.filter { $0.isFavorite }
+        if !favorites.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(Color(hex: "FF4D4D"))
+                        .font(.system(size: 10))
+                    Text("FAVORITES")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .tracking(1.5)
+                        .foregroundColor(Color(hex: "FF4D4D"))
+                }
+                .padding(.horizontal, 20)
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(favorites) { specimen in
+                            Button(action: {
+                                selectedSpecimen = specimen
+                                showingCard = true
+                            }) {
+                                VStack(spacing: 4) {
+                                    SpecimenSprite(subtype: specimen.subtype, category: specimen.category, size: 40)
+                                    Text(specimen.creatureName)
+                                        .font(.custom("Inter-Regular", size: 8))
+                                        .foregroundColor(.white.opacity(0.6))
+                                        .lineLimit(1)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
+            }
+            .padding(.bottom, 8)
+        }
     }
 
     // MARK: - Collection Progress Section
@@ -784,7 +829,8 @@ private func makePreviewStore() -> ReefStore {
         aggressiveScore: 0,
         gentleScore: 0,
         totalPlaySeconds: 0,
-        journal: []
+        journal: [],
+        isFavorite: false
     )
     store.specimens[1] = Specimen(
         id: UUID(),
@@ -813,7 +859,8 @@ private func makePreviewStore() -> ReefStore {
         aggressiveScore: 0,
         gentleScore: 0,
         totalPlaySeconds: 0,
-        journal: []
+        journal: [],
+        isFavorite: false
     )
     return store
 }

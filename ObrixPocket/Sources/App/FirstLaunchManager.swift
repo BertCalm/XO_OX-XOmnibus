@@ -132,7 +132,8 @@ final class FirstLaunchManager: ObservableObject {
             aggressiveScore: 0,
             gentleScore: 0,
             totalPlaySeconds: 0,
-            journal: [bornEntry]
+            journal: [bornEntry],
+            isFavorite: false
         )
         let index = reefStore.addSpecimen(second)
         if index != nil {

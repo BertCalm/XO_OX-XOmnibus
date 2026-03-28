@@ -79,6 +79,18 @@ struct MicroscopeView: View {
                     .foregroundColor(.white.opacity(0.35))
                     .italic()
             }
+
+            // Favorite indicator
+            if specimen.isFavorite {
+                HStack(spacing: 4) {
+                    Image(systemName: "heart.fill")
+                        .font(.system(size: 10))
+                        .foregroundColor(Color(hex: "FF4D4D"))
+                    Text("Favorite")
+                        .font(.custom("Inter-Regular", size: 10))
+                        .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+                }
+            }
         }
     }
 
@@ -394,7 +406,8 @@ struct MicroscopeView: View {
                 JournalEntry(id: UUID(), timestamp: Date().addingTimeInterval(-86400 * 2), type: .wired, description: "Connected to Curtain"),
                 JournalEntry(id: UUID(), timestamp: Date().addingTimeInterval(-3600), type: .levelUp, description: "Reached level 2"),
                 JournalEntry(id: UUID(), timestamp: Date().addingTimeInterval(-1800), type: .levelUp, description: "Reached level 3"),
-            ]
+            ],
+            isFavorite: false
         )
     )
     .background(Color(hex: "0E0E10").ignoresSafeArea())

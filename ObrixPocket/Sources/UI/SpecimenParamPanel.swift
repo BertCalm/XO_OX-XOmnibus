@@ -52,6 +52,18 @@ struct SpecimenParamPanel: View {
 
                     Spacer()
 
+                    // Favorite toggle button
+                    Button(action: {
+                        guard var spec = reefStore.specimens[slotIndex] else { return }
+                        spec.isFavorite.toggle()
+                        reefStore.specimens[slotIndex] = spec
+                        reefStore.save()
+                    }) {
+                        Image(systemName: (reefStore.specimens[slotIndex]?.isFavorite ?? false) ? "heart.fill" : "heart")
+                            .font(.system(size: 14))
+                            .foregroundColor((reefStore.specimens[slotIndex]?.isFavorite ?? false) ? Color(hex: "FF4D4D") : .white.opacity(0.3))
+                    }
+
                     // Close button
                     Button(action: { onDismiss?() }) {
                         Image(systemName: "xmark")

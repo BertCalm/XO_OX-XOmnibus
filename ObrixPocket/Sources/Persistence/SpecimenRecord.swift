@@ -42,6 +42,9 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
     // Specimen biography (append-only event log)
     var journal: String // JSON-encoded [JournalEntry]
 
+    // Favorite / pin status
+    var isFavorite: Bool
+
     // MARK: - Conversion to/from Specimen
 
     init(from specimen: Specimen, reefSlotIndex: Int? = nil, stasisSlotIndex: Int? = nil) {
@@ -76,6 +79,7 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
         self.totalPlaySeconds = specimen.totalPlaySeconds
         let cappedJournal = Array(specimen.journal.suffix(200))
         self.journal = Self.encodeJournal(cappedJournal)
+        self.isFavorite = specimen.isFavorite
     }
 
     func toSpecimen() -> Specimen? {
@@ -110,7 +114,8 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
             aggressiveScore: Float(aggressiveScore),
             gentleScore: Float(gentleScore),
             totalPlaySeconds: totalPlaySeconds,
-            journal: Self.decodeJournal(journal)
+            journal: Self.decodeJournal(journal),
+            isFavorite: isFavorite
         )
     }
 

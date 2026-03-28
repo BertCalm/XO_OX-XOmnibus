@@ -77,6 +77,9 @@ struct Specimen: Identifiable, Codable {
     // Append-only biography — the soul of the specimen
     var journal: [JournalEntry]
 
+    // Favorite / pin status — marked by the player for quick access
+    var isFavorite: Bool
+
     static let slotCount = 16
 
     /// The catalog creature name for this specimen's subtype

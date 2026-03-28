@@ -18,6 +18,14 @@ final class AudioExporter: ObservableObject {
     private let bufferLock = NSLock()
     private var writerTimer: Timer?
 
+    // Tap polling: a Timer that drains -drainTapInto: at ~60 Hz and feeds queueBuffer.
+    private var tapPollTimer: Timer?
+    // Scratch buffer for the raw interleaved float data from the bridge tap.
+    // Pre-allocated once: 4 096 frames × 2 ch = 8 192 floats.
+    private let tapScratch = UnsafeMutablePointer<Float>.allocate(capacity: 8192)
+    // Reuse a single AVAudioFormat for the tap to avoid per-tick allocation.
+    private var tapFormat: AVAudioFormat?
+
     // MARK: - Recording
 
     /// Start recording reef audio output to M4A.
@@ -121,6 +129,72 @@ final class AudioExporter: ObservableObject {
             }
             audioFile = nil
         }
+    }
+
+    // MARK: - Live Recording via Bridge Output Tap
+
+    /// Start recording reef audio by tapping the JUCE bridge output.
+    /// Combines startRecording() (opens the M4A file) with an output tap on ObrixBridge
+    /// polled at ~60 Hz to drain interleaved PCM into queueBuffer().
+    func startLiveRecording() {
+        guard !isRecording else { return }
+
+        // Determine the live sample rate from the bridge (default 48 kHz).
+        let sr = Double(ObrixBridge.shared()?.sampleRate() ?? 48000)
+        tapFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
+                                  sampleRate: sr,
+                                  channels: 2,
+                                  interleaved: false)
+
+        startRecording()
+
+        ObrixBridge.shared()?.startOutputTap()
+
+        // Poll the bridge tap at ~60 Hz and feed decoded buffers into the write queue.
+        tapPollTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / 60.0, repeats: true) { [weak self] _ in
+            self?.pollTap()
+        }
+    }
+
+    /// Stop live recording, flush, and finalise the M4A file.
+    func stopLiveRecording() {
+        tapPollTimer?.invalidate()
+        tapPollTimer = nil
+        ObrixBridge.shared()?.stopOutputTap()
+        // Drain any final buffers that landed between the last poll and now.
+        pollTap()
+        stopRecording()
+    }
+
+    /// Drain one tap block from the bridge and forward it to queueBuffer().
+    /// Called from tapPollTimer — runs on the main RunLoop.
+    private func pollTap() {
+        guard let fmt = tapFormat else { return }
+
+        var channels: Int32 = 0
+        let frames = ObrixBridge.shared()?.drainTap(into: tapScratch,
+                                                    maxFrames: 4096,
+                                                    outChannels: &channels) ?? 0
+        guard frames > 0, channels > 0 else { return }
+
+        // Build an AVAudioPCMBuffer from the interleaved raw floats.
+        guard let pcm = AVAudioPCMBuffer(pcmFormat: fmt, frameCapacity: AVAudioFrameCount(frames)) else { return }
+        pcm.frameLength = AVAudioFrameCount(frames)
+
+        // De-interleave into AVAudioPCMBuffer's planar channel data.
+        let ch = Int(channels)
+        for c in 0 ..< min(ch, 2) {
+            guard let plane = pcm.floatChannelData?[c] else { continue }
+            for f in 0 ..< Int(frames) {
+                plane[f] = tapScratch[f * ch + c]
+            }
+        }
+        // If mono source, copy L → R.
+        if ch == 1, let r = pcm.floatChannelData?[1], let l = pcm.floatChannelData?[0] {
+            memcpy(r, l, Int(frames) * MemoryLayout<Float>.size)
+        }
+
+        queueBuffer(pcm)
     }
 
     // MARK: - 15-Second Clip (spec Section 5.3)

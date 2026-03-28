@@ -118,6 +118,12 @@ final class DatabaseManager {
             }
         }
 
+        migrator.registerMigration("v6_specimen_favorite") { db in
+            try db.alter(table: "specimen") { t in
+                t.add(column: "isFavorite", .boolean).notNull().defaults(to: false)
+            }
+        }
+
         guard let dbQueue else { return }
         try migrator.migrate(dbQueue)
     }
