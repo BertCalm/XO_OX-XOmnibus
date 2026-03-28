@@ -421,6 +421,11 @@ public:
             };
         }
 
+        // Auto-select slot 0 on startup — skip the overview landing page.
+        // Shows parameter detail immediately instead of wasted space.
+        if (processor.getEngine(0) != nullptr)
+            selectSlot(0);
+
         setResizable(true, true);
         setResizeLimits(960, 600, 1600, 1000);
         setWantsKeyboardFocus(true);
