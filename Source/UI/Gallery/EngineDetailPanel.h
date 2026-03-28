@@ -15,6 +15,81 @@ namespace xolokun
 {
 
 //==============================================================================
+// ADSRDisplay — paint-only component that draws an ADSR envelope curve.
+// Lives inside EngineDetailPanel, displayed next to the oscilloscope.
+class ADSRDisplay : public juce::Component
+{
+public:
+    void setValues(float attack, float decay, float sustain, float release)
+    {
+        a = attack; d = decay; s = sustain; r = release;
+        repaint();
+    }
+
+    void setAccentColour(juce::Colour c) { accent = c; repaint(); }
+
+    void paint(juce::Graphics& g) override
+    {
+        auto b = getLocalBounds().toFloat().reduced(4, 2);
+
+        // Background
+        g.setColour(juce::Colour(0x08FFFFFF));
+        g.fillRoundedRectangle(b, 3.0f);
+
+        // ADSR curve
+        // Divide width into 4 segments: Attack, Decay, Sustain, Release
+        float totalW = b.getWidth();
+        float h = b.getHeight();
+        float x0 = b.getX();
+        float y0 = b.getBottom(); // bottom = 0 level
+        float yTop = b.getY();    // top = peak level
+        float ySus = y0 - s * h;  // sustain level
+
+        // Proportional widths (attack + decay take ~40%, sustain ~30%, release ~30%)
+        float aW = a * totalW * 0.3f + totalW * 0.05f;  // min 5% width
+        float dW = d * totalW * 0.15f + totalW * 0.05f;
+        float rW = r * totalW * 0.25f + totalW * 0.05f;
+        float sW = totalW - aW - dW - rW;
+        if (sW < 10.0f) sW = 10.0f;
+
+        juce::Path curve;
+        curve.startNewSubPath(x0, y0);                          // start at bottom-left
+        curve.lineTo(x0 + aW, yTop);                            // attack peak
+        curve.lineTo(x0 + aW + dW, ySus);                       // decay to sustain
+        curve.lineTo(x0 + aW + dW + sW, ySus);                  // sustain hold
+        curve.lineTo(x0 + aW + dW + sW + rW, y0);               // release to zero
+
+        // Draw the curve
+        g.setColour(accent.withAlpha(0.7f));
+        g.strokePath(curve, juce::PathStrokeType(2.0f, juce::PathStrokeType::curved,
+                     juce::PathStrokeType::rounded));
+
+        // Draw dots at the 4 control points
+        auto drawDot = [&](float cx, float cy) {
+            g.setColour(accent.withAlpha(0.9f));
+            g.fillEllipse(cx - 3, cy - 3, 6, 6);
+        };
+        drawDot(x0 + aW, yTop);                     // attack peak
+        drawDot(x0 + aW + dW, ySus);                // decay end
+        drawDot(x0 + aW + dW + sW, ySus);           // sustain end
+        drawDot(x0 + aW + dW + sW + rW, y0);        // release end
+
+        // A D S R labels at bottom
+        g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
+        g.setColour(juce::Colour(0xFF5E5C5A)); // T3
+        float labelY = b.getBottom() - 10;
+        g.drawText("A", (int)(x0 + aW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
+        g.drawText("D", (int)(x0 + aW + dW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
+        g.drawText("S", (int)(x0 + aW + dW + sW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
+        g.drawText("R", (int)(x0 + aW + dW + sW + rW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
+    }
+
+private:
+    float a = 0.1f, d = 0.3f, s = 0.7f, r = 0.4f; // defaults
+    juce::Colour accent { 0xFF1E8B7E };
+};
+
+//==============================================================================
 // EngineDetailPanel — right-side parameter view for one engine slot.
 // Contains a MacroHeroStrip (4 pillar sliders for engine macros) plus a
 // scrollable ParameterGrid showing all remaining params.
@@ -27,6 +102,7 @@ public:
         addAndMakeVisible(macroHero);
         addAndMakeVisible(viewport);
         addAndMakeVisible(waveformDisplay);
+        addAndMakeVisible(adsrDisplay);
     }
 
     // Optional: wire MIDI learn manager before the first loadSlot() call.
@@ -65,6 +141,9 @@ public:
         waveformDisplay.setSlot(slot);
         waveformDisplay.setAccentColour(accentColour);
         waveformDisplay.setEngineId(engineId);
+
+        // Configure ADSR display accent colour
+        adsrDisplay.setAccentColour(accentColour);
 
         // ── Reset ALL specialized components before recreating ────────────────
         fiveMacroDisplay.reset();
@@ -289,6 +368,17 @@ public:
                        juce::Justification::centredLeft,
                        false);
         }
+
+        // ── "ENVELOPE" label above ADSR display ───────────────────────────────
+        if (!envLabelBounds.isEmpty())
+        {
+            g.setFont(GalleryFonts::value(9.0f));
+            g.setColour(get(t3()));
+            g.drawText("ENVELOPE",
+                       envLabelBounds.withTrimmedLeft(8),
+                       juce::Justification::centredLeft,
+                       false);
+        }
     }
 
     void resized() override
@@ -310,13 +400,21 @@ public:
             fiveMacroDisplay->setVisible(false);
         }
 
-        // ── Bottom: "OSCILLOSCOPE" label (10px) + waveform display (70px) ────
+        // ── Bottom: labels (12px) + waveform/ADSR displays (70px) split 50/50 ──
         {
             int waveH     = 70;
             int labelH    = 12;
-            auto waveArea = area.removeFromBottom(waveH + labelH);
-            oscLabelBounds = waveArea.removeFromTop(labelH);  // painted in paint()
-            waveformDisplay.setBounds(waveArea.reduced(4, 2));
+            auto bottomArea = area.removeFromBottom(waveH + labelH);
+            auto labelRow   = bottomArea.removeFromTop(labelH);
+            // Split label row: left = OSCILLOSCOPE, right = ENVELOPE
+            oscLabelBounds  = labelRow.removeFromLeft(labelRow.getWidth() / 2);
+            envLabelBounds  = labelRow; // painted in paint()
+            // Split display row: left = waveformDisplay, right = adsrDisplay
+            auto displayRow = bottomArea;
+            auto leftDisplay  = displayRow.removeFromLeft(displayRow.getWidth() / 2);
+            auto rightDisplay = displayRow;
+            waveformDisplay.setBounds(leftDisplay.reduced(4, 2));
+            adsrDisplay.setBounds(rightDisplay.reduced(4, 2));
         }
 
         // ── Specialized displays (engine-specific, above parameter grid) ─────
@@ -366,6 +464,7 @@ private:
     XOlokunProcessor&  processor;
     MacroHeroStrip     macroHero;
     WaveformDisplay    waveformDisplay;
+    ADSRDisplay        adsrDisplay;
     std::unique_ptr<ObrixDetailPanel>     obrixPanel;       // only created when OBRIX is loaded
     std::unique_ptr<DrumPadGrid>          drumGrid;         // created for ONSET, OFFERING
     std::unique_ptr<FiveMacroDisplay>     fiveMacroDisplay; // created for OVERBITE
@@ -383,6 +482,8 @@ private:
     juce::String         cachedEngineName { "—" };
     // Bounds for the "OSCILLOSCOPE" label painted above the waveform display.
     juce::Rectangle<int> oscLabelBounds;
+    // Bounds for the "ENVELOPE" label painted above the ADSR display.
+    juce::Rectangle<int> envLabelBounds;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };
