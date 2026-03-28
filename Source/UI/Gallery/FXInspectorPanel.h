@@ -171,6 +171,52 @@ private:
     };
 
     //==========================================================================
+    // Returns a short uppercase label for a given parameter ID.
+    // Maps "master_satDrive" → "DRIVE", etc.
+    static juce::String shortLabelForParamId(const juce::String& pid)
+    {
+        // Strip the "master_" prefix if present.
+        juce::String tail = pid.startsWith("master_") ? pid.substring(7) : pid;
+
+        // Explicit short-name table (maps camelCase suffix → display label).
+        struct Entry { const char* suffix; const char* label; };
+        static const Entry table[] = {
+            { "satDrive",       "DRIVE"  },
+            { "satMode",        "MODE"   },
+            { "corrMix",        "MIX"    },
+            { "corrBits",       "BITS"   },
+            { "corrSR",         "RATE"   },
+            { "corrFM",         "FM"     },
+            { "corrTone",       "TONE"   },
+            { "combMix",        "MIX"    },
+            { "combFreq",       "FREQ"   },
+            { "combFeedback",   "FB"     },
+            { "combDamping",    "DAMP"   },
+            { "fshiftHz",       "HZ"     },
+            { "fshiftMix",      "MIX"    },
+            { "fshiftMode",     "MODE"   },
+            { "reverbSize",     "SIZE"   },
+            { "reverbMix",      "MIX"    },
+            { "compRatio",      "RATIO"  },
+            { "compAttack",     "ATK"    },
+            { "compRelease",    "REL"    },
+            { "compMix",        "MIX"    },
+            { "delayTime",      "TIME"   },
+            { "delayFeedback",  "FB"     },
+            { "delayMix",       "MIX"    },
+            { "modRate",        "RATE"   },
+            { "modDepth",       "DEPTH"  },
+            { "modMix",         "MIX"    },
+            { "modMode",        "MODE"   },
+        };
+        for (auto& e : table)
+            if (tail == e.suffix)
+                return e.label;
+        // Fallback: uppercase the tail (trim leading digits if any).
+        return tail.toUpperCase().substring(0, 6);
+    }
+
+    //==========================================================================
     // FXSlot — runtime state for a single FX slot card.
     struct FXSlot
     {
@@ -191,16 +237,20 @@ private:
             paramAtts;
         std::vector<std::unique_ptr<GalleryKnob>>
             paramKnobs;
+        // Param labels shown below each expanded knob.
+        std::vector<std::unique_ptr<juce::Label>>
+            paramLabels;
 
         bool expandedKnobsBuilt = false;
 
         // Safe teardown in correct order: attachments MUST be destroyed
         // before the sliders they reference (JUCE contract).
-        // paramAtts → paramKnobs, then mixAtt → mixKnob.
+        // paramAtts → paramKnobs → paramLabels, then mixAtt → mixKnob.
         void teardown()
         {
             paramAtts.clear();   // expanded param attachments first
             paramKnobs.clear();  // then expanded knobs
+            paramLabels.clear(); // then labels
             mixAtt.reset();      // mix attachment before mix knob
             mixKnob.reset();     // mix knob last
         }
@@ -246,14 +296,18 @@ private:
             }
 
             // Bypass LED (7×7 circle, left-aligned)
+            // Collapsed: XO Gold at moderate alpha so it's always visible.
+            // Expanded:  full XO Gold, fully opaque.
             float ledSize  = 7.0f;
             float ledX     = headerR.getX() + 8.0f;
             float ledY     = headerR.getCentreY() - ledSize * 0.5f;
             g.setColour(slot.expanded
                         ? get(xoGold)
-                        : get(textMid()).withAlpha(0.30f));
+                        : get(xoGold).withAlpha(0.55f));
             g.fillEllipse(ledX, ledY, ledSize, ledSize);
-            g.setColour(get(borderGray()));
+            g.setColour(slot.expanded
+                        ? get(xoGold).withAlpha(0.80f)
+                        : get(borderGray()).withAlpha(0.60f));
             g.drawEllipse(ledX, ledY, ledSize, ledSize, 1.0f);
 
             // FX name label — Space Grotesk SemiBold 10pt
@@ -325,15 +379,26 @@ private:
                 int cellW   = xArea / n;
                 int kSize   = juce::jmin(cellW - 4, kExpandedKnobSize);
                 int startX  = 8;
-                int kTop    = kHeaderH + (kExpandedAreaH - kSize - kLabelH) / 2;
+                // Centre the knob+label block vertically within the expanded area.
+                // Block height = kSize (knob) + 2px gap + kLabelH (label).
+                int blockH  = kSize + 2 + kLabelH;
+                int kTop    = kHeaderH + (kExpandedAreaH - blockH) / 2;
+                int lblTop  = kTop + kSize + 2;
 
                 for (int i = 0; i < n; ++i)
                 {
-                    if (slot.paramKnobs[static_cast<size_t>(i)] == nullptr)
-                        continue;
                     int cellX = startX + i * cellW;
-                    slot.paramKnobs[static_cast<size_t>(i)]->setBounds(
-                        cellX + (cellW - kSize) / 2, kTop, kSize, kSize);
+                    int kX    = cellX + (cellW - kSize) / 2;
+
+                    if (slot.paramKnobs[static_cast<size_t>(i)] != nullptr)
+                        slot.paramKnobs[static_cast<size_t>(i)]->setBounds(kX, kTop, kSize, kSize);
+
+                    if (i < static_cast<int>(slot.paramLabels.size()) &&
+                        slot.paramLabels[static_cast<size_t>(i)] != nullptr)
+                    {
+                        slot.paramLabels[static_cast<size_t>(i)]->setBounds(
+                            cellX, lblTop, cellW, kLabelH);
+                    }
                 }
             }
         }
@@ -373,9 +438,21 @@ private:
             knob->setTooltip(pid);
             A11y::setup(*knob, pid, "FX parameter " + pid);
 
+            // Build the label shown below this knob.
+            auto lbl = std::make_unique<juce::Label>();
+            lbl->setText(shortLabelForParamId(pid), juce::dontSendNotification);
+            lbl->setFont(GalleryFonts::value(9.0f));
+            lbl->setColour(juce::Label::textColourId,
+                           GalleryColors::get(GalleryColors::t2()));
+            lbl->setJustificationType(juce::Justification::centred);
+            lbl->setInterceptsMouseClicks(false, false);
+
             // Add to the SlotCard (not to innerContent directly).
             if (slotIdx >= 0 && slotIdx < static_cast<int>(slotCards.size()))
+            {
                 slotCards[static_cast<size_t>(slotIdx)]->addAndMakeVisible(*knob);
+                slotCards[static_cast<size_t>(slotIdx)]->addAndMakeVisible(*lbl);
+            }
 
             auto att = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 myApvts, pid, *knob);
@@ -384,6 +461,7 @@ private:
             // Store atts first so they are destroyed before knobs.
             slot.paramAtts.push_back(std::move(att));
             slot.paramKnobs.push_back(std::move(knob));
+            slot.paramLabels.push_back(std::move(lbl));
         }
     }
 
