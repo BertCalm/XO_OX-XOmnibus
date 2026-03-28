@@ -422,9 +422,18 @@ public:
         }
 
         // Auto-select slot 0 on startup — skip the overview landing page.
-        // Shows parameter detail immediately instead of wasted space.
+        // Direct visibility (no animation) to ensure interactive from first frame.
         if (processor.getEngine(0) != nullptr)
-            selectSlot(0);
+        {
+            selectedSlot = 0;
+            tiles[0]->setSelected(true);
+            if (detail.loadSlot(0))
+            {
+                overview.setVisible(false);
+                detail.setAlpha(1.0f);
+                detail.setVisible(true);
+            }
+        }
 
         setResizable(true, true);
         setResizeLimits(960, 600, 1600, 1000);

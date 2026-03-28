@@ -194,7 +194,7 @@ public:
             }
         }
 
-        // Start 10 Hz timer for visibility checks
+        // Start 10 Hz timer for visibility checks + lazy knob creation
         startTimerHz(10);
     }
 

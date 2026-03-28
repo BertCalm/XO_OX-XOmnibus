@@ -101,6 +101,9 @@ public:
     {
         addAndMakeVisible(macroHero);
         addAndMakeVisible(viewport);
+        // Disable scroll-on-drag — it steals vertical mouse drags from
+        // RotaryVerticalDrag knobs inside the ParameterGrid.
+        viewport.setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::never);
         addAndMakeVisible(waveformDisplay);
         addAndMakeVisible(adsrDisplay);
     }
