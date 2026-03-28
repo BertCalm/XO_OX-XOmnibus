@@ -137,6 +137,15 @@ struct ReefTab: View {
                 }
             }
 
+            // Contextual hint for new users (journey steps 0–2)
+            if firstLaunchManager.journeyStep <= 2 {
+                Text("Tap a specimen to preview its sound. Long-press to wire.")
+                    .font(.custom("Inter-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.25))
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 4)
+            }
+
             // Parameter panel OR stasis browser — shows when a slot is tapped
             if let slot = selectedSlot {
                 if reefStore.specimens[slot] != nil {

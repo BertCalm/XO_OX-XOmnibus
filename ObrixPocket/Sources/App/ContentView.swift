@@ -82,18 +82,7 @@ struct ContentView: View {
 
 // CatchTab is defined in Sources/Catch/CatchTab.swift
 
-// Placeholder tabs for Phase 0
-struct DiveTab: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "arrow.down.to.line")
-                .font(.system(size: 48))
-                .foregroundColor(.secondary)
-            Text("Dive — Phase 2")
-                .foregroundColor(.secondary)
-        }
-    }
-}
+// DiveTab is defined in Sources/UI/DiveTab.swift
 
 // CollectionTab is defined in Sources/UI/CollectionTab.swift
 

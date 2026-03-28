@@ -3,13 +3,21 @@ import Foundation
 /// Manages first-launch state, the starter specimen flow, and the guided tutorial journey.
 final class FirstLaunchManager: ObservableObject {
     @Published var isFirstLaunch: Bool
-    @Published var hasSeenIntro = false
     @Published var starterSpecimenPlaced = false
 
     private let userDefaults = UserDefaults.standard
     private let firstLaunchKey = "obrix_pocket_first_launch_complete"
     private let secondSpecimenKey = "obrix_pocket_second_specimen_placed"
     private let journeyStepKey = "obrix_pocket_journey_step"
+    private let hasSeenIntroKey = "obrix_pocket_has_seen_intro"
+
+    var hasSeenIntro: Bool {
+        get { userDefaults.bool(forKey: hasSeenIntroKey) }
+        set {
+            userDefaults.set(newValue, forKey: hasSeenIntroKey)
+            objectWillChange.send()
+        }
+    }
 
     var secondSpecimenPlaced: Bool {
         get { userDefaults.bool(forKey: secondSpecimenKey) }

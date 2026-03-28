@@ -61,6 +61,15 @@ struct ObrixPocketApp: App {
                         reefStore.save()
                     }
                 }
+                // Show onboarding on first ever app open
+                .fullScreenCover(isPresented: Binding(
+                    get: { !firstLaunchManager.hasSeenIntro },
+                    set: { if !$0 { firstLaunchManager.hasSeenIntro = true } }
+                )) {
+                    OnboardingView(onComplete: {
+                        firstLaunchManager.hasSeenIntro = true
+                    })
+                }
         }
     }
 }
