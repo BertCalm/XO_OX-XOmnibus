@@ -74,7 +74,8 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
         self.aggressiveScore = Double(specimen.aggressiveScore)
         self.gentleScore = Double(specimen.gentleScore)
         self.totalPlaySeconds = specimen.totalPlaySeconds
-        self.journal = Self.encodeJournal(specimen.journal)
+        let cappedJournal = Array(specimen.journal.suffix(200))
+        self.journal = Self.encodeJournal(cappedJournal)
     }
 
     func toSpecimen() -> Specimen? {

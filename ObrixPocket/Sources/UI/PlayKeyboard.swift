@@ -248,12 +248,25 @@ final class KeyboardView: UIView {
                 activeTouches[id] = root
                 chordNotes[id] = [root, third, fifth].filter { $0 <= 127 }
             } else if mode == .arp {
-                // Build arp pattern: root, +4, +7, +12
-                let root = note
-                arpNotes = [root, root + 4, root + 7, root + 12].filter { $0 <= 127 }
+                // Build arp pattern from the active scale's intervals so the arp
+                // stays in key regardless of which scale is selected.
+                var pattern: [Int] = [note]  // Root always first
+                let scaleIntervals = scale.intervals
+                let rootChroma = ((note % 12) + 12) % 12
+                var added = 0
+                for i in 1...12 {
+                    let candidate = rootChroma + i
+                    let normalizedCandidate = candidate % 12
+                    if scaleIntervals.contains(normalizedCandidate) {
+                        pattern.append(note + i)
+                        added += 1
+                        if added >= 3 { break }  // Root + 3 more = 4-note pattern
+                    }
+                }
+                arpNotes = pattern.filter { $0 <= 127 }
                 arpIndex = 0
                 startArp()
-                activeTouches[id] = root
+                activeTouches[id] = note
             } else {
                 activeTouches[id] = note
                 onNoteOn?(note, velocity)

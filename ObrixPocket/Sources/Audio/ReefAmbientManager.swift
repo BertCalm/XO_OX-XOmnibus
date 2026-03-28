@@ -8,10 +8,12 @@ final class ReefAmbientManager: ObservableObject {
     private var ambientTimer: Timer?
     private var activeAmbientNotes: Set<Int> = []
     private let maxSimultaneous = 3  // Max ambient notes at once
+    private var generation: Int = 0
 
     /// Start the ambient soundscape
     func start(reefStore: ReefStore, audioEngine: AudioEngineManager) {
         guard !isActive else { return }
+        generation += 1
         isActive = true
 
         // Configure engine for the first source's chain
@@ -24,6 +26,7 @@ final class ReefAmbientManager: ObservableObject {
 
     /// Stop all ambient sounds
     func stop() {
+        generation += 1
         isActive = false
         ambientTimer?.invalidate()
         ambientTimer = nil
@@ -46,14 +49,16 @@ final class ReefAmbientManager: ObservableObject {
         let baseInterval = 8.0 - Double(min(specimenCount, 12)) * 0.4
         let interval = baseInterval + Double.random(in: -1.0...1.0)
 
-        ambientTimer = Timer.scheduledTimer(withTimeInterval: max(2, interval), repeats: false) { [weak self] _ in
-            guard let self, self.isActive else { return }
-            self.playAmbientNote(specimenCount: specimenCount)
+        ambientTimer = Timer.scheduledTimer(withTimeInterval: max(2, interval), repeats: false) { [weak self, weak reefStore] _ in
+            guard let self, self.isActive, let reefStore else { return }
+            self.playAmbientNote(specimenCount: reefStore.specimens.compactMap { $0 }.count)
             self.scheduleNext(reefStore: reefStore)
         }
     }
 
     private func playAmbientNote(specimenCount: Int) {
+        let capturedGeneration = generation
+
         // Release oldest note if at max
         if activeAmbientNotes.count >= maxSimultaneous, let oldest = activeAmbientNotes.first {
             ObrixBridge.shared()?.noteOff(Int32(oldest))
@@ -75,7 +80,7 @@ final class ReefAmbientManager: ObservableObject {
         // Auto-release after 2-6 seconds
         let holdTime = Double.random(in: 2.0...6.0)
         DispatchQueue.main.asyncAfter(deadline: .now() + holdTime) { [weak self] in
-            guard let self else { return }
+            guard let self, self.generation == capturedGeneration else { return }
             if self.activeAmbientNotes.contains(midiNote) {
                 ObrixBridge.shared()?.noteOff(Int32(midiNote))
                 self.activeAmbientNotes.remove(midiNote)

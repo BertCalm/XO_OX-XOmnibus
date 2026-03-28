@@ -132,7 +132,7 @@ final class SpecimenFactory {
         case .source:
             let srcTypeMap: [String: Float] = [
                 "polyblep-saw": 0, "polyblep-square": 1, "polyblep-tri": 2,
-                "noise-white": 3, "noise-pink": 3,
+                "noise-white": 3, "noise-pink": 5,
                 "wt-analog": 4, "wt-vocal": 4,
                 "fm-basic": 5
             ]
@@ -159,10 +159,17 @@ final class SpecimenFactory {
 
         // Apply catalog defaults as the base, with small random variation (±10%) layered on top.
         // This ensures each specimen type has a distinct sonic character regardless of catch randomness.
+        // Discrete type selectors are applied verbatim — multiplying them produces nonsensical indices.
+        let discreteParams: Set<String> = ["obrix_src1Type", "obrix_lfo1Shape", "obrix_fx1Param2"]
+
         if let entry = SpecimenCatalog.entry(for: catalogID) {
             for (key, defaultVal) in entry.defaultParams {
-                let variation = Float.random(in: -0.1...0.1)
-                params[key] = defaultVal * (1.0 + variation)
+                if discreteParams.contains(key) {
+                    params[key] = defaultVal  // No variation on discrete types
+                } else {
+                    let variation = Float.random(in: -0.1...0.1)
+                    params[key] = defaultVal * (1.0 + variation)
+                }
             }
         }
 

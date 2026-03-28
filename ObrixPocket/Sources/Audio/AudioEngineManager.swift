@@ -131,6 +131,20 @@ final class AudioEngineManager: ObservableObject {
         }
     }
 
+    /// Blast cached params for a slot without walking the full wiring chain.
+    /// I-08: Used by the PlayKeyboard which calls ObrixBridge directly (bypassing noteOn).
+    /// Replaces the per-keypress applySlotChain call in ReefTab.
+    func applyCachedParams(for slotIndex: Int) {
+        guard let bridge = ObrixBridge.shared(),
+              let cached = slotParamCache[slotIndex] else { return }
+        for (param, val) in Self.resetParams {
+            bridge.setParameterImmediate(param, value: val)
+        }
+        for (param, val) in cached {
+            bridge.setParameterImmediate(param, value: val)
+        }
+    }
+
     /// Collect all engine-mapped params for a single specimen into a flat array.
     /// Mirrors the category-switch logic in applySpecimenToEngine.
     private func collectMappedParams(_ specimen: Specimen, into params: inout [(String, Float)]) {
@@ -408,6 +422,10 @@ final class AudioEngineManager: ObservableObject {
 
         // Fast path: blast cached params (no UUID matching, no chain walking per note).
         // Falls back to full applySlotChain if cache is cold (first note before wiring settles).
+        // C-01: No cache-miss fallback — rebuilding param cache from noteOn is a data race
+        // when noteOn is called from a non-main thread (reads @Published reefStore.specimens).
+        // rebuildParamCache is already called on every wiring change via onWiringChanged /
+        // applyReefConfiguration. If the cache is cold, the engine keeps its last config.
         if let cached = slotParamCache[slotIndex] {
             for (param, value) in Self.resetParams {
                 bridge.setParameterImmediate(param, value: value)
@@ -415,11 +433,8 @@ final class AudioEngineManager: ObservableObject {
             for (param, value) in cached {
                 bridge.setParameterImmediate(param, value: value)
             }
-        } else if let reefStore = reefStoreRef {
-            // Cache miss — fall back to full chain apply and populate cache for next time
-            applySlotChain(slotIndex: slotIndex, reefStore: reefStore)
-            rebuildParamCache(reefStore: reefStore)
         }
+        // Cache miss: skip param blast — engine retains whatever was last configured.
 
         // Map slot index to MIDI note: C3 + slot index (gives C3-D#4 for 16 slots)
         let note = min(127, max(0, 60 + slotIndex))
@@ -429,17 +444,44 @@ final class AudioEngineManager: ObservableObject {
             hasPlayedFirstNote = true
         }
 
-        // XP: record note-on timestamp and award 1 XP per note
+        // XP: record note-on timestamp and award 1 XP per note.
+        // C-02: Consolidate all per-note mutations into a single read-mutate-write so that
+        // earnXP's write and the style-score write don't clobber each other.
         noteOnTimestamps[slotIndex] = Date()
-        earnXP(slotIndex: slotIndex, amount: 1)
+        if let reefStore = reefStoreRef,
+           var specimen = reefStore.specimens[slotIndex] {
+            // XP with rarity multiplier
+            let xpGain = Int((Float(1) * Self.xpMultiplier(specimen.rarity)).rounded())
+            specimen.xp += xpGain
 
-        // Style tracking: aggressive = high velocity, gentle = low velocity
-        if let reefStore = reefStoreRef, var specimen = reefStore.specimens[slotIndex] {
+            // Style score
             if velocity > 0.7 {
                 specimen.aggressiveScore += 0.1
             } else if velocity < 0.4 {
                 specimen.gentleScore += 0.1
             }
+
+            // Level-up check
+            let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
+            if newLevel > specimen.level {
+                let oldLevel = specimen.level
+                specimen.level = newLevel
+                HapticEngine.levelUp()
+                let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
+                                             description: "Reached level \(newLevel)")
+                specimen.journal.append(levelEntry)
+                if newLevel >= 10 && oldLevel < 10 {
+                    if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
+                        specimen.name = evolved.name
+                        HapticEngine.evolution()
+                        let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
+                                                      description: "Evolved into \(evolved.name)")
+                        specimen.journal.append(evolveEntry)
+                    }
+                }
+            }
+
+            // Single write — no clobbering
             reefStore.specimens[slotIndex] = specimen
         }
     }
@@ -450,7 +492,9 @@ final class AudioEngineManager: ObservableObject {
         ObrixBridge.shared()?.noteOff(Int32(note))
         midiOutput.sendNoteOff(note: UInt8(note), channel: UInt8(slotIndex % 16))
 
-        // XP: compute note duration, award bonuses, update play stats
+        // XP: compute note duration, award bonuses, update play stats.
+        // C-03: Consolidate into a single read-mutate-write. The old code called earnXP (which
+        // writes specimens[slotIndex]) then wrote a stale local copy on top, losing the XP update.
         if let startTime = noteOnTimestamps.removeValue(forKey: slotIndex),
            let reefStore = reefStoreRef,
            var specimen = reefStore.specimens[slotIndex] {
@@ -459,14 +503,36 @@ final class AudioEngineManager: ObservableObject {
             specimen.totalPlaySeconds += duration
 
             if duration > 2.0 {
-                // Sustained note reward
-                earnXP(slotIndex: slotIndex, amount: 3)
+                // Sustained note reward — XP with rarity multiplier + style score
+                let xpGain = Int((Float(3) * Self.xpMultiplier(specimen.rarity)).rounded())
+                specimen.xp += xpGain
                 specimen.gentleScore += 0.2
             } else if duration < 0.3 {
                 // Short staccato tap
                 specimen.aggressiveScore += 0.1
             }
 
+            // Level-up check after duration XP
+            let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
+            if newLevel > specimen.level {
+                let oldLevel = specimen.level
+                specimen.level = newLevel
+                HapticEngine.levelUp()
+                let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
+                                             description: "Reached level \(newLevel)")
+                specimen.journal.append(levelEntry)
+                if newLevel >= 10 && oldLevel < 10 {
+                    if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
+                        specimen.name = evolved.name
+                        HapticEngine.evolution()
+                        let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
+                                                      description: "Evolved into \(evolved.name)")
+                        specimen.journal.append(evolveEntry)
+                    }
+                }
+            }
+
+            // Single write — no stale-copy clobber
             reefStore.specimens[slotIndex] = specimen
         }
     }

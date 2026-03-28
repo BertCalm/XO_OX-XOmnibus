@@ -443,8 +443,11 @@ struct ReefTab: View {
                 PlayKeyboard(
                     onNoteOn: { midiNote, velocity in
                         let sourceSlot = activeSourceSlot ?? firstSourceSlot
+                        // I-08: Use cached params instead of the full applySlotChain walk.
+                        // applySlotChain re-reads reefStore and walks wiring on every keypress;
+                        // the cache is kept current by applyReefConfiguration on every wiring change.
                         if let s = sourceSlot {
-                            audioEngine.applySlotChain(slotIndex: s, reefStore: reefStore)
+                            audioEngine.applyCachedParams(for: s)
                         }
                         ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
                         recorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
