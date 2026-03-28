@@ -15,6 +15,7 @@ struct ReefTab: View {
     @State private var selectedSlot: Int?        // Which specimen's params are showing
     @State private var octaveOffset: Int = 0      // Keyboard octave shift (-2 to +2)
     @State private var keyboardScale: KeyboardScale = .pentatonic  // Default: hardest to sound bad
+    @State private var keyboardMode: KeyboardMode = .single
     @State private var showSaveDialog = false
     @State private var showLoadSheet = false
     @State private var presetName = ""
@@ -227,6 +228,23 @@ struct ReefTab: View {
                             .font(.custom("JetBrainsMono-Regular", size: 9))
                             .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
                     }
+                    // Mode selector
+                    Menu {
+                        ForEach(KeyboardMode.allCases, id: \.self) { kbMode in
+                            Button(action: { keyboardMode = kbMode }) {
+                                HStack {
+                                    Text(kbMode.rawValue)
+                                    if kbMode == keyboardMode {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                    } label: {
+                        Text(keyboardMode.rawValue)
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                    }
                     // Octave controls
                     Button(action: { if octaveOffset > -2 { octaveOffset -= 1 } }) {
                         Text("−")
@@ -393,7 +411,8 @@ struct ReefTab: View {
                     },
                     accentColor: Color(hex: "1E8B7E"),
                     octaveOffset: $octaveOffset,
-                    scale: keyboardScale
+                    scale: keyboardScale,
+                    mode: keyboardMode
                 )
                 .frame(height: 80)
                 .clipShape(RoundedRectangle(cornerRadius: 12))

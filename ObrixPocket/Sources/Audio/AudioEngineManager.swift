@@ -167,6 +167,17 @@ final class AudioEngineManager: ObservableObject {
                 params.append((mapping.engineParam, final))
             }
         }
+        // Fill any gaps with catalog defaults so every specimen type's character
+        // comes through even when parameterState was created before defaultParams existed.
+        if let entry = SpecimenCatalog.entry(for: specimen.subtype) {
+            for (key, defaultVal) in entry.defaultParams {
+                if !specimen.parameterState.keys.contains(key) {
+                    if let mapping = Self.parameterMapping[key] {
+                        params.append((mapping.engineParam, mapping.scale(defaultVal)))
+                    }
+                }
+            }
+        }
     }
 
     /// Push a single specimen's parameters to the engine based on its category.

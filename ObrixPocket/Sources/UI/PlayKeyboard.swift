@@ -1,6 +1,14 @@
 import SwiftUI
 import UIKit
 
+// MARK: - KeyboardMode
+
+enum KeyboardMode: String, CaseIterable {
+    case single = "Single"
+    case chord  = "Chord"
+    case arp    = "Arp"
+}
+
 // MARK: - KeyboardScale
 
 enum KeyboardScale: String, CaseIterable {
@@ -42,6 +50,9 @@ final class KeyboardView: UIView {
     var scale: KeyboardScale = .chromatic {
         didSet { setNeedsDisplay() }
     }
+    var mode: KeyboardMode = .single {
+        didSet { stopArp() }
+    }
 
     // MARK: Layout constants
     private let whiteNoteOffsets = [0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19, 21, 23]
@@ -68,6 +79,17 @@ final class KeyboardView: UIView {
     // MARK: State
     /// Maps UITouch identity → MIDI note currently sounding for that finger
     private var activeTouches: [ObjectIdentifier: Int] = [:]
+
+    // MARK: Chord Mode State
+    /// Maps UITouch identity → all MIDI notes triggered by that finger in chord mode
+    private var chordNotes: [ObjectIdentifier: [Int]] = [:]
+
+    // MARK: Arp Mode State
+    private var arpTimer: Timer?
+    private var arpNotes: [Int] = []
+    private var arpIndex = 0
+    private var arpBPM: Double = 120
+    private var currentArpNote: Int?
 
     // MARK: Colors
     private let whiteKeyColor   = UIColor(red: 0.102, green: 0.102, blue: 0.110, alpha: 1)   // #1A1A1C
@@ -211,8 +233,31 @@ final class KeyboardView: UIView {
             guard let note = keyAt(point: touch.location(in: self)) else { continue }
             let id       = ObjectIdentifier(touch)
             let velocity = velocityForTouch(touch)
-            activeTouches[id] = note
-            onNoteOn?(note, velocity)
+
+            if mode == .chord {
+                // Play major triad: root + major 3rd (+4 semitones) + perfect 5th (+7 semitones)
+                let root  = note
+                let third = root + 4
+                let fifth = root + 7
+
+                onNoteOn?(root, velocity)
+                if third <= 127 { onNoteOn?(third, velocity * 0.9) }
+                if fifth <= 127 { onNoteOn?(fifth, velocity * 0.85) }
+
+                activeTouches[id] = root
+                chordNotes[id] = [root, third, fifth].filter { $0 <= 127 }
+            } else if mode == .arp {
+                // Build arp pattern: root, +4, +7, +12
+                let root = note
+                arpNotes = [root, root + 4, root + 7, root + 12].filter { $0 <= 127 }
+                arpIndex = 0
+                startArp()
+                activeTouches[id] = root
+            } else {
+                activeTouches[id] = note
+                onNoteOn?(note, velocity)
+            }
+
             HapticEngine.keyPress(velocity: velocity)
         }
         setNeedsDisplay()
@@ -222,6 +267,10 @@ final class KeyboardView: UIView {
         var changed = false
         for touch in touches {
             let id = ObjectIdentifier(touch)
+
+            // Chord and arp modes do not support glissando — skip movement handling
+            if mode == .chord || mode == .arp { continue }
+
             guard let newNote = keyAt(point: touch.location(in: self)) else {
                 // Finger moved off the keyboard — release whatever was held
                 if let oldNote = activeTouches.removeValue(forKey: id) {
@@ -248,8 +297,17 @@ final class KeyboardView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let id = ObjectIdentifier(touch)
-            if let note = activeTouches.removeValue(forKey: id) {
-                onNoteOff?(note)
+
+            if mode == .chord, let notes = chordNotes.removeValue(forKey: id) {
+                activeTouches.removeValue(forKey: id)
+                for n in notes { onNoteOff?(n) }
+            } else if mode == .arp {
+                activeTouches.removeValue(forKey: id)
+                stopArp()
+            } else {
+                if let note = activeTouches.removeValue(forKey: id) {
+                    onNoteOff?(note)
+                }
             }
         }
         setNeedsDisplay()
@@ -260,10 +318,48 @@ final class KeyboardView: UIView {
         touchesEnded(touches, with: event)
     }
 
+    // MARK: Arpeggiator
+
+    private func startArp() {
+        stopArp()
+        let interval = 60.0 / arpBPM  // Quarter note interval
+        arpTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
+            guard let self, !self.arpNotes.isEmpty else { return }
+
+            // Note off previous
+            if let prev = self.currentArpNote {
+                self.onNoteOff?(prev)
+            }
+
+            // Note on next
+            let note = self.arpNotes[self.arpIndex % self.arpNotes.count]
+            self.onNoteOn?(note, 0.7)
+            self.currentArpNote = note
+            self.arpIndex += 1
+        }
+    }
+
+    private func stopArp() {
+        arpTimer?.invalidate()
+        arpTimer = nil
+        if let prev = currentArpNote {
+            onNoteOff?(prev)
+            currentArpNote = nil
+        }
+        arpNotes = []
+        arpIndex = 0
+    }
+
     // MARK: Cleanup
 
     /// Release all currently held notes (call when the view disappears).
     func allNotesOff() {
+        stopArp()
+        // Release any chord notes
+        for notes in chordNotes.values {
+            for n in notes { onNoteOff?(n) }
+        }
+        chordNotes.removeAll()
         for note in activeTouches.values {
             onNoteOff?(note)
         }
@@ -282,6 +378,7 @@ struct PlayKeyboard: UIViewRepresentable {
     let accentColor:  Color
     @Binding var octaveOffset: Int
     var scale: KeyboardScale = .chromatic
+    var mode: KeyboardMode = .single
 
     func makeUIView(context: Context) -> KeyboardView {
         let view           = KeyboardView()
@@ -290,6 +387,7 @@ struct PlayKeyboard: UIViewRepresentable {
         view.accentColor   = UIColor(accentColor)
         view.octaveOffset  = octaveOffset
         view.scale         = scale
+        view.mode          = mode
         return view
     }
 
@@ -299,6 +397,7 @@ struct PlayKeyboard: UIViewRepresentable {
         uiView.onNoteOff    = onNoteOff
         uiView.accentColor  = UIColor(accentColor)
         uiView.scale        = scale
+        uiView.mode         = mode
 
         if uiView.octaveOffset != octaveOffset {
             // Release held notes before jumping octave — avoids stuck notes

@@ -142,6 +142,15 @@ final class SpecimenFactory {
             params["obrix_fx1Param2"] = Float.random(in: 0.1...0.9)
         }
 
+        // Apply catalog defaults as the base, with small random variation (±10%) layered on top.
+        // This ensures each specimen type has a distinct sonic character regardless of catch randomness.
+        if let entry = SpecimenCatalog.entry(for: catalogID) {
+            for (key, defaultVal) in entry.defaultParams {
+                let variation = Float.random(in: -0.1...0.1)
+                params[key] = defaultVal * (1.0 + variation)
+            }
+        }
+
         // Rarity affects parameter extremes
         if rarity == .rare || rarity == .legendary {
             // Rare specimens have more extreme/interesting parameter values.
