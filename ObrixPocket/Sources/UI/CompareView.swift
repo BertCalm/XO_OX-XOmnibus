@@ -9,7 +9,7 @@ struct CompareView: View {
             VStack(spacing: 16) {
                 // Header
                 Text("COMPARE")
-                    .font(.custom("SpaceGrotesk-Bold", size: 18))
+                    .font(DesignTokens.heading(18))
                     .foregroundColor(.white)
                     .padding(.top, 16)
 
@@ -19,7 +19,7 @@ struct CompareView: View {
 
                     // VS divider
                     Text("vs")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.2))
 
                     specimenColumn(specimenB)
@@ -41,16 +41,16 @@ struct CompareView: View {
             SpecimenSprite(subtype: specimen.subtype, category: specimen.category, size: 56)
 
             Text(specimen.creatureName)
-                .font(.custom("SpaceGrotesk-Bold", size: 14))
+                .font(DesignTokens.heading(14))
                 .foregroundColor(.white)
                 .lineLimit(1)
 
             Text(specimen.rarity.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .foregroundColor(DesignTokens.xoGold)
 
             Text("Lv.\(specimen.level)")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .foregroundColor(.white.opacity(0.4))
         }
         .frame(maxWidth: .infinity)
@@ -74,7 +74,7 @@ struct CompareView: View {
 
         return VStack(spacing: 4) {
             Text("STATS")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
 
@@ -82,7 +82,7 @@ struct CompareView: View {
                 HStack(spacing: 4) {
                     // A value
                     Text("\(valA)")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(valA > valB ? DesignTokens.reefJade : .white.opacity(0.4))
                         .frame(width: 28, alignment: .trailing)
 
@@ -99,7 +99,7 @@ struct CompareView: View {
 
                     // Label
                     Text(name)
-                        .font(.custom("Inter-Regular", size: 8))
+                        .font(DesignTokens.body(8))
                         .foregroundColor(.white.opacity(0.3))
                         .frame(width: 55)
 
@@ -113,7 +113,7 @@ struct CompareView: View {
 
                     // B value
                     Text("\(valB)")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(valB > valA ? DesignTokens.reefJade : .white.opacity(0.4))
                         .frame(width: 28, alignment: .leading)
                 }
@@ -127,14 +127,14 @@ struct CompareView: View {
         HStack(alignment: .top, spacing: 20) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("XP: \(specimenA.xp)")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.3))
                 Text("Play: \(formatTime(specimenA.totalPlaySeconds))")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.3))
                 if let track = specimenA.sourceTrackTitle {
                     Text(track)
-                        .font(.custom("Inter-Regular", size: 8))
+                        .font(DesignTokens.body(8))
                         .foregroundColor(.white.opacity(0.2))
                         .lineLimit(1)
                 }
@@ -143,14 +143,14 @@ struct CompareView: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text("XP: \(specimenB.xp)")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.3))
                 Text("Play: \(formatTime(specimenB.totalPlaySeconds))")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.3))
                 if let track = specimenB.sourceTrackTitle {
                     Text(track)
-                        .font(.custom("Inter-Regular", size: 8))
+                        .font(DesignTokens.body(8))
                         .foregroundColor(.white.opacity(0.2))
                         .lineLimit(1)
                 }

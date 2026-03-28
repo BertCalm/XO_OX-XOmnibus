@@ -138,4 +138,25 @@ enum DesignTokens {
     static func monoBold(_ size: CGFloat) -> Font {
         .custom("JetBrainsMono-Bold", size: size)
     }
+
+    // MARK: - Spacing Scale (4pt base grid)
+
+    /// 2pt — hairline gaps, micro separators
+    static let spacing2: CGFloat = 2
+    /// 4pt — tight internal padding, small gaps
+    static let spacing4: CGFloat = 4
+    /// 6pt — compact padding
+    static let spacing6: CGFloat = 6
+    /// 8pt — standard small padding
+    static let spacing8: CGFloat = 8
+    /// 12pt — medium padding, section gaps
+    static let spacing12: CGFloat = 12
+    /// 16pt — standard content padding
+    static let spacing16: CGFloat = 16
+    /// 20pt — screen edge padding
+    static let spacing20: CGFloat = 20
+    /// 24pt — large section spacing
+    static let spacing24: CGFloat = 24
+    /// 40pt — hero spacing, large buttons
+    static let spacing40: CGFloat = 40
 }

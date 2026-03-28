@@ -113,11 +113,11 @@ struct DiveTab: View {
                 // Header
                 HStack {
                     Text("THE DIVE")
-                        .font(.custom("SpaceGrotesk-Bold", size: 18))
+                        .font(DesignTokens.heading(18))
                         .foregroundColor(.white)
                     Spacer()
                     Text("\(diveDepth)m")
-                        .font(.custom("JetBrainsMono-Bold", size: 16))
+                        .font(DesignTokens.monoBold(16))
                         .foregroundColor(DesignTokens.reefJade)
                 }
                 .padding(.horizontal, 20)
@@ -151,11 +151,11 @@ struct DiveTab: View {
                 .foregroundColor(DesignTokens.reefJade.opacity(0.4))
 
             Text("Dive into your reef")
-                .font(.custom("SpaceGrotesk-Bold", size: 20))
+                .font(DesignTokens.heading(20))
                 .foregroundColor(.white)
 
             Text("60 seconds of generative performance.\nYour reef plays itself. Deeper = more complex.")
-                .font(.custom("Inter-Regular", size: 13))
+                .font(DesignTokens.body(13))
                 .foregroundColor(.white.opacity(0.4))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
@@ -170,9 +170,17 @@ struct DiveTab: View {
             }
             .padding(.horizontal, 40)
 
+            if sourceCount < 1 {
+                Text("Visit the Catch tab to find your first specimen")
+                    .font(DesignTokens.body(11))
+                    .foregroundColor(.white.opacity(0.3))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 40)
+            }
+
             Button(action: startDive) {
                 Text("DIVE")
-                    .font(.custom("SpaceGrotesk-Bold", size: 18))
+                    .font(DesignTokens.heading(18))
                     .tracking(3)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -202,7 +210,7 @@ struct DiveTab: View {
             if !diveHistory.records.isEmpty {
                 Button(action: { showHistory = true }) {
                     Text("View History")
-                        .font(.custom("Inter-Regular", size: 12))
+                        .font(DesignTokens.body(12))
                         .foregroundColor(.white.opacity(0.4))
                 }
             }
@@ -212,12 +220,12 @@ struct DiveTab: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         Text("WEEKLY CHALLENGES")
-                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .font(DesignTokens.mono(9))
                             .tracking(1.5)
                             .foregroundColor(DesignTokens.xoGold)
                         Spacer()
                         Text("\(weeklyChallenges.completedCount)/\(weeklyChallenges.challenges.count)")
-                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .font(DesignTokens.mono(9))
                             .foregroundColor(.white.opacity(0.3))
                     }
 
@@ -229,18 +237,18 @@ struct DiveTab: View {
 
                             VStack(alignment: .leading, spacing: 1) {
                                 Text(challenge.title)
-                                    .font(.custom("Inter-Medium", size: 11))
+                                    .font(DesignTokens.bodyMedium(11))
                                     .foregroundColor(challenge.completed ? .white.opacity(0.4) : .white.opacity(0.7))
                                     .strikethrough(challenge.completed)
                                 Text(challenge.description)
-                                    .font(.custom("Inter-Regular", size: 9))
+                                    .font(DesignTokens.body(9))
                                     .foregroundColor(.white.opacity(0.25))
                             }
 
                             Spacer()
 
                             Text(challenge.progressString)
-                                .font(.custom("JetBrainsMono-Regular", size: 9))
+                                .font(DesignTokens.mono(9))
                                 .foregroundColor(.white.opacity(0.3))
                         }
                     }
@@ -257,11 +265,11 @@ struct DiveTab: View {
     private func requirementRow(_ label: String, count: Int, required: Int) -> some View {
         HStack {
             Text(label)
-                .font(.custom("Inter-Regular", size: 11))
+                .font(DesignTokens.body(11))
                 .foregroundColor(.white.opacity(0.4))
             Spacer()
             Text("\(count)/\(required)")
-                .font(.custom("JetBrainsMono-Regular", size: 11))
+                .font(DesignTokens.mono(11))
                 .foregroundColor(count >= required ? DesignTokens.reefJade : DesignTokens.errorRed)
             Image(systemName: count >= required ? "checkmark.circle.fill" : "xmark.circle")
                 .font(.system(size: 10))
@@ -272,10 +280,10 @@ struct DiveTab: View {
     private func statColumn(_ label: String, value: String) -> some View {
         VStack(spacing: 2) {
             Text(value)
-                .font(.custom("JetBrainsMono-Bold", size: 16))
+                .font(DesignTokens.monoBold(16))
                 .foregroundColor(DesignTokens.reefJade)
             Text(label)
-                .font(.custom("Inter-Regular", size: 9))
+                .font(DesignTokens.body(9))
                 .foregroundColor(.white.opacity(0.3))
         }
         .frame(maxWidth: .infinity)
@@ -288,7 +296,7 @@ struct DiveTab: View {
             // Current zone name
             let zone = DepthZone.at(depth: diveDepth)
             Text(zone.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .tracking(2)
                 .foregroundColor(.white.opacity(0.3))
 
@@ -299,7 +307,7 @@ struct DiveTab: View {
                     HStack(spacing: 6) {
                         SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 20)
                         Text(spec.creatureName)
-                            .font(.custom("JetBrainsMono-Regular", size: 10))
+                            .font(DesignTokens.mono(10))
                             .foregroundColor(DesignTokens.reefJade.opacity(0.6))
                     }
                 }
@@ -307,7 +315,7 @@ struct DiveTab: View {
 
             // Depth counter (large, centered)
             Text("\(diveDepth)m")
-                .font(.custom("JetBrainsMono-Bold", size: 48))
+                .font(DesignTokens.monoBold(48))
                 .foregroundColor(DesignTokens.reefJade)
 
             // Progress bar
@@ -334,7 +342,7 @@ struct DiveTab: View {
 
             // Score
             Text("Score: \(diveScore)")
-                .font(.custom("JetBrainsMono-Regular", size: 14))
+                .font(DesignTokens.mono(14))
                 .foregroundColor(.white.opacity(0.5))
 
             // Touch interaction zone
@@ -383,11 +391,11 @@ struct DiveTab: View {
                     VStack(spacing: 2) {
                         if divePlayerActive {
                             Text("STEERING")
-                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .font(DesignTokens.mono(8))
                                 .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                         } else {
                             Text("TOUCH TO STEER")
-                                .font(.custom("Inter-Regular", size: 9))
+                                .font(DesignTokens.body(9))
                                 .foregroundColor(.white.opacity(0.15))
                         }
                     }
@@ -403,7 +411,7 @@ struct DiveTab: View {
             // Abort button
             Button(action: endDive) {
                 Text("SURFACE")
-                    .font(.custom("Inter-Regular", size: 12))
+                    .font(DesignTokens.body(12))
                     .foregroundColor(.white.opacity(0.3))
             }
         }
@@ -420,13 +428,13 @@ struct DiveTab: View {
 
         return VStack(spacing: 16) {
             Text("SURFACED")
-                .font(.custom("SpaceGrotesk-Bold", size: 24))
+                .font(DesignTokens.heading(24))
                 .foregroundColor(.white)
 
             // New high score badge
             if isNewHighScore {
                 Text("NEW HIGH SCORE!")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .foregroundColor(DesignTokens.xoGold)
                     .padding(.bottom, 4)
             }
@@ -445,7 +453,7 @@ struct DiveTab: View {
             // XP reward
             let xpReward = finalScore / 10
             Text("+\(xpReward) XP to all reef specimens")
-                .font(.custom("JetBrainsMono-Regular", size: 12))
+                .font(DesignTokens.mono(12))
                 .foregroundColor(DesignTokens.xoGold)
 
             Button(action: {
@@ -465,7 +473,7 @@ struct DiveTab: View {
                 isCollectingRewards = false // Reset for next dive
             }) {
                 Text("COLLECT REWARDS")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .tracking(2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -480,11 +488,11 @@ struct DiveTab: View {
     private func statRow(_ label: String, value: String) -> some View {
         HStack {
             Text(label)
-                .font(.custom("Inter-Regular", size: 12))
+                .font(DesignTokens.body(12))
                 .foregroundColor(.white.opacity(0.4))
             Spacer()
             Text(value)
-                .font(.custom("JetBrainsMono-Bold", size: 14))
+                .font(DesignTokens.monoBold(14))
                 .foregroundColor(.white)
         }
     }

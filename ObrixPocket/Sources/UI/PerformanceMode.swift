@@ -27,7 +27,7 @@ struct PerformanceMode: View {
                         HStack(spacing: 6) {
                             SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 24)
                             Text(spec.creatureName)
-                                .font(.custom("JetBrainsMono-Regular", size: 11))
+                                .font(DesignTokens.mono(11))
                                 .foregroundColor(DesignTokens.reefJade.opacity(0.7))
                         }
                     }
@@ -43,7 +43,7 @@ struct PerformanceMode: View {
                             }
                         } label: {
                             Text(keyboardScale.rawValue)
-                                .font(.custom("JetBrainsMono-Regular", size: 9))
+                                .font(DesignTokens.mono(9))
                                 .foregroundColor(.white.opacity(0.4))
                         }
 
@@ -54,7 +54,7 @@ struct PerformanceMode: View {
                             }
                         } label: {
                             Text(keyboardMode.rawValue)
-                                .font(.custom("JetBrainsMono-Regular", size: 9))
+                                .font(DesignTokens.mono(9))
                                 .foregroundColor(.white.opacity(0.4))
                         }
 
@@ -63,7 +63,7 @@ struct PerformanceMode: View {
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white.opacity(0.5))
                         Text("C\(4 + octaveOffset)")
-                            .font(.custom("JetBrainsMono-Regular", size: 10))
+                            .font(DesignTokens.mono(10))
                             .foregroundColor(.white.opacity(0.4))
                         Button("+") { if octaveOffset < 2 { octaveOffset += 1 } }
                             .font(.system(size: 14, weight: .bold))

@@ -63,7 +63,7 @@ struct OnboardingView: View {
                     }
                 }) {
                     Text(currentPage < 3 ? "NEXT" : "START")
-                        .font(.custom("SpaceGrotesk-Bold", size: 16))
+                        .font(DesignTokens.heading(16))
                         .tracking(2)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -81,7 +81,7 @@ struct OnboardingView: View {
                     Button("Skip") {
                         onComplete()
                     }
-                    .font(.custom("Inter-Regular", size: 13))
+                    .font(DesignTokens.body(13))
                     .foregroundColor(.white.opacity(0.3))
                     .padding(.bottom, 16)
                 }

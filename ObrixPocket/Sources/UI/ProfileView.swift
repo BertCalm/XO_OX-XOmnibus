@@ -16,17 +16,17 @@ struct ProfileView: View {
                 VStack(spacing: 8) {
                     // Reef name as identity
                     Text(reefStore.reefName)
-                        .font(.custom("SpaceGrotesk-Bold", size: 24))
+                        .font(DesignTokens.heading(24))
                         .foregroundColor(.white)
 
                     // Mastery title
                     Text(masteryManager.masteryTitle)
-                        .font(.custom("JetBrainsMono-Regular", size: 12))
+                        .font(DesignTokens.mono(12))
                         .foregroundColor(DesignTokens.xoGold)
 
                     // Total depth
                     Text("\(reefStore.totalDiveDepth)m total depth")
-                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(.white.opacity(0.4))
                 }
                 .padding(.top, 20)
@@ -88,10 +88,10 @@ struct ProfileView: View {
                 .font(.system(size: 14))
                 .foregroundColor(DesignTokens.reefJade.opacity(0.5))
             Text(value)
-                .font(.custom("JetBrainsMono-Bold", size: 16))
+                .font(DesignTokens.monoBold(16))
                 .foregroundColor(.white)
             Text(label)
-                .font(.custom("Inter-Regular", size: 9))
+                .font(DesignTokens.body(9))
                 .foregroundColor(.white.opacity(0.3))
         }
     }
@@ -103,19 +103,19 @@ struct ProfileView: View {
 
         return VStack(spacing: 4) {
             Text("FAVORITE CATEGORY")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
             if let fav = favorite {
                 Text(fav.key.rawValue.capitalized)
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .foregroundColor(categoryColor(for: fav.key))
                 Text("\(fav.value.count) in reef")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.3))
             } else {
                 Text("None yet")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .foregroundColor(.white.opacity(0.3))
             }
         }
@@ -127,7 +127,7 @@ struct ProfileView: View {
 
         return VStack(spacing: 4) {
             Text("MOST PLAYED")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
             if let spec = mostPlayed, spec.totalPlaySeconds > 0 {
@@ -135,16 +135,16 @@ struct ProfileView: View {
                     SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 32)
                     VStack(alignment: .leading, spacing: 2) {
                         Text(spec.creatureName)
-                            .font(.custom("SpaceGrotesk-Bold", size: 14))
+                            .font(DesignTokens.heading(14))
                             .foregroundColor(.white)
                         Text(formatTime(spec.totalPlaySeconds))
-                            .font(.custom("JetBrainsMono-Regular", size: 10))
+                            .font(DesignTokens.mono(10))
                             .foregroundColor(.white.opacity(0.4))
                     }
                 }
             } else {
                 Text("Play a specimen to track time")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.3))
             }
         }
@@ -153,18 +153,18 @@ struct ProfileView: View {
     private var streakSection: some View {
         VStack(spacing: 4) {
             Text("STREAK")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
             HStack(spacing: 4) {
                 Image(systemName: "flame.fill")
                     .foregroundColor(DesignTokens.streakOrange)
                 Text("\(streakManager.currentStreak) days")
-                    .font(.custom("JetBrainsMono-Bold", size: 14))
+                    .font(DesignTokens.monoBold(14))
                     .foregroundColor(.white)
             }
             Text("Longest: \(streakManager.longestStreak) days")
-                .font(.custom("Inter-Regular", size: 10))
+                .font(DesignTokens.body(10))
                 .foregroundColor(.white.opacity(0.3))
         }
     }
@@ -173,11 +173,11 @@ struct ProfileView: View {
         let allMaxed = reefStore.specimens.compactMap { $0 }.filter { $0.level >= 10 }.count
         return VStack(spacing: 4) {
             Text("JOURNEY")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
             Text("\(allMaxed)/16 evolved")
-                .font(.custom("JetBrainsMono-Regular", size: 12))
+                .font(DesignTokens.mono(12))
                 .foregroundColor(.white.opacity(0.5))
         }
     }
@@ -205,12 +205,12 @@ struct ProfileView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("BADGES")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .tracking(1.5)
                     .foregroundColor(.white.opacity(0.2))
                 Spacer()
                 Text("\(badgeManager.earnedCount)/\(badgeManager.badges.count)")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(.white.opacity(0.3))
             }
             .padding(.horizontal, 20)
@@ -222,7 +222,7 @@ struct ProfileView: View {
                             .font(.system(size: 20))
                             .foregroundColor(badge.earned ? tierColor(badge.tier) : .white.opacity(0.1))
                         Text(badge.name)
-                            .font(.custom("Inter-Regular", size: 8))
+                            .font(DesignTokens.body(8))
                             .foregroundColor(badge.earned ? .white.opacity(0.6) : .white.opacity(0.15))
                             .lineLimit(1)
                     }

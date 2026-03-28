@@ -113,7 +113,7 @@ struct DetailFingerprint: View {
 
             if let band = highlightedBand {
                 Text("Band \(band): \(String(format: "%.1f", specimen.spectralDNA.indices.contains(band) ? specimen.spectralDNA[band] * 100 : 0))%")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(color.opacity(0.7))
             }
         }

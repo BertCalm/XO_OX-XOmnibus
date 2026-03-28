@@ -55,27 +55,27 @@ struct MicroscopeView: View {
             SpecimenSprite(subtype: specimen.subtype, category: specimen.category, size: 80)
 
             Text(specimen.name)
-                .font(.custom("SpaceGrotesk-Bold", size: 22))
+                .font(DesignTokens.heading(22))
                 .foregroundColor(.white)
 
             HStack(spacing: 8) {
                 Text(specimen.rarity.rawValue.uppercased())
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(DesignTokens.xoGold)
 
                 Text("Lv.\(specimen.level)")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(specimen.level >= 5 ? DesignTokens.xoGold : .white.opacity(0.5))
 
                 Text(categoryLabel(specimen.category))
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(catColor.opacity(0.6))
             }
 
             // Personality
             if let entry = SpecimenCatalog.entry(for: specimen.subtype) {
                 Text(entry.personalityLine)
-                    .font(.custom("Inter-Regular", size: 12))
+                    .font(DesignTokens.body(12))
                     .foregroundColor(.white.opacity(0.35))
                     .italic()
             }
@@ -87,7 +87,7 @@ struct MicroscopeView: View {
                         .font(.system(size: 10))
                         .foregroundColor(DesignTokens.errorRed)
                     Text("Favorite")
-                        .font(.custom("Inter-Regular", size: 10))
+                        .font(DesignTokens.body(10))
                         .foregroundColor(DesignTokens.errorRed.opacity(0.6))
                 }
             }
@@ -118,7 +118,7 @@ struct MicroscopeView: View {
             // Game stat (always visible)
             HStack(spacing: 6) {
                 Text(gameName)
-                    .font(.custom("Inter-Medium", size: 11))
+                    .font(DesignTokens.bodyMedium(11))
                     .foregroundColor(.white.opacity(0.6))
                     .frame(width: 70, alignment: .trailing)
 
@@ -135,7 +135,7 @@ struct MicroscopeView: View {
                 .frame(width: 60, height: 6)
 
                 Text("\(gameValue)")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(.white.opacity(0.4))
                     .frame(width: 24, alignment: .trailing)
             }
@@ -147,10 +147,10 @@ struct MicroscopeView: View {
                         .font(.system(size: 10))
                         .foregroundColor(.white.opacity(0.2))
                     Text(synthParam)
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                         .foregroundColor(catColor.opacity(0.5))
                     Text(synthValue)
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                         .foregroundColor(.white.opacity(0.3))
                 }
                 .transition(.opacity.combined(with: .move(edge: .trailing)))
@@ -167,7 +167,7 @@ struct MicroscopeView: View {
     private var provenanceSection: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("PROVENANCE")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
 
@@ -191,10 +191,10 @@ struct MicroscopeView: View {
             if let entry = SpecimenCatalog.entry(for: specimen.subtype), !entry.preferredBiomes.isEmpty {
                 HStack(spacing: 4) {
                     Text("Habitat:")
-                        .font(.custom("Inter-Regular", size: 10))
+                        .font(DesignTokens.body(10))
                         .foregroundColor(.white.opacity(0.3))
                     Text(entry.preferredBiomes.map { $0.displayName }.joined(separator: ", "))
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.5))
                 }
             }
@@ -205,11 +205,11 @@ struct MicroscopeView: View {
     private func provenanceLine(_ label: String, value: String) -> some View {
         HStack {
             Text(label)
-                .font(.custom("Inter-Regular", size: 10))
+                .font(DesignTokens.body(10))
                 .foregroundColor(.white.opacity(0.3))
                 .frame(width: 70, alignment: .trailing)
             Text(value)
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(.white.opacity(0.5))
                 .lineLimit(1)
         }
@@ -226,11 +226,11 @@ struct MicroscopeView: View {
                         Image(systemName: isAggressive ? "bolt.fill" : "leaf.fill")
                         Text(isAggressive ? "Aggressive Evolution" : "Gentle Evolution")
                     }
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(DesignTokens.xoGold.opacity(0.6))
 
                     Text("Could have been: \(isAggressive ? path.gentleName : path.aggressiveName)")
-                        .font(.custom("Inter-Regular", size: 9))
+                        .font(DesignTokens.body(9))
                         .foregroundColor(.white.opacity(0.2))
                         .italic()
                 }
@@ -243,13 +243,13 @@ struct MicroscopeView: View {
     private var journalSection: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("JOURNAL")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
 
             if specimen.journal.isEmpty {
                 Text("No events recorded yet")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.2))
                     .italic()
             } else {
@@ -263,10 +263,10 @@ struct MicroscopeView: View {
 
                         VStack(alignment: .leading, spacing: 1) {
                             Text(entry.description)
-                                .font(.custom("Inter-Regular", size: 10))
+                                .font(DesignTokens.body(10))
                                 .foregroundColor(.white.opacity(0.5))
                             Text(entry.timestamp, style: .relative)
-                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .font(DesignTokens.mono(8))
                                 .foregroundColor(.white.opacity(0.2))
                         }
                     }
@@ -274,7 +274,7 @@ struct MicroscopeView: View {
 
                 if specimen.journal.count > 10 {
                     Text("+ \(specimen.journal.count - 10) earlier events")
-                        .font(.custom("Inter-Regular", size: 9))
+                        .font(DesignTokens.body(9))
                         .foregroundColor(.white.opacity(0.15))
                 }
             }

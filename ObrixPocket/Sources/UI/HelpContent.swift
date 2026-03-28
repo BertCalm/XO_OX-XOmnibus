@@ -63,12 +63,12 @@ struct HelpView: View {
                                     .foregroundColor(DesignTokens.reefJade)
                                     .frame(width: 24)
                                 Text(topic.title)
-                                    .font(.custom("SpaceGrotesk-Bold", size: 14))
+                                    .font(DesignTokens.heading(14))
                                     .foregroundColor(.white)
                             }
 
                             Text(topic.content)
-                                .font(.custom("Inter-Regular", size: 12))
+                                .font(DesignTokens.body(12))
                                 .foregroundColor(.white.opacity(0.5))
                                 .lineSpacing(3)
                         }

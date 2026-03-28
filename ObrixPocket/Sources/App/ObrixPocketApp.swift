@@ -117,27 +117,27 @@ struct ImportPreviewView: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("Import Reef")
-                .font(.custom("SpaceGrotesk-Bold", size: 20))
+                .font(DesignTokens.heading(20))
                 .foregroundColor(.white)
 
             Text(reef.reefName)
-                .font(.custom("JetBrainsMono-Regular", size: 14))
+                .font(DesignTokens.mono(14))
                 .foregroundColor(DesignTokens.reefJade)
 
             let specCount = reef.specimens.compactMap { $0 }.count
             let routeCount = reef.routes.count
 
             Text("\(specCount) specimens · \(routeCount) wires · \(reef.totalDiveDepth)m depth")
-                .font(.custom("Inter-Regular", size: 12))
+                .font(DesignTokens.body(12))
                 .foregroundColor(.white.opacity(0.4))
 
             Text("This will replace your current reef.")
-                .font(.custom("Inter-Regular", size: 11))
+                .font(DesignTokens.body(11))
                 .foregroundColor(DesignTokens.errorRed.opacity(0.6))
 
             Button(action: onImport) {
                 Text("IMPORT")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .tracking(2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity).frame(height: 50)

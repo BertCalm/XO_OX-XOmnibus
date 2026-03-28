@@ -32,7 +32,7 @@ struct ReefHeaderView: View {
                     showReefRename = true
                 }) {
                     Text(reefStore.reefName)
-                        .font(.custom("SpaceGrotesk-Bold", size: 18))
+                        .font(DesignTokens.heading(18))
                         .foregroundColor(.white)
                 }
 
@@ -73,11 +73,11 @@ struct ReefHeaderView: View {
                 // Journey progress replaces depth counter until the tutorial is complete
                 if !firstLaunchManager.isJourneyComplete {
                     Text("Journey: \(firstLaunchManager.journeyStep)/8")
-                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(DesignTokens.xoGold)
                 } else {
                     Text("Depth: \(reefStore.totalDiveDepth)m")
-                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(DesignTokens.mutedText)
                 }
 
@@ -114,7 +114,7 @@ struct ReefHeaderView: View {
                         audioEngine.applyReefConfiguration(reefStore)
                     }) {
                         Text("Clear Wires")
-                            .font(.custom("Inter-Regular", size: 11))
+                            .font(DesignTokens.body(11))
                             .foregroundColor(DesignTokens.errorRed.opacity(0.6))
                     }
                 }

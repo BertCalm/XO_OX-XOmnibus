@@ -61,7 +61,7 @@ struct StatBar: View {
     var body: some View {
         HStack(spacing: 8) {
             Text(label)
-                .font(.custom("Inter-Regular", size: 10))
+                .font(DesignTokens.body(10))
                 .foregroundColor(.white.opacity(0.5))
                 .frame(width: 70, alignment: .trailing)
 
@@ -79,7 +79,7 @@ struct StatBar: View {
             .frame(height: 6)
 
             Text("\(value)")
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .foregroundColor(.white.opacity(0.4))
                 .frame(width: 28, alignment: .trailing)
         }

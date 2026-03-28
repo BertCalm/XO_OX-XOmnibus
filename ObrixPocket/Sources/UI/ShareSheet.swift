@@ -29,7 +29,7 @@ struct ShareButton: View {
                 Image(systemName: "square.and.arrow.up")
                 Text("Share")
             }
-            .font(.custom("Inter-Medium", size: 13))
+            .font(DesignTokens.bodyMedium(13))
             .foregroundColor(DesignTokens.reefJade) // Reef Jade
         }
         .sheet(isPresented: $showingShare) {
@@ -55,7 +55,7 @@ struct SpecimenCardShareButton: View {
                 Image(systemName: "photo.on.rectangle.angled")
                 Text("Share Card")
             }
-            .font(.custom("Inter-Medium", size: 13))
+            .font(DesignTokens.bodyMedium(13))
             .foregroundColor(DesignTokens.xoGold) // XO Gold
         }
         .sheet(isPresented: $showingShare) {

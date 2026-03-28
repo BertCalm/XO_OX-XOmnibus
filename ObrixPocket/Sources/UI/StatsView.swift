@@ -17,13 +17,13 @@ struct StatsView: View {
                                 .frame(width: 24)
 
                             Text(label)
-                                .font(.custom("Inter-Regular", size: 13))
+                                .font(DesignTokens.body(13))
                                 .foregroundColor(.white.opacity(0.6))
 
                             Spacer()
 
                             Text(value)
-                                .font(.custom("JetBrainsMono-Bold", size: 14))
+                                .font(DesignTokens.monoBold(14))
                                 .foregroundColor(.white)
                         }
                         .padding(.horizontal, 20)

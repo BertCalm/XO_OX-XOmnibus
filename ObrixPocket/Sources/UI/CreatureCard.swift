@@ -17,7 +17,7 @@ private struct CosmeticTierBadge: View {
 
     var body: some View {
         Text(label.uppercased())
-            .font(.custom("JetBrainsMono-Regular", size: 9))
+            .font(DesignTokens.mono(9))
             .foregroundColor(foregroundColor)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
@@ -127,7 +127,7 @@ private struct TopTraitsRow: View {
             .joined(separator: " · ")
 
         Text(text)
-            .font(.custom("JetBrainsMono-Regular", size: 11))
+            .font(DesignTokens.mono(11))
             .foregroundColor(color)
             .lineLimit(2)
             .multilineTextAlignment(.center)
@@ -212,7 +212,7 @@ struct CreatureCard: View {
     private var topSection: some View {
         VStack(spacing: 4) {
             Text(specimen.name)
-                .font(.custom("SpaceGrotesk-Bold", size: 22))
+                .font(DesignTokens.heading(22))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
 
@@ -220,7 +220,7 @@ struct CreatureCard: View {
 
             if let entry = SpecimenCatalog.entry(for: specimen.subtype) {
                 Text(entry.personalityLine)
-                    .font(.custom("Inter-Regular", size: 11))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(.white.opacity(0.35))
                     .italic()
                     .multilineTextAlignment(.center)
@@ -244,7 +244,7 @@ struct CreatureCard: View {
                     Image(systemName: isAggressive ? "bolt.fill" : "leaf.fill")
                         .font(.system(size: 9))
                     Text(isAggressive ? "Aggressive Evolution" : "Gentle Evolution")
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                 }
                 .foregroundColor(DesignTokens.xoGold.opacity(0.6))
                 .padding(.top, 2)
@@ -254,7 +254,7 @@ struct CreatureCard: View {
             let age = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
             if age != .newborn {
                 Text(age.rawValue)
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(
                         age == .ancient || age == .elder
                             ? DesignTokens.xoGold
@@ -276,13 +276,13 @@ struct CreatureCard: View {
         switch specimen.rarity {
         case .common:
             Text(specimen.rarity.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(.white.opacity(0.5))
                 .tracking(1.5)
 
         case .uncommon:
             Text(specimen.rarity.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(.white.opacity(0.75))
                 .tracking(1.5)
                 .padding(.horizontal, 8)
@@ -294,7 +294,7 @@ struct CreatureCard: View {
 
         case .rare:
             Text(specimen.rarity.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Bold", size: 11))
+                .font(DesignTokens.monoBold(11))
                 .foregroundColor(DesignTokens.xoGold)
                 .tracking(1.5)
                 .padding(.horizontal, 8)
@@ -306,7 +306,7 @@ struct CreatureCard: View {
 
         case .legendary:
             Text(specimen.rarity.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Bold", size: 12))
+                .font(DesignTokens.monoBold(12))
                 .foregroundColor(DesignTokens.xoGold)
                 .tracking(2.0)
                 .shadow(color: DesignTokens.xoGold.opacity(0.7), radius: 4)
@@ -340,7 +340,7 @@ struct CreatureCard: View {
         var body: some View {
             VStack(spacing: 3) {
                 Text("Lv.\(specimen.level) — \(xpLabel)")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(specimen.level >= 5
                         ? DesignTokens.xoGold
                         : Color.white.opacity(0.45))
@@ -378,7 +378,7 @@ struct CreatureCard: View {
 
             if let trackTitle = specimen.sourceTrackTitle {
                 Text("Born from: \(trackTitle)")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.40))
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
@@ -408,7 +408,7 @@ struct CreatureCard: View {
         Button(action: { isStatsExpanded.toggle() }) {
             HStack(spacing: 4) {
                 Text(isStatsExpanded ? "Hide Stats" : "View All Stats")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(color.opacity(0.75))
                 Image(systemName: isStatsExpanded ? "chevron.up" : "chevron.down")
                     .font(.system(size: 9, weight: .semibold))
@@ -428,12 +428,12 @@ struct CreatureCard: View {
         if !partners.isEmpty {
             VStack(alignment: .leading, spacing: 4) {
                 Text("PAIRS WELL WITH")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .tracking(1)
                     .foregroundColor(.white.opacity(0.2))
                 ForEach(partners, id: \.subtypeID) { partner in
                     Text(partner.creatureName)
-                        .font(.custom("Inter-Regular", size: 11))
+                        .font(DesignTokens.body(11))
                         .foregroundColor(categoryColor(for: partner.category).opacity(0.6))
                 }
             }
@@ -447,7 +447,7 @@ struct CreatureCard: View {
     private var bottomSection: some View {
         VStack(spacing: 10) {
             Text("Caught \(formattedCatchDate)")
-                .font(.custom("Inter-Regular", size: 10))
+                .font(DesignTokens.body(10))
                 .foregroundColor(.white.opacity(0.30))
 
             Button(action: {
@@ -459,7 +459,7 @@ struct CreatureCard: View {
                     Image(systemName: "square.and.arrow.up")
                     Text("Share")
                 }
-                .font(.custom("Inter-Medium", size: 12))
+                .font(DesignTokens.bodyMedium(12))
                 .foregroundColor(DesignTokens.xoGold.opacity(0.6))
             }
             .buttonStyle(.plain)

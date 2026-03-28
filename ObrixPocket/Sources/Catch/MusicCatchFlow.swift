@@ -79,11 +79,11 @@ struct MusicCatchFlow: View {
             // Header
             VStack(spacing: 8) {
                 Text("WHAT'S YOUR SONG?")
-                    .font(.custom("SpaceGrotesk-Bold", size: 22))
+                    .font(DesignTokens.heading(22))
                     .tracking(2)
                     .foregroundColor(.white)
                 Text("Feed a song to the reef.\nEvery song births a unique creature.")
-                    .font(.custom("Inter-Regular", size: 14))
+                    .font(DesignTokens.body(14))
                     .foregroundColor(.white.opacity(0.5))
                     .multilineTextAlignment(.center)
             }
@@ -97,7 +97,7 @@ struct MusicCatchFlow: View {
             // Open Library button
             Button(action: { openMusicPicker() }) {
                 Text("CHOOSE A SONG")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .tracking(2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -110,7 +110,7 @@ struct MusicCatchFlow: View {
             .padding(.horizontal, 40)
 
             Button("Cancel") { dismiss() }
-                .font(.custom("Inter-Regular", size: 14))
+                .font(DesignTokens.body(14))
                 .foregroundColor(.white.opacity(0.4))
 
             Spacer()
@@ -129,12 +129,12 @@ struct MusicCatchFlow: View {
 
             VStack(spacing: 10) {
                 Text("SONG OF THE DAY CAUGHT")
-                    .font(.custom("SpaceGrotesk-Bold", size: 18))
+                    .font(DesignTokens.heading(18))
                     .tracking(2)
                     .foregroundColor(.white.opacity(0.7))
 
                 Text("You've already caught your Song of the Day.\nCome back tomorrow.")
-                    .font(.custom("Inter-Regular", size: 14))
+                    .font(DesignTokens.body(14))
                     .foregroundColor(.white.opacity(0.4))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)
@@ -142,14 +142,14 @@ struct MusicCatchFlow: View {
                 if let next = firstLaunchManager.nextMusicCatchDate {
                     let formatted = next.formatted(date: .omitted, time: .shortened)
                     Text("Next catch: tomorrow at \(formatted)")
-                        .font(.custom("JetBrainsMono-Regular", size: 12))
+                        .font(DesignTokens.mono(12))
                         .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                         .padding(.top, 4)
                 }
             }
 
             Button("Close") { dismiss() }
-                .font(.custom("Inter-Regular", size: 14))
+                .font(DesignTokens.body(14))
                 .foregroundColor(.white.opacity(0.4))
                 .padding(.top, 12)
 
@@ -162,10 +162,10 @@ struct MusicCatchFlow: View {
                 }) {
                     VStack(spacing: 4) {
                         Text("Spend \(ReefEnergyManager.musicCatchCost)⚡ for another catch")
-                            .font(.custom("Inter-Medium", size: 13))
+                            .font(DesignTokens.bodyMedium(13))
                             .foregroundColor(DesignTokens.xoGold)
                         Text("You have \(ReefEnergyManager.shared.currentEnergy) energy")
-                            .font(.custom("JetBrainsMono-Regular", size: 10))
+                            .font(DesignTokens.mono(10))
                             .foregroundColor(.white.opacity(0.3))
                     }
                 }
@@ -210,11 +210,11 @@ struct MusicCatchFlow: View {
                 // Song info
                 VStack(spacing: 4) {
                     Text(song.title)
-                        .font(.custom("SpaceGrotesk-Bold", size: 18))
+                        .font(DesignTokens.heading(18))
                         .foregroundColor(.white)
                         .lineLimit(1)
                     Text(song.artist)
-                        .font(.custom("Inter-Regular", size: 14))
+                        .font(DesignTokens.body(14))
                         .foregroundColor(.white.opacity(0.5))
                         .lineLimit(1)
                 }
@@ -236,12 +236,12 @@ struct MusicCatchFlow: View {
                 // Hash hex preview (scrolling characters)
                 if let seed = hashSeed {
                     Text(String(seed.hashHex.prefix(12)) + "...")
-                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(DesignTokens.reefJade.opacity(0.7))
                 }
 
                 Text("HASHING")
-                    .font(.custom("SpaceGrotesk-Bold", size: 14))
+                    .font(DesignTokens.heading(14))
                     .tracking(3)
                     .foregroundColor(.white.opacity(0.6))
                     .offset(y: 30)
@@ -322,7 +322,7 @@ struct MusicCatchFlow: View {
                 // Add to Reef button
                 Button(action: addToReef) {
                     Text("ADD TO REEF")
-                        .font(.custom("SpaceGrotesk-Bold", size: 16))
+                        .font(DesignTokens.heading(16))
                         .tracking(2)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -337,7 +337,7 @@ struct MusicCatchFlow: View {
                 Button("Release") {
                     dismiss()
                 }
-                .font(.custom("Inter-Regular", size: 14))
+                .font(DesignTokens.body(14))
                 .foregroundColor(.white.opacity(0.3))
                 .padding(.bottom, 16)
             }

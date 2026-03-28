@@ -30,17 +30,17 @@ struct SpecimenParamPanel: View {
                         .frame(width: 8, height: 8)
 
                     Text(spec.creatureName)
-                        .font(.custom("SpaceGrotesk-Bold", size: 15))
+                        .font(DesignTokens.heading(15))
                         .foregroundColor(.white)
 
                     Text(categoryLabel(spec.category).uppercased())
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .tracking(1)
                         .foregroundColor(catColor(spec.category).opacity(0.6))
 
                     // Level badge
                     Text("Lv.\(spec.level)")
-                        .font(.custom("JetBrainsMono-Bold", size: 10))
+                        .font(DesignTokens.monoBold(10))
                         .foregroundColor(spec.level >= 5
                             ? DesignTokens.xoGold
                             : Color.white.opacity(0.4))
@@ -78,7 +78,7 @@ struct SpecimenParamPanel: View {
 
                 // Category role description — one line teaching what this category does
                 Text(categoryDescription(spec.category))
-                    .font(.custom("Inter-Regular", size: 9))
+                    .font(DesignTokens.body(9))
                     .foregroundColor(.white.opacity(0.3))
                     .padding(.horizontal, 16)
                     .padding(.top, 4)
@@ -87,7 +87,7 @@ struct SpecimenParamPanel: View {
                 if let paramName = activeParam,
                    let value = reefStore.specimens[slotIndex]?.parameterState[paramName] {
                     Text("\(paramDisplayName(paramName)): \(String(format: "%.2f", value))")
-                        .font(.custom("JetBrainsMono-Bold", size: 13))
+                        .font(DesignTokens.monoBold(13))
                         .foregroundColor(catColor(spec.category))
                         .padding(.vertical, 4)
                         .transition(.opacity)
@@ -116,9 +116,9 @@ struct SpecimenParamPanel: View {
                             Image(systemName: "bolt.fill")
                                 .font(.system(size: 9))
                             Text("Boost +50 XP")
-                                .font(.custom("Inter-Regular", size: 10))
+                                .font(DesignTokens.body(10))
                             Text("(\(ReefEnergyManager.xpCost)⚡)")
-                                .font(.custom("JetBrainsMono-Regular", size: 9))
+                                .font(DesignTokens.mono(9))
                         }
                         .foregroundColor(ReefEnergyManager.shared.canAfford(ReefEnergyManager.xpCost)
                             ? DesignTokens.xoGold : .white.opacity(0.15))
@@ -136,7 +136,7 @@ struct SpecimenParamPanel: View {
                             Image(systemName: "archivebox")
                                 .font(.system(size: 10))
                             Text("Move to Stasis")
-                                .font(.custom("Inter-Regular", size: 11))
+                                .font(DesignTokens.body(11))
                         }
                         .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                     }
@@ -148,7 +148,7 @@ struct SpecimenParamPanel: View {
                             Image(systemName: "arrow.triangle.2.circlepath")
                                 .font(.system(size: 10))
                             Text("Swap")
-                                .font(.custom("Inter-Regular", size: 11))
+                                .font(DesignTokens.body(11))
                         }
                         .foregroundColor(DesignTokens.sourceColor.opacity(0.5))
                     }
@@ -161,7 +161,7 @@ struct SpecimenParamPanel: View {
                                 Image(systemName: "arrow.triangle.merge")
                                     .font(.system(size: 10))
                                 Text("Fuse")
-                                    .font(.custom("Inter-Regular", size: 11))
+                                    .font(DesignTokens.body(11))
                             }
                             .foregroundColor(DesignTokens.effectColor.opacity(0.5))
                         }
@@ -174,7 +174,7 @@ struct SpecimenParamPanel: View {
                             Image(systemName: "arrow.uturn.backward")
                                 .font(.system(size: 10))
                             Text("Release")
-                                .font(.custom("Inter-Regular", size: 11))
+                                .font(DesignTokens.body(11))
                         }
                         .foregroundColor(DesignTokens.errorRed.opacity(0.5))
                     }
@@ -282,7 +282,7 @@ struct SpecimenParamPanel: View {
     private func sectionHeader(_ title: String) -> some View {
         HStack {
             Text(title)
-                .font(.custom("JetBrainsMono-Regular", size: 9))
+                .font(DesignTokens.mono(9))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
             Rectangle()
@@ -300,7 +300,7 @@ struct SpecimenParamPanel: View {
             // Sonic character from catalog — tells user what this source actually produces
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(.custom("Inter-Regular", size: 9))
+                    .font(DesignTokens.body(9))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
                     .padding(.bottom, 2)
             }
@@ -317,7 +317,7 @@ struct SpecimenParamPanel: View {
             // Processor type + filter behavior hint from catalog
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(.custom("Inter-Regular", size: 9))
+                    .font(DesignTokens.body(9))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
                     .padding(.bottom, 2)
             }
@@ -335,11 +335,11 @@ struct SpecimenParamPanel: View {
             // Modulator character + static target hint
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(.custom("Inter-Regular", size: 9))
+                    .font(DesignTokens.body(9))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
             }
             Text("→ Filter Cutoff")
-                .font(.custom("Inter-Regular", size: 9))
+                .font(DesignTokens.body(9))
                 .foregroundColor(catColor(spec.category).opacity(0.3))
                 .padding(.bottom, 2)
             paramSlider("Rate", paramKey: "obrix_lfo1Rate", range: 0.01...10, unit: "Hz", spec: spec)
@@ -355,7 +355,7 @@ struct SpecimenParamPanel: View {
             // Effect type from catalog — names the effect and what it does to the output
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(.custom("Inter-Regular", size: 9))
+                    .font(DesignTokens.body(9))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
                     .padding(.bottom, 2)
             }
@@ -385,7 +385,7 @@ struct SpecimenParamPanel: View {
         return HStack(spacing: 10) {
             // Label
             Text(label)
-                .font(.custom("Inter-Medium", size: 11))
+                .font(DesignTokens.bodyMedium(11))
                 .foregroundColor(.white.opacity(0.55))
                 .frame(width: 65, alignment: .trailing)
 
@@ -425,7 +425,7 @@ struct SpecimenParamPanel: View {
 
             // Value readout
             Text(formatValue(liveValue, unit: unit, range: range))
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(.white.opacity(activeParam == paramKey ? 0.8 : 0.35))
                 .frame(width: 44, alignment: .trailing)
         }
@@ -528,10 +528,10 @@ struct SwapPickerView: View {
                                   size: 32)
                     VStack(alignment: .leading, spacing: 2) {
                         Text(currentSpecimen.creatureName)
-                            .font(.custom("SpaceGrotesk-Bold", size: 14))
+                            .font(DesignTokens.heading(14))
                             .foregroundColor(.white)
                         Text("Currently in slot \(currentSlot + 1)")
-                            .font(.custom("Inter-Regular", size: 10))
+                            .font(DesignTokens.body(10))
                             .foregroundColor(.white.opacity(0.3))
                     }
                     Spacer()
@@ -545,10 +545,10 @@ struct SwapPickerView: View {
                     VStack(spacing: 8) {
                         Spacer()
                         Text("No specimens in stasis")
-                            .font(.custom("Inter-Regular", size: 13))
+                            .font(DesignTokens.body(13))
                             .foregroundColor(.white.opacity(0.3))
                         Text("Move specimens to stasis from the param panel to swap later")
-                            .font(.custom("Inter-Regular", size: 10))
+                            .font(DesignTokens.body(10))
                             .foregroundColor(.white.opacity(0.2))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 40)
@@ -563,14 +563,14 @@ struct SwapPickerView: View {
                                               size: 28)
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(specimen.creatureName)
-                                        .font(.custom("SpaceGrotesk-Bold", size: 13))
+                                        .font(DesignTokens.heading(13))
                                         .foregroundColor(.white)
                                     HStack(spacing: 6) {
                                         Text(specimen.rarity.rawValue.uppercased())
-                                            .font(.custom("JetBrainsMono-Regular", size: 8))
+                                            .font(DesignTokens.mono(8))
                                             .foregroundColor(DesignTokens.xoGold)
                                         Text("Lv.\(specimen.level)")
-                                            .font(.custom("JetBrainsMono-Regular", size: 8))
+                                            .font(DesignTokens.mono(8))
                                             .foregroundColor(.white.opacity(0.4))
                                     }
                                 }
@@ -620,14 +620,14 @@ struct FusionPickerView: View {
                 HStack(spacing: 8) {
                     SpecimenSprite(subtype: sourceSpecimen.subtype, category: sourceSpecimen.category, size: 32)
                     Text(sourceSpecimen.creatureName)
-                        .font(.custom("SpaceGrotesk-Bold", size: 14))
+                        .font(DesignTokens.heading(14))
                         .foregroundColor(.white)
                     Text("Lv.\(sourceSpecimen.level)")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.4))
                     Spacer()
                     Text("× ?")
-                        .font(.custom("SpaceGrotesk-Bold", size: 16))
+                        .font(DesignTokens.heading(16))
                         .foregroundColor(DesignTokens.effectColor.opacity(0.5))
                 }
                 .padding(16)
@@ -643,10 +643,10 @@ struct FusionPickerView: View {
                     VStack(spacing: 8) {
                         Spacer()
                         Text("No compatible specimens")
-                            .font(.custom("Inter-Regular", size: 13))
+                            .font(DesignTokens.body(13))
                             .foregroundColor(.white.opacity(0.3))
                         Text("Need another \(sourceSpecimen.category.rawValue) at Lv.3+")
-                            .font(.custom("Inter-Regular", size: 10))
+                            .font(DesignTokens.body(10))
                             .foregroundColor(.white.opacity(0.2))
                         Spacer()
                     }
@@ -660,10 +660,10 @@ struct FusionPickerView: View {
                                 SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 28)
                                 VStack(alignment: .leading) {
                                     Text(spec.creatureName)
-                                        .font(.custom("SpaceGrotesk-Bold", size: 13))
+                                        .font(DesignTokens.heading(13))
                                         .foregroundColor(.white)
                                     Text("Lv.\(spec.level) · \(spec.rarity.rawValue)")
-                                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                                        .font(DesignTokens.mono(9))
                                         .foregroundColor(.white.opacity(0.4))
                                 }
                                 Spacer()

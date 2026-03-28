@@ -72,10 +72,10 @@ struct CatchTab: View {
                 Image(systemName: "sparkle")
                     .foregroundColor(DesignTokens.xoGold)
                 Text("Look for \(name)")
-                    .font(.custom("Inter-Medium", size: 12))
+                    .font(DesignTokens.bodyMedium(12))
                     .foregroundColor(DesignTokens.xoGold)
                 Text("— \(categoryLabel(category))")
-                    .font(.custom("Inter-Regular", size: 11))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(.white.opacity(0.4))
                 Spacer()
             }
@@ -100,7 +100,7 @@ struct CatchTab: View {
                 .fill(biomeColor(for: biomeDetector.currentBiome))
                 .frame(width: 8, height: 8)
             Text(biomeDetector.currentBiome.displayName.uppercased())
-                .font(.custom("SpaceGrotesk-Bold", size: 11))
+                .font(DesignTokens.heading(11))
                 .tracking(1)
                 .foregroundColor(.white)
             Spacer()
@@ -108,7 +108,7 @@ struct CatchTab: View {
                 Button("Enable Location") {
                     biomeDetector.requestAuthorization()
                 }
-                .font(.custom("Inter-Medium", size: 11))
+                .font(DesignTokens.bodyMedium(11))
                 .foregroundColor(DesignTokens.reefJade)
             }
         }
@@ -124,10 +124,10 @@ struct CatchTab: View {
                         .font(.system(size: 36))
                         .foregroundColor(.white.opacity(0.3))
                     Text("Location access needed")
-                        .font(.custom("SpaceGrotesk-Bold", size: 16))
+                        .font(DesignTokens.heading(16))
                         .foregroundColor(.white)
                     Text("OBRIX Pocket uses your location to spawn specimens nearby.")
-                        .font(.custom("Inter-Regular", size: 12))
+                        .font(DesignTokens.body(12))
                         .foregroundColor(.white.opacity(0.5))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 40)
@@ -135,7 +135,7 @@ struct CatchTab: View {
                     Button("Enable Location") {
                         biomeDetector.requestAuthorization()
                     }
-                    .font(.custom("SpaceGrotesk-Bold", size: 14))
+                    .font(DesignTokens.heading(14))
                     .foregroundColor(DesignTokens.reefJade)
 
                     // Also offer Reef Proximity as alternative
@@ -143,7 +143,7 @@ struct CatchTab: View {
                         let home = biomeDetector.lastLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                         biomeDetector.enableReefProximity(home: home)
                     }
-                    .font(.custom("Inter-Regular", size: 12))
+                    .font(DesignTokens.body(12))
                     .foregroundColor(.white.opacity(0.4))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -191,7 +191,7 @@ struct CatchTab: View {
                     }
                 }
             ))
-            .font(.custom("Inter-Regular", size: 12))
+            .font(DesignTokens.body(12))
             .foregroundColor(DesignTokens.mutedText)
             .tint(DesignTokens.reefJade)
 
@@ -211,7 +211,7 @@ struct CatchTab: View {
                         Image(systemName: "arrow.clockwise")
                             .font(.system(size: 9))
                         Text("Reroll (\(ReefEnergyManager.rerollCost)⚡)")
-                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .font(DesignTokens.mono(9))
                     }
                     .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                 }
@@ -543,7 +543,7 @@ struct CatchScreen: View {
                 .font(.system(size: 8))
                 .foregroundColor(isNight ? Color(hex: "A8D8EA").opacity(0.4) : DesignTokens.xoGold.opacity(0.4))
             Text(specimen.biome.displayName)
-                .font(.custom("JetBrainsMono-Regular", size: 8))
+                .font(DesignTokens.mono(8))
                 .foregroundColor(.white.opacity(0.2))
         }
     }
@@ -631,10 +631,10 @@ struct CatchScreen: View {
             .onAppear { specimenBob = true }
             let cID = SpecimenCatalog.catalogSubtypeID(from: specimen.subtype)
             Text(SpecimenCatalog.entry(for: cID)?.creatureName ?? specimen.subtype)
-                .font(.custom("SpaceGrotesk-Bold", size: 18))
+                .font(DesignTokens.heading(18))
                 .foregroundColor(.white)
             Text(specimen.rarity.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(DesignTokens.xoGold)
             // Ambient context — biome indicator with storm icon when relevant
             HStack(spacing: 4) {
@@ -644,18 +644,18 @@ struct CatchScreen: View {
                         .foregroundColor(.white.opacity(0.25))
                 }
                 Text(specimen.biome.displayName)
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.25))
             }
             if phase == .intro {
                 if attemptNumber > 1 {
                     Text("Attempt \(attemptNumber)")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.3))
                 }
                 if let entry = SpecimenCatalog.entry(for: cID) {
                     Text(entry.personalityLine)
-                        .font(.custom("Inter-Regular", size: 11))
+                        .font(DesignTokens.body(11))
                         .foregroundColor(.white.opacity(0.4))
                         .italic()
                         .multilineTextAlignment(.center)
@@ -668,10 +668,10 @@ struct CatchScreen: View {
     private var statusText: some View {
         VStack(spacing: 4) {
             Text(headline)
-                .font(.custom("SpaceGrotesk-Bold", size: 16))
+                .font(DesignTokens.heading(16))
                 .foregroundColor(.white)
             Text(subtext)
-                .font(.custom("Inter-Regular", size: 12))
+                .font(DesignTokens.body(12))
                 .foregroundColor(.white.opacity(0.5))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
@@ -711,7 +711,7 @@ struct CatchScreen: View {
             }
             // Score text
             Text("\(roundsWon) / \(requiredWins) rounds")
-                .font(.custom("JetBrainsMono-Regular", size: 11))
+                .font(DesignTokens.mono(11))
                 .foregroundColor(.white.opacity(0.4))
         }
     }
@@ -768,17 +768,17 @@ struct CatchScreen: View {
         case .intro:
             Button(action: startChallenge) {
                 Text("BEGIN")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2)
+                    .font(DesignTokens.heading(16)).tracking(2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity).frame(height: 50)
                     .background(RoundedRectangle(cornerRadius: 25).fill(catColor))
             }.padding(.horizontal, 40)
         case .watching:
-            Text("WATCH...").font(.custom("SpaceGrotesk-Bold", size: 14)).tracking(2).foregroundColor(catColor.opacity(0.6))
+            Text("WATCH...").font(DesignTokens.heading(14)).tracking(2).foregroundColor(catColor.opacity(0.6))
         case .playing:
             playingStatusLine
         case .success, .caught:
-            Text("CAUGHT!").font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2).foregroundColor(DesignTokens.reefJade)
+            Text("CAUGHT!").font(DesignTokens.heading(16)).tracking(2).foregroundColor(DesignTokens.reefJade)
         case .escaped:
             VStack(spacing: 8) {
                 Button(action: {
@@ -801,7 +801,7 @@ struct CatchScreen: View {
                     phase = .intro
                 }) {
                     Text("TRY AGAIN")
-                        .font(.custom("SpaceGrotesk-Bold", size: 16)).tracking(2)
+                        .font(DesignTokens.heading(16)).tracking(2)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity).frame(height: 50)
                         .background(RoundedRectangle(cornerRadius: 25).fill(catColor.opacity(0.5)))
@@ -813,7 +813,7 @@ struct CatchScreen: View {
                     dismiss()
                 }) {
                     Text("Let It Go")
-                        .font(.custom("Inter-Regular", size: 13))
+                        .font(DesignTokens.body(13))
                         .foregroundColor(.white.opacity(0.3))
                 }
             }
@@ -828,15 +828,15 @@ struct CatchScreen: View {
         switch gameType {
         case .patternMatch, .echoMemory:
             Text("Round \(roundsPlayed + 1) of \(totalRounds)  ·  \(playerInput.count)/\(notesPerRound) notes")
-                .font(.custom("JetBrainsMono-Regular", size: 12)).foregroundColor(.white.opacity(0.5))
+                .font(DesignTokens.mono(12)).foregroundColor(.white.opacity(0.5))
         case .frequencySweep:
             Text("Round \(roundsPlayed + 1) of \(totalRounds)  ·  drag to match")
-                .font(.custom("JetBrainsMono-Regular", size: 12)).foregroundColor(.white.opacity(0.5))
+                .font(DesignTokens.mono(12)).foregroundColor(.white.opacity(0.5))
         case .rhythmTap:
             let hits = rhythmHits.compactMap { $0 }.filter { $0 }.count
             let scored = rhythmHits.compactMap { $0 }.count
             Text("Round \(roundsPlayed + 1) of \(totalRounds)  ·  \(hits)/\(scored) on beat")
-                .font(.custom("JetBrainsMono-Regular", size: 12)).foregroundColor(.white.opacity(0.5))
+                .font(DesignTokens.mono(12)).foregroundColor(.white.opacity(0.5))
         }
     }
 
@@ -847,7 +847,7 @@ struct CatchScreen: View {
     private var frequencySweepView: some View {
         VStack(spacing: 16) {
             Text("FREQUENCY SWEEP")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .tracking(1.5)
                 .foregroundColor(catColor.opacity(0.6))
 
@@ -911,7 +911,7 @@ struct CatchScreen: View {
             .padding(.horizontal, 40)
 
             Text(sweepMatched ? "MATCHED!" : "Find the frequency...")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(sweepMatched ? DesignTokens.reefJade : .white.opacity(0.4))
                 .animation(.easeInOut(duration: 0.15), value: sweepMatched)
         }
@@ -923,7 +923,7 @@ struct CatchScreen: View {
     private var rhythmTapView: some View {
         VStack(spacing: 16) {
             Text("RHYTHM TAP")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .tracking(1.5)
                 .foregroundColor(catColor.opacity(0.6))
 
@@ -954,14 +954,14 @@ struct CatchScreen: View {
                         .animation(.spring(response: 0.15, dampingFraction: 0.3), value: rhythmPulseScale)
 
                     Text("TAP")
-                        .font(.custom("SpaceGrotesk-Bold", size: 16))
+                        .font(DesignTokens.heading(16))
                         .foregroundColor(catColor)
                 }
             }
             .disabled(phase != .playing)
 
             Text("\(Int(rhythmBPM)) BPM")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(.white.opacity(0.3))
         }
     }

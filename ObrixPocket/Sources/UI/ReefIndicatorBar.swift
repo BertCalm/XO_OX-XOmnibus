@@ -27,7 +27,7 @@ struct ReefIndicatorBar: View {
                 ForEach(challengeManager.challenges) { challenge in
                     VStack(spacing: 2) {
                         Text(challenge.description)
-                            .font(.custom("Inter-Regular", size: 8))
+                            .font(DesignTokens.body(8))
                             .foregroundColor(challenge.isComplete ? DesignTokens.reefJade : .white.opacity(0.4))
                             .strikethrough(challenge.isComplete)
                             .lineLimit(1)
@@ -55,10 +55,10 @@ struct ReefIndicatorBar: View {
                     .font(.system(size: 9))
                     .foregroundColor(DesignTokens.xoGold)
                 Text("\(energyManager.currentEnergy)")
-                    .font(.custom("JetBrainsMono-Bold", size: 11))
+                    .font(DesignTokens.monoBold(11))
                     .foregroundColor(DesignTokens.xoGold)
                 Text("/ \(ReefEnergyManager.maxEnergy)")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.2))
                 // Daily earn progress pill — shows how close to the 50/day cap
                 if energyManager.dailyEnergyEarned < ReefEnergyManager.dailyEarnCap {
@@ -88,7 +88,7 @@ struct ReefIndicatorBar: View {
                     .foregroundColor(streakManager.currentStreak >= 7 ? DesignTokens.xoGold : DesignTokens.streakOrange.opacity(0.6))
 
                 Text("\(streakManager.currentStreak)")
-                    .font(.custom("JetBrainsMono-Bold", size: 12))
+                    .font(DesignTokens.monoBold(12))
                     .foregroundColor(.white.opacity(0.7))
 
                 if !streakManager.todayRewardClaimed {
@@ -105,7 +105,7 @@ struct ReefIndicatorBar: View {
                         }
                     }) {
                         Text("CLAIM")
-                            .font(.custom("JetBrainsMono-Bold", size: 8))
+                            .font(DesignTokens.monoBold(8))
                             .foregroundColor(.white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 3)
@@ -116,7 +116,7 @@ struct ReefIndicatorBar: View {
                 Spacer()
 
                 Text("next milestone: day \(streakManager.nextMilestone)")
-                    .font(.custom("JetBrainsMono-Regular", size: 8))
+                    .font(DesignTokens.mono(8))
                     .foregroundColor(.white.opacity(0.2))
             }
             .padding(.horizontal, 20)

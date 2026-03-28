@@ -25,6 +25,11 @@ struct CollectionTab: View {
     @StateObject private var tradePost = TradePostManager()
     @ObservedObject private var masteryManager = MasteryManager.shared
 
+    // Cached discovered subtypes — refreshed on .onAppear only, not every render
+    @State private var discoveredSubtypes: Set<String> = []
+    // Cached stasis count — refreshed on .onAppear only, not every render
+    @State private var stasisCount: Int = 0
+
     // .xoreef export
     @State private var exportURL: URL?
     @State private var showExportShare = false
@@ -39,19 +44,6 @@ struct CollectionTab: View {
     @State private var compareSpecimenA: Specimen?
     @State private var compareSpecimenB: Specimen?
     @State private var showCompare = false
-
-    // Compute the set of discovered subtype IDs once per render.
-    // A type is "discovered" if found in the reef OR in the full collection.
-    private var discoveredSubtypes: Set<String> {
-        // Reef specimens (currently equipped)
-        let reefSubtypes = reefStore.specimens
-            .compactMap { $0?.subtype }
-
-        // All specimens from persistent collection (reef + stasis + collection)
-        let allSubtypes = reefStore.loadAllSpecimens().map { $0.subtype }
-
-        return Set(reefSubtypes + allSubtypes)
-    }
 
     private var discoveredCoreCount: Int {
         let subtypes = discoveredSubtypes
@@ -86,6 +78,22 @@ struct CollectionTab: View {
         }
     }
 
+    /// Refresh cached DB-backed state. Called on .onAppear — never inside body/computed properties.
+    private func refreshDiscoveredSubtypes() {
+        // Discovered subtypes (reef + full collection)
+        var discovered = Set<String>()
+        for spec in reefStore.specimens.compactMap({ $0 }) {
+            discovered.insert(spec.subtype)
+        }
+        for spec in reefStore.loadAllSpecimens() {
+            discovered.insert(spec.subtype)
+        }
+        discoveredSubtypes = discovered
+
+        // Stasis count
+        stasisCount = reefStore.loadStasisSpecimens().count
+    }
+
     // Split core entries by category (only core specimens for normal sections)
     private var coreSources: [CatalogEntry] {
         SpecimenCatalog.sources.filter { !$0.isDeepSpecimen }
@@ -117,7 +125,7 @@ struct CollectionTab: View {
                         // Quick stats
                         HStack(spacing: 16) {
                             statBubble(value: "\(reefStore.specimens.compactMap { $0 }.count)", label: "In Reef")
-                            statBubble(value: "\(reefStore.loadStasisSpecimens().count)", label: "In Stasis")
+                            statBubble(value: "\(stasisCount)", label: "In Stasis")
                             statBubble(value: "\(reefStore.totalDiveDepth)m", label: "Depth")
                             statBubble(value: "\(milestoneManager.unlockedCount)", label: "Milestones")
                         }
@@ -131,7 +139,7 @@ struct CollectionTab: View {
 
                         // MARK: Core Sections
                         Text("CORE SPECIMENS")
-                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .font(DesignTokens.mono(9))
                             .foregroundColor(.white.opacity(0.35))
                             .tracking(1.5)
 
@@ -216,6 +224,7 @@ struct CollectionTab: View {
                     .padding(.bottom, 32)
                 }
                 .onAppear {
+                    refreshDiscoveredSubtypes()
                     collectionTracker.refresh(reefStore: reefStore)
                     masteryManager.updateFromReef(reefStore: reefStore)
                 }
@@ -314,7 +323,7 @@ struct CollectionTab: View {
                     }
                 }) {
                     Text(compareMode ? "Cancel" : "Compare")
-                        .font(.custom("Inter-Regular", size: 11))
+                        .font(DesignTokens.body(11))
                         .foregroundColor(compareMode ? DesignTokens.errorRed : DesignTokens.reefJade.opacity(0.6))
                 }
                 .accessibilityLabel(compareMode ? "Cancel compare" : "Compare specimens")
@@ -323,19 +332,19 @@ struct CollectionTab: View {
                 // Core count
                 HStack(spacing: 4) {
                     Text("Core")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.4))
                     Text("\(discoveredCoreCount) / 16")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(DesignTokens.reefJade)
                 }
                 // Deep count
                 HStack(spacing: 4) {
                     Text("Deep")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.4))
                     Text("\(discoveredDeepCount) / 8")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .foregroundColor(DesignTokens.deepAccent)
                 }
                 Spacer()
@@ -356,7 +365,7 @@ struct CollectionTab: View {
                         .foregroundColor(DesignTokens.errorRed)
                         .font(.system(size: 10))
                     Text("FAVORITES")
-                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .font(DesignTokens.mono(10))
                         .tracking(1.5)
                         .foregroundColor(DesignTokens.errorRed)
                 }
@@ -372,7 +381,7 @@ struct CollectionTab: View {
                                 VStack(spacing: 4) {
                                     SpecimenSprite(subtype: specimen.subtype, category: specimen.category, size: 40)
                                     Text(specimen.creatureName)
-                                        .font(.custom("Inter-Regular", size: 8))
+                                        .font(DesignTokens.body(8))
                                         .foregroundColor(.white.opacity(0.6))
                                         .lineLimit(1)
                                 }
@@ -397,10 +406,10 @@ struct CollectionTab: View {
                         .font(.system(size: 12))
                         .foregroundColor(DesignTokens.xoGold)
                     Text(masteryManager.masteryTitle)
-                        .font(.custom("SpaceGrotesk-Bold", size: 14))
+                        .font(DesignTokens.heading(14))
                         .foregroundColor(DesignTokens.xoGold)
                     Text("Lv.\(masteryManager.masteryLevel)")
-                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(.white.opacity(0.5))
                 }
 
@@ -422,7 +431,7 @@ struct CollectionTab: View {
             let maxedCount = reefStore.specimens.compactMap { $0 }.filter { $0.level >= 10 }.count
             if maxedCount > 0 {
                 Text("Prestige: \(maxedCount)/16 specimens at Lv.10")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.25))
                     .padding(.horizontal, 20)
             }
@@ -434,7 +443,7 @@ struct CollectionTab: View {
     private var collectionProgressSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("COLLECTION PROGRESS")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .tracking(1.5)
                 .foregroundColor(DesignTokens.xoGold)
                 .padding(.horizontal, 4)
@@ -451,10 +460,10 @@ struct CollectionTab: View {
 
                     VStack(alignment: .leading, spacing: 1) {
                         Text(milestone.title)
-                            .font(.custom("SpaceGrotesk-Bold", size: 12))
+                            .font(DesignTokens.heading(12))
                             .foregroundColor(claimed ? .white.opacity(0.4) : .white.opacity(0.7))
                         Text("\(prog)/\(milestone.requiredCount) — \(milestone.reward)")
-                            .font(.custom("Inter-Regular", size: 9))
+                            .font(DesignTokens.body(9))
                             .foregroundColor(.white.opacity(0.25))
                     }
 
@@ -464,7 +473,7 @@ struct CollectionTab: View {
                         Button("Claim") {
                             collectionTracker.claim(milestone)
                         }
-                        .font(.custom("JetBrainsMono-Bold", size: 9))
+                        .font(DesignTokens.monoBold(9))
                         .foregroundColor(DesignTokens.xoGold)
                     }
                 }
@@ -480,12 +489,12 @@ struct CollectionTab: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("MILESTONES")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .tracking(1.5)
                     .foregroundColor(DesignTokens.xoGold)
                 Spacer()
                 Text("\(milestoneManager.unlockedCount)/\(milestoneManager.totalCount)")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .foregroundColor(.white.opacity(0.3))
             }
             .padding(.horizontal, 4)
@@ -499,10 +508,10 @@ struct CollectionTab: View {
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text(milestone.title)
-                            .font(.custom("SpaceGrotesk-Bold", size: 12))
+                            .font(DesignTokens.heading(12))
                             .foregroundColor(milestone.unlocked ? .white : .white.opacity(0.5))
                         Text(milestone.description)
-                            .font(.custom("Inter-Regular", size: 9))
+                            .font(DesignTokens.body(9))
                             .foregroundColor(.white.opacity(0.3))
                     }
 
@@ -513,7 +522,7 @@ struct CollectionTab: View {
                             .foregroundColor(DesignTokens.reefJade)
                     } else {
                         Text("\(milestone.progress)/\(milestone.requirement)")
-                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .font(DesignTokens.mono(9))
                             .foregroundColor(.white.opacity(0.3))
                     }
                 }
@@ -532,12 +541,12 @@ struct CollectionTab: View {
                     .foregroundColor(DesignTokens.reefJade)
                     .font(.system(size: 10))
                 Text("TRADING POST")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .tracking(1.5)
                     .foregroundColor(DesignTokens.reefJade)
                 Spacer()
                 Text("\(tradePost.offers.count) offers")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.3))
             }
             .padding(.horizontal, 20)
@@ -552,14 +561,14 @@ struct CollectionTab: View {
                     // What they want
                     VStack(spacing: 2) {
                         Text("WANT")
-                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .font(DesignTokens.mono(7))
                             .foregroundColor(.white.opacity(0.2))
                         SpecimenSprite(subtype: offer.requestedSubtype, category: requestedCategory, size: 24)
                         Text(requestedName)
-                            .font(.custom("Inter-Regular", size: 8))
+                            .font(DesignTokens.body(8))
                             .foregroundColor(.white.opacity(0.5))
                         Text("Lv.\(offer.requestedMinLevel)+")
-                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .font(DesignTokens.mono(7))
                             .foregroundColor(.white.opacity(0.3))
                     }
                     .frame(maxWidth: .infinity)
@@ -571,14 +580,14 @@ struct CollectionTab: View {
                     // What they offer
                     VStack(spacing: 2) {
                         Text("GIVE")
-                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .font(DesignTokens.mono(7))
                             .foregroundColor(.white.opacity(0.2))
                         SpecimenSprite(subtype: offer.offeredSubtype, category: offeredCategory, size: 24)
                         Text(offeredName)
-                            .font(.custom("Inter-Regular", size: 8))
+                            .font(DesignTokens.body(8))
                             .foregroundColor(.white.opacity(0.5))
                         Text("\(offer.offeredRarity.rawValue) Lv.\(offer.offeredLevel)")
-                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .font(DesignTokens.mono(7))
                             .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                     }
                     .frame(maxWidth: .infinity)
@@ -596,7 +605,7 @@ struct CollectionTab: View {
 
             if tradePost.offers.isEmpty {
                 Text("No active offers — check back tomorrow.")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.2))
                     .padding(.horizontal, 20)
                     .padding(.vertical, 4)
@@ -611,7 +620,7 @@ struct CollectionTab: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("SETTINGS")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .tracking(1.5)
                     .foregroundColor(.white.opacity(0.2))
                 Spacer()
@@ -631,10 +640,10 @@ struct CollectionTab: View {
                     .frame(width: 24)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Notifications")
-                        .font(.custom("Inter-Medium", size: 13))
+                        .font(DesignTokens.bodyMedium(13))
                         .foregroundColor(.white.opacity(0.6))
                     Text("Daily reminders and energy alerts")
-                        .font(.custom("Inter-Regular", size: 9))
+                        .font(DesignTokens.body(9))
                         .foregroundColor(.white.opacity(0.25))
                 }
                 Spacer()
@@ -672,10 +681,10 @@ struct CollectionTab: View {
                         .foregroundColor(oscSender.isConnected ? DesignTokens.reefJade : .white.opacity(0.3))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("OSC Output")
-                            .font(.custom("Inter-Medium", size: 13))
+                            .font(DesignTokens.bodyMedium(13))
                             .foregroundColor(.white.opacity(0.6))
                         Text(oscSender.isConnected ? "Connected to \(oscSender.targetHost)" : "Not connected")
-                            .font(.custom("Inter-Regular", size: 9))
+                            .font(DesignTokens.body(9))
                             .foregroundColor(.white.opacity(0.25))
                     }
                     Spacer()
@@ -696,10 +705,10 @@ struct CollectionTab: View {
                         .foregroundColor(DesignTokens.reefJade.opacity(0.6))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Export Reef (.xoreef)")
-                            .font(.custom("Inter-Medium", size: 13))
+                            .font(DesignTokens.bodyMedium(13))
                             .foregroundColor(DesignTokens.reefJade.opacity(0.7))
                         Text("Share or import to desktop XOceanus")
-                            .font(.custom("Inter-Regular", size: 9))
+                            .font(DesignTokens.body(9))
                             .foregroundColor(.white.opacity(0.25))
                     }
                     Spacer()
@@ -719,10 +728,10 @@ struct CollectionTab: View {
                         .foregroundColor(DesignTokens.errorRed.opacity(0.5))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Reset All Data")
-                            .font(.custom("Inter-Medium", size: 13))
+                            .font(DesignTokens.bodyMedium(13))
                             .foregroundColor(DesignTokens.errorRed.opacity(0.6))
                         Text("Delete all specimens, wiring, and progress")
-                            .font(.custom("Inter-Regular", size: 9))
+                            .font(DesignTokens.body(9))
                             .foregroundColor(.white.opacity(0.2))
                     }
                     Spacer()
@@ -733,13 +742,13 @@ struct CollectionTab: View {
 
             VStack(spacing: 4) {
                 Text("OBRIX Pocket")
-                    .font(.custom("SpaceGrotesk-Bold", size: 12))
+                    .font(DesignTokens.heading(12))
                     .foregroundColor(.white.opacity(0.3))
                 Text("by XO_OX Designs")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.2))
                 Text("v1.0.0 · Build 75 · The reef remembers.")
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(.white.opacity(0.15))
                     .italic()
             }
@@ -757,10 +766,10 @@ struct CollectionTab: View {
                 .frame(width: 24)
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.custom("Inter-Medium", size: 13))
+                    .font(DesignTokens.bodyMedium(13))
                     .foregroundColor(.white.opacity(0.6))
                 Text(detail)
-                    .font(.custom("Inter-Regular", size: 9))
+                    .font(DesignTokens.body(9))
                     .foregroundColor(.white.opacity(0.25))
             }
             Spacer()
@@ -772,10 +781,10 @@ struct CollectionTab: View {
     private func statBubble(value: String, label: String) -> some View {
         VStack(spacing: 2) {
             Text(value)
-                .font(.custom("JetBrainsMono-Bold", size: 16))
+                .font(DesignTokens.monoBold(16))
                 .foregroundColor(.white)
             Text(label)
-                .font(.custom("Inter-Regular", size: 8))
+                .font(DesignTokens.body(8))
                 .foregroundColor(.white.opacity(0.3))
         }
         .frame(maxWidth: .infinity)
@@ -798,12 +807,12 @@ struct CollectionTab: View {
                         .foregroundColor(DesignTokens.deepAccent)
 
                     Text("DEEP SPECIMENS")
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                         .foregroundColor(DesignTokens.deepAccent)
                         .tracking(1.5)
 
                     Text("(\(discoveredDeepCount)/8 unlocked)")
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                         .foregroundColor(.white.opacity(0.3))
                         .tracking(0.8)
 
@@ -845,7 +854,7 @@ private struct CollectionSection: View {
         VStack(alignment: .leading, spacing: 10) {
             // Section header
             Text(title.uppercased())
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(categoryColor)
                 .tracking(1.2)
 
@@ -929,7 +938,7 @@ private struct DeepSpecimenCard: View {
             if discovered {
                 SpecimenSprite(subtype: entry.subtypeID, category: entry.category, size: 48)
                 Text(entry.creatureName)
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.7))
                     .lineLimit(1)
             } else {
@@ -943,7 +952,7 @@ private struct DeepSpecimenCard: View {
                         .foregroundColor(DesignTokens.deepAccent.opacity(0.5))
                 }
                 Text(entry.unlockCondition)
-                    .font(.custom("Inter-Regular", size: 8))
+                    .font(DesignTokens.body(8))
                     .foregroundColor(DesignTokens.deepAccent.opacity(0.55))
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
@@ -974,19 +983,19 @@ struct CollectionCard: View {
                         .fill(Color.white.opacity(0.04))
                         .frame(width: 48, height: 48)
                     Text("?")
-                        .font(.custom("SpaceGrotesk-Bold", size: 20))
+                        .font(DesignTokens.heading(20))
                         .foregroundColor(.white.opacity(0.15))
                 }
             }
 
             Text(discovered ? entry.creatureName : "???")
-                .font(.custom("Inter-Regular", size: 10))
+                .font(DesignTokens.body(10))
                 .foregroundColor(discovered ? .white.opacity(0.7) : .white.opacity(0.2))
                 .lineLimit(1)
 
             if discovered {
                 Text(entry.personalityLine)
-                    .font(.custom("Inter-Regular", size: 8))
+                    .font(DesignTokens.body(8))
                     .foregroundColor(.white.opacity(0.25))
                     .italic()
                     .lineLimit(1)

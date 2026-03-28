@@ -33,7 +33,7 @@ struct ReefKeyboardHeader: View {
             let slot = activeSourceSlot ?? firstSourceSlot
             let sourceName = slot.flatMap { reefStore.specimens[$0]?.creatureName } ?? "—"
             Text("Playing: \(sourceName)")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(DesignTokens.reefJade.opacity(0.7))
 
             Spacer()
@@ -52,7 +52,7 @@ struct ReefKeyboardHeader: View {
                 }
             } label: {
                 Text(keyboardScale.rawValue)
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(DesignTokens.reefJade.opacity(0.6))
             }
 
@@ -70,27 +70,27 @@ struct ReefKeyboardHeader: View {
                 }
             } label: {
                 Text(keyboardMode.rawValue)
-                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .font(DesignTokens.mono(9))
                     .foregroundColor(DesignTokens.reefJade.opacity(0.6))
             }
 
             // Octave controls
             Button(action: { if octaveOffset > -2 { octaveOffset -= 1 } }) {
                 Text("−")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .foregroundColor(octaveOffset > -2 ? .white : .white.opacity(0.2))
                     .frame(width: 28, height: 28)
             }
             .accessibilityLabel("Lower octave")
 
             Text("C\(4 + octaveOffset)")
-                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .font(DesignTokens.mono(10))
                 .foregroundColor(.white.opacity(0.5))
                 .frame(width: 24)
 
             Button(action: { if octaveOffset < 2 { octaveOffset += 1 } }) {
                 Text("+")
-                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .font(DesignTokens.heading(16))
                     .foregroundColor(octaveOffset < 2 ? .white : .white.opacity(0.2))
                     .frame(width: 28, height: 28)
             }
@@ -131,7 +131,7 @@ struct ReefKeyboardHeader: View {
             if motionController.isEnabled {
                 HStack(spacing: 4) {
                     Text("TILT")
-                        .font(.custom("JetBrainsMono-Regular", size: 8))
+                        .font(DesignTokens.mono(8))
                         .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                     Circle()
                         .fill(DesignTokens.reefJade)
@@ -148,11 +148,11 @@ struct ReefKeyboardHeader: View {
                         .font(.system(size: 9))
                         .foregroundColor(DesignTokens.reefJade.opacity(0.5))
                     Text("MIDI")
-                        .font(.custom("JetBrainsMono-Regular", size: 8))
+                        .font(DesignTokens.mono(8))
                         .foregroundColor(.white.opacity(0.3))
                     if let note = midiInput.lastNoteReceived {
                         Text("N\(note)")
-                            .font(.custom("JetBrainsMono-Regular", size: 8))
+                            .font(DesignTokens.mono(8))
                             .foregroundColor(DesignTokens.reefJade.opacity(0.4))
                     }
                 }
@@ -173,7 +173,7 @@ struct ReefKeyboardHeader: View {
                 }
 
                 Text("\(Int(metronome.bpm))")
-                    .font(.custom("JetBrainsMono-Bold", size: 12))
+                    .font(DesignTokens.monoBold(12))
                     .foregroundColor(DesignTokens.xoGold)
                     .frame(width: 32)
 

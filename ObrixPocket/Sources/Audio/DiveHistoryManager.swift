@@ -71,15 +71,15 @@ struct DiveHistoryList: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Score: \(record.score)")
-                            .font(.custom("JetBrainsMono-Bold", size: 14))
+                            .font(DesignTokens.monoBold(14))
                             .foregroundColor(.white)
                         Text("\(record.depthString) · \(record.deepestZone)")
-                            .font(.custom("Inter-Regular", size: 11))
+                            .font(DesignTokens.body(11))
                             .foregroundColor(.white.opacity(0.4))
                     }
                     Spacer()
                     Text(record.date, style: .date)
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                         .foregroundColor(.white.opacity(0.3))
                 }
             }

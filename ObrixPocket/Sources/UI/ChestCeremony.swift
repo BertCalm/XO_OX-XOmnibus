@@ -180,7 +180,7 @@ struct ChestCeremony: View {
 
                 // Creature name
                 Text(creatureName)
-                    .font(.custom("SpaceGrotesk-Bold", size: 24))
+                    .font(DesignTokens.heading(24))
                     .foregroundColor(.white)
                     .opacity(nameOpacity)
 
@@ -198,14 +198,14 @@ struct ChestCeremony: View {
 
                 // Subtype ID
                 Text(subtypeID)
-                    .font(.custom("JetBrainsMono-Regular", size: 12))
+                    .font(DesignTokens.mono(12))
                     .foregroundColor(categoryColor)
                     .opacity(subtypeOpacity)
 
                 // Personality line
                 if let entry = SpecimenCatalog.entry(for: subtypeID) {
                     Text(entry.personalityLine)
-                        .font(.custom("Inter-Regular", size: 12))
+                        .font(DesignTokens.body(12))
                         .foregroundColor(.white.opacity(0.4))
                         .italic()
                         .multilineTextAlignment(.center)
@@ -215,7 +215,7 @@ struct ChestCeremony: View {
                 // Cosmetic tier (only when non-standard)
                 if let label = cosmeticLabel {
                     Text("[ \(label) ]")
-                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(cosmeticTierColor)
                         .opacity(cosmeticLabelOpacity)
                 }

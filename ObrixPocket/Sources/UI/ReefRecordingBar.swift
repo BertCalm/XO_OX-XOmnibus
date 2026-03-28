@@ -62,7 +62,7 @@ struct ReefRecordingBar: View {
                         }
 
                         Text(recorder.durationString)
-                            .font(.custom("JetBrainsMono-Regular", size: 10))
+                            .font(DesignTokens.mono(10))
                             .foregroundColor(.white.opacity(0.4))
 
                         // Share JSON button
@@ -97,7 +97,7 @@ struct ReefRecordingBar: View {
                                 Image(systemName: "waveform")
                                     .font(.system(size: 10))
                                 Text("MIDI")
-                                    .font(.custom("JetBrainsMono-Regular", size: 8))
+                                    .font(DesignTokens.mono(8))
                             }
                             .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                         }
@@ -110,7 +110,7 @@ struct ReefRecordingBar: View {
                                 .fill(DesignTokens.errorRed)
                                 .frame(width: 8, height: 8)
                             Text("REC \(recorder.durationString)")
-                                .font(.custom("JetBrainsMono-Regular", size: 10))
+                                .font(DesignTokens.mono(10))
                                 .foregroundColor(DesignTokens.errorRed.opacity(0.7))
                         }
                     }
@@ -128,7 +128,7 @@ struct ReefRecordingBar: View {
                                 .fill(DesignTokens.errorRed.opacity(0.5))
                                 .frame(width: 12, height: 12)
                             Text("REC")
-                                .font(.custom("JetBrainsMono-Regular", size: 9))
+                                .font(DesignTokens.mono(9))
                                 .foregroundColor(.white.opacity(0.3))
                         }
                     }
@@ -157,14 +157,14 @@ struct ReefRecordingBar: View {
                             .fill(isAudioRecording ? DesignTokens.errorRed : DesignTokens.errorRed.opacity(0.3))
                             .frame(width: 10, height: 10)
                         Text(isAudioRecording ? "STOP" : "REC AUDIO")
-                            .font(.custom("JetBrainsMono-Regular", size: 8))
+                            .font(DesignTokens.mono(8))
                             .foregroundColor(isAudioRecording ? DesignTokens.errorRed : .white.opacity(0.3))
                     }
                 }
 
                 if isAudioRecording {
                     Text(String(format: "%.1fs", audioExporter.recordingDuration))
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                         .foregroundColor(DesignTokens.errorRed.opacity(0.6))
                 }
 
@@ -174,7 +174,7 @@ struct ReefRecordingBar: View {
                             Image(systemName: "waveform")
                                 .font(.system(size: 9))
                             Text("Share M4A")
-                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .font(DesignTokens.mono(8))
                         }
                         .foregroundColor(DesignTokens.xoGold.opacity(0.5))
                     }
@@ -202,7 +202,7 @@ struct ReefRecordingBar: View {
                         Image(systemName: isGeneratingClip ? "hourglass" : "square.and.arrow.up")
                             .font(.system(size: 10))
                         Text(isGeneratingClip ? "Recording..." : "15s Clip")
-                            .font(.custom("JetBrainsMono-Regular", size: 8))
+                            .font(DesignTokens.mono(8))
                     }
                     .foregroundColor(DesignTokens.xoGold.opacity(isGeneratingClip ? 0.3 : 0.5))
                 }
@@ -241,7 +241,7 @@ struct ReefRecordingBar: View {
                 // Layer count badge
                 if loopRecorder.layerCount > 0 {
                     Text("\(loopRecorder.layerCount) layer\(loopRecorder.layerCount == 1 ? "" : "s")")
-                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .font(DesignTokens.mono(9))
                         .foregroundColor(.white.opacity(0.3))
                 }
 
@@ -280,7 +280,7 @@ struct ReefRecordingBar: View {
                 Spacer()
             }
             .padding(.horizontal, 20)
-            .padding(.bottom, 2)
+            .padding(.bottom, DesignTokens.spacing4)
         }
         // Fire loop playback events at ~30 Hz from the main thread
         .onReceive(Timer.publish(every: 1.0 / 30.0, on: .main, in: .common).autoconnect()) { _ in

@@ -17,11 +17,11 @@ struct ReefBannerBar: View {
                         .foregroundColor(DesignTokens.effectColor)
                     VStack(alignment: .leading, spacing: 1) {
                         Text(encounter.title)
-                            .font(.custom("SpaceGrotesk-Bold", size: 11))
+                            .font(DesignTokens.heading(11))
                             .foregroundColor(DesignTokens.effectColor)
                         if let expiry = encounterManager.encounterExpiry {
                             Text("\(encounter.description) · \(timeRemaining(expiry))")
-                                .font(.custom("Inter-Regular", size: 8))
+                                .font(DesignTokens.body(8))
                                 .foregroundColor(.white.opacity(0.3))
                         }
                     }
@@ -40,11 +40,11 @@ struct ReefBannerBar: View {
                         .foregroundColor(DesignTokens.xoGold)
                     VStack(alignment: .leading, spacing: 1) {
                         Text(event.name.uppercased())
-                            .font(.custom("JetBrainsMono-Bold", size: 9))
+                            .font(DesignTokens.monoBold(9))
                             .tracking(1)
                             .foregroundColor(DesignTokens.xoGold)
                         Text("\(event.daysRemaining) days left · \(event.description)")
-                            .font(.custom("Inter-Regular", size: 8))
+                            .font(DesignTokens.body(8))
                             .foregroundColor(.white.opacity(0.3))
                     }
                     Spacer()

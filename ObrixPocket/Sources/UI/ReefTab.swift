@@ -54,33 +54,40 @@ struct ReefTab: View {
                             }
                         }
                 } else {
-                    Color.clear
-                        .onAppear {
-                            reefScene = ReefScene(
-                                size: CGSize(width: gridSize, height: gridSize),
-                                reefStore: reefStore,
-                                onNoteOn: { slot, velocity in
-                                    selectedSlot = slot
-                                    if let spec = reefStore.specimens[slot], spec.category == .source {
-                                        activeSourceSlot = slot
-                                    }
-                                    audioEngine.noteOn(slotIndex: slot, velocity: velocity)
-                                },
-                                onNoteOff: { slot in
-                                    audioEngine.noteOff(slotIndex: slot)
-                                },
-                                onWiringChanged: {
-                                    audioEngine.applyReefConfiguration(reefStore)
+                    VStack(spacing: 8) {
+                        ProgressView()
+                            .tint(DesignTokens.reefJade)
+                        Text("Loading reef...")
+                            .font(DesignTokens.mono(10))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+                    .frame(width: gridSize, height: gridSize)
+                    .onAppear {
+                        reefScene = ReefScene(
+                            size: CGSize(width: gridSize, height: gridSize),
+                            reefStore: reefStore,
+                            onNoteOn: { slot, velocity in
+                                selectedSlot = slot
+                                if let spec = reefStore.specimens[slot], spec.category == .source {
+                                    activeSourceSlot = slot
                                 }
-                            )
-                        }
+                                audioEngine.noteOn(slotIndex: slot, velocity: velocity)
+                            },
+                            onNoteOff: { slot in
+                                audioEngine.noteOff(slotIndex: slot)
+                            },
+                            onWiringChanged: {
+                                audioEngine.applyReefConfiguration(reefStore)
+                            }
+                        )
+                    }
                 }
             }
 
             // Contextual hint for new users (journey steps 0–2)
             if firstLaunchManager.journeyStep <= 2 {
                 Text("Tap a specimen to preview its sound. Long-press to wire.")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.25))
                     .padding(.horizontal, 20)
                     .padding(.bottom, 4)
@@ -128,15 +135,17 @@ struct ReefTab: View {
                         recorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
                         loopRecorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
                         challengeManager.incrementProgress(type: .playNotes)
-                        milestoneManager.increment("play_100")
-                        milestoneManager.increment("play_1000")
-                        milestoneManager.increment("play_10000")
                         ReefStatsTracker.shared.increment(.notesPlayed)
-                        BadgeManager.shared.award("first_note")
                         let notesPlayed = ReefStatsTracker.shared.value(for: .notesPlayed)
-                        if notesPlayed >= 100  { BadgeManager.shared.award("100_notes") }
-                        if notesPlayed >= 1000 { BadgeManager.shared.award("1000_notes") }
-                        if notesPlayed >= 10000 { BadgeManager.shared.award("10000_notes") }
+                        // Fire milestones exactly once at each threshold
+                        if notesPlayed == 100  { milestoneManager.increment("play_100") }
+                        else if notesPlayed == 1000  { milestoneManager.increment("play_1000") }
+                        else if notesPlayed == 10000 { milestoneManager.increment("play_10000") }
+                        // Award badges at exact thresholds only
+                        if notesPlayed == 1     { BadgeManager.shared.award("first_note") }
+                        if notesPlayed == 100   { BadgeManager.shared.award("100_notes") }
+                        if notesPlayed == 1000  { BadgeManager.shared.award("1000_notes") }
+                        if notesPlayed == 10000 { BadgeManager.shared.award("10000_notes") }
                         ReefEnergyManager.shared.earnFromPlay(amount: encounterManager.energyMultiplier)
                         ambientResumeTimer?.invalidate()
                         ambientResumeTimer = nil
@@ -178,13 +187,15 @@ struct ReefTab: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(.horizontal, 16)
                 .padding(.bottom, 8)
+                .transition(.move(edge: .bottom).combined(with: .opacity))
             } else {
                 Text("Add a specimen to play")
-                    .font(.custom("Inter-Regular", size: 12))
+                    .font(DesignTokens.body(12))
                     .foregroundColor(DesignTokens.mutedText)
                     .padding(.bottom, 16)
             }
         }
+        .animation(.easeInOut(duration: 0.3), value: reefStore.diveEligibleCount)
         .background(DesignTokens.background)
         .onAppear {
             if activeSourceSlot == nil {
@@ -225,11 +236,11 @@ struct StasisBrowser: View {
         VStack(spacing: 8) {
             HStack {
                 Text("STASIS")
-                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .font(DesignTokens.mono(10))
                     .tracking(1.5)
                     .foregroundColor(DesignTokens.xoGold)
                 Text("— tap to place in slot \(targetSlot + 1)")
-                    .font(.custom("Inter-Regular", size: 10))
+                    .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.3))
                 Spacer()
                 Button(action: { onDismiss?() }) {
@@ -242,7 +253,7 @@ struct StasisBrowser: View {
 
             if stasisSpecimens.isEmpty {
                 Text("No specimens in stasis")
-                    .font(.custom("Inter-Regular", size: 11))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(.white.opacity(0.3))
                     .padding(.vertical, 12)
             } else {
@@ -259,11 +270,11 @@ struct StasisBrowser: View {
                                                   category: specimen.category,
                                                   size: 36)
                                     Text(specimen.creatureName)
-                                        .font(.custom("Inter-Regular", size: 8))
+                                        .font(DesignTokens.body(8))
                                         .foregroundColor(.white.opacity(0.6))
                                         .lineLimit(1)
                                     Text("Lv.\(specimen.level)")
-                                        .font(.custom("JetBrainsMono-Regular", size: 7))
+                                        .font(DesignTokens.mono(7))
                                         .foregroundColor(.white.opacity(0.3))
                                 }
                                 .frame(width: 56)
@@ -301,13 +312,13 @@ struct ReefPresetList: View {
                     }) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(preset.name)
-                                .font(.custom("SpaceGrotesk-Bold", size: 14))
+                                .font(DesignTokens.heading(14))
                                 .foregroundColor(.white)
                             Text(preset.savedAt, style: .date)
-                                .font(.custom("JetBrainsMono-Regular", size: 10))
+                                .font(DesignTokens.mono(10))
                                 .foregroundColor(.white.opacity(0.4))
                             Text("\(preset.specimenSlots.compactMap { $0 }.count) specimens, \(preset.couplingRoutes.count) wires")
-                                .font(.custom("Inter-Regular", size: 10))
+                                .font(DesignTokens.body(10))
                                 .foregroundColor(.white.opacity(0.3))
                         }
                     }
