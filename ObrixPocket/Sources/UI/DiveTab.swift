@@ -1,5 +1,55 @@
 import SwiftUI
 
+// MARK: - Depth Zone
+
+enum DepthZone: String {
+    case sunlit = "Sunlit Zone"       // 0-200m — bright, simple, pentatonic
+    case twilight = "Twilight Zone"    // 200-600m — darker, add minor notes
+    case midnight = "Midnight Zone"   // 600-1000m — chromatic, dense
+    case abyssal = "Abyssal Zone"     // 1000m+ — deep, sparse, mysterious
+
+    static func at(depth: Int) -> DepthZone {
+        switch depth {
+        case 0..<200:    return .sunlit
+        case 200..<600:  return .twilight
+        case 600..<1000: return .midnight
+        default:         return .abyssal
+        }
+    }
+
+    /// Scale intervals for this zone
+    var scaleIntervals: [Int] {
+        switch self {
+        case .sunlit:   return [0, 2, 4, 7, 9]                              // Major pentatonic
+        case .twilight: return [0, 2, 3, 5, 7, 8, 10]                       // Natural minor
+        case .midnight: return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]      // Chromatic
+        case .abyssal:  return [0, 3, 5, 7, 10]                             // Minor pentatonic (sparse)
+        }
+    }
+
+    /// Octave range for this zone (deeper = lower)
+    var octaveRange: ClosedRange<Int> {
+        switch self {
+        case .sunlit:   return 4...5
+        case .twilight: return 3...5
+        case .midnight: return 2...5
+        case .abyssal:  return 1...3   // Very low
+        }
+    }
+
+    /// Background gradient bottom color tint
+    var bgColor: String {
+        switch self {
+        case .sunlit:   return "0A1018"
+        case .twilight: return "080810"
+        case .midnight: return "050508"
+        case .abyssal:  return "020204"
+        }
+    }
+}
+
+// MARK: - DiveTab
+
 struct DiveTab: View {
     @EnvironmentObject var reefStore: ReefStore
     @EnvironmentObject var audioEngine: AudioEngineManager
@@ -11,6 +61,8 @@ struct DiveTab: View {
     @State private var activeNotes: Set<Int> = []
     @State private var diveTimer: Timer?
     @State private var noteTimer: Timer?
+    @State private var lastZone: DepthZone = .sunlit
+    @State private var reefBonus: Float = 1.0
 
     enum DivePhase {
         case ready      // Before dive
@@ -20,15 +72,14 @@ struct DiveTab: View {
 
     var body: some View {
         ZStack {
-            // Background — gets darker as you dive deeper
+            // Background — changes color as you dive into deeper zones
+            let zone = DepthZone.at(depth: diveDepth)
             LinearGradient(
-                colors: [
-                    Color(hex: "0A0A0F"),
-                    Color(hex: divePhase == .diving ? "020208" : "0A0A0F")
-                ],
+                colors: [Color(hex: "0A0A0F"), Color(hex: zone.bgColor)],
                 startPoint: .top, endPoint: .bottom
             )
             .ignoresSafeArea()
+            .animation(.easeInOut(duration: 2.0), value: zone.rawValue)
 
             VStack(spacing: 24) {
                 // Header
@@ -124,6 +175,13 @@ struct DiveTab: View {
 
     private var divingView: some View {
         VStack(spacing: 16) {
+            // Current zone name
+            let zone = DepthZone.at(depth: diveDepth)
+            Text(zone.rawValue.uppercased())
+                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .tracking(2)
+                .foregroundColor(.white.opacity(0.3))
+
             // Depth counter (large, centered)
             Text("\(diveDepth)m")
                 .font(.custom("JetBrainsMono-Bold", size: 48))
@@ -232,6 +290,12 @@ struct DiveTab: View {
         diveScore = 0
         isDiving = true
         activeNotes = []
+        lastZone = .sunlit
+
+        // Compute reef quality bonus from specimen count and coupling wires
+        let specimenCount = reefStore.specimens.compactMap { $0 }.count
+        let wireCount = reefStore.couplingRoutes.count
+        reefBonus = max(1.0, Float(specimenCount) * 0.1 + Float(wireCount) * 0.15)
 
         // Configure engine with first source's chain
         if let sourceSlot = reefStore.specimens.firstIndex(where: { $0?.category == .source }) {
@@ -245,12 +309,19 @@ struct DiveTab: View {
             diveProgress = Float(min(elapsed / 60.0, 1.0))
             diveDepth = Int(elapsed * 20) // 20m per second = 1200m max
 
+            // Detect zone transitions and fire haptic
+            let currentZone = DepthZone.at(depth: diveDepth)
+            if currentZone != lastZone {
+                lastZone = currentZone
+                HapticEngine.diveDepthMilestone()
+            }
+
             if elapsed >= 60 {
                 endDive()
             }
         }
 
-        // Generative note player — plays random notes from the scale at increasing density
+        // Generative note player — zone-aware density and pitch content
         scheduleNextNote(startTime: startTime)
     }
 
@@ -258,27 +329,61 @@ struct DiveTab: View {
         guard isDiving else { return }
 
         let elapsed = Date().timeIntervalSince(startTime)
-        // Note density increases with depth: 1 note/sec -> 4 notes/sec
-        let notesPerSecond = 1.0 + elapsed / 20.0
+        let zone = DepthZone.at(depth: diveDepth)
+
+        // Note density varies by zone
+        let notesPerSecond: Double
+        switch zone {
+        case .sunlit:   notesPerSecond = 1.0 + elapsed / 30.0  // Gentle buildup
+        case .twilight: notesPerSecond = 2.0 + elapsed / 20.0  // Moderate
+        case .midnight: notesPerSecond = 3.0 + elapsed / 15.0  // Dense
+        case .abyssal:  notesPerSecond = 1.5                    // Sparse again — eerie
+        }
+
         let interval = 1.0 / notesPerSecond
 
         // Timer fires on main run loop — safe to mutate @State directly
         noteTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [self] _ in
             guard isDiving else { return }
 
-            // Pick a random pentatonic note
-            let pentatonic = [0, 2, 4, 7, 9] // Major pentatonic intervals
-            let octave = Int.random(in: 3...5)
-            let noteInScale = pentatonic.randomElement() ?? 0
+            // Re-read zone at the moment the note fires (depth has advanced)
+            let currentZone = DepthZone.at(depth: diveDepth)
+            let scale = currentZone.scaleIntervals
+            let octave = Int.random(in: currentZone.octaveRange)
+            let noteInScale = scale.randomElement() ?? 0
             let midiNote = octave * 12 + noteInScale
 
-            // Play note via bridge
-            ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: Float.random(in: 0.5...0.9))
-            activeNotes.insert(midiNote)
-            diveScore += Int.random(in: 5...15)
+            // Velocity varies by zone (deeper = softer)
+            let velocity: Float
+            switch currentZone {
+            case .sunlit:   velocity = Float.random(in: 0.5...0.9)
+            case .twilight: velocity = Float.random(in: 0.4...0.7)
+            case .midnight: velocity = Float.random(in: 0.3...0.6)
+            case .abyssal:  velocity = Float.random(in: 0.15...0.4)  // Very quiet
+            }
 
-            // Note-off after random duration
-            let noteDuration = Double.random(in: 0.2...1.0)
+            ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
+            activeNotes.insert(midiNote)
+
+            // Score: more points in deeper zones, scaled by reef quality bonus
+            let zoneMultiplier: Int
+            switch currentZone {
+            case .sunlit:   zoneMultiplier = 1
+            case .twilight: zoneMultiplier = 2
+            case .midnight: zoneMultiplier = 3
+            case .abyssal:  zoneMultiplier = 5
+            }
+            diveScore += Int(Float(Int.random(in: 5...15) * zoneMultiplier) * reefBonus)
+
+            // Note duration varies by zone (deeper = longer, more sustained)
+            let noteDuration: Double
+            switch currentZone {
+            case .sunlit:   noteDuration = Double.random(in: 0.2...0.8)
+            case .twilight: noteDuration = Double.random(in: 0.3...1.2)
+            case .midnight: noteDuration = Double.random(in: 0.1...0.5)  // Quick staccato
+            case .abyssal:  noteDuration = Double.random(in: 1.0...4.0)  // Long, haunting
+            }
+
             DispatchQueue.main.asyncAfter(deadline: .now() + noteDuration) {
                 ObrixBridge.shared()?.noteOff(Int32(midiNote))
                 activeNotes.remove(midiNote)
