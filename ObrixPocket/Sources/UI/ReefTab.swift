@@ -18,6 +18,7 @@ struct ReefTab: View {
     @StateObject private var midiInput = MIDIInputManager()
     @ObservedObject private var energyManager = ReefEnergyManager.shared
     @StateObject private var seasonalEvent = SeasonalEventManager()
+    @StateObject private var encounterManager = RandomEncounterManager()
     @State private var isAudioRecording = false
     @State private var showAudioShare = false
     @State private var isGeneratingClip = false
@@ -42,6 +43,10 @@ struct ReefTab: View {
     // Reef rename
     @State private var showReefRename = false
     @State private var editingReefName = ""
+
+    // Gallery share
+    @State private var showGalleryShare = false
+    @State private var galleryImage: UIImage?
 
     // Reef theme
     @State private var reefTheme: ReefTheme = .ocean
@@ -86,6 +91,16 @@ struct ReefTab: View {
                     }
                 } label: {
                     Image(systemName: "paintpalette")
+                        .font(.system(size: 12))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+
+                // Gallery share button — generates a reef portrait image
+                Button(action: {
+                    galleryImage = ReefGalleryGenerator.generate(reefStore: reefStore)
+                    showGalleryShare = true
+                }) {
+                    Image(systemName: "photo.artframe")
                         .font(.system(size: 12))
                         .foregroundColor(.white.opacity(0.3))
                 }
@@ -255,6 +270,29 @@ struct ReefTab: View {
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 4)
+
+            // Random encounter banner — shown while an encounter is active
+            if let encounter = encounterManager.activeEncounter {
+                HStack(spacing: 8) {
+                    Image(systemName: "sparkle")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color(hex: "B34DFF"))
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(encounter.title)
+                            .font(.custom("SpaceGrotesk-Bold", size: 11))
+                            .foregroundColor(Color(hex: "B34DFF"))
+                        if let expiry = encounterManager.encounterExpiry {
+                            Text("\(encounter.description) · \(timeRemaining(expiry))")
+                                .font(.custom("Inter-Regular", size: 8))
+                                .foregroundColor(.white.opacity(0.3))
+                        }
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 4)
+                .background(Color(hex: "B34DFF").opacity(0.04))
+            }
 
             // Seasonal event banner — shown when an event is active
             if let event = seasonalEvent.currentEvent {
@@ -789,8 +827,8 @@ struct ReefTab: View {
                         milestoneManager.increment("play_1000")
                         milestoneManager.increment("play_10000")
                         ReefStatsTracker.shared.increment(.notesPlayed)
-                        // Reef Energy: earn 1 energy per note, capped at 50/day
-                        energyManager.earnFromPlay(amount: 1)
+                        // Reef Energy: earn per note (multiplied by active encounter bonus), capped at 50/day
+                        energyManager.earnFromPlay(amount: encounterManager.energyMultiplier)
                         // Pause ambient while user is playing; cancel any pending resume
                         ambientResumeTimer?.invalidate()
                         ambientResumeTimer = nil
@@ -856,6 +894,9 @@ struct ReefTab: View {
             reefTheme = saved
             reefScene?.theme = saved
 
+            // Check for a random encounter on app open
+            encounterManager.checkForEncounter()
+
             // Wire MIDI input to play through the active source chain
             midiInput.onNoteOn = { midiNote, velocity in
                 let sourceSlot = activeSourceSlot ?? firstSourceSlot
@@ -890,6 +931,10 @@ struct ReefTab: View {
         // Sync loop duration to metronome BPM
         .onChange(of: metronome.bpm) { newBPM in
             loopRecorder.bpm = newBPM
+        }
+        // Check encounter expiry once per minute
+        .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { _ in
+            encounterManager.checkExpiry()
         }
         // Auto-stop: AudioExporter hit maxDuration and stopped itself
         .onChange(of: audioExporter.isRecording) { recording in
@@ -952,6 +997,11 @@ struct ReefTab: View {
         .sheet(isPresented: $showClipShare) {
             ShareSheet(items: clipShareItems)
         }
+        .sheet(isPresented: $showGalleryShare) {
+            if let image = galleryImage {
+                ShareSheet(items: [image])
+            }
+        }
         .fullScreenCover(isPresented: $showPerformanceMode) {
             PerformanceMode(activeSourceSlot: activeSourceSlot ?? firstSourceSlot)
                 .environmentObject(audioEngine)
@@ -961,6 +1011,12 @@ struct ReefTab: View {
 
     private var firstSourceSlot: Int? {
         reefStore.specimens.firstIndex(where: { $0?.category == .source })
+    }
+
+    private func timeRemaining(_ date: Date) -> String {
+        let remaining = max(0, date.timeIntervalSince(Date()))
+        let minutes = Int(remaining / 60)
+        return "\(minutes)m left"
     }
 }
 
