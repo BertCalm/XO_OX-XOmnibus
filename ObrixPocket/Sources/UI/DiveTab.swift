@@ -488,14 +488,13 @@ struct DiveTab: View {
         newComposer.onNoteOff = { (note: Int) in
             ObrixBridge.shared()?.noteOff(Int32(note))
         }
-        newComposer.onBeat = { [weak self] (beat: Int) in
-            guard let self else { return }
+        newComposer.onBeat = { [self] (beat: Int) in
             HapticEngine.diveBeat()
-            self.diveScene?.triggerBeatPulse()
+            diveScene?.triggerBeatPulse()
         }
-        newComposer.onDegradation = { [weak self] (_: Float) in
+        newComposer.onDegradation = { [self] (_: Float) in
             // Trigger view update so HUD reflects current degradation level
-            _ = self?.composer?.degradation
+            _ = composer?.degradation
         }
 
         composer = newComposer
@@ -521,13 +520,13 @@ struct DiveTab: View {
         scene.onObstacleProximity = { [weak newComposer] (p: Float) in
             newComposer?.obstacleProximity = p
         }
-        scene.onHit = { [weak self, weak newComposer] in
+        scene.onHit = { [self, weak newComposer] in
             newComposer?.registerHit()
-            self?.diveScore = max(0, (self?.diveScore ?? 0) - 50)
+            diveScore = max(0, diveScore - 50)
         }
-        scene.onCollect = { [weak self, weak newComposer] in
+        scene.onCollect = { [self, weak newComposer] in
             newComposer?.registerCollectible()
-            let zone = DepthZone.at(depth: self?.diveDepth ?? 0)
+            let zone = DepthZone.at(depth: diveDepth)
             let zoneMultiplier: Int
             switch zone {
             case .sunlit:   zoneMultiplier = 1
@@ -535,7 +534,7 @@ struct DiveTab: View {
             case .midnight: zoneMultiplier = 3
             case .abyssal:  zoneMultiplier = 5
             }
-            self?.diveScore += 100 * zoneMultiplier
+            diveScore += 100 * zoneMultiplier
         }
 
         diveScene = scene
@@ -545,27 +544,27 @@ struct DiveTab: View {
 
         // Progress timer (10Hz) — drives depth, zone transitions, and scoring
         let startTime = Date()
-        diveToken = TickScheduler.shared.register(hz: 10) { [weak self] in
-            guard let self, self.isDiving else { return }
+        diveToken = TickScheduler.shared.register(hz: 10) { [self] in
+            guard isDiving else { return }
             let elapsed = Date().timeIntervalSince(startTime)
-            self.diveProgress = Float(min(elapsed / 60.0, 1.0))
-            self.diveDepth = Int(elapsed * 20)
+            diveProgress = Float(min(elapsed / 60.0, 1.0))
+            diveDepth = Int(elapsed * 20)
 
             // Engagement tracking
-            self.totalFrames += 1
+            totalFrames += 1
 
             // Zone transition
-            let currentZone = DepthZone.at(depth: self.diveDepth)
-            if currentZone != self.lastZone {
-                self.lastZone = currentZone
+            let currentZone = DepthZone.at(depth: diveDepth)
+            if currentZone != lastZone {
+                lastZone = currentZone
                 HapticEngine.diveDepthMilestone()
-                self.diveScene?.currentZone = currentZone
-                self.composer?.updateZone(currentZone)
+                diveScene?.currentZone = currentZone
+                composer?.updateZone(currentZone)
 
                 // Switch source specimen at zone boundary
-                if !self.availableSources.isEmpty {
-                    self.currentSourceIndex = (self.currentSourceIndex + 1) % self.availableSources.count
-                    self.audioEngine.applyCachedParams(for: self.availableSources[self.currentSourceIndex])
+                if !availableSources.isEmpty {
+                    currentSourceIndex = (currentSourceIndex + 1) % availableSources.count
+                    audioEngine.applyCachedParams(for: availableSources[currentSourceIndex])
                 }
             }
 
@@ -577,10 +576,10 @@ struct DiveTab: View {
             case .midnight: zoneMultiplier = 3
             case .abyssal:  zoneMultiplier = 5
             }
-            self.diveScore += Int(Float(zoneMultiplier) * self.reefBonus)
+            diveScore += Int(Float(zoneMultiplier) * reefBonus)
 
             if elapsed >= 60 {
-                self.endDive()
+                endDive()
             }
         }
     }
