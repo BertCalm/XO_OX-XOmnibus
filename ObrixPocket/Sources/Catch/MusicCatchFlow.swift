@@ -31,6 +31,16 @@ struct MusicCatchFlow: View {
                 cardPhase
             }
         }
+        .alert("Music Library Access", isPresented: $showDeniedAlert) {
+            Button("Open Settings") {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("OBRIX Pocket needs access to your music library to create creatures from songs. Enable it in Settings.")
+        }
     }
 
     // MARK: - Phase 1: Song Picker
@@ -148,6 +158,7 @@ struct MusicCatchFlow: View {
     }
 
     @State private var showMusicPicker = false
+    @State private var showDeniedAlert = false
 
     private func openMusicPicker() {
         // Check music library authorization
@@ -160,12 +171,13 @@ struct MusicCatchFlow: View {
                 DispatchQueue.main.async {
                     if newStatus == .authorized {
                         showMusicPicker = true
+                    } else {
+                        showDeniedAlert = true
                     }
                 }
             }
         default:
-            // Denied or restricted — show settings prompt
-            showMusicPicker = false
+            showDeniedAlert = true
         }
     }
 

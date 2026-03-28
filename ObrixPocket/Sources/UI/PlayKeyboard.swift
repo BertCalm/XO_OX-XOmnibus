@@ -7,11 +7,12 @@ struct PlayKeyboard: View {
     let onNoteOn: (Int, Float) -> Void  // (midiNote, velocity)
     let onNoteOff: (Int) -> Void
     let accentColor: Color
+    @Binding var octaveOffset: Int // Octave shift: -2 to +2
 
-    // 2 octaves starting at C3 (MIDI 48)
-    private let startNote = 48
-    private let whiteNotes = [0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19, 21, 23] // C D E F G A B × 2
-    private let blackNotes = [1, 3, 6, 8, 10, 13, 15, 18, 20, 22] // C# D# F# G# A# × 2
+    // 2 octaves, offset applied
+    private var startNote: Int { 48 + (octaveOffset * 12) }
+    private let whiteNotes = [0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19, 21, 23]
+    private let blackNotes = [1, 3, 6, 8, 10, 13, 15, 18, 20, 22]
 
     @State private var activeNotes: Set<Int> = []
 

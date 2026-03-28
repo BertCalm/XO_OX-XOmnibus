@@ -21,6 +21,9 @@ class ReefScene: SKScene {
     private var isWiring = false
     private let longPressDuration: TimeInterval = 0.4
 
+    // Deferred tap — slot recorded on touchesBegan, note played on touchesEnded (avoids spurious note on long-press/wiring)
+    private var pendingTapSlot: Int?
+
     // Organic offsets (±8px, deterministic per slot)
     private let organicOffsets: [CGPoint] = {
         let seed: [CGPoint] = [
@@ -38,6 +41,10 @@ class ReefScene: SKScene {
     // Breathing animation phase
     private var breathPhase: Float = 0
     private var lastUpdateTime: TimeInterval = 0
+
+    // Background texture cache — only re-render when scene size changes
+    private var cachedBgTexture: SKTexture?
+    private var cachedBgSize: CGSize?
 
     // Category colors
     private let categoryColors: [SpecimenCategory: SKColor] = [
@@ -70,11 +77,7 @@ class ReefScene: SKScene {
         buildGrid()
     }
 
-    private func buildGrid() {
-        removeAllChildren()
-        slotNodes.removeAll()
-
-        // Ocean floor gradient background
+    private func renderBackground() -> SKTexture {
         let bgSize = self.size
         let renderer = UIGraphicsImageRenderer(size: bgSize)
         let gradientImage = renderer.image { ctx in
@@ -101,8 +104,20 @@ class ReefScene: SKScene {
                 ctx.cgContext.fillEllipse(in: CGRect(x: x, y: y, width: r, height: r))
             }
         }
-        let bgTexture = SKTexture(image: gradientImage)
-        let bgNode = SKSpriteNode(texture: bgTexture)
+        return SKTexture(image: gradientImage)
+    }
+
+    private func buildGrid() {
+        removeAllChildren()
+        slotNodes.removeAll()
+
+        // Ocean floor gradient background — use cached texture unless scene size changed
+        let bgSize = self.size
+        if cachedBgTexture == nil || cachedBgSize != bgSize {
+            cachedBgTexture = renderBackground()
+            cachedBgSize = bgSize
+        }
+        let bgNode = SKSpriteNode(texture: cachedBgTexture!)
         bgNode.size = bgSize
         bgNode.position = CGPoint(x: bgSize.width / 2, y: bgSize.height / 2)
         bgNode.zPosition = -10
@@ -146,11 +161,13 @@ class ReefScene: SKScene {
 
                     slotNode.addChild(bg)
 
+                    // Creature sprite or text fallback
                     if let spriteImage = UIImage(named: specimen.subtype) {
                         let texture = SKTexture(image: spriteImage)
                         texture.filteringMode = .nearest
                         let sprite = SKSpriteNode(texture: texture)
                         sprite.size = CGSize(width: bgRadius * 1.2, height: bgRadius * 1.2)
+                        sprite.position = CGPoint(x: 0, y: 4) // Nudge up to make room for label
                         if specimen.isPhantom { sprite.alpha = 0.4 }
                         slotNode.addChild(sprite)
                     } else {
@@ -159,8 +176,19 @@ class ReefScene: SKScene {
                         creatureLabel.fontName = "JetBrainsMono-Bold"
                         creatureLabel.fontColor = specimen.isPhantom ? color.withAlphaComponent(0.4) : color
                         creatureLabel.verticalAlignmentMode = .center
+                        creatureLabel.position = CGPoint(x: 0, y: 4)
                         slotNode.addChild(creatureLabel)
                     }
+
+                    // Role label below sprite — shows musical function
+                    let roleText = Self.roleLabel(for: specimen)
+                    let roleLabel = SKLabelNode(text: roleText)
+                    roleLabel.fontSize = 7
+                    roleLabel.fontName = "JetBrainsMono-Regular"
+                    roleLabel.fontColor = color.withAlphaComponent(0.7)
+                    roleLabel.verticalAlignmentMode = .top
+                    roleLabel.position = CGPoint(x: 0, y: -bgRadius * 0.55)
+                    slotNode.addChild(roleLabel)
                 } else {
                     bg.fillColor = SKColor.white.withAlphaComponent(0.02)
                     bg.strokeColor = SKColor.white.withAlphaComponent(0.08)
@@ -290,6 +318,9 @@ class ReefScene: SKScene {
         guard let slot = slotIndex(at: location),
               reefStore.specimens[slot] != nil else { return }
 
+        // Record the slot — note will be played in touchesEnded only if this turns out to be a tap (not a long-press/wiring)
+        pendingTapSlot = slot
+
         // Start the long-press timer for wiring
         longPressTouch = touch
         touchDownTimes[slot] = touch.timestamp
@@ -298,9 +329,6 @@ class ReefScene: SKScene {
             guard let self else { return }
             self.beginWiring(from: slot)
         }
-
-        // Short tap plays a preview note (single specimen sound)
-        onNoteOn(slot, 0.8)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -321,14 +349,18 @@ class ReefScene: SKScene {
             // End wiring — check if released on a valid target
             endWiring(at: location)
         } else {
-            // Normal tap — note off + flash
-            if let slot = slotIndex(at: location), reefStore.specimens[slot] != nil {
-                onNoteOff(slot)
+            // Normal tap — play note preview + flash
+            if let slot = pendingTapSlot, reefStore.specimens[slot] != nil {
+                onNoteOn(slot, 0.8)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                    self?.onNoteOff(slot)
+                }
                 flashSlot(slot)
                 touchDownTimes.removeValue(forKey: slot)
             }
         }
 
+        pendingTapSlot = nil
         longPressTouch = nil
     }
 
@@ -336,6 +368,7 @@ class ReefScene: SKScene {
         longPressTimer?.invalidate()
         longPressTimer = nil
         cancelWiring()
+        pendingTapSlot = nil
         longPressTouch = nil
     }
 
@@ -344,9 +377,7 @@ class ReefScene: SKScene {
     private func beginWiring(from slot: Int) {
         isWiring = true
         wireSourceSlot = slot
-
-        // Stop the note that was triggered on touchesBegan
-        onNoteOff(slot)
+        pendingTapSlot = nil // No tap note will be fired — long-press won
 
         // Highlight the source slot
         if let bg = childNode(withName: "//slotBg_\(slot)") as? SKShapeNode {
@@ -515,6 +546,29 @@ class ReefScene: SKScene {
             }
         }
         return nil
+    }
+
+    // MARK: - Role Labels
+
+    /// Short musical function label for a specimen (e.g., "SRC: Saw", "FLT: LP", "MOD: LFO")
+    private static func roleLabel(for specimen: Specimen) -> String {
+        let subtypeLabels: [String: String] = [
+            // Sources
+            "polyblep-saw": "SRC: Saw", "polyblep-square": "SRC: Square", "polyblep-tri": "SRC: Tri",
+            "noise-white": "SRC: Noise", "noise-pink": "SRC: Pink",
+            "wt-analog": "SRC: WT", "wt-vocal": "SRC: Vocal", "fm-basic": "SRC: FM",
+            // Processors
+            "svf-lp": "FLT: LP", "svf-hp": "FLT: HP", "svf-bp": "FLT: BP",
+            "shaper-soft": "SAT: Soft", "shaper-hard": "SAT: Hard", "feedback": "FB: Loop",
+            // Modulators
+            "adsr-fast": "ENV: Fast", "adsr-slow": "ENV: Slow",
+            "lfo-sine": "LFO: Sine", "lfo-random": "LFO: S&H",
+            "vel-map": "MOD: Vel", "at-map": "MOD: AT",
+            // Effects
+            "delay-stereo": "FX: Delay", "chorus-lush": "FX: Chorus",
+            "reverb-hall": "FX: Reverb", "dist-warm": "FX: Dist",
+        ]
+        return subtypeLabels[specimen.subtype] ?? specimen.category.rawValue.uppercased()
     }
 
     private func isNear(_ point: CGPoint, to target: CGPoint) -> Bool {

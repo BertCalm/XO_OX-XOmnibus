@@ -78,22 +78,56 @@ struct CatchTab: View {
     }
 
     private var mapView: some View {
-        Map(
-            coordinateRegion: $mapRegion,
-            showsUserLocation: true,
-            annotationItems: wildSpecimens
-        ) { specimen in
-            MapAnnotation(coordinate: specimenCoordinate(for: specimen)) {
-                SpecimenMapPin(specimen: specimen)
-                    .onTapGesture { handlePipTap(specimen) }
+        Group {
+            if !biomeDetector.locationAuthorized {
+                VStack(spacing: 12) {
+                    Image(systemName: "location.slash")
+                        .font(.system(size: 36))
+                        .foregroundColor(.white.opacity(0.3))
+                    Text("Location access needed")
+                        .font(.custom("SpaceGrotesk-Bold", size: 16))
+                        .foregroundColor(.white)
+                    Text("OBRIX Pocket uses your location to spawn specimens nearby.")
+                        .font(.custom("Inter-Regular", size: 12))
+                        .foregroundColor(.white.opacity(0.5))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 40)
+
+                    Button("Enable Location") {
+                        biomeDetector.requestAuthorization()
+                    }
+                    .font(.custom("SpaceGrotesk-Bold", size: 14))
+                    .foregroundColor(Color(hex: "1E8B7E"))
+
+                    // Also offer Reef Proximity as alternative
+                    Button("Use Reef Proximity Instead") {
+                        let home = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+                        biomeDetector.enableReefProximity(home: home)
+                    }
+                    .font(.custom("Inter-Regular", size: 12))
+                    .foregroundColor(.white.opacity(0.4))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(hex: "0E0E10"))
+            } else {
+                Map(
+                    coordinateRegion: $mapRegion,
+                    showsUserLocation: true,
+                    annotationItems: wildSpecimens
+                ) { specimen in
+                    MapAnnotation(coordinate: specimenCoordinate(for: specimen)) {
+                        SpecimenMapPin(specimen: specimen)
+                            .onTapGesture { handlePipTap(specimen) }
+                    }
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color(hex: "1E8B7E").opacity(0.2), lineWidth: 1)
+                )
+                .padding(.horizontal, 16)
             }
         }
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color(hex: "1E8B7E").opacity(0.2), lineWidth: 1)
-        )
-        .padding(.horizontal, 16)
     }
 
     private var reefProximityStrip: some View {

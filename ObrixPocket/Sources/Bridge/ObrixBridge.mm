@@ -38,7 +38,8 @@ public:
                           std::atomic<int>& writePosRef,
                           ParamEvent* paramQueueRef,
                           std::atomic<int>& paramReadPosRef,
-                          std::atomic<int>& paramWritePosRef)
+                          std::atomic<int>& paramWritePosRef,
+                          std::atomic<bool>& allNotesOffRef)
         : AudioProcessor(BusesProperties().withOutput("Output", juce::AudioChannelSet::stereo(), true))
         , eng(engine)
         , apvts(*this, nullptr, "ObrixPocketParams", engine.createParameterLayout())
@@ -49,6 +50,7 @@ public:
         , _paramQueueRef(paramQueueRef)
         , _paramReadRef(paramReadPosRef)
         , _paramWriteRef(paramWritePosRef)
+        , _allNotesOffRef(allNotesOffRef)
     {
         // Wire engine's atomic parameter pointers to the APVTS
         eng.attachParameters(apvts);
@@ -73,8 +75,9 @@ public:
             int readPos = _paramReadRef.load(std::memory_order_relaxed);
             auto& evt = _paramQueueRef[readPos];
 
-            // Write directly to the atomic parameter value (audio-thread safe).
-            // getRawParameterValue returns std::atomic<float>* which the engine reads.
+            // Write directly to the atomic denormalized parameter value (audio-thread safe).
+            // getRawParameterValue returns std::atomic<float>* holding the real-world value
+            // (e.g. Hz for cutoff, seconds for attack). Callers must pre-scale to actual range.
             if (auto* rawValue = apvts.getRawParameterValue(juce::String(evt.paramId)))
             {
                 rawValue->store(evt.value, std::memory_order_relaxed);
@@ -93,6 +96,13 @@ public:
             else
                 midi.addEvent(juce::MidiMessage::noteOff(1, evt.note), 0);
             _readPosRef.store((readPos + 1) % 256, std::memory_order_release);
+        }
+
+        // Atomic all-notes-off: a single CC123 message replaces 128 individual note-offs,
+        // which could silently drop if the ring buffer was partially full.
+        if (_allNotesOffRef.exchange(false, std::memory_order_acquire))
+        {
+            midi.addEvent(juce::MidiMessage::allNotesOff(1), 0);
         }
 
         eng.renderBlock(buffer, midi, buffer.getNumSamples());
@@ -131,6 +141,7 @@ private:
     ParamEvent* _paramQueueRef;
     std::atomic<int>& _paramReadRef;
     std::atomic<int>& _paramWriteRef;
+    std::atomic<bool>& _allNotesOffRef;
 };
 
 static const int kMidiQueueSize = 256;
@@ -153,6 +164,10 @@ static const int kMidiQueueSize = 256;
     ObrixProcessorAdapter::ParamEvent _paramQueue[ObrixProcessorAdapter::kParamQueueSize];
     std::atomic<int> _paramWritePos;
     std::atomic<int> _paramReadPos;
+
+    // Atomic flag: set by allNotesOff on the UI thread, consumed (exchanged) by processBlock.
+    // Avoids flooding the 256-slot MIDI ring buffer with 128 individual note-offs.
+    std::atomic<bool> _allNotesOffFlag;
 }
 
 + (instancetype)shared
@@ -175,6 +190,7 @@ static const int kMidiQueueSize = 256;
         _midiReadPos.store(0);
         _paramWritePos.store(0);
         _paramReadPos.store(0);
+        _allNotesOffFlag.store(false);
 
         // Ensure JUCE message manager exists (required for audio callbacks)
         juce::MessageManager::getInstance();
@@ -213,7 +229,8 @@ static const int kMidiQueueSize = 256;
         _midiWritePos,
         _paramQueue,
         _paramReadPos,
-        _paramWritePos
+        _paramWritePos,
+        _allNotesOffFlag
     );
     _player = std::make_unique<juce::AudioProcessorPlayer>();
     _player->setProcessor(_adapter.get());
@@ -268,11 +285,11 @@ static const int kMidiQueueSize = 256;
 
 - (void)allNotesOff
 {
-    // Send note-off for all 128 possible MIDI notes via the lock-free queue.
-    for (int note = 0; note < 128; ++note)
-    {
-        [self noteOff:note];
-    }
+    // Set the atomic flag — processBlock will exchange it and emit a single CC123
+    // (all notes off) on the next audio callback. This avoids flooding the 256-slot
+    // MIDI ring buffer with 128 individual note-offs, which would silently drop notes
+    // if the queue was partially full, leaving stuck notes.
+    _allNotesOffFlag.store(true, std::memory_order_release);
 }
 
 - (void)setParameter:(NSString *)paramId value:(float)value
@@ -291,6 +308,8 @@ static const int kMidiQueueSize = 256;
 
 - (float)getParameter:(NSString *)paramId
 {
+    // Returns the denormalized (real-world) value — e.g. Hz for cutoff, 0-1 for mix.
+    // Matches what the engine reads in its renderBlock via loadP().
     if (_adapter) {
         if (auto* raw = _adapter->apvts.getRawParameterValue(juce::String([paramId UTF8String])))
             return raw->load(std::memory_order_relaxed);
@@ -301,6 +320,17 @@ static const int kMidiQueueSize = 256;
 - (void)setParameterImmediate:(NSString *)paramId value:(float)value
 {
     if (!_adapter) return;
+    // getRawParameterValue returns a pointer to the DENORMALIZED (real-world) value.
+    // Verified in JUCE source: AudioProcessorValueTreeState::getRawParameterValue()
+    // returns &adapter->getRawDenormalisedValue(), which stores the actual Hz/dB/etc.
+    // value — NOT a 0-1 normalized float.
+    //
+    // Callers (AudioEngineManager.swift) are responsible for scaling their 0-1 specimen
+    // values to the engine's real-world range before calling this method.
+    // Example: obrix_proc1Cutoff expects Hz (20-20000), not 0-1 normalized.
+    // AudioEngineManager already does: scale: { v in 20.0 + v * (20000.0 - 20.0) }
+    //
+    // Writing value directly here is correct — no additional normalization needed.
     if (auto* raw = _adapter->apvts.getRawParameterValue(juce::String([paramId UTF8String])))
     {
         raw->store(value, std::memory_order_relaxed);

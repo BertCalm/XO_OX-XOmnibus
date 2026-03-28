@@ -6,6 +6,8 @@ struct ReefTab: View {
     @EnvironmentObject var reefStore: ReefStore
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
+    @State private var selectedSlot: Int?        // Which specimen's params are showing
+    @State private var octaveOffset: Int = 0      // Keyboard octave shift (-2 to +2)
 
     var body: some View {
         VStack(spacing: 0) {
@@ -50,7 +52,9 @@ struct ReefTab: View {
                                 size: CGSize(width: gridSize, height: gridSize),
                                 reefStore: reefStore,
                                 onNoteOn: { slot, velocity in
-                                    // If tapped specimen is a Source, make it the active keyboard source
+                                    // Select this slot for parameter editing
+                                    selectedSlot = slot
+                                    // If it's a Source, make it the active keyboard source
                                     if let spec = reefStore.specimens[slot], spec.category == .source {
                                         activeSourceSlot = slot
                                     }
@@ -67,6 +71,13 @@ struct ReefTab: View {
                 }
             }
 
+            // Parameter panel — shows when a specimen is tapped
+            if let slot = selectedSlot, reefStore.specimens[slot] != nil {
+                SpecimenParamPanel(slotIndex: slot, onDismiss: { selectedSlot = nil })
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.2), value: selectedSlot)
+            }
+
             // Play keyboard — plays through the active source's wired chain
             if reefStore.diveEligibleCount >= 1 {
                 // Show which source is active
@@ -78,9 +89,23 @@ struct ReefTab: View {
                         .font(.custom("JetBrainsMono-Regular", size: 10))
                         .foregroundColor(Color(hex: "1E8B7E").opacity(0.7))
                     Spacer()
-                    Text("Tap a source to switch")
-                        .font(.custom("Inter-Regular", size: 9))
-                        .foregroundColor(.white.opacity(0.25))
+                    // Octave controls
+                    Button(action: { if octaveOffset > -2 { octaveOffset -= 1 } }) {
+                        Text("−")
+                            .font(.custom("SpaceGrotesk-Bold", size: 16))
+                            .foregroundColor(octaveOffset > -2 ? .white : .white.opacity(0.2))
+                            .frame(width: 28, height: 28)
+                    }
+                    Text("C\(4 + octaveOffset)")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(.white.opacity(0.5))
+                        .frame(width: 24)
+                    Button(action: { if octaveOffset < 2 { octaveOffset += 1 } }) {
+                        Text("+")
+                            .font(.custom("SpaceGrotesk-Bold", size: 16))
+                            .foregroundColor(octaveOffset < 2 ? .white : .white.opacity(0.2))
+                            .frame(width: 28, height: 28)
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 2)
@@ -96,7 +121,8 @@ struct ReefTab: View {
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))
                     },
-                    accentColor: Color(hex: "1E8B7E")
+                    accentColor: Color(hex: "1E8B7E"),
+                    octaveOffset: $octaveOffset
                 )
                 .frame(height: 80)
                 .clipShape(RoundedRectangle(cornerRadius: 12))

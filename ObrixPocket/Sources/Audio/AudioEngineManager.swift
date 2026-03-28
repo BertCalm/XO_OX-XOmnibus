@@ -47,9 +47,11 @@ final class AudioEngineManager: ObservableObject {
 
     // MARK: - Reef Configuration (push wired specimen params to engine)
 
-    /// Apply the full reef config on launch (sets defaults).
+    /// Apply the full reef config on launch (sets defaults) and prime the param cache.
     func applyReefConfiguration(_ reefStore: ReefStore) {
-        // On launch, configure with the first occupied slot's chain
+        // Build the per-slot cache for all wired slots first
+        rebuildParamCache(reefStore: reefStore)
+        // Then configure engine with the first occupied slot's chain
         if let firstOccupied = reefStore.specimens.firstIndex(where: { $0 != nil }) {
             applySlotChain(slotIndex: firstOccupied, reefStore: reefStore)
         }
@@ -110,6 +112,59 @@ final class AudioEngineManager: ObservableObject {
         return chain
     }
 
+    // MARK: - Parameter Cache Build
+
+    /// Build (or rebuild) the per-slot parameter cache from the current reef wiring.
+    /// Call this on app launch and whenever wiring changes.
+    func rebuildParamCache(reefStore: ReefStore) {
+        slotParamCache.removeAll()
+        for slotIndex in 0..<ReefStore.maxSlots {
+            guard let specimen = reefStore.specimens[slotIndex] else { continue }
+            var params: [(String, Float)] = []
+            collectMappedParams(specimen, into: &params)
+            let wired = findWiredChain(from: slotIndex, reefStore: reefStore)
+            for w in wired {
+                collectMappedParams(w, into: &params)
+            }
+            slotParamCache[slotIndex] = params
+        }
+    }
+
+    /// Collect all engine-mapped params for a single specimen into a flat array.
+    /// Mirrors the category-switch logic in applySpecimenToEngine.
+    private func collectMappedParams(_ specimen: Specimen, into params: inout [(String, Float)]) {
+        // Module-type activation (same mapping as applySpecimenToEngine)
+        switch specimen.category {
+        case .source:
+            let srcTypeMap: [String: Float] = [
+                "polyblep-saw": 2, "polyblep-square": 3, "polyblep-tri": 4,
+                "noise-white": 5, "noise-pink": 5,
+                "wt-analog": 6, "wt-vocal": 6, "fm-basic": 7
+            ]
+            params.append(("obrix_src1Type", srcTypeMap[specimen.subtype] ?? 2))
+        case .processor:
+            let procTypeMap: [String: Float] = [
+                "svf-lp": 1, "svf-hp": 2, "svf-bp": 3,
+                "shaper-soft": 4, "shaper-hard": 4, "feedback": 5
+            ]
+            params.append(("obrix_proc1Type", procTypeMap[specimen.subtype] ?? 1))
+        case .modulator:
+            params.append(("obrix_mod2Type", 2))
+            params.append(("obrix_mod2Target", 2))
+        case .effect:
+            let fxTypeMap: [String: Float] = [
+                "delay-stereo": 1, "chorus-lush": 2, "reverb-hall": 3, "dist-warm": 1
+            ]
+            params.append(("obrix_fx1Type", fxTypeMap[specimen.subtype] ?? 1))
+        }
+        // Mapped parameter values
+        for (specimenParam, value) in specimen.parameterState {
+            if let mapping = Self.parameterMapping[specimenParam] {
+                params.append((mapping.engineParam, mapping.scale(value)))
+            }
+        }
+    }
+
     /// Push a single specimen's parameters to the engine based on its category.
     /// Uses setParameterImmediate for synchronous writes (no queue delay).
     private func applySpecimenToEngine(_ specimen: Specimen, bridge: ObrixBridge) {
@@ -160,12 +215,41 @@ final class AudioEngineManager: ObservableObject {
         }
     }
 
+    /// Push a single specimen parameter change to the engine immediately.
+    /// Used by the parameter panel sliders for real-time feedback.
+    func pushSingleParam(specimenParam: String, value: Float) {
+        guard let bridge = ObrixBridge.shared() else { return }
+        if let mapping = Self.parameterMapping[specimenParam] {
+            let scaled = mapping.scale(value)
+            bridge.setParameterImmediate(mapping.engineParam, value: scaled)
+        }
+    }
+
     // MARK: - Specimen → Engine Parameter Mapping
 
     private struct ParamMapping {
         let engineParam: String
         let scale: (Float) -> Float
     }
+
+    // MARK: - Parameter Cache (T1-03)
+
+    /// Per-slot cache of resolved (engineParam, scaledValue) pairs.
+    /// Built once on wiring change; blasted atomically on each noteOn.
+    private var slotParamCache: [Int: [(String, Float)]] = [:]
+
+    /// Default values written before each cached blast to ensure modules not
+    /// used by the current slot are reset cleanly.
+    private static let resetParams: [(String, Float)] = [
+        ("obrix_src1Type", 0), ("obrix_src2Type", 0),
+        ("obrix_proc1Type", 0), ("obrix_proc2Type", 0), ("obrix_proc3Type", 0),
+        ("obrix_fx1Type", 0), ("obrix_fx2Type", 0), ("obrix_fx3Type", 0),
+        ("obrix_mod1Depth", 0), ("obrix_mod2Depth", 0),
+        ("obrix_ampAttack", 0.01), ("obrix_ampDecay", 0.3),
+        ("obrix_ampSustain", 0.7), ("obrix_ampRelease", 0.5),
+    ]
+
+    // MARK: - Specimen → Engine Parameter Mapping
 
     /// Maps specimen parameter names to OBRIX engine parameter names with value scaling.
     /// Specimen params use simplified names (flt1, env1, lfo1) and 0-1 ranges.
@@ -235,14 +319,26 @@ final class AudioEngineManager: ObservableObject {
     weak var reefStoreRef: ReefStore?
 
     func noteOn(slotIndex: Int, velocity: Float) {
-        // Configure the engine for this slot's specimen chain before playing
-        if let reefStore = reefStoreRef {
+        guard let bridge = ObrixBridge.shared() else { return }
+
+        // Fast path: blast cached params (no UUID matching, no chain walking per note).
+        // Falls back to full applySlotChain if cache is cold (first note before wiring settles).
+        if let cached = slotParamCache[slotIndex] {
+            for (param, value) in Self.resetParams {
+                bridge.setParameterImmediate(param, value: value)
+            }
+            for (param, value) in cached {
+                bridge.setParameterImmediate(param, value: value)
+            }
+        } else if let reefStore = reefStoreRef {
+            // Cache miss — fall back to full chain apply and populate cache for next time
             applySlotChain(slotIndex: slotIndex, reefStore: reefStore)
+            rebuildParamCache(reefStore: reefStore)
         }
 
         // Map slot index to MIDI note: C3 + slot index (gives C3-D#4 for 16 slots)
         let note = min(127, max(0, 60 + slotIndex))
-        ObrixBridge.shared()?.note(on: Int32(note), velocity: velocity)
+        bridge.note(on: Int32(note), velocity: velocity)
         midiOutput.sendNoteOn(note: UInt8(note), velocity: UInt8(velocity * 127), channel: UInt8(slotIndex % 16))
         if !hasPlayedFirstNote {
             hasPlayedFirstNote = true
