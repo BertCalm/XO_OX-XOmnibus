@@ -130,11 +130,15 @@ public:
         // ── Panel background ─────────────────────────────────────────────────
         g.fillAll(get(shellWhite()));
 
-        // ── Section header bar ───────────────────────────────────────────────
+        // ── Section header bar — elevated bg, subtle XO Gold text ───────────
         auto headerArea = getLocalBounds().removeFromTop(kHeaderH);
-        g.setColour(get(xoGold));
+        g.setColour(get(elevated()));          // #242426 — elevated surface, not bright gold
         g.fillRect(headerArea);
-        g.setColour(GalleryColors::get(GalleryColors::textDark()));
+        // Bottom separator
+        g.setColour(get(borderGray()));
+        g.drawHorizontalLine(kHeaderH - 1, 0.0f, static_cast<float>(getWidth()));
+        // "EXPORT" label — XO Gold at 0.8 alpha (subtle, not a neon banner)
+        g.setColour(juce::Colour(0xffE9C46A).withAlpha(0.80f));
         g.setFont(GalleryFonts::display(11.0f));
         g.drawText("EXPORT", headerArea.reduced(12, 0), juce::Justification::centredLeft);
 
@@ -353,25 +357,29 @@ private:
     }
 
     //==========================================================================
-    // Activate a format pill and update visual state
+    // Activate a format pill and update visual state.
+    // Active:   XO Gold text + subtle gold bg tint (15% alpha) — feels selected, not garish
+    // Inactive: elevated bg, T2 text, no special fill (border drawn in paint/LookAndFeel)
     void selectFormat(int idx)
     {
         activeFormat = idx;
 
+        const juce::Colour goldActive    = juce::Colour(0xffE9C46A);
+        const juce::Colour inactiveText  = GalleryColors::get(GalleryColors::t2());
+        const juce::Colour inactiveBg    = GalleryColors::get(GalleryColors::elevated());
+        const juce::Colour activeBg      = goldActive.withAlpha(0.15f);
+
         for (int i = 0; i < kNumFormats; ++i)
         {
             bool active = (i == idx);
-            formatPills[i]->setColour(
-                juce::TextButton::buttonColourId,
-                active ? GalleryColors::get(GalleryColors::xoGold).withAlpha(0.20f)
-                       : GalleryColors::get(GalleryColors::shellWhite()));
-            formatPills[i]->setColour(
-                juce::TextButton::buttonOnColourId,
-                GalleryColors::get(GalleryColors::xoGold).withAlpha(0.20f));
-            formatPills[i]->setColour(
-                juce::TextButton::textColourOffId,
-                active ? GalleryColors::get(GalleryColors::xoGold)
-                       : GalleryColors::get(GalleryColors::textMid()));
+            formatPills[i]->setColour(juce::TextButton::buttonColourId,
+                                      active ? activeBg : inactiveBg);
+            formatPills[i]->setColour(juce::TextButton::buttonOnColourId,
+                                      activeBg);
+            formatPills[i]->setColour(juce::TextButton::textColourOffId,
+                                      active ? goldActive : inactiveText);
+            formatPills[i]->setColour(juce::TextButton::textColourOnId,
+                                      goldActive);
         }
 
         repaint();

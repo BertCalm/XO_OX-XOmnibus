@@ -138,7 +138,7 @@ public:
         {
             outshineSidebar = std::make_unique<OutshineSidebarPanel>(proc);
             contentArea.addChildComponent(*outshineSidebar);
-            outshineSidebar->setVisible(activeTab == Export);
+            outshineSidebar->setVisible(false); // hidden — ExportTabPanel owns the full Export tab area
         }
 
         if (couplingPanel == nullptr)
@@ -234,7 +234,7 @@ public:
             exportPanel->setVisible(t == Export);
         exportPlaceholder.setVisible(!haveExportPanel && t == Export);
 
-        if (outshineSidebar) outshineSidebar->setVisible(t == Export);
+        if (outshineSidebar) outshineSidebar->setVisible(false); // always hidden — off-screen
 
         if (settingsPanel) settingsPanel->setVisible(t == Settings);
         settingsPlaceholder.setVisible(t == Settings && !settingsPanel);
@@ -353,21 +353,29 @@ public:
 
         const int w = getWidth();
 
-        // ── Tab bar — proportional widths so labels don't truncate ──────────
-        // Measure each label's natural width, then scale proportionally to fill.
-        juce::Font tabFont = GalleryFonts::display(9.5f);
+        // ── Tab bar — proportional widths, skip hidden tabs ──────────────────
+        juce::Font tabFont = GalleryFonts::display(10.0f);
         float totalNatural = 0.0f;
-        float natWidths[NumTabs];
+        float natWidths[NumTabs] = {};
         for (int i = 0; i < NumTabs; ++i)
         {
-            natWidths[i] = tabFont.getStringWidthFloat(tabLabels[i]) + 22.0f; // 11px padding each side
+            if (!tabButtons[i]->isVisible()) continue;
+            natWidths[i] = tabFont.getStringWidthFloat(tabLabels[i]) + 22.0f;
             totalNatural += natWidths[i];
         }
         const float scale = (totalNatural > 0.0f) ? (float)w / totalNatural : 1.0f;
         int x = 0;
         for (int i = 0; i < NumTabs; ++i)
         {
-            int thisW = (i == NumTabs - 1) ? (w - x) : juce::roundToInt(natWidths[i] * scale);
+            if (!tabButtons[i]->isVisible())
+            {
+                tabButtons[i]->setBounds(0, -100, 0, 0);
+                continue;
+            }
+            bool isLast = true;
+            for (int j = i + 1; j < NumTabs; ++j)
+                if (tabButtons[j]->isVisible()) { isLast = false; break; }
+            int thisW = isLast ? (w - x) : juce::roundToInt(natWidths[i] * scale);
             tabButtons[i]->setBounds(x, 0, thisW, kTabBarH);
             x += thisW;
         }
@@ -382,22 +390,13 @@ public:
         if (presetBrowser != nullptr)
             presetBrowser->setBounds(inner);
 
-        // ExportTabPanel + OutshineSidebarPanel: split the Export tab area vertically
+        // ExportTabPanel owns the full Export tab content area.
+        // OutshineSidebarPanel is hidden; park it off-screen so it doesn't intercept input.
         if (exportPanel != nullptr)
-        {
-            auto exportArea = contentArea.getLocalBounds();
-            if (outshineSidebar != nullptr)
-            {
-                // Outshine panel takes 180pt from the bottom
-                static constexpr int kOutshineSidebarH = 180;
-                outshineSidebar->setBounds(exportArea.removeFromBottom(kOutshineSidebarH));
-            }
-            exportPanel->setBounds(exportArea);
-        }
-        else if (outshineSidebar != nullptr)
-        {
-            outshineSidebar->setBounds(contentArea.getLocalBounds());
-        }
+            exportPanel->setBounds(contentArea.getLocalBounds());
+
+        if (outshineSidebar != nullptr)
+            outshineSidebar->setBounds(-4000, -4000, 320, 180); // off-screen, hidden
 
         if (couplingPanel != nullptr)
             couplingPanel->setBounds(inner);
