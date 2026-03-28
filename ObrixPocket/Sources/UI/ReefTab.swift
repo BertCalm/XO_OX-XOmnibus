@@ -16,6 +16,7 @@ struct ReefTab: View {
     @StateObject private var streakManager = StreakManager()
     @StateObject private var audioExporter = AudioExporter()
     @StateObject private var energyManager = ReefEnergyManager()
+    @StateObject private var seasonalEvent = SeasonalEventManager()
     @State private var isAudioRecording = false
     @State private var showAudioShare = false
     @State private var isGeneratingClip = false
@@ -253,6 +254,28 @@ struct ReefTab: View {
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 4)
+
+            // Seasonal event banner — shown when an event is active
+            if let event = seasonalEvent.currentEvent {
+                HStack(spacing: 8) {
+                    Image(systemName: "sparkle")
+                        .font(.system(size: 10))
+                        .foregroundColor(Color(hex: "E9C46A"))
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(event.name.uppercased())
+                            .font(.custom("JetBrainsMono-Bold", size: 9))
+                            .tracking(1)
+                            .foregroundColor(Color(hex: "E9C46A"))
+                        Text("\(event.daysRemaining) days left · \(event.description)")
+                            .font(.custom("Inter-Regular", size: 8))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 4)
+                .background(Color(hex: "E9C46A").opacity(0.03))
+            }
 
             // The Reef Grid (SpriteKit scene)
             GeometryReader { geometry in

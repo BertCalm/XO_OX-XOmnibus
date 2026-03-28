@@ -283,15 +283,25 @@ final class SpawnManager: ObservableObject {
         case .effect:    subtypes = Self.effectSubtypes
         }
 
-        // Weight selection by biome affinity — preferred biome specimens are 3x more likely
+        // Weight selection by biome affinity and seasonal event boosts
         let currentBiome = biomeDetector.currentBiome
+        let activeEvent = SeasonalEventManager.activeEvent()
         let weighted = subtypes.map { subtype -> (String, Float) in
             let catalogID = SpecimenCatalog.catalogSubtypeID(from: subtype)
+            var weight: Float = 1.0
+
+            // Biome affinity — preferred biome specimens are 3x more likely
             if let entry = SpecimenCatalog.entry(for: catalogID),
                entry.preferredBiomes.contains(currentBiome) {
-                return (subtype, 3.0)
+                weight *= 3.0
             }
-            return (subtype, 1.0)
+
+            // Seasonal event boost — boosted subtypes are 2x more likely during the event
+            if let event = activeEvent, event.boostedSubtypes.contains(catalogID) {
+                weight *= 2.0
+            }
+
+            return (subtype, weight)
         }
 
         let selectedSubtype = weightedRandom(from: weighted) ?? subtypes[0]

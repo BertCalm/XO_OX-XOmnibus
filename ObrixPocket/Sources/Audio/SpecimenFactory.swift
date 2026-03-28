@@ -32,6 +32,15 @@ final class SpecimenFactory {
             description: "Caught in the wild"
         )
 
+        // Check for seasonal cosmetic bonus — 15% chance during an active event
+        var resolvedCosmeticTier: CosmeticTier = .standard
+        if let event = SeasonalEventManager.activeEvent(),
+           let bonusTierRaw = event.bonusCosmeticTier,
+           let bonusTier = CosmeticTier(rawValue: bonusTierRaw),
+           Float.random(in: 0...1) < 0.15 {
+            resolvedCosmeticTier = bonusTier
+        }
+
         return Specimen(
             id: UUID(),
             name: displayName,
@@ -50,7 +59,7 @@ final class SpecimenFactory {
             catchTimestamp: Date(),
             catchWeatherDescription: weather?.description,
             creatureGenomeData: nil,
-            cosmeticTier: .standard,
+            cosmeticTier: resolvedCosmeticTier,
             morphIndex: 0,
             musicHash: nil,
             sourceTrackTitle: nil,

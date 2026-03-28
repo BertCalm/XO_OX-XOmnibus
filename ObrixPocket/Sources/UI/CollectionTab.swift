@@ -19,6 +19,7 @@ struct CollectionTab: View {
     @StateObject private var collectionTracker = CollectionTracker()
     @State private var pendingRewards: [CollectionMilestone] = []
     @State private var showRewardAlert = false
+    @StateObject private var tradePost = TradePostManager()
 
     // .xoreef export
     @State private var exportURL: URL?
@@ -192,6 +193,9 @@ struct CollectionTab: View {
 
                         // MARK: Milestones Section
                         milestonesSection
+
+                        // MARK: Trading Post Section
+                        tradingPostSection
 
                         // MARK: Settings Section
                         settingsSection
@@ -429,6 +433,88 @@ struct CollectionTab: View {
                 .padding(.vertical, 4)
             }
         }
+    }
+
+    // MARK: - Trading Post Section
+
+    private var tradingPostSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: "arrow.left.arrow.right")
+                    .foregroundColor(Color(hex: "1E8B7E"))
+                    .font(.system(size: 10))
+                Text("TRADING POST")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .tracking(1.5)
+                    .foregroundColor(Color(hex: "1E8B7E"))
+                Spacer()
+                Text("\(tradePost.offers.count) offers")
+                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .foregroundColor(.white.opacity(0.3))
+            }
+            .padding(.horizontal, 20)
+
+            ForEach(tradePost.offers) { offer in
+                let requestedName = SpecimenCatalog.entry(for: offer.requestedSubtype)?.creatureName ?? offer.requestedSubtype
+                let offeredName = SpecimenCatalog.entry(for: offer.offeredSubtype)?.creatureName ?? offer.offeredSubtype
+                let requestedCategory = SpecimenCatalog.entry(for: offer.requestedSubtype)?.category ?? .source
+                let offeredCategory = SpecimenCatalog.entry(for: offer.offeredSubtype)?.category ?? .source
+
+                HStack(spacing: 8) {
+                    // What they want
+                    VStack(spacing: 2) {
+                        Text("WANT")
+                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .foregroundColor(.white.opacity(0.2))
+                        SpecimenSprite(subtype: offer.requestedSubtype, category: requestedCategory, size: 24)
+                        Text(requestedName)
+                            .font(.custom("Inter-Regular", size: 8))
+                            .foregroundColor(.white.opacity(0.5))
+                        Text("Lv.\(offer.requestedMinLevel)+")
+                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+                    .frame(maxWidth: .infinity)
+
+                    Image(systemName: "arrow.right")
+                        .font(.system(size: 10))
+                        .foregroundColor(.white.opacity(0.2))
+
+                    // What they offer
+                    VStack(spacing: 2) {
+                        Text("GIVE")
+                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .foregroundColor(.white.opacity(0.2))
+                        SpecimenSprite(subtype: offer.offeredSubtype, category: offeredCategory, size: 24)
+                        Text(offeredName)
+                            .font(.custom("Inter-Regular", size: 8))
+                            .foregroundColor(.white.opacity(0.5))
+                        Text("\(offer.offeredRarity.rawValue) Lv.\(offer.offeredLevel)")
+                            .font(.custom("JetBrainsMono-Regular", size: 7))
+                            .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .padding(.vertical, 6)
+                .padding(.horizontal, 20)
+                .background(Color.white.opacity(0.02))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(Color(hex: "1E8B7E").opacity(0.15), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
+            }
+
+            if tradePost.offers.isEmpty {
+                Text("No active offers — check back tomorrow.")
+                    .font(.custom("Inter-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.2))
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 4)
+            }
+        }
+        .padding(.top, 8)
     }
 
     // MARK: - Settings Section
