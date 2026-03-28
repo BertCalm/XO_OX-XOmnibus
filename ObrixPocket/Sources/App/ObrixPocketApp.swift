@@ -36,6 +36,12 @@ struct ObrixPocketApp: App {
                     audioEngine.start()
                     firstLaunchManager.resetDailyPlayIfNeeded()
 
+                    // Request notification permission and schedule reef reminders
+                    NotificationManager.shared.requestPermission()
+                    NotificationManager.shared.resetDormancyTimer()
+                    NotificationManager.shared.scheduleDailyEnergyReminder()
+                    NotificationManager.shared.scheduleMusicCatchReminder()
+
                     if firstLaunchManager.isFirstLaunch {
                         // First launch: place starter specimen and mark launch complete
                         _ = firstLaunchManager.placeStarterSpecimen(in: reefStore)

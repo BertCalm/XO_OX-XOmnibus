@@ -12,11 +12,18 @@ struct CollectionTab: View {
     @State private var showingCard = false
     @State private var deepSectionExpanded = false
     @State private var showResetConfirm = false
+    @State private var notificationsEnabled = true
     @StateObject private var milestoneManager = MilestoneManager()
 
     // .xoreef export
     @State private var exportURL: URL?
     @State private var showExportShare = false
+
+    // Compare mode
+    @State private var compareMode = false
+    @State private var compareSpecimenA: Specimen?
+    @State private var compareSpecimenB: Specimen?
+    @State private var showCompare = false
 
     // Compute the set of discovered subtype IDs once per render.
     // A type is "discovered" if found in the reef OR in the full collection.
@@ -46,6 +53,22 @@ struct CollectionTab: View {
     private func specimen(for entry: CatalogEntry) -> Specimen? {
         reefStore.specimens.compactMap { $0 }.first { $0.subtype == entry.subtypeID }
             ?? reefStore.loadAllSpecimens().first { $0.subtype == entry.subtypeID }
+    }
+
+    /// Central tap handler — branches on compareMode.
+    private func handleDiscoveredTap(entry: CatalogEntry) {
+        guard let resolvedSpecimen = specimen(for: entry) else { return }
+        if compareMode {
+            if compareSpecimenA == nil {
+                compareSpecimenA = resolvedSpecimen
+            } else if compareSpecimenB == nil {
+                compareSpecimenB = resolvedSpecimen
+                showCompare = true
+            }
+        } else {
+            selectedSpecimen = resolvedSpecimen
+            showingCard = true
+        }
     }
 
     // Split core entries by category (only core specimens for normal sections)
@@ -96,10 +119,7 @@ struct CollectionTab: View {
                             categoryColor: Color(hex: "3380FF"),
                             entries: coreSources,
                             discoveredSubtypes: subtypes,
-                            onDiscoveredTap: { entry in
-                                selectedSpecimen = specimen(for: entry)
-                                showingCard = selectedSpecimen != nil
-                            }
+                            onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                         )
 
                         CollectionSection(
@@ -107,10 +127,7 @@ struct CollectionTab: View {
                             categoryColor: Color(hex: "FF4D4D"),
                             entries: coreProcessors,
                             discoveredSubtypes: subtypes,
-                            onDiscoveredTap: { entry in
-                                selectedSpecimen = specimen(for: entry)
-                                showingCard = selectedSpecimen != nil
-                            }
+                            onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                         )
 
                         CollectionSection(
@@ -118,10 +135,7 @@ struct CollectionTab: View {
                             categoryColor: Color(hex: "4DCC4D"),
                             entries: coreModulators,
                             discoveredSubtypes: subtypes,
-                            onDiscoveredTap: { entry in
-                                selectedSpecimen = specimen(for: entry)
-                                showingCard = selectedSpecimen != nil
-                            }
+                            onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                         )
 
                         CollectionSection(
@@ -129,10 +143,7 @@ struct CollectionTab: View {
                             categoryColor: Color(hex: "B34DFF"),
                             entries: coreEffects,
                             discoveredSubtypes: subtypes,
-                            onDiscoveredTap: { entry in
-                                selectedSpecimen = specimen(for: entry)
-                                showingCard = selectedSpecimen != nil
-                            }
+                            onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                         )
 
                         // MARK: Deep Specimens Section (collapsible)
@@ -174,6 +185,14 @@ struct CollectionTab: View {
                     ShareSheet(items: [url])
                 }
             }
+            .sheet(isPresented: $showCompare, onDismiss: {
+                compareSpecimenA = nil
+                compareSpecimenB = nil
+            }) {
+                if let a = compareSpecimenA, let b = compareSpecimenB {
+                    CompareView(specimenA: a, specimenB: b)
+                }
+            }
         }
         .navigationViewStyle(.stack)
     }
@@ -187,6 +206,17 @@ struct CollectionTab: View {
                     .font(.custom("SpaceGrotesk-Bold", size: 20))
                     .foregroundColor(.white)
                 Spacer()
+                Button(action: {
+                    compareMode.toggle()
+                    if !compareMode {
+                        compareSpecimenA = nil
+                        compareSpecimenB = nil
+                    }
+                }) {
+                    Text(compareMode ? "Cancel" : "Compare")
+                        .font(.custom("Inter-Regular", size: 11))
+                        .foregroundColor(compareMode ? Color(hex: "FF4D4D") : Color(hex: "1E8B7E").opacity(0.6))
+                }
             }
             HStack(spacing: 12) {
                 // Core count
@@ -279,6 +309,44 @@ struct CollectionTab: View {
             settingsRow(icon: "waveform", title: "Audio Quality", detail: "Low Latency (5ms)")
             settingsRow(icon: "house.fill", title: "Reef Proximity", detail: "Uses home location")
             settingsRow(icon: "music.note", title: "Daily Music Catches", detail: "1 per day")
+
+            HStack(spacing: 10) {
+                Image(systemName: "bell.fill")
+                    .font(.system(size: 14))
+                    .foregroundColor(.white.opacity(0.3))
+                    .frame(width: 24)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Notifications")
+                        .font(.custom("Inter-Medium", size: 13))
+                        .foregroundColor(.white.opacity(0.6))
+                    Text("Daily reminders and energy alerts")
+                        .font(.custom("Inter-Regular", size: 9))
+                        .foregroundColor(.white.opacity(0.25))
+                }
+                Spacer()
+                Toggle("", isOn: $notificationsEnabled)
+                    .labelsHidden()
+                    .tint(Color(hex: "1E8B7E"))
+                    .onChange(of: notificationsEnabled) { enabled in
+                        if enabled {
+                            NotificationManager.shared.scheduleDailyEnergyReminder()
+                            NotificationManager.shared.scheduleMusicCatchReminder()
+                        } else {
+                            NotificationManager.shared.cancelAll()
+                        }
+                        UserDefaults.standard.set(enabled, forKey: "obrix_notifications_enabled")
+                    }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 4)
+            .onAppear {
+                notificationsEnabled = UserDefaults.standard.bool(forKey: "obrix_notifications_enabled")
+                // Default to true if key doesn't exist
+                if !UserDefaults.standard.bool(forKey: "obrix_notifications_set") {
+                    notificationsEnabled = true
+                    UserDefaults.standard.set(true, forKey: "obrix_notifications_set")
+                }
+            }
 
             Button(action: {
                 if let url = XOReefExporter.exportToFile(reefStore: reefStore) {
@@ -412,10 +480,7 @@ struct CollectionTab: View {
                 DeepSpecimensGrid(
                     entries: SpecimenCatalog.deepSpecimens,
                     discoveredSubtypes: discoveredSubtypes,
-                    onDiscoveredTap: { entry in
-                        selectedSpecimen = specimen(for: entry)
-                        showingCard = selectedSpecimen != nil
-                    }
+                    onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                 )
                 .transition(.opacity.combined(with: .move(edge: .top)))
             }
