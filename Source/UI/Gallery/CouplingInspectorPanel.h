@@ -61,16 +61,16 @@ public:
 
             // Header — transparent button so the card background shows through;
             // text uses T1 for the route number, drawn directly in paint().
-            card.headerBtn.setButtonText (routeLabel);
+            card.headerBtn.setButtonText ("R" + juce::String(r + 1) + "  —  tap to configure");
             card.headerBtn.setClickingTogglesState (false);
             card.headerBtn.setColour (juce::TextButton::buttonColourId,
                                       juce::Colours::transparentBlack);
             card.headerBtn.setColour (juce::TextButton::buttonOnColourId,
                                       juce::Colours::transparentBlack);
             card.headerBtn.setColour (juce::TextButton::textColourOffId,
-                                      juce::Colours::transparentBlack);  // drawn in paint()
+                                      GalleryColors::get(GalleryColors::t2()));
             card.headerBtn.setColour (juce::TextButton::textColourOnId,
-                                      juce::Colours::transparentBlack);
+                                      GalleryColors::get(GalleryColors::t1()));
             A11y::setup (card.headerBtn,
                          routeLabel + " expand/collapse",
                          "Toggle route " + juce::String (r + 1) + " detail view");
@@ -331,7 +331,7 @@ public:
                             juce::Justification::centredLeft);
             }
 
-            // ── Collapsed summary: "SRC → TGT  ·  TypeShort" (MUST A2-01/A2-03) ─
+            // ── Collapsed summary: "SRC → TGT  ·  TypeShort" or placeholder ─
             if (!routeCards[r].expanded)
             {
                 int srcSlot = getSlotIndex (r, "source");
@@ -339,6 +339,23 @@ public:
                 juce::String srcName   = slotName (srcSlot);
                 juce::String tgtName   = slotName (tgtSlot);
                 juce::String typeShort = getTypeShortLabel (r);
+
+                // Show placeholder when route is not active
+                if (!active)
+                {
+                    g.setFont (GalleryFonts::body (10.0f));
+                    g.setColour (get (t2()));
+                    juce::String placeholder = "R" + juce::String(r + 1) + "  —  tap to configure";
+                    g.drawText (placeholder,
+                                juce::Rectangle<float> (
+                                    cardRect.getX() + kInnerPad + 30.0f,
+                                    cardRect.getY(),
+                                    cardRect.getWidth() - kInnerPad - 60.0f,
+                                    static_cast<float> (kCardCollapsedH - kCardGap)),
+                                juce::Justification::centredLeft, false);
+                    y += cardH;
+                    continue;
+                }
 
                 auto* srcEng = processor.getEngine (srcSlot);
                 auto* tgtEng = processor.getEngine (tgtSlot);
