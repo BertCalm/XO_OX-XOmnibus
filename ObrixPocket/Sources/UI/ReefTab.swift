@@ -6,10 +6,12 @@ struct ReefTab: View {
     @EnvironmentObject var reefStore: ReefStore
     @EnvironmentObject var firstLaunchManager: FirstLaunchManager
     @StateObject private var presetManager = ReefPresetManager()
+    @StateObject private var recorder = PerformanceRecorder()
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
     @State private var octaveOffset: Int = 0      // Keyboard octave shift (-2 to +2)
+    @State private var keyboardScale: KeyboardScale = .pentatonic  // Default: hardest to sound bad
     @State private var showSaveDialog = false
     @State private var showLoadSheet = false
     @State private var presetName = ""
@@ -119,6 +121,23 @@ struct ReefTab: View {
                         .font(.custom("JetBrainsMono-Regular", size: 10))
                         .foregroundColor(Color(hex: "1E8B7E").opacity(0.7))
                     Spacer()
+                    // Scale selector
+                    Menu {
+                        ForEach(KeyboardScale.allCases, id: \.self) { scale in
+                            Button(action: { keyboardScale = scale }) {
+                                HStack {
+                                    Text(scale.rawValue)
+                                    if scale == keyboardScale {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                    } label: {
+                        Text(keyboardScale.rawValue)
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                    }
                     // Octave controls
                     Button(action: { if octaveOffset > -2 { octaveOffset -= 1 } }) {
                         Text("−")
@@ -140,6 +159,98 @@ struct ReefTab: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 2)
 
+                // Record controls
+                if recorder.hasRecording || recorder.isRecording {
+                    HStack(spacing: 12) {
+                        // Record button
+                        Button(action: {
+                            if recorder.isRecording { recorder.stopRecording() }
+                            else { recorder.startRecording() }
+                        }) {
+                            Circle()
+                                .fill(recorder.isRecording ? Color(hex: "FF4D4D") : Color(hex: "FF4D4D").opacity(0.5))
+                                .frame(width: 24, height: 24)
+                                .overlay(
+                                    recorder.isRecording ?
+                                    AnyView(RoundedRectangle(cornerRadius: 3).fill(.white).frame(width: 10, height: 10)) :
+                                    AnyView(Circle().fill(.white).frame(width: 10, height: 10))
+                                )
+                        }
+
+                        if recorder.hasRecording && !recorder.isRecording {
+                            // Play button
+                            Button(action: {
+                                if recorder.isPlaying {
+                                    recorder.stopPlayback()
+                                } else {
+                                    recorder.play(
+                                        noteOn: { note, vel in ObrixBridge.shared()?.note(on: Int32(note), velocity: vel) },
+                                        noteOff: { note in ObrixBridge.shared()?.noteOff(Int32(note)) }
+                                    )
+                                }
+                            }) {
+                                Image(systemName: recorder.isPlaying ? "stop.fill" : "play.fill")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(Color(hex: "1E8B7E"))
+                            }
+
+                            Text(recorder.durationString)
+                                .font(.custom("JetBrainsMono-Regular", size: 10))
+                                .foregroundColor(.white.opacity(0.4))
+
+                            // Share button
+                            Button(action: {
+                                guard let data = recorder.exportJSON() else { return }
+                                let url = FileManager.default.temporaryDirectory
+                                    .appendingPathComponent("reef-performance.json")
+                                try? data.write(to: url)
+                                let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                   let rootVC = windowScene.windows.first?.rootViewController {
+                                    rootVC.present(av, animated: true)
+                                }
+                            }) {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
+                            }
+                        }
+
+                        // Recording indicator — duration readout while active
+                        if recorder.isRecording {
+                            HStack(spacing: 6) {
+                                Circle()
+                                    .fill(Color(hex: "FF4D4D"))
+                                    .frame(width: 8, height: 8)
+                                Text("REC \(recorder.durationString)")
+                                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                                    .foregroundColor(Color(hex: "FF4D4D").opacity(0.7))
+                            }
+                        }
+
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 4)
+                } else {
+                    // Show record button when no recording exists yet
+                    HStack {
+                        Button(action: { recorder.startRecording() }) {
+                            HStack(spacing: 4) {
+                                Circle()
+                                    .fill(Color(hex: "FF4D4D").opacity(0.5))
+                                    .frame(width: 12, height: 12)
+                                Text("REC")
+                                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                                    .foregroundColor(.white.opacity(0.3))
+                            }
+                        }
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 4)
+                }
+
                 PlayKeyboard(
                     onNoteOn: { midiNote, velocity in
                         let sourceSlot = activeSourceSlot ?? firstSourceSlot
@@ -147,12 +258,15 @@ struct ReefTab: View {
                             audioEngine.applySlotChain(slotIndex: s, reefStore: reefStore)
                         }
                         ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
+                        recorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
                     },
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))
+                        recorder.recordNoteOff(midiNote: midiNote)
                     },
                     accentColor: Color(hex: "1E8B7E"),
-                    octaveOffset: $octaveOffset
+                    octaveOffset: $octaveOffset,
+                    scale: keyboardScale
                 )
                 .frame(height: 80)
                 .clipShape(RoundedRectangle(cornerRadius: 12))

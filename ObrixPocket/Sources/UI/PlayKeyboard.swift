@@ -1,6 +1,31 @@
 import SwiftUI
 import UIKit
 
+// MARK: - KeyboardScale
+
+enum KeyboardScale: String, CaseIterable {
+    case chromatic  = "Chromatic"
+    case major      = "Major"
+    case minor      = "Minor"
+    case pentatonic = "Pentatonic"
+
+    /// Semitone offsets within one octave that belong to this scale
+    var intervals: [Int] {
+        switch self {
+        case .chromatic:  return [0,1,2,3,4,5,6,7,8,9,10,11]
+        case .major:      return [0,2,4,5,7,9,11]         // W W H W W W H
+        case .minor:      return [0,2,3,5,7,8,10]          // W H W W H W W
+        case .pentatonic: return [0,2,4,7,9]               // Major pentatonic
+        }
+    }
+
+    /// Check if a MIDI note is in this scale (relative to C)
+    func contains(midiNote: Int) -> Bool {
+        let semitone = ((midiNote % 12) + 12) % 12  // Always positive
+        return intervals.contains(semitone)
+    }
+}
+
 // MARK: - KeyboardView (UIKit, multi-touch native)
 
 /// A UIView that handles keyboard rendering and multi-touch directly.
@@ -12,6 +37,9 @@ final class KeyboardView: UIView {
     var onNoteOff: ((Int) -> Void)?
     var accentColor: UIColor = UIColor(red: 0.118, green: 0.545, blue: 0.494, alpha: 1)
     var octaveOffset: Int = 0 {
+        didSet { setNeedsDisplay() }
+    }
+    var scale: KeyboardScale = .chromatic {
         didSet { setNeedsDisplay() }
     }
 
@@ -70,14 +98,21 @@ final class KeyboardView: UIView {
         let blackKeyHeight = bounds.height * 0.6
 
         // Draw white keys first
+        let dimWhiteKeyColor = UIColor(red: 0.055, green: 0.055, blue: 0.063, alpha: 1) // Nearly background
         for i in 0..<whiteKeyCount {
-            let note = startNote + whiteNoteOffsets[i]
-            let x    = CGFloat(i) * whiteKeyWidth
+            let note    = startNote + whiteNoteOffsets[i]
+            let x       = CGFloat(i) * whiteKeyWidth
             let keyRect = CGRect(x: x, y: 0, width: whiteKeyWidth, height: bounds.height)
+            let inScale = scale.contains(midiNote: note)
 
-            let fill: UIColor = activeNotes.contains(note)
-                ? accentColor.withAlphaComponent(0.40)
-                : whiteKeyColor
+            let fill: UIColor
+            if activeNotes.contains(note) {
+                fill = accentColor.withAlphaComponent(0.40)
+            } else if inScale || scale == .chromatic {
+                fill = whiteKeyColor
+            } else {
+                fill = dimWhiteKeyColor
+            }
             ctx.setFillColor(fill.cgColor)
             ctx.fill(keyRect)
 
@@ -88,16 +123,23 @@ final class KeyboardView: UIView {
         }
 
         // Draw black keys on top
+        let dimBlackKeyColor = UIColor(red: 0.024, green: 0.024, blue: 0.032, alpha: 1) // Nearly invisible
         for (whiteIndex, blackOffset) in blackKeyForWhiteIndex {
-            let note = startNote + blackOffset
+            let note    = startNote + blackOffset
+            let inScale = scale.contains(midiNote: note)
             // Black key is centered over the right edge of its white key
             let whiteX = CGFloat(whiteIndex) * whiteKeyWidth
             let blackX = whiteX + whiteKeyWidth - blackKeyWidth * 0.5
             let keyRect = CGRect(x: blackX, y: 0, width: blackKeyWidth, height: blackKeyHeight)
 
-            let fill: UIColor = activeNotes.contains(note)
-                ? accentColor
-                : blackKeyColor
+            let fill: UIColor
+            if activeNotes.contains(note) {
+                fill = accentColor
+            } else if inScale || scale == .chromatic {
+                fill = blackKeyColor
+            } else {
+                fill = dimBlackKeyColor
+            }
             ctx.setFillColor(fill.cgColor)
 
             // Draw with rounded bottom corners
@@ -120,6 +162,7 @@ final class KeyboardView: UIView {
     // MARK: Hit-testing
 
     /// Return the MIDI note at `point`, checking black keys first (they are on top).
+    /// Returns nil for out-of-scale notes when a non-chromatic scale is active.
     func keyAt(point: CGPoint) -> Int? {
         guard bounds.contains(point) else { return nil }
 
@@ -134,7 +177,10 @@ final class KeyboardView: UIView {
                 let blackX = whiteX + whiteKeyWidth - blackKeyWidth * 0.5
                 let keyRect = CGRect(x: blackX, y: 0, width: blackKeyWidth, height: blackKeyHeight)
                 if keyRect.contains(point) {
-                    return startNote + blackOffset
+                    let note = startNote + blackOffset
+                    // Scale filter — skip out-of-scale notes
+                    if scale != .chromatic && !scale.contains(midiNote: note) { return nil }
+                    return note
                 }
             }
         }
@@ -142,7 +188,10 @@ final class KeyboardView: UIView {
         // Fall through to white keys
         let whiteIndex = Int(point.x / whiteKeyWidth)
         guard whiteIndex >= 0 && whiteIndex < whiteKeyCount else { return nil }
-        return startNote + whiteNoteOffsets[whiteIndex]
+        let note = startNote + whiteNoteOffsets[whiteIndex]
+        // Scale filter — skip out-of-scale notes
+        if scale != .chromatic && !scale.contains(midiNote: note) { return nil }
+        return note
     }
 
     // MARK: Velocity
@@ -231,6 +280,7 @@ struct PlayKeyboard: UIViewRepresentable {
     let onNoteOff:    (Int) -> Void
     let accentColor:  Color
     @Binding var octaveOffset: Int
+    var scale: KeyboardScale = .chromatic
 
     func makeUIView(context: Context) -> KeyboardView {
         let view           = KeyboardView()
@@ -238,6 +288,7 @@ struct PlayKeyboard: UIViewRepresentable {
         view.onNoteOff     = onNoteOff
         view.accentColor   = UIColor(accentColor)
         view.octaveOffset  = octaveOffset
+        view.scale         = scale
         return view
     }
 
@@ -246,6 +297,7 @@ struct PlayKeyboard: UIViewRepresentable {
         uiView.onNoteOn     = onNoteOn
         uiView.onNoteOff    = onNoteOff
         uiView.accentColor  = UIColor(accentColor)
+        uiView.scale        = scale
 
         if uiView.octaveOffset != octaveOffset {
             // Release held notes before jumping octave — avoids stuck notes
