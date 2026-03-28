@@ -7,6 +7,7 @@ struct ProfileView: View {
     // Use a single StreakManager instance for the whole view lifetime
     @StateObject private var streakManager = StreakManager()
     @ObservedObject private var masteryManager = MasteryManager.shared
+    @ObservedObject private var badgeManager = BadgeManager.shared
 
     var body: some View {
         ScrollView {
@@ -69,6 +70,9 @@ struct ProfileView: View {
 
                 // Journey progress
                 journeySection
+
+                // Achievement badges
+                badgesSection
 
                 Spacer(minLength: 40)
             }
@@ -192,6 +196,49 @@ struct ProfileView: View {
         case .processor: return Color(hex: "FF4D4D")   // Coral — red
         case .modulator: return Color(hex: "4DCC4D")   // Currents — green
         case .effect:    return Color(hex: "B34DFF")   // Tide Pools — purple
+        }
+    }
+
+    // MARK: - Badges
+
+    private var badgesSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("BADGES")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .tracking(1.5)
+                    .foregroundColor(.white.opacity(0.2))
+                Spacer()
+                Text("\(badgeManager.earnedCount)/\(badgeManager.badges.count)")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.3))
+            }
+            .padding(.horizontal, 20)
+
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))], spacing: 12) {
+                ForEach(badgeManager.badges) { badge in
+                    VStack(spacing: 4) {
+                        Image(systemName: badge.icon)
+                            .font(.system(size: 20))
+                            .foregroundColor(badge.earned ? tierColor(badge.tier) : .white.opacity(0.1))
+                        Text(badge.name)
+                            .font(.custom("Inter-Regular", size: 8))
+                            .foregroundColor(badge.earned ? .white.opacity(0.6) : .white.opacity(0.15))
+                            .lineLimit(1)
+                    }
+                    .frame(width: 70, height: 60)
+                }
+            }
+            .padding(.horizontal, 20)
+        }
+    }
+
+    private func tierColor(_ tier: Badge.BadgeTier) -> Color {
+        switch tier {
+        case .bronze:  return Color(hex: "CD7F32")
+        case .silver:  return Color(hex: "C0C0C0")
+        case .gold:    return Color(hex: "E9C46A")
+        case .diamond: return Color(hex: "B9F2FF")
         }
     }
 }

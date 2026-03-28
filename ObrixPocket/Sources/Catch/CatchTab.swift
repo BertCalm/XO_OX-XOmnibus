@@ -1347,6 +1347,7 @@ struct CatchScreen: View {
                 phase = .caught
                 reefStore.save()
                 ReefStatsTracker.shared.increment(.specimensCaught)
+                BadgeManager.shared.award("first_catch")
                 // Advance the guided journey when a scripted specimen is caught
                 if !firstLaunchManager.isJourneyComplete {
                     firstLaunchManager.advanceJourney()
@@ -1357,6 +1358,7 @@ struct CatchScreen: View {
                 addedToStasis = true
                 phase = .caught
                 ReefStatsTracker.shared.increment(.specimensCaught)
+                BadgeManager.shared.award("first_catch")
                 // Journey advancement still applies even when sent to stasis
                 if !firstLaunchManager.isJourneyComplete {
                     firstLaunchManager.advanceJourney()

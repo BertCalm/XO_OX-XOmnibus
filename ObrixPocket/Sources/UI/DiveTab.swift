@@ -662,6 +662,9 @@ struct DiveTab: View {
 
         // Lifetime stats
         ReefStatsTracker.shared.increment(.divesCompleted)
+        BadgeManager.shared.award("first_dive")
+        let divesCompleted = ReefStatsTracker.shared.value(for: .divesCompleted)
+        if divesCompleted >= 100 { BadgeManager.shared.award("100_dives") }
         if diveDepth > ReefStatsTracker.shared.value(for: .deepestDive) {
             ReefStatsTracker.shared.increment(.deepestDive, by: diveDepth - ReefStatsTracker.shared.value(for: .deepestDive))
         }

@@ -827,6 +827,12 @@ struct ReefTab: View {
                         milestoneManager.increment("play_1000")
                         milestoneManager.increment("play_10000")
                         ReefStatsTracker.shared.increment(.notesPlayed)
+                        // Award note-count badges
+                        BadgeManager.shared.award("first_note")
+                        let notesPlayed = ReefStatsTracker.shared.value(for: .notesPlayed)
+                        if notesPlayed >= 100  { BadgeManager.shared.award("100_notes") }
+                        if notesPlayed >= 1000 { BadgeManager.shared.award("1000_notes") }
+                        if notesPlayed >= 10000 { BadgeManager.shared.award("10000_notes") }
                         // Reef Energy: earn per note (multiplied by active encounter bonus), capped at 50/day
                         energyManager.earnFromPlay(amount: encounterManager.energyMultiplier)
                         // Pause ambient while user is playing; cancel any pending resume

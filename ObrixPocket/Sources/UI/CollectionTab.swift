@@ -739,7 +739,7 @@ struct CollectionTab: View {
                 Text("by XO_OX Designs")
                     .font(.custom("Inter-Regular", size: 10))
                     .foregroundColor(.white.opacity(0.2))
-                Text("v0.1.0 · The reef remembers.")
+                Text("v1.0.0 · Build 75 · The reef remembers.")
                     .font(.custom("JetBrainsMono-Regular", size: 9))
                     .foregroundColor(.white.opacity(0.15))
                     .italic()
