@@ -16,12 +16,14 @@ struct CollectionTab: View {
     @State private var notificationsEnabled = true
     @State private var showStats = false
     @State private var showHelp = false
+    @State private var showProfile = false
     @StateObject private var milestoneManager = MilestoneManager()
 
     @StateObject private var collectionTracker = CollectionTracker()
     @State private var pendingRewards: [CollectionMilestone] = []
     @State private var showRewardAlert = false
     @StateObject private var tradePost = TradePostManager()
+    @ObservedObject private var masteryManager = MasteryManager.shared
 
     // .xoreef export
     @State private var exportURL: URL?
@@ -122,6 +124,9 @@ struct CollectionTab: View {
                         .padding(.horizontal, 20)
                         .padding(.bottom, 8)
 
+                        // MARK: Mastery / Prestige Display
+                        masterySection
+
                         let subtypes = discoveredSubtypes
 
                         // MARK: Core Sections
@@ -212,6 +217,7 @@ struct CollectionTab: View {
                 }
                 .onAppear {
                     collectionTracker.refresh(reefStore: reefStore)
+                    masteryManager.updateFromReef(reefStore: reefStore)
                 }
             }
             .navigationBarHidden(true)
@@ -263,6 +269,19 @@ struct CollectionTab: View {
             .sheet(isPresented: $showHelp) {
                 HelpView()
             }
+            .sheet(isPresented: $showProfile) {
+                NavigationView {
+                    ProfileView()
+                        .environmentObject(reefStore)
+                        .navigationTitle("Profile")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Done") { showProfile = false }
+                            }
+                        }
+                }
+            }
         }
         .navigationViewStyle(.stack)
     }
@@ -276,6 +295,12 @@ struct CollectionTab: View {
                     .font(.custom("SpaceGrotesk-Bold", size: 20, relativeTo: .title2))
                     .foregroundColor(.white)
                 Spacer()
+                Button(action: { showProfile = true }) {
+                    Image(systemName: "person.circle")
+                        .font(.system(size: 14))
+                        .foregroundColor(.white.opacity(0.4))
+                }
+                .accessibilityLabel("Reef Profile")
                 Button(action: { showStats = true }) {
                     Image(systemName: "chart.bar")
                         .font(.system(size: 12))
@@ -359,6 +384,49 @@ struct CollectionTab: View {
                 }
             }
             .padding(.bottom, 8)
+        }
+    }
+
+    // MARK: - Mastery / Prestige Section
+
+    @ViewBuilder
+    private var masterySection: some View {
+        if masteryManager.isPrestigeUnlocked {
+            VStack(spacing: 4) {
+                HStack(spacing: 6) {
+                    Image(systemName: "crown.fill")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color(hex: "E9C46A"))
+                    Text(masteryManager.masteryTitle)
+                        .font(.custom("SpaceGrotesk-Bold", size: 14))
+                        .foregroundColor(Color(hex: "E9C46A"))
+                    Text("Lv.\(masteryManager.masteryLevel)")
+                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .foregroundColor(.white.opacity(0.5))
+                }
+
+                // Mastery XP bar
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(Color.white.opacity(0.06))
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(Color(hex: "E9C46A").opacity(0.4))
+                            .frame(width: geo.size.width * CGFloat(masteryManager.progressToNextLevel))
+                    }
+                }
+                .frame(height: 4)
+                .padding(.horizontal, 60)
+            }
+            .padding(.vertical, 4)
+        } else {
+            let maxedCount = reefStore.specimens.compactMap { $0 }.filter { $0.level >= 10 }.count
+            if maxedCount > 0 {
+                Text("Prestige: \(maxedCount)/16 specimens at Lv.10")
+                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .foregroundColor(.white.opacity(0.25))
+                    .padding(.horizontal, 20)
+            }
         }
     }
 

@@ -1338,6 +1338,7 @@ struct CatchScreen: View {
 
             if perfectMatch {
                 ReefStatsTracker.shared.increment(.perfectCatches)
+                MasteryManager.shared.awardMasteryXP(100)
             }
 
             if let _ = reefStore.addSpecimen(newSpecimen) {

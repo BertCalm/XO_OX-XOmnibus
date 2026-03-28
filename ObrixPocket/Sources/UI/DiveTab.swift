@@ -699,5 +699,8 @@ struct DiveTab: View {
 
         divePhase = .surfacing
         UINotificationFeedbackGenerator().notificationOccurred(.success)
+
+        // Award mastery XP if prestige is unlocked
+        MasteryManager.shared.awardMasteryXP(finalScore / 20)
     }
 }
