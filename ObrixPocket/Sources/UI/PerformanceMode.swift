@@ -9,6 +9,8 @@ struct PerformanceMode: View {
     @State private var octaveOffset: Int = 0
     @State private var keyboardScale: KeyboardScale = .pentatonic
     @State private var keyboardMode: KeyboardMode = .single
+    @StateObject private var audioExporter = AudioExporter()
+    @State private var isAudioRecording = false
 
     // Playback source
     let activeSourceSlot: Int?
@@ -66,6 +68,21 @@ struct PerformanceMode: View {
                         Button("+") { if octaveOffset < 2 { octaveOffset += 1 } }
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white.opacity(0.5))
+
+                        // Audio record
+                        Button(action: {
+                            if isAudioRecording {
+                                audioExporter.stopLiveRecording()
+                                isAudioRecording = false
+                            } else {
+                                audioExporter.startLiveRecording()
+                                isAudioRecording = true
+                            }
+                        }) {
+                            Circle()
+                                .fill(isAudioRecording ? Color(hex: "FF4D4D") : Color(hex: "FF4D4D").opacity(0.3))
+                                .frame(width: 16, height: 16)
+                        }
 
                         // Close
                         Button(action: { dismiss() }) {

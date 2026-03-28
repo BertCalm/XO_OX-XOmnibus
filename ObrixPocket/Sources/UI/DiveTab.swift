@@ -685,6 +685,10 @@ struct DiveTab: View {
         )
         diveHistory.record(record)
         isNewHighScore = finalScore > previousHigh
+        let currentHighStat = ReefStatsTracker.shared.value(for: .highestDiveScore)
+        if finalScore > currentHighStat {
+            ReefStatsTracker.shared.increment(.highestDiveScore, by: finalScore - currentHighStat)
+        }
 
         // Update weekly challenge progress
         weeklyChallenges.updateFromDive(

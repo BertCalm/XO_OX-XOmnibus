@@ -65,6 +65,7 @@ final class LoopRecorder: ObservableObject {
         if !currentLayer.isEmpty {
             layers.append(currentLayer)
             layerCount = layers.count
+            ReefStatsTracker.shared.increment(.loopsRecorded)
         }
         currentLayer = []
     }

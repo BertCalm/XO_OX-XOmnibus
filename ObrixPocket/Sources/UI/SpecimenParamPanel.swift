@@ -184,6 +184,7 @@ struct SpecimenParamPanel: View {
                 Button("Release", role: .destructive) {
                     reefStore.releaseSpecimen(at: slotIndex)
                     reefStore.save()
+                    ReefStatsTracker.shared.increment(.specimensReleased)
                     onDismiss?()
                 }
                 Button("Cancel", role: .cancel) {}

@@ -14,6 +14,9 @@ struct ReefTab: View {
     @StateObject private var metronome = MetronomeManager()
     @StateObject private var loopRecorder = LoopRecorder()
     @StateObject private var streakManager = StreakManager()
+    @StateObject private var audioExporter = AudioExporter()
+    @State private var isAudioRecording = false
+    @State private var showAudioShare = false
     @State private var showStreakReward = false
     @State private var lastReward: StreakReward = .none
     @State private var reefScene: ReefScene?
@@ -540,6 +543,53 @@ struct ReefTab: View {
                     .padding(.bottom, 4)
                 }
 
+                // Audio recording button (records actual audio output via JUCE tap)
+                HStack(spacing: 8) {
+                    Button(action: {
+                        if isAudioRecording {
+                            audioExporter.stopLiveRecording()
+                            isAudioRecording = false
+                            if audioExporter.lastExportURL != nil {
+                                showAudioShare = true
+                            }
+                        } else {
+                            audioExporter.startLiveRecording()
+                            isAudioRecording = true
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Circle()
+                                .fill(isAudioRecording ? Color(hex: "FF4D4D") : Color(hex: "FF4D4D").opacity(0.3))
+                                .frame(width: 10, height: 10)
+                            Text(isAudioRecording ? "STOP" : "REC AUDIO")
+                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .foregroundColor(isAudioRecording ? Color(hex: "FF4D4D") : .white.opacity(0.3))
+                        }
+                    }
+
+                    if isAudioRecording {
+                        Text(String(format: "%.1fs", audioExporter.recordingDuration))
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+                    }
+
+                    if audioExporter.lastExportURL != nil && !isAudioRecording {
+                        Button(action: { showAudioShare = true }) {
+                            HStack(spacing: 3) {
+                                Image(systemName: "waveform")
+                                    .font(.system(size: 9))
+                                Text("Share M4A")
+                                    .font(.custom("JetBrainsMono-Regular", size: 8))
+                            }
+                            .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+                        }
+                    }
+
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 4)
+
                 // Loop recorder controls
                 HStack(spacing: 10) {
                     // Loop record / overdub button
@@ -757,6 +807,15 @@ struct ReefTab: View {
         .onChange(of: metronome.bpm) { newBPM in
             loopRecorder.bpm = newBPM
         }
+        // Auto-stop: AudioExporter hit maxDuration and stopped itself
+        .onChange(of: audioExporter.isRecording) { recording in
+            if !recording && isAudioRecording {
+                isAudioRecording = false
+                if audioExporter.lastExportURL != nil {
+                    showAudioShare = true
+                }
+            }
+        }
         .alert("Rename Reef", isPresented: $showReefRename) {
             TextField("Reef name", text: $editingReefName)
             Button("Save") {
@@ -798,6 +857,11 @@ struct ReefTab: View {
         }
         .sheet(isPresented: $showMIDIExport) {
             if let url = midiExportURL {
+                ShareSheet(items: [url])
+            }
+        }
+        .sheet(isPresented: $showAudioShare) {
+            if let url = audioExporter.lastExportURL {
                 ShareSheet(items: [url])
             }
         }

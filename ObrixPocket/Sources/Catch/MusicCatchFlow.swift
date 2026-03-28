@@ -330,6 +330,7 @@ struct MusicCatchFlow: View {
         if let _ = reefStore.addSpecimen(specimen) {
             reefStore.save()
             firstLaunchManager.recordMusicCatch()
+            ReefStatsTracker.shared.increment(.musicCatches)
             dismiss()
         } else {
             showReefFullAlert = true

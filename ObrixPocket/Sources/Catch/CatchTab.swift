@@ -1312,6 +1312,10 @@ struct CatchScreen: View {
                 }
             }
 
+            if perfectMatch {
+                ReefStatsTracker.shared.increment(.perfectCatches)
+            }
+
             if let _ = reefStore.addSpecimen(newSpecimen) {
                 // Reef has a free slot — place it directly
                 addedToStasis = false

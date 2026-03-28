@@ -73,6 +73,7 @@ final class ReefPresetManager: ObservableObject {
         )
         presets.append(preset)
         persist()
+        ReefStatsTracker.shared.increment(.presetsSaved)
     }
 
     func restore(_ preset: ReefPreset, to reefStore: ReefStore) {

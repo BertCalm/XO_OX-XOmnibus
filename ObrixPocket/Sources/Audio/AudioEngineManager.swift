@@ -396,6 +396,7 @@ final class AudioEngineManager: ObservableObject {
             let oldLevel = specimen.level
             specimen.level = newLevel
             HapticEngine.levelUp()
+            ReefStatsTracker.shared.increment(.levelUps)
             let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
                                           description: "Reached level \(newLevel)")
             specimen.journal.append(levelEntry)
@@ -403,6 +404,7 @@ final class AudioEngineManager: ObservableObject {
                 if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
                     specimen.name = evolved.name
                     HapticEngine.evolution()
+                    ReefStatsTracker.shared.increment(.evolutions)
                     let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
                                                    description: "Evolved into \(evolved.name)")
                     specimen.journal.append(evolveEntry)
@@ -502,6 +504,7 @@ final class AudioEngineManager: ObservableObject {
                 let oldLevel = specimen.level
                 specimen.level = newLevel
                 HapticEngine.levelUp()
+                ReefStatsTracker.shared.increment(.levelUps)
                 let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
                                              description: "Reached level \(newLevel)")
                 specimen.journal.append(levelEntry)
@@ -509,6 +512,7 @@ final class AudioEngineManager: ObservableObject {
                     if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
                         specimen.name = evolved.name
                         HapticEngine.evolution()
+                        ReefStatsTracker.shared.increment(.evolutions)
                         let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
                                                       description: "Evolved into \(evolved.name)")
                         specimen.journal.append(evolveEntry)
@@ -537,6 +541,7 @@ final class AudioEngineManager: ObservableObject {
 
             let duration = Date().timeIntervalSince(startTime)
             specimen.totalPlaySeconds += duration
+            ReefStatsTracker.shared.increment(.playSeconds, by: max(1, Int(duration)))
 
             if duration > 2.0 {
                 // Sustained note reward — XP with rarity multiplier + style score
@@ -554,6 +559,7 @@ final class AudioEngineManager: ObservableObject {
                 let oldLevel = specimen.level
                 specimen.level = newLevel
                 HapticEngine.levelUp()
+                ReefStatsTracker.shared.increment(.levelUps)
                 let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
                                              description: "Reached level \(newLevel)")
                 specimen.journal.append(levelEntry)
@@ -561,6 +567,7 @@ final class AudioEngineManager: ObservableObject {
                     if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
                         specimen.name = evolved.name
                         HapticEngine.evolution()
+                        ReefStatsTracker.shared.increment(.evolutions)
                         let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
                                                       description: "Evolved into \(evolved.name)")
                         specimen.journal.append(evolveEntry)

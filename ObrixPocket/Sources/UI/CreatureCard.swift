@@ -457,6 +457,7 @@ struct CreatureCard: View {
             Button(action: {
                 shareImage = ShareCardGenerator.generateCard(for: specimen)
                 showShareSheet = true
+                ReefStatsTracker.shared.increment(.cardsShared)
             }) {
                 HStack(spacing: 6) {
                     Image(systemName: "square.and.arrow.up")
