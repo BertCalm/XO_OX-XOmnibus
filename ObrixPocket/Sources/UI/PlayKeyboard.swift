@@ -89,6 +89,7 @@ final class KeyboardView: UIView {
     private var arpNotes: [Int] = []
     private var arpIndex = 0
     private var arpBPM: Double = 120
+    var syncBPM: Double? = nil  // External BPM sync (from metronome)
     private var currentArpNote: Int?
 
     // MARK: Colors
@@ -322,7 +323,7 @@ final class KeyboardView: UIView {
 
     private func startArp() {
         stopArp()
-        let interval = 60.0 / arpBPM  // Quarter note interval
+        let interval = 60.0 / (syncBPM ?? arpBPM)  // Quarter note interval; prefer external sync
         arpTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             guard let self, !self.arpNotes.isEmpty else { return }
 
@@ -379,6 +380,7 @@ struct PlayKeyboard: UIViewRepresentable {
     @Binding var octaveOffset: Int
     var scale: KeyboardScale = .chromatic
     var mode: KeyboardMode = .single
+    var syncBPM: Double? = nil  // External BPM sync (from metronome)
 
     func makeUIView(context: Context) -> KeyboardView {
         let view           = KeyboardView()
@@ -398,6 +400,7 @@ struct PlayKeyboard: UIViewRepresentable {
         uiView.accentColor  = UIColor(accentColor)
         uiView.scale        = scale
         uiView.mode         = mode
+        uiView.syncBPM      = syncBPM
 
         if uiView.octaveOffset != octaveOffset {
             // Release held notes before jumping octave — avoids stuck notes

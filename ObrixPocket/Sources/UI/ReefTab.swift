@@ -11,6 +11,7 @@ struct ReefTab: View {
     @StateObject private var challengeManager = DailyChallengeManager()
     @StateObject private var milestoneManager = MilestoneManager()
     @StateObject private var ambientManager = ReefAmbientManager()
+    @StateObject private var metronome = MetronomeManager()
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
@@ -396,6 +397,49 @@ struct ReefTab: View {
                     .padding(.bottom, 4)
                 }
 
+                // Metronome controls
+                HStack(spacing: 8) {
+                    // Toggle
+                    Button(action: { metronome.toggle() }) {
+                        Image(systemName: metronome.isRunning ? "metronome.fill" : "metronome")
+                            .font(.system(size: 12))
+                            .foregroundColor(metronome.isRunning ? Color(hex: "E9C46A") : .white.opacity(0.3))
+                    }
+
+                    if metronome.isRunning {
+                        // BPM stepper
+                        Button(action: { metronome.bpm = max(60, metronome.bpm - 5) }) {
+                            Text("−")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.white.opacity(0.5))
+                        }
+
+                        Text("\(Int(metronome.bpm))")
+                            .font(.custom("JetBrainsMono-Bold", size: 12))
+                            .foregroundColor(Color(hex: "E9C46A"))
+                            .frame(width: 32)
+
+                        Button(action: { metronome.bpm = min(200, metronome.bpm + 5) }) {
+                            Text("+")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.white.opacity(0.5))
+                        }
+
+                        // Beat dots
+                        HStack(spacing: 4) {
+                            ForEach(0..<metronome.beatsPerBar, id: \.self) { beat in
+                                Circle()
+                                    .fill(beat == metronome.currentBeat ? Color(hex: "E9C46A") : Color.white.opacity(0.15))
+                                    .frame(width: 6, height: 6)
+                            }
+                        }
+                    }
+
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 2)
+
                 PlayKeyboard(
                     onNoteOn: { midiNote, velocity in
                         let sourceSlot = activeSourceSlot ?? firstSourceSlot
@@ -439,7 +483,8 @@ struct ReefTab: View {
                     accentColor: Color(hex: "1E8B7E"),
                     octaveOffset: $octaveOffset,
                     scale: keyboardScale,
-                    mode: keyboardMode
+                    mode: keyboardMode,
+                    syncBPM: metronome.isRunning ? metronome.bpm : nil
                 )
                 .frame(height: 80)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -462,6 +507,7 @@ struct ReefTab: View {
         .onDisappear {
             motionController.stop()
             ambientManager.stop()
+            metronome.stop()
             ambientResumeTimer?.invalidate()
             ambientResumeTimer = nil
         }
