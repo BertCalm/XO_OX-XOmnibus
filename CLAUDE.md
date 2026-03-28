@@ -15,7 +15,7 @@ and mutate into sounds impossible with any single synth. **73 engines** are regi
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** ~17,250 factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
-- **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
+- **Design:** Gallery Model — dark mode default. Engine accent colors frame the interface.
 
 ## Brand Rules
 
@@ -23,7 +23,7 @@ and mutate into sounds impossible with any single synth. **73 engines** are regi
 - Character over feature count — every feature must support a sonic pillar
 - Dry patches must sound compelling before effects are applied
 - Presets are a core product feature, not an afterthought
-- Light mode is the primary presentation. Dark mode is a toggle.
+- Dark mode is the primary presentation. Light mode is available as a toggle.
 
 ## Architecture Rules
 
@@ -258,7 +258,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 - **Gallery Model:** Warm white shell `#F8F6F3` frames engine accent colors
 - **XO Gold:** `#E9C46A` — brand constant (macros, coupling strip, active states)
 - **Typography:** Space Grotesk (display), Inter (body), JetBrains Mono (values)
-- **Light mode default**, dark mode toggle
+- **Dark mode default**, light mode toggle
 
 ## Environment
 
