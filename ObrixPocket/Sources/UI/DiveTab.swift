@@ -63,6 +63,8 @@ struct DiveTab: View {
     @State private var noteTimer: Timer?
     @State private var lastZone: DepthZone = .sunlit
     @State private var reefBonus: Float = 1.0
+    @State private var availableSources: [Int] = []
+    @State private var currentSourceIndex = 0
     /// Incremented each time a dive starts; stale note-off closures check this before firing.
     @State private var diveGeneration = 0
 
@@ -83,6 +85,9 @@ struct DiveTab: View {
     @StateObject private var diveHistory = DiveHistoryManager()
     @State private var isNewHighScore = false
     @State private var showHistory = false
+
+    // Weekly challenges
+    @StateObject private var weeklyChallenges = WeeklyChallengeManager()
 
     enum DivePhase {
         case ready      // Before dive
@@ -198,6 +203,48 @@ struct DiveTab: View {
                         .foregroundColor(.white.opacity(0.4))
                 }
             }
+
+            // Weekly challenges
+            if !weeklyChallenges.challenges.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text("WEEKLY CHALLENGES")
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .tracking(1.5)
+                            .foregroundColor(Color(hex: "E9C46A"))
+                        Spacer()
+                        Text("\(weeklyChallenges.completedCount)/\(weeklyChallenges.challenges.count)")
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+
+                    ForEach(weeklyChallenges.challenges) { challenge in
+                        HStack(spacing: 8) {
+                            Image(systemName: challenge.completed ? "checkmark.circle.fill" : "circle")
+                                .font(.system(size: 12))
+                                .foregroundColor(challenge.completed ? Color(hex: "1E8B7E") : .white.opacity(0.2))
+
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text(challenge.title)
+                                    .font(.custom("Inter-Medium", size: 11))
+                                    .foregroundColor(challenge.completed ? .white.opacity(0.4) : .white.opacity(0.7))
+                                    .strikethrough(challenge.completed)
+                                Text(challenge.description)
+                                    .font(.custom("Inter-Regular", size: 9))
+                                    .foregroundColor(.white.opacity(0.25))
+                            }
+
+                            Spacer()
+
+                            Text(challenge.progressString)
+                                .font(.custom("JetBrainsMono-Regular", size: 9))
+                                .foregroundColor(.white.opacity(0.3))
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 8)
+            }
         }
         .sheet(isPresented: $showHistory) {
             DiveHistoryList(history: diveHistory)
@@ -241,6 +288,19 @@ struct DiveTab: View {
                 .font(.custom("JetBrainsMono-Regular", size: 10))
                 .tracking(2)
                 .foregroundColor(.white.opacity(0.3))
+
+            // Current source indicator
+            if !availableSources.isEmpty {
+                let currentSlot = availableSources[currentSourceIndex]
+                if let spec = reefStore.specimens[currentSlot] {
+                    HStack(spacing: 6) {
+                        SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 20)
+                        Text(spec.creatureName)
+                            .font(.custom("JetBrainsMono-Regular", size: 10))
+                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.6))
+                    }
+                }
+            }
 
             // Depth counter (large, centered)
             Text("\(diveDepth)m")
@@ -440,8 +500,17 @@ struct DiveTab: View {
         let wireCount = reefStore.couplingRoutes.count
         reefBonus = max(1.0, Float(specimenCount) * 0.1 + Float(wireCount) * 0.15)
 
+        // Collect all source slots for zone-based switching
+        availableSources = reefStore.specimens.enumerated()
+            .compactMap { (index, spec) -> Int? in
+                spec?.category == .source ? index : nil
+            }
+        currentSourceIndex = 0
+
         // Configure engine with first source's chain
-        if let sourceSlot = reefStore.specimens.firstIndex(where: { $0?.category == .source }) {
+        if let sourceSlot = availableSources.first {
+            audioEngine.applySlotChain(slotIndex: sourceSlot, reefStore: reefStore)
+        } else if let sourceSlot = reefStore.specimens.firstIndex(where: { $0?.category == .source }) {
             audioEngine.applySlotChain(slotIndex: sourceSlot, reefStore: reefStore)
         }
 
@@ -456,11 +525,18 @@ struct DiveTab: View {
             totalFrames += 1
             if divePlayerActive { activeFrames += 1 }
 
-            // Detect zone transitions and fire haptic
+            // Detect zone transitions and fire haptic + switch source
             let currentZone = DepthZone.at(depth: diveDepth)
             if currentZone != lastZone {
                 lastZone = currentZone
                 HapticEngine.diveDepthMilestone()
+
+                // Switch to next source in the reef
+                if !availableSources.isEmpty {
+                    currentSourceIndex = (currentSourceIndex + 1) % availableSources.count
+                    let nextSlot = availableSources[currentSourceIndex]
+                    audioEngine.applyCachedParams(for: nextSlot)
+                }
             }
 
             if elapsed >= 60 {
@@ -592,6 +668,13 @@ struct DiveTab: View {
         )
         diveHistory.record(record)
         isNewHighScore = finalScore > previousHigh
+
+        // Update weekly challenge progress
+        weeklyChallenges.updateFromDive(
+            score: finalScore,
+            depth: diveDepth,
+            interactionPercent: interactionPct
+        )
 
         divePhase = .surfacing
         UINotificationFeedbackGenerator().notificationOccurred(.success)
