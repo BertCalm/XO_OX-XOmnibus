@@ -16,6 +16,7 @@ struct ObrixPocketApp: App {
                 .onAppear {
                     audioEngine.reefStoreRef = reefStore
                     audioEngine.start()
+                    firstLaunchManager.resetDailyPlayIfNeeded()
 
                     if firstLaunchManager.isFirstLaunch {
                         // First launch: place starter specimen and mark launch complete

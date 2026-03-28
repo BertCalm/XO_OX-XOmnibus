@@ -135,6 +135,46 @@ final class FirstLaunchManager: ObservableObject {
         return index
     }
 
+    // MARK: - Reef Energy (daily play tracking)
+
+    private let dailyPlaySecondsKey = "obrix_daily_play_seconds"
+    private let lastEnergyDateKey = "obrix_last_energy_date"
+
+    /// Seconds played today
+    var dailyPlaySeconds: Double {
+        get { userDefaults.double(forKey: dailyPlaySecondsKey) }
+        set { userDefaults.set(newValue, forKey: dailyPlaySecondsKey) }
+    }
+
+    /// Whether today's energy has been distributed
+    var energyDistributedToday: Bool {
+        guard let lastDate = userDefaults.object(forKey: lastEnergyDateKey) as? Date else { return false }
+        return Calendar.current.isDateInToday(lastDate)
+    }
+
+    /// Record energy distribution
+    func recordEnergyDistribution() {
+        userDefaults.set(Date(), forKey: lastEnergyDateKey)
+    }
+
+    /// Reset daily play counter if it's a new day
+    func resetDailyPlayIfNeeded() {
+        guard let lastDate = userDefaults.object(forKey: lastEnergyDateKey) as? Date else { return }
+        if !Calendar.current.isDateInToday(lastDate) {
+            dailyPlaySeconds = 0
+        }
+    }
+
+    /// Check if 5 minutes of play reached today
+    var dailyEnergyEarned: Bool {
+        dailyPlaySeconds >= 300 // 5 minutes = 300 seconds
+    }
+
+    /// Energy progress (0-1)
+    var energyProgress: Float {
+        Float(min(dailyPlaySeconds / 300.0, 1.0))
+    }
+
     // MARK: - Login Tracking (for dormancy/health system)
 
     private let lastOpenKey = "obrix_pocket_last_open"

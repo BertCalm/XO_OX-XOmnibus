@@ -99,6 +99,43 @@ struct ReefTab: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 4)
 
+            // Daily energy progress bar
+            if !firstLaunchManager.energyDistributedToday {
+                HStack(spacing: 6) {
+                    Image(systemName: "bolt.fill")
+                        .font(.system(size: 9))
+                        .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 2)
+                                .fill(Color.white.opacity(0.06))
+                            RoundedRectangle(cornerRadius: 2)
+                                .fill(Color(hex: "E9C46A").opacity(0.4))
+                                .frame(width: geo.size.width * CGFloat(firstLaunchManager.energyProgress))
+                        }
+                    }
+                    .frame(width: 60, height: 4)
+
+                    Text("Daily Energy")
+                        .font(.custom("JetBrainsMono-Regular", size: 8))
+                        .foregroundColor(.white.opacity(0.2))
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 4)
+            } else {
+                HStack(spacing: 4) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 9))
+                        .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                    Text("Daily Energy collected")
+                        .font(.custom("JetBrainsMono-Regular", size: 8))
+                        .foregroundColor(.white.opacity(0.2))
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 4)
+            }
+
             // The Reef Grid (SpriteKit scene)
             GeometryReader { geometry in
                 let gridSize = min(geometry.size.width * 0.9, geometry.size.height * 0.85)
@@ -337,6 +374,18 @@ struct ReefTab: View {
                         milestoneManager.increment("play_100")
                         milestoneManager.increment("play_1000")
                         milestoneManager.increment("play_10000")
+                        // Reef Energy: approximate ~0.5s per note press
+                        firstLaunchManager.dailyPlaySeconds += 0.5
+                        // Distribute daily energy once threshold is reached
+                        if firstLaunchManager.dailyEnergyEarned && !firstLaunchManager.energyDistributedToday {
+                            for (index, spec) in reefStore.specimens.enumerated() {
+                                if spec != nil {
+                                    audioEngine.earnXP(slotIndex: index, amount: 25)
+                                }
+                            }
+                            firstLaunchManager.recordEnergyDistribution()
+                            UINotificationFeedbackGenerator().notificationOccurred(.success)
+                        }
                     },
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))

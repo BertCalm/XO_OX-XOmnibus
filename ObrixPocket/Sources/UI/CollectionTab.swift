@@ -11,6 +11,7 @@ struct CollectionTab: View {
     @State private var selectedSpecimen: Specimen?
     @State private var showingCard = false
     @State private var deepSectionExpanded = false
+    @State private var showResetConfirm = false
     @StateObject private var milestoneManager = MilestoneManager()
 
     // Compute the set of discovered subtype IDs once per render.
@@ -67,6 +68,16 @@ struct CollectionTab: View {
                     VStack(alignment: .leading, spacing: 24) {
                         // Header
                         collectionHeader
+
+                        // Quick stats
+                        HStack(spacing: 16) {
+                            statBubble(value: "\(reefStore.specimens.compactMap { $0 }.count)", label: "In Reef")
+                            statBubble(value: "\(reefStore.loadStasisSpecimens().count)", label: "In Stasis")
+                            statBubble(value: "\(reefStore.totalDiveDepth)m", label: "Depth")
+                            statBubble(value: "\(milestoneManager.unlockedCount)", label: "Milestones")
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 8)
 
                         let subtypes = discoveredSubtypes
 
@@ -125,12 +136,29 @@ struct CollectionTab: View {
 
                         // MARK: Milestones Section
                         milestonesSection
+
+                        // MARK: Settings Section
+                        settingsSection
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 32)
                 }
             }
             .navigationBarHidden(true)
+            .alert("Reset All Data?", isPresented: $showResetConfirm) {
+                Button("Reset Everything", role: .destructive) {
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    for i in 0..<ReefStore.maxSlots {
+                        reefStore.specimens[i] = nil
+                    }
+                    reefStore.couplingRoutes.removeAll()
+                    reefStore.save()
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This will delete all specimens, wiring, progress, and settings. This cannot be undone.")
+            }
             .sheet(isPresented: $showingCard) {
                 if let specimen = selectedSpecimen {
                     MicroscopeView(specimen: specimen)
@@ -223,6 +251,93 @@ struct CollectionTab: View {
                 .padding(.vertical, 4)
             }
         }
+    }
+
+    // MARK: - Settings Section
+
+    private var settingsSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("SETTINGS")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .tracking(1.5)
+                    .foregroundColor(.white.opacity(0.2))
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 16)
+
+            settingsRow(icon: "waveform", title: "Audio Quality", detail: "Low Latency (5ms)")
+            settingsRow(icon: "house.fill", title: "Reef Proximity", detail: "Uses home location")
+            settingsRow(icon: "music.note", title: "Daily Music Catches", detail: "1 per day")
+
+            Button(action: { showResetConfirm = true }) {
+                HStack(spacing: 10) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 14))
+                        .foregroundColor(Color(hex: "FF4D4D").opacity(0.5))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Reset All Data")
+                            .font(.custom("Inter-Medium", size: 13))
+                            .foregroundColor(Color(hex: "FF4D4D").opacity(0.6))
+                        Text("Delete all specimens, wiring, and progress")
+                            .font(.custom("Inter-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.2))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 4)
+            }
+
+            VStack(spacing: 4) {
+                Text("OBRIX Pocket")
+                    .font(.custom("SpaceGrotesk-Bold", size: 12))
+                    .foregroundColor(.white.opacity(0.3))
+                Text("by XO_OX Designs")
+                    .font(.custom("Inter-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.2))
+                Text("v0.1.0 · The reef remembers.")
+                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .foregroundColor(.white.opacity(0.15))
+                    .italic()
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.top, 20)
+            .padding(.bottom, 32)
+        }
+    }
+
+    private func settingsRow(icon: String, title: String, detail: String) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 14))
+                .foregroundColor(.white.opacity(0.3))
+                .frame(width: 24)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.custom("Inter-Medium", size: 13))
+                    .foregroundColor(.white.opacity(0.6))
+                Text(detail)
+                    .font(.custom("Inter-Regular", size: 9))
+                    .foregroundColor(.white.opacity(0.25))
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 4)
+    }
+
+    private func statBubble(value: String, label: String) -> some View {
+        VStack(spacing: 2) {
+            Text(value)
+                .font(.custom("JetBrainsMono-Bold", size: 16))
+                .foregroundColor(.white)
+            Text(label)
+                .font(.custom("Inter-Regular", size: 8))
+                .foregroundColor(.white.opacity(0.3))
+        }
+        .frame(maxWidth: .infinity)
     }
 
     // MARK: - Deep Specimens Section
