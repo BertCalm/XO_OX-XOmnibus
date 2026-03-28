@@ -20,6 +20,7 @@ struct ReefTab: View {
     @State private var octaveOffset: Int = 0      // Keyboard octave shift (-2 to +2)
     @State private var keyboardScale: KeyboardScale = .pentatonic  // Default: hardest to sound bad
     @State private var keyboardMode: KeyboardMode = .single
+    @State private var showPerformanceMode = false
     @State private var showSaveDialog = false
     @State private var showLoadSheet = false
     @State private var presetName = ""
@@ -36,6 +37,10 @@ struct ReefTab: View {
     // .xoreef export
     @State private var reefExportURL: URL?
     @State private var showReefExport = false
+
+    // MIDI export
+    @State private var midiExportURL: URL?
+    @State private var showMIDIExport = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -324,6 +329,12 @@ struct ReefTab: View {
                             .foregroundColor(octaveOffset < 2 ? .white : .white.opacity(0.2))
                             .frame(width: 28, height: 28)
                     }
+                    // Performance mode — fullscreen keyboard
+                    Button(action: { showPerformanceMode = true }) {
+                        Image(systemName: "arrow.up.left.and.arrow.down.right")
+                            .font(.system(size: 11))
+                            .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                    }
                     // Motion toggle
                     Button(action: {
                         if motionController.isEnabled { motionController.stop() }
@@ -402,7 +413,7 @@ struct ReefTab: View {
                                 .font(.custom("JetBrainsMono-Regular", size: 10))
                                 .foregroundColor(.white.opacity(0.4))
 
-                            // Share button
+                            // Share JSON button
                             Button(action: {
                                 guard let data = recorder.exportJSON() else { return }
                                 let url = FileManager.default.temporaryDirectory
@@ -417,6 +428,26 @@ struct ReefTab: View {
                                 Image(systemName: "square.and.arrow.up")
                                     .font(.system(size: 12))
                                     .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
+                            }
+
+                            // MIDI export button
+                            Button(action: {
+                                if let url = MIDIExporter.exportToFile(
+                                    events: recorder.exportEvents(),
+                                    name: "reef_performance",
+                                    bpm: metronome.bpm
+                                ) {
+                                    midiExportURL = url
+                                    showMIDIExport = true
+                                }
+                            }) {
+                                HStack(spacing: 3) {
+                                    Image(systemName: "waveform")
+                                        .font(.system(size: 10))
+                                    Text("MIDI")
+                                        .font(.custom("JetBrainsMono-Regular", size: 8))
+                                }
+                                .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
                             }
                         }
 
@@ -702,6 +733,16 @@ struct ReefTab: View {
             if let url = reefExportURL {
                 ShareSheet(items: [url])
             }
+        }
+        .sheet(isPresented: $showMIDIExport) {
+            if let url = midiExportURL {
+                ShareSheet(items: [url])
+            }
+        }
+        .fullScreenCover(isPresented: $showPerformanceMode) {
+            PerformanceMode(activeSourceSlot: activeSourceSlot ?? firstSourceSlot)
+                .environmentObject(audioEngine)
+                .environmentObject(reefStore)
         }
     }
 

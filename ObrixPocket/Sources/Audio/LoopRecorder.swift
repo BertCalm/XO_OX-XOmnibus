@@ -135,6 +135,13 @@ final class LoopRecorder: ObservableObject {
         }
     }
 
+    // MARK: - Export
+
+    /// Export all layers' events for MIDI export
+    func exportLayers() -> [[NoteEvent]] {
+        return layers
+    }
+
     // MARK: - Layer management
 
     func undoLastLayer() {

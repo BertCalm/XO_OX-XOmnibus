@@ -103,6 +103,11 @@ final class PerformanceRecorder: ObservableObject {
         try? JSONEncoder().encode(events)
     }
 
+    /// Export the recorded events for MIDI export
+    func exportEvents() -> [NoteEvent] {
+        return events
+    }
+
     /// Duration formatted as "0:15"
     var durationString: String {
         let seconds = Int(duration)
