@@ -27,8 +27,8 @@ enum DesignTokens {
     /// Source (Shells) — oscillators
     static let sourceColor = Color(hex: "3380FF")
 
-    /// Processor (Coral) — filters
-    static let processorColor = Color(hex: "FF4D4D")
+    /// Processor (Coral) — filters (coral-salmon, distinct from errorRed #FF4D4D)
+    static let processorColor = Color(hex: "FF6B5E")
 
     /// Modulator (Currents) — LFOs / envelopes
     static let modulatorColor = Color(hex: "4DCC4D")

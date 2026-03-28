@@ -1,4 +1,5 @@
 import Foundation
+import QuartzCore
 
 /// Generative music engine for the Dive — turns player movement into music.
 ///
@@ -112,7 +113,7 @@ final class DiveComposer {
     private var zone: DepthZone = .sunlit
     private var lastNoteOnBeat: Int = -1
     private var activeNotes: [(note: Int, offTime: TimeInterval)] = []
-    private var startTime: Date?
+    private var startTime: CFTimeInterval?
 
     // Specimen influence (set before dive starts)
     var specimenPulse: Float = 0.5      // LFO rate → rhythm density modifier
@@ -138,7 +139,7 @@ final class DiveComposer {
     /// Start the composition engine. Call once when the dive begins.
     func start(zone: DepthZone) {
         self.zone = zone
-        self.startTime = Date()
+        self.startTime = CACurrentMediaTime()
         self.currentBeat = 0
         self.currentChordIndex = 0
         self.subdivisionCount = 0
@@ -182,9 +183,6 @@ final class DiveComposer {
         degradation = min(1.0, degradation + 0.25)
         cleanStreak = 0
         onDegradation?(degradation)
-
-        // Immediate musical consequence: close the filter
-        ObrixBridge.shared()?.setParameterImmediate("obrix_proc1Cutoff", value: 800)
     }
 
     /// Register collecting an orb — triggers chord change + filter bloom
@@ -195,7 +193,6 @@ final class DiveComposer {
 
         // Filter bloom: open up
         degradation = max(0, degradation - 0.15)
-        ObrixBridge.shared()?.setParameterImmediate("obrix_proc1Cutoff", value: 12000)
         onDegradation?(degradation)
     }
 
@@ -203,7 +200,7 @@ final class DiveComposer {
 
     private func tick() {
         guard let start = startTime else { return }
-        let elapsed = Date().timeIntervalSince(start)
+        let elapsed = CACurrentMediaTime() - start
 
         // Release expired notes
         releaseExpiredNotes(at: elapsed)
@@ -235,9 +232,6 @@ final class DiveComposer {
                     cleanStreak += 1
                     if cleanStreak >= 4 {
                         degradation = max(0, degradation - 0.05)
-                        // Gradually reopen filter
-                        let cutoff = 2000 + (1.0 - degradation) * 14000
-                        ObrixBridge.shared()?.setParameterImmediate("obrix_proc1Cutoff", value: cutoff)
                         onDegradation?(degradation)
                     }
                 }

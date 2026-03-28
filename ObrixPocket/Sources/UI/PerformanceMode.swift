@@ -127,6 +127,11 @@ struct PerformanceMode: View {
         .statusBarHidden()
         .onDisappear {
             ObrixBridge.shared()?.allNotesOff()
+            // Stop any active recording to prevent silent tail accumulation
+            if isAudioRecording {
+                audioExporter.stopLiveRecording()
+                isAudioRecording = false
+            }
         }
     }
 }

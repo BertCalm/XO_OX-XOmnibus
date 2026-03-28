@@ -12,6 +12,8 @@ final class MetronomeManager: ObservableObject {
     @Published var beatsPerBar: Int = 4
 
     private var timer: Timer?
+    private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
+    private let lightHaptic = UIImpactFeedbackGenerator(style: .light)
 
     var beatInterval: TimeInterval { 60.0 / bpm }
 
@@ -19,6 +21,8 @@ final class MetronomeManager: ObservableObject {
         guard !isRunning else { return }
         isRunning = true
         currentBeat = 0
+        heavyHaptic.prepare()
+        lightHaptic.prepare()
         scheduleBeat()
     }
 
@@ -47,9 +51,11 @@ final class MetronomeManager: ObservableObject {
 
             // Haptic: downbeat = heavy, other beats = light
             if self.currentBeat == 0 {
-                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                self.heavyHaptic.impactOccurred()
+                self.heavyHaptic.prepare() // re-prepare for next downbeat
             } else {
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                self.lightHaptic.impactOccurred()
+                self.lightHaptic.prepare() // re-prepare for next beat
             }
         }
         RunLoop.main.add(t, forMode: .common)

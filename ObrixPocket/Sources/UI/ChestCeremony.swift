@@ -226,6 +226,9 @@ struct ChestCeremony: View {
             loadChestSprites()
             startCeremony()
         }
+        .onDisappear {
+            cancelAllTimers()
+        }
         .onTapGesture(perform: handleTap)
         .accessibilityAddTraits(.isButton)
         .accessibilityLabel("Skip catch ceremony")

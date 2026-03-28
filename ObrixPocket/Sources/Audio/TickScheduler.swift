@@ -24,9 +24,11 @@ final class TickScheduler {
     static let shared = TickScheduler()
 
     private var timer: Timer?
-    private var registrations: [UUID: Registration] = []
+    private var registrations: [UUID: Registration] = [:]
     private var frameCount: UInt64 = 0
     private let lock = NSLock()
+    private var dirty = true
+    private var snapshot: ContiguousArray<(skipFrames: Int, callback: () -> Void)> = []
 
     private struct Registration {
         let skipFrames: Int      // Fire every N frames (1 = every frame, 2 = every other, etc.)
@@ -52,6 +54,7 @@ final class TickScheduler {
 
         lock.lock()
         registrations[id] = Registration(skipFrames: skip, callback: callback)
+        dirty = true
         lock.unlock()
 
         ensureRunning()
@@ -62,6 +65,7 @@ final class TickScheduler {
     func unregister(_ id: UUID) {
         lock.lock()
         registrations.removeValue(forKey: id)
+        dirty = true
         let empty = registrations.isEmpty
         lock.unlock()
 
@@ -90,11 +94,14 @@ final class TickScheduler {
     private func tick() {
         frameCount &+= 1 // Wrapping add — overflow-safe
 
-        lock.lock()
-        let snapshot = registrations
-        lock.unlock()
+        if dirty {
+            lock.lock()
+            snapshot = ContiguousArray(registrations.values.map { ($0.skipFrames, $0.callback) })
+            dirty = false
+            lock.unlock()
+        }
 
-        for (_, reg) in snapshot {
+        for reg in snapshot {
             if frameCount % UInt64(reg.skipFrames) == 0 {
                 reg.callback()
             }

@@ -564,7 +564,6 @@ struct DiveTab: View {
             }
 
             // Passive scoring
-            self.totalFrames += 1
             let zoneMultiplier: Int
             switch currentZone {
             case .sunlit:   zoneMultiplier = 1

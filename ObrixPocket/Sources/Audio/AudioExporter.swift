@@ -38,7 +38,7 @@ final class AudioExporter: ObservableObject {
         do {
             let settings: [String: Any] = [
                 AVFormatIDKey: kAudioFormatMPEG4AAC,
-                AVSampleRateKey: 48000.0,
+                AVSampleRateKey: Double(ObrixBridge.shared()?.sampleRate() ?? 48000),
                 AVNumberOfChannelsKey: 2,
                 AVEncoderBitRateKey: 256000
             ]
@@ -121,10 +121,9 @@ final class AudioExporter: ObservableObject {
 
         if let file = audioFile {
             // AVAudioFile finalizes (closes) automatically on dealloc.
-            // Capture the URL before releasing the reference.
-            DispatchQueue.main.async {
-                self.lastExportURL = file.url
-            }
+            // Assign synchronously — stopRecording() is always called on the main thread,
+            // so the async dispatch was unnecessary and introduced a race in generateSocialClip.
+            lastExportURL = file.url
             audioFile = nil
         }
     }
@@ -217,7 +216,7 @@ final class AudioExporter: ObservableObject {
         do {
             let settings: [String: Any] = [
                 AVFormatIDKey: kAudioFormatMPEG4AAC,
-                AVSampleRateKey: 48000.0,
+                AVSampleRateKey: Double(ObrixBridge.shared()?.sampleRate() ?? 48000),
                 AVNumberOfChannelsKey: 2,
                 AVEncoderBitRateKey: 256000
             ]
@@ -312,17 +311,10 @@ final class AudioExporter: ObservableObject {
                 return
             }
 
-            // Capture the URL before stopLiveRecording clears the file reference.
-            // stopLiveRecording sets lastExportURL asynchronously via DispatchQueue.main.async,
-            // so we read it after the call completes on this same main-thread dispatch.
+            // stopLiveRecording → stopRecording sets lastExportURL synchronously (main thread).
+            // Read it immediately after the call — no async delay needed.
             self.stopLiveRecording()
-
-            // lastExportURL is set synchronously inside the main-thread stopRecording path
-            // (the DispatchQueue.main.async inside stopRecording executes after we return here).
-            // Use asyncAfter with a negligible delay to let that assignment land.
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                completion(self.lastExportURL)
-            }
+            completion(self.lastExportURL)
         }
     }
 

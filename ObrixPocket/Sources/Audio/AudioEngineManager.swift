@@ -391,26 +391,7 @@ final class AudioEngineManager: ObservableObject {
         let mult = Self.xpMultiplier(specimen.rarity)
         specimen.xp += Int((Float(amount) * mult).rounded())
 
-        let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
-        if newLevel > specimen.level {
-            let oldLevel = specimen.level
-            specimen.level = newLevel
-            HapticEngine.levelUp()
-            ReefStatsTracker.shared.increment(.levelUps)
-            let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
-                                          description: "Reached level \(newLevel)")
-            specimen.journal.append(levelEntry)
-            if newLevel >= 10 && oldLevel < 10 {
-                if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
-                    specimen.name = evolved.name
-                    HapticEngine.evolution()
-                    ReefStatsTracker.shared.increment(.evolutions)
-                    let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
-                                                   description: "Evolved into \(evolved.name)")
-                    specimen.journal.append(evolveEntry)
-                }
-            }
-        }
+        checkAndApplyLevelUp(&specimen)
 
         reefStore.specimens[slotIndex] = specimen
     }
@@ -451,6 +432,39 @@ final class AudioEngineManager: ObservableObject {
             }
         }
         reefStore.specimens[slotIndex] = specimen
+    }
+
+    // MARK: - Level-Up / Evolution
+
+    /// Check whether `spec` has accumulated enough XP to level up; if so, apply the level
+    /// increment, haptics, stat tracking, journal entry, and evolution transform in one place.
+    /// Call this after any XP mutation, before writing the specimen back to the store.
+    /// Mutates `spec` in place — no store write performed here.
+    private func checkAndApplyLevelUp(_ spec: inout Specimen) {
+        let newLevel = SpecimenLeveling.checkLevelUp(xp: spec.xp)
+        guard newLevel > spec.level else { return }
+
+        let oldLevel = spec.level
+        spec.level = newLevel
+        HapticEngine.levelUp()
+        ReefStatsTracker.shared.increment(.levelUps)
+        let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
+                                      description: "Reached level \(newLevel)")
+        spec.journal.append(levelEntry)
+
+        // EVOLUTION: reaching level 10 for the first time triggers a name/identity
+        // transformation. oldLevel guards against re-triggering on subsequent XP awards.
+        if newLevel >= 10 && oldLevel < 10 {
+            if let evolved = EvolutionCatalog.evolvedForm(for: spec) {
+                spec.name = evolved.name
+                // Keep original subtype — DSP stays the same; the evolved name is the reward.
+                HapticEngine.evolution()
+                ReefStatsTracker.shared.increment(.evolutions)
+                let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
+                                               description: "Evolved into \(evolved.name)")
+                spec.journal.append(evolveEntry)
+            }
+        }
     }
 
     func noteOn(slotIndex: Int, velocity: Float) {
@@ -499,26 +513,7 @@ final class AudioEngineManager: ObservableObject {
             }
 
             // Level-up check
-            let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
-            if newLevel > specimen.level {
-                let oldLevel = specimen.level
-                specimen.level = newLevel
-                HapticEngine.levelUp()
-                ReefStatsTracker.shared.increment(.levelUps)
-                let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
-                                             description: "Reached level \(newLevel)")
-                specimen.journal.append(levelEntry)
-                if newLevel >= 10 && oldLevel < 10 {
-                    if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
-                        specimen.name = evolved.name
-                        HapticEngine.evolution()
-                        ReefStatsTracker.shared.increment(.evolutions)
-                        let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
-                                                      description: "Evolved into \(evolved.name)")
-                        specimen.journal.append(evolveEntry)
-                    }
-                }
-            }
+            checkAndApplyLevelUp(&specimen)
 
             // Single write — no clobbering
             reefStore.specimens[slotIndex] = specimen
@@ -554,26 +549,7 @@ final class AudioEngineManager: ObservableObject {
             }
 
             // Level-up check after duration XP
-            let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
-            if newLevel > specimen.level {
-                let oldLevel = specimen.level
-                specimen.level = newLevel
-                HapticEngine.levelUp()
-                ReefStatsTracker.shared.increment(.levelUps)
-                let levelEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .levelUp,
-                                             description: "Reached level \(newLevel)")
-                specimen.journal.append(levelEntry)
-                if newLevel >= 10 && oldLevel < 10 {
-                    if let evolved = EvolutionCatalog.evolvedForm(for: specimen) {
-                        specimen.name = evolved.name
-                        HapticEngine.evolution()
-                        ReefStatsTracker.shared.increment(.evolutions)
-                        let evolveEntry = JournalEntry(id: UUID(), timestamp: Date(), type: .evolved,
-                                                      description: "Evolved into \(evolved.name)")
-                        specimen.journal.append(evolveEntry)
-                    }
-                }
-            }
+            checkAndApplyLevelUp(&specimen)
 
             // Single write — no stale-copy clobber
             reefStore.specimens[slotIndex] = specimen

@@ -76,6 +76,10 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     private var obstacleSpawnInterval: TimeInterval = 2.0
     private let collectibleSpawnInterval: TimeInterval = 5.0
 
+    // Obstacle node cache — maintained in parallel with the scene graph so that
+    // reportObstacleProximity() iterates a tight typed set rather than all children.
+    private var obstacleNodes: Set<SKNode> = []
+
     // Jellyfish sway tracking
     private var jellyfishPhases: [SKNode: Double] = [:]
 
@@ -329,6 +333,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         node.physicsBody = body
 
         addChild(node)
+        obstacleNodes.insert(node)
         animateObstacleDown(node: node, speed: scrollSpeedForZone())
     }
 
@@ -355,6 +360,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         node.physicsBody = body
 
         addChild(node)
+        obstacleNodes.insert(node)
         jellyfishPhases[node] = Double.random(in: 0 ..< .pi * 2)
         animateObstacleDown(node: node, speed: scrollSpeedForZone() * 0.7)
     }
@@ -388,11 +394,16 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         node.physicsBody = body
 
         addChild(node)
+        obstacleNodes.insert(node)
 
         let crossDuration = Double.random(in: 2.5...4.5)
         let move   = SKAction.moveTo(x: endX, duration: crossDuration)
+        let cleanup = SKAction.run { [weak self, weak node] in
+            guard let node else { return }
+            self?.obstacleNodes.remove(node)
+        }
         let remove = SKAction.removeFromParent()
-        node.run(.sequence([move, remove]))
+        node.run(.sequence([move, cleanup, remove]))
 
         // Tail indicator lines (visual cue a shark is incoming)
         addSharkWarningIndicator(atY: yPos, goingRight: goingRight)
@@ -464,6 +475,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         node.userData?["pushRight"] = goRight
 
         addChild(node)
+        obstacleNodes.insert(node)
         animateObstacleDown(node: node, speed: scrollSpeedForZone() * 0.8)
     }
 
@@ -528,9 +540,13 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         let distance = node.position.y + 50
         guard speed > 0 else { return }
         let duration = TimeInterval(distance / speed)
-        let move   = SKAction.moveTo(y: -50, duration: duration)
-        let remove = SKAction.removeFromParent()
-        node.run(.sequence([move, remove]), withKey: "scroll")
+        let move    = SKAction.moveTo(y: -50, duration: duration)
+        let cleanup = SKAction.run { [weak self, weak node] in
+            guard let node else { return }
+            self?.obstacleNodes.remove(node)
+        }
+        let remove  = SKAction.removeFromParent()
+        node.run(.sequence([move, cleanup, remove]), withKey: "scroll")
     }
 
     // MARK: - Touch Handling
@@ -786,8 +802,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         let playerPos  = playerNode.position
         var minDist: CGFloat = .infinity
 
-        for node in children {
-            guard node.physicsBody?.categoryBitMask == obstacleCategory else { continue }
+        for node in obstacleNodes {
             let d = hypot(node.position.x - playerPos.x, node.position.y - playerPos.y)
             if d < minDist { minDist = d }
         }
@@ -811,6 +826,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
             }
             .forEach { node in
                 jellyfishPhases.removeValue(forKey: node)
+                obstacleNodes.remove(node)
                 node.removeFromParent()
             }
     }
