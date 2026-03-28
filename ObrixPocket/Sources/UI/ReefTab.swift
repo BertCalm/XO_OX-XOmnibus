@@ -9,6 +9,7 @@ struct ReefTab: View {
     @StateObject private var recorder = PerformanceRecorder()
     @StateObject private var motionController = MotionController()
     @StateObject private var challengeManager = DailyChallengeManager()
+    @StateObject private var milestoneManager = MilestoneManager()
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
@@ -315,6 +316,9 @@ struct ReefTab: View {
                         ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
                         recorder.recordNoteOn(midiNote: midiNote, velocity: velocity)
                         challengeManager.incrementProgress(type: .playNotes)
+                        milestoneManager.increment("play_100")
+                        milestoneManager.increment("play_1000")
+                        milestoneManager.increment("play_10000")
                     },
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))

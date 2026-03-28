@@ -153,6 +153,8 @@ struct CreatureCard: View {
     var showFullStats: Bool = false
 
     @State private var isStatsExpanded: Bool = false
+    @State private var showShareSheet = false
+    @State private var shareImage: UIImage?
 
     // MARK: - Computed helpers
 
@@ -200,6 +202,11 @@ struct CreatureCard: View {
         .onAppear {
             if showFullStats {
                 isStatsExpanded = true
+            }
+        }
+        .sheet(isPresented: $showShareSheet) {
+            if let image = shareImage {
+                ShareSheet(items: [image])
             }
         }
     }
@@ -426,13 +433,28 @@ struct CreatureCard: View {
         }
     }
 
-    // MARK: - Bottom Section: catch date
+    // MARK: - Bottom Section: catch date + share button
 
     private var bottomSection: some View {
-        Text("Caught \(formattedCatchDate)")
-            .font(.custom("Inter-Regular", size: 10))
-            .foregroundColor(.white.opacity(0.30))
-            .padding(.top, 12)
+        VStack(spacing: 10) {
+            Text("Caught \(formattedCatchDate)")
+                .font(.custom("Inter-Regular", size: 10))
+                .foregroundColor(.white.opacity(0.30))
+
+            Button(action: {
+                shareImage = ShareCardGenerator.generateCard(for: specimen)
+                showShareSheet = true
+            }) {
+                HStack(spacing: 6) {
+                    Image(systemName: "square.and.arrow.up")
+                    Text("Share")
+                }
+                .font(.custom("Inter-Medium", size: 12))
+                .foregroundColor(Color(hex: "E9C46A").opacity(0.6))
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.top, 12)
     }
 }
 

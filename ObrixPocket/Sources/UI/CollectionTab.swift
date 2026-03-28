@@ -11,6 +11,7 @@ struct CollectionTab: View {
     @State private var selectedSpecimen: Specimen?
     @State private var showingCard = false
     @State private var deepSectionExpanded = false
+    @StateObject private var milestoneManager = MilestoneManager()
 
     // Compute the set of discovered subtype IDs once per render.
     // A type is "discovered" if found in the reef OR in the full collection.
@@ -121,6 +122,9 @@ struct CollectionTab: View {
 
                         // MARK: Deep Specimens Section (collapsible)
                         deepSpecimensSection(discoveredSubtypes: subtypes)
+
+                        // MARK: Milestones Section
+                        milestonesSection
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 32)
@@ -173,6 +177,55 @@ struct CollectionTab: View {
             }
         }
         .padding(.top, 16)
+    }
+
+    // MARK: - Milestones Section
+
+    private var milestonesSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("MILESTONES")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .tracking(1.5)
+                    .foregroundColor(Color(hex: "E9C46A"))
+                Spacer()
+                Text("\(milestoneManager.unlockedCount)/\(milestoneManager.totalCount)")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.3))
+            }
+            .padding(.horizontal, 4)
+
+            ForEach(milestoneManager.milestones) { milestone in
+                HStack(spacing: 10) {
+                    Image(systemName: milestone.icon)
+                        .font(.system(size: 14))
+                        .foregroundColor(milestone.unlocked ? Color(hex: "E9C46A") : .white.opacity(0.2))
+                        .frame(width: 24)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(milestone.title)
+                            .font(.custom("SpaceGrotesk-Bold", size: 12))
+                            .foregroundColor(milestone.unlocked ? .white : .white.opacity(0.5))
+                        Text(milestone.description)
+                            .font(.custom("Inter-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+
+                    Spacer()
+
+                    if milestone.unlocked {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(Color(hex: "1E8B7E"))
+                    } else {
+                        Text("\(milestone.progress)/\(milestone.requirement)")
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+                }
+                .padding(.horizontal, 4)
+                .padding(.vertical, 4)
+            }
+        }
     }
 
     // MARK: - Deep Specimens Section
