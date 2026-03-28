@@ -15,6 +15,7 @@ struct ReefTab: View {
     @StateObject private var loopRecorder = LoopRecorder()
     @StateObject private var streakManager = StreakManager()
     @StateObject private var audioExporter = AudioExporter()
+    @StateObject private var energyManager = ReefEnergyManager()
     @State private var isAudioRecording = false
     @State private var showAudioShare = false
     @State private var isGeneratingClip = false
@@ -180,42 +181,37 @@ struct ReefTab: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 4)
 
-            // Daily energy progress bar
-            if !firstLaunchManager.energyDistributedToday {
-                HStack(spacing: 6) {
-                    Image(systemName: "bolt.fill")
-                        .font(.system(size: 9))
-                        .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
-
+            // Reef Energy currency display
+            HStack(spacing: 6) {
+                Image(systemName: "bolt.fill")
+                    .font(.system(size: 9))
+                    .foregroundColor(Color(hex: "E9C46A"))
+                Text("\(energyManager.currentEnergy)")
+                    .font(.custom("JetBrainsMono-Bold", size: 11))
+                    .foregroundColor(Color(hex: "E9C46A"))
+                Text("/ \(ReefEnergyManager.maxEnergy)")
+                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .foregroundColor(.white.opacity(0.2))
+                // Daily earn progress pill — shows how close to the 50/day cap
+                if energyManager.dailyEnergyEarned < ReefEnergyManager.dailyEarnCap {
                     GeometryReader { geo in
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: 2)
                                 .fill(Color.white.opacity(0.06))
                             RoundedRectangle(cornerRadius: 2)
-                                .fill(Color(hex: "E9C46A").opacity(0.4))
-                                .frame(width: geo.size.width * CGFloat(firstLaunchManager.energyProgress))
+                                .fill(Color(hex: "E9C46A").opacity(0.35))
+                                .frame(width: geo.size.width * CGFloat(energyManager.dailyEnergyEarned) / CGFloat(ReefEnergyManager.dailyEarnCap))
                         }
                     }
-                    .frame(width: 60, height: 4)
-
-                    Text("Daily Energy")
-                        .font(.custom("JetBrainsMono-Regular", size: 8))
-                        .foregroundColor(.white.opacity(0.2))
-                }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 4)
-            } else {
-                HStack(spacing: 4) {
+                    .frame(width: 40, height: 3)
+                } else {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 9))
+                        .font(.system(size: 8))
                         .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
-                    Text("Daily Energy collected")
-                        .font(.custom("JetBrainsMono-Regular", size: 8))
-                        .foregroundColor(.white.opacity(0.2))
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 4)
             }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 4)
 
             // Streak indicator
             HStack(spacing: 6) {
@@ -751,18 +747,8 @@ struct ReefTab: View {
                         milestoneManager.increment("play_1000")
                         milestoneManager.increment("play_10000")
                         ReefStatsTracker.shared.increment(.notesPlayed)
-                        // Reef Energy: approximate ~0.5s per note press
-                        firstLaunchManager.dailyPlaySeconds += 0.5
-                        // Distribute daily energy once threshold is reached
-                        if firstLaunchManager.dailyEnergyEarned && !firstLaunchManager.energyDistributedToday {
-                            for (index, spec) in reefStore.specimens.enumerated() {
-                                if spec != nil {
-                                    audioEngine.awardBulkXP(slotIndex: index, amount: 25)
-                                }
-                            }
-                            firstLaunchManager.recordEnergyDistribution()
-                            HapticEngine.energyCollected()
-                        }
+                        // Reef Energy: earn 1 energy per note, capped at 50/day
+                        energyManager.earnFromPlay(amount: 1)
                         // Pause ambient while user is playing; cancel any pending resume
                         ambientResumeTimer?.invalidate()
                         ambientResumeTimer = nil
@@ -811,6 +797,8 @@ struct ReefTab: View {
             if activeSourceSlot == nil {
                 activeSourceSlot = firstSourceSlot
             }
+            // Reset daily energy counter if it's a new day
+            energyManager.resetDailyIfNeeded()
             // Restore saved reef theme
             let savedRaw = UserDefaults.standard.string(forKey: "obrix_reef_theme") ?? "Ocean"
             let saved = ReefTheme(rawValue: savedRaw) ?? .ocean

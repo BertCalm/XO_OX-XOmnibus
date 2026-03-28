@@ -10,6 +10,7 @@ struct SpecimenParamPanel: View {
     @State private var activeParam: String? // Which param is being dragged (for hover label)
     @State private var showReleaseConfirm = false
     @State private var showSwapPicker = false
+    @State private var showFusionPicker = false
 
     private var specimen: Specimen? { reefStore.specimens[slotIndex] }
 
@@ -133,6 +134,20 @@ struct SpecimenParamPanel: View {
                     }
                     .padding(.top, 4)
 
+                    // Fusion button — requires level 3+
+                    if let spec = specimen, spec.level >= 3 {
+                        Button(action: { showFusionPicker = true }) {
+                            HStack(spacing: 4) {
+                                Image(systemName: "arrow.triangle.merge")
+                                    .font(.system(size: 10))
+                                Text("Fuse")
+                                    .font(.custom("Inter-Regular", size: 11))
+                            }
+                            .foregroundColor(Color(hex: "B34DFF").opacity(0.5))
+                        }
+                        .padding(.top, 4)
+                    }
+
                     // Release button — lets user free up a full reef slot (destructive)
                     Button(action: { showReleaseConfirm = true }) {
                         HStack(spacing: 4) {
@@ -180,6 +195,21 @@ struct SpecimenParamPanel: View {
                     .environmentObject(reefStore)
                 }
             }
+            .sheet(isPresented: $showFusionPicker) {
+                if let spec = specimen {
+                    FusionPickerView(
+                        sourceSlot: slotIndex,
+                        sourceSpecimen: spec,
+                        onFuse: { partnerSlot in
+                            performFusion(partnerSlot: partnerSlot)
+                            showFusionPicker = false
+                            onDismiss?()
+                        },
+                        onCancel: { showFusionPicker = false }
+                    )
+                    .environmentObject(reefStore)
+                }
+            }
             .alert("Release \(specimen?.creatureName ?? "specimen")?", isPresented: $showReleaseConfirm) {
                 Button("Release", role: .destructive) {
                     reefStore.releaseSpecimen(at: slotIndex)
@@ -192,6 +222,26 @@ struct SpecimenParamPanel: View {
                 Text("It will return to the wild. This cannot be undone.")
             }
         }
+    }
+
+    // MARK: - Fusion Logic
+
+    private func performFusion(partnerSlot: Int) {
+        guard let source = reefStore.specimens[slotIndex],
+              let partner = reefStore.specimens[partnerSlot],
+              let child = SpecimenFusion.fuse(source, partner) else { return }
+
+        // Remove both parents
+        reefStore.releaseSpecimen(at: slotIndex)
+        reefStore.releaseSpecimen(at: partnerSlot)
+
+        // Place child in the source's slot
+        reefStore.specimens[slotIndex] = child
+        reefStore.save()
+
+        audioEngine.rebuildParamCache(reefStore: reefStore)
+
+        HapticEngine.evolution() // Dramatic haptic for fusion
     }
 
     // MARK: - Swap Logic
@@ -531,6 +581,100 @@ struct SwapPickerView: View {
         }
         .onAppear {
             stasisSpecimens = reefStore.loadStasisSpecimens()
+        }
+    }
+}
+
+// MARK: - FusionPickerView
+
+/// Sheet presented when the user taps "Fuse" in the param panel.
+/// Lists all reef specimens compatible for fusion (same category, Lv.3+).
+struct FusionPickerView: View {
+    let sourceSlot: Int
+    let sourceSpecimen: Specimen
+    let onFuse: (Int) -> Void
+    let onCancel: () -> Void
+    @EnvironmentObject var reefStore: ReefStore
+    @State private var showConfirm = false
+    @State private var selectedPartner: Int?
+
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 0) {
+                // Source specimen header — shows what will be consumed
+                HStack(spacing: 8) {
+                    SpecimenSprite(subtype: sourceSpecimen.subtype, category: sourceSpecimen.category, size: 32)
+                    Text(sourceSpecimen.creatureName)
+                        .font(.custom("SpaceGrotesk-Bold", size: 14))
+                        .foregroundColor(.white)
+                    Text("Lv.\(sourceSpecimen.level)")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(.white.opacity(0.4))
+                    Spacer()
+                    Text("× ?")
+                        .font(.custom("SpaceGrotesk-Bold", size: 16))
+                        .foregroundColor(Color(hex: "B34DFF").opacity(0.5))
+                }
+                .padding(16)
+                .background(Color.white.opacity(0.03))
+
+                // Compatible specimens list
+                let compatible = reefStore.specimens.enumerated().compactMap { (idx, spec) -> (Int, Specimen)? in
+                    guard let s = spec, idx != sourceSlot, SpecimenFusion.canFuse(sourceSpecimen, s) else { return nil }
+                    return (idx, s)
+                }
+
+                if compatible.isEmpty {
+                    VStack(spacing: 8) {
+                        Spacer()
+                        Text("No compatible specimens")
+                            .font(.custom("Inter-Regular", size: 13))
+                            .foregroundColor(.white.opacity(0.3))
+                        Text("Need another \(sourceSpecimen.category.rawValue) at Lv.3+")
+                            .font(.custom("Inter-Regular", size: 10))
+                            .foregroundColor(.white.opacity(0.2))
+                        Spacer()
+                    }
+                } else {
+                    List(compatible, id: \.0) { (idx, spec) in
+                        Button(action: {
+                            selectedPartner = idx
+                            showConfirm = true
+                        }) {
+                            HStack(spacing: 10) {
+                                SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 28)
+                                VStack(alignment: .leading) {
+                                    Text(spec.creatureName)
+                                        .font(.custom("SpaceGrotesk-Bold", size: 13))
+                                        .foregroundColor(.white)
+                                    Text("Lv.\(spec.level) · \(spec.rarity.rawValue)")
+                                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                                        .foregroundColor(.white.opacity(0.4))
+                                }
+                                Spacer()
+                            }
+                        }
+                        .listRowBackground(Color(hex: "0E0E10"))
+                    }
+                    .listStyle(.plain)
+                }
+            }
+            .background(Color(hex: "0E0E10"))
+            .navigationTitle("Fuse Specimens")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: onCancel)
+                }
+            }
+            .alert("Fuse Specimens?", isPresented: $showConfirm) {
+                Button("Fuse", role: .destructive) {
+                    if let partner = selectedPartner { onFuse(partner) }
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("Both parent specimens will be consumed. The child inherits averaged traits from both.")
+            }
         }
     }
 }
