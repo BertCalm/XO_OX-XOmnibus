@@ -128,4 +128,9 @@ enum HapticEngine {
     static func diveDepthMilestone() {
         mediumImpact.impactOccurred()
     }
+
+    /// Haptic for dive beat pulse (subtle tick on each beat)
+    static func diveBeat() {
+        lightImpact.impactOccurred(intensity: 0.3)
+    }
 }

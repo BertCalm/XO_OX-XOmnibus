@@ -482,18 +482,18 @@ struct DiveTab: View {
         newComposer.specimenGrit = Float(stats.grit) / 100.0
 
         // Wire composer audio output to ObrixBridge
-        newComposer.onNoteOn = { note, velocity in
+        newComposer.onNoteOn = { (note: Int, velocity: Float) in
             ObrixBridge.shared()?.note(on: Int32(note), velocity: velocity)
         }
-        newComposer.onNoteOff = { note in
+        newComposer.onNoteOff = { (note: Int) in
             ObrixBridge.shared()?.noteOff(Int32(note))
         }
-        newComposer.onBeat = { [weak self] beat in
+        newComposer.onBeat = { [weak self] (beat: Int) in
             guard let self else { return }
             HapticEngine.diveBeat()
             self.diveScene?.triggerBeatPulse()
         }
-        newComposer.onDegradation = { [weak self] _ in
+        newComposer.onDegradation = { [weak self] (_: Float) in
             // Trigger view update so HUD reflects current degradation level
             _ = self?.composer?.degradation
         }
@@ -512,13 +512,13 @@ struct DiveTab: View {
         scene.currentZone = .sunlit
 
         // Wire scene callbacks to composer + scoring
-        scene.onPlayerPositionChanged = { [weak newComposer] x in
+        scene.onPlayerPositionChanged = { [weak newComposer] (x: Float) in
             newComposer?.playerX = x
         }
-        scene.onPlayerVelocityChanged = { [weak newComposer] v in
+        scene.onPlayerVelocityChanged = { [weak newComposer] (v: Float) in
             newComposer?.playerDodgeVelocity = v
         }
-        scene.onObstacleProximity = { [weak newComposer] p in
+        scene.onObstacleProximity = { [weak newComposer] (p: Float) in
             newComposer?.obstacleProximity = p
         }
         scene.onHit = { [weak self, weak newComposer] in
@@ -669,32 +669,41 @@ private struct DegradationWaveform: View {
 
     var body: some View {
         Canvas { context, size in
-            let w = size.width
-            let h = size.height
-            let midY = h / 2
-            let amplitude = h * 0.35
-
-            var path = Path()
-            path.move(to: CGPoint(x: 0, y: midY))
-
-            for x in stride(from: 0.0, through: w, by: 2) {
-                let normalized = x / w
-                // Clean sine wave at degradation=0, noisy at degradation=1
-                let cleanWave = sin(normalized * .pi * 6 + Double(beat) * 0.5)
-                let noise = Double(degradation) * Double.random(in: -1...1)
-                let combined = cleanWave * (1.0 - Double(degradation) * 0.7) + noise
-                let y = midY + CGFloat(combined) * amplitude
-                path.addLine(to: CGPoint(x: x, y: y))
-            }
-
-            // Color shifts from jade (clean) to red (degraded)
-            let color: Color = degradation < 0.5
-                ? DesignTokens.reefJade.opacity(0.6)
-                : DesignTokens.errorRed.opacity(Double(0.4 + degradation * 0.4))
-
+            let path = buildWavePath(size: size)
+            let color = waveColor()
             context.stroke(path, with: .color(color), lineWidth: 1.5)
         }
         .frame(height: 20)
         .padding(.horizontal, 40)
+    }
+
+    private func buildWavePath(size: CGSize) -> Path {
+        let w = size.width
+        let h = size.height
+        let midY: CGFloat = h / 2
+        let amp: CGFloat = h * 0.35
+        let deg = Double(degradation)
+        let phase = Double(beat) * 0.5
+
+        var path = Path()
+        path.move(to: CGPoint(x: 0, y: midY))
+
+        for x in stride(from: 0.0, through: Double(w), by: 2.0) {
+            let norm = x / Double(w)
+            let cleanWave = sin(norm * .pi * 6.0 + phase)
+            let noise = deg * Double.random(in: -1...1)
+            let combined = cleanWave * (1.0 - deg * 0.7) + noise
+            let y = midY + CGFloat(combined) * amp
+            path.addLine(to: CGPoint(x: CGFloat(x), y: y))
+        }
+        return path
+    }
+
+    private func waveColor() -> Color {
+        if degradation < 0.5 {
+            return DesignTokens.reefJade.opacity(0.6)
+        }
+        let opacity = Double(0.4 + degradation * 0.4)
+        return DesignTokens.errorRed.opacity(opacity)
     }
 }
