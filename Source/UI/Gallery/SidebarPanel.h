@@ -70,7 +70,11 @@ public:
             // Click handler — capture index by value
             btn->onClick = [this, i] { selectTab(static_cast<Tab>(i)); };
 
-            addAndMakeVisible(btn);
+            // PLAY tab hidden — redundant with PlaySurface pop-out
+            if (i == Play)
+                btn->setVisible(false);
+            else
+                addAndMakeVisible(btn);
         }
 
         setWantsKeyboardFocus(true);
