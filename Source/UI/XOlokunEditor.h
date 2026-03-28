@@ -87,7 +87,7 @@ public:
           presetBrowser(proc),
           ghostTile(proc, 4)   // Ghost Slot — 5th tile, slot index 4
     {
-        // Light mode is the default (brand rule); SettingsPanel restores user's saved preference.
+        // Dark mode is primary; SettingsPanel restores user's saved preference.
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
 
@@ -217,7 +217,7 @@ public:
         // PlaySurface window is created lazily in showPlaySurface() on first press.
         // No addAndMakeVisible() or MIDI wiring here — happens on first open.
 
-        // Dark mode toggle — light is default (brand rule)
+        // Dark mode toggle — dark is primary (brand rule)
         addAndMakeVisible(themeToggleBtn);
         themeToggleBtn.setButtonText("DK");
         themeToggleBtn.setTooltip("Toggle dark/light theme");
@@ -740,16 +740,16 @@ public:
         auto header = layout.getHeader();
 
         // Hide removed elements off-screen
-        depthDial.setBounds(0, -100, 0, 0);
-        abCompare.setBounds(0, -100, 0, 0);
-        presetBrowser.setBounds(0, -200, 0, 0);
-        presetPrevBtn.setBounds(0, -100, 0, 0);
-        presetNextBtn.setBounds(0, -100, 0, 0);
-        cinematicToggleBtn.setBounds(0, -100, 0, 0);
-        cmToggleBtn.setBounds(0, -100, 0, 0);
-        perfToggleBtn.setBounds(0, -100, 0, 0);
-        themeToggleBtn.setBounds(0, -100, 0, 0);
-        midiIndicator.setBounds(0, -100, 0, 0);
+        depthDial.setBounds(0, -100, 0, 0);          depthDial.setVisible(false);
+        abCompare.setBounds(0, -100, 0, 0);           abCompare.setVisible(false);
+        presetBrowser.setBounds(0, -200, 0, 0);       presetBrowser.setVisible(false);
+        presetPrevBtn.setBounds(0, -100, 0, 0);       presetPrevBtn.setVisible(false);
+        presetNextBtn.setBounds(0, -100, 0, 0);       presetNextBtn.setVisible(false);
+        cinematicToggleBtn.setBounds(0, -100, 0, 0);  cinematicToggleBtn.setVisible(false);
+        cmToggleBtn.setBounds(0, -100, 0, 0);         cmToggleBtn.setVisible(false);
+        perfToggleBtn.setBounds(0, -100, 0, 0);       perfToggleBtn.setVisible(false);
+        themeToggleBtn.setBounds(0, -100, 0, 0);      themeToggleBtn.setVisible(false);
+        midiIndicator.setBounds(0, -100, 0, 0);       midiIndicator.setVisible(false);
 
         // ── Left: Logo (painted) + ENGINES button ──────────────────────────
         header.removeFromLeft(150); // logo rings + "XOlokun" / "XO_OX Designs" text
@@ -822,7 +822,7 @@ public:
         performancePanel.setBounds(colBPanel);
 
         // FieldMap hidden — 80px reclaimed for parameter sections
-        fieldMap.setBounds(0, -200, 0, 0);
+        fieldMap.setBounds(0, -200, 0, 0);            fieldMap.setVisible(false);
 
         // ── Column C — Tabbed Sidebar (SidebarPanel) ─────────────────────────
         sidebar.setBounds(layout.getColumnC());
@@ -1263,9 +1263,8 @@ private:
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
     // Use ColumnLayoutManager::kHeaderH (52) and ColumnLayoutManager::kFieldMapH (65).
-    static constexpr int kMasterFXH        = 96;  // MasterFX compact strip at bottom of Column B (96px: extra height prevents ADV buttons from overlapping knob labels)
+    static constexpr int kMasterFXH        = 68;  // MasterFX compact strip at bottom of Column B
     static constexpr int kSignalFlowStripH = 28;  // P0-12: signal flow breadcrumb strip
-    static constexpr int kMacroKnobsRowH   = 64;  // P0-13: macro knobs row placeholder
     static constexpr int kFadeMs           = 150; // Panel cross-fade duration (ms)
     // kNumPrimarySlots: the 4 slots always visible (indices 0-3).
     // The Ghost Slot (index 4) is conditional — managed by checkCollectionUnlock().

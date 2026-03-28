@@ -6,7 +6,7 @@ namespace xolokun {
 
 //==============================================================================
 // GalleryLookAndFeel — Gallery Model visual language (WCAG 2.1 AA compliant)
-// Matched to xolokun-v04-polished.html prototype exactly.
+// Matched to v05 dark-mode-primary spec.
 class GalleryLookAndFeel : public juce::LookAndFeel_V4
 {
 public:

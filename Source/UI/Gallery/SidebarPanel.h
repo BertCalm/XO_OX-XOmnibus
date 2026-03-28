@@ -391,12 +391,15 @@ public:
             presetBrowser->setBounds(inner);
 
         // ExportTabPanel owns the full Export tab content area.
-        // OutshineSidebarPanel is hidden; park it off-screen so it doesn't intercept input.
+        // OutshineSidebarPanel is hidden and parked off-screen so it doesn't intercept input.
         if (exportPanel != nullptr)
             exportPanel->setBounds(contentArea.getLocalBounds());
 
         if (outshineSidebar != nullptr)
-            outshineSidebar->setBounds(-4000, -4000, 320, 180); // off-screen, hidden
+        {
+            outshineSidebar->setBounds(0, -200, 0, 0); // parked off-screen
+            outshineSidebar->setVisible(false);
+        }
 
         if (couplingPanel != nullptr)
             couplingPanel->setBounds(inner);
@@ -424,8 +427,8 @@ public:
 
 private:
     //==========================================================================
-    // Prototype: 38px tab bar, 2px accent underline
-    static constexpr int kTabBarH    = 38;
+    // Prototype: 32px tab bar, 2px accent underline
+    static constexpr int kTabBarH    = 32;
     static constexpr int kUnderlineH = 2;
 
     static constexpr const char* tabLabels[NumTabs] = {

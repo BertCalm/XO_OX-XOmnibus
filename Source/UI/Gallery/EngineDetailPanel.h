@@ -135,7 +135,8 @@ public:
 
         // Load macro hero strip — it shows/hides itself based on discovery
         auto prefix = GalleryColors::prefixForEngine(engineId);
-        macroHero.loadEngine(engineId, prefix, accentColour);
+        if (macroHero.isVisible())
+            macroHero.loadEngine(engineId, prefix, accentColour);
 
         // Configure waveform display for this slot
         waveformDisplay.setSlot(slot);
