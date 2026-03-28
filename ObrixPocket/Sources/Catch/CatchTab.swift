@@ -431,6 +431,12 @@ struct CatchScreen: View {
     @State private var showReefFullAlert = false
     @State private var isPerfectMatch = false
     @State private var attemptNumber = 1
+
+    // MARK: Visual polish state
+    @State private var specimenBob = false
+    @State private var buttonFeedback: [Int: Bool] = [:]     // per-button feedback: true = correct, false = wrong; absent = no feedback
+    @State private var buttonTapScale: [Int: CGFloat] = [:]  // brief scale-up on tap
+    @State private var lastRoundResult: Bool? = nil          // drives score dot bounce
     @State private var addedToStasis = false
 
     // Multi-round tracking (shared across all game types)
@@ -575,6 +581,15 @@ struct CatchScreen: View {
     private var specimenHeader: some View {
         VStack(spacing: 8) {
             ZStack {
+                // CAUGHT: green glow halo behind the specimen
+                if phase == .caught || phase == .success {
+                    Circle()
+                        .fill(Color(hex: "1E8B7E").opacity(0.15))
+                        .frame(width: 180, height: 180)
+                        .scaleEffect(1.2)
+                        .animation(.easeInOut(duration: 0.5), value: phase == .caught || phase == .success)
+                }
+
                 Circle()
                     .fill(catColor.opacity(0.12))
                     .frame(width: 140, height: 140)
@@ -584,6 +599,19 @@ struct CatchScreen: View {
                     .stroke(catColor.opacity(0.5), lineWidth: specimen.rarity == .legendary ? 4 : (specimen.rarity == .rare ? 3 : (specimen.rarity == .uncommon ? 2 : 1)))
                     .frame(width: 130, height: 130)
             }
+            // Breathing bob — active during game phases, disabled on end states
+            .offset(y: specimenBob ? -3 : 3)
+            .animation(
+                (phase == .caught || phase == .escaped)
+                    ? .default
+                    : .easeInOut(duration: 1.5).repeatForever(autoreverses: true),
+                value: specimenBob
+            )
+            // ESCAPED: fade + shrink
+            .opacity(phase == .escaped ? 0.3 : 1.0)
+            .scaleEffect(phase == .escaped ? 0.7 : 1.0)
+            .animation(.easeInOut(duration: 0.5), value: phase == .escaped)
+            .onAppear { specimenBob = true }
             let cID = SpecimenCatalog.catalogSubtypeID(from: specimen.subtype)
             Text(SpecimenCatalog.entry(for: cID)?.creatureName ?? specimen.subtype)
                 .font(.custom("SpaceGrotesk-Bold", size: 18))
@@ -659,6 +687,9 @@ struct CatchScreen: View {
                         .fill(roundDotColor(at: i))
                         .frame(width: dotSize, height: dotSize)
                         .shadow(color: roundDotColor(at: i).opacity(0.8), radius: dotGlow)
+                        // Bounce the dot that was just resolved
+                        .scaleEffect(i == roundsPlayed - 1 && lastRoundResult != nil ? 1.4 : 1.0)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: lastRoundResult)
                 }
             }
             // Score text
@@ -685,14 +716,29 @@ struct CatchScreen: View {
 
     private func pButton(_ idx: Int, active: Bool) -> some View {
         let lit = currentPlaybackIndex == idx
+        let tapScale = buttonTapScale[idx] ?? 1.0
         let c = buttonColors[idx]
+        let feedbackResult: Bool? = buttonFeedback[idx]  // nil = absent (no feedback shown)
+
         return Button(action: { if active { playerTap(idx) } }) {
             RoundedRectangle(cornerRadius: 12)
                 .fill(lit ? c : c.opacity(0.3))
                 .frame(height: 64)
                 .overlay(RoundedRectangle(cornerRadius: 12).stroke(lit ? Color.white.opacity(0.6) : c.opacity(0.4), lineWidth: lit ? 2 : 1))
-                .scaleEffect(lit ? 1.05 : 1.0)
-                .animation(.easeInOut(duration: 0.15), value: lit)
+                // Correct/wrong feedback icon overlay
+                .overlay(
+                    Group {
+                        if let result = feedbackResult {
+                            Image(systemName: result ? "checkmark" : "xmark")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(result ? Color(hex: "1E8B7E") : Color(hex: "FF4D4D"))
+                        }
+                    }
+                )
+                // Playback pulse + tap scale animations
+                .scaleEffect(lit ? 1.08 : tapScale)
+                .animation(lit ? .spring(response: 0.15, dampingFraction: 0.4) : .easeInOut(duration: 0.15), value: lit)
+                .animation(.spring(response: 0.18, dampingFraction: 0.4), value: tapScale)
         }
         .disabled(!active)
     }
@@ -829,6 +875,22 @@ struct CatchScreen: View {
             .tint(catColor)
             .disabled(phase != .playing)
 
+            // Frequency spectrum visualisation — deterministic shape derived from sweep position
+            HStack(spacing: 2) {
+                ForEach(0..<20, id: \.self) { i in
+                    let normalizedI = Float(i) / 19.0
+                    let dist = abs(normalizedI - sweepPosition)
+                    let barHeight = CGFloat(max(4, 20 - dist * 50))
+                    let inZone = dist < 0.1
+                    RoundedRectangle(cornerRadius: 1)
+                        .fill(catColor.opacity(inZone ? (sweepMatched ? 0.8 : 0.55) : 0.22))
+                        .frame(width: 4, height: barHeight)
+                        .animation(.easeInOut(duration: 0.1), value: sweepPosition)
+                }
+            }
+            .frame(height: 24)
+            .padding(.horizontal, 40)
+
             Text(sweepMatched ? "MATCHED!" : "Find the frequency...")
                 .font(.custom("JetBrainsMono-Regular", size: 10))
                 .foregroundColor(sweepMatched ? Color(hex: "1E8B7E") : .white.opacity(0.4))
@@ -857,20 +919,20 @@ struct CatchScreen: View {
                 }
             }
 
-            // Big tap target
+            // Big tap target — spring pulse on each beat
             Button(action: rhythmPlayerTap) {
                 ZStack {
                     Circle()
                         .fill(catColor.opacity(0.18))
                         .frame(width: 110, height: 110)
                         .scaleEffect(rhythmPulseScale)
-                        .animation(.easeOut(duration: 0.12), value: rhythmPulseScale)
+                        .animation(.spring(response: 0.15, dampingFraction: 0.3), value: rhythmPulseScale)
 
                     Circle()
                         .stroke(catColor, lineWidth: 2)
                         .frame(width: 110, height: 110)
                         .scaleEffect(rhythmPulseScale)
-                        .animation(.easeOut(duration: 0.12), value: rhythmPulseScale)
+                        .animation(.spring(response: 0.15, dampingFraction: 0.3), value: rhythmPulseScale)
 
                     Text("TAP")
                         .font(.custom("SpaceGrotesk-Bold", size: 16))
@@ -1009,11 +1071,24 @@ struct CatchScreen: View {
         let midiNote = Self.catchMidiNotes[idx]
         ObrixBridge.shared()?.note(on: midiNote, velocity: 0.8)
         currentPlaybackIndex = idx
+
+        // Brief scale-up on tap
+        buttonTapScale[idx] = 1.12
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+            buttonTapScale[idx] = 1.0
+        }
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             currentPlaybackIndex = -1; ObrixBridge.shared()?.noteOff(midiNote)
         }
 
         let correct = idx == pattern[step]
+        // Show checkmark/X feedback on the tapped button
+        buttonFeedback[idx] = correct
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+            buttonFeedback.removeValue(forKey: idx)
+        }
+
         if correct {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } else {
@@ -1182,6 +1257,10 @@ struct CatchScreen: View {
 
         roundResults.append(won)
         roundFeedback = won ? .correct : .wrong
+
+        // Drive score dot bounce
+        lastRoundResult = won
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { lastRoundResult = nil }
 
         if won {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
