@@ -17,6 +17,9 @@ struct ReefTab: View {
     @StateObject private var audioExporter = AudioExporter()
     @State private var isAudioRecording = false
     @State private var showAudioShare = false
+    @State private var isGeneratingClip = false
+    @State private var showClipShare = false
+    @State private var clipShareItems: [Any] = []
     @State private var showStreakReward = false
     @State private var lastReward: StreakReward = .none
     @State private var reefScene: ReefScene?
@@ -585,6 +588,35 @@ struct ReefTab: View {
                         }
                     }
 
+                    // 15-second social clip — auto-plays a pentatonic melody + records output
+                    Button(action: {
+                        guard !isGeneratingClip && !isAudioRecording else { return }
+                        isGeneratingClip = true
+                        audioExporter.generateSocialClip(
+                            reefStore: reefStore,
+                            audioEngine: audioEngine
+                        ) { url in
+                            isGeneratingClip = false
+                            if let audioURL = url {
+                                // Bundle audio + share card for maximum social impact
+                                let firstSpec = reefStore.specimens.compactMap { $0 }.first
+                                    ?? SpecimenFactory.createStarter()
+                                let cardImage = ShareCardGenerator.generateCard(for: firstSpec)
+                                clipShareItems = [audioURL, cardImage]
+                                showClipShare = true
+                            }
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: isGeneratingClip ? "hourglass" : "square.and.arrow.up")
+                                .font(.system(size: 10))
+                            Text(isGeneratingClip ? "Recording..." : "15s Clip")
+                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                        }
+                        .foregroundColor(Color(hex: "E9C46A").opacity(isGeneratingClip ? 0.3 : 0.5))
+                    }
+                    .disabled(isGeneratingClip || isAudioRecording)
+
                     Spacer()
                 }
                 .padding(.horizontal, 20)
@@ -864,6 +896,9 @@ struct ReefTab: View {
             if let url = audioExporter.lastExportURL {
                 ShareSheet(items: [url])
             }
+        }
+        .sheet(isPresented: $showClipShare) {
+            ShareSheet(items: clipShareItems)
         }
         .fullScreenCover(isPresented: $showPerformanceMode) {
             PerformanceMode(activeSourceSlot: activeSourceSlot ?? firstSourceSlot)

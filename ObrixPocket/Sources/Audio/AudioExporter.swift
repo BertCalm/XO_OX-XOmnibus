@@ -247,6 +247,86 @@ final class AudioExporter: ObservableObject {
         }
     }
 
+    // MARK: - 15-Second Social Clip (spec Section 5.3 — #WhatsYourSong)
+
+    /// Generate a 15-second clip by auto-playing a pentatonic melody through the reef chain
+    /// and recording the audio output via the JUCE tap.
+    ///
+    /// Combines startLiveRecording() with an auto-play timer so no manual performance is needed.
+    /// The melody loops a C major pentatonic pattern at 0.5s per note for the full 15-second window.
+    ///
+    /// - Parameters:
+    ///   - reefStore: Used to locate the first source slot and configure the engine.
+    ///   - audioEngine: Used to apply cached params for the source's chain before playback starts.
+    ///   - completion: Called on the main thread with the M4A URL on success, or nil on failure.
+    func generateSocialClip(
+        reefStore: ReefStore,
+        audioEngine: AudioEngineManager,
+        completion: @escaping (URL?) -> Void
+    ) {
+        guard !isRecording else {
+            // Don't interrupt an active long recording.
+            completion(nil)
+            return
+        }
+
+        // Find the first source slot to configure the engine chain.
+        guard let sourceSlot = reefStore.specimens.firstIndex(where: { $0?.category == .source }) else {
+            completion(nil)
+            return
+        }
+
+        // Apply cached params for the source's wired chain.
+        audioEngine.applyCachedParams(for: sourceSlot)
+
+        // Start capturing the live JUCE tap output.
+        startLiveRecording()
+
+        // C major pentatonic loop: C4 D E G A C5 G4 E D C A3 D4
+        let notes = [60, 62, 64, 67, 69, 72, 67, 64, 62, 60, 57, 62]
+        var noteIndex = 0
+        var clipTimer: Timer?
+
+        clipTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+            guard self != nil else { timer.invalidate(); return }
+
+            let note = notes[noteIndex % notes.count]
+            let velocity = Float.random(in: 0.55...0.80)
+
+            ObrixBridge.shared()?.note(on: Int32(note), velocity: velocity)
+
+            // Note off after 300ms — leaves a small gap before the next note.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                ObrixBridge.shared()?.noteOff(Int32(note))
+            }
+
+            noteIndex += 1
+        }
+
+        // Stop recording after exactly 15 seconds and deliver the URL.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { [weak self] in
+            clipTimer?.invalidate()
+            ObrixBridge.shared()?.allNotesOff()
+
+            guard let self else {
+                completion(nil)
+                return
+            }
+
+            // Capture the URL before stopLiveRecording clears the file reference.
+            // stopLiveRecording sets lastExportURL asynchronously via DispatchQueue.main.async,
+            // so we read it after the call completes on this same main-thread dispatch.
+            self.stopLiveRecording()
+
+            // lastExportURL is set synchronously inside the main-thread stopRecording path
+            // (the DispatchQueue.main.async inside stopRecording executes after we return here).
+            // Use asyncAfter with a negligible delay to let that assignment land.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                completion(self.lastExportURL)
+            }
+        }
+    }
+
     /// Returns the URL of the last completed export for sharing, or nil if none exists.
     func shareURL() -> URL? {
         return lastExportURL
