@@ -36,9 +36,11 @@ final class AudioExporter: ObservableObject {
         let url = exportURL(name: "reef_\(dateString())")
 
         do {
+            let rawSR = Double(ObrixBridge.shared()?.sampleRate() ?? 0)
+            let sampleRate = rawSR > 0 ? rawSR : 48000.0
             let settings: [String: Any] = [
                 AVFormatIDKey: kAudioFormatMPEG4AAC,
-                AVSampleRateKey: Double(ObrixBridge.shared()?.sampleRate() ?? 48000),
+                AVSampleRateKey: sampleRate,
                 AVNumberOfChannelsKey: 2,
                 AVEncoderBitRateKey: 256000
             ]
@@ -136,8 +138,9 @@ final class AudioExporter: ObservableObject {
     func startLiveRecording() {
         guard !isRecording else { return }
 
-        // Determine the live sample rate from the bridge (default 48 kHz).
-        let sr = Double(ObrixBridge.shared()?.sampleRate() ?? 48000)
+        // Determine the live sample rate from the bridge; fall back to 48 kHz if device not yet active.
+        let rawSR = Double(ObrixBridge.shared()?.sampleRate() ?? 0)
+        let sr = rawSR > 0 ? rawSR : 48000.0
         tapFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
                                   sampleRate: sr,
                                   channels: 2,
@@ -214,9 +217,11 @@ final class AudioExporter: ObservableObject {
 
         // Write to the pre-determined URL by initialising audioFile directly.
         do {
+            let rawSR = Double(ObrixBridge.shared()?.sampleRate() ?? 0)
+            let sampleRate = rawSR > 0 ? rawSR : 48000.0
             let settings: [String: Any] = [
                 AVFormatIDKey: kAudioFormatMPEG4AAC,
-                AVSampleRateKey: Double(ObrixBridge.shared()?.sampleRate() ?? 48000),
+                AVSampleRateKey: sampleRate,
                 AVNumberOfChannelsKey: 2,
                 AVEncoderBitRateKey: 256000
             ]

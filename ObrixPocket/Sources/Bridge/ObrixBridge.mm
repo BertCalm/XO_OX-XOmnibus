@@ -461,7 +461,7 @@ static const int kMidiQueueSize = 256;
 {
     if (_deviceManager && _deviceManager->getCurrentAudioDevice())
         return (float)_deviceManager->getCurrentAudioDevice()->getCurrentSampleRate();
-    return 48000.0f;
+    return 0.0f;
 }
 
 // MARK: - Output tap

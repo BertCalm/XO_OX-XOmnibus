@@ -324,6 +324,12 @@ struct DiveTab: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 8)
 
+                DegradationWaveform(
+                    degradation: composer?.degradation ?? 0,
+                    beat: composer?.currentBeat ?? 0
+                )
+                .opacity(isDiving ? 1 : 0)
+
                 Spacer()
 
                 // Bottom: progress bar + time remaining
@@ -652,5 +658,43 @@ struct DiveTab: View {
             return GameStats.from(params: specimen.parameterState)
         }
         return GameStats.from(params: [:]) // Defaults
+    }
+}
+
+// MARK: - Degradation Waveform
+
+private struct DegradationWaveform: View {
+    let degradation: Float  // 0 = clean, 1 = destroyed
+    let beat: Int           // current beat for animation phase
+
+    var body: some View {
+        Canvas { context, size in
+            let w = size.width
+            let h = size.height
+            let midY = h / 2
+            let amplitude = h * 0.35
+
+            var path = Path()
+            path.move(to: CGPoint(x: 0, y: midY))
+
+            for x in stride(from: 0.0, through: w, by: 2) {
+                let normalized = x / w
+                // Clean sine wave at degradation=0, noisy at degradation=1
+                let cleanWave = sin(normalized * .pi * 6 + Double(beat) * 0.5)
+                let noise = Double(degradation) * Double.random(in: -1...1)
+                let combined = cleanWave * (1.0 - Double(degradation) * 0.7) + noise
+                let y = midY + CGFloat(combined) * amplitude
+                path.addLine(to: CGPoint(x: x, y: y))
+            }
+
+            // Color shifts from jade (clean) to red (degraded)
+            let color: Color = degradation < 0.5
+                ? DesignTokens.reefJade.opacity(0.6)
+                : DesignTokens.errorRed.opacity(Double(0.4 + degradation * 0.4))
+
+            context.stroke(path, with: .color(color), lineWidth: 1.5)
+        }
+        .frame(height: 20)
+        .padding(.horizontal, 40)
     }
 }

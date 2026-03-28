@@ -188,8 +188,8 @@ final class DiveComposer {
     /// Register collecting an orb — triggers chord change + filter bloom
     func registerCollectible() {
         // Force a chord change on next beat
+        // advanceChord() already calls onChordChange?() internally — do not call again
         advanceChord()
-        onChordChange?()
 
         // Filter bloom: open up
         degradation = max(0, degradation - 0.15)

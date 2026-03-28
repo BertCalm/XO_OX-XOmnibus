@@ -91,7 +91,7 @@ final class LoopRecorder: ObservableObject {
         playbackStartTime = Date()
         lastPlaybackPos = -1
 
-        playbackToken = TickScheduler.shared.register(hz: 30) { [weak self] in
+        playbackToken = TickScheduler.shared.register(hz: 60) { [weak self] in
             guard let self, self.isPlaying, let start = self.playbackStartTime else { return }
             let elapsed = Date().timeIntervalSince(start)
             let posInLoop = elapsed.truncatingRemainder(dividingBy: self.loopDuration)
@@ -114,8 +114,8 @@ final class LoopRecorder: ObservableObject {
         if isPlaying { stopPlayback() } else { startPlayback() }
     }
 
-    /// Fire all layer events that fall within the current ~33 ms frame window.
-    /// Call this from a 30 Hz timer on the main thread (e.g. via `.onReceive` in ReefTab).
+    /// Fire all layer events that fall within the current ~16 ms frame window.
+    /// Call this from a 60 Hz timer on the main thread (e.g. via `.onReceive` in ReefTab).
     func playEvents(noteOn: (Int, Float) -> Void, noteOff: (Int) -> Void) {
         guard isPlaying, let start = playbackStartTime else { return }
         let elapsed = Date().timeIntervalSince(start)
@@ -124,7 +124,7 @@ final class LoopRecorder: ObservableObject {
         // Detect loop restart (position jumped backwards by more than jitter tolerance)
         let loopRestarted = posInLoop < lastPlaybackPos - 0.1
 
-        let frameWindow: TimeInterval = 1.0 / 30.0
+        let frameWindow: TimeInterval = 1.0 / 60.0
 
         for layer in layers {
             for event in layer {
