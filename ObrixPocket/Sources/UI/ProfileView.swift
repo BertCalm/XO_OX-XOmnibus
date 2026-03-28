@@ -190,15 +190,6 @@ struct ProfileView: View {
         return String(format: "%.1fh", seconds / 3600)
     }
 
-    private func categoryColor(for category: SpecimenCategory) -> Color {
-        switch category {
-        case .source:    return DesignTokens.sourceColor   // Shells — blue
-        case .processor: return DesignTokens.errorRed   // Coral — red
-        case .modulator: return DesignTokens.modulatorColor   // Currents — green
-        case .effect:    return DesignTokens.effectColor   // Tide Pools — purple
-        }
-    }
-
     // MARK: - Badges
 
     private var badgesSection: some View {

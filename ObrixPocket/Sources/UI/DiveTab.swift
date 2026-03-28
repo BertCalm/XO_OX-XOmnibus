@@ -112,9 +112,16 @@ struct DiveTab: View {
             VStack(spacing: 24) {
                 // Header
                 HStack {
-                    Text("THE DIVE")
-                        .font(DesignTokens.heading(18))
-                        .foregroundColor(.white)
+                    HStack(spacing: 8) {
+                        Text("THE DIVE")
+                            .font(DesignTokens.heading(18))
+                            .foregroundColor(.white)
+                        let sources = reefStore.specimens.compactMap { $0 }.filter { $0.category == .source }.count
+                        let total = reefStore.diveEligibleCount
+                        Text("\(sources) src · \(total) total")
+                            .font(DesignTokens.mono(9))
+                            .foregroundColor(.white.opacity(0.2))
+                    }
                     Spacer()
                     Text("\(diveDepth)m")
                         .font(DesignTokens.monoBold(16))

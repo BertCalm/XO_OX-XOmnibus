@@ -360,6 +360,26 @@ class ReefScene: SKScene {
                     levelBadge.position = CGPoint(x: bgRadius * 0.7, y: bgRadius * 0.7)
                     slotNode.addChild(levelBadge)
 
+                    // "NEW!" badge — shown for 30 seconds after a specimen is added
+                    if let lastSlot = reefStore.lastAddedSlot,
+                       let lastTime = reefStore.lastAddedTime,
+                       lastSlot == index,
+                       Date().timeIntervalSince(lastTime) < 30 {
+                        let newLabel = SKLabelNode(text: "NEW!")
+                        newLabel.fontSize = 8
+                        newLabel.fontName = "SpaceGrotesk-Bold"
+                        newLabel.fontColor = SKColor(red: 0.118, green: 0.545, blue: 0.494, alpha: 1) // reefJade
+                        newLabel.verticalAlignmentMode = .bottom
+                        newLabel.position = CGPoint(x: 0, y: bgRadius * 0.8)
+                        newLabel.zPosition = 4
+                        newLabel.run(SKAction.sequence([
+                            SKAction.wait(forDuration: 5.0),
+                            SKAction.fadeOut(withDuration: 1.0),
+                            SKAction.removeFromParent()
+                        ]))
+                        slotNode.addChild(newLabel)
+                    }
+
                     // Favorite heart badge — top-left corner of slot
                     if specimen.isFavorite {
                         let heart = SKLabelNode(text: "♥")
@@ -670,6 +690,11 @@ class ReefScene: SKScene {
         // Record the slot — note will be played in touchesEnded only if this turns out to be a tap (not a long-press/wiring)
         pendingTapSlot = slot
 
+        // Subtle scale-up feedback during the 0.4s long-press window
+        if slot < slotNodes.count {
+            slotNodes[slot].run(SKAction.scale(to: 1.08, duration: 0.2), withKey: "touchScale")
+        }
+
         // Start the long-press timer for wiring
         longPressTouch = touch
         touchDownTimes[slot] = touch.timestamp
@@ -710,6 +735,11 @@ class ReefScene: SKScene {
             }
         }
 
+        // Reset tap-feedback scale on the slot that was being touched
+        if let slot = pendingTapSlot, slot < slotNodes.count {
+            slotNodes[slot].run(SKAction.scale(to: 1.0, duration: 0.1), withKey: "touchScale")
+        }
+
         pendingTapSlot = nil
         longPressTouch = nil
     }
@@ -717,6 +747,11 @@ class ReefScene: SKScene {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         longPressTimer?.invalidate()
         longPressTimer = nil
+        // Reset scale on the slot that was being touched
+        let slotToClear = pendingTapSlot ?? wireSourceSlot
+        if let slot = slotToClear, slot < slotNodes.count {
+            slotNodes[slot].run(SKAction.scale(to: 1.0, duration: 0.1))
+        }
         cancelWiring()
         pendingTapSlot = nil
         longPressTouch = nil

@@ -62,12 +62,15 @@ struct PerformanceMode: View {
                         Button("−") { if octaveOffset > -2 { octaveOffset -= 1 } }
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white.opacity(0.5))
+                            .accessibilityLabel("Lower octave")
                         Text("C\(4 + octaveOffset)")
-                            .font(DesignTokens.mono(10))
-                            .foregroundColor(.white.opacity(0.4))
+                            .font(DesignTokens.monoBold(14))
+                            .foregroundColor(.white.opacity(0.6))
+                            .frame(width: 32)
                         Button("+") { if octaveOffset < 2 { octaveOffset += 1 } }
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white.opacity(0.5))
+                            .accessibilityLabel("Higher octave")
 
                         // Audio record
                         Button(action: {

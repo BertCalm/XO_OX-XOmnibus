@@ -46,6 +46,9 @@ struct ReefTab: View {
                     SpriteView(scene: scene)
                         .frame(width: gridSize, height: gridSize)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .overlay(
+                            ReefAccessibilityOverlay(reefStore: reefStore, gridSize: gridSize)
+                        )
                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.45)
                         .onReceive(reefStore.objectWillChange) { _ in
                             gridRefreshTimer?.invalidate()
@@ -339,5 +342,54 @@ struct ReefPresetList: View {
             }
             .background(DesignTokens.background)
         }
+    }
+}
+
+// MARK: - ReefAccessibilityOverlay
+
+/// Transparent VoiceOver overlay for the SpriteKit reef grid.
+/// SpriteKit nodes are invisible to accessibility; this SwiftUI layer provides
+/// one accessible hit-target per reef slot so VoiceOver users can navigate
+/// and interact with every specimen without touching SpriteKit directly.
+struct ReefAccessibilityOverlay: View {
+    let reefStore: ReefStore
+    let gridSize: CGFloat
+
+    private let gridCount = 4
+
+    var body: some View {
+        let cellSize = gridSize / CGFloat(gridCount)
+
+        ZStack {
+            ForEach(0..<16, id: \.self) { index in
+                let row = index / gridCount
+                let col = index % gridCount
+                let x = CGFloat(col) * cellSize + cellSize / 2
+                let y = CGFloat(row) * cellSize + cellSize / 2
+
+                Color.clear
+                    .frame(width: cellSize * 0.9, height: cellSize * 0.9)
+                    .position(x: x, y: y)
+                    .accessibilityElement()
+                    .accessibilityLabel(slotLabel(index))
+                    .accessibilityHint(slotHint(index))
+                    .accessibilityAddTraits(.isButton)
+            }
+        }
+        .accessibilityElement(children: .contain)
+    }
+
+    private func slotLabel(_ index: Int) -> String {
+        if let spec = reefStore.specimens[index] {
+            return "\(spec.creatureName), \(spec.category.rawValue), level \(spec.level)"
+        }
+        return "Empty slot \(index + 1)"
+    }
+
+    private func slotHint(_ index: Int) -> String {
+        if reefStore.specimens[index] != nil {
+            return "Tap to preview sound. Long press to wire."
+        }
+        return "Tap to place a specimen from stasis."
     }
 }

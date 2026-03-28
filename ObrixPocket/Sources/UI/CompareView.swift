@@ -18,9 +18,17 @@ struct CompareView: View {
                     specimenColumn(specimenA)
 
                     // VS divider
-                    Text("vs")
-                        .font(DesignTokens.mono(10))
-                        .foregroundColor(.white.opacity(0.2))
+                    VStack(spacing: 4) {
+                        Rectangle()
+                            .fill(Color.white.opacity(0.08))
+                            .frame(width: 1, height: 20)
+                        Text("VS")
+                            .font(DesignTokens.monoBold(10))
+                            .foregroundColor(.white.opacity(0.3))
+                        Rectangle()
+                            .fill(Color.white.opacity(0.08))
+                            .frame(width: 1, height: 20)
+                    }
 
                     specimenColumn(specimenB)
                 }

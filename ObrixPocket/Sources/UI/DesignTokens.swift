@@ -115,28 +115,29 @@ enum DesignTokens {
     // MARK: - Typography
 
     /// SpaceGrotesk-Bold — display headings
-    static func heading(_ size: CGFloat) -> Font {
-        .custom("SpaceGrotesk-Bold", size: size)
+    /// The `relativeTo` parameter enables Dynamic Type scaling fleet-wide.
+    static func heading(_ size: CGFloat, relativeTo style: Font.TextStyle = .headline) -> Font {
+        .custom("SpaceGrotesk-Bold", size: size, relativeTo: style)
     }
 
     /// Inter-Regular — body copy, labels
-    static func body(_ size: CGFloat) -> Font {
-        .custom("Inter-Regular", size: size)
+    static func body(_ size: CGFloat, relativeTo style: Font.TextStyle = .body) -> Font {
+        .custom("Inter-Regular", size: size, relativeTo: style)
     }
 
     /// Inter-Medium — semi-bold body text, CTA labels
-    static func bodyMedium(_ size: CGFloat) -> Font {
-        .custom("Inter-Medium", size: size)
+    static func bodyMedium(_ size: CGFloat, relativeTo style: Font.TextStyle = .body) -> Font {
+        .custom("Inter-Medium", size: size, relativeTo: style)
     }
 
     /// JetBrainsMono-Regular — numeric values, IDs, code
-    static func mono(_ size: CGFloat) -> Font {
-        .custom("JetBrainsMono-Regular", size: size)
+    static func mono(_ size: CGFloat, relativeTo style: Font.TextStyle = .caption) -> Font {
+        .custom("JetBrainsMono-Regular", size: size, relativeTo: style)
     }
 
     /// JetBrainsMono-Bold — prominent numeric values
-    static func monoBold(_ size: CGFloat) -> Font {
-        .custom("JetBrainsMono-Bold", size: size)
+    static func monoBold(_ size: CGFloat, relativeTo style: Font.TextStyle = .caption) -> Font {
+        .custom("JetBrainsMono-Bold", size: size, relativeTo: style)
     }
 
     // MARK: - Spacing Scale (4pt base grid)

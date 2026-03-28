@@ -105,6 +105,10 @@ final class ReefStore: ObservableObject {
     @Published var reefName: String = "My Reef"
     @Published var totalDiveDepth: Int = 0
 
+    /// Tracks which slot was most recently filled (for "NEW!" badge in ReefScene).
+    var lastAddedSlot: Int? = nil
+    var lastAddedTime: Date? = nil
+
     /// Monotonic counter incremented at the start of every load() call.
     /// The async completion block checks this before writing to guard against
     /// double-call races where an older load() resolves after a newer one.
@@ -121,6 +125,8 @@ final class ReefStore: ObservableObject {
             return nil // Reef is full — must release one first
         }
         specimens[emptyIndex] = specimen
+        lastAddedSlot = emptyIndex
+        lastAddedTime = Date()
         return emptyIndex
     }
 
