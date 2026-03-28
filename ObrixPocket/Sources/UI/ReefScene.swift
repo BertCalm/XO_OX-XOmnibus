@@ -308,11 +308,12 @@ class ReefScene: SKScene {
     }
 
     private func drawCouplingWires() {
-        // Remove old wires, wire labels, and flow dots
+        // Remove old wires, wire labels, flow dots, and wire arrows
         children.filter {
             $0.name?.hasPrefix("wire_") == true ||
             $0.name?.hasPrefix("wireLabel_") == true ||
-            $0.name?.hasPrefix("flowDot_") == true
+            $0.name?.hasPrefix("flowDot_") == true ||
+            $0.name?.hasPrefix("wireArrow_") == true
         }.forEach { $0.removeFromParent() }
 
         for route in reefStore.couplingRoutes {
@@ -332,7 +333,7 @@ class ReefScene: SKScene {
                 color = categoryColors[srcSpecimen?.category ?? .source] ?? .white
             }
 
-            let wire = createWirePath(from: srcPos, to: dstPos, color: color)
+            let wire = createWirePath(from: srcPos, to: dstPos, color: color, depth: route.depth)
             wire.name = "wire_\(route.sourceId.uuidString)_\(route.destId.uuidString)"
             wire.zPosition = 0.5 // Between background and slots
             addChild(wire)
@@ -357,19 +358,44 @@ class ReefScene: SKScene {
             wireLabel.name = "wireLabel_\(route.sourceId.uuidString)_\(route.destId.uuidString)"
             addChild(wireLabel)
 
-            // Flow dots — small circles that pulse along the wire
-            let flowDot = SKShapeNode(circleOfRadius: 3)
-            flowDot.fillColor = color.withAlphaComponent(0.8)
-            flowDot.strokeColor = .clear
-            flowDot.zPosition = 0.6
-            flowDot.name = "flowDot_\(route.sourceId.uuidString)"
+            // Flow particles — 3 staggered particles that travel along the wire showing signal direction
+            let wirePath = wireBezierPath(from: srcPos, to: dstPos).cgPath
+            for particleIndex in 0..<3 {
+                let flowDot = SKShapeNode(circleOfRadius: 2)
+                flowDot.fillColor = color.withAlphaComponent(0.7)
+                flowDot.strokeColor = .clear
+                flowDot.zPosition = 0.6
+                flowDot.name = "flowDot_\(route.sourceId.uuidString)_\(particleIndex)"
 
-            let pathAction = SKAction.follow(wireBezierPath(from: srcPos, to: dstPos).cgPath,
-                                              asOffset: false, orientToPath: false,
-                                              duration: 1.5)
-            let loop = SKAction.repeatForever(SKAction.sequence([pathAction, SKAction.wait(forDuration: 0.3)]))
-            addChild(flowDot)
-            flowDot.run(loop)
+                let followAction = SKAction.follow(wirePath, asOffset: false, orientToPath: false, duration: 2.0)
+                let delay = SKAction.wait(forDuration: Double(particleIndex) * 0.6) // Stagger
+                let sequence = SKAction.sequence([delay, followAction])
+                let loop = SKAction.repeatForever(SKAction.sequence([sequence, SKAction.wait(forDuration: 0.2)]))
+
+                addChild(flowDot)
+                flowDot.run(loop)
+            }
+
+            // Direction arrow at midpoint — chevron pointing from source to destination
+            let arrowMidX = (srcPos.x + dstPos.x) / 2 + (-dy * 0.2) * 0.3  // Offset to match bezier control point
+            let arrowMidY = (srcPos.y + dstPos.y) / 2 + (dx * 0.2) * 0.3
+            let angle = atan2(dstPos.y - srcPos.y, dstPos.x - srcPos.x)
+
+            let arrow = SKShapeNode()
+            let arrowPath = UIBezierPath()
+            let arrowSize: CGFloat = 5
+            arrowPath.move(to: CGPoint(x: arrowSize, y: 0))
+            arrowPath.addLine(to: CGPoint(x: -arrowSize, y: arrowSize * 0.6))
+            arrowPath.addLine(to: CGPoint(x: -arrowSize, y: -arrowSize * 0.6))
+            arrowPath.close()
+            arrow.path = arrowPath.cgPath
+            arrow.fillColor = color.withAlphaComponent(0.5)
+            arrow.strokeColor = .clear
+            arrow.position = CGPoint(x: arrowMidX, y: arrowMidY)
+            arrow.zRotation = CGFloat(angle)
+            arrow.zPosition = 0.7
+            arrow.name = "wireArrow_\(route.sourceId.uuidString)"
+            addChild(arrow)
         }
     }
 
@@ -402,14 +428,14 @@ class ReefScene: SKScene {
         return "Wired"
     }
 
-    private func createWirePath(from src: CGPoint, to dst: CGPoint, color: SKColor) -> SKShapeNode {
+    private func createWirePath(from src: CGPoint, to dst: CGPoint, color: SKColor, depth: Float = 0.5) -> SKShapeNode {
         let path = wireBezierPath(from: src, to: dst)
         let wire = SKShapeNode(path: path.cgPath)
         wire.strokeColor = color.withAlphaComponent(0.5)
-        wire.lineWidth = 2.5
+        wire.lineWidth = 1.5 + CGFloat(depth) * 2.0  // 1.5 to 3.5 based on depth
         wire.lineCap = .round
         wire.fillColor = .clear
-        wire.glowWidth = 1.0
+        wire.glowWidth = CGFloat(depth) * 2.0  // More glow at higher depth
         return wire
     }
 
@@ -443,6 +469,15 @@ class ReefScene: SKScene {
         lastUpdateTime = currentTime
         breathPhase += Float(delta) * 2.0 * .pi * 0.1
         if breathPhase > .pi * 2 { breathPhase -= .pi * 2 }
+
+        // Pulse wire brightness with breath — simulates audio flowing through connections
+        for child in children {
+            guard let name = child.name, name.hasPrefix("wire_") else { continue }
+            if let wire = child as? SKShapeNode {
+                let wireAlpha = 0.4 + sin(breathPhase * 2) * 0.15 // Pulse between 0.25–0.55
+                wire.strokeColor = wire.strokeColor.withAlphaComponent(CGFloat(wireAlpha))
+            }
+        }
 
         for (index, node) in slotNodes.enumerated() {
             guard let specimen = reefStore.specimens[index] else { continue }

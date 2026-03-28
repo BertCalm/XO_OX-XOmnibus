@@ -475,11 +475,41 @@ struct CatchScreen: View {
         [catColor.opacity(0.5), catColor.opacity(0.7), catColor.opacity(0.85), catColor]
     }
 
+    // MARK: - Biome + Time Ambience
+
+    private var biomeGradient: LinearGradient {
+        let colors: [Color]
+        switch specimen.biome {
+        case .coastal:     colors = [Color(hex: "0A0A0F"), Color(hex: "0A1520")] // Deep blue tint
+        case .forest:      colors = [Color(hex: "0A0A0F"), Color(hex: "0A150A")] // Deep green tint
+        case .urban:       colors = [Color(hex: "0A0A0F"), Color(hex: "12100A")] // Warm amber tint
+        case .elevation:   colors = [Color(hex: "0A0A0F"), Color(hex: "0F0A15")] // Cool purple tint
+        case .nocturnal:   colors = [Color(hex: "050508"), Color(hex: "0A0A0F")] // Extra dark
+        case .storm:       colors = [Color(hex: "0A0A0F"), Color(hex: "15100A")] // Storm amber
+        case .liminal:     colors = [Color(hex: "0A0A0F"), Color(hex: "0F0F12")] // Steel grey tint
+        case .convergence: colors = [Color(hex: "0A0A0F"), Color(hex: "14120A")] // Gold tint
+        }
+        return LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+    }
+
+    private var timeIndicator: some View {
+        let hour = Calendar.current.component(.hour, from: Date())
+        let isNight = hour < 6 || hour >= 21
+        return HStack(spacing: 4) {
+            Image(systemName: isNight ? "moon.stars.fill" : "sun.max.fill")
+                .font(.system(size: 8))
+                .foregroundColor(isNight ? Color(hex: "A8D8EA").opacity(0.4) : Color(hex: "E9C46A").opacity(0.4))
+            Text(specimen.biome.displayName)
+                .font(.custom("JetBrainsMono-Regular", size: 8))
+                .foregroundColor(.white.opacity(0.2))
+        }
+    }
+
     // MARK: Body
 
     var body: some View {
         ZStack {
-            Color(hex: "0A0A0F").ignoresSafeArea()
+            biomeGradient.ignoresSafeArea()
 
             VStack(spacing: 20) {
                 Spacer()
@@ -488,6 +518,17 @@ struct CatchScreen: View {
                 if phase != .intro { scoreIndicator }
                 gameView.padding(.horizontal, 40)
                 actionButton
+                Spacer()
+            }
+
+            // Time-of-day indicator — top-right corner
+            VStack {
+                HStack {
+                    Spacer()
+                    timeIndicator
+                        .padding(.top, 16)
+                        .padding(.trailing, 20)
+                }
                 Spacer()
             }
         }
@@ -535,6 +576,17 @@ struct CatchScreen: View {
             Text(specimen.rarity.rawValue.uppercased())
                 .font(.custom("JetBrainsMono-Regular", size: 10))
                 .foregroundColor(Color(hex: "E9C46A"))
+            // Ambient context — biome indicator with storm icon when relevant
+            HStack(spacing: 4) {
+                if specimen.biome == .storm {
+                    Image(systemName: "cloud.bolt.fill")
+                        .font(.system(size: 8))
+                        .foregroundColor(.white.opacity(0.25))
+                }
+                Text(specimen.biome.displayName)
+                    .font(.custom("JetBrainsMono-Regular", size: 9))
+                    .foregroundColor(.white.opacity(0.25))
+            }
             if phase == .intro {
                 if attemptNumber > 1 {
                     Text("Attempt \(attemptNumber)")
