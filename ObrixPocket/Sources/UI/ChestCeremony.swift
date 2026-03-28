@@ -192,6 +192,16 @@ struct ChestCeremony: View {
                     .foregroundColor(categoryColor)
                     .opacity(subtypeOpacity)
 
+                // Personality line
+                if let entry = SpecimenCatalog.entry(for: subtypeID) {
+                    Text(entry.personalityLine)
+                        .font(.custom("Inter-Regular", size: 12))
+                        .foregroundColor(.white.opacity(0.4))
+                        .italic()
+                        .multilineTextAlignment(.center)
+                        .opacity(subtypeOpacity)
+                }
+
                 // Cosmetic tier (only when non-standard)
                 if let label = cosmeticLabel {
                     Text("[ \(label) ]")

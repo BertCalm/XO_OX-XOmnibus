@@ -4,6 +4,7 @@ import SpriteKit
 struct ReefTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
+    @EnvironmentObject var firstLaunchManager: FirstLaunchManager
     @State private var reefScene: ReefScene?
     @State private var activeSourceSlot: Int?  // Which source the keyboard plays through
     @State private var selectedSlot: Int?        // Which specimen's params are showing
@@ -17,6 +18,16 @@ struct ReefTab: View {
                     .font(.custom("SpaceGrotesk-Bold", size: 18))
                     .foregroundColor(.white)
                 Spacer()
+                // Journey progress replaces depth counter until the tutorial is complete
+                if !firstLaunchManager.isJourneyComplete {
+                    Text("Journey: \(firstLaunchManager.journeyStep)/8")
+                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .foregroundColor(Color(hex: "E9C46A"))
+                } else {
+                    Text("Depth: \(reefStore.totalDiveDepth)m")
+                        .font(.custom("JetBrainsMono-Regular", size: 11))
+                        .foregroundColor(Color(hex: "7A7876"))
+                }
                 if !reefStore.couplingRoutes.isEmpty {
                     Button(action: {
                         reefStore.couplingRoutes.removeAll()

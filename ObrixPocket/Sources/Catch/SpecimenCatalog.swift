@@ -9,6 +9,7 @@ struct CatalogEntry {
     let category: SpecimenCategory
     let sonicCharacter: String   // One-line description for UI tooltip
     let creatureConcept: String  // Visual identity hint
+    let personalityLine: String  // Short personality tagline shown on catch + collection
     let isDeepSpecimen: Bool     // true = not available in normal spawns
     let unlockCondition: String  // Human-readable unlock hint (empty for core specimens)
 
@@ -18,6 +19,7 @@ struct CatalogEntry {
         category: SpecimenCategory,
         sonicCharacter: String,
         creatureConcept: String,
+        personalityLine: String = "",
         isDeepSpecimen: Bool = false,
         unlockCondition: String = ""
     ) {
@@ -26,6 +28,7 @@ struct CatalogEntry {
         self.category = category
         self.sonicCharacter = sonicCharacter
         self.creatureConcept = creatureConcept
+        self.personalityLine = personalityLine
         self.isDeepSpecimen = isDeepSpecimen
         self.unlockCondition = unlockCondition
     }
@@ -52,36 +55,44 @@ enum SpecimenCatalog {
         // Core (normal spawns)
         CatalogEntry(subtypeID: "polyblep-saw",    creatureName: "Sawfin",    category: .source,
                      sonicCharacter: "Classic sawtooth — warm, buzzy, detunable for supersaw",
-                     creatureConcept: "Long-finned fish with serrated dorsal fin"),
+                     creatureConcept: "Long-finned fish with serrated dorsal fin",
+                     personalityLine: "Reliable. Warm. The reef's foundation."),
         CatalogEntry(subtypeID: "polyblep-square",  creatureName: "Boxjelly",  category: .source,
                      sonicCharacter: "Hollow square wave — woody, clarinet-like",
-                     creatureConcept: "Translucent cubic jellyfish that pulses"),
+                     creatureConcept: "Translucent cubic jellyfish that pulses",
+                     personalityLine: "Hollow. Woody. Pulses in the dark."),
         CatalogEntry(subtypeID: "noise-white",      creatureName: "Foamspray", category: .source,
                      sonicCharacter: "Full-spectrum noise — ocean spray, breath, transients",
-                     creatureConcept: "Sea urchin constantly shedding tiny spines"),
+                     creatureConcept: "Sea urchin constantly shedding tiny spines",
+                     personalityLine: "Chaos incarnate. The sound of everything at once."),
         CatalogEntry(subtypeID: "fm-basic",         creatureName: "Bellcrab",  category: .source,
                      sonicCharacter: "FM synthesis — metallic bells, electric piano",
-                     creatureConcept: "Hermit crab whose shell rings when struck"),
+                     creatureConcept: "Hermit crab whose shell rings when struck",
+                     personalityLine: "Metallic. Unpredictable. Rings like a struck bell."),
 
         // Deep (unlock required)
         CatalogEntry(subtypeID: "polyblep-tri",     creatureName: "Glider",    category: .source,
                      sonicCharacter: "Pure triangle — flute-like, gentle",
                      creatureConcept: "Manta ray with smooth triangular wings",
+                     personalityLine: "Silent wings. Pure tone.",
                      isDeepSpecimen: true,
                      unlockCondition: "Evolve Sawfin to Lv.10"),
         CatalogEntry(subtypeID: "noise-pink",       creatureName: "Siltsift",  category: .source,
                      sonicCharacter: "Warm noise — rumble, wind, deep water",
                      creatureConcept: "Bottom-dwelling flatfish that stirs sediment",
+                     personalityLine: "The sound beneath the sound.",
                      isDeepSpecimen: true,
                      unlockCondition: "Evolve Foamspray to Lv.10"),
         CatalogEntry(subtypeID: "wt-analog",        creatureName: "Morpheel",  category: .source,
                      sonicCharacter: "Wavetable scanning — evolving, shifting timbres",
                      creatureConcept: "Eel that changes color as it swims",
+                     personalityLine: "Never the same twice.",
                      isDeepSpecimen: true,
                      unlockCondition: "Dive reward at 600m+"),
         CatalogEntry(subtypeID: "wt-vocal",         creatureName: "Chorale",   category: .source,
                      sonicCharacter: "Vocal formant wavetable — ahs, oohs, choir",
                      creatureConcept: "Cluster of tube worms that sing in harmony",
+                     personalityLine: "The reef sings when Chorale appears.",
                      isDeepSpecimen: true,
                      unlockCondition: "Dive reward at 800m+"),
     ]
@@ -93,26 +104,32 @@ enum SpecimenCatalog {
         // Core (normal spawns)
         CatalogEntry(subtypeID: "svf-lp",           creatureName: "Curtain",    category: .processor,
                      sonicCharacter: "Low-pass filter — warmth, classic subtractive sweep",
-                     creatureConcept: "Flowing sea curtain anemone"),
+                     creatureConcept: "Flowing sea curtain anemone",
+                     personalityLine: "Gentle gatekeeper. Only the worthy frequencies pass."),
         CatalogEntry(subtypeID: "shaper-hard",      creatureName: "Bonecrush",  category: .processor,
                      sonicCharacter: "Hard clipping — aggressive distortion",
-                     creatureConcept: "Mantis shrimp with devastating strike force"),
+                     creatureConcept: "Mantis shrimp with devastating strike force",
+                     personalityLine: "Devastation with purpose. Every harmonic earned."),
         CatalogEntry(subtypeID: "feedback",         creatureName: "Loopworm",   category: .processor,
                      sonicCharacter: "Feedback path — Karplus-Strong pluck, metallic tones",
-                     creatureConcept: "Tube worm that recirculates water endlessly"),
+                     creatureConcept: "Tube worm that recirculates water endlessly",
+                     personalityLine: "What goes in, comes back changed. And changed again."),
         CatalogEntry(subtypeID: "svf-bp",           creatureName: "Prism",      category: .processor,
                      sonicCharacter: "Band-pass filter — wah-like, vocal",
-                     creatureConcept: "Translucent prism shrimp that refracts light"),
+                     creatureConcept: "Translucent prism shrimp that refracts light",
+                     personalityLine: "Isolates the voice within the noise."),
 
         // Deep (unlock required)
         CatalogEntry(subtypeID: "svf-hp",           creatureName: "Razorgill",  category: .processor,
                      sonicCharacter: "High-pass filter — airiness, thin metallic character",
                      creatureConcept: "Sharp-edged fish with crystalline gill slits",
+                     personalityLine: "Cuts away everything but the edge.",
                      isDeepSpecimen: true,
                      unlockCondition: "Evolve Curtain to Lv.10"),
         CatalogEntry(subtypeID: "shaper-soft",      creatureName: "Waxcoral",   category: .processor,
                      sonicCharacter: "Soft saturation — tape warmth, gentle harmonics",
                      creatureConcept: "Soft coral that gently bends incoming current",
+                     personalityLine: "Softens the sharp. Warms the cold.",
                      isDeepSpecimen: true,
                      unlockCondition: "Evolve Bonecrush to Lv.10"),
     ]
@@ -124,26 +141,32 @@ enum SpecimenCatalog {
         // Core (normal spawns)
         CatalogEntry(subtypeID: "adsr-fast",        creatureName: "Snapper",       category: .modulator,
                      sonicCharacter: "Fast attack/decay — percussive, plucky",
-                     creatureConcept: "Pistol shrimp that fires instantly"),
+                     creatureConcept: "Pistol shrimp that fires instantly",
+                     personalityLine: "Strikes first. Asks questions never."),
         CatalogEntry(subtypeID: "lfo-sine",         creatureName: "Tidepulse",     category: .modulator,
                      sonicCharacter: "Smooth sine LFO — vibrato, tremolo",
-                     creatureConcept: "Sea anemone that pulses with the tide"),
+                     creatureConcept: "Sea anemone that pulses with the tide",
+                     personalityLine: "Breathes. The reef breathes with it."),
         CatalogEntry(subtypeID: "vel-map",          creatureName: "Strikescale",   category: .modulator,
                      sonicCharacter: "Velocity mapping — harder = brighter/louder",
-                     creatureConcept: "Fish with scales that flash under pressure"),
+                     creatureConcept: "Fish with scales that flash under pressure",
+                     personalityLine: "Harder you push, brighter it gets."),
         CatalogEntry(subtypeID: "lfo-random",       creatureName: "Scramble",      category: .modulator,
                      sonicCharacter: "Random/S&H LFO — unpredictable, glitchy",
-                     creatureConcept: "Octopus flashing random chromatophore patterns"),
+                     creatureConcept: "Octopus flashing random chromatophore patterns",
+                     personalityLine: "Nobody knows what happens next. Not even Scramble."),
 
         // Deep (unlock required)
         CatalogEntry(subtypeID: "adsr-slow",        creatureName: "Drifter",       category: .modulator,
                      sonicCharacter: "Slow pad envelope — gradual swell, long sustain",
                      creatureConcept: "Moon jellyfish that floats on currents",
+                     personalityLine: "Patience. The long fade.",
                      isDeepSpecimen: true,
                      unlockCondition: "Evolve Snapper to Lv.10"),
         CatalogEntry(subtypeID: "at-map",           creatureName: "Pressurewing",  category: .modulator,
                      sonicCharacter: "Aftertouch/pressure mapping — squeeze for expression",
                      creatureConcept: "Stingray responsive to water pressure",
+                     personalityLine: "Squeeze harder. It responds.",
                      isDeepSpecimen: true,
                      unlockCondition: "Evolve Strikescale to Lv.10"),
     ]
@@ -155,16 +178,20 @@ enum SpecimenCatalog {
         // Core (normal spawns — all 4 effects are core)
         CatalogEntry(subtypeID: "delay-stereo",     creatureName: "Echocave",   category: .effect,
                      sonicCharacter: "Stereo delay — rhythmic echoes, ping-pong",
-                     creatureConcept: "Cave-dwelling shrimp in a resonant hollow"),
+                     creatureConcept: "Cave-dwelling shrimp in a resonant hollow",
+                     personalityLine: "Every sound returns. Eventually."),
         CatalogEntry(subtypeID: "chorus-lush",      creatureName: "Shimmer",    category: .effect,
                      sonicCharacter: "Rich chorus — doubles, detunes, widens",
-                     creatureConcept: "School of bioluminescent fish"),
+                     creatureConcept: "School of bioluminescent fish",
+                     personalityLine: "Makes one voice sound like a choir."),
         CatalogEntry(subtypeID: "reverb-hall",      creatureName: "Cathedral",  category: .effect,
                      sonicCharacter: "Large hall reverb — vast, oceanic, immersive",
-                     creatureConcept: "Massive underwater cavern"),
+                     creatureConcept: "Massive underwater cavern",
+                     personalityLine: "The space between the notes."),
         CatalogEntry(subtypeID: "dist-warm",        creatureName: "Ember",      category: .effect,
                      sonicCharacter: "Warm analog distortion — tubes, tape, heat",
-                     creatureConcept: "Hydrothermal vent creature"),
+                     creatureConcept: "Hydrothermal vent creature",
+                     personalityLine: "Warmth with teeth."),
     ]
 
     // MARK: - Unified Access

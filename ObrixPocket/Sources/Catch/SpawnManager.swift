@@ -78,27 +78,57 @@ final class SpawnManager: ObservableObject {
         "Delay-Stereo", "Chorus-Lush", "Reverb-Hall", "Distortion-Warm"
     ]
 
+    // MARK: - Journey Override
+    // Set by CatchTab when the tutorial journey is active. When non-nil, daily drift spawns
+    // exactly this specimen instead of a random Source so the journey sequence is guaranteed.
+
+    /// The catalog subtype ID to force next (e.g., "lfo-sine"). Nil = random mode.
+    var forcedNextSubtype: String? = nil
+    /// The category of the forced specimen (must match catalog entry).
+    var forcedNextCategory: SpecimenCategory? = nil
+
     init(biomeDetector: BiomeDetector) {
         self.biomeDetector = biomeDetector
     }
 
     // MARK: - Daily Drift (Sources only — spec Section 7.2)
 
-    /// Spawns 1-2 Source specimens if none have been drifted today.
+    /// Spawns specimens for today's drift window.
+    ///
+    /// Journey mode (forcedNextSubtype != nil): spawns exactly the next scripted specimen
+    /// as a Common, close by, with a generous 24-hour window so new players can't miss it.
+    ///
+    /// Normal mode: spawns 1-2 random Source specimens as usual.
     func checkDailyDrift() {
         let today = Calendar.current.startOfDay(for: Date())
         guard lastDriftDate == nil || !Calendar.current.isDate(lastDriftDate!, inSameDayAs: today) else {
             return
         }
         lastDriftDate = today
-        let count = Int.random(in: 1...2)
-        for _ in 0..<count {
-            let rarity: SpecimenRarity = Bool.random() ? .common : .uncommon
-            wildSpecimens.append(generateWildSpecimen(
-                category: .source,
-                rarity: rarity,
-                source: .dailyDrift
+
+        if let forcedSubtype = forcedNextSubtype, let forcedCategory = forcedNextCategory {
+            // Journey mode: spawn the scripted next specimen — always Common, nearby, long window.
+            wildSpecimens.append(WildSpecimen(
+                category: forcedCategory,
+                subtype: forcedSubtype,
+                rarity: .common,
+                biome: biomeDetector.currentBiome,
+                spawnSource: .dailyDrift,
+                direction: Double.random(in: 0...(2 * .pi)),
+                distance: Double.random(in: 30...100),
+                expiresAt: Date().addingTimeInterval(24 * 3600)
             ))
+        } else {
+            // Normal random spawns
+            let count = Int.random(in: 1...2)
+            for _ in 0..<count {
+                let rarity: SpecimenRarity = Bool.random() ? .common : .uncommon
+                wildSpecimens.append(generateWildSpecimen(
+                    category: .source,
+                    rarity: rarity,
+                    source: .dailyDrift
+                ))
+            }
         }
     }
 

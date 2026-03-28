@@ -15,6 +15,7 @@ import MapKit
 struct CatchTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
+    @EnvironmentObject var firstLaunchManager: FirstLaunchManager
     @StateObject private var biomeDetector = BiomeDetector()
     @StateObject private var spectralCapture = SpectralCapture()
     @StateObject private var weatherService = WeatherService()
@@ -33,6 +34,7 @@ struct CatchTab: View {
 
             VStack(spacing: 16) {
                 biomeStrip
+                journeyHintBanner
                 mapView
                 reefProximityStrip
             }
@@ -50,10 +52,46 @@ struct CatchTab: View {
                 catchWeather: weatherService.bestAvailable
             )
             .environmentObject(reefStore)
+            .environmentObject(firstLaunchManager)
         }
     }
 
     // MARK: - Sub-views
+
+    /// Shown only during the guided tutorial journey. Disappears after all 8 specimens are caught.
+    @ViewBuilder
+    private var journeyHintBanner: some View {
+        if !firstLaunchManager.isJourneyComplete,
+           let subtype = firstLaunchManager.nextJourneySubtype,
+           // Only show the banner for wild-catch steps (step 2+); steps 0-1 are auto-placed
+           firstLaunchManager.journeyStep >= 2 {
+            let name = SpecimenCatalog.entry(for: subtype)?.creatureName ?? subtype
+            let category = firstLaunchManager.nextJourneyCategory
+            HStack(spacing: 6) {
+                Image(systemName: "sparkle")
+                    .foregroundColor(Color(hex: "E9C46A"))
+                Text("Look for \(name)")
+                    .font(.custom("Inter-Medium", size: 12))
+                    .foregroundColor(Color(hex: "E9C46A"))
+                Text("— \(categoryLabel(category))")
+                    .font(.custom("Inter-Regular", size: 11))
+                    .foregroundColor(.white.opacity(0.4))
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 6)
+        }
+    }
+
+    private func categoryLabel(_ category: SpecimenCategory?) -> String {
+        switch category {
+        case .source:    return "a sound source"
+        case .processor: return "a sound shaper"
+        case .modulator: return "a modulator"
+        case .effect:    return "an effect"
+        case .none:      return ""
+        }
+    }
 
     private var biomeStrip: some View {
         HStack(spacing: 6) {
@@ -165,6 +203,15 @@ struct CatchTab: View {
     private func onAppear() {
         if spawnManager == nil {
             spawnManager = SpawnManager(biomeDetector: biomeDetector)
+        }
+
+        // Journey override: force the scripted next specimen during the tutorial
+        if !firstLaunchManager.isJourneyComplete {
+            spawnManager?.forcedNextSubtype = firstLaunchManager.nextJourneySubtype
+            spawnManager?.forcedNextCategory = firstLaunchManager.nextJourneyCategory
+        } else {
+            spawnManager?.forcedNextSubtype = nil
+            spawnManager?.forcedNextCategory = nil
         }
 
         // Wire WeatherService into biomeDetector so storm state is available
@@ -321,6 +368,7 @@ struct CatchScreen: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var reefStore: ReefStore
     @EnvironmentObject var audioEngine: AudioEngineManager
+    @EnvironmentObject var firstLaunchManager: FirstLaunchManager
 
     @State private var pattern: [Int] = []
     @State private var playerInput: [Int] = []
@@ -411,6 +459,14 @@ struct CatchScreen: View {
             Text(specimen.rarity.rawValue.uppercased())
                 .font(.custom("JetBrainsMono-Regular", size: 10))
                 .foregroundColor(Color(hex: "E9C46A"))
+            if phase == .intro, let entry = SpecimenCatalog.entry(for: cID) {
+                Text(entry.personalityLine)
+                    .font(.custom("Inter-Regular", size: 11))
+                    .foregroundColor(.white.opacity(0.4))
+                    .italic()
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 32)
+            }
         }
     }
 
@@ -678,7 +734,12 @@ struct CatchScreen: View {
                 from: specimen, spectralDNA: profile,
                 location: catchLocation, weather: catchWeather, accelerometer: [])
             if let _ = reefStore.addSpecimen(newSpecimen) {
-                phase = .caught; reefStore.save()
+                phase = .caught
+                reefStore.save()
+                // Advance the guided journey when a scripted specimen is caught
+                if !firstLaunchManager.isJourneyComplete {
+                    firstLaunchManager.advanceJourney()
+                }
             } else {
                 showReefFullAlert = true; return
             }

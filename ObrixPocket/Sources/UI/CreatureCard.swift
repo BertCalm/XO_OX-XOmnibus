@@ -214,6 +214,16 @@ struct CreatureCard: View {
 
             rarityBadge
 
+            if let entry = SpecimenCatalog.entry(for: specimen.subtype) {
+                Text(entry.personalityLine)
+                    .font(.custom("Inter-Regular", size: 11))
+                    .foregroundColor(.white.opacity(0.35))
+                    .italic()
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 2)
+            }
+
             if specimen.cosmeticTier != .standard {
                 CosmeticTierBadge(tier: specimen.cosmeticTier)
                     .padding(.top, 2)

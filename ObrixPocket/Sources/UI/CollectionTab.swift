@@ -380,6 +380,15 @@ struct CollectionCard: View {
                 .font(.custom("Inter-Regular", size: 10))
                 .foregroundColor(discovered ? .white.opacity(0.7) : .white.opacity(0.2))
                 .lineLimit(1)
+
+            if discovered {
+                Text(entry.personalityLine)
+                    .font(.custom("Inter-Regular", size: 8))
+                    .foregroundColor(.white.opacity(0.25))
+                    .italic()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
