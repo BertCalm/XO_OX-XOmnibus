@@ -32,6 +32,13 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
     var musicHash: String?
     var sourceTrackTitle: String?
 
+    // Leveling system fields
+    var xp: Int
+    var level: Int
+    var aggressiveScore: Double
+    var gentleScore: Double
+    var totalPlaySeconds: Double
+
     // MARK: - Conversion to/from Specimen
 
     init(from specimen: Specimen, reefSlotIndex: Int? = nil, stasisSlotIndex: Int? = nil) {
@@ -59,6 +66,11 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
         self.morphIndex = specimen.morphIndex
         self.musicHash = specimen.musicHash
         self.sourceTrackTitle = specimen.sourceTrackTitle
+        self.xp = specimen.xp
+        self.level = specimen.level
+        self.aggressiveScore = Double(specimen.aggressiveScore)
+        self.gentleScore = Double(specimen.gentleScore)
+        self.totalPlaySeconds = specimen.totalPlaySeconds
     }
 
     func toSpecimen() -> Specimen? {
@@ -87,7 +99,12 @@ struct SpecimenRecord: Codable, FetchableRecord, PersistableRecord {
             cosmeticTier: CosmeticTier(rawValue: cosmeticTier) ?? .standard,
             morphIndex: morphIndex,
             musicHash: musicHash,
-            sourceTrackTitle: sourceTrackTitle
+            sourceTrackTitle: sourceTrackTitle,
+            xp: xp,
+            level: level,
+            aggressiveScore: Float(aggressiveScore),
+            gentleScore: Float(gentleScore),
+            totalPlaySeconds: totalPlaySeconds
         )
     }
 

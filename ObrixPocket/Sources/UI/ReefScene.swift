@@ -199,6 +199,18 @@ class ReefScene: SKScene {
                     provLabel.verticalAlignmentMode = .top
                     provLabel.position = CGPoint(x: 0, y: -bgRadius * 0.55 - 10)
                     slotNode.addChild(provLabel)
+
+                    // Level badge — top-right corner of slot
+                    let levelBadge = SKLabelNode(text: "Lv\(specimen.level)")
+                    levelBadge.fontSize = 7
+                    levelBadge.fontName = "JetBrainsMono-Bold"
+                    levelBadge.fontColor = specimen.level >= 5
+                        ? SKColor(red: 0.914, green: 0.769, blue: 0.416, alpha: 1) // XO Gold
+                        : SKColor.white.withAlphaComponent(0.5)
+                    levelBadge.verticalAlignmentMode = .top
+                    levelBadge.horizontalAlignmentMode = .right
+                    levelBadge.position = CGPoint(x: bgRadius * 0.7, y: bgRadius * 0.7)
+                    slotNode.addChild(levelBadge)
                 } else {
                     bg.fillColor = SKColor.white.withAlphaComponent(0.02)
                     bg.strokeColor = SKColor.white.withAlphaComponent(0.08)

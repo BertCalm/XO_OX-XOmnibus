@@ -1,6 +1,7 @@
 import Foundation
 import AVFoundation
 import Combine
+import UIKit
 
 /// Manages the JUCE audio hosting layer for ObrixEngine.
 /// Phase 0: Initializes audio session, creates JUCE bridge, routes touch events to notes.
@@ -318,6 +319,28 @@ final class AudioEngineManager: ObservableObject {
     /// Reference to the reef store — set by ObrixPocketApp after launch
     weak var reefStoreRef: ReefStore?
 
+    /// The slot currently selected as the "active" source for keyboard input.
+    /// Set by ReefTab when the user taps a slot; keyboard noteOn/noteOff credit XP here.
+    var activeSlot: Int?
+
+    // MARK: - XP Tracking
+
+    /// Records when each slot's note started (for duration-based XP on noteOff)
+    private var noteOnTimestamps: [Int: Date] = [:]
+
+    /// Award XP to the specimen in the given slot, checking for level-up.
+    func earnXP(slotIndex: Int, amount: Int) {
+        guard let reefStore = reefStoreRef,
+              var specimen = reefStore.specimens[slotIndex] else { return }
+        specimen.xp += amount
+        let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
+        if newLevel > specimen.level {
+            specimen.level = newLevel
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        }
+        reefStore.specimens[slotIndex] = specimen
+    }
+
     func noteOn(slotIndex: Int, velocity: Float) {
         guard let bridge = ObrixBridge.shared() else { return }
 
@@ -343,6 +366,20 @@ final class AudioEngineManager: ObservableObject {
         if !hasPlayedFirstNote {
             hasPlayedFirstNote = true
         }
+
+        // XP: record note-on timestamp and award 1 XP per note
+        noteOnTimestamps[slotIndex] = Date()
+        earnXP(slotIndex: slotIndex, amount: 1)
+
+        // Style tracking: aggressive = high velocity, gentle = low velocity
+        if let reefStore = reefStoreRef, var specimen = reefStore.specimens[slotIndex] {
+            if velocity > 0.7 {
+                specimen.aggressiveScore += 0.1
+            } else if velocity < 0.4 {
+                specimen.gentleScore += 0.1
+            }
+            reefStore.specimens[slotIndex] = specimen
+        }
     }
 
     func noteOff(slotIndex: Int) {
@@ -350,6 +387,26 @@ final class AudioEngineManager: ObservableObject {
         let note = min(127, max(0, 60 + slotIndex))
         ObrixBridge.shared()?.noteOff(Int32(note))
         midiOutput.sendNoteOff(note: UInt8(note), channel: UInt8(slotIndex % 16))
+
+        // XP: compute note duration, award bonuses, update play stats
+        if let startTime = noteOnTimestamps.removeValue(forKey: slotIndex),
+           let reefStore = reefStoreRef,
+           var specimen = reefStore.specimens[slotIndex] {
+
+            let duration = Date().timeIntervalSince(startTime)
+            specimen.totalPlaySeconds += duration
+
+            if duration > 2.0 {
+                // Sustained note reward
+                earnXP(slotIndex: slotIndex, amount: 3)
+                specimen.gentleScore += 0.2
+            } else if duration < 0.3 {
+                // Short staccato tap
+                specimen.aggressiveScore += 0.1
+            }
+
+            reefStore.specimens[slotIndex] = specimen
+        }
     }
 
     func allNotesOff() {

@@ -31,6 +31,19 @@ struct SpecimenParamPanel: View {
                         .tracking(1)
                         .foregroundColor(catColor(spec.category).opacity(0.6))
 
+                    // Level badge
+                    Text("Lv.\(spec.level)")
+                        .font(.custom("JetBrainsMono-Bold", size: 10))
+                        .foregroundColor(spec.level >= 5
+                            ? Color(hex: "E9C46A")
+                            : Color.white.opacity(0.4))
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 3)
+                                .fill(Color.white.opacity(0.06))
+                        )
+
                     Spacer()
 
                     // Close button

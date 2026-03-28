@@ -8,7 +8,7 @@ enum SpecimenHashGenerator {
 
     /// Intermediate seed extracted from a SHA256 hash
     struct SpecimenSeed {
-        let subtypeIndex: Int       // 0-23: which of the 24 specimen types
+        let subtypeIndex: Int       // 0-15: which of the 16 CORE specimen types
         let rarityRoll: Float       // 0-1: determines rarity tier
         let spectralSeeds: [Float]  // 6 values: spectral DNA dimensions
         let morphIndex: Int         // 0 or 1 (V1 morphs)
@@ -39,12 +39,12 @@ enum SpecimenHashGenerator {
         let hashHex = bytes.map { String(format: "%02x", $0) }.joined()
 
         // Extract deterministic values from hash bytes
-        // Bytes 0:    subtype index (0-23)
+        // Bytes 0:    subtype index (0-15, core specimens only — deep unlocked separately)
         // Byte  1:    rarity roll
         // Bytes 2-7:  spectral DNA seeds (6 dimensions)
         // Byte  8:    morph index
         // Byte  9:    cosmetic roll
-        let subtypeIndex = Int(bytes[0]) % SpecimenCatalog.all.count
+        let subtypeIndex = Int(bytes[0]) % SpecimenCatalog.coreCount
         let rarityRoll = Float(bytes[1]) / 255.0
         let spectralSeeds = (0..<6).map { Float(bytes[2 + $0]) / 255.0 }
         let morphIndex = Int(bytes[8]) % 2
@@ -166,7 +166,12 @@ enum SpecimenHashGenerator {
             cosmeticTier: cosmetic,
             morphIndex: seed.morphIndex,
             musicHash: seed.hashHex,
-            sourceTrackTitle: "\(trackArtist) — \(trackTitle)"
+            sourceTrackTitle: "\(trackArtist) — \(trackTitle)",
+            xp: 0,
+            level: 1,
+            aggressiveScore: 0,
+            gentleScore: 0,
+            totalPlaySeconds: 0
         )
     }
 

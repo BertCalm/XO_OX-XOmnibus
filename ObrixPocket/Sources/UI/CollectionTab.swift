@@ -2,14 +2,15 @@ import SwiftUI
 
 // MARK: - CollectionTab
 
-/// Pokédex-style view of all 24 specimen types.
-/// Cards show discovered creatures with sprite + name;
-/// undiscovered creatures show a silhouette with "???".
+/// Pokédex-style view of all specimen types.
+/// Shows 16 core specimens (discoverable through normal spawns) and
+/// 8 deep specimens (locked, showing unlock conditions).
 struct CollectionTab: View {
     @EnvironmentObject var reefStore: ReefStore
 
     @State private var selectedSpecimen: Specimen?
     @State private var showingCard = false
+    @State private var deepSectionExpanded = false
 
     // Compute the set of discovered subtype IDs once per render.
     // A type is "discovered" if found in the reef OR in the full collection.
@@ -24,9 +25,14 @@ struct CollectionTab: View {
         return Set(reefSubtypes + allSubtypes)
     }
 
-    private var discoveredCount: Int {
+    private var discoveredCoreCount: Int {
         let subtypes = discoveredSubtypes
-        return SpecimenCatalog.all.filter { subtypes.contains($0.subtypeID) }.count
+        return SpecimenCatalog.coreSpecimens.filter { subtypes.contains($0.subtypeID) }.count
+    }
+
+    private var discoveredDeepCount: Int {
+        let subtypes = discoveredSubtypes
+        return SpecimenCatalog.deepSpecimens.filter { subtypes.contains($0.subtypeID) }.count
     }
 
     /// Find the best matching Specimen for a catalog entry's subtypeID.
@@ -34,6 +40,20 @@ struct CollectionTab: View {
     private func specimen(for entry: CatalogEntry) -> Specimen? {
         reefStore.specimens.compactMap { $0 }.first { $0.subtype == entry.subtypeID }
             ?? reefStore.loadAllSpecimens().first { $0.subtype == entry.subtypeID }
+    }
+
+    // Split core entries by category (only core specimens for normal sections)
+    private var coreSources: [CatalogEntry] {
+        SpecimenCatalog.sources.filter { !$0.isDeepSpecimen }
+    }
+    private var coreProcessors: [CatalogEntry] {
+        SpecimenCatalog.processors.filter { !$0.isDeepSpecimen }
+    }
+    private var coreModulators: [CatalogEntry] {
+        SpecimenCatalog.modulators.filter { !$0.isDeepSpecimen }
+    }
+    private var coreEffects: [CatalogEntry] {
+        SpecimenCatalog.effects.filter { !$0.isDeepSpecimen }
     }
 
     var body: some View {
@@ -47,13 +67,18 @@ struct CollectionTab: View {
                         // Header
                         collectionHeader
 
-                        // Sections by category
                         let subtypes = discoveredSubtypes
+
+                        // MARK: Core Sections
+                        Text("CORE SPECIMENS")
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.35))
+                            .tracking(1.5)
 
                         CollectionSection(
                             title: "Shells",
                             categoryColor: Color(hex: "3380FF"),
-                            entries: SpecimenCatalog.sources,
+                            entries: coreSources,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in
                                 selectedSpecimen = specimen(for: entry)
@@ -64,7 +89,7 @@ struct CollectionTab: View {
                         CollectionSection(
                             title: "Coral",
                             categoryColor: Color(hex: "FF4D4D"),
-                            entries: SpecimenCatalog.processors,
+                            entries: coreProcessors,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in
                                 selectedSpecimen = specimen(for: entry)
@@ -75,7 +100,7 @@ struct CollectionTab: View {
                         CollectionSection(
                             title: "Currents",
                             categoryColor: Color(hex: "4DCC4D"),
-                            entries: SpecimenCatalog.modulators,
+                            entries: coreModulators,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in
                                 selectedSpecimen = specimen(for: entry)
@@ -86,13 +111,16 @@ struct CollectionTab: View {
                         CollectionSection(
                             title: "Tide Pools",
                             categoryColor: Color(hex: "B34DFF"),
-                            entries: SpecimenCatalog.effects,
+                            entries: coreEffects,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in
                                 selectedSpecimen = specimen(for: entry)
                                 showingCard = selectedSpecimen != nil
                             }
                         )
+
+                        // MARK: Deep Specimens Section (collapsible)
+                        deepSpecimensSection(discoveredSubtypes: subtypes)
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 32)
@@ -115,18 +143,85 @@ struct CollectionTab: View {
     // MARK: - Header
 
     private var collectionHeader: some View {
-        HStack(alignment: .lastTextBaseline, spacing: 8) {
-            Text("Collection")
-                .font(.custom("SpaceGrotesk-Bold", size: 20))
-                .foregroundColor(.white)
-
-            Spacer()
-
-            Text("\(discoveredCount) / 24")
-                .font(.custom("JetBrainsMono-Regular", size: 12))
-                .foregroundColor(Color(hex: "1E8B7E"))
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .lastTextBaseline, spacing: 8) {
+                Text("Collection")
+                    .font(.custom("SpaceGrotesk-Bold", size: 20))
+                    .foregroundColor(.white)
+                Spacer()
+            }
+            HStack(spacing: 12) {
+                // Core count
+                HStack(spacing: 4) {
+                    Text("Core")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(.white.opacity(0.4))
+                    Text("\(discoveredCoreCount) / 16")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(Color(hex: "1E8B7E"))
+                }
+                // Deep count
+                HStack(spacing: 4) {
+                    Text("Deep")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(.white.opacity(0.4))
+                    Text("\(discoveredDeepCount) / 8")
+                        .font(.custom("JetBrainsMono-Regular", size: 10))
+                        .foregroundColor(Color(hex: "7B5FD4"))
+                }
+                Spacer()
+            }
         }
         .padding(.top, 16)
+    }
+
+    // MARK: - Deep Specimens Section
+
+    @ViewBuilder
+    private func deepSpecimensSection(discoveredSubtypes: Set<String>) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            // Collapsible header
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    deepSectionExpanded.toggle()
+                }
+            }) {
+                HStack(spacing: 8) {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundColor(Color(hex: "7B5FD4"))
+
+                    Text("DEEP SPECIMENS")
+                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .foregroundColor(Color(hex: "7B5FD4"))
+                        .tracking(1.5)
+
+                    Text("(\(discoveredDeepCount)/8 unlocked)")
+                        .font(.custom("JetBrainsMono-Regular", size: 9))
+                        .foregroundColor(.white.opacity(0.3))
+                        .tracking(0.8)
+
+                    Spacer()
+
+                    Image(systemName: deepSectionExpanded ? "chevron.up" : "chevron.down")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+            }
+            .buttonStyle(.plain)
+
+            if deepSectionExpanded {
+                DeepSpecimensGrid(
+                    entries: SpecimenCatalog.deepSpecimens,
+                    discoveredSubtypes: discoveredSubtypes,
+                    onDiscoveredTap: { entry in
+                        selectedSpecimen = specimen(for: entry)
+                        showingCard = selectedSpecimen != nil
+                    }
+                )
+                .transition(.opacity.combined(with: .move(edge: .top)))
+            }
+        }
     }
 }
 
@@ -181,6 +276,83 @@ private struct CollectionSection: View {
     }
 }
 
+// MARK: - DeepSpecimensGrid
+
+/// Grid showing all 8 deep specimens. Unlocked ones show normally;
+/// locked ones show a lock icon and unlock condition instead of "???".
+private struct DeepSpecimensGrid: View {
+    let entries: [CatalogEntry]
+    let discoveredSubtypes: Set<String>
+    var onDiscoveredTap: ((CatalogEntry) -> Void)? = nil
+
+    private let columns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 4)
+
+    var body: some View {
+        LazyVGrid(columns: columns, spacing: 8) {
+            ForEach(entries, id: \.subtypeID) { entry in
+                let isDiscovered = discoveredSubtypes.contains(entry.subtypeID)
+                DeepSpecimenCard(entry: entry, discovered: isDiscovered)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.white.opacity(0.02))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .strokeBorder(
+                                        isDiscovered
+                                            ? Color(hex: "7B5FD4").opacity(0.40)
+                                            : Color(hex: "7B5FD4").opacity(0.12),
+                                        lineWidth: 1
+                                    )
+                            )
+                    )
+                    .onTapGesture {
+                        guard isDiscovered else { return }
+                        onDiscoveredTap?(entry)
+                    }
+            }
+        }
+    }
+}
+
+// MARK: - DeepSpecimenCard
+
+/// Card for deep specimens. Unlocked = sprite + name; locked = lock icon + unlock condition.
+private struct DeepSpecimenCard: View {
+    let entry: CatalogEntry
+    let discovered: Bool
+
+    var body: some View {
+        VStack(spacing: 4) {
+            if discovered {
+                SpecimenSprite(subtype: entry.subtypeID, category: entry.category, size: 48)
+                Text(entry.creatureName)
+                    .font(.custom("Inter-Regular", size: 10))
+                    .foregroundColor(.white.opacity(0.7))
+                    .lineLimit(1)
+            } else {
+                // Lock icon + unlock condition
+                ZStack {
+                    Circle()
+                        .fill(Color(hex: "7B5FD4").opacity(0.08))
+                        .frame(width: 48, height: 48)
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(Color(hex: "7B5FD4").opacity(0.5))
+                }
+                Text(entry.unlockCondition)
+                    .font(.custom("Inter-Regular", size: 8))
+                    .foregroundColor(Color(hex: "7B5FD4").opacity(0.55))
+                    .lineLimit(2)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.7)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 4)
+    }
+}
+
 // MARK: - CollectionCard
 
 /// A single specimen-type card. Discovered = sprite + name; undiscovered = silhouette + "???".
@@ -217,8 +389,7 @@ struct CollectionCard: View {
 // MARK: - Preview
 
 #if DEBUG
-#Preview {
-    // Build a mock reef store with a couple of discovered specimens
+private func makePreviewStore() -> ReefStore {
     let store = ReefStore()
     store.specimens[0] = Specimen(
         id: UUID(),
@@ -241,7 +412,12 @@ struct CollectionCard: View {
         cosmeticTier: .standard,
         morphIndex: 0,
         musicHash: nil,
-        sourceTrackTitle: nil
+        sourceTrackTitle: nil,
+        xp: 0,
+        level: 1,
+        aggressiveScore: 0,
+        gentleScore: 0,
+        totalPlaySeconds: 0
     )
     store.specimens[1] = Specimen(
         id: UUID(),
@@ -264,10 +440,18 @@ struct CollectionCard: View {
         cosmeticTier: .standard,
         morphIndex: 0,
         musicHash: nil,
-        sourceTrackTitle: nil
+        sourceTrackTitle: nil,
+        xp: 0,
+        level: 1,
+        aggressiveScore: 0,
+        gentleScore: 0,
+        totalPlaySeconds: 0
     )
+    return store
+}
 
-    return CollectionTab()
-        .environmentObject(store)
+#Preview {
+    CollectionTab()
+        .environmentObject(makePreviewStore())
 }
 #endif

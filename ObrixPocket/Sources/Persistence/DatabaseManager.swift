@@ -98,6 +98,16 @@ final class DatabaseManager {
             }
         }
 
+        migrator.registerMigration("v4_specimen_leveling") { db in
+            try db.alter(table: "specimen") { t in
+                t.add(column: "xp", .integer).notNull().defaults(to: 0)
+                t.add(column: "level", .integer).notNull().defaults(to: 1)
+                t.add(column: "aggressiveScore", .double).notNull().defaults(to: 0)
+                t.add(column: "gentleScore", .double).notNull().defaults(to: 0)
+                t.add(column: "totalPlaySeconds", .double).notNull().defaults(to: 0)
+            }
+        }
+
         guard let dbQueue else { return }
         try migrator.migrate(dbQueue)
     }

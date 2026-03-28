@@ -62,18 +62,17 @@ final class SpawnManager: ObservableObject {
     }
 
     // MARK: - Specimen subtype rosters (spec Section 7.1)
+    // Only CORE specimens are available through normal spawns.
+    // Deep specimens are excluded — they unlock through special conditions.
 
     static let sourceSubtypes: [String] = [
-        "PolyBLEP-Saw", "PolyBLEP-Square", "PolyBLEP-Tri", "Noise-White",
-        "Noise-Pink", "Wavetable-Analog", "Wavetable-Vocal", "FM-Basic"
+        "PolyBLEP-Saw", "PolyBLEP-Square", "Noise-White", "FM-Basic"
     ]
     static let processorSubtypes: [String] = [
-        "SVF-LP", "SVF-HP", "SVF-BP", "Waveshaper-Soft",
-        "Waveshaper-Hard", "Feedback-Path"
+        "SVF-LP", "SVF-BP", "Waveshaper-Hard", "Feedback-Path"
     ]
     static let modulatorSubtypes: [String] = [
-        "ADSR-Fast", "ADSR-Slow", "LFO-Sine", "LFO-Random",
-        "Velocity-Map", "Aftertouch-Map"
+        "ADSR-Fast", "LFO-Sine", "Velocity-Map", "LFO-Random"
     ]
     static let effectSubtypes: [String] = [
         "Delay-Stereo", "Chorus-Lush", "Reverb-Hall", "Distortion-Warm"

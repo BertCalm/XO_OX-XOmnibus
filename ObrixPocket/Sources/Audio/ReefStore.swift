@@ -66,6 +66,13 @@ struct Specimen: Identifiable, Codable {
     var musicHash: String?       // SHA256 hex if born from music library
     var sourceTrackTitle: String? // "Artist — Title" of the song that birthed it
 
+    // Leveling system
+    var xp: Int                  // Experience points earned
+    var level: Int               // Current level (1-10)
+    var aggressiveScore: Float   // Cumulative aggressive play (high velocity, fast notes)
+    var gentleScore: Float       // Cumulative gentle play (low velocity, sustained notes)
+    var totalPlaySeconds: Double // Total seconds of play through this specimen
+
     static let slotCount = 16
 
     /// The catalog creature name for this specimen's subtype

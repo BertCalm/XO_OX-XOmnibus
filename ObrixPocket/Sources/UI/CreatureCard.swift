@@ -221,6 +221,47 @@ struct CreatureCard: View {
                 CosmeticTierBadge(tier: specimen.cosmeticTier)
                     .padding(.top, 2)
             }
+
+            // Level + XP progress
+            LevelProgressView(specimen: specimen, color: color)
+                .padding(.top, 4)
+        }
+    }
+
+    // MARK: - Level Progress Sub-view
+
+    private struct LevelProgressView: View {
+        let specimen: Specimen
+        let color: Color
+
+        private var xpLabel: String {
+            SpecimenLeveling.xpProgressString(xp: specimen.xp, level: specimen.level)
+        }
+
+        private var xpFraction: Double {
+            SpecimenLeveling.xpFraction(xp: specimen.xp, level: specimen.level)
+        }
+
+        var body: some View {
+            VStack(spacing: 3) {
+                Text("Lv.\(specimen.level) — \(xpLabel)")
+                    .font(.custom("JetBrainsMono-Regular", size: 10))
+                    .foregroundColor(specimen.level >= 5
+                        ? Color(hex: "E9C46A")
+                        : Color.white.opacity(0.45))
+
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(Color.white.opacity(0.08))
+                            .frame(height: 3)
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(specimen.level >= 5 ? Color(hex: "E9C46A") : color.opacity(0.7))
+                            .frame(width: geo.size.width * xpFraction, height: 3)
+                    }
+                }
+                .frame(height: 3)
+            }
         }
     }
 
@@ -334,7 +375,12 @@ struct CreatureCard: View {
                     cosmeticTier: .standard,
                     morphIndex: 0,
                     musicHash: nil,
-                    sourceTrackTitle: nil
+                    sourceTrackTitle: nil,
+                    xp: 85,
+                    level: 3,
+                    aggressiveScore: 2.1,
+                    gentleScore: 0.8,
+                    totalPlaySeconds: 420
                 )
             )
 
@@ -374,7 +420,12 @@ struct CreatureCard: View {
                     cosmeticTier: .bioluminescent,
                     morphIndex: 0,
                     musicHash: "a3f9b12c45de67890abc",
-                    sourceTrackTitle: "John Coltrane — A Love Supreme"
+                    sourceTrackTitle: "John Coltrane — A Love Supreme",
+                    xp: 1450,
+                    level: 9,
+                    aggressiveScore: 8.5,
+                    gentleScore: 14.2,
+                    totalPlaySeconds: 7200
                 ),
                 showFullStats: true
             )
@@ -415,7 +466,12 @@ struct CreatureCard: View {
                     cosmeticTier: .prismatic,
                     morphIndex: 1,
                     musicHash: nil,
-                    sourceTrackTitle: "Boards of Canada — Roygbiv"
+                    sourceTrackTitle: "Boards of Canada — Roygbiv",
+                    xp: 0,
+                    level: 1,
+                    aggressiveScore: 0,
+                    gentleScore: 0,
+                    totalPlaySeconds: 0
                 )
             )
         }

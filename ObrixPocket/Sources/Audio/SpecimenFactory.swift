@@ -46,7 +46,12 @@ final class SpecimenFactory {
             cosmeticTier: .standard,
             morphIndex: 0,
             musicHash: nil,
-            sourceTrackTitle: nil
+            sourceTrackTitle: nil,
+            xp: 0,
+            level: 1,
+            aggressiveScore: 0,
+            gentleScore: 0,
+            totalPlaySeconds: 0
         )
     }
 
@@ -85,7 +90,12 @@ final class SpecimenFactory {
             cosmeticTier: .standard,
             morphIndex: 0,
             musicHash: nil,
-            sourceTrackTitle: nil
+            sourceTrackTitle: nil,
+            xp: 0,
+            level: 1,
+            aggressiveScore: 0,
+            gentleScore: 0,
+            totalPlaySeconds: 0
         )
     }
 
