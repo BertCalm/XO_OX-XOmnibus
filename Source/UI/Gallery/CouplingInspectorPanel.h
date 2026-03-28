@@ -268,19 +268,15 @@ public:
         // Dark theme background — match the elevated surface behind the sidebar
         g.fillAll (get (surface()));
 
-        // ── Hairline separator below mini viz ─────────────────────────────────
-        g.setColour (border());
-        g.drawHorizontalLine (kMiniVizH, 0.0f, static_cast<float> (getWidth()));
-
-        // ── Section label above routes ─────────────────────────────────────────
-        g.setFont (GalleryFonts::heading (9.0f));
-        g.setColour (get (t3()));
-        g.drawText ("ROUTES",
-                    juce::Rectangle<int> (kCardMargin, kMiniVizH + 2, 60, kCardGap + 2),
+        // ── Section label at top ─────────────────────────────────────────────
+        g.setFont (GalleryFonts::display (11.0f));
+        g.setColour (get (t1()));
+        g.drawText ("COUPLING ROUTES",
+                    juce::Rectangle<int> (kCardMargin, 6, 180, 20),
                     juce::Justification::centredLeft);
 
         // ── Route card backgrounds ─────────────────────────────────────────────
-        int y = kMiniVizH + kCardGap;
+        int y = 28;
         for (int r = 0; r < kNumRoutes; ++r)
         {
             int cardH = routeCards[r].expanded ? kCardExpandedH : kCardCollapsedH;
@@ -417,11 +413,12 @@ public:
     {
         const int w = getWidth();
 
-        // ── Mini viz ──────────────────────────────────────────────────────────
-        miniViz.setBounds (0, 0, w, kMiniVizH);
+        // ── Mini viz hidden — already shown in Column A's MiniCouplingGraph ──
+        miniViz.setBounds (0, -200, 0, 0);
+        miniViz.setVisible(false);
 
-        // ── Route cards ───────────────────────────────────────────────────────
-        int y = kMiniVizH + kCardGap;
+        // ── Route cards — below "COUPLING ROUTES" header ──────────────────────
+        int y = 28;
         for (int r = 0; r < kNumRoutes; ++r)
         {
             auto& card = routeCards[r];
