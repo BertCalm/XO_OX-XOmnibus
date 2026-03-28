@@ -194,6 +194,28 @@ struct CatchTab: View {
             .font(.custom("Inter-Regular", size: 12))
             .foregroundColor(Color(hex: "7A7876"))
             .tint(Color(hex: "1E8B7E"))
+
+            Spacer()
+
+            // Reroll button — spend 5 energy to regenerate the wild spawn pool
+            if ReefEnergyManager.shared.canAfford(ReefEnergyManager.rerollCost) {
+                Button(action: {
+                    if ReefEnergyManager.shared.spend(ReefEnergyManager.rerollCost) {
+                        wildSpecimens.removeAll()
+                        spawnManager?.checkDailyDrift()
+                        spawnManager?.checkTimeOfDay()
+                        wildSpecimens = spawnManager?.wildSpecimens ?? []
+                    }
+                }) {
+                    HStack(spacing: 3) {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.system(size: 9))
+                        Text("Reroll (\(ReefEnergyManager.rerollCost)⚡)")
+                            .font(.custom("JetBrainsMono-Regular", size: 9))
+                    }
+                    .foregroundColor(Color(hex: "E9C46A").opacity(0.5))
+                }
+            }
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 12)

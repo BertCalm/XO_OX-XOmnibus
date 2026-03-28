@@ -15,7 +15,7 @@ struct ReefTab: View {
     @StateObject private var loopRecorder = LoopRecorder()
     @StateObject private var streakManager = StreakManager()
     @StateObject private var audioExporter = AudioExporter()
-    @StateObject private var energyManager = ReefEnergyManager()
+    @ObservedObject private var energyManager = ReefEnergyManager.shared
     @StateObject private var seasonalEvent = SeasonalEventManager()
     @State private var isAudioRecording = false
     @State private var showAudioShare = false

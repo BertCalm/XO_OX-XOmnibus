@@ -106,6 +106,26 @@ struct SpecimenParamPanel: View {
                     sectionHeader("ENVELOPE")
                     envelopeParams(spec)
 
+                    // XP Boost button — spend 10 energy to award +50 XP to this specimen
+                    Button(action: {
+                        if ReefEnergyManager.shared.spend(ReefEnergyManager.xpCost) {
+                            audioEngine.awardBulkXP(slotIndex: slotIndex, amount: 50)
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "bolt.fill")
+                                .font(.system(size: 9))
+                            Text("Boost +50 XP")
+                                .font(.custom("Inter-Regular", size: 10))
+                            Text("(\(ReefEnergyManager.xpCost)⚡)")
+                                .font(.custom("JetBrainsMono-Regular", size: 9))
+                        }
+                        .foregroundColor(ReefEnergyManager.shared.canAfford(ReefEnergyManager.xpCost)
+                            ? Color(hex: "E9C46A") : .white.opacity(0.15))
+                    }
+                    .disabled(!ReefEnergyManager.shared.canAfford(ReefEnergyManager.xpCost))
+                    .padding(.top, 4)
+
                     // Move to Stasis button — preserves the specimen without occupying a reef slot
                     Button(action: {
                         reefStore.moveToStasis(at: slotIndex)

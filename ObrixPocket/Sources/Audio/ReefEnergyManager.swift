@@ -8,6 +8,9 @@ import UIKit
 /// - Energy cap is 100 total (banked across days).
 /// - Spending gates premium actions: extra music catch, XP boosts, spawn rerolls.
 final class ReefEnergyManager: ObservableObject {
+    /// Shared singleton — use for spending calls in views that don't own the energy state.
+    static let shared = ReefEnergyManager()
+
     @Published var currentEnergy: Int = 0
     @Published var dailyEnergyEarned: Int = 0
 

@@ -153,6 +153,25 @@ struct MusicCatchFlow: View {
                 .foregroundColor(.white.opacity(0.4))
                 .padding(.top, 12)
 
+            // Energy spend option — bypass cooldown for a cost
+            if ReefEnergyManager.shared.canAfford(ReefEnergyManager.musicCatchCost) {
+                Button(action: {
+                    if ReefEnergyManager.shared.spend(ReefEnergyManager.musicCatchCost) {
+                        openMusicPicker()
+                    }
+                }) {
+                    VStack(spacing: 4) {
+                        Text("Spend \(ReefEnergyManager.musicCatchCost)⚡ for another catch")
+                            .font(.custom("Inter-Medium", size: 13))
+                            .foregroundColor(Color(hex: "E9C46A"))
+                        Text("You have \(ReefEnergyManager.shared.currentEnergy) energy")
+                            .font(.custom("JetBrainsMono-Regular", size: 10))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+                }
+                .padding(.top, 8)
+            }
+
             Spacer()
         }
     }
