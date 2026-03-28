@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreMIDI
 
 // MARK: - CollectionTab
 
@@ -24,6 +25,11 @@ struct CollectionTab: View {
     // .xoreef export
     @State private var exportURL: URL?
     @State private var showExportShare = false
+
+    // OSC output
+    @ObservedObject private var oscSender = OSCSender.shared
+    @State private var oscHostInput = ""
+    @State private var showOSCConfig = false
 
     // Compare mode
     @State private var compareMode = false
@@ -221,6 +227,15 @@ struct CollectionTab: View {
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("This will delete all specimens, wiring, progress, and settings. This cannot be undone.")
+            }
+            .alert("OSC Output", isPresented: $showOSCConfig) {
+                TextField("IP Address (e.g., 192.168.1.100)", text: $oscHostInput)
+                Button("Connect") {
+                    oscSender.targetHost = oscHostInput
+                    oscSender.connect()
+                }
+                Button("Disconnect") { oscSender.disconnect() }
+                Button("Cancel", role: .cancel) {}
             }
             .sheet(isPresented: $showingCard) {
                 if let specimen = selectedSpecimen {
@@ -534,6 +549,7 @@ struct CollectionTab: View {
             settingsRow(icon: "waveform", title: "Audio Quality", detail: "Low Latency (5ms)")
             settingsRow(icon: "house.fill", title: "Reef Proximity", detail: "Uses home location")
             settingsRow(icon: "music.note", title: "Daily Music Catches", detail: "1 per day")
+            settingsRow(icon: "pianokeys", title: "MIDI Input", detail: "\(MIDIGetNumberOfSources()) sources connected")
 
             HStack(spacing: 10) {
                 Image(systemName: "bell.fill")
@@ -571,6 +587,28 @@ struct CollectionTab: View {
                     notificationsEnabled = true
                     UserDefaults.standard.set(true, forKey: "obrix_notifications_set")
                 }
+            }
+
+            Button(action: {
+                oscHostInput = oscSender.targetHost
+                showOSCConfig = true
+            }) {
+                HStack(spacing: 10) {
+                    Image(systemName: "wifi")
+                        .font(.system(size: 14))
+                        .foregroundColor(oscSender.isConnected ? Color(hex: "1E8B7E") : .white.opacity(0.3))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("OSC Output")
+                            .font(.custom("Inter-Medium", size: 13))
+                            .foregroundColor(.white.opacity(0.6))
+                        Text(oscSender.isConnected ? "Connected to \(oscSender.targetHost)" : "Not connected")
+                            .font(.custom("Inter-Regular", size: 9))
+                            .foregroundColor(.white.opacity(0.25))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 4)
             }
 
             Button(action: {

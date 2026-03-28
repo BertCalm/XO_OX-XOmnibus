@@ -15,6 +15,7 @@ struct ReefTab: View {
     @StateObject private var loopRecorder = LoopRecorder()
     @StateObject private var streakManager = StreakManager()
     @StateObject private var audioExporter = AudioExporter()
+    @StateObject private var midiInput = MIDIInputManager()
     @ObservedObject private var energyManager = ReefEnergyManager.shared
     @StateObject private var seasonalEvent = SeasonalEventManager()
     @State private var isAudioRecording = false
@@ -449,6 +450,22 @@ struct ReefTab: View {
                                         y: CGFloat(-motionController.tiltY) * 10)
                         }
                     }
+                    // MIDI input indicator — visible when external sources are connected
+                    if midiInput.connectedSources > 0 {
+                        HStack(spacing: 3) {
+                            Image(systemName: "pianokeys")
+                                .font(.system(size: 9))
+                                .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                            Text("MIDI")
+                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .foregroundColor(.white.opacity(0.3))
+                            if let note = midiInput.lastNoteReceived {
+                                Text("N\(note)")
+                                    .font(.custom("JetBrainsMono-Regular", size: 8))
+                                    .foregroundColor(Color(hex: "1E8B7E").opacity(0.4))
+                            }
+                        }
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 2)
@@ -776,6 +793,9 @@ struct ReefTab: View {
                         ambientResumeTimer?.invalidate()
                         ambientResumeTimer = nil
                         if ambientEnabled { ambientManager.stop() }
+                        if OSCSender.shared.isConnected {
+                            OSCSender.shared.sendNoteOn(note: midiNote, velocity: velocity)
+                        }
                     },
                     onNoteOff: { midiNote in
                         ObrixBridge.shared()?.noteOff(Int32(midiNote))
@@ -787,6 +807,9 @@ struct ReefTab: View {
                             ambientResumeTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
                                 ambientManager.start(reefStore: reefStore, audioEngine: audioEngine)
                             }
+                        }
+                        if OSCSender.shared.isConnected {
+                            OSCSender.shared.sendNoteOff(note: midiNote)
                         }
                     },
                     accentColor: Color(hex: "1E8B7E"),
@@ -801,6 +824,9 @@ struct ReefTab: View {
                         // X position within key bends pitch ±2 semitones via src1 tuning
                         ObrixBridge.shared()?.setParameterImmediate("obrix_src1Tune",
                                                                      value: pitchBend * 2.0)
+                        if OSCSender.shared.isConnected {
+                            OSCSender.shared.sendExpression(filterMod: filterMod, pitchBend: pitchBend)
+                        }
                     }
                 )
                 .frame(height: 80)
@@ -827,6 +853,19 @@ struct ReefTab: View {
             let saved = ReefTheme(rawValue: savedRaw) ?? .ocean
             reefTheme = saved
             reefScene?.theme = saved
+
+            // Wire MIDI input to play through the active source chain
+            midiInput.onNoteOn = { midiNote, velocity in
+                let sourceSlot = activeSourceSlot ?? firstSourceSlot
+                if let s = sourceSlot {
+                    audioEngine.applyCachedParams(for: s)
+                }
+                ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
+                HapticEngine.keyPress(velocity: velocity)
+            }
+            midiInput.onNoteOff = { midiNote in
+                ObrixBridge.shared()?.noteOff(Int32(midiNote))
+            }
         }
         .onDisappear {
             motionController.stop()
