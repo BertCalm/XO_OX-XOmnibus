@@ -17,6 +17,11 @@ struct SpecimenParamPanel: View {
             VStack(spacing: 0) {
                 // Header bar — distinct shade for section separation
                 HStack(spacing: 8) {
+                    // Category icon — teaches the user what role this specimen plays
+                    Image(systemName: categoryIcon(spec.category))
+                        .font(.system(size: 10))
+                        .foregroundColor(catColor(spec.category))
+
                     // Category dot
                     Circle()
                         .fill(catColor(spec.category))
@@ -56,6 +61,13 @@ struct SpecimenParamPanel: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
                 .background(Color.white.opacity(0.04)) // Subtle header separation
+
+                // Category role description — one line teaching what this category does
+                Text(categoryDescription(spec.category))
+                    .font(.custom("Inter-Regular", size: 9))
+                    .foregroundColor(.white.opacity(0.3))
+                    .padding(.horizontal, 16)
+                    .padding(.top, 4)
 
                 // Hover label — shows param name + value while dragging
                 if let paramName = activeParam,
@@ -135,6 +147,13 @@ struct SpecimenParamPanel: View {
     private func sourceParams(_ spec: Specimen) -> some View {
         VStack(spacing: 6) {
             sectionHeader("SOURCE")
+            // Sonic character from catalog — tells user what this source actually produces
+            if let entry = SpecimenCatalog.entry(for: spec.subtype) {
+                Text(entry.sonicCharacter)
+                    .font(.custom("Inter-Regular", size: 9))
+                    .foregroundColor(catColor(spec.category).opacity(0.4))
+                    .padding(.bottom, 2)
+            }
             paramSlider("Tune", paramKey: "obrix_src1Tune", range: -24...24, unit: "st", spec: spec)
             paramSlider("Level", paramKey: "obrix_src1Level", range: 0...1, unit: "", spec: spec)
         }
@@ -145,6 +164,13 @@ struct SpecimenParamPanel: View {
     private func processorParams(_ spec: Specimen) -> some View {
         VStack(spacing: 6) {
             sectionHeader("FILTER")
+            // Processor type + filter behavior hint from catalog
+            if let entry = SpecimenCatalog.entry(for: spec.subtype) {
+                Text(entry.sonicCharacter)
+                    .font(.custom("Inter-Regular", size: 9))
+                    .foregroundColor(catColor(spec.category).opacity(0.4))
+                    .padding(.bottom, 2)
+            }
             paramSlider("Cutoff", paramKey: "obrix_flt1Cutoff", range: 0...1, unit: "", spec: spec)
             paramSlider("Resonance", paramKey: "obrix_flt1Resonance", range: 0...1, unit: "", spec: spec)
             paramSlider("Env Depth", paramKey: "obrix_flt1EnvDepth", range: -0.5...0.5, unit: "", spec: spec)
@@ -156,6 +182,16 @@ struct SpecimenParamPanel: View {
     private func modulatorParams(_ spec: Specimen) -> some View {
         VStack(spacing: 6) {
             sectionHeader("MODULATOR")
+            // Modulator character + static target hint
+            if let entry = SpecimenCatalog.entry(for: spec.subtype) {
+                Text(entry.sonicCharacter)
+                    .font(.custom("Inter-Regular", size: 9))
+                    .foregroundColor(catColor(spec.category).opacity(0.4))
+            }
+            Text("→ Filter Cutoff")
+                .font(.custom("Inter-Regular", size: 9))
+                .foregroundColor(catColor(spec.category).opacity(0.3))
+                .padding(.bottom, 2)
             paramSlider("Rate", paramKey: "obrix_lfo1Rate", range: 0.01...10, unit: "Hz", spec: spec)
             paramSlider("Depth", paramKey: "obrix_lfo1Depth", range: 0...1, unit: "", spec: spec)
         }
@@ -166,6 +202,13 @@ struct SpecimenParamPanel: View {
     private func effectParams(_ spec: Specimen) -> some View {
         VStack(spacing: 6) {
             sectionHeader("EFFECT")
+            // Effect type from catalog — names the effect and what it does to the output
+            if let entry = SpecimenCatalog.entry(for: spec.subtype) {
+                Text(entry.sonicCharacter)
+                    .font(.custom("Inter-Regular", size: 9))
+                    .foregroundColor(catColor(spec.category).opacity(0.4))
+                    .padding(.bottom, 2)
+            }
             paramSlider("Mix", paramKey: "obrix_fx1Mix", range: 0...1, unit: "", spec: spec)
             paramSlider("Tone", paramKey: "obrix_fx1Param1", range: 0...1, unit: "", spec: spec)
         }
@@ -284,6 +327,26 @@ struct SpecimenParamPanel: View {
         case .processor: return "Processor"
         case .modulator: return "Modulator"
         case .effect:    return "Effect"
+        }
+    }
+
+    /// SF Symbol name that visually communicates each category's role.
+    private func categoryIcon(_ category: SpecimenCategory) -> String {
+        switch category {
+        case .source:    return "waveform"
+        case .processor: return "slider.horizontal.3"
+        case .modulator: return "arrow.triangle.2.circlepath"
+        case .effect:    return "sparkles"
+        }
+    }
+
+    /// One-line role description shown below the header to teach the user what each category does.
+    private func categoryDescription(_ category: SpecimenCategory) -> String {
+        switch category {
+        case .source:    return "Generates the raw sound wave"
+        case .processor: return "Shapes and transforms the sound"
+        case .modulator: return "Moves parameters over time"
+        case .effect:    return "Adds space, depth, or color"
         }
     }
 

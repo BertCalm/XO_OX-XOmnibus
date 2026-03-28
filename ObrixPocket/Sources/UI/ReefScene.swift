@@ -107,6 +107,40 @@ class ReefScene: SKScene {
         return SKTexture(image: gradientImage)
     }
 
+    // MARK: - Category Shapes
+
+    /// Returns a category-specific SKShapeNode for occupied reef slots.
+    /// Source = circle (origin), Processor = rounded square (transforms),
+    /// Modulator = diamond (dynamic, moving), Effect = hexagon (environmental, spatial).
+    private func shapeForCategory(_ category: SpecimenCategory, radius: CGFloat) -> SKShapeNode {
+        switch category {
+        case .source:
+            return SKShapeNode(circleOfRadius: radius)
+        case .processor:
+            let size = radius * 1.7
+            let rect = CGRect(x: -size / 2, y: -size / 2, width: size, height: size)
+            return SKShapeNode(rect: rect, cornerRadius: radius * 0.3)
+        case .modulator:
+            let path = UIBezierPath()
+            path.move(to: CGPoint(x: 0, y: radius))
+            path.addLine(to: CGPoint(x: radius, y: 0))
+            path.addLine(to: CGPoint(x: 0, y: -radius))
+            path.addLine(to: CGPoint(x: -radius, y: 0))
+            path.close()
+            return SKShapeNode(path: path.cgPath)
+        case .effect:
+            let path = UIBezierPath()
+            for i in 0..<6 {
+                let angle = CGFloat(i) * (.pi / 3) - .pi / 6
+                let point = CGPoint(x: radius * cos(angle), y: radius * sin(angle))
+                if i == 0 { path.move(to: point) }
+                else { path.addLine(to: point) }
+            }
+            path.close()
+            return SKShapeNode(path: path.cgPath)
+        }
+    }
+
     private func buildGrid() {
         removeAllChildren()
         slotNodes.removeAll()
@@ -140,7 +174,13 @@ class ReefScene: SKScene {
                 slotNode.zPosition = 1
 
                 let bgRadius = cellSize * 0.4
-                let bg = SKShapeNode(circleOfRadius: bgRadius)
+                // Occupied slots use category-specific shape; empty slots stay as neutral circles
+                let bg: SKShapeNode
+                if let specimen = reefStore.specimens[index] {
+                    bg = shapeForCategory(specimen.category, radius: bgRadius)
+                } else {
+                    bg = SKShapeNode(circleOfRadius: bgRadius)
+                }
                 bg.name = "slotBg_\(index)"
 
                 if let specimen = reefStore.specimens[index] {
@@ -161,15 +201,16 @@ class ReefScene: SKScene {
                             case .legendary: return 1.8
                             }
                         }()
-                        let glow = SKShapeNode(circleOfRadius: bgRadius * glowRadiusMultiplier)
+                        // Glow shape matches the specimen category shape
+                        let glow = shapeForCategory(specimen.category, radius: bgRadius * glowRadiusMultiplier)
                         glow.fillColor = color.withAlphaComponent(0.05 * healthAlpha)
                         glow.strokeColor = .clear
                         glow.name = "glow_\(index)"
                         slotNode.addChild(glow)
 
-                        // Legendary: add a second outer bioluminescent aura ring
+                        // Legendary: add a second outer bioluminescent aura ring (category shape)
                         if specimen.rarity == .legendary {
-                            let outerGlow = SKShapeNode(circleOfRadius: bgRadius * 1.6)
+                            let outerGlow = shapeForCategory(specimen.category, radius: bgRadius * 1.6)
                             outerGlow.fillColor = color.withAlphaComponent(0.03)
                             outerGlow.strokeColor = color.withAlphaComponent(0.15)
                             outerGlow.lineWidth = 0.5
@@ -253,6 +294,19 @@ class ReefScene: SKScene {
 
     // MARK: - Coupling Wire Rendering
 
+    /// Returns a semantic color for a wire based on signal-flow validity between two categories.
+    /// Green = natural flow, Yellow = unusual but possible, Red = invalid pairing.
+    private func wireValidationColor(from srcCat: SpecimenCategory, to dstCat: SpecimenCategory) -> SKColor {
+        switch (srcCat, dstCat) {
+        case (.source, .processor), (.source, .effect), (.modulator, _):
+            return SKColor(red: 0.3, green: 0.8, blue: 0.3, alpha: 1) // Green — natural flow
+        case (.source, .source):
+            return SKColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1) // Red — invalid chain
+        default:
+            return SKColor(red: 0.9, green: 0.7, blue: 0.2, alpha: 1) // Yellow — unusual
+        }
+    }
+
     private func drawCouplingWires() {
         // Remove old wires, wire labels, and flow dots
         children.filter {
@@ -270,7 +324,13 @@ class ReefScene: SKScene {
             let dstPos = slotNodes[dstIndex].position
             let srcSpecimen = reefStore.specimens[srcIndex]
             let dstSpecimen = reefStore.specimens[dstIndex]
-            let color = categoryColors[srcSpecimen?.category ?? .source] ?? .white
+            // Use validation color instead of raw category color
+            let color: SKColor
+            if let src = srcSpecimen, let dst = dstSpecimen {
+                color = wireValidationColor(from: src.category, to: dst.category)
+            } else {
+                color = categoryColors[srcSpecimen?.category ?? .source] ?? .white
+            }
 
             let wire = createWirePath(from: srcPos, to: dstPos, color: color)
             wire.name = "wire_\(route.sourceId.uuidString)_\(route.destId.uuidString)"
@@ -514,6 +574,7 @@ class ReefScene: SKScene {
     private func updateWireDrag(to point: CGPoint) {
         guard let srcSlot = wireSourceSlot, srcSlot < slotNodes.count else { return }
         let srcPos = slotNodes[srcSlot].position
+        let srcCategory = reefStore.specimens[srcSlot]?.category ?? .source
 
         let path = UIBezierPath()
         path.move(to: srcPos)
@@ -530,15 +591,27 @@ class ReefScene: SKScene {
 
         activeWireLine?.path = path.cgPath
 
-        // Highlight potential target slot
+        // Highlight potential target slot and update wire color based on target category
+        var hoveredTargetCategory: SpecimenCategory? = nil
         for (index, node) in slotNodes.enumerated() {
             if let bg = node.childNode(withName: "slotBg_\(index)") as? SKShapeNode {
                 if index != srcSlot && reefStore.specimens[index] != nil && isNear(point, to: node.position) {
                     bg.glowWidth = 3.0
+                    hoveredTargetCategory = reefStore.specimens[index]?.category
                 } else if index != srcSlot {
                     bg.glowWidth = 0.0
                 }
             }
+        }
+
+        // Color the in-progress wire based on what we're hovering over
+        if let dstCat = hoveredTargetCategory {
+            let validationColor = wireValidationColor(from: srcCategory, to: dstCat)
+            activeWireLine?.strokeColor = validationColor.withAlphaComponent(0.75)
+        } else {
+            // No hover target — revert to source category color
+            let baseColor = categoryColors[srcCategory] ?? .white
+            activeWireLine?.strokeColor = baseColor.withAlphaComponent(0.6)
         }
     }
 
