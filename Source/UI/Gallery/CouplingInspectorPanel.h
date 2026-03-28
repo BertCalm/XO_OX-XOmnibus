@@ -475,7 +475,8 @@ public:
     {
         const int w = getWidth();
 
-        // ── Mini viz hidden — already shown in Column A's MiniCouplingGraph ──
+        // ── Mini viz hidden — duplicate of Column A's MiniCouplingGraph; off-screen
+        //    to avoid rendering two copies of the same coupling visualization.
         miniViz.setBounds (0, -200, 0, 0);
         miniViz.setVisible(false);
 

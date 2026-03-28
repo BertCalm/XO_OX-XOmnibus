@@ -348,7 +348,7 @@ public:
 
             // ── Section header background — visible shade difference from content ──
             {
-                g.setColour(juce::Colour(0xFF1A1A1C)); // surface color — distinct from bg
+                g.setColour(juce::Colour(GalleryColors::surface())); // surface color — distinct from bg
                 g.fillRect(0, y, getWidth(), kHeaderRowH);
             }
 
@@ -688,7 +688,7 @@ private:
     }
 
     // ── Layout constants ──────────────────────────────────────────────────────
-    // Mockup v04: 44px knobs in 68×64 cells, ~7 cols in Column B's ~490px.
+    // Mockup v05: 44px knobs in 68×64 cells, ~7 cols in Column B's ~490px.
     // Header height 32px matches mockup spec (~32px section headers).
     static constexpr int kCellW           = 68;
     static constexpr int kCellH           = 64;

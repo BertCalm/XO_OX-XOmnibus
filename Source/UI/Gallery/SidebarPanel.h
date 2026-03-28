@@ -369,7 +369,7 @@ public:
         {
             if (!tabButtons[i]->isVisible())
             {
-                tabButtons[i]->setBounds(0, -100, 0, 0);
+                tabButtons[i]->setBounds(0, -100, 0, 0); // hidden tab: park off-screen to skip hit-testing
                 continue;
             }
             bool isLast = true;
@@ -397,7 +397,7 @@ public:
 
         if (outshineSidebar != nullptr)
         {
-            outshineSidebar->setBounds(0, -200, 0, 0); // parked off-screen
+            outshineSidebar->setBounds(0, -200, 0, 0); // hidden: Outshine sidebar is only visible in Outshine mode (shown via setVisible/setBounds when tab selected)
             outshineSidebar->setVisible(false);
         }
 

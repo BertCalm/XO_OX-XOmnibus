@@ -169,10 +169,8 @@ public:
 private:
 
     //--------------------------------------------------------------------------
-    // Input mapping — the key translation layer
-    //
-    // TODO: This is where you define how Oscar's synthesis parameters
-    // become animation inputs. See design notes below.
+    // Input mapping — translates Oscar's synthesis parameters into Rive
+    // animation inputs. See mapGillSpeed() below for the key design notes.
     //--------------------------------------------------------------------------
 
     void pushInputs (const OscarAnimState::Snapshot& s)
@@ -181,8 +179,8 @@ private:
         // morph_drift (0–1) → gill oscillation rate (0–1).
         // This is the soul of the animation. How does drift map to gill energy?
         //
-        // TODO: implement mapGillSpeed() below — the relationship between
-        // Perlin drift amount and gill flicker rate is yours to define.
+        // mapGillSpeed() blends driftAmount + outputLevel with a resting floor.
+        // See implementation below for design rationale.
         if (inputGillSpeed != nullptr)
             inputGillSpeed->value (mapGillSpeed (s.gillSpeed, s.outputLevel));
 

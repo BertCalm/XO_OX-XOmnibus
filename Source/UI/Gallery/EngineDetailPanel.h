@@ -75,8 +75,8 @@ public:
         drawDot(x0 + aW + dW + sW + rW, y0);        // release end
 
         // A D S R labels at bottom
-        g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)));
-        g.setColour(juce::Colour(0xFF5E5C5A)); // T3
+        g.setFont(GalleryFonts::body(9.0f));
+        g.setColour(juce::Colour(GalleryColors::t3())); // T3
         float labelY = b.getBottom() - 10;
         g.drawText("A", (int)(x0 + aW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
         g.drawText("D", (int)(x0 + aW + dW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);

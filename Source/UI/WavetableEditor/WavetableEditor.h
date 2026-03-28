@@ -10,7 +10,7 @@
 //   - GalleryColors tokens for all colors (theme-aware light/dark)
 //   - GalleryFonts for all text
 //   - XO Gold (#E9C46A) for accents, active states, and frame indicator
-//   - Dark background (#0E0E10 in dark mode, #1A1A1C in light mode surface)
+//   - Dark background (#0E0E10 in dark mode, #1A1A1C in dark mode surface)
 //
 // Default size: 400×200. Fully resizable — all geometry is derived from
 // getLocalBounds() in paint() and resized().

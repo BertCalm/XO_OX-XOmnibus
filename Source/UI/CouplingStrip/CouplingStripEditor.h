@@ -2,6 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../../Core/EngineRegistry.h"
+#include "../GalleryColors.h"
 
 namespace xolokun {
 
@@ -39,11 +40,11 @@ public:
         auto b = getLocalBounds().toFloat();
 
         // Dark background
-        g.fillAll(juce::Colour(0xFF1E1E1E));
+        g.fillAll(juce::Colour(GalleryColors::surface()));
 
         // Header
-        g.setColour(juce::Colour(0xFFE9C46A));
-        g.setFont(juce::Font(juce::FontOptions{}.withHeight(10.0f)).boldened());
+        g.setColour(juce::Colour(GalleryColors::xoGold));
+        g.setFont(GalleryFonts::display(10.0f));
         g.drawText("COUPLING MATRIX", b.removeFromTop(20), juce::Justification::centred);
 
         // Draw engine nodes
@@ -63,28 +64,28 @@ public:
             bool hasEngine = name.isNotEmpty();
 
             // Node circle
-            g.setColour(hasEngine ? color.withAlpha(0.2f) : juce::Colour(0xFF333333));
+            g.setColour(hasEngine ? color.withAlpha(0.2f) : juce::Colour(GalleryColors::elevated()));
             g.fillEllipse(cx - nodeRadius, cy - nodeRadius, nodeRadius * 2, nodeRadius * 2);
-            g.setColour(hasEngine ? color : juce::Colour(0xFF555555));
+            g.setColour(hasEngine ? color : GalleryColors::border());
             g.drawEllipse(cx - nodeRadius, cy - nodeRadius, nodeRadius * 2, nodeRadius * 2, 2.0f);
 
             // Slot number
-            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+            g.setFont(GalleryFonts::value(8.0f));
             g.drawText(juce::String(i + 1), cx - 4, cy + nodeRadius + 2, 10, 10,
                        juce::Justification::centred);
 
             // Engine name
             if (hasEngine)
             {
-                g.setColour(juce::Colour(0xFFEEEEEE));
-                g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f)).boldened());
+                g.setColour(juce::Colour(GalleryColors::t1()));
+                g.setFont(GalleryFonts::label(9.0f));
                 g.drawText(name, cx - nodeRadius, cy - 6, nodeRadius * 2, 12,
                            juce::Justification::centred);
             }
             else
             {
-                g.setColour(juce::Colour(0xFF999999));  // Raised from #666 for WCAG contrast on #1E1E1E
-                g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+                g.setColour(juce::Colour(GalleryColors::t3()));
+                g.setFont(GalleryFonts::body(8.0f));
                 g.drawText("empty", cx - nodeRadius, cy - 5, nodeRadius * 2, 10,
                            juce::Justification::centred);
             }
@@ -117,7 +118,7 @@ public:
                 float thickness = 1.0f + route.amount * 2.0f;
 
                 g.setColour(route.isNormalled
-                    ? juce::Colour(0xFFE9C46A).withAlpha(alpha * 0.5f)
+                    ? juce::Colour(GalleryColors::xoGold).withAlpha(alpha * 0.5f)
                     : srcColor.interpolatedWith(dstColor, 0.5f).withAlpha(alpha));
                 g.strokePath(arc, juce::PathStrokeType(thickness,
                     juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
@@ -131,7 +132,7 @@ public:
                 // Type label at midpoint (WCAG: min 8pt for readability)
                 float midX = (srcPos.x + dstPos.x) * 0.5f;
                 float midY = (srcPos.y + dstPos.y) * 0.5f + yOff * 1.5f - nodeRadius;
-                g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)).boldened());
+                g.setFont(GalleryFonts::label(8.0f));
                 g.drawText(couplingTypeShortLabel(route.type),
                           (int)(midX - 24), (int)(midY - 6), 48, 12,
                           juce::Justification::centred);
@@ -144,8 +145,8 @@ public:
             for (const auto& r : *cachedRoutes)
                 if (r.active && r.amount >= 0.001f) ++activeCount;
 
-        g.setColour(juce::Colour(0xFFAAAAAA));  // Raised for WCAG contrast on dark bg
-        g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+        g.setColour(juce::Colour(GalleryColors::t2()));
+        g.setFont(GalleryFonts::body(8.0f));
         g.drawText(juce::String(activeCount) + " active route" + (activeCount != 1 ? "s" : ""),
                    getLocalBounds().removeFromBottom(14).toFloat(),
                    juce::Justification::centred);

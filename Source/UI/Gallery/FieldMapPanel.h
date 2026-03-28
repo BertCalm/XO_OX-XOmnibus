@@ -123,7 +123,7 @@ public:
         g.drawVerticalLine(static_cast<int>(cursorX), b.getY(), b.getBottom());
 
         // ── Label ────────────────────────────────────────────────────────────
-        g.setFont(juce::Font(juce::FontOptions(8.0f)));
+        g.setFont(GalleryFonts::body(8.0f));
         g.setColour(juce::Colours::white.withAlpha(0.20f));
         g.drawText("FIELD MAP", b.reduced(6.0f, 4.0f), juce::Justification::topLeft);
     }

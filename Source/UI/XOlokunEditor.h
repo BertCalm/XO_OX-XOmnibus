@@ -279,7 +279,7 @@ public:
         settingsBtn.setColour(juce::TextButton::textColourOnId,  juce::Colour(GalleryColors::t1()));
         settingsBtn.onClick = [this]
         {
-            // placeholder: switch sidebar to settings tab
+            sidebar.selectTab(SidebarPanel::Settings);
         };
 
         // Export button — launches ExportDialog as a CallOutBox
@@ -830,7 +830,9 @@ public:
         // ── Header (52px): Logo | ENGINES | --- macros --- | CPU | PLAY | EXPORT | gear
         auto header = layout.getHeader();
 
-        // Hide removed elements off-screen
+        // Park legacy header widgets off-screen. These components are retained as members
+        // (JUCE requires child components to outlive their parent) but were removed from
+        // the v05 header layout. Off-screen + invisible prevents hit-testing and painting.
         depthDial.setBounds(0, -100, 0, 0);          depthDial.setVisible(false);
         abCompare.setBounds(0, -100, 0, 0);           abCompare.setVisible(false);
         presetBrowser.setBounds(0, -200, 0, 0);       presetBrowser.setVisible(false);

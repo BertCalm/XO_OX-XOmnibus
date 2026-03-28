@@ -98,7 +98,7 @@ private:
         // "ML" text badge — only on knobs >= 48px (hidden on header-size 32px knobs)
         if (isMapped && !isListening && getWidth() >= 48)
         {
-            g.setFont(juce::Font(juce::FontOptions{}.withHeight(6.0f)).boldened());
+            g.setFont(GalleryFonts::label(6.0f));
             g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
             g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9,
                        juce::Justification::centred);

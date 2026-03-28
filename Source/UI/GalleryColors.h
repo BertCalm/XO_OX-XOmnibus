@@ -45,7 +45,7 @@ namespace GalleryColors {
         constexpr uint32_t xoGoldText = 0xFF9E7C2E;   // WCAG AA on shellWhite
     }
 
-    // Dark palette (matched to xolokun-v04-polished.html CSS variables exactly)
+    // Dark palette (matched to xolokun-v05-polished.html CSS variables exactly)
     namespace Dark {
         // Core backgrounds
         static constexpr uint32_t bg          = 0xFF0E0E10;  // --bg (plugin shell)
@@ -81,7 +81,7 @@ namespace GalleryColors {
     inline uint32_t emptySlot()  { return darkMode() ? Dark::emptySlot  : Light::emptySlot; }
     inline uint32_t xoGoldText() { return darkMode() ? Dark::xoGoldText : Light::xoGoldText; }
 
-    // New tonal accessors (prototype v04)
+    // New tonal accessors (prototype v05)
     inline uint32_t surface()  { return darkMode() ? Dark::surface  : Light::shellWhite; }
     inline uint32_t elevated() { return darkMode() ? Dark::elevated : 0xFFEEEBE6; }
     inline uint32_t raised()   { return darkMode() ? Dark::raised   : 0xFFE4E1DC; }

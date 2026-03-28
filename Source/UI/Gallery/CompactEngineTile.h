@@ -17,10 +17,10 @@ namespace xolokun
 //   1. Left accent bar (3px wide, full tile height, flush x=0)
 //   2. Header row: slot number (12px wide, 9px mono, T3) | engine name (flex, 11px bold, accent) | power button (16×16)
 //   3. Mini macro knobs row: 4 arcs (SRC1/FILT/ENV/FX), ~20px wide each, 5px gap
-//   4. Mini waveform: 22px tall, fake sine polyline, accent color
-//   5. Footer row: mood dots (4×6px) left | FX indicator (3 dots + "FX" label) right
-//   6. CPU bar: 3px tall, full content width, accent at 0.55 alpha
+//   4. Mini waveform: 22px tall, painted directly in paint() using accent color polyline
+//   5. CPU bar: 3px tall, full content width, accent at 0.55 alpha
 //
+// NOTE: Mood dots, FX indicator, and footer row were removed in the v05 polish pass.
 // Redesigned 2026-03-27: Removed porthole circle and creature renderer.
 // Power button replaces mute toggle visually (same underlying isMuted state).
 class CompactEngineTile : public juce::Component, public juce::SettableTooltipClient, private juce::Timer
@@ -204,7 +204,7 @@ public:
         }
 
         // Bottom border — 1px separator
-        g.setColour(juce::Colour(0x12FFFFFF));
+        g.setColour(GalleryColors::border());
         g.fillRect(b.getX(), b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
         if (isLoading)

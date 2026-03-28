@@ -56,7 +56,7 @@ public:
             opts.osxLibrarySubFolder = "Application Support";
             settingsFile = std::make_unique<juce::PropertiesFile>(opts);
         }
-        // Restore persisted dark mode preference (default false — light mode is brand default).
+        // Restore persisted dark mode preference (default true — dark mode is brand default).
         // Note: XOlokunEditor also reads this early in its constructor so that all
         // setColour() calls during construction use the correct theme.  Both reads
         // open the same file and produce the same value; the editor's read wins
@@ -227,7 +227,7 @@ public:
         // "Clear All" button — wired once setMidiLearnManager() is called.
         clearAllBtn.setButtonText("Clear All");
         clearAllBtn.setColour(juce::TextButton::buttonColourId,
-                              GalleryColors::get(GalleryColors::shellWhite()));
+                              GalleryColors::get(GalleryColors::elevated()));
         clearAllBtn.setColour(juce::TextButton::textColourOffId,
                               GalleryColors::get(GalleryColors::textMid()));
         clearAllBtn.onClick = [this]
@@ -336,7 +336,27 @@ public:
     {
         darkModeToggle.setToggleState(GalleryColors::darkMode(),
                                       juce::dontSendNotification);
+
+        // Re-apply theme-dependent colors that were set explicitly in the constructor.
+        // Without this, toggle tick colors and the Clear All button background stay
+        // stale when the user switches dark/light mode at runtime.
+        styleToggle(darkModeToggle,       "Dark Mode");
+        styleToggle(reducedMotionToggle,  "Reduced Motion (WCAG 2.3.3)");
+        styleToggle(perfLockToggle,       "Performance Lock");
+        if (mpeEnabledToggle != nullptr)
+            styleToggle(*mpeEnabledToggle, "MPE Enabled");
+
+        clearAllBtn.setColour(juce::TextButton::buttonColourId,
+                              GalleryColors::get(GalleryColors::elevated()));
+        clearAllBtn.setColour(juce::TextButton::textColourOffId,
+                              GalleryColors::get(GalleryColors::textMid()));
+
+        // Refresh URL label color (dark/light link color differs)
+        styleUrlLabel(aboutWebLabel,     "xo-ox.org",            "https://xo-ox.org");
+        styleUrlLabel(aboutPatreonLabel, "patreon.com/c/XO_OX",  "https://www.patreon.com/c/XO_OX");
+
         repaint();
+        content.repaint();
     }
 
 private:

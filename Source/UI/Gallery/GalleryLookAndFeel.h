@@ -98,7 +98,7 @@ public:
         }
 
         // ── 2. Outer border ring — prototype: 1px rgba(255,255,255,0.07) ───
-        g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.07f));
+        g.setColour(GalleryColors::border());
         g.drawEllipse(cx - radius, cy - radius, diameter, diameter, 1.0f);
 
         // ── 3. Inner highlight — top-left specular ──────────────────────────
@@ -218,7 +218,7 @@ public:
             else if (toggled)
                 borderCol = juce::Colour(0xFFE9C46A).withAlpha(0.35f); // gold active border
             else
-                borderCol = juce::Colour(0xFFFFFFFF).withAlpha(0.07f); // default subtle border
+                borderCol = GalleryColors::border(); // default subtle border
 
             float borderThickness = btn.hasKeyboardFocus(true) ? 1.5f : 1.0f;
             g.setColour(borderCol);
@@ -383,7 +383,7 @@ public:
                       thumbSize, thumbSize);
 
         // Border
-        g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.07f));
+        g.setColour(GalleryColors::border());
         g.drawEllipse(thumbCenter.x - thumbSize * 0.5f,
                       thumbCenter.y - thumbSize * 0.5f,
                       thumbSize, thumbSize, 1.0f);

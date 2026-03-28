@@ -26,7 +26,7 @@
 
     Scroll model:
       scrollReef(offsetX) updates gScrollX (clamped to [0, kSceneWidth]).
-      The camera's position is set to (gScrollX, kSceneHeight/2).
+      The camera's position is set to (gScrollX, gReefHeight/2).
       Background layer xScale is adjusted via SKAction moveBy at differential
       rates relative to the camera.
 
@@ -51,14 +51,12 @@
 // ---------------------------------------------------------------------------
 
 static constexpr CGFloat kSceneWidth  = 2048.0;   // Wider than any screen; parallax room
-static constexpr CGFloat kSceneHeight = 768.0;    // Replaced at init with actual reefViewHeight
 static constexpr CGFloat kScrollMin   = 0.0;
 static constexpr CGFloat kScrollMax   = kSceneWidth - 414.0; // 414 = widest iPhone pt width
 
-// Parallax scroll multipliers per layer
+// Parallax scroll multipliers per layer (foreground scrolls 1:1 with camera naturally)
 static constexpr double kParallaxBackground  = 0.10;
 static constexpr double kParallaxMidground   = 0.40;
-static constexpr double kParallaxForeground  = 1.00;
 
 // ---------------------------------------------------------------------------
 // ReefScene — private Objective-C class

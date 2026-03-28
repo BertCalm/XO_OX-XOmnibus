@@ -306,7 +306,7 @@ public:
                 g.setColour(node.accent.withAlpha(0.85f));
                 g.fillEllipse(bx, by, bd, bd);
                 g.setColour(juce::Colours::white.withAlpha(0.90f));
-                g.setFont(juce::Font(juce::FontOptions(7.0f * scale)));
+                g.setFont(GalleryFonts::value(7.0f * scale));
                 g.drawText(juce::String(node.slot + 1),
                            (int)bx, (int)by, (int)bd, (int)bd,
                            juce::Justification::centred);
