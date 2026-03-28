@@ -133,6 +133,16 @@ struct ReefTab: View {
             .padding(.top, 12)
             .padding(.bottom, 8)
 
+            // Underwater header decoration — subtle texture accent between header and reef grid
+            if let headerDecor = UIImage(named: "UIHeader") {
+                Image(uiImage: headerDecor)
+                    .resizable()
+                    .interpolation(.none)
+                    .frame(height: 8)
+                    .opacity(0.1) // Very subtle
+                    .padding(.horizontal, 20)
+            }
+
             // Daily challenges bar
             HStack(spacing: 8) {
                 Image(systemName: "star.fill")

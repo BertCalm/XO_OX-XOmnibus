@@ -136,7 +136,17 @@ struct SpecimenParamPanel: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
             }
-            .background(Color(hex: "0E0E10"))
+            .background(
+                ZStack {
+                    Color(hex: "0E0E10")
+                    if let panelBg = UIImage(named: "UIPanelBg") {
+                        Image(uiImage: panelBg)
+                            .resizable()
+                            .interpolation(.none)
+                            .opacity(0.08) // Very subtle — just texture
+                    }
+                }
+            )
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(catColor(spec.category).opacity(0.15), lineWidth: 1)

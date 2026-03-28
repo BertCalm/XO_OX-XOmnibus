@@ -127,6 +127,16 @@ struct CollectionTab: View {
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                         )
 
+                        // Underwater chain separator — subtle texture between category sections
+                        if let chain = UIImage(named: "UIChain") {
+                            Image(uiImage: chain)
+                                .resizable()
+                                .interpolation(.none)
+                                .frame(height: 12)
+                                .opacity(0.08)
+                                .padding(.horizontal, 60)
+                        }
+
                         CollectionSection(
                             title: "Coral",
                             categoryColor: Color(hex: "FF4D4D"),
@@ -135,6 +145,16 @@ struct CollectionTab: View {
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                         )
 
+                        // Underwater chain separator
+                        if let chain = UIImage(named: "UIChain") {
+                            Image(uiImage: chain)
+                                .resizable()
+                                .interpolation(.none)
+                                .frame(height: 12)
+                                .opacity(0.08)
+                                .padding(.horizontal, 60)
+                        }
+
                         CollectionSection(
                             title: "Currents",
                             categoryColor: Color(hex: "4DCC4D"),
@@ -142,6 +162,16 @@ struct CollectionTab: View {
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
                         )
+
+                        // Underwater chain separator
+                        if let chain = UIImage(named: "UIChain") {
+                            Image(uiImage: chain)
+                                .resizable()
+                                .interpolation(.none)
+                                .frame(height: 12)
+                                .opacity(0.08)
+                                .padding(.horizontal, 60)
+                        }
 
                         CollectionSection(
                             title: "Tide Pools",

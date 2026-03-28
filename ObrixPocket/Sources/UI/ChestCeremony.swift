@@ -63,6 +63,10 @@ struct ChestCeremony: View {
     // Timers — held so they can be invalidated on skip
     @State private var phaseTimers: [Timer] = []
 
+    // Chest sprite pair extracted from the CraftPix spritesheet (32x32 @1x)
+    // Sheet layout: 10 cols × 4 rows. Row 0, col 0 = closed; col 1 = open (brown wooden chest).
+    @State private var chestPair: (closed: UIImage, open: UIImage)? = nil
+
     // MARK: Derived helpers
 
     private var categoryColor: Color {
@@ -160,6 +164,17 @@ struct ChestCeremony: View {
                     .shadow(color: categoryColor.opacity(0.5), radius: 48, x: 0, y: 0)
                     .scaleEffect(orbBurst ? 0.0 : orbScale)
                     .opacity(orbBurst ? 0.0 : orbOpacity)
+
+                // Chest sprite — closed during orbPulse, open from crackOpen onward
+                if let pair = chestPair {
+                    let isOpen = phase == .crackOpen || phase == .reveal || phase == .complete
+                    Image(uiImage: isOpen ? pair.open : pair.closed)
+                        .resizable()
+                        .interpolation(.none)   // pixel-art — no anti-aliasing
+                        .frame(width: 80, height: 80)
+                        .scaleEffect(orbBurst ? 0.0 : orbScale)
+                        .opacity(orbBurst ? 0.0 : orbOpacity)
+                }
             }
 
             // Reveal layer (Phase 3)
@@ -212,7 +227,10 @@ struct ChestCeremony: View {
             }
             .offset(y: 20)
         }
-        .onAppear(perform: startCeremony)
+        .onAppear {
+            loadChestSprites()
+            startCeremony()
+        }
         .onTapGesture(perform: handleTap)
         .accessibilityAddTraits(.isButton)
         .accessibilityLabel("Skip catch ceremony")
@@ -229,6 +247,32 @@ struct ChestCeremony: View {
         case .fossilized:     return Color(hex: "#C8A96E")
         case .prismatic:      return Color(hex: "#FF9EF7")
         }
+    }
+
+    // MARK: - Chest sprite loading
+
+    /// Extracts the closed (col 0) and open (col 1) frames from the CraftPix chest spritesheet.
+    /// Sheet: 320×128 px @1x → 10 cols × 4 rows of 32×32 tiles.
+    /// Row 0 = brown wooden chest variants; col 0 = closed, col 1 = open.
+    private func loadChestSprites() {
+        guard let sheet = UIImage(named: "ChestSheet"),
+              let cg = sheet.cgImage else { return }
+
+        // UIImage.scale reflects @2x/@3x asset loading; the spritesheet is @1x so scale == 1.
+        // Using CGImage pixel dimensions directly avoids any scale confusion.
+        let tileW = cg.width / 10   // 10 columns
+        let tileH = cg.height / 4   // 4 rows
+
+        let closedRect = CGRect(x: 0,      y: 0, width: tileW, height: tileH)
+        let openRect   = CGRect(x: tileW,  y: 0, width: tileW, height: tileH)
+
+        guard let closedCG = cg.cropping(to: closedRect),
+              let openCG   = cg.cropping(to: openRect) else { return }
+
+        chestPair = (
+            closed: UIImage(cgImage: closedCG),
+            open:   UIImage(cgImage: openCG)
+        )
     }
 
     // MARK: - Ceremony orchestration
