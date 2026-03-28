@@ -768,6 +768,7 @@ class ReefScene: SKScene {
                 reefStore.addJournalEntry(to: dstSlot, type: .wired, description: "Connected to \(srcSpec.creatureName)")
 
                 reefStore.save()
+                ReefStatsTracker.shared.increment(.wiresCreated)
 
                 // Haptic success
                 HapticEngine.wireCreated()
@@ -855,6 +856,7 @@ class ReefScene: SKScene {
             ($0.sourceId == dstId && $0.destId == srcId)
         }
         reefStore.save()
+        ReefStatsTracker.shared.increment(.wiresDeleted)
 
         // Haptic feedback
         HapticEngine.wireDeleted()

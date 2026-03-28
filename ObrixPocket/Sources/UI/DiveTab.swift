@@ -660,6 +660,12 @@ struct DiveTab: View {
         ObrixBridge.shared()?.allNotesOff()
         activeNotes.removeAll()
 
+        // Lifetime stats
+        ReefStatsTracker.shared.increment(.divesCompleted)
+        if diveDepth > ReefStatsTracker.shared.value(for: .deepestDive) {
+            ReefStatsTracker.shared.increment(.deepestDive, by: diveDepth - ReefStatsTracker.shared.value(for: .deepestDive))
+        }
+
         // Record the dive and check for new high score (check BEFORE recording)
         let previousHigh = diveHistory.highScore
         let interactionPct = totalFrames > 0

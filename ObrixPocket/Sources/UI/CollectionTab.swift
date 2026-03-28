@@ -13,6 +13,7 @@ struct CollectionTab: View {
     @State private var deepSectionExpanded = false
     @State private var showResetConfirm = false
     @State private var notificationsEnabled = true
+    @State private var showStats = false
     @StateObject private var milestoneManager = MilestoneManager()
 
     @StateObject private var collectionTracker = CollectionTracker()
@@ -203,6 +204,9 @@ struct CollectionTab: View {
                     CompareView(specimenA: a, specimenB: b)
                 }
             }
+            .sheet(isPresented: $showStats) {
+                StatsView()
+            }
         }
         .navigationViewStyle(.stack)
     }
@@ -216,6 +220,11 @@ struct CollectionTab: View {
                     .font(.custom("SpaceGrotesk-Bold", size: 20))
                     .foregroundColor(.white)
                 Spacer()
+                Button(action: { showStats = true }) {
+                    Image(systemName: "chart.bar")
+                        .font(.system(size: 12))
+                        .foregroundColor(.white.opacity(0.4))
+                }
                 Button(action: {
                     compareMode.toggle()
                     if !compareMode {

@@ -658,6 +658,7 @@ struct ReefTab: View {
                         milestoneManager.increment("play_100")
                         milestoneManager.increment("play_1000")
                         milestoneManager.increment("play_10000")
+                        ReefStatsTracker.shared.increment(.notesPlayed)
                         // Reef Energy: approximate ~0.5s per note press
                         firstLaunchManager.dailyPlaySeconds += 0.5
                         // Distribute daily energy once threshold is reached
