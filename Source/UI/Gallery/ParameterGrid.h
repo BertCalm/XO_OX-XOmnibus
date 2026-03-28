@@ -324,16 +324,9 @@ public:
             juce::String secText = sectionName(run.sec);
             bool collapsed       = collapsedSections.count(run.sec) > 0;
 
-            // ── Section header background — subtle white→transparent gradient ──
-            // Matches mockup: linear-gradient(rgba(255,255,255,0.02) → transparent)
+            // ── Section header background — visible shade difference from content ──
             {
-                juce::ColourGradient hdrGrad(
-                    juce::Colour(0xFFFFFFFF).withAlpha(collapsed ? 0.04f : 0.02f),
-                    0.0f, (float)y,
-                    juce::Colours::transparentWhite,
-                    0.0f, (float)(y + kHeaderRowH),
-                    false /* linear */);
-                g.setGradientFill(hdrGrad);
+                g.setColour(juce::Colour(0xFF1A1A1C)); // surface color — distinct from bg
                 g.fillRect(0, y, getWidth(), kHeaderRowH);
             }
 
@@ -383,17 +376,16 @@ public:
                 continue;
             }
 
-            // ── 3px left-border bar on each knob cell ──────────────────────
-            for (int i = 0; i < run.count; ++i, ++flatIdx)
-            {
-                if (flatIdx >= (int)knobBounds.size()) break;
-                auto [cx, cy] = knobBounds[flatIdx];
-                g.setColour(secCol.withAlpha(0.45f));
-                g.fillRect(cx, cy + 2, 3, kCellH - 4);
-            }
-
+            // ── Section content: thin left border only (no lighter bg) ────
             int rows = (run.count + cols - 1) / cols;
-            y += rows * kCellH;
+            int contentH = rows * kCellH;
+            // 2px left border in section color
+            g.setColour(dotCol.withAlpha(0.40f));
+            g.fillRect(4, y, 2, contentH);
+
+            // Skip knob cells for flatIdx tracking
+            flatIdx += run.count;
+            y += contentH;
         }
     }
 
@@ -552,10 +544,10 @@ private:
         // ── Label ────────────────────────────────────────────────────────────
         lk->label = std::make_unique<juce::Label>();
         lk->label->setText(slot.shortLabel, juce::dontSendNotification);
-        // Prototype: JetBrains Mono 8px, T3 color (#5E5C5A)
-        lk->label->setFont(GalleryFonts::value(8.0f));
+        // Knob labels: 9px mono, T2 for better readability
+        lk->label->setFont(GalleryFonts::value(9.0f));
         lk->label->setColour(juce::Label::textColourId,
-                             GalleryColors::get(GalleryColors::t3()));
+                             GalleryColors::get(GalleryColors::t2()));
         lk->label->setJustificationType(juce::Justification::centred);
         lk->label->setInterceptsMouseClicks(false, false);
         addAndMakeVisible(*lk->label);

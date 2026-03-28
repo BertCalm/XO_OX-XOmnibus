@@ -816,8 +816,8 @@ public:
         chordPanel.setBounds(colBPanel);
         performancePanel.setBounds(colBPanel);
 
-        // FieldMap — bottom strip of Column B (reserved by ColumnLayoutManager)
-        fieldMap.setBounds(layout.getFieldMap());
+        // FieldMap hidden — 80px reclaimed for parameter sections
+        fieldMap.setBounds(0, -200, 0, 0);
 
         // ── Column C — Tabbed Sidebar (SidebarPanel) ─────────────────────────
         sidebar.setBounds(layout.getColumnC());

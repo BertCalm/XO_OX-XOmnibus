@@ -264,65 +264,20 @@ public:
     {
         using namespace GalleryColors;
 
-        // ── Card background — elevated layer (GalleryColors::elevated()), 6px radius ─
-        g.setColour(get(elevated()));
-        g.fillRoundedRectangle(getLocalBounds().toFloat(), 6.0f);
-
-        // ── Header gradient: accent color → shell bg ─────────────────────────
-        // P29: use cachedHeaderGrad (built in loadSlot + resized) — no alloc in paint().
+        // ── Clean header: engine name + thin accent line ──────────────────────
+        // No heavy gradient, no zone bands — matches v05 mockup.
         {
-            g.setGradientFill(cachedHeaderGrad);
-            g.fillRoundedRectangle(0.0f, 0.0f, (float)getWidth(), (float)kHeaderH, 6.0f);
-            // Square off bottom corners of header (rounded rect only at top)
-            g.fillRect(0, kHeaderH / 2, getWidth(), kHeaderH / 2);
-        }
-
-        // ── Zone depth bands — three 2px strips at header bottom ─────────────
-        {
-            const int stripH = 2;
-            const int stripY = kHeaderH - stripH;
-            const float zoneW = getWidth() / 3.0f;
-            const juce::Colour zoneColors[3] = {
-                accentColour.withAlpha(0.45f),
-                accentColour.darker(0.2f).withAlpha(0.40f),
-                accentColour.darker(0.5f).withAlpha(0.35f)
-            };
-            for (int z = 0; z < 3; ++z)
-            {
-                g.setColour(zoneColors[z]);
-                g.fillRect((int)(z * zoneW), stripY, (int)zoneW, stripH);
-            }
-        }
-
-        // ── Engine name — Overbit display font, engine accent + glow ──────────
-        // P30: use cachedEngineName (set in loadSlot) — no String alloc in paint().
-        {
-            juce::Font nameFont = GalleryFonts::engineName(14.0f);
-            g.setFont(nameFont);
-            auto nameRect = juce::Rectangle<int>(12, 0, getWidth() - 100, kHeaderH);
-            // Glow layer — 4-direction 1px offset at alpha 0.15 for subtle text bloom
-            g.setColour(accentColour.withAlpha(0.15f));
-            for (const auto& offset : { juce::Point<int>(-1, 0), juce::Point<int>(1, 0),
-                                        juce::Point<int>(0, -1), juce::Point<int>(0, 1) })
-            {
-                g.drawText(cachedEngineName,
-                           nameRect.translated(offset.x, offset.y),
-                           juce::Justification::centredLeft);
-            }
-            // Primary text — full accent color
+            // Engine name — 16px Space Grotesk bold, accent color
+            g.setFont(GalleryFonts::display(16.0f));
             g.setColour(accentColour);
-            g.drawText(cachedEngineName, nameRect, juce::Justification::centredLeft);
+            g.drawText(cachedEngineName,
+                       juce::Rectangle<int>(12, 0, getWidth() - 24, kHeaderH),
+                       juce::Justification::centredLeft);
+
+            // Thin accent line under header (2px)
+            g.setColour(accentColour.withAlpha(0.5f));
+            g.fillRect(12, kHeaderH - 2, getWidth() - 24, 2);
         }
-
-        // ── "PARAMETERS" right label — T3 color, 8px body ─────────────────────
-        g.setColour(get(t3()));
-        g.setFont(GalleryFonts::body(8.0f));
-        g.drawText("PARAMETERS", 0, 0, getWidth() - 10, kHeaderH,
-                   juce::Justification::centredRight);
-
-        // ── Bottom border of header — border() separator ──────────────────────
-        g.setColour(border());
-        g.fillRect(0, kHeaderH, getWidth(), 1);
     }
 
     void resized() override

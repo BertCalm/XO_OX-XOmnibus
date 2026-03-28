@@ -113,7 +113,7 @@ public:
             trackArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                                    rotaryStartAngle, rotaryEndAngle, true);
             g.setColour(juce::Colour(GalleryColors::t3()));
-            g.strokePath(trackArc, juce::PathStrokeType(1.4f / dpiScale, juce::PathStrokeType::curved,
+            g.strokePath(trackArc, juce::PathStrokeType(2.2f / dpiScale, juce::PathStrokeType::curved,
                                                          juce::PathStrokeType::rounded));
         }
 
@@ -129,7 +129,7 @@ public:
             if (fillColour.isTransparent()) fillColour = get(xoGold);
 
             g.setColour(fillColour);
-            g.strokePath(fillArc, juce::PathStrokeType(1.8f / dpiScale, juce::PathStrokeType::curved,
+            g.strokePath(fillArc, juce::PathStrokeType(2.8f / dpiScale, juce::PathStrokeType::curved,
                                                         juce::PathStrokeType::rounded));
 
             // ── 6. Indicator dot at arc endpoint ────────────────────────────

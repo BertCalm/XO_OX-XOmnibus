@@ -149,11 +149,9 @@ struct ColumnLayoutManager
         columnBBounds = { colAWidth,             bodyTop, colBWidth, bodyH };
         columnCBounds = { colAWidth + colBWidth, bodyTop, colCWidth, bodyH };
 
-        // FieldMap: bottom strip of Column B (inside Column B bounds)
-        fieldMapBounds = { colAWidth, bodyTop + bodyH - kFieldMapH, colBWidth, kFieldMapH };
-
-        // Column B panel area: Column B minus FieldMap
-        columnBPanelBounds = { colAWidth, bodyTop, colBWidth, bodyH - kFieldMapH };
+        // FieldMap hidden — full Column B height available for panel
+        fieldMapBounds = { 0, -200, 0, 0 };
+        columnBPanelBounds = { colAWidth, bodyTop, colBWidth, bodyH };
         if (columnBPanelBounds.getHeight() < 0)
             columnBPanelBounds.setHeight(0);
     }
