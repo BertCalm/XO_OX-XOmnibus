@@ -27,6 +27,7 @@ struct ReefTab: View {
     @State private var showPerformanceMode = false
     @State private var ambientEnabled = false
     @State private var ambientResumeTimer: Timer?
+    @State private var showRecordingControls = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -52,9 +53,11 @@ struct ReefTab: View {
                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.45)
                         .onReceive(reefStore.objectWillChange) { _ in
                             gridRefreshTimer?.invalidate()
-                            gridRefreshTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { _ in
+                            let t = Timer(timeInterval: 0.15, repeats: false) { [self] _ in
                                 reefScene?.refreshGrid()
                             }
+                            RunLoop.main.add(t, forMode: .common)
+                            gridRefreshTimer = t
                         }
                 } else {
                     VStack(spacing: 8) {
@@ -93,7 +96,6 @@ struct ReefTab: View {
                     .font(DesignTokens.body(10))
                     .foregroundColor(.white.opacity(0.25))
                     .padding(.horizontal, 20)
-                    .padding(.bottom, 4)
             }
 
             // Parameter panel OR stasis browser — shows when a slot is tapped
@@ -111,11 +113,42 @@ struct ReefTab: View {
             }
 
             if reefStore.diveEligibleCount >= 1 {
-                ReefRecordingBar(
-                    recorder: recorder,
-                    loopRecorder: loopRecorder,
-                    metronome: metronome
-                )
+                // Compact record toggle — replaces always-visible recording bar
+                if !showRecordingControls {
+                    Button(action: { withAnimation { showRecordingControls = true } }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "record.circle")
+                                .font(.system(size: 10))
+                            Text("REC")
+                                .font(DesignTokens.mono(9))
+                        }
+                        .foregroundColor(.white.opacity(0.3))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 4)
+                        .background(Color.white.opacity(0.04))
+                        .clipShape(Capsule())
+                    }
+                    .padding(.top, 2)
+                }
+
+                if showRecordingControls {
+                    HStack {
+                        Spacer()
+                        Button(action: { withAnimation { showRecordingControls = false } }) {
+                            Image(systemName: "chevron.down.circle.fill")
+                                .font(.system(size: 14))
+                                .foregroundColor(.white.opacity(0.3))
+                        }
+                    }
+                    .padding(.horizontal, 16)
+
+                    ReefRecordingBar(
+                        recorder: recorder,
+                        loopRecorder: loopRecorder,
+                        metronome: metronome
+                    )
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
 
                 ReefKeyboardHeader(
                     activeSourceSlot: $activeSourceSlot,
@@ -163,9 +196,11 @@ struct ReefTab: View {
                         loopRecorder.recordNoteOff(midiNote: midiNote)
                         ambientResumeTimer?.invalidate()
                         if ambientEnabled {
-                            ambientResumeTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+                            let t = Timer(timeInterval: 3.0, repeats: false) { [self] _ in
                                 ambientManager.start(reefStore: reefStore, audioEngine: audioEngine)
                             }
+                            RunLoop.main.add(t, forMode: .common)
+                            ambientResumeTimer = t
                         }
                         if OSCSender.shared.isConnected {
                             OSCSender.shared.sendNoteOff(note: midiNote)
@@ -186,7 +221,7 @@ struct ReefTab: View {
                         }
                     }
                 )
-                .frame(height: 80)
+                .frame(height: 64)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(.horizontal, 16)
                 .padding(.bottom, 8)
@@ -199,7 +234,11 @@ struct ReefTab: View {
             }
         }
         .animation(.easeInOut(duration: 0.3), value: reefStore.diveEligibleCount)
+        .animation(.easeInOut(duration: 0.2), value: showRecordingControls)
         .background(DesignTokens.background)
+        .onChange(of: recorder.isRecording) { isRec in
+            if isRec { withAnimation { showRecordingControls = true } }
+        }
         .onAppear {
             if activeSourceSlot == nil {
                 activeSourceSlot = firstSourceSlot

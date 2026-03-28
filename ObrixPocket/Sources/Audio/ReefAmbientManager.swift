@@ -49,11 +49,13 @@ final class ReefAmbientManager: ObservableObject {
         let baseInterval = 8.0 - Double(min(specimenCount, 12)) * 0.4
         let interval = baseInterval + Double.random(in: -1.0...1.0)
 
-        ambientTimer = Timer.scheduledTimer(withTimeInterval: max(2, interval), repeats: false) { [weak self, weak reefStore] _ in
+        let t = Timer(timeInterval: max(2, interval), repeats: false) { [weak self, weak reefStore] _ in
             guard let self, self.isActive, let reefStore else { return }
             self.playAmbientNote(specimenCount: reefStore.specimens.compactMap { $0 }.count)
             self.scheduleNext(reefStore: reefStore)
         }
+        RunLoop.main.add(t, forMode: .common)
+        ambientTimer = t
     }
 
     private func playAmbientNote(specimenCount: Int) {

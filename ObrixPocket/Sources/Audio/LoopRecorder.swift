@@ -13,7 +13,7 @@ final class LoopRecorder: ObservableObject {
     private var currentLayer: [NoteEvent] = []
     private var loopDuration: TimeInterval = 8.0  // default: 4 bars at 120 BPM
     private var loopStartTime: Date?
-    private var playbackTimer: Timer?
+    private var playbackToken: TickToken?
     private var playbackStartTime: Date?
     private var autoStopWorkItem: DispatchWorkItem?
     private var lastPlaybackPos: TimeInterval = -1
@@ -91,7 +91,7 @@ final class LoopRecorder: ObservableObject {
         playbackStartTime = Date()
         lastPlaybackPos = -1
 
-        playbackTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / 30.0, repeats: true) { [weak self] _ in
+        playbackToken = TickScheduler.shared.register(hz: 30) { [weak self] in
             guard let self, self.isPlaying, let start = self.playbackStartTime else { return }
             let elapsed = Date().timeIntervalSince(start)
             let posInLoop = elapsed.truncatingRemainder(dividingBy: self.loopDuration)
@@ -101,8 +101,7 @@ final class LoopRecorder: ObservableObject {
     }
 
     func stopPlayback() {
-        playbackTimer?.invalidate()
-        playbackTimer = nil
+        playbackToken = nil
         isPlaying = false
         loopProgress = 0
         currentBeat = 0

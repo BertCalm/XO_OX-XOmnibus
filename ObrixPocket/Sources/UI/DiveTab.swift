@@ -1,4 +1,5 @@
 import SwiftUI
+import SpriteKit
 
 // MARK: - Depth Zone
 
@@ -59,23 +60,19 @@ struct DiveTab: View {
     @State private var diveScore: Int = 0
     @State private var divePhase: DivePhase = .ready
     @State private var activeNotes: Set<Int> = []
-    @State private var diveTimer: Timer?
-    @State private var noteTimer: Timer?
+    @State private var diveToken: TickToken?
     @State private var lastZone: DepthZone = .sunlit
     @State private var reefBonus: Float = 1.0
     @State private var availableSources: [Int] = []
     @State private var currentSourceIndex = 0
-    /// Incremented each time a dive starts; stale note-off closures check this before firing.
+    /// Incremented each time a dive starts; stale closures check this before firing.
     @State private var diveGeneration = 0
     @State private var isCollectingRewards = false
 
-    // MARK: - Player Interaction State
+    // MARK: - SpriteKit + Composer
 
-    @State private var divePlayerActive = false
-    @State private var divePlayerPitch: Float = 0.5   // 0=low, 1=high
-    @State private var divePlayerVelocity: Float = 0.5
-    @State private var lastSteerPosition: CGPoint = .zero
-    @State private var steerMovementThreshold: CGFloat = 5.0  // Minimum pixels moved per frame
+    @State private var diveScene: DiveScene?
+    @State private var composer: DiveComposer?
 
     // Engagement tracking (per-tick frames)
     @State private var activeFrames = 0
@@ -110,25 +107,27 @@ struct DiveTab: View {
             .animation(.easeInOut(duration: 2.0), value: zone.rawValue)
 
             VStack(spacing: 24) {
-                // Header
-                HStack {
-                    HStack(spacing: 8) {
-                        Text("THE DIVE")
-                            .font(DesignTokens.heading(18))
-                            .foregroundColor(.white)
-                        let sources = reefStore.specimens.compactMap { $0 }.filter { $0.category == .source }.count
-                        let total = reefStore.diveEligibleCount
-                        Text("\(sources) src · \(total) total")
-                            .font(DesignTokens.mono(9))
-                            .foregroundColor(.white.opacity(0.2))
+                // Header — hidden during active dive (SpriteKit HUD covers it)
+                if divePhase != .diving {
+                    HStack {
+                        HStack(spacing: 8) {
+                            Text("THE DIVE")
+                                .font(DesignTokens.heading(18))
+                                .foregroundColor(.white)
+                            let sources = reefStore.specimens.compactMap { $0 }.filter { $0.category == .source }.count
+                            let total = reefStore.diveEligibleCount
+                            Text("\(sources) src · \(total) total")
+                                .font(DesignTokens.mono(9))
+                                .foregroundColor(.white.opacity(0.2))
+                        }
+                        Spacer()
+                        Text("\(diveDepth)m")
+                            .font(DesignTokens.monoBold(16))
+                            .foregroundColor(DesignTokens.reefJade)
                     }
-                    Spacer()
-                    Text("\(diveDepth)m")
-                        .font(DesignTokens.monoBold(16))
-                        .foregroundColor(DesignTokens.reefJade)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 12)
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 12)
 
                 Spacer()
 
@@ -299,128 +298,63 @@ struct DiveTab: View {
     // MARK: - Diving
 
     private var divingView: some View {
-        VStack(spacing: 16) {
-            // Current zone name
-            let zone = DepthZone.at(depth: diveDepth)
-            Text(zone.rawValue.uppercased())
-                .font(DesignTokens.mono(10))
-                .tracking(2)
-                .foregroundColor(.white.opacity(0.3))
-
-            // Current source indicator
-            if !availableSources.isEmpty {
-                let currentSlot = availableSources[currentSourceIndex]
-                if let spec = reefStore.specimens[currentSlot] {
-                    HStack(spacing: 6) {
-                        SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 20)
-                        Text(spec.creatureName)
-                            .font(DesignTokens.mono(10))
-                            .foregroundColor(DesignTokens.reefJade.opacity(0.6))
-                    }
-                }
+        ZStack {
+            // Full-screen SpriteKit game
+            if let scene = diveScene {
+                SpriteView(scene: scene)
+                    .ignoresSafeArea()
             }
 
-            // Depth counter (large, centered)
-            Text("\(diveDepth)m")
-                .font(DesignTokens.monoBold(48))
-                .foregroundColor(DesignTokens.reefJade)
-
-            // Progress bar
-            GeometryReader { geo in
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(Color.white.opacity(0.06))
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(DesignTokens.reefJade.opacity(0.5))
-                        .frame(width: geo.size.width * CGFloat(diveProgress))
+            // HUD overlay (non-interactive, passes touches through)
+            VStack {
+                // Top bar: zone name + depth + score
+                HStack {
+                    Text(DepthZone.at(depth: diveDepth).rawValue)
+                        .font(DesignTokens.mono(10))
+                        .foregroundColor(.white.opacity(0.5))
+                    Spacer()
+                    Text("\(diveDepth)m")
+                        .font(DesignTokens.monoBold(14))
+                        .foregroundColor(.white)
+                    Spacer()
+                    Text("\(diveScore)")
+                        .font(DesignTokens.monoBold(14))
+                        .foregroundColor(DesignTokens.xoGold)
                 }
-            }
-            .frame(height: 6)
-            .padding(.horizontal, 40)
+                .padding(.horizontal, 20)
+                .padding(.top, 8)
 
-            // Active note indicators
-            HStack(spacing: 8) {
-                ForEach(Array(activeNotes.sorted()), id: \.self) { _ in
-                    Circle()
-                        .fill(DesignTokens.reefJade.opacity(0.6))
-                        .frame(width: 8, height: 8)
-                }
-            }
+                Spacer()
 
-            // Score
-            Text("Score: \(diveScore)")
-                .font(DesignTokens.mono(14))
-                .foregroundColor(.white.opacity(0.5))
-
-            // Touch interaction zone
-            GeometryReader { geo in
-                ZStack {
-                    Color.clear
-                        .contentShape(Rectangle())
-                        .gesture(
-                            DragGesture(minimumDistance: 0)
-                                .onChanged { value in
-                                    // X position → pitch range (left=low, right=high)
-                                    let xNorm = Float(value.location.x / geo.size.width)
-                                    divePlayerPitch = max(0, min(1, xNorm))
-
-                                    // Y position → velocity (top=loud, bottom=soft)
-                                    let yNorm = 1.0 - Float(value.location.y / geo.size.height)
-                                    divePlayerVelocity = max(0, min(1, yNorm))
-
-                                    // Only count as active if finger actually moved —
-                                    // holding still does NOT earn the interaction bonus
-                                    let moved = hypot(
-                                        value.location.x - lastSteerPosition.x,
-                                        value.location.y - lastSteerPosition.y
-                                    )
-                                    divePlayerActive = moved > steerMovementThreshold
-                                    lastSteerPosition = value.location
-                                }
-                                .onEnded { _ in
-                                    divePlayerActive = false
-                                    lastSteerPosition = .zero
-                                }
-                        )
-
-                    // Finger cursor
-                    if divePlayerActive {
-                        Circle()
-                            .fill(DesignTokens.reefJade)
-                            .frame(width: 12, height: 12)
-                            .offset(
-                                x: CGFloat(divePlayerPitch - 0.5) * 100,
-                                y: CGFloat(0.5 - divePlayerVelocity) * 60
-                            )
+                // Bottom: progress bar + time remaining
+                VStack(spacing: 4) {
+                    // Degradation indicator (when > 0)
+                    if composer?.degradation ?? 0 > 0 {
+                        Text("SIGNAL DEGRADED")
+                            .font(DesignTokens.mono(8))
+                            .foregroundColor(DesignTokens.errorRed.opacity(0.6))
                     }
 
-                    // Label
-                    VStack(spacing: 2) {
-                        if divePlayerActive {
-                            Text("STEERING")
-                                .font(DesignTokens.mono(8))
-                                .foregroundColor(DesignTokens.reefJade.opacity(0.5))
-                        } else {
-                            Text("TOUCH TO STEER")
-                                .font(DesignTokens.body(9))
-                                .foregroundColor(.white.opacity(0.15))
+                    // Progress bar
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 2)
+                                .fill(Color.white.opacity(0.1))
+                            RoundedRectangle(cornerRadius: 2)
+                                .fill(DesignTokens.reefJade.opacity(0.6))
+                                .frame(width: geo.size.width * CGFloat(diveProgress))
                         }
                     }
-                }
-            }
-            .frame(height: 150)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.white.opacity(divePlayerActive ? 0.04 : 0.02))
-            )
-            .padding(.horizontal, 20)
+                    .frame(height: 4)
+                    .padding(.horizontal, 40)
 
-            // Abort button
-            Button(action: endDive) {
-                Text("SURFACE")
-                    .font(DesignTokens.body(12))
-                    .foregroundColor(.white.opacity(0.3))
+                    Text("\(Int((1.0 - diveProgress) * 60))s")
+                        .font(DesignTokens.mono(9))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+                .padding(.bottom, 16)
             }
+            .allowsHitTesting(false) // Touch passes through to SpriteKit
         }
     }
 
@@ -507,106 +441,130 @@ struct DiveTab: View {
     // MARK: - Dive Logic
 
     private func startDive() {
-        diveGeneration += 1
-        divePhase = .diving
-        diveProgress = 0
-        diveDepth = 0
-        diveScore = 0
+        guard !isDiving else { return }
         isDiving = true
-        activeNotes = []
+        divePhase = .diving
+        diveScore = 0
+        diveDepth = 0
+        diveProgress = 0
+        diveGeneration += 1
         lastZone = .sunlit
-
-        // Reset engagement counters and player state
+        isNewHighScore = false
         activeFrames = 0
         totalFrames = 0
-        divePlayerActive = false
-        divePlayerPitch = 0.5
-        divePlayerVelocity = 0.5
 
         // Start tilt modulation for dive expression
         motionController.start()
 
-        // Compute reef quality bonus from specimen count and coupling wires
+        // Calculate reef bonus
         let specimenCount = reefStore.specimens.compactMap { $0 }.count
-        let wireCount = reefStore.couplingRoutes.count
-        reefBonus = min(2.0, max(1.0, Float(specimenCount) * 0.1 + Float(wireCount) * 0.15))
+        reefBonus = 1.0 + Float(specimenCount) * 0.15
 
-        // Collect all source slots for zone-based switching
+        // Find available source specimens for the composer
         availableSources = reefStore.specimens.enumerated()
-            .compactMap { (index, spec) -> Int? in
-                spec?.category == .source ? index : nil
-            }
+            .compactMap { $0.element?.category == .source ? $0.offset : nil }
         currentSourceIndex = 0
+
+        // Get specimen stats for composer influence
+        let stats = activeSpecimenStats()
+
+        // Create composer
+        let newComposer = DiveComposer()
+        newComposer.specimenPulse = Float(stats.pulse) / 100.0
+        newComposer.specimenWarmth = Float(stats.warmth) / 100.0
+        newComposer.specimenReflexes = Float(stats.reflexes) / 100.0
+        newComposer.specimenGrit = Float(stats.grit) / 100.0
+
+        // Wire composer audio output to ObrixBridge
+        newComposer.onNoteOn = { note, velocity in
+            ObrixBridge.shared()?.note(on: Int32(note), velocity: velocity)
+        }
+        newComposer.onNoteOff = { note in
+            ObrixBridge.shared()?.noteOff(Int32(note))
+        }
+        newComposer.onBeat = { [weak self] beat in
+            guard let self else { return }
+            HapticEngine.diveBeat()
+            self.diveScene?.triggerBeatPulse()
+        }
+        newComposer.onDegradation = { [weak self] _ in
+            // Trigger view update so HUD reflects current degradation level
+            _ = self?.composer?.degradation
+        }
+
+        composer = newComposer
 
         // Configure engine with first source's chain
         if let sourceSlot = availableSources.first {
             audioEngine.applySlotChain(slotIndex: sourceSlot, reefStore: reefStore)
-        } else if let sourceSlot = reefStore.specimens.firstIndex(where: { $0?.category == .source }) {
-            audioEngine.applySlotChain(slotIndex: sourceSlot, reefStore: reefStore)
         }
 
-        // Progress timer fires on main run loop — safe to mutate @State directly
+        // Create SpriteKit scene
+        let scene = DiveScene(size: CGSize(width: UIScreen.main.bounds.width,
+                                            height: UIScreen.main.bounds.height * 0.85))
+        scene.scaleMode = .aspectFill
+        scene.currentZone = .sunlit
+
+        // Wire scene callbacks to composer + scoring
+        scene.onPlayerPositionChanged = { [weak newComposer] x in
+            newComposer?.playerX = x
+        }
+        scene.onPlayerVelocityChanged = { [weak newComposer] v in
+            newComposer?.playerDodgeVelocity = v
+        }
+        scene.onObstacleProximity = { [weak newComposer] p in
+            newComposer?.obstacleProximity = p
+        }
+        scene.onHit = { [weak self, weak newComposer] in
+            newComposer?.registerHit()
+            self?.diveScore = max(0, (self?.diveScore ?? 0) - 50)
+        }
+        scene.onCollect = { [weak self, weak newComposer] in
+            newComposer?.registerCollectible()
+            let zone = DepthZone.at(depth: self?.diveDepth ?? 0)
+            let zoneMultiplier: Int
+            switch zone {
+            case .sunlit:   zoneMultiplier = 1
+            case .twilight: zoneMultiplier = 2
+            case .midnight: zoneMultiplier = 3
+            case .abyssal:  zoneMultiplier = 5
+            }
+            self?.diveScore += 100 * zoneMultiplier
+        }
+
+        diveScene = scene
+
+        // Start composer
+        newComposer.start(zone: .sunlit)
+
+        // Progress timer (10Hz) — drives depth, zone transitions, and scoring
         let startTime = Date()
-        diveTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] _ in
+        diveToken = TickScheduler.shared.register(hz: 10) { [weak self] in
+            guard let self, self.isDiving else { return }
             let elapsed = Date().timeIntervalSince(startTime)
-            diveProgress = Float(min(elapsed / 60.0, 1.0))
-            diveDepth = Int(elapsed * 20) // 20m per second = 1200m max
+            self.diveProgress = Float(min(elapsed / 60.0, 1.0))
+            self.diveDepth = Int(elapsed * 20)
 
-            // Track engagement frames (10 ticks/sec)
-            totalFrames += 1
-            if divePlayerActive { activeFrames += 1 }
+            // Engagement tracking
+            self.totalFrames += 1
 
-            // Detect zone transitions and fire haptic + switch source
-            let currentZone = DepthZone.at(depth: diveDepth)
-            if currentZone != lastZone {
-                lastZone = currentZone
+            // Zone transition
+            let currentZone = DepthZone.at(depth: self.diveDepth)
+            if currentZone != self.lastZone {
+                self.lastZone = currentZone
                 HapticEngine.diveDepthMilestone()
+                self.diveScene?.currentZone = currentZone
+                self.composer?.updateZone(currentZone)
 
-                // Switch to next source in the reef
-                if !availableSources.isEmpty {
-                    currentSourceIndex = (currentSourceIndex + 1) % availableSources.count
-                    let nextSlot = availableSources[currentSourceIndex]
-                    audioEngine.applyCachedParams(for: nextSlot)
+                // Switch source specimen at zone boundary
+                if !self.availableSources.isEmpty {
+                    self.currentSourceIndex = (self.currentSourceIndex + 1) % self.availableSources.count
+                    self.audioEngine.applyCachedParams(for: self.availableSources[self.currentSourceIndex])
                 }
             }
 
-            if elapsed >= 60 {
-                endDive()
-            }
-        }
-
-        // Generative note player — zone-aware density and pitch content
-        scheduleNextNote(startTime: startTime)
-    }
-
-    private func scheduleNextNote(startTime: Date) {
-        guard isDiving else { return }
-        let capturedGeneration = diveGeneration  // Capture current generation
-
-        let elapsed = Date().timeIntervalSince(startTime)
-        let zone = DepthZone.at(depth: diveDepth)
-
-        // Note density varies by zone
-        let notesPerSecond: Double
-        switch zone {
-        case .sunlit:   notesPerSecond = 1.0 + elapsed / 30.0  // Gentle buildup
-        case .twilight: notesPerSecond = 2.0 + elapsed / 20.0  // Moderate
-        case .midnight: notesPerSecond = 3.0 + elapsed / 15.0  // Dense
-        case .abyssal:  notesPerSecond = 1.5                    // Sparse again — eerie
-        }
-
-        let interval = 1.0 / notesPerSecond
-
-        // Timer fires on main run loop — safe to mutate @State directly
-        noteTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [self] _ in
-            guard isDiving, diveGeneration == capturedGeneration else { return }
-
-            // Re-read zone at the moment the note fires (depth has advanced)
-            let currentZone = DepthZone.at(depth: diveDepth)
-            let scale = currentZone.scaleIntervals
-            let noteInScale = scale.randomElement() ?? 0
-
-            // Zone multiplier (used for both scoring and player bonus)
+            // Passive scoring
+            self.totalFrames += 1
             let zoneMultiplier: Int
             switch currentZone {
             case .sunlit:   zoneMultiplier = 1
@@ -614,68 +572,26 @@ struct DiveTab: View {
             case .midnight: zoneMultiplier = 3
             case .abyssal:  zoneMultiplier = 5
             }
+            self.diveScore += Int(Float(zoneMultiplier) * self.reefBonus)
 
-            // Octave and velocity: player steers when active, auto-play otherwise
-            let octave: Int
-            let velocity: Float
-            if divePlayerActive {
-                // Player is steering — use their X/Y input
-                let octaveRange = currentZone.octaveRange
-                let octaveSpan = octaveRange.upperBound - octaveRange.lowerBound
-                octave = octaveRange.lowerBound + Int(divePlayerPitch * Float(octaveSpan))
-                velocity = max(0.15, divePlayerVelocity * 0.9)
-
-                // Bonus points for active engagement
-                diveScore += 5 * zoneMultiplier
-            } else {
-                // Auto-play: existing random behavior
-                octave = Int.random(in: currentZone.octaveRange)
-                switch currentZone {
-                case .sunlit:   velocity = Float.random(in: 0.5...0.9)
-                case .twilight: velocity = Float.random(in: 0.4...0.7)
-                case .midnight: velocity = Float.random(in: 0.3...0.6)
-                case .abyssal:  velocity = Float.random(in: 0.15...0.4)
-                }
+            if elapsed >= 60 {
+                self.endDive()
             }
-
-            let midiNote = octave * 12 + noteInScale
-            ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
-            activeNotes.insert(midiNote)
-
-            // Score: more points in deeper zones, scaled by reef quality bonus
-            diveScore += Int(Float(Int.random(in: 5...15) * zoneMultiplier) * reefBonus)
-
-            // Note duration varies by zone (deeper = longer, more sustained)
-            let noteDuration: Double
-            switch currentZone {
-            case .sunlit:   noteDuration = Double.random(in: 0.2...0.8)
-            case .twilight: noteDuration = Double.random(in: 0.3...1.2)
-            case .midnight: noteDuration = Double.random(in: 0.1...0.5)  // Quick staccato
-            case .abyssal:  noteDuration = Double.random(in: 1.0...4.0)  // Long, haunting
-            }
-
-            let gen = diveGeneration
-            DispatchQueue.main.asyncAfter(deadline: .now() + noteDuration) {
-                guard diveGeneration == gen else { return }
-                ObrixBridge.shared()?.noteOff(Int32(midiNote))
-                activeNotes.remove(midiNote)
-            }
-
-            // Schedule next note
-            scheduleNextNote(startTime: startTime)
         }
     }
 
     private func endDive() {
         guard isDiving else { return }
         isDiving = false
-        diveTimer?.invalidate()
-        diveTimer = nil
-        noteTimer?.invalidate()
-        noteTimer = nil
+        diveToken = nil
 
         // Stop tilt modulation
         motionController.stop()
+
+        // Stop composer and clear scene
+        composer?.stop()
+        composer = nil
+        diveScene = nil
 
         // All notes off
         ObrixBridge.shared()?.allNotesOff()
@@ -726,5 +642,16 @@ struct DiveTab: View {
 
         // Award mastery XP if prestige is unlocked
         MasteryManager.shared.awardMasteryXP(finalScore / 20)
+    }
+
+    // MARK: - Helpers
+
+    private func activeSpecimenStats() -> GameStats {
+        // Get stats from the first source specimen, or use defaults
+        if let sourceSlot = availableSources.first,
+           let specimen = reefStore.specimens[sourceSlot] {
+            return GameStats.from(params: specimen.parameterState)
+        }
+        return GameStats.from(params: [:]) // Defaults
     }
 }

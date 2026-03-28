@@ -10,16 +10,16 @@ final class AudioExporter: ObservableObject {
 
     private var audioFile: AVAudioFile?
     private var recordStartTime: Date?
-    private var recordTimer: Timer?
+    private var recordToken: TickToken?
     private let maxDuration: TimeInterval = 60 // 60-second max per spec
 
     // Ring buffer queue: audio tap enqueues here; writer timer drains on background queue.
     private var pendingBuffers: [AVAudioPCMBuffer] = []
     private let bufferLock = NSLock()
-    private var writerTimer: Timer?
+    private var writerToken: TickToken?
 
-    // Tap polling: a Timer that drains -drainTapInto: at ~60 Hz and feeds queueBuffer.
-    private var tapPollTimer: Timer?
+    // Tap polling: a TickScheduler token that drains pollTap() at ~60 Hz and feeds queueBuffer.
+    private var tapPollToken: TickToken?
     // Scratch buffer for the raw interleaved float data from the bridge tap.
     // Pre-allocated once: 4 096 frames × 2 ch = 8 192 floats.
     private let tapScratch = UnsafeMutablePointer<Float>.allocate(capacity: 8192)
@@ -50,7 +50,7 @@ final class AudioExporter: ObservableObject {
             // into audioFile via AVAudioFile.write(from:). The file and timers are
             // set up here; the bridge tap calls queueBuffer(_:) on each render cycle.
 
-            recordTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            recordToken = TickScheduler.shared.register(hz: 10) { [weak self] in
                 guard let self, let start = self.recordStartTime else { return }
                 DispatchQueue.main.async {
                     self.recordingDuration = Date().timeIntervalSince(start)
@@ -62,7 +62,7 @@ final class AudioExporter: ObservableObject {
 
             // Drain pending buffers on a background queue every 50ms.
             // This keeps AVAudioFile.write(from:) off the audio render thread.
-            writerTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+            writerToken = TickScheduler.shared.register(hz: 20) { [weak self] in
                 self?.drainBuffers()
             }
         } catch {
@@ -110,10 +110,8 @@ final class AudioExporter: ObservableObject {
     func stopRecording() {
         guard isRecording else { return }
 
-        recordTimer?.invalidate()
-        recordTimer = nil
-        writerTimer?.invalidate()
-        writerTimer = nil
+        recordToken = nil
+        writerToken = nil
         isRecording = false
         recordingDuration = 0
         recordStartTime = nil
@@ -151,15 +149,14 @@ final class AudioExporter: ObservableObject {
         ObrixBridge.shared()?.startOutputTap()
 
         // Poll the bridge tap at ~60 Hz and feed decoded buffers into the write queue.
-        tapPollTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / 60.0, repeats: true) { [weak self] _ in
+        tapPollToken = TickScheduler.shared.register(hz: 60) { [weak self] in
             self?.pollTap()
         }
     }
 
     /// Stop live recording, flush, and finalise the M4A file.
     func stopLiveRecording() {
-        tapPollTimer?.invalidate()
-        tapPollTimer = nil
+        tapPollToken = nil
         ObrixBridge.shared()?.stopOutputTap()
         // Drain any final buffers that landed between the last poll and now.
         pollTap()
@@ -228,7 +225,7 @@ final class AudioExporter: ObservableObject {
             isRecording = true
             recordStartTime = Date()
 
-            writerTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+            writerToken = TickScheduler.shared.register(hz: 20) { [weak self] in
                 self?.drainBuffers()
             }
         } catch {
@@ -287,7 +284,7 @@ final class AudioExporter: ObservableObject {
         var noteIndex = 0
         var clipTimer: Timer?
 
-        clipTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+        let t = Timer(timeInterval: 0.5, repeats: true) { [weak self] timer in
             guard self != nil else { timer.invalidate(); return }
 
             let note = notes[noteIndex % notes.count]
@@ -302,6 +299,8 @@ final class AudioExporter: ObservableObject {
 
             noteIndex += 1
         }
+        RunLoop.main.add(t, forMode: .common)
+        clipTimer = t
 
         // Stop recording after exactly 15 seconds and deliver the URL.
         DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { [weak self] in

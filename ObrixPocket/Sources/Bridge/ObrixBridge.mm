@@ -9,6 +9,10 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_audio_utils/juce_audio_utils.h>
 
+// STL headers for param cache (must come after JUCE to avoid macro conflicts)
+#include <string>
+#include <unordered_map>
+
 // The engine
 #include "../../Source/Engines/Obrix/ObrixEngine.h"
 
@@ -66,6 +70,19 @@ public:
     {
         // Wire engine's atomic parameter pointers to the APVTS
         eng.attachParameters(apvts);
+
+        // Pre-cache all parameter pointers — eliminates juce::String on audio thread.
+        // getRawParameterValue returns std::atomic<float>* which is stable for the
+        // lifetime of the APVTS. Safe to cache once at construction.
+        for (auto* param : apvts.processor.getParameters())
+        {
+            if (auto* withID = dynamic_cast<juce::AudioProcessorParameterWithID*>(param))
+            {
+                auto* raw = apvts.getRawParameterValue(withID->paramID);
+                if (raw)
+                    _paramCache[withID->paramID.toStdString()] = raw;
+            }
+        }
     }
 
     juce::AudioProcessorValueTreeState apvts;
@@ -87,12 +104,13 @@ public:
             int readPos = _paramReadRef.load(std::memory_order_relaxed);
             auto& evt = _paramQueueRef[readPos];
 
-            // Write directly to the atomic denormalized parameter value (audio-thread safe).
-            // getRawParameterValue returns std::atomic<float>* holding the real-world value
-            // (e.g. Hz for cutoff, seconds for attack). Callers must pre-scale to actual range.
-            if (auto* rawValue = apvts.getRawParameterValue(juce::String(evt.paramId)))
+            // Look up pre-cached pointer — zero allocation on audio thread.
+            // Eliminates the juce::String heap allocation that caused audio thread
+            // overrun when many params were pushed in a burst (e.g. applyReefConfiguration).
+            auto it = _paramCache.find(evt.paramId);
+            if (it != _paramCache.end())
             {
-                rawValue->store(evt.value, std::memory_order_relaxed);
+                it->second->store(evt.value, std::memory_order_relaxed);
             }
 
             _paramReadRef.store((readPos + 1) % kParamQueueSize, std::memory_order_release);
@@ -171,6 +189,23 @@ public:
 
     static constexpr int kParamQueueSize = 256;
 
+    // Direct param accessors for main-thread callers (setParameterImmediate / getParameter).
+    // Uses the same pre-cached map — no juce::String allocation on either path.
+    void setParamDirect(const char* paramId, float value)
+    {
+        auto it = _paramCache.find(paramId);
+        if (it != _paramCache.end())
+            it->second->store(value, std::memory_order_relaxed);
+    }
+
+    float getParamDirect(const char* paramId) const
+    {
+        auto it = _paramCache.find(paramId);
+        if (it != _paramCache.end())
+            return it->second->load(std::memory_order_relaxed);
+        return 0.0f;
+    }
+
 private:
     ObrixEngine& eng;
     std::atomic<float>& _gainRef;
@@ -188,6 +223,10 @@ private:
     std::atomic<float*>& _tapReadyBufferRef;
     std::atomic<int>& _tapReadyFramesRef;
     std::atomic<int>& _tapReadyChannelsRef;
+
+    // Pre-cached parameter pointers — built once at construction, never reallocated.
+    // Keyed by std::string so processBlock can look up params with zero heap allocation.
+    std::unordered_map<std::string, std::atomic<float>*> _paramCache;
 };
 
 static const int kMidiQueueSize = 256;
@@ -383,32 +422,21 @@ static const int kMidiQueueSize = 256;
 - (float)getParameter:(NSString *)paramId
 {
     // Returns the denormalized (real-world) value — e.g. Hz for cutoff, 0-1 for mix.
-    // Matches what the engine reads in its renderBlock via loadP().
-    if (_adapter) {
-        if (auto* raw = _adapter->apvts.getRawParameterValue(juce::String([paramId UTF8String])))
-            return raw->load(std::memory_order_relaxed);
-    }
-    return 0.0f;
+    // Uses pre-cached pointer map — no juce::String allocation.
+    if (!_adapter) return 0.0f;
+    return _adapter->getParamDirect([paramId UTF8String]);
 }
 
 - (void)setParameterImmediate:(NSString *)paramId value:(float)value
 {
     if (!_adapter) return;
-    // getRawParameterValue returns a pointer to the DENORMALIZED (real-world) value.
-    // Verified in JUCE source: AudioProcessorValueTreeState::getRawParameterValue()
-    // returns &adapter->getRawDenormalisedValue(), which stores the actual Hz/dB/etc.
-    // value — NOT a 0-1 normalized float.
-    //
-    // Callers (AudioEngineManager.swift) are responsible for scaling their 0-1 specimen
-    // values to the engine's real-world range before calling this method.
+    // Uses pre-cached pointer map — no juce::String allocation.
+    // Values are DENORMALIZED (real-world): Hz for cutoff, seconds for attack, etc.
+    // Callers (AudioEngineManager.swift) are responsible for pre-scaling their 0-1
+    // specimen values to the engine's real-world range before calling this method.
     // Example: obrix_proc1Cutoff expects Hz (20-20000), not 0-1 normalized.
     // AudioEngineManager already does: scale: { v in 20.0 + v * (20000.0 - 20.0) }
-    //
-    // Writing value directly here is correct — no additional normalization needed.
-    if (auto* raw = _adapter->apvts.getRawParameterValue(juce::String([paramId UTF8String])))
-    {
-        raw->store(value, std::memory_order_relaxed);
-    }
+    _adapter->setParamDirect([paramId UTF8String], value);
 }
 
 - (void)setOutputGain:(float)gain

@@ -41,7 +41,7 @@ final class MetronomeManager: ObservableObject {
     }
 
     private func scheduleBeat() {
-        timer = Timer.scheduledTimer(withTimeInterval: beatInterval, repeats: true) { [weak self] _ in
+        let t = Timer(timeInterval: beatInterval, repeats: true) { [weak self] _ in
             guard let self, self.isRunning else { return }
             self.currentBeat = (self.currentBeat + 1) % self.beatsPerBar
 
@@ -52,5 +52,7 @@ final class MetronomeManager: ObservableObject {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             }
         }
+        RunLoop.main.add(t, forMode: .common)
+        timer = t
     }
 }

@@ -11,6 +11,8 @@ struct SpecimenParamPanel: View {
     @State private var showReleaseConfirm = false
     @State private var showSwapPicker = false
     @State private var showFusionPicker = false
+    @State private var isPreviewPlaying = false
+    @State private var previewNote: Int32 = 60
 
     private var specimen: Specimen? { reefStore.specimens[slotIndex] }
 
@@ -108,6 +110,63 @@ struct SpecimenParamPanel: View {
                         .transition(.opacity)
                 }
 
+                // Preview note — lets user hear parameter changes in real time
+                HStack(spacing: 12) {
+                    Button(action: {
+                        if isPreviewPlaying {
+                            ObrixBridge.shared()?.noteOff(previewNote)
+                            isPreviewPlaying = false
+                        } else {
+                            // Apply this specimen's chain to the engine first
+                            audioEngine.applySlotChain(slotIndex: slotIndex, reefStore: reefStore)
+                            previewNote = 60
+                            ObrixBridge.shared()?.note(on: previewNote, velocity: 0.7)
+                            isPreviewPlaying = true
+                        }
+                    }) {
+                        HStack(spacing: 6) {
+                            Image(systemName: isPreviewPlaying ? "stop.fill" : "play.fill")
+                                .font(.system(size: 11))
+                            Text(isPreviewPlaying ? "STOP" : "PREVIEW")
+                                .font(DesignTokens.mono(10))
+                                .tracking(1)
+                        }
+                        .foregroundColor(isPreviewPlaying ? DesignTokens.errorRed : catColor(spec.category))
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(isPreviewPlaying ? DesignTokens.errorRed.opacity(0.1) : catColor(spec.category).opacity(0.1))
+                        )
+                    }
+
+                    // Octave buttons for preview note range
+                    HStack(spacing: 4) {
+                        ForEach([48, 60, 72], id: \.self) { note in
+                            Button(action: {
+                                if isPreviewPlaying {
+                                    ObrixBridge.shared()?.noteOff(previewNote)
+                                }
+                                audioEngine.applySlotChain(slotIndex: slotIndex, reefStore: reefStore)
+                                previewNote = Int32(note)
+                                ObrixBridge.shared()?.note(on: previewNote, velocity: 0.7)
+                                isPreviewPlaying = true
+                            }) {
+                                Text(note == 48 ? "C3" : note == 60 ? "C4" : "C5")
+                                    .font(DesignTokens.mono(9))
+                                    .foregroundColor(.white.opacity(0.4))
+                                    .frame(width: 32, height: 28)
+                                    .background(Color.white.opacity(0.06))
+                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                            }
+                        }
+                    }
+
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 6)
+
                 // Parameter sliders — category-specific
                 VStack(spacing: 8) {
                     switch spec.category {
@@ -197,6 +256,14 @@ struct SpecimenParamPanel: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
+            }
+            .onDisappear {
+                if isPreviewPlaying {
+                    ObrixBridge.shared()?.noteOff(previewNote)
+                    ObrixBridge.shared()?.noteOff(48)
+                    ObrixBridge.shared()?.noteOff(72)
+                    isPreviewPlaying = false
+                }
             }
             .background(
                 ZStack {
