@@ -9,6 +9,7 @@ struct SpecimenParamPanel: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @State private var activeParam: String? // Which param is being dragged (for hover label)
     @State private var showReleaseConfirm = false
+    @State private var showSwapPicker = false
 
     private var specimen: Specimen? { reefStore.specimens[slotIndex] }
 
@@ -108,6 +109,18 @@ struct SpecimenParamPanel: View {
                     }
                     .padding(.top, 4)
 
+                    // Swap button — open stasis picker to directly swap this specimen
+                    Button(action: { showSwapPicker = true }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                                .font(.system(size: 10))
+                            Text("Swap")
+                                .font(.custom("Inter-Regular", size: 11))
+                        }
+                        .foregroundColor(Color(hex: "3380FF").opacity(0.5))
+                    }
+                    .padding(.top, 4)
+
                     // Release button — lets user free up a full reef slot (destructive)
                     Button(action: { showReleaseConfirm = true }) {
                         HStack(spacing: 4) {
@@ -130,6 +143,21 @@ struct SpecimenParamPanel: View {
             )
             .cornerRadius(12)
             .padding(.horizontal, 12)
+            .sheet(isPresented: $showSwapPicker) {
+                if let spec = specimen {
+                    SwapPickerView(
+                        currentSlot: slotIndex,
+                        currentSpecimen: spec,
+                        onSwap: { stasisSpecimenId in
+                            performSwap(stasisSpecimenId: stasisSpecimenId)
+                            showSwapPicker = false
+                            onDismiss?()
+                        },
+                        onCancel: { showSwapPicker = false }
+                    )
+                    .environmentObject(reefStore)
+                }
+            }
             .alert("Release \(specimen?.creatureName ?? "specimen")?", isPresented: $showReleaseConfirm) {
                 Button("Release", role: .destructive) {
                     reefStore.releaseSpecimen(at: slotIndex)
@@ -141,6 +169,19 @@ struct SpecimenParamPanel: View {
                 Text("It will return to the wild. This cannot be undone.")
             }
         }
+    }
+
+    // MARK: - Swap Logic
+
+    private func performSwap(stasisSpecimenId: UUID) {
+        guard reefStore.specimens[slotIndex] != nil else { return }
+        // Move current specimen to stasis
+        reefStore.moveToStasis(at: slotIndex)
+        // Move stasis specimen to this slot (slot is now empty after moveToStasis)
+        reefStore.moveFromStasis(specimenId: stasisSpecimenId, toSlot: slotIndex)
+        reefStore.save()
+        // Rebuild param cache so the engine reflects the newly slotted specimen
+        audioEngine.rebuildParamCache(reefStore: reefStore)
     }
 
     // MARK: - Section Header
@@ -372,6 +413,101 @@ struct SpecimenParamPanel: View {
         case .processor: return Color(hex: "FF4D4D")
         case .modulator: return Color(hex: "4DCC4D")
         case .effect:    return Color(hex: "B34DFF")
+        }
+    }
+}
+
+// MARK: - SwapPickerView
+
+/// Sheet presented when the user taps "Swap" in the param panel.
+/// Lists all stasis specimens so the user can pick one to swap in immediately.
+struct SwapPickerView: View {
+    let currentSlot: Int
+    let currentSpecimen: Specimen
+    let onSwap: (UUID) -> Void
+    let onCancel: () -> Void
+    @EnvironmentObject var reefStore: ReefStore
+
+    @State private var stasisSpecimens: [Specimen] = []
+
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 0) {
+                // Current specimen header — shows what will be moved out
+                HStack(spacing: 8) {
+                    SpecimenSprite(subtype: currentSpecimen.subtype,
+                                  category: currentSpecimen.category,
+                                  size: 32)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(currentSpecimen.creatureName)
+                            .font(.custom("SpaceGrotesk-Bold", size: 14))
+                            .foregroundColor(.white)
+                        Text("Currently in slot \(currentSlot + 1)")
+                            .font(.custom("Inter-Regular", size: 10))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+                    Spacer()
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .foregroundColor(.white.opacity(0.2))
+                }
+                .padding(16)
+                .background(Color.white.opacity(0.03))
+
+                if stasisSpecimens.isEmpty {
+                    VStack(spacing: 8) {
+                        Spacer()
+                        Text("No specimens in stasis")
+                            .font(.custom("Inter-Regular", size: 13))
+                            .foregroundColor(.white.opacity(0.3))
+                        Text("Move specimens to stasis from the param panel to swap later")
+                            .font(.custom("Inter-Regular", size: 10))
+                            .foregroundColor(.white.opacity(0.2))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 40)
+                        Spacer()
+                    }
+                } else {
+                    List(stasisSpecimens) { specimen in
+                        Button(action: { onSwap(specimen.id) }) {
+                            HStack(spacing: 10) {
+                                SpecimenSprite(subtype: specimen.subtype,
+                                              category: specimen.category,
+                                              size: 28)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(specimen.creatureName)
+                                        .font(.custom("SpaceGrotesk-Bold", size: 13))
+                                        .foregroundColor(.white)
+                                    HStack(spacing: 6) {
+                                        Text(specimen.rarity.rawValue.uppercased())
+                                            .font(.custom("JetBrainsMono-Regular", size: 8))
+                                            .foregroundColor(Color(hex: "E9C46A"))
+                                        Text("Lv.\(specimen.level)")
+                                            .font(.custom("JetBrainsMono-Regular", size: 8))
+                                            .foregroundColor(.white.opacity(0.4))
+                                    }
+                                }
+                                Spacer()
+                                Image(systemName: "arrow.right.circle")
+                                    .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                            }
+                            .padding(.vertical, 4)
+                        }
+                        .listRowBackground(Color(hex: "0E0E10"))
+                    }
+                    .listStyle(.plain)
+                }
+            }
+            .background(Color(hex: "0E0E10"))
+            .navigationTitle("Swap Specimen")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: onCancel)
+                }
+            }
+        }
+        .onAppear {
+            stasisSpecimens = reefStore.loadStasisSpecimens()
         }
     }
 }
