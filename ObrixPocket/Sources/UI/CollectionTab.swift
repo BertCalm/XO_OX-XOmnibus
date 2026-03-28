@@ -15,6 +15,7 @@ struct CollectionTab: View {
     @State private var showResetConfirm = false
     @State private var notificationsEnabled = true
     @State private var showStats = false
+    @State private var showHelp = false
     @StateObject private var milestoneManager = MilestoneManager()
 
     @StateObject private var collectionTracker = CollectionTracker()
@@ -259,6 +260,9 @@ struct CollectionTab: View {
             .sheet(isPresented: $showStats) {
                 StatsView()
             }
+            .sheet(isPresented: $showHelp) {
+                HelpView()
+            }
         }
         .navigationViewStyle(.stack)
     }
@@ -269,7 +273,7 @@ struct CollectionTab: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .lastTextBaseline, spacing: 8) {
                 Text("Collection")
-                    .font(.custom("SpaceGrotesk-Bold", size: 20))
+                    .font(.custom("SpaceGrotesk-Bold", size: 20, relativeTo: .title2))
                     .foregroundColor(.white)
                 Spacer()
                 Button(action: { showStats = true }) {
@@ -277,6 +281,7 @@ struct CollectionTab: View {
                         .font(.system(size: 12))
                         .foregroundColor(.white.opacity(0.4))
                 }
+                .accessibilityLabel("Reef Statistics")
                 Button(action: {
                     compareMode.toggle()
                     if !compareMode {
@@ -288,6 +293,7 @@ struct CollectionTab: View {
                         .font(.custom("Inter-Regular", size: 11))
                         .foregroundColor(compareMode ? Color(hex: "FF4D4D") : Color(hex: "1E8B7E").opacity(0.6))
                 }
+                .accessibilityLabel(compareMode ? "Cancel compare" : "Compare specimens")
             }
             HStack(spacing: 12) {
                 // Core count
@@ -633,6 +639,10 @@ struct CollectionTab: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 4)
+            }
+
+            Button(action: { showHelp = true }) {
+                settingsRow(icon: "questionmark.circle", title: "Help & Guide", detail: "\(HelpContent.topics.count) topics")
             }
 
             Button(action: { showResetConfirm = true }) {

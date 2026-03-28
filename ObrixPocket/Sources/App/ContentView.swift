@@ -51,6 +51,8 @@ struct ContentView: View {
                                 .frame(width: 52, height: 52)
                                 .background(musicCatchButtonBackground)
                         }
+                        .accessibilityLabel("Song of the Day")
+                        .accessibilityHint("Catch a specimen from your music library")
                         .opacity(firstLaunchManager.canMusicCatch ? 1.0 : 0.5)
                         .padding(.trailing, 20)
                         .padding(.bottom, 60)

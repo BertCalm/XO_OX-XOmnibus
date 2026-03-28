@@ -100,12 +100,12 @@ struct OnboardingView: View {
 
             // Title
             Text(title)
-                .font(.custom("SpaceGrotesk-Bold", size: 36))
+                .font(.custom("SpaceGrotesk-Bold", size: 36, relativeTo: .title))
                 .foregroundColor(.white)
 
             // Subtitle
             Text(subtitle)
-                .font(.custom("Inter-Regular", size: 16))
+                .font(.custom("Inter-Regular", size: 16, relativeTo: .body))
                 .foregroundColor(.white.opacity(0.5))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)

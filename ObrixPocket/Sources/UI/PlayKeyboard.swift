@@ -492,6 +492,38 @@ final class KeyboardView: UIView {
         arpIndex = 0
     }
 
+    // MARK: Accessibility
+
+    override var isAccessibilityElement: Bool {
+        get { return false }
+        set {}
+    }
+
+    override var accessibilityElements: [Any]? {
+        get {
+            var elements: [UIAccessibilityElement] = []
+            for i in 0..<whiteNoteOffsets.count {
+                let note = startNote + whiteNoteOffsets[i]
+                let element = UIAccessibilityElement(accessibilityContainer: self)
+                element.accessibilityLabel = noteName(note)
+                element.accessibilityTraits = .button
+                if let rect = rectForNote(note) {
+                    element.accessibilityFrame = UIAccessibility.convertToScreenCoordinates(rect, in: self)
+                }
+                elements.append(element)
+            }
+            return elements
+        }
+        set {}
+    }
+
+    private func noteName(_ midiNote: Int) -> String {
+        let names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+        let octave = midiNote / 12 - 1
+        let note = names[midiNote % 12]
+        return "\(note)\(octave)"
+    }
+
     // MARK: Cleanup
 
     /// Release all currently held notes (call when the view disappears).

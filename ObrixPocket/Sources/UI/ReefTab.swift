@@ -399,6 +399,7 @@ struct ReefTab: View {
                             .foregroundColor(octaveOffset > -2 ? .white : .white.opacity(0.2))
                             .frame(width: 28, height: 28)
                     }
+                    .accessibilityLabel("Lower octave")
                     Text("C\(4 + octaveOffset)")
                         .font(.custom("JetBrainsMono-Regular", size: 10))
                         .foregroundColor(.white.opacity(0.5))
@@ -409,6 +410,7 @@ struct ReefTab: View {
                             .foregroundColor(octaveOffset < 2 ? .white : .white.opacity(0.2))
                             .frame(width: 28, height: 28)
                     }
+                    .accessibilityLabel("Higher octave")
                     // Performance mode — fullscreen keyboard
                     Button(action: { showPerformanceMode = true }) {
                         Image(systemName: "arrow.up.left.and.arrow.down.right")

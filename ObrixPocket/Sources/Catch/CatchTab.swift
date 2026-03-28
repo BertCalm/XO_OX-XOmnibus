@@ -762,6 +762,8 @@ struct CatchScreen: View {
                 .animation(lit ? .spring(response: 0.15, dampingFraction: 0.4) : .easeInOut(duration: 0.15), value: lit)
                 .animation(.spring(response: 0.18, dampingFraction: 0.4), value: tapScale)
         }
+        .accessibilityLabel("Pitch button \(idx + 1)")
+        .accessibilityHint(active ? "Tap to play note" : "Waiting for pattern")
         .disabled(!active)
     }
 

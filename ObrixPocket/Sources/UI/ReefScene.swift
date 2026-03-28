@@ -593,6 +593,8 @@ class ReefScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         let delta = lastUpdateTime > 0 ? currentTime - lastUpdateTime : 0
         lastUpdateTime = currentTime
+        // Skip breathing/pulsing animations for users who have enabled Reduce Motion
+        if UIAccessibility.isReduceMotionEnabled { return }
         breathPhase += Float(delta) * 2.0 * .pi * 0.1
         if breathPhase > .pi * 2 { breathPhase -= .pi * 2 }
 
