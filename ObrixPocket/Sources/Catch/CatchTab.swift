@@ -428,13 +428,31 @@ struct CatchScreen: View {
     }
 
     private var scoreIndicator: some View {
-        VStack(spacing: 6) {
+        // Dot size scales with rarity — Rare/Legendary feel more impactful
+        let dotSize: CGFloat = {
+            switch specimen.rarity {
+            case .common:    return 10
+            case .uncommon:  return 12
+            case .rare:      return 14
+            case .legendary: return 16
+            }
+        }()
+        let dotGlow: CGFloat = {
+            switch specimen.rarity {
+            case .common, .uncommon: return 0
+            case .rare:              return 2
+            case .legendary:         return 4
+            }
+        }()
+
+        return VStack(spacing: 6) {
             // Round dots — one per total round
             HStack(spacing: 6) {
                 ForEach(0..<totalRounds, id: \.self) { i in
                     Circle()
                         .fill(roundDotColor(at: i))
-                        .frame(width: 12, height: 12)
+                        .frame(width: dotSize, height: dotSize)
+                        .shadow(color: roundDotColor(at: i).opacity(0.8), radius: dotGlow)
                 }
             }
             // Score text

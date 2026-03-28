@@ -152,11 +152,30 @@ class ReefScene: SKScene {
                     bg.lineWidth = specimen.rarity == .legendary ? 3.0 : (specimen.rarity == .rare ? 2.0 : 1.0)
 
                     if !specimen.isPhantom && specimen.health > 0 {
-                        let glow = SKShapeNode(circleOfRadius: bgRadius * 1.2)
+                        // Glow radius scales with rarity — rarer = bigger halo
+                        let glowRadiusMultiplier: CGFloat = {
+                            switch specimen.rarity {
+                            case .common:    return 1.2
+                            case .uncommon:  return 1.3
+                            case .rare:      return 1.5
+                            case .legendary: return 1.8
+                            }
+                        }()
+                        let glow = SKShapeNode(circleOfRadius: bgRadius * glowRadiusMultiplier)
                         glow.fillColor = color.withAlphaComponent(0.05 * healthAlpha)
                         glow.strokeColor = .clear
                         glow.name = "glow_\(index)"
                         slotNode.addChild(glow)
+
+                        // Legendary: add a second outer bioluminescent aura ring
+                        if specimen.rarity == .legendary {
+                            let outerGlow = SKShapeNode(circleOfRadius: bgRadius * 1.6)
+                            outerGlow.fillColor = color.withAlphaComponent(0.03)
+                            outerGlow.strokeColor = color.withAlphaComponent(0.15)
+                            outerGlow.lineWidth = 0.5
+                            outerGlow.name = "outerGlow_\(index)"
+                            slotNode.addChild(outerGlow)
+                        }
                     }
 
                     slotNode.addChild(bg)
@@ -364,13 +383,29 @@ class ReefScene: SKScene {
         lastUpdateTime = currentTime
         breathPhase += Float(delta) * 2.0 * .pi * 0.1
         if breathPhase > .pi * 2 { breathPhase -= .pi * 2 }
-        let breathScale = 1.0 + sin(breathPhase) * 0.015
 
         for (index, node) in slotNodes.enumerated() {
-            if reefStore.specimens[index] != nil {
-                if let glow = node.childNode(withName: "glow_\(index)") {
-                    glow.setScale(CGFloat(breathScale))
+            guard let specimen = reefStore.specimens[index] else { continue }
+
+            // Breath amplitude scales with rarity — Legendary pulses visibly
+            let rarityBreathAmplitude: Float = {
+                switch specimen.rarity {
+                case .common:    return 0.015
+                case .uncommon:  return 0.025
+                case .rare:      return 0.04
+                case .legendary: return 0.06
                 }
+            }()
+            let breathScale = 1.0 + sin(breathPhase) * rarityBreathAmplitude
+
+            if let glow = node.childNode(withName: "glow_\(index)") {
+                glow.setScale(CGFloat(breathScale))
+            }
+            // Legendary outer glow ring pulses slightly out of phase for shimmer effect
+            if specimen.rarity == .legendary,
+               let outerGlow = node.childNode(withName: "outerGlow_\(index)") {
+                let outerBreath = 1.0 + sin(breathPhase + 0.4) * 0.04
+                outerGlow.setScale(CGFloat(outerBreath))
             }
         }
     }

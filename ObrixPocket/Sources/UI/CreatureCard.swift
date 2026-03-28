@@ -212,10 +212,7 @@ struct CreatureCard: View {
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
 
-            Text(specimen.rarity.rawValue.uppercased())
-                .font(.custom("JetBrainsMono-Regular", size: 10))
-                .foregroundColor(Color(hex: "E9C46A"))
-                .tracking(1.5)
+            rarityBadge
 
             if specimen.cosmeticTier != .standard {
                 CosmeticTierBadge(tier: specimen.cosmeticTier)
@@ -225,6 +222,64 @@ struct CreatureCard: View {
             // Level + XP progress
             LevelProgressView(specimen: specimen, color: color)
                 .padding(.top, 4)
+        }
+    }
+
+    /// Rarity badge — visual weight scales with rarity tier.
+    ///
+    /// - Common: plain white text at 50% opacity (low key)
+    /// - Uncommon: white text with a subtle dark pill background
+    /// - Rare: gold text, slightly larger, with a warm pill background
+    /// - Legendary: gold text with glow shadow, larger font, prominent pill
+    @ViewBuilder
+    private var rarityBadge: some View {
+        switch specimen.rarity {
+        case .common:
+            Text(specimen.rarity.rawValue.uppercased())
+                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .foregroundColor(.white.opacity(0.5))
+                .tracking(1.5)
+
+        case .uncommon:
+            Text(specimen.rarity.rawValue.uppercased())
+                .font(.custom("JetBrainsMono-Regular", size: 10))
+                .foregroundColor(.white.opacity(0.75))
+                .tracking(1.5)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 2)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.white.opacity(0.07))
+                )
+
+        case .rare:
+            Text(specimen.rarity.rawValue.uppercased())
+                .font(.custom("JetBrainsMono-Bold", size: 11))
+                .foregroundColor(Color(hex: "E9C46A"))
+                .tracking(1.5)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 2)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color(hex: "E9C46A").opacity(0.12))
+                )
+
+        case .legendary:
+            Text(specimen.rarity.rawValue.uppercased())
+                .font(.custom("JetBrainsMono-Bold", size: 12))
+                .foregroundColor(Color(hex: "E9C46A"))
+                .tracking(2.0)
+                .shadow(color: Color(hex: "E9C46A").opacity(0.7), radius: 4)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 3)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color(hex: "E9C46A").opacity(0.18))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .strokeBorder(Color(hex: "E9C46A").opacity(0.35), lineWidth: 0.5)
+                        )
+                )
         }
     }
 

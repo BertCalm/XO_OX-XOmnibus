@@ -158,10 +158,13 @@ final class AudioEngineManager: ObservableObject {
             ]
             params.append(("obrix_fx1Type", fxTypeMap[specimen.subtype] ?? 1))
         }
-        // Mapped parameter values
+        // Mapped parameter values — apply rarity multiplier to continuous params
+        let rMult = Self.rarityMultiplier(specimen.rarity)
         for (specimenParam, value) in specimen.parameterState {
             if let mapping = Self.parameterMapping[specimenParam] {
-                params.append((mapping.engineParam, mapping.scale(value)))
+                let scaled = mapping.scale(value)
+                let final = mapping.isContinuous ? (scaled * rMult) : scaled
+                params.append((mapping.engineParam, final))
             }
         }
     }
@@ -207,11 +210,13 @@ final class AudioEngineManager: ObservableObject {
             bridge.setParameterImmediate("obrix_fx1Type", value: engineType)
         }
 
-        // Then: apply all mapped parameter values
+        // Then: apply all mapped parameter values — continuous params are widened by rarity
+        let rMult = Self.rarityMultiplier(specimen.rarity)
         for (specimenParam, value) in specimen.parameterState {
             if let mapping = Self.parameterMapping[specimenParam] {
-                let scaledValue = mapping.scale(value)
-                bridge.setParameterImmediate(mapping.engineParam, value: scaledValue)
+                let scaled = mapping.scale(value)
+                let final = mapping.isContinuous ? (scaled * rMult) : scaled
+                bridge.setParameterImmediate(mapping.engineParam, value: final)
             }
         }
     }
@@ -231,6 +236,29 @@ final class AudioEngineManager: ObservableObject {
     private struct ParamMapping {
         let engineParam: String
         let scale: (Float) -> Float
+        var isContinuous: Bool = true  // false for discrete type selectors
+    }
+
+    // MARK: - Rarity Multipliers
+
+    /// Widens continuous parameter ranges so rarer specimens sound more extreme.
+    private static func rarityMultiplier(_ rarity: SpecimenRarity) -> Float {
+        switch rarity {
+        case .common:    return 1.0   // Standard ranges
+        case .uncommon:  return 1.15  // 15% wider — slightly more interesting
+        case .rare:      return 1.35  // 35% wider — noticeably different
+        case .legendary: return 1.6   // 60% wider — sounds alien
+        }
+    }
+
+    /// XP multiplier — rarer specimens level up faster to reward the harder catch.
+    static func xpMultiplier(_ rarity: SpecimenRarity) -> Float {
+        switch rarity {
+        case .common:    return 1.0
+        case .uncommon:  return 1.25
+        case .rare:      return 1.5
+        case .legendary: return 2.0
+        }
     }
 
     // MARK: - Parameter Cache (T1-03)
@@ -263,7 +291,7 @@ final class AudioEngineManager: ObservableObject {
                 // Engine:   0=off,1=sine,2=saw,3=square,4=tri,5=noise,6=wt,7=pulse,8=driftwood
                 let map: [Int: Float] = [0: 2, 1: 3, 2: 4, 3: 5, 4: 6, 5: 7]
                 return map[Int(v)] ?? 2
-            }),
+            }, isContinuous: false),
         "obrix_src1Tune": ParamMapping(engineParam: "obrix_src1Tune",
             scale: { $0 }), // Both -24 to 24, direct
         "obrix_src1Level": ParamMapping(engineParam: "obrix_srcMix",
@@ -297,7 +325,7 @@ final class AudioEngineManager: ObservableObject {
                 // Specimen: 0=env,1=lfo,2=s&h,3=random → Engine: 0=off,1=env,2=lfo,3=vel,4=at
                 let map: [Int: Float] = [0: 1, 1: 2, 2: 2, 3: 2]
                 return map[Int(v)] ?? 2
-            }),
+            }, isContinuous: false),
 
         // Effects — map to fx slot 1
         "obrix_fx1Mix": ParamMapping(engineParam: "obrix_fx1Mix",
@@ -311,7 +339,7 @@ final class AudioEngineManager: ObservableObject {
                 if v < 0.25 { return 1 } // delay
                 if v < 0.5  { return 2 } // chorus
                 return 3 // reverb
-            }),
+            }, isContinuous: false),
     ]
 
     // MARK: - Note Input (from ReefGrid touch events)
@@ -329,10 +357,12 @@ final class AudioEngineManager: ObservableObject {
     private var noteOnTimestamps: [Int: Date] = [:]
 
     /// Award XP to the specimen in the given slot, checking for level-up.
+    /// Rarer specimens receive a multiplier so they progress faster (reward for harder catch).
     func earnXP(slotIndex: Int, amount: Int) {
         guard let reefStore = reefStoreRef,
               var specimen = reefStore.specimens[slotIndex] else { return }
-        specimen.xp += amount
+        let multiplied = Int((Float(amount) * Self.xpMultiplier(specimen.rarity)).rounded())
+        specimen.xp += multiplied
         let newLevel = SpecimenLeveling.checkLevelUp(xp: specimen.xp)
         if newLevel > specimen.level {
             specimen.level = newLevel
