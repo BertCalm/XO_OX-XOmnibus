@@ -352,7 +352,7 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
             y: self.size.height + size2 + 20
         )
 
-        let body = SKPhysicsBody(ellipseOf: CGSize(width: size2 - 4, height: size2 * 0.75 - 4))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: size2 - 4, height: size2 * 0.75 - 4))
         body.isDynamic          = false
         body.categoryBitMask    = obstacleCategory
         body.contactTestBitMask = playerCategory
