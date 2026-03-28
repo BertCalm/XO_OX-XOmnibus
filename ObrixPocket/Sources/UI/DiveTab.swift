@@ -66,6 +66,24 @@ struct DiveTab: View {
     /// Incremented each time a dive starts; stale note-off closures check this before firing.
     @State private var diveGeneration = 0
 
+    // MARK: - Player Interaction State
+
+    @State private var divePlayerActive = false
+    @State private var divePlayerPitch: Float = 0.5   // 0=low, 1=high
+    @State private var divePlayerVelocity: Float = 0.5
+
+    // Engagement tracking (per-tick frames)
+    @State private var activeFrames = 0
+    @State private var totalFrames = 0
+
+    // Tilt modulation
+    @StateObject private var motionController = MotionController()
+
+    // Dive history & high score
+    @StateObject private var diveHistory = DiveHistoryManager()
+    @State private var isNewHighScore = false
+    @State private var showHistory = false
+
     enum DivePhase {
         case ready      // Before dive
         case diving     // Active dive
@@ -158,6 +176,31 @@ struct DiveTab: View {
             }
             .disabled(totalCount < 4)
             .padding(.horizontal, 40)
+
+            // Dive stats (if any dives completed)
+            if diveHistory.totalDives > 0 {
+                VStack(spacing: 4) {
+                    HStack(spacing: 16) {
+                        statColumn("High Score", value: "\(diveHistory.highScore)")
+                        statColumn("Deepest", value: "\(diveHistory.deepestDive)m")
+                        statColumn("Dives", value: "\(diveHistory.totalDives)")
+                    }
+                }
+                .padding(.horizontal, 40)
+                .padding(.bottom, 8)
+            }
+
+            // History link
+            if !diveHistory.records.isEmpty {
+                Button(action: { showHistory = true }) {
+                    Text("View History")
+                        .font(.custom("Inter-Regular", size: 12))
+                        .foregroundColor(.white.opacity(0.4))
+                }
+            }
+        }
+        .sheet(isPresented: $showHistory) {
+            DiveHistoryList(history: diveHistory)
         }
     }
 
@@ -174,6 +217,18 @@ struct DiveTab: View {
                 .font(.system(size: 10))
                 .foregroundColor(count >= required ? Color(hex: "1E8B7E") : Color(hex: "FF4D4D").opacity(0.5))
         }
+    }
+
+    private func statColumn(_ label: String, value: String) -> some View {
+        VStack(spacing: 2) {
+            Text(value)
+                .font(.custom("JetBrainsMono-Bold", size: 16))
+                .foregroundColor(Color(hex: "1E8B7E"))
+            Text(label)
+                .font(.custom("Inter-Regular", size: 9))
+                .foregroundColor(.white.opacity(0.3))
+        }
+        .frame(maxWidth: .infinity)
     }
 
     // MARK: - Diving
@@ -219,6 +274,61 @@ struct DiveTab: View {
                 .font(.custom("JetBrainsMono-Regular", size: 14))
                 .foregroundColor(.white.opacity(0.5))
 
+            // Touch interaction zone
+            GeometryReader { geo in
+                ZStack {
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .gesture(
+                            DragGesture(minimumDistance: 0)
+                                .onChanged { value in
+                                    // X position → pitch range (left=low, right=high)
+                                    let xNorm = Float(value.location.x / geo.size.width)
+                                    divePlayerPitch = max(0, min(1, xNorm))
+
+                                    // Y position → velocity (top=loud, bottom=soft)
+                                    let yNorm = 1.0 - Float(value.location.y / geo.size.height)
+                                    divePlayerVelocity = max(0, min(1, yNorm))
+
+                                    divePlayerActive = true
+                                }
+                                .onEnded { _ in
+                                    divePlayerActive = false
+                                }
+                        )
+
+                    // Finger cursor
+                    if divePlayerActive {
+                        Circle()
+                            .fill(Color(hex: "1E8B7E"))
+                            .frame(width: 12, height: 12)
+                            .offset(
+                                x: CGFloat(divePlayerPitch - 0.5) * 100,
+                                y: CGFloat(0.5 - divePlayerVelocity) * 60
+                            )
+                    }
+
+                    // Label
+                    VStack(spacing: 2) {
+                        if divePlayerActive {
+                            Text("STEERING")
+                                .font(.custom("JetBrainsMono-Regular", size: 8))
+                                .foregroundColor(Color(hex: "1E8B7E").opacity(0.5))
+                        } else {
+                            Text("TOUCH TO STEER")
+                                .font(.custom("Inter-Regular", size: 9))
+                                .foregroundColor(.white.opacity(0.15))
+                        }
+                    }
+                }
+            }
+            .frame(height: 150)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.white.opacity(divePlayerActive ? 0.04 : 0.02))
+            )
+            .padding(.horizontal, 20)
+
             // Abort button
             Button(action: endDive) {
                 Text("SURFACE")
@@ -231,21 +341,38 @@ struct DiveTab: View {
     // MARK: - Surfacing (Results)
 
     private var surfacingView: some View {
-        VStack(spacing: 16) {
+        let interactionPercent = totalFrames > 0
+            ? Int(Float(activeFrames) / Float(totalFrames) * 100)
+            : 0
+        let interactionBonus = diveScore * interactionPercent / 200  // Up to 50% bonus at 100% engagement
+        let finalScore = diveScore + interactionBonus
+
+        return VStack(spacing: 16) {
             Text("SURFACED")
                 .font(.custom("SpaceGrotesk-Bold", size: 24))
                 .foregroundColor(.white)
 
+            // New high score badge
+            if isNewHighScore {
+                Text("NEW HIGH SCORE!")
+                    .font(.custom("SpaceGrotesk-Bold", size: 16))
+                    .foregroundColor(Color(hex: "E9C46A"))
+                    .padding(.bottom, 4)
+            }
+
             // Final stats
             VStack(spacing: 8) {
                 statRow("Depth reached", value: "\(diveDepth)m")
-                statRow("Score", value: "\(diveScore)")
+                statRow("Base score", value: "\(diveScore)")
+                statRow("Interaction", value: "\(interactionPercent)%")
+                statRow("Interaction Bonus", value: "+\(interactionBonus)")
+                statRow("Final Score", value: "\(finalScore)")
                 statRow("Duration", value: "60s")
             }
             .padding(.horizontal, 40)
 
             // XP reward
-            let xpReward = diveScore / 10
+            let xpReward = finalScore / 10
             Text("+\(xpReward) XP to all reef specimens")
                 .font(.custom("JetBrainsMono-Regular", size: 12))
                 .foregroundColor(Color(hex: "E9C46A"))
@@ -298,6 +425,16 @@ struct DiveTab: View {
         activeNotes = []
         lastZone = .sunlit
 
+        // Reset engagement counters and player state
+        activeFrames = 0
+        totalFrames = 0
+        divePlayerActive = false
+        divePlayerPitch = 0.5
+        divePlayerVelocity = 0.5
+
+        // Start tilt modulation for dive expression
+        motionController.start()
+
         // Compute reef quality bonus from specimen count and coupling wires
         let specimenCount = reefStore.specimens.compactMap { $0 }.count
         let wireCount = reefStore.couplingRoutes.count
@@ -314,6 +451,10 @@ struct DiveTab: View {
             let elapsed = Date().timeIntervalSince(startTime)
             diveProgress = Float(min(elapsed / 60.0, 1.0))
             diveDepth = Int(elapsed * 20) // 20m per second = 1200m max
+
+            // Track engagement frames (10 ticks/sec)
+            totalFrames += 1
+            if divePlayerActive { activeFrames += 1 }
 
             // Detect zone transitions and fire haptic
             let currentZone = DepthZone.at(depth: diveDepth)
@@ -355,23 +496,9 @@ struct DiveTab: View {
             // Re-read zone at the moment the note fires (depth has advanced)
             let currentZone = DepthZone.at(depth: diveDepth)
             let scale = currentZone.scaleIntervals
-            let octave = Int.random(in: currentZone.octaveRange)
             let noteInScale = scale.randomElement() ?? 0
-            let midiNote = octave * 12 + noteInScale
 
-            // Velocity varies by zone (deeper = softer)
-            let velocity: Float
-            switch currentZone {
-            case .sunlit:   velocity = Float.random(in: 0.5...0.9)
-            case .twilight: velocity = Float.random(in: 0.4...0.7)
-            case .midnight: velocity = Float.random(in: 0.3...0.6)
-            case .abyssal:  velocity = Float.random(in: 0.15...0.4)  // Very quiet
-            }
-
-            ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
-            activeNotes.insert(midiNote)
-
-            // Score: more points in deeper zones, scaled by reef quality bonus
+            // Zone multiplier (used for both scoring and player bonus)
             let zoneMultiplier: Int
             switch currentZone {
             case .sunlit:   zoneMultiplier = 1
@@ -379,6 +506,35 @@ struct DiveTab: View {
             case .midnight: zoneMultiplier = 3
             case .abyssal:  zoneMultiplier = 5
             }
+
+            // Octave and velocity: player steers when active, auto-play otherwise
+            let octave: Int
+            let velocity: Float
+            if divePlayerActive {
+                // Player is steering — use their X/Y input
+                let octaveRange = currentZone.octaveRange
+                let octaveSpan = octaveRange.upperBound - octaveRange.lowerBound
+                octave = octaveRange.lowerBound + Int(divePlayerPitch * Float(octaveSpan))
+                velocity = max(0.15, divePlayerVelocity * 0.9)
+
+                // Bonus points for active engagement
+                diveScore += 5 * zoneMultiplier
+            } else {
+                // Auto-play: existing random behavior
+                octave = Int.random(in: currentZone.octaveRange)
+                switch currentZone {
+                case .sunlit:   velocity = Float.random(in: 0.5...0.9)
+                case .twilight: velocity = Float.random(in: 0.4...0.7)
+                case .midnight: velocity = Float.random(in: 0.3...0.6)
+                case .abyssal:  velocity = Float.random(in: 0.15...0.4)
+                }
+            }
+
+            let midiNote = octave * 12 + noteInScale
+            ObrixBridge.shared()?.note(on: Int32(midiNote), velocity: velocity)
+            activeNotes.insert(midiNote)
+
+            // Score: more points in deeper zones, scaled by reef quality bonus
             diveScore += Int(Float(Int.random(in: 5...15) * zoneMultiplier) * reefBonus)
 
             // Note duration varies by zone (deeper = longer, more sustained)
@@ -410,9 +566,33 @@ struct DiveTab: View {
         noteTimer?.invalidate()
         noteTimer = nil
 
+        // Stop tilt modulation
+        motionController.stop()
+
         // All notes off
         ObrixBridge.shared()?.allNotesOff()
         activeNotes.removeAll()
+
+        // Record the dive and check for new high score (check BEFORE recording)
+        let previousHigh = diveHistory.highScore
+        let interactionPct = totalFrames > 0
+            ? Int(Float(activeFrames) / Float(totalFrames) * 100)
+            : 0
+        let interactionBonus = diveScore * interactionPct / 200
+        let finalScore = diveScore + interactionBonus
+        let record = DiveRecord(
+            id: UUID(),
+            date: Date(),
+            maxDepth: diveDepth,
+            score: finalScore,
+            duration: 60,
+            specimenCount: reefStore.specimens.compactMap { $0 }.count,
+            wireCount: reefStore.couplingRoutes.count,
+            deepestZone: DepthZone.at(depth: diveDepth).rawValue
+        )
+        diveHistory.record(record)
+        isNewHighScore = finalScore > previousHigh
+
         divePhase = .surfacing
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
