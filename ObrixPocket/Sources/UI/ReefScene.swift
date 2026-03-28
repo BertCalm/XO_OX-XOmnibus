@@ -152,6 +152,30 @@ class ReefScene: SKScene {
         }
     }
 
+    // MARK: - Spritesheet Helpers
+
+    /// Parse a horizontal spritesheet into individual frame textures (pixel-art nearest-filter).
+    private func parseFrames(from image: UIImage, frameCount: Int) -> [SKTexture] {
+        guard let cgImage = image.cgImage else { return [] }
+        let frameWidth = CGFloat(cgImage.width) / CGFloat(frameCount)
+        let frameHeight = CGFloat(cgImage.height)
+        var frames: [SKTexture] = []
+        for i in 0..<frameCount {
+            let cropRect = CGRect(
+                x: frameWidth * CGFloat(i),
+                y: 0,
+                width: frameWidth,
+                height: frameHeight
+            )
+            if let cropped = cgImage.cropping(to: cropRect) {
+                let texture = SKTexture(cgImage: cropped)
+                texture.filteringMode = .nearest
+                frames.append(texture)
+            }
+        }
+        return frames
+    }
+
     private func buildGrid() {
         removeAllChildren()
         slotNodes.removeAll()
@@ -263,8 +287,30 @@ class ReefScene: SKScene {
 
                     slotNode.addChild(bg)
 
-                    // Creature sprite or text fallback
-                    if let spriteImage = UIImage(named: specimen.subtype) {
+                    // Creature sprite: animated spritesheet preferred, static fallback, then text
+                    let animAssetName = specimen.subtype + "-anim"
+                    if let animSheet = UIImage(named: animAssetName) {
+                        let frames = parseFrames(from: animSheet, frameCount: 4)
+                        if !frames.isEmpty {
+                            let sprite = SKSpriteNode(texture: frames[0])
+                            sprite.size = CGSize(width: bgRadius * 1.2, height: bgRadius * 1.2)
+                            sprite.position = CGPoint(x: 0, y: 4)
+                            if specimen.isPhantom { sprite.alpha = 0.4 }
+                            let animSpeed: TimeInterval = {
+                                switch specimen.subtype {
+                                case "lfo-random":                return 0.15
+                                case "shaper-hard":               return 0.2
+                                case "polyblep-square", "dist-warm": return 0.3
+                                case "feedback":                  return 0.4
+                                case "lfo-sine":                  return 0.5
+                                default:                          return 0.3
+                                }
+                            }()
+                            let animAction = SKAction.animate(with: frames, timePerFrame: animSpeed)
+                            sprite.run(SKAction.repeatForever(animAction))
+                            slotNode.addChild(sprite)
+                        }
+                    } else if let spriteImage = UIImage(named: specimen.subtype) {
                         let texture = SKTexture(image: spriteImage)
                         texture.filteringMode = .nearest
                         let sprite = SKSpriteNode(texture: texture)
@@ -328,6 +374,27 @@ class ReefScene: SKScene {
                 addChild(slotNode)
                 slotNodes.append(slotNode)
             }
+        }
+
+        // Ambient bubbles — rise from occupied slots
+        for (index, slotNode) in slotNodes.enumerated() {
+            guard reefStore.specimens[index] != nil else { continue }
+
+            let emitter = createBubbleEmitter()
+            emitter.position = CGPoint(x: 0, y: -10) // Below the slot
+            emitter.zPosition = -0.5 // Behind specimens but above background
+            emitter.name = "bubbles_\(index)"
+            slotNode.addChild(emitter)
+        }
+
+        // Legendary sparkles
+        for (index, slotNode) in slotNodes.enumerated() {
+            guard let specimen = reefStore.specimens[index], specimen.rarity == .legendary else { continue }
+            let sparkle = createSparkleEmitter(color: categoryColors[specimen.category] ?? .white)
+            sparkle.position = .zero
+            sparkle.zPosition = 2
+            sparkle.name = "sparkles_\(index)"
+            slotNode.addChild(sparkle)
         }
 
         // Draw existing coupling wires
@@ -877,6 +944,19 @@ class ReefScene: SKScene {
             ])
             bg.run(flash)
         }
+
+        // Particle burst on note
+        guard slot < slotNodes.count else { return }
+        let burst = createNoteBurst(color: categoryColors[reefStore.specimens[slot]?.category ?? .source] ?? .white)
+        burst.position = slotNodes[slot].position
+        burst.zPosition = 3
+        addChild(burst)
+
+        // Auto-remove after particles die
+        burst.run(SKAction.sequence([
+            SKAction.wait(forDuration: 1.5),
+            SKAction.removeFromParent()
+        ]))
     }
 
     // MARK: - Hit Testing
@@ -937,5 +1017,116 @@ class ReefScene: SKScene {
         let dx = point.x - target.x
         let dy = point.y - target.y
         return sqrt(dx * dx + dy * dy) < cellSize * 0.45
+    }
+
+    // MARK: - Particle Emitters
+
+    private func createBubbleEmitter() -> SKEmitterNode {
+        let emitter = SKEmitterNode()
+
+        // Bubble particle (small circle)
+        let particleSize: CGFloat = 3
+        let particleImage = UIGraphicsImageRenderer(size: CGSize(width: particleSize * 2, height: particleSize * 2)).image { ctx in
+            UIColor.white.setFill()
+            ctx.cgContext.fillEllipse(in: CGRect(x: 0, y: 0, width: particleSize * 2, height: particleSize * 2))
+        }
+        emitter.particleTexture = SKTexture(image: particleImage)
+
+        // Emission settings — very subtle
+        emitter.particleBirthRate = 0.3        // Very sparse — ~1 bubble every 3 seconds
+        emitter.particleLifetime = 4.0          // Float for 4 seconds
+        emitter.particleLifetimeRange = 2.0
+        emitter.particlePositionRange = CGVector(dx: 20, dy: 5)
+
+        // Movement — float upward
+        emitter.particleSpeed = 8
+        emitter.particleSpeedRange = 4
+        emitter.emissionAngle = .pi / 2  // Straight up
+        emitter.emissionAngleRange = 0.3 // Slight wobble
+
+        // Appearance — starts small transparent, grows slightly
+        emitter.particleAlpha = 0.15
+        emitter.particleAlphaRange = 0.05
+        emitter.particleAlphaSpeed = -0.03  // Fade out
+        emitter.particleScale = 0.5
+        emitter.particleScaleRange = 0.3
+        emitter.particleScaleSpeed = 0.05   // Grow slightly
+
+        // Color — white/teal tint
+        emitter.particleColor = SKColor(red: 0.3, green: 0.7, blue: 0.7, alpha: 1)
+        emitter.particleColorBlendFactor = 0.3
+
+        return emitter
+    }
+
+    private func createSparkleEmitter(color: SKColor) -> SKEmitterNode {
+        let emitter = SKEmitterNode()
+
+        // Star-like particle
+        let size: CGFloat = 4
+        let starImage = UIGraphicsImageRenderer(size: CGSize(width: size, height: size)).image { ctx in
+            UIColor.white.setFill()
+            let path = UIBezierPath()
+            // Simple 4-point star
+            path.move(to: CGPoint(x: size/2, y: 0))
+            path.addLine(to: CGPoint(x: size*0.6, y: size*0.4))
+            path.addLine(to: CGPoint(x: size, y: size/2))
+            path.addLine(to: CGPoint(x: size*0.6, y: size*0.6))
+            path.addLine(to: CGPoint(x: size/2, y: size))
+            path.addLine(to: CGPoint(x: size*0.4, y: size*0.6))
+            path.addLine(to: CGPoint(x: 0, y: size/2))
+            path.addLine(to: CGPoint(x: size*0.4, y: size*0.4))
+            path.close()
+            path.fill()
+        }
+        emitter.particleTexture = SKTexture(image: starImage)
+
+        emitter.particleBirthRate = 1.0
+        emitter.particleLifetime = 1.5
+        emitter.particleLifetimeRange = 0.5
+        emitter.particlePositionRange = CGVector(dx: 30, dy: 30)
+        emitter.particleSpeed = 3
+        emitter.particleSpeedRange = 2
+
+        emitter.particleAlpha = 0.5
+        emitter.particleAlphaSpeed = -0.3
+        emitter.particleScale = 0.3
+        emitter.particleScaleRange = 0.2
+        emitter.particleScaleSpeed = -0.1
+
+        emitter.particleColor = color
+        emitter.particleColorBlendFactor = 1.0
+
+        return emitter
+    }
+
+    private func createNoteBurst(color: SKColor) -> SKEmitterNode {
+        let emitter = SKEmitterNode()
+
+        let size: CGFloat = 3
+        let dotImage = UIGraphicsImageRenderer(size: CGSize(width: size, height: size)).image { ctx in
+            UIColor.white.setFill()
+            ctx.cgContext.fillEllipse(in: CGRect(x: 0, y: 0, width: size, height: size))
+        }
+        emitter.particleTexture = SKTexture(image: dotImage)
+
+        emitter.particleBirthRate = 30   // Burst
+        emitter.numParticlesToEmit = 12  // Limited burst, not continuous
+        emitter.particleLifetime = 0.8
+        emitter.particleLifetimeRange = 0.3
+
+        emitter.particleSpeed = 40
+        emitter.particleSpeedRange = 20
+        emitter.emissionAngleRange = .pi * 2 // All directions
+
+        emitter.particleAlpha = 0.7
+        emitter.particleAlphaSpeed = -0.8
+        emitter.particleScale = 0.4
+        emitter.particleScaleSpeed = -0.3
+
+        emitter.particleColor = color
+        emitter.particleColorBlendFactor = 1.0
+
+        return emitter
     }
 }
