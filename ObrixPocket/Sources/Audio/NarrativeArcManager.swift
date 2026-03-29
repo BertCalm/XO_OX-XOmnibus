@@ -601,6 +601,17 @@ final class NarrativeArcManager: ObservableObject {
             isActRequired: false
         ))
 
+        list.append(NarrativeMilestone(
+            id: "a2_nursery_tutorial",
+            act: .theGrowingReef,
+            type: .firstNote,
+            targetValue: 1,
+            title: "The Nursery Listens",
+            narrativeText: "Your offspring is forming in the Nursery. What it hears during its 24 hours of formation shapes its voice forever. Play music near the Nursery to influence the new voice.",
+            rewardDescription: "Musical imprinting becomes visible in the Microscope.",
+            isActRequired: false
+        ))
+
         // MARK: Act 3 — The Deep Call (Day 31–90)
 
         list.append(NarrativeMilestone(

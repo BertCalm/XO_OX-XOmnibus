@@ -139,6 +139,17 @@ final class DiveComposer {
     // Sprint 62: Voice profiles for active specimens
     var specimenProfiles: [String: VoiceProfile] = [:]  // subtypeID → profile
 
+    /// Bridge to genetics/aging/memory — set before configure() is called.
+    /// When set, voice characteristics are shifted by the specimen's accumulated modifiers.
+    weak var gameCoordinator: GameCoordinator?
+
+    /// Full Specimen objects (set alongside specimenProfiles so the bridge can query by UUID).
+    /// Maps subtypeID → Specimen for the bridge lookup.
+    var activeSpecimens: [String: Specimen] = [:]
+
+    /// Aging manager for LifeStage resolution during configure().
+    weak var specimenAgingManager: SpecimenAgingManager?
+
     // Sprint 63: Arrangement engine
     let arrangement = ArrangementEngine()
 
@@ -184,6 +195,65 @@ final class DiveComposer {
             specimenProfiles[id] = VoiceProfileCatalog.profile(for: id)
         }
 
+        // Apply bridge modifiers to specimen influence properties.
+        //
+        // The bridge returns small additive delta values (genetics + aging-modified genetics
+        // + memory + nursery offsets). Each delta nudges a specific obrix_ parameter key.
+        // We map those parameter deltas to DiveComposer's influence properties additively —
+        // shifting the default (0.5 / 0.3) values rather than replacing them.
+        //
+        // Bridge key → DiveComposer property mapping:
+        //   obrix_flt1Cutoff   → specimenWarmth   (positive delta = brighter = less low bias)
+        //   obrix_env1Attack   → specimenReflexes  (negative attack delta = faster = more reflexes)
+        //   obrix_lfo1Depth    → specimenPulse     (positive depth delta = more rhythm energy)
+        //   obrix_env1Sustain  → specimenStamina   (positive sustain delta = longer notes)
+        //   obrix_src1Tune     → specimenPresence  (any detune = more harmonic spread)
+        //   obrix_flt1Resonance→ specimenGrit      (more resonance = more edge/grit)
+        if let gc = gameCoordinator {
+            for id in specimenSubtypeIDs {
+                guard let specimen = activeSpecimens[id] else { continue }
+                let lifeStage = specimenAgingManager?.stage(
+                    for: activeSpecimenSlotIndex(specimen)
+                ) ?? .adult
+                let playAge = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
+                let mods = gc.effectiveAudioParameters(
+                    specimenId: specimen.id,
+                    subtypeId:  id,
+                    lifeStage:  lifeStage,
+                    playAge:    playAge
+                )
+
+                // Add deltas to the influence properties, clamping to [0, 1].
+                // Scale factor 2.0 converts typical ±0.15 max-influence range to a
+                // perceptible ±0.30 shift in the 0-1 DiveComposer property space.
+                if let cutoffDelta = mods["obrix_flt1Cutoff"] {
+                    specimenWarmth = max(0, min(1, specimenWarmth + cutoffDelta * 2.0))
+                }
+                if let attackDelta = mods["obrix_env1Attack"] {
+                    // Negative attack delta (shorter attack) → higher reflexes
+                    specimenReflexes = max(0, min(1, specimenReflexes - attackDelta * 2.0))
+                }
+                if let lfoDepthDelta = mods["obrix_lfo1Depth"] {
+                    specimenPulse = max(0, min(1, specimenPulse + lfoDepthDelta * 2.0))
+                }
+                if let sustainDelta = mods["obrix_env1Sustain"] {
+                    specimenStamina = max(0, min(1, specimenStamina + sustainDelta * 2.0))
+                }
+                if let tuneDelta = mods["obrix_src1Tune"] {
+                    // tuneDelta in semitones (small, from genetics/aging detuneOffset ~0.02).
+                    // Map to presence: any detune in either direction increases spread.
+                    specimenPresence = max(0, min(1, specimenPresence + abs(tuneDelta) * 5.0))
+                }
+                if let resonanceDelta = mods["obrix_flt1Resonance"] {
+                    specimenGrit = max(0, min(1, specimenGrit + resonanceDelta * 2.0))
+                }
+
+                // Life stage harmonic richness boosts complexity (max wins across specimens)
+                let lifeComplexity = lifeStage.harmonicRichness
+                specimenComplexity = max(specimenComplexity, lifeComplexity * 0.5)
+            }
+        }
+
         // Configure arrangement with the roles
         arrangement.configure(roles: specimenRoles)
 
@@ -191,6 +261,15 @@ final class DiveComposer {
         scoring.setSpecimens(specimenSubtypeIDs.compactMap { id in
             specimenProfiles[id]?.specimenName
         })
+    }
+
+    /// Return the reef slot index for a specimen by scanning activeSpecimens.
+    /// Returns -1 if not found — SpecimenAgingManager will fall back to .adult.
+    private func activeSpecimenSlotIndex(_ specimen: Specimen) -> Int {
+        // Slot index is not directly stored in DiveComposer; if the caller
+        // sets it via activeSpecimens keyed by subtype, we can only check aging
+        // via the aging manager's ages dict. Pass -1 and let the manager default.
+        return -1
     }
 
     // MARK: - Lifecycle

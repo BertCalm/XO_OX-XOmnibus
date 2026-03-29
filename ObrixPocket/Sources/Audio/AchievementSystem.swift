@@ -785,6 +785,36 @@ final class AchievementManager: ObservableObject {
                 reward: AchievementReward(description: "Tide Guide badge on player profile", bonusXP: 25),
                 isSecret: false
             ),
+            Achievement(
+                id: "collab_first",
+                title: "Shared Waters",
+                description: "Complete your first collaborative dive with another player.",
+                category: .social, tier: .silver,
+                requirement: .secretCondition(id: "collab_first"),
+                isCompleted: false, completedDate: nil,
+                reward: AchievementReward(description: "Collaborative dive history unlocked", bonusXP: 25),
+                isSecret: false
+            ),
+            Achievement(
+                id: "collab_ten",
+                title: "Dive Partners",
+                description: "Complete 10 collaborative dives.",
+                category: .social, tier: .gold,
+                requirement: .secretCondition(id: "collab_ten"),
+                isCompleted: false, completedDate: nil,
+                reward: AchievementReward(description: "Partner aura in Dive lobby", bonusXP: 50),
+                isSecret: false
+            ),
+            Achievement(
+                id: "collab_cross_coupling",
+                title: "Cross-Pollination",
+                description: "Discover a cross-player coupling during a collaborative dive.",
+                category: .social, tier: .gold,
+                requirement: .secretCondition(id: "collab_cross_coupling_first"),
+                isCompleted: false, completedDate: nil,
+                reward: AchievementReward(description: "Cross-coupling badge visible in Microscope", bonusXP: 50),
+                isSecret: false
+            ),
         ]
 
         // MARK: Seasonal (4)

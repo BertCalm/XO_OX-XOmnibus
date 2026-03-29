@@ -53,6 +53,17 @@ final class ReefHeartbeat {
     /// Mood drift: slowly shifts the harmonic character over time
     private var moodDriftPhase: Float = 0
 
+    // MARK: - Sound Memory
+
+    /// Sound memory manager — records exposure for active specimens on each tick.
+    /// Set before calling start(). When nil, memory recording is silently skipped.
+    weak var soundMemoryManager: SoundMemoryManager?
+
+    /// Full Specimen objects for the active reef population.
+    /// Set alongside start(specimenSubtypeIDs:) so recordExposure can use stable UUIDs.
+    /// Parallel to `specimenSubtypeIDs` by index, but extra entries are ignored gracefully.
+    var activeSpecimenObjects: [Specimen] = []
+
     // MARK: - Callbacks
 
     var onNoteOn: ((Int, Float) -> Void)?   // (midiNote, velocity)
@@ -89,6 +100,10 @@ final class ReefHeartbeat {
         lastNotes.removeAll()
         activeNotes.removeAll()
         isPlaying = true
+
+        // Note: activeSpecimenObjects is NOT cleared here — the caller sets it before
+        // calling start() and it persists across restarts triggered by updatePopulation().
+        // If the caller didn't set it, memory recording is silently skipped (see tick()).
 
         // Start tick timer at beat resolution
         let beatInterval = 60.0 / currentBPM
@@ -160,6 +175,27 @@ final class ReefHeartbeat {
         if beatCounter % 16 == 0 {
             phraseCounter += 1
             applyMoodDrift()
+        }
+
+        // Record musical exposure for all active specimens on every tick.
+        // tickInterval = one beat duration (seconds). Scale name comes from the
+        // harmonic context's current scale rawValue (matches SoundMemory's expected keys).
+        if let smm = soundMemoryManager, !activeSpecimenObjects.isEmpty {
+            let tickInterval: TimeInterval = 60.0 / currentBPM
+            let scaleName = harmonic.scale.rawValue
+            let register  = ambientOctave(for: .melody)  // Use melody octave as register proxy
+            for specimen in activeSpecimenObjects {
+                let playAge = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
+                smm.recordExposure(
+                    specimenId: specimen.id,
+                    scale:      scaleName,
+                    tempo:      Float(currentBPM),
+                    register:   register,
+                    duration:   tickInterval,
+                    genre:      "ambient",
+                    age:        playAge
+                )
+            }
         }
 
         // Determine if a note should play this beat

@@ -111,6 +111,22 @@ enum ExtendedScale: String, CaseIterable, Codable {
         }
     }
 
+    /// Convert to HarmonicDNA.ScaleType (inverse of harmonicScale).
+    /// Used when building a HarmonicProfile from the manager's current UI state.
+    var asScaleType: ScaleType {
+        switch self {
+        case .major:      return .major
+        case .minor:      return .naturalMinor
+        case .pentatonic: return .pentatonicMajor
+        case .blues:      return .blues
+        case .dorian:     return .dorian
+        case .phrygian:   return .phrygian
+        case .mixolydian: return .mixolydian
+        case .wholeTone:  return .wholeTone
+        case .chromatic:  return .chromatic
+        }
+    }
+
     /// Check if a MIDI note is in this scale for a given key
     func contains(midiNote: Int, key: MusicalKey) -> Bool {
         let semitone = ((midiNote - key.rawValue) % 12 + 12) % 12
@@ -251,13 +267,41 @@ final class ScaleKeyManager: ObservableObject {
 
     // MARK: - Sync with HarmonicContext
 
-    /// Push current state to a HarmonicContext
+    /// Push the manager's current key + scale into a HarmonicContext.
+    /// Call this when the user manually changes key/scale in the UI so the
+    /// live audio engine immediately reflects the new settings.
     func applyTo(_ context: HarmonicContext) {
-        // HarmonicContext uses the same Scale enum, so we convert
-        // Note: HarmonicContext.key is an Int, MusicalKey.rawValue is compatible
-        // The context's key and scale are private(set), so we work through
-        // transitionToZone or init. For manual override we'd need to add a setter.
-        // For now, this method serves as a documentation point for the wiring.
+        // Build a minimal HarmonicProfile that carries the manager's current
+        // key and scale. Use neutral values for the axes we don't know here.
+        let profile = HarmonicProfile(
+            preferredScale: scale.asScaleType,
+            preferredRoot: key.rawValue,
+            intervalAffinity: [],
+            tonalGravity: 0.7,           // Default: reasonably tonal
+            chromaticTolerance: 0.2,
+            harmonicComplexity: 0.3,
+            modalCharacter: scale.harmonicScale.modalCharacter
+        )
+        applyTo(context, profile: profile)
+    }
+
+    /// Apply a blended HarmonicProfile to a HarmonicContext, also updating
+    /// this manager's own key + scale so the UI and keyboard stay in sync.
+    ///
+    /// Call this before each Dive begins (from the wiring system or DiveEngine).
+    func applyTo(_ context: HarmonicContext, profile: HarmonicProfile) {
+        // Derive the live Scale from the genetic ScaleType
+        let liveScale = profile.preferredScale.asScale
+
+        // Update the manager's published state so keyboard/UI stay in sync
+        if let musicalKey = MusicalKey(rawValue: max(0, min(11, profile.preferredRoot))) {
+            key = musicalKey
+        }
+        scale = liveScale.asExtendedScale
+
+        // Delegate the full context configuration (key, scale, progression, reset)
+        // to HarmonicContext — it owns the audio-thread state
+        context.configureFromProfile(profile)
     }
 
     // MARK: - Persistence
@@ -318,6 +362,44 @@ final class ScaleKeyManager: ObservableObject {
             return (0.7, 0.6, 0.9)        // Lavender dream
         case .chromatic:
             return (0.7, 0.7, 0.7)        // Neutral
+        }
+    }
+}
+
+// MARK: - Scale Bridge Extensions
+
+extension Scale {
+    /// Convert HarmonicContext.Scale to ExtendedScale so ScaleKeyManager's
+    /// published `scale` property stays in sync after a profile is applied.
+    var asExtendedScale: ExtendedScale {
+        switch self {
+        case .major:      return .major
+        case .minor:      return .minor
+        case .pentatonic: return .pentatonic
+        case .blues:      return .blues
+        case .dorian:     return .dorian
+        case .phrygian:   return .phrygian
+        case .mixolydian: return .mixolydian
+        case .wholeTone:  return .wholeTone
+        case .chromatic:  return .chromatic
+        }
+    }
+
+    /// Modal brightness used when synthesising a neutral HarmonicProfile
+    /// for the no-profile applyTo overload.
+    /// Mirrors ScaleType.modalBrightness but for the live Scale enum.
+    var modalCharacter: Float {
+        // modalCharacter = 1 − brightness (0 = bright, 1 = dark)
+        switch self {
+        case .major:      return 0.17   // Bright
+        case .mixolydian: return 0.33
+        case .dorian:     return 0.50
+        case .minor:      return 0.67
+        case .phrygian:   return 0.83   // Dark
+        case .pentatonic: return 0.38   // Neutral-leaning bright
+        case .blues:      return 0.65
+        case .wholeTone:  return 0.40   // Ambiguous
+        case .chromatic:  return 0.50   // No modal character
         }
     }
 }

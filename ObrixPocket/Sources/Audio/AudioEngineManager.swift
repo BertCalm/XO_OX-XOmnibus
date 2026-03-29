@@ -13,6 +13,14 @@ final class AudioEngineManager: ObservableObject {
     private var audioSessionConfigured = false
     private let midiOutput = MIDIOutputManager()
 
+    /// Bridge to genetics, aging, memory, and nursery modifiers.
+    /// Set after init by the app entry point once GameCoordinator is available.
+    weak var gameCoordinator: GameCoordinator?
+
+    /// Aging manager — provides LifeStage per slot for bridge queries.
+    /// Set after init alongside gameCoordinator.
+    weak var specimenAgingManager: SpecimenAgingManager?
+
     init() {
         configureAudioSession()
 
@@ -174,11 +182,13 @@ final class AudioEngineManager: ObservableObject {
         }
         // Mapped parameter values — apply rarity multiplier to continuous params
         let rMult = Self.rarityMultiplier(specimen.rarity)
+
+        // Build a mutable param dict for bridge-modifier overlay
+        var paramDict: [String: Float] = [:]
         for (specimenParam, value) in specimen.parameterState {
             if let mapping = Self.parameterMapping[specimenParam] {
                 let scaled = mapping.scale(value)
-                let final = mapping.isContinuous ? (scaled * rMult) : scaled
-                params.append((mapping.engineParam, final))
+                paramDict[mapping.engineParam] = mapping.isContinuous ? (scaled * rMult) : scaled
             }
         }
         // Fill any gaps with catalog defaults so every specimen type's character
@@ -187,11 +197,48 @@ final class AudioEngineManager: ObservableObject {
             for (key, defaultVal) in entry.defaultParams {
                 if !specimen.parameterState.keys.contains(key) {
                     if let mapping = Self.parameterMapping[key] {
-                        params.append((mapping.engineParam, mapping.scale(defaultVal)))
+                        paramDict[mapping.engineParam] = mapping.scale(defaultVal)
                     }
                 }
             }
         }
+
+        // Apply bridge modifiers (genetics + aging + memory + nursery) on top of base params.
+        //
+        // The bridge builds its dict starting from zero: genetics first (additive offsets),
+        // then AgingModifiers.apply (multiplicative on those genetic offsets), then memory
+        // and nursery (more additive offsets). The result is a small delta dict — not
+        // absolute final values.
+        //
+        // Merge strategy: add bridge deltas on top of the catalog-resolved base values.
+        // For keys that AgingModifiers touches (cutoff, resonance, lfoDepth, attack,
+        // release, tune), the aging multiplier was already baked into the bridge value —
+        // so we apply these as additive offsets and trust the bridge for their sign.
+        if let gc = gameCoordinator {
+            let lifeStage = specimenAgingManager?.stage(for: slotIndex(of: specimen)) ?? .adult
+            let playAge   = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
+            let bridgeMods = gc.effectiveAudioParameters(
+                specimenId: specimen.id,
+                subtypeId:  specimen.subtype,
+                lifeStage:  lifeStage,
+                playAge:    playAge
+            )
+            for (key, delta) in bridgeMods {
+                paramDict[key] = (paramDict[key] ?? 0) + delta
+            }
+        }
+
+        // Flatten the dict back into the output array
+        for (engineParam, finalValue) in paramDict {
+            params.append((engineParam, finalValue))
+        }
+    }
+
+    /// Return the reef slot index for a specimen, or -1 if not found.
+    /// Used by collectMappedParams to look up the aging stage.
+    private func slotIndex(of specimen: Specimen) -> Int {
+        guard let rs = reefStoreRef else { return -1 }
+        return rs.specimens.firstIndex(where: { $0?.id == specimen.id }) ?? -1
     }
 
     /// Push a single specimen's parameters to the engine based on its category.
@@ -235,14 +282,36 @@ final class AudioEngineManager: ObservableObject {
             bridge.setParameterImmediate("obrix_fx1Type", value: engineType)
         }
 
-        // Then: apply all mapped parameter values — continuous params are widened by rarity
+        // Then: apply all mapped parameter values — continuous params are widened by rarity.
+        // Build a dict first so bridge modifiers can overlay cleanly.
         let rMult = Self.rarityMultiplier(specimen.rarity)
+        var paramDict: [String: Float] = [:]
         for (specimenParam, value) in specimen.parameterState {
             if let mapping = Self.parameterMapping[specimenParam] {
                 let scaled = mapping.scale(value)
-                let final = mapping.isContinuous ? (scaled * rMult) : scaled
-                bridge.setParameterImmediate(mapping.engineParam, value: final)
+                paramDict[mapping.engineParam] = mapping.isContinuous ? (scaled * rMult) : scaled
             }
+        }
+
+        // Apply bridge modifiers (genetics + aging + memory + nursery) as additive deltas.
+        // See collectMappedParams for full merge-strategy rationale.
+        if let gc = gameCoordinator {
+            let lifeStage = specimenAgingManager?.stage(for: slotIndex(of: specimen)) ?? .adult
+            let playAge   = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
+            let bridgeMods = gc.effectiveAudioParameters(
+                specimenId: specimen.id,
+                subtypeId:  specimen.subtype,
+                lifeStage:  lifeStage,
+                playAge:    playAge
+            )
+            for (key, delta) in bridgeMods {
+                paramDict[key] = (paramDict[key] ?? 0) + delta
+            }
+        }
+
+        // Push all resolved params to the engine
+        for (engineParam, finalValue) in paramDict {
+            bridge.setParameterImmediate(engineParam, value: finalValue)
         }
     }
 

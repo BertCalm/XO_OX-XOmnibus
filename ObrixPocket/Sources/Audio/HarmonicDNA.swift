@@ -631,6 +631,30 @@ final class HarmonicProfileStore: ObservableObject {
     }
 }
 
+// MARK: - ScaleType → Scale Bridge
+
+extension ScaleType {
+    /// Convert to HarmonicContext.Scale (the 9-case live-playback enum).
+    /// ScaleType is the genetic superset; Scale is what the audio engine actually uses.
+    /// Where ScaleType has no direct match, the closest audible approximation is used.
+    var asScale: Scale {
+        switch self {
+        case .major:           return .major
+        case .naturalMinor:    return .minor
+        case .harmonicMinor:   return .minor       // Closest match: natural minor (raised 7th not in Scale enum)
+        case .pentatonicMajor: return .pentatonic
+        case .pentatonicMinor: return .pentatonic  // Both map to the same Scale.pentatonic pool
+        case .blues:           return .blues
+        case .dorian:          return .dorian
+        case .phrygian:        return .phrygian
+        case .mixolydian:      return .mixolydian
+        case .lydian:          return .major       // Lydian ≈ Major + #4; Scale enum has no Lydian case
+        case .wholeTone:       return .wholeTone
+        case .chromatic:       return .chromatic
+        }
+    }
+}
+
 // MARK: - Float Clamping Extension
 
 private extension Float {

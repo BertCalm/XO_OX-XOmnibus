@@ -485,6 +485,61 @@ final class ReefAcousticsManager: ObservableObject {
 
     // MARK: - Audio Parameter Export
 
+    /// Translate the current reef acoustic profile into OBRIX engine parameters.
+    ///
+    /// `getAudioParameters()` returns `reef_*` keys that describe the acoustic state.
+    /// This method converts those into the `obrix_*` parameter IDs that ObrixBridge
+    /// accepts, applying the appropriate normalizations for each engine parameter range.
+    ///
+    /// Parameter mapping rationale:
+    /// - `reef_reverbTime` (0.1–8.0 s) → `obrix_fx1Param` (0–1): reverb decay knob.
+    ///   Normalized to 8s ceiling; values above 8s are clamped to 1.0.
+    /// - `reef_reverbDamping` (0–1) → `obrix_fx1Mix` (0–1): inverted so high damping
+    ///   (dense coral = short HF tail) corresponds to a drier mix.
+    /// - `reef_earlyReflections` (0–1) → combined with roomSize as a secondary
+    ///   contribution to `obrix_fx1Param`; denser reflections push the reverb param up.
+    /// - `reef_waterAbsorption` (0–1) → `obrix_proc1Cutoff` (0–1 pre-scale): higher
+    ///   absorption rolls off high frequencies — maps to a lower cutoff.
+    /// - `reef_depthEffect` (0–1) → further dims `obrix_proc1Cutoff` for deep-water darkness.
+    /// - `reef_ambientLevel` (0–1) → `obrix_mod2Depth` (0–1): ambient motion drives the
+    ///   modulator depth so deeper reefs have more subtle background movement.
+    func getObrixParameters() -> [String: Float] {
+        let p = currentProfile
+        var obrix: [String: Float] = [:]
+
+        // Reverb type: always target FX slot 1 as reverb (type 3 = reverb-hall).
+        // Setting this every time ensures the FX slot is the right type even when
+        // the engine was previously configured with a different FX mode.
+        obrix["obrix_fx1Type"] = 3
+
+        // Reverb decay time → FX1 parameter knob.
+        // Normalize 0.1–8.0 s range to 0–1. Long reverb times produce values near 1.0.
+        obrix["obrix_fx1Param"] = min(1.0, p.reverbTime / 8.0)
+
+        // Reverb damping → FX1 wet mix (inverted).
+        // High damping = coral absorbs sound = shorter effective tail = less wet needed.
+        // Scale to 0.3–0.85 so the reverb is never fully dry or fully wet from reef alone.
+        let baseMix = 1.0 - (p.reverbDamping * 0.55)   // 1.0 → 0.45 as damping increases
+        obrix["obrix_fx1Mix"] = baseMix.clamped(to: 0.3...0.85)
+
+        // Water absorption → processor cutoff (pre-scale 0–1 value; AudioEngineManager
+        // scales 0–1 to 20–20000 Hz via parameterMapping "obrix_flt1Cutoff" → "obrix_proc1Cutoff").
+        // Higher absorption = darker water = lower cutoff.
+        var cutoff: Float = 1.0 - (p.waterAbsorption * 0.60)
+
+        // Depth effect compounds the cutoff reduction for abyssal environments.
+        cutoff *= (1.0 - p.depthEffect * 0.30)
+
+        obrix["obrix_proc1Cutoff"] = cutoff.clamped(to: 0.05...1.0)
+
+        // Ambient level → modulator depth.
+        // Drives subtle ongoing movement in the sound to match reef background noise.
+        // Scaled to 0–0.35 so it never overwhelms the specimen's own modulation.
+        obrix["obrix_mod2Depth"] = (p.ambientLevel * 0.35).clamped(to: 0...0.35)
+
+        return obrix
+    }
+
     /// Returns a flat dictionary of parameter key/value pairs the audio engine consumes.
     /// Keys follow the `obrix_` prefix convention for easy routing to OBRIX parameters.
     func getAudioParameters() -> [String: Float] {

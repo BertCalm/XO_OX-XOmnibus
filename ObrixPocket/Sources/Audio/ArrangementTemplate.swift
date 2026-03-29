@@ -205,6 +205,38 @@ final class ArrangementTemplateManager: ObservableObject {
         return result
     }
 
+    // MARK: - Audio Application Helpers
+
+    /// Returns the volume hint for each slot in the active template.
+    ///
+    /// Keys are slot indices (matching `TemplateSlot.index`); values are the
+    /// suggested relative volume in 0–1 range. Callers should multiply specimen
+    /// output gain by this value, then allow the player to override.
+    ///
+    /// Returns an empty dictionary when no template is active.
+    func getVolumeHints() -> [Int: Float] {
+        guard let template = activeTemplate else { return [:] }
+        var hints: [Int: Float] = [:]
+        for slot in template.slots {
+            hints[slot.index] = slot.volumeHint
+        }
+        return hints
+    }
+
+    /// Returns the suggested wiring pairs from the active template.
+    ///
+    /// Each tuple carries the source slot index, destination slot index, and a
+    /// human-readable reason string explaining why this coupling makes musical sense.
+    /// The UI can surface these as "suggested connections" before the player wires manually.
+    ///
+    /// Returns an empty array when no template is active.
+    func getCouplingHints() -> [(slotA: Int, slotB: Int, reason: String)] {
+        guard let template = activeTemplate else { return [] }
+        return template.couplingHints.map { hint in
+            (slotA: hint.fromSlot, slotB: hint.toSlot, reason: hint.reason)
+        }
+    }
+
     // MARK: - Assign / Unassign
 
     func assign(specimenID: UUID, toSlot slotIndex: Int) {

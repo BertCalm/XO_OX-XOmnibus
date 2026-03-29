@@ -32,20 +32,53 @@ enum SonicTrait: String, CaseIterable, Codable {
         }
     }
 
-    /// Parameter IDs this trait maps to
+    /// Parameter IDs this trait maps to.
+    ///
+    /// Each ID must exist in `AudioEngineManager.parameterMapping` (or be a direct
+    /// OBRIX engine param) so `asParameterModifiers()` can route genes to the engine.
+    ///
+    /// Overlap rule: no two traits may share a parameter ID — the last write wins
+    /// in `asParameterModifiers()` and the earlier gene is silently discarded.
+    /// Previously `envelopeShape` and `attackCharacter` both wrote `obrix_env1Attack`;
+    /// that conflict is resolved below.
     var parameterIDs: [String] {
         switch self {
         case .octaveRange:        return ["obrix_src1Tune"]
         case .waveformAffinity:   return ["obrix_src1Type"]
-        case .rhythmicDensity:    return []  // Affects VoiceProfile, not params
-        case .harmonicPreference: return []  // Affects HarmonicContext scale choice
+
+        // rhythmicDensity: represents note-per-beat density — a VoiceProfile / sequencer
+        // concept with no direct single-knob equivalent in the current OBRIX parameter set.
+        // `obrix_lfo1Rate` is already owned by `vibratoSpeed`; mapping here would create
+        // a silent last-write-wins conflict. Left empty until a gate/arpeggio rate param
+        // is added to AudioEngineManager.parameterMapping.
+        case .rhythmicDensity:    return []
+
+        // harmonicPreference: handled by HarmonicDNA system, not a direct engine param.
+        // Leaving empty prevents phantom parameter writes for a concept that lives above
+        // the parameter layer.
+        case .harmonicPreference: return []
+
+        // envelopeShape: the overall ADSR character — both attack time and decay time.
         case .envelopeShape:      return ["obrix_env1Attack", "obrix_env1Decay"]
+
         case .filterTendency:     return ["obrix_flt1Cutoff"]
         case .modulationDepth:    return ["obrix_lfo1Depth"]
         case .vibratoSpeed:       return ["obrix_lfo1Rate"]
-        case .stereoWidth:        return []  // Affects pan/spread
+
+        // stereoWidth: no fx2 parameter is wired in AudioEngineManager.parameterMapping
+        // (obrix_fx2Type exists but has no mapped param knob yet). Left empty until
+        // a stereo spread parameter is added to the mapping.
+        case .stereoWidth:        return []
+
         case .reverbAffinity:     return ["obrix_fx1Mix"]
-        case .attackCharacter:    return ["obrix_env1Attack"]
+
+        // attackCharacter: distinguishes pluck vs pad vs percussive *feel*, which is
+        // primarily expressed through modulator shape (env mod vs LFO shapes the attack
+        // transient very differently from raw attack time).
+        // Using `obrix_lfo1Shape` → `obrix_mod2Type` keeps this orthogonal to
+        // `envelopeShape` which owns the raw attack/decay time values.
+        case .attackCharacter:    return ["obrix_lfo1Shape"]
+
         case .sustainBehavior:    return ["obrix_env1Sustain", "obrix_env1Release"]
         }
     }
@@ -291,6 +324,19 @@ final class GeneticManager: ObservableObject {
     /// Total unique trait combinations discovered
     var totalDiscoveries: Int {
         discoveryLog.count
+    }
+
+    /// Summary of genetic discoveries for collection UI consumption.
+    /// Returns total discoveries, number of unique expression patterns, and the
+    /// description of the most-mutated discovery (highest mutationCount), if any.
+    var discoveryStats: (total: Int, uniqueTraitCombinations: Int, rarestMutation: String?) {
+        let total = discoveryLog.count
+        let uniqueCombinations = Set(discoveryLog.map { $0.expressionPattern }).count
+        let rarestMutation = discoveryLog
+            .filter { $0.mutationCount > 0 }
+            .max(by: { $0.mutationCount < $1.mutationCount })?
+            .description
+        return (total, uniqueCombinations, rarestMutation)
     }
 
     // MARK: - Helpers

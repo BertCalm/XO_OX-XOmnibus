@@ -293,4 +293,46 @@ final class HarmonicContext {
         // Reset progression position
         reset()
     }
+
+    // MARK: - Profile-Driven Configuration
+
+    /// Configure this context from a blended HarmonicProfile (called before a Dive begins).
+    /// The profile encodes the wired specimen pair's combined harmonic identity — key, scale,
+    /// tonal gravity, and complexity — and this method translates that into live playback state.
+    ///
+    /// Zone transitions can override scale afterwards; call this before `transitionToZone`.
+    func configureFromProfile(_ profile: HarmonicProfile) {
+        // Clamp root to valid pitch-class range
+        key = max(0, min(11, profile.preferredRoot))
+
+        // If tonal gravity is very low (< 0.3) the specimen is an atonal wanderer —
+        // override the genetic scale preference with chromatic for maximum freedom.
+        if profile.tonalGravity < 0.3 {
+            scale = .chromatic
+        } else {
+            scale = profile.preferredScale.asScale
+        }
+
+        // Select a progression compatible with the profile's modal character.
+        // modalCharacter: 0 = bright (Lydian-end), 1 = dark (Phrygian/Locrian-end).
+        // harmonicComplexity: 0 = triadic, 1 = extended/jazz.
+        progression = Self.progressionForProfile(profile)
+
+        // Reset beat position so the new harmonic state takes effect immediately
+        reset()
+    }
+
+    /// Choose a starting chord progression from a HarmonicProfile.
+    /// Internal helper — keeps configureFromProfile readable.
+    private static func progressionForProfile(_ profile: HarmonicProfile) -> ChordProgression {
+        let dark       = profile.modalCharacter        // 0 = bright, 1 = dark
+        let complexity = profile.harmonicComplexity    // 0 = simple, 1 = complex
+
+        switch (dark > 0.6, complexity > 0.5) {
+        case (true,  true):  return .tension          // Dark + complex: modal tension
+        case (true,  false): return .cinematicDark    // Dark + simple: cinematic descend
+        case (false, true):  return .jazzii_V_I       // Bright + complex: jazz ii-V-I
+        case (false, false): return .popBright        // Bright + simple: universal major
+        }
+    }
 }
