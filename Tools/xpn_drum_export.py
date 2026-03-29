@@ -403,6 +403,8 @@ def _layer_block(number: int, vel_start: int, vel_end: int,
                  program_slug: str = "",
                  cycle_type: str = "", cycle_group: int = 0) -> str:
     active = "True" if sample_name else "False"
+    if active == "False":
+        vel_start, vel_end = 0, 0
     # File path: relative from XPN root (Rex's Rule #5)
     file_path = f"Samples/{program_slug}/{sample_file}" if (sample_file and program_slug) else sample_file
     # CycleType/CycleGroup for round-robin (Rex's bible §6)
@@ -718,6 +720,13 @@ def _dna_adapt_velocity_layers(dna: dict) -> list[tuple]:
                       min(adjusted[2] - warmth_nudge, adjusted[3] - min_width))
     adjusted[3] = max(adjusted[2] + min_width,
                       min(adjusted[3] + warmth_nudge, adjusted[4] - min_width))
+
+    # Re-clamp after warmth nudge to maintain ascending invariant (bidirectional)
+    for i in range(1, 4):
+        adjusted[i] = max(adjusted[i], adjusted[i-1] + min_width)
+    for i in range(3, 0, -1):
+        adjusted[i] = min(adjusted[i], adjusted[i + 1] - min_width)
+    adjusted[3] = min(adjusted[3], 126)
 
     # --- Density: compress/expand volume scaling ---
     # Neutral density (0.5) → original volumes. High density compresses toward

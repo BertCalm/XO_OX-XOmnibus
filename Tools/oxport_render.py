@@ -326,12 +326,16 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
             last_program = pc_key
 
         # Calculate total recording duration in seconds
-        rec_seconds = (job["duration_ms"] + job["release_ms"]) / 1000.0
+        rec_seconds = (job["duration_ms"] + job["release_ms"] + 10) / 1000.0  # +10ms for C5 pre-roll
         rec_frames = int(rec_seconds * sample_rate)
 
         # Start recording
         recording = sd.rec(rec_frames, samplerate=sample_rate, channels=2,
                            dtype="float32", device=device_index)
+
+        # C5: Pre-roll gap — ensure recording buffer is fully initialized
+        # before MIDI note arrives at the synth.
+        _precise_wait(0.010)
 
         # Note on
         port.send(mido.Message("note_on", channel=job["channel"],
@@ -357,6 +361,10 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
         elif peak < 0.01:
             print(f"  [LOW LEVEL] {job['filename']} — very quiet signal (peak={peak:.4f})")
 
+        # C6: Inter-sample silence gap — prevent reverb/release tail of
+        # previous sample from bleeding into the next recording.
+        _precise_wait(0.100)  # 100ms gap
+
         # Save WAV (24-bit)
         out_path = os.path.join(output_dir, job["filename"])
         write_wav_24bit(out_path, recording, sample_rate)
@@ -379,7 +387,7 @@ def dry_run(jobs: list[dict], output_dir: str):
     total_ms = 0
     for idx, job in enumerate(jobs):
         dur = job["duration_ms"] + job["release_ms"]
-        total_ms += dur
+        total_ms += dur + 110  # +10ms C5 pre-roll + 100ms C6 inter-sample gap
         print(f"  [{idx + 1:4d}] {job['filename']}  note={job['note']} vel={job['velocity']} dur={dur}ms")
 
     est_secs = total_ms / 1000.0

@@ -13,7 +13,9 @@ The legend: "Every XO_OX pack sits at exactly the same perceived volume."
 
 import json
 import math
+import os
 import struct
+import tempfile
 from pathlib import Path
 from datetime import datetime
 
@@ -36,22 +38,32 @@ def save_ledger(ledger):
     ledger["meta"]["total_samples"] = sum(
         len(samples) for samples in ledger["packs"].values()
     )
-    LEDGER_PATH.write_text(json.dumps(ledger, indent=2))
+    temp_fd, temp_path = tempfile.mkstemp(suffix=".json", dir=str(LEDGER_PATH.parent))
+    os.close(temp_fd)
+    try:
+        Path(temp_path).write_text(json.dumps(ledger, indent=2), encoding="utf-8")
+        os.replace(temp_path, str(LEDGER_PATH))
+    except Exception:
+        try:
+            os.unlink(temp_path)
+        except OSError:
+            pass
+        raise
 
 
-def record_sample(pack_name, sample_name, lufs, true_peak, crest_factor,
+def record_sample(pack_name, sample_name, loudness_db, true_peak, crest_factor,
                   category, engine=None):
     """Record a sample's loudness data after normalization.
 
-    The 'lufs' parameter accepts either a true LUFS value (if pyloudnorm was
-    used upstream) or the RMS dB proxy (20*log10(RMS)). It is stored under
+    The 'loudness_db' parameter accepts either a true LUFS value (if pyloudnorm
+    was used upstream) or the RMS dB proxy (20*log10(RMS)). It is stored under
     the key 'rms_db_proxy' to reflect that this value may not be true LUFS.
     """
     ledger = load_ledger()
     if pack_name not in ledger["packs"]:
         ledger["packs"][pack_name] = {}
     ledger["packs"][pack_name][sample_name] = {
-        "rms_db_proxy": round(lufs, 2),
+        "rms_db_proxy": round(loudness_db, 2),
         "true_peak": round(true_peak, 2),
         "crest": round(crest_factor, 2),
         "category": category,
@@ -72,7 +84,7 @@ def get_fleet_stats():
     return {
         "total_samples": len(all_samples),
         "total_packs": len(ledger["packs"]),
-        "avg_rms_db": sum(s["rms_db_proxy"] for s in all_samples) / len(all_samples),
+        "avg_rms_db": 10 * math.log10(sum(10**(s["rms_db_proxy"]/10) for s in all_samples) / len(all_samples)) if all_samples else float("-inf"),
         "avg_crest": sum(s["crest"] for s in all_samples) / len(all_samples),
         "max_peak": max(s["true_peak"] for s in all_samples),
         "by_category": _stats_by_field(all_samples, "category"),
@@ -91,7 +103,7 @@ def _stats_by_field(samples, field):
     return {
         k: {
             "count": len(v),
-            "avg_rms_db": round(sum(s["rms_db_proxy"] for s in v) / len(v), 2),
+            "avg_rms_db": round(10 * math.log10(sum(10**(s["rms_db_proxy"]/10) for s in v) / len(v)), 2) if v else float("-inf"),
             "avg_crest": round(sum(s["crest"] for s in v) / len(v), 2),
         }
         for k, v in groups.items()

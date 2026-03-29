@@ -1251,7 +1251,7 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
         fmt = f"<{n_samples}h"
         samples = list(struct.unpack(fmt, data[:n_samples * 2]))
         for i in range(n_samples):
-            v = int(samples[i] * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
+            v = round(samples[i] * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
             samples[i] = max(-32768, min(32767, v))
         new_data = struct.pack(fmt, *samples)
     elif bps == 24:
@@ -1263,7 +1263,7 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
             val = b[0] | (b[1] << 8) | (b[2] << 16)
             if val >= 0x800000:
                 val -= 0x1000000
-            val = int(val * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
+            val = round(val * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
             val = max(-8388608, min(8388607, val))
             if val < 0:
                 val += 0x1000000
@@ -1275,11 +1275,11 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
         fmt = f"<{n_samples}i"
         samples = list(struct.unpack(fmt, data[:n_samples * 4]))
         for i in range(n_samples):
-            v = int(samples[i] * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
+            v = round(samples[i] * gain_linear)  # No dither needed at 32-bit (-192 dBFS noise floor)
             samples[i] = max(-2147483648, min(2147483647, v))
         new_data = struct.pack(fmt, *samples)
     else:
-        return  # unsupported bit depth
+        raise ValueError(f"Unsupported bit depth {bps} in {wav_path} — only 16/24/32-bit PCM supported")
 
     # B3: Atomic write — write to temp file then replace, so a crash mid-write
     # never leaves a corrupted or empty source WAV.
@@ -1401,14 +1401,14 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
                         _ledger_record(
                             pack_name=_pack_name,
                             sample_name=wav.name,
-                            lufs=metrics["rms_db_proxy"],
+                            loudness_db=metrics["rms_db_proxy"],
                             true_peak=metrics["true_peak"],
                             crest_factor=metrics["crest_factor"],
                             category=wav.parent.name,
                             engine=engine_name,
                         )
-                except Exception:
-                    pass  # Ledger write failures must never abort normalization
+                except Exception as exc:
+                    print(f"      [WARN] Ledger write failed for {wav.name}: {exc}")
 
     return adjustments
 

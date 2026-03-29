@@ -830,6 +830,121 @@ def test_keygroup_xpm_escapes_special_chars_in_name():
 
 
 # ---------------------------------------------------------------------------
+# B13: Inactive layers must have VelStart=0 and VelEnd=0 in ALL kit modes
+# ---------------------------------------------------------------------------
+
+def test_drum_velstart_zero_all_modes():
+    """Inactive layers must have VelStart=0 and VelEnd=0 in ALL kit modes."""
+    import xml.etree.ElementTree as ET
+    from xpn_drum_export import generate_xpm
+
+    for mode in ["velocity", "cycle", "random", "random-norepeat", "smart"]:
+        xpm = generate_xpm("Test Kit", wav_map={}, kit_mode=mode)
+        root = ET.fromstring(xpm)
+        for layer in root.iter("Layer"):
+            active = layer.find("Active")
+            if active is not None and active.text == "False":
+                vs = layer.find("VelStart")
+                ve = layer.find("VelEnd")
+                if vs is not None:
+                    assert vs.text == "0", (
+                        f"mode={mode}: Inactive layer VelStart='{vs.text}' (expected 0)"
+                    )
+                if ve is not None:
+                    assert ve.text == "0", (
+                        f"mode={mode}: Inactive layer VelEnd='{ve.text}' (expected 0)"
+                    )
+
+
+# ---------------------------------------------------------------------------
+# B14: xpn_loudness_ledger.record_sample uses 'loudness_db' parameter (not old 'lufs')
+# ---------------------------------------------------------------------------
+
+def test_ledger_parameter_renamed():
+    """xpn_loudness_ledger.record_sample must accept 'loudness_db' parameter."""
+    import inspect
+    from xpn_loudness_ledger import record_sample
+    sig = inspect.signature(record_sample)
+    params = list(sig.parameters.keys())
+    assert "loudness_db" in params, (
+        f"record_sample missing 'loudness_db' parameter. Found: {params}"
+    )
+    assert "lufs" not in params, (
+        f"record_sample still has old 'lufs' parameter — should be renamed to 'loudness_db'"
+    )
+
+
+# ---------------------------------------------------------------------------
+# B15: ARTWORK_ENGINES set is populated and contains valid engine keys
+# ---------------------------------------------------------------------------
+
+def test_artwork_engine_set_not_empty():
+    """ARTWORK_ENGINES must be a non-empty set of string engine keys."""
+    from oxport import ARTWORK_ENGINES
+    assert isinstance(ARTWORK_ENGINES, set), "ARTWORK_ENGINES must be a set"
+    assert len(ARTWORK_ENGINES) > 0, "ARTWORK_ENGINES must not be empty"
+    for eng in ARTWORK_ENGINES:
+        assert isinstance(eng, str), f"ARTWORK_ENGINES contains non-string: {eng}"
+        assert eng.startswith("XO") or eng.startswith("Xo"), (
+            f"ARTWORK_ENGINES entry '{eng}' doesn't follow XO naming convention"
+        )
+
+
+# ---------------------------------------------------------------------------
+# B16: DNA velocity layers — extreme value stress test
+# ---------------------------------------------------------------------------
+
+def test_dna_velocity_extreme_values_never_produce_invalid_bands():
+    """Exhaustive sweep of extreme DNA combos must never produce:
+    - Inverted bands (start > end)
+    - Gaps between adjacent bands
+    - Bands outside [1, 127]
+    """
+    from xpn_drum_export import _dna_adapt_velocity_layers
+
+    # Sweep all corners of the 3D DNA cube (aggression, warmth, density)
+    extremes = [0.0, 0.25, 0.5, 0.75, 1.0]
+    failures = []
+    for aggr in extremes:
+        for warmth in extremes:
+            for density in extremes:
+                dna = {
+                    "brightness": 0.5, "warmth": warmth, "movement": 0.5,
+                    "density": density, "space": 0.5, "aggression": aggr,
+                }
+                layers = _dna_adapt_velocity_layers(dna)
+                # Check 4 layers returned
+                if len(layers) != 4:
+                    failures.append(f"a={aggr},w={warmth},d={density}: got {len(layers)} layers")
+                    continue
+                # Check no inverted bands
+                for i, (vs, ve, _) in enumerate(layers):
+                    if vs > ve:
+                        failures.append(
+                            f"a={aggr},w={warmth},d={density}: layer {i} inverted [{vs},{ve}]"
+                        )
+                # Check contiguity
+                for i in range(1, len(layers)):
+                    prev_end = layers[i - 1][1]
+                    curr_start = layers[i][0]
+                    if curr_start != prev_end + 1:
+                        failures.append(
+                            f"a={aggr},w={warmth},d={density}: gap at layer {i} "
+                            f"(prev end={prev_end}, curr start={curr_start})"
+                        )
+                # Check boundaries
+                if layers[0][0] != 1:
+                    failures.append(
+                        f"a={aggr},w={warmth},d={density}: first start={layers[0][0]}, expected 1"
+                    )
+                if layers[-1][1] != 127:
+                    failures.append(
+                        f"a={aggr},w={warmth},d={density}: last end={layers[-1][1]}, expected 127"
+                    )
+    assert not failures, f"{len(failures)} failure(s):\n" + "\n".join(failures[:10])
+
+
+# ---------------------------------------------------------------------------
 # Test runner (same pattern as test_oxport_core.py)
 # ---------------------------------------------------------------------------
 
@@ -869,6 +984,10 @@ if __name__ == "__main__":
         test_complement_chain_skips_non_artwork_engine,
         test_drum_xpm_escapes_special_chars_in_name,
         test_keygroup_xpm_escapes_special_chars_in_name,
+        test_drum_velstart_zero_all_modes,
+        test_ledger_parameter_renamed,
+        test_artwork_engine_set_not_empty,
+        test_dna_velocity_extreme_values_never_produce_invalid_bands,
     ]
     passed = 0
     failed = 0
