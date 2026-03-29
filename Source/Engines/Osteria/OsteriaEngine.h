@@ -728,6 +728,8 @@ public:
         float effectiveMemory  = clamp (pMemory + macroCoupling * 0.5f, 0.0f, 1.0f);
 
         // M4 SPACE: At 0 = open air. At 1 = deep inside the pub (warm, intimate, sheltered).
+        // effectiveBleed scales how much external coupling audio (AudioToFM) bleeds through
+        // the tavern walls into the FDN reverb input — ocean turbulence reaching the shore.
         float effectiveTavern  = clamp (pTavernMix + macroSpace * 0.6f, 0.0f, 1.0f);
         float effectiveHall    = clamp (pHall + macroSpace * 0.5f, 0.0f, 1.0f);
         float effectiveBleed   = clamp (pOceanBleed + macroSpace * 0.5f, 0.0f, 1.0f);
@@ -822,13 +824,18 @@ public:
         couplingExcitationMod = 0.0f;
         float elasticMod = couplingElasticMod;
         couplingElasticMod = 0.0f;
-        float roomExcitation = couplingRoomExcitation;
+        // roomExcitation: AudioToFM coupling input (e.g. OSPREY ocean turbulence) bleeds
+        // through the tavern walls into the FDN reverb. Scaled by effectiveBleed so the
+        // Ocean Bleed parameter and M4 SPACE macro control how much ocean reaches the room.
+        float roomExcitation = couplingRoomExcitation * effectiveBleed;
         couplingRoomExcitation = 0.0f;
 
         // Effective elastic with coupling modulation
         effectiveElastic = clamp (effectiveElastic + elasticMod * 0.3f, 0.0f, 1.0f);
 
-        // Glide coefficient
+        // Glide coefficient — 1.0 = instant pitch change (no portamento).
+        // Assigned to each voice's glideCoeff so the per-voice pitch smoother
+        // uses the current block value rather than whatever was set at note-on.
         float glideCoeff = 1.0f;
 
         // --- Process MIDI ---
@@ -880,6 +887,13 @@ public:
             precomputedPanL[c] = std::cos (panAngle);
             precomputedPanR[c] = std::sin (panAngle);
         }
+
+        // BUG 3 fix: propagate block-scope glideCoeff to each active voice so the
+        // per-voice pitch smoother (voice.currentTargetFreq lerp) uses the current
+        // block value. glideCoeff = 1.0 here means instant pitch changes; a future
+        // portamento parameter can replace the constant without changing the wiring.
+        for (auto& voice : voices)
+            if (voice.active) voice.glideCoeff = glideCoeff;
 
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
@@ -1248,7 +1262,24 @@ public:
             mixR = warmthFilter.processSample (mixR);
 
             // --- Tavern room (FDN reverb) ---
+            // BUG 2 fix: inject roomExcitation into the reverb input so that
+            // AudioToFM coupling (e.g. OSPREY ocean turbulence) bleeds through
+            // the tavern walls and excites the FDN. effectiveBleed (already
+            // factored into roomExcitation above) controls how much ocean
+            // energy reaches the room.
+            //
+            // processSample() formula: out = dry + wetTail * mix
+            // (TavernRoom::processSample writes: inL = lerp(inL, inL+wetL, mix)
+            //  which expands to inL + wetL*mix — dry passes through in full).
+            // To emit only the reverb-wet tail of the excitation (not its dry
+            // copy), we: (1) add excBleed to the input, (2) run the FDN,
+            // (3) subtract excBleed back out, leaving only excBleed*wetL*mix.
+            float excBleed = roomExcitation;
+            mixL += excBleed;
+            mixR += excBleed;
             tavernRoom.processSample (mixL, mixR, effectiveTavern);
+            mixL -= excBleed;   // remove dry pass-through; reverb tail remains
+            mixR -= excBleed;
 
             // --- Murmur (crowd texture) ---
             if (pMurmur > 0.001f)

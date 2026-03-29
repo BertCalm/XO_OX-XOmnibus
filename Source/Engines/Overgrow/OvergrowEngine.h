@@ -426,7 +426,8 @@ public:
             + pBrightness * 8000.0f + couplingFilterMod
             + aftertouchAmount * 3000.0f, 200.0f, 20000.0f);
         float effectiveWildness = std::clamp (pWildness + macroMove * 0.3f
-            + accumulators.A * 0.3f, 0.0f, 1.0f);
+            + accumulators.A * 0.3f + macroCoupl * 0.3f, 0.0f, 1.0f);  // M3 COUPLING: coupling energy feeds wildness/runner density
+        const float effectiveWidth = 1.0f + macroSpace * 0.6f;  // M4 SPACE: stereo expansion
 
         smoothCutoff.set (effectiveCutoff);
         smoothWildness.set (effectiveWildness);
@@ -519,7 +520,7 @@ public:
                 float fCut = std::clamp (cutNow + envLevel * pFilterEnvAmt * 5000.0f
                                         + l1 * 3000.0f, 200.0f, 20000.0f);
                 voice.filter.setMode (CytomicSVF::Mode::LowPass);
-                voice.filter.setCoefficients (fCut, pResonance, srf);
+                voice.filter.setCoefficients (fCut, std::clamp (pResonance + l2 * 0.15f, 0.0f, 1.0f), srf);  // l2 → resonance shimmer
                 float filtered = voice.filter.processSample (stringOut + runnerOut);
 
                 // Amp envelope
@@ -546,10 +547,13 @@ public:
                 mixR += output * voice.panR;
             }
 
-            outL[s] = mixL;
-            if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // M4 SPACE: mid/side width expansion
+            const float mid  = (mixL + mixR) * 0.5f;
+            const float side = (mixL - mixR) * 0.5f * effectiveWidth;
+            outL[s] = mid + side;
+            if (outR) outR[s] = mid - side;
+            couplingCacheL = outL[s];
+            couplingCacheR = outR ? outR[s] : mixR;
         }
 
         // Silence response: track how long the engine has been silent.

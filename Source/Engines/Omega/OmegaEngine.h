@@ -79,7 +79,7 @@ struct OmegaFMOperator
 
         // Self-feedback
         float feedbackSample = out * feedback;
-        lastOutput = out;
+        lastOutput = feedbackSample;
 
         phase += phaseInc;
         if (phase >= 1.0f) phase -= 1.0f;
@@ -306,8 +306,6 @@ public:
         const float pSustain    = loadP (paramSustain, 0.7f);
         const float pRelease    = loadP (paramRelease, 0.2f);
         const float pFiltEnvAmt = loadP (paramFilterEnvAmount, 0.4f);
-        const float pFiltAttack = loadP (paramFilterAttack, 0.001f);
-        const float pFiltDecay  = loadP (paramFilterDecay, 0.3f);
         const float pBendRange  = loadP (paramBendRange, 2.0f);
         const float pGravity    = loadP (paramGravity, 0.5f);
 

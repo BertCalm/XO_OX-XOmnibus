@@ -321,7 +321,9 @@ public:
             + pBrightness * 6000.0f + couplingFilterMod,
             200.0f, 20000.0f);
         float effectiveDetune = pDetune + macroMove * 10.0f + aggrHarsh * 5.0f;
-        float effectiveFormant = std::clamp (pFormant + macroChar * 0.3f + couplingFormantMod, 0.0f, 1.0f);
+        float effectiveFormant = std::clamp (pFormant + macroChar * 0.3f + couplingFormantMod
+            + macroCoupl * 0.25f, 0.0f, 1.0f);  // M3 COUPLING: deeper formant resonance
+        const float effectiveWidth = 1.0f + macroSpace * 0.6f;  // M4 SPACE: stereo expansion
 
         smoothCutoff.set (effectiveCutoff);
         smoothDetune.set (effectiveDetune);
@@ -468,7 +470,7 @@ public:
                                         + l1 * 3000.0f + aftertouchAmount * 3000.0f,
                                         200.0f, 20000.0f);
                 voice.filter.setMode (CytomicSVF::Mode::LowPass);
-                voice.filter.setCoefficients (fCut, pResonance, srf);
+                voice.filter.setCoefficients (fCut, std::clamp (pResonance + l2 * 0.15f, 0.0f, 1.0f), srf);  // l2 → resonance shimmer
                 float filtered = voice.filter.processSample (blended + dormNoise);
 
                 // Amplitude envelope
@@ -493,10 +495,13 @@ public:
                 mixR += output * voice.panR;
             }
 
-            outL[s] = mixL;
-            if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // M4 SPACE: mid/side width expansion
+            const float mid  = (mixL + mixR) * 0.5f;
+            const float side = (mixL - mixR) * 0.5f * effectiveWidth;
+            outL[s] = mid + side;
+            if (outR) outR[s] = mid - side;
+            couplingCacheL = outL[s];
+            couplingCacheR = outR ? outR[s] : mixR;
         }
 
         int count = 0;

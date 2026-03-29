@@ -280,9 +280,10 @@ struct OlegBuzzBridge
 struct OlegReedOscillator
 {
     // PolyBLEP oscillators for anti-aliased sawtooth and square waveforms.
-    // Bayan uses saw1/saw2, Garmon uses sq1/sq2, HurdyGurdy melody is saw1.
+    // Bayan uses saw1/saw2/saw3 (three-oscillator unison), Garmon uses sq1/sq2/saw1,
+    // HurdyGurdy melody is saw1.
     // Drone strings remain as naive phase accumulators (sub-Nyquist at their pitch).
-    PolyBLEP saw1, saw2, sq1, sq2;
+    PolyBLEP saw1, saw2, saw3, sq1, sq2;
 
     void reset() noexcept
     {
@@ -291,7 +292,7 @@ struct OlegReedOscillator
         phase3 = 0.0f;
         drone1Phase = 0.0f;
         drone2Phase = 0.0f;
-        saw1.reset(); saw2.reset();
+        saw1.reset(); saw2.reset(); saw3.reset();
         sq1.reset();  sq2.reset();
     }
 
@@ -318,14 +319,19 @@ struct OlegReedOscillator
         {
             case OlegOrganModel::Bayan:
             {
-                // Rich saw + asymmetric pulse mix, 2 detuned oscillators.
+                // Rich saw + asymmetric pulse mix, 3-oscillator unison:
+                //   saw1 = fundamental, saw2 = detuned up (+detune cents),
+                //   saw3 = detuned down (−detune cents, i.e. freq / detuneFactor).
                 // PolyBLEP anti-aliased sawtooth fixes aliasing above A4-A5.
                 saw1.setWaveform (PolyBLEP::Waveform::Saw);
                 saw2.setWaveform (PolyBLEP::Waveform::Saw);
+                saw3.setWaveform (PolyBLEP::Waveform::Saw);
                 saw1.setFrequency (freq, sampleRate);
                 saw2.setFrequency (freq * detuneFactor, sampleRate);
+                saw3.setFrequency (freq / detuneFactor, sampleRate);
                 float sawOut1 = saw1.processSample();
                 float sawOut2 = saw2.processSample();
+                float sawOut3 = saw3.processSample();
 
                 // Pulse component (reed opening/closing asymmetry).
                 // Naive phase accumulator is acceptable here — it provides a low-level
@@ -334,7 +340,11 @@ struct OlegReedOscillator
                 if (phase1 >= 1.0f) phase1 -= 1.0f;
                 float pulse1 = (phase1 < 0.45f) ? 1.0f : -1.0f; // asymmetric reed gate
 
-                out = sawOut1 * 0.4f + sawOut2 * 0.3f + pulse1 * 0.3f;
+                // Advance phase3 with inc3 (opposite-detune oscillator).
+                phase3 += inc3;
+                if (phase3 >= 1.0f) phase3 -= 1.0f;
+
+                out = sawOut1 * 0.35f + sawOut2 * 0.25f + sawOut3 * 0.25f + pulse1 * 0.15f;
                 break;
             }
 
@@ -774,25 +784,21 @@ public:
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
-        // Model-specific formant frequencies (reed/string resonance character)
-        // These shape the tonal character of each organ model
-        float formantFreqBase = 800.0f;
+        // Model-specific formant Q (reed/string resonance character, block-rate — no smoother for Q).
+        // Formant frequency is computed per-sample inside the loop using smoothFormant.process()
+        // (formantNow) so that parameter changes are zipper-free.
         float formantQ = 1.0f;
         switch (pOrgan) {
             case OlegOrganModel::Bayan:
-                formantFreqBase = 600.0f + effectiveFormant * 2400.0f; // 600-3000 Hz (cassotto shapes this)
                 formantQ = 0.8f + effectiveFormant * 0.6f;
                 break;
             case OlegOrganModel::HurdyGurdy:
-                formantFreqBase = 400.0f + effectiveFormant * 1600.0f; // 400-2000 Hz (wooden body)
                 formantQ = 1.0f + effectiveFormant * 1.0f;
                 break;
             case OlegOrganModel::Bandoneon:
-                formantFreqBase = 500.0f + effectiveFormant * 2500.0f; // 500-3000 Hz (metal reed chamber)
                 formantQ = 0.6f + effectiveFormant * 0.8f;
                 break;
             case OlegOrganModel::Garmon:
-                formantFreqBase = 350.0f + effectiveFormant * 1650.0f; // 350-2000 Hz (raw, open box)
                 formantQ = 0.5f + effectiveFormant * 1.5f; // more resonant for folk character
                 break;
         }
@@ -870,9 +876,11 @@ public:
                         // Cassotto resonance chamber
                         processed = voice.cassotto.process (raw, effectiveCasDepth);
 
-                        // Formant filter: Bayan has a warm, rounded resonance
+                        // Formant filter: Bayan has a warm, rounded resonance.
+                        // formantNow is the per-sample smoothed formant parameter — use it
+                        // directly so the smoother actually drives the coefficient each sample.
                         voice.formantFilter.setMode (CytomicSVF::Mode::Peak);
-                        voice.formantFilter.setCoefficients (formantFreqBase, formantQ, srf);
+                        voice.formantFilter.setCoefficients (600.0f + formantNow * 2400.0f, formantQ, srf);
                         processed = raw * 0.6f + voice.formantFilter.processSample (processed) * 0.4f;
                         break;
                     }
@@ -884,9 +892,10 @@ public:
                         processed = voice.buzzBridge.process (raw, buzzNow,
                             voice.pressure, pBuzzThreshold);
 
-                        // Wooden body resonance (formant)
+                        // Wooden body resonance (formant).
+                        // formantNow is the per-sample smoothed formant parameter.
                         voice.formantFilter.setMode (CytomicSVF::Mode::Peak);
-                        voice.formantFilter.setCoefficients (formantFreqBase, formantQ, srf);
+                        voice.formantFilter.setCoefficients (400.0f + formantNow * 1600.0f, formantQ, srf);
                         processed = processed * 0.7f + voice.formantFilter.processSample (processed) * 0.3f;
                         break;
                     }
@@ -897,9 +906,10 @@ public:
                         float warmSat = fastTanh (processed * (1.0f + buzzNow * 2.0f));
                         processed = processed * (1.0f - buzzNow * 0.5f) + warmSat * buzzNow * 0.5f;
 
-                        // Reed chamber resonance
+                        // Reed chamber resonance.
+                        // formantNow is the per-sample smoothed formant parameter.
                         voice.formantFilter.setMode (CytomicSVF::Mode::Peak);
-                        voice.formantFilter.setCoefficients (formantFreqBase, formantQ, srf);
+                        voice.formantFilter.setCoefficients (500.0f + formantNow * 2500.0f, formantQ, srf);
                         processed = processed * 0.65f + voice.formantFilter.processSample (processed) * 0.35f;
                         break;
                     }
@@ -910,9 +920,10 @@ public:
                         float rawBuzz = softClip (processed * (1.5f + buzzNow * 4.0f));
                         processed = processed * (1.0f - buzzNow * 0.6f) + rawBuzz * buzzNow * 0.6f;
 
-                        // Open box resonance (narrower, more colored)
+                        // Open box resonance (narrower, more colored).
+                        // formantNow is the per-sample smoothed formant parameter.
                         voice.formantFilter.setMode (CytomicSVF::Mode::BandPass);
-                        voice.formantFilter.setCoefficients (formantFreqBase, formantQ, srf);
+                        voice.formantFilter.setCoefficients (350.0f + formantNow * 1650.0f, formantQ, srf);
                         processed = processed * 0.5f + voice.formantFilter.processSample (processed) * 0.5f;
                         break;
                     }

@@ -670,9 +670,13 @@ public:
                         modeFreq *= fastPow2 (crackShift / 1200.0f);
                     }
 
-                    // Q: instrument-dependent base, reduced by damping
+                    // Q: instrument-dependent base, reduced by damping, scaled by fragility.
+                    // fragilityNow is the per-sample smoothed value (drains smoothFragility),
+                    // giving smooth parameter transitions instead of block-rate stepping.
+                    // High fragility → higher Q (brittle glass rings longer before losing energy).
                     float modeQ = baseQ / (1.0f + static_cast<float> (m) * 0.15f);
                     modeQ *= (1.0f - dampNow * 0.8f);
+                    modeQ *= (1.0f + fragilityNow * 1.5f);  // fragility: 1.0x (low) → 2.5x (high)
 
                     // Crack reduces Q on upper modes (broken glass rings less purely)
                     if (voice.cracked)

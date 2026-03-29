@@ -1377,6 +1377,7 @@ public:
         const float fxEchoTime       = safeLoadF (pFxEchoTime,    0.3f);
         const float fxEchoFeedback   = safeLoadF (pFxEchoFeedback,0.3f);
         const float fxEchoMix        = safeLoadF (pFxEchoMix,     0.0f);
+        const bool  fxEchoSync       = safeLoad  (pFxEchoSync,    0) > 0;
         // FX: Space (5 params)
         const int   fxSpaceType      = safeLoad  (pFxSpaceType,   0);
         const float fxSpaceSize      = safeLoadF (pFxSpaceSize,   0.3f);
@@ -1896,7 +1897,24 @@ public:
 
             const float effMotionRate  = clamp (fxMotionRate  + fxMmMotionRate,  0.01f, 10.0f);
             const float effMotionDepth = clamp (fxMotionDepth + fxMmMotionDepth, 0.0f,  1.0f);
-            const float effEchoTime    = clamp (fxEchoTime    + fxMmEchoTime,    0.01f, 2.0f);
+            // Echo Sync: when On, snap delay time to the nearest 120 BPM subdivision.
+            // Uses the same subdivision table as LFO sync (1/16=0.125s through 1bar=2.0s)
+            // so a delay set at 0.5s in free mode lands cleanly on 1/4 note when synced.
+            const float rawEchoTime    = clamp (fxEchoTime + fxMmEchoTime, 0.01f, 2.0f);
+            const float effEchoTime    = [&]() -> float {
+                if (!fxEchoSync) return rawEchoTime;
+                // Subdivisions at 120 BPM: 1/16=0.125s, 1/8=0.25s, 1/4=0.5s, 1/2=1.0s, 1bar=2.0s
+                constexpr float kEchoSubs[] = { 0.125f, 0.25f, 0.5f, 1.0f, 2.0f };
+                constexpr int kNSubs = 5;
+                float best = kEchoSubs[0];
+                float bestDist = std::abs (rawEchoTime - kEchoSubs[0]);
+                for (int i = 1; i < kNSubs; ++i)
+                {
+                    float d = std::abs (rawEchoTime - kEchoSubs[i]);
+                    if (d < bestDist) { bestDist = d; best = kEchoSubs[i]; }
+                }
+                return best;
+            }();
             const float effEchoFB      = clamp (fxEchoFeedback + fxMmEchoFB,    0.0f,  0.95f);
             const float effSpaceSize   = clamp (fxSpaceSize   + fxMmSpaceSize,   0.0f,  1.0f);
             const float effSpaceDecay  = clamp (fxSpaceDecay  + fxMmSpaceDecay,  0.1f,  20.0f);

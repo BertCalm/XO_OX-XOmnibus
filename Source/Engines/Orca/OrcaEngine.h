@@ -391,7 +391,7 @@ public:
         // through metallic partials to complex vocal textures (D006 compliance)
         float effectiveWTPos   = clamp (pWTPos + couplingWTPosMod + macroMove * 0.3f + modWheelAmount_ * 0.5f, 0.0f, 1.0f);
         float effectiveEchoRate = clamp (pEchoRate + couplingEchoRateMod * 10.0f + macroMove * 5.0f, 0.5f, 40.0f);
-        float effectiveEchoMix = clamp (pEchoMix + macroCoup * 0.4f, 0.0f, 1.0f);
+        float effectiveEchoMix = clamp (pEchoMix + macroCoup * 0.4f + macroSpace * 0.5f, 0.0f, 1.0f);
 
         // Reset coupling accumulators
         couplingWTPosMod = 0.0f;

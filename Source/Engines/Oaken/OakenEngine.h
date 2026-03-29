@@ -526,11 +526,11 @@ public:
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
-        // LFO params
-        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f);
+        // LFO params — macroMove speeds both LFOs for more organic bowing movement
+        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f)  * (1.0f + macroMove * 2.0f);
         const float lfo1Depth = loadP (paramLfo1Depth, 0.0f);
         const int   lfo1Shape = static_cast<int> (loadP (paramLfo1Shape, 0.0f));
-        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f);
+        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f)  * (1.0f + macroMove * 2.0f);
         const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
         const int   lfo2Shape = static_cast<int> (loadP (paramLfo2Shape, 0.0f));
 
@@ -621,8 +621,10 @@ public:
 
             outL[s] = mixL;
             if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // macroCoup scales coupling output: higher coupling macro = stronger cross-engine signal
+            const float coupGain = 1.0f + macroCoup * 1.5f;
+            couplingCacheL = mixL * coupGain;
+            couplingCacheR = mixR * coupGain;
         }
 
         int count = 0;

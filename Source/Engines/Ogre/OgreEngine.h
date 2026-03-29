@@ -286,13 +286,14 @@ public:
         // Soil filter character: clay=LP resonant, sandy=wider, rocky=HP blend
         // Maps pSoil [0=clay, 0.5=sandy, 1.0=rocky]
 
-        // LFO params
+        // LFO params — macroMove quickens the tectonic drift for heavier sub movement
         const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f);
         const float lfo1Depth = loadP (paramLfo1Depth, 0.0f);
         const int   lfo1Shape = static_cast<int> (loadP (paramLfo1Shape, 0.0f));
         const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f);
         const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
         const int   lfo2Shape = static_cast<int> (loadP (paramLfo2Shape, 0.0f));
+        const float effectiveTectonicRate = pTectonic * (1.0f + macroMove * 3.0f);
 
         // Hoist bodyFilter mode out of the per-sample loop — pSoil is block-constant.
         const CytomicSVF::Mode bodyFilterMode = (pSoil < 0.5f)
@@ -306,7 +307,7 @@ public:
             voice.lfo1.setShape (lfo1Shape);
             voice.lfo2.setRate (lfo2Rate, srf);
             voice.lfo2.setShape (lfo2Shape);
-            voice.tectonicLFO.setRate (pTectonic, srf);
+            voice.tectonicLFO.setRate (effectiveTectonicRate, srf);
             voice.glide.setTime (pGlide, srf);
             voice.ampEnv.setADSR (pAttack, pDecay, pSustain, pRelease);
             // Set filter mode once per block (depends only on pSoil, which is block-constant)
@@ -429,8 +430,10 @@ public:
 
             outL[s] = mixL;
             if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // macroCoup scales coupling output: higher coupling macro = stronger sub coupling signal
+            const float coupGain = 1.0f + macroCoup * 1.5f;
+            couplingCacheL = mixL * coupGain;
+            couplingCacheR = mixR * coupGain;
         }
 
         int count = 0;

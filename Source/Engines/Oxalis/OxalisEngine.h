@@ -376,11 +376,13 @@ public:
         accumulators.update (blockSizeSec, activeCount, avgVel, noteOnCount);
 
         float effectivePhi = std::clamp (pPhi + macroChar * 0.4f + couplingPhiMod
-                                        + modWheelAmount * 0.3f, 0.0f, 1.0f);
+                                        + modWheelAmount * 0.3f
+                                        + macroCoupl * 0.25f, 0.0f, 1.0f);  // M3 COUPLING: phi opens toward more irrational harmonics
         float effectiveCutoff = std::clamp (pCutoff + macroChar * 4000.0f
             + accumulators.getSeasonBrightness() * 1500.0f
             + pBrightness * 8000.0f + couplingFilterMod
             + aftertouchAmount * 4000.0f, 200.0f, 20000.0f);
+        const float effectiveWidth = 1.0f + macroSpace * 0.6f;  // M4 SPACE: stereo expansion
 
         smoothCutoff.set (effectiveCutoff);
         smoothPhi.set (effectivePhi);
@@ -484,10 +486,13 @@ public:
                 mixR += output * voice.panR;
             }
 
-            outL[s] = mixL;
-            if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // M4 SPACE: mid/side width expansion
+            const float mid  = (mixL + mixR) * 0.5f;
+            const float side = (mixL - mixR) * 0.5f * effectiveWidth;
+            outL[s] = mid + side;
+            if (outR) outR[s] = mid - side;
+            couplingCacheL = outL[s];
+            couplingCacheR = outR ? outR[s] : mixR;
         }
 
         int count = 0;

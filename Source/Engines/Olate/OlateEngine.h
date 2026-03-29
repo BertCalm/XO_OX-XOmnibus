@@ -254,8 +254,6 @@ public:
         const float pSustain    = loadP (paramSustain, 0.7f);
         const float pRelease    = loadP (paramRelease, 0.3f);
         const float pFiltEnvAmt = loadP (paramFilterEnvAmount, 0.5f);
-        const float pFiltAttack = loadP (paramFilterAttack, 0.001f);
-        const float pFiltDecay  = loadP (paramFilterDecay, 0.4f);
         const float pBendRange  = loadP (paramBendRange, 2.0f);
         const float pGravity    = loadP (paramGravity, 0.5f);
 
@@ -310,11 +308,11 @@ public:
         // Session warmth: gradual tonal drift (caps at ~20 minutes = 1200 seconds)
         float sessionWarmthFactor = std::min (1.0f, sessionAge / 1200.0f);
 
-        // LFO params
-        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f);
+        // LFO params — macroMove speeds both LFOs for more expressive fretless vibrato
+        const float lfo1Rate  = loadP (paramLfo1Rate, 0.5f)  * (1.0f + macroMove * 2.0f);
         const float lfo1Depth = loadP (paramLfo1Depth, 0.0f);
         const int   lfo1Shape = static_cast<int> (loadP (paramLfo1Shape, 0.0f));
-        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f);
+        const float lfo2Rate  = loadP (paramLfo2Rate, 1.0f)  * (1.0f + macroMove * 2.0f);
         const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
         const int   lfo2Shape = static_cast<int> (loadP (paramLfo2Shape, 0.0f));
 
@@ -441,8 +439,10 @@ public:
 
             outL[s] = mixL;
             if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // macroCoup scales coupling output: higher coupling macro = stronger fretless coupling signal
+            const float coupGain = 1.0f + macroCoup * 1.5f;
+            couplingCacheL = mixL * coupGain;
+            couplingCacheR = mixR * coupGain;
         }
 
         int count = 0;

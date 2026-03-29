@@ -385,17 +385,19 @@ public:
         float blockSizeSec = static_cast<float> (numSamples) / srf;
         accumulators.update (blockSizeSec, activeCount, avgVel, noteOnCount);
 
-        //-- Companion planting update (block rate) --
-        companion.update (voiceActive, pCompanion, blockSizeSec);
-
         //-- Effective parameters --
         float effectiveCutoff = std::clamp (pCutoff + macroChar * 4000.0f
             + accumulators.getSeasonBrightness() * 1500.0f
             + pBrightness * 6000.0f + couplingFilterMod
             + aftertouchAmount * 2500.0f, 200.0f, 20000.0f);
+        const float effectiveCompanion = std::clamp (pCompanion + macroCoupl * 0.4f, 0.0f, 1.0f);  // M3 COUPLING: deeper companion affinity
+        const float effectiveWidth = 1.0f + macroSpace * 0.6f;  // M4 SPACE: stereo expansion
+
+        //-- Companion planting update (block rate) --
+        companion.update (voiceActive, effectiveCompanion, blockSizeSec);
 
         smoothCutoff.set (effectiveCutoff);
-        smoothCompanion.set (pCompanion);
+        smoothCompanion.set (effectiveCompanion);
 
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -420,7 +422,7 @@ public:
                     float cents = 1200.0f * fastLog2 (freqJ / freqI);
                     float aff = companion.getVoiceAffinity (i);
                     // Pull toward the other voice, scaled by affinity and companion strength
-                    pull += cents * aff * pCompanion * 0.01f * pIntimacy;
+                    pull += cents * aff * effectiveCompanion * 0.01f * pIntimacy;
                 }
             }
             voices[i].companionPitchCents = pull;
@@ -501,7 +503,7 @@ public:
                 float fCut = std::clamp (cutNow + envLevel * pFilterEnvAmt * 5000.0f
                                         + l1 * 2500.0f, 200.0f, 20000.0f);
                 voice.filter.setMode (CytomicSVF::Mode::LowPass);
-                voice.filter.setCoefficients (fCut, pResonance, srf);
+                voice.filter.setCoefficients (fCut, std::clamp (pResonance + l2 * 0.15f, 0.0f, 1.0f), srf);  // l2 → resonance shimmer
                 float filtered = voice.filter.processSample (shaped);
 
                 // Amplitude
@@ -526,10 +528,13 @@ public:
                 mixR += output * voice.panR;
             }
 
-            outL[s] = mixL;
-            if (outR) outR[s] = mixR;
-            couplingCacheL = mixL;
-            couplingCacheR = mixR;
+            // M4 SPACE: mid/side width expansion
+            const float mid  = (mixL + mixR) * 0.5f;
+            const float side = (mixL - mixR) * 0.5f * effectiveWidth;
+            outL[s] = mid + side;
+            if (outR) outR[s] = mid - side;
+            couplingCacheL = outL[s];
+            couplingCacheR = outR ? outR[s] : mixR;
         }
 
         int count = 0;

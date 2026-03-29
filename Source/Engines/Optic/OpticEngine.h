@@ -1010,6 +1010,14 @@ public:
     const OpticModOutputs& getModOutputs() const noexcept { return modOutputs; }
     const OpticBandAnalyzer& getAnalyzer() const noexcept { return analyzer; }
 
+    // Visualization parameter accessors — called by OpticVisualizer on the UI
+    // thread each timer frame to keep the visualizer in sync with APVTS state.
+    // These read atomic parameter pointers (safe from any thread).
+    int   getVizMode()      const noexcept { return (pVizMode      != nullptr) ? static_cast<int> (pVizMode->load())      : 2; }
+    float getVizFeedback()  const noexcept { return (pVizFeedback  != nullptr) ? pVizFeedback->load()                     : 0.6f; }
+    float getVizSpeed()     const noexcept { return (pVizSpeed     != nullptr) ? pVizSpeed->load()                        : 1.0f; }
+    float getVizIntensity() const noexcept { return (pVizIntensity != nullptr) ? pVizIntensity->load()                    : 0.7f; }
+
 private:
     //==========================================================================
     //  S T A T E

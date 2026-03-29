@@ -490,6 +490,7 @@ public:
                                 + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
         float effectiveTremDepth = std::clamp (pTremDepth + macroMove * 0.3f, 0.0f, 1.0f);
         float effectiveMigration = std::clamp (pMigration + macroCoup * 0.5f, 0.0f, 1.0f);
+        float effectiveStereoWidth = std::clamp (pStereoWidth + macroSpace * 0.5f, 0.0f, 1.0f);
 
         smoothWarmth.set (effectiveWarmth);
         smoothBell.set (pBell);
@@ -593,7 +594,7 @@ public:
                 float output = filtered * ampLevel * tremGain;
 
                 // Stereo: tremolo pans slightly with width parameter
-                float stereoTrem = tremVal * pStereoWidth * 0.3f;
+                float stereoTrem = tremVal * effectiveStereoWidth * 0.3f;
                 mixL += output * (voice.panL + stereoTrem);
                 mixR += output * (voice.panR - stereoTrem);
             }

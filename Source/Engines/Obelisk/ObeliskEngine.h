@@ -703,13 +703,15 @@ public:
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
-        // Stone Q: extremely high base Q (stone rings clearly)
-        // Density controls Q: denser stone = higher Q = longer ring
-        float baseQ = 200.0f + effectiveDensity * 800.0f;  // 200-1000 — very high Q
+        // Stone Q: extremely high base Q (stone rings clearly).
+        // Density controls Q: denser stone = higher Q = longer ring.
+        // Per-sample Q is derived from smoothDensity.process() (densNow) inside the render loop
+        // as `perSampleQ = 200.0f + densNow * 800.0f` — Density knob is wired there, not here.
+        // (baseQ was formerly computed here from effectiveDensity but was never read — removed.)
 
-        // Decay coefficient: stone has very long natural decay (cached per block, not per sample)
-        float decayTimeSec = std::max (pDecay * (1.0f - pDamping * 0.8f), 0.01f);
-        float baseDecayCoeff = std::exp (-1.0f / (decayTimeSec * srf));
+        // Decay coefficient: pDamping is the block-snapshot value; smoothDamping drains
+        // per-sample (dampNow) so the actual decay coeff is computed from dampNow inside the
+        // render loop.  pDecay is block-constant and referenced directly there.
 
         // Release coefficient: 5ms exponential ramp on noteOff (cached per block)
         const float kReleaseCoeff = std::exp (-1.0f / (0.005f * srf));
@@ -749,11 +751,17 @@ public:
         // Step 4: Per-sample render loop
         for (int s = 0; s < numSamples; ++s)
         {
-            float densNow  = smoothDensity.process();
-            float hardNow  = smoothHardness.process();
-            float prepDNow = smoothPrepDepth.process();
+            float densNow   = smoothDensity.process();
+            float hardNow   = smoothHardness.process();
+            float prepDNow  = smoothPrepDepth.process();
             float brightNow = smoothBrightness.process();
-            float dampNow  = smoothDamping.process();
+            float dampNow   = smoothDamping.process();
+
+            // Per-sample decay coefficient: damping smoothly modulates decay time so the
+            // Damping knob produces click-free, sample-accurate amplitude shortening.
+            // Cost: one std::exp per sample (not per voice) — acceptable vs. 8×kNumModes resonators.
+            float decayTimeNow    = std::max (pDecay * (1.0f - dampNow * 0.8f), 0.01f);
+            float decayCoeffNow   = std::exp (-1.0f / (decayTimeNow * srf));
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -911,7 +919,8 @@ public:
                 }
 
                 // Amplitude envelope: stone has long natural decay.
-                // Use block-cached baseDecayCoeff (no std::exp per sample).
+                // decayCoeffNow is computed per-sample from dampNow (smoothed Damping knob),
+                // so knob automation and note-on transitions are click-free.
                 // On release, override with smooth 5ms exponential ramp.
                 if (voice.isReleasing)
                 {
@@ -919,7 +928,7 @@ public:
                 }
                 else
                 {
-                    voice.ampLevel *= baseDecayCoeff;
+                    voice.ampLevel *= decayCoeffNow;   // BUG2 FIX: use dampNow-derived per-sample coeff
                 }
                 voice.ampLevel = flushDenormal (voice.ampLevel);
                 if (voice.ampLevel < 1e-7f) { voice.active = false; voice.isReleasing = false; continue; }
@@ -987,8 +996,8 @@ public:
         v.filterEnv.triggerHard();
 
         // Amplitude envelope: instant attack, sustain at full, release handled by noteOff.
-        // Stone body's natural decay (baseDecayCoeff) provides the long tail; ampEnv
-        // ensures the voice has a properly shaped onset and can be retriggered cleanly.
+        // Stone body's natural decay (decayCoeffNow, derived per-sample from dampNow) provides
+        // the long tail; ampEnv ensures the voice has a properly shaped onset and can be retriggered cleanly.
         v.ampEnv.prepare (srf);
         v.ampEnv.setADSR (0.001f, 0.0f, 1.0f, 0.1f);
         v.ampEnv.triggerHard();

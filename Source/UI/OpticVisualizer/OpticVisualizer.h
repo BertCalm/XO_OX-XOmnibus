@@ -144,6 +144,30 @@ private:
     void timerCallback() override
     {
         frameCount++;
+
+        // Sync viz parameters from APVTS (via engine accessors) so that
+        // optic_vizMode, optic_vizFeedback, optic_vizSpeed, optic_vizIntensity
+        // actually drive the visualizer. Runs on the UI thread — safe to read
+        // the atomic parameter pointers via the engine's getViz*() accessors.
+        if (engineRef != nullptr)
+        {
+            int modeIdx = engineRef->getVizMode();
+            Mode newMode = Mode::Milkdrop; // default matches APVTS default index 2
+            switch (modeIdx)
+            {
+                case 0: newMode = Mode::Scope;     break;
+                case 1: newMode = Mode::Spectrum;  break;
+                case 2: newMode = Mode::Milkdrop;  break;
+                case 3: newMode = Mode::Particles; break;
+                default: break;
+            }
+            // setMode() respects reducedMotion guard internally
+            setMode (newMode);
+            setFeedback  (engineRef->getVizFeedback());
+            setSpeed     (engineRef->getVizSpeed());
+            setIntensity (engineRef->getVizIntensity());
+        }
+
         repaint();
     }
 

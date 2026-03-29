@@ -431,6 +431,12 @@ public:
         const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
         const int   lfo2Shape = static_cast<int> (loadP (paramLfo2Shape, 0.0f));
 
+        // Competition: adversarial suppression between tonewheel voices.
+        // When non-zero, louder voices slightly suppress quieter neighbours —
+        // emulates the wind-pressure "robbing" that occurs on a real organ when
+        // many ranks are drawn simultaneously.
+        const float competition = loadP (paramCompetition, 0.0f);
+
         // D006: aftertouch modulation — pressure for organ models
         float effectivePressure = std::clamp (pPressure + aftertouchAmount * 0.4f
                                               + macroCharacter * 0.3f, 0.0f, 1.0f);
@@ -500,6 +506,11 @@ public:
             float regNow      = smoothRegistration.process();
 
             float mixL = 0.0f, mixR = 0.0f;
+
+            // Competition: per-voice stereo contributions cached for suppression pass.
+            // Fixed-size stack arrays — no heap allocation on audio thread.
+            float voiceContribL[kMaxVoices] = {};
+            float voiceContribR[kMaxVoices] = {};
 
             for (int vi = 0; vi < kMaxVoices; ++vi)
             {
@@ -728,8 +739,45 @@ public:
 
                 float output = filtered * ampLevel;
 
-                mixL += output * voice.panL;
-                mixR += output * voice.panR;
+                // Store per-voice panned contributions for competition pass below.
+                voiceContribL[vi] = output * voice.panL;
+                voiceContribR[vi] = output * voice.panR;
+
+                mixL += voiceContribL[vi];
+                mixR += voiceContribR[vi];
+            }
+
+            // Competition pass: adversarial suppression between tonewheel voices.
+            // When competition > 0, each voice is attenuated in proportion to how
+            // much amplitude the other active voices are contributing — mimicking
+            // the wind-pressure "robbing" on a real organ when many ranks are drawn.
+            // At competition=1.0, a voice half as loud as the total field is pulled
+            // down to ~67% of its natural level; the loudest voice is least affected.
+            // A lone active voice is never suppressed (otherAmp=0 → factor=1.0).
+            if (competition > 0.001f)
+            {
+                float totalAmp = 0.0f;
+                for (int vi = 0; vi < kMaxVoices; ++vi)
+                    totalAmp += std::abs (voiceContribL[vi]) + std::abs (voiceContribR[vi]);
+
+                if (totalAmp > 0.001f)
+                {
+                    float suppressedMixL = 0.0f, suppressedMixR = 0.0f;
+                    for (int vi = 0; vi < kMaxVoices; ++vi)
+                    {
+                        float contribMag = std::abs (voiceContribL[vi]) + std::abs (voiceContribR[vi]);
+                        if (contribMag < 0.000001f) continue;
+
+                        float otherAmp = totalAmp - contribMag;
+                        // suppressionFactor ∈ (0, 1]: 1/(1 + competition * otherAmp/totalAmp)
+                        float suppressionFactor = 1.0f / (1.0f + competition * otherAmp / totalAmp);
+
+                        suppressedMixL += voiceContribL[vi] * suppressionFactor;
+                        suppressedMixR += voiceContribR[vi] * suppressionFactor;
+                    }
+                    mixL = suppressedMixL;
+                    mixR = suppressedMixR;
+                }
             }
 
             // P2: Post-mix room resonance — single cathedral model instead of 8.
