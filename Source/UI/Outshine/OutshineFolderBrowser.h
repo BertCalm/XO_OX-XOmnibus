@@ -76,9 +76,14 @@ public:
 
     void clearSelection() { fileList.deselectAllRows(); }
 
+    void focusGained(FocusChangeType) override { repaint(); }
+    void focusLost(FocusChangeType) override { repaint(); }
+
     void paint(juce::Graphics& g) override
     {
         g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
+        if (hasKeyboardFocus(true))
+            A11y::drawFocusRing(g, getLocalBounds().toFloat(), 4.0f);
     }
 
     void resized() override

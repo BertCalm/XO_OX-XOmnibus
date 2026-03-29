@@ -476,7 +476,7 @@ private:
             auto msg = juce::MidiMessage::noteOn (midiChannel, midiNote, velByte);
             midiCollector->addMessageToQueue (msg);
         }
-        if (onNoteOn)
+        else if (onNoteOn)
             onNoteOn (midiNote, velocity / 127.0f);
     }
 
@@ -487,7 +487,7 @@ private:
             auto msg = juce::MidiMessage::noteOff (midiChannel, midiNote);
             midiCollector->addMessageToQueue (msg);
         }
-        if (onNoteOff)
+        else if (onNoteOff)
             onNoteOff (midiNote);
     }
 

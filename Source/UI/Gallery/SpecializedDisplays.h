@@ -421,6 +421,8 @@ public:
     //--------------------------------------------------------------------------
     void timerCallback() override
     {
+        if (!isVisible()) return;
+
         // Advance the free-running phase accumulator.  If arcPhaseAtomic is
         // wired, we just read that instead and skip accumulation.
         if (arcPhaseAtomic == nullptr)
@@ -590,9 +592,8 @@ private:
         {
             // Choice parameters store value as 0-based index normalised to [0,1].
             const float norm = p->getValue();
-            // Round to nearest integer index
-            const int idx = juce::roundToInt(
-                static_cast<float>(maxVal - minVal) * norm) + minVal;
+            // Use JUCE's own range conversion to correctly handle any parameter range.
+            const int idx = juce::roundToInt(p->getNormalisableRange().convertFrom0to1(norm));
             return juce::jlimit(minVal, maxVal, idx);
         }
         return defaultVal;

@@ -444,18 +444,6 @@ public:
     {
         // miniWave is hidden (addChildComponent, not addAndMakeVisible) — waveform
         // is drawn directly in paint(). No bounds to set.
-
-        // Pre-compute the dashed border path for empty slots — blit cheaply in paint().
-        {
-            auto bf = getLocalBounds().toFloat().reduced(1.0f, 0.0f);
-            const float dashLen = 6.0f, gap = 4.0f, radius = 4.0f;
-            juce::Path roundRect;
-            roundRect.addRoundedRectangle(bf, radius);
-            juce::PathStrokeType stroke(1.0f);
-            float dashPattern[] = { dashLen, gap };
-            cachedDashedPath.clear();
-            stroke.createDashedStroke(cachedDashedPath, roundRect, dashPattern, 2);
-        }
     }
 
     // Fix #7: cache CockpitHost pointer once when the component hierarchy is set up,
@@ -604,42 +592,6 @@ private:
         return { pwrX - 4, rowCy - 12, 24, 24 };
     }
 
-    // ── Macro indicator bars ─────────────────────────────────────────────────
-    // 4 horizontal bars, each 40×3pt, stacked with 2pt gap.
-    // Colors: M1=XO Gold, M2=Phosphor Green, M3=Prism Violet, M4=Teal.
-    void paintMacroBars(juce::Graphics& g, float startX, float startY) const
-    {
-        if (!hasEngine) return;
-
-        static constexpr uint32_t macroColors[4] = {
-            GalleryColors::xoGold,  // M1 — XO Gold
-            0xFF00FF41,             // M2 — Phosphor Green
-            0xFFBF40FF,             // M3 — Prism Violet
-            0xFF00B4A0              // M4 — Teal
-        };
-
-        const float barMaxW = 40.0f;
-        const float barH    = 3.0f;
-        const float gap     = 2.0f;
-
-        for (int m = 0; m < 4; ++m)
-        {
-            float barY = startY + static_cast<float>(m) * (barH + gap);
-            float fillW = juce::jlimit(0.0f, barMaxW, macroValues[m] * barMaxW);
-
-            // Background track (dim)
-            g.setColour(juce::Colour(macroColors[m]).withAlpha(0.15f));
-            g.fillRoundedRectangle(startX, barY, barMaxW, barH, 1.0f);
-
-            // Filled portion
-            if (fillW > 0.5f)
-            {
-                g.setColour(juce::Colour(macroColors[m]).withAlpha(0.70f));
-                g.fillRoundedRectangle(startX, barY, fillW, barH, 1.0f);
-            }
-        }
-    }
-
     // ── Coupling indicator dots ──────────────────────────────────────────────
     // Up to 4 dots (4×4pt) in a row. Color per coupling category:
     //   XO Gold (#E9C46A)        — modulation routes (LFO/Env/Amp/Filter/Pitch/Rhythm)
@@ -718,9 +670,6 @@ private:
 
     // P10 fix: pre-built parameter ID strings — avoids 4 allocations/tick/tile
     std::array<juce::String, 4> cachedMacroIds;
-
-    // P8 fix: dashed border path for empty slot — built once in resized()
-    juce::Path cachedDashedPath;
 
     // Fix #7: cached CockpitHost pointer — set in parentHierarchyChanged(),
     // used in paint() to avoid dynamic_cast walk on every frame.

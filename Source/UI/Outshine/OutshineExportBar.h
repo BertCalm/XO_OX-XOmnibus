@@ -152,7 +152,7 @@ private:
         exportBtn.setColour(juce::TextButton::buttonColourId,
                             GalleryColors::get(GalleryColors::xoGold));
         exportBtn.setColour(juce::TextButton::textColourOffId,
-                            juce::Colour(GalleryColors::Light::textDark));
+                            juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         exportBtn.onClick = [this]() { onExportButtonClicked(); };
         exportBtn.setEnabled(false);
         exportBtn.setAlpha(0.4f);

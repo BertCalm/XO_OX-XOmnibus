@@ -106,6 +106,7 @@ public:
         viewport.setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::never);
         addAndMakeVisible(waveformDisplay);
         addAndMakeVisible(adsrDisplay);
+        A11y::setup(*this, "Engine Detail Panel", "Shows parameters for the selected engine. Press Escape to return to overview.");
     }
 
     // Optional: wire MIDI learn manager before the first loadSlot() call.

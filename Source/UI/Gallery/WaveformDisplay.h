@@ -25,12 +25,24 @@ public:
     {
         waveformBuffer.fill(0.0f);
         accent = GalleryColors::get(GalleryColors::xoGold);
+        A11y::setup(*this, "Waveform Display", "Shows the audio waveform output of the current engine", false);
         const int hz = A11y::prefersReducedMotion() ? 10 : 30;
         startTimerHz(hz);
         setOpaque(false);
     }
 
     ~WaveformDisplay() override { stopTimer(); }
+
+    void visibilityChanged() override
+    {
+        if (isVisible())
+        {
+            const int hz = A11y::prefersReducedMotion() ? 10 : 30;
+            startTimerHz(hz);
+        }
+        else
+            stopTimer();
+    }
 
     // Which engine slot to read waveform data from.
     void setSlot(int slot) noexcept
@@ -192,6 +204,17 @@ public:
     }
 
     ~MiniWaveform() override { stopTimer(); }
+
+    void visibilityChanged() override
+    {
+        if (isVisible())
+        {
+            const int hz = A11y::prefersReducedMotion() ? 10 : 30;
+            startTimerHz(hz);
+        }
+        else
+            stopTimer();
+    }
 
     // Which engine slot to read waveform data from.
     void setSlot(int slot) noexcept

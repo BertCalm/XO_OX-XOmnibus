@@ -45,6 +45,7 @@ public:
         : processor(proc), chainView(proc)
     {
         addAndMakeVisible(chainView);
+        A11y::setup(*this, "Overview Panel", "Shows all loaded engines and coupling connections");
     }
 
     // Called by the editor when engine state or coupling routes change.

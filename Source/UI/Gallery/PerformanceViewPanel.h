@@ -230,7 +230,7 @@ public:
         g.setColour (get (xoGold));
         g.fillRect (headerArea);
 
-        g.setColour (juce::Colours::white);
+        g.setColour (juce::Colour (GalleryColors::get (GalleryColors::t1())));
         g.setFont (GalleryFonts::display (14.0f));
         g.drawText ("PERFORMANCE VIEW", headerArea.reduced (12, 0),
                      juce::Justification::centredLeft);

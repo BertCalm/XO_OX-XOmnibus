@@ -10,7 +10,7 @@ class OutshineDocumentWindow : public juce::DocumentWindow
 public:
     explicit OutshineDocumentWindow(XOlokunProcessor& processorRef)
         : juce::DocumentWindow("OUTSHINE",
-                               juce::Colour(GalleryColors::Light::shellWhite),
+                               juce::Colour(GalleryColors::get(GalleryColors::shellWhite())),
                                juce::DocumentWindow::closeButton)
     {
         setUsingNativeTitleBar(false);
@@ -36,7 +36,7 @@ public:
         auto titleBar = getLocalBounds().removeFromTop(getTitleBarHeight());
         g.setColour(GalleryColors::get(GalleryColors::xoGold));
         g.fillRect(titleBar);
-        g.setColour(juce::Colour(GalleryColors::Light::textDark));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         g.setFont(GalleryFonts::display(13.0f));
         g.drawText("OUTSHINE", titleBar.reduced(12, 0), juce::Justification::centredLeft);
 

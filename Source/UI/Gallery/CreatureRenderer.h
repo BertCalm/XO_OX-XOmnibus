@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_graphics/juce_graphics.h>
 #include <cmath>
+#include "../GalleryColors.h"
 
 namespace xolokun {
 
@@ -113,10 +114,10 @@ private:
         g.setColour(accent.withAlpha(0.70f));
         g.fillEllipse(cx - bW * 0.5f, cy - bH * 0.5f, bW, bH);
 
-        // Eye — white dot, upper-right quadrant of body
+        // Eye — primary text colour dot, upper-right quadrant of body
         float eyeX = cx + bW * 0.20f;
         float eyeY = cy - bH * 0.18f;
-        g.setColour(juce::Colours::white.withAlpha(0.90f));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::t1())).withAlpha(0.90f));
         g.fillEllipse(eyeX - 2.0f, eyeY - 2.0f, 4.0f, 4.0f);
 
         // Mouth — open arc on right side, aperture driven by breathScale
@@ -134,7 +135,7 @@ private:
                             0.0f,
                             -mouthAperture,
                              mouthAperture, true);
-        g.setColour(juce::Colours::white.withAlpha(0.70f));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::t1())).withAlpha(0.70f));
         g.strokePath(mouth, juce::PathStrokeType(1.5f, juce::PathStrokeType::curved,
                                                   juce::PathStrokeType::rounded));
 
@@ -232,7 +233,7 @@ private:
                                 bodyW, bodyH, bodyH * 0.3f);
 
         // Small eye on body
-        g.setColour(juce::Colours::white.withAlpha(0.90f));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::t1())).withAlpha(0.90f));
         g.fillEllipse(cx + bodyW * 0.28f, cy - bodyH * 0.15f, 3.0f, 3.0f);
 
         // Claw side depends on couplingLean
@@ -292,7 +293,7 @@ private:
 
         // Eye — shifts with couplingLean
         float eyeOffsetX = radius * 0.30f * couplingLean;
-        g.setColour(juce::Colours::white.withAlpha(0.90f));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::t1())).withAlpha(0.90f));
         g.fillEllipse(cx + eyeOffsetX - 2.0f, cy - 2.0f, 4.0f, 4.0f);
 
         // Particle dots — 3 small accent circles orbiting around the body

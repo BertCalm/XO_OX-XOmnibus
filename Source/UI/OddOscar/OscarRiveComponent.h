@@ -90,8 +90,14 @@ public:
     void setAnimState (OscarAnimState* state) { animState = state; }
 
     /// Begin ticking at 60 Hz.
-    void start() { startTimerHz (60); }
+    void start() { startTimerHz (reducedMotion ? 10 : 60); }
     void stop()  { stopTimer(); }
+
+    void visibilityChanged() override
+    {
+        if (isVisible()) start();
+        else stop();
+    }
 
     //--------------------------------------------------------------------------
     // WCAG 2.3.3 — reduced motion support

@@ -84,7 +84,7 @@ public:
         auto headerArea = getLocalBounds().removeFromTop(kHeaderH);
         g.setColour(GalleryColors::get(GalleryColors::xoGold));
         g.fillRect(headerArea);
-        g.setColour(juce::Colour(GalleryColors::Light::textDark));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         g.setFont(GalleryFonts::display(13.0f));
         g.drawText("AUTO MODE", headerArea.reduced(12, 0), juce::Justification::centredLeft);
 

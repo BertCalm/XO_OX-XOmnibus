@@ -75,7 +75,7 @@ public:
         auto headerArea = getLocalBounds().removeFromTop(kHeaderH);
         g.setColour(GalleryColors::get(GalleryColors::xoGold));
         g.fillRect(headerArea);
-        g.setColour(juce::Colour(GalleryColors::Light::textDark));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         g.setFont(GalleryFonts::heading(9.0f));
         g.drawText("OUTSHINE", headerArea.reduced(8, 0), juce::Justification::centredLeft);
 
@@ -134,7 +134,7 @@ private:
         openOysterBtn.setColour(juce::TextButton::buttonColourId,
                                 GalleryColors::get(GalleryColors::xoGold));
         openOysterBtn.setColour(juce::TextButton::textColourOffId,
-                                juce::Colour(GalleryColors::Light::textDark));
+                                juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         openOysterBtn.onClick = [this]() { launchOutshine(); };
         A11y::setup(openOysterBtn, "Open the Oyster", "Open the full Outshine window");
         addAndMakeVisible(openOysterBtn);

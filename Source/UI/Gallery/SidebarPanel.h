@@ -344,7 +344,13 @@ public:
             if (tabButtons[i] != nullptr && tabButtons[i]->hasKeyboardFocus(false))
                 A11y::drawFocusRing(g, tabButtons[i]->getBounds().toFloat(), 2.0f);
         }
+
+        if (hasKeyboardFocus(true))
+            A11y::drawFocusRing(g, getLocalBounds().toFloat(), 4.0f);
     }
+
+    void focusGained(FocusChangeType) override { repaint(); }
+    void focusLost(FocusChangeType) override { repaint(); }
 
     void resized() override
     {

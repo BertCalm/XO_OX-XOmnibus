@@ -75,6 +75,12 @@ public:
         stopTimer();
     }
 
+    void visibilityChanged() override
+    {
+        if (isVisible()) startTimerHz(30);
+        else stopTimer();
+    }
+
     //==========================================================================
     // Public API — future wiring hooks
     //==========================================================================

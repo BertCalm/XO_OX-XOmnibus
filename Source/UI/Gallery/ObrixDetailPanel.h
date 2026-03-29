@@ -665,6 +665,10 @@ public:
 
         g.fillAll(get(slotBg()));
 
+        // Section header font cached as a static local — constructed once,
+        // reused across all 9 section header calls per paint().
+        static const auto kSectionFont = juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(10.0f));
+
         // Helper: draw a section header strip
         auto drawSectionHeader = [&](int headerY, const juce::String& name,
                                       juce::Colour col)
@@ -681,7 +685,7 @@ public:
             g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
             g.setColour(col.brighter(0.15f));
-            g.setFont(juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(10.0f)));
+            g.setFont(kSectionFont);
             g.drawText(name,
                        dotX + dotSize + 6, headerY,
                        getWidth() - dotX - dotSize - 16, kSectionHeaderH,

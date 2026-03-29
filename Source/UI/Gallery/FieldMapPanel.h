@@ -30,6 +30,7 @@ public:
     FieldMapPanel()
     {
         sessionStart = juce::Time::getCurrentTime();
+        A11y::setup(*this, "Field Map", "Shows note activity as a visual heat map", false);
         // A11Y05: respect reduced-motion preference — drop to 1Hz refresh when active
         if (A11y::prefersReducedMotion())
             startTimerHz(1);

@@ -98,6 +98,15 @@ public:
         int cols = columnsForWidth(getWidth());
         int rows = (numVoices + cols - 1) / cols;
 
+        // Fonts and fallback name strings cached as static locals to avoid
+        // per-pad, per-paint allocations (16 pads × 2 Font constructions).
+        static const auto kParamFont = GalleryFonts::value(8.0f);
+        static const auto kVoiceFont = juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.0f));
+        static const juce::String kFallbackNames[] = {
+            "V1",  "V2",  "V3",  "V4",  "V5",  "V6",  "V7",  "V8",
+            "V9",  "V10", "V11", "V12", "V13", "V14", "V15", "V16"
+        };
+
         // ── Pad cells ────────────────────────────────────────────────────────
         for (int i = 0; i < numVoices; ++i)
         {
@@ -138,7 +147,7 @@ public:
 
             // ── Pad number — top-left, JetBrains Mono 8pt ────────────────
             g.setColour(juce::Colours::white.withAlpha(0.55f));
-            g.setFont(GalleryFonts::value(8.0f));
+            g.setFont(kParamFont);
             g.drawText(juce::String(i + 1),
                        cell.bounds.getX() + 4,
                        cell.bounds.getY() + 3,
@@ -146,12 +155,12 @@ public:
                        juce::Justification::centredLeft);
 
             // ── Voice name — center, Space Grotesk SemiBold 9pt ───────────
-            // Use the per-voice label if discovered; otherwise "V{N}"
-            juce::String voiceName = (i < (int)voiceLabels.size() && voiceLabels[i].isNotEmpty())
+            // Use the per-voice label if discovered; otherwise cached "V{N}"
+            const juce::String& voiceName = (i < (int)voiceLabels.size() && voiceLabels[i].isNotEmpty())
                                         ? voiceLabels[i]
-                                        : ("V" + juce::String(i + 1));
+                                        : kFallbackNames[i];
             g.setColour(juce::Colours::white.withAlpha(0.85f));
-            g.setFont(juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.0f)));
+            g.setFont(kVoiceFont);
             g.drawText(voiceName, cell.bounds, juce::Justification::centred);
         }
 
@@ -160,7 +169,7 @@ public:
         {
             int stripY = getParamStripY();
             g.setColour(accentColour.withAlpha(0.80f));
-            g.setFont(juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.0f)));
+            g.setFont(kVoiceFont);
             juce::String header = "VOICE " + juce::String(selectedPad + 1);
             g.drawText(header, kPadGap, stripY - kParamHeaderH, getWidth() - kPadGap * 2, kParamHeaderH,
                        juce::Justification::centredLeft);

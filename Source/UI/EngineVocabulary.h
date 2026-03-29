@@ -54,11 +54,19 @@ struct EngineVocabulary
 private:
     // Derive a best-effort label from a paramId when no override or fallback
     // is provided.  "opera_formantShift" → "FORMANT", "org_ruleSet" → "RULESET"
+    //               "oxy_warmth_rate"   → "RATE"   (multi-underscore handled below)
     static juce::String derivedLabel (const juce::String& paramId)
     {
         // Strip prefix up to (and including) the first underscore.
         int under = paramId.indexOf ("_");
         juce::String inner = (under >= 0) ? paramId.substring (under + 1) : paramId;
+
+        // Fix: if inner still contains an underscore (multi-segment IDs like
+        // "warmth_rate"), take only the last segment so callers get "RATE"
+        // rather than "WARMTH_RATE" (which would be truncated awkwardly).
+        int lastUnder = inner.lastIndexOfChar ('_');
+        if (lastUnder >= 0)
+            inner = inner.substring (lastUnder + 1);
 
         // Extract last camelCase segment: find last uppercase transition.
         juce::String best = inner;
@@ -140,6 +148,33 @@ private:
             }},
 
             //------------------------------------------------------------------
+            // OWLFISH (prefix: owl_)  — Abyssal Gold #B8860B
+            // Mixtur-Trautonium + bioluminescent sub-harmonic engine
+            // (triple MIX params, double THRESHOLD — all disambiguated)
+            //------------------------------------------------------------------
+            { "owlfish", {
+                { "owl_subMix",           "SUBMIX"  },
+                { "owl_fundWave",         "FUNDWAV" },
+                { "owl_subWave",          "SUBWAVE" },
+                { "owl_bodyFreq",         "BODYFRQ" },
+                { "owl_bodyLevel",        "BODYLVL" },
+                { "owl_compRatio",        "CMPRAT"  },
+                { "owl_compThreshold",    "CMPTHRS" },
+                { "owl_compAttack",       "CMPATTK" },
+                { "owl_compRelease",      "CMPRLS"  },
+                { "owl_filterEnvDepth",   "ENVDPTH" },
+                { "owl_grainSize",        "GRNSZ"   },
+                { "owl_grainMix",         "GRNMIX"  },
+                { "owl_feedRate",         "FEEDRT"  },
+                { "owl_armorThreshold",   "ARMRTHS" },
+                { "owl_armorDecay",       "ARMRDCY" },
+                { "owl_reverbSize",       "VERBSZ"  },
+                { "owl_reverbPreDelay",   "PREDLY"  },
+                { "owl_reverbMix",        "VERBMIX" },
+                { "owl_legatoMode",       "LEGATO"  },
+            }},
+
+            //------------------------------------------------------------------
             // OXBOW (prefix: oxb_)  — Oxbow Teal #1A6B5A
             // Entangled reverb synth (Chiasmus FDN + phase erosion)
             //------------------------------------------------------------------
@@ -156,6 +191,37 @@ private:
             }},
 
             //------------------------------------------------------------------
+            // OXYTOCIN (prefix: oxy_)  — Synapse Violet #9B5DE5
+            // Circuit-modeling love-triangle synth (fleet leader, 9.5/10)
+            // Note Duration as Synthesis Parameter (B040)
+            //------------------------------------------------------------------
+            { "oxytocin", {
+                { "oxy_intimacy",          "INTIMCY" },
+                { "oxy_passion",           "PASSION" },
+                { "oxy_commitment",        "COMMIT"  },
+                { "oxy_warmth_rate",       "WARMTH"  },
+                { "oxy_passion_rate",      "FERVOR"  },
+                { "oxy_commit_rate",       "BONDING" },
+                { "oxy_entanglement",      "ENTANGL" },
+                { "oxy_circuit_age",       "VINTAGE" },
+                { "oxy_circuit_noise",     "HISS"    },
+                { "oxy_memory_depth",      "RECALL"  },
+                { "oxy_memory_decay",      "FORGET"  },
+                { "oxy_topology",          "TOPOLOGY"},
+                { "oxy_topology_lock",     "LOCK"    },
+                { "oxy_lfo_rate",          "LFO1 RT" },
+                { "oxy_lfo_depth",         "LFO1 DP" },
+                { "oxy_lfo_shape",         "LFO1 SH" },
+                { "oxy_lfo2_rate",         "LFO2 RT" },
+                { "oxy_lfo2_depth",        "LFO2 DP" },
+                // Macros
+                { "oxy_macroCharacter",    "INTIMCY" },
+                { "oxy_macroMovement",     "PASSION" },
+                { "oxy_macroCoupling",     "COMMIT"  },
+                { "oxy_macroSpace",        "SPACE"   },
+            }},
+
+            //------------------------------------------------------------------
             // OVERWORLD (prefix: ow_)  — Neon Green #39FF14
             // Chip synth (NES/Genesis/SNES), ERA Triangle
             //------------------------------------------------------------------
@@ -166,6 +232,86 @@ private:
                 { "ow_macroMovement",    "PULSE"   },
                 { "ow_macroCoupling",    "SYNC"    },
                 { "ow_macroSpace",       "SPACE"   },
+            }},
+
+            //------------------------------------------------------------------
+            // OBESE (prefix: fat_)  — Hot Pink #FF1493
+            // Saturation / lo-fi bass synth (Mojo analog-digital axis)
+            //------------------------------------------------------------------
+            { "obese", {
+                { "fat_subLevel",        "SUBLVL"  },
+                { "fat_groupMix",        "GRPMIX"  },
+                { "fat_fltKeyTrack",     "KEYTRCK" },
+                { "fat_fltEnvAmt",       "FLTENV"  },
+                { "fat_fltEnvAttack",    "FENVATT" },
+                { "fat_fltEnvDecay",     "FENVDCY" },
+                { "fat_satDrive",        "SATDRV"  },
+                { "fat_crushDepth",      "CRSHBIT" },
+                { "fat_crushRate",       "CRSHRT"  },
+                { "fat_lfo1Rate",        "LFO1 RT" },
+                { "fat_lfo1Depth",       "LFO1 DP" },
+                { "fat_lfo2Rate",        "LFO2 RT" },
+                { "fat_lfo2Depth",       "LFO2 DP" },
+                { "fat_arpRate",         "ARPRATE" },
+            }},
+
+            //------------------------------------------------------------------
+            // OBSCURA (prefix: obscura_)  — Daguerreotype Silver #8A9BA8
+            // Bowed/resonant physical model (misleading SUSTAIN = bow force)
+            //------------------------------------------------------------------
+            { "obscura", {
+                { "obscura_sustain",         "BOWFRC"  },
+                { "obscura_excitePos",        "EXCPOS"  },
+                { "obscura_exciteWidth",      "EXCWDTH" },
+                { "obscura_scanWidth",        "SCANWDT" },
+                { "obscura_physEnvAttack",    "PHYSATT" },
+                { "obscura_physEnvDecay",     "PHYSDCY" },
+                { "obscura_physEnvSustain",   "PHYSSUS" },
+                { "obscura_physEnvRelease",   "PHYSREL" },
+                { "obscura_lfo1Rate",         "LFO1 RT" },
+                { "obscura_lfo1Depth",        "LFO1 DP" },
+                { "obscura_lfo2Rate",         "LFO2 RT" },
+                { "obscura_lfo2Depth",        "LFO2 DP" },
+                { "obscura_lfo2Shape",        "LFO2 SH" },
+                { "obscura_initShape",        "INITSHP" },
+                // Macros
+                { "obscura_macroCharacter",   "SILVER"  },
+                { "obscura_macroMovement",    "GRAIN"   },
+                { "obscura_macroCoupling",    "STIFF"   },
+                { "obscura_macroSpace",       "ABYSS"   },
+            }},
+
+            //------------------------------------------------------------------
+            // OCELOT (prefix: ocelot_)  — Ocelot Tawny #C5832B
+            // Cross-feed matrix engine (forest-layer biome routing)
+            //------------------------------------------------------------------
+            { "ocelot", {
+                { "ocelot_xf_floorUnder",         "F>UNDER" },
+                { "ocelot_xf_floorCanopy",         "F>CANOP" },
+                { "ocelot_xf_floorEmerg",          "F>EMERG" },
+                { "ocelot_xf_underFloor",          "U>FLOOR" },
+                { "ocelot_xf_underCanopy",         "U>CANOP" },
+                { "ocelot_xf_underEmerg",          "U>EMERG" },
+                { "ocelot_xf_canopyFloor",         "C>FLOOR" },
+                { "ocelot_xf_canopyUnder",         "C>UNDER" },
+                { "ocelot_xf_canopyEmerg",         "C>EMERG" },
+                { "ocelot_xf_emergFloor",          "E>FLOOR" },
+                { "ocelot_xf_emergUnder",          "E>UNDER" },
+                { "ocelot_xf_emergCanopy",         "E>CANOP" },
+                { "ocelot_floorLevel",             "FLRLVL"  },
+                { "ocelot_chopRate",               "CHOPRT"  },
+                { "ocelot_bitDepth",               "BITDPTH" },
+                { "ocelot_sampleRate",             "SMPRATE" },
+                { "ocelot_dustLevel",              "DUSTLVL" },
+                { "ocelot_understoryLevel",        "UNDRLVL" },
+                { "ocelot_canopyLevel",            "CNPYLVL" },
+                { "ocelot_canopySpectralFilter",   "SPECTRL" },
+                { "ocelot_creatureType",           "CRTYPE"  },
+                { "ocelot_creatureRate",           "CRRATE"  },
+                { "ocelot_creatureAttack",         "CRATTK"  },
+                { "ocelot_creatureDecay",          "CRDECAY" },
+                { "ocelot_filterEnvDepth",         "FLTENVD" },
+                { "ocelot_ecosystemDepth",         "ECODPTH" },
             }},
 
             //------------------------------------------------------------------

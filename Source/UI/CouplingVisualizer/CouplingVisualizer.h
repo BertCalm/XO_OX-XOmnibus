@@ -420,7 +420,8 @@ private:
         // Advance animation phase (wraps at 2π)
         animPhase = std::fmod (animPhase + 0.12f, juce::MathConstants<float>::twoPi);
 
-        repaint();
+        if (!cachedRoutes.empty())
+            repaint();
     }
 
     //--------------------------------------------------------------------------

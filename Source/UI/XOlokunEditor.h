@@ -492,7 +492,24 @@ public:
             resized();
             return true;
         }
-        // 'P' toggles the PlaySurface popup window
+        // Shift+P toggles Performance View — checked before plain 'P' so it isn't
+        // consumed by the PlaySurface handler below.
+        if (key == juce::KeyPress('P', juce::ModifierKeys::shiftModifier, 0))
+        {
+            bool nowOn = perfToggleBtn.getToggleState();
+            perfToggleBtn.setToggleState(!nowOn, juce::dontSendNotification);
+            if (!nowOn)
+            {
+                cmToggleBtn.setToggleState(false, juce::dontSendNotification);
+                showPerformanceView();
+            }
+            else
+            {
+                showOverview();
+            }
+            return true;
+        }
+        // 'P' (without shift) toggles the PlaySurface popup window
         if (key == juce::KeyPress('p') || key == juce::KeyPress('P'))
         {
             bool nowVisible = (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible());
@@ -841,28 +858,23 @@ public:
         // columnCCollapsed is reserved for a future Column C collapse button.
         layout.compute(getWidth(), getHeight());
 
-        // ── Header (52px): Logo | ENGINES | --- macros --- | CPU | PLAY | EXPORT | gear
+        // ── Header (52px): Logo | ENGINES | < | > | [macros] | CI | CM | P | ● | DK | CPU | PLAY | XPN | gear
         auto header = layout.getHeader();
 
-        // Park legacy header widgets off-screen. These components are retained as members
-        // (JUCE requires child components to outlive their parent) but were removed from
-        // the v05 header layout. Off-screen + invisible prevents hit-testing and painting.
-        depthDial.setBounds(0, -100, 0, 0);          depthDial.setVisible(false);
-        abCompare.setBounds(0, -100, 0, 0);           abCompare.setVisible(false);
-        presetBrowser.setBounds(0, -200, 0, 0);       presetBrowser.setVisible(false);
-        presetPrevBtn.setBounds(0, -100, 0, 0);       presetPrevBtn.setVisible(false);
-        presetNextBtn.setBounds(0, -100, 0, 0);       presetNextBtn.setVisible(false);
-        cinematicToggleBtn.setBounds(0, -100, 0, 0);  cinematicToggleBtn.setVisible(false);
-        cmToggleBtn.setBounds(0, -100, 0, 0);         cmToggleBtn.setVisible(false);
-        perfToggleBtn.setBounds(0, -100, 0, 0);       perfToggleBtn.setVisible(false);
-        themeToggleBtn.setBounds(0, -100, 0, 0);      themeToggleBtn.setVisible(false);
-        midiIndicator.setBounds(0, -100, 0, 0);       midiIndicator.setVisible(false);
+        // Park legacy header widgets that are never shown in the header.
+        depthDial.setBounds(0, -100, 0, 0);           depthDial.setVisible(false);
+        abCompare.setBounds(0, -100, 0, 0);            abCompare.setVisible(false);
+        presetBrowser.setBounds(0, -200, 0, 0);        presetBrowser.setVisible(false);
 
-        // ── Left: Logo (painted) + ENGINES button ──────────────────────────
+        // ── Left: Logo (painted) + ENGINES button + preset nav ─────────────
         header.removeFromLeft(150); // logo rings + "XOlokun" / "XO_OX Designs" text
         enginesBtn.setBounds(header.removeFromLeft(74).withSizeKeepingCentre(70, 22));
 
-        // ── Right (from edge inward): gear | EXPORT | PLAY | CPU ───────────
+        // Preset nav arrows — just after ENGINES button
+        presetPrevBtn.setBounds(header.removeFromLeft(28).reduced(2));
+        presetNextBtn.setBounds(header.removeFromLeft(28).reduced(2));
+
+        // ── Right (from edge inward): gear | EXPORT | PLAY | CPU | utility strip ──
         {
             auto gearSlice = header.removeFromRight(36); // 8px margin included
             settingsBtn.setBounds(gearSlice.withSizeKeepingCentre(28, 28));
@@ -872,6 +884,16 @@ public:
         surfaceToggleBtn.setButtonText("PLAY");
         surfaceToggleBtn.setBounds(header.removeFromRight(52).withSizeKeepingCentre(48, 26));
         cpuMeter.setBounds(header.removeFromRight(68).withSizeKeepingCentre(64, 20));
+
+        // Utility strip — right side, before macros (inward from CPU)
+        themeToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
+        {
+            auto midiArea = header.removeFromRight(16);
+            midiIndicator.setBounds(midiArea.withSizeKeepingCentre(8, 8));
+        }
+        perfToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
+        cmToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
+        cinematicToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
 
         // ── Center: macros fill remaining space ────────────────────────────
         macros.setBounds(header.reduced(8, 4));
@@ -1300,7 +1322,8 @@ private:
                 if (auto* eng = processor.getEngine(ev.slot))
                     colour = eng->getAccentColour();
             }
-            fieldMap.addNote(ev.midiNote, ev.velocity, colour);
+            if (fieldMap.isVisible())
+                fieldMap.addNote(ev.midiNote, ev.velocity, colour);
             midiIndicator.flash(colour); // flash on every incoming note event
         });
 

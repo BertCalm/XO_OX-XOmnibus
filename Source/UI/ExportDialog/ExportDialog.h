@@ -68,7 +68,7 @@ public:
         auto headerArea = getLocalBounds().removeFromTop(kHeaderH);
         g.setColour(GalleryColors::get(GalleryColors::xoGold));
         g.fillRect(headerArea);
-        g.setColour(juce::Colour(GalleryColors::Light::textDark));
+        g.setColour(juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         g.setFont(GalleryFonts::display(14.0f));
         g.drawText("XORIGINATE", headerArea.reduced(12, 0), juce::Justification::centredLeft);
 
@@ -350,7 +350,7 @@ private:
         previewPlayBtn.setColour(juce::TextButton::buttonColourId,
                                   GalleryColors::get(GalleryColors::xoGold));
         previewPlayBtn.setColour(juce::TextButton::textColourOffId,
-                                  juce::Colour(GalleryColors::Light::textDark));
+                                  juce::Colour(GalleryColors::get(GalleryColors::textDark())));
         A11y::setup(previewPlayBtn, "Preview Play",
                     "Play a 2-second audio preview of the selected preset");
         addAndMakeVisible(previewPlayBtn);
@@ -540,7 +540,7 @@ private:
                 float progress = static_cast<float>(previewPlaybackPos.load())
                                  / static_cast<float>(previewAudioBuffer.getNumSamples());
                 float lineX = x0 + progress * w;
-                g.setColour(juce::Colour(GalleryColors::Light::textDark));
+                g.setColour(juce::Colour(GalleryColors::get(GalleryColors::textDark())));
                 g.drawLine(lineX, static_cast<float>(area.getY()),
                            lineX, static_cast<float>(area.getBottom()), 1.5f);
             }
@@ -767,7 +767,7 @@ private:
                           isPrimary ? GalleryColors::get(GalleryColors::xoGold)
                                     : GalleryColors::get(GalleryColors::borderGray()));
             btn.setColour(juce::TextButton::textColourOffId,
-                          isPrimary ? juce::Colour(GalleryColors::Light::textDark)
+                          isPrimary ? juce::Colour(GalleryColors::get(GalleryColors::textDark()))
                                     : GalleryColors::get(GalleryColors::textDark()));
             A11y::setup(btn, a11yTitle, a11yDesc);
             addAndMakeVisible(btn);

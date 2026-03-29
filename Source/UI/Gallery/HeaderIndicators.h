@@ -44,6 +44,7 @@ public:
     CPUMeter()
     {
         setInterceptsMouseClicks(false, false);
+        A11y::setup(*this, "CPU Meter", "Shows current CPU usage", false);
     }
 
     // Called from XOlokunEditor::timerCallback() (message thread, ~1Hz is fine).
@@ -117,6 +118,7 @@ public:
         // Initialize flash color to a neutral fallback (overwritten on first flash).
         flashColor = juce::Colour(GalleryColors::xoGold);
 
+        A11y::setup(*this, "MIDI Activity", "Flashes when MIDI notes are received", false);
         startTimerHz(30);
     }
 

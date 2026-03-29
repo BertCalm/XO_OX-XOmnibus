@@ -67,6 +67,7 @@ public:
         : processor(proc)
     {
         setInterceptsMouseClicks(false, false);
+        A11y::setup(*this, "Coupling Chain", "Shows the signal routing chain between coupled engines", false);
     }
 
     // Call from OverviewPanel::refresh() or editor timer (message thread only).
@@ -308,7 +309,7 @@ public:
                 const float bd = kBadgeR * scale;
                 g.setColour(node.accent.withAlpha(0.85f));
                 g.fillEllipse(bx, by, bd, bd);
-                g.setColour(juce::Colours::white.withAlpha(0.90f));
+                g.setColour(juce::Colour(GalleryColors::get(GalleryColors::t1())).withAlpha(0.90f));
                 g.setFont(GalleryFonts::value(7.0f * scale));
                 g.drawText(juce::String(node.slot + 1),
                            (int)bx, (int)by, (int)bd, (int)bd,
