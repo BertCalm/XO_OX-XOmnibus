@@ -19,12 +19,19 @@ struct OttoniAdapterVoice {
     // Per-voice vibrato LFO (teen vibrato) — replaces inline vibPhase accumulator
     StandardLFO vib;
 
+    // Voice-steal crossfade (5 ms linear fade-out before new note starts)
+    float stealFadeGain = 1.0f;
+    float stealFadeStep = 0.0f; // 1.0f / (0.005f * sr)
+    bool  isBeingStolen = false;
+    int   pendingNote = 0;
+    float pendingVel  = 0.0f;
+
     void prepare(double s){
         sr=(float)s;int md=(int)(sr/20)+8;
         dl.prepare(md);df.prepare();body.prepare(s);symp.prepare(s,512);drift.prepare(s);lipBuzz.prepare(s);
         vib.reset();
     }
-    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();lipBuzz.reset();active=false;ampEnv=0;vib.reset();}
+    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();lipBuzz.reset();active=false;ampEnv=0;vib.reset();stealFadeGain=1.0f;stealFadeStep=0.0f;isBeingStolen=false;}
     void noteOn(int n,float v){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69.f)/12.f);
         dl.reset();df.reset();body.setParams(freq*0.8f,5);symp.tune(freq);
@@ -59,7 +66,15 @@ public:
                 silenceGate.wake();
                 int t=-1;for(int i=0;i<kV;++i)if(!voices[i].active){t=i;break;}
                 if(t<0)t=nv%kV;nv=(t+1)%kV;
-                voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
+                if(voices[t].active && !voices[t].isBeingStolen){
+                    voices[t].isBeingStolen = true;
+                    voices[t].stealFadeStep = 1.0f / (0.005f * voices[t].sr);
+                    voices[t].stealFadeGain = 1.0f;
+                    voices[t].pendingNote   = msg.getNoteNumber();
+                    voices[t].pendingVel    = msg.getVelocity() / 127.f;
+                } else if(!voices[t].isBeingStolen){
+                    voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
+                }
             } else if (msg.isNoteOff()) {
                 for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
             } else if (msg.isChannelPressure()) {
@@ -187,6 +202,19 @@ public:
             float sL=0,sR=0;
             for(auto&v:voices){
                 if(!v.active)continue;
+
+                // Voice-steal crossfade: fade outgoing voice over 5ms, then start pending note
+                if(v.isBeingStolen){
+                    v.stealFadeGain -= v.stealFadeStep;
+                    if(v.stealFadeGain <= 0.0f){
+                        v.isBeingStolen = false;
+                        v.stealFadeGain = 1.0f;
+                        v.stealFadeStep = 0.0f;
+                        v.noteOn(v.pendingNote, v.pendingVel);
+                        continue;
+                    }
+                }
+
                 float rr=v.releasing?1.f/(v.sr*0.3f):0;
                 v.ampEnv=std::max(0.f,v.ampEnv-rr);
                 if(v.ampEnv<0.0001f&&v.releasing){v.active=false;continue;}
@@ -240,7 +268,7 @@ public:
                 // --- Sympathetic resonance ---
                 float so=v.symp.process(bo,pSy);
 
-                float sig=(bo+so)*v.ampEnv*0.4f;
+                float sig=(bo+so)*v.ampEnv*v.stealFadeGain*0.4f;
 
                 // --- Stereo spread from age/grow ---
                 float w=0.1f+ageScale*0.4f;
@@ -466,7 +494,7 @@ private:
     // Chorus LFO (replaces inline choPhase accumulator)
     StandardLFO choLFO;
     // Delay buffer (stereo, ~1s at 48kHz)
-    static constexpr int kDelMax=96000; // V011: extended for 2000ms at 48kHz
+    static constexpr int kDelMax=192001; // extended for 2000ms at 96kHz (96kHz delay buffer truncation fix)
     float delBufL[kDelMax]={};
     float delBufR[kDelMax]={};
     int   delWr=0;

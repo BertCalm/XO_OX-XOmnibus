@@ -225,6 +225,14 @@ struct OhmAdapterVoice {
     OhmGlassPartial glass; OhmSpectralFreeze specFreeze; OhmGrainEngine grain;
     float lastOut=0, sr=44100;
 
+    // Voice-steal crossfade (5 ms linear fade-out before new note starts)
+    float stealFadeGain = 1.0f;
+    float stealFadeStep = 0.0f;
+    bool  isBeingStolen = false;
+    int   pendingNote = 0;
+    float pendingVel  = 0.0f;
+    bool  pendingBowed = false;
+
     void prepare(double s){
         sr=(float)s; int md=(int)(sr/20)+8;
         dl.prepare(md); df.prepare(); body.prepare(s); symp.prepare(s,512);
@@ -235,7 +243,7 @@ struct OhmAdapterVoice {
         dl.reset();df.reset();body.reset();symp.reset();drift.reset();
         pick.reset();bow.reset();obed.reset();inlaw.reset();
         glass.reset();specFreeze.reset();grain.reset();
-        active=false;ampEnv=0;
+        active=false;ampEnv=0;stealFadeGain=1.0f;stealFadeStep=0.0f;isBeingStolen=false;
     }
     void noteOn(int n,float v){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69.f)/12.f);
@@ -278,8 +286,18 @@ public:
                 int t=-1;
                 for(int i=0;i<kVoices;++i)if(!voices[i].active){t=i;break;}
                 if(t<0)t=nextV%kVoices; nextV=(t+1)%kVoices;
-                voices[t].bowed=(dadInst&&*dadInst>=3.5f&&*dadInst<=4.5f);
-                voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
+                bool newBowed=(dadInst&&*dadInst>=3.5f&&*dadInst<=4.5f);
+                if(voices[t].active && !voices[t].isBeingStolen){
+                    voices[t].isBeingStolen = true;
+                    voices[t].stealFadeStep = 1.0f / (0.005f * voices[t].sr);
+                    voices[t].stealFadeGain = 1.0f;
+                    voices[t].pendingNote   = msg.getNoteNumber();
+                    voices[t].pendingVel    = msg.getVelocity() / 127.f;
+                    voices[t].pendingBowed  = newBowed;
+                } else if(!voices[t].isBeingStolen){
+                    voices[t].bowed = newBowed;
+                    voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
+                }
             } else if(msg.isNoteOff()){
                 for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
             }
@@ -379,6 +397,21 @@ public:
             int voiceIdx = 0;
             for(auto&v:voices){
                 if(!v.active){ ++voiceIdx; continue; }
+
+                // Voice-steal crossfade: fade outgoing voice over 5ms, then start pending note
+                if(v.isBeingStolen){
+                    v.stealFadeGain -= v.stealFadeStep;
+                    if(v.stealFadeGain <= 0.0f){
+                        v.isBeingStolen = false;
+                        v.stealFadeGain = 1.0f;
+                        v.stealFadeStep = 0.0f;
+                        v.bowed = v.pendingBowed;
+                        v.noteOn(v.pendingNote, v.pendingVel);
+                        ++voiceIdx;
+                        continue;
+                    }
+                }
+
                 float relRate=v.releasing?1.f/(v.sr*0.3f):0;
                 v.ampEnv=std::max(0.f,v.ampEnv-relRate);
                 if(v.ampEnv<0.0001f&&v.releasing){v.active=false;++voiceIdx;continue;}
@@ -431,7 +464,7 @@ public:
                 // COMMUNE interaction: low commune = separate, high commune = Dad absorbs interference
                 float interference=(inlawSig+obedSig)*(1-communeTotal);
                 float jammed=dad+dad*communeTotal*(inlawSig+obedSig)*0.2f;
-                float sig=(jammed+interference)*v.ampEnv*0.35f;
+                float sig=(jammed+interference)*v.ampEnv*v.stealFadeGain*0.35f;
                 // V009: per-instrument spatial pan (Tomita — Dad's instruments have positions)
                 // Pan table: 0=banjo(L) 1=guitar(C) 2=mandolin(R) 3=dobro(L) 4=fiddle(R)
                 //            5=harmonica(C) 6=djembe(L) 7=kalimba(R) 8=sitar(C) 9=ukulele(R)

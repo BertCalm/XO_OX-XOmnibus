@@ -106,6 +106,7 @@ public:
         lastSampleL_ = lastSampleR_ = 0.0f;
         extFilterMod_ = 0.0f;
         extRingMod_ = 0.0f;
+        couplingEnvDecayMod_ = 0.0f;
 
         // Output saturation filter
         satFilter_.setMode (CytomicSVF::Mode::LowPass);
@@ -234,9 +235,15 @@ public:
         // Coupling modulation
         pDamping = clamp (pDamping + extFilterMod_, 200.0f, 16000.0f);
 
-        // Feedback coefficient from decay
-        float feedbackCoeff = (pDecay > 29.0f) ? 1.0f
-            : fastExp (-6.9078f / (pDecay * srF_));
+        // EnvToDecay coupling: external envelope signal extends or shortens the reverb tail.
+        // couplingEnvDecayMod_ > 0 lengthens decay (multiplies pDecay up); < 0 shortens it.
+        // Scaled by ×2 so a full coupling amount can double or halve the reverb tail length.
+        float effectiveDecay = pDecay * (1.0f + couplingEnvDecayMod_ * 2.0f);
+        effectiveDecay = clamp (effectiveDecay, 0.1f, 30.0f);
+
+        // Feedback coefficient from (possibly coupled) decay
+        float feedbackCoeff = (effectiveDecay > 29.0f) ? 1.0f
+            : fastExp (-6.9078f / (effectiveDecay * srF_));
 
         // Velocity → exciter brightness (D001)
         float excBrightness = 0.3f + currentVelocity_ * 0.7f;
@@ -418,6 +425,7 @@ public:
         // Reset coupling mods
         extFilterMod_ = 0.0f;
         extRingMod_ = 0.0f;
+        couplingEnvDecayMod_ = 0.0f;
 
         // Silence gate analysis
         const float* rL = buffer.getReadPointer (0);
@@ -443,7 +451,9 @@ public:
                 extRingMod_ = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
                 break;
             case CouplingType::EnvToDecay:
-                // Could modulate decay time
+                // External envelope extends or shortens the FDN reverb tail.
+                // Positive amount lengthens decay; negative tightens it.
+                couplingEnvDecayMod_ = amount;
                 break;
             default:
                 break;
@@ -598,6 +608,7 @@ private:
     float lastSampleR_ = 0.0f;
     float extFilterMod_ = 0.0f;
     float extRingMod_ = 0.0f;
+    float couplingEnvDecayMod_ = 0.0f;  // EnvToDecay: ±1 extends/shortens reverb tail (×2 range)
 
     // Parameter pointers
     std::atomic<float>* pAnchorParam_         = nullptr;

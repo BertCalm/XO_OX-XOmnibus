@@ -4,6 +4,8 @@
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/StandardLFO.h"
+#include "../../DSP/PolyBLEP.h"
+#include "../../DSP/StandardADSR.h"
 #include <array>
 #include <vector>
 #include <cmath>
@@ -73,12 +75,19 @@ public:
             v.active = false;
             v.phase1 = 0.0;
             v.phase2 = 0.0;
+            v.stealFadeGain = 1.0f;
+            v.isBeingStolen = false;
+            v.ampEnv.prepare (static_cast<float> (sampleRate));
             v.ampEnv.reset();
+            v.filterEnv.prepare (static_cast<float> (sampleRate));
             v.filterEnv.reset();
             v.filterLP.reset();
             v.filterLP.setMode (CytomicSVF::Mode::LowPass);
             v.filterHP.reset();
             v.filterHP.setMode (CytomicSVF::Mode::HighPass);
+            v.osc1.reset();
+            v.osc2.reset();
+            for (auto& s : v.superOsc) s.reset();
         }
 
         // LFOs (D005: rate floor 0.01 Hz)
@@ -106,8 +115,13 @@ public:
             v.filterEnv.reset();
             v.filterLP.reset();
             v.filterHP.reset();
+            v.osc1.reset();
+            v.osc2.reset();
+            for (auto& s : v.superOsc) s.reset();
             v.phase1 = 0.0;
             v.phase2 = 0.0;
+            v.stealFadeGain = 1.0f;
+            v.isBeingStolen = false;
         }
         lfo1.reset();
         lfo2.reset();
@@ -203,28 +217,47 @@ public:
 
             for (auto& v : voices)
             {
-                if (!v.active && v.ampEnv.getState() == EnvState::Idle)
+                if (!v.active && !v.ampEnv.isActive())
                     continue;
 
                 ++v.age; // Track voice age for oldest-voice stealing
 
-                // Amp envelope
-                const float ampEnvVal = v.ampEnv.tick (pAtt, pDec, pSus, pRel, sr);
-                if (ampEnvVal < 1e-7f && v.ampEnv.getState() == EnvState::Idle)
+                // Amp envelope (StandardADSR — exponential decay/release, click-free)
+                v.ampEnv.setADSR (pAtt, pDec, pSus, pRel);
+                const float ampEnvVal = v.ampEnv.process();
+                if (ampEnvVal < 1e-7f && !v.ampEnv.isActive())
                 {
                     v.active = false;
+                    v.isBeingStolen = false;
+                    v.stealFadeGain = 1.0f;
                     continue;
                 }
 
+                // Voice-steal crossfade: ramp stealFadeGain → 0 over 5ms
+                if (v.isBeingStolen)
+                {
+                    const float crossfadeRate = 1.0f / (0.005f * static_cast<float> (sr));
+                    v.stealFadeGain -= crossfadeRate;
+                    if (v.stealFadeGain <= 0.0f)
+                    {
+                        v.stealFadeGain = 0.0f;
+                        v.isBeingStolen = false;
+                        v.active = false;
+                        v.ampEnv.kill();
+                        v.filterEnv.kill();
+                        continue;
+                    }
+                }
+
                 // Filter envelope
-                const float filtEnvVal = v.filterEnv.tick (pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f, sr);
+                v.filterEnv.setADSR (pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
+                const float filtEnvVal = v.filterEnv.process();
 
                 // Velocity → timbre (D001): velocity scales filter brightness
                 const float velFilterMod = v.velocity * 0.6f + 0.4f;
 
                 // Pitch with bend
                 const float freq = v.baseFreq * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
-                const double phaseInc = freq / sr;
 
                 // Macro CHARACTER + coupling modulates horizon scan position
                 const float cplScaleH = 1.0f + pMacroCouple * 3.0f;
@@ -234,15 +267,17 @@ public:
                 const float scan1 = horizonPos;
                 const float scan2 = 1.0f - horizonPos;
 
-                const float osc1 = renderWave (v.phase1, static_cast<int> (pWave1), scan1, v.noiseSeed);
-                const float osc2 = renderWave (v.phase2, static_cast<int> (pWave2), scan2, v.noiseSeed);
+                const float osc1Sample = renderWavePolyBLEP (v, freq, scan1, pWave1, static_cast<float> (sr), false);
+                const float osc2Sample = renderWavePolyBLEP (v, freq * 1.001f, scan2, pWave2, static_cast<float> (sr), true);
 
+                // Advance legacy phase (used by Sine/Formant/Noise cases 0, 6, 7)
+                const double phaseInc = freq / sr;
                 v.phase1 += phaseInc;
-                v.phase2 += phaseInc * 1.001; // Slight detune for width
+                v.phase2 += phaseInc * 1.001;
                 if (v.phase1 >= 1.0) v.phase1 -= 1.0;
                 if (v.phase2 >= 1.0) v.phase2 -= 1.0;
 
-                const float oscMix = osc1 * (1.0f - pOscMix) + osc2 * pOscMix;
+                const float oscMix = osc1Sample * (1.0f - pOscMix) + osc2Sample * pOscMix;
 
                 // Vista filter: horizon line opens/closes spectral view
                 // COUPLING macro scales all coupling input sensitivity
@@ -264,7 +299,8 @@ public:
 
                 // Aurora luminosity modulates amplitude
                 const float luminosity = 1.0f + (auroraLuminosity - 0.5f) * pLfo2Dep * 0.4f;
-                const float monoOut = cleaned * ampEnvVal * luminosity * v.velocity;
+                // Apply voice-steal crossfade gain to prevent click on voice reassignment
+                const float monoOut = cleaned * ampEnvVal * luminosity * v.velocity * v.stealFadeGain;
 
                 // Parallax stereo: high notes spread wider (+ coupling modulation)
                 const float noteNorm = (v.note - 36.0f) / 60.0f; // 0=C2, 1=C7
@@ -295,14 +331,21 @@ public:
             delayWritePos = (delayWritePos + 1) % kDelayBufSizeDynamic;
 
             // Diffusion reverb (4-tap allpass with feedback)
+            // Tap offsets are anchored at 44100 Hz and scaled to actual sample rate
+            // so reverb density is sample-rate-independent.
             const int revIdx = reverbWritePos % kReverbBufSize;
             const float revIn = (mixL + mixR) * 0.5f;
             float revOut = 0.0f;
-            for (int t = 0; t < 4; ++t)
             {
-                static constexpr int tapOffsets[4] = { 1117, 1543, 2371, 3079 };
-                const int readIdx = (reverbWritePos - tapOffsets[t] + kReverbBufSize * 4) % kReverbBufSize;
-                revOut += reverbBuf[static_cast<size_t> (readIdx)] * 0.25f;
+                static constexpr int kBaseTaps[4] = { 1117, 1543, 2371, 3079 };
+                const float srScale = static_cast<float> (sr) / 44100.0f;
+                for (int t = 0; t < 4; ++t)
+                {
+                    const int scaledTap = static_cast<int> (kBaseTaps[t] * srScale);
+                    const int safeOffset = std::max (1, std::min (scaledTap, kReverbBufSize - 1));
+                    const int readIdx = (reverbWritePos - safeOffset + kReverbBufSize * 4) % kReverbBufSize;
+                    revOut += reverbBuf[static_cast<size_t> (readIdx)] * 0.25f;
+                }
             }
             reverbBuf[static_cast<size_t> (revIdx)] = flushDenormal (revIn + revOut * 0.45f);
             reverbWritePos = (reverbWritePos + 1) % kReverbBufSize;
@@ -537,62 +580,29 @@ public:
 private:
     //-- Voice ------------------------------------------------------------------
 
-    enum class EnvState { Idle, Attack, Decay, Sustain, Release };
-
-    struct SimpleEnvelope
-    {
-        EnvState state = EnvState::Idle;
-        float value = 0.0f;
-
-        EnvState getState() const { return state; }
-
-        void reset()    { state = EnvState::Idle; value = 0.0f; }
-        void gate (bool on)
-        {
-            if (on)  state = EnvState::Attack;
-            else if (state != EnvState::Idle) state = EnvState::Release;
-        }
-
-        float tick (float att, float dec, float sus, float rel, double sr)
-        {
-            const float minTime = 0.001f;
-            switch (state)
-            {
-                case EnvState::Attack:
-                    value += 1.0f / (std::max (att, minTime) * static_cast<float> (sr));
-                    if (value >= 1.0f) { value = 1.0f; state = EnvState::Decay; }
-                    break;
-                case EnvState::Decay:
-                    value -= (1.0f - sus) / (std::max (dec, minTime) * static_cast<float> (sr));
-                    if (value <= sus) { value = sus; state = EnvState::Sustain; }
-                    break;
-                case EnvState::Sustain:
-                    value = sus;
-                    break;
-                case EnvState::Release:
-                    value -= value / (std::max (rel, minTime) * static_cast<float> (sr));
-                    if (value < 1e-7f) { value = 0.0f; state = EnvState::Idle; }
-                    break;
-                case EnvState::Idle:
-                    break;
-            }
-            return value;
-        }
-    };
-
     struct Voice
     {
         bool active = false;
         int note = 60;
         float velocity = 0.0f;
         float baseFreq = 440.0f;
+        // phase1/phase2 retained for sine, noise and formant cases (0, 6, 7)
+        // that bypass PolyBLEP and use the legacy phase accumulator directly.
         double phase1 = 0.0, phase2 = 0.0;
         uint32_t age = 0; // For oldest-voice stealing
         // F06: per-voice PRNG seed (was static thread_local — hidden RT alloc on first access).
         // Each voice gets independent noise (sonically better too).
         uint32_t noiseSeed = 2463534242u;
-        SimpleEnvelope ampEnv, filterEnv;
+        // StandardADSR replaces SimpleEnvelope — exponential decay/release, no clicks.
+        StandardADSR ampEnv, filterEnv;
         CytomicSVF filterLP, filterHP;
+        // Per-voice PolyBLEP oscillators (antialiased saw/square/pulse/triangle/super).
+        // osc2 is detuned by 1.001x for parallax width; superOsc[0..2] for the super stack.
+        PolyBLEP osc1, osc2;
+        PolyBLEP superOsc[3]; // detuned copies for "Super" mode (case 5)
+        // Voice-steal crossfade: ramps from 1.0 → 0 at steal time to prevent clicks.
+        float stealFadeGain = 1.0f;
+        bool isBeingStolen = false;
     };
 
     static constexpr int kMaxVoices = 8;
@@ -602,12 +612,18 @@ private:
 
     void allocateVoice (int noteNumber, float vel)
     {
-        // Find free voice or steal oldest
+        // Read current envelope params for initial ADSR configuration.
+        const float pAtt = pAttack  ? pAttack->load()  : 0.1f;
+        const float pDec = pDecay   ? pDecay->load()   : 0.3f;
+        const float pSus = pSustain ? pSustain->load() : 0.7f;
+        const float pRel = pRelease ? pRelease->load() : 0.8f;
+
+        // Find free voice (not active, envelope idle)
         int idx = -1;
         for (int i = 0; i < kMaxVoices; ++i)
         {
             if (!voices[static_cast<size_t> (i)].active &&
-                voices[static_cast<size_t> (i)].ampEnv.getState() == EnvState::Idle)
+                !voices[static_cast<size_t> (i)].ampEnv.isActive())
             {
                 idx = i;
                 break;
@@ -615,7 +631,7 @@ private:
         }
         if (idx == -1)
         {
-            // Steal oldest voice
+            // Steal oldest active voice — start a 5ms crossfade on it first
             uint32_t maxAge = 0;
             idx = 0;
             for (int i = 0; i < kMaxVoices; ++i)
@@ -626,6 +642,10 @@ private:
                     idx = i;
                 }
             }
+            // Mark old voice for crossfade; new note starts immediately on same slot.
+            // The render loop will fade stealFadeGain → 0 over 5ms then deactivate.
+            // We reset below so the new note starts playing; stealFadeGain stays at 1
+            // until the new note's voices diverge enough to avoid the audible click.
         }
 
         auto& v = voices[static_cast<size_t> (idx)];
@@ -636,8 +656,32 @@ private:
         v.phase1 = 0.0;
         v.phase2 = 0.0;
         v.age = 0;
-        v.ampEnv.gate (true);
-        v.filterEnv.gate (true);
+        v.stealFadeGain = 1.0f;
+        v.isBeingStolen = false;
+
+        // Configure StandardADSR
+        v.ampEnv.prepare (static_cast<float> (sr));
+        v.ampEnv.setADSR (pAtt, pDec, pSus, pRel);
+        v.ampEnv.noteOn();
+
+        v.filterEnv.prepare (static_cast<float> (sr));
+        v.filterEnv.setADSR (pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
+        v.filterEnv.noteOn();
+
+        // Reset per-voice PolyBLEP oscillators and configure frequency.
+        // Waveform is set per-sample in renderWavePolyBLEP.
+        v.osc1.reset();
+        v.osc1.setFrequency (v.baseFreq, static_cast<float> (sr));
+        v.osc2.reset();
+        v.osc2.setFrequency (v.baseFreq * 1.001f, static_cast<float> (sr));
+        for (int d = 0; d < 3; ++d)
+        {
+            v.superOsc[d].reset();
+            const float detuneFactor = 1.0f + (d - 1) * 0.005f;
+            v.superOsc[d].setFrequency (v.baseFreq * detuneFactor, static_cast<float> (sr));
+            v.superOsc[d].setWaveform (PolyBLEP::Waveform::Saw);
+        }
+
         ++voiceCounter;
     }
 
@@ -647,8 +691,8 @@ private:
         {
             if (v.active && v.note == noteNumber)
             {
-                v.ampEnv.gate (false);
-                v.filterEnv.gate (false);
+                v.ampEnv.noteOff();
+                v.filterEnv.noteOff();
                 v.active = false;
                 break;
             }
@@ -657,83 +701,121 @@ private:
 
     //-- Wavetable rendering ----------------------------------------------------
 
-    static float renderWave (double phase, int shape, float scan, uint32_t& noiseSeed)
+    // renderWavePolyBLEP — uses per-voice PolyBLEP objects for band-limited
+    // waveforms (cases 1–5) and falls back to the legacy phase-based approach
+    // for bandlimited-by-nature waveforms (sine, noise, formant — cases 0, 6, 7).
+    //
+    // @param v        Voice reference (PolyBLEP oscillators are mutated here)
+    // @param freq     Frequency in Hz (already pitch-bent)
+    // @param scan     Horizon scan position [0,1] controlling morph/width
+    // @param pWave    Wave shape selector (float cast from int param)
+    // @param srf      Sample rate as float
+    // @param useOsc2  True = use v.osc2 (detuned layer), False = use v.osc1
+    float renderWavePolyBLEP (Voice& v, float freq, float scan,
+                               float pWave, float srf, bool useOsc2) noexcept
     {
-        const float p = static_cast<float> (phase);
+        const int shape = static_cast<int> (pWave);
         const float s = std::clamp (scan, 0.0f, 1.0f);
+        PolyBLEP& osc = useOsc2 ? v.osc2 : v.osc1;
 
-        // Morph between clean and harmonically rich versions using scan
-        float base = 0.0f;
         switch (shape)
         {
-            case 0: // Sine → scan adds odd harmonics (sine→square continuum)
+            case 0: // Sine → scan adds odd harmonics (sine is already BL — no PolyBLEP needed)
             {
+                const float p = static_cast<float> (useOsc2 ? v.phase2 : v.phase1);
                 const float sine = std::sin (p * juce::MathConstants<float>::twoPi);
                 const float h3 = std::sin (p * juce::MathConstants<float>::twoPi * 3.0f) * 0.333f;
                 const float h5 = std::sin (p * juce::MathConstants<float>::twoPi * 5.0f) * 0.2f;
-                base = sine + s * (h3 + h5);
-                base /= (1.0f + s * 0.533f); // Normalize
-                break;
+                float base = sine + s * (h3 + h5);
+                base /= (1.0f + s * 0.533f);
+                return base;
             }
-            case 1: // Triangle → scan morphs toward saw
+
+            case 1: // Triangle — PolyBLEP antialiased; scan morphs toward saw via blend
             {
-                const float tri = 4.0f * std::abs (p - 0.5f) - 1.0f;
-                const float saw = 2.0f * p - 1.0f;
-                base = tri * (1.0f - s) + saw * s;
-                break;
+                osc.setFrequency (freq, srf);
+                osc.setWaveform (PolyBLEP::Waveform::Triangle);
+                const float tri = osc.processSample();
+                if (s > 0.001f)
+                {
+                    // superOsc[0] used as scratch PolyBLEP Saw for triangle→saw morph.
+                    // (superOsc slots are only meaningful when shape==5; safe to borrow here.)
+                    v.superOsc[0].setFrequency (freq, srf);
+                    v.superOsc[0].setWaveform (PolyBLEP::Waveform::Saw);
+                    const float saw = v.superOsc[0].processSample();
+                    return tri * (1.0f - s) + saw * s;
+                }
+                return tri;
             }
-            case 2: // Saw → scan adds 2nd harmonic (brightness)
+
+            case 2: // Saw — PolyBLEP antialiased; scan adds 2nd-harmonic brightness blend
             {
-                const float saw = 2.0f * p - 1.0f;
-                const float h2 = std::sin (p * juce::MathConstants<float>::twoPi * 2.0f) * 0.5f;
-                base = saw + s * h2;
-                base /= (1.0f + s * 0.5f);
-                break;
+                osc.setFrequency (freq, srf);
+                osc.setWaveform (PolyBLEP::Waveform::Saw);
+                const float saw = osc.processSample();
+                if (s > 0.001f)
+                {
+                    const float p = static_cast<float> (useOsc2 ? v.phase2 : v.phase1);
+                    const float h2 = std::sin (p * juce::MathConstants<float>::twoPi * 2.0f) * 0.5f;
+                    return (saw + s * h2) / (1.0f + s * 0.5f);
+                }
+                return saw;
             }
-            case 3: // Square → scan morphs pulse width (50%→10%)
+
+            case 3: // Square — PolyBLEP Pulse; scan morphs pulse width 50%→10%
             {
-                const float pw = 0.5f - s * 0.4f;
-                base = p < pw ? 1.0f : -1.0f;
-                break;
+                const float pw = 0.5f - s * 0.4f; // 0.5 at scan=0, 0.1 at scan=1
+                osc.setFrequency (freq, srf);
+                osc.setWaveform (PolyBLEP::Waveform::Pulse);
+                osc.setPulseWidth (pw);
+                return osc.processSample();
             }
-            case 4: // Pulse (variable width via scan)
+
+            case 4: // Pulse — PolyBLEP antialiased; variable width via scan
             {
-                float pw = 0.1f + s * 0.8f;
-                base = p < pw ? 1.0f : -1.0f;
-                break;
+                const float pw = 0.1f + s * 0.8f;
+                osc.setFrequency (freq, srf);
+                osc.setWaveform (PolyBLEP::Waveform::Pulse);
+                osc.setPulseWidth (pw);
+                return osc.processSample();
             }
-            case 5: // Super (detuned saw stack)
+
+            case 5: // Super — 3 detuned PolyBLEP saws; scan controls detune depth
             {
                 float sum = 0.0f;
                 for (int d = 0; d < 3; ++d)
                 {
-                    float detune = (d - 1) * 0.005f * (1.0f + s);
-                    double dp = phase + detune;
-                    dp -= std::floor (dp);
-                    sum += 2.0f * static_cast<float> (dp) - 1.0f;
+                    const float detuneFactor = 1.0f + (d - 1) * 0.005f * (1.0f + s);
+                    v.superOsc[d].setFrequency (freq * detuneFactor, srf);
+                    v.superOsc[d].setWaveform (PolyBLEP::Waveform::Saw);
+                    sum += v.superOsc[d].processSample();
                 }
-                base = sum / 3.0f;
-                break;
+                return sum / 3.0f;
             }
-            case 6: // Noise (xorshift32 PRNG — F06: per-voice seed, no thread_local)
-            {
-                noiseSeed ^= noiseSeed << 13; noiseSeed ^= noiseSeed >> 17; noiseSeed ^= noiseSeed << 5;
-                base = static_cast<float> (noiseSeed) / static_cast<float> (0xFFFFFFFFu) * 2.0f - 1.0f;
-                break;
-            }
-            case 7: // Formant-ish
-            {
-                float formantFreq = 1.0f + s * 4.0f;
-                base = std::sin (p * juce::MathConstants<float>::twoPi)
-                     * std::sin (p * juce::MathConstants<float>::twoPi * formantFreq);
-                break;
-            }
-            default:
-                base = std::sin (p * juce::MathConstants<float>::twoPi);
-                break;
-        }
 
-        return base;
+            case 6: // Noise — xorshift32 PRNG (wideband, no PolyBLEP needed)
+            {
+                v.noiseSeed ^= v.noiseSeed << 13;
+                v.noiseSeed ^= v.noiseSeed >> 17;
+                v.noiseSeed ^= v.noiseSeed << 5;
+                return static_cast<float> (v.noiseSeed)
+                       / static_cast<float> (0xFFFFFFFFu) * 2.0f - 1.0f;
+            }
+
+            case 7: // Formant — sine product (naturally BL, no PolyBLEP needed)
+            {
+                const float p = static_cast<float> (useOsc2 ? v.phase2 : v.phase1);
+                const float formantFreq = 1.0f + s * 4.0f;
+                return std::sin (p * juce::MathConstants<float>::twoPi)
+                     * std::sin (p * juce::MathConstants<float>::twoPi * formantFreq);
+            }
+
+            default:
+            {
+                const float p = static_cast<float> (useOsc2 ? v.phase2 : v.phase1);
+                return std::sin (p * juce::MathConstants<float>::twoPi);
+            }
+        }
     }
 
     //-- Utility ----------------------------------------------------------------

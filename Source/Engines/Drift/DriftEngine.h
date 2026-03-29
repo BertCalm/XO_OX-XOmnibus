@@ -419,27 +419,29 @@ private:
 // DriftFracture — circular-buffer stutter glitch.
 // Ported from XOdyssey's Fracture (named Signature Trait in the XOdyssey spec).
 //
-// Captures audio into a 4096-sample fixed circular buffer (~93ms at 44.1kHz)
-// and probabilistically replays fragments, creating stutter / granular-like
+// Captures audio into a circular buffer (~93ms at any sample rate) and
+// probabilistically replays fragments, creating stutter / granular-like
 // effects. Each voice has its own independent Fracture instance.
 //
-// Buffer is a std::array (pre-allocated, zero heap on the audio thread).
+// Buffer is a std::vector allocated in prepare() — size is SR-derived so
+// grain length is consistent at 44.1, 48, 88.2, and 96kHz.
 // The FRACTURE macro directly maps to drift_fractureIntensity.
 //==============================================================================
 class DriftFracture
 {
 public:
-    static constexpr int kBufferSize = 4096;  // ~93ms at 44100 Hz
-
     void prepare (double sampleRate) noexcept
     {
         sr = sampleRate;
+        // ~93ms max grain length at any sample rate, padded to 16-sample boundary
+        bufferSize = static_cast<int> (0.093 * sampleRate) + 16;
+        buffer.assign (static_cast<size_t> (bufferSize), 0.0f);
         reset();
     }
 
     void reset() noexcept
     {
-        buffer.fill (0.0f);
+        std::fill (buffer.begin(), buffer.end(), 0.0f);
         writePos = 0;
         readPos = 0;
         stutterCounter = 0;
@@ -453,14 +455,14 @@ public:
     // rate:      0.0–1.0 — stutter speed (higher = shorter, faster repeats)
     float process (float input, bool enable, float intensity, float rate) noexcept
     {
-        if (!enable || intensity < 0.0001f) return input;
+        if (!enable || intensity < 0.0001f || bufferSize == 0) return input;
 
         // Write to circular buffer
         buffer[static_cast<size_t> (writePos)] = input;
-        writePos = (writePos + 1) % kBufferSize;
+        writePos = (writePos + 1) % bufferSize;
 
         // Stutter length determined by rate: high rate → short grains
-        int stutterLen = static_cast<int> ((1.0f - rate * 0.8f) * static_cast<float> (kBufferSize) * 0.5f);
+        int stutterLen = static_cast<int> ((1.0f - rate * 0.8f) * static_cast<float> (bufferSize) * 0.5f);
         stutterLen = std::max (stutterLen, 64);
 
         if (!stuttering)
@@ -473,7 +475,7 @@ public:
             {
                 stuttering = true;
                 stutterCounter = 0;
-                readPos = (writePos - stutterLen + kBufferSize) % kBufferSize;
+                readPos = (writePos - stutterLen + bufferSize) % bufferSize;
                 currentStutterLen = stutterLen;
                 stutterPlayPos = 0;
             }
@@ -484,7 +486,7 @@ public:
         }
 
         float stuttered = buffer[static_cast<size_t> (readPos)];
-        readPos = (readPos + 1) % kBufferSize;
+        readPos = (readPos + 1) % bufferSize;
         ++stutterPlayPos;
 
         if (stutterPlayPos >= currentStutterLen)
@@ -498,7 +500,8 @@ public:
 
 private:
     double sr = 44100.0;
-    std::array<float, kBufferSize> buffer {};
+    int bufferSize = 4096;  // computed in prepare() as ~93ms at actual SR
+    std::vector<float> buffer;
     int writePos = 0;
     int readPos = 0;
     int stutterCounter = 0;

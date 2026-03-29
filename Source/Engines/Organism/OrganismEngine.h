@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/CytomicSVF.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/SRO/SilenceGate.h"
@@ -193,58 +194,14 @@ struct OrgTriOsc {
 };
 
 // ---------------------------------------------------------------------------
-// OrgFilter — 2-pole lowpass filter (biquad bilinear transform)
-// Tuned to the automaton's filter cell output each block.
+// OrgFilter — previously a biquad bilinear-transform lowpass.
+// Replaced with CytomicSVF (TPT / matched-Z) for correct high-frequency
+// tracking and unconditional stability. CytomicSVF is declared in
+// Source/DSP/CytomicSVF.h and included above.
+// Usage: filter.setCoefficients(cutoffHz, resonance, sampleRate)
+//        filter.processSample(input)
+//        filter.reset()
 // ---------------------------------------------------------------------------
-struct OrgFilter {
-    float x1=0.f, x2=0.f;
-    float y1=0.f, y2=0.f;
-    float b0=1.f, b1=0.f, b2=0.f;
-    float a1=0.f, a2=0.f;
-    float lastFc=-1.f, lastQ=-1.f;
-
-    void reset() {
-        x1=x2=y1=y2=0.f;
-        lastFc=lastQ=-1.f;
-        b0=1.f; b1=b2=a1=a2=0.f;
-    }
-
-    void computeCoeffs(float fc, float Q, float sr) {
-        if (fc == lastFc && Q == lastQ) return;
-        lastFc = fc; lastQ = Q;
-
-        fc = clamp(fc, 20.f, sr * 0.45f);
-        Q  = clamp(Q,  0.5f, 20.f);
-
-        float w0    = 6.2831853f * fc / sr;
-        float cosW  = fastCos(w0);
-        float sinW  = fastSin(w0);
-        float alpha = sinW / (2.f * Q);
-
-        float b0r = (1.f - cosW) * 0.5f;
-        float b1r = 1.f - cosW;
-        float b2r = (1.f - cosW) * 0.5f;
-        float a0r = 1.f + alpha;
-        float a1r = -2.f * cosW;
-        float a2r = 1.f - alpha;
-
-        float inv = 1.f / a0r;
-        b0 = b0r * inv;
-        b1 = b1r * inv;
-        b2 = b2r * inv;
-        a1 = a1r * inv;
-        a2 = a2r * inv;
-    }
-
-    float process(float in, float fc, float Q, float sr) {
-        computeCoeffs(fc, Q, sr);
-        float out = b0*in + b1*x1 + b2*x2 - a1*y1 - a2*y2;
-        out = flushDenormal(out);
-        x2=x1; x1=in;
-        y2=y1; y1=out;
-        return out;
-    }
-};
 
 // ---------------------------------------------------------------------------
 // OrgReverb — minimal allpass diffusion reverb (emergence shimmer)
@@ -474,6 +431,7 @@ public:
         triOsc.prepare(sampleRate);
         subOsc.prepare(sampleRate);
         filter.reset();
+        filter.setMode (CytomicSVF::Mode::LowPass);  // fixed mode — set once
         reverb.prepare(sampleRate);
 
         // SR-dependent smooth coefficient: ~3ms time constant, sample-rate correct
@@ -743,9 +701,6 @@ public:
         const float decCoeff = smoothCoeffFromTime(ampDec, sr);
         const float relCoeff = smoothCoeffFromTime(ampRel, sr);
 
-        // Resonance → Q factor 0.5 → 12.0
-        const float Q = 0.5f + filterRes * 11.5f;
-
         // Root pitch from MIDI note, with pitch bend and coupling pitch offset
         const float rootFreq = midiToFreq(currentNote)
                                * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
@@ -874,9 +829,16 @@ public:
                 + savedCouplingFilter,
                 200.f, 8000.f);
 
-            // Resonance gain compensation — prevent clipping at high Q
-            float gainComp = 1.0f / (1.0f + Q * 0.5f);
-            float filtered = filter.process(mixed * gainComp, finalCutoff, Q, sr);
+            // Resonance gain compensation — prevent clipping at high resonance.
+            // CytomicSVF resonance is [0,1]; 1.0 = self-oscillation.
+            // org_filterRes is declared [0, 0.9] so self-oscillation is never
+            // reached by parameter alone. gainComp scales proportionally.
+            float gainComp = 1.0f / (1.0f + filterRes * 5.75f);
+            // CytomicSVF: TPT/matched-Z lowpass. Mode is fixed to LowPass in
+            // prepare(). setCoefficients_fast is used because finalCutoff changes
+            // every sample (automaton cell + LFO modulation).
+            filter.setCoefficients_fast (finalCutoff, filterRes, sr);
+            float filtered = filter.processSample (mixed * gainComp);
 
             // --- Amp envelope + gain ---
             float output = filtered * ampEnvLevel * 0.65f;
@@ -959,7 +921,7 @@ private:
     OrgSquareOsc sqOsc;
     OrgTriOsc    triOsc;
     OrgSubOsc    subOsc;
-    OrgFilter    filter;
+    CytomicSVF   filter;  // matched-Z TPT lowpass (replaces bilinear OrgFilter)
     OrgReverb    reverb;
 
     // Automaton state

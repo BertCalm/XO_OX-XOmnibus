@@ -91,12 +91,22 @@ struct FMOperator
     {
         sr = sampleRate;
         phase = 0.0f;
+        cachedPhaseInc = 0.0f;
     }
 
-    float process (float freqHz, float phaseModulation = 0.0f) noexcept
+    // Call this in noteOn and whenever pitch changes. Caches freqHz / sr so
+    // the per-sample process() loop avoids an unnecessary division each sample.
+    void setFrequency (float freqHz) noexcept
     {
-        float phaseInc = freqHz / sr;
-        phase += phaseInc;
+        cachedPhaseInc = (sr > 0.0f) ? (freqHz / sr) : 0.0f;
+    }
+
+    // process() uses the cached phase increment. Pass freqHz=0 if the frequency
+    // was already set via setFrequency(); the argument is ignored when nonzero
+    // only if you explicitly want to override the cache per-call.
+    float process (float phaseModulation = 0.0f) noexcept
+    {
+        phase += cachedPhaseInc;
         if (phase >= 1.0f) phase -= 1.0f;
         if (phase < 0.0f) phase += 1.0f;
 
@@ -108,10 +118,15 @@ struct FMOperator
         return fastSin (effPhase * 6.28318530718f);
     }
 
-    void reset() noexcept { phase = 0.0f; }
+    void reset() noexcept
+    {
+        phase = 0.0f;
+        cachedPhaseInc = 0.0f;
+    }
 
     float sr = 48000.0f;
     float phase = 0.0f;
+    float cachedPhaseInc = 0.0f;
 };
 
 //==============================================================================
@@ -469,8 +484,10 @@ public:
                 // Effective FM index = base index * modulation envelope
                 float fmIndex = velIndex * modEnvLevel;
 
-                // Modulator frequency = carrier * ratio
-                float modFreq = freq * ratioNow;
+                // Update cached phase increments — freq changes each sample due to glide/LFO/bend.
+                // This keeps the cache valid so process() stays O(1) with no per-sample division.
+                voice.carrier.setFrequency (freq);
+                voice.modulator.setFrequency (freq * ratioNow);
 
                 float fmOutput = 0.0f;
 
@@ -478,28 +495,28 @@ public:
                 {
                     case 0:  // Series: modulator → carrier (classic DX EP)
                     {
-                        float modOut = voice.modulator.process (modFreq);
+                        float modOut = voice.modulator.process();
                         float phaseMod = modOut * fmIndex;
-                        fmOutput = voice.carrier.process (freq, phaseMod);
+                        fmOutput = voice.carrier.process (phaseMod);
                         break;
                     }
                     case 1:  // Parallel: modulator + carrier (organ-like)
                     {
-                        float modOut = voice.modulator.process (modFreq);
-                        float carrOut = voice.carrier.process (freq);
+                        float modOut = voice.modulator.process();
+                        float carrOut = voice.carrier.process();
                         fmOutput = carrOut + modOut * fmIndex * 0.5f;
                         break;
                     }
                     case 2:  // Feedback: modulator feeds back into itself
                     {
                         float fbAmount = pFeedback * voice.feedbackState;
-                        float modOut = voice.modulator.process (modFreq, fbAmount * 0.3f);
+                        float modOut = voice.modulator.process (fbAmount * 0.3f);
                         // Saturation clamp: prevent feedback runaway at high pFeedback values.
                         // fastTanh soft-clips feedbackState to roughly ±1.0, preserving
                         // FM character while bounding the signal from growing unbounded.
                         voice.feedbackState = fastTanh (modOut);
                         float phaseMod = modOut * fmIndex;
-                        fmOutput = voice.carrier.process (freq, phaseMod);
+                        fmOutput = voice.carrier.process (phaseMod);
                         break;
                     }
                 }
@@ -566,6 +583,13 @@ public:
         v.modulator.prepare (srf);
         v.modulator.reset();
 
+        // Cache phase increments at note-on. renderBlock recomputes these when
+        // pitch or ratio changes (glide, bend, LFO), so they are also updated
+        // per-sample in the render loop when glide is active.
+        float ratio = paramRatio ? paramRatio->load() : 2.0f;
+        v.carrier.setFrequency (freq);
+        v.modulator.setFrequency (freq * ratio);
+
         // Amp envelope params — read before mod env so release can be shared
         float attack  = paramAttack  ? paramAttack->load()  : 0.005f;
         float decay   = paramDecay   ? paramDecay->load()   : 1.0f;
@@ -587,9 +611,12 @@ public:
         v.ampEnv.setADSR (attack, decay, sustain, release);
         v.ampEnv.triggerHard();
 
-        // Filter envelope
+        // Filter envelope — sustain is user-controlled via opco_filterSustain.
+        // Default 0.0 preserves the classic DX EP behavior (filter closes fully after decay).
+        // Non-zero sustain lets the filter hold open, giving smoother pad/string-like tones.
+        float fltSus = paramFilterSustain ? paramFilterSustain->load() : 0.0f;
         v.filterEnv.prepare (srf);
-        v.filterEnv.setADSR (0.001f, 0.4f + (1.0f - vel) * 0.4f, 0.0f, 0.4f);
+        v.filterEnv.setADSR (0.001f, 0.4f + (1.0f - vel) * 0.4f, fltSus, 0.4f);
         v.filterEnv.triggerHard();
 
         v.svf.reset();
@@ -670,6 +697,11 @@ public:
         // Filter
         params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_filterEnvAmt", 1 }, "Opcode Filter Env Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+        // opco_filterSustain: how much the filter envelope holds open after decay.
+        // At 0.0 (default) the filter closes completely — the classic DX EP character.
+        // At 1.0 the filter stays fully open after the decay sweep, enabling pad-like tones.
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_filterSustain", 1 }, "Opcode Filter Sustain",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
         // FUSION
         params.push_back (std::make_unique<PF> (juce::ParameterID { "opco_migration", 1 }, "Opcode Migration",
@@ -717,8 +749,9 @@ public:
         paramModAttack    = apvts.getRawParameterValue ("opco_modAttack");
         paramModDecay     = apvts.getRawParameterValue ("opco_modDecay");
         paramModSustain   = apvts.getRawParameterValue ("opco_modSustain");
-        paramFilterEnvAmt = apvts.getRawParameterValue ("opco_filterEnvAmt");
-        paramMigration    = apvts.getRawParameterValue ("opco_migration");
+        paramFilterEnvAmt     = apvts.getRawParameterValue ("opco_filterEnvAmt");
+        paramFilterSustain    = apvts.getRawParameterValue ("opco_filterSustain");
+        paramMigration        = apvts.getRawParameterValue ("opco_migration");
         paramBendRange    = apvts.getRawParameterValue ("opco_bendRange");
         paramMacroCharacter = apvts.getRawParameterValue ("opco_macroCharacter");
         paramMacroMovement  = apvts.getRawParameterValue ("opco_macroMovement");
@@ -763,6 +796,7 @@ private:
     std::atomic<float>* paramModDecay = nullptr;
     std::atomic<float>* paramModSustain = nullptr;
     std::atomic<float>* paramFilterEnvAmt = nullptr;
+    std::atomic<float>* paramFilterSustain = nullptr;
     std::atomic<float>* paramMigration = nullptr;
     std::atomic<float>* paramBendRange = nullptr;
     std::atomic<float>* paramMacroCharacter = nullptr;

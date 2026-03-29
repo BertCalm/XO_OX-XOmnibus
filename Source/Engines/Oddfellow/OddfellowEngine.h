@@ -109,6 +109,9 @@ struct WurliReedModel
         {
             phases[i] = 0.0f;
             partialLevels[i] = 0.0f;
+            // CPU FIX: cache decay rates — they depend only on sr and partial index.
+            // std::exp() was being called 5x per voice per sample inside process().
+            cachedDecayRate[i] = 1.0f - std::exp (-1.0f / (sampleRate * (3.0f - static_cast<float>(i) * 0.4f)));
         }
     }
 
@@ -150,9 +153,8 @@ struct WurliReedModel
 
             out += fastSin (phases[i] * 6.28318530718f) * partialLevels[i];
 
-            // Reed decay: warmer, longer than tine (the Wurli sustains differently)
-            float decayRate = 1.0f - std::exp (-1.0f / (sr * (3.0f - static_cast<float>(i) * 0.4f)));
-            partialLevels[i] -= partialLevels[i] * decayRate * 0.05f;
+            // Reed decay: use cached rate (computed once in prepare() — CPU FIX)
+            partialLevels[i] -= partialLevels[i] * cachedDecayRate[i] * 0.05f;
             partialLevels[i] = flushDenormal (partialLevels[i]);
         }
 
@@ -175,6 +177,8 @@ struct WurliReedModel
     float partialLevels[kNumPartials] = {};
     float warblePhase = 0.0f;
     float warbleDepth = 0.002f;
+    // CPU FIX: cached decay rates — constant for a given sr + partial index
+    float cachedDecayRate[kNumPartials] = {};
 };
 
 //==============================================================================

@@ -152,6 +152,13 @@ struct OrphicaAdapterVoice {
     FamilySympatheticBank symp; FamilyOrganicDrift drift; PluckExciter pluck;
     OrphicaMicrosound micro;
 
+    // Voice-steal crossfade (5 ms linear fade-out before new note starts)
+    float stealFadeGain = 1.0f;
+    float stealFadeStep = 0.0f;
+    bool  isBeingStolen = false;
+    int   pendingNote = 0;
+    float pendingVel  = 0.0f;
+
     void prepare(double s){
         sr=(float)s;int md=(int)(sr/20)+8;
         dl.prepare(md);df.prepare();body.prepare(s);symp.prepare(s,512);drift.prepare(s);pluck.prepare(s);
@@ -159,7 +166,7 @@ struct OrphicaAdapterVoice {
     }
     void reset(){
         dl.reset();df.reset();body.reset();symp.reset();drift.reset();pluck.reset();
-        micro.reset();active=false;ampEnv=0;
+        micro.reset();active=false;ampEnv=0;stealFadeGain=1.0f;stealFadeStep=0.0f;isBeingStolen=false;
     }
     void noteOn(int n,float v){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69.f)/12.f);
@@ -224,7 +231,15 @@ public:
                 silenceGate.wake();
                 int t=-1;for(int i=0;i<kV;++i)if(!voices[i].active){t=i;break;}
                 if(t<0)t=nv%kV;nv=(t+1)%kV;
-                voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
+                if(voices[t].active && !voices[t].isBeingStolen){
+                    voices[t].isBeingStolen = true;
+                    voices[t].stealFadeStep = 1.0f / (0.005f * voices[t].sr);
+                    voices[t].stealFadeGain = 1.0f;
+                    voices[t].pendingNote   = msg.getNoteNumber();
+                    voices[t].pendingVel    = msg.getVelocity() / 127.f;
+                } else if(!voices[t].isBeingStolen){
+                    voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
+                }
             } else if (msg.isNoteOff()) {
                 for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
             } else if (msg.isPitchWheel()) {
@@ -376,6 +391,19 @@ public:
             float sLowL=0,sLowR=0,sHiL=0,sHiR=0;
             for(auto&v:voices){
                 if(!v.active)continue;
+
+                // Voice-steal crossfade: fade outgoing voice over 5ms, then start pending note
+                if(v.isBeingStolen){
+                    v.stealFadeGain -= v.stealFadeStep;
+                    if(v.stealFadeGain <= 0.0f){
+                        v.isBeingStolen = false;
+                        v.stealFadeGain = 1.0f;
+                        v.stealFadeStep = 0.0f;
+                        v.noteOn(v.pendingNote, v.pendingVel);
+                        continue;
+                    }
+                }
+
                 // Amp envelope
                 float rr=v.releasing?1.f/(v.sr*0.5f):0;
                 v.ampEnv=std::max(0.f,v.ampEnv-rr);
@@ -422,7 +450,7 @@ public:
                 // Sympathetic strings (count scales amplitude)
                 float sympScale = std::min(pSC / 6.0f, 1.0f);
                 float so=v.symp.process(bo,pSy*sympScale);
-                float sig=(bo+so)*v.ampEnv*0.4f;
+                float sig=(bo+so)*v.ampEnv*v.stealFadeGain*0.4f;
 
                 // Per-voice microsound processing
                 sig = v.micro.process(sig, microModeInt, v.sr, pMiRa, miSizeSamples,

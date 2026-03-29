@@ -385,9 +385,22 @@ public:
 
             float mixL = 0.0f, mixR = 0.0f;
 
-            for (auto& voice : voices)
+            for (int vi = 0; vi < kMaxVoices; ++vi)
             {
+                auto& voice = voices[vi];
                 if (!voice.active) continue;
+
+                // omega_macroSpace: controls stereo width. At 0.0 voices are mono-centered;
+                // at 1.0 they spread maximally across the stereo field. voiceSpread is
+                // derived from voice index so voices fan out symmetrically around center.
+                {
+                    float voiceSpread = (static_cast<float>(vi) - static_cast<float>(kMaxVoices - 1) * 0.5f)
+                                       / static_cast<float>(kMaxVoices);  // normalized -0.5..+0.5
+                    float pan = 0.5f + macroSpace * voiceSpread;  // 0.5 = center when space=0
+                    pan = std::clamp (pan, 0.01f, 0.99f);
+                    voice.panL = std::cos (pan * 1.5707963f);
+                    voice.panR = std::sin (pan * 1.5707963f);
+                }
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
@@ -402,8 +415,20 @@ public:
                 // LFO1 -> mod index modulation
                 activeModIndex = std::max (0.0f, activeModIndex + lfo1Val * 2.0f);
 
-                // Set operator frequencies
-                float modFreq = freq * ratioNow;
+                // omega_gravity: gravityMass steers the modulator ratio toward the nearest
+                // integer ratio (harmonic lock). High gravity = mathematical precision,
+                // low gravity = free inharmonic drift. This gives the "distillation"
+                // metaphor a second dimension: not just time-based but gravity-based.
+                float nearestInt = std::round (ratioNow);
+                nearestInt = std::max (nearestInt, 1.0f);  // clamp to 1 minimum
+                float gravitatedRatio = ratioNow + (nearestInt - ratioNow) * voice.gravityMass;
+
+                // omega_macroCoupling: coupling adds ratio detune, pulling the modulator
+                // slightly sharp/flat for inter-engine entanglement coloring.
+                gravitatedRatio += macroCoup * 0.1f;
+
+                // Set operator frequencies using gravity-adjusted ratio
+                float modFreq = freq * gravitatedRatio;
                 voice.modulator.setFrequency (modFreq, srf);
                 voice.modulator.setFeedback (fbNow * 0.5f);
                 voice.carrier.setFrequency (freq, srf);

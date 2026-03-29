@@ -1,0 +1,520 @@
+================================================================================
+XO_OX XPN TOOLCHAIN — COMPLETE DEPENDENCY MAP
+================================================================================
+
+CORE PIPELINE ORCHESTRATION
+========================================
+
+oxport.py (MASTER ORCHESTRATOR — 2774 lines)
+├── Stage 1: RENDER SPECIFICATION
+│   └── xpn_render_spec.py (611 lines)
+│       └── (reads .xometa presets, outputs render jobs)
+│
+├── Stage 2: AUDIO RENDERING
+│   └── oxport_render.py (386 lines)
+│       └── (MIDI→WAV via BlackHole loopback)
+│
+├── Stage 3: SAMPLE CATEGORIZATION
+│   ├── xpn_sample_categorizer.py (383 lines)
+│   │   └── (spectral analysis, audio fingerprinting)
+│   │
+│   └── xpn_classify_instrument.py (547 lines) ⭐ HUB
+│       ├── (fingerprinting, type detection)
+│       ├── Used by: xpn_adaptive_velocity.py
+│       │            xpn_auto_dna.py
+│       │            xpn_choke_group_assigner.py
+│       │            xpn_kit_completeness.py
+│       │            xpn_normalize.py
+│       │            (5 tools depend on this)
+│       │
+│       └── Core Classification Outputs:
+│           • Instrument type (drum, pad, bass, etc.)
+│           • Confidence score
+│           • Suggested zone assignment
+│
+├── Stage 4: KIT EXPANSION & PROCESSING
+│   ├── xpn_kit_expander.py (289 lines)
+│   │   └── xpn_drum_export.py (377 lines)
+│   │
+│   ├── xpn_smart_trim.py (397 lines)
+│   │   └── (silence removal, fade-out)
+│   │
+│   ├── xpn_adaptive_velocity.py (413 lines)
+│   │   ├── xpn_auto_dna.py (323 lines)
+│   │   └── xpn_classify_instrument.py [HUB]
+│   │
+│   ├── xpn_choke_group_assigner.py (404 lines)
+│   │   └── xpn_classify_instrument.py [HUB]
+│   │
+│   └── xpn_auto_dna.py (323 lines)
+│       ├── (heuristic DNA assignment)
+│       └── xpn_classify_instrument.py [HUB]
+│
+├── Stage 5: XPM PROGRAM GENERATION
+│   ├── DRUMS
+│   │   └── xpn_drum_export.py (377 lines)
+│   │       ├── (one-shot sample mapping)
+│   │       ├── (velocity zone assignment)
+│   │       ├── (drum kit layout)
+│   │       └── → xpn_cover_art.py [FOR ARTWORK]
+│   │
+│   └── KEYGROUPS (Pitched Instruments)
+│       └── xpn_keygroup_export.py (408 lines)
+│           ├── (zone-based pitch mapping)
+│           ├── (root note detection)
+│           ├── → xpn_drum_export.py [SHARED XPM LOGIC]
+│           └── → xpn_articulation_builder.py (971 lines)
+│
+├── Stage 6: COVER ART GENERATION
+│   └── xpn_cover_art.py (1107 lines) ⭐ ACTIVE
+│       ├── (procedural branded artwork)
+│       ├── (500×500, 1000×1000 outputs)
+│       ├── (bioluminescence, water column theme)
+│       │
+│       ├── xpn_optic_fingerprint.py (289 lines)
+│       │   └── (Lissajous waveforms for Optic)
+│       │
+│       ├── xpn_spectral_fingerprint.py (356 lines)
+│       │   └── (frequency domain analysis)
+│       │
+│       └── Called by:
+│           • oxport
+│           • xpn_bundle_builder
+│           • xpn_cover_art_batch
+│           • xpn_drum_export
+│           • xpn_spectral_fingerprint (self-reference)
+│
+├── Stage 7: QUALITY ASSURANCE
+│   ├── validate_presets.py (620 lines)
+│   │   ├── (schema validation)
+│   │   ├── (DNA bounds checking)
+│   │   ├── (naming uniqueness)
+│   │   └── (parameter ranges)
+│   │
+│   ├── xpn_qa_checker.py (356 lines)
+│   │   ├── (WAV file quality checks)
+│   │   ├── (bit depth, sample rate)
+│   │   ├── (peak level monitoring)
+│   │   └── (duration bounds)
+│   │
+│   ├── xpn_validator.py (408 lines)
+│   │   └── (.xpn ZIP structure validation)
+│   │
+│   ├── xpn_pack_qa_report.py (650 lines)
+│   │   ├── (comprehensive aggregation)
+│   │   ├── (preset count/distribution)
+│   │   ├── (sample audio metrics)
+│   │   └── (naming consistency)
+│   │
+│   └── xpn_xpm_validator_strict.py (487 lines)
+│       └── (deep per-layer/zone audit)
+│
+├── Stage 8: BUNDLING & COLLECTION MODE
+│   └── xpn_bundle_builder.py (1436 lines) ⭐ ACTIVE
+│       ├── (multi-engine bundling)
+│       ├── (3 bundle modes + Collection mode)
+│       ├── (Kitchen Collection hierarchical packaging)
+│       │
+│       ├── xpn_cover_art.py
+│       ├── xpn_drum_export.py
+│       ├── xpn_keygroup_export.py
+│       ├── xpn_packager.py
+│       └── xpn_params_sidecar_spec.py (145 lines)
+│
+├── Stage 9: PACKAGING (ZIP ASSEMBLY)
+│   └── xpn_packager.py (478 lines)
+│       ├── (ZIP compression)
+│       ├── (manifest generation)
+│       ├── (license/credit embedding)
+│       ├── (version tagging)
+│       │
+│       ├── xpn_coupling_recipes.py (198 lines)
+│       └── Called by:
+│           • oxport
+│           • xpn_bundle_builder
+│           • xpn_coupling_recipes (self)
+│
+└── Stage 10: MANIFEST & METADATA
+    ├── xpn_manifest_generator.py (256 lines)
+    │   ├── (engine list, preset index)
+    │   ├── (file hashes)
+    │   └── (dependencies)
+    │
+    └── xpn_expansion_json_builder.py (267 lines)
+        ├── (expansion.json metadata)
+        ├── (feature matrix)
+        └── (version info)
+
+================================================================================
+SECONDARY SUPPORT CHAINS
+================================================================================
+
+DNA COMPUTATION & DIVERSITY
+================================================================================
+
+compute_preset_dna.py (1101 lines)
+├── (6D Sonic DNA vector computation)
+├── (brightness, warmth, movement, density, space, aggression)
+│
+└── breed_presets.py (422 lines) [GENETIC ALGORITHM]
+    ├── (crossover two parent presets)
+    ├── (DNA recombination)
+    ├── (parameter interpolation)
+    └── (mutation with configurable rates)
+
+DIVERSITY ANALYSIS TOOLS
+├── xpn_dna_interpolator.py (407 lines)
+│   └── (interpolate DNA vectors between presets)
+│
+├── xpn_dna_diversity_analyzer.py (389 lines)
+│   └── (fleet-wide DNA diversity metrics)
+│
+├── xpn_dna_gap_finder.py (301 lines)
+│   └── (identify underrepresented DNA regions)
+│
+├── xpn_diversity_threshold_crosser.py (325 lines)
+│   └── (enforce minimum DNA distance between presets)
+│
+├── xpn_fleet_dna_diversity_report.py (411 lines)
+│   └── (comprehensive per-mood, per-engine breakdown)
+│
+├── xpn_auto_dna.py (323 lines) [HUB]
+│   ├── (heuristic DNA assignment)
+│   └── Uses: xpn_classify_instrument [HUB]
+│
+├── add_missing_dna.py (459 lines)
+│   └── (backfill missing DNA vectors)
+│
+├── find_missing_dna.py (144 lines)
+│   └── (identify presets lacking DNA)
+│
+└── audit_sonic_dna.py (283 lines)
+    └── (audit DNA consistency)
+
+PRESET GENERATION & NAMING
+================================================================================
+
+xpn_preset_name_generator.py (287 lines)
+├── (evocative rule-compliant names)
+├── (2-3 words, <30 chars, unique)
+│
+├── xpn_coupling_recipe_expander.py (234 lines)
+│   └── Uses: xpn_preset_name_generator
+│
+└── xpn_pack_naming_validator.py
+    └── Used by: xpn_preset_name_generator
+
+PRESET TAGGING & CLASSIFICATION
+├── xpn_preset_tag_recommender.py (345 lines)
+│   └── (semantic tags based on parameters)
+│
+├── xpn_preset_mood_classifier.py (312 lines)
+│   └── (classify into mood categories)
+│
+└── xpn_intent_generator.py (298 lines)
+    └── (generate intent/character description)
+
+PRESET VARIATION & GENERATION
+├── xpn_preset_variation_generator.py (267 lines)
+│   └── (generate sonic variations)
+│
+├── xpn_preset_crossfade_designer.py (394 lines)
+│   └── (smooth crossfade envelopes)
+│
+├── xpn_preset_aging_simulator.py (267 lines)
+│   └── (simulate parameter drift over time)
+│
+└── xpn_preset_dna_extreme_filler.py (289 lines)
+    └── (generate presets at DNA space boundaries)
+
+BATCH & ORCHESTRATION TOOLS
+================================================================================
+
+xpn_batch_export.py (371 lines)
+├── (batch pipeline orchestrator)
+├── (sequential or parallel execution)
+│
+└── Calls: oxport [FULL PIPELINE]
+
+xpn_full_qa_runner.py (382 lines)
+├── (orchestrate all QA checks)
+├── (parallel execution support)
+│
+├── validate_presets.py
+├── xpn_qa_checker.py
+├── xpn_validator.py
+└── xpn_pack_qa_report.py
+
+ANALYSIS & REPORTING (NOT IN PIPELINE)
+================================================================================
+
+FLEET HEALTH ANALYSIS
+├── xpn_fleet_health_dashboard.py (345 lines)
+├── xpn_fleet_health_summary.py (267 lines)
+├── xpn_fleet_diversity_score_v2.py (289 lines)
+└── xpn_engine_preset_gap_reporter.py (312 lines)
+
+PACK HEALTH & ANALYTICS
+├── xpn_pack_health_dashboard.py (334 lines)
+├── xpn_pack_diff.py (267 lines)
+├── xpn_pack_compare_report.py (custom)
+├── xpn_pack_analytics.py (custom)
+└── xpn_pack_ab_tester.py (custom)
+
+PRESET ANALYSIS (NOT IN PIPELINE)
+├── xpn_preset_similarity_matrix.py
+├── xpn_preset_clustering_report.py
+├── xpn_preset_dedup_finder.py (312 lines)
+├── xpn_preset_duplicate_detector.py (234 lines)
+├── xpn_preset_search_engine.py
+├── xpn_preset_browser.py
+└── xpn_preset_emotion_wheel.py
+
+DISCOVERY & OPTIMIZATION
+├── xpn_pack_discovery_optimizer.py
+└── xpn_profile_preset_selector.py (267 lines)
+    └── Uses: xpn_qa_decision_log.py
+
+UTILITY & HELPER TOOLS
+================================================================================
+
+DRUM KIT TOOLS
+├── xpn_kit_completeness.py (234 lines)
+│   └── Uses: xpn_classify_instrument [HUB]
+│
+├── xpn_kit_validator.py (267 lines)
+│   └── (validate layer structure)
+│
+├── xpn_kit_layering_advisor.py (298 lines)
+│   └── (recommend layer structures)
+│
+└── xpn_kit_expander.py (289 lines)
+    └── Uses: xpn_drum_export.py
+
+SAMPLE PROCESSING
+├── xpn_sample_audit.py (312 lines)
+│   └── (quality metrics: bit depth, sample rate, clipping)
+│
+├── xpn_sample_fingerprinter.py (283 lines)
+│   └── (spectral hashing for duplicate detection)
+│
+├── xpn_sample_loop_checker.py (256 lines)
+│   └── (detect loop points, validate boundaries)
+│
+└── xpn_sample_metadata_embedder.py (294 lines)
+    └── (embed metadata into WAV ID3/RIFF tags)
+
+PARAMETER & TUNING TOOLS
+├── xpn_tuning_systems.py (198 lines)
+│   └── (12-TET, Pythagorean, just intonation, etc.)
+│
+├── xpn_loudness_ledger.py (156 lines)
+│   └── (track LUFS, RMS, peak normalization)
+│
+└── xpn_normalize.py (187 lines)
+    └── Uses: xpn_classify_instrument [HUB]
+
+ARTICULATION & COUPLING
+├── xpn_articulation_builder.py (971 lines)
+│   └── Uses: xpn_keygroup_export.py
+│
+├── xpn_choke_group_designer.py (612 lines)
+│   └── (hi-hat closure logic, group assignment)
+│
+├── xpn_coupling_recipes.py (198 lines)
+│   ├── (template library of coupling configs)
+│   └── Uses: self, xpn_packager
+│
+└── xpn_coupling_recipe_expander.py (234 lines)
+    └── Uses: xpn_preset_name_generator
+
+ROOT NOTE & PITCH DETECTION
+└── xpn_auto_root_detect.py (315 lines)
+    └── (automatic root note detection via pitch analysis)
+
+PROFILE & VALIDATION
+├── xpn_profile_validator.py (294 lines)
+│   └── Uses: xpn_qa_decision_log.py
+│
+└── xpn_profile_preset_selector.py (267 lines)
+    └── Uses: xpn_qa_decision_log.py
+
+================================================================================
+METADATA & DOCUMENTATION
+================================================================================
+
+MANIFEST & DOCUMENTATION
+├── xpn_manifest_generator.py (256 lines)
+│   └── (pack manifests: engines, presets, hashes)
+│
+├── xpn_expansion_json_builder.py (267 lines)
+│   └── (expansion.json metadata file)
+│
+├── xpn_expansion_json_lint.py (345 lines)
+│   └── (validate JSON structure)
+│
+└── xpn_params_sidecar_spec.py (145 lines)
+    └── Used by: xpn_bundle_builder
+
+RELEASE & PACKAGING DOCS
+├── xpn_pack_license_generator.py (247 lines)
+│   └── (Creative Commons, sample credits, engine attribution)
+│
+├── xpn_pack_readme_generator.py (256 lines)
+│   └── (README.md documentation)
+│
+├── xpn_pack_changelog_tracker.py (245 lines)
+│   └── (track changelog entries)
+│
+└── xpn_pack_version_bumper.py (145 lines)
+    └── (increment version numbers)
+
+BULK METADATA EDITING
+└── xpn_bulk_metadata_editor.py (409 lines)
+    └── (batch update preset/pack metadata)
+
+EXPORT & FORMAT CONVERSION
+================================================================================
+
+XPM GENERATION
+├── xpn_xpm_batch_builder.py (312 lines)
+│   └── (batch build .xpm from WAVs + metadata)
+│
+└── xpn_xpm_validator_strict.py (487 lines)
+    └── (deep XPM validation)
+
+FORMAT CONVERSION
+├── xpn_xometa_export_pipeline.py (378 lines)
+│   └── (convert .xometa to JSON, CSV, etc.)
+│
+├── xpn_to_sfz.py (289 lines)
+│   └── (convert XPM → SFZ sample format)
+│
+└── site_audio_export.py (254 lines)
+    └── (export preset audio for web/docs)
+
+================================================================================
+DEAD CODE (Not Imported By Anyone) — 166+ Tools
+================================================================================
+
+LARGE LEGACY GENERATORS (1000+ lines)
+├── generate_onset_presets.py (2291 lines) [ONSET ENGINE]
+├── xoutshine.py (2049 lines) [SEPARATE PRODUCT: Sample Instrument Forge]
+├── generate_broth_presets.py (1877 lines) [BROTH QUAD: OVERWASH, OVERWORN, OVERFLOW, OVERCAST]
+└── generate_presets_overlap_outwit.py (1238 lines) [OVERLAP, OUTWIT ENGINES]
+
+MEDIUM LEGACY GENERATORS (400–1000 lines)
+├── generate_opal_presets.py (1234 lines)
+├── generate_organon_presets.py (1089 lines)
+├── generate_organon_coupling_presets.py (834 lines)
+├── generate_ouroboros_presets.py (756 lines)
+├── generate_overbite_presets.py (823 lines)
+├── generate_overworld_presets.py (934 lines)
+├── generate_outwit_blocks23.py (927 lines)
+├── generate_preset_params.py (656 lines)
+├── extract_cpp_presets.py (652 lines)
+├── generate_submerged_presets.py (502 lines)
+└── 40+ more engine-specific preset generators
+
+ONE-OFF FIXUP SCRIPTS
+├── add_missing_dna.py (459 lines) [DNA BACKFILL]
+├── fix_f4_audit.py (504 lines) [SPECIFIC F4 FIXES]
+├── fix_mood_and_entangled.py (320 lines) [LEGACY MOOD FIXES]
+├── rename_debug_presets.py (476 lines) [STRIP DEBUG PREFIXES]
+├── xolokun_preset_migration.py (686 lines) [FORMAT MIGRATION]
+├── preset_migration_sprint1.py (330 lines) [OLD FORMAT CONVERSION]
+├── fix_preset_schema.py (333 lines) [SCHEMA MIGRATION]
+├── fix_preset_prefixes.py (179 lines)
+├── dedup_preset_names.py (205 lines)
+├── normalize_engine_names.py (155 lines)
+├── rename_dna_coded_presets.py (126 lines) [LEGACY NAMING]
+└── 15+ more cleanup/migration scripts
+
+POST-RELEASE ANALYTICS (NOT IN PIPELINE)
+├── xpn_pack_analytics.py
+├── xpn_pack_ab_tester.py
+├── xpn_pack_compare_report.py
+└── 30+ more analysis tools
+
+ARCHIVE DIRECTORY (/Tools/_archive/ — 165 files)
+├── 50+ legacy preset generators (generate_*.py)
+├── 15+ preset fixup/cleanup scripts (fix_*.py, cleanup_*.py)
+├── 10+ format conversion tools (xpn_aether_*.py, migration scripts)
+└── Various one-off utilities and specialized generators
+
+================================================================================
+KEY INTEGRATION POINTS (Critical for Testing)
+================================================================================
+
+1. MIDI Rendering
+   oxport.py → oxport_render.py (386 lines)
+   Issue: Requires BlackHole audio loopback device on macOS
+   Impact: Without this, no WAV files are generated
+
+2. Classification Hub
+   xpn_classify_instrument.py (547 lines) ⭐ CRITICAL HUB
+   Used by: 5 other tools
+   Issue: If this fails, cascades to xpn_adaptive_velocity, xpn_auto_dna, etc.
+   Impact: Categorization fails for entire batch
+
+3. Cover Art Generation
+   oxport.py → xpn_cover_art.py (1107 lines)
+   Issue: Requires PIL/Pillow, numpy, matplotlib
+   Impact: Packs without artwork (metadata only)
+
+4. Packaging
+   oxport.py → xpn_packager.py (478 lines)
+   Issue: ZIP creation, file permissions, manifest generation
+   Impact: .xpn archive may be corrupted or invalid
+
+5. Validation Pipeline
+   oxport.py → xpn_pack_qa_report.py (650 lines)
+   Issue: Aggregates 4+ sub-validators
+   Impact: Missing validation reports (but pack still created)
+
+================================================================================
+SUMMARY: DEPENDENCY DEPTH & COMPLEXITY
+================================================================================
+
+Orchestration Depth:
+  Level 0 (Invoked by user): oxport.py (2774 lines)
+  Level 1 (Direct calls): 25 tools
+  Level 2 (Used by Level 1): 30+ tools
+  Level 3 (Used by Level 2): 15+ tools
+  Total Reachable: ~70 tools
+
+Circular Dependencies: NONE DETECTED ✓
+
+Self-References (potential issue):
+  • xpn_classify_instrument.py (uses itself)
+  • xpn_manifest_generator.py (uses itself)
+  • xpn_pack_ci_config_generator.py (uses itself)
+  • xpn_pack_readme_generator.py (uses itself)
+  • xpn_coupling_recipes.py (uses itself)
+  • xpn_qa_decision_log.py (uses itself)
+  • xpn_spectral_fingerprint.py (uses itself)
+  (These likely indicate module initialization patterns, not true circular refs)
+
+Critical Hub Tools (used by 5+):
+  • xpn_classify_instrument.py (used by 6 tools)
+  • oxport.py (calls 25 tools)
+  • xpn_cover_art.py (used by 5+ tools)
+  • xpn_drum_export.py (used by 4+ tools)
+  • xpn_packager.py (used by 3+ tools)
+
+================================================================================
+
+EXPORT: TSV Format for Use in Tools/tools_dependency_matrix.tsv
+
+Tool Name | Category | Lines | Called By | Calls | Status
+oxport.py | ORCHESTRATOR | 2774 | (entry point) | 25 tools | ACTIVE
+oxport_render.py | RENDER | 386 | oxport | 0 | ACTIVE
+xpn_render_spec.py | RENDER | 611 | oxport | 0 | ACTIVE
+xpn_sample_categorizer.py | CATEGORIZE | 383 | oxport | 0 | ACTIVE
+xpn_classify_instrument.py | CATEGORIZE | 547 | 6 tools + oxport | 0 | ACTIVE [HUB]
+xpn_drum_export.py | EXPORT | 377 | oxport, xpn_bundle_builder, xpn_keygroup_export, xpn_kit_expander | 1 (xpn_cover_art) | ACTIVE
+xpn_keygroup_export.py | EXPORT | 408 | oxport, xpn_articulation_builder, xpn_bundle_builder | 2 (xpn_drum_export, xpn_articulation_builder) | ACTIVE
+xpn_cover_art.py | COVER_ART | 1107 | oxport, xpn_bundle_builder, xpn_drum_export, xpn_cover_art_batch, xpn_spectral_fingerprint | 2 (xpn_optic_fingerprint, xpn_spectral_fingerprint) | ACTIVE
+xpn_packager.py | PACK | 478 | oxport, xpn_bundle_builder | 1 (xpn_coupling_recipes) | ACTIVE
+xpn_pack_qa_report.py | QA | 650 | oxport | 0 | ACTIVE
+

@@ -103,10 +103,16 @@ static constexpr float kAudsleyAmplitudes[16] = {
 //==============================================================================
 struct OvenModalResonator
 {
+    // CPU FIX: dirty-flag cache — setFreqAndDecay() only recomputes trig/exp when freq or Q changes.
+    // Was called every sample per mode per voice (~256 fastSin + 256 fastCos + 256 fastExp per sample
+    // at 8v×16m×3 ops). Q modulates slowly (via LFO2 at ±0.2), so the threshold guards correctly.
     void setFreqAndDecay (float freqHz, float q, float sampleRate) noexcept
     {
         if (freqHz >= sampleRate * 0.49f) freqHz = sampleRate * 0.49f;
         if (freqHz < 20.0f) freqHz = 20.0f;
+        // Early-out: skip expensive trig/exp if inputs haven't changed meaningfully
+        if (std::fabs (freqHz - freq) < 0.01f && std::fabs (q - cachedQ) < 0.5f)
+            return;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max (q, 1.0f);
         float r = std::exp (-3.14159265f * bw / sampleRate);
@@ -115,6 +121,7 @@ struct OvenModalResonator
         a2 = r * r;
         b0 = (1.0f - r * r) * fastSin (w);
         freq = freqHz;
+        cachedQ = q;
     }
 
     float process (float input) noexcept
@@ -127,9 +134,10 @@ struct OvenModalResonator
         return out;
     }
 
-    void reset() noexcept { y1 = 0.0f; y2 = 0.0f; amplitude = 0.0f; }
+    void reset() noexcept { y1 = 0.0f; y2 = 0.0f; amplitude = 0.0f; freq = -1.0f; cachedQ = -1.0f; }
 
-    float freq = 440.0f;
+    float freq = -1.0f;     // -1 forces recompute on first call
+    float cachedQ = -1.0f;
     float b0 = 0.0f, a1 = 0.0f, a2 = 0.0f;
     float cosW = 1.0f;
     float y1 = 0.0f, y2 = 0.0f;

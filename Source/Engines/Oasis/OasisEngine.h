@@ -94,15 +94,18 @@ struct RhodesToneGenerator
     static constexpr int kNumPartials = 6;
 
     // Rhodes partial ratios — from spectral analysis of a Mk I Stage 73.
-    // The tine produces a near-harmonic series with the 3rd partial
-    // being characteristically strong (the "bell" quality).
+    // The tine produces a STRETCHED harmonic series (not pure harmonics):
+    // tine stiffness stretches the upper partials sharp relative to the
+    // ideal harmonic series. These ratios match Paspaliaris (2015) Table 2
+    // for middle-register tines (C4–C5 range).
+    // Reference: Paspaliaris, N. (2015) "Physical Modeling of the Rhodes Piano"
     static constexpr float kPartialRatios[kNumPartials] = {
-        1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f
+        1.0f, 1.981f, 3.006f, 4.024f, 5.052f, 6.098f
     };
 
-    // Relative amplitudes — fundamental dominant, 3rd partial strong,
-    // upper partials decay rapidly. These are the "naked tine" values;
-    // the pickup position modifies which partials are captured.
+    // Relative amplitudes — fundamental dominant, 3rd partial strong ("bell" quality).
+    // Upper partials decay rapidly. These are raw "naked tine" values before
+    // pickup position filtering (which further shapes per-partial levels).
     static constexpr float kPartialAmps[kNumPartials] = {
         1.0f, 0.35f, 0.55f, 0.15f, 0.08f, 0.04f
     };
@@ -138,7 +141,10 @@ struct RhodesToneGenerator
         }
     }
 
-    float process (float fundamentalHz) noexcept
+    // process() with pickup partial gains applied in-place.
+    // pickupGains[i] comes from RhodesPickupModel::partialGains[i] — call
+    // pickup.setPickupPosition() at note-on, then pass pickup.partialGains here.
+    float process (float fundamentalHz, const float* pickupGains = nullptr) noexcept
     {
         float out = 0.0f;
 
@@ -151,9 +157,11 @@ struct RhodesToneGenerator
             phases[i] += phaseInc;
             if (phases[i] >= 1.0f) phases[i] -= 1.0f;
 
-            out += fastSin (phases[i] * 6.28318530718f) * partialLevels[i];
+            float partialGain = pickupGains ? pickupGains[i] : 1.0f;
+            out += fastSin (phases[i] * 6.28318530718f) * partialLevels[i] * partialGain;
 
-            // Per-partial decay: higher partials decay faster (tine physics)
+            // Per-partial decay: higher partials decay faster (tine physics).
+            // Decay time T(i) = 2.0 - i*0.25 seconds → matched-Z pole per CLAUDE.md
             float decayRate = 1.0f - std::exp (-1.0f / (sr * (2.0f - static_cast<float>(i) * 0.25f)));
             partialLevels[i] -= partialLevels[i] * decayRate * 0.1f;
             partialLevels[i] = flushDenormal (partialLevels[i]);
@@ -185,33 +193,71 @@ struct RhodesToneGenerator
 // RhodesPickupModel — Magnetic pickup simulation.
 //
 // The pickup position relative to the tine determines which partials
-// are captured. Near the tine tip: bright, bell-like (more upper partials).
-// Near the base: warm, fundamental-heavy.
+// are captured. This is a proper partial-gain model:
 //
-// The pickup also introduces a subtle phase relationship between partials
-// (electromagnetic induction is velocity-sensitive, not displacement-sensitive),
-// giving the Rhodes its characteristic "alive" quality.
+//   - A magnetic pickup responds to the *velocity* of the tine at the
+//     pickup location, not its displacement. For a vibrating beam with
+//     fixed-free boundary conditions, the velocity mode shape at position x
+//     for partial n is proportional to sin(n * pi * x / L).
+//   - pickupPosition=0.0 = near base (node); pickupPosition=1.0 = near tip.
+//   - Near tip (high position): all partials reinforced but even partials get
+//     a bonus from the anti-node of the 2nd/4th modes → bright, bell-like.
+//   - Near base (low position): fundamental survives, upper partials attenuated
+//     → warm, fundamental-heavy.
+//
+// The 6 per-partial gain values are precomputed from position at trigger time
+// and stored in partialGains[] for use by the tine generator's process().
+//
+// References: Smith & Perttunen (2002) "Acoustic Pickup Position and Timbre"
 //==============================================================================
 struct RhodesPickupModel
 {
+    static constexpr int kNumPartials = 6;
+    float partialGains[kNumPartials] = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
+
+    // Call once per note-on (not per sample) — precomputes per-partial gains.
+    void setPickupPosition (float pickupPosition) noexcept
+    {
+        // pickupPosition [0,1]: 0=base (warm), 1=tip (bright).
+        // Gain for partial n at normalised position x ≈ |sin(n * pi * x)|
+        // We use n=1..6 and clamp to avoid silence at exactly 0.
+        float x = 0.05f + pickupPosition * 0.95f;   // avoid pure-node singularity
+        for (int i = 0; i < kNumPartials; ++i)
+        {
+            float n = static_cast<float> (i + 1);
+            float modeGain = std::fabs (fastSin (n * 3.14159265f * x));
+            // Fundamental always gets a floor so the note never disappears
+            if (i == 0) modeGain = std::max (modeGain, 0.4f);
+            // Normalise against fundamental gain to avoid level jumps
+            partialGains[i] = modeGain;
+        }
+        // Normalise so the fundamental is always unity
+        float fundGain = partialGains[0];
+        if (fundGain > 0.001f)
+            for (int i = 0; i < kNumPartials; ++i)
+                partialGains[i] /= fundGain;
+    }
+
+    // Per-sample process: apply a one-pole LP that tracks the "presence" band.
+    // The proximity LP is still useful for the overall tone colour (tube saturation
+    // input level changes with pickup distance), but the main timbral shaping is
+    // now done via partialGains[] applied inside RhodesToneGenerator::process().
     float process (float tineSignal, float pickupPosition) noexcept
     {
-        // Pickup position acts as a comb filter — models the physical
-        // relationship between tine vibration node and pickup placement.
-        // This is simplified: full model would use per-partial gain based
-        // on mode shape at pickup position.
+        // One-pole presence filter: tip = slight presence boost, base = gentle LP
         float brightness = 0.3f + pickupPosition * 0.7f;
-
-        // One-pole LP to simulate pickup proximity effect
-        // More warmth when pickup is near base (low position value)
-        float cutoffCoeff = 0.1f + brightness * 0.85f;
+        float cutoffCoeff = 0.05f + brightness * 0.9f;
         pickupState += cutoffCoeff * (tineSignal - pickupState);
         pickupState = flushDenormal (pickupState);
-
         return pickupState;
     }
 
-    void reset() noexcept { pickupState = 0.0f; }
+    void reset() noexcept
+    {
+        pickupState = 0.0f;
+        for (int i = 0; i < kNumPartials; ++i)
+            partialGains[i] = 1.0f;
+    }
 
     float pickupState = 0.0f;
 };
@@ -302,6 +348,13 @@ struct OasisVoice
     // Filter envelope output — tracks the filter ADSR level.
     float filterEnvLevel = 0.0f;
 
+    // Voice-steal crossfade: 5ms linear fade-out ramp applied to the
+    // outgoing voice before it is re-triggered. crossfadeRamp counts down
+    // from crossfadeSamples to 0. While > 0 the voice outputs with a fade gain.
+    int  crossfadeSamples = 0;   // total ramp length in samples (set in prepare())
+    int  crossfadeCounter = 0;   // remaining ramp samples (0 = crossfade done)
+    bool crossfading = false;    // true while fading out the old note
+
     void prepare (float sampleRate) noexcept
     {
         tine.prepare (sampleRate);
@@ -340,6 +393,11 @@ struct OasisVoice
         // Glide: 0ms by default (snap on first note)
         glide.setTime (0.0f, sampleRate);
         glide.reset();
+
+        // 5ms crossfade ramp (fleet pattern: prevent click on voice steal)
+        crossfadeSamples = static_cast<int> (0.005f * sampleRate);
+        crossfadeCounter = 0;
+        crossfading = false;
     }
 
     void reset() noexcept
@@ -353,6 +411,8 @@ struct OasisVoice
         phase = 0.0;
         phaseDelta = 0.0;
         noteAge = 0;
+        crossfadeCounter = 0;
+        crossfading = false;
         glide.reset();
         tine.reset();
         pickup.reset();
@@ -420,6 +480,17 @@ public:
         canopyLP_.setCoefficients (8000.0f, 0.5f, srF_);
         canopyLP_.reset();
 
+        canopyLPR_.setMode (CytomicSVF::Mode::LowPass);
+        canopyLPR_.setCoefficients (8000.0f, 0.5f, srF_);
+        canopyLPR_.reset();
+
+        // Harmonic Culling noise LP: one-pole at 2 kHz — gives the stolen-voice
+        // energy the characteristic soft "whoosh" of a dying resonance rather
+        // than harsh white noise.
+        breezeLP_.setMode (CytomicSVF::Mode::LowPass);
+        breezeLP_.setCoefficients (2000.0f, 0.7f, srF_);
+        breezeLP_.reset();
+
         resonatorBank_.setMode (CytomicSVF::Mode::BandPass);
         resonatorBank_.setCoefficients (400.0f, 4.0f, srF_);
         resonatorBank_.reset();
@@ -474,6 +545,8 @@ public:
         }
         subFilter_.reset();
         canopyLP_.reset();
+        canopyLPR_.reset();
+        breezeLP_.reset();
         resonatorBank_.reset();
         biolumLFO_.reset();
         tidalLFO_.reset();
@@ -523,9 +596,13 @@ public:
                 {
                     if (!voices_[v].active) { slot = v; break; }
                 }
-                if (slot < 0)
+                bool isSteal = (slot < 0);
+                if (isSteal)
                 {
-                    // Voice stealing — Harmonic Culling: dump energy into ASMR floor
+                    // Voice stealing — Harmonic Culling:
+                    // 1. Dump residual partial energy into the ASMR noise floor.
+                    // 2. Mark the stolen voice for a 5ms crossfade so the outgoing
+                    //    note fades out cleanly (no click) before the new note starts.
                     slot = 0;
                     int oldest = voices_[0].noteAge;
                     for (int v = 1; v < kMaxVoices; ++v)
@@ -536,31 +613,64 @@ public:
                             slot = v;
                         }
                     }
-                    culledEnergy_ += voices_[slot].amplitude * 0.5f;
+                    // Collect residual energy from all active partials
+                    float stolenEnergy = 0.0f;
+                    for (int p = 0; p < RhodesToneGenerator::kNumPartials; ++p)
+                        stolenEnergy += voices_[slot].tine.partialLevels[p];
+                    stolenEnergy *= voices_[slot].ampEnvLevel;
+                    culledEnergy_ += clamp (stolenEnergy * 0.8f, 0.0f, 1.0f);
+                    culledEnergy_ = clamp (culledEnergy_, 0.0f, 3.0f);
+
+                    // Crossfade: keep the voice sounding for 5ms while we set up
+                    // the new note underneath — actual re-trigger happens after.
+                    voices_[slot].crossfading = true;
+                    voices_[slot].crossfadeCounter = voices_[slot].crossfadeSamples;
                 }
 
                 auto& voice = voices_[slot];
-                voice.active = true;
-                voice.releasing = false;
-                voice.note = msg.getNoteNumber();
-                voice.velocity = msg.getFloatVelocity();
-                voice.phase = 0.0;
-                voice.amplitude = 1.0f;  // envelope controls final level
-                voice.noteAge = 0;
 
-                float freq = 440.0f * std::pow (2.0f, (voice.note - 69) / 12.0f);
-                voice.phaseDelta = freq / sr_;
+                if (!isSteal)
+                {
+                    // Clean allocation: reset all voice state
+                    voice.active = true;
+                    voice.releasing = false;
+                    voice.crossfading = false;
+                    voice.crossfadeCounter = 0;
+                    voice.note = msg.getNoteNumber();
+                    voice.velocity = msg.getFloatVelocity();
+                    voice.phase = 0.0;
+                    voice.amplitude = 1.0f;
+                    voice.noteAge = 0;
 
-                // Glide: snap on first active note, glide on subsequent notes.
-                voice.glide.setTargetOrSnap (freq);
+                    float freq = 440.0f * std::pow (2.0f, (voice.note - 69) / 12.0f);
+                    voice.phaseDelta = freq / sr_;
+                    voice.glide.setTargetOrSnap (freq);
 
-                // Trigger tine with velocity and live bellAmount parameter.
-                float bellAmount = pBellAmountParam_ ? pBellAmountParam_->load() : 0.5f;
-                voice.tine.trigger (voice.velocity, bellAmount);
-
-                // Trigger amp and filter envelopes.
-                voice.ampEnv.trigger();
-                voice.filterEnv.trigger();
+                    float bellAmount = pBellAmountParam_ ? pBellAmountParam_->load() : 0.5f;
+                    float pickupPos  = pPickupPosParam_  ? pPickupPosParam_->load()  : 0.5f;
+                    voice.pickup.setPickupPosition (pickupPos);
+                    voice.tine.trigger (voice.velocity, bellAmount);
+                    voice.ampEnv.trigger();
+                    voice.filterEnv.trigger();
+                }
+                else
+                {
+                    // Steal: store the incoming note params; the crossfade loop in
+                    // renderBlock will re-trigger the voice once the ramp completes.
+                    // We use a small staging area on the voice itself.
+                    // The crossfadeCounter will count down to 0, at which point
+                    // the voice is re-triggered with these saved params.
+                    voice.active = true;
+                    voice.releasing = false;
+                    // Save incoming note data into currentNote/startTime (re-purposed
+                    // for this purpose — the new note will read them after fade).
+                    voice.currentNote = msg.getNoteNumber();
+                    // Re-use startTime as packed velocity (float → uint64 via cast)
+                    float inVel = msg.getFloatVelocity();
+                    uint32_t velBits;
+                    std::memcpy (&velBits, &inVel, sizeof (velBits));
+                    voice.startTime = static_cast<uint64_t> (velBits);
+                }
             }
             else if (msg.isNoteOff())
             {
@@ -683,6 +793,80 @@ public:
                 auto& voice = voices_[v];
                 if (!voice.active) continue;
 
+                // === CROSSFADE: stolen voice counting down ===
+                // While crossfading, the outgoing note plays with a linear fade-out
+                // gain. When the counter expires, we re-trigger the new note data
+                // that was stored in voice.currentNote / voice.startTime.
+                if (voice.crossfading)
+                {
+                    float xfGain = static_cast<float> (voice.crossfadeCounter)
+                                   / static_cast<float> (std::max (voice.crossfadeSamples, 1));
+
+                    voice.noteAge++;
+                    voice.ampEnvLevel = voice.ampEnv.process();
+                    float voiceAmp = voice.ampEnvLevel * voice.velocity * xfGain;
+                    voiceAmp = flushDenormal (voiceAmp);
+
+                    voice.glide.setTime (pGlideTime, srF_);
+                    float glidedFreq = voice.glide.process() * bendRatio;
+                    glidedFreq = clamp (glidedFreq, 20.0f, srF_ * 0.49f);
+                    voice.phaseDelta = static_cast<double> (glidedFreq) / sr_;
+                    voice.phase += voice.phaseDelta;
+                    if (voice.phase >= 1.0) voice.phase -= 1.0;
+                    float phaseF = static_cast<float> (voice.phase) * 6.28318530718f;
+
+                    float rhodesOut = voice.tine.process (glidedFreq, voice.pickup.partialGains);
+                    rhodesOut = voice.pickup.process (rhodesOut, pPickupPos);
+                    rhodesOut = voice.amp.process (rhodesOut, pWarmth, voice.velocity);
+
+                    float rawSub = fastSin (phaseF) + 0.5f * fastSin (phaseF * 0.5f);
+                    float sagAmount = (1.0f - ent) * voice.velocity;
+                    float granularOut = fastTanh (rawSub * (1.0f + sagAmount * pSubDrive * 4.0f));
+                    float blended = rhodesOut * pRhodesMix + granularOut * (1.0f - pRhodesMix);
+
+                    voice.tremoloLFO.setRate (pTremoloRate, srF_);
+                    blended *= (1.0f + voice.tremoloLFO.process() * pTremoloDepth * 0.5f);
+
+                    voice.filterEnvLevel = voice.filterEnv.process();
+                    float velBright = 0.5f + voice.velocity * 0.5f;
+                    float envCutoff = clamp (pFilterCutoff * velBright
+                                             + pFilterEnvAmt * voice.filterEnvLevel * 6000.0f,
+                                             60.0f, srF_ * 0.49f);
+                    voice.svf.setCoefficients_fast (envCutoff, 0.7f, srF_);
+                    blended = voice.svf.processSample (blended);
+
+                    float mycelialSend = blended * ent * pEntropySens;
+                    float directOut = blended * (1.0f - ent * 0.6f) * voiceAmp;
+                    subMix += directOut;
+                    float pan = static_cast<float> (v) / static_cast<float> (kMaxVoices - 1);
+                    canopySendL += mycelialSend * (1.0f - pan) * voiceAmp;
+                    canopySendR += mycelialSend * pan * voiceAmp;
+
+                    voice.crossfadeCounter--;
+                    if (voice.crossfadeCounter <= 0)
+                    {
+                        // Crossfade complete — re-trigger with saved note data
+                        voice.crossfading = false;
+                        voice.crossfadeCounter = 0;
+                        voice.note = voice.currentNote;
+                        uint32_t velBits = static_cast<uint32_t> (voice.startTime & 0xFFFFFFFF);
+                        std::memcpy (&voice.velocity, &velBits, sizeof (float));
+                        voice.phase = 0.0;
+                        voice.noteAge = 0;
+
+                        float freq = 440.0f * std::pow (2.0f, (voice.note - 69) / 12.0f);
+                        voice.phaseDelta = freq / sr_;
+                        voice.glide.setTargetOrSnap (freq);
+
+                        float bellAmount = pBellAmountParam_ ? pBellAmountParam_->load() : 0.5f;
+                        voice.pickup.setPickupPosition (pPickupPos);
+                        voice.tine.trigger (voice.velocity, bellAmount);
+                        voice.ampEnv.trigger();
+                        voice.filterEnv.trigger();
+                    }
+                    continue;
+                }
+
                 voice.noteAge++;
 
                 // === AMP ENVELOPE ===
@@ -713,15 +897,15 @@ public:
                 float phaseF = static_cast<float> (voice.phase) * 6.28318530718f;
 
                 // === RHODES SIGNAL CHAIN ===
-                // 1. Tine generator: tine/tone-bar physical model
-                float rhodesOut = voice.tine.process (glidedFreq);
+                // 1. Tine generator: stretched-harmonic physical model with per-partial
+                //    pickup gains (set at note-on via pickup.setPickupPosition()).
+                float rhodesOut = voice.tine.process (glidedFreq, voice.pickup.partialGains);
 
-                // 2. Pickup model: electromagnetic pickup position shapes which
-                //    partials are captured. pPickupPos drives brightness.
+                // 2. Pickup model: presence filter (tip=bright, base=warm).
+                //    Per-partial shaping already applied inside tine.process().
                 rhodesOut = voice.pickup.process (rhodesOut, pPickupPos);
 
-                // 3. Amp stage: tube preamp warmth + velocity-dependent bark.
-                //    pWarmth controls saturation; velocity controls asymmetry.
+                // 3. Amp stage: tube preamp warmth + velocity-dependent asymmetric bark.
                 rhodesOut = voice.amp.process (rhodesOut, pWarmth, voice.velocity);
 
                 // === SUB-BASS / GRANULAR OSCILLATOR ===
@@ -752,6 +936,13 @@ public:
                 envCutoff = clamp (envCutoff, 60.0f, srF_ * 0.49f);
                 voice.svf.setCoefficients_fast (envCutoff, 0.7f, srF_);
                 blendedSub = voice.svf.processSample (blendedSub);
+
+                // === ECOLOGICAL MEMORY — entropy wires into per-voice timbre ===
+                // High entropy (sloppy playing) → more harmonic richness splinters into
+                // the canopy. The biolumMod modulates the direct level so imperfect
+                // playing literally makes each voice shimmer more (bioluminescence).
+                float biolumScale = 1.0f + ecologicalHealth_ * biolumMod * 0.25f;
+                blendedSub *= biolumScale;
 
                 // Mycelial Morphing: entropy splinters signal into canopy delay
                 float mycelialSend = blendedSub * ent * pEntropySens;
@@ -788,9 +979,13 @@ public:
                 float tapR = canopyBufR_[t][static_cast<size_t> (readPos)];
 
                 // Lagoon: comb filter with feedback (watery resonance).
-                // Both lagoonDepth and canopyFB shape the delay feedback;
-                // canopyFB is the mod wheel target (D006).
-                float lagoonFB = clamp (pLagoonDepth * 0.85f + pCanopyFB * 0.1f, 0.0f, 0.95f);
+                // Both lagoonDepth and canopyFB shape the delay feedback.
+                // Entropy also drives feedback: sloppy playing thickens the swarm.
+                // Per CLAUDE.md: feedback path clamped ≤ 0.95 to prevent instability.
+                float lagoonFB = clamp (pLagoonDepth * 0.7f
+                                        + pCanopyFB * 0.1f
+                                        + ent * pEntropySens * 0.15f,
+                                        0.0f, 0.95f);
                 float feedL = canopySendL + tapL * lagoonFB;
                 float feedR = canopySendR + tapR * lagoonFB;
 
@@ -806,24 +1001,46 @@ public:
                 canopyOutR += tapR * tapGain;
             }
 
-            // Canopy lowpass (smooth the granular taps)
-            float canopyCutoff = 4000.0f + ecologicalHealth_ * 8000.0f + biolumMod * 1000.0f;
-            canopyLP_.setCoefficients_fast (clamp (canopyCutoff, 200.0f, srF_ * 0.49f), 0.5f, srF_);
+            // Canopy lowpass — independent L and R to produce genuine stereo depth.
+            // The ecology drives the cutoff: more health = brighter canopy (blooming).
+            // Entropy modulates the cutoff amount so imperfect playing literally
+            // opens the canopy filter (bioluminescent growth in the delay network).
+            float canopyCutoff = 3000.0f + ecologicalHealth_ * 9000.0f
+                                 + ent * pEntropySens * 4000.0f
+                                 + biolumMod * 1500.0f;
+            canopyCutoff = clamp (canopyCutoff, 200.0f, srF_ * 0.49f);
+            canopyLP_.setCoefficients_fast (canopyCutoff, 0.5f, srF_);
             canopyOutL = canopyLP_.processSample (canopyOutL);
-            // Second pass for R uses same filter state which is fine for subtle stereo
+
+            // Right channel gets a slightly different cutoff for spatial width
+            float canopyCutoffR = clamp (canopyCutoff * (1.0f - tidalMod * 0.08f),
+                                         200.0f, srF_ * 0.49f);
+            canopyLPR_.setCoefficients_fast (canopyCutoffR, 0.5f, srF_);
+            canopyOutR = canopyLPR_.processSample (canopyOutR);
 
             // === ASMR BREEZE (Harmonic Culling noise floor) ===
+            // White noise scaled by culledEnergy_ + breeze param, then low-pass
+            // filtered at ~2kHz (one-pole). This turns the stolen-voice energy
+            // into a soft, organic "whoosh" — the dying resonance of the culled
+            // tine, not harsh white noise.
             noiseRng_ ^= noiseRng_ << 13;
             noiseRng_ ^= noiseRng_ >> 17;
             noiseRng_ ^= noiseRng_ << 5;
             float noise = (static_cast<float> (noiseRng_ & 0xFFFF) / 32768.0f - 1.0f);
-            float breezeL = noise * (pBreeze * 0.1f + culledEnergy_ * 0.3f) * (1.0f + biolumMod * 0.3f);
+            float rawBreezeL = noise * (pBreeze * 0.1f + culledEnergy_ * 0.35f) * (1.0f + biolumMod * 0.3f);
 
             noiseRng_ ^= noiseRng_ << 13;
             noiseRng_ ^= noiseRng_ >> 17;
             noiseRng_ ^= noiseRng_ << 5;
             float noiseR = (static_cast<float> (noiseRng_ & 0xFFFF) / 32768.0f - 1.0f);
-            float breezeR = noiseR * (pBreeze * 0.1f + culledEnergy_ * 0.3f) * (1.0f - biolumMod * 0.3f);
+            float rawBreezeR = noiseR * (pBreeze * 0.1f + culledEnergy_ * 0.35f) * (1.0f - biolumMod * 0.3f);
+
+            // Apply the culling LP filter (2kHz — gives the stolen-voice warmth)
+            // The breeze LP is stereo via processSample(L) then processSample(R)
+            // using the same single filter (mono LP tracks the signal envelope).
+            float breezeFiltered = breezeLP_.processSample ((rawBreezeL + rawBreezeR) * 0.5f);
+            float breezeL = rawBreezeL * 0.3f + breezeFiltered * 0.7f;
+            float breezeR = rawBreezeR * 0.3f + breezeFiltered * 0.7f;
 
             // Decay culled energy
             culledEnergy_ *= pCullDecay;
@@ -1034,8 +1251,10 @@ private:
 
     // Filters
     CytomicSVF subFilter_;
-    CytomicSVF canopyLP_;
+    CytomicSVF canopyLP_;        // Canopy smoothing LP (left channel)
+    CytomicSVF canopyLPR_;       // Canopy smoothing LP (right channel — independent state)
     CytomicSVF resonatorBank_;
+    CytomicSVF breezeLP_;        // Harmonic Culling: LP at ~2kHz for ASMR noise floor
 
     // LFOs
     StandardLFO biolumLFO_;

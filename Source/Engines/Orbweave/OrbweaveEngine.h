@@ -182,6 +182,10 @@ struct OrbweaveVoice
     // Pan
     float pan = 0.0f;
 
+    // Voice-steal crossfade (5ms fade-out of stolen voice amplitude)
+    float stealFadeGain = 0.0f;  // 1.0 → 0.0 ramp applied to voice output on steal
+    float stealFadeStep = 0.0f;  // decrement per sample = 1 / (0.005 * sr)
+
     void reset() noexcept
     {
         active = false;
@@ -199,6 +203,8 @@ struct OrbweaveVoice
         for (auto& l : lfos) l.reset();
         filter.reset();
         pan = 0.0f;
+        stealFadeGain = 0.0f;
+        stealFadeStep = 0.0f;
     }
 };
 
@@ -365,6 +371,21 @@ public:
         float blockPitchCoupling  = couplingPitchMod;  couplingPitchMod  = 0.0f;
         float blockCutoffCoupling = couplingCutoffMod; couplingCutoffMod = 0.0f;
 
+        // Hoist LFO rate/shape configuration out of the per-sample loop.
+        // Rate coefficient is sample-rate-dependent but parameter-rate-independent;
+        // setting it once per block per voice is correct and avoids redundant work.
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+        {
+            auto& voice = voices[vi];
+            if (!voice.active) continue;
+            for (int l = 0; l < 2; ++l)
+            {
+                if (lfoType[l] == 0) continue;
+                voice.lfos[l].shape = lfoType[l] - 1;
+                voice.lfos[l].setRate (lfoRate[l], sr);
+            }
+        }
+
         // === Sample Loop ===
         for (int s = 0; s < numSamples; ++s)
         {
@@ -386,8 +407,7 @@ public:
                 for (int l = 0; l < 2; ++l)
                 {
                     if (lfoType[l] == 0) continue; // Off
-                    voice.lfos[l].shape = lfoType[l] - 1; // 1-5 maps to shape 0-4
-                    voice.lfos[l].setRate (lfoRate[l], sr);
+                    // shape and setRate already applied once per block above
                     float lfoVal = voice.lfos[l].process() * lfoDepth[l];
 
                     switch (lfoTarget[l])
@@ -479,6 +499,15 @@ public:
                 gain = clamp (gain, 0.0f, 2.0f);
                 signal *= gain;
                 signal = flushDenormal (signal);
+
+                // Voice-steal crossfade: multiply output by stealFadeGain (1→0 over 5ms)
+                // while the incoming note's envelope ramps up, avoiding a hard click.
+                if (voice.stealFadeGain > 0.0f)
+                {
+                    signal *= voice.stealFadeGain;
+                    voice.stealFadeGain -= voice.stealFadeStep;
+                    if (voice.stealFadeGain < 0.0f) voice.stealFadeGain = 0.0f;
+                }
 
                 // Panning
                 float effPan = clamp (voice.pan, -1.0f, 1.0f);
@@ -985,11 +1014,22 @@ private:
         }
         else
         {
+            // Voice steal: capture current amplitude before reset so the crossfade
+            // ramp can smoothly fade the stolen voice out over 5ms.
+            const float stolenLevel = v.active ? v.ampEnv.getLevel() : 0.0f;
+
             v.reset();
             v.active = true;
             v.note = noteNum;
             v.velocity = vel;
             v.startTime = ++voiceCounter;
+
+            // Begin 5ms steal crossfade from captured level down to 0.
+            if (stolenLevel > 0.0f)
+            {
+                v.stealFadeGain = stolenLevel;
+                v.stealFadeStep = 1.0f / (0.005f * sr);
+            }
 
             v.strandFreq[0] = newFreq0;
             v.strandFreq[1] = newFreq1;

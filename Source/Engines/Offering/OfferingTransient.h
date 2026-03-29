@@ -362,7 +362,15 @@ public:
     }
 
     bool isActive() const noexcept { return active_; }
-    void reset() noexcept { active_ = false; ampEnv_.reset(); pitchEnv_.reset(); }
+    float getAmpEnvLevel() const noexcept { return ampEnv_.getLevel(); }
+
+    // envToPitch: per-sample frequency modulation driven by an external envelope signal.
+    // ratio > 1.0 raises pitch, ratio < 1.0 lowers pitch.  Applied to pitched types only
+    // (Kick, Snare, Tom); hat/clap/rim/perc are noise-based so modulation has no effect.
+    // Call once per sample before process() to schedule the ratio for that sample.
+    void setFreqMod (float ratio) noexcept { extFreqRatio_ = ratio; }
+
+    void reset() noexcept { active_ = false; ampEnv_.reset(); pitchEnv_.reset(); extFreqRatio_ = 1.0f; }
 
     // For choke groups: open hat killed by closed hat
     void choke() noexcept
@@ -381,9 +389,10 @@ private:
     //--------------------------------------------------------------------------
     float processKick (float env) noexcept
     {
-        // Pitch envelope: exponential sweep from startFreq to baseFreq
+        // Pitch envelope: exponential sweep from startFreq to baseFreq.
+        // extFreqRatio_ applies envToPitch coupling — modulates instantaneous frequency.
         float pitchEnvVal = pitchEnv_.process();
-        float freq = baseFreq_ + (startFreq_ - baseFreq_) * pitchEnvVal;
+        float freq = (baseFreq_ + (startFreq_ - baseFreq_) * pitchEnvVal) * extFreqRatio_;
 
         // Main sine oscillator
         float phaseInc = freq / sr_;
@@ -540,9 +549,10 @@ private:
     //--------------------------------------------------------------------------
     float processTom (float env) noexcept
     {
-        // Gentler pitch envelope than kick
+        // Gentler pitch envelope than kick.
+        // extFreqRatio_ applies envToPitch coupling — modulates instantaneous frequency.
         float pitchEnvVal = pitchEnv_.process();
-        float freq = baseFreq_ + (startFreq_ - baseFreq_) * pitchEnvVal;
+        float freq = (baseFreq_ + (startFreq_ - baseFreq_) * pitchEnvVal) * extFreqRatio_;
 
         float phaseInc = freq / sr_;
         phase_ += phaseInc;
@@ -588,6 +598,10 @@ private:
     float pitchEnvDepth_ = 0.3f;
     float sat_ = 0.15f;
     bool active_ = false;
+
+    // External per-sample frequency modulation ratio (envToPitch coupling).
+    // Multiplied into baseFreq/startFreq in pitched process functions each sample.
+    float extFreqRatio_ = 1.0f;
 
     // Oscillator state
     float phase_ = 0.0f;

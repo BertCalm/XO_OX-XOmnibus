@@ -459,10 +459,15 @@ public:
                     }
                 }
 
-                // Advance crystallization
+                // Advance crystallization.
+                // LFO2 modulates crystallization rate: positive = faster freeze, negative = slower.
+                // This gives lfo2Depth a musically meaningful role: crystallization speed oscillates,
+                // creating wavering freeze fronts (fast↔slow) that sound like unstable crystal growth.
                 if (!crystal.isFrozen)
                 {
-                    crystal.freezeTimer += inverseSr;
+                    float lfo2RateMod = 1.0f + lfo2Val * pLfo2Depth * 2.0f;  // range ~[0.8, 1.2] at full depth
+                    lfo2RateMod = clamp (lfo2RateMod, 0.5f, 2.0f);           // never reverse or stall
+                    crystal.freezeTimer += inverseSr * lfo2RateMod;
 
                     // Propagate crystallization from first peak outward
                     for (int p = 0; p < crystal.numPeaks; ++p)

@@ -19,6 +19,14 @@ struct OleAdapterVoice {
     StrumExciter strum; PluckExciter pluck;
     StandardLFO tremoloLFO; // per-voice tremolo LFO for Aunt 3 (Charango) — replaces inline tremoloPhase
 
+    // Voice-steal crossfade (5 ms linear fade-out before new note starts)
+    float stealFadeGain = 1.0f;
+    float stealFadeStep = 0.0f; // computed as 1.0f / (0.005f * sr) on steal
+    bool  isBeingStolen = false;
+    int   pendingNote = 0;
+    float pendingVel  = 0.0f;
+    float pendingStrumRateMs = 8.0f;
+
     void prepare(double s){
         sr=(float)s;int md=(int)(sr/20)+8;
         dl.prepare(md);df.prepare();body.prepare(s);symp.prepare(s,512);drift.prepare(s);
@@ -26,7 +34,7 @@ struct OleAdapterVoice {
         tremoloLFO.setShape(StandardLFO::Sine);
         // Rate will be set per-block from the ole_aunt3Tremolo param (5-25 Hz)
     }
-    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloLFO.reset();}
+    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloLFO.reset();stealFadeGain=1.0f;stealFadeStep=0.0f;isBeingStolen=false;}
     void noteOn(int n,float v, float strumRateMs=8.0f){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69.f)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.1f,3);symp.tune(freq);
@@ -58,14 +66,33 @@ public:
                 if(t<0){t=nv%12;}
                 nv=(t+1)%12;
                 voices[t].auntIdx=t%3; voices[t].isHusband=false;
-                voices[t].noteOn(nn, vel, strumRateMs);
+                if(voices[t].active && !voices[t].isBeingStolen){
+                    // Voice steal: queue new note behind a 5ms crossfade
+                    voices[t].isBeingStolen  = true;
+                    voices[t].stealFadeStep  = 1.0f / (0.005f * voices[t].sr);
+                    voices[t].stealFadeGain  = 1.0f;
+                    voices[t].pendingNote    = nn;
+                    voices[t].pendingVel     = vel;
+                    voices[t].pendingStrumRateMs = strumRateMs;
+                } else if(!voices[t].isBeingStolen){
+                    voices[t].noteOn(nn, vel, strumRateMs);
+                }
 
                 // Husband slot (12-17) — always allocated; muted in render loop when DRAMA<0.7
                 int h=-1;for(int i=12;i<kV;++i)if(!voices[i].active){h=i;break;}
                 if(h<0){h=12+nhv%6;}
                 nhv=(nhv+1)%6;
                 voices[h].isHusband=true; voices[h].husbandType=(h-12)%3;
-                voices[h].noteOn(nn, vel, strumRateMs);
+                if(voices[h].active && !voices[h].isBeingStolen){
+                    voices[h].isBeingStolen  = true;
+                    voices[h].stealFadeStep  = 1.0f / (0.005f * voices[h].sr);
+                    voices[h].stealFadeGain  = 1.0f;
+                    voices[h].pendingNote    = nn;
+                    voices[h].pendingVel     = vel;
+                    voices[h].pendingStrumRateMs = strumRateMs;
+                } else if(!voices[h].isBeingStolen){
+                    voices[h].noteOn(nn, vel, strumRateMs);
+                }
             } else if (msg.isNoteOff()) {
                 for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
             } else if (msg.isChannelPressure()) {
@@ -155,8 +182,25 @@ public:
             float sL=0,sR=0;
             for(auto&v:voices){
                 if(!v.active)continue;
+
+                // Voice-steal crossfade: fade outgoing voice over 5ms, then start pending note.
+                // Processed before the DRAMA guard so husband steals always complete.
+                if(v.isBeingStolen){
+                    v.stealFadeGain -= v.stealFadeStep;
+                    if(v.stealFadeGain <= 0.0f){
+                        // Fade complete — start the new note now
+                        v.isBeingStolen  = false;
+                        v.stealFadeGain  = 1.0f;
+                        v.stealFadeStep  = 0.0f;
+                        v.noteOn(v.pendingNote, v.pendingVel, v.pendingStrumRateMs);
+                        // auntIdx/isHusband flags remain valid from the steal assignment above
+                        continue; // skip this sample to avoid artefact on first new-note sample
+                    }
+                }
+
                 // Husbands only active when DRAMA > 0.7
                 if(v.isHusband && pDr < 0.7f)continue;
+
                 float rr=v.releasing?1.f/(v.sr*0.4f):0;
                 v.ampEnv=std::max(0.f,v.ampEnv-rr);
                 if(v.ampEnv<0.0001f&&v.releasing){v.active=false;continue;}
@@ -238,7 +282,7 @@ public:
                     voiceLevel = auntGains[v.auntIdx];
                 }
 
-                float sig=(bo+so)*v.ampEnv*voiceLevel*tremoloMod*0.4f;
+                float sig=(bo+so)*v.ampEnv*voiceLevel*tremoloMod*v.stealFadeGain*0.4f;
 
                 // ---- ISLA: stereo width / tropical space ----
                 // ISLA widens the stereo spread and adds a subtle reverb-like tail

@@ -300,7 +300,7 @@ public:
         snap.cityIntensity = std::clamp (snap.cityIntensity + couplingCityMod_, 0.0f, 1.0f);
         // couplingFlipMod_: external rhythm modulates stretch amount (additive)
         snap.flipStretch = std::clamp (snap.flipStretch + couplingFlipMod_, 0.5f, 2.0f);
-        // TODO: couplingFMMod_ — wire to transient FM depth once OfferingTransient exposes fm input
+        // couplingFMMod_ — wired in triggerVoice(): deepens pitchEnvDepth on the next triggered hit
 
         // ── 4. Apply macros ──────────────────────────────────────────
         float macroDig  = loadParam (paramMacroDig_, 0.0f);
@@ -349,9 +349,11 @@ public:
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : outL;
         buffer.clear (0, numSamples);
 
-        // Per-sample mono mix buffer for city processing
-        float monoMix[2048];
-        int safeSamples = std::min (numSamples, 2048);
+        // Per-sample mono mix buffer for city processing.
+        // 4096 samples handles 96kHz at large buffer sizes (~42ms); guarded by safeSamples.
+        float monoMix[4096];
+        jassert (numSamples <= 4096);  // warn in debug if host sends unexpectedly large blocks
+        int safeSamples = std::min (numSamples, 4096);
         std::fill (monoMix, monoMix + safeSamples, 0.0f);
 
         // SRO (2026-03-21): Precompute per-voice pan gains once per block.
@@ -397,6 +399,16 @@ public:
                 }
 
                 auto& vs = snap.voice[v];
+
+                // envToPitch: modulate transient frequency by the running amp-envelope level.
+                // Uses ±2-octave range: envToPitch=1.0 at envelope peak raises pitch by one octave.
+                // Applied before process() so the frequency change is sampled this cycle.
+                // Always set (even to 1.0) so stale ratios never persist across blocks.
+                {
+                    float envLevel = voices_[v].transient.getAmpEnvLevel();
+                    float freqRatio = 1.0f + envLevel * snap.envToPitch * 2.0f;
+                    voices_[v].transient.setFreqMod (freqRatio);
+                }
 
                 // Transient synthesis
                 float sample = voices_[v].transient.process();
@@ -797,16 +809,22 @@ private:
         // D001: velocity → timbre (not just volume)
         float velSnap = loadParam (paramVelToSnap_, 0.5f);
         float velBody = loadParam (paramVelToBody_, 0.3f);
-        float velAttack = loadParam (paramVelToAttack_, 0.3f);
+        float velAttack = loadParam (paramVelToAttack_, 0.2f);
         snap = std::clamp (snap + (velocity - 0.5f) * velSnap * 0.6f, 0.0f, 1.0f);
         body = std::clamp (body + (velocity - 0.5f) * velBody * 0.4f, 0.0f, 1.0f);
 
-        // D004: velocity → pitch envelope depth (harder hits = more pitch sweep)
-        pitchEnv = std::clamp (pitchEnv + (velocity - 0.5f) * velAttack * 0.5f, 0.0f, 1.0f);
+        // D001: velToAttack — higher velocity tightens the transient attack (shorter decay).
+        // Scales decay proportionally: full velocity + full velToAttack = 80% shorter decay.
+        decay = std::clamp (decay * (1.0f - velocity * velAttack * 0.8f), 0.001f, 2.0f);
 
-        // D004: envelope → pitch (adds depth to the transient pitch sweep)
-        float envPitch = loadParam (paramEnvToPitch_, 0.1f);
-        pitchEnv = std::clamp (pitchEnv + envPitch * 0.3f, 0.0f, 1.0f);
+        // AudioToFM coupling: external FM signal modulates transient pitch-envelope depth.
+        // couplingFMMod_ > 0 deepens the pitch sweep, adding FM character to the hit.
+        if (std::abs (couplingFMMod_) > 0.001f)
+            pitchEnv = std::clamp (pitchEnv + couplingFMMod_ * 0.5f, 0.0f, 1.0f);
+
+        // envToPitch is stored for per-sample use in renderBlock (dynamic freq modulation).
+        // Cache it into the voice so renderBlock can read it without a param lookup per sample.
+        (void) loadParam (paramEnvToPitch_, 0.0f); // consumed in renderBlock via snap.envToPitch
 
         // Curiosity variation
         float curiosity = loadParam (paramDigCuriosity_, 0.5f);

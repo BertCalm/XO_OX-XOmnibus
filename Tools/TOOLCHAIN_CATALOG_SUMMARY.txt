@@ -1,0 +1,259 @@
+================================================================================
+XO_OX XPN TOOLCHAIN CATALOG — EXECUTIVE SUMMARY
+================================================================================
+Generated: 2026-03-29
+Repository: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/
+
+TOTAL FILES: 233 core + 165 archive = 398 Python tools
+
+================================================================================
+CRITICAL PATH: 10 TOOLS (Must-Have for Oxport Pipeline)
+================================================================================
+
+1. oxport.py (2774 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/oxport.py
+   Role: MASTER ORCHESTRATOR — runs all 10 pipeline stages
+   Imports: 25 other tools
+
+2. oxport_render.py (386 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/oxport_render.py
+   Role: WAV RENDERING — MIDI→audio via BlackHole loopback
+
+3. xpn_render_spec.py (611 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_render_spec.py
+   Role: RENDER SPEC GENERATION — .xometa → render jobs
+
+4. xpn_sample_categorizer.py (383 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_sample_categorizer.py
+   Role: CATEGORIZATION — classify WAVs into voice types
+
+5. xpn_classify_instrument.py (547 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_classify_instrument.py
+   Role: CATEGORIZATION HUB — fingerprinting + type detection
+   Used by: 6 other tools (adaptive_velocity, auto_dna, choke_group_assigner, kit_completeness, normalize)
+
+6. xpn_drum_export.py (377 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_drum_export.py
+   Role: DRUM XPM GENERATION — WAV+metadata → .xpm programs
+
+7. xpn_keygroup_export.py (408 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_keygroup_export.py
+   Role: PITCHED XPM GENERATION — zone-based sample mapping
+
+8. xpn_cover_art.py (1107 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_cover_art.py
+   Role: COVER ART GENERATION — procedural branded artwork
+   Outputs: artwork_500.png, artwork_1000.png
+
+9. xpn_packager.py (478 lines)
+   Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_packager.py
+   Role: ZIP ASSEMBLY — create final .xpn archive
+
+10. xpn_pack_qa_report.py (650 lines)
+    Path: /Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_pack_qa_report.py
+    Role: QA AGGREGATION — comprehensive validation report
+
+================================================================================
+HIGH-VALUE SUPPORT TOOLS (10–15 lines to integrate)
+================================================================================
+
+• compute_preset_dna.py (1101 lines) — DNA vector computation for diversity analysis
+• xpn_bundle_builder.py (1436 lines) — multi-engine bundling + Collection mode
+• xpn_smart_trim.py (397 lines) — silence removal + fade-out
+• xpn_kit_expander.py (289 lines) — velocity/cycle expansion
+• xpn_choke_group_assigner.py (404 lines) — drum hi-hat closure groups
+• xpn_adaptive_velocity.py (413 lines) — velocity curve adjustment
+• validate_presets.py (620 lines) — preset schema validation
+• xpn_validator.py (408 lines) — .xpn ZIP validation
+• xpn_auto_dna.py (323 lines) — heuristic DNA assignment
+
+================================================================================
+CATEGORY BREAKDOWN (233 Core Files)
+================================================================================
+
+ACTIVE (In Pipeline):
+  - RENDER: oxport_render, xpn_drum_export, xpn_keygroup_export, xpn_render_spec (4)
+  - EXPORT: oxport, xpn_bundle_builder, xpn_batch_export, xpn_packager, xpn_to_sfz (5)
+  - CATEGORIZE: xpn_classify_instrument, xpn_sample_categorizer (2)
+  - TRIM: xpn_smart_trim (1)
+  - QA: xpn_pack_qa_report, validate_presets, xpn_validator, xpn_qa_checker, xpn_xpm_validator_strict (5+)
+  - COVER_ART: xpn_cover_art, xpn_cover_art_generator_v2, xpn_optic_fingerprint (3)
+  Total Active: ~20 tools
+
+SUPPLEMENTARY (Called Indirectly or Standalone):
+  - NAMING: 6 tools (xpn_preset_name_generator, tag recommender, normalize, etc.)
+  - DIVERSITY: 12 tools (DNA analysis, interpolation, gap finding, fleet reports)
+  - PACK: 8 tools (collection sequencing, sizing, manifests)
+  - UTILITY: 10+ tools (kit expansion, choke groups, tuning systems)
+  - METADATA: 6 tools (manifests, JSON builders, sidecars)
+  - ANALYSIS: 10+ tools (fleet health, pack analytics, presets clustering)
+  Total Supplementary: ~50+ tools
+
+ONE-OFF / LEGACY / ARCHIVE:
+  - Specialized preset generators: 50+ (generate_broth_presets, generate_onset_presets, etc.)
+  - Legacy fixup scripts: 15+ (add_missing_dna, fix_mood_and_entangled, etc.)
+  - Format converters: 10+ (xpn_aether_*, migration tools)
+  - Post-release analytics: 10+ (pack comparison, preset clustering, search)
+  Total Legacy: ~100+ tools
+
+================================================================================
+DEPENDENCY MAP SUMMARY
+================================================================================
+
+ORCHESTRATOR HUB:
+  oxport.py imports/calls 25 other tools
+    ├→ oxport_render (rendering)
+    ├→ xpn_render_spec (render specs)
+    ├→ xpn_sample_categorizer (categorize)
+    ├→ xpn_classify_instrument (classification hub)
+    ├→ xpn_drum_export (drum export)
+    ├→ xpn_keygroup_export (pitched export)
+    ├→ xpn_cover_art (cover art)
+    ├→ xpn_packager (packaging)
+    ├→ xpn_bundle_builder (bundling mode)
+    ├→ validate_presets (validation)
+    ├→ xpn_validator (ZIP validation)
+    ├→ xpn_qa_checker (QA)
+    └→ 12 other tools...
+
+CLASSIFICATION HUB:
+  xpn_classify_instrument used by:
+    ├→ xpn_adaptive_velocity
+    ├→ xpn_auto_dna
+    ├→ xpn_choke_group_assigner
+    ├→ xpn_kit_completeness
+    ├→ xpn_normalize
+    └→ oxport (indirect)
+
+DNA COMPUTATION CHAIN:
+  compute_preset_dna
+    └→ breed_presets (genetic algorithm)
+
+BUNDLING CHAIN:
+  xpn_bundle_builder
+    ├→ xpn_cover_art
+    ├→ xpn_drum_export
+    ├→ xpn_keygroup_export
+    ├→ xpn_packager
+    └→ xpn_params_sidecar_spec
+
+================================================================================
+DEAD CODE (Not Imported By Anyone)
+================================================================================
+
+The following 166+ tools appear to be one-off utilities, legacy scripts, or 
+specialized generators that are NOT called by the standard oxport pipeline:
+
+LARGE LEGACY GENERATORS (1000+ lines):
+  • generate_onset_presets.py (2291 lines)
+  • xoutshine.py (2049 lines) — separate product (sample instrument forge)
+  • generate_broth_presets.py (1877 lines)
+  • generate_presets_overlap_outwit.py (1238 lines)
+
+SPECIALIZED PRESET BUILDERS (400–1000 lines):
+  • generate_opal_presets.py (1234 lines)
+  • generate_organon_presets.py (1089 lines)
+  • generate_ouroboros_presets.py (756 lines)
+  • generate_overbite_presets.py (823 lines)
+  • generate_overworld_presets.py (934 lines)
+  • generate_outwit_blocks23.py (927 lines)
+  • generate_preset_params.py (656 lines)
+  • extract_cpp_presets.py (652 lines)
+  • generate_submerged_presets.py (502 lines)
+  • ... 50+ more engine-specific generators
+
+ONE-OFF FIXUP SCRIPTS:
+  • add_missing_dna.py (459 lines)
+  • fix_f4_audit.py (504 lines)
+  • fix_mood_and_entangled.py (320 lines)
+  • rename_debug_presets.py (476 lines)
+  • xolokun_preset_migration.py (686 lines)
+  • preset_migration_sprint1.py (330 lines)
+  • fix_preset_schema.py (333 lines)
+  • ... and 25+ more cleanup scripts
+
+ANALYSIS & REPORTING (Not In Pipeline):
+  • xpn_preset_similarity_matrix.py
+  • xpn_preset_clustering_report.py
+  • xpn_preset_search_engine.py
+  • xpn_pack_analytics.py
+  • xpn_pack_ab_tester.py
+  • xpn_pack_discovery_optimizer.py
+  • ... and 30+ more analytics tools
+
+TOTAL DEAD CODE: 166+ tools (70% of codebase)
+
+================================================================================
+ARCHIVE DIRECTORY (/Tools/_archive/)
+================================================================================
+
+165 archived files:
+  • 50+ legacy preset generators
+  • 15+ preset fixup/cleanup scripts
+  • 10+ format conversion tools (xpn_aether_*, migration scripts)
+  • Various one-off utilities
+
+RECOMMENDATION: These can remain archived indefinitely; they're not loaded
+by the standard pipeline.
+
+================================================================================
+KEY FINDINGS & RECOMMENDATIONS
+================================================================================
+
+1. CORE PIPELINE IS WELL-DESIGNED
+   ✓ oxport.py cleanly orchestrates 25 sub-tools
+   ✓ xpn_classify_instrument acts as reliable hub (used by 6 others)
+   ✓ Clear separation: RENDER → CATEGORIZE → EXPORT → QA → PACKAGE
+   ✓ No circular dependencies detected
+
+2. HIDDEN COMPLEXITY: 70% "Dead Code"
+   ⚠ 166+ tools not called by oxport pipeline
+   ⚠ Most are specialized preset builders or one-off fixups
+   ⚠ Many are useful for rapid prototyping but not essential
+   
+   RECOMMENDATION: Document usage (which tools are "manual utilities" vs.
+   "pipeline-integrated"). Move 50+ specialized generators to dedicated
+   /Tools/generators/ subdirectory for clarity.
+
+3. CRITICAL INTEGRATION POINTS (Test These First)
+   → oxport → oxport_render (MIDI rendering)
+   → oxport → xpn_classify_instrument (cascades to 5 dependent tools)
+   → oxport → xpn_cover_art (visual branding)
+   → oxport → xpn_packager (ZIP creation)
+
+4. MAINTENANCE DEBT
+   • validate_presets.py (620 lines) is standalone but used by oxport
+     (not imported as module; called via subprocess?)
+   • xpn_render_spec.py and xpn_render_spec_generator.py are duplicates
+   • Some tools have self-references in imports (e.g., xpn_classify_instrument)
+
+5. MISSING DOCUMENTATION
+   • No tool docstring index
+   • No dependency diagram in codebase
+   • No "critical path" documentation for oxport
+   • No "utilities vs. pipeline" categorization
+
+================================================================================
+FINAL STATISTICS
+================================================================================
+
+Core Directory (/Tools/):        233 files (avg: 450 lines each)
+Archive Directory (/Tools/_archive/): 165 files (avg: 380 lines each)
+Total Python Code:              ~180,000 lines
+
+Active in Pipeline:             ~20 tools (~35,000 lines)
+Supplementary/One-Off:          ~50 tools (~45,000 lines)
+Legacy/Archive:                 ~165 tools (~100,000 lines)
+
+Pipeline Health:
+  • No circular imports detected ✓
+  • Clear orchestrator (oxport.py) ✓
+  • Hub pattern (xpn_classify_instrument) ✓
+  • Modular design ✓
+  • Dead code well-isolated in archive ✓
+
+================================================================================
+
+Full catalog with detailed descriptions:
+/Users/joshuacramblet/.claude/projects/-Users-joshuacramblet/17c37125-85de-40b6-8203-371d42b89977/tool-results/byi2wndmp.txt
+

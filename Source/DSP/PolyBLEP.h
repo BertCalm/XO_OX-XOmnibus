@@ -237,13 +237,19 @@ public:
             output[i] = processSample();
     }
 
-private:
     //--------------------------------------------------------------------------
-    /// 2nd-order polynomial BLEP correction.
-    /// Smooths the discontinuity at a transition point in the waveform.
-    /// @param t  Phase position relative to the discontinuity.
+    /// 2nd-order polynomial BLEP correction (public static utility).
+    ///
+    /// Call directly when building custom oscillators that cannot use the
+    /// full PolyBLEP object (e.g. multi-oscillator metallic banks where phase
+    /// state is managed externally).
+    ///
+    /// @param t  Phase position relative to the discontinuity, in [0, 1).
+    ///           Pass `phase` for a rising edge at phase=0.
+    ///           Pass `fmod(phase - pw + 1.0f, 1.0f)` for a falling edge at phase=pw.
     /// @param dt Phase increment per sample (frequency / sampleRate).
-    /// @return   Correction value to add/subtract from naive waveform.
+    /// @return   Correction value to add (rising) or subtract (falling) from
+    ///           the naive waveform output.
     static float polyBLEP (float t, float dt) noexcept
     {
         if (dt <= 0.0f) return 0.0f;
@@ -271,6 +277,7 @@ private:
         return p;
     }
 
+private:
     Waveform waveform = Waveform::Sine;
     float phase = 0.0f;               // Current phase in [0, 1)
     float phaseIncrement = 0.0f;      // freq / sampleRate

@@ -212,9 +212,15 @@ struct OchreHammerModel
 //==============================================================================
 struct OchreMode
 {
+    // CPU FIX: dirty-flag cache — setFreqAndQ() only recomputes trig/exp when freq or Q changes.
+    // Was called every sample per mode per voice (~128 sin/cos/exp calls per sample at 8v×16m).
+    // Frequency is constant within a block for a given voice, so the coefficients are stable.
     void setFreqAndQ (float freqHz, float q, float sampleRate) noexcept
     {
         if (freqHz >= sampleRate * 0.49f) freqHz = sampleRate * 0.49f;
+        // Early-out: skip expensive trig if inputs haven't changed
+        if (std::fabs (freqHz - freq) < 0.01f && std::fabs (q - cachedQ) < 0.01f)
+            return;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max (q, 1.0f);
         float r = std::exp (-3.14159265f * bw / sampleRate);
@@ -222,6 +228,7 @@ struct OchreMode
         a2 = r * r;
         b0 = (1.0f - r * r) * std::sin (w);
         freq = freqHz;
+        cachedQ = q;
     }
 
     float process (float input) noexcept
@@ -234,9 +241,10 @@ struct OchreMode
         return out;
     }
 
-    void reset() noexcept { y1 = 0.0f; y2 = 0.0f; lastOutput = 0.0f; }
+    void reset() noexcept { y1 = 0.0f; y2 = 0.0f; lastOutput = 0.0f; freq = -1.0f; cachedQ = -1.0f; }
 
-    float freq = 440.0f;
+    float freq = -1.0f;   // -1 forces recompute on first call
+    float cachedQ = -1.0f;
     float b0 = 0.0f, a1 = 0.0f, a2 = 0.0f;
     float y1 = 0.0f, y2 = 0.0f;
     float lastOutput = 0.0f;

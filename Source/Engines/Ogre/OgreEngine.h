@@ -294,6 +294,11 @@ public:
         const float lfo2Depth = loadP (paramLfo2Depth, 0.0f);
         const int   lfo2Shape = static_cast<int> (loadP (paramLfo2Shape, 0.0f));
 
+        // Hoist bodyFilter mode out of the per-sample loop — pSoil is block-constant.
+        const CytomicSVF::Mode bodyFilterMode = (pSoil < 0.5f)
+                                                    ? CytomicSVF::Mode::LowPass
+                                                    : CytomicSVF::Mode::BandPass;
+
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
@@ -304,6 +309,8 @@ public:
             voice.tectonicLFO.setRate (pTectonic, srf);
             voice.glide.setTime (pGlide, srf);
             voice.ampEnv.setADSR (pAttack, pDecay, pSustain, pRelease);
+            // Set filter mode once per block (depends only on pSoil, which is block-constant)
+            voice.bodyFilter.setMode (bodyFilterMode);
         }
 
         float* outL = buffer.getWritePointer (0);
@@ -348,11 +355,18 @@ public:
                 float triSample  = voice.oscTri.processSample();
                 float oscOut = sineSample * (1.0f - mixNow) + triSample * mixNow;
 
-                // Sub-harmonic generator (octave down)
-                float subSample = voice.subGen.process (oscOut);
+                // Gravitational mass accumulation — grows during note sustain
+                voice.noteHeldTime += dtSec;
+                float massAccumRate = 0.1f;  // ~10 seconds to full mass
+                voice.gravityMass = std::min (1.0f, voice.gravityMass + dtSec * massAccumRate * pGravity);
 
-                // Mix sub with main based on rootDepth
-                float combined = oscOut * (1.0f - rootDNow * 0.6f) + subSample * rootDNow;
+                // Sub-harmonic generator (octave down)
+                // Gravity pulls more sub energy: heavier notes sink deeper
+                float subSample = voice.subGen.process (oscOut);
+                float subLevel  = 1.0f + voice.gravityMass * 0.5f;
+
+                // Mix sub with main based on rootDepth (gravity amplifies sub contribution)
+                float combined = oscOut * (1.0f - rootDNow * 0.6f) + subSample * rootDNow * subLevel;
 
                 // Density: adds sub-frequency content below hearing (infrasound presence)
                 // Implemented as very low frequency emphasis on the sub
@@ -361,8 +375,10 @@ public:
                 float subEmphasis = voice.subFilter.processSample (combined) * densNow * 0.5f;
                 combined += subEmphasis;
 
-                // Tanh saturation — thick, earthy
-                float driveAmount = 1.0f + driveNow * 8.0f;
+                // Tanh saturation — thick, earthy.
+                // Gravity increases saturation drive: more mass = more crushing weight.
+                float effectiveGravDrive = driveNow + voice.gravityMass * 2.0f;
+                float driveAmount = 1.0f + std::clamp (effectiveGravDrive, 0.0f, 3.0f) * 8.0f;
                 float saturated = fastTanh (combined * driveAmount) / fastTanh (driveAmount);
 
                 // D001: velocity shapes saturation intensity and brightness
@@ -370,7 +386,7 @@ public:
                 // LFO1 -> brightness
                 velBright = std::clamp (velBright + lfo1Val * 2000.0f, 100.0f, 20000.0f);
 
-                // Body resonance filter — soil character determines filter mode, base cutoff, and Q.
+                // Body resonance filter — mode hoisted to block setup (bodyFilterMode, pSoil-constant).
                 // Clay (0) = tight LP, Sandy (0.5) = wider LP, Rocky (1.0) = BandPass notch character.
                 // The filter envelope then modulates the soil-derived cutoff.
                 // Both soil character AND envelope affect the single filter pass (D004 fix).
@@ -383,7 +399,6 @@ public:
                 float filtered;
                 if (pSoil < 0.5f)
                 {
-                    voice.bodyFilter.setMode (CytomicSVF::Mode::LowPass);
                     // Soil sets base character: clay = darker, sandy = brighter
                     float soilBaseCutoff = velBright * (0.6f + pSoil * 0.8f);
                     // Envelope and LFO2 modulate on top of soil base
@@ -394,7 +409,6 @@ public:
                 else
                 {
                     // Rocky: BandPass for notched character — soil pSoil > 0.5 means rock
-                    voice.bodyFilter.setMode (CytomicSVF::Mode::BandPass);
                     float soilBaseCutoff = velBright * (0.3f + (pSoil - 0.5f) * 0.4f);
                     float finalCutoff = std::clamp (soilBaseCutoff + envMod + lfo2FilterMod,
                                                     100.0f, 20000.0f);
@@ -406,11 +420,6 @@ public:
                 // Amplitude envelope
                 float ampLevel = voice.ampEnv.process();
                 if (!voice.ampEnv.isActive()) { voice.active = false; continue; }
-
-                // Gravitational mass accumulation — grows during note sustain
-                voice.noteHeldTime += dtSec;
-                float massAccumRate = 0.1f;  // ~10 seconds to full mass
-                voice.gravityMass = std::min (1.0f, voice.gravityMass + dtSec * massAccumRate * pGravity);
 
                 float output = filtered * ampLevel * voice.velocity;
 

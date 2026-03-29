@@ -590,6 +590,12 @@ public:
         // Wood alpha=2.0 (upper modes die fast), Metal alpha=0.3 (all modes ring together)
         float materialAlpha = 2.0f - effectiveMaterial * 1.7f;  // 2.0 at wood → 0.3 at metal
 
+        // CPU FIX: precompute log(m+1) table once per block — values are constant within a block.
+        // std::log(float(m+1)) was called 8x per voice per sample inside the inner loop.
+        float logModeIndex[OwareVoice::kMaxModes];
+        for (int m = 0; m < OwareVoice::kMaxModes; ++m)
+            logModeIndex[m] = std::log (static_cast<float> (m + 1));
+
         float decayTimeSec = std::max (pDecay * (1.0f - pDamping * 0.8f), 0.01f);
         float baseDecayCoeff = std::exp (-1.0f / (decayTimeSec * srf));
 
@@ -708,8 +714,8 @@ public:
                     float modeAmp = 1.0f / (1.0f + static_cast<float> (m) * (1.5f - malletNow * 1.2f));
 
                     // Improvement #1: material exponent alpha — per-mode decay scaling
-                    // BUG-3 FIX: fastExp replaces std::pow (per-sample hot path)
-                    float modeDecayScale = fastExp (-materialAlpha * std::log (static_cast<float> (m + 1)));
+                    // CPU FIX: use precomputed logModeIndex[] table (computed once per block above)
+                    float modeDecayScale = fastExp (-materialAlpha * logModeIndex[m]);
                     modeAmp *= modeDecayScale;
 
                     voice.modes[m].setFreqAndQ (modeFreq, modeQ, srf);

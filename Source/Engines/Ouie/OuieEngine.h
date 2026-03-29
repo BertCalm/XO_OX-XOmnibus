@@ -435,7 +435,8 @@ struct OuieWavefolder
 //==============================================================================
 struct OuieKS
 {
-    static constexpr int kMaxDelay = 4096;
+    // 8192 samples covers down to ~12Hz at 96kHz (was 4096 → ~23Hz min at 96kHz)
+    static constexpr int kMaxDelay = 8192;
     float buffer[kMaxDelay] {};
     int writePos = 0;
     float prevSample = 0.0f;

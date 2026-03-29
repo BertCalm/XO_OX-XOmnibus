@@ -60,6 +60,7 @@
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardLFO.h"
+#include "../../DSP/PolyBLEP.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -577,13 +578,35 @@ public:
     {
         if (!active) return 0.0f;
 
-        // Sum 6 square/pulse waves at non-harmonic frequencies
+        // Sum 6 band-limited pulse waves at non-harmonic frequencies.
+        // PolyBLEP correction is applied at both the rising edge (phase wraps
+        // through 0) and the falling edge (phase crosses pulseWidth) to suppress
+        // aliasing in the 4–20 kHz metallic shimmer band.
         float sum = 0.0f;
         for (int i = 0; i < kNumMetallicOscillators; ++i)
         {
             oscillatorPhases[i] += static_cast<double> (oscillatorFrequencies[i]) / sr;
             while (oscillatorPhases[i] >= 1.0) oscillatorPhases[i] -= 1.0;
-            sum += (oscillatorPhases[i] < static_cast<double> (pulseWidth)) ? 1.0f : -1.0f;
+
+            const float phase = static_cast<float> (oscillatorPhases[i]);
+            const float dt    = static_cast<float> (oscillatorFrequencies[i]) / static_cast<float> (sr);
+
+            // Naive pulse: +1 for phase < pulseWidth, -1 otherwise
+            float osc = (phase < pulseWidth) ? 1.0f : -1.0f;
+
+            // PolyBLEP at the rising edge (discontinuity at phase == 0)
+            osc += PolyBLEP::polyBLEP (phase, dt);
+
+            // PolyBLEP at the falling edge (discontinuity at phase == pulseWidth).
+            // Shift phase so the falling discontinuity maps to the 0-crossing of
+            // the BLEP kernel: t = fmod(phase - pulseWidth + 1.0f, 1.0f)
+            {
+                float t = phase - pulseWidth;
+                if (t < 0.0f) t += 1.0f;
+                osc -= PolyBLEP::polyBLEP (t, dt);
+            }
+
+            sum += osc;
         }
         // Normalize by oscillator count to prevent clipping
         sum *= (1.0f / static_cast<float> (kNumMetallicOscillators));

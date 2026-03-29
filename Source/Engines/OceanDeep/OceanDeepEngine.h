@@ -303,38 +303,64 @@ struct DeepDarknessFilter {
 // ---------------------------------------------------------------------------
 // Abyssal reverb — short dense Schroeder reverb for underwater cave tail
 // Less diffuse than sky reverb: small room, dense reflections, dark.
+//
+// Comb lengths are SR-scaled in prepare() so the reverb tail is consistent
+// at 44.1, 48, 88.2, and 96kHz.  Base lengths are the 44.1kHz values;
+// prepare() computes the scaled lengths and allocates std::vector buffers.
 // ---------------------------------------------------------------------------
 struct DeepAbyssalReverb {
     static constexpr int kCombs = 4;
-    // Short comb lengths for a tight dark room feel (cave / hull)
-    static constexpr int kCombLensL[kCombs] = { 557, 601, 641, 683 };
-    static constexpr int kCombLensR[kCombs] = { 571, 617, 659, 701 };
-    static constexpr int kAP1Len = 113, kAP2Len = 223;
+    // Base comb lengths at 44100 Hz (cave / hull tight dark room)
+    static constexpr int kBaseCombLensL[kCombs] = { 557, 601, 641, 683 };
+    static constexpr int kBaseCombLensR[kCombs] = { 571, 617, 659, 701 };
+    // Base allpass lengths at 44100 Hz
+    static constexpr int kBaseAP1Len = 113, kBaseAP2Len = 223;
 
-    float combBufL[kCombs][701] = {};
-    float combBufR[kCombs][701] = {};
-    int   combPosL[kCombs]      = {};
-    int   combPosR[kCombs]      = {};
-    float combStateL[kCombs]    = {};
-    float combStateR[kCombs]    = {};
+    // SR-scaled comb lengths (set in prepare)
+    int combLensL[kCombs] = { 557, 601, 641, 683 };
+    int combLensR[kCombs] = { 571, 617, 659, 701 };
+    int ap1Len = 113, ap2Len = 223;
 
-    float ap1BufL[kAP1Len] = {}, ap1BufR[kAP1Len] = {};
-    float ap2BufL[kAP2Len] = {}, ap2BufR[kAP2Len] = {};
+    // Dynamic comb buffers — sized in prepare() to accommodate any SR
+    std::vector<float> combBufL[kCombs];
+    std::vector<float> combBufR[kCombs];
+    int   combPosL[kCombs]  = {};
+    int   combPosR[kCombs]  = {};
+    float combStateL[kCombs] = {};
+    float combStateR[kCombs] = {};
+
+    std::vector<float> ap1BufL, ap1BufR;
+    std::vector<float> ap2BufL, ap2BufR;
     int ap1PosL=0, ap1PosR=0, ap2PosL=0, ap2PosR=0;
 
     void reset() {
         for (int i = 0; i < kCombs; ++i) {
-            std::fill(combBufL[i], combBufL[i] + kCombLensL[i], 0.f); combStateL[i]=0.f; combPosL[i]=0;
-            std::fill(combBufR[i], combBufR[i] + kCombLensR[i], 0.f); combStateR[i]=0.f; combPosR[i]=0;
+            std::fill(combBufL[i].begin(), combBufL[i].end(), 0.f); combStateL[i]=0.f; combPosL[i]=0;
+            std::fill(combBufR[i].begin(), combBufR[i].end(), 0.f); combStateR[i]=0.f; combPosR[i]=0;
         }
-        std::fill(ap1BufL, ap1BufL+kAP1Len, 0.f);
-        std::fill(ap1BufR, ap1BufR+kAP1Len, 0.f);
-        std::fill(ap2BufL, ap2BufL+kAP2Len, 0.f);
-        std::fill(ap2BufR, ap2BufR+kAP2Len, 0.f);
+        std::fill(ap1BufL.begin(), ap1BufL.end(), 0.f);
+        std::fill(ap1BufR.begin(), ap1BufR.end(), 0.f);
+        std::fill(ap2BufL.begin(), ap2BufL.end(), 0.f);
+        std::fill(ap2BufR.begin(), ap2BufR.end(), 0.f);
         ap1PosL=ap1PosR=ap2PosL=ap2PosR=0;
     }
 
-    void prepare(double /*sr*/) { reset(); }
+    void prepare(double sr) {
+        float scale = static_cast<float>(sr) / 44100.0f;
+        for (int i = 0; i < kCombs; ++i) {
+            combLensL[i] = static_cast<int>(kBaseCombLensL[i] * scale + 0.5f);
+            combLensR[i] = static_cast<int>(kBaseCombLensR[i] * scale + 0.5f);
+            combBufL[i].assign(static_cast<size_t>(combLensL[i]), 0.f);
+            combBufR[i].assign(static_cast<size_t>(combLensR[i]), 0.f);
+        }
+        ap1Len = static_cast<int>(kBaseAP1Len * scale + 0.5f);
+        ap2Len = static_cast<int>(kBaseAP2Len * scale + 0.5f);
+        ap1BufL.assign(static_cast<size_t>(ap1Len), 0.f);
+        ap1BufR.assign(static_cast<size_t>(ap1Len), 0.f);
+        ap2BufL.assign(static_cast<size_t>(ap2Len), 0.f);
+        ap2BufR.assign(static_cast<size_t>(ap2Len), 0.f);
+        reset();
+    }
 
     // space: 0-1 scales feedback 0.60→0.85 (dark short room)
     // mix:   wet mix 0-1
@@ -342,39 +368,39 @@ struct DeepAbyssalReverb {
         float fb = 0.60f + space * 0.25f;
         float dryL = inL, dryR = inR;
 
-        auto runComb = [&](float* buf, int& pos, float& state,
+        auto runComb = [&](std::vector<float>& buf, int& pos, float& state,
                            int len, float input) -> float {
-            float rd = buf[pos];
+            float rd = buf[static_cast<size_t>(pos)];
             // Very dark damping — high-frequency absorption, like deep sea
             state = flushDenormal(rd * 0.60f + state * 0.40f);
             float wr = input + fb * state;
             wr = flushDenormal(wr);
-            buf[pos] = wr;
+            buf[static_cast<size_t>(pos)] = wr;
             pos = (pos + 1 >= len) ? 0 : pos + 1;
             return rd;
         };
 
-        auto runAP = [&](float* buf, int& pos, int len, float input) -> float {
+        auto runAP = [&](std::vector<float>& buf, int& pos, int len, float input) -> float {
             float g = 0.5f;
-            float rd = buf[pos];
+            float rd = buf[static_cast<size_t>(pos)];
             float wr = input + g * rd;
             wr = flushDenormal(wr);
-            buf[pos] = wr;
+            buf[static_cast<size_t>(pos)] = wr;
             pos = (pos + 1 >= len) ? 0 : pos + 1;
             return rd - g * wr;
         };
 
         float wL = 0.f, wR = 0.f;
         for (int i = 0; i < kCombs; ++i) {
-            wL += runComb(combBufL[i], combPosL[i], combStateL[i], kCombLensL[i], inL);
-            wR += runComb(combBufR[i], combPosR[i], combStateR[i], kCombLensR[i], inR);
+            wL += runComb(combBufL[i], combPosL[i], combStateL[i], combLensL[i], inL);
+            wR += runComb(combBufR[i], combPosR[i], combStateR[i], combLensR[i], inR);
         }
         wL *= 0.25f; wR *= 0.25f;
 
-        wL = runAP(ap1BufL, ap1PosL, kAP1Len, wL);
-        wL = runAP(ap2BufL, ap2PosL, kAP2Len, wL);
-        wR = runAP(ap1BufR, ap1PosR, kAP1Len, wR);
-        wR = runAP(ap2BufR, ap2PosR, kAP2Len, wR);
+        wL = runAP(ap1BufL, ap1PosL, ap1Len, wL);
+        wL = runAP(ap2BufL, ap2PosL, ap2Len, wL);
+        wR = runAP(ap1BufR, ap1PosR, ap1Len, wR);
+        wR = runAP(ap2BufR, ap2PosR, ap2Len, wR);
 
         inL = dryL * (1.f - mix) + wL * mix;
         inR = dryR * (1.f - mix) + wR * mix;

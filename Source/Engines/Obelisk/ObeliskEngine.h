@@ -797,14 +797,16 @@ public:
                         for (int m = 0; m < kNumModes; ++m)
                         {
                             float modeFreq = freq * kStoneRatios[m];
-                            auto prep = ObeliskPreparation::computeModification (
+                            // CPU FIX: also refresh prepMods[] here so the per-sample inner loop
+                            // can read voice.prepMods[m] instead of calling computeModification().
+                            voice.prepMods[m] = ObeliskPreparation::computeModification (
                                 pPrepType, pPrepPosition, voicePrepDepth,
                                 m, kNumModes, freq, srf);
-                            modeFreq *= prep.freqMul;
+                            modeFreq *= voice.prepMods[m].freqMul;
                             if (modeFreq >= srf * 0.49f) modeFreq = srf * 0.49f;
                             if (modeFreq < 10.0f) modeFreq = 10.0f;
 
-                            float modeQ = perSampleQ * prep.qMul;
+                            float modeQ = perSampleQ * voice.prepMods[m].qMul;
                             modeQ /= (1.0f + static_cast<float> (m) * 0.15f);
                             modeQ = std::max (modeQ, 1.0f);
 
@@ -838,10 +840,10 @@ public:
 
                 for (int m = 0; m < kNumModes; ++m)
                 {
-                    // Retrieve cached preparation modification for amplitude/excitation
-                    auto prep = ObeliskPreparation::computeModification (
-                        pPrepType, pPrepPosition, voicePrepDepth,
-                        m, kNumModes, freq, srf);
+                    // CPU FIX: use voice.prepMods[] which is built at noteOn (and updated at
+                    // block-rate when prep params change — see needsUpdate block above).
+                    // Calling computeModification() here was ~128 sin/exp calls per sample.
+                    const auto& prep = voice.prepMods[m];
 
                     // Stone tone: cold (low tone = emphasize upper inharmonics)
                     //              warm (high tone = emphasize fundamental)

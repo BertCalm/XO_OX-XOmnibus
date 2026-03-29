@@ -380,9 +380,12 @@ public:
                 // D001: velocity shapes brightness
                 float velBright = 0.5f + voice.velocity * 0.5f;
 
-                // Per-voice filter cutoff with filter envelope and velocity
+                // Per-voice filter cutoff with filter envelope and velocity.
+                // pBrightness has a standalone additive effect on cutoff so it reaches
+                // the synthesis path independently of the CHARACTER macro combination.
                 float voiceCutoff = pFilterCut * velBright
-                    + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity;
+                    + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity
+                    + pBrightness * 4000.0f;   // brightness independently brightens the tone
                 voiceCutoff = clamp (voiceCutoff, 50.0f, srF * 0.49f);
                 voice.viscosityFilter.setCoefficients_fast (voiceCutoff, pFilterRes, srF);
 

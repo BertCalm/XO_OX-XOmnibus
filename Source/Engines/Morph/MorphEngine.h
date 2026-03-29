@@ -208,18 +208,25 @@ public:
 
     float processSample (float input) noexcept
     {
-        // Normalize cutoff to [0, 0.98] of Nyquist to prevent instability
-        double normalizedCutoff = std::max (0.0, std::min (0.98, 2.0 * cutoffFrequency / cachedSampleRate));
+        // Matched-Z (TPT / trapezoidal) prewarped cutoff coefficient.
+        // g = tan(pi * fc / fs) is the same kernel used by CytomicSVF and the
+        // Zavalishin TPT ladder — it tracks correctly at all frequencies and
+        // produces musical self-oscillation near Nyquist where the old Euler
+        // approximation (fc * 0.5 * (1 + (1 - fc))) increasingly under-tracks.
+        // Cutoff is clamped to 0.49 * Nyquist before passing to fastTan so the
+        // argument stays in the accurate range of the polynomial approximation.
+        constexpr double kPi = 3.14159265358979323846;
+        double clampedCutoff = std::max (20.0, std::min (cachedSampleRate * 0.49, static_cast<double> (cutoffFrequency)));
+        double filterCoefficient = static_cast<double> (
+            fastTan (static_cast<float> (kPi * clampedCutoff / cachedSampleRate)));
 
-        // Filter coefficient: modified bilinear transform approximation.
-        // The (1 + (1 - fc)) term compensates for frequency warping near Nyquist,
-        // keeping the perceived cutoff musically accurate at high frequencies.
-        double filterCoefficient = normalizedCutoff * 0.5 * (1.0 + (1.0 - normalizedCutoff));
+        // Clamp g to a safe maximum to prevent instability at extreme cutoffs.
+        if (filterCoefficient > 0.99) filterCoefficient = 0.99;
 
         // Resonance feedback amount: scale 0-1 to 0-4 (the theoretical
         // self-oscillation threshold for a 4-pole ladder).
-        // The (1 - 0.15 * f^2) term reduces feedback at high cutoff to prevent
-        // runaway self-oscillation — a common trick from analog circuit design.
+        // The (1 - 0.15 * g^2) term reduces feedback at high cutoff to prevent
+        // runaway self-oscillation — a common practice from analog circuit design.
         double feedbackAmount = resonance * 4.0 * (1.0 - 0.15 * filterCoefficient * filterCoefficient);
 
         // Subtract feedback from 4th stage output (the ladder's global feedback path)

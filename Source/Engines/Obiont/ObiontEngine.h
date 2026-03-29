@@ -785,6 +785,7 @@ struct ObiontVoice {
     int      note         = 60;
     float    velocity     = 0.f;
     float    stealGain    = 0.f;     // crossfade on steal (ramps from 1 → 0 quickly)
+    float    stealFadeStep = 0.f;   // decrement per sample = 1 / (0.005 * sr)
     bool     releasing    = false;
 
     // CA engines (per-voice — each voice has its own independent grid)
@@ -828,7 +829,8 @@ struct ObiontVoice {
         evoCounter = 0.f;
         evoEnergy  = 0.5f;
         evoEnergySmooth = 0.5f;
-        stealGain  = 0.f;
+        stealGain      = 0.f;
+        stealFadeStep  = 0.f;
         couplingFilterMod = 0.f;
         couplingPitchMod  = 0.f;
         ca.reset();
@@ -886,12 +888,21 @@ struct ObiontVoice {
         adsr.noteOff();
     }
 
-    // Voice steal: silent kill for immediate re-use.
+    // Voice steal: crossfade the stolen voice out over 5ms, then re-seed and
+    // trigger the incoming note.  stealGain is set to the current amplitude and
+    // decremented per sample in the render loop; the CA grid is re-seeded
+    // immediately so the new note's timbral evolution starts right away.
     // mode: 0 = 1D, 1 = 2D (seed appropriate grid).
     // frequency: legacy parameter (unused — seedFreq derived from midiNote).
     void steal(int midiNote, float vel, int frequency, float density,
                double sampleRate, int mode = 0) noexcept {
         (void)frequency;  // derived from midiNote internally
+
+        // Capture amplitude before kill so the crossfade ramp starts at the
+        // correct level rather than an arbitrary hardcoded value.
+        stealGain     = adsr.getLevel();
+        stealFadeStep = 1.0f / (0.005f * static_cast<float>(sampleRate));
+
         // Re-seed grid on steal — don't kill mid-evolution
         int seedFreq = std::max(1, (midiNote % 12) + 1);
         if (mode == 1) {
@@ -1394,6 +1405,15 @@ public:
 
                 // Soft clip to prevent clipping from high-resonance CA patterns
                 output = output / (1.f + std::abs(output));
+
+                // Voice-steal crossfade: multiply output by stealGain (1→0 over 5ms)
+                // while the incoming note's ADSR ramps up, avoiding a hard click.
+                if (v.stealGain > 0.f)
+                {
+                    output *= v.stealGain;
+                    v.stealGain -= v.stealFadeStep;
+                    if (v.stealGain < 0.f) v.stealGain = 0.f;
+                }
 
                 L[n] += output;
                 if (R != L) R[n] += output;

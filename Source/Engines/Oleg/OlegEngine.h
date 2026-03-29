@@ -578,6 +578,10 @@ struct OlegVoice
     // Pan position (computed at note-on, cached)
     float panL = 0.707f, panR = 0.707f;
 
+    // Voice-steal crossfade (5ms fade-out of stolen voice amplitude)
+    float stealFadeGain = 0.0f;  // 1.0 → 0.0 ramp applied to voice output on steal
+    float stealFadeStep = 0.0f;  // decrement per sample = 1 / (0.005 * sr)
+
     void reset() noexcept
     {
         active = false;
@@ -585,6 +589,8 @@ struct OlegVoice
         isPush = true;
         pressure = 0.0f;
         pressureSmoothed = 0.0f;
+        stealFadeGain = 0.0f;
+        stealFadeStep = 0.0f;
         glide.reset();
         osc.reset();
         bellowsEnv.kill();
@@ -794,6 +800,18 @@ public:
         float* outL = buffer.getWritePointer (0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
 
+        // Hoist LFO rate/shape configuration out of the per-sample loop.
+        // These are block-rate parameters; calling setRate/setShape once per block
+        // per voice is correct and avoids redundant coefficient updates each sample.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.lfo1.setRate (lfo1Rate, srf);
+            voice.lfo1.setShape (lfo1Shape);
+            voice.lfo2.setRate (lfo2Rate, srf);
+            voice.lfo2.setShape (lfo2Shape);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
             float buzzNow    = smoothBuzz.process();
@@ -812,12 +830,7 @@ public:
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
 
-                // LFO processing
-                voice.lfo1.setRate (lfo1Rate, srf);
-                voice.lfo1.setShape (lfo1Shape);
-                voice.lfo2.setRate (lfo2Rate, srf);
-                voice.lfo2.setShape (lfo2Shape);
-
+                // LFO processing (rate/shape already set once per block above)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
@@ -936,6 +949,15 @@ public:
 
                 float output = filtered * ampLevel * bellowsAmp * voice.velocity;
 
+                // Voice-steal crossfade: multiply output by stealFadeGain (1→0 over 5ms)
+                // while the incoming note's envelope ramps up, avoiding a hard click.
+                if (voice.stealFadeGain > 0.0f)
+                {
+                    output *= voice.stealFadeGain;
+                    voice.stealFadeGain -= voice.stealFadeStep;
+                    if (voice.stealFadeGain < 0.0f) voice.stealFadeGain = 0.0f;
+                }
+
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
             }
@@ -963,6 +985,20 @@ public:
 
         float freq = 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
         int organ = paramOrgan ? static_cast<int> (paramOrgan->load()) : 0;
+
+        // Voice steal: if this slot was already active, begin a 5ms crossfade from its
+        // current amplitude down to 0 before the new note takes over.
+        if (v.active)
+        {
+            v.stealFadeGain = v.bellowsEnv.getLevel() * 0.5f + v.pressure * 0.5f;
+            v.stealFadeGain = std::clamp (v.stealFadeGain, 0.0f, 1.0f);
+            v.stealFadeStep = 1.0f / (0.005f * srf);
+        }
+        else
+        {
+            v.stealFadeGain = 0.0f;
+            v.stealFadeStep = 0.0f;
+        }
 
         v.active = true;
         v.currentNote = note;

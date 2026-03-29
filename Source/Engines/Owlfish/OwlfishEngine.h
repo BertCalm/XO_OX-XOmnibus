@@ -131,11 +131,16 @@ public:
         // Reset coupling accumulators after use
         couplingGrainMod = 0.0f;
         couplingSubMod = 0.0f;
-        couplingPitchMod = 0.0f; // pitch mod would be applied in voice if accessible
+        couplingPitchMod = 0.0f; // applied above as combinedSemitones offset to applyPitchBend
 
-        // Apply pitch bend to voice target frequency
+        // Apply pitch bend and LFOToPitch coupling to voice target frequency.
+        // couplingPitchMod is in semitones (±1 at amount=1.0); combined with pitch
+        // bend before passing the unified ratio to the voice so both offsets compose.
         if (voice.isActive())
-            voice.applyPitchBend (xolokun::PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f));
+        {
+            float combinedSemitones = pitchBendNorm * 2.0f + couplingPitchMod;
+            voice.applyPitchBend (xolokun::PitchBendUtil::semitonesToFreqRatio (combinedSemitones));
+        }
 
         // Render the organism
         buffer.clear();

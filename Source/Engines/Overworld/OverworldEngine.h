@@ -59,6 +59,10 @@ public:
         // P0-05 fix: allocate per-sample output cache for coupling reads
         outputCacheLeft.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheRight.assign (static_cast<size_t> (maxBlockSize), 0.0f);
+        // Haas micro-delay: ~0.3ms at any SR (16 samples @ 44.1kHz, 29 @ 96kHz)
+        haasDelaySamples = static_cast<int>(0.0003 * sampleRate) + 1;
+        haasDelayBuf.assign (static_cast<size_t> (haasDelaySamples), 0.0f);
+        haasWritePos = 0;
         silenceGate.prepare(sampleRate, maxBlockSize);
     }
 
@@ -410,10 +414,10 @@ public:
             // plus phase-inverted ERA drift for organic width. This lifts the mono
             // collapse flagged in the 7.6 seance without altering the mono character.
             {
-                // Micro-delay right channel: ~13 samples at 44100 Hz (~0.3ms Haas)
-                int haasIdx = haasWritePos % kHaasDelayLen;
-                float haasOut = haasDelayBuf[haasIdx];
-                haasDelayBuf[haasIdx] = sample;
+                // Micro-delay right channel: ~0.3ms Haas effect (SR-scaled in prepare)
+                int haasIdx = haasWritePos % haasDelaySamples;
+                float haasOut = haasDelayBuf[static_cast<size_t>(haasIdx)];
+                haasDelayBuf[static_cast<size_t>(haasIdx)] = sample;
                 haasWritePos++;
 
                 // ERA drift adds subtle stereo decorrelation
@@ -596,9 +600,11 @@ private:
     float eraPhase   = 0.0f;
 
     // DSP Fix Wave 2B: Haas stereo widening (~0.3ms delay on R channel)
-    static constexpr int kHaasDelayLen = 16; // ~0.3ms at 48kHz
-    float haasDelayBuf[kHaasDelayLen] = {};
-    int   haasWritePos = 0;
+    // Buffer size is computed in prepare() as ~0.3ms at the actual sample rate
+    // so the Haas effect length is SR-independent.
+    int haasDelaySamples = 16;  // updated in prepare()
+    std::vector<float> haasDelayBuf;
+    int haasWritePos = 0;
 
     // P0-05 fix: per-sample output cache for getSampleForCoupling
     std::vector<float> outputCacheLeft;
