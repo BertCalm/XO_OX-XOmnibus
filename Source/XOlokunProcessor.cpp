@@ -84,6 +84,8 @@
 // Dual Engine Integration — OASIS + OUTFLOW
 #include "Engines/Oasis/OasisEngine.h"
 #include "Engines/Outflow/OutflowEngine.h"
+// Cellular Automata Oscillator — OBIONT (engine #74)
+#include "Engines/Obiont/ObiontEngine.h"
 #include "DSP/ThreadInit.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
@@ -430,6 +432,11 @@ static bool registered_Outflow = xolokun::EngineRegistry::instance().registerEng
     "Outflow", []() -> std::unique_ptr<xolokun::SynthEngine> {
         return std::make_unique<xolokun::OutflowEngine>();
     });
+// Cellular Automata Oscillator — OBIONT (engine #74)
+static bool registered_Obiont = xolokun::EngineRegistry::instance().registerEngine(
+    "Obiont", []() -> std::unique_ptr<xolokun::SynthEngine> {
+        return std::make_unique<xolokun::ObiontEngine>();
+    });
 
 namespace xolokun {
 
@@ -631,6 +638,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     XOutwitEngine::addParameters(params);
     OsmosisEngine::addParameters(params);
     OutlookEngine::addParameters(params);
+    ObiontEngine::addParameters(params);
 
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.
@@ -818,12 +826,32 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_ottDepth", 1), "Master OTT Depth",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
+    // Stage 11: Reverb (FATHOM 8-tap Hadamard FDN — 8 parameters)
+    // master_reverbSize and master_reverbMix are the legacy IDs; preserved unchanged.
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_reverbSize", 1), "Master Reverb Size",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_reverbMix", 1), "Master Reverb Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbPreDelay", 1), "Master Reverb Pre-Delay",
+        juce::NormalisableRange<float>(0.0f, 250.0f, 0.0f, 0.4f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbDecay", 1), "Master Reverb Decay",
+        juce::NormalisableRange<float>(0.5f, 20.0f, 0.0f, 0.4f), 2.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbDamping", 1), "Master Reverb Damping",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbDiffusion", 1), "Master Reverb Diffusion",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbMod", 1), "Master Reverb Modulation",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbWidth", 1), "Master Reverb Width",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_compRatio", 1), "Master Comp Ratio",
         juce::NormalisableRange<float>(1.0f, 20.0f, 0.0f, 0.4f), 2.5f));

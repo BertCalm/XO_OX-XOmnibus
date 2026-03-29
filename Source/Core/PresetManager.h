@@ -54,6 +54,8 @@ inline const juce::StringArray validEngineNames {
     "Outlook",
     // Dual Engine Integration
     "Oasis", "Outflow",
+    // Cellular Automata Oscillator
+    "Obiont",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -209,6 +211,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         // Dual Engine Integration
         { "Oasis",       "oas_"    },
         { "Outflow",     "out_"    },
+        // Cellular Automata Oscillator
+        { "Obiont",      "obnt_"   },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
