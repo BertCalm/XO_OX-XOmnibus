@@ -726,6 +726,268 @@ private:
 using BiteAdsrEnvelope = StandardADSR;
 
 //==============================================================================
+// BiteMotionFX -- Stereo chorus / doubler / flange modulated delay line.
+// Max delay 40ms. LFO-modulated read pointer with quadrature L/R spread.
+//==============================================================================
+class BiteMotionFX
+{
+public:
+    static constexpr int kMaxDelaySamples = 2048; // ~43ms @48kHz
+
+    void prepare (double sampleRate) noexcept
+    {
+        sr = static_cast<float> (sampleRate);
+        bufL.assign (static_cast<size_t> (kMaxDelaySamples), 0.0f);
+        bufR.assign (static_cast<size_t> (kMaxDelaySamples), 0.0f);
+        writePos = 0;
+        lfoPhase = 0.0f;
+    }
+
+    void reset() noexcept
+    {
+        if (!bufL.empty()) std::fill (bufL.begin(), bufL.end(), 0.0f);
+        if (!bufR.empty()) std::fill (bufR.begin(), bufR.end(), 0.0f);
+        writePos = 0;
+        lfoPhase = 0.0f;
+    }
+
+    // type: 0=Plush Chorus, 1=Uneasy Doubler, 2=Oil Flange
+    void process (float& outL, float& outR, int type, float rate, float depth, float mix) noexcept
+    {
+        if (bufL.empty()) return;
+
+        // Advance LFO always (keeps buffer valid even when mix=0)
+        lfoPhase += rate / sr;
+        if (lfoPhase >= 1.0f) lfoPhase -= 1.0f;
+        float lfoL = BiteSineTable::lookup (static_cast<double> (lfoPhase));
+        double rPhase = static_cast<double> (lfoPhase) + 0.25;
+        if (rPhase >= 1.0) rPhase -= 1.0;
+        float lfoR = BiteSineTable::lookup (rPhase);
+
+        bufL[static_cast<size_t> (writePos)] = outL;
+        bufR[static_cast<size_t> (writePos)] = outR;
+
+        if (mix > 0.001f)
+        {
+            float invSR_ms = 1000.0f / sr;
+            float centreMs = 0.0f, widthMs = 0.0f, widthMsR = 0.0f;
+            switch (type)
+            {
+                case 0: centreMs = 15.0f; widthMs = 7.0f * depth; widthMsR = 7.0f * depth * 1.3f; break;
+                case 1: centreMs = 25.0f; widthMs = 3.0f * depth; widthMsR = 3.0f * depth * 0.7f; break;
+                case 2: centreMs = 3.0f;  widthMs = 2.5f * depth; widthMsR = 2.5f * depth * 0.9f; break;
+                default: centreMs = 15.0f; widthMs = 7.0f * depth; widthMsR = 7.0f * depth; break;
+            }
+            float centreSmp = centreMs / invSR_ms;
+            float wL = widthMs  / invSR_ms;
+            float wR = widthMsR / invSR_ms;
+            float delayL = clamp (centreSmp + lfoL * wL, 1.0f, static_cast<float> (kMaxDelaySamples - 2));
+            float delayR = clamp (centreSmp + lfoR * wR, 1.0f, static_cast<float> (kMaxDelaySamples - 2));
+
+            auto readInterp = [this] (const std::vector<float>& buf, float delay) -> float
+            {
+                int n = kMaxDelaySamples;
+                float fIdx = static_cast<float> (writePos) - delay;
+                while (fIdx < 0.0f) fIdx += static_cast<float> (n);
+                int iLo = static_cast<int> (fIdx) % n;
+                int iHi = (iLo + 1) % n;
+                float frac = fIdx - std::floor (fIdx);
+                return buf[static_cast<size_t> (iLo)] + frac * (buf[static_cast<size_t> (iHi)] - buf[static_cast<size_t> (iLo)]);
+            };
+
+            float wetL = readInterp (bufL, delayL);
+            float wetR = readInterp (bufR, delayR);
+            outL = lerp (outL, wetL, mix);
+            outR = lerp (outR, wetR, mix);
+        }
+
+        writePos = (writePos + 1) % kMaxDelaySamples;
+    }
+
+private:
+    float sr = 44100.0f;
+    std::vector<float> bufL, bufR;
+    int writePos = 0;
+    float lfoPhase = 0.0f;
+};
+
+//==============================================================================
+// BiteEchoFX -- Stereo delay with character types and feedback.
+// Max delay 2s. Ping mode swaps L/R on feedback path.
+//==============================================================================
+class BiteEchoFX
+{
+public:
+    static constexpr int kMaxDelaySamples = 96001; // >=2s @48kHz
+
+    void prepare (double sampleRate) noexcept
+    {
+        sr = static_cast<float> (sampleRate);
+        bufL.assign (static_cast<size_t> (kMaxDelaySamples), 0.0f);
+        bufR.assign (static_cast<size_t> (kMaxDelaySamples), 0.0f);
+        writePos = 0;
+        filterStateL = filterStateR = 0.0f;
+    }
+
+    void reset() noexcept
+    {
+        if (!bufL.empty()) std::fill (bufL.begin(), bufL.end(), 0.0f);
+        if (!bufR.empty()) std::fill (bufR.begin(), bufR.end(), 0.0f);
+        writePos = 0;
+        filterStateL = filterStateR = 0.0f;
+    }
+
+    // type: 0=Dark Tape, 1=Murky Digital, 2=Short Slap, 3=Ping
+    void process (float& outL, float& outR, int type, float timeSeconds, float feedback, float mix) noexcept
+    {
+        if (bufL.empty()) return;
+
+        float effTime = (type == 2) ? std::min (timeSeconds, 0.06f) : timeSeconds;
+        float delaySmp = clamp (effTime * sr, 1.0f, static_cast<float> (kMaxDelaySamples - 2));
+        int n = kMaxDelaySamples;
+
+        auto readInterp = [n, this] (const std::vector<float>& buf, float delay) -> float
+        {
+            float fIdx = static_cast<float> (writePos) - delay;
+            while (fIdx < 0.0f) fIdx += static_cast<float> (n);
+            int iLo = static_cast<int> (fIdx) % n;
+            int iHi = (iLo + 1) % n;
+            float frac = fIdx - std::floor (fIdx);
+            return buf[static_cast<size_t> (iLo)] + frac * (buf[static_cast<size_t> (iHi)] - buf[static_cast<size_t> (iLo)]);
+        };
+
+        float delayedL = readInterp (bufL, delaySmp);
+        float delayedR = readInterp (bufR, delaySmp);
+
+        if (type == 0) // Dark Tape: 1-pole LP on feedback (~3kHz)
+        {
+            float coeff = std::exp (-2.0f * 3.14159265f * 3000.0f / sr);
+            filterStateL = filterStateL * coeff + delayedL * (1.0f - coeff);
+            filterStateR = filterStateR * coeff + delayedR * (1.0f - coeff);
+            filterStateL = flushDenormal (filterStateL);
+            filterStateR = flushDenormal (filterStateR);
+            delayedL = filterStateL;
+            delayedR = filterStateR;
+        }
+        else if (type == 1) // Murky Digital: light sat on feedback
+        {
+            delayedL = fastTanh (delayedL * 1.15f);
+            delayedR = fastTanh (delayedR * 1.15f);
+        }
+
+        float fbL = (type == 3) ? delayedR * feedback : delayedL * feedback;
+        float fbR = (type == 3) ? delayedL * feedback : delayedR * feedback;
+
+        bufL[static_cast<size_t> (writePos)] = flushDenormal (outL + fbL);
+        bufR[static_cast<size_t> (writePos)] = flushDenormal (outR + fbR);
+        writePos = (writePos + 1) % n;
+
+        if (mix > 0.001f)
+        {
+            outL = lerp (outL, delayedL, mix);
+            outR = lerp (outR, delayedR, mix);
+        }
+    }
+
+private:
+    float sr = 44100.0f;
+    std::vector<float> bufL, bufR;
+    int writePos = 0;
+    float filterStateL = 0.0f, filterStateR = 0.0f;
+};
+
+//==============================================================================
+// BiteSpaceFX -- Schroeder-style reverb (4 comb + 2 allpass) with 3 room types.
+//==============================================================================
+class BiteSpaceFX
+{
+public:
+    static constexpr int kNumCombs   = 4;
+    static constexpr int kNumAllpass = 2;
+    static constexpr int kMaxLen     = 2048;
+
+    void prepare (double sampleRate) noexcept
+    {
+        sr = static_cast<float> (sampleRate);
+        float srScale = sr / 44100.0f;
+        const int kCombLens[kNumCombs]  = { 1557, 1617, 1491, 1422 };
+        const int kAPLens[kNumAllpass]  = { 225, 341 };
+        for (int i = 0; i < kNumCombs; ++i)
+        {
+            int len = std::min (static_cast<int> (kCombLens[i] * srScale) | 1, kMaxLen - 1);
+            combBuf[i].assign (static_cast<size_t> (len), 0.0f);
+            combLen[i] = len; combPos[i] = 0; combState[i] = 0.0f;
+        }
+        for (int i = 0; i < kNumAllpass; ++i)
+        {
+            int len = std::min (static_cast<int> (kAPLens[i] * srScale) | 1, kMaxLen - 1);
+            apBuf[i].assign (static_cast<size_t> (len), 0.0f);
+            apLen[i] = len; apPos[i] = 0;
+        }
+    }
+
+    void reset() noexcept
+    {
+        for (int i = 0; i < kNumCombs;   ++i) { if (!combBuf[i].empty()) std::fill (combBuf[i].begin(), combBuf[i].end(), 0.0f); combPos[i] = 0; combState[i] = 0.0f; }
+        for (int i = 0; i < kNumAllpass; ++i) { if (!apBuf[i].empty())   std::fill (apBuf[i].begin(), apBuf[i].end(), 0.0f);   apPos[i] = 0; }
+    }
+
+    // type: 0=Burrow Room, 1=Fog Chamber, 2=Drain Hall
+    void process (float& outL, float& outR, int type, float size, float decaySec, float damping, float mix) noexcept
+    {
+        if (mix < 0.001f || combBuf[0].empty()) return;
+
+        // RT60 feedback from first comb length
+        float baseFB = clamp (std::pow (10.0f, -3.0f * static_cast<float> (combLen[0]) / (decaySec * sr)), 0.0f, 0.97f);
+        float effDamping = clamp (damping - size * 0.15f, 0.0f, 1.0f);
+        switch (type)
+        {
+            case 0: effDamping = clamp (effDamping + 0.15f, 0.0f, 1.0f); baseFB *= 0.85f; break;
+            case 1: effDamping = clamp (effDamping + 0.25f, 0.0f, 1.0f); break;
+            case 2: effDamping = clamp (effDamping - 0.1f,  0.0f, 1.0f); baseFB = clamp (baseFB * 1.1f, 0.0f, 0.97f); break;
+            default: break;
+        }
+        float dampCoeff = std::exp (-2.0f * 3.14159265f * (300.0f + (1.0f - effDamping) * 6000.0f) / sr);
+
+        float mono = (outL + outR) * 0.5f;
+        float reverbOut = 0.0f;
+        for (int i = 0; i < kNumCombs; ++i)
+        {
+            int pos = combPos[i];
+            float delayed = combBuf[i][static_cast<size_t> (pos)];
+            combState[i] = combState[i] * dampCoeff + delayed * (1.0f - dampCoeff);
+            combState[i] = flushDenormal (combState[i]);
+            combBuf[i][static_cast<size_t> (pos)] = flushDenormal (mono + combState[i] * baseFB);
+            combPos[i] = (pos + 1) % combLen[i];
+            reverbOut += delayed;
+        }
+        reverbOut *= 0.25f;
+        for (int i = 0; i < kNumAllpass; ++i)
+        {
+            int pos = apPos[i];
+            float delayed = apBuf[i][static_cast<size_t> (pos)];
+            float input = reverbOut + delayed * 0.5f;
+            apBuf[i][static_cast<size_t> (pos)] = flushDenormal (input);
+            apPos[i] = (pos + 1) % apLen[i];
+            reverbOut = delayed - 0.5f * input;
+            reverbOut = flushDenormal (reverbOut);
+        }
+        outL = lerp (outL, reverbOut, mix);
+        outR = lerp (outR, reverbOut, mix);
+    }
+
+private:
+    float sr = 44100.0f;
+    std::vector<float> combBuf[kNumCombs];
+    int combLen[kNumCombs]  = { 1557, 1617, 1491, 1422 };
+    int combPos[kNumCombs]  = {};
+    float combState[kNumCombs] = {};
+    std::vector<float> apBuf[kNumAllpass];
+    int apLen[kNumAllpass]  = { 225, 341 };
+    int apPos[kNumAllpass]  = {};
+};
+
+//==============================================================================
 // BiteLFO -- LFO with 7 shapes: Sine, Triangle, Saw, Square, S&H, Random, Stepped.
 // Supports retrigger (reset on note-on) and start phase offset.
 //==============================================================================
@@ -898,6 +1160,10 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        motionFX.prepare (sampleRate);
+        echoFX.prepare (sampleRate);
+        spaceFX.prepare (sampleRate);
+
         aftertouch.prepare (sampleRate);
 
         for (int i = 0; i < kMaxVoices; ++i)
@@ -951,6 +1217,11 @@ public:
         externalFilterMod = 0.0f;
         externalFMBuffer = nullptr;
         externalFMSamples = 0;
+        motionFX.reset();
+        echoFX.reset();
+        spaceFX.reset();
+        lowMonoStateL = 0.0f;
+        lowMonoStateR = 0.0f;
         std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
     }
@@ -1084,6 +1355,39 @@ public:
         const float macroScurry      = safeLoadF (pMacroScurry, 0.0f);
         const float macroTrash       = safeLoadF (pMacroTrash, 0.0f);
         const float macroPlayDead    = safeLoadF (pMacroPlayDead, 0.0f);
+        // Mod matrix (8 slots × 3 = 24 params)
+        struct ModSlot { int src; int dst; float amt; };
+        const ModSlot modSlots[8] = {
+            { safeLoad (pModSlot1Src, 0), safeLoad (pModSlot1Dst, 0), safeLoadF (pModSlot1Amt, 0.0f) },
+            { safeLoad (pModSlot2Src, 0), safeLoad (pModSlot2Dst, 0), safeLoadF (pModSlot2Amt, 0.0f) },
+            { safeLoad (pModSlot3Src, 0), safeLoad (pModSlot3Dst, 0), safeLoadF (pModSlot3Amt, 0.0f) },
+            { safeLoad (pModSlot4Src, 0), safeLoad (pModSlot4Dst, 0), safeLoadF (pModSlot4Amt, 0.0f) },
+            { safeLoad (pModSlot5Src, 0), safeLoad (pModSlot5Dst, 0), safeLoadF (pModSlot5Amt, 0.0f) },
+            { safeLoad (pModSlot6Src, 0), safeLoad (pModSlot6Dst, 0), safeLoadF (pModSlot6Amt, 0.0f) },
+            { safeLoad (pModSlot7Src, 0), safeLoad (pModSlot7Dst, 0), safeLoadF (pModSlot7Amt, 0.0f) },
+            { safeLoad (pModSlot8Src, 0), safeLoad (pModSlot8Dst, 0), safeLoadF (pModSlot8Amt, 0.0f) },
+        };
+        // FX: Motion (4 params)
+        const int   fxMotionType     = safeLoad  (pFxMotionType,  0);
+        const float fxMotionRate     = safeLoadF (pFxMotionRate,  0.5f);
+        const float fxMotionDepth    = safeLoadF (pFxMotionDepth, 0.0f);
+        const float fxMotionMix      = safeLoadF (pFxMotionMix,   0.0f);
+        // FX: Echo (5 params)
+        const int   fxEchoType       = safeLoad  (pFxEchoType,    0);
+        const float fxEchoTime       = safeLoadF (pFxEchoTime,    0.3f);
+        const float fxEchoFeedback   = safeLoadF (pFxEchoFeedback,0.3f);
+        const float fxEchoMix        = safeLoadF (pFxEchoMix,     0.0f);
+        // FX: Space (5 params)
+        const int   fxSpaceType      = safeLoad  (pFxSpaceType,   0);
+        const float fxSpaceSize      = safeLoadF (pFxSpaceSize,   0.3f);
+        const float fxSpaceDecay     = safeLoadF (pFxSpaceDecay,  1.5f);
+        const float fxSpaceDamping   = safeLoadF (pFxSpaceDamping,0.5f);
+        const float fxSpaceMix       = safeLoadF (pFxSpaceMix,    0.0f);
+        // FX: Finish (4 params)
+        const float fxFinishGlue     = safeLoadF (pFxFinishGlue,  0.0f);
+        const float fxFinishClip     = safeLoadF (pFxFinishClip,  0.0f);
+        const float fxFinishWidth    = safeLoadF (pFxFinishWidth,  1.0f);
+        const float fxFinishLowMono  = safeLoadF (pFxFinishLowMono,0.0f);
 
         // =====================================================================
         // Decode polyphony: 0->1, 1->2, 2->4, 3->8, 4->16
@@ -1237,7 +1541,7 @@ public:
 
             float externalFM = 0.0f;
             if (externalFMBuffer != nullptr && sample < externalFMSamples)
-                externalFM = externalFMBuffer[sample];
+                externalFM = externalFMBuffer[sample] * externalFMAmount;
 
             for (auto& voice : voices)
             {
@@ -1288,6 +1592,41 @@ public:
                 float modEnvOscMix     = (modEnvDest == 6) ? modEnvVal : 0.0f;
                 float modEnvWeightLvl  = (modEnvDest == 7) ? modEnvVal : 0.0f;
 
+                // ---- Mod Matrix ----
+                // Sources: 0=Off, 1=LFO1, 2=LFO2, 3=LFO3, 4=AmpEnv, 5=FilterEnv, 6=ModEnv,
+                //          7=Velocity, 8=Note, 9=Aftertouch, 10=ModWheel, 11-15=Macros
+                // Destinations: 0=Off, 1=OscAShape, 2=OscADrift, 3=OscBShape, 4=OscBInstab,
+                //   5=OscMix, 6=OscInteract, 7=SubLevel, 8=WeightLevel, 9=NoiseLevel,
+                //   10=FilterCutoff, 11=FilterReso, 12=FilterDrive, 13=Fur, 14=Chew,
+                //   15=Drive, 16=Gnash, 17=Trash, 18=AmpLevel, 19=Pan,
+                //   20=FxMotionRate, 21=FxMotionDepth, 22=FxEchoTime, 23=FxEchoFeedback,
+                //   24=FxSpaceSize, 25=FxSpaceDecay
+                const float mmSrc[16] = {
+                    0.0f,
+                    lfo1val, lfo2val, lfo3val,
+                    voice.ampEnv.getLevel(), voice.filterEnv.getLevel(), modEnvVal,
+                    voice.velocity,
+                    (static_cast<float> (voice.noteNumber) - 60.0f) / 64.0f,
+                    atPressure, modWheelAmount,
+                    macroBelly, macroBite, macroScurry, macroTrash, macroPlayDead
+                };
+                float mmDst[26] = {};
+                for (int ms = 0; ms < 8; ++ms)
+                {
+                    const auto& slot = modSlots[ms];
+                    if (slot.src == 0 || slot.dst == 0 || slot.amt == 0.0f) continue;
+                    mmDst[std::min (slot.dst, 25)] += mmSrc[std::min (slot.src, 15)] * slot.amt;
+                }
+                // Fold matrix contributions into existing mod accumulators
+                modEnvOscAShape  += mmDst[1];
+                modEnvOscBShape  += mmDst[3];
+                modEnvOscMix     += mmDst[5];
+                modEnvWeightLvl  += mmDst[8];
+                modEnvCutoff     += mmDst[10] * 3000.0f;
+                modEnvFur        += mmDst[13];
+                modEnvGnash      += mmDst[16];
+                modEnvTrash      += mmDst[17];
+
                 // LFO1 -> pitch (subtle vibrato), scaled by Scurry
                 float pitchMod = lfo1val * 0.005f * (1.0f + macroScurry);
                 freq *= (1.0f + pitchMod);
@@ -1298,7 +1637,7 @@ public:
                 voice.oscA.setWaveform (oscAWave);
                 // modEnv can morph OscA shape when dest=0
                 voice.oscA.setShape (clamp (oscAShape + modEnvOscAShape, 0.0f, 1.0f));
-                voice.oscA.setDrift (oscADriftAmt);
+                voice.oscA.setDrift (clamp (oscADriftAmt + mmDst[2], 0.0f, 1.0f)); // mmDst[2]=OscA Drift
                 float oscAout = voice.oscA.processSample();
 
                 // --- Hard sync: reset OscB on OscA phase wrap ---
@@ -1312,11 +1651,12 @@ public:
                 voice.oscB.setWaveform (oscBWave);
                 // modEnv can morph OscB shape when dest=1
                 voice.oscB.setShape (clamp (oscBShape + modEnvOscBShape, 0.0f, 1.0f));
-                voice.oscB.setInstability (oscBInstab);
+                voice.oscB.setInstability (clamp (oscBInstab + mmDst[4], 0.0f, 1.0f)); // mmDst[4]=OscB Instability
                 float oscBout = voice.oscB.processSample (oscAout, externalFM);
 
                 // --- Osc Interaction ---
-                if (oscInteractMode > 0 && oscInteractAmt > 0.001f)
+                float effInteractAmt = clamp (oscInteractAmt + mmDst[6], 0.0f, 1.0f); // mmDst[6]=OscInteract
+                if (oscInteractMode > 0 && effInteractAmt > 0.001f)
                 {
                     float interactSig = 0.0f;
                     switch (oscInteractMode)
@@ -1338,12 +1678,12 @@ public:
                             break;
                         }
                     }
-                    oscBout = lerp (oscBout, oscBout + interactSig, oscInteractAmt);
+                    oscBout = lerp (oscBout, oscBout + interactSig, effInteractAmt);
                 }
 
                 // --- Sub ---
                 voice.sub.setFrequency (freq, subOctave);
-                float subOut = voice.sub.processSample() * effSubLevel;
+                float subOut = voice.sub.processSample() * clamp (effSubLevel + mmDst[7], 0.0f, 1.0f); // mmDst[7]=SubLevel
 
                 // --- Weight Engine ---
                 // modEnv can boost weight level when dest=7
@@ -1358,9 +1698,10 @@ public:
 
                 // --- Noise (pre-filter routing) ---
                 float noisePre = 0.0f, noisePost = 0.0f;
-                if (noiseLevel > 0.001f)
+                float effNoiseLvl = clamp (noiseLevel + mmDst[9], 0.0f, 1.0f); // mmDst[9]=NoiseLevel
+                if (effNoiseLvl > 0.001f)
                 {
-                    float noiseSig = voice.noise.process (noiseType, noiseDecay) * noiseLevel;
+                    float noiseSig = voice.noise.process (noiseType, noiseDecay) * effNoiseLvl;
                     switch (noiseRouting)
                     {
                         case 0: noisePre = noiseSig;  break; // Pre-Filter
@@ -1382,8 +1723,9 @@ public:
                 oscOut = voice.fur.process (oscOut, effFurMod);
 
                 // --- Filter Drive (pre-filter) ---
-                if (filterDrive > 0.001f)
-                    oscOut = fastTanh (oscOut * (1.0f + filterDrive * 4.0f));
+                float effFilterDriveMod = clamp (filterDrive + mmDst[12], 0.0f, 1.0f); // mmDst[12]=FilterDrive
+                if (effFilterDriveMod > 0.001f)
+                    oscOut = fastTanh (oscOut * (1.0f + effFilterDriveMod * 4.0f));
 
                 // --- Filter ---
                 float filtEnvVal = voice.filterEnv.process();
@@ -1403,7 +1745,8 @@ public:
                     + keyTrackOffset;
                 modCutoff = clamp (modCutoff, 20.0f, 18000.0f);
 
-                voice.filter.setCoefficients_fast (modCutoff, effFilterReso, srf);
+                float voiceFilterReso = clamp (effFilterReso + mmDst[11], 0.0f, 0.95f); // mmDst[11]=FilterReso
+                voice.filter.setCoefficients_fast (modCutoff, voiceFilterReso, srf);
                 float filtered = voice.filter.processSample (oscOut);
 
                 // Add post-filter noise
@@ -1411,12 +1754,13 @@ public:
 
                 // --- Chew (post-filter contour) ---
                 // chewFreq isolates the low-mid band for compression; chewMix blends wet/dry
-                if (chewAmount > 0.001f)
+                float effChewAmtMod = clamp (chewAmount + mmDst[14], 0.0f, 1.0f); // mmDst[14]=Chew
+                if (effChewAmtMod > 0.001f)
                 {
                     voice.chewFilter.setMode (CytomicSVF::Mode::LowPass);
                     voice.chewFilter.setCoefficients_fast (chewFreq, 0.5f, srf);
                     float chewBand = voice.chewFilter.processSample (filtered);
-                    float chewOut = voice.chew.process (chewBand, chewAmount)
+                    float chewOut = voice.chew.process (chewBand, effChewAmtMod)
                                    + (filtered - chewBand);
                     filtered = lerp (filtered, chewOut, chewMix);
                 }
@@ -1427,9 +1771,10 @@ public:
                 filtered = voice.gnash.process (filtered, effGnashMod);
 
                 // --- Drive stage ---
-                if (driveAmount > 0.001f)
+                float effDriveAmtMod = clamp (driveAmount + mmDst[15], 0.0f, 1.0f); // mmDst[15]=Drive
+                if (effDriveAmtMod > 0.001f)
                 {
-                    float driveGain = 1.0f + driveAmount * 6.0f;
+                    float driveGain = 1.0f + effDriveAmtMod * 6.0f;
                     float driven = filtered * driveGain;
                     float shaped = 0.0f;
                     switch (driveType)
@@ -1445,14 +1790,14 @@ public:
                             break;
                         case 3: // Tube — asymmetric soft clip (positive half clips harder)
                             shaped = (driven >= 0.0f)
-                                ? driven / (1.0f + driven * driven * driveAmount)
+                                ? driven / (1.0f + driven * driven * effDriveAmtMod)
                                 : fastTanh (driven * 0.8f);
                             break;
                         default:
                             shaped = fastTanh (driven);
                             break;
                     }
-                    filtered = lerp (filtered, shaped, driveAmount);
+                    filtered = lerp (filtered, shaped, effDriveAmtMod);
                 }
 
                 // --- Trash (dirt modes) ---
@@ -1466,7 +1811,9 @@ public:
                 // --- Amp Envelope ---
                 float envVal = voice.ampEnv.process();
 
-                float out = filtered * envVal * velGain * playDeadLevel;
+                // mmDst[18]=AmpLevel: scales output amplitude (bipolar: 1+mmDst[18])
+                float out = filtered * envVal * velGain * playDeadLevel
+                            * clamp (1.0f + mmDst[18], 0.0f, 2.0f);
 
                 if (!voice.ampEnv.isActive())
                 {
@@ -1474,13 +1821,17 @@ public:
                 }
 
                 // Pan (equal-power) — unison voices spread across stereo field
+                // mmDst[19]=Pan modulation: bipolar offset added to base pan
+                float voicePanBase = clamp (pan + mmDst[19], -1.0f, 1.0f);
                 float voicePanL = panGainL;
                 float voicePanR = panGainR;
-                if (voice.unisonTotal > 1)
+                if (voice.unisonTotal > 1 || mmDst[19] != 0.0f)
                 {
-                    float unisonPos = (static_cast<float> (voice.unisonIndex) - static_cast<float> (voice.unisonTotal - 1) * 0.5f)
-                                      / static_cast<float> (voice.unisonTotal - 1);
-                    float spreadPan = pan + unisonPos * unisonSpread;
+                    float unisonPos = (voice.unisonTotal > 1)
+                        ? ((static_cast<float> (voice.unisonIndex) - static_cast<float> (voice.unisonTotal - 1) * 0.5f)
+                           / static_cast<float> (voice.unisonTotal - 1))
+                        : 0.0f;
+                    float spreadPan = voicePanBase + unisonPos * unisonSpread;
                     spreadPan = clamp (spreadPan, -1.0f, 1.0f);
                     float spreadR = clamp ((spreadPan + 1.0f) * 0.5f, 0.0f, 1.0f);
                     float spreadL = 1.0f - spreadR;
@@ -1512,6 +1863,132 @@ public:
         }
 
         envelopeOutput = peakEnv;
+
+        // =====================================================================
+        // FX Chain: Motion → Echo → Space → Finish
+        // Applied block-level to the accumulated stereo mix via outputCache.
+        // Mod matrix FX dests (20-25) use first-active-voice sources for block-level control.
+        // =====================================================================
+        {
+            // Resolve FX mod matrix accumulations (block-level sources only)
+            float fxMmMotionRate = 0.0f, fxMmMotionDepth = 0.0f;
+            float fxMmEchoTime = 0.0f, fxMmEchoFB = 0.0f;
+            float fxMmSpaceSize = 0.0f, fxMmSpaceDecay = 0.0f;
+            float srcVel = 0.0f, srcNote = 0.0f;
+            for (const auto& v : voices) { if (!v.active) continue; srcVel = v.velocity; srcNote = (static_cast<float> (v.noteNumber) - 60.0f) / 64.0f; break; }
+            const float fxSrc[16] = { 0, 0, 0, 0, 0, 0, 0, srcVel, srcNote, atPressure, modWheelAmount, macroBelly, macroBite, macroScurry, macroTrash, macroPlayDead };
+            for (int ms = 0; ms < 8; ++ms)
+            {
+                const auto& slot = modSlots[ms];
+                if (slot.src == 0 || slot.dst < 20 || slot.dst > 25 || slot.amt == 0.0f) continue;
+                float sv = fxSrc[std::min (slot.src, 15)];
+                switch (slot.dst)
+                {
+                    case 20: fxMmMotionRate  += sv * slot.amt; break;
+                    case 21: fxMmMotionDepth += sv * slot.amt; break;
+                    case 22: fxMmEchoTime    += sv * slot.amt; break;
+                    case 23: fxMmEchoFB      += sv * slot.amt; break;
+                    case 24: fxMmSpaceSize   += sv * slot.amt; break;
+                    case 25: fxMmSpaceDecay  += sv * slot.amt; break;
+                    default: break;
+                }
+            }
+
+            const float effMotionRate  = clamp (fxMotionRate  + fxMmMotionRate,  0.01f, 10.0f);
+            const float effMotionDepth = clamp (fxMotionDepth + fxMmMotionDepth, 0.0f,  1.0f);
+            const float effEchoTime    = clamp (fxEchoTime    + fxMmEchoTime,    0.01f, 2.0f);
+            const float effEchoFB      = clamp (fxEchoFeedback + fxMmEchoFB,    0.0f,  0.95f);
+            const float effSpaceSize   = clamp (fxSpaceSize   + fxMmSpaceSize,   0.0f,  1.0f);
+            const float effSpaceDecay  = clamp (fxSpaceDecay  + fxMmSpaceDecay,  0.1f,  20.0f);
+
+            const bool fxActive = fxMotionMix > 0.001f || fxEchoMix > 0.001f || fxSpaceMix > 0.001f
+                                  || fxFinishGlue > 0.001f || fxFinishClip > 0.001f
+                                  || std::abs (fxFinishWidth - 1.0f) > 0.01f || fxFinishLowMono > 0.001f;
+
+            int nc = buffer.getNumChannels();
+            for (int s = 0; s < numSamples; ++s)
+            {
+                float sL = outputCacheL[static_cast<size_t> (s)];
+                float sR = outputCacheR[static_cast<size_t> (s)];
+
+                // Motion (always tick delay line to prevent pops on enable)
+                motionFX.process (sL, sR, fxMotionType, effMotionRate, effMotionDepth, fxMotionMix);
+                // Echo (always tick to prevent pops on enable)
+                echoFX.process (sL, sR, fxEchoType, effEchoTime, effEchoFB, fxEchoMix);
+                // Space
+                spaceFX.process (sL, sR, fxSpaceType, effSpaceSize, effSpaceDecay, fxSpaceDamping, fxSpaceMix);
+
+                // Finish — only process if any Finish param is non-trivial
+                if (fxActive)
+                {
+                    // Glue: soft-knee bus compression
+                    if (fxFinishGlue > 0.001f)
+                    {
+                        float glueThresh = 1.0f - fxFinishGlue * 0.6f;
+                        float ratio = 4.0f + fxFinishGlue * 4.0f; // 4:1 → 8:1
+                        auto applyGlue = [&] (float x) -> float
+                        {
+                            float a = std::abs (x);
+                            if (a > glueThresh)
+                            {
+                                float excess = a - glueThresh;
+                                float compressed = glueThresh + excess / ratio;
+                                return (x >= 0.0f) ? compressed : -compressed;
+                            }
+                            return x;
+                        };
+                        sL = applyGlue (sL);
+                        sR = applyGlue (sR);
+                    }
+
+                    // Clip: output ceiling
+                    if (fxFinishClip > 0.001f)
+                    {
+                        float ceiling = 1.0f - fxFinishClip * 0.3f; // 1.0 → 0.7
+                        sL = clamp (sL, -ceiling, ceiling);
+                        sR = clamp (sR, -ceiling, ceiling);
+                    }
+
+                    // Width: mid/side stereo widening (width=1.0 → unity)
+                    if (std::abs (fxFinishWidth - 1.0f) > 0.01f)
+                    {
+                        float mid  = (sL + sR) * 0.5f;
+                        float side = (sL - sR) * 0.5f * fxFinishWidth;
+                        sL = mid + side;
+                        sR = mid - side;
+                    }
+
+                    // LowMono: mono-ize the sub-200Hz band for clean bass translation
+                    if (fxFinishLowMono > 0.001f)
+                    {
+                        float loCoeff = std::exp (-2.0f * 3.14159265f * 200.0f / srf);
+                        lowMonoStateL = flushDenormal (lowMonoStateL * loCoeff + sL * (1.0f - loCoeff));
+                        lowMonoStateR = flushDenormal (lowMonoStateR * loCoeff + sR * (1.0f - loCoeff));
+                        float loMono = (lowMonoStateL + lowMonoStateR) * 0.5f;
+                        sL = lerp (sL, sL - lowMonoStateL + loMono, fxFinishLowMono);
+                        sR = lerp (sR, sR - lowMonoStateR + loMono, fxFinishLowMono);
+                    }
+                }
+
+                // Write FX-processed samples back, replacing previous un-FX'd values
+                if (nc >= 2)
+                {
+                    buffer.getWritePointer (0)[s] -= outputCacheL[static_cast<size_t> (s)];
+                    buffer.getWritePointer (1)[s] -= outputCacheR[static_cast<size_t> (s)];
+                    buffer.getWritePointer (0)[s] += sL;
+                    buffer.getWritePointer (1)[s] += sR;
+                }
+                else if (nc == 1)
+                {
+                    buffer.getWritePointer (0)[s] -= (outputCacheL[static_cast<size_t> (s)] + outputCacheR[static_cast<size_t> (s)]) * 0.5f;
+                    buffer.getWritePointer (0)[s] += (sL + sR) * 0.5f;
+                }
+
+                // Update cache with post-FX values for coupling readback
+                outputCacheL[static_cast<size_t> (s)] = sL;
+                outputCacheR[static_cast<size_t> (s)] = sR;
+            }
+        }
 
         // Clear coupling buffer pointer after use (consumed)
         externalFMBuffer = nullptr;
@@ -2436,6 +2913,15 @@ private:
     // Output cache for coupling reads
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
+
+    // FX DSP objects (Motion/Echo/Space/Finish chain)
+    BiteMotionFX motionFX;
+    BiteEchoFX   echoFX;
+    BiteSpaceFX  spaceFX;
+
+    // FX Finish: LowMono 1-pole LP filter state (persistent between blocks)
+    float lowMonoStateL = 0.0f;
+    float lowMonoStateR = 0.0f;
 
     // Cached APVTS parameter pointers — 122 total, frozen IDs
     // Oscillator A

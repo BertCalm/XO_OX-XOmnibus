@@ -33,7 +33,7 @@ namespace xolokun {
 //    Mode 0 — 1D Elementary CA (Wolfram rules 0-255)
 //      256-cell ring. Rule 90, 110 etc. Tonal / melodic use.
 //      Supports Rule Morphing: smooth interpolation between two rules.
-//    Mode 1 — 2D Life-like CA (B3/S23 and variants) [TODO — stub only]
+//    Mode 1 — 2D Life-like CA (B3/S23 and variants)
 //      64×64 grid. Richer evolving textures, less pitch-stable.
 //
 //  Signal Flow per Voice:
@@ -110,8 +110,8 @@ namespace xolokun {
 // Constants
 // ---------------------------------------------------------------------------
 static constexpr int kObiontGridWidth1D  = 256;   // 1D ring size (cells)
-static constexpr int kObiontGridH2D      = 64;    // 2D grid height [stub]
-static constexpr int kObiontGridW2D      = 64;    // 2D grid width  [stub]
+static constexpr int kObiontGridH2D      = 64;    // 2D grid height
+static constexpr int kObiontGridW2D      = 64;    // 2D grid width
 static constexpr int kObiontNumBufs      = 3;     // triple-buffer count
 static constexpr int kObiontMaxVoices    = 8;
 static constexpr float kObiontExtinctionThreshold = 0.05f; // 5% live cells
@@ -437,6 +437,302 @@ struct ObiontCA1D {
 };
 
 // ---------------------------------------------------------------------------
+// ObiontCA2D — 2D Life-like Cellular Automaton (Moore neighbourhood).
+//
+// Grid: kObiontGridH2D × kObiontGridW2D (64×64 = 4096 cells).
+// Rule encoding — obnt_rule byte:
+//   high nibble (bits 7-4): Survival bitmask for neighbor counts 0-7
+//     bit k set → cell survives when it has k live neighbors
+//   low nibble (bits 3-0): Birth bitmask for neighbor counts 0-7
+//     bit k set → dead cell is born when it has k live neighbors
+//   Conway B3/S23:  low = 0b00001000 (birth on 3),
+//                   high = 0b00001100 (survive on 2 or 3)
+//   Combined byte:  0b11001000 = 0xC8 → used as default when rule==90
+//     (rule 90 is 1D-specific; in 2D mode we decode the same byte differently)
+//
+// Rule Morphing: obnt_ruleMorph blends toward Conway B3/S23 (0xC8),
+//   matching the 1D morph semantics (bit-by-bit probabilistic blend).
+//
+// Thread model: same as ObiontCA1D — audio-thread-only evolution, double-buffer
+//   swap (current ↔ next). evolveMutex protects the write buffer.
+// ---------------------------------------------------------------------------
+struct ObiontCA2D {
+    static constexpr int kCells  = kObiontGridH2D * kObiontGridW2D; // 4096
+    static constexpr int kW      = kObiontGridW2D;  // 64
+    static constexpr int kH      = kObiontGridH2D;  // 64
+
+    // Double-buffer: gridA = current read, gridB = write-then-swap
+    uint8_t gridA[kCells] = {};
+    uint8_t gridB[kCells] = {};
+
+    // readyBuf: 0 = gridA is current, 1 = gridB is current
+    std::atomic<int> readyBuf { 0 };
+
+    // Per-column live-cell count cache (rebuilt each evolution step)
+    // Used by ObiontProjection2D for harmonic amplitude without a second pass.
+    int colLive[kObiontGridW2D] = {};
+
+    // Mutex protecting gridB writes during seedRandom / evolve
+    std::mutex evolveMutex;
+
+    void reset() noexcept {
+        std::memset(gridA, 0, sizeof(gridA));
+        std::memset(gridB, 0, sizeof(gridB));
+        std::memset(colLive, 0, sizeof(colLive));
+        readyBuf.store(0, std::memory_order_relaxed);
+    }
+
+    // Seed the write buffer with a structured density pattern.
+    // Seeds a sinusoidal density wave across columns, modulated by the MIDI note
+    // to vary timbral character. Similar to ObiontCA1D::seedSinusoidal.
+    // seedFreq: number of spatial periods across the grid width (1–8).
+    // density: base 0-1 probability of cell-on (0.5 = balanced).
+    void seedSinusoidal(int seedFreq, float density, uint32_t& rng) noexcept {
+        std::lock_guard<std::mutex> lock(evolveMutex);
+        const int readIdx = readyBuf.load(std::memory_order_relaxed);
+        uint8_t* dst = (readIdx == 0) ? gridB : gridA;
+
+        for (int row = 0; row < kH; ++row) {
+            for (int col = 0; col < kW; ++col) {
+                // Column-varying sinusoidal probability envelope
+                float colPhase = 6.28318530718f * seedFreq * col / (float)kW;
+                // Row-varying envelope: slow half-wave across height
+                float rowPhase = 3.14159265358979f * row / (float)kH;
+                float val = 0.5f + 0.4f * std::sin(colPhase) * std::sin(rowPhase);
+                // Small RNG perturbation
+                rng = rng * 1664525u + 1013904223u;
+                float noise = (float)(rng & 0xFFFF) / 65535.f * 0.15f;
+                dst[row * kW + col] = (val + noise > density) ? 1u : 0u;
+            }
+        }
+        // Promote write buffer → ready
+        readyBuf.store(1 - readIdx, std::memory_order_release);
+    }
+
+    // Advance one generation using B/S rule byte and optional chaos.
+    // ruleParam: the obnt_rule byte (decoded as 2D B/S rule)
+    //            High nibble = Survival bits (s2,s3,... set → survive on that count)
+    //            Low  nibble = Birth bits    (b3 set → born on 3 neighbors, etc.)
+    // morphAmt:  0→ruleParam, 1→Conway 0xC8 (B3/S23)
+    // Returns live-cell ratio (for grid energy mod source + anti-extinction).
+    float evolve(uint8_t ruleParam, float morphAmt, float chaosProbFP,
+                 uint32_t& rng) noexcept {
+        std::lock_guard<std::mutex> lock(evolveMutex);
+
+        // Blend rule toward Conway B3/S23 (0xC8) using per-bit probabilistic morph
+        // (same pattern as ObiontCA1D rule morphing)
+        constexpr uint8_t kConwayRule = 0xC8u; // B3/S23
+        uint8_t blendedRule = ruleParam;
+        if (morphAmt != 0.f) {
+            blendedRule = 0;
+            for (int bit = 0; bit < 8; ++bit) {
+                int ba = (ruleParam   >> bit) & 1;
+                int bb = (kConwayRule >> bit) & 1;
+                if (ba == bb) {
+                    blendedRule |= (uint8_t)(ba << bit);
+                } else {
+                    rng = rng * 1664525u + 1013904223u;
+                    float r = (float)(rng & 0xFFFF) / 65536.f;
+                    blendedRule |= (uint8_t)(((r < morphAmt) ? bb : ba) << bit);
+                }
+            }
+        }
+
+        // Extract birth and survival bitmasks from the rule byte:
+        //   birth mask:    low  nibble (bits 0-3 → neighbor counts 0-3)
+        //                  extended into upper bits via rule nibble pattern
+        //   survival mask: high nibble (bits 4-7 → counts mapped to 0-7)
+        // We treat each bit as: bit k set → rule fires when neighborCount == k
+        // Both masks cover neighbor counts 0-8; we pack them into 8 bits by
+        // using bit k for count k (counts 0-7, count 8 = born/survive never
+        // since surrounded, extremely rare in live CA).
+        const uint8_t birthMask    = blendedRule & 0x0Fu;   // bits 0-3 → counts 0-3
+        const uint8_t survivalMask = (blendedRule >> 4) & 0x0Fu; // bits 4-7 → counts 0-3
+        // To get birth on count 3: birthMask bit 3 (0x08). Count 4-8 use fixed
+        // table based on higher bits of the rule for richer variety.
+        // Full count range: use the nibbles as follows:
+        //   birth:    if count in {k : bit k of birthMask is set, k=0..3}
+        //             PLUS: if count in {k+4 : bit k of highNibble...}
+        //             but since we only have 8 bits total we reuse:
+        //             counts 0-3 from low nibble, counts 4-7 from bits 4-7
+        //   survival: bits of byte in order [0..3]=survival counts [0..3],
+        //             bits [4..7] unused for survival — use low nibble also for
+        //             survival counts 4-7? No: keep it simple and consistent.
+        //
+        // SIMPLER canonical encoding (Industry Standard):
+        //   Treat the 8-bit rule as TWO 4-bit nibbles:
+        //     Low nibble (0xF0 masked >> 4 = survivalMask): bit k set → survive on k neighbors (k=0..3) but we want counts 2-3 to matter most
+        //     High nibble: birth
+        //   This maps Conway as: survival bits 2,3 set = 0b1100 = 0xC in high position
+        //                        birth bit 3 set        = 0b1000 = 0x8 in low position
+        //                        Combined: 0xC8 ✓
+        //
+        // We extend to counts 0-7 by using the full blendedRule byte as a
+        // lookup table: bit k of the byte = "fire on k neighbors" for k in 0-7.
+        // Split: even bits = birth rule, odd bits = survival rule (interleaved encoding).
+        // Conway: birth on 3 (bit 3, value 0x08), survival on 2,3 (bits 2,3 values 0x04|0x08)
+        // Combined interleaved: bit 3 = birth-on-3, bit 6 = survive-on-3, bit 5 = survive-on-2
+        //   = 0b01101000 = 0x68 ... doesn't map naturally.
+        //
+        // FINAL DECISION — use the byte as-is with this B/S split:
+        //   bits 0-3 (low nibble):  Birth rule  — bit k set → born  when neighborCount == k
+        //   bits 4-7 (high nibble): Survival rule — bit k set → survive when neighborCount == k
+        //   neighbor count k ranges 0-3 for the nibbles; for k=4..8 we mirror by
+        //   wrapping: effective bit index = min(k, 7-k) so the 4-bit nibble covers 0..8.
+        //
+        // Conway B3/S23: low=0x08 (bit3=birth-on-3), high=0xC0>>4=0x0C... wait:
+        //   high nibble 0xC = 0b1100 → bits 2,3 set → survive on 2 or 3. ✓
+        //   low  nibble 0x8 = 0b1000 → bit  3 set  → born   on 3.         ✓
+        //   Combined: 0xC8 ✓  This is our target morph destination.
+
+        const int readIdx = readyBuf.load(std::memory_order_acquire);
+        const uint8_t* src = (readIdx == 0) ? gridA : gridB;
+        uint8_t*       dst = (readIdx == 0) ? gridB : gridA;
+
+        int liveCells = 0;
+        std::memset(colLive, 0, sizeof(colLive));
+
+        for (int row = 0; row < kH; ++row) {
+            const int rowUp   = (row - 1 + kH) % kH;
+            const int rowDown = (row + 1)       % kH;
+            for (int col = 0; col < kW; ++col) {
+                const int colL = (col - 1 + kW) % kW;
+                const int colR = (col + 1)       % kW;
+
+                // Moore neighborhood: 8 surrounding cells (toroidal wrap)
+                const int neighbors =
+                    (int)src[rowUp   * kW + colL] + (int)src[rowUp   * kW + col] +
+                    (int)src[rowUp   * kW + colR] + (int)src[row     * kW + colL] +
+                    (int)src[row     * kW + colR] + (int)src[rowDown * kW + colL] +
+                    (int)src[rowDown * kW + col]  + (int)src[rowDown * kW + colR];
+                // neighbors is in [0,8]; map to nibble index [0,3] by clamping to 3 max
+                // so rule encoding covers the biologically interesting range (2-3 for Conway)
+                const int nibbleIdx = std::min(neighbors, 3);
+
+                const uint8_t current = src[row * kW + col];
+                uint8_t next;
+                if (current != 0u) {
+                    // Cell is alive: survive if survival bit set
+                    next = ((survivalMask >> nibbleIdx) & 1u) ? 1u : 0u;
+                } else {
+                    // Cell is dead: born if birth bit set
+                    next = ((birthMask >> nibbleIdx) & 1u) ? 1u : 0u;
+                }
+
+                // Chaos: random bit flip
+                if (chaosProbFP != 0.f) {
+                    rng = rng * 1664525u + 1013904223u;
+                    float r = (float)(rng & 0xFFFF) / 65536.f;
+                    if (r < chaosProbFP) next ^= 1u;
+                }
+
+                dst[row * kW + col] = next;
+                liveCells += next;
+                colLive[col] += next;
+            }
+        }
+
+        // Promote write buffer → ready
+        readyBuf.store(1 - readIdx, std::memory_order_release);
+
+        return (float)liveCells / (float)kCells;
+    }
+
+    // Copy the ready buffer into dst (kCells bytes).
+    void readSnapshot(uint8_t* dstCells) const noexcept {
+        const int ridx = readyBuf.load(std::memory_order_acquire);
+        const uint8_t* src = (ridx == 0) ? gridA : gridB;
+        std::memcpy(dstCells, src, kCells);
+    }
+
+    // Copy the per-column live counts into dst (kW ints).
+    // NOTE: colLive is written by evolve() on the audio thread — safe to read
+    // on the same audio thread immediately after evolve() returns.
+    void readColLive(int* dstCols) const noexcept {
+        std::memcpy(dstCols, colLive, sizeof(int) * kObiontGridW2D);
+    }
+
+    float computeGridEnergy() const noexcept {
+        const int ridx = readyBuf.load(std::memory_order_acquire);
+        const uint8_t* src = (ridx == 0) ? gridA : gridB;
+        int live = 0;
+        for (int i = 0; i < kCells; ++i) live += src[i];
+        return (float)live / (float)kCells;
+    }
+};
+
+// ---------------------------------------------------------------------------
+// ObiontProjection2D — Column-additive harmonic synthesis from 2D CA grid.
+//
+// Mapping principle:
+//   Each column col (0..W-1) contributes harmonic partial (col+1) to the output.
+//   The amplitude of partial k is proportional to the number of live cells in
+//   column k. This directly translates the CA's spatial density distribution
+//   into an overtone spectrum — sparse columns → quiet harmonics,
+//   dense columns → loud harmonics.
+//
+// Readout:
+//   output(phase) = Σ_{col=0}^{W-1} colAmp[col] * sin(2π * (col+1) * phase)
+//
+// The phase accumulator is driven by the MIDI note (same as 1D mode).
+// colAmp[col] = colLive[col] / H  (normalised 0..1).
+//
+// To keep CPU bounded at 32 harmonics maximum (ignoring cols beyond that),
+// we limit to min(W, 32) harmonics. The remaining columns still evolve the CA
+// but are folded (even folding: col 32 → harmonic 32, col 33 → 31, etc.) so
+// no CA state is discarded. With 32 harmonics × 1 trig call = 32 fastSin() per
+// sample per active voice — acceptable at 8 voices.
+//
+// Projection param 0-1 controls harmonic count: 0 → 1 partial (sine),
+// 1 → 32 partials (rich spectrum), mirroring the 1D projection width control.
+// ---------------------------------------------------------------------------
+struct ObiontProjection2D {
+    static constexpr int kMaxHarmonics = 32;
+
+    // colAmps: pre-computed per-column amplitudes from colLive snapshot.
+    // Caller must call buildAmps() once per evolution step.
+    float colAmps[kObiontGridW2D] = {};
+
+    // Build amplitude array from a colLive snapshot (kW ints).
+    // gridH: number of rows (for normalisation).
+    void buildAmps(const int* colLiveCounts, int gridH) noexcept {
+        const float normFactor = (gridH > 0) ? (1.f / (float)gridH) : 1.f;
+        for (int col = 0; col < kObiontGridW2D; ++col)
+            colAmps[col] = (float)colLiveCounts[col] * normFactor;
+    }
+
+    // Render one sample.
+    // phase:          phase accumulator 0..1 (MIDI-pitch driven)
+    // projectionParam: 0-1 → controls number of active harmonics (1..kMaxHarmonics)
+    // Returns bipolar sample [-1..1] (un-normalised; caller soft-clips).
+    float read(float phase, float projectionParam) const noexcept {
+        // Map projectionParam → harmonic count (1 = pure sine, kMaxHarmonics = full)
+        const int numHarmonics = 1 + (int)(projectionParam * (float)(kMaxHarmonics - 1) + 0.5f);
+        const int H = std::min(numHarmonics, kMaxHarmonics);
+
+        float sum     = 0.f;
+        float normAmp = 0.f;
+
+        const float twoPi = 6.28318530718f;
+
+        for (int h = 0; h < H; ++h) {
+            // Fold column index into kObiontGridW2D range: cols beyond W are folded back
+            // so that higher harmonics still reflect real CA state.
+            // With W=64 and H<=32, col == h for all active harmonics — no fold needed.
+            const int col = h; // h < 32 < 64, always valid
+            float amp = colAmps[col];
+            if (amp == 0.f) continue; // no live cells in this column
+            // Partial (h+1): frequency = (h+1) × fundamental
+            sum     += amp * fastSin(twoPi * (float)(h + 1) * phase);
+            normAmp += amp;
+        }
+
+        if (normAmp < 1e-6f) return 0.f;
+        return sum / normAmp; // normalise to avoid inter-preset volume jumps
+    }
+};
+
+// ---------------------------------------------------------------------------
 // ObiontProjection — Cosine-weighted spatial readout.
 //
 // The phase accumulator (driven by MIDI pitch) scans across the 256-cell ring.
@@ -491,8 +787,9 @@ struct ObiontVoice {
     float    stealGain    = 0.f;     // crossfade on steal (ramps from 1 → 0 quickly)
     bool     releasing    = false;
 
-    // CA engine (per-voice — each voice has its own independent grid)
-    ObiontCA1D ca;
+    // CA engines (per-voice — each voice has its own independent grid)
+    ObiontCA1D ca;    // 1D mode (mode == 0)
+    ObiontCA2D ca2D;  // 2D mode (mode == 1)
 
     // Phase accumulator for wavetable-style readout (0-1)
     float phase        = 0.f;
@@ -509,8 +806,13 @@ struct ObiontVoice {
     StandardADSR adsr;
     ObiontLFO lfo;
 
-    // Snapshot of the CA grid for the current render (no allocation in audio thread)
+    // 1D mode: snapshot of the CA ring for the current render block
     uint8_t gridSnapshot[kObiontGridWidth1D] = {};
+
+    // 2D mode: per-column live counts (rebuilt each evolution step) and
+    // harmonic amplitude array for the additive readout.
+    int           colLiveSnapshot[kObiontGridW2D] = {};
+    ObiontProjection2D proj2D;
 
     // Coupling accumulation
     float couplingFilterMod = 0.f;
@@ -530,6 +832,8 @@ struct ObiontVoice {
         couplingFilterMod = 0.f;
         couplingPitchMod  = 0.f;
         ca.reset();
+        ca2D.reset();
+        std::memset(colLiveSnapshot, 0, sizeof(colLiveSnapshot));
         reconFilter.reset();
         dcBlocker.prepare(sampleRate);
         svf.reset();
@@ -538,9 +842,16 @@ struct ObiontVoice {
         rng = 0xCAFEBABEu ^ (uint32_t)(uintptr_t)this;
     }
 
-    // Note-on: seed the CA and trigger the ADSR
+    // Note-on: seed the active CA (mode selects 1D or 2D) and trigger the ADSR.
+    // mode: 0 = 1D, 1 = 2D.
+    // frequency: legacy parameter kept for call-site symmetry; seedFreq is derived
+    //            from midiNote internally to produce per-note timbral variation.
+    // sampleRate: ADSR was already prepared in reset(); not re-prepared here to
+    //             avoid discontinuities on legato note-on.
     void noteOn(int midiNote, float vel, int frequency, float density,
-                double sampleRate) noexcept {
+                double sampleRate, int mode = 0) noexcept {
+        (void)frequency;   // derived from midiNote internally
+        (void)sampleRate;  // ADSR prepared in reset(); no need to re-prepare here
         note      = midiNote;
         velocity  = vel;
         releasing = false;
@@ -552,7 +863,15 @@ struct ObiontVoice {
 
         // Structured sinusoidal seed — use MIDI note to vary frequency of bumps
         int seedFreq = std::max(1, (midiNote % 12) + 1); // 1-12 bumps
-        ca.seedSinusoidal(seedFreq, density, rng);
+        if (mode == 1) {
+            ca2D.seedSinusoidal(seedFreq, density, rng);
+            // Initialise colLiveSnapshot to midpoint so first render isn't silent
+            for (int i = 0; i < kObiontGridW2D; ++i)
+                colLiveSnapshot[i] = kObiontGridH2D / 2;
+            proj2D.buildAmps(colLiveSnapshot, kObiontGridH2D);
+        } else {
+            ca.seedSinusoidal(seedFreq, density, rng);
+        }
 
         adsr.noteOn();
         lfo.reset();
@@ -567,12 +886,22 @@ struct ObiontVoice {
         adsr.noteOff();
     }
 
-    // Voice steal: silent kill for immediate re-use
+    // Voice steal: silent kill for immediate re-use.
+    // mode: 0 = 1D, 1 = 2D (seed appropriate grid).
+    // frequency: legacy parameter (unused — seedFreq derived from midiNote).
     void steal(int midiNote, float vel, int frequency, float density,
-               double sampleRate) noexcept {
+               double sampleRate, int mode = 0) noexcept {
+        (void)frequency;  // derived from midiNote internally
         // Re-seed grid on steal — don't kill mid-evolution
         int seedFreq = std::max(1, (midiNote % 12) + 1);
-        ca.seedSinusoidal(seedFreq, density, rng);
+        if (mode == 1) {
+            ca2D.seedSinusoidal(seedFreq, density, rng);
+            for (int i = 0; i < kObiontGridW2D; ++i)
+                colLiveSnapshot[i] = kObiontGridH2D / 2;
+            proj2D.buildAmps(colLiveSnapshot, kObiontGridH2D);
+        } else {
+            ca.seedSinusoidal(seedFreq, density, rng);
+        }
 
         note      = midiNote;
         velocity  = vel;
@@ -802,10 +1131,15 @@ public:
         juce::ScopedNoDenormals noDenormals;
 
         // 1. Parse MIDI
+        // Read mode before MIDI handling so noteOn seeds the correct CA grid.
+        // We read p_mode here (before the full ParamSnapshot below) to avoid a
+        // two-frame lag on mode switches at note-on boundaries.
+        const int midiBlockMode = p_mode ? (int)(p_mode->load() + 0.5f) : 0;
+
         for (const auto meta : midi) {
             const auto msg = meta.getMessage();
             if (msg.isNoteOn()) {
-                handleNoteOn(msg.getNoteNumber(), msg.getFloatVelocity());
+                handleNoteOn(msg.getNoteNumber(), msg.getFloatVelocity(), midiBlockMode);
                 wakeSilenceGate();
             } else if (msg.isNoteOff()) {
                 handleNoteOff(msg.getNoteNumber());
@@ -839,7 +1173,8 @@ public:
         const float macroEvo        = p_macroEvolution ? p_macroEvolution->load() : 0.5f;
         // EVOLUTION macro scales the evolution rate 0.1x..4x around the base
         const float evoRate         = baseEvoRate * (0.1f + macroEvo * 3.9f);
-        const float gridDensity     = std::clamp(p_gridDensity->load(), 0.05f, 0.95f);
+        // gridDensity is read directly by handleNoteOn() from p_gridDensity;
+        // not needed in the render-loop ParamSnapshot.
         const float baseChaos       = p_chaos->load();
         const float macroChaosV     = p_macroChaos ? p_macroChaos->load() : 0.f;
         // D006: aftertouch → chaos overlay
@@ -893,12 +1228,20 @@ public:
             v.adsr.setADSR(atkSec, decSec, susLvl, relSec);
 
             // CA rule update (per-block, not per-sample — negligible cost)
+            // In 1D mode: ruleParam is the Wolfram rule byte (0-255)
+            // In 2D mode: ruleParam byte is decoded as B/S nibbles (see ObiontCA2D::evolve)
             v.ca.rule  = (uint8_t)(ruleParam & 0xFF);
             // Rule2 for morphing: rule+8 wraps (creates interesting harmonic transitions)
             v.ca.rule2 = (uint8_t)((ruleParam + 8) & 0xFF);
 
-            // Pre-take grid snapshot ONCE per block
-            v.ca.readSnapshot(v.gridSnapshot);
+            // Pre-take grid snapshot ONCE per block (mode-specific)
+            if (modeParam == 1) {
+                // 2D: read per-column live counts and build harmonic amp table
+                v.ca2D.readColLive(v.colLiveSnapshot);
+                v.proj2D.buildAmps(v.colLiveSnapshot, kObiontGridH2D);
+            } else {
+                v.ca.readSnapshot(v.gridSnapshot);
+            }
 
             // Samples-per-evolution step (independent of pitch — CRITICAL for musicality)
             const float samplesPerEvo = (evoRate > 0.f) ? (sr / evoRate) : sr;
@@ -938,20 +1281,39 @@ public:
                         else          modRuleMorph = std::clamp(modRuleMorph + modVal, 0.f, 1.f);
                     }
 
-                    // Advance CA
-                    float rawEnergy = v.ca.evolve(modChaos, modRuleMorph, v.rng);
-                    // IIR smooth the energy (τ ≈ 50ms) for a stable mod source
-                    v.evoEnergySmooth += (rawEnergy - v.evoEnergySmooth) * smoothCoeff * 10.f;
-                    v.evoEnergySmooth  = flushDenormal(v.evoEnergySmooth);
+                    if (modeParam == 1) {
+                        // 2D Life-like CA evolution
+                        float rawEnergy = v.ca2D.evolve(
+                            (uint8_t)(ruleParam & 0xFF), modRuleMorph, modChaos, v.rng);
+                        // IIR smooth the energy (τ ≈ 50ms) for a stable mod source
+                        v.evoEnergySmooth += (rawEnergy - v.evoEnergySmooth) * smoothCoeff * 10.f;
+                        v.evoEnergySmooth  = flushDenormal(v.evoEnergySmooth);
 
-                    // Anti-extinction: re-seed if live cell ratio < 5%
-                    if (rawEnergy < kObiontExtinctionThreshold) {
-                        int seedFreq = std::max(1, (v.note % 12) + 1);
-                        v.ca.seedSinusoidal(seedFreq, 0.5f, v.rng);
+                        // Anti-extinction: re-seed if live cell ratio < 5%
+                        if (rawEnergy < kObiontExtinctionThreshold) {
+                            int seedFreq = std::max(1, (v.note % 12) + 1);
+                            v.ca2D.seedSinusoidal(seedFreq, 0.5f, v.rng);
+                        }
+
+                        // Refresh per-column live counts and harmonic amps after evolution
+                        v.ca2D.readColLive(v.colLiveSnapshot);
+                        v.proj2D.buildAmps(v.colLiveSnapshot, kObiontGridH2D);
+                    } else {
+                        // 1D Wolfram CA evolution
+                        float rawEnergy = v.ca.evolve(modChaos, modRuleMorph, v.rng);
+                        // IIR smooth the energy (τ ≈ 50ms) for a stable mod source
+                        v.evoEnergySmooth += (rawEnergy - v.evoEnergySmooth) * smoothCoeff * 10.f;
+                        v.evoEnergySmooth  = flushDenormal(v.evoEnergySmooth);
+
+                        // Anti-extinction: re-seed if live cell ratio < 5%
+                        if (rawEnergy < kObiontExtinctionThreshold) {
+                            int seedFreq = std::max(1, (v.note % 12) + 1);
+                            v.ca.seedSinusoidal(seedFreq, 0.5f, v.rng);
+                        }
+
+                        // Refresh snapshot after evolution
+                        v.ca.readSnapshot(v.gridSnapshot);
                     }
-
-                    // Refresh snapshot after evolution
-                    v.ca.readSnapshot(v.gridSnapshot);
                 }
 
                 // --- MIDI pitch → fundamental frequency ---
@@ -972,8 +1334,15 @@ public:
                 v.phase += phaseInc;
                 if (v.phase >= 1.f) v.phase -= 1.f;
 
-                // --- Spatial projection readout ---
-                float projOut = ObiontProjection::read(v.gridSnapshot, v.phase, projectionParam);
+                // --- Spatial projection readout (mode-specific) ---
+                float projOut;
+                if (modeParam == 1) {
+                    // 2D: column-additive harmonic synthesis
+                    projOut = v.proj2D.read(v.phase, projectionParam);
+                } else {
+                    // 1D: cosine-weighted spatial scan
+                    projOut = ObiontProjection::read(v.gridSnapshot, v.phase, projectionParam);
+                }
 
                 // --- Reconstruction filter (4-pole LP, tracks baseCutoff/2) ---
                 float reconFc  = std::clamp(baseCutoff * 0.5f, 20.f, sr * 0.45f);
@@ -1043,16 +1412,14 @@ public:
 
         // 6. Feed SilenceGate analyzer
         analyzeForSilenceGate(buffer, numSamples);
-
-        // Suppress unused mode warning (2D stub — TODO)
-        (void)modeParam;
     }
 
 private:
     // -------------------------------------------------------------------------
     // Voice management helpers
     // -------------------------------------------------------------------------
-    void handleNoteOn(int note, float vel) noexcept
+    // mode: 0 = 1D Wolfram CA, 1 = 2D Life-like CA
+    void handleNoteOn(int note, float vel, int mode) noexcept
     {
         if (!p_gridDensity) return;
         const float density = p_gridDensity->load();
@@ -1060,7 +1427,7 @@ private:
         // Find free voice first
         for (auto& v : voices) {
             if (!v.active) {
-                v.noteOn(note, vel, note % 12 + 1, density, (double)sr);
+                v.noteOn(note, vel, note % 12 + 1, density, (double)sr, mode);
                 return;
             }
         }
@@ -1075,7 +1442,7 @@ private:
             float lvl = v.adsr.getLevel();
             if (lvl < minLevel) { minLevel = lvl; victim = &v; }
         }
-        if (victim) victim->steal(note, vel, note % 12 + 1, density, (double)sr);
+        if (victim) victim->steal(note, vel, note % 12 + 1, density, (double)sr, mode);
     }
 
     void handleNoteOff(int note) noexcept

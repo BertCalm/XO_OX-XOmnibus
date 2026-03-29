@@ -125,8 +125,8 @@ class EntropyAnalyzer
 {
 public:
     static constexpr int kNumBins = 32;           // Amplitude histogram resolution
-    static constexpr int kDefaultWindowSize = 256; // ~5.8ms at 44.1kHz — balances responsiveness with stability
-    static constexpr int kSmallWindowSize = 64;    // ~1.5ms — for high-frequency enzyme selectivity (faster tracking)
+    static constexpr int kDefaultWindowSize = 256; // ~5.3ms at 48kHz (~5.8ms at 44.1kHz) — balances responsiveness with stability
+    static constexpr int kSmallWindowSize = 64;    // ~1.3ms at 48kHz (~1.5ms at 44.1kHz) — for high-frequency enzyme selectivity (faster tracking)
     static constexpr float kMaxEntropy = 5.0f;     // log2(32) = 5.0 — theoretical maximum for 32-bin distribution
 
     void prepare (double sampleRate) noexcept
@@ -213,7 +213,7 @@ private:
 
         // Spectral centroid via Nyquist-proportional DFT magnitude weighting.
         //
-        // Formula: centroid = sum(|X[k]| * k) / sum(|X[k]|) * (sampleRate / 2.0 / numBins)
+        // Formula: centroid = sum(|X[k]| * k) / sum(|X[k]|) * (sampleRate / 2.0 / (kNumBins - 1))
         // Normalized to [0, 1]: centroid_normalized = sum(|X[k]| * k) / sum(|X[k]|) / (kNumBins - 1)
         //
         // kNumBins = 32 analysis bins span DC to Nyquist proportionally.

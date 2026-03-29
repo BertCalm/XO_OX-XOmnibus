@@ -491,6 +491,8 @@ struct ObeliskVoice
         active = false;
         velocity = 0.0f;
         ampLevel = 0.0f;
+        isReleasing = false;
+        releaseCoeff = 0.0f;
         glide.reset();
         hammer.reset();
         chainBuzz.reset();
@@ -503,7 +505,25 @@ struct ObeliskVoice
         lfo2.reset();
         for (auto& m : modes) m.reset();
         for (auto& p : prepMods) p = {};
+        for (auto& c : modeCoeffsB0) c = 0.0f;
+        for (auto& c : modeCoeffsA1) c = 0.0f;
+        for (auto& c : modeCoeffsA2) c = 0.0f;
+        modeCoeffsDirty = true;
+        cachedModeFreqs.fill (0.0f);
+        cachedModeQs.fill (0.0f);
     }
+
+    // Cached per-mode coefficients — recomputed only when freq/Q change
+    std::array<float, kNumModes> modeCoeffsB0 {};
+    std::array<float, kNumModes> modeCoeffsA1 {};
+    std::array<float, kNumModes> modeCoeffsA2 {};
+    std::array<float, kNumModes> cachedModeFreqs {};
+    std::array<float, kNumModes> cachedModeQs {};
+    bool modeCoeffsDirty = true;
+
+    // Release state for smooth noteOff ramp
+    bool isReleasing = false;
+    float releaseCoeff = 0.0f;
 };
 
 //==============================================================================
@@ -687,9 +707,12 @@ public:
         // Density controls Q: denser stone = higher Q = longer ring
         float baseQ = 200.0f + effectiveDensity * 800.0f;  // 200-1000 — very high Q
 
-        // Decay coefficient: stone has very long natural decay
+        // Decay coefficient: stone has very long natural decay (cached per block, not per sample)
         float decayTimeSec = std::max (pDecay * (1.0f - pDamping * 0.8f), 0.01f);
         float baseDecayCoeff = std::exp (-1.0f / (decayTimeSec * srf));
+
+        // Release coefficient: 5ms exponential ramp on noteOff (cached per block)
+        const float kReleaseCoeff = std::exp (-1.0f / (0.005f * srf));
 
         // Thermal drift — slow tuning drift (stone is temperature-sensitive for Q, not pitch)
         thermalTimer++;
@@ -755,29 +778,70 @@ public:
                 // Hammer excitation
                 float excitation = voice.hammer.process();
 
+                // --- Dirty-flag coefficient cache ---
+                // Recompute mode resonator coefficients only when freq or Q changes.
+                // This moves std::exp/cos/sin out of the per-sample inner loop.
+                float perSampleQ = 200.0f + densNow * 800.0f;
+                {
+                    bool needsUpdate = voice.modeCoeffsDirty;
+                    if (!needsUpdate)
+                    {
+                        // Check if freq or Q have drifted enough to warrant recompute
+                        // (compare fundamental; individual modes scale from it)
+                        needsUpdate = (std::fabs (freq - voice.cachedModeFreqs[0]) > 0.01f)
+                                   || (std::fabs (perSampleQ - voice.cachedModeQs[0]) > 0.5f);
+                    }
+
+                    if (needsUpdate)
+                    {
+                        for (int m = 0; m < kNumModes; ++m)
+                        {
+                            float modeFreq = freq * kStoneRatios[m];
+                            auto prep = ObeliskPreparation::computeModification (
+                                pPrepType, pPrepPosition, voicePrepDepth,
+                                m, kNumModes, freq, srf);
+                            modeFreq *= prep.freqMul;
+                            if (modeFreq >= srf * 0.49f) modeFreq = srf * 0.49f;
+                            if (modeFreq < 10.0f) modeFreq = 10.0f;
+
+                            float modeQ = perSampleQ * prep.qMul;
+                            modeQ /= (1.0f + static_cast<float> (m) * 0.15f);
+                            modeQ = std::max (modeQ, 1.0f);
+
+                            // Compute 2nd-order resonator coefficients (matched-Z)
+                            float w  = 2.0f * 3.14159265f * modeFreq / srf;
+                            float bw = modeFreq / modeQ;
+                            float r  = std::exp (-3.14159265f * bw / srf);
+                            voice.modeCoeffsB0[m] = (1.0f - r * r) * std::sin (w);
+                            voice.modeCoeffsA1[m] = 2.0f * r * std::cos (w);
+                            voice.modeCoeffsA2[m] = r * r;
+                            voice.cachedModeFreqs[m] = modeFreq;
+                            voice.cachedModeQs[m]    = modeQ;
+                        }
+                        voice.cachedModeFreqs[0] = freq;   // track fundamental for dirty check
+                        voice.cachedModeQs[0]    = perSampleQ;
+                        voice.modeCoeffsDirty = false;
+                    }
+                }
+
+                // Apply updated coefficients to mode resonators
+                for (int m = 0; m < kNumModes; ++m)
+                {
+                    voice.modes[m].b0 = voice.modeCoeffsB0[m];
+                    voice.modes[m].a1 = voice.modeCoeffsA1[m];
+                    voice.modes[m].a2 = voice.modeCoeffsA2[m];
+                }
+
                 // Modal resonator bank with preparation modification
                 float resonanceSum = 0.0f;
                 int activeModeCount = 0;
 
                 for (int m = 0; m < kNumModes; ++m)
                 {
-                    // Base inharmonic stone frequency
-                    float modeFreq = freq * kStoneRatios[m];
-
-                    // Apply preparation modification
+                    // Retrieve cached preparation modification for amplitude/excitation
                     auto prep = ObeliskPreparation::computeModification (
                         pPrepType, pPrepPosition, voicePrepDepth,
                         m, kNumModes, freq, srf);
-
-                    modeFreq *= prep.freqMul;
-
-                    // Stone Q: very high, modified by preparation, density smoother, and mode index
-                    // densNow smoothly tracks effectiveDensity per sample (vs block-rate baseQ)
-                    float perSampleQ = 200.0f + densNow * 800.0f;
-                    float modeQ = perSampleQ * prep.qMul;
-                    // Higher modes have slightly lower Q (radiation damping)
-                    modeQ /= (1.0f + static_cast<float> (m) * 0.15f);
-                    modeQ = std::max (modeQ, 1.0f);
 
                     // Stone tone: cold (low tone = emphasize upper inharmonics)
                     //              warm (high tone = emphasize fundamental)
@@ -807,7 +871,6 @@ public:
                         continue;
                     }
 
-                    voice.modes[m].setFreqAndQ (modeFreq, modeQ, srf);
                     float modeInput = excitation + prep.extraExcitation;
                     float modeOut = voice.modes[m].process (modeInput) * modeAmp;
 
@@ -817,7 +880,7 @@ public:
                         float posSens = std::sin ((m + 1.0f) * 3.14159265f * pPrepPosition);
                         posSens *= posSens;
                         if (posSens > 0.1f)
-                            modeOut = voice.boltRattle.process (modeOut, voicePrepDepth * posSens, modeFreq);
+                            modeOut = voice.boltRattle.process (modeOut, voicePrepDepth * posSens, voice.cachedModeFreqs[m]);
                     }
 
                     resonanceSum += modeOut;
@@ -846,11 +909,21 @@ public:
                 }
 
                 // Amplitude envelope: stone has long natural decay.
-                // dampNow smoothly tracks pDamping per sample for responsive damping control.
-                float perSampleDecayCoeff = std::exp (-1.0f / (std::max (pDecay * (1.0f - dampNow * 0.8f), 0.01f) * srf));
-                voice.ampLevel *= perSampleDecayCoeff;
+                // Use block-cached baseDecayCoeff (no std::exp per sample).
+                // On release, override with smooth 5ms exponential ramp.
+                if (voice.isReleasing)
+                {
+                    voice.ampLevel *= kReleaseCoeff;
+                }
+                else
+                {
+                    voice.ampLevel *= baseDecayCoeff;
+                }
                 voice.ampLevel = flushDenormal (voice.ampLevel);
-                if (voice.ampLevel < 1e-7f) { voice.active = false; continue; }
+                if (voice.ampLevel < 1e-7f) { voice.active = false; voice.isReleasing = false; continue; }
+
+                // ampEnv scales the overall voice amplitude (D004: envelope must shape output).
+                float ampEnvVal = voice.ampEnv.process();
 
                 // Filter envelope + LFO1 → brightness
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
@@ -859,7 +932,7 @@ public:
                 voice.svf.setCoefficients (cutoff, 0.3f, srf);  // low resonance — stone is not resonant in the filter sense
                 float filtered = voice.svf.processSample (resonanceSum);
 
-                float output = filtered * voice.ampLevel;
+                float output = filtered * voice.ampLevel * ampEnvVal;
 
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
@@ -890,11 +963,13 @@ public:
         float freq = 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
 
         v.active = true;
+        v.isReleasing = false;
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
         v.glide.snapTo (freq);
         v.ampLevel = 1.0f;
+        v.modeCoeffsDirty = true;  // force coefficient recompute at first sample
 
         // D001 + D006: velocity + aftertouch → hammer hardness
         float hardness = std::clamp (
@@ -908,6 +983,13 @@ public:
         float filterDecay = 0.15f + density * 0.6f;  // 150ms → 750ms
         v.filterEnv.setADSR (0.001f, filterDecay, 0.0f, 0.8f);
         v.filterEnv.triggerHard();
+
+        // Amplitude envelope: instant attack, sustain at full, release handled by noteOff.
+        // Stone body's natural decay (baseDecayCoeff) provides the long tail; ampEnv
+        // ensures the voice has a properly shaped onset and can be retriggered cleanly.
+        v.ampEnv.prepare (srf);
+        v.ampEnv.setADSR (0.001f, 0.0f, 1.0f, 0.1f);
+        v.ampEnv.triggerHard();
 
         // Reset modes and preparation modules
         for (auto& m : v.modes) m.reset();
@@ -944,8 +1026,11 @@ public:
         {
             if (v.active && v.currentNote == note)
             {
-                // Stone release: gradual amplitude reduction
-                v.ampLevel *= 0.4f;
+                // Stone release: smooth 5ms exponential ramp — no abrupt cut.
+                // The per-sample render loop uses kReleaseCoeff (= exp(-1/(0.005*sr)))
+                // to decay ampLevel smoothly, preventing the click from a hard amplitude cut.
+                v.isReleasing = true;
+                v.ampEnv.release();
                 v.filterEnv.release();
             }
         }
