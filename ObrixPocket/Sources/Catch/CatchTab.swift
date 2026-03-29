@@ -554,14 +554,15 @@ struct CatchScreen: View {
         ZStack {
             biomeGradient.ignoresSafeArea()
 
-            VStack(spacing: 20) {
-                Spacer()
-                specimenHeader
-                statusText
-                if phase != .intro { scoreIndicator }
-                gameView.padding(.horizontal, 40)
-                actionButton
-                Spacer()
+            ScrollView {
+                VStack(spacing: 16) {
+                    specimenHeader
+                    statusText
+                    if phase != .intro { scoreIndicator }
+                    gameView.padding(.horizontal, 40)
+                    actionButton
+                }
+                .padding(.vertical, 20)
             }
 
             // Time-of-day indicator — top-right corner
@@ -602,19 +603,19 @@ struct CatchScreen: View {
                 if phase == .caught || phase == .success {
                     Circle()
                         .fill(DesignTokens.reefJade.opacity(0.15))
-                        .frame(width: 180, height: 180)
+                        .frame(width: 130, height: 130)
                         .scaleEffect(1.2)
                         .animation(.easeInOut(duration: 0.5), value: phase == .caught || phase == .success)
                 }
 
                 Circle()
                     .fill(catColor.opacity(0.12))
-                    .frame(width: 140, height: 140)
+                    .frame(width: 100, height: 100)
                 let cID = SpecimenCatalog.catalogSubtypeID(from: specimen.subtype)
-                SpecimenSprite(subtype: cID, category: specimen.category, size: 70)
+                SpecimenSprite(subtype: cID, category: specimen.category, size: 50)
                 Circle()
                     .stroke(catColor.opacity(0.5), lineWidth: specimen.rarity == .legendary ? 4 : (specimen.rarity == .rare ? 3 : (specimen.rarity == .uncommon ? 2 : 1)))
-                    .frame(width: 130, height: 130)
+                    .frame(width: 92, height: 92)
             }
             // Breathing bob — active during game phases, disabled on end states
             .offset(y: specimenBob ? -3 : 3)

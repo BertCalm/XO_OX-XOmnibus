@@ -151,6 +151,7 @@ struct DiveTab: View {
     // MARK: - Ready
 
     private var readyView: some View {
+        ScrollView {
         VStack(spacing: 20) {
             Image(systemName: "arrow.down.to.line")
                 .font(.system(size: 48))
@@ -263,6 +264,8 @@ struct DiveTab: View {
                 .padding(.top, 8)
             }
         }
+        .padding(.vertical, 20)
+        } // end ScrollView
         .sheet(isPresented: $showHistory) {
             DiveHistoryList(history: diveHistory)
         }
@@ -322,7 +325,7 @@ struct DiveTab: View {
                         .foregroundColor(DesignTokens.xoGold)
                 }
                 .padding(.horizontal, 20)
-                .padding(.top, 8)
+                .padding(.top, 52)  // Accounts for status bar + Dynamic Island on modern iPhones
 
                 DegradationWaveform(
                     degradation: composer?.degradation ?? 0,

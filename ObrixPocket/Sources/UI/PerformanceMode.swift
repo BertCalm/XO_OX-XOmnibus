@@ -38,6 +38,7 @@ struct PerformanceMode: View {
                             Text(spec.creatureName)
                                 .font(DesignTokens.mono(10))
                                 .foregroundColor(DesignTokens.reefJade.opacity(0.7))
+                                .lineLimit(1)
                         }
                     }
 

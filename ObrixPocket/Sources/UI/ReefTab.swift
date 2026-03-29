@@ -41,7 +41,7 @@ struct ReefTab: View {
 
             // SpriteKit reef grid
             GeometryReader { geometry in
-                let gridSize = min(geometry.size.width * 0.9, geometry.size.height * 0.85)
+                let gridSize = min(geometry.size.width * 0.9, geometry.size.height * 0.95)
 
                 if let scene = reefScene {
                     SpriteView(scene: scene)
@@ -50,7 +50,7 @@ struct ReefTab: View {
                         .overlay(
                             ReefAccessibilityOverlay(reefStore: reefStore, gridSize: gridSize)
                         )
-                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.45)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)  // Center in available space
                         .onReceive(reefStore.objectWillChange) { _ in
                             gridRefreshTimer?.invalidate()
                             let t = Timer(timeInterval: 0.15, repeats: false) { [self] _ in
@@ -89,6 +89,7 @@ struct ReefTab: View {
                     }
                 }
             }
+            .layoutPriority(1)
 
             // Contextual hint for new users (journey steps 0–2)
             if firstLaunchManager.journeyStep <= 2 {
@@ -102,10 +103,12 @@ struct ReefTab: View {
             if let slot = selectedSlot {
                 if reefStore.specimens[slot] != nil {
                     SpecimenParamPanel(slotIndex: slot, onDismiss: { selectedSlot = nil })
+                        .frame(maxHeight: 220)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                         .animation(.easeInOut(duration: 0.2), value: selectedSlot)
                 } else {
                     StasisBrowser(targetSlot: slot, onDismiss: { selectedSlot = nil })
+                        .frame(maxHeight: 220)
                         .environmentObject(reefStore)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                         .animation(.easeInOut(duration: 0.2), value: selectedSlot)
