@@ -18,6 +18,7 @@ namespace xolokun { class XOlokunProcessor; }
 #include "../../XOlokunProcessor.h"
 
 #include "GestureTrailBuffer.h"
+#include "../GalleryColors.h"
 
 namespace xolokun {
 
@@ -27,33 +28,6 @@ static inline juce::Colour lightenColour(juce::Colour c, float amount)
 {
     return c.interpolatedWith(juce::Colours::white, amount);
 }
-
-//==============================================================================
-// Forward declarations for color/font access from XOlokunEditor.h.
-// When PlaySurface.h is included from within XOlokunEditor.h the full
-// GalleryColors/GalleryFonts namespaces are already defined when this file is
-// included from within XOlokunEditor.h; guard the stubs so we don't emit a
-// second identical inline definition.
-#ifndef XOLOKUN_GALLERY_COLORS_DEFINED
-namespace GalleryColors {
-    inline juce::Colour get(uint32_t hex) { return juce::Colour(hex); }
-    constexpr uint32_t xoGold = 0xFFE9C46A;
-    inline uint32_t textDark() { return 0xFF1A1A1A; }
-    inline juce::Colour border() { return juce::Colour(0xFFFFFFFF).withAlpha(0.07f); }
-    inline uint32_t surface()  { return 0xFF1A1A1C; }
-    inline uint32_t elevated() { return 0xFF242426; }
-    inline uint32_t t1()       { return 0xFFF0EDE8; }
-    inline uint32_t t2()       { return 0xFF9E9B97; }
-    inline uint32_t t3()       { return 0xFF5E5C5A; }
-}
-namespace GalleryFonts {
-    // Stub fallbacks — real typeface-bound implementations live in GalleryColors.h.
-    inline juce::Font body   (float size) { return juce::Font(juce::FontOptions{}.withHeight(size)); }
-    inline juce::Font display(float size) { return juce::Font(juce::FontOptions{}.withHeight(size)); }
-    inline juce::Font label  (float size) { return juce::Font(juce::FontOptions{}.withHeight(size)); }
-    inline juce::Font value  (float size) { return juce::Font(juce::FontOptions{}.withHeight(size)); }
-}
-#endif
 
 //==============================================================================
 // PlaySurface Constants

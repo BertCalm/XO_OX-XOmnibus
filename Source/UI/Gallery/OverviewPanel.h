@@ -28,6 +28,9 @@ inline juce::String couplingTypeLabel(CouplingType t)
         case CouplingType::EnvToDecay:       return "Env->D";
         case CouplingType::PitchToPitch:     return "P->P";
         case CouplingType::AudioToWavetable: return "Au->W";
+        case CouplingType::AudioToBuffer:    return "Au->Buf";
+        case CouplingType::KnotTopology:     return "Knot";
+        case CouplingType::TriangularCoupling: return "Triangle";
         default:                             return "?";
     }
 }

@@ -30,6 +30,11 @@ public:
         return ml;
     }
 
+    // WCAG 2.4.7 — repaint on focus change so the LookAndFeel focus ring
+    // appears/disappears immediately when the user tabs to/from this knob.
+    void focusGained (FocusChangeType) override { repaint(); }
+    void focusLost   (FocusChangeType) override { repaint(); }
+
     void mouseDown (const juce::MouseEvent& e) override
     {
         // Right-click is handled by MidiLearnMouseListener — don't swallow it here.

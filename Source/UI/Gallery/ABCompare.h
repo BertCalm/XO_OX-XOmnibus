@@ -16,14 +16,14 @@
 // Interaction:
 //   First click on A or B → enters A/B mode, captures current state into A,
 //                            stores nothing in B yet.
-//   Load a different preset while showing A → captured into B automatically.
+//   Load any preset while A/B mode is active → always captured into B.
 //   Click B            → restores stateB (if stored), shows B.
 //   Click A            → restores stateA, shows A.
 //   Click currently-active button → deactivates A/B mode entirely.
 //
 // Integration:
 //   Call onPresetLoaded() from the editor whenever a preset is loaded so that
-//   the widget can capture the new state into the currently-active slot.
+//   the widget can capture the new state into slot B (the comparison slot).
 //   Do NOT call this from the constructor.
 //
 // Architecture constraints:
@@ -57,17 +57,15 @@ public:
 
     //==========================================================================
     // Call from the editor whenever a new preset has been fully loaded.
-    // Captures the fresh processor state into whichever slot is currently active.
+    // Always captures the fresh processor state into B (the "comparison" slot).
+    // A is the fixed "reference" snapshot taken when entering A/B mode.
     // No-op if A/B mode is not active.
     void onPresetLoaded()
     {
         if (!abActive)
             return;
 
-        if (showingA)
-            captureState(stateA);
-        else
-            captureState(stateB);
+        captureState(stateB);
 
         repaint();
     }

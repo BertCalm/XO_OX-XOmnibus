@@ -324,7 +324,7 @@ public:
                     // 270° arc sweep, starts at ~135° (bottom-left), sweeps CW
                     const float startAngle = juce::MathConstants<float>::pi * 0.75f;
                     const float sweepAngle = juce::MathConstants<float>::pi * 1.5f;
-                    const float fillPos    = 0.5f + (float)k * 0.067f; // stagger 50–70%
+                    const float fillPos    = macroValues[k];
 
                     // Track arc (T4 color, 2.0px)
                     juce::Path trackArc;
@@ -393,6 +393,10 @@ public:
 
             // Footer (mood dots, FX indicator) and CPU bar removed —
             // not wired to real data yet, reclaimed space for larger elements.
+
+            // ── 5. Coupling dots ─────────────────────────────────────────
+            // Overlaid at bottom-left of waveform area (4px dots, 6px from bottom)
+            paintCouplingDots(g, content.getX(), waveY + waveH - 6.0f);
         }
         else
         {

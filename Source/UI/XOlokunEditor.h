@@ -258,7 +258,10 @@ public:
         A11y::setup(presetPrevBtn, "Previous Preset", "Go to previous preset");
         presetPrevBtn.onClick = [this]
         {
-            repaint(); // placeholder: step to previous preset
+            auto& pm = processor.getPresetManager();
+            pm.previousPreset();
+            processor.applyPreset(pm.getCurrentPreset());
+            repaint();
         };
 
         addAndMakeVisible(presetNextBtn);
@@ -267,7 +270,10 @@ public:
         A11y::setup(presetNextBtn, "Next Preset", "Go to next preset");
         presetNextBtn.onClick = [this]
         {
-            repaint(); // placeholder: step to next preset
+            auto& pm = processor.getPresetManager();
+            pm.nextPreset();
+            processor.applyPreset(pm.getCurrentPreset());
+            repaint();
         };
 
         // P0-4: Settings gear button — far-right header
@@ -806,9 +812,6 @@ public:
 
                 g.drawText(kSections[i], secRect, juce::Justification::centredLeft, false);
 
-                // Store hit rect for mouse interaction (populate sfHitRects)
-                sfHitRects[static_cast<size_t>(i)] = secRect.expanded(4.0f, 4.0f);
-
                 startX += secW;
 
                 // Draw arrow separator (not after last)
@@ -918,6 +921,38 @@ public:
         // Signal flow strip (28px) at top of Column B — painted in paint().
         // Macro knobs row removed — redundant with EngineDetailPanel's MacroHeroStrip.
         signalFlowStripBounds = colBPanel.removeFromTop(kSignalFlowStripH);
+
+        // Pre-compute signal flow hit rects here (not in paint()) so mouse handlers
+        // always have valid geometry — even before the first paint() call or after
+        // a resize that hasn't triggered a repaint yet.
+        {
+            static const juce::String kSFSections[] = { "SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT" };
+            static const int kNumSFSections = 6;
+
+            auto font = GalleryFonts::value(8.5f);
+            const float hPad    = 12.0f;
+            const float usableW = (float) signalFlowStripBounds.getWidth() - hPad * 2.0f;
+            const float cy      = (float) signalFlowStripBounds.getCentreY();
+
+            // Mirror the centering logic from paint(): total text + arrow widths
+            juce::String arrow (juce::CharPointer_UTF8 (" \xe2\x86\x92 "));
+            float totalTextW = 0.0f;
+            for (int i = 0; i < kNumSFSections; ++i)
+                totalTextW += font.getStringWidthFloat (kSFSections[i]);
+            const float arrowW = font.getStringWidthFloat (arrow);
+            const float totalW = totalTextW + arrowW * (kNumSFSections - 1);
+            float startX = (float) signalFlowStripBounds.getX() + hPad + (usableW - totalW) * 0.5f;
+
+            for (int i = 0; i < kNumSFSections; ++i)
+            {
+                float secW = font.getStringWidthFloat (kSFSections[i]);
+                sfHitRects[static_cast<size_t>(i)] =
+                    juce::Rectangle<float> (startX, cy - 8.0f, secW + 6.0f, 16.0f).expanded (4.0f, 4.0f);
+                startX += secW;
+                if (i < kNumSFSections - 1)
+                    startX += arrowW;
+            }
+        }
 
         // Remaining Column B panel area for the view stack (stacked, one visible at a time)
         overview.setBounds(colBPanel);
@@ -1478,7 +1513,7 @@ private:
     // Signal flow strip interaction state (MUST A1-01)
     int signalFlowActiveSection  = 0;  // 0=SRC1 … 5=OUT
     int signalFlowHoveredSection = -1; // -1 = none hovered
-    std::array<juce::Rectangle<float>, 6> sfHitRects; // populated in paint()
+    std::array<juce::Rectangle<float>, 6> sfHitRects; // populated in resized(), read in paint() and mouse handlers
     juce::Rectangle<int> signalFlowStripBounds;        // set in resized()
 
     // Dark Cockpit B041: current UI opacity derived from note activity.

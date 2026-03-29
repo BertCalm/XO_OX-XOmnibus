@@ -37,9 +37,12 @@ public:
         juce::String s = inner.toLowerCase();
 
         // MACRO checked first — "macroCharacter" must not fall through to OSC/OTHER
-        if (s.contains("macro") || s.contains("character") ||
-            s.contains("movement") || s.contains("coupling") ||
-            s.contains("space"))
+        // Precise match: startsWith("macro") catches macroCharacter/macroMovement/etc.
+        // Exact-word fallbacks catch bare "character", "movement", "coupling", "space"
+        // without false-positiving on qBassShore, qElastic, qHarmShore, qMemory, etc.
+        if (s.startsWith("macro") || s == "character" ||
+            s == "movement" || s == "coupling" ||
+            s == "space")
             return Section::MACRO;
 
         // OSC
@@ -49,9 +52,12 @@ public:
             return Section::OSC;
 
         // FILTER
+        // "q" is matched precisely: standalone param named "q", or prefixed/suffixed
+        // with underscore (e.g. "q_resonance", "filter_q").  Bare s.contains("q")
+        // was misclassifying OSTERIA params qBassShore/qHarmShore/qElastic/qMemory.
         if (s.contains("filter") || s.contains("cutoff") || s.contains("reso") ||
             s.contains("freq") || s.contains("filt") || s.contains("flt") ||
-            s.contains("svf") || s.contains("q"))
+            s.contains("svf") || s == "q" || s.startsWith("q_") || s.endsWith("_q"))
             return Section::FILTER;
 
         // MOD
@@ -291,7 +297,7 @@ public:
                 if (auto& lk = liveKnobs[flatIdx]; lk != nullptr)
                 {
                     const int knobX = cx + (kCellW - kKnobSize) / 2;
-                    lk->knob->setBounds(knobX, cy, kKnobSize, kKnobSize);
+                    lk->knob->setBounds(knobX, cy + 2, kKnobSize, kKnobSize);
                     lk->label->setBounds(cx, cy + kKnobSize + 4, kCellW, 14);
                 }
             }

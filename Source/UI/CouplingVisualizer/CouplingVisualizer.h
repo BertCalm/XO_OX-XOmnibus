@@ -491,7 +491,7 @@ private:
                            kNodeRadius * 2, kNodeRadius * 2, ringWidth);
 
             // --- Slot label ---
-            g.setFont (juce::Font (hasEng ? 9.0f : 8.0f).boldened());
+            g.setFont (GalleryFonts::heading (hasEng ? 9.0f : 8.0f));
             if (hasEng)
             {
                 g.setColour (juce::Colour (GalleryColors::textDark()));
@@ -706,7 +706,7 @@ private:
 
             // Short label
             g.setColour (juce::Colour (GalleryColors::textDark()));
-            g.setFont (juce::Font (7.5f).boldened());
+            g.setFont (GalleryFonts::heading (7.5f));
             g.drawText (CouplingTypeColors::shortLabel (route.type),
                         (int)(midX + 6), (int)(midY - 5), 38, 10,
                         juce::Justification::left);
@@ -832,7 +832,7 @@ private:
             g.fillEllipse (x, cy - 4.0f, 8.0f, 8.0f);
 
             g.setColour (juce::Colour (GalleryColors::textMid()));
-            g.setFont (juce::Font (8.0f));
+            g.setFont (GalleryFonts::body (8.0f));
             juce::String label = CouplingTypeColors::shortLabel (type) + " (" + juce::String (count) + ")";
             g.drawText (label, (int)(x + 11), (int)(cy - 5), 60, 10, juce::Justification::left);
 

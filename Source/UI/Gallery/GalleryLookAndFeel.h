@@ -69,17 +69,14 @@ public:
     {
         using namespace GalleryColors;
 
+        const bool enabled = slider.isEnabled();
+        if (!enabled) g.setOpacity(0.35f);
+
         auto bounds  = juce::Rectangle<int>(x, y, width, height).toFloat();
         float diameter = juce::jmin(bounds.getWidth(), bounds.getHeight());
         float radius = diameter * 0.5f;
         float cx     = bounds.getCentreX();
         float cy     = bounds.getCentreY();
-
-        // ── DPI scale factor — used for stroke widths throughout ───────────
-        const float dpiScale = juce::jmax(1.0f,
-            (float) juce::Desktop::getInstance().getDisplays()
-                .getDisplayForPoint(slider.getScreenBounds().getCentre())
-                ->scale);
 
         // ── 1. Knob body — radial gradient matching prototype ──────────────
         {
@@ -113,13 +110,13 @@ public:
             trackArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
                                    rotaryStartAngle, rotaryEndAngle, true);
             g.setColour(juce::Colour(GalleryColors::t3()));
-            g.strokePath(trackArc, juce::PathStrokeType(2.2f / dpiScale, juce::PathStrokeType::curved,
+            g.strokePath(trackArc, juce::PathStrokeType(2.2f, juce::PathStrokeType::curved,
                                                          juce::PathStrokeType::rounded));
         }
 
         // ── 5. Arc fill — 1.8px, engine accent ────────────────────────────
         float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
-        if (sliderPos > 0.001f)
+        if (enabled && sliderPos > 0.001f)
         {
             juce::Path fillArc;
             fillArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
@@ -129,14 +126,14 @@ public:
             if (fillColour.isTransparent()) fillColour = get(xoGold);
 
             g.setColour(fillColour);
-            g.strokePath(fillArc, juce::PathStrokeType(2.8f / dpiScale, juce::PathStrokeType::curved,
+            g.strokePath(fillArc, juce::PathStrokeType(2.8f, juce::PathStrokeType::curved,
                                                         juce::PathStrokeType::rounded));
 
             // ── 6. Indicator dot at arc endpoint ────────────────────────────
             // Screen coords: x = cx + r*cos(angle - pi/2), y = cy + r*sin(angle - pi/2)
             float dotX = cx + arcRadius * std::cos(fillEnd - juce::MathConstants<float>::halfPi);
             float dotY = cy + arcRadius * std::sin(fillEnd - juce::MathConstants<float>::halfPi);
-            float dotR = 1.8f / dpiScale;
+            float dotR = 1.8f;
             g.setColour(fillColour.withAlpha(0.9f));
             g.fillEllipse(dotX - dotR, dotY - dotR, dotR * 2.0f, dotR * 2.0f);
         }
@@ -146,7 +143,7 @@ public:
         {
             g.setColour(A11y::focusRingColour().withAlpha(1.0f));
             g.drawEllipse(cx - radius - 2.0f, cy - radius - 2.0f,
-                          diameter + 4.0f, diameter + 4.0f, 2.0f / dpiScale);
+                          diameter + 4.0f, diameter + 4.0f, 2.0f);
         }
 
         // ── 8. Live value readout (during interaction) ─────────────────────
@@ -192,6 +189,14 @@ public:
         using namespace GalleryColors;
 
         auto bounds = btn.getLocalBounds().toFloat();
+
+        if (!btn.isEnabled())
+        {
+            constexpr float cornerRadius = 5.0f;
+            g.setColour(get(GalleryColors::elevated()).withAlpha(0.5f));
+            g.fillRoundedRectangle(bounds, cornerRadius);
+            return;
+        }
 
         // ── Mood pill rendering ──────────────────────────────────────────────
         if (isMoodPill(btn))
@@ -301,6 +306,9 @@ public:
                       juce::ComboBox& box) override
     {
         using namespace GalleryColors;
+
+        if (!box.isEnabled()) g.setOpacity(0.35f);
+
         auto bounds = juce::Rectangle<int>(0, 0, width, height).toFloat();
 
         // Fill
@@ -336,6 +344,8 @@ public:
                           juce::Slider::SliderStyle style, juce::Slider& slider) override
     {
         using namespace GalleryColors;
+
+        if (!slider.isEnabled()) g.setOpacity(0.35f);
 
         bool isHorizontal = (style == juce::Slider::LinearHorizontal ||
                              style == juce::Slider::LinearBar);

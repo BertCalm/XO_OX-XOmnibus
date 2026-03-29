@@ -2,6 +2,7 @@
 #include <juce_gui_extra/juce_gui_extra.h>
 #include "../../Engines/Optic/OpticEngine.h"
 #include "../../DSP/FastMath.h"
+#include "../GalleryColors.h"
 #include <array>
 #include <cmath>
 
@@ -405,7 +406,7 @@ private:
     void paintNoSignal (juce::Graphics& g, juce::Rectangle<float> bounds)
     {
         g.setColour (juce::Colour (kPhosphorDim).withAlpha (0.3f));
-        g.setFont (juce::Font (14.0f));
+        g.setFont (GalleryFonts::display (14.0f));
         g.drawText ("OPTIC — NO SIGNAL", bounds, juce::Justification::centred);
 
         // Idle scanline sweep

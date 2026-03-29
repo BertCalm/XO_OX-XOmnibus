@@ -29,7 +29,7 @@ struct PillButtonLookAndFeel : public juce::LookAndFeel_V4
     void drawButtonText(juce::Graphics& g, juce::TextButton& btn,
                         bool /*isMouseOver*/, bool /*isButtonDown*/) override
     {
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(7.5f));
         g.setColour(btn.findColour(btn.getToggleState()
                     ? juce::TextButton::textColourOnId
                     : juce::TextButton::textColourOffId));
@@ -62,7 +62,8 @@ public:
         collectRegisteredEngines();
 
         // ── Search field ─────────────────────────────────────────────────────
-        searchField.setTextToShowWhenEmpty("Search 73 engines...",
+        searchField.setTextToShowWhenEmpty(
+            "Search " + juce::String(allEngineIds.size()) + " engines...",
             GalleryColors::get(GalleryColors::t3()).withAlpha(0.80f));
         searchField.setColour(juce::TextEditor::backgroundColourId,
             GalleryColors::get(GalleryColors::surface()));
@@ -79,13 +80,26 @@ public:
         addAndMakeVisible(searchField);
 
         // ── Category pill buttons ─────────────────────────────────────────────
-        // 3-letter abbreviations so pills never truncate in the 340pt popup.
+        // Short readable labels — font is 7.5pt to keep all pills fitting in 340pt.
         static const char* kCatLabels[] = {
-            "ALL", "SYN", "PRC", "BAS", "PAD", "STR", "ORG", "VOC", "FX", "UTL"
+            "ALL", "Synth", "Perc", "Bass", "Pad", "String", "Organ", "Vocal", "FX", "Util"
+        };
+        static const char* kCatTooltips[] = {
+            "All engines",
+            "Synthesizer",
+            "Percussion",
+            "Bass",
+            "Pad",
+            "String",
+            "Organ",
+            "Vocal",
+            "FX",
+            "Utility",
         };
         for (int i = 0; i < kNumCategories; ++i)
         {
             catBtns[i].setButtonText(kCatLabels[i]);
+            catBtns[i].setTooltip(kCatTooltips[i]);
             catBtns[i].setClickingTogglesState(false);
             catBtns[i].setLookAndFeel(&pillLnF);
             stylePillButton(catBtns[i], i == 0);
@@ -110,6 +124,14 @@ public:
         listBox.setOutlineThickness(1);
         listBox.addKeyListener(this);
         addAndMakeVisible(listBox);
+
+        // ── Empty state label (shown when search returns no results) ──────────
+        emptyLabel.setText("No engines match your search", juce::dontSendNotification);
+        emptyLabel.setFont(GalleryFonts::body(11.0f));
+        emptyLabel.setColour(juce::Label::textColourId,
+            GalleryColors::get(GalleryColors::t3()));
+        emptyLabel.setJustificationType(juce::Justification::centred);
+        addChildComponent(emptyLabel); // hidden by default
 
         // ── Count label ───────────────────────────────────────────────────────
         countLabel.setFont(GalleryFonts::label(8.5f));
@@ -193,25 +215,36 @@ public:
         g.setColour(fr.accent);
         g.fillEllipse(dotCx - dotR, dotCy - dotR, dotR * 2.0f, dotR * 2.0f);
 
-        // Engine name
+        // Engine name — top half of row
+        const int nameY = 3;
+        const int nameH = 16;
         g.setFont(GalleryFonts::display(11.0f));
         g.setColour(isSelected ? fr.accent : get(t1()));
         g.drawText(fr.engineId.toUpperCase(),
-                   24, 0, w - 74, h,
+                   24, nameY, w - 74, nameH,
                    juce::Justification::centredLeft, true);
 
-        // Category badge — right side, T4 muted mono
+        // Archetype subtitle — below engine name, muted T3 color
+        if (!fr.archetype.isEmpty())
+        {
+            g.setFont(GalleryFonts::body(8.0f));
+            g.setColour(get(t3()).withAlpha(0.70f));
+            g.drawText(fr.archetype,
+                       24, nameY + nameH, w - 74, 11,
+                       juce::Justification::centredLeft, true);
+        }
+
+        // Category badge — right side, T4 muted mono (vertically centred in name row)
         g.setFont(GalleryFonts::value(8.0f));
         g.setColour(get(t4()));
         g.drawText(fr.category,
-                   w - 66, 0, 62, h,
+                   w - 66, nameY, 62, nameH,
                    juce::Justification::centredRight, true);
     }
 
     void listBoxItemClicked(int row, const juce::MouseEvent&) override
     {
-        if (row >= 0 && row < (int)flatRows.size())
-            listBox.selectRow(row);
+        commitSelection(row);
     }
 
     void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
@@ -221,8 +254,8 @@ public:
 
     void selectedRowsChanged(int lastRowSelected) override
     {
-        // Single-click selects, but does NOT commit — double-click or Enter commits.
-        // This lets the user arrow-navigate without dismissing.
+        // Selection change via keyboard navigation does not commit — only
+        // explicit click (listBoxItemClicked) or Enter/Return commits.
         (void)lastRowSelected;
     }
 
@@ -327,6 +360,7 @@ public:
         b.removeFromTop(4);
 
         listBox.setBounds(b);
+        emptyLabel.setBounds(listBox.getBounds());
     }
 
 private:
@@ -628,6 +662,11 @@ private:
             }
         }
 
+        // Show empty state label when no engines match; hide list to avoid blank area
+        const bool isEmpty = (totalEngines == 0);
+        emptyLabel.setVisible(isEmpty);
+        listBox.setVisible(!isEmpty);
+
         countLabel.setText(juce::String(totalEngines) + " engines",
                            juce::dontSendNotification);
     }
@@ -677,7 +716,7 @@ private:
     static constexpr int kNumCategories = 10;
     // Section headers share the same row height as engine rows — both rendered
     // inside paintListBoxItem, distinguished by FlatRow::isSectionHeader.
-    static constexpr int kRowHeight = 26;
+    static constexpr int kRowHeight = 34;
 
     // Engine ID list from registry
     juce::StringArray allEngineIds;
@@ -696,6 +735,7 @@ private:
     juce::TextButton  catBtns[kNumCategories];
     juce::ListBox     listBox;
     juce::Label       countLabel;
+    juce::Label       emptyLabel;
 
     int activeCategory = 0; // 0 = ALL
 
