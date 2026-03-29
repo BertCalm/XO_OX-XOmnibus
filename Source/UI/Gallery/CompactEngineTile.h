@@ -32,7 +32,7 @@ public:
         : processor(proc), slot(slotIndex), miniWave(proc)
     {
         A11y::setup (*this, "Engine Slot " + juce::String (slotIndex + 1),
-                     "Click to select engine, right-click for options");
+                     "Click to open engine detail, right-click for options");
         setExplicitFocusOrder (slotIndex + 1);
         // miniWave is kept as a member for potential future use but hidden —
         // waveform is now painted directly in paint() per the mockup spec.

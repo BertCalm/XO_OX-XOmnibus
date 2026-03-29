@@ -6,7 +6,7 @@
 // Tab bar spec:
 //   Height:    32pt
 //   Font:      Space Grotesk SemiBold 10pt ALL CAPS  (GalleryFonts::display)
-//   Active:    full-opacity text + 2px XO Gold underline
+//   Active:    full-opacity text + 2px engine accent color underline
 //   Inactive:  rgba(80,76,70,0.75)  — WCAG-compliant (audit fix A-01)
 //   Bg:        GalleryColors::shellWhite()
 //
@@ -397,7 +397,7 @@ public:
 
         if (outshineSidebar != nullptr)
         {
-            outshineSidebar->setBounds(0, -200, 0, 0); // hidden: Outshine sidebar is only visible in Outshine mode (shown via setVisible/setBounds when tab selected)
+            outshineSidebar->setBounds(0, 0, 0, 0);
             outshineSidebar->setVisible(false);
         }
 

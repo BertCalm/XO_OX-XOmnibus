@@ -152,22 +152,90 @@ public:
                 knobs[i].removeMouseListener(fxLearnListeners[i].get());
     }
 
+    // Called by XOlokunEditor when the active engine changes, so indicator dots
+    // use the correct accent colour.  Must be called on the message thread.
+    void setAccentColour(juce::Colour c)
+    {
+        accentColour_ = c;
+        repaint();
+    }
+
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        auto b = getLocalBounds().toFloat();
-        g.setColour(get(shellWhite()).darker(0.03f));
-        g.fillRoundedRectangle(b, 6.0f);
-        g.setColour(get(borderGray()));
-        g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
 
-        // Dividers between sections
-        g.setColour(get(borderGray()).withAlpha(0.5f));
-        for (int i = 0; i < kNumSections - 1; ++i)
+        // Outer strip background + border (same reduced area as resized())
+        auto outerB = getLocalBounds().toFloat();
+        g.setColour(get(shellWhite()).darker(0.03f));
+        g.fillRoundedRectangle(outerB, 6.0f);
+        g.setColour(get(borderGray()));
+        g.drawRoundedRectangle(outerB.reduced(0.5f), 6.0f, 1.0f);
+
+        // Reconstruct section X boundaries (mirrors resized() calculation).
+        // inner bounds reduced(4,3) — same as resized().
+        auto inner = getLocalBounds().reduced(4, 3);
+        static constexpr int weights[kNumSections] = {2, 3, 2, 2, 2, 2};
+        static constexpr int totalWeight = 13;
+        int totalW = inner.getWidth();
+        int sectionX[kNumSections + 1];
+        sectionX[0] = inner.getX();
+        for (int i = 0; i < kNumSections; ++i)
+            sectionX[i + 1] = sectionX[i] + (totalW * weights[i]) / totalWeight;
+
+        // Per-section pill parameters
+        static constexpr float kPillGap    = 2.0f;
+        static constexpr float kPillRadius = 4.0f;
+        const float pillTop    = static_cast<float>(inner.getY());
+        const float pillBottom = static_cast<float>(inner.getBottom());
+        const float pillH      = pillBottom - pillTop;
+
+        // Accent dot: is each section "active"?
+        // SAT, DELAY MIX, REVERB MIX, MOD DEPTH, COMP MIX: active when primary
+        // knob param > 0.  SEQ: active when seqEnabled toggle is on.
+        static const char* primaryIds[kNumSections] = {
+            "master_satDrive", "master_delayMix", "master_reverbMix",
+            "master_modDepth", "master_compMix",  "master_seqEnabled"
+        };
+        bool sectionActive[kNumSections] = {};
+        for (int i = 0; i < kNumSections; ++i)
         {
-            if (divX[i] > 0)
-                g.drawLine(static_cast<float>(divX[i]), 8.0f,
-                           static_cast<float>(divX[i]), static_cast<float>(getHeight()) - 8, 1.0f);
+            if (auto* p = myApvts.getParameter(primaryIds[i]))
+                sectionActive[i] = (p->getValue() > 0.0f);
+        }
+
+        for (int i = 0; i < kNumSections; ++i)
+        {
+            float pillLeft  = static_cast<float>(sectionX[i])     + (i == 0 ? 0.0f : kPillGap * 0.5f);
+            float pillRight = static_cast<float>(sectionX[i + 1]) - (i == kNumSections - 1 ? 0.0f : kPillGap * 0.5f);
+            juce::Rectangle<float> pill (pillLeft, pillTop, pillRight - pillLeft, pillH);
+
+            // Fill
+            g.setColour(get(elevated()));
+            g.fillRoundedRectangle(pill, kPillRadius);
+
+            // Border 1px rgba(255,255,255,0.10)
+            g.setColour(border().withAlpha(0.10f));
+            g.drawRoundedRectangle(pill.reduced(0.5f), kPillRadius, 1.0f);
+
+            // Accent indicator dot — top-right corner: 10px from right, 4px from top
+            float dotCX = pill.getRight() - 10.0f;
+            float dotCY = pill.getY() + 4.0f + 3.0f; // 4px from top + 3px radius = centre
+            constexpr float kDotR  = 3.0f;  // 6px diameter
+            constexpr float kGlowR = 5.0f;  // 10px diameter glow
+
+            if (sectionActive[i])
+            {
+                // Glow halo at 35% alpha behind the dot
+                g.setColour(accentColour_.withAlpha(0.35f));
+                g.fillEllipse(dotCX - kGlowR, dotCY - kGlowR, kGlowR * 2.0f, kGlowR * 2.0f);
+                // Solid dot
+                g.setColour(accentColour_);
+            }
+            else
+            {
+                g.setColour(get(t4()));
+            }
+            g.fillEllipse(dotCX - kDotR, dotCY - kDotR, kDotR * 2.0f, kDotR * 2.0f);
         }
     }
 
@@ -324,8 +392,11 @@ private:
     juce::TextButton seqToggle;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> seqAttach;
 
-    // Divider X positions
+    // Divider X positions (kept for potential external use; paint() recalculates independently)
     int divX[kNumSections - 1] = {};
+
+    // Engine accent colour for indicator dots — updated via setAccentColour()
+    juce::Colour accentColour_ { GalleryColors::get(GalleryColors::xoGold) };
 
     // MIDI learn listeners — destroyed before knobs
     std::array<std::unique_ptr<MidiLearnMouseListener>, kNumPrimaryKnobs> fxLearnListeners;

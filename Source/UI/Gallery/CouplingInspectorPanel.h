@@ -385,7 +385,7 @@ public:
                 // Arrow in T4 (gold)
                 juce::String arrow (juce::CharPointer_UTF8 (" \xe2\x86\x92 "));
                 float arrowW = font.getStringWidthFloat (arrow);
-                g.setColour (get (active ? t3() : t4()));
+                g.setColour (get (t4()));
                 g.drawText (arrow,
                             juce::Rectangle<float> (sx, sy, arrowW + 2.0f, sh),
                             juce::Justification::centredLeft, false);
@@ -477,7 +477,7 @@ public:
 
         // ── Mini viz hidden — duplicate of Column A's MiniCouplingGraph; off-screen
         //    to avoid rendering two copies of the same coupling visualization.
-        miniViz.setBounds (0, -200, 0, 0);
+        miniViz.setBounds (0, 0, 0, 0);
         miniViz.setVisible(false);
 
         // ── Route cards — below "COUPLING ROUTES" header ──────────────────────
@@ -554,10 +554,10 @@ private:
     // Layout constants
     //==========================================================================
     static constexpr int kMiniVizH       = 96;   // mini graph height (reduced from 120)
-    static constexpr int kCardGap        = 3;    // vertical gap between cards (tighter)
+    static constexpr int kCardGap        = 2;    // vertical gap between cards (tighter)
     static constexpr int kCardMargin     = 6;    // left/right inset for cards
     static constexpr int kInnerPad       = 8;    // inner padding inside card
-    static constexpr int kHeaderRowH     = 26;   // height of header row (label + toggle)
+    static constexpr int kHeaderRowH     = 24;   // height of header row (label + toggle)
     static constexpr int kActiveBtnW     = 34;   // width of ON/OFF toggle
     static constexpr int kLabelH         = 11;   // micro-label height (TYPE / SRC/TGT)
     static constexpr int kTypeRowH       = 22;   // type combo height
@@ -638,17 +638,14 @@ private:
     }
 
     //==========================================================================
-    // Resolve a 0-based slot index to a short display name.
-    juce::String slotName (int slot) const
+    // Resolve a 0-based slot index to a display name (full engine ID, uppercased).
+    juce::String slotName (int slotIdx) const
     {
-        auto* eng = processor.getEngine (slot);
-        if (eng)
-            return eng->getEngineId().toUpperCase().substring (0, 4);
-
-        if (slot == 4)
-            return "GHST";  // Ghost Slot (slot 5)
-
-        return "-";  // dash for empty slot
+        if (slotIdx < 0 || slotIdx >= 5) return "NONE";
+        auto* eng = processor.getEngine (slotIdx);
+        if (!eng) return "EMPTY";
+        auto id = eng->getEngineId();
+        return id.isEmpty() ? ("SL" + juce::String (slotIdx + 1)) : id.toUpperCase();
     }
 
     //==========================================================================

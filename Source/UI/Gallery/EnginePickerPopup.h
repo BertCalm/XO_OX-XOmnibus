@@ -62,14 +62,14 @@ public:
         collectRegisteredEngines();
 
         // ── Search field ─────────────────────────────────────────────────────
-        searchField.setTextToShowWhenEmpty("Search engines...",
+        searchField.setTextToShowWhenEmpty("Search 73 engines...",
             GalleryColors::get(GalleryColors::t3()).withAlpha(0.80f));
         searchField.setColour(juce::TextEditor::backgroundColourId,
             GalleryColors::get(GalleryColors::surface()));
         searchField.setColour(juce::TextEditor::outlineColourId,
             GalleryColors::borderMd());
         searchField.setColour(juce::TextEditor::focusedOutlineColourId,
-            A11y::focusRingColour());
+            juce::Colour(GalleryColors::xoGold));
         searchField.setColour(juce::TextEditor::textColourId,
             GalleryColors::get(GalleryColors::t1()));
         searchField.setFont(GalleryFonts::body(11.0f));
@@ -176,7 +176,11 @@ public:
 
         // ── Engine rows ───────────────────────────────────────────────────────
         if (isSelected)
-            g.fillAll(get(xoGold).withAlpha(0.18f));
+        {
+            g.fillAll(juce::Colour(0x0BFFFFFF));
+            g.setColour(juce::Colour(get(xoGold)));
+            g.fillRect(0, 0, 2, h);
+        }
         else if (row % 2 == 0)
             g.fillAll(get(elevated()));
         else
@@ -196,9 +200,9 @@ public:
                    24, 0, w - 74, h,
                    juce::Justification::centredLeft, true);
 
-        // Category badge — right side, T3 muted
-        g.setFont(GalleryFonts::label(7.5f));
-        g.setColour(get(t3()));
+        // Category badge — right side, T4 muted mono
+        g.setFont(GalleryFonts::value(8.0f));
+        g.setColour(get(t4()));
         g.drawText(fr.category,
                    w - 66, 0, 62, h,
                    juce::Justification::centredRight, true);
@@ -657,15 +661,15 @@ private:
     {
         using namespace GalleryColors;
         btn.setColour(juce::TextButton::buttonColourId,
-                      active ? get(xoGold).withAlpha(0.22f)
-                              : get(surface()));
+                      active ? get(xoGold).withAlpha(0.14f)
+                              : juce::Colour(0x00000000));
         btn.setColour(juce::TextButton::textColourOffId,
                       active ? get(xoGoldText())
-                              : get(t2()));
+                              : get(t3()));
         btn.setColour(juce::TextButton::textColourOnId,
                       get(xoGoldText()));
         btn.setColour(juce::TextButton::buttonOnColourId,
-                      get(xoGold).withAlpha(0.22f));
+                      get(xoGold).withAlpha(0.14f));
         btn.setToggleState(active, juce::dontSendNotification);
     }
 

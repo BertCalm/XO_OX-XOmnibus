@@ -432,6 +432,8 @@ public:
                 overview.setVisible(false);
                 detail.setAlpha(1.0f);
                 detail.setVisible(true);
+                couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
+                masterFXStrip.setAccentColour(processor.getEngine(0)->getAccentColour());
             }
         }
 
@@ -665,9 +667,9 @@ public:
                    juce::Rectangle<int>(48, 6, 100, 20),
                    juce::Justification::centredLeft);
 
-        // Subtitle — "XO_OX Designs" at 8px, T3 color (shifted right by 34px)
+        // Subtitle — "XO_OX Designs" at 10px, T3 color (shifted right by 34px)
         g.setColour(get(t3()));
-        g.setFont(GalleryFonts::body(8.0f));
+        g.setFont(GalleryFonts::body(10.0f));
         g.drawText("XO_OX Designs",
                    juce::Rectangle<int>(48, 26, 100, 14),
                    juce::Justification::centredLeft);
@@ -991,9 +993,12 @@ private:
                 if (self.detail.loadSlot(slot))
                 {
                     self.overview.setVisible(false);
+                    self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
                     self.detail.setAlpha(0.0f);
                     self.detail.setVisible(true);
                     juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
+                    if (auto* eng = self.processor.getEngine(slot))
+                        self.masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
                 else
                 {
@@ -1013,9 +1018,12 @@ private:
                 if (self.detail.loadSlot(slot))
                 {
                     self.overview.setVisible(false);
+                    self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
                     self.detail.setAlpha(0.0f);
                     self.detail.setVisible(true);
                     juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
+                    if (auto* eng = self.processor.getEngine(slot))
+                        self.masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
                 else
                 {
@@ -1051,6 +1059,7 @@ private:
                 if (safeOutgoing != nullptr) safeOutgoing->setVisible(false);
                 safeThis->overview.setAlpha(0.0f);
                 safeThis->overview.setVisible(true);
+                safeThis->couplingHitTester.setVisible(true); // restore — overview needs arc hit-testing
                 juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
             });
         }

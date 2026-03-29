@@ -45,7 +45,7 @@ namespace GalleryColors {
         constexpr uint32_t xoGoldText = 0xFF9E7C2E;   // WCAG AA on shellWhite
     }
 
-    // Dark palette (matched to xolokun-v05-polished.html CSS variables exactly)
+    // Dark palette (matched to xolokun-v05-accurate.html CSS variables exactly)
     namespace Dark {
         // Core backgrounds
         static constexpr uint32_t bg          = 0xFF0E0E10;  // --bg (plugin shell)
