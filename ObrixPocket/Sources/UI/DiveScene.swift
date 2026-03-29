@@ -86,7 +86,9 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Touch / Physics
 
     private var touchTargetX: CGFloat = 0            // X the player is moving toward
+    private var touchTargetY: CGFloat = 0            // Y the player is moving toward (will be set in didMove)
     private var lastPlayerX: CGFloat = 0             // X at end of previous frame
+    private var lastPlayerY: CGFloat = 0             // Y at end of previous frame
     private var lastUpdateTime: TimeInterval = -1    // For delta-time calculation
     private var playerVelocityX: Float = 0           // Per-frame velocity (normalised)
 
@@ -130,6 +132,10 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
 
         touchTargetX  = size.width * 0.5
         lastPlayerX   = size.width * 0.5
+
+        let startY = size.height * 0.75
+        touchTargetY  = startY
+        lastPlayerY   = startY
 
         buildBackground()
         buildScreenFlash()
@@ -403,9 +409,8 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         node.name      = "obstacle_shark"
         node.zPosition = 5
 
-        // Sharks cross at the player's Y level (±30 pt) so they're always a real threat
-        let playerY = size.height * 0.75   // Matches playerYFraction
-        let yPos = playerY + CGFloat.random(in: -30...30)
+        // Sharks cross at varied heights within the player's movement range
+        let yPos = CGFloat.random(in: size.height * 0.45 ... size.height * 0.85)
         let goingRight = Bool.random()
 
         let w: CGFloat = 48
@@ -590,7 +595,8 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // No special action needed on release
+        // Drift back to default depth when finger lifts
+        touchTargetY = size.height * 0.75
     }
 
     private func handleTouchPosition(_ location: CGPoint) {
@@ -598,9 +604,13 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
         let maxX = size.width * playerMaxXFraction
         touchTargetX = min(max(location.x, minX), maxX)
 
-        // Smooth-move the player node towards the finger
+        let yMin = size.height * 0.35
+        let yMax = size.height * 0.85
+        touchTargetY = min(max(location.y, yMin), yMax)
+
+        // Smooth-move the player node towards the finger (both axes)
         playerNode.removeAction(forKey: "moveToTouch")
-        let move = SKAction.moveTo(x: touchTargetX, duration: 0.08)
+        let move = SKAction.move(to: CGPoint(x: touchTargetX, y: touchTargetY), duration: 0.08)
         move.timingMode = .easeOut
         playerNode.run(move, withKey: "moveToTouch")
     }
@@ -760,15 +770,19 @@ final class DiveScene: SKScene, SKPhysicsContactDelegate {
             let minX   = size.width * playerMinXFraction
             let maxX   = size.width * playerMaxXFraction
             touchTargetX = min(max(pushed, minX), maxX)
-            let move = SKAction.moveTo(x: touchTargetX, duration: 0.06)
+            let move = SKAction.move(to: CGPoint(x: touchTargetX, y: touchTargetY), duration: 0.06)
             playerNode.run(move, withKey: "currentPush")
         }
 
-        // Compute velocity from position change
+        // Compute velocity from 2D position change
         let currentX = playerNode.position.x
-        let dxPixels = currentX - lastPlayerX
-        playerVelocityX = Float(dxPixels / CGFloat(dt)) / Float(size.width)
+        let currentY = playerNode.position.y
+        let dx = currentX - lastPlayerX
+        let dy = currentY - lastPlayerY
+        let velocity = sqrt(dx * dx + dy * dy) / CGFloat(dt)
+        playerVelocityX = Float(min(velocity / 500.0, 1.0))
         lastPlayerX = currentX
+        lastPlayerY = currentY
 
         // Report normalized position (0-1)
         let normalizedX = Float((currentX - size.width * playerMinXFraction) /
