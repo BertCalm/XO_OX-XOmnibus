@@ -159,7 +159,7 @@ final class BreedingManager: ObservableObject {
 
     /// Specimen UUIDs for the current reef slots (needed to look up parent genomes by UUID).
     /// Key = slot index, value = specimen UUID. Set by the coordinator before breeding.
-    var specimenUUIDs: [Int: UUID] = []
+    var specimenUUIDs: [Int: UUID] = [:]
 
     // MARK: - Pair Management
 

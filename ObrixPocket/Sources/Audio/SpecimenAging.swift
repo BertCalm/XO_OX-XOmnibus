@@ -91,7 +91,7 @@ enum LifeStage: String, Codable, CaseIterable, Comparable {
 }
 
 /// Aging record for a single specimen
-struct SpecimenAge: Codable, Identifiable {
+struct SpecimenAgeRecord: Codable, Identifiable {
     let id: UUID
     let slotIndex: Int
     let subtypeID: String
@@ -230,13 +230,13 @@ final class SpecimenAgingManager: ObservableObject {
 
     // MARK: - State
 
-    @Published var ages: [Int: SpecimenAge] = [:]  // slotIndex → age record
+    @Published var ages: [Int: SpecimenAgeRecord] = [:]  // slotIndex → age record
 
     // MARK: - Registration
 
     /// Register a newly caught specimen
     func registerBirth(slotIndex: Int, subtypeID: String) {
-        ages[slotIndex] = SpecimenAge(
+        ages[slotIndex] = SpecimenAgeRecord(
             id: UUID(),
             slotIndex: slotIndex,
             subtypeID: subtypeID,
@@ -315,7 +315,7 @@ final class SpecimenAgingManager: ObservableObject {
 
     func restore() {
         if let data = UserDefaults.standard.data(forKey: "specimenAges"),
-           let records = try? JSONDecoder().decode([SpecimenAge].self, from: data) {
+           let records = try? JSONDecoder().decode([SpecimenAgeRecord].self, from: data) {
             ages = [:]
             for record in records {
                 ages[record.slotIndex] = record

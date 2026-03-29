@@ -85,7 +85,7 @@ enum CommunityReward: String, Codable, CaseIterable {
 
 /// The player action types that count toward community event goals.
 enum ContributionType: String, Codable, CaseIterable {
-    case catch      // Catching a specimen
+    case catchSpecimen  // Catching a specimen
     case breed      // Successfully breeding two specimens
     case dive       // Meters of dive depth accumulated
     case play       // Minutes of play time (arrangement or dive)
@@ -94,8 +94,8 @@ enum ContributionType: String, Codable, CaseIterable {
     /// Whether this contribution type counts toward the given event type.
     func countsFor(_ eventType: CommunityEventType) -> Bool {
         switch (self, eventType) {
-        case (.catch,    .catchathon):    return true
-        case (.catch,    .seasonalHunt):  return true
+        case (.catchSpecimen, .catchathon):    return true
+        case (.catchSpecimen, .seasonalHunt):  return true
         case (.breed,    .breedathon):    return true
         case (.dive,     .diveDeep):      return true
         case (.play,     .musicMarathon): return true

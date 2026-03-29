@@ -33,17 +33,17 @@ struct ReefBannerBar: View {
             }
 
             // Seasonal event banner — shown when an event is active
-            if let event = seasonalEvent.currentEvent {
+            if let event = seasonalEvent.activeEvent {
                 HStack(spacing: 8) {
                     Image(systemName: "sparkle")
                         .font(.system(size: 10))
                         .foregroundColor(DesignTokens.xoGold)
                     VStack(alignment: .leading, spacing: 1) {
-                        Text(event.name.uppercased())
+                        Text(event.type.rawValue.uppercased())
                             .font(DesignTokens.monoBold(9))
                             .tracking(1)
                             .foregroundColor(DesignTokens.xoGold)
-                        Text("\(event.daysRemaining) days left · \(event.description)")
+                        Text("\(event.daysRemaining) days left · \(event.season.rawValue)")
                             .font(DesignTokens.body(8))
                             .foregroundColor(.white.opacity(0.3))
                     }

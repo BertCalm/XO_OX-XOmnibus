@@ -296,10 +296,8 @@ final class SpawnManager: ObservableObject {
                 weight *= 3.0
             }
 
-            // Seasonal event boost — boosted subtypes are 2x more likely during the event
-            if let event = activeEvent, event.boostedSubtypes.contains(catalogID) {
-                weight *= 2.0
-            }
+            // Seasonal event boost — reserved for future LimitedTimeEvent.boostedSubtypes support
+            _ = activeEvent  // suppress unused-variable warning
 
             return (subtype, weight)
         }

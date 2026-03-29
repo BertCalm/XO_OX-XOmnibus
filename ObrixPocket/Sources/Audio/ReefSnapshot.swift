@@ -1,7 +1,7 @@
 import Foundation
 
 /// A complete snapshot of a reef's state — the "preset system" for living ecosystems
-struct ReefSnapshot: Codable, Identifiable {
+struct ReefSnapshot: Identifiable {
     let id: UUID
     var name: String
     let createdDate: Date

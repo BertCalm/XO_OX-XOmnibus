@@ -84,10 +84,10 @@ enum MacroMapping: Codable {
         switch self {
         case .linear(let min, let max):
             return min + clamped * (max - min)
-        case .exponential(let min, let max):
+        case .exponential(let minVal, let maxVal):
             // Exponential mapping for perceptual parameters (filter, rate, time)
-            let logMin = log(max(0.001, min))
-            let logMax = log(max(0.001, max))
+            let logMin = log(Swift.max(0.001, minVal))
+            let logMax = log(Swift.max(0.001, maxVal))
             return exp(logMin + clamped * (logMax - logMin))
         }
     }

@@ -450,6 +450,14 @@ struct SeasonalProgressRecord: Codable {
 /// Persistence is via UserDefaults for simplicity; swap to DatabaseManager if size grows.
 final class SeasonalEventManager: ObservableObject {
 
+    // MARK: - Shared Instance (used by SpecimenFactory and SpawnManager)
+    static let shared = SeasonalEventManager()
+
+    /// Convenience accessor for call sites that don't hold a reference.
+    static func activeEvent() -> LimitedTimeEvent? {
+        shared.activeEvent
+    }
+
     // MARK: - Published State
 
     @Published var currentSeason: Season = .springBloom

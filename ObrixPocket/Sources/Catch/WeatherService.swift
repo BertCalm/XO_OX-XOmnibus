@@ -70,7 +70,7 @@ final class WeatherService: ObservableObject {
     // MARK: - Storm Detection
 
     /// Returns true for precipitation/severe conditions that should activate the .storm biome.
-    private static func isStormCondition(_ condition: WeatherCondition) -> Bool {
+    private static func isStormCondition(_ condition: WeatherKit.WeatherCondition) -> Bool {
         switch condition {
         case .rain, .heavyRain, .drizzle,
              .thunderstorms, .isolatedThunderstorms, .scatteredThunderstorms, .strongStorms,
