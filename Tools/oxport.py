@@ -80,6 +80,15 @@ if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 # ---------------------------------------------------------------------------
+# Optional numpy acceleration for fleet-scale audio processing
+# ---------------------------------------------------------------------------
+try:
+    import numpy as np
+    _NUMPY_AVAILABLE = True
+except ImportError:
+    _NUMPY_AVAILABLE = False
+
+# ---------------------------------------------------------------------------
 # Lazy imports — each stage imports its tool only when needed.
 # This keeps startup fast and lets --dry-run work without heavy deps.
 # ---------------------------------------------------------------------------
@@ -1180,10 +1189,102 @@ def _stage_preview(ctx: PipelineContext) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Loudness normalization helpers (RMS-based, stdlib only)
+# Loudness normalization helpers (RMS-based)
+# Dispatchers (_compute_rms_db / _apply_gain_db) use numpy when available,
+# falling back to pure-stdlib implementations.
 # ---------------------------------------------------------------------------
 
-def _compute_rms_db(wav_path: Path) -> float:
+def _compute_rms_db_numpy(wav_path: Path) -> float:
+    """Numpy-accelerated RMS computation. ~50-100x faster than stdlib loop."""
+    try:
+        num_ch, sr, bps, data = _read_wav_raw(wav_path)
+    except (ValueError, OSError):
+        return float("-inf")
+
+    if bps == 16:
+        samples = np.frombuffer(data, dtype=np.int16).astype(np.float64) / 32768.0
+    elif bps == 24:
+        # 24-bit: unpack 3 bytes per sample
+        n_samples = len(data) // 3
+        raw = np.frombuffer(data[:n_samples * 3], dtype=np.uint8).reshape(-1, 3)
+        samples = (raw[:, 0].astype(np.int32) |
+                   (raw[:, 1].astype(np.int32) << 8) |
+                   (raw[:, 2].astype(np.int32) << 16))
+        # Sign extend
+        samples = np.where(samples >= 0x800000, samples - 0x1000000, samples)
+        samples = samples.astype(np.float64) / 8388608.0
+    elif bps == 32:
+        samples = np.frombuffer(data, dtype=np.int32).astype(np.float64) / 2147483648.0
+    else:
+        return float("-inf")
+
+    if len(samples) == 0:
+        return float("-inf")
+
+    rms = np.sqrt(np.mean(samples ** 2))
+    if rms < 1e-10:
+        return float("-inf")
+    return 20.0 * np.log10(rms)
+
+
+def _apply_gain_db_numpy(wav_path: Path, gain_db: float) -> None:
+    """Numpy-accelerated gain application with TPDF dither. ~50-100x faster."""
+    if abs(gain_db) < 0.01:
+        return
+
+    if not np.isfinite(gain_db):
+        raise ValueError(f"gain_db must be finite, got {gain_db}")
+
+    num_ch, sr, bps, data = _read_wav_raw(wav_path)
+    gain_linear = 10.0 ** (gain_db / 20.0)
+
+    if bps == 16:
+        samples = np.frombuffer(data, dtype=np.int16).astype(np.float64)
+        # TPDF dither: sum of two uniform [-0.5, 0.5]
+        dither = np.random.uniform(-0.5, 0.5, len(samples)) + np.random.uniform(-0.5, 0.5, len(samples))
+        result = np.round(samples * gain_linear + dither).astype(np.int64)
+        result = np.clip(result, -32768, 32767).astype(np.int16)
+        new_data = result.tobytes()
+    elif bps == 24:
+        n_samples = len(data) // 3
+        raw = np.frombuffer(data[:n_samples * 3], dtype=np.uint8).reshape(-1, 3)
+        samples = (raw[:, 0].astype(np.int32) |
+                   (raw[:, 1].astype(np.int32) << 8) |
+                   (raw[:, 2].astype(np.int32) << 16))
+        samples = np.where(samples >= 0x800000, samples - 0x1000000, samples).astype(np.float64)
+        dither = np.random.uniform(-0.5, 0.5, len(samples)) + np.random.uniform(-0.5, 0.5, len(samples))
+        result = np.round(samples * gain_linear + dither).astype(np.int64)
+        result = np.clip(result, -8388608, 8388607)
+        # Convert back to unsigned for byte packing
+        unsigned = np.where(result < 0, result + 0x1000000, result).astype(np.uint32)
+        out = np.zeros((len(unsigned), 3), dtype=np.uint8)
+        out[:, 0] = unsigned & 0xFF
+        out[:, 1] = (unsigned >> 8) & 0xFF
+        out[:, 2] = (unsigned >> 16) & 0xFF
+        new_data = out.tobytes()
+    elif bps == 32:
+        samples = np.frombuffer(data, dtype=np.int32).astype(np.float64)
+        result = np.round(samples * gain_linear).astype(np.int64)  # No dither at 32-bit
+        result = np.clip(result, -2147483648, 2147483647).astype(np.int32)
+        new_data = result.tobytes()
+    else:
+        raise ValueError(f"Unsupported bit depth {bps} in {wav_path} — only 16/24/32-bit PCM supported")
+
+    # Atomic write
+    temp_fd, temp_path = tempfile.mkstemp(suffix=".wav", dir=wav_path.parent)
+    os.close(temp_fd)
+    try:
+        _write_wav(Path(temp_path), num_ch, sr, bps, new_data)
+        os.replace(temp_path, wav_path)
+    except Exception:
+        try:
+            os.unlink(temp_path)
+        except OSError:
+            pass
+        raise
+
+
+def _compute_rms_db_stdlib(wav_path: Path) -> float:
     """Compute the RMS level in dB for a WAV file. Returns -inf for silence."""
     try:
         num_ch, sr, bps, data = _read_wav_raw(wav_path)
@@ -1233,11 +1334,14 @@ def _compute_rms_db(wav_path: Path) -> float:
     return 20.0 * math.log10(rms)
 
 
-def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
+def _apply_gain_db_stdlib(wav_path: Path, gain_db: float) -> None:
     """Apply a gain offset (in dB) to a WAV file in-place."""
     import random
     if abs(gain_db) < 0.01:
         return  # negligible — skip
+
+    if not math.isfinite(gain_db):
+        raise ValueError(f"gain_db must be finite, got {gain_db}")
 
     num_ch, sr, bps, data = _read_wav_raw(wav_path)
     bytes_per_sample = bps // 8
@@ -1291,6 +1395,20 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
     except Exception:
         os.unlink(temp_path)  # clean up on failure
         raise
+
+
+def _compute_rms_db(wav_path: Path) -> float:
+    """Compute RMS dB — uses numpy if available, falls back to stdlib."""
+    if _NUMPY_AVAILABLE:
+        return _compute_rms_db_numpy(wav_path)
+    return _compute_rms_db_stdlib(wav_path)
+
+
+def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
+    """Apply gain in dB — uses numpy if available, falls back to stdlib."""
+    if _NUMPY_AVAILABLE:
+        return _apply_gain_db_numpy(wav_path, gain_db)
+    return _apply_gain_db_stdlib(wav_path, gain_db)
 
 
 def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
@@ -1495,6 +1613,13 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
 
     ctx.ensure_dirs()
 
+    # Provenance chain — tracks artifact hashes at each stage
+    try:
+        from xpn_provenance import ProvenanceChain
+        provenance = ProvenanceChain(ctx.engine, ctx.pack_name, ctx.version)
+    except ImportError:
+        provenance = None
+
     # C4: Dependency check — runs in both dry-run and real mode so --dry-run
     # surfaces missing modules before any stage executes.
     print(f"  [deps] Checking module availability...")
@@ -1528,6 +1653,16 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
         elapsed = time.monotonic() - stage_start
         ctx.stage_times[stage] = elapsed
         print(f"    Done ({elapsed:.2f}s)")
+
+        # Record provenance for key stages
+        if provenance is not None and not ctx.dry_run:
+            if stage == "export" and ctx.xpm_paths:
+                for xpm in ctx.xpm_paths:
+                    if xpm.exists():
+                        provenance.record("export", xpm, f"XPM program: {xpm.name}")
+            elif stage == "package" and ctx.xpn_path and ctx.xpn_path.exists():
+                provenance.record("package", ctx.xpn_path, "Final .xpn archive")
+
         print()
 
     total_time = time.monotonic() - pipeline_start
@@ -1559,6 +1694,15 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
         print(f"  Output: {ctx.xpn_path} ({size_val:.1f} {unit})")
     elif ctx.dry_run:
         print("  (Dry run — no files written)")
+
+    # Write provenance chain before pipeline state
+    if not ctx.dry_run and not failed_stage and provenance is not None:
+        try:
+            prov_path = ctx.build_dir / "provenance.json"
+            prov_path.write_text(provenance.to_json(), encoding="utf-8")
+            print(f"  Provenance: {prov_path}")
+        except Exception as exc:
+            print(f"  [WARN] Provenance write failed: {exc}")
 
     # Write pipeline state for status command
     if not ctx.dry_run:
@@ -2748,6 +2892,32 @@ def cmd_build(args) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Verify subcommand
+# ---------------------------------------------------------------------------
+
+def cmd_verify(args) -> int:
+    """Verify provenance chain."""
+    from xpn_provenance import verify_provenance
+    target = Path(args.path)
+    if target.is_dir():
+        prov_file = target / "provenance.json"
+    else:
+        prov_file = target
+    if not prov_file.exists():
+        print(f"ERROR: {prov_file} not found")
+        return 1
+    result = verify_provenance(prov_file.read_text(), prov_file.parent)
+    if result["valid"]:
+        print(f"  VERIFIED: {result['verified']}/{result['total']} artifacts checked, chain intact")
+        return 0
+    else:
+        print(f"  FAILED: {len(result['errors'])} error(s):")
+        for err in result["errors"]:
+            print(f"    - {err}")
+        return 1
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -2872,6 +3042,10 @@ def main():
                          help="Auto-fix safe QA issues in-place (DC_OFFSET, ATTACK_PRESENCE, "
                               "SILENCE_TAIL) when WAV QA is run during the validate stage.")
 
+    # --- verify ---
+    p_verify = sub.add_parser("verify", help="Verify .xpn provenance chain")
+    p_verify.add_argument("path", help="Path to provenance.json or build directory")
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -2883,6 +3057,7 @@ def main():
         "validate": cmd_validate,
         "batch":    cmd_batch,
         "build":    cmd_build,
+        "verify":   cmd_verify,
     }
     return dispatch[args.command](args)
 

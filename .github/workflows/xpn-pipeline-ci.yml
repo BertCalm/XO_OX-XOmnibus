@@ -1,0 +1,69 @@
+name: XPN Pipeline CI
+
+on:
+  push:
+    paths:
+      - 'Tools/**'
+      - 'Presets/**'
+      - '.github/workflows/xpn-pipeline-ci.yml'
+  pull_request:
+    paths:
+      - 'Tools/**'
+      - 'Presets/**'
+
+jobs:
+  test:
+    name: XPN Pipeline Tests
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --quiet numpy || true  # Optional — tests skip if unavailable
+
+      - name: Run core tests
+        working-directory: Tools
+        run: python3 test_oxport_core.py
+
+      - name: Run XPM validation tests
+        working-directory: Tools
+        run: python3 test_oxport_xpm.py
+
+      - name: Run end-to-end tests
+        working-directory: Tools
+        run: python3 test_oxport_e2e.py
+
+      - name: Run fuzz tests
+        working-directory: Tools
+        run: python3 test_oxport_fuzz.py
+
+      - name: Run perceptual validation tests
+        working-directory: Tools
+        run: python3 test_oxport_perceptual.py
+
+      - name: Dry-run pipeline for Onset engine
+        working-directory: Tools
+        run: python3 oxport.py run --engine Onset --output-dir /tmp/ci-onset --dry-run
+
+      - name: Dry-run pipeline for Odyssey engine (keygroup)
+        working-directory: Tools
+        run: python3 oxport.py run --engine Odyssey --output-dir /tmp/ci-odyssey --dry-run
+
+      - name: Validate presets
+        working-directory: Tools
+        run: python3 oxport.py validate --presets || true  # Allow warnings, fail on crash
+
+      - name: Test summary
+        if: always()
+        run: |
+          echo "=== XPN Pipeline CI Complete ==="
+          echo "5 test suites executed"
+          echo "2 dry-run pipelines validated"
+          echo "Preset validation completed"

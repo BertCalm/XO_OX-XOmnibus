@@ -251,6 +251,206 @@ def test_normalize_clipping_protection():
         os.unlink(path)
 
 
+def test_provenance_hash_file():
+    """hash_file must return a deterministic sha256 hex digest."""
+    import hashlib
+    import tempfile
+    import os
+    from pathlib import Path
+    from xpn_provenance import hash_file
+
+    content = b"XO_OX provenance test payload\n" * 100
+    with tempfile.NamedTemporaryFile(delete=False) as f:
+        f.write(content)
+        path = f.name
+    try:
+        digest1 = hash_file(Path(path))
+        digest2 = hash_file(Path(path))
+        # Must be deterministic
+        assert digest1 == digest2, "hash_file is not deterministic"
+        # Must be a valid sha256 hex string (64 chars)
+        assert len(digest1) == 64, f"Expected 64-char hex digest, got {len(digest1)}"
+        assert all(c in "0123456789abcdef" for c in digest1), "Digest contains non-hex chars"
+        # Verify against stdlib directly
+        expected = hashlib.sha256(content).hexdigest()
+        assert digest1 == expected, f"hash_file digest mismatch: {digest1} != {expected}"
+    finally:
+        os.unlink(path)
+
+
+def test_provenance_chain_roundtrip():
+    """ProvenanceChain serializes and verify_provenance confirms valid=True."""
+    import tempfile
+    import os
+    from pathlib import Path
+    from xpn_provenance import ProvenanceChain, verify_provenance
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        base = Path(tmpdir)
+
+        # Write a couple of known files
+        file_a = base / "preset_01.xpm"
+        file_a.write_bytes(b"<XPM><Program>test</Program></XPM>")
+        file_b = base / "pack.xpn"
+        file_b.write_bytes(b"PK\x03\x04" + b"\x00" * 26)  # minimal ZIP-like header
+
+        chain = ProvenanceChain(engine="Onset", pack_name="Test Pack", version="1.0.0")
+        chain.record("export", file_a, "XPM program: preset_01.xpm")
+        chain.record("package", file_b, "Final .xpn archive")
+
+        prov_json = chain.to_json()
+
+        # chain_hash must be present and non-empty
+        import json
+        data = json.loads(prov_json)
+        assert "chain_hash" in data and len(data["chain_hash"]) == 64, \
+            "chain_hash missing or wrong length"
+        assert len(data["chain"]) == 2, f"Expected 2 chain entries, got {len(data['chain'])}"
+
+        result = verify_provenance(prov_json, base)
+        assert result["valid"], f"Expected valid=True, errors: {result['errors']}"
+        assert result["verified"] == 2, f"Expected 2 verified, got {result['verified']}"
+        assert result["total"] == 2, f"Expected total=2, got {result['total']}"
+
+
+def test_provenance_chain_detects_tampering():
+    """verify_provenance returns valid=False when a recorded file is mutated."""
+    import tempfile
+    import os
+    from pathlib import Path
+    from xpn_provenance import ProvenanceChain, verify_provenance
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        base = Path(tmpdir)
+
+        artifact = base / "preset_tampered.xpm"
+        artifact.write_bytes(b"<XPM><Program>original</Program></XPM>")
+
+        chain = ProvenanceChain(engine="Onset", pack_name="Tamper Test", version="1.0.0")
+        chain.record("export", artifact, "XPM program: preset_tampered.xpm")
+
+        prov_json = chain.to_json()
+
+        # Tamper with the file after recording
+        artifact.write_bytes(b"<XPM><Program>TAMPERED</Program></XPM>")
+
+        result = verify_provenance(prov_json, base)
+        assert not result["valid"], "Expected valid=False after tampering"
+        assert len(result["errors"]) >= 1, "Expected at least one error after tampering"
+        # The error should mention the artifact name
+        combined = " ".join(result["errors"])
+        assert "preset_tampered.xpm" in combined, \
+            f"Expected artifact name in errors, got: {result['errors']}"
+
+
+def test_numpy_stdlib_rms_agreement():
+    """Numpy and stdlib RMS must agree within 0.01 dB."""
+    from oxport import (_compute_rms_db_numpy, _compute_rms_db_stdlib,
+                        _write_wav, _NUMPY_AVAILABLE)
+    from pathlib import Path
+    if not _NUMPY_AVAILABLE:
+        print("    [SKIP] numpy not installed")
+        return
+
+    sr = 44100
+    samples = [int(10000 * math.sin(2 * math.pi * 440 * i / sr)) for i in range(sr)]
+    raw = struct.pack(f"<{len(samples)}h", *samples)
+    fd, path = tempfile.mkstemp(suffix=".wav")
+    os.close(fd)
+    try:
+        _write_wav(Path(path), 1, sr, 16, raw)
+        rms_np = _compute_rms_db_numpy(Path(path))
+        rms_std = _compute_rms_db_stdlib(Path(path))
+        assert abs(rms_np - rms_std) < 0.01, (
+            f"Numpy ({rms_np:.4f}) and stdlib ({rms_std:.4f}) RMS disagree by "
+            f"{abs(rms_np - rms_std):.4f} dB"
+        )
+    finally:
+        os.unlink(path)
+
+
+def test_numpy_stdlib_gain_agreement():
+    """Numpy and stdlib gain must produce similar RMS after application."""
+    from oxport import (_apply_gain_db_numpy, _apply_gain_db_stdlib,
+                        _compute_rms_db_stdlib, _write_wav, _read_wav_raw,
+                        _NUMPY_AVAILABLE)
+    from pathlib import Path
+    import shutil
+    if not _NUMPY_AVAILABLE:
+        print("    [SKIP] numpy not installed")
+        return
+
+    sr = 44100
+    samples = [int(5000 * math.sin(2 * math.pi * 440 * i / sr)) for i in range(sr)]
+    raw = struct.pack(f"<{len(samples)}h", *samples)
+
+    fd1, path1 = tempfile.mkstemp(suffix=".wav")
+    os.close(fd1)
+    fd2, path2 = tempfile.mkstemp(suffix=".wav")
+    os.close(fd2)
+    try:
+        _write_wav(Path(path1), 1, sr, 16, raw)
+        _write_wav(Path(path2), 1, sr, 16, raw)
+
+        _apply_gain_db_numpy(Path(path1), 6.0)
+        _apply_gain_db_stdlib(Path(path2), 6.0)
+
+        rms1 = _compute_rms_db_stdlib(Path(path1))
+        rms2 = _compute_rms_db_stdlib(Path(path2))
+        # Allow 0.5 dB tolerance due to different dither random seeds
+        assert abs(rms1 - rms2) < 0.5, (
+            f"Numpy gain ({rms1:.2f}) and stdlib gain ({rms2:.2f}) disagree by "
+            f"{abs(rms1 - rms2):.2f} dB"
+        )
+    finally:
+        os.unlink(path1)
+        os.unlink(path2)
+
+
+def test_numpy_rms_benchmark():
+    """Benchmark numpy vs stdlib RMS and report speedup. Numpy must be >= 2x faster."""
+    import time
+    from oxport import (_compute_rms_db_numpy, _compute_rms_db_stdlib,
+                        _write_wav, _NUMPY_AVAILABLE)
+    from pathlib import Path
+    if not _NUMPY_AVAILABLE:
+        print("    [SKIP] numpy not installed")
+        return
+
+    sr = 44100
+    # Use 5 seconds of audio for a meaningful benchmark
+    samples = [int(10000 * math.sin(2 * math.pi * 440 * i / sr)) for i in range(sr * 5)]
+    raw = struct.pack(f"<{len(samples)}h", *samples)
+    fd, path = tempfile.mkstemp(suffix=".wav")
+    os.close(fd)
+    try:
+        _write_wav(Path(path), 1, sr, 16, raw)
+
+        # Warm up
+        _compute_rms_db_numpy(Path(path))
+        _compute_rms_db_stdlib(Path(path))
+
+        n_iters = 10
+        t0 = time.perf_counter()
+        for _ in range(n_iters):
+            _compute_rms_db_numpy(Path(path))
+        numpy_time = (time.perf_counter() - t0) / n_iters
+
+        t0 = time.perf_counter()
+        for _ in range(n_iters):
+            _compute_rms_db_stdlib(Path(path))
+        stdlib_time = (time.perf_counter() - t0) / n_iters
+
+        speedup = stdlib_time / numpy_time if numpy_time > 0 else float("inf")
+        print(f"    RMS benchmark: numpy={numpy_time*1000:.2f}ms  stdlib={stdlib_time*1000:.2f}ms  speedup={speedup:.1f}x")
+        assert speedup >= 2.0, (
+            f"Expected numpy to be >= 2x faster for RMS, got {speedup:.1f}x "
+            f"(numpy={numpy_time*1000:.2f}ms, stdlib={stdlib_time*1000:.2f}ms)"
+        )
+    finally:
+        os.unlink(path)
+
+
 if __name__ == "__main__":
     tests = [
         test_compute_rms_db_sine,
@@ -262,6 +462,12 @@ if __name__ == "__main__":
         test_compute_rms_db_silence_returns_neginf,
         test_apply_gain_32bit_roundtrip,
         test_normalize_clipping_protection,
+        test_provenance_hash_file,
+        test_provenance_chain_roundtrip,
+        test_provenance_chain_detects_tampering,
+        test_numpy_stdlib_rms_agreement,
+        test_numpy_stdlib_gain_agreement,
+        test_numpy_rms_benchmark,
     ]
     passed = 0
     failed = 0
