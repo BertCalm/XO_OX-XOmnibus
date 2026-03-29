@@ -181,7 +181,15 @@ enum Season: String, CaseIterable, Codable {
         case .winterDeep:
             // Winter spans year boundary — if month is 12, end is Feb of next year; else same year
             let endYear = month == 12 ? year + 1 : year
-            endComponents = DateComponents(year: endYear, month: 2, day: 28, hour: 23, minute: 59)
+            // Compute the last day of February dynamically to handle leap years
+            let lastDayOfFeb: Int
+            if let febRange = calendar.range(of: .day, in: .month,
+                                              for: calendar.date(from: DateComponents(year: endYear, month: 2))!) {
+                lastDayOfFeb = febRange.upperBound - 1
+            } else {
+                lastDayOfFeb = 28
+            }
+            endComponents = DateComponents(year: endYear, month: 2, day: lastDayOfFeb, hour: 23, minute: 59)
         }
         guard let endDate = calendar.date(from: endComponents) else { return 0 }
         return max(0, calendar.dateComponents([.day], from: date, to: endDate).day ?? 0)

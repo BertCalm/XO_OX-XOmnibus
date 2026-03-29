@@ -374,12 +374,12 @@ final class CommunityEventManager: ObservableObject {
     // MARK: - Event Generation (Deterministic)
 
     /// Generate the expected events that should be active on a given calendar day.
-    /// Seed: (year × 1000 + dayOfYear) XOR 0x434F4D4D ("COMM")
-    /// The result is stable within a day and identical for all players on the same device date.
+    ///
+    /// Each event window is seeded from its own start-day (year × 1000 + windowStartDayOfYear XOR baseSeed),
+    /// NOT from the current day. This guarantees an event's type, duration, and template are identical
+    /// regardless of which day `generateEvents` is called — Day 100 and Day 105 both produce the
+    /// same event for a window starting on Day 100.
     func generateEvents(year: Int, dayOfYear: Int) -> [CommunityEvent] {
-        let seed = UInt32(truncatingIfNeeded: year &* 1000 &+ dayOfYear) ^ Self.baseSeed
-        var rng = SeededRandom(seed: seed)
-
         // We generate a rolling window: look back 14 days and forward 14 days.
         // Events that fall within the active window are returned.
         let calendar = Calendar.current
@@ -393,6 +393,12 @@ final class CommunityEventManager: ObservableObject {
         let windowEnd = cursor.addingTimeInterval(TimeInterval(28 * 86400))
 
         while cursor < windowEnd {
+            // Seed from this window's START day — stable across all calls within the window.
+            let windowStartDayOfYear = calendar.ordinality(of: .day, in: .year, for: cursor) ?? 1
+            let windowYear = calendar.component(.year, from: cursor)
+            let windowSeed = UInt32(truncatingIfNeeded: windowYear &* 1000 &+ windowStartDayOfYear) ^ Self.baseSeed
+            var rng = SeededRandom(seed: windowSeed)
+
             // Pick event type from seed
             let typeIndex = Int(rng.next() % UInt32(CommunityEventType.allCases.count))
             let type = CommunityEventType.allCases[typeIndex]
@@ -410,7 +416,7 @@ final class CommunityEventManager: ObservableObject {
             let targetMultiplier = 10 + Int(rng.next() % 11)  // 10x – 20x single player
             let goalTarget = singlePlayerTotal * targetMultiplier
 
-            let eventId = "community_\(type.rawValue)_\(year)_\(calendar.ordinality(of: .day, in: .year, for: cursor) ?? 0)"
+            let eventId = "community_\(type.rawValue)_\(windowYear)_\(windowStartDayOfYear)"
             let endDate = cursor.addingTimeInterval(TimeInterval(duration * 86400))
 
             let event = CommunityEvent(

@@ -272,6 +272,12 @@ final class ReefAcousticsManager: ObservableObject {
     private let crossfadeDuration: TimeInterval = 2.0
     private let interpolationStepInterval: TimeInterval = 0.05   // 20 fps update rate
 
+    // MARK: - Lifecycle
+
+    deinit {
+        interpolationTimer?.invalidate()
+    }
+
     // MARK: - Recalculation
 
     /// Recompute the acoustic profile from the current reef state.
@@ -410,22 +416,27 @@ final class ReefAcousticsManager: ObservableObject {
             resonances.append(sumFreq.clamped(to: 80...8000))
         }
 
-        // Ensure at least 3, at most 5 resonances
+        // Ensure at least 3, at most 5 resonances — use deterministic fill values
+        let fillFreqs: [Float] = [330, 660, 990]
+        var fillIndex = 0
         while resonances.count < 3 {
-            resonances.append(Float.random(in: 200...1000))
+            resonances.append(fillFreqs[fillIndex % fillFreqs.count])
+            fillIndex += 1
         }
 
         return Array(resonances.prefix(5))
     }
 
     private func characteristicFrequency(for role: MusicalRole) -> Float {
+        // Deterministic: return the midpoint of each role's frequency range.
+        // The diversity spread and coupling boost add variation without randomness.
         switch role {
-        case .bass:    return Float.random(in: 80...160)
-        case .rhythm:  return Float.random(in: 200...400)
-        case .harmony: return Float.random(in: 300...600)
-        case .melody:  return Float.random(in: 600...1200)
-        case .texture: return Float.random(in: 1000...3000)
-        case .effect:  return Float.random(in: 2000...6000)
+        case .bass:    return 120.0
+        case .rhythm:  return 300.0
+        case .harmony: return 450.0
+        case .melody:  return 900.0
+        case .texture: return 2000.0
+        case .effect:  return 4000.0
         }
     }
 
@@ -453,16 +464,21 @@ final class ReefAcousticsManager: ObservableObject {
             guard let self else { timer.invalidate(); return }
 
             self.interpolationProgress = min(1.0, self.interpolationProgress + stepSize)
-            self.currentProfile = interpolate(
+            let newProfile = interpolate(
                 from: self.currentProfile,
                 to: self.targetProfile,
                 t: smoothstep(self.interpolationProgress)
             )
+            let atTarget = self.interpolationProgress >= 1.0
+            let finalProfile = atTarget ? self.targetProfile : newProfile
 
-            if self.interpolationProgress >= 1.0 {
-                self.currentProfile = self.targetProfile
-                timer.invalidate()
-                self.interpolationTimer = nil
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                self.currentProfile = finalProfile
+                if atTarget {
+                    timer.invalidate()
+                    self.interpolationTimer = nil
+                }
             }
         }
     }

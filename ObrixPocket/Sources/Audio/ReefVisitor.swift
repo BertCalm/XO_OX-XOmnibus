@@ -160,9 +160,8 @@ struct ReefCardComparison {
     var divesDifference: Int { myDivesCompleted - visited.reefStats.divesCompleted }
 
     /// Unique subtypes in the visited reef that the local player does not have.
-    var subtypesTheyHaveThatYouDont: [String] {
-        let mySubtypes = Set<String>() // Caller supplies their own list if needed
-        return visited.specimenSummaries.map(\.subtypeId).filter { !mySubtypes.contains($0) }
+    func subtypesTheyHaveThatYouDont(mySubtypes: Set<String>) -> [String] {
+        visited.specimenSummaries.map(\.subtypeId).filter { !mySubtypes.contains($0) }
     }
 
     /// One-line human-readable summary.
@@ -433,10 +432,10 @@ final class ReefVisitorManager: ObservableObject {
     private static func currentSeason() -> String {
         let month = Calendar.current.component(.month, from: Date())
         switch month {
-        case 3...5:  return "Spring"
-        case 6...8:  return "Summer"
-        case 9...11: return "Autumn"
-        default:     return "Winter"
+        case 3...5:  return "springBloom"
+        case 6...8:  return "summerSurge"
+        case 9...11: return "autumnDrift"
+        default:     return "winterDeep"
         }
     }
 }

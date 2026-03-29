@@ -273,6 +273,10 @@ struct ActProgress: Codable {
 /// Persistence: `UserDefaults` for the progress record; survives app restart.
 final class NarrativeArcManager: ObservableObject {
 
+    // MARK: - Singleton
+
+    static let shared = NarrativeArcManager()
+
     // MARK: - Published State
 
     @Published var currentAct: NarrativeAct = .theFirstNote
@@ -342,8 +346,8 @@ final class NarrativeArcManager: ObservableObject {
 
     /// Record a coupling type used for the first time.
     func recordCouplingType(_ type: String) {
-        // Use a hash of the coupling type name as a stable int for comparison
-        fire(milestoneType: .couplingType, value: abs(type.hashValue) % 1_000_000)
+        // Any coupling type triggers the milestone — use value: 1 for determinism
+        fire(milestoneType: .couplingType, value: 1)
     }
 
     /// Record an arrangement being created and saved.
@@ -572,7 +576,7 @@ final class NarrativeArcManager: ObservableObject {
             title: "The Reef Turns",
             narrativeText: "The water changed before anything else did. A different temperature, a different light. The specimens noticed before you did. They always do.",
             rewardDescription: "Seasonal exclusive specimens begin appearing.",
-            isActRequired: true
+            isActRequired: false
         ))
 
         list.append(NarrativeMilestone(
@@ -750,7 +754,7 @@ final class NarrativeArcManager: ObservableObject {
             id: "a5_full_biome_complete",
             act: .theEndlessOcean,
             type: .biomeDiscovery,
-            targetValue: 6,
+            targetValue: 4,
             title: "The Whole Map",
             narrativeText: "You have named every zone, heard every silence. The map is complete. And yet — the ocean keeps offering something unmapped. It always will.",
             rewardDescription: "The complete collection badge unlocks. The reef displays your full history.",

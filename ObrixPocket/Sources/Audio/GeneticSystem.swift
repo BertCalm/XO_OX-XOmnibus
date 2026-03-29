@@ -110,6 +110,7 @@ struct SpecimenGenome: Codable, Identifiable {
 
     /// Overall genetic uniqueness score (0-1). Higher = more unique.
     var uniquenessScore: Float {
+        guard !genes.isEmpty else { return 0 }
         let mutationFactor = Float(mutationCount) / Float(genes.count)
         let generationFactor = min(1, Float(generation) / 5.0)
         let expressionVariety = Set(genes.map { $0.expression }).count
@@ -306,6 +307,9 @@ final class GeneticManager: ObservableObject {
                 description: "New genetic combination in Gen-\(genome.generation)"
             )
             discoveryLog.append(discovery)
+            if discoveryLog.count > 500 {
+                discoveryLog = Array(discoveryLog.suffix(500))
+            }
         }
     }
 

@@ -254,8 +254,11 @@ final class CollaborativeDiveManager: NSObject, ObservableObject {
     // MARK: - Guest Flow
 
     /// Guest flow — step 1: start browsing for nearby host sessions.
-    func browseForSessions() {
+    /// Specimens must be provided upfront so the browser delegate has them when a peer is found.
+    func browseForSessions(withSpecimens specimens: [DiveSpecimen]) {
+        precondition(specimens.count <= 3, "Maximum 3 specimens per player")
         isHost = false
+        guestSpecimens = specimens
         sessionState = .waiting
         onStateChange?(.waiting)
 
@@ -452,66 +455,71 @@ final class CollaborativeDiveManager: NSObject, ObservableObject {
     }
 
     private func handleMessage(_ message: CollabNetworkMessage) {
-        switch message.type {
+        // MCSessionDelegate callbacks arrive on a private MPC background queue.
+        // All state mutations must happen on the main thread.
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            switch message.type {
 
-        case .sync:
-            guard let p = decode(SyncPayload.self, from: message.payload) else { return }
-            remotePlayerId = p.playerName
-            if !isHost { sessionId = p.sessionId }
-            DispatchQueue.main.async { self.connectedPeer = p.playerName }
-            logEvent(type: .peerConnected, detail: "\(p.playerName) joined")
-            DispatchQueue.main.async { self.sessionState = .syncing }
-            onStateChange?(.syncing)
-            // Guest sends their specimens immediately upon receiving sync from host
-            if !isHost {
-                send(type: .specimenData,
-                     payload: SpecimenDataPayload(specimens: guestSpecimens))
-            } else {
-                // Host acknowledges and sends own specimens
-                send(type: .specimenData,
-                     payload: SpecimenDataPayload(specimens: hostSpecimens))
-                send(type: .sync,
-                     payload: SyncPayload(playerName: localPlayerId, sessionId: sessionId))
+            case .sync:
+                guard let p = self.decode(SyncPayload.self, from: message.payload) else { return }
+                self.remotePlayerId = p.playerName
+                if !self.isHost { self.sessionId = p.sessionId }
+                self.connectedPeer = p.playerName
+                self.logEvent(type: .peerConnected, detail: "\(p.playerName) joined")
+                self.sessionState = .syncing
+                self.onStateChange?(.syncing)
+                // Guest sends their specimens immediately upon receiving sync from host
+                if !self.isHost {
+                    self.send(type: .specimenData,
+                              payload: SpecimenDataPayload(specimens: self.guestSpecimens))
+                } else {
+                    // Host acknowledges and sends own specimens
+                    self.send(type: .specimenData,
+                              payload: SpecimenDataPayload(specimens: self.hostSpecimens))
+                    self.send(type: .sync,
+                              payload: SyncPayload(playerName: self.localPlayerId, sessionId: self.sessionId))
+                }
+
+            case .specimenData:
+                guard let p = self.decode(SpecimenDataPayload.self, from: message.payload) else { return }
+                if self.isHost {
+                    self.guestSpecimens = Array(p.specimens.prefix(3))
+                } else {
+                    self.hostSpecimens = Array(p.specimens.prefix(3))
+                }
+                self.logEvent(type: .specimensSynced,
+                              detail: "\(p.specimens.count) specimens received from \(message.senderId)")
+                // Once both sides have exchanged specimens, mark ready to start
+                if !self.hostSpecimens.isEmpty && !self.guestSpecimens.isEmpty {
+                    self.sessionState = .syncing
+                    self.onStateChange?(.syncing)
+                }
+
+            case .depthUpdate:
+                guard let p = self.decode(DepthUpdatePayload.self, from: message.payload) else { return }
+                self.currentDepth = p.depth
+
+            case .scoreUpdate:
+                guard let p = self.decode(ScoreUpdatePayload.self, from: message.payload) else { return }
+                self.combinedScore = p.score
+
+            case .catchEvent:
+                guard let p = self.decode(CatchEventPayload.self, from: message.payload) else { return }
+                self.catches.append(p.caught)
+                self.onCatchEvent?(p.caught)
+
+            case .couplingDiscovery:
+                guard let p = self.decode(CouplingDiscoveryPayload.self, from: message.payload) else { return }
+                self.couplingDiscoveries.append(p.discovery)
+                self.onCouplingDiscovery?(p.discovery)
+
+            case .diveEnd:
+                self.finaliseDive(deepestZone: "Unknown", collaborative: true)
+
+            case .heartbeat:
+                break  // Acknowledged silently
             }
-
-        case .specimenData:
-            guard let p = decode(SpecimenDataPayload.self, from: message.payload) else { return }
-            if isHost {
-                guestSpecimens = Array(p.specimens.prefix(3))
-            } else {
-                hostSpecimens = Array(p.specimens.prefix(3))
-            }
-            logEvent(type: .specimensSynced,
-                     detail: "\(p.specimens.count) specimens received from \(message.senderId)")
-            // Once both sides have exchanged specimens, mark ready to start
-            if !hostSpecimens.isEmpty && !guestSpecimens.isEmpty {
-                DispatchQueue.main.async { self.sessionState = .syncing }
-                onStateChange?(.syncing)
-            }
-
-        case .depthUpdate:
-            guard let p = decode(DepthUpdatePayload.self, from: message.payload) else { return }
-            DispatchQueue.main.async { self.currentDepth = p.depth }
-
-        case .scoreUpdate:
-            guard let p = decode(ScoreUpdatePayload.self, from: message.payload) else { return }
-            DispatchQueue.main.async { self.combinedScore = p.score }
-
-        case .catchEvent:
-            guard let p = decode(CatchEventPayload.self, from: message.payload) else { return }
-            catches.append(p.caught)
-            DispatchQueue.main.async { self.onCatchEvent?(p.caught) }
-
-        case .couplingDiscovery:
-            guard let p = decode(CouplingDiscoveryPayload.self, from: message.payload) else { return }
-            couplingDiscoveries.append(p.discovery)
-            DispatchQueue.main.async { self.onCouplingDiscovery?(p.discovery) }
-
-        case .diveEnd:
-            finaliseDive(deepestZone: "Unknown", collaborative: true)
-
-        case .heartbeat:
-            break  // Acknowledged silently
         }
     }
 
@@ -561,8 +569,8 @@ extension CollaborativeDiveManager: MCSessionDelegate {
                 }
                 self.connectedPeerID = nil
                 self.connectedPeer = nil
+                self.logEvent(type: .peerDisconnected, detail: "\(peerID.displayName) disconnected")
             }
-            logEvent(type: .peerDisconnected, detail: "\(peerID.displayName) disconnected")
 
         case .connecting:
             break

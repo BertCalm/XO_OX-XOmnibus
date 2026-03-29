@@ -80,12 +80,13 @@ enum AchievementRequirement: Codable {
     case totalPlayTime(hours: Int)
     case exportedMIDI(count: Int)
     case tradesCompleted(count: Int)
+    case diveDepth(depth: Int)
     case secretCondition(id: String)
 
     // MARK: Codable
 
     private enum CodingKeys: String, CodingKey {
-        case type, count, gen, days, score, seconds, hours, id
+        case type, count, gen, days, score, seconds, hours, id, depth
     }
 
     func encode(to encoder: Encoder) throws {
@@ -133,6 +134,9 @@ enum AchievementRequirement: Codable {
         case .tradesCompleted(let count):
             try container.encode("tradesCompleted", forKey: .type)
             try container.encode(count, forKey: .count)
+        case .diveDepth(let depth):
+            try container.encode("diveDepth", forKey: .type)
+            try container.encode(depth, forKey: .depth)
         case .secretCondition(let id):
             try container.encode("secretCondition", forKey: .type)
             try container.encode(id, forKey: .id)
@@ -157,6 +161,7 @@ enum AchievementRequirement: Codable {
         case "totalPlayTime":      self = .totalPlayTime(hours: try container.decode(Int.self, forKey: .hours))
         case "exportedMIDI":       self = .exportedMIDI(count: try container.decode(Int.self, forKey: .count))
         case "tradesCompleted":    self = .tradesCompleted(count: try container.decode(Int.self, forKey: .count))
+        case "diveDepth":          self = .diveDepth(depth: try container.decode(Int.self, forKey: .depth))
         case "secretCondition":    self = .secretCondition(id: try container.decode(String.self, forKey: .id))
         default:                   self = .secretCondition(id: "unknown")
         }
@@ -495,7 +500,7 @@ final class AchievementManager: ObservableObject {
                 title: "The Reef Complete",
                 description: "Collect every specimen subtype in the full catalog.",
                 category: .collection, tier: .mythic,
-                requirement: .uniqueSubtypes(count: 74),
+                requirement: .uniqueSubtypes(count: 24),
                 isCompleted: false, completedDate: nil,
                 reward: AchievementReward(description: "Mythic reef border + XOceanus title", bonusXP: 500),
                 isSecret: false

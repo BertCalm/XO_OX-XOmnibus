@@ -91,7 +91,7 @@ enum DiscoveryCondition: Codable, Equatable {
         case "reefAge":
             self = .reefAge(days: try container.decode(Int.self, forKey: .days))
         default:
-            self = .reachBiome(biome: "surface")
+            self = .reachBiome(biome: "sunlit")
         }
     }
 }
@@ -249,7 +249,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Twelve Tones and the Sea",
                 text: "The ancients say twelve frequencies fell from the sky and struck the ocean in sequence. Where each struck, a new biome formed. The coldest tone sank deepest. The brightest tone skimmed the surface and became light. Neither has stopped vibrating since.",
                 category: .origins,
-                discoveryCondition: .reachBiome(biome: "surface"),
+                discoveryCondition: .reachBiome(biome: "sunlit"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -265,7 +265,7 @@ final class LoreCodex: ObservableObject {
                 title: "Why the Reef Sings at Night",
                 text: "When the surface light disappears, the deeper frequencies are no longer masked. Specimens that live below 200 meters have never experienced silence — the pressure itself carries information. The Reef sings at night because nothing is drowning it out.",
                 category: .origins,
-                discoveryCondition: .seasonFirst(season: "Night"),
+                discoveryCondition: .seasonFirst(season: "winterDeep"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -286,7 +286,7 @@ final class LoreCodex: ObservableObject {
                 title: "On OBRIX, the Architect",
                 text: "OBRIX was the first specimen to understand that a wall is also a door. It builds structures from sound not to contain but to resonate — each brick placed to maximise the vibration of the whole. Architects who have studied OBRIX say its coral formations follow mathematical principles not discovered until the 21st century.",
                 category: .specimens,
-                discoveryCondition: .catchSpecimen(subtypeId: "obrix-source"),
+                discoveryCondition: .catchSpecimen(subtypeId: "polyblep-saw"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -294,7 +294,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Oxytocin Bond",
                 text: "OXYTOCIN is the rarest of the love-triangle specimens, appearing only where two already-bonded creatures share a current. Its song contains three voices that should be in conflict. They are not. Researchers who record OXYTOCIN in the wild report that the equipment seems reluctant to stop.",
                 category: .specimens,
-                discoveryCondition: .catchSpecimen(subtypeId: "oxytocin-voice"),
+                discoveryCondition: .catchSpecimen(subtypeId: "lfo-sine"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -302,7 +302,7 @@ final class LoreCodex: ObservableObject {
                 title: "What ONSET Remembers",
                 text: "ONSET is a percussion creature — it does not sustain, it initiates. But every transient it produces carries the full acoustic memory of what preceded it. Tap a rock; ONSET will know what the rock was before it was a rock. Its attacks are beginnings that contain everything that came before.",
                 category: .specimens,
-                discoveryCondition: .catchSpecimen(subtypeId: "onset-perc"),
+                discoveryCondition: .catchSpecimen(subtypeId: "adsr-fast"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -310,7 +310,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Trench Voice (OCEANDEEP)",
                 text: "OCEANDEEP has never been seen in the shallows. It exists below the layer where light stops, where pressure would crush most synthesizers flat. Its frequency range is 50 to 800 Hz — not by limitation but by design. Everything above that range is noise to OCEANDEEP. Everything within it is a universe.",
                 category: .specimens,
-                discoveryCondition: .reachBiome(biome: "abyss"),
+                discoveryCondition: .reachBiome(biome: "abyssal"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -318,7 +318,7 @@ final class LoreCodex: ObservableObject {
                 title: "OSMOSIS at the Membrane",
                 text: "OSMOSIS does not produce sound. It listens to the world outside the Reef and translates it inward. Place it at the boundary of any coupling chain and it will bring the outside in — not as an imitation but as a transformation. It is the Reef's ear turned outward.",
                 category: .specimens,
-                discoveryCondition: .catchSpecimen(subtypeId: "osmosis-membrane"),
+                discoveryCondition: .catchSpecimen(subtypeId: "svf-lp"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -326,7 +326,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Twin Hammers (OUIE)",
                 text: "OUIE hunts in pairs. Its two voices are never identical — one carries the melody, one carries the meaning, and which is which changes every sixteen bars. When OUIE enters a state of STRIFE its voices ring-modulate against each other and the sound is the color of deep water. In LOVE they lock to harmonic unisons and the entire Reef calms.",
                 category: .specimens,
-                discoveryCondition: .catchSpecimen(subtypeId: "ouie-hammer"),
+                discoveryCondition: .catchSpecimen(subtypeId: "fm-basic"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -342,7 +342,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Silk Knot (ORBWEAVE)",
                 text: "ORBWEAVE builds invisible topological structures between other specimens — trefoil knots, figure-eight tangles, torus wrappings — made entirely of phase relationships. You cannot see an ORBWEAVE web. You can only hear it when you pull one of the strands and all the others vibrate.",
                 category: .specimens,
-                discoveryCondition: .breedCombination(parentA: "orbweave-knot", parentB: "overlap-fdn"),
+                discoveryCondition: .breedCombination(parentA: "feedback", parentB: "reverb-hall"),
                 isDiscovered: false
             ),
         ]
@@ -355,7 +355,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Surface Layer",
                 text: "At the Surface, light and sound travel in the same direction. Specimens here are shaped by exposure — bright frequencies, fast attacks, the constant pressure of the sky above. Every Surface specimen knows what it means to be heard from a distance. This is both gift and cost.",
                 category: .deepOcean,
-                discoveryCondition: .reachBiome(biome: "surface"),
+                discoveryCondition: .reachBiome(biome: "sunlit"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -400,7 +400,7 @@ final class LoreCodex: ObservableObject {
                 title: "Why Specimens Wire",
                 text: "No specimen is complete. Each carries a frequency range it cannot access alone — a register too high, a timbre too dark, a modulation too subtle for its own architecture. When two specimens wire, they are not merging. They are each gaining access to a room they already knew was there but could never open from the inside.",
                 category: .coupling,
-                discoveryCondition: .achievementUnlocked(achievementId: "first_wire"),
+                discoveryCondition: .achievementUnlocked(achievementId: "first_offspring"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -408,7 +408,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Parasite and the Host",
                 text: "Not all coupling is benevolent. The Parasite configuration allows one specimen to feed on another's energy — accumulating stress in the host over time, redirecting amplitude toward its own systems. What makes this unusual is that the host often sounds better for it, at least at first. The Reef is not sentimental about this.",
                 category: .coupling,
-                discoveryCondition: .achievementUnlocked(achievementId: "first_chain"),
+                discoveryCondition: .breedCombination(parentA: "shaper-hard", parentB: "feedback"),
                 isDiscovered: false
             ),
             LoreFragment(
@@ -416,7 +416,7 @@ final class LoreCodex: ObservableObject {
                 title: "The Symbiote Exchange",
                 text: "In the Symbiote configuration, coupling is mutual amplification. The noise of one specimen becomes the FM depth of another. Each gains texture from the other's character. The relationship has been documented in coral biology for centuries under a different name. The Reef rediscovered it through sound.",
                 category: .coupling,
-                discoveryCondition: .breedCombination(parentA: "obrix-source", parentB: "osmosis-membrane"),
+                discoveryCondition: .breedCombination(parentA: "polyblep-saw", parentB: "svf-lp"),
                 isDiscovered: false
             ),
             LoreFragment(

@@ -93,8 +93,8 @@ final class NurseryManager: ObservableObject {
             // Prediction range: blend ± uncertainty
             let mid = (valA + valB) / 2
             let spread = abs(valA - valB) / 2 + 0.1  // Minimum uncertainty of 0.1
-            let min = max(0, mid - spread)
-            let max = min(1, mid + spread)
+            let minVal = Swift.max(0, mid - spread)
+            let maxVal = Swift.min(1, mid + spread)
 
             // Likely expression based on parent expressions
             let exprA = geneA?.expression ?? .dominant
@@ -112,8 +112,8 @@ final class NurseryManager: ObservableObject {
 
             return TraitPrediction(
                 trait: trait,
-                minValue: min,
-                maxValue: max,
+                minValue: minVal,
+                maxValue: maxVal,
                 likelyExpression: likelyExpr,
                 fromParent: fromParent
             )

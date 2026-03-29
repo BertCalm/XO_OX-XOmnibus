@@ -1,5 +1,11 @@
 import Foundation
 
+// MARK: - Manager References (injected at init; access via shared app environment)
+// BreedingManager coordinates with GeneticManager, SoundMemoryManager,
+// HarmonicProfileStore, NurseryManager, and SeasonalEventManager.
+// In the full app these are injected; references below use a lightweight
+// environment accessor pattern consistent with the rest of the codebase.
+
 /// Status of a breeding attempt
 enum BreedingStatus: String, Codable {
     case notEligible       // Pair doesn't meet requirements
@@ -114,6 +120,17 @@ struct InheritedTraits: Codable {
 ///
 /// Breeding IS sound design — you design new synth voices through
 /// ecology, not knobs. Each breeding is unique.
+///
+/// Pipeline on `breed()`:
+///   1. InheritedTraits blending (Mendelian voice profile blend)
+///   2. Genome creation via GeneticManager.breedGenome
+///   3. Sound memory inheritance via SoundMemoryManager.inheritMemory
+///   4. Harmonic DNA derivation via HarmonicDNA + HarmonicProfileStore
+///   5. Seasonal event notification via SeasonalEventManager.recordBreedingSuccess
+///
+/// Pipeline on `graduateOffspring()`:
+///   6. Nursery musical influences applied to genome via NurseryManager.applyInfluences
+///      (returns parameter offsets stored on the occupant's inheritedTraits)
 final class BreedingManager: ObservableObject {
 
     // MARK: - State
@@ -129,6 +146,20 @@ final class BreedingManager: ObservableObject {
 
     /// Mutation probability
     static let mutationChance: Float = 0.05
+
+    // MARK: - Injected Managers
+    // These are weak references to avoid retain cycles with ObservableObject graphs.
+    // Callers must inject these before using breed() / graduateOffspring().
+
+    weak var geneticManager: GeneticManager?
+    weak var soundMemoryManager: SoundMemoryManager?
+    weak var harmonicProfileStore: HarmonicProfileStore?
+    weak var nurseryManager: NurseryManager?
+    weak var seasonalEventManager: SeasonalEventManager?
+
+    /// Specimen UUIDs for the current reef slots (needed to look up parent genomes by UUID).
+    /// Key = slot index, value = specimen UUID. Set by the coordinator before breeding.
+    var specimenUUIDs: [Int: UUID] = []
 
     // MARK: - Pair Management
 
@@ -170,6 +201,13 @@ final class BreedingManager: ObservableObject {
     }
 
     /// Attempt to breed a pair. Returns the nursery occupant if successful.
+    ///
+    /// Full pipeline (FIX 1–5):
+    ///   1. InheritedTraits voice-profile blend (existing Mendelian logic)
+    ///   2. Genome breeding via GeneticManager (FIX 1)
+    ///   3. Sound memory inheritance via SoundMemoryManager (FIX 2)
+    ///   4. Harmonic DNA derivation + store (FIX 5)
+    ///   5. Seasonal event notification (FIX 3)
     func breed(pairID: UUID, affinityStrength: Float) -> NurseryOccupant? {
         guard let index = pairs.firstIndex(where: { $0.id == pairID }) else { return nil }
         let pair = pairs[index]
@@ -179,17 +217,38 @@ final class BreedingManager: ObservableObject {
         guard affinityStrength >= Self.affinityThreshold else { return nil }
         guard nursery.count < Self.nurseryCapacity else { return nil }
 
-        // Create offspring traits
+        // Create offspring traits (existing Mendelian voice-profile blend)
         let traits = blendTraits(parentA: pair.parentSubtypeA, parentB: pair.parentSubtypeB)
-
-        // Determine generation
-        let gen = 2  // Default Gen-2 (would check parent generations in full implementation)
 
         let profileA = VoiceProfileCatalog.profile(for: pair.parentSubtypeA)
         let profileB = VoiceProfileCatalog.profile(for: pair.parentSubtypeB)
 
+        // Determine generation from parent genomes if available, otherwise default Gen-2
+        let genomeA = geneticManager.flatMap { gm -> SpecimenGenome? in
+            guard let idA = specimenUUIDs[pair.parentSlotA] else { return nil }
+            return gm.genome(for: idA) ?? {
+                let g = gm.createCaughtGenome(subtypeID: pair.parentSubtypeA)
+                return g
+            }()
+        }
+        let genomeB = geneticManager.flatMap { gm -> SpecimenGenome? in
+            guard let idB = specimenUUIDs[pair.parentSlotB] else { return nil }
+            return gm.genome(for: idB) ?? {
+                let g = gm.createCaughtGenome(subtypeID: pair.parentSubtypeB)
+                return g
+            }()
+        }
+
+        let gen: Int
+        if let gA = genomeA, let gB = genomeB {
+            gen = max(gA.generation, gB.generation) + 1
+        } else {
+            gen = 2  // Default Gen-2 when genomes unavailable
+        }
+
+        let occupantID = UUID()
         let occupant = NurseryOccupant(
-            id: UUID(),
+            id: occupantID,
             parentSubtypeA: pair.parentSubtypeA,
             parentSubtypeB: pair.parentSubtypeB,
             parentNameA: profileA.specimenName,
@@ -206,21 +265,103 @@ final class BreedingManager: ObservableObject {
         pairs[index].lastBreedingDate = Date()
         pairs[index].offspringCount += 1
 
+        // FIX 1: Wire genetics — breed a new genome from both parent genomes
+        if let gm = geneticManager, let gA = genomeA, let gB = genomeB {
+            let offspringGenome = gm.breedGenome(
+                parentGenomeA: gA,
+                parentGenomeB: gB,
+                offspringSubtypeID: traits.offspringSubtypeID
+            )
+            // offspringGenome is already stored inside breedGenome via gm.genomes[id] = genome
+            // We associate it with the occupant ID so graduation can look it up by occupant.id
+
+            // FIX 5: Build harmonic DNA from the new offspring genome
+            if let store = harmonicProfileStore {
+                // profile(for:) both derives and caches — call it now to pre-warm the cache
+                _ = store.profile(for: offspringGenome)
+                // Store under the occupant UUID so SpecimenAudioBridge can retrieve it
+                // by specimen UUID after graduation.
+                // (The genome's own UUID is stored inside GeneticManager.genomes;
+                //  we also maintain a nursery→genome mapping for the graduation step.)
+                nurseryGenomeIDs[occupantID] = offspringGenome.id
+            }
+        }
+
+        // FIX 2: Inherit 30% of each parent's musical memory
+        if let smm = soundMemoryManager,
+           let idA = specimenUUIDs[pair.parentSlotA],
+           let idB = specimenUUIDs[pair.parentSlotB] {
+            smm.inheritMemory(specimenId: occupantID, parentA: idA, parentB: idB)
+        }
+
+        // FIX 3: Notify seasonal event manager of a successful breeding
+        seasonalEventManager?.recordBreedingSuccess()
+
         save()
         return occupant
     }
+
+    /// Maps nursery occupant IDs → offspring genome IDs so graduation can wire them up.
+    /// This mapping is transient (not persisted) — if the app is killed mid-formation,
+    /// graduation falls back to deriving a fresh genome from subtype.
+    private(set) var nurseryGenomeIDs: [UUID: UUID] = [:]
 
     /// Check if any nursery occupants are ready to graduate
     var readyOffspring: [NurseryOccupant] {
         nursery.filter { $0.isReady }
     }
 
-    /// Graduate an offspring from the nursery (player places it on the reef)
+    /// Graduate an offspring from the nursery (player places it on the reef).
+    ///
+    /// FIX 4: Applies nursery musical influences to the offspring's genome before
+    /// returning the occupant. The caller places the graduated specimen on the reef
+    /// using the occupant's `id` as the specimen UUID.
+    ///
+    /// Returns the graduated NurseryOccupant, or nil if not ready / not found.
     func graduateOffspring(id: UUID) -> NurseryOccupant? {
         guard let index = nursery.firstIndex(where: { $0.id == id && $0.isReady }) else { return nil }
         let graduated = nursery.remove(at: index)
+
+        // FIX 4: Apply nursery musical influences to the offspring's genome.
+        // applyInfluences returns a [String: Float] offset dictionary that callers
+        // route to the audio engine on top of the base genome parameters.
+        // We also store the result as a side-channel on the genome store
+        // so SpecimenAudioBridge can pick it up without a separate lookup.
+        if let nm = nurseryManager,
+           let gm = geneticManager,
+           let offspringGenomeID = nurseryGenomeIDs[id],
+           let offspringGenome = gm.genome(for: offspringGenomeID) {
+            let nurseryMods = nm.applyInfluences(to: offspringGenome, occupantID: id)
+            // nurseryMods is a [String: Float] of parameter offsets from formation.
+            // Persist them so SpecimenAudioBridge can blend them in at play time.
+            nurseryParameterOffsets[id] = nurseryMods
+
+            // Invalidate the harmonic profile cache — nursery exposure may have
+            // shifted the genome's effective harmonic character if influences included
+            // a harmonicPreference override. Re-derive on next access.
+            harmonicProfileStore?.invalidate(genomeID: offspringGenomeID)
+
+            // Clean up nursery influence data now that graduation is complete
+            nm.clearInfluences(occupantID: id)
+        }
+
+        // Clean up the nursery→genome mapping now that the occupant has graduated
+        nurseryGenomeIDs.removeValue(forKey: id)
+
         save()
         return graduated
+    }
+
+    /// Nursery parameter offsets from formation exposure, keyed by specimen UUID.
+    /// Callers (e.g. SpecimenAudioBridge) blend these additive offsets on top of
+    /// the base genome parameters when producing effective audio parameters.
+    /// Persisted in UserDefaults alongside the rest of the breeding state.
+    private(set) var nurseryParameterOffsets: [UUID: [String: Float]] = [:]
+
+    /// Returns the nursery parameter offsets accumulated during formation for a given
+    /// graduated specimen. Returns an empty dictionary if none recorded.
+    func nurseryOffsets(for specimenId: UUID) -> [String: Float] {
+        nurseryParameterOffsets[specimenId] ?? [:]
     }
 
     // MARK: - Trait Blending
@@ -334,6 +475,11 @@ final class BreedingManager: ObservableObject {
         if let nurseryData = try? JSONEncoder().encode(nursery) {
             UserDefaults.standard.set(nurseryData, forKey: "nurseryOccupants")
         }
+        // Persist nursery parameter offsets so they survive app kill during formation
+        if let offsetData = try? JSONEncoder().encode(nurseryParameterOffsets) {
+            UserDefaults.standard.set(offsetData, forKey: "nurseryParameterOffsets")
+        }
+        // nurseryGenomeIDs is transient — not persisted (see comment on the property)
     }
 
     func restore() {
@@ -344,6 +490,10 @@ final class BreedingManager: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: "nurseryOccupants"),
            let decoded = try? JSONDecoder().decode([NurseryOccupant].self, from: data) {
             nursery = decoded
+        }
+        if let data = UserDefaults.standard.data(forKey: "nurseryParameterOffsets"),
+           let decoded = try? JSONDecoder().decode([UUID: [String: Float]].self, from: data) {
+            nurseryParameterOffsets = decoded
         }
     }
 }

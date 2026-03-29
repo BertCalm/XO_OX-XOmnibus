@@ -465,6 +465,15 @@ final class GiftingManager: ObservableObject {
             giftType: package.giftType
         ))
 
+        // Notify narrative and achievement systems
+        NarrativeArcManager.shared.recordTradeCompleted()
+        AchievementManager.shared.onTradesCompleted(1)
+
+        // Cap opened gifts: keep all unopened + last 100 opened to prevent unbounded growth
+        let unopened = receivedGifts.filter { !$0.isOpened }
+        let opened   = Array(receivedGifts.filter { $0.isOpened }.suffix(100))
+        receivedGifts = unopened + opened
+
         saveAll()
         return specimen
     }

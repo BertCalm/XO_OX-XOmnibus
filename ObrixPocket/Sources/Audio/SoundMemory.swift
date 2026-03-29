@@ -246,10 +246,10 @@ final class SoundMemoryManager: ObservableObject {
         // MARK: Sustain length delta
         // Slow tempo exposure → longer sustain (more legato)
         // Fast tempo exposure → shorter sustain (more staccato)
-        let slowMinutes = (memory.rhythmicExposure["slow_40-70", default: 0]
+        let slowMinutes = (memory.rhythmicExposure["slow_40-60", default: 0]
                          + memory.rhythmicExposure["slow_60-80", default: 0])
-        let fastMinutes = (memory.rhythmicExposure["fast_128-145", default: 0]
-                         + memory.rhythmicExposure["fast_110-130", default: 0])
+        let fastMinutes = (memory.rhythmicExposure["fast_120-140", default: 0]
+                         + memory.rhythmicExposure["fast_140-160", default: 0])
         let totalRhythmic = max(1, memory.rhythmicExposure.values.reduce(0, +))
         let tempoBias = (slowMinutes - fastMinutes) / totalRhythmic  // -1...+1
         let sustainDelta = clampInfluence(tempoBias * 0.4 * sat)
@@ -317,6 +317,17 @@ final class SoundMemoryManager: ObservableObject {
     func resetMemory(for specimenId: UUID) {
         memories.removeValue(forKey: specimenId)
         save()
+    }
+
+    /// Remove memories belonging to specimens that no longer exist in the reef.
+    /// Call periodically (e.g., on app launch or after bulk specimen removal) to
+    /// prevent indefinite memory accumulation for deleted/traded specimens.
+    func pruneOrphanedMemories(activeSpecimenIDs: Set<UUID>) {
+        let orphans = memories.keys.filter { !activeSpecimenIDs.contains($0) }
+        for id in orphans {
+            memories.removeValue(forKey: id)
+        }
+        if !orphans.isEmpty { save() }
     }
 
     // MARK: - Breeding Inheritance
