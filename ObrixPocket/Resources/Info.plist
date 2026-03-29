@@ -6,6 +6,21 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>OBRIX Pocket</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>XO Reef Configuration</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.xo-ox.xoreef</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -32,20 +47,32 @@
 	<string>OBRIX Pocket captures a sound fingerprint of your environment to give each specimen a unique sonic character. No audio is recorded or stored.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>OBRIX Pocket captures your movement pattern to give each specimen's modulation a unique character.</string>
-	<key>CFBundleDocumentTypes</key>
+	<key>UIBackgroundModes</key>
 	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>XO Reef Configuration</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>org.xo-ox.xoreef</string>
-			</array>
-		</dict>
+		<string>audio</string>
+		<string>bluetooth-peripheral</string>
+		<string>fetch</string>
+		<string>external-accessory</string>
+		<string>processing</string>
+		<string>location</string>
+		<string>remote-notification</string>
+		<string>bluetooth-central</string>
+		<string>nearby-interaction</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBG</string>
+	</dict>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
@@ -66,23 +93,6 @@
 				</array>
 			</dict>
 		</dict>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIColorName</key>
-		<string>LaunchBG</string>
-	</dict>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>arm64</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 </dict>
 </plist>
