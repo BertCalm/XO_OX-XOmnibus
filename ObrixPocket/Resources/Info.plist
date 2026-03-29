@@ -53,11 +53,11 @@
 		<string>bluetooth-peripheral</string>
 		<string>fetch</string>
 		<string>external-accessory</string>
-		<string>processing</string>
 		<string>location</string>
 		<string>remote-notification</string>
 		<string>bluetooth-central</string>
 		<string>nearby-interaction</string>
+		<string>processing</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>
