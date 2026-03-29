@@ -12,6 +12,7 @@ struct PerformanceMode: View {
     @State private var keyboardMode: KeyboardMode = .single
     @StateObject private var audioExporter = AudioExporter()
     @State private var isAudioRecording = false
+    @State private var showShareSheet = false
 
     // Playback source
     let activeSourceSlot: Int?
@@ -85,6 +86,10 @@ struct PerformanceMode: View {
                         if isAudioRecording {
                             audioExporter.stopLiveRecording()
                             isAudioRecording = false
+                            // Present share sheet if recording produced a file
+                            if audioExporter.lastExportURL != nil {
+                                showShareSheet = true
+                            }
                         } else {
                             audioExporter.startLiveRecording()
                             isAudioRecording = true
@@ -121,6 +126,11 @@ struct PerformanceMode: View {
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea(.container, edges: .bottom)
+            }
+        }
+        .sheet(isPresented: $showShareSheet) {
+            if let url = audioExporter.lastExportURL {
+                ShareSheet(items: [url])
             }
         }
         // Force landscape orientation while this view is on screen

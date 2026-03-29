@@ -8,6 +8,7 @@ class ReefScene: SKScene {
     private let onNoteOn: (Int, Float) -> Void
     private let onNoteOff: (Int) -> Void
     private let onWiringChanged: (() -> Void)?
+    var onChordPreview: ((Int, Int) -> Void)?  // (slotA, slotB) — Living Chord
 
     // Grid geometry
     private let gridSize = 4
@@ -23,6 +24,10 @@ class ReefScene: SKScene {
 
     // Deferred tap — slot recorded on touchesBegan, note played on touchesEnded (avoids spurious note on long-press/wiring)
     private var pendingTapSlot: Int?
+
+    // Living Chord — two-tap coupling preview
+    private var lastChordTapSlot: Int?
+    private var lastChordTapTime: TimeInterval?
 
     // Organic offsets (±8px, deterministic per slot)
     private let organicOffsets: [CGPoint] = {
@@ -723,14 +728,33 @@ class ReefScene: SKScene {
             // End wiring — check if released on a valid target
             endWiring(at: location)
         } else {
-            // Normal tap — play note preview + flash
+            // Normal tap — check for Living Chord (two-tap coupling preview)
             if let slot = pendingTapSlot, reefStore.specimens[slot] != nil {
-                onNoteOn(slot, 0.8)
-                HapticEngine.specimenSelect()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-                    self?.onNoteOff(slot)
+                let now = CACurrentMediaTime()
+
+                if let lastSlot = lastChordTapSlot,
+                   let lastTime = lastChordTapTime,
+                   lastSlot != slot,
+                   now - lastTime < 0.8,
+                   reefStore.specimens[lastSlot] != nil {
+                    // Two taps within 800ms on different specimens → chord preview
+                    onChordPreview?(lastSlot, slot)
+                    showChordArc(from: lastSlot, to: slot)
+                    HapticEngine.diveDepthMilestone()
+                    lastChordTapSlot = nil
+                    lastChordTapTime = nil
+                } else {
+                    // Normal single tap
+                    onNoteOn(slot, 0.8)
+                    HapticEngine.specimenSelect()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                        self?.onNoteOff(slot)
+                    }
+                    flashSlot(slot)
+                    lastChordTapSlot = slot
+                    lastChordTapTime = now
                 }
-                flashSlot(slot)
+
                 touchDownTimes.removeValue(forKey: slot)
             }
         }
@@ -1006,6 +1030,53 @@ class ReefScene: SKScene {
             SKAction.wait(forDuration: 1.5),
             SKAction.removeFromParent()
         ]))
+    }
+
+    /// Show a temporary visual arc between two specimens (Living Chord preview)
+    private func showChordArc(from slotA: Int, to slotB: Int) {
+        guard slotA < slotNodes.count, slotB < slotNodes.count else { return }
+
+        let posA = slotNodes[slotA].position
+        let posB = slotNodes[slotB].position
+
+        // Determine affinity color
+        let affinityColor: SKColor
+        if let specA = reefStore.specimens[slotA], let specB = reefStore.specimens[slotB] {
+            switch CouplingAffinity.between(specA, specB) {
+            case .high:    affinityColor = SKColor(red: 0.3, green: 1.0, blue: 0.5, alpha: 0.8)
+            case .medium:  affinityColor = SKColor(red: 0.9, green: 0.78, blue: 0.42, alpha: 0.6) // XO Gold
+            case .low:     affinityColor = SKColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.4)
+            case .invalid: affinityColor = SKColor(red: 1.0, green: 0.2, blue: 0.2, alpha: 0.5)
+            }
+        } else {
+            affinityColor = SKColor.white.withAlphaComponent(0.3)
+        }
+
+        // Build curved arc path
+        let midPoint = CGPoint(x: (posA.x + posB.x) / 2,
+                               y: (posA.y + posB.y) / 2 + 30) // Lift the arc upward
+        let path = CGMutablePath()
+        path.move(to: posA)
+        path.addQuadCurve(to: posB, control: midPoint)
+
+        let arcNode = SKShapeNode(path: path)
+        arcNode.strokeColor = affinityColor
+        arcNode.lineWidth = 2.5
+        arcNode.glowWidth = 4
+        arcNode.zPosition = 200
+        addChild(arcNode)
+
+        // Flash both slots
+        flashSlot(slotA)
+        flashSlot(slotB)
+
+        // Fade out and remove
+        let fadeOut = SKAction.sequence([
+            SKAction.wait(forDuration: 0.6),
+            SKAction.fadeOut(withDuration: 0.4),
+            SKAction.removeFromParent()
+        ])
+        arcNode.run(fadeOut)
     }
 
     // MARK: - Hit Testing

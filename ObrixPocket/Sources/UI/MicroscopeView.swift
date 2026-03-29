@@ -104,7 +104,7 @@ struct MicroscopeView: View {
             dualRow("Intensity",  gameValue: stats.intensity,  synthParam: "Resonance",    synthValue: formatPercent(specimen.parameterState["obrix_flt1Resonance"]))
             dualRow("Reflexes",   gameValue: stats.reflexes,   synthParam: "Attack",       synthValue: formatTime(specimen.parameterState["obrix_env1Attack"]))
             dualRow("Stamina",    gameValue: stats.stamina,    synthParam: "Decay+Release", synthValue: formatTime(specimen.parameterState["obrix_env1Decay"]))
-            dualRow("Presence",   gameValue: stats.presence,   synthParam: "Level",        synthValue: formatPercent(specimen.parameterState["obrix_src1Level"]))
+            dualRow("Presence",   gameValue: stats.presence,   synthParam: "Unison Detune", synthValue: formatCents(specimen.parameterState["obrix_unisonDetune"]))
             dualRow("Complexity", gameValue: stats.complexity, synthParam: "Osc Type",     synthValue: formatOscType(specimen.parameterState["obrix_src1Type"]))
             dualRow("Pulse",      gameValue: stats.pulse,      synthParam: "LFO Rate",     synthValue: formatHz(specimen.parameterState["obrix_lfo1Rate"]))
             dualRow("Grit",       gameValue: stats.grit,       synthParam: "FX Param",     synthValue: formatPercent(specimen.parameterState["obrix_fx1Param1"]))
@@ -320,6 +320,11 @@ struct MicroscopeView: View {
     private func formatPercent(_ value: Float?) -> String {
         guard let v = value else { return "—" }
         return "\(Int(v * 100))%"
+    }
+
+    private func formatCents(_ value: Float?) -> String {
+        guard let v = value else { return "0 ct" }
+        return String(format: "%.1f ct", v)
     }
 
     private func formatTime(_ value: Float?) -> String {

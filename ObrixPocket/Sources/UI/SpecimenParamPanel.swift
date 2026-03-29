@@ -183,14 +183,24 @@ struct SpecimenParamPanel: View {
 
                     // Advanced parameters toggle
                     Button(action: { withAnimation { showAdvanced.toggle() } }) {
-                        HStack(spacing: 6) {
+                        HStack(spacing: 8) {
                             Image(systemName: showAdvanced ? "chevron.down" : "chevron.right")
-                                .font(.system(size: 9))
-                            Text("ADVANCED")
-                                .font(DesignTokens.mono(9))
+                                .font(.system(size: 10, weight: .medium))
+                            Text("ADVANCED (\(showAdvanced ? "48" : "48") params)")
+                                .font(DesignTokens.mono(10))
+                                .tracking(1)
+                            Spacer()
+                            Text(showAdvanced ? "HIDE" : "SHOW")
+                                .font(DesignTokens.mono(8))
                                 .tracking(1.5)
                         }
-                        .foregroundColor(.white.opacity(0.3))
+                        .foregroundColor(showAdvanced ? DesignTokens.reefJade.opacity(0.6) : .white.opacity(0.4))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(showAdvanced ? DesignTokens.reefJade.opacity(0.06) : Color.white.opacity(0.03))
+                        )
                     }
                     .padding(.top, 8)
 
@@ -222,6 +232,47 @@ struct SpecimenParamPanel: View {
                             paramSlider("Air", paramKey: "obrix_air", range: 0...1, unit: "", spec: spec)
                             paramSlider("Drift Rate", paramKey: "obrix_driftRate", range: 0.001...0.05, unit: "", spec: spec)
                             paramSlider("Drift Depth", paramKey: "obrix_driftDepth", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("SOURCE 2")
+                            paramSlider("Src 2 Type", paramKey: "obrix_src2Type", range: 0...5, unit: "", spec: spec)
+                            paramSlider("Src 2 Tune", paramKey: "obrix_src2Tune", range: -24...24, unit: "st", spec: spec)
+                            paramSlider("Src 2 PW", paramKey: "obrix_src2PW", range: 0.05...0.95, unit: "", spec: spec)
+                            paramSlider("Source Mix", paramKey: "obrix_srcMix", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("HARMONIC FIELD")
+                            paramSlider("Field Str", paramKey: "obrix_fieldStrength", range: 0...1, unit: "", spec: spec)
+                            paramSlider("Polarity", paramKey: "obrix_fieldPolarity", range: -1...1, unit: "", spec: spec)
+                            paramSlider("Field Rate", paramKey: "obrix_fieldRate", range: 0.01...10, unit: "Hz", spec: spec)
+                            paramSlider("Prime Limit", paramKey: "obrix_fieldPrimeLimit", range: 0...2, unit: "", spec: spec)
+
+                            sectionHeader("MODULATION")
+                            paramSlider("LFO Shape", paramKey: "obrix_lfo1Shape", range: 0...3, unit: "", spec: spec)
+                            paramSlider("Mod 1 Depth", paramKey: "obrix_mod1Depth", range: -1...1, unit: "", spec: spec)
+                            paramSlider("Mod 1 Rate", paramKey: "obrix_mod1Rate", range: 0.01...30, unit: "Hz", spec: spec)
+                            paramSlider("FM Depth", paramKey: "obrix_fmDepth", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("STRESS / STATE")
+                            paramSlider("Stress Decay", paramKey: "obrix_stressDecay", range: 0.01...2, unit: "s", spec: spec)
+                            paramSlider("Bleach Rate", paramKey: "obrix_bleachRate", range: 0...0.01, unit: "", spec: spec)
+                            paramSlider("State Reset", paramKey: "obrix_stateReset", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("VOICE")
+                            paramSlider("Voice Mode", paramKey: "obrix_polyphony", range: 0...3, unit: "", spec: spec)
+                            paramSlider("Glide Time", paramKey: "obrix_glideTime", range: 0...1, unit: "s", spec: spec)
+                            paramSlider("Bend Range", paramKey: "obrix_pitchBendRange", range: 1...24, unit: "st", spec: spec)
+
+                            sectionHeader("MACROS")
+                            paramSlider("CHARACTER", paramKey: "obrix_macroCharacter", range: 0...1, unit: "", spec: spec)
+                            paramSlider("MOVEMENT", paramKey: "obrix_macroMovement", range: 0...1, unit: "", spec: spec)
+                            paramSlider("COUPLING", paramKey: "obrix_macroCoupling", range: 0...1, unit: "", spec: spec)
+                            paramSlider("SPACE", paramKey: "obrix_macroSpace", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("FX CHAIN")
+                            paramSlider("FX Mode", paramKey: "obrix_fxMode", range: 0...1, unit: "", spec: spec)
+                            paramSlider("FX 2 Mix", paramKey: "obrix_fx2Mix", range: 0...1, unit: "", spec: spec)
+                            paramSlider("FX 2 Tone", paramKey: "obrix_fx2Param", range: 0...1, unit: "", spec: spec)
+                            paramSlider("FX 3 Mix", paramKey: "obrix_fx3Mix", range: 0...1, unit: "", spec: spec)
+                            paramSlider("FX 3 Tone", paramKey: "obrix_fx3Param", range: 0...1, unit: "", spec: spec)
                         }
                         .transition(.opacity.combined(with: .move(edge: .top)))
                     }
@@ -754,8 +805,10 @@ struct FusionPickerView: View {
     let onFuse: (Int) -> Void
     let onCancel: () -> Void
     @EnvironmentObject var reefStore: ReefStore
-    @State private var showConfirm = false
+    @EnvironmentObject var audioEngine: AudioEngineManager
     @State private var selectedPartner: Int?
+    @State private var showPreview = false
+    @State private var blendAmount: Float = 0.5
 
     var body: some View {
         NavigationView {
@@ -798,7 +851,7 @@ struct FusionPickerView: View {
                     List(compatible, id: \.0) { (idx, spec) in
                         Button(action: {
                             selectedPartner = idx
-                            showConfirm = true
+                            showPreview = true
                         }) {
                             HStack(spacing: 10) {
                                 SpecimenSprite(subtype: spec.subtype, category: spec.category, size: 28)
@@ -826,14 +879,175 @@ struct FusionPickerView: View {
                     Button("Cancel", action: onCancel)
                 }
             }
-            .alert("Fuse Specimens?", isPresented: $showConfirm) {
-                Button("Fuse", role: .destructive) {
-                    if let partner = selectedPartner { onFuse(partner) }
+            .sheet(isPresented: $showPreview) {
+                if let partnerIdx = selectedPartner,
+                   let partner = reefStore.specimens[partnerIdx] {
+                    FusionPreviewView(
+                        sourceSpecimen: sourceSpecimen,
+                        partnerSpecimen: partner,
+                        blendAmount: $blendAmount,
+                        onPreview: { blend in
+                            previewFusionAudio(partnerSlot: partnerIdx, blend: blend)
+                        },
+                        onFuse: {
+                            showPreview = false
+                            onFuse(partnerIdx)
+                        },
+                        onCancel: {
+                            showPreview = false
+                            // Restore original params
+                            if let activeSlot = reefStore.specimens.firstIndex(where: { $0 != nil }) {
+                                audioEngine.applyCachedParams(for: activeSlot)
+                            }
+                        }
+                    )
                 }
-                Button("Cancel", role: .cancel) {}
-            } message: {
-                Text("Both parent specimens will be consumed. The child inherits averaged traits from both.")
             }
         }
+    }
+
+    private func previewFusionAudio(partnerSlot: Int, blend: Float) {
+        guard let partner = reefStore.specimens[partnerSlot] else { return }
+
+        // Interpolate parameters between source and partner
+        let allKeys = Set(sourceSpecimen.parameterState.keys).union(partner.parameterState.keys)
+        for key in allKeys {
+            let aVal = sourceSpecimen.parameterState[key] ?? 0.5
+            let bVal = partner.parameterState[key] ?? 0.5
+            let blended = aVal * (1.0 - blend) + bVal * blend
+            ObrixBridge.shared()?.setParameterImmediate(key, value: blended)
+        }
+
+        // Play preview chord
+        ObrixBridge.shared()?.note(on: 60, velocity: 0.7)
+        ObrixBridge.shared()?.note(on: 67, velocity: 0.55)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            ObrixBridge.shared()?.noteOff(60)
+            ObrixBridge.shared()?.noteOff(67)
+        }
+    }
+}
+
+// MARK: - FusionPreviewView
+
+/// Preview panel shown before committing a fusion.
+/// Blend slider interpolates between parent timbres in real-time.
+struct FusionPreviewView: View {
+    let sourceSpecimen: Specimen
+    let partnerSpecimen: Specimen
+    @Binding var blendAmount: Float
+    let onPreview: (Float) -> Void
+    let onFuse: () -> Void
+    let onCancel: () -> Void
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("FUSION ORACLE")
+                .font(DesignTokens.heading(16))
+                .tracking(2)
+                .foregroundColor(DesignTokens.effectColor)
+                .padding(.top, 24)
+
+            // Parent specimens
+            HStack(spacing: 24) {
+                VStack(spacing: 6) {
+                    SpecimenSprite(subtype: sourceSpecimen.subtype, category: sourceSpecimen.category, size: 40)
+                    Text(sourceSpecimen.creatureName)
+                        .font(DesignTokens.mono(10))
+                        .foregroundColor(.white.opacity(0.7))
+                    Text("Lv.\(sourceSpecimen.level)")
+                        .font(DesignTokens.mono(9))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+
+                Image(systemName: "arrow.triangle.merge")
+                    .font(.system(size: 20))
+                    .foregroundColor(DesignTokens.effectColor.opacity(0.5))
+
+                VStack(spacing: 6) {
+                    SpecimenSprite(subtype: partnerSpecimen.subtype, category: partnerSpecimen.category, size: 40)
+                    Text(partnerSpecimen.creatureName)
+                        .font(DesignTokens.mono(10))
+                        .foregroundColor(.white.opacity(0.7))
+                    Text("Lv.\(partnerSpecimen.level)")
+                        .font(DesignTokens.mono(9))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+            }
+
+            // Blend slider
+            VStack(spacing: 8) {
+                Text("BLEND")
+                    .font(DesignTokens.mono(9))
+                    .tracking(1.5)
+                    .foregroundColor(.white.opacity(0.4))
+
+                HStack(spacing: 12) {
+                    Text(sourceSpecimen.creatureName.prefix(8))
+                        .font(DesignTokens.mono(8))
+                        .foregroundColor(.white.opacity(0.3))
+
+                    Slider(value: Binding(
+                        get: { Double(blendAmount) },
+                        set: { blendAmount = Float($0) }
+                    ), in: 0...1)
+                    .tint(DesignTokens.effectColor)
+
+                    Text(partnerSpecimen.creatureName.prefix(8))
+                        .font(DesignTokens.mono(8))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+                .padding(.horizontal, 20)
+
+                Text("\(Int(blendAmount * 100))% blend")
+                    .font(DesignTokens.mono(10))
+                    .foregroundColor(DesignTokens.effectColor.opacity(0.6))
+            }
+
+            // Preview button
+            Button(action: { onPreview(blendAmount) }) {
+                HStack(spacing: 6) {
+                    Image(systemName: "speaker.wave.2")
+                    Text("PREVIEW")
+                }
+                .font(DesignTokens.heading(14))
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .frame(height: 44)
+                .background(RoundedRectangle(cornerRadius: 22).fill(DesignTokens.effectColor.opacity(0.4)))
+            }
+            .padding(.horizontal, 40)
+
+            // Warning
+            Text("Both parents will be consumed")
+                .font(DesignTokens.body(10))
+                .foregroundColor(DesignTokens.errorRed.opacity(0.5))
+
+            // Action buttons
+            HStack(spacing: 16) {
+                Button(action: onCancel) {
+                    Text("Cancel")
+                        .font(DesignTokens.heading(14))
+                        .foregroundColor(.white.opacity(0.5))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .background(RoundedRectangle(cornerRadius: 22).stroke(Color.white.opacity(0.15)))
+                }
+
+                Button(action: onFuse) {
+                    Text("FUSE")
+                        .font(DesignTokens.heading(14))
+                        .tracking(2)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .background(RoundedRectangle(cornerRadius: 22).fill(DesignTokens.effectColor))
+                }
+            }
+            .padding(.horizontal, 40)
+
+            Spacer()
+        }
+        .background(DesignTokens.darkBackground.ignoresSafeArea())
     }
 }

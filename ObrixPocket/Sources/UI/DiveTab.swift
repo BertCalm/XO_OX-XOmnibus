@@ -483,6 +483,9 @@ struct DiveTab: View {
         newComposer.specimenWarmth = Float(stats.warmth) / 100.0
         newComposer.specimenReflexes = Float(stats.reflexes) / 100.0
         newComposer.specimenGrit = Float(stats.grit) / 100.0
+        newComposer.specimenComplexity = Float(stats.complexity) / 100.0
+        newComposer.specimenPresence = Float(stats.presence) / 100.0
+        newComposer.specimenStamina = Float(stats.stamina) / 100.0
 
         // Wire composer audio output to ObrixBridge
         newComposer.onNoteOn = { (note: Int, velocity: Float) in

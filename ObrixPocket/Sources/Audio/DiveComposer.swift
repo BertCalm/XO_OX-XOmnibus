@@ -106,6 +106,16 @@ final class DiveComposer {
         .abyssal:  2,   // C2 range (deep drones)
     ]
 
+    /// Tension intervals per zone — used when obstacles are near.
+    /// Instead of random chromatic neighbors, these intervals are musically coherent
+    /// within each zone's harmonic language.
+    static let zoneTensionIntervals: [DepthZone: [Int]] = [
+        .sunlit:   [2, -2, 5],     // Major 2nd, down major 2nd, perfect 4th (bright suspension)
+        .twilight: [1, -2, 3],     // Minor 2nd up, whole step down, minor 3rd (dark but scalar)
+        .midnight: [1, -1, 6],     // Chromatic neighbors + tritone (dissonance IS the zone)
+        .abyssal:  [5, 7, -5],     // Perfect 4th/5th (open, vast intervals for drones)
+    ]
+
     // MARK: - State
 
     private var subdivisionCount: Int = 0   // Global subdivision counter
@@ -114,12 +124,16 @@ final class DiveComposer {
     private var lastNoteOnBeat: Int = -1
     private var activeNotes: [(note: Int, offTime: TimeInterval)] = []
     private var startTime: CFTimeInterval?
+    private var lastNote: Int? = nil
 
     // Specimen influence (set before dive starts)
     var specimenPulse: Float = 0.5      // LFO rate → rhythm density modifier
     var specimenWarmth: Float = 0.5     // Cutoff → prefer lower/higher chord tones
     var specimenReflexes: Float = 0.5   // Attack → note duration modifier
     var specimenGrit: Float = 0.3       // Drive → velocity intensity
+    var specimenComplexity: Float = 0.3  // Src type → chord enrichment + phrase contour
+    var specimenPresence: Float = 0.3    // Unison detune → octave doubling probability
+    var specimenStamina: Float = 0.5     // Decay+Release → note sustain extension
 
     // Player input (updated every frame by DiveScene)
     var playerX: Float = 0.5            // 0 = far left, 1 = far right
@@ -146,6 +160,7 @@ final class DiveComposer {
         self.degradation = 0.0
         self.cleanStreak = 0
         self.activeNotes = []
+        self.lastNote = nil
 
         // Tick at 16th-note resolution: 4 subdivisions per beat
         // At 110 BPM: beat = 545ms, subdivision = 136ms → ~7.3 Hz
@@ -167,6 +182,7 @@ final class DiveComposer {
             onNoteOff?(note)
         }
         activeNotes.removeAll()
+        lastNote = nil
     }
 
     /// Update the current zone (called by DiveTab when depth changes)
@@ -250,17 +266,32 @@ final class DiveComposer {
 
         guard shouldFire else { return }
 
-        // Select note from current chord based on player position
+        // Select note with melodic coherence — specimen stats shape the harmonic language
         let chord = currentChord()
-        let noteIndex = noteIndexFromPlayerPosition(chordSize: chord.count)
-        let baseNote = chord[noteIndex]
-
-        // Apply octave
         let octave = Self.zoneBaseOctave[zone] ?? 3
-        let midiNote = octave * 12 + baseNote
+        var pitches = chord.map { max(24, min(108, octave * 12 + $0)) }
 
-        // Clamp to MIDI range
-        let clampedNote = max(24, min(108, midiNote))
+        // Complexity enrichment: high-complexity specimens hear passing tones
+        if specimenComplexity > 0.5 {
+            let passing = pitches.flatMap { [$0 + 2, $0 - 2] }
+                .filter { p in p >= 24 && p <= 108 && !pitches.contains(p) }
+            pitches += passing
+            pitches.sort()
+        }
+
+        // Phrase contour: beats 0-7 tend upward, 8-15 tend downward
+        let phrasePos = Float(currentBeat) / Float(phraseLength)
+        let contourBias = phrasePos < 0.5 ? Float(0.15) : Float(-0.15)
+        let direction = playerX - 0.5 + contourBias * specimenComplexity
+
+        // Note Memory: prefer notes close to the last played note
+        let clampedNote: Int
+        if let last = lastNote {
+            clampedNote = selectCoherentNote(from: pitches, lastNote: last, direction: direction)
+        } else {
+            let noteIndex = noteIndexFromPlayerPosition(chordSize: pitches.count)
+            clampedNote = pitches[max(0, min(pitches.count - 1, noteIndex))]
+        }
 
         // Velocity: base from zone + dodge velocity adds accent + degradation reduces
         var velocity: Float = 0.5 + specimenGrit * 0.3
@@ -268,15 +299,16 @@ final class DiveComposer {
         velocity *= (1.0 - degradation * 0.5)            // Degradation quiets
         velocity = max(0.15, min(0.95, velocity))
 
-        // Obstacle proximity adds a dissonance offset (chromatic neighbor)
+        // Obstacle proximity adds zone-appropriate tension intervals
         var finalNote = clampedNote
         if obstacleProximity > 0.6 {
-            // Close to obstacle: sharpen or flatten by 1 semitone (tension)
-            finalNote += Bool.random() ? 1 : -1
+            let intervals = Self.zoneTensionIntervals[zone] ?? [1, -1]
+            finalNote += intervals.randomElement() ?? 1
         }
 
         // Fire the note
         onNoteOn?(finalNote, velocity)
+        lastNote = finalNote
 
         // Schedule note-off
         let durationRange = Self.zoneNoteDuration[zone] ?? 0.3...0.8
@@ -284,8 +316,19 @@ final class DiveComposer {
         // Specimen reflexes: high reflexes = shorter notes (staccato)
         duration *= Double(1.2 - specimenReflexes * 0.6)
         duration = max(0.05, duration)
+        // Stamina extends sustain (legato tendency)
+        duration *= Double(1.0 + specimenStamina * 0.4)
 
         activeNotes.append((note: finalNote, offTime: elapsed + duration))
+
+        // Presence → octave doubling (wide, big sound)
+        if specimenPresence > 0.5 && Float.random(in: 0...1) < (specimenPresence - 0.5) * 0.6 {
+            let doubled = finalNote + (Bool.random() ? 12 : -12)
+            if doubled >= 24 && doubled <= 108 {
+                onNoteOn?(doubled, velocity * 0.55)
+                activeNotes.append((note: doubled, offTime: elapsed + duration))
+            }
+        }
     }
 
     // MARK: - Helpers
@@ -299,6 +342,40 @@ final class DiveComposer {
         let progression = Self.zoneProgressions[zone] ?? [[0, 4, 7, 12, 16]]
         currentChordIndex = (currentChordIndex + 1) % progression.count
         onChordChange?()
+    }
+
+    /// Select a note that's melodically coherent with the previous note.
+    /// Prefers small intervals while respecting player direction + phrase contour.
+    private func selectCoherentNote(from pitches: [Int], lastNote: Int, direction: Float) -> Int {
+        guard !pitches.isEmpty else { return lastNote }
+
+        var bestPitch = pitches[0]
+        var bestScore: Float = .infinity
+
+        for pitch in pitches {
+            let interval = Float(abs(pitch - lastNote))
+
+            // Direction penalty: penalize notes opposite to player steering
+            let dirPenalty: Float
+            if direction > 0.1 && pitch < lastNote {
+                dirPenalty = interval * 0.4
+            } else if direction < -0.1 && pitch > lastNote {
+                dirPenalty = interval * 0.4
+            } else {
+                dirPenalty = 0
+            }
+
+            // Memory gravity: warmth controls preference for small intervals
+            let gravity = 0.3 + specimenWarmth * 0.7
+            let score = interval * gravity + dirPenalty
+
+            if score < bestScore {
+                bestScore = score
+                bestPitch = pitch
+            }
+        }
+
+        return bestPitch
     }
 
     /// Map player X position (0-1) to a chord tone index.

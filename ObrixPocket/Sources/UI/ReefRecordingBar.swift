@@ -1,5 +1,15 @@
 import SwiftUI
 
+/// A forged audio chip — a rendered loop bound to a specimen.
+struct LoopChip: Identifiable {
+    let id = UUID()
+    let name: String
+    let url: URL
+    let specimenName: String
+    let duration: TimeInterval
+    let forgedAt: Date
+}
+
 /// Performance recorder controls, audio recorder controls, loop recorder, and 15-second clip generator.
 ///
 /// recorder and loopRecorder are owned by ReefTab and passed in as @ObservedObject so that
@@ -23,6 +33,10 @@ struct ReefRecordingBar: View {
     @State private var clipShareItems: [Any] = []
     @State private var midiExportURL: URL?
     @State private var showMIDIExport = false
+    @State private var savedChips: [LoopChip] = []
+    @State private var isForging = false
+    @State private var showChipShareSheet = false
+    @State private var chipToShare: URL?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -281,6 +295,100 @@ struct ReefRecordingBar: View {
             }
             .padding(.horizontal, 20)
             .padding(.bottom, DesignTokens.spacing4)
+
+            // Loop Forge — save loop as audio chip
+            if loopRecorder.layerCount > 0 && !loopRecorder.isRecording {
+                HStack(spacing: 8) {
+                    // Forge button
+                    Button(action: forgeChip) {
+                        HStack(spacing: 4) {
+                            Image(systemName: isForging ? "hourglass" : "hammer.fill")
+                                .font(.system(size: 10))
+                            Text(isForging ? "FORGING..." : "FORGE CHIP")
+                                .font(DesignTokens.mono(9))
+                                .tracking(1)
+                        }
+                        .foregroundColor(isForging ? .white.opacity(0.3) : DesignTokens.xoGold)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(DesignTokens.xoGold.opacity(isForging ? 0.05 : 0.1))
+                        )
+                    }
+                    .disabled(isForging)
+
+                    // Chip count
+                    if !savedChips.isEmpty {
+                        Text("\(savedChips.count) chip\(savedChips.count == 1 ? "" : "s")")
+                            .font(DesignTokens.mono(9))
+                            .foregroundColor(.white.opacity(0.3))
+                    }
+
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 4)
+            }
+
+            // Saved chips (horizontally scrollable)
+            if !savedChips.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(savedChips) { chip in
+                            VStack(spacing: 4) {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "waveform")
+                                        .font(.system(size: 8))
+                                    Text(chip.name)
+                                        .font(DesignTokens.mono(8))
+                                        .lineLimit(1)
+                                }
+                                .foregroundColor(DesignTokens.xoGold)
+
+                                Text(chip.specimenName)
+                                    .font(DesignTokens.mono(7))
+                                    .foregroundColor(.white.opacity(0.3))
+                                    .lineLimit(1)
+
+                                Text(String(format: "%.1fs", chip.duration))
+                                    .font(DesignTokens.mono(7))
+                                    .foregroundColor(.white.opacity(0.2))
+                            }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 6)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.white.opacity(0.04))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(DesignTokens.xoGold.opacity(0.15), lineWidth: 0.5)
+                                    )
+                            )
+                            .contextMenu {
+                                Button(action: {
+                                    chipToShare = chip.url
+                                    showChipShareSheet = true
+                                }) {
+                                    Label("Share", systemImage: "square.and.arrow.up")
+                                }
+                                Button(role: .destructive, action: {
+                                    savedChips.removeAll { $0.id == chip.id }
+                                }) {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                }
+                .frame(height: 56)
+                .sheet(isPresented: $showChipShareSheet) {
+                    if let url = chipToShare {
+                        ShareSheet(items: [url])
+                    }
+                }
+            }
         }
         // Fire loop playback events at ~30 Hz from the main thread
         .onReceive(Timer.publish(every: 1.0 / 30.0, on: .main, in: .common).autoconnect()) { _ in
@@ -318,6 +426,52 @@ struct ReefRecordingBar: View {
         }
         .sheet(isPresented: $showClipShare) {
             ShareSheet(items: clipShareItems)
+        }
+    }
+
+    // MARK: - Loop Forge
+
+    private func forgeChip() {
+        guard loopRecorder.layerCount > 0 else { return }
+        isForging = true
+
+        // Get specimen name for the chip
+        let specimenName: String
+        if let activeSlot = reefStore.specimens.firstIndex(where: { $0 != nil }),
+           let spec = reefStore.specimens[activeSlot] {
+            specimenName = spec.creatureName
+        } else {
+            specimenName = "Reef"
+        }
+
+        let chipNumber = savedChips.count + 1
+        let chipName = "Loop \(chipNumber)"
+        let duration = (60.0 / loopRecorder.bpm) * 4.0 * 4.0 // 4 bars of 4 beats
+
+        // Start live recording
+        audioExporter.startLiveRecording()
+
+        // Start loop playback (plays through synth → captured by audio tap)
+        if !loopRecorder.isPlaying {
+            loopRecorder.startPlayback()
+        }
+
+        // Stop after one loop duration + small tail
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration + 0.1) {
+            audioExporter.stopLiveRecording()
+            loopRecorder.stopPlayback()
+
+            if let url = audioExporter.lastExportURL {
+                let chip = LoopChip(
+                    name: chipName,
+                    url: url,
+                    specimenName: specimenName,
+                    duration: duration,
+                    forgedAt: Date()
+                )
+                savedChips.append(chip)
+            }
+            isForging = false
         }
     }
 }

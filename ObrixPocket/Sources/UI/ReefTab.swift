@@ -69,7 +69,7 @@ struct ReefTab: View {
                     }
                     .frame(width: gridSize, height: gridSize)
                     .onAppear {
-                        reefScene = ReefScene(
+                        let scene = ReefScene(
                             size: CGSize(width: gridSize, height: gridSize),
                             reefStore: reefStore,
                             onNoteOn: { slot, velocity in
@@ -86,6 +86,37 @@ struct ReefTab: View {
                                 audioEngine.applyReefConfiguration(reefStore)
                             }
                         )
+                        scene.onChordPreview = { [self] slotA, slotB in
+                            guard let specA = reefStore.specimens[slotA],
+                                  let specB = reefStore.specimens[slotB] else { return }
+
+                            // Blend params (50/50) for coupling preview timbre
+                            let allKeys = Set(specA.parameterState.keys).union(specB.parameterState.keys)
+                            for key in allKeys {
+                                let aVal = specA.parameterState[key] ?? 0.5
+                                let bVal = specB.parameterState[key] ?? 0.5
+                                let blended = (aVal + bVal) / 2.0
+                                ObrixBridge.shared()?.setParameterImmediate(key, value: blended)
+                            }
+
+                            // Play a chord with the blended timbre
+                            ObrixBridge.shared()?.note(on: 60, velocity: 0.7)
+                            ObrixBridge.shared()?.note(on: 64, velocity: 0.6)
+                            ObrixBridge.shared()?.note(on: 67, velocity: 0.5)
+
+                            // Release after 800ms
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                ObrixBridge.shared()?.noteOff(60)
+                                ObrixBridge.shared()?.noteOff(64)
+                                ObrixBridge.shared()?.noteOff(67)
+
+                                // Restore active source's params
+                                if let active = self.activeSourceSlot {
+                                    self.audioEngine.applyCachedParams(for: active)
+                                }
+                            }
+                        }
+                        reefScene = scene
                     }
                 }
             }
