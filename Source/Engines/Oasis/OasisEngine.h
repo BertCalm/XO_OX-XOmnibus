@@ -69,36 +69,28 @@ struct SpectralFingerprint
 #endif
 
 //==============================================================================
-// RhodesToneGenerator — Tine + pickup physical model.
+// OasisRhodesToneGenerator — Tine physical model (OASIS-specific).
 //
-// The Rhodes piano works by a hammer striking a thin metal tine. The tine
-// vibrates near a magnetic pickup (like a guitar pickup), and the
-// electromagnetic induction converts the vibration to an electrical signal.
-//
-// The characteristic Rhodes sound comes from:
-//   1. Strong fundamental (tine's primary mode)
-//   2. Clear 3rd partial (tine geometry)
-//   3. Rapidly decaying upper partials
-//   4. Bell-like attack transient (hammer-tine contact)
-//   5. Velocity-dependent bark (asymmetric clipping in the amp stage)
+// OASIS uses STRETCHED partial ratios (Paspaliaris 2015 Table 2) and a
+// two-argument process() that applies per-partial pickup gains in-line.
+// Named with Oasis prefix to avoid collision with OkeanosEngine's
+// RhodesToneGenerator (which uses integer harmonic ratios and a simpler
+// 1-argument process). Both live in namespace xolokun; same guard name
+// would cause the Okeanos version to win.
 //
 // References:
 //   - Pianoteq physical modeling documentation
 //   - Loris/Smith (2003), "Spectral analysis of Rhodes tones"
 //   - Paspaliaris (2015), "Physical modeling of the Rhodes piano"
 //==============================================================================
-#ifndef XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
-#define XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
-struct RhodesToneGenerator
+#ifndef XOLOKUN_OASIS_RHODES_DSP_DEFINED
+#define XOLOKUN_OASIS_RHODES_DSP_DEFINED
+struct OasisRhodesToneGenerator
 {
     static constexpr int kNumPartials = 6;
 
-    // Rhodes partial ratios — from spectral analysis of a Mk I Stage 73.
-    // The tine produces a STRETCHED harmonic series (not pure harmonics):
-    // tine stiffness stretches the upper partials sharp relative to the
-    // ideal harmonic series. These ratios match Paspaliaris (2015) Table 2
-    // for middle-register tines (C4–C5 range).
-    // Reference: Paspaliaris, N. (2015) "Physical Modeling of the Rhodes Piano"
+    // Stretched harmonic ratios — tine stiffness stretches upper partials sharp.
+    // These ratios match Paspaliaris (2015) Table 2 for middle-register tines.
     static constexpr float kPartialRatios[kNumPartials] = {
         1.0f, 1.981f, 3.006f, 4.024f, 5.052f, 6.098f
     };
@@ -141,8 +133,8 @@ struct RhodesToneGenerator
         }
     }
 
-    // process() with pickup partial gains applied in-place.
-    // pickupGains[i] comes from RhodesPickupModel::partialGains[i] — call
+    // process() with optional per-partial pickup gains.
+    // pickupGains[i] comes from OasisRhodesPickupModel::partialGains[i] — call
     // pickup.setPickupPosition() at note-on, then pass pickup.partialGains here.
     float process (float fundamentalHz, const float* pickupGains = nullptr) noexcept
     {
@@ -190,87 +182,15 @@ struct RhodesToneGenerator
 };
 
 //==============================================================================
-// RhodesPickupModel — Magnetic pickup simulation.
-//
-// The pickup position relative to the tine determines which partials
-// are captured. This is a proper partial-gain model:
-//
-//   - A magnetic pickup responds to the *velocity* of the tine at the
-//     pickup location, not its displacement. For a vibrating beam with
-//     fixed-free boundary conditions, the velocity mode shape at position x
-//     for partial n is proportional to sin(n * pi * x / L).
-//   - pickupPosition=0.0 = near base (node); pickupPosition=1.0 = near tip.
-//   - Near tip (high position): all partials reinforced but even partials get
-//     a bonus from the anti-node of the 2nd/4th modes → bright, bell-like.
-//   - Near base (low position): fundamental survives, upper partials attenuated
-//     → warm, fundamental-heavy.
-//
-// The 6 per-partial gain values are precomputed from position at trigger time
-// and stored in partialGains[] for use by the tine generator's process().
-//
-// References: Smith & Perttunen (2002) "Acoustic Pickup Position and Timbre"
-//==============================================================================
-struct RhodesPickupModel
-{
-    static constexpr int kNumPartials = 6;
-    float partialGains[kNumPartials] = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
-
-    // Call once per note-on (not per sample) — precomputes per-partial gains.
-    void setPickupPosition (float pickupPosition) noexcept
-    {
-        // pickupPosition [0,1]: 0=base (warm), 1=tip (bright).
-        // Gain for partial n at normalised position x ≈ |sin(n * pi * x)|
-        // We use n=1..6 and clamp to avoid silence at exactly 0.
-        float x = 0.05f + pickupPosition * 0.95f;   // avoid pure-node singularity
-        for (int i = 0; i < kNumPartials; ++i)
-        {
-            float n = static_cast<float> (i + 1);
-            float modeGain = std::fabs (fastSin (n * 3.14159265f * x));
-            // Fundamental always gets a floor so the note never disappears
-            if (i == 0) modeGain = std::max (modeGain, 0.4f);
-            // Normalise against fundamental gain to avoid level jumps
-            partialGains[i] = modeGain;
-        }
-        // Normalise so the fundamental is always unity
-        float fundGain = partialGains[0];
-        if (fundGain > 0.001f)
-            for (int i = 0; i < kNumPartials; ++i)
-                partialGains[i] /= fundGain;
-    }
-
-    // Per-sample process: apply a one-pole LP that tracks the "presence" band.
-    // The proximity LP is still useful for the overall tone colour (tube saturation
-    // input level changes with pickup distance), but the main timbral shaping is
-    // now done via partialGains[] applied inside RhodesToneGenerator::process().
-    float process (float tineSignal, float pickupPosition) noexcept
-    {
-        // One-pole presence filter: tip = slight presence boost, base = gentle LP
-        float brightness = 0.3f + pickupPosition * 0.7f;
-        float cutoffCoeff = 0.05f + brightness * 0.9f;
-        pickupState += cutoffCoeff * (tineSignal - pickupState);
-        pickupState = flushDenormal (pickupState);
-        return pickupState;
-    }
-
-    void reset() noexcept
-    {
-        pickupState = 0.0f;
-        for (int i = 0; i < kNumPartials; ++i)
-            partialGains[i] = 1.0f;
-    }
-
-    float pickupState = 0.0f;
-};
-
-//==============================================================================
-// RhodesAmpStage — Tube amp warmth + velocity-dependent bark.
+// OasisRhodesAmpStage — Tube amp warmth + velocity-dependent bark (OASIS).
 //
 // The Rhodes preamp was typically a tube circuit that added warmth at
 // low levels and asymmetric clipping ("bark") at high levels. The bark
 // is the hallmark of aggressive Rhodes playing — Herbie Hancock,
 // Chick Corea, the sound of the tine being driven hard into the pickup.
+// Named with Oasis prefix to avoid collision with OkeanosEngine's version.
 //==============================================================================
-struct RhodesAmpStage
+struct OasisRhodesAmpStage
 {
     void prepare (float sampleRate) noexcept
     {
@@ -312,7 +232,75 @@ struct RhodesAmpStage
     float dcBlock = 0.0f;
     float dcCoeff = 0.000713f;  // default for 44100 Hz (2*pi*5/44100); updated in prepare()
 };
-#endif // XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
+#endif // XOLOKUN_OASIS_RHODES_DSP_DEFINED
+
+//==============================================================================
+// OasisRhodesPickupModel — Magnetic pickup simulation (OASIS-specific).
+//
+// Extended version of the Rhodes pickup that precomputes per-partial gains
+// based on pickup position. This is OASIS-specific and lives outside the
+// shared XOLOKUN_RHODES_TONE_GENERATOR_DEFINED guard so it is always defined,
+// even when the guard is already set by OkeanosEngine.h (which has a simpler
+// pickup model without setPickupPosition / partialGains).
+//
+// The pickup position relative to the tine determines which partials are
+// captured. Gain for partial n at normalised position x ≈ |sin(n·π·x)|,
+// derived from the fixed-free beam velocity mode shape.
+//   - pickupPosition=0.0 = near base (warm, fundamental-heavy)
+//   - pickupPosition=1.0 = near tip (bright, even partials boosted)
+//
+// References: Smith & Perttunen (2002) "Acoustic Pickup Position and Timbre"
+//==============================================================================
+#ifndef XOLOKUN_OASIS_RHODES_PICKUP_MODEL_DEFINED
+#define XOLOKUN_OASIS_RHODES_PICKUP_MODEL_DEFINED
+struct OasisRhodesPickupModel
+{
+    static constexpr int kNumPartials = 6;
+    float partialGains[kNumPartials] = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
+
+    // Call once per note-on (not per sample) — precomputes per-partial gains.
+    void setPickupPosition (float pickupPosition) noexcept
+    {
+        // pickupPosition [0,1]: 0=base (warm), 1=tip (bright).
+        // Gain for partial n at normalised position x ≈ |sin(n * pi * x)|
+        // We use n=1..6 and clamp to avoid silence at exactly 0.
+        float x = 0.05f + pickupPosition * 0.95f;   // avoid pure-node singularity
+        for (int i = 0; i < kNumPartials; ++i)
+        {
+            float n = static_cast<float> (i + 1);
+            float modeGain = std::fabs (fastSin (n * 3.14159265f * x));
+            // Fundamental always gets a floor so the note never disappears
+            if (i == 0) modeGain = std::max (modeGain, 0.4f);
+            partialGains[i] = modeGain;
+        }
+        // Normalise so the fundamental is always unity
+        float fundGain = partialGains[0];
+        if (fundGain > 0.001f)
+            for (int i = 0; i < kNumPartials; ++i)
+                partialGains[i] /= fundGain;
+    }
+
+    // Per-sample process: one-pole LP that models pickup proximity effect.
+    // Main timbral shaping is done via partialGains[] in OasisRhodesToneGenerator::process().
+    float process (float tineSignal, float pickupPosition) noexcept
+    {
+        float brightness = 0.3f + pickupPosition * 0.7f;
+        float cutoffCoeff = 0.05f + brightness * 0.9f;
+        pickupState += cutoffCoeff * (tineSignal - pickupState);
+        pickupState = flushDenormal (pickupState);
+        return pickupState;
+    }
+
+    void reset() noexcept
+    {
+        pickupState = 0.0f;
+        for (int i = 0; i < kNumPartials; ++i)
+            partialGains[i] = 1.0f;
+    }
+
+    float pickupState = 0.0f;
+};
+#endif // XOLOKUN_OASIS_RHODES_PICKUP_MODEL_DEFINED
 
 //==============================================================================
 // OasisVoice
@@ -331,9 +319,9 @@ struct OasisVoice
     int noteAge = 0;
 
     GlideProcessor glide;
-    RhodesToneGenerator tine;
-    RhodesPickupModel pickup;
-    RhodesAmpStage amp;
+    OasisRhodesToneGenerator tine;
+    OasisRhodesPickupModel pickup;
+    OasisRhodesAmpStage amp;
     FilterEnvelope ampEnv;
     FilterEnvelope filterEnv;
     CytomicSVF svf;
@@ -615,7 +603,7 @@ public:
                     }
                     // Collect residual energy from all active partials
                     float stolenEnergy = 0.0f;
-                    for (int p = 0; p < RhodesToneGenerator::kNumPartials; ++p)
+                    for (int p = 0; p < OasisRhodesToneGenerator::kNumPartials; ++p)
                         stolenEnergy += voices_[slot].tine.partialLevels[p];
                     stolenEnergy *= voices_[slot].ampEnvLevel;
                     culledEnergy_ += clamp (stolenEnergy * 0.8f, 0.0f, 1.0f);
