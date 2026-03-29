@@ -1,4 +1,7 @@
 #pragma once
+// OutshineMainComponent — UI for the Outshine DSP engine.
+// Part of the Originate workflow (Export Pyramid).
+// See Docs/export-architecture.md for the full architecture.
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "../../XOlokunProcessor.h"

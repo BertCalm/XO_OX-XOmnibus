@@ -12,6 +12,15 @@ Files with `__main__` are kept in Tools/ even if not used by the pipeline — th
 
 ---
 
+## xoutshine.py (archived 2026-03-29)
+Standalone Python duplicate of the C++ XOutshine DSP engine. Superseded by:
+- Desktop: Originate UI wizard (`Source/Export/XOriginate.h` + `Source/UI/Outshine/`)
+- CLI: Oxport pipeline (`Tools/oxport.py`)
+
+See `Docs/export-architecture.md` for the full Export Pyramid architecture.
+
+---
+
 ## Files Moved (Phase D, 2026-03-29)
 
 | File | Reason |
