@@ -1077,17 +1077,19 @@ public:
                 }
                 // -------------------------------------------------------------
 
-                for (int uLayer = 0; uLayer < unisonCount; ++uLayer)
+                // Precompute per-layer frequency multipliers (outside the partial loop)
+                float freqMults[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+                for (int uL = 0; uL < unisonCount; ++uL)
                 {
-                    // Compute frequency offset for this unison layer
-                    float freqMult = 1.0f;
                     if (unisonCount > 1)
                     {
-                        // Spread layers symmetrically: -spread..+spread
-                        float layerPos = (static_cast<float> (uLayer) / static_cast<float> (unisonCount - 1)) * 2.0f - 1.0f;
-                        freqMult = 1.0f + unisonSpread * layerPos;
+                        float layerPos = (static_cast<float> (uL) / static_cast<float> (unisonCount - 1)) * 2.0f - 1.0f;
+                        freqMults[uL] = 1.0f + unisonSpread * layerPos;
                     }
+                }
 
+                for (int uLayer = 0; uLayer < unisonCount; ++uLayer)
+                {
                     // Render the partial bank for one sample
                     int np = voice.partialBank.numPartials;
 
@@ -1107,9 +1109,9 @@ public:
 
                         if (amp < 1e-8f)
                         {
-                            // Only advance phase on the first unison layer
-                            if (uLayer == 0)
-                                p.theta += p.omega * invSr_;
+                            // Advance layer accumulators even for silent partials
+                            p.layerTheta[uLayer] += p.omega * freqMults[uLayer] * invSr_;
+                            if (uLayer == 0) p.theta += p.omega * invSr_;
                             continue;
                         }
 
@@ -1118,9 +1120,8 @@ public:
                         if (couplingRing != 0.0f)
                             ringMod = 1.0f + couplingRing;
 
-                        // Unison layers beyond 0 use a phase offset to avoid identical signals
-                        float uniPhase = p.theta * freqMult + static_cast<float> (uLayer) * 1.618f;
-                        float sample = amp * ringMod * FastMath::fastSin (uniPhase);
+                        // Use independent per-layer accumulator (FIX P0: was p.theta * freqMult)
+                        float sample = amp * ringMod * FastMath::fastSin (p.layerTheta[uLayer]);
 
                         // Spatial panning — use cached constant-power coefficients.
                         // Cache is valid for kKuraBlock samples (same lifetime as psi/r).
@@ -1132,13 +1133,16 @@ public:
                         pR += sample * panR;
                         monoSample += sample;
 
-                        // Only advance phase on the first unison layer (shared partial bank)
+                        // Advance this layer's independent accumulator
+                        p.layerTheta[uLayer] += p.omega * freqMults[uLayer] * invSr_;
+
+                        // Layer 0 also advances the shared Kuramoto phase accumulator
                         if (uLayer == 0)
                             p.theta += p.omega * invSr_;
                     }
                 }
 
-                // Phase wrapping every sample for stability
+                // Phase wrapping every sample for stability (both theta and layerTheta)
                 {
                     int np = voice.partialBank.numPartials;
                     for (int i = 0; i < np; ++i)
@@ -1146,6 +1150,13 @@ public:
                         float& theta = voice.partialBank.partials[i].theta;
                         if (theta >= kTwoPi) theta -= kTwoPi * std::floor (theta / kTwoPi);
                         if (theta < 0.0f) theta += kTwoPi;
+
+                        for (int u = 0; u < unisonCount; ++u)
+                        {
+                            float& lt = voice.partialBank.partials[i].layerTheta[u];
+                            if (lt >= kTwoPi) lt -= kTwoPi * std::floor (lt / kTwoPi);
+                            if (lt < 0.0f) lt += kTwoPi;
+                        }
                     }
                 }
 
@@ -1417,6 +1428,19 @@ private:
 
             for (int i = 0; i < voice.partialBank.numPartials; ++i)
                 voice.partialBank.partials[i].theta = theta[i];
+        }
+
+        // Initialise independent unison layer accumulators from base theta.
+        // Each layer will advance at its own detuned frequency; layer 0 == theta.
+        {
+            int np = voice.partialBank.numPartials;
+            for (int i = 0; i < np; ++i)
+            {
+                float baseTheta = voice.partialBank.partials[i].theta;
+                for (int u = 0; u < 4; ++u)
+                    voice.partialBank.partials[i].layerTheta[u] = baseTheta
+                        + static_cast<float> (u) * 1.618f;  // spread initial phases
+            }
         }
 
         // Trigger envelopes

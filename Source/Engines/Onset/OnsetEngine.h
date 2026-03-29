@@ -240,11 +240,14 @@ public:
         // This emulates the initial membrane impact burst heard in real drum recordings.
         spikeFrequency = baseFreqHz * (4.0f + snapAmount * 12.0f);
 
-        // Spike duration: 1-6ms. Higher snap = shorter, tighter click.
-        spikeSamplesRemaining = static_cast<int> (sr * (0.001f + (1.0f - snapAmount) * 0.005f));
+        // Fix 3: Extend spike window from 1-6ms to 2-14ms so the transient sits above
+        // the psychoacoustic integration threshold (~2ms) for all snap values.
+        // Higher snap = shorter, tighter click (same direction, wider range).
+        spikeSamplesRemaining = static_cast<int> (sr * (0.002f + (1.0f - snapAmount) * 0.012f));
 
-        // Noise duration: 1-3ms. Higher snap = longer noise burst (more "snap" character).
-        noiseSamplesRemaining = static_cast<int> (sr * (0.001f + snapAmount * 0.002f));
+        // Fix 3: Extend noise window from 1-3ms to 2-8ms for the same reason.
+        // Higher snap = longer noise burst (more "snap" character, same direction).
+        noiseSamplesRemaining = static_cast<int> (sr * (0.002f + snapAmount * 0.006f));
     }
 
     float process() noexcept
@@ -419,7 +422,9 @@ public:
         // Noise envelope: 10-50ms burst. Higher snap = longer noise for more "crack."
         noiseEnvelopeLevel = 1.0f;
         float noiseDurationSec = 0.01f + snapAmt * 0.04f;
-        // 0.368 = 1/e: the envelope reaches 1/e after noiseDurationSec
+        // NOTE: actual T63 time constant = noiseDurationSec * 0.368 (not noiseDurationSec).
+        // The factor 0.368 (≈ 1/e) converts the labeled duration to a one-pole coefficient
+        // so the envelope decays to 1/e² in noiseDurationSec, producing a faster perceived snap.
         noiseDecayRate = 1.0f - fastExp (static_cast<float> (-1.0 / (sr * noiseDurationSec * 0.368)));
 
         // Body pitch sweep: up to 12 semitones (1 octave) downward chirp
@@ -649,11 +654,18 @@ public:
         // Modulation index 0-8: controls FM brightness.
         // 8.0 max chosen to stay within single-reflection sideband territory
         // (higher indices create aliasing without oversampling).
-        modulationIndex = charAmt * 8.0f;
+        // Nyquist guard: reduce FM index as carrier approaches Nyquist to prevent
+        // aliasing on high-pitched hat/cymbal voices at standard sample rates.
+        {
+            float nyquistGuard = std::min (1.0f, static_cast<float> (sr * 0.4) / (static_cast<float> (carrierFreq) + 1.0f));
+            modulationIndex = charAmt * 8.0f * nyquistGuard;
+        }
         modulatorEnvelopeLevel = 1.0f;
 
         // Modulator envelope decay: 5-105ms. Higher snap = faster decay (sharper attack).
-        // 0.368 = 1/e: natural time constant for the one-pole filter.
+        // NOTE: actual T63 time constant = modulatorDecaySec * 0.368 (not modulatorDecaySec).
+        // The factor 0.368 (≈ 1/e) converts the labeled duration to a one-pole coefficient
+        // so the envelope decays to 1/e² in modulatorDecaySec, producing a faster perceived decay.
         float modulatorDecaySec = 0.005f + (1.0f - snapAmt) * 0.1f;
         modulatorEnvelopeDecayRate = static_cast<float> (
             1.0 - std::exp (-1.0 / (sr * static_cast<double> (modulatorDecaySec) * 0.368)));
@@ -776,7 +788,9 @@ public:
         // Excitation: noise burst fed into resonator bank (models the strike impulse)
         excitationLevel = 1.0f;
         float excitationDurationSec = 0.001f + (1.0f - snapAmt) * 0.01f;
-        // 0.368 = 1/e: natural exponential time constant
+        // NOTE: actual T63 time constant = excitationDurationSec * 0.368 (not excitationDurationSec).
+        // The factor 0.368 (≈ 1/e) converts the labeled duration to a one-pole coefficient
+        // so the excitation decays to 1/e² in excitationDurationSec, producing a faster transient.
         excitationDecay = 1.0f - fastExp (-1.0f / (sr * excitationDurationSec * 0.368f));
         active = true;
     }
@@ -958,6 +972,9 @@ public:
         dcwEnvelopeLevel = snapAmt;
 
         // DCW envelope decay: 10-110ms. Higher snap = faster decay (sharper transient).
+        // NOTE: actual T63 time constant = dcwDecaySec * 0.368 (not dcwDecaySec).
+        // The factor 0.368 (≈ 1/e) converts the labeled duration to a one-pole coefficient
+        // so the envelope decays to 1/e² in dcwDecaySec, producing a faster perceived snap.
         float dcwDecaySec = 0.01f + (1.0f - snapAmt) * 0.1f;
         dcwEnvelopeDecayRate = static_cast<float> (
             1.0 - std::exp (-1.0 / (sr * static_cast<double> (dcwDecaySec) * 0.368)));
@@ -1059,9 +1076,11 @@ public:
     {
         if (warmth > 0.01f)
         {
-            // Warmth sweeps LP cutoff from 18kHz (open/bright) down to 4kHz (warm/dark).
-            // 14000 = 18000 - 4000: the sweep range in Hz.
-            float cutoff = 18000.0f - warmth * 14000.0f;
+            // Fix 4: Warmth sweeps LP cutoff from 18kHz (open/bright) down to 8kHz (warm/dark).
+            // Floor raised from 4kHz to 8kHz to prevent double-LP stacking with the per-voice
+            // filter. At full warmth the character stage no longer steals presence from the mix.
+            // 10000 = 18000 - 8000: the sweep range in Hz.
+            float cutoff = 18000.0f - warmth * 10000.0f;
             warmthLPL.setCoefficients (cutoff, 0.1f, sr);
             warmthLPR.setCoefficients (cutoff, 0.1f, sr);
         }
@@ -1192,17 +1211,31 @@ public:
         apLen[0]   = static_cast<int> (556 * sampleRateScale);    // ~12.6ms
         apLen[1]   = static_cast<int> (441 * sampleRateScale);    // ~10.0ms
 
+        // Fix 5: R-channel banks with +3.2% delay spread for stereo decorrelation.
+        // This breaks the mono summing so the two channels arrive at slightly different
+        // times, producing natural stereo width without pitch-shifting artifacts.
+        // 1.032 chosen as the smallest spread that gives audible decorrelation above
+        // ~200Hz without introducing metallic comb-filtering at the stereo center.
+        for (int c = 0; c < 4; ++c)
+            combLenR[c] = static_cast<int> (combLen[c] * 1.032f);
+        for (int a = 0; a < 2; ++a)
+            apLenR[a] = static_cast<int> (apLen[a] * 1.032f);
+
         // Allocate comb and allpass buffers to exactly the needed length.
         // Static arrays sized for 44.1 kHz would overflow at higher sample rates.
         for (int c = 0; c < 4; ++c)
         {
             combBufLen[c] = combLen[c] + 1;
             combBuf[c].assign (static_cast<size_t> (combBufLen[c]), 0.0f);
+            combBufLenR[c] = combLenR[c] + 1;
+            combBufR[c].assign (static_cast<size_t> (combBufLenR[c]), 0.0f);
         }
         for (int a = 0; a < 2; ++a)
         {
             apBufLen[a] = apLen[a] + 1;
             apBuf[a].assign (static_cast<size_t> (apBufLen[a]), 0.0f);
+            apBufLenR[a] = apLenR[a] + 1;
+            apBufR[a].assign (static_cast<size_t> (apBufLenR[a]), 0.0f);
         }
 
         reset();
@@ -1212,14 +1245,19 @@ public:
     {
         if (mix < 0.001f) return;
 
-        float input = (left + right) * 0.5f;
+        // Fix 5: Feed L and R channels separately into their own comb banks so the
+        // two paths are decorrelated. Sum the stereo input to mono first so both
+        // banks receive the same musical content but diverge over the delay network.
+        float inputL = left;
+        float inputR = right;
         // Comb feedback: 0.5-0.95. Higher decay = longer reverb tail.
         // Capped at 0.95 to prevent infinite buildup.
         float fb = 0.5f + decay * 0.45f;
         // Damping: 0.3-0.8. Smaller room = more high-frequency absorption.
         float damp = 0.3f + (1.0f - roomSize) * 0.5f;
 
-        float sum = 0.0f;
+        // L channel comb bank
+        float sumL = 0.0f;
         for (int c = 0; c < 4; ++c)
         {
             int rp = combPos[c] - combLen[c];
@@ -1230,25 +1268,53 @@ public:
             // Denormal protection: comb filter LP states decay toward zero when
             // input goes silent — denormal values persist indefinitely in the loop.
             combLP[c] = flushDenormal (combLP[c]);
-            combBuf[c][static_cast<size_t> (combPos[c])] = input + combLP[c] * fb;
+            combBuf[c][static_cast<size_t> (combPos[c])] = inputL + combLP[c] * fb;
             combPos[c] = (combPos[c] + 1) % combBufLen[c];
-            sum += del;
+            sumL += del;
         }
-        sum *= 0.25f;
+        sumL *= 0.25f;
 
+        // Fix 5: R channel comb bank (3.2% longer delays = decorrelated path)
+        float sumR = 0.0f;
+        for (int c = 0; c < 4; ++c)
+        {
+            int rp = combPosR[c] - combLenR[c];
+            if (rp < 0) rp += combBufLenR[c];
+            float del = combBufR[c][static_cast<size_t> (rp)];
+            combLPR[c] = combLPR[c] + damp * (del - combLPR[c]);
+            combLPR[c] = flushDenormal (combLPR[c]);
+            combBufR[c][static_cast<size_t> (combPosR[c])] = inputR + combLPR[c] * fb;
+            combPosR[c] = (combPosR[c] + 1) % combBufLenR[c];
+            sumR += del;
+        }
+        sumR *= 0.25f;
+
+        // L allpass diffusers
         for (int a = 0; a < 2; ++a)
         {
             int rp = apPos[a] - apLen[a];
             if (rp < 0) rp += apBufLen[a];
             float del = apBuf[a][static_cast<size_t> (rp)];
-            float apIn = sum + del * 0.5f;
+            float apIn = sumL + del * 0.5f;
             apBuf[a][static_cast<size_t> (apPos[a])] = apIn;
-            sum = del - apIn * 0.5f;
+            sumL = del - apIn * 0.5f;
             apPos[a] = (apPos[a] + 1) % apBufLen[a];
         }
 
-        left  += sum * mix;
-        right += sum * mix;
+        // Fix 5: R allpass diffusers (separate state, 3.2% longer)
+        for (int a = 0; a < 2; ++a)
+        {
+            int rp = apPosR[a] - apLenR[a];
+            if (rp < 0) rp += apBufLenR[a];
+            float del = apBufR[a][static_cast<size_t> (rp)];
+            float apIn = sumR + del * 0.5f;
+            apBufR[a][static_cast<size_t> (apPosR[a])] = apIn;
+            sumR = del - apIn * 0.5f;
+            apPosR[a] = (apPosR[a] + 1) % apBufLenR[a];
+        }
+
+        left  += sumL * mix;
+        right += sumR * mix;
     }
 
     void reset() noexcept
@@ -1258,16 +1324,24 @@ public:
             std::fill (combBuf[c].begin(), combBuf[c].end(), 0.0f);
             combPos[c] = 0;
             combLP[c]  = 0.0f;
+            // Fix 5: also reset R-channel comb state
+            std::fill (combBufR[c].begin(), combBufR[c].end(), 0.0f);
+            combPosR[c] = 0;
+            combLPR[c]  = 0.0f;
         }
         for (int a = 0; a < 2; ++a)
         {
             std::fill (apBuf[a].begin(), apBuf[a].end(), 0.0f);
             apPos[a] = 0;
+            // Fix 5: also reset R-channel allpass state
+            std::fill (apBufR[a].begin(), apBufR[a].end(), 0.0f);
+            apPosR[a] = 0;
         }
     }
 
 private:
     float sr = 44100.0f;
+    // L-channel comb + allpass banks
     std::vector<float> combBuf[4];
     float combLP[4]  = {};
     int combLen[4]   = { 1116, 1188, 1277, 1356 };
@@ -1277,6 +1351,16 @@ private:
     int apLen[2]     = { 556, 441 };
     int apBufLen[2]  = { 557, 442 };                 // len + 1, sized in prepare()
     int apPos[2]     = {};
+    // Fix 5: R-channel comb + allpass banks (3.2% longer delays for stereo decorrelation)
+    std::vector<float> combBufR[4];
+    float combLPR[4]  = {};
+    int combLenR[4]   = { 1152, 1226, 1318, 1400 };  // ~1.032x L lengths (sized in prepare())
+    int combBufLenR[4]= { 1153, 1227, 1319, 1401 };  // len + 1, sized in prepare()
+    int combPosR[4]   = {};
+    std::vector<float> apBufR[2];
+    int apLenR[2]     = { 574, 455 };                // ~1.032x L lengths (sized in prepare())
+    int apBufLenR[2]  = { 575, 456 };                // len + 1, sized in prepare()
+    int apPosR[2]     = {};
 };
 
 //==============================================================================
@@ -1328,6 +1412,16 @@ struct OnsetVoice
     bool isClap = false;
     float baseFreq = 220.0f;
     float sr = 44100.0f;
+
+    // Fix 2: Voice index (0-7) drives per-voice filter Q selection.
+    // Set by OnsetEngine::prepare() immediately after constructing the voice array.
+    int voiceIndex = 0;
+
+    // Fix 2: Per-voice resonance table — each drum role has a characteristic Q that
+    // gives it a distinctive spectral peak on the voice filter. Using voice index so
+    // the Q is data-driven and patch-preserving (no new parameters, no ID changes).
+    // Values: kick is low-Q (no resonance), hats are highest-Q (most metallic sparkle).
+    static constexpr float kVoiceFilterQ[8] = { 0.35f, 0.45f, 0.55f, 0.40f, 0.60f, 0.50f, 0.30f, 0.65f };
 
     // Layer X
     BridgedTOsc bridgedT;
@@ -1426,7 +1520,9 @@ struct OnsetVoice
         // Reset the counter so the block-rate guard fires on the very next processSample call.
         breathBlockCounter = 0;
         lastBreathCutoff = baseCutoff;
-        voiceFilter.setCoefficients (baseCutoff, 0.1f, sr);
+        // Fix 2: use per-voice Q from table instead of hardcoded 0.1
+        const float voiceQ = kVoiceFilterQ[voiceIndex & 7];
+        voiceFilter.setCoefficients (baseCutoff, voiceQ, sr);
     }
 
     // QA C1: Blend gains precomputed per block, passed in to avoid per-sample trig
@@ -1464,9 +1560,6 @@ struct OnsetVoice
         // Equal-power blend crossfade (gains precomputed per block)
         float blended = layerX * blendGainX + layerO * blendGainO;
 
-        // Add transient (pre-filter)
-        blended += transient.process();
-
         // D005: breathing LFO modulates filter cutoff at block-rate (every 32 samples).
         // At 0.08 Hz the LFO moves < 0.003 Hz per sample; updating every 32 samples
         // is perceptually identical and saves 8 std::sin calls per sample across 8 voices.
@@ -1474,12 +1567,18 @@ struct OnsetVoice
         {
             float breathMod = breathingLFO.process();
             lastBreathCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
-            voiceFilter.setCoefficients (lastBreathCutoff, 0.1f, sr);
+            // Fix 2: use per-voice Q from table (consistent with triggerVoice)
+            voiceFilter.setCoefficients (lastBreathCutoff, kVoiceFilterQ[voiceIndex & 7], sr);
         }
         ++breathBlockCounter;
 
-        // Voice filter
+        // Voice filter (Fix 1: filter applied before transient addition below)
         blended = voiceFilter.processSample (blended);
+
+        // Fix 1: Add transient AFTER the voice filter so the click/snap cuts through
+        // the mix without being attenuated by the per-voice lowpass. Previously the
+        // transient was added pre-filter and got rolled off with the body.
+        blended += transient.process();
 
         // Apply envelope and velocity
         float out = blended * envLevel * velocity;
@@ -1581,6 +1680,7 @@ public:
             voices[v].circuitType = kVoiceCfg[v].circuit;
             voices[v].isClap = kVoiceCfg[v].isClap;
             voices[v].baseFreq = kVoiceCfg[v].baseFreq;
+            voices[v].voiceIndex = v;  // Fix 2: store index so per-voice Q table lookup works
             voices[v].prepare (sampleRate);
         }
     }

@@ -1328,6 +1328,7 @@ struct OstiSubVoice
     float baseCutoff = 4000.0f;
     float userExciterMix = 0.5f;
     float sr = 44100.0f;
+    float stealFade = 1.0f;  // voice-steal fade-in: 0→1 over ~2ms to prevent click on steal
 
     void prepare (double sampleRate)
     {
@@ -1408,6 +1409,15 @@ struct OstiSubVoice
 
         sample = voiceFilter.processSample (sample);
         sample *= envLevel * velocity;
+
+        // Voice-steal fade-in: ramp stealFade from 0→1 over ~2ms to mask click
+        if (stealFade < 1.0f)
+        {
+            sample *= stealFade;
+            // Rate: reach 1.0 in ~2ms. Use per-sample increment derived from sr.
+            stealFade = std::min (1.0f, stealFade + (1.0f / (sr * 0.002f)));
+        }
+
         lastOutput = sample;
         return sample;
     }
@@ -1451,9 +1461,13 @@ struct OstiSeat
                       float exciterMix, float pitchEnvAmount, float velSens) noexcept
     {
         auto& sv = subVoices[nextSubVoice];
+        // FIX 1: voice stealing — if sub-voice is still active, apply a brief
+        // fade-in to the new voice so the hard cut-off doesn't produce a click.
+        const bool isSteal = sv.active;
         sv.trigger (vel, instrument, articulation, tuning, decay,
                     brightness, bodyAmount, bodyModelOverride,
                     exciterMix, pitchEnvAmount, velSens);
+        sv.stealFade = isSteal ? 0.0f : 1.0f;
         nextSubVoice = (nextSubVoice + 1) % kSubVoices;
     }
 
@@ -1677,7 +1691,9 @@ public:
                 {
                     int inst = static_cast<int> (sInstr[s]);
                     int art = static_cast<int> (sArtic[s]);
-                    float ghostVel = neighborPeak * gCircleAmt * 0.25f;
+                    // FIX 2: clamp ghost velocity to prevent positive feedback avalanche
+                    // at high CIRCLE amounts — ghost triggers feeding more ghost triggers.
+                    float ghostVel = std::min (neighborPeak * gCircleAmt * 0.25f, 0.3f);
                     seats[s].triggerSeat (ghostVel, inst, art, sTune[s] + pitchBendNorm * 2.0f, sDecay[s],
                         sBright[s], sBody[s], static_cast<int> (sBodyModel[s]),
                         sExcMix[s], sPitchEnv[s], sVelSens[s]);

@@ -281,12 +281,26 @@ public:
         {
             buffer.clear (0, numSamples);
             couplingCacheL_ = couplingCacheR_ = 0.0f;
+            // Reset coupling accumulators on bypass path too — coupling inputs
+            // may still arrive even when engine is silent; discard them cleanly.
+            couplingCityMod_  = 0.0f;
+            couplingChokeMod_ = 0.0f;
+            couplingFlipMod_  = 0.0f;
+            couplingDecayMod_ = 0.0f;
+            couplingFMMod_    = 0.0f;
             return;
         }
 
         // ── 3. Cache parameters (ParamSnapshot) ──────────────────────
         OfferingParamSnapshot snap;
         loadSnapshot (snap);
+
+        // ── 3b. Wire coupling modulators into snapshot ────────────────
+        // couplingCityMod_: external amplitude modulates city processing intensity
+        snap.cityIntensity = std::clamp (snap.cityIntensity + couplingCityMod_, 0.0f, 1.0f);
+        // couplingFlipMod_: external rhythm modulates stretch amount (additive)
+        snap.flipStretch = std::clamp (snap.flipStretch + couplingFlipMod_, 0.5f, 2.0f);
+        // TODO: couplingFMMod_ — wire to transient FM depth once OfferingTransient exposes fm input
 
         // ── 4. Apply macros ──────────────────────────────────────────
         float macroDig  = loadParam (paramMacroDig_, 0.0f);
@@ -413,7 +427,9 @@ public:
                     sample *= 1.0f + lfo2Val * snap.lfo2Depth * 0.5f;
 
                 // Apply voice level
-                sample *= vs.level;
+                // couplingChokeMod_: external amplitude ducks (sidechains) drum voices
+                float chokeGain = std::clamp (1.0f - couplingChokeMod_, 0.0f, 1.0f);
+                sample *= vs.level * chokeGain;
 
                 // Stereo panning (equal-power) — SRO: use block-precomputed values
                 sampleL += sample * precomputedPanL[v];
@@ -467,6 +483,16 @@ public:
 
         // ── 9. SilenceGate analysis ──────────────────────────────────
         analyzeForSilenceGate (buffer, safeSamples);
+
+        // ── 10. Reset coupling accumulators ──────────────────────────
+        // Reset AFTER consuming so next block starts clean.
+        // applyCouplingInput() is called BEFORE renderBlock() each cycle;
+        // resetting here ensures stale values never persist across missed blocks.
+        couplingCityMod_  = 0.0f;
+        couplingChokeMod_ = 0.0f;
+        couplingFlipMod_  = 0.0f;
+        couplingDecayMod_ = 0.0f;
+        couplingFMMod_    = 0.0f;
     }
 
     //-- Coupling ----------------------------------------------------------------
@@ -794,6 +820,11 @@ private:
         snap = std::clamp (snap + variation.snapDelta, 0.0f, 1.0f);
         pitchEnv = std::clamp (pitchEnv + variation.pitchEnvDelta, 0.0f, 1.0f);
         sat = std::clamp (sat + variation.satDelta, 0.0f, 1.0f);
+
+        // couplingDecayMod_: external envelope multiplies into voice decay at trigger time
+        // couplingDecayMod_ > 0 shortens decay (sidechain tighten); clamped to valid range
+        if (std::abs (couplingDecayMod_) > 0.001f)
+            decay = std::clamp (decay * std::max (0.1f, 1.0f - couplingDecayMod_), 0.001f, 2.0f);
 
         // Hat choke: closed hat kills open hat
         if (type == OfferingTransient::CHat)

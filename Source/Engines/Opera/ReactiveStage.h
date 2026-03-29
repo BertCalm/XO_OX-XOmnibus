@@ -240,9 +240,15 @@ public:
                 // Apply RT60-derived feedback gain
                 float fb = dampState[i] * feedbackGain[i];
 
-                // Write: feedback + pre-delayed input
+                // FIX P0: gate input injection — inactive lines must not accumulate
+                // input energy; they were zeroed for output (read[i]=0) but still
+                // received preDelayedInput on every write, causing them to build up
+                // a hidden reservoir that burst audibly when they became active again.
+                float injection = (i < activeLines) ? preDelayedInput : 0.0f;
+
+                // Write: feedback + (gated) pre-delayed input
                 delayBuffers[i][static_cast<size_t> (writePos[i])] =
-                    flushDenormal (fb + preDelayedInput);
+                    flushDenormal (fb + injection);
 
                 // Advance write pointer (wrap within buffer)
                 writePos[i] = (writePos[i] + 1) % bufferSizes[i];

@@ -160,7 +160,10 @@ struct DXModulationEnvelope
         {
             case Idle: return 0.0f;
             case Attack:
-                level += attackRate;
+                // Exponential approach to 1.0 — matches standard DX envelope character.
+                // Target slightly above 1.0 (1.02) ensures the threshold is crossed
+                // cleanly. Was linear (level += attackRate) which sounded abrupt.
+                level += (1.02f - level) * attackRate;
                 if (level >= 1.0f) { level = 1.0f; stage = Decay1; }
                 return level;
             case Decay1:
@@ -563,19 +566,23 @@ public:
         v.modulator.prepare (srf);
         v.modulator.reset();
 
-        // Modulation envelope — fast attack, moderate decay to sustain
-        float modAtk = paramModAttack  ? paramModAttack->load()  : 0.001f;
-        float modDk  = paramModDecay   ? paramModDecay->load()   : 0.3f;
-        float modSus = paramModSustain ? paramModSustain->load() : 0.2f;
-        v.modEnv.prepare (srf);
-        v.modEnv.setRates (modAtk, modDk, modSus, 0.3f);
-        v.modEnv.trigger();
-
-        // Amp envelope
+        // Amp envelope params — read before mod env so release can be shared
         float attack  = paramAttack  ? paramAttack->load()  : 0.005f;
         float decay   = paramDecay   ? paramDecay->load()   : 1.0f;
         float sustain = paramSustain ? paramSustain->load() : 0.5f;
         float release = paramRelease ? paramRelease->load() : 0.6f;
+
+        // Modulation envelope — fast attack, moderate decay to sustain.
+        // Release is coupled to amp envelope release so mod index tails off
+        // in sync with the amplitude (was hardcoded 0.3f — BUG FIX).
+        float modAtk = paramModAttack  ? paramModAttack->load()  : 0.001f;
+        float modDk  = paramModDecay   ? paramModDecay->load()   : 0.3f;
+        float modSus = paramModSustain ? paramModSustain->load() : 0.2f;
+        v.modEnv.prepare (srf);
+        v.modEnv.setRates (modAtk, modDk, modSus, release);
+        v.modEnv.trigger();
+
+        // Amp envelope
         v.ampEnv.prepare (srf);
         v.ampEnv.setADSR (attack, decay, sustain, release);
         v.ampEnv.triggerHard();

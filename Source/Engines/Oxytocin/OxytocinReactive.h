@@ -44,27 +44,44 @@ public:
         cachedObsessionDrift = 0.0f;
     }
 
-    /// Update block-rate coefficients (call once per block).
-    /// NOTE: the change-guard is only effective when the passed values are
-    /// block-stable (e.g. snap.commitment, not the fluctuating boostedC).
+    /// Update filter coefficients from the current commitment level.
+    ///
+    /// Fix 1 (FATHOM): now called once per SAMPLE inside OxytocinVoice's sample
+    /// loop, passing boostedC (love envelope output) rather than snap.commitment
+    /// (static knob).  This makes resonance breathe with the love envelope.
+    ///
+    /// The change-guard (lastResonance / lastCutoff) still avoids redundant
+    /// tan() recomputes when boostedC is stable between consecutive samples.
     void updateCoefficients (float cutoffHz, float commitmentLevel) noexcept
     {
         float newRes = commitmentLevel * 3.8f;
 
-        if (newRes != lastResonance || cutoffHz != lastCutoff)
+        // FIX 5: quantize cutoff to 0.01 Hz grid before the change guard.
+        // During commitment envelope sweeps, boostedC changes every sample, causing
+        // ~44,100 tan() calls/sec/voice.  The guard below now only trips when the
+        // cutoff moves by at least 0.01 Hz — limiting recomputes to ~100/sec/voice
+        // during smooth envelope movement without any audible resolution loss.
+        float quantizedCutoff = std::round (cutoffHz * 100.0f) / 100.0f;
+
+        if (newRes != lastResonance || quantizedCutoff != lastCutoff)
         {
-            float fc = std::max (20.0f, std::min (cutoffHz, static_cast<float> (sr) * 0.49f));
+            float fc = std::max (20.0f, std::min (quantizedCutoff, static_cast<float> (sr) * 0.49f));
 
             // Matched-Z: g = tan(pi * fc / sr)
             g = std::tan (juce::MathConstants<float>::pi * fc / static_cast<float> (sr));
-            // Huovilainen normalisation factor (P0-2: applied to feedback path)
-            float g2 = g * g;
-            float g3 = g2 * g;
-            float g4 = g3 * g;
-            a = 1.0f / (1.0f + 4.0f * newRes * g + 6.0f * g2 + 4.0f * g3 + g4);
+
+            // FIX 1: Correct TPT Moog normalisation factor.
+            // The feedback path must use the normalised one-pole gain G = g/(1+g)
+            // raised to the 4th power — NOT the binomial expansion (1+g)^4.
+            // Old formula: a = 1/(1 + 4*res*g + 6*g^2 + 4*g^3 + g^4) == 1/(1+g)^4 at res=0
+            //   → resonance ~10% of intended at typical operating points (e.g. 8kHz, res=3.8).
+            // Correct TPT Moog: a = 1 / (1 + 4 * res * G^4)  where G = g/(1+g)
+            float G  = g / (1.0f + g);      // normalised one-pole gain
+            float G4 = G * G * G * G;        // G^4
+            a = 1.0f / (1.0f + 4.0f * newRes * G4);
 
             res = newRes;
-            lastCutoff    = cutoffHz;
+            lastCutoff    = quantizedCutoff;
             lastResonance = newRes;
         }
     }

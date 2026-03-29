@@ -262,6 +262,13 @@ struct OpalineMode
 {
     void setFreqAndQ (float freqHz, float q, float sampleRate) noexcept
     {
+        // Dirty-flag cache: skip expensive trig if freq/Q haven't changed meaningfully.
+        // Reduces ~18M transcendental calls/sec to ~thousands/sec (only when params change).
+        if (std::abs (freqHz - cachedFreq) < 0.5f && std::abs (q - cachedQ) < 0.001f)
+            return;
+        cachedFreq = freqHz;
+        cachedQ = q;
+
         if (freqHz >= sampleRate * 0.49f) freqHz = sampleRate * 0.49f;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max (q, 1.0f);
@@ -282,12 +289,16 @@ struct OpalineMode
         return out;
     }
 
-    void reset() noexcept { y1 = 0.0f; y2 = 0.0f; amplitude = 0.0f; }
+    void reset() noexcept { y1 = 0.0f; y2 = 0.0f; amplitude = 0.0f; cachedFreq = -1.0f; cachedQ = -1.0f; }
 
     float freq = 440.0f;
     float b0 = 0.0f, a1 = 0.0f, a2 = 0.0f;
     float y1 = 0.0f, y2 = 0.0f;
     float amplitude = 0.0f;  // for dynamic pruning
+
+    // Dirty-flag cache for setFreqAndQ — avoids redundant trig recalculation
+    float cachedFreq = -1.0f;
+    float cachedQ    = -1.0f;
 };
 
 //==============================================================================
@@ -330,6 +341,14 @@ struct OpalineVoice
     // Amplitude envelope
     float ampLevel = 0.0f;
 
+    // noteOff ramp: smooth 5ms release to 40% rather than an instantaneous cliff.
+    // 1.0f = no ramp active. Set to per-sample decay coefficient on noteOff.
+    float noteOffDecay = 1.0f;
+
+    // Counts down from (5ms * sampleRate) to 0. When 0, ramp is complete
+    // and noteOffDecay is reset to 1.0f so the multiplication stops.
+    int noteOffRampSamples = 0;
+
     // Cached pan gains (avoid per-sample trig)
     float panL = 0.707f, panR = 0.707f;
 
@@ -338,6 +357,8 @@ struct OpalineVoice
         active = false;
         velocity = 0.0f;
         ampLevel = 0.0f;
+        noteOffDecay = 1.0f;
+        noteOffRampSamples = 0;
         cracked = false;
         crackDetuning = 0.0f;
         crackIntensity = 0.0f;
@@ -670,9 +691,10 @@ public:
                     ++activeModes;
                 }
 
-                // Scale by number of active modes for consistent volume
+                // Scale by the fixed mode count so dynamics don't invert as modes are pruned.
+                // Using kNumModes (not activeModes) prevents louder output when fewer modes ring.
                 if (activeModes > 0)
-                    resonanceSum *= 4.0f / static_cast<float> (activeModes);
+                    resonanceSum *= 4.0f / static_cast<float> (kNumModes);
 
                 // HF noise character (CPU optimization: stochastic HF instead of 64 modes)
                 if (hfNoiseNow > 0.001f && voice.exciter.active)
@@ -696,6 +718,18 @@ public:
 
                 // Amplitude envelope with glass-appropriate long decay
                 voice.ampLevel *= baseDecayCoeff;
+
+                // noteOff ramp: smoothly multiply down to 40% over 5ms instead of cliff.
+                // noteOffRampSamples counts down to 0; when it hits 0, the ramp is done
+                // and noteOffDecay is reset to 1.0f so it no longer affects ampLevel.
+                if (voice.noteOffRampSamples > 0)
+                {
+                    voice.ampLevel *= voice.noteOffDecay;
+                    --voice.noteOffRampSamples;
+                    if (voice.noteOffRampSamples == 0)
+                        voice.noteOffDecay = 1.0f;
+                }
+
                 voice.ampLevel = flushDenormal (voice.ampLevel);
                 if (voice.ampLevel < 1e-7f) { voice.active = false; continue; }
 
@@ -799,8 +833,11 @@ public:
         {
             if (v.active && v.currentNote == note)
             {
-                // Glass release: quick initial drop, then lingering ring
-                v.ampLevel *= 0.4f;  // immediate 60% drop
+                // Glass release: smooth 5ms ramp to 40% (avoids the amplitude cliff click).
+                // noteOffRampSamples counts down sample-by-sample; ramp terminates when it hits 0.
+                // exp(log(0.4) / (0.005 * srf)) gives the per-sample multiplier for a 5ms ramp.
+                v.noteOffRampSamples = static_cast<int> (0.005f * srf);
+                v.noteOffDecay = std::exp (std::log (0.4f) / static_cast<float> (v.noteOffRampSamples));
                 v.filterEnv.release();
             }
         }

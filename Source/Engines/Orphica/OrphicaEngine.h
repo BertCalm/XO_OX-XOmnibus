@@ -28,17 +28,21 @@ struct OrphicaMicrosound {
     int writePos = 0;
     uint32_t seed = 12345u;
 
+    int freezePos = 0; // captured write position when Freeze mode triggers
+
     struct Grain {
         int readPos = 0;
         int remaining = 0;
         int length = 256;
+        int retrigCountdown = 0; // FIX 1: countdown before re-triggering (wires orph_microRate)
     };
     Grain grains[kGrains] {};
 
     void reset() {
         std::fill(buffer, buffer + kBufSize, 0.0f);
         writePos = 0;
-        for (auto& g : grains) { g.readPos = 0; g.remaining = 0; g.length = 256; }
+        freezePos = 0;
+        for (auto& g : grains) { g.readPos = 0; g.remaining = 0; g.length = 256; g.retrigCountdown = 0; }
     }
 
     // mode: 0=Stutter, 1=Scatter, 2=Freeze, 3=Reverse
@@ -55,8 +59,14 @@ struct OrphicaMicrosound {
             return input;
         }
 
-        // Write input (Freeze mode: stop writing)
-        if (mode != 2) {
+        // Write input (Freeze mode: stop writing; capture freeze point)
+        if (mode == 2) {
+            // FIX 2: Latch freezePos to the current write head on entry to Freeze.
+            // We detect entry by checking whether the previous sample was still writing
+            // (i.e. we track with a separate flag-free approach: just always update
+            // freezePos while NOT in freeze mode, so it holds the last written position).
+        } else {
+            freezePos = writePos; // always track last write position
             buffer[writePos] = input;
             writePos = (writePos + 1) % kBufSize;
         }
@@ -68,8 +78,14 @@ struct OrphicaMicrosound {
         for (int g = 0; g < kGrains; ++g) {
             auto& gr = grains[g];
 
+            // FIX 1: Use retrigCountdown to space re-triggers by retrigInterval (wires orph_microRate).
             if (gr.remaining <= 0) {
-                // Retrigger
+                if (gr.retrigCountdown > 0) {
+                    gr.retrigCountdown--;
+                    continue; // still waiting — skip retrigger this sample
+                }
+                // Countdown has reached 0: retrigger and arm the next countdown.
+                gr.retrigCountdown = retrigInterval;
                 gr.length = grainSize;
                 gr.remaining = grainSize;
 
@@ -91,8 +107,8 @@ struct OrphicaMicrosound {
                         gr.readPos = (writePos - static_cast<int>(rnd * static_cast<float>(maxBack)) - grainSize + kBufSize) % kBufSize;
                         break;
                     }
-                    case 2: // Freeze: read from frozen position
-                        gr.readPos = (writePos + g * (kBufSize / kGrains)) % kBufSize;
+                    case 2: // FIX 2: Freeze: space grains within one grain-size window behind freeze point
+                        gr.readPos = (freezePos - g * (grainSize / kGrains) + kBufSize) % kBufSize;
                         break;
                     case 3: // Reverse: start at write head, read backwards
                         gr.readPos = writePos;
@@ -344,6 +360,17 @@ public:
         std::fill(hiBufL, hiBufL + ns, 0.0f);
         std::fill(hiBufR, hiBufR + ns, 0.0f);
 
+        // FIX 3: Cache body resonance params once per block per voice.
+        // bodyFreq and bodyQ depend only on v.vel, v.freq, and pBS (per-block constants),
+        // so calling setParams() per-sample is wasteful. Call it once here instead.
+        for (auto& v : voices) {
+            if (!v.active) continue;
+            float velBodyLift = v.vel * 0.45f;
+            float bodyFreq = v.freq * (0.6f + velBodyLift + pBS * 0.8f);
+            float bodyQ = 2.0f + pBS * 6.0f;
+            v.body.setParams(bodyFreq, bodyQ);
+        }
+
         // ---- Per-voice synthesis ------------------------------------------------
         for(int i=0;i<ns;++i){
             float sLowL=0,sLowR=0,sHiL=0,sHiR=0;
@@ -389,10 +416,7 @@ public:
                 // D001: velocity shapes harmonic content — higher velocity raises the body
                 // resonance frequency toward upper partials (vel=0: fundamental region ×0.6,
                 // vel=1: rises toward ×1.05), making hard hits perceptibly brighter/richer.
-                float velBodyLift = v.vel * 0.45f; // vel 0→1 lifts resonance freq by up to 75%
-                float bodyFreq = v.freq * (0.6f + velBodyLift + pBS * 0.8f);
-                float bodyQ = 2.0f + pBS * 6.0f;
-                v.body.setParams(bodyFreq, bodyQ);
+                // FIX 3: setParams called once per block (above), not per sample.
                 float bo=out+v.body.process(out)*(0.1f+pBS*0.2f);
 
                 // Sympathetic strings (count scales amplitude)

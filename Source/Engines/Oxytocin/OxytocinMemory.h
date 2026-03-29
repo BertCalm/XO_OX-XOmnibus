@@ -74,13 +74,19 @@ public:
 
     /// Compute boosted I/P/C values incorporating memory.
     /// Returns values clamped to [0..1].
+    ///
+    /// Fix 2 (FATHOM): boostedP is capped at 0.85 to prevent moderate-passion
+    /// patches from unexpectedly crossing the Drive "scream" self-oscillation
+    /// threshold (passion > 0.9) when session memory is high.  The cap sits
+    /// just below the scream onset so producers must intentionally dial passion
+    /// to 0.9+ to get scream — memory accumulation alone cannot trigger it.
     void applyBoost (float  inI,  float  inP,  float  inC,
                      float  memoryDepth,
                      float& outI, float& outP, float& outC) const noexcept
     {
         const float boost = memoryDepth * 0.5f;
         outI = std::clamp (inI + memI * boost, 0.0f, 1.0f);
-        outP = std::clamp (inP + memP * boost, 0.0f, 1.0f);
+        outP = std::clamp (inP + memP * boost, 0.0f, 0.85f);  // Fix 2: cap below scream threshold
         outC = std::clamp (inC + memC * boost, 0.0f, 1.0f);
     }
 

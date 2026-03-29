@@ -655,6 +655,7 @@ public:
         //----------------------------------------------------------------------
         // Coupling accumulators: snapshot and reset
         //----------------------------------------------------------------------
+        couplingForceModulation = juce::jlimit (-1.0f, 1.0f, couplingForceModulation);
         float localCouplingForce   = couplingForceModulation;
         float localCouplingImpulse = couplingImpulseTrigger;
         couplingForceModulation = 0.0f;
@@ -1304,37 +1305,10 @@ private:
                              float cubicSpringConstant,
                              int boundaryMode) noexcept
     {
-        // Apply boundary conditions before integration
-        switch (boundaryMode)
-        {
-            case 0: // Fixed: endpoints pinned to zero (vibrating string)
-                currentPosition[0] = 0.0f;
-                currentPosition[chainLength - 1] = 0.0f;
-                previousPosition[0] = 0.0f;
-                previousPosition[chainLength - 1] = 0.0f;
-                break;
-
-            case 1: // Free: endpoints mirror neighbors (open boundary)
-                currentPosition[0] = currentPosition[1];
-                currentPosition[chainLength - 1] = currentPosition[chainLength - 2];
-                previousPosition[0] = previousPosition[1];
-                previousPosition[chainLength - 1] = previousPosition[chainLength - 2];
-                break;
-
-            case 2: // Periodic: endpoints wrap around (circular chain)
-                currentPosition[0] = currentPosition[chainLength - 2];
-                currentPosition[chainLength - 1] = currentPosition[1];
-                previousPosition[0] = previousPosition[chainLength - 2];
-                previousPosition[chainLength - 1] = previousPosition[1];
-                break;
-
-            default: // Fallback to fixed endpoints
-                currentPosition[0] = 0.0f;
-                currentPosition[chainLength - 1] = 0.0f;
-                previousPosition[0] = 0.0f;
-                previousPosition[chainLength - 1] = 0.0f;
-                break;
-        }
+        // Scratch buffer: compute all new positions before writing any back.
+        // Without this, writing currentPosition[i] inside the loop contaminates
+        // the neighbor reads for i+1 (Gauss-Seidel order instead of true Verlet).
+        float newPosition[kChainSize];
 
         // Verlet integration for interior masses (skip endpoints)
         for (int i = 1; i < chainLength - 1; ++i)
@@ -1365,11 +1339,40 @@ private:
 
             // Verlet step: x_new = 2*x - x_old + F * dt^2
             // dt^2 is normalized to 1.0; k already encodes effective k*dt^2
-            float newPosition = 2.0f * currentPosition[i]
-                              - previousPosition[i] + force;
+            newPosition[i] = 2.0f * currentPosition[i]
+                           - previousPosition[i] + force;
+        }
 
+        // Apply boundary conditions to newPosition[] before copying back
+        switch (boundaryMode)
+        {
+            case 0: // Fixed: endpoints pinned to zero (vibrating string)
+                newPosition[0] = 0.0f;
+                newPosition[chainLength - 1] = 0.0f;
+                break;
+
+            case 1: // Free: endpoints mirror neighbors (open boundary)
+                newPosition[0] = newPosition[1];
+                newPosition[chainLength - 1] = newPosition[chainLength - 2];
+                break;
+
+            case 2: // Periodic: endpoints wrap around (circular chain)
+                newPosition[0] = newPosition[chainLength - 2];
+                newPosition[chainLength - 1] = newPosition[1];
+                break;
+
+            default: // Fallback to fixed endpoints
+                newPosition[0] = 0.0f;
+                newPosition[chainLength - 1] = 0.0f;
+                break;
+        }
+
+        // Commit: previousPosition gets the old currentPosition, then
+        // currentPosition gets the freshly computed newPosition.
+        for (int i = 0; i < chainLength; ++i)
+        {
             previousPosition[i] = currentPosition[i];
-            currentPosition[i] = newPosition;
+            currentPosition[i] = newPosition[i];
         }
     }
 
@@ -1577,14 +1580,12 @@ private:
         int voiceIndex = VoiceAllocator::findFreeVoice (voices, std::min (maxPolyphony, kMaxVoices));
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
-        // If stealing an active voice, initiate crossfade to prevent click
-        if (voice.active)
-        {
-            voice.fadingOut = true;
-            // Cap crossfade gain at 0.5 to ensure the stolen voice fades
-            // quickly enough that the new note's attack isn't masked
-            voice.crossfadeGain = std::min (voice.crossfadeGain, 0.5f);
-        }
+        // If stealing an active voice, reset it cleanly before starting the new
+        // note. fadingOut must be cleared BEFORE setting up the new note so the
+        // new note does not inherit the stolen voice's fade-out state.
+        // Start the new note at crossfadeGain = 0 and ramp to 1 over 5ms so
+        // the attack is not masked by a lingering fade-out on the same object.
+        bool wasStolen = voice.active;
 
         voice.active = true;
         voice.noteNumber = noteNumber;
@@ -1596,7 +1597,7 @@ private:
         voice.scannerPhase = 0.0f;
         voice.controlPhaseAccumulator = 0.0f;
         voice.fadingOut = false;
-        voice.crossfadeGain = 1.0f;
+        voice.crossfadeGain = wasStolen ? 0.0f : 1.0f;
 
         voice.amplitudeEnvelope.setParams (ampAttack, ampDecay,
             ampSustain, ampRelease, sampleRateFloat);

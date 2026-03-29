@@ -95,6 +95,7 @@ struct ClaviStringModel
         {
             phases[i] = 0.0f;
             harmonicLevels[i] = 0.0f;
+            cachedDecayRates[i] = 0.0f;
         }
         clunkPhase = 0.0f;
         clunkLevel = 0.0f;
@@ -110,18 +111,22 @@ struct ClaviStringModel
             float oddBoost = ((i % 2) == 0) ? 1.0f : 0.6f;
             float harmDecay = 1.0f / (1.0f + static_cast<float>(i) * 0.5f);
             harmonicLevels[i] = velocity * oddBoost * harmDecay;
+
+            // FIX 3: Precompute per-harmonic decay coefficients (avoids 8 std::exp calls/sample)
+            cachedDecayRates[i] = 1.0f - std::exp (-1.0f / (sr * (0.8f - static_cast<float>(i) * 0.08f)));
         }
         keyDown = true;
         clunkLevel = 0.0f;
     }
 
-    void releaseKey() noexcept
+    void releaseKey (float clunkScale = 1.0f) noexcept
     {
         keyDown = false;
         // Key-off clunk — the damper pad hitting the string
-        // produces a brief, bright noise burst
+        // produces a brief, bright noise burst.
+        // FIX 2: clunkScale (0-1) is pClunk, applied at noteOff time.
         clunkPhase = 0.0f;
-        clunkLevel = vel * 0.4f;
+        clunkLevel = vel * 0.4f * clunkScale;
         clunkNoiseState = static_cast<uint32_t>(vel * 65535.0f) + 54321u;
     }
 
@@ -152,10 +157,12 @@ struct ClaviStringModel
 
             out += fastSin (phases[i] * 6.28318530718f) * harmonicLevels[i] * pickupGain;
 
-            // String decay — faster when key is released (damper pad)
+            // String decay — faster when key is released (damper pad).
+            // FIX 3: use precomputed coefficients; only the fast-damp case retains std::exp
+            // (it fires once per note-off, not per sample per harmonic).
             float decayRate;
             if (keyDown)
-                decayRate = 1.0f - std::exp (-1.0f / (sr * (0.8f - static_cast<float>(i) * 0.08f)));
+                decayRate = cachedDecayRates[i];
             else
                 decayRate = 1.0f - std::exp (-1.0f / (sr * 0.05f));  // fast damp
 
@@ -189,6 +196,7 @@ struct ClaviStringModel
         {
             phases[i] = 0.0f;
             harmonicLevels[i] = 0.0f;
+            cachedDecayRates[i] = 0.0f;
         }
         keyDown = false;
         clunkPhase = 0.0f;
@@ -198,6 +206,7 @@ struct ClaviStringModel
     float sr = 48000.0f;
     float vel = 0.0f;
     float phases[kNumHarmonics] = {};
+    float cachedDecayRates[kNumHarmonics] = {};  // FIX 3: precomputed per trigger()
     float harmonicLevels[kNumHarmonics] = {};
     bool keyDown = false;
     float clunkPhase = 0.0f;
@@ -219,6 +228,9 @@ struct AutoWahEnvelope
         sr = sampleRate;
         envFollower = 0.0f;
         wahBPF.reset();
+        // FIX 4: cache envelope coefficients — avoid two std::exp calls per sample
+        attackCoeff  = 1.0f - std::exp (-1.0f / (sr * 0.002f));
+        releaseCoeff = 1.0f - std::exp (-1.0f / (sr * 0.1f));
     }
 
     float process (float input, float wahDepth, float velocity) noexcept
@@ -227,8 +239,6 @@ struct AutoWahEnvelope
 
         // Envelope follower — fast attack, slow release
         float absInput = std::fabs (input);
-        float attackCoeff = 1.0f - std::exp (-1.0f / (sr * 0.002f));
-        float releaseCoeff = 1.0f - std::exp (-1.0f / (sr * 0.1f));
         float coeff = (absInput > envFollower) ? attackCoeff : releaseCoeff;
         envFollower += coeff * (absInput - envFollower);
         envFollower = flushDenormal (envFollower);
@@ -252,6 +262,8 @@ struct AutoWahEnvelope
 
     float sr = 48000.0f;
     float envFollower = 0.0f;
+    float attackCoeff  = 0.0f;   // FIX 4: cached, set in prepare()
+    float releaseCoeff = 0.0f;   // FIX 4: cached, set in prepare()
     CytomicSVF wahBPF;
 };
 
@@ -565,9 +577,17 @@ public:
         v.string.trigger (vel);
         v.wah.prepare (srf);
 
-        // Filter envelope — very fast, percussive
+        // Filter envelope — use user ADSR parameters (FIX 1: was hardcoded)
+        auto loadP = [] (std::atomic<float>* p, float def) {
+            return p ? p->load (std::memory_order_relaxed) : def;
+        };
+        const float fAttack  = loadP (paramAttack,  0.001f);
+        const float fDecay   = loadP (paramDecay,   0.3f);
+        const float fSustain = loadP (paramSustain,  0.4f);
+        const float fRelease = loadP (paramRelease,  0.15f);
+
         v.filterEnv.prepare (srf);
-        v.filterEnv.setADSR (0.001f, 0.15f + (1.0f - vel) * 0.2f, 0.0f, 0.1f);
+        v.filterEnv.setADSR (fAttack, fDecay, fSustain, fRelease);
         v.filterEnv.triggerHard();
 
         v.svf.reset();
@@ -583,11 +603,13 @@ public:
 
     void noteOff (int note) noexcept
     {
+        // FIX 2: read pClunk live so releaseKey() receives the actual parameter value
+        const float clunkScale = paramClunk ? paramClunk->load (std::memory_order_relaxed) : 0.5f;
         for (auto& v : voices)
         {
             if (v.active && v.currentNote == note)
             {
-                v.string.releaseKey();
+                v.string.releaseKey (clunkScale);
                 v.filterEnv.release();
             }
         }

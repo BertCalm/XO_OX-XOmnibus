@@ -33,6 +33,10 @@ public:
     {
         jassert (sampleRate > 0.0);  // P1-7
         sr = sampleRate;
+        // Fix 4 (FATHOM): envelope follower time constant — ~20 ms attack / ~200 ms release.
+        // Computed from sample rate, never hardcoded.
+        signalEnvAttackCoeff  = std::exp (-1.0f / (static_cast<float> (sampleRate) * 0.020f));
+        signalEnvReleaseCoeff = std::exp (-1.0f / (static_cast<float> (sampleRate) * 0.200f));
         reset();
         lastWarmthRate = -1.0f;   // force coefficient recompute on first call
     }
@@ -42,6 +46,8 @@ public:
     {
         stage1 = stage2 = stage3 = 0.0f;
         wobblePhase = 0.0f;
+        signalEnvLevel = 0.0f;   // Fix 4: clear envelope follower on steal
+        lastWarmthRate = -1.0f;  // force coefficient recompute after reset
     }
 
     /// Call once per block with the current intimacy level and warmth rate.
@@ -74,10 +80,40 @@ public:
     /// Process a single audio sample.  Call after updateWarmth() for the block.
     float processSample (float input, float circuitAge) noexcept
     {
-        // Advance warmth stages (one-pole filters on the intimacy target)
-        stage1 = targetIntimacy + (stage1 - targetIntimacy) * coeff1;
-        stage2 = stage1          + (stage2 - stage1)         * coeff2;
-        stage3 = stage2          + (stage3 - stage2)         * coeff3;
+        // Fix 4 (FATHOM): signal-dependent thermal acceleration.
+        // A real NTC thermistor heats faster under electrical load.  We model this
+        // with an envelope follower on the input signal: higher signal level
+        // shortens the effective warmth time constants, so the NTC warms up faster
+        // when the signal is loud.  The effect is bounded to a 3× maximum speedup
+        // so the fundamental warmth character is preserved at low levels.
+        {
+            // Peak envelope follower: attack when signal exceeds current level,
+            // release when signal falls below it.  absIn is compared directly —
+            // both are in audio amplitude units (typically [0..1] for normalised audio).
+            float absIn = std::abs (input);
+            if (absIn > signalEnvLevel)
+                signalEnvLevel = absIn + (signalEnvLevel - absIn) * signalEnvAttackCoeff;  // fast attack
+            else
+                signalEnvLevel = signalEnvLevel * signalEnvReleaseCoeff;                   // slow release
+
+            // Clamp to [0..1] — normalise so the multiplier math below is predictable
+            signalEnvLevel = std::clamp (signalEnvLevel, 0.0f, 1.0f);
+
+            // Map signal level to a load multiplier: 1.0 (quiet) → 3.0 (loud).
+            // Applied to the NTC stage by interpolating coefficients toward 1.0
+            // (coeff → 1 means no smoothing = instant tracking = fully heated).
+            float loadMult  = 1.0f + signalEnvLevel * 2.0f;  // [1.0 .. 3.0]
+            // Re-derive faster coefficients on the fly: c_fast = c ^ (1 / loadMult).
+            // Using pow avoids exp() per sample — same cost as a single exp call.
+            float c1f = (loadMult > 1.001f) ? std::pow (coeff1, 1.0f / loadMult) : coeff1;
+            float c2f = (loadMult > 1.001f) ? std::pow (coeff2, 1.0f / loadMult) : coeff2;
+            float c3f = (loadMult > 1.001f) ? std::pow (coeff3, 1.0f / loadMult) : coeff3;
+
+            // Advance warmth stages with signal-modulated coefficients
+            stage1 = targetIntimacy + (stage1 - targetIntimacy) * c1f;
+            stage2 = stage1          + (stage2 - stage1)         * c2f;
+            stage3 = stage2          + (stage3 - stage2)         * c3f;
+        }
 
         // P1-4: denormal guards on warmth stage accumulators
         constexpr float kDenorm = 1e-18f;
@@ -124,4 +160,9 @@ private:
     float  coeff3       = 0.0f;
     float  lastWarmthRate = -1.0f;
     float  wobblePhase  = 0.0f;
+
+    // Fix 4 (FATHOM): signal-level envelope follower for NTC thermal acceleration
+    float  signalEnvLevel        = 0.0f;   // current signal envelope estimate [0..1]
+    float  signalEnvAttackCoeff  = 0.0f;   // ~20 ms attack  (computed from sr in prepare())
+    float  signalEnvReleaseCoeff = 0.0f;   // ~200 ms release (computed from sr in prepare())
 };

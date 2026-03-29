@@ -213,6 +213,7 @@ public:
         hardComp_.reset();
         envFollower_ = 0.0f;
         detroitFeedback_ = 0.0f;
+        detroitLpState_ = 0.0f;
         torontoSubEnv_ = 0.0f;
         shimmerPhase_ = 0.0f;
         lpState_ = 0.0f;
@@ -279,9 +280,13 @@ private:
         lpState_ = flushDenormal (lpState_);
         out = lpState_;
 
-        // Stage 4: Warm filter — gentle LP at 12kHz
-        float lp = out + lpCoeff_ * (lpState_ - out);
-        out = lp;
+        // Stage 4: Warm filter — gentle LP at 12kHz (Detroit warmth)
+        // FIX: Use a SEPARATE state variable so Stage 4 has its own LP characteristic.
+        // Previously: `lp = out + lpCoeff_ * (lpState_ - out)` — since out == lpState_
+        // after Stage 3, the subtraction was always zero (no-op).
+        detroitLpState_ = detroitLpState_ + (1.0f - lpCoeff_) * (out - detroitLpState_);
+        detroitLpState_ = flushDenormal (detroitLpState_);
+        out = detroitLpState_;
 
         // Stage 5: Tape compression (slow attack, slow release, 2:1 glue)
         out = comp_.process (out);
@@ -429,6 +434,7 @@ private:
     // City-specific state
     float envFollower_ = 0.0f;      // NY: noise gate envelope
     float detroitFeedback_ = 0.0f;  // Detroit: feedback sat loop state
+    float detroitLpState_ = 0.0f;  // Detroit: Stage 4 LP own state (separate from lpState_)
     float torontoSubEnv_ = 0.0f;    // Toronto: sidechain sub envelope
     float shimmerPhase_ = 0.0f;     // Bay Area: shimmer LFO
 

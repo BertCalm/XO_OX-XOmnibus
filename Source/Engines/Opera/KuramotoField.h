@@ -164,7 +164,14 @@ public:
         //   speed=0.0 -> 60s, speed=0.5 -> ~0.55s, speed=1.0 -> ~5ms
         //----------------------------------------------------------------------
         float smootherTime = 60.0f * std::pow (10.0f, -responseSpeed * 4.08f);
-        kSmoother_.prepare (sampleRate_, smootherTime);
+
+        // FIX P0: only call prepare() when smootherTime changes; recalculating
+        // the coefficient every 8 samples was resetting the ramp mid-glide.
+        if (std::abs (smootherTime - cachedSmootherTime_) > 0.0001f)
+        {
+            kSmoother_.prepare (sampleRate_, smootherTime);
+            cachedSmootherTime_ = smootherTime;
+        }
 
         //----------------------------------------------------------------------
         // Target K from drama parameter
@@ -590,6 +597,10 @@ private:
 
     // K smoother (response speed)
     KSmoother kSmoother_;
+
+    // Cached smoother time — used to skip redundant prepare() calls inside
+    // updateField(). Initialised to -1 so the first call always runs prepare().
+    float cachedSmootherTime_ = -1.0f;
 
     // Acausal resonance clusters
     Cluster  detectedClusters_[kMaxClusters] = {};

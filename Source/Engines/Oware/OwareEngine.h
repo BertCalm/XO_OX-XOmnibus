@@ -416,11 +416,14 @@ struct OwareVoice
     std::array<SympathyCoupling, kMaxCouplings> sympathyCouplings {};
     int sympathyCouplingCount = 0;
 
+    float noteOffDecayBoost = 1.0f;  // < 1.0 during release to accelerate per-sample decay
+
     void reset() noexcept
     {
         active = false;
         velocity = 0.0f;
         ampLevel = 0.0f;
+        noteOffDecayBoost = 1.0f;
         sympatheticOut = 0.0f;
         sympathyCouplingCount = 0;
         glide.reset();
@@ -429,6 +432,8 @@ struct OwareVoice
         body.reset();
         filterEnv.kill();
         shimmerLFO.reset();
+        lfo1.reset();
+        lfo2.reset();
         modeDecayBoosts.fill (1.0f);
         for (auto& m : modes) m.reset();
     }
@@ -720,8 +725,10 @@ public:
                 voice.body.setFundamental (freq);
                 float bodied = voice.body.process (buzzed, pBodyType, bodyDNow);
 
-                // Amplitude envelope with material-aware decay
-                voice.ampLevel *= baseDecayCoeff;
+                // Amplitude envelope with material-aware decay.
+                // noteOffDecayBoost > 1.0 during release — multiplied in to accelerate decay
+                // smoothly over ~5ms rather than applying a hard amplitude step at noteOff.
+                voice.ampLevel *= baseDecayCoeff * voice.noteOffDecayBoost;
                 voice.ampLevel = flushDenormal (voice.ampLevel);
                 if (voice.ampLevel < 1e-6f) { voice.active = false; continue; }
 
@@ -790,6 +797,9 @@ public:
         v.filterEnv.triggerHard();
 
         v.shimmerLFO.reset (static_cast<float> (idx) / static_cast<float> (kMaxVoices));
+        v.lfo1.reset();
+        v.lfo2.reset();
+        v.noteOffDecayBoost = 1.0f;
 
         for (auto& m : v.modes) m.reset();
         v.body.prepare (srf);
@@ -814,11 +824,14 @@ public:
 
     void noteOff (int note) noexcept
     {
+        // ~5ms smooth release to avoid the -10.5dB step click of ampLevel *= 0.3f.
+        // Coefficient drives ampLevel to near-zero over ~5ms per-sample in the render loop.
+        const float releaseBoost = std::exp (std::log (0.3f) / (0.005f * srf));
         for (auto& v : voices)
         {
             if (v.active && v.currentNote == note)
             {
-                v.ampLevel *= 0.3f;
+                v.noteOffDecayBoost = releaseBoost;
                 v.filterEnv.release();
             }
         }

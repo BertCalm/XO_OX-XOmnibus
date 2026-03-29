@@ -85,7 +85,10 @@ public:
         float out = input;
 
         // Apply time-stretch (only when stretch != 1.0)
-        if (std::abs (stretch_ - 1.0f) > 0.01f && bufferFilled_)
+        // FIX: Allow stretch after 64 samples (~1.3ms at 44.1kHz) instead of
+        // waiting for full 4096-sample fill (~93ms). The previous gate
+        // (bufferFilled_) caused the attack transient to bypass stretch entirely.
+        if (std::abs (stretch_ - 1.0f) > 0.01f && writePos_ >= 64)
             out = processStretch (input);
 
         // Apply chop simulation

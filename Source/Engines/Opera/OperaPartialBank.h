@@ -157,6 +157,11 @@ struct PartialState {
     float omega     = 0.0f;   // natural angular frequency in rad/s
     float amplitude = 0.0f;   // formant-weighted amplitude (computed here)
     float pan       = 0.0f;   // stereo position [-1, 1] (computed here)
+
+    // Independent phase accumulators for each unison layer (FIX: P0 unison phase)
+    // Layer 0 mirrors theta for the base (no-spread) layer; layers 1-3 run
+    // at their own detuned frequencies instead of scaling the base phase.
+    float layerTheta[4] = {};
 };
 
 //==============================================================================
@@ -743,6 +748,8 @@ struct OperaPartialBank {
             partials[i].omega     = 0.0f;
             partials[i].amplitude = 0.0f;
             partials[i].pan       = 0.0f;
+            for (int u = 0; u < 4; ++u)
+                partials[i].layerTheta[u] = 0.0f;
             formantWeights[i]     = 0.0f;
             nyquistGains[i]       = 0.0f;
         }

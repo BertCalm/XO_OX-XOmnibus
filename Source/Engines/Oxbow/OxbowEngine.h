@@ -137,6 +137,12 @@ public:
         // Silence gate: 500ms hold (reverb-tail category)
         silenceGate.prepare (sr, maxBlockSize);
         silenceGate.setHoldTime (500.0f);
+
+        // Smoothers for zipper-prone params: 20ms ramp at current sample rate
+        smoothDryWet.reset (sampleRate, 0.020);
+        smoothDryWet.setCurrentAndTargetValue (0.5f);
+        smoothDecay.reset (sampleRate, 0.020);
+        smoothDecay.setCurrentAndTargetValue (4.0f);
     }
 
     void releaseResources() override {}
@@ -170,6 +176,8 @@ public:
         peakEnergy = 0.0001f;
         currentEnergy = 0.0f;
         lastSampleL = lastSampleR = 0.0f;
+        smoothDryWet.setCurrentAndTargetValue (smoothDryWet.getTargetValue());
+        smoothDecay.setCurrentAndTargetValue (smoothDecay.getTargetValue());
     }
 
     //--------------------------------------------------------------------------
@@ -263,6 +271,7 @@ public:
         // SPACE → dry/wet mix + room size
         pDryWet = clamp (pDryWet + pMacroSpace * 0.25f, 0.0f, 1.0f);
         pSize   = clamp (pSize   + pMacroSpace * 0.3f,  0.0f, 1.0f);
+        smoothDryWet.setTargetValue (pDryWet);  // set after all macro contributions
 
         // Mod wheel → resonance mix (D006)
         pResMix = clamp (pResMix + modWheel_ * 0.5f, 0.0f, 1.0f);
@@ -273,13 +282,18 @@ public:
         // Apply coupling modulation
         pDamping = clamp (pDamping + extFilterMod, 200.0f, 16000.0f);
         pDecay = clamp (pDecay + extDecayMod * 10.0f, 0.1f, 60.0f);
+        smoothDecay.setTargetValue (pDecay);  // set after coupling modulation
 
         const float srF = static_cast<float> (sr);
 
-        // Feedback coefficient from decay time
-        // Schulze: allow infinite decay (pDecay > 29s → feedback = 1.0)
-        float feedbackCoeff = (pDecay > 29.0f) ? 1.0f
-            : fastExp (-6.9078f / (pDecay * srF));
+        // Feedback coefficient from decay time.
+        // Schulze: allow infinite decay (pDecay > 29s → feedback = 1.0).
+        // Use std::exp here — called once per block, not per sample.  fastExp
+        // carries ~4% error near the infinite-decay threshold where accuracy matters most.
+        // Use the smoothed decay value to prevent coefficient discontinuities between blocks.
+        float smoothedDecayVal = smoothDecay.getNextValue();
+        float feedbackCoeff = (smoothedDecayVal > 29.0f) ? 1.0f
+            : std::exp (-6.9078f / (smoothedDecayVal * srF));
 
         // Size → room dimension (D004: dead param resolved)
         // Size 0 = intimate (short predelay, dark/absorptive)
@@ -344,12 +358,17 @@ public:
             predelayPos = (predelayPos + 1) % predelaySize;
 
             // === 8-CHANNEL CHIASMUS FDN ===
-            // Read from all 8 delay lines
+            // Read from all 8 delay lines.
+            // Execution order each sample: READ → COMPUTE → WRITE → ADVANCE.
+            // Since WRITE and ADVANCE happen after this read, fdnWritePos[ch]
+            // currently points to the oldest sample in the ring — the slot we
+            // are about to overwrite.  That slot was last written fdnDelaySize[ch]
+            // samples ago, giving the full intended delay.
             float fdnRead[kFDNChannels];
             for (int ch = 0; ch < kFDNChannels; ++ch)
             {
-                int rp = (fdnWritePos[ch] - fdnDelaySize[ch] + fdnDelaySize[ch]) % fdnDelaySize[ch];
-                fdnRead[ch] = fdnDelay[ch][static_cast<size_t> (rp)];
+                // fdnWritePos[ch] is the oldest slot (read-before-write-before-advance).
+                fdnRead[ch] = fdnDelay[ch][static_cast<size_t> (fdnWritePos[ch])];
             }
 
             // Householder feedback matrix: H = I - (2/N) * 1*1^T
@@ -478,9 +497,11 @@ public:
                 wetR *= (1.0f + extRingMod);
             }
 
-            // Dry/wet mix (dry = exciter, wet = reverb)
-            float finalL = exciterSample * (1.0f - pDryWet) + wetL * pDryWet;
-            float finalR = exciterSample * (1.0f - pDryWet) + wetR * pDryWet;
+            // Dry/wet mix (dry = exciter, wet = reverb).
+            // Use per-sample smoothed value to eliminate zipper noise on fader moves.
+            float dryWet = smoothDryWet.getNextValue();
+            float finalL = exciterSample * (1.0f - dryWet) + wetL * dryWet;
+            float finalR = exciterSample * (1.0f - dryWet) + wetR * dryWet;
 
             // Cache for coupling output
             lastSampleL = finalL;
@@ -731,6 +752,10 @@ private:
     // Size scaling
     float sizeScale = 1.0f;
     float dampingHz = 6000.0f;
+
+    // Parameter smoothers for the two most audible zipper params (D002 / FATHOM fix)
+    juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> smoothDryWet;
+    juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> smoothDecay;
 
     // Coupling state
     float extFilterMod = 0.0f;

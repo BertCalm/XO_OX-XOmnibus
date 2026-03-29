@@ -141,7 +141,7 @@ struct AttractorState
     static constexpr BoundingBox bounds[4] = {
         //                 X range        Y range         Z range
         { -25.0f, 25.0f, -30.0f, 30.0f,   0.0f, 55.0f },  // Lorenz: wide X/Y wings, Z always positive
-        { -12.0f, 12.0f, -12.0f, 12.0f,   0.0f, 25.0f },  // Rossler: symmetric X/Y spiral, Z spikes
+        { -35.0f, 35.0f, -35.0f, 35.0f,   0.0f, 200.0f },  // Rossler: symmetric X/Y spiral, Z spikes
         {  -3.0f,  3.0f,  -0.5f,  0.5f,  -4.0f,  4.0f },  // Chua: narrow Y (diode clipping), wide X/Z
         {  -1.5f,  1.5f,  -1.5f,  1.5f,  -0.5f,  2.5f }   // Aizawa: compact toroidal envelope
     };
@@ -169,7 +169,7 @@ struct AttractorState
     static constexpr float baseStepSize[4]      = { 0.005f, 0.01f,  0.002f, 0.005f };
     static constexpr float calibrationFreqHz[4] = { 130.0f, 95.0f,  200.0f, 110.0f };
     static constexpr float maxSafeStepSize[4]   = { 0.02f,  0.05f,  0.008f, 0.015f };
-    static constexpr float maxVelocityNorm[4]   = { 200.0f, 30.0f,  50.0f,  10.0f  };
+    static constexpr float maxVelocityNorm[4]   = { 200.0f, 70.0f,  50.0f,  10.0f  };
 
     //--------------------------------------------------------------------------
     // Compute derivatives for the selected topology.
@@ -424,11 +424,11 @@ struct HalfBandFilter
     // Full kernel: [c0, 0, c2, 0, c4, 0.5, c4, 0, c2, 0, c0, 0]
     // Only the 6 unique values are stored; zero-valued taps are implicit.
     static constexpr float coefficients[6] = {
-        -0.0157914f,    // Tap 0/10: outer sidelobe suppression
+        +0.0157914f,    // Tap 0/10: outer sidelobe suppression
          0.0f,          // Tap 1/9:  zero (half-band property)
-         0.0907024f,    // Tap 2/8:  transition band shaping
+        +0.0907024f,    // Tap 2/8:  transition band shaping
          0.0f,          // Tap 3/7:  zero (half-band property)
-        -0.3135643f,    // Tap 4/6:  main lobe shaping
+        +0.3135643f,    // Tap 4/6:  main lobe shaping
          0.5f           // Tap 5:    center tap (half-band identity)
     };
 
@@ -1072,6 +1072,11 @@ public:
 
                 float oversampledLeft[4], oversampledRight[4];
 
+                // Scale injection by 1/kOversample so the total perturbation per
+                // audio sample is correct regardless of oversample factor.
+                const float scaledInjX = injectionForceX / static_cast<float> (kOversample);
+                const float scaledInjY = injectionForceY / static_cast<float> (kOversample);
+
                 for (int oversampleIndex = 0; oversampleIndex < kOversample; ++oversampleIndex)
                 {
                     float freeRunX = 0.0f, freeRunY = 0.0f, freeRunZ = 0.0f;
@@ -1087,7 +1092,7 @@ public:
                     {
                         AttractorState& freeState = voice.crossfading ? voice.attractorB : voice.attractorA;
                         float stepSize = freeState.computeStepSize (targetFrequency, effectiveChaos);
-                        freeState.step (stepSize, effectiveChaos, injectionForceX, injectionForceY);
+                        freeState.step (stepSize, effectiveChaos, scaledInjX, scaledInjY);
                         freeState.saturate();
                         freeRunX = freeState.x; freeRunY = freeState.y; freeRunZ = freeState.z;
                         freeRunVelocityX = freeState.lastDxDt;
@@ -1097,7 +1102,7 @@ public:
                         if (voice.crossfading)
                         {
                             float stepSizeA = voice.attractorA.computeStepSize (targetFrequency, effectiveChaos);
-                            voice.attractorA.step (stepSizeA, effectiveChaos, injectionForceX, injectionForceY);
+                            voice.attractorA.step (stepSizeA, effectiveChaos, scaledInjX, scaledInjY);
                             voice.attractorA.saturate();
                         }
                     }
@@ -1130,7 +1135,7 @@ public:
                         }
 
                         float syncStepSize = voice.syncedAttractor.computeStepSize (targetFrequency, effectiveChaos);
-                        voice.syncedAttractor.step (syncStepSize, effectiveChaos, injectionForceX, injectionForceY);
+                        voice.syncedAttractor.step (syncStepSize, effectiveChaos, scaledInjX, scaledInjY);
                         voice.syncedAttractor.saturate();
                         syncedX = voice.syncedAttractor.x;
                         syncedY = voice.syncedAttractor.y;

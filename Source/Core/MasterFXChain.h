@@ -268,9 +268,15 @@ public:
         const float dopplerSpeed = pDopplerSpeed ? pDopplerSpeed->load() : 0.3f;
         const float dopplerMix   = pDopplerMix   ? pDopplerMix->load()   : 0.0f;
 
-        // Stage 8: Reverb
-        const float reverbSize   = pReverbSize->load();
-        const float reverbMix    = pReverbMix->load();
+        // Stage 11: Reverb (FATHOM 8-tap Hadamard FDN)
+        const float reverbSize      = pReverbSize->load();
+        const float reverbMix       = pReverbMix->load();
+        const float reverbPreDelay  = pReverbPreDelay  ? pReverbPreDelay->load()  : 0.0f;
+        const float reverbDecay     = pReverbDecay     ? pReverbDecay->load()     : 2.0f;
+        const float reverbDamping   = pReverbDamping   ? pReverbDamping->load()   : 0.4f;
+        const float reverbDiffusion = pReverbDiffusion ? pReverbDiffusion->load() : 0.5f;
+        const float reverbMod       = pReverbMod       ? pReverbMod->load()       : 0.3f;
+        const float reverbWidth     = pReverbWidth     ? pReverbWidth->load()     : 1.0f;
 
         // Stage 9: Frequency Shifter
         const float fshiftHz     = pFShiftHz     ? pFShiftHz->load()     : 0.0f;
@@ -647,16 +653,22 @@ public:
         }
 
         // ====================================================================
-        // Stage 8: Space Reverb
+        // Stage 11: Space Reverb (FATHOM 8-tap Hadamard FDN)
         // ====================================================================
         float effectiveReverbMix = applySeqMod (reverbMix,
             MasterFXSequencer::Target::ReverbMix, 0.6f);
 
         if (effectiveReverbMix > 0.001f)
         {
-            reverb.setRoomSize (reverbSize);
-            reverb.setDamping (0.4f);
-            reverb.setMix (effectiveReverbMix);
+            // Map reverbSize [0,1] → Size param; reverbDecay [0.5,20]s
+            reverb.setPreDelay  (reverbPreDelay);
+            reverb.setSize      (reverbSize);
+            reverb.setDecay     (reverbDecay);
+            reverb.setDamping   (reverbDamping);
+            reverb.setDiffusion (reverbDiffusion);
+            reverb.setModulation(reverbMod);
+            reverb.setMix       (effectiveReverbMix);
+            reverb.setWidth     (reverbWidth);
             reverb.processBlock (L, R, L, R, numSamples);
         }
 
@@ -997,9 +1009,15 @@ private:
         pDopplerSpeed = apvts.getRawParameterValue ("master_dopplerSpeed");
         pDopplerMix   = apvts.getRawParameterValue ("master_dopplerMix");
 
-        // Stage 8: Reverb
-        pReverbSize   = apvts.getRawParameterValue ("master_reverbSize");
-        pReverbMix    = apvts.getRawParameterValue ("master_reverbMix");
+        // Stage 11: Reverb (FATHOM 8-tap Hadamard FDN)
+        pReverbSize       = apvts.getRawParameterValue ("master_reverbSize");
+        pReverbMix        = apvts.getRawParameterValue ("master_reverbMix");
+        pReverbPreDelay   = apvts.getRawParameterValue ("master_reverbPreDelay");
+        pReverbDecay      = apvts.getRawParameterValue ("master_reverbDecay");
+        pReverbDamping    = apvts.getRawParameterValue ("master_reverbDamping");
+        pReverbDiffusion  = apvts.getRawParameterValue ("master_reverbDiffusion");
+        pReverbMod        = apvts.getRawParameterValue ("master_reverbMod");
+        pReverbWidth      = apvts.getRawParameterValue ("master_reverbWidth");
 
         // Stage 9: Frequency Shifter
         pFShiftHz     = apvts.getRawParameterValue ("master_fshiftHz");
@@ -1211,10 +1229,16 @@ private:
     // Stage 7: Doppler
     std::atomic<float>* pDopplerDist  = nullptr;
     std::atomic<float>* pDopplerSpeed = nullptr;
-    std::atomic<float>* pDopplerMix   = nullptr;
-    // Stage 8: Reverb
-    std::atomic<float>* pReverbSize  = nullptr;
-    std::atomic<float>* pReverbMix   = nullptr;
+    std::atomic<float>* pDopplerMix      = nullptr;
+    // Stage 11: Reverb (FATHOM 8-tap Hadamard FDN)
+    std::atomic<float>* pReverbSize      = nullptr;
+    std::atomic<float>* pReverbMix       = nullptr;
+    std::atomic<float>* pReverbPreDelay  = nullptr;
+    std::atomic<float>* pReverbDecay     = nullptr;
+    std::atomic<float>* pReverbDamping   = nullptr;
+    std::atomic<float>* pReverbDiffusion = nullptr;
+    std::atomic<float>* pReverbMod       = nullptr;
+    std::atomic<float>* pReverbWidth     = nullptr;
     // Stage 9: Frequency Shifter
     std::atomic<float>* pFShiftHz    = nullptr;
     std::atomic<float>* pFShiftMix   = nullptr;

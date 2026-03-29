@@ -166,7 +166,8 @@ public:
         active        = true;
 
         // P1-5: reset ALL DSP state on voice steal/retrigger to prevent contamination
-        fbSample = 0.0f;
+        fbSample  = 0.0f;
+        cToICarry = 0.0f;   // FIX 2: clear C→I carry register on voice reset
         osc.reset();
         thermal.reset();
         drive.reset();
@@ -231,8 +232,10 @@ public:
         float blockTimeSec = static_cast<float> (numSamples) / static_cast<float> (sr);
         thermal.updateWarmth (snap.intimacy, snap.warmthRate, blockTimeSec);
 
-        // --- Update Reactive block-rate coefficients ---
-        reactive.updateCoefficients (snap.cutoff, snap.commitment);
+        // Fix 1 (FATHOM): Reactive coefficients are now updated per-sample inside
+        // the loop, passing boostedC so resonance breathes with the love envelope.
+        // The change-guard in updateCoefficients() still avoids redundant tan() calls
+        // when boostedC is stable between samples.
 
         // --- P1-2: cache AmpEnvelope exp coefficients once per block ---
         ampEnv.updateCoefficients (snap.decay, snap.release);
@@ -268,6 +271,11 @@ public:
             // Memory boost
             float boostedI, boostedP, boostedC;
             memory.applyBoost (effI, effP, effC, snap.memoryDepth, boostedI, boostedP, boostedC);
+
+            // Fix 1 (FATHOM): update Reactive coefficients with live boostedC so
+            // the Moog ladder's resonance breathes with the love envelope rather than
+            // staying anchored to the static snap.commitment knob position.
+            reactive.updateCoefficients (snap.cutoff, boostedC);
 
             // Topology lock override
             if (snap.topologyLock > 0)
@@ -316,11 +324,46 @@ public:
                 {
                     // P0-3: fold cross-mod into the input BEFORE the single drive call.
                     // Previously drive+reactive were called twice (first call discarded) — fixed.
-                    thermalOut  = thermal.processSample (oscSample, snap.circuitAge) * boostedI;
+                    //
+                    // FIX 2: C→I circular carry from the PREVIOUS sample is applied here,
+                    // before the thermal stage processes this sample.  This closes the
+                    // I→P→C→I Serge ring correctly: commitment output at sample N injects
+                    // into the intimacy (thermal) input at sample N+1, not after thermalOut
+                    // has already been consumed (which was the dead-code bug).
+                    thermalOut  = thermal.processSample (oscSample + cToICarry, snap.circuitAge) * boostedI;
                     float dmExtraDrive = thermalOut * entAmt * 0.5f;
                     driveOut    = drive.processSample (thermalOut + dmExtraDrive, boostedP, snap.cutoff, snap.circuitAge);
                     reactiveOut = reactive.processSample (driveOut, boostedC, boostedI, boostedP,
                                                           snap.commitRate, snap.release);
+
+                    // Serge circular routing — complete the I→P→C→I ring.
+                    if (entAmt > 0.0f)
+                    {
+                        // P→C leg: drive output (passion saturation) injects a small
+                        // signal into the reactive output.  Simulates the Serge P→C
+                        // cross-patch: passion's harmonic energy bleeds into the
+                        // commitment filter's output, giving high-entanglement patches
+                        // a passion-tinged resonance tail.
+                        // NOTE: we ADD to reactiveOut — do NOT call processSample() again,
+                        // as that would advance the ladder integrator states twice and
+                        // produce sample-doubled distortion.
+                        float pToCBleed = std::clamp (driveOut * entAmt * 0.15f, -0.25f, 0.25f);
+                        reactiveOut += pToCBleed * boostedP * 0.1f;
+
+                        // FIX 2: C→I leg — store bleed into cToICarry for the NEXT sample.
+                        // reactiveOut is now fully computed (including P→C), so we can
+                        // derive the carry without any ordering ambiguity.  The carry is
+                        // added to oscSample at the top of the next iteration (see above),
+                        // meaning it enters the thermal stage input — correctly simulating
+                        // the Serge C→I patch where commitment's output influences intimacy
+                        // warming on the following sample.
+                        cToICarry = std::clamp (reactiveOut * entAmt * 0.2f, -0.25f, 0.25f)
+                                    * boostedC * 0.1f;
+                    }
+                    else
+                    {
+                        cToICarry = 0.0f;
+                    }
                     break;
                 }
 
@@ -392,6 +435,7 @@ private:
     float          pitchBendRatio = 1.0f;
     double         sr        = 0.0;   // P1-7: default 0
     float          fbSample  = 0.0f;
+    float          cToICarry = 0.0f;  // FIX 2: C→I circular bleed carry register (one-sample delay)
     uint32_t       noiseSeed = 12345678u;
 
     PolyBLEPOsc    osc;

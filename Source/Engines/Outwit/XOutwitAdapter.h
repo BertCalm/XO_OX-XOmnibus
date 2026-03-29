@@ -106,7 +106,7 @@ public:
         if (lfo2Phase >= 1.0f) { lfo2Phase -= 1.0f; if (snap.lfo2Shape == 4) lfo2SHValue = lfoNoise(); }
 
         // 3. Working copies — LFO + macro + expression modulation
-        float modStepRate    = snap.stepRate;
+        float modStepRate    = snap.stepRate * (1.0f + snap.huntRate); // huntRate scales CA search speed
         float modChromAmount = snap.chromAmount;
         float modSynapse     = snap.synapse;
         float modDenSize     = snap.denSize;
@@ -125,7 +125,7 @@ public:
             float mod = lfoVal * depth;
             switch (dest) {
                 case 0: modStepRate    = juce::jmax(0.01f, modStepRate * (1.0f + mod * 0.5f)); break;
-                case 1: /* FilterCutoff — applied per-arm via extFilterMod */ break;
+                case 1: extFilterMod += mod * 4000.0f; break; // LFO→FilterCutoff: ±4kHz sweep
                 case 2: modChromAmount = clamp(modChromAmount + mod * 0.5f, 0.0f, 1.0f); break;
                 case 3: modArmLevelScale = clamp(modArmLevelScale + mod * 0.5f, 0.0f, 1.5f); break;
                 default: break;
@@ -783,7 +783,7 @@ private:
         else if (msg.isPitchWheel())
         {
             float bend = (msg.getPitchWheelValue() - 8192) / 8192.0f; // -1..+1
-            extPitchMod += bend * 2.0f; // ±2 semitones pitch bend
+            extPitchMod = bend * 2.0f; // ±2 semitones pitch bend (SET, not accumulate)
         }
     }
 
