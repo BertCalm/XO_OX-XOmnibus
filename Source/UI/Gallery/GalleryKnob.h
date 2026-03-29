@@ -95,8 +95,8 @@ private:
         g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r,
                       r * 2.0f, r * 2.0f, isListening ? 2.5f : 1.5f);
 
-        // "ML" text badge — only on knobs >= 48px (hidden on header-size 32px knobs)
-        if (isMapped && !isListening && getWidth() >= 48)
+        // "ML" text badge — only on knobs >= 34px (hidden on header-size 32px knobs)
+        if (isMapped && !isListening && getWidth() >= 34)
         {
             g.setFont(GalleryFonts::label(6.0f));
             g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));

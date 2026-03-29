@@ -458,6 +458,51 @@ public:
             y += cardH;
         }
 
+        // ── Routing hint: strongest active route summary ──────────────────────
+        {
+            int    bestRoute  = -1;
+            float  bestAmount = 0.0f;
+            for (int r = 0; r < kNumRoutes; ++r)
+            {
+                if (!isRouteActive (r)) continue;
+                juce::String amtId = "cp_r" + juce::String (r + 1) + "_amount";
+                float amt = 0.0f;
+                if (auto* p = apvts.getRawParameterValue (amtId))
+                    amt = std::abs (p->load());
+                if (amt > bestAmount)
+                {
+                    bestAmount = amt;
+                    bestRoute  = r;
+                }
+            }
+
+            if (bestRoute >= 0)
+            {
+                juce::String srcName   = slotName (getSlotIndex (bestRoute, "source"));
+                juce::String tgtName   = slotName (getSlotIndex (bestRoute, "target"));
+                juce::String typeShort = getTypeShortLabel (bestRoute);
+                juce::String hintText  = srcName
+                                         + juce::String (juce::CharPointer_UTF8 (" \xe2\x86\x92 "))
+                                         + tgtName
+                                         + ": " + typeShort
+                                         + " " + juce::String (bestAmount, 2);
+
+                // Gap between last card bottom and action row hairline
+                int hintY = y + 2;
+                int hintH = getHeight() - kActionRowH - hintY;
+
+                if (hintH > 0)
+                {
+                    g.setFont (GalleryFonts::value (8.5f));
+                    g.setColour (get (t3()));
+                    g.drawText (hintText,
+                                juce::Rectangle<int> (kCardMargin, hintY,
+                                                      getWidth() - kCardMargin * 2, hintH),
+                                juce::Justification::centred, false);
+                }
+            }
+        }
+
         // ── Hairline above action row ──────────────────────────────────────────
         g.setColour (border());
         g.drawHorizontalLine (getHeight() - kActionRowH, 0.0f,
