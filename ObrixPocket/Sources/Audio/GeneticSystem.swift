@@ -150,6 +150,11 @@ final class GeneticManager: ObservableObject {
     /// Discovery log: tracks every unique trait combination ever bred
     @Published var discoveryLog: [GeneticDiscovery] = []
 
+    /// Maps specimenId → genomeId so bred genomes can be looked up by
+    /// the specimen UUID that owns them (not just by the genome's own UUID).
+    /// Keyed on specimen UUID; value is the genome UUID stored in `genomes`.
+    private var specimenToGenome: [UUID: UUID] = [:]
+
     // MARK: - Genome Creation
 
     /// Create a Gen-1 genome for a freshly caught specimen
@@ -252,9 +257,25 @@ final class GeneticManager: ObservableObject {
 
     // MARK: - Queries
 
-    /// Get genome by ID
+    /// Get genome by ID.
+    /// Accepts both a genome's own UUID (genome.id) and a specimen UUID
+    /// registered via `storeForSpecimen(genome:specimenId:)`.
     func genome(for id: UUID) -> SpecimenGenome? {
-        genomes[id]
+        // Direct lookup by genome.id
+        if let genome = genomes[id] { return genome }
+        // Indirect lookup: specimenId → genomeId → genome
+        if let genomeId = specimenToGenome[id] { return genomes[genomeId] }
+        return nil
+    }
+
+    /// Register a genome under a specimen's UUID in addition to the genome's own UUID.
+    /// Call this after breeding so SpecimenAudioBridge can look up the genome
+    /// by the specimen UUID that was placed on the reef.
+    func storeForSpecimen(genome: SpecimenGenome, specimenId: UUID) {
+        // Ensure the genome is stored (it should already be; this is a safety guard)
+        genomes[genome.id] = genome
+        specimenToGenome[specimenId] = genome.id
+        save()
     }
 
     /// Find all genomes of a specific generation
@@ -315,12 +336,17 @@ final class GeneticManager: ObservableObject {
 
     // MARK: - Persistence
 
+    private let specimenToGenomeKey = "geneticSpecimenToGenomeMap"
+
     func save() {
         if let data = try? JSONEncoder().encode(Array(genomes.values)) {
             UserDefaults.standard.set(data, forKey: "specimenGenomes")
         }
         if let data = try? JSONEncoder().encode(discoveryLog) {
             UserDefaults.standard.set(data, forKey: "geneticDiscoveries")
+        }
+        if let data = try? JSONEncoder().encode(specimenToGenome) {
+            UserDefaults.standard.set(data, forKey: specimenToGenomeKey)
         }
     }
 
@@ -335,6 +361,10 @@ final class GeneticManager: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: "geneticDiscoveries"),
            let decoded = try? JSONDecoder().decode([GeneticDiscovery].self, from: data) {
             discoveryLog = decoded
+        }
+        if let data = UserDefaults.standard.data(forKey: specimenToGenomeKey),
+           let decoded = try? JSONDecoder().decode([UUID: UUID].self, from: data) {
+            specimenToGenome = decoded
         }
     }
 }

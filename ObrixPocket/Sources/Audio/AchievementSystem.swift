@@ -367,6 +367,11 @@ final class AchievementManager: ObservableObject {
         complete(where: { if case .tradesCompleted(let req) = $0.requirement { return count >= req }; return false })
     }
 
+    /// Call when a dive completes — checks both dive high-score and depth achievements
+    func onDiveDepthReached(_ depth: Int) {
+        complete(where: { if case .diveDepth(let req) = $0.requirement { return depth >= req }; return false })
+    }
+
     /// Trigger a named secret condition
     func triggerSecret(id: String) {
         complete(where: { if case .secretCondition(let reqId) = $0.requirement { return reqId == id }; return false })

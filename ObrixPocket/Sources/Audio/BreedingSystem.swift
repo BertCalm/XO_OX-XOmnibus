@@ -302,8 +302,8 @@ final class BreedingManager: ObservableObject {
     }
 
     /// Maps nursery occupant IDs → offspring genome IDs so graduation can wire them up.
-    /// This mapping is transient (not persisted) — if the app is killed mid-formation,
-    /// graduation falls back to deriving a fresh genome from subtype.
+    /// Persisted alongside nursery occupants so that an app kill mid-formation
+    /// does not lose the genome association (FIX 5).
     private(set) var nurseryGenomeIDs: [UUID: UUID] = [:]
 
     /// Check if any nursery occupants are ready to graduate
@@ -335,6 +335,12 @@ final class BreedingManager: ObservableObject {
             // nurseryMods is a [String: Float] of parameter offsets from formation.
             // Persist them so SpecimenAudioBridge can blend them in at play time.
             nurseryParameterOffsets[id] = nurseryMods
+
+            // FIX 3: Register the offspring genome under the graduated specimen's UUID
+            // (the occupant.id becomes the specimen.id on the reef) so that
+            // SpecimenAudioBridge.effectiveParameters can look up the genome by
+            // specimen UUID rather than requiring the caller to know genome.id.
+            gm.storeForSpecimen(genome: offspringGenome, specimenId: id)
 
             // Invalidate the harmonic profile cache — nursery exposure may have
             // shifted the genome's effective harmonic character if influences included
@@ -479,7 +485,11 @@ final class BreedingManager: ObservableObject {
         if let offsetData = try? JSONEncoder().encode(nurseryParameterOffsets) {
             UserDefaults.standard.set(offsetData, forKey: "nurseryParameterOffsets")
         }
-        // nurseryGenomeIDs is transient — not persisted (see comment on the property)
+        // FIX 5: Persist nurseryGenomeIDs so graduation can still locate the correct
+        // genome after an app restart that occurs mid-formation.
+        if let genomeIDData = try? JSONEncoder().encode(nurseryGenomeIDs) {
+            UserDefaults.standard.set(genomeIDData, forKey: "nurseryGenomeIDs")
+        }
     }
 
     func restore() {
@@ -494,6 +504,12 @@ final class BreedingManager: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: "nurseryParameterOffsets"),
            let decoded = try? JSONDecoder().decode([UUID: [String: Float]].self, from: data) {
             nurseryParameterOffsets = decoded
+        }
+        // FIX 5: Restore nurseryGenomeIDs so in-flight nursery occupants can still
+        // graduate correctly after an app kill during formation.
+        if let data = UserDefaults.standard.data(forKey: "nurseryGenomeIDs"),
+           let decoded = try? JSONDecoder().decode([UUID: UUID].self, from: data) {
+            nurseryGenomeIDs = decoded
         }
     }
 }

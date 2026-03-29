@@ -615,12 +615,19 @@ extension CollaborativeDiveManager: MCNearbyServiceAdvertiserDelegate {
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        // Auto-accept the first incoming invitation while in waiting state
-        guard sessionState == .waiting else {
-            invitationHandler(false, nil)
-            return
+        // MPC calls this on an arbitrary background queue.
+        // Marshal sessionState reads and invitationHandler onto the main thread.
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {
+                invitationHandler(false, nil)
+                return
+            }
+            guard self.sessionState == .waiting else {
+                invitationHandler(false, nil)
+                return
+            }
+            invitationHandler(true, self.session)
         }
-        invitationHandler(true, session)
     }
 
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
@@ -637,10 +644,14 @@ extension CollaborativeDiveManager: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
                  withDiscoveryInfo info: [String: String]?) {
-        // Auto-invite first found host (guests bring their specimens before browsing)
-        guard sessionState == .waiting else { return }
-        let foundSessionId = info?["sessionId"] ?? ""
-        joinSession(host: peerID, sessionId: foundSessionId, withSpecimens: guestSpecimens)
+        // MPC calls this on an arbitrary background queue.
+        // Marshal sessionState and guestSpecimens reads onto the main thread.
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            guard self.sessionState == .waiting else { return }
+            let foundSessionId = info?["sessionId"] ?? ""
+            self.joinSession(host: peerID, sessionId: foundSessionId, withSpecimens: self.guestSpecimens)
+        }
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
