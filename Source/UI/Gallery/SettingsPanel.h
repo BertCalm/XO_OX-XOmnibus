@@ -64,7 +64,7 @@ public:
         GalleryColors::darkMode() = settingsFile->getBoolValue("darkMode", true);
 
         // ── 1. THEME ─────────────────────────────────────────────────────────
-        styleToggle(darkModeToggle, "Dark Mode");
+        styleToggle(darkModeToggle, "Dark Cockpit");
         darkModeToggle.setToggleState(GalleryColors::darkMode(),
                                       juce::dontSendNotification);
         darkModeToggle.onClick = [this]
@@ -82,6 +82,54 @@ public:
             }
         };
         content.addAndMakeVisible(darkModeToggle);
+
+        // CPU Meters toggle — default ON
+        styleToggle(cpuMetersToggle, "CPU Meters");
+        cpuMetersToggle.setToggleState(
+            settingsFile->getBoolValue("cpuMetersVisible", true),
+            juce::dontSendNotification);
+        cpuMetersToggle.onClick = [this]
+        {
+            settingsFile->setValue("cpuMetersVisible", cpuMetersToggle.getToggleState());
+            settingsFile->saveIfNeeded();
+        };
+        content.addAndMakeVisible(cpuMetersToggle);
+
+        // Auto-PlaySurface (Drums) toggle — default OFF
+        styleToggle(autoPlaySurfaceDrumsToggle, "Auto-PlaySurface (Drums)");
+        autoPlaySurfaceDrumsToggle.setToggleState(
+            settingsFile->getBoolValue("autoPlaySurfaceDrums", false),
+            juce::dontSendNotification);
+        autoPlaySurfaceDrumsToggle.onClick = [this]
+        {
+            settingsFile->setValue("autoPlaySurfaceDrums", autoPlaySurfaceDrumsToggle.getToggleState());
+            settingsFile->saveIfNeeded();
+        };
+        content.addAndMakeVisible(autoPlaySurfaceDrumsToggle);
+
+        // Coupling Arc Labels toggle — default ON
+        styleToggle(couplingArcLabelsToggle, "Coupling Arc Labels");
+        couplingArcLabelsToggle.setToggleState(
+            settingsFile->getBoolValue("couplingArcLabels", true),
+            juce::dontSendNotification);
+        couplingArcLabelsToggle.onClick = [this]
+        {
+            settingsFile->setValue("couplingArcLabels", couplingArcLabelsToggle.getToggleState());
+            settingsFile->saveIfNeeded();
+        };
+        content.addAndMakeVisible(couplingArcLabelsToggle);
+
+        // Preset Preview Audio toggle — default ON
+        styleToggle(presetPreviewAudioToggle, "Preset Preview Audio");
+        presetPreviewAudioToggle.setToggleState(
+            settingsFile->getBoolValue("presetPreviewAudio", true),
+            juce::dontSendNotification);
+        presetPreviewAudioToggle.onClick = [this]
+        {
+            settingsFile->setValue("presetPreviewAudio", presetPreviewAudioToggle.getToggleState());
+            settingsFile->saveIfNeeded();
+        };
+        content.addAndMakeVisible(presetPreviewAudioToggle);
 
         // ── 2. ACCESSIBILITY ─────────────────────────────────────────────────
         // Note: getTopLevelComponent() always returns nullptr in the constructor
@@ -340,9 +388,13 @@ public:
         // Re-apply theme-dependent colors that were set explicitly in the constructor.
         // Without this, toggle tick colors and the Clear All button background stay
         // stale when the user switches dark/light mode at runtime.
-        styleToggle(darkModeToggle,       "Dark Mode");
-        styleToggle(reducedMotionToggle,  "Reduced Motion (WCAG 2.3.3)");
-        styleToggle(perfLockToggle,       "Performance Lock");
+        styleToggle(darkModeToggle,              "Dark Cockpit");
+        styleToggle(cpuMetersToggle,             "CPU Meters");
+        styleToggle(autoPlaySurfaceDrumsToggle,  "Auto-PlaySurface (Drums)");
+        styleToggle(couplingArcLabelsToggle,     "Coupling Arc Labels");
+        styleToggle(presetPreviewAudioToggle,    "Preset Preview Audio");
+        styleToggle(reducedMotionToggle,         "Reduced Motion (WCAG 2.3.3)");
+        styleToggle(perfLockToggle,              "Performance Lock");
         if (mpeEnabledToggle != nullptr)
             styleToggle(*mpeEnabledToggle, "MPE Enabled");
 
@@ -533,7 +585,11 @@ private:
         // ── 1. THEME ─────────────────────────────────────────────────────────
         sectionY[0] = y;
         y += kHeaderH + kGap;
-        placeToggleRow(darkModeToggle);   // button text serves as the label
+        placeToggleRow(darkModeToggle);              // Dark Cockpit
+        placeToggleRow(cpuMetersToggle);             // CPU Meters
+        placeToggleRow(autoPlaySurfaceDrumsToggle);  // Auto-PlaySurface (Drums)
+        placeToggleRow(couplingArcLabelsToggle);     // Coupling Arc Labels
+        placeToggleRow(presetPreviewAudioToggle);    // Preset Preview Audio
 
         y += kSectionGap;
 
@@ -670,7 +726,11 @@ private:
     ContentWithHeaders  content;
 
     // ── 1. Theme ─────────────────────────────────────────────────────────────
-    juce::ToggleButton darkModeToggle  { "Dark Mode" };
+    juce::ToggleButton darkModeToggle              { "Dark Cockpit" };
+    juce::ToggleButton cpuMetersToggle             { "CPU Meters" };
+    juce::ToggleButton autoPlaySurfaceDrumsToggle  { "Auto-PlaySurface (Drums)" };
+    juce::ToggleButton couplingArcLabelsToggle     { "Coupling Arc Labels" };
+    juce::ToggleButton presetPreviewAudioToggle    { "Preset Preview Audio" };
 
     // ── 2. Accessibility ─────────────────────────────────────────────────────
     juce::ToggleButton reducedMotionToggle { "Reduced Motion (WCAG 2.3.3)" };

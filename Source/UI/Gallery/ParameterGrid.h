@@ -688,11 +688,11 @@ private:
     }
 
     // ── Layout constants ──────────────────────────────────────────────────────
-    // Mockup v05: 44px knobs in 68×64 cells, ~7 cols in Column B's ~490px.
+    // Mockup v05: 36px knobs in 56×52 cells, ~8 cols in Column B's ~490px.
     // Header height 32px matches mockup spec (~32px section headers).
-    static constexpr int kCellW           = 68;
-    static constexpr int kCellH           = 64;
-    static constexpr int kKnobSize        = 44;
+    static constexpr int kCellW           = 56;
+    static constexpr int kCellH           = 52;
+    static constexpr int kKnobSize        = 36;
     static constexpr int kPad             = 8;
     static constexpr int kHeaderRowH      = 32;  // height of each section header strip
     static constexpr int kVisibilityMargin = 120; // px preload margin for smooth scrolling

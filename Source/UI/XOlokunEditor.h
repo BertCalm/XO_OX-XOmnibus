@@ -912,7 +912,7 @@ public:
         auto colBPanel = layout.getColumnBPanel();
 
         // MasterFX strip at bottom of Column B panel area
-        auto masterFXBounds = colBPanel.removeFromBottom(kMasterFXH).reduced(6, 3);
+        auto masterFXBounds = colBPanel.removeFromBottom(kMasterFXH).reduced(14, 6);
         masterFXStrip.setBounds(masterFXBounds);
 
         // Signal flow strip (28px) at top of Column B — painted in paint().
