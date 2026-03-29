@@ -126,6 +126,28 @@ final class DiveComposer {
     private var startTime: CFTimeInterval?
     private var lastNote: Int? = nil
 
+    // Sprint 61: Harmonic engine
+    private(set) var harmonicContext: HarmonicContext = HarmonicContext()
+
+    /// Musical roles for active specimens in this Dive (set before start)
+    var specimenRoles: [MusicalRole] = [.melody]  // Default: single melody
+
+    /// Which role index is currently "active" for note generation.
+    /// Rotates each subdivision to give each voice its turn.
+    private var activeRoleIndex: Int = 0
+
+    // Sprint 62: Voice profiles for active specimens
+    var specimenProfiles: [String: VoiceProfile] = [:]  // subtypeID → profile
+
+    // Sprint 63: Arrangement engine
+    let arrangement = ArrangementEngine()
+
+    // Sprint 64: Player expression
+    let expression = PlayerExpressionHandler()
+
+    // Sprint 65: Scoring
+    let scoring = DiveScoring()
+
     // Specimen influence (set before dive starts)
     var specimenPulse: Float = 0.5      // LFO rate → rhythm density modifier
     var specimenWarmth: Float = 0.5     // Cutoff → prefer lower/higher chord tones
@@ -148,6 +170,29 @@ final class DiveComposer {
     var onChordChange: (() -> Void)?        // Fires when chord advances
     var onDegradation: ((Float) -> Void)?   // Current degradation level changed
 
+    // MARK: - Configuration
+
+    /// Configure the Dive with the player's reef specimens.
+    /// Call before start(). Reads specimens and sets up roles, profiles, and arrangement.
+    func configure(specimenSubtypeIDs: [String]) {
+        // Map specimens to roles
+        specimenRoles = specimenSubtypeIDs.map { SpecimenRoleMap.role(for: $0) }
+
+        // Load voice profiles
+        specimenProfiles = [:]
+        for id in specimenSubtypeIDs {
+            specimenProfiles[id] = VoiceProfileCatalog.profile(for: id)
+        }
+
+        // Configure arrangement with the roles
+        arrangement.configure(roles: specimenRoles)
+
+        // Set specimen names for scoring
+        scoring.setSpecimens(specimenSubtypeIDs.compactMap { id in
+            specimenProfiles[id]?.specimenName
+        })
+    }
+
     // MARK: - Lifecycle
 
     /// Start the composition engine. Call once when the dive begins.
@@ -161,6 +206,22 @@ final class DiveComposer {
         self.cleanStreak = 0
         self.activeNotes = []
         self.lastNote = nil
+
+        // Initialize harmonic context for this zone
+        let avgMood = (specimenWarmth + (1.0 - specimenGrit)) / 2.0
+        harmonicContext.transitionToZone(zone, specimenMood: avgMood)
+        activeRoleIndex = 0
+
+        // Start subsystems
+        arrangement.reset()
+        arrangement.onSectionChange = { [weak self] section in
+            self?.scoring.registerSectionChange(section)
+        }
+        arrangement.onVoiceEnter = { [weak self] _ in
+            self?.scoring.registerVoiceEntry()
+        }
+        expression.startTracking()
+        scoring.reset()
 
         // Tick at 16th-note resolution: 4 subdivisions per beat
         // At 110 BPM: beat = 545ms, subdivision = 136ms → ~7.3 Hz
@@ -177,6 +238,7 @@ final class DiveComposer {
     /// Stop the composition engine. Call when the dive ends.
     func stop() {
         tickToken = nil
+        expression.stopTracking()
         // Release all active notes
         for (note, _) in activeNotes {
             onNoteOff?(note)
@@ -189,8 +251,9 @@ final class DiveComposer {
     func updateZone(_ newZone: DepthZone) {
         if newZone != zone {
             zone = newZone
-            // Reset chord progression for new zone
             currentChordIndex = 0
+            let avgMood = (specimenWarmth + (1.0 - specimenGrit)) / 2.0
+            harmonicContext.transitionToZone(newZone, specimenMood: avgMood)
         }
     }
 
@@ -204,8 +267,9 @@ final class DiveComposer {
     /// Register collecting an orb — triggers chord change + filter bloom
     func registerCollectible() {
         // Force a chord change on next beat
-        // advanceChord() already calls onChordChange?() internally — do not call again
-        advanceChord()
+        harmonicContext.forceNextChord()
+        currentChordIndex = harmonicContext.chordIndex
+        onChordChange?()
 
         // Filter bloom: open up
         degradation = max(0, degradation - 0.15)
@@ -239,8 +303,14 @@ final class DiveComposer {
                 onBeat?(currentBeat)
 
                 // Advance chord every 4 beats (1 bar)
-                if currentBeat % 4 == 0 {
-                    advanceChord()
+                if currentBeat % 4 == 0 && arrangement.currentSection.allowsChordChanges {
+                    let chordChanged = harmonicContext.advanceBeat()
+                    if chordChanged {
+                        currentChordIndex = harmonicContext.chordIndex
+                        onChordChange?()
+                    }
+                } else {
+                    harmonicContext.advanceBeat()
                 }
 
                 // Decay degradation on clean beats
@@ -266,62 +336,129 @@ final class DiveComposer {
 
         guard shouldFire else { return }
 
-        // Select note with melodic coherence — specimen stats shape the harmonic language
-        let chord = currentChord()
-        let octave = Self.zoneBaseOctave[zone] ?? 3
-        var pitches = chord.map { max(24, min(108, octave * 12 + $0)) }
+        // ═══════════════════════════════════════════════════════
+        // INTEGRATED NOTE GENERATION (Sprints 61-65)
+        // ═══════════════════════════════════════════════════════
 
-        // Complexity enrichment: high-complexity specimens hear passing tones
-        if specimenComplexity > 0.5 {
+        // Sprint 63: Update arrangement state
+        let currentActiveRoles = arrangement.update(elapsed: elapsed)
+        scoring.updateElapsed(elapsed)
+        scoring.updateActiveVoices(currentActiveRoles.count)
+
+        // Filter to note-generating roles that are active in the arrangement
+        let noteRoles = currentActiveRoles.filter { $0.generatesNotes }
+        guard !noteRoles.isEmpty else { return }
+
+        // Rotate through active roles each subdivision
+        activeRoleIndex = subdivisionCount % noteRoles.count
+        let currentRole = noteRoles[activeRoleIndex]
+
+        // Sprint 62: Use voice profile for firing decision
+        // Find a profile that matches this role (use first matching specimen)
+        let matchingProfile = specimenProfiles.values.first { profile in
+            SpecimenRoleMap.role(for: specimenProfiles.first(where: { $0.value.specimenName == profile.specimenName })?.key ?? "") == currentRole
+        }
+
+        // Check firing probability from voice profile (or fall back to role density)
+        let subdivisionInBar = subdivisionCount % 16
+        if let profile = matchingProfile {
+            let probability = profile.firingProbability(at: subdivisionInBar)
+            guard Float.random(in: 0...1) < probability else { return }
+        } else {
+            let roleDensityRoll = Float.random(in: 0...1)
+            guard roleDensityRoll < currentRole.rhythmDensity else { return }
+        }
+
+        // Sprint 61: Get harmonically appropriate notes for this role
+        let octave = Self.zoneBaseOctave[zone] ?? 3
+        let availableNotes = harmonicContext.notesForRole(currentRole, baseOctave: octave)
+        guard !availableNotes.isEmpty else { return }
+
+        // Complexity enrichment: passing tones for melody
+        var pitches = availableNotes
+        if specimenComplexity > 0.5 && currentRole == .melody {
             let passing = pitches.flatMap { [$0 + 2, $0 - 2] }
                 .filter { p in p >= 24 && p <= 108 && !pitches.contains(p) }
             pitches += passing
             pitches.sort()
         }
 
-        // Phrase contour: beats 0-7 tend upward, 8-15 tend downward
+        // Clamp to voice profile range if available
+        if let profile = matchingProfile {
+            pitches = pitches.filter { $0 >= profile.rangeLow && $0 <= profile.rangeHigh }
+            guard !pitches.isEmpty else { return }
+        }
+
+        // Phrase contour + player direction
         let phrasePos = Float(currentBeat) / Float(phraseLength)
         let contourBias = phrasePos < 0.5 ? Float(0.15) : Float(-0.15)
         let direction = playerX - 0.5 + contourBias * specimenComplexity
 
-        // Note Memory: prefer notes close to the last played note
-        let clampedNote: Int
+        // Note selection with melodic memory + voice profile interval preference
+        let selectedNote: Int
         if let last = lastNote {
-            clampedNote = selectCoherentNote(from: pitches, lastNote: last, direction: direction)
+            // Sprint 62: Bias toward voice profile's preferred intervals
+            if let profile = matchingProfile {
+                selectedNote = selectProfileAwareNote(from: pitches, lastNote: last,
+                                                       direction: direction, profile: profile)
+            } else {
+                selectedNote = selectCoherentNote(from: pitches, lastNote: last, direction: direction)
+            }
         } else {
             let noteIndex = noteIndexFromPlayerPosition(chordSize: pitches.count)
-            clampedNote = pitches[max(0, min(pitches.count - 1, noteIndex))]
+            selectedNote = pitches[max(0, min(pitches.count - 1, noteIndex))]
         }
 
-        // Velocity: base from zone + dodge velocity adds accent + degradation reduces
-        var velocity: Float = 0.5 + specimenGrit * 0.3
-        velocity += abs(playerDodgeVelocity) * 0.3      // Fast dodging = louder accent
-        velocity *= (1.0 - degradation * 0.5)            // Degradation quiets
+        // Velocity: role range + arrangement + expression + specimen influence
+        let velRange = currentRole.velocityRange
+        var velocity = Float.random(in: velRange)
+        velocity *= arrangement.currentVelocityMultiplier         // Sprint 63
+        velocity *= expression.velocityModifier                    // Sprint 64
+        velocity += specimenGrit * 0.1
+        velocity += abs(playerDodgeVelocity) * 0.15
+        velocity *= (1.0 - degradation * 0.4)
+        // Sprint 62: Voice profile accent
+        if let profile = matchingProfile, profile.isAccented(subdivisionInBar) {
+            velocity *= 1.2
+        }
         velocity = max(0.15, min(0.95, velocity))
 
-        // Obstacle proximity adds zone-appropriate tension intervals
-        var finalNote = clampedNote
+        // Tension from obstacle proximity
+        var finalNote = selectedNote
+        var wasTension = false
         if obstacleProximity > 0.6 {
-            let intervals = Self.zoneTensionIntervals[zone] ?? [1, -1]
-            finalNote += intervals.randomElement() ?? 1
+            finalNote = harmonicContext.tensionNote(near: selectedNote, intensity: obstacleProximity)
+            wasTension = true
+        }
+
+        // Sprint 64: Call-and-response — if player tapped a zone, accent it
+        if let _ = expression.state.tappedZoneIndex {
+            velocity = min(0.95, velocity + 0.2)
+            scoring.registerInteraction(type: "tap")
         }
 
         // Fire the note
         onNoteOn?(finalNote, velocity)
         lastNote = finalNote
 
-        // Schedule note-off
+        // Sprint 65: Register with scoring
+        scoring.registerNote(midiNote: finalNote, wasInKey: !wasTension, wasTension: wasTension)
+
+        // Duration: role + profile + arrangement + expression + specimen stats
         let durationRange = Self.zoneNoteDuration[zone] ?? 0.3...0.8
         var duration = Double.random(in: durationRange) * beatDuration
-        // Specimen reflexes: high reflexes = shorter notes (staccato)
+        duration *= Double(currentRole.durationMultiplier)
+        duration *= Double(expression.durationModifier)            // Sprint 64
+        if let profile = matchingProfile {
+            duration *= Double(0.5 + profile.sustainLength)        // Sprint 62
+        }
         duration *= Double(1.2 - specimenReflexes * 0.6)
         duration = max(0.05, duration)
-        // Stamina extends sustain (legato tendency)
         duration *= Double(1.0 + specimenStamina * 0.4)
 
         activeNotes.append((note: finalNote, offTime: elapsed + duration))
 
-        // Presence → octave doubling (wide, big sound)
+        // Presence → octave doubling
         if specimenPresence > 0.5 && Float.random(in: 0...1) < (specimenPresence - 0.5) * 0.6 {
             let doubled = finalNote + (Bool.random() ? 12 : -12)
             if doubled >= 24 && doubled <= 108 {
@@ -333,14 +470,16 @@ final class DiveComposer {
 
     // MARK: - Helpers
 
+    /// Legacy chord lookup — now delegates to HarmonicContext
     private func currentChord() -> [Int] {
-        let progression = Self.zoneProgressions[zone] ?? [[0, 4, 7, 12, 16]]
-        return progression[currentChordIndex % progression.count]
+        let octave = Self.zoneBaseOctave[zone] ?? 3
+        return harmonicContext.currentChordNotes(octave: octave)
     }
 
+    /// Legacy chord advance — now delegates to HarmonicContext
     private func advanceChord() {
-        let progression = Self.zoneProgressions[zone] ?? [[0, 4, 7, 12, 16]]
-        currentChordIndex = (currentChordIndex + 1) % progression.count
+        harmonicContext.forceNextChord()
+        currentChordIndex = harmonicContext.chordIndex
         onChordChange?()
     }
 
@@ -391,6 +530,46 @@ final class DiveComposer {
 
         let index = Int(biasedX * Float(chordSize - 1))
         return max(0, min(chordSize - 1, index))
+    }
+
+    /// Select a note biased by the voice profile's preferred intervals.
+    /// Combines melodic coherence with the specimen's unique personality.
+    private func selectProfileAwareNote(from pitches: [Int], lastNote: Int,
+                                         direction: Float, profile: VoiceProfile) -> Int {
+        guard !pitches.isEmpty else { return lastNote }
+
+        var bestPitch = pitches[0]
+        var bestScore: Float = .infinity
+
+        for pitch in pitches {
+            let interval = pitch - lastNote
+            let absInterval = abs(interval)
+
+            // Voice profile preference score (lower = more preferred)
+            let profileScore = profile.intervalScore(absInterval)
+
+            // Direction penalty
+            let dirPenalty: Float
+            if direction > 0.1 && pitch < lastNote {
+                dirPenalty = Float(absInterval) * 0.3
+            } else if direction < -0.1 && pitch > lastNote {
+                dirPenalty = Float(absInterval) * 0.3
+            } else {
+                dirPenalty = 0
+            }
+
+            // Gravity toward small intervals (weighted by warmth)
+            let gravity = (0.2 + specimenWarmth * 0.5) * Float(absInterval)
+
+            let score = profileScore + gravity + dirPenalty
+
+            if score < bestScore {
+                bestScore = score
+                bestPitch = pitch
+            }
+        }
+
+        return bestPitch
     }
 
     private func releaseExpiredNotes(at currentTime: TimeInterval) {
