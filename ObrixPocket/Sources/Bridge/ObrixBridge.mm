@@ -132,7 +132,30 @@ public:
             midi.addEvent(juce::MidiMessage::allNotesOff(1), 0);
         }
 
+        // Clear the buffer before rendering — the engine uses addSample() which
+        // accumulates. If JUCE doesn't zero the buffer (edge case in some hosting
+        // configurations), stale data from the previous callback would bleed through.
+        buffer.clear();
+
         eng.renderBlock(buffer, midi, buffer.getNumSamples());
+
+        // === NaN/Infinity guard =============================================
+        // If the engine produces any invalid samples (NaN, inf, or extreme
+        // values), they propagate to CoreAudio's HAL and can corrupt the
+        // hardware audio state on iOS, requiring a full device reboot.
+        // This clamp is the last line of defense. If it triggers, the engine
+        // has a bug — but the user's phone doesn't brick.
+        for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+        {
+            float* data = buffer.getWritePointer(ch);
+            for (int i = 0; i < buffer.getNumSamples(); ++i)
+            {
+                if (std::isnan(data[i]) || std::isinf(data[i]))
+                    data[i] = 0.0f;
+                else
+                    data[i] = std::max(-4.0f, std::min(4.0f, data[i]));
+            }
+        }
 
         // Apply output gain (for ducking under other media)
         float gain = _gainRef.load(std::memory_order_relaxed);
@@ -348,9 +371,12 @@ static const int kMidiQueueSize = 256;
     );
     _player = std::make_unique<juce::AudioProcessorPlayer>();
     _player->setProcessor(_adapter.get());
-    _deviceManager->addAudioCallback(_player.get());
 
+    // Set _running BEFORE adding the audio callback — processBlock may fire
+    // immediately after addAudioCallback, and it should see a valid state.
     _running.store(true);
+
+    _deviceManager->addAudioCallback(_player.get());
 
     if (auto* dev = _deviceManager->getCurrentAudioDevice())
         NSLog(@"[ObrixBridge] Audio started. SR=%.0f", dev->getCurrentSampleRate());
