@@ -121,21 +121,27 @@ struct OasisRhodesToneGenerator
         tineEnvLevel = velocity;
         bellEnvLevel = velocity * velocity * bellAmount;  // quadratic: bell is nonlinear
         tineVelocity = velocity;
+        bellAmountLive = bellAmount;
 
-        // Per-partial initial amplitude from velocity + bell setting
+        // Per-partial initial amplitude from velocity (bell boost for index 2 is NOT baked in
+        // here — it is computed live in process() using bellAmountLive so the knob responds
+        // on held notes without requiring a new note-on).
         for (int i = 0; i < kNumPartials; ++i)
         {
             float partialVelScale = 1.0f - (1.0f - velocity) * static_cast<float>(i) * 0.15f;
             if (partialVelScale < 0.0f) partialVelScale = 0.0f;
             partialLevels[i] = kPartialAmps[i] * partialVelScale;
-            // Bell boost to 3rd partial
-            if (i == 2) partialLevels[i] += bellAmount * velocity * 0.3f;
         }
+        // Store base level for index 2 so process() can derive the proportional bell
+        // contribution as the partial decays.
+        baseLevelIndex2 = partialLevels[2];
     }
 
     // process() with optional per-partial pickup gains.
     // pickupGains[i] comes from OasisRhodesPickupModel::partialGains[i] — call
     // pickup.setPickupPosition() at note-on, then pass pickup.partialGains here.
+    // Set bellAmountLive each block (from the block-rate parameter snapshot) to make
+    // the Bell Amount knob respond in real time on held notes.
     float process (float fundamentalHz, const float* pickupGains = nullptr) noexcept
     {
         float out = 0.0f;
@@ -149,8 +155,24 @@ struct OasisRhodesToneGenerator
             phases[i] += phaseInc;
             if (phases[i] >= 1.0f) phases[i] -= 1.0f;
 
+            // For the bell partial (index 2), recompute the total level from the
+            // decaying base envelope plus the live bell contribution so that the
+            // Bell Amount knob affects held notes in real time.
+            float effectiveLevel = partialLevels[i];
+            if (i == 2)
+            {
+                // partialLevels[2] carries the decaying base amplitude.
+                // bellAmountLive × tineVelocity × 0.3 recreates the bell boost
+                // at whatever the knob is currently set to, scaled by the same
+                // per-partial decay that the base level has already undergone.
+                float bellDecayRatio = (baseLevelIndex2 > 0.0001f)
+                                       ? partialLevels[2] / baseLevelIndex2
+                                       : 0.0f;
+                effectiveLevel = partialLevels[2] + bellAmountLive * tineVelocity * 0.3f * bellDecayRatio;
+            }
+
             float partialGain = pickupGains ? pickupGains[i] : 1.0f;
-            out += fastSin (phases[i] * 6.28318530718f) * partialLevels[i] * partialGain;
+            out += fastSin (phases[i] * 6.28318530718f) * effectiveLevel * partialGain;
 
             // Per-partial decay: higher partials decay faster (tine physics).
             // Decay time T(i) = 2.0 - i*0.25 seconds → matched-Z pole per CLAUDE.md
@@ -179,6 +201,12 @@ struct OasisRhodesToneGenerator
     float tineEnvLevel = 0.0f;
     float bellEnvLevel = 0.0f;
     float tineVelocity = 0.0f;
+    // Live bell amount — set each block from the block-rate parameter snapshot
+    // so that the Bell Amount knob responds in real time on held notes.
+    float bellAmountLive = 0.5f;
+    // Base level of partial index 2 at trigger time (before bell boost), used in
+    // process() to compute the proportional bell contribution during decay.
+    float baseLevelIndex2 = 0.0f;
 };
 
 //==============================================================================
@@ -517,8 +545,7 @@ public:
         pitchBendNorm_ = 0.0f;
 
         // Silence gate: 500ms (reverb-tail category due to canopy delay)
-        silenceGate.prepare (sr_, maxBlockSize);
-        silenceGate.setHoldTime (500.0f);
+        prepareSilenceGate (sr_, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override {}
@@ -559,7 +586,7 @@ public:
             auto msg = meta.getMessage();
             if (msg.isNoteOn())
             {
-                silenceGate.wake();
+                wakeSilenceGate();
 
                 // Entropy analysis: measure timing deviation from expected grid
                 int timeSinceLastNote = sampleCounter_ - lastNoteOnTime_;
@@ -691,7 +718,7 @@ public:
         }
 
         // 2. Silence gate bypass
-        if (silenceGate.isBypassed() && midi.isEmpty())
+        if (isSilenceGateBypassed() && midi.isEmpty())
         {
             buffer.clear();
             return;
@@ -716,6 +743,7 @@ public:
         float pTremoloDepth = pTremoloDepthParam_  ? pTremoloDepthParam_->load() : 0.0f;
         float pTremoloRate  = pTremoloRateParam_   ? pTremoloRateParam_->load()  : 5.0f;
         float pGlideTime    = pGlideTimeParam_     ? pGlideTimeParam_->load()    : 0.0f;
+        float pBellAmount   = pBellAmountParam_    ? pBellAmountParam_->load()   : 0.5f;
 
         // Macros
         float pM1 = pMacroCharacterParam_ ? pMacroCharacterParam_->load() : 0.0f;
@@ -803,6 +831,7 @@ public:
                     if (voice.phase >= 1.0) voice.phase -= 1.0;
                     float phaseF = static_cast<float> (voice.phase) * 6.28318530718f;
 
+                    voice.tine.bellAmountLive = pBellAmount;
                     float rhodesOut = voice.tine.process (glidedFreq, voice.pickup.partialGains);
                     rhodesOut = voice.pickup.process (rhodesOut, pPickupPos);
                     rhodesOut = voice.amp.process (rhodesOut, pWarmth, voice.velocity);
@@ -846,9 +875,8 @@ public:
                         voice.phaseDelta = freq / sr_;
                         voice.glide.setTargetOrSnap (freq);
 
-                        float bellAmount = pBellAmountParam_ ? pBellAmountParam_->load() : 0.5f;
                         voice.pickup.setPickupPosition (pPickupPos);
-                        voice.tine.trigger (voice.velocity, bellAmount);
+                        voice.tine.trigger (voice.velocity, pBellAmount);
                         voice.ampEnv.trigger();
                         voice.filterEnv.trigger();
                     }
@@ -887,6 +915,8 @@ public:
                 // === RHODES SIGNAL CHAIN ===
                 // 1. Tine generator: stretched-harmonic physical model with per-partial
                 //    pickup gains (set at note-on via pickup.setPickupPosition()).
+                // Update bellAmountLive each block so held notes respond to knob changes.
+                voice.tine.bellAmountLive = pBellAmount;
                 float rhodesOut = voice.tine.process (glidedFreq, voice.pickup.partialGains);
 
                 // 2. Pickup model: presence filter (tip=bright, base=warm).
@@ -1052,9 +1082,7 @@ public:
         extPitchMod_ = 0.0f;
 
         // Silence gate analysis
-        const float* rL = buffer.getReadPointer (0);
-        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr;
-        silenceGate.analyzeBlock (rL, rR, numSamples);
+        analyzeForSilenceGate (buffer, numSamples);
     }
 
     //-- Coupling ---------------------------------------------------------------

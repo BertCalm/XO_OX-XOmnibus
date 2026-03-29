@@ -1,0 +1,257 @@
+{
+  "source_spec": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/render_specs/mpce_perc_001_render.json",
+  "selected_presets_count": 50,
+  "total_jobs": 12800,
+  "presets": [
+    {
+      "name": "Cascading Tangle",
+      "program": 0,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Entangled/Cascading Tangle.xometa"
+    },
+    {
+      "name": "Bass Drum Engine",
+      "program": 1,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Entangled/Onset/Bass_Drum_Engine.xometa"
+    },
+    {
+      "name": "Twin Engine",
+      "program": 2,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Entangled/Onset/Twin_Engine.xometa"
+    },
+    {
+      "name": "Bitcrushed Fur",
+      "program": 3,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Bitcrushed Fur.xometa"
+    },
+    {
+      "name": "Dusty Circuits",
+      "program": 4,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Dusty_Circuits.xometa"
+    },
+    {
+      "name": "Quantum Kit",
+      "program": 5,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Quantum_Kit.xometa"
+    },
+    {
+      "name": "Tape Machine",
+      "program": 6,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Tape_Machine.xometa"
+    },
+    {
+      "name": "First Choke",
+      "program": 7,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/XVC/First_Choke.xometa"
+    },
+    {
+      "name": "808 Ghost Circuit",
+      "program": 8,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/808_Ghost_Circuit.xometa"
+    },
+    {
+      "name": "808 Reborn",
+      "program": 9,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/808_Reborn.xometa"
+    },
+    {
+      "name": "Analog Heart",
+      "program": 10,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Analog_Heart.xometa"
+    },
+    {
+      "name": "Boom Bap OG",
+      "program": 11,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Boom_Bap_OG.xometa"
+    },
+    {
+      "name": "Cajon Box",
+      "program": 12,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Cajon_Box.xometa"
+    },
+    {
+      "name": "Dancehall Fire",
+      "program": 13,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Dancehall_Fire.xometa"
+    },
+    {
+      "name": "Djembe Circuit",
+      "program": 14,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Djembe_Circuit.xometa"
+    },
+    {
+      "name": "Drill Pressure",
+      "program": 15,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Drill_Pressure.xometa"
+    },
+    {
+      "name": "Garage Two Step",
+      "program": 16,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Garage_Two_Step.xometa"
+    },
+    {
+      "name": "House Classic",
+      "program": 17,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/House_Classic.xometa"
+    },
+    {
+      "name": "Punch Mode",
+      "program": 18,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Punch_Mode.xometa"
+    },
+    {
+      "name": "Reggaeton Dem",
+      "program": 19,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Reggaeton_Dem.xometa"
+    },
+    {
+      "name": "SP1200 Grit",
+      "program": 20,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/SP1200_Grit.xometa"
+    },
+    {
+      "name": "Saturated",
+      "program": 21,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Saturated.xometa"
+    },
+    {
+      "name": "Trap Bounce",
+      "program": 22,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Trap_Bounce.xometa"
+    },
+    {
+      "name": "Boom Bap Clap",
+      "program": 23,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Boom_Bap_Clap.xometa"
+    },
+    {
+      "name": "Brush Snare",
+      "program": 24,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Brush_Snare.xometa"
+    },
+    {
+      "name": "Conga Slap",
+      "program": 25,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Conga_Slap.xometa"
+    },
+    {
+      "name": "Cowbell Muted",
+      "program": 26,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Cowbell_Muted.xometa"
+    },
+    {
+      "name": "Crack Snare",
+      "program": 27,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Crack_Snare.xometa"
+    },
+    {
+      "name": "Dusty Hat",
+      "program": 28,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Dusty_Hat.xometa"
+    },
+    {
+      "name": "Finger Snap",
+      "program": 29,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Finger_Snap.xometa"
+    },
+    {
+      "name": "Ghost Snare",
+      "program": 30,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Ghost_Snare.xometa"
+    },
+    {
+      "name": "Layered Snare",
+      "program": 31,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Layered_Snare.xometa"
+    },
+    {
+      "name": "Lo-Fi Hat",
+      "program": 32,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_LoFi_Hat.xometa"
+    },
+    {
+      "name": "Low Tom",
+      "program": 33,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Low_Tom.xometa"
+    },
+    {
+      "name": "Mid Tom",
+      "program": 34,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Mid_Tom.xometa"
+    },
+    {
+      "name": "Open Hat Tension",
+      "program": 35,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Open_Hat_Tension.xometa"
+    },
+    {
+      "name": "Pedal Hat",
+      "program": 36,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Pedal_Hat.xometa"
+    },
+    {
+      "name": "Punchy Kick",
+      "program": 37,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Punchy_Kick.xometa"
+    },
+    {
+      "name": "Rim Click",
+      "program": 38,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Rim_Click.xometa"
+    },
+    {
+      "name": "Round Kick",
+      "program": 39,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Round_Kick.xometa"
+    },
+    {
+      "name": "Shaker Dust",
+      "program": 40,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Shaker_Dust.xometa"
+    },
+    {
+      "name": "Sizzle Hat",
+      "program": 41,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Sizzle_Hat.xometa"
+    },
+    {
+      "name": "Snap Clap",
+      "program": 42,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Snap_Clap.xometa"
+    },
+    {
+      "name": "Tambourine Shake",
+      "program": 43,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Tambourine_Shake.xometa"
+    },
+    {
+      "name": "Tight Machine Hat",
+      "program": 44,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Tight_Machine_Hat.xometa"
+    },
+    {
+      "name": "Tight Snare",
+      "program": 45,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Tight_Snare.xometa"
+    },
+    {
+      "name": "Vinyl Clap",
+      "program": 46,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Vinyl_Clap.xometa"
+    },
+    {
+      "name": "Vinyl Kick",
+      "program": 47,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Vinyl_Kick.xometa"
+    },
+    {
+      "name": "Vinyl Snare",
+      "program": 48,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Vinyl_Snare.xometa"
+    },
+    {
+      "name": "Wood Block",
+      "program": 49,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset_Wood_Block.xometa"
+    }
+  ]
+}

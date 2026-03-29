@@ -159,7 +159,7 @@ public:
         for (auto& voice : voices)
             voice.prepare (sampleRate);
 
-        silenceGate.prepare (sampleRate, maxBlockSize);
+        prepareSilenceGate (sampleRate, maxBlockSize);
 
         // FX LFOs
         chorusLFO.setRate  (0.7f, static_cast<float> (sampleRate));
@@ -219,7 +219,7 @@ public:
 
             if (msg.isNoteOn())
             {
-                silenceGate.wake();
+                wakeSilenceGate();
 
                 // Find a free voice slot; fall back to round-robin steal
                 int targetSlot = -1;
@@ -328,7 +328,7 @@ public:
         }
 
         // SilenceGate: skip all DSP when the engine has been silent long enough
-        if (silenceGate.isBypassed() && midi.isEmpty())
+        if (isSilenceGateBypassed() && midi.isEmpty())
         {
             buf.clear();
             return;
@@ -695,10 +695,7 @@ public:
         activeVoiceCount_.store (activeCount, std::memory_order_relaxed);
 
         // SilenceGate: analyze output level for next-block bypass decision
-        silenceGate.analyzeBlock (
-            buf.getReadPointer (0),
-            buf.getNumChannels() > 1 ? buf.getReadPointer (1) : nullptr,
-            numSamples);
+        analyzeForSilenceGate (buf, numSamples);
     }
 
     //==========================================================================
@@ -870,8 +867,6 @@ private:
     //==========================================================================
     // Engine state
     //==========================================================================
-
-    SilenceGate silenceGate;
 
     static constexpr int kNumVoices = 12;   // maximum polyphony
 
