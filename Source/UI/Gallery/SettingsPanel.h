@@ -8,6 +8,7 @@
 //   4. Performance    (48pt)   — Performance Lock (editor-local state, no APVTS)
 //   5. MIDI Mappings  (variable) — Live CC→param table from MIDILearnManager
 //   6. About          (80pt)   — Version, links
+//   7. Keyboard Shortcuts (36pt) — Z/X/C/V shortcut legend (display-only)
 //
 // Architectural notes:
 //   • Header-only (.h), consistent with all Gallery Model components.
@@ -287,6 +288,16 @@ public:
             }
         };
         content.addAndMakeVisible(clearAllBtn);
+
+        // ── 7. KEYBOARD SHORTCUTS ────────────────────────────────────────────
+        shortcutsLabel.setText("Z \xe2\x80\x94 Fire Chord  \xc2\xb7  X \xe2\x80\x94 XO Send  \xc2\xb7  C \xe2\x80\x94 Echo Cut  \xc2\xb7  V \xe2\x80\x94 Panic",
+                               juce::dontSendNotification);
+        shortcutsLabel.setFont(GalleryFonts::value(9.0f));
+        shortcutsLabel.setColour(juce::Label::textColourId,
+                                 GalleryColors::get(GalleryColors::textMid()));
+        shortcutsLabel.setJustificationType(juce::Justification::centredLeft);
+        shortcutsLabel.setInterceptsMouseClicks(false, false);
+        content.addAndMakeVisible(shortcutsLabel);
 
         // ── 6. ABOUT ─────────────────────────────────────────────────────────
         aboutNameLabel.setText("XOlokun", juce::dontSendNotification);
@@ -657,6 +668,14 @@ private:
 
         y += kSectionGap;
 
+        // ── 7. KEYBOARD SHORTCUTS ────────────────────────────────────────────
+        sectionY[6] = y;
+        y += kHeaderH + kGap;
+        shortcutsLabel.setBounds(kPad, y, inner, kRowH);
+        y += kRowH + kGap;
+
+        y += kSectionGap;
+
         // ── 6. ABOUT ─────────────────────────────────────────────────────────
         sectionY[5] = y;
         y += kHeaderH + kGap;
@@ -694,9 +713,10 @@ private:
             const int inner = w - SettingsPanel::kPad * 2;
 
             static const char* kTitles[] = {
-                "Theme", "Accessibility", "MPE", "Performance", "MIDI Mappings", "About"
+                "Theme", "Accessibility", "MPE", "Performance", "MIDI Mappings", "About",
+                "Keyboard Shortcuts"
             };
-            for (int i = 0; i < 6; ++i)
+            for (int i = 0; i < 7; ++i)
                 owner->drawSectionHeader(g, kTitles[i],
                                          SettingsPanel::kPad,
                                          owner->sectionY[i],
@@ -714,7 +734,7 @@ private:
     bool              perfLocked   = false;
 
     // Layout tracking (set by layoutContent, read by paint callbacks)
-    int  sectionY[6]  = {};
+    int  sectionY[7]  = {};
     int  midiTableY   = 0;
     int  midiTableH   = 0;
 
@@ -764,6 +784,9 @@ private:
 
     // ── 5. MIDI Mappings (painted, not component rows) ────────────────────────
     juce::TextButton   clearAllBtn;
+
+    // ── 7. Keyboard Shortcuts (display-only) ─────────────────────────────────
+    juce::Label        shortcutsLabel;
 
     // ── 6. About ─────────────────────────────────────────────────────────────
     juce::Label        aboutNameLabel;

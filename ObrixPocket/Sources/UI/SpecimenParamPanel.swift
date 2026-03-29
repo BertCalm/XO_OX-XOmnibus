@@ -8,6 +8,7 @@ struct SpecimenParamPanel: View {
     @EnvironmentObject var reefStore: ReefStore
     @EnvironmentObject var audioEngine: AudioEngineManager
     @State private var activeParam: String? // Which param is being dragged (for hover label)
+    @State private var showAdvanced = false
     @State private var showReleaseConfirm = false
     @State private var showSwapPicker = false
     @State private var showFusionPicker = false
@@ -179,6 +180,51 @@ struct SpecimenParamPanel: View {
                     // Envelope section — ALL specimens get envelope controls
                     sectionHeader("ENVELOPE")
                     envelopeParams(spec)
+
+                    // Advanced parameters toggle
+                    Button(action: { withAnimation { showAdvanced.toggle() } }) {
+                        HStack(spacing: 6) {
+                            Image(systemName: showAdvanced ? "chevron.down" : "chevron.right")
+                                .font(.system(size: 9))
+                            Text("ADVANCED")
+                                .font(DesignTokens.mono(9))
+                                .tracking(1.5)
+                        }
+                        .foregroundColor(.white.opacity(0.3))
+                    }
+                    .padding(.top, 8)
+
+                    if showAdvanced {
+                        VStack(spacing: 8) {
+                            sectionHeader("OSCILLATOR")
+                            paramSlider("Waveform", paramKey: "obrix_src1Type", range: 0...5, unit: "", spec: spec)
+                            paramSlider("Wavetable", paramKey: "obrix_wtBank", range: 0...3, unit: "", spec: spec)
+                            paramSlider("Unison Detune", paramKey: "obrix_unisonDetune", range: 0...50, unit: "", spec: spec)
+
+                            sectionHeader("FILTER MODE")
+                            paramSlider("Filter Type", paramKey: "obrix_proc1Type", range: 0...4, unit: "", spec: spec)
+                            paramSlider("Feedback", paramKey: "obrix_proc1Feedback", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("ECOLOGY")
+                            paramSlider("Reef Mode", paramKey: "obrix_reefResident", range: 0...3, unit: "", spec: spec)
+                            paramSlider("Resident Str", paramKey: "obrix_residentStrength", range: 0...1, unit: "", spec: spec)
+                            paramSlider("Competition", paramKey: "obrix_competitionStrength", range: 0...1, unit: "", spec: spec)
+                            paramSlider("Symbiosis", paramKey: "obrix_symbiosisStrength", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("ENVIRONMENT")
+                            paramSlider("Temperature", paramKey: "obrix_envTemp", range: 0...1, unit: "", spec: spec)
+                            paramSlider("Pressure", paramKey: "obrix_envPressure", range: 0...1, unit: "", spec: spec)
+                            paramSlider("Current", paramKey: "obrix_envCurrent", range: -1...1, unit: "", spec: spec)
+                            paramSlider("Turbidity", paramKey: "obrix_envTurbidity", range: 0...1, unit: "", spec: spec)
+
+                            sectionHeader("SPATIAL")
+                            paramSlider("Distance", paramKey: "obrix_distance", range: 0...1, unit: "", spec: spec)
+                            paramSlider("Air", paramKey: "obrix_air", range: 0...1, unit: "", spec: spec)
+                            paramSlider("Drift Rate", paramKey: "obrix_driftRate", range: 0.001...0.05, unit: "", spec: spec)
+                            paramSlider("Drift Depth", paramKey: "obrix_driftDepth", range: 0...1, unit: "", spec: spec)
+                        }
+                        .transition(.opacity.combined(with: .move(edge: .top)))
+                    }
 
                     // XP Boost button — spend 10 energy to award +50 XP to this specimen
                     Button(action: {

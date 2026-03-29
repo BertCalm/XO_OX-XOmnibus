@@ -63,7 +63,7 @@ public:
         isLoading = false; // engine arrived — clear loading state
         hasEngine = newHasEngine;
         engineId  = newId;
-        setTooltip(hasEngine ? "Click to edit parameters. Right-click for options."
+        setTooltip(hasEngine ? "Click to open engine detail \xe2\x80\x94 right-click for options"
                              : "Slot " + juce::String(slot + 1) + ": empty — click to load engine");
         accent    = hasEngine ? eng->getAccentColour()
                               : GalleryColors::get(GalleryColors::emptySlot());

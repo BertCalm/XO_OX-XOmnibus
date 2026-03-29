@@ -53,7 +53,7 @@ public:
         ++headIdx;
     }
 
-    void timerCallback() override { repaint(); }
+    void timerCallback() override { if (!isVisible()) return; repaint(); }
 
     void paint(juce::Graphics& g) override
     {

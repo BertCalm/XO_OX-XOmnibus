@@ -231,6 +231,10 @@ public:
         phase = 0.0;
         fmModPhase = 0.0;
         instabilityPhase = 0.0;
+        syncBlepActive = false;
+        syncBlepHeight = 0.0f;
+        syncBlepT = 0.0f;
+        syncBlepDt = 0.0f;
     }
 
     void setFrequency (float hz) noexcept
@@ -243,8 +247,27 @@ public:
     void setShape (float s) noexcept { shape = clamp (s, 0.0f, 1.0f); }
     void setInstability (float i) noexcept { instability = clamp (i, 0.0f, 1.0f); }
 
-    // Call when OscA wraps phase (for hard sync)
-    void syncReset() noexcept { phase = 0.0; }
+    // Call when OscA wraps phase (for hard sync).
+    // Records the step height at the discontinuity for polyBLEP antialiasing.
+    // The slave oscillator resets to phase=0 (saw resets to -1), so the step
+    // size is (currentValue - resetValue) = (2*phase - 1) - (-1) = 2*phase.
+    // We also record the fractional phase offset within the current master period
+    // so we can correctly position the BLEP in both the pre- and post-reset samples.
+    void syncReset (double masterPhaseAtSync, double masterPhaseInc) noexcept
+    {
+        // Step height: value just before reset minus value just after reset (-1).
+        syncBlepHeight = static_cast<float> (2.0 * phase - 1.0) - (-1.0f);
+        // Fractional position within the master cycle at which the reset occurred.
+        // t_sync = 1 - masterPhaseAtSync gives how far past the wrap we are,
+        // normalised to [0,1] in units of masterPhaseInc.
+        syncBlepT = (masterPhaseInc > 0.0)
+                    ? static_cast<float> (masterPhaseAtSync / masterPhaseInc)  // 0..1 progress through next period
+                    : 0.0f;
+        syncBlepActive = true;
+        // Store master inc for post-reset BLEP tail
+        syncBlepDt = static_cast<float> (masterPhaseInc);
+        phase = 0.0;
+    }
 
     float processSample (float oscAout, float externalFM) noexcept
     {
@@ -268,7 +291,28 @@ public:
                 double syncRatio = 1.0 + static_cast<double> (shape) * 3.0;
                 double syncPhase = std::fmod (phase * syncRatio, 1.0);
                 out = static_cast<float> (2.0 * syncPhase - 1.0);
+                // Normal per-cycle polyBLEP for the slave saw's own wrap discontinuity
                 out -= polyBlepD (syncPhase, effPhaseInc * syncRatio);
+
+                // Hard-sync discontinuity BLEP (persistent correction).
+                // The polyBLEP post-reset tail spans t=[0, dt] — i.e. roughly 1/effPhaseInc
+                // samples after the reset.  We apply the correction each sample while
+                // the slave phase is still within the correction window (t < dt_slave).
+                // syncBlepActive is cleared once we leave the window.
+                if (syncBlepActive && syncBlepDt > 0.0f)
+                {
+                    float t_post = static_cast<float> (phase);
+                    float dt_slave = static_cast<float> (effPhaseInc);
+                    if (dt_slave > 0.0f && t_post < dt_slave)
+                    {
+                        out -= syncBlepHeight * polyBlepD (static_cast<double> (t_post), static_cast<double> (dt_slave));
+                        // Keep active until we exit the BLEP window
+                    }
+                    else
+                    {
+                        syncBlepActive = false;  // correction window complete
+                    }
+                }
                 break;
             }
 
@@ -337,6 +381,10 @@ private:
     float shape = 0.5f;
     float instability = 0.0f;
     float noiseFilterState = 0.0f;
+    bool syncBlepActive = false;
+    float syncBlepHeight = 0.0f;
+    float syncBlepT = 0.0f;   // fractional sample offset at sync point
+    float syncBlepDt = 0.0f;  // master phaseInc at sync time (for BLEP window)
     BiteNoiseGen noiseGen;
 
     static float polyBlepD (double t, double dt) noexcept
@@ -784,12 +832,17 @@ struct BiteVoice
     BiteChew chew;
     BiteGnash gnash;
     BiteTrash trash;
+    CytomicSVF chewFilter;
     BiteAdsrEnvelope ampEnv;
     BiteAdsrEnvelope filterEnv;
     BiteAdsrEnvelope modEnv;
     BiteLFO lfo1;
     BiteLFO lfo2;
     BiteLFO lfo3;
+
+    // Unison sub-voice index (0 = center, 1..N-1 = detuned copies)
+    int unisonIndex = 0;
+    int unisonTotal = 1;
 
     // Track OscA phase wrap for hard sync
     float prevOscAPhase = 0.0f;
@@ -858,6 +911,8 @@ public:
             v.noise.prepare (sr);
             v.filter.reset();
             v.filter.setMode (CytomicSVF::Mode::LowPass);
+            v.chewFilter.reset();
+            v.chewFilter.setMode (CytomicSVF::Mode::LowPass);
             v.trash.reset();
             v.ampEnv.prepare (static_cast<float> (sr));
             v.filterEnv.prepare (static_cast<float> (sr));
@@ -881,6 +936,7 @@ public:
             v.weight.reset();
             v.noise.reset();
             v.filter.reset();
+            v.chewFilter.reset();
             v.trash.reset();
             v.ampEnv.reset();
             v.filterEnv.reset();
@@ -940,6 +996,10 @@ public:
         // Character
         const float furAmount        = safeLoadF (pFurAmount, 0.0f);
         const float chewAmount       = safeLoadF (pChewAmount, 0.0f);
+        const float chewFreq         = safeLoadF (pChewFreq, 1000.0f);
+        const float chewMix          = safeLoadF (pChewMix, 0.5f);
+        const float driveAmount      = safeLoadF (pDriveAmount, 0.0f);
+        const int   driveType        = safeLoad (pDriveType, 0);
         const float gnashAmount      = safeLoadF (pGnashAmount, 0.0f);
         const int   trashMode        = safeLoad (pTrashMode, 0);
         const float trashAmount      = safeLoadF (pTrashAmount, 0.0f);
@@ -961,24 +1021,63 @@ public:
         const float modD             = safeLoadF (pModDecay, 0.5f);
         const float modS             = safeLoadF (pModSustain, 0.0f);
         const float modR             = safeLoadF (pModRelease, 0.5f);
+        const int   modEnvDest       = safeLoad (pModEnvDest, 2); // default: Filter Cutoff
         // LFO 1
         const int   lfo1Shape        = safeLoad (pLfo1Shape, 0);
-        const float lfo1Rate         = safeLoadF (pLfo1Rate, 1.0f);
+        const float lfo1RateRaw      = safeLoadF (pLfo1Rate, 1.0f);
         const float lfo1Depth        = safeLoadF (pLfo1Depth, 0.0f);
+        const bool  lfo1Sync         = safeLoad (pLfo1Sync, 0) > 0;
+        const bool  lfo1Retrigger    = safeLoad (pLfo1Retrigger, 0) > 0;
+        const float lfo1Phase        = safeLoadF (pLfo1Phase, 0.0f);
         // LFO 2
         const int   lfo2Shape        = safeLoad (pLfo2Shape, 0);
-        const float lfo2Rate         = safeLoadF (pLfo2Rate, 2.0f);
+        const float lfo2RateRaw      = safeLoadF (pLfo2Rate, 2.0f);
         const float lfo2Depth        = safeLoadF (pLfo2Depth, 0.0f);
+        const bool  lfo2Sync         = safeLoad (pLfo2Sync, 0) > 0;
+        const bool  lfo2Retrigger    = safeLoad (pLfo2Retrigger, 0) > 0;
+        const float lfo2Phase        = safeLoadF (pLfo2Phase, 0.0f);
         // LFO 3
         const int   lfo3Shape        = safeLoad (pLfo3Shape, 0);
-        const float lfo3Rate         = safeLoadF (pLfo3Rate, 0.5f);
+        const float lfo3RateRaw      = safeLoadF (pLfo3Rate, 0.5f);
         const float lfo3Depth        = safeLoadF (pLfo3Depth, 0.0f);
+        const bool  lfo3Sync         = safeLoad (pLfo3Sync, 0) > 0;
+        const bool  lfo3Retrigger    = safeLoad (pLfo3Retrigger, 0) > 0;
+        const float lfo3Phase        = safeLoadF (pLfo3Phase, 0.0f);
+
+        // LFO tempo sync: when Sync=On, snap rate to nearest common subdivision
+        // at nominal 120 BPM (2 beats/sec).  The rate knob value [0.01..50] maps to
+        // subdivision choices: 1/32(0.25Hz), 1/16(0.5Hz), 1/8(1Hz), 1/4(2Hz),
+        // 1/2(4Hz), 1 bar(0.5Hz), 2 bars(0.25Hz).  We pick the subdivision whose
+        // Hz value is closest to the raw rate, giving meaningful audible differences
+        // as the rate knob is turned while sync is engaged.
+        auto syncedRate = [] (float rawHz) -> float
+        {
+            // Common subdivisions at 120 BPM in Hz (beat = 2 Hz)
+            constexpr float kSubdivisions[] = { 0.125f, 0.25f, 0.5f, 1.0f, 2.0f, 4.0f, 8.0f };
+            constexpr int kNSub = 7;
+            float best = kSubdivisions[0];
+            float bestDist = std::abs (rawHz - kSubdivisions[0]);
+            for (int i = 1; i < kNSub; ++i)
+            {
+                float d = std::abs (rawHz - kSubdivisions[i]);
+                if (d < bestDist) { bestDist = d; best = kSubdivisions[i]; }
+            }
+            return best;
+        };
+
+        const float lfo1Rate = lfo1Sync ? syncedRate (lfo1RateRaw) : lfo1RateRaw;
+        const float lfo2Rate = lfo2Sync ? syncedRate (lfo2RateRaw) : lfo2RateRaw;
+        const float lfo3Rate = lfo3Sync ? syncedRate (lfo3RateRaw) : lfo3RateRaw;
         // Output / Voice
         const float level            = safeLoadF (pLevel, 0.7f);
         const float pan              = safeLoadF (pPan, 0.0f);
         const int   polyChoice       = safeLoad (pPolyphony, 3);
         const float glideTime        = safeLoadF (pGlideTime, 0.0f);
         const int   glideMode        = safeLoad (pGlideMode, 0);
+        // Unison: choice 0-6 maps to 1-7 voices
+        const int   unisonVoices     = safeLoad (pUnisonVoices, 0) + 1;
+        const float unisonDetune     = safeLoadF (pUnisonDetune, 0.2f);
+        const float unisonSpread     = safeLoadF (pUnisonSpread, 0.5f);
         // Macros
         const float macroBelly       = safeLoadF (pMacroBelly, 0.0f);
         const float macroBite        = safeLoadF (pMacroBite, 0.0f);
@@ -1029,6 +1128,12 @@ public:
 
         // Combined effective resonance
         const float effFilterReso = clamp (filterReso + biteResoMod + trashResoMod, 0.0f, 0.95f);
+
+        // Cache LFO retrigger flags so noteOn() can act on them
+        lfo1RetriggerFlag = lfo1Retrigger;
+        lfo2RetriggerFlag = lfo2Retrigger;
+        lfo3RetriggerFlag = lfo3Retrigger;
+        unisonVoicesFlag = unisonVoices;
 
         // Glide: update time on all active voices (once per block)
         for (auto& voice : voices)
@@ -1141,22 +1246,47 @@ public:
                 // --- Glide ---
                 float freq = voice.glide.process();
 
+                // --- Unison detune ---
+                if (voice.unisonTotal > 1)
+                {
+                    float detuneRange = unisonDetune * 50.0f; // 0-1 maps to 0-50 cents max spread
+                    float unisonPos = (voice.unisonTotal > 1)
+                        ? (static_cast<float> (voice.unisonIndex) - static_cast<float> (voice.unisonTotal - 1) * 0.5f)
+                          / static_cast<float> (voice.unisonTotal - 1)
+                        : 0.0f;
+                    float detuneSemitones = unisonPos * detuneRange / 100.0f;
+                    freq *= std::pow (2.0f, detuneSemitones / 12.0f);
+                }
+
                 // --- Velocity sensitivity ---
                 float velGain = 1.0f - ampVelSens + ampVelSens * voice.velocity;
 
                 // --- LFOs ---
                 voice.lfo1.setShape (lfo1Shape);
                 voice.lfo1.setRate (lfo1Rate * scurryLfoMul);
+                voice.lfo1.setStartPhase (lfo1Phase);
                 voice.lfo2.setShape (lfo2Shape);
                 voice.lfo2.setRate (lfo2Rate * scurryLfoMul);
+                voice.lfo2.setStartPhase (lfo2Phase);
                 voice.lfo3.setShape (lfo3Shape);
                 voice.lfo3.setRate (lfo3Rate * scurryLfoMul);
+                voice.lfo3.setStartPhase (lfo3Phase);
                 float lfo1val = voice.lfo1.process() * lfo1Depth;
                 float lfo2val = voice.lfo2.process() * lfo2Depth;
                 float lfo3val = voice.lfo3.process() * lfo3Depth;
 
-                // --- Mod Envelope ---
+                // --- Mod Envelope (with destination routing) ---
                 float modEnvVal = voice.modEnv.process() * modEnvAmt;
+                // modEnvDest: 0=OscA Shape, 1=OscB Shape, 2=Filter Cutoff,
+                //             3=Fur, 4=Gnash, 5=Trash, 6=Osc Mix, 7=Weight Level
+                float modEnvOscAShape  = (modEnvDest == 0) ? modEnvVal : 0.0f;
+                float modEnvOscBShape  = (modEnvDest == 1) ? modEnvVal : 0.0f;
+                float modEnvCutoff     = (modEnvDest == 2) ? modEnvVal * 3000.0f : 0.0f;
+                float modEnvFur        = (modEnvDest == 3) ? modEnvVal : 0.0f;
+                float modEnvGnash      = (modEnvDest == 4) ? modEnvVal : 0.0f;
+                float modEnvTrash      = (modEnvDest == 5) ? modEnvVal : 0.0f;
+                float modEnvOscMix     = (modEnvDest == 6) ? modEnvVal : 0.0f;
+                float modEnvWeightLvl  = (modEnvDest == 7) ? modEnvVal : 0.0f;
 
                 // LFO1 -> pitch (subtle vibrato), scaled by Scurry
                 float pitchMod = lfo1val * 0.005f * (1.0f + macroScurry);
@@ -1166,18 +1296,22 @@ public:
                 // --- OscA (Belly) ---
                 voice.oscA.setFrequency (freq);
                 voice.oscA.setWaveform (oscAWave);
-                voice.oscA.setShape (oscAShape);
+                // modEnv can morph OscA shape when dest=0
+                voice.oscA.setShape (clamp (oscAShape + modEnvOscAShape, 0.0f, 1.0f));
                 voice.oscA.setDrift (oscADriftAmt);
                 float oscAout = voice.oscA.processSample();
 
                 // --- Hard sync: reset OscB on OscA phase wrap ---
+                // Pass master phase (post-wrap value) and master phaseInc so the
+                // BLEP residual can be correctly positioned at the discontinuity.
                 if (oscBWave == 0 && voice.oscA.didPhaseWrap())
-                    voice.oscB.syncReset();
+                    voice.oscB.syncReset (voice.oscA.getPhase(), voice.oscA.getPhaseInc());
 
                 // --- OscB (Bite) ---
                 voice.oscB.setFrequency (freq);
                 voice.oscB.setWaveform (oscBWave);
-                voice.oscB.setShape (oscBShape);
+                // modEnv can morph OscB shape when dest=1
+                voice.oscB.setShape (clamp (oscBShape + modEnvOscBShape, 0.0f, 1.0f));
                 voice.oscB.setInstability (oscBInstab);
                 float oscBout = voice.oscB.processSample (oscAout, externalFM);
 
@@ -1212,12 +1346,14 @@ public:
                 float subOut = voice.sub.processSample() * effSubLevel;
 
                 // --- Weight Engine ---
+                // modEnv can boost weight level when dest=7
+                float effWeightLvlMod = clamp (effWeightLvl + modEnvWeightLvl, 0.0f, 1.0f);
                 float weightOut = 0.0f;
-                if (effWeightLvl > 0.001f)
+                if (effWeightLvlMod > 0.001f)
                 {
                     voice.weight.setShape (weightShape);
                     voice.weight.setFrequency (freq, weightOctave, weightTune);
-                    weightOut = voice.weight.processSample() * effWeightLvl;
+                    weightOut = voice.weight.processSample() * effWeightLvlMod;
                 }
 
                 // --- Noise (pre-filter routing) ---
@@ -1235,11 +1371,15 @@ public:
                 }
 
                 // --- Osc Mix ---
-                float oscOut = oscAout * (1.0f - biteOscMix) + oscBout * biteOscMix
+                // modEnv can shift A/B balance when dest=6; bipolar: positive pushes toward B
+                float effBiteOscMix = clamp (biteOscMix + modEnvOscMix * 0.5f, 0.0f, 1.0f);
+                float oscOut = oscAout * (1.0f - effBiteOscMix) + oscBout * effBiteOscMix
                              + subOut + weightOut + noisePre;
 
                 // --- Fur (pre-filter saturation) ---
-                oscOut = voice.fur.process (oscOut, effFurAmount);
+                // modEnv can add fur warmth when dest=3
+                float effFurMod = clamp (effFurAmount + modEnvFur, 0.0f, 1.0f);
+                oscOut = voice.fur.process (oscOut, effFurMod);
 
                 // --- Filter Drive (pre-filter) ---
                 if (filterDrive > 0.001f)
@@ -1250,13 +1390,16 @@ public:
                 // Key tracking: offset cutoff based on note distance from middle C
                 float keyTrackOffset = filterKeyTrack * (static_cast<float> (voice.noteNumber) - 60.0f) * 50.0f;
                 // D001: velocity scales filter envelope depth for timbral expression
+                // LFO2 → filter cutoff unconditionally (Scurry scales rate, not presence).
+                // LFO3 → filter cutoff unconditionally (wider sweep range).
+                // modEnvCutoff is non-zero only when modEnvDest==2 (Filter Cutoff).
                 float modCutoff = filterCutoff
                     + filtEnvAmt * filtEnvVal * voice.velocity * 10000.0f
                     + bellyCutoffMod + playDeadCutoff
                     + filterMod * 2000.0f
-                    + lfo2val * 500.0f * macroScurry
+                    + lfo2val * 2000.0f
                     + lfo3val * 2000.0f
-                    + modEnvVal * 3000.0f
+                    + modEnvCutoff
                     + keyTrackOffset;
                 modCutoff = clamp (modCutoff, 20.0f, 18000.0f);
 
@@ -1267,16 +1410,58 @@ public:
                 filtered += noisePost;
 
                 // --- Chew (post-filter contour) ---
-                filtered = voice.chew.process (filtered, chewAmount);
+                // chewFreq isolates the low-mid band for compression; chewMix blends wet/dry
+                if (chewAmount > 0.001f)
+                {
+                    voice.chewFilter.setMode (CytomicSVF::Mode::LowPass);
+                    voice.chewFilter.setCoefficients_fast (chewFreq, 0.5f, srf);
+                    float chewBand = voice.chewFilter.processSample (filtered);
+                    float chewOut = voice.chew.process (chewBand, chewAmount)
+                                   + (filtered - chewBand);
+                    filtered = lerp (filtered, chewOut, chewMix);
+                }
 
                 // --- Gnash (asymmetric bite) ---
-                filtered = voice.gnash.process (filtered, effGnashAmount);
+                // modEnv can intensify gnash when dest=4; use != 0 for bipolar safety
+                float effGnashMod = clamp (effGnashAmount + modEnvGnash, 0.0f, 1.0f);
+                filtered = voice.gnash.process (filtered, effGnashMod);
+
+                // --- Drive stage ---
+                if (driveAmount > 0.001f)
+                {
+                    float driveGain = 1.0f + driveAmount * 6.0f;
+                    float driven = filtered * driveGain;
+                    float shaped = 0.0f;
+                    switch (driveType)
+                    {
+                        case 0: // Warm — soft tanh
+                            shaped = fastTanh (driven);
+                            break;
+                        case 1: // Grit — soft clip with even harmonics
+                            shaped = driven / (1.0f + std::abs (driven));
+                            break;
+                        case 2: // Clip — hard clip
+                            shaped = clamp (driven, -1.0f, 1.0f);
+                            break;
+                        case 3: // Tube — asymmetric soft clip (positive half clips harder)
+                            shaped = (driven >= 0.0f)
+                                ? driven / (1.0f + driven * driven * driveAmount)
+                                : fastTanh (driven * 0.8f);
+                            break;
+                        default:
+                            shaped = fastTanh (driven);
+                            break;
+                    }
+                    filtered = lerp (filtered, shaped, driveAmount);
+                }
 
                 // --- Trash (dirt modes) ---
                 int effTrashMode = trashMode;
                 if (macroTrash > 0.9f && trashMode == 0)
                     effTrashMode = 1;
-                filtered = voice.trash.process (filtered, effTrashMode, effTrashAmount);
+                // modEnv can push trash amount when dest=5; use != 0 for bipolar safety
+                float effTrashAmtMod = clamp (effTrashAmount + modEnvTrash, 0.0f, 1.0f);
+                filtered = voice.trash.process (filtered, effTrashMode, effTrashAmtMod);
 
                 // --- Amp Envelope ---
                 float envVal = voice.ampEnv.process();
@@ -1288,9 +1473,22 @@ public:
                     voice.active = false;
                 }
 
-                // Pan (equal-power)
-                mixL += out * panGainL;
-                mixR += out * panGainR;
+                // Pan (equal-power) — unison voices spread across stereo field
+                float voicePanL = panGainL;
+                float voicePanR = panGainR;
+                if (voice.unisonTotal > 1)
+                {
+                    float unisonPos = (static_cast<float> (voice.unisonIndex) - static_cast<float> (voice.unisonTotal - 1) * 0.5f)
+                                      / static_cast<float> (voice.unisonTotal - 1);
+                    float spreadPan = pan + unisonPos * unisonSpread;
+                    spreadPan = clamp (spreadPan, -1.0f, 1.0f);
+                    float spreadR = clamp ((spreadPan + 1.0f) * 0.5f, 0.0f, 1.0f);
+                    float spreadL = 1.0f - spreadR;
+                    voicePanL = std::sqrt (spreadL);
+                    voicePanR = std::sqrt (spreadR);
+                }
+                mixL += out * voicePanL;
+                mixR += out * voicePanR;
 
                 peakEnv = std::max (peakEnv, envVal);
             }
@@ -2100,21 +2298,18 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly)
+    void initVoiceSlot (BiteVoice& v, int noteNumber, float velocity, int midiChannel,
+                        int unisonIdx, int unisonTotal)
     {
-        int poly = std::min (maxPoly, kMaxVoices);
-        int idx = VoiceAllocator::findFreeVoice (voices, poly);
-        auto& v = voices[static_cast<size_t> (idx)];
-
-        // Store previous frequency for glide
         float prevFreq = v.hasPlayedBefore ? v.glide.getFreq() : midiToFreq (noteNumber);
 
         v.active = true;
         v.noteNumber = noteNumber;
         v.velocity = velocity;
         v.startTime = ++voiceCounter;
+        v.unisonIndex = unisonIdx;
+        v.unisonTotal = unisonTotal;
 
-        // Initialize MPE expression for this voice's channel
         v.mpeExpression.reset();
         v.mpeExpression.midiChannel = midiChannel;
         if (mpeManager != nullptr)
@@ -2130,22 +2325,54 @@ private:
         v.noise.reset();
         v.noise.noteOn();
         v.filter.reset();
+        v.chewFilter.reset();
         v.trash.reset();
-        v.lfo1.reset();
-        v.lfo2.reset();
-        v.lfo3.reset();
+        if (lfo1RetriggerFlag)
+        {
+            v.lfo1.setStartPhase (safeLoadF (pLfo1Phase, 0.0f));
+            v.lfo1.retrigger();
+        }
+        else
+            v.lfo1.reset();
+        if (lfo2RetriggerFlag)
+        {
+            v.lfo2.setStartPhase (safeLoadF (pLfo2Phase, 0.0f));
+            v.lfo2.retrigger();
+        }
+        else
+            v.lfo2.reset();
+        if (lfo3RetriggerFlag)
+        {
+            v.lfo3.setStartPhase (safeLoadF (pLfo3Phase, 0.0f));
+            v.lfo3.retrigger();
+        }
+        else
+            v.lfo3.reset();
 
-        // Glide: start from previous note frequency
         v.glide.setTarget (freq);
         if (v.hasPlayedBefore)
-            v.glide.currentFreq = prevFreq;  // continue gliding from where the voice was
+            v.glide.currentFreq = prevFreq;
         else
-            v.glide.snapTo (freq);           // first note: no portamento
+            v.glide.snapTo (freq);
         v.hasPlayedBefore = true;
 
         v.ampEnv.noteOn();
         v.filterEnv.noteOn();
         v.modEnv.noteOn();
+    }
+
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly)
+    {
+        int nUnison = std::min (unisonVoicesFlag, maxPoly);
+        nUnison = std::max (nUnison, 1);
+        int poly = std::min (maxPoly, kMaxVoices);
+
+        for (int ui = 0; ui < nUnison; ++ui)
+        {
+            int idx = VoiceAllocator::findFreeVoice (voices, poly);
+            initVoiceSlot (voices[static_cast<size_t> (idx)], noteNumber, velocity,
+                           midiChannel, ui, nUnison);
+        }
     }
 
     void noteOff (int noteNumber, int midiChannel = 0)
@@ -2191,6 +2418,13 @@ private:
     const float* externalFMBuffer = nullptr;
     int externalFMSamples = 0;
     float externalFMAmount = 0.0f;
+
+    // LFO retrigger flags — cached from params each block, read by noteOn
+    bool lfo1RetriggerFlag = false;
+    bool lfo2RetriggerFlag = false;
+    bool lfo3RetriggerFlag = false;
+    // Unison voice count — cached from params each block, read by noteOn
+    int unisonVoicesFlag = 1;
 
     // ---- D006 Aftertouch — pressure intensifies BITE macro (feral aggression) ----
     PolyAftertouch aftertouch;

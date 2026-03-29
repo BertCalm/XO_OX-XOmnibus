@@ -78,6 +78,7 @@ public:
 
     void timerCallback() override
     {
+        if (!isVisible()) return;
         // P1 fix: skip repaint when no active routes exist — avoids full
         // 1100×700 overlay redraw at 30Hz when the matrix is empty.
         // P26 fix: cache the routes here so paint() doesn't call getRoutes() again.

@@ -274,9 +274,15 @@ struct RhodesAmpStage
 struct OasisVoice
 {
     bool active = false;
+    bool releasing = false;
     uint64_t startTime = 0;
     int currentNote = 60;
+    int note = 60;
     float velocity = 0.0f;
+    float amplitude = 0.0f;
+    double phase = 0.0;
+    double phaseDelta = 0.0;
+    int noteAge = 0;
 
     GlideProcessor glide;
     RhodesToneGenerator tine;
@@ -290,10 +296,63 @@ struct OasisVoice
 
     float panL = 0.707f, panR = 0.707f;
 
+    // Amp envelope output — tracks the ADSR level for this voice.
+    // Driven by ampEnv in renderBlock; used to scale voice amplitude.
+    float ampEnvLevel = 0.0f;
+    // Filter envelope output — tracks the filter ADSR level.
+    float filterEnvLevel = 0.0f;
+
+    void prepare (float sampleRate) noexcept
+    {
+        tine.prepare (sampleRate);
+        amp.prepare (sampleRate);
+
+        // Rhodes amp envelope: near-zero attack, 1.5s decay, 0% sustain, 0.4s release.
+        // The Rhodes is a percussive instrument — no sustain after the hammer strike.
+        ampEnv.prepare (sampleRate);
+        ampEnv.setADSR (0.001f, 1.5f, 0.0f, 0.4f);
+
+        // Filter envelope: fast attack, 0.8s decay, 30% sustain, 0.5s release.
+        // Opens the brightness burst on the attack transient.
+        filterEnv.prepare (sampleRate);
+        filterEnv.setADSR (0.002f, 0.8f, 0.3f, 0.5f);
+
+        // Per-voice SVF — lowpass default; cutoff set per-sample in renderBlock.
+        svf.setMode (CytomicSVF::Mode::LowPass);
+        svf.setCoefficients (4000.0f, 0.7f, sampleRate);
+        svf.reset();
+
+        // Tremolo LFO (sine, ~5 Hz default, shaped by warmth param)
+        tremoloLFO.setShape (StandardLFO::Sine);
+        tremoloLFO.setRate (5.0f, sampleRate);
+        tremoloLFO.reset();
+
+        // LFO1 — slow pitch/tone modulation (vibrato-style)
+        lfo1.setShape (StandardLFO::Sine);
+        lfo1.setRate (0.5f, sampleRate);
+        lfo1.reset();
+
+        // LFO2 — slower timbral drift
+        lfo2.setShape (StandardLFO::Triangle);
+        lfo2.setRate (0.12f, sampleRate);
+        lfo2.reset();
+
+        // Glide: 0ms by default (snap on first note)
+        glide.setTime (0.0f, sampleRate);
+        glide.reset();
+    }
+
     void reset() noexcept
     {
         active = false;
+        releasing = false;
         velocity = 0.0f;
+        amplitude = 0.0f;
+        ampEnvLevel = 0.0f;
+        filterEnvLevel = 0.0f;
+        phase = 0.0;
+        phaseDelta = 0.0;
+        noteAge = 0;
         glide.reset();
         tine.reset();
         pickup.reset();
@@ -383,9 +442,12 @@ public:
         sampleCounter_ = 0;
         noiseRng_ = 42u;
 
-        // Voices
+        // Voices — prepare() initialises ALL per-voice DSP objects with sampleRate.
         for (int v = 0; v < kMaxVoices; ++v)
+        {
             voices_[v] = {};
+            voices_[v].prepare (srF_);
+        }
 
         // Coupling state
         lastSampleL_ = lastSampleR_ = 0.0f;
@@ -420,7 +482,7 @@ public:
         culledEnergy_ = 0.0f;
         lastSampleL_ = lastSampleR_ = 0.0f;
         for (int v = 0; v < kMaxVoices; ++v)
-            voices_[v] = {};
+            voices_[v].reset();
     }
 
     //-- Audio -----------------------------------------------------------------
@@ -479,13 +541,26 @@ public:
 
                 auto& voice = voices_[slot];
                 voice.active = true;
+                voice.releasing = false;
                 voice.note = msg.getNoteNumber();
                 voice.velocity = msg.getFloatVelocity();
                 voice.phase = 0.0;
-                voice.amplitude = msg.getFloatVelocity();
+                voice.amplitude = 1.0f;  // envelope controls final level
                 voice.noteAge = 0;
+
                 float freq = 440.0f * std::pow (2.0f, (voice.note - 69) / 12.0f);
                 voice.phaseDelta = freq / sr_;
+
+                // Glide: snap on first active note, glide on subsequent notes.
+                voice.glide.setTargetOrSnap (freq);
+
+                // Trigger tine with velocity and live bellAmount parameter.
+                float bellAmount = pBellAmountParam_ ? pBellAmountParam_->load() : 0.5f;
+                voice.tine.trigger (voice.velocity, bellAmount);
+
+                // Trigger amp and filter envelopes.
+                voice.ampEnv.trigger();
+                voice.filterEnv.trigger();
             }
             else if (msg.isNoteOff())
             {
@@ -495,6 +570,8 @@ public:
                     if (voices_[v].active && voices_[v].note == noteNum)
                     {
                         voices_[v].releasing = true;
+                        voices_[v].ampEnv.release();
+                        voices_[v].filterEnv.release();
                         break;
                     }
                 }
@@ -534,6 +611,14 @@ public:
         float pFilterCutoff = pFilterCutoffParam_ ? pFilterCutoffParam_->load() : 2000.0f;
         float pFilterEnvAmt = pFilterEnvAmtParam_ ? pFilterEnvAmtParam_->load() : 0.5f;
 
+        // Rhodes params
+        float pRhodesMix    = pRhodesMixParam_    ? pRhodesMixParam_->load()    : 1.0f;
+        float pPickupPos    = pPickupPosParam_     ? pPickupPosParam_->load()    : 0.5f;
+        float pWarmth       = pWarmthParam_        ? pWarmthParam_->load()       : 0.3f;
+        float pTremoloDepth = pTremoloDepthParam_  ? pTremoloDepthParam_->load() : 0.0f;
+        float pTremoloRate  = pTremoloRateParam_   ? pTremoloRateParam_->load()  : 5.0f;
+        float pGlideTime    = pGlideTimeParam_     ? pGlideTimeParam_->load()    : 0.0f;
+
         // Macros
         float pM1 = pMacroCharacterParam_ ? pMacroCharacterParam_->load() : 0.0f;
         float pM2 = pMacroMovementParam_  ? pMacroMovementParam_->load()  : 0.0f;
@@ -541,12 +626,15 @@ public:
         float pM4 = pMacroSpaceParam_     ? pMacroSpaceParam_->load()     : 0.0f;
 
         // Macro → parameter mapping
-        // M1 CHARACTER → entropy sensitivity + sub drive
-        pEntropySens = clamp (pEntropySens + pM1 * 0.4f, 0.0f, 1.0f);
-        pSubDrive    = clamp (pSubDrive + pM1 * 0.3f, 0.0f, 1.0f);
+        // M1 CHARACTER → Rhodes mix (more character = more Rhodes blend vs sub-bass)
+        pRhodesMix   = clamp (pRhodesMix + pM1 * 0.4f, 0.0f, 1.0f);
+        // M1 also nudges entropy sensitivity and sub drive
+        pEntropySens = clamp (pEntropySens + pM1 * 0.3f, 0.0f, 1.0f);
+        pSubDrive    = clamp (pSubDrive + pM1 * 0.2f, 0.0f, 1.0f);
 
-        // M2 MOVEMENT → breeze (ASMR noise) + bioluminescent LFO depth
-        pBreeze = clamp (pBreeze + pM2 * 0.5f, 0.0f, 1.0f);
+        // M2 MOVEMENT → pickup position (brightness) + breeze
+        pPickupPos = clamp (pPickupPos + pM2 * 0.5f, 0.0f, 1.0f);
+        pBreeze    = clamp (pBreeze + pM2 * 0.3f, 0.0f, 1.0f);
 
         // M3 COUPLING → swarm density
         pSwarmDensity = clamp (pSwarmDensity + pM3 * 0.5f, 0.0f, 1.0f);
@@ -554,8 +642,10 @@ public:
         // M4 SPACE → lagoon depth (comb filter feedback)
         pLagoonDepth = clamp (pLagoonDepth + pM4 * 0.5f, 0.0f, 1.0f);
 
-        // Expression: aftertouch → entropy sensitivity (D006)
-        pEntropySens = clamp (pEntropySens + aftertouch_ * 0.3f, 0.0f, 1.0f);
+        // Expression: aftertouch → warmth (D006: velocity → timbre + CC → timbre)
+        pWarmth = clamp (pWarmth + aftertouch_ * 0.5f, 0.0f, 1.0f);
+        // Aftertouch also nudges entropy sensitivity
+        pEntropySens = clamp (pEntropySens + aftertouch_ * 0.2f, 0.0f, 1.0f);
         // Mod wheel → canopy feedback / swarm (D006)
         pCanopyFB = clamp (pCanopyFB + modWheel_ * 0.4f, 0.0f, 0.95f);
 
@@ -595,44 +685,84 @@ public:
 
                 voice.noteAge++;
 
-                // Envelope
-                if (voice.releasing)
+                // === AMP ENVELOPE ===
+                // Tick the ADSR — returns [0, 1].
+                voice.ampEnvLevel = voice.ampEnv.process();
+
+                // When releasing, deactivate voice once envelope reaches silence.
+                if (voice.releasing && voice.ampEnvLevel < 0.0001f)
                 {
-                    voice.amplitude *= 0.9995f;
-                    voice.amplitude = flushDenormal (voice.amplitude);
-                    if (voice.amplitude < 0.0001f) { voice.active = false; continue; }
+                    voice.active = false;
+                    continue;
                 }
 
-                // Phase accumulation with pitch bend
-                double freq = 440.0 * std::pow (2.0, (voice.note - 69) / 12.0);
-                voice.phaseDelta = freq * static_cast<double> (bendRatio) / sr_;
+                // Final voice amplitude: envelope × velocity scaling (D001).
+                float voiceAmp = voice.ampEnvLevel * voice.velocity;
+                voiceAmp = flushDenormal (voiceAmp);
+
+                // === GLIDE — derive current frequency from glide processor ===
+                voice.glide.setTime (pGlideTime, srF_);
+                float glidedFreq = voice.glide.process() * bendRatio;
+                glidedFreq = clamp (glidedFreq, 20.0f, srF_ * 0.49f);
+
+                // Phase accumulation (kept for sub-bass oscillator compatibility)
+                voice.phaseDelta = static_cast<double> (glidedFreq) / sr_;
                 voice.phase += voice.phaseDelta;
                 if (voice.phase >= 1.0) voice.phase -= 1.0;
 
                 float phaseF = static_cast<float> (voice.phase) * 6.28318530718f;
 
-                // Sub-bass: fundamental + sub-octave
-                float rawSub = fastSin (phaseF) + 0.5f * fastSin (phaseF * 0.5f);
+                // === RHODES SIGNAL CHAIN ===
+                // 1. Tine generator: tine/tone-bar physical model
+                float rhodesOut = voice.tine.process (glidedFreq);
 
+                // 2. Pickup model: electromagnetic pickup position shapes which
+                //    partials are captured. pPickupPos drives brightness.
+                rhodesOut = voice.pickup.process (rhodesOut, pPickupPos);
+
+                // 3. Amp stage: tube preamp warmth + velocity-dependent bark.
+                //    pWarmth controls saturation; velocity controls asymmetry.
+                rhodesOut = voice.amp.process (rhodesOut, pWarmth, voice.velocity);
+
+                // === SUB-BASS / GRANULAR OSCILLATOR ===
                 // Power supply sag: low entropy → more sag → warmer distortion
+                float rawSub = fastSin (phaseF) + 0.5f * fastSin (phaseF * 0.5f);
                 float sagAmount = (1.0f - ent) * voice.velocity;
-                float distortedSub = fastTanh (rawSub * (1.0f + sagAmount * pSubDrive * 4.0f));
+                float granularOut = fastTanh (rawSub * (1.0f + sagAmount * pSubDrive * 4.0f));
 
-                // Velocity → filter brightness (D001)
+                // === BLEND ===
+                // pRhodesMix = 1.0 → full Rhodes | pRhodesMix = 0.0 → all sub-bass.
+                // Default is 1.0 so the engine produces its Rhodes character out of the box.
+                float blendedSub = rhodesOut * pRhodesMix + granularOut * (1.0f - pRhodesMix);
+
+                // === TREMOLO (per-voice LFO, D002/D005) ===
+                // Update tremolo LFO rate per block (pTremoloRate changes are block-rate).
+                voice.tremoloLFO.setRate (pTremoloRate, srF_);
+                float tremoloMod = voice.tremoloLFO.process();
+                // Bipolar modulation: pTremoloDepth != 0 activates tremolo (handles negative too).
+                float tremoloScale = 1.0f + tremoloMod * pTremoloDepth * 0.5f;
+                blendedSub *= tremoloScale;
+
+                // === FILTER ENVELOPE + PER-VOICE SVF (D001 velocity → timbre) ===
+                voice.filterEnvLevel = voice.filterEnv.process();
+                // Velocity → filter brightness (D001): high velocity opens the filter.
                 float velBright = 0.5f + voice.velocity * 0.5f;
-                float envCutoff = pFilterCutoff * velBright + pFilterEnvAmt * voice.amplitude * 4000.0f;
-                envCutoff = clamp (envCutoff + extFilterMod_, 60.0f, 16000.0f);
+                float envCutoff = pFilterCutoff * velBright
+                                  + pFilterEnvAmt * voice.filterEnvLevel * 6000.0f;
+                envCutoff = clamp (envCutoff, 60.0f, srF_ * 0.49f);
+                voice.svf.setCoefficients_fast (envCutoff, 0.7f, srF_);
+                blendedSub = voice.svf.processSample (blendedSub);
 
-                // Mycelial Morphing: entropy splinters sub-bass into canopy
-                float mycelialSend = distortedSub * ent * pEntropySens;
-                float directOut = distortedSub * (1.0f - ent * 0.6f) * voice.amplitude;
+                // Mycelial Morphing: entropy splinters signal into canopy delay
+                float mycelialSend = blendedSub * ent * pEntropySens;
+                float directOut = blendedSub * (1.0f - ent * 0.6f) * voiceAmp;
 
                 subMix += directOut;
 
                 // Stereo canopy send with voice spread
                 float pan = static_cast<float> (v) / static_cast<float> (kMaxVoices - 1);
-                canopySendL += mycelialSend * (1.0f - pan) * voice.amplitude;
-                canopySendR += mycelialSend * pan * voice.amplitude;
+                canopySendL += mycelialSend * (1.0f - pan) * voiceAmp;
+                canopySendR += mycelialSend * pan * voiceAmp;
             }
 
             // Sub-bass filter (with velocity-driven cutoff modulation)
@@ -657,8 +787,10 @@ public:
                 float tapL = canopyBufL_[t][static_cast<size_t> (readPos)];
                 float tapR = canopyBufR_[t][static_cast<size_t> (readPos)];
 
-                // Lagoon: comb filter with feedback (watery resonance)
-                float lagoonFB = pLagoonDepth * 0.85f;
+                // Lagoon: comb filter with feedback (watery resonance).
+                // Both lagoonDepth and canopyFB shape the delay feedback;
+                // canopyFB is the mod wheel target (D006).
+                float lagoonFB = clamp (pLagoonDepth * 0.85f + pCanopyFB * 0.1f, 0.0f, 0.95f);
                 float feedL = canopySendL + tapL * lagoonFB;
                 float feedR = canopySendR + tapR * lagoonFB;
 
@@ -807,6 +939,35 @@ public:
             juce::ParameterID { "oas_filterEnvAmt", 1 }, "Filter Env Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
+        // Rhodes voice parameters
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_rhodesMix", 1 }, "Rhodes Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 1.0f));   // default: all Rhodes
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_pickupPos", 1 }, "Pickup Position",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));   // centre = balanced tone
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_bellAmount", 1 }, "Bell Amount",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));   // 3rd-partial bell burst
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_warmth", 1 }, "Warmth",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));   // amp-stage warmth/bark
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_tremoloDepth", 1 }, "Tremolo Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));   // off by default
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_tremoloRate", 1 }, "Tremolo Rate",
+            juce::NormalisableRange<float> (0.1f, 10.0f, 0.0f, 0.5f), 5.0f));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oas_glideTime", 1 }, "Glide Time",
+            juce::NormalisableRange<float> (0.0f, 2.0f, 0.0f, 0.3f), 0.0f));
+
         // Macros (CHARACTER / MOVEMENT / COUPLING / SPACE)
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "oas_macroCharacter", 1 }, "Character",
@@ -841,6 +1002,15 @@ public:
         pMacroMovementParam_  = apvts.getRawParameterValue ("oas_macroMovement");
         pMacroCouplingParam_  = apvts.getRawParameterValue ("oas_macroCoupling");
         pMacroSpaceParam_     = apvts.getRawParameterValue ("oas_macroSpace");
+
+        // Rhodes voice params
+        pRhodesMixParam_     = apvts.getRawParameterValue ("oas_rhodesMix");
+        pPickupPosParam_     = apvts.getRawParameterValue ("oas_pickupPos");
+        pBellAmountParam_    = apvts.getRawParameterValue ("oas_bellAmount");
+        pWarmthParam_        = apvts.getRawParameterValue ("oas_warmth");
+        pTremoloDepthParam_  = apvts.getRawParameterValue ("oas_tremoloDepth");
+        pTremoloRateParam_   = apvts.getRawParameterValue ("oas_tremoloRate");
+        pGlideTimeParam_     = apvts.getRawParameterValue ("oas_glideTime");
     }
 
 private:
@@ -848,24 +1018,12 @@ private:
     static constexpr int kMaxVoices = 8;
     static constexpr int kCanopyTaps = 6;
 
-    struct Voice
-    {
-        bool active = false;
-        bool releasing = false;
-        int note = 60;
-        float velocity = 0.0f;
-        float amplitude = 0.0f;
-        double phase = 0.0;
-        double phaseDelta = 0.0;
-        int noteAge = 0;
-    };
-
     double sr_ = 44100.0;
     float srF_ = 44100.0f;
     int blockSize_ = 512;
 
     // Voices
-    Voice voices_[kMaxVoices];
+    OasisVoice voices_[kMaxVoices];
 
     // Canopy delay network
     std::vector<float> canopyBufL_[kCanopyTaps];
@@ -918,6 +1076,15 @@ private:
     std::atomic<float>* pMacroMovementParam_  = nullptr;
     std::atomic<float>* pMacroCouplingParam_  = nullptr;
     std::atomic<float>* pMacroSpaceParam_     = nullptr;
+
+    // Rhodes voice params
+    std::atomic<float>* pRhodesMixParam_     = nullptr;
+    std::atomic<float>* pPickupPosParam_     = nullptr;
+    std::atomic<float>* pBellAmountParam_    = nullptr;
+    std::atomic<float>* pWarmthParam_        = nullptr;
+    std::atomic<float>* pTremoloDepthParam_  = nullptr;
+    std::atomic<float>* pTremoloRateParam_   = nullptr;
+    std::atomic<float>* pGlideTimeParam_     = nullptr;
 
     //--------------------------------------------------------------------------
     static float clamp (float v, float lo, float hi) { return v < lo ? lo : (v > hi ? hi : v); }

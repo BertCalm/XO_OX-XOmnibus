@@ -197,10 +197,7 @@ private:
         }
 
         // Compute Shannon entropy H = -sum(p_i * log2(p_i))
-        // and amplitude-weighted spectral centroid simultaneously
         float entropy = 0.0f;
-        float centroidNumerator = 0.0f;
-        float centroidDenominator = 0.0f;
 
         for (int i = 0; i < kNumBins; ++i)
         {
@@ -208,19 +205,82 @@ private:
             {
                 float probability = static_cast<float> (histogram[i]) * inverseWindowSize;
                 entropy -= probability * fastLog2 (probability);
-                float normalizedBinPosition = static_cast<float> (i) / static_cast<float> (kNumBins - 1);
-                centroidNumerator += normalizedBinPosition * probability;
-                centroidDenominator += probability;
             }
         }
 
         // Normalize entropy to [0, 1] by dividing by theoretical maximum
         entropyValue = clamp (entropy / kMaxEntropy, 0.0f, 1.0f);
-        spectralCentroid = (centroidDenominator > 0.0001f) ? (centroidNumerator / centroidDenominator) : 0.5f;
+
+        // Spectral centroid via Nyquist-proportional DFT magnitude weighting.
+        //
+        // Formula: centroid = sum(|X[k]| * k) / sum(|X[k]|) * (sampleRate / 2.0 / numBins)
+        // Normalized to [0, 1]: centroid_normalized = sum(|X[k]| * k) / sum(|X[k]|) / (kNumBins - 1)
+        //
+        // kNumBins = 32 analysis bins span DC to Nyquist proportionally.
+        // Bin k corresponds to frequency: k * (sampleRate / 2) / (kNumBins - 1) Hz.
+        // This formula is independent of any hardcoded sample rate.
+        //
+        // Implementation uses phasor rotation (incremental DFT) to avoid
+        // per-sample std::cos / std::sin calls in the inner loop.
+        // Cost: kNumBins × 2 trig calls (init) + kNumBins × windowSize × 6 flops.
+        // At 2 kHz control rate this is well within CPU budget.
+        // All arrays are fixed-size stack locals — no allocation on the audio thread.
+        {
+            float magnitudeWeightedBin = 0.0f;
+            float totalMagnitude = 0.0f;
+
+            constexpr float kTwoPi = 6.28318530717958647692f;
+            const float invWindowSize = 1.0f / static_cast<float> (windowSize);
+
+            for (int k = 0; k < kNumBins; ++k)
+            {
+                // Map analysis bin k to DFT bin index spanning [0, windowSize/2].
+                // This gives Nyquist-proportional frequency spacing regardless of
+                // whether the analysis window is 64 or 256 samples.
+                float dftBinF = static_cast<float> (k) * static_cast<float> (windowSize / 2)
+                                / static_cast<float> (kNumBins - 1);
+
+                // Initialize phasor at sample 0: exp(-j * omega_k * 0) = 1 + 0j
+                float omega = kTwoPi * dftBinF * invWindowSize;
+                float phasorRe = 1.0f;
+                float phasorIm = 0.0f;
+                float stepRe = std::cos (omega);   // one trig call per bin
+                float stepIm = -std::sin (omega);  // one trig call per bin
+
+                float cosSum = 0.0f;
+                float sinSum = 0.0f;
+
+                for (int i = 0; i < windowSize; ++i)
+                {
+                    // Phasor rotation: multiply by step to advance one sample.
+                    // This avoids std::cos/std::sin inside the inner loop entirely.
+                    float sample = ringBuffer[(startPosition + i) & (kMaxWindowSize - 1)];
+                    cosSum += sample * phasorRe;
+                    sinSum += sample * phasorIm;
+
+                    float newRe = phasorRe * stepRe - phasorIm * stepIm;
+                    float newIm = phasorRe * stepIm + phasorIm * stepRe;
+                    phasorRe = newRe;
+                    phasorIm = newIm;
+                }
+
+                float magnitude = std::sqrt (cosSum * cosSum + sinSum * sinSum);
+                magnitudeWeightedBin += magnitude * static_cast<float> (k);
+                totalMagnitude += magnitude;
+            }
+
+            // Normalize result to [0, 1]: 0 = DC bias, 1 = Nyquist bias.
+            // The (sampleRate / 2.0 / numBins) Hz-per-bin factor cancels in the
+            // ratio, leaving a unit-normalized centroid position.
+            // Guard against silence (totalMagnitude near zero) with a 1e-6f floor.
+            spectralCentroid = (totalMagnitude > 1e-6f)
+                               ? clamp (magnitudeWeightedBin / totalMagnitude / static_cast<float> (kNumBins - 1), 0.0f, 1.0f)
+                               : 0.5f; // Default to center when signal is silent
+        }
     }
 
-    double cachedSampleRate = 44100.0;
-    int controlRateDivisor = 22;  // ~2kHz control rate at 44.1kHz sample rate
+    double cachedSampleRate = 48000.0; // Overwritten by prepare() — never relied upon
+    int controlRateDivisor = 24;  // ~2kHz control rate; overwritten by prepare() from actual sampleRate
     int controlCounter = 0;
     int writePosition = 0;
     int currentWindowSize = kDefaultWindowSize;
@@ -389,8 +449,8 @@ public:
     float getPredictedEntropy() const noexcept { return predictedEntropy; }
 
 private:
-    double cachedSampleRate = 44100.0;
-    int controlRateDivisor = 22;  // ~2kHz control rate at 44.1kHz
+    double cachedSampleRate = 48000.0; // Overwritten by prepare() — never relied upon
+    int controlRateDivisor = 24;  // ~2kHz control rate; overwritten by prepare() from actual sampleRate
     int controlCounter = 0;
     float freeEnergy = 0.0f;
 
@@ -443,7 +503,7 @@ public:
     // Control-rate divisor for updateWeights: ~2 kHz (matches EntropyAnalyzer
     // which is also updated at ~2 kHz — no point computing weights faster than
     // the spectral centroid can change).
-    static constexpr int kWeightControlDivisor = 22; // ~2kHz at 44.1kHz
+    static constexpr int kWeightControlDivisor = 22; // Fallback default; overwritten by prepare() using actual sampleRate
 
     void prepare (double sampleRate) noexcept
     {
@@ -551,9 +611,13 @@ public:
             // n^spread = 2^(spread * log2(n)); mode 0 → n=1 → log2(1)=0 → 2^0=1 → fundamental.
             float modeFrequency = frequencyHz * fastPow2 (spread * kLog2Harmonics[modeIndex]);
 
-            // Clamp to 49% of Nyquist to prevent aliasing artifacts.
-            // Using 0.49 instead of 0.5 provides a safety margin.
-            if (modeFrequency > nyquistLimit) modeFrequency = nyquistLimit;
+            // Fold back modes that exceed Nyquist: reflects frequency back from
+            // the boundary, preserving relative spacing between modes.
+            if (modeFrequency > nyquistLimit)
+            {
+                float excess = modeFrequency - nyquistLimit;
+                modeFrequency = nyquistLimit - std::fmod (excess, nyquistLimit);
+            }
 
             angularFrequency[modeIndex] = kTwoPi * modeFrequency;
         }
@@ -666,8 +730,8 @@ public:
     }
 
 private:
-    double cachedSampleRate = 44100.0;
-    double inverseSampleRate = 1.0 / cachedSampleRate;  // overwritten by prepare()
+    double cachedSampleRate = 48000.0; // Overwritten by prepare() — never relied upon
+    double inverseSampleRate = 1.0 / 48000.0; // Overwritten by prepare() from actual sampleRate
 
     // Dirty-flag cache for setFundamental: avoid 32× std::pow when stable
     float cachedFundamental = -1.0f;    // Last computed fundamental (Hz); -1 = invalid
@@ -1619,7 +1683,7 @@ private:
     //  ENGINE STATE
     //==========================================================================
 
-    double cachedSampleRate = 44100.0;
+    double cachedSampleRate = 48000.0; // Overwritten by prepare() — never relied upon
     int cachedBlockSize = 512;
     uint64_t noteCounter = 0;           // Monotonic counter for LRU voice stealing
 
