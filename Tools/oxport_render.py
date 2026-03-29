@@ -18,11 +18,31 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import struct
 import sys
+import time as _time
 import time
 from pathlib import Path
+
+
+# ---------------------------------------------------------------------------
+# Precise timing
+# ---------------------------------------------------------------------------
+
+def _precise_wait(duration_s: float) -> None:
+    """Hybrid sleep + busy-wait for sub-ms timing accuracy."""
+    if duration_s <= 0:
+        return
+    deadline = _time.perf_counter() + duration_s
+    # Sleep for bulk of duration (save CPU), then busy-wait the tail
+    sleep_duration = duration_s - 0.020  # wake 20ms early
+    if sleep_duration > 0:
+        _time.sleep(sleep_duration)
+    # Busy-wait the final ~20ms for precision
+    while _time.perf_counter() < deadline:
+        pass
 
 # ---------------------------------------------------------------------------
 # Optional dependency imports with graceful fallback
@@ -196,6 +216,41 @@ def _midi_note_name(note: int) -> str:
     return f"{name}{octave}"
 
 # ---------------------------------------------------------------------------
+# Pre-flight check
+# ---------------------------------------------------------------------------
+
+def _preflight_check(device_index, sample_rate: int, midi_port, midi_channel: int = 0) -> None:
+    """Mandatory pre-flight: verify audio chain is alive."""
+    sd = _require_sounddevice()
+    np = _numpy
+    print("\n  [PREFLIGHT] Testing audio chain...")
+    # Record 0.5s of silence expectation
+    silence = sd.rec(int(sample_rate * 0.5), samplerate=sample_rate, channels=2,
+                     dtype="float32", device=device_index)
+    sd.wait()
+    noise_floor = float(np.max(np.abs(silence)))
+    print(f"    Noise floor: {noise_floor:.6f} ({20*math.log10(max(noise_floor, 1e-10)):.1f} dBFS)")
+
+    # Send a test note (very short, very quiet)
+    if midi_port:
+        mido = _require_mido()
+        midi_port.send(mido.Message("note_on", channel=midi_channel, note=60, velocity=1))
+        test_rec = sd.rec(int(sample_rate * 0.3), samplerate=sample_rate, channels=2,
+                          dtype="float32", device=device_index)
+        time.sleep(0.1)
+        midi_port.send(mido.Message("note_off", channel=midi_channel, note=60, velocity=0))
+        sd.wait()
+        test_peak = float(np.max(np.abs(test_rec)))
+        print(f"    Test note peak: {test_peak:.6f} ({20*math.log10(max(test_peak, 1e-10)):.1f} dBFS)")
+        if test_peak < noise_floor * 2:
+            print("  [PREFLIGHT FAIL] No signal from test note! Check: XOlokun running? BlackHole routing? MIDI port?")
+            raise RuntimeError("Pre-flight failed: no audio signal detected from test note")
+        print("  [PREFLIGHT PASS] Audio chain verified.\n")
+    else:
+        print("  [PREFLIGHT SKIP] No MIDI port — cannot send test note.\n")
+
+
+# ---------------------------------------------------------------------------
 # Render engine
 # ---------------------------------------------------------------------------
 
@@ -235,11 +290,29 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
                 sys.exit(1)
     print(f"Using audio device index: {device_index or '(default)'}")
 
+    # A2: Check if the audio device's native sample rate matches the requested rate.
+    # A mismatch means the OS will silently resample, which degrades audio quality.
+    try:
+        device_info = sd.query_devices(device_index)
+        device_sr = int(device_info["default_samplerate"])
+        if abs(device_sr - sample_rate) > 1:
+            print(f"[WARN] Audio device sample rate ({device_sr}Hz) differs from "
+                  f"requested ({sample_rate}Hz). OS may resample.")
+    except Exception:
+        pass  # device query failures must not abort the render session
+
+    # Mandatory pre-flight: verify audio chain before committing to a full render session
+    _preflight_check(device_index, sample_rate, port)
+
     total = len(jobs)
     t_start = time.time()
     last_program = None
 
     for idx, job in enumerate(jobs):
+        # B4: Safety — clear any stuck notes from previous render
+        port.send(mido.Message("control_change", channel=job["channel"], control=123, value=0))  # All Notes Off
+        port.send(mido.Message("control_change", channel=job["channel"], control=64, value=0))   # Sustain Pedal Off
+
         # Program change if needed
         pc_key = (job["bank_msb"], job["bank_lsb"], job["program"], job["channel"])
         if job["program"] is not None and pc_key != last_program:
@@ -263,15 +336,26 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
         # Note on
         port.send(mido.Message("note_on", channel=job["channel"],
                                note=job["note"], velocity=job["velocity"]))
-        time.sleep(job["duration_ms"] / 1000.0)
+        # B1: Precise hybrid sleep for note duration
+        _precise_wait(job["duration_ms"] / 1000.0)
 
         # Note off
         port.send(mido.Message("note_off", channel=job["channel"],
                                note=job["note"], velocity=0))
-        time.sleep(job["release_ms"] / 1000.0)
+        # B1: Precise hybrid sleep for release tail
+        _precise_wait(job["release_ms"] / 1000.0)
 
         # Wait for recording to finish
         sd.wait()
+
+        # B2: Post-capture peak check — catch silent/clipping recordings immediately
+        peak = float(np.max(np.abs(recording)))
+        if peak < 0.001:  # ~-60 dBFS
+            print(f"  [SILENT WARNING] {job['filename']} — no signal detected! Check BlackHole routing.")
+        elif peak > 0.99:
+            print(f"  [CLIP WARNING] {job['filename']} — signal clipping detected (peak={peak:.4f})")
+        elif peak < 0.01:
+            print(f"  [LOW LEVEL] {job['filename']} — very quiet signal (peak={peak:.4f})")
 
         # Save WAV (24-bit)
         out_path = os.path.join(output_dir, job["filename"])
@@ -344,7 +428,7 @@ Render spec JSON format:
     parser.add_argument("--output-dir", type=str, default="./wavs", help="Output directory for WAV files")
     parser.add_argument("--midi-port", type=str, default=None, help="MIDI output port name")
     parser.add_argument("--audio-device", type=str, default="BlackHole", help="Audio input device name or index")
-    parser.add_argument("--sample-rate", type=int, default=48000, help="Recording sample rate (default: 48000)")
+    parser.add_argument("--sample-rate", type=int, default=44100, help="Recording sample rate (default: 44100)")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be rendered without recording")
     parser.add_argument("--engine", type=str, default=None, help="Filter to presets for a single engine")
     parser.add_argument("--preset-load-ms", type=int, default=200, help="Wait time after program change (default: 200)")

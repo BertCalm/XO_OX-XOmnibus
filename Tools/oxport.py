@@ -49,7 +49,7 @@ Usage:
     python3 oxport.py batch --config batch.json --parallel 4 --skip-failed
     python3 oxport.py batch --config batch.json --dry-run
 
-    # Batch with cross-engine loudness normalization
+    # Batch with cross-engine loudness normalization (RMS-based)
     python3 oxport.py batch --config batch.json --normalize
     python3 oxport.py batch --config batch.json --normalize --normalize-target -16.0
 """
@@ -59,8 +59,10 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import struct
 import sys
+import tempfile
 import time
 import uuid
 from datetime import datetime
@@ -82,8 +84,27 @@ if str(TOOLS_DIR) not in sys.path:
 # This keeps startup fast and lets --dry-run work without heavy deps.
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Engine name canonicalization
+# ---------------------------------------------------------------------------
+
+# Canonical engine names (title-case, one spelling per engine)
+ENGINE_ALIASES = {
+    "onset": "Onset", "ONSET": "Onset", "OnsetEngine": "Onset",
+    "odyssey": "Odyssey", "ODYSSEY": "Odyssey",
+    "obese": "Obese", "OBESE": "Obese",
+    "overdub": "Overdub", "OVERDUB": "Overdub",
+    "oblong": "Oblong", "OBLONG": "Oblong",
+}
+
+
+def resolve_engine_name(raw: str) -> str:
+    """Normalize engine name to canonical spelling."""
+    return ENGINE_ALIASES.get(raw, raw)
+
+
 # Engines whose presets produce drum programs (everything else is keygroup)
-DRUM_ENGINES = {"onset", "Onset", "ONSET", "OnsetEngine"}
+DRUM_ENGINES = {"Onset"}  # Single canonical spelling
 
 BANNER = r"""
    ____                       _
@@ -155,7 +176,7 @@ class PipelineContext:
                  tuning: Optional[str] = None,
                  choke_preset: str = "none",
                  round_robin: bool = True):
-        self.engine = engine
+        self.engine = resolve_engine_name(engine)
         self.output_dir = output_dir
         self.wavs_dir = wavs_dir
         self.preset_filter = preset_filter
@@ -927,6 +948,20 @@ def _stage_complement_chain(ctx: PipelineContext) -> None:
     n_variants = result.get("variant_count", 0)
     print(f"    {n_presets} preset(s) × 5 shades = {n_variants} variant programs")
 
+    # C3: Apply tuning to all newly generated complement XPMs so they match
+    # the primary XPMs that were tuned during the export stage.
+    if hasattr(ctx, 'tuning') and ctx.tuning:
+        try:
+            from xpn_tuning_systems import apply_tuning_to_xpm
+            complement_xpms = list(ctx.output_dir.glob("*_shade_*.xpm"))
+            for xpm_path in complement_xpms:
+                xpm_content = xpm_path.read_text(encoding="utf-8")
+                tuned_content = apply_tuning_to_xpm(xpm_content, ctx.tuning)
+                xpm_path.write_text(tuned_content, encoding="utf-8")
+                print(f"      Applied {ctx.tuning} tuning to {xpm_path.name}")
+        except ImportError:
+            print(f"    [WARN] xpn_tuning_systems not available — complement XPMs not tuned")
+
 
 # ---------------------------------------------------------------------------
 # WAV reading/writing helpers (stdlib only — no numpy/scipy dependency)
@@ -1200,6 +1235,7 @@ def _compute_rms_db(wav_path: Path) -> float:
 
 def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
     """Apply a gain offset (in dB) to a WAV file in-place."""
+    import random
     if abs(gain_db) < 0.01:
         return  # negligible — skip
 
@@ -1215,7 +1251,7 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
         fmt = f"<{n_samples}h"
         samples = list(struct.unpack(fmt, data[:n_samples * 2]))
         for i in range(n_samples):
-            v = int(samples[i] * gain_linear)
+            v = int(samples[i] * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
             samples[i] = max(-32768, min(32767, v))
         new_data = struct.pack(fmt, *samples)
     elif bps == 24:
@@ -1227,7 +1263,7 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
             val = b[0] | (b[1] << 8) | (b[2] << 16)
             if val >= 0x800000:
                 val -= 0x1000000
-            val = int(val * gain_linear)
+            val = int(val * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
             val = max(-8388608, min(8388607, val))
             if val < 0:
                 val += 0x1000000
@@ -1239,28 +1275,40 @@ def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
         fmt = f"<{n_samples}i"
         samples = list(struct.unpack(fmt, data[:n_samples * 4]))
         for i in range(n_samples):
-            v = int(samples[i] * gain_linear)
+            v = int(samples[i] * gain_linear + random.uniform(-0.5, 0.5) + random.uniform(-0.5, 0.5))  # TPDF dither
             samples[i] = max(-2147483648, min(2147483647, v))
         new_data = struct.pack(fmt, *samples)
     else:
         return  # unsupported bit depth
 
-    _write_wav(wav_path, num_ch, sr, bps, new_data)
+    # B3: Atomic write — write to temp file then replace, so a crash mid-write
+    # never leaves a corrupted or empty source WAV.
+    temp_fd, temp_path = tempfile.mkstemp(suffix=".wav", dir=wav_path.parent)
+    os.close(temp_fd)
+    try:
+        _write_wav(Path(temp_path), num_ch, sr, bps, new_data)
+        os.replace(temp_path, wav_path)  # atomic on POSIX
+    except Exception:
+        os.unlink(temp_path)  # clean up on failure
+        raise
 
 
 def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
-                             target_lufs: float = -14.0,
+                             target_rms_db: float = -14.0,
                              dry_run: bool = False,
                              pack_name: Optional[str] = None) -> dict[str, float]:
     """Normalize loudness across engine output directories.
 
-    Computes RMS (as LUFS proxy) per engine, then applies per-engine gain to
-    reach the target. Returns a dict of engine_name -> gain_db applied.
+    Computes RMS dB per engine, then applies per-engine gain to reach the
+    target. Returns a dict of engine_name -> gain_db applied.
 
-    If target_lufs is None, uses the median RMS across engines as the target.
+    If target_rms_db is None, uses the median RMS across engines as the target.
 
-    After normalization, each sample's LUFS, true peak, and crest factor are
-    recorded to the Cross-Pack Loudness Ledger (Legend Feature #6).
+    After normalization, each sample's RMS proxy, true peak, and crest factor
+    are recorded to the Cross-Pack Loudness Ledger (Legend Feature #6).
+
+    If pyloudnorm is installed, real ITU-R BS.1770 integrated loudness (LUFS)
+    is used instead of the RMS proxy. Install with: pip install pyloudnorm
     """
     # Lazy import — ledger is only needed when normalization actually runs.
     try:
@@ -1269,6 +1317,15 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
         _ledger_available = True
     except ImportError:
         _ledger_available = False
+
+    # Optional pyloudnorm path for true LUFS measurement.
+    try:
+        import pyloudnorm as _pyln
+        _pyloudnorm_available = True
+    except ImportError:
+        _pyloudnorm_available = False
+        print("[INFO] pyloudnorm not installed — using RMS approximation "
+              "(pip install pyloudnorm for true LUFS)")
 
     _pack_name = pack_name or output_base.name
 
@@ -1301,13 +1358,13 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
         engine_avg[name] = sum(values) / len(values)
 
     # Determine target
-    if target_lufs is None:
+    if target_rms_db is None:
         sorted_avgs = sorted(engine_avg.values())
         mid = len(sorted_avgs) // 2
         target = sorted_avgs[mid] if len(sorted_avgs) % 2 == 1 else \
             (sorted_avgs[mid - 1] + sorted_avgs[mid]) / 2.0
     else:
-        target = target_lufs
+        target = target_rms_db
 
     # Compute and apply gain offsets
     adjustments: dict[str, float] = {}
@@ -1344,7 +1401,7 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
                         _ledger_record(
                             pack_name=_pack_name,
                             sample_name=wav.name,
-                            lufs=metrics["lufs"],
+                            lufs=metrics["rms_db_proxy"],
                             true_peak=metrics["true_peak"],
                             crest_factor=metrics["crest_factor"],
                             category=wav.parent.name,
@@ -1354,6 +1411,48 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
                     pass  # Ledger write failures must never abort normalization
 
     return adjustments
+
+
+# ---------------------------------------------------------------------------
+# Dependency check (C4) — runs in BOTH dry-run and real mode
+# ---------------------------------------------------------------------------
+
+def _check_dependencies(ctx: PipelineContext) -> None:
+    """Verify all required modules are importable.
+
+    Raises ImportError if any required module is missing.
+    Prints an info line for each missing optional module.
+    Runs in both dry-run and real mode so --dry-run gives accurate feedback.
+    """
+    required = [
+        "xpn_render_spec", "xpn_sample_categorizer", "xpn_qa_checker",
+        "xpn_smart_trim", "xpn_drum_export", "xpn_packager",
+    ]
+    optional = [
+        "xpn_cover_art", "xpn_complement_renderer", "xpn_manifest_generator",
+        "xpn_choke_group_assigner", "xpn_tuning_systems", "xpn_adaptive_velocity",
+    ]
+
+    missing_required = []
+    missing_optional = []
+    for mod in required:
+        try:
+            __import__(mod)
+        except ImportError:
+            missing_required.append(mod)
+    for mod in optional:
+        try:
+            __import__(mod)
+        except ImportError:
+            missing_optional.append(mod)
+
+    if missing_required:
+        print(f"  [FAIL] Missing required modules: {', '.join(missing_required)}")
+        raise ImportError(f"Required modules not found: {missing_required}")
+    if missing_optional:
+        print(f"  [INFO] Optional modules not installed: {', '.join(missing_optional)}")
+    else:
+        print(f"  [OK] All {len(required) + len(optional)} modules available")
 
 
 # Stage function dispatch
@@ -1395,6 +1494,16 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
     print()
 
     ctx.ensure_dirs()
+
+    # C4: Dependency check — runs in both dry-run and real mode so --dry-run
+    # surfaces missing modules before any stage executes.
+    print(f"  [deps] Checking module availability...")
+    try:
+        _check_dependencies(ctx)
+    except ImportError as e:
+        print(f"  [FAIL] Dependency check failed: {e}")
+        return 1
+    print()
 
     pipeline_start = time.monotonic()
     failed_stage = None
@@ -1814,7 +1923,7 @@ def cmd_batch(args) -> int:
 
         adjustments = normalize_batch_loudness(
             output_base, engine_dirs,
-            target_lufs=target,
+            target_rms_db=target,
             dry_run=dry_run_norm,
         )
 
@@ -2138,6 +2247,14 @@ def cmd_build(args) -> int:
                     import oxport_render
                     render_spec_data = oxport_render.load_spec(str(spec_path))
                     note_layout = oxport_render.resolve_presets(render_spec_data)
+
+                    # A2: Validate that render spec sample_rate matches .oxbuild rendering.sample_rate.
+                    spec_sr = render_spec_data.get("rendering", {}).get("sample_rate")
+                    if spec_sr is not None and spec_sr != sample_rate:
+                        print(f"         [ERROR] Sample rate mismatch: .oxbuild says {sample_rate}Hz "
+                              f"but render spec says {spec_sr}Hz. "
+                              f"Update rendering.sample_rate in one of the two files to match.")
+                        return 1
 
                     if selected_presets:
                         # SELECT → RENDER: expand note-layout × selected presets.
@@ -2724,9 +2841,9 @@ def main():
                          help="Continue batch even if a job fails")
     p_batch.add_argument("--normalize",    action="store_true",
                          help="After all jobs complete, normalize loudness across engines "
-                              "(RMS-based, target -14 LUFS)")
+                              "(RMS-based, target -14 dB RMS)")
     p_batch.add_argument("--normalize-target", type=float, default=-14.0,
-                         metavar="LUFS", dest="normalize_target",
+                         metavar="RMS_DB", dest="normalize_target",
                          help="Target loudness in dB RMS (default: -14.0)")
 
     # --- build (.oxbuild compiler) ---

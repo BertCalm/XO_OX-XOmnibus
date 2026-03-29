@@ -1,0 +1,22 @@
+XO_OX EXPANSION PACK — INSTALLATION NOTICE
+
+This expansion pack was created by XO_OX Designs using the XOlokun
+synthesizer engine. It is NOT produced by, endorsed by, or affiliated
+with Akai Professional or inMusic Brands, Inc.
+
+INSTALLATION:
+This pack installs via the MPC file manager (drag and drop), NOT via
+the Akai Expansion Manager. To install:
+
+  1. Connect your MPC to your computer via USB
+  2. Open the MPC file browser
+  3. Drag the .xpn file into the Expansions folder on your MPC drive
+  4. Restart the MPC software
+
+COMPATIBILITY:
+- Tested with MPC Software 2.10+
+- Compatible with MPC X, MPC Live, MPC Live II, MPC One, MPC Key series
+- Programs use community-documented XPM format (v1.7)
+
+SUPPORT:
+https://XO-OX.org

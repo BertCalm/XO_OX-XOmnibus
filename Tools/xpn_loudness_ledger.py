@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Cross-Pack Loudness Ledger — records LUFS, true peak, crest factor per sample.
+"""Cross-Pack Loudness Ledger — records RMS dB proxy, true peak, crest factor per sample.
 
 Phase 1: Data recording only. Each render populates the ledger.
 Phase 2 (future): Use accumulated data to compute crest-compensated
 normalization targets for perceptual loudness matching across all packs.
+
+Note: The "rms_db_proxy" field is 20*log10(RMS), NOT true LUFS. Real LUFS
+requires K-weighting + gating (ITU-R BS.1770). Install pyloudnorm for true LUFS.
 
 The legend: "Every XO_OX pack sits at exactly the same perceived volume."
 """
@@ -38,12 +41,17 @@ def save_ledger(ledger):
 
 def record_sample(pack_name, sample_name, lufs, true_peak, crest_factor,
                   category, engine=None):
-    """Record a sample's loudness data after normalization."""
+    """Record a sample's loudness data after normalization.
+
+    The 'lufs' parameter accepts either a true LUFS value (if pyloudnorm was
+    used upstream) or the RMS dB proxy (20*log10(RMS)). It is stored under
+    the key 'rms_db_proxy' to reflect that this value may not be true LUFS.
+    """
     ledger = load_ledger()
     if pack_name not in ledger["packs"]:
         ledger["packs"][pack_name] = {}
     ledger["packs"][pack_name][sample_name] = {
-        "lufs": round(lufs, 2),
+        "rms_db_proxy": round(lufs, 2),
         "true_peak": round(true_peak, 2),
         "crest": round(crest_factor, 2),
         "category": category,
@@ -64,7 +72,7 @@ def get_fleet_stats():
     return {
         "total_samples": len(all_samples),
         "total_packs": len(ledger["packs"]),
-        "avg_lufs": sum(s["lufs"] for s in all_samples) / len(all_samples),
+        "avg_rms_db": sum(s["rms_db_proxy"] for s in all_samples) / len(all_samples),
         "avg_crest": sum(s["crest"] for s in all_samples) / len(all_samples),
         "max_peak": max(s["true_peak"] for s in all_samples),
         "by_category": _stats_by_field(all_samples, "category"),
@@ -83,26 +91,26 @@ def _stats_by_field(samples, field):
     return {
         k: {
             "count": len(v),
-            "avg_lufs": round(sum(s["lufs"] for s in v) / len(v), 2),
+            "avg_rms_db": round(sum(s["rms_db_proxy"] for s in v) / len(v), 2),
             "avg_crest": round(sum(s["crest"] for s in v) / len(v), 2),
         }
         for k, v in groups.items()
     }
 
 
-def compute_compensated_target(base_lufs, crest_factor):
-    """Phase 2: Compute crest-compensated LUFS target.
+def compute_compensated_target(base_rms_db, crest_factor):
+    """Phase 2: Compute crest-compensated RMS dB target.
 
     High crest (transient) = feels quieter -> boost target
     Low crest (sustained) = feels louder -> cut target
     """
     stats = get_fleet_stats()
     if stats is None or stats["total_samples"] < 10:
-        return base_lufs  # Not enough data yet, use default
+        return base_rms_db  # Not enough data yet, use default
 
     avg_crest = stats["avg_crest"]
     delta = (crest_factor - avg_crest) * 0.5  # 0.5 dB per dB of crest deviation
-    return base_lufs + max(-2.0, min(2.0, delta))
+    return base_rms_db + max(-2.0, min(2.0, delta))
 
 
 # ---------------------------------------------------------------------------
@@ -143,15 +151,15 @@ def _decode_wav_samples(data: bytes, bps: int) -> list:
 
 
 def measure_wav(wav_path: Path) -> dict:
-    """Measure LUFS (RMS proxy), true peak, and crest factor for a WAV file.
+    """Measure RMS dB proxy, true peak, and crest factor for a WAV file.
 
-    Returns dict with keys: lufs, true_peak, crest_factor.
+    Returns dict with keys: rms_db_proxy, true_peak, crest_factor.
     Returns None on read error or silence.
 
     Notes:
-    - LUFS approximation: integrated RMS converted to dBFS. True ITU-R BS.1770
-      requires a K-weighting filter and gating — those require numpy. This is a
-      fast, dependency-free proxy suitable for cross-pack consistency tracking.
+    - rms_db_proxy: 20*log10(RMS), NOT true LUFS. True ITU-R BS.1770 LUFS
+      requires a K-weighting filter and gating — those require numpy/pyloudnorm.
+      This is a fast, dependency-free proxy suitable for cross-pack consistency.
     - True peak: per-sample max absolute value in dBFS (no inter-sample
       oversampling). Accurate enough for ledger recording purposes.
     - Crest factor: peak_dBFS - rms_dBFS (higher = more transient).
@@ -205,7 +213,7 @@ def measure_wav(wav_path: Path) -> dict:
     if not samples:
         return None
 
-    # RMS (LUFS proxy)
+    # RMS dB proxy (20*log10(RMS) — NOT true LUFS)
     sum_sq = sum(s * s for s in samples)
     rms = math.sqrt(sum_sq / len(samples))
     if rms < 1e-10:
@@ -223,8 +231,8 @@ def measure_wav(wav_path: Path) -> dict:
     crest_factor = peak_db - rms_db
 
     return {
-        "lufs": round(rms_db, 2),        # RMS proxy for LUFS
-        "true_peak": round(peak_db, 2),   # dBFS
+        "rms_db_proxy": round(rms_db, 2),  # 20*log10(RMS) — NOT true LUFS
+        "true_peak": round(peak_db, 2),    # dBFS
         "crest_factor": round(crest_factor, 2),  # dB
     }
 
@@ -237,13 +245,13 @@ if __name__ == "__main__":
             print("Fleet Loudness Stats:")
             print(f"  Total samples: {stats['total_samples']}")
             print(f"  Total packs: {stats['total_packs']}")
-            print(f"  Avg LUFS: {stats['avg_lufs']:.1f}")
+            print(f"  Avg RMS dB proxy: {stats['avg_rms_db']:.1f}")
             print(f"  Avg Crest: {stats['avg_crest']:.1f} dB")
             print(f"  Max True Peak: {stats['max_peak']:.1f} dBTP")
             print("\n  By Category:")
             for cat, data in stats["by_category"].items():
                 print(f"    {cat}: {data['count']} samples, "
-                      f"avg {data['avg_lufs']:.1f} LUFS, "
+                      f"avg {data['avg_rms_db']:.1f} dB RMS, "
                       f"crest {data['avg_crest']:.1f} dB")
         else:
             print("No data in ledger yet. Run some exports first.")

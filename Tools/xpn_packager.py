@@ -252,6 +252,15 @@ def package_xpn(
                     if verbose:
                         print(f"  + {art_name}")
 
+        # --- DISCLAIMER.txt ---
+        # Include in every .xpn so installers understand this is NOT an Akai
+        # official expansion and know how to install it correctly.
+        disclaimer_path = Path(__file__).parent / "DISCLAIMER.txt"
+        if disclaimer_path.exists():
+            zf.write(str(disclaimer_path), "DISCLAIMER.txt")
+            if verbose:
+                print("  + DISCLAIMER.txt")
+
         # --- Bundle manifest (JSON, for our own tooling reference) ---
         bundle_manifest = build_dir / "bundle_manifest.json"
         if bundle_manifest.exists():
