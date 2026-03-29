@@ -4,6 +4,7 @@
 #include <atomic>
 #include <functional>
 #include <cmath>
+#include "../GalleryColors.h"
 
 namespace xolokun {
 
@@ -95,8 +96,8 @@ public:
     {
         auto bounds = getLocalBounds().toFloat().reduced (2.0f);
 
-        // Background
-        g.setColour (juce::Colour (0xFFF8F6F3)); // Gallery white
+        // Background — theme-aware surface color (respects dark/light mode toggle)
+        g.setColour (juce::Colour (GalleryColors::get (GalleryColors::surface())));
         g.fillRoundedRectangle (bounds, 6.0f);
 
         // Border

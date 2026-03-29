@@ -40,7 +40,7 @@ namespace xolokun {
 //==============================================================================
 
 //==============================================================================
-// CouplingTypeColors — canonical colour for each of the 14 CouplingType values.
+// CouplingTypeColors — canonical colour for each of the 15 CouplingType values.
 //
 // Colours chosen to read on both Gallery Model shell white (#F8F6F3) and
 // dark mode background (#1A1A1A). All meet WCAG AA (4.5:1) contrast ratio.
@@ -65,9 +65,10 @@ namespace CouplingTypeColors {
             case CouplingType::EnvToDecay:       return juce::Colour (0xFF66BB6A); // Sage Green
             case CouplingType::PitchToPitch:     return juce::Colour (0xFF9C8FC4); // Lavender
             case CouplingType::AudioToWavetable: return juce::Colour (0xFF00ACC1); // Cyan
-            case CouplingType::AudioToBuffer:    return juce::Colour (0xFFFB8C00); // Mango
-            case CouplingType::KnotTopology:     return juce::Colour (0xFFE9C46A); // XO Gold
-            default:                             return juce::Colour (0xFFAAAAAA); // fallback grey
+            case CouplingType::AudioToBuffer:      return juce::Colour (0xFFFB8C00); // Mango
+            case CouplingType::KnotTopology:       return juce::Colour (0xFFE9C46A); // XO Gold
+            case CouplingType::TriangularCoupling: return juce::Colour (0xFF9B5DE5); // Synapse Violet
+            default:                               return juce::Colour (0xFFAAAAAA); // fallback grey
         }
     }
 
@@ -88,9 +89,10 @@ namespace CouplingTypeColors {
             case CouplingType::EnvToDecay:       return "Env>D";
             case CouplingType::PitchToPitch:     return "P>P";
             case CouplingType::AudioToWavetable: return "WT";
-            case CouplingType::AudioToBuffer:    return "A>Buf";
-            case CouplingType::KnotTopology:     return "KNOT";
-            default:                             return "?";
+            case CouplingType::AudioToBuffer:      return "A>Buf";
+            case CouplingType::KnotTopology:       return "KNOT";
+            case CouplingType::TriangularCoupling: return "TRI";
+            default:                               return "?";
         }
     }
 
@@ -111,14 +113,15 @@ namespace CouplingTypeColors {
             case CouplingType::EnvToDecay:       return "Envelope to Decay";
             case CouplingType::PitchToPitch:     return "Pitch to Pitch";
             case CouplingType::AudioToWavetable: return "Audio to Wavetable";
-            case CouplingType::AudioToBuffer:    return "Audio to Buffer";
-            case CouplingType::KnotTopology:     return "Knot Topology (bidirectional)";
-            default:                             return "Unknown";
+            case CouplingType::AudioToBuffer:      return "Audio to Buffer";
+            case CouplingType::KnotTopology:       return "Knot Topology (bidirectional)";
+            case CouplingType::TriangularCoupling: return "Triangular Coupling";
+            default:                               return "Unknown";
         }
     }
 
-    // All 14 types in display order for menus and legend.
-    inline std::array<CouplingType, 14> allTypes()
+    // All 15 types in display order for menus and legend.
+    inline std::array<CouplingType, 15> allTypes()
     {
         return {
             CouplingType::AmpToFilter,
@@ -134,7 +137,8 @@ namespace CouplingTypeColors {
             CouplingType::PitchToPitch,
             CouplingType::AudioToWavetable,
             CouplingType::AudioToBuffer,
-            CouplingType::KnotTopology
+            CouplingType::KnotTopology,
+            CouplingType::TriangularCoupling
         };
     }
 

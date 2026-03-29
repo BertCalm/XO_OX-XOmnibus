@@ -247,7 +247,7 @@ private:
     void selectIndex(int index)
     {
         // setSelectedItemIndex triggers the ComboBoxAttachment → APVTS → parameter update.
-        combo.setSelectedItemIndex(index, juce::sendNotificationAsync);
+        combo.setSelectedItemIndex(index, juce::sendNotificationSync);
         repaint();
     }
 
@@ -463,7 +463,7 @@ public:
         // Cmd+click → reset to center (mirrors GalleryKnob pattern)
         if (e.mods.isCommandDown())
         {
-            slider.setValue(paramCenter, juce::sendNotificationAsync);
+            slider.setValue(paramCenter, juce::sendNotificationSync);
             return;
         }
 
@@ -479,7 +479,7 @@ public:
     void mouseDoubleClick(const juce::MouseEvent& /*e*/) override
     {
         // Double-click → reset to center
-        slider.setValue(paramCenter, juce::sendNotificationAsync);
+        slider.setValue(paramCenter, juce::sendNotificationSync);
     }
 
     void resized() override
@@ -501,7 +501,7 @@ private:
 
         float norm = juce::jlimit(0.0f, 1.0f, (mouseX - barX) / barWidth);
         double val = paramMin + norm * (paramMax - paramMin);
-        slider.setValue(val, juce::sendNotificationAsync);
+        slider.setValue(val, juce::sendNotificationSync);
     }
 
     //──────────────────────────────────────────────────────────────────────

@@ -1456,9 +1456,11 @@ public:
         // Nothing to release (V1 perfPads removed in V2 layout)
     }
 
-    bool keyPressed(const juce::KeyPress& /*key*/) override
+    bool keyPressed(const juce::KeyPress& key) override
     {
-        // V1 perfPads removed — XOuija and gesture buttons have their own key handling
+        // Forward to XOuija panel for gesture shortcuts (F=Freeze, H=Home, D=Drift, G=Goodbye, etc.)
+        if (xouijaPanel_.keyPressed(key))
+            return true;
         return false;
     }
 

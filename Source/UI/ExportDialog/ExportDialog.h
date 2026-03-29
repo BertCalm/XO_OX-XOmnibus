@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 #include <mutex>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_audio_formats/juce_audio_formats.h>
@@ -317,7 +318,7 @@ private:
     juce::Rectangle<int> previewWaveformBounds;
     std::vector<float> cachedThumbnail;
     bool previewPlaying = false;
-    int  previewPlaybackPos = 0;
+    std::atomic<int> previewPlaybackPos { 0 };
     juce::AudioBuffer<float> previewAudioBuffer;
     std::unique_ptr<juce::AudioDeviceManager> previewDeviceManager;
     std::unique_ptr<juce::AudioSourcePlayer> previewPlayer;
@@ -396,7 +397,7 @@ private:
         previewAudioBuffer = previewDrip.getPreviewBuffer();
         if (previewAudioBuffer.getNumSamples() == 0) return;
 
-        previewPlaybackPos = 0;
+        previewPlaybackPos.store(0);
         previewPlaying = true;
         previewPlayBtn.setButtonText("||");
 
@@ -423,7 +424,7 @@ private:
     void stopPreviewPlayback()
     {
         previewPlaying = false;
-        previewPlaybackPos = 0;
+        previewPlaybackPos.store(0);
 
         if (previewPlayer)
             previewPlayer->setSource(nullptr);
@@ -456,7 +457,7 @@ private:
             auto& src = dialog.previewAudioBuffer;
             int srcChannels = src.getNumChannels();
             int srcSamples  = src.getNumSamples();
-            int pos = dialog.previewPlaybackPos;
+            int pos = dialog.previewPlaybackPos.load();
 
             if (pos >= srcSamples)
             {
@@ -476,7 +477,7 @@ private:
                 info.buffer->copyFrom(ch, info.startSample, src, srcCh, pos, samplesToRead);
             }
 
-            dialog.previewPlaybackPos += samplesToRead;
+            dialog.previewPlaybackPos.fetch_add(samplesToRead);
         }
 
         ExportDialog& dialog;
@@ -536,7 +537,7 @@ private:
             // Draw playback position indicator
             if (previewPlaying && previewAudioBuffer.getNumSamples() > 0)
             {
-                float progress = static_cast<float>(previewPlaybackPos)
+                float progress = static_cast<float>(previewPlaybackPos.load())
                                  / static_cast<float>(previewAudioBuffer.getNumSamples());
                 float lineX = x0 + progress * w;
                 g.setColour(juce::Colour(GalleryColors::Light::textDark));
@@ -908,6 +909,11 @@ private:
                             && capturedSnapshot.hasActiveCoupling();
         auto snapshotCopy = useEntangled ? capturedSnapshot : XOriginate::CouplingSnapshot{};
 
+        // Snapshot the preset library on the message thread before launching the worker.
+        // Reading presetManager.getLibrary() from a worker thread is a data race — the
+        // message thread may mutate the library (e.g. preset add/remove) concurrently.
+        auto presetsCopy = presetManager.getLibrary();
+
         // Export runs on a worker thread
         struct ExportThread : public juce::Thread
         {
@@ -916,11 +922,13 @@ private:
                          juce::String name,
                          juce::String coverEng,
                          bool entangled,
-                         XOriginate::CouplingSnapshot snap)
+                         XOriginate::CouplingSnapshot snap,
+                         std::vector<PresetData> presets)
                 : juce::Thread("XPN-Export"), dialog(d),
                   settings(std::move(s)), bundleName(std::move(name)),
                   coverEngine(std::move(coverEng)),
-                  useEntangled(entangled), snapshot(std::move(snap)) {}
+                  useEntangled(entangled), snapshot(std::move(snap)),
+                  presetsCopy(std::move(presets)) {}
 
             void run() override
             {
@@ -938,8 +946,6 @@ private:
 
                 if (coverEngine.isNotEmpty())
                     config.coverEngine = coverEngine;
-
-                auto& presets = dialog.presetManager.getLibrary();
 
                 auto progressCb = [this](XOriginate::Progress& p)
                 {
@@ -964,12 +970,12 @@ private:
                 XOriginate::ExportResult result;
                 if (useEntangled)
                     result = exporter.exportCoupledSnapshot(config, settings, snapshot,
-                                                            presets, progressCb);
+                                                            presetsCopy, progressCb);
                 else
-                    result = exporter.exportBundle(config, settings, presets, progressCb);
+                    result = exporter.exportBundle(config, settings, presetsCopy, progressCb);
 
                 dialog.exportResult = result;
-                dialog.exportFinished.store(true);
+                dialog.exportFinished.store(true, std::memory_order_release);
             }
 
             ExportDialog& dialog;
@@ -978,11 +984,13 @@ private:
             juce::String coverEngine;
             bool useEntangled;
             XOriginate::CouplingSnapshot snapshot;
+            std::vector<PresetData> presetsCopy;
         };
 
         exportThread = std::make_unique<ExportThread>(*this, capturedSettings,
                                                          capturedName, capturedCoverEngine,
-                                                         useEntangled, snapshotCopy);
+                                                         useEntangled, snapshotCopy,
+                                                         std::move(presetsCopy));
         exportThread->startThread();
     }
 
@@ -1020,7 +1028,7 @@ private:
         if (!exporting && !previewPlaying && dripState != XDrip::State::Rendering)
         {
             // Only stop if export is also not pending finish
-            if (!exportFinished.load())
+            if (!exportFinished.load(std::memory_order_acquire))
                 stopTimer();
         }
 
@@ -1030,7 +1038,7 @@ private:
             progressLabel.setText(lastProgressText, juce::dontSendNotification);
         }
 
-        if (exportFinished.load())
+        if (exportFinished.load(std::memory_order_acquire))
         {
             stopTimer();
             exporting = false;
@@ -1077,7 +1085,7 @@ private:
                                      : juce::MessageBoxIconType::WarningIcon,
                 "XPN Export", summary);
 
-            exportFinished.store(false);
+            exportFinished.store(false, std::memory_order_relaxed);
         }
     }
 

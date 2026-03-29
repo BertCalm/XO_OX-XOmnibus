@@ -210,6 +210,30 @@ public:
         updateFromMouse(e.position);
     }
 
+    // WCAG 2.1.1 — keyboard navigation for the triangle pad.
+    // Arrow keys move X (left/right) or Y (up/down) by 5% per step.
+    // Hold Shift for fine mode (1% per step).
+    bool keyPressed(const juce::KeyPress& key) override
+    {
+        const float step = key.getModifiers().isShiftDown() ? 0.01f : 0.05f;
+        float x = static_cast<float>(hiddenSliderX.getValue());
+        float y = static_cast<float>(hiddenSliderY.getValue());
+
+        if      (key == juce::KeyPress::leftKey)  x = juce::jmax(0.0f, x - step);
+        else if (key == juce::KeyPress::rightKey)  x = juce::jmin(1.0f, x + step);
+        else if (key == juce::KeyPress::upKey)     y = juce::jmin(1.0f, y + step);
+        else if (key == juce::KeyPress::downKey)   y = juce::jmax(0.0f, y - step);
+        else return false;
+
+        hiddenSliderX.setValue(static_cast<double>(x), juce::sendNotificationSync);
+        hiddenSliderY.setValue(static_cast<double>(y), juce::sendNotificationSync);
+        repaint();
+        return true;
+    }
+
+    void focusGained(FocusChangeType) override { repaint(); }
+    void focusLost(FocusChangeType)   override { repaint(); }
+
     void resized() override
     {
         // Hidden sliders live at zero size — they only exist for attachments.

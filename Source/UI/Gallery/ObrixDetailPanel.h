@@ -369,7 +369,10 @@ public:
     void resized() override
     {
         // Recompute compact mode based on available height.
-        compactMode = (getHeight() <= 500);
+        if (auto* vp = findParentComponentOfClass<juce::Viewport>())
+            compactMode = (vp->getHeight() <= 500);
+        else
+            compactMode = false;
 
         int y = kPad;
         const int W = getWidth();

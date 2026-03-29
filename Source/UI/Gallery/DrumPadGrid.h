@@ -195,6 +195,24 @@ public:
         }
     }
 
+    void mouseUp(const juce::MouseEvent& e) override
+    {
+        // Right-click releases are ignored here
+        if (e.mods.isRightButtonDown())
+            return;
+
+        // Send note-off for whichever pad is currently held (pressedPad).
+        // This mirrors the note-on sent in triggerPad(), allowing engines that
+        // gate their decay on note-off to release correctly.
+        if (pressedPad >= 0)
+        {
+            int midiNote = juce::jlimit(0, 127, kBaseMidiNote + pressedPad);
+            proc.getMidiCollector().addMessageToQueue(
+                juce::MidiMessage::noteOff(10, midiNote));
+            pressedPad = -1;
+        }
+    }
+
 private:
     // ── Internal constants ────────────────────────────────────────────────────
 
@@ -523,9 +541,17 @@ private:
         // Send MIDI note-on via processor's MIDI collector.
         // Channel 10 = standard GM percussion channel.
         // addMessageToQueue handles timestamp internally — no setTimeStamp needed.
+        // If a different pad was already held, release it first to avoid stuck notes.
+        if (pressedPad >= 0 && pressedPad != voiceIndex)
+        {
+            int prevNote = juce::jlimit(0, 127, kBaseMidiNote + pressedPad);
+            proc.getMidiCollector().addMessageToQueue(
+                juce::MidiMessage::noteOff(10, prevNote));
+        }
         int midiNote = juce::jlimit(0, 127, kBaseMidiNote + voiceIndex); // 37+ (KAI-P0-03)
         proc.getMidiCollector().addMessageToQueue(
             juce::MidiMessage::noteOn(10, midiNote, velocity));
+        pressedPad = voiceIndex;
 
         repaint();
     }
@@ -562,6 +588,7 @@ private:
 
     // Selection state
     int selectedPad = -1; // -1 = none selected
+    int pressedPad  = -1; // -1 = no pad currently held (tracks note-on for paired note-off)
 
     // Param strip knobs (always kNumStripKnobs = 3 entries; active flag controls visibility)
     // Destruction order: attachments → labels → knobs (see destroyParamStrip).
