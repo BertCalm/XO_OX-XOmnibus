@@ -263,10 +263,6 @@ public:
             return p ? p->load (std::memory_order_relaxed) : def;
         };
 
-        const float pAttack       = loadP (paramAttack, 0.15f);
-        const float pDecay        = loadP (paramDecay, 0.5f);
-        const float pSustain      = loadP (paramSustain, 0.8f);
-        const float pRelease      = loadP (paramRelease, 1.0f);
         const float pCutoff       = loadP (paramCutoff, 6000.0f);
         const float pResonance    = loadP (paramResonance, 0.2f);
         const float pDetune       = loadP (paramDetune, 7.0f);
@@ -277,8 +273,6 @@ public:
         const float pBendRange    = loadP (paramBendRange, 2.0f);
         const float pEnsembleWid  = loadP (paramEnsembleWidth, 0.7f);
         const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.4f);
-        const float pGrowthMode   = loadP (paramGrowthMode, 0.0f);
-        const float pGrowthTime   = loadP (paramGrowthTime, 20.0f);
         const float pBrightness   = loadP (paramBrightness, 0.5f);
         const float pWarmth       = loadP (paramWarmthCtrl, 0.5f);
 
@@ -323,7 +317,7 @@ public:
         float effectiveDetune = pDetune + macroMove * 10.0f + aggrHarsh * 5.0f;
         float effectiveFormant = std::clamp (pFormant + macroChar * 0.3f + couplingFormantMod
             + macroCoupl * 0.25f, 0.0f, 1.0f);  // M3 COUPLING: deeper formant resonance
-        const float effectiveWidth = 1.0f + macroSpace * 0.6f;  // M4 SPACE: stereo expansion
+        const float effectiveWidth = pEnsembleWid + macroSpace * 0.6f;  // M4 SPACE: ensemble width + macro expansion
 
         smoothCutoff.set (effectiveCutoff);
         smoothDetune.set (effectiveDetune);

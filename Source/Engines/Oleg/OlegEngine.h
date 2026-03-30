@@ -731,8 +731,6 @@ public:
         const float pBellows       = loadP (paramBellows, 0.7f);
         const float pDetune        = loadP (paramDetune, 15.0f);
         const float pFormant       = loadP (paramFormant, 0.5f);
-        const float pAttack        = loadP (paramAttack, 0.02f);
-        const float pRelease       = loadP (paramRelease, 0.15f);
         const float pFilterEnvAmt  = loadP (paramFilterEnvAmt, 0.3f);
         const float pBendRange     = loadP (paramBendRange, 2.0f);
         const float pCassottoDepth = loadP (paramCassottoDepth, 0.5f);

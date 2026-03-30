@@ -389,15 +389,9 @@ public:
         const float pWildness     = loadP (paramWildness, 0.3f);
         const float pVibratoRate  = loadP (paramVibratoRate, 5.5f);
         const float pVibratoDepth = loadP (paramVibratoDepth, 0.3f);
-        const float pAttack       = loadP (paramAttack, 0.05f);
-        const float pDecay        = loadP (paramDecay, 0.3f);
-        const float pSustain      = loadP (paramSustain, 0.7f);
-        const float pRelease      = loadP (paramRelease, 1.5f);
         const float pBendRange    = loadP (paramBendRange, 2.0f);
         const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.3f);
         const float pBrightness   = loadP (paramBrightness, 0.5f);
-        const float pGrowthMode   = loadP (paramGrowthMode, 0.0f);
-        const float pGrowthTime   = loadP (paramGrowthTime, 15.0f);
 
         const float macroChar     = loadP (paramMacroCharacter, 0.0f);
         const float macroMove     = loadP (paramMacroMovement, 0.0f);

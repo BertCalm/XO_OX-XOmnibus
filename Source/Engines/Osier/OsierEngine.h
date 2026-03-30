@@ -338,10 +338,6 @@ public:
             return p ? p->load (std::memory_order_relaxed) : def;
         };
 
-        const float pAttack       = loadP (paramAttack, 0.1f);
-        const float pDecay        = loadP (paramDecay, 0.4f);
-        const float pSustain      = loadP (paramSustain, 0.75f);
-        const float pRelease      = loadP (paramRelease, 0.8f);
         const float pCutoff       = loadP (paramCutoff, 5000.0f);
         const float pResonance    = loadP (paramResonance, 0.25f);
         const float pDetune       = loadP (paramDetune, 5.0f);
@@ -351,8 +347,6 @@ public:
         const float pBendRange    = loadP (paramBendRange, 2.0f);
         const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.35f);
         const float pBrightness   = loadP (paramBrightness, 0.5f);
-        const float pGrowthMode   = loadP (paramGrowthMode, 0.0f);
-        const float pGrowthTime   = loadP (paramGrowthTime, 20.0f);
         const float pIntimacy     = loadP (paramIntimacy, 0.5f);
 
         const float macroChar     = loadP (paramMacroCharacter, 0.0f);
@@ -524,8 +518,12 @@ public:
                     // (effect is in the companion planting, not direct audio)
                 }
 
-                mixL += output * voice.panL;
-                mixR += output * voice.panR;
+                // Companion affinity (compNow) narrows the stereo field in real-time:
+                // at full companion, voices pull toward centre — the quartet breathes as one.
+                float compPanL = voice.panL + compNow * (0.5f - voice.panL);
+                float compPanR = voice.panR + compNow * (0.5f - voice.panR);
+                mixL += output * compPanL;
+                mixR += output * compPanR;
             }
 
             // M4 SPACE: mid/side width expansion

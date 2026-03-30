@@ -161,7 +161,7 @@ struct OctaveWindNoise
         float noise = (static_cast<float> (noiseState & 0xFFFF) / 32768.0f - 1.0f);
 
         // Shape wind noise — darker for pipe organs, brighter for accordion bellows
-        filterState += 0.05f * (noise - filterState);  // gentle LP
+        filterState += (0.01f + brightness * 0.1f) * (noise - filterState);  // gentle LP, brightness-controlled
         return filterState * amount * 0.15f;
     }
 

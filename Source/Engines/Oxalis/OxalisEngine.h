@@ -336,10 +336,6 @@ public:
             return p ? p->load (std::memory_order_relaxed) : def;
         };
 
-        const float pAttack       = loadP (paramAttack, 0.01f);
-        const float pDecay        = loadP (paramDecay, 0.3f);
-        const float pSustain      = loadP (paramSustain, 0.85f);
-        const float pRelease      = loadP (paramRelease, 0.6f);
         const float pCutoff       = loadP (paramCutoff, 8000.0f);
         const float pResonance    = loadP (paramResonance, 0.15f);
         const float pPhi          = loadP (paramPhi, 0.5f);
@@ -349,8 +345,6 @@ public:
         const float pBendRange    = loadP (paramBendRange, 2.0f);
         const float pFilterEnvAmt = loadP (paramFilterEnvAmt, 0.3f);
         const float pBrightness   = loadP (paramBrightness, 0.6f);
-        const float pGrowthMode   = loadP (paramGrowthMode, 0.0f);
-        const float pGrowthTime   = loadP (paramGrowthTime, 10.0f);
         const float pSymmetry     = loadP (paramSymmetry, 0.5f);
 
         const float macroChar     = loadP (paramMacroCharacter, 0.0f);
@@ -486,9 +480,10 @@ public:
                 mixR += output * voice.panR;
             }
 
-            // M4 SPACE: mid/side width expansion
+            // M4 SPACE + Spread: mid/side width expansion with real-time spread modulation.
+            // sprNow (smoothed pSpread) scales the side signal independently of macroSpace.
             const float mid  = (mixL + mixR) * 0.5f;
-            const float side = (mixL - mixR) * 0.5f * effectiveWidth;
+            const float side = (mixL - mixR) * 0.5f * effectiveWidth * (0.5f + sprNow);
             outL[s] = mid + side;
             if (outR) outR[s] = mid - side;
             couplingCacheL = outL[s];
