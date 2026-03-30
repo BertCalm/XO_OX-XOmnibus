@@ -745,6 +745,11 @@ public:
         couplingPitchMod  = 0.f;
         couplingDepthMod  = 0.f;
 
+        // effectiveResoMix: resoMix modulated by macroSpace.
+        // Hoisted before the per-sample loop so the resonator wet/dry blend in the
+        // loop uses the same value as the space-reverb stereo-spread pass below.
+        const float effectiveResoMix = clamp(resoMix + macroSpace * 0.3f, 0.f, 1.f);
+
         // ----- Per-sample DSP loop -----
         for (int n = 0; n < numSamples; ++n) {
             // --- Amp envelope ---
@@ -855,8 +860,10 @@ public:
             float filtered = brightFilter.process(addSum, finalCutoff, Q, sr);
 
             // --- Resonator (allpass tuned to fundamental) ---
-            float resoOut  = resonator.tick(filtered, fundamentalFreq, 0.7f);
-            float withReso = filtered * (1.f - resoMix) + resoOut * resoMix;
+            // filterRes (0–0.8) drives the allpass feedback coefficient g (0–0.9 range).
+            // Previously hardcoded to 0.7f, making over_filterRes dead in the resonator path.
+            float resoOut  = resonator.tick(filtered, fundamentalFreq, filterRes);
+            float withReso = filtered * (1.f - effectiveResoMix) + resoOut * effectiveResoMix;
 
             // --- Amp envelope ---
             float output = withReso * ampEnvLevel;
@@ -873,8 +880,8 @@ public:
         // --- Block-level space reverb ---
         // Schroeder reverb applied block-rate (no per-sample aliasing concern for
         // a diffuse room tail). macroSpace mixes reverb depth + wet/dry balance.
-        const float effectiveResoMix = clamp(resoMix + macroSpace * 0.3f, 0.f, 1.f);
-        const float spaceWet         = macroSpace * 0.6f;
+        // effectiveResoMix is already computed before the per-sample loop above.
+        const float spaceWet = macroSpace * 0.6f;
 
         if (spaceWet > 0.001f) {
             for (int n = 0; n < numSamples; ++n) {

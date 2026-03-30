@@ -435,6 +435,7 @@ public:
         smoothMigration.set (std::clamp (pMigration + macroCoup * 0.5f, 0.0f, 1.0f));
 
         couplingFilterMod = 0.0f;
+        const float pitchCouplingVal = couplingPitchMod;
         couplingPitchMod = 0.0f;
         couplingReedMod = 0.0f;
 
@@ -476,7 +477,7 @@ public:
                 if (!voice.active) continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + pitchCouplingVal);
 
                 // LFO1 -> pitch vibrato
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

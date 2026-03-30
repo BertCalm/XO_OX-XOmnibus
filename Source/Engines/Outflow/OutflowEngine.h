@@ -108,10 +108,13 @@ public:
         extRingMod_ = 0.0f;
         couplingEnvDecayMod_ = 0.0f;
 
-        // Output saturation filter
+        // Output saturation filters (L and R — must be separate instances for stereo symmetry)
         satFilter_.setMode (CytomicSVF::Mode::LowPass);
         satFilter_.setCoefficients (6000.0f, 0.5f, srF_);
         satFilter_.reset();
+        satFilterR_.setMode (CytomicSVF::Mode::LowPass);
+        satFilterR_.setCoefficients (6000.0f, 0.5f, srF_);
+        satFilterR_.reset();
 
         noiseRng_ = 77u;
 
@@ -144,6 +147,7 @@ public:
         tidalLFO_.reset();
         windLFO_.reset();
         satFilter_.reset();
+        satFilterR_.reset();
         lastSampleL_ = lastSampleR_ = 0.0f;
     }
 
@@ -391,12 +395,13 @@ public:
             float satL = fastTanh (reverbL * opticalDrive);
             float satR = fastTanh (reverbR * opticalDrive);
 
-            // Optical warmth filter: tension drives LP cutoff down
+            // Optical warmth filter: tension drives LP cutoff down (applied symmetrically to L and R)
             float satCutoff = 8000.0f - gateTension * pOpticalWarmth * 5000.0f;
             satCutoff = clamp (satCutoff, 400.0f, srF_ * 0.49f);
             satFilter_.setCoefficients_fast (satCutoff, 0.5f, srF_);
+            satFilterR_.setCoefficients_fast (satCutoff, 0.5f, srF_);
             satL = satFilter_.processSample (satL);
-            // Share filter for subtle mono-ish warmth on the sat stage
+            satR = satFilterR_.processSample (satR);
 
             // Ring mod coupling
             if (std::fabs (extRingMod_) > 0.001f)
@@ -595,8 +600,9 @@ private:
     float currentVelocity_ = 0.0f;
     uint32_t noiseRng_ = 77u;
 
-    // Saturation filter
+    // Saturation filters (separate L/R instances for symmetric stereo optical warmth)
     CytomicSVF satFilter_;
+    CytomicSVF satFilterR_;
 
     // Expression
     float aftertouch_ = 0.0f;

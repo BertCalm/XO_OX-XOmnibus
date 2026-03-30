@@ -207,6 +207,12 @@ struct OctoVoice
     // Main output filter
     CytomicSVF mainFilter;
 
+    // Formant filters — arm #8 (ArmFormantShift) modulates their center frequencies
+    // F1: 300–800 Hz (first vocal formant region)
+    // F2: 800–2500 Hz (second vocal formant region)
+    CytomicSVF formant1;
+    CytomicSVF formant2;
+
     // Ink cloud (per-voice freeze buffer)
     OctoFreezeBuffer inkCloud;
     bool inkTriggered = false;
@@ -242,6 +248,8 @@ struct OctoVoice
         chromaFilter.reset();
         suckerFilter.reset();
         mainFilter.reset();
+        formant1.reset();
+        formant2.reset();
         inkCloud.reset();
     }
 };
@@ -310,6 +318,10 @@ public:
             voice.suckerFilter.setMode (CytomicSVF::Mode::BandPass);
             voice.mainFilter.reset();
             voice.mainFilter.setMode (CytomicSVF::Mode::LowPass);
+            voice.formant1.reset();
+            voice.formant1.setMode (CytomicSVF::Mode::BandPass);
+            voice.formant2.reset();
+            voice.formant2.setMode (CytomicSVF::Mode::BandPass);
         }
     }
 
@@ -700,6 +712,25 @@ public:
                     20.0f, 20000.0f);
                 voice.mainFilter.setCoefficients (filterCutoffMod, effectiveReso, srf);
                 voiceSignal = voice.mainFilter.processSample (voiceSignal);
+
+                // =====================================================
+                // ArmFormantShift (arm #8) — 2-formant bandpass filter
+                // armMods[7] shifts F1 (300–800 Hz) and F2 (800–2500 Hz)
+                // in opposite directions, creating a vowel-shift effect.
+                // =====================================================
+                {
+                    // arm mod spans -1..+1 → shift F1 down/up by up to 250 Hz, F2 up/down by up to 850 Hz
+                    float fShift = armMods[ArmFormantShift];  // -1..+1, already depth-scaled
+                    float f1Freq = clamp (550.0f + fShift * 250.0f,  200.0f, 900.0f);
+                    float f2Freq = clamp (1650.0f - fShift * 850.0f, 600.0f, 3000.0f);
+                    voice.formant1.setCoefficients (f1Freq, 0.6f, srf);
+                    voice.formant2.setCoefficients (f2Freq, 0.5f, srf);
+                    float formantSig = voice.formant1.processSample (voiceSignal) * 0.6f
+                                     + voice.formant2.processSample (voiceSignal) * 0.4f;
+                    // Blend at a modest level — more pronounced when arm depth is high
+                    float formantBlend = clamp (std::fabs (fShift) * 0.5f + effectiveArmDepth * 0.15f, 0.0f, 0.3f);
+                    voiceSignal = voiceSignal * (1.0f - formantBlend) + formantSig * formantBlend;
+                }
 
                 // =====================================================
                 // 3. INK CLOUD — Freeze reverb noise burst

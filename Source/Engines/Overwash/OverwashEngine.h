@@ -389,7 +389,11 @@ public:
                 voiceCutoff = clamp (voiceCutoff, 50.0f, srF * 0.49f);
                 voice.viscosityFilter.setCoefficients_fast (voiceCutoff, pFilterRes, srF);
 
-                float fundamental = voice.fundamental * pitchBendRatio;
+                // LFOToPitch coupling: extPitchMod is accumulated in applyCouplingInput()
+                // and reset at end of block. Convert semitone offset to a frequency ratio
+                // and apply here so the entire partial bank tracks the coupled pitch.
+                float coupledFreq = voice.fundamental * PitchBendUtil::semitonesToFreqRatio(extPitchMod * 12.0f);
+                float fundamental = coupledFreq * pitchBendRatio;
 
                 // W04 fix: hoist per-voice Fick's Law values out of the partial loop.
                 // t, maxT, D, pSpreadMax, and normalizedT all depend only on voice state —

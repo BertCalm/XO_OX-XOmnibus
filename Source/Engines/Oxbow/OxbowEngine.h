@@ -300,7 +300,7 @@ public:
         // Size 1 = vast hall (full predelay, bright/reflective)
         float effectivePredelay = pPredelay * (0.1f + pSize * 0.9f);
         pDamping = clamp (pDamping * (0.5f + pSize * 1.0f), 200.0f, 16000.0f);
-        (void) pResQ;  // Used in updateGoldenFrequencies via note-on
+        // pResQ is used per-sample below (golden resonator Q tracks knob in real-time).
 
         // Velocity → exciter brightness and decay (D001 + Kakehashi)
         float excBrightness = pExcBright * (0.5f + currentVelocity * 0.5f);
@@ -477,8 +477,16 @@ public:
 
             if (resonanceGain > 0.001f)
             {
+                // Update golden resonator Q from live parameter so Q knob responds
+                // during a held note (D004: dead param fix — pResQ was previously only
+                // read at note-on, making the knob inert until the next key strike).
+                float liveQ = pResQ / 20.0f;  // normalize to [0, 1] for CytomicSVF
                 for (int g = 0; g < kGoldenFilters; ++g)
                 {
+                    // Peak mode output = 2*v2 - input + k*v1; gain param only affects shelves,
+                    // so setCoefficients_fast (3-arg) is correct here.
+                    goldenL[g].setCoefficients_fast (goldenFreqHz[g], liveQ, srF);
+                    goldenR[g].setCoefficients_fast (goldenFreqHz[g], liveQ, srF);
                     goldenOutL += goldenL[g].processSample (erosionL) * goldenGains[g];
                     goldenOutR += goldenR[g].processSample (erosionR) * goldenGains[g];
                 }
@@ -698,6 +706,7 @@ private:
         for (int g = 0; g < kGoldenFilters; ++g)
         {
             float f = clamp (freqs[g], 20.0f, srF * 0.49f);
+            goldenFreqHz[g] = f;  // cache for per-sample Q updates
             float q = resQ / 20.0f;  // normalize to [0, 1] for CytomicSVF
             goldenL[g].setCoefficients (f, q, srF, 6.0f);  // +6dB peak
             goldenR[g].setCoefficients (f, q, srF, 6.0f);
@@ -728,6 +737,7 @@ private:
     // Golden resonance filters
     CytomicSVF goldenL[kGoldenFilters];
     CytomicSVF goldenR[kGoldenFilters];
+    float goldenFreqHz[kGoldenFilters] = { 220.0f, 356.0f, 576.0f, 932.0f };  // updated at note-on
     float midEnv = 0.0f, sideEnv = 0.0f;
     float resonanceGain = 0.0f;
 

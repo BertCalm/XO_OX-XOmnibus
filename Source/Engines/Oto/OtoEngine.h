@@ -176,19 +176,22 @@ struct OtoChiffGenerator
             default: durationMs = 35.0f; break;  // Melodica: airy
         }
         totalSamples = std::max (static_cast<int> (durationMs * 0.001f * sampleRate), 8);
-        amplitude = velocity * chiffAmount;
+        // Store velocity only; chiff amount is applied per-sample from the smoother
+        // so that macro-boosted effective chiff is reflected in real-time.
+        amplitude = velocity;
         noiseMix = (organModel == 2) ? 0.7f : 0.3f;  // Khene = more noise
         noiseState = static_cast<uint32_t> (velocity * 65535.0f + organModel * 9973) + 12345u;
     }
 
-    float process() noexcept
+    // chiffScale: pass the per-sample smoothed chiff amount (macro-modified).
+    float process (float chiffScale = 1.0f) noexcept
     {
         if (!active) return 0.0f;
         if (sampleCounter >= totalSamples) { active = false; return 0.0f; }
 
         float phase = static_cast<float> (sampleCounter) / static_cast<float> (totalSamples);
-        // Hann-windowed burst
-        float env = std::sin (phase * 3.14159265f) * amplitude;
+        // Hann-windowed burst; amplitude holds velocity, chiffScale carries macro-modified amount.
+        float env = std::sin (phase * 3.14159265f) * amplitude * chiffScale;
 
         // Noise component
         noiseState = noiseState * 1664525u + 1013904223u;
@@ -558,7 +561,7 @@ public:
         for (int s = 0; s < numSamples; ++s)
         {
             float clusterNow   = smoothCluster.process();
-            float chiffNow     = smoothChiff.process();   (void)chiffNow;  // used at note-on
+            float chiffNow     = smoothChiff.process();
             float detuneNow    = smoothDetune.process();
             float buzzNow      = smoothBuzz.process();
             float pressureNow  = smoothPressure.process();
@@ -743,7 +746,7 @@ public:
                 }
 
                 // ---- Chiff transient ----
-                signal += voice.chiff.process();
+                signal += voice.chiff.process (chiffNow);
 
                 // ---- Crosstalk: adjacent voice leakage ----
                 if (crosstalkNow > 0.001f)

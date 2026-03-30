@@ -746,12 +746,22 @@ public:
         for (int sample = 0; sample < numSamples; ++sample)
         {
             // Advance smoothers one sample to avoid zipper noise.
-            // Stiffness/damping/nonlinearity smoothers are advanced here so that
-            // they track target values and are ready for per-sample use if the
-            // physics hot-path is ever moved inside the sample loop.
-            smoothedStiffness.process();
-            smoothedDamping.process();
-            smoothedNonlinearity.process();
+            // Stiffness/damping/nonlinearity outputs are captured and used in the
+            // Verlet integration below so that knob changes are smoothed per-sample
+            // rather than jumping as block-constants (eliminates zipper noise).
+            const float smoothedStiffnessValue     = smoothedStiffness.process();
+            const float smoothedDampingValue       = smoothedDamping.process();
+            const float smoothedNonlinearityValue  = smoothedNonlinearity.process();
+
+            // Map smoothed normalised values to the same physical constants used
+            // at block-rate, so the per-sample physics track exactly what the
+            // block-rate path would have computed.
+            const float perSampleSpringConstant =
+                smoothedStiffnessValue * smoothedStiffnessValue * kMaxSpringConstant;
+            const float perSampleDampingCoefficient =
+                smoothedDampingValue * kMaxDampingCoefficient;
+            const float perSampleCubicSpringCoefficient =
+                smoothedNonlinearityValue * smoothedNonlinearityValue * kMaxCubicSpringCoefficient;
             const float curSmoothedScanWidth    = smoothedScanWidth.process();
             const float curSmoothedSustainForce = smoothedSustainForce.process();
 
@@ -862,9 +872,11 @@ public:
                     }
 
                     //-- Verlet integration step -------------------------------
+                    // Use per-sample smoothed values so stiffness/damping/nonlinearity
+                    // knob changes interpolate without zipper noise.
                     updateChain (voice.chain, voice.chainPrevious, kChainSize,
-                                 springConstant, dampingCoefficient,
-                                 cubicSpringCoefficient, paramBoundaryMode);
+                                 perSampleSpringConstant, perSampleDampingCoefficient,
+                                 perSampleCubicSpringCoefficient, paramBoundaryMode);
 
                     //-- Soft-clip chain displacement for stability -------------
                     // Without clipping, nonlinear springs can cause displacement

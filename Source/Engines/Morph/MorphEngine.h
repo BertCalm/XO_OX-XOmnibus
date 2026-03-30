@@ -601,7 +601,11 @@ public:
         // Reset coupling accumulators (consumed this block, accumulated fresh
         // by applyCouplingInput before next renderBlock call)
         //----------------------------------------------------------------------
-        filterCutoffModulation = 0.0f;
+        // NOTE: filterCutoffModulation is consumed per-sample at sampleIndex==0
+        // inside the voice loop (effectiveCutoff + filterCutoffModulation * kCouplingCutoffRange).
+        // It must NOT be zeroed here — it is zeroed below, after that consumption.
+        // morphModulation is consumed in the morph setMorph() call below and is
+        // safe to zero now because it has no deferred per-sample use.
         morphModulation = 0.0f;
 
         //----------------------------------------------------------------------
@@ -703,9 +707,9 @@ public:
                 float rawSignal = oscillatorMix + subOscOutput;
 
                 //-- Moog ladder filter ----------------------------------------
-                // Filter coefficients are block-constant (coupling modulation set
-                // by applyCouplingInput before renderBlock), so update once on the
-                // first sample to avoid redundant trig recomputation per sample.
+                // Filter coefficients are computed once per block on sampleIndex==0.
+                // filterCutoffModulation is accumulated by applyCouplingInput before
+                // renderBlock, consumed here on sample 0, then zeroed immediately after.
                 if (sampleIndex == 0)
                 {
                     // Coupling modulation scales +-2000 Hz (one octave of sweep
@@ -713,6 +717,7 @@ public:
                     // dub pump effect)
                     constexpr float kCouplingCutoffRange = 2000.0f; // Hz range for coupling filter sweep
                     float modulatedCutoff = effectiveCutoff + filterCutoffModulation * kCouplingCutoffRange;
+                    filterCutoffModulation = 0.0f; // consumed — reset so next block starts clean
                     // D006: aftertouch adds up to +7000 Hz brightness (sensitivity 0.35)
                     // Classic application: press harder → Oscar's pad brightens, opening the warm
                     // Moog ladder filter for more harmonic content.
