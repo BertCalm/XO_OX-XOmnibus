@@ -2152,7 +2152,10 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
                     MegaCouplingMatrix::CouplingRoute r;
                     r.sourceSlot  = re->getIntAttribute("src", 0);
                     r.destSlot    = re->getIntAttribute("dst", 1);
-                    r.type        = static_cast<CouplingType>(re->getIntAttribute("type", 0));
+                    int typeInt = re->getIntAttribute("type", 0);
+                    if (typeInt < 0 || typeInt > static_cast<int>(CouplingType::TriangularCoupling))
+                        typeInt = 0;
+                    r.type = static_cast<CouplingType>(typeInt);
                     r.amount      = static_cast<float>(re->getDoubleAttribute("amount", 0.5));
                     r.isNormalled = re->getBoolAttribute("normalled", false);
                     r.active      = re->getBoolAttribute("active", true);
