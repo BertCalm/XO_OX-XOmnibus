@@ -141,8 +141,15 @@ public:
             bool v = reducedMotionToggle.getToggleState();
             settingsFile->setValue("reducedMotion", v);
             settingsFile->saveIfNeeded();
+            // #230: Wire to runtime atomic so prefersReducedMotion() returns the
+            // live value immediately — components no longer need to restart to pick it up.
+            A11y::setReducedMotion(v);
         };
         content.addAndMakeVisible(reducedMotionToggle);
+
+        // Apply the persisted Reduce Motion preference at construction time so the
+        // runtime flag is live from the first frame, not just after the first toggle.
+        A11y::setReducedMotion(settingsFile->getBoolValue("reducedMotion", false));
 
         // High-Contrast placeholder label (future)
         highContrastNote.setText("High Contrast — coming soon",

@@ -9,6 +9,7 @@
 // Requires juce_gui_basics + BinaryData (embedded fonts) + EngineVocabulary.
 
 #include <juce_gui_basics/juce_gui_basics.h>
+#include <atomic>
 #include "BinaryData.h"              // FontData:: namespace (embedded fonts via juce_add_binary_data)
 #include "../Core/PresetManager.h"   // frozenPrefixForEngine()
 
@@ -331,8 +332,28 @@ namespace A11y {
         return comp.getWidth() >= minSize && comp.getHeight() >= minSize;
     }
 
+    // In-app Reduce Motion override — set by SettingsPanel toggle at runtime.
+    // When true, prefersReducedMotion() returns true regardless of the OS setting.
+    // Stored as a static atomic so it is safe to read from any thread (paint callbacks,
+    // timer callbacks, etc.) without locking. Default false — OS preference governs.
+    inline std::atomic<bool>& inAppReducedMotion()
+    {
+        static std::atomic<bool> flag { false };
+        return flag;
+    }
+
+    // setReducedMotion() — call from the SettingsPanel toggle callback on the message thread.
+    inline void setReducedMotion(bool v)
+    {
+        inAppReducedMotion().store(v, std::memory_order_relaxed);
+    }
+
     inline bool prefersReducedMotion()
     {
+        // In-app override takes priority — toggled at runtime by SettingsPanel.
+        if (inAppReducedMotion().load(std::memory_order_relaxed))
+            return true;
+
 #if JUCE_MAC
         // Read the "Reduce Motion" accessibility preference via CoreFoundation.
         // CFPreferencesGetAppBooleanValue is a pure-C API callable from C++ without ObjC.
