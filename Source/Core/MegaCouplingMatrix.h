@@ -616,7 +616,11 @@ private:
 
         // Compute linking number from amount and derive scaled modulation depth.
         // linkingNum range: [1, 5] — maps amount 0.0→1.0 to integer 1→5.
-        const int   linkingNum    = juce::roundToInt(route.amount * 4.0f) + 1;
+        // Uses static_cast + 0.5f rounding instead of juce::roundToInt to avoid
+        // JUCE dependency on the audio thread. NaN guard prevents UB on corrupt input.
+        const float rawLinking    = route.amount * 4.0f;
+        const int   linkingNum    = (std::isnan(rawLinking) ? 0
+                                     : static_cast<int>(rawLinking + 0.5f)) + 1;
         const float scaledAmount  = static_cast<float>(linkingNum) / 5.0f;
 
         // Pass A: source → dest (standard direction).
