@@ -268,7 +268,7 @@ public:
             }
 
             dest->applyCouplingInput(route.type, route.amount,
-                                    couplingBuffer.data(), numSamples);
+                                    couplingBuffer.data(), limit);
         }
     }
 
