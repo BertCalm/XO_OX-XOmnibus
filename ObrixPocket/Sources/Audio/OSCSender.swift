@@ -20,7 +20,7 @@ final class OSCSender: ObservableObject {
 
     /// Connect to the target host
     func connect() {
-        guard !targetHost.isEmpty else { return }
+        guard !targetHost.isEmpty, targetHost.allSatisfy({ $0.isASCII }) else { return }
 
         let host = NWEndpoint.Host(targetHost)
         guard let port = NWEndpoint.Port(rawValue: targetPort) else { return }
