@@ -291,13 +291,15 @@ struct MusicCatchFlow: View {
     private var ceremonyPhase: some View {
         Group {
             if let specimen = generatedSpecimen {
+                let collectedSubtypes = Set(reefStore.specimens.compactMap { $0?.subtype })
+                let isFirst = !collectedSubtypes.contains(specimen.subtype)
                 ChestCeremony(
                     creatureName: specimen.name,
                     category: specimen.category,
                     rarity: specimen.rarity,
                     cosmeticTier: specimen.cosmeticTier,
                     subtypeID: specimen.subtype,
-                    isFirstEncounter: true, // TODO: check collection for prior encounters
+                    isFirstEncounter: isFirst,
                     onComplete: {
                         withAnimation(.easeInOut(duration: 0.3)) {
                             phase = .card
