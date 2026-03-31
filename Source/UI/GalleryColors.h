@@ -164,6 +164,7 @@ namespace GalleryColors {
         else if (id == "Oddfellow") result = juce::Colour(0xFFB87333);
         else if (id == "Offering")  result = juce::Colour(0xFFE5B80B);
         else if (id == "Ogre")      result = juce::Colour(0xFF0D0D0D);
+        else if (id == "Okeanos")   result = juce::Colour(0xFFC49B3F);
         else if (id == "Ohm")       result = juce::Colour(0xFF87AE73);
         else if (id == "Oaken")     result = juce::Colour(0xFF9C6B30);
         else if (id == "Oasis")     result = juce::Colour(0xFF00827F);
@@ -198,6 +199,7 @@ namespace GalleryColors {
         else if (id == "Otis")      result = juce::Colour(0xFFD4A017);
         else if (id == "Ottoni")    result = juce::Colour(0xFF5B8A72);
         else if (id == "Oto")       result = juce::Colour(0xFFF5F0E8);
+        else if (id == "Outflow")   result = juce::Colour(0xFF1A1A40);
         else if (id == "Ouie")      result = juce::Colour(0xFF708090);
         else if (id == "Ouroboros") result = juce::Colour(0xFFFF2D2D);
         else if (id == "Outwit")    result = juce::Colour(0xFFCC6600);
