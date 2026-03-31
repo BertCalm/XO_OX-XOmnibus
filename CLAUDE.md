@@ -492,6 +492,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [preset-audit-checklist](Skills/preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit — path to 9.0+ libraries (supersedes ad-hoc preset QA) |
 | [new-xo-engine](Skills/new-xo-engine/SKILL.md) | `/new-xo-engine` | End-to-end new engine creation: concept, scaffold, integration, verification |
 | [skill-friction-detective](Skills/skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction/failures across all skills, then repair and link |
+| [issue-triage-fix](Skills/issue-triage-fix/SKILL.md) | `/issue-triage-fix` | End-to-end codebase audit: scan, create GitHub issues, assign model/skill, fix by complexity tier |
 
 Full index: `Skills/README.md`
 
