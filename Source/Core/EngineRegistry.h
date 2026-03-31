@@ -85,7 +85,7 @@ public:
     //   Cellar  (Bass):    OGRE, OLATE, OAKEN, OMEGA
     //   Garden  (Strings): ORCHARD, OVERGROW, OSIER, OXALIS
     //   Broth   (Pads):    OVERWASH, OVERWORN, OVERFLOW, OVERCAST
-    //   Fusion  (EP):      OASIS, ODDFELLOW, ONKOLO, OPCODE
+    //   Fusion  (EP):      OKEANOS, ODDFELLOW, ONKOLO, OPCODE
     //
     // slotEngineIds: the engine IDs for slots 0–3 (primary slots only).
     // Empty string = empty slot.
@@ -109,7 +109,7 @@ public:
             { "Cellar",  { "OGRE", "OLATE", "OAKEN", "OMEGA"                      } },
             { "Garden",  { "ORCHARD", "OVERGROW", "OSIER", "OXALIS"               } },
             { "Broth",   { "OVERWASH", "OVERWORN", "OVERFLOW", "OVERCAST"         } },
-            { "Fusion",  { "OASIS", "ODDFELLOW", "ONKOLO", "OPCODE"               } },
+            { "Fusion",  { "OKEANOS", "ODDFELLOW", "ONKOLO", "OPCODE"             } },
         };
 
         for (const auto& col : collections)
