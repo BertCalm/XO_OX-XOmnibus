@@ -191,7 +191,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Overworn | `worn_` | `worn_feltAge` |
 | Overflow | `flow_` | `flow_currentSpeed` |
 | Overcast | `cast_` | `cast_cloudDensity` |
-| Oasis | `oasis_` | `oasis_springDepth` |
+| Oasis | `oas_` | `oas_springDepth` |
 | Oddfellow | `oddf_` | `oddf_spectralShift` |
 | Onkolo | `onko_` | `onko_resonanceCore` |
 | Opcode | `opco_` | `opco_codeDepth` |
