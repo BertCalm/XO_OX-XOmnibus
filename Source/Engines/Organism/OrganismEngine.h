@@ -55,9 +55,6 @@ namespace xolokun {
 //
 //==============================================================================
 
-// Curated interesting Wolfram rules for the macroRule sweep
-static constexpr int kCuratedRules[8] = { 30, 90, 110, 184, 150, 18, 54, 22 };
-
 // ---------------------------------------------------------------------------
 // PolyBLEP anti-aliasing correction for oscillator discontinuities.
 // t = current phase (0–1), dt = phase increment (freq/sampleRate).
@@ -868,6 +865,9 @@ public:
 
     //--------------------------------------------------------------------------
 private:
+    // Curated interesting Wolfram rules for the macroRule sweep (was at namespace scope — #333)
+    static constexpr int kCuratedRules[8] = { 30, 90, 110, 184, 150, 18, 54, 22 };
+
     // Envelope stages
     enum class EnvStage { Idle, Attack, Decay, Sustain, Release };
 
