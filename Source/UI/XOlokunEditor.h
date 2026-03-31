@@ -1214,6 +1214,9 @@ private:
             // MidiMessageCollector, drained into processBlock each audio callback.
             playSurfaceWindow->getPlaySurface()
                 .setMidiCollector (&processor.getMidiCollector(), 1);
+            // Wire processor callbacks: XOuija CC output forwarding + state
+            // persist/restore across DAW sessions (closes #147).
+            playSurfaceWindow->getPlaySurface().setProcessor (&processor);
             // Sync the PS toggle button when the window is closed by the user.
             playSurfaceWindow->onClosed = [this]
             {
