@@ -2,13 +2,49 @@ import SwiftUI
 
 @main
 struct ObrixPocketApp: App {
-    @StateObject private var audioEngine = AudioEngineManager()
+    @StateObject private var audioEngine: AudioEngineManager
     @StateObject private var reefStore = ReefStore()
     @StateObject private var firstLaunchManager = FirstLaunchManager()
+    @StateObject private var geneticManager: GeneticManager
+    @StateObject private var soundMemoryManager: SoundMemoryManager
+    @StateObject private var harmonicProfileStore: HarmonicProfileStore
+    @StateObject private var breedingManager: BreedingManager
+    @StateObject private var specimenAgingManager: SpecimenAgingManager
+    @StateObject private var gameCoordinator: GameCoordinator
     @Environment(\.scenePhase) var scenePhase
 
     @State private var importPreview: XOReefFile?
     @State private var showImportPreview = false
+
+    init() {
+        // Build the genetics/aging/memory graph in dependency order so all weak
+        // back-references are wired before the first audio callback fires.
+        let gm  = GeneticManager()
+        let smm = SoundMemoryManager()
+        let hps = HarmonicProfileStore()
+        let bm  = BreedingManager()
+
+        // Wire BreedingManager's optional weak references.
+        bm.geneticManager       = gm
+        bm.soundMemoryManager   = smm
+        bm.harmonicProfileStore = hps
+
+        let gc  = GameCoordinator(
+            geneticManager:        gm,
+            soundMemoryManager:    smm,
+            harmonicProfileStore:  hps,
+            breedingManager:       bm
+        )
+        let sam = SpecimenAgingManager()
+
+        _audioEngine          = StateObject(wrappedValue: AudioEngineManager())
+        _geneticManager       = StateObject(wrappedValue: gm)
+        _soundMemoryManager   = StateObject(wrappedValue: smm)
+        _harmonicProfileStore = StateObject(wrappedValue: hps)
+        _breedingManager      = StateObject(wrappedValue: bm)
+        _specimenAgingManager = StateObject(wrappedValue: sam)
+        _gameCoordinator      = StateObject(wrappedValue: gc)
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -33,6 +69,11 @@ struct ObrixPocketApp: App {
                 .onAppear {
                     HapticEngine.prepare()
                     audioEngine.reefStoreRef = reefStore
+                    // Wire the genetics/aging bridge so specimen traits reach the engine.
+                    audioEngine.gameCoordinator      = gameCoordinator
+                    audioEngine.specimenAgingManager = specimenAgingManager
+                    // Let GameCoordinator resolve its own reef-store reference.
+                    gameCoordinator.reefStore        = reefStore
                     audioEngine.start()
                     firstLaunchManager.resetDailyPlayIfNeeded()
 
