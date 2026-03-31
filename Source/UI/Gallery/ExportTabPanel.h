@@ -51,6 +51,13 @@ public:
             addAndMakeVisible(btn);
         }
 
+        // WAV and MIDI exporters are not yet implemented — disable with tooltip
+        // so users understand they're coming rather than thinking the button is broken.
+        formatPills[1]->setEnabled(false);
+        formatPills[1]->setTooltip("WAV export coming in V1.1");
+        formatPills[2]->setEnabled(false);
+        formatPills[2]->setTooltip("MIDI export coming in V1.1");
+
         // ── Export CTA button ────────────────────────────────────────────────
         exportBtn.setButtonText("EXPORT");
         exportBtn.setWantsKeyboardFocus(true);
