@@ -1455,11 +1455,21 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     //      note-off events, either pass through (sustain not held) or enqueue
     //      them in sustainPendingNoteOffs_[i][ch] (sustain held).
     {
-        // Step 1: update sustainHeld_ from raw input and flush pending note-offs
-        //         on pedal-up.
+        // Step 1: update sustainHeld_ and expressionValue_ from raw input;
+        //         flush pending note-offs on CC64 pedal-up.
         for (const auto metadata : midi)
         {
             const auto& msg = metadata.getMessage();
+
+            // CC11 Expression: track per-channel value for coupling/macro use.
+            // CC11 is NOT filtered — it passes through to all engine slots so
+            // acoustic engines (OAKEN, OBELISK, ORCHARD, etc.) can respond to it.
+            if (msg.isControllerOfType(11))
+            {
+                const int ch = msg.getChannel() - 1;  // 0-based
+                expressionValue_[ch] = static_cast<float>(msg.getControllerValue()) / 127.0f;
+            }
+
             if (msg.isControllerOfType(64))
             {
                 const int ch = msg.getChannel() - 1;  // 0-based

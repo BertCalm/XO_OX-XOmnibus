@@ -456,6 +456,12 @@ private:
     // Written by message thread (setSlotMuted), read by audio thread per block.
     std::array<std::atomic<bool>, MaxSlots> slotMuted {};  // default false
 
+    // ── CC11 Expression pedal — per-channel tracking (audio thread only) ────────
+    // expressionValue_[ch]: 0.0–1.0, updated from CC11 events in processBlock().
+    // CC11 passes through to all engine slots for per-engine handling.
+    // Processor-level value is available for future coupling/macro use.
+    std::array<float, 16> expressionValue_ {};  // default 0.0 (no expression)
+
     // ── CC64 sustain pedal — fleet-wide hold (audio thread only) ─────────────
     // sustainHeld_[ch]: true while CC64 >= 64 on MIDI channel ch (0-based).
     // sustainPendingNoteOffs_[slot][ch]: bitmask of notes (0–127) whose note-off
