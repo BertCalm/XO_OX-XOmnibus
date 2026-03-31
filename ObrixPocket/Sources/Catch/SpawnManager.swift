@@ -114,16 +114,16 @@ final class SpawnManager: ObservableObject {
     // Deep specimens are excluded — they unlock through special conditions.
 
     static let sourceSubtypes: [String] = [
-        "PolyBLEP-Saw", "PolyBLEP-Square", "Noise-White", "FM-Basic"
+        "polyblep-saw", "polyblep-square", "noise-white", "fm-basic"
     ]
     static let processorSubtypes: [String] = [
-        "SVF-LP", "SVF-BP", "Waveshaper-Hard", "Feedback-Path"
+        "svf-lp", "svf-bp", "shaper-hard", "feedback"
     ]
     static let modulatorSubtypes: [String] = [
-        "ADSR-Fast", "LFO-Sine", "Velocity-Map", "LFO-Random"
+        "adsr-fast", "lfo-sine", "vel-map", "lfo-random"
     ]
     static let effectSubtypes: [String] = [
-        "Delay-Stereo", "Chorus-Lush", "Reverb-Hall", "Distortion-Warm"
+        "delay-stereo", "chorus-lush", "reverb-hall", "distortion-warm"
     ]
 
     // MARK: - Journey Override
