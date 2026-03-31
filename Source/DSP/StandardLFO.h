@@ -45,6 +45,7 @@ struct StandardLFO
     /// Rates below 0.005 Hz are clamped (D005 floor = 200-second cycle).
     void setRate (float hz, float sampleRate) noexcept
     {
+        hz = std::max (hz, 0.005f);  // D005 floor: prevents divide-by-zero and enforces 200s min cycle
         phaseInc = hz / sampleRate;
     }
 
