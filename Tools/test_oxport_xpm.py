@@ -308,16 +308,9 @@ def test_drum_xpm_rootnote_is_zero():
 def test_drum_xpm_empty_layer_velstart_is_zero():
     """Empty/inactive drum layers must have VelStart=0 (prevents ghost triggering).
 
-    BUG (tracked): When wav_map is empty, _layers_for_voice() still uses the
-    velocity-curve VelStart values (e.g. 1, 21, 51, 91) and passes them to
-    _layer_block(). _layer_block() marks Active=False when sample_name=='', but
-    does NOT override VelStart to 0. This violates Golden Rule #3:
-    "Empty layer VelStart=0" from CLAUDE.md / XPN spec.
-
-    The fix: in _layer_block(), when Active=False, force VelStart=0 and VelEnd=0.
-    Or in _layers_for_voice(), return vel_start=0 when sample_name==''.
-
-    This test currently FAILS — it documents the required correct behavior.
+    When wav_map is empty, _layers_for_voice() returns empty placeholder layers
+    with Active=False. _layer_block() clamps VelStart=0 and VelEnd=0 for inactive
+    layers. This enforces Golden Rule #3: "Empty layer VelStart=0" from CLAUDE.md.
     """
     import xml.etree.ElementTree as ET
     from xpn_drum_export import generate_xpm
