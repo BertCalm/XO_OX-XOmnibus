@@ -433,6 +433,13 @@ public:
             {
                 statusBar.setLocked(locked);
             };
+            // #226: Wire CPU Meters toggle — live visibility control on StatusBar.
+            sp->onCpuMetersVisibilityChanged = [this](bool visible)
+            {
+                statusBar.setCpuVisible(visible);
+            };
+            // Apply persisted CPU meters visibility at startup.
+            statusBar.setCpuVisible(sp->isCpuMetersVisible());
         }
 
         // Auto-select slot 0 on startup — skip the overview landing page.

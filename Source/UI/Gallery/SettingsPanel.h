@@ -91,21 +91,20 @@ public:
             juce::dontSendNotification);
         cpuMetersToggle.onClick = [this]
         {
-            settingsFile->setValue("cpuMetersVisible", cpuMetersToggle.getToggleState());
+            bool visible = cpuMetersToggle.getToggleState();
+            settingsFile->setValue("cpuMetersVisible", visible);
             settingsFile->saveIfNeeded();
+            if (onCpuMetersVisibilityChanged)
+                onCpuMetersVisibilityChanged(visible);
         };
         content.addAndMakeVisible(cpuMetersToggle);
 
-        // Auto-PlaySurface (Drums) toggle — default OFF
+        // Auto-PlaySurface (Drums) toggle — DISABLED until V1.1 implementation
+        // #226: toggle saved but nothing read it; disabled rather than ship a no-op.
         styleToggle(autoPlaySurfaceDrumsToggle, "Auto-PlaySurface (Drums)");
-        autoPlaySurfaceDrumsToggle.setToggleState(
-            settingsFile->getBoolValue("autoPlaySurfaceDrums", false),
-            juce::dontSendNotification);
-        autoPlaySurfaceDrumsToggle.onClick = [this]
-        {
-            settingsFile->setValue("autoPlaySurfaceDrums", autoPlaySurfaceDrumsToggle.getToggleState());
-            settingsFile->saveIfNeeded();
-        };
+        autoPlaySurfaceDrumsToggle.setToggleState(false, juce::dontSendNotification);
+        autoPlaySurfaceDrumsToggle.setEnabled(false);
+        autoPlaySurfaceDrumsToggle.setTooltip("Coming in V1.1");
         content.addAndMakeVisible(autoPlaySurfaceDrumsToggle);
 
         // Coupling Arc Labels toggle — default ON
@@ -120,16 +119,12 @@ public:
         };
         content.addAndMakeVisible(couplingArcLabelsToggle);
 
-        // Preset Preview Audio toggle — default ON
+        // Preset Preview Audio toggle — DISABLED until V1.1 implementation
+        // #226: toggle saved but nothing read it; disabled rather than ship a no-op.
         styleToggle(presetPreviewAudioToggle, "Preset Preview Audio");
-        presetPreviewAudioToggle.setToggleState(
-            settingsFile->getBoolValue("presetPreviewAudio", true),
-            juce::dontSendNotification);
-        presetPreviewAudioToggle.onClick = [this]
-        {
-            settingsFile->setValue("presetPreviewAudio", presetPreviewAudioToggle.getToggleState());
-            settingsFile->saveIfNeeded();
-        };
+        presetPreviewAudioToggle.setToggleState(false, juce::dontSendNotification);
+        presetPreviewAudioToggle.setEnabled(false);
+        presetPreviewAudioToggle.setTooltip("Coming in V1.1");
         content.addAndMakeVisible(presetPreviewAudioToggle);
 
         // ── 2. ACCESSIBILITY ─────────────────────────────────────────────────
@@ -356,6 +351,16 @@ public:
 
     /// Fired on the message thread whenever the Performance Lock toggle changes.
     std::function<void(bool)> onPerformanceLockChanged;
+
+    /// Fired on the message thread whenever the CPU Meters toggle changes.
+    /// Passes the new visibility state (true = visible).
+    std::function<void(bool)> onCpuMetersVisibilityChanged;
+
+    /// Returns the persisted CPU meters visibility (true = visible, default true).
+    bool isCpuMetersVisible() const noexcept
+    {
+        return settingsFile ? settingsFile->getBoolValue("cpuMetersVisible", true) : true;
+    }
 
     //==========================================================================
     void resized() override

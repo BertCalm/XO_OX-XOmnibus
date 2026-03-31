@@ -157,6 +157,13 @@ public:
             cpuLabel.setText(txt, juce::dontSendNotification);
     }
 
+    // setCpuVisible() — show or hide the CPU label + update.
+    // Called from XOlokunEditor when the "CPU Meters" settings toggle changes.
+    void setCpuVisible(bool visible)
+    {
+        cpuLabel.setVisible(visible);
+    }
+
     void setBpm(double bpm)
     {
         juce::String txt = juce::String(bpm, 1) + " BPM";
