@@ -194,7 +194,7 @@ jobs:
               ROW_STATUS="❌ fail"
             fi
 
-            SUMMARY+="| \`${{BASENAME}}\` | ${{INT_STATUS}} | ${{LINT_STATUS}} | ${{SCORE_VAL}} | ${{ROW_STATUS}} |\\n"
+            SUMMARY+="| \\`${{BASENAME}}\\` | ${{INT_STATUS}} | ${{LINT_STATUS}} | ${{SCORE_VAL}} | ${{ROW_STATUS}} |\\n"
           done
 
           if [ "$OVERALL_PASS" = true ]; then
