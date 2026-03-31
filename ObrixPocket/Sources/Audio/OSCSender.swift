@@ -23,7 +23,7 @@ final class OSCSender: ObservableObject {
         guard !targetHost.isEmpty else { return }
 
         let host = NWEndpoint.Host(targetHost)
-        let port = NWEndpoint.Port(rawValue: targetPort)!
+        guard let port = NWEndpoint.Port(rawValue: targetPort) else { return }
 
         connection = NWConnection(host: host, port: port, using: .udp)
         connection?.stateUpdateHandler = { [weak self] state in

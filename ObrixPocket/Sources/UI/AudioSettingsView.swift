@@ -197,18 +197,20 @@ struct AudioSettingsView: View {
                 aboutRow("Developer", value: AppConstants.developer)
                 aboutRow("Tagline",   value: AppConstants.tagline)
 
-                Link(destination: URL(string: AppConstants.website)!) {
-                    HStack {
-                        Text("Website")
-                            .font(DesignTokens.bodyMedium(12))
-                            .foregroundColor(.white.opacity(0.5))
-                        Spacer()
-                        Text(AppConstants.website)
-                            .font(DesignTokens.mono(10))
-                            .foregroundColor(DesignTokens.reefJade.opacity(0.7))
-                        Image(systemName: "arrow.up.right")
-                            .font(.system(size: 9))
-                            .foregroundColor(DesignTokens.reefJade.opacity(0.4))
+                if let url = URL(string: AppConstants.website) {
+                    Link(destination: url) {
+                        HStack {
+                            Text("Website")
+                                .font(DesignTokens.bodyMedium(12))
+                                .foregroundColor(.white.opacity(0.5))
+                            Spacer()
+                            Text(AppConstants.website)
+                                .font(DesignTokens.mono(10))
+                                .foregroundColor(DesignTokens.reefJade.opacity(0.7))
+                            Image(systemName: "arrow.up.right")
+                                .font(.system(size: 9))
+                                .foregroundColor(DesignTokens.reefJade.opacity(0.4))
+                        }
                     }
                 }
             }
