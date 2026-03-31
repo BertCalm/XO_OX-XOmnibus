@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine infinite aether — DUB reverb depth, DRIFT shimmer height, MORPH spectral ghost.",
+  "description": "Three-engine infinite aether \u2014 DUB reverb depth, DRIFT shimmer height, MORPH spectral ghost.",
   "tags": [
     "dub",
     "drift",
@@ -99,7 +99,7 @@
       "drift_formantMix": 0.0,
       "drift_shimmerAmount": 0.85,
       "drift_shimmerTone": 0.65,
-      "drift_attack": 5.0,
+      "drift_attack": 0.005,
       "drift_decay": 10.0,
       "drift_sustain": 0.6,
       "drift_release": 4.0,

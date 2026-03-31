@@ -19,7 +19,7 @@
   "engines": [
     "Odyssey"
   ],
-  "description": "Slow temperature shift of a pad — warm to cold over minutes.",
+  "description": "Slow temperature shift of a pad \u2014 warm to cold over minutes.",
   "tags": [
     "drift",
     "slow",
@@ -51,7 +51,7 @@
       "drift_filterSlope": 0,
       "drift_shimmerAmount": 0.45,
       "drift_shimmerTone": 0.6,
-      "drift_attack": 6.0,
+      "drift_attack": 0.006,
       "drift_decay": 10.0,
       "drift_sustain": 0.6,
       "drift_release": 8.0,

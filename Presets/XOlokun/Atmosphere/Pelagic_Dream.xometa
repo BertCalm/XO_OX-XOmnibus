@@ -32,8 +32,8 @@
   "mood": "Atmosphere",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 200.0,
-      "drift_decay": 800.0,
+      "drift_attack": 0.2,
+      "drift_decay": 0.8,
       "drift_driftDepth": 0.3,
       "drift_driftRate": 0.12,
       "drift_filterCutoff": 3500.0,
@@ -50,7 +50,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
       "drift_oscB_tune": -12.0,
-      "drift_release": 1500.0,
+      "drift_release": 1.5,
       "drift_shimmerAmount": 0.3,
       "drift_shimmerTone": 0.6,
       "drift_subLevel": 0.3,

@@ -32,8 +32,8 @@
   "name": "Fracture Solo",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 350.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.35,
       "drift_filterCutoff": 5000.0,
       "drift_filterReso": 0.2,
       "drift_hazeAmount": 0.3,
@@ -45,7 +45,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_pw": 0.35,
       "drift_oscB_shape": 1.0,
-      "drift_release": 250.0,
+      "drift_release": 0.25,
       "drift_sustain": 0.7
     }
   },

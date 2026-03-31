@@ -32,7 +32,7 @@
   "name": "Ghost Choir",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 500.0,
+      "drift_attack": 0.5,
       "drift_driftDepth": 0.3,
       "drift_filterCutoff": 8000.0,
       "drift_filterReso": 0.05,
@@ -46,7 +46,7 @@
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
-      "drift_release": 2500.0,
+      "drift_release": 2.5,
       "drift_sustain": 0.5
     }
   },

@@ -32,8 +32,8 @@
   "name": "Reverberant Void",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.5,
       "drift_filterCutoff": 5000.0,
       "drift_filterReso": 0.1,
       "drift_level": -4.0,
@@ -43,7 +43,7 @@
       "drift_oscB_level": 0.3,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 2.0,
-      "drift_release": 600.0,
+      "drift_release": 0.6,
       "drift_sustain": 0.3
     }
   },

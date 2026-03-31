@@ -32,8 +32,8 @@
   "name": "Retro Sync",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 400.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.4,
       "drift_filterCutoff": 4500.0,
       "drift_filterEnvAmt": 0.45,
       "drift_filterReso": 0.2,
@@ -47,7 +47,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
       "drift_oscB_tune": 3.0,
-      "drift_release": 250.0,
+      "drift_release": 0.25,
       "drift_sustain": 0.65
     }
   },

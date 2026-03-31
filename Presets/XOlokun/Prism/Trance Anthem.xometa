@@ -32,8 +32,8 @@
   "name": "Trance Anthem",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 10.0,
-      "drift_decay": 400.0,
+      "drift_attack": 0.01,
+      "drift_decay": 0.4,
       "drift_filterCutoff": 6000.0,
       "drift_filterEnvAmt": 0.4,
       "drift_filterReso": 0.15,
@@ -46,7 +46,7 @@
       "drift_oscB_level": 0.7,
       "drift_oscB_mode": 2.0,
       "drift_oscB_tune": 12.0,
-      "drift_release": 400.0,
+      "drift_release": 0.4,
       "drift_sustain": 0.8
     }
   },

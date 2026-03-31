@@ -32,8 +32,8 @@
   "name": "Ice Crystal Lead",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 10.0,
-      "drift_decay": 800.0,
+      "drift_attack": 0.01,
+      "drift_decay": 0.8,
       "drift_filterCutoff": 12000.0,
       "drift_filterReso": 0.05,
       "drift_level": -4.0,
@@ -43,7 +43,7 @@
       "drift_oscB_fmDepth": 0.15,
       "drift_oscB_level": 0.5,
       "drift_oscB_mode": 3.0,
-      "drift_release": 600.0,
+      "drift_release": 0.6,
       "drift_shimmerAmount": 0.4,
       "drift_shimmerTone": 0.9,
       "drift_sustain": 0.4

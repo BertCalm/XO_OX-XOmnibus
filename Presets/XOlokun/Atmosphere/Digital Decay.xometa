@@ -32,8 +32,8 @@
   "name": "Digital Decay",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 50.0,
-      "drift_decay": 800.0,
+      "drift_attack": 0.05,
+      "drift_decay": 0.8,
       "drift_filterCutoff": 4000.0,
       "drift_filterReso": 0.2,
       "drift_hazeAmount": 0.4,
@@ -45,7 +45,7 @@
       "drift_oscB_fmDepth": 0.3,
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 3.0,
-      "drift_release": 1000.0,
+      "drift_release": 1.0,
       "drift_sustain": 0.4
     }
   },

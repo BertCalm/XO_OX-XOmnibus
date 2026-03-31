@@ -32,7 +32,7 @@
   "name": "Jazz Organ",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
+      "drift_attack": 0.005,
       "drift_filterCutoff": 6000.0,
       "drift_filterReso": 0.08,
       "drift_hazeAmount": 0.1,
@@ -44,7 +44,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 3.0,
       "drift_oscB_tune": 7.0,
-      "drift_release": 120.0,
+      "drift_release": 0.12,
       "drift_subLevel": 0.35,
       "drift_sustain": 0.85
     }

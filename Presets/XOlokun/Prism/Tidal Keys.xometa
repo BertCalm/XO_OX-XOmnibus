@@ -32,8 +32,8 @@
   "name": "Tidal Keys",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.5,
       "drift_filterCutoff": 4500.0,
       "drift_filterEnvAmt": 0.3,
       "drift_filterReso": 0.12,
@@ -45,7 +45,7 @@
       "drift_oscB_level": 0.35,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 3.0,
-      "drift_release": 400.0,
+      "drift_release": 0.4,
       "drift_sustain": 0.5
     }
   },

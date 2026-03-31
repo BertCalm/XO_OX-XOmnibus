@@ -32,7 +32,7 @@
   "name": "Quantum Drift",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 400.0,
+      "drift_attack": 0.4,
       "drift_driftDepth": 0.5,
       "drift_driftRate": 0.08,
       "drift_filterCutoff": 2500.0,
@@ -45,7 +45,7 @@
       "drift_oscB_detune": 0.55,
       "drift_oscB_level": 0.55,
       "drift_oscB_mode": 2.0,
-      "drift_release": 2000.0,
+      "drift_release": 2.0,
       "drift_sustain": 0.6
     }
   },

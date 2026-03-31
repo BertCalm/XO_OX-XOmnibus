@@ -33,7 +33,7 @@
   "parameters": {
     "Odyssey": {
       "drift_attack": 2.0,
-      "drift_decay": 200.0,
+      "drift_decay": 0.2,
       "drift_filterCutoff": 2500.0,
       "drift_filterEnvAmt": 0.6,
       "drift_filterReso": 0.2,
@@ -47,7 +47,7 @@
       "drift_oscB_level": 0.7,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
-      "drift_release": 200.0,
+      "drift_release": 0.2,
       "drift_sustain": 0.3
     }
   },

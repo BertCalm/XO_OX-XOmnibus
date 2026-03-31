@@ -32,8 +32,8 @@
   "name": "Morph Lead",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 10.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.01,
+      "drift_decay": 0.5,
       "drift_filterCutoff": 6000.0,
       "drift_filterReso": 0.15,
       "drift_level": -3.0,
@@ -45,7 +45,7 @@
       "drift_oscB_fmDepth": 0.3,
       "drift_oscB_level": 0.6,
       "drift_oscB_mode": 3.0,
-      "drift_release": 350.0,
+      "drift_release": 0.35,
       "drift_sustain": 0.65
     }
   },

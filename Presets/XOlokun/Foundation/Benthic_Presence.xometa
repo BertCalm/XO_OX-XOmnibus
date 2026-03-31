@@ -32,8 +32,8 @@
   "name": "Benthic Presence",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 20.0,
-      "drift_decay": 600.0,
+      "drift_attack": 0.02,
+      "drift_decay": 0.6,
       "drift_driftDepth": 0.15,
       "drift_filterCutoff": 1200.0,
       "drift_filterReso": 0.1,
@@ -45,7 +45,7 @@
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 3.0,
-      "drift_release": 400.0,
+      "drift_release": 0.4,
       "drift_subLevel": 0.6,
       "drift_sustain": 0.5
     }

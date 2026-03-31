@@ -32,8 +32,8 @@
   "name": "Octave Stack",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 350.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.35,
       "drift_filterCutoff": 7000.0,
       "drift_filterReso": 0.15,
       "drift_filterSlope": 1.0,
@@ -46,7 +46,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
       "drift_oscB_tune": 12.0,
-      "drift_release": 250.0,
+      "drift_release": 0.25,
       "drift_subLevel": 0.25,
       "drift_sustain": 0.7
     }

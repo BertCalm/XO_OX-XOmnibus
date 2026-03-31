@@ -32,7 +32,7 @@
   "name": "Nova Bloom",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 500.0,
+      "drift_attack": 0.5,
       "drift_filterCutoff": 4000.0,
       "drift_filterEnvAmt": 0.2,
       "drift_filterReso": 0.2,
@@ -43,7 +43,7 @@
       "drift_oscB_level": 0.3,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 3.0,
-      "drift_release": 2500.0,
+      "drift_release": 2.5,
       "drift_shimmerAmount": 0.4,
       "drift_shimmerTone": 0.5,
       "drift_sustain": 0.65

@@ -32,7 +32,7 @@
   "name": "Drift Silence",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 800.0,
+      "drift_attack": 0.8,
       "drift_filterCutoff": 1800.0,
       "drift_filterEnvAmt": 0.3,
       "drift_filterReso": 0.35,
@@ -42,7 +42,7 @@
       "drift_oscA_level": 0.4,
       "drift_oscA_mode": 0.0,
       "drift_oscA_shape": 0.0,
-      "drift_release": 3000.0,
+      "drift_release": 3.0,
       "drift_shimmerAmount": 0.15,
       "drift_sustain": 0.5
     }

@@ -32,8 +32,8 @@
   "name": "Detuned Fifth",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 8.0,
-      "drift_decay": 400.0,
+      "drift_attack": 0.008,
+      "drift_decay": 0.4,
       "drift_driftDepth": 0.25,
       "drift_filterCutoff": 5500.0,
       "drift_filterReso": 0.2,
@@ -47,7 +47,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
       "drift_oscB_tune": 7.0,
-      "drift_release": 300.0,
+      "drift_release": 0.3,
       "drift_sustain": 0.6
     }
   },

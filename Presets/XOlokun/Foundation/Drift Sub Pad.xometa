@@ -32,8 +32,8 @@
   "name": "Drift Sub Pad",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.5,
       "drift_filterCutoff": 600.0,
       "drift_filterReso": 0.2,
       "drift_filterSlope": 1.0,
@@ -42,7 +42,7 @@
       "drift_oscA_level": 0.9,
       "drift_oscA_mode": 0.0,
       "drift_oscA_shape": 3.0,
-      "drift_release": 250.0,
+      "drift_release": 0.25,
       "drift_subLevel": 0.7,
       "drift_sustain": 0.4
     }

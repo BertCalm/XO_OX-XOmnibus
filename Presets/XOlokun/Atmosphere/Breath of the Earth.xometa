@@ -32,7 +32,7 @@
   "name": "Breath of the Earth",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 1000.0,
+      "drift_attack": 1.0,
       "drift_driftDepth": 0.35,
       "drift_filterCutoff": 2000.0,
       "drift_filterReso": 0.2,
@@ -41,7 +41,7 @@
       "drift_oscA_level": 0.4,
       "drift_oscA_mode": 0.0,
       "drift_oscA_shape": 0.0,
-      "drift_release": 3000.0,
+      "drift_release": 3.0,
       "drift_shimmerAmount": 0.2,
       "drift_sustain": 0.5
     }

@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine weather system — FAT pressure front, BOB warmth, DRIFT shimmer high altitude.",
+  "description": "Three-engine weather system \u2014 FAT pressure front, BOB warmth, DRIFT shimmer high altitude.",
   "tags": [
     "fat",
     "bob",
@@ -137,7 +137,7 @@
       "drift_formantMix": 0.0,
       "drift_shimmerAmount": 0.7,
       "drift_shimmerTone": 0.65,
-      "drift_attack": 5.0,
+      "drift_attack": 0.005,
       "drift_decay": 10.0,
       "drift_sustain": 0.6,
       "drift_release": 4.0,

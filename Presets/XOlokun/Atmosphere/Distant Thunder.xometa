@@ -32,8 +32,8 @@
   "name": "Distant Thunder (Odyssey)",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 200.0,
-      "drift_decay": 1000.0,
+      "drift_attack": 0.2,
+      "drift_decay": 1.0,
       "drift_filterCutoff": 800.0,
       "drift_filterEnvAmt": 0.4,
       "drift_filterReso": 0.2,
@@ -44,7 +44,7 @@
       "drift_oscA_level": 0.5,
       "drift_oscA_mode": 0.0,
       "drift_oscA_shape": 0.0,
-      "drift_release": 2000.0,
+      "drift_release": 2.0,
       "drift_subLevel": 0.3,
       "drift_sustain": 0.3
     }

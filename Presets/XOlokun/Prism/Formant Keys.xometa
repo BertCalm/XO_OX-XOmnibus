@@ -32,8 +32,8 @@
   "name": "Formant Keys",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.5,
       "drift_filterCutoff": 8000.0,
       "drift_filterReso": 0.05,
       "drift_formantMorph": 0.4,
@@ -45,7 +45,7 @@
       "drift_oscB_level": 0.5,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
-      "drift_release": 350.0,
+      "drift_release": 0.35,
       "drift_sustain": 0.5
     }
   },

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer with SNAP ghost rain — rare ticks through infinite shimmer. Frozen rain.",
+  "description": "DRIFT shimmer with SNAP ghost rain \u2014 rare ticks through infinite shimmer. Frozen rain.",
   "tags": [
     "drift",
     "snap",
@@ -59,7 +59,7 @@
       "drift_formantMix": 0.0,
       "drift_shimmerAmount": 0.85,
       "drift_shimmerTone": 0.65,
-      "drift_attack": 5.0,
+      "drift_attack": 0.005,
       "drift_decay": 10.0,
       "drift_sustain": 0.6,
       "drift_release": 4.0,

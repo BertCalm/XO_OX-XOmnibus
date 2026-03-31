@@ -32,7 +32,7 @@
   "name": "Tidal Breathing",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 400.0,
+      "drift_attack": 0.4,
       "drift_driftDepth": 0.2,
       "drift_filterCutoff": 3000.0,
       "drift_filterReso": 0.15,
@@ -44,7 +44,7 @@
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 3.0,
-      "drift_release": 1800.0,
+      "drift_release": 1.8,
       "drift_sustain": 0.65
     }
   },

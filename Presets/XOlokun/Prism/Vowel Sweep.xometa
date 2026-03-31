@@ -32,14 +32,14 @@
   "name": "Vowel Sweep",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.5,
       "drift_formantMorph": 0.2,
       "drift_level": -3.0,
       "drift_oscA_detune": 0.25,
       "drift_oscA_level": 0.8,
       "drift_oscA_mode": 2.0,
-      "drift_release": 300.0,
+      "drift_release": 0.3,
       "drift_sustain": 0.65
     }
   },

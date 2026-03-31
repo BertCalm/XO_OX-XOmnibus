@@ -32,7 +32,7 @@
   "name": "Pulse Meadow",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 250.0,
+      "drift_attack": 0.25,
       "drift_filterCutoff": 3200.0,
       "drift_filterReso": 0.15,
       "drift_level": -3.0,
@@ -46,7 +46,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_pw": 0.6,
       "drift_oscB_shape": 1.0,
-      "drift_release": 1500.0,
+      "drift_release": 1.5,
       "drift_sustain": 0.7
     }
   },

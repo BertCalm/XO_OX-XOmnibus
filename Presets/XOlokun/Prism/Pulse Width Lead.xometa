@@ -32,8 +32,8 @@
   "name": "PWM Tide",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.5,
       "drift_filterCutoff": 6000.0,
       "drift_filterReso": 0.15,
       "drift_level": -3.0,
@@ -43,7 +43,7 @@
       "drift_oscA_mode": 0.0,
       "drift_oscA_pw": 0.3,
       "drift_oscA_shape": 1.0,
-      "drift_release": 300.0,
+      "drift_release": 0.3,
       "drift_sustain": 0.65
     }
   },

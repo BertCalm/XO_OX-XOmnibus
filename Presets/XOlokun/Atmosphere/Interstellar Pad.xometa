@@ -32,7 +32,7 @@
   "name": "Interstellar Pad",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 500.0,
+      "drift_attack": 0.5,
       "drift_driftDepth": 0.35,
       "drift_driftRate": 0.1,
       "drift_filterCutoff": 3500.0,
@@ -47,7 +47,7 @@
       "drift_oscB_fmDepth": 0.2,
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 3.0,
-      "drift_release": 2500.0,
+      "drift_release": 2.5,
       "drift_shimmerAmount": 0.35,
       "drift_shimmerTone": 0.55,
       "drift_subLevel": 0.2,

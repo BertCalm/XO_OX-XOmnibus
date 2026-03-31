@@ -32,7 +32,7 @@
   "name": "Glass Ocean",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 400.0,
+      "drift_attack": 0.4,
       "drift_filterCutoff": 5000.0,
       "drift_filterReso": 0.1,
       "drift_level": -4.0,
@@ -42,7 +42,7 @@
       "drift_oscB_fmDepth": 0.15,
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 3.0,
-      "drift_release": 2000.0,
+      "drift_release": 2.0,
       "drift_shimmerAmount": 0.35,
       "drift_shimmerTone": 0.7,
       "drift_sustain": 0.6

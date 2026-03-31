@@ -32,7 +32,7 @@
   "name": "Drift Formant Cloud",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 300.0,
+      "drift_attack": 0.3,
       "drift_formantMorph": 0.4,
       "drift_level": -4.0,
       "drift_oscA_fmDepth": 0.3,
@@ -41,7 +41,7 @@
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
-      "drift_release": 2000.0,
+      "drift_release": 2.0,
       "drift_sustain": 0.65
     }
   },

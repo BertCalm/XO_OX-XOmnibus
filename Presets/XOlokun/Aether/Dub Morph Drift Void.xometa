@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine void — DUB sub reverb, MORPH ghost scan, DRIFT shimmer sky. Maximum space.",
+  "description": "Three-engine void \u2014 DUB sub reverb, MORPH ghost scan, DRIFT shimmer sky. Maximum space.",
   "tags": [
     "dub",
     "morph",
@@ -113,7 +113,7 @@
       "drift_formantMix": 0.0,
       "drift_shimmerAmount": 0.85,
       "drift_shimmerTone": 0.65,
-      "drift_attack": 5.0,
+      "drift_attack": 0.005,
       "drift_decay": 10.0,
       "drift_sustain": 0.6,
       "drift_release": 4.0,

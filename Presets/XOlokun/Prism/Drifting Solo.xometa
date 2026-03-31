@@ -32,8 +32,8 @@
   "name": "Drifting Solo",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 10.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.01,
+      "drift_decay": 0.5,
       "drift_driftDepth": 0.5,
       "drift_driftRate": 0.1,
       "drift_filterCutoff": 5000.0,
@@ -47,7 +47,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
       "drift_oscB_tune": 7.0,
-      "drift_release": 400.0,
+      "drift_release": 0.4,
       "drift_sustain": 0.65
     }
   },

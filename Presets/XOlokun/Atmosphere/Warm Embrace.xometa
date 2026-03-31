@@ -32,8 +32,8 @@
   "name": "Warm Embrace",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 200.0,
-      "drift_decay": 600.0,
+      "drift_attack": 0.2,
+      "drift_decay": 0.6,
       "drift_filterCutoff": 2000.0,
       "drift_filterReso": 0.15,
       "drift_filterSlope": 1.0,
@@ -47,7 +47,7 @@
       "drift_oscB_pw": 0.55,
       "drift_oscB_shape": 1.0,
       "drift_oscB_tune": -12.0,
-      "drift_release": 1200.0,
+      "drift_release": 1.2,
       "drift_subLevel": 0.35,
       "drift_sustain": 0.8
     }

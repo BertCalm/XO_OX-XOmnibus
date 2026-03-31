@@ -19,7 +19,7 @@
   "engines": [
     "Odyssey"
   ],
-  "description": "Pure shimmer in the void — no grounding, only overtones adrift.",
+  "description": "Pure shimmer in the void \u2014 no grounding, only overtones adrift.",
   "tags": [
     "drift",
     "shimmer",
@@ -52,7 +52,7 @@
       "drift_filterSlope": 0,
       "drift_shimmerAmount": 0.85,
       "drift_shimmerTone": 0.8,
-      "drift_attack": 5.0,
+      "drift_attack": 0.005,
       "drift_decay": 10.0,
       "drift_sustain": 0.5,
       "drift_release": 8.0,

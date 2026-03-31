@@ -32,8 +32,8 @@
   "name": "Tidal Lead",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 8.0,
-      "drift_decay": 400.0,
+      "drift_attack": 0.008,
+      "drift_decay": 0.4,
       "drift_filterCutoff": 6000.0,
       "drift_filterReso": 0.15,
       "drift_level": -3.0,
@@ -44,7 +44,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 2.0,
       "drift_oscB_tune": 12.0,
-      "drift_release": 300.0,
+      "drift_release": 0.3,
       "drift_sustain": 0.7
     }
   },

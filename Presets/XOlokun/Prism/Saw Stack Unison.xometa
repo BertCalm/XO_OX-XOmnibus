@@ -32,8 +32,8 @@
   "name": "Upwelling Stack",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 400.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.4,
       "drift_filterCutoff": 7000.0,
       "drift_filterReso": 0.1,
       "drift_filterSlope": 1.0,
@@ -46,7 +46,7 @@
       "drift_oscB_level": 0.6,
       "drift_oscB_mode": 2.0,
       "drift_oscB_tune": -12.0,
-      "drift_release": 350.0,
+      "drift_release": 0.35,
       "drift_subLevel": 0.2,
       "drift_sustain": 0.75
     }

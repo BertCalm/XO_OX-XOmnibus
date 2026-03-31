@@ -32,8 +32,8 @@
   "name": "Velvet Horizon",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 350.0,
-      "drift_decay": 1000.0,
+      "drift_attack": 0.35,
+      "drift_decay": 1.0,
       "drift_driftDepth": 0.2,
       "drift_driftRate": 0.1,
       "drift_filterCutoff": 2800.0,
@@ -47,7 +47,7 @@
       "drift_oscB_level": 0.55,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
-      "drift_release": 2000.0,
+      "drift_release": 2.0,
       "drift_subLevel": 0.2,
       "drift_sustain": 0.75
     }

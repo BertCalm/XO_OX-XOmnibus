@@ -32,7 +32,7 @@
   "name": "Cosmic Static",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 1000.0,
+      "drift_attack": 1.0,
       "drift_driftDepth": 0.3,
       "drift_filterCutoff": 3000.0,
       "drift_filterReso": 0.2,
@@ -42,7 +42,7 @@
       "drift_oscA_level": 0.4,
       "drift_oscA_mode": 0.0,
       "drift_oscA_shape": 0.0,
-      "drift_release": 4000.0,
+      "drift_release": 4.0,
       "drift_shimmerAmount": 0.3,
       "drift_shimmerTone": 0.3,
       "drift_sustain": 0.5

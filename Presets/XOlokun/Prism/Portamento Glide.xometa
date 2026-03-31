@@ -32,8 +32,8 @@
   "name": "Cetacean Arc",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 10.0,
-      "drift_decay": 400.0,
+      "drift_attack": 0.01,
+      "drift_decay": 0.4,
       "drift_driftDepth": 0.15,
       "drift_filterCutoff": 4000.0,
       "drift_filterReso": 0.3,
@@ -48,7 +48,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_pw": 0.4,
       "drift_oscB_shape": 1.0,
-      "drift_release": 200.0,
+      "drift_release": 0.2,
       "drift_sustain": 0.7,
       "drift_voiceMode": 1.0
     }

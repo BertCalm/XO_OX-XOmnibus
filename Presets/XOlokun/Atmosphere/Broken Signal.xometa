@@ -32,8 +32,8 @@
   "name": "Broken Signal",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 20.0,
-      "drift_decay": 500.0,
+      "drift_attack": 0.02,
+      "drift_decay": 0.5,
       "drift_filterCutoff": 3000.0,
       "drift_filterReso": 0.3,
       "drift_hazeAmount": 0.5,
@@ -42,7 +42,7 @@
       "drift_oscA_level": 0.7,
       "drift_oscA_mode": 0.0,
       "drift_oscA_shape": 0.0,
-      "drift_release": 600.0,
+      "drift_release": 0.6,
       "drift_sustain": 0.5
     }
   },

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB sub reverb ocean floor with DRIFT shimmer above the surface — complete ocean depth.",
+  "description": "DUB sub reverb ocean floor with DRIFT shimmer above the surface \u2014 complete ocean depth.",
   "tags": [
     "dub",
     "drift",
@@ -97,7 +97,7 @@
       "drift_formantMix": 0.0,
       "drift_shimmerAmount": 0.8,
       "drift_shimmerTone": 0.65,
-      "drift_attack": 5.0,
+      "drift_attack": 0.005,
       "drift_decay": 10.0,
       "drift_sustain": 0.6,
       "drift_release": 4.0,

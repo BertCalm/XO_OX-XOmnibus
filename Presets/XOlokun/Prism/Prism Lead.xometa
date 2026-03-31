@@ -32,8 +32,8 @@
   "name": "Prism Lead",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 5.0,
-      "drift_decay": 300.0,
+      "drift_attack": 0.005,
+      "drift_decay": 0.3,
       "drift_filterCutoff": 10000.0,
       "drift_filterEnvAmt": 0.3,
       "drift_filterReso": 0.1,
@@ -42,7 +42,7 @@
       "drift_oscA_detune": 0.25,
       "drift_oscA_level": 0.9,
       "drift_oscA_mode": 2.0,
-      "drift_release": 300.0,
+      "drift_release": 0.3,
       "drift_shimmerAmount": 0.4,
       "drift_shimmerTone": 0.8,
       "drift_sustain": 0.7

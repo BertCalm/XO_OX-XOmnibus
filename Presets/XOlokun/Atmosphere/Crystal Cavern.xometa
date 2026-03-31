@@ -32,7 +32,7 @@
   "name": "Crystal Cavern",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 300.0,
+      "drift_attack": 0.3,
       "drift_filterCutoff": 8000.0,
       "drift_filterReso": 0.08,
       "drift_level": -6.0,
@@ -42,7 +42,7 @@
       "drift_oscB_fmDepth": 0.1,
       "drift_oscB_level": 0.4,
       "drift_oscB_mode": 3.0,
-      "drift_release": 2500.0,
+      "drift_release": 2.5,
       "drift_shimmerAmount": 0.6,
       "drift_shimmerTone": 0.6,
       "drift_sustain": 0.5

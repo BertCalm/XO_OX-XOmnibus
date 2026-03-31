@@ -32,7 +32,7 @@
   "name": "Machine Hum",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 500.0,
+      "drift_attack": 0.5,
       "drift_filterCutoff": 1500.0,
       "drift_filterReso": 0.25,
       "drift_filterSlope": 1.0,
@@ -46,7 +46,7 @@
       "drift_oscB_mode": 0.0,
       "drift_oscB_pw": 0.5,
       "drift_oscB_shape": 1.0,
-      "drift_release": 1500.0,
+      "drift_release": 1.5,
       "drift_sustain": 0.6
     }
   },

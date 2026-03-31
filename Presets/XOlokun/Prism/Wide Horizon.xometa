@@ -32,8 +32,8 @@
   "name": "Wide Horizon",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 10.0,
-      "drift_decay": 400.0,
+      "drift_attack": 0.01,
+      "drift_decay": 0.4,
       "drift_filterCutoff": 7000.0,
       "drift_filterReso": 0.1,
       "drift_level": -4.0,
@@ -43,7 +43,7 @@
       "drift_oscB_detune": 0.45,
       "drift_oscB_level": 0.6,
       "drift_oscB_mode": 2.0,
-      "drift_release": 350.0,
+      "drift_release": 0.35,
       "drift_shimmerAmount": 0.2,
       "drift_sustain": 0.75
     }

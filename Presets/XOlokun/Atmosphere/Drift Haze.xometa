@@ -32,7 +32,7 @@
   "name": "Drift Haze (Odyssey)",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 600.0,
+      "drift_attack": 0.6,
       "drift_driftDepth": 0.4,
       "drift_driftRate": 0.06,
       "drift_filterCutoff": 3500.0,
@@ -47,7 +47,7 @@
       "drift_oscB_level": 0.5,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 2.0,
-      "drift_release": 3000.0,
+      "drift_release": 3.0,
       "drift_shimmerAmount": 0.3,
       "drift_shimmerTone": 0.5,
       "drift_sustain": 0.7

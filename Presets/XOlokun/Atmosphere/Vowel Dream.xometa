@@ -32,7 +32,7 @@
   "name": "Vowel Dream",
   "parameters": {
     "Odyssey": {
-      "drift_attack": 400.0,
+      "drift_attack": 0.4,
       "drift_filterCutoff": 8000.0,
       "drift_filterReso": 0.05,
       "drift_formantMorph": 0.3,
@@ -45,7 +45,7 @@
       "drift_oscB_level": 0.5,
       "drift_oscB_mode": 0.0,
       "drift_oscB_shape": 0.0,
-      "drift_release": 2000.0,
+      "drift_release": 2.0,
       "drift_sustain": 0.65
     }
   },

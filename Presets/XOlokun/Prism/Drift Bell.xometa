@@ -33,14 +33,14 @@
   "parameters": {
     "Odyssey": {
       "drift_attack": 1.0,
-      "drift_decay": 1500.0,
+      "drift_decay": 1.5,
       "drift_filterCutoff": 12000.0,
       "drift_filterReso": 0.05,
       "drift_level": -3.0,
       "drift_oscA_fmDepth": 0.4,
       "drift_oscA_level": 0.8,
       "drift_oscA_mode": 3.0,
-      "drift_release": 1000.0,
+      "drift_release": 1.0,
       "drift_shimmerAmount": 0.15,
       "drift_sustain": 0.0
     }
