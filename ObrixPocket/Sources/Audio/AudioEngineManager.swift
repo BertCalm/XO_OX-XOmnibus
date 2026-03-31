@@ -695,9 +695,14 @@ final class AudioEngineManager: ObservableObject {
         case .began:
             stop()
         case .ended:
-            guard let optionsValue = info[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
-            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
-            if options.contains(.shouldResume) {
+            // Always attempt resume — InterruptionOptionKey may be absent on iOS 14+
+            let shouldResume: Bool
+            if let optionsValue = info[AVAudioSessionInterruptionOptionKey] as? UInt {
+                shouldResume = AVAudioSession.InterruptionOptions(rawValue: optionsValue).contains(.shouldResume)
+            } else {
+                shouldResume = true  // Absent key = assume resume
+            }
+            if shouldResume {
                 do {
                     try AVAudioSession.sharedInstance().setActive(true)
                 } catch {
