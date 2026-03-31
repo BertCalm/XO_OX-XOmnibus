@@ -480,6 +480,11 @@ add_executable(FamilyWaveguideTest
     Tests/FamilyWaveguideTest.cpp
 )
 
+# Fix #173 — FamilyWaveguideTest needs includes, link libs, and ctest registration
+target_include_directories(FamilyWaveguideTest PRIVATE Source Source/DSP)
+target_link_libraries(FamilyWaveguideTest PRIVATE juce::juce_core)
+add_test(NAME FamilyWaveguideTest COMMAND FamilyWaveguideTest)
+
 target_include_directories(XOlokunTests PRIVATE
     Source
     "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
