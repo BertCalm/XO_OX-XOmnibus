@@ -41,14 +41,18 @@ public:
     // Construction
     //--------------------------------------------------------------------------
 
-    /// @param osc    Reference to the WavetableOscillator this editor controls.
-    ///               The oscillator must outlive the editor.
-    explicit WavetableEditor (WavetableOscillator& osc)
-        : oscRef (osc)
+    /// @param osc        Reference to the WavetableOscillator this editor controls.
+    ///                   The oscillator must outlive the editor.
+    /// @param sampleRate The audio device sample rate used for Nyquist-correct
+    ///                   anti-aliasing when generating basic tables (e.g. 44100,
+    ///                   48000, 96000). Defaults to 44100 only as a fallback for
+    ///                   editor previews where the audio device rate is unavailable.
+    explicit WavetableEditor (WavetableOscillator& osc, double sampleRate = 44100.0)
+        : oscRef (osc), sampleRate_ (sampleRate)
     {
         // Generate default basic tables if the oscillator has nothing loaded.
         if (!oscRef.isLoaded())
-            oscRef.generateBasicTables();
+            oscRef.generateBasicTables (sampleRate_);
 
         // ── Morph Slider ────────────────────────────────────────────────────
         morphSlider.setSliderStyle (juce::Slider::LinearHorizontal);
@@ -388,7 +392,7 @@ private:
                 if (result == 6)
                 {
                     // Replace entire table with the default 4-frame basic set.
-                    oscRef.generateBasicTables();
+                    oscRef.generateBasicTables (sampleRate_);
                     morphSlider.setValue (0.0, juce::dontSendNotification);
                     updateFrameLabel();
                     repaint();
@@ -475,6 +479,7 @@ private:
     //--------------------------------------------------------------------------
 
     WavetableOscillator& oscRef;
+    double sampleRate_ = 44100.0;  // Audio device rate — used for Nyquist-correct table generation
 
     // Controls
     juce::Slider      morphSlider;

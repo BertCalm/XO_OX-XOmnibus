@@ -7,11 +7,11 @@
 // New V1.1 additions:
 //   loadFromBuffer()          — alias for loadWavetable() (WavetableEditor API)
 //   setMorphPosition()        — alias for setPosition() (WavetableEditor API)
-//   generateBasicTables()     — fills 4 single-frame tables (sine/saw/square/tri)
+//   generateBasicTables(sr)   — fills 4 single-frame tables (sine/saw/square/tri)
 //   kFrameSize / kMaxFrames   — canonical constants referenced by the editor
 //
 // Memory layout: fixed-size internal buffer, no heap allocation during processing.
-// Call generateBasicTables() or loadFromBuffer() from a non-audio thread.
+// Call generateBasicTables(sampleRate) or loadFromBuffer() from a non-audio thread.
 //
 // Architecture rules: no JUCE dependency, no allocation in processSample().
 
@@ -38,7 +38,7 @@ namespace xolokun {
 //
 // Usage:
 //   WavetableOscillator wt;
-//   wt.generateBasicTables();          // or loadFromBuffer()
+//   wt.generateBasicTables(sampleRate); // or loadFromBuffer()
 //   wt.setFrequency(440.0f, sampleRate);
 //   wt.setMorphPosition(0.5f);         // morph halfway through the table
 //   float sample = wt.processSample();
@@ -106,9 +106,10 @@ public:
     /// (4 frames, so morphing across them sweeps the shape space).
     ///
     /// Each frame is band-limited via additive synthesis at the reference
-    /// sampleRate (defaults to 44100 if prepare() has not been called yet).
+    /// sampleRate. Caller must pass the actual audio device sample rate so
+    /// Nyquist limiting is correct (e.g. 48000 or 96000, not just 44100).
     /// Call from a non-audio thread.
-    void generateBasicTables (double sampleRate = 44100.0) noexcept
+    void generateBasicTables (double sampleRate) noexcept
     {
         constexpr int nFrames    = 4;
         constexpr int fs         = kFrameSize;
