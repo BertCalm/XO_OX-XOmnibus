@@ -16,10 +16,10 @@ struct CatchTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
     @EnvironmentObject var firstLaunchManager: FirstLaunchManager
+    @EnvironmentObject var spawnManager: SpawnManager
     @StateObject private var biomeDetector = BiomeDetector()
     @StateObject private var spectralCapture = SpectralCapture()
     @StateObject private var weatherService = WeatherService()
-    @State private var spawnManager: SpawnManager?
     @State private var wildSpecimens: [WildSpecimen] = []
     @State private var showingCatch: WildSpecimen?
     @State private var catchPhase: CatchPhase = .intro
@@ -202,9 +202,9 @@ struct CatchTab: View {
                 Button(action: {
                     if ReefEnergyManager.shared.spend(ReefEnergyManager.rerollCost) {
                         wildSpecimens.removeAll()
-                        spawnManager?.checkDailyDrift()
-                        spawnManager?.checkTimeOfDay()
-                        wildSpecimens = spawnManager?.wildSpecimens ?? []
+                        spawnManager.checkDailyDrift()
+                        spawnManager.checkTimeOfDay()
+                        wildSpecimens = spawnManager.wildSpecimens
                     }
                 }) {
                     HStack(spacing: 3) {
@@ -224,29 +224,27 @@ struct CatchTab: View {
     // MARK: - Actions
 
     private func onAppear() {
-        if spawnManager == nil {
-            spawnManager = SpawnManager(biomeDetector: biomeDetector)
-            // Wire reefStore for geohash persistence and load any previously visited cells
-            spawnManager?.reefStore = reefStore
-            spawnManager?.loadPersistedGeohashes()
+        // Wire reefStore for geohash persistence (idempotent — safe to call each appear)
+        if spawnManager.reefStore == nil {
+            spawnManager.reefStore = reefStore
+            spawnManager.loadPersistedGeohashes()
         }
 
         // Journey override: force the scripted next specimen during the tutorial
         if !firstLaunchManager.isJourneyComplete {
-            spawnManager?.forcedNextSubtype = firstLaunchManager.nextJourneySubtype
-            spawnManager?.forcedNextCategory = firstLaunchManager.nextJourneyCategory
+            spawnManager.forcedNextSubtype = firstLaunchManager.nextJourneySubtype
+            spawnManager.forcedNextCategory = firstLaunchManager.nextJourneyCategory
         } else {
-            spawnManager?.forcedNextSubtype = nil
-            spawnManager?.forcedNextCategory = nil
+            spawnManager.forcedNextSubtype = nil
+            spawnManager.forcedNextCategory = nil
         }
 
         // Wire WeatherService into biomeDetector so storm state is available
         biomeDetector.weatherService = weatherService
 
         // Wire exploration bonus and map region update on every location update.
-        // Capture mapRegion as a binding-compatible setter on the main queue.
         biomeDetector.onLocationUpdate = { [weak spawnManager] coord in
-            spawnManager?.checkExplorationBonus(at: coord)
+            spawnManager?.checkExplorationBonus(at: coord)  // weak ref: intentional
             // Pan map to follow the user (skip when Reef Proximity holds the map fixed)
             DispatchQueue.main.async {
                 guard !biomeDetector.reefProximityEnabled else { return }
@@ -258,12 +256,16 @@ struct CatchTab: View {
         }
 
         // Prune first so we don't snapshot stale specimens
-        spawnManager?.pruneExpired()
-        spawnManager?.checkDailyDrift()
-        spawnManager?.checkLoginMilestone()
-        spawnManager?.checkTimeOfDay()
+        spawnManager.pruneExpired()
+        spawnManager.checkDailyDrift()
+        // checkLoginMilestone is also called at app launch (ObrixPocketApp.onAppear)
+        // so the streak is updated even if the user never visits this tab. Calling
+        // it again here is idempotent — the "already logged in today" guard prevents
+        // double-incrementing.
+        spawnManager.checkLoginMilestone()
+        spawnManager.checkTimeOfDay()
         // Snapshot wildSpecimens into @State so SwiftUI re-renders the map
-        wildSpecimens = spawnManager?.wildSpecimens ?? []
+        wildSpecimens = spawnManager.wildSpecimens
         biomeDetector.requestAuthorization()
 
         // Fetch weather for current location if already available
@@ -292,7 +294,7 @@ struct CatchTab: View {
         let refreshed = WildSpecimen(preservingID: id, from: old, expiresAt: Date().addingTimeInterval(3600))
         wildSpecimens[idx] = refreshed
         // Mirror the reset into SpawnManager so prune logic stays consistent
-        spawnManager?.updateSpecimen(refreshed, replacing: id)
+        spawnManager.updateSpecimen(refreshed, replacing: id)
     }
 
     // MARK: - Coordinate Conversion

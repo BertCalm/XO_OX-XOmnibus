@@ -11,6 +11,7 @@ struct ObrixPocketApp: App {
     @StateObject private var breedingManager: BreedingManager
     @StateObject private var specimenAgingManager: SpecimenAgingManager
     @StateObject private var gameCoordinator: GameCoordinator
+    @StateObject private var spawnManager = SpawnManager(biomeDetector: BiomeDetector())
     @Environment(\.scenePhase) var scenePhase
 
     @State private var importPreview: XOReefFile?
@@ -52,6 +53,7 @@ struct ObrixPocketApp: App {
                 .environmentObject(audioEngine)
                 .environmentObject(reefStore)
                 .environmentObject(firstLaunchManager)
+                .environmentObject(spawnManager)
                 .onOpenURL { url in
                     handleIncomingReefFile(url)
                 }
@@ -67,6 +69,10 @@ struct ObrixPocketApp: App {
                     }
                 }
                 .onAppear {
+                    // Login milestone check runs on every launch so streak rewards
+                    // are granted even if the user never visits the Catch tab.
+                    spawnManager.checkLoginMilestone()
+
                     HapticEngine.prepare()
                     audioEngine.reefStoreRef = reefStore
                     // Wire the genetics/aging bridge so specimen traits reach the engine.
