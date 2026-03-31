@@ -98,11 +98,11 @@ public:
             else
                 triLeakCorrection = 1.0f;   // numerically degenerate — shouldn't occur
 
-            // Cap correction to prevent extreme amplification at sub-Hz frequencies
-            // (e.g., if PolyBLEP is used for LFO triangle). Max +12 dB.
-            // At 1 Hz / 44100 Hz the uncapped correction is ~11x; this caps to 4x.
-            // Sub-Hz triangle amplitude will be +12 dB above nominal, not unity.
-            triLeakCorrection = std::min (triLeakCorrection, 4.0f);
+            // No amplitude cap: the correction is exact at all frequencies.
+            // For very low LFO rates the correction factor grows large; the output
+            // is clamped to [-1, 1] in processSample() after applying the correction,
+            // keeping amplitude at unity even at sub-Hz rates.
+            // (Previously capped at 4.0 → +12 dB overshoot at sub-Hz — issue #177)
         }
         else
         {
@@ -184,6 +184,11 @@ public:
                 triIntegrator *= 0.999f;
 
                 out = triIntegrator * triLeakCorrection;
+                // Clamp to [-1, 1]: at very low LFO rates the leaky integrator
+                // may not fully settle, and the exact correction can overshoot
+                // during transient start-up. Hard clamp preserves unity amplitude.
+                if (out >  1.0f) out =  1.0f;
+                if (out < -1.0f) out = -1.0f;
                 break;
             }
 
