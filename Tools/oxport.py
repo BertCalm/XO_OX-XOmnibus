@@ -98,12 +98,29 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 # Canonical engine names (title-case, one spelling per engine)
+# Legacy names (Odyssey, Oblong, Obese) are kept here as aliases for
+# backward compatibility; canonical display names are now Odyssey → Odyssey,
+# Oblong → Oblong, Obese → Obese (engine IDs unchanged, parameter
+# prefixes frozen as drift_, bob_, fat_). See CLAUDE.md parameter prefix table.
 ENGINE_ALIASES = {
     "onset": "Onset", "ONSET": "Onset", "OnsetEngine": "Onset",
     "odyssey": "Odyssey", "ODYSSEY": "Odyssey",
     "obese": "Obese", "OBESE": "Obese",
     "overdub": "Overdub", "OVERDUB": "Overdub",
     "oblong": "Oblong", "OBLONG": "Oblong",
+    # Current fleet canonical names (case-insensitive variants)
+    "obsidian": "Obsidian", "OBSIDIAN": "Obsidian",
+    "oblique": "Oblique", "OBLIQUE": "Oblique",
+    "osprey": "Osprey", "OSPREY": "Osprey",
+    "opal": "Opal", "OPAL": "Opal",
+    "orbital": "Orbital", "ORBITAL": "Orbital",
+    "organon": "Organon", "ORGANON": "Organon",
+    "ouroboros": "Ouroboros", "OUROBOROS": "Ouroboros",
+    "overworld": "Overworld", "OVERWORLD": "Overworld",
+    "ohm": "Ohm", "OHM": "Ohm",
+    "obbligato": "Obbligato", "OBBLIGATO": "Obbligato",
+    "ottoni": "Ottoni", "OTTONI": "Ottoni",
+    "ole": "Ole", "OLE": "Ole",
 }
 
 
@@ -2973,7 +2990,7 @@ def main():
     # --- run ---
     p_run = sub.add_parser("run", help="Execute the full export pipeline")
     p_run.add_argument("--engine",     required=True,
-                       help="Engine name (e.g. Onset, Odyssey, Opal)")
+                       help="Engine name (e.g. Onset, Obsidian, Opal; legacy aliases like Odyssey/Oblong/Obese also accepted)")
     p_run.add_argument("--preset",     metavar="NAME",
                        help="Filter to a single preset name (partial match)")
     p_run.add_argument("--wavs-dir",   metavar="DIR",

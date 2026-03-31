@@ -11,6 +11,7 @@
 #include "Core/MIDILearnManager.h"
 #include "Core/PresetManager.h"
 #include "Core/CouplingPresetManager.h"
+#include "Core/MacroSystem.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include <atomic>
@@ -305,6 +306,7 @@ private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
     juce::AudioProcessorValueTreeState apvts;
+    MacroSystem macroSystem_;
     MegaCouplingMatrix couplingMatrix;
     CouplingCrossfader couplingCrossfader;
 

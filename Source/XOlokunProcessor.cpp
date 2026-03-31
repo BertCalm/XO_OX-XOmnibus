@@ -445,6 +445,7 @@ XOlokunProcessor::XOlokunProcessor()
                      .withInput("Input", juce::AudioChannelSet::stereo(), false)
                      .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
       apvts(*this, nullptr, "XOlokunParams", createParameterLayout()),
+      macroSystem_(apvts),
       couplingPresetManager(apvts, [this](int slot) -> juce::String {
           auto* eng = getEngine(slot);
           return eng ? eng->getEngineId() : juce::String{};
@@ -1223,6 +1224,7 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // its timestamp conversion is accurate after host restart / rate change.
     playSurfaceMidiCollector.reset(sampleRate);
 
+    macroSystem_.prepare(sampleRate, samplesPerBlock);
     couplingMatrix.prepare(samplesPerBlock);
     couplingCrossfader.prepare(sampleRate, samplesPerBlock);
 
@@ -1320,6 +1322,10 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     }
 
     buffer.clear();
+
+    // Propagate macro knob values (CHARACTER/MOVEMENT/COUPLING/SPACE) to their
+    // per-engine target parameters before any engine renders this block.
+    macroSystem_.processBlock(numSamples);
 
     // Build engine pointer array for coupling matrix (atomic reads)
     std::array<SynthEngine*, MaxSlots> enginePtrs = {};
