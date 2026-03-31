@@ -1439,6 +1439,89 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // When enabled, each slot gets its own chord-distributed note.
     chordMachine.processBlock(midi, slotMidi, numSamples);
 
+    // ── CC64 sustain pedal — fleet-wide pre-filter ────────────────────────────
+    // Only ~3 engines (Ouroboros, Bite, Opal) handle CC64 internally; the other
+    // ~70 engines ignore it.  This processor-level pass suppresses note-offs on
+    // all per-slot MidiBuffers while CC64 >= 64, then re-injects them the moment
+    // the pedal lifts.  Engines that handle CC64 themselves continue to do so —
+    // they receive the CC message and the held notes land again at pedal-up just
+    // as a real pianist would expect.
+    //
+    // Algorithm (audio-thread-only, no allocation):
+    //   1. Scan raw `midi` for CC64 events; update sustainHeld_[ch].
+    //      When a pedal-up event arrives, flush all pending note-offs for that
+    //      channel into every slotMidi[] at sample position 0 of this block.
+    //   2. Scan each slotMidi[i]: copy all non-note-off events through; for
+    //      note-off events, either pass through (sustain not held) or enqueue
+    //      them in sustainPendingNoteOffs_[i][ch] (sustain held).
+    {
+        // Step 1: update sustainHeld_ from raw input and flush pending note-offs
+        //         on pedal-up.
+        for (const auto metadata : midi)
+        {
+            const auto& msg = metadata.getMessage();
+            if (msg.isControllerOfType(64))
+            {
+                const int ch = msg.getChannel() - 1;  // 0-based
+                const bool nowHeld = (msg.getControllerValue() >= 64);
+                const bool wasHeld = sustainHeld_[ch];
+
+                sustainHeld_[ch] = nowHeld;
+
+                // Pedal released: flush deferred note-offs into every slot buffer.
+                if (wasHeld && !nowHeld)
+                {
+                    for (int slot = 0; slot < MaxSlots; ++slot)
+                    {
+                        auto& pending = sustainPendingNoteOffs_[slot][ch];
+                        if (!pending.any())
+                            continue;
+                        for (int note = 0; note < 128; ++note)
+                        {
+                            if (pending.test(note))
+                                slotMidi[slot].addEvent(
+                                    juce::MidiMessage::noteOff(ch + 1, note, (uint8_t)0), 0);
+                        }
+                        pending.clearAll();
+                    }
+                }
+            }
+        }
+
+        // Step 2: rebuild each slotMidi[], suppressing note-offs that arrive while
+        //         sustain is held on that channel.
+        juce::MidiBuffer filtered;
+        for (int slot = 0; slot < MaxSlots; ++slot)
+        {
+            filtered.clear();
+            for (const auto metadata : slotMidi[slot])
+            {
+                const auto& msg = metadata.getMessage();
+                const int samplePos = metadata.samplePosition;
+
+                // isNoteOff() matches noteOff status bytes AND noteOn with velocity 0.
+                if (msg.isNoteOff())
+                {
+                    const int ch   = msg.getChannel() - 1;
+                    const int note = msg.getNoteNumber();
+                    if (sustainHeld_[ch])
+                    {
+                        // Defer: remember this note needs a release later.
+                        sustainPendingNoteOffs_[slot][ch].set(note);
+                        continue;  // suppress the note-off for now
+                    }
+                    // Sustain not held: cancel any pending entry for this note
+                    // (note was re-triggered and released before pedal lifted).
+                    sustainPendingNoteOffs_[slot][ch].clear(note);
+                }
+
+                filtered.addEvent(msg, samplePos);
+            }
+            slotMidi[slot].swapWith(filtered);
+        }
+    }
+    // ── end CC64 sustain pre-filter ───────────────────────────────────────────
+
     // Consume chord-fire request: inject a note-on for the current live root
     // (or MIDI C4 = 60 if no chord has been played yet) into all slot buffers.
     // This fires the current palette/voicing as a one-shot performance gesture.

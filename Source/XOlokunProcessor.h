@@ -456,6 +456,26 @@ private:
     // Written by message thread (setSlotMuted), read by audio thread per block.
     std::array<std::atomic<bool>, MaxSlots> slotMuted {};  // default false
 
+    // ── CC64 sustain pedal — fleet-wide hold (audio thread only) ─────────────
+    // sustainHeld_[ch]: true while CC64 >= 64 on MIDI channel ch (0-based).
+    // sustainPendingNoteOffs_[slot][ch]: bitmask of notes (0–127) whose note-off
+    // was suppressed while sustain was held; released when the pedal lifts.
+    // All fields are audio-thread-only — no atomics needed.
+    std::array<bool, 16> sustainHeld_ {};
+    // 128 notes × 16 channels × MaxSlots — stored as uint64_t[2] bitmasks per channel.
+    // Bit N is set when note N is pending release on that slot+channel.
+    struct SustainNoteSet {
+        uint64_t lo = 0;  // notes 0–63
+        uint64_t hi = 0;  // notes 64–127
+        void set(int note)   { if (note < 64) lo |= (1ULL << note); else hi |= (1ULL << (note - 64)); }
+        void clear(int note) { if (note < 64) lo &= ~(1ULL << note); else hi &= ~(1ULL << (note - 64)); }
+        bool test(int note) const { return note < 64 ? (lo >> note) & 1 : (hi >> (note - 64)) & 1; }
+        bool any() const { return lo || hi; }
+        void clearAll() { lo = 0; hi = 0; }
+    };
+    // [slot][channel]
+    std::array<std::array<SustainNoteSet, 16>, MaxSlots> sustainPendingNoteOffs_ {};
+
     // ── Chord machine fire pending flag ──────────────────────────────────────
     // message thread sets → audio thread consumes and clears.
     std::atomic<bool> chordFirePending { false };
