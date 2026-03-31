@@ -148,6 +148,9 @@ struct RunnerGenerator
         runnerString.prepare (sampleRate);
         active = false;
         timer = 0;
+        // Scale the per-sample decay coefficient to the actual sample rate.
+        // 0.9995f was tuned for 48kHz; at 96kHz runners faded 2x too fast.
+        runnerDecay_ = std::pow (0.9995f, 48000.0f / sampleRate);
     }
 
     /// Check if conditions warrant spawning a runner
@@ -193,7 +196,7 @@ struct RunnerGenerator
         // But seance says 25x too slow, so target ~40ms: 0.99998 * 0 = wrong.
         // Original was 0.99998f ≈ 50ks time constant. 25x faster = 2ks = ~40ms.
         // For 2s fade: 1 - (1-0.99998)*25 = 1 - 0.0005 = 0.9995 per sample.
-        amplitude *= 0.9995f;
+        amplitude *= runnerDecay_;
         if (amplitude < 1e-6f) active = false;
 
         return out;
@@ -207,6 +210,7 @@ struct RunnerGenerator
     }
 
     float sr = 48000.0f;
+    float runnerDecay_ = 0.9995f;  // per-sample fade coefficient, SR-scaled in prepare()
     KarplusStrongString runnerString;
     bool active = false;
     int timer = 0;
