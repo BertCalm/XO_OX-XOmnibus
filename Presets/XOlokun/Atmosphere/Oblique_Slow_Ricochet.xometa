@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Slow Ricochet",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow-motion ricochet atmosphere — bounce slowed to atmospheric rate, ambient spread.",
-  "tags": ["ricochet", "slow", "ambient", "spread"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "ricochet",
+    "slow",
+    "ambient",
+    "spread"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.6, "movement": 0.28, "density": 0.5, "space": 0.72, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.28,
+    "density": 0.5,
+    "space": 0.72,
+    "aggression": 0.12
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.72
     }
   },
-  "macros": {"BOUNCE": 0.28, "COLOR": 0.58, "FOLD": 0.28, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.28,
+    "COLOR": 0.58,
+    "FOLD": 0.28,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

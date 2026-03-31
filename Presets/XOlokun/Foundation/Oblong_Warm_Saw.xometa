@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Warm Saw",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Classic warm sawtooth foundation — detuned B osc, LP filter, chorus texture.",
-  "tags": ["foundation", "saw", "warm", "detuned"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "saw",
+    "warm",
+    "detuned"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.7, "movement": 0.4, "density": 0.55, "space": 0.5, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.25
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

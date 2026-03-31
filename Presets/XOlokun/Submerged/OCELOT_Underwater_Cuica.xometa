@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Underwater Cuica",
   "mood": "Submerged",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cuica squeals slowed and darkened through the Underwater biome — heavy damping, viscous tape warp, whale calls at long intervals. Sonar geometry.",
-  "tags": ["submerged", "underwater", "cuica", "friction", "dark", "whale"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "submerged",
+    "underwater",
+    "cuica",
+    "friction",
+    "dark",
+    "whale"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.35,
@@ -24,7 +38,9 @@
     "space": 0.78,
     "aggression": 0.35
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

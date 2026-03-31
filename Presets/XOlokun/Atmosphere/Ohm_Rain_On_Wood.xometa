@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Rain On Wood",
   "mood": "Atmosphere",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Scattered plucked rain on wooden body, high grain density like a downpour.",
-  "tags": ["atmosphere", "rain", "scattered", "natural"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "atmosphere",
+    "rain",
+    "scattered",
+    "natural"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.6,
     "MEADOW": 0.7
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

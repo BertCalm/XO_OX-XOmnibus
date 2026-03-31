@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Coral Garden",
+  "name": "Coral Garden (Outwit)",
   "mood": "Atmosphere",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 110 at medium chaos \u2014 a reef at dusk. The polyps are partially retracted but the structural complexity is still audible. LFO creates a tidal swell.",
+  "description": "Rule 110 at medium chaos — a reef at dusk. The polyps are partially retracted but the structural complexity is still audible. LFO creates a tidal swell.",
   "tags": [
     "atmosphere",
     "coral",

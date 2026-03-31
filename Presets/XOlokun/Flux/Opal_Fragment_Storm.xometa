@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Fragment Storm",
   "mood": "Flux",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum density (120 grains/sec) with 12ms Rectangular window grains — at 12 voices, 1440 grain events per second total. The ear resolves this as continuous noise-like texture with spectral coloration from the underlying Pulse oscillator (source=2). Position scatter=0.9 with a fast-wandering position (LFO→position at 0.25Hz). Every moment the granulator is reading from a different part of the buffer. The Pulse wave's harmonic series becomes a storm of spectral fragments.",
-  "tags": ["maximum-density", "rectangular", "flux", "storm", "pulse", "spectral-chaos", "high-rate"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "maximum-density",
+    "rectangular",
+    "flux",
+    "storm",
+    "pulse",
+    "spectral-chaos",
+    "high-rate"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

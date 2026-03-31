@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Drift Halo",
   "mood": "Atmosphere",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast drift modulation creates a halo effect around each plucked tone, bioluminescence in motion.",
-  "tags": ["harp", "drift", "halo", "bioluminescent", "motion"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "drift",
+    "halo",
+    "bioluminescent",
+    "motion"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.65, "density": 0.4, "space": 0.82, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.65,
+    "density": 0.4,
+    "space": 0.82,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 5,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.45
     }
   },
-  "macros": {"PLUCK": 0.4, "SURFACE": 0.6, "FRACTURE": 0.2, "DIVINE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.4,
+    "SURFACE": 0.6,
+    "FRACTURE": 0.2,
+    "DIVINE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Reed Storm",
   "mood": "Flux",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum air flutter and drift with high bond rate, two reeds in a chaotic wind storm.",
-  "tags": ["woodwind", "storm", "flux", "chaotic", "wind"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "storm",
+    "flux",
+    "chaotic",
+    "wind"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.6, "movement": 0.78, "density": 0.55, "space": 0.65, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.78,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.45
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 0,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.55
     }
   },
-  "macros": {"BOND": 0.7, "BREATH": 0.72, "WIND": 0.75, "MISCHIEF": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.7,
+    "BREATH": 0.72,
+    "WIND": 0.75,
+    "MISCHIEF": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

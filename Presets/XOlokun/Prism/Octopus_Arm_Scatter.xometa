@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Arm Scatter",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum arm spread with high rate and depth scatters oscillators across a wide frequency range — each arm acting as an independent frequency voice in a prismatic scatter field.",
-  "tags": ["prism", "scatter", "wide", "arms", "polyphonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "scatter",
+    "wide",
+    "arms",
+    "polyphonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.35, "movement": 0.7, "density": 0.75, "space": 0.55, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.7,
+    "density": 0.75,
+    "space": 0.55,
+    "aggression": 0.5
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.55,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.7, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

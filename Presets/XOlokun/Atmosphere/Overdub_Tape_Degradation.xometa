@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Tape Degradation",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Maximum wow/flutter and tape wear applied to a sustained note — what happens to a signal when the machine grows old. Not broken, becoming. The sound is still there; it has just been changed by time.",
-  "tags": ["overdub", "tape", "degradation", "atmosphere", "lo-fi", "wow", "flutter", "transcendental"],
+  "tags": [
+    "overdub",
+    "tape",
+    "degradation",
+    "atmosphere",
+    "lo-fi",
+    "wow",
+    "flutter",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible"],
+    "scripture": [
+      "Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible"
+    ],
     "revelation": "Maximum wow/flutter is not an imperfection. It is a machine breathing.",
     "diagnosis": "At dub_delayWow=0.95 and dub_delayWear=0.88, the delay feedback becomes a bandpass-narrowing, pitch-wavering organism. Held notes turn into audible time. This is the signature Transcendental behavior for OVERDUB."
   },
-  "macroLabels": ["WOW AMOUNT", "TAPE WEAR", "FEEDBACK DEPTH", "REVERB TAIL"],
+  "macroLabels": [
+    "WOW AMOUNT",
+    "TAPE WEAR",
+    "FEEDBACK DEPTH",
+    "REVERB TAIL"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +84,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

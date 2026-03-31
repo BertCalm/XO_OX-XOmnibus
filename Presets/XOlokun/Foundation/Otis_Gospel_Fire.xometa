@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Full Hammond B3 gospel registration — classic 888000000 drawbars with heavy key click, fast Leslie, and tube overdrive. The sound of Sunday morning.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.4,
     "warmth": 0.9
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Gospel Fire",
   "parameters": {
@@ -54,7 +63,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "gospel", "soul", "hammond", "church"],
+  "tags": [
+    "organ",
+    "gospel",
+    "soul",
+    "hammond",
+    "church"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

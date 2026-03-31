@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Sunbreak",
   "mood": "Prism",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The hero preset. The moment light breaks through clouds. Zero attack for instant impact, bright filter, no shimmer at defaults — but the GLOW macro fades shimmer in from zero to full. At rest it is a bold, present supersaw. Turn GLOW and it blooms into infinite radiance. The Guru says: the best presets are journeys, not destinations. This one starts on the ground and ends in the sky.",
-  "tags": ["opensky", "hero", "dynamic", "macro-driven", "sunbreak", "guru-bin"],
+  "tags": [
+    "opensky",
+    "hero",
+    "dynamic",
+    "macro-driven",
+    "sunbreak",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
     "retreat_date": "2026-03-19",
-    "scripture": ["Gospel 3: The Best Presets Are Journeys, Not Destinations", "Verse 8: This One Starts on the Ground and Ends in the Sky"],
+    "scripture": [
+      "Gospel 3: The Best Presets Are Journeys, Not Destinations",
+      "Verse 8: This One Starts on the Ground and Ends in the Sky"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger turned GLOW from zero to full and The Eye watched the spectrum bloom — the macro journey IS the preset.",
     "diagnosis": "Sunbreak is the OPENSKY hero preset — a bold supersaw at rest that transforms into infinite shimmer via the GLOW macro. It reveals macro design as the highest form of OPENSKY expression."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

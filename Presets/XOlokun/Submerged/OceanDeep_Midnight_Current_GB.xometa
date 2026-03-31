@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Midnight Current GB",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The deep-water thermohaline current at 1,500 meters — cold, saline, moving at 0.12 Hz (a long ocean wave). bioRate=0.12 Hz maps to the biological wave period. bioMix=0.4 and bioBrightness=600 Hz: the organism photophores pulse in time with the current. The sub lives beneath it all.",
-  "tags": ["bass", "submerged", "current", "thermohaline", "bioluminescence", "organic", "pulsing", "mid-depth", "living"],
+  "tags": [
+    "bass",
+    "submerged",
+    "current",
+    "thermohaline",
+    "bioluminescence",
+    "organic",
+    "pulsing",
+    "mid-depth",
+    "living"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru Bin transcendental companion to the factory Midnight Current preset. Where the factory preset has movement and darkness, this version adds the biological dimension — the living organisms pulsing at ocean wave frequency. CREATURE macro governs bio intensity. Let the bioRate of 0.12 Hz establish the groove.",
     "diagnosis": "bioRate=0.12 Hz: mapped to ocean wave frequency — this is the preset's rhythm engine. bioMix=0.4: significant bio presence, the organisms are active. bioBrightness=600 Hz: warm biological photophore color, not alien white. filterCutoff=250: mid-depth column, cold and dark but with organic warmth. lfo1Rate=0.12 Hz synchronized to bioRate."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

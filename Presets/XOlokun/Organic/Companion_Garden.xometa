@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Growth Mode \u2014 companion plants germinate together, voices enter sequentially",
+  "description": "Growth Mode — companion plants germinate together, voices enter sequentially",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.4,

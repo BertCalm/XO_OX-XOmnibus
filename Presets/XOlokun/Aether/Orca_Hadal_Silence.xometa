@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Hadal Silence",
+  "name": "Hadal Silence (Orca)",
   "mood": "Aether",
   "engines": [
     "Orca"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The hadal zone \u2014 trenches below 6000m. Maximum pressure, minimum life, absolute darkness. The sound of the place beyond ordinary ocean \u2014 a different physics, a different silence. Almost nothing, but not quite.",
+  "description": "The hadal zone — trenches below 6000m. Maximum pressure, minimum life, absolute darkness. The sound of the place beyond ordinary ocean — a different physics, a different silence. Almost nothing, but not quite.",
   "tags": [
     "aether",
     "hadal",

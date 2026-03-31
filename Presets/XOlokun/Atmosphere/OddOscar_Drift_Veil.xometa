@@ -2,18 +2,64 @@
   "schema_version": 1,
   "name": "Drift Veil",
   "mood": "Atmosphere",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Veiled drifting morph — semi-transparent harmonic layers drift through filtered space.",
-  "tags": ["veil", "drift", "transparent", "layers"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "veil",
+    "drift",
+    "transparent",
+    "layers"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.6, "movement": 0.55, "density": 0.38, "space": 0.75, "aggression": 0.06},
-  "parameters": {
-    "OddOscar": {"morph_morph": 0.58, "morph_bloom": 0.55, "morph_detune": 0.25, "morph_drift": 0.62, "morph_filterCutoff": 2200.0, "morph_filterReso": 0.28, "morph_filterEnvDepth": 0.18, "morph_sub": 0.2, "morph_decay": 2.8, "morph_sustain": 0.9, "morph_release": 4.5, "morph_glide": 0.22, "morph_voiceMode": 0, "morph_polyphony": 6, "morph_level": 0.58, "morph_macroBloom": 0.55, "morph_macroDepth": 0.42, "morph_macroDrift": 0.62, "morph_macroSpace": 0.75}
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.6,
+    "movement": 0.55,
+    "density": 0.38,
+    "space": 0.75,
+    "aggression": 0.06
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.58,
+      "morph_bloom": 0.55,
+      "morph_detune": 0.25,
+      "morph_drift": 0.62,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.28,
+      "morph_filterEnvDepth": 0.18,
+      "morph_sub": 0.2,
+      "morph_decay": 2.8,
+      "morph_sustain": 0.9,
+      "morph_release": 4.5,
+      "morph_glide": 0.22,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.58,
+      "morph_macroBloom": 0.55,
+      "morph_macroDepth": 0.42,
+      "morph_macroDrift": 0.62,
+      "morph_macroSpace": 0.75
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

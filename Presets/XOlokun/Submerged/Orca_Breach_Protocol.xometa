@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Breach Protocol",
   "mood": "Submerged",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Breach as the primary voice — sub-bass at 0.95 + triangle shape (0.55) + ratio 15.0. The displacement is the music. Triangle sub has more presence than pure sine — the breach event contains low-end weight and mid-frequency thump. Every medium-velocity note triggers extreme sidechain physics.",
-  "tags": ["breach", "triangle", "submerged", "displacement", "sub-bass", "sidechain", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "breach",
+    "triangle",
+    "submerged",
+    "displacement",
+    "sub-bass",
+    "sidechain",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

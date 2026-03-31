@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OGRE \u2014 modern trap sub. Bright filter envelope click, long decay, sits across earbuds and club systems.",
+  "description": "OGRE — modern trap sub. Bright filter envelope click, long decay, sits across earbuds and club systems.",
   "dna": {
     "brightness": 0.28,
     "warmth": 0.75,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Trap Core",
+  "name": "Trap Core (Ogre)",
   "parameters": {
     "Ogre": {
       "ogre_oscMix": 0.0,

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Tide Pool Life",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The teeming microcosm of a tide pool — octopus, anemones, crabs, urchins. A warm, busy Family texture with moderate arm activity and rich chromatophore display. Many lives in a small space.",
-  "tags": ["octopus", "family", "tide", "life", "busy", "warm", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "tide",
+    "life",
+    "busy",
+    "warm",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.62,

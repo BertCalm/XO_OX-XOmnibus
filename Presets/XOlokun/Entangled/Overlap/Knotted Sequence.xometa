@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Trefoil tangle at 0.6 creates stepped harmonic shifts — the knot crossings act like note quantization steps in the FDN routing. 0.9 Hz pulse rate with S&H on filter creates irregular gate patterns. This preset sounds like a sequence playing through a topological filter: pitched, rhythmic, unpredictable.",
-  "dna": { "aggression": 0.38, "brightness": 0.55, "density": 0.62, "movement": 0.6, "space": 0.5, "warmth": 0.45 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.38,
+    "brightness": 0.55,
+    "density": 0.62,
+    "movement": 0.6,
+    "space": 0.5,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Knotted Sequence",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "trefoil", "sequenced", "pitched", "movement", "stochastic"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "trefoil",
+    "sequenced",
+    "pitched",
+    "movement",
+    "stochastic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

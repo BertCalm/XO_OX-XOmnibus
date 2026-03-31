@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Saw into Wavefolder (proc1) at maximum possible gain routing \u2014 the fold point deep enough to generate 7+ harmonics \u2014 then HP (proc2) at 400 Hz strips the fundamental, leaving only the folded upper partials. What remains is not a traditional synth sound but a crystalline overtone cloud: aggressive without being brash, complex without being cacophonous. Mono for maximum edge. proc2Feedback 0.35 adds a controlled metallic rattle to the HP stage. LFO\u2192proc1Cutoff at 0.09 Hz makes the fold depth breathe over 11-second cycles.",
+  "description": "Saw into Wavefolder (proc1) at maximum possible gain routing — the fold point deep enough to generate 7+ harmonics — then HP (proc2) at 400 Hz strips the fundamental, leaving only the folded upper partials. What remains is not a traditional synth sound but a crystalline overtone cloud: aggressive without being brash, complex without being cacophonous. Mono for maximum edge. proc2Feedback 0.35 adds a controlled metallic rattle to the HP stage. LFO→proc1Cutoff at 0.09 Hz makes the fold depth breathe over 11-second cycles.",
   "tags": [
     "obrix",
     "aether",
@@ -32,17 +32,17 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
       "Wavefold as harmonic multiplier",
       "HP after fold = overtone isolation"
     ],
-    "revelation": "Stripping the fundamental after folding reveals the skeleton of the harmonic series \u2014 the sound of mathematics.",
+    "revelation": "Stripping the fundamental after folding reveals the skeleton of the harmonic series — the sound of mathematics.",
     "god": "Buchla",
     "flock_note": "Rufus: 'This is the only patch that sounds violent and peaceful at the same time.'",
-    "diagnosis": "A saw wave that has gone so deep it forgot what it was \u2014 the abyss stares back in harmonics."
+    "diagnosis": "A saw wave that has gone so deep it forgot what it was — the abyss stares back in harmonics."
   },
   "dna": {
     "brightness": 0.78,

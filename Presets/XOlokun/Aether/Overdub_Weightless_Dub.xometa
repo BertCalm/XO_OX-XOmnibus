@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Weightless Dub",
   "mood": "Aether",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Near-silent dry signal with enormous reverb tail — gravity has left the building.",
-  "tags": ["aether", "weightless", "reverb", "massive", "ethereal", "void"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "weightless",
+    "reverb",
+    "massive",
+    "ethereal",
+    "void"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.12, "MOVEMENT": 0.28, "COUPLING": 0.82, "SPACE": 0.95},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.4, "warmth": 0.68, "movement": 0.35, "density": 0.2, "space": 0.98, "aggression": 0.04}
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.82,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.68,
+    "movement": 0.35,
+    "density": 0.2,
+    "space": 0.98,
+    "aggression": 0.04
+  }
 }

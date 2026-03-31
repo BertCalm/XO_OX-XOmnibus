@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Wavetable War",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Wavetable (voice 1, wtPos=0.15) vs Wavetable (voice 2, wtPos=0.82). HAMMER=-0.6 — medium-heavy STRIFE. Two positions in the same wavetable table fighting each other: voice 1 occupies the bright, harmonic-dense early position while voice 2 occupies the dark, inharmonic later position. Cross-FM under STRIFE creates a beating, metallic shimmer that never settles. The war between two positions in the same table is uniquely OUIE.",
-  "tags": ["ouie", "wavetable", "wavetable", "strife", "metallic", "shimmer", "war", "aether", "dual-wt"],
+  "tags": [
+    "ouie",
+    "wavetable",
+    "wavetable",
+    "strife",
+    "metallic",
+    "shimmer",
+    "war",
+    "aether",
+    "dual-wt"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "Move wtPos1 and wtPos2 independently to find new conflicts. Maximum tension when the positions are far apart. Try wtPos1=0.0 and wtPos2=1.0 for the widest war. Try wtPos1=0.48 and wtPos2=0.52 for subtle beating.",
     "diagnosis": "Wavetable+Wavetable at STRIFE is one of OUIE's most distinctive sounds. The cross-FM interaction at HAMMER=-0.6 creates sidebands from both wavetable positions simultaneously — a spectral richness impossible with a single wavetable oscillator. High movement, medium aggression — useful for evolving lead sounds and textural beds."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.5,
     "CURRENT": 0.35
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

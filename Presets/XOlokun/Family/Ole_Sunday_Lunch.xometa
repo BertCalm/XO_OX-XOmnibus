@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Sunday Lunch",
+  "name": "Sunday Lunch (Ole)",
   "mood": "Family",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The family at Sunday lunch — all voices present but relaxed, isla macro warm and welcoming.",
-  "tags": ["latin", "family", "sunday", "relaxed", "warm"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "family",
+    "sunday",
+    "relaxed",
+    "warm"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.75, "movement": 0.4, "density": 0.52, "space": 0.62, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.75,
+    "movement": 0.4,
+    "density": 0.52,
+    "space": 0.62,
+    "aggression": 0.15
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 1,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.42
     }
   },
-  "macros": {"DRAMA": 0.38, "FUEGO": 0.35, "ISLA": 0.72, "SIDES": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.38,
+    "FUEGO": 0.35,
+    "ISLA": 0.72,
+    "SIDES": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

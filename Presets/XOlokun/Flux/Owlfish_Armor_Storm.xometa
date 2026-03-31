@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Armor Storm",
   "mood": "Flux",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maxed mixtur with heavy inharmonic and fast filter sweep — bony armor plates rattling through a hydrothermal storm.",
-  "tags": ["flux", "armor", "storm", "mixtur", "inharmonic", "aggressive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "armor",
+    "storm",
+    "mixtur",
+    "inharmonic",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.38, "movement": 0.78, "density": 0.82, "space": 0.28, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.38,
+    "movement": 0.78,
+    "density": 0.82,
+    "space": 0.28,
+    "aggression": 0.88
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.62,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.92, "MOVEMENT": 0.78, "COUPLING": 0.5, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.5,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

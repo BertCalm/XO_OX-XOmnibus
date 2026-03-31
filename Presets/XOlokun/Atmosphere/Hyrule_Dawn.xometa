@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Hyrule Dawn",
   "mood": "Atmosphere",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ERA triangle center — equal blend of all three chip eras with slow drift. NES warmth, Genesis bell shimmer, SNES string haze fusing into the ambient world-building atmosphere of classic adventure games.",
-  "tags": ["chip", "atmosphere", "era-blend", "ambient", "rpg", "adventure"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "chip",
+    "atmosphere",
+    "era-blend",
+    "ambient",
+    "rpg",
+    "adventure"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.5,
@@ -97,7 +115,9 @@
       "ow_macroSpace": 0.4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

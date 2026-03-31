@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pod Dialect Scan",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "LFO1 scanning wavetable at 0.55 Hz, depth 0.78 — the orca's dialect evolving. At this rate, the wavetable position sweeps 78% of its range twice per second. High formant intensity (0.82) means the formant network continuously responds to the rapidly changing source spectral profile. Rapidly evolving vocal character.",
-  "tags": ["dialect", "scan", "flux", "wavetable", "formant", "lfo", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dialect",
+    "scan",
+    "flux",
+    "wavetable",
+    "formant",
+    "lfo",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

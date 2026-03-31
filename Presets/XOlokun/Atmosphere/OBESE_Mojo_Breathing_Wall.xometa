@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Mojo Breathing Wall",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.8,
     "MOVEMENT": 0.45,
     "COUPLING": 0.0,
     "SPACE": 0.15
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.4,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.0
     }
   },
-  "tags": ["atmosphere", "pad", "wall", "B015", "slow", "lush", "obese"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "wall",
+    "B015",
+    "slow",
+    "lush",
+    "obese"
+  ],
   "description": "The wall-of-sound pad that proves B015. LFO1 depth at 0.55 with Mojo target — 13 oscillators per voice undulating between warm and cold at a 20-second period. Massive stereo field."
 }

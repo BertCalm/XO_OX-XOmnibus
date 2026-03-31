@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Axolotl Core",
   "mood": "Foundation",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The essential axolotl morph — grounded poly pad with gentle bloom and steady drift.",
-  "tags": ["axolotl", "core", "morph", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "axolotl",
+    "core",
+    "morph",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.48, "density": 0.55, "space": 0.55, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.48,
+    "density": 0.55,
+    "space": 0.55,
+    "aggression": 0.18
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.5,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

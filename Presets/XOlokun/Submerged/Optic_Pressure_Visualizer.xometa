@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The visual engine as pressure sensor: high reactivity reads the weight of the water column as amplitude. FilterCutoff very low \u2014 only the deepest bass energies trigger the visual. Subdivision 4 creates a dense grid that compresses under weight.",
+  "description": "The visual engine as pressure sensor: high reactivity reads the weight of the water column as amplitude. FilterCutoff very low — only the deepest bass energies trigger the visual. Subdivision 4 creates a dense grid that compresses under weight.",
   "tags": [
     "submerged",
     "pressure",

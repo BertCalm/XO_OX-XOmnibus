@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Auto season (accumulator-derived). phi=0.45. As W accumulates, seasonal brightness shifts the filter. The pioneer species adapting to the session \u2014 begins bright (Spring) and evolves.",
+  "description": "Auto season (accumulator-derived). phi=0.45. As W accumulates, seasonal brightness shifts the filter. The pioneer species adapting to the session — begins bright (Spring) and evolves.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.65,

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 algorithm 7 custom ratio at 3.5. LFO wobbles mod index slowly. Free exploration preset.",
+  "description": "OMEGA — algorithm 7 custom ratio at 3.5. LFO wobbles mod index slowly. Free exploration preset.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.42,

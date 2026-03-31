@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "phi=0.85, cutoff=3500 Hz. Phyllotaxis partials with a dark filter \u2014 the geometry becomes ominous rather than precise. Long release for lingering inharmonic tails.",
+  "description": "phi=0.85, cutoff=3500 Hz. Phyllotaxis partials with a dark filter — the geometry becomes ominous rather than precise. Long release for lingering inharmonic tails.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.2,

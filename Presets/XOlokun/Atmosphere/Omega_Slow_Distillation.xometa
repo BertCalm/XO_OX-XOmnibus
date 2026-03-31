@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OMEGA — distillation as ambient event. 60s sustain still has complex FM. Direction toward purity perceptible.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.55,
     "aggression": 0.08
   },
-  "engines": ["Omega"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Slow Distillation",
   "parameters": {
@@ -42,7 +51,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["omega", "fm", "bass", "atmosphere", "drone", "ambient", "distillation"],
+  "tags": [
+    "omega",
+    "fm",
+    "bass",
+    "atmosphere",
+    "drone",
+    "ambient",
+    "distillation"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

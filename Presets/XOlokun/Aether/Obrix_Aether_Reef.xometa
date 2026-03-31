@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Maximum air=1.0 and distance=0.8 \u2014 the furthest spatial position available in OBRIX, combined with the maximum air presence. This preset lives at the edge of perception: you feel it more than hear it. Wavetable (Standard bank) + Sine, with proc1=LP tuned to 1600 Hz for crystalline clarity without harshness. The shimmer quality comes from unison detune 0.15 (subtle beating) and coprime LFOs at 0.083 and 0.127 Hz. Chorus + Reverb create an aether zone: above the water column, in the light-saturated surface layer.",
+  "description": "Maximum air=1.0 and distance=0.8 — the furthest spatial position available in OBRIX, combined with the maximum air presence. This preset lives at the edge of perception: you feel it more than hear it. Wavetable (Standard bank) + Sine, with proc1=LP tuned to 1600 Hz for crystalline clarity without harshness. The shimmer quality comes from unison detune 0.15 (subtle beating) and coprime LFOs at 0.083 and 0.127 Hz. Chorus + Reverb create an aether zone: above the water column, in the light-saturated surface layer.",
   "tags": [
     "obrix",
     "aether",
@@ -32,17 +32,17 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
       "air=1.0 = maximum aether placement",
       "distance=0.8 = far-field spatial positioning"
     ],
-    "revelation": "The aether reef exists above the water \u2014 in the photon-saturated zone where sound becomes light.",
+    "revelation": "The aether reef exists above the water — in the photon-saturated zone where sound becomes light.",
     "god": "Vangelis",
     "flock_note": "Ruby: 'Turn up your monitors. This preset rewards silence around it.'",
-    "diagnosis": "Sound at the threshold of perception \u2014 a reef made of atmosphere rather than calcium."
+    "diagnosis": "Sound at the threshold of perception — a reef made of atmosphere rather than calcium."
   },
   "dna": {
     "brightness": 0.88,

@@ -14,13 +14,20 @@
     "space": 0.35,
     "warmth": 0.82
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Submerged",
   "name": "Acetate Cut",
   "parameters": {
@@ -44,8 +51,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["acetate", "lacquer", "vinyl", "lo-fi", "submerged", "dust"],
+  "tags": [
+    "acetate",
+    "lacquer",
+    "vinyl",
+    "lo-fi",
+    "submerged",
+    "dust"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.35, "M2": 0.12, "M3": 0.0, "M4": 0.72}
+  "macros": {
+    "M1": 0.35,
+    "M2": 0.12,
+    "M3": 0.0,
+    "M4": 0.72
+  }
 }

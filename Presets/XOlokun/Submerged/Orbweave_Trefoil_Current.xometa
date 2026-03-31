@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Trefoil Current (Orbweave)",
   "mood": "Submerged",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Trefoil topology submerged in heavy reverb and low-pass filtering. The 3-strand ring current flows continuously beneath the surface — only the beating between strands rises above the murk.",
-  "tags": ["trefoil", "knot-topology", "submerged", "low-pass", "continuous"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "trefoil",
+    "knot-topology",
+    "submerged",
+    "low-pass",
+    "continuous"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

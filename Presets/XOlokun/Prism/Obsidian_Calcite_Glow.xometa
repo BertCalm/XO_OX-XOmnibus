@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Calcite Glow",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Calcite under UV — soft internal glow, warm-bright balance, resonant bloom.",
-  "tags": ["calcite", "glow", "UV", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "calcite",
+    "glow",
+    "UV",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.6, "movement": 0.32, "density": 0.52, "space": 0.58, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.6,
+    "movement": 0.32,
+    "density": 0.52,
+    "space": 0.58,
+    "aggression": 0.2
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.52,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.32, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

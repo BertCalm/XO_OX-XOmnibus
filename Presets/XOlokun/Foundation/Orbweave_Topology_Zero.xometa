@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Init-adjacent patch with Saw strands and zero braid depth. The 4 strands play in unison \u2014 increase WEAVE macro to hear the knot emerge from silence.",
+  "description": "Init-adjacent patch with Saw strands and zero braid depth. The 4 strands play in unison — increase WEAVE macro to hear the knot emerge from silence.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,

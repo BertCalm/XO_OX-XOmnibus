@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Coherent Shore",
   "mood": "Atmosphere",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High coherence atmospheric shore — the signal stable and wide under coastal breath.",
-  "tags": ["atmosphere", "coherent", "stable", "wide"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "coherent",
+    "stable",
+    "wide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.35, "density": 0.45, "space": 0.72, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.12
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.45,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

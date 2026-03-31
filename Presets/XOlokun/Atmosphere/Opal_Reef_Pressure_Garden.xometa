@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Pressure Garden",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Granular grains dissolve into Reef early reflections at size 0.88, decay 0.76 — the FDN becomes the sustain layer. Dry signal is a sparse percussive grain scatter; the Reef is the pad. Strip the Reef and the garden vanishes.",
-  "tags": ["atmosphere", "granular", "reef", "underwater", "fx_chain:Aquatic", "aquatic-fx-demo"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "granular",
+    "reef",
+    "underwater",
+    "fx_chain:Aquatic",
+    "aquatic-fx-demo"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.65, "movement": 0.32, "density": 0.55, "space": 0.88, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.65,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.88,
+    "aggression": 0.08
+  },
   "parameters": {
     "Opal": {
       "opal_source": 1,
@@ -95,8 +116,15 @@
       "opal_level": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.32, "COUPLING": 0.0, "SPACE": 0.88},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "aqua_reef_mix": 0.72,
     "aqua_reef_size": 0.88,

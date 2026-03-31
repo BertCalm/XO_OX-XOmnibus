@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Anomaly Engine with high texture blend (0.82) and fast tremolo rate (4.5 Hz) applied to OBLONG's square wave \u2014 the CB Lost+Found texture layer sits above the pulse, tremoloing independently of the engine's own LFO. The interaction between engine LFO and anomaly tremolo creates heterodyne beating that makes the pulse feel like two ghosts occupying one body.",
+  "description": "Anomaly Engine with high texture blend (0.82) and fast tremolo rate (4.5 Hz) applied to OBLONG's square wave — the CB Lost+Found texture layer sits above the pulse, tremoloing independently of the engine's own LFO. The interaction between engine LFO and anomaly tremolo creates heterodyne beating that makes the pulse feel like two ghosts occupying one body.",
   "tags": [
     "prism",
     "pulse",

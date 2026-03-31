@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Thermocline Crossing",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The thermal boundary between cold deep and warm shallow water — a physical threshold made audible. FM voice and VA voice ride opposite sides of the HAMMER's neutral zone. LFO1 at 0.05 Hz sweeps the HAMMER from light STRIFE through neutral to light LOVE, simulating the slow ascent through the thermocline. The crossing is never the same twice. Design the journey, not the destination.",
-  "tags": ["ouie", "thermocline", "fm", "va", "lfo-hammer", "journey", "aether", "boundary"],
+  "tags": [
+    "ouie",
+    "thermocline",
+    "fm",
+    "va",
+    "lfo-hammer",
+    "journey",
+    "aether",
+    "boundary"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +33,12 @@
     "flock_note": "Sweep HAMMER manually from -0.4 to +0.4 to feel the crossing. Let LFO1 do it for you to understand patience.",
     "diagnosis": "Excellent entry preset for understanding HAMMER as journey. The 0.05 Hz sweep is slow enough to be meditational. FM voice at fmRatio 1.5 sits just below perfect fifth — consonant in LOVE, complex in STRIFE."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +112,7 @@
     "CARTILAGE": 0.5,
     "CURRENT": 0.2
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

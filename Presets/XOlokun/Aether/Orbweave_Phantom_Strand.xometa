@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Very high-pass filtered sine with Figure-Eight coupling. Only the coupling artifacts survive \u2014 the fundamental is removed, leaving a phantom of the original strands.",
+  "description": "Very high-pass filtered sine with Figure-Eight coupling. Only the coupling artifacts survive — the fundamental is removed, leaving a phantom of the original strands.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.25,

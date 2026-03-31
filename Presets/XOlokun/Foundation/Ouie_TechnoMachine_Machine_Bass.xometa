@@ -2,16 +2,38 @@
   "schema_version": 1,
   "name": "Machine Bass",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "V1 locked to saw suboscillator territory, V2 providing the filter-swept harmonic layer. Filter linked, cutoff low. The machine bass you run under everything else. Reliable, powerful.",
-  "tags": ["techno", "bass", "saw", "filter", "foundation", "suboscillator", "genre-spotlight"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "techno",
+    "bass",
+    "saw",
+    "filter",
+    "foundation",
+    "suboscillator",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.72, "movement": 0.42, "density": 0.88, "space": 0.22, "aggression": 0.68},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.42,
+    "density": 0.88,
+    "space": 0.22,
+    "aggression": 0.68
+  },
   "parameters": {
     "Ouie": {
       "ouie_algo1": 0,
@@ -69,6 +91,13 @@
       "ouie_macroCurrent": 0.45
     }
   },
-  "macros": {"HAMMER": 0.45, "AMPULLAE": 0.35, "CARTILAGE": 0.28, "CURRENT": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HAMMER": 0.45,
+    "AMPULLAE": 0.35,
+    "CARTILAGE": 0.28,
+    "CURRENT": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

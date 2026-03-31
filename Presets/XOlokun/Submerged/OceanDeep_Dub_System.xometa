@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Dub System",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Resonara's revelation. filterCutoff=200, filterRes=0.8, bodyMix=0, bioMix=0. The pure sub plus a resonant peak — the engineer's system check tone, the sound check before the bass drops, the frequency that tests whether the speaker can be trusted.",
-  "tags": ["bass", "submerged", "dub", "system", "sub", "resonant", "pure", "clean", "foundation"],
+  "tags": [
+    "bass",
+    "submerged",
+    "dub",
+    "system",
+    "sub",
+    "resonant",
+    "pure",
+    "clean",
+    "foundation"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "This is the canonical dub system tone discovered during the OCEANDEEP retreat. bodyMix=0, bioMix=0 strips everything away — pure sub oscillator feeding through a resonant peak at 200 Hz. Play it on a proper system. This is how you know the speakers are ready.",
     "diagnosis": "Resonara's Revelation in preset form. filterCutoff=200: the dub standard. filterRes=0.8: the resonant peak that defines the note. bodyMix=0.0: no waveguide coloration — purity. bioMix=0.0: no bioluminescence — silence except for what matters. subLevel=1.0 for maximum sub presence."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.35
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

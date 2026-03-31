@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Topological Eternity",
   "mood": "Aether",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Torus T(5,7), tangle depth 0.97, feedback 0.88. The centerpiece Transcendental preset. The six voice streams circulate at near-full knot matrix weight with 88% energy retention. A sustained note generates an increasingly complex multi-voice field that takes 8–10 minutes to fully decay.",
-  "tags": ["torus", "T57", "eternity", "aether", "infinite", "transcendental", "centerpiece"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "torus",
+    "T57",
+    "eternity",
+    "aether",
+    "infinite",
+    "transcendental",
+    "centerpiece"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Raw blues harmonica in cross-harp position — deep pitch bends on attack, breath noise, overblows on hard velocity. Use aftertouch for breath pressure.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.2,
     "warmth": 0.7
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Crossharp Blues",
   "parameters": {
@@ -55,7 +64,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["harmonica", "blues", "raw", "bend", "breath"],
+  "tags": [
+    "harmonica",
+    "blues",
+    "raw",
+    "bend",
+    "breath"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

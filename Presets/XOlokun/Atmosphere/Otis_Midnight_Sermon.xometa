@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Warm, breathy Hammond with all bass drawbars, slow Leslie, minimal percussion. The organ playing in an empty church at midnight — all warmth, no edges.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.8,
     "warmth": 1.0
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Midnight Sermon",
   "parameters": {
@@ -54,7 +63,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "warm", "atmospheric", "church", "pad"],
+  "tags": [
+    "organ",
+    "warm",
+    "atmospheric",
+    "church",
+    "pad"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

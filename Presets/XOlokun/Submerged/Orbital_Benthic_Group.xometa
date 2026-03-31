@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Benthic Group",
   "mood": "Submerged",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope system at benthic depth — 4 groups staggered in slow dark swell, low spectral mass.",
-  "tags": ["benthic", "group", "swell", "slow", "submerged"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "benthic",
+    "group",
+    "swell",
+    "slow",
+    "submerged"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.58, "movement": 0.18, "density": 0.88, "space": 0.65, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.58,
+    "movement": 0.18,
+    "density": 0.88,
+    "space": 0.65,
+    "aggression": 0.06
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.15,
@@ -46,6 +66,13 @@
       "orb_level": 0.78
     }
   },
-  "macros": {"SPECTRAL": 0.38, "VELOCITY": 0.18, "GROUP": 0.65, "SPACE": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.38,
+    "VELOCITY": 0.18,
+    "GROUP": 0.65,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

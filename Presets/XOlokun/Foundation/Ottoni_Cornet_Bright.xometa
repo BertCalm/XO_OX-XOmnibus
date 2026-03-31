@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Cornet Bright",
   "mood": "Foundation",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Teen cornet with bright narrow bore and moderate vibrato, brass band foundation clarity.",
-  "tags": ["brass", "cornet", "bright", "band", "clear"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "cornet",
+    "bright",
+    "band",
+    "clear"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.6, "movement": 0.3, "density": 0.28, "space": 0.55, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.28,
+    "space": 0.55,
+    "aggression": 0.25
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.0
     }
   },
-  "macros": {"GROW": 0.3, "EMBOUCHURE": 0.55, "LAKE": 0.35, "FOREIGN": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.3,
+    "EMBOUCHURE": 0.55,
+    "LAKE": 0.35,
+    "FOREIGN": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

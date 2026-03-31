@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Bongo Warmth (Ostinato)",
   "mood": "Submerged",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Lo-fi bongo patterns — Cuban warmth submerged in low-pass filter and room reverb. Slow open bongo as kick analog, slap as snare. Muted bongo creates off-beat ghost fills. Recorded in a basement, slightly underwater.",
-  "tags": ["lo-fi", "bongo", "warmth", "submerged", "cuban"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "lo-fi",
+    "bongo",
+    "warmth",
+    "submerged",
+    "cuban"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 72.0,
   "dna": {

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Console Cloud",
   "mood": "Entangled",
-  "engines": ["Overworld", "Opal"],
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "NES and FM chip energy co-drive Opal's grain position and filter — a particle cloud sculpted by retro synthesis, each grain carrying the ghost of a console.",
-  "tags": ["coupling", "Overworld-pair", "chip", "granular", "dialogue", "retro", "FM"],
-  "macroLabels": ["ERA", "GLITCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Overworld-pair",
+    "chip",
+    "granular",
+    "dialogue",
+    "retro",
+    "FM"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-14",

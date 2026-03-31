@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Bandpass Burrow",
   "mood": "Prism",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Narrow bandpass character synth — only the burrowing frequency range survives the filter.",
-  "tags": ["synth", "bandpass", "narrow", "character"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "synth",
+    "bandpass",
+    "narrow",
+    "character"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.3, "density": 0.5, "space": 0.3, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.5
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 3,
@@ -34,6 +54,14 @@
       "poss_macroPlayDead": 0.1
     }
   },
-  "macros": {"BELLY": 0.35, "BITE": 0.65, "SCURRY": 0.3, "TRASH": 0.2, "PLAY DEAD": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.35,
+    "BITE": 0.65,
+    "SCURRY": 0.3,
+    "TRASH": 0.2,
+    "PLAY DEAD": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

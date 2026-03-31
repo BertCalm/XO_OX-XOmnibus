@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Torus Knot (Orbweave)",
   "mood": "Foundation",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Torus topology P=3, Q=2 — three wraps around the hole, two through it. The donut surface manifests as a three-cycle beat structure against a two-cycle undertone. Foundational, robust, mathematical.",
-  "tags": ["torus", "knot-topology", "p3-q2", "donut", "foundational"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "torus",
+    "knot-topology",
+    "p3-q2",
+    "donut",
+    "foundational"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

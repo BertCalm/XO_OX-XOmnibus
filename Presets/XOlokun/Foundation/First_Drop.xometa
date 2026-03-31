@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "First Drop",
+  "name": "First Drop (Overwash) (Overwash)",
   "mood": "Foundation",
-  "engines": ["Overwash"],
+  "engines": [
+    "Overwash"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A single drop of dye before the spread begins — slow, viscous, six partials diffusing gently.",
-  "tags": ["pad", "slow", "contemplative", "diffusion", "foundation"],
-  "macroLabels": ["VISCOSITY", "DIFFUSION", "INTERFERENCE", "WIDTH"],
+  "tags": [
+    "pad",
+    "slow",
+    "contemplative",
+    "diffusion",
+    "foundation"
+  ],
+  "macroLabels": [
+    "VISCOSITY",
+    "DIFFUSION",
+    "INTERFERENCE",
+    "WIDTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.7, "movement": 0.15, "density": 0.45, "space": 0.55, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overwash": {
       "wash_diffusionRate": 0.15,
@@ -44,7 +64,9 @@
       "wash_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": "Overwash"
 }

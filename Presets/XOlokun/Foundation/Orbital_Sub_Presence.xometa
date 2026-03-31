@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Sub Presence",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep sub presence — warm low harmonics, foundational gravity, slow release.",
-  "tags": ["sub", "deep", "warm", "bass"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "sub",
+    "deep",
+    "warm",
+    "bass"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.72, "movement": 0.12, "density": 0.78, "space": 0.3, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.72,
+    "movement": 0.12,
+    "density": 0.78,
+    "space": 0.3,
+    "aggression": 0.2
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.22,
@@ -46,6 +65,13 @@
       "orb_level": 0.79
     }
   },
-  "macros": {"SPECTRAL": 0.22, "VELOCITY": 0.12, "GROUP": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.22,
+    "VELOCITY": 0.12,
+    "GROUP": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

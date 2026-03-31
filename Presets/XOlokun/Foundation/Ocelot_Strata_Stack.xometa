@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Strata Stack",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All four biome layers at equal balance — floor, understory, canopy, emergent in one full stack.",
-  "tags": ["strata", "stack", "foundation", "all-layers", "balanced", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "strata",
+    "stack",
+    "foundation",
+    "all-layers",
+    "balanced",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.6, "movement": 0.45, "density": 0.75, "space": 0.45, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.75,
+    "space": 0.45,
+    "aggression": 0.35
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.5
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

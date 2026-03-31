@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "The figure-eight has a single crossing point where the two loops touch. This preset lives at that crossing — tangle 0.55, entrain 0.4 — close enough to feel the topology but not fully knotted. LFO1 sweeps the tangle back and forth so the crossing point is approached and retreated from continuously.",
-  "dna": { "aggression": 0.15, "brightness": 0.55, "density": 0.57, "movement": 0.35, "space": 0.72, "warmth": 0.48 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.55,
+    "density": 0.57,
+    "movement": 0.35,
+    "space": 0.72,
+    "warmth": 0.48
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Crossing Point",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "figure-eight", "crossing", "evolving", "modulated", "harmonic"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "figure-eight",
+    "crossing",
+    "evolving",
+    "modulated",
+    "harmonic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

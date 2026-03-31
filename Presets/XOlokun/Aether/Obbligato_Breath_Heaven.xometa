@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Breath Heaven",
   "mood": "Aether",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two cor anglais dissolving into plate reverb aether, the obligatory bond at its most divine.",
-  "tags": ["woodwind", "breath", "heaven", "cor anglais", "aether"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "breath",
+    "heaven",
+    "cor anglais",
+    "aether"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.72, "movement": 0.35, "density": 0.35, "space": 0.95, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.35,
+    "space": 0.95,
+    "aggression": 0.05
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 3,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.05
     }
   },
-  "macros": {"BOND": 0.88, "BREATH": 0.68, "WIND": 0.82, "MISCHIEF": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.88,
+    "BREATH": 0.68,
+    "WIND": 0.82,
+    "MISCHIEF": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

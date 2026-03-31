@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 Reese bass via 1.414:1 ratio. Detuned beat frequencies plus slow LFO wobble on mod index.",
+  "description": "OMEGA — Reese bass via 1.414:1 ratio. Detuned beat frequencies plus slow LFO wobble on mod index.",
   "dna": {
     "brightness": 0.42,
     "warmth": 0.45,

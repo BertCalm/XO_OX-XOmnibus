@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Gemstone",
   "mood": "Prism",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Multi-faceted gemstone chord — each unison voice a different facet catching light.",
-  "tags": ["gemstone", "facet", "chord", "multi"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "gemstone",
+    "facet",
+    "chord",
+    "multi"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.9, "warmth": 0.28, "movement": 0.45, "density": 0.72, "space": 0.55, "aggression": 0.22},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 1, "snap_snap": 0.72, "snap_decay": 0.48, "snap_detune": 0.28, "snap_filterCutoff": 13000.0, "snap_filterReso": 0.65, "snap_filterEnvDepth": 0.7, "snap_unison": 6, "snap_sweepDirection": 2, "snap_pitchLock": 0.78, "snap_polyphony": 8, "snap_level": 0.75, "snap_macroDart": 0.45, "snap_macroDepth": 0.62, "snap_macroSchool": 0.72, "snap_macroSurface": 0.72}
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.28,
+    "movement": 0.45,
+    "density": 0.72,
+    "space": 0.55,
+    "aggression": 0.22
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_snap": 0.72,
+      "snap_decay": 0.48,
+      "snap_detune": 0.28,
+      "snap_filterCutoff": 13000.0,
+      "snap_filterReso": 0.65,
+      "snap_filterEnvDepth": 0.7,
+      "snap_unison": 6,
+      "snap_sweepDirection": 2,
+      "snap_pitchLock": 0.78,
+      "snap_polyphony": 8,
+      "snap_level": 0.75,
+      "snap_macroDart": 0.45,
+      "snap_macroDepth": 0.62,
+      "snap_macroSchool": 0.72,
+      "snap_macroSurface": 0.72
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

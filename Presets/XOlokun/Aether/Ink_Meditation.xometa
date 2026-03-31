@@ -5,10 +5,10 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "Maximum ink camouflage: inkCloud=0.95, inkDecay=0.45, stepRate=0.15 Hz (one CA advance every ~6.7 seconds). Each step dissolves into 450ms of ink, blending with den reverb residue. LFO2 on chromAmount at 0.025 Hz creates the only audible movement \u2014 a 40-second brightness cycle. The octopus is present, computing, but invisible. 12-second release.",
+  "description": "Maximum ink camouflage: inkCloud=0.95, inkDecay=0.45, stepRate=0.15 Hz (one CA advance every ~6.7 seconds). Each step dissolves into 450ms of ink, blending with den reverb residue. LFO2 on chromAmount at 0.025 Hz creates the only audible movement — a 40-second brightness cycle. The octopus is present, computing, but invisible. 12-second release.",
   "tags": [
     "ink-cloud-max",
     "steprate-min",

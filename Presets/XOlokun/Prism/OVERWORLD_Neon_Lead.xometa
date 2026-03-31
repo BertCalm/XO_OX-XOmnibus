@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Neon Lead",
+  "name": "Neon Lead (Overworld)",
   "mood": "Prism",
   "engines": [
     "Overworld"

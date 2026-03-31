@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sunken bowl resonator \u2014 bowl body, dark filtered tone, slow thermal breathing, meditative depth",
+  "description": "Sunken bowl resonator — bowl body, dark filtered tone, slow thermal breathing, meditative depth",
   "dna": {
     "aggression": 0.08,
     "brightness": 0.22,
@@ -29,7 +29,7 @@
     "SPACE": 0.88
   },
   "mood": "Atmosphere",
-  "name": "Deep Resonance",
+  "name": "Deep Resonance (Oware)",
   "parameters": {
     "Oware": {
       "owr_material": 0.66,

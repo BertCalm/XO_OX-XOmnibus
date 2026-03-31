@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Frozen Horizon",
+  "name": "Frozen Horizon (Opal)",
   "mood": "Atmosphere",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Icy frost-heavy grain horizon \u2014 wide, cold and still, like looking over a frozen tundra.",
+  "description": "Icy frost-heavy grain horizon — wide, cold and still, like looking over a frozen tundra.",
   "tags": [
     "frozen",
     "frost",

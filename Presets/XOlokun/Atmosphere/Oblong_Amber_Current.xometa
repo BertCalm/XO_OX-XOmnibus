@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Amber Current",
+  "name": "Amber Current (Oblong)",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cushion Pulse OscA at near-square width (shape 0.48), Snout Soft filter for gentlest possible shaping, LFO at 0.06 Hz breathing rate targeting pitch (bob_lfo1Target), long motion envelope. The slow sway of an anemone in a warm water current.",
-  "tags": ["atmosphere", "pulse", "breathing", "current", "oblong", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "pulse",
+    "breathing",
+    "current",
+    "oblong",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.78, "movement": 0.35, "density": 0.48, "space": 0.62, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.78,
+    "movement": 0.35,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.15
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 3,
@@ -56,6 +77,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.62},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

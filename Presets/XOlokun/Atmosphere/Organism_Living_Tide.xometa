@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Living Tide",
+  "name": "Living Tide (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Left Eye Right Eye",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Split mode at C4. Left hand plays warm VA saw below the split — analog territory. Right hand plays Phase Distortion above — digital edge, CZ-series grit. Two different worlds on one keyboard. The cephalofoil's purpose: stereoscopic depth perception from incompatible viewpoints.",
-  "tags": ["foundation", "split", "duophonic", "analog-digital", "contrast", "guru-bin"],
+  "tags": [
+    "foundation",
+    "split",
+    "duophonic",
+    "analog-digital",
+    "contrast",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 2: Two Different Worlds on One Keyboard", "Canon 1: VA Saw Below the Split — Analog Territory; Phase Distortion Above — Digital Edge"],
+    "scripture": [
+      "Verse 2: Two Different Worlds on One Keyboard",
+      "Canon 1: VA Saw Below the Split — Analog Territory; Phase Distortion Above — Digital Edge"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger played both hands and The Tongue described it as 'analog warmth left, digital edge right — the cephalofoil's stereoscopic perspective'.",
     "diagnosis": "Left Eye Right Eye demonstrates OUIE's split mode with maximally contrasting character — VA saw warm analog below C4, Phase Distortion CZ-grit above. Reveals the engine's keyboard architecture as a spatial world map."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -91,5 +108,7 @@
     "CARTILAGE": 0.5,
     "CURRENT": 0.3
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

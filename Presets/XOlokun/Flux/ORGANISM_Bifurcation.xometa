@@ -43,7 +43,7 @@
       "org_subLevel": 0.15,
       "org_filterCutoff": 5500.0,
       "org_filterRes": 0.82,
-      "org_velCutoff": 0.80,
+      "org_velCutoff": 0.8,
       "org_ampAtk": 0.001,
       "org_ampDec": 0.08,
       "org_ampSus": 0.08,
@@ -52,7 +52,7 @@
       "org_lfo1Depth": 0.18,
       "org_lfo2Rate": 5.0,
       "org_lfo2Depth": 0.35,
-      "org_reverbMix": 0.20,
+      "org_reverbMix": 0.2,
       "org_macroRule": 0.57,
       "org_macroSeed": 0.0,
       "org_macroCoupling": 0.0,
@@ -60,10 +60,10 @@
     }
   },
   "macros": {
-    "CHARACTER": 0.90,
+    "CHARACTER": 0.9,
     "MOVEMENT": 0.95,
     "COUPLING": 0.0,
-    "SPACE": 0.20
+    "SPACE": 0.2
   },
   "coupling": {
     "pairs": []

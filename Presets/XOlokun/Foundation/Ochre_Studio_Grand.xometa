@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Studio Grand",
   "mood": "Foundation",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The copper upright at its most polished — studio body, balanced conductivity, professional clarity. For recording and production work.",
-  "tags": ["piano", "copper", "studio", "balanced", "professional", "clean", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "studio",
+    "balanced",
+    "professional",
+    "clean",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

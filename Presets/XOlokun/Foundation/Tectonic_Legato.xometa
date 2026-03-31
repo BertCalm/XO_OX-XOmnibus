@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Tectonic Legato",
   "mood": "Foundation",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Legato GENDY bass — slow waveform drift like tectonic plates shifting. Maqam Nahawand (harmonic minor) anchors pitch while breakpoints settle into monolithic stability.",
-  "tags": ["gendy", "legato", "bass", "foundation", "maqam"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "legato",
+    "bass",
+    "foundation",
+    "maqam"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 12,
@@ -45,7 +62,9 @@
       "oracle_macroDrift": 0.1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.35,

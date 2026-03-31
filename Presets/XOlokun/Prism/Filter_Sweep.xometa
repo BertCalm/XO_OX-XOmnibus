@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Filter Sweep",
+  "name": "Filter Sweep (Oblong)",
   "mood": "Prism",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "LP filter sweeping through the amber spectrum \u2014 classic synth prism effect.",
+  "description": "LP filter sweeping through the amber spectrum — classic synth prism effect.",
   "tags": [
     "prism",
     "filter-sweep",

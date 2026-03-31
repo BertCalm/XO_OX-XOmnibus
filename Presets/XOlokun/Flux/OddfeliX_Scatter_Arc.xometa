@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Scatter Arc",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Arcing scatter arp — school arcs away from center in both directions simultaneously.",
-  "tags": ["scatter", "arc", "both", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "scatter",
+    "arc",
+    "both",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.86, "warmth": 0.2, "movement": 0.86, "density": 0.45, "space": 0.4, "aggression": 0.45},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 2, "snap_snap": 0.88, "snap_decay": 0.1, "snap_detune": 0.1, "snap_filterCutoff": 14000.0, "snap_filterReso": 0.42, "snap_filterEnvDepth": 0.78, "snap_unison": 2, "snap_sweepDirection": 2, "snap_pitchLock": 0.92, "snap_polyphony": 6, "snap_level": 0.82, "snap_macroDart": 0.9, "snap_macroDepth": 0.38, "snap_macroSchool": 0.35, "snap_macroSurface": 0.55}
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.2,
+    "movement": 0.86,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.45
   },
-  "macros": {"CHARACTER": 0.76, "MOVEMENT": 0.86, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_snap": 0.88,
+      "snap_decay": 0.1,
+      "snap_detune": 0.1,
+      "snap_filterCutoff": 14000.0,
+      "snap_filterReso": 0.42,
+      "snap_filterEnvDepth": 0.78,
+      "snap_unison": 2,
+      "snap_sweepDirection": 2,
+      "snap_pitchLock": 0.92,
+      "snap_polyphony": 6,
+      "snap_level": 0.82,
+      "snap_macroDart": 0.9,
+      "snap_macroDepth": 0.38,
+      "snap_macroSchool": 0.35,
+      "snap_macroSurface": 0.55
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.76,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

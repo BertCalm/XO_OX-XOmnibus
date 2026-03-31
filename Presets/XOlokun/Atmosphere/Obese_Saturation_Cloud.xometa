@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Saturation Cloud",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High saturation drive spread wide into a long-release atmospheric texture — harmonic distortion products cloud the signal like warm overcast light through humidity.",
-  "tags": ["atmosphere", "saturation", "cloud", "harmonic", "overcast"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "saturation",
+    "cloud",
+    "harmonic",
+    "overcast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.75, "movement": 0.15, "density": 0.8, "space": 0.7, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.8,
+    "space": 0.7,
+    "aggression": 0.35
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.55,
@@ -46,6 +66,13 @@
       "fat_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

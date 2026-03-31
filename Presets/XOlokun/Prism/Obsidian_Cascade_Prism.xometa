@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Cascade Prism",
+  "name": "Cascade Prism (Obsidian)",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cascade system refracted through prism — multiple cascade levels creating spectral spray of mineral harmonics.",
-  "tags": ["cascade", "prism", "spectral", "mineral", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "cascade",
+    "prism",
+    "spectral",
+    "mineral",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.38, "movement": 0.38, "density": 0.62, "space": 0.45, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.38,
+    "movement": 0.38,
+    "density": 0.62,
+    "space": 0.45,
+    "aggression": 0.42
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.48,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.45
     }
   },
-  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

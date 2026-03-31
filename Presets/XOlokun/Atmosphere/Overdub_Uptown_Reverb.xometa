@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Uptown Reverb",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Polished reverb wash from a rooftop dancehall — the uptown sound of Kingston nights.",
-  "tags": ["atmosphere", "dancehall", "reverb", "uptown", "polished", "night"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "dancehall",
+    "reverb",
+    "uptown",
+    "polished",
+    "night"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.12, "COUPLING": 0.6, "SPACE": 0.68},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.42, "warmth": 0.82, "movement": 0.18, "density": 0.48, "space": 0.72, "aggression": 0.15}
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.6,
+    "SPACE": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.82,
+    "movement": 0.18,
+    "density": 0.48,
+    "space": 0.72,
+    "aggression": 0.15
+  }
 }

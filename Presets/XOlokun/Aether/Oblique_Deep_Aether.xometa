@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Deep Aether",
+  "name": "Deep Aether (Oblique)",
   "mood": "Aether",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep prismatic aether — all parameters at minimum except space, pure void color.",
-  "tags": ["deep", "aether", "void", "minimal"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "deep",
+    "aether",
+    "void",
+    "minimal"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.38, "movement": 0.05, "density": 0.12, "space": 0.98, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.38,
+    "movement": 0.05,
+    "density": 0.12,
+    "space": 0.98,
+    "aggression": 0.02
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.98
     }
   },
-  "macros": {"BOUNCE": 0.05, "COLOR": 0.65, "FOLD": 0.08, "SPACE": 0.98},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.05,
+    "COLOR": 0.65,
+    "FOLD": 0.08,
+    "SPACE": 0.98
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

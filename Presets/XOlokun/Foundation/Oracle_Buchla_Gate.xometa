@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Buchla Gate",
   "mood": "Foundation",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Homage to Buchla: fast attack, clipped release, Cauchy distribution at the gate.",
-  "tags": ["buchla", "foundation", "percussive", "gate"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "buchla",
+    "foundation",
+    "percussive",
+    "gate"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.6, "density": 0.5, "space": 0.3, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.6
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.6,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.3
     }
   },
-  "macros": {"DRIFT": 0.55, "EVOLUTION": 0.6, "COUPLING": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.55,
+    "EVOLUTION": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

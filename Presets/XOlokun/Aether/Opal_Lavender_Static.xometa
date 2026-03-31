@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Lavender Static",
   "mood": "Aether",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Extremely sparse grains (density=1.5) with significant pitch scatter (12 semitones) and very long reverb between grains. At 12 voices, approximately 18 grains per second total. Pitch scatter at 12 semitones means each grain can arrive at any pitch within a full octave range. The silence between grains is as compositional as the grains themselves. Silence is the instrument.",
-  "tags": ["sparse", "silence", "pitch-scatter", "aether", "lavender", "gaps", "compositional-silence"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "sparse",
+    "silence",
+    "pitch-scatter",
+    "aether",
+    "lavender",
+    "gaps",
+    "compositional-silence"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

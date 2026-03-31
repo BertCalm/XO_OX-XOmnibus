@@ -2,20 +2,35 @@
   "schema_version": 1,
   "name": "Glass Under Stress",
   "mood": "Crystalline",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High thermal shock without triggering the crack mechanic (fragility low). The glass that looks intact but is under stress — every mode slightly detuned in a different direction, each voice with its own random thermal offset. Threatening but not broken. Yet.",
-  "tags": ["glass", "thermal", "stress", "crystalline", "shimmer", "detuned", "unstable"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glass",
+    "thermal",
+    "stress",
+    "crystalline",
+    "shimmer",
+    "detuned",
+    "unstable"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.50,
-    "warmth": 0.20,
-    "movement": 0.40,
-    "density": 0.20,
-    "space": 0.80,
+    "brightness": 0.5,
+    "warmth": 0.2,
+    "movement": 0.4,
+    "density": 0.2,
+    "space": 0.8,
     "aggression": 0.15
   },
   "parameters": {
@@ -29,8 +44,8 @@
       "opal2_bodySize": 0.55,
       "opal2_inharmonicity": 0.0,
       "opal2_shimmerAmount": 0.35,
-      "opal2_thermalShock": 0.80,
-      "opal2_hfNoise": 0.10,
+      "opal2_thermalShock": 0.8,
+      "opal2_hfNoise": 0.1,
       "opal2_filterEnvAmount": 0.22,
       "opal2_crystalDrive": 0.0,
       "opal2_sustainPedal": 0.0,
@@ -40,9 +55,9 @@
       "opal2_macroCoupling": 0.0,
       "opal2_macroSpace": 0.0,
       "opal2_lfo1Rate": 0.03,
-      "opal2_lfo1Depth": 0.10,
+      "opal2_lfo1Depth": 0.1,
       "opal2_lfo1Shape": 0,
-      "opal2_lfo2Rate": 0.50,
+      "opal2_lfo2Rate": 0.5,
       "opal2_lfo2Depth": 0.0,
       "opal2_lfo2Shape": 1
     }

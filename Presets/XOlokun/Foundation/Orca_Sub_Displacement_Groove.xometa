@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Sub Displacement Groove",
   "mood": "Foundation",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Breach ratio at maximum (20.0) + threshold at -6 dB — violent physical displacement as rhythmic element. At this combination the sidechain compressor fires instantly on every note above a very low threshold. The hard knee + 20:1 ratio produces 50ms complete displacement. Used rhythmically, the timing of notes is stamped into the mix by breach physics.",
-  "tags": ["breach", "sidechain", "groove", "foundation", "displacement", "rhythmic", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "breach",
+    "sidechain",
+    "groove",
+    "foundation",
+    "displacement",
+    "rhythmic",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

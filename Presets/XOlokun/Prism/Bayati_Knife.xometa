@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Bayati Knife",
   "mood": "Prism",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maqam Bayati lead — devotional intervals cut bright through the mix. High distribution Cauchy walk for edge, fast stochastic envelope shapes percussive attack.",
-  "tags": ["gendy", "lead", "bayati", "maqam", "prism", "cutting"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "lead",
+    "bayati",
+    "maqam",
+    "prism",
+    "cutting"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 14,
@@ -45,7 +63,9 @@
       "oracle_macroDrift": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.75,

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Sonatas Interludes",
   "mood": "Prism",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cage's masterpiece configuration: bolt preparation at the 1/3 point with moderate depth. Some partials rattle, some ring pure, some vanish. The result sounds like a gamelan that went to music school — pitched percussion with unexpected timbral turns at every register. Play slowly; let each note reveal its preparation.",
-  "tags": ["prepared", "bolt", "cage", "gamelan", "prism", "pitched-percussion", "sonata"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "prepared",
+    "bolt",
+    "cage",
+    "gamelan",
+    "prism",
+    "pitched-percussion",
+    "sonata"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.6,

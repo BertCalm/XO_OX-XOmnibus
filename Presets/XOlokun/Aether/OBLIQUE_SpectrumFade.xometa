@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Spectrum Fade",
   "mood": "Aether",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oblique dissolving into pure spectral light — very slow LFO1 at 0.01 Hz at the D005 floor, maximum prism depth, long attack and release. The bounce engine completely silent. As the LFO slowly rotates the prism, the six spectral facets drift in and out of the stereo field like colours separating at sunset. An ether preset for long-form composition.",
-  "tags": ["aether", "ambient", "slow", "spectral", "dissolving", "minimal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "ambient",
+    "slow",
+    "spectral",
+    "dissolving",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -62,6 +76,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

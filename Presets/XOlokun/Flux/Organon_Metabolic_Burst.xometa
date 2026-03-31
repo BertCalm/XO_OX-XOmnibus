@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Metabolic Burst",
   "mood": "Flux",
-  "engines": ["Organon"],
+  "engines": [
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Metabolic rate spiking under sudden load — the cell burning glucose at maximum rate.",
-  "tags": ["metabolic", "burst", "flux", "spike", "high-rate", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "metabolic",
+    "burst",
+    "flux",
+    "spike",
+    "high-rate",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.45, "movement": 0.88, "density": 0.72, "space": 0.32, "aggression": 0.78},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.45,
+    "movement": 0.88,
+    "density": 0.72,
+    "space": 0.32,
+    "aggression": 0.78
+  },
   "parameters": {
     "Organon": {
       "organon_metabolicRate": 0.88,
@@ -25,6 +46,8 @@
       "organon_lockIn": 0.2
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

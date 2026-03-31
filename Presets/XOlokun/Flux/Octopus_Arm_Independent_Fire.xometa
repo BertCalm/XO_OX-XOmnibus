@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Arm Independent Fire",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Each arm firing its LFO independently at its prime ratio — simultaneously a stutter rhythm, a filter sweep, a pitch vibrato, a panning event, and a sucker burst. A controlled polyphonic chaos of independent arm-thoughts.",
-  "tags": ["octopus", "flux", "arms", "fire", "independent", "polyrhythm", "chaotic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "flux",
+    "arms",
+    "fire",
+    "independent",
+    "polyrhythm",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.85,

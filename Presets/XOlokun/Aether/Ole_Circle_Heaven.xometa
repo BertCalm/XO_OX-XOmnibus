@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Circle Heaven",
   "mood": "Aether",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full circle alliance dissolved into aether, the community beyond the physical world.",
-  "tags": ["latin", "circle", "heaven", "community", "aether"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "circle",
+    "heaven",
+    "community",
+    "aether"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.72, "movement": 0.45, "density": 0.45, "space": 0.95, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.72,
+    "movement": 0.45,
+    "density": 0.45,
+    "space": 0.95,
+    "aggression": 0.08
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 2,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.78
     }
   },
-  "macros": {"DRAMA": 0.62, "FUEGO": 0.62, "ISLA": 0.82, "SIDES": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.62,
+    "FUEGO": 0.62,
+    "ISLA": 0.82,
+    "SIDES": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

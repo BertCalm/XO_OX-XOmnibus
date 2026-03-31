@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Night Crawl",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow-moving synth bass with legato glide — crawls through the night with muted attack and tape drive warmth.",
-  "tags": ["bass", "legato", "slow", "tape"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "legato",
+    "slow",
+    "tape"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.75, "movement": 0.3, "density": 0.55, "space": 0.3, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.3,
+    "aggression": 0.25
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 1,
@@ -34,6 +54,14 @@
       "poss_macroPlayDead": 0.2
     }
   },
-  "macros": {"BELLY": 0.6, "BITE": 0.25, "SCURRY": 0.35, "TRASH": 0.15, "PLAY DEAD": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.6,
+    "BITE": 0.25,
+    "SCURRY": 0.35,
+    "TRASH": 0.15,
+    "PLAY DEAD": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

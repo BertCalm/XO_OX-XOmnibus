@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Micro Tabla (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Techno micro-rhythm via tabla — tabla na + tin patterns create fast subdivision fills between downbeats. The tabla's four articulations provide a natural 4-level velocity variation grid. GATHER locks the micro-timing.",
-  "tags": ["techno", "tabla", "micro-rhythm", "subdivision", "velocity-grid"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "tabla",
+    "micro-rhythm",
+    "subdivision",
+    "velocity-grid"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 130.0,
   "dna": {

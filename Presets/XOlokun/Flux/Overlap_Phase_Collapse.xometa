@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Six voices drifting in phase until a critical threshold \u2014 then simultaneous collapse and restart. A natural Kuramoto phase transition mapped to audio. The moment of collapse is the sound.",
+  "description": "Six voices drifting in phase until a critical threshold — then simultaneous collapse and restart. A natural Kuramoto phase transition mapped to audio. The moment of collapse is the sound.",
   "tags": [
     "phase",
     "collapse",

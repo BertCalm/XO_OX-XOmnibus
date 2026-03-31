@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "E Piano 1983 Classic",
   "mood": "Foundation",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The DX7 Electric Piano 1 — the sound that defined 1980s pop production. Series algorithm, ratio 1.0, index decays rapidly after attack. Bright, glassy, cold. The sound that replaced Rhodes on every pop record from 1983–1991.",
-  "tags": ["dx7", "fm", "electric-piano", "1983", "foundation", "80s-classic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dx7",
+    "fm",
+    "electric-piano",
+    "1983",
+    "foundation",
+    "80s-classic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Echo-Location Bloom",
   "mood": "Entangled",
-  "engines": ["Orca", "Opal"],
+  "engines": [
+    "Orca",
+    "Opal"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "ORCA echolocation click train (28 Hz, resonance 0.95) fires into OPAL's granular engine via EnvToMorph coupling. OPAL's grain pitch follows ORCA's mod envelope arc. The sonar locates acoustic space; OPAL samples what the sonar found and holds it in granular suspension. Every ORCA note search generates an OPAL memory.",
-  "tags": ["orca", "opal", "entangled", "echolocation", "granular", "sonar", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "orca",
+    "opal",
+    "entangled",
+    "echolocation",
+    "granular",
+    "sonar",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.38,
     "MOVEMENT": 0.62,

@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Kelp Sway",
   "mood": "Prism",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tide in tremolo mode (mode 0) at 0.35 Hz gives the supersaw an organic swell that velocity modulates — harder playing pushes the tremolo depth into amplitude gating. The Tide stereo phase at 60 degrees produces a kelp-field sway rather than simple pulsing: each side breathes slightly out of phase.",
-  "tags": ["prism", "tremolo", "tide", "kelp", "sway", "supersaw", "fx_chain:Aquatic", "aquatic-fx-demo"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "prism",
+    "tremolo",
+    "tide",
+    "kelp",
+    "sway",
+    "supersaw",
+    "fx_chain:Aquatic",
+    "aquatic-fx-demo"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.55, "movement": 0.72, "density": 0.42, "space": 0.65, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.55,
+    "movement": 0.72,
+    "density": 0.42,
+    "space": 0.65,
+    "aggression": 0.18
+  },
   "parameters": {
     "OpenSky": {
       "sky_sawSpread": 0.42,
@@ -62,8 +85,15 @@
       "sky_modSlot2Amt": 0.0
     }
   },
-  "macros": {"RISE": 0.55, "WIDTH": 0.65, "GLOW": 0.42, "AIR": 0.65},
-  "coupling": {"pairs": []},
+  "macros": {
+    "RISE": 0.55,
+    "WIDTH": 0.65,
+    "GLOW": 0.42,
+    "AIR": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "aqua_tide_mix": 0.62,
     "aqua_tide_mode": 0,

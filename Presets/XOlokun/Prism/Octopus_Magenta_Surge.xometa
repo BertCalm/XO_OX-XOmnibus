@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Magenta Surge",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A full chromatophore expansion in the engine's signature color. The morphing filter sweeps from low to high in vibrant, saturated cycles. Arms pumping at medium pace. The octopus showing off its most spectacular color display.",
-  "tags": ["octopus", "prism", "magenta", "chromatophore", "color", "bright", "vibrant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "magenta",
+    "chromatophore",
+    "color",
+    "bright",
+    "vibrant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.88,

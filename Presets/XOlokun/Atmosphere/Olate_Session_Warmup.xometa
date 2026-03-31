@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OLATE \u2014 session aging demonstration. Both LFOs drift slowly; bass evolves tonally over 20 minutes.",
+  "description": "OLATE — session aging demonstration. Both LFOs drift slowly; bass evolves tonally over 20 minutes.",
   "dna": {
     "brightness": 0.32,
     "warmth": 0.82,

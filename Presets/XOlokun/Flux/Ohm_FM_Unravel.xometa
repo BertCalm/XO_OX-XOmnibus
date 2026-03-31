@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "FM Unravel",
   "mood": "Flux",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High FM index unraveling organic pluck into metallic inharmonic flutter.",
-  "tags": ["flux", "FM", "inharmonic", "metallic"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "flux",
+    "FM",
+    "inharmonic",
+    "metallic"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.75,
     "MEADOW": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OSIER — play this after an extended session. Cold: four individuals. 30 minutes in: ensemble lock.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.72,
     "aggression": 0.05
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Entangled",
   "name": "Long Session Quartet",
   "parameters": {
@@ -42,7 +51,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["osier", "chamber", "quartet", "entangled", "session", "companion", "affinity"],
+  "tags": [
+    "osier",
+    "chamber",
+    "quartet",
+    "entangled",
+    "session",
+    "companion",
+    "affinity"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

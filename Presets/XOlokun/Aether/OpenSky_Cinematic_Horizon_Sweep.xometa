@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Horizon Sweep",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "7-voice supersaw through shimmer reverb with octave shimmer at full balance. Filter sweeps open over 4 bars. This is the establishing shot — wide sky, single chord, everything building.",
-  "tags": ["cinematic", "supersaw", "shimmer", "establishing", "sweep", "genre-spotlight"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "cinematic",
+    "supersaw",
+    "shimmer",
+    "establishing",
+    "sweep",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.58, "movement": 0.55, "density": 0.78, "space": 0.95, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.58,
+    "movement": 0.55,
+    "density": 0.78,
+    "space": 0.95,
+    "aggression": 0.12
+  },
   "parameters": {
     "OpenSky": {
       "sky_sawSpread": 0.82,
@@ -63,6 +84,13 @@
       "sky_modSlot2Amt": 0.28
     }
   },
-  "macros": {"RISE": 0.72, "WIDTH": 0.88, "GLOW": 0.65, "AIR": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "RISE": 0.72,
+    "WIDTH": 0.88,
+    "GLOW": 0.65,
+    "AIR": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

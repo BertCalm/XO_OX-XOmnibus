@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Dual-source architecture at maximum contrast: Wavetable src1 (harmonic content) against deep Sine src2 (pure sub), blend set to equal. The gradient is physical \u2014 as you descend, harmonic content compresses into fundamental. proc1=LP (350 Hz, moderate reso) on the wavetable content; proc2=HP (55 Hz) keeps the sub clean from mud. Four full modulation slots: Env->FilterCutoff breathes, LFO->WavetablePos morphs the harmonic content slowly, Velocity->Volume responds to strike force, Aftertouch->FilterReso inflates pressure. space=0.85 is the spec.",
+  "description": "Dual-source architecture at maximum contrast: Wavetable src1 (harmonic content) against deep Sine src2 (pure sub), blend set to equal. The gradient is physical — as you descend, harmonic content compresses into fundamental. proc1=LP (350 Hz, moderate reso) on the wavetable content; proc2=HP (55 Hz) keeps the sub clean from mud. Four full modulation slots: Env->FilterCutoff breathes, LFO->WavetablePos morphs the harmonic content slowly, Velocity->Volume responds to strike force, Aftertouch->FilterReso inflates pressure. space=0.85 is the spec.",
   "tags": [
     "obrix",
     "submerged",

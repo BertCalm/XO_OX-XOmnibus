@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Trefoil at low-moderate tangle (0.4) with maximum warmth — high dampening (0.7), 28ms delay base, filter at 4kHz, diffusion at 0.65. The crossing points are softened to velvet. Long 6-second release lets the resonances trail into silence gracefully. For producers who need textural pads that don't cut through.",
-  "dna": { "aggression": 0.05, "brightness": 0.35, "density": 0.55, "movement": 0.2, "space": 0.75, "warmth": 0.65 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.35,
+    "density": 0.55,
+    "movement": 0.2,
+    "space": 0.75,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Velvet Crossing",
   "parameters": {
@@ -58,7 +74,16 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "trefoil", "warm", "soft", "velvet", "ambient", "dark"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "trefoil",
+    "warm",
+    "soft",
+    "velvet",
+    "ambient",
+    "dark"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

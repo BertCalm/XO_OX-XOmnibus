@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Target Zero",
   "mood": "Flux",
-  "engines": ["Outwit"],
+  "engines": [
+    "Outwit"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "SOLVE active with target DNA set to near-silence — the machine hunts toward zero energy. As it converges, arms step slower, filters close, levels drop. A system committing to silence.",
-  "tags": ["experimental", "solve", "silence", "converge", "conceptual", "genre-spotlight"],
-  "macroLabels": ["SOLVE", "SYNAPSE", "CHROMATOPHORE", "DEN"],
+  "tags": [
+    "experimental",
+    "solve",
+    "silence",
+    "converge",
+    "conceptual",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "SOLVE",
+    "SYNAPSE",
+    "CHROMATOPHORE",
+    "DEN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.32, "warmth": 0.42, "movement": 0.55, "density": 0.45, "space": 0.72, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.42,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.35
+  },
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 110,
@@ -112,6 +133,13 @@
       "owit_macroDen": 0.45
     }
   },
-  "macros": {"SOLVE": 0.88, "SYNAPSE": 0.35, "CHROMATOPHORE": 0.42, "DEN": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SOLVE": 0.88,
+    "SYNAPSE": 0.35,
+    "CHROMATOPHORE": 0.42,
+    "DEN": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

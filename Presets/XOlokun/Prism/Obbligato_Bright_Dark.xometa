@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Bright Dark",
   "mood": "Prism",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Voice A bright delay vs voice B dark delay, the prism splitting woodwind into light and shadow.",
-  "tags": ["woodwind", "contrast", "bright", "dark", "prismatic"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "contrast",
+    "bright",
+    "dark",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.45, "density": 0.45, "space": 0.7, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.2
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 0,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.25
     }
   },
-  "macros": {"BOND": 0.44, "BREATH": 0.58, "WIND": 0.48, "MISCHIEF": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.44,
+    "BREATH": 0.58,
+    "WIND": 0.48,
+    "MISCHIEF": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

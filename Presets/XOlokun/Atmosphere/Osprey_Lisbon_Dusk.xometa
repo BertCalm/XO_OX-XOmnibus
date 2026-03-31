@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Lisbon Dusk",
   "mood": "Atmosphere",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tagus river at dusk — Portuguese warmth with harbor reverb and evening sea fog.",
-  "tags": ["atmosphere", "lisbon", "portuguese", "dusk"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "lisbon",
+    "portuguese",
+    "dusk"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.72, "movement": 0.35, "density": 0.5, "space": 0.7, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.12
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.5,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

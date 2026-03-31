@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Fracture Wave",
   "mood": "Flux",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fracture macro mid-range with undulating drift, breaking surface waves caught in micro-time.",
-  "tags": ["harp", "fracture", "wave", "breaking", "surface"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "fracture",
+    "wave",
+    "breaking",
+    "surface"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.65, "density": 0.55, "space": 0.72, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.35
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 6,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.35
     }
   },
-  "macros": {"PLUCK": 0.55, "SURFACE": 0.55, "FRACTURE": 0.7, "DIVINE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.55,
+    "SURFACE": 0.55,
+    "FRACTURE": 0.7,
+    "DIVINE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

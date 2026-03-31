@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Drive Prism",
+  "name": "Drive Prism (Ottoni)",
   "mood": "Prism",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum drive on all three voices creates harmonic saturation, the brass prism overdriven.",
-  "tags": ["brass", "drive", "saturation", "harmonic", "prismatic"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "drive",
+    "saturation",
+    "harmonic",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.62, "movement": 0.5, "density": 0.58, "space": 0.62, "aggression": 0.48},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.62,
+    "movement": 0.5,
+    "density": 0.58,
+    "space": 0.62,
+    "aggression": 0.48
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.18
     }
   },
-  "macros": {"GROW": 0.62, "EMBOUCHURE": 0.65, "LAKE": 0.55, "FOREIGN": 0.18},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.62,
+    "EMBOUCHURE": 0.65,
+    "LAKE": 0.55,
+    "FOREIGN": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

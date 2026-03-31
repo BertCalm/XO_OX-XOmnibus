@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Red Storm",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Red storm — warm harmonic chaos, fast group modulation, aggressive FM scatter.",
-  "tags": ["red", "storm", "aggressive", "FM"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "red",
+    "storm",
+    "aggressive",
+    "FM"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.65, "movement": 0.88, "density": 0.72, "space": 0.25, "aggression": 0.82},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.65,
+    "movement": 0.88,
+    "density": 0.72,
+    "space": 0.25,
+    "aggression": 0.82
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.72,
@@ -46,6 +65,13 @@
       "orb_level": 0.75
     }
   },
-  "macros": {"SPECTRAL": 0.72, "VELOCITY": 0.88, "GROUP": 0.0, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.72,
+    "VELOCITY": 0.88,
+    "GROUP": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

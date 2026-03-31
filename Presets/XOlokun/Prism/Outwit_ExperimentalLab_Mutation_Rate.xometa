@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Mutation Rate",
   "mood": "Prism",
-  "engines": ["Outwit"],
+  "engines": [
+    "Outwit"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Arms run complementary CA rules with high synapse — emergent polyrhythm that no human wrote. Add CHROMATOPHORE macro to shift the timbral target mid-performance. A living system.",
-  "tags": ["experimental", "cellular-automata", "emergent", "polyrhythm", "generative", "genre-spotlight"],
-  "macroLabels": ["SOLVE", "SYNAPSE", "CHROMATOPHORE", "DEN"],
+  "tags": [
+    "experimental",
+    "cellular-automata",
+    "emergent",
+    "polyrhythm",
+    "generative",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "SOLVE",
+    "SYNAPSE",
+    "CHROMATOPHORE",
+    "DEN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.38, "movement": 0.88, "density": 0.72, "space": 0.55, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.38,
+    "movement": 0.88,
+    "density": 0.72,
+    "space": 0.55,
+    "aggression": 0.65
+  },
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 110,
@@ -112,6 +133,13 @@
       "owit_macroDen": 0.42
     }
   },
-  "macros": {"SOLVE": 0.45, "SYNAPSE": 0.72, "CHROMATOPHORE": 0.78, "DEN": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SOLVE": 0.45,
+    "SYNAPSE": 0.72,
+    "CHROMATOPHORE": 0.78,
+    "DEN": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

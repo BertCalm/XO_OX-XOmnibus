@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Unison Cathedral",
   "mood": "Atmosphere",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Both voices on VA saw with 4x unison each. HAMMER at +0.95 — near-maximum LOVE merges the two unison stacks into a massive 8-oscillator supersaw wall. Filters linked, cutoff at 4200 Hz for warmth without darkness. Slow attack (0.6s) and golden ratio release (1.618s). Breathing LFO at 0.01 Hz (100-second cycle) with depth 0.3 creates glacial filter movement. CURRENT at 0.6 for wide stereo. The sound of a cathedral where every stone is singing.",
-  "tags": ["supersaw", "massive", "pad", "unison", "cathedral", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "supersaw",
+    "massive",
+    "pad",
+    "unison",
+    "cathedral",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.6
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

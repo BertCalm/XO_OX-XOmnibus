@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Spectral Morph",
+  "name": "Spectral Morph (Orbital)",
   "mood": "Prism",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Mid-morph spectral sweep \u2014 harmonic to inharmonic crossfade with formant animation.",
+  "description": "Mid-morph spectral sweep — harmonic to inharmonic crossfade with formant animation.",
   "tags": [
     "morph",
     "spectral",

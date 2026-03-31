@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "snap=1.0, DART=1.0, decay=0.08 — the fastest feliX possible. 24-semitone downward sweep in under 50ms, maximum tanh saturation, fast LFO cutting through a bright BPF. Every hit is a wall of electric blue. For rhythmic percussion programming where impact matters above all else.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.15,
     "aggression": 0.95
   },
-  "engines": ["OddfeliX"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
   "macros": {
     "CHARACTER": 1.0,
     "MOVEMENT": 0.7,
@@ -47,7 +56,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "oddfelix", "extreme", "snap", "percussion", "aggressive", "impact"],
+  "tags": [
+    "flux",
+    "oddfelix",
+    "extreme",
+    "snap",
+    "percussion",
+    "aggressive",
+    "impact"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

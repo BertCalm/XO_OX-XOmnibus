@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Feedback Texture Safe",
   "mood": "Aether",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Algorithm 2 (Feedback) at safe levels — opco_feedback capped at 0.12 to prevent feedbackState runaway (seance finding: unbounded growth above ~0.4). The self-modulating carrier creates subtle metallic texture without instability.",
-  "tags": ["fm", "feedback", "texture", "algorithm-2", "aether", "safe"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fm",
+    "feedback",
+    "texture",
+    "algorithm-2",
+    "aether",
+    "safe"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

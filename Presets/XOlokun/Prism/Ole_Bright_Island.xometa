@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Bright Island",
   "mood": "Prism",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Isla and fuego macros in equal peak, the bright tropical island refracted through flamenco fire.",
-  "tags": ["latin", "island", "bright", "tropical", "prism"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "island",
+    "bright",
+    "tropical",
+    "prism"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.68, "movement": 0.58, "density": 0.52, "space": 0.65, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.68,
+    "movement": 0.58,
+    "density": 0.52,
+    "space": 0.65,
+    "aggression": 0.3
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 0,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.45
     }
   },
-  "macros": {"DRAMA": 0.52, "FUEGO": 0.85, "ISLA": 0.85, "SIDES": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.52,
+    "FUEGO": 0.85,
+    "ISLA": 0.85,
+    "SIDES": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

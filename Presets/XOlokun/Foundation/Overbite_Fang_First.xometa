@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Fang First",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sharp attack transient bass that leads with teeth — fast bite and punchy mid sustain.",
-  "tags": ["bass", "punchy", "attack", "transient"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "punchy",
+    "attack",
+    "transient"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.55, "movement": 0.2, "density": 0.5, "space": 0.2, "aggression": 0.7},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.7
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -36,6 +56,14 @@
       "poss_macroPlayDead": 0.05
     }
   },
-  "macros": {"BELLY": 0.4, "BITE": 0.85, "SCURRY": 0.15, "TRASH": 0.3, "PLAY DEAD": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.4,
+    "BITE": 0.85,
+    "SCURRY": 0.15,
+    "TRASH": 0.3,
+    "PLAY DEAD": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

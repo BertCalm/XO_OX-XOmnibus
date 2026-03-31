@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Light Tension",
   "mood": "Aether",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Surface tension snap at the air-water boundary — extreme treble with very low level.",
-  "tags": ["tension", "surface", "aether", "extreme"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tension",
+    "surface",
+    "aether",
+    "extreme"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.95, "warmth": 0.08, "movement": 0.42, "density": 0.15, "space": 0.85, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.08,
+    "movement": 0.42,
+    "density": 0.15,
+    "space": 0.85,
+    "aggression": 0.08
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.98
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Groove Sediment",
   "mood": "Submerged",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Dub bass notes that have sunk and layered on the ocean floor — each new note stacks on top of the last. Long release, polyphony set to 3, heavy drive. The groove accumulates.",
-  "tags": ["overdub", "submerged", "groove", "layering", "sediment", "dub", "bass", "transcendental"],
+  "tags": [
+    "overdub",
+    "submerged",
+    "groove",
+    "layering",
+    "sediment",
+    "dub",
+    "bass",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-1: The Dry Groove Is the Groove"],
+    "scripture": [
+      "Scripture VII-1: The Dry Groove Is the Groove"
+    ],
     "revelation": "Three voices held simultaneously with long releases create harmonic sediment — the groove becomes a place you can stand on.",
     "diagnosis": "Groove Sediment uses polyphony=3 and a long release to allow notes to accumulate. The velocity response reveals which note in the stack is loudest — soft notes sink lower, hard notes surface. Drive at 1.9 adds grit to the layering."
   },
-  "macroLabels": ["STACK DRIVE", "RELEASE LENGTH", "FILTER TONE", "REVERB DEPTH"],
+  "macroLabels": [
+    "STACK DRIVE",
+    "RELEASE LENGTH",
+    "FILTER TONE",
+    "REVERB DEPTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +84,8 @@
       "dub_polyphony": 2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

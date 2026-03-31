@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Analog Drift Veil",
   "mood": "Aether",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "B015 Mojo at 0.8 — deep analog territory where drift and soft-clip produce a floating veil of warm harmonics. LFO2 at 0.03 Hz creates barely perceptible long-form filter motion: 33 seconds per cycle. At full MOJO macro, the entire character smears into pure drift.",
-  "tags": ["aether", "analog", "drift", "veil", "warm", "floating", "ultra-slow", "lfo"],
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "tags": [
+    "aether",
+    "analog",
+    "drift",
+    "veil",
+    "warm",
+    "floating",
+    "ultra-slow",
+    "lfo"
+  ],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.82, "movement": 0.1, "density": 0.75, "space": 0.88, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.82,
+    "movement": 0.1,
+    "density": 0.75,
+    "space": 0.88,
+    "aggression": 0.12
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.4,
@@ -47,6 +70,13 @@
       "fat_macroCrush": 0.0
     }
   },
-  "macros": {"MOJO": 0.8, "GRIT": 0.18, "SIZE": 0.55, "CRUSH": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "MOJO": 0.8,
+    "GRIT": 0.18,
+    "SIZE": 0.55,
+    "CRUSH": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Burst Chord",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chord bursts in rapid succession — the whole school firing bright harmonics.",
-  "tags": ["burst", "chord", "rapid", "harmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "burst",
+    "chord",
+    "rapid",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.22, "movement": 0.82, "density": 0.68, "space": 0.38, "aggression": 0.42},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 1, "snap_snap": 0.88, "snap_decay": 0.1, "snap_detune": 0.12, "snap_filterCutoff": 14500.0, "snap_filterReso": 0.4, "snap_filterEnvDepth": 0.78, "snap_unison": 3, "snap_sweepDirection": 0, "snap_pitchLock": 0.9, "snap_polyphony": 8, "snap_level": 0.82, "snap_macroDart": 0.86, "snap_macroDepth": 0.45, "snap_macroSchool": 0.68, "snap_macroSurface": 0.52}
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.22,
+    "movement": 0.82,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.42
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.82, "COUPLING": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_snap": 0.88,
+      "snap_decay": 0.1,
+      "snap_detune": 0.12,
+      "snap_filterCutoff": 14500.0,
+      "snap_filterReso": 0.4,
+      "snap_filterEnvDepth": 0.78,
+      "snap_unison": 3,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.9,
+      "snap_polyphony": 8,
+      "snap_level": 0.82,
+      "snap_macroDart": 0.86,
+      "snap_macroDepth": 0.45,
+      "snap_macroSchool": 0.68,
+      "snap_macroSurface": 0.52
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

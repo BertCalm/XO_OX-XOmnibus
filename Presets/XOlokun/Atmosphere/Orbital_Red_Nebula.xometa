@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Red Nebula",
   "mood": "Atmosphere",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm red nebula — cosmic dust of harmonic warmth, slow drift, vast spectral space.",
-  "tags": ["nebula", "red", "warm", "cosmic"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "nebula",
+    "red",
+    "warm",
+    "cosmic"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.75, "movement": 0.25, "density": 0.55, "space": 0.72, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.42,
@@ -46,6 +65,13 @@
       "orb_level": 0.72
     }
   },
-  "macros": {"SPECTRAL": 0.42, "VELOCITY": 0.25, "GROUP": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.42,
+    "VELOCITY": 0.25,
+    "GROUP": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

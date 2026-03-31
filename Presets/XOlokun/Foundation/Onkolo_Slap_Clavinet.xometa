@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Slap Clavinet",
   "mood": "Foundation",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Muted clavinet articulation — high clunk, fast release, strong key-off transient from the LCG clunk generator. Percussive like a slap bass. The LCG noise burst at key-off is the sound.",
-  "tags": ["clavinet", "slap", "percussive", "muted", "foundation", "clunk"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "slap",
+    "percussive",
+    "muted",
+    "foundation",
+    "clunk"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

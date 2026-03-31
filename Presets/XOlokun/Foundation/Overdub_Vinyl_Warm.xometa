@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Vinyl Warm",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Analog-drift sine with gentle wow, the intimate warmth of a worn vinyl master.",
-  "tags": ["foundation", "analog", "warm", "vinyl", "drift", "intimate"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "analog",
+    "warm",
+    "vinyl",
+    "drift",
+    "intimate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.12, "COUPLING": 0.25, "SPACE": 0.15},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.2, "warmth": 0.92, "movement": 0.18, "density": 0.65, "space": 0.2, "aggression": 0.15}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.25,
+    "SPACE": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.92,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.2,
+    "aggression": 0.15
+  }
 }

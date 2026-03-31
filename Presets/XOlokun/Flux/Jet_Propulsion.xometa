@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Jet Propulsion",
+  "name": "Jet Propulsion (Octopus) (Octopus) 2",
   "mood": "Flux",
   "engines": [
     "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The octopus expelling water for jet propulsion \u2014 a sharp, directional force. Short attack, fast movement, brief ink burst. The most efficient method of octopus locomotion expressed as sound.",
+  "description": "The octopus expelling water for jet propulsion — a sharp, directional force. Short attack, fast movement, brief ink burst. The most efficient method of octopus locomotion expressed as sound.",
   "tags": [
     "octopus",
     "flux",

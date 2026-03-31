@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Drift Traverse",
   "mood": "Flux",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Fast drift rate + FM at high depth — the FM sidebands cycle rapidly as the drift traverses the harmonic space at speed. A kinetic FM migration that covers more timbral territory per second than any static FM preset. Best played in fast rhythmic passages.",
-  "tags": ["odyssey", "fm", "fast", "drift", "traverse", "flux", "kinetic", "transcendental"],
+  "tags": [
+    "odyssey",
+    "fm",
+    "fast",
+    "drift",
+    "traverse",
+    "flux",
+    "kinetic",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-6: The Interval Between Two Voices Is Its Own Voice"],
+    "scripture": [
+      "Scripture VII-6: The Interval Between Two Voices Is Its Own Voice"
+    ],
     "revelation": "At fast drift rates, the FM sideband sweep becomes a rhythmic element — the timbral migration has a tempo.",
     "diagnosis": "Drift Traverse uses driftRate=1.8 Hz — fast enough to create a clear rhythmic wobble in the FM sidebands. At 1.8 Hz the cycle period is 555ms, which at 108 BPM aligns with a dotted eighth note. Rhythmically useful."
   },
-  "macroLabels": ["DRIFT SPEED", "FM INTENSITY", "FILTER TRACK", "FRACTURE BURST"],
+  "macroLabels": [
+    "DRIFT SPEED",
+    "FM INTENSITY",
+    "FILTER TRACK",
+    "FRACTURE BURST"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

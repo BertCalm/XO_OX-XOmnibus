@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Figure-Eight Ground",
   "mood": "Foundation",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Figure-Eight knot at full tangle depth — the alternating-sign FDN as a bass foundation. Even and odd voices in tension — the decay tail alternates between two spectral profiles, creating a restless, questioning character in the low frequencies.",
-  "tags": ["figure-eight", "alternating", "bass", "foundation", "topology", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "figure-eight",
+    "alternating",
+    "bass",
+    "foundation",
+    "topology",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

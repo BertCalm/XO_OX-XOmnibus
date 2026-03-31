@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Mantle Pulse",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The slow rhythmic pulsation of the octopus mantle during rest. A gentle pad with a regular breathing quality — not the arms, not the chromatophores, just the core body expanding and contracting.",
-  "tags": ["octopus", "pad", "pulse", "breathing", "foundation", "calm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "pad",
+    "pulse",
+    "breathing",
+    "foundation",
+    "calm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.38,

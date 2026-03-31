@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Iron Marrow",
   "mood": "Foundation",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense Mixtur-Trautonium root — inharmonic overtones locked to a single immovable sub-bass pillar.",
-  "tags": ["foundation", "sub-bass", "metallic", "inharmonic", "dense"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "sub-bass",
+    "metallic",
+    "inharmonic",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +79,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.8, "MOVEMENT": 0.05, "COUPLING": 0.3, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.3,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

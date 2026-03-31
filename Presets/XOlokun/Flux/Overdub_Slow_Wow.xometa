@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Slow Wow",
   "mood": "Flux",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow tape wow modulation creates gentle pitch drift, like a tape machine warming up after a cold night.",
-  "tags": ["flux", "wow", "tape", "slow", "pitch-drift", "warming"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "wow",
+    "tape",
+    "slow",
+    "pitch-drift",
+    "warming"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.45, "COUPLING": 0.42, "SPACE": 0.3},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.32, "warmth": 0.82, "movement": 0.52, "density": 0.55, "space": 0.32, "aggression": 0.2}
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.42,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.82,
+    "movement": 0.52,
+    "density": 0.55,
+    "space": 0.32,
+    "aggression": 0.2
+  }
 }

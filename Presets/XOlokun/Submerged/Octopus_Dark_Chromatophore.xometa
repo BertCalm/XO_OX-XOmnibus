@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Dark Chromatophore",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chromatophores locked to their darkest hues — no bright color display here. The filter stays low, the morph minimal. A submerged tone with just enough arm activity to feel alive. The octopus in shadow.",
-  "tags": ["octopus", "submerged", "dark", "chromatophore", "shadow", "low", "moody"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "dark",
+    "chromatophore",
+    "shadow",
+    "low",
+    "moody"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.18,

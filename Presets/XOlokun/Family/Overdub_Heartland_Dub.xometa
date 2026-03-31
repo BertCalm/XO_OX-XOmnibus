@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Heartland Dub",
   "mood": "Family",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm organ-like tone with shared reverb space, evoking a congregation of instruments.",
-  "tags": ["family", "organ", "warm", "congregation", "shared", "devotional"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "organ",
+    "warm",
+    "congregation",
+    "shared",
+    "devotional"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,7 +70,21 @@
       "dub_polyphony": 5
     }
   },
-  "macros": {"CHARACTER": 0.18, "MOVEMENT": 0.1, "COUPLING": 0.52, "SPACE": 0.52},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.38, "warmth": 0.92, "movement": 0.15, "density": 0.6, "space": 0.55, "aggression": 0.1}
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.52,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.92,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.1
+  }
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Tilt Surge",
   "mood": "Flux",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Alternating tilt plane surge — LFO-driven tilt axis sweep through bright-dark extremes.",
-  "tags": ["tilt", "surge", "sweep", "dynamic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tilt",
+    "surge",
+    "sweep",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.9, "density": 0.5, "space": 0.45, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.9,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.55
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.5,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.45
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.9, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

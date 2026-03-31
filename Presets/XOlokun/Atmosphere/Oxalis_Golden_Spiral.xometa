@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OXALIS — the founding preset. High phi, growth mode 15s. The harmonic spiral unfolds. Hold the chord.",
   "dna": {
@@ -11,10 +13,17 @@
     "space": 0.72,
     "aggression": 0.06
   },
-  "engines": ["Oxalis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
-  "name": "Golden Spiral",
+  "name": "Golden Spiral (Oxalis) (Oxalis) 2",
   "parameters": {
     "Oxalis": {
       "oxal_attack": 0.1,
@@ -40,7 +49,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["oxalis", "synth", "strings", "atmosphere", "phi", "golden-ratio", "phyllotaxis"],
+  "tags": [
+    "oxalis",
+    "synth",
+    "strings",
+    "atmosphere",
+    "phi",
+    "golden-ratio",
+    "phyllotaxis"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

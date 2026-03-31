@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Cleavage Plane",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two-layer mineral split — high stiffness plus cascade fracture along the cleavage.",
-  "tags": ["dual", "split", "mineral", "sharp"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dual",
+    "split",
+    "mineral",
+    "sharp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.25, "movement": 0.35, "density": 0.5, "space": 0.4, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.25,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.5
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.45,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.4
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

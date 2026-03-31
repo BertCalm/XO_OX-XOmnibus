@@ -5,10 +5,10 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "All 8 arms running Rule 110 \u2014 the only elementary CA proven Turing-complete (Matthew Cook, 2004). Synapse=0.6 allows Rule 110 gliders and structures to propagate between arms. Eight arms of universal computation, mutually contaminating. The sound changes constantly because Rule 110 never repeats.",
+  "description": "All 8 arms running Rule 110 — the only elementary CA proven Turing-complete (Matthew Cook, 2004). Synapse=0.6 allows Rule 110 gliders and structures to propagate between arms. Eight arms of universal computation, mutually contaminating. The sound changes constantly because Rule 110 never repeats.",
   "tags": [
     "rule-110",
     "turing-complete",

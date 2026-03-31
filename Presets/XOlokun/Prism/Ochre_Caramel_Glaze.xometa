@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Caramel Glaze",
   "mood": "Prism",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full caramel saturation transforms the copper piano into something sweet and complex. Velocity drives the caramelization — soft is delicate, hard is rich amber.",
-  "tags": ["piano", "copper", "saturation", "caramel", "sweet", "rich", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "saturation",
+    "caramel",
+    "sweet",
+    "rich",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

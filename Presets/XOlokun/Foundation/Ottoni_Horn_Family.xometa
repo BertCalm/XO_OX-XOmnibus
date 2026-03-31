@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Horn Family",
   "mood": "Foundation",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "French horn toddler, teen, and tween all present — the horn family in foundational balance.",
-  "tags": ["brass", "horn", "family", "french", "warm"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "horn",
+    "family",
+    "french",
+    "warm"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.72, "movement": 0.28, "density": 0.45, "space": 0.62, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.45,
+    "space": 0.62,
+    "aggression": 0.15
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 1,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.0
     }
   },
-  "macros": {"GROW": 0.35, "EMBOUCHURE": 0.5, "LAKE": 0.4, "FOREIGN": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.35,
+    "EMBOUCHURE": 0.5,
+    "LAKE": 0.4,
+    "FOREIGN": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

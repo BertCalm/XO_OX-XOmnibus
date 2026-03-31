@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Anoxic Shard",
   "mood": "Submerged",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shard suspended in anoxic water — sharp stiffness, brittle crystal body, dead-still atmosphere.",
-  "tags": ["anoxic", "shard", "brittle", "crystal", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "anoxic",
+    "shard",
+    "brittle",
+    "crystal",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.28, "movement": 0.05, "density": 0.82, "space": 0.42, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.28,
+    "movement": 0.05,
+    "density": 0.82,
+    "space": 0.42,
+    "aggression": 0.18
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.72,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.42
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.05, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

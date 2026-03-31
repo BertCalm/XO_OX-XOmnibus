@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Creature Chorus",
   "mood": "Prism",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All creature types in harmonic chorus — the full biodiversity of the rainforest singing together.",
-  "tags": ["creature", "chorus", "prism", "biodiversity", "harmony", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "creature",
+    "chorus",
+    "prism",
+    "biodiversity",
+    "harmony",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.52, "movement": 0.65, "density": 0.65, "space": 0.6, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.52,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.3
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.75
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

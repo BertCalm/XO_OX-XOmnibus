@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Figure Eight Cross (Orbweave)",
   "mood": "Foundation",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Figure-Eight topology with tight braid — the alternating over/under pattern snaps clean and precise. Full 4-strand engagement produces a dense, crossing timbre. Every crossing point is audible as a phase interrupt.",
-  "tags": ["figure-eight", "knot-topology", "tight-braid", "crossing", "phase-interrupt"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "figure-eight",
+    "knot-topology",
+    "tight-braid",
+    "crossing",
+    "phase-interrupt"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

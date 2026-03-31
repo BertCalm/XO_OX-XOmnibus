@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Drift Home",
   "mood": "Family",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Familiar drift — the feeling of returning, slow oscillator movement, warm harmonic body.",
-  "tags": ["drift", "home", "warm", "return", "family"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "drift",
+    "home",
+    "warm",
+    "return",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.75, "movement": 0.35, "density": 0.5, "space": 0.58, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.75,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.05
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.77
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

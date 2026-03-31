@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "ORCHARD — growth mode at 20 seconds. Play a chord: the full section assembles, oscillator by oscillator.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.82,
     "aggression": 0.05
   },
-  "engines": ["Orchard"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Luminous",
   "name": "Ensemble Bloom",
   "parameters": {
@@ -42,7 +51,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["orchard", "strings", "orchestral", "luminous", "swell", "growth", "cinematic"],
+  "tags": [
+    "orchard",
+    "strings",
+    "orchestral",
+    "luminous",
+    "swell",
+    "growth",
+    "cinematic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

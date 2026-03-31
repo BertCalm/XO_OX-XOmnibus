@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Orpheus Ascends",
   "mood": "Aether",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystal string pluck that blooms into an ascending shimmer tail — each note carries Orpheus toward the light, velocity shaping how brightly he arrives.",
-  "tags": ["crystal", "pluck", "shimmer", "ascending", "velocity", "aether"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "crystal",
+    "pluck",
+    "shimmer",
+    "ascending",
+    "velocity",
+    "aether"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.38, "movement": 0.35, "density": 0.3, "space": 0.95, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.35,
+    "density": 0.3,
+    "space": 0.95,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 2,
@@ -48,6 +69,13 @@
       "orph_macroDivine": 0.7
     }
   },
-  "macros": {"PLUCK": 0.65, "FRACTURE": 0.05, "SURFACE": 0.7, "DIVINE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.65,
+    "FRACTURE": 0.05,
+    "SURFACE": 0.7,
+    "DIVINE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

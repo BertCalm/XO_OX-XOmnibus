@@ -1,1 +1,63 @@
-{"schema_version":1,"name":"Kora Memory","mood":"Ethereal","engines":["Onkolo"],"author":"XO_OX Designs","version":"1.0.0","description":"The Clavinet as ancestral memory — neck pickup, long decay, no wah. What the nkolo hears when it dreams.","tags":["clavinet","kora","ancestral","ethereal","memory"],"macroLabels":["CHARACTER","MOVEMENT","COUPLING","SPACE"],"couplingIntensity":"None","tempo":null,"dna":{"brightness":0.3,"warmth":0.65,"movement":0.2,"density":0.3,"space":0.7,"aggression":0.05},"parameters":{"Onkolo":{"onko_funk":0.0,"onko_pickup":0.1,"onko_brightness":3500.0,"onko_clunk":0.15,"onko_attack":0.003,"onko_decay":1.2,"onko_sustain":0.3,"onko_release":0.8,"onko_filterEnvAmt":0.2,"onko_migration":0.0,"onko_bendRange":2,"onko_lfo1Rate":0.02,"onko_lfo1Depth":0.05,"onko_lfo1Shape":0,"onko_lfo2Rate":0.005,"onko_lfo2Depth":0.03,"onko_lfo2Shape":0,"onko_macroCharacter":0.2,"onko_macroMovement":0.2,"onko_macroCoupling":0.0,"onko_macroSpace":0.7}},"coupling":{"pairs":[]},"sequencer":null}
+{
+  "schema_version": 1,
+  "name": "Kora Memory",
+  "mood": "Ethereal",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Clavinet as ancestral memory — neck pickup, long decay, no wah. What the nkolo hears when it dreams.",
+  "tags": [
+    "clavinet",
+    "kora",
+    "ancestral",
+    "ethereal",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.0,
+      "onko_pickup": 0.1,
+      "onko_brightness": 3500.0,
+      "onko_clunk": 0.15,
+      "onko_attack": 0.003,
+      "onko_decay": 1.2,
+      "onko_sustain": 0.3,
+      "onko_release": 0.8,
+      "onko_filterEnvAmt": 0.2,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_lfo1Rate": 0.02,
+      "onko_lfo1Depth": 0.05,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.005,
+      "onko_lfo2Depth": 0.03,
+      "onko_lfo2Shape": 0,
+      "onko_macroCharacter": 0.2,
+      "onko_macroMovement": 0.2,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

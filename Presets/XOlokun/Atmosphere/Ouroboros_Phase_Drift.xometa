@@ -2,25 +2,54 @@
   "schema_version": 1,
   "name": "Phase Drift",
   "mood": "Atmosphere",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phase coordinates slowly drifting apart — the orbit gradually wandering through atmospheric space.",
-  "tags": ["phase", "drift", "wandering", "slow", "atmosphere"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "phase",
+    "drift",
+    "wandering",
+    "slow",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.5, "movement": 0.4, "density": 0.45, "space": 0.82, "aggression": 0.14},
-  "parameters": {"Ouroboros": {
-    "ouro_topology": 2,
-    "ouro_rate": 0.35,
-    "ouro_chaosIndex": 0.32,
-    "ouro_leash": 0.58,
-    "ouro_theta": 0.2,
-    "ouro_phi": 0.8,
-    "ouro_damping": 0.48,
-    "ouro_injection": 0.35
-  }},
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.4, "COUPLING": 0.5, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 2,
+      "ouro_rate": 0.35,
+      "ouro_chaosIndex": 0.32,
+      "ouro_leash": 0.58,
+      "ouro_theta": 0.2,
+      "ouro_phi": 0.8,
+      "ouro_damping": 0.48,
+      "ouro_injection": 0.35
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.5,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

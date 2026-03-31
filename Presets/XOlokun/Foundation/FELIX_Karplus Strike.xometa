@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Karplus-Strong plucked model with low damping — feliX as a struck glass rod. High snap gives brilliant metallic attack; slow decay lets the note bloom. Use as a marimba-adjacent percussive lead across the full keyboard.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.38,
     "aggression": 0.3
   },
-  "engines": ["OddfeliX"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
   "macros": {
     "CHARACTER": 0.0,
     "MOVEMENT": 0.0,
@@ -47,7 +56,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["foundation", "oddfelix", "karplus", "plucked", "physical", "bright", "melodic"],
+  "tags": [
+    "foundation",
+    "oddfelix",
+    "karplus",
+    "plucked",
+    "physical",
+    "bright",
+    "melodic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

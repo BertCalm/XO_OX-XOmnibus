@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Long Traverse",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Maximum drift depth at minimum drift rate — the FM oscillator wanders through timbral space at the slowest possible speed. A single sustained note traverses hours of harmonic territory. The most patient Transcendental preset.",
-  "tags": ["odyssey", "drift", "fm", "maximum", "traverse", "aether", "sustained", "transcendental"],
+  "tags": [
+    "odyssey",
+    "drift",
+    "fm",
+    "maximum",
+    "traverse",
+    "aether",
+    "sustained",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"],
+    "scripture": [
+      "Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"
+    ],
     "revelation": "At driftRate=0.008 Hz and driftDepth=0.95, a single note takes 125 seconds to complete one drift cycle. In a three-minute composition, the timbral destination is never reached — only the journey exists.",
     "diagnosis": "Long Traverse is the ODYSSEY analog of OVERDUB's Tape Journey — a sustained note that reveals the full scope of the FM+drift compound migration over several minutes. At 10-second release and maximum drift depth, each note played is a commitment to a long path."
   },
-  "macroLabels": ["DRIFT DEPTH", "FM DEPTH", "RELEASE LENGTH", "SHIMMER AETHER"],
+  "macroLabels": [
+    "DRIFT DEPTH",
+    "FM DEPTH",
+    "RELEASE LENGTH",
+    "SHIMMER AETHER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

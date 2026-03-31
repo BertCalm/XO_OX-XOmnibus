@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Dad And Kids",
   "mood": "Family",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dad's plucked main voice with two kid voices (Obed+Inlaw) strumming along.",
-  "tags": ["family", "trio", "warm", "communal"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "family",
+    "trio",
+    "warm",
+    "communal"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.45,
     "MEADOW": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

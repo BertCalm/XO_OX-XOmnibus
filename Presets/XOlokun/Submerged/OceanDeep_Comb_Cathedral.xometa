@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Comb Cathedral",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The cave became a cathedral of resonance. bodyFeedback=0.7, bodyMix=1.0, bodyChar=1. At these settings the Cave comb filter is self-sustaining — each note becomes an organ pipe that speaks back to you in the underwater dark. Gothic architecture assembled from water and limestone.",
-  "tags": ["bass", "submerged", "cave", "cathedral", "resonance", "feedback", "organ", "gothic", "atmospheric"],
+  "tags": [
+    "bass",
+    "submerged",
+    "cave",
+    "cathedral",
+    "resonance",
+    "feedback",
+    "organ",
+    "gothic",
+    "atmospheric"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "WRECK macro adds the steel character to the limestone — the cathedral was once a ship. Slowly increase WRECK to transform gothic stone into industrial ruin. Never exceed bodyFeedback=0.8 or the cave holds the note forever. That is a choice you can make.",
     "diagnosis": "bodyFeedback=0.7: near self-sustaining comb resonance — the cathedral sings back. bodyMix=1.0: total body dominance, the direct signal is architecture. bodyChar=1 (Cave): the specifically detuned comb that makes this haunting rather than clean. filterCutoff=400: mid-depth, the gothic stone has warmth."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.35
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

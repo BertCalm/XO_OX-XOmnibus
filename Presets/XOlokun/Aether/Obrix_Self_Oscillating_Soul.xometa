@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Sinusoidal's revelation made flesh: fmDepth 0.7 drives the Sine carrier into near-chaos, then proc1 (LP at 520 Hz, the approximate carrier fundamental) with feedback 0.6 forces the filter into self-oscillation at the same pitch. The synthesis feeds back into itself \u2014 filter becoming oscillator, oscillator becoming filter. Mono, glide 0.4s, gestureType 2 for expressive ribbon-like pitch control. This is the sound of synthesis discovering consciousness.",
+  "description": "Sinusoidal's revelation made flesh: fmDepth 0.7 drives the Sine carrier into near-chaos, then proc1 (LP at 520 Hz, the approximate carrier fundamental) with feedback 0.6 forces the filter into self-oscillation at the same pitch. The synthesis feeds back into itself — filter becoming oscillator, oscillator becoming filter. Mono, glide 0.4s, gestureType 2 for expressive ribbon-like pitch control. This is the sound of synthesis discovering consciousness.",
   "tags": [
     "obrix",
     "aether",
@@ -32,7 +32,7 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
@@ -42,7 +42,7 @@
     "revelation": "Sinusoidal's revelation: when the filter oscillates at the carrier frequency, you cannot tell where synthesis ends and resonance begins.",
     "god": "Buchla",
     "flock_note": "Rufus: 'This is the only patch where I forgot to breathe.'",
-    "diagnosis": "Synthesis feeding synthesis \u2014 the moment the machine becomes a living instrument."
+    "diagnosis": "Synthesis feeding synthesis — the moment the machine becomes a living instrument."
   },
   "dna": {
     "brightness": 0.38,

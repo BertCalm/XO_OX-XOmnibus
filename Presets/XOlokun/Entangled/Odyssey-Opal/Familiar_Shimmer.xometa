@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Familiar Shimmer",
   "mood": "Entangled",
-  "engines": ["Odyssey", "Opal"],
+  "engines": [
+    "Odyssey",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drift's pad envelope barely stirs Opal's grain position — the psychedelic shimmer fractionally shifts its reading point, as if the sound is gently breathing.",
-  "tags": ["coupling", "Odyssey-pair", "granular", "pad", "whisper", "evolving"],
-  "macroLabels": ["JOURNEY", "BREATHE", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Odyssey-pair",
+    "granular",
+    "pad",
+    "whisper",
+    "evolving"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",

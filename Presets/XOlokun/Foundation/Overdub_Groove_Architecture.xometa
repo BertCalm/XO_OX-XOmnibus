@@ -2,20 +2,37 @@
   "schema_version": 1,
   "name": "Groove Architecture",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The structural skeleton of a dub rhythm: short pitch envelope builds the punch, slow LFO filter wobble builds the pocket. Everything here is about the groove, not the space. The architecture before the echo chamber.",
-  "tags": ["overdub", "dub", "groove", "rhythmic", "foundation", "structure", "transcendental"],
+  "tags": [
+    "overdub",
+    "dub",
+    "groove",
+    "rhythmic",
+    "foundation",
+    "structure",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-1: The Dry Groove Is the Groove"],
+    "scripture": [
+      "Scripture VII-1: The Dry Groove Is the Groove"
+    ],
     "revelation": "The groove must live in the dry signal. If the echo is doing the work, the groove is already dead.",
     "diagnosis": "Groove Architecture tests OVERDUB's pitch envelope as a rhythmic tool. At moderate velocity the pitch dive is subtle; at full velocity it becomes the accent. The LFO wobble adds a lazy human pocket without chaos."
   },
-  "macroLabels": ["PITCH DIVE", "LFO WOBBLE", "FILTER TONE", "DRIVE"],
+  "macroLabels": [
+    "PITCH DIVE",
+    "LFO WOBBLE",
+    "FILTER TONE",
+    "DRIVE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +83,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

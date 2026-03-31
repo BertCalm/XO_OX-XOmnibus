@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "SNES String Layer",
   "mood": "Foundation",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Era locked to SNES corner — BRR sample 0 with Gaussian interpolation, slow SNES ADSR. The warm Super Nintendo string pad that underpinned countless RPG worlds.",
-  "tags": ["snes", "string", "pad", "chip", "foundation", "brr", "rpg"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "snes",
+    "string",
+    "pad",
+    "chip",
+    "foundation",
+    "brr",
+    "rpg"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 1.0,
@@ -97,7 +116,9 @@
       "ow_macroSpace": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.5,

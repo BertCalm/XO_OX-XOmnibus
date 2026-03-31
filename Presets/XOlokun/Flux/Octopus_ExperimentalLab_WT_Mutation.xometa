@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "WT Mutation",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Maximum WT scan rate with maximum arm rate — the wavetable position and arm oscillations both in constant motion. Two independent mutation systems creating compound timbral instability.",
-  "tags": ["experimental", "wavetable", "mutation", "dual-mutation", "unstable", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "experimental",
+    "wavetable",
+    "mutation",
+    "dual-mutation",
+    "unstable",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.35, "movement": 0.95, "density": 0.72, "space": 0.55, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.95,
+    "density": 0.72,
+    "space": 0.55,
+    "aggression": 0.75
+  },
   "parameters": {
     "Octopus": {
       "octo_armCount": 6,
@@ -60,6 +81,13 @@
       "octo_macroSpace": 0.42
     }
   },
-  "macros": {"CHARACTER": 0.82, "MOVEMENT": 0.95, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

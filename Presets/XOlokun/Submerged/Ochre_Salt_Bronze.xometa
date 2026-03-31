@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Salt Bronze",
   "mood": "Submerged",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A bronze bell submerged in brine. The salt has eaten the high harmonics, leaving only the fundamental and a single weak octave. Sympathetic strings still ring — corrosion has tuned them flat, one by one. The whole instrument hums at low tide.",
-  "tags": ["bell", "bronze", "salt", "submerged", "dark", "corroded", "slow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bell",
+    "bronze",
+    "salt",
+    "submerged",
+    "dark",
+    "corroded",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Dissolved Drift",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drift engine at its most ethereal — low drift depth, very slow rate, vast release.",
-  "tags": ["dissolved", "drift", "ethereal", "vast"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dissolved",
+    "drift",
+    "ethereal",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.1, "density": 0.3, "space": 0.95, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.1,
+    "density": 0.3,
+    "space": 0.95,
+    "aggression": 0.02
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.65
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.1, "COUPLING": 0.0, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

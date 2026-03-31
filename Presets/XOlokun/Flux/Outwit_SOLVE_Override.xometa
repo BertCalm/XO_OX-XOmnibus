@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "SOLVE macro near-maximum \u2014 the genetic algorithm has taken control of rule selection. Arms hunt a target DNA aggressively, pivoting every few hundred milliseconds.",
+  "description": "SOLVE macro near-maximum — the genetic algorithm has taken control of rule selection. Arms hunt a target DNA aggressively, pivoting every few hundred milliseconds.",
   "tags": [
     "flux",
     "solve",

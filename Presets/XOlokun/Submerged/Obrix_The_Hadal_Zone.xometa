@@ -4,14 +4,33 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "The Hadal Zone",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The deepest location in this entire collection. distance=0.95 — maximum HF rolloff, maximum depth. Only two points deeper exist in the ocean: the Challenger Deep, and silence. Sine src1 against Sine src2 one octave below, minimal FM (0.12) for the slight pressure-warping of pure tone. proc1=LP at 90 Hz removes almost everything. Journey Mode is obligatory — there is no note-off at this depth, only continuation. Four mods work in geological time: LFO->Volume at 0.004 Hz (barely perceptible, barely alive), Env->FilterCutoff (opens 40 Hz peak then closes), Velocity->FilterCutoff (pressure sensitivity), Aftertouch->Volume (you lean into the dark). brightness=0.03 is near-total darkness.",
-  "tags": ["obrix", "submerged", "hadal", "deepest", "journey", "fm", "sine", "dark", "extreme-depth"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "hadal",
+    "deepest",
+    "journey",
+    "fm",
+    "sine",
+    "dark",
+    "extreme-depth"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.03,

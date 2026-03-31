@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Bell suspended in void \u2014 bell material ratio zone, very long decay into silence, no buzz, pure ethereal ring",
+  "description": "Bell suspended in void — bell material ratio zone, very long decay into silence, no buzz, pure ethereal ring",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.52,
@@ -29,7 +29,7 @@
     "SPACE": 0.98
   },
   "mood": "Aether",
-  "name": "Void Bell",
+  "name": "Void Bell (Oware)",
   "parameters": {
     "Oware": {
       "owr_material": 0.5,

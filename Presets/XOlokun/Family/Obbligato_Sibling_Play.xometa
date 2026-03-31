@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Sibling Play",
+  "name": "Sibling Play (Obbligato)",
   "mood": "Family",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two clarinets playing and competing — sibling rivalry encoded in syncing bond with mischief.",
-  "tags": ["woodwind", "family", "siblings", "clarinet", "playful"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "family",
+    "siblings",
+    "clarinet",
+    "playful"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.65, "movement": 0.48, "density": 0.45, "space": 0.62, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.48,
+    "density": 0.45,
+    "space": 0.62,
+    "aggression": 0.22
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 1,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.5
     }
   },
-  "macros": {"BOND": 0.55, "BREATH": 0.62, "WIND": 0.45, "MISCHIEF": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.55,
+    "BREATH": 0.62,
+    "WIND": 0.45,
+    "MISCHIEF": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

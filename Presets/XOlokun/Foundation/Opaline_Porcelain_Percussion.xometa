@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Porcelain Percussion",
   "mood": "Foundation",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Porcelain cups struck with a teaspoon — the percussion of the kitchen table. Bell-like attack, short ring, narrow bandwidth. Each note is a different cup, a different fill level, a different ringing pitch. Hard hammer for maximum click.",
-  "tags": ["porcelain", "percussion", "bell", "kitchen", "short", "attack"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "porcelain",
+    "percussion",
+    "bell",
+    "kitchen",
+    "short",
+    "attack"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

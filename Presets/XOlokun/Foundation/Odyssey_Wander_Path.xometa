@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Wander Path",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Supersaw + FM compound oscillator: OscA is the supersaw anchor, OscB is the FM satellite orbiting it. Drift depth at 0.48 means OscB wanders around OscA continuously, never settling on the same harmonic ratio twice. A foundational wandering pad.",
-  "tags": ["odyssey", "supersaw", "fm", "compound", "wander", "foundation", "drift", "transcendental"],
+  "tags": [
+    "odyssey",
+    "supersaw",
+    "fm",
+    "compound",
+    "wander",
+    "foundation",
+    "drift",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"],
+    "scripture": [
+      "Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"
+    ],
     "revelation": "The supersaw provides the constant; the FM+drift provides the variable. Together they produce a sound that is oriented but not fixed.",
     "diagnosis": "Wander Path is the most approachable Transcendental Odyssey preset — a Supersaw+FM compound that any producer will find immediately useful. OscA=Supersaw for the density, OscB=FM at 0.28 depth for the character. Drift at 0.48 creates harmonic wandering in the FM satellite."
   },
-  "macroLabels": ["SUPERSAW WIDTH", "FM SATELLITE", "DRIFT WANDER", "FILTER OPEN"],
+  "macroLabels": [
+    "SUPERSAW WIDTH",
+    "FM SATELLITE",
+    "DRIFT WANDER",
+    "FILTER OPEN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 5
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

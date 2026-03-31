@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Wah Off Bright",
   "mood": "Foundation",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clavinet with AutoWah disabled — funk=0 prevents envelope filter from activating. Bright pickup position reveals pure ClaviStringModel tone. Reference state for understanding the raw comb-filter timbre.",
-  "tags": ["clavinet", "dry", "no-wah", "foundation", "reference", "string-model"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "dry",
+    "no-wah",
+    "foundation",
+    "reference",
+    "string-model"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

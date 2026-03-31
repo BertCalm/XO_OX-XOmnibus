@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Porto Anomaly",
   "mood": "Atmosphere",
-  "engines": ["Osteria"],
+  "engines": [
+    "Osteria"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Boutique Chain showcase emphasizing Anomaly Engine. OSTERIA's Porto Wine character — warm, low-mid resonant coastal tonality from the ShoreSystem — passed through Anomaly with TimeSlip enabled at SlipSpeed 0.15 creates a subtle pitch flutter that sounds exactly like a record playing in a warm room with slight wow. TextureBlend 0.65 adds a second timbral layer that gives the coast sound more dimensional depth. TremoloRate 1.8 Hz adds a very gentle pulse. Dissolving Archive minimal (Chance 0.08). Cathedral with light BitCrush 0.12 — just enough age. Submersion at 4 stages 0.25 Hz.",
-  "tags": ["osteria", "porto", "boutique-chain", "anomaly", "timeslip", "atmosphere", "coastal", "warm", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "osteria",
+    "porto",
+    "boutique-chain",
+    "anomaly",
+    "timeslip",
+    "atmosphere",
+    "coastal",
+    "warm",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Osteria": {
       "osteria_qBassShore": 0.42,
@@ -20,7 +41,7 @@
       "osteria_filterCutoff": 1800.0,
       "osteria_filterRes": 0.32,
       "osteria_lfo1Rate": 0.06,
-      "osteria_lfo1Depth": 0.20,
+      "osteria_lfo1Depth": 0.2,
       "osteria_lfo2Rate": 0.02,
       "osteria_lfo2Depth": 0.12,
       "osteria_ampAttack": 0.35,
@@ -33,7 +54,9 @@
       "osteria_macroSpace": 0.72
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,

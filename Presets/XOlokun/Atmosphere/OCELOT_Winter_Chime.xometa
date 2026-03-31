@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Winter Chime",
   "mood": "Atmosphere",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Kalimba tines in frozen air — Winter biome transforms tines to ice chimes. Sparse, crystalline canopy. Wolf calls on floor transients. Atmosphere of held breath.",
-  "tags": ["atmosphere", "winter", "chime", "crystalline", "sparse", "cold"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "atmosphere",
+    "winter",
+    "chime",
+    "crystalline",
+    "sparse",
+    "cold"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.12,
@@ -24,7 +38,9 @@
     "space": 0.82,
     "aggression": 0.04
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

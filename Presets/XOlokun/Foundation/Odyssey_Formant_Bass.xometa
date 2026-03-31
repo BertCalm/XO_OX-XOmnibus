@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Formant Bass",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bass tone with formant character — low-register vowel resonance, dark warm body, slow formant shift.",
-  "tags": ["formant", "bass", "warm", "vocal", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "bass",
+    "warm",
+    "vocal",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.68, "movement": 0.15, "density": 0.72, "space": 0.32, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.68,
+    "movement": 0.15,
+    "density": 0.72,
+    "space": 0.32,
+    "aggression": 0.18
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.32},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Morph Storm",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Timbral morph at storm intensity — rapid LFO-driven crossfade, spectral identity flickering chaotically.",
-  "tags": ["morph", "storm", "fast", "chaotic", "flux"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "morph",
+    "storm",
+    "fast",
+    "chaotic",
+    "flux"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.52, "movement": 0.9, "density": 0.62, "space": 0.2, "aggression": 0.85},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.52,
+    "movement": 0.9,
+    "density": 0.62,
+    "space": 0.2,
+    "aggression": 0.85
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.62,
@@ -46,6 +66,13 @@
       "orb_level": 0.72
     }
   },
-  "macros": {"SPECTRAL": 0.78, "VELOCITY": 0.9, "GROUP": 0.62, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.78,
+    "VELOCITY": 0.9,
+    "GROUP": 0.62,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

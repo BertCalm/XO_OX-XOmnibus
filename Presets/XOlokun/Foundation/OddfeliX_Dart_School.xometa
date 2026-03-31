@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Dart School",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Four-voice unison snap capturing the tight cohesion of a tetra school mid-dart.",
-  "tags": ["school", "unison", "snap", "group"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "school",
+    "unison",
+    "snap",
+    "group"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.22, "movement": 0.62, "density": 0.55, "space": 0.35, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.22,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.28
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.3
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

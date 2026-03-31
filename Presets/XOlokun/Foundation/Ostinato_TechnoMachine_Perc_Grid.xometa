@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Perc Grid",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Four percussion seats all at different pattern numbers — high overlap creates dense grid. No kick, just percussion layers building the pulse. Circle coupling bleeds between seats at mid level.",
-  "tags": ["techno", "percussion", "grid", "dense", "layered", "genre-spotlight"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "percussion",
+    "grid",
+    "dense",
+    "layered",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 130,
-  "dna": {"brightness": 0.55, "warmth": 0.38, "movement": 0.78, "density": 0.85, "space": 0.32, "aggression": 0.68},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.38,
+    "movement": 0.78,
+    "density": 0.85,
+    "space": 0.32,
+    "aggression": 0.68
+  },
   "parameters": {
     "Ostinato": {
       "osti_macroGather": 0.82,
@@ -92,6 +113,13 @@
       "osti_seat4_bodyModel": 0
     }
   },
-  "macros": {"GATHER": 0.82, "FIRE": 0.72, "CIRCLE": 0.62, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GATHER": 0.82,
+    "FIRE": 0.72,
+    "CIRCLE": 0.62,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

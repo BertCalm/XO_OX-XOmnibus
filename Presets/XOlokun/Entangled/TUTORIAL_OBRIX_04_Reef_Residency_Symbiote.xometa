@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "TUTORIAL OBRIX 04 Reef Residency Symbiote",
   "mood": "Entangled",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tutorial patch 04: Reef Residency set to Symbiote mode. Couple OPAL in AudioToBuffer mode with this as the source. OPAL's returning audio boosts OBRIX's Harmonic Field — a self-reinforcing ecological loop. The Reef Memory configuration from the Coupling Cookbook post.",
-  "tags": ["tutorial", "obrix", "entangled", "reef-residency", "symbiote", "coupling", "educational", "opal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tutorial",
+    "obrix",
+    "entangled",
+    "reef-residency",
+    "symbiote",
+    "coupling",
+    "educational",
+    "opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {

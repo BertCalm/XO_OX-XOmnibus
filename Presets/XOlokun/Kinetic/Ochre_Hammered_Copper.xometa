@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Hammered Copper",
   "mood": "Kinetic",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum hardness, high conductivity, short decay. Copper being hammered into shape — aggressive, metallic, percussive. The upright as a percussion instrument.",
-  "tags": ["piano", "copper", "percussive", "metallic", "aggressive", "hammered", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "percussive",
+    "metallic",
+    "aggressive",
+    "hammered",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

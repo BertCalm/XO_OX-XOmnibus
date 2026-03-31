@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Altitude Chord",
   "mood": "Foundation",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A full-bodied chord voicing that rings like a bell high above the clouds.",
-  "tags": ["chord", "full", "ringing", "altitude"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chord",
+    "full",
+    "ringing",
+    "altitude"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -51,5 +63,7 @@
     "COUPLING": 0.0,
     "SPACE": 0.75
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "formant=0.9 \u2014 violin-register body resonance at ~2.8 kHz. High cutoff (8000 Hz), Spring season for brightness. The orchestra at its most brilliant: cutting, present, for dense mixes.",
+  "description": "formant=0.9 — violin-register body resonance at ~2.8 kHz. High cutoff (8000 Hz), Spring season for brightness. The orchestra at its most brilliant: cutting, present, for dense mixes.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.8,

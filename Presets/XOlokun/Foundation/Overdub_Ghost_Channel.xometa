@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Ghost Channel",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean sine sub with tight envelope — the blank canvas before the dub starts.",
-  "tags": ["foundation", "sub", "sine", "clean", "bass"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "sub",
+    "sine",
+    "clean",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -52,7 +69,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.2, "MOVEMENT": 0.0, "COUPLING": 0.2, "SPACE": 0.1},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.15, "warmth": 0.7, "movement": 0.1, "density": 0.7, "space": 0.15, "aggression": 0.2}
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.2,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.15,
+    "aggression": 0.2
+  }
 }

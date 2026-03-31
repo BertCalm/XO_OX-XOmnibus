@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "String Storm",
   "mood": "Flux",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast drift and high micro rate create turbulent string energy, the colony in storm waters.",
-  "tags": ["harp", "storm", "turbulent", "fast", "energetic"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "storm",
+    "turbulent",
+    "fast",
+    "energetic"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.5, "movement": 0.8, "density": 0.6, "space": 0.7, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.4
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 7,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.3
     }
   },
-  "macros": {"PLUCK": 0.65, "SURFACE": 0.6, "FRACTURE": 0.55, "DIVINE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.65,
+    "SURFACE": 0.6,
+    "FRACTURE": 0.55,
+    "DIVINE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

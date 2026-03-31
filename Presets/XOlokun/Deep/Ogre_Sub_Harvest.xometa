@@ -1,22 +1,63 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OGRE — high drive sub. The 808 pushed hard. Aggressive, industrial.",
-  "dna": { "brightness": 0.3, "warmth": 0.62, "movement": 0.35, "density": 0.72, "space": 0.18, "aggression": 0.62 },
-  "engines": ["Ogre"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.72,
+    "space": 0.18,
+    "aggression": 0.62
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Deep",
   "name": "Sub Harvest",
   "parameters": {
     "Ogre": {
-      "ogre_oscMix": 0.45, "ogre_drive": 0.85, "ogre_rootDepth": 0.5, "ogre_bodyResonance": 0.5,
-      "ogre_brightness": 2600.0, "ogre_density": 0.62, "ogre_soil": 0.2, "ogre_tectonicRate": 0.03,
-      "ogre_tectonicDepth": 3.0, "ogre_attack": 0.002, "ogre_decay": 0.35, "ogre_sustain": 0.55,
-      "ogre_release": 0.2, "ogre_filterEnvAmount": 0.65, "ogre_glide": 0.0, "ogre_gravity": 0.5,
-      "ogre_lfo1Rate": 0.5, "ogre_lfo1Depth": 0.15, "ogre_lfo1Shape": 0,
-      "ogre_macroCharacter": 0.0, "ogre_macroMovement": 0.0, "ogre_macroCoupling": 0.0, "ogre_macroSpace": 0.0
+      "ogre_oscMix": 0.45,
+      "ogre_drive": 0.85,
+      "ogre_rootDepth": 0.5,
+      "ogre_bodyResonance": 0.5,
+      "ogre_brightness": 2600.0,
+      "ogre_density": 0.62,
+      "ogre_soil": 0.2,
+      "ogre_tectonicRate": 0.03,
+      "ogre_tectonicDepth": 3.0,
+      "ogre_attack": 0.002,
+      "ogre_decay": 0.35,
+      "ogre_sustain": 0.55,
+      "ogre_release": 0.2,
+      "ogre_filterEnvAmount": 0.65,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.5,
+      "ogre_lfo1Rate": 0.5,
+      "ogre_lfo1Depth": 0.15,
+      "ogre_lfo1Shape": 0,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
     }
   },
-  "schema_version": 1, "tags": ["ogre", "sub-bass", "drive", "electronic"], "version": "1.0.0", "tempo": null
+  "schema_version": 1,
+  "tags": [
+    "ogre",
+    "sub-bass",
+    "drive",
+    "electronic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

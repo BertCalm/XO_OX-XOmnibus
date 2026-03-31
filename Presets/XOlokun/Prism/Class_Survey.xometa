@@ -5,10 +5,10 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "All four Wolfram CA classes simultaneously: Class I (Rules 0, 8 \u2014 muted, participate in synapse only), Class II (Rules 54, 12 \u2014 periodic rhythm), Class III (Rules 30, 90, 45 \u2014 aperiodic chaos), Class IV (Rule 110 \u2014 complex computation). Class I arms spread quiescence into neighbors through synapse without producing audio. LFO1 sweeps chromatophore to make class differences audible.",
+  "description": "All four Wolfram CA classes simultaneously: Class I (Rules 0, 8 — muted, participate in synapse only), Class II (Rules 54, 12 — periodic rhythm), Class III (Rules 30, 90, 45 — aperiodic chaos), Class IV (Rule 110 — complex computation). Class I arms spread quiescence into neighbors through synapse without producing audio. LFO1 sweeps chromatophore to make class differences audible.",
   "tags": [
     "class-survey",
     "wolfram-classes",

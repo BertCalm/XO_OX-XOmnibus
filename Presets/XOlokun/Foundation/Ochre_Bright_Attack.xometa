@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Bright Attack",
   "mood": "Foundation",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High conductivity, hard hammer. Copper at its most responsive — brilliant transients that decay quickly. For rhythmic piano parts and percussive playing.",
-  "tags": ["piano", "copper", "bright", "percussive", "attack", "responsive", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "bright",
+    "percussive",
+    "attack",
+    "responsive",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

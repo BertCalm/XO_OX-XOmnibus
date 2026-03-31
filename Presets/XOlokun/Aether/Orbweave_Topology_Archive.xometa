@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Topology Archive (Orbweave)",
   "mood": "Aether",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "Guru Bin — ORBWEAVE Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "macroKnot=0.75 — three-quarter position between Figure-Eight and Solomon. 25% Figure-Eight alternating polarity, 75% Solomon ring architecture. With strandTune=5.0 (major third), the Solomon ring architecture produces a coupled major chord chimera. 10-second release: a single keystroke evolves for 10 seconds through this unnamed topology.",
-  "tags": ["macro-knot", "chimera", "figure-eight", "solomon", "major-third", "aether"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "macro-knot",
+    "chimera",
+    "figure-eight",
+    "solomon",
+    "major-third",
+    "aether"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Velocity Atmosphere",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The full velocity-to-shimmer axis: modSlot1 routes velocity directly to shimmerMix with full intensity (1.0). At pianissimo, this is a cave — intimate, dry, close to the ear. At fortissimo, it becomes the stratosphere — wide, shimmering, vast. The dynamic range of OPENSKY is not just volume; it is altitude. How hard you play determines where you are in the sky.",
-  "tags": ["opensky", "velocity", "shimmer", "dynamic", "expressive", "aether", "guru-bin", "atmosphere"],
+  "tags": [
+    "opensky",
+    "velocity",
+    "shimmer",
+    "dynamic",
+    "expressive",
+    "aether",
+    "guru-bin",
+    "atmosphere"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +33,12 @@
     "flock_note": "The Guru played this with a feather touch: close, warm, personal, no reverb. Then struck the keys hard: the room expanded to a hemisphere of shimmer. Same note. Same pitch. Different altitude. This is the discovery: velocity in OPENSKY is not about loudness. It is about how far away the sky is.",
     "diagnosis": "Velocity Atmosphere is the definitive OPENSKY expression study. ModSlot1 at full intensity (1.0) means the shimmer is entirely velocity-controlled — touch governs altitude. A base shimmerMix of 0.0 ensures ppp notes are completely dry. fff notes reach shimmerMix=1.0 via the modulation. Teach this preset first when onboarding new OPENSKY players."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +100,8 @@
       "sky_modSlot2Amt": 0.4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

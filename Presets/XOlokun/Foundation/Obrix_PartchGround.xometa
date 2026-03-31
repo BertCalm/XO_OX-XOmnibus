@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Partch Ground",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The Harry Partch reference — pure 5-limit just intonation pulled toward integer ratios by a strong harmonic attractor (fieldStrength=0.7, 5-limit). A single Sine through a warm LP at 3000 Hz sits in the tonal gravity well. Playing in tune locks to pure 5-limit intervals; playing out of tune bends slowly back toward the just field. The foundation stone for biophonic harmonic work.",
-  "tags": ["obrix", "foundation", "sine", "just-intonation", "harmonic-field", "partch", "5-limit", "wave4"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "sine",
+    "just-intonation",
+    "harmonic-field",
+    "partch",
+    "5-limit",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.5,

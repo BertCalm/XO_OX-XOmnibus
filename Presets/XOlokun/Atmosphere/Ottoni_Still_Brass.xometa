@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Still Brass",
   "mood": "Atmosphere",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All three generations in stillness, high lake macro and maximum reverb size for atmospheric brass.",
-  "tags": ["brass", "still", "atmospheric", "reverb", "lake"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "still",
+    "atmospheric",
+    "reverb",
+    "lake"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.68, "movement": 0.28, "density": 0.38, "space": 0.85, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.85,
+    "aggression": 0.08
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 1,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.06
     }
   },
-  "macros": {"GROW": 0.35, "EMBOUCHURE": 0.46, "LAKE": 0.88, "FOREIGN": 0.06},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.35,
+    "EMBOUCHURE": 0.46,
+    "LAKE": 0.88,
+    "FOREIGN": 0.06
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

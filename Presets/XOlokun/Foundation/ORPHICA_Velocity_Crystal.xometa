@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Velocity Crystal",
   "mood": "Foundation",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Steel strings with zero reverb tail — a pure D001 showcase. Soft touch yields a muted, fundamental-only tone. Hard velocity fires a brilliant high-partial explosion. Essential for velocity-expressive playing.",
-  "tags": ["steel", "velocity", "pluck", "bright", "dry", "foundation", "expressive"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "steel",
+    "velocity",
+    "pluck",
+    "bright",
+    "dry",
+    "foundation",
+    "expressive"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.45, "movement": 0.1, "density": 0.25, "space": 0.2, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.1,
+    "density": 0.25,
+    "space": 0.2,
+    "aggression": 0.35
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 2,
@@ -48,6 +70,13 @@
       "orph_macroDivine": 0.03
     }
   },
-  "macros": {"PLUCK": 0.7, "FRACTURE": 0.0, "SURFACE": 0.45, "DIVINE": 0.03},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.7,
+    "FRACTURE": 0.0,
+    "SURFACE": 0.45,
+    "DIVINE": 0.03
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

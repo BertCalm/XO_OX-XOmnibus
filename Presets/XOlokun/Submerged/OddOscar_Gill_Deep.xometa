@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Gill Deep",
   "mood": "Submerged",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The gills opening in slow ceremony at depth. Morph at 0.0 — pure sine, the most elemental form. Sub at 0.7 for mass. LFO2 at 0.025 Hz: one full filter cycle every 40 seconds, the axolotl's deep-time breathing. DEPTH macro pulls the cutoff high when Oscar finally surfaces.",
-  "tags": ["submerged", "gill", "deep", "sine", "sub", "ultra-slow", "lfo", "pure"],
-  "macroLabels": ["BLOOM", "DRIFT", "DEPTH", "SPACE"],
+  "tags": [
+    "submerged",
+    "gill",
+    "deep",
+    "sine",
+    "sub",
+    "ultra-slow",
+    "lfo",
+    "pure"
+  ],
+  "macroLabels": [
+    "BLOOM",
+    "DRIFT",
+    "DEPTH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.88, "movement": 0.07, "density": 0.82, "space": 0.45, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.88,
+    "movement": 0.07,
+    "density": 0.82,
+    "space": 0.45,
+    "aggression": 0.06
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.0,
@@ -36,6 +59,13 @@
       "morph_lfo2Depth": 0.45
     }
   },
-  "macros": {"BLOOM": 0.15, "DRIFT": 0.45, "DEPTH": 0.65, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BLOOM": 0.15,
+    "DRIFT": 0.45,
+    "DEPTH": 0.65,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oven sustain time at 15 seconds \u2014 the piano note becomes a sustained drone. The sustain layer develops internal pitch drift as temperature modulates string tension. Competition at 0.3 creates density oscillations.",
+  "description": "Oven sustain time at 15 seconds — the piano note becomes a sustained drone. The sustain layer develops internal pitch drift as temperature modulates string tension. Competition at 0.3 creates density oscillations.",
   "tags": [
     "piano",
     "sustain",

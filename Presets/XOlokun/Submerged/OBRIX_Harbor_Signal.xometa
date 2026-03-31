@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Harbor Signal",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tokyo Bay: the most industrialized harbor on earth. Layered vessel sounds, metal hulls, navigation signals. Ring Mod Proc2 creates the metallic harmonic inharmonicity of steel-on-water. Current biases toward the shipping lane frequencies.",
-  "tags": ["obrix", "submerged", "place", "tokyo-bay", "industrial", "ring-mod", "metallic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "place",
+    "tokyo-bay",
+    "industrial",
+    "ring-mod",
+    "metallic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +118,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

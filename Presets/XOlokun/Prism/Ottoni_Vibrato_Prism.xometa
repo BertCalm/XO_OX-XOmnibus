@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Vibrato Prism",
   "mood": "Prism",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Teen vibrato at multiple different rates and depths, vibrato itself as a prismatic color tool.",
-  "tags": ["brass", "vibrato", "rate", "depth", "prismatic"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "vibrato",
+    "rate",
+    "depth",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.65, "movement": 0.55, "density": 0.45, "space": 0.7, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.2
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 1,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.1
     }
   },
-  "macros": {"GROW": 0.52, "EMBOUCHURE": 0.6, "LAKE": 0.6, "FOREIGN": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.52,
+    "EMBOUCHURE": 0.6,
+    "LAKE": 0.6,
+    "FOREIGN": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Evolution Arc",
   "mood": "Aether",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "GENDY parameters dialed for maximum spectral evolution — amp step high, time step moderate. Each held note tells a different story. The sound of something becoming something else.",
-  "tags": ["cinematic", "evolution", "spectral", "arc", "transformation", "genre-spotlight"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "cinematic",
+    "evolution",
+    "spectral",
+    "arc",
+    "transformation",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.55, "movement": 0.82, "density": 0.65, "space": 0.85, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.55,
+    "movement": 0.82,
+    "density": 0.65,
+    "space": 0.85,
+    "aggression": 0.15
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 12.0,
@@ -45,6 +66,13 @@
       "oracle_macroDrift": 0.58
     }
   },
-  "macros": {"PROPHECY": 0.58, "EVOLUTION": 0.82, "GRAVITY": 0.28, "DRIFT": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PROPHECY": 0.58,
+    "EVOLUTION": 0.82,
+    "GRAVITY": 0.28,
+    "DRIFT": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

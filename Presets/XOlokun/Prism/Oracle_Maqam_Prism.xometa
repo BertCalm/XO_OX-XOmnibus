@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Maqam Prism",
   "mood": "Prism",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maqam microtones split through a stochastic prism into exotic spectral components.",
-  "tags": ["prism", "maqam", "microtonal", "spectral"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "maqam",
+    "microtonal",
+    "spectral"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.5, "movement": 0.55, "density": 0.5, "space": 0.62, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.62,
+    "aggression": 0.25
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.55,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.62
     }
   },
-  "macros": {"DRIFT": 0.5, "EVOLUTION": 0.55, "COUPLING": 0.0, "SPACE": 0.62},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.5,
+    "EVOLUTION": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

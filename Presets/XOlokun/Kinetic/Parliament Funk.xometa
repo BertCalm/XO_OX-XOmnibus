@@ -1,1 +1,63 @@
-{"schema_version":1,"name":"Parliament Funk","mood":"Kinetic","engines":["Onkolo"],"author":"XO_OX Designs","version":"1.0.0","description":"Maximum funk wah depth. Bernie Worrell's P-Funk clavinet — every note triggers an envelope-following filter sweep.","tags":["clavinet","pfunk","wah","aggressive","parliament"],"macroLabels":["CHARACTER","MOVEMENT","COUPLING","SPACE"],"couplingIntensity":"None","tempo":null,"dna":{"brightness":0.6,"warmth":0.45,"movement":0.6,"density":0.55,"space":0.3,"aggression":0.65},"parameters":{"Onkolo":{"onko_funk":0.9,"onko_pickup":0.85,"onko_brightness":10000.0,"onko_clunk":0.7,"onko_attack":0.001,"onko_decay":0.25,"onko_sustain":0.45,"onko_release":0.1,"onko_filterEnvAmt":0.8,"onko_migration":0.0,"onko_bendRange":2,"onko_lfo1Rate":0.3,"onko_lfo1Depth":0.0,"onko_lfo1Shape":0,"onko_lfo2Rate":0.8,"onko_lfo2Depth":0.1,"onko_lfo2Shape":0,"onko_macroCharacter":0.7,"onko_macroMovement":0.5,"onko_macroCoupling":0.0,"onko_macroSpace":0.2}},"coupling":{"pairs":[]},"sequencer":null}
+{
+  "schema_version": 1,
+  "name": "Parliament Funk",
+  "mood": "Kinetic",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum funk wah depth. Bernie Worrell's P-Funk clavinet — every note triggers an envelope-following filter sweep.",
+  "tags": [
+    "clavinet",
+    "pfunk",
+    "wah",
+    "aggressive",
+    "parliament"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.3,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.9,
+      "onko_pickup": 0.85,
+      "onko_brightness": 10000.0,
+      "onko_clunk": 0.7,
+      "onko_attack": 0.001,
+      "onko_decay": 0.25,
+      "onko_sustain": 0.45,
+      "onko_release": 0.1,
+      "onko_filterEnvAmt": 0.8,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_lfo1Rate": 0.3,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 0.8,
+      "onko_lfo2Depth": 0.1,
+      "onko_lfo2Shape": 0,
+      "onko_macroCharacter": 0.7,
+      "onko_macroMovement": 0.5,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

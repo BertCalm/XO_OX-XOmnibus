@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Pelagic Drift",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-water drift — no reef, no floor, just open column. Extreme glide makes pitch transitions liquid. The shapeshifter pitch drift is prominent, arms barely present. An atmospheric texture of formless motion.",
-  "tags": ["octopus", "drift", "atmosphere", "glide", "ambient", "shapeshifter"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "drift",
+    "atmosphere",
+    "glide",
+    "ambient",
+    "shapeshifter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.3,

@@ -22,7 +22,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 10: All Forces Converge at the Absolute Bottom", "Canon 6: Coprime LFOs at 0.07 and 0.11 Hz — Never Repeating for 130 Seconds"],
+    "scripture": [
+      "Verse 10: All Forces Converge at the Absolute Bottom",
+      "Canon 6: Coprime LFOs at 0.07 and 0.11 Hz — Never Repeating for 130 Seconds"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Eye watched the coprime LFO drift — The Ear confirmed the pattern never repeats within the session window, the abyss evolves perpetually.",

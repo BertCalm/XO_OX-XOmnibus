@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OSIER — maximum intimacy for adagio quartet. Slow, locked, settled. The ensemble intonation is the movement.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.78,
     "aggression": 0.04
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Intimate Adagio",
   "parameters": {
@@ -42,7 +51,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["osier", "chamber", "quartet", "atmosphere", "adagio", "slow", "locked"],
+  "tags": [
+    "osier",
+    "chamber",
+    "quartet",
+    "atmosphere",
+    "adagio",
+    "slow",
+    "locked"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

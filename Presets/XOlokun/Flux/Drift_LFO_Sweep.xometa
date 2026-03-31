@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Drift LFO Sweep",
   "mood": "Flux",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's LFO at maximum movement — filter sweep on a supersaw pad with shimmer. The oscillator drift adds subtle randomness to the LFO rhythm.",
-  "tags": ["lfo", "sweep", "drift", "shimmer", "movement", "flux"],
-  "macroLabels": ["LFO RATE", "LFO DEPTH", "SHIMMER", "FILTER"],
+  "tags": [
+    "lfo",
+    "sweep",
+    "drift",
+    "shimmer",
+    "movement",
+    "flux"
+  ],
+  "macroLabels": [
+    "LFO RATE",
+    "LFO DEPTH",
+    "SHIMMER",
+    "FILTER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Attractor Reef",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBRIX through Mathematical Chain — the coral reef as mathematical system. Attractor Drive at Bifurcation 0.65 (above the period-doubling threshold, entering chaos) applies Lorenz-modulated distortion to OBRIX's dual-source synthesis. This matches OBRIX's own Brick Ecology system (Harmonic Field attractors, Environmental parameters) with the Mathematical Chain's attractor-driven processing — two attractor systems in series. Entropy Cooler at Stability 0.3 provides Shannon entropy measurement. Voronoi Shatter minimal. Quantum Smear at Observation 0.3 adds a moderate reverb. The overall character is OBRIX as a mathematical ecological system with its own chaotic drive amplified.",
-  "tags": ["obrix", "math-chain", "attractor", "lorenz", "bifurcation", "flux", "ecology", "biophonic", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "math-chain",
+    "attractor",
+    "lorenz",
+    "bifurcation",
+    "flux",
+    "ecology",
+    "biophonic",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obrix": {
       "obrix_src1Type": 2,
@@ -46,7 +67,7 @@
       "obrix_mod2Rate": 0.28,
       "obrix_mod3Type": 3,
       "obrix_mod3Target": 4,
-      "obrix_mod3Depth": 0.50,
+      "obrix_mod3Depth": 0.5,
       "obrix_mod3Rate": 1.0,
       "obrix_mod4Type": 4,
       "obrix_mod4Target": 3,
@@ -81,7 +102,9 @@
       "obrix_air": 0.45
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.58,

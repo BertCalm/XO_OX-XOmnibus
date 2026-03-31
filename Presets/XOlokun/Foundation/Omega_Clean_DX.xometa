@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 canonical DX7 E Bass. Algorithm 2 (3:1 fifth), mod index 4.5, feedback 0.15. Better than the original.",
+  "description": "OMEGA — canonical DX7 E Bass. Algorithm 2 (3:1 fifth), mod index 4.5, feedback 0.15. Better than the original.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.5,

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Old Stock",
   "mood": "Organic",
-  "engines": ["Overworn"],
+  "engines": [
+    "Overworn"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Broth from last week — session age mid-range, umami-deep, slightly fermented character. The wisdom of age in every note.",
-  "tags": ["pad", "organic", "aged", "umami", "depth"],
-  "macroLabels": ["RICHNESS", "REDUCTION", "CONCENTRATE", "DEPTH"],
+  "tags": [
+    "pad",
+    "organic",
+    "aged",
+    "umami",
+    "depth"
+  ],
+  "macroLabels": [
+    "RICHNESS",
+    "REDUCTION",
+    "CONCENTRATE",
+    "DEPTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.82, "movement": 0.2, "density": 0.55, "space": 0.45, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.82,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overworn": {
       "worn_reductionRate": 0.45,
@@ -45,7 +65,9 @@
       "worn_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

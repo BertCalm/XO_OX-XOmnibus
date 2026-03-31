@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Fat Drone",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's 12 oscillators locked in a dense drone — ultra-slow attack, no decay, constant pressure. A room-filling foundation that never ends.",
-  "tags": ["drone", "fat", "ambient", "dense", "atmosphere", "sustained"],
-  "macroLabels": ["MORPH", "MOJO DRIVE", "DETUNE WIDTH", "FILTER"],
+  "tags": [
+    "drone",
+    "fat",
+    "ambient",
+    "dense",
+    "atmosphere",
+    "sustained"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "MOJO DRIVE",
+    "DETUNE WIDTH",
+    "FILTER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

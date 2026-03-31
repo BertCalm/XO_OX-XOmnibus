@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Velvet Overdrive",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.55,
     "MOVEMENT": 0.3,
     "COUPLING": 0.0,
     "SPACE": 0.0
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.5,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.0
     }
   },
-  "tags": ["atmosphere", "pad", "saturation", "lfo", "warm", "overdrive", "obese"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "saturation",
+    "lfo",
+    "warm",
+    "overdrive",
+    "obese"
+  ],
   "description": "LFO1 targets Saturation — the distortion character of all 13 oscillators breathes in and out at 0.18 Hz. Felt as a warm pulsing overdrive rather than a tremolo. The velvet that lives behind the drive."
 }

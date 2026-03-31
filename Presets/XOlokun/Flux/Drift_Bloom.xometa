@@ -19,7 +19,7 @@
   "engines": [
     "OddOscar"
   ],
-  "description": "Drift modulation on maximum \u2014 each note drifts into its own version of the patch.",
+  "description": "Drift modulation on maximum — each note drifts into its own version of the patch.",
   "tags": [
     "morph",
     "drift",

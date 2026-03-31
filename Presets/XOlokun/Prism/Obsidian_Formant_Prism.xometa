@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Formant Prism",
+  "name": "Formant Prism (Obsidian)",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Formant resonance scattered by prism — mineral vocal character refracted into harmonic color array.",
-  "tags": ["formant", "prism", "vocal", "mineral", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "prism",
+    "vocal",
+    "mineral",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.42, "movement": 0.32, "density": 0.55, "space": 0.48, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.42,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.38
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.38,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.48
     }
   },
-  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.32, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

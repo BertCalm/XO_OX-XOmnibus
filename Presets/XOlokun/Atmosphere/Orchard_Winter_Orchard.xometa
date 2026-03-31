@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "ORCHARD — Winter, maximum tonal darkness. Strings in an empty concert hall in January. Most introverted.",
   "dna": {
@@ -11,10 +13,17 @@
     "space": 0.65,
     "aggression": 0.03
   },
-  "engines": ["Orchard"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
-  "name": "Winter Orchard",
+  "name": "Winter Orchard (Orchard) (Orchard)",
   "parameters": {
     "Orchard": {
       "orch_attack": 0.18,
@@ -42,7 +51,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["orchard", "strings", "orchestral", "atmosphere", "winter", "dark", "cold"],
+  "tags": [
+    "orchard",
+    "strings",
+    "orchestral",
+    "atmosphere",
+    "winter",
+    "dark",
+    "cold"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

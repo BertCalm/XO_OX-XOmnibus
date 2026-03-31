@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Dense Morph",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense timbral morph foundation — maximum morph amount, thick spectral crossfade, warm polyphonic core.",
-  "tags": ["morph", "dense", "warm", "thick", "foundation"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "morph",
+    "dense",
+    "warm",
+    "thick",
+    "foundation"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.65, "movement": 0.22, "density": 0.82, "space": 0.42, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.65,
+    "movement": 0.22,
+    "density": 0.82,
+    "space": 0.42,
+    "aggression": 0.2
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.48,
@@ -46,6 +66,13 @@
       "orb_level": 0.76
     }
   },
-  "macros": {"SPECTRAL": 0.62, "VELOCITY": 0.22, "GROUP": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.62,
+    "VELOCITY": 0.22,
+    "GROUP": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

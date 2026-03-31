@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Feedback 0.96, delayBase 46ms, dampening 0.70. Maximum delay \u2192 maximum perceived space.",
+  "description": "Feedback 0.96, delayBase 46ms, dampening 0.70. Maximum delay → maximum perceived space.",
   "dna": {
     "aggression": 0.01,
     "brightness": 0.25,

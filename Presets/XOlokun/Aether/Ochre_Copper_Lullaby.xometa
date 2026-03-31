@@ -2,18 +2,34 @@
   "schema_version": 1,
   "name": "Copper Lullaby",
   "mood": "Aether",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Minimum conductivity, maximum caramel, Parlour body at maximum depth. The upright at its most intimate and warm — the sound of a piano in the next room while a child falls asleep. Low conductivity means the copper holds heat. The warmest XOchre can be.",
-  "tags": ["piano", "copper", "warm", "lullaby", "intimate", "parlour", "caramel", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "warm",
+    "lullaby",
+    "intimate",
+    "parlour",
+    "caramel",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.22,
     "warmth": 0.95,
-    "movement": 0.20,
+    "movement": 0.2,
     "density": 0.55,
     "space": 0.65,
     "aggression": 0.02
@@ -29,8 +45,8 @@
       "ochre_decay": 4.0,
       "ochre_caramel": 0.65,
       "ochre_sympathy": 0.55,
-      "ochre_hfCharacter": 0.10,
-      "ochre_thermalDrift": 0.40,
+      "ochre_hfCharacter": 0.1,
+      "ochre_thermalDrift": 0.4,
       "ochre_filterEnvAmount": 0.22,
       "ochre_bendRange": 2.0,
       "ochre_macroCharacter": 0.0,
@@ -40,7 +56,7 @@
       "ochre_lfo1Rate": 0.03,
       "ochre_lfo1Depth": 0.06,
       "ochre_lfo1Shape": 0,
-      "ochre_lfo2Rate": 0.50,
+      "ochre_lfo2Rate": 0.5,
       "ochre_lfo2Depth": 0.0,
       "ochre_lfo2Shape": 1
     }

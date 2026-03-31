@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Swing Bounce Break",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum swing on the bounce engine — 55% swing offset on odd bounces creates a heavily syncopated ricochet pattern. Moderate fold, triangle wave for warmth. Slow LFO1 at 0.15 Hz keeps the prism colors rolling. The MOVEMENT macro swells the bounce rate for fills. Inspired by J Dilla bounce quantization.",
-  "tags": ["swing", "groove", "bounce", "rhythmic", "funk", "Dilla"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "swing",
+    "groove",
+    "bounce",
+    "rhythmic",
+    "funk",
+    "Dilla"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -23,7 +37,7 @@
       "oblq_oscWave": 4,
       "oblq_oscFold": 0.42,
       "oblq_oscDetune": 8.0,
-      "oblq_level": 0.80,
+      "oblq_level": 0.8,
       "oblq_glide": 0.0,
       "oblq_voiceMode": 0,
       "oblq_percClick": 0.72,
@@ -62,6 +76,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

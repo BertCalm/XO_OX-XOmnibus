@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Zydeco accordion — buzzy dual reeds with musette beating, strong bellows attack, dance-ready dynamics. Louisiana Saturday night in a squeeze box.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.2,
     "warmth": 0.65
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Bayou Squeeze",
   "parameters": {
@@ -55,7 +64,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["accordion", "zydeco", "cajun", "dance", "reed"],
+  "tags": [
+    "accordion",
+    "zydeco",
+    "cajun",
+    "dance",
+    "reed"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

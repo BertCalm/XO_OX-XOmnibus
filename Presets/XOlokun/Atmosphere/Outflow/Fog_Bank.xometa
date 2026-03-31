@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "Fog Bank",
   "mood": "Atmosphere",
-  "engines": ["Outflow"],
+  "engines": [
+    "Outflow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Dense sea fog: heavy damping, large splash size, very wet mix. The anchor is low — the source disappears into the atmosphere. Low undertow means no vacuum events — the fog just absorbs. Wind chaos creates vague movement within the blanket. Envelops rather than defines.",
-  "tags": ["awakening", "ambient", "atmosphere", "dense", "fog", "immersive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "awakening",
+    "ambient",
+    "atmosphere",
+    "dense",
+    "fog",
+    "immersive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Outflow": {
       "out_anchor": 0.3,
@@ -31,7 +49,9 @@
       "out_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.22,

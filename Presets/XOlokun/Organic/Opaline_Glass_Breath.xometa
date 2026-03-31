@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Glass Breath",
   "mood": "Organic",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass Harp with slow shimmer LFO creating organic breathing motion. Per-voice thermal personalities drift differently, like eight wine glasses with different water levels. Low fragility — no cracking, just pure crystalline shimmer that breathes.",
-  "tags": ["glass", "harp", "organic", "shimmer", "breathing", "crystalline", "opaline", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glass",
+    "harp",
+    "organic",
+    "shimmer",
+    "breathing",
+    "crystalline",
+    "opaline",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

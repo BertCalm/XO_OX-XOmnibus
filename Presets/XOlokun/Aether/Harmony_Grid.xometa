@@ -5,7 +5,7 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Eight arms at eight pitch offsets forming a distributed major chord: root (0), fifth (7), octave (12), major third (4), octave below (-12), fifth (7), 12th (19), major third (4). Each interval assigned a Wolfram rule by register and function: root=Rule 110 (grounding computation), fifths=Rule 54 (periodic rhythm), octave=Rule 184 (stable flow), thirds=Rule 30 (chaotic coloring). inkCloud=0.55 blends triggers into sustained harmony.",

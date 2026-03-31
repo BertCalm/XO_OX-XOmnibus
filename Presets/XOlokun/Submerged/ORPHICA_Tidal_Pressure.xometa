@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Tidal Pressure",
   "mood": "Submerged",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Nylon strings pressed under deep water — sub harmonic doubles every note an octave below, dark delay echoes into the abyss. Heavy, resonant, barely surfacing.",
-  "tags": ["nylon", "sub", "deep", "pressure", "dark-delay", "submerged"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "nylon",
+    "sub",
+    "deep",
+    "pressure",
+    "dark-delay",
+    "submerged"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.8, "movement": 0.3, "density": 0.65, "space": 0.7, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.7,
+    "aggression": 0.18
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 4,
@@ -48,6 +69,13 @@
       "orph_macroDivine": 0.2
     }
   },
-  "macros": {"PLUCK": 0.4, "FRACTURE": 0.1, "SURFACE": 0.25, "DIVINE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.4,
+    "FRACTURE": 0.1,
+    "SURFACE": 0.25,
+    "DIVINE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

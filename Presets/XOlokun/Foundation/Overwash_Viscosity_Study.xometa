@@ -1,10 +1,10 @@
 {
-  "name": "Viscosity Study",
+  "name": "Viscosity Study (Overwash) (Overwash)",
   "engines": [
     "Overwash"
   ],
   "author": "XO_OX Designs",
-  "description": "Honey-thick resistance \u2014 near-maximum viscosity, low filter. The diffusion is barely perceptible. A thick, dark, barely-breathing pad.",
+  "description": "Honey-thick resistance — near-maximum viscosity, low filter. The diffusion is barely perceptible. A thick, dark, barely-breathing pad.",
   "mood": "Foundation",
   "tags": [
     "pad",

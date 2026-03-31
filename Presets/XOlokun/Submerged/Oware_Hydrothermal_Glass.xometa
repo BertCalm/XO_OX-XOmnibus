@@ -32,12 +32,12 @@
   "name": "Hydrothermal Glass",
   "parameters": {
     "Oware": {
-      "owr_material": 0.90,
+      "owr_material": 0.9,
       "owr_malletHardness": 0.15,
       "owr_bodyType": 2,
       "owr_bodyDepth": 0.95,
       "owr_buzzAmount": 0.0,
-      "owr_sympathyAmount": 0.70,
+      "owr_sympathyAmount": 0.7,
       "owr_shimmerRate": 1.0,
       "owr_thermalDrift": 0.75,
       "owr_brightness": 1200.0,

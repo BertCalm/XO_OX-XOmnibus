@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Square Base",
   "mood": "Foundation",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The origami square base — four folds defining the essential geometric foundation.",
-  "tags": ["foundation", "square", "geometric", "base"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "square",
+    "geometric",
+    "base"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.5, "movement": 0.35, "density": 0.5, "space": 0.48, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.48,
+    "aggression": 0.22
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.48
     }
   },
-  "macros": {"FOLD": 0.45, "MOTION": 0.35, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.45,
+    "MOTION": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

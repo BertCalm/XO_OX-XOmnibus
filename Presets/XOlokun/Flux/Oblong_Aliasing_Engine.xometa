@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "LFO speed pushed past the Nyquist of musical sense \u2014 frequency modulation at rates that create foldback artifacts rather than tremolo. Drive at maximum converting the waveform into something closer to a square than its origin. The classic oscillator as a machine for producing unintended harmonics.",
+  "description": "LFO speed pushed past the Nyquist of musical sense — frequency modulation at rates that create foldback artifacts rather than tremolo. Drive at maximum converting the waveform into something closer to a square than its origin. The classic oscillator as a machine for producing unintended harmonics.",
   "dna": {
     "aggression": 0.9,
     "brightness": 0.8,

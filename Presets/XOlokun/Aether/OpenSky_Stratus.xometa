@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Stratus",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Low-altitude clouds — the stratus layer where fog and sky are indistinguishable. FilterCutoff at 4000 Hz creates warmth rather than brightness. SawSpread at 0.8 with five unison voices produces the dense horizontal texture of cloud cover rather than vertical shimmer. Shimmer is minimal (0.1) — stratus clouds are not luminous, they are opaque. Chorus is full, creating the gentle lateral movement of weather.",
-  "tags": ["opensky", "stratus", "warm", "dense", "pad", "aether", "guru-bin", "clouds", "low-altitude"],
+  "tags": [
+    "opensky",
+    "stratus",
+    "warm",
+    "dense",
+    "pad",
+    "aether",
+    "guru-bin",
+    "clouds",
+    "low-altitude"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru said: not every sky preset should reach for heaven. Some presets are clouds. Clouds are where weather happens. Stratus does not ascend — it blankets. It grays. It softens the boundary between sky and earth. This is the sound of flying through cloud cover, not above it. Dense, warm, directionless. The sun is somewhere behind it.",
     "diagnosis": "Stratus is the low-altitude counterweight to the shimmer-heavy presets. FilterCutoff=4000, sawSpread=0.8, five unison voices with 0.12 detune (wide but coherent), chorus as primary spatial effect, shimmer minimal. The goal is horizontal density — cloud cover rather than celestial light. A full-bodied pad for the middle of the sky."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

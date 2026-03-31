@@ -2,32 +2,53 @@
   "schema_version": 1,
   "name": "Chua Grind",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chua circuit pushed to high chaos — the double scroll attractor fills the spectrum with buzzy, resistor-burning energy. Leash loose, low damping lets the raw attractor trajectory through. Theta swept to catch the harshest projection plane. An overdriven circuit that never settles.",
-  "tags": ["chua", "chaotic", "buzzy", "grind", "flux", "double-scroll", "aggressive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chua",
+    "chaotic",
+    "buzzy",
+    "grind",
+    "flux",
+    "double-scroll",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 2,
       "ouro_rate": 220.0,
       "ouro_chaosIndex": 0.82,
       "ouro_leash": 0.25,
-      "ouro_theta": 1.20,
-      "ouro_phi": -0.40,
+      "ouro_theta": 1.2,
+      "ouro_phi": -0.4,
       "ouro_damping": 0.12,
       "ouro_injection": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.80,
+    "brightness": 0.8,
     "warmth": 0.22,
     "movement": 0.85,
     "density": 0.72,

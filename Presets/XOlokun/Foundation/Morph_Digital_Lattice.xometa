@@ -28,7 +28,7 @@
     "warmth": 0.08,
     "movement": 0.45,
     "density": 0.92,
-    "space": 0.40,
+    "space": 0.4,
     "aggression": 0.48
   },
   "parameters": {

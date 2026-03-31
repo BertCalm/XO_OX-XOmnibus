@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Salt Stone",
   "mood": "Submerged",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Marble submerged in salt water — half the monolith below the surface, inharmonic modes filtered through liquid density. Rubber preparation mutes the upper modes; what survives is the deep mineral resonance. Cage wrote pieces for this instrument. He just didn't have the water.",
-  "tags": ["stone", "submerged", "marble", "rubber", "mute", "dark", "mineral", "prepared"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "submerged",
+    "marble",
+    "rubber",
+    "mute",
+    "dark",
+    "mineral",
+    "prepared"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +61,5 @@
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

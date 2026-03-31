@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "FM Prism",
+  "name": "FM Prism (Odyssey)",
   "mood": "Prism",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM sidebands refracted through the prism \u2014 metallic spectral scatter, harmonic color spray.",
+  "description": "FM sidebands refracted through the prism — metallic spectral scatter, harmonic color spray.",
   "tags": [
     "FM",
     "prism",

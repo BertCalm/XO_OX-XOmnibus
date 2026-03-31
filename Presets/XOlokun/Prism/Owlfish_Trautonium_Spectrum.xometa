@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Trautonium Spectrum",
   "mood": "Prism",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full subharmonic series with high mixtur and bright filter — the Mixtur-Trautonium oscillator revealing its entire spectral spread.",
-  "tags": ["prism", "trautonium", "spectrum", "subharmonic", "bright", "metallic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "trautonium",
+    "spectrum",
+    "subharmonic",
+    "bright",
+    "metallic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.45, "movement": 0.48, "density": 0.72, "space": 0.6, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.45,
+    "movement": 0.48,
+    "density": 0.72,
+    "space": 0.6,
+    "aggression": 0.5
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.82,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.95, "MOVEMENT": 0.48, "COUPLING": 0.38, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.38,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

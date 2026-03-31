@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Flicker Train",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rapid-fire arp sequence with cascading downward sweeps — light flickering off each fish.",
-  "tags": ["flicker", "arp", "cascade", "train"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flicker",
+    "arp",
+    "cascade",
+    "train"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.25, "movement": 0.88, "density": 0.42, "space": 0.38, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.25,
+    "movement": 0.88,
+    "density": 0.42,
+    "space": 0.38,
+    "aggression": 0.42
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.5
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

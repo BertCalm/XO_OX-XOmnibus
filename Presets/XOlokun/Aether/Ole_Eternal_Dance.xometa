@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Eternal Dance",
   "mood": "Aether",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The family in eternal dance — all voices at transcendent levels, high sympathetic resonance.",
-  "tags": ["latin", "eternal", "dance", "transcendent", "aether"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "eternal",
+    "dance",
+    "transcendent",
+    "aether"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.7, "movement": 0.55, "density": 0.5, "space": 0.88, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.7,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.88,
+    "aggression": 0.2
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 2,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.65
     }
   },
-  "macros": {"DRAMA": 0.65, "FUEGO": 0.68, "ISLA": 0.72, "SIDES": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.65,
+    "FUEGO": 0.68,
+    "ISLA": 0.72,
+    "SIDES": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

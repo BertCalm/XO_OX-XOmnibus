@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OVERGROW — maximum wildness, coupling active. The chaotic intermediate in the GARDEN quad.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.52,
     "aggression": 0.62
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Entangled",
   "name": "Full Wild",
   "parameters": {
@@ -41,7 +50,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["overgrow", "string", "entangled", "wild", "chaotic", "coupling", "garden"],
+  "tags": [
+    "overgrow",
+    "string",
+    "entangled",
+    "wild",
+    "chaotic",
+    "coupling",
+    "garden"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Amp Thrash",
   "mood": "Flux",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Amplitude thrash — fast envelopes, aggressive filter, motion depth maximized.",
-  "tags": ["flux", "amplitude", "thrash", "envelope"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "amplitude",
+    "thrash",
+    "envelope"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.45, "movement": 0.9, "density": 0.65, "space": 0.38, "aggression": 0.82},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.45,
+    "movement": 0.9,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.82
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.82, "MOVEMENT": 0.9, "COUPLING": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

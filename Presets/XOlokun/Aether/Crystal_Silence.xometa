@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Crystal Silence",
+  "name": "Crystal Silence (Opal)",
   "mood": "Aether",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The silence inside a crystal \u2014 barely perceptible grain movement with maximum frost and space.",
+  "description": "The silence inside a crystal — barely perceptible grain movement with maximum frost and space.",
   "tags": [
     "crystal",
     "silence",

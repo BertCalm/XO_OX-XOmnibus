@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Bandpass filtered saw with Solomon coupling. The narrow frequency window and doubled-ring topology create a stained-glass quality \u2014 vivid, framed, luminous.",
+  "description": "Bandpass filtered saw with Solomon coupling. The narrow frequency window and doubled-ring topology create a stained-glass quality — vivid, framed, luminous.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.4,

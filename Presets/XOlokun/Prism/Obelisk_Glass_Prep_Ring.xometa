@@ -2,21 +2,37 @@
   "schema_version": 1,
   "name": "Glass Prep Ring",
   "mood": "Prism",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass preparation's counterintuitive physics: glass contact reduces radiation loss, INCREASING modal Q. Notes ring longer with the glass than without. The stone monolith that sings brighter when you lay glass across its strings. Cage knew this.",
-  "tags": ["stone", "prepared", "glass", "inharmonic", "ringing", "prism", "Cage", "mineral"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "prepared",
+    "glass",
+    "inharmonic",
+    "ringing",
+    "prism",
+    "Cage",
+    "mineral"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
-    "warmth": 0.20,
+    "warmth": 0.2,
     "movement": 0.15,
-    "density": 0.40,
+    "density": 0.4,
     "space": 0.75,
-    "aggression": 0.20
+    "aggression": 0.2
   },
   "parameters": {
     "Obelisk": {
@@ -26,23 +42,22 @@
       "obel_damping": 0.08,
       "obel_decay": 7.0,
       "obel_hfNoise": 0.18,
-      "obel_hardness": 0.40,
+      "obel_hardness": 0.4,
       "obel_prepType": 3,
-      "obel_prepPosition": 0.50,
+      "obel_prepPosition": 0.5,
       "obel_prepDepth": 0.72,
       "obel_filterEnvAmount": 0.28,
       "obel_thermalDrift": 0.15,
       "obel_bendRange": 2,
-      "obel_lfo1Rate": 0.10,
+      "obel_lfo1Rate": 0.1,
       "obel_lfo1Depth": 0.04,
       "obel_lfo1Shape": 0,
-      "obel_lfo2Rate": 0.50,
+      "obel_lfo2Rate": 0.5,
       "obel_lfo2Depth": 0.0,
       "obel_lfo2Shape": 0
     }
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

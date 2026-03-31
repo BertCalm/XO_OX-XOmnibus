@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Pleat Foundation",
   "mood": "Foundation",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pleat operation as the foundational voice — accordion fold at medium depth.",
-  "tags": ["foundation", "pleat", "accordion", "medium"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "pleat",
+    "accordion",
+    "medium"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.4, "density": 0.5, "space": 0.5, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.25
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.5
     }
   },
-  "macros": {"FOLD": 0.5, "MOTION": 0.4, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.5,
+    "MOTION": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

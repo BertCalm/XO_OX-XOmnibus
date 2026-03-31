@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "ABBA Slow Dance",
   "mood": "Atmosphere",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wurlitzer ballad character. ABBA era — clean by Wurlitzer standards, slow emotional tremolo at 3.5 Hz, high sustain for full chord voicings. The instrument saying: this matters.",
-  "tags": ["wurlitzer", "ballad", "abba", "slow-tremolo", "emotional", "atmosphere"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "ballad",
+    "abba",
+    "slow-tremolo",
+    "emotional",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

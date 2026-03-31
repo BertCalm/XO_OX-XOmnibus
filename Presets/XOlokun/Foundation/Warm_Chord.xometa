@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Warm Chord",
+  "name": "Warm Chord (Orbital)",
   "mood": "Foundation",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Classic harmonic chord pad \u2014 warm red identity, balanced odd/even, gentle group envelopes.",
+  "description": "Classic harmonic chord pad — warm red identity, balanced odd/even, gentle group envelopes.",
   "tags": [
     "chord",
     "warm",

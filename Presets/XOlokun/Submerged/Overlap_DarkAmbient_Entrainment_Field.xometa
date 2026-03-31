@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Entrainment Field",
   "mood": "Submerged",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "High entrainment locks six voices into a magnetic convergence — like sonar waves bouncing between canyon walls. Diffusion saturates the tail. Unsettling, vast.",
-  "tags": ["dark-ambient", "sonar", "vast", "unsettling", "6-voice", "genre-spotlight"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "dark-ambient",
+    "sonar",
+    "vast",
+    "unsettling",
+    "6-voice",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.48, "movement": 0.28, "density": 0.78, "space": 0.95, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.48,
+    "movement": 0.28,
+    "density": 0.78,
+    "space": 0.95,
+    "aggression": 0.15
+  },
   "parameters": {
     "Overlap": {
       "olap_knot": 2,
@@ -59,6 +80,13 @@
       "olap_atPressureDepth": 0.5
     }
   },
-  "macros": {"KNOT": 0.62, "PULSE": 0.28, "ENTRAIN": 0.78, "BLOOM": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "KNOT": 0.62,
+    "PULSE": 0.28,
+    "ENTRAIN": 0.78,
+    "BLOOM": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

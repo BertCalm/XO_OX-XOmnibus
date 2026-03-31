@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Dorsal Wave",
   "mood": "Foundation",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lead voice at upper wavetable position with moderate echo tail — the dorsal fin cuts through the mix with presence and purpose, formants forward.",
-  "tags": ["foundation", "lead", "presence", "forward", "mid"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "lead",
+    "presence",
+    "forward",
+    "mid"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.4, "movement": 0.35, "density": 0.5, "space": 0.4, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.5
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.75,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.4
     }
   },
-  "macros": {"HUNT": 0.5, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.5,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -29,7 +29,7 @@
     "brightness": 0.52,
     "warmth": 0.58,
     "movement": 0.32,
-    "density": 0.40,
+    "density": 0.4,
     "space": 0.35,
     "aggression": 0.08
   },
@@ -45,11 +45,11 @@
       "over_partial5": 0.166667,
       "over_partial6": 0.142857,
       "over_partial7": 0.125,
-      "over_velBright": 0.40,
+      "over_velBright": 0.4,
       "over_filterCutoff": 12000.0,
-      "over_filterRes": 0.30,
+      "over_filterRes": 0.3,
       "over_ampAtk": 0.05,
-      "over_ampDec": 0.40,
+      "over_ampDec": 0.4,
       "over_ampSus": 0.72,
       "over_ampRel": 2.0,
       "over_lfo1Rate": 0.08,
@@ -57,10 +57,10 @@
       "over_lfo2Rate": 0.05,
       "over_lfo2Depth": 0.12,
       "over_resoMix": 0.18,
-      "over_macroDepth": 0.30,
+      "over_macroDepth": 0.3,
       "over_macroColor": 0.45,
       "over_macroCoupling": 0.0,
-      "over_macroSpace": 0.30
+      "over_macroSpace": 0.3
     }
   },
   "coupling": {

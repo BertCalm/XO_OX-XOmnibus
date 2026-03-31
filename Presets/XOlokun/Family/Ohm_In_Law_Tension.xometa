@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "In-Law Tension",
   "mood": "Family",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dad and In-Law voices at maximum meddling threshold, dissonant family friction.",
-  "tags": ["family", "tension", "meddling", "dissonant"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "family",
+    "tension",
+    "meddling",
+    "dissonant"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.55,
     "MEADOW": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Squid Ink Negative",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The negative of ink cloud — when ink clears, the revealed color is brighter than before. A prism preset built around ink triggered and then clearing rapidly, leaving behind a momentarily brilliant tonal flash.",
-  "tags": ["octopus", "prism", "ink", "negative", "flash", "contrast", "reveal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "ink",
+    "negative",
+    "flash",
+    "contrast",
+    "reveal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.9,

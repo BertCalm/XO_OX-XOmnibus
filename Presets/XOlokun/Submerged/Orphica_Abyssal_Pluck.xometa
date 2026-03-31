@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Abyssal Pluck",
   "mood": "Submerged",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dark delay at maximum feedback and low micro-cloud mode, a pluck dissolving into the abyss.",
-  "tags": ["harp", "abyssal", "dark", "deep", "dissolved"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "abyssal",
+    "dark",
+    "deep",
+    "dissolved"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.1, "warmth": 0.65, "movement": 0.25, "density": 0.5, "space": 0.92, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.92,
+    "aggression": 0.2
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 4,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.25
     }
   },
-  "macros": {"PLUCK": 0.1, "SURFACE": 0.65, "FRACTURE": 0.15, "DIVINE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.1,
+    "SURFACE": 0.65,
+    "FRACTURE": 0.15,
+    "DIVINE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

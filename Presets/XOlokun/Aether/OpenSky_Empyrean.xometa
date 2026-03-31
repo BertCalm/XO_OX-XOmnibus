@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Empyrean",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The highest heaven, the sphere of pure fire and light — infinite shimmer at the edge of existence.",
-  "tags": ["aether", "divine", "infinite", "shimmer"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "divine",
+    "infinite",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -51,5 +63,7 @@
     "COUPLING": 0.0,
     "SPACE": 1.0
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

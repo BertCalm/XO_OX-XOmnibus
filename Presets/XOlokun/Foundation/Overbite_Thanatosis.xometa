@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Thanatosis",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "PLAY DEAD 0.92 — the complete behavioral collapse. Sub oscillator persisting as a heartbeat underneath the still surface. Nearly-closed LP filter at 620 Hz, enormous reverb tail. Sine OscA + sine OscB mix at 0.35. The limp body with warm metabolic weight underneath: the opossum alive inside its paralysis.",
-  "tags": ["foundation", "play-dead", "sub", "still", "thanatosis", "overbite", "transcendental"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "foundation",
+    "play-dead",
+    "sub",
+    "still",
+    "thanatosis",
+    "overbite",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.68, "movement": 0.06, "density": 0.55, "space": 0.92, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.68,
+    "movement": 0.06,
+    "density": 0.55,
+    "space": 0.92,
+    "aggression": 0.04
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -56,7 +79,6 @@
       "poss_ampSustain": 0.42,
       "poss_ampRelease": 6.5,
       "poss_ampVelSens": 0.32,
-      "poss_filterEnvAmount": 0.1,
       "poss_modAttack": 0.01,
       "poss_modDecay": 0.5,
       "poss_modSustain": 0.0,
@@ -81,14 +103,30 @@
       "poss_lfo3Sync": 0,
       "poss_lfo3Retrigger": 0,
       "poss_lfo3Phase": 0.0,
-      "poss_modSlot1Src": 0, "poss_modSlot1Dst": 0, "poss_modSlot1Amt": 0.0,
-      "poss_modSlot2Src": 0, "poss_modSlot2Dst": 0, "poss_modSlot2Amt": 0.0,
-      "poss_modSlot3Src": 0, "poss_modSlot3Dst": 0, "poss_modSlot3Amt": 0.0,
-      "poss_modSlot4Src": 0, "poss_modSlot4Dst": 0, "poss_modSlot4Amt": 0.0,
-      "poss_modSlot5Src": 0, "poss_modSlot5Dst": 0, "poss_modSlot5Amt": 0.0,
-      "poss_modSlot6Src": 0, "poss_modSlot6Dst": 0, "poss_modSlot6Amt": 0.0,
-      "poss_modSlot7Src": 0, "poss_modSlot7Dst": 0, "poss_modSlot7Amt": 0.0,
-      "poss_modSlot8Src": 0, "poss_modSlot8Dst": 0, "poss_modSlot8Amt": 0.0,
+      "poss_modSlot1Src": 0,
+      "poss_modSlot1Dst": 0,
+      "poss_modSlot1Amt": 0.0,
+      "poss_modSlot2Src": 0,
+      "poss_modSlot2Dst": 0,
+      "poss_modSlot2Amt": 0.0,
+      "poss_modSlot3Src": 0,
+      "poss_modSlot3Dst": 0,
+      "poss_modSlot3Amt": 0.0,
+      "poss_modSlot4Src": 0,
+      "poss_modSlot4Dst": 0,
+      "poss_modSlot4Amt": 0.0,
+      "poss_modSlot5Src": 0,
+      "poss_modSlot5Dst": 0,
+      "poss_modSlot5Amt": 0.0,
+      "poss_modSlot6Src": 0,
+      "poss_modSlot6Dst": 0,
+      "poss_modSlot6Amt": 0.0,
+      "poss_modSlot7Src": 0,
+      "poss_modSlot7Dst": 0,
+      "poss_modSlot7Amt": 0.0,
+      "poss_modSlot8Src": 0,
+      "poss_modSlot8Dst": 0,
+      "poss_modSlot8Amt": 0.0,
       "poss_macroBelly": 0.12,
       "poss_macroBite": 0.0,
       "poss_macroScurry": 0.0,
@@ -122,6 +160,14 @@
       "poss_pan": 0.0
     }
   },
-  "macros": {"BELLY": 0.12, "BITE": 0.0, "SCURRY": 0.0, "TRASH": 0.0, "PLAY DEAD": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.12,
+    "BITE": 0.0,
+    "SCURRY": 0.0,
+    "TRASH": 0.0,
+    "PLAY DEAD": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Detune Prism",
+  "name": "Detune Prism (Oblique)",
   "mood": "Prism",
   "engines": [
     "Oblique"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wide detune through prism \u2014 oscillator chorus spread, bright open color, rich movement.",
+  "description": "Wide detune through prism — oscillator chorus spread, bright open color, rich movement.",
   "tags": [
     "detune",
     "prism",

@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Fade Pressure",
   "mood": "Submerged",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Pressure Drop filtered to near-sub range, reverb damped to remove all air. What dub becomes when it sinks below the surface — the echo still happens, but muffled, slowed, as though the water has changed the physics of the room.",
-  "tags": ["overdub", "submerged", "pressure", "deep", "fade", "dub", "filtered", "transcendental"],
+  "tags": [
+    "overdub",
+    "submerged",
+    "pressure",
+    "deep",
+    "fade",
+    "dub",
+    "filtered",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible"],
+    "scripture": [
+      "Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible"
+    ],
     "revelation": "Water filters the high frequencies first. Pressure changes what time means.",
     "diagnosis": "Fade Pressure explores OVERDUB below the water line — low cutoff, heavy damping on both reverb and delay, maximum drift. The tape degradation is not artistic choice here; it is acoustic physics. Slow oscillations in the sub range create beatings."
   },
-  "macroLabels": ["PRESSURE DEPTH", "TAPE DRIFT", "FILTER DARK", "REVERB DAMP"],
+  "macroLabels": [
+    "PRESSURE DEPTH",
+    "TAPE DRIFT",
+    "FILTER DARK",
+    "REVERB DAMP"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +84,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

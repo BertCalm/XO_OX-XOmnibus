@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Rapid Fold",
   "mood": "Flux",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Paper folding at maximum speed — geometric transformations blur into chaotic flux.",
-  "tags": ["flux", "rapid", "fast", "chaotic"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "rapid",
+    "fast",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.4, "movement": 0.88, "density": 0.65, "space": 0.42, "aggression": 0.72},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.72
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.42
     }
   },
-  "macros": {"FOLD": 0.8, "MOTION": 0.88, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.8,
+    "MOTION": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

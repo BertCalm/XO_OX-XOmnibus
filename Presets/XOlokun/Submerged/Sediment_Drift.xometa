@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Sediment Drift",
+  "name": "Sediment Drift (Opal)",
   "mood": "Submerged",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Granular sediment slowly drifting \u2014 particles settling to the bottom of a sonic water column.",
+  "description": "Granular sediment slowly drifting — particles settling to the bottom of a sonic water column.",
   "tags": [
     "sediment",
     "drift",

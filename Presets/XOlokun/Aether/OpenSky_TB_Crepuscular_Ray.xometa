@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Crepuscular Ray",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sunbeams breaking through clouds. Triangle LFO (shape 1) on LFO2 at 0.8 Hz with depth 0.25 creates a rhythmic pulsing that mimics light shafts sweeping across the landscape. The triangle wave's linear ramps feel more natural than a sine's curves for this purpose -- the brightness increases and decreases at a constant rate, like a searchlight. Shimmer at moderate feedback (0.5) adds a glistening quality to each pulse peak. The sub oscillator (triangle) at 0.12 provides grounding weight beneath the flickering brightness.",
-  "tags": ["opensky", "transcendental", "rhythmic", "pulsing", "light", "triangle-lfo"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "rhythmic",
+    "pulsing",
+    "light",
+    "triangle-lfo"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Sutra 9: Triangle LFO on Filter at 0.8 Hz Mimics the Sweep of Light", "Verse 16: Linear Ramps Feel More Natural Than Curves When Modulating Brightness"],
+    "scripture": [
+      "Sutra 9: Triangle LFO on Filter at 0.8 Hz Mimics the Sweep of Light",
+      "Verse 16: Linear Ramps Feel More Natural Than Curves When Modulating Brightness"
+    ],
     "revelation": "Tempora spoke: the triangle wave's constant-rate ramp is perceived as more 'physical' than a sine's acceleration and deceleration. For filter modulation that should feel like a moving light source, triangle always beats sine.",
     "god": "Tempora",
     "flock_note": "The Breath tested sine vs triangle at 0.8 Hz on filter cutoff. The triangle created a scanning, searchlight quality. The sine felt electronic and synthetic. Same rate, same depth -- the shape changed the perception from 'effect' to 'phenomenon.'",
     "diagnosis": "Crepuscular Ray demonstrates that LFO shape selection is as important as rate and depth. The triangle wave on filter cutoff at sub-1Hz rates creates a specifically photonic quality -- light moving across a surface."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

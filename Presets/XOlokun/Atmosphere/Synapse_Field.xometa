@@ -5,10 +5,10 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "Alternating Rule 110 (complex computation) and Rule 30 (chaos) across all 8 arms. Synapse=0.75 \u2014 maximum inter-arm contamination. Neither rule runs cleanly. Rule 110's structured gliders are disrupted by adjacent Rule 30 chaos; Rule 30's chaos gains momentary structure from adjacent Rule 110. chromAmount=0.7 makes the density-driven filter modulation vivid. This is emergence.",
+  "description": "Alternating Rule 110 (complex computation) and Rule 30 (chaos) across all 8 arms. Synapse=0.75 — maximum inter-arm contamination. Neither rule runs cleanly. Rule 110's structured gliders are disrupted by adjacent Rule 30 chaos; Rule 30's chaos gains momentary structure from adjacent Rule 110. chromAmount=0.7 makes the density-driven filter modulation vivid. This is emergence.",
   "tags": [
     "synapse",
     "high-coupling",

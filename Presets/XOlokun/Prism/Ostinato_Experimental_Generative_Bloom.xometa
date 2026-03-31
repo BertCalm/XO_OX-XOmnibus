@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Generative Bloom (Ostinato)",
   "mood": "Prism",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "OSTINATO's generative behavior at maximum — GATHER very low, CIRCLE at maximum, all 8 seats active with different patterns. Ghost triggers cascade between seats autonomously. The fire circle breathes, conversations spontaneous.",
-  "tags": ["experimental", "generative", "circle", "ghost-triggers", "autonomous"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "experimental",
+    "generative",
+    "circle",
+    "ghost-triggers",
+    "autonomous"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 88.0,
   "dna": {

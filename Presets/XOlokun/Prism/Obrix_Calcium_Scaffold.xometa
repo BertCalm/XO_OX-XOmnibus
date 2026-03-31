@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Calcium Scaffold",
   "mood": "Prism",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The Constructive Collision recipe with prismatic refraction added — proc3=Wavefolder activates on the merged signal, catching the collision's harmonic peaks and folding them into spectral complexity. Pulse src1 (PW=0.6, slightly wider) against Saw src2 at +4 semitones. proc1=LP (2200 Hz, reso=0.32) and proc2=LP (780 Hz, reso=0.42) define the collision zone; proc3=Wavefolder at 3800 Hz creates prismatic brightness from the fold. fmDepth=0.25 adds active harmonic entanglement. CHARACTER macro 0.28 positions it warm-but-active. All 4 mods: Env->proc1Cutoff, LFO->WavetablePos, Velocity->FilterReso, Aftertouch->proc3Cutoff (live fold depth).",
-  "tags": ["obrix", "prism", "pulse", "saw", "constructive-collision", "wavefolder", "calcium", "scaffold"],
+  "tags": [
+    "obrix",
+    "prism",
+    "pulse",
+    "saw",
+    "constructive-collision",
+    "wavefolder",
+    "calcium",
+    "scaffold"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.58,

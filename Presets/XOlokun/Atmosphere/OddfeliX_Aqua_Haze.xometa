@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Aqua Haze",
   "mood": "Atmosphere",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aquatic light haze — soft shimmer through water column, feliX dispersed into ambience.",
-  "tags": ["aqua", "haze", "dispersed", "ambience"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aqua",
+    "haze",
+    "dispersed",
+    "ambience"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.38, "movement": 0.3, "density": 0.58, "space": 0.82, "aggression": 0.08},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.22, "snap_decay": 0.95, "snap_detune": 0.35, "snap_filterCutoff": 8500.0, "snap_filterReso": 0.45, "snap_filterEnvDepth": 0.22, "snap_unison": 5, "snap_sweepDirection": 0, "snap_pitchLock": 0.42, "snap_polyphony": 8, "snap_level": 0.58, "snap_macroDart": 0.12, "snap_macroDepth": 0.68, "snap_macroSchool": 0.72, "snap_macroSurface": 0.72}
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.3,
+    "density": 0.58,
+    "space": 0.82,
+    "aggression": 0.08
   },
-  "macros": {"CHARACTER": 0.22, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.22,
+      "snap_decay": 0.95,
+      "snap_detune": 0.35,
+      "snap_filterCutoff": 8500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.22,
+      "snap_unison": 5,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.42,
+      "snap_polyphony": 8,
+      "snap_level": 0.58,
+      "snap_macroDart": 0.12,
+      "snap_macroDepth": 0.68,
+      "snap_macroSchool": 0.72,
+      "snap_macroSurface": 0.72
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Grain Storm",
+  "name": "Grain Storm (Opal) (Opal) 2",
   "mood": "Flux",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Turbulent grain storm with high speed and maximum scatter \u2014 grain chaos surging through space.",
+  "description": "Turbulent grain storm with high speed and maximum scatter — grain chaos surging through space.",
   "tags": [
     "storm",
     "turbulent",

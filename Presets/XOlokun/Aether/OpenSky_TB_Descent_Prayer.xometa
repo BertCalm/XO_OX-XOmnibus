@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Descent Prayer",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The note falls before it rises. Negative pitch envelope (-8 semitones, fast decay at 0.12s) creates a downward swoop on each note-on that resolves to the played pitch -- a genuflection before the note speaks. Combined with shimmer at 0.45 mix and shimmerOctave at 0.3 (fifth-heavy), the descending pitch feeds into the reverb's fifth-up shifter, creating a momentary dissonance that resolves into pure harmony. The Guru says: every prayer begins with bowing.",
-  "tags": ["opensky", "transcendental", "pitch-envelope", "descending", "prayer", "ethereal"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "pitch-envelope",
+    "descending",
+    "prayer",
+    "ethereal"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 8: Negative Pitch Envelopes Are Genuflections", "Gospel 2: The Note That Falls Before Rising Contains Both Humility and Ascension"],
+    "scripture": [
+      "Verse 8: Negative Pitch Envelopes Are Genuflections",
+      "Gospel 2: The Note That Falls Before Rising Contains Both Humility and Ascension"
+    ],
     "revelation": "Tempora spoke: a descending pitch envelope feeding into a fifth-up shimmer creates a momentary tritone that resolves to a perfect fifth -- this is the sound of tension finding resolution in a single gesture.",
     "god": "Tempora",
     "flock_note": "The Tongue found that the descending attack at velocity 80+ creates a more dramatic swoop, while soft playing (vel < 50) produces a gentler bow. The velocity-to-timbre arc is profoundly musical.",
     "diagnosis": "Descent Prayer inverts OPENSKY's natural upward character. The flying fish dives before it leaps. The negative pitch envelope is the engine's hidden spiritual dimension."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.08
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

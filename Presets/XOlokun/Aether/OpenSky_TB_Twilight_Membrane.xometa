@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Twilight Membrane",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The thin boundary between day and night. Saw spread at 0.08 -- nearly mono -- with 5 unison voices at detune 0.02 creates a shimmering membrane of interference so tight it vibrates like a drumskin. The chorus at high rate (2.5 Hz) with depth 0.6 adds a rapid tremolo that evokes the flickering quality of twilight. Filter at 3200 Hz with resonance 0.28 sits in the nasal range that gives the membrane its papery quality. The Guru says: the thinnest sounds have the most surface tension.",
-  "tags": ["opensky", "transcendental", "membrane", "thin", "tremolo", "twilight", "texture"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "membrane",
+    "thin",
+    "tremolo",
+    "twilight",
+    "texture"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Sutra 6: Spread 0.08 With 5 Unison Voices Creates a Membrane, Not a Wall", "Sutra 7: Chorus Rate Above 2 Hz Becomes Tremolo -- A Different Beast Entirely"],
+    "scripture": [
+      "Sutra 6: Spread 0.08 With 5 Unison Voices Creates a Membrane, Not a Wall",
+      "Sutra 7: Chorus Rate Above 2 Hz Becomes Tremolo -- A Different Beast Entirely"
+    ],
     "revelation": "Tempora spoke: when chorus rate exceeds 2 Hz, it ceases to be a widening effect and becomes a tremolo. This threshold separates two entirely different sonic characters from the same DSP stage.",
     "god": "Tempora",
     "flock_note": "The Breath identified the chorus-as-tremolo at 2.5 Hz -- it creates a pulsing quality that feels like looking through heat shimmer. The Eye confirmed the tight unison spread creates beating at 1.2 Hz, which The Breath recognized as the ocean wave tempo from Scripture.",
     "diagnosis": "Twilight Membrane exploits two non-obvious parameter regions: near-zero saw spread and high chorus rate. Both parameters are typically set in their middle range. The extremes reveal new character."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

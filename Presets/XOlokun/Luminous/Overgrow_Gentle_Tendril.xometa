@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OVERGROW — delicate long sustain. Very low damping, gentle wildness. The string that sustains bright and long.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.58,
     "aggression": 0.06
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Luminous",
   "name": "Gentle Tendril",
   "parameters": {
@@ -43,7 +52,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["overgrow", "string", "luminous", "delicate", "sustained", "melodic"],
+  "tags": [
+    "overgrow",
+    "string",
+    "luminous",
+    "delicate",
+    "sustained",
+    "melodic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

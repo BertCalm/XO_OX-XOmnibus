@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Quantum Light",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Light behaving as both wave and particle — a shimmering, probabilistic brightness field.",
-  "tags": ["aether", "shimmer", "quantum", "wave"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "shimmer",
+    "quantum",
+    "wave"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -51,5 +63,7 @@
     "COUPLING": 0.0,
     "SPACE": 0.92
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

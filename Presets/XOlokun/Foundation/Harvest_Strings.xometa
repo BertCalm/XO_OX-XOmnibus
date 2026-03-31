@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Init orchestral strings \u2014 warm detuned ensemble with seasonal evolution",
+  "description": "Init orchestral strings — warm detuned ensemble with seasonal evolution",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.5,

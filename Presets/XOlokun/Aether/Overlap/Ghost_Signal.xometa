@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Release 10s, brightness 0.2. The signal is almost gone \u2014 a ghost frequency in empty space.",
+  "description": "Release 10s, brightness 0.2. The signal is almost gone — a ghost frequency in empty space.",
   "dna": {
     "aggression": 0.01,
     "brightness": 0.22,
@@ -24,7 +24,7 @@
     "BLOOM"
   ],
   "mood": "Aether",
-  "name": "Ghost Signal",
+  "name": "Ghost Signal (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 0,

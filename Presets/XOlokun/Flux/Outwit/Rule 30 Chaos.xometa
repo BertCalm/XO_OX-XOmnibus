@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 30 on all arms \u2014 the canonical chaotic elementary CA. 20 Hz step, high synapse. Maximum entropy.",
+  "description": "Rule 30 on all arms — the canonical chaotic elementary CA. 20 Hz step, high synapse. Maximum entropy.",
   "dna": {
     "aggression": 0.72,
     "brightness": 0.65,

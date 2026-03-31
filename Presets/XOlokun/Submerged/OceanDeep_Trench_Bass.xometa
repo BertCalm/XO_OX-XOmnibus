@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Trench Bass",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The sub-bass that moves air. filterCutoff=80 sits at the edge of human hearing — felt in the sternum, not heard in the ears. subOctMix=0.7 adds a full octave below. At concert volume this displaces the air in the room. On headphones it is a rumour of a frequency.",
-  "tags": ["bass", "submerged", "sub-bass", "trench", "hadal", "physical", "infrasonic", "pressure", "deep"],
+  "tags": [
+    "bass",
+    "submerged",
+    "sub-bass",
+    "trench",
+    "hadal",
+    "physical",
+    "infrasonic",
+    "pressure",
+    "deep"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "This is a physical preset. Requires a subwoofer or large speaker system to experience fully. On headphones the sub octave is reduced. ABYSS macro sweeps the darkness filter fully closed — use this to take the preset from infrasonic rumble to silence.",
     "diagnosis": "filterCutoff=80: deep hadal column — maximum darkness within practical range. subOctMix=0.7: the sub octave is the feature. pressureAmt=0.7: significant compression, the ocean is present. filterRes=0.25: low resonance to prevent peaks at inaudible frequencies. This is the deepest playable pitch in the collection."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.8
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

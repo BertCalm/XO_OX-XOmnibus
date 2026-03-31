@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Thermocline",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fathom in bright-character mode (0.82) with elevated high gain (1.55) and suppressed lows (0.6) slices the shimmer layer away from the body — the boundary between warmth and clarity becomes a physical surface. The supersaw reads differently above and below the Fathom threshold.",
-  "tags": ["aether", "shimmer", "fathom", "thermocline", "pressure", "spectral", "fx_chain:Aquatic", "aquatic-fx-demo"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "aether",
+    "shimmer",
+    "fathom",
+    "thermocline",
+    "pressure",
+    "spectral",
+    "fx_chain:Aquatic",
+    "aquatic-fx-demo"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.45, "movement": 0.35, "density": 0.38, "space": 0.75, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.38,
+    "space": 0.75,
+    "aggression": 0.15
+  },
   "parameters": {
     "OpenSky": {
       "sky_sawSpread": 0.28,
@@ -62,8 +85,15 @@
       "sky_modSlot2Amt": 0.0
     }
   },
-  "macros": {"RISE": 0.42, "WIDTH": 0.72, "GLOW": 0.58, "AIR": 0.75},
-  "coupling": {"pairs": []},
+  "macros": {
+    "RISE": 0.42,
+    "WIDTH": 0.72,
+    "GLOW": 0.58,
+    "AIR": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "aqua_fathom_mix": 0.65,
     "aqua_fathom_depth": 0.55,

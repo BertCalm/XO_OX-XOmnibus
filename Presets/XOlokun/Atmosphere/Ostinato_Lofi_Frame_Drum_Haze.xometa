@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Frame Drum Haze (Ostinato)",
   "mood": "Atmosphere",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Lo-fi frame drum — Mediterranean warmth with vinyl haze. Open frame drum as lazy downbeat, finger-roll as brushed texture, edge slap as accent. Heavy master filter, generous reverb, maximum humanize. Like hearing it through an apartment wall.",
-  "tags": ["lo-fi", "frame-drum", "haze", "atmospheric", "vinyl"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "lo-fi",
+    "frame-drum",
+    "haze",
+    "atmospheric",
+    "vinyl"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 75.0,
   "dna": {

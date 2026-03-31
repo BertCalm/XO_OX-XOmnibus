@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Hadal Freeze",
   "mood": "Submerged",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Freeze engaged (opal_freeze=0.85) on a 600ms Gaussian window grain with freezeSize=0.08 — only 8% of the 4-second buffer is accessible. The granulator orbits a microscopically small sonic territory, cycling through the same 0.32-second frozen snapshot endlessly. At density=25, 300 grains/second total arrive from 12 voices. Deep filter at 800Hz seals it below the thermocline. Hadal zone: extreme pressure, total isolation.",
-  "tags": ["freeze", "hadal", "submerged", "gaussian", "deep-filter", "isolation", "pressure"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "freeze",
+    "hadal",
+    "submerged",
+    "gaussian",
+    "deep-filter",
+    "isolation",
+    "pressure"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

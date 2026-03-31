@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "Spicule Swarm",
   "mood": "Flux",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Rule 45 — complex class III behavior, aperiodic and never settling. Morphing continuously toward Rule 105. High evolution rate (30 Hz) creates a dense swarm texture. The 2D mode is off but rule morphing does the structural shift. Aggressive pluck attack, short decay — each hit is a new colony.",
-  "tags": ["awakening", "aggressive", "pluck", "rule-45", "swarm", "percussive"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "aggressive",
+    "pluck",
+    "rule-45",
+    "swarm",
+    "percussive"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +68,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.85,

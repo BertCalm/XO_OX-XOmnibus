@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OMEGA — the practical FM bass. 2:1 ratio, round character, punchy attack that settles cleanly.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.22,
     "aggression": 0.25
   },
-  "engines": ["Omega"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Session Bass",
   "parameters": {
@@ -40,7 +49,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["omega", "fm", "bass", "foundation", "session", "practical", "clean"],
+  "tags": [
+    "omega",
+    "fm",
+    "bass",
+    "foundation",
+    "session",
+    "practical",
+    "clean"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

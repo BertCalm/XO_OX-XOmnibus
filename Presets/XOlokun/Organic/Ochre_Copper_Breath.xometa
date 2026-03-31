@@ -2,35 +2,51 @@
   "schema_version": 1,
   "name": "Copper Breath",
   "mood": "Organic",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow LFO2 sine into caramel depth, Parlour body. The piano that breathes. The caramel saturation rises and falls below the threshold of conscious awareness but above the threshold of felt experience. Every note slightly different from the last.",
-  "tags": ["piano", "copper", "breath", "lfo", "organic", "parlour", "warm", "caramel"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "breath",
+    "lfo",
+    "organic",
+    "parlour",
+    "warm",
+    "caramel"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
     "warmth": 0.85,
-    "movement": 0.40,
-    "density": 0.50,
+    "movement": 0.4,
+    "density": 0.5,
     "space": 0.45,
-    "aggression": 0.10
+    "aggression": 0.1
   },
   "parameters": {
     "Ochre": {
       "ochre_conductivity": 0.45,
-      "ochre_hardness": 0.30,
+      "ochre_hardness": 0.3,
       "ochre_bodyType": 1,
-      "ochre_bodyDepth": 0.60,
+      "ochre_bodyDepth": 0.6,
       "ochre_brightness": 7500.0,
       "ochre_damping": 0.28,
       "ochre_decay": 2.5,
-      "ochre_caramel": 0.40,
-      "ochre_sympathy": 0.40,
-      "ochre_hfCharacter": 0.20,
-      "ochre_thermalDrift": 0.40,
+      "ochre_caramel": 0.4,
+      "ochre_sympathy": 0.4,
+      "ochre_hfCharacter": 0.2,
+      "ochre_thermalDrift": 0.4,
       "ochre_filterEnvAmount": 0.32,
       "ochre_bendRange": 2.0,
       "ochre_macroCharacter": 0.0,

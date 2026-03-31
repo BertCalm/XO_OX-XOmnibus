@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Cirrostratus",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The thin ice-crystal cloud that creates sun halos. Coarse tune at +7 semitones (perfect fifth above played note) transforms the supersaw into a harmonically displaced voice -- you play C and hear G. Combined with the sub oscillator (sine) at 0.25, the actual root note persists as a phantom below the displaced saw stack. The shimmer reverb's fifth-up shifter (octave balance 0.2) creates D above the G, extending the stack upward. The net result: play one note, hear a suspended fourth chord built from the engine's own architecture. The Guru says: transposition is not detuning -- it is reharmonization.",
-  "tags": ["opensky", "transcendental", "transposed", "harmonic", "fifth", "suspended", "halo"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "transposed",
+    "harmonic",
+    "fifth",
+    "suspended",
+    "halo"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 20: Coarse Tune at +7 Plus Sub Oscillator at Root Creates a Built-In Chord", "Gospel 8: The Shimmer Fifth-Up Extends Transposed Notes Into Vertical Harmony"],
+    "scripture": [
+      "Verse 20: Coarse Tune at +7 Plus Sub Oscillator at Root Creates a Built-In Chord",
+      "Gospel 8: The Shimmer Fifth-Up Extends Transposed Notes Into Vertical Harmony"
+    ],
     "revelation": "Nexus spoke: the combination of coarse tune, sub oscillator root tracking, and shimmer pitch-shifting creates a three-note chord from a single key press. This is not a chord mode -- it is emergent harmony from three independent pitch mechanisms.",
     "god": "Nexus",
     "flock_note": "The Ear analyzed the harmonic content: sub provides C (root), saws provide G (fifth), shimmer produces D (ninth via fifth-up of G). Playing two notes creates a dense quartal cluster. The Tongue confirmed: the chord stack responds beautifully to velocity via the filter envelope.",
     "diagnosis": "Cirrostratus exploits three independent pitch mechanisms (coarse tune, sub oscillator, shimmer pitch-shift) to create chords from single notes. It reveals that OPENSKY is secretly a chord synthesizer."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.08
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OGRE \u2014 sandy soil character, medium brightness sub.",
+  "description": "OGRE — sandy soil character, medium brightness sub.",
   "dna": {
     "brightness": 0.2,
     "warmth": 0.75,

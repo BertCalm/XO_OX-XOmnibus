@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 200 (copy rule \u2014 identity) at very low master level (0.40). The automaton copies silence.",
+  "description": "Rule 200 (copy rule — identity) at very low master level (0.40). The automaton copies silence.",
   "dna": {
     "aggression": 0.01,
     "brightness": 0.15,

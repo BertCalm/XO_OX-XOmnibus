@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Ocean Floor Hum",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The constant background hum of the deep ocean floor — distant tectonic activity, the slow sound of weight. An atmospheric drone with minimal arm activity and very slow chromatophore cycles.",
-  "tags": ["octopus", "atmosphere", "hum", "drone", "floor", "tectonic", "constant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "atmosphere",
+    "hum",
+    "drone",
+    "floor",
+    "tectonic",
+    "constant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.2,

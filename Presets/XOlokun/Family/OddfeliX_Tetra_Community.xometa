@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Tetra Community",
   "mood": "Family",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm chord snap representing many individual tetras moving as one community.",
-  "tags": ["community", "chord", "family", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "community",
+    "chord",
+    "family",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.42, "movement": 0.48, "density": 0.7, "space": 0.52, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.42,
+    "movement": 0.48,
+    "density": 0.7,
+    "space": 0.52,
+    "aggression": 0.12
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.38
     }
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

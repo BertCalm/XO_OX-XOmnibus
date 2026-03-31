@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Classic jazz organ — 888800000 registration with 3rd harmonic percussion, slow Leslie, moderate drive. The Jimmy Smith jazz club grind.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.5,
     "warmth": 0.85
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Jimmy Smith",
   "parameters": {
@@ -54,7 +63,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "jazz", "hammond", "smooth", "club"],
+  "tags": [
+    "organ",
+    "jazz",
+    "hammond",
+    "smooth",
+    "club"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

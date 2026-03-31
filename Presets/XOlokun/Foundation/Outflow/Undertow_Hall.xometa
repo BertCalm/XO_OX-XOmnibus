@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "Undertow Hall",
   "mood": "Foundation",
-  "engines": ["Outflow"],
+  "engines": [
+    "Outflow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Large concert-hall reverb. Long decay, minimal damping (high-frequency preservation). Undertow pull is strong — transients create dramatic vacuum dips that make the hall feel alive and reactive. The optical warmth compensates with saturated warmth at every vacuum recovery.",
-  "tags": ["awakening", "hall", "large", "reverb", "orchestral", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "awakening",
+    "hall",
+    "large",
+    "reverb",
+    "orchestral",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Outflow": {
       "out_anchor": 0.75,
@@ -31,7 +49,9 @@
       "out_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

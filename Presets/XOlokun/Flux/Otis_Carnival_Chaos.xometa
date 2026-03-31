@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Full calliope steam organ — maximum instability, pipes wobbling wildly, steam pressure surging. The sound of a haunted carnival on the waterfront.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.5,
     "warmth": 0.3
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Flux",
   "name": "Carnival Chaos",
   "parameters": {
@@ -55,7 +64,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["calliope", "steam", "carnival", "chaos", "unhinged"],
+  "tags": [
+    "calliope",
+    "steam",
+    "carnival",
+    "chaos",
+    "unhinged"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

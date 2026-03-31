@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Ink Dissolution",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The ink cloud deployed and then slowly dissolving over ten seconds. Long ink decay, dark noise fading into the background. Each note triggers a fresh cloud that hangs and gradually disappears. Time stops underwater.",
-  "tags": ["octopus", "ink", "atmosphere", "noise", "dissolve", "ambient", "long"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "ink",
+    "atmosphere",
+    "noise",
+    "dissolve",
+    "ambient",
+    "long"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.2,

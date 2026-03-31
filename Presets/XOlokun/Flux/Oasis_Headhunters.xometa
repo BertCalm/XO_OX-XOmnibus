@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Headhunters",
   "mood": "Flux",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Herbie Hancock Head Hunters era Rhodes. Aggressive, fast tremolo, high bark, the fusion piano cutting through the band. filterEnvAmt 0.68 means every note is a brightness event.",
-  "tags": ["rhodes", "fusion", "herbie-hancock", "headhunters", "bark", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "fusion",
+    "herbie-hancock",
+    "headhunters",
+    "bark",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

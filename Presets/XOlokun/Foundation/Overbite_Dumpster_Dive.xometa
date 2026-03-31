@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Dumpster Dive",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Gritty downward-pitching bass with vinyl noise, transistor drive and a scavenging character.",
-  "tags": ["bass", "gritty", "dirty", "lo-fi"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "gritty",
+    "dirty",
+    "lo-fi"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.7, "movement": 0.3, "density": 0.6, "space": 0.2, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.2,
+    "aggression": 0.6
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -40,6 +60,14 @@
       "poss_macroPlayDead": 0.1
     }
   },
-  "macros": {"BELLY": 0.55, "BITE": 0.5, "SCURRY": 0.3, "TRASH": 0.55, "PLAY DEAD": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.55,
+    "BITE": 0.5,
+    "SCURRY": 0.3,
+    "TRASH": 0.55,
+    "PLAY DEAD": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

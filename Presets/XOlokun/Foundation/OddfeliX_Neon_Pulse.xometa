@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Neon Pulse",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Repeating snap sequence in arp mode — pulsing neon signal in a dark tank.",
-  "tags": ["pulse", "arp", "neon", "sequence"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pulse",
+    "arp",
+    "neon",
+    "sequence"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.87, "warmth": 0.18, "movement": 0.68, "density": 0.4, "space": 0.4, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.18,
+    "movement": 0.68,
+    "density": 0.4,
+    "space": 0.4,
+    "aggression": 0.3
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.52
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.68, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Cold Current",
+  "name": "Cold Current (Orca)",
   "mood": "Atmosphere",
   "engines": [
     "Orca"

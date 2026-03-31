@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Spectrum Fold",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Formant morph mid-sweep — formant fold from neutral to peak, bright shimmer tail.",
-  "tags": ["formant", "sweep", "bright", "spectrum"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "sweep",
+    "bright",
+    "spectrum"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.5, "density": 0.5, "space": 0.45, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.35
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Shattered Glass",
   "mood": "Kinetic",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Everything breaks. Maximum fragility on glass harp with high hammer hardness — every note cracks the surface. The noise burst of shattering glass followed by detuned, dying partials. Crystal drive pushes the shards into harmonic distortion. Play hard or go home.",
-  "tags": ["shattered", "glass", "noise", "aggressive", "fragile", "distortion"],
-  "macroLabels": ["HARDNESS", "FRAGILITY", "COUPLING", "SPACE"],
+  "tags": [
+    "shattered",
+    "glass",
+    "noise",
+    "aggressive",
+    "fragile",
+    "distortion"
+  ],
+  "macroLabels": [
+    "HARDNESS",
+    "FRAGILITY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

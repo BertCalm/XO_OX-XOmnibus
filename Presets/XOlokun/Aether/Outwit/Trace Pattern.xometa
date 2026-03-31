@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rules 136/0 \u2014 stable and dead cells alternating at low levels. A trace of a pattern.",
+  "description": "Rules 136/0 — stable and dead cells alternating at low levels. A trace of a pattern.",
   "dna": {
     "aggression": 0.01,
     "brightness": 0.15,

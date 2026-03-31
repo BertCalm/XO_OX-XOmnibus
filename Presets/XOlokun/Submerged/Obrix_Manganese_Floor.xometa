@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Manganese Floor",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The mineral plain of the deep ocean floor, covered in nodule deposits. Three LP processors chain together to enforce maximum depth: proc1 (120 Hz), proc2 (280 Hz), proc3 (600 Hz) — a cascading low-pass architecture that strips away everything above the fundamental. Triangle src1 offers its soft harmonics for the chain to consume; Sine src2 anchors the sub. Journey Mode holds the field open at distance=0.9, the second deepest distance in this collection. Four mods — LFO->FilterCutoff (proc1 slowly sweeps), Env->Volume (bloom and settle), Velocity->FilterCutoff (proc2 responds), Aftertouch->FXMix (spatial expansion) — barely disturb the geological stasis.",
-  "tags": ["obrix", "submerged", "journey", "deep", "lp", "triple-processor", "manganese", "floor"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "journey",
+    "deep",
+    "lp",
+    "triple-processor",
+    "manganese",
+    "floor"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.05,

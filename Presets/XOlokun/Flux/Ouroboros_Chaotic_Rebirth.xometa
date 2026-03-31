@@ -2,25 +2,54 @@
   "schema_version": 1,
   "name": "Chaotic Rebirth",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The system reborn through chaos — high injection overwhelms order then settles into new orbit.",
-  "tags": ["rebirth", "chaos", "overwhelm", "settle", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rebirth",
+    "chaos",
+    "overwhelm",
+    "settle",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.82, "density": 0.6, "space": 0.52, "aggression": 0.7},
-  "parameters": {"Ouroboros": {
-    "ouro_topology": 2,
-    "ouro_rate": 0.75,
-    "ouro_chaosIndex": 0.8,
-    "ouro_leash": 0.22,
-    "ouro_theta": 0.4,
-    "ouro_phi": 0.6,
-    "ouro_damping": 0.12,
-    "ouro_injection": 0.88
-  }},
-  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.82, "COUPLING": 0.5, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.82,
+    "density": 0.6,
+    "space": 0.52,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 2,
+      "ouro_rate": 0.75,
+      "ouro_chaosIndex": 0.8,
+      "ouro_leash": 0.22,
+      "ouro_theta": 0.4,
+      "ouro_phi": 0.6,
+      "ouro_damping": 0.12,
+      "ouro_injection": 0.88
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Fever Break",
   "mood": "Flux",
-  "engines": ["Organon"],
+  "engines": [
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Metabolic fever cresting then breaking — the thermal peak of a biological crisis, then release.",
-  "tags": ["fever", "break", "flux", "thermal", "crisis", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fever",
+    "break",
+    "flux",
+    "thermal",
+    "crisis",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.5, "movement": 0.75, "density": 0.62, "space": 0.42, "aggression": 0.7},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.5,
+    "movement": 0.75,
+    "density": 0.62,
+    "space": 0.42,
+    "aggression": 0.7
+  },
   "parameters": {
     "Organon": {
       "organon_metabolicRate": 0.78,
@@ -25,6 +46,8 @@
       "organon_lockIn": 0.15
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

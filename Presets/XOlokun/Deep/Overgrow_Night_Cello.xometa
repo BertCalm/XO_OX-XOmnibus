@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OVERGROW — OVERGROW in its darkest register. Cello character, slightly alive. For melodic cello lines.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.42,
     "aggression": 0.12
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Deep",
   "name": "Night Cello",
   "parameters": {
@@ -42,7 +51,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["overgrow", "string", "deep", "cello", "melodic", "dark"],
+  "tags": [
+    "overgrow",
+    "string",
+    "deep",
+    "cello",
+    "melodic",
+    "dark"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

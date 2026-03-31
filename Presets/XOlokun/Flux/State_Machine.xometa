@@ -19,7 +19,7 @@
   "engines": [
     "OddOscar"
   ],
-  "description": "Discrete morph states cycling \u2014 feels like digital state machine oscillating.",
+  "description": "Discrete morph states cycling — feels like digital state machine oscillating.",
   "tags": [
     "morph",
     "state",

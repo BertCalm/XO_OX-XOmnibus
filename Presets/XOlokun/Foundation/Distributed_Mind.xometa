@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Distributed Mind",
+  "name": "Distributed Mind (Octopus)",
   "mood": "Foundation",
   "engines": [
     "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "No central intelligence \u2014 just eight semi-autonomous arms reaching into the tonal space simultaneously. A polyphonic foundation patch that rewards chords. Each voice's arms run at different phases, so harmony becomes genuinely decentralized.",
+  "description": "No central intelligence — just eight semi-autonomous arms reaching into the tonal space simultaneously. A polyphonic foundation patch that rewards chords. Each voice's arms run at different phases, so harmony becomes genuinely decentralized.",
   "tags": [
     "octopus",
     "poly",

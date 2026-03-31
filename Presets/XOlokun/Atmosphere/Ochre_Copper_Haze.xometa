@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Copper Haze",
   "mood": "Atmosphere",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Heavy thermal drift and sympathetic resonance create a hazy, breathing copper atmosphere. The upright piano dissolving in afternoon heat.",
-  "tags": ["piano", "copper", "atmospheric", "haze", "drift", "breathing", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "atmospheric",
+    "haze",
+    "drift",
+    "breathing",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

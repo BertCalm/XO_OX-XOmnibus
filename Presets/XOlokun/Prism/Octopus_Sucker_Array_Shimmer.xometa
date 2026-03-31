@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Sucker Array Shimmer",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hundreds of suckers each refracting light — a bright, crystalline texture made of rapid sucker transients stacked on a shimmering pad base. High resonance sucker filter at upper-mid frequency, arms adding prismatic modulation.",
-  "tags": ["octopus", "prism", "sucker", "crystalline", "bright", "shimmer"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "sucker",
+    "crystalline",
+    "bright",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 1.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.9,

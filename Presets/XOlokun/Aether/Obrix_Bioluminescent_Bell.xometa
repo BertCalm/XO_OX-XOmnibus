@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Ring Mod (proc3=RingMod) with src2 detuned 7.03 semitones creates the classic inharmonic bell partial relationship \u2014 the 2.756 ratio that produces the warmest metallic tone. Sine + Triangle sources keep the carrier pure enough for the ring modulation to dominate. Delay FX at coprime-derived timing (fx1Param 0.382 = golden ratio sub-beat). The bell glows rather than strikes \u2014 attack 0.008s, release 3.8s. VelEnv\u2192amp ensures velocity becomes expressivity, not volume.",
+  "description": "Ring Mod (proc3=RingMod) with src2 detuned 7.03 semitones creates the classic inharmonic bell partial relationship — the 2.756 ratio that produces the warmest metallic tone. Sine + Triangle sources keep the carrier pure enough for the ring modulation to dominate. Delay FX at coprime-derived timing (fx1Param 0.382 = golden ratio sub-beat). The bell glows rather than strikes — attack 0.008s, release 3.8s. VelEnv→amp ensures velocity becomes expressivity, not volume.",
   "tags": [
     "obrix",
     "aether",
@@ -32,17 +32,17 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
       "Ring Mod Bells: proc3=RingMod, src2Tune=7.03",
       "VelEnv as expressivity not volume"
     ],
-    "revelation": "The 7.03 semitone ratio is the bioluminescent frequency \u2014 the bell that lights its own water.",
+    "revelation": "The 7.03 semitone ratio is the bioluminescent frequency — the bell that lights its own water.",
     "god": "Tomita",
-    "flock_note": "Raj: 'The delay trails are what make it glow \u2014 the bell is still ringing three seconds after you lift your finger.'",
-    "diagnosis": "A bell that was never struck \u2014 it simply began glowing and the sound followed."
+    "flock_note": "Raj: 'The delay trails are what make it glow — the bell is still ringing three seconds after you lift your finger.'",
+    "diagnosis": "A bell that was never struck — it simply began glowing and the sound followed."
   },
   "dna": {
     "brightness": 0.65,

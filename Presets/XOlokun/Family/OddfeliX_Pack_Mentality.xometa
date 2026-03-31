@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Pack Mentality",
   "mood": "Family",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum school density snap — all eight voices, high school macro, tightest cohesion.",
-  "tags": ["pack", "density", "family", "cohesion"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pack",
+    "density",
+    "family",
+    "cohesion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.38, "movement": 0.55, "density": 0.88, "space": 0.42, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.38,
+    "movement": 0.55,
+    "density": 0.88,
+    "space": 0.42,
+    "aggression": 0.2
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.35
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

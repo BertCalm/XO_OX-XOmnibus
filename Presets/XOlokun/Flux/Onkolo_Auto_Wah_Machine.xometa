@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Auto-Wah Machine",
   "mood": "Flux",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "AutoWahEnvelope pushed to its operational maximum. 2ms attack, 100ms release, 400–6000 Hz sweep in constant motion. Every note triggers a new wah arc. Stevie Wonder Superstition territory.",
-  "tags": ["clavinet", "auto-wah", "envelope", "filter-sweep", "flux", "stevie-wonder"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "auto-wah",
+    "envelope",
+    "filter-sweep",
+    "flux",
+    "stevie-wonder"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

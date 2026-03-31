@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Celesta Magic",
   "mood": "Foundation",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The classic celesta sound — pure, harmonic, magical. Felt hammers on tuned metal bars with resonator tubes. The instrument of Tchaikovsky's Sugar Plum Fairy and John Williams' Hedwig's Theme. Low fragility for consistent purity.",
-  "tags": ["celesta", "keys", "magical", "pure", "harmonic", "orchestral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "celesta",
+    "keys",
+    "magical",
+    "pure",
+    "harmonic",
+    "orchestral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

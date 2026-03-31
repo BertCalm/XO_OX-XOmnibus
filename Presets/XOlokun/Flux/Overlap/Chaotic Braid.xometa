@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Trefoil at 0.95 tangle — the braided signal paths are fully active. Feedback at 0.91, pulse at 4.5 Hz with minimal entrainment. S&H on LFO1 jumps the filter randomly, the tangle depth is maxed, and bioluminescence fires at every opportunity. The most aggressive trefoil state in the library.",
-  "dna": { "aggression": 0.88, "brightness": 0.87, "density": 0.45, "movement": 0.92, "space": 0.28, "warmth": 0.18 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.87,
+    "density": 0.45,
+    "movement": 0.92,
+    "space": 0.28,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
   "name": "Chaotic Braid",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "extreme", "trefoil", "braid", "chaos", "maximum", "aggressive"],
+  "tags": [
+    "flux",
+    "extreme",
+    "trefoil",
+    "braid",
+    "chaos",
+    "maximum",
+    "aggressive"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

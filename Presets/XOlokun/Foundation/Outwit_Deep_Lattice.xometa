@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 225 at low mutation \u2014 a sparse symmetric rule that creates a clean repeating lattice. The scaffolding of the octopus den, before anything moves in.",
+  "description": "Rule 225 at low mutation — a sparse symmetric rule that creates a clean repeating lattice. The scaffolding of the octopus den, before anything moves in.",
   "tags": [
     "foundation",
     "lattice",

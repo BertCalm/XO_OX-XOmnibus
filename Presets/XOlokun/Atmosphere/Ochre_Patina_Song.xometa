@@ -2,25 +2,41 @@
   "schema_version": 1,
   "name": "Patina Song",
   "mood": "Atmosphere",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High thermal drift, rich sympathetic resonance, Parlour body. The old copper-framed piano that has seen many seasons — slightly detuned between voices, rich with sympathetic life. Forty years of practice sessions absorbed into the copper frame.",
-  "tags": ["piano", "copper", "patina", "aged", "atmosphere", "sympathetic", "warm", "drift"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "patina",
+    "aged",
+    "atmosphere",
+    "sympathetic",
+    "warm",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
-    "warmth": 0.90,
-    "movement": 0.30,
+    "warmth": 0.9,
+    "movement": 0.3,
     "density": 0.55,
-    "space": 0.60,
+    "space": 0.6,
     "aggression": 0.05
   },
   "parameters": {
     "Ochre": {
-      "ochre_conductivity": 0.40,
+      "ochre_conductivity": 0.4,
       "ochre_hardness": 0.28,
       "ochre_bodyType": 1,
       "ochre_bodyDepth": 0.65,
@@ -28,7 +44,7 @@
       "ochre_damping": 0.22,
       "ochre_decay": 3.2,
       "ochre_caramel": 0.45,
-      "ochre_sympathy": 0.60,
+      "ochre_sympathy": 0.6,
       "ochre_hfCharacter": 0.15,
       "ochre_thermalDrift": 0.75,
       "ochre_filterEnvAmount": 0.28,
@@ -40,7 +56,7 @@
       "ochre_lfo1Rate": 0.05,
       "ochre_lfo1Depth": 0.05,
       "ochre_lfo1Shape": 0,
-      "ochre_lfo2Rate": 0.50,
+      "ochre_lfo2Rate": 0.5,
       "ochre_lfo2Depth": 0.0,
       "ochre_lfo2Shape": 1
     }

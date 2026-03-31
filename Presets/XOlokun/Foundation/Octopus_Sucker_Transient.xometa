@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Sucker Transient",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The sticky wet plonk of suction cups grabbing the audio spectrum. Ultra-fast attack, high-resonance bandpass hit on each note. Arms at low activity — the focus is the sucker transient defining each note.",
-  "tags": ["octopus", "transient", "sucker", "pluck", "percussive", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "transient",
+    "sucker",
+    "pluck",
+    "percussive",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.65,

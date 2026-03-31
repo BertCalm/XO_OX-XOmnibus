@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Gravity Zero",
   "mood": "Aether",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Gravity extinguished — breakpoints orbit freely with no attractor to constrain them.",
-  "tags": ["aether", "zero-gravity", "free", "orbit"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "zero-gravity",
+    "free",
+    "orbit"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.3, "movement": 0.65, "density": 0.35, "space": 0.93, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.65,
+    "density": 0.35,
+    "space": 0.93,
+    "aggression": 0.12
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.5,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.93
     }
   },
-  "macros": {"DRIFT": 0.65, "EVOLUTION": 0.65, "COUPLING": 0.0, "SPACE": 0.93},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.65,
+    "EVOLUTION": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.93
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

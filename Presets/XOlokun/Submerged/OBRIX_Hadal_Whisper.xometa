@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Hadal Whisper",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mariana Trench: 11 kilometers of absolute pressure. Sound behavior changes at that depth — waves compress, travel slower, bend differently. Maximum Pressure parameter squeezes LFOs into rapid, tense flutter. Distance filter removes everything above 1kHz.",
-  "tags": ["obrix", "submerged", "place", "mariana-trench", "dark", "pressure", "deep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "place",
+    "mariana-trench",
+    "dark",
+    "pressure",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +118,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

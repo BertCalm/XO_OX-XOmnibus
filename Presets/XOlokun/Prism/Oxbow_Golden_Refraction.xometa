@@ -4,14 +4,30 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Golden Refraction",
   "mood": "Prism",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "description": "The golden resonance feature foregrounded — convergence threshold set low so the golden ratio harmonic filters activate on every held note. Four CytomicSVF peaks tuned to φ, φ², φ³ multiples of the MIDI fundamental ring out like struck glass. CHARACTER macro brings more resonance shimmer.",
-  "tags": ["oxbow", "prism", "golden-resonance", "harmonic", "metallic", "bright"],
+  "tags": [
+    "oxbow",
+    "prism",
+    "golden-resonance",
+    "harmonic",
+    "metallic",
+    "bright"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.75,

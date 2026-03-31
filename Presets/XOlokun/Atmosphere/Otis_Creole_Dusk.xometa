@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Slow zydeco accordion at twilight — gentle musette beating, long sustain, sighing bellows. Clifton Chenier on the porch as the fireflies come out over the bayou.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.45,
     "warmth": 0.8
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Creole Dusk",
   "parameters": {
@@ -55,7 +64,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["accordion", "zydeco", "cajun", "twilight", "slow", "warm"],
+  "tags": [
+    "accordion",
+    "zydeco",
+    "cajun",
+    "twilight",
+    "slow",
+    "warm"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Reed Chorus",
   "mood": "Family",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Both reeds at matching levels singing in unison — the family harmony moment where everyone agrees.",
-  "tags": ["reed", "family", "chorus", "unison", "warm"],
-  "macroLabels": ["BOND", "BREATH", "WEIGHT", "SPACE"],
+  "tags": [
+    "reed",
+    "family",
+    "chorus",
+    "unison",
+    "warm"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WEIGHT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.72, "movement": 0.45, "density": 0.6, "space": 0.55, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.72,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.2
+  },
   "parameters": {
     "Obbligato": {
       "obbl_breathA": 0.68,
@@ -39,6 +59,13 @@
       "obbl_macroSpace": 0.5
     }
   },
-  "macros": {"BOND": 0.65, "BREATH": 0.68, "WEIGHT": 0.52, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.65,
+    "BREATH": 0.68,
+    "WEIGHT": 0.52,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

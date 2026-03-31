@@ -2,16 +2,41 @@
   "schema_version": 1,
   "name": "Bare Ecosystem",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Minimal starting point — all cross-feed routes near zero, ECOSYSTEM macro demonstrates the full matrix from silence. Build your own biome from here.",
-  "tags": ["foundation", "minimal", "clean", "ecosystem", "build"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "foundation",
+    "minimal",
+    "clean",
+    "ecosystem",
+    "build"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.3, "density": 0.35, "space": 0.4, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.35,
+    "space": 0.4,
+    "aggression": 0.15
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.0
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

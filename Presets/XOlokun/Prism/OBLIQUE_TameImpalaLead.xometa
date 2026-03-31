@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Tame Impala Lead",
   "mood": "Prism",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Kevin Parker's psychedelic lead tone — sawtooth with medium fold, deep phaser at 0.3 Hz, prism spectral delay wide. LFO2 at 0.04 Hz slowly deepens and releases the phaser sweep over 25 seconds. Legato mono with short glide for melodic flow. Velocity sensitivity wide: soft notes whisper, hard notes scream through the phaser.",
-  "tags": ["psychedelic", "lead", "phaser", "Tame Impala", "mono", "legato"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "psychedelic",
+    "lead",
+    "phaser",
+    "Tame Impala",
+    "mono",
+    "legato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,7 +62,7 @@
       "oblq_prismFeedback": 0.35,
       "oblq_prismMix": 0.48,
       "oblq_prismDamp": 0.42,
-      "oblq_phaserRate": 0.30,
+      "oblq_phaserRate": 0.3,
       "oblq_phaserDepth": 0.88,
       "oblq_phaserFeedback": 0.58,
       "oblq_phaserMix": 0.72,
@@ -62,6 +76,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

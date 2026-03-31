@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Full Color",
   "mood": "Prism",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full color saturation — prism color at maximum, wide spread, high feedback shimmer.",
-  "tags": ["color", "full", "saturated", "wide"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "color",
+    "full",
+    "saturated",
+    "wide"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.5, "movement": 0.48, "density": 0.55, "space": 0.6, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.5,
+    "movement": 0.48,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.38
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.6
     }
   },
-  "macros": {"BOUNCE": 0.32, "COLOR": 1.0, "FOLD": 0.22, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.32,
+    "COLOR": 1.0,
+    "FOLD": 0.22,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

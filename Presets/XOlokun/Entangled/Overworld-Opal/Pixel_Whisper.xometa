@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pixel Whisper",
   "mood": "Entangled",
-  "engines": ["Overworld", "Opal"],
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chip waveforms barely influence Opal's grain position — NES pulse energy gently nudges the granular read point, adding a pixelated flicker to the cloud.",
-  "tags": ["coupling", "Overworld-pair", "chip", "granular", "whisper", "retro"],
-  "macroLabels": ["ERA", "GLITCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Overworld-pair",
+    "chip",
+    "granular",
+    "whisper",
+    "retro"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",

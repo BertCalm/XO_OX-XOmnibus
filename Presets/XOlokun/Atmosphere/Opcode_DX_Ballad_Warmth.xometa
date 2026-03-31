@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "DX Ballad Warmth",
   "mood": "Atmosphere",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The softer side of FM — index lower, modulator decay slower, ratio slightly detuned for organic beating. The DX7 used on ballads rather than punchy pop. Still unmistakably digital, but with emotional intention.",
-  "tags": ["dx7", "fm", "ballad", "soft", "warm-fm", "atmosphere"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dx7",
+    "fm",
+    "ballad",
+    "soft",
+    "warm-fm",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

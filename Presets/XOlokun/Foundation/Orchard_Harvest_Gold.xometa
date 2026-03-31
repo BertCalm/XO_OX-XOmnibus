@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "ORCHARD — as melodic instrument. Shorter attack, glide for legato lines, focused ensemble width.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.62,
     "aggression": 0.08
   },
-  "engines": ["Orchard"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Harvest Gold",
   "parameters": {
@@ -43,7 +52,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["orchard", "strings", "orchestral", "foundation", "melodic", "legato"],
+  "tags": [
+    "orchard",
+    "strings",
+    "orchestral",
+    "foundation",
+    "melodic",
+    "legato"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

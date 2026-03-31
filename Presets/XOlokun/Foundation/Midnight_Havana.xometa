@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Midnight Havana",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "description": "Cuban night — congas, bongos, and cajón in a tight triangle. Swing at 33% for the Afro-Cuban 12/8 feel. The fire circle in the Caribbean.",
-  "tags": ["ostinato", "cuban", "conga", "latin", "groove"],
+  "tags": [
+    "ostinato",
+    "cuban",
+    "conga",
+    "latin",
+    "groove"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OSTINATO — The Circle",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 4: Swing Geography", "Canon 2: The Afro-Cuban 12/8 Circle"],
+    "scripture": [
+      "Verse 4: Swing Geography",
+      "Canon 2: The Afro-Cuban 12/8 Circle"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Breath felt the 33% swing as a body — The Ear confirmed the congas + cajón triangle is the minimal Cuban ensemble.",

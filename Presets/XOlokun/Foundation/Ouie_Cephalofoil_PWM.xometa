@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Cephalofoil PWM",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Both voices on VA square with different pulse widths — Voice 1 at PW 0.28, Voice 2 at PW 0.72 (mirror positions). In LOVE at +0.55, the spectral blend of the two asymmetric square waves creates a pulse-width modulation effect without an LFO — the blend IS the modulation. Mod envelope slowly sweeps the algoParam of Voice 2, shifting its harmonic emphasis. The cephalofoil: two eyes seeing different things, merged into one perception.",
-  "tags": ["pwm", "analog", "square", "blend", "classic", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "pwm",
+    "analog",
+    "square",
+    "blend",
+    "classic",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.08
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

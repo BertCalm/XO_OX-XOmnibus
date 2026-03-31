@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Probability Zero",
   "mood": "Prism",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Amp step and time step both near-zero — the GENDY generator barely moves. Static noise field with occasional micro-events. The oracle consulting probabilities too small to measure. Silence as music.",
-  "tags": ["experimental", "micro", "static", "near-silence", "probability", "genre-spotlight"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "experimental",
+    "micro",
+    "static",
+    "near-silence",
+    "probability",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.48, "movement": 0.12, "density": 0.28, "space": 0.92, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.48,
+    "movement": 0.12,
+    "density": 0.28,
+    "space": 0.92,
+    "aggression": 0.08
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 3.0,
@@ -45,6 +66,13 @@
       "oracle_macroDrift": 0.05
     }
   },
-  "macros": {"PROPHECY": 0.12, "EVOLUTION": 0.08, "GRAVITY": 0.65, "DRIFT": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PROPHECY": 0.12,
+    "EVOLUTION": 0.08,
+    "GRAVITY": 0.65,
+    "DRIFT": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

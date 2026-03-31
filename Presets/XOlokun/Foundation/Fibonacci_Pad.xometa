@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Init synth strings \u2014 golden ratio harmonic spacing, geometric precision",
+  "description": "Init synth strings — golden ratio harmonic spacing, geometric precision",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.6,

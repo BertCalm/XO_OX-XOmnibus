@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Spectrum Dart",
   "mood": "Prism",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Karplus-Strong pitched percussion through maximum resonance filter — each note a distinct color on the scale.",
-  "tags": ["prism", "karplus", "resonant", "pitched", "spectrum"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "karplus",
+    "resonant",
+    "pitched",
+    "spectrum"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.32, "movement": 0.55, "density": 0.42, "space": 0.58, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.32,
+    "movement": 0.55,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.28
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
@@ -33,6 +53,13 @@
       "snap_macroDepth": 0.48
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

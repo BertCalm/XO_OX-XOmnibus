@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 high-feedback 1:1 FM. Modulator self-oscillation creates metallic buzz that distills to clean tone.",
+  "description": "OMEGA — high-feedback 1:1 FM. Modulator self-oscillation creates metallic buzz that distills to clean tone.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.28,

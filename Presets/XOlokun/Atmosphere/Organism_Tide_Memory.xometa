@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tide Memory",
+  "name": "Tide Memory (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

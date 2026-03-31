@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Bounce Aether",
   "mood": "Aether",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bouncing into nothingness — single bounce, maximum release, trace of prismatic light.",
-  "tags": ["bounce", "aether", "trace", "single"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "bounce",
+    "aether",
+    "trace",
+    "single"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.52, "movement": 0.12, "density": 0.22, "space": 0.94, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.52,
+    "movement": 0.12,
+    "density": 0.22,
+    "space": 0.94,
+    "aggression": 0.04
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.94
     }
   },
-  "macros": {"BOUNCE": 0.1, "COLOR": 0.52, "FOLD": 0.18, "SPACE": 0.94},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.1,
+    "COLOR": 0.52,
+    "FOLD": 0.18,
+    "SPACE": 0.94
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

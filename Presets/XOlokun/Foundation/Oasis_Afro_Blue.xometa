@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Afro Blue Voicing",
   "mood": "Foundation",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "McCoy Tyner quartal voicing character. No tremolo, dark-warm filter, long decay. Jazz EP in a straight-ahead context. Passes the source tradition test.",
-  "tags": ["rhodes", "jazz", "warm", "no-tremolo", "mccoy-tyner", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "jazz",
+    "warm",
+    "no-tremolo",
+    "mccoy-tyner",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

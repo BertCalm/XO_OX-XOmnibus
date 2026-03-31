@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Waver Low",
   "mood": "Flux",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vibrato sub-bass with slow pitch waver and gentle chorus — the opossum tail wag in sound.",
-  "tags": ["sub", "vibrato", "chorus", "waver"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "sub",
+    "vibrato",
+    "chorus",
+    "waver"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.75, "movement": 0.55, "density": 0.5, "space": 0.4, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.75,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.2
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -38,6 +58,14 @@
       "poss_macroPlayDead": 0.25
     }
   },
-  "macros": {"BELLY": 0.7, "BITE": 0.15, "SCURRY": 0.55, "TRASH": 0.1, "PLAY DEAD": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.7,
+    "BITE": 0.15,
+    "SCURRY": 0.55,
+    "TRASH": 0.1,
+    "PLAY DEAD": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

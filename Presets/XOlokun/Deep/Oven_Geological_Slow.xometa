@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "Geological Slow",
   "mood": "Deep",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum bloom time at 1.0: the iron takes thirty seconds to fully speak. Play a chord and wait. The thermal mass absorbs the energy slowly, releasing it in a wave that takes minutes to complete. Not a preset for impatient players. Geological time as musical parameter.",
-  "tags": ["piano", "cast iron", "geological", "slow", "bloom", "dark", "deep", "meditative", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "cast iron",
+    "geological",
+    "slow",
+    "bloom",
+    "dark",
+    "deep",
+    "meditative",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

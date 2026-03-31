@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Trench Collapse",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The geological moment of failure — two sources (Saw + Triangle) converge in FM collapse (fmDepth=0.55) as the ocean floor gives way. Heavy LP filtering on proc1 (200 Hz cutoff, high feedback) and proc2 (80 Hz cutoff) create the sensation of mass displacement. Journey Mode sustains the descent indefinitely. Four mods track the slow avalanche: LFO->FilterCutoff opens the pressure wave, Env->Volume surges on impact, Velocity->FilterCutoff sharpens the blow, Aftertouch->Pan spreads the debris field. distance=0.88 buries the event deep.",
-  "tags": ["obrix", "submerged", "fm", "journey", "deep", "heavy", "trench", "collapse"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "fm",
+    "journey",
+    "deep",
+    "heavy",
+    "trench",
+    "collapse"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.08,

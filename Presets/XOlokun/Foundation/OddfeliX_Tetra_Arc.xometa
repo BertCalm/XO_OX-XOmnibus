@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Tetra Arc",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Both-direction sweep snap — arcing up then down like a tetra reversing course.",
-  "tags": ["sweep", "both", "arc", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "sweep",
+    "both",
+    "arc",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.83, "warmth": 0.2, "movement": 0.6, "density": 0.3, "space": 0.45, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.83,
+    "warmth": 0.2,
+    "movement": 0.6,
+    "density": 0.3,
+    "space": 0.45,
+    "aggression": 0.28
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.6, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

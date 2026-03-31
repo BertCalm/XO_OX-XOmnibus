@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Grow Flux",
   "mood": "Flux",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Grow macro at peak with maximum drift, the family maturation in unstable flux.",
-  "tags": ["brass", "grow", "flux", "maturation", "unstable"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "grow",
+    "flux",
+    "maturation",
+    "unstable"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.65, "movement": 0.78, "density": 0.62, "space": 0.62, "aggression": 0.52},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.65,
+    "movement": 0.78,
+    "density": 0.62,
+    "space": 0.62,
+    "aggression": 0.52
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.18
     }
   },
-  "macros": {"GROW": 0.98, "EMBOUCHURE": 0.72, "LAKE": 0.52, "FOREIGN": 0.18},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.98,
+    "EMBOUCHURE": 0.72,
+    "LAKE": 0.52,
+    "FOREIGN": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

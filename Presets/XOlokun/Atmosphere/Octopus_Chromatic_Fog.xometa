@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Chromatic Fog",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High chromatophore depth and speed with slow arm rate creates a shimmering atmospheric haze — color-shifting cells pulsing slowly through an expansive, softly patterned space.",
-  "tags": ["atmosphere", "chromatophore", "fog", "shimmer", "color"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "chromatophore",
+    "fog",
+    "shimmer",
+    "color"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.45, "movement": 0.35, "density": 0.55, "space": 0.8, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.1
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.55,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

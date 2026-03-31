@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Anoxic Layer",
+  "name": "Anoxic Layer (Octopus)",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The oxygen-depleted layer in stratified water bodies — alien to most life. A nearly silent, very dark submerged texture. Filter locked to sub-bass. Arms barely moving. Ink permanently present at low mix.",
-  "tags": ["octopus", "submerged", "anoxic", "silent", "dark", "alien", "bass"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "anoxic",
+    "silent",
+    "dark",
+    "alien",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.08,

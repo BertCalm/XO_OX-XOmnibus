@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Papillae Texture",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The skin papillae that change skin texture as well as color — a bumpy, intricate surface rendered in audio. Dense sucker transients overlaid on a colorful, moving chromatophore field. Texture as prism.",
-  "tags": ["octopus", "prism", "texture", "papillae", "dense", "surface"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "texture",
+    "papillae",
+    "dense",
+    "surface"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 1.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.82,

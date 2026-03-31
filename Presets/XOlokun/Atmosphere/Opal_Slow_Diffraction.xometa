@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Slow Diffraction",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Minimum density (2 grains/sec) with 20ms Tukey window grains. At 12 simultaneous voices, approximately 24 grains arrive per second total — each audible as a brief discrete event separated by substantial silence. Tukey window preserves transient content at 50% flat-top. Very high reverb mix means each grain's tail overlaps with the silence before the next grain. The space between is the instrument.",
-  "tags": ["sparse", "minimum-density", "tukey", "atmosphere", "gaps", "silence", "discrete-grains"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "sparse",
+    "minimum-density",
+    "tukey",
+    "atmosphere",
+    "gaps",
+    "silence",
+    "discrete-grains"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

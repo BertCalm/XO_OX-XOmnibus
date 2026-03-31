@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "TUTORIAL OBRIX 01 Single Brick Foundation",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tutorial patch 01: one source, one processor, one filter envelope. The OBRIX baseline. Everything else off, so you can hear what each subsequent layer adds. Push CHARACTER macro to hear the wavefolder engage.",
-  "tags": ["tutorial", "obrix", "foundation", "single-brick", "educational", "subtractive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tutorial",
+    "obrix",
+    "foundation",
+    "single-brick",
+    "educational",
+    "subtractive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

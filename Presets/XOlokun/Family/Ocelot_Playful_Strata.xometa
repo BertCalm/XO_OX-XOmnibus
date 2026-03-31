@@ -2,16 +2,41 @@
   "schema_version": 1,
   "name": "Playful Strata",
   "mood": "Family",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All four strata equally balanced, gentle ecosystem matrix — each layer contributing. Fun and interactive, designed for performance with all four macros.",
-  "tags": ["family", "playful", "balanced", "strata", "interactive"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "family",
+    "playful",
+    "balanced",
+    "strata",
+    "interactive"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.62, "movement": 0.5, "density": 0.5, "space": 0.55, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.62,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.18
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.28
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

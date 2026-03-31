@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Sibling Stars",
   "mood": "Family",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Binary stars born from the same nebula, singing in resonant harmony across the sky.",
-  "tags": ["family", "harmonic", "stars", "resonant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "harmonic",
+    "stars",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -51,5 +63,7 @@
     "COUPLING": 0.6,
     "SPACE": 0.85
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

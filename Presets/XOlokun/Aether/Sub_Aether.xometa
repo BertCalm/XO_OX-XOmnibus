@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Sub Aether",
+  "name": "Sub Aether (Odyssey)",
   "mood": "Aether",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sub presence elevated to aether \u2014 lowest register barely touching infinite space, vast release.",
+  "description": "Sub presence elevated to aether — lowest register barely touching infinite space, vast release.",
   "tags": [
     "sub",
     "aether",

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Warm Refract",
   "mood": "Prism",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm gut strings refracted through crystal chorus and shimmer, the golden side of the prism.",
-  "tags": ["harp", "warm", "refracted", "gut", "golden"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "warm",
+    "refracted",
+    "gut",
+    "golden"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.7, "movement": 0.4, "density": 0.4, "space": 0.72, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.4,
+    "space": 0.72,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 6,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.4
     }
   },
-  "macros": {"PLUCK": 0.45, "SURFACE": 0.5, "FRACTURE": 0.25, "DIVINE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.45,
+    "SURFACE": 0.5,
+    "FRACTURE": 0.25,
+    "DIVINE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

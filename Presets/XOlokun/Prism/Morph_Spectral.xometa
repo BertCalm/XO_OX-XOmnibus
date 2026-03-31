@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Morph Spectral",
   "mood": "Prism",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH tuned for maximum spectral brightness — high filter, bright wavetable position, active bloom. Harmonic overtones evolving through the spectrum.",
-  "tags": ["morph", "spectral", "bright", "harmonic", "prism", "evolving"],
-  "macroLabels": ["MORPH POSITION", "BLOOM", "BRIGHTNESS", "DETUNE"],
+  "tags": [
+    "morph",
+    "spectral",
+    "bright",
+    "harmonic",
+    "prism",
+    "evolving"
+  ],
+  "macroLabels": [
+    "MORPH POSITION",
+    "BLOOM",
+    "BRIGHTNESS",
+    "DETUNE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

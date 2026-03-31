@@ -23,7 +23,7 @@
     "DECAY"
   ],
   "mood": "Atmosphere",
-  "name": "Jellyfish Bloom",
+  "name": "Jellyfish Bloom (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_damping": 0.48,

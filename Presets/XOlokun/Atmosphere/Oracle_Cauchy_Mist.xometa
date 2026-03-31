@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Cauchy Mist",
   "mood": "Atmosphere",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cauchy distribution creates heavy-tailed atmospheric fog with unpredictable bursts.",
-  "tags": ["atmosphere", "cauchy", "fog", "generative"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "cauchy",
+    "fog",
+    "generative"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.5, "movement": 0.6, "density": 0.5, "space": 0.7, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.3
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.65,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.7
     }
   },
-  "macros": {"DRIFT": 0.6, "EVOLUTION": 0.5, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.6,
+    "EVOLUTION": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

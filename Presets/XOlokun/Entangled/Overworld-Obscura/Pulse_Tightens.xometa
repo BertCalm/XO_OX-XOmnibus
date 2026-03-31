@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Pulse Tightens",
   "mood": "Entangled",
-  "engines": ["Overworld", "Obscura"],
+  "engines": [
+    "Overworld",
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Overworld's NES pulse wave barely stiffens Obscura's string — the 8-bit attack nudges the physical model's resonant character at the edge of perception. Each chip note arrives and the string becomes fractionally tighter, fractionally brighter.",
-  "tags": ["coupling", "Overworld-pair", "physical-model", "chip", "whisper", "subtle", "retro"],
-  "macroLabels": ["ERA", "MATERIAL", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Overworld-pair",
+    "physical-model",
+    "chip",
+    "whisper",
+    "subtle",
+    "retro"
+  ],
+  "macroLabels": [
+    "ERA",
+    "MATERIAL",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OMEGA — algorithm 6, bell ratio. Bass note begins inharmonic like a bell, distills toward carrier.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.38,
     "aggression": 0.22
   },
-  "engines": ["Omega"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Prism",
   "name": "Copper Bell",
   "parameters": {
@@ -40,7 +49,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["omega", "fm", "bass", "prism", "bell", "inharmonic", "melodic"],
+  "tags": [
+    "omega",
+    "fm",
+    "bass",
+    "prism",
+    "bell",
+    "inharmonic",
+    "melodic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Filter Sweep",
+  "name": "Filter Sweep (Overdub)",
   "mood": "Prism",
   "engines": [
     "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wide resonant filter sweep from sub to open \u2014 a full timbral spectrum in a single gesture.",
+  "description": "Wide resonant filter sweep from sub to open — a full timbral spectrum in a single gesture.",
   "tags": [
     "prism",
     "filter",

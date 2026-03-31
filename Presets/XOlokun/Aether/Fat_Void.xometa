@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Fat Void",
   "mood": "Aether",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's oscillator stack stretched into pure aether — extremely slow attack, maximum detune, sub rumbling below. A void so dense it becomes texture. Press notes and walk away.",
-  "tags": ["aether", "fat", "void", "dense", "slow", "ambient", "massive"],
-  "macroLabels": ["DETUNE WIDTH", "SUB DEPTH", "FILTER", "MORPH"],
+  "tags": [
+    "aether",
+    "fat",
+    "void",
+    "dense",
+    "slow",
+    "ambient",
+    "massive"
+  ],
+  "macroLabels": [
+    "DETUNE WIDTH",
+    "SUB DEPTH",
+    "FILTER",
+    "MORPH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

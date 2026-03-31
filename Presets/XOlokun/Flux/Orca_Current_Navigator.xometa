@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Current Navigator",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Moderate wavetable drift with responsive velocity-to-filter mapping — notes feel like a pod navigating between current flows, each velocity change redirecting the harmonic path.",
-  "tags": ["flux", "navigation", "current", "responsive", "velocity"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "navigation",
+    "current",
+    "responsive",
+    "velocity"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 100,
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.6, "density": 0.5, "space": 0.55, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.4
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.4,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.55
     }
   },
-  "macros": {"HUNT": 0.45, "MOVEMENT": 0.6, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

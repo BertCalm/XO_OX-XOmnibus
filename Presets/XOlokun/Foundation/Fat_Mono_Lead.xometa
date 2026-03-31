@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Fat Mono Lead",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT mono lead with heavy detuning and portamento. Thick oscillator wall playing single notes with glide — mammoth lead runs through a dense sound.",
-  "tags": ["lead", "fat", "mono", "glide", "portamento", "thick", "foundation"],
-  "macroLabels": ["MORPH", "GLIDE TIME", "FILTER", "SATURATION"],
+  "tags": [
+    "lead",
+    "fat",
+    "mono",
+    "glide",
+    "portamento",
+    "thick",
+    "foundation"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "GLIDE TIME",
+    "FILTER",
+    "SATURATION"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

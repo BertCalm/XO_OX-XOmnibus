@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Synapse Storm",
+  "name": "Synapse Storm (Outwit) (Outwit) 3",
   "mood": "Flux",
   "engines": [
     "Outwit"
@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Maximum synapse coupling between all 8 arms \u2014 states bleed into each other, creating unpredictable rhythmic bursts. High ink cloud adds noise transients. Controlled chaos.",
+  "description": "Maximum synapse coupling between all 8 arms — states bleed into each other, creating unpredictable rhythmic bursts. High ink cloud adds noise transients. Controlled chaos.",
   "tags": [
     "techno",
     "chaos",

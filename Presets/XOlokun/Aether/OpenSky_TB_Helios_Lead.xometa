@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Helios Lead",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The sun personified as a monophonic lead voice. Single unison voice with maximum saw spread (0.9) -- 7 saws wide enough to fill the stereo field from one voice. Fast attack (0.005s), short decay (0.3s), high sustain (0.9), short release (0.3s) for an aggressive, immediate character. Filter cutoff at 7000 Hz with resonance 0.22 and strong filter envelope (0.65) gives velocity-driven bite. Shimmer at 0.35 with octave-heavy balance (0.85) adds an octave-up harmonic that makes the lead cut through any mix. The Guru says: OPENSKY's lead voice is a supersaw that learned to sing alone.",
-  "tags": ["opensky", "transcendental", "lead", "mono", "aggressive", "supersaw", "bright"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "lead",
+    "mono",
+    "aggressive",
+    "supersaw",
+    "bright"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 18: A Single Voice With Spread 0.9 Contains More Width Than 7 Unison Voices at 0.3", "Gospel 7: The Lead Voice Is a Pad That Learned to Speak Fast"],
+    "scripture": [
+      "Verse 18: A Single Voice With Spread 0.9 Contains More Width Than 7 Unison Voices at 0.3",
+      "Gospel 7: The Lead Voice Is a Pad That Learned to Speak Fast"
+    ],
     "revelation": "Pressura spoke: maximum saw spread on a single unison voice produces a wider, more phase-coherent sound than multiple unison voices at moderate spread. The 7 internal saws already provide detuning -- adding unison on top creates redundancy.",
     "god": "Pressura",
     "flock_note": "The Tongue confirmed: velocity at 127 opens the filter to 7000+4550 Hz (via envelope), creating a searing brightness. Velocity at 40 produces a warmer, more contained lead. The velocity-to-timbre arc spans from warm synth lead to cutting trance lead in one gesture.",
     "diagnosis": "Helios Lead proves OPENSKY is not only a pad engine. With fast envelopes and a single voice at maximum spread, it becomes a formidable lead synthesizer. The shimmer octave-up adds the harmonic cutting power that supersaws need in a mix."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

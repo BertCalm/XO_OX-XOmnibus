@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Sub Series Prism",
   "mood": "Prism",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Four-division subharmonic series with high output and bright attack — the entire harmonic underworld visible at once.",
-  "tags": ["prism", "sub-series", "subharmonic", "bright", "four-layer", "mixtur"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "sub-series",
+    "subharmonic",
+    "bright",
+    "four-layer",
+    "mixtur"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.52, "movement": 0.38, "density": 0.82, "space": 0.52, "aggression": 0.48},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.52,
+    "movement": 0.38,
+    "density": 0.82,
+    "space": 0.52,
+    "aggression": 0.48
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.75,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.78, "MOVEMENT": 0.38, "COUPLING": 0.35, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.35,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

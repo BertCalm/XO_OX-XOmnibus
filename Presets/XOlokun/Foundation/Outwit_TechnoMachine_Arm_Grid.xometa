@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Arm Grid",
   "mood": "Foundation",
-  "engines": ["Outwit"],
+  "engines": [
+    "Outwit"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "8 arms set to stable, periodic CA rules (Class 2) — produces predictable patterns suitable as a rhythmic grid layer. No SOLVE, low synapse. A reliable automata-based texture.",
-  "tags": ["techno", "grid", "periodic", "stable", "foundation", "genre-spotlight"],
-  "macroLabels": ["SOLVE", "SYNAPSE", "CHROMATOPHORE", "DEN"],
+  "tags": [
+    "techno",
+    "grid",
+    "periodic",
+    "stable",
+    "foundation",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "SOLVE",
+    "SYNAPSE",
+    "CHROMATOPHORE",
+    "DEN"
+  ],
   "couplingIntensity": "None",
   "tempo": 128,
-  "dna": {"brightness": 0.42, "warmth": 0.38, "movement": 0.65, "density": 0.72, "space": 0.38, "aggression": 0.62},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.38,
+    "movement": 0.65,
+    "density": 0.72,
+    "space": 0.38,
+    "aggression": 0.62
+  },
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 4,
@@ -112,6 +133,13 @@
       "owit_macroDen": 0.22
     }
   },
-  "macros": {"SOLVE": 0.0, "SYNAPSE": 0.18, "CHROMATOPHORE": 0.42, "DEN": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SOLVE": 0.0,
+    "SYNAPSE": 0.18,
+    "CHROMATOPHORE": 0.42,
+    "DEN": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

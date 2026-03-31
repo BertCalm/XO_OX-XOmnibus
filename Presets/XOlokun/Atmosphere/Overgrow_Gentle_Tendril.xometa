@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Wildness=0.05, bowNoise=0.05. Smooth attack (80ms), long release (2.5s), high cutoff. XOxalis when not stressed \u2014 the tendril exploring space without force, gentle and patient.",
+  "description": "Wildness=0.05, bowNoise=0.05. Smooth attack (80ms), long release (2.5s), high cutoff. XOxalis when not stressed — the tendril exploring space without force, gentle and patient.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.55,

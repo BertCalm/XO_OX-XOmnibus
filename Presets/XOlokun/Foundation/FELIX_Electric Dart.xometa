@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "feliX at his most essential — a single sine-noise dart, tight decay, fast LFO carving a notch in the BPF. The neon tetra in sunlit shallows, sharp and immediate. Foundation-mode: works in any context, sits in any mix.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.25,
     "aggression": 0.45
   },
-  "engines": ["OddfeliX"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
   "macros": {
     "CHARACTER": 0.0,
     "MOVEMENT": 0.0,
@@ -47,7 +56,14 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["foundation", "oddfelix", "percussive", "clean", "bright", "snap"],
+  "tags": [
+    "foundation",
+    "oddfelix",
+    "percussive",
+    "clean",
+    "bright",
+    "snap"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

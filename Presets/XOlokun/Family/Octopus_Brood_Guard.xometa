@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Brood Guard",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The female octopus guarding her clutch of eggs for months, not eating, barely moving, defending with everything. A restrained family pad with defensive ink presence and steady, watchful arm activity.",
-  "tags": ["octopus", "family", "brood", "guard", "defensive", "vigilant", "nurturing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "brood",
+    "guard",
+    "defensive",
+    "vigilant",
+    "nurturing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 2.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,

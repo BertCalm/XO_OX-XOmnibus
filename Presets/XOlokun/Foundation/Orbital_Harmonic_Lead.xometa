@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Harmonic Lead",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sharp harmonic lead voice — fast attack group envelopes, bright brightness, mono mode.",
-  "tags": ["lead", "harmonic", "bright", "mono"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "lead",
+    "harmonic",
+    "bright",
+    "mono"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.4, "movement": 0.3, "density": 0.4, "space": 0.3, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.3,
+    "aggression": 0.5
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.2,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.3
     }
   },
-  "macros": {"SPECTRUM": 0.75, "EVOLVE": 0.3, "COUPLING": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.75,
+    "EVOLVE": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

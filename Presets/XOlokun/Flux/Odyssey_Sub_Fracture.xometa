@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sub Fracture",
   "mood": "Flux",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sub bass oscillator hit with fracture events — massive low foundation crumbling into stochastic breaks, heavy flux.",
-  "tags": ["sub", "fracture", "bass", "heavy", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "sub",
+    "fracture",
+    "bass",
+    "heavy",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.52, "movement": 0.72, "density": 0.75, "space": 0.38, "aggression": 0.72},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.52,
+    "movement": 0.72,
+    "density": 0.75,
+    "space": 0.38,
+    "aggression": 0.72
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 1,
@@ -54,6 +74,13 @@
       "drift_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.72, "COUPLING": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

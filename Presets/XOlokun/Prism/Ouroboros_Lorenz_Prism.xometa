@@ -2,25 +2,54 @@
   "schema_version": 1,
   "name": "Lorenz Prism",
   "mood": "Prism",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The Lorenz attractor butterfly wings as prism faces — spectral light from each wing lobe.",
-  "tags": ["lorenz", "prism", "butterfly", "wing", "spectral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lorenz",
+    "prism",
+    "butterfly",
+    "wing",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.5, "movement": 0.55, "density": 0.6, "space": 0.65, "aggression": 0.38},
-  "parameters": {"Ouroboros": {
-    "ouro_topology": 0,
-    "ouro_rate": 0.52,
-    "ouro_chaosIndex": 0.52,
-    "ouro_leash": 0.48,
-    "ouro_theta": 0.5,
-    "ouro_phi": 0.5,
-    "ouro_damping": 0.3,
-    "ouro_injection": 0.55
-  }},
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.55, "COUPLING": 0.5, "SPACE": 0.62},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 0.52,
+      "ouro_chaosIndex": 0.52,
+      "ouro_leash": 0.48,
+      "ouro_theta": 0.5,
+      "ouro_phi": 0.5,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.55
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.5,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

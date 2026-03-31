@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mojo Field",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "B015 Mojo at 0.35 fills the space between analog warmth and digital air — a broad atmospheric field that floats above the mix with presence but without harshness.",
-  "tags": ["atmosphere", "mojo", "floating", "presence", "airy"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "mojo",
+    "floating",
+    "presence",
+    "airy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.2, "density": 0.55, "space": 0.8, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.1
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.6,
@@ -46,6 +66,13 @@
       "fat_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

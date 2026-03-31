@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Upper limit of tonal brightness \u2014 the spectral peak at full luminance.",
+  "description": "Upper limit of tonal brightness — the spectral peak at full luminance.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.95,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "Spectrum Peak",
+  "name": "Spectrum Peak (OddfeliX) (OddfeliX) 2",
   "parameters": {
     "OddfeliX": {
       "snap_ampAttack": 0.0055,

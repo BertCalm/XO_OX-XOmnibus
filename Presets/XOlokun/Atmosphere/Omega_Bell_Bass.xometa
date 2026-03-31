@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 algorithm 6 (7:1 bell ratio). Attacks with inharmonic bell content, decays to pure fundamental.",
+  "description": "OMEGA — algorithm 6 (7:1 bell ratio). Attacks with inharmonic bell content, decays to pure fundamental.",
   "dna": {
     "brightness": 0.48,
     "warmth": 0.48,

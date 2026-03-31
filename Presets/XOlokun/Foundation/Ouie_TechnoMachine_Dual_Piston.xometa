@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Dual Piston",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "V1 and V2 locked to similar algorithms but detuned by a tritone — the two voices create a mechanical grinding interval. Ideal as a techno bass or mid lead.",
-  "tags": ["techno", "bass", "tritone", "industrial", "foundation", "genre-spotlight"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "techno",
+    "bass",
+    "tritone",
+    "industrial",
+    "foundation",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.52, "movement": 0.55, "density": 0.82, "space": 0.28, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.52,
+    "movement": 0.55,
+    "density": 0.82,
+    "space": 0.28,
+    "aggression": 0.75
+  },
   "parameters": {
     "Ouie": {
       "ouie_algo1": 1,
@@ -69,6 +90,13 @@
       "ouie_macroCurrent": 0.55
     }
   },
-  "macros": {"HAMMER": 0.55, "AMPULLAE": 0.45, "CARTILAGE": 0.38, "CURRENT": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HAMMER": 0.55,
+    "AMPULLAE": 0.45,
+    "CARTILAGE": 0.38,
+    "CURRENT": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

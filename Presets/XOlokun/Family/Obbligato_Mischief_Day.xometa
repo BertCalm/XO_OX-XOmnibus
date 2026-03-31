@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mischief Day",
   "mood": "Family",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The two brothers playing tricks — fast vibrato and high drift create a playful, misbehaving duo.",
-  "tags": ["reed", "family", "mischief", "playful", "vibrato"],
-  "macroLabels": ["BOND", "BREATH", "WEIGHT", "SPACE"],
+  "tags": [
+    "reed",
+    "family",
+    "mischief",
+    "playful",
+    "vibrato"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WEIGHT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.58, "movement": 0.72, "density": 0.5, "space": 0.48, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.58,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.48,
+    "aggression": 0.35
+  },
   "parameters": {
     "Obbligato": {
       "obbl_breathA": 0.75,
@@ -39,6 +59,13 @@
       "obbl_macroSpace": 0.38
     }
   },
-  "macros": {"BOND": 0.72, "BREATH": 0.75, "WEIGHT": 0.42, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.72,
+    "BREATH": 0.75,
+    "WEIGHT": 0.42,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

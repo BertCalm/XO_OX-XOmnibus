@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Clavi Solo",
   "mood": "Crystalline",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clavinet as lead voice — bright pickup position, high brightness, wah moderate for expressivity, sustain long enough to articulate melodic lines. Prince's Controversy solo keyboard approach.",
-  "tags": ["clavinet", "lead", "solo", "bright", "crystalline", "melodic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "lead",
+    "solo",
+    "bright",
+    "crystalline",
+    "melodic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

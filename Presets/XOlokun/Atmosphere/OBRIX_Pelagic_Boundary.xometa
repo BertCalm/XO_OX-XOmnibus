@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pelagic Boundary",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Gulf Stream Edge: where warm tropical current meets cold northern water. A thermal wall 50 miles wide. Both sides of the mix are competing — the warm current (Current bias +) constantly battles the cold upwelling. Two source streams in tension, the edge itself is the sound.",
-  "tags": ["obrix", "atmosphere", "place", "gulf-stream", "thermal", "boundary", "competing-currents"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "atmosphere",
+    "place",
+    "gulf-stream",
+    "thermal",
+    "boundary",
+    "competing-currents"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +118,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

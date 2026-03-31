@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Pulse",
+  "name": "Abyssal Pulse (Optic)",
   "mood": "Submerged",
   "engines": [
     "Optic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "AutoPulse in the abyss: bioluminescent rhythmic flash at 0.08 Hz \u2014 barely visible, barely present. Reactivity low so only the strongest transients trigger visual output. FilterCutoff dark, drive compressed. The pulse is barely alive.",
+  "description": "AutoPulse in the abyss: bioluminescent rhythmic flash at 0.08 Hz — barely visible, barely present. Reactivity low so only the strongest transients trigger visual output. FilterCutoff dark, drive compressed. The pulse is barely alive.",
   "tags": [
     "submerged",
     "bioluminescent",

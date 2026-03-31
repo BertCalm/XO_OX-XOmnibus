@@ -2,21 +2,36 @@
   "schema_version": 1,
   "name": "Steak Au Poivre",
   "mood": "Foundation",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The culinary archetype: seared at maximum heat in cast iron. Hard hammer strikes create the Maillard crust — bright initial transient with extreme harmonic content. Then the body traps it all and braises it into dark sustain. The sear and the braise in one gesture.",
-  "tags": ["piano", "percussive", "maillard", "sear", "dynamic", "velocity", "character"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "percussive",
+    "maillard",
+    "sear",
+    "dynamic",
+    "velocity",
+    "character"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
     "warmth": 0.65,
-    "movement": 0.10,
-    "density": 0.70,
+    "movement": 0.1,
+    "density": 0.7,
     "space": 0.35,
-    "aggression": 0.50
+    "aggression": 0.5
   },
   "parameters": {
     "Oven": {

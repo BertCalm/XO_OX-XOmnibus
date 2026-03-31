@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Fold Burst",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum wavefold at burst speed — extreme saturation with fast LFO, prismatic explosion.",
-  "tags": ["fold", "burst", "extreme", "fast", "flux"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "fold",
+    "burst",
+    "extreme",
+    "fast",
+    "flux"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.35, "movement": 0.88, "density": 0.68, "space": 0.18, "aggression": 0.92},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.68,
+    "space": 0.18,
+    "aggression": 0.92
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +70,13 @@
       "oblq_macroSpace": 0.18
     }
   },
-  "macros": {"BOUNCE": 0.88, "COLOR": 0.78, "FOLD": 0.95, "SPACE": 0.18},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.88,
+    "COLOR": 0.78,
+    "FOLD": 0.95,
+    "SPACE": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

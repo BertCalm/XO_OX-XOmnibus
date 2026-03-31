@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Scatter Glow",
   "mood": "Atmosphere",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Light scattered by a dispersing school — mid-decay shimmer with gentle movement.",
-  "tags": ["scatter", "glow", "atmosphere", "dispersed"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "scatter",
+    "glow",
+    "atmosphere",
+    "dispersed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.76, "warmth": 0.3, "movement": 0.45, "density": 0.6, "space": 0.7, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.3,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.1
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.68
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

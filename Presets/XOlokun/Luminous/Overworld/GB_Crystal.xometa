@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "GB Crystal",
   "mood": "Luminous",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Game Boy wave channel — custom wave slot 8 (bright crystal shape). GB pulse at 25% duty cycle adds harmonic definition. High filter resonance creates sparkle on attacks. ERA is centered on the GB vertex. Think Pokémon Crystal title music.",
-  "tags": ["awakening", "bright", "gameboy", "wave", "crystal", "sparkle"],
-  "macroLabels": ["ERA", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "awakening",
+    "bright",
+    "gameboy",
+    "wave",
+    "crystal",
+    "sparkle"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.6,
@@ -102,7 +120,9 @@
       "ow_drumMode": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.85,

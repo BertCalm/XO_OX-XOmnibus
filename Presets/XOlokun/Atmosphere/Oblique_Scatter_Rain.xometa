@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Scatter Rain",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prismatic scatter falling as rain — light bounces at high rate, wide stereo field, color shifting through each raindrop.",
-  "tags": ["scatter", "rain", "prismatic", "stereo", "atmosphere"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "scatter",
+    "rain",
+    "prismatic",
+    "stereo",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.48, "movement": 0.55, "density": 0.48, "space": 0.75, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.48,
+    "space": 0.75,
+    "aggression": 0.15
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.65,
@@ -41,6 +61,13 @@
       "oblq_level": 0.73
     }
   },
-  "macros": {"BOUNCE": 0.42, "COLOR": 0.65, "FOLD": 0.28, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.42,
+    "COLOR": 0.65,
+    "FOLD": 0.28,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

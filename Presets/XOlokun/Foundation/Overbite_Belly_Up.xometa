@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Belly Up",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum sub-belly preset — all weight focused on the lowest octave, minimal upper harmonics.",
-  "tags": ["sub", "bass", "weight", "heavy"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "sub",
+    "bass",
+    "weight",
+    "heavy"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.85, "movement": 0.1, "density": 0.75, "space": 0.1, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.85,
+    "movement": 0.1,
+    "density": 0.75,
+    "space": 0.1,
+    "aggression": 0.3
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -32,6 +52,14 @@
       "poss_macroPlayDead": 0.2
     }
   },
-  "macros": {"BELLY": 1.0, "BITE": 0.0, "SCURRY": 0.05, "TRASH": 0.0, "PLAY DEAD": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 1.0,
+    "BITE": 0.0,
+    "SCURRY": 0.05,
+    "TRASH": 0.0,
+    "PLAY DEAD": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

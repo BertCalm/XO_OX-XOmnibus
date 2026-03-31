@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Warm Keys",
   "mood": "Foundation",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full copper warmth with parlour body. Rich, singing tone for chords and ballads. The upright at its most generous.",
-  "tags": ["piano", "copper", "warm", "keys", "chords", "parlour", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "warm",
+    "keys",
+    "chords",
+    "parlour",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

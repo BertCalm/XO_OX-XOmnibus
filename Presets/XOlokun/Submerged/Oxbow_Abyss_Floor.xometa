@@ -4,14 +4,31 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Abyss Floor",
   "mood": "Submerged",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "description": "Maximum size, long decay, heavy damping — the acoustic signature of the hadal zone. Sound arrives long after it was made. The Chiasmus FDN holds frequencies like pressure holds creatures at depth. SPACE macro opens into the fullest possible room.",
-  "tags": ["oxbow", "submerged", "deep", "vast", "dark", "long-decay", "hadal"],
+  "tags": [
+    "oxbow",
+    "submerged",
+    "deep",
+    "vast",
+    "dark",
+    "long-decay",
+    "hadal"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.2,

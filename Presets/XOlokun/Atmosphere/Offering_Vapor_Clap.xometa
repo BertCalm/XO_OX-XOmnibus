@@ -14,13 +14,20 @@
     "space": 0.92,
     "warmth": 0.55
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Atmosphere",
   "name": "Vapor Clap",
   "parameters": {
@@ -41,8 +48,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["vaporwave", "diffuse", "clap", "la", "atmospheric"],
+  "tags": [
+    "vaporwave",
+    "diffuse",
+    "clap",
+    "la",
+    "atmospheric"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.68, "M2": 0.6, "M3": 0.6, "M4": 0.15}
+  "macros": {
+    "M1": 0.68,
+    "M2": 0.6,
+    "M3": 0.6,
+    "M4": 0.15
+  }
 }

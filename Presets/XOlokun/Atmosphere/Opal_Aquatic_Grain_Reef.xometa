@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Grain Reef",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aquatic Chain showcase: OPAL's granular clouds pre-diffused by Fathom's character morph at 0.25 (slightly bright emphasis helps the grain peaks cut through). Drift at 5 voices with high diffusion turns the granular scatter into a shimmering ensemble. Reef at size 0.7 and high density wraps the grains in an FDN reverb so dense it sounds like looking up through water at scattered light. Tide off — the grains already move.",
-  "tags": ["opal", "granular", "aquatic-chain", "fathom", "drift", "reef", "grain", "atmosphere", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "opal",
+    "granular",
+    "aquatic-chain",
+    "fathom",
+    "drift",
+    "reef",
+    "grain",
+    "atmosphere",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Opal": {
       "opal_grainSize": 85.0,
@@ -39,7 +60,9 @@
       "opal_macroSpace": 0.7
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.48,

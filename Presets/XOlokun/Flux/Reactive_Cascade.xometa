@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Reactive Cascade",
   "mood": "Flux",
-  "engines": ["Optic", "Odyssey"],
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum reactivity — OPTIC's spectral analysis fires at high rate, Odyssey evolves by subdivision accents. Pulse evolve at maximum creates never-repeating rhythmic pattern. Daft Punk's sidechain weaponized.",
-  "tags": ["optic", "flux", "reactive", "cascade", "evolving", "rhythmic", "sidechain"],
-  "macroLabels": ["REACTIVITY", "TEMPO", "EVOLVE", "SPACE"],
+  "tags": [
+    "optic",
+    "flux",
+    "reactive",
+    "cascade",
+    "evolving",
+    "rhythmic",
+    "sidechain"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "TEMPO",
+    "EVOLVE",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": 128,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.9,
@@ -49,9 +69,24 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Odyssey", "engineB": "Optic", "type": "AudioToFM", "amount": 0.6 },
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "AmpToFilter", "amount": 0.65 },
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "LFOToPitch", "amount": 0.3 }
+      {
+        "engineA": "Odyssey",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "LFOToPitch",
+        "amount": 0.3
+      }
     ]
   },
   "sequencer": null,

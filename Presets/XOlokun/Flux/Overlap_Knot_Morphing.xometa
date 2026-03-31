@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Knot Morphing",
   "mood": "Flux",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "macroKnot sweeping from Unknot to Torus — continuous topological morphing as performance gesture. The macro traverses: Unknot (0.0) → Trefoil (0.33) → Figure-Eight (0.66) → Torus (0.9+). The crossing structure changes in real time via KnotMatrix::interpolate(). Design for live performance.",
-  "tags": ["macro", "morphing", "topology", "flux", "performance", "live", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "macro",
+    "morphing",
+    "topology",
+    "flux",
+    "performance",
+    "live",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

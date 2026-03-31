@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Deep Phaser",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Atmospheric deep phaser wash — very slow sweep, high feedback, ambient space.",
-  "tags": ["phaser", "deep", "wash", "atmospheric"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "phaser",
+    "deep",
+    "wash",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.58, "movement": 0.32, "density": 0.52, "space": 0.75, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.58,
+    "movement": 0.32,
+    "density": 0.52,
+    "space": 0.75,
+    "aggression": 0.12
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.75
     }
   },
-  "macros": {"BOUNCE": 0.25, "COLOR": 0.55, "FOLD": 0.25, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.25,
+    "COLOR": 0.55,
+    "FOLD": 0.25,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

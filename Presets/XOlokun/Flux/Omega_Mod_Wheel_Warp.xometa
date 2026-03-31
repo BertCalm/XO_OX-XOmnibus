@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 mod wheel sweeps mod index 2.0 to 6.0. The FM equivalent of opening a filter by hand.",
+  "description": "OMEGA — mod wheel sweeps mod index 2.0 to 6.0. The FM equivalent of opening a filter by hand.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.48,

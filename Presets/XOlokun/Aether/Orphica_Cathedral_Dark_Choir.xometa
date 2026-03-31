@@ -2,15 +2,39 @@
   "schema_version": 1,
   "name": "Dark Choir",
   "mood": "Aether",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Artifact Cathedral with dark mix dominant (0.85), high decay (0.88), and moderate mod depth (0.55) turns Orphica's sympathetic string resonance into a choir-scale reverb where the data-rot artifacts become tuned harmonic ghosts. The cathedral's freeze mode is off, allowing the artifact field to evolve with each note.",
-  "tags": ["aether", "plucked", "cathedral", "dark", "choir", "data-rot", "boutique", "fx_chain:Boutique", "boutique-fx-demo"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "aether",
+    "plucked",
+    "cathedral",
+    "dark",
+    "choir",
+    "data-rot",
+    "boutique",
+    "fx_chain:Boutique",
+    "boutique-fx-demo"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.62, "movement": 0.38, "density": 0.75, "space": 0.9, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.75,
+    "space": 0.9,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 5,
@@ -48,8 +72,15 @@
       "orph_macroDivine": 0.72
     }
   },
-  "macros": {"PLUCK": 0.35, "SURFACE": 0.38, "FRACTURE": 0.28, "DIVINE": 0.72},
-  "coupling": {"pairs": []},
+  "macros": {
+    "PLUCK": 0.35,
+    "SURFACE": 0.38,
+    "FRACTURE": 0.28,
+    "DIVINE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "bfx_anMix": 0.0,
     "bfx_daMix": 0.0,

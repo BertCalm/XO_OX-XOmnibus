@@ -2,18 +2,33 @@
   "schema_version": 1,
   "name": "Celesta Nocturne",
   "mood": "Aether",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Celesta at its purest and most sustained — nearly zero fragility, maximum decay, gentle shimmer. The Sugar Plum Fairy instrument at 2am in an empty studio. Harmonic ratios ring purely for six seconds. The most classically beautiful sound in XOpaline.",
-  "tags": ["celesta", "nocturne", "pure", "aether", "harmonic", "sustained", "orchestral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "celesta",
+    "nocturne",
+    "pure",
+    "aether",
+    "harmonic",
+    "sustained",
+    "orchestral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
-    "warmth": 0.40,
-    "movement": 0.20,
+    "warmth": 0.4,
+    "movement": 0.2,
     "density": 0.25,
     "space": 0.75,
     "aggression": 0.02
@@ -26,7 +41,7 @@
       "opal2_brightness": 12000.0,
       "opal2_damping": 0.06,
       "opal2_decay": 6.5,
-      "opal2_bodySize": 0.50,
+      "opal2_bodySize": 0.5,
       "opal2_inharmonicity": 0.0,
       "opal2_shimmerAmount": 0.15,
       "opal2_thermalShock": 0.08,
@@ -42,7 +57,7 @@
       "opal2_lfo1Rate": 0.05,
       "opal2_lfo1Depth": 0.08,
       "opal2_lfo1Shape": 0,
-      "opal2_lfo2Rate": 0.50,
+      "opal2_lfo2Rate": 0.5,
       "opal2_lfo2Depth": 0.0,
       "opal2_lfo2Shape": 1
     }

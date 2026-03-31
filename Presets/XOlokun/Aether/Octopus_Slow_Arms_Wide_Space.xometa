@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Slow Arms Wide Space",
   "mood": "Aether",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Eight arms moving in slow, independent spirals through a wide, open aetheric space. Maximum arm spread at minimal base rate — the arms spend minutes reaching new positions. A vast, evolving soundscape.",
-  "tags": ["octopus", "aether", "slow", "arms", "space", "vast", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "aether",
+    "slow",
+    "arms",
+    "space",
+    "vast",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.28,

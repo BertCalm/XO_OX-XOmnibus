@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Physics envelope sustain is low \u2014 the bowing force decays away during the held note, draining the chain's physical energy independently of the amplitude envelope. The tone naturally deflates from bowed to bare resonance, then silence. No amplitude envelope intervention.",
+  "description": "Physics envelope sustain is low — the bowing force decays away during the held note, draining the chain's physical energy independently of the amplitude envelope. The tone naturally deflates from bowed to bare resonance, then silence. No amplitude envelope intervention.",
   "tags": [
     "evolving",
     "decay",

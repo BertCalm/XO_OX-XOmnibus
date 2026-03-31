@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Figure-eight with high entrainment (0.6) and medium tangle (0.5) — voices phase-lock into mirror-image pairs thanks to the symmetric routing matrix. The result is a dense but phase-coherent sound: two groups of three voices, each group moving in mirror phase. Good for movement without chaos.",
-  "dna": { "aggression": 0.4, "brightness": 0.55, "density": 0.6, "movement": 0.62, "space": 0.55, "warmth": 0.42 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.55,
+    "density": 0.6,
+    "movement": 0.62,
+    "space": 0.55,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Phase Mirror",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "figure-eight", "phase", "mirror", "coherent", "movement"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "figure-eight",
+    "phase",
+    "mirror",
+    "coherent",
+    "movement"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

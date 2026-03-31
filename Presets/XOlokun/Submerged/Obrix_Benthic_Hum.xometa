@@ -4,14 +4,33 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Benthic Hum",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The persistent vibration of the deep ocean floor — Sine src1 (the tonal body) plus Noise src2 (sediment texture) at low mix (0.2). Journey Mode allows this hum to evolve without interruption: the drift is ultra-slow (driftRate=0.003, driftDepth=0.82) so change is geological. proc1=LP (180 Hz, low reso) keeps the noise filtered to a felt presence rather than a heard one. Four mods: Env->FilterCutoff (barely opens), LFO->Volume (breathing at 0.005 Hz), Velocity->FilterReso (pressure response), Aftertouch->Pitch (micro tuning bends). This is patient synthesis.",
-  "tags": ["obrix", "submerged", "sine", "noise", "journey", "drift", "benthic", "drone", "ultra-slow"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "sine",
+    "noise",
+    "journey",
+    "drift",
+    "benthic",
+    "drone",
+    "ultra-slow"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.06,

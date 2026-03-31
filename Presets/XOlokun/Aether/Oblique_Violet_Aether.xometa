@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Violet Aether",
+  "name": "Violet Aether (Oblique)",
   "mood": "Aether",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prism Violet identity dissolved in aether — engine signature color at maximum space.",
-  "tags": ["violet", "aether", "identity", "dissolved"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "violet",
+    "aether",
+    "identity",
+    "dissolved"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.45, "movement": 0.1, "density": 0.28, "space": 0.97, "aggression": 0.03},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.1,
+    "density": 0.28,
+    "space": 0.97,
+    "aggression": 0.03
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.97
     }
   },
-  "macros": {"BOUNCE": 0.1, "COLOR": 1.0, "FOLD": 0.18, "SPACE": 0.97},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.1,
+    "COLOR": 1.0,
+    "FOLD": 0.18,
+    "SPACE": 0.97
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

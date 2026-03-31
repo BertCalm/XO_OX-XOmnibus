@@ -2,15 +2,39 @@
   "schema_version": 1,
   "name": "Foraging Warmth",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BELLY 0.92, BITE 0.0 — the opossum foraging at 2AM. Compound sub architecture: sub oscillator at -1 oct + Weight Engine sine at -2 oct for layered sub warmth. Pure sine OscA at shape=0.18. No gnash, no trash, no aggression. Body only. Fur at 0.15 for warmth without edge. The engine as generous, unguarded presence.",
-  "tags": ["foundation", "belly", "sub", "warm", "fur", "foraging", "overbite", "transcendental"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "foundation",
+    "belly",
+    "sub",
+    "warm",
+    "fur",
+    "foraging",
+    "overbite",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.95, "movement": 0.12, "density": 0.72, "space": 0.42, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.95,
+    "movement": 0.12,
+    "density": 0.72,
+    "space": 0.42,
+    "aggression": 0.04
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -80,14 +104,30 @@
       "poss_lfo3Sync": 0,
       "poss_lfo3Retrigger": 0,
       "poss_lfo3Phase": 0.0,
-      "poss_modSlot1Src": 0, "poss_modSlot1Dst": 0, "poss_modSlot1Amt": 0.0,
-      "poss_modSlot2Src": 0, "poss_modSlot2Dst": 0, "poss_modSlot2Amt": 0.0,
-      "poss_modSlot3Src": 0, "poss_modSlot3Dst": 0, "poss_modSlot3Amt": 0.0,
-      "poss_modSlot4Src": 0, "poss_modSlot4Dst": 0, "poss_modSlot4Amt": 0.0,
-      "poss_modSlot5Src": 0, "poss_modSlot5Dst": 0, "poss_modSlot5Amt": 0.0,
-      "poss_modSlot6Src": 0, "poss_modSlot6Dst": 0, "poss_modSlot6Amt": 0.0,
-      "poss_modSlot7Src": 0, "poss_modSlot7Dst": 0, "poss_modSlot7Amt": 0.0,
-      "poss_modSlot8Src": 0, "poss_modSlot8Dst": 0, "poss_modSlot8Amt": 0.0,
+      "poss_modSlot1Src": 0,
+      "poss_modSlot1Dst": 0,
+      "poss_modSlot1Amt": 0.0,
+      "poss_modSlot2Src": 0,
+      "poss_modSlot2Dst": 0,
+      "poss_modSlot2Amt": 0.0,
+      "poss_modSlot3Src": 0,
+      "poss_modSlot3Dst": 0,
+      "poss_modSlot3Amt": 0.0,
+      "poss_modSlot4Src": 0,
+      "poss_modSlot4Dst": 0,
+      "poss_modSlot4Amt": 0.0,
+      "poss_modSlot5Src": 0,
+      "poss_modSlot5Dst": 0,
+      "poss_modSlot5Amt": 0.0,
+      "poss_modSlot6Src": 0,
+      "poss_modSlot6Dst": 0,
+      "poss_modSlot6Amt": 0.0,
+      "poss_modSlot7Src": 0,
+      "poss_modSlot7Dst": 0,
+      "poss_modSlot7Amt": 0.0,
+      "poss_modSlot8Src": 0,
+      "poss_modSlot8Dst": 0,
+      "poss_modSlot8Amt": 0.0,
       "poss_macroBelly": 0.92,
       "poss_macroBite": 0.0,
       "poss_macroScurry": 0.0,
@@ -121,6 +161,14 @@
       "poss_pan": 0.0
     }
   },
-  "macros": {"BELLY": 0.92, "BITE": 0.0, "SCURRY": 0.0, "TRASH": 0.0, "PLAY DEAD": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.92,
+    "BITE": 0.0,
+    "SCURRY": 0.0,
+    "TRASH": 0.0,
+    "PLAY DEAD": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

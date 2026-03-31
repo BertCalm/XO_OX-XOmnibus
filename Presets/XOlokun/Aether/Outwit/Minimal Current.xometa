@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 200 (identity copy) at lowest step rate. The current carries nothing \u2014 barely a ripple.",
+  "description": "Rule 200 (identity copy) at lowest step rate. The current carries nothing — barely a ripple.",
   "dna": {
     "aggression": 0.01,
     "brightness": 0.13,

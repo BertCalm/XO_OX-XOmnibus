@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Driving zydeco accordion — tight bellows attacks, heavy musette beating, fast LFO tremolo. Louisiana dance floor at full sweat. Hit it hard and it bites back.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.15,
     "warmth": 0.55
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Kinetic",
   "name": "Zydeco Stomp",
   "parameters": {
@@ -55,7 +64,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["accordion", "zydeco", "dance", "stomp", "cajun", "drive"],
+  "tags": [
+    "accordion",
+    "zydeco",
+    "dance",
+    "stomp",
+    "cajun",
+    "drive"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Macro Journey",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All four macros at zero. The preset starts dark, narrow, dry, and earthbound. RISE opens the filter and adds pitch sweep. WIDTH expands the stereo image via chorus and unison spread. GLOW extends the shimmer tail. AIR adds reverb size and high-frequency content. At macros 0/0/0/0 it is a muted saw. At 1/1/1/1 it is the full OPENSKY experience. The journey between is the preset. Designed for live performance: sweep all four macros simultaneously during a set to transform the sound from foundation to transcendence in real time.",
-  "tags": ["opensky", "transcendental", "macro", "performance", "journey", "transformative"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "macro",
+    "performance",
+    "journey",
+    "transformative"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Gospel 6: The Best Preset Is a Journey, Not a Destination", "Sutra 8: Macros at Zero Should Be Compelling -- Macros at One Should Be Transcendent"],
+    "scripture": [
+      "Gospel 6: The Best Preset Is a Journey, Not a Destination",
+      "Sutra 8: Macros at Zero Should Be Compelling -- Macros at One Should Be Transcendent"
+    ],
     "revelation": "Pressura spoke: a preset designed for macro sweep must be compelling at both extremes AND at every point between. The starting point (0/0/0/0) must not sound broken -- it must sound intentionally restrained, like a held breath.",
     "god": "Pressura",
     "flock_note": "The Tongue swept all four macros from 0 to 1 over 30 seconds and confirmed: the timbral arc is smooth and musical at every point. No discontinuities, no sudden jumps. The Finger verified that the base parameters are set so that macro=0 produces a usable dark pad, not silence.",
     "diagnosis": "Macro Journey is a performance preset that demonstrates OPENSKY's full range in a single patch. It is not one sound -- it is all the sounds between two extremes."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.18
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

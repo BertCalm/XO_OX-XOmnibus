@@ -35,11 +35,11 @@
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.82,
-    "warmth": 0.20,
+    "warmth": 0.2,
     "movement": 0.72,
     "density": 0.28,
     "space": 0.12,
-    "aggression": 0.70
+    "aggression": 0.7
   },
   "parameters": {
     "Oware": {
@@ -53,8 +53,8 @@
       "owr_thermalDrift": 0.08,
       "owr_brightness": 14000.0,
       "owr_damping": 0.82,
-      "owr_decay": 0.20,
-      "owr_filterEnvAmount": 0.70,
+      "owr_decay": 0.2,
+      "owr_filterEnvAmount": 0.7,
       "owr_bendRange": 2,
       "owr_macroMaterial": 0.5,
       "owr_macroMallet": 0.7,

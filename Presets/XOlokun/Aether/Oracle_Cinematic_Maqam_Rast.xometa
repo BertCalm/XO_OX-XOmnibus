@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Maqam Rast",
   "mood": "Aether",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "GENDY bounded to Maqam Rast intervals — stochastic motion contained within a culturally specific tonal framework. Sounds like an ancient computational instrument improvising alone.",
-  "tags": ["cinematic", "maqam", "rast", "world-music", "stochastic", "genre-spotlight"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "cinematic",
+    "maqam",
+    "rast",
+    "world-music",
+    "stochastic",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.72, "movement": 0.62, "density": 0.55, "space": 0.82, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.72,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.82,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 6.0,
@@ -45,6 +66,13 @@
       "oracle_macroDrift": 0.42
     }
   },
-  "macros": {"PROPHECY": 0.62, "EVOLUTION": 0.55, "GRAVITY": 0.18, "DRIFT": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PROPHECY": 0.62,
+    "EVOLUTION": 0.55,
+    "GRAVITY": 0.18,
+    "DRIFT": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

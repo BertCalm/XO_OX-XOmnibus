@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Fold Lead",
   "mood": "Foundation",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sharp fold operation as a lead voice — geometric precision cutting through the mix.",
-  "tags": ["foundation", "lead", "sharp", "cutting"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "lead",
+    "sharp",
+    "cutting"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.4, "movement": 0.5, "density": 0.5, "space": 0.45, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.45
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.45
     }
   },
-  "macros": {"FOLD": 0.65, "MOTION": 0.5, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.65,
+    "MOTION": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

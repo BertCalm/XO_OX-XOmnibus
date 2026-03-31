@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Cauchy Drift",
   "mood": "Prism",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Cauchy distribution with near-zero barrier elasticity — stochastic events have fat tails, meaning occasional extreme excursions. Mostly quiet, punctuated by wild spectral leaps. Statistical composition.",
-  "tags": ["experimental", "cauchy", "statistical", "fat-tail", "avant-garde", "genre-spotlight"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "experimental",
+    "cauchy",
+    "statistical",
+    "fat-tail",
+    "avant-garde",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.42, "movement": 0.78, "density": 0.45, "space": 0.75, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.42,
+    "movement": 0.78,
+    "density": 0.45,
+    "space": 0.75,
+    "aggression": 0.55
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 7.0,
@@ -45,6 +66,13 @@
       "oracle_macroDrift": 0.88
     }
   },
-  "macros": {"PROPHECY": 0.38, "EVOLUTION": 0.62, "GRAVITY": 0.08, "DRIFT": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PROPHECY": 0.38,
+    "EVOLUTION": 0.62,
+    "GRAVITY": 0.08,
+    "DRIFT": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Demi Glace Entry",
   "mood": "Deep",
-  "engines": ["Overworn"],
+  "engines": [
+    "Overworn"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Session age 0.7 — entering demi-glace territory. Bands 5-7 gone. Only the deep foundation frequencies remain, thickening.",
-  "tags": ["pad", "deep", "arrived-state", "concentrated", "reduction"],
-  "macroLabels": ["RICHNESS", "REDUCTION", "CONCENTRATE", "DEPTH"],
+  "tags": [
+    "pad",
+    "deep",
+    "arrived-state",
+    "concentrated",
+    "reduction"
+  ],
+  "macroLabels": [
+    "RICHNESS",
+    "REDUCTION",
+    "CONCENTRATE",
+    "DEPTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.85, "movement": 0.25, "density": 0.55, "space": 0.45, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.85,
+    "movement": 0.25,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overworn": {
       "worn_reductionRate": 0.6,
@@ -45,7 +65,9 @@
       "worn_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

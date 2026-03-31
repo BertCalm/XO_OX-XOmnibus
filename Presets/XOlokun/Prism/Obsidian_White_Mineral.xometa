@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "White Mineral",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystal White identity preset — high tilt, pure formants, the engine's signature color.",
-  "tags": ["white", "crystal", "identity", "pure"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "white",
+    "crystal",
+    "identity",
+    "pure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.9, "warmth": 0.1, "movement": 0.3, "density": 0.3, "space": 0.5, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.1,
+    "movement": 0.3,
+    "density": 0.3,
+    "space": 0.5,
+    "aggression": 0.2
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.3,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.5
     }
   },
-  "macros": {"CHARACTER": 0.9, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

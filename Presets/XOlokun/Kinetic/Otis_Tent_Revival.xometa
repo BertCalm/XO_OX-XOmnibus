@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "High-energy Hammond with all upper harmonics blazing — the sound of a tent revival where the preacher is shouting and the organ player is possessed. Fast Leslie, maximum crosstalk, heavy percussion.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.3,
     "warmth": 0.75
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Kinetic",
   "name": "Tent Revival",
   "parameters": {
@@ -54,7 +63,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "gospel", "energetic", "hammond", "revival"],
+  "tags": [
+    "organ",
+    "gospel",
+    "energetic",
+    "hammond",
+    "revival"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

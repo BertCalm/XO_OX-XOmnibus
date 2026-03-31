@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Abyssal Keys",
   "mood": "Submerged",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Piano keys at the bottom of the Mariana Trench. At 11km depth the water pressure is 1,086 bars — the strings have been flattened, the hammers petrified. What remains is pure body resonance vibrating through stone and salt. A ghost piano that plays itself.",
-  "tags": ["piano", "abyss", "submerged", "dark", "resonance", "mariana", "deep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "abyss",
+    "submerged",
+    "dark",
+    "resonance",
+    "mariana",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Chromatophore",
   "mood": "Prism",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Color-changing morph — maximum morph rate cycles through spectral timbres rapidly.",
-  "tags": ["chromatophore", "color", "cycle", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chromatophore",
+    "color",
+    "cycle",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.48, "movement": 0.72, "density": 0.55, "space": 0.55, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.48,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.55,
+    "aggression": 0.28
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.88,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.72, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

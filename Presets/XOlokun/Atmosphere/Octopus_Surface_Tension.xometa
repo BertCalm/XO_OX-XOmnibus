@@ -1,13 +1,27 @@
 {
   "schema_version": 1,
-  "name": "Surface Tension",
+  "name": "Surface Tension (Octopus)",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The octopus near the surface — unusual territory, above its comfort zone. Arms more active than usual, chromatophores responding to light above. An atmospheric pad with slightly elevated arm rate, curious and wary.",
-  "tags": ["octopus", "atmosphere", "surface", "curious", "light", "elevation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "atmosphere",
+    "surface",
+    "curious",
+    "light",
+    "elevation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

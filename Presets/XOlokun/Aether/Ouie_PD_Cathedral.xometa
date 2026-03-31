@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "PD Cathedral",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Phase Distortion (voice 1, algoParam=0.72) + Additive (voice 2, rich harmonics). HAMMER=-0.1 — on the STRIFE side of neutral, just barely. PD's phase-warped waveshape contains specific harmonic emphasitions (like a Casio CZ organ) that clash productively with additive's pure sinusoidal partials at near-neutral HAMMER. The result is cathedral-scale: massive, ancient, slightly unresolved. The -0.1 position means the voices never fully agree — a permanent, beautiful tension.",
-  "tags": ["ouie", "phase-distortion", "additive", "cathedral", "organ", "aether", "neutral-strife", "vintage"],
+  "tags": [
+    "ouie",
+    "phase-distortion",
+    "additive",
+    "cathedral",
+    "organ",
+    "aether",
+    "neutral-strife",
+    "vintage"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +33,12 @@
     "flock_note": "Try moving algoParam1 (PD depth) from 0.2 to 0.9 to hear how the phase warp changes the HAMMER interaction. Low PD depth behaves like VA. High PD depth creates Casio-organ-style resonance peaks that fight the additive harmonics even at near-neutral HAMMER.",
     "diagnosis": "PD+Additive is underexplored in the factory set. The CZ-style phase warp creates specific partial skews that don't exist in VA or FM — unique interaction territory with additive at near-neutral HAMMER. Long attack (0.15s) and long release (2.5s) emphasize the cathedral scale. BP filter on voice 2 creates a mid-presence peak that projects through mixes."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +112,7 @@
     "CARTILAGE": 0.7,
     "CURRENT": 0.6
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

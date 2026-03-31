@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Waypoint Fracture",
   "mood": "Flux",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Moderate drift + high-rate fracture events — fractures fire at 0.5 Hz (every 2 seconds), each one a glitch interruption in a slow FM migration. The drift is the journey; the fractures are the waypoints. A navigational metaphor in sound.",
-  "tags": ["odyssey", "fracture", "drift", "fm", "waypoint", "flux", "glitch", "transcendental"],
+  "tags": [
+    "odyssey",
+    "fracture",
+    "drift",
+    "fm",
+    "waypoint",
+    "flux",
+    "glitch",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-8: Non-Integer FM Ratios Are Colors Without Names"],
+    "scripture": [
+      "Scripture VII-8: Non-Integer FM Ratios Are Colors Without Names"
+    ],
     "revelation": "Fracture events at high rate become structural, not incidental. At 0.5 Hz they create a rhythmic glitch pattern against the slow FM drift.",
     "diagnosis": "Waypoint Fracture pushes fractureRate to 0.5 Hz and intensity to 0.55 — the fractures become audible rhythm against the slow FM background. At BPM=120 this is approximately a half-note fracture rate. The fractures are rhythmic waypoints in the FM journey."
   },
-  "macroLabels": ["FRACTURE RATE", "FRACTURE INTENSITY", "FM DRIFT PATH", "REVERB POST"],
+  "macroLabels": [
+    "FRACTURE RATE",
+    "FRACTURE INTENSITY",
+    "FM DRIFT PATH",
+    "REVERB POST"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

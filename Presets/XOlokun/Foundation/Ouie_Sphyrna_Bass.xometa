@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Sphyrna Bass",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Named for the hammerhead genus. VA square (Voice 1) meets Wavefolder (Voice 2) at HAMMER -0.9 — full STRIFE. The cross-FM and ring modulation between a fat square wave and a folded triangle creates sub-harmonic content that no single oscillator can produce. Filter at 380 Hz with resonance 0.28 gives the bass a Formant Whisper growl. CARTILAGE macro opens the filter for a lead variant.",
-  "tags": ["bass", "aggressive", "strife", "sub", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "bass",
+    "aggressive",
+    "strife",
+    "sub",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +89,7 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

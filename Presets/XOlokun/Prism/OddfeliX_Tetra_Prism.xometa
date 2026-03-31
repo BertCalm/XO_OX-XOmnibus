@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Tetra Prism",
   "mood": "Prism",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full-spectrum chord snap — neon tetra colors split through a prism.",
-  "tags": ["prism", "chord", "spectrum", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "chord",
+    "spectrum",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.95, "warmth": 0.3, "movement": 0.5, "density": 0.65, "space": 0.55, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.3,
+    "movement": 0.5,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.2
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

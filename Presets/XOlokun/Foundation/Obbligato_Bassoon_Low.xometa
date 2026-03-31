@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Bassoon Low",
   "mood": "Foundation",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bassoon voice A in low register, robust reed bite and large body size for full bass presence.",
-  "tags": ["woodwind", "bassoon", "bass", "warm", "deep"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "bassoon",
+    "bass",
+    "warm",
+    "deep"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.75, "movement": 0.2, "density": 0.3, "space": 0.58, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.58,
+    "aggression": 0.18
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 2,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.05
     }
   },
-  "macros": {"BOND": 0.0, "BREATH": 0.45, "WIND": 0.18, "MISCHIEF": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.0,
+    "BREATH": 0.45,
+    "WIND": 0.18,
+    "MISCHIEF": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

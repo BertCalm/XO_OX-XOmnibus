@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Brass Spectrum",
   "mood": "Prism",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Three different instrument types per generation, the full brass spectrum refracting through the family.",
-  "tags": ["brass", "spectrum", "variety", "prismatic", "diverse"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "spectrum",
+    "variety",
+    "prismatic",
+    "diverse"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.65, "movement": 0.42, "density": 0.52, "space": 0.68, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.68,
+    "aggression": 0.25
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.15
     }
   },
-  "macros": {"GROW": 0.58, "EMBOUCHURE": 0.55, "LAKE": 0.58, "FOREIGN": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.58,
+    "EMBOUCHURE": 0.55,
+    "LAKE": 0.58,
+    "FOREIGN": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

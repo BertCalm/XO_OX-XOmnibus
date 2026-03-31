@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Understory Bass",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-level understory bass — the dark tonal layer beneath the canopy where ferns grow.",
-  "tags": ["understory", "bass", "foundation", "mid-layer", "dark", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "understory",
+    "bass",
+    "foundation",
+    "mid-layer",
+    "dark",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.7, "movement": 0.35, "density": 0.72, "space": 0.4, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.72,
+    "space": 0.4,
+    "aggression": 0.35
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.3
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

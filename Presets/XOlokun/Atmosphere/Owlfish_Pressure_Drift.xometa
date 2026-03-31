@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Pressure Drift",
+  "name": "Pressure Drift (Owlfish)",
   "mood": "Atmosphere",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense low-register pad with minimal movement and wide reverb — the atmospheric weight of 10,000 meters of water above.",
-  "tags": ["atmosphere", "pressure", "drift", "dense", "pad", "hadal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "pressure",
+    "drift",
+    "dense",
+    "pad",
+    "hadal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.68, "movement": 0.18, "density": 0.75, "space": 0.78, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.68,
+    "movement": 0.18,
+    "density": 0.75,
+    "space": 0.78,
+    "aggression": 0.22
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.22,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.18, "COUPLING": 0.12, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

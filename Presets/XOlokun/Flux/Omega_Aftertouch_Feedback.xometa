@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 aftertouch maps to feedback. Press into the key during sustain to hear FM catch and buzz.",
+  "description": "OMEGA — aftertouch maps to feedback. Press into the key during sustain to hear FM catch and buzz.",
   "dna": {
     "brightness": 0.42,
     "warmth": 0.48,

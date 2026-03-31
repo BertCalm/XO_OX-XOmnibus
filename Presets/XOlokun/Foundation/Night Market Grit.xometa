@@ -1,1 +1,64 @@
-{"schema_version":1,"name":"Night Market Grit","mood":"Foundation","engines":["Oddfellow"],"author":"XO_OX Designs","version":"1.0.0","description":"The signature Wurlitzer. Reed buzz with medium drive and the classic tremolo. Open after midnight, serving sounds that are urgent and exactly right.","tags":["wurlitzer","reed","grit","signature","night market"],"macroLabels":["CHARACTER","MOVEMENT","COUPLING","SPACE"],"couplingIntensity":"None","tempo":null,"dna":{"brightness":0.4,"warmth":0.7,"movement":0.4,"density":0.45,"space":0.4,"aggression":0.25},"parameters":{"Oddfellow":{"oddf_reed":0.5,"oddf_drive":0.35,"oddf_brightness":4000.0,"oddf_tremRate":5.5,"oddf_tremDepth":0.4,"oddf_attack":0.005,"oddf_decay":0.7,"oddf_sustain":0.5,"oddf_release":0.4,"oddf_filterEnvAmt":0.5,"oddf_migration":0.0,"oddf_bendRange":2,"oddf_lfo1Rate":0.5,"oddf_lfo1Depth":0.0,"oddf_lfo1Shape":0,"oddf_lfo2Rate":1.0,"oddf_lfo2Depth":0.0,"oddf_lfo2Shape":0,"oddf_macroCharacter":0.5,"oddf_macroMovement":0.4,"oddf_macroCoupling":0.0,"oddf_macroSpace":0.3}},"coupling":{"pairs":[]},"sequencer":null}
+{
+  "schema_version": 1,
+  "name": "Night Market Grit",
+  "mood": "Foundation",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The signature Wurlitzer. Reed buzz with medium drive and the classic tremolo. Open after midnight, serving sounds that are urgent and exactly right.",
+  "tags": [
+    "wurlitzer",
+    "reed",
+    "grit",
+    "signature",
+    "night market"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.35,
+      "oddf_brightness": 4000.0,
+      "oddf_tremRate": 5.5,
+      "oddf_tremDepth": 0.4,
+      "oddf_attack": 0.005,
+      "oddf_decay": 0.7,
+      "oddf_sustain": 0.5,
+      "oddf_release": 0.4,
+      "oddf_filterEnvAmt": 0.5,
+      "oddf_migration": 0.0,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.5,
+      "oddf_lfo1Depth": 0.0,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 1.0,
+      "oddf_lfo2Depth": 0.0,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.5,
+      "oddf_macroMovement": 0.4,
+      "oddf_macroCoupling": 0.0,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

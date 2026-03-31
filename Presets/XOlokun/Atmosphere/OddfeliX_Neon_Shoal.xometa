@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Neon Shoal",
   "mood": "Atmosphere",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense shoal atmosphere with subtle pitch flutter creating natural schooling variation.",
-  "tags": ["shoal", "atmosphere", "neon", "dense"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "shoal",
+    "atmosphere",
+    "neon",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.8, "warmth": 0.28, "movement": 0.42, "density": 0.78, "space": 0.68, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.28,
+    "movement": 0.42,
+    "density": 0.78,
+    "space": 0.68,
+    "aggression": 0.12
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.68},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

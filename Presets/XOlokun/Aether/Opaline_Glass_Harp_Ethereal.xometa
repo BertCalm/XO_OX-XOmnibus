@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Glass Harp Ethereal",
   "mood": "Aether",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A singing wine glass — wet finger circling the rim, partials blooming one by one. Strongly inharmonic shell modes create an otherworldly, ethereal shimmer. The glass harp at midnight. Long decay, high shimmer, very fragile.",
-  "tags": ["glass harp", "ethereal", "shimmer", "inharmonic", "otherworldly", "sustain"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glass harp",
+    "ethereal",
+    "shimmer",
+    "inharmonic",
+    "otherworldly",
+    "sustain"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

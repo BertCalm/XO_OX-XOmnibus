@@ -24,7 +24,7 @@
   ],
   "macros": {
     "CHARACTER": 0.52,
-    "COUPLING": 0.30,
+    "COUPLING": 0.3,
     "MOVEMENT": 0.72,
     "SPACE": 0.45
   },
@@ -32,10 +32,10 @@
   "name": "Gyil Uprising",
   "parameters": {
     "Oware": {
-      "owr_material": 0.10,
+      "owr_material": 0.1,
       "owr_malletHardness": 0.58,
       "owr_bodyType": 1,
-      "owr_bodyDepth": 0.60,
+      "owr_bodyDepth": 0.6,
       "owr_buzzAmount": 0.35,
       "owr_sympathyAmount": 0.55,
       "owr_shimmerRate": 8.5,
@@ -43,11 +43,11 @@
       "owr_brightness": 6200.0,
       "owr_damping": 0.48,
       "owr_decay": 0.95,
-      "owr_filterEnvAmount": 0.50,
+      "owr_filterEnvAmount": 0.5,
       "owr_bendRange": 3,
       "owr_macroMaterial": 0.52,
       "owr_macroMallet": 0.52,
-      "owr_macroCoupling": 0.30,
+      "owr_macroCoupling": 0.3,
       "owr_macroSpace": 0.45
     }
   },

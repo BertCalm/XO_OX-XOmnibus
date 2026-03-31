@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Time Slip Dub",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Anomaly Engine with Time-Slip enabled at 0.62 slip speed — the dub delay's wet signal gets reversed in time, creating backward dub tails that emerge before the forward repeats. Texture blend at 0.35 keeps the dry organic core present while the reverb size at 0.72 gives the reverse ghosts cathedral-scale space.",
-  "tags": ["atmosphere", "dub", "anomaly", "reverse", "time-slip", "boutique", "fx_chain:Boutique", "boutique-fx-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "dub",
+    "anomaly",
+    "reverse",
+    "time-slip",
+    "boutique",
+    "fx_chain:Boutique",
+    "boutique-fx-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.32, "warmth": 0.72, "movement": 0.55, "density": 0.62, "space": 0.78, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.72,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.78,
+    "aggression": 0.22
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -51,8 +74,15 @@
       "dub_polyphony": 4
     }
   },
-  "macros": {"CHARACTER": 0.32, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "bfx_anTextureBlend": 0.35,
     "bfx_anReverbSize": 0.72,

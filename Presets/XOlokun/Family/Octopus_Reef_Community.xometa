@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Reef Community",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The reef as a living community — octopuses, fish, crustaceans, all the sounds layered into a rich Family texture. Warm, enveloping polyphony with arms at medium activity. The ocean as a family ensemble.",
-  "tags": ["octopus", "family", "reef", "community", "warm", "rich", "polyphonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "reef",
+    "community",
+    "warm",
+    "rich",
+    "polyphonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.58,

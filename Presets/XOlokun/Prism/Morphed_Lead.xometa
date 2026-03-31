@@ -19,7 +19,7 @@
   "engines": [
     "OddOscar"
   ],
-  "description": "Lead tone shaped by morph position \u2014 different notes land in different spectral zones.",
+  "description": "Lead tone shaped by morph position — different notes land in different spectral zones.",
   "tags": [
     "morph",
     "lead",

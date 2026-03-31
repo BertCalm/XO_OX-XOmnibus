@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Tangle Drift",
   "mood": "Submerged",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Topological knot held in long decay, slowly morphing via current modulation. Filter sweeps imperceptibly. Made for headphone sessions at 3am.",
-  "tags": ["dark-ambient", "drone", "slow", "evolving", "nocturnal", "genre-spotlight"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "dark-ambient",
+    "drone",
+    "slow",
+    "evolving",
+    "nocturnal",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.14, "warmth": 0.62, "movement": 0.18, "density": 0.72, "space": 0.88, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.62,
+    "movement": 0.18,
+    "density": 0.72,
+    "space": 0.88,
+    "aggression": 0.04
+  },
   "parameters": {
     "Overlap": {
       "olap_knot": 1,
@@ -59,6 +80,13 @@
       "olap_atPressureDepth": 0.3
     }
   },
-  "macros": {"KNOT": 0.28, "PULSE": 0.35, "ENTRAIN": 0.35, "BLOOM": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "KNOT": 0.28,
+    "PULSE": 0.35,
+    "ENTRAIN": 0.35,
+    "BLOOM": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

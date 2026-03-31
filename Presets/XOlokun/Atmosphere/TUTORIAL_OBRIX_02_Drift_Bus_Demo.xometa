@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "TUTORIAL OBRIX 02 Drift Bus Demo",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tutorial patch 02: Journey Mode on, Drift Bus active, dual Saw with irrational per-voice phase offsets. Hold one note and wait 90 seconds. Berlin School ensemble drift from a single key press. Do not touch any other control.",
-  "tags": ["tutorial", "obrix", "atmosphere", "drift-bus", "journey-mode", "berlin-school", "educational"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tutorial",
+    "obrix",
+    "atmosphere",
+    "drift-bus",
+    "journey-mode",
+    "berlin-school",
+    "educational"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

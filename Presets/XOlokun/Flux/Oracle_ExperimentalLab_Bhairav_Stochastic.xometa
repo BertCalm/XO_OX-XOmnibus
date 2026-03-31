@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Bhairav Stochastic",
   "mood": "Flux",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "GENDY bounded to Maqam Hijaz (approximating Raga Bhairav's flat 2nd and 6th). Stochastic improvisation within a rigid modal framework — chance + constraint as compositional strategy.",
-  "tags": ["experimental", "maqam", "bhairav", "stochastic", "modal", "genre-spotlight"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "experimental",
+    "maqam",
+    "bhairav",
+    "stochastic",
+    "modal",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.68, "movement": 0.72, "density": 0.55, "space": 0.78, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.78,
+    "aggression": 0.28
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 9.0,
@@ -45,6 +66,13 @@
       "oracle_macroDrift": 0.62
     }
   },
-  "macros": {"PROPHECY": 0.58, "EVOLUTION": 0.68, "GRAVITY": 0.35, "DRIFT": 0.62},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PROPHECY": 0.58,
+    "EVOLUTION": 0.68,
+    "GRAVITY": 0.35,
+    "DRIFT": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

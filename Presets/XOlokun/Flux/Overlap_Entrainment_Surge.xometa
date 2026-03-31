@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Entrainment Surge",
+  "name": "Entrainment Surge (Overlap) (Overlap)",
   "mood": "Flux",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "An unknot knot with rapidly-building entrainment \u2014 the voices start independent and progressively synchronize, creating a crescendo of coherence. Play a sustained note and feel the system organize.",
+  "description": "An unknot knot with rapidly-building entrainment — the voices start independent and progressively synchronize, creating a crescendo of coherence. Play a sustained note and feel the system organize.",
   "tags": [
     "entrainment",
     "building",

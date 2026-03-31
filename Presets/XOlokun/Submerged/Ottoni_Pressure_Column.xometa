@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Pressure Column",
   "mood": "Submerged",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Toddler pressure at maximum under deep submersion — the water column amplifies and warps every vibration.",
-  "tags": ["brass", "submerged", "pressure", "dark", "warped"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "submerged",
+    "pressure",
+    "dark",
+    "warped"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.55, "movement": 0.35, "density": 0.78, "space": 0.88, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.78,
+    "space": 0.88,
+    "aggression": 0.28
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.52
     }
   },
-  "macros": {"GROW": 0.72, "EMBOUCHURE": 0.3, "LAKE": 0.95, "FOREIGN": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.72,
+    "EMBOUCHURE": 0.3,
+    "LAKE": 0.95,
+    "FOREIGN": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

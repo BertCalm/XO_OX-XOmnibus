@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Stiff Bell",
   "mood": "Foundation",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bell tone from maximum stiffness — fast percussive attack, bright formant ring, mineral metallic body.",
-  "tags": ["bell", "stiff", "metallic", "bright", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bell",
+    "stiff",
+    "metallic",
+    "bright",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.35, "movement": 0.22, "density": 0.55, "space": 0.48, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.35,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.32
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.28,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.48
     }
   },
-  "macros": {"CHARACTER": 0.78, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

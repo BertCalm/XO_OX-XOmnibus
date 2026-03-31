@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Laser Grid (Ostinato)",
   "mood": "Prism",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Tabla high tones snap like laser fire across a 16th-note grid. The doumbek provides the punchy kick equivalent while frame drum lays down ghost notes between beats 2 and 4. Prismatic processing gives the whole pattern a spectral shimmer — 1987 on a stranger planet.",
-  "tags": ["synthwave", "tabla", "doumbek", "80s", "prismatic", "laser"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "synthwave",
+    "tabla",
+    "doumbek",
+    "80s",
+    "prismatic",
+    "laser"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 116,
   "dna": {

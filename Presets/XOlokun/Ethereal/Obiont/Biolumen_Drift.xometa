@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Biolumen Drift",
   "mood": "Ethereal",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "2D Life-like CA in drift pitch mode. Rule byte 0xC8 (Conway B3/S23) creates glider-class structures. The projection reads the evolving 64×64 grid as a shifting harmonic cloud. Very slow evolution, wide projection. Pitch floats free of MIDI note — the colony speaks for itself.",
-  "tags": ["awakening", "ethereal", "drift", "life", "2d", "cloud", "ambient"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "ethereal",
+    "drift",
+    "life",
+    "2d",
+    "cloud",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 1,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.38,

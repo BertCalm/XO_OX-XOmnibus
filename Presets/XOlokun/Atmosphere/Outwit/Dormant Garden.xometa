@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rules 160/128 (stable class 1) alternating at slow rate. The garden is dormant \u2014 alive but still.",
+  "description": "Rules 160/128 (stable class 1) alternating at slow rate. The garden is dormant — alive but still.",
   "dna": {
     "aggression": 0.04,
     "brightness": 0.25,

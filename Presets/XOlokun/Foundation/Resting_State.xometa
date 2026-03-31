@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Basal metabolism \u2014 the cell neither asleep nor active. Metabolic rate at biological minimum, prediction error near zero because the organism expects nothing. Enzyme activity just sufficient to maintain membrane integrity. Variational free energy minimized. The most fundamental state: alive and not yet asking anything of the world.",
+  "description": "Basal metabolism — the cell neither asleep nor active. Metabolic rate at biological minimum, prediction error near zero because the organism expects nothing. Enzyme activity just sufficient to maintain membrane integrity. Variational free energy minimized. The most fundamental state: alive and not yet asking anything of the world.",
   "dna": {
     "aggression": 0.04,
     "brightness": 0.3,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Resting State",
+  "name": "Resting State (Organon)",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.08,

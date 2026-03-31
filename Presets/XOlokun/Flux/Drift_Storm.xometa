@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift Storm",
+  "name": "Drift Storm (Odyssey)",
   "mood": "Flux",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High drift depth and rate in storm conditions \u2014 oscillators pitching wildly.",
+  "description": "High drift depth and rate in storm conditions — oscillators pitching wildly.",
   "tags": [
     "drift",
     "storm",

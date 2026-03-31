@@ -5,7 +5,7 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Rule 18 Sierpinski variant accumulating mutations until the fractal self-similarity degrades. The Fibonacci structure of the triangle becomes the Fibonacci structure of the decay.",
   "tags": [

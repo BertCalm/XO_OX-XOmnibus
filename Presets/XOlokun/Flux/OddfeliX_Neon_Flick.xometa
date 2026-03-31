@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Neon Flick",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Single-voice super-snappy arp flick — each note a brief neon impulse.",
-  "tags": ["flick", "arp", "impulse", "neon"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flick",
+    "arp",
+    "impulse",
+    "neon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.9, "warmth": 0.15, "movement": 0.92, "density": 0.3, "space": 0.35, "aggression": 0.48},
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.15,
+    "movement": 0.92,
+    "density": 0.3,
+    "space": 0.35,
+    "aggression": 0.48
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.62
     }
   },
-  "macros": {"CHARACTER": 0.88, "MOVEMENT": 0.92, "COUPLING": 0.0, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

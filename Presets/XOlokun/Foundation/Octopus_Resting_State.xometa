@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Resting State",
+  "name": "Resting State (Octopus)",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The baseline state of the octopus brain — all eight arm subsystems ticking over at idle. A warm, slightly textured pad with minimal modulation. The intelligence present but not activated. Ready.",
-  "tags": ["octopus", "foundation", "rest", "idle", "warm", "pad", "baseline"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "foundation",
+    "rest",
+    "idle",
+    "warm",
+    "pad",
+    "baseline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,

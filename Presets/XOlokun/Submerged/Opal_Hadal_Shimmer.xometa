@@ -2,38 +2,67 @@
   "schema_version": 1,
   "name": "Hadal Shimmer",
   "mood": "Submerged",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bioluminescent shimmer from hadal depths — a tiny point of light deep in the grain abyss.",
-  "tags": ["hadal", "shimmer", "bioluminescent", "deep", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "hadal",
+    "shimmer",
+    "bioluminescent",
+    "deep",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.3, "movement": 0.15, "density": 0.65, "space": 0.65, "aggression": 0.1},
-  "parameters": {"Opal": {
-    "opal_grainSize": 0.75,
-    "opal_density": 0.65,
-    "opal_posScatter": 0.18,
-    "opal_pitchScatter": 0.05,
-    "opal_reverse": 0,
-    "opal_speed": 0.28,
-    "opal_ampAttack": 0.6,
-    "opal_ampDecay": 0.45,
-    "opal_ampSustain": 0.85,
-    "opal_ampRelease": 0.75,
-    "opal_filterCutoff": 1200,
-    "opal_filterReso": 0.22,
-    "opal_filterMode": 0,
-    "opal_shimmer": 0.42,
-    "opal_frost": 0.28,
-    "opal_smear": 0.6,
-    "opal_reverbMix": 0.58,
-    "opal_macroScatter": 0.18,
-    "opal_macroDrift": 0.15,
-    "opal_macroCoupling": 0.5,
-    "opal_macroSpace": 0.62
-  }},
-  "macros": {"CHARACTER": 0.32, "MOVEMENT": 0.15, "COUPLING": 0.5, "SPACE": 0.62},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.75,
+      "opal_density": 0.65,
+      "opal_posScatter": 0.18,
+      "opal_pitchScatter": 0.05,
+      "opal_reverse": 0,
+      "opal_speed": 0.28,
+      "opal_ampAttack": 0.6,
+      "opal_ampDecay": 0.45,
+      "opal_ampSustain": 0.85,
+      "opal_ampRelease": 0.75,
+      "opal_filterCutoff": 1200,
+      "opal_filterReso": 0.22,
+      "opal_filterMode": 0,
+      "opal_shimmer": 0.42,
+      "opal_frost": 0.28,
+      "opal_smear": 0.6,
+      "opal_reverbMix": 0.58,
+      "opal_macroScatter": 0.18,
+      "opal_macroDrift": 0.15,
+      "opal_macroCoupling": 0.5,
+      "opal_macroSpace": 0.62
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.5,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

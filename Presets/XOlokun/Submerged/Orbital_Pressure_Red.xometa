@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Pressure Red",
   "mood": "Submerged",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The warm-red engine identity under maximum pressure — spectral signature persists deep, dense, subdued.",
-  "tags": ["pressure", "red", "identity", "deep", "submerged"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "pressure",
+    "red",
+    "identity",
+    "deep",
+    "submerged"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.72, "movement": 0.1, "density": 0.92, "space": 0.55, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.1,
+    "density": 0.92,
+    "space": 0.55,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.12,
@@ -46,6 +66,13 @@
       "orb_level": 0.82
     }
   },
-  "macros": {"SPECTRAL": 0.65, "VELOCITY": 0.1, "GROUP": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.65,
+    "VELOCITY": 0.1,
+    "GROUP": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "The Observatory",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Mono. One voice. No chorus. No unison. Just the oscillator, the filter, and shimmer at 0.4 feedback — the hall zone. This is OPENSKY stripped of its social character: no community of unison voices, no chorus widening, no spectral smear. What remains is analytical clarity — each note's pitch, timbre, and position is legible. The observatory does not display the sky. It studies it. Use as a lead or melodic voice.",
-  "tags": ["opensky", "mono", "lead", "minimal", "analytical", "aether", "guru-bin", "observatory", "clarity"],
+  "tags": [
+    "opensky",
+    "mono",
+    "lead",
+    "minimal",
+    "analytical",
+    "aether",
+    "guru-bin",
+    "observatory",
+    "clarity"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru removed unison, removed chorus, removed everything except the note itself and its shimmer. What remained was more present than any padded version — more legible, more personal. The Ear said: I can hear every choice the player makes. There is nowhere to hide. The Observatory does not comfort the player. It witnesses them.",
     "diagnosis": "The Observatory is a mono lead study — unisonCount=1, chorusMix=0, no detune, no spread. FilterCutoff=8000 keeps it bright and analytical. ShimmerFeedback=0.4 adds hall-zone depth without obfuscating pitch. LFO1 at 0.067 Hz provides the single breathing modulation. This is OPENSKY as instrument, not atmosphere."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.25
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,16 +2,44 @@
   "schema_version": 1,
   "name": "Predator in Understory",
   "mood": "Deep",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Guru Bin Awakening 6 — xf_underEmerg: understory pitch drives wolf howl pitch. The entity's voice tracks the movement of the forest around it. Something alive in the middle strata.",
-  "tags": ["deep", "guru-bin", "understory", "wolf", "cuica", "predator", "awakening", "ecosystem"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "deep",
+    "guru-bin",
+    "understory",
+    "wolf",
+    "cuica",
+    "predator",
+    "awakening",
+    "ecosystem"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.55, "density": 0.58, "space": 0.52, "aggression": 0.62},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.62
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -83,5 +111,7 @@
       "ocelot_xf_emergCanopy": 0.0
     }
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

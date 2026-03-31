@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Estuary Mouth",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Amazon Delta: where fresh river meets ocean, where sediment clouds the water brown. Maximum Turbidity models the perpetually opaque water. Current bias shifts rhythmically with the tide. A murky, directional foundation.",
-  "tags": ["obrix", "submerged", "place", "amazon", "delta", "turbidity", "muddy", "current"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "place",
+    "amazon",
+    "delta",
+    "turbidity",
+    "muddy",
+    "current"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +119,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

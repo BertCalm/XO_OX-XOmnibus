@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Fold Storm",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wave fold in storm — maximum fold, fast phaser, inharmonic chaos at full intensity.",
-  "tags": ["fold", "storm", "inharmonic", "fast"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "fold",
+    "storm",
+    "inharmonic",
+    "fast"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.42, "movement": 0.88, "density": 0.72, "space": 0.2, "aggression": 0.85},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.72,
+    "space": 0.2,
+    "aggression": 0.85
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 1,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.2
     }
   },
-  "macros": {"BOUNCE": 0.72, "COLOR": 0.92, "FOLD": 0.95, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.72,
+    "COLOR": 0.92,
+    "FOLD": 0.95,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

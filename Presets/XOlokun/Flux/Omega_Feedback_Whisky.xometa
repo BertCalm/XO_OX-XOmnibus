@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 self-oscillating FM with heavy feedback.",
+  "description": "OMEGA — self-oscillating FM with heavy feedback.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.35,

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OSIER — chamber quartet at natural warmth. Play chord progressions: hear the voices lock after 10 minutes.",
   "dna": {
@@ -11,10 +13,17 @@
     "space": 0.72,
     "aggression": 0.06
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
-  "name": "Thyme Garden",
+  "name": "Thyme Garden (Osier) (Osier)",
   "parameters": {
     "Osier": {
       "osier_attack": 0.08,
@@ -40,7 +49,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["osier", "chamber", "quartet", "atmosphere", "strings", "companion"],
+  "tags": [
+    "osier",
+    "chamber",
+    "quartet",
+    "atmosphere",
+    "strings",
+    "companion"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tidal Pulse",
+  "name": "Tidal Pulse (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"

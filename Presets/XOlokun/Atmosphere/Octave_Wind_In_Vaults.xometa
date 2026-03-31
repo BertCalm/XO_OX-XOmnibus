@@ -53,7 +53,7 @@
       "oct_decay": 3.0,
       "oct_sustain": 0.96,
       "oct_release": 3.5,
-      "oct_filterEnvAmount": 0.10,
+      "oct_filterEnvAmount": 0.1,
       "oct_bendRange": 2.0,
       "oct_macroCharacter": 0.0,
       "oct_macroMovement": 0.0,

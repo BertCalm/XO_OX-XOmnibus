@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Shimmer Prism",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shimmer maximum through prism — brilliant shimmer tone, wide stereo, violet character.",
-  "tags": ["shimmer", "prism", "brilliant", "violet"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "shimmer",
+    "prism",
+    "brilliant",
+    "violet"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.38, "movement": 0.52, "density": 0.45, "space": 0.6, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.38,
+    "movement": 0.52,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.35
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 2,
@@ -54,6 +73,13 @@
       "drift_level": 0.73
     }
   },
-  "macros": {"CHARACTER": 0.78, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

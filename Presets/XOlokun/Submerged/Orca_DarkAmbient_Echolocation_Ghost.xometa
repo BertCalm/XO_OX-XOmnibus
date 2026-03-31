@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Echolocation Ghost",
   "mood": "Submerged",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Echolocation clicks dominate — sparse, resonant, finding invisible geometry in the water column. WT scan drifts like a slow turn of the head. What the predator hears before the attack.",
-  "tags": ["dark-ambient", "echolocation", "sparse", "ghost", "eerie", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dark-ambient",
+    "echolocation",
+    "sparse",
+    "ghost",
+    "eerie",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.38, "movement": 0.22, "density": 0.45, "space": 0.92, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.38,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.92,
+    "aggression": 0.18
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.42,
@@ -57,6 +78,13 @@
       "orca_macroSpace": 0.92
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

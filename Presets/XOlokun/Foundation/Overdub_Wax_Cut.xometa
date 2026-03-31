@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Wax Cut",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Raw lacquer cut before any echo is applied — the dry dub tone that all OVERDUB presets live inside. Square wave, sub blended under, filter half-open. The wax before the needle drops.",
-  "tags": ["overdub", "dub", "foundation", "roots", "dry", "bass", "transcendental"],
+  "tags": [
+    "overdub",
+    "dub",
+    "foundation",
+    "roots",
+    "dry",
+    "bass",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-1: The Dry Groove Is the Groove", "Scripture VII-2: The Echo Serves the Silence"],
+    "scripture": [
+      "Scripture VII-1: The Dry Groove Is the Groove",
+      "Scripture VII-2: The Echo Serves the Silence"
+    ],
     "revelation": "Every sound in the dub tradition starts with restraint and earns its echo.",
     "diagnosis": "Wax Cut establishes the foundation tone — the pre-echo signal that gives all other OVERDUB presets their ground. Without a compelling dry tone, the reverb has nothing to multiply."
   },
-  "macroLabels": ["TONE", "SUB BLEND", "FILTER OPEN", "DRIVE"],
+  "macroLabels": [
+    "TONE",
+    "SUB BLEND",
+    "FILTER OPEN",
+    "DRIVE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +84,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

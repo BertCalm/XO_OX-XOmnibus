@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Penumbra",
+  "name": "Penumbra (Oracle)",
   "mood": "Atmosphere",
   "engines": [
     "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The half-shadow zone \u2014 stochastic tone hovering between light and darkness.",
+  "description": "The half-shadow zone — stochastic tone hovering between light and darkness.",
   "tags": [
     "atmosphere",
     "shadow",

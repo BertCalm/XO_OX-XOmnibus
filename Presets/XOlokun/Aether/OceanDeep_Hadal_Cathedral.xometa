@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Truth 6: The Release Cathedral at Golden Ratio", "Verse: The Cave Body Mode — Walls That Hum Back"],
+    "scripture": [
+      "Truth 6: The Release Cathedral at Golden Ratio",
+      "Verse: The Cave Body Mode — Walls That Hum Back"
+    ],
     "revelation": "Nexus spoke: cave bodyFeedback at 0.85 is 94% of self-oscillation threshold. The comb filter is one reflection away from becoming a resonator. At this threshold, every note produces a pitched tail that sustains beyond the envelope — the cave itself becomes a voice that outlasts the player's gesture. The boundary between instrument and architecture dissolves.",
     "god": "Nexus",
     "flock_note": "The Ear heard the reverb tail and the body resonance merge into a single sustained voice after note-off. The Bone confirmed: despite heavy reverb, CPU stays at 4% — the reverb is block-rate, not per-sample.",

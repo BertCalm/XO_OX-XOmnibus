@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Tibetan singing bowl \u2014 bowl material, bowl body, very long singing decay, slow thermal breath",
+  "description": "Tibetan singing bowl — bowl material, bowl body, very long singing decay, slow thermal breath",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.45,
@@ -29,7 +29,7 @@
     "SPACE": 0.88
   },
   "mood": "Prism",
-  "name": "Singing Bowl",
+  "name": "Singing Bowl (Oware)",
   "parameters": {
     "Oware": {
       "owr_material": 0.66,

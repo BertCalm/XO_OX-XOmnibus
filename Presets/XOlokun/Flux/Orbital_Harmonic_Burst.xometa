@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Harmonic Burst",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sudden harmonic burst — all groups fire simultaneously, full spectral explosion.",
-  "tags": ["harmonic", "burst", "explosive", "full"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "harmonic",
+    "burst",
+    "explosive",
+    "full"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.55, "movement": 0.85, "density": 0.75, "space": 0.28, "aggression": 0.8},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.55,
+    "movement": 0.85,
+    "density": 0.75,
+    "space": 0.28,
+    "aggression": 0.8
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.78,
@@ -46,6 +65,13 @@
       "orb_level": 0.75
     }
   },
-  "macros": {"SPECTRAL": 0.78, "VELOCITY": 0.85, "GROUP": 0.0, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.78,
+    "VELOCITY": 0.85,
+    "GROUP": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

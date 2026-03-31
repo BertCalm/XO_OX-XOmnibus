@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Breakpoint Bass",
   "mood": "Foundation",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense breakpoints create thick low-end stochastic bass movement.",
-  "tags": ["bass", "foundation", "dense", "gendy"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "bass",
+    "foundation",
+    "dense",
+    "gendy"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.7, "movement": 0.5, "density": 0.7, "space": 0.3, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.4
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.85,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.3
     }
   },
-  "macros": {"DRIFT": 0.45, "EVOLUTION": 0.4, "COUPLING": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.45,
+    "EVOLUTION": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

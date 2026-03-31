@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Stack Atmosphere",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Stack mode in atmospheric register — octave layers dissolving into soft amber space.",
-  "tags": ["atmosphere", "stack", "octave", "soft"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "stack",
+    "octave",
+    "soft"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.65, "movement": 0.32, "density": 0.6, "space": 0.73, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.65,
+    "movement": 0.32,
+    "density": 0.6,
+    "space": 0.73,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.73
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.32, "COUPLING": 0.0, "SPACE": 0.73},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.73
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Ghost Signal",
+  "name": "Ghost Signal (Ouie)",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phantom electroreception signal, barely above noise floor in vast empty ocean.",
-  "tags": ["aether", "ghost", "phantom", "subtle"],
-  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "tags": [
+    "aether",
+    "ghost",
+    "phantom",
+    "subtle"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,5 +60,7 @@
     "AMPULLAE": 0.95,
     "CURRENT": 0.96
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

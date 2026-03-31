@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Ink Sharing",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Multiple voices, each capable of triggering ink cloud independently. Play a chord loudly and the ink floods from multiple voices simultaneously. A family of octopuses all defending the same territory.",
-  "tags": ["octopus", "family", "ink", "poly", "defense", "shared", "multiple"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "ink",
+    "poly",
+    "defense",
+    "shared",
+    "multiple"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.52,

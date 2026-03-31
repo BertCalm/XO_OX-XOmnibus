@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Flood Season",
   "mood": "Flux",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The forest floor flooding — all creatures displaced upward, the normal strata inverted.",
-  "tags": ["flood", "season", "flux", "displaced", "chaos", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "flood",
+    "season",
+    "flux",
+    "displaced",
+    "chaos",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.78, "density": 0.72, "space": 0.45, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.45,
+    "aggression": 0.65
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.75
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

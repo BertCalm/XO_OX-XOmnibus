@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Cave Singer",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "An underwater cave that has found its own pitch. The walls are limestone. The water is cold and still. Somewhere inside, the resonance has become a voice — slightly detuned, haunted, ancient.",
-  "tags": ["bass", "submerged", "cave", "resonance", "haunting", "eerie", "pitched", "atmospheric"],
+  "tags": [
+    "bass",
+    "submerged",
+    "cave",
+    "resonance",
+    "haunting",
+    "eerie",
+    "pitched",
+    "atmospheric"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +33,12 @@
     "flock_note": "WRECK macro at zero keeps this pure Cave. Raise CREATURE for bioluminescent shimmer from deep within the grotto. The cave sings back whatever you give it.",
     "diagnosis": "bodyChar=1 (Cave): slightly detuned comb creates that signature eerie pitched resonance. bodyFeedback=0.6 sustains the cave's own voice. bodyMix=0.8 makes the cave dominant over the direct signal. filterCutoff=350 — mid-depth, enough warmth to feel the limestone."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +84,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.45
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

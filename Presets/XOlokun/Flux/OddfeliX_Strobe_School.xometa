@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Strobe School",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tight rapid chord snaps — stroboscopic effect of a darting shoal under fast light.",
-  "tags": ["strobe", "chord", "rapid", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "strobe",
+    "chord",
+    "rapid",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.9, "warmth": 0.2, "movement": 0.85, "density": 0.65, "space": 0.35, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.2,
+    "movement": 0.85,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.45
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.52
     }
   },
-  "macros": {"CHARACTER": 0.75, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

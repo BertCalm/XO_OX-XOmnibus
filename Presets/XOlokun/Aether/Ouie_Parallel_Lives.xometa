@@ -2,22 +2,41 @@
   "schema_version": 1,
   "name": "Parallel Lives",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Two instruments on one keyboard. Split at G3 — left hand creates FM drones with slow attack and high sustain, right hand plucks Karplus-Strong strings that ring out above. Independent filters: low pass on the drones, band pass on the strings. Two parallel existences that share a body but never touch. Coprime LFOs drift the drone (0.13 Hz) and the pluck brightness (0.17 Hz) independently.",
-  "tags": ["aether", "split", "fm", "karplus-strong", "drone", "pluck", "dual-instrument", "guru-bin"],
+  "tags": [
+    "aether",
+    "split",
+    "fm",
+    "karplus-strong",
+    "drone",
+    "pluck",
+    "dual-instrument",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
     "retreat_date": "2026-03-19",
-    "scripture": ["Key Revelation: Interval-as-Parameter", "Verse 8: Two Instruments, One Keyboard, Two Parallel Existences That Share a Body"],
+    "scripture": [
+      "Key Revelation: Interval-as-Parameter",
+      "Verse 8: Two Instruments, One Keyboard, Two Parallel Existences That Share a Body"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger played FM drones low and Karplus strings high — The Ear confirmed the two voices are genuinely independent, sharing a body without touching.",
     "diagnosis": "Parallel Lives demonstrates OUIE's split mode with maximally contrasting algorithms — FM drones in the low register, Karplus-Strong plucks above. Reveals the engine's dual-instrument keyboard architecture at full expressive range."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -91,5 +110,7 @@
     "CARTILAGE": 0.4,
     "CURRENT": 0.65
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

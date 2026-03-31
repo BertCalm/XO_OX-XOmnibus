@@ -14,15 +14,22 @@
     "space": 0.15,
     "warmth": 0.3
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Foundation",
-  "name": "Bone Dry",
+  "name": "Bone Dry (Offering)",
   "parameters": {
     "Offering": {
       "ofr_cityMode": 0,
@@ -42,8 +49,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["dry", "utility", "clean", "transient", "cutting"],
+  "tags": [
+    "dry",
+    "utility",
+    "clean",
+    "transient",
+    "cutting"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.3, "M2": 0.0, "M3": 0.0, "M4": 0.0}
+  "macros": {
+    "M1": 0.3,
+    "M2": 0.0,
+    "M3": 0.0,
+    "M4": 0.0
+  }
 }

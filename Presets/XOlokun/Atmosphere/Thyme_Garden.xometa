@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Intimate quartet pad \u2014 high companion planting, voices grow into each other",
+  "description": "Intimate quartet pad — high companion planting, voices grow into each other",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.3,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Thyme Garden",
+  "name": "Thyme Garden (Osier) (Osier) 2",
   "parameters": {
     "Osier": {
       "osier_attack": 0.2,

@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Arm Diverge",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Arms at maximum rate and depth — pure arm divergence with no chromatic coherence intended. The 8 arms operate as an ensemble of independent agents. Fascinating, chaotic, non-hierarchical.",
-  "tags": ["experimental", "arms", "diverge", "chaos", "agents", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "experimental",
+    "arms",
+    "diverge",
+    "chaos",
+    "agents",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.38, "movement": 0.92, "density": 0.78, "space": 0.52, "aggression": 0.68},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.38,
+    "movement": 0.92,
+    "density": 0.78,
+    "space": 0.52,
+    "aggression": 0.68
+  },
   "parameters": {
     "Octopus": {
       "octo_armCount": 8,
@@ -60,6 +81,13 @@
       "octo_macroSpace": 0.42
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.92, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

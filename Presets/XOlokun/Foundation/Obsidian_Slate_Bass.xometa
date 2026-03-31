@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Slate Bass",
   "mood": "Foundation",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Heavy slate-textured bass — deep sub presence, slow decay, minimal movement.",
-  "tags": ["bass", "slate", "deep", "sub"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bass",
+    "slate",
+    "deep",
+    "sub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.55, "movement": 0.1, "density": 0.88, "space": 0.25, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.55,
+    "movement": 0.1,
+    "density": 0.88,
+    "space": 0.25,
+    "aggression": 0.3
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.92,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.2, "MOVEMENT": 0.1, "COUPLING": 0.0, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

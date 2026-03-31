@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Interference Fringe",
   "mood": "Entangled",
-  "engines": ["Overwash"],
+  "engines": [
+    "Overwash"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two diffusion fronts collide — maximum interference parameter, 11 partials crossing and canceling in strange patterns.",
-  "tags": ["pad", "interference", "complex", "entangled", "diffusion"],
-  "macroLabels": ["VISCOSITY", "DIFFUSION", "INTERFERENCE", "WIDTH"],
+  "tags": [
+    "pad",
+    "interference",
+    "complex",
+    "entangled",
+    "diffusion"
+  ],
+  "macroLabels": [
+    "VISCOSITY",
+    "DIFFUSION",
+    "INTERFERENCE",
+    "WIDTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.5, "movement": 0.5, "density": 0.6, "space": 0.7, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.05
+  },
   "parameters": {
     "Overwash": {
       "wash_diffusionRate": 0.5,
@@ -44,7 +64,9 @@
       "wash_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

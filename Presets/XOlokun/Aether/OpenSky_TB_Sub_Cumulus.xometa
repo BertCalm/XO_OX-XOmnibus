@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Sub Cumulus",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The thunderhead's hidden weight. Sub oscillator (square wave) at 0.45 level with the supersaw mix pulled down to 0.4. The sub dominates while the saws provide harmonic texture above. Filter cutoff at 1400 Hz with resonance at 0.25 creates a warm, rounded low-end presence that defies OPENSKY's bright identity. This is the engine's shadow -- the dark cloud that precedes the sunbreak. Shimmer at 0.2 mix adds just enough space to keep it from collapsing into bass territory. The Guru says: even the sky has weight.",
-  "tags": ["opensky", "transcendental", "sub", "bass", "dark", "weight", "cloud"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "sub",
+    "bass",
+    "dark",
+    "weight",
+    "cloud"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 14: The Sub Oscillator at 0.45 Reveals OPENSKY's Hidden Gravity", "Canon 5: Even the Flying Fish Has Weight When It Returns to Water"],
+    "scripture": [
+      "Verse 14: The Sub Oscillator at 0.45 Reveals OPENSKY's Hidden Gravity",
+      "Canon 5: Even the Flying Fish Has Weight When It Returns to Water"
+    ],
     "revelation": "Pressura spoke: inverting the saw/sub balance (sub dominant, saw textural) transforms OPENSKY from a shimmer engine into a bass instrument with harmonic overtones. The engine contains its own opposite.",
     "god": "Pressura",
     "flock_note": "The Bone confirmed: with shimmer at 0.2 and chorus at 0.1, CPU usage drops significantly while the sub oscillator provides all the sonic weight needed. The Ear measured the fundamental at -6dB relative to the sub -- a deliberate inversion of the engine's default voicing.",
     "diagnosis": "Sub Cumulus turns OPENSKY upside down. The sub oscillator becomes the protagonist, the supersaw becomes texture, and the shimmer becomes atmosphere rather than spectacle. This preset proves the engine has depth as well as height."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.25
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

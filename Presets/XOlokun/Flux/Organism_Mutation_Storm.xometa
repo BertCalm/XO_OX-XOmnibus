@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Mutation Storm",
+  "name": "Mutation Storm (Organism)",
   "mood": "Flux",
   "engines": [
     "Organism"

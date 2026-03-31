@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Color Drift",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prism color drifting slowly — slow phaser movement, color at mid, spacious delay tail.",
-  "tags": ["color", "drift", "phaser", "spacious"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "color",
+    "drift",
+    "phaser",
+    "spacious"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.48, "movement": 0.3, "density": 0.48, "space": 0.65, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.48,
+    "movement": 0.3,
+    "density": 0.48,
+    "space": 0.65,
+    "aggression": 0.15
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.65
     }
   },
-  "macros": {"BOUNCE": 0.2, "COLOR": 0.72, "FOLD": 0.15, "SPACE": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.2,
+    "COLOR": 0.72,
+    "FOLD": 0.15,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

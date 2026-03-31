@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Pressured Low",
   "mood": "Submerged",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Compressed, pressurized bass that feels like being underwater — glued, heavy, inescapable.",
-  "tags": ["bass", "compressed", "pressure", "submerged"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "compressed",
+    "pressure",
+    "submerged"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.75, "movement": 0.15, "density": 0.85, "space": 0.25, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.85,
+    "space": 0.25,
+    "aggression": 0.45
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -36,6 +56,14 @@
       "poss_macroPlayDead": 0.15
     }
   },
-  "macros": {"BELLY": 0.9, "BITE": 0.35, "SCURRY": 0.1, "TRASH": 0.35, "PLAY DEAD": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.9,
+    "BITE": 0.35,
+    "SCURRY": 0.1,
+    "TRASH": 0.35,
+    "PLAY DEAD": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

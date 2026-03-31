@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Heavy Suitcase",
   "mood": "Organic",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fender Rhodes Suitcase at full tremolo depth. 5.8 Hz stereo tremolo at 82% depth, wide stereo field. The Motown/Stax soul sound — warm, pulsing, full of character.",
-  "tags": ["rhodes", "suitcase", "tremolo", "soul", "wide-stereo", "organic"],
-  "macroLabels": ["CHARACTER", "TREMOLO DEPTH", "COUPLING", "STEREO WIDTH"],
+  "tags": [
+    "rhodes",
+    "suitcase",
+    "tremolo",
+    "soul",
+    "wide-stereo",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "TREMOLO DEPTH",
+    "COUPLING",
+    "STEREO WIDTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

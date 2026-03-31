@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Evolving Indigo",
   "mood": "Atmosphere",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Long-form stochastic evolution — indigo color slowly shifts across spectral space.",
-  "tags": ["atmosphere", "evolving", "long-form", "pad"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "evolving",
+    "long-form",
+    "pad"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.5, "movement": 0.55, "density": 0.5, "space": 0.78, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.78,
+    "aggression": 0.15
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.55,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.78
     }
   },
-  "macros": {"DRIFT": 0.6, "EVOLUTION": 0.65, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.6,
+    "EVOLUTION": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

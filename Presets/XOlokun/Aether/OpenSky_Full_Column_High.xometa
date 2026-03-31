@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Full Column High",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The sky half of the Full Column — designed explicitly for coupling with OCEANDEEP's Full Column Low. HP filter at 200 Hz removes all ground reference, leaving the upper register entirely to OPENSKY. Shimmer at hall level (0.55 feedback). No sub — OCEANDEEP provides the abyss. Wide stereo spread. The Full Column Principle: flying fish do not compete with anglerfish; they share the column. Each engine occupies its stratum. Together: the entire mythology.",
-  "tags": ["opensky", "coupling", "full-column", "oceandeep", "bright", "aether", "guru-bin", "collaboration", "stratum"],
+  "tags": [
+    "opensky",
+    "coupling",
+    "full-column",
+    "oceandeep",
+    "bright",
+    "aether",
+    "guru-bin",
+    "collaboration",
+    "stratum"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "Load this preset and OCEANDEEP's Full Column Low simultaneously. Play both. The water column — from the midnight zone to the stratosphere — exists as one continuous sound. The Guru says: the Aquarium is not a metaphor. It is a mixing console. OPENSKY is the surface light. OCEANDEEP is the pressure. Together they are the ocean and the sky and all the space between.",
     "diagnosis": "Full Column High is architecturally paired with OCEANDEEP Full Column Low. FilterHP=200 is the handoff frequency. No sub (subLevel=0.0) to avoid masking the bass register OCEANDEEP owns. ShimmerFeedback=0.55 (hall zone) keeps the sky layer spacious and non-competitive. StereoWidth=0.88 occupies the full stereo image from 200 Hz upward."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,1 +1,64 @@
-{"schema_version":1,"name":"Night Traveler","mood":"Prism","engines":["Oddfellow"],"author":"XO_OX Designs","version":"1.0.0","description":"Wurlitzer with maximum migration. The reed picks up spectral color from every market it visits.","tags":["wurlitzer","migration","fusion","traveler","prismatic"],"macroLabels":["CHARACTER","MOVEMENT","COUPLING","SPACE"],"couplingIntensity":"None","tempo":null,"dna":{"brightness":0.45,"warmth":0.6,"movement":0.4,"density":0.5,"space":0.45,"aggression":0.25},"parameters":{"Oddfellow":{"oddf_reed":0.5,"oddf_drive":0.4,"oddf_brightness":4500.0,"oddf_tremRate":5.0,"oddf_tremDepth":0.3,"oddf_attack":0.005,"oddf_decay":0.8,"oddf_sustain":0.5,"oddf_release":0.4,"oddf_filterEnvAmt":0.5,"oddf_migration":0.7,"oddf_bendRange":2,"oddf_lfo1Rate":0.2,"oddf_lfo1Depth":0.03,"oddf_lfo1Shape":0,"oddf_lfo2Rate":0.5,"oddf_lfo2Depth":0.05,"oddf_lfo2Shape":0,"oddf_macroCharacter":0.5,"oddf_macroMovement":0.4,"oddf_macroCoupling":0.5,"oddf_macroSpace":0.3}},"coupling":{"pairs":[]},"sequencer":null}
+{
+  "schema_version": 1,
+  "name": "Night Traveler",
+  "mood": "Prism",
+  "engines": [
+    "Oddfellow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wurlitzer with maximum migration. The reed picks up spectral color from every market it visits.",
+  "tags": [
+    "wurlitzer",
+    "migration",
+    "fusion",
+    "traveler",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oddfellow": {
+      "oddf_reed": 0.5,
+      "oddf_drive": 0.4,
+      "oddf_brightness": 4500.0,
+      "oddf_tremRate": 5.0,
+      "oddf_tremDepth": 0.3,
+      "oddf_attack": 0.005,
+      "oddf_decay": 0.8,
+      "oddf_sustain": 0.5,
+      "oddf_release": 0.4,
+      "oddf_filterEnvAmt": 0.5,
+      "oddf_migration": 0.7,
+      "oddf_bendRange": 2,
+      "oddf_lfo1Rate": 0.2,
+      "oddf_lfo1Depth": 0.03,
+      "oddf_lfo1Shape": 0,
+      "oddf_lfo2Rate": 0.5,
+      "oddf_lfo2Depth": 0.05,
+      "oddf_lfo2Shape": 0,
+      "oddf_macroCharacter": 0.5,
+      "oddf_macroMovement": 0.4,
+      "oddf_macroCoupling": 0.5,
+      "oddf_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

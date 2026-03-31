@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Gut Dawn",
   "mood": "Foundation",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm gut strings at first light, minimal microprocessing with honest sympathetic resonance.",
-  "tags": ["harp", "gut", "warm", "dawn", "acoustic"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "gut",
+    "warm",
+    "dawn",
+    "acoustic"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.7, "movement": 0.2, "density": 0.3, "space": 0.6, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.6,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 4,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.1
     }
   },
-  "macros": {"PLUCK": 0.3, "SURFACE": 0.2, "FRACTURE": 0.0, "DIVINE": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.3,
+    "SURFACE": 0.2,
+    "FRACTURE": 0.0,
+    "DIVINE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

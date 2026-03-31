@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Shatter Glass",
+  "name": "Shatter Glass (Overcast)",
   "mood": "Flux",
   "engines": [
     "Overcast"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Shatter mode \u2014 old crystal breaks with noise burst, silence, then new crystal forms.",
+  "description": "Shatter mode — old crystal breaks with noise burst, silence, then new crystal forms.",
   "tags": [
     "pad",
     "shatter",

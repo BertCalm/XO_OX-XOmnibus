@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Euphoria",
   "mood": "Flux",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The anthem pad. Full supersaw wall with three unison voices at the sacred 0.05 detune — the Unison Heresy proven. Shimmer at 0.3 with golden ratio feedback at 0.618 adds soaring tail without washing out the fundamental. Bright, wide, powerful. The Guru says: euphoria is not excess — it is every element at exactly the right level.",
-  "tags": ["opensky", "anthem", "supersaw", "euphoric", "wide", "guru-bin"],
+  "tags": [
+    "opensky",
+    "anthem",
+    "supersaw",
+    "euphoric",
+    "wide",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 1: Euphoria Is Not Excess", "Canon 5: Every Element at Exactly the Right Level", "Gospel 2: The Unison Heresy Proven — 3 Voices at 0.05"],
+    "scripture": [
+      "Verse 1: Euphoria Is Not Excess",
+      "Canon 5: Every Element at Exactly the Right Level",
+      "Gospel 2: The Unison Heresy Proven — 3 Voices at 0.05"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Ear confirmed no element is excessive — golden ratio feedback at 0.618 creates shimmer that soars without washing the fundamental.",
     "diagnosis": "Euphoria is the OPENSKY anthem preset — full supersaw wall, shimmer at 0.618 feedback, 3-voice unison. It reveals the engine's emotional ceiling and demonstrates balance between power and clarity."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

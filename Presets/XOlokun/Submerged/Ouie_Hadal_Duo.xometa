@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Hadal Duo",
   "mood": "Submerged",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Both voices at maximum depth pressure, ultra-low filters in hadal zone.",
-  "tags": ["submerged", "hadal", "deep", "pressure"],
-  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "tags": [
+    "submerged",
+    "hadal",
+    "deep",
+    "pressure"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,5 +60,7 @@
     "AMPULLAE": 0.45,
     "CURRENT": 0.88
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

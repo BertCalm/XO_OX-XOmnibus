@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Prey Detection",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The octopus using chemoreceptors and arm tip sensors to detect prey in darkness. Arms active at different rates scanning different frequency ranges. Alert, focused, controlled foundation patch.",
-  "tags": ["octopus", "foundation", "detection", "alert", "arms", "focused"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "foundation",
+    "detection",
+    "alert",
+    "arms",
+    "focused"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.6,

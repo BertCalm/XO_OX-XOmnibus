@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "High-pass filtered Torus (3,5) coupling with long reverb. Only the upper coupling harmonics survive, creating a resonance from the void \u2014 sound emerging from silence.",
+  "description": "High-pass filtered Torus (3,5) coupling with long reverb. Only the upper coupling harmonics survive, creating a resonance from the void — sound emerging from silence.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.3,
@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Void Resonance",
+  "name": "Void Resonance (Orbweave)",
   "parameters": {
     "Orbweave": {
       "weave_strandType": 1,

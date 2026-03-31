@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Formant Sing",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vocal formant singing quality — high formant mix, slow morph, rich reverb.",
-  "tags": ["formant", "vocal", "singing", "morph"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "vocal",
+    "singing",
+    "morph"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.4, "density": 0.55, "space": 0.5, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.15
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 2,
@@ -54,6 +73,13 @@
       "drift_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Square Pad",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dual square wave pad — hollowed, warm, blending into amber foundation.",
-  "tags": ["foundation", "square", "pad", "hollow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "square",
+    "pad",
+    "hollow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.3, "density": 0.5, "space": 0.55, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.18
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 2,
@@ -56,6 +75,13 @@
       "bob_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

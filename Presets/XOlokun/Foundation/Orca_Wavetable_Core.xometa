@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Wavetable Core",
   "mood": "Foundation",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean wavetable foundation at mid-table position — minimal effects reveal the raw timbral character of the orca wavetable engine, a blank canvas for sound design.",
-  "tags": ["foundation", "clean", "wavetable", "neutral", "init"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "clean",
+    "wavetable",
+    "neutral",
+    "init"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.2, "density": 0.4, "space": 0.3, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.2,
+    "density": 0.4,
+    "space": 0.3,
+    "aggression": 0.2
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.5,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.3
     }
   },
-  "macros": {"HUNT": 0.3, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

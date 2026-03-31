@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "FM Aether",
+  "name": "FM Aether (Odyssey)",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM sidebands at aether distance — metallic tone nearly gone, spectral ghost at maximum space.",
-  "tags": ["FM", "aether", "ghost", "spectral", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "FM",
+    "aether",
+    "ghost",
+    "spectral",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.32, "movement": 0.05, "density": 0.15, "space": 0.96, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.32,
+    "movement": 0.05,
+    "density": 0.15,
+    "space": 0.96,
+    "aggression": 0.04
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.56
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.05, "COUPLING": 0.0, "SPACE": 0.96},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.96
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

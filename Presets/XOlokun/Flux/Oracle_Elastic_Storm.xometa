@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Elastic Storm",
   "mood": "Flux",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High barrier elasticity and fast drift collide into a volatile stochastic storm.",
-  "tags": ["flux", "storm", "elastic", "volatile"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "storm",
+    "elastic",
+    "volatile"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.35, "movement": 0.9, "density": 0.65, "space": 0.45, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.65,
+    "space": 0.45,
+    "aggression": 0.75
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.8,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.45
     }
   },
-  "macros": {"DRIFT": 0.85, "EVOLUTION": 0.85, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.85,
+    "EVOLUTION": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

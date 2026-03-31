@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Reunion Fanfare",
   "mood": "Family",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The whole family bursting into fanfare at reunion — all voices at celebratory pressure with GROW at peak.",
-  "tags": ["brass", "family", "reunion", "fanfare", "celebratory"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "family",
+    "reunion",
+    "fanfare",
+    "celebratory"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.68, "movement": 0.65, "density": 0.75, "space": 0.52, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.68,
+    "movement": 0.65,
+    "density": 0.75,
+    "space": 0.52,
+    "aggression": 0.42
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.1
     }
   },
-  "macros": {"GROW": 0.92, "EMBOUCHURE": 0.82, "LAKE": 0.45, "FOREIGN": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.92,
+    "EMBOUCHURE": 0.82,
+    "LAKE": 0.45,
+    "FOREIGN": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

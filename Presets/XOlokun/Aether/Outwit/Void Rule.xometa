@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rules 0/32 alternating \u2014 dead and near-dead cells coexist in a near-void.",
+  "description": "Rules 0/32 alternating — dead and near-dead cells coexist in a near-void.",
   "dna": {
     "aggression": 0.01,
     "brightness": 0.13,

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "4-voice polyphony, short decay, Karplus-Strong mode with bright cutoff — notes played fast create a natural arpeggio texture. The 7 Hz LFO and moderate resonance add a prismatic shimmer to each step. Neon tetra blue refracted through a crystal prism.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.58,
     "aggression": 0.38
   },
-  "engines": ["OddfeliX"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
   "macros": {
     "CHARACTER": 0.35,
     "MOVEMENT": 0.6,
@@ -47,7 +56,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["prism", "oddfelix", "arpeggio", "karplus", "bright", "crystalline", "shimmer"],
+  "tags": [
+    "prism",
+    "oddfelix",
+    "arpeggio",
+    "karplus",
+    "bright",
+    "crystalline",
+    "shimmer"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

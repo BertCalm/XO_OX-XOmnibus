@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Biolume Prism",
+  "name": "Biolume Prism (Organon)",
   "mood": "Prism",
   "engines": [
     "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Bioluminescent cascade at peak intensity \u2014 cyan light refracting through biological matter.",
+  "description": "Bioluminescent cascade at peak intensity — cyan light refracting through biological matter.",
   "tags": [
     "bioluminescent",
     "prism",

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Trefoil Spin",
+  "name": "Trefoil Spin (Ouroboros)",
   "mood": "Flux",
   "engines": [
     "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Trefoil knot spinning at high rate \u2014 rapid knotted topology with high energy injection.",
+  "description": "Trefoil knot spinning at high rate — rapid knotted topology with high energy injection.",
   "tags": [
     "trefoil",
     "spin",

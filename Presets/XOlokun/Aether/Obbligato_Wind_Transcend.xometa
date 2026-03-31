@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Wind Transcend",
   "mood": "Aether",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum wind macro with high plate reverb and locked bond — breath becoming pure spirit.",
-  "tags": ["woodwind", "wind", "transcendent", "spirit", "aether"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "wind",
+    "transcendent",
+    "spirit",
+    "aether"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.45, "density": 0.38, "space": 0.92, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.38,
+    "space": 0.92,
+    "aggression": 0.06
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 1,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.08
     }
   },
-  "macros": {"BOND": 0.85, "BREATH": 0.65, "WIND": 0.92, "MISCHIEF": 0.08},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.85,
+    "BREATH": 0.65,
+    "WIND": 0.92,
+    "MISCHIEF": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

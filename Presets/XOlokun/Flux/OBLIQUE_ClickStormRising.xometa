@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Click Storm Rising",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The bounce engine unleashed — maximum bounce count, fast rate, low gravity so clicks accelerate into a blur. High wavefold grit. LFO1 at 3 Hz spinning the prism color frantically. Prism feedback near-runaway. Fast LFO2 makes the phaser oscillate rapidly. BOUNCE macro pushes rate even harder.",
-  "tags": ["chaos", "click", "bounce", "fast", "aggressive", "RTJ"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chaos",
+    "click",
+    "bounce",
+    "fast",
+    "aggressive",
+    "RTJ"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -62,6 +76,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.45, "COUPLING": 0.35, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.35,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

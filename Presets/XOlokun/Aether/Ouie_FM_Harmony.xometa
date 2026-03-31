@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "FM Harmony",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "FM (voice 1, fmRatio=1.5 = perfect fifth carrier) + Additive (voice 2, rich partials). HAMMER=+0.5 — light-to-medium LOVE. The consonant FM ratio (3:2) predisposes the voice pair toward harmonic lock even before LOVE is applied. Additive's even partials then fuse with FM's sidebands into a single, extraordinarily rich harmonic series. This is OUIE at its most overtly beautiful — a pad that rewards long held notes.",
-  "tags": ["ouie", "fm", "additive", "harmony", "consonant", "love", "pad", "aether", "harmonic-lock"],
+  "tags": [
+    "ouie",
+    "fm",
+    "additive",
+    "harmony",
+    "consonant",
+    "love",
+    "pad",
+    "aether",
+    "harmonic-lock"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "Try raising fmRatio1 from 1.5 to 2.0 (octave) or 3.0 (octave + fifth) and rehear how the LOVE interaction changes. Consonant ratios always arrive at beauty. Inharmonic ratios (2.3, 3.7) create tension even in LOVE.",
     "diagnosis": "Demonstrates that HAMMER LOVE is not just a blend — it is a spectral interaction that depends on the source material. FM with consonant carrier ratio + additive is the most harmonically generous pairing in the OUIE engine. Suitable for orchestral-style pads, harmonic drones, ambient music."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.6,
     "CURRENT": 0.3
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

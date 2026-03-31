@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OMEGA \u2014 sub-octave FM bass via algorithm 3 (0.5:1). FM-derived sub energy below the fundamental.",
+  "description": "OMEGA — sub-octave FM bass via algorithm 3 (0.5:1). FM-derived sub energy below the fundamental.",
   "dna": {
     "brightness": 0.22,
     "warmth": 0.62,

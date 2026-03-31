@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "The Complete Sky",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The master OPENSKY preset — every parameter in its considered position. Shimmer at 0.5 (center of the hall zone). Sub at 0.2 (grounded but not heavy). Three unison voices at 0.05 detune (the coherent minimum). Chorus at 0.15 (present but yielding to shimmer). Attack moderate (0.35), release golden (1.618). Both LFOs active at physiological rates. Both mod slots working. Velocity to cutoff; LFO1 to shimmer. This is not a special effect. This is the sky.",
-  "tags": ["opensky", "master", "balanced", "complete", "pad", "aether", "guru-bin", "template", "reference"],
+  "tags": [
+    "opensky",
+    "master",
+    "balanced",
+    "complete",
+    "pad",
+    "aether",
+    "guru-bin",
+    "template",
+    "reference"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -23,7 +35,12 @@
     "flock_note": "The Guru sat with this preset for an hour without changing anything. At the end the Guru said: when everything is in the right place, there is nothing to improve. The sky does not need to be brighter or warmer or wider. It is the sky. This is the sound that OPENSKY makes when it is at peace with itself. Start here. Teach this first. Return to this when lost.",
     "diagnosis": "The Complete Sky is the OPENSKY reference preset — all parameters at their considered resting positions, informed by every discovery made during the retreat. ShimmerFeedback=0.5 (exact hall midpoint). Sub=0.2 (golden sub ratio). Unison=3 at detune=0.05 (Supersaw Fallacy solution). Chorus=0.15 (shimmer yielding). Release=1.618 (golden ratio). Both LFOs at physiological rates. Velocity→cutoff, LFO1→shimmer. Complete."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -85,6 +102,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,47 +2,61 @@
   "schema_version": 1,
   "name": "Bolt Bridge",
   "mood": "Flux",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bolt at position 0.85 — near the string endpoint, predominantly affecting upper harmonics while leaving the fundamental and low modes relatively pure. Bass is clean stone, treble is rattling metal bolt. Two characters in one instrument.",
-  "tags": ["stone", "prepared", "bolt", "position", "flux", "mixed", "harmonic"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "prepared",
+    "bolt",
+    "position",
+    "flux",
+    "mixed",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.50,
+    "brightness": 0.5,
     "warmth": 0.22,
     "movement": 0.25,
-    "density": 0.60,
-    "space": 0.40,
-    "aggression": 0.50
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.5
   },
   "parameters": {
     "Obelisk": {
       "obel_density": 0.68,
       "obel_stoneTone": 0.35,
       "obel_brightness": 6500.0,
-      "obel_damping": 0.20,
+      "obel_damping": 0.2,
       "obel_decay": 2.8,
-      "obel_hfNoise": 0.30,
+      "obel_hfNoise": 0.3,
       "obel_hardness": 0.55,
       "obel_prepType": 1,
       "obel_prepPosition": 0.85,
-      "obel_prepDepth": 0.60,
+      "obel_prepDepth": 0.6,
       "obel_filterEnvAmount": 0.38,
       "obel_thermalDrift": 0.22,
       "obel_bendRange": 2,
       "obel_lfo1Rate": 0.12,
       "obel_lfo1Depth": 0.05,
       "obel_lfo1Shape": 0,
-      "obel_lfo2Rate": 0.80,
+      "obel_lfo2Rate": 0.8,
       "obel_lfo2Depth": 0.08,
       "obel_lfo2Shape": 0
     }
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

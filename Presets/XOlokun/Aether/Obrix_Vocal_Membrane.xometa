@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Vocal wavetable bank (wtBank=2) with proc1 as LP at 660 Hz \u2014 the center of the vowel formant zone \u2014 with resonance 0.30, the sweet spot where the filter whispers rather than screams. Coprime LFOs: 0.13 Hz modulates wtPos (the wavetable scans through vowel shapes), 0.17 Hz modulates cutoff1 (the formant peak breathes). The result is a membrane \u2014 a biological acoustic interface between inside and outside. Not a voice, but the tissue that makes voice possible.",
+  "description": "Vocal wavetable bank (wtBank=2) with proc1 as LP at 660 Hz — the center of the vowel formant zone — with resonance 0.30, the sweet spot where the filter whispers rather than screams. Coprime LFOs: 0.13 Hz modulates wtPos (the wavetable scans through vowel shapes), 0.17 Hz modulates cutoff1 (the formant peak breathes). The result is a membrane — a biological acoustic interface between inside and outside. Not a voice, but the tissue that makes voice possible.",
   "tags": [
     "obrix",
     "aether",
@@ -32,17 +32,17 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
       "Resonance 0.28-0.32 = formant whisper",
       "Vocal WT + LP@660Hz vowel zone"
     ],
-    "revelation": "The filter at 660 Hz with resonance 0.30 is not a filter \u2014 it is a throat.",
+    "revelation": "The filter at 660 Hz with resonance 0.30 is not a filter — it is a throat.",
     "god": "Vangelis",
     "flock_note": "Ruby: 'I played this for a singer. She said it sounded like her own voice heard from outside her body.'",
-    "diagnosis": "The acoustic membrane between silence and speech \u2014 biological synthesis."
+    "diagnosis": "The acoustic membrane between silence and speech — biological synthesis."
   },
   "dna": {
     "brightness": 0.42,

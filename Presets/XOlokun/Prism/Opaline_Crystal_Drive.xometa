@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Crystal Drive",
   "mood": "Prism",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Toy piano through a prism — crystal drive adds harmonic overtones to the already bright tines. The drive is subtle, adding warmth rather than distortion. Like polishing glass until it refracts light. Mod wheel opens the filter wide.",
-  "tags": ["toy piano", "drive", "bright", "harmonic", "prism", "warm"],
-  "macroLabels": ["BRIGHTNESS", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "toy piano",
+    "drive",
+    "bright",
+    "harmonic",
+    "prism",
+    "warm"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

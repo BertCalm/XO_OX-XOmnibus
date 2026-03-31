@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Felix Loves Oscar",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "VA (feliX, voice 1) + Wavefolder (Oscar, voice 2). HAMMER=+0.7 — deep LOVE territory. The reconciliation: feliX's clean analog warmth envelops Oscar's folded harmonics until they fuse into a single voice with impossible tonal richness. At deep LOVE, Oscar's wavefolder harmonics are absorbed into feliX's spectral envelope. The result is something neither could produce alone — feliX wins, but Oscar's character survives inside the victory.",
-  "tags": ["ouie", "va", "wavefolder", "felix", "oscar", "love", "fusion", "aether", "reconciliation"],
+  "tags": [
+    "ouie",
+    "va",
+    "wavefolder",
+    "felix",
+    "oscar",
+    "love",
+    "fusion",
+    "aether",
+    "reconciliation"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "Sweep HAMMER from +0.5 to +0.9 slowly to find the exact fusion point. Too low and Oscar is still rough. Too high and feliX disappears entirely. The sweetest point is unique to every room.",
     "diagnosis": "Canonical feliX+Oscar LOVE pairing. Wavefolder algoParam2=0.7 creates rich harmonics without crossing into noise. At HAMMER=+0.7 these harmonics lock to feliX's VA fundamental — a genuinely beautiful sonic phenomenon. Excellent for complex pads that read as warm rather than harsh."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.55,
     "CURRENT": 0.25
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

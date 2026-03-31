@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Interval Engine",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Duo mode with two VA saws at HAMMER -0.5. The interval between the two notes you play BECOMES the FM ratio. A perfect fifth creates 3:2 consonance. A tritone creates metallic dissonance. A minor second creates beating interference. The keyboard is your modulation source. Glide at 0.15 for smooth interval transitions.",
-  "tags": ["duo", "interval", "experimental", "performance", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "duo",
+    "interval",
+    "experimental",
+    "performance",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +89,7 @@
       "ouie_macroCurrent": 0.1
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

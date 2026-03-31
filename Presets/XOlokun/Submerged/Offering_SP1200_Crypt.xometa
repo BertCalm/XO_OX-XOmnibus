@@ -14,13 +14,20 @@
     "space": 0.3,
     "warmth": 0.85
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Submerged",
   "name": "SP1200 Crypt",
   "parameters": {
@@ -47,8 +54,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["sp-1200", "lo-fi", "12-bit", "vinyl", "submerged", "dust"],
+  "tags": [
+    "sp-1200",
+    "lo-fi",
+    "12-bit",
+    "vinyl",
+    "submerged",
+    "dust"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.35, "M2": 0.15, "M3": 0.0, "M4": 0.75}
+  "macros": {
+    "M1": 0.35,
+    "M2": 0.15,
+    "M3": 0.0,
+    "M4": 0.75
+  }
 }

@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Aurora",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Band-pass filter centered at 3000 Hz — the aurora frequency. FilterType=1 (BP) cuts both lows and highs, leaving only the shimmering band where borealis lives. Combined with shimmerFeedback=0.65 (cathedral zone), the result is an alien sky: colored, vertical, impossible. The oscillator almost disappears behind the filter character. LFO2 at 0.03 Hz modulates filter cutoff across 25-second cycles — the auroral curtains shift.",
-  "tags": ["opensky", "aurora", "band-pass", "alien", "shimmer", "aether", "guru-bin", "borealis", "filter"],
+  "tags": [
+    "opensky",
+    "aurora",
+    "band-pass",
+    "alien",
+    "shimmer",
+    "aether",
+    "guru-bin",
+    "borealis",
+    "filter"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru said: auroras are not warm. They are ionized. They do not comfort. They arrest. Band-pass filter removes warmth entirely — what remains is spectral, colored, other. The Ear reported: this is not a sky I have been to. The Eye saw the spectrum analyzer show a narrow band of energy shifting slowly upward and down. The curtains move. You are below them, looking up.",
     "diagnosis": "Aurora uses filterType=BP (1) centered at 3000 Hz to isolate the auroral frequency band. ShimmerFeedback=0.65 operates in the cathedral zone — the reverb tail is pitched and architectural. LFO2 at 0.03 Hz (one cycle over 33 seconds) slowly shifts the BP cutoff, creating the lateral motion of auroral curtains. This is OPENSKY's most alien character."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

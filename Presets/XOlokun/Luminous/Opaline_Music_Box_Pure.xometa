@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Music Box Pure",
   "mood": "Luminous",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Celesta instrument with very short decay, hard hammer, minimal fragility — mechanical clockwork precision. Clean, consistent, innocent. The music box wound tight. Each note identical to the last. The luminous purity of mechanical certainty.",
-  "tags": ["celesta", "music box", "mechanical", "luminous", "pure", "clockwork", "innocent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "celesta",
+    "music box",
+    "mechanical",
+    "luminous",
+    "pure",
+    "clockwork",
+    "innocent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -15,14 +30,14 @@
     "warmth": 0.35,
     "movement": 0.15,
     "density": 0.35,
-    "space": 0.30,
+    "space": 0.3,
     "aggression": 0.15
   },
   "parameters": {
     "Opaline": {
       "opal2_instrument": 0,
       "opal2_fragility": 0.05,
-      "opal2_hammerHardness": 0.70,
+      "opal2_hammerHardness": 0.7,
       "opal2_brightness": 13000.0,
       "opal2_damping": 0.25,
       "opal2_decay": 1.5,
@@ -31,7 +46,7 @@
       "opal2_shimmerAmount": 0.08,
       "opal2_thermalShock": 0.05,
       "opal2_hfNoise": 0.12,
-      "opal2_filterEnvAmount": 0.30,
+      "opal2_filterEnvAmount": 0.3,
       "opal2_crystalDrive": 0.0,
       "opal2_sustainPedal": 0.0,
       "opal2_bendRange": 2.0,
@@ -39,10 +54,10 @@
       "opal2_macroMovement": 0.0,
       "opal2_macroCoupling": 0.0,
       "opal2_macroSpace": 0.0,
-      "opal2_lfo1Rate": 0.50,
+      "opal2_lfo1Rate": 0.5,
       "opal2_lfo1Depth": 0.04,
       "opal2_lfo1Shape": 0,
-      "opal2_lfo2Rate": 0.80,
+      "opal2_lfo2Rate": 0.8,
       "opal2_lfo2Depth": 0.0,
       "opal2_lfo2Shape": 1
     }

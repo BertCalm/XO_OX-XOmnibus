@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Vent Ricochet",
   "mood": "Submerged",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ricochet pulse at a hydrothermal vent — warm bounce in deep cold water, color glow, slow gravity arc.",
-  "tags": ["vent", "ricochet", "warm", "hydrothermal", "submerged"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "vent",
+    "ricochet",
+    "warm",
+    "hydrothermal",
+    "submerged"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.58, "movement": 0.2, "density": 0.75, "space": 0.62, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.58,
+    "movement": 0.2,
+    "density": 0.75,
+    "space": 0.62,
+    "aggression": 0.15
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 1,
@@ -50,6 +70,13 @@
       "oblq_macroSpace": 0.62
     }
   },
-  "macros": {"BOUNCE": 0.2, "COLOR": 0.52, "FOLD": 0.1, "SPACE": 0.62},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.2,
+    "COLOR": 0.52,
+    "FOLD": 0.1,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

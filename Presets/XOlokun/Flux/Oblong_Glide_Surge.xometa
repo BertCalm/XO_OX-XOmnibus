@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Glide Surge",
   "mood": "Flux",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Legato glide pushed to maximum — notes smear into each other in fast amber flux.",
-  "tags": ["flux", "glide", "legato", "surge"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "glide",
+    "legato",
+    "surge"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.62, "movement": 0.9, "density": 0.68, "space": 0.32, "aggression": 0.72},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.62,
+    "movement": 0.9,
+    "density": 0.68,
+    "space": 0.32,
+    "aggression": 0.72
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.9, "COUPLING": 0.0, "SPACE": 0.32},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

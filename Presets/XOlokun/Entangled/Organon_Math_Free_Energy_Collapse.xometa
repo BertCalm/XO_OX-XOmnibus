@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Free Energy Collapse",
   "mood": "Entangled",
-  "engines": ["Organon"],
+  "engines": [
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mathematical Chain showcase: ORGANON at maximum metabolic rate and minimum precision (high surprise, low prediction accuracy) creates a synthesis state resembling biological burnout. Entropy Cooler at Stability 0.1 (maximum disorder tolerance) allows this high-surprise state to pass. Voronoi Shatter at Crystallize 0.5 and Tension 0.8 applies geometric structure to the chaotic output. Attractor Drive at Bifurcation 0.75 (chaotic regime) applies Lorenz-modulated distortion. Quantum Smear at Observation 0.2 smears the result across time. The effect is organic chaos with mathematical architecture — living disorder.",
-  "tags": ["organon", "metabolism", "math-chain", "entropy", "attractor", "entangled", "chaos", "biological", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "organon",
+    "metabolism",
+    "math-chain",
+    "entropy",
+    "attractor",
+    "entangled",
+    "chaos",
+    "biological",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Organon": {
       "organon_metabolicRate": 0.92,
@@ -34,7 +55,9 @@
       "organon_macroSpace": 0.75
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.68,

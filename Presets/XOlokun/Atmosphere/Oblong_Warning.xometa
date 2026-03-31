@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Square wave with meaningful detune \u2014 the beating is present but slow, like a signal slightly off frequency. Filter resonance adds harmonic edge. An alarm being ignored.",
+  "description": "Square wave with meaningful detune — the beating is present but slow, like a signal slightly off frequency. Filter resonance adds harmonic edge. An alarm being ignored.",
   "dna": {
     "aggression": 0.48,
     "brightness": 0.58,

@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Cirrus",
   "mood": "Atmosphere",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The cloud preset. Thin, wispy, barely there — sawSpread at 0.1, no sub oscillator, mostly shimmer tail at 0.5 mix with high feedback at 0.7. The dry signal is a ghost; the wet signal is the atmosphere. The Guru says: sometimes the instrument is the reverb. The oscillator is just the excuse.",
-  "tags": ["opensky", "wispy", "cloud", "ambient", "ethereal", "guru-bin"],
+  "tags": [
+    "opensky",
+    "wispy",
+    "cloud",
+    "ambient",
+    "ethereal",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 3: Sometimes the Instrument Is the Reverb", "Canon 1: The Oscillator Is Just the Excuse"],
+    "scripture": [
+      "Verse 3: Sometimes the Instrument Is the Reverb",
+      "Canon 1: The Oscillator Is Just the Excuse"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Breath played the chord and felt mostly air — The Ear confirmed the dry signal is a ghost, the shimmer is the atmosphere.",
     "diagnosis": "Cirrus is maximum shimmer-as-instrument — thin oscillator source, shimmer at 50% mix and 0.7 feedback. It reveals that OPENSKY's reverb system is a synthesis tool, not merely an effect."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

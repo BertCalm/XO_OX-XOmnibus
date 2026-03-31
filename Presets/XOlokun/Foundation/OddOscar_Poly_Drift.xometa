@@ -2,18 +2,64 @@
   "schema_version": 1,
   "name": "Poly Drift",
   "mood": "Foundation",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Polyphonic drifting morph — full poly voice count with drifting pitch creates lush chords.",
-  "tags": ["poly", "drift", "lush", "chords"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "poly",
+    "drift",
+    "lush",
+    "chords"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.68, "movement": 0.55, "density": 0.68, "space": 0.55, "aggression": 0.1},
-  "parameters": {
-    "OddOscar": {"morph_morph": 0.52, "morph_bloom": 0.55, "morph_detune": 0.2, "morph_drift": 0.55, "morph_filterCutoff": 4200.0, "morph_filterReso": 0.28, "morph_filterEnvDepth": 0.38, "morph_sub": 0.35, "morph_decay": 1.0, "morph_sustain": 0.8, "morph_release": 2.2, "morph_glide": 0.1, "morph_voiceMode": 0, "morph_polyphony": 8, "morph_level": 0.7, "morph_macroBloom": 0.55, "morph_macroDepth": 0.5, "morph_macroDrift": 0.55, "morph_macroSpace": 0.55}
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.55,
+    "density": 0.68,
+    "space": 0.55,
+    "aggression": 0.1
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.52,
+      "morph_bloom": 0.55,
+      "morph_detune": 0.2,
+      "morph_drift": 0.55,
+      "morph_filterCutoff": 4200.0,
+      "morph_filterReso": 0.28,
+      "morph_filterEnvDepth": 0.38,
+      "morph_sub": 0.35,
+      "morph_decay": 1.0,
+      "morph_sustain": 0.8,
+      "morph_release": 2.2,
+      "morph_glide": 0.1,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 8,
+      "morph_level": 0.7,
+      "morph_macroBloom": 0.55,
+      "morph_macroDepth": 0.5,
+      "morph_macroDrift": 0.55,
+      "morph_macroSpace": 0.55
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Salinity Gradient",
+  "name": "Salinity Gradient (Orca)",
   "mood": "Atmosphere",
   "engines": [
     "Orca"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Where fresh river water meets saltwater \u2014 a halocline, the boundary of mixed densities. Formant shift drifting between fresh and salt acoustic character. An unstable layer the animal navigates by feel.",
+  "description": "Where fresh river water meets saltwater — a halocline, the boundary of mixed densities. Formant shift drifting between fresh and salt acoustic character. An unstable layer the animal navigates by feel.",
   "tags": [
     "atmosphere",
     "halocline",

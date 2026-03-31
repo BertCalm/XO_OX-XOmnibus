@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Wild, unpredictable solo string \u2014 high wildness, long tail, runners active",
+  "description": "Wild, unpredictable solo string — high wildness, long tail, runners active",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.3,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Vine Crawl",
+  "name": "Vine Crawl (Overgrow) (Overgrow) 2",
   "parameters": {
     "Overgrow": {
       "grow_attack": 0.1,

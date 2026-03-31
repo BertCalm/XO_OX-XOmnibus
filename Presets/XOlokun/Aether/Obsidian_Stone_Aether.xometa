@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Stone Aether",
   "mood": "Aether",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Stone transformed to aether — geological weight dissolved, only mineral essence remains.",
-  "tags": ["stone", "aether", "dissolved", "essence"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "aether",
+    "dissolved",
+    "essence"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.48, "movement": 0.07, "density": 0.18, "space": 0.96, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.48,
+    "movement": 0.07,
+    "density": 0.18,
+    "space": 0.96,
+    "aggression": 0.02
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.18,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.62
     }
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.07, "COUPLING": 0.0, "SPACE": 0.96},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.0,
+    "SPACE": 0.96
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Aftershock (Ostinato)",
   "mood": "Flux",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "The drop has happened. The aftershock phase — stripped back, disorienting, before the second build. Minimal four-on-the-floor with doumbek ghost notes that feel like the reverb of the drop still ringing. Beatbox snare comes in only on beat 3, not 2+4 — an asymmetric tension machine. GATHER from 0 to 1.0 brings in the rebuild wave.",
-  "tags": ["edm", "aftershock", "minimal", "asymmetric", "doumbek", "tension"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "edm",
+    "aftershock",
+    "minimal",
+    "asymmetric",
+    "doumbek",
+    "tension"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 128,
   "dna": {

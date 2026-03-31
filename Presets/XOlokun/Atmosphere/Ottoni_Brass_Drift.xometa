@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Brass Drift",
   "mood": "Atmosphere",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High drift rate and depth across all three voices, brass drifting in slow aimless motion.",
-  "tags": ["brass", "drift", "slow", "floating", "atmospheric"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "drift",
+    "slow",
+    "floating",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.68, "movement": 0.52, "density": 0.4, "space": 0.8, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.68,
+    "movement": 0.52,
+    "density": 0.4,
+    "space": 0.8,
+    "aggression": 0.1
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 1,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.1
     }
   },
-  "macros": {"GROW": 0.42, "EMBOUCHURE": 0.48, "LAKE": 0.78, "FOREIGN": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.42,
+    "EMBOUCHURE": 0.48,
+    "LAKE": 0.78,
+    "FOREIGN": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

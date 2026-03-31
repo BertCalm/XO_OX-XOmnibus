@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Reef Contour",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's warm analog character at its most essential. Smooth filter, gentle vibrato, the sound that wraps around a melody line.",
-  "tags": ["lead", "warm", "analog", "bob", "smooth", "foundation"],
-  "macroLabels": ["CHARACTER", "FILTER TONE", "VIBRATO", "BODY"],
+  "tags": [
+    "lead",
+    "warm",
+    "analog",
+    "bob",
+    "smooth",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FILTER TONE",
+    "VIBRATO",
+    "BODY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

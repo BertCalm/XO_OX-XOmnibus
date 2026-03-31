@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Crystal Storm",
   "mood": "Flux",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystal-white body in a storm — rapid cascade, high density cross-mod, aggressive LFO scatter.",
-  "tags": ["crystal", "storm", "fast", "scatter", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystal",
+    "storm",
+    "fast",
+    "scatter",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.25, "movement": 0.92, "density": 0.62, "space": 0.2, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.25,
+    "movement": 0.92,
+    "density": 0.62,
+    "space": 0.2,
+    "aggression": 0.88
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.52,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.2
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.92, "COUPLING": 0.0, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

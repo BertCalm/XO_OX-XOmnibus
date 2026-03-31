@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Fat Ambience",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Long-release pad with high morph and warm mojo setting — the obese character dissolves into a slow, dense atmospheric cloud with spectral width and gentle saturation.",
-  "tags": ["atmosphere", "pad", "fat", "warm", "slow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "fat",
+    "warm",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.8, "movement": 0.15, "density": 0.7, "space": 0.75, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.7,
+    "space": 0.75,
+    "aggression": 0.1
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.7,
@@ -46,6 +66,13 @@
       "fat_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.2, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

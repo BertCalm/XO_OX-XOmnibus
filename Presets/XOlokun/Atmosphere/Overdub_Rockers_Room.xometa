@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Rockers Room",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-tempo atmosphere with warm delay tail and loose spring reverb — a live room for loose playing.",
-  "tags": ["atmosphere", "room", "delay", "spring", "live", "rockers"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "room",
+    "delay",
+    "spring",
+    "live",
+    "rockers"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.14, "COUPLING": 0.52, "SPACE": 0.48},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.28, "warmth": 0.82, "movement": 0.18, "density": 0.52, "space": 0.58, "aggression": 0.2}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.52,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.82,
+    "movement": 0.18,
+    "density": 0.52,
+    "space": 0.58,
+    "aggression": 0.2
+  }
 }

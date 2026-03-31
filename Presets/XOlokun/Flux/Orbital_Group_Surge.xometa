@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Group Surge",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope at surge intensity — all 4 groups running ultra-fast, cascading burst attack, dense spectral peak.",
-  "tags": ["group", "surge", "fast", "cascade", "flux"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "group",
+    "surge",
+    "fast",
+    "cascade",
+    "flux"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.55, "movement": 0.88, "density": 0.75, "space": 0.22, "aggression": 0.82},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.88,
+    "density": 0.75,
+    "space": 0.22,
+    "aggression": 0.82
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.65,
@@ -46,6 +66,13 @@
       "orb_level": 0.74
     }
   },
-  "macros": {"SPECTRAL": 0.75, "VELOCITY": 0.88, "GROUP": 0.82, "SPACE": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.75,
+    "VELOCITY": 0.88,
+    "GROUP": 0.82,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

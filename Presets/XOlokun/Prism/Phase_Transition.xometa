@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Drama mapped to mod wheel. Sweep from 0 to 127 to hear the Kuramoto critical threshold \u2014 the exact moment chaos snaps to order. ResSens=0.8 so acausal clusters bloom before the global transition. The player IS the conductor.",
+  "description": "Drama mapped to mod wheel. Sweep from 0 to 127 to hear the Kuramoto critical threshold — the exact moment chaos snaps to order. ResSens=0.8 so acausal clusters bloom before the global transition. The player IS the conductor.",
   "tags": [
     "kuramoto",
     "transition",

@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Undertow",
   "mood": "Flux",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tide in auto-filter mode at 0.7 Hz creates a rhythmic undertow — the reverb tails get pulled through a resonant filter sweep that has nothing to do with the engine's internal modulation. Fathom compresses the burst of Tide's filter peaks so the undertow feels submerged rather than exposed.",
-  "tags": ["flux", "reverb", "tide", "fathom", "undertow", "rhythmic", "fx_chain:Aquatic", "aquatic-fx-demo"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "tags": [
+    "flux",
+    "reverb",
+    "tide",
+    "fathom",
+    "undertow",
+    "rhythmic",
+    "fx_chain:Aquatic",
+    "aquatic-fx-demo"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.68, "movement": 0.75, "density": 0.52, "space": 0.62, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.75,
+    "density": 0.52,
+    "space": 0.62,
+    "aggression": 0.32
+  },
   "parameters": {
     "Oxbow": {
       "oxb_size": 0.38,
@@ -29,8 +52,15 @@
       "oxb_exciterBright": 0.55
     }
   },
-  "macros": {"ENTANGLE": 0.38, "EROSION": 0.28, "CONVERGE": 0.42, "CANTILEVER": 0.42},
-  "coupling": {"pairs": []},
+  "macros": {
+    "ENTANGLE": 0.38,
+    "EROSION": 0.28,
+    "CONVERGE": 0.42,
+    "CANTILEVER": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "aqua_tide_mix": 0.55,
     "aqua_tide_mode": 2,

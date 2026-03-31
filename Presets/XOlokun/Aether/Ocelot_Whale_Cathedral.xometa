@@ -2,16 +2,41 @@
   "schema_version": 1,
   "name": "Whale Cathedral",
   "mood": "Aether",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Minimal matrix: one route only (Emergent-to-Canopy shimmer). Whale song creatures bloom into the canopy pad. Space over density.",
-  "tags": ["aether", "whale", "space", "minimal", "pad"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "aether",
+    "whale",
+    "space",
+    "minimal",
+    "pad"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.62, "movement": 0.2, "density": 0.3, "space": 0.9, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.9,
+    "aggression": 0.05
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.72
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

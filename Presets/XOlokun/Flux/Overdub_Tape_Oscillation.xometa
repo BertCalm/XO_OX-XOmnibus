@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Tape Oscillation",
   "mood": "Flux",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Delay feedback pushed to the edge of oscillation, with wow modulating the pitch of the feedback loop. At medium velocity the echo is a companion; at full velocity the feedback loop pitches up into a harmonic overtone of the original note.",
-  "tags": ["overdub", "flux", "oscillation", "feedback", "delay", "dub", "edge", "transcendental"],
+  "tags": [
+    "overdub",
+    "flux",
+    "oscillation",
+    "feedback",
+    "delay",
+    "dub",
+    "edge",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"],
+    "scripture": [
+      "Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"
+    ],
     "revelation": "At 0.88 feedback and maximum wow, the delay loop becomes a third oscillator — one that the player cannot entirely control.",
     "diagnosis": "Tape Oscillation lives at the border of system stability. The wow at 0.88 slightly pitch-shifts each feedback loop cycle, creating an ascending/descending spiral over 4-5 echoes. Soft notes are controlled; hard notes climb."
   },
-  "macroLabels": ["FEEDBACK EDGE", "WOW PITCH", "FILTER TRACK", "REVERB GATE"],
+  "macroLabels": [
+    "FEEDBACK EDGE",
+    "WOW PITCH",
+    "FILTER TRACK",
+    "REVERB GATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +84,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

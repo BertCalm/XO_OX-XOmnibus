@@ -4,14 +4,33 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Just Intonation Pad",
   "mood": "Aether",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The most transparent demonstration of the 5-limit attractor: maximum field strength (0.9), very slow attack (0.5s), held in reverb. Every note you play gradually bends toward its 5-limit just ratio. Sustain long enough and you hear equal temperament dissolve into pure mathematics. The pad itself disappears — only the tuning system remains.",
-  "tags": ["obrix", "aether", "sine", "just-intonation", "harmonic-field", "5-limit", "pad", "reverb", "wave4"],
+  "tags": [
+    "obrix",
+    "aether",
+    "sine",
+    "just-intonation",
+    "harmonic-field",
+    "5-limit",
+    "pad",
+    "reverb",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.4,

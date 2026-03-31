@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Hadal Vein",
   "mood": "Submerged",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mineral vein at hadal depth — dark tectonic hum, stiff resonance barely breathing.",
-  "tags": ["hadal", "vein", "mineral", "tectonic", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "hadal",
+    "vein",
+    "mineral",
+    "tectonic",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.52, "movement": 0.1, "density": 0.88, "space": 0.42, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.52,
+    "movement": 0.1,
+    "density": 0.88,
+    "space": 0.42,
+    "aggression": 0.12
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.92,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.42
     }
   },
-  "macros": {"CHARACTER": 0.12, "MOVEMENT": 0.1, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Tentacle Memory",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Snout Form (dual formant) filter at mid-character 0.48 — two bandpass resonances at 1000 Hz and 2000 Hz, creating vowel-adjacent nasal character. Wander curiosity at 0.04 Hz drifts imperceptibly. Extended release. The anemone's texture after Bob has left.",
-  "tags": ["atmosphere", "formant", "vowel", "wander", "oblong", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "formant",
+    "vowel",
+    "wander",
+    "oblong",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.65, "movement": 0.22, "density": 0.5, "space": 0.7, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.22,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.2
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 0,
@@ -56,6 +77,13 @@
       "bob_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.48, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

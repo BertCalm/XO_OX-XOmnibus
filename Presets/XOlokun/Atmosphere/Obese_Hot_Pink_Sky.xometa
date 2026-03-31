@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Hot Pink Sky",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The engine's signature Hot Pink `#FF1493` energy translated into atmospheric texture — high morph, wide stereo, long release creates a vivid, saturated sky-space.",
-  "tags": ["atmosphere", "vivid", "wide", "pink", "saturated"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "vivid",
+    "wide",
+    "pink",
+    "saturated"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.5, "movement": 0.25, "density": 0.6, "space": 0.85, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.85,
+    "aggression": 0.3
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.85,
@@ -46,6 +66,13 @@
       "fat_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

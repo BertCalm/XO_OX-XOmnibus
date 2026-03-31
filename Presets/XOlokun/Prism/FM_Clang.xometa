@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "FM Clang",
   "mood": "Prism",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Genesis YM2612 algorithm 0 — maximum feedback, high multipliers for metallic clang. The aggressive operator bell that defined 16-bit action games and early techno soundtracks.",
-  "tags": ["genesis", "fm", "metallic", "prism", "clang", "YM2612", "aggressive"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "genesis",
+    "fm",
+    "metallic",
+    "prism",
+    "clang",
+    "YM2612",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.5,
@@ -97,7 +116,9 @@
       "ow_macroSpace": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.8,

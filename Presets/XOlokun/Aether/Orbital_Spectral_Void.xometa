@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Spectral Void",
   "mood": "Aether",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Spectral density collapsing into void — high spectral content dissolving into maximum reverb, harmonic richness into absolute space.",
-  "tags": ["spectral", "void", "reverb", "dissolve", "aether"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "spectral",
+    "void",
+    "reverb",
+    "dissolve",
+    "aether"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.32, "warmth": 0.42, "movement": 0.2, "density": 0.45, "space": 0.95, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.42,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.95,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.32,
@@ -46,6 +66,13 @@
       "orb_level": 0.68
     }
   },
-  "macros": {"SPECTRAL": 0.72, "VELOCITY": 0.2, "GROUP": 0.35, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.72,
+    "VELOCITY": 0.2,
+    "GROUP": 0.35,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

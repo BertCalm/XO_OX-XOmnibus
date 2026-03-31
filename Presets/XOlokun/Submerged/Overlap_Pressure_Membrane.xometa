@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pressure Membrane",
+  "name": "Pressure Membrane (Overlap)",
   "mood": "Submerged",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A thin membrane separating two pressure zones \u2014 sound passes through and emerges filtered, frequency-shifted. A trefoil topology simulates the membrane's frequency-selective transmission.",
+  "description": "A thin membrane separating two pressure zones — sound passes through and emerges filtered, frequency-shifted. A trefoil topology simulates the membrane's frequency-selective transmission.",
   "tags": [
     "membrane",
     "pressure",

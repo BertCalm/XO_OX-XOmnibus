@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Pelagic Haze",
   "mood": "Ethereal",
-  "engines": ["Outflow"],
+  "engines": [
+    "Outflow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Mid-depth ocean acoustic — sound travels far but arrives blurred. High damping rolls off highs aggressively, leaving a warm, diffuse tail. Very low anchor makes the dry signal nearly inaudible. The optical warmth is pushed high — every vacuum recovery glows amber.",
-  "tags": ["awakening", "ethereal", "warm", "diffuse", "deep", "hazy", "ambient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "awakening",
+    "ethereal",
+    "warm",
+    "diffuse",
+    "deep",
+    "hazy",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Outflow": {
       "out_anchor": 0.35,
@@ -31,7 +50,9 @@
       "out_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.15,

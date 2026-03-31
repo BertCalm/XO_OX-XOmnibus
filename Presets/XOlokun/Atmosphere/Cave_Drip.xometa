@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Cave stalactite drip \u2014 bell material, soft padded mallet, cave body resonance, slow shimmer like echo delay",
+  "description": "Cave stalactite drip — bell material, soft padded mallet, cave body resonance, slow shimmer like echo delay",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.5,
@@ -29,7 +29,7 @@
     "SPACE": 0.9
   },
   "mood": "Atmosphere",
-  "name": "Cave Drip",
+  "name": "Cave Drip (Oware)",
   "parameters": {
     "Oware": {
       "owr_material": 0.42,

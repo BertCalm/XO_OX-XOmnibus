@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Wavefolder Bass",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Saw through wavefolder — velocity drives fold depth for extreme timbral range. Soft = warm sine. Hard = screaming harmonics. D001 at its best.",
-  "tags": ["obrix", "bass", "wavefolder", "aggressive", "velocity"],
+  "tags": [
+    "obrix",
+    "bass",
+    "wavefolder",
+    "aggressive",
+    "velocity"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
-    "scripture": ["Doctrine D001: Velocity Must Shape Timbre", "Verse 2: The Wavefolder Processor"],
+    "scripture": [
+      "Doctrine D001: Velocity Must Shape Timbre",
+      "Verse 2: The Wavefolder Processor"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger played soft and heard warmth, hard and heard screaming harmonics — D001 fulfilled at maximum expression.",

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ray Charles Chords",
   "mood": "Foundation",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ray Charles block chord comping. What'd I Say era — driven preamp, standard tremolo, warm Atlantic Records studio character. Confident, declarative, warm.",
-  "tags": ["wurlitzer", "ray-charles", "block-chords", "driven", "soul", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "ray-charles",
+    "block-chords",
+    "driven",
+    "soul",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Roadhouse Grit",
   "mood": "Kinetic",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wurlitzer in a roadhouse context. Very high drive, very fast deep tremolo, LFO drive modulation. No deference. The Wurlitzer as a rock instrument.",
-  "tags": ["wurlitzer", "roadhouse", "rock", "driven", "fast-tremolo", "kinetic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "roadhouse",
+    "rock",
+    "driven",
+    "fast-tremolo",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

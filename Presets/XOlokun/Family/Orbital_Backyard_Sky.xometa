@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Backyard Sky",
   "mood": "Family",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lying in the grass watching clouds — open warmth, moderate space, unhurried group movement.",
-  "tags": ["sky", "open", "warm", "clouds", "family"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "sky",
+    "open",
+    "warm",
+    "clouds",
+    "family"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.72, "movement": 0.28, "density": 0.45, "space": 0.68, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.45,
+    "space": 0.68,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.62,
@@ -46,6 +66,13 @@
       "orb_level": 0.76
     }
   },
-  "macros": {"SPECTRAL": 0.5, "VELOCITY": 0.28, "GROUP": 0.38, "SPACE": 0.68},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.5,
+    "VELOCITY": 0.28,
+    "GROUP": 0.38,
+    "SPACE": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

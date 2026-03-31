@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Forest Void",
   "mood": "Aether",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All creatures silent in maximum space — the vast quiet of a rainforest at 3am.",
-  "tags": ["forest", "void", "aether", "silent", "vast", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "forest",
+    "void",
+    "aether",
+    "silent",
+    "vast",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.65, "movement": 0.08, "density": 0.2, "space": 0.98, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.08,
+    "density": 0.2,
+    "space": 0.98,
+    "aggression": 0.04
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.12
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

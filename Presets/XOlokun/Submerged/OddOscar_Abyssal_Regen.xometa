@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Abyssal Regen",
   "mood": "Submerged",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oscar's legendary regeneration — the limb regrowing in total darkness. Filter at 250 Hz. LFO2 at 0.011 Hz, the slowest register: one cycle per 90 seconds, corresponding to the growth rate of new gill filaments. High drift creates organic stereo spread as the new tissue breathes for the first time.",
-  "tags": ["submerged", "abyssal", "regeneration", "dark", "ultra-slow", "lfo", "organic"],
-  "macroLabels": ["BLOOM", "DRIFT", "DEPTH", "SPACE"],
+  "tags": [
+    "submerged",
+    "abyssal",
+    "regeneration",
+    "dark",
+    "ultra-slow",
+    "lfo",
+    "organic"
+  ],
+  "macroLabels": [
+    "BLOOM",
+    "DRIFT",
+    "DEPTH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.08, "warmth": 0.82, "movement": 0.05, "density": 0.78, "space": 0.55, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.82,
+    "movement": 0.05,
+    "density": 0.78,
+    "space": 0.55,
+    "aggression": 0.05
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.08,
@@ -36,6 +58,13 @@
       "morph_lfo2Depth": 0.6
     }
   },
-  "macros": {"BLOOM": 0.08, "DRIFT": 0.72, "DEPTH": 0.35, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BLOOM": 0.08,
+    "DRIFT": 0.72,
+    "DEPTH": 0.35,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

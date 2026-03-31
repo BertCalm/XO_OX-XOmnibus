@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Dense Canopy",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Light blocked by heavy foliage overhead — canopy spectral pad dominant, floor nearly absent. High ecosystem depth: every stratum talks to every other.",
-  "tags": ["foundation", "dense", "canopy", "pad", "lush", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "foundation",
+    "dense",
+    "canopy",
+    "pad",
+    "lush",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.55,
@@ -24,7 +38,9 @@
     "space": 0.65,
     "aggression": 0.05
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

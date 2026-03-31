@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Quantum Noise",
+  "name": "Quantum Noise (Obrix)",
   "mood": "Aether",
   "engines": [
     "Obrix"

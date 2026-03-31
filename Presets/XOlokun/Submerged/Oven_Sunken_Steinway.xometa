@@ -2,20 +2,35 @@
   "schema_version": 1,
   "name": "Sunken Steinway",
   "mood": "Submerged",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A Steinway D cast in iron and sunk to the ocean floor. Maximum density, minimum brightness. The water column filters everything above 1kHz. Only the deep body modes survive. Slow bloom from the thermal shock of cold water meeting hot iron.",
-  "tags": ["piano", "dark", "submerged", "deep", "underwater", "lo-fi", "bloom"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "dark",
+    "submerged",
+    "deep",
+    "underwater",
+    "lo-fi",
+    "bloom"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.10,
+    "brightness": 0.1,
     "warmth": 0.95,
     "movement": 0.15,
-    "density": 0.90,
-    "space": 0.60,
+    "density": 0.9,
+    "space": 0.6,
     "aggression": 0.05
   },
   "parameters": {

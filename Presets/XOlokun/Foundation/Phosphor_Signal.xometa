@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Phosphor Signal",
   "mood": "Foundation",
-  "engines": ["Optic", "Odyssey"],
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPTIC in foundation mode — steady pulse at moderate rate, spectral modulation locked to Odyssey's filter. The comb jelly's slow, rhythmic bioluminescent flash keeping the ecosystem's time.",
-  "tags": ["optic", "pulse", "foundation", "bioluminescent", "spectral", "anchor"],
-  "macroLabels": ["REACTIVITY", "PULSE RATE", "MOD DEPTH", "SPACE"],
+  "tags": [
+    "optic",
+    "pulse",
+    "foundation",
+    "bioluminescent",
+    "spectral",
+    "anchor"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "PULSE RATE",
+    "MOD DEPTH",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.6,
@@ -47,7 +66,12 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "AmpToFilter", "amount": 0.35 }
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.35
+      }
     ]
   },
   "sequencer": null,

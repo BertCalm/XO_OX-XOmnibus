@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Deep Echo Trail",
   "mood": "Aether",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Long feedback delay cascade dissolving into infinite spring reverb — sound suspended in time.",
-  "tags": ["aether", "echo", "trail", "infinite", "delay", "ethereal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "echo",
+    "trail",
+    "infinite",
+    "delay",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.18, "MOVEMENT": 0.25, "COUPLING": 0.78, "SPACE": 0.88},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.35, "warmth": 0.75, "movement": 0.3, "density": 0.28, "space": 0.92, "aggression": 0.06}
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.78,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.28,
+    "space": 0.92,
+    "aggression": 0.06
+  }
 }

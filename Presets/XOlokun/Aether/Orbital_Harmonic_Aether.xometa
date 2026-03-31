@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Harmonic Aether",
   "mood": "Aether",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Orbital harmonics dissolved in aether — maximum sustain, slow group decay, wide.",
-  "tags": ["harmonic", "aether", "wide", "sustained"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "harmonic",
+    "aether",
+    "wide",
+    "sustained"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.15, "density": 0.45, "space": 0.95, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.95,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.3,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.95
     }
   },
-  "macros": {"SPECTRUM": 0.5, "EVOLVE": 0.15, "COUPLING": 0.0, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.5,
+    "EVOLVE": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

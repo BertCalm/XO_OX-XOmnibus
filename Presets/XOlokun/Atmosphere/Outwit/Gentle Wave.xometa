@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 4 (minimal class 2) with LFO sweeping arm levels \u2014 creates a visible wave across all arms.",
+  "description": "Rule 4 (minimal class 2) with LFO sweeping arm levels — creates a visible wave across all arms.",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.35,

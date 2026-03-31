@@ -19,7 +19,7 @@
   "engines": [
     "Odyssey"
   ],
-  "description": "Slow temperature shift of a pad \u2014 warm to cold over minutes.",
+  "description": "Slow temperature shift of a pad — warm to cold over minutes.",
   "tags": [
     "drift",
     "slow",

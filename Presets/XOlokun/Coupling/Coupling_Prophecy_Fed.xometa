@@ -2,51 +2,68 @@
   "schema_version": 1,
   "name": "Prophecy Fed",
   "mood": "Entangled",
-  "engines": ["Oracle", "Organon"],
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORACLE GENDY stochastic audio feeds ORGANON per-voice metabolic FM buffer — the organism eats the prophet's words. No two held notes sound alike because ancient probability feeds living chemistry.",
-  "tags": ["coupled", "stochastic", "organic", "AudioToFM", "AmpToFilter", "evolving", "performance-demo", "essential"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "stochastic",
+    "organic",
+    "AudioToFM",
+    "AmpToFilter",
+    "evolving",
+    "performance-demo",
+    "essential"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.38,
     "warmth": 0.55,
     "movement": 0.78,
-    "density": 0.60,
+    "density": 0.6,
     "space": 0.58,
-    "aggression": 0.30
+    "aggression": 0.3
   },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 8,
       "oracle_probability": 0.55,
       "oracle_distribution": 0,
-      "oracle_filterCutoff": 0.60,
-      "oracle_filterReso": 0.20,
+      "oracle_filterCutoff": 0.6,
+      "oracle_filterReso": 0.2,
       "oracle_ampAttack": 0.02,
-      "oracle_ampDecay": 0.50,
-      "oracle_ampSustain": 0.70,
-      "oracle_ampRelease": 1.20,
-      "oracle_outputLevel": 0.70,
+      "oracle_ampDecay": 0.5,
+      "oracle_ampSustain": 0.7,
+      "oracle_ampRelease": 1.2,
+      "oracle_outputLevel": 0.7,
       "oracle_lfoRate": 0.12,
       "oracle_lfoDepth": 0.28,
-      "oracle_envDepth": 0.50,
+      "oracle_envDepth": 0.5,
       "oracle_reverbMix": 0.22
     },
     "Organon": {
       "organon_metabolicRate": 2.5,
       "organon_catalystDrive": 0.55,
-      "organon_enzymeSelectivity": 0.50,
+      "organon_enzymeSelectivity": 0.5,
       "organon_dampingCoeff": 0.12,
-      "organon_isotopeBalance": 0.50,
+      "organon_isotopeBalance": 0.5,
       "organon_filterCutoff": 0.55,
       "organon_filterReso": 0.25,
       "organon_ampAttack": 0.05,
-      "organon_ampDecay": 0.70,
+      "organon_ampDecay": 0.7,
       "organon_ampSustain": 0.65,
-      "organon_ampRelease": 1.80,
+      "organon_ampRelease": 1.8,
       "organon_outputLevel": 0.72,
       "organon_reverbMix": 0.32,
       "organon_signalFlux": 0.45,
@@ -59,13 +76,13 @@
         "engineA": "Oracle",
         "engineB": "Organon",
         "type": "AudioToFM",
-        "amount": 0.50
+        "amount": 0.5
       },
       {
         "engineA": "Oracle",
         "engineB": "Organon",
         "type": "AmpToFilter",
-        "amount": 0.30
+        "amount": 0.3
       },
       {
         "engineA": "Oracle",
@@ -81,7 +98,7 @@
         "slot": 1,
         "active": true,
         "type": 4,
-        "amount": 0.50,
+        "amount": 0.5,
         "sourceSlot": 0,
         "targetSlot": 1
       },
@@ -89,7 +106,7 @@
         "slot": 2,
         "active": true,
         "type": 0,
-        "amount": 0.30,
+        "amount": 0.3,
         "sourceSlot": 0,
         "targetSlot": 1
       }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Eight Arms Thinking",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two-thirds of octopus neurons live in the arms — this preset makes that audible. Each arm LFO is an independent thought running at its own prime-ratio rate. Foundational: warm tone underneath, alien cognition on top.",
-  "tags": ["octopus", "arms", "intelligence", "foundation", "pad", "alien"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "arms",
+    "intelligence",
+    "foundation",
+    "pad",
+    "alien"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.48,

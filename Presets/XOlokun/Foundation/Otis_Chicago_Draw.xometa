@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Hard Chicago blues harp — deep draw bends that hit the pocket, growling upper harmonics at high velocity, breath noise front and center. Sonny Boy Williamson in a back-alley bar.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.2,
     "warmth": 0.65
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Chicago Draw",
   "parameters": {
@@ -55,7 +64,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["harmonica", "blues", "chicago", "draw", "raw", "grit"],
+  "tags": [
+    "harmonica",
+    "blues",
+    "chicago",
+    "draw",
+    "raw",
+    "grit"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

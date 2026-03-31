@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Crystal Network",
   "mood": "Atmosphere",
-  "engines": ["Overtone"],
+  "engines": [
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Continued-fraction partials run through Voronoi Shatter at high crystallize (0.82) and small grain size (12ms) — the JI-adjacent harmonic series gets broken into geometric cells and re-emitted as a faceted resonant texture. The tensegrity at 0.65 keeps the structure from collapsing into noise.",
-  "tags": ["atmosphere", "spectral", "voronoi", "granular", "crystal", "mathematical", "fx_chain:Mathematical", "math-fx-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "spectral",
+    "voronoi",
+    "granular",
+    "crystal",
+    "mathematical",
+    "fx_chain:Mathematical",
+    "math-fx-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.35, "movement": 0.58, "density": 0.68, "space": 0.55, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.35,
+    "movement": 0.58,
+    "density": 0.68,
+    "space": 0.55,
+    "aggression": 0.35
+  },
   "parameters": {
     "Overtone": {
       "over_constant": 1,
@@ -41,8 +64,15 @@
       "over_macroSpace": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.58, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "mfx_ecMix": 0.0,
     "mfx_vsCrystallize": 0.82,

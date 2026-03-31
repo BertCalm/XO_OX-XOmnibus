@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Iron Voice",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Iron-toned lead voice — heavy mid presence, mono delivery, metallic warmth.",
-  "tags": ["iron", "voice", "lead", "metallic"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "iron",
+    "voice",
+    "lead",
+    "metallic"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.65, "movement": 0.2, "density": 0.6, "space": 0.3, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.3,
+    "aggression": 0.35
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.42,
@@ -46,6 +65,13 @@
       "orb_level": 0.78
     }
   },
-  "macros": {"SPECTRAL": 0.42, "VELOCITY": 0.2, "GROUP": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.42,
+    "VELOCITY": 0.2,
+    "GROUP": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

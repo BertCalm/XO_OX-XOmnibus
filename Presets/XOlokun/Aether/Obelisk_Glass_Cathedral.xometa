@@ -2,47 +2,62 @@
   "schema_version": 1,
   "name": "Glass Cathedral",
   "mood": "Aether",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass preparation at very high depth, eleven-second decay, minimal damping, warmer stoneTone. The stone that rings forever because glass has reduced its radiation loss. An empty cathedral with marble columns, glass laid across every string, everything singing at once.",
-  "tags": ["stone", "prepared", "glass", "aether", "sustain", "cathedral", "mineral", "eternal"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "prepared",
+    "glass",
+    "aether",
+    "sustain",
+    "cathedral",
+    "mineral",
+    "eternal"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
-    "warmth": 0.40,
+    "warmth": 0.4,
     "movement": 0.15,
     "density": 0.45,
-    "space": 0.90,
+    "space": 0.9,
     "aggression": 0.05
   },
   "parameters": {
     "Obelisk": {
-      "obel_density": 0.80,
-      "obel_stoneTone": 0.60,
+      "obel_density": 0.8,
+      "obel_stoneTone": 0.6,
       "obel_brightness": 7000.0,
       "obel_damping": 0.04,
       "obel_decay": 11.0,
-      "obel_hfNoise": 0.10,
+      "obel_hfNoise": 0.1,
       "obel_hardness": 0.28,
       "obel_prepType": 3,
-      "obel_prepPosition": 0.50,
+      "obel_prepPosition": 0.5,
       "obel_prepDepth": 0.88,
-      "obel_filterEnvAmount": 0.20,
+      "obel_filterEnvAmount": 0.2,
       "obel_thermalDrift": 0.15,
       "obel_bendRange": 2,
       "obel_lfo1Rate": 0.03,
       "obel_lfo1Depth": 0.04,
       "obel_lfo1Shape": 0,
-      "obel_lfo2Rate": 0.50,
+      "obel_lfo2Rate": 0.5,
       "obel_lfo2Depth": 0.0,
       "obel_lfo2Shape": 0
     }
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

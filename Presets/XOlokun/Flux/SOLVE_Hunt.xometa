@@ -5,7 +5,7 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "macroSolve=0.7 with targetMovement=0.95 (biases stepRate +22.4 Hz above base) and targetAggression=0.8 (biases armLevelScale +0.12). The CA ecology is being hunted toward a fast, aggressive, moving character. M1 SOLVE at 0.7 in performance: bring to 0 to stop the hunt, push to 1.0 for maximum hunt intensity. LFO1 (saw at 0.35 Hz) on chromatophore adds a second rhythm.",

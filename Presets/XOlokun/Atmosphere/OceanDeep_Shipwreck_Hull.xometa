@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 4: Allpass Diffusion Hull Modes — Industrial Metallic Bass", "Canon 3: The Wreck Body Mode"],
+    "scripture": [
+      "Verse 4: Allpass Diffusion Hull Modes — Industrial Metallic Bass",
+      "Canon 3: The Wreck Body Mode"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Bone felt the metallic hull resonance as a physical weight — The Eye confirmed the wreck mode's allpass diffusion creates corroded industrial character.",

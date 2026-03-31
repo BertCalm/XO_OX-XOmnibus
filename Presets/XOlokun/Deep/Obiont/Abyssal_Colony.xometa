@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Abyssal Colony",
   "mood": "Deep",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Rule 60 — XOR-based, creates vertical stripes and nested triangles. Very slow evolution (0.3 Hz) makes the waveform nearly static — a living fossil. 2D mode with very high density seeds a tightly packed colony. Massive low filter, sub-octave feel. Dark and slow.",
-  "tags": ["awakening", "dark", "sub", "rule-60", "deep", "slow", "2d"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "dark",
+    "sub",
+    "rule-60",
+    "deep",
+    "slow",
+    "2d"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 1,
@@ -50,7 +69,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.08,

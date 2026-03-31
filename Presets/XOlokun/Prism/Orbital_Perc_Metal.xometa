@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Perc Metal",
   "mood": "Prism",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Percussive metal — profile A=percussive, high inharmonicity, tight fast group decays.",
-  "tags": ["metal", "percussive", "inharmonic", "tight"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "metal",
+    "percussive",
+    "inharmonic",
+    "tight"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.2, "movement": 0.4, "density": 0.5, "space": 0.35, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.2,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.6
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.5,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.35
     }
   },
-  "macros": {"SPECTRUM": 0.7, "EVOLVE": 0.4, "COUPLING": 0.0, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.7,
+    "EVOLVE": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

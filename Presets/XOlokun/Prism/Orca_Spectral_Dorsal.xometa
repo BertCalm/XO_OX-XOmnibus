@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Spectral Dorsal",
   "mood": "Prism",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Split at 2500 Hz, 6-bit crush — the countershading division aligns with the natural formant split. Below 2500 Hz (clean belly): F1, F2, partial F3 formant resonances unaffected. Above 2500 Hz (crushed dorsal): F4, F5 presence frequencies and upper wavetable partials bitcrushed to 6-bit. Clean mid-low body + harsh crystalline upper register.",
-  "tags": ["countershading", "2500hz", "prism", "spectral", "formant-aligned", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "countershading",
+    "2500hz",
+    "prism",
+    "spectral",
+    "formant-aligned",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

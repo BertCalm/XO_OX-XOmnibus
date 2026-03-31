@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Morning Tank",
   "mood": "Atmosphere",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The aquarium at morning light — school settling into a new day, gentle shimmer.",
-  "tags": ["morning", "tank", "new", "gentle"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "morning",
+    "tank",
+    "new",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.74, "warmth": 0.38, "movement": 0.38, "density": 0.58, "space": 0.75, "aggression": 0.1},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.3, "snap_decay": 0.78, "snap_detune": 0.25, "snap_filterCutoff": 8500.0, "snap_filterReso": 0.42, "snap_filterEnvDepth": 0.3, "snap_unison": 5, "snap_sweepDirection": 0, "snap_pitchLock": 0.5, "snap_polyphony": 8, "snap_level": 0.62, "snap_macroDart": 0.22, "snap_macroDepth": 0.62, "snap_macroSchool": 0.65, "snap_macroSurface": 0.68}
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.38,
+    "movement": 0.38,
+    "density": 0.58,
+    "space": 0.75,
+    "aggression": 0.1
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.3,
+      "snap_decay": 0.78,
+      "snap_detune": 0.25,
+      "snap_filterCutoff": 8500.0,
+      "snap_filterReso": 0.42,
+      "snap_filterEnvDepth": 0.3,
+      "snap_unison": 5,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.5,
+      "snap_polyphony": 8,
+      "snap_level": 0.62,
+      "snap_macroDart": 0.22,
+      "snap_macroDepth": 0.62,
+      "snap_macroSchool": 0.65,
+      "snap_macroSurface": 0.68
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

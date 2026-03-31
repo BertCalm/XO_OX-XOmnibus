@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Sympathetic Drone",
   "mood": "Foundation",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bowed metal body with high sympathetic resonance, leans into adjacent harmonics.",
-  "tags": ["foundation", "drone", "sympathetic", "resonant"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "foundation",
+    "drone",
+    "sympathetic",
+    "resonant"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.3,
     "MEADOW": 0.55
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

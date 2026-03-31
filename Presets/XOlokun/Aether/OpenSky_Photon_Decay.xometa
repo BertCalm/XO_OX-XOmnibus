@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Photon Decay",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Falling light — the opposite of Infinite Rise. Attack at 0.001 seconds (immediate), release at 5.618 seconds (golden ratio extended). PitchEnvAmount at 0.3 with a 0.25-second decay creates a slight downward pitch bend at each note's birth — photons losing energy as they travel. The note arrives immediately, drops slightly in pitch, then fades over five and a half seconds. Each keypress is a flash of light losing altitude.",
-  "tags": ["opensky", "photon", "decay", "falling", "transient", "aether", "guru-bin", "light", "release"],
+  "tags": [
+    "opensky",
+    "photon",
+    "decay",
+    "falling",
+    "transient",
+    "aether",
+    "guru-bin",
+    "light",
+    "release"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "Photons lose energy as they travel through the universe. The color shifts toward red. The frequency drops. Photon Decay translates this physics to synthesis: each note begins at maximum brightness (immediate attack, full shimmer) and then falls — pitch drops slightly, then releases over 5.618 seconds as the light cools and disperses. The Guru played a chord and watched it die beautifully for nearly six seconds.",
     "diagnosis": "Photon Decay is the transient study — attack=0.001 (immediate) contrasted against release=5.618 (very long). PitchEnvAmount=0.3 with pitchEnvDecay=0.25 creates a subtle but audible downward pitch curl at each note's birth. Shimmer at 0.5 provides tail without obscuring the pitch mechanic. The result is percussive onset with extended, falling decay."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.25
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

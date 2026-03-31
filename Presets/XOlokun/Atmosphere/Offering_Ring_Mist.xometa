@@ -14,13 +14,20 @@
     "space": 0.8,
     "warmth": 0.3
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Atmosphere",
   "name": "Ring Mist",
   "parameters": {
@@ -43,8 +50,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["ring mod", "metallic", "inharmonic", "ambient", "bell"],
+  "tags": [
+    "ring mod",
+    "metallic",
+    "inharmonic",
+    "ambient",
+    "bell"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.72, "M2": 0.8, "M3": 0.8, "M4": 0.15}
+  "macros": {
+    "M1": 0.72,
+    "M2": 0.8,
+    "M3": 0.8,
+    "M4": 0.15
+  }
 }

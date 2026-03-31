@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Notch Scanner",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Voice 1 in notch filter mode, Voice 2 in bandpass. Same cutoff frequencies but opposite filter behaviors — what Voice 1 removes, Voice 2 emphasizes. HAMMER at 0.0 (neutral) so the two filtering strategies coexist without interaction. LFO1 sweeps Voice 1's notch cutoff at 0.4 Hz (triangle); LFO2 sweeps Voice 2's bandpass cutoff at 0.63 Hz (coprime). The scanning never repeats. Both voices on Wavetable for complex source material.",
-  "tags": ["filter", "scanning", "notch", "bandpass", "evolving", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "filter",
+    "scanning",
+    "notch",
+    "bandpass",
+    "evolving",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.12
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

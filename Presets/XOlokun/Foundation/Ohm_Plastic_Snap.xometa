@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Plastic Snap",
   "mood": "Foundation",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Snappy plastic-body struck tone, bright transient with short decay and punch.",
-  "tags": ["foundation", "percussive", "snap", "bright"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "foundation",
+    "percussive",
+    "snap",
+    "bright"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.45,
     "MEADOW": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

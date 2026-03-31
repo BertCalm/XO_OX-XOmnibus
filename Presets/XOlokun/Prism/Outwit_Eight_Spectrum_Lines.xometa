@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 90 with full arm spread \u2014 each arm emits a different spectral component like emission lines in starlight. Run through a prism and every arm becomes a color.",
+  "description": "Rule 90 with full arm spread — each arm emits a different spectral component like emission lines in starlight. Run through a prism and every arm becomes a color.",
   "tags": [
     "prism",
     "spectral",

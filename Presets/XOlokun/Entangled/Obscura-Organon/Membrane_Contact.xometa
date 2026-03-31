@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Membrane Contact",
   "mood": "Entangled",
-  "engines": ["Obscura", "Organon"],
+  "engines": [
+    "Obscura",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Obscura's physical string resonance barely penetrates Organon's metabolic membrane — a whispered mechanical vibration arriving at the boundary of a living system, not yet absorbed, just felt.",
-  "tags": ["coupling", "Obscura-pair", "physical-model", "organic", "whisper", "subtle"],
-  "macroLabels": ["MATERIAL", "METABOLISM", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Obscura-pair",
+    "physical-model",
+    "organic",
+    "whisper",
+    "subtle"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",

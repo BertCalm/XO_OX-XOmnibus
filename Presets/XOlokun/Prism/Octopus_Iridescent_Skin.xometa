@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Iridescent Skin",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The iridophores that give octopus skin its shimmering quality — structural color through light interference. High wavetable scan rate + active chromatophore morph create a shimmering, multi-colored pad surface.",
-  "tags": ["octopus", "prism", "iridescent", "shimmer", "wavetable", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "iridescent",
+    "shimmer",
+    "wavetable",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.92,

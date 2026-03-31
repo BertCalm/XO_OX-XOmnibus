@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Living Stone",
   "mood": "Flux",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rubber preparation with LFO2 modulating preparation depth. The stone alternates between prepared and unprepared — modes appear and disappear rhythmically as the rubber virtually lifts and presses. A stone that breathes. The LFO triangle wave creates a periodic unmasking of hidden partials.",
-  "tags": ["prepared", "rubber", "lfo", "breathing", "flux", "animated", "morphing"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "prepared",
+    "rubber",
+    "lfo",
+    "breathing",
+    "flux",
+    "animated",
+    "morphing"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.45,

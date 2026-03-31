@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Spark Protocol",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The atmospheric, calmer version of the FLASH recipe — electrical phenomena observed from a distance. Noise src1 through BP (proc1=BP, 1500 Hz, reso=0.68) — the resonance is present but not threatening. gestureMode=3, flashTrigger=0.65 (lower threshold, gentler trigger). proc2=LP (5500 Hz) keeps considerable brightness — this is a high-altitude electrical atmosphere, thin air. aggression=0.38 — present but meditative. Reverb dominant (fx1=Reverb, 0.62 mix, 0.82 param) creates enormous space around the sparks. LFO->FilterCutoff (0.18 Hz, slow atmospheric sweep), Env->Volume (controlled surge), Velocity->FilterReso (responsive but gentle), Aftertouch->FXMix. MOVEMENT macro 0.32, CHARACTER 0.35.",
-  "tags": ["obrix", "atmosphere", "noise", "bp-filter", "flash", "spark", "protocol", "calm"],
+  "tags": [
+    "obrix",
+    "atmosphere",
+    "noise",
+    "bp-filter",
+    "flash",
+    "spark",
+    "protocol",
+    "calm"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.62,

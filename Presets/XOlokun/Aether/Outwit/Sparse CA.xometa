@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 136 (stable) alternating with rule 0 (dead). Half the arms are silent \u2014 extreme sparsity.",
+  "description": "Rule 136 (stable) alternating with rule 0 (dead). Half the arms are silent — extreme sparsity.",
   "dna": {
     "aggression": 0.02,
     "brightness": 0.2,

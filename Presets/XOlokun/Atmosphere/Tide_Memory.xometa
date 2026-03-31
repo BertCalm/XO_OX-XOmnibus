@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Tide Memory",
+  "name": "Tide Memory (Opera)",
   "mood": "Atmosphere",
   "engines": [
     "Opera"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "LFO1 on drama creates a slow tidal oscillation of coupling strength \u2014 partials wash toward synchrony, then recede into chaos, then return. The cycle is 50 seconds, roughly the period of ocean swell. Each wave leaves harmonic deposits: clusters that formed during high-sync persist briefly into the recession.",
+  "description": "LFO1 on drama creates a slow tidal oscillation of coupling strength — partials wash toward synchrony, then recede into chaos, then return. The cycle is 50 seconds, roughly the period of ocean swell. Each wave leaves harmonic deposits: clusters that formed during high-sync persist briefly into the recession.",
   "tags": [
     "tidal",
     "oscillating",

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Deep Stone",
   "mood": "Deep",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum density, minimum brightness. The monolith buried nine-tenths underground — only the top visible. What you hear is the resonance of millions of tons of compressed stone, filtered through earth. Chain preparation at half depth: something buzzing in the dark below.",
-  "tags": ["stone", "deep", "dark", "chain", "dense", "resonant", "mineral", "underground"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "deep",
+    "dark",
+    "chain",
+    "dense",
+    "resonant",
+    "mineral",
+    "underground"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +61,5 @@
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

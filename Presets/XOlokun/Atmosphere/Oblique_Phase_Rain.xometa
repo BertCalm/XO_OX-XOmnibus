@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Phase Rain",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phaser cycling like rainfall — slow sweep rate with high depth, bounces spaced like drops, atmospheric shimmer.",
-  "tags": ["phaser", "rain", "sweep", "atmospheric", "atmosphere"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "phaser",
+    "rain",
+    "sweep",
+    "atmospheric",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.42, "density": 0.48, "space": 0.78, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.42,
+    "density": 0.48,
+    "space": 0.78,
+    "aggression": 0.12
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.58,
@@ -41,6 +61,13 @@
       "oblq_level": 0.73
     }
   },
-  "macros": {"BOUNCE": 0.38, "COLOR": 0.58, "FOLD": 0.2, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.38,
+    "COLOR": 0.58,
+    "FOLD": 0.2,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

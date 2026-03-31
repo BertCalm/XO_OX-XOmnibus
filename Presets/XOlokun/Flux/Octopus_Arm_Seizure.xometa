@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Arm Seizure",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All eight arms firing at maximum rate and depth, each arm trying to take the sound somewhere different simultaneously. A controlled chaos — the alien nervous system in total arousal. Ink barely suppressed.",
-  "tags": ["octopus", "flux", "arms", "chaos", "extreme", "alien", "seizure"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "flux",
+    "arms",
+    "chaos",
+    "extreme",
+    "alien",
+    "seizure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.78,

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Gold Dissolution",
   "mood": "Aether",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Abyssal Gold accent color made audible — the warmth of the engine's identity dissolves into a vast, shimmering spatial field.",
-  "tags": ["aether", "ethereal", "gold", "dissolution", "spatial", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "ethereal",
+    "gold",
+    "dissolution",
+    "spatial",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.22, "COUPLING": 0.55, "SPACE": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.55,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

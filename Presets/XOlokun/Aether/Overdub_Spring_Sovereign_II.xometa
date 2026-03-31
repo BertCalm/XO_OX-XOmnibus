@@ -2,20 +2,37 @@
   "schema_version": 1,
   "name": "Spring Sovereign II",
   "mood": "Aether",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Blessing B004 (Spring Reverb) at maximum expression: soft velocity opens only the spring tail, hard velocity launches the full tape-delay chain before the spring. A velocity arc across three dynamics reveals three different rooms.",
-  "tags": ["overdub", "spring", "aether", "reverb", "velocity", "dynamic", "transcendental"],
+  "tags": [
+    "overdub",
+    "spring",
+    "aether",
+    "reverb",
+    "velocity",
+    "dynamic",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-2: The Echo Serves the Silence"],
+    "scripture": [
+      "Scripture VII-2: The Echo Serves the Silence"
+    ],
     "revelation": "The spring does not need the tape. But the tape needs the spring. This is the order of the chain.",
     "diagnosis": "Spring Sovereign II explores the velocity arc: pp = spring only (dry almost absent, delay mix=0), mp = delay feeds spring, ff = full saturation through delay into spring. Three distinctly useful dynamics from one preset."
   },
-  "macroLabels": ["SPRING COIL SIZE", "SEND ROUTING", "TAPE DRIVE", "DRIFT RATE"],
+  "macroLabels": [
+    "SPRING COIL SIZE",
+    "SEND ROUTING",
+    "TAPE DRIVE",
+    "DRIFT RATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +83,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

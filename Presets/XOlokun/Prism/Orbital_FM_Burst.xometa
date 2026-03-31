@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "FM Burst",
   "mood": "Prism",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High FM index harmonic burst — percussive group cascades with spectral shimmer.",
-  "tags": ["FM", "burst", "percussive", "bright"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "FM",
+    "burst",
+    "percussive",
+    "bright"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.8, "warmth": 0.3, "movement": 0.5, "density": 0.55, "space": 0.4, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.3,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.55
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.4,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.4
     }
   },
-  "macros": {"SPECTRUM": 0.8, "EVOLVE": 0.5, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.8,
+    "EVOLVE": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

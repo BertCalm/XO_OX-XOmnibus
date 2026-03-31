@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Four On Floor (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "The archetype. Taiko delivers a punishing four-on-the-floor kick column. Beatbox snare marks beats 2 and 4. Tight closed hi-hats run the 16th-note grid. Open hi-hat on the and-of-4 creates the driving upbeat push. GATHER is your build macro — sweep it up to stack the full ensemble before the drop.",
-  "tags": ["edm", "four-on-floor", "taiko", "beatbox", "build-drop", "club"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "edm",
+    "four-on-floor",
+    "taiko",
+    "beatbox",
+    "build-drop",
+    "club"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 128,
   "dna": {

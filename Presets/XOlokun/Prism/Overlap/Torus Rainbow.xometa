@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "T(5,2) with bioluminescence 0.55 \u2014 five-way harmonic lock with onset color bursts.",
+  "description": "T(5,2) with bioluminescence 0.55 — five-way harmonic lock with onset color bursts.",
   "dna": {
     "aggression": 0.12,
     "brightness": 0.8,

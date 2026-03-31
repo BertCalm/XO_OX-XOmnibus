@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "Cell Division",
   "mood": "Kinetic",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Rule 90 at maximum evolution rate (50 Hz). The Sierpinski triangle fractal evolves at audio-rate speed — the pattern changes faster than the ear can track individual states, creating a tightly gated rhythmic buzz. Short envelope, low sustain. Velocity gates the filter hard for percussive attack.",
-  "tags": ["awakening", "rhythmic", "percussive", "rule-90", "fast", "kinetic"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "rhythmic",
+    "percussive",
+    "rule-90",
+    "fast",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +68,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.75,

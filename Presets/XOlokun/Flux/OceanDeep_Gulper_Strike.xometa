@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: Pressure Is the Synthesis", "Canon 1: The Tape Ceiling — Saturation at 0.03-0.08"],
+    "scripture": [
+      "Verse: Pressure Is the Synthesis",
+      "Canon 1: The Tape Ceiling — Saturation at 0.03-0.08"
+    ],
     "revelation": "Pressura spoke: ampAtk at 0.001 with pressureAmt at 0.9 creates an inverted dynamic — the louder the initial transient, the harder it gets compressed. The result is a thump that hits chest then immediately retreats. The gulper's jaw unhinges and snaps shut in 300 milliseconds.",
     "god": "Pressura",
     "flock_note": "The Tongue found that this preset responds to velocity like a drum machine: vel 40 = gentle tap, vel 100 = solid hit, vel 127 = the room shakes. The Bone confirmed: at 3% CPU this is the cheapest 808-class sound in the fleet.",

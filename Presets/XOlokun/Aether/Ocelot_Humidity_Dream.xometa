@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Humidity Dream",
   "mood": "Aether",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum humidity absorbing all sound — the forest breathing so slowly it sounds like silence.",
-  "tags": ["humidity", "dream", "aether", "absorption", "breath", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "humidity",
+    "dream",
+    "aether",
+    "absorption",
+    "breath",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.72, "movement": 0.09, "density": 0.22, "space": 0.96, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.09,
+    "density": 0.22,
+    "space": 0.96,
+    "aggression": 0.04
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.12
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

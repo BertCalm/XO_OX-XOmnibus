@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Velocity Prism Stab",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A D001 showcase — high filterEnvDepth (0.75) means velocity dramatically reshapes the timbre. Soft velocity: dark, warm, minimal prism activity. Hard velocity: the filter bursts open to 12kHz + wavefold grit + spectral fragments fly. A stab preset for demonstrating velocity-to-timbre expressiveness. The prism fish jumping at different heights.",
-  "tags": ["stab", "velocity-sensitive", "expressive", "dynamic", "filter"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "stab",
+    "velocity-sensitive",
+    "expressive",
+    "dynamic",
+    "filter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -62,6 +75,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

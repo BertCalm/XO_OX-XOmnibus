@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Arp Ether",
   "mood": "Aether",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast arpeggio in the aether register with high morph and wide stereo — fat character translated to upper-register arpeggiated figures that drift through the ethereal space.",
-  "tags": ["aether", "arpeggio", "fast", "upper", "drifting"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "arpeggio",
+    "fast",
+    "upper",
+    "drifting"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 120,
-  "dna": {"brightness": 0.7, "warmth": 0.3, "movement": 0.85, "density": 0.4, "space": 0.75, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.85,
+    "density": 0.4,
+    "space": 0.75,
+    "aggression": 0.2
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.75,
@@ -46,6 +66,13 @@
       "fat_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

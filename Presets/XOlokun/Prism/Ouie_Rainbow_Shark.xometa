@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Rainbow Shark",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hammer sweeping across high-bright filters, iridescent colors on the cephalofoil.",
-  "tags": ["prism", "iridescent", "sweeping", "bright"],
-  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "tags": [
+    "prism",
+    "iridescent",
+    "sweeping",
+    "bright"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,5 +60,7 @@
     "AMPULLAE": 0.7,
     "CURRENT": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

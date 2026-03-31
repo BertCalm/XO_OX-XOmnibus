@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Designed for OVERLAP knot coupling engine. Both engines use knot topology \u2014 when coupled, the knot matrices interact to create meta-topological timbres.",
+  "description": "Designed for OVERLAP knot coupling engine. Both engines use knot topology — when coupled, the knot matrices interact to create meta-topological timbres.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,

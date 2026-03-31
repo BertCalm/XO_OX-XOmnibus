@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mojo Fog",
   "mood": "Aether",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mojo at the mid-point creates a soft undefinable character — neither warm nor cold, drifting like morning fog over water.",
-  "tags": ["fog", "ambiguous", "mojo", "drift", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fog",
+    "ambiguous",
+    "mojo",
+    "drift",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.5, "movement": 0.08, "density": 0.78, "space": 0.82, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.5,
+    "movement": 0.08,
+    "density": 0.78,
+    "space": 0.82,
+    "aggression": 0.1
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.62,
@@ -41,6 +61,13 @@
       "fat_level": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.48, "MOVEMENT": 0.08, "COUPLING": 0.0, "SPACE": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

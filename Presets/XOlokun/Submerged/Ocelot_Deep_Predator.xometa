@@ -2,16 +2,41 @@
   "schema_version": 1,
   "name": "Deep Predator",
   "mood": "Submerged",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ocelot beneath the thermocline — winter biome, dark floor, heavy humidity compression. Creature calls at depth: wolf howl at minimum rate.",
-  "tags": ["submerged", "deep", "predator", "dark", "winter"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "submerged",
+    "deep",
+    "predator",
+    "dark",
+    "winter"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.48, "movement": 0.18, "density": 0.62, "space": 0.72, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.48,
+    "movement": 0.18,
+    "density": 0.62,
+    "space": 0.72,
+    "aggression": 0.45
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.0
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -14,13 +14,20 @@
     "space": 0.45,
     "warmth": 0.85
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Submerged",
   "name": "Bay Mire",
   "parameters": {
@@ -44,8 +51,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["bay-area", "lo-fi", "10-bit", "fog", "submerged", "dust"],
+  "tags": [
+    "bay-area",
+    "lo-fi",
+    "10-bit",
+    "fog",
+    "submerged",
+    "dust"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.3, "M2": 0.6, "M3": 0.0, "M4": 0.85}
+  "macros": {
+    "M1": 0.3,
+    "M2": 0.6,
+    "M3": 0.0,
+    "M4": 0.85
+  }
 }

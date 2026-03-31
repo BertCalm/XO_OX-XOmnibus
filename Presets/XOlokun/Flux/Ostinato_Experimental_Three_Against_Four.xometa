@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Three Against Four (Ostinato)",
   "mood": "Flux",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Classic 3:4 polyrhythm expanded to 8 seats — seats 1-4 in groups of 3 pulses, seats 5-8 in groups of 4 pulses. The classic 12-pulse hemiola cycle creates perpetual rhythmic ambiguity. West African clave wisdom encoded in modal membrane physics.",
-  "tags": ["experimental", "3-against-4", "hemiola", "polyrhythm", "west-african"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "experimental",
+    "3-against-4",
+    "hemiola",
+    "polyrhythm",
+    "west-african"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 96.0,
   "dna": {

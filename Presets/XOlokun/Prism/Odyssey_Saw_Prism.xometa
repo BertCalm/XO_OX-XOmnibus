@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Saw Prism",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sawtooth through prism — full harmonic series scattered, bright high resonance.",
-  "tags": ["saw", "prism", "bright", "full"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "saw",
+    "prism",
+    "bright",
+    "full"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.38, "movement": 0.45, "density": 0.55, "space": 0.52, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.38,
+    "movement": 0.45,
+    "density": 0.55,
+    "space": 0.52,
+    "aggression": 0.4
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 2,
@@ -54,6 +73,13 @@
       "drift_level": 0.74
     }
   },
-  "macros": {"CHARACTER": 0.78, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

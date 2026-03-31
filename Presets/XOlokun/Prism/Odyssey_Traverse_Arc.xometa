@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Traverse Arc",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Non-integer FM ratio (2.37) + slow drift — the drift moves the modulator around a non-integer ratio, creating a continuous sweep through inharmonic territory. Prism is the right mood because the spectral color changes with every position in the arc.",
-  "tags": ["odyssey", "fm", "non-integer", "drift", "prism", "spectral", "traverse", "transcendental"],
+  "tags": [
+    "odyssey",
+    "fm",
+    "non-integer",
+    "drift",
+    "prism",
+    "spectral",
+    "traverse",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-8: Non-Integer FM Ratios Are Colors Without Names"],
+    "scripture": [
+      "Scripture VII-8: Non-Integer FM Ratios Are Colors Without Names"
+    ],
     "revelation": "FM ratio 2.37 produces partials that do not align with the harmonic series. When drift moves the modulator away from 2.37, these partials sweep through the inharmonic space — the prism of non-integer synthesis.",
     "diagnosis": "Traverse Arc demonstrates the negative-space behavior uniquely available to ODYSSEY's FM mode: non-integer modulation ratios that drift continuously. The drift is not random variation here; it is a systematic traverse through the non-integer harmonic space."
   },
-  "macroLabels": ["FM NON-INTEGER", "DRIFT ARC WIDTH", "SPECTRAL TILT", "SHIMMER PRISM"],
+  "macroLabels": [
+    "FM NON-INTEGER",
+    "DRIFT ARC WIDTH",
+    "SPECTRAL TILT",
+    "SHIMMER PRISM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

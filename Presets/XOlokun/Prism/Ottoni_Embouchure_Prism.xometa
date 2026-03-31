@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Embouchure Prism",
   "mood": "Prism",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum embouchure macro reveals the full timbral spectrum of each lip shape and tension.",
-  "tags": ["brass", "embouchure", "timbral", "spectrum", "prismatic"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "embouchure",
+    "timbral",
+    "spectrum",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.62, "movement": 0.45, "density": 0.48, "space": 0.65, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.62,
+    "movement": 0.45,
+    "density": 0.48,
+    "space": 0.65,
+    "aggression": 0.3
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.1
     }
   },
-  "macros": {"GROW": 0.55, "EMBOUCHURE": 0.92, "LAKE": 0.55, "FOREIGN": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.55,
+    "EMBOUCHURE": 0.92,
+    "LAKE": 0.55,
+    "FOREIGN": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

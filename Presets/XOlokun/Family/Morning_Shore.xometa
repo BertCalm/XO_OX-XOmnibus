@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "The shoreline at first light \u2014 seaState minimal, swell period long and slow, shoreBlend tilted toward sand warmth. Hull dampening wraps the sound in safety. No foam, no brine, no creatures. B012 ShoreSystem at its most nurturing: the beach before the world arrives.",
+  "description": "The shoreline at first light — seaState minimal, swell period long and slow, shoreBlend tilted toward sand warmth. Hull dampening wraps the sound in safety. No foam, no brine, no creatures. B012 ShoreSystem at its most nurturing: the beach before the world arrives.",
   "dna": {
     "aggression": 0.02,
     "brightness": 0.28,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "Morning Shore",
+  "name": "Morning Shore (Osprey)",
   "parameters": {
     "Osprey": {
       "osprey_ampAttack": 0.6,

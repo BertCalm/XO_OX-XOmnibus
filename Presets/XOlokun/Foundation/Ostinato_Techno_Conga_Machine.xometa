@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Conga Machine (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Techno conga grid — open conga as a punchy kick-like hit on seat 1, conga slap as snare on seat 2, multiple conga mutes for off-beat fills. The full conga ensemble becomes an industrial rhythm machine when fully quantized.",
-  "tags": ["techno", "conga", "machine", "quantized", "industrial"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "conga",
+    "machine",
+    "quantized",
+    "industrial"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 136.0,
   "dna": {

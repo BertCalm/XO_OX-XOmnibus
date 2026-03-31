@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Cartridge Void",
   "mood": "Aether",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Long FIR echo decay into infinite chip space. ERA drifting slowly across all three eras, each sustain note decaying through console generations. Bit depth at 16 but filtered soft.",
-  "tags": ["chip", "aether", "echo", "long-decay", "era-drift", "transcendent", "space"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "chip",
+    "aether",
+    "echo",
+    "long-decay",
+    "era-drift",
+    "transcendent",
+    "space"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.5,
@@ -97,7 +116,9 @@
       "ow_macroSpace": 0.7
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,

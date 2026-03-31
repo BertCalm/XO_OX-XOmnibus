@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Maximum synapse coupling between arms \u2014 each arm's state instantly propagates to the next, creating a feedback cascade. The arms stop being independent; they become one recursive loop.",
+  "description": "Maximum synapse coupling between arms — each arm's state instantly propagates to the next, creating a feedback cascade. The arms stop being independent; they become one recursive loop.",
   "tags": [
     "flux",
     "synapse",

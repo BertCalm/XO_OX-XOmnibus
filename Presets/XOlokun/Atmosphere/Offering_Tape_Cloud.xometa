@@ -14,13 +14,20 @@
     "space": 0.7,
     "warmth": 0.85
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Atmosphere",
   "name": "Tape Cloud",
   "parameters": {
@@ -42,8 +49,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["tape", "degraded", "warm", "melting", "lo-fi"],
+  "tags": [
+    "tape",
+    "degraded",
+    "warm",
+    "melting",
+    "lo-fi"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.65, "M2": 0.4, "M3": 0.0, "M4": 0.95}
+  "macros": {
+    "M1": 0.65,
+    "M2": 0.4,
+    "M3": 0.0,
+    "M4": 0.95
+  }
 }

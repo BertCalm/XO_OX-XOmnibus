@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Trench Copper",
   "mood": "Submerged",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Copper strings at crush depth. The metal has oxidized completely — every harmonic above 2kHz eaten by salt pressure. Body resonance is dominant; the instrument sounds more like the ocean floor than a piano. Thermal drift is maximal: pitch wavers like light through deep water.",
-  "tags": ["piano", "copper", "dark", "submerged", "deep", "pressure", "trench", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "dark",
+    "submerged",
+    "deep",
+    "pressure",
+    "trench",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

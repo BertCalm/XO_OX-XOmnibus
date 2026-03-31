@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Bit Prism",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.45,
     "MOVEMENT": 0.5,
     "COUPLING": 0.0,
     "SPACE": 0.55
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.75,
@@ -68,6 +77,13 @@
       "fat_macroCrush": 0.55
     }
   },
-  "tags": ["prism", "digital", "bitcrusher", "bright", "movement", "obese"],
+  "tags": [
+    "prism",
+    "digital",
+    "bitcrusher",
+    "bright",
+    "movement",
+    "obese"
+  ],
   "description": "8-bit crush meets high-resonance filter — two fast LFOs in near-isochronal motion. The bitcrusher's quantization artifacts catch the filter peaks and fragment them into harmonic shards. Pure digital prism."
 }

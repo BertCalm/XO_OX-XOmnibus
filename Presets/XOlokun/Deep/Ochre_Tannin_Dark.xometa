@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "Tannin Dark",
   "mood": "Deep",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low-register copper — dense, dark, tannin-bitter. Maximum caramel saturation with a cold studio body. The piano in the basement where the recording engineer sits at 3am with black coffee. Every note carries weight.",
-  "tags": ["piano", "copper", "dark", "deep", "dense", "bitter", "low", "bass", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "dark",
+    "deep",
+    "dense",
+    "bitter",
+    "low",
+    "bass",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

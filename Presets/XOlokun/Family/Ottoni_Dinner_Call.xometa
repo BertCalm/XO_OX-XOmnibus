@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Dinner Call",
   "mood": "Family",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The family trumpet call that summons everyone home — bright, short, and unmistakably inviting.",
-  "tags": ["brass", "family", "call", "bright", "inviting"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "family",
+    "call",
+    "bright",
+    "inviting"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.62, "movement": 0.6, "density": 0.52, "space": 0.55, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.62,
+    "movement": 0.6,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.28
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.08
     }
   },
-  "macros": {"GROW": 0.78, "EMBOUCHURE": 0.72, "LAKE": 0.38, "FOREIGN": 0.08},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.78,
+    "EMBOUCHURE": 0.72,
+    "LAKE": 0.38,
+    "FOREIGN": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

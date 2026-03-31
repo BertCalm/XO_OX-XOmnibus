@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OXALIS — fast growth mode, 4 seconds. Pioneer species: arrives first, blooms quickly. Growth without waiting.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.72,
     "aggression": 0.12
   },
-  "engines": ["Oxalis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Pioneer Arrival",
   "parameters": {
@@ -40,7 +49,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["oxalis", "synth", "strings", "foundation", "growth", "pioneer", "fast"],
+  "tags": [
+    "oxalis",
+    "synth",
+    "strings",
+    "foundation",
+    "growth",
+    "pioneer",
+    "fast"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

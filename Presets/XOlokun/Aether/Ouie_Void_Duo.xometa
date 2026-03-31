@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Void Duo",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two voices barely present in vast reverb void, soft hammer almost inaudible.",
-  "tags": ["aether", "void", "sparse", "distant"],
-  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "tags": [
+    "aether",
+    "void",
+    "sparse",
+    "distant"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,5 +60,7 @@
     "AMPULLAE": 0.35,
     "CURRENT": 0.95
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

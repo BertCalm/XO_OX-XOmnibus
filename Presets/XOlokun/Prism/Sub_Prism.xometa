@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Sub Prism",
+  "name": "Sub Prism (OddOscar)",
   "mood": "Prism",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sub-bass prism morph \u2014 deep sub oscillator filtered through resonant spectral bands.",
+  "description": "Sub-bass prism morph — deep sub oscillator filtered through resonant spectral bands.",
   "tags": [
     "sub",
     "bass",

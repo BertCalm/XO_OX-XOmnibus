@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Regenerate",
   "mood": "Foundation",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bloom-forward foundation — the axolotl's regenerative process as a warm rising pad.",
-  "tags": ["regenerate", "bloom", "warm", "rising"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "regenerate",
+    "bloom",
+    "warm",
+    "rising"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.72, "movement": 0.45, "density": 0.6, "space": 0.58, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.72,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.58,
+    "aggression": 0.12
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.42,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.58
     }
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

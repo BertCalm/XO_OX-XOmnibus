@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Torus T(3,2) encodes a perfect fifth (3:2 frequency ratio) into the FDN delay length ratios. Voices lock into a stable fifth-based harmonic lattice — resonances that reinforce rather than fight each other. Tangle at 0.5, entrain at 0.5: the fifth is present and alive. The most harmonically stable Torus config.",
-  "dna": { "aggression": 0.12, "brightness": 0.52, "density": 0.58, "movement": 0.32, "space": 0.7, "warmth": 0.52 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.52,
+    "density": 0.58,
+    "movement": 0.32,
+    "space": 0.7,
+    "warmth": 0.52
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Torus Lock",
   "parameters": {
@@ -58,7 +74,16 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "torus", "fifth", "harmonic", "locked", "stable", "resonant"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "torus",
+    "fifth",
+    "harmonic",
+    "locked",
+    "stable",
+    "resonant"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

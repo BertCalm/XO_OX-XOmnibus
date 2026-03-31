@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Flock hovering at the thermocline boundary \u2014 temperature gradient creates slow oscillating drift.",
+  "description": "Flock hovering at the thermocline boundary — temperature gradient creates slow oscillating drift.",
   "tags": [
     "thermocline",
     "drift",

@@ -43,7 +43,7 @@
       "owr_brightness": 3600.0,
       "owr_damping": 0.05,
       "owr_decay": 8.0,
-      "owr_filterEnvAmount": 0.10,
+      "owr_filterEnvAmount": 0.1,
       "owr_bendRange": 4,
       "owr_macroMaterial": 0.22,
       "owr_macroMallet": 0.22,

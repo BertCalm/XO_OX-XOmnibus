@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Grip And Release",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The tactile rhythm of octopus arms gripping and releasing — sucker on/off in a steady organic pattern. Sucker filter as the dominant texture element, arms providing rhythmic support. A tactile, physical foundation.",
-  "tags": ["octopus", "foundation", "grip", "release", "tactile", "sucker", "rhythm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "foundation",
+    "grip",
+    "release",
+    "tactile",
+    "sucker",
+    "rhythm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.65,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Glass Ricochet Lead",
   "mood": "Prism",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "El-P's aggressive lead tone — high wavefold on a square wave, fast bounce clicks at short rate, prism color wide. Each note launches a cascade of glass shards. Velocity-sensitive: soft playing gives warmth, hard hits shatter into overtones. LFO1 fast-sweeps the spectral rainbow.",
-  "tags": ["RTJ", "lead", "aggressive", "click", "grit"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "RTJ",
+    "lead",
+    "aggressive",
+    "click",
+    "grit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -62,6 +75,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

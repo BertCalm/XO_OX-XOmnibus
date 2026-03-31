@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Bright Biome",
   "mood": "Prism",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All biome layers lit at maximum brightness — the rainforest in high noon, every surface gleaming.",
-  "tags": ["bright", "biome", "prism", "high-noon", "all-layers", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "bright",
+    "biome",
+    "prism",
+    "high-noon",
+    "all-layers",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.5, "movement": 0.55, "density": 0.65, "space": 0.55, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.4
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 3,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.88
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

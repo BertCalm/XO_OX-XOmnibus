@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Kuramoto coupling tuned to hydrodynamic timescales \u2014 the six voices entrain like vortex rings in a fluid, with coupling mediated by pressure waves rather than rigid locking. Fluid synchrony.",
+  "description": "Kuramoto coupling tuned to hydrodynamic timescales — the six voices entrain like vortex rings in a fluid, with coupling mediated by pressure waves rather than rigid locking. Fluid synchrony.",
   "tags": [
     "hydrodynamic",
     "vortex",

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Neon Cephalopod",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep-sea neon brilliance — the electric blues and magentas of bioluminescent cephalopods. Bright filter, rapid wavetable scan, high arms depth. A flashy, attention-grabbing prism preset with maximum vividness.",
-  "tags": ["octopus", "prism", "neon", "bright", "electric", "vivid", "bioluminescent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "neon",
+    "bright",
+    "electric",
+    "vivid",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.95,

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pelago Glide",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB mono lead with portamento. Warm character, silky glide between notes. Perfect for soul, R&B, and dub lines that need character and movement.",
-  "tags": ["lead", "glide", "mono", "bob", "warm", "portamento", "foundation"],
-  "macroLabels": ["CHARACTER", "GLIDE TIME", "VIBRATO", "FILTER"],
+  "tags": [
+    "lead",
+    "glide",
+    "mono",
+    "bob",
+    "warm",
+    "portamento",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "GLIDE TIME",
+    "VIBRATO",
+    "FILTER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

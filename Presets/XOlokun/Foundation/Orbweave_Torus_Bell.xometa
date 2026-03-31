@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Sine strands through Torus (2,3) coupling. The winding ratio creates bell-like inharmonic partials. Short decay, no sustain \u2014 a crystalline percussive tone.",
+  "description": "Sine strands through Torus (2,3) coupling. The winding ratio creates bell-like inharmonic partials. Short decay, no sustain — a crystalline percussive tone.",
   "dna": {
     "brightness": 0.8,
     "warmth": 0.3,

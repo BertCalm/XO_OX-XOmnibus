@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Wreck Chamber",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Industrial archaeology at 800 meters. A compartment inside a sunken freighter — the allpass diffusion creates the specific acoustic signature of hollow steel rooms filled with water. bodyChar=2, bodyFeedback=0.5. filterCutoff=180: very dark, the wreck has been down a long time.",
-  "tags": ["bass", "submerged", "wreck", "industrial", "archaeology", "chamber", "metal", "dark", "deep"],
+  "tags": [
+    "bass",
+    "submerged",
+    "wreck",
+    "industrial",
+    "archaeology",
+    "chamber",
+    "metal",
+    "dark",
+    "deep"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "WRECK macro dials in the metal chamber presence. Lower WRECK for more open water — the ship dissolves back into the ocean. Raise PRESSURE to add depth compression: the deeper the chamber, the more the walls press in. The wreck at maximum PRESSURE is barely distinguishable from the trench floor.",
     "diagnosis": "bodyChar=2 (Wreck): short comb + allpass diffusion, the precise acoustic signature of hollow metal rooms. bodyFeedback=0.5: moderate — the chamber sustains but does not overwhelm. filterRes=0.5 with filterCutoff=180: dark resonant character, the wreck has been submerged for decades. Industrial archaeology, not industrial music."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.75,
     "ABYSS": 0.6
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

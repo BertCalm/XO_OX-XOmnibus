@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Bolt Strike",
   "mood": "Kinetic",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum hardness, bolt preparation at position 0.33 — every third mode eliminated. The stone monolith struck with a metal hammer: percussive, sharp, aggressive. The bolt rattle cuts through below. Not for quiet rooms.",
-  "tags": ["stone", "percussive", "bolt", "kinetic", "aggressive", "prepared", "transient", "marble"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "percussive",
+    "bolt",
+    "kinetic",
+    "aggressive",
+    "prepared",
+    "transient",
+    "marble"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +61,5 @@
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

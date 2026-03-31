@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Time Machine",
   "mood": "Flux",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Position advancing forward at 0.003 per second while LFO2 simultaneously sweeps backward through position scatter — the buffer playhead slowly advances while grains are harvested from random points around it. At 300ms Gaussian grains and density=14, the granulator occupies multiple temporal positions simultaneously. pitchShift=-5 semitones plus pitchScatter=8 semitones means grains arrive across a 19-semitone band. Time is not a line — it is a probability distribution.",
-  "tags": ["time-stretch", "flux", "position-drift", "gaussian", "pitch-scatter", "temporal", "probability"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "time-stretch",
+    "flux",
+    "position-drift",
+    "gaussian",
+    "pitch-scatter",
+    "temporal",
+    "probability"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

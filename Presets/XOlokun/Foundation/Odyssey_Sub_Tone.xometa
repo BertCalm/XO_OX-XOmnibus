@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sub Tone",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure sub tone with minimal drift — maximum sub level, low-pass locked down, monophonic bass core.",
-  "tags": ["sub", "bass", "mono", "pure", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "sub",
+    "bass",
+    "mono",
+    "pure",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.58, "movement": 0.1, "density": 0.88, "space": 0.28, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.58,
+    "movement": 0.1,
+    "density": 0.88,
+    "space": 0.28,
+    "aggression": 0.18
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.12, "MOVEMENT": 0.1, "COUPLING": 0.0, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

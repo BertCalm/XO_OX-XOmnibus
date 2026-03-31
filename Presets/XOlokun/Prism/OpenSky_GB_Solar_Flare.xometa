@@ -1,23 +1,40 @@
 {
   "schema_version": 1,
-  "name": "Solar Flare",
+  "name": "Solar Flare (OpenSky)",
   "mood": "Prism",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The aggressive lead. Supersaw at 0.5 spread, filter wide open, zero shimmer, zero chorus — dry, cutting, monophonic. Sub square wave for body. The Guru says: OPENSKY is not only clouds and reverb tails. Strip everything away and the supersaw itself is a weapon. Resonance at the 0.28 SVF shelf for presence without shrillness.",
-  "tags": ["opensky", "lead", "aggressive", "mono", "dry", "guru-bin"],
+  "tags": [
+    "opensky",
+    "lead",
+    "aggressive",
+    "mono",
+    "dry",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 7: OPENSKY Is Not Only Clouds and Reverb Tails", "Canon 6: The Supersaw Stripped Is a Weapon"],
+    "scripture": [
+      "Verse 7: OPENSKY Is Not Only Clouds and Reverb Tails",
+      "Canon 6: The Supersaw Stripped Is a Weapon"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger played hard and felt the cut — The Tongue identified the 0.28 resonance shelf as 'presence without shrillness', the exact sweet spot.",
     "diagnosis": "Solar Flare reveals OPENSKY's dry lead identity — shimmer zeroed, filter wide open, sub square for body. Proves the engine is not defined by its reverb tail."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

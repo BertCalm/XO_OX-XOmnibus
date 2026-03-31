@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A submarine canyon \u2014 steep walls creating focused acoustic reflections. The unknot topology handles the canyon geometry: sound bounces between walls with high diffusion before escaping upward.",
+  "description": "A submarine canyon — steep walls creating focused acoustic reflections. The unknot topology handles the canyon geometry: sound bounces between walls with high diffusion before escaping upward.",
   "tags": [
     "canyon",
     "walls",

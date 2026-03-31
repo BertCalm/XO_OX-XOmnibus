@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Larval Kin",
   "mood": "Family",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Siblings in larval form — many voices sharing young bloom textures with low drift.",
-  "tags": ["larval", "kin", "family", "siblings"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "larval",
+    "kin",
+    "family",
+    "siblings"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.65, "movement": 0.38, "density": 0.68, "space": 0.58, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.65,
+    "movement": 0.38,
+    "density": 0.68,
+    "space": 0.58,
+    "aggression": 0.1
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.32,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.58
     }
   },
-  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

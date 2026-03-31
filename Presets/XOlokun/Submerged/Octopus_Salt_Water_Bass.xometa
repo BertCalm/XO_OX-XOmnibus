@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Salt Water Bass",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The dense conductivity of salt water — a submerged bass tone with just enough high-frequency information to suggest life. Arms modulating the low end with their prime ratios. The octopus as a bass instrument.",
-  "tags": ["octopus", "submerged", "bass", "salt", "low", "dense", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "bass",
+    "salt",
+    "low",
+    "dense",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.18,

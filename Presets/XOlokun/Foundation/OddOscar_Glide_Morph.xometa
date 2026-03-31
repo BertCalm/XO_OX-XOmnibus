@@ -2,18 +2,64 @@
   "schema_version": 1,
   "name": "Glide Morph",
   "mood": "Foundation",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Smooth legato morph pad — extended glide time for connected melodic lines.",
-  "tags": ["glide", "legato", "smooth", "melodic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glide",
+    "legato",
+    "smooth",
+    "melodic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.45, "density": 0.52, "space": 0.5, "aggression": 0.14},
-  "parameters": {
-    "OddOscar": {"morph_morph": 0.5, "morph_bloom": 0.45, "morph_detune": 0.12, "morph_drift": 0.3, "morph_filterCutoff": 3800.0, "morph_filterReso": 0.28, "morph_filterEnvDepth": 0.32, "morph_sub": 0.4, "morph_decay": 1.2, "morph_sustain": 0.82, "morph_release": 2.2, "morph_glide": 0.55, "morph_voiceMode": 2, "morph_polyphony": 1, "morph_level": 0.74, "morph_macroBloom": 0.45, "morph_macroDepth": 0.48, "morph_macroDrift": 0.3, "morph_macroSpace": 0.5}
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.45,
+    "density": 0.52,
+    "space": 0.5,
+    "aggression": 0.14
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.45,
+      "morph_detune": 0.12,
+      "morph_drift": 0.3,
+      "morph_filterCutoff": 3800.0,
+      "morph_filterReso": 0.28,
+      "morph_filterEnvDepth": 0.32,
+      "morph_sub": 0.4,
+      "morph_decay": 1.2,
+      "morph_sustain": 0.82,
+      "morph_release": 2.2,
+      "morph_glide": 0.55,
+      "morph_voiceMode": 2,
+      "morph_polyphony": 1,
+      "morph_level": 0.74,
+      "morph_macroBloom": 0.45,
+      "morph_macroDepth": 0.48,
+      "morph_macroDrift": 0.3,
+      "morph_macroSpace": 0.5
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

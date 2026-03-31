@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Orca Deep Dive",
   "mood": "Submerged",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Formant shift at 0.02 — the vocal tract compressed to its lowest setting. F1=138Hz, F2=372Hz, F3=1173Hz: physically compressed, as if producing sound under high hydrostatic pressure. Low main filter + heavy breach sub. The orca calls from below the thermocline.",
-  "tags": ["deep", "submerged", "formant", "compressed", "bass", "pressure", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "submerged",
+    "formant",
+    "compressed",
+    "bass",
+    "pressure",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

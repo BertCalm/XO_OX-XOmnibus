@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Monolith Drone",
   "mood": "Atmosphere",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum density, maximum decay, minimum damping. The marble monolith rings indefinitely — cold, dense, unyielding. A single note fills the room with inharmonic partials that sustain for 15 seconds. Slow LFO on brightness creates glacial timbral movement. The 2001 monolith, humming.",
-  "tags": ["drone", "monolith", "sustained", "cold", "atmosphere", "dense", "inharmonic"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "drone",
+    "monolith",
+    "sustained",
+    "cold",
+    "atmosphere",
+    "dense",
+    "inharmonic"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.4,

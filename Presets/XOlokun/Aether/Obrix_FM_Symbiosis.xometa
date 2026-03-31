@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Wavetable (Metallic bank) acts as FM modulator for a Saw carrier at fmDepth 0.55 \u2014 the exact ratio where inharmonic partials tip into bell-like shimmer without breaking into noise. Proc2 is a Wavefolder that further sculpts the FM sidebands. The result is a metallic bloom: warm below 800 Hz, crystalline above. An Envelope LFO routes to wtPos so the wavetable position morphs through the FM attack \u2014 each note is a different alloy.",
+  "description": "Wavetable (Metallic bank) acts as FM modulator for a Saw carrier at fmDepth 0.55 — the exact ratio where inharmonic partials tip into bell-like shimmer without breaking into noise. Proc2 is a Wavefolder that further sculpts the FM sidebands. The result is a metallic bloom: warm below 800 Hz, crystalline above. An Envelope LFO routes to wtPos so the wavetable position morphs through the FM attack — each note is a different alloy.",
   "tags": [
     "obrix",
     "aether",
@@ -31,7 +31,7 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
@@ -41,7 +41,7 @@
     "revelation": "At fmDepth 0.55 the wavetable stops being a modulator and becomes a living partner.",
     "god": "Kakehashi",
     "flock_note": "Raj confirmed that Metallic wtBank + fmDepth 0.55 unlocks partials no additive synth can reach.",
-    "diagnosis": "A bell made of seawater \u2014 metallic at the strike, dissolving into shimmer by the release."
+    "diagnosis": "A bell made of seawater — metallic at the strike, dissolving into shimmer by the release."
   },
   "dna": {
     "brightness": 0.72,

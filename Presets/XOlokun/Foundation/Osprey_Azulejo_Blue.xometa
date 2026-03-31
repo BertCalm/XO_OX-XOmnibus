@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Azulejo Blue",
   "mood": "Foundation",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Portuguese azulejo tile blue — balanced coastal warmth with deep Atlantic heritage.",
-  "tags": ["foundation", "portuguese", "atlantic", "azulejo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "portuguese",
+    "atlantic",
+    "azulejo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.65, "movement": 0.4, "density": 0.5, "space": 0.5, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.2
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.45,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.5
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

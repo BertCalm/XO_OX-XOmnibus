@@ -2,11 +2,24 @@
   "schema_version": 1,
   "name": "Split Personality",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "voiceMode=1 (Split), splitNote=58 (Bb3): VA with LP filter below the split, Karplus-Strong with HP filter above it. One keyboard, two genuinely different instruments. Left hand plays warm analog bass — right hand plays plucked, percussive melodic lines. HAMMER=-0.2 (light STRIFE) adds mild cross-FM complexity without obscuring the fundamental split identity. The most keyboard-literate preset in the Vol 1 set.",
-  "tags": ["ouie", "split", "va", "karplus-strong", "keyboard", "performance", "bass", "lead", "aether", "two-instruments"],
+  "tags": [
+    "ouie",
+    "split",
+    "va",
+    "karplus-strong",
+    "keyboard",
+    "performance",
+    "bass",
+    "lead",
+    "aether",
+    "two-instruments"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +35,12 @@
     "flock_note": "Move splitNote down to 48 (C3) for a deeper bass zone. Move up to 65 (F4) for a wider left-hand range. Adjust HAMMER toward 0.0 for cleaner splits, toward -0.5 for more cross-contamination between zones.",
     "diagnosis": "The definitive Split mode demonstration. splitNote=58 gives comfortable left-hand bass and right-hand melodic range for a standard keyboard. LP filter on VA (voice 1) at 800Hz keeps the bass dark and round; HP on KS (voice 2) at 1200Hz keeps the pluck bright and percussive. Light STRIFE prevents the split from feeling too mechanical."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +114,7 @@
     "CARTILAGE": 0.5,
     "CURRENT": 0.15
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

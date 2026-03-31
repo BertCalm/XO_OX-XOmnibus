@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Horizon Drift",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The horizon is where drift meets FM — OscA classic sawtooth for the tonal center, OscB in FM mode tuned to a fifth above. As drift moves OscB away from its fifth, the harmonic relationship continuously updates. A compound migration across the perfect fifth interval.",
-  "tags": ["odyssey", "fm", "fifth", "drift", "horizon", "interval", "foundation", "transcendental"],
+  "tags": [
+    "odyssey",
+    "fm",
+    "fifth",
+    "drift",
+    "horizon",
+    "interval",
+    "foundation",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-6: The Interval Between Two Voices Is Its Own Voice"],
+    "scripture": [
+      "Scripture VII-6: The Interval Between Two Voices Is Its Own Voice"
+    ],
     "revelation": "When OscB is tuned to 7 semitones above OscA and drifting independently, the fifth interval breathes. The harmony is not fixed — it is exploring the region around the fifth.",
     "diagnosis": "Horizon Drift demonstrates the classic+FM compound at the perfect fifth interval. OscA is the anchor; OscB drifts through the harmonic space around P5. At low drift this is a warm fifth pad; at maximum drift it becomes an inharmonic exploration."
   },
-  "macroLabels": ["FM DEPTH", "DRIFT DISTANCE", "FILTER TONE", "REVERB SPACE"],
+  "macroLabels": [
+    "FM DEPTH",
+    "DRIFT DISTANCE",
+    "FILTER TONE",
+    "REVERB SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

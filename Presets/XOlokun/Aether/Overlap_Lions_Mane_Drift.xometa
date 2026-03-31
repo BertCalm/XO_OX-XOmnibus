@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Lion's Mane Drift",
   "mood": "Aether",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Slow ocean current drift at 0.008 Hz — a period of 125 seconds. The entire six-voice field drifts through ±0.85 semitones over two minutes. Combined with Torus T(3,5) and bioluminescence at 0.62, this is the most temporally expansive preset in the OVERLAP library. The jellyfish drifts; the knot follows.",
-  "tags": ["current", "drift", "lion's mane", "aether", "temporal", "slow", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "current",
+    "drift",
+    "lion's mane",
+    "aether",
+    "temporal",
+    "slow",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

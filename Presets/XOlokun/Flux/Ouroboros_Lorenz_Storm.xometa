@@ -2,25 +2,54 @@
   "schema_version": 1,
   "name": "Lorenz Storm",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lorenz attractor in full storm — high chaos, loose leash, fast rate, the butterfly wings beating.",
-  "tags": ["lorenz", "storm", "chaos", "butterfly", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lorenz",
+    "storm",
+    "chaos",
+    "butterfly",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.42, "movement": 0.88, "density": 0.62, "space": 0.52, "aggression": 0.75},
-  "parameters": {"Ouroboros": {
-    "ouro_topology": 0,
-    "ouro_rate": 0.85,
-    "ouro_chaosIndex": 0.85,
-    "ouro_leash": 0.15,
-    "ouro_theta": 0.2,
-    "ouro_phi": 0.8,
-    "ouro_damping": 0.1,
-    "ouro_injection": 0.88
-  }},
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.88, "COUPLING": 0.5, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.62,
+    "space": 0.52,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 0.85,
+      "ouro_chaosIndex": 0.85,
+      "ouro_leash": 0.15,
+      "ouro_theta": 0.2,
+      "ouro_phi": 0.8,
+      "ouro_damping": 0.1,
+      "ouro_injection": 0.88
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.5,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

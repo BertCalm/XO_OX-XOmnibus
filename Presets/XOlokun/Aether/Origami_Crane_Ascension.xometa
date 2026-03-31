@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Crane Ascension",
   "mood": "Aether",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A thousand paper cranes ascending — fold form ascending into aetheric horizon.",
-  "tags": ["aether", "crane", "ascension", "thousand"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "crane",
+    "ascension",
+    "thousand"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.38, "density": 0.32, "space": 0.9, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.38,
+    "density": 0.32,
+    "space": 0.9,
+    "aggression": 0.08
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.9
     }
   },
-  "macros": {"FOLD": 0.28, "MOTION": 0.38, "COUPLING": 0.0, "SPACE": 0.9},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.28,
+    "MOTION": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

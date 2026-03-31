@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Glass Stab",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean short-attack stab — square oscillator, tight bounce, minimal effects. Velocity exposes fold character.",
-  "tags": ["foundation", "stab", "square", "tight", "clean"],
-  "macroLabels": ["FOLD", "BOUNCE", "COLOR", "SPACE"],
+  "tags": [
+    "foundation",
+    "stab",
+    "square",
+    "tight",
+    "clean"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "BOUNCE",
+    "COLOR",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.3, "movement": 0.45, "density": 0.3, "space": 0.2, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.45,
+    "density": 0.3,
+    "space": 0.2,
+    "aggression": 0.35
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -53,6 +73,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"FOLD": 0.0, "BOUNCE": 0.0, "COLOR": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.0,
+    "BOUNCE": 0.0,
+    "COLOR": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

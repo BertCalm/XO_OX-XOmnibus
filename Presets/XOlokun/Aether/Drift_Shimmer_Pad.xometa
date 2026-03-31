@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Drift Shimmer Pad",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT shimmer at maximum with ultra-slow drift. A pad that feels like looking at stars — never quite still, never quite solid, impossibly beautiful.",
-  "tags": ["pad", "shimmer", "ethereal", "drift", "aether", "cosmic"],
-  "macroLabels": ["SHIMMER DEPTH", "DRIFT RATE", "FORMANT", "SPACE"],
+  "tags": [
+    "pad",
+    "shimmer",
+    "ethereal",
+    "drift",
+    "aether",
+    "cosmic"
+  ],
+  "macroLabels": [
+    "SHIMMER DEPTH",
+    "DRIFT RATE",
+    "FORMANT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

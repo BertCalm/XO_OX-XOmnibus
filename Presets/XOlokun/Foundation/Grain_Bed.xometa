@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Grain Bed",
+  "name": "Grain Bed (Ombre)",
   "mood": "Foundation",
   "engines": [
     "Ombre"
   ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Oubli maximal \u2014 a granular bed made from accumulated memory. Play slow chords to build the texture over time. Grain size at 400ms creates cloud-like density.",
+  "description": "Oubli maximal — a granular bed made from accumulated memory. Play slow chords to build the texture over time. Grain size at 400ms creates cloud-like density.",
   "tags": [
     "foundation",
     "granular",

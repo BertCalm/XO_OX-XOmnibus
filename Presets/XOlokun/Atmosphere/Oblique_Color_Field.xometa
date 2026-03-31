@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Color Field",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mark Rothko-inspired color field — warm prism color, gentle bounce, atmospheric wash.",
-  "tags": ["color-field", "warm", "wash", "ambient"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "color-field",
+    "warm",
+    "wash",
+    "ambient"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.7, "movement": 0.25, "density": 0.55, "space": 0.75, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.25,
+    "density": 0.55,
+    "space": 0.75,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.75
     }
   },
-  "macros": {"BOUNCE": 0.22, "COLOR": 0.7, "FOLD": 0.25, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.22,
+    "COLOR": 0.7,
+    "FOLD": 0.25,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

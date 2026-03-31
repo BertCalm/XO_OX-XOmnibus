@@ -2,15 +2,41 @@
   "schema_version": 1,
   "name": "Oxbow Opossum Current",
   "mood": "Entangled",
-  "engines": ["Overbite", "Oxbow"],
+  "engines": [
+    "Overbite",
+    "Oxbow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OVERBITE BELLY 0.78 entangled with OXBOW Chiasmus FDN reverb. BELLY warmth feeds OXBOW's entanglement matrix — the body of the animal becomes the room. OXBOW entanglement cross-correlates OVERBITE's sub against its own tonal decay. The opossum's heartbeat resonating through a still pool.",
-  "tags": ["entangled", "belly", "sub", "reverb", "chiasmus", "warm", "overbite", "oxbow", "transcendental"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "entangled",
+    "belly",
+    "sub",
+    "reverb",
+    "chiasmus",
+    "warm",
+    "overbite",
+    "oxbow",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.82, "movement": 0.22, "density": 0.72, "space": 0.85, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.82,
+    "movement": 0.22,
+    "density": 0.72,
+    "space": 0.85,
+    "aggression": 0.1
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -80,14 +106,30 @@
       "poss_lfo3Sync": 0,
       "poss_lfo3Retrigger": 0,
       "poss_lfo3Phase": 0.0,
-      "poss_modSlot1Src": 0, "poss_modSlot1Dst": 0, "poss_modSlot1Amt": 0.0,
-      "poss_modSlot2Src": 0, "poss_modSlot2Dst": 0, "poss_modSlot2Amt": 0.0,
-      "poss_modSlot3Src": 0, "poss_modSlot3Dst": 0, "poss_modSlot3Amt": 0.0,
-      "poss_modSlot4Src": 0, "poss_modSlot4Dst": 0, "poss_modSlot4Amt": 0.0,
-      "poss_modSlot5Src": 0, "poss_modSlot5Dst": 0, "poss_modSlot5Amt": 0.0,
-      "poss_modSlot6Src": 0, "poss_modSlot6Dst": 0, "poss_modSlot6Amt": 0.0,
-      "poss_modSlot7Src": 0, "poss_modSlot7Dst": 0, "poss_modSlot7Amt": 0.0,
-      "poss_modSlot8Src": 0, "poss_modSlot8Dst": 0, "poss_modSlot8Amt": 0.0,
+      "poss_modSlot1Src": 0,
+      "poss_modSlot1Dst": 0,
+      "poss_modSlot1Amt": 0.0,
+      "poss_modSlot2Src": 0,
+      "poss_modSlot2Dst": 0,
+      "poss_modSlot2Amt": 0.0,
+      "poss_modSlot3Src": 0,
+      "poss_modSlot3Dst": 0,
+      "poss_modSlot3Amt": 0.0,
+      "poss_modSlot4Src": 0,
+      "poss_modSlot4Dst": 0,
+      "poss_modSlot4Amt": 0.0,
+      "poss_modSlot5Src": 0,
+      "poss_modSlot5Dst": 0,
+      "poss_modSlot5Amt": 0.0,
+      "poss_modSlot6Src": 0,
+      "poss_modSlot6Dst": 0,
+      "poss_modSlot6Amt": 0.0,
+      "poss_modSlot7Src": 0,
+      "poss_modSlot7Dst": 0,
+      "poss_modSlot7Amt": 0.0,
+      "poss_modSlot8Src": 0,
+      "poss_modSlot8Dst": 0,
+      "poss_modSlot8Amt": 0.0,
       "poss_macroBelly": 0.78,
       "poss_macroBite": 0.0,
       "poss_macroScurry": 0.0,
@@ -121,7 +163,13 @@
       "poss_pan": 0.0
     }
   },
-  "macros": {"BELLY": 0.78, "BITE": 0.0, "SCURRY": 0.0, "TRASH": 0.0, "PLAY DEAD": 0.22},
+  "macros": {
+    "BELLY": 0.78,
+    "BITE": 0.0,
+    "SCURRY": 0.0,
+    "TRASH": 0.0,
+    "PLAY DEAD": 0.22
+  },
   "coupling": {
     "pairs": [
       {

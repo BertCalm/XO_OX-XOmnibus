@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Deep Cell",
   "mood": "Submerged",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Rule 184 (vehicular traffic model) running very slow in a Submerged context — the density waves become an analog for pressure. Like a single deep-water cell dividing in the dark.",
-  "tags": ["experimental", "rule-184", "deep", "traffic", "submerged", "genre-spotlight"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "tags": [
+    "experimental",
+    "rule-184",
+    "deep",
+    "traffic",
+    "submerged",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.62, "movement": 0.35, "density": 0.72, "space": 0.88, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.72,
+    "space": 0.88,
+    "aggression": 0.18
+  },
   "parameters": {
     "Organism": {
       "org_rule": 184.0,
@@ -40,6 +61,13 @@
       "org_macroMutate": 0.04
     }
   },
-  "macros": {"RULE": 0.72, "SEED": 0.35, "COUPLING": 0.0, "MUTATE": 0.04},
-  "coupling": {"pairs": []}
+  "macros": {
+    "RULE": 0.72,
+    "SEED": 0.35,
+    "COUPLING": 0.0,
+    "MUTATE": 0.04
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

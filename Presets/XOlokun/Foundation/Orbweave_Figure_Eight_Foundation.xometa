@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Figure-Eight Foundation (Orbweave)",
   "mood": "Foundation",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "Guru Bin — ORBWEAVE Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Figure-Eight topology in Foundation — the alternating over-under crossings as a bass/mid foundation character. filterCutoff=800 Hz creates maximum velocity range: soft notes stay thick and dark, hard notes push through the midrange. The alternating positive/negative coupling gives the sound a 'fought for' compression quality.",
-  "tags": ["figure-eight", "low-cutoff", "velocity", "bass", "foundation", "saw"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "figure-eight",
+    "low-cutoff",
+    "velocity",
+    "bass",
+    "foundation",
+    "saw"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

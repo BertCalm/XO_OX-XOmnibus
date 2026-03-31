@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Decentralized Ensemble",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Like an orchestra without a conductor — each voice and each arm making independent decisions. Maximum polyphony, arms at wide spread, no central organizing principle. A family of equals.",
-  "tags": ["octopus", "family", "ensemble", "decentralized", "poly", "independent", "arms"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "ensemble",
+    "decentralized",
+    "poly",
+    "independent",
+    "arms"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.68,

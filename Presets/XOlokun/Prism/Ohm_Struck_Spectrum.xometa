@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Struck Spectrum",
   "mood": "Prism",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass struck tone with peak FM ratio, spreading harmonics across the spectrum.",
-  "tags": ["prism", "struck", "spectrum", "FM"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "prism",
+    "struck",
+    "spectrum",
+    "FM"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.5,
     "MEADOW": 0.6
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

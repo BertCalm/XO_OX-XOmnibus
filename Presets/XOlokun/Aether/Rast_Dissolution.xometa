@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Rast Dissolution",
   "mood": "Aether",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The foundation maqam Rast dissolves into maximum drift and space. Poly8 cloud of long-sustain GENDY voices, slow LFOs barely moving, gravity pulling toward quarter-tone warmth.",
-  "tags": ["gendy", "aether", "rast", "maqam", "dissolve", "space", "transcendent"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "aether",
+    "rast",
+    "maqam",
+    "dissolve",
+    "space",
+    "transcendent"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 28,
@@ -45,7 +64,9 @@
       "oracle_macroDrift": 0.55
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,

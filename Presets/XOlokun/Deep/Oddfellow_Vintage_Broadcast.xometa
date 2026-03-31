@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Vintage Broadcast",
   "mood": "Deep",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Early 1960s TV broadcast Wurlitzer. Bandlimited by vintage transmission bandwidth — low brightness, gentle tremolo, clean-ish preamp. What entered homes through a speaker the size of a dinner plate.",
-  "tags": ["wurlitzer", "vintage", "broadcast", "1960s", "bandlimited", "deep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "vintage",
+    "broadcast",
+    "1960s",
+    "bandlimited",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

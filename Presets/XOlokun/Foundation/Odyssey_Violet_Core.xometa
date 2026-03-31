@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Violet Core",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "XOdyssey identity preset — violet character, saw oscillator, balanced drift and filter.",
-  "tags": ["identity", "violet", "saw", "balanced"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "identity",
+    "violet",
+    "saw",
+    "balanced"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.5, "movement": 0.4, "density": 0.5, "space": 0.45, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.3
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,19 +4,36 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Brick Supersaw",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "3 unison voices at 5 cents detune — fat without excess. Chorus for stereo width. Scripture Verse 5: fewer voices, tighter spread, more coherent phase.",
-  "tags": ["obrix", "supersaw", "lead", "fat", "unison"],
+  "tags": [
+    "obrix",
+    "supersaw",
+    "lead",
+    "fat",
+    "unison"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 5: Fewer Voices, Tighter Spread, More Coherent Phase"],
+    "scripture": [
+      "Verse 5: Fewer Voices, Tighter Spread, More Coherent Phase"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Bone felt 3 unison voices at 5 cents as a single wall — the chorus adds width without destroying phase coherence.",

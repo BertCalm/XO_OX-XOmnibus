@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Grain Cloud",
   "mood": "Atmosphere",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-scatter grain cloud suspended in reverb, woodsy organic atmosphere.",
-  "tags": ["atmosphere", "granular", "cloud", "organic"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "atmosphere",
+    "granular",
+    "cloud",
+    "organic"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.5,
     "MEADOW": 0.7
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

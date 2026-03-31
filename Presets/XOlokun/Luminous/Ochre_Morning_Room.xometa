@@ -2,17 +2,32 @@
   "schema_version": 1,
   "name": "Morning Room",
   "mood": "Luminous",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The copper upright at dawn — conductivity just above minimum, caramel light, all settings at their most transparent. A piece being practiced for the hundredth time, quietly, before the household wakes. The most honest version of the instrument.",
-  "tags": ["piano", "copper", "morning", "transparent", "quiet", "luminous", "practice"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "morning",
+    "transparent",
+    "quiet",
+    "luminous",
+    "practice"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
-    "warmth": 0.70,
+    "warmth": 0.7,
     "movement": 0.12,
     "density": 0.35,
     "space": 0.35,
@@ -28,7 +43,7 @@
       "ochre_damping": 0.35,
       "ochre_decay": 1.6,
       "ochre_caramel": 0.18,
-      "ochre_sympathy": 0.20,
+      "ochre_sympathy": 0.2,
       "ochre_hfCharacter": 0.18,
       "ochre_thermalDrift": 0.25,
       "ochre_filterEnvAmount": 0.28,
@@ -40,7 +55,7 @@
       "ochre_lfo1Rate": 0.22,
       "ochre_lfo1Depth": 0.04,
       "ochre_lfo1Shape": 0,
-      "ochre_lfo2Rate": 0.60,
+      "ochre_lfo2Rate": 0.6,
       "ochre_lfo2Depth": 0.0,
       "ochre_lfo2Shape": 1
     }

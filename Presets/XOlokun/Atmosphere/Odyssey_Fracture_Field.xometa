@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Fracture Field",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fracture enabled atmospheric — slow fracture rate, moderate intensity over drift bed.",
-  "tags": ["fracture", "atmospheric", "slow", "textured"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fracture",
+    "atmospheric",
+    "slow",
+    "textured"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.45, "density": 0.55, "space": 0.7, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.45,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.2
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

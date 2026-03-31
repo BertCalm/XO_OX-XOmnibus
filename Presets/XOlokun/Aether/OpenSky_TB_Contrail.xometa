@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Contrail",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The streak of white across blue sky. A pluck character: fast attack (0.005s), short decay (0.4s), zero sustain, long release (6.0s). The shimmer reverb at 0.65 mix catches the pluck transient and stretches it into a crystalline tail that hangs in the air for seconds after the note dies. The dry sound is gone in 400ms but the shimmer contrail persists. HP filter at 150 Hz keeps the trail thin and high. The Guru says: the note is the aircraft -- the shimmer is the sky remembering.",
-  "tags": ["opensky", "transcendental", "pluck", "contrail", "tail", "crystalline", "transient"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "pluck",
+    "contrail",
+    "tail",
+    "crystalline",
+    "transient"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 13: Zero Sustain Plus Maximum Shimmer -- The Note Dies But the Sky Remembers", "Sutra 5: A Pluck With a 6-Second Shimmer Tail Is a Painting, Not a Performance"],
+    "scripture": [
+      "Verse 13: Zero Sustain Plus Maximum Shimmer -- The Note Dies But the Sky Remembers",
+      "Sutra 5: A Pluck With a 6-Second Shimmer Tail Is a Painting, Not a Performance"
+    ],
     "revelation": "Aurum spoke: the shimmer reverb transforms transient sounds into sustained ones. A pluck with zero sustain becomes a pad through the shimmer tail alone. The reverb is not adding space -- it is adding time.",
     "god": "Aurum",
     "flock_note": "The Tongue discovered that rapid repeated notes create overlapping contrails -- each pluck leaves its shimmer ghost while the next pluck fires. At moderate tempo, this creates a self-harmonizing ambient texture from monophonic playing.",
     "diagnosis": "Contrail separates the note from its reverberant shadow. The dry pluck is percussive; the shimmer tail is ambient. Together they span two worlds from a single gesture."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Filter Prism",
+  "name": "Filter Prism (Outwit)",
   "mood": "Prism",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 184 \u2014 the traffic rule split through a filter prism. High resonance reveals distinct spectral lanes in the CA output, each arm a different color of sound.",
+  "description": "Rule 184 — the traffic rule split through a filter prism. High resonance reveals distinct spectral lanes in the CA output, each arm a different color of sound.",
   "tags": [
     "prism",
     "filter",

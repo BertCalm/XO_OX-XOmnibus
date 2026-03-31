@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Vein Tone",
   "mood": "Foundation",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mineral vein tracing — thin focused tone, mid-register, geological precision.",
-  "tags": ["vein", "focused", "mineral", "tone"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "vein",
+    "focused",
+    "mineral",
+    "tone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.45, "movement": 0.18, "density": 0.42, "space": 0.35, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.45,
+    "movement": 0.18,
+    "density": 0.42,
+    "space": 0.35,
+    "aggression": 0.28
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.42,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.18, "COUPLING": 0.0, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

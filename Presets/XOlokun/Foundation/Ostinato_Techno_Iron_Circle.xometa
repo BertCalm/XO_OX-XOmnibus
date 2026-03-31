@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Iron Circle (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Techno drum circle — industrial kick on seat 1 (surdo bass pattern), beatbox hi-hats on seats 2-3 running dense 16th-note grids, snare on seat 4. Tight quantization, heavy compression, mechanical feel. GATHER to tighten. ~134 BPM implied.",
-  "tags": ["techno", "kick", "hi-hat", "industrial", "mechanical", "foundation"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "kick",
+    "hi-hat",
+    "industrial",
+    "mechanical",
+    "foundation"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 134.0,
   "dna": {

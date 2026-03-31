@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Djembe Drift (Ostinato)",
   "mood": "Atmosphere",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Lo-fi djembe — tone and bass articulations layered softly, slow drift, maximum humanize. The community feel of a distant campfire circle. GATHER very low = maximum organic drift. CIRCLE brings in resonant ghost sympathies.",
-  "tags": ["lo-fi", "djembe", "drift", "organic", "community"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "lo-fi",
+    "djembe",
+    "drift",
+    "organic",
+    "community"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 78.0,
   "dna": {

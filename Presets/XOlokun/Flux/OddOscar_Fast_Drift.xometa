@@ -2,18 +2,64 @@
   "schema_version": 1,
   "name": "Fast Drift",
   "mood": "Flux",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drift at maximum speed — the axolotl pulled along by a rapid current.",
-  "tags": ["fast", "drift", "current", "pulled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fast",
+    "drift",
+    "current",
+    "pulled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.6, "movement": 0.9, "density": 0.55, "space": 0.52, "aggression": 0.28},
-  "parameters": {
-    "OddOscar": {"morph_morph": 0.6, "morph_bloom": 0.58, "morph_detune": 0.38, "morph_drift": 0.95, "morph_filterCutoff": 5500.0, "morph_filterReso": 0.42, "morph_filterEnvDepth": 0.55, "morph_sub": 0.35, "morph_decay": 0.7, "morph_sustain": 0.7, "morph_release": 1.2, "morph_glide": 0.18, "morph_voiceMode": 0, "morph_polyphony": 4, "morph_level": 0.72, "morph_macroBloom": 0.58, "morph_macroDepth": 0.58, "morph_macroDrift": 0.95, "morph_macroSpace": 0.52}
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.9,
+    "density": 0.55,
+    "space": 0.52,
+    "aggression": 0.28
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.9, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.6,
+      "morph_bloom": 0.58,
+      "morph_detune": 0.38,
+      "morph_drift": 0.95,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.42,
+      "morph_filterEnvDepth": 0.55,
+      "morph_sub": 0.35,
+      "morph_decay": 0.7,
+      "morph_sustain": 0.7,
+      "morph_release": 1.2,
+      "morph_glide": 0.18,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 4,
+      "morph_level": 0.72,
+      "morph_macroBloom": 0.58,
+      "morph_macroDepth": 0.58,
+      "morph_macroDrift": 0.95,
+      "morph_macroSpace": 0.52
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

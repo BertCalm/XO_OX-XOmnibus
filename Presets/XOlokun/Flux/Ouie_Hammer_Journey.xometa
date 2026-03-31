@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Hammer Journey",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "The HAMMER macro mapped to aftertouch. VA saw (Voice 1) and Phase Distortion (Voice 2) start at HAMMER 0 — neutral coexistence. Press into the key and aftertouch drives the HAMMER toward STRIFE. Release pressure and it returns to neutral. The player's physical gesture IS the synthesis — pressing harder creates cross-FM chaos, releasing finds peace. The journey from war to peace is literally in your fingertips.",
-  "tags": ["aftertouch", "expressive", "performance", "journey", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "aftertouch",
+    "expressive",
+    "performance",
+    "journey",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +89,7 @@
       "ouie_macroCurrent": 0.1
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Group Dissolve",
   "mood": "Aether",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group stagger dissolving into aetheric space — very slow group attack spread, maximum reverb, each group bloom fading before the next arrives.",
-  "tags": ["group", "dissolve", "stagger", "space", "aether"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "group",
+    "dissolve",
+    "stagger",
+    "space",
+    "aether"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.52, "movement": 0.22, "density": 0.42, "space": 0.92, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.52,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.92,
+    "aggression": 0.04
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.38,
@@ -46,6 +66,13 @@
       "orb_level": 0.69
     }
   },
-  "macros": {"SPECTRAL": 0.5, "VELOCITY": 0.22, "GROUP": 0.55, "SPACE": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.5,
+    "VELOCITY": 0.22,
+    "GROUP": 0.55,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

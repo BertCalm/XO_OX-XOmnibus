@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Polyp Cathedral",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Great Barrier Reef: the largest living structure on earth. Columns of coral that took ten thousand years to build their height. A massive hollow warmth with slow drift from voice to voice — the architecture of accumulated time.",
-  "tags": ["obrix", "atmosphere", "place", "great-barrier-reef", "ambient", "drift", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "atmosphere",
+    "place",
+    "great-barrier-reef",
+    "ambient",
+    "drift",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +118,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Dissonant Ring (Ostinato)",
   "mood": "Flux",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Experimental dissonant percussion — seats tuned to non-harmonic intervals (semitone clusters, tritones). The tuned percussion instruments (tabla, tongue drum, taiko rim) clash deliberately. CIRCLE enabled for maximum resonant feedback chaos.",
-  "tags": ["experimental", "dissonant", "non-harmonic", "clash", "circle-chaos"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "experimental",
+    "dissonant",
+    "non-harmonic",
+    "clash",
+    "circle-chaos"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 92.0,
   "dna": {

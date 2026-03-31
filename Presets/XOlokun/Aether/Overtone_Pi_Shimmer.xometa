@@ -30,7 +30,7 @@
     "warmth": 0.42,
     "movement": 0.52,
     "density": 0.48,
-    "space": 0.70,
+    "space": 0.7,
     "aggression": 0.08
   },
   "parameters": {
@@ -38,9 +38,9 @@
       "over_constant": 0,
       "over_depth": 3.5,
       "over_partial0": 0.88,
-      "over_partial1": 0.60,
+      "over_partial1": 0.6,
       "over_partial2": 0.42,
-      "over_partial3": 0.30,
+      "over_partial3": 0.3,
       "over_partial4": 0.22,
       "over_partial5": 0.16,
       "over_partial6": 0.12,
@@ -57,7 +57,7 @@
       "over_lfo2Rate": 0.05,
       "over_lfo2Depth": 0.22,
       "over_resoMix": 0.48,
-      "over_macroDepth": 0.50,
+      "over_macroDepth": 0.5,
       "over_macroColor": 0.45,
       "over_macroCoupling": 0.0,
       "over_macroSpace": 0.58

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Glass Ring",
   "mood": "Prism",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass rod laid across the strings. The glass adds its own high-frequency resonances above the stone partials — crystalline overtones that shimmer above the cold mineral fundamental. Two materials singing simultaneously: stone below, glass above. Bright, prismatic, otherworldly.",
-  "tags": ["prepared", "glass", "crystalline", "shimmer", "bright", "prism", "overtones"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "prepared",
+    "glass",
+    "crystalline",
+    "shimmer",
+    "bright",
+    "prism",
+    "overtones"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.8,

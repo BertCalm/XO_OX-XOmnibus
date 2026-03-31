@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Dub Morphology",
   "mood": "Entangled",
-  "engines": ["Overdub", "OddOscar"],
+  "engines": [
+    "Overdub",
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's internal LFO drifts DUB's pitch while DUB's envelope pumps MORPH's filter. Evolving texture meets dub weight — organic, morphing bass over shifting pads.",
-  "tags": ["dub", "morph", "coupled", "evolving", "organic"],
-  "macroLabels": ["DEPTH", "MORPH", "COUPLING", "SPACE"],
+  "tags": [
+    "dub",
+    "morph",
+    "coupled",
+    "evolving",
+    "organic"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "MORPH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {

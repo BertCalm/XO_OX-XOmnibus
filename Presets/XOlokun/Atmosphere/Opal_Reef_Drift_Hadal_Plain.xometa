@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Hadal Plain",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Reef and Drift working together: large frozen grains excite the Reef FDN (size 0.95, decay 0.85) while Drift at 4 voices spreads the Reef output laterally. The combination creates a pressure-dense zone impossible to achieve with either stage alone — the early reflections drift slowly across the field.",
-  "tags": ["atmosphere", "granular", "reef", "drift", "hadal", "deep", "fx_chain:Aquatic", "aquatic-fx-demo"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "granular",
+    "reef",
+    "drift",
+    "hadal",
+    "deep",
+    "fx_chain:Aquatic",
+    "aquatic-fx-demo"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.75, "movement": 0.38, "density": 0.72, "space": 0.95, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.75,
+    "movement": 0.38,
+    "density": 0.72,
+    "space": 0.95,
+    "aggression": 0.06
+  },
   "parameters": {
     "Opal": {
       "opal_source": 1,
@@ -89,8 +112,15 @@
       "opal_level": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.22, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.95},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "aqua_reef_mix": 0.8,
     "aqua_reef_size": 0.95,

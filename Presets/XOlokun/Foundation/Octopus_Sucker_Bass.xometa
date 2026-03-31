@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sucker Bass",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sucker array at maximum mix with high resonance creates rhythmic sub-harmonic pops — the attachment and release of hundreds of suckers as a foundational bass texture.",
-  "tags": ["foundation", "bass", "sucker", "rhythmic", "sub"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "bass",
+    "sucker",
+    "rhythmic",
+    "sub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.65, "movement": 0.5, "density": 0.7, "space": 0.25, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.65,
+    "movement": 0.5,
+    "density": 0.7,
+    "space": 0.25,
+    "aggression": 0.55
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.2,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.25
     }
   },
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

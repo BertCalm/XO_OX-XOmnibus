@@ -32,7 +32,7 @@
   "name": "Fathom Light",
   "parameters": {
     "Oware": {
-      "owr_material": 0.80,
+      "owr_material": 0.8,
       "owr_malletHardness": 0.12,
       "owr_bodyType": 2,
       "owr_bodyDepth": 0.92,

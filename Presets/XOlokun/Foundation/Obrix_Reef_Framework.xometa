@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Reef Framework",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The structural skeleton — the calcium carbonate matrix that everything else grows on. Pulse src1 (narrowed PW=0.3, giving a crisper, more structural tone) against Saw src2 at +2 semitones detune (close collision, barely audible beating). proc1=LP (3200 Hz, low reso) — Pulse framework stays structurally bright; proc2=LP (950 Hz, reso=0.32) — Saw fills the mid-foundation register. fmDepth=0.15: minimal FM, structural integrity maintained. srcMix=0.45. Mono with short glide (0.04s) for legato framework lines. Mod: Env->proc2Cutoff (Saw foundation breathes), LFO->FXMix, Velocity->FilterCutoff, Aftertouch->Volume.",
-  "tags": ["obrix", "foundation", "pulse", "saw", "constructive-collision", "reef", "framework", "structural"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "pulse",
+    "saw",
+    "constructive-collision",
+    "reef",
+    "framework",
+    "structural"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.48,

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Full Chord",
   "mood": "Foundation",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum string count with balanced crossover, the full siphonophore colony in harmonic agreement.",
-  "tags": ["harp", "chords", "full", "balanced", "ensemble"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "chords",
+    "full",
+    "balanced",
+    "ensemble"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.3, "density": 0.7, "space": 0.65, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.7,
+    "space": 0.65,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 8,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.2
     }
   },
-  "macros": {"PLUCK": 0.45, "SURFACE": 0.35, "FRACTURE": 0.1, "DIVINE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.45,
+    "SURFACE": 0.35,
+    "FRACTURE": 0.1,
+    "DIVINE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

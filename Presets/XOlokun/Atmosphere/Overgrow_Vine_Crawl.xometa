@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OVERGROW — the founding preset. Solo string, subtly alive. Play hard 30s: a runner may appear below.",
   "dna": {
@@ -11,10 +13,17 @@
     "space": 0.48,
     "aggression": 0.18
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
-  "name": "Vine Crawl",
+  "name": "Vine Crawl (Overgrow) (Overgrow)",
   "parameters": {
     "Overgrow": {
       "grow_damping": 0.45,
@@ -41,7 +50,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["overgrow", "string", "solo", "atmosphere", "karplus-strong", "wildness"],
+  "tags": [
+    "overgrow",
+    "string",
+    "solo",
+    "atmosphere",
+    "karplus-strong",
+    "wildness"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

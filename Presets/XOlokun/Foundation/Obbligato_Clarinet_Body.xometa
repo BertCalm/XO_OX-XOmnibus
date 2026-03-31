@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Clarinet Body",
   "mood": "Foundation",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full-body clarinet with warm low register, the cylindrical bore resonance in pure form.",
-  "tags": ["woodwind", "clarinet", "warm", "body", "cylindrical"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "clarinet",
+    "warm",
+    "body",
+    "cylindrical"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.7, "movement": 0.2, "density": 0.25, "space": 0.55, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.25,
+    "space": 0.55,
+    "aggression": 0.12
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 1,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.05
     }
   },
-  "macros": {"BOND": 0.0, "BREATH": 0.5, "WIND": 0.15, "MISCHIEF": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.0,
+    "BREATH": 0.5,
+    "WIND": 0.15,
+    "MISCHIEF": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

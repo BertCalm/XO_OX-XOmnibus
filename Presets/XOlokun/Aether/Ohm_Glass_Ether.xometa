@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Glass Ether",
   "mood": "Aether",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Max glass brightness spectral freeze, crystalline note suspended in the ether.",
-  "tags": ["aether", "glass", "suspended", "crystalline"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "aether",
+    "glass",
+    "suspended",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.18,
     "MEADOW": 0.96
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

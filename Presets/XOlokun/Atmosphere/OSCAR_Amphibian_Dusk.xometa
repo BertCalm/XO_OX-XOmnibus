@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Amphibian Dusk",
   "mood": "Atmosphere",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The hour between water and land — Oscar near the cave mouth as light fades. Gentle saw blend, warm Moog at dusk-level cutoff. LFO1 at 0.6 Hz traces the light's slow withdrawal.",
-  "tags": ["dusk", "atmospheric", "cave", "warm", "saw", "evening", "gentle"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dusk",
+    "atmospheric",
+    "cave",
+    "warm",
+    "saw",
+    "evening",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.76, "movement": 0.35, "density": 0.52, "space": 0.78, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.76,
+    "movement": 0.35,
+    "density": 0.52,
+    "space": 0.78,
+    "aggression": 0.1
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.75,
@@ -38,6 +60,13 @@
       "morph_macroSpace": 0.42
     }
   },
-  "macros": {"CHARACTER": 0.75, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

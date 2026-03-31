@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Morph Field",
   "mood": "Atmosphere",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's bloom at atmospheric maximum — extremely slow attack, heavy drift, wavetable morphing through an entire field of timbres. Environmental texture, not a musical sound.",
-  "tags": ["atmosphere", "morph", "bloom", "field", "ambient", "slow"],
-  "macroLabels": ["MORPH RANGE", "BLOOM RATE", "DRIFT DEPTH", "FILTER"],
+  "tags": [
+    "atmosphere",
+    "morph",
+    "bloom",
+    "field",
+    "ambient",
+    "slow"
+  ],
+  "macroLabels": [
+    "MORPH RANGE",
+    "BLOOM RATE",
+    "DRIFT DEPTH",
+    "FILTER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

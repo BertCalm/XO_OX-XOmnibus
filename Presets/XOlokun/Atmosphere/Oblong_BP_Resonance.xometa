@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "BP Resonance",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bandpass filter resonance atmospherically swept — warm amber vowel in space.",
-  "tags": ["atmosphere", "bandpass", "resonance", "vowel"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "bandpass",
+    "resonance",
+    "vowel"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.62, "movement": 0.4, "density": 0.48, "space": 0.72, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.62,
+    "movement": 0.4,
+    "density": 0.48,
+    "space": 0.72,
+    "aggression": 0.18
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.73
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

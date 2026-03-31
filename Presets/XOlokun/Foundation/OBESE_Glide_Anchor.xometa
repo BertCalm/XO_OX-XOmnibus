@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Glide Anchor",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.6,
     "MOVEMENT": 0.15,
     "COUPLING": 0.0,
     "SPACE": 0.0
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.35,
@@ -68,6 +77,13 @@
       "fat_macroCrush": 0.0
     }
   },
-  "tags": ["foundation", "bass", "glide", "mono", "warm", "obese"],
+  "tags": [
+    "foundation",
+    "bass",
+    "glide",
+    "mono",
+    "warm",
+    "obese"
+  ],
   "description": "Mono glide bass with massive sub — slide between bass lines like a vintage Minimoog. LFO2 at its 200-second floor gives imperceptible drift that prevents the sustained notes from feeling static."
 }

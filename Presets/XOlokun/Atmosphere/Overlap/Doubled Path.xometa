@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Low tangle (0.35) on the figure-eight preserves the sense of two distinct loops — like two voices walking parallel paths. Long 32ms delay base creates a thick, low-register feel. High diffusion at 0.7 and heavy dampening wash the high frequencies into a dark, warm haze. Very long release (7s).",
-  "dna": { "aggression": 0.06, "brightness": 0.35, "density": 0.6, "movement": 0.18, "space": 0.78, "warmth": 0.65 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.35,
+    "density": 0.6,
+    "movement": 0.18,
+    "space": 0.78,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Doubled Path",
   "parameters": {
@@ -58,7 +74,16 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "figure-eight", "dark", "warm", "deep", "ambient", "drone"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "figure-eight",
+    "dark",
+    "warm",
+    "deep",
+    "ambient",
+    "drone"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

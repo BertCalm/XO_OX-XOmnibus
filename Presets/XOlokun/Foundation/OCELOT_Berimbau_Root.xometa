@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Berimbau Root",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ground-level berimbau — KS string with gourd resonator. Understory chop gate running at steady quarter-note divisions. Birds fire on floor transients.",
-  "tags": ["foundation", "berimbau", "pluck", "percussive", "rhythmic", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "foundation",
+    "berimbau",
+    "pluck",
+    "percussive",
+    "rhythmic",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.18,
@@ -24,7 +38,9 @@
     "space": 0.45,
     "aggression": 0.18
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Arm Choir",
+  "name": "Arm Choir (Outwit)",
   "mood": "Family",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Eight arms tuned to a just-intonation chord \u2014 the cellular automaton as harmonic series. Each arm is a partial; the whole is an organ pipe that thinks.",
+  "description": "Eight arms tuned to a just-intonation chord — the cellular automaton as harmonic series. Each arm is a partial; the whole is an organ pipe that thinks.",
   "tags": [
     "family",
     "choir",

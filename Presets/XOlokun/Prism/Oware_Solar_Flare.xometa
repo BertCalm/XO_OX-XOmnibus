@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Solar metal eruption \u2014 bowl material with hard mallet, extreme brightness, short burst of spectral energy",
+  "description": "Solar metal eruption — bowl material with hard mallet, extreme brightness, short burst of spectral energy",
   "dna": {
     "aggression": 0.55,
     "brightness": 0.92,
@@ -29,7 +29,7 @@
     "SPACE": 0.62
   },
   "mood": "Prism",
-  "name": "Solar Flare",
+  "name": "Solar Flare (Oware)",
   "parameters": {
     "Oware": {
       "owr_material": 0.78,

@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 184 with maximum arm length \u2014 the traffic pattern extends across 64 cells, its memory reaching back 64 steps. Causality visible across a long time window.",
+  "description": "Rule 184 with maximum arm length — the traffic pattern extends across 64 cells, its memory reaching back 64 steps. Causality visible across a long time window.",
   "tags": [
     "aether",
     "memory",

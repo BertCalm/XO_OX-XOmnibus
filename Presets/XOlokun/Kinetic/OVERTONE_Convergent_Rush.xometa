@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Sqrt2 constant with LFO1 sweeping depth rapidly across the full 0\u20137 range. As depth sweeps, the convergent ratios cascade through the partial tower creating a rushing, overtone-waterfall effect. High velocity brightness. Filter slightly open to let all partials breathe. LFO2 shimmers the partial rotation. This is mathematics in motion.",
+  "description": "Sqrt2 constant with LFO1 sweeping depth rapidly across the full 0–7 range. As depth sweeps, the convergent ratios cascade through the partial tower creating a rushing, overtone-waterfall effect. High velocity brightness. Filter slightly open to let all partials breathe. LFO2 shimmers the partial rotation. This is mathematics in motion.",
   "dna": {
     "brightness": 0.72,
     "warmth": 0.38,

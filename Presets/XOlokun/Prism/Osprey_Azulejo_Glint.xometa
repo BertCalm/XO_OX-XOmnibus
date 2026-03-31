@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Azulejo Glint",
   "mood": "Prism",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Portuguese azulejo tiles catching Atlantic sun — blue prismatic glints off the coastal wall.",
-  "tags": ["prism", "azulejo", "portuguese", "glint"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "azulejo",
+    "portuguese",
+    "glint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.55, "movement": 0.55, "density": 0.42, "space": 0.58, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.55,
+    "movement": 0.55,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.22
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.42,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.58
     }
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

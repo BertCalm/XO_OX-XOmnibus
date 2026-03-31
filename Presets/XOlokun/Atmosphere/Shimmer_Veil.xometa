@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Shimmer Veil",
+  "name": "Shimmer Veil (Opal)",
   "mood": "Atmosphere",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High shimmer grain veil \u2014 wispy scattered grains drifting through a bright airy space.",
+  "description": "High shimmer grain veil — wispy scattered grains drifting through a bright airy space.",
   "tags": [
     "shimmer",
     "veil",

@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Lorenzini Meditation",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Two additive voices in deep LOVE (+0.85) with breathing LFO at human respiration rate. The ampullae of Lorenzini detect the faintest electromagnetic signatures — this preset detects the faintest gestures. AMPULLAE at maximum. Play softly and listen to the harmonics rearrange themselves with every breath.",
-  "tags": ["meditation", "breathing", "additive", "transcendental", "touch-sensitive"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "meditation",
+    "breathing",
+    "additive",
+    "transcendental",
+    "touch-sensitive"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +89,7 @@
       "ouie_macroCurrent": 0.2
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

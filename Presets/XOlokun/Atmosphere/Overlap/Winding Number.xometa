@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Torus T(7,4) — the 7:4 harmonic seventh ratio, a musical interval that sits between minor seventh and major sixth, slightly flat of both. The FDN delay lines locked to this alien ratio create partials that feel both familiar and wrong. Named for the winding number, the topological invariant of how many times the curve wraps the torus.",
-  "dna": { "aggression": 0.18, "brightness": 0.65, "density": 0.58, "movement": 0.38, "space": 0.65, "warmth": 0.42 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.65,
+    "density": 0.58,
+    "movement": 0.38,
+    "space": 0.65,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Winding Number",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "torus", "alien", "inharmonic", "harmonic-seventh", "exotic"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "torus",
+    "alien",
+    "inharmonic",
+    "harmonic-seventh",
+    "exotic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

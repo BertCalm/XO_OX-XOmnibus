@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Floor Beat",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rainforest floor percussion — kick model on the forest floor, damp and organic.",
-  "tags": ["floor", "beat", "foundation", "percussion", "kick", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "floor",
+    "beat",
+    "foundation",
+    "percussion",
+    "kick",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.65, "movement": 0.55, "density": 0.7, "space": 0.3, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.5
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.2
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

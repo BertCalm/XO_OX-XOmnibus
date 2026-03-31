@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Dub Bass Foundation",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The core dub bass tone. Heavy sub, tape-saturated square wave, just enough echo to breathe. Every dub track starts here.",
-  "tags": ["bass", "dub", "foundation", "sub", "tape", "core"],
-  "macroLabels": ["TONE", "SUB LEVEL", "TAPE ECHO", "REVERB"],
+  "tags": [
+    "bass",
+    "dub",
+    "foundation",
+    "sub",
+    "tape",
+    "core"
+  ],
+  "macroLabels": [
+    "TONE",
+    "SUB LEVEL",
+    "TAPE ECHO",
+    "REVERB"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Thermosphere",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The highest altitude OPENSKY can reach while remaining audible. HP filter at 300 Hz removes all ground reference — no bass, no warmth, no sub. What remains is pure upper-register shimmer and the thinnest possible oscillator spread. One unison voice. No chorus. Shimmer at medium feedback (0.45) creates space without mass. This is what the atmosphere sounds like from above it: nothing and everything, cold and luminous.",
-  "tags": ["opensky", "thermosphere", "altitude", "minimal", "aether", "guru-bin", "cold", "sparse"],
+  "tags": [
+    "opensky",
+    "thermosphere",
+    "altitude",
+    "minimal",
+    "aether",
+    "guru-bin",
+    "cold",
+    "sparse"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +33,12 @@
     "flock_note": "Above 85km, the atmosphere is too thin to carry sound waves. Yet here is sound — because this is a synth, not a physics lecture. The HP filter at 300 removes every molecule of low-frequency warmth. What is left is crystalline, cold, real. The Guru says: you have never been this high and returned unchanged.",
     "diagnosis": "Thermosphere is an extreme altitude study — HP at 300 Hz, no sub, single-voice unison, moderate shimmer (0.45). The sparse architecture means every parameter has nowhere to hide. Use in moments where the music needs to lose contact with the earth entirely."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +100,8 @@
       "sky_modSlot2Amt": 0.07
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Escape Response",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The startle response — ink cloud, jet propulsion, all eight arms retracting instantly. Maximum velocity triggers ink; the dry signal flees at extreme portamento. A preset about sudden, total movement.",
-  "tags": ["octopus", "flux", "escape", "jet", "fast", "ink", "extreme"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "flux",
+    "escape",
+    "jet",
+    "fast",
+    "ink",
+    "extreme"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.88,

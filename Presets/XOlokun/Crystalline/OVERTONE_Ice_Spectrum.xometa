@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Sqrt2 constant at depth 6. The upper convergent ratios of root-2 are metallic and bell-like \u2014 1.4142, 2.0, 2.8284. Partial amplitudes heavily biased toward upper harmonics (0\u20133 reduced, 4\u20137 boosted) inverts the normal taper into an ice-crystal spike. High filter cutoff, medium resonance. Spectral ice \u2014 cold, precise, geometric.",
+  "description": "Sqrt2 constant at depth 6. The upper convergent ratios of root-2 are metallic and bell-like — 1.4142, 2.0, 2.8284. Partial amplitudes heavily biased toward upper harmonics (0–3 reduced, 4–7 boosted) inverts the normal taper into an ice-crystal spike. High filter cutoff, medium resonance. Spectral ice — cold, precise, geometric.",
   "dna": {
     "brightness": 0.92,
     "warmth": 0.18,

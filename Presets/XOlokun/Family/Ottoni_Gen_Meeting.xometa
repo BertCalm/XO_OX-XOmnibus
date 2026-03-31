@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Gen Meeting",
   "mood": "Family",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Toddler trumpet meeting teen horn meeting tween trombone — three generations in frank conference.",
-  "tags": ["brass", "family", "meeting", "generations", "conference"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "family",
+    "meeting",
+    "generations",
+    "conference"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.68, "movement": 0.38, "density": 0.52, "space": 0.62, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.38,
+    "density": 0.52,
+    "space": 0.62,
+    "aggression": 0.22
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.05
     }
   },
-  "macros": {"GROW": 0.68, "EMBOUCHURE": 0.55, "LAKE": 0.48, "FOREIGN": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.68,
+    "EMBOUCHURE": 0.55,
+    "LAKE": 0.48,
+    "FOREIGN": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

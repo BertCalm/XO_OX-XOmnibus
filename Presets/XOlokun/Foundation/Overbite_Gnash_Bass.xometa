@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Gnash Bass",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aggressive midrange bass with tooth-gnashing distortion and a tight amp envelope.",
-  "tags": ["bass", "distorted", "aggressive", "midrange"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "distorted",
+    "aggressive",
+    "midrange"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.2, "density": 0.6, "space": 0.2, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.2,
+    "aggression": 0.75
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -41,6 +61,14 @@
       "poss_macroPlayDead": 0.1
     }
   },
-  "macros": {"BELLY": 0.5, "BITE": 0.7, "SCURRY": 0.2, "TRASH": 0.4, "PLAY DEAD": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.7,
+    "SCURRY": 0.2,
+    "TRASH": 0.4,
+    "PLAY DEAD": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

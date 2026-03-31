@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 22 (class 3) at 30 Hz \u2014 the fastest, most chaotic preset in the OUTWIT library.",
+  "description": "Rule 22 (class 3) at 30 Hz — the fastest, most chaotic preset in the OUTWIT library.",
   "dna": {
     "aggression": 0.85,
     "brightness": 0.75,

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Figure-Eight Eternity",
   "mood": "Aether",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Figure-Eight at tangle depth 0.95, feedback 0.89, 16-second release. The alternating-sign coupling means the tail alternates between two spectral profiles on consecutive routing cycles — a decay composed of doublets. Every two cycles the spectral character flips. The tail does not smooth toward silence; it steps.",
-  "tags": ["figure-eight", "eternity", "aether", "doublet", "spectral", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "figure-eight",
+    "eternity",
+    "aether",
+    "doublet",
+    "spectral",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

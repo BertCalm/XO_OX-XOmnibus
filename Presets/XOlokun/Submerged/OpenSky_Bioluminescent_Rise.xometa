@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Bioluminescent Rise",
   "mood": "Submerged",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bioluminescent plankton triggered by current: cold blue light that flickers then blooms. OpenSky's shimmer shimmer octave set low creates ghostly sub-octave trails. Filter is slightly brighter to let the high-frequency glow through — like light in an otherwise black column of water.",
-  "tags": ["pad", "bioluminescent", "shimmer", "submerged", "dark", "glow", "plankton"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "pad",
+    "bioluminescent",
+    "shimmer",
+    "submerged",
+    "dark",
+    "glow",
+    "plankton"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

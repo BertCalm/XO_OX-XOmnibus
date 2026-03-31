@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OMEGA — the DX7 FM bass that defined the 1980s. Arrives complex, distills toward fundamental over sustain.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.22,
     "aggression": 0.28
   },
-  "engines": ["Omega"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "DX Essence",
   "parameters": {
@@ -40,7 +49,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["omega", "fm", "bass", "foundation", "dx7", "classic"],
+  "tags": [
+    "omega",
+    "fm",
+    "bass",
+    "foundation",
+    "dx7",
+    "classic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

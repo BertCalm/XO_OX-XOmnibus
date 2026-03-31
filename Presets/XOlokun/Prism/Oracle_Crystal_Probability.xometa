@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Crystal Probability",
   "mood": "Prism",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystalline stochastic structure — probability locked into geometric lattice patterns.",
-  "tags": ["prism", "crystal", "geometric", "structured"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "crystal",
+    "geometric",
+    "structured"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.35, "movement": 0.5, "density": 0.5, "space": 0.6, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.35,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.25
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.55,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.6
     }
   },
-  "macros": {"DRIFT": 0.4, "EVOLUTION": 0.5, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.4,
+    "EVOLUTION": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

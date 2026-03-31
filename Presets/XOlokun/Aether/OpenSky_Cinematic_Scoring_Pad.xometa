@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Scoring Pad",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Clean, bright 4-voice supersaw designed for film scoring. Sub adds fundamental weight. Moderate shimmer keeps it from being too clean. Professional and versatile.",
-  "tags": ["cinematic", "scoring", "pad", "professional", "versatile", "genre-spotlight"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "cinematic",
+    "scoring",
+    "pad",
+    "professional",
+    "versatile",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.62, "movement": 0.35, "density": 0.68, "space": 0.85, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.68,
+    "space": 0.85,
+    "aggression": 0.08
+  },
   "parameters": {
     "OpenSky": {
       "sky_sawSpread": 0.55,
@@ -63,6 +84,13 @@
       "sky_modSlot2Amt": 0.2
     }
   },
-  "macros": {"RISE": 0.55, "WIDTH": 0.72, "GLOW": 0.45, "AIR": 0.68},
-  "coupling": {"pairs": []}
+  "macros": {
+    "RISE": 0.55,
+    "WIDTH": 0.72,
+    "GLOW": 0.45,
+    "AIR": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

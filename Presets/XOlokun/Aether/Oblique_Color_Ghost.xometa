@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Color Ghost",
   "mood": "Aether",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ghost trace of prismatic color — near-silent bounce, maximum damping, ethereal wash.",
-  "tags": ["ghost", "color", "trace", "ethereal"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "ghost",
+    "color",
+    "trace",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.48, "movement": 0.1, "density": 0.25, "space": 0.95, "aggression": 0.03},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.48,
+    "movement": 0.1,
+    "density": 0.25,
+    "space": 0.95,
+    "aggression": 0.03
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.95
     }
   },
-  "macros": {"BOUNCE": 0.12, "COLOR": 0.55, "FOLD": 0.15, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.12,
+    "COLOR": 0.55,
+    "FOLD": 0.15,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

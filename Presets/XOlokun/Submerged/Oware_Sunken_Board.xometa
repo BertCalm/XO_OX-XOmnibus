@@ -33,7 +33,7 @@
   "parameters": {
     "Oware": {
       "owr_material": 0.34,
-      "owr_malletHardness": 0.20,
+      "owr_malletHardness": 0.2,
       "owr_bodyType": 2,
       "owr_bodyDepth": 0.88,
       "owr_buzzAmount": 0.06,

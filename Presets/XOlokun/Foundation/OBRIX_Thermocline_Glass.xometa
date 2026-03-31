@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Thermocline Glass",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Red Sea Thermocline: where warm surface water meets cool deep water at 50m — a sharp invisible boundary you can feel with your hand. Above: clear blue. Below: cold dark. Air parameter split exactly at 0.5 — spectral tilt perfectly balanced. Wavefolder at the post-mix adds the refractive shimmer at the boundary.",
-  "tags": ["obrix", "foundation", "place", "red-sea", "thermocline", "boundary", "sharp", "glass"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "place",
+    "red-sea",
+    "thermocline",
+    "boundary",
+    "sharp",
+    "glass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +119,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

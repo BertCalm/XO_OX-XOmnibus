@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Deep Trash",
   "mood": "Submerged",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pressurized deep bass from underground dumpsters — maximum sub weight with wavefolded destruction.",
-  "tags": ["sub", "bass", "deep", "destructive"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "sub",
+    "bass",
+    "deep",
+    "destructive"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.7, "movement": 0.2, "density": 0.8, "space": 0.2, "aggression": 0.7},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.8,
+    "space": 0.2,
+    "aggression": 0.7
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -40,6 +60,14 @@
       "poss_macroPlayDead": 0.1
     }
   },
-  "macros": {"BELLY": 0.85, "BITE": 0.3, "SCURRY": 0.15, "TRASH": 0.65, "PLAY DEAD": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.85,
+    "BITE": 0.3,
+    "SCURRY": 0.15,
+    "TRASH": 0.65,
+    "PLAY DEAD": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Riddim Core",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Triangle wave bass with tight attack, the rhythmic skeleton of any riddim.",
-  "tags": ["foundation", "bass", "riddim", "triangle", "rhythm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "bass",
+    "riddim",
+    "triangle",
+    "rhythm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,7 +69,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.1, "COUPLING": 0.25, "SPACE": 0.1},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.25, "warmth": 0.75, "movement": 0.15, "density": 0.8, "space": 0.12, "aggression": 0.35}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.25,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.8,
+    "space": 0.12,
+    "aggression": 0.35
+  }
 }

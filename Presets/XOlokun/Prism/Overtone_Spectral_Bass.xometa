@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Spectral Bass",
+  "name": "Spectral Bass (Overtone)",
   "mood": "Prism",
   "engines": [
     "Overtone"

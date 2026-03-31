@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Spectral Boundary",
   "mood": "Aether",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "10ms Rectangular window grains at density=90. The grain boundary clicks from the hard-windowed 10ms segments accumulate into metallic crunch at this density. The ear cannot resolve 10ms temporal structure — it hears the spectral content of the grain boundaries themselves as continuous texture. The boundary between time-domain and frequency-domain hearing is audible here.",
-  "tags": ["spectral-blur", "rectangular", "10ms", "grain-boundaries", "aether", "metallic", "frequency-domain"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "spectral-blur",
+    "rectangular",
+    "10ms",
+    "grain-boundaries",
+    "aether",
+    "metallic",
+    "frequency-domain"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

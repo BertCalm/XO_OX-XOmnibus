@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bubble Column",
+  "name": "Bubble Column (Overlap)",
   "mood": "Atmosphere",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A rising column of micro-bubbles translated into the FDN matrix \u2014 the unknot topology creates a vertical, spiraling ascent. Modulation mimics the irregular timing of natural bubble streams.",
+  "description": "A rising column of micro-bubbles translated into the FDN matrix — the unknot topology creates a vertical, spiraling ascent. Modulation mimics the irregular timing of natural bubble streams.",
   "tags": [
     "bubbles",
     "ascending",

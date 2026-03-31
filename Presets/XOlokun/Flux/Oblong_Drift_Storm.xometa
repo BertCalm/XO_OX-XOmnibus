@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Drift Storm",
+  "name": "Drift Storm (Oblong)",
   "mood": "Flux",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum oscillator drift creates detuning storm — amber oscillators unmooring completely.",
-  "tags": ["flux", "drift", "detuning", "storm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "drift",
+    "detuning",
+    "storm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.85, "density": 0.62, "space": 0.42, "aggression": 0.7},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.85,
+    "density": 0.62,
+    "space": 0.42,
+    "aggression": 0.7
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.83
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

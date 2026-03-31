@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Alien Fragments",
   "mood": "Entangled",
-  "engines": ["Odyssey", "Opal"],
+  "engines": [
+    "Odyssey",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drift's envelope and LFO co-pilot Opal's grain position and filter — the pad unfolds into scattered particles, each fragment carrying a slice of the psychedelic journey.",
-  "tags": ["coupling", "Odyssey-pair", "granular", "pad", "dialogue", "psychedelic"],
-  "macroLabels": ["JOURNEY", "BREATHE", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Odyssey-pair",
+    "granular",
+    "pad",
+    "dialogue",
+    "psychedelic"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-14",

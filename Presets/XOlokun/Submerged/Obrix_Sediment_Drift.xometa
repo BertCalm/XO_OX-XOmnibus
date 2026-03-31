@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Sediment Drift",
+  "name": "Sediment Drift (Obrix)",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Peaceful resolve — fine particles suspended in a slow current, settling over time. Drift Bus is the engine soul: driftRate=0.011, driftDepth=0.92, the highest driftDepth in this collection. Journey Mode allows the sediment to keep settling without interruption. Saw src1 at -12 semitones (sub register) with Noise src2 very low in mix (0.15) for the grain. proc1=LP (480 Hz, gentle reso 0.2) shapes the cloud. LFO->Pan (slow, 0.009 Hz) gently rotates the stereo field like a deep current; Env->FilterCutoff (slow bloom); Velocity->Volume; Aftertouch->FXMix. The peaceful end of the Submerged collection — not deep darkness but serene acceptance.",
-  "tags": ["obrix", "submerged", "drift", "journey", "peaceful", "slow-lfo", "sediment", "settling"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "drift",
+    "journey",
+    "peaceful",
+    "slow-lfo",
+    "sediment",
+    "settling"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.1,

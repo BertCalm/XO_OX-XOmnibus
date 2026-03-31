@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Detune Prism",
+  "name": "Detune Prism (Obese)",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High detune creates beating patterns between oscillator groups that refract sound into a shimmering, beating prismatic texture — mojo at 0.7 for digital shimmer.",
-  "tags": ["prism", "detune", "shimmer", "beating", "wide"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "detune",
+    "shimmer",
+    "beating",
+    "wide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.65, "density": 0.75, "space": 0.55, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.65,
+    "density": 0.75,
+    "space": 0.55,
+    "aggression": 0.3
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.5,
@@ -46,6 +66,13 @@
       "fat_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

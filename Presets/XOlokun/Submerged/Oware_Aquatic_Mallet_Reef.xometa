@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Mallet Reef",
   "mood": "Submerged",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aquatic Chain showcase: OWARE's mallet percussion through the full Aquatic Chain — a combination that gives struck wood the resonance of stone underwater. Fathom Character 0.2 (deep emphasis) darkens the upper harmonic partials that wooden modes produce, leaving the fundamental modes dominant. Drift at 3 voices extends sympathetic resonance across the stereo field. Reef at size 0.65 and high decay gives each mallet strike an extended underwater reverb tail. Tide off — the rhythmic articulation of mallet strikes provides its own movement.",
-  "tags": ["oware", "mallet", "percussion", "aquatic-chain", "fathom", "drift", "reef", "submerged", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "oware",
+    "mallet",
+    "percussion",
+    "aquatic-chain",
+    "fathom",
+    "drift",
+    "reef",
+    "submerged",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oware": {
       "owr_material": 0.22,
@@ -30,20 +51,22 @@
       "owr_ampDecay": 1.8,
       "owr_ampSustain": 0.0,
       "owr_ampRelease": 2.5,
-      "owr_macroCharacter": 0.30,
+      "owr_macroCharacter": 0.3,
       "owr_macroMovement": 0.18,
       "owr_macroCoupling": 0.0,
       "owr_macroSpace": 0.68
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.40,
+    "brightness": 0.4,
     "warmth": 0.65,
     "movement": 0.18,
     "density": 0.55,
-    "space": 0.80,
+    "space": 0.8,
     "aggression": 0.14
   }
 }

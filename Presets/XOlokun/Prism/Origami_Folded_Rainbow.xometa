@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Folded Rainbow",
   "mood": "Prism",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Eight folds catching every color — a paper rainbow of prismatic fold states.",
-  "tags": ["prism", "rainbow", "eight-fold", "colorful"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "rainbow",
+    "eight-fold",
+    "colorful"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.5, "movement": 0.62, "density": 0.55, "space": 0.6, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.5,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.32
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.6
     }
   },
-  "macros": {"FOLD": 0.65, "MOTION": 0.62, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.65,
+    "MOTION": 0.62,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

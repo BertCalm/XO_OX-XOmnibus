@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Frozen String",
   "mood": "Atmosphere",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High spectral-freeze bowed metal string, crystallized in a winter atmosphere.",
-  "tags": ["atmosphere", "frozen", "crystallized", "winter"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "atmosphere",
+    "frozen",
+    "crystallized",
+    "winter"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.25,
     "MEADOW": 0.85
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

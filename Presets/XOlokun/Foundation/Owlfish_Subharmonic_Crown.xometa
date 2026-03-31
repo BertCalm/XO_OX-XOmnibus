@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Subharmonic Crown",
   "mood": "Foundation",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Three stacked subharmonic divisions form a crown of low partials — Mixtur-Trautonium ratio tuned for maximum bass authority.",
-  "tags": ["foundation", "sub-bass", "stacked", "mixtur-trautonium", "abyssal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "sub-bass",
+    "stacked",
+    "mixtur-trautonium",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +79,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.85, "MOVEMENT": 0.08, "COUPLING": 0.25, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.25,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

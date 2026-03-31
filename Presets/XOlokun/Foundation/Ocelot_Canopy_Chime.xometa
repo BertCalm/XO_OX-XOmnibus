@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Canopy Chime",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High canopy shimmer with bird creatures — light, airy, the ceiling of the rainforest in tone.",
-  "tags": ["canopy", "chime", "foundation", "shimmer", "birds", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "canopy",
+    "chime",
+    "foundation",
+    "shimmer",
+    "birds",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.45, "movement": 0.5, "density": 0.45, "space": 0.65, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.45,
+    "movement": 0.5,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.2
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.8
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

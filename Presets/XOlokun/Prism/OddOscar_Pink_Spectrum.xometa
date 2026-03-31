@@ -2,18 +2,64 @@
   "schema_version": 1,
   "name": "Pink Spectrum",
   "mood": "Prism",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pink spectral morph — gill pink refracted through the prism into rose and magenta bands.",
-  "tags": ["pink", "spectral", "rose", "magenta"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pink",
+    "spectral",
+    "rose",
+    "magenta"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.7, "movement": 0.52, "density": 0.55, "space": 0.52, "aggression": 0.2},
-  "parameters": {
-    "OddOscar": {"morph_morph": 0.62, "morph_bloom": 0.68, "morph_detune": 0.18, "morph_drift": 0.42, "morph_filterCutoff": 5200.0, "morph_filterReso": 0.52, "morph_filterEnvDepth": 0.58, "morph_sub": 0.32, "morph_decay": 0.8, "morph_sustain": 0.75, "morph_release": 2.0, "morph_glide": 0.1, "morph_voiceMode": 0, "morph_polyphony": 6, "morph_level": 0.72, "morph_macroBloom": 0.68, "morph_macroDepth": 0.62, "morph_macroDrift": 0.42, "morph_macroSpace": 0.52}
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.7,
+    "movement": 0.52,
+    "density": 0.55,
+    "space": 0.52,
+    "aggression": 0.2
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.62,
+      "morph_bloom": 0.68,
+      "morph_detune": 0.18,
+      "morph_drift": 0.42,
+      "morph_filterCutoff": 5200.0,
+      "morph_filterReso": 0.52,
+      "morph_filterEnvDepth": 0.58,
+      "morph_sub": 0.32,
+      "morph_decay": 0.8,
+      "morph_sustain": 0.75,
+      "morph_release": 2.0,
+      "morph_glide": 0.1,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.72,
+      "morph_macroBloom": 0.68,
+      "morph_macroDepth": 0.62,
+      "morph_macroDrift": 0.42,
+      "morph_macroSpace": 0.52
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

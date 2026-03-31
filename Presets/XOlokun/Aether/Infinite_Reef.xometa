@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Infinite Reef",
+  "name": "Infinite Reef (Obrix) (Obrix)",
   "mood": "Aether",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Every brick type active. All 3 FX engaged. Drift Bus, Journey Mode, FLASH. The full OBRIX architecture singing at once. The reef at its most alive — the transcendence preset.",
-  "tags": ["obrix", "transcendent", "generative", "complex", "evolving"],
+  "tags": [
+    "obrix",
+    "transcendent",
+    "generative",
+    "complex",
+    "evolving"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
-    "scripture": ["Blessing B016: Brick Independence", "Verse 1: Every Brick Type Active"],
+    "scripture": [
+      "Blessing B016: Brick Independence",
+      "Verse 1: Every Brick Type Active"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Eye saw all three FX lit simultaneously — the only preset that uses the full OBRIX architecture at once.",

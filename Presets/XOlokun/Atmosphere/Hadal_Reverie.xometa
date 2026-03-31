@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-08",
-  "name": "Hadal Reverie",
+  "name": "Abyss Pad",
   "description": "Ethereal dub atmospheres wash with deep dub echo and vast reverb space.",
   "dna": {
     "aggression": 0.182,
@@ -30,7 +30,6 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Abyss Pad",
   "parameters": {
     "Overdub": {
       "dub_attack": 1.0,

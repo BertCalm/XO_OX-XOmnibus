@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Iron Slab",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.65,
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.05
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.3,
@@ -68,6 +77,13 @@
       "fat_macroCrush": 0.05
     }
   },
-  "tags": ["foundation", "bass", "dense", "analog", "thick", "obese"],
+  "tags": [
+    "foundation",
+    "bass",
+    "dense",
+    "analog",
+    "thick",
+    "obese"
+  ],
   "description": "Monolithic bass block — Mojo at 0.72 means 13 oscillators all drifting against each other. Sub buried deep, LFO1 breathes the filter open and shut like a giant chest."
 }

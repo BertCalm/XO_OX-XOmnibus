@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mother Tone",
   "mood": "Family",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep, steady, sustaining bass — the maternal foundation that holds the whole family together.",
-  "tags": ["bass", "steady", "deep", "sustain"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "steady",
+    "deep",
+    "sustain"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.85, "movement": 0.15, "density": 0.65, "space": 0.35, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.85,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.2
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 1,
@@ -34,6 +54,14 @@
       "poss_macroPlayDead": 0.2
     }
   },
-  "macros": {"BELLY": 0.8, "BITE": 0.15, "SCURRY": 0.1, "TRASH": 0.05, "PLAY DEAD": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.8,
+    "BITE": 0.15,
+    "SCURRY": 0.1,
+    "TRASH": 0.05,
+    "PLAY DEAD": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

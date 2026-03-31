@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Canopy Shred",
   "mood": "Flux",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum canopy shimmer with high creature rate — the treetops in sonic frenzy.",
-  "tags": ["canopy", "shred", "flux", "shimmer", "frenzy", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "canopy",
+    "shred",
+    "flux",
+    "shimmer",
+    "frenzy",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.4, "movement": 0.9, "density": 0.72, "space": 0.35, "aggression": 0.8},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.9,
+    "density": 0.72,
+    "space": 0.35,
+    "aggression": 0.8
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 3,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.92
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

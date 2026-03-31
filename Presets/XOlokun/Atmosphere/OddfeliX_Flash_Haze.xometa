@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Flash Haze",
   "mood": "Atmosphere",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Long downward sweep with many voices creating a haze of fading neon traces.",
-  "tags": ["haze", "sweep", "atmospheric", "fade"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "haze",
+    "sweep",
+    "atmospheric",
+    "fade"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.38, "movement": 0.35, "density": 0.65, "space": 0.82, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.35,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.12
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.6
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

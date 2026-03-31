@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Thumb Piano Modern",
   "mood": "Prism",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mbira lineage re-imagined through the ClaviStringModel. Pickup at middle position for balanced harmonics, high sustain, quiet clunk. A contemporary producer's take on the ancestral thumb piano tone.",
-  "tags": ["clavinet", "mbira", "thumb-piano", "modern", "prism", "ancestral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "mbira",
+    "thumb-piano",
+    "modern",
+    "prism",
+    "ancestral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

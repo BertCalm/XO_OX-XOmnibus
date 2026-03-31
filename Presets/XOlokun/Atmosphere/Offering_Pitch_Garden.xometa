@@ -14,13 +14,20 @@
     "space": 0.75,
     "warmth": 0.6
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Atmosphere",
   "name": "Pitch Garden",
   "parameters": {
@@ -43,8 +50,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["pitched", "melodic", "bay area", "tonal", "harmonic"],
+  "tags": [
+    "pitched",
+    "melodic",
+    "bay area",
+    "tonal",
+    "harmonic"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.65, "M2": 0.8, "M3": 0.0, "M4": 0.15}
+  "macros": {
+    "M1": 0.65,
+    "M2": 0.8,
+    "M3": 0.0,
+    "M4": 0.15
+  }
 }

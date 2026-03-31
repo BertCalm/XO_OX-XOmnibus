@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Velvet Machine (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Cajon simulates the 808 kick body — warm and low. The beatbox snare snaps with surgical precision on 2 and 4, swathed in gated room reverb. Hi-hat triplets in seat 3 push against the grid like a human fighting a drum machine, and losing perfectly.",
-  "tags": ["synthwave", "cajon", "808-feel", "gated", "80s", "velvet"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "synthwave",
+    "cajon",
+    "808-feel",
+    "gated",
+    "80s",
+    "velvet"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 108,
   "dna": {

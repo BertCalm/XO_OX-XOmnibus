@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Entrainment Surge",
+  "name": "Entrainment Surge (Overlap) (Overlap) 2",
   "mood": "Flux",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Pulse rate escalating via macroPulse — from slow pulse coupling (0.01 Hz) to near-locked oscillation (8 Hz). At macroPulse=0: voices drift independently. At macroPulse=1.0: the pulse becomes a rhythmic element at 8 times per second. macroEntrain at 0.6 adds strong-but-not-locked coupling.",
-  "tags": ["pulse", "entrainment", "surge", "flux", "rhythmic", "macro", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "pulse",
+    "entrainment",
+    "surge",
+    "flux",
+    "rhythmic",
+    "macro",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

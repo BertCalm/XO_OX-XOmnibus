@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "The ∞ symbol IS a figure-eight. Here, very high entrainment (0.9) locks the 6 Kuramoto oscillators into near-unison at a very slow 0.18 Hz — the whole figure-eight breathes as one. Tangle at 0.6 keeps the topology active but entrainment smooths all variation into a single unified breath. Meditative.",
-  "dna": { "aggression": 0.08, "brightness": 0.42, "density": 0.62, "movement": 0.15, "space": 0.8, "warmth": 0.6 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.42,
+    "density": 0.62,
+    "movement": 0.15,
+    "space": 0.8,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Infinity Shore",
   "parameters": {
@@ -58,7 +74,16 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "figure-eight", "entrainment", "meditative", "infinite", "breathing", "unified"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "figure-eight",
+    "entrainment",
+    "meditative",
+    "infinite",
+    "breathing",
+    "unified"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

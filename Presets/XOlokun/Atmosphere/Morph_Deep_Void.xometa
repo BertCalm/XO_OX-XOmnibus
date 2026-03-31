@@ -36,7 +36,7 @@
       "morph_morph": 0.35,
       "morph_bloom": 0.88,
       "morph_decay": 8.0,
-      "morph_sustain": 0.90,
+      "morph_sustain": 0.9,
       "morph_release": 10.0,
       "morph_filterCutoff": 3800.0,
       "morph_filterReso": 0.08,

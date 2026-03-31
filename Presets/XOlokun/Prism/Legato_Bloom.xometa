@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Per OWL-IV: morphGlide=0.92. Every legato note is a metamorphosis. The bloom between pitches IS the instrument \u2014 not a transition, not a portamento artifact. The target note is almost irrelevant; the journey is the sound. Mod wheel controls glide speed (slow=geological, fast=predatory lunge). Aftertouch shifts bodyFreq envelope \u2014 press harder and the habitat shifts. bodyFreq=55Hz (A permanent center).",
+  "description": "Per OWL-IV: morphGlide=0.92. Every legato note is a metamorphosis. The bloom between pitches IS the instrument — not a transition, not a portamento artifact. The target note is almost irrelevant; the journey is the sound. Mod wheel controls glide speed (slow=geological, fast=predatory lunge). Aftertouch shifts bodyFreq envelope — press harder and the habitat shifts. bodyFreq=55Hz (A permanent center).",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.55,

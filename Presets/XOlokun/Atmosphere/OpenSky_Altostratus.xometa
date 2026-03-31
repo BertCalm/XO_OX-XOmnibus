@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Altostratus",
   "mood": "Atmosphere",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-altitude sheet cloud diffusing the light into an even grey-white glow across the whole sky.",
-  "tags": ["diffuse", "grey", "atmospheric", "mid-altitude"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "diffuse",
+    "grey",
+    "atmospheric",
+    "mid-altitude"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -51,5 +63,7 @@
     "COUPLING": 0.0,
     "SPACE": 0.88
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

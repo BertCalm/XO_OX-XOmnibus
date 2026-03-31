@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Open Ocean Hymn",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow wavetable scan through the mid-to-upper table produces long, swelling formant tones — a reverent atmosphere pad suited to wide, open passages.",
-  "tags": ["atmosphere", "hymn", "pad", "swelling", "open"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "hymn",
+    "pad",
+    "swelling",
+    "open"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.6, "movement": 0.3, "density": 0.5, "space": 0.85, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.6,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.85
     }
   },
-  "macros": {"HUNT": 0.15, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.15,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Snap Bright Attack",
   "mood": "Prism",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP at maximum brightness — high filter, sharp transient, no sustain. Pure attack energy as a tonal accent. Plays across the keyboard for metallic pitched hits.",
-  "tags": ["snap", "bright", "attack", "transient", "metallic", "prism"],
-  "macroLabels": ["SNAP AMOUNT", "BRIGHTNESS", "DETUNE SPREAD", "RESO"],
+  "tags": [
+    "snap",
+    "bright",
+    "attack",
+    "transient",
+    "metallic",
+    "prism"
+  ],
+  "macroLabels": [
+    "SNAP AMOUNT",
+    "BRIGHTNESS",
+    "DETUNE SPREAD",
+    "RESO"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

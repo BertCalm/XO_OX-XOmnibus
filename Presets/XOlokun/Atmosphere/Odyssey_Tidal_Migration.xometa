@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Tidal Migration",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The tidal pulse as a migration engine — tidalDepth at 0.7 creates a slow filter sweep that covers a full octave of frequency space every 5 seconds. FM adds harmonic sideband content that the tidal sweep reveals and conceals in sequence. The sound migrates through the filter continuously.",
-  "tags": ["odyssey", "tidal", "migration", "fm", "atmosphere", "filter", "sweep", "transcendental"],
+  "tags": [
+    "odyssey",
+    "tidal",
+    "migration",
+    "fm",
+    "atmosphere",
+    "filter",
+    "sweep",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-7: Two Timescales of Motion Make the Sound Feel Like Weather"],
+    "scripture": [
+      "Scripture VII-7: Two Timescales of Motion Make the Sound Feel Like Weather"
+    ],
     "revelation": "The tidal filter sweep and the FM sideband content interact: as the tide moves the filter cutoff, different sidebands are highlighted and suppressed in turn. The sound changes character every 2 seconds without any MIDI input.",
     "diagnosis": "Tidal Migration is the BREATHE macro fully realized. tidalDepth=0.7 + tidalRate=0.2 Hz creates a smooth 5-second sweep. FM at OscA provides the sideband content for the sweep to reveal. This preset requires no performance — it performs itself."
   },
-  "macroLabels": ["TIDAL DEPTH", "FM SIDEBANDS", "TIDAL SPEED", "REVERB OPEN"],
+  "macroLabels": [
+    "TIDAL DEPTH",
+    "FM SIDEBANDS",
+    "TIDAL SPEED",
+    "REVERB OPEN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

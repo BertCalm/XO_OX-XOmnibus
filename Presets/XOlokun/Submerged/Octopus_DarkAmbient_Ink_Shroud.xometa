@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Ink Shroud",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Ink cloud deployed at near-maximum density — a tonal blackout. Arms modulate slowly under the shroud. When the ink dissipates, a changed sound emerges. Alien intelligence.",
-  "tags": ["dark-ambient", "ink", "alien", "obscured", "evolving", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dark-ambient",
+    "ink",
+    "alien",
+    "obscured",
+    "evolving",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.08, "warmth": 0.58, "movement": 0.28, "density": 0.85, "space": 0.82, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.58,
+    "movement": 0.28,
+    "density": 0.85,
+    "space": 0.82,
+    "aggression": 0.22
+  },
   "parameters": {
     "Octopus": {
       "octo_armCount": 7,
@@ -60,6 +81,13 @@
       "octo_macroSpace": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

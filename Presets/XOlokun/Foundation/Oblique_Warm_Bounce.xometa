@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Warm Bounce",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm bounce foundation — moderate bounce count, warm color, gentle phaser movement.",
-  "tags": ["bounce", "warm", "gentle", "phaser"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "bounce",
+    "warm",
+    "gentle",
+    "phaser"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.68, "movement": 0.22, "density": 0.58, "space": 0.42, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.58,
+    "space": 0.42,
+    "aggression": 0.18
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.42
     }
   },
-  "macros": {"BOUNCE": 0.35, "COLOR": 0.65, "FOLD": 0.15, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.35,
+    "COLOR": 0.65,
+    "FOLD": 0.15,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

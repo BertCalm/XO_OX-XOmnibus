@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Fat Stack",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's 12-oscillator foundation at its most direct. Maximum density, wide stereo, deep sub. The wall-of-sound basis for heavy production.",
-  "tags": ["fat", "bass", "dense", "stack", "massive", "foundation"],
-  "macroLabels": ["MORPH", "MOJO DRIVE", "DETUNE", "SUB LEVEL"],
+  "tags": [
+    "fat",
+    "bass",
+    "dense",
+    "stack",
+    "massive",
+    "foundation"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "MOJO DRIVE",
+    "DETUNE",
+    "SUB LEVEL"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Chimera Atmosphere (Orbweave)",
   "mood": "Atmosphere",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "Guru Bin — ORBWEAVE Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "macroKnot=0.5 as a stable starting point — the Trefoil-to-Figure-Eight chimera held as a pad identity. Equal interpolation of the three-strand ring (Trefoil) and the alternating polarity four-strand coupling (Figure-Eight). The chimera state has its own sonic character. Named for what it sounds like, not for what the mathematics say.",
-  "tags": ["macro-knot", "chimera", "trefoil", "figure-eight", "atmosphere", "pad"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "macro-knot",
+    "chimera",
+    "trefoil",
+    "figure-eight",
+    "atmosphere",
+    "pad"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Ancient Murmur",
   "mood": "Entangled",
-  "engines": ["Oracle", "Organon"],
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "GENDY's stochastic waveform barely disturbs Organon's metabolic process — a prophecy whispered to a living organism, just enough to make it stir.",
-  "tags": ["coupling", "Oracle-pair", "stochastic", "organic", "whisper", "evolving"],
-  "macroLabels": ["PROPHECY", "METABOLISM", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Oracle-pair",
+    "stochastic",
+    "organic",
+    "whisper",
+    "evolving"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",

@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Building Block",
   "mood": "Prism",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The most minimal expression of the Collision recipe — one brick at a time. Pulse src1 (PW=0.5, perfectly symmetric) against Saw src2 at +1 semitone, the tightest detune, producing a slow chorusing beat. proc1=LP (1650 Hz, reso=0.25) and proc2=LP (710 Hz, reso=0.38) — moderate independent filtering. proc3=Wavefolder (2900 Hz) adds gentle fold on sustained notes. fmDepth=0.1 — nearly inaudible but present, creating micro-harmonic connection. The most playable of the Prism Collision presets: straightforward action, prismatic harmonic color. Mod: Env->FilterCutoff, LFO->Pan (gentle width), Velocity->Volume, Aftertouch->proc3Cutoff. CHARACTER 0.22 — a neutral, inviting starting position.",
-  "tags": ["obrix", "prism", "pulse", "saw", "constructive-collision", "wavefolder", "building", "block"],
+  "tags": [
+    "obrix",
+    "prism",
+    "pulse",
+    "saw",
+    "constructive-collision",
+    "wavefolder",
+    "building",
+    "block"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.52,

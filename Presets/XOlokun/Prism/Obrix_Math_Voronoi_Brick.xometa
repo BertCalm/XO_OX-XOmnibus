@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Voronoi Brick",
   "mood": "Prism",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBRIX through Mathematical Chain emphasizing Voronoi Shatter. OBRIX's ring modulation source (proc2Type=ring mod) creates metallic, inharmonic tones. Voronoi Shatter at Crystallize 0.72 and GrainSize 15ms fragments these inharmonic tones into geometric grain clusters — the mathematical tessellation of already-mathematical FM relationships. Entropy Cooler at Stability 0.4. Quantum Smear at Observation 0.35, Feedback 0.55. Attractor Drive minimal (Bifurcation 0.2). The Voronoi geometric patterning is applied to inharmonic spectral material — mathematical structure on mathematical dissonance.",
-  "tags": ["obrix", "ring-mod", "math-chain", "voronoi", "geometric", "prism", "inharmonic", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "ring-mod",
+    "math-chain",
+    "voronoi",
+    "geometric",
+    "prism",
+    "inharmonic",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obrix": {
       "obrix_src1Type": 0,
@@ -53,7 +73,7 @@
       "obrix_mod4Depth": 0.38,
       "obrix_mod4Rate": 1.0,
       "obrix_fx1Type": 1,
-      "obrix_fx1Mix": 0.30,
+      "obrix_fx1Mix": 0.3,
       "obrix_fx1Param": 0.48,
       "obrix_fx2Type": 0,
       "obrix_fx2Mix": 0.0,
@@ -81,14 +101,16 @@
       "obrix_air": 0.42
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.58,
     "warmth": 0.38,
     "movement": 0.55,
-    "density": 0.70,
-    "space": 0.70,
+    "density": 0.7,
+    "space": 0.7,
     "aggression": 0.42
   }
 }

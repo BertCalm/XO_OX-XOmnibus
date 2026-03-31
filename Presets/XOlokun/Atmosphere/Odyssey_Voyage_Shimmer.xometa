@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Voyage Shimmer",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "A long shimmer pad with slow drift — the shimmer is not decorative here, it is the harmonic reference point. The drift pulls the FM satellite away from unison, creating an evolving shimmer trail that is never quite the same tone twice. The shimmer as compass bearing.",
-  "tags": ["odyssey", "shimmer", "drift", "voyage", "pad", "atmosphere", "compound", "transcendental"],
+  "tags": [
+    "odyssey",
+    "shimmer",
+    "drift",
+    "voyage",
+    "pad",
+    "atmosphere",
+    "compound",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"],
+    "scripture": [
+      "Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"
+    ],
     "revelation": "Shimmer at slow drift rates creates an atmospheric halo — the shimmer freezes certain harmonics while the drift moves others. You hear two rates of change simultaneously.",
     "diagnosis": "Voyage Shimmer explores ODYSSEY's shimmerAmount at 0.72 with drift depth 0.62 and FM at OscB. The shimmer tail runs at a higher pitch register while the drift operates at the fundamental. Two populations of partials moving at different rates."
   },
-  "macroLabels": ["SHIMMER HEIGHT", "DRIFT COMPASS", "FM TEXTURE", "REVERB OCEAN"],
+  "macroLabels": [
+    "SHIMMER HEIGHT",
+    "DRIFT COMPASS",
+    "FM TEXTURE",
+    "REVERB OCEAN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

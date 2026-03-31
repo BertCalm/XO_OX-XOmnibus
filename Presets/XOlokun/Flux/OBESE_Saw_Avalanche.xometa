@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Saw Avalanche",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.75,
     "MOVEMENT": 0.9,
     "COUPLING": 0.0,
     "SPACE": 0.05
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.75,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.05
     }
   },
-  "tags": ["flux", "lead", "saw", "aggressive", "dense", "filter", "obese"],
+  "tags": [
+    "flux",
+    "lead",
+    "saw",
+    "aggressive",
+    "dense",
+    "filter",
+    "obese"
+  ],
   "description": "13-oscillator saw avalanche with dual LFOs dragging the filter in two different directions. LFO2 (saw) and LFO1 (sine) create a moiré interference in the cutoff. Thick, overdriven, does not ask permission."
 }

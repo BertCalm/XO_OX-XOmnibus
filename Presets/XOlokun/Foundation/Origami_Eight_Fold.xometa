@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Eight Fold",
   "mood": "Foundation",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum fold count — eight iterations of geometric transformation forming the base.",
-  "tags": ["foundation", "eight", "maximum", "iterations"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "eight",
+    "maximum",
+    "iterations"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.5, "movement": 0.5, "density": 0.65, "space": 0.45, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.65,
+    "space": 0.45,
+    "aggression": 0.38
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.45
     }
   },
-  "macros": {"FOLD": 0.6, "MOTION": 0.5, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.6,
+    "MOTION": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

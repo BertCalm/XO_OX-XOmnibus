@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OMEGA — low purity, sub-octave modulation. Phase noise and drift. Industrial, electronic, unstable.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.22,
     "aggression": 0.58
   },
-  "engines": ["Omega"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Flux",
   "name": "Impure Distillate",
   "parameters": {
@@ -42,7 +51,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["omega", "fm", "bass", "flux", "industrial", "sub-bass", "impure"],
+  "tags": [
+    "omega",
+    "fm",
+    "bass",
+    "flux",
+    "industrial",
+    "sub-bass",
+    "impure"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

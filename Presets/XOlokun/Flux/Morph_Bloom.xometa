@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Morph Bloom",
   "mood": "Flux",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's bloom parameter at maximum — the wavetable position evolves continuously with heavy drift, creating ever-changing timbre. Notes never sound the same twice.",
-  "tags": ["morph", "bloom", "evolving", "movement", "wavetable", "flux"],
-  "macroLabels": ["MORPH START", "BLOOM RATE", "DRIFT", "DENSITY"],
+  "tags": [
+    "morph",
+    "bloom",
+    "evolving",
+    "movement",
+    "wavetable",
+    "flux"
+  ],
+  "macroLabels": [
+    "MORPH START",
+    "BLOOM RATE",
+    "DRIFT",
+    "DENSITY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

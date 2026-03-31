@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Vocal Reef",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Vocal wavetable through formant-zone filter. LFO sweeps cutoff through vowel frequencies 270-1850 Hz. The reef speaks. Scripture Psalm 2.",
-  "tags": ["obrix", "vocal", "formant", "wavetable", "pad"],
+  "tags": [
+    "obrix",
+    "vocal",
+    "formant",
+    "wavetable",
+    "pad"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
-    "scripture": ["Psalm 2: The Reef Speaks", "Verse 6: Vocal Wavetable Through Formant Zone"],
+    "scripture": [
+      "Psalm 2: The Reef Speaks",
+      "Verse 6: Vocal Wavetable Through Formant Zone"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Tongue recognized the vowel sweep — the LFO through 270–1850 Hz is the exact formant trajectory of an open O to a closed E.",

@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "The resonant modes of a submarine trench \u2014 a long, narrow reverberant space creating reinforced frequencies at specific harmonics. The torus topology captures the trench geometry's acoustic amplification.",
+  "description": "The resonant modes of a submarine trench — a long, narrow reverberant space creating reinforced frequencies at specific harmonics. The torus topology captures the trench geometry's acoustic amplification.",
   "tags": [
     "trench",
     "resonant",

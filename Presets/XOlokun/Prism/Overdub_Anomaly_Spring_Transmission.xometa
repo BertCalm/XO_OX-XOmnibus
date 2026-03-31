@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Spring Transmission",
   "mood": "Prism",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Anomaly Engine with Time-Slip disabled and tremolo rate at 1.8 Hz processes Overdub's spring reverb return — the CB Lost+Found texture layer (blend 0.65) wraps the spring decay in an additional organic shimmer that has a different temporal feel than the spring itself. Two analog artifacts in conversation: spring coil physics vs. Lost+Found texture memory.",
-  "tags": ["prism", "dub", "anomaly", "spring", "transmission", "boutique", "fx_chain:Boutique", "boutique-fx-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "dub",
+    "anomaly",
+    "spring",
+    "transmission",
+    "boutique",
+    "fx_chain:Boutique",
+    "boutique-fx-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.62, "movement": 0.65, "density": 0.55, "space": 0.62, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.32
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -51,8 +74,15 @@
       "dub_polyphony": 4
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.62},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "bfx_anTextureBlend": 0.65,
     "bfx_anReverbSize": 0.55,

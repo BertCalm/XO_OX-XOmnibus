@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Seafoam Siren",
   "mood": "Atmosphere",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The siren calls from a distance — long Freeze grains hold the note as seafoam, slow drift blurs the string into vapor.",
-  "tags": ["siren", "granular", "pad", "freeze", "slow", "seafoam"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "siren",
+    "granular",
+    "pad",
+    "freeze",
+    "slow",
+    "seafoam"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.45, "density": 0.6, "space": 0.85, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.85,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orphica": {
       "orph_stringMaterial": 3,
@@ -48,6 +69,13 @@
       "orph_macroDivine": 0.5
     }
   },
-  "macros": {"PLUCK": 0.3, "FRACTURE": 0.4, "SURFACE": 0.65, "DIVINE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.3,
+    "FRACTURE": 0.4,
+    "SURFACE": 0.65,
+    "DIVINE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

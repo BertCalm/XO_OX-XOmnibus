@@ -4,14 +4,33 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Inharmonic Cloud",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Noise src1 plus Sine src2 run through a 7-limit repulsor (fieldPolarity=-1.0) — the field actively repels all voices away from pure ratios, creating maximum inharmonicity. What would naturally want to resolve into consonance is constantly pushed outward. The result is a dense, harmonically unstable cloud that never settles. Biophonics at its most abyssal.",
-  "tags": ["obrix", "submerged", "noise", "sine", "harmonic-field", "7-limit", "repulsor", "inharmonic", "wave4"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "noise",
+    "sine",
+    "harmonic-field",
+    "7-limit",
+    "repulsor",
+    "inharmonic",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.3,

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Rule Cascade",
+  "name": "Rule Cascade (Organism)",
   "mood": "Flux",
   "engines": [
     "Organism"

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Strife Machine",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Full STRIFE at -1.0 with Phase Distortion and Wavefolder — the two roughest Oscar algorithms driven through maximum cross-FM, ring modulation, and hard sync. The result is a snarling, aggressive texture that sounds like machinery tearing itself apart. Filter at 2200 Hz with resonance 0.32 creates a formant-like growl. Velocity drives filter cutoff hard (AMPULLAE at 0.9). Soft = purring predator. Hard = full attack. CARTILAGE macro controls envelope speed — from stabbing to droning.",
-  "tags": ["aggressive", "strife", "industrial", "lead", "performance", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "aggressive",
+    "strife",
+    "industrial",
+    "lead",
+    "performance",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.05
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

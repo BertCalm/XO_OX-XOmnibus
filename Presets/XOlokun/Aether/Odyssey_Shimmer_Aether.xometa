@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Shimmer Aether",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shimmer at maximum aether — crystalline shimmer tone, barely present, pure space.",
-  "tags": ["shimmer", "aether", "crystalline", "pure"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "shimmer",
+    "aether",
+    "crystalline",
+    "pure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.35, "movement": 0.07, "density": 0.12, "space": 0.98, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.35,
+    "movement": 0.07,
+    "density": 0.12,
+    "space": 0.98,
+    "aggression": 0.02
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 2,
@@ -54,6 +73,13 @@
       "drift_level": 0.6
     }
   },
-  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.07, "COUPLING": 0.0, "SPACE": 0.98},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.0,
+    "SPACE": 0.98
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

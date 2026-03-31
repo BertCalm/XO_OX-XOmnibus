@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Void Crystal",
   "mood": "Aether",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Single crystal string resonating in a vast void, maximum space with minimal body.",
-  "tags": ["harp", "void", "crystal", "minimal", "space"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "void",
+    "crystal",
+    "minimal",
+    "space"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.2, "density": 0.1, "space": 0.98, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.2,
+    "density": 0.1,
+    "space": 0.98,
+    "aggression": 0.02
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 1,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.9
     }
   },
-  "macros": {"PLUCK": 0.55, "SURFACE": 0.85, "FRACTURE": 0.3, "DIVINE": 0.9},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.55,
+    "SURFACE": 0.85,
+    "FRACTURE": 0.3,
+    "DIVINE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

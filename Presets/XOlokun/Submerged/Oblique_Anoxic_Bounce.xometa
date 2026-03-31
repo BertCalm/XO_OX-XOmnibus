@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Anoxic Bounce",
   "mood": "Submerged",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bounce in dead water — almost no energy, single collision barely registers, maximum damp.",
-  "tags": ["anoxic", "bounce", "dead", "still", "submerged"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "anoxic",
+    "bounce",
+    "dead",
+    "still",
+    "submerged"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.1, "warmth": 0.4, "movement": 0.08, "density": 0.88, "space": 0.58, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.4,
+    "movement": 0.08,
+    "density": 0.88,
+    "space": 0.58,
+    "aggression": 0.05
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +70,13 @@
       "oblq_macroSpace": 0.58
     }
   },
-  "macros": {"BOUNCE": 0.08, "COLOR": 0.2, "FOLD": 0.03, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.08,
+    "COLOR": 0.2,
+    "FOLD": 0.03,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

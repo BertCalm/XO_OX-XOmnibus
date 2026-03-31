@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Steel Dreams (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Taiko handles the deep boom of an 80s stadium kick. Tabla high tones simulate the sharp snare crack drenched in gated reverb. A tight conga sixteenth-note pattern weaves through the grid like the hi-hat track on an LM-1. This is the drum sound of Toto and Depeche Mode co-writing.",
-  "tags": ["synthwave", "taiko", "tabla", "stadium", "80s", "gated-snare"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "synthwave",
+    "taiko",
+    "tabla",
+    "stadium",
+    "80s",
+    "gated-snare"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 120,
   "dna": {

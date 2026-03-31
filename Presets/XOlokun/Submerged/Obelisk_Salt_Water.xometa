@@ -2,33 +2,49 @@
   "schema_version": 1,
   "name": "Salt Water",
   "mood": "Submerged",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cold stone (low temperature), chain preparation at low depth — a faint aquatic buzz at the edges — very long decay. The obelisk half-submerged in salt water, half reaching skyward. Salt water has worked the marble for centuries, creating its own slow resonance.",
-  "tags": ["stone", "prepared", "chain", "submerged", "cold", "water", "mineral", "sustained"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "prepared",
+    "chain",
+    "submerged",
+    "cold",
+    "water",
+    "mineral",
+    "sustained"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
-    "warmth": 0.10,
-    "movement": 0.20,
+    "warmth": 0.1,
+    "movement": 0.2,
     "density": 0.75,
-    "space": 0.80,
+    "space": 0.8,
     "aggression": 0.08
   },
   "parameters": {
     "Obelisk": {
       "obel_density": 0.78,
-      "obel_stoneTone": 0.30,
+      "obel_stoneTone": 0.3,
       "obel_brightness": 4500.0,
       "obel_damping": 0.08,
       "obel_decay": 8.0,
-      "obel_hfNoise": 0.20,
+      "obel_hfNoise": 0.2,
       "obel_hardness": 0.38,
       "obel_prepType": 4,
-      "obel_prepPosition": 0.60,
+      "obel_prepPosition": 0.6,
       "obel_prepDepth": 0.28,
       "obel_filterEnvAmount": 0.25,
       "obel_thermalDrift": 0.05,
@@ -43,6 +59,5 @@
   },
   "coupling": {
     "pairs": []
-  },
-  "tempo": null
+  }
 }

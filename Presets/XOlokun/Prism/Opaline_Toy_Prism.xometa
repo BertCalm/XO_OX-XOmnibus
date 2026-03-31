@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Toy Prism",
   "mood": "Prism",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Toy Piano through crystal drive — the lo-fi inharmonic tines brightened and sharpened until they refract. High crystal drive with high fragility: at full velocity the toy piano shatters. Careful playing rewards with a bright, complex, slightly wrong sound. Thelonious Monk had one.",
-  "tags": ["toy piano", "prism", "crystal", "inharmonic", "bright", "lo-fi", "fragile", "opaline"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "toy piano",
+    "prism",
+    "crystal",
+    "inharmonic",
+    "bright",
+    "lo-fi",
+    "fragile",
+    "opaline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

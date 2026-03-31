@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Submersion Phase",
   "mood": "Aether",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Boutique Chain showcase emphasizing Submersion Engine as primary effect. OBLONG with wide-open filter (high cutoff, low res) provides clean harmonic material. Submersion at 8 stages — maximum all-pass cascade — and LFODepth 0.72 creates a deeply phasing spatial texture where the all-pass phase rotation is audible as a slow, lush movement through the stereo field. LFORate 0.18 Hz. LoopFB 0.42 builds a feedback loop that sustains the phasing texture even after notes end. Anomaly TextureBlend 0.35 for minimal texture layer. Cathedral SunMix 0.8 (bright cathedral character to match the open OBLONG filter). A luminous, weightless aether texture defined entirely by the all-pass rotation.",
-  "tags": ["oblong", "boutique-chain", "submersion", "allpass", "phase", "aether", "luminous", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "oblong",
+    "boutique-chain",
+    "submersion",
+    "allpass",
+    "phase",
+    "aether",
+    "luminous",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oblong": {
       "bob_fltCutoff": 7500.0,
@@ -22,22 +42,24 @@
       "bob_lfo1Rate": 0.08,
       "bob_lfo1Depth": 0.18,
       "bob_lfo2Rate": 0.025,
-      "bob_lfo2Depth": 0.10,
+      "bob_lfo2Depth": 0.1,
       "bob_ampAttack": 0.55,
-      "bob_ampDecay": 0.80,
+      "bob_ampDecay": 0.8,
       "bob_ampSustain": 0.88,
       "bob_ampRelease": 3.0,
       "bob_macroCharacter": 0.35,
       "bob_macroMovement": 0.22,
       "bob_macroCoupling": 0.0,
-      "bob_macroSpace": 0.80
+      "bob_macroSpace": 0.8
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.70,
-    "warmth": 0.40,
+    "brightness": 0.7,
+    "warmth": 0.4,
     "movement": 0.35,
     "density": 0.48,
     "space": 0.85,

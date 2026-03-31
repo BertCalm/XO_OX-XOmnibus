@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Ink Atmosphere",
+  "name": "Ink Atmosphere (Octopus)",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense ink cloud at high mix with slow decay creates a dark atmospheric field — the defensive cloud turned into an immersive space that swallows the listener.",
-  "tags": ["atmosphere", "ink", "dark", "dense", "immersive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "ink",
+    "dark",
+    "dense",
+    "immersive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.1, "warmth": 0.4, "movement": 0.15, "density": 0.85, "space": 0.8, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.4,
+    "movement": 0.15,
+    "density": 0.85,
+    "space": 0.8,
+    "aggression": 0.3
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.15,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

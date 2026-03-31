@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Hunt Escalation",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Hunt macro sweeping from 0.0 to 1.0 via macroCharacter — the approach and strike. CHARACTER=0: quiet survey mode. CHARACTER=1: full apex predator activation (hunt escalates by additional 0.3). Designed for live performance — the CHARACTER macro sweep is the expressive gesture.",
-  "tags": ["hunt", "escalation", "flux", "performance", "macro", "survey", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "hunt",
+    "escalation",
+    "flux",
+    "performance",
+    "macro",
+    "survey",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

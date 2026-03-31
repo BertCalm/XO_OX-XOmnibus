@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "PWM Drift",
   "mood": "Flux",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pulse width modulation with slow drift LFO creates a breathing, living bass tone.",
-  "tags": ["flux", "pwm", "drift", "pulse", "breathing", "bass"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "pwm",
+    "drift",
+    "pulse",
+    "breathing",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 4,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.52, "COUPLING": 0.4, "SPACE": 0.25},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.3, "warmth": 0.75, "movement": 0.58, "density": 0.55, "space": 0.28, "aggression": 0.3}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.4,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.75,
+    "movement": 0.58,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.3
+  }
 }

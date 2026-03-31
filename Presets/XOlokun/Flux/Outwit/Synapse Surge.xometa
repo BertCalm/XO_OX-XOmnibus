@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 110 (class 4) with extreme synapse (0.80). Arms strongly disturb each other \u2014 cascade chaos.",
+  "description": "Rule 110 (class 4) with extreme synapse (0.80). Arms strongly disturb each other — cascade chaos.",
   "dna": {
     "aggression": 0.8,
     "brightness": 0.72,

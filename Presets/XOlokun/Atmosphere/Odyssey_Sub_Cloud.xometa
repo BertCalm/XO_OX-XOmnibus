@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sub Cloud",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sub bass presence as a cloud — low-register haze, massive reverb, barely-there sub oscillation.",
-  "tags": ["sub", "cloud", "haze", "low", "atmosphere"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "sub",
+    "cloud",
+    "haze",
+    "low",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.58, "movement": 0.12, "density": 0.55, "space": 0.82, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.58,
+    "movement": 0.12,
+    "density": 0.55,
+    "space": 0.82,
+    "aggression": 0.05
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.15, "MOVEMENT": 0.12, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Vermillion Prism",
   "mood": "Prism",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vermillion fold light split through geometric prism — bright red angles refracting.",
-  "tags": ["prism", "vermillion", "bright", "geometric"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "vermillion",
+    "bright",
+    "geometric"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.8, "warmth": 0.55, "movement": 0.6, "density": 0.5, "space": 0.6, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.4
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.6
     }
   },
-  "macros": {"FOLD": 0.65, "MOTION": 0.6, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.65,
+    "MOTION": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

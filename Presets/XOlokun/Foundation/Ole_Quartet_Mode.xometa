@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Quartet Mode",
   "mood": "Foundation",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Quartet alliance with husband bouzouki prominent, the extended family in four-part harmony.",
-  "tags": ["latin", "quartet", "bouzouki", "four", "harmony"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "quartet",
+    "bouzouki",
+    "four",
+    "harmony"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.68, "movement": 0.42, "density": 0.52, "space": 0.58, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.58,
+    "aggression": 0.2
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 1,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.38
     }
   },
-  "macros": {"DRAMA": 0.38, "FUEGO": 0.38, "ISLA": 0.42, "SIDES": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.38,
+    "FUEGO": 0.38,
+    "ISLA": 0.42,
+    "SIDES": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

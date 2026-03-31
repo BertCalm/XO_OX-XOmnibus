@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Theremin Prism",
   "mood": "Prism",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Theremin wobble hitting full scale, waving through a prism of harmonics.",
-  "tags": ["prism", "theremin", "harmonic", "spectral"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "prism",
+    "theremin",
+    "harmonic",
+    "spectral"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.65,
     "MEADOW": 0.62
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

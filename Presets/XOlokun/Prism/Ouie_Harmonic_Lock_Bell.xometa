@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Harmonic Lock Bell",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "FM (Voice 1) with ratio 3.0 index 2.8 for bell-like partials. Wavetable (Voice 2) at position 0.75 for metallic harmonic content. HAMMER at +0.92 — near-maximum LOVE. At this depth, harmonic lock quantizes Voice 2's pitch toward Voice 1's harmonic series, creating locked bell overtones that ring with crystalline precision. Short amp decay, long release tail at golden ratio (1.618s). The bell rings; the harmonics lock; the tail dissolves slowly into silence.",
-  "tags": ["bell", "fm", "harmonic", "crystalline", "percussive", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "bell",
+    "fm",
+    "harmonic",
+    "crystalline",
+    "percussive",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.3
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

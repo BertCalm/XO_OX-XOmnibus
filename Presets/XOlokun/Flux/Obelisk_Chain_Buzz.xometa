@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Chain Buzz",
   "mood": "Flux",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chain draped over the strings. The chain bounces against the vibrating strings, creating broadband noise bursts that track the fundamental — like a sitar's jawari bridge or a hurdy-gurdy buzz. The stone rings; the chain snarls. Dirty, alive, unpredictable. Cage's kitchen-drawer chaos.",
-  "tags": ["prepared", "chain", "buzz", "sitar", "dirty", "flux", "noise", "nonlinear"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "prepared",
+    "chain",
+    "buzz",
+    "sitar",
+    "dirty",
+    "flux",
+    "noise",
+    "nonlinear"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.6,

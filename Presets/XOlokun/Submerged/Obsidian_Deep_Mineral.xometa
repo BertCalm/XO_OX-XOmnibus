@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Deep Mineral",
   "mood": "Submerged",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure mineral identity deep underwater — crystal-white body dragged down, filtered dark.",
-  "tags": ["mineral", "deep", "crystal", "filtered", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "mineral",
+    "deep",
+    "crystal",
+    "filtered",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.45, "movement": 0.1, "density": 0.88, "space": 0.5, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.45,
+    "movement": 0.1,
+    "density": 0.88,
+    "space": 0.5,
+    "aggression": 0.08
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.85,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.5
     }
   },
-  "macros": {"CHARACTER": 0.2, "MOVEMENT": 0.1, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

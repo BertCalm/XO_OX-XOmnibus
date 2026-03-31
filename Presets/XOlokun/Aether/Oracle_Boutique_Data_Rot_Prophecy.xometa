@@ -2,29 +2,49 @@
   "schema_version": 1,
   "name": "Data Rot Prophecy",
   "mood": "Aether",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Boutique Chain showcase: Cathedral as primary character effect. ORACLE at moderate stochasticity produces tonal events. Cathedral at PacketLoss 0.35 (significant digital degradation) and BitCrush 0.30 transforms the GENDY tones into artifacts of themselves — prophecies encoded in lossy format, part of the information missing. SunMix 0.4 vs DarkMix 0.6 maintains a tension between spectral brightness and darkness. ModDepth 0.5 adds modulation to the Cathedral's reverb character over time. Anomaly minimal. Archive Chance 0.06 (rare memory retrievals). Submersion 3 stages. The effect is ORACLE at its most oracular: degraded, prophetic, not fully intelligible.",
-  "tags": ["oracle", "boutique-chain", "cathedral", "data-rot", "degraded", "aether", "prophecy", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "oracle",
+    "boutique-chain",
+    "cathedral",
+    "data-rot",
+    "degraded",
+    "aether",
+    "prophecy",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 5,
-      "oracle_stochastic": 0.60,
+      "oracle_stochastic": 0.6,
       "oracle_maqamMode": 3,
       "oracle_filterCutoff": 2800.0,
       "oracle_filterRes": 0.22,
       "oracle_lfo1Rate": 0.06,
-      "oracle_lfo1Depth": 0.20,
+      "oracle_lfo1Depth": 0.2,
       "oracle_lfo2Rate": 0.018,
       "oracle_lfo2Depth": 0.12,
       "oracle_ampAttack": 0.55,
-      "oracle_ampDecay": 0.80,
+      "oracle_ampDecay": 0.8,
       "oracle_ampSustain": 0.78,
       "oracle_ampRelease": 3.0,
       "oracle_macroCharacter": 0.45,
@@ -33,11 +53,13 @@
       "oracle_macroSpace": 0.82
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,
-    "warmth": 0.50,
+    "warmth": 0.5,
     "movement": 0.35,
     "density": 0.65,
     "space": 0.82,

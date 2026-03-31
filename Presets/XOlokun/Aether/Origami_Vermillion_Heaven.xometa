@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Vermillion Heaven",
   "mood": "Aether",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vermillion red ascending into aether — color identity transcended into pure space.",
-  "tags": ["aether", "vermillion", "transcended", "color"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "vermillion",
+    "transcended",
+    "color"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.52, "movement": 0.32, "density": 0.3, "space": 0.92, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.52,
+    "movement": 0.32,
+    "density": 0.3,
+    "space": 0.92,
+    "aggression": 0.08
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.92
     }
   },
-  "macros": {"FOLD": 0.28, "MOTION": 0.32, "COUPLING": 0.0, "SPACE": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.28,
+    "MOTION": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

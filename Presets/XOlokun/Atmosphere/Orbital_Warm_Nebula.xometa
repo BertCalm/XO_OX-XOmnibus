@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Warm Nebula",
   "mood": "Atmosphere",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm orbital nebula — blended profiles, mid saturation, full stereo spread.",
-  "tags": ["nebula", "warm", "blended", "wide"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "nebula",
+    "warm",
+    "blended",
+    "wide"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.7, "movement": 0.3, "density": 0.6, "space": 0.75, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.75,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.45,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.75
     }
   },
-  "macros": {"SPECTRUM": 0.5, "EVOLVE": 0.3, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.5,
+    "EVOLVE": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

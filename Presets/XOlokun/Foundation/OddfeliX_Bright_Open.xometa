@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Bright Open",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Open bright snap with no pitch lock — free-floating high frequency with pitch drift.",
-  "tags": ["open", "bright", "free", "drift"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "open",
+    "bright",
+    "free",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.2, "movement": 0.48, "density": 0.28, "space": 0.5, "aggression": 0.18},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.72, "snap_decay": 0.28, "snap_detune": 0.25, "snap_filterCutoff": 12000.0, "snap_filterReso": 0.38, "snap_filterEnvDepth": 0.58, "snap_unison": 2, "snap_sweepDirection": 0, "snap_pitchLock": 0.0, "snap_polyphony": 6, "snap_level": 0.73, "snap_macroDart": 0.42, "snap_macroDepth": 0.42, "snap_macroSchool": 0.28, "snap_macroSurface": 0.52}
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.48,
+    "density": 0.28,
+    "space": 0.5,
+    "aggression": 0.18
   },
-  "macros": {"CHARACTER": 0.48, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.72,
+      "snap_decay": 0.28,
+      "snap_detune": 0.25,
+      "snap_filterCutoff": 12000.0,
+      "snap_filterReso": 0.38,
+      "snap_filterEnvDepth": 0.58,
+      "snap_unison": 2,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.0,
+      "snap_polyphony": 6,
+      "snap_level": 0.73,
+      "snap_macroDart": 0.42,
+      "snap_macroDepth": 0.42,
+      "snap_macroSchool": 0.28,
+      "snap_macroSurface": 0.52
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

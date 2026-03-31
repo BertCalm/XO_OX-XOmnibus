@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sub City",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast ascending arp over a two-octave sub foundation — the urban energy of a city that never stops moving.",
-  "tags": ["urban", "arp", "sub", "ascending", "energetic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "urban",
+    "arp",
+    "sub",
+    "ascending",
+    "energetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.5, "movement": 0.8, "density": 0.85, "space": 0.3, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.85,
+    "space": 0.3,
+    "aggression": 0.65
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.4,
@@ -46,6 +66,13 @@
       "fat_level": 0.86
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.8, "COUPLING": 0.0, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

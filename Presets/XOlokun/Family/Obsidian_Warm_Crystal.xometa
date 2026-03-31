@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Warm Crystal",
   "mood": "Family",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystal held up to warm light — gentle formant resonance, mid brightness, familiar mineral comfort.",
-  "tags": ["crystal", "warm", "gentle", "formant", "family"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystal",
+    "warm",
+    "gentle",
+    "formant",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.68, "movement": 0.22, "density": 0.52, "space": 0.55, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.1
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.45,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

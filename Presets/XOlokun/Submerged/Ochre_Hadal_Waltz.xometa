@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Hadal Waltz",
   "mood": "Submerged",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A Viennese waltz at hadal depth. The 3/4 elegance is still present but smeared through 11km of water — notes arrive late, overlap each other, the left hand has no definition. Caramel pedaling sustains everything into a dark mush of aristocratic decay.",
-  "tags": ["piano", "waltz", "hadal", "dark", "submerged", "sustain", "pedal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "waltz",
+    "hadal",
+    "dark",
+    "submerged",
+    "sustain",
+    "pedal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

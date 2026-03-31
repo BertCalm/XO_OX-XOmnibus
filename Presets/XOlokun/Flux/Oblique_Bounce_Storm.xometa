@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Bounce Storm",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum bounce chaos — 8 bounces at high rate, maximum gravity, prism overflow.",
-  "tags": ["bounce", "storm", "chaos", "maximum"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "bounce",
+    "storm",
+    "chaos",
+    "maximum"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.3, "movement": 0.9, "density": 0.65, "space": 0.35, "aggression": 0.85},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.9,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.85
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.35
     }
   },
-  "macros": {"BOUNCE": 1.0, "COLOR": 0.85, "FOLD": 0.5, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 1.0,
+    "COLOR": 0.85,
+    "FOLD": 0.5,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

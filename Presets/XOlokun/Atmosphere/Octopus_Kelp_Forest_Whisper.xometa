@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Kelp Forest Whisper",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The octopus moving through kelp fronds — arms brushing the kelp, chromatophores matching the green-brown pattern. A soft, atmospheric texture with organic arm movement and high chromatophore sensitivity to the environment.",
-  "tags": ["octopus", "atmosphere", "kelp", "forest", "whisper", "organic", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "atmosphere",
+    "kelp",
+    "forest",
+    "whisper",
+    "organic",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,

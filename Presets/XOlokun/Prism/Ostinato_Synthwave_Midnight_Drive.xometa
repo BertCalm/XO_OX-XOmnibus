@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Midnight Drive (Ostinato)",
   "mood": "Prism",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Slower synthwave pace for the night drive aesthetic. Surdo handles the deep kick column while taiko provides the gated snare crack. Frame drum adds a subtle shuffle ghost between the backbeats. The GATHER macro swells the full kit into a cinematic swell.",
-  "tags": ["synthwave", "midnight", "slow", "surdo", "taiko", "night-drive"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "synthwave",
+    "midnight",
+    "slow",
+    "surdo",
+    "taiko",
+    "night-drive"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 98,
   "dna": {

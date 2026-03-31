@@ -5,7 +5,7 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The initial condition: all zeros except the center cell. Rule 126 grows from this single point into a perfectly symmetric flower. Start here.",
   "tags": [

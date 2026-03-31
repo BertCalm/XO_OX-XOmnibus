@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Trefoil Writhe (Orbweave)",
   "mood": "Prism",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Trefoil topology at high braid depth — writhe-3 asymmetry becomes audible distortion. Deep asymmetric coupling where coupling flows in one direction around the ring creates spectral smearing. S&H LFO on braid depth intensifies the writhe.",
-  "tags": ["trefoil", "knot-topology", "writhe", "high-braid", "spectral"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "trefoil",
+    "knot-topology",
+    "writhe",
+    "high-braid",
+    "spectral"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

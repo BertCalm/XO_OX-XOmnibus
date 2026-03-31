@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "FM Aether",
+  "name": "FM Aether (Orbital)",
   "mood": "Aether",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM sidebands stretched to aether \u2014 minimal FM ratio, metallic ghost barely touching infinite space.",
+  "description": "FM sidebands stretched to aether — minimal FM ratio, metallic ghost barely touching infinite space.",
   "tags": [
     "FM",
     "aether",

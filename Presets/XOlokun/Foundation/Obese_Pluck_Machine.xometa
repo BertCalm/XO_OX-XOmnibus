@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Pluck Machine",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ultra-fast amp and filter envelopes with high env amount creates a plucked fat-body tone — immediate attack, quick decay, fat character on every transient.",
-  "tags": ["foundation", "pluck", "percussive", "fast", "transient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "pluck",
+    "percussive",
+    "fast",
+    "transient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.35, "density": 0.5, "space": 0.2, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.6
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.4,
@@ -46,6 +66,13 @@
       "fat_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

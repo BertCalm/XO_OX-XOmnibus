@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Alien Bioluminescence",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Something enormous breathes once every twenty seconds at 3,000 meters. Each breath lights the water column in a flash of blue-white. This is not a fish. Science has no name for this. The bioRate is 0.05 Hz — a single breath per twenty seconds. The bioBrightness peaks at 1800 Hz — alien spectral territory.",
-  "tags": ["bass", "submerged", "bioluminescence", "alien", "organism", "atmospheric", "slow", "deep", "living"],
+  "tags": [
+    "bass",
+    "submerged",
+    "bioluminescence",
+    "alien",
+    "organism",
+    "atmospheric",
+    "slow",
+    "deep",
+    "living"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "CREATURE macro governs the organism's bioMix — raise it slowly to witness the breathing. The organism exists at filterCutoff=150 — deep hadal column. The bass does not change. The light pulses around it.",
     "diagnosis": "bioRate=0.05 Hz (ultra-slow: one cycle per 20 seconds). bioBrightness=1800 Hz: alien spectral territory. bioMix=0.7: the bioluminescence is the primary event. filterCutoff=150: deep hadal column. subOctMix=0.6 for sub presence beneath the organism. This is the flagship bioluminescence preset."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.6
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

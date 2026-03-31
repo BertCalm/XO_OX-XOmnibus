@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Serpent Low",
   "mood": "Foundation",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tween serpent with maximum valve and deep damping, the ancient coiled bass brass foundation.",
-  "tags": ["brass", "serpent", "ancient", "bass", "deep"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "serpent",
+    "ancient",
+    "bass",
+    "deep"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.72, "movement": 0.2, "density": 0.38, "space": 0.65, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.72,
+    "movement": 0.2,
+    "density": 0.38,
+    "space": 0.65,
+    "aggression": 0.18
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 3,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.0
     }
   },
-  "macros": {"GROW": 0.18, "EMBOUCHURE": 0.42, "LAKE": 0.52, "FOREIGN": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.18,
+    "EMBOUCHURE": 0.42,
+    "LAKE": 0.52,
+    "FOREIGN": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

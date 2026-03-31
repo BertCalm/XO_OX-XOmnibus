@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Abyssal Reverie",
   "mood": "Aether",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vast spatial Mixtur-Trautonium dream — metallic inharmonics dissolve into enormous reverb, the ocean floor heard from the surface.",
-  "tags": ["aether", "ethereal", "spatial", "reverb", "abyssal", "dream"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "ethereal",
+    "spatial",
+    "reverb",
+    "abyssal",
+    "dream"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.18, "COUPLING": 0.5, "SPACE": 0.9},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.5,
+    "SPACE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

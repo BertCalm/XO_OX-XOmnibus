@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Harvest Table",
   "mood": "Family",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full family gathering, all voices contributing warmth around a shared table.",
-  "tags": ["family", "gathering", "harvest", "full"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "family",
+    "gathering",
+    "harvest",
+    "full"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.45,
     "MEADOW": 0.6
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "High pulse rate (2.0 Hz) with minimal entrainment (0.05) — the 6 Kuramoto oscillators run at independent natural frequencies, creating polyrhythmic pulse interference. Unknot state keeps the FDN clean so only the pulse patterns are heard. LFO1 at 1.5 Hz square-waves the tangle for rhythmic gating.",
-  "dna": { "aggression": 0.4, "brightness": 0.6, "density": 0.55, "movement": 0.7, "space": 0.5, "warmth": 0.4 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.6,
+    "density": 0.55,
+    "movement": 0.7,
+    "space": 0.5,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Pulse Loop",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "unknot", "pulse", "polyrhythm", "movement", "loop"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "unknot",
+    "pulse",
+    "polyrhythm",
+    "movement",
+    "loop"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

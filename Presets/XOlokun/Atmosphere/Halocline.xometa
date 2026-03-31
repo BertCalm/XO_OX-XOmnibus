@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Rule 110 \u2014 universally complex but visually still. Low mutation, high arm balance. Eight arms in equilibrium, each column shifting imperceptibly. The water column in thermodynamic rest.",
+  "description": "Rule 110 — universally complex but visually still. Low mutation, high arm balance. Eight arms in equilibrium, each column shifting imperceptibly. The water column in thermodynamic rest.",
   "dna": {
     "aggression": 0.12,
     "brightness": 0.42,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Halocline",
+  "name": "Halocline (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 1.8,

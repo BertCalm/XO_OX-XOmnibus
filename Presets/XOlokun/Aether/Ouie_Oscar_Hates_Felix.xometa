@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Oscar Hates Felix",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Wavefolder (Oscar, voice 1) + VA (feliX, voice 2). HAMMER=-0.8 — heavy STRIFE. Oscar dominates with destructive cross-FM: the wavefolder's folded harmonics drive metallic chaos into feliX's clean signal. feliX does not disappear — it becomes the victim, its clean tone corrupted and stretched. The result is aggressive and unstable in the most musical way. Oscar wins here. But feliX's ghost is audible in every harmonic.",
-  "tags": ["ouie", "wavefolder", "va", "strife", "metallic", "aggressive", "chaos", "aether", "oscar-dominant"],
+  "tags": [
+    "ouie",
+    "wavefolder",
+    "va",
+    "strife",
+    "metallic",
+    "aggressive",
+    "chaos",
+    "aether",
+    "oscar-dominant"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "This preset is intentionally aggressive. Use AMPULLAE to control how much velocity reaches the fold depth — at low AMPULLAE the attack is controlled; at high AMPULLAE every keystroke is a detonation.",
     "diagnosis": "The dark mirror of Felix Loves Oscar. Wavefolder at algoParam1=0.85 with HP filter on voice 2 emphasizes the metallic upper harmonics of the cross-FM interaction. Highly useful for industrial textures, noise leads, and controlled chaos. HAMMER=-0.8 is the outer edge of controlled STRIFE — approach -1.0 at your own risk."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.6,
     "CURRENT": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

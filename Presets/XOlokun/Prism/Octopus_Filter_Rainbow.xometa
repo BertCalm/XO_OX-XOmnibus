@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Filter Rainbow",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The chromatophore filter morphing through its full cycle — lowpass to bandpass to highpass to notch and back. Very high morph value and fast speed create a rainbow sweep of filter colors. Arms riding the color changes.",
-  "tags": ["octopus", "prism", "filter", "rainbow", "morph", "sweep", "colorful"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "filter",
+    "rainbow",
+    "morph",
+    "sweep",
+    "colorful"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.82,

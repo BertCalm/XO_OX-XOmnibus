@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Heavy Fold",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum wave fold — dense harmonic content, high gravity, dark filtered character.",
-  "tags": ["fold", "heavy", "harmonic", "dense"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "fold",
+    "heavy",
+    "harmonic",
+    "dense"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.55, "movement": 0.18, "density": 0.82, "space": 0.32, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.18,
+    "density": 0.82,
+    "space": 0.32,
+    "aggression": 0.38
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 1,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.32
     }
   },
-  "macros": {"BOUNCE": 0.25, "COLOR": 0.52, "FOLD": 0.88, "SPACE": 0.32},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.25,
+    "COLOR": 0.52,
+    "FOLD": 0.88,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

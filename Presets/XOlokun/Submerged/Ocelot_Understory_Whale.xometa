@@ -2,16 +2,44 @@
   "schema_version": 1,
   "name": "Understory Whale",
   "mood": "Submerged",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Guru Bin Awakening 8 — understorySrc=1.0: the canopy pad is routed through bit-crush and tape-age chain. The synthesis records itself. A whale sings through the degraded signal.",
-  "tags": ["submerged", "guru-bin", "underwater", "whale", "understory", "canopy", "hydrophone", "awakening"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "submerged",
+    "guru-bin",
+    "underwater",
+    "whale",
+    "understory",
+    "canopy",
+    "hydrophone",
+    "awakening"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.75, "movement": 0.22, "density": 0.45, "space": 0.92, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.75,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.92,
+    "aggression": 0.05
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -83,5 +111,7 @@
       "ocelot_xf_emergCanopy": 0.42
     }
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

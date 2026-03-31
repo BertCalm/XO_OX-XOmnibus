@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Passing It Down",
   "mood": "Family",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Generational transmission — dad's bowed tone passing into Obed's plucked echo.",
-  "tags": ["family", "generational", "legacy", "passing"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "family",
+    "generational",
+    "legacy",
+    "passing"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.4,
     "MEADOW": 0.55
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

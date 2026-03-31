@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Growth Mode \u2014 plant a single string seed and watch it unfurl over 20 seconds",
+  "description": "Growth Mode — plant a single string seed and watch it unfurl over 20 seconds",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.35,

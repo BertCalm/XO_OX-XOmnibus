@@ -5,10 +5,10 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "Two arms run Rule 184 (traffic flow \u2014 particle-conserving, constant density), flanked by Class II periodic rules (4, 12, 54). Rule 184 creates a reliable rhythmic pulse: traffic that never stops, never collides. The periodic arms (4, 12, 54) synapse with the traffic, picking up the rhythm while maintaining their own stable character. Step rate=6 Hz for snappy, percussive definition.",
+  "description": "Two arms run Rule 184 (traffic flow — particle-conserving, constant density), flanked by Class II periodic rules (4, 12, 54). Rule 184 creates a reliable rhythmic pulse: traffic that never stops, never collides. The periodic arms (4, 12, 54) synapse with the traffic, picking up the rhythm while maintaining their own stable character. Step rate=6 Hz for snappy, percussive definition.",
   "tags": [
     "rule-184",
     "traffic",

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Slow Iron",
   "mood": "Aether",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum bloom — the cast iron body takes nearly two seconds to fully respond after the hammer strike. Single notes arrive like tidal events. The geological-slow piano. Hold the sustain pedal and let the iron think.",
-  "tags": ["piano", "cast iron", "bloom", "slow", "sustain", "geological", "ambient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "cast iron",
+    "bloom",
+    "slow",
+    "sustain",
+    "geological",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,10 +37,10 @@
     "Oven": {
       "oven_brightness": 2200.0,
       "oven_bodyResonance": 0.75,
-      "oven_hfAmount": 0.30,
+      "oven_hfAmount": 0.3,
       "oven_hardness": 0.15,
-      "oven_density": 0.80,
-      "oven_temperature": 0.70,
+      "oven_density": 0.8,
+      "oven_temperature": 0.7,
       "oven_sympathetic": 0.55,
       "oven_bloomTime": 1.0,
       "oven_sustainTime": 12.0,

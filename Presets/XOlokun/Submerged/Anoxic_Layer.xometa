@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Anoxic Layer",
+  "name": "Anoxic Layer (Odyssey)",
   "mood": "Submerged",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Dead water layer \u2014 oxygen-depleted zone, minimal motion, thick stagnant harmonic mass.",
+  "description": "Dead water layer — oxygen-depleted zone, minimal motion, thick stagnant harmonic mass.",
   "tags": [
     "anoxic",
     "dead",

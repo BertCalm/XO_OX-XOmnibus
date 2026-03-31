@@ -1,1 +1,66 @@
-{"schema_version":1,"name":"Bossa Midnight","mood":"Deep","engines":["Okeanos"],"author":"XO_OX Designs","version":"1.0.0","description":"Dark, warm Rhodes for bossa nova and late-night jazz. Rolled-off highs, maximum warmth, gentle sustain.","tags":["rhodes","bossa","jazz","dark","warm","midnight"],"macroLabels":["CHARACTER","MOVEMENT","COUPLING","SPACE"],"couplingIntensity":"None","tempo":null,"dna":{"brightness":0.25,"warmth":0.9,"movement":0.15,"density":0.35,"space":0.6,"aggression":0.05},"parameters":{"Okeanos":{"oasis_warmth":0.7,"oasis_bell":0.2,"oasis_brightness":3000.0,"oasis_tremRate":3.5,"oasis_tremDepth":0.0,"oasis_attack":0.008,"oasis_decay":1.8,"oasis_sustain":0.55,"oasis_release":0.8,"oasis_filterEnvAmt":0.2,"oasis_migration":0.0,"oasis_stereoWidth":0.3,"oasis_bendRange":2,"oasis_lfo1Rate":0.03,"oasis_lfo1Depth":0.03,"oasis_lfo1Shape":0,"oasis_lfo2Rate":0.005,"oasis_lfo2Depth":0.0,"oasis_lfo2Shape":0,"oasis_macroCharacter":0.3,"oasis_macroMovement":0.1,"oasis_macroCoupling":0.0,"oasis_macroSpace":0.5}},"coupling":{"pairs":[]},"sequencer":null}
+{
+  "schema_version": 1,
+  "name": "Bossa Midnight",
+  "mood": "Deep",
+  "engines": [
+    "Okeanos"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Dark, warm Rhodes for bossa nova and late-night jazz. Rolled-off highs, maximum warmth, gentle sustain.",
+  "tags": [
+    "rhodes",
+    "bossa",
+    "jazz",
+    "dark",
+    "warm",
+    "midnight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.9,
+    "movement": 0.15,
+    "density": 0.35,
+    "space": 0.6,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Okeanos": {
+      "oasis_warmth": 0.7,
+      "oasis_bell": 0.2,
+      "oasis_brightness": 3000.0,
+      "oasis_tremRate": 3.5,
+      "oasis_tremDepth": 0.0,
+      "oasis_attack": 0.008,
+      "oasis_decay": 1.8,
+      "oasis_sustain": 0.55,
+      "oasis_release": 0.8,
+      "oasis_filterEnvAmt": 0.2,
+      "oasis_migration": 0.0,
+      "oasis_stereoWidth": 0.3,
+      "oasis_bendRange": 2,
+      "oasis_lfo1Rate": 0.03,
+      "oasis_lfo1Depth": 0.03,
+      "oasis_lfo1Shape": 0,
+      "oasis_lfo2Rate": 0.005,
+      "oasis_lfo2Depth": 0.0,
+      "oasis_lfo2Shape": 0,
+      "oasis_macroCharacter": 0.3,
+      "oasis_macroMovement": 0.1,
+      "oasis_macroCoupling": 0.0,
+      "oasis_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

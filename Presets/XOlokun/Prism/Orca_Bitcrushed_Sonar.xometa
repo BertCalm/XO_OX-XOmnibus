@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Bitcrushed Sonar",
   "mood": "Prism",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low-bit echolocation — crush down to 6 bits transforms clean pings into gritty lo-fi transmissions, split frequency preserves sub weight while destroying the high-end.",
-  "tags": ["prism", "bitcrushed", "lo-fi", "gritty", "sonar"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "bitcrushed",
+    "lo-fi",
+    "gritty",
+    "sonar"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.4, "density": 0.55, "space": 0.45, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.65
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.55,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.45
     }
   },
-  "macros": {"HUNT": 0.55, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

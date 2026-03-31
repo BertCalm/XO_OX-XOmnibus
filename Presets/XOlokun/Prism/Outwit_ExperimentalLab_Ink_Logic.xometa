@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Ink Logic",
   "mood": "Prism",
-  "engines": ["Outwit"],
+  "engines": [
+    "Outwit"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Ink cloud at maximum density with very fast decay — triggered on every state transition, creating a noise spray at the edge of each CA event. Arms tuned to tritone clusters. Avant-garde percussive noise.",
-  "tags": ["experimental", "ink", "noise", "avant-garde", "CA", "genre-spotlight"],
-  "macroLabels": ["SOLVE", "SYNAPSE", "CHROMATOPHORE", "DEN"],
+  "tags": [
+    "experimental",
+    "ink",
+    "noise",
+    "avant-garde",
+    "CA",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "SOLVE",
+    "SYNAPSE",
+    "CHROMATOPHORE",
+    "DEN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.22, "movement": 0.88, "density": 0.58, "space": 0.48, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.22,
+    "movement": 0.88,
+    "density": 0.58,
+    "space": 0.48,
+    "aggression": 0.88
+  },
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 30,
@@ -112,6 +133,13 @@
       "owit_macroDen": 0.28
     }
   },
-  "macros": {"SOLVE": 0.0, "SYNAPSE": 0.45, "CHROMATOPHORE": 0.88, "DEN": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SOLVE": 0.0,
+    "SYNAPSE": 0.45,
+    "CHROMATOPHORE": 0.88,
+    "DEN": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

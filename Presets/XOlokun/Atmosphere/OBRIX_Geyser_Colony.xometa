@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Geyser Colony",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Iceland Geothermal Vent: superheated plumes breaking through a cold surface. Turbidity models the steam shimmer. Temperature maxed for maximum thermal drift. Wavefolder Proc3 adds the harmonic snap of eruption — then the hot air cools.",
-  "tags": ["obrix", "atmosphere", "place", "iceland", "geothermal", "turbidity", "temperature"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "atmosphere",
+    "place",
+    "iceland",
+    "geothermal",
+    "turbidity",
+    "temperature"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +118,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

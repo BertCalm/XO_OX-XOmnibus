@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Torus T(3,2) at tangle 0.75 — the perfect fifth harmonic lock is losing coherence. High feedback (0.87) and moderate pulse rate (2.5 Hz) push the system toward chaos while the fifth ratio fights back. The tension between harmonic order and feedback chaos is the sound. LFO2 square-waves the tangle to periodically restore and destroy the lock.",
-  "dna": { "aggression": 0.78, "brightness": 0.73, "density": 0.48, "movement": 0.85, "space": 0.35, "warmth": 0.28 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.78,
+    "brightness": 0.73,
+    "density": 0.48,
+    "movement": 0.85,
+    "space": 0.35,
+    "warmth": 0.28
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
   "name": "Torus Unraveling",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "chaotic", "torus", "fifth", "unraveling", "tension", "dramatic"],
+  "tags": [
+    "flux",
+    "chaotic",
+    "torus",
+    "fifth",
+    "unraveling",
+    "tension",
+    "dramatic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Path of Partials",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Full FM compound: OscA in supersaw mode (7 voices, 50 cents spread), OscB in FM mode modulating OscA. The supersaw provides a dense frequency cluster; the FM modulation adds spectral sidebands across the whole cluster simultaneously. Drift moves the entire composite through timbral space.",
-  "tags": ["odyssey", "supersaw", "fm", "cluster", "drift", "prism", "partials", "transcendental"],
+  "tags": [
+    "odyssey",
+    "supersaw",
+    "fm",
+    "cluster",
+    "drift",
+    "prism",
+    "partials",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-9: When Seven Voices Drift Together, They Are One Migration"],
+    "scripture": [
+      "Scripture VII-9: When Seven Voices Drift Together, They Are One Migration"
+    ],
     "revelation": "A 7-voice supersaw has 7 slightly different pitch positions. When FM modulates across the supersaw cluster, each of the 7 positions gets unique sidebands. The cluster becomes spectrally rich in a way no single FM voice achieves.",
     "diagnosis": "Path of Partials is the most spectral preset in the Transcendental library — a supersaw cluster receiving FM sidebands from OscB. Drift moves the FM modulator away from the supersaw center, sweeping the sideband distribution across the 7 supersaw voices."
   },
-  "macroLabels": ["SUPERSAW SPREAD", "FM MODULATION", "PARTIAL DRIFT", "FILTER HEIGHT"],
+  "macroLabels": [
+    "SUPERSAW SPREAD",
+    "FM MODULATION",
+    "PARTIAL DRIFT",
+    "FILTER HEIGHT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

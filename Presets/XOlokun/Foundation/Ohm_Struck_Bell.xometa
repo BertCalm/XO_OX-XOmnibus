@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Struck Bell",
   "mood": "Foundation",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Metal-body struck tone with FM shimmer and long natural decay.",
-  "tags": ["foundation", "struck", "metallic", "bell"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "foundation",
+    "struck",
+    "metallic",
+    "bell"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.35,
     "MEADOW": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

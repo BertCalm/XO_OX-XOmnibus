@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Parallel Frequencies",
   "mood": "Atmosphere",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Split mode with FM drone on the left hand and filtered noise on the right. The left hand creates a slowly evolving FM texture with ratio 1.414 (square root of 2 — the tritone) and low index for subtle inharmonicity. The right hand plays pitched noise bursts that evoke breath, wind, or distant radio static. Two parallel frequency worlds that never interact (HAMMER at 0.0) but coexist in the same stereo field. CURRENT at 0.7 spreads them wide apart.",
-  "tags": ["split", "drone", "noise", "parallel", "atmospheric", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "split",
+    "drone",
+    "noise",
+    "parallel",
+    "atmospheric",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.7
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

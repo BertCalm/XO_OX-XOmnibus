@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Late Night Diner",
   "mood": "Organic",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wurlitzer at 2am in a diner. Slow tremolo, medium drive, warm tone. The night market is open. Intimate, unhurried, no audience — just the sound in the room.",
-  "tags": ["wurlitzer", "late-night", "diner", "warm", "slow-tremolo", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "late-night",
+    "diner",
+    "warm",
+    "slow-tremolo",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

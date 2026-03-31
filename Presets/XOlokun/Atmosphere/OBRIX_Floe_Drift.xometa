@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Floe Drift",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Arctic Ice Shelf: vast flat white stretching to the horizon, wind crossing open water. Cold Air tilt brightens the top. Maximum Distance rolloff hides the bass. Drift Bus very slow, very wide — the shelf moves but you cannot perceive it moving.",
-  "tags": ["obrix", "atmosphere", "place", "arctic", "ice", "cold", "drift", "distant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "atmosphere",
+    "place",
+    "arctic",
+    "ice",
+    "cold",
+    "drift",
+    "distant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +119,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

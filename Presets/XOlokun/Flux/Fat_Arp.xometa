@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Fat Arp",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's arpeggiator on a massive oscillator stack. Thick detuned chords chopped into rhythmic movement — every arp note hits with physical weight.",
-  "tags": ["arp", "fat", "thick", "rhythmic", "movement", "flux"],
-  "macroLabels": ["ARP PATTERN", "ARP RATE", "DETUNE", "FILTER"],
+  "tags": [
+    "arp",
+    "fat",
+    "thick",
+    "rhythmic",
+    "movement",
+    "flux"
+  ],
+  "macroLabels": [
+    "ARP PATTERN",
+    "ARP RATE",
+    "DETUNE",
+    "FILTER"
+  ],
   "couplingIntensity": "None",
   "tempo": 120.0,
   "dna": {

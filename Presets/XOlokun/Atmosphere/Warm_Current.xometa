@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-14",
-  "description": "Interference patterns hover at the edge of hearing. MEDDLING low \u2014 just a suggestion of company. 'Warm Current' keeps nothing still.",
+  "description": "Interference patterns hover at the edge of hearing. MEDDLING low — just a suggestion of company. 'Warm Current' keeps nothing still.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.39,
@@ -24,7 +24,7 @@
     "MEADOW"
   ],
   "mood": "Atmosphere",
-  "name": "Warm Current",
+  "name": "Warm Current (Ohm)",
   "parameters": {
     "Ohm": {
       "ohm_bodyMaterial": 3,

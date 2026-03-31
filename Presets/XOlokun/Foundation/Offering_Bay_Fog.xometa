@@ -14,13 +14,20 @@
     "space": 0.55,
     "warmth": 0.55
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Foundation",
   "name": "Bay Fog",
   "parameters": {
@@ -38,8 +45,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["bay area", "hyphy", "foggy", "rolling", "west"],
+  "tags": [
+    "bay area",
+    "hyphy",
+    "foggy",
+    "rolling",
+    "west"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.55, "M2": 0.75, "M3": 0.0, "M4": 0.25}
+  "macros": {
+    "M1": 0.55,
+    "M2": 0.75,
+    "M3": 0.0,
+    "M4": 0.25
+  }
 }

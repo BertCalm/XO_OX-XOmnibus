@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Eight different rules (110,30,90,45,184,110,30,90) \u2014 each arm evolving by its own rule.",
+  "description": "Eight different rules (110,30,90,45,184,110,30,90) — each arm evolving by its own rule.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.5,

@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Hymn",
+  "name": "Abyssal Hymn (Orca)",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow wavetable drift with deep formant resonance. Cinematic ocean floor.",
-  "tags": ["pad", "cinematic", "deep", "formant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "cinematic",
+    "deep",
+    "formant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-13",
@@ -63,5 +75,7 @@
       "orca_macroSpace": 0.8
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

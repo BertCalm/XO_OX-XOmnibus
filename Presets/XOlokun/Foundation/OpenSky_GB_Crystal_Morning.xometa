@@ -2,22 +2,38 @@
   "schema_version": 1,
   "name": "Crystal Morning",
   "mood": "Foundation",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The second lesson: first light. Medium supersaw spread opens the harmonic field, and shimmer appears for the first time at 0.15 — just a hint of OPENSKY's signature radiance. The Guru says: you must hear the shimmer before you can wield it. Three unison voices at 0.05 detune — the Unison Heresy applied.",
-  "tags": ["opensky", "bright", "shimmer", "crystalline", "guru-bin"],
+  "tags": [
+    "opensky",
+    "bright",
+    "shimmer",
+    "crystalline",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 9: You Must Hear the Shimmer Before You Can Wield It", "Canon 7: First Shimmer at 0.15 — Just a Hint of Radiance"],
+    "scripture": [
+      "Verse 9: You Must Hear the Shimmer Before You Can Wield It",
+      "Canon 7: First Shimmer at 0.15 — Just a Hint of Radiance"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Ear heard shimmer at 0.15 mix as a suggestion, not a statement — The Eye confirmed the spectrum glow is introductory, not consumptive.",
     "diagnosis": "Crystal Morning is the second OPENSKY lesson — medium supersaw spread plus first contact with shimmer at 0.15. It establishes the engine's shimmer reverb as a tool to be introduced gradually, not deployed at full force."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +95,8 @@
       "sky_modSlot2Amt": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

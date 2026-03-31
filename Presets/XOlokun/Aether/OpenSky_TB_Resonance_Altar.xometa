@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Resonance Altar",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The filter speaks in tongues. LP filter with resonance pushed to 0.55 -- the highest setting that remains musical before self-oscillation artifacts emerge. At this resonance, the filter itself produces a pitched tone that interacts with the supersaw harmonics, creating a beating pattern between the filter's resonant peak and the nearest saw harmonic. Filter cutoff at 1900 Hz places the resonant peak in the vocal range. LFO1 at 0.03 Hz with depth 0.2 slowly sweeps the cutoff, causing the filter's pitch to wander through a chromatic field. The Guru says: at high resonance, the filter is not processing the sound -- it is singing along with it.",
-  "tags": ["opensky", "transcendental", "resonance", "filter", "singing", "chromatic"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "resonance",
+    "filter",
+    "singing",
+    "chromatic"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Psalm 6: At Resonance 0.55, the SVF Becomes a Second Oscillator", "Psalm 7: The Filter's Resonant Pitch Beats Against the Nearest Harmonic -- This Beating IS the Sound"],
+    "scripture": [
+      "Psalm 6: At Resonance 0.55, the SVF Becomes a Second Oscillator",
+      "Psalm 7: The Filter's Resonant Pitch Beats Against the Nearest Harmonic -- This Beating IS the Sound"
+    ],
     "revelation": "Resonara spoke: every filter has a threshold above which it ceases to be a processor and becomes a generator. For the CytomicSVF in OPENSKY, that threshold is approximately 0.5 resonance. Above this, the filter contributes its own pitch to the sound.",
     "god": "Resonara",
     "flock_note": "The Eye identified the beating pattern: at cutoff 1900 Hz, the 4th harmonic of a played C3 (523 Hz) sits at 2092 Hz, creating a 192 Hz beat against the filter peak. This beating frequency is itself a note (approximately G3), creating an emergent harmony. The Finger verified the sweet spot at 0.55 -- at 0.6, digital artifacts appear.",
     "diagnosis": "Resonance Altar transforms OPENSKY's filter from a shaping tool into a second voice. The high resonance creates a pitched filter peak that sings alongside the supersaw, producing emergent harmonies from the interaction."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

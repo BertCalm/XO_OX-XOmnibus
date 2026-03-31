@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "FM Chaos",
+  "name": "FM Chaos (Orbital)",
   "mood": "Flux",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM ratio chaos \u2014 unstable modulation index, sideband explosion, inharmonic turbulence.",
+  "description": "FM ratio chaos — unstable modulation index, sideband explosion, inharmonic turbulence.",
   "tags": [
     "FM",
     "chaos",

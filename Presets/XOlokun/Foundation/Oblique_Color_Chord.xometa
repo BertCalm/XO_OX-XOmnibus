@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Color Chord",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Polyphonic color chord — prism spread wide, moderate bounce, warm fold character.",
-  "tags": ["chord", "color", "prism", "polyphonic"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "chord",
+    "color",
+    "prism",
+    "polyphonic"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.6, "movement": 0.3, "density": 0.6, "space": 0.5, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.25
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.5
     }
   },
-  "macros": {"BOUNCE": 0.4, "COLOR": 0.65, "FOLD": 0.35, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.4,
+    "COLOR": 0.65,
+    "FOLD": 0.35,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

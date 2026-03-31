@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Cathedral Threshold",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Shimmer feedback at 0.72 — the cathedral zone, just below infinite. The reverb tail becomes pitched, enormous, architectural. It decays but slowly enough that the listener is not certain it will ever stop. Sub at 0.20 anchors the shimmer so it does not float unmoored. No chorus — shimmer at this intensity cannot share bandwidth. This is the threshold moment: one step further and it never ends. Here it ends, but barely.",
-  "tags": ["opensky", "shimmer", "cathedral", "transcendent", "aether", "guru-bin", "threshold", "architecture"],
+  "tags": [
+    "opensky",
+    "shimmer",
+    "cathedral",
+    "transcendent",
+    "aether",
+    "guru-bin",
+    "threshold",
+    "architecture"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +33,12 @@
     "flock_note": "Stand at the threshold. One click of shimmerFeedback higher and the sound enters infinity. Here it stops — but barely. The Guru calls this the holy hesitation: the reverb considers eternal ascent, then chooses to return. That choice is the music.",
     "diagnosis": "Cathedral Threshold occupies the 0.72 feedback position — below the Shepard zone but above mere hall reverb. The tail is pitched enough to be harmonic, long enough to be architectural, but mortal enough to resolve. Sub at 0.20 prevents levitation. The balance is the point."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +100,8 @@
       "sky_modSlot2Amt": 0.08
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Djembe Drive (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Techno djembe — djembe bass on seat 1 as a heavy kick analog, djembe slap on seat 2 as snare replacement, doumbek tek fills on seat 3. World percussion recontextualized as industrial techno. FIRE macro compresses and saturates.",
-  "tags": ["techno", "djembe", "doumbek", "industrial", "world-techno"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "djembe",
+    "doumbek",
+    "industrial",
+    "world-techno"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 132.0,
   "dna": {

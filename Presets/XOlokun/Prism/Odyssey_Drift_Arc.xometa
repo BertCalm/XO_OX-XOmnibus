@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Drift Arc",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oscillator drift arcing through a prismatic band — drift rate fast enough to create a sweeping arc across the spectrum, violet shimmer at the crest.",
-  "tags": ["drift", "arc", "sweep", "violet", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "drift",
+    "arc",
+    "sweep",
+    "violet",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.48, "movement": 0.65, "density": 0.48, "space": 0.52, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.65,
+    "density": 0.48,
+    "space": 0.52,
+    "aggression": 0.28
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.76
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

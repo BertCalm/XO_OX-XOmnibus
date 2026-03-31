@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Infinite Tail",
   "mood": "Atmosphere",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Feedback at 0.91 — the FDN approaches infinity, structural evolution for minutes. A single note continues circulating through the Trefoil matrix for minutes before becoming inaudible. The bioluminescence samples from this dense, slowly-changing network. Press one key. Wait.",
-  "tags": ["infinite", "feedback", "aether", "atmosphere", "structural", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "infinite",
+    "feedback",
+    "aether",
+    "atmosphere",
+    "structural",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

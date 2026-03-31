@@ -2,16 +2,41 @@
   "schema_version": 1,
   "name": "Savanna Song",
   "mood": "Family",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm savanna evening — agogo floor with bird-trill creatures, moderate matrix activity. Friendly, accessible, alive.",
-  "tags": ["family", "savanna", "warm", "birds", "agogo"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "family",
+    "savanna",
+    "warm",
+    "birds",
+    "agogo"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.72, "movement": 0.55, "density": 0.48, "space": 0.52, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.72,
+    "movement": 0.55,
+    "density": 0.48,
+    "space": 0.52,
+    "aggression": 0.2
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.35
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

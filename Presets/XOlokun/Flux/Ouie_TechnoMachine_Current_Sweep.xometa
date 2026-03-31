@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Current Sweep",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "CURRENT macro fully automated — sweeps between STRIFE and LOVE positions as a modulation target. The timbre constantly oscillates between aggressive and euphoric states. Use in techno for filter-sweep energy.",
-  "tags": ["techno", "sweep", "current", "strife-love", "modulation", "genre-spotlight"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "techno",
+    "sweep",
+    "current",
+    "strife-love",
+    "modulation",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.48, "movement": 0.72, "density": 0.68, "space": 0.35, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.48,
+    "movement": 0.72,
+    "density": 0.68,
+    "space": 0.35,
+    "aggression": 0.65
+  },
   "parameters": {
     "Ouie": {
       "ouie_algo1": 2,
@@ -69,6 +90,13 @@
       "ouie_macroCurrent": 0.72
     }
   },
-  "macros": {"HAMMER": 0.72, "AMPULLAE": 0.52, "CARTILAGE": 0.48, "CURRENT": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HAMMER": 0.72,
+    "AMPULLAE": 0.52,
+    "CARTILAGE": 0.48,
+    "CURRENT": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

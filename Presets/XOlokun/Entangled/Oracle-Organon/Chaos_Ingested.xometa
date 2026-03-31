@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Chaos Ingested",
   "mood": "Entangled",
-  "engines": ["Oracle", "Organon"],
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "GENDY fully possesses Organon — stochastic audio replaces metabolic input, envelope seizes filter and morph. The organism has consumed the oracle; it now speaks in prophecy.",
-  "tags": ["coupling", "Oracle-pair", "stochastic", "organic", "possession", "extreme", "chaos"],
-  "macroLabels": ["PROPHECY", "METABOLISM", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Oracle-pair",
+    "stochastic",
+    "organic",
+    "possession",
+    "extreme",
+    "chaos"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",

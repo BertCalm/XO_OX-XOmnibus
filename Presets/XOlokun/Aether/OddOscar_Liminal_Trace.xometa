@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Liminal Trace",
   "mood": "Aether",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A trace at the liminal boundary — barely perceptible morph with maximum space.",
-  "tags": ["liminal", "trace", "aether", "boundary"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "liminal",
+    "trace",
+    "aether",
+    "boundary"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.6, "movement": 0.38, "density": 0.28, "space": 0.95, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.38,
+    "density": 0.28,
+    "space": 0.95,
+    "aggression": 0.05
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.42,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.95
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

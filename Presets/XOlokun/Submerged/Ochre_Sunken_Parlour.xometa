@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Sunken Parlour",
   "mood": "Submerged",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A parlour piano heard through water. Low brightness, long decay, body resonance dominant. The copper frame oxidized green-blue in salt air. Dark mid-register character — nothing above 3kHz survives the immersion.",
-  "tags": ["piano", "copper", "dark", "underwater", "submerged", "mid", "ballad", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "dark",
+    "underwater",
+    "submerged",
+    "mid",
+    "ballad",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

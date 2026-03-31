@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Glitch Operator",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.6,
     "MOVEMENT": 0.85,
     "COUPLING": 0.0,
     "SPACE": 0.7
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.7,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.7
     }
   },
-  "tags": ["flux", "glitch", "bitcrusher", "arp", "random", "aggressive", "obese"],
+  "tags": [
+    "flux",
+    "glitch",
+    "bitcrusher",
+    "arp",
+    "random",
+    "aggressive",
+    "obese"
+  ],
   "description": "Random arp at 1/16th, bitcrushed to 6 bits, LFO1 and LFO2 both fast — filter slashing up and down at nearly independent rates creates collision-pattern glitch texture. Pure digital hostility with a hot pink core."
 }

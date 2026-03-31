@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OLATE — play 20 minutes. The cutoff will have drifted 800Hz darker. The session is the instrument.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.32,
     "aggression": 0.18
   },
-  "engines": ["Olate"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Session Warmth",
   "parameters": {
@@ -42,7 +51,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["olate", "analog", "bass", "atmosphere", "aging", "session"],
+  "tags": [
+    "olate",
+    "analog",
+    "bass",
+    "atmosphere",
+    "aging",
+    "session"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -1,17 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Chromatic Storm",
+  "name": "Chromatic Storm (Optic)",
   "mood": "Prism",
-  "engines": ["Optic", "Ouroboros"],
+  "engines": [
+    "Optic",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPTIC's high-reactivity spectral analysis drives Ouroboros's self-feeding chain. Maximum pulse accent and deep modulation mix. The comb jelly's light storm feeding the serpent's hunger.",
-  "tags": ["optic", "prism", "ouroboros-pair", "spectral", "reactive", "intense"],
-  "macroLabels": ["REACTIVITY", "SERPENT", "MOD DEPTH", "FEEDBACK"],
+  "tags": [
+    "optic",
+    "prism",
+    "ouroboros-pair",
+    "spectral",
+    "reactive",
+    "intense"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "SERPENT",
+    "MOD DEPTH",
+    "FEEDBACK"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.85,
@@ -35,8 +54,18 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Optic", "engineB": "Ouroboros", "type": "AmpToFilter", "amount": 0.6 },
-      { "engineA": "Optic", "engineB": "Ouroboros", "type": "LFOToPitch", "amount": 0.4 }
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "AmpToFilter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "LFOToPitch",
+        "amount": 0.4
+      }
     ]
   },
   "sequencer": null,

@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Harmonic wavetable into FM (fmDepth 0.45) into Wavefolder (proc1) \u2014 the maximum complexity chain available in OBRIX. The Harmonic bank provides a dense partial structure which FM then cross-modulates into non-linear territory, and the Wavefolder then folds those combined partials back onto themselves. Three stages of harmonic multiplication produce timbres that have no name in traditional synthesis vocabulary. proc2=LP at 8000 Hz preserves the result without killing the air. Env\u2192wtPos means each attack sweeps through a different quantum state.",
+  "description": "Harmonic wavetable into FM (fmDepth 0.45) into Wavefolder (proc1) — the maximum complexity chain available in OBRIX. The Harmonic bank provides a dense partial structure which FM then cross-modulates into non-linear territory, and the Wavefolder then folds those combined partials back onto themselves. Three stages of harmonic multiplication produce timbres that have no name in traditional synthesis vocabulary. proc2=LP at 8000 Hz preserves the result without killing the air. Env→wtPos means each attack sweeps through a different quantum state.",
   "tags": [
     "obrix",
     "aether",
@@ -33,18 +33,18 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
-      "WT\u2192FM\u2192Wavefold chain",
+      "WT→FM→Wavefold chain",
       "Harmonic wtBank = dense partial structure",
       "FM Ceiling: 0.07-0.55 for musical timbres"
     ],
-    "revelation": "Three stages of harmonic transformation produce a sound that cannot be described \u2014 only heard.",
+    "revelation": "Three stages of harmonic transformation produce a sound that cannot be described — only heard.",
     "god": "Schulze",
     "flock_note": "Ruby: 'Play a C. Now play it again. It was different, wasn't it? That's the quantum.'",
-    "diagnosis": "A brick that contains multitudes \u2014 every note is a different universe of the same sound."
+    "diagnosis": "A brick that contains multitudes — every note is a different universe of the same sound."
   },
   "dna": {
     "brightness": 0.68,

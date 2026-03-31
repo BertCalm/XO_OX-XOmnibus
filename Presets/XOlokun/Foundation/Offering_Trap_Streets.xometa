@@ -14,13 +14,20 @@
     "space": 0.3,
     "warmth": 0.35
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Foundation",
   "name": "Trap Streets",
   "parameters": {
@@ -46,8 +53,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["trap", "hard", "snappy", "atlanta", "808"],
+  "tags": [
+    "trap",
+    "hard",
+    "snappy",
+    "atlanta",
+    "808"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.35, "M2": 0.0, "M3": 0.0, "M4": 0.1}
+  "macros": {
+    "M1": 0.35,
+    "M2": 0.0,
+    "M3": 0.0,
+    "M4": 0.1
+  }
 }

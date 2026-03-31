@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Flugelhorn Warm",
   "mood": "Foundation",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Teen flugelhorn with wide bore and gentle vibrato, the warmest teen brass voice in the family.",
-  "tags": ["brass", "flugelhorn", "warm", "vibrato", "mellow"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "flugelhorn",
+    "warm",
+    "vibrato",
+    "mellow"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.72, "movement": 0.3, "density": 0.32, "space": 0.6, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.3,
+    "density": 0.32,
+    "space": 0.6,
+    "aggression": 0.15
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.0
     }
   },
-  "macros": {"GROW": 0.32, "EMBOUCHURE": 0.5, "LAKE": 0.42, "FOREIGN": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.32,
+    "EMBOUCHURE": 0.5,
+    "LAKE": 0.42,
+    "FOREIGN": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

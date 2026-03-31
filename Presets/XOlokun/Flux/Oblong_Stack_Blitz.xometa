@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Stack Blitz",
   "mood": "Flux",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Stack mode at maximum aggression — octave layers fighting in fast amber flux.",
-  "tags": ["flux", "stack", "octave", "blitz"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "stack",
+    "octave",
+    "blitz"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.5, "movement": 0.88, "density": 0.78, "space": 0.38, "aggression": 0.8},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.88,
+    "density": 0.78,
+    "space": 0.38,
+    "aggression": 0.8
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.83
     }
   },
-  "macros": {"CHARACTER": 0.78, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

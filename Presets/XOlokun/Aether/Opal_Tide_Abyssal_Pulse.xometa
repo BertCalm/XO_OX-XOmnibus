@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Abyssal Pulse",
   "mood": "Aether",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tide in auto-filter mode (mode 2) at 0.18 Hz is the rhythmic engine of this patch — granular sustain tones breathe with a slow filter sweep that no LFO inside OPAL can replicate. The Tide stereo phase offset at 90 degrees creates a rotating, ocean-depth oscillation.",
-  "tags": ["aether", "granular", "tide", "auto-filter", "pulse", "abyssal", "fx_chain:Aquatic", "aquatic-fx-demo"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "granular",
+    "tide",
+    "auto-filter",
+    "pulse",
+    "abyssal",
+    "fx_chain:Aquatic",
+    "aquatic-fx-demo"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.58, "movement": 0.62, "density": 0.48, "space": 0.78, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.58,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.78,
+    "aggression": 0.12
+  },
   "parameters": {
     "Opal": {
       "opal_source": 0,
@@ -89,8 +112,15 @@
       "opal_level": 0.74
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.62, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "aqua_tide_mix": 0.65,
     "aqua_tide_mode": 2,

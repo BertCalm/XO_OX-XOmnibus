@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Glitch Cascade",
   "mood": "Flux",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum glitch engine with era memory — bit reduction meets stutter cascade. ERA drifts while glitch types cycle. The chip memory corrupts itself into a living pattern.",
-  "tags": ["glitch", "flux", "bitcrush", "corrupted", "chip", "cascade", "era-drift"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "glitch",
+    "flux",
+    "bitcrush",
+    "corrupted",
+    "chip",
+    "cascade",
+    "era-drift"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.5,
@@ -97,7 +116,9 @@
       "ow_macroSpace": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.65,

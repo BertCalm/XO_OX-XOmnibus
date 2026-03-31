@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Theremin Sky",
   "mood": "Atmosphere",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wobbling theremin voice dissolving into sky reverb, celestial and haunted.",
-  "tags": ["atmosphere", "theremin", "haunted", "celestial"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "atmosphere",
+    "theremin",
+    "haunted",
+    "celestial"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.5,
     "MEADOW": 0.88
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Tentacle Haze",
+  "name": "Tentacle Haze (Outwit)",
   "mood": "Atmosphere",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 45 \u2014 chaotic yet diffuse. Arms rendered quiet, far apart in the mix, creating a tentacle-shadow environment. You are inside the octopus's personal space.",
+  "description": "Rule 45 — chaotic yet diffuse. Arms rendered quiet, far apart in the mix, creating a tentacle-shadow environment. You are inside the octopus's personal space.",
   "tags": [
     "atmosphere",
     "tentacles",

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Neo-Soul Digital",
   "mood": "Organic",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "2000s neo-soul producers re-embracing FM — D'Angelo Voodoo era where digital instruments were played with analog warmth. Lower brightness, slower modulator decay, more sustained FM tail. The DX7 as a soulful instrument.",
-  "tags": ["dx7", "fm", "neo-soul", "dangelo", "organic", "soulful"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dx7",
+    "fm",
+    "neo-soul",
+    "dangelo",
+    "organic",
+    "soulful"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

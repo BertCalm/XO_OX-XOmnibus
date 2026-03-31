@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Analog Soul",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low Mojo, high saturation drive, moderate resonance — the funk bassist's analog warmth translated to synthesis.",
-  "tags": ["funk", "soul", "analog", "warm", "drive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "funk",
+    "soul",
+    "analog",
+    "warm",
+    "drive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.88, "movement": 0.25, "density": 0.8, "space": 0.25, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.88,
+    "movement": 0.25,
+    "density": 0.8,
+    "space": 0.25,
+    "aggression": 0.55
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.65,
@@ -41,6 +61,13 @@
       "fat_level": 0.83
     }
   },
-  "macros": {"CHARACTER": 0.08, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.08,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

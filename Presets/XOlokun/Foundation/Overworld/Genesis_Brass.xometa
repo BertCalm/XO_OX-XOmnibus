@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Genesis Brass",
   "mood": "Foundation",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Sega Genesis YM2612 FM synthesis — algorithm 4 (carrier stack) with feedback on op1. Operators tuned for bright brass character. High FM LFO rate creates vibrato. The era triangle is centered on the FM vertex. Classic Streets of Rage register.",
-  "tags": ["awakening", "fm", "genesis", "ym2612", "brass", "lead", "foundation"],
-  "macroLabels": ["ERA", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "awakening",
+    "fm",
+    "genesis",
+    "ym2612",
+    "brass",
+    "lead",
+    "foundation"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 1.0,
@@ -102,7 +121,9 @@
       "ow_drumMode": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.78,

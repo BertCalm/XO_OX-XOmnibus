@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Chrome Gate (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Gated reverb snare dominates seats 2+4 — the chrome splash of 1984 drum machines. Beatbox kick punches through seats 1+3, with a precise 16th-note closed hi-hat grid. The gate effect is achieved via very short decay + high reverb mix, creating that iconic metallic snap-and-fade.",
-  "tags": ["synthwave", "gated-reverb", "80s", "drum-machine", "snare"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "synthwave",
+    "gated-reverb",
+    "80s",
+    "drum-machine",
+    "snare"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 112,
   "dna": {

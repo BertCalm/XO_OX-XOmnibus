@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Pulse Trio",
   "mood": "Flux",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rhythmic pulsing from fast strum rates on all three aunts, a trio heartbeat in unstable flux.",
-  "tags": ["latin", "pulse", "trio", "rhythmic", "flux"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "pulse",
+    "trio",
+    "rhythmic",
+    "flux"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.65, "movement": 0.75, "density": 0.6, "space": 0.58, "aggression": 0.48},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.65,
+    "movement": 0.75,
+    "density": 0.6,
+    "space": 0.58,
+    "aggression": 0.48
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 0,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.5
     }
   },
-  "macros": {"DRAMA": 0.78, "FUEGO": 0.85, "ISLA": 0.32, "SIDES": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.78,
+    "FUEGO": 0.85,
+    "ISLA": 0.32,
+    "SIDES": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

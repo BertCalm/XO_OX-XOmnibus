@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Stacked Saw",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two detuned saws stacked thick — classic supersaw foundation, wide stereo presence, full harmonic body.",
-  "tags": ["saw", "detuned", "supersaw", "wide", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "saw",
+    "detuned",
+    "supersaw",
+    "wide",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.52, "movement": 0.15, "density": 0.78, "space": 0.45, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.52,
+    "movement": 0.15,
+    "density": 0.78,
+    "space": 0.45,
+    "aggression": 0.28
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 1,
@@ -54,6 +74,13 @@
       "drift_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

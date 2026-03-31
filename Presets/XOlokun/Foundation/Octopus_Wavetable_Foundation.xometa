@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Wavetable Foundation",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The octopus wavetable at its most expressive — scanning the full organic waveform library at a medium rate. Arms providing gentle harmonic enhancement. A foundation patch showcasing the procedural wavetable's character.",
-  "tags": ["octopus", "foundation", "wavetable", "organic", "harmonic", "scan"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "foundation",
+    "wavetable",
+    "organic",
+    "harmonic",
+    "scan"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

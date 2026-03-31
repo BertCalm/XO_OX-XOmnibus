@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Drone",
+  "name": "Abyssal Drone (OceanDeep)",
   "mood": "Aether",
   "engines": [
     "OceanDeep"
@@ -22,7 +22,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 9: The Anglerfish at Absolute Rest in the Hadal Zone", "Canon 4: Sub at 100Hz, Maximum Sub-Octave"],
+    "scripture": [
+      "Verse 9: The Anglerfish at Absolute Rest in the Hadal Zone",
+      "Canon 4: Sub at 100Hz, Maximum Sub-Octave"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Bone felt the sub below the monitoring threshold — The Ear confirmed bioluminescent shimmer as barely perceptible radiance in total darkness.",

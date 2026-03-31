@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 184 (traffic rule \u2014 class 2) on all arms. Particles drift in one direction. Smooth, continuous.",
+  "description": "Rule 184 (traffic rule — class 2) on all arms. Particles drift in one direction. Smooth, continuous.",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.32,

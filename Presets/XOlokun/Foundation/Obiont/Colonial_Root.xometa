@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "Colonial Root",
   "mood": "Foundation",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Rule 18 — sparse triangle fractals. Wide projection (0.65) across many cells averages out to a warm, fundamental-heavy tone with subtle upper harmonics. High grid density creates a stable colony. Envelope → Filter Resonance turns each note into a slow bloom.",
-  "tags": ["awakening", "bass", "warm", "foundation", "rule-18", "drone"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "bass",
+    "warm",
+    "foundation",
+    "rule-18",
+    "drone"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +68,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.22,

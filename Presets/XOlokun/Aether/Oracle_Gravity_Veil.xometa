@@ -2,20 +2,39 @@
   "schema_version": 1,
   "name": "Gravity Veil",
   "mood": "Aether",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum gravity pulls every stochastic step back toward equal temperament, yet the barriers remain elastic and drift is non-zero — the pitch wants to escape but is held in a veil of tonal constraint. Rast maqam underneath, very slow stochastic envelope, Poly8 for shimmering sustained chords.",
-  "tags": ["rast", "maqam", "aether", "sustained", "poly", "gravitational", "veil"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "rast",
+    "maqam",
+    "aether",
+    "sustained",
+    "poly",
+    "gravitational",
+    "veil"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 20,
-      "oracle_timeStep": 0.10,
+      "oracle_timeStep": 0.1,
       "oracle_ampStep": 0.08,
       "oracle_distribution": 0.48,
       "oracle_barrierElasticity": 0.65,
@@ -23,16 +42,16 @@
       "oracle_gravity": 0.92,
       "oracle_drift": 0.18,
       "oracle_level": 0.72,
-      "oracle_ampAttack": 1.20,
+      "oracle_ampAttack": 1.2,
       "oracle_ampDecay": 1.5,
       "oracle_ampSustain": 0.78,
       "oracle_ampRelease": 4.0,
-      "oracle_stochEnvAttack": 0.80,
+      "oracle_stochEnvAttack": 0.8,
       "oracle_stochEnvDecay": 2.0,
       "oracle_stochEnvSustain": 0.72,
       "oracle_stochEnvRelease": 3.5,
       "oracle_lfo1Rate": 0.02,
-      "oracle_lfo1Depth": 0.10,
+      "oracle_lfo1Depth": 0.1,
       "oracle_lfo1Shape": 0,
       "oracle_lfo2Rate": 0.06,
       "oracle_lfo2Depth": 0.07,
@@ -45,7 +64,9 @@
       "oracle_macroDrift": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,

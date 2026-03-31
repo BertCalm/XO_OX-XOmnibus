@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ombre's memory/forgetting architecture at benthic depth. Blend set to 0 (pure memory/forgetting axis). Interference patterns slow and deep. Memory decay very long \u2014 things are remembered as they sink. Filter cutoff dark, resonance high for pressure modeling.",
+  "description": "Ombre's memory/forgetting architecture at benthic depth. Blend set to 0 (pure memory/forgetting axis). Interference patterns slow and deep. Memory decay very long — things are remembered as they sink. Filter cutoff dark, resonance high for pressure modeling.",
   "tags": [
     "pad",
     "memory",

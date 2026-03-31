@@ -2,11 +2,27 @@
   "schema_version": 1,
   "name": "Full Hammer Transcendental",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Duo mode (voiceMode=2): the player's chord interval determines the synthesis character — a perfect fifth produces consonance, a tritone metallic chaos, a major third warm complexity. This is the core revelation of OUIE: your harmony choices are synthesis parameters. LFO1 sweeps HAMMER at 0.04 Hz — full cycles take 25 seconds, slow enough to be felt as tide rather than vibrato. breathRate=0.067 Hz (physiological ocean wave tempo). FM (voice 1, fmRatio=2.0) + Wavefolder (voice 2, algoParam=0.6): maximum STRIFE/LOVE contrast between feliX and Oscar algorithms. All four macros active. Coprime LFO rates at 0.04 and 0.067 Hz will not align for 25 seconds. The complete instrument, fully alive. Play two-note chords and let the tide carry you.",
-  "tags": ["ouie", "duo", "interval", "full-hammer", "fm", "wavefolder", "lfo-hammer", "breath", "coprime", "aether", "complete", "revelation", "transcendental"],
+  "tags": [
+    "ouie",
+    "duo",
+    "interval",
+    "full-hammer",
+    "fm",
+    "wavefolder",
+    "lfo-hammer",
+    "breath",
+    "coprime",
+    "aether",
+    "complete",
+    "revelation",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -23,7 +39,12 @@
     "flock_note": "Play two-note chords exclusively. Begin with sustained fifths (C-G). After 10 seconds resolve to a third (E). After 10 more introduce a tritone (C-F#). Watch the HAMMER's 0.04 Hz sweep interact with your harmonic choices in real time — a conversation between your composition and the engine's autonomous evolution. This is OUIE played correctly.",
     "diagnosis": "The summit preset of Transcendental Vol 1. FM+Wavefolder provides the widest STRIFE/LOVE contrast of any feliX/Oscar pairing — FM's bright sidebands versus Wavefolder's folded harmonics create maximally distinct voices. Duo mode means every chord choice is heard through that contrast. LFO1 at 0.04 Hz is slow enough to be felt as environment rather than modulation. Coprime rates at 0.04 and 0.067 Hz will not align for approximately 25 seconds. All four macros are meaningfully active. This is the preset Guru Bin plays when asked what OUIE is."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -97,5 +118,7 @@
     "CARTILAGE": 0.6,
     "CURRENT": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Fold Drive",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Heavy wavefold drive — maximum fold for distorted prismatic tonal richness.",
-  "tags": ["fold", "drive", "distorted", "rich"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "fold",
+    "drive",
+    "distorted",
+    "rich"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.5, "movement": 0.4, "density": 0.65, "space": 0.38, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.65
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.38
     }
   },
-  "macros": {"BOUNCE": 0.5, "COLOR": 0.55, "FOLD": 0.9, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.5,
+    "COLOR": 0.55,
+    "FOLD": 0.9,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

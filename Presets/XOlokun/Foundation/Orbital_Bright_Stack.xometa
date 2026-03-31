@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Bright Stack",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bright harmonic stack — high brightness and spectral content, polyphonic chord with FM edge.",
-  "tags": ["bright", "stack", "harmonic", "chord", "foundation"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "bright",
+    "stack",
+    "harmonic",
+    "chord",
+    "foundation"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.45, "movement": 0.2, "density": 0.68, "space": 0.38, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.45,
+    "movement": 0.2,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.35
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.75,
@@ -46,6 +66,13 @@
       "orb_level": 0.76
     }
   },
-  "macros": {"SPECTRAL": 0.78, "VELOCITY": 0.2, "GROUP": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.78,
+    "VELOCITY": 0.2,
+    "GROUP": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

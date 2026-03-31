@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Negative Sweep",
   "mood": "Prism",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Negative filter envelope amount sweeps the filter closed on attack — darkness blooming from silence.",
-  "tags": ["prism", "negative", "envelope", "invert", "sweep", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "negative",
+    "envelope",
+    "invert",
+    "sweep",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.15, "COUPLING": 0.4, "SPACE": 0.28},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.28, "warmth": 0.72, "movement": 0.22, "density": 0.58, "space": 0.3, "aggression": 0.48}
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.4,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.58,
+    "space": 0.3,
+    "aggression": 0.48
+  }
 }

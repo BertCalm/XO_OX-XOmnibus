@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mojo Zero",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure analog warmth at the origin — fat_mojo at 0.0 delivers saturated vintage low-end with tape-like bloom.",
-  "tags": ["analog", "warm", "vintage", "saturated", "fat"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "analog",
+    "warm",
+    "vintage",
+    "saturated",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.95, "movement": 0.15, "density": 0.9, "space": 0.15, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.95,
+    "movement": 0.15,
+    "density": 0.9,
+    "space": 0.15,
+    "aggression": 0.4
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.6,
@@ -41,6 +61,13 @@
       "fat_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

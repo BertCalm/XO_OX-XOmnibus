@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Poly Pad",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Obese in poly mode with wide stereo and long release — the fat character translated into a lush, sustained pad that fills space with dense harmonic warmth.",
-  "tags": ["foundation", "pad", "polyphonic", "lush", "wide"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "pad",
+    "polyphonic",
+    "lush",
+    "wide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.8, "movement": 0.15, "density": 0.75, "space": 0.75, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.75,
+    "aggression": 0.1
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.45,
@@ -46,6 +66,13 @@
       "fat_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

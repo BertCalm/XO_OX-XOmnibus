@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Mineral Spectrum",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full harmonic mineral spread — maximum density across the full spectral range.",
-  "tags": ["spectral", "harmonic", "wide", "rich"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "spectral",
+    "harmonic",
+    "wide",
+    "rich"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.5, "movement": 0.4, "density": 0.8, "space": 0.55, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.8,
+    "space": 0.55,
+    "aggression": 0.3
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.65,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

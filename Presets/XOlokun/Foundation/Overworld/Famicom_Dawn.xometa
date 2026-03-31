@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "Famicom Dawn",
   "mood": "Foundation",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "NES era lead — pure pulse wave at 50% duty cycle with triangle bass enabled. No effects, no crushing. The ERA triangle is centered on the NES vertex. Clean chip foundation, full velocity sensitivity. Reminiscent of 1985 Famicom title screens.",
-  "tags": ["awakening", "nes", "pulse", "chip", "lead", "retro", "foundation"],
-  "macroLabels": ["ERA", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "awakening",
+    "nes",
+    "pulse",
+    "chip",
+    "lead",
+    "retro",
+    "foundation"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.0,
@@ -102,7 +121,9 @@
       "ow_drumMode": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.72,

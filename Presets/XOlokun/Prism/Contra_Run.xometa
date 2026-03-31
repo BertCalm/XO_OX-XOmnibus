@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Contra Run",
   "mood": "Prism",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full NES aggression — narrow pulse duty cycle with upward sweep, noise percussion replaced. The propulsive action lead of run-and-gun games. Bright, aggressive, forward momentum.",
-  "tags": ["nes", "lead", "pulse", "aggressive", "prism", "action", "bright"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "nes",
+    "lead",
+    "pulse",
+    "aggressive",
+    "prism",
+    "action",
+    "bright"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.0,
@@ -97,7 +116,9 @@
       "ow_macroSpace": 0.1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.85,

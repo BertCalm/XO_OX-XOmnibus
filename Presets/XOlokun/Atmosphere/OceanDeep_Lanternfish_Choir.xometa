@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: The Bioluminescent Exciter Is Alien Life", "Sutra 3: Coprime LFO Rates Create Non-Repeating Patterns"],
+    "scripture": [
+      "Verse: The Bioluminescent Exciter Is Alien Life",
+      "Sutra 3: Coprime LFO Rates Create Non-Repeating Patterns"
+    ],
     "revelation": "Tempora spoke: bioRate 0.067 Hz and lfo1Rate 0.043 Hz are coprime — their least common period is ~330 seconds. For five and a half minutes, the pattern never repeats. The lanternfish choir sings a song longer than any human attention span.",
     "god": "Tempora",
     "flock_note": "The Breath discovered that at bioMix 0.75, the exciter IS the sound — the sub is just weight beneath it. The Ear confirmed: bioBrightness 2800 Hz sits exactly in the vocal presence range. The choir is speaking in a frequency band the human ear is most sensitive to.",

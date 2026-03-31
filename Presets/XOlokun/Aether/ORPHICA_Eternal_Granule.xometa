@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Eternal Granule",
   "mood": "Aether",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A single frozen grain expanded across the full 1-second buffer — Orpheus suspended at the threshold, neither ascending nor descending. Maximum shimmer and divine resonance.",
-  "tags": ["granular", "freeze", "pad", "divine", "aether", "eternal", "slow-attack"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "granular",
+    "freeze",
+    "pad",
+    "divine",
+    "aether",
+    "eternal",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.45, "movement": 0.15, "density": 0.45, "space": 0.98, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.98,
+    "aggression": 0.02
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 4,
@@ -48,6 +70,13 @@
       "orph_macroDivine": 0.85
     }
   },
-  "macros": {"PLUCK": 0.25, "FRACTURE": 0.1, "SURFACE": 0.5, "DIVINE": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.25,
+    "FRACTURE": 0.1,
+    "SURFACE": 0.5,
+    "DIVINE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

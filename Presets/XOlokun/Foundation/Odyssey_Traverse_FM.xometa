@@ -2,20 +2,37 @@
   "schema_version": 1,
   "name": "Traverse FM",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Both oscillators in FM mode with slow drift — the FM ratio wanders as the voice drifts. A harmonic migration preset where the inharmonic content moves through timbral space continuously. Foundational but never static.",
-  "tags": ["odyssey", "fm", "drift", "compound", "traverse", "foundation", "transcendental"],
+  "tags": [
+    "odyssey",
+    "fm",
+    "drift",
+    "compound",
+    "traverse",
+    "foundation",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"],
+    "scripture": [
+      "Scripture VII-5: Drift Without FM Is Latitude; FM Without Drift Is Longitude; Both Together Is Navigation"
+    ],
     "revelation": "Two FM oscillators drifting simultaneously create migration paths that no single FM ratio can reach.",
     "diagnosis": "Traverse FM establishes the compound FM+drift behavior as a foundational playing patch. OscA=FM at ratio 2, OscB=FM at ratio 3, both with drift depth 0.35. The compound interaction creates inharmonic partials that wander through timbral space. The negative space in the existing library."
   },
-  "macroLabels": ["FM RATIO A", "FM RATIO B", "DRIFT DEPTH", "FILTER SWEEP"],
+  "macroLabels": [
+    "FM RATIO A",
+    "FM RATIO B",
+    "DRIFT DEPTH",
+    "FILTER SWEEP"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +92,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

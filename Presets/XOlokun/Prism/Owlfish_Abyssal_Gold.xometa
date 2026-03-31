@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Abyssal Gold",
   "mood": "Prism",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Metallic overtone series pushed bright with high mixtur — bioluminescent gold flickering at maximum depth.",
-  "tags": ["prism", "gold", "abyssal", "metallic", "bright", "bioluminescent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "gold",
+    "abyssal",
+    "metallic",
+    "bright",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.55, "movement": 0.42, "density": 0.65, "space": 0.55, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.55,
+    "movement": 0.42,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.45
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.72,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.88, "MOVEMENT": 0.42, "COUPLING": 0.35, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.35,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

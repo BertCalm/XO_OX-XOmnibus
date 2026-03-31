@@ -4,14 +4,33 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Resource Wars",
   "mood": "Prism",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Maximum ecological competition (competitionStrength=1.0): Saw src1 and Square src2 fight for survival. proc1=Wavefolder on the Saw adds aggressive harmonic content; proc2=HP strips the Square's body, leaving only edges. Total resource exclusion — only the strongest timbral content at any moment gets through. The most aggressive brick ecology preset: a coral reef collapse in miniature.",
-  "tags": ["obrix", "prism", "saw", "square", "brick-ecology", "competition", "wavefolder", "highpass", "wave4"],
+  "tags": [
+    "obrix",
+    "prism",
+    "saw",
+    "square",
+    "brick-ecology",
+    "competition",
+    "wavefolder",
+    "highpass",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.8,

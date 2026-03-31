@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Storm Brick",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "One electrical brick — the fundamental building block of an electrical storm, isolated and studied. Noise src1 + Triangle src2 (srcMix=0.3 — the triangle gives the brick a tonal center, like the frequency signature of a specific lightning formation). proc1=BP (2100 Hz, reso=0.72) sculpts the electrical character; proc2=LP (6000 Hz) protects the upper atmosphere. gestureMode=3 (Tide/Surge), flashTrigger=0.7. aggression=0.45 — meditative but with real electrical presence. Long release (1.2s) for atmospheric sustain. The FLASH gesture here fires as a considered event, not a storm. LFO->FilterCutoff (0.28 Hz), Env->FilterReso (reso opens on attack), Velocity->Volume, Aftertouch->Pan. CHARACTER 0.32, MOVEMENT 0.38.",
-  "tags": ["obrix", "atmosphere", "noise", "triangle", "bp-filter", "flash", "storm", "brick"],
+  "tags": [
+    "obrix",
+    "atmosphere",
+    "noise",
+    "triangle",
+    "bp-filter",
+    "flash",
+    "storm",
+    "brick"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.58,

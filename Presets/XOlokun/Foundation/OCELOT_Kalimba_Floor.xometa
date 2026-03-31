@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Kalimba Floor",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sparse jungle floor — single kalimba tine at rest. Ecosystem matrix pre-wired: percussion opens the canopy filter and triggers frog chirps.",
-  "tags": ["foundation", "kalimba", "jungle", "floor", "sparse", "tonal"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "foundation",
+    "kalimba",
+    "jungle",
+    "floor",
+    "sparse",
+    "tonal"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.25,
@@ -24,7 +38,9 @@
     "space": 0.58,
     "aggression": 0.08
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

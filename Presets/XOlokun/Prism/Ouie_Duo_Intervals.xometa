@@ -2,22 +2,41 @@
   "schema_version": 1,
   "name": "Duo Intervals",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The Nexus revelation. Duo mode with both voices on VA — the interval between two held notes becomes a synthesis parameter. HAMMER at -0.5 drives cross-FM where the modulation ratio IS the musical interval. Play a perfect fifth: the FM ratio locks to 3:2. Play a tritone: dissonance erupts. Every chord voicing sounds structurally different. The instrument reads your harmony.",
-  "tags": ["prism", "duo", "intervals", "cross-fm", "harmonic", "interactive", "nexus", "guru-bin"],
+  "tags": [
+    "prism",
+    "duo",
+    "intervals",
+    "cross-fm",
+    "harmonic",
+    "interactive",
+    "nexus",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
     "retreat_date": "2026-03-19",
-    "scripture": ["Key Revelation: Interval-as-Parameter — The FM Ratio IS the Musical Interval", "Verse 4: The Instrument Reads Your Harmony"],
+    "scripture": [
+      "Key Revelation: Interval-as-Parameter — The FM Ratio IS the Musical Interval",
+      "Verse 4: The Instrument Reads Your Harmony"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger played a perfect fifth and The Ear heard the FM ratio lock to 3:2 — then played a tritone and heard dissonance erupt. The instrument is responsive to harmonic choice.",
     "diagnosis": "Duo Intervals demonstrates the Nexus revelation — in Duo mode with cross-FM, the interval between two held notes becomes a synthesis parameter. A perfect fifth creates harmonic FM; a tritone creates dissonance. The engine's most interactive feature."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -91,5 +110,7 @@
     "CARTILAGE": 0.45,
     "CURRENT": 0.3
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

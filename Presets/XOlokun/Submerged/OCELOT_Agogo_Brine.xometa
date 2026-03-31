@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Agogo Brine",
   "mood": "Submerged",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Struck agogo bell heard through salt water — inharmonic bell tones collapsed into a muffled, pressurized ring. Underwater biome darkens the overtones. Creature calls from depth.",
-  "tags": ["submerged", "agogo", "bell", "brine", "dark", "inharmonic"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "submerged",
+    "agogo",
+    "bell",
+    "brine",
+    "dark",
+    "inharmonic"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.28,
@@ -24,7 +38,9 @@
     "space": 0.75,
     "aggression": 0.25
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

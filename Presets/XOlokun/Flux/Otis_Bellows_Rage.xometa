@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Accordion bellows under duress — maximum musette + drive, tight attack snap, mod wheel pushes bellows pressure to breaking. The squeezebox in a bar fight. Aftertouch for maximum protest.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.15,
     "warmth": 0.5
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Flux",
   "name": "Bellows Rage",
   "parameters": {
@@ -55,7 +64,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["accordion", "zydeco", "flux", "aggressive", "bellows", "dance"],
+  "tags": [
+    "accordion",
+    "zydeco",
+    "flux",
+    "aggressive",
+    "bellows",
+    "dance"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Deep Fathom",
   "mood": "Foundation",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aquatic Chain showcase emphasizing Fathom's maximum-depth character. OXBOW's entangled reverb already has internal density; Fathom at Character 0.0 (full dark/deep mode) adds multiband compression that further pushes energy into the low-mid body, creating a foundation-weight texture suitable for grounding a dense arrangement. Drift minimal (2 voices, 2ms depth) — this is about mass, not movement. Tide off. Reef at modest size 0.4 — OXBOW provides most of the reverb space already.",
-  "tags": ["oxbow", "fdn", "aquatic-chain", "fathom", "deep", "foundation", "weight", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "oxbow",
+    "fdn",
+    "aquatic-chain",
+    "fathom",
+    "deep",
+    "foundation",
+    "weight",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oxbow": {
       "oxb_entangle": 0.55,
@@ -23,21 +43,23 @@
       "oxb_lfo1Rate": 0.04,
       "oxb_lfo1Depth": 0.15,
       "oxb_lfo2Rate": 0.012,
-      "oxb_lfo2Depth": 0.10,
-      "oxb_ampAttack": 0.80,
+      "oxb_lfo2Depth": 0.1,
+      "oxb_ampAttack": 0.8,
       "oxb_ampDecay": 1.8,
       "oxb_ampSustain": 0.85,
       "oxb_ampRelease": 4.0,
-      "oxb_macroCharacter": 0.20,
-      "oxb_macroMovement": 0.10,
+      "oxb_macroCharacter": 0.2,
+      "oxb_macroMovement": 0.1,
       "oxb_macroCoupling": 0.0,
       "oxb_macroSpace": 0.78
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.20,
+    "brightness": 0.2,
     "warmth": 0.78,
     "movement": 0.12,
     "density": 0.85,

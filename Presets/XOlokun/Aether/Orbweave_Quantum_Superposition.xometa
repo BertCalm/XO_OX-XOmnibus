@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Superposition",
   "mood": "Aether",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Orbweave's knot phase matrix feeds Quantum Smear at low observation (0.15) — the partial measurement of the coupled knot states creates a genuinely probabilistic delay whose feedback smears the topological routing signal. High observation collapses the smear to a clean echo; low observation lets it exist in multiple states simultaneously.",
-  "tags": ["aether", "knot", "quantum", "delay", "topological", "mathematical", "fx_chain:Mathematical", "math-fx-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "knot",
+    "quantum",
+    "delay",
+    "topological",
+    "mathematical",
+    "fx_chain:Mathematical",
+    "math-fx-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.38, "movement": 0.55, "density": 0.62, "space": 0.82, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.38,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.82,
+    "aggression": 0.18
+  },
   "parameters": {
     "Orbweave": {
       "weave_knotDepth": 0.55,
@@ -35,8 +58,15 @@
       "weave_macroSpace": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "mfx_ecMix": 0.0,
     "mfx_vsMix": 0.0,

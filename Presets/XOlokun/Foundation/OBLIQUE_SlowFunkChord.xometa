@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Slow Funk Chord",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A foundation funk chord tool — warm sawtooth, moderate fold, gentle bounce with heavy swing for groove. Phaser slow and deep for the Tame Impala warmth. LFO2 at 0.03 Hz breathes the phaser over 30 seconds. Long sustain, medium release. Velocity opens the filter envelope wide.",
-  "tags": ["funk", "chord", "groove", "warm", "legato"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "funk",
+    "chord",
+    "groove",
+    "warm",
+    "legato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -23,14 +36,14 @@
       "oblq_oscWave": 1,
       "oblq_oscFold": 0.38,
       "oblq_oscDetune": 12.0,
-      "oblq_level": 0.80,
+      "oblq_level": 0.8,
       "oblq_glide": 0.0,
       "oblq_voiceMode": 0,
       "oblq_percClick": 0.42,
       "oblq_percDecay": 0.008,
       "oblq_bounceRate": 200.0,
       "oblq_bounceGravity": 0.65,
-      "oblq_bounceDamp": 0.80,
+      "oblq_bounceDamp": 0.8,
       "oblq_bounceCnt": 4.0,
       "oblq_bounceSwing": 0.55,
       "oblq_clickTone": 1800.0,
@@ -62,6 +75,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

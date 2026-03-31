@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Zigzag",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Zigzag arp movement — tetra darting in irregular alternating pattern.",
-  "tags": ["zigzag", "arp", "irregular", "pattern"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "zigzag",
+    "arp",
+    "irregular",
+    "pattern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.22, "movement": 0.78, "density": 0.42, "space": 0.4, "aggression": 0.38},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 2, "snap_snap": 0.85, "snap_decay": 0.12, "snap_detune": 0.07, "snap_filterCutoff": 13000.0, "snap_filterReso": 0.4, "snap_filterEnvDepth": 0.72, "snap_unison": 1, "snap_sweepDirection": 2, "snap_pitchLock": 0.9, "snap_polyphony": 4, "snap_level": 0.8, "snap_macroDart": 0.85, "snap_macroDepth": 0.38, "snap_macroSchool": 0.3, "snap_macroSurface": 0.5}
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.22,
+    "movement": 0.78,
+    "density": 0.42,
+    "space": 0.4,
+    "aggression": 0.38
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.78, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_snap": 0.85,
+      "snap_decay": 0.12,
+      "snap_detune": 0.07,
+      "snap_filterCutoff": 13000.0,
+      "snap_filterReso": 0.4,
+      "snap_filterEnvDepth": 0.72,
+      "snap_unison": 1,
+      "snap_sweepDirection": 2,
+      "snap_pitchLock": 0.9,
+      "snap_polyphony": 4,
+      "snap_level": 0.8,
+      "snap_macroDart": 0.85,
+      "snap_macroDepth": 0.38,
+      "snap_macroSchool": 0.3,
+      "snap_macroSurface": 0.5
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

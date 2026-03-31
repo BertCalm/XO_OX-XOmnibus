@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 110 with high synapse (0.55). Arms strongly influence each other \u2014 complex locked behavior.",
+  "description": "Rule 110 with high synapse (0.55). Arms strongly influence each other — complex locked behavior.",
   "dna": {
     "aggression": 0.32,
     "brightness": 0.5,

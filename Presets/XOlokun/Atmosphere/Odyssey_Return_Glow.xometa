@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Return Glow",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm return-voyage glow — shimmer and haze together, moderate drift, resolved harmonic.",
-  "tags": ["return", "glow", "warm", "resolved"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "return",
+    "glow",
+    "warm",
+    "resolved"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.7, "movement": 0.3, "density": 0.55, "space": 0.72, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.08
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.76
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

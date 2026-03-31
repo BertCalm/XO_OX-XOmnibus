@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Coral Nursery",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Two sources — saw + triangle — blended through dual processors. The reef begins to grow. Warm analog character from the FM Sweet Spot at 0.09.",
-  "tags": ["obrix", "warm", "analog", "dual", "foundation"],
+  "tags": [
+    "obrix",
+    "warm",
+    "analog",
+    "dual",
+    "foundation"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
-    "scripture": ["Gospel 4: FM Sweet Spot at 0.09", "Verse 1: Two Sources, Two Processors, The Reef Begins"],
+    "scripture": [
+      "Gospel 4: FM Sweet Spot at 0.09",
+      "Verse 1: Two Sources, Two Processors, The Reef Begins"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Bone recognized the FM Sweet Spot warmth immediately — 0.09 fmDepth is the exact value where the reef starts breathing.",

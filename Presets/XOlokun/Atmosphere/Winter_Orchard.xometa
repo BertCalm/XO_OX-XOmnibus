@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sparse winter strings \u2014 cold, interior, dormant. The bare branches.",
+  "description": "Sparse winter strings — cold, interior, dormant. The bare branches.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.1,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Winter Orchard",
+  "name": "Winter Orchard (Orchard) (Orchard) 2",
   "parameters": {
     "Orchard": {
       "orch_attack": 0.5,

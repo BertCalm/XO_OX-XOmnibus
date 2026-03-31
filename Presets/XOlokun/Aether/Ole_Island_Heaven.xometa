@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Island Heaven",
   "mood": "Aether",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Isla macro at full peak with max sympathetic resonance, the island in divine aether.",
-  "tags": ["latin", "island", "heaven", "divine", "aether"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "island",
+    "heaven",
+    "divine",
+    "aether"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.72, "movement": 0.42, "density": 0.42, "space": 0.92, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.72,
+    "movement": 0.42,
+    "density": 0.42,
+    "space": 0.92,
+    "aggression": 0.1
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 0,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.42
     }
   },
-  "macros": {"DRAMA": 0.35, "FUEGO": 0.42, "ISLA": 0.98, "SIDES": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.35,
+    "FUEGO": 0.42,
+    "ISLA": 0.98,
+    "SIDES": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

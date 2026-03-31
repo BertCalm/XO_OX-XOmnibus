@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OSIER — Soprano voice brightness for melody. High cutoff, short attack, glide. Quartet texture behind.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.68,
     "aggression": 0.1
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Luminous",
   "name": "Soprano Lead",
   "parameters": {
@@ -41,7 +50,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["osier", "chamber", "quartet", "luminous", "soprano", "violin", "melodic"],
+  "tags": [
+    "osier",
+    "chamber",
+    "quartet",
+    "luminous",
+    "soprano",
+    "violin",
+    "melodic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

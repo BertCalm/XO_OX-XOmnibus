@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Harmonic Crown",
   "mood": "Prism",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crowned harmonic series — all partials present and crowned, wide spectral display.",
-  "tags": ["harmonic", "crown", "partials", "bright"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "harmonic",
+    "crown",
+    "partials",
+    "bright"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.48, "movement": 0.4, "density": 0.6, "space": 0.6, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.48,
+    "movement": 0.4,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.32
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.78,
@@ -46,6 +65,13 @@
       "orb_level": 0.74
     }
   },
-  "macros": {"SPECTRAL": 0.78, "VELOCITY": 0.4, "GROUP": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.78,
+    "VELOCITY": 0.4,
+    "GROUP": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

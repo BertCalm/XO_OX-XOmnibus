@@ -2,16 +2,44 @@
   "schema_version": 1,
   "name": "Pandeiro Storm",
   "mood": "Flux",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Guru Bin Awakening 7 — humidity at 0.92 drives tanh saturation hard. Pandeiro jingles in tropical rain. The floor hits accelerate understory chaos. The storm degrades everything.",
-  "tags": ["flux", "guru-bin", "pandeiro", "storm", "tropical", "saturated", "percussion", "awakening"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "flux",
+    "guru-bin",
+    "pandeiro",
+    "storm",
+    "tropical",
+    "saturated",
+    "percussion",
+    "awakening"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.72, "movement": 0.82, "density": 0.78, "space": 0.32, "aggression": 0.72},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.72,
+    "movement": 0.82,
+    "density": 0.78,
+    "space": 0.32,
+    "aggression": 0.72
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -83,5 +111,7 @@
       "ocelot_xf_emergCanopy": 0.22
     }
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

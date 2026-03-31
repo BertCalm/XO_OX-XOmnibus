@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "SOLVE at slow hunt rate \u2014 the genetic algorithm takes minutes to converge. You are witnessing evolutionary time. By the note's end, the target DNA has been found.",
+  "description": "SOLVE at slow hunt rate — the genetic algorithm takes minutes to converge. You are witnessing evolutionary time. By the note's end, the target DNA has been found.",
   "tags": [
     "aether",
     "solve",

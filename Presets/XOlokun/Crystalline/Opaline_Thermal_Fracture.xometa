@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Thermal Fracture",
   "mood": "Crystalline",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum thermal shock on porcelain — the partials drift and shift as the material expands unevenly under thermal stress. The glass threatens to crack at every temperature change. High fragility means hard strikes actually do crack. Living, dangerous sound.",
-  "tags": ["thermal", "drift", "fragile", "porcelain", "evolving", "dangerous"],
-  "macroLabels": ["CHARACTER", "THERMAL", "COUPLING", "SPACE"],
+  "tags": [
+    "thermal",
+    "drift",
+    "fragile",
+    "porcelain",
+    "evolving",
+    "dangerous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "THERMAL",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

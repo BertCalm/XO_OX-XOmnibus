@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Frozen Cathedral",
   "mood": "Atmosphere",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Celesta with maximum sustain and shimmer — each note hangs in the air like ice crystals in a cathedral. Sustain pedal on, long decay, subtle thermal drift makes the partials slowly wander. A church made of glass.",
-  "tags": ["celesta", "pad", "sustain", "cathedral", "frozen", "ambient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SHIMMER"],
+  "tags": [
+    "celesta",
+    "pad",
+    "sustain",
+    "cathedral",
+    "frozen",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SHIMMER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

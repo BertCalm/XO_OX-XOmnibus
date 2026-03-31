@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Filter Ride",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter cutoff in motion from low to high across a sustained note — the fat engine's ladder filter rides the note as a dynamic timbral event, opening from darkness into light.",
-  "tags": ["flux", "filter", "dynamic", "timbral", "opening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "filter",
+    "dynamic",
+    "timbral",
+    "opening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 100,
-  "dna": {"brightness": 0.55, "warmth": 0.6, "movement": 0.7, "density": 0.6, "space": 0.4, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.4
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.4,
@@ -46,6 +66,13 @@
       "fat_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.7, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

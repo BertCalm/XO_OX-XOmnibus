@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "The FDN is tuned as an overtone map \u2014 each delay return emphasizes a different partial of the input. Sustained notes reveal their full harmonic spectrum through the reverb tail's selective amplification.",
+  "description": "The FDN is tuned as an overtone map — each delay return emphasizes a different partial of the input. Sustained notes reveal their full harmonic spectrum through the reverb tail's selective amplification.",
   "tags": [
     "overtone",
     "spectral",

@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 156 on all arms \u2014 a smooth traveling-wave class 2 rule. Pure periodic propagation.",
+  "description": "Rule 156 on all arms — a smooth traveling-wave class 2 rule. Pure periodic propagation.",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.33,

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Build Drop (Ostinato)",
   "mood": "Flux",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Engineered for the moment of maximum GATHER. The kit starts sparse — just the four-on-floor taiko kick — then the GATHER macro brings in snare, hats, congas, and tabla in a kinetic swell. At GATHER=1.0 you get the full eight-seat roar of the drop. CIRCLE amount high for sympathetic resonance surge at peak.",
-  "tags": ["edm", "build", "drop", "gather-macro", "four-on-floor", "kinetic"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "edm",
+    "build",
+    "drop",
+    "gather-macro",
+    "four-on-floor",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 132,
   "dna": {

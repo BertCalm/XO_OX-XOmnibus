@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Drift Mind",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High shift drift with micro-detuning across all arms creates a gentle, unfocused atmospheric drift — the octopus intelligence dispersed across a slow, undulating field.",
-  "tags": ["atmosphere", "drift", "detuned", "gentle", "unfocused"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "drift",
+    "detuned",
+    "gentle",
+    "unfocused"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.6, "movement": 0.3, "density": 0.5, "space": 0.75, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.75,
+    "aggression": 0.05
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.4,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

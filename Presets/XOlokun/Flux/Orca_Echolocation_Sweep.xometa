@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Echolocation Sweep",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter sweep synchronized to echo return — as resonance peaks and decays, the filter opens and closes like an active echolocation scan sweeping a target zone.",
-  "tags": ["flux", "sweep", "filter", "echolocation", "active"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "sweep",
+    "filter",
+    "echolocation",
+    "active"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 110,
-  "dna": {"brightness": 0.55, "warmth": 0.4, "movement": 0.8, "density": 0.5, "space": 0.5, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.55
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.5,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.5
     }
   },
-  "macros": {"HUNT": 0.6, "MOVEMENT": 0.8, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.6,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Full Mojo",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum digital precision — the Mojo axis at 1.0 reveals crystalline sub architecture with no analog smear.",
-  "tags": ["digital", "precision", "sub", "clean", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "digital",
+    "precision",
+    "sub",
+    "clean",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.1, "movement": 0.2, "density": 0.85, "space": 0.2, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.1,
+    "movement": 0.2,
+    "density": 0.85,
+    "space": 0.2,
+    "aggression": 0.55
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.3,
@@ -41,6 +61,13 @@
       "fat_level": 0.88
     }
   },
-  "macros": {"CHARACTER": 1.0, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 1.0,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

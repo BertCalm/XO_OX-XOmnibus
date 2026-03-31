@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "8bit Dissolution",
   "mood": "Entangled",
-  "engines": ["Overworld", "Opal"],
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chip engine fully possesses Opal — FM audio injected as grain source, envelope seizes morph and filter. The retro console is dissolved into time-scattered particles.",
-  "tags": ["coupling", "Overworld-pair", "chip", "granular", "possession", "FM", "retro"],
-  "macroLabels": ["ERA", "GLITCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Overworld-pair",
+    "chip",
+    "granular",
+    "possession",
+    "FM",
+    "retro"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",

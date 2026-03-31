@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Ghost Harmonic Drift",
   "mood": "Atmosphere",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Voice 1: Additive at brightness 0.75, full harmonic series. Voice 2: Additive at brightness 0.18, only the fundamental and second harmonic — a ghost fundamental 18 dB below the main voice. HAMMER at +0.15 introduces subliminal spectral blend. Voice 2 is barely audible but creates a phantom sub-octave that is felt in the chest, not heard with the ears. The Ghost Harmonic trick applied through OUIE's duophonic architecture.",
-  "tags": ["atmospheric", "ghost", "sub", "additive", "subliminal", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "atmospheric",
+    "ghost",
+    "sub",
+    "additive",
+    "subliminal",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.3
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

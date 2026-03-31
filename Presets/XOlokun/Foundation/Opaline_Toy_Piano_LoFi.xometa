@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Toy Piano LoFi",
   "mood": "Foundation",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A lo-fi toy piano — small, bright, slightly detuned. Metal tines struck by tiny hammers in a child's bedroom. The instrument of John Cage, Margaret Leng Tan, and Aphex Twin. Extra inharmonicity for that characteristic metallic buzz.",
-  "tags": ["toy piano", "lo-fi", "bright", "percussive", "avant-garde", "childhood"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "toy piano",
+    "lo-fi",
+    "bright",
+    "percussive",
+    "avant-garde",
+    "childhood"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

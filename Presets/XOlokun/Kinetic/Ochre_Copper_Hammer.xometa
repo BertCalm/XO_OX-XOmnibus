@@ -2,36 +2,51 @@
   "schema_version": 1,
   "name": "Copper Hammer",
   "mood": "Kinetic",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hard hammer, high conductivity, short decay — the percussive copper character. Staccato playing at its most focused and rhythmically precise. The copper piano as rhythmic instrument, not melodic. Every hit clean and immediate.",
-  "tags": ["piano", "copper", "percussive", "kinetic", "hard", "rhythmic", "staccato"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "percussive",
+    "kinetic",
+    "hard",
+    "rhythmic",
+    "staccato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.70,
+    "brightness": 0.7,
     "warmth": 0.45,
-    "movement": 0.10,
-    "density": 0.50,
-    "space": 0.20,
+    "movement": 0.1,
+    "density": 0.5,
+    "space": 0.2,
     "aggression": 0.65
   },
   "parameters": {
     "Ochre": {
-      "ochre_conductivity": 0.70,
+      "ochre_conductivity": 0.7,
       "ochre_hardness": 0.78,
       "ochre_bodyType": 2,
-      "ochre_bodyDepth": 0.40,
+      "ochre_bodyDepth": 0.4,
       "ochre_brightness": 13000.0,
       "ochre_damping": 0.55,
       "ochre_decay": 0.7,
       "ochre_caramel": 0.15,
-      "ochre_sympathy": 0.10,
-      "ochre_hfCharacter": 0.40,
-      "ochre_thermalDrift": 0.30,
-      "ochre_filterEnvAmount": 0.50,
+      "ochre_sympathy": 0.1,
+      "ochre_hfCharacter": 0.4,
+      "ochre_thermalDrift": 0.3,
+      "ochre_filterEnvAmount": 0.5,
       "ochre_bendRange": 2.0,
       "ochre_macroCharacter": 0.0,
       "ochre_macroMovement": 0.0,
@@ -40,7 +55,7 @@
       "ochre_lfo1Rate": 0.35,
       "ochre_lfo1Depth": 0.04,
       "ochre_lfo1Shape": 0,
-      "ochre_lfo2Rate": 1.50,
+      "ochre_lfo2Rate": 1.5,
       "ochre_lfo2Depth": 0.0,
       "ochre_lfo2Shape": 1
     }

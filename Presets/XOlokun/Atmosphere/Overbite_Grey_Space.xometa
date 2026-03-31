@@ -2,15 +2,39 @@
   "schema_version": 1,
   "name": "Grey Space",
   "mood": "Atmosphere",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "PLAY DEAD 0.65, BELLY 0.72 — compound warmth plus partial collapse. The grey space between alive and pretending not to be. Not silence, not sound — something suspended. Sub persists, filter barely open, room reverb holds the warmth. The opossum half-collapsed with metabolic warmth still radiating.",
-  "tags": ["atmosphere", "play-dead", "belly", "compound", "grey", "liminal", "overbite", "transcendental"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "atmosphere",
+    "play-dead",
+    "belly",
+    "compound",
+    "grey",
+    "liminal",
+    "overbite",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.8, "movement": 0.1, "density": 0.52, "space": 0.78, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.8,
+    "movement": 0.1,
+    "density": 0.52,
+    "space": 0.78,
+    "aggression": 0.04
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -80,14 +104,30 @@
       "poss_lfo3Sync": 0,
       "poss_lfo3Retrigger": 0,
       "poss_lfo3Phase": 0.0,
-      "poss_modSlot1Src": 0, "poss_modSlot1Dst": 0, "poss_modSlot1Amt": 0.0,
-      "poss_modSlot2Src": 0, "poss_modSlot2Dst": 0, "poss_modSlot2Amt": 0.0,
-      "poss_modSlot3Src": 0, "poss_modSlot3Dst": 0, "poss_modSlot3Amt": 0.0,
-      "poss_modSlot4Src": 0, "poss_modSlot4Dst": 0, "poss_modSlot4Amt": 0.0,
-      "poss_modSlot5Src": 0, "poss_modSlot5Dst": 0, "poss_modSlot5Amt": 0.0,
-      "poss_modSlot6Src": 0, "poss_modSlot6Dst": 0, "poss_modSlot6Amt": 0.0,
-      "poss_modSlot7Src": 0, "poss_modSlot7Dst": 0, "poss_modSlot7Amt": 0.0,
-      "poss_modSlot8Src": 0, "poss_modSlot8Dst": 0, "poss_modSlot8Amt": 0.0,
+      "poss_modSlot1Src": 0,
+      "poss_modSlot1Dst": 0,
+      "poss_modSlot1Amt": 0.0,
+      "poss_modSlot2Src": 0,
+      "poss_modSlot2Dst": 0,
+      "poss_modSlot2Amt": 0.0,
+      "poss_modSlot3Src": 0,
+      "poss_modSlot3Dst": 0,
+      "poss_modSlot3Amt": 0.0,
+      "poss_modSlot4Src": 0,
+      "poss_modSlot4Dst": 0,
+      "poss_modSlot4Amt": 0.0,
+      "poss_modSlot5Src": 0,
+      "poss_modSlot5Dst": 0,
+      "poss_modSlot5Amt": 0.0,
+      "poss_modSlot6Src": 0,
+      "poss_modSlot6Dst": 0,
+      "poss_modSlot6Amt": 0.0,
+      "poss_modSlot7Src": 0,
+      "poss_modSlot7Dst": 0,
+      "poss_modSlot7Amt": 0.0,
+      "poss_modSlot8Src": 0,
+      "poss_modSlot8Dst": 0,
+      "poss_modSlot8Amt": 0.0,
       "poss_macroBelly": 0.72,
       "poss_macroBite": 0.0,
       "poss_macroScurry": 0.0,
@@ -121,6 +161,14 @@
       "poss_pan": 0.0
     }
   },
-  "macros": {"BELLY": 0.72, "BITE": 0.0, "SCURRY": 0.0, "TRASH": 0.0, "PLAY DEAD": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.72,
+    "BITE": 0.0,
+    "SCURRY": 0.0,
+    "TRASH": 0.0,
+    "PLAY DEAD": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

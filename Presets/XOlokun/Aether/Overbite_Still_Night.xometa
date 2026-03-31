@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Still Night",
   "mood": "Aether",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Barely-there ambient bass hum for late-night stillness — the opossum frozen in the headlights.",
-  "tags": ["ambient", "hum", "still", "minimal"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "ambient",
+    "hum",
+    "still",
+    "minimal"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.7, "movement": 0.1, "density": 0.3, "space": 0.8, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.1,
+    "density": 0.3,
+    "space": 0.8,
+    "aggression": 0.05
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -34,6 +54,14 @@
       "poss_macroPlayDead": 0.9
     }
   },
-  "macros": {"BELLY": 0.35, "BITE": 0.0, "SCURRY": 0.05, "TRASH": 0.0, "PLAY DEAD": 0.9},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.35,
+    "BITE": 0.0,
+    "SCURRY": 0.05,
+    "TRASH": 0.0,
+    "PLAY DEAD": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

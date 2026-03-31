@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "S&H on LFO1 into filter at 2Hz, square on LFO2 into tangle — the Unknot state passes all this random modulation directly through the clean FDN without topological filtering. Bioluminescence at 0.35 fires randomly with each pulse, creating stochastic shimmer. Short decay keeps each hit percussive.",
-  "dna": { "aggression": 0.5, "brightness": 0.62, "density": 0.5, "movement": 0.75, "space": 0.45, "warmth": 0.35 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.62,
+    "density": 0.5,
+    "movement": 0.75,
+    "space": 0.45,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Unknot Scatter",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "unknot", "stochastic", "scatter", "percussive", "movement"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "unknot",
+    "stochastic",
+    "scatter",
+    "percussive",
+    "movement"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

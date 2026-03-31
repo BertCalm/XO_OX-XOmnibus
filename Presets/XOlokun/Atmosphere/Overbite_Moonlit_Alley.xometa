@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Moonlit Alley",
   "mood": "Atmosphere",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Nocturnal pad with cool high-pass shimmer and a warm sub undertow — opossum under the moon.",
-  "tags": ["pad", "nocturnal", "ambient", "spacious"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "pad",
+    "nocturnal",
+    "ambient",
+    "spacious"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.6, "movement": 0.25, "density": 0.45, "space": 0.8, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.1
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -37,6 +57,14 @@
       "poss_macroPlayDead": 0.7
     }
   },
-  "macros": {"BELLY": 0.35, "BITE": 0.05, "SCURRY": 0.2, "TRASH": 0.05, "PLAY DEAD": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.35,
+    "BITE": 0.05,
+    "SCURRY": 0.2,
+    "TRASH": 0.05,
+    "PLAY DEAD": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

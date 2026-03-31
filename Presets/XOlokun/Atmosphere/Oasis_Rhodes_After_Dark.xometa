@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Rhodes After Dark",
   "mood": "Atmosphere",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Late night Rhodes for empty spaces. Very warm, slow tremolo, high sustain. The 3rd partial at 0.55 relative amplitude pulls forward while the low brightness filter keeps the room dark. Keith Jarrett solo in an empty hall.",
-  "tags": ["rhodes", "late-night", "atmospheric", "warm", "slow-tremolo", "atmosphere"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "late-night",
+    "atmospheric",
+    "warm",
+    "slow-tremolo",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

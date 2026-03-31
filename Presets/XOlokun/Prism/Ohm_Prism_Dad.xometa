@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Prism Dad",
   "mood": "Prism",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Plucked glass body refracting folk tone into spectral prism, FM-colored.",
-  "tags": ["prism", "glass", "spectral", "folk"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "prism",
+    "glass",
+    "spectral",
+    "folk"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.5,
     "MEADOW": 0.6
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

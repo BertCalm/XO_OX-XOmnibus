@@ -2,19 +2,37 @@
   "schema_version": 1,
   "name": "Chaos Partials",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Orbital"],
+  "engines": [
+    "Ouroboros",
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OUROBOROS attractor velocity (ch2/ch3 dx/dt, dy/dt) modulates ORBITAL partial pitch grid via LFOToPitch — deterministic chaos continuously shifts the additive harmonic grid. Non-repeating pitch drift from mathematical inevitability.",
-  "tags": ["coupled", "chaotic", "additive", "harmonic", "LFOToPitch", "AudioToFM", "advanced", "experimental", "performance-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "chaotic",
+    "additive",
+    "harmonic",
+    "LFOToPitch",
+    "AudioToFM",
+    "advanced",
+    "experimental",
+    "performance-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
-    "brightness": 0.60,
+    "brightness": 0.6,
     "warmth": 0.38,
     "movement": 0.82,
-    "density": 0.60,
+    "density": 0.6,
     "space": 0.48,
     "aggression": 0.52
   },
@@ -26,29 +44,29 @@
       "ouro_filterCutoff": 0.55,
       "ouro_filterReso": 0.22,
       "ouro_ampAttack": 0.02,
-      "ouro_ampDecay": 0.50,
+      "ouro_ampDecay": 0.5,
       "ouro_ampSustain": 0.68,
-      "ouro_ampRelease": 1.00,
+      "ouro_ampRelease": 1.0,
       "ouro_leashDepth": 0.48,
       "ouro_outputLevel": 0.65,
       "ouro_lfoRate": 0.22,
-      "ouro_orbitFreq": 1.80,
+      "ouro_orbitFreq": 1.8,
       "ouro_reverbMix": 0.18
     },
     "Orbital": {
-      "orb_brightness": 0.50,
+      "orb_brightness": 0.5,
       "orb_spread": 0.55,
       "orb_partials": 10,
       "orb_filterCutoff": 0.58,
-      "orb_filterReso": 0.20,
+      "orb_filterReso": 0.2,
       "orb_ampAttack": 0.05,
-      "orb_ampDecay": 1.00,
-      "orb_ampSustain": 0.70,
-      "orb_ampRelease": 2.00,
+      "orb_ampDecay": 1.0,
+      "orb_ampSustain": 0.7,
+      "orb_ampRelease": 2.0,
       "orb_lfoRate": 0.08,
       "orb_lfoDepth": 0.22,
       "orb_envDepth": 0.42,
-      "orb_outputLevel": 0.70,
+      "orb_outputLevel": 0.7,
       "orb_reverbMix": 0.38,
       "orb_panSpread": 0.45
     }
@@ -65,7 +83,7 @@
         "engineA": "Ouroboros",
         "engineB": "Orbital",
         "type": "AudioToFM",
-        "amount": 0.30
+        "amount": 0.3
       }
     ]
   },
@@ -84,7 +102,7 @@
         "slot": 2,
         "active": true,
         "type": 4,
-        "amount": 0.30,
+        "amount": 0.3,
         "sourceSlot": 0,
         "targetSlot": 1,
         "midiCC": 9

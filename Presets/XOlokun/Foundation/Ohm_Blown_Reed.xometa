@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Blown Reed",
   "mood": "Foundation",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm blown reed tone with slow wobble and gentle reverb, meditative breath.",
-  "tags": ["foundation", "blown", "reed", "meditative"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "foundation",
+    "blown",
+    "reed",
+    "meditative"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.35,
     "MEADOW": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "OMBRE Shadow Arms",
   "mood": "Entangled",
-  "engines": ["Octopus", "Ombre"],
+  "engines": [
+    "Octopus",
+    "Ombre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OMBRE's gradient shadow quality feeding into OCTOPUS arm modulation depth. The forgetting narrative of OMBRE drives chromatophore fade. As shadow deepens, the octopus skin darkens. Memory loss as camouflage.",
-  "tags": ["octopus", "ombre", "entangled", "shadow", "arms", "fade", "memory"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "ombre",
+    "entangled",
+    "shadow",
+    "arms",
+    "fade",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-17",

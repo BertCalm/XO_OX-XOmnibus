@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Figure-eight at tangle 0.8 with feedback at 0.93 — the loop is twisted and the resonance cannot escape it. Square LFO hard-gates the filter while the delay base is swept by LFO2. The symmetric matrix means chaos is mirrored: left and right are equally unstable. A controlled tornado.",
-  "dna": { "aggression": 0.82, "brightness": 0.78, "density": 0.45, "movement": 0.88, "space": 0.32, "warmth": 0.22 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.82,
+    "brightness": 0.78,
+    "density": 0.45,
+    "movement": 0.88,
+    "space": 0.32,
+    "warmth": 0.22
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
   "name": "Twisted Loop",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "chaotic", "figure-eight", "twisted", "loop", "unstable", "controlled-chaos"],
+  "tags": [
+    "flux",
+    "chaotic",
+    "figure-eight",
+    "twisted",
+    "loop",
+    "unstable",
+    "controlled-chaos"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

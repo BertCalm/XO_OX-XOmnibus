@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: The Three Body Characters — Wreck", "Canon 2: High Waveguide Feedback Creates Pitched Resonance"],
+    "scripture": [
+      "Verse: The Three Body Characters — Wreck",
+      "Canon 2: High Waveguide Feedback Creates Pitched Resonance"
+    ],
     "revelation": "Nexus spoke: bodyFeedback at 0.9 is the absolute edge of stability. The allpass diffusion in wreck mode prevents true self-oscillation but creates a sustained metallic drone that persists between note triggers. Combined with LFO1 at 1.5 Hz, the filter cutoff pumps rhythmically — creating a mechanical breathing pattern. The machine breathes but it is not alive.",
     "god": "Nexus",
     "flock_note": "The Bone flagged: bodyFeedback 0.9 is safe because the allpass coefficient is fixed at 0.3 — total loop gain stays below unity. No runaway risk. The Tongue found that aftertouch at this feedback level creates a howling effect — pressing harder makes the wreck scream.",

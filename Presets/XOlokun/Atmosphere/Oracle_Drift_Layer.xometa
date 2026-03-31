@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Drift Layer",
   "mood": "Atmosphere",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A gentle stochastic layer — maxed glide, slow LFOs, sits perfectly under a mix.",
-  "tags": ["atmosphere", "layer", "background", "gentle"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "layer",
+    "background",
+    "gentle"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.35, "density": 0.45, "space": 0.8, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.45,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.8
     }
   },
-  "macros": {"DRIFT": 0.45, "EVOLUTION": 0.4, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.45,
+    "EVOLUTION": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

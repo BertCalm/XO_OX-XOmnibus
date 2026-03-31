@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Mineral Rain",
   "mood": "Atmosphere",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fine mineral rain — delicate texture, slow LFO shimmer, cool atmospheric presence.",
-  "tags": ["rain", "mineral", "delicate", "cool"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rain",
+    "mineral",
+    "delicate",
+    "cool"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.38, "movement": 0.3, "density": 0.42, "space": 0.72, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.38,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.72,
+    "aggression": 0.06
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.42,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.48, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

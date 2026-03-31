@@ -2,33 +2,48 @@
   "schema_version": 1,
   "name": "Toy Attic",
   "mood": "Organic",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Toy Piano with high thermal shock and slow LFO2 drift — the childhood toy piano found in an attic, decades of temperature cycling having slightly detuned every voice in a different direction. Imperfect, nostalgic, mechanical, alive.",
-  "tags": ["toy piano", "attic", "detuned", "nostalgic", "organic", "childhood", "drift"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "toy piano",
+    "attic",
+    "detuned",
+    "nostalgic",
+    "organic",
+    "childhood",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.60,
-    "warmth": 0.40,
+    "brightness": 0.6,
+    "warmth": 0.4,
     "movement": 0.35,
-    "density": 0.30,
+    "density": 0.3,
     "space": 0.35,
     "aggression": 0.25
   },
   "parameters": {
     "Opaline": {
       "opal2_instrument": 1,
-      "opal2_fragility": 0.20,
-      "opal2_hammerHardness": 0.50,
+      "opal2_fragility": 0.2,
+      "opal2_hammerHardness": 0.5,
       "opal2_brightness": 10000.0,
-      "opal2_damping": 0.20,
+      "opal2_damping": 0.2,
       "opal2_decay": 2.0,
       "opal2_bodySize": 0.35,
       "opal2_inharmonicity": 0.0,
-      "opal2_shimmerAmount": 0.30,
+      "opal2_shimmerAmount": 0.3,
       "opal2_thermalShock": 0.45,
       "opal2_hfNoise": 0.18,
       "opal2_filterEnvAmount": 0.32,

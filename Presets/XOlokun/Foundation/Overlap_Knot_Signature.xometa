@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Knot Signature",
   "mood": "Foundation",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Trefoil at full tangle depth — the pure structural tone of the Trefoil matrix. At tangleDepth=0.95, the six voices are fully routed through the 3-fold circulant structure. A single note produces a chord whose voicing is defined by topology, not input pitch.",
-  "tags": ["trefoil", "tangle", "topology", "foundation", "structural", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "trefoil",
+    "tangle",
+    "topology",
+    "foundation",
+    "structural",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

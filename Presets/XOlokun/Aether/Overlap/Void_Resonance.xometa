@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "The OVERLAP library at its most elemental. Unknot at near-zero tangle (0.05), feedback at 0.94, 45ms delay base \u2014 the 6 FDN lines are essentially 6 long resonant chambers in a void. Maximum space (0.95 spread), no bioluminescence, no current. Pure resonance in empty space. 10-second release.",
+  "description": "The OVERLAP library at its most elemental. Unknot at near-zero tangle (0.05), feedback at 0.94, 45ms delay base — the 6 FDN lines are essentially 6 long resonant chambers in a void. Maximum space (0.95 spread), no bioluminescence, no current. Pure resonance in empty space. 10-second release.",
   "dna": {
     "aggression": 0.02,
     "brightness": 0.28,
@@ -24,7 +24,7 @@
     "BLOOM"
   ],
   "mood": "Aether",
-  "name": "Void Resonance",
+  "name": "Void Resonance (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 0,

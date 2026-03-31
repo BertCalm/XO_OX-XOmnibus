@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Marble Pad",
   "mood": "Foundation",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Smooth marble pad — polished surface, gentle warmth, even sustain with minimal movement.",
-  "tags": ["marble", "pad", "smooth", "polished"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "marble",
+    "pad",
+    "smooth",
+    "polished"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.58, "movement": 0.12, "density": 0.65, "space": 0.42, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.58,
+    "movement": 0.12,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.1
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.65,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.76
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.12, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

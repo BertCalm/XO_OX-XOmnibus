@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Aurora Veil",
+  "name": "Aurora Veil (Outlook)",
   "mood": "Aether",
   "engines": [
     "Outlook"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ethereal shimmer pad with deep aurora LFO conjunction \u2014 northern lights in sound",
+  "description": "Ethereal shimmer pad with deep aurora LFO conjunction — northern lights in sound",
   "tags": [
     "ethereal",
     "shimmer",

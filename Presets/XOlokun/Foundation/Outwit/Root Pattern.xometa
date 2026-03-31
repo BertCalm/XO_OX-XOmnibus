@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 200 (identity) with low filterCutoff (2500 Hz). The automaton copies itself \u2014 a warm root.",
+  "description": "Rule 200 (identity) with low filterCutoff (2500 Hz). The automaton copies itself — a warm root.",
   "dna": {
     "aggression": 0.12,
     "brightness": 0.22,

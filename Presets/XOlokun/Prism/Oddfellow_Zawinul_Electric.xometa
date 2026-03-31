@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Zawinul Electric",
   "mood": "Prism",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Joe Zawinul's Mercy Mercy Mercy Wurlitzer — the most famous Wurlitzer tone in jazz. Standard tremolo at 5.5 Hz, warm but present, moderate drive. The instrument that defined the soul-jazz era.",
-  "tags": ["wurlitzer", "zawinul", "jazz", "soul-jazz", "mercy-mercy-mercy", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "zawinul",
+    "jazz",
+    "soul-jazz",
+    "mercy-mercy-mercy",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Fat Sequence",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's arpeggiator at maximum movement — fast rate, wide octave range, tight gate. A dense oscillator stack converted into rhythmic harmonic sequences. Each arp note hits like a punch.",
-  "tags": ["arp", "fat", "sequence", "rhythmic", "dense", "movement", "flux"],
-  "macroLabels": ["ARP RATE", "OCTAVE RANGE", "FILTER", "GATE LENGTH"],
+  "tags": [
+    "arp",
+    "fat",
+    "sequence",
+    "rhythmic",
+    "dense",
+    "movement",
+    "flux"
+  ],
+  "macroLabels": [
+    "ARP RATE",
+    "OCTAVE RANGE",
+    "FILTER",
+    "GATE LENGTH"
+  ],
   "couplingIntensity": "None",
   "tempo": 120.0,
   "dna": {

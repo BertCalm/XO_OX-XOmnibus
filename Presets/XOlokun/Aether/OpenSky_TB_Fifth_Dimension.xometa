@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Fifth Dimension",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The shimmer's fifth-up shifter, isolated and amplified. Shimmer octave balance at 0.15 weights almost entirely toward the fifth-up pitch shift (1.5x frequency), creating a reverb tail that rings in perfect fifths. Every note played generates its own dominant chord in the reverb. The Finger set shimmer feedback at 0.72 -- the sweet spot where the fifth cascades three times before decaying, producing stacked fifths (root -> fifth -> ninth -> thirteenth) in the reverb tail. A single held note becomes a quartal harmony.",
-  "tags": ["opensky", "transcendental", "fifth", "harmony", "shimmer", "quartal"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "fifth",
+    "harmony",
+    "shimmer",
+    "quartal"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 12: The Fifth-Up Shifter at 0.15 Octave Balance Is a Harmony Generator", "Gospel 5: Stacked Fifths in the Shimmer Tail Produce Quartal Voicings From a Single Note"],
+    "scripture": [
+      "Verse 12: The Fifth-Up Shifter at 0.15 Octave Balance Is a Harmony Generator",
+      "Gospel 5: Stacked Fifths in the Shimmer Tail Produce Quartal Voicings From a Single Note"
+    ],
     "revelation": "Nexus spoke: the shimmer reverb's fifth-up pitch shifter, when isolated from the octave-up, reveals that the reverb is not merely an effect -- it is a harmonizer that generates its own chord voicings through cascading pitch shifts.",
     "god": "Nexus",
     "flock_note": "The Eye traced the harmonic content: after three feedback cycles, a played C3 generates G3, D4, and A4 in the reverb tail -- a complete quartal stack. The Ear confirmed this sounds like a natural overtone series, not an artificial effect.",
     "diagnosis": "Fifth Dimension exploits an underused dimension of the shimmer reverb: the fifth-up shifter as a chord generator. Most presets weight toward octave-up for brightness. This preset inverts the balance to discover harmony."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

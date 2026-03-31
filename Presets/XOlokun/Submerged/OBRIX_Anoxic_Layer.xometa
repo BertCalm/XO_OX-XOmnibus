@@ -1,13 +1,29 @@
 {
   "schema_version": 1,
-  "name": "Anoxic Layer",
+  "name": "Anoxic Layer (Obrix)",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Black Sea Brine Pool: a body of water inside the ocean, too salty to mix. A sharp interface boundary at 150m where everything above lives and everything below is permanently dead. A harmonic field repulsor creates the wrong-feeling intervals of a zone where chemistry prohibits life.",
-  "tags": ["obrix", "submerged", "place", "black-sea", "brine-pool", "anoxic", "dark", "wrong"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "place",
+    "black-sea",
+    "brine-pool",
+    "anoxic",
+    "dark",
+    "wrong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +119,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

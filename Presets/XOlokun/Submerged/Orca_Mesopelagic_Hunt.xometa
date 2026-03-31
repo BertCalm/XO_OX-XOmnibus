@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mesopelagic Hunt",
   "mood": "Submerged",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-depth predator stalking in perpetual twilight — slow wavetable scan through formant-heavy mid-register tones with rhythmic breach compression.",
-  "tags": ["submerged", "hunt", "mesopelagic", "twilight", "tension"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "submerged",
+    "hunt",
+    "mesopelagic",
+    "twilight",
+    "tension"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.45, "movement": 0.35, "density": 0.55, "space": 0.65, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.6
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.3,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.65
     }
   },
-  "macros": {"HUNT": 0.65, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.65,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

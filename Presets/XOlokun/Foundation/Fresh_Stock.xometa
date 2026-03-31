@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fresh Stock",
+  "name": "Fresh Stock (Overworn) (Overworn)",
   "mood": "Foundation",
   "engines": [
     "Overworn"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Full spectral richness \u2014 the very first moment of the session. Everything is present.",
+  "description": "Full spectral richness — the very first moment of the session. Everything is present.",
   "tags": [
     "init",
     "foundation",

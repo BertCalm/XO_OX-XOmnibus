@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Scan Artifact",
   "mood": "Prism",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast wavetable scan rate generates intermodulation artifacts — the sonic residue of rapid table traversal, producing shifting sidebands that no single position could create.",
-  "tags": ["prism", "artifact", "scan", "intermodulation", "complex"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "artifact",
+    "scan",
+    "intermodulation",
+    "complex"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.3, "movement": 0.9, "density": 0.7, "space": 0.4, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.3,
+    "movement": 0.9,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.5
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.5,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.4
     }
   },
-  "macros": {"HUNT": 0.55, "MOVEMENT": 0.9, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.55,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

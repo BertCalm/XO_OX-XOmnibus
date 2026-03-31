@@ -1,22 +1,64 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OGRE — tectonic at full depth (18 cents). Hold 5 minutes. The earth moves.",
-  "dna": { "brightness": 0.08, "warmth": 0.82, "movement": 0.22, "density": 0.72, "space": 0.38, "aggression": 0.04 },
-  "engines": ["Ogre"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.82,
+    "movement": 0.22,
+    "density": 0.72,
+    "space": 0.38,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Tectonic Blessing",
   "parameters": {
     "Ogre": {
-      "ogre_oscMix": 0.2, "ogre_drive": 0.25, "ogre_rootDepth": 0.55, "ogre_bodyResonance": 0.35,
-      "ogre_brightness": 1900.0, "ogre_density": 0.68, "ogre_soil": 0.15, "ogre_tectonicRate": 0.007,
-      "ogre_tectonicDepth": 18.0, "ogre_attack": 0.03, "ogre_decay": 1.5, "ogre_sustain": 0.9,
-      "ogre_release": 3.5, "ogre_filterEnvAmount": 0.2, "ogre_glide": 0.0, "ogre_gravity": 0.5,
-      "ogre_lfo2Rate": 0.02, "ogre_lfo2Depth": 0.04, "ogre_lfo2Shape": 0,
-      "ogre_macroCharacter": 0.0, "ogre_macroMovement": 0.0, "ogre_macroCoupling": 0.0, "ogre_macroSpace": 0.0
+      "ogre_oscMix": 0.2,
+      "ogre_drive": 0.25,
+      "ogre_rootDepth": 0.55,
+      "ogre_bodyResonance": 0.35,
+      "ogre_brightness": 1900.0,
+      "ogre_density": 0.68,
+      "ogre_soil": 0.15,
+      "ogre_tectonicRate": 0.007,
+      "ogre_tectonicDepth": 18.0,
+      "ogre_attack": 0.03,
+      "ogre_decay": 1.5,
+      "ogre_sustain": 0.9,
+      "ogre_release": 3.5,
+      "ogre_filterEnvAmount": 0.2,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.5,
+      "ogre_lfo2Rate": 0.02,
+      "ogre_lfo2Depth": 0.04,
+      "ogre_lfo2Shape": 0,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
     }
   },
-  "schema_version": 1, "tags": ["ogre", "tectonic", "blessing", "geological", "extreme"], "version": "1.0.0", "tempo": null
+  "schema_version": 1,
+  "tags": [
+    "ogre",
+    "tectonic",
+    "blessing",
+    "geological",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

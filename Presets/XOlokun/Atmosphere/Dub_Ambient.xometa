@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Dub Ambient",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB stretched into pure atmosphere — long attack, maximum reverb, tape delay creating an echo environment. Not a bass sound, not a lead. Just space, and the memory of notes.",
-  "tags": ["ambient", "dub", "reverb", "atmosphere", "space", "echo"],
-  "macroLabels": ["REVERB SIZE", "ECHO DECAY", "FILTER", "WARMTH"],
+  "tags": [
+    "ambient",
+    "dub",
+    "reverb",
+    "atmosphere",
+    "space",
+    "echo"
+  ],
+  "macroLabels": [
+    "REVERB SIZE",
+    "ECHO DECAY",
+    "FILTER",
+    "WARMTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

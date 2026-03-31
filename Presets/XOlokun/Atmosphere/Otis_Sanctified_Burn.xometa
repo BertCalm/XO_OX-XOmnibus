@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "The late-night ballad B3 — drawbars 3-4-5-6 in the gospel bright register, barely breathing, Leslie in deepest chorale. The organ player who stays after the congregation leaves.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.7,
     "warmth": 0.9
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Sanctified Burn",
   "parameters": {
@@ -54,7 +63,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "gospel", "hammond", "atmosphere", "ballad", "slow"],
+  "tags": [
+    "organ",
+    "gospel",
+    "hammond",
+    "atmosphere",
+    "ballad",
+    "slow"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Pelagic Stillness",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Voice 1: Wavetable at position 0.08 (nearly sine) with 4x unison. Voice 2: Filtered Noise at color 0.15 (deep oceanic rumble). HAMMER at +0.4 — moderate LOVE blends the tonal and textural. The unison detune at 7.03 cents creates a beating frequency of approximately 1.2 Hz — the tempo of ocean waves at a calm shore. The Drift Anchor trick: voice drift at 0.15 depth. Pelagic: of the open ocean.",
-  "tags": ["ambient", "oceanic", "stillness", "unison", "texture", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "ambient",
+    "oceanic",
+    "stillness",
+    "unison",
+    "texture",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.45
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

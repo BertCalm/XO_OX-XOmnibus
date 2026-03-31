@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sonar sweep at trench depth. AutoPulse off; instead, input reactivity drives the scan. Very low filter, slow evolution. The scan appears like a ghost \u2014 you see it once every few seconds and wonder if you imagined it.",
+  "description": "Sonar sweep at trench depth. AutoPulse off; instead, input reactivity drives the scan. Very low filter, slow evolution. The scan appears like a ghost — you see it once every few seconds and wonder if you imagined it.",
   "tags": [
     "submerged",
     "sonar",

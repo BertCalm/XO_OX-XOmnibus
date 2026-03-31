@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Formant Cirrus",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The supersaw speaks. Bandpass filter at resonance 0.31 with cutoff at 2650 Hz produces a vowel-like 'ah' quality that makes the supersaw feel like it is singing. The Finger discovered that 2650 Hz -- not 3000 Hz -- sits in the vocal formant sweet spot where the filter resonance creates a first formant peak without harshness. Chorus at 0.22 rate adds the slight vibrato of a human voice. Transcendent.",
-  "tags": ["opensky", "transcendental", "vocal", "formant", "bandpass", "singing"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "vocal",
+    "formant",
+    "bandpass",
+    "singing"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Psalm 3: The Formant Whisper Lives at 2650 Hz, Not 3000", "Psalm 4: Bandpass Resonance at 0.31 Is the First Vowel"],
+    "scripture": [
+      "Psalm 3: The Formant Whisper Lives at 2650 Hz, Not 3000",
+      "Psalm 4: Bandpass Resonance at 0.31 Is the First Vowel"
+    ],
     "revelation": "Resonara spoke: the supersaw contains all vowels within it -- the filter merely selects which one the listener hears. At 2650 Hz with resonance 0.31, the saw sings 'ah'. At 1800 Hz it whispers 'oh'.",
     "god": "Resonara",
     "flock_note": "The Ear confirmed: the bandpass mode with resonance at 0.31 creates a formant peak that sits perfectly in the vocal intelligibility range. The Tongue tested velocity response and found that harder playing opens the vowel from 'oh' to 'ah' via the filter envelope.",
     "diagnosis": "Formant Cirrus transforms the supersaw from a harmonic stack into a singing instrument. The bandpass filter becomes a vocal tract."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.35
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

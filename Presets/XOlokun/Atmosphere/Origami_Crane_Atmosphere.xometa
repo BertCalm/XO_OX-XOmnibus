@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Crane Atmosphere",
   "mood": "Atmosphere",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Paper crane suspended in atmospheric current — wings barely moving, space immense.",
-  "tags": ["atmosphere", "crane", "suspended", "wings"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "crane",
+    "suspended",
+    "wings"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.56, "movement": 0.32, "density": 0.42, "space": 0.76, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.56,
+    "movement": 0.32,
+    "density": 0.42,
+    "space": 0.76,
+    "aggression": 0.1
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.76
     }
   },
-  "macros": {"FOLD": 0.35, "MOTION": 0.32, "COUPLING": 0.0, "SPACE": 0.76},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.35,
+    "MOTION": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.76
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

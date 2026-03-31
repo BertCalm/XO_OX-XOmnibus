@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Species Chorus",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "There are ~300 species of octopus, each with different arm behaviors and chromatophore patterns. This preset imagines them all sounding simultaneously — maximum polyphony, wide arm spread, rich layering.",
-  "tags": ["octopus", "family", "species", "chorus", "polyphony", "wide", "ensemble"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "species",
+    "chorus",
+    "polyphony",
+    "wide",
+    "ensemble"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.65,

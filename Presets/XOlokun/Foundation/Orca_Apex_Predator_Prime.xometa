@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Apex Predator Prime",
   "mood": "Foundation",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Hunt macro at 0.88 — all five biological subsystems fully coordinated at high intensity. Filter at ~14000 Hz, formant intensity near max, bitcrush mix above 0.55, breach sub above 0.97. The fully activated apex predator. Every attack system elevated simultaneously.",
-  "tags": ["hunt", "apex", "foundation", "predator", "coordinated", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "hunt",
+    "apex",
+    "foundation",
+    "predator",
+    "coordinated",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

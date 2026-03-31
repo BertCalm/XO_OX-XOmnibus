@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Shimmer Hunt",
   "mood": "Prism",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High prowl with maximum canopy shimmer — the ocelot hunting under a prismatic canopy.",
-  "tags": ["shimmer", "hunt", "prism", "prowl", "bright", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "shimmer",
+    "hunt",
+    "prism",
+    "prowl",
+    "bright",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.45, "movement": 0.72, "density": 0.65, "space": 0.5, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.45,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.6
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.9
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

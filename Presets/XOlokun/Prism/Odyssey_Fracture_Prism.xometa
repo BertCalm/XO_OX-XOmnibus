@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Fracture Prism",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High fracture intensity through bright filter — wavetable splintered into spectral shards.",
-  "tags": ["fracture", "prism", "bright", "spectral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fracture",
+    "prism",
+    "bright",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.35, "movement": 0.6, "density": 0.5, "space": 0.48, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.48,
+    "aggression": 0.55
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.6, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

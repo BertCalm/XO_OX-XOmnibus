@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Torus Root T57",
   "mood": "Foundation",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Torus knot T(5,7) — maximum inter-voice spread from Lissajous delay ratios. Seven meridian winds, five longitude winds. The six voices occupy six different temporal slots at ±12% offset — far wider than T(3,2). Complex, multi-speed architectural decay.",
-  "tags": ["torus", "T57", "lissajous", "foundation", "complex", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "torus",
+    "T57",
+    "lissajous",
+    "foundation",
+    "complex",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,29 +2,50 @@
   "schema_version": 1,
   "name": "Lorenz Halo",
   "mood": "Atmosphere",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lorenz attractor mid-chaos, leash partially applied — the trajectory wanders between two lobes but stays in the upper register. Theta and phi rotate the projection plane to catch the softer, shimmering cross-sections of the butterfly wing. Heavy damping keeps output smooth. A luminous atmospheric halo.",
-  "tags": ["lorenz", "atmospheric", "halo", "shimmer", "mid-register", "smooth", "ambient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lorenz",
+    "atmospheric",
+    "halo",
+    "shimmer",
+    "mid-register",
+    "smooth",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 440.0,
       "ouro_chaosIndex": 0.35,
-      "ouro_leash": 0.60,
+      "ouro_leash": 0.6,
       "ouro_theta": 0.52,
       "ouro_phi": 0.78,
       "ouro_damping": 0.72,
       "ouro_injection": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

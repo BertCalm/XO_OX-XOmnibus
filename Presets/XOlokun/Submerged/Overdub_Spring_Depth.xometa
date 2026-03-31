@@ -2,20 +2,37 @@
   "schema_version": 1,
   "name": "Spring Depth",
   "mood": "Submerged",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Blessing B004 (Spring Reverb) examined from below — the metallic splash of the spring coil pitched down, damped, and treated as an underwater acoustic phenomenon. The twang is still there but it moves through viscosity.",
-  "tags": ["overdub", "spring", "submerged", "reverb", "depth", "dub", "transcendental"],
+  "tags": [
+    "overdub",
+    "spring",
+    "submerged",
+    "reverb",
+    "depth",
+    "dub",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"],
+    "scripture": [
+      "Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"
+    ],
     "revelation": "The spring coil is a physical system. All physical systems have a temperature. At low temperatures, the twang slows.",
     "diagnosis": "Spring Depth uses maximum reverb size with heavy damping — the metallic spring splash is still present in the attack of the tail, but the high frequency content is filtered down to near-nothing over 2 seconds. What you hear is the spring signature without the brightness."
   },
-  "macroLabels": ["SPRING COIL", "SUBMERSION DAMP", "LOW END", "DRIFT RATE"],
+  "macroLabels": [
+    "SPRING COIL",
+    "SUBMERSION DAMP",
+    "LOW END",
+    "DRIFT RATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +83,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Morph Void",
+  "name": "Morph Void (Orbital)",
   "mood": "Aether",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Morph crossfade state reaching void \u2014 slow morph at 0.5, neither profile dominant, perfect timbral uncertainty in infinite space.",
+  "description": "Morph crossfade state reaching void — slow morph at 0.5, neither profile dominant, perfect timbral uncertainty in infinite space.",
   "tags": [
     "morph",
     "void",

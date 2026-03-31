@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: Resonara's Revelation — The System Check", "Truth 1: The Tape Ceiling"],
+    "scripture": [
+      "Verse: Resonara's Revelation — The System Check",
+      "Truth 1: The Tape Ceiling"
+    ],
     "revelation": "Aurum spoke: the hydrostatic compressor at 0.65 with the soft-clip stage creates a compression character indistinguishable from a tape machine's saturation curve. gain = 1/(1+0.65*peak) followed by softClip() — this IS tape compression modeled from first principles without knowing it. OCEANDEEP accidentally invented a tape compressor.",
     "god": "Aurum",
     "flock_note": "The Ear confirmed: A/B against a reference dub bass (King Tubby's 'Dub From the Roots'), the spectral curve matches within 2dB below 400 Hz. The Finger set resonance at 0.45 — enough warmth for the 200 Hz bump without the peak becoming audible as resonance.",

@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Chromatophore Dark",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Chromatophore modulation pushed to full morph depth — the filter continuously cycles through colour states in deep slow motion. An underwater camouflage display with no light to reflect.",
-  "tags": ["dark-ambient", "chromatophore", "morph", "slow", "filter", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dark-ambient",
+    "chromatophore",
+    "morph",
+    "slow",
+    "filter",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.52, "movement": 0.45, "density": 0.68, "space": 0.78, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.52,
+    "movement": 0.45,
+    "density": 0.68,
+    "space": 0.78,
+    "aggression": 0.15
+  },
   "parameters": {
     "Octopus": {
       "octo_armCount": 5,
@@ -60,6 +81,13 @@
       "octo_macroSpace": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

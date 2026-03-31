@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Deep phyllotaxis \u2014 high phi, wide spread, the mathematical beauty of strings",
+  "description": "Deep phyllotaxis — high phi, wide spread, the mathematical beauty of strings",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.4,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Golden Spiral",
+  "name": "Golden Spiral (Oxalis) (Oxalis)",
   "parameters": {
     "Oxalis": {
       "oxal_attack": 0.05,

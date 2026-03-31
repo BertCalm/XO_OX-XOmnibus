@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Bell Marimba Hybrid",
   "mood": "Crystalline",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM synthesis used for tuned percussion rather than piano emulation — ratio 2.0 creates inharmonic overtones characteristic of bells and marimbas. High index attack that decays to near-zero produces the struck resonant body tone.",
-  "tags": ["fm", "bell", "marimba", "percussion", "crystalline", "inharmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fm",
+    "bell",
+    "marimba",
+    "percussion",
+    "crystalline",
+    "inharmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

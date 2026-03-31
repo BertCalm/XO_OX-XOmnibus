@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Color Cloud",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prismatic color suspended in a cloud — wide spread, diffuse prism reflections, slow drift overhead.",
-  "tags": ["color", "cloud", "wide", "diffuse", "atmosphere"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "color",
+    "cloud",
+    "wide",
+    "diffuse",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.48, "movement": 0.2, "density": 0.38, "space": 0.82, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.2,
+    "density": 0.38,
+    "space": 0.82,
+    "aggression": 0.06
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +70,13 @@
       "oblq_macroSpace": 0.82
     }
   },
-  "macros": {"BOUNCE": 0.15, "COLOR": 0.68, "FOLD": 0.1, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.15,
+    "COLOR": 0.68,
+    "FOLD": 0.1,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

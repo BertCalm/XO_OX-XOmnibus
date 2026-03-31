@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Solomon Crown (Orbweave)",
   "mood": "Aether",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Solomon topology in vast aetheric space — the doubly-linked rings float like a crown in infinite void. Pure, sparse, paired harmonics separated by wide stereo width. The oldest knot known to humanity, still unresolved.",
-  "tags": ["solomon", "knot-topology", "crown", "aether", "ancient"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "solomon",
+    "knot-topology",
+    "crown",
+    "aether",
+    "ancient"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

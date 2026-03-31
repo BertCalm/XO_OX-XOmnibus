@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Drift Base",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drift engine exposed — oscillator detuning via drift, slow and alive, wavetable shimmer.",
-  "tags": ["drift", "alive", "detuned", "shimmer"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "drift",
+    "alive",
+    "detuned",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.55, "density": 0.55, "space": 0.5, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.2
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

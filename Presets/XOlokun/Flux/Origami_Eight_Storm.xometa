@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Eight Storm",
+  "name": "Eight Storm (Origami)",
   "mood": "Flux",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Eight fold iterations cycling at maximum flux speed — paper torn apart by geometry.",
-  "tags": ["flux", "eight", "storm", "cycling"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "eight",
+    "storm",
+    "cycling"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.38, "movement": 0.9, "density": 0.7, "space": 0.4, "aggression": 0.8},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.38,
+    "movement": 0.9,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.8
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.4
     }
   },
-  "macros": {"FOLD": 0.88, "MOTION": 0.9, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.88,
+    "MOTION": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

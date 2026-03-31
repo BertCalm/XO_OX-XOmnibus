@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Arm Choir",
+  "name": "Arm Choir (Octopus)",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All eight arms singing together — a rich, polyphonic texture where each arm LFO adds its voice to the ensemble. Maximum voice count with arms targeting different dimensions. A chorus of distributed intelligence.",
-  "tags": ["octopus", "family", "choir", "arms", "polyphonic", "ensemble", "rich"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "choir",
+    "arms",
+    "polyphonic",
+    "ensemble",
+    "rich"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.58,

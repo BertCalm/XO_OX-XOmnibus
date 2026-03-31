@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Exosphere",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The outermost edge of atmosphere -- where air dissolves into vacuum. HP filter at 800 Hz strips everything below, leaving only the highest harmonics of the supersaw. Shimmer at maximum feedback (0.85) with size 0.92 and minimal damping (0.08) creates an effectively infinite reverb tail of pure overtones. The sound has no body, no weight, no ground. It exists only as harmonic vapor. LFO1 at 0.01 Hz (one cycle per 100 seconds) provides evolution so slow it feels like the sound is aging. The Guru says: this is what silence sounds like if silence had harmonics.",
-  "tags": ["opensky", "transcendental", "extreme", "thin", "infinite", "harmonics", "vacuum"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "extreme",
+    "thin",
+    "infinite",
+    "harmonics",
+    "vacuum"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 15: HP at 800 Hz Plus Maximum Shimmer Feedback Creates Harmonic Vapor", "Canon 6: LFO at 0.01 Hz Is Not Modulation -- It Is Weather"],
+    "scripture": [
+      "Verse 15: HP at 800 Hz Plus Maximum Shimmer Feedback Creates Harmonic Vapor",
+      "Canon 6: LFO at 0.01 Hz Is Not Modulation -- It Is Weather"
+    ],
     "revelation": "Parsimonia spoke: the HP filter is OPENSKY's most underrated parameter. At 800 Hz, it removes 90% of the sonic energy but preserves 100% of the character. The remaining harmonics, amplified by the shimmer, become the entire instrument.",
     "god": "Parsimonia",
     "flock_note": "The Bone confirmed: with the HP filter at 800 Hz, the oscillator energy is dramatically reduced, which means the shimmer reverb processes less signal. Despite maximum shimmer feedback, the CPU load is moderate because the input is thin. The Ear described the result as 'the ghost of a supersaw.'",
     "diagnosis": "Exosphere pushes every OPENSKY parameter toward its extreme: maximum shimmer feedback, maximum size, minimum damping, highest HP filter. The result is a sound that exists at the boundary of audibility -- pure harmonic atmosphere with no fundamental."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.06
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

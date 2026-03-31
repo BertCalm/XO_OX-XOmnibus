@@ -1,21 +1,39 @@
 {
   "schema_version": 1,
-  "name": "Migration Path",
+  "name": "Migration Path (Odyssey)",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Tidal pulse + FM compound — the BREATHE macro governs a slow tidal sweep through frequency space while the FM satellite ratio wanders by drift. Two timescales of movement: the tidal swell (seconds) and the drift wander (minutes). Migration at atmospheric altitude.",
-  "tags": ["odyssey", "tidal", "fm", "drift", "migration", "atmosphere", "compound", "transcendental"],
+  "tags": [
+    "odyssey",
+    "tidal",
+    "fm",
+    "drift",
+    "migration",
+    "atmosphere",
+    "compound",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-7: Two Timescales of Motion Make the Sound Feel Like Weather"],
+    "scripture": [
+      "Scripture VII-7: Two Timescales of Motion Make the Sound Feel Like Weather"
+    ],
     "revelation": "The tidal pulse and the drift operate at different speeds. This is how weather systems work — a slow ground-level pressure and a fast atmospheric flutter, both moving in the same body of air.",
     "diagnosis": "Migration Path is the first preset to combine tidalDepth with FM. At tidalRate=0.3 Hz the tidal sweep has a period of ~3 seconds — slow enough to feel like breath. The FM satellite rides on top of the tide, drifting at 0.08 Hz. Two modulations, two personalities."
   },
-  "macroLabels": ["TIDAL SWELL", "FM MIGRATION", "DRIFT RATE", "SHIMMER TAIL"],
+  "macroLabels": [
+    "TIDAL SWELL",
+    "FM MIGRATION",
+    "DRIFT RATE",
+    "SHIMMER TAIL"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

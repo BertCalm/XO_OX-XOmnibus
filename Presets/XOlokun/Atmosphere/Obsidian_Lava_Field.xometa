@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Lava Field",
   "mood": "Atmosphere",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cooling lava field atmosphere — warm low register, slow pulse, primal heat.",
-  "tags": ["lava", "warm", "geological", "pulse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lava",
+    "warm",
+    "geological",
+    "pulse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.75, "movement": 0.22, "density": 0.7, "space": 0.55, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.22,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.12
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.72,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.73
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

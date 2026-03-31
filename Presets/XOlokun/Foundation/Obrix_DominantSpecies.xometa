@@ -4,14 +4,31 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Dominant Species",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Saw src1 and Sine src2 at equal mix (srcMix=0.5) with competition ecology active (competitionStrength=0.7). When both voices are active, resources compete — one will begin to suppress the other based on amplitude and harmonic content. The Saw, being richer in harmonics, tends to dominate. Low-note attacks hear the competition as a subtle dynamic push-pull between sources.",
-  "tags": ["obrix", "foundation", "saw", "sine", "brick-ecology", "competition", "wave4"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "saw",
+    "sine",
+    "brick-ecology",
+    "competition",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.6,

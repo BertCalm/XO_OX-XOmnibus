@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Tape Fade",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow tape-worn decay dissolving into warm spring reverb haze.",
-  "tags": ["atmosphere", "tape", "decay", "spring", "vintage", "haze"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "tape",
+    "decay",
+    "spring",
+    "vintage",
+    "haze"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.15, "COUPLING": 0.6, "SPACE": 0.6},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.25, "warmth": 0.85, "movement": 0.18, "density": 0.45, "space": 0.7, "aggression": 0.1}
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.6,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.85,
+    "movement": 0.18,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.1
+  }
 }

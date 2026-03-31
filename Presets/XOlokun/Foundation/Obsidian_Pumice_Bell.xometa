@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Pumice Bell",
   "mood": "Foundation",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Porous pumice bell tone — light mineral ring with airy decay and gentle shimmer.",
-  "tags": ["bell", "pumice", "light", "ring"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bell",
+    "pumice",
+    "light",
+    "ring"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.42, "movement": 0.2, "density": 0.32, "space": 0.5, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.2,
+    "density": 0.32,
+    "space": 0.5,
+    "aggression": 0.15
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.32,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

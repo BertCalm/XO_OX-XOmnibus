@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Clean HiFi Rhodes",
   "mood": "Crystalline",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The Rhodes as it sounds through a clean, modern amplifier at moderate volume. High fidelity, no saturation, the tine ring-out in full resolution. Bell slightly elevated, no tremolo, bright filter.",
-  "tags": ["rhodes", "clean", "hifi", "bright", "no-tremolo", "crystalline"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "clean",
+    "hifi",
+    "bright",
+    "no-tremolo",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

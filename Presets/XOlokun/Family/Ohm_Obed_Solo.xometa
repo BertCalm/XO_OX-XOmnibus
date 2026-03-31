@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Obed Solo",
   "mood": "Family",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Obed voice dominant with minimal dad, taking the lead in the family jam.",
-  "tags": ["family", "solo", "lead", "Obed"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "family",
+    "solo",
+    "lead",
+    "Obed"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.5,
     "MEADOW": 0.45
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

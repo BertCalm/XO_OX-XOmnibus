@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Rule 18 \u2014 produces sparse, triangular crystal patterns from a single seed cell. Seed = 1 (single active cell) so the entire pattern grows from one point \u2014 pure emergence. High filter resonance and medium cutoff ring the crystal structure. Triangle oscillator for glass quality. Frozen at 0 so growth continues indefinitely. Medium step rate to watch the crystal expand.",
+  "description": "Rule 18 — produces sparse, triangular crystal patterns from a single seed cell. Seed = 1 (single active cell) so the entire pattern grows from one point — pure emergence. High filter resonance and medium cutoff ring the crystal structure. Triangle oscillator for glass quality. Frozen at 0 so growth continues indefinitely. Medium step rate to watch the crystal expand.",
   "dna": {
     "brightness": 0.82,
     "warmth": 0.3,

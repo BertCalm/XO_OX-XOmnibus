@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Super Nintendo sound engine at 4000m. SNES era is slightly warmer than NES \u2014 those 16-bit voices have more body. Chaos 0.1 keeps it stable, space 0.75 for the underwater cave ambiance.",
+  "description": "Super Nintendo sound engine at 4000m. SNES era is slightly warmer than NES — those 16-bit voices have more body. Chaos 0.1 keeps it stable, space 0.75 for the underwater cave ambiance.",
   "tags": [
     "chip",
     "SNES",

@@ -14,13 +14,20 @@
     "space": 0.25,
     "warmth": 0.78
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Submerged",
   "name": "Rubble Dig",
   "parameters": {
@@ -46,8 +53,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["rubble", "collage", "ring-mod", "lo-fi", "submerged", "dust"],
+  "tags": [
+    "rubble",
+    "collage",
+    "ring-mod",
+    "lo-fi",
+    "submerged",
+    "dust"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.5, "M2": 0.2, "M3": 0.55, "M4": 0.85}
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.2,
+    "M3": 0.55,
+    "M4": 0.85
+  }
 }

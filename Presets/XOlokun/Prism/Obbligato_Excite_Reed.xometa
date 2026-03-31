@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Excite Reed",
   "mood": "Prism",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum exciter on voice A reveals hidden harmonic spectrum, every overtone lit up prismatic.",
-  "tags": ["woodwind", "exciter", "harmonics", "bright", "prismatic"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "exciter",
+    "harmonics",
+    "bright",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.6, "movement": 0.45, "density": 0.45, "space": 0.68, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.45,
+    "space": 0.68,
+    "aggression": 0.25
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 1,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.25
     }
   },
-  "macros": {"BOND": 0.45, "BREATH": 0.6, "WIND": 0.48, "MISCHIEF": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.45,
+    "BREATH": 0.6,
+    "WIND": 0.48,
+    "MISCHIEF": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Field Maximum",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Maximum harmonic field demonstration: fieldStrength=1.0, full attractor, 7-limit, fieldRate=0.05 (fast snap). OBRIX becomes a Partch-class instrument — play in tune and intervals lock to pure 7-limit JI immediately. Pitch deviations snap back rapidly. This is the Blessing B016 Brick Independence property made sonically explicit: the field acts globally on all voices while each voice retains MIDI independence.",
-  "tags": ["obrix", "foundation", "just-intonation", "harmonic-field", "7-limit", "field-maximum", "partch", "wave4"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "just-intonation",
+    "harmonic-field",
+    "7-limit",
+    "field-maximum",
+    "partch",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.6,

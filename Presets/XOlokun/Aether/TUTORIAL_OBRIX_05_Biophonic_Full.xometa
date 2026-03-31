@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "TUTORIAL OBRIX 05 Biophonic Full",
   "mood": "Aether",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tutorial patch 05: all four Wave 4 Biophonic systems simultaneously active. Harmonic Field on 7-limit, Environmental all four params engaged, Brick Ecology competition and symbiosis, Stateful stress and bleach running. The full biophonic ecosystem.",
-  "tags": ["tutorial", "obrix", "aether", "biophonic", "harmonic-field", "environmental", "brick-ecology", "stateful", "educational"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tutorial",
+    "obrix",
+    "aether",
+    "biophonic",
+    "harmonic-field",
+    "environmental",
+    "brick-ecology",
+    "stateful",
+    "educational"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

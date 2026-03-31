@@ -14,13 +14,20 @@
     "space": 0.7,
     "warmth": 0.4
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Atmosphere",
   "name": "Alien Percussion",
   "parameters": {
@@ -43,8 +50,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["alien", "experimental", "detuned", "uncanny", "weird"],
+  "tags": [
+    "alien",
+    "experimental",
+    "detuned",
+    "uncanny",
+    "weird"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.8, "M2": 0.85, "M3": 0.0, "M4": 0.2}
+  "macros": {
+    "M1": 0.8,
+    "M2": 0.85,
+    "M3": 0.0,
+    "M4": 0.2
+  }
 }

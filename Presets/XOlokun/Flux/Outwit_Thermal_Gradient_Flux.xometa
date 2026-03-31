@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 184 in high thermal agitation \u2014 traffic flow at the critical point where jam transitions to free flow. Arms oscillate between density extremes.",
+  "description": "Rule 184 in high thermal agitation — traffic flow at the critical point where jam transitions to free flow. Arms oscillate between density extremes.",
   "tags": [
     "flux",
     "thermal",

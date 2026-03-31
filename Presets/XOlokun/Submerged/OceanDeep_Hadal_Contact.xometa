@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Hadal Contact",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The absolute bottom. A wrecked hull at 11,000 meters, compressed into near-silence by the weight of the entire ocean above. There is no life here. Only pressure and the slow creaking of metal.",
-  "tags": ["bass", "submerged", "hadal", "wreck", "industrial", "pressure", "extreme depth", "sub"],
+  "tags": [
+    "bass",
+    "submerged",
+    "hadal",
+    "wreck",
+    "industrial",
+    "pressure",
+    "extreme depth",
+    "sub"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +33,12 @@
     "flock_note": "Dial PRESSURE macro to maximum for full hadal compression. This is the floor of all sound. Nothing below here.",
     "diagnosis": "Absolute bottom preset. filterCutoff=60 — the darkest the darkness filter permits. bodyChar=2 (Wreck): industrial hull resonance. pressureAmt=0.9: the ocean nearly collapses the signal. bioMix=0.0: no life, no bioluminescence. Use for moments of geological weight."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +84,7 @@
     "WRECK": 0.7,
     "ABYSS": 0.95
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

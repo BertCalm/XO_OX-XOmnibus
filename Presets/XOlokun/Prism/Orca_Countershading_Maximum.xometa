@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Countershading Maximum",
   "mood": "Prism",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Split at 200 Hz, 4-bit / 8x downsample — almost all signal in the crushed dorsal band. Only the very lowest bass frequencies survive clean. Everything from 200 Hz upward is 4-bit quantized and sample-rate reduced by 8x. At velocity peaks, Hunt further degrades to near-1-bit. Maximum biological countershading contrast.",
-  "tags": ["countershading", "bitcrush", "prism", "200hz", "lo-fi", "contrast", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "countershading",
+    "bitcrush",
+    "prism",
+    "200hz",
+    "lo-fi",
+    "contrast",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,21 +2,37 @@
   "schema_version": 1,
   "name": "Bourguignon",
   "mood": "Deep",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Beef Bourguignon — braised slowly for hours in cast iron. Maximum bloom time creates a slow thermal attack. Low brightness, high density, extreme sustain. The flavors develop not from heat intensity but from time and thermal mass. Nothing rushes.",
-  "tags": ["piano", "slow", "bloom", "braise", "warm", "evolving", "deep", "meditative"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "slow",
+    "bloom",
+    "braise",
+    "warm",
+    "evolving",
+    "deep",
+    "meditative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.15,
     "warmth": 0.95,
-    "movement": 0.30,
+    "movement": 0.3,
     "density": 0.85,
     "space": 0.65,
-    "aggression": 0.00
+    "aggression": 0.0
   },
   "parameters": {
     "Oven": {

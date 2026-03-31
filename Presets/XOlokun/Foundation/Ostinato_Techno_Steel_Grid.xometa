@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Steel Grid (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Techno steel percussion — tabla tek pattern on seat 1 (metallic industrial), taiko rim on seat 2, beatbox hi-hat grid on seat 3. All patterns locked tight. The tabla tek creates a pseudo-metallic rivet sound that cuts through mix.",
-  "tags": ["techno", "tabla", "industrial", "steel", "grid"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "tabla",
+    "industrial",
+    "steel",
+    "grid"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 138.0,
   "dna": {

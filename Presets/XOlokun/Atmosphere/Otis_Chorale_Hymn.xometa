@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Gentle chorale organ — flute stops only (drawbars 1 and 3), slow Leslie rotation, no percussion, soft key click. Sunday evening vespers.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.7,
     "warmth": 0.95
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Chorale Hymn",
   "parameters": {
@@ -54,7 +63,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "chorale", "church", "gentle", "hymn"],
+  "tags": [
+    "organ",
+    "chorale",
+    "church",
+    "gentle",
+    "hymn"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

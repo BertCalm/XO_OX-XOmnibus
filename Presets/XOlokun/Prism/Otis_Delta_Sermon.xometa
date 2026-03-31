@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Slow-blues harmonica with deep emotional bends — long attack, heavy filter swell, use aftertouch for dynamic breath and mod wheel to add tremolo vibrato. Little Walter crying in the delta.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.4,
     "warmth": 0.85
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Prism",
   "name": "Delta Sermon",
   "parameters": {
@@ -55,7 +64,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["harmonica", "blues", "delta", "slow", "emotional", "breath"],
+  "tags": [
+    "harmonica",
+    "blues",
+    "delta",
+    "slow",
+    "emotional",
+    "breath"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

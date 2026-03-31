@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Stellar drift \u2014 metallic bowl material, full thermal drift, slow shimmer like stellar parallax, deep space decay",
+  "description": "Stellar drift — metallic bowl material, full thermal drift, slow shimmer like stellar parallax, deep space decay",
   "dna": {
     "aggression": 0.04,
     "brightness": 0.52,
@@ -29,7 +29,7 @@
     "SPACE": 0.98
   },
   "mood": "Aether",
-  "name": "Stellar Drift",
+  "name": "Stellar Drift (Oware)",
   "parameters": {
     "Oware": {
       "owr_material": 0.72,

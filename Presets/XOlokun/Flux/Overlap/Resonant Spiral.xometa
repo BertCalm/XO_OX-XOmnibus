@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Torus T(7,3) at near-maximum feedback (0.92) and tangle (0.85) — the spiral wraps 7 times in one direction and 3 in the other, creating complex harmonic interference that spirals outward. At 4.0 Hz pulse, the spiral accelerates. This is the sound of resonance trying to reach infinity.",
-  "dna": { "aggression": 0.88, "brightness": 0.84, "density": 0.45, "movement": 0.92, "space": 0.28, "warmth": 0.18 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.84,
+    "density": 0.45,
+    "movement": 0.92,
+    "space": 0.28,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
   "name": "Resonant Spiral",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "extreme", "torus", "spiral", "chaos", "infinite", "maximum"],
+  "tags": [
+    "flux",
+    "extreme",
+    "torus",
+    "spiral",
+    "chaos",
+    "infinite",
+    "maximum"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

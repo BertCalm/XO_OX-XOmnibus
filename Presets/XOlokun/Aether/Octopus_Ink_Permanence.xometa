@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Ink Permanence",
   "mood": "Aether",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The ink cloud triggered once and hanging in the water for what feels like forever — extreme ink decay, maximum hold. The noise cloud becomes the atmosphere itself. Dry signal beneath, ink cloud above.",
-  "tags": ["octopus", "aether", "ink", "hold", "permanent", "noise", "vast"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "aether",
+    "ink",
+    "hold",
+    "permanent",
+    "noise",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.18,

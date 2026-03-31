@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Bell Group",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope applied to bell tones — staggered decay, harmonic shimmer, polyphonic.",
-  "tags": ["bell", "group", "staggered", "harmonic"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "bell",
+    "group",
+    "staggered",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.45, "movement": 0.22, "density": 0.42, "space": 0.55, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.45,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.55,
+    "aggression": 0.18
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.68,
@@ -46,6 +65,13 @@
       "orb_level": 0.74
     }
   },
-  "macros": {"SPECTRAL": 0.68, "VELOCITY": 0.22, "GROUP": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.68,
+    "VELOCITY": 0.22,
+    "GROUP": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

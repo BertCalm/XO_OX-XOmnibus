@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Formant Crown",
   "mood": "Prism",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High formant shift vocal-spectral crown — voices shaping into bright formant peak.",
-  "tags": ["formant", "vocal", "bright", "crown"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "vocal",
+    "bright",
+    "crown"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.45, "movement": 0.4, "density": 0.5, "space": 0.45, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.45,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.3
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.35,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.45
     }
   },
-  "macros": {"SPECTRUM": 0.75, "EVOLVE": 0.4, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.75,
+    "EVOLVE": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

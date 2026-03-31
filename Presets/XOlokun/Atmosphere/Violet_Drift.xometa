@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Violet Drift",
+  "name": "Violet Drift (Oracle)",
   "mood": "Atmosphere",
   "engines": [
     "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Deep violet stochastic drift \u2014 slow and hypnotic atmospheric movement.",
+  "description": "Deep violet stochastic drift — slow and hypnotic atmospheric movement.",
   "tags": [
     "atmosphere",
     "violet",

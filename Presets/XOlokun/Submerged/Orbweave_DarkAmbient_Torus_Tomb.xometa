@@ -2,16 +2,38 @@
   "schema_version": 1,
   "name": "Torus Tomb",
   "mood": "Submerged",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Square wave braid at maximum tension in a torus(5,3) configuration. Filter near-closed. High braid depth creates a wall of pressure that slowly revolves. Menacing.",
-  "tags": ["dark-ambient", "square", "torus", "pressure", "menacing", "dense", "genre-spotlight"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "dark-ambient",
+    "square",
+    "torus",
+    "pressure",
+    "menacing",
+    "dense",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.08, "warmth": 0.65, "movement": 0.22, "density": 0.92, "space": 0.72, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.65,
+    "movement": 0.22,
+    "density": 0.92,
+    "space": 0.72,
+    "aggression": 0.38
+  },
   "parameters": {
     "Orbweave": {
       "weave_strandType": 3,
@@ -54,6 +76,13 @@
       "weave_glideTime": 0.12
     }
   },
-  "macros": {"WEAVE": 0.65, "TENSION": 0.88, "KNOT": 0.55, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "WEAVE": 0.65,
+    "TENSION": 0.88,
+    "KNOT": 0.55,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

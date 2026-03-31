@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Fire Season",
   "mood": "Flux",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dry season fire approaching — ecosystem in survival mode, every creature in motion.",
-  "tags": ["fire", "season", "flux", "dry", "survival", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "fire",
+    "season",
+    "flux",
+    "dry",
+    "survival",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.35, "movement": 0.88, "density": 0.78, "space": 0.28, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.78,
+    "space": 0.28,
+    "aggression": 0.88
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.65
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

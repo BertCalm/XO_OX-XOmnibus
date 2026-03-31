@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Stacked 4-voice unison, long decay, slow LFO2 pan sweep — feliX as a bright pad. High polyphony layers harmonically to create a shimmering Neon Tetra Blue haze. Not the tetra darting — the whole lit-up tank, holding still.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.85,
     "aggression": 0.12
   },
-  "engines": ["OddfeliX"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
   "macros": {
     "CHARACTER": 0.05,
     "MOVEMENT": 0.18,
@@ -47,7 +56,16 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["prism", "oddfelix", "pad", "bright", "shimmer", "wide", "dense", "lush"],
+  "tags": [
+    "prism",
+    "oddfelix",
+    "pad",
+    "bright",
+    "shimmer",
+    "wide",
+    "dense",
+    "lush"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

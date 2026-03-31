@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "NES Pulse Bass",
   "mood": "Foundation",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure NES 2A03 pulse bass. 50% duty cycle, triangle sub mixed in, era locked to corner A. The foundational chip tone — 8-bit weight that laid the floor for a generation of composers.",
-  "tags": ["nes", "pulse", "bass", "chip", "foundation", "2A03"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "nes",
+    "pulse",
+    "bass",
+    "chip",
+    "foundation",
+    "2A03"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.0,
@@ -97,7 +115,9 @@
       "ow_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

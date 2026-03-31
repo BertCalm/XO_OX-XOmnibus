@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Pin Bass",
   "mood": "Foundation",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Husband pipa/pin level leading the low register, aunts at moderate support, grounded foundation.",
-  "tags": ["latin", "pipa", "bass", "low", "foundation"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "pipa",
+    "bass",
+    "low",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.72, "movement": 0.35, "density": 0.45, "space": 0.58, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.22
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 0,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.28
     }
   },
-  "macros": {"DRAMA": 0.28, "FUEGO": 0.38, "ISLA": 0.48, "SIDES": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.28,
+    "FUEGO": 0.38,
+    "ISLA": 0.48,
+    "SIDES": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

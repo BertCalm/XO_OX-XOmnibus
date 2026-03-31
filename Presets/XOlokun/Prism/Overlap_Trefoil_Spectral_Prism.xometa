@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Trefoil Spectral Prism",
   "mood": "Prism",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Trefoil topology as a spectral prism — the three-crossing structure diffracts a single input into three spectral bands determined by the matrix coupling distances. At velocity peaks, the filter envelope sweep causes these three bands to converge and separate audibly.",
-  "tags": ["trefoil", "prism", "spectral", "diffraction", "filter", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "trefoil",
+    "prism",
+    "spectral",
+    "diffraction",
+    "filter",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

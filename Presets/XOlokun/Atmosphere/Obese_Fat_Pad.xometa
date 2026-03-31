@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Fat Pad",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wide detuned poly bass pad — when OBESE stops being a bass line and becomes an entire low-frequency atmosphere.",
-  "tags": ["pad", "wide", "poly", "atmosphere", "detuned"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "wide",
+    "poly",
+    "atmosphere",
+    "detuned"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.8, "movement": 0.15, "density": 0.9, "space": 0.75, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.9,
+    "space": 0.75,
+    "aggression": 0.25
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.75,
@@ -41,6 +61,13 @@
       "fat_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.15, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

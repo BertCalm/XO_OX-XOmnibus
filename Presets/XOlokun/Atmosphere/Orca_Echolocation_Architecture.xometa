@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Echolocation Architecture",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Echo rate at 38 Hz, resonance at 0.992 — the comb filter becomes a synthesis voice. At 38 Hz click rate, discrete pings merge into a sustained pitched metallic oscillator. The comb delay maps to note frequency, so the metallic tone tracks pitch. High echoMix makes echolocation the primary voice.",
-  "tags": ["echolocation", "38hz", "comb", "atmosphere", "metallic", "synthesis", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "echolocation",
+    "38hz",
+    "comb",
+    "atmosphere",
+    "metallic",
+    "synthesis",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

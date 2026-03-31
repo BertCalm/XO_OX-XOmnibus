@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Coprime Argument",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "lfo1Rate=0.13 Hz, lfo2Rate=0.17 Hz — coprime rates, never repeating. LFO1 drives filter cutoff of voice 1; LFO2 drives filter cutoff of voice 2. HAMMER=-0.3 (light-medium STRIFE). Two filters in perpetual non-synchronized motion, each breathing at different physiological rates, creating a texture that never resolves to the same state twice. The argument between the two voices is never finished. This is mathematical infinity made audible.",
-  "tags": ["ouie", "coprime", "lfo", "filter", "strife", "non-repeating", "mathematical", "aether", "infinite-motion"],
+  "tags": [
+    "ouie",
+    "coprime",
+    "lfo",
+    "filter",
+    "strife",
+    "non-repeating",
+    "mathematical",
+    "aether",
+    "infinite-motion"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "Other coprime pairs to explore: 0.11+0.17, 0.07+0.11, 0.13+0.19. Larger coprime pairs (0.23+0.31) create slower evolution. Smaller pairs (0.03+0.07) are too slow to be apparent in short passages but magnificent in installations. CARTILAGE macro adjusts the filter Q of both voices simultaneously — use it to sharpen or soften the argument.",
     "diagnosis": "The canonical coprime demonstration. Wavetable+FM pairing means each LFO's filter modulation reveals different spectral content — the WT voice has broader harmonics that the filter sweeps more dramatically; the FM voice has specific sideband peaks that the filter alternately reveals and conceals. HAMMER=-0.3 means the two voices are already in productive tension before the LFOs begin their work."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.55,
     "CURRENT": 0.2
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

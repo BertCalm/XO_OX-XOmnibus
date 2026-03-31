@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pod Choir",
   "mood": "Foundation",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "16-voice polyphony with heavy glide — the pod as a harmonic structure. All 16 voices gliding simultaneously from their previous positions. Each voice runs an independent echolocation comb filter tuned to its note — 16 sonar systems producing a harmonically rich, coordinated mass.",
-  "tags": ["pod", "polyphony", "choir", "foundation", "glide", "16-voice", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pod",
+    "polyphony",
+    "choir",
+    "foundation",
+    "glide",
+    "16-voice",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

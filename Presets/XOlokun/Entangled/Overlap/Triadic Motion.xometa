@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Medium tempo at 1.2 Hz, trefoil at 0.55 tangle, entrainment at 0.55 — the sweet spot where 3-phase rotation and partial phase-locking create a triadic motion. Three pulses per cycle, each offset. LFO1 sweeps tangle with a sine so the triadic feel emerges and retreats. Good for looping over beats.",
-  "dna": { "aggression": 0.42, "brightness": 0.58, "density": 0.62, "movement": 0.65, "space": 0.5, "warmth": 0.42 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.58,
+    "density": 0.62,
+    "movement": 0.65,
+    "space": 0.5,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Triadic Motion",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "trefoil", "triadic", "medium-tempo", "looping", "movement"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "trefoil",
+    "triadic",
+    "medium-tempo",
+    "looping",
+    "movement"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

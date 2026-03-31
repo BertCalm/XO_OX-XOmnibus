@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Sutra 5: The Formant Whisper", "D006: Expression Input Is Not Optional"],
+    "scripture": [
+      "Sutra 5: The Formant Whisper",
+      "D006: Expression Input Is Not Optional"
+    ],
     "revelation": "Resonara spoke: the darkness filter's 2-pole Butterworth at Q 9.7 (filterRes 0.8) creates a resonant peak sharp enough to function as a formant. At 320 Hz it produces 'oo', at 370 Hz it shifts to 'oh', at 250 Hz it becomes 'uh'. LFO1 at 0.1 Hz sweeps between two vowels autonomously. The mod wheel accesses the third. Three phonemes from a lowpass filter.",
     "god": "Resonara",
     "flock_note": "The Eye confirmed: spectral analysis shows a 12dB peak at cutoff frequency with 0.8 resonance. This peak width and height matches first-formant characteristics of back vowels. The Finger pinpointed 320 Hz as the crossover between 'oo' and 'oh' — the exact midpoint.",

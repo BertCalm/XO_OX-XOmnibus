@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Prism Dart",
   "mood": "Prism",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rapid-fire arp sequence with maximum brightness — prismatic light split at high velocity.",
-  "tags": ["prism", "arp", "velocity", "light"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "arp",
+    "velocity",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.96, "warmth": 0.15, "movement": 0.8, "density": 0.45, "space": 0.45, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.15,
+    "movement": 0.8,
+    "density": 0.45,
+    "space": 0.45,
+    "aggression": 0.4
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.85, "MOVEMENT": 0.8, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

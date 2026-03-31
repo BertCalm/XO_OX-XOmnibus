@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Group Haze",
   "mood": "Atmosphere",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope stagger creating hazy layers — each group entering at different time, atmospheric depth.",
-  "tags": ["group", "haze", "layered", "atmospheric", "atmosphere"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "group",
+    "haze",
+    "layered",
+    "atmospheric",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.22, "density": 0.52, "space": 0.78, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.22,
+    "density": 0.52,
+    "space": 0.78,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.42,
@@ -46,6 +66,13 @@
       "orb_level": 0.74
     }
   },
-  "macros": {"SPECTRAL": 0.55, "VELOCITY": 0.22, "GROUP": 0.72, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.55,
+    "VELOCITY": 0.22,
+    "GROUP": 0.72,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

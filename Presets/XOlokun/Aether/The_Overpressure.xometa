@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "The Overpressure",
   "mood": "Aether",
-  "engines": ["Overflow"],
+  "engines": [
+    "Overflow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Catastrophic mode unlocked — threshold breached beyond the vessel's limits. Chaos that resolves into ethereal silence.",
-  "tags": ["pad", "aether", "catastrophic", "extreme", "overpressure"],
-  "macroLabels": ["VESSEL", "PRESSURE", "SENSITIVITY", "RELEASE"],
+  "tags": [
+    "pad",
+    "aether",
+    "catastrophic",
+    "extreme",
+    "overpressure"
+  ],
+  "macroLabels": [
+    "VESSEL",
+    "PRESSURE",
+    "SENSITIVITY",
+    "RELEASE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.4, "movement": 0.85, "density": 0.7, "space": 0.75, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.85,
+    "density": 0.7,
+    "space": 0.75,
+    "aggression": 0.4
+  },
   "parameters": {
     "Overflow": {
       "flow_threshold": 1.0,
@@ -43,7 +63,9 @@
       "flow_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

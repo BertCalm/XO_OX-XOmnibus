@@ -14,13 +14,20 @@
     "space": 0.35,
     "warmth": 0.9
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Submerged",
   "name": "Forgotten Basement",
   "parameters": {
@@ -45,8 +52,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["extreme-lo-fi", "8-bit", "vinyl", "submerged", "dust", "degraded"],
+  "tags": [
+    "extreme-lo-fi",
+    "8-bit",
+    "vinyl",
+    "submerged",
+    "dust",
+    "degraded"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.25, "M2": 0.1, "M3": 0.0, "M4": 0.95}
+  "macros": {
+    "M1": 0.25,
+    "M2": 0.1,
+    "M3": 0.0,
+    "M4": 0.95
+  }
 }

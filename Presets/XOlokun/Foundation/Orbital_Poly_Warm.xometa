@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Poly Warm",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm polyphonic bed — engine's warm-red identity expressed as a clean 6-voice pad foundation.",
-  "tags": ["poly", "warm", "pad", "clean", "foundation"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "poly",
+    "warm",
+    "pad",
+    "clean",
+    "foundation"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.72, "movement": 0.15, "density": 0.65, "space": 0.48, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.12
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.45,
@@ -46,6 +66,13 @@
       "orb_level": 0.78
     }
   },
-  "macros": {"SPECTRAL": 0.52, "VELOCITY": 0.15, "GROUP": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.52,
+    "VELOCITY": 0.15,
+    "GROUP": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

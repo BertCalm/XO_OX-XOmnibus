@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Taiko Assault (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Full taiko assault — center strike as bass drum, edge hits as snare crashes, rim as metallic accent. The taiko's cylindrical body model gives massive transient punch. All four taiko articulations across four seats = complete industrial percussion battery.",
-  "tags": ["techno", "taiko", "assault", "cylindrical", "transient"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "taiko",
+    "assault",
+    "cylindrical",
+    "transient"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 140.0,
   "dna": {

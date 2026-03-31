@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Dust in the Echo",
   "mood": "Entangled",
-  "engines": ["Opal", "Overdub"],
+  "engines": [
+    "Opal",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Opal's grain clouds barely stir Dub's filter — a faint shimmer at the edge of the tape echo, grains dissolving into reverb.",
-  "tags": ["coupling", "Opal-pair", "granular", "dub", "whisper", "atmosphere"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Opal-pair",
+    "granular",
+    "dub",
+    "whisper",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",

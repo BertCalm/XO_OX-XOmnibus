@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Fold Prism",
   "mood": "Prism",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wave fold through prism — maximum fold creating inharmonic brightness, wide color spread.",
-  "tags": ["fold", "prism", "inharmonic", "bright"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "fold",
+    "prism",
+    "inharmonic",
+    "bright"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.38, "movement": 0.48, "density": 0.58, "space": 0.55, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.38,
+    "movement": 0.48,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.42
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 1,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.55
     }
   },
-  "macros": {"BOUNCE": 0.38, "COLOR": 0.88, "FOLD": 0.72, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.38,
+    "COLOR": 0.88,
+    "FOLD": 0.72,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

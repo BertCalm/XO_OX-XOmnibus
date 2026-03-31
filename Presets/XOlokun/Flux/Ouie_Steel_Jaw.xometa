@@ -2,22 +2,41 @@
   "schema_version": 1,
   "name": "Steel Jaw",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The hammerhead's bite. Phase Distortion and Wavefolder at maximum STRIFE — HAMMER at -0.9 tears both voices through cross-FM and ring modulation simultaneously. Aggressive mono bass, tight envelopes, grinding harmonics. Low filter cutoffs contain the violence. The resonance shelf at 0.28 keeps the growl from becoming noise. Play below C3 and feel the jaw close.",
-  "tags": ["flux", "bass", "aggressive", "strife", "phase-dist", "wavefolder", "mono", "guru-bin"],
+  "tags": [
+    "flux",
+    "bass",
+    "aggressive",
+    "strife",
+    "phase-dist",
+    "wavefolder",
+    "mono",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 3: HAMMER at -0.9 — The Jaw Closes", "Canon 2: 0.28 Resonance Shelf Keeps the Growl Musical"],
+    "scripture": [
+      "Verse 3: HAMMER at -0.9 — The Jaw Closes",
+      "Canon 2: 0.28 Resonance Shelf Keeps the Growl Musical"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger played below C3 and The Bone felt the jaw close — aggressive mono bass with phase distortion and wavefolder at maximum STRIFE.",
     "diagnosis": "Steel Jaw is OUIE at maximum STRIFE — Phase Distortion and Wavefolder at HAMMER -0.9, low filter cutoffs containing violence. The hardest-edged mono bass in the engine, demonstrating maximum conflict."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -91,5 +110,7 @@
     "CARTILAGE": 0.7,
     "CURRENT": 0.1
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

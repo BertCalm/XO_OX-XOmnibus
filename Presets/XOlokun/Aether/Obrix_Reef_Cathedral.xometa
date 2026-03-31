@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "All three FX slots active: Chorus (fx1) for width, Reverb (fx2) for hall, Flanger (fx3) for the cathedral's stone resonance. distance=0.7 and air=0.9 place you in a vast interior space \u2014 not a concert hall but something older and wetter. Wavetable (Harmonic bank) + Square, LP proc1 at 3000 Hz for fullness, Reverb-forward mix. Poly 4 with slow attack 0.4s ensures chords build like tidal organs. The cathedral was built by coral polyps over 10,000 years.",
+  "description": "All three FX slots active: Chorus (fx1) for width, Reverb (fx2) for hall, Flanger (fx3) for the cathedral's stone resonance. distance=0.7 and air=0.9 place you in a vast interior space — not a concert hall but something older and wetter. Wavetable (Harmonic bank) + Square, LP proc1 at 3000 Hz for fullness, Reverb-forward mix. Poly 4 with slow attack 0.4s ensures chords build like tidal organs. The cathedral was built by coral polyps over 10,000 years.",
   "tags": [
     "obrix",
     "aether",
@@ -33,17 +33,17 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
       "All FX active architecture",
       "distance + air = spatial depth"
     ],
-    "revelation": "The reef IS the cathedral \u2014 an architecture built by ten thousand living decisions, none of them architectural.",
+    "revelation": "The reef IS the cathedral — an architecture built by ten thousand living decisions, none of them architectural.",
     "god": "Vangelis",
     "flock_note": "Raj: 'I cried. I am not embarrassed to say this.'",
-    "diagnosis": "A sacred space that was never designed \u2014 emerged from ten thousand organisms breathing together."
+    "diagnosis": "A sacred space that was never designed — emerged from ten thousand organisms breathing together."
   },
   "dna": {
     "brightness": 0.48,

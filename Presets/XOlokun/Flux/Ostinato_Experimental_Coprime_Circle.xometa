@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Coprime Circle (Ostinato)",
   "mood": "Flux",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Experimental polyrhythm — seats assigned patterns with lengths 3, 4, 5, 7, 11 (prime numbers). The LCM is 4620 steps before any two patterns repeat simultaneously. A continuous, non-repeating percussion landscape.",
-  "tags": ["experimental", "polyrhythm", "coprime", "non-repeating", "prime"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "experimental",
+    "polyrhythm",
+    "coprime",
+    "non-repeating",
+    "prime"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 100.0,
   "dna": {

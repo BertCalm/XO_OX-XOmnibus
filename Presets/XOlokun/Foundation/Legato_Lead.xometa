@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Legato Lead",
+  "name": "Legato Lead (Oblong)",
   "mood": "Foundation",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Mono legato lead with glide \u2014 amber warmth in a singing single-voice presentation.",
+  "description": "Mono legato lead with glide — amber warmth in a singing single-voice presentation.",
   "tags": [
     "foundation",
     "legato",

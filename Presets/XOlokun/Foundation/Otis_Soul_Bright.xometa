@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Hammond gospel bright registration — drawbars 3-4-5 (8'+4'+2-2/3') give the sanctified shimmer that dominates the upper-mid choir. Where the congregation answers back.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.4,
     "warmth": 0.75
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Soul Bright",
   "parameters": {
@@ -54,7 +63,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "gospel", "soul", "hammond", "bright", "choir"],
+  "tags": [
+    "organ",
+    "gospel",
+    "soul",
+    "hammond",
+    "bright",
+    "choir"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

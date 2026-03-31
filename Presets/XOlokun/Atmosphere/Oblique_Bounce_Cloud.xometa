@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Bounce Cloud",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bounce events dissolving into a reverberant cloud — moderate rate with high damp, each bounce dissipating into atmospheric space.",
-  "tags": ["bounce", "cloud", "reverb", "atmospheric", "atmosphere"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "bounce",
+    "cloud",
+    "reverb",
+    "atmospheric",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.58, "movement": 0.38, "density": 0.45, "space": 0.82, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.08
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.52,
@@ -41,6 +61,13 @@
       "oblq_level": 0.72
     }
   },
-  "macros": {"BOUNCE": 0.45, "COLOR": 0.52, "FOLD": 0.22, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.45,
+    "COLOR": 0.52,
+    "FOLD": 0.22,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

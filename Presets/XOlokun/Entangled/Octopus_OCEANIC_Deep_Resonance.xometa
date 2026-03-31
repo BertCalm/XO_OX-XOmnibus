@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "OCEANIC Deep Resonance",
   "mood": "Entangled",
-  "engines": ["Octopus", "Oceanic"],
+  "engines": [
+    "Octopus",
+    "Oceanic"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OCEANIC's separation algorithm feeding OCTOPUS arm rate modulation — the spatial depth of OCEANIC accelerates OCTOPUS arms as they probe through the 3D field. Deep resonance shared between sister ocean engines.",
-  "tags": ["octopus", "oceanic", "entangled", "deep", "spatial", "resonance", "ocean"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "oceanic",
+    "entangled",
+    "deep",
+    "spatial",
+    "resonance",
+    "ocean"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-17",

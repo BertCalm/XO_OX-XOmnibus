@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Folk harmonica breath — gentle bend (1.5 semitones), slow attack, long release. Not the blues but the Appalachian mountain tradition: plaintive, ancient, unhurried. Mod wheel adds vibrato.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.6,
     "warmth": 0.85
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Harp Ghost",
   "parameters": {
@@ -55,7 +64,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["harmonica", "folk", "appalachian", "atmosphere", "gentle", "breath"],
+  "tags": [
+    "harmonica",
+    "folk",
+    "appalachian",
+    "atmosphere",
+    "gentle",
+    "breath"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

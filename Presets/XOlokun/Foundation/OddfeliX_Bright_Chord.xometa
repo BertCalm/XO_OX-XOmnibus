@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Bright Chord",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chord mode snap delivering crisp bright triads with instant attack and short decay.",
-  "tags": ["chord", "bright", "snap", "harmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chord",
+    "bright",
+    "snap",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.28, "movement": 0.45, "density": 0.6, "space": 0.42, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.28,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.42,
+    "aggression": 0.25
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.45
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

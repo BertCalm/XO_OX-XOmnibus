@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Abyssal Electroreception",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Additive (Voice 1) meets Noise (Voice 2) at HAMMER +0.3 — light LOVE. The additive voice provides precise harmonic tones; the noise voice adds the electromagnetic interference of deep water. Sample-and-Hold LFO on Voice 2 creates unpredictable noise bursts that blend with the tonal foundation through LOVE's spectral merge. AMPULLAE at 1.0 — maximum sensitivity. Every slight velocity change reshapes the balance between signal and static. The hammerhead's ampullae detecting faint electrical signals in the dark.",
-  "tags": ["experimental", "noise", "additive", "electroreception", "sensitive", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "experimental",
+    "noise",
+    "additive",
+    "electroreception",
+    "sensitive",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.35
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

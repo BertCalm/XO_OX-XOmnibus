@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Torus T(3,2) with pulse at 1.4 Hz and moderate entrainment (0.45) — the 3:2 harmonic ratio in the delay lengths creates pulses that feel metrically related to each other. Two pulses lock into a 3:2 polyrhythm with the Kuramoto oscillators. Rhythmically functional; sits well in musical contexts.",
-  "dna": { "aggression": 0.42, "brightness": 0.58, "density": 0.6, "movement": 0.65, "space": 0.52, "warmth": 0.42 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.58,
+    "density": 0.6,
+    "movement": 0.65,
+    "space": 0.52,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Fifth Pulse",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "torus", "fifth", "polyrhythm", "musical", "movement"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "torus",
+    "fifth",
+    "polyrhythm",
+    "musical",
+    "movement"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

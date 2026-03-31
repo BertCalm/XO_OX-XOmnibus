@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Midnight Thermocline",
   "mood": "Submerged",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The thermocline at midnight: a cold boundary where warm surface water ends and the abyssal begins. Above is life; below is pressure. OpenSky sits at the boundary — shimmer still active but compressed by cold, unison detune frozen, the RISE macro stuck at 0.05.",
-  "tags": ["pad", "thermocline", "cold", "submerged", "boundary", "dark", "ambient"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "pad",
+    "thermocline",
+    "cold",
+    "submerged",
+    "boundary",
+    "dark",
+    "ambient"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

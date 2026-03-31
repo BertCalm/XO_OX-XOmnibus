@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Den Return",
   "mood": "Family",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm canopy breath with slow floor and medium creature presence — the family returning to shelter before rain.",
-  "tags": ["den", "family", "return", "shelter", "warm", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "den",
+    "family",
+    "return",
+    "shelter",
+    "warm",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.82, "movement": 0.32, "density": 0.55, "space": 0.65, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.82,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.12
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.65
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

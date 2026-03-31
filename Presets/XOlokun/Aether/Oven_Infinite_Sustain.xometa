@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Infinite Sustain",
+  "name": "Infinite Sustain (Oven)",
   "mood": "Aether",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cast iron at maximum density. Energy enters the body and never leaves. Sustain approaches infinity. Sympathetic resonance at full depth creates a self-sustaining harmonic web. The piano that plays itself.",
-  "tags": ["piano", "sustain", "infinite", "drone", "dark", "dense", "meditative"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "sustain",
+    "infinite",
+    "drone",
+    "dark",
+    "dense",
+    "meditative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.20,
-    "warmth": 0.90,
-    "movement": 0.20,
+    "brightness": 0.2,
+    "warmth": 0.9,
+    "movement": 0.2,
     "density": 0.95,
-    "space": 0.70,
+    "space": 0.7,
     "aggression": 0.05
   },
   "parameters": {

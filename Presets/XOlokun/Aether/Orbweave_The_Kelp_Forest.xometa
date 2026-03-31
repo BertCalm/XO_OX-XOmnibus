@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "The Kelp Forest (Orbweave)",
   "mood": "Aether",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "Guru Bin — ORBWEAVE Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Golden torus P=5 Q=8 (φ≈8/5, maximum polarization) with all four macros simultaneously nonzero: WEAVE=0.15, TENSION=0.3, KNOT=0.4, SPACE=0.5. Slow LFO on braid depth (0.03 Hz). 12-second release. The golden spiral torus coupling creates a slow-rotating harmonic architecture that changes shape as KNOT shifts the matrix toward Solomon. The full kelp forest: all systems active.",
-  "tags": ["golden-torus", "all-macros", "long-release", "aether", "p5-q8", "kelp-forest"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "tags": [
+    "golden-torus",
+    "all-macros",
+    "long-release",
+    "aether",
+    "p5-q8",
+    "kelp-forest"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

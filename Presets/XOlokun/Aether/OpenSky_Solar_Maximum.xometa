@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Solar Maximum",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Maximum aggression from OPENSKY — filterReso at 0.7, pitchEnvAmount at 0.5 with fast decay (0.12), shimmer removed entirely. No shimmer, no chorus: raw supersaw storm. Seven unison voices at 0.25 detune — wide, intentionally chaotic. FilterCutoff at 10000 with high resonance creates a self-oscillating edge. PitchEnv at 0.5 gives each note a screaming transient entry. This is solar flare as synthesis: electromagnetic violence.",
-  "tags": ["opensky", "aggressive", "filter", "resonance", "lead", "aether", "guru-bin", "solar", "maximum"],
+  "tags": [
+    "opensky",
+    "aggressive",
+    "filter",
+    "resonance",
+    "lead",
+    "aether",
+    "guru-bin",
+    "solar",
+    "maximum"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru said: the sun does not only shine. At maximum it erupts. Solar Maximum is the OPENSKY eruption preset — filterReso at 0.7 means the filter sings its own note above the oscillator. PitchEnv at 0.5 means each keystroke launches a flare. Seven detuned voices ensure the result is weather, not music. Use sparingly. The sun does not stay at maximum.",
     "diagnosis": "Solar Maximum tests OPENSKY's upper aggression boundary. FilterReso=0.7 approaches self-oscillation. PitchEnvAmount=0.5 with pitchEnvDecay=0.12 creates sharp pitch transients. No shimmer, no chorus — the oscillators and filter do all the work. UisonCount=7 at 0.25 detune produces intentional chaos. DNA: aggression at 0.85, the highest in the OPENSKY collection."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

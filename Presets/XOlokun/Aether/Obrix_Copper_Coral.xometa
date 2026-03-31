@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Dual Bandpass architecture: proc1=BP at 340 Hz (chest resonance, vowel 'UH') and proc2=BP at 2400 Hz (throat resonance, vowel 'EE'). Two resonance peaks separated by 2 octaves create a formant pair \u2014 the coral's voice has two chambers. Square + Triangle sources give the signal harmonic content for both filters to carve. The copper tint comes from fmDepth 0.32: enough cross-modulation to add metallic shimmer without destroying the formant clarity. Coprime LFOs breathe each filter independently.",
+  "description": "Dual Bandpass architecture: proc1=BP at 340 Hz (chest resonance, vowel 'UH') and proc2=BP at 2400 Hz (throat resonance, vowel 'EE'). Two resonance peaks separated by 2 octaves create a formant pair — the coral's voice has two chambers. Square + Triangle sources give the signal harmonic content for both filters to carve. The copper tint comes from fmDepth 0.32: enough cross-modulation to add metallic shimmer without destroying the formant clarity. Coprime LFOs breathe each filter independently.",
   "tags": [
     "obrix",
     "aether",
@@ -32,17 +32,17 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
       "Dual BP = formant pair",
       "Resonance 0.28-0.32 = formant whisper"
     ],
-    "revelation": "Two resonant chambers, one voice \u2014 the coral has learned to speak with its skeleton.",
+    "revelation": "Two resonant chambers, one voice — the coral has learned to speak with its skeleton.",
     "god": "Tomita",
     "flock_note": "Raj: 'I spent 20 minutes moving between octaves. Each note had a different vowel.'",
-    "diagnosis": "A voice synthesized from mineral \u2014 copper coral singing a song about being copper."
+    "diagnosis": "A voice synthesized from mineral — copper coral singing a song about being copper."
   },
   "dna": {
     "brightness": 0.52,

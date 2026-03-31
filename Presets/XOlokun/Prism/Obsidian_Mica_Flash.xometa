@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Mica Flash",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mica sheet catching light — sudden prismatic flash, metallic shimmer, quick transient.",
-  "tags": ["mica", "flash", "metallic", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "mica",
+    "flash",
+    "metallic",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.28, "movement": 0.48, "density": 0.4, "space": 0.55, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.28,
+    "movement": 0.48,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.42
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.38,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.73
     }
   },
-  "macros": {"CHARACTER": 0.82, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

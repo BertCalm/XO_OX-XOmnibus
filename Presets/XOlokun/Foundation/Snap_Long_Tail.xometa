@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Snap Long Tail",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP with long decay and resonant filter — the transient attack fades into a tail that rings. Between a snap and a bell tone. Useful for melodic tonal transients.",
-  "tags": ["snap", "long", "tail", "resonant", "bell", "foundation"],
-  "macroLabels": ["SNAP AMOUNT", "TAIL LENGTH", "RESONANCE", "FILTER TONE"],
+  "tags": [
+    "snap",
+    "long",
+    "tail",
+    "resonant",
+    "bell",
+    "foundation"
+  ],
+  "macroLabels": [
+    "SNAP AMOUNT",
+    "TAIL LENGTH",
+    "RESONANCE",
+    "FILTER TONE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

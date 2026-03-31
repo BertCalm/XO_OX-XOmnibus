@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Pressure Blur",
   "mood": "Submerged",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "800ms Gaussian grains at density=5 with maximum smear (smearAmount=0.95, smearMix=0.85). The smear effect stretches each grain's spectral content horizontally — 800ms grains blurred further by spectral smear produce a pressure sensation in the low-mids. Filter at 1200Hz. At 12 voices, 60 grains/minute total: each note triggers a slow geological event. The column of water above is palpable.",
-  "tags": ["pressure", "smear", "submerged", "gaussian", "800ms", "low-frequency", "geological"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "pressure",
+    "smear",
+    "submerged",
+    "gaussian",
+    "800ms",
+    "low-frequency",
+    "geological"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

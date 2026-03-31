@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Rössler Root",
   "mood": "Foundation",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rössler attractor at near-zero chaos index — almost periodic, a single spiral orbit close to a pure tone. Leash fully on. Damping high to suppress harmonic spray. The chaotic system as bass foundation: predictable, rooted, yet breathing with subtle attractor irregularities that no pure oscillator could replicate.",
-  "tags": ["rossler", "bass", "tonal", "foundation", "leash", "grounded", "subtle"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rossler",
+    "bass",
+    "tonal",
+    "foundation",
+    "leash",
+    "grounded",
+    "subtle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 1,
@@ -20,18 +39,20 @@
       "ouro_leash": 0.95,
       "ouro_theta": 0.0,
       "ouro_phi": 0.15,
-      "ouro_damping": 0.80,
+      "ouro_damping": 0.8,
       "ouro_injection": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.15,
     "warmth": 0.82,
     "movement": 0.12,
     "density": 0.65,
-    "space": 0.20,
+    "space": 0.2,
     "aggression": 0.18
   }
 }

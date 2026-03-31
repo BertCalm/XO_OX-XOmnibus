@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Archive Dissolve",
   "mood": "Submerged",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Boutique Chain showcase emphasizing Dissolving Archive. OBLONG's filter-heavy character produces strong, well-defined spectral events. Dissolving Archive with Chance 0.22 (more generous memory) and Dissolve 0.62 (faster decay) means past OBLONG phrases reappear frequently but decay quickly — they are present as brief ghosts rather than long memories. GrainMix 0.65 granulates the memory material heavily. ReverbMix 0.35 adds a small reverb to the grain output. The effect is an OBLONG that plays with echoes of itself at varying states of decomposition. Submerged mood — the archive is underwater, and memories have been through a depth transformation.",
-  "tags": ["oblong", "boutique-chain", "archive", "dissolve", "submerged", "memory", "filter", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "oblong",
+    "boutique-chain",
+    "archive",
+    "dissolve",
+    "submerged",
+    "memory",
+    "filter",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oblong": {
       "bob_fltCutoff": 2200.0,
@@ -20,7 +40,7 @@
       "bob_oscWave": 2,
       "bob_oscDetune": 0.08,
       "bob_lfo1Rate": 0.12,
-      "bob_lfo1Depth": 0.30,
+      "bob_lfo1Depth": 0.3,
       "bob_lfo2Rate": 0.04,
       "bob_lfo2Depth": 0.18,
       "bob_ampAttack": 0.25,
@@ -33,14 +53,16 @@
       "bob_macroSpace": 0.72
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.38,
     "warmth": 0.58,
     "movement": 0.35,
     "density": 0.65,
-    "space": 0.80,
+    "space": 0.8,
     "aggression": 0.22
   }
 }

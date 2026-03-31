@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Crystal Pluck",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glassy single-voice pluck with long resonant tail and upward filter sweep.",
-  "tags": ["pluck", "crystal", "resonant", "clean"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pluck",
+    "crystal",
+    "resonant",
+    "clean"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.9, "warmth": 0.15, "movement": 0.4, "density": 0.2, "space": 0.55, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.15,
+    "movement": 0.4,
+    "density": 0.2,
+    "space": 0.55,
+    "aggression": 0.1
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

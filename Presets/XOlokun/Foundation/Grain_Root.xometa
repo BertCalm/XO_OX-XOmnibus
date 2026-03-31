@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Grain Root",
+  "name": "Grain Root (Opal)",
   "mood": "Foundation",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Minimal granular foundation \u2014 slow, dense grains with almost no scatter, sitting at the root.",
+  "description": "Minimal granular foundation — slow, dense grains with almost no scatter, sitting at the root.",
   "tags": [
     "granular",
     "root",

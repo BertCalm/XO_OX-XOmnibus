@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Medium parameters throughout. companion=0.55, intimacy=0.6, moderate cutoff (4800 Hz). LFO1 at 0.15 Hz for slow filter breathing. XOsier in the middle of its range \u2014 four voices playing warmly in a tended garden.",
+  "description": "Medium parameters throughout. companion=0.55, intimacy=0.6, moderate cutoff (4800 Hz). LFO1 at 0.15 Hz for slow filter breathing. XOsier in the middle of its range — four voices playing warmly in a tended garden.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.5,

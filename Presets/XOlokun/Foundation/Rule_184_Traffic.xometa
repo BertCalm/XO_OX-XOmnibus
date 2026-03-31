@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 184 models traffic flow \u2014 particles move deterministically, creating density waves. Eight arm-lanes of traffic that never stop but never collide.",
+  "description": "Rule 184 models traffic flow — particles move deterministically, creating density waves. Eight arm-lanes of traffic that never stop but never collide.",
   "tags": [
     "foundation",
     "rule184",

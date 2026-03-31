@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Abyssal Scatter",
   "mood": "Submerged",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two-oscillator source (source=4) with osc2Mix=0.65 and osc2Detune=0.22 — the two oscillators create beating interference patterns that the granulator then scatters. Grain size 180ms, density=12. posScatter=0.95 means grains are harvested from nearly random positions in the 4-second buffer. The beating frequency of the two detuned oscillators becomes temporally scattered — interference heard as spatial event rather than periodic rhythm. Sub filter at 2200Hz.",
-  "tags": ["two-osc", "detuned", "scatter", "submerged", "beating", "interference", "spatial"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "two-osc",
+    "detuned",
+    "scatter",
+    "submerged",
+    "beating",
+    "interference",
+    "spatial"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

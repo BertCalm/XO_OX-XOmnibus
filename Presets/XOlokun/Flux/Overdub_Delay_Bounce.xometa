@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Delay Bounce",
   "mood": "Flux",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tight stutter delay that bounces against a filter LFO — pure kinetic energy in a feedback loop.",
-  "tags": ["flux", "delay", "bounce", "stutter", "kinetic", "feedback"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "delay",
+    "bounce",
+    "stutter",
+    "kinetic",
+    "feedback"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.65, "COUPLING": 0.52, "SPACE": 0.28},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.45, "warmth": 0.65, "movement": 0.75, "density": 0.6, "space": 0.32, "aggression": 0.5}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.52,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.75,
+    "density": 0.6,
+    "space": 0.32,
+    "aggression": 0.5
+  }
 }

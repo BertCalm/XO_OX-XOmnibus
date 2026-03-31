@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Predator Sequence",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hunt macro cycling at medium rate drives wavetable scan through attack and stalk phases — programmatic, evolving motion that follows predator logic across each phrase.",
-  "tags": ["flux", "hunt", "sequence", "evolving", "motion"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "hunt",
+    "sequence",
+    "evolving",
+    "motion"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 120,
-  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.75, "density": 0.55, "space": 0.45, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.65
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.45,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.45
     }
   },
-  "macros": {"HUNT": 0.65, "MOVEMENT": 0.75, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.65,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

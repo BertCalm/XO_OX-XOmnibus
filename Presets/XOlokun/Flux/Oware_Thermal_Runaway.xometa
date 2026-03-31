@@ -29,7 +29,7 @@
     "SPACE": 0.65
   },
   "mood": "Flux",
-  "name": "Thermal Runaway",
+  "name": "Thermal Runaway (Oware)",
   "parameters": {
     "Oware": {
       "owr_material": 0.4,

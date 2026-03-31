@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Club Pressure (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Darker, more compressed EDM feel. The djembe delivers a subby kick replacement while beatbox locks in the grid. Doumbek fills in the offbeat subdivisions with rapid-fire precision. Low humanize keeps the machine feel but the CIRCLE amount creates a surging sympathetic pressure in the low frequencies — the feeling of standing next to a subwoofer stack.",
-  "tags": ["edm", "club", "dark", "djembe", "doumbek", "pressure", "sub"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "edm",
+    "club",
+    "dark",
+    "djembe",
+    "doumbek",
+    "pressure",
+    "sub"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 130,
   "dna": {

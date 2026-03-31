@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Detune Flux",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum oscillator detune with fast bounce — chorus-spread chaos through prism.",
-  "tags": ["detune", "chorus", "wide", "chaos"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "detune",
+    "chorus",
+    "wide",
+    "chaos"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.45, "movement": 0.8, "density": 0.62, "space": 0.4, "aggression": 0.68},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.8,
+    "density": 0.62,
+    "space": 0.4,
+    "aggression": 0.68
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.4
     }
   },
-  "macros": {"BOUNCE": 0.82, "COLOR": 0.75, "FOLD": 0.4, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.82,
+    "COLOR": 0.75,
+    "FOLD": 0.4,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

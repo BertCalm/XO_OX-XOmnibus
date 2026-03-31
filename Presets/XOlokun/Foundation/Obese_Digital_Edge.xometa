@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Digital Edge",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mojo pushed fully digital — bright, precise character with hard filter drive and tight envelope creates cutting modern bass with B015 clarity at maximum.",
-  "tags": ["foundation", "digital", "bright", "precise", "modern"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "digital",
+    "bright",
+    "precise",
+    "modern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.2, "movement": 0.25, "density": 0.6, "space": 0.25, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.2,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.25,
+    "aggression": 0.65
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.75,
@@ -46,6 +66,13 @@
       "fat_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.8, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

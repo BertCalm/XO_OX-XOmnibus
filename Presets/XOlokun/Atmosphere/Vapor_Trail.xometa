@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Vapor Trail",
+  "name": "Vapor Trail (Opal) (Opal) 2",
   "mood": "Atmosphere",
   "engines": [
     "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Elongated grain trail dissolving like a vapor contrail \u2014 directional scatter with long tail.",
+  "description": "Elongated grain trail dissolving like a vapor contrail — directional scatter with long tail.",
   "tags": [
     "vapor",
     "trail",

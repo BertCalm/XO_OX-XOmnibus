@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Reef Memory",
   "mood": "Foundation",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Stable GENDY with minimal drift — coral skeleton remembered across geological time. Low breakpoint count, slow random walk, gravity locked to equal temperament.",
-  "tags": ["gendy", "stable", "coral", "foundation", "monophonic"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "stable",
+    "coral",
+    "foundation",
+    "monophonic"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 8,
@@ -45,7 +62,9 @@
       "oracle_macroDrift": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,

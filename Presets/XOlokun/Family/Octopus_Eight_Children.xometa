@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Eight Children",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A female octopus lays up to 100,000 eggs and guards them for months. This preset imagines eight offspring — each arm a different young octopus, all moving at different rates, exploring independently.",
-  "tags": ["octopus", "family", "offspring", "arms", "exploration", "independent", "life"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "offspring",
+    "arms",
+    "exploration",
+    "independent",
+    "life"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.62,

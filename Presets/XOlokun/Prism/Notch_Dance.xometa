@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Notch Dance",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Notch filter animated by LFO — comb-like prism effect dancing through the amber.",
-  "tags": ["prism", "notch", "animated", "comb"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "notch",
+    "animated",
+    "comb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.55, "movement": 0.65, "density": 0.5, "space": 0.58, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.55,
+    "movement": 0.65,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.3
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

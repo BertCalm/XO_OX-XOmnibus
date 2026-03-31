@@ -10,7 +10,7 @@
     "brightness": 0.32,
     "density": 0.75,
     "movement": 0.22,
-    "space": 0.90,
+    "space": 0.9,
     "warmth": 0.62
   },
   "engines": [
@@ -26,29 +26,29 @@
     "CHARACTER": 0.38,
     "COUPLING": 0.0,
     "MOVEMENT": 0.22,
-    "SPACE": 0.90
+    "SPACE": 0.9
   },
   "mood": "Submerged",
   "name": "Atlantic Memory",
   "parameters": {
     "Oware": {
       "owr_material": 0.55,
-      "owr_malletHardness": 0.20,
+      "owr_malletHardness": 0.2,
       "owr_bodyType": 2,
-      "owr_bodyDepth": 0.90,
+      "owr_bodyDepth": 0.9,
       "owr_buzzAmount": 0.0,
       "owr_sympathyAmount": 0.78,
       "owr_shimmerRate": 2.5,
-      "owr_thermalDrift": 0.60,
+      "owr_thermalDrift": 0.6,
       "owr_brightness": 2400.0,
-      "owr_damping": 0.10,
+      "owr_damping": 0.1,
       "owr_decay": 7.0,
       "owr_filterEnvAmount": 0.14,
       "owr_bendRange": 3,
       "owr_macroMaterial": 0.38,
       "owr_macroMallet": 0.22,
       "owr_macroCoupling": 0.0,
-      "owr_macroSpace": 0.90
+      "owr_macroSpace": 0.9
     }
   },
   "schema_version": 1,

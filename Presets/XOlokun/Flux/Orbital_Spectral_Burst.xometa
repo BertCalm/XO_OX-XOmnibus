@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Spectral Burst",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Spectral content at burst — all harmonics erupting simultaneously, warm-red at maximum energy.",
-  "tags": ["spectral", "burst", "eruption", "red", "flux"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "spectral",
+    "burst",
+    "eruption",
+    "red",
+    "flux"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.8, "warmth": 0.6, "movement": 0.92, "density": 0.72, "space": 0.15, "aggression": 0.92},
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.6,
+    "movement": 0.92,
+    "density": 0.72,
+    "space": 0.15,
+    "aggression": 0.92
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.8,
@@ -46,6 +66,13 @@
       "orb_level": 0.7
     }
   },
-  "macros": {"SPECTRAL": 0.95, "VELOCITY": 0.92, "GROUP": 0.72, "SPACE": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.95,
+    "VELOCITY": 0.92,
+    "GROUP": 0.72,
+    "SPACE": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

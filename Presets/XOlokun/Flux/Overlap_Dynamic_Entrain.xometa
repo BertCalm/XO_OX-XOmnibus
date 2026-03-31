@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A torus knot with dynamically-ramping entrainment \u2014 as you play more notes, the coupling increases. A velocity-sensitive topology that becomes more coherent under pressure. A knot that rises to meet you.",
+  "description": "A torus knot with dynamically-ramping entrainment — as you play more notes, the coupling increases. A velocity-sensitive topology that becomes more coherent under pressure. A knot that rises to meet you.",
   "tags": [
     "dynamic",
     "torus",

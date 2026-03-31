@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Broadcast Soul Revival",
   "mood": "Luminous",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Modern neo-soul production referencing the vintage broadcast era. Warm bottom, brightened top, tremolo tuned to the 2020s aesthetic. The past run through a contemporary signal chain.",
-  "tags": ["wurlitzer", "neo-soul", "broadcast", "revival", "warm", "luminous"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "neo-soul",
+    "broadcast",
+    "revival",
+    "warm",
+    "luminous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

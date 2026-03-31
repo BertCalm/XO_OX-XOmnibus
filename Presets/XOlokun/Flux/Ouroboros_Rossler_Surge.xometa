@@ -2,25 +2,54 @@
   "schema_version": 1,
   "name": "Rossler Surge",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rossler attractor surging — asymmetric chaos with periodic large excursions, sudden and wild.",
-  "tags": ["rossler", "surge", "asymmetric", "excursion", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rossler",
+    "surge",
+    "asymmetric",
+    "excursion",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.82, "density": 0.6, "space": 0.5, "aggression": 0.72},
-  "parameters": {"Ouroboros": {
-    "ouro_topology": 0,
-    "ouro_rate": 0.72,
-    "ouro_chaosIndex": 0.78,
-    "ouro_leash": 0.2,
-    "ouro_theta": 0.75,
-    "ouro_phi": 0.25,
-    "ouro_damping": 0.1,
-    "ouro_injection": 0.85
-  }},
-  "macros": {"CHARACTER": 0.58, "MOVEMENT": 0.82, "COUPLING": 0.5, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.82,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 0.72,
+      "ouro_chaosIndex": 0.78,
+      "ouro_leash": 0.2,
+      "ouro_theta": 0.75,
+      "ouro_phi": 0.25,
+      "ouro_damping": 0.1,
+      "ouro_injection": 0.85
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

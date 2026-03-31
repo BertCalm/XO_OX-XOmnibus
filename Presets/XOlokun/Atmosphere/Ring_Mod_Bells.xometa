@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Ring Mod Bells",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Sine + triangle through ring mod processor — crystalline inharmonic bells. Detuned sources create sum/difference tones that shimmer like glass.",
-  "tags": ["obrix", "bell", "ring-mod", "crystalline", "inharmonic"],
+  "tags": [
+    "obrix",
+    "bell",
+    "ring-mod",
+    "crystalline",
+    "inharmonic"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 4: The Ring Modulator Processor", "Canon 2: Sum and Difference Tones"],
+    "scripture": [
+      "Verse 4: The Ring Modulator Processor",
+      "Canon 2: Sum and Difference Tones"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger placed two detuned sources into Processor 3 and heard glass — The Ear confirmed the inharmonic shimmer is uniquely OBRIX.",

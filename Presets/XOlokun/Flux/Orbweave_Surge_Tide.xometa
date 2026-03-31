@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Triangle LFO on volume creates a surging effect. Combined with slow filter movement and Trefoil coupling, it mimics ocean surge \u2014 rhythmic, powerful, organic.",
+  "description": "Triangle LFO on volume creates a surging effect. Combined with slow filter movement and Trefoil coupling, it mimics ocean surge — rhythmic, powerful, organic.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.6,

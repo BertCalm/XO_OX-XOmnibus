@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Cytochrome Flash",
   "mood": "Prism",
-  "engines": ["Organon"],
+  "engines": [
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Electron transport chain flashing — cytochrome cascades lighting up the mitochondrial membrane.",
-  "tags": ["cytochrome", "flash", "prism", "electron", "mitochondrial", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "cytochrome",
+    "flash",
+    "prism",
+    "electron",
+    "mitochondrial",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.92, "warmth": 0.32, "movement": 0.7, "density": 0.58, "space": 0.45, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.32,
+    "movement": 0.7,
+    "density": 0.58,
+    "space": 0.45,
+    "aggression": 0.6
+  },
   "parameters": {
     "Organon": {
       "organon_metabolicRate": 0.78,
@@ -25,6 +46,8 @@
       "organon_lockIn": 0.2
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

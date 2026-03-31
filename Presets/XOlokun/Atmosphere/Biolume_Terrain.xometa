@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-08",
-  "name": "Biolume Terrain",
+  "name": "Alien Landscape",
   "description": "Ethereal textures wash with voyager drift and prism shimmer.",
   "dna": {
     "aggression": 0.062,
@@ -30,7 +30,6 @@
     "FRACTURE"
   ],
   "mood": "Atmosphere",
-  "name": "Alien Landscape",
   "parameters": {
     "Odyssey": {
       "drift_attack": 800.0,

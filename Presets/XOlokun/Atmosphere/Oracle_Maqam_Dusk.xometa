@@ -2,32 +2,51 @@
   "schema_version": 1,
   "name": "Maqam Dusk",
   "mood": "Atmosphere",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bayati maqam at dusk — GENDY's random walk breathes through a slow stochastic envelope, smearing pitch between scale degrees like heat shimmer. Generous breakpoint count, medium drift, both LFOs on slow sine. Poly4 for layered harmonic clouds.",
-  "tags": ["bayati", "maqam", "atmospheric", "ambient", "poly", "gendy", "slow"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "bayati",
+    "maqam",
+    "atmospheric",
+    "ambient",
+    "poly",
+    "gendy",
+    "slow"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 24,
       "oracle_timeStep": 0.22,
       "oracle_ampStep": 0.18,
       "oracle_distribution": 0.55,
-      "oracle_barrierElasticity": 0.60,
+      "oracle_barrierElasticity": 0.6,
       "oracle_maqam": 2,
       "oracle_gravity": 0.25,
       "oracle_drift": 0.35,
       "oracle_level": 0.75,
       "oracle_ampAttack": 0.55,
       "oracle_ampDecay": 0.8,
-      "oracle_ampSustain": 0.70,
+      "oracle_ampSustain": 0.7,
       "oracle_ampRelease": 2.2,
-      "oracle_stochEnvAttack": 0.30,
+      "oracle_stochEnvAttack": 0.3,
       "oracle_stochEnvDecay": 1.0,
       "oracle_stochEnvSustain": 0.65,
       "oracle_stochEnvRelease": 1.8,
@@ -45,14 +64,16 @@
       "oracle_macroDrift": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.38,
     "warmth": 0.68,
     "movement": 0.45,
-    "density": 0.60,
+    "density": 0.6,
     "space": 0.72,
-    "aggression": 0.10
+    "aggression": 0.1
   }
 }

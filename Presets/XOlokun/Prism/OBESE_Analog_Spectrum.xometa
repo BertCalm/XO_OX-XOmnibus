@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Analog Spectrum",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.7,
     "MOVEMENT": 0.6,
     "COUPLING": 0.0,
     "SPACE": 0.0
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.6,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.0
     }
   },
-  "tags": ["prism", "lead", "analog", "B015", "movement", "harmonic", "obese"],
+  "tags": [
+    "prism",
+    "lead",
+    "analog",
+    "B015",
+    "movement",
+    "harmonic",
+    "obese"
+  ],
   "description": "The Mojo axis as a spectrum analyzer — LFO1 cycles the B015 axis while LFO2 sweeps the filter. Morph at center means the oscillators sit halfway between sine and saw, catching light from both sides."
 }

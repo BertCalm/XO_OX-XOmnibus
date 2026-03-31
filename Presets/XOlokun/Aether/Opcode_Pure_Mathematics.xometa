@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Pure Mathematics",
   "mood": "Aether",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM synthesis at its most self-aware — ratio 3.0, maximum index at attack, very slow modulator decay. The DXModulationEnvelope trajectory dominates the entire sonic narrative. Sound as equation unfolding in time.",
-  "tags": ["fm", "mathematics", "ratio-3", "spectral", "aether", "algorithmic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fm",
+    "mathematics",
+    "ratio-3",
+    "spectral",
+    "aether",
+    "algorithmic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

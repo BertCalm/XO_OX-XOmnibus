@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Silica Flux",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sand-glass shimmering spectral flux — high density, medium tilt, rapid formant movement.",
-  "tags": ["silica", "flux", "shimmer", "spectral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "silica",
+    "flux",
+    "shimmer",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.35, "movement": 0.65, "density": 0.65, "space": 0.5, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.35,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.35
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.5,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.5
     }
   },
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

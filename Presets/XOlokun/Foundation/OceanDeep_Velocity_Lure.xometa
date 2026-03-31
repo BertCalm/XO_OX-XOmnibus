@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["D001: Velocity Must Shape Timbre", "Verse: The Velocity Gate"],
+    "scripture": [
+      "D001: Velocity Must Shape Timbre",
+      "Verse: The Velocity Gate"
+    ],
     "revelation": "Pressura spoke: velCutoffAmt at maximum (1.0) with base cutoff at 120 Hz creates a 150 Hz velocity range. At velocity 0, the filter is at 120 Hz — nearly subsonic. At velocity 127, it opens to 270 Hz. This is not a volume change. This is the difference between a predator hiding in darkness and a predator revealing its lure. D001 fulfilled at its deepest level.",
     "god": "Pressura",
     "flock_note": "The Tongue mapped the full velocity arc: vel 20 = pure sub rumble, vel 64 = body resonance appears, vel 100 = bio brightness begins to cut through, vel 127 = the full lure flash. Four distinct timbral zones from one continuous parameter.",

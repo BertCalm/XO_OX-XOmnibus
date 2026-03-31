@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Duo Conversation",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Duo mode with FM (Voice 1) and Additive (Voice 2) at HAMMER +0.25 — light LOVE. Two notes held simultaneously create a spectral conversation where the FM partials blend gently with the additive harmonics. The voices are close enough to influence each other but far enough to maintain identity. Glide at 0.2 means interval changes flow like a spoken phrase. AMPULLAE at 0.85 makes velocity shape the conversation's intensity.",
-  "tags": ["duo", "conversation", "fm", "additive", "expressive", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "duo",
+    "conversation",
+    "fm",
+    "additive",
+    "expressive",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.18
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

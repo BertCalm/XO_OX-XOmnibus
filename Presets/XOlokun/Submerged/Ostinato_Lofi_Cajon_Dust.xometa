@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Cajon Dust (Ostinato)",
   "mood": "Submerged",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Lo-fi cajon trio — dusty, filtered, slow. Cajon bass as kick, slap as snare (2/4), ghost notes from fingertip. Long decay, low master filter, generous swing. The box left sitting in a sunny room for ten years.",
-  "tags": ["lo-fi", "cajon", "dusty", "filtered", "swing"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "lo-fi",
+    "cajon",
+    "dusty",
+    "filtered",
+    "swing"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 82.0,
   "dna": {

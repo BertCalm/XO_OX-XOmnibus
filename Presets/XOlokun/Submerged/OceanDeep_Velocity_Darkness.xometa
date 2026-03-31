@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Velocity Darkness",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Maximum D001 expression plus a bioluminescent LFO at 0.06 Hz that modulates the bio brightness — the darkness itself has a slow organic pulse. velCutoffAmt=0.9: the player's touch is everything. A ghost note barely opens the filter. A full strike reveals the organism below the surface.",
-  "tags": ["bass", "submerged", "velocity", "expressive", "D001", "bioluminescence", "organic", "dynamic", "living"],
+  "tags": [
+    "bass",
+    "submerged",
+    "velocity",
+    "expressive",
+    "D001",
+    "bioluminescence",
+    "organic",
+    "dynamic",
+    "living"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "Two modulation systems operate simultaneously: your velocity (D001, conscious) and the bio LFO at 0.06 Hz (autonomous, unconscious). Use soft touch for meditative exploration of the darkness. Strike hard for moments when the creature surfaces. CREATURE macro increases the autonomous bio breath.",
     "diagnosis": "velCutoffAmt=0.9: near-maximum D001 — soft touch gives filterCutoff=120, hard strike approaches 800 Hz. lfo2Rate=0.06 Hz on bioBrightness: slow autonomous organism breath beneath the velocity expression. The two modulations create a complex living darkness. filterCutoff=120 base: very dark by default."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.55
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

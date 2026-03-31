@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Reef Ecology",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBRIX through Aquatic Chain — thematic resonance: OBRIX is the Coral Reef engine. Reef FDN reverb wraps OBRIX brick synthesis in the spatial context that matches its identity. Fathom Character 0.15 (deep emphasis) amplifies the low-mid body of OBRIX's dual-source architecture. Drift at 4 voices gives the two sources (Pulse + Saw) an ensemble width they could not have with just unison detune. Tide in AutoFilter at 0.12 Hz — the reef environment breathes. Reef at size 0.65, density 0.7. The chain is not adding effects to OBRIX — it is placing OBRIX in the environment it belongs to.",
-  "tags": ["obrix", "aquatic-chain", "reef", "ecology", "coral", "foundation", "fathom", "drift", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "aquatic-chain",
+    "reef",
+    "ecology",
+    "coral",
+    "foundation",
+    "fathom",
+    "drift",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obrix": {
       "obrix_src1Type": 2,
@@ -42,7 +63,7 @@
       "obrix_mod1Rate": 1.0,
       "obrix_mod2Type": 2,
       "obrix_mod2Target": 7,
-      "obrix_mod2Depth": 0.30,
+      "obrix_mod2Depth": 0.3,
       "obrix_mod2Rate": 0.18,
       "obrix_mod3Type": 3,
       "obrix_mod3Target": 4,
@@ -53,8 +74,8 @@
       "obrix_mod4Depth": 0.35,
       "obrix_mod4Rate": 1.0,
       "obrix_fx1Type": 2,
-      "obrix_fx1Mix": 0.30,
-      "obrix_fx1Param": 0.50,
+      "obrix_fx1Mix": 0.3,
+      "obrix_fx1Param": 0.5,
       "obrix_fx2Type": 3,
       "obrix_fx2Mix": 0.28,
       "obrix_fx2Param": 0.52,
@@ -78,10 +99,12 @@
       "obrix_driftDepth": 0.25,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.32,
-      "obrix_air": 0.50
+      "obrix_air": 0.5
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.38,

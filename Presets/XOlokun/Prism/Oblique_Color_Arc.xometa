@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Color Arc",
   "mood": "Prism",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Color arcing through prism — mid bounce with arcing color spread, prismatic motion.",
-  "tags": ["color", "arc", "prismatic", "motion"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "color",
+    "arc",
+    "prismatic",
+    "motion"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.48, "movement": 0.5, "density": 0.52, "space": 0.58, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.48,
+    "movement": 0.5,
+    "density": 0.52,
+    "space": 0.58,
+    "aggression": 0.38
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.58
     }
   },
-  "macros": {"BOUNCE": 0.42, "COLOR": 0.95, "FOLD": 0.2, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.42,
+    "COLOR": 0.95,
+    "FOLD": 0.2,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

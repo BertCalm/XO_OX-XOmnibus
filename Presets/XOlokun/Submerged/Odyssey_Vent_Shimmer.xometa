@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Vent Shimmer",
   "mood": "Submerged",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shimmer rising from a hydrothermal vent — warm glowing shimmer column in cold dark water.",
-  "tags": ["vent", "shimmer", "hydrothermal", "warm", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "vent",
+    "shimmer",
+    "hydrothermal",
+    "warm",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.28, "density": 0.65, "space": 0.7, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.28,
+    "density": 0.65,
+    "space": 0.7,
+    "aggression": 0.12
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

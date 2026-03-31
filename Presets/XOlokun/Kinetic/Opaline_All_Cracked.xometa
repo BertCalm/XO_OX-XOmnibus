@@ -2,21 +2,36 @@
   "schema_version": 1,
   "name": "All Cracked",
   "mood": "Kinetic",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High fragility — most notes crack on any substantial velocity. The instrument after being played hard all day. The cracked state as the baseline, not the exception. Each note individually detuned and noise-burst-initiated. The glass after the concert.",
-  "tags": ["glass", "fragility", "crack", "kinetic", "broken", "aggressive", "glass harp"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glass",
+    "fragility",
+    "crack",
+    "kinetic",
+    "broken",
+    "aggressive",
+    "glass harp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
-    "warmth": 0.20,
-    "movement": 0.40,
-    "density": 0.30,
+    "warmth": 0.2,
+    "movement": 0.4,
+    "density": 0.3,
     "space": 0.55,
-    "aggression": 0.60
+    "aggression": 0.6
   },
   "parameters": {
     "Opaline": {
@@ -28,11 +43,11 @@
       "opal2_decay": 4.5,
       "opal2_bodySize": 0.45,
       "opal2_inharmonicity": 0.0,
-      "opal2_shimmerAmount": 0.40,
+      "opal2_shimmerAmount": 0.4,
       "opal2_thermalShock": 0.35,
       "opal2_hfNoise": 0.25,
-      "opal2_filterEnvAmount": 0.40,
-      "opal2_crystalDrive": 0.20,
+      "opal2_filterEnvAmount": 0.4,
+      "opal2_crystalDrive": 0.2,
       "opal2_sustainPedal": 0.0,
       "opal2_bendRange": 2.0,
       "opal2_macroCharacter": 0.0,
@@ -40,9 +55,9 @@
       "opal2_macroCoupling": 0.0,
       "opal2_macroSpace": 0.0,
       "opal2_lfo1Rate": 0.25,
-      "opal2_lfo1Depth": 0.10,
+      "opal2_lfo1Depth": 0.1,
       "opal2_lfo1Shape": 0,
-      "opal2_lfo2Rate": 0.80,
+      "opal2_lfo2Rate": 0.8,
       "opal2_lfo2Depth": 0.0,
       "opal2_lfo2Shape": 1
     }

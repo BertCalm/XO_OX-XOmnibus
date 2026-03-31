@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Growth Mode \u2014 plant a seed and tend it. Harmonics germinate over 25 seconds.",
+  "description": "Growth Mode — plant a seed and tend it. Harmonics germinate over 25 seconds.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.25,

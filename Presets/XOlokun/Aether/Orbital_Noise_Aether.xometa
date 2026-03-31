@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Noise Aether",
   "mood": "Aether",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Near-full noise profile dissolved into aether — white to harmonic morph ghost.",
-  "tags": ["noise", "aether", "ghost", "dissolve"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "noise",
+    "aether",
+    "ghost",
+    "dissolve"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.45, "movement": 0.1, "density": 0.3, "space": 0.95, "aggression": 0.03},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.45,
+    "movement": 0.1,
+    "density": 0.3,
+    "space": 0.95,
+    "aggression": 0.03
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.9,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.95
     }
   },
-  "macros": {"SPECTRUM": 0.45, "EVOLVE": 0.1, "COUPLING": 0.0, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.45,
+    "EVOLVE": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

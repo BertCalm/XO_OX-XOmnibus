@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Tilt Aether",
   "mood": "Aether",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum tilt swept toward aether — extreme positive tilt at total space, bright crystal ghost.",
-  "tags": ["tilt", "aether", "bright", "ghost", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tilt",
+    "aether",
+    "bright",
+    "ghost",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.2, "movement": 0.05, "density": 0.1, "space": 0.97, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.05,
+    "density": 0.1,
+    "space": 0.97,
+    "aggression": 0.04
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.2,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.97
     }
   },
-  "macros": {"CHARACTER": 0.82, "MOVEMENT": 0.05, "COUPLING": 0.0, "SPACE": 0.97},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.97
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

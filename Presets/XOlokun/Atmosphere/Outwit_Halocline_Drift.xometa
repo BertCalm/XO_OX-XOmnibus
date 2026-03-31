@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Halocline Drift",
+  "name": "Halocline Drift (Outwit)",
   "mood": "Atmosphere",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 184 at the freshwater-saltwater boundary. Arms drift at different densities \u2014 some float, some sink. The interface is where the sound lives.",
+  "description": "Rule 184 at the freshwater-saltwater boundary. Arms drift at different densities — some float, some sink. The interface is where the sound lives.",
   "tags": [
     "atmosphere",
     "halocline",

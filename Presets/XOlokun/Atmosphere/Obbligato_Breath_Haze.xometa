@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Breath Haze",
   "mood": "Atmosphere",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum air flutter and deep drift on parallel oboes, breath becomes visible haze.",
-  "tags": ["woodwind", "breath", "haze", "flutter", "atmospheric"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "breath",
+    "haze",
+    "flutter",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.65, "movement": 0.55, "density": 0.38, "space": 0.82, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.38,
+    "space": 0.82,
+    "aggression": 0.08
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 0,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.12
     }
   },
-  "macros": {"BOND": 0.28, "BREATH": 0.72, "WIND": 0.5, "MISCHIEF": 0.12},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.28,
+    "BREATH": 0.72,
+    "WIND": 0.5,
+    "MISCHIEF": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

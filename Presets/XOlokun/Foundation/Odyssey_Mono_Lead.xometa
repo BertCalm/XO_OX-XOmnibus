@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Mono Lead",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Classic mono synth lead — glide enabled, sharp attack, resonant filter sweep.",
-  "tags": ["lead", "mono", "glide", "resonant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lead",
+    "mono",
+    "glide",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.3, "density": 0.45, "space": 0.3, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.3,
+    "density": 0.45,
+    "space": 0.3,
+    "aggression": 0.55
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

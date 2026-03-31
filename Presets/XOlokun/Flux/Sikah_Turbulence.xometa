@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Sikah Turbulence",
   "mood": "Flux",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maqam Sikah — the floating quarter-tone root creates an alien quality. Maximum stochastic turbulence, Cauchy heavy tails, barrier elasticity nearly zero for wild reflections.",
-  "tags": ["gendy", "flux", "sikah", "maqam", "turbulent", "alien", "quarter-tone"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "flux",
+    "sikah",
+    "maqam",
+    "turbulent",
+    "alien",
+    "quarter-tone"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 24,
@@ -45,7 +64,9 @@
       "oracle_macroDrift": 0.65
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

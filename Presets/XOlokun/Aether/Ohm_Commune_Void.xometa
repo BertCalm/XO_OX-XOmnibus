@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Commune Void",
   "mood": "Aether",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full commune absorption with spectral freeze — all voices merged into void.",
-  "tags": ["aether", "void", "merged", "commune"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "aether",
+    "void",
+    "merged",
+    "commune"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.2,
     "MEADOW": 0.92
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

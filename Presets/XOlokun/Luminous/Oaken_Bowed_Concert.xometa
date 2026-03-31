@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OAKEN — orchestral bass section. Heavy bow pressure, slow attack, subtle vibrato after attack settles.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.58,
     "aggression": 0.12
   },
-  "engines": ["Oaken"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Luminous",
   "name": "Bowed Concert",
   "parameters": {
@@ -42,7 +51,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["oaken", "orchestral", "bass", "luminous", "bow", "concert", "cinematic"],
+  "tags": [
+    "oaken",
+    "orchestral",
+    "bass",
+    "luminous",
+    "bow",
+    "concert",
+    "cinematic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

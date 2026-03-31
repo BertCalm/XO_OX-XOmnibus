@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Dissolving Amber",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dissolving Archive with high chance (0.72) and medium dissolve (0.55) applied to OBLONG's pulse wave — each sustained note has a different probability of spawning grain memories. The archive grows then decays, as if the amber is slowly releasing trapped sound fragments. Reverb mix inside the archive at 0.42 gives the grains spatial diffusion.",
-  "tags": ["atmosphere", "pulse", "archive", "dissolving", "memory", "boutique", "fx_chain:Boutique", "boutique-fx-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "pulse",
+    "archive",
+    "dissolving",
+    "memory",
+    "boutique",
+    "fx_chain:Boutique",
+    "boutique-fx-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.75, "movement": 0.42, "density": 0.68, "space": 0.72, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.75,
+    "movement": 0.42,
+    "density": 0.68,
+    "space": 0.72,
+    "aggression": 0.12
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 3,
@@ -56,8 +79,15 @@
       "bob_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "bfx_anMix": 0.0,
     "bfx_daChance": 0.72,

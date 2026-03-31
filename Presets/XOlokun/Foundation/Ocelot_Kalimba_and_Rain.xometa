@@ -2,16 +2,43 @@
   "schema_version": 1,
   "name": "Kalimba and Rain",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Guru Bin Awakening 1 — xf_floorUnder negative: each kalimba note silences the rain for an instant. The floor and understory breathe in opposition.",
-  "tags": ["foundation", "guru-bin", "kalimba", "rain", "understory", "ecosystem", "awakening"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "foundation",
+    "guru-bin",
+    "kalimba",
+    "rain",
+    "understory",
+    "ecosystem",
+    "awakening"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.68, "movement": 0.45, "density": 0.5, "space": 0.6, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.12
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -83,5 +110,7 @@
       "ocelot_xf_emergCanopy": 0.0
     }
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

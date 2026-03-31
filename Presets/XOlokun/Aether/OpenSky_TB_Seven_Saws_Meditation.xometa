@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "Seven Saws Meditation",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The full supersaw stack at maximum spread (0.95) with 7 unison voices -- 49 detuned sawtooths in total. But the revelation is restraint: filter cutoff at 1800 Hz rolls off the harshness, leaving only the warm beating core. No shimmer. No chorus. Just the raw interference pattern of 49 saws creating a living, breathing drone. The Breath found that LFO1 at 0.015 Hz on filter cutoff creates a tidal motion so slow it takes 67 seconds per cycle -- below conscious perception but felt as aliveness. CPU: 4 polyphony voices keeps this efficient despite the dense oscillator count.",
-  "tags": ["opensky", "transcendental", "meditation", "drone", "supersaw", "raw", "minimal"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "meditation",
+    "drone",
+    "supersaw",
+    "raw",
+    "minimal"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 9: 49 Saws Filtered to 1800 Hz Is Not a Wall -- It Is a Choir", "Canon 3: Maximum Oscillators, Minimum Effects -- The Gift of Subtraction"],
+    "scripture": [
+      "Verse 9: 49 Saws Filtered to 1800 Hz Is Not a Wall -- It Is a Choir",
+      "Canon 3: Maximum Oscillators, Minimum Effects -- The Gift of Subtraction"
+    ],
     "revelation": "Parsimonia spoke: the most CPU-intensive oscillator count becomes efficient when you remove all post-processing. 49 saws cost less than 7 saws plus shimmer plus chorus. And they sound more alive.",
     "god": "Parsimonia",
     "flock_note": "The Bone confirmed: 7 unison x 7 saws = 49 oscillators, but with shimmer and chorus bypassed (mix=0), the total CPU is lower than a 3-unison preset with full effects. The Ear verified the beating pattern creates 21 distinct interference frequencies.",
     "diagnosis": "Seven Saws Meditation strips OPENSKY to its oscillator core. No effects, no shimmer -- just the raw beauty of 49 interfering sawtooths filtered into warmth. The subtraction reveals the addition."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

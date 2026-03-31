@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Four class 3 rules (30,45,90,22) cycling \u2014 maximum rule variety at 20 Hz.",
+  "description": "Four class 3 rules (30,45,90,22) cycling — maximum rule variety at 20 Hz.",
   "dna": {
     "aggression": 0.8,
     "brightness": 0.7,
@@ -24,7 +24,7 @@
     "DEN"
   ],
   "mood": "Flux",
-  "name": "Eight Storm",
+  "name": "Eight Storm (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 30,

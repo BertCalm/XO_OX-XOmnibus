@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Med Atlantic",
   "mood": "Prism",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Husband oud and bouzouki meeting aunt charango — Mediterranean-Atlantic fusion prism.",
-  "tags": ["latin", "mediterranean", "atlantic", "fusion", "prismatic"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "mediterranean",
+    "atlantic",
+    "fusion",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.7, "movement": 0.5, "density": 0.55, "space": 0.65, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.25
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 1,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.58
     }
   },
-  "macros": {"DRAMA": 0.55, "FUEGO": 0.58, "ISLA": 0.52, "SIDES": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.55,
+    "FUEGO": 0.58,
+    "ISLA": 0.52,
+    "SIDES": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

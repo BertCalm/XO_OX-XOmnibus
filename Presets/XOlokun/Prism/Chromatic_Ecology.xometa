@@ -5,10 +5,10 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "chromAmount=0.9 \u2014 the filter as a density organ. Per-arm filter cutoffs span from 800 Hz (Arm 0) to 9000 Hz (Arm 7), creating a spectral spread across the full audio range. Dense chaotic rules (90, 30, 150) drive rapid filter modulation when CA population is high. LFO2 on arm levels adds a second modulation layer. The Prism is this spectral spread continuously refracting through CA density.",
+  "description": "chromAmount=0.9 — the filter as a density organ. Per-arm filter cutoffs span from 800 Hz (Arm 0) to 9000 Hz (Arm 7), creating a spectral spread across the full audio range. Dense chaotic rules (90, 30, 150) drive rapid filter modulation when CA population is high. LFO2 on arm levels adds a second modulation layer. The Prism is this spectral spread continuously refracting through CA density.",
   "tags": [
     "chromatophore",
     "density-filter",

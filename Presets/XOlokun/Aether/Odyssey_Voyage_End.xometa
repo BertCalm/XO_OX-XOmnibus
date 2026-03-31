@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Voyage End",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The return: FM at high depth, drift nearly stopped, shimmer at maximum, tidal pulse fading. A sound that has traveled far and is slowing down. The drift that once moved through timbral space has arrived — or exhausted itself. Both are possible.",
-  "tags": ["odyssey", "fm", "shimmer", "drift", "aether", "voyage", "return", "transcendental"],
+  "tags": [
+    "odyssey",
+    "fm",
+    "shimmer",
+    "drift",
+    "aether",
+    "voyage",
+    "return",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-10: The End of the Voyage Is the Beginning of the Next"],
+    "scripture": [
+      "Scripture VII-10: The End of the Voyage Is the Beginning of the Next"
+    ],
     "revelation": "Maximum FM depth with near-zero drift is a different kind of stillness than no FM at all. The inharmonic partials are present; they are just no longer moving. This is arrival.",
     "diagnosis": "Voyage End inverts the typical compound relationship: FM depth at maximum (0.75), drift at minimum (0.015), tidal at very low depth (0.12). The sound is rich with FM partials but barely moving. The voyage has ended; the destination is this spectral richness at rest."
   },
-  "macroLabels": ["FM ARRIVAL", "STILLNESS DEPTH", "SHIMMER HORIZON", "SPACE DECAY"],
+  "macroLabels": [
+    "FM ARRIVAL",
+    "STILLNESS DEPTH",
+    "SHIMMER HORIZON",
+    "SPACE DECAY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

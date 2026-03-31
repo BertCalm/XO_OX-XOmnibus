@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pressure Bloom",
   "mood": "Submerged",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The Ochre piano under pressure: body resonance swells with each note like a deep-sea creature inhaling. LFO2 at 0.06 Hz modulates body depth in slow tidal cycles. Notes bloom three seconds after attack — the instrument breathes before it speaks.",
-  "tags": ["piano", "bloom", "pressure", "submerged", "slow", "dark", "tidal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "bloom",
+    "pressure",
+    "submerged",
+    "slow",
+    "dark",
+    "tidal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

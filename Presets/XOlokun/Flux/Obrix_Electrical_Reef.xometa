@@ -4,14 +4,33 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Electrical Reef",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The biological bioluminescence of an electric eel colony in the reef — not random storm but organized, biological electrical discharge. Noise src1 through BP (proc1=BP, 1200 Hz, reso=0.72) creates the base electrical charge. src2=Sine (Type=1) at root, srcMix=0.22 — the tonal center of the organism underneath the electrical noise. proc2=LP (3500 Hz) keeps the shine. gestureMode=3, flashTrigger=0.72. Poly4 — multiple organisms discharging simultaneously. LFO->FilterCutoff (1.2 Hz, the discharge rhythm), Env->Volume, Velocity->FilterReso, Aftertouch->FXMix. aggression=0.62 — controlled, biological, not chaotic. MOVEMENT 0.35, CHARACTER 0.45.",
-  "tags": ["obrix", "flux", "noise", "sine", "bp-filter", "flash", "electrical", "reef", "bioluminescence"],
+  "tags": [
+    "obrix",
+    "flux",
+    "noise",
+    "sine",
+    "bp-filter",
+    "flash",
+    "electrical",
+    "reef",
+    "bioluminescence"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.68,

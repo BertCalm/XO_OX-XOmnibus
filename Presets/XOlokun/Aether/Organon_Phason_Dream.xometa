@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Phason Dream",
   "mood": "Aether",
-  "engines": ["Organon"],
+  "engines": [
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phason fluctuations at near-zero rate — quasicrystal phase space drifting at dreamlike tempo.",
-  "tags": ["phason", "dream", "aether", "slow", "quasicrystal", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "phason",
+    "dream",
+    "aether",
+    "slow",
+    "quasicrystal",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.55, "movement": 0.1, "density": 0.22, "space": 0.95, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.55,
+    "movement": 0.1,
+    "density": 0.22,
+    "space": 0.95,
+    "aggression": 0.06
+  },
   "parameters": {
     "Organon": {
       "organon_metabolicRate": 0.08,
@@ -25,6 +46,8 @@
       "organon_lockIn": 0.04
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

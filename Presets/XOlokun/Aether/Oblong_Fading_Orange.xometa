@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Fading Orange",
   "mood": "Aether",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Nap curiosity (mode 4) — barely moving, barely there. Oblong Sine with shape 0.55, nearly-closed LP filter at 800 Hz, DustTape at 0.28 with dark tone (0.22). Long release tail. The memory of the amber color after the fish is gone. The anemone still holds the shape of where Bob was.",
-  "tags": ["aether", "sine", "nap", "tape", "memory", "oblong", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "sine",
+    "nap",
+    "tape",
+    "memory",
+    "oblong",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.82, "movement": 0.05, "density": 0.45, "space": 0.82, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.82,
+    "movement": 0.05,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.06
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 0,
@@ -56,6 +78,13 @@
       "bob_level": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.05, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Violet Drift",
+  "name": "Violet Drift (Odyssey)",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Atmospheric violet drift pad — high haze, slow drift rate, wide reverb expanse.",
-  "tags": ["violet", "drift", "haze", "atmospheric"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "violet",
+    "drift",
+    "haze",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.55, "movement": 0.3, "density": 0.55, "space": 0.78, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.78,
+    "aggression": 0.08
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

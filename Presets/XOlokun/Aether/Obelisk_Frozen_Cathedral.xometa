@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Frozen Cathedral",
   "mood": "Aether",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass preparation with extreme cold stone tone and very long decay. The marble rings with glassy overtones that sustain like a frozen church bell. Thermal drift adds micro-detuning that evolves over 30+ seconds. Play a single chord and let the stone cathedral decay into silence. Sacred, alien, geological.",
-  "tags": ["glass", "prepared", "cathedral", "ethereal", "aether", "sustained", "frozen", "sacred"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "glass",
+    "prepared",
+    "cathedral",
+    "ethereal",
+    "aether",
+    "sustained",
+    "frozen",
+    "sacred"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.65,

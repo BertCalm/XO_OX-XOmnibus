@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Whale Song Harmonic",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Formant shift at 0.95 + wavetable scan — the vocal tract at maximum extension. F5 at 8775 Hz. The vowel is unrecognizable but the intent is clear. Wavetable scanning at 0.45 rate with LFO1 at 0.08 Hz creates a slowly-evolving, bright, presence-heavy vocal character.",
-  "tags": ["formant", "vocal", "shift", "atmosphere", "presence", "whale-song", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "vocal",
+    "shift",
+    "atmosphere",
+    "presence",
+    "whale-song",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

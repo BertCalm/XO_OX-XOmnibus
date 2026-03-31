@@ -14,13 +14,20 @@
     "space": 0.25,
     "warmth": 0.88
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Submerged",
   "name": "MPC60 Fog",
   "parameters": {
@@ -46,8 +53,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["mpc-60", "lo-fi", "12-bit", "tape", "detroit", "dust"],
+  "tags": [
+    "mpc-60",
+    "lo-fi",
+    "12-bit",
+    "tape",
+    "detroit",
+    "dust"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.3, "M2": 0.3, "M3": 0.0, "M4": 0.8}
+  "macros": {
+    "M1": 0.3,
+    "M2": 0.3,
+    "M3": 0.0,
+    "M4": 0.8
+  }
 }

@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Modal Mutation (Ostinato)",
   "mood": "Prism",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Experimental modal membrane exploration — tabla and doumbek across all four articulations, tuned to microtonally offset pitches. FIRE macro drives the exciter energy into modal membrane resonators producing overtone blooms. Not a groove — a modal investigation.",
-  "tags": ["experimental", "microtonal", "modal-membrane", "overtone", "investigation"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "experimental",
+    "microtonal",
+    "modal-membrane",
+    "overtone",
+    "investigation"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 80.0,
   "dna": {

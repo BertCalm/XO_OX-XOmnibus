@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Surdo Sunday (Ostinato)",
   "mood": "Submerged",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Lo-fi surdo patterns — Brazilian surdo open mute alternation at slow tempo. Deep low-end warmth filtered through a 4kHz ceiling. The mute suppresses the second beat slightly. Sunday morning, coffee, unhurried.",
-  "tags": ["lo-fi", "surdo", "sunday", "slow", "warm"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "lo-fi",
+    "surdo",
+    "sunday",
+    "slow",
+    "warm"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 68.0,
   "dna": {

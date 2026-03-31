@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Orange Flash",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hard sync at fifth interval (7 semitones), Twitch curiosity targeting filter cutoff — brief irregular stabs at the filter. Short attack, medium sustain. The visual signature of the clownfish as audio: orange-white-orange, never predictably spaced. Each MIDI note a flash in a different direction.",
-  "tags": ["prism", "sync", "twitch", "flash", "bright", "oblong", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "sync",
+    "twitch",
+    "flash",
+    "bright",
+    "oblong",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.85, "warmth": 0.45, "movement": 0.72, "density": 0.52, "space": 0.38, "aggression": 0.62},
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.45,
+    "movement": 0.72,
+    "density": 0.52,
+    "space": 0.38,
+    "aggression": 0.62
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 2,
@@ -56,6 +78,13 @@
       "bob_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.72, "COUPLING": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

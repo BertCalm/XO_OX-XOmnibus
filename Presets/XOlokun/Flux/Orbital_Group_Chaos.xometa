@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Group Chaos",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope system pushed to extremes — rapid staggered attacks, spectral fracture.",
-  "tags": ["chaos", "group", "rapid", "fractured"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "chaos",
+    "group",
+    "rapid",
+    "fractured"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.35, "movement": 0.9, "density": 0.65, "space": 0.4, "aggression": 0.7},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.7
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.55,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.4
     }
   },
-  "macros": {"SPECTRUM": 0.65, "EVOLVE": 0.9, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.65,
+    "EVOLVE": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

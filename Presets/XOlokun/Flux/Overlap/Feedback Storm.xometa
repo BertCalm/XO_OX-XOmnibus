@@ -1,14 +1,30 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Feedback at 0.97 — the highest stable value before runaway. No entrainment, 5 Hz pulse. The Unknot state at near-zero tangle passes every chaotic impulse straight through without topological damping. This is the storm itself: maximum bioluminescence, maximum filter motion. Use sparingly.",
-  "dna": { "aggression": 0.92, "brightness": 0.85, "density": 0.42, "movement": 0.95, "space": 0.28, "warmth": 0.15 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.85,
+    "density": 0.42,
+    "movement": 0.95,
+    "space": 0.28,
+    "warmth": 0.15
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
-  "name": "Feedback Storm",
+  "name": "Feedback Storm (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 0,
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "extreme", "unknot", "feedback", "storm", "chaos", "maximum"],
+  "tags": [
+    "flux",
+    "extreme",
+    "unknot",
+    "feedback",
+    "storm",
+    "chaos",
+    "maximum"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

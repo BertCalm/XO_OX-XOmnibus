@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Resonant Sweep",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High resonance filter envelope that sweeps from sub darkness to a stabbing mid peak on every note attack.",
-  "tags": ["resonant", "sweep", "filter", "attack", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "resonant",
+    "sweep",
+    "filter",
+    "attack",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.5, "movement": 0.5, "density": 0.75, "space": 0.3, "aggression": 0.7},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.75,
+    "space": 0.3,
+    "aggression": 0.7
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.55,
@@ -41,6 +61,13 @@
       "fat_level": 0.84
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

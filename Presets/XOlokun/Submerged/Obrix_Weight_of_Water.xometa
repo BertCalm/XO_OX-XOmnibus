@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Weight of Water",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Low-frequency bias architecture: LoFiSaw src1 (aliased sub content) + Sine src2 at -24 semitones (pure sub one octave below the low root). FM (fmDepth=0.28) modulates the sub with the LoFiSaw's rough character, adding the physical sensation of water pressure on the body. srcMix=0.35 privileges the LoFiSaw. proc1=LP (240 Hz) with feedback=0.45 creates a tuned sub resonance. proc2=LP (600 Hz) further restricts brightness. The result has almost no content above 600 Hz — it is experienced as physical weight. Four mods: Env->FilterCutoff (slow pressure bloom), LFO->Volume (0.007 Hz pulse), Velocity->FilterCutoff, Aftertouch->Pan.",
-  "tags": ["obrix", "submerged", "fm", "lofisaw", "sub", "low-frequency", "weight", "pressure"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "fm",
+    "lofisaw",
+    "sub",
+    "low-frequency",
+    "weight",
+    "pressure"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.08,

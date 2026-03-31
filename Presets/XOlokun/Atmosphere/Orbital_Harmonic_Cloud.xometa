@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Harmonic Cloud",
   "mood": "Atmosphere",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wide harmonic cloud pad — maximum stereo spread, slow group cascades, warm morph.",
-  "tags": ["cloud", "wide", "harmonic", "atmospheric"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "cloud",
+    "wide",
+    "harmonic",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.25, "density": 0.6, "space": 0.85, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.85,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.35,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.85
     }
   },
-  "macros": {"SPECTRUM": 0.5, "EVOLVE": 0.25, "COUPLING": 0.0, "SPACE": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.5,
+    "EVOLVE": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

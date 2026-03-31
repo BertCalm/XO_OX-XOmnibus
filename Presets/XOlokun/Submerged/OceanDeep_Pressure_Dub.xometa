@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Pressure Dub",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Reggae sub-bass at 3,000 PSI. The hydrostatic compression is the dub compression — pressureAmt=0.85 means the note attacks and then surrenders to the weight of the water. The filterCutoff=300 places this in the mid-depth column: warm enough to feel in the chest, dark enough to be subterranean.",
-  "tags": ["bass", "submerged", "dub", "reggae", "pressure", "compression", "sub-bass", "warm", "heavy"],
+  "tags": [
+    "bass",
+    "submerged",
+    "dub",
+    "reggae",
+    "pressure",
+    "compression",
+    "sub-bass",
+    "warm",
+    "heavy"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "PRESSURE macro is the dub compressor. The higher you push it, the more the ocean sits on top of the bass. For classic reggae feel keep PRESSURE at 0.6-0.75. For deep dub spirituality push to 0.9 and let the bass nearly disappear.",
     "diagnosis": "pressureAmt=0.85: heavy hydrostatic compression gives authentic dub weight. filterCutoff=300 with filterRes=0.6: the dub resonant peak without excessive brightness. bodyChar=0 (Open Water): clean sub without waveguide coloration. This is the most playable preset in the collection."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

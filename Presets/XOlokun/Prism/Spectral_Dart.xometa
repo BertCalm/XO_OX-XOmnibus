@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Spectral Dart",
+  "name": "Spectral Dart (Oblong)",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High FM depth (0.78) at irrational detune (23 semitones) — each note creates a distinct inharmonic FM cluster. Envelope-tracked cutoff reveals sidebands on attack. Velocity at 20 vs 127 produces completely different spectral events. The clownfish's identity pattern: no two flashes quite the same.",
-  "tags": ["prism", "fm", "inharmonic", "velocity", "oblong", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "fm",
+    "inharmonic",
+    "velocity",
+    "oblong",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.48, "movement": 0.58, "density": 0.62, "space": 0.5, "aggression": 0.52},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.48,
+    "movement": 0.58,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.52
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +77,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.58, "MOVEMENT": 0.58, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

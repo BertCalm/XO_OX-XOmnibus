@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Drive Prism",
+  "name": "Drive Prism (Overdub)",
   "mood": "Prism",
   "engines": [
     "Overdub"

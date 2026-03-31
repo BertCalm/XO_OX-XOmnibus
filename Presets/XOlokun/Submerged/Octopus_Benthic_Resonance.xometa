@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Benthic Resonance",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The resonance of the ocean floor — sediment vibrating with the weight of water above. High filter resonance at very low cutoff. Arms probing the sediment, suckers tasting it. A deep, rumbling submerged texture.",
-  "tags": ["octopus", "submerged", "benthic", "resonance", "low", "rumble", "sediment"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "benthic",
+    "resonance",
+    "low",
+    "rumble",
+    "sediment"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.12,

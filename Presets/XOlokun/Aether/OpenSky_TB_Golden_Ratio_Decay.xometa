@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Golden Ratio Decay",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Every time constant tuned to phi. Attack: 0.618s. Decay: 1.618s. Release: 2.618s. Shimmer feedback: 0.618. LFO1 rate: 0.0618 Hz. The golden ratio pervades every temporal parameter, creating a decay structure that feels 'right' without the listener knowing why -- the same proportional relationship that governs nautilus shells, sunflower spirals, and Renaissance architecture. The Guru read Scripture Verse VI:1 (Golden Ratio Decays) and applied it systematically to every time-domain parameter. The result is a sound where every transition, every fade, every modulation cycle shares the same proportional relationship.",
-  "tags": ["opensky", "transcendental", "golden-ratio", "phi", "mathematical", "natural"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "golden-ratio",
+    "phi",
+    "mathematical",
+    "natural"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Master Truth 1: Golden Ratio Decays (Scripture VI:1)", "Verse 19: When All Time Constants Share Phi, the Sound Feels Like Nature"],
+    "scripture": [
+      "Master Truth 1: Golden Ratio Decays (Scripture VI:1)",
+      "Verse 19: When All Time Constants Share Phi, the Sound Feels Like Nature"
+    ],
     "revelation": "Aurum spoke: the golden ratio applied to a single decay time creates a natural feel. Applied to ALL decay times simultaneously, it creates a proportional coherence that the ear perceives as beauty -- the same way the eye perceives phi in visual composition.",
     "god": "Aurum",
     "flock_note": "The Breath measured every time constant against phi and confirmed mathematical consistency. The Ear blind-tested against a version with rounded values (0.6, 1.6, 2.6) and unanimously preferred the phi version -- the difference is subtle but real.",
     "diagnosis": "Golden Ratio Decay is a proof of Scripture Verse VI:1: golden ratio decays feel 'right.' This preset applies the principle exhaustively, turning a mathematical constant into a sound design philosophy."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.062
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

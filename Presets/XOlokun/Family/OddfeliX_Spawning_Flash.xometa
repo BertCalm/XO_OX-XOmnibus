@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Spawning Flash",
   "mood": "Family",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Celebratory arp burst — the electric light display of tetras during spawning.",
-  "tags": ["spawning", "arp", "family", "celebrate"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "spawning",
+    "arp",
+    "family",
+    "celebrate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.3, "movement": 0.7, "density": 0.58, "space": 0.45, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.3,
+    "movement": 0.7,
+    "density": 0.58,
+    "space": 0.45,
+    "aggression": 0.25
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.58
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.7, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -5,9 +5,9 @@
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "SOLVE at max hunt rate \u2014 the GA is sprinting. Rules update every few cycles, never settling. The sound is a perpetual audition where no candidate survives.",
+  "description": "SOLVE at max hunt rate — the GA is sprinting. Rules update every few cycles, never settling. The sound is a perpetual audition where no candidate survives.",
   "tags": [
     "flux",
     "hunt",

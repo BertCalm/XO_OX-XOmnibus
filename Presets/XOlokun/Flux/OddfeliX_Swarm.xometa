@@ -2,18 +2,61 @@
   "schema_version": 1,
   "name": "Swarm",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense swarm of bright snaps — many voices in unison arp creating a swarm effect.",
-  "tags": ["swarm", "dense", "arp", "many"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "swarm",
+    "dense",
+    "arp",
+    "many"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.86, "warmth": 0.2, "movement": 0.85, "density": 0.78, "space": 0.36, "aggression": 0.45},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 2, "snap_snap": 0.88, "snap_decay": 0.09, "snap_detune": 0.22, "snap_filterCutoff": 13500.0, "snap_filterReso": 0.38, "snap_filterEnvDepth": 0.72, "snap_unison": 5, "snap_sweepDirection": 0, "snap_pitchLock": 0.85, "snap_polyphony": 8, "snap_level": 0.8, "snap_macroDart": 0.9, "snap_macroDepth": 0.45, "snap_macroSchool": 0.85, "snap_macroSurface": 0.48}
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.2,
+    "movement": 0.85,
+    "density": 0.78,
+    "space": 0.36,
+    "aggression": 0.45
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.36},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_snap": 0.88,
+      "snap_decay": 0.09,
+      "snap_detune": 0.22,
+      "snap_filterCutoff": 13500.0,
+      "snap_filterReso": 0.38,
+      "snap_filterEnvDepth": 0.72,
+      "snap_unison": 5,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.85,
+      "snap_polyphony": 8,
+      "snap_level": 0.8,
+      "snap_macroDart": 0.9,
+      "snap_macroDepth": 0.45,
+      "snap_macroSchool": 0.85,
+      "snap_macroSurface": 0.48
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.36
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

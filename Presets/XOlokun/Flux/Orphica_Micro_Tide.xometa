@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Micro Tide",
   "mood": "Flux",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oscillating micro-rate and drift depth create a tidal flux, strings ebbing and flowing.",
-  "tags": ["harp", "tidal", "micro", "flux", "oscillating"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "tidal",
+    "micro",
+    "flux",
+    "oscillating"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.62, "movement": 0.72, "density": 0.5, "space": 0.75, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.75,
+    "aggression": 0.22
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 5,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.32
     }
   },
-  "macros": {"PLUCK": 0.48, "SURFACE": 0.58, "FRACTURE": 0.45, "DIVINE": 0.32},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.48,
+    "SURFACE": 0.58,
+    "FRACTURE": 0.45,
+    "DIVINE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

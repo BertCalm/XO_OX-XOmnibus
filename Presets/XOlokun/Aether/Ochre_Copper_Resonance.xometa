@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Copper Resonance",
   "mood": "Aether",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum sympathetic resonance with long decay. The copper upright left to ring in an empty room — each note feeds the next through the sympathetic string network. Play slowly and let the harmonics accumulate.",
-  "tags": ["piano", "copper", "resonance", "sustained", "aether", "sympathetic", "meditative"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "resonance",
+    "sustained",
+    "aether",
+    "sympathetic",
+    "meditative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

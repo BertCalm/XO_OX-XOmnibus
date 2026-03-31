@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Hammer LFO Clash",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two LFOs at different speeds clashing on different targets, rhythmic chaos.",
-  "tags": ["flux", "polyrhythm", "clashing", "chaotic"],
-  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "tags": [
+    "flux",
+    "polyrhythm",
+    "clashing",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,5 +60,7 @@
     "AMPULLAE": 0.82,
     "CURRENT": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Slowly evolving unknot resonance sinking through dark water \u2014 movement from LFO-modulated tangle.",
+  "description": "Slowly evolving unknot resonance sinking through dark water — movement from LFO-modulated tangle.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.2,
@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Atmosphere",
-  "name": "Abyssal Drift",
+  "name": "Abyssal Drift (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 0,

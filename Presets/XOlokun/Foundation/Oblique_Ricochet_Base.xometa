@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Ricochet Base",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure ricochet foundation — bounce at base, moderate color, ready for performance.",
-  "tags": ["ricochet", "base", "bounce", "performance"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "ricochet",
+    "base",
+    "bounce",
+    "performance"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.48, "movement": 0.28, "density": 0.5, "space": 0.38, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.48,
+    "movement": 0.28,
+    "density": 0.5,
+    "space": 0.38,
+    "aggression": 0.32
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.38
     }
   },
-  "macros": {"BOUNCE": 0.38, "COLOR": 0.72, "FOLD": 0.18, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.38,
+    "COLOR": 0.72,
+    "FOLD": 0.18,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

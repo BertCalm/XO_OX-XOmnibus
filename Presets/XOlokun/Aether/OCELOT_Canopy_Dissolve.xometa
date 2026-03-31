@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Canopy Dissolve",
   "mood": "Aether",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Upper canopy dissolving into air — 8-partial pad with maximum shimmer feedback and heavy breathe. Floor is nearly absent. Insect drones trigger on canopy peaks.",
-  "tags": ["aether", "canopy", "dissolve", "shimmer", "pad", "breathe"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "aether",
+    "canopy",
+    "dissolve",
+    "shimmer",
+    "pad",
+    "breathe"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.55,
@@ -24,7 +38,9 @@
     "space": 0.92,
     "aggression": 0.04
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

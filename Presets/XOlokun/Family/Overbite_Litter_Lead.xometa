@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Litter Lead",
   "mood": "Family",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Unison mid-range lead with 4 voices — many young opossums sharing a single melodic purpose.",
-  "tags": ["lead", "unison", "warm", "community"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "lead",
+    "unison",
+    "warm",
+    "community"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.75, "movement": 0.3, "density": 0.6, "space": 0.35, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.3
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -35,6 +55,14 @@
       "poss_macroPlayDead": 0.15
     }
   },
-  "macros": {"BELLY": 0.55, "BITE": 0.4, "SCURRY": 0.3, "TRASH": 0.2, "PLAY DEAD": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.55,
+    "BITE": 0.4,
+    "SCURRY": 0.3,
+    "TRASH": 0.2,
+    "PLAY DEAD": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

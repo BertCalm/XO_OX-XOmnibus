@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Violet Aether",
+  "name": "Violet Aether (Odyssey)",
   "mood": "Aether",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Violet identity in aether mode \u2014 maximum reverb, slow drift, gossamer shimmer.",
+  "description": "Violet identity in aether mode — maximum reverb, slow drift, gossamer shimmer.",
   "tags": [
     "violet",
     "aether",

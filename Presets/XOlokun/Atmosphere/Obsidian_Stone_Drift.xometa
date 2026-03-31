@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Stone Drift",
   "mood": "Atmosphere",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drifting stone — slow movement over geological stillness, mineral air.",
-  "tags": ["stone", "drift", "slow", "mineral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "drift",
+    "slow",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.5, "movement": 0.28, "density": 0.6, "space": 0.62, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.5,
+    "movement": 0.28,
+    "density": 0.6,
+    "space": 0.62,
+    "aggression": 0.08
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.65,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.62},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

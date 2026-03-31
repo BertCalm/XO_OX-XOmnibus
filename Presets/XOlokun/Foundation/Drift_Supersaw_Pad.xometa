@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Drift Supersaw Pad",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's supersaw oscillators detuned wide with psychedelic shimmer. The standard lush pad baseline, but with DRIFT's signature unsteady personality.",
-  "tags": ["pad", "supersaw", "lush", "drift", "detuned", "foundation"],
-  "macroLabels": ["DETUNE", "SHIMMER", "FILTER", "SPACE"],
+  "tags": [
+    "pad",
+    "supersaw",
+    "lush",
+    "drift",
+    "detuned",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DETUNE",
+    "SHIMMER",
+    "FILTER",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

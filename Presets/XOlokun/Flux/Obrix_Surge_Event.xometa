@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Surge Event",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "A localized surge — not a full storm but an intense electrical event in a defined zone. Noise src1 through BP at 2600 Hz (higher than Flash Storm, more 'electrical crackle' vs 'ionized roar'). proc1Reso=0.82 — very high resonance produces a distinct tonal center within the noise. gestureMode=3 (Tide/Surge), flashTrigger=0.68. proc2=LP (4200 Hz) cuts only the extreme highs, keeping the surge bright and piercing. proc3=RingMod (proc3Type=5, 880 Hz) on the merged signal adds metallic electrical artifacts. aggression=0.65. LFO->FilterCutoff (0.88 Hz, fast sweep for electrical flutter), Env->FilterReso (surge tightens on attack), Velocity->Volume (discharge intensity), Aftertouch->Pan (surge direction). MOVEMENT macro 0.38.",
-  "tags": ["obrix", "flux", "noise", "bp-filter", "flash", "surge", "ringmod", "gesture"],
+  "tags": [
+    "obrix",
+    "flux",
+    "noise",
+    "bp-filter",
+    "flash",
+    "surge",
+    "ringmod",
+    "gesture"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.78,

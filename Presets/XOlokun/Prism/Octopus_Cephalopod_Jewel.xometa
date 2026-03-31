@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Cephalopod Jewel",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The jewel-like quality of a freshly caught octopus in sunlight — brilliant, multi-colored, alive. All chromatophore systems active, arms catching different frequencies. A gem-quality prism preset.",
-  "tags": ["octopus", "prism", "jewel", "brilliant", "alive", "multi-color", "vivid"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "jewel",
+    "brilliant",
+    "alive",
+    "multi-color",
+    "vivid"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.95,

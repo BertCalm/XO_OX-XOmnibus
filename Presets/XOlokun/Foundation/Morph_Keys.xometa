@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Morph Keys",
   "mood": "Foundation",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH set up as a keyboard instrument — medium attack, medium decay, zero sustain. Like a softsynth electric piano that slowly morphs through timbres as you play.",
-  "tags": ["keys", "morph", "keyboard", "melodic", "foundation"],
-  "macroLabels": ["MORPH POSITION", "DECAY", "BLOOM", "DETUNE"],
+  "tags": [
+    "keys",
+    "morph",
+    "keyboard",
+    "melodic",
+    "foundation"
+  ],
+  "macroLabels": [
+    "MORPH POSITION",
+    "DECAY",
+    "BLOOM",
+    "DETUNE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

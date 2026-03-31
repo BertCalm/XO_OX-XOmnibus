@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A jellyfish spawn cloud \u2014 thousands of ephemeral nodes, each briefly independent, then dissipating. The unknot topology handles the diffuse initial burst. The tail is much longer than the attack suggests.",
+  "description": "A jellyfish spawn cloud — thousands of ephemeral nodes, each briefly independent, then dissipating. The unknot topology handles the diffuse initial burst. The tail is much longer than the attack suggests.",
   "tags": [
     "spawn",
     "ephemeral",

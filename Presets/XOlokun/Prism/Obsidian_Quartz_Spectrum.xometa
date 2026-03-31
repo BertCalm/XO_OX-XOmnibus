@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Quartz Spectrum",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full quartz spectrum spread — all harmonics present, wide stereo, high brightness.",
-  "tags": ["quartz", "spectrum", "wide", "harmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "quartz",
+    "spectrum",
+    "wide",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.38, "movement": 0.38, "density": 0.58, "space": 0.7, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.38,
+    "movement": 0.38,
+    "density": 0.58,
+    "space": 0.7,
+    "aggression": 0.28
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.55,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.74
     }
   },
-  "macros": {"CHARACTER": 0.75, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

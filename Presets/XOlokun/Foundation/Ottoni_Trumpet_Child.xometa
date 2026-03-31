@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Trumpet Child",
   "mood": "Foundation",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Toddler trumpet with moderate pressure and warm plate reverb, the brass family's youngest voice.",
-  "tags": ["brass", "trumpet", "toddler", "young", "warm"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "trumpet",
+    "toddler",
+    "young",
+    "warm"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.65, "movement": 0.25, "density": 0.2, "space": 0.55, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.2,
+    "space": 0.55,
+    "aggression": 0.2
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.0
     }
   },
-  "macros": {"GROW": 0.2, "EMBOUCHURE": 0.5, "LAKE": 0.3, "FOREIGN": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.2,
+    "EMBOUCHURE": 0.5,
+    "LAKE": 0.3,
+    "FOREIGN": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

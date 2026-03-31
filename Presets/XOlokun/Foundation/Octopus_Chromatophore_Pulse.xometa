@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Chromatophore Pulse",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The morphing filter bank tracking the input envelope — each note triggers a color change in the skin. Medium chromatophore speed, moderate morph depth. A pad that breathes chromatically with every touch.",
-  "tags": ["octopus", "chromatophore", "filter", "morph", "foundation", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "chromatophore",
+    "filter",
+    "morph",
+    "foundation",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +68,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.58,

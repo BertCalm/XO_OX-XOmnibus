@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Deep Aether",
+  "name": "Deep Aether (Odyssey)",
   "mood": "Aether",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum drift depth at aether space \u2014 deep oscillation barely audible, enormous reverb body.",
+  "description": "Maximum drift depth at aether space — deep oscillation barely audible, enormous reverb body.",
   "tags": [
     "deep",
     "aether",

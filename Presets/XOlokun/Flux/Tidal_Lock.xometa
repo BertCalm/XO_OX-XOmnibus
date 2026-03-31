@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Fast group envelope rate combined with long amp release creates an unusual behavior: each new note triggers a rapid group swell that then tails off slowly, leaving the previous swell still active. Voices accumulate \u2014 tidal forces pulling the sound into ever-larger waves with every key press.",
+  "description": "Fast group envelope rate combined with long amp release creates an unusual behavior: each new note triggers a rapid group swell that then tails off slowly, leaving the previous swell still active. Voices accumulate — tidal forces pulling the sound into ever-larger waves with every key press.",
   "dna": {
     "aggression": 0.42,
     "brightness": 0.6,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "Tidal Lock",
+  "name": "Tidal Lock (Orbital)",
   "parameters": {
     "Orbital": {
       "orb_ampAttack": 0.05,

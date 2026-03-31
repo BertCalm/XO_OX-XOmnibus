@@ -4,14 +4,30 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Cathedral Of Water",
   "mood": "Family",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "description": "A generous, welcoming reverb — the sound of a large indoor pool at rest. Warm damping, comfortable decay, gentle phase erosion. SPACE macro swells the room from intimate to vast. Immediately beautiful on any pitched sound.",
-  "tags": ["oxbow", "family", "reverb", "warm", "spatial", "welcoming"],
+  "tags": [
+    "oxbow",
+    "family",
+    "reverb",
+    "warm",
+    "spatial",
+    "welcoming"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.5,

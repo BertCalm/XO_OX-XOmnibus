@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Bit Garden",
   "mood": "Aether",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNES-leaning ERA with BRR sample 2 (choir-like waveform), long SNES ADSR, maximum echo mix. A garden of bit-level tones allowed to bloom and decay across time — transcendent 16-bit.",
-  "tags": ["snes", "brr", "aether", "transcendent", "choir", "space", "long-decay"],
-  "macroLabels": ["ERA SWEEP", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "snes",
+    "brr",
+    "aether",
+    "transcendent",
+    "choir",
+    "space",
+    "long-decay"
+  ],
+  "macroLabels": [
+    "ERA SWEEP",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.85,
@@ -97,7 +116,9 @@
       "ow_macroSpace": 0.8
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.4,

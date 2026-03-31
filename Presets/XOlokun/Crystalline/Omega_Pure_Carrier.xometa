@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OMEGA — maximum distillation speed. Arrives at mod index 12, reaches near-pure carrier in 4-5 seconds.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.42,
     "aggression": 0.1
   },
-  "engines": ["Omega"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Crystalline",
   "name": "Pure Carrier",
   "parameters": {
@@ -40,7 +49,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["omega", "fm", "bass", "crystalline", "purity", "distillation", "showcase"],
+  "tags": [
+    "omega",
+    "fm",
+    "bass",
+    "crystalline",
+    "purity",
+    "distillation",
+    "showcase"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

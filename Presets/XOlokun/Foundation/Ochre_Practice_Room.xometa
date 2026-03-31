@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Practice Room",
   "mood": "Foundation",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The default copper upright — dry, immediate, honest. The piano in the room where you actually practice. Every dynamic decision transparent.",
-  "tags": ["piano", "copper", "upright", "dry", "intimate", "foundation", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "upright",
+    "dry",
+    "intimate",
+    "foundation",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

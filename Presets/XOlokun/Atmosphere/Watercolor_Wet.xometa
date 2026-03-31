@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Watercolor Wet",
+  "name": "Watercolor Wet (Overwash) (Overwash) 2",
   "mood": "Atmosphere",
-  "engines": ["Overwash"],
+  "engines": [
+    "Overwash"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Watercolor paper still damp — color bleeds softly at edges, warm hues diffuse into each other.",
-  "tags": ["pad", "warm", "soft", "atmospheric", "diffusion"],
-  "macroLabels": ["VISCOSITY", "DIFFUSION", "INTERFERENCE", "WIDTH"],
+  "tags": [
+    "pad",
+    "warm",
+    "soft",
+    "atmospheric",
+    "diffusion"
+  ],
+  "macroLabels": [
+    "VISCOSITY",
+    "DIFFUSION",
+    "INTERFERENCE",
+    "WIDTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.75, "movement": 0.25, "density": 0.45, "space": 0.65, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overwash": {
       "wash_diffusionRate": 0.28,
@@ -44,7 +64,9 @@
       "wash_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

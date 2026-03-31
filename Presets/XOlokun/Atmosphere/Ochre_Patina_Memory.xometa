@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Patina Memory",
   "mood": "Atmosphere",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low conductivity, long decay, heavy sympathetics. An old copper upright covered in verdigris — green and weathered, remembering every hand that played it. The patina IS the sound.",
-  "tags": ["piano", "copper", "atmospheric", "patina", "aged", "memory", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "atmospheric",
+    "patina",
+    "aged",
+    "memory",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

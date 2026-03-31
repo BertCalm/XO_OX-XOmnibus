@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Murk Signal",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A signal coming through murky water — the filter acts like suspended particles scattering the sound. Arms searching through the murk. Moderate ink creates a background haze. The sound fights to be heard.",
-  "tags": ["octopus", "submerged", "murky", "signal", "filter", "haze", "obscured"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "murky",
+    "signal",
+    "filter",
+    "haze",
+    "obscured"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.22,

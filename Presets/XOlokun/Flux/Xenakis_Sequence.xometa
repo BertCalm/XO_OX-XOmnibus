@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Xenakis Sequence",
   "mood": "Flux",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum breakpoints, maximum chaos. Channeling Xenakis's GENDY3 — full stochastic evolution with S&H LFOs adding rhythmic discontinuity to the controlled mayhem.",
-  "tags": ["gendy", "flux", "xenakis", "stochastic", "chaotic", "maximum", "evolving"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "flux",
+    "xenakis",
+    "stochastic",
+    "chaotic",
+    "maximum",
+    "evolving"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 32,
@@ -45,7 +64,9 @@
       "oracle_macroDrift": 0.8
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.5,

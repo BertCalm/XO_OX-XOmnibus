@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Glass Trace",
   "mood": "Aether",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The faint trace left on glass by a passing school — ghost shimmer barely there.",
-  "tags": ["glass", "trace", "aether", "ghost"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glass",
+    "trace",
+    "aether",
+    "ghost"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.8, "warmth": 0.15, "movement": 0.25, "density": 0.2, "space": 0.92, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.15,
+    "movement": 0.25,
+    "density": 0.2,
+    "space": 0.92,
+    "aggression": 0.04
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.9
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

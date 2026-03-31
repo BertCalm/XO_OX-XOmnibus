@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Entrain 0.5 half-locks the mirror \u2014 each reflection pulses slightly differently, creating phasing.",
+  "description": "Entrain 0.5 half-locks the mirror — each reflection pulses slightly differently, creating phasing.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.48,

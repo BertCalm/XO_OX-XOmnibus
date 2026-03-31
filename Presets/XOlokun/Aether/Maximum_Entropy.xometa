@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Rule 255 \u2014 every cell always alive. Maximum mutation, maximum feedback, all arms fully desynchronized. There is no pattern here, only the statistical average of all possible patterns. The universe before the Big Bang had a sound. This is it.",
+  "description": "Rule 255 — every cell always alive. Maximum mutation, maximum feedback, all arms fully desynchronized. There is no pattern here, only the statistical average of all possible patterns. The universe before the Big Bang had a sound. This is it.",
   "dna": {
     "aggression": 0.85,
     "brightness": 0.5,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Maximum Entropy",
+  "name": "Maximum Entropy (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 0.0,

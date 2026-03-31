@@ -2,25 +2,54 @@
   "schema_version": 1,
   "name": "Leash Ground",
   "mood": "Foundation",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "B003 Leash Blessing at full force — maximum leash constrains the attractor to a tight stable ground.",
-  "tags": ["leash", "ground", "constrained", "stable", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "leash",
+    "ground",
+    "constrained",
+    "stable",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.15, "density": 0.75, "space": 0.38, "aggression": 0.12},
-  "parameters": {"Ouroboros": {
-    "ouro_topology": 2,
-    "ouro_rate": 0.22,
-    "ouro_chaosIndex": 0.2,
-    "ouro_leash": 0.98,
-    "ouro_theta": 0.5,
-    "ouro_phi": 0.5,
-    "ouro_damping": 0.8,
-    "ouro_injection": 0.2
-  }},
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.15, "COUPLING": 0.5, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.38,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 2,
+      "ouro_rate": 0.22,
+      "ouro_chaosIndex": 0.2,
+      "ouro_leash": 0.98,
+      "ouro_theta": 0.5,
+      "ouro_phi": 0.5,
+      "ouro_damping": 0.8,
+      "ouro_injection": 0.2
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.5,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

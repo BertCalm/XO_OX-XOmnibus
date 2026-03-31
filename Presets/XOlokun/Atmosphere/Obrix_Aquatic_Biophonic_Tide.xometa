@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Biophonic Tide",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBRIX through Aquatic Chain with Tide as the primary rhythmic feature. Wavetable source (src1Type=8) with slow scan creates a continuously evolving timbral base. Tide in Both mode (tremolo + AutoFilter simultaneously) at 0.22 Hz with sine shape creates a breathing rhythm that feels like the tidal cycle of a reef — the filter opens as the water rises, the amplitude swells, both together. Fathom Character 0.28 (slight dark). Drift 3 voices. Reef at size 0.5. The OBRIX Biophonic systems (Harmonic Field, Brick Ecology) respond to the rhythmic envelope of Tide, creating a synthesis that responds to its own spatial environment.",
-  "tags": ["obrix", "wavetable", "aquatic-chain", "tide", "biophonic", "atmosphere", "tidal", "breathing", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "wavetable",
+    "aquatic-chain",
+    "tide",
+    "biophonic",
+    "atmosphere",
+    "tidal",
+    "breathing",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obrix": {
       "obrix_src1Type": 8,
@@ -23,7 +44,7 @@
       "obrix_srcMix": 0.62,
       "obrix_proc1Type": 1,
       "obrix_proc1Cutoff": 1800.0,
-      "obrix_proc1Reso": 0.30,
+      "obrix_proc1Reso": 0.3,
       "obrix_proc1Feedback": 0.0,
       "obrix_proc2Type": 1,
       "obrix_proc2Cutoff": 2800.0,
@@ -43,7 +64,7 @@
       "obrix_mod2Type": 2,
       "obrix_mod2Target": 7,
       "obrix_mod2Depth": 0.28,
-      "obrix_mod2Rate": 0.20,
+      "obrix_mod2Rate": 0.2,
       "obrix_mod3Type": 3,
       "obrix_mod3Target": 4,
       "obrix_mod3Depth": 0.45,
@@ -54,7 +75,7 @@
       "obrix_mod4Rate": 1.0,
       "obrix_fx1Type": 2,
       "obrix_fx1Mix": 0.28,
-      "obrix_fx1Param": 0.50,
+      "obrix_fx1Param": 0.5,
       "obrix_fx2Type": 3,
       "obrix_fx2Mix": 0.25,
       "obrix_fx2Param": 0.48,
@@ -71,24 +92,26 @@
       "obrix_glideTime": 0.0,
       "obrix_gestureType": 0,
       "obrix_flashTrigger": 0.0,
-      "obrix_fmDepth": 0.20,
+      "obrix_fmDepth": 0.2,
       "obrix_wtBank": 0,
       "obrix_unisonDetune": 0.012,
       "obrix_driftRate": 0.015,
-      "obrix_driftDepth": 0.20,
+      "obrix_driftDepth": 0.2,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.35,
       "obrix_air": 0.52
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,
     "warmth": 0.62,
-    "movement": 0.50,
+    "movement": 0.5,
     "density": 0.68,
     "space": 0.75,
-    "aggression": 0.20
+    "aggression": 0.2
   }
 }

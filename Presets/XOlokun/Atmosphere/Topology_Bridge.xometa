@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "OVERLAP serving as a bridge between two engine groups \u2014 its FDN routes audio from one side to the other, accumulating topology-colored resonance along the way. A signal that exits different from how it entered.",
+  "description": "OVERLAP serving as a bridge between two engine groups — its FDN routes audio from one side to the other, accumulating topology-colored resonance along the way. A signal that exits different from how it entered.",
   "tags": [
     "bridge",
     "routing",

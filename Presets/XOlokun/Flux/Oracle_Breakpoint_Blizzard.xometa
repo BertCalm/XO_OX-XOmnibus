@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Breakpoint Blizzard",
   "mood": "Flux",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense breakpoints in whiteout flux conditions — generative blizzard of GENDY events.",
-  "tags": ["flux", "blizzard", "dense", "breakpoints"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "blizzard",
+    "dense",
+    "breakpoints"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.3, "movement": 0.88, "density": 0.85, "space": 0.4, "aggression": 0.7},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.3,
+    "movement": 0.88,
+    "density": 0.85,
+    "space": 0.4,
+    "aggression": 0.7
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 1.0,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.4
     }
   },
-  "macros": {"DRIFT": 0.75, "EVOLUTION": 0.8, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.75,
+    "EVOLUTION": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

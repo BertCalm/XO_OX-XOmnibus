@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Cor Anglais Warm",
   "mood": "Foundation",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cor anglais with its distinctive warm nasal timbre, large body and medium reed stiffness.",
-  "tags": ["woodwind", "cor anglais", "warm", "nasal", "reed"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "cor anglais",
+    "warm",
+    "nasal",
+    "reed"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.72, "movement": 0.22, "density": 0.28, "space": 0.58, "aggression": 0.14},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.28,
+    "space": 0.58,
+    "aggression": 0.14
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 3,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.06
     }
   },
-  "macros": {"BOND": 0.0, "BREATH": 0.52, "WIND": 0.2, "MISCHIEF": 0.06},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.0,
+    "BREATH": 0.52,
+    "WIND": 0.2,
+    "MISCHIEF": 0.06
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

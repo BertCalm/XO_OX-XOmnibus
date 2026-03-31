@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "FM Gnash",
   "mood": "Prism",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM-modulated bass with inharmonic partials and gnash saturation — angular and industrial.",
-  "tags": ["bass", "FM", "inharmonic", "industrial"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "FM",
+    "inharmonic",
+    "industrial"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.45, "movement": 0.3, "density": 0.65, "space": 0.2, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.2,
+    "aggression": 0.75
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -35,6 +55,14 @@
       "poss_macroPlayDead": 0.05
     }
   },
-  "macros": {"BELLY": 0.4, "BITE": 0.8, "SCURRY": 0.2, "TRASH": 0.4, "PLAY DEAD": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.4,
+    "BITE": 0.8,
+    "SCURRY": 0.2,
+    "TRASH": 0.4,
+    "PLAY DEAD": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

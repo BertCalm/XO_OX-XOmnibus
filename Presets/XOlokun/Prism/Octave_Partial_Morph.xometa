@@ -60,7 +60,7 @@
       "oct_macroCoupling": 0.0,
       "oct_macroSpace": 0.0,
       "oct_lfo1Rate": 0.06,
-      "oct_lfo1Depth": 0.10,
+      "oct_lfo1Depth": 0.1,
       "oct_lfo1Shape": 0,
       "oct_lfo2Rate": 5.5,
       "oct_lfo2Depth": 0.0,

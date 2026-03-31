@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Bolt Rattle",
   "mood": "Foundation",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Steel bolt wedged between strings at the midpoint. The bolt adds mass to contacted modes, pulling their frequencies down and introducing a metallic rattle that beats against the stone partials. Cage's most common preparation — the one that turned the piano into a percussion ensemble.",
-  "tags": ["prepared", "bolt", "rattle", "cage", "percussion", "metallic", "foundation"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "prepared",
+    "bolt",
+    "rattle",
+    "cage",
+    "percussion",
+    "metallic",
+    "foundation"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.55,

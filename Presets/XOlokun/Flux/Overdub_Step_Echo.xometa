@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Step Echo",
   "mood": "Flux",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rhythmic delay steps with LFO filter movement — syncopated echo that moves like a dancer.",
-  "tags": ["flux", "rhythm", "delay", "step", "syncopated", "lfo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "rhythm",
+    "delay",
+    "step",
+    "syncopated",
+    "lfo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.5, "COUPLING": 0.52, "SPACE": 0.35},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.42, "warmth": 0.7, "movement": 0.6, "density": 0.58, "space": 0.38, "aggression": 0.38}
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.52,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.7,
+    "movement": 0.6,
+    "density": 0.58,
+    "space": 0.38,
+    "aggression": 0.38
+  }
 }

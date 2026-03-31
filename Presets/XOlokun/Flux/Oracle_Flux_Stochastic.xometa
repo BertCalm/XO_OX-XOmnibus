@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Flux Stochastic",
   "mood": "Flux",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum flux in stochastic space — drift and evolution racing each other.",
-  "tags": ["flux", "stochastic", "fast", "dynamic"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "stochastic",
+    "fast",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.85, "density": 0.6, "space": 0.5, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.6
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.75,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.5
     }
   },
-  "macros": {"DRIFT": 0.8, "EVOLUTION": 0.8, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.8,
+    "EVOLUTION": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Warm evolving pad built on the three-crossing trefoil knot \u2014 rich harmonic interplay.",
+  "description": "Warm evolving pad built on the three-crossing trefoil knot — rich harmonic interplay.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.4,
@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Foundation",
-  "name": "Trefoil Pad",
+  "name": "Trefoil Pad (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 1,

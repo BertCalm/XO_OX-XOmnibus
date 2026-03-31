@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Reed Spectrum",
   "mood": "Prism",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oboe and bassoon spanning the woodwind spectrum, exciter and bright delay opening the full range.",
-  "tags": ["woodwind", "spectrum", "oboe", "bassoon", "prismatic"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "spectrum",
+    "oboe",
+    "bassoon",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.65, "movement": 0.42, "density": 0.45, "space": 0.7, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.18
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 0,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.22
     }
   },
-  "macros": {"BOND": 0.42, "BREATH": 0.58, "WIND": 0.45, "MISCHIEF": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.42,
+    "BREATH": 0.58,
+    "WIND": 0.45,
+    "MISCHIEF": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

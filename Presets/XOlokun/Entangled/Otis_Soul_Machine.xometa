@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Hammond B3 showcase with all macros live — CHARACTER cranks the overdrive and opens brightness, MOVEMENT sweeps Leslie from chorale to tremolo, COUPLING adds tonewheel crosstalk, SPACE deepens the cabinet spin. A full living organism of a Hammond.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.5,
     "warmth": 0.75
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Entangled",
   "name": "Soul Machine",
   "parameters": {
@@ -54,7 +63,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["hammond", "organ", "gospel", "soul", "leslie", "showcase", "macro"],
+  "tags": [
+    "hammond",
+    "organ",
+    "gospel",
+    "soul",
+    "leslie",
+    "showcase",
+    "macro"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

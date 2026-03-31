@@ -2,21 +2,36 @@
   "schema_version": 1,
   "name": "Living Iron",
   "mood": "Organic",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The cast iron piano as a living organism. Both LFOs active — LFO1 breathes the brightness at glacial speed while LFO2 modulates body resonance. Temperature drift at moderate depth. Every note subtly different. The iron breathes.",
-  "tags": ["piano", "organic", "breathing", "lfo", "alive", "evolving", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "organic",
+    "breathing",
+    "lfo",
+    "alive",
+    "evolving",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
-    "warmth": 0.80,
+    "warmth": 0.8,
     "movement": 0.55,
-    "density": 0.70,
-    "space": 0.50,
-    "aggression": 0.10
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.1
   },
   "parameters": {
     "Oven": {

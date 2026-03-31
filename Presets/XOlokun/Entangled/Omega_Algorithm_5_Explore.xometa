@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OMEGA — algorithm 5, 3.5:1 inharmonic ratio. Bell-plus-bass tension for coupling with organic engines.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.35,
     "aggression": 0.28
   },
-  "engines": ["Omega"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Entangled",
   "name": "Algorithm 5 Explore",
   "parameters": {
@@ -40,7 +49,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["omega", "fm", "bass", "entangled", "inharmonic", "coupling", "algorithmic"],
+  "tags": [
+    "omega",
+    "fm",
+    "bass",
+    "entangled",
+    "inharmonic",
+    "coupling",
+    "algorithmic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

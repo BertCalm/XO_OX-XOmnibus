@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Grain Archaeology",
   "mood": "Aether",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Noise source (source=3) granularized at 45ms with Rectangular window at moderate density (35 grains/sec). The grain boundaries in noise produce spectral artifacts that differ from the source material — the granulation process itself becomes archaeological, excavating textures that were never in the original signal. High position scatter digs through the noise buffer unpredictably. The artifacts are the content.",
-  "tags": ["noise", "artifacts", "rectangular", "aether", "grain-archaeology", "spectral", "excavation"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "noise",
+    "artifacts",
+    "rectangular",
+    "aether",
+    "grain-archaeology",
+    "spectral",
+    "excavation"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

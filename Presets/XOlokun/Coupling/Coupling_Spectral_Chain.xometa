@@ -2,18 +2,35 @@
   "schema_version": 1,
   "name": "Spectral Chain",
   "mood": "Entangled",
-  "engines": ["Obscura", "Origami"],
+  "engines": [
+    "Obscura",
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBSCURA spring chain physical model output drives ORIGAMI STFT fold as audio source — physically-modeled resonance spectrally folded in real time. Two physically-inspired engines in series: organism feeds organism.",
-  "tags": ["coupled", "physical-model", "spectral", "AudioToFM", "AmpToFilter", "advanced", "experimental", "performance-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "physical-model",
+    "spectral",
+    "AudioToFM",
+    "AmpToFilter",
+    "advanced",
+    "experimental",
+    "performance-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
-    "warmth": 0.50,
-    "movement": 0.70,
+    "warmth": 0.5,
+    "movement": 0.7,
     "density": 0.62,
     "space": 0.55,
     "aggression": 0.42
@@ -21,36 +38,36 @@
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.65,
-      "obscura_damping": 0.30,
+      "obscura_damping": 0.3,
       "obscura_nonlinearity": 0.45,
-      "obscura_scanPosition": 0.50,
+      "obscura_scanPosition": 0.5,
       "obscura_scanWidth": 0.55,
       "obscura_boundaryMode": 0,
       "obscura_filterCutoff": 0.58,
       "obscura_filterReso": 0.22,
       "obscura_ampAttack": 0.02,
-      "obscura_ampDecay": 0.60,
+      "obscura_ampDecay": 0.6,
       "obscura_ampSustain": 0.68,
-      "obscura_ampRelease": 1.50,
+      "obscura_ampRelease": 1.5,
       "obscura_lfoRate": 0.08,
       "obscura_lfoDepth": 0.22,
-      "obscura_outputLevel": 0.70,
+      "obscura_outputLevel": 0.7,
       "obscura_reverbMix": 0.25
     },
     "Origami": {
-      "origami_foldPoint": 0.50,
+      "origami_foldPoint": 0.5,
       "origami_foldDepth": 0.55,
       "origami_foldMode": 0,
       "origami_filterCutoff": 0.55,
-      "origami_filterReso": 0.20,
+      "origami_filterReso": 0.2,
       "origami_ampAttack": 0.05,
-      "origami_ampDecay": 0.80,
+      "origami_ampDecay": 0.8,
       "origami_ampSustain": 0.65,
-      "origami_ampRelease": 1.80,
+      "origami_ampRelease": 1.8,
       "origami_freezeDepth": 0.25,
       "origami_outputLevel": 0.68,
       "origami_reverbMix": 0.35,
-      "origami_lfoRate": 0.10,
+      "origami_lfoRate": 0.1,
       "origami_lfoDepth": 0.25
     }
   },
@@ -60,7 +77,7 @@
         "engineA": "Obscura",
         "engineB": "Origami",
         "type": "AudioToFM",
-        "amount": 0.50
+        "amount": 0.5
       },
       {
         "engineA": "Obscura",
@@ -82,7 +99,7 @@
         "slot": 1,
         "active": true,
         "type": 4,
-        "amount": 0.50,
+        "amount": 0.5,
         "sourceSlot": 0,
         "targetSlot": 1,
         "midiCC": 3

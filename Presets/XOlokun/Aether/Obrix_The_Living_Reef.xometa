@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Every capability active simultaneously: FM (0.42) + Drift Bus (journeyMode=1.0, driftDepth=0.75) + all 3 FX (delay+chorus+reverb) + all 4 mods + 3 active processors. Wavetable (Harmonic) as FM modulator for Saw carrier. proc1=LP (formant whisper), proc2=Wavefold (harmonic complexity), proc3=BP (selective resonance at 1100 Hz). The Four Mods: LFO\u2192wtPos (wavetable morphing), LFO\u2192pan (coprime sweep), Env\u2192cutoff1 (filter breathes with notes), Aftertouch\u2192amp (living dynamic response). This is the full OBRIX organism \u2014 all systems active, the reef at full metabolic capacity.",
+  "description": "Every capability active simultaneously: FM (0.42) + Drift Bus (journeyMode=1.0, driftDepth=0.75) + all 3 FX (delay+chorus+reverb) + all 4 mods + 3 active processors. Wavetable (Harmonic) as FM modulator for Saw carrier. proc1=LP (formant whisper), proc2=Wavefold (harmonic complexity), proc3=BP (selective resonance at 1100 Hz). The Four Mods: LFO→wtPos (wavetable morphing), LFO→pan (coprime sweep), Env→cutoff1 (filter breathes with notes), Aftertouch→amp (living dynamic response). This is the full OBRIX organism — all systems active, the reef at full metabolic capacity.",
   "tags": [
     "obrix",
     "aether",
@@ -33,7 +33,7 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
@@ -41,10 +41,10 @@
       "All six retreat discoveries unified",
       "The Journey Paradox fulfilled at maximum depth"
     ],
-    "revelation": "The Living Reef is not a metaphor. When all systems activate simultaneously, OBRIX achieves biological analog \u2014 a sound that responds, evolves, and breathes.",
+    "revelation": "The Living Reef is not a metaphor. When all systems activate simultaneously, OBRIX achieves biological analog — a sound that responds, evolves, and breathes.",
     "god": null,
     "flock_note": "All three Flock members agreed: this preset is the reason OBRIX exists. Rufus called it 'the closing argument.'",
-    "diagnosis": "A complete organism \u2014 FM metabolism, drift evolution, gesture response, spatial presence. The reef, alive."
+    "diagnosis": "A complete organism — FM metabolism, drift evolution, gesture response, spatial presence. The reef, alive."
   },
   "dna": {
     "brightness": 0.62,

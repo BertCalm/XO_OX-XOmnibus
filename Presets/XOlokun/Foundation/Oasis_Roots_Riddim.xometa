@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Roots Riddim",
   "mood": "Foundation",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Reggae roots Rhodes for the skank pattern. Short decay, very fast release, no tremolo. Staccato articulation is built into the envelope — the rhythm is the player's job.",
-  "tags": ["rhodes", "reggae", "roots", "staccato", "skank", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "reggae",
+    "roots",
+    "staccato",
+    "skank",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

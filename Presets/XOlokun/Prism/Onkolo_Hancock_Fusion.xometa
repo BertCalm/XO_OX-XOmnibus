@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Hancock Fusion",
   "mood": "Prism",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Herbie Hancock's Headhunters-era clavinet — processed, funky but harmonically sophisticated. Moderate wah, precise articulation, brightness optimized for dense fusion arrangements. Chameleon territory.",
-  "tags": ["clavinet", "herbie-hancock", "fusion", "headhunters", "prism", "jazz-funk"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "herbie-hancock",
+    "fusion",
+    "headhunters",
+    "prism",
+    "jazz-funk"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

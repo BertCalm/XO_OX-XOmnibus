@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Deep Black",
   "mood": "Submerged",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Wavetable position set to the darkest formant zone. Echolocation clicks pulse at infrasonic rate. Crush adds grit. The apex predator at maximum depth, utterly silent until it moves.",
-  "tags": ["dark-ambient", "wavetable", "deep", "formant", "gritty", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dark-ambient",
+    "wavetable",
+    "deep",
+    "formant",
+    "gritty",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.05, "warmth": 0.72, "movement": 0.08, "density": 0.88, "space": 0.85, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.72,
+    "movement": 0.08,
+    "density": 0.88,
+    "space": 0.85,
+    "aggression": 0.25
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.88,
@@ -57,6 +78,13 @@
       "orca_macroSpace": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.12, "MOVEMENT": 0.08, "COUPLING": 0.0, "SPACE": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

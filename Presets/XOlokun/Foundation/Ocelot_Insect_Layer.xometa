@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Insect Layer",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Insect creature voices at steady rate — the foundation hum of a living forest.",
-  "tags": ["insect", "layer", "foundation", "creature", "hum", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "insect",
+    "layer",
+    "foundation",
+    "creature",
+    "hum",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.58, "movement": 0.45, "density": 0.6, "space": 0.45, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.58,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.25
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.35
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

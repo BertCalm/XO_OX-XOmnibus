@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "AMPULLAE Maximum",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "macroAmpullae=1.0: maximum touch sensitivity across all expression simultaneously. LFO1 sweeps HAMMER slowly at 0.07 Hz. breathRate=0.067 Hz (physiological breathing). Every keystroke reveals the full dynamic range of the engine — soft touches produce barely-there wisps; hard strikes produce full HAMMER interaction. The hammerhead's ampullae of Lorenzini detect the faintest electrical field. At maximum, no expression is wasted.",
-  "tags": ["ouie", "ampullae", "expression", "touch-sensitivity", "breath", "lfo-hammer", "aether", "velocity", "dynamic"],
+  "tags": [
+    "ouie",
+    "ampullae",
+    "expression",
+    "touch-sensitivity",
+    "breath",
+    "lfo-hammer",
+    "aether",
+    "velocity",
+    "dynamic"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "This preset rewards slow, intentional playing. Fast aggressive playing will be overwhelming — the maximum touch sensitivity amplifies everything. Pairs exceptionally well with a keyboard velocity curve set to linear. Try on synth pads at pianissimo: notes will emerge and dissolve at the threshold of hearing.",
     "diagnosis": "The definitive AMPULLAE demonstration. VA+FM pairing is intentionally broad-spectrum so the velocity expression is clearly audible across all registers. LFO1 at 0.07 Hz (slightly faster than breath) creates a slowly shifting HAMMER context that velocity riding discovers differently each note. High unison detune (0.18) adds movement that velocity reveals at forte but conceals at piano."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.55,
     "CURRENT": 0.3
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

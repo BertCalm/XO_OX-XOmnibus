@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Figure-eight at maximum tangle (0.9) — the self-intersection point of the ∞ shape becomes a collision zone. Energy fed through one loop immediately emerges from the crossing point and feeds the other loop. S&H randomly redirects the delay base for temporal chaos. This is what a signal looks like when it collides with itself.",
-  "dna": { "aggression": 0.85, "brightness": 0.82, "density": 0.45, "movement": 0.9, "space": 0.3, "warmth": 0.2 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.82,
+    "density": 0.45,
+    "movement": 0.9,
+    "space": 0.3,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
   "name": "Self Intersecting",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "extreme", "figure-eight", "collision", "chaos", "self-similar", "dramatic"],
+  "tags": [
+    "flux",
+    "extreme",
+    "figure-eight",
+    "collision",
+    "chaos",
+    "self-similar",
+    "dramatic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

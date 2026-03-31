@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "Prediction Error",
+  "name": "Prediction Error (Organon)",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.72,

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Click Lead",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pronounced click attack lead — high click tone, mono bounce, punchy character.",
-  "tags": ["click", "lead", "punchy", "mono"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "click",
+    "lead",
+    "punchy",
+    "mono"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.42, "movement": 0.28, "density": 0.48, "space": 0.3, "aggression": 0.52},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.42,
+    "movement": 0.28,
+    "density": 0.48,
+    "space": 0.3,
+    "aggression": 0.52
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.3
     }
   },
-  "macros": {"BOUNCE": 0.42, "COLOR": 0.72, "FOLD": 0.22, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.42,
+    "COLOR": 0.72,
+    "FOLD": 0.22,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

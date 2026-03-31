@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Ionosphere",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The charged layer where aurora is born. Shimmer feedback at 0.78 with damping pulled to 0.12 allows the high harmonics to ring free -- the reverb tail becomes a self-sustaining luminous curtain. Unison at 5 with minimal detune (0.03) creates interference patterns that shimmer like charged particles. The Tongue says: aftertouch opens the filter from 2400 Hz upward, revealing the full spectrum like sunlight piercing clouds.",
-  "tags": ["opensky", "transcendental", "pad", "shimmer", "aurora", "atmospheric"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "pad",
+    "shimmer",
+    "aurora",
+    "atmospheric"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 7: Low Damping Is Not Absence -- It Is Permission", "Sutra 4: Interference Patterns at 0.03 Detune Become Visible Light"],
+    "scripture": [
+      "Verse 7: Low Damping Is Not Absence -- It Is Permission",
+      "Sutra 4: Interference Patterns at 0.03 Detune Become Visible Light"
+    ],
     "revelation": "Sinusoidal spoke: when shimmer damping drops below 0.15, the pitch-shifted harmonics no longer decay -- they sustain, and the reverb becomes a drone instrument.",
     "god": "Sinusoidal",
     "flock_note": "The Eye watched the spectrum and confirmed: at damping 0.12, the octave-up shimmer harmonics persist indefinitely, creating a continuous aurora of overtones above the fundamental.",
     "diagnosis": "Ionosphere was designed to capture the moment between atmosphere and space -- where air becomes plasma. The shimmer reverb transforms from effect to instrument."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

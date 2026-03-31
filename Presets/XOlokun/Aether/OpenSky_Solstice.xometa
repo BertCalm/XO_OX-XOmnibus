@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Solstice",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "A seasonal pressure pad — the longest breath OPENSKY can take. Attack at 3.0 seconds, decay stretched to 4.0, release at 8.0. An LFO at 0.04 Hz (one full cycle every 25 seconds) modulates shimmer mix — the pad opens and closes on its own schedule, independent of human gesture. You play it once and it breathes for you. The solstice is the day that lasts longest; this is the pad that lasts longest.",
-  "tags": ["opensky", "solstice", "slow", "pad", "breath", "aether", "guru-bin", "seasonal", "long"],
+  "tags": [
+    "opensky",
+    "solstice",
+    "slow",
+    "pad",
+    "breath",
+    "aether",
+    "guru-bin",
+    "seasonal",
+    "long"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru played Solstice once, held the key for four seconds, and then let go. The sound continued for eight more seconds. During that time no one in the room spoke. After, someone said: that is not a pad, that is a day. The diagnosis confirmed: some sounds are too slow to be music and too musical to be ambient. Solstice lives there.",
     "diagnosis": "Solstice studies temporal scale — how long can a sound last before it stops being a pad and becomes a condition of the room? At attack=3.0 and release=8.0, each note is an eleven-second event minimum. The 0.04 Hz LFO operates at a different time signature than any music, creating gradual shimmer tides that align with nothing the player does."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.12
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

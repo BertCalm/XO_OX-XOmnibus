@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Scattered Signal",
   "mood": "Entangled",
-  "engines": ["Opal", "Overdub"],
+  "engines": [
+    "Opal",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense grain storm seizes Dub's filter, pitch, and delay blend — particles scatter into echo and reverb, dub engine transformed entirely by the granular swarm.",
-  "tags": ["coupling", "Opal-pair", "granular", "dub", "possession", "storm", "dense"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Opal-pair",
+    "granular",
+    "dub",
+    "possession",
+    "storm",
+    "dense"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",

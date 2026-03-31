@@ -4,14 +4,31 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Coral Architecture",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The Constructive Collision recipe at its most balanced: Pulse src1 and detuned Saw src2 (+5 semitones) processed through independent LP filters that diverge — proc1 cutoff at 1800 Hz (the Pulse's smooth rounded top) vs proc2 cutoff at 640 Hz (the Saw's sharper fundamental). The cutoff offset creates two distinct tonal bodies that meet at the mix point, each with its own harmonic character. fmDepth=0.18 applies gentle FM from the Pulse into the Saw, blurring the boundary. CHARACTER macro 0.25 gives a warm, established starting position. Mod structure: Env->proc1Cutoff, LFO->srcMix, Velocity->Volume, Aftertouch->FilterReso.",
-  "tags": ["obrix", "foundation", "pulse", "saw", "constructive-collision", "coral", "architecture"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "pulse",
+    "saw",
+    "constructive-collision",
+    "coral",
+    "architecture"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.42,

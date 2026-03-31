@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Noise in Love",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Noise (voice 2) + Additive (voice 1, rich partials). HAMMER=+0.9 — deepest LOVE territory. At this extreme, the noise voice surrenders its stochastic character and becomes harmonically organized by the additive voice's partial structure. The noise does not disappear — it becomes pitched noise, an extraordinary spectral texture that sounds like sustained breath through a resonant cavity. Deep LOVE makes chaos harmonic.",
-  "tags": ["ouie", "noise", "additive", "love", "deep-love", "spectral", "breath", "aether", "harmonic-noise"],
+  "tags": [
+    "ouie",
+    "noise",
+    "additive",
+    "love",
+    "deep-love",
+    "spectral",
+    "breath",
+    "aether",
+    "harmonic-noise"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "Reduce HAMMER from +0.9 toward 0.0 slowly to hear noise retake its stochastic identity. The transition zone between +0.5 and +0.9 is extraordinarily rich — the noise is partially organized, partially random. That in-between zone is the most interesting performance territory.",
     "diagnosis": "The most extreme LOVE demonstration in the Transcendental Vol 1 set. Noise+Additive at deep LOVE is genuinely novel — additive's harmonic lockdown of noise creates a texture unavailable in any other engine. The HP filter on voice 2 (noise) removes low-frequency rumble so only the spectral content above 800Hz interacts with the additive harmonics. Long attack reinforces the 'breath' quality."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.65,
     "CURRENT": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

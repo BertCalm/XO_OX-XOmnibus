@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The osprey finds the invisible column of rising heat and circles without effort \u2014 altitude gained through absolute stillness of wing.",
+  "description": "The osprey finds the invisible column of rising heat and circles without effort — altitude gained through absolute stillness of wing.",
   "dna": {
     "aggression": 0.04,
     "brightness": 0.85,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Thermal Column",
+  "name": "Thermal Column (Osprey)",
   "parameters": {
     "Osprey": {
       "osprey_ampAttack": 2.0,

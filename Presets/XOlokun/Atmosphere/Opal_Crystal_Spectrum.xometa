@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Crystal Spectrum",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum shimmer (0.85) plus significant frost (0.62) simultaneously — the crystalline high-frequency architecture at its peak expression. Approximately 85% of grains receive an octave-up pitch shift. The frost detuning adds crystalline harshness above the shimmer. A single sine source granularized into a prismatic spectrum. OPAL's signature sound taken to its maximum.",
-  "tags": ["shimmer", "frost", "crystal", "atmosphere", "prismatic", "high-frequency", "signature"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "shimmer",
+    "frost",
+    "crystal",
+    "atmosphere",
+    "prismatic",
+    "high-frequency",
+    "signature"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OGRE \u2014 maximum density preset. Infrasound emphasis for club systems. Physically dangerous on unprotected speakers.",
+  "description": "OGRE — maximum density preset. Infrasound emphasis for club systems. Physically dangerous on unprotected speakers.",
   "dna": {
     "brightness": 0.08,
     "warmth": 0.92,

@@ -2,20 +2,37 @@
   "schema_version": 1,
   "name": "Loop Memory",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Long delay feedback approaching self-oscillation — a note played once cycles for twenty or thirty seconds, slowly degrading in bandwidth and pitch accuracy. Each pass through the tape head costs it a little treble, a little certainty.",
-  "tags": ["overdub", "loop", "memory", "atmosphere", "delay", "feedback", "transcendental"],
+  "tags": [
+    "overdub",
+    "loop",
+    "memory",
+    "atmosphere",
+    "delay",
+    "feedback",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"],
+    "scripture": [
+      "Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"
+    ],
     "revelation": "High feedback is not an accident — it is the machine remembering forward.",
     "diagnosis": "Loop Memory lives at dub_delayFeedback=0.82, just below self-oscillation. Each loop cycle narrows the bandpass via delayWear=0.72. By the 8th echo, only the mids survive."
   },
-  "macroLabels": ["LOOP FEEDBACK", "TAPE WEAR", "LOOP TIME", "SPRING MIX"],
+  "macroLabels": [
+    "LOOP FEEDBACK",
+    "TAPE WEAR",
+    "LOOP TIME",
+    "SPRING MIX"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +83,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Spectral Fog",
+  "name": "Spectral Fog (Orbital)",
   "mood": "Atmosphere",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Noise-blended spectral fog \u2014 morph near noise profile, soft filter, ambient diffuse.",
+  "description": "Noise-blended spectral fog — morph near noise profile, soft filter, ambient diffuse.",
   "tags": [
     "fog",
     "noise",

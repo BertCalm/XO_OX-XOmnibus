@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Deep Resonance",
+  "name": "Deep Resonance (Obscura)",
   "mood": "Atmosphere",
   "engines": [
     "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Very low stiffness, near-zero damping \u2014 the chain is soft and floppy, decaying extremely slowly. Play a low note and the chain rings for several seconds on its own energy. LFO2 wanders the excitation position, shifting which modes are emphasized over time.",
+  "description": "Very low stiffness, near-zero damping — the chain is soft and floppy, decaying extremely slowly. Play a low note and the chain rings for several seconds on its own energy. LFO2 wanders the excitation position, shifting which modes are emphasized over time.",
   "tags": [
     "resonant",
     "low",

@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "name": "Ink Atmosphere",
+  "name": "Ink Atmosphere (Outwit)",
   "mood": "Atmosphere",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Vol 3 Transcendental 2026-03-21",
+  "author": "Guru Bin — OUTWIT Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "created": "2026-03-21",
-  "description": "inkCloud=0.82 \u2014 the discrete CA trigger stream dissolved into a continuous ambient texture. Rule 30 (chaos), Rule 90 (Sierpinski), Rule 150 (symmetric chaos) produce rapid irregular triggers; at inkCloud=0.82 with inkDecay=0.3, each trigger dissolves into a 300ms fade. The octopus's defensive ink cloud: not silence, but opacity. First current-format preset with inkCloud above 0.8.",
+  "description": "inkCloud=0.82 — the discrete CA trigger stream dissolved into a continuous ambient texture. Rule 30 (chaos), Rule 90 (Sierpinski), Rule 150 (symmetric chaos) produce rapid irregular triggers; at inkCloud=0.82 with inkDecay=0.3, each trigger dissolves into a 300ms fade. The octopus's defensive ink cloud: not silence, but opacity. First current-format preset with inkCloud above 0.8.",
   "tags": [
     "ink-cloud",
     "opacity",

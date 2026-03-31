@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Morph Shimmer Veil",
   "mood": "Aether",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH with heavy bloom drift at ultra-slow attack — wavetable morphing slowly from one timbre into another, high filter opening over time. A veil of sound.",
-  "tags": ["pad", "veil", "morph", "ethereal", "bloom", "slow", "aether"],
-  "macroLabels": ["MORPH POSITION", "BLOOM DEPTH", "DRIFT", "FILTER OPEN"],
+  "tags": [
+    "pad",
+    "veil",
+    "morph",
+    "ethereal",
+    "bloom",
+    "slow",
+    "aether"
+  ],
+  "macroLabels": [
+    "MORPH POSITION",
+    "BLOOM DEPTH",
+    "DRIFT",
+    "FILTER OPEN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

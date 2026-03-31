@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Near-Lock Shimmer",
   "mood": "Atmosphere",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Entrainment at 0.92 — near-synchrony without full lock. Six voices coupled strongly enough that they want to phase-lock, but residual FDN noise prevents completion. The resulting trembling, almost-synchronized shimmer sounds alive in a way full synchrony cannot.",
-  "tags": ["entrainment", "near-lock", "kuramoto", "atmosphere", "shimmer", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "entrainment",
+    "near-lock",
+    "kuramoto",
+    "atmosphere",
+    "shimmer",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

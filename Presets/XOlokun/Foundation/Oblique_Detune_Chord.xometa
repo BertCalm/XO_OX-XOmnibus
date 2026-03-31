@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Detune Chord",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wide-detuned polyphonic chord — spread oscillator tuning, dense prism spread, warm bouncy character.",
-  "tags": ["detune", "chord", "wide", "poly", "foundation"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "detune",
+    "chord",
+    "wide",
+    "poly",
+    "foundation"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.58, "movement": 0.22, "density": 0.72, "space": 0.42, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.22,
+    "density": 0.72,
+    "space": 0.42,
+    "aggression": 0.22
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +70,13 @@
       "oblq_macroSpace": 0.42
     }
   },
-  "macros": {"BOUNCE": 0.22, "COLOR": 0.55, "FOLD": 0.12, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.22,
+    "COLOR": 0.55,
+    "FOLD": 0.12,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

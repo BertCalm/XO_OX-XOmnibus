@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Sun Resonance",
   "mood": "Atmosphere",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Artifact Cathedral with sun mix dominant (0.88), low packet loss (0.06), and low mod depth (0.22) — the cathedral processes Orphica's crystal chorus string resonance into a bright, sunlit hall where the data-rot is nearly imperceptible. The warmth comes from the mod-depth's micro-tuning of the artifact field against the string harmonics.",
-  "tags": ["atmosphere", "plucked", "cathedral", "bright", "resonance", "boutique", "fx_chain:Boutique", "boutique-fx-demo"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "atmosphere",
+    "plucked",
+    "cathedral",
+    "bright",
+    "resonance",
+    "boutique",
+    "fx_chain:Boutique",
+    "boutique-fx-demo"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.68, "movement": 0.32, "density": 0.55, "space": 0.85, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.68,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.85,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 4,
@@ -48,8 +71,15 @@
       "orph_macroDivine": 0.65
     }
   },
-  "macros": {"PLUCK": 0.58, "SURFACE": 0.42, "FRACTURE": 0.32, "DIVINE": 0.65},
-  "coupling": {"pairs": []},
+  "macros": {
+    "PLUCK": 0.58,
+    "SURFACE": 0.42,
+    "FRACTURE": 0.32,
+    "DIVINE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "bfx_anMix": 0.0,
     "bfx_daMix": 0.0,

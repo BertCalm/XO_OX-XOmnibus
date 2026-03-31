@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Glass Touch",
   "mood": "Foundation",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass-body plucked harmonic, crystalline fundamental with pure FM overtones.",
-  "tags": ["foundation", "glass", "crystalline", "pure"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "foundation",
+    "glass",
+    "crystalline",
+    "pure"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.3,
     "MEADOW": 0.35
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

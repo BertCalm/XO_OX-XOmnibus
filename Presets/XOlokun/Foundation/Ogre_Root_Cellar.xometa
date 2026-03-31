@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OGRE — the foundation preset. Clean sub-bass with tectonic LFO barely breathing.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.22,
     "aggression": 0.12
   },
-  "engines": ["Ogre"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Root Cellar",
   "parameters": {
@@ -40,7 +49,12 @@
     }
   },
   "schema_version": 1,
-  "tags": ["ogre", "sub-bass", "foundation", "cellar"],
+  "tags": [
+    "ogre",
+    "sub-bass",
+    "foundation",
+    "cellar"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Tawny Bright",
   "mood": "Prism",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The signature tawny color at prismatic intensity — warm and bright, the ocelot in sunlight.",
-  "tags": ["tawny", "bright", "prism", "warm", "sunlight", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "tawny",
+    "bright",
+    "prism",
+    "warm",
+    "sunlight",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.85, "warmth": 0.62, "movement": 0.48, "density": 0.58, "space": 0.58, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.62,
+    "movement": 0.48,
+    "density": 0.58,
+    "space": 0.58,
+    "aggression": 0.35
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.85
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

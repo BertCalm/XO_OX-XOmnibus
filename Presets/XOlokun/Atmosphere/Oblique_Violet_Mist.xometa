@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Violet Mist",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Engine identity color at its most atmospheric — high prism color, minimal bounce, maximum reverb, violet dissolving into space.",
-  "tags": ["violet", "mist", "atmospheric", "reverb", "atmosphere"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "violet",
+    "mist",
+    "atmospheric",
+    "reverb",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.52, "movement": 0.22, "density": 0.42, "space": 0.88, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.52,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.88,
+    "aggression": 0.06
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.82,
@@ -41,6 +61,13 @@
       "oblq_level": 0.72
     }
   },
-  "macros": {"BOUNCE": 0.18, "COLOR": 0.82, "FOLD": 0.15, "SPACE": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.18,
+    "COLOR": 0.82,
+    "FOLD": 0.15,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

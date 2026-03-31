@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Emergent Choir",
   "mood": "Atmosphere",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The emergent layer leads — insect drones, bird trills, and frog chirps interlock. Floor and canopy serve as support textures. Atmosphere of uncontrolled abundance.",
-  "tags": ["atmosphere", "emergent", "creature", "choir", "ambient", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "atmosphere",
+    "emergent",
+    "creature",
+    "choir",
+    "ambient",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.0,
     "FOLIAGE": 0.32,
@@ -24,7 +38,9 @@
     "space": 0.68,
     "aggression": 0.08
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

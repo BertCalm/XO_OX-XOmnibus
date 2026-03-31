@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "TUTORIAL OBRIX 03 Journey Arc",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tutorial patch 03: all Wave 4 stateful systems active. Play hard high-register for 2 min then shift to quiet low-register. Watch the reef remember your history. Trigger State Reset mid-session to clear both accumulators.",
-  "tags": ["tutorial", "obrix", "flux", "journey-mode", "stateful", "stress-memory", "bleaching", "educational"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tutorial",
+    "obrix",
+    "flux",
+    "journey-mode",
+    "stateful",
+    "stress-memory",
+    "bleaching",
+    "educational"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

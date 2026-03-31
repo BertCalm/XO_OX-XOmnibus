@@ -2,20 +2,39 @@
   "schema_version": 1,
   "name": "Tape Journey",
   "mood": "Aether",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "A sustained dub note at maximum drift, maximum reverb, maximum wow — a journey from the initial attack through layers of tape degradation until all that remains is a distant metallic shimmer of spring reverb and bandpass-narrowed ghosts. Press one key and wait ten minutes.",
-  "tags": ["overdub", "aether", "tape", "journey", "sustained", "degradation", "drone", "transcendental"],
+  "tags": [
+    "overdub",
+    "aether",
+    "tape",
+    "journey",
+    "sustained",
+    "degradation",
+    "drone",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible", "Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"],
+    "scripture": [
+      "Scripture VII-3: Degradation Is Not Failure — It Is Memory Made Audible",
+      "Scripture VII-4: The Loop That Cannot Stop Is Not Broken — It Is Haunted"
+    ],
     "revelation": "The most Transcendental OVERDUB preset is not the most complex. It is the one that keeps revealing new information over time.",
     "diagnosis": "Tape Journey is the centerpiece Transcendental preset — all degradation mechanisms at maximum, spring reverb at 0.99 size, delay feedback at 0.78. A single note becomes a sound design session that runs until the tape runs out."
   },
-  "macroLabels": ["TAPE AGE", "JOURNEY DEPTH", "FILTER DRIFT", "REVERB COSMOS"],
+  "macroLabels": [
+    "TAPE AGE",
+    "JOURNEY DEPTH",
+    "FILTER DRIFT",
+    "REVERB COSMOS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +85,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

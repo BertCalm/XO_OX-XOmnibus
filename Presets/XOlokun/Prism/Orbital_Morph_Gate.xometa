@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Morph Gate",
   "mood": "Prism",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full morph crossfade gate — noise profile into harmonic, fast group attack texture.",
-  "tags": ["morph", "gate", "noise-to-harmonic", "textured"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "morph",
+    "gate",
+    "noise-to-harmonic",
+    "textured"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.5, "density": 0.55, "space": 0.45, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.4
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.85,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.45
     }
   },
-  "macros": {"SPECTRUM": 0.6, "EVOLVE": 0.5, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.6,
+    "EVOLVE": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

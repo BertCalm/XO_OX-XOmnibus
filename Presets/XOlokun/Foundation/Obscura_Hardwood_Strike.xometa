@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Hardwood Strike",
   "mood": "Foundation",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Physical string at maximum stiffness with minimal damping — the string rings like a struck hardwood bar. Excite near the bridge (high excitePos), narrow exciter, fixed boundary. Zero sustain force for pure transient decay. A xylophone-adjacent plucked fundamental.",
-  "tags": ["plucked", "hardwood", "mallet", "bright", "transient", "foundation", "physical"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "plucked",
+    "hardwood",
+    "mallet",
+    "bright",
+    "transient",
+    "foundation",
+    "physical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.85,
@@ -19,7 +38,7 @@
       "obscura_nonlinear": 0.06,
       "obscura_excitePos": 0.88,
       "obscura_exciteWidth": 0.12,
-      "obscura_scanWidth": 0.40,
+      "obscura_scanWidth": 0.4,
       "obscura_boundary": 0,
       "obscura_sustain": 0.0,
       "obscura_level": 0.85,
@@ -46,11 +65,13 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.80,
-    "warmth": 0.30,
+    "brightness": 0.8,
+    "warmth": 0.3,
     "movement": 0.12,
     "density": 0.35,
     "space": 0.28,

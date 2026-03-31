@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Paedomorphic Choir",
   "mood": "Aether",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Many axolotls — 16 voices, wide detune, sub heavy. Paedomorphic: juvenile voice quality, the innocent timbre that never hardens. LFO1 and LFO2 drift at different rates for a breathing-choir effect.",
-  "tags": ["choir", "poly", "lush", "wide", "paedomorphic", "airy", "voices"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "choir",
+    "poly",
+    "lush",
+    "wide",
+    "paedomorphic",
+    "airy",
+    "voices"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.82, "movement": 0.38, "density": 0.78, "space": 0.88, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.82,
+    "movement": 0.38,
+    "density": 0.78,
+    "space": 0.88,
+    "aggression": 0.06
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.6,
@@ -38,6 +60,13 @@
       "morph_macroSpace": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

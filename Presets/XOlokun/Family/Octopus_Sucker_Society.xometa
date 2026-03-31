@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Sucker Society",
   "mood": "Family",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "An octopus has hundreds of suckers on each arm — a society unto itself. This family preset puts sucker transients at the forefront across all voices, creating a dense community of micro-clicks and plonks.",
-  "tags": ["octopus", "family", "sucker", "dense", "micro", "transient", "society"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "family",
+    "sucker",
+    "dense",
+    "micro",
+    "transient",
+    "society"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +70,9 @@
       "octo_voiceMode": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.72,

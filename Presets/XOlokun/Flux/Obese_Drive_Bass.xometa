@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Drive Bass",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aggressive arpeggiator pattern with a fully driven filter — a relentless sequenced bass line built for movement.",
-  "tags": ["drive", "aggressive", "arp", "sequenced", "techno"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "drive",
+    "aggressive",
+    "arp",
+    "sequenced",
+    "techno"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.4, "movement": 0.85, "density": 0.8, "space": 0.2, "aggression": 0.85},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.85,
+    "density": 0.8,
+    "space": 0.2,
+    "aggression": 0.85
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.5,
@@ -46,6 +66,13 @@
       "fat_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.75, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A shockwave moving through deep water \u2014 the figure-eight topology captures the front and the echo separately. The crossing point is the pressure maximum. An acoustic model of underwater detonation.",
+  "description": "A shockwave moving through deep water — the figure-eight topology captures the front and the echo separately. The crossing point is the pressure maximum. An acoustic model of underwater detonation.",
   "tags": [
     "pressure",
     "shockwave",

@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Trefoil partially unraveling — tangle at 0.75 is high enough to feel the knot but low enough to imagine it loosening. Feedback at 0.85, medium chaos. S&H LFO on filter gives a fraying, stuttering quality. This is the sound of something harmonically rich coming apart at the seams.",
-  "dna": { "aggression": 0.75, "brightness": 0.73, "density": 0.48, "movement": 0.82, "space": 0.35, "warmth": 0.28 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.73,
+    "density": 0.48,
+    "movement": 0.82,
+    "space": 0.35,
+    "warmth": 0.28
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
   "name": "Fraying Ends",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "chaotic", "trefoil", "degrading", "fraying", "unstable", "dramatic"],
+  "tags": [
+    "flux",
+    "chaotic",
+    "trefoil",
+    "degrading",
+    "fraying",
+    "unstable",
+    "dramatic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

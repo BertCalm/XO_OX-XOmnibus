@@ -2,11 +2,24 @@
   "schema_version": 1,
   "name": "The Complete Trench",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The full parameter exploration preset. Each macro engages a different body character and dimension of the trench. PRESSURE=hydrostatic compression + sub depth. CREATURE=bioluminescent life. WRECK=metal hull / industrial body character. ABYSS=darkness filter sweep. Together they survey the complete trench from surface wreckage to hadal floor.",
-  "tags": ["bass", "submerged", "complete", "survey", "macro", "exploration", "wreck", "cave", "open water", "trench"],
+  "tags": [
+    "bass",
+    "submerged",
+    "complete",
+    "survey",
+    "macro",
+    "exploration",
+    "wreck",
+    "cave",
+    "open water",
+    "trench"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +35,12 @@
     "flock_note": "Start all macros at 0.5. Then explore each dimension independently. WRECK macro at 0.5 puts you inside a corroded hull (bodyChar=2 with mix=0.65). PRESSURE at 0.8+ brings the hadal compression. CREATURE at 0.7 lights the bioluminescent field. ABYSS sweeps the filter toward darkness. This is the orientation preset — the full map of the engine.",
     "diagnosis": "Default macro values set at 0.5/0.5/0.5/0.5 for balanced exploration. filterCutoff=320: mid-depth starting point. bodyChar=2 (Wreck) as the default character — the most distinctive sonic identity. bioMix=0.3 at rest: the life is present but not dominant. All parameters calibrated for maximum macro responsiveness. This is the teaching preset."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +86,7 @@
     "WRECK": 0.5,
     "ABYSS": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

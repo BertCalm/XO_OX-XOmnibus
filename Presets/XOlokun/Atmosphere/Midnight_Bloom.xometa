@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Midnight Bloom",
+  "name": "Midnight Bloom (Overlap)",
   "mood": "Atmosphere",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Full darkness, then a sudden bioluminescent bloom. Figure-eight topology with deep modulation \u2014 the crossing point is where the light fires. An event horizon: quiet on one side, luminous on the other.",
+  "description": "Full darkness, then a sudden bioluminescent bloom. Figure-eight topology with deep modulation — the crossing point is where the light fires. An event horizon: quiet on one side, luminous on the other.",
   "tags": [
     "midnight",
     "bloom",

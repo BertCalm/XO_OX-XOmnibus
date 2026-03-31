@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Surface Dart",
   "mood": "Aether",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Barely-there surface snap — the gossamer dart of a tetra grazing the water surface.",
-  "tags": ["surface", "delicate", "aether", "dart"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "surface",
+    "delicate",
+    "aether",
+    "dart"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.12, "movement": 0.55, "density": 0.18, "space": 0.82, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.12,
+    "movement": 0.55,
+    "density": 0.18,
+    "space": 0.82,
+    "aggression": 0.05
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.95
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

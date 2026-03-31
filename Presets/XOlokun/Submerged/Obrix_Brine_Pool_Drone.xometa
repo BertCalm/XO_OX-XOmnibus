@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Brine Pool Drone",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Brine pools — hypersaline lakes on the ocean floor — create a visible surface and their own micro-ecosystem. Wavetable src1 (harmonic, warm bank) against Sine src2 at -7 semitones for the dense, almost liquid beat frequency. Drift Bus is the centrepiece: driftRate=0.009 and driftDepth=0.88 creates the slow, viscous evolution of a liquid within a liquid. Journey Mode obligatory. proc1=LP (380 Hz, moderate reso) keeps the warmth dense. proc2=LP (950 Hz) as a gentle upper ceiling. Four mods: LFO->WavetablePos (morphs the harmonic character slowly), Env->FilterCutoff (breathes), Velocity->Volume, Aftertouch->FXMix (sinks deeper into reverb). air=0.1 — dense atmosphere.",
-  "tags": ["obrix", "submerged", "wavetable", "journey", "drift", "drone", "brine", "warm"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "wavetable",
+    "journey",
+    "drift",
+    "drone",
+    "brine",
+    "warm"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.12,

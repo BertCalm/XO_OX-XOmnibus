@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oto reeds creating an internal feedback loop via crosstalk. Crosstalk at 0.8 routes each reed into its neighbors \u2014 a self-sustaining oscillation that sounds like drone music. Competition set to 0.5 creates predator-prey reed oscillation.",
+  "description": "Oto reeds creating an internal feedback loop via crosstalk. Crosstalk at 0.8 routes each reed into its neighbors — a self-sustaining oscillation that sounds like drone music. Competition set to 0.5 creates predator-prey reed oscillation.",
   "tags": [
     "organ",
     "feedback",

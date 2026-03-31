@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Pod Migration",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slowly evolving wavetable scan with shifting formant vowels. Glacial.",
-  "tags": ["evolving", "wavetable", "vocal", "slow"],
-  "macroLabels": ["CHARACTER", "SCAN SPEED", "COUPLING", "SPACE"],
+  "tags": [
+    "evolving",
+    "wavetable",
+    "vocal",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SCAN SPEED",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-13",
@@ -63,5 +75,7 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

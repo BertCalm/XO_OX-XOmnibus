@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: The Three Body Characters — Wreck", "Sutra 5: The Formant Whisper at 0.28-0.32 Resonance"],
+    "scripture": [
+      "Verse: The Three Body Characters — Wreck",
+      "Sutra 5: The Formant Whisper at 0.28-0.32 Resonance"
+    ],
     "revelation": "Resonara spoke: bodyChar 2 at feedback 0.82 with filterRes 0.7 and cutoff 280 Hz produces a formant peak at 280 Hz that sounds like an 'oh' vowel. The allpass inside the wreck comb creates enough phase complexity to produce vowel-like spectral shaping without a formant filter.",
     "god": "Resonara",
     "flock_note": "The Eye identified the formant: peak at 280 Hz with Q ~8 from the resonance. The Finger tuned the cutoff from 300 down to 280 — at 300 it was neutral, at 280 it became a vowel. 20 Hz is the difference between a sound and a voice.",

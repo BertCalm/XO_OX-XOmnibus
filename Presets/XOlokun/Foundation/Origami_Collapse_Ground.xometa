@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Collapse Ground",
   "mood": "Foundation",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Collapse operation compressed into foundation — dense geometric bass from folded structure.",
-  "tags": ["foundation", "collapse", "bass", "dense"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "collapse",
+    "bass",
+    "dense"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.4, "density": 0.65, "space": 0.42, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.35
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.4,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.42
     }
   },
-  "macros": {"FOLD": 0.7, "MOTION": 0.4, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.7,
+    "MOTION": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -37,15 +37,15 @@
   "dna": {
     "brightness": 0.22,
     "warmth": 0.75,
-    "movement": 0.40,
+    "movement": 0.4,
     "density": 0.68,
     "space": 0.82,
-    "aggression": 0.10
+    "aggression": 0.1
   },
   "parameters": {
     "Oware": {
       "owr_material": 0.62,
-      "owr_malletHardness": 0.20,
+      "owr_malletHardness": 0.2,
       "owr_bodyType": 2,
       "owr_bodyDepth": 0.75,
       "owr_buzzAmount": 0.35,
@@ -53,16 +53,16 @@
       "owr_shimmerRate": 2.0,
       "owr_thermalDrift": 0.65,
       "owr_brightness": 4000.0,
-      "owr_damping": 0.20,
+      "owr_damping": 0.2,
       "owr_decay": 5.5,
-      "owr_filterEnvAmount": 0.20,
+      "owr_filterEnvAmount": 0.2,
       "owr_bendRange": 2,
       "owr_macroMaterial": 0.0,
       "owr_macroMallet": 0.0,
       "owr_macroCoupling": 0.4,
       "owr_macroSpace": 0.7,
       "owr_lfo1Rate": 0.05,
-      "owr_lfo1Depth": 0.40,
+      "owr_lfo1Depth": 0.4,
       "owr_lfo1Shape": 0,
       "owr_lfo2Rate": 1.0,
       "owr_lfo2Depth": 0.0,

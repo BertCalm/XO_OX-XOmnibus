@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Fixed-boundary chain at medium stiffness \u2014 integer harmonic series, natural string decay. No bowing force. Excitation near the quarter-point for guitar-like brightness. The physics simulates a real plucked string, not an approximation of one.",
+  "description": "Fixed-boundary chain at medium stiffness — integer harmonic series, natural string decay. No bowing force. Excitation near the quarter-point for guitar-like brightness. The physics simulates a real plucked string, not an approximation of one.",
   "tags": [
     "plucked",
     "string",

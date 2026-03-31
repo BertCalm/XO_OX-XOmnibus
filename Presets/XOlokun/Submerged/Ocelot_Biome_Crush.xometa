@@ -2,16 +2,41 @@
   "schema_version": 1,
   "name": "Biome Crush",
   "mood": "Submerged",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crushed bit-depth understory under heavy humidity saturation — the ecosystem compressed by depth. Dense and dark with PROWL macro unlocking predator energy.",
-  "tags": ["submerged", "bitcrush", "dense", "dark", "pressure"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "submerged",
+    "bitcrush",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.52, "movement": 0.35, "density": 0.72, "space": 0.6, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.52,
+    "movement": 0.35,
+    "density": 0.72,
+    "space": 0.6,
+    "aggression": 0.55
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.0
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

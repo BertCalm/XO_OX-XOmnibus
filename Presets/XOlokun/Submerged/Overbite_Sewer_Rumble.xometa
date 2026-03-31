@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sewer Rumble",
   "mood": "Submerged",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cavernous sub rumble like water moving through underground pipes — cave reverb and maximum depth.",
-  "tags": ["sub", "rumble", "cave", "deep"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "sub",
+    "rumble",
+    "cave",
+    "deep"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.65, "movement": 0.25, "density": 0.75, "space": 0.6, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.75,
+    "space": 0.6,
+    "aggression": 0.4
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 0,
@@ -39,6 +59,14 @@
       "poss_macroPlayDead": 0.2
     }
   },
-  "macros": {"BELLY": 0.95, "BITE": 0.2, "SCURRY": 0.2, "TRASH": 0.25, "PLAY DEAD": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.95,
+    "BITE": 0.2,
+    "SCURRY": 0.2,
+    "TRASH": 0.25,
+    "PLAY DEAD": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

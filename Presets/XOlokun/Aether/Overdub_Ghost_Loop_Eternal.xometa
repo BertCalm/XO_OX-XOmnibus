@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Ghost Loop Eternal",
   "mood": "Aether",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ultra-long feedback loop on the edge of self-oscillation, shimmering in eternal tape space.",
-  "tags": ["aether", "ghost", "loop", "feedback", "shimmer", "eternal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "ghost",
+    "loop",
+    "feedback",
+    "shimmer",
+    "eternal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.1, "MOVEMENT": 0.32, "COUPLING": 0.88, "SPACE": 1.0},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.45, "warmth": 0.65, "movement": 0.4, "density": 0.15, "space": 1.0, "aggression": 0.05}
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.88,
+    "SPACE": 1.0
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.15,
+    "space": 1.0,
+    "aggression": 0.05
+  }
 }

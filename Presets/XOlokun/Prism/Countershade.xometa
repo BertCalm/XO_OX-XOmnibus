@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Countershade",
   "mood": "Prism",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean sub belly, crushed dorsal highs. Stark sonic camouflage.",
-  "tags": ["bitcrush", "contrast", "textural", "experimental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bitcrush",
+    "contrast",
+    "textural",
+    "experimental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-13",
@@ -63,5 +75,7 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

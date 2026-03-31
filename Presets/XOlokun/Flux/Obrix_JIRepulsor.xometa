@@ -4,14 +4,33 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Just Repulsor",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Repulsor mode (fieldPolarity=-1) actively pushes pitch away from just ratios — pure intervals become unstable. Saw src1 and Triangle src2 are processed through a Wavefolder that folds the already-repulsed harmonics into new complexity. The system is in perpetual tension: you can hear the field fighting the natural acoustic tendency toward consonance.",
-  "tags": ["obrix", "flux", "saw", "triangle", "just-intonation", "harmonic-field", "repulsor", "wavefolder", "wave4"],
+  "tags": [
+    "obrix",
+    "flux",
+    "saw",
+    "triangle",
+    "just-intonation",
+    "harmonic-field",
+    "repulsor",
+    "wavefolder",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.7,

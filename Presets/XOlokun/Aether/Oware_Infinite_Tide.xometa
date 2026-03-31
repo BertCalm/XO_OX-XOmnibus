@@ -9,7 +9,7 @@
     "aggression": 0.05,
     "brightness": 0.35,
     "density": 0.65,
-    "movement": 0.30,
+    "movement": 0.3,
     "space": 0.98,
     "warmth": 0.76
   },
@@ -23,9 +23,9 @@
     "SPACE"
   ],
   "macros": {
-    "CHARACTER": 0.30,
+    "CHARACTER": 0.3,
     "COUPLING": 0.25,
-    "MOVEMENT": 0.30,
+    "MOVEMENT": 0.3,
     "SPACE": 0.98
   },
   "mood": "Aether",
@@ -33,9 +33,9 @@
   "parameters": {
     "Oware": {
       "owr_material": 0.72,
-      "owr_malletHardness": 0.10,
+      "owr_malletHardness": 0.1,
       "owr_bodyType": 2,
-      "owr_bodyDepth": 0.90,
+      "owr_bodyDepth": 0.9,
       "owr_buzzAmount": 0.0,
       "owr_sympathyAmount": 0.35,
       "owr_shimmerRate": 0.9,
@@ -45,8 +45,8 @@
       "owr_decay": 10.0,
       "owr_filterEnvAmount": 0.12,
       "owr_bendRange": 5,
-      "owr_macroMaterial": 0.30,
-      "owr_macroMallet": 0.30,
+      "owr_macroMaterial": 0.3,
+      "owr_macroMallet": 0.3,
       "owr_macroCoupling": 0.25,
       "owr_macroSpace": 0.98
     }

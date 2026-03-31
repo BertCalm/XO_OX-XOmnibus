@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Coastal Prism",
   "mood": "Prism",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Atlantic light split through coastal prism — brine and foam refracted into spectral components.",
-  "tags": ["prism", "coastal", "spectral", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "coastal",
+    "spectral",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.45, "movement": 0.55, "density": 0.45, "space": 0.6, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.45,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.25
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.4,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.6
     }
   },
-  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

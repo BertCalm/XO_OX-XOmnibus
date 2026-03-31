@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Canopy Prism",
   "mood": "Prism",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Canopy at maximum shimmer — sunlight prismatic through the highest forest layer.",
-  "tags": ["canopy", "prism", "shimmer", "bright", "sunlight", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "canopy",
+    "prism",
+    "shimmer",
+    "bright",
+    "sunlight",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.92, "warmth": 0.42, "movement": 0.58, "density": 0.55, "space": 0.65, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.35
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 3,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.92
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

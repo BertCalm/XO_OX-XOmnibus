@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Torus T(5,2) — a higher-order ratio that creates more complex delay length relationships than T(3,2). At 2.2 Hz pulse with low entrainment (0.3), the exotic ratio produces trigger-like articulations that feel melodic but rhythmically irregular. Square LFO hard-gates the filter for additional punch.",
-  "dna": { "aggression": 0.58, "brightness": 0.68, "density": 0.58, "movement": 0.75, "space": 0.45, "warmth": 0.32 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.58,
+    "brightness": 0.68,
+    "density": 0.58,
+    "movement": 0.75,
+    "space": 0.45,
+    "warmth": 0.32
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Torus Trigger",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "torus", "trigger", "aggressive", "melodic", "movement"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "torus",
+    "trigger",
+    "aggressive",
+    "melodic",
+    "movement"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

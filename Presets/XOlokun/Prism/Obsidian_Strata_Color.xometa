@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Strata Color",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Geological strata revealing color — layered brightness, filtered spectrum, warm prism.",
-  "tags": ["strata", "color", "layered", "geological"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "strata",
+    "color",
+    "layered",
+    "geological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.52, "movement": 0.38, "density": 0.55, "space": 0.52, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.52,
+    "movement": 0.38,
+    "density": 0.55,
+    "space": 0.52,
+    "aggression": 0.28
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.55,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

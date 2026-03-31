@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Aggressive wild string \u2014 high wildness, wide vibrato, runners spawn freely",
+  "description": "Aggressive wild string — high wildness, wide vibrato, runners spawn freely",
   "dna": {
     "aggression": 0.6,
     "brightness": 0.45,

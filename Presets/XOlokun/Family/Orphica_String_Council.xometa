@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "String Council",
   "mood": "Family",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All six strings at full sympathy — each one resonates with the others, a council of voices in warm agreement.",
-  "tags": ["family", "sympathetic", "warm", "council", "full"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "family",
+    "sympathetic",
+    "warm",
+    "council",
+    "full"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.75, "movement": 0.45, "density": 0.85, "space": 0.68, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.75,
+    "movement": 0.45,
+    "density": 0.85,
+    "space": 0.68,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orphica": {
       "orph_stringMaterial": 0,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.42
     }
   },
-  "macros": {"PLUCK": 0.65, "FRACTURE": 0.08, "SURFACE": 0.48, "DIVINE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.65,
+    "FRACTURE": 0.08,
+    "SURFACE": 0.48,
+    "DIVINE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

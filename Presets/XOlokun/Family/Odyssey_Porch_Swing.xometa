@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Porch Swing",
   "mood": "Family",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lazy afternoon rocking — gentle LFO sway, warm filter, shimmer in the heat haze.",
-  "tags": ["porch", "lazy", "warm", "sway", "family"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "porch",
+    "lazy",
+    "warm",
+    "sway",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.82, "movement": 0.28, "density": 0.42, "space": 0.55, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.82,
+    "movement": 0.28,
+    "density": 0.42,
+    "space": 0.55,
+    "aggression": 0.05
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.76
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

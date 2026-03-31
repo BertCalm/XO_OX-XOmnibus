@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: Pressure Is the Synthesis", "Verse: The Depth Column — Hadal Zone"],
+    "scripture": [
+      "Verse: Pressure Is the Synthesis",
+      "Verse: The Depth Column — Hadal Zone"
+    ],
     "revelation": "Sinusoidal spoke: at subOctMix 0.95, the -2 octave sub becomes the fundamental. The original sine is a ghost harmonic above. The hierarchy inverts — the deepest voice becomes the identity.",
     "god": "Sinusoidal",
     "flock_note": "The Bone confirmed: monophonic sub-sub at ~3% CPU. The Ear heard chest compression at C1. The Tongue found velocity at 0.9 opens the filter just enough to let the fundamental ghost through — the heartbeat quickens under pressure.",

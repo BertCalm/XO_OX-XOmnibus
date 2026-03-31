@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: The Cave Body Mode — Walls That Hum Back", "Verse: The Depth Column — Mid Zone"],
+    "scripture": [
+      "Verse: The Cave Body Mode — Walls That Hum Back",
+      "Verse: The Depth Column — Mid Zone"
+    ],
     "revelation": "Nexus spoke: the three sine oscillators at fundamental, -1 oct, and -2 oct are identical in structure to organ stop registrations (8', 16', 32'). The waveguide body in cave mode is a pipe resonator. OCEANDEEP IS an organ — it was always an organ. The deep_subOctMix parameter is a stop drawbar. The body feedback is the pipe length. The filter cutoff is whether the pipe is open (high cutoff) or closed (low cutoff).",
     "god": "Nexus",
     "flock_note": "The Eye mapped the correspondence: subOctMix 0.0 = 8' only (fundamental). subOctMix 0.5 = 8'+16'. subOctMix 1.0 = 8'+16'+32'. This exactly mirrors organ registration. The Finger set feedback at 0.7 — the resonance point where the cave body adds sustain and harmonic emphasis without overwhelming the direct signal.",

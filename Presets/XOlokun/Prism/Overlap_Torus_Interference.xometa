@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Torus Interference",
   "mood": "Prism",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Torus T(2,5) — the interference pattern between two winding structures. T(2,5) creates a five-fold Lissajous pattern that generates five-component spectral interference in the FDN. High resonance filter emphasizes these components. The chorus adds final detuning to spread interference peaks.",
-  "tags": ["torus", "T25", "interference", "prism", "five-fold", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "torus",
+    "T25",
+    "interference",
+    "prism",
+    "five-fold",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

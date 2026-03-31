@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Toddler Lead",
   "mood": "Family",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The youngest voice dominates while the older voices provide quiet supportive cushion — charmingly off-kilter.",
-  "tags": ["brass", "family", "toddler", "lead", "charming"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "family",
+    "toddler",
+    "lead",
+    "charming"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.65, "movement": 0.48, "density": 0.5, "space": 0.58, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.65,
+    "movement": 0.48,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.25
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.15
     }
   },
-  "macros": {"GROW": 0.88, "EMBOUCHURE": 0.45, "LAKE": 0.42, "FOREIGN": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.88,
+    "EMBOUCHURE": 0.45,
+    "LAKE": 0.42,
+    "FOREIGN": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

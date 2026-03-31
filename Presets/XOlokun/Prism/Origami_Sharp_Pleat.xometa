@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Sharp Pleat",
   "mood": "Prism",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pleat operation at maximum sharpness — tight accordion edges cutting spectral prisms.",
-  "tags": ["prism", "pleat", "sharp", "accordion"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "pleat",
+    "sharp",
+    "accordion"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.42, "movement": 0.6, "density": 0.5, "space": 0.58, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.42,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.42
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.58
     }
   },
-  "macros": {"FOLD": 0.78, "MOTION": 0.6, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.78,
+    "MOTION": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

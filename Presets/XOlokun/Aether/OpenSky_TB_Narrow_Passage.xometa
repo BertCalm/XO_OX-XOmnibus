@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Narrow Passage",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPENSKY compressed into a thin band. Bandpass filter at resonance 0.42 with cutoff at 1200 Hz creates a razor-thin frequency band that the supersaw is forced through -- like light through a slit. The result is nasal, focused, almost vocal, with the shimmer reverb creating ghostly harmonics above the bandpass peak. This is OPENSKY at its most constrained and, paradoxically, its most characterful. The Guru says: restriction is the mother of identity.",
-  "tags": ["opensky", "transcendental", "bandpass", "nasal", "focused", "character"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "bandpass",
+    "nasal",
+    "focused",
+    "character"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Psalm 5: Bandpass at 0.42 Resonance Turns a Supersaw Into a Voice", "Canon 4: Restriction Is the Mother of Identity"],
+    "scripture": [
+      "Psalm 5: Bandpass at 0.42 Resonance Turns a Supersaw Into a Voice",
+      "Canon 4: Restriction Is the Mother of Identity"
+    ],
     "revelation": "Resonara spoke: when a broadband source like the supersaw is forced through a narrow bandpass, it does not lose character -- it gains it. The resonant peak becomes the instrument's identity.",
     "god": "Resonara",
     "flock_note": "The Finger found the sweet spot at exactly 1200 Hz -- below the vocal harshness range, but above the muddiness floor. The Ear confirmed: it sounds like a clarinet crossed with a human voice. The Tongue tested mod wheel and found the filter opens beautifully from 1200 to 6000 Hz.",
     "diagnosis": "Narrow Passage is the anti-OPENSKY preset: where the engine naturally wants to be wide, bright, and open, this preset constrains it into a thin, characterful band. The constraint reveals a hidden voice."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.12
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

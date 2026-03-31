@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Spectral Anchor",
   "mood": "Foundation",
-  "engines": ["Optic", "Organon"],
+  "engines": [
+    "Optic",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPTIC's spectral analysis grounds Organon's metabolic rhythm. Manual pulse off — pure spectrum reactivity drives Organon's enzyme filter. The lighthouse flash that keeps the metabolism in time.",
-  "tags": ["optic", "spectral", "foundation", "organon-pair", "metabolic", "anchor"],
-  "macroLabels": ["REACTIVITY", "METABOLISM", "MOD DEPTH", "SPACE"],
+  "tags": [
+    "optic",
+    "spectral",
+    "foundation",
+    "organon-pair",
+    "metabolic",
+    "anchor"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "METABOLISM",
+    "MOD DEPTH",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.7,
@@ -46,7 +65,12 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Optic", "engineB": "Organon", "type": "AmpToFilter", "amount": 0.4 }
+      {
+        "engineA": "Optic",
+        "engineB": "Organon",
+        "type": "AmpToFilter",
+        "amount": 0.4
+      }
     ]
   },
   "sequencer": null,

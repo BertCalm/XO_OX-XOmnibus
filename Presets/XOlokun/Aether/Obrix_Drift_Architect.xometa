@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "The Berlin School sound made from modular bricks. driftRate 0.009 and driftDepth 0.8 with journeyMode=1.0 \u2014 the Journey Paradox fulfilled: generative ambient that writes its own score. Two Triangle sources, detuned 3.5 semitones for natural beating. Poly 4 so voices drift against each other. Coprime LFOs at 0.067 and 0.11 Hz modulate LP cutoffs on two different processors \u2014 the filtering landscape shifts over 60-second cycles. Hold a chord and wait: the reef architects itself.",
+  "description": "The Berlin School sound made from modular bricks. driftRate 0.009 and driftDepth 0.8 with journeyMode=1.0 — the Journey Paradox fulfilled: generative ambient that writes its own score. Two Triangle sources, detuned 3.5 semitones for natural beating. Poly 4 so voices drift against each other. Coprime LFOs at 0.067 and 0.11 Hz modulate LP cutoffs on two different processors — the filtering landscape shifts over 60-second cycles. Hold a chord and wait: the reef architects itself.",
   "tags": [
     "obrix",
     "aether",
@@ -32,17 +32,17 @@
   ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX \u2014 The Living Reef",
+    "retreat": "OBRIX — The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
     "scripture": [
       "Drift Bus = Berlin School Discovery",
       "Journey Paradox: journeyMode=1.0 only with driftDepth 0.6+"
     ],
-    "revelation": "The music writes itself \u2014 the producer becomes a gardener, not a composer.",
+    "revelation": "The music writes itself — the producer becomes a gardener, not a composer.",
     "god": "Schulze",
     "flock_note": "Ruby: 'I held a C major for 8 minutes. I never needed to play another note.'",
-    "diagnosis": "A generative engine disguised as a synth patch \u2014 the Drift Bus is the composer."
+    "diagnosis": "A generative engine disguised as a synth patch — the Drift Bus is the composer."
   },
   "dna": {
     "brightness": 0.38,

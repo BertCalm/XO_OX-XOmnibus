@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Cloud Stacking",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The Supersaw Fallacy taken to its logical extreme: five unison voices at 0.03 cents detune — the tightest possible spread that still creates width. At this detune level, voices do not fight each other; they reinforce. The result is massive, warm, and transparent simultaneously. Shimmer at 0.5 feedback sits in the middle of the spectrum. This is what clouds look like when they stack vertically: cumulus towering, enormous, internally coherent.",
-  "tags": ["opensky", "unison", "massive", "transparent", "pad", "aether", "guru-bin", "cloud-stacking", "supersaw"],
+  "tags": [
+    "opensky",
+    "unison",
+    "massive",
+    "transparent",
+    "pad",
+    "aether",
+    "guru-bin",
+    "cloud-stacking",
+    "supersaw"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru compared this to cumulus towers: from a distance, massive. Up close, each droplet is discrete. Cloud Stacking achieves the impossible with synthesis — enormous and clear at the same time. The Ear reported that five voices at 0.03 detune sounded larger than seven at 0.5. The Supersaw Fallacy revealed.",
     "diagnosis": "Cloud Stacking is the definitive Supersaw Fallacy demonstration. UisonCount=5, unisonDetune=0.03, sawSpread=0.15. Maximum coherence at medium count. The result is massive but readable. ShimmerFeedback=0.5 (middle of the hall zone) adds depth. Chorus at light mix (0.2) adds dimension without destroying the unison coherence."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

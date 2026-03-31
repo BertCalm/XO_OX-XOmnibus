@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Rain Reed",
   "mood": "Atmosphere",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oboe and clarinet through spring reverb in syncing bond, woodwinds in a gentle rain.",
-  "tags": ["woodwind", "rain", "reverb", "spring", "atmospheric"],
-  "macroLabels": ["BOND", "BREATH", "WIND", "MISCHIEF"],
+  "tags": [
+    "woodwind",
+    "rain",
+    "reverb",
+    "spring",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.68, "movement": 0.4, "density": 0.38, "space": 0.8, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.4,
+    "density": 0.38,
+    "space": 0.8,
+    "aggression": 0.08
+  },
   "parameters": {
     "Obbligato": {
       "obbl_instrumentA": 0,
@@ -45,6 +65,13 @@
       "obbl_macroMischief": 0.1
     }
   },
-  "macros": {"BOND": 0.35, "BREATH": 0.55, "WIND": 0.45, "MISCHIEF": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.35,
+    "BREATH": 0.55,
+    "WIND": 0.45,
+    "MISCHIEF": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

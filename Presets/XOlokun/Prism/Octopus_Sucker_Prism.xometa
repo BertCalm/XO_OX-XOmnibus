@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sucker Prism",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sucker array at maximum resonance and frequency creates a comb of sub-harmonic peaks that refract the core tone into a prismatic array of rhythmic filter lines.",
-  "tags": ["prism", "sucker", "comb", "resonant", "filter"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "sucker",
+    "comb",
+    "resonant",
+    "filter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.6, "density": 0.7, "space": 0.35, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.6,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.65
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.6,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.35
     }
   },
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.6, "COUPLING": 0.0, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "School Bond",
   "mood": "Family",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "feliX in perfect formation — maximum school cohesion with tight unison and locked pitch.",
-  "tags": ["school", "bond", "family", "cohesion"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "school",
+    "bond",
+    "family",
+    "cohesion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.32, "movement": 0.5, "density": 0.75, "space": 0.48, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.32,
+    "movement": 0.5,
+    "density": 0.75,
+    "space": 0.48,
+    "aggression": 0.15
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.42
     }
   },
-  "macros": {"CHARACTER": 0.48, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

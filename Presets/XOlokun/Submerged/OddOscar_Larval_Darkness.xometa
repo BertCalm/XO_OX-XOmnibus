@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Larval Darkness",
   "mood": "Submerged",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The neotenic stage before the gills fully develop — morph at 0.15, barely away from sine, body still forming. LFO2 at 0.08 Hz and high depth creates active filter movement that pulses like a developing heart. Mono legato mode — one voice, one creature, one slow emergence.",
-  "tags": ["submerged", "larval", "dark", "mono", "legato", "developing", "lfo", "neoteny"],
-  "macroLabels": ["BLOOM", "DRIFT", "DEPTH", "SPACE"],
+  "tags": [
+    "submerged",
+    "larval",
+    "dark",
+    "mono",
+    "legato",
+    "developing",
+    "lfo",
+    "neoteny"
+  ],
+  "macroLabels": [
+    "BLOOM",
+    "DRIFT",
+    "DEPTH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.7, "movement": 0.3, "density": 0.6, "space": 0.28, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.28,
+    "aggression": 0.18
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.15,
@@ -36,6 +59,13 @@
       "morph_lfo2Depth": 0.5
     }
   },
-  "macros": {"BLOOM": 0.2, "DRIFT": 0.35, "DEPTH": 0.45, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BLOOM": 0.2,
+    "DRIFT": 0.35,
+    "DEPTH": 0.45,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

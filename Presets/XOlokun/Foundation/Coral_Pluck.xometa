@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Coral Pluck",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB tuned for a short plucked instrument — fast attack, short decay, no sustain. Analog warmth with a definite physical attack. Versatile for melodic rhythmic playing.",
-  "tags": ["pluck", "bob", "short", "attack", "rhythmic", "foundation"],
-  "macroLabels": ["CHARACTER", "PLUCK DECAY", "FILTER OPEN", "BOB AMOUNT"],
+  "tags": [
+    "pluck",
+    "bob",
+    "short",
+    "attack",
+    "rhythmic",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "PLUCK DECAY",
+    "FILTER OPEN",
+    "BOB AMOUNT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

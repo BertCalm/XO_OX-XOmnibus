@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Formant Prism",
+  "name": "Formant Prism (Odyssey)",
   "mood": "Prism",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Formant vowels through prism \u2014 morph at maximum, vocal color scatter, wide spectrum.",
+  "description": "Formant vowels through prism — morph at maximum, vocal color scatter, wide spectrum.",
   "tags": [
     "formant",
     "prism",

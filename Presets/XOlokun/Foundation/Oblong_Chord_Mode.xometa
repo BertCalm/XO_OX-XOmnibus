@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Chord Mode",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bob chord mode engaged — full amber chord voicing from a single note.",
-  "tags": ["foundation", "chord", "voicing", "single-note"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "chord",
+    "voicing",
+    "single-note"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.65, "movement": 0.38, "density": 0.65, "space": 0.52, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.38,
+    "density": 0.65,
+    "space": 0.52,
+    "aggression": 0.25
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

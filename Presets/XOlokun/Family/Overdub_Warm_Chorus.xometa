@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Warm Chorus",
   "mood": "Family",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Polyphonic warm tone with gentle detuning — voices singing together around the same note.",
-  "tags": ["family", "poly", "warm", "chorus", "detuned", "communal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "poly",
+    "warm",
+    "chorus",
+    "detuned",
+    "communal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -52,7 +70,21 @@
       "dub_polyphony": 4
     }
   },
-  "macros": {"CHARACTER": 0.22, "MOVEMENT": 0.12, "COUPLING": 0.48, "SPACE": 0.48},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.42, "warmth": 0.88, "movement": 0.18, "density": 0.58, "space": 0.52, "aggression": 0.12}
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.48,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.88,
+    "movement": 0.18,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.12
+  }
 }

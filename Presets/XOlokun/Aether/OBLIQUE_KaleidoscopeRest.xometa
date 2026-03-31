@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Kaleidoscope Rest",
   "mood": "Aether",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A kaleidoscope held still — maximum prism feedback, prism spread and width at their widest. LFO1 at glacial 0.015 Hz lets the spectral spread shift imperceptibly. The six facets create a standing harmonic interference pattern that slowly rotates. Phaser feedback high. Each held note becomes a cathedral of refracted light.",
-  "tags": ["aether", "kaleidoscope", "spectral", "held", "deep", "harmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "kaleidoscope",
+    "spectral",
+    "held",
+    "deep",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -23,7 +37,7 @@
       "oblq_oscWave": 1,
       "oblq_oscFold": 0.35,
       "oblq_oscDetune": 16.0,
-      "oblq_level": 0.70,
+      "oblq_level": 0.7,
       "oblq_glide": 0.0,
       "oblq_voiceMode": 0,
       "oblq_percClick": 0.12,
@@ -62,6 +76,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

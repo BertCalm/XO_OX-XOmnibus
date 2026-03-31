@@ -14,13 +14,20 @@
     "space": 0.42,
     "warmth": 0.75
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Submerged",
   "name": "Underpass Kit",
   "parameters": {
@@ -46,8 +53,20 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["NY", "concrete", "underground", "12-bit", "submerged", "dust"],
+  "tags": [
+    "NY",
+    "concrete",
+    "underground",
+    "12-bit",
+    "submerged",
+    "dust"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.4, "M2": 0.2, "M3": 0.0, "M4": 0.78}
+  "macros": {
+    "M1": 0.4,
+    "M2": 0.2,
+    "M3": 0.0,
+    "M4": 0.78
+  }
 }

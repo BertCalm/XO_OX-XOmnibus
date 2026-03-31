@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Low Colony",
   "mood": "Foundation",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low crossover emphasis with sub-bass support, the deep siphonophore feeding zone.",
-  "tags": ["harp", "bass", "deep", "sub", "colony"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "bass",
+    "deep",
+    "sub",
+    "colony"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.7, "movement": 0.2, "density": 0.5, "space": 0.7, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.2
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 5,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.15
     }
   },
-  "macros": {"PLUCK": 0.25, "SURFACE": 0.3, "FRACTURE": 0.05, "DIVINE": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.25,
+    "SURFACE": 0.3,
+    "FRACTURE": 0.05,
+    "DIVINE": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

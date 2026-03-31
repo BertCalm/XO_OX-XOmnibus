@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Resonant Knife",
   "mood": "Prism",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Extreme resonance near self-oscillation — a surgical tonal knife that cuts through a mix.",
-  "tags": ["prism", "resonance", "extreme", "sharp", "cut", "knife"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "resonance",
+    "extreme",
+    "sharp",
+    "cut",
+    "knife"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 0,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.8, "MOVEMENT": 0.2, "COUPLING": 0.38, "SPACE": 0.22},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.65, "warmth": 0.55, "movement": 0.28, "density": 0.55, "space": 0.25, "aggression": 0.75}
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.38,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.28,
+    "density": 0.55,
+    "space": 0.25,
+    "aggression": 0.75
+  }
 }

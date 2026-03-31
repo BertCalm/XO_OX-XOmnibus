@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Bow Slip",
   "mood": "Flux",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slipping bow pressure with chaotic stick-slip dynamics and FM trembling.",
-  "tags": ["flux", "bowed", "chaotic", "slipping"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "flux",
+    "bowed",
+    "chaotic",
+    "slipping"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.78,
     "MEADOW": 0.42
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

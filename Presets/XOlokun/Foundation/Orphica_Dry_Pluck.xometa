@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Dry Pluck",
   "mood": "Foundation",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Short sustain, heavy damping, minimal reverb — the stripped acoustic skeleton of the harp.",
-  "tags": ["harp", "dry", "percussive", "short", "acoustic"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "dry",
+    "percussive",
+    "short",
+    "acoustic"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.1, "density": 0.2, "space": 0.3, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.1,
+    "density": 0.2,
+    "space": 0.3,
+    "aggression": 0.3
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 3,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.05
     }
   },
-  "macros": {"PLUCK": 0.5, "SURFACE": 0.1, "FRACTURE": 0.0, "DIVINE": 0.05},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.5,
+    "SURFACE": 0.1,
+    "FRACTURE": 0.0,
+    "DIVINE": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

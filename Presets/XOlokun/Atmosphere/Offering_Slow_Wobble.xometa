@@ -14,13 +14,20 @@
     "space": 0.85,
     "warmth": 0.6
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Atmosphere",
   "name": "Slow Wobble",
   "parameters": {
@@ -41,8 +48,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["slow lfo", "morphing", "ambient", "evolving", "bay area"],
+  "tags": [
+    "slow lfo",
+    "morphing",
+    "ambient",
+    "evolving",
+    "bay area"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.7, "M2": 0.8, "M3": 0.0, "M4": 0.3}
+  "macros": {
+    "M1": 0.7,
+    "M2": 0.8,
+    "M3": 0.0,
+    "M4": 0.3
+  }
 }

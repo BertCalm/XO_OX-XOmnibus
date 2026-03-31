@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Dub Together",
   "mood": "Family",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full polyphonic dub pad with gentle modulation — a sound you want to share with others.",
-  "tags": ["family", "poly", "pad", "sharing", "communal", "dub"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "poly",
+    "pad",
+    "sharing",
+    "communal",
+    "dub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -52,7 +70,21 @@
       "dub_polyphony": 6
     }
   },
-  "macros": {"CHARACTER": 0.18, "MOVEMENT": 0.12, "COUPLING": 0.5, "SPACE": 0.52},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.42, "warmth": 0.9, "movement": 0.18, "density": 0.55, "space": 0.58, "aggression": 0.1}
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.5,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.9,
+    "movement": 0.18,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.1
+  }
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Depth Model",
   "mood": "Foundation",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Water depth model at maximum — pressure and resonance of deep coastal shelves.",
-  "tags": ["foundation", "depth", "pressure", "subaqueous"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "depth",
+    "pressure",
+    "subaqueous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.35, "density": 0.6, "space": 0.5, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.2
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.4,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.5
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

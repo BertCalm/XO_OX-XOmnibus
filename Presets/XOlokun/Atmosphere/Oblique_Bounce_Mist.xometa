@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Bounce Mist",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow bounce through mist — dampened ricochet, wide reverb, atmospheric dissipation.",
-  "tags": ["bounce", "mist", "dampened", "atmospheric"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "bounce",
+    "mist",
+    "dampened",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.55, "movement": 0.22, "density": 0.45, "space": 0.72, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.72
     }
   },
-  "macros": {"BOUNCE": 0.12, "COLOR": 0.62, "FOLD": 0.1, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.12,
+    "COLOR": 0.62,
+    "FOLD": 0.1,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Chromatophore Dance",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chromatophore system in constant responsive motion — high sensitivity and speed creates a reactive surface that dances with every note velocity and expression input.",
-  "tags": ["flux", "chromatophore", "dance", "responsive", "expressive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "chromatophore",
+    "dance",
+    "responsive",
+    "expressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 110,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.85, "density": 0.6, "space": 0.45, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.4
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.5,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.45
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

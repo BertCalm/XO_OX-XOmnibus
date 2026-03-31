@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Alley Synth",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Street-level synth bass — dual sawtooth with mild detuning, FM interaction and a grimy filter character.",
-  "tags": ["bass", "synth", "detuned", "street"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "synth",
+    "detuned",
+    "street"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.3, "density": 0.65, "space": 0.25, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.25,
+    "aggression": 0.55
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -37,6 +57,14 @@
       "poss_macroPlayDead": 0.1
     }
   },
-  "macros": {"BELLY": 0.5, "BITE": 0.55, "SCURRY": 0.3, "TRASH": 0.35, "PLAY DEAD": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.55,
+    "SCURRY": 0.3,
+    "TRASH": 0.35,
+    "PLAY DEAD": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

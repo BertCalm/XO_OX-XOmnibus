@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "First Light",
+  "name": "First Light (Outlook)",
   "mood": "Foundation",
   "engines": [
     "Outlook"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Clean, balanced init-style pad \u2014 the view from sunrise. Warm sine/triangle blend with moderate space.",
+  "description": "Clean, balanced init-style pad — the view from sunrise. Warm sine/triangle blend with moderate space.",
   "tags": [
     "pad",
     "init",

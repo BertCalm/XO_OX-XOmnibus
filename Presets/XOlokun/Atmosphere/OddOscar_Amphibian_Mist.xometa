@@ -2,18 +2,64 @@
   "schema_version": 1,
   "name": "Amphibian Mist",
   "mood": "Atmosphere",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Misty amphibian edge — the threshold between water and air in harmonic form.",
-  "tags": ["amphibian", "threshold", "water", "air"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "amphibian",
+    "threshold",
+    "water",
+    "air"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.62, "movement": 0.48, "density": 0.42, "space": 0.68, "aggression": 0.08},
-  "parameters": {
-    "OddOscar": {"morph_morph": 0.48, "morph_bloom": 0.55, "morph_detune": 0.18, "morph_drift": 0.45, "morph_filterCutoff": 3500.0, "morph_filterReso": 0.3, "morph_filterEnvDepth": 0.25, "morph_sub": 0.3, "morph_decay": 2.2, "morph_sustain": 0.82, "morph_release": 3.8, "morph_glide": 0.16, "morph_voiceMode": 0, "morph_polyphony": 5, "morph_level": 0.63, "morph_macroBloom": 0.55, "morph_macroDepth": 0.42, "morph_macroDrift": 0.45, "morph_macroSpace": 0.68}
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.62,
+    "movement": 0.48,
+    "density": 0.42,
+    "space": 0.68,
+    "aggression": 0.08
   },
-  "macros": {"CHARACTER": 0.44, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.68},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.48,
+      "morph_bloom": 0.55,
+      "morph_detune": 0.18,
+      "morph_drift": 0.45,
+      "morph_filterCutoff": 3500.0,
+      "morph_filterReso": 0.3,
+      "morph_filterEnvDepth": 0.25,
+      "morph_sub": 0.3,
+      "morph_decay": 2.2,
+      "morph_sustain": 0.82,
+      "morph_release": 3.8,
+      "morph_glide": 0.16,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 5,
+      "morph_level": 0.63,
+      "morph_macroBloom": 0.55,
+      "morph_macroDepth": 0.42,
+      "morph_macroDrift": 0.45,
+      "morph_macroSpace": 0.68
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.0,
+    "SPACE": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

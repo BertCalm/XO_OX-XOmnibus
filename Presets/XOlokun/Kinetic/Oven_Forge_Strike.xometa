@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Forge Strike",
   "mood": "Kinetic",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum hardness, zero bloom time — the iron piano as percussion instrument. Fast decay, competition at high level for output saturation under strike. No sustain: just the percussive crack of iron struck by a hard hammer and its immediate modal burst. Rhythm instrument.",
-  "tags": ["piano", "cast iron", "percussive", "kinetic", "fast", "hard", "transient", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "cast iron",
+    "percussive",
+    "kinetic",
+    "fast",
+    "hard",
+    "transient",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

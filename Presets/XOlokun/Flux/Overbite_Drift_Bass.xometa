@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Drift Bass",
   "mood": "Flux",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Detuned drifting bass with random LFO pitch modulation — unstable like an opossum in daylight.",
-  "tags": ["bass", "drift", "unstable", "pitch"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "drift",
+    "unstable",
+    "pitch"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.65, "movement": 0.65, "density": 0.55, "space": 0.25, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.25,
+    "aggression": 0.35
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -38,6 +58,14 @@
       "poss_macroPlayDead": 0.15
     }
   },
-  "macros": {"BELLY": 0.5, "BITE": 0.35, "SCURRY": 0.65, "TRASH": 0.2, "PLAY DEAD": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.35,
+    "SCURRY": 0.65,
+    "TRASH": 0.2,
+    "PLAY DEAD": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

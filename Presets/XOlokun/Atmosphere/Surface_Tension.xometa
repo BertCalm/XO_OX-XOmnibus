@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Surface Tension",
+  "name": "Surface Tension (OddOscar)",
   "mood": "Atmosphere",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The atmospheric boundary layer \u2014 morph hovering at the water-air interface.",
+  "description": "The atmospheric boundary layer — morph hovering at the water-air interface.",
   "tags": [
     "surface",
     "tension",

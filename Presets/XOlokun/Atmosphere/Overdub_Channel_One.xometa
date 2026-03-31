@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Channel One",
   "mood": "Atmosphere",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm broadcast tone bathed in medium delay with gentle spring bloom around the edges.",
-  "tags": ["atmosphere", "broadcast", "warm", "delay", "spring"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "broadcast",
+    "warm",
+    "delay",
+    "spring"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,7 +69,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.32, "MOVEMENT": 0.12, "COUPLING": 0.55, "SPACE": 0.52},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.38, "warmth": 0.82, "movement": 0.18, "density": 0.52, "space": 0.62, "aggression": 0.18}
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.55,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.82,
+    "movement": 0.18,
+    "density": 0.52,
+    "space": 0.62,
+    "aggression": 0.18
+  }
 }

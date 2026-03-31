@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Shimmer Void",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shimmer fading to nothing — high shimmer into maximum reverb, pitch harmonics dissolving into infinite space.",
-  "tags": ["shimmer", "void", "pitch", "fade", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "shimmer",
+    "void",
+    "pitch",
+    "fade",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.35, "movement": 0.22, "density": 0.35, "space": 0.95, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.35,
+    "movement": 0.22,
+    "density": 0.35,
+    "space": 0.95,
+    "aggression": 0.06
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.68
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

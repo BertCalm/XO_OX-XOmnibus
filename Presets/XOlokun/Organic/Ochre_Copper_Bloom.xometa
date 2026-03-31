@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Copper Bloom",
   "mood": "Organic",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Caramel saturation animated by slow LFO2 — the sweetness breathes in and out like biological respiration. Medium conductivity, generous body bloom. The copper upright as a living, breathing thing that transforms your touch into something sweeter than you intended.",
-  "tags": ["piano", "copper", "breathing", "organic", "caramel", "warm", "saturation", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "breathing",
+    "organic",
+    "caramel",
+    "warm",
+    "saturation",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

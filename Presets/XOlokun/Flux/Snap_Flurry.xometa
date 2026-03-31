@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Snap Flurry",
   "mood": "Flux",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP with fast decay and polyphony — rapid-fire pitched transients for quick melodic or rhythmic patterns. Play fast for a percussive flurry of bright attacks.",
-  "tags": ["snap", "fast", "percussive", "transient", "rhythmic", "flux"],
-  "macroLabels": ["SNAP AMOUNT", "DECAY RATE", "FILTER", "SPREAD"],
+  "tags": [
+    "snap",
+    "fast",
+    "percussive",
+    "transient",
+    "rhythmic",
+    "flux"
+  ],
+  "macroLabels": [
+    "SNAP AMOUNT",
+    "DECAY RATE",
+    "FILTER",
+    "SPREAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

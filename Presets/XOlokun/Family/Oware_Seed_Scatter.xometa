@@ -32,14 +32,14 @@
   "name": "Seed Scatter",
   "parameters": {
     "Oware": {
-      "owr_material": 0.10,
+      "owr_material": 0.1,
       "owr_malletHardness": 0.58,
       "owr_bodyType": 0,
       "owr_bodyDepth": 0.42,
       "owr_buzzAmount": 0.22,
-      "owr_sympathyAmount": 0.20,
+      "owr_sympathyAmount": 0.2,
       "owr_shimmerRate": 0.0,
-      "owr_thermalDrift": 0.10,
+      "owr_thermalDrift": 0.1,
       "owr_brightness": 6500.0,
       "owr_damping": 0.55,
       "owr_decay": 0.9,

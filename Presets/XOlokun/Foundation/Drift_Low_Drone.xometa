@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Drift Low Drone",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT tuned an octave down with heavy sub and slow drift — a living drone bass. The oscillator instability gives it micro-movement that a static waveform never could.",
-  "tags": ["drone", "drift", "bass", "sub", "slow", "foundation"],
-  "macroLabels": ["DRIFT DEPTH", "SUB LEVEL", "FILTER", "SHIMMER"],
+  "tags": [
+    "drone",
+    "drift",
+    "bass",
+    "sub",
+    "slow",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DRIFT DEPTH",
+    "SUB LEVEL",
+    "FILTER",
+    "SHIMMER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

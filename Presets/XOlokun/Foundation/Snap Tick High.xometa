@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP very short tick \u2014 maximum filter cutoff, minimum decay. Clock-tick transient.",
+  "description": "SNAP very short tick — maximum filter cutoff, minimum decay. Clock-tick transient.",
   "tags": [
     "snap",
     "tick",

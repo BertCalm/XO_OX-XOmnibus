@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Continuous bowing force via sustain + slow physics envelope attack \u2014 the chain builds resonance gradually like a real cello stroke. Fixed boundary, warm stiffness, wide scanner for the thick low-string character. Hold notes long.",
+  "description": "Continuous bowing force via sustain + slow physics envelope attack — the chain builds resonance gradually like a real cello stroke. Fixed boundary, warm stiffness, wide scanner for the thick low-string character. Hold notes long.",
   "tags": [
     "bowed",
     "cello",

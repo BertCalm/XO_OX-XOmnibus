@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Rule 30 Shatter",
   "mood": "Prism",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mathematical Chain showcase: ORGANISM Rule 30 (chaotic, true random number generator) with Voronoi Shatter at maximum Crystallize 0.9 and minimum GrainSize 8ms. The combination creates maximum granular fragmentation of an already maximally chaotic source — mathematical geometry applied to mathematical chaos. Entropy Cooler at Stability 0.15 (maximum disorder target) allows the chaos through unreshaped. Quantum Smear at Observation 0.08 (near-fully uncollapsed) produces a maximally diffuse smear. Attractor Drive at Bifurcation 0.8 (deep chaos). This is the most extreme setting of the Mathematical Chain.",
-  "tags": ["organism", "rule30", "chaos", "math-chain", "voronoi", "shatter", "prism", "extreme", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "organism",
+    "rule30",
+    "chaos",
+    "math-chain",
+    "voronoi",
+    "shatter",
+    "prism",
+    "extreme",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Organism": {
       "org_ruleSet": 0,
@@ -26,19 +47,21 @@
       "org_ampSustain": 1.0,
       "org_ampRelease": 1.2,
       "org_macroCharacter": 0.55,
-      "org_macroMovement": 0.80,
+      "org_macroMovement": 0.8,
       "org_macroCoupling": 0.0,
       "org_macroSpace": 0.75
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.62,
-    "warmth": 0.30,
-    "movement": 0.90,
-    "density": 0.80,
+    "warmth": 0.3,
+    "movement": 0.9,
+    "density": 0.8,
     "space": 0.72,
-    "aggression": 0.70
+    "aggression": 0.7
   }
 }

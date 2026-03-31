@@ -4,14 +4,30 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Spectral Arc",
   "mood": "Prism",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "description": "Fast erosion at moderate depth + bright damping = a reverb that refracts like light through a prism. Notes enter as white sound and exit as spectral colors. MOVEMENT macro drives the erosion further, increasing chromatic dispersion.",
-  "tags": ["oxbow", "prism", "bright", "spectral", "phase-erosion", "prismatic"],
+  "tags": [
+    "oxbow",
+    "prism",
+    "bright",
+    "spectral",
+    "phase-erosion",
+    "prismatic"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.8,

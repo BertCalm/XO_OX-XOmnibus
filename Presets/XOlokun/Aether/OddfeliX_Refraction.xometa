@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Refraction",
   "mood": "Aether",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Light bending at the water surface — soft chord with gentle pitch bend and space.",
-  "tags": ["refraction", "light", "aether", "bend"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "refraction",
+    "light",
+    "aether",
+    "bend"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.22, "movement": 0.35, "density": 0.38, "space": 0.88, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.22,
+    "movement": 0.35,
+    "density": 0.38,
+    "space": 0.88,
+    "aggression": 0.06
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.88
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

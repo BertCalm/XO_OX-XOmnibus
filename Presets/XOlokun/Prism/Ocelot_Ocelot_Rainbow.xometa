@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Ocelot Rainbow",
   "mood": "Prism",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tawny ocelot coat in prismatic light — the spotted pattern as spectral spread across the forest.",
-  "tags": ["ocelot", "rainbow", "prism", "tawny", "spotted", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "ocelot",
+    "rainbow",
+    "prism",
+    "tawny",
+    "spotted",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.85, "warmth": 0.55, "movement": 0.6, "density": 0.6, "space": 0.6, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.38
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.82
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

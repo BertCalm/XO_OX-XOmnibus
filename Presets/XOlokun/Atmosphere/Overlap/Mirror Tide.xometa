@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "The Figure-Eight knot is amphichiral — its matrix is symmetric (M[i][j] = M[j][i]). This creates a mirror-image stereo field where the left side of the spectrum reflects the right. Combined with 0.9 spread, this preset has a distinctive centered-yet-wide quality unlike any other knot type. LFO2 sways the spread slowly.",
-  "dna": { "aggression": 0.1, "brightness": 0.45, "density": 0.52, "movement": 0.28, "space": 0.75, "warmth": 0.5 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.45,
+    "density": 0.52,
+    "movement": 0.28,
+    "space": 0.75,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Mirror Tide",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "figure-eight", "symmetric", "wide", "mirror", "ambient"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "figure-eight",
+    "symmetric",
+    "wide",
+    "mirror",
+    "ambient"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

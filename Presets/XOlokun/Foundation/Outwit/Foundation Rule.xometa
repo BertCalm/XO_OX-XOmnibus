@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 136 (class 1 stable) at 2000 Hz filter \u2014 a deep stable automaton drone.",
+  "description": "Rule 136 (class 1 stable) at 2000 Hz filter — a deep stable automaton drone.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.2,

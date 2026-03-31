@@ -1,10 +1,10 @@
 {
-  "name": "Slow Tide",
+  "name": "Slow Tide (Overwash) (Overwash)",
   "engines": [
     "Overwash"
   ],
   "author": "XO_OX Designs",
-  "description": "Geological diffusion \u2014 tidal forces measured in minutes. One breath every 100 seconds.",
+  "description": "Geological diffusion — tidal forces measured in minutes. One breath every 100 seconds.",
   "mood": "Aether",
   "tags": [
     "pad",

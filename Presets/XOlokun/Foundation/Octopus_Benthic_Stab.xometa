@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Benthic Stab",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A sharp stab from the ocean floor — sucker transient dominant, short decay, moderate arm depth. The arm delivers a single pointed note from a resting foundation position. Precise and brief.",
-  "tags": ["octopus", "foundation", "stab", "benthic", "sharp", "sucker", "brief"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "foundation",
+    "stab",
+    "benthic",
+    "sharp",
+    "sucker",
+    "brief"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.75,

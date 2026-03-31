@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "FM Seed",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM enabled between oscillators — moderate depth, inharmonic shimmer over the drift.",
-  "tags": ["FM", "inharmonic", "shimmer", "seed"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "FM",
+    "inharmonic",
+    "shimmer",
+    "seed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.45, "movement": 0.4, "density": 0.5, "space": 0.4, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.4
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

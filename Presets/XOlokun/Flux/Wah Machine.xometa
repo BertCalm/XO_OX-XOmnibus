@@ -1,1 +1,63 @@
-{"schema_version":1,"name":"Wah Machine","mood":"Flux","engines":["Onkolo"],"author":"XO_OX Designs","version":"1.0.0","description":"Maximum auto-wah with LFO modulation. Every note is a wah pedal conversation. Pure kinetic funk.","tags":["clavinet","wah","auto-wah","kinetic","modulated"],"macroLabels":["CHARACTER","MOVEMENT","COUPLING","SPACE"],"couplingIntensity":"None","tempo":null,"dna":{"brightness":0.55,"warmth":0.5,"movement":0.8,"density":0.55,"space":0.35,"aggression":0.4},"parameters":{"Onkolo":{"onko_funk":0.85,"onko_pickup":0.7,"onko_brightness":8000.0,"onko_clunk":0.5,"onko_attack":0.001,"onko_decay":0.3,"onko_sustain":0.4,"onko_release":0.15,"onko_filterEnvAmt":0.7,"onko_migration":0.0,"onko_bendRange":2,"onko_lfo1Rate":0.3,"onko_lfo1Depth":0.0,"onko_lfo1Shape":0,"onko_lfo2Rate":2.0,"onko_lfo2Depth":0.2,"onko_lfo2Shape":0,"onko_macroCharacter":0.6,"onko_macroMovement":0.7,"onko_macroCoupling":0.0,"onko_macroSpace":0.3}},"coupling":{"pairs":[]},"sequencer":null}
+{
+  "schema_version": 1,
+  "name": "Wah Machine",
+  "mood": "Flux",
+  "engines": [
+    "Onkolo"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum auto-wah with LFO modulation. Every note is a wah pedal conversation. Pure kinetic funk.",
+  "tags": [
+    "clavinet",
+    "wah",
+    "auto-wah",
+    "kinetic",
+    "modulated"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_funk": 0.85,
+      "onko_pickup": 0.7,
+      "onko_brightness": 8000.0,
+      "onko_clunk": 0.5,
+      "onko_attack": 0.001,
+      "onko_decay": 0.3,
+      "onko_sustain": 0.4,
+      "onko_release": 0.15,
+      "onko_filterEnvAmt": 0.7,
+      "onko_migration": 0.0,
+      "onko_bendRange": 2,
+      "onko_lfo1Rate": 0.3,
+      "onko_lfo1Depth": 0.0,
+      "onko_lfo1Shape": 0,
+      "onko_lfo2Rate": 2.0,
+      "onko_lfo2Depth": 0.2,
+      "onko_lfo2Shape": 0,
+      "onko_macroCharacter": 0.6,
+      "onko_macroMovement": 0.7,
+      "onko_macroCoupling": 0.0,
+      "onko_macroSpace": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

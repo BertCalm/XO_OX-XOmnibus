@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Reed Without Tremolo",
   "mood": "Foundation",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wurlitzer reed stripped to its core — tremolo off, medium reed, moderate drive. Reveals the pure inharmonic partial structure of the physical model. Starting point for custom tremolo via LFOs.",
-  "tags": ["wurlitzer", "dry", "no-tremolo", "foundation", "pure-reed", "starting-point"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "dry",
+    "no-tremolo",
+    "foundation",
+    "pure-reed",
+    "starting-point"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

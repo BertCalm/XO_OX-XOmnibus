@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Anemone Home",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bob's resting state — Oblong Sine with gentle second-harmonic warmth, sub octave OscB, Snout LP barely open, Nap curiosity so slow it reads as life rather than movement. The anemone as address, not as effect.",
-  "tags": ["foundation", "sine", "warm", "sub", "nap", "oblong", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "sine",
+    "warm",
+    "sub",
+    "nap",
+    "oblong",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.88, "movement": 0.08, "density": 0.6, "space": 0.45, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.88,
+    "movement": 0.08,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 0,
@@ -56,6 +78,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.08, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

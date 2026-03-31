@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Cubs",
   "mood": "Family",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Small creatures at high rate with low amplitude — ocelot cubs playing in the understory.",
-  "tags": ["cubs", "family", "playful", "small", "creatures", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "cubs",
+    "family",
+    "playful",
+    "small",
+    "creatures",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.72, "movement": 0.62, "density": 0.5, "space": 0.52, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.72,
+    "movement": 0.62,
+    "density": 0.5,
+    "space": 0.52,
+    "aggression": 0.18
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.48
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

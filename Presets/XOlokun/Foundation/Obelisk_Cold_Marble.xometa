@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Cold Marble",
   "mood": "Foundation",
-  "engines": ["Obelisk"],
+  "engines": [
+    "Obelisk"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure unprepared stone piano. No preparations — just marble resonating. Dense, cold, inharmonic partials ring with extremely high Q. The sound of striking a limestone slab in a cathedral. The foundation patch: what stone sounds like before Cage arrives.",
-  "tags": ["stone", "pure", "inharmonic", "cold", "foundation", "piano", "marble"],
-  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "tags": [
+    "stone",
+    "pure",
+    "inharmonic",
+    "cold",
+    "foundation",
+    "piano",
+    "marble"
+  ],
+  "macroLabels": [
+    "STONE",
+    "PREPARATION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.5,

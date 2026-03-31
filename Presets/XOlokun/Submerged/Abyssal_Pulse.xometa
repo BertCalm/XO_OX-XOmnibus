@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Pulse",
+  "name": "Abyssal Pulse (Overlap)",
   "mood": "Submerged",
   "engines": [
     "Overlap"
@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Regular low-frequency pulsing from the FDN \u2014 like a bioluminescent organism in the hadal zone signaling in darkness. Slow, rhythmic, inevitable.",
+  "description": "Regular low-frequency pulsing from the FDN — like a bioluminescent organism in the hadal zone signaling in darkness. Slow, rhythmic, inevitable.",
   "tags": [
     "dark-ambient",
     "pulse",

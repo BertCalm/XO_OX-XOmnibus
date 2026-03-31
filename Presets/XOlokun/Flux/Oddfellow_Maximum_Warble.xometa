@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Maximum Warble",
   "mood": "Flux",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tremolo pushed to its outer limit — 9 Hz rate, maximum depth, high drive. The WurliReedModel warble is now the point, not the texture. An instrument in constant disagreement with itself.",
-  "tags": ["wurlitzer", "tremolo", "extreme", "movement", "drive", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "tremolo",
+    "extreme",
+    "movement",
+    "drive",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

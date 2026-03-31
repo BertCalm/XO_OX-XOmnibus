@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "T(5,2) with entrain 0.7 \u2014 near-full phase lock with 5:2 ratio. The groove cannot escape the lock.",
+  "description": "T(5,2) with entrain 0.7 — near-full phase lock with 5:2 ratio. The groove cannot escape the lock.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.5,

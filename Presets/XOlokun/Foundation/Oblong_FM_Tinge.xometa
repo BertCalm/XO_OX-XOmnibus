@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "FM Tinge",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Light FM modulation adds metallic tinge to the warm amber saw foundation.",
-  "tags": ["foundation", "fm", "metallic", "tinge"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "fm",
+    "metallic",
+    "tinge"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.6, "movement": 0.45, "density": 0.5, "space": 0.5, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.32
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

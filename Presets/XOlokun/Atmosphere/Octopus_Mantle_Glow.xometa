@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Mantle Glow",
+  "name": "Mantle Glow (Octopus)",
   "mood": "Atmosphere",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow chromatophore pulsing across the mantle surface creates a gentle bioluminescent glow — organic, low-frequency atmospheric shimmer with minimal arm complexity.",
-  "tags": ["atmosphere", "mantle", "glow", "bioluminescent", "gentle"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "mantle",
+    "glow",
+    "bioluminescent",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.6, "movement": 0.25, "density": 0.45, "space": 0.8, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.05
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.6,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

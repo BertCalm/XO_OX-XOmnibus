@@ -2,26 +2,64 @@
   "schema_version": 1,
   "name": "Midnight at the Kissa",
   "mood": "Foundation",
-  "engines": ["Okeanos"],
+  "engines": [
+    "Okeanos"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The signature Rhodes. Warm tine tone with gentle bell, no tremolo. The sound of midnight in a Tokyo kissaten — one last pour-over, one last chord.",
-  "tags": ["rhodes", "warm", "jazz", "kissaten", "signature"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "warm",
+    "jazz",
+    "kissaten",
+    "signature"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": { "brightness": 0.4, "warmth": 0.8, "movement": 0.15, "density": 0.35, "space": 0.5, "aggression": 0.1 },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.35,
+    "space": 0.5,
+    "aggression": 0.1
+  },
   "parameters": {
     "Okeanos": {
-      "oasis_warmth": 0.4, "oasis_bell": 0.45, "oasis_brightness": 5000.0,
-      "oasis_tremRate": 4.0, "oasis_tremDepth": 0.0,
-      "oasis_attack": 0.005, "oasis_decay": 1.2, "oasis_sustain": 0.65, "oasis_release": 0.6,
-      "oasis_filterEnvAmt": 0.35, "oasis_migration": 0.0, "oasis_stereoWidth": 0.4,
-      "oasis_bendRange": 2, "oasis_lfo1Rate": 0.08, "oasis_lfo1Depth": 0.0, "oasis_lfo1Shape": 0,
-      "oasis_lfo2Rate": 0.005, "oasis_lfo2Depth": 0.0, "oasis_lfo2Shape": 0,
-      "oasis_macroCharacter": 0.5, "oasis_macroMovement": 0.0, "oasis_macroCoupling": 0.0, "oasis_macroSpace": 0.4
+      "oasis_warmth": 0.4,
+      "oasis_bell": 0.45,
+      "oasis_brightness": 5000.0,
+      "oasis_tremRate": 4.0,
+      "oasis_tremDepth": 0.0,
+      "oasis_attack": 0.005,
+      "oasis_decay": 1.2,
+      "oasis_sustain": 0.65,
+      "oasis_release": 0.6,
+      "oasis_filterEnvAmt": 0.35,
+      "oasis_migration": 0.0,
+      "oasis_stereoWidth": 0.4,
+      "oasis_bendRange": 2,
+      "oasis_lfo1Rate": 0.08,
+      "oasis_lfo1Depth": 0.0,
+      "oasis_lfo1Shape": 0,
+      "oasis_lfo2Rate": 0.005,
+      "oasis_lfo2Depth": 0.0,
+      "oasis_lfo2Shape": 0,
+      "oasis_macroCharacter": 0.5,
+      "oasis_macroMovement": 0.0,
+      "oasis_macroCoupling": 0.0,
+      "oasis_macroSpace": 0.4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

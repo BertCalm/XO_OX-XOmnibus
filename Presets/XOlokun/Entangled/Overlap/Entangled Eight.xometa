@@ -1,12 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Figure-eight at maximum tangle (0.85) — full topological routing engaged. High pulse rate (1.8 Hz) and low entrainment (0.35) mean each voice runs independently through the fully-knotted matrix. S&H LFO on filter adds stochastic texture. The most complex figure-eight state in this block.",
-  "dna": { "aggression": 0.62, "brightness": 0.7, "density": 0.62, "movement": 0.78, "space": 0.45, "warmth": 0.3 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.62,
+    "brightness": 0.7,
+    "density": 0.62,
+    "movement": 0.78,
+    "space": 0.45,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
   "name": "Entangled Eight",
   "parameters": {
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "figure-eight", "maximum", "complex", "aggressive", "movement"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "figure-eight",
+    "maximum",
+    "complex",
+    "aggressive",
+    "movement"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

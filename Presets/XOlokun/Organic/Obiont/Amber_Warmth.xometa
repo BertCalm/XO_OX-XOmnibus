@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "Amber Warmth",
   "mood": "Organic",
-  "engines": ["Obiont"],
+  "engines": [
+    "Obiont"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Rule 73 — dense stable structures interspersed with traveling waves. Very wide projection (0.82) averages across nearly the full 256-cell ring, reading out a smooth, warm fundamental. Low chaos, medium evolution. Like the light inside fossilized amber — trapped motion.",
-  "tags": ["awakening", "warm", "pad", "rule-73", "smooth", "organic"],
-  "macroLabels": ["CHAOS", "EVOLUTION", "SPACE", "COUPLING"],
+  "tags": [
+    "awakening",
+    "warm",
+    "pad",
+    "rule-73",
+    "smooth",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obiont": {
       "obnt_mode": 0,
@@ -50,7 +68,9 @@
       "obnt_macroCoupling": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.32,

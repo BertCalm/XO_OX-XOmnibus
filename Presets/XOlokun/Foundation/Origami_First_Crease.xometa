@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "First Crease",
   "mood": "Foundation",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The first crease on a blank sheet — minimal fold, maximum potential, paper still pristine.",
-  "tags": ["foundation", "crease", "minimal", "beginning"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "crease",
+    "minimal",
+    "beginning"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.5, "movement": 0.3, "density": 0.4, "space": 0.5, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.5,
+    "aggression": 0.2
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.5
     }
   },
-  "macros": {"FOLD": 0.3, "MOTION": 0.3, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.3,
+    "MOTION": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

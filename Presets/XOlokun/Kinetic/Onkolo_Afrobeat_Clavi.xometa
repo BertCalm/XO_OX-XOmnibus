@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Afrobeat Clavi",
   "mood": "Kinetic",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fela Kuti's Afrika 70 clavinet sound — interlocking patterns, brighter tone, less extreme wah, rhythmic articulation. The clavinet as a polyrhythmic conversation partner.",
-  "tags": ["clavinet", "afrobeat", "fela-kuti", "polyrhythm", "africa", "kinetic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "afrobeat",
+    "fela-kuti",
+    "polyrhythm",
+    "africa",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

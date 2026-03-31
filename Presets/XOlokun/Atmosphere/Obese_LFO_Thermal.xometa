@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "LFO Thermal",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO2 at 0.12 Hz creates a thermal updraft in the ladder filter — the harmonic content rises and falls like hot air over a summer city. Mojo at 0.55 balances analog warmth with digital articulation. Long release trails the warmth into the sky.",
-  "tags": ["atmosphere", "lfo", "thermal", "harmonic", "breathing", "warm", "updraft"],
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "tags": [
+    "atmosphere",
+    "lfo",
+    "thermal",
+    "harmonic",
+    "breathing",
+    "warm",
+    "updraft"
+  ],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.68, "movement": 0.48, "density": 0.6, "space": 0.72, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.48,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.22
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.5,
@@ -47,6 +69,13 @@
       "fat_macroCrush": 0.0
     }
   },
-  "macros": {"MOJO": 0.55, "GRIT": 0.2, "SIZE": 0.45, "CRUSH": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "MOJO": 0.55,
+    "GRIT": 0.2,
+    "SIZE": 0.45,
+    "CRUSH": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

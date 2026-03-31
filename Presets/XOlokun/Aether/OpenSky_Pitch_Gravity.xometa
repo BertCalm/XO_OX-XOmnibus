@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Pitch Gravity",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Gravity as timbre. PitchEnvAmount at 0.8 with a sharp decay (0.15 seconds) means every note begins above itself and falls to pitch. The attack feels like a statement just before the speaker commits to the word. Each note rises then settles — the pitch envelope is the physics of falling light. Wide unison (5 voices, 0.03 detune) creates mass without losing coherence. The fall is the melody.",
-  "tags": ["opensky", "pitch-envelope", "gravity", "transient", "aether", "guru-bin", "falling", "expressive"],
+  "tags": [
+    "opensky",
+    "pitch-envelope",
+    "gravity",
+    "transient",
+    "aether",
+    "guru-bin",
+    "falling",
+    "expressive"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +33,12 @@
     "flock_note": "The Guru played a scale with pitchEnvAmount=0.8, decay=0.15. Each note arrived from above. The melody existed in two registers simultaneously: where it began (high) and where it settled (the note). Listeners heard a chord when only one note was played. The fall was the upper voice. Physics, not synthesis, wrote the harmony.",
     "diagnosis": "Pitch Gravity uses pitchEnvAmount=0.8 with pitchEnvDecay=0.15 — a sharp rise followed by rapid settling. The resulting transient gives each note a falling quality, like catching something thrown from above. Five unison voices at tight 0.03 detune provide mass without smear. Medium shimmer (0.4) adds tail without obscuring the pitch mechanics."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +100,8 @@
       "sky_modSlot2Amt": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Floor",
+  "name": "Abyssal Floor (Outwit)",
   "mood": "Foundation",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 0 \u2014 total darkness. All cells die. But the shape of the previous generation echoes in the reverb tail. The sound of a system going still.",
+  "description": "Rule 0 — total darkness. All cells die. But the shape of the previous generation echoes in the reverb tail. The sound of a system going still.",
   "tags": [
     "foundation",
     "silence",

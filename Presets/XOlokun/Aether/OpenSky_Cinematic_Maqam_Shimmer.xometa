@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Maqam Shimmer",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Detune spread into microtonal cloud territory — combined with shimmer reverb, produces maqam-adjacent tonal ambiguity. Global cinema scoring energy, culturally unlabeled.",
-  "tags": ["cinematic", "microtonal", "maqam", "global", "shimmer", "genre-spotlight"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "cinematic",
+    "microtonal",
+    "maqam",
+    "global",
+    "shimmer",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.68, "movement": 0.42, "density": 0.72, "space": 0.92, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.68,
+    "movement": 0.42,
+    "density": 0.72,
+    "space": 0.92,
+    "aggression": 0.08
+  },
   "parameters": {
     "OpenSky": {
       "sky_sawSpread": 0.72,
@@ -63,6 +84,13 @@
       "sky_modSlot2Amt": 0.22
     }
   },
-  "macros": {"RISE": 0.62, "WIDTH": 0.88, "GLOW": 0.65, "AIR": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "RISE": 0.62,
+    "WIDTH": 0.88,
+    "GLOW": 0.65,
+    "AIR": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

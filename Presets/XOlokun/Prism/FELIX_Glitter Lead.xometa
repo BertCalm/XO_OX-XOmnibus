@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Slow decay, high filter cutoff, 4-voice unison spread — feliX becomes a shimmering melodic lead. The pitch snap sweeps downward giving each note a brilliant attack glint. Mod wheel opens the LFO shimmer wider. A neon tetra catching a full shaft of sunlight.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.7,
     "aggression": 0.25
   },
-  "engines": ["OddfeliX"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
   "macros": {
     "CHARACTER": 0.2,
     "MOVEMENT": 0.45,
@@ -47,7 +56,16 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["prism", "oddfelix", "lead", "bright", "shimmer", "unison", "glitter", "melodic"],
+  "tags": [
+    "prism",
+    "oddfelix",
+    "lead",
+    "bright",
+    "shimmer",
+    "unison",
+    "glitter",
+    "melodic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

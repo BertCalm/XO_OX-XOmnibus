@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "T(7,3) \u2014 seven windings in one direction, three in the other. Complex ratio creates interference clusters.",
+  "description": "T(7,3) — seven windings in one direction, three in the other. Complex ratio creates interference clusters.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.4,

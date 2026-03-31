@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 25 (class 2) \u2014 a slightly irregular periodic rule. Creates a shoreline of recurring patterns.",
+  "description": "Rule 25 (class 2) — a slightly irregular periodic rule. Creates a shoreline of recurring patterns.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.3,

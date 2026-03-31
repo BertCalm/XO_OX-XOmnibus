@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Plucked String Palace",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Karplus-Strong (voice 2) + FM pad (voice 1, fmRatio=2.0). HAMMER=+0.3 — light LOVE. The KS pluck decays quickly while the FM pad sustains beneath it. At light LOVE, the pluck's attack transient bleeds into the pad's sustain, creating a hybrid instrument: guitar-like attack with pad-like sustain. voiceMix=0.35 keeps KS as texture, not lead. The palace of plucked strings.",
-  "tags": ["ouie", "karplus-strong", "fm", "pluck", "pad", "hybrid", "love", "aether", "string-texture"],
+  "tags": [
+    "ouie",
+    "karplus-strong",
+    "fm",
+    "pluck",
+    "pad",
+    "hybrid",
+    "love",
+    "aether",
+    "string-texture"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "Adjust voiceMix to control how pluck-forward vs. pad-forward the sound is. CURRENT macro controls space around the decay. CARTILAGE tightens or loosens the KS string character.",
     "diagnosis": "KS+FM is one of the most playable OUIE combinations. The natural decay of KS creates automatic variation in held vs. short notes. Light LOVE at +0.3 preserves the distinction between voices while allowing their textures to interact. This sits well in arrangements at any tempo."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.55,
     "CURRENT": 0.45
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

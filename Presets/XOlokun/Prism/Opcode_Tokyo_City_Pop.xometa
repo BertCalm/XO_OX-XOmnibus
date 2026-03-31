@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Tokyo City Pop",
   "mood": "Prism",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tatsuro Yamashita, Mariya Takeuchi era — the DX7 in its most sophisticated Japanese production context. Ratio slightly above 1.0 for gentle beating, moderate index, wide stereo implication. Plastic Love territory.",
-  "tags": ["dx7", "fm", "city-pop", "japanese", "tatsuro-yamashita", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dx7",
+    "fm",
+    "city-pop",
+    "japanese",
+    "tatsuro-yamashita",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

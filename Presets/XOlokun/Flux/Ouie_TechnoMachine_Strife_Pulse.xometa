@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Strife Pulse",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "STRIFE mode — two voices in maximum tension. Mod envelope at short decay creates a pulsing gate effect. High HAMMER drives the interaction into rhythmic territory. Techno-inflected duophonic pulse.",
-  "tags": ["techno", "strife", "pulse", "duophonic", "gate", "genre-spotlight"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "techno",
+    "strife",
+    "pulse",
+    "duophonic",
+    "gate",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.32, "movement": 0.85, "density": 0.78, "space": 0.28, "aggression": 0.85},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.32,
+    "movement": 0.85,
+    "density": 0.78,
+    "space": 0.28,
+    "aggression": 0.85
+  },
   "parameters": {
     "Ouie": {
       "ouie_algo1": 3,
@@ -69,6 +90,13 @@
       "ouie_macroCurrent": 0.82
     }
   },
-  "macros": {"HAMMER": 0.88, "AMPULLAE": 0.72, "CARTILAGE": 0.68, "CURRENT": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HAMMER": 0.88,
+    "AMPULLAE": 0.72,
+    "CARTILAGE": 0.68,
+    "CURRENT": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,18 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Prediction Error",
+  "name": "Prediction Error (Outflow)",
   "mood": "Flux",
-  "engines": ["Outflow"],
+  "engines": [
+    "Outflow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Named after the Bayesian core of XOutflow. Maximum undertow pull — every prediction error creates a violent vacuum. Fastest vacuum attack (0.0). The optical warmth fights back hard. Chaotic wind. The space between prediction and reality becomes the instrument.",
-  "tags": ["awakening", "evolving", "vacuum", "aggressive", "bayesian", "reactive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "awakening",
+    "evolving",
+    "vacuum",
+    "aggressive",
+    "bayesian",
+    "reactive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Outflow": {
       "out_anchor": 0.55,
@@ -31,7 +49,9 @@
       "out_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.62,

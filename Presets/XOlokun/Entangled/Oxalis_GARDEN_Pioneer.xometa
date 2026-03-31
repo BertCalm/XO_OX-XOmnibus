@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OXALIS — in GARDEN quad coupling role. Pioneer sets harmonic ground; OVERGROW, OSIER, ORCHARD grow into it.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.72,
     "aggression": 0.15
   },
-  "engines": ["Oxalis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Entangled",
   "name": "GARDEN Pioneer",
   "parameters": {
@@ -40,7 +49,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["oxalis", "synth", "strings", "entangled", "coupling", "garden", "pioneer"],
+  "tags": [
+    "oxalis",
+    "synth",
+    "strings",
+    "entangled",
+    "coupling",
+    "garden",
+    "pioneer"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

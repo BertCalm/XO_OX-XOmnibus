@@ -2,17 +2,35 @@
   "schema_version": 1,
   "name": "Thermal Vent",
   "mood": "Organic",
-  "engines": ["Outflow"],
+  "engines": [
+    "Outflow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "Hydrothermal vent acoustics — warm mineral-rich water carries sound unusually well. Medium splash size, high optical warmth, moderate undertow. Wind chaos produces the irregular bubble/convection shimmer. Balanced dry/wet — you hear both the exciter and the space it excites.",
-  "tags": ["awakening", "warm", "organic", "convection", "textured", "balanced"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "awakening",
+    "warm",
+    "organic",
+    "convection",
+    "textured",
+    "balanced"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Outflow": {
       "out_anchor": 0.7,
@@ -31,7 +49,9 @@
       "out_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,

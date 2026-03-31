@@ -2,11 +2,22 @@
   "schema_version": 1,
   "name": "Treaty",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "HAMMER fixed at 0.0 — the neutral zone. Two VA voices in pure coexistence, filter link engaged, breathing in unison. Neither STRIFE nor LOVE. The treaty is not absence of conflict but its suspension. Both voices run through linked filters, breathing at the physiological rate of 0.067 Hz. A held note becomes a meditation on non-violence between identical forces.",
-  "tags": ["ouie", "neutral", "va", "filter-link", "breath", "meditation", "aether", "coexistence"],
+  "tags": [
+    "ouie",
+    "neutral",
+    "va",
+    "filter-link",
+    "breath",
+    "meditation",
+    "aether",
+    "coexistence"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +33,12 @@
     "flock_note": "Do not move HAMMER. The entire preset is designed for HAMMER=0. Move it fractionally and the treaty cracks.",
     "diagnosis": "filterLink=1 at HAMMER=0.0 produces the most stable, rounded tone in the OUIE engine. Suits long pads, meditation contexts, and tonal foundation work under lead lines. The 0.067 Hz breath rate mirrors the ocean — physiologically settling."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +112,7 @@
     "CARTILAGE": 0.6,
     "CURRENT": 0.1
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

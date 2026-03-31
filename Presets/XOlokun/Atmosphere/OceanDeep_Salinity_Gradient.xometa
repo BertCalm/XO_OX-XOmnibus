@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Salinity Gradient",
+  "name": "Salinity Gradient (OceanDeep)",
   "mood": "Atmosphere",
   "engines": [
     "OceanDeep"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The halocline \u2014 where fresh and salt water meet and shimmer, a layered dark texture.",
+  "description": "The halocline — where fresh and salt water meet and shimmer, a layered dark texture.",
   "tags": [
     "texture",
     "layered",

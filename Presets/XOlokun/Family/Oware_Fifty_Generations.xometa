@@ -37,9 +37,9 @@
     "brightness": 0.52,
     "warmth": 0.62,
     "movement": 0.38,
-    "density": 0.50,
+    "density": 0.5,
     "space": 0.55,
-    "aggression": 0.20
+    "aggression": 0.2
   },
   "parameters": {
     "Oware": {
@@ -47,8 +47,8 @@
       "owr_malletHardness": 0.38,
       "owr_bodyType": 0,
       "owr_bodyDepth": 0.55,
-      "owr_buzzAmount": 0.20,
-      "owr_sympathyAmount": 0.40,
+      "owr_buzzAmount": 0.2,
+      "owr_sympathyAmount": 0.4,
       "owr_shimmerRate": 4.0,
       "owr_thermalDrift": 0.35,
       "owr_brightness": 8500.0,
@@ -60,7 +60,7 @@
       "owr_macroMallet": 0.0,
       "owr_macroCoupling": 0.0,
       "owr_macroSpace": 0.0,
-      "owr_lfo1Rate": 0.40,
+      "owr_lfo1Rate": 0.4,
       "owr_lfo1Depth": 0.15,
       "owr_lfo1Shape": 0,
       "owr_lfo2Rate": 0.12,

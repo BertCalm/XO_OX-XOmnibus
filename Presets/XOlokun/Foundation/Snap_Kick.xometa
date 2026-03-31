@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Snap Kick",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's transient design at its most percussive — short, punchy, pitch-locked to a single root. The foundational kick/bass transient layer for any drum arrangement.",
-  "tags": ["kick", "percussion", "transient", "snap", "punchy", "foundation"],
-  "macroLabels": ["SNAP AMOUNT", "DECAY", "FILTER", "LEVEL"],
+  "tags": [
+    "kick",
+    "percussion",
+    "transient",
+    "snap",
+    "punchy",
+    "foundation"
+  ],
+  "macroLabels": [
+    "SNAP AMOUNT",
+    "DECAY",
+    "FILTER",
+    "LEVEL"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Creme Brulee",
   "mood": "Flux",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The signature fragility preset — soft taps ring pure and crystalline, but hard strikes crack the crust. Maximum fragility on glass harp. Play gently and it sings. Play hard and it shatters. The sound of something beautiful that can break.",
-  "tags": ["fragility", "glass", "crack", "dynamic", "expressive", "velocity"],
-  "macroLabels": ["CHARACTER", "FRAGILITY", "COUPLING", "SPACE"],
+  "tags": [
+    "fragility",
+    "glass",
+    "crack",
+    "dynamic",
+    "expressive",
+    "velocity"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FRAGILITY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

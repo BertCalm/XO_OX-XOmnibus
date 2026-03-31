@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Musette accordion as atmospheric pad — slow attack, maximum musette beating, long release. The accordion heard from across the bayou at dusk: reeds in sympathy with the water.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.65,
     "warmth": 0.75
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Bayou Mist",
   "parameters": {
@@ -55,7 +64,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["accordion", "musette", "atmosphere", "cajun", "pad", "ambient"],
+  "tags": [
+    "accordion",
+    "musette",
+    "atmosphere",
+    "cajun",
+    "pad",
+    "ambient"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

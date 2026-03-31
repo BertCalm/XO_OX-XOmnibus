@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Tribal Surge (Ostinato)",
   "mood": "Flux",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "EDM meets tribal percussion — djembe and taiko trade kick duties while surdo provides the physical low-end surge. No beatbox, no synthetic sounds: the four-on-the-floor emerges from the physical drum bodies themselves. The GATHER macro builds from individual tribal voices to a complete primal ensemble drop. This is festival main stage energy from acoustic materials.",
-  "tags": ["edm", "tribal", "djembe", "taiko", "surdo", "festival", "organic"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "edm",
+    "tribal",
+    "djembe",
+    "taiko",
+    "surdo",
+    "festival",
+    "organic"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 126,
   "dna": {

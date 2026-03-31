@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OVERGROW — extended technique. High bow noise, high damping, pitch instability. The weed under concrete.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.38,
     "aggression": 0.48
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Organic",
   "name": "Stressed Root",
   "parameters": {
@@ -41,7 +50,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["overgrow", "string", "organic", "extended-technique", "rough", "experimental"],
+  "tags": [
+    "overgrow",
+    "string",
+    "organic",
+    "extended-technique",
+    "rough",
+    "experimental"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

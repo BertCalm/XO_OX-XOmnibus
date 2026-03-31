@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Hammer interaction axis at 0.0 (full STRIFE mode: ring modulation + hard sync between voices A and B). Voices A and B at different algorithms \u2014 voice A algo 3, voice B algo 5. Internal cross-modulation creates a self-entangled timbre.",
+  "description": "Hammer interaction axis at 0.0 (full STRIFE mode: ring modulation + hard sync between voices A and B). Voices A and B at different algorithms — voice A algo 3, voice B algo 5. Internal cross-modulation creates a self-entangled timbre.",
   "tags": [
     "duophonic",
     "ring-mod",

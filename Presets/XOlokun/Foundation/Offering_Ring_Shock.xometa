@@ -14,13 +14,20 @@
     "space": 0.35,
     "warmth": 0.3
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Foundation",
   "name": "Ring Shock",
   "parameters": {
@@ -38,8 +45,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["metallic", "ring mod", "bright", "new york", "edgy"],
+  "tags": [
+    "metallic",
+    "ring mod",
+    "bright",
+    "new york",
+    "edgy"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.5, "M2": 0.0, "M3": 0.7, "M4": 0.15}
+  "macros": {
+    "M1": 0.5,
+    "M2": 0.0,
+    "M3": 0.7,
+    "M4": 0.15
+  }
 }

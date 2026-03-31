@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "ORCHARD — maximum formant for violin-register brilliance. Wide ensemble at brightest Spring character.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.88,
     "aggression": 0.08
   },
-  "engines": ["Orchard"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Prism",
   "name": "Formant Character",
   "parameters": {
@@ -44,7 +53,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["orchard", "strings", "orchestral", "prism", "formant", "bright", "violin"],
+  "tags": [
+    "orchard",
+    "strings",
+    "orchestral",
+    "prism",
+    "formant",
+    "bright",
+    "violin"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Mineral Floor",
   "mood": "Foundation",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense crystalline bed tone with slow attack and long sustain, pure and grounded.",
-  "tags": ["pad", "crystal", "foundation", "mineral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "crystal",
+    "foundation",
+    "mineral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.5, "movement": 0.2, "density": 0.7, "space": 0.4, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.5,
+    "movement": 0.2,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.1
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.6,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.4
     }
   },
-  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

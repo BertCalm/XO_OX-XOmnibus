@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Interval Grammar",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Duo mode (voiceMode=2): the player's chord interval IS the timbre. Play a perfect fifth and hear consonance. Play a tritone and hear metallic dissonance. No other engine makes your harmony choices this structurally audible. HAMMER=-0.5 (light STRIFE) — intervals that are pleasant reveal themselves; dissonant intervals become genuinely unsettling. This is interval as parameter: the keyboard is no longer just pitch selection, it is synthesis control.",
-  "tags": ["ouie", "duo", "interval", "grammar", "voicemode", "strife", "performance", "aether", "keyboard-as-timbre"],
+  "tags": [
+    "ouie",
+    "duo",
+    "interval",
+    "grammar",
+    "voicemode",
+    "strife",
+    "performance",
+    "aether",
+    "keyboard-as-timbre"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
@@ -22,7 +34,12 @@
     "flock_note": "Play two-note chords exclusively. Single notes reveal little. The magic is in the relationship between the two voices, not in either voice alone. Try: C-G (fifth), C-F# (tritone), C-E (major third), C-Eb (minor third).",
     "diagnosis": "The defining Duo mode preset. HAMMER=-0.5 is the sweet spot where interval differences are maximally audible without being too harsh. VA+VA means the difference is purely the HAMMER interaction, not algorithmic complexity. Essential for teaching what OUIE is."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -96,5 +113,7 @@
     "CARTILAGE": 0.5,
     "CURRENT": 0.0
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

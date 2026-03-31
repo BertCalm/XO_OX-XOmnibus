@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Luminous Metabolism",
   "mood": "Entangled",
-  "engines": ["Optic", "Organon"],
+  "engines": [
+    "Optic",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full bidirectional coupling — Organon's metabolic audio feeds OPTIC's spectral analysis, OPTIC's luminous pulses modulate Organon's enzyme filter and membrane. The organism and the light source are one.",
-  "tags": ["coupling", "optic", "organon-pair", "metabolic", "luminous", "bidirectional", "deep"],
-  "macroLabels": ["LIGHT", "METABOLISM", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "optic",
+    "organon-pair",
+    "metabolic",
+    "luminous",
+    "bidirectional",
+    "deep"
+  ],
+  "macroLabels": [
+    "LIGHT",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.75,
@@ -46,9 +66,24 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Organon", "engineB": "Optic", "type": "AudioToFM", "amount": 0.55 },
-      { "engineA": "Optic", "engineB": "Organon", "type": "AmpToFilter", "amount": 0.55 },
-      { "engineA": "Optic", "engineB": "Organon", "type": "EnvToMorph", "amount": 0.3 }
+      {
+        "engineA": "Organon",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Organon",
+        "type": "AmpToFilter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Organon",
+        "type": "EnvToMorph",
+        "amount": 0.3
+      }
     ]
   },
   "sequencer": null,

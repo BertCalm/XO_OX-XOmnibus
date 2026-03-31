@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermal Shift",
+  "name": "Thermal Shift (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"

@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Foliage Trace",
   "mood": "Aether",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The faintest foliage trace in maximum space — the outline of a leaf disappearing into reverb.",
-  "tags": ["foliage", "trace", "aether", "faint", "outline", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "foliage",
+    "trace",
+    "aether",
+    "faint",
+    "outline",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.07, "density": 0.15, "space": 0.98, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.07,
+    "density": 0.15,
+    "space": 0.98,
+    "aggression": 0.04
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.12
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

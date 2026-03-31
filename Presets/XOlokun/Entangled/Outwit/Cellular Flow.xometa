@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rules 30/90 alternating \u2014 canonical class 3 and XOR rule trading control.",
+  "description": "Rules 30/90 alternating — canonical class 3 and XOR rule trading control.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.5,

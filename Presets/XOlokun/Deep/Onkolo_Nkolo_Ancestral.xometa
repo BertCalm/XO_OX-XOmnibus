@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Nkolo Ancestral",
   "mood": "Deep",
-  "engines": ["Onkolo"],
+  "engines": [
+    "Onkolo"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The engine's Bantu mythology made audible — resonant and wooden, pickup near middle for even harmonic content, clunk quieted to let the sustained tone speak. The xylophone ancestor before amplification.",
-  "tags": ["clavinet", "ancestral", "bantu", "wood", "resonant", "deep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "clavinet",
+    "ancestral",
+    "bantu",
+    "wood",
+    "resonant",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

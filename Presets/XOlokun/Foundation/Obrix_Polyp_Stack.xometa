@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Polyp Stack",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Vertical architecture — polyps stacking upward. Pulse src1 at +7 semitones (building height) against Saw src2 at the root. The cutoff offset is reversed here vs the rest of the collection: proc1=LP (1100 Hz) on the Pulse (bringing it closer to the Saw's register) while proc2=LP (2800 Hz) leaves the Saw relatively open. This creates a frequency inversion in the collision, the upper source being darker than the lower. fmDepth=0.22 — the FM bridges the frequency gap. proc1Reso=0.42 adds resonant pop to the Pulse stack. Poly8 for full stacking. Mod: Env->FilterCutoff, LFO->PulseWidth (Pulse width breathes), Velocity->FilterReso, Aftertouch->FXMix.",
-  "tags": ["obrix", "foundation", "pulse", "saw", "constructive-collision", "polyp", "stack", "vertical"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "pulse",
+    "saw",
+    "constructive-collision",
+    "polyp",
+    "stack",
+    "vertical"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.45,

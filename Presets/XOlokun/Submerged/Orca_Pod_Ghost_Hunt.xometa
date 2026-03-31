@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pod Ghost Hunt",
   "mood": "Submerged",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "8-voice poly, echoMix at 0.82 — echolocation as primary voice, barely any wavetable. The space is the sound. Eight voices, each with its own comb filter tuned to its note frequency, produce a spatial array of resonant metallic tones. The ghost pod mapping the dark.",
-  "tags": ["ghost", "echolocation", "submerged", "poly", "spatial", "dark", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ghost",
+    "echolocation",
+    "submerged",
+    "poly",
+    "spatial",
+    "dark",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

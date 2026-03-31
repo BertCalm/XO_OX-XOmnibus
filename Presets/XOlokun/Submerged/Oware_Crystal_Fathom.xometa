@@ -9,7 +9,7 @@
     "aggression": 0.05,
     "brightness": 0.35,
     "density": 0.55,
-    "movement": 0.20,
+    "movement": 0.2,
     "space": 0.92,
     "warmth": 0.48
   },
@@ -25,7 +25,7 @@
   "macros": {
     "CHARACTER": 0.55,
     "COUPLING": 0.0,
-    "MOVEMENT": 0.20,
+    "MOVEMENT": 0.2,
     "SPACE": 0.92
   },
   "mood": "Submerged",
@@ -46,7 +46,7 @@
       "owr_filterEnvAmount": 0.15,
       "owr_bendRange": 3,
       "owr_macroMaterial": 0.55,
-      "owr_macroMallet": 0.20,
+      "owr_macroMallet": 0.2,
       "owr_macroCoupling": 0.0,
       "owr_macroSpace": 0.92
     }

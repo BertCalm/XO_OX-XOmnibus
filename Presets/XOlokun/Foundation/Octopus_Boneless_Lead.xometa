@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Boneless Lead",
   "mood": "Foundation",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A monophonic lead that refuses to sit still — no bones, no fixed pitch, just a slithering tone that pours through the frequency spectrum. Minimal ink, controlled arms, shapeshifter engaged for organic pitch drift.",
-  "tags": ["octopus", "lead", "mono", "shapeshifter", "boneless", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "lead",
+    "mono",
+    "shapeshifter",
+    "boneless",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -55,7 +69,9 @@
       "octo_voiceMode": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

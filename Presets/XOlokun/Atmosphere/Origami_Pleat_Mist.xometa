@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Pleat Mist",
   "mood": "Atmosphere",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pleat operation diffused into mist — repeating geometric forms dissolving in space.",
-  "tags": ["atmosphere", "pleat", "mist", "diffuse"],
-  "macroLabels": ["FOLD", "MOTION", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "pleat",
+    "mist",
+    "diffuse"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.58, "movement": 0.38, "density": 0.45, "space": 0.72, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.12
+  },
   "parameters": {
     "Origami": {
       "origami_foldPoint": 0.5,
@@ -40,6 +59,13 @@
       "origami_macroSpace": 0.72
     }
   },
-  "macros": {"FOLD": 0.4, "MOTION": 0.38, "COUPLING": 0.0, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "FOLD": 0.4,
+    "MOTION": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

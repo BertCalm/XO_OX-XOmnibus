@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Voyage Fracture",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "FM+fracture compound: the fracture events interrupt a slow FM drift migration. Each fracture is a brief discontinuity in the timbral journey — like a bump in a long ocean voyage. The FM background drift continues beneath the fracture events.",
-  "tags": ["odyssey", "fm", "fracture", "drift", "voyage", "prism", "compound", "transcendental"],
+  "tags": [
+    "odyssey",
+    "fm",
+    "fracture",
+    "drift",
+    "voyage",
+    "prism",
+    "compound",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "ODYSSEY — FM+Drift Compound Migration",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-8: Non-Integer FM Ratios Are Colors Without Names"],
+    "scripture": [
+      "Scripture VII-8: Non-Integer FM Ratios Are Colors Without Names"
+    ],
     "revelation": "Fracture events inside a drifting FM background feel like navigation events — moments where the journey crosses a threshold.",
     "diagnosis": "Voyage Fracture uses FM at OscB with drift at 0.42 and fractureEnable=1 at low intensity (0.28) and rare rate (0.06 Hz). The fractures are sparse — one every 16 seconds on average. Each fracture is a navigation waypoint in the FM migration."
   },
-  "macroLabels": ["FM BACKGROUND", "FRACTURE RATE", "DRIFT ROUTE", "SHIMMER RAINBOW"],
+  "macroLabels": [
+    "FM BACKGROUND",
+    "FRACTURE RATE",
+    "DRIFT ROUTE",
+    "SHIMMER RAINBOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -75,6 +93,8 @@
       "drift_polyphony": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

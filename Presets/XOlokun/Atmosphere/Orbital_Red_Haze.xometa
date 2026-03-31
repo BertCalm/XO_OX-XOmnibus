@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Red Haze",
   "mood": "Atmosphere",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm Red engine identity in atmospheric mode — hazy, diffuse, orbital horizon glow.",
-  "tags": ["red", "warm", "haze", "diffuse"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "red",
+    "warm",
+    "haze",
+    "diffuse"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.8, "movement": 0.2, "density": 0.55, "space": 0.78, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.78,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.3,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.78
     }
   },
-  "macros": {"SPECTRUM": 0.45, "EVOLVE": 0.2, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.45,
+    "EVOLVE": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

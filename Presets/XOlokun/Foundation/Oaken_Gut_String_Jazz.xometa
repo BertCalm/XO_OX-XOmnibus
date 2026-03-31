@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OAKEN — pizzicato upright bass, jazz combo. Gut string feel. Each note arrives bright and settles dark.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.32,
     "aggression": 0.15
   },
-  "engines": ["Oaken"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Gut String Jazz",
   "parameters": {
@@ -40,7 +49,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["oaken", "acoustic", "bass", "foundation", "jazz", "pizzicato"],
+  "tags": [
+    "oaken",
+    "acoustic",
+    "bass",
+    "foundation",
+    "jazz",
+    "pizzicato"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

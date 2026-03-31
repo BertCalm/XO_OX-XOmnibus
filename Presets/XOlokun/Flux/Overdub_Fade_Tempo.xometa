@@ -2,20 +2,38 @@
   "schema_version": 1,
   "name": "Fade Tempo",
   "mood": "Flux",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Tape wow/flutter set to rhythmic rates — the pitch deviation becomes a time-feel artifact, pushing the note slightly ahead or behind the beat. A groove that is almost on time, and exactly as interesting because of that.",
-  "tags": ["overdub", "flux", "rhythm", "tape", "wobble", "groove", "dub", "transcendental"],
+  "tags": [
+    "overdub",
+    "flux",
+    "rhythm",
+    "tape",
+    "wobble",
+    "groove",
+    "dub",
+    "transcendental"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OVERDUB — Temporal Evolution and Degradation-as-Architecture",
     "retreat_date": "2026-03-21",
-    "scripture": ["Scripture VII-1: The Dry Groove Is the Groove"],
+    "scripture": [
+      "Scripture VII-1: The Dry Groove Is the Groove"
+    ],
     "revelation": "Tape machines do not keep time. They feel time.",
     "diagnosis": "Fade Tempo uses dub_delayWow at 0.72 and a slow LFO to create rhythmic instability that feels human rather than broken. The filter modulation at 0.28 Hz adds a lazy push-pull feel to the pocket."
   },
-  "macroLabels": ["WOW DEPTH", "LFO FILTER", "DELAY TIME", "FEEDBACK"],
+  "macroLabels": [
+    "WOW DEPTH",
+    "LFO FILTER",
+    "DELAY TIME",
+    "FEEDBACK"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +84,8 @@
       "dub_polyphony": 1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

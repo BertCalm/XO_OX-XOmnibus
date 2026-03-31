@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Buchla Serge Meeting",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Two Wavefolder voices at different fold depths — Voice 1 at 2.3 folds (Buchla gentleness), Voice 2 at 6.8 folds (Serge aggression). HAMMER at -0.2 introduces light ring modulation between the two folded spectra, creating sum-and-difference tones between their harmonic series. Triangle modulation on both fold depths via LFOs at coprime rates (0.7 Hz and 1.1 Hz) creates a pattern that never repeats.",
-  "tags": ["west-coast", "wavefolder", "complex", "evolving", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "west-coast",
+    "wavefolder",
+    "complex",
+    "evolving",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +89,7 @@
       "ouie_macroCurrent": 0.1
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

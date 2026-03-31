@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Orbital Decay",
+  "name": "Orbital Decay (Orbital)",
   "mood": "Flux",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Slow orbital decay \u2014 long decaying group envelopes pulling into spectral collapse.",
+  "description": "Slow orbital decay — long decaying group envelopes pulling into spectral collapse.",
   "tags": [
     "decay",
     "orbital",

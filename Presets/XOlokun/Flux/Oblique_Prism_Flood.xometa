@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Prism Flood",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prism mix at overflow — maximum prism width and spread with flooded feedback.",
-  "tags": ["prism", "flood", "overflow", "feedback"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "prism",
+    "flood",
+    "overflow",
+    "feedback"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.42, "movement": 0.78, "density": 0.68, "space": 0.4, "aggression": 0.72},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.78,
+    "density": 0.68,
+    "space": 0.4,
+    "aggression": 0.72
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.4
     }
   },
-  "macros": {"BOUNCE": 0.9, "COLOR": 0.88, "FOLD": 0.42, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.9,
+    "COLOR": 0.88,
+    "FOLD": 0.42,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Liminal Space",
+  "name": "Liminal Space (Ombre)",
   "mood": "Aether",
   "engines": [
     "Ombre"
   ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "The threshold \u2014 not inside, not outside. Not memory, not perception. The LFOs keep the blend hovering exactly at 0.5 with maximum oscillation. Permanently in-between.",
+  "description": "The threshold — not inside, not outside. Not memory, not perception. The LFOs keep the blend hovering exactly at 0.5 with maximum oscillation. Permanently in-between.",
   "tags": [
     "aether",
     "liminal",

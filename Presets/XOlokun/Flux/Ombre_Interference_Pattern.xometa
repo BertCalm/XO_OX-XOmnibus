@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Interference Pattern",
+  "name": "Interference Pattern (Ombre)",
   "mood": "Flux",
   "engines": [
     "Ombre"
   ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Maximum interference \u2014 Opsis and Oubli create a standing wave between them. The modulation pattern is as important as the note. Complex, rhythmic, unpredictable.",
+  "description": "Maximum interference — Opsis and Oubli create a standing wave between them. The modulation pattern is as important as the note. Complex, rhythmic, unpredictable.",
   "tags": [
     "flux",
     "interference",

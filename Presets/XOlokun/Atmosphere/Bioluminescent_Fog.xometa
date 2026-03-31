@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bioluminescent Fog",
+  "name": "Bioluminescent Fog (Octopus)",
   "mood": "Atmosphere",
   "engines": [
     "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Faint pulses of light in the dark water \u2014 bioluminescent particles drifting. Arms barely active but present, each one contributing a soft glow to the overall texture. Ink at minimal mix adds a ghostly undertone.",
+  "description": "Faint pulses of light in the dark water — bioluminescent particles drifting. Arms barely active but present, each one contributing a soft glow to the overall texture. Ink at minimal mix adds a ghostly undertone.",
   "tags": [
     "octopus",
     "bioluminescent",

@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Deep FM",
   "mood": "Submerged",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM modulation dragged to the deep — metallic sidebands damped by pressure, dark harmonic glow.",
-  "tags": ["FM", "deep", "metallic", "dark", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "FM",
+    "deep",
+    "metallic",
+    "dark",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.42, "movement": 0.18, "density": 0.82, "space": 0.6, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.42,
+    "movement": 0.18,
+    "density": 0.82,
+    "space": 0.6,
+    "aggression": 0.22
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.28, "MOVEMENT": 0.18, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

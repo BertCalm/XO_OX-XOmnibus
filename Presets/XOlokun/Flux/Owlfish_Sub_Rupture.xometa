@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Sub Rupture",
   "mood": "Flux",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast subharmonic attack with heavy compression and chaotic LFO — seismic rupture from the ocean floor.",
-  "tags": ["flux", "sub", "rupture", "fast", "seismic", "abyssal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "sub",
+    "rupture",
+    "fast",
+    "seismic",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.45, "movement": 0.85, "density": 0.88, "space": 0.35, "aggression": 0.82},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.45,
+    "movement": 0.85,
+    "density": 0.88,
+    "space": 0.35,
+    "aggression": 0.82
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.55,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.88, "MOVEMENT": 0.85, "COUPLING": 0.45, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.45,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

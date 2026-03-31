@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Submarine Hull",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "A nuclear submarine at 400 meters. The hull is 50mm of HY-80 steel. It groans under lateral pressure. The comb filter is the metal — short delay, allpass diffusion, the distinct ring of a hollow chamber built to withstand crushing force.",
-  "tags": ["bass", "submerged", "submarine", "industrial", "wreck", "metal", "hull", "heavy", "compression"],
+  "tags": [
+    "bass",
+    "submerged",
+    "submarine",
+    "industrial",
+    "wreck",
+    "metal",
+    "hull",
+    "heavy",
+    "compression"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "WRECK macro controls hull mix. PRESSURE macro adds hydrostatic compression — push past 0.7 and the hull begins to fail. The industrial sub-bass core sits at filterCutoff=280 for mid-depth warmth with metal weight.",
     "diagnosis": "bodyChar=2 (Wreck): short comb + allpass diffusion — the signature of a hollow metal chamber. bodyMix=0.9 makes the hull completely dominant. pressureAmt=0.5 gives realistic submarine depth compression without collapse. filterCutoff=280 for mid-depth industrial weight."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.9,
     "ABYSS": 0.55
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

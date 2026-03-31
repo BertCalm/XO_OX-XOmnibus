@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Trojan Bass",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fat sawtooth in the style of late-60s Jamaican rocksteady, chest-filling and purposeful.",
-  "tags": ["foundation", "bass", "rocksteady", "fat", "vintage"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "bass",
+    "rocksteady",
+    "fat",
+    "vintage"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,7 +69,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.08, "COUPLING": 0.28, "SPACE": 0.12},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.22, "warmth": 0.85, "movement": 0.12, "density": 0.82, "space": 0.14, "aggression": 0.38}
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.28,
+    "SPACE": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.85,
+    "movement": 0.12,
+    "density": 0.82,
+    "space": 0.14,
+    "aggression": 0.38
+  }
 }

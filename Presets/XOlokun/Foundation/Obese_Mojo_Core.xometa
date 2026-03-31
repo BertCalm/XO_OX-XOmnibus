@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mojo Core",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "B015 Mojo Control centered at 0.5 — balanced analog warmth and digital precision creates the foundational character voice that every Obese preset branches from.",
-  "tags": ["foundation", "mojo", "balanced", "character", "core"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "mojo",
+    "balanced",
+    "character",
+    "core"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.65, "movement": 0.2, "density": 0.6, "space": 0.3, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.3,
+    "aggression": 0.4
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.5,
@@ -46,6 +66,13 @@
       "fat_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

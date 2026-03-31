@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "FM Void",
+  "name": "FM Void (Orbital)",
   "mood": "Aether",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FM modulation fading into void \u2014 moderate FM ratio with long group attack, metallic harmonic shimmer dissolving into infinite space.",
+  "description": "FM modulation fading into void — moderate FM ratio with long group attack, metallic harmonic shimmer dissolving into infinite space.",
   "tags": [
     "fm",
     "void",

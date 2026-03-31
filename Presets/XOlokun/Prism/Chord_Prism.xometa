@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Chord Prism",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bob chord mode in bright prism register — spectral chord voicing across the amber.",
-  "tags": ["prism", "chord", "bright", "voicing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "chord",
+    "bright",
+    "voicing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.55, "movement": 0.55, "density": 0.6, "space": 0.6, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.55,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.28
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

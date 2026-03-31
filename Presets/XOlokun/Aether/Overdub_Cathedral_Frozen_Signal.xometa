@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Frozen Signal",
   "mood": "Aether",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Artifact Cathedral with freeze enabled — dub spring reverb tail gets captured in a data-rotted cathedral freeze where bit crush (0.18) and packet loss (0.12) degrade the frozen signal over time. The sun mix at 0.72 keeps harmonics present in the degradation. The freeze never resets; each held note adds to the artifact field.",
-  "tags": ["aether", "dub", "cathedral", "freeze", "artifact", "boutique", "fx_chain:Boutique", "boutique-fx-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "dub",
+    "cathedral",
+    "freeze",
+    "artifact",
+    "boutique",
+    "fx_chain:Boutique",
+    "boutique-fx-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.68, "movement": 0.28, "density": 0.78, "space": 0.88, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.68,
+    "movement": 0.28,
+    "density": 0.78,
+    "space": 0.88,
+    "aggression": 0.18
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 1,
@@ -51,8 +74,15 @@
       "dub_polyphony": 4
     }
   },
-  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.88},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "bfx_anMix": 0.0,
     "bfx_daMix": 0.0,

@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "Iron Haze",
   "mood": "Atmosphere",
-  "engines": ["Oven"],
+  "engines": [
+    "Oven"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cast iron in fog. Low brightness, maximum bloom time — each note takes four seconds to reach full volume, rising from the thermal mass. The body resonance dominant. Notes appear from the mist and sustain indefinitely. Atmospheric use: chords held for bars at a time.",
-  "tags": ["piano", "cast iron", "atmosphere", "bloom", "haze", "fog", "slow", "dark", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "cast iron",
+    "atmosphere",
+    "bloom",
+    "haze",
+    "fog",
+    "slow",
+    "dark",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

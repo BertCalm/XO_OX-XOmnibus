@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Aquarium Dart",
   "mood": "Foundation",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean darting arp mode — quick upward sweeps like a tetra cutting across the tank.",
-  "tags": ["arp", "dart", "clean", "upward"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "arp",
+    "dart",
+    "clean",
+    "upward"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.76, "warmth": 0.25, "movement": 0.72, "density": 0.38, "space": 0.42, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.25,
+    "movement": 0.72,
+    "density": 0.38,
+    "space": 0.42,
+    "aggression": 0.22
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.38
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.72, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

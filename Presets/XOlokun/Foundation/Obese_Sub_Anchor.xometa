@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sub Anchor",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum sub level with sub octave at -2 — pure infralow anchor with minimal morph and gentle saturation, the bedrock of any mix requiring gravity below 60Hz.",
-  "tags": ["foundation", "sub", "anchor", "infralow", "minimal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "sub",
+    "anchor",
+    "infralow",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.1, "warmth": 0.8, "movement": 0.05, "density": 0.85, "space": 0.15, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.8,
+    "movement": 0.05,
+    "density": 0.85,
+    "space": 0.15,
+    "aggression": 0.2
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.1,
@@ -46,6 +66,13 @@
       "fat_level": 0.9
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.05, "COUPLING": 0.0, "SPACE": 0.15},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

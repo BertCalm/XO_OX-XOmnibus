@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Pulse Lead",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pulse wave lead — classic vintage pulse, moderate resonance, mono delivery.",
-  "tags": ["pulse", "lead", "vintage", "mono"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pulse",
+    "lead",
+    "vintage",
+    "mono"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.45, "movement": 0.25, "density": 0.42, "space": 0.28, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.25,
+    "density": 0.42,
+    "space": 0.28,
+    "aggression": 0.38
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 2,
@@ -54,6 +73,13 @@
       "drift_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.58, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

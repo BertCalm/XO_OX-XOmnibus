@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-14",
-  "description": "A slow, near-inaudible morph at the sine end of the wavetable \u2014 filter barely open, long bloom attack, no sub presence, drift at minimum. The sound of Oscar in suspended animation, gills moving once every few seconds. Dark as the deep cave habitat with just one thin breath of tone.",
+  "description": "A slow, near-inaudible morph at the sine end of the wavetable — filter barely open, long bloom attack, no sub presence, drift at minimum. The sound of Oscar in suspended animation, gills moving once every few seconds. Dark as the deep cave habitat with just one thin breath of tone.",
   "dna": {
     "aggression": 0.02,
     "brightness": 0.12,
@@ -29,7 +29,7 @@
     "DENSITY"
   ],
   "mood": "Atmosphere",
-  "name": "Cave Breath",
+  "name": "Cave Breath (OddOscar)",
   "parameters": {
     "OddOscar": {
       "morph_bloom": 2.5,

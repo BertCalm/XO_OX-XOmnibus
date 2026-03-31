@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Periodic boundary at high stiffness \u2014 ring topology with fast wave propagation produces bell-like inharmonic partials. No sustain, low damping lets the chain ring long. The nonlinear cubic term stiffens at higher velocities, exactly like a real bell.",
+  "description": "Periodic boundary at high stiffness — ring topology with fast wave propagation produces bell-like inharmonic partials. No sustain, low damping lets the chain ring long. The nonlinear cubic term stiffens at higher velocities, exactly like a real bell.",
   "tags": [
     "bell",
     "metallic",

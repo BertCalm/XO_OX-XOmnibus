@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "D'Angelo Rhodes",
   "mood": "Organic",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Neo-soul warmth. D'Angelo Brown Sugar era Rhodes — warm, intimate, slightly compressed, gentle tremolo at moderate speed. The Rhodes as interior monologue.",
-  "tags": ["rhodes", "neo-soul", "warm", "dangelo", "intimate", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "neo-soul",
+    "warm",
+    "dangelo",
+    "intimate",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

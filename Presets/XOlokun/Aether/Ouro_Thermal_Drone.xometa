@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Rossler free-running at low chaos \u2014 near a limit cycle, almost tonal. Heavy damping filters out fast variations, leaving only the slow orbital heat. Pitch is approximate and honest about it.",
+  "description": "Rossler free-running at low chaos — near a limit cycle, almost tonal. Heavy damping filters out fast variations, leaving only the slow orbital heat. Pitch is approximate and honest about it.",
   "tags": [
     "drone",
     "warm",

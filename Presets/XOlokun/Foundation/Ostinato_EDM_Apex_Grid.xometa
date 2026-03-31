@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Apex Grid (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Maximum grid density — all 8 seats firing. Taiko kick + beatbox snare provide the structural 4/4 spine. Conga and bongo fill every subdivision between beats. Tabla flams appear on seat 7 for rapid-fire accent bursts. At GATHER=0 you get the foundation grid; at GATHER=1.0 all auxiliary voices slam in for the full apex.",
-  "tags": ["edm", "apex", "dense", "grid", "all-seats", "maximum-density"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "edm",
+    "apex",
+    "dense",
+    "grid",
+    "all-seats",
+    "maximum-density"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 134,
   "dna": {

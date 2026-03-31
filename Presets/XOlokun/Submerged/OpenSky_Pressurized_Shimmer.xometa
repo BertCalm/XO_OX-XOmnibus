@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Pressurized Shimmer",
   "mood": "Submerged",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The open sky seen from 200m below the surface: diffuse, dark blue, impossibly far away. OpenSky's shimmer reverb becomes the water column itself. Supersaw spread is minimal — only one voice, thick with water pressure. The RISE macro becomes a slow ascent toward the surface.",
-  "tags": ["pad", "shimmer", "submerged", "dark", "pressure", "depth", "slow"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "pad",
+    "shimmer",
+    "submerged",
+    "dark",
+    "pressure",
+    "depth",
+    "slow"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

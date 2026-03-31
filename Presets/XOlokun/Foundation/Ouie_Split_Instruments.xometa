@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Split Instruments",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Split mode at B3 (note 59). Left hand: warm VA pad with slow attack, LP filter at 1800 Hz. Right hand: bright KS plucked strings with fast attack, LP filter at 7200 Hz. Two genuinely different instruments in one engine. Independent envelopes, independent filters. The left hand holds the harmony while the right hand plays the melody. CURRENT macro widens the stereo field to separate them.",
-  "tags": ["split", "bi-timbral", "pad", "pluck", "keys", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "split",
+    "bi-timbral",
+    "pad",
+    "pluck",
+    "keys",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.5
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-08",
-  "name": "Pelagic Dream",
+  "name": "Astral Pad",
   "description": "Floating pads texture with voyager drift and prism shimmer.",
   "dna": {
     "aggression": 0.083,
@@ -30,7 +30,6 @@
     "FRACTURE"
   ],
   "mood": "Atmosphere",
-  "name": "Astral Pad",
   "parameters": {
     "Odyssey": {
       "drift_attack": 200.0,

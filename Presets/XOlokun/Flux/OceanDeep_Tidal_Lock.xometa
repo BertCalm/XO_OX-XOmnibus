@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tidal Lock",
+  "name": "Tidal Lock (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"
@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Sutra 4: Integer LFO Ratios Create Stable Polyrhythms", "D006: Expression Input Is Not Optional"],
+    "scripture": [
+      "Sutra 4: Integer LFO Ratios Create Stable Polyrhythms",
+      "D006: Expression Input Is Not Optional"
+    ],
     "revelation": "Tempora spoke: LFO1 at 2.0 Hz and LFO2 at 1.0 Hz form a 2:1 ratio — the same relationship as Earth-Moon tidal locking. The filter oscillates at double the compression rate, creating a breathing pattern where every other filter sweep coincides with a pressure peak. The result is a polyrhythmic texture that never drifts because the ratio is exact. But aftertouch breaks the lock by adding non-periodic pressure — chaos from expression.",
     "god": "Tempora",
     "flock_note": "The Breath mapped the polyrhythm: beat 1 — filter up + pressure up. Beat 2 — filter up + pressure down. Beat 3 — filter up + pressure up. The pattern creates a compound rhythm from two simple sinusoidal LFOs. The Tongue confirmed: aftertouch disrupts the clean ratio by adding DC offset to the pressure, making the compression respond to touch rather than cycle.",

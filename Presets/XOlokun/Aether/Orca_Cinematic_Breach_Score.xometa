@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Breach Score",
   "mood": "Aether",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Sub breach activated on every note — a deep subharmonic blooms 100ms after the attack like a second instrument answering. Cinematic call-and-response in a single engine.",
-  "tags": ["cinematic", "sub", "breach", "call-response", "layered", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "cinematic",
+    "sub",
+    "breach",
+    "call-response",
+    "layered",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.72, "movement": 0.35, "density": 0.75, "space": 0.85, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.75,
+    "space": 0.85,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.32,
@@ -57,6 +78,13 @@
       "orca_macroSpace": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

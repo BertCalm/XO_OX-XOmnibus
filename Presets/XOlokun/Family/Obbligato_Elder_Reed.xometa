@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Elder Reed",
   "mood": "Family",
-  "engines": ["Obbligato"],
+  "engines": [
+    "Obbligato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The older voice leads with darker timber while the younger reed follows in close harmonic shadow.",
-  "tags": ["reed", "family", "elder", "dark", "bond"],
-  "macroLabels": ["BOND", "BREATH", "WEIGHT", "SPACE"],
+  "tags": [
+    "reed",
+    "family",
+    "elder",
+    "dark",
+    "bond"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WEIGHT",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.72, "movement": 0.42, "density": 0.55, "space": 0.58, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.72,
+    "movement": 0.42,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.18
+  },
   "parameters": {
     "Obbligato": {
       "obbl_breathA": 0.72,
@@ -39,6 +59,13 @@
       "obbl_macroSpace": 0.45
     }
   },
-  "macros": {"BOND": 0.55, "BREATH": 0.62, "WEIGHT": 0.68, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOND": 0.55,
+    "BREATH": 0.62,
+    "WEIGHT": 0.68,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

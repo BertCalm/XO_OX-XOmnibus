@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Parallel Organ Hybrid",
   "mood": "Deep",
-  "engines": ["Opcode"],
+  "engines": [
+    "Opcode"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Algorithm 1 (Parallel) — carrier and modulator run independently, their outputs summed. Creates a denser additive-like spectrum. At low FM index, the carrier dominates; at high index, the modulator adds independent harmonic layers. Organ-like density.",
-  "tags": ["fm", "parallel", "algorithm-1", "organ", "dense", "deep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fm",
+    "parallel",
+    "algorithm-1",
+    "organ",
+    "dense",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

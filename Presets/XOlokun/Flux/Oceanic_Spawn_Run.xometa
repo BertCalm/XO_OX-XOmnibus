@@ -2,45 +2,74 @@
   "schema_version": 1,
   "name": "Spawn Run",
   "mood": "Flux",
-  "engines": ["Oceanic"],
+  "engines": [
+    "Oceanic"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Massive flock in spawning run — maximum sub-flocks in urgent directional motion, dense and fast.",
-  "tags": ["spawn", "run", "dense", "urgent", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "spawn",
+    "run",
+    "dense",
+    "urgent",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.5, "movement": 0.82, "density": 0.78, "space": 0.42, "aggression": 0.62},
-  "parameters": {"Oceanic": {
-    "ocean_waveform": 0,
-    "ocean_subflocks": 8,
-    "ocean_separation": 0.45,
-    "ocean_cohesion": 0.65,
-    "ocean_alignment": 0.9,
-    "ocean_tether": 0.25,
-    "ocean_scatter": 0.55,
-    "ocean_damping": 0.1,
-    "ocean_lfo1Rate": 7.0,
-    "ocean_lfo1Depth": 0.68,
-    "ocean_lfo1Shape": 0,
-    "ocean_lfo2Rate": 3.5,
-    "ocean_lfo2Depth": 0.52,
-    "ocean_lfo2Shape": 1,
-    "ocean_swarmEnvAttack": 0.05,
-    "ocean_swarmEnvDecay": 0.25,
-    "ocean_swarmEnvSustain": 0.82,
-    "ocean_swarmEnvRelease": 0.38,
-    "ocean_ampAttack": 0.05,
-    "ocean_ampDecay": 0.25,
-    "ocean_ampSustain": 0.82,
-    "ocean_ampRelease": 0.38,
-    "ocean_glide": 0.05,
-    "ocean_voiceMode": 0,
-    "ocean_macroCharacter": 0.6,
-    "ocean_macroMovement": 0.82,
-    "ocean_macroCoupling": 0.5,
-    "ocean_macroSpace": 0.4
-  }},
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.82, "COUPLING": 0.5, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.5,
+    "movement": 0.82,
+    "density": 0.78,
+    "space": 0.42,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_waveform": 0,
+      "ocean_subflocks": 8,
+      "ocean_separation": 0.45,
+      "ocean_cohesion": 0.65,
+      "ocean_alignment": 0.9,
+      "ocean_tether": 0.25,
+      "ocean_scatter": 0.55,
+      "ocean_damping": 0.1,
+      "ocean_lfo1Rate": 7.0,
+      "ocean_lfo1Depth": 0.68,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 3.5,
+      "ocean_lfo2Depth": 0.52,
+      "ocean_lfo2Shape": 1,
+      "ocean_swarmEnvAttack": 0.05,
+      "ocean_swarmEnvDecay": 0.25,
+      "ocean_swarmEnvSustain": 0.82,
+      "ocean_swarmEnvRelease": 0.38,
+      "ocean_ampAttack": 0.05,
+      "ocean_ampDecay": 0.25,
+      "ocean_ampSustain": 0.82,
+      "ocean_ampRelease": 0.38,
+      "ocean_glide": 0.05,
+      "ocean_voiceMode": 0,
+      "ocean_macroCharacter": 0.6,
+      "ocean_macroMovement": 0.82,
+      "ocean_macroCoupling": 0.5,
+      "ocean_macroSpace": 0.4
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.5,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

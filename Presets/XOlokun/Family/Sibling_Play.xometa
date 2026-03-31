@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Sibling Play",
+  "name": "Sibling Play (Orca)",
   "mood": "Family",
   "engines": [
     "Orca"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Juveniles playing at the surface \u2014 breaching, spy-hopping, tail slapping for fun not hunting. Higher wavetable position, faster LFO, playful formant movement. Hunt macro absent; pure energy without intent.",
+  "description": "Juveniles playing at the surface — breaching, spy-hopping, tail slapping for fun not hunting. Higher wavetable position, faster LFO, playful formant movement. Hunt macro absent; pure energy without intent.",
   "tags": [
     "family",
     "play",

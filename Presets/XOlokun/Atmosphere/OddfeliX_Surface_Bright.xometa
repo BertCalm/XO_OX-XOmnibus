@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Surface Bright",
   "mood": "Atmosphere",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow, luminous atmosphere blooming from the water surface where light enters.",
-  "tags": ["surface", "bright", "atmosphere", "luminous"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "surface",
+    "bright",
+    "atmosphere",
+    "luminous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.25, "movement": 0.3, "density": 0.55, "space": 0.8, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.25,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.08
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -31,6 +50,13 @@
       "snap_macroSurface": 0.9
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

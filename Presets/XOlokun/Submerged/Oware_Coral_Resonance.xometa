@@ -7,7 +7,7 @@
   "description": "Coral-encrusted bowls vibrating in a deep reef — bowl material, frame body captures the reef's structural resonances at 200/580/1100 Hz, high sympathetic network like coral polyps conducting vibration through shared calcium. Three Hz of shimmer: a reef is never still.",
   "dna": {
     "aggression": 0.08,
-    "brightness": 0.30,
+    "brightness": 0.3,
     "density": 0.68,
     "movement": 0.25,
     "space": 0.88,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "macros": {
-    "CHARACTER": 0.50,
+    "CHARACTER": 0.5,
     "COUPLING": 0.0,
     "MOVEMENT": 0.25,
     "SPACE": 0.88
@@ -45,7 +45,7 @@
       "owr_decay": 5.8,
       "owr_filterEnvAmount": 0.14,
       "owr_bendRange": 3,
-      "owr_macroMaterial": 0.50,
+      "owr_macroMaterial": 0.5,
       "owr_macroMallet": 0.25,
       "owr_macroCoupling": 0.0,
       "owr_macroSpace": 0.88

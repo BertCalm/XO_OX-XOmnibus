@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Analog Ground",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Analog warmth grounded in amber — oscillator drift and warm filter character.",
-  "tags": ["foundation", "analog", "warm", "ground"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "analog",
+    "warm",
+    "ground"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.75, "movement": 0.35, "density": 0.55, "space": 0.48, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.75,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.22
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

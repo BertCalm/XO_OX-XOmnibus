@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Reef Breath",
+  "name": "Reef Breath (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

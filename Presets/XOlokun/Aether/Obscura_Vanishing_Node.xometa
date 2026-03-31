@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Vanishing Node",
   "mood": "Aether",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Periodic boundary allows modes to wrap continuously — no hard reflection, just endless circulation. Extremely low damping and medium stiffness sustain the resonance almost indefinitely. Very slow sustain force, wide scanner reads the full standing wave. Ideal for long, dissolving tones that never quite end.",
-  "tags": ["periodic", "aether", "sustained", "ambient", "dissolving", "resonant", "long-decay"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "periodic",
+    "aether",
+    "sustained",
+    "ambient",
+    "dissolving",
+    "resonant",
+    "long-decay"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.48,
@@ -19,17 +38,17 @@
       "obscura_nonlinear": 0.04,
       "obscura_excitePos": 0.35,
       "obscura_exciteWidth": 0.42,
-      "obscura_scanWidth": 0.90,
+      "obscura_scanWidth": 0.9,
       "obscura_boundary": 2,
       "obscura_sustain": 0.25,
-      "obscura_level": 0.70,
-      "obscura_ampAttack": 1.80,
+      "obscura_level": 0.7,
+      "obscura_ampAttack": 1.8,
       "obscura_ampDecay": 2.0,
       "obscura_ampSustain": 0.82,
       "obscura_ampRelease": 6.0,
-      "obscura_physEnvAttack": 1.20,
+      "obscura_physEnvAttack": 1.2,
       "obscura_physEnvDecay": 2.5,
-      "obscura_physEnvSustain": 0.70,
+      "obscura_physEnvSustain": 0.7,
       "obscura_physEnvRelease": 5.0,
       "obscura_lfo1Rate": 0.02,
       "obscura_lfo1Depth": 0.06,
@@ -46,7 +65,9 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,

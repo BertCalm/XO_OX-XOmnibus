@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Coral Succession",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Noise src1 drives Wavetable src2 (bank 0) through maximal symbiosis (symbiosisStrength=0.9). The noise feeds FM energy into the wavetable position, causing the wavetable to scan continuously — driven by the ecology, not by an LFO. Ecological succession in audio: the noise community establishes first, then creates conditions for the wavetable community to thrive and complexify. A reef building itself.",
-  "tags": ["obrix", "atmosphere", "noise", "wavetable", "brick-ecology", "symbiosis", "succession", "wave4"],
+  "tags": [
+    "obrix",
+    "atmosphere",
+    "noise",
+    "wavetable",
+    "brick-ecology",
+    "symbiosis",
+    "succession",
+    "wave4"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.5,

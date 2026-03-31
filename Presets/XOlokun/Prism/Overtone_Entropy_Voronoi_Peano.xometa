@@ -2,15 +2,38 @@
   "schema_version": 1,
   "name": "Peano Convergence",
   "mood": "Prism",
-  "engines": ["Overtone"],
+  "engines": [
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Entropy Cooler at high stability (0.78) compresses the spectral variance of the continued-fraction partials, then Voronoi Shatter re-fragments them at grain size 28ms. The two mathematical processes work against each other — entropy pulls toward order, Voronoi re-shatters toward geometric chaos — creating a trembling equilibrium.",
-  "tags": ["prism", "spectral", "entropy", "voronoi", "peano", "mathematical", "fx_chain:Mathematical", "math-fx-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "spectral",
+    "entropy",
+    "voronoi",
+    "peano",
+    "mathematical",
+    "fx_chain:Mathematical",
+    "math-fx-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.38, "movement": 0.68, "density": 0.65, "space": 0.48, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.38,
+    "movement": 0.68,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.42
+  },
   "parameters": {
     "Overtone": {
       "over_constant": 2,
@@ -41,8 +64,15 @@
       "over_macroSpace": 0.48
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.68, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "mfx_ecStability": 0.78,
     "mfx_ecCoolRate": 0.45,

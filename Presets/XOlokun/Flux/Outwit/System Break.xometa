@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 90 with near-max synapse (0.78) \u2014 extreme coupling creates cascade system failure.",
+  "description": "Rule 90 with near-max synapse (0.78) — extreme coupling creates cascade system failure.",
   "dna": {
     "aggression": 0.82,
     "brightness": 0.73,

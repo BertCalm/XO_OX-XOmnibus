@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Hadal Suspension",
   "mood": "Atmosphere",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-water column ambience — inharmonic partials breathe slowly as if suspended in the hadal zone, never touching the seafloor.",
-  "tags": ["atmosphere", "ambient", "hadal", "slow-breath", "inharmonic", "metallic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "ambient",
+    "hadal",
+    "slow-breath",
+    "inharmonic",
+    "metallic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.22, "COUPLING": 0.4, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.4,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

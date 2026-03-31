@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "OVERGROW — runner showcase. Play hard 30s. Then hold. Listen below. The weed sprouts its runner.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.45,
     "aggression": 0.35
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Organic",
   "name": "Runner Ready",
   "parameters": {
@@ -41,7 +50,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["overgrow", "string", "organic", "runner", "showcase", "sympathetic"],
+  "tags": [
+    "overgrow",
+    "string",
+    "organic",
+    "runner",
+    "showcase",
+    "sympathetic"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

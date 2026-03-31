@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Surge Cascade",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Harmonic surge cascade — groups triggering in rapid succession, warm spectral flood.",
-  "tags": ["surge", "cascade", "groups", "rapid"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "surge",
+    "cascade",
+    "groups",
+    "rapid"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.6, "movement": 0.82, "density": 0.68, "space": 0.28, "aggression": 0.72},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.6,
+    "movement": 0.82,
+    "density": 0.68,
+    "space": 0.28,
+    "aggression": 0.72
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.68,
@@ -46,6 +65,13 @@
       "orb_level": 0.74
     }
   },
-  "macros": {"SPECTRAL": 0.68, "VELOCITY": 0.82, "GROUP": 0.0, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.68,
+    "VELOCITY": 0.82,
+    "GROUP": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

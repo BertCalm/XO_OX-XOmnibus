@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Arp Prism",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Arpeggiator at medium-fast rate through 2 octaves with high filter resonance — fat engine arp creates a prismatic sequence of harmonic variants from every held chord.",
-  "tags": ["prism", "arpeggio", "sequence", "harmonic", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "arpeggio",
+    "sequence",
+    "harmonic",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 120,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.75, "density": 0.55, "space": 0.4, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.5
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.5,
@@ -46,6 +66,13 @@
       "fat_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.75, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

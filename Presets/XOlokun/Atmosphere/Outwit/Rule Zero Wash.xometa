@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rule 0 (all cells die) \u2014 static after first step. Low step rate, ink cloud for movement.",
+  "description": "Rule 0 (all cells die) — static after first step. Low step rate, ink cloud for movement.",
   "dna": {
     "aggression": 0.02,
     "brightness": 0.22,

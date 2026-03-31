@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Hydrothermal Blast",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The sudden eruption of a hydrothermal vent — superheated water exploding into cold ocean. Arms in violent motion, ink cloud saturating, filter racing from closed to open. A geological flux event.",
-  "tags": ["octopus", "flux", "hydrothermal", "blast", "violent", "eruption", "extreme"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "flux",
+    "hydrothermal",
+    "blast",
+    "violent",
+    "eruption",
+    "extreme"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.95,

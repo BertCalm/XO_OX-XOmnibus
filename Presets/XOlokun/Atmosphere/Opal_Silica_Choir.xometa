@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Silica Choir",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense grain cloud with slight pitch randomization per grain (pitchScatter=2.5 semitones) and a slow 0.067Hz position LFO sweeping through source material. The oscillator is a Two-Osc configuration with subtle detune. The result is a chorus of voices that has never been a vocal recording — the human in the machine without the human.",
-  "tags": ["granular", "choir", "dense", "shimmer", "atmosphere", "slow-lfo", "texture"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "granular",
+    "choir",
+    "dense",
+    "shimmer",
+    "atmosphere",
+    "slow-lfo",
+    "texture"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

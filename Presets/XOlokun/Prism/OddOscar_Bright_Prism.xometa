@@ -2,18 +2,64 @@
   "schema_version": 1,
   "name": "Bright Prism",
   "mood": "Prism",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bright prismatic morph — high filter cutoff throws the morph into a vivid spectral light.",
-  "tags": ["bright", "vivid", "prism", "light"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bright",
+    "vivid",
+    "prism",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.48, "movement": 0.55, "density": 0.52, "space": 0.55, "aggression": 0.22},
-  "parameters": {
-    "OddOscar": {"morph_morph": 0.6, "morph_bloom": 0.62, "morph_detune": 0.16, "morph_drift": 0.38, "morph_filterCutoff": 8000.0, "morph_filterReso": 0.5, "morph_filterEnvDepth": 0.58, "morph_sub": 0.15, "morph_decay": 0.7, "morph_sustain": 0.72, "morph_release": 1.8, "morph_glide": 0.08, "morph_voiceMode": 0, "morph_polyphony": 6, "morph_level": 0.7, "morph_macroBloom": 0.62, "morph_macroDepth": 0.6, "morph_macroDrift": 0.38, "morph_macroSpace": 0.55}
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.22
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.6,
+      "morph_bloom": 0.62,
+      "morph_detune": 0.16,
+      "morph_drift": 0.38,
+      "morph_filterCutoff": 8000.0,
+      "morph_filterReso": 0.5,
+      "morph_filterEnvDepth": 0.58,
+      "morph_sub": 0.15,
+      "morph_decay": 0.7,
+      "morph_sustain": 0.72,
+      "morph_release": 1.8,
+      "morph_glide": 0.08,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.7,
+      "morph_macroBloom": 0.62,
+      "morph_macroDepth": 0.6,
+      "morph_macroDrift": 0.38,
+      "morph_macroSpace": 0.55
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

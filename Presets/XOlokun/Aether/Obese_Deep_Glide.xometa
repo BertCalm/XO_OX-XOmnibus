@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Deep Glide",
   "mood": "Aether",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Long glide time across a two-octave sub range — monophonic bass notes that melt into each other with whale-song beauty.",
-  "tags": ["glide", "portamento", "sub", "slow", "ethereal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glide",
+    "portamento",
+    "sub",
+    "slow",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.7, "movement": 0.35, "density": 0.85, "space": 0.75, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.85,
+    "space": 0.75,
+    "aggression": 0.12
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.5,
@@ -41,6 +61,13 @@
       "fat_level": 0.76
     }
   },
-  "macros": {"CHARACTER": 0.12, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

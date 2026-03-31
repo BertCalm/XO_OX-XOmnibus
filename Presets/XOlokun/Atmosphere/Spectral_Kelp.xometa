@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Spectral Kelp",
   "mood": "Atmosphere",
-  "engines": ["Optic", "Organon"],
+  "engines": [
+    "Optic",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPTIC spectral analysis feeds Organon like a slow kelp forest current. Pure spectrum-reactive modulation, no pulse. Organon's metabolic filter sways with the spectral weather of its own output.",
-  "tags": ["optic", "atmosphere", "spectral", "organon-pair", "kelp", "current", "feedback"],
-  "macroLabels": ["REACTIVITY", "METABOLISM", "SPACE", "TONE"],
+  "tags": [
+    "optic",
+    "atmosphere",
+    "spectral",
+    "organon-pair",
+    "kelp",
+    "current",
+    "feedback"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "METABOLISM",
+    "SPACE",
+    "TONE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.55,
@@ -46,8 +66,18 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Organon", "engineB": "Optic", "type": "AudioToFM", "amount": 0.4 },
-      { "engineA": "Optic", "engineB": "Organon", "type": "AmpToFilter", "amount": 0.35 }
+      {
+        "engineA": "Organon",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.4
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Organon",
+        "type": "AmpToFilter",
+        "amount": 0.35
+      }
     ]
   },
   "sequencer": null,

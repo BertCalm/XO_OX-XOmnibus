@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Diffraction",
   "mood": "Prism",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Blown tone diffracting around grain scatter, spectral bending like light around edges.",
-  "tags": ["prism", "diffraction", "spectral", "bending"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "prism",
+    "diffraction",
+    "spectral",
+    "bending"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.6,
     "MEADOW": 0.58
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Contemporary Pop Wurlitzer",
   "mood": "Luminous",
-  "engines": ["Oddfellow"],
+  "engines": [
+    "Oddfellow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "2010s pop production Wurlitzer. Brighter than vintage, moderate tremolo, layered in a dense mix. Adele, Ed Sheeran territory — the Wurlitzer as emotional punctuation in modern production.",
-  "tags": ["wurlitzer", "pop", "contemporary", "bright", "modern", "luminous"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "wurlitzer",
+    "pop",
+    "contemporary",
+    "bright",
+    "modern",
+    "luminous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

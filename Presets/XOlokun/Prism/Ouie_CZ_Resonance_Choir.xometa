@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "CZ Resonance Choir",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Both voices on Phase Distortion (CZ-style) in LOVE at +0.65. Voice 1 depth at 0.72 produces a resonant formant near 2400 Hz — the first vowel 'ah'. Voice 2 depth at 0.38 sits at a lower formant — 'oh'. Through LOVE, the two vowels fuse into a choir-like texture that no single oscillator can achieve. Resonance at 0.3 on both filters adds the Formant Whisper.",
-  "tags": ["vocal", "formant", "phase-distortion", "choir", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "vocal",
+    "formant",
+    "phase-distortion",
+    "choir",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +89,7 @@
       "ouie_macroCurrent": 0.25
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

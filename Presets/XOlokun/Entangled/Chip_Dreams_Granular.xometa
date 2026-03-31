@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Chip Dreams Granular",
   "mood": "Entangled",
-  "engines": ["Overworld", "Opal"],
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Overworld FM audio feeds Opal as live grain source — SNES-leaning chip sound time-scattered into hovering granular clouds. Moderate coupling; the console bleeds into the cloud.",
-  "tags": ["coupling", "chip", "granular", "Overworld-pair", "fm", "snes", "clouds"],
-  "macroLabels": ["ERA", "GRAIN SCATTER", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "chip",
+    "granular",
+    "Overworld-pair",
+    "fm",
+    "snes",
+    "clouds"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GRAIN SCATTER",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.8,
@@ -116,8 +136,18 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Overworld", "engineB": "Opal", "type": "Audio->FM", "amount": 0.5 },
-      { "engineA": "Overworld", "engineB": "Opal", "type": "Amp->Filter", "amount": 0.25 }
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "Audio->FM",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "Amp->Filter",
+        "amount": 0.25
+      }
     ]
   },
   "sequencer": null,

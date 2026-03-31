@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Boneless Frenzy",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum microtonal chaos — pitch drift, shapeshifter at maximum, arms modulating pitch simultaneously. The octopus pouring itself through a gap in the harmonic series. No fixed pitch, no fixed form, total flux.",
-  "tags": ["octopus", "flux", "microtonal", "drift", "shapeshifter", "pitch", "chaos"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "flux",
+    "microtonal",
+    "drift",
+    "shapeshifter",
+    "pitch",
+    "chaos"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 4.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.75,

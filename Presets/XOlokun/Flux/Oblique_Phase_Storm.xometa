@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Phase Storm",
   "mood": "Flux",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phaser at storm velocity — maximum rate and depth, bouncing through fast-notch phase cascade.",
-  "tags": ["phase", "storm", "fast", "chaos", "flux"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "phase",
+    "storm",
+    "fast",
+    "chaos",
+    "flux"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.38, "movement": 0.95, "density": 0.55, "space": 0.22, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.38,
+    "movement": 0.95,
+    "density": 0.55,
+    "space": 0.22,
+    "aggression": 0.88
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 0,
@@ -50,6 +70,13 @@
       "oblq_macroSpace": 0.22
     }
   },
-  "macros": {"BOUNCE": 0.85, "COLOR": 0.65, "FOLD": 0.25, "SPACE": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.85,
+    "COLOR": 0.65,
+    "FOLD": 0.25,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

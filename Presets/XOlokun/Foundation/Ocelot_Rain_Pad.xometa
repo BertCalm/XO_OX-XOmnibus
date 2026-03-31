@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Rain Pad",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tropical rain on forest canopy — high humidity, all strata responding to falling water.",
-  "tags": ["rain", "pad", "foundation", "tropical", "humidity", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "rain",
+    "pad",
+    "foundation",
+    "tropical",
+    "humidity",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.68, "movement": 0.4, "density": 0.58, "space": 0.6, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.4,
+    "density": 0.58,
+    "space": 0.6,
+    "aggression": 0.18
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.6
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

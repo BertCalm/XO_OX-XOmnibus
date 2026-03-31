@@ -14,12 +14,12 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Predator Prey",
+  "name": "Predator Prey (Obrix)",
   "mood": "Flux",
   "engines": [
     "Obrix"
   ],
-  "description": "Maximum competition ecology (competitionStrength=0.9) between Square src1 and Sine src2. An LFO sweeps srcMix continuously \u2014 as the mix shifts, whichever source has more amplitude becomes the temporary predator. The other recedes, only to surge back when the cycle turns. Population dynamics made audible: one dominates, the other survives, then they reverse. Classic Lotka-Volterra behaviour in a synth.",
+  "description": "Maximum competition ecology (competitionStrength=0.9) between Square src1 and Sine src2. An LFO sweeps srcMix continuously — as the mix shifts, whichever source has more amplitude becomes the temporary predator. The other recedes, only to surge back when the cycle turns. Population dynamics made audible: one dominates, the other survives, then they reverse. Classic Lotka-Volterra behaviour in a synth.",
   "tags": [
     "obrix",
     "flux",

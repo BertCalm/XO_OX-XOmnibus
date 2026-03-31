@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Sea Fog Drift",
   "mood": "Atmosphere",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Coastal fog rolling in from the Atlantic — slow, diffuse, harbor reverb filling the distance.",
-  "tags": ["atmosphere", "fog", "coastal", "diffuse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "fog",
+    "coastal",
+    "diffuse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.6, "movement": 0.35, "density": 0.45, "space": 0.75, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.75,
+    "aggression": 0.1
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.4,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

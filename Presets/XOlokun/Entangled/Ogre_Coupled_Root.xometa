@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OGRE \u2014 gravitational coupling anchor. High gravity pulls the fleet's pitch to this root.",
+  "description": "OGRE — gravitational coupling anchor. High gravity pulls the fleet's pitch to this root.",
   "dna": {
     "brightness": 0.15,
     "warmth": 0.82,

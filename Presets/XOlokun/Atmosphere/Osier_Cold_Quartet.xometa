@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "High dormancy character: play after extended silence. Low companion (0.2) \u2014 the quartet plays cold, each voice slightly uncertain in pitch on initial attacks, settling as notes sustain. The quartet finding its tuning.",
+  "description": "High dormancy character: play after extended silence. Low companion (0.2) — the quartet plays cold, each voice slightly uncertain in pitch on initial attacks, settling as notes sustain. The quartet finding its tuning.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.4,

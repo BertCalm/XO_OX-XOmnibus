@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Formant Depth",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "High formant intensity with downward shift produces a cavernous vocal-like drone. LFO1 sweeps the formant slowly — an underwater voice with no body to contain it.",
-  "tags": ["dark-ambient", "formant", "vocal", "cavernous", "drone", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dark-ambient",
+    "formant",
+    "vocal",
+    "cavernous",
+    "drone",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.72, "movement": 0.25, "density": 0.68, "space": 0.88, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.72,
+    "movement": 0.25,
+    "density": 0.68,
+    "space": 0.88,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.55,
@@ -57,6 +78,13 @@
       "orca_macroSpace": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

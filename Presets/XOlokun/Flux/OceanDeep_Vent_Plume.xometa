@@ -21,7 +21,9 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: The Bioluminescent Exciter Is Alien Life"],
+    "scripture": [
+      "Verse: The Bioluminescent Exciter Is Alien Life"
+    ],
     "revelation": "Sinusoidal spoke: bioRate at 0.5 Hz (maximum) triggers noise bursts twice per second. At bioBrightness 4000 Hz (maximum), these bursts sit at the top of the darkness filter's range — barely passing through at cutoff 650 Hz, but the resonance peak at that frequency creates a bright whistling chimney effect. The vent has a voice: high-pressure gas through a mineral tube.",
     "god": "Sinusoidal",
     "flock_note": "The Eye confirmed: the bio bursts at 4000 Hz are heavily attenuated by the 650 Hz darkness filter, but the resonance peak lets through a narrow band — creating a whistle-like timbre from the interaction of the exciter and the filter. A sound that neither component alone could produce.",

@@ -4,14 +4,30 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": 110,
-  "macroLabels": ["GATHER", "SWING", "BODY", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "GATHER",
+    "SWING",
+    "BODY",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "World Fusion",
   "mood": "Atmosphere",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "description": "All 8 instruments playing together, swing at 33% — the universal groove that lives between all traditions. Global village in real time.",
-  "tags": ["ostinato", "world", "fusion", "ensemble", "multicultural", "groove"],
+  "tags": [
+    "ostinato",
+    "world",
+    "fusion",
+    "ensemble",
+    "multicultural",
+    "groove"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OSTINATO — The Circle",

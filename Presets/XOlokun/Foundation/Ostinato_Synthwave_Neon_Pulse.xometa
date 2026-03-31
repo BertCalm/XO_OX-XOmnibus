@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Neon Pulse (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-21",
   "description": "Synthwave drum machine feel — beatbox kick driving on 1, snare gated reverb on 2+4, hi-hat 8ths. The taiko rim adds an 80s gated-reverb metallic accent. Zero swing, punchy, retro. GATHER at 0.8 for locked 80s sequencer feel.",
-  "tags": ["synthwave", "gated-reverb", "80s", "drum-machine", "retro"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "synthwave",
+    "gated-reverb",
+    "80s",
+    "drum-machine",
+    "retro"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 110.0,
   "dna": {

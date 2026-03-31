@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Sunken Ceiling",
   "mood": "Submerged",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Looking up from deep water: the surface is an unreachable ceiling of broken light. OpenSky's shimmer becomes that scattering — the supersaw is compressed flat, filter barely open. Long attack and release create the sensation of floating up very slowly toward the light.",
-  "tags": ["pad", "shimmer", "dark", "submerged", "surface", "light", "ambient"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "tags": [
+    "pad",
+    "shimmer",
+    "dark",
+    "submerged",
+    "surface",
+    "light",
+    "ambient"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

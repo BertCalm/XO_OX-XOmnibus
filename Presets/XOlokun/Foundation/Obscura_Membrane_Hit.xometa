@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Free-boundary chain at low-medium stiffness \u2014 odd harmonics dominant, hollow drum-head resonance. Broad excitation width models a drumstick tip of finite radius. Fast amplitude decay simulates damped membrane. Velocity-sensitive \u2014 harder notes are brighter.",
+  "description": "Free-boundary chain at low-medium stiffness — odd harmonics dominant, hollow drum-head resonance. Broad excitation width models a drumstick tip of finite radius. Fast amplitude decay simulates damped membrane. Velocity-sensitive — harder notes are brighter.",
   "tags": [
     "membrane",
     "drum",

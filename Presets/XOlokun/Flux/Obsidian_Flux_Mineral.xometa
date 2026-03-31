@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Flux Mineral",
   "mood": "Flux",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-movement mineral flux — fast LFOs, fluctuating cross-mod, unstable resonance.",
-  "tags": ["flux", "movement", "unstable", "energetic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "movement",
+    "unstable",
+    "energetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.35, "movement": 0.85, "density": 0.55, "space": 0.45, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.35,
+    "movement": 0.85,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.5
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.55,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.45
     }
   },
-  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

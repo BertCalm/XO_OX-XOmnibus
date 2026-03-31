@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Sugar Work",
   "mood": "Prism",
-  "engines": ["Ochre"],
+  "engines": [
+    "Ochre"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Named for the art of pulling and shaping caramelized sugar in a copper pot. Bright, precise, crystalline at the top with warm amber body. The moment the sugar threads.",
-  "tags": ["piano", "copper", "crystalline", "precise", "delicate", "sugar", "kitchen"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "piano",
+    "copper",
+    "crystalline",
+    "precise",
+    "delicate",
+    "sugar",
+    "kitchen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

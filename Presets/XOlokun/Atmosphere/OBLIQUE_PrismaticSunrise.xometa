@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Prismatic Sunrise",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oblique as ambient pad — slow attack (600ms), wide detune, very slow LFO1 at 0.008 Hz sweeping the prism spectrum over two minutes. Maximum prism spread and width. Phaser deep and slow. High sustain, long release. Bounce clicks at barely audible level create gentle textural pings. Space macro opens the room.",
-  "tags": ["ambient", "pad", "slow", "spectral", "sunrise", "breathing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ambient",
+    "pad",
+    "slow",
+    "spectral",
+    "sunrise",
+    "breathing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -62,6 +76,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

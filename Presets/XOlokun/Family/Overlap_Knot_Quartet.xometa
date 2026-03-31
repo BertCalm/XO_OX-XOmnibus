@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Four of the six voices playing ensemble \u2014 the remaining two provide harmonic support. A torus topology configures the four-voice structure with the support pair at opposite points on the donut surface.",
+  "description": "Four of the six voices playing ensemble — the remaining two provide harmonic support. A torus topology configures the four-voice structure with the support pair at opposite points on the donut surface.",
   "tags": [
     "quartet",
     "torus",

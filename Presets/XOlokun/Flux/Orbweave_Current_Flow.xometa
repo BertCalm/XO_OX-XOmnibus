@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Slow saw LFO on filter cutoff with Trefoil coupling. The one-directional sweep mimics ocean current \u2014 always flowing, never repeating exactly.",
+  "description": "Slow saw LFO on filter cutoff with Trefoil coupling. The one-directional sweep mimics ocean current — always flowing, never repeating exactly.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.55,

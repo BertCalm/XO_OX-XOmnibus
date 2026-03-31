@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Seafoam Prism",
   "mood": "Prism",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crossover showcase: low strings run through tape and deep plate (warm), high strings split into shimmer reverb and crystal chorus (bright). Steel material catches the light from both angles.",
-  "tags": ["crossover", "prism", "steel", "shimmer", "plate", "dual-path", "bright"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "crossover",
+    "prism",
+    "steel",
+    "shimmer",
+    "plate",
+    "dual-path",
+    "bright"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.55, "movement": 0.35, "density": 0.45, "space": 0.82, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.12
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 5,
@@ -48,6 +70,13 @@
       "orph_macroDivine": 0.45
     }
   },
-  "macros": {"PLUCK": 0.5, "FRACTURE": 0.2, "SURFACE": 0.55, "DIVINE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.5,
+    "FRACTURE": 0.2,
+    "SURFACE": 0.55,
+    "DIVINE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

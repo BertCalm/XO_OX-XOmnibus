@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Tritone FM Machine",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Both voices on FM. Voice 1: ratio 1.414 (square root of 2 — the equal-tempered tritone), index 1.5. Voice 2: ratio 7.07 (5x tritone), index 0.8. The tritone ratio produces inherently dissonant, metallic tones that are the basis of bell and gong synthesis. HAMMER at -0.15 adds subtle ring modulation between the two FM voices, creating sum-and-difference tones from already inharmonic spectra. The result is dense, metallic, and unlike any single FM operator patch.",
-  "tags": ["fm", "metallic", "inharmonic", "bell", "experimental", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "fm",
+    "metallic",
+    "inharmonic",
+    "bell",
+    "experimental",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +90,7 @@
       "ouie_macroCurrent": 0.2
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

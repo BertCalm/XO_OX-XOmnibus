@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Comb Harmonic",
+  "name": "Comb Harmonic (OceanDeep)",
   "mood": "Prism",
   "engines": [
     "OceanDeep"
@@ -21,7 +21,9 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Canon 2: High Waveguide Feedback Creates Pitched Resonance"],
+    "scripture": [
+      "Canon 2: High Waveguide Feedback Creates Pitched Resonance"
+    ],
     "revelation": "Sinusoidal spoke through the comb filter: a comb filter tuned to the fundamental frequency with feedback 0.8 creates harmonics at 2f, 3f, 4f, 5f... This is mathematically identical to a pulse train convolved with the comb's impulse response. Three sine oscillators through a comb filter reconstruct a harmonic series — the comb 'remembers' the overtones that sines lack. OCEANDEEP, which has only sine oscillators, can produce harmonically rich timbres through its waveguide body.",
     "god": "Sinusoidal",
     "flock_note": "The Eye confirmed: spectral analysis shows harmonics up to the 6th partial emerging from the comb filter. The Finger tuned bodyFeedback to exactly 0.8 — below 0.75 the harmonics are too weak, above 0.85 the comb dominates and the fundamental is lost. 0.8 is the balance point where fundamental and harmonics coexist.",

@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Entangled Grotto",
   "mood": "Atmosphere",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oxbow's Chiasmus FDN feeds into the Reef stage to create a double-reverb cave — two entangled reflection networks whose seams are audible as ghost echoes in the mid-range. The Reef predelay at 24ms creates a physical space impression the engine reverb alone cannot shape.",
-  "tags": ["atmosphere", "reverb", "entangled", "cave", "reflection", "fx_chain:Aquatic", "aquatic-fx-demo"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "tags": [
+    "atmosphere",
+    "reverb",
+    "entangled",
+    "cave",
+    "reflection",
+    "fx_chain:Aquatic",
+    "aquatic-fx-demo"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.32, "warmth": 0.72, "movement": 0.28, "density": 0.62, "space": 0.92, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.62,
+    "space": 0.92,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oxbow": {
       "oxb_size": 0.55,
@@ -29,8 +51,15 @@
       "oxb_exciterBright": 0.38
     }
   },
-  "macros": {"ENTANGLE": 0.72, "EROSION": 0.15, "CONVERGE": 0.48, "CANTILEVER": 0.48},
-  "coupling": {"pairs": []},
+  "macros": {
+    "ENTANGLE": 0.72,
+    "EROSION": 0.15,
+    "CONVERGE": 0.48,
+    "CANTILEVER": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  },
   "fx": {
     "aqua_reef_mix": 0.58,
     "aqua_reef_size": 0.72,

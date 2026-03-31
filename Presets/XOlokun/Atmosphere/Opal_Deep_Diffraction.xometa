@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Opal Deep Diffraction",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Very large grains (420ms Gaussian window) at low density (8 grains/sec). With 12 voices, total grain rate is approximately 96 grains/minute — massively overlapping. Grains blur into each other in long cross-fades. The most pad-like behavior OPAL can produce. Position slowly wandering through 4-second buffer. Temporal structure erased.",
-  "tags": ["large-grains", "time-stretch", "pad", "atmosphere", "gaussian", "blur", "slow"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "large-grains",
+    "time-stretch",
+    "pad",
+    "atmosphere",
+    "gaussian",
+    "blur",
+    "slow"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

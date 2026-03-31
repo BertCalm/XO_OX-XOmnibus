@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sparse Fang",
   "mood": "Aether",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Single-note sparse lead with very long decay — one fang in the silence, minimal and present.",
-  "tags": ["lead", "sparse", "minimal", "long"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "lead",
+    "sparse",
+    "minimal",
+    "long"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.55, "movement": 0.1, "density": 0.2, "space": 0.7, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.1,
+    "density": 0.2,
+    "space": 0.7,
+    "aggression": 0.3
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -34,6 +54,14 @@
       "poss_macroPlayDead": 0.6
     }
   },
-  "macros": {"BELLY": 0.3, "BITE": 0.4, "SCURRY": 0.1, "TRASH": 0.1, "PLAY DEAD": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.3,
+    "BITE": 0.4,
+    "SCURRY": 0.1,
+    "TRASH": 0.1,
+    "PLAY DEAD": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Amylase Chain",
   "mood": "Foundation",
-  "engines": ["Organon"],
+  "engines": [
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Amylase breaking down long polysaccharide chains — complex signal simplified into clean output.",
-  "tags": ["amylase", "chain", "foundation", "enzyme", "simplify", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "amylase",
+    "chain",
+    "foundation",
+    "enzyme",
+    "simplify",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.58, "movement": 0.42, "density": 0.6, "space": 0.38, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.42,
+    "density": 0.6,
+    "space": 0.38,
+    "aggression": 0.32
+  },
   "parameters": {
     "Organon": {
       "organon_metabolicRate": 0.48,
@@ -25,6 +46,8 @@
       "organon_lockIn": 0.5
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

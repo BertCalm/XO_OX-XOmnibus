@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Color Haze",
   "mood": "Atmosphere",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prismatic color in haze — slow bounce, warm color wash, atmospheric prism spread.",
-  "tags": ["color", "haze", "atmospheric", "warm"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "color",
+    "haze",
+    "atmospheric",
+    "warm"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.62, "movement": 0.25, "density": 0.48, "space": 0.68, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.68,
+    "aggression": 0.12
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 2,
@@ -50,6 +69,13 @@
       "oblq_macroSpace": 0.68
     }
   },
-  "macros": {"BOUNCE": 0.15, "COLOR": 0.78, "FOLD": 0.12, "SPACE": 0.68},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.15,
+    "COLOR": 0.78,
+    "FOLD": 0.12,
+    "SPACE": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

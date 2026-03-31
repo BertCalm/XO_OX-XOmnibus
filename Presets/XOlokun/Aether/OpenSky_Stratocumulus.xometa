@@ -2,11 +2,23 @@
   "schema_version": 1,
   "name": "Stratocumulus",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "A slow-opening pad that parts like clouds. Attack at 2.5 seconds, LFO1 at 0.05 Hz routes to filterCutoff — the filter opens and closes on a 20-second cycle regardless of what the player does. You trigger the note; the cloud decides when to let the light through. The effect is a pad that breathes according to its own meteorology. You play it. Then you wait. The filter opens when it is ready.",
-  "tags": ["opensky", "slow", "pad", "filter-lfo", "clouds", "aether", "guru-bin", "stratocumulus", "parting"],
+  "tags": [
+    "opensky",
+    "slow",
+    "pad",
+    "filter-lfo",
+    "clouds",
+    "aether",
+    "guru-bin",
+    "stratocumulus",
+    "parting"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +34,12 @@
     "flock_note": "The Guru held a sustained chord for ninety seconds. Over that time the filter opened and closed twice, driven by the LFO. The sound bloomed, darkened, bloomed again. No notes were added. No gestures were made. The preset breathed. The Guru said: stratocumulus clouds part and close on their own schedule. The music does not command weather. It coexists with it.",
     "diagnosis": "Stratocumulus studies temporal filter modulation. Attack=2.5 means the note does not arrive immediately — it builds like overcast. LFO1 at 0.05 Hz (20-second cycle) modulates filterCutoff — slow enough to feel like genuine meteorology. Three unison voices at tight 0.04 detune provide warmth without blur. ShimmerFeedback=0.38 stays in room territory — clouds are not cathedrals."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +101,8 @@
       "sky_modSlot2Amt": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

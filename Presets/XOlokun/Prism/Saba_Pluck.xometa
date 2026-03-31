@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Saba Pluck",
   "mood": "Prism",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maqam Saba — sorrowful diminished intervals rendered as plucked GENDY. Fast decay, zero sustain. The oracle speaks in brief flashes of grief.",
-  "tags": ["gendy", "pluck", "saba", "maqam", "prism", "diminished", "percussive"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "pluck",
+    "saba",
+    "maqam",
+    "prism",
+    "diminished",
+    "percussive"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 10,
@@ -45,7 +64,9 @@
       "oracle_macroDrift": 0.4
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.65,

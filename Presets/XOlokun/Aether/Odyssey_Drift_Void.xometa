@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Drift Void",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oscillator drift into total void — maximum haze, minimum brightness, drift pulling each note apart into featureless space.",
-  "tags": ["drift", "void", "haze", "dark", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "drift",
+    "void",
+    "haze",
+    "dark",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.42, "movement": 0.25, "density": 0.38, "space": 0.95, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.42,
+    "movement": 0.25,
+    "density": 0.38,
+    "space": 0.95,
+    "aggression": 0.04
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.18, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

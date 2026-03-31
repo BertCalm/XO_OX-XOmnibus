@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Lo-Fi Crinkle",
   "mood": "Organic",
-  "engines": ["Oasis"],
+  "engines": [
+    "Oasis"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A physically worn Rhodes — maximum warmth, very dark filter, slow rounded attack, narrow stereo. The crinkle of a piano played for thirty years in a room with no air conditioning.",
-  "tags": ["rhodes", "lo-fi", "crinkle", "worn", "dark", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhodes",
+    "lo-fi",
+    "crinkle",
+    "worn",
+    "dark",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

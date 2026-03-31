@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Medusa Garden",
   "mood": "Aether",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Palau Jellyfish Lake: ten million jellyfish that lost their sting through isolation. A lake of pulsing translucent bodies. Bioluminescent Pulse gesture, ultra-slow LFO modulating volume, Wavetable Organic bank for the iridescent quality of the bell.",
-  "tags": ["obrix", "aether", "place", "palau", "jellyfish", "bioluminescent", "pulse", "translucent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "aether",
+    "place",
+    "palau",
+    "jellyfish",
+    "bioluminescent",
+    "pulse",
+    "translucent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -103,6 +119,8 @@
       "obrix_residentStrength": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Warm Ascent",
   "mood": "Aether",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow attack builds into a warm pad that lifts and never quite returns to ground.",
-  "tags": ["aether", "warm", "slow", "pad"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "warm",
+    "slow",
+    "pad"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.8, "movement": 0.22, "density": 0.45, "space": 0.85, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.8,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.85,
+    "aggression": 0.06
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.8
     }
   },
-  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.85},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

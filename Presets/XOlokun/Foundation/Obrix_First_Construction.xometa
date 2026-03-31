@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "First Construction",
   "mood": "Foundation",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "The initiation of the coral colony — the first polyp settling and beginning to build. Pulse src1 at default tuning against Saw src2 detuned +3 semitones, slight detune that creates a slow beating between the two. proc1=LP (2400 Hz, low reso 0.2) — Pulse stays bright; proc2=LP (820 Hz, reso 0.38) — Saw is more firmly contained. fmDepth=0.12 is minimal; the collision is more harmonic than FM-driven. srcMix=0.42 favours the Pulse slightly. Clean poly4 voicing: multiple polyps stacking. Env->FilterCutoff, LFO->WavetablePos (inactive but future-wired), Velocity->Volume, Aftertouch->Pan. Poly8 for full coral colony stacking.",
-  "tags": ["obrix", "foundation", "pulse", "saw", "constructive-collision", "coral", "first", "polyp"],
+  "tags": [
+    "obrix",
+    "foundation",
+    "pulse",
+    "saw",
+    "constructive-collision",
+    "coral",
+    "first",
+    "polyp"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.52,

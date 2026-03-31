@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ricochet Bassline",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mono legato bass with portamento — sawtooth folded for grit, slow bounce gravity, filter envelope punching through at hard velocity. Glide at 0.08 seconds. LFO1 at 0.2 Hz gives the bassline a subtle spectral pulse. Prism minimal, phaser dry. The foundation stone for RTJ-style bass work.",
-  "tags": ["bass", "mono", "legato", "glide", "RTJ", "groove"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bass",
+    "mono",
+    "legato",
+    "glide",
+    "RTJ",
+    "groove"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -62,6 +76,13 @@
       "oblq_macroSpace": 0.0
     }
   },
-  "macros": {"CHARACTER": 0.0, "MOVEMENT": 0.0, "COUPLING": 0.0, "SPACE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

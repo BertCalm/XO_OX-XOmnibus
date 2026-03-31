@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Canopy Mist",
   "mood": "Atmosphere",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Morning mist rising through the canopy — humidity at maximum, shimmer dissolved in water vapor.",
-  "tags": ["canopy", "mist", "atmosphere", "morning", "humid", "jungle"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "canopy",
+    "mist",
+    "atmosphere",
+    "morning",
+    "humid",
+    "jungle"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.48, "warmth": 0.68, "movement": 0.22, "density": 0.42, "space": 0.82, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.82,
+    "aggression": 0.1
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -38,6 +59,8 @@
       "ocelot_canopy": 0.68
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

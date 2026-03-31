@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "phi=0.5, very slow LFO1 (0.03 Hz) on filter, wide spread, long release. A shimmering atmospheric pad that doesn't quite sound like strings \u2014 the space between standard harmony and mathematical precision.",
+  "description": "phi=0.5, very slow LFO1 (0.03 Hz) on filter, wide spread, long release. A shimmering atmospheric pad that doesn't quite sound like strings — the space between standard harmony and mathematical precision.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.5,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Phi Shimmer",
+  "name": "Phi Shimmer (Oxalis)",
   "parameters": {
     "Oxalis": {
       "oxal_attack": 0.015,

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Medium decay, mild snap, 2-unison warmth. Sine+noise mode with a mid-range cutoff and slow filter LFO creates a gently undulating, bright-but-relaxed texture — like watching tetras from above through glass. Evokes gentle light refraction in tropical shallows.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.6,
     "aggression": 0.15
   },
-  "engines": ["OddfeliX"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
   "macros": {
     "CHARACTER": 0.0,
     "MOVEMENT": 0.3,
@@ -47,7 +56,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "oddfelix", "warm", "bright", "gentle", "tropical", "undulating"],
+  "tags": [
+    "atmosphere",
+    "oddfelix",
+    "warm",
+    "bright",
+    "gentle",
+    "tropical",
+    "undulating"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

@@ -1,19 +1,62 @@
 {
   "schema_version": 1,
-  "name": "Spectrum Peak",
+  "name": "Spectrum Peak (OddfeliX) (OddfeliX)",
   "mood": "Prism",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "At the peak of the spectrum — maximum brightness, maximum resonance, maximal moment.",
-  "tags": ["spectrum", "peak", "maximum", "resonance"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "spectrum",
+    "peak",
+    "maximum",
+    "resonance"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.97, "warmth": 0.12, "movement": 0.52, "density": 0.35, "space": 0.5, "aggression": 0.35},
-  "parameters": {
-    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.9, "snap_decay": 0.25, "snap_detune": 0.03, "snap_filterCutoff": 16500.0, "snap_filterReso": 0.85, "snap_filterEnvDepth": 0.9, "snap_unison": 2, "snap_sweepDirection": 0, "snap_pitchLock": 0.97, "snap_polyphony": 4, "snap_level": 0.8, "snap_macroDart": 0.65, "snap_macroDepth": 0.3, "snap_macroSchool": 0.1, "snap_macroSurface": 0.92}
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.12,
+    "movement": 0.52,
+    "density": 0.35,
+    "space": 0.5,
+    "aggression": 0.35
   },
-  "macros": {"CHARACTER": 0.88, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.9,
+      "snap_decay": 0.25,
+      "snap_detune": 0.03,
+      "snap_filterCutoff": 16500.0,
+      "snap_filterReso": 0.85,
+      "snap_filterEnvDepth": 0.9,
+      "snap_unison": 2,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.97,
+      "snap_polyphony": 4,
+      "snap_level": 0.8,
+      "snap_macroDart": 0.65,
+      "snap_macroDepth": 0.3,
+      "snap_macroSchool": 0.1,
+      "snap_macroSurface": 0.92
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

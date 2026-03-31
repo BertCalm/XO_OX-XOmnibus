@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Bubble Column",
+  "name": "Bubble Column (Oblong)",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Breath texture mode (3) prominently at 0.38 — pitch-tracked bandpass noise rising with each note. Soft OscA sine underneath. Sniff curiosity creates occasional filter twitches as if bubbles popping. A reef sound that rises rather than spreads.",
-  "tags": ["atmosphere", "breath", "texture", "noise", "oblong", "transcendental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "breath",
+    "texture",
+    "noise",
+    "oblong",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.55, "movement": 0.42, "density": 0.45, "space": 0.58, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.42,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.22
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 0,
@@ -56,6 +77,13 @@
       "bob_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

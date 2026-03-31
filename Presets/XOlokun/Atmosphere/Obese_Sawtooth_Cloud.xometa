@@ -2,15 +2,37 @@
   "schema_version": 1,
   "name": "Sawtooth Cloud",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Four groups of serrated oscillators diffusing into cumulus density. Fat_morph at 0.33 — pure sawtooth zone, all harmonics, no noise contamination. Wide stereo spread. LFO2 at 0.09 Hz with moderate depth cycles through tonal brightness above a stable warm base.",
-  "tags": ["atmosphere", "sawtooth", "cloud", "harmonic", "stereo", "warm", "lfo"],
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "tags": [
+    "atmosphere",
+    "sawtooth",
+    "cloud",
+    "harmonic",
+    "stereo",
+    "warm",
+    "lfo"
+  ],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.58, "movement": 0.38, "density": 0.72, "space": 0.68, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.58,
+    "movement": 0.38,
+    "density": 0.72,
+    "space": 0.68,
+    "aggression": 0.3
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.33,
@@ -47,6 +69,13 @@
       "fat_macroCrush": 0.0
     }
   },
-  "macros": {"MOJO": 0.45, "GRIT": 0.15, "SIZE": 0.65, "CRUSH": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "MOJO": 0.45,
+    "GRIT": 0.15,
+    "SIZE": 0.65,
+    "CRUSH": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

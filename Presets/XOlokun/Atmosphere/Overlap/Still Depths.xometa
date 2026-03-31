@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Dark filterCutoff (5000 Hz), high dampening (0.72) \u2014 self-resonance sinking into deep water.",
+  "description": "Dark filterCutoff (5000 Hz), high dampening (0.72) — self-resonance sinking into deep water.",
   "dna": {
     "aggression": 0.03,
     "brightness": 0.22,

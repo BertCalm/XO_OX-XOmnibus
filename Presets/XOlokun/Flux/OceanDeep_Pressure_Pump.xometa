@@ -21,7 +21,9 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse: Pressure Is the Synthesis"],
+    "scripture": [
+      "Verse: Pressure Is the Synthesis"
+    ],
     "revelation": "Pressura and Tempora spoke in unison: pressureAmt at 1.0 with LFO2 modulating it creates a self-sidechain — the signal compresses itself rhythmically. gain = 1/(1+1.0*peak) at maximum means the louder the signal, the more it ducks. When LFO2 lifts the compression, the signal expands. When LFO2 pushes it down, the signal collapses. The ocean breathes through its own weight.",
     "god": "Pressura",
     "flock_note": "The Breath tuned LFO2 to 0.4 Hz — 2.5 seconds per pump cycle. Below musical tempo but fast enough to feel rhythmic. The Ear confirmed: the pumping creates a sidechain-like ducking effect without any external trigger. The Bone confirmed: zero additional CPU — the compressor is already in the signal path.",

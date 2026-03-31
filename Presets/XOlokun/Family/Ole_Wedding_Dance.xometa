@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Wedding Dance",
   "mood": "Family",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All voices at celebratory levels with fuego and drama macros both elevated for the wedding dance.",
-  "tags": ["latin", "wedding", "celebration", "dance", "family"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "wedding",
+    "celebration",
+    "dance",
+    "family"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.7, "movement": 0.72, "density": 0.6, "space": 0.58, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.7,
+    "movement": 0.72,
+    "density": 0.6,
+    "space": 0.58,
+    "aggression": 0.38
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 1,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.55
     }
   },
-  "macros": {"DRAMA": 0.82, "FUEGO": 0.88, "ISLA": 0.55, "SIDES": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.82,
+    "FUEGO": 0.88,
+    "ISLA": 0.55,
+    "SIDES": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Hot Pink Haze",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.7,
     "MOVEMENT": 0.55,
     "COUPLING": 0.0,
     "SPACE": 0.2
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.0
     }
   },
-  "tags": ["atmosphere", "pad", "analog", "drift", "B015", "warm", "obese"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "analog",
+    "drift",
+    "B015",
+    "warm",
+    "obese"
+  ],
   "description": "Wide pad where the Mojo axis is the atmosphere itself — LFO1 at 0.12 Hz cycles the character between full analog saturation and crystalline digital every 8 seconds. Hot Pink #FF1493 bleeding into the reverb."
 }

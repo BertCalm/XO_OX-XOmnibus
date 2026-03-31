@@ -4,14 +4,30 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Listening Pool",
   "mood": "Family",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "description": "Small, intimate reverb — the acoustics of a quiet indoor pool. Short predelay, focused warmth, minimal erosion. Every note hangs in still water. CHARACTER macro brightens the resonant focus for more shimmer.",
-  "tags": ["oxbow", "family", "reverb", "intimate", "small-room", "warm"],
+  "tags": [
+    "oxbow",
+    "family",
+    "reverb",
+    "intimate",
+    "small-room",
+    "warm"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.4,

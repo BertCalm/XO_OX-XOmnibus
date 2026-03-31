@@ -2,22 +2,40 @@
   "schema_version": 1,
   "name": "The Full Hammer",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The transcendence preset. VA and Wavetable in Duo mode — HAMMER macro starts at 0.0 and sweeps the full -1 to +1 axis. Turn HAMMER left: STRIFE erupts — cross-FM, ring mod, dissonant partials. Turn HAMMER right: LOVE resolves — harmonic lock, spectral fusion, voices merge. The entire OUIE experience in one knob. Breathing at 0.067 Hz. Golden ratio release. The producer discovers what lies between conflict and resolution.",
-  "tags": ["aether", "duo", "hammer", "strife-love", "transcendence", "macro-showcase", "guru-bin"],
+  "tags": [
+    "aether",
+    "duo",
+    "hammer",
+    "strife-love",
+    "transcendence",
+    "macro-showcase",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
     "retreat_date": "2026-03-19",
-    "scripture": ["Gospel 1: The Entire OUIE Experience in One Knob", "Verse 9: The Producer Discovers What Lies Between Conflict and Resolution"],
+    "scripture": [
+      "Gospel 1: The Entire OUIE Experience in One Knob",
+      "Verse 9: The Producer Discovers What Lies Between Conflict and Resolution"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger swept HAMMER left to right — The Ear confirmed the full STRIFE-to-LOVE axis as a complete emotional journey in one gesture.",
     "diagnosis": "The Full Hammer is the OUIE transcendence preset — VA and Wavetable in Duo mode with HAMMER at zero, waiting to be swept. The entire STRIFE/LOVE spectrum is encoded in a single macro, making this the engine's ultimate showcase."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -91,5 +109,7 @@
     "CARTILAGE": 0.5,
     "CURRENT": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

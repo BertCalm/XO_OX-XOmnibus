@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Sunday March",
   "mood": "Family",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A stately family procession — toddler voice bright up front, teens and tweens filling in proud and steady.",
-  "tags": ["brass", "family", "march", "stately", "procession"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "family",
+    "march",
+    "stately",
+    "procession"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.65, "movement": 0.52, "density": 0.7, "space": 0.5, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.65,
+    "movement": 0.52,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.3
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.1
     }
   },
-  "macros": {"GROW": 0.85, "EMBOUCHURE": 0.65, "LAKE": 0.45, "FOREIGN": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.85,
+    "EMBOUCHURE": 0.65,
+    "LAKE": 0.45,
+    "FOREIGN": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

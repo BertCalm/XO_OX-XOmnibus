@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Bioluminescent Maximum",
   "mood": "Atmosphere",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "Guru Bin — OVERLAP Vol 3 Transcendental 2026-03-21",
   "version": "1.0.0",
   "description": "Bioluminescence at 0.82 — the tap-based shimmer becomes a primary harmonic layer, not a texture. Each modulator-weighted tap samples the FDN's recent history at a different moment. At this level the FDN is in conversation with itself. The #00FFB4 accent at maximum expression.",
-  "tags": ["bioluminescence", "shimmer", "maximum", "atmosphere", "harmonic", "transcendental"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "bioluminescence",
+    "shimmer",
+    "maximum",
+    "atmosphere",
+    "harmonic",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

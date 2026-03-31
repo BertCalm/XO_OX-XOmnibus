@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Drift FM Lead",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's FM oscillator mode for a metallic, complex-harmonic lead tone. The FM depth shapes inharmonic overtones — brighter and more aggressive than the standard DRIFT lead.",
-  "tags": ["lead", "fm", "metallic", "drift", "harmonic", "foundation"],
-  "macroLabels": ["FM DEPTH", "FILTER TONE", "DRIFT AMOUNT", "ATTACK"],
+  "tags": [
+    "lead",
+    "fm",
+    "metallic",
+    "drift",
+    "harmonic",
+    "foundation"
+  ],
+  "macroLabels": [
+    "FM DEPTH",
+    "FILTER TONE",
+    "DRIFT AMOUNT",
+    "ATTACK"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

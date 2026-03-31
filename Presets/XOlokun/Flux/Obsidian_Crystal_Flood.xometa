@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Crystal Flood",
   "mood": "Flux",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystal resonance flooding the spectrum — fast LFO, maximum spread, chaotic shimmer.",
-  "tags": ["crystal", "flood", "wide", "chaotic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystal",
+    "flood",
+    "wide",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.8, "warmth": 0.22, "movement": 0.85, "density": 0.6, "space": 0.35, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.22,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.75
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.58,
@@ -36,6 +55,13 @@
       "obsidian_level": 0.74
     }
   },
-  "macros": {"CHARACTER": 0.8, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

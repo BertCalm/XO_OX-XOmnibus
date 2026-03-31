@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Xenakis Root",
   "mood": "Foundation",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure Xenakis homage — stochastic synthesis at its most fundamental and expressive.",
-  "tags": ["xenakis", "foundation", "stochastic", "historical"],
-  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "tags": [
+    "xenakis",
+    "foundation",
+    "stochastic",
+    "historical"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "EVOLUTION",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.45, "movement": 0.55, "density": 0.5, "space": 0.45, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.4
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 0.6,
@@ -37,6 +56,13 @@
       "oracle_macroSpace": 0.45
     }
   },
-  "macros": {"DRIFT": 0.5, "EVOLUTION": 0.5, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRIFT": 0.5,
+    "EVOLUTION": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

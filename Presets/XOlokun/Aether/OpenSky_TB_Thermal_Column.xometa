@@ -1,23 +1,40 @@
 {
   "schema_version": 1,
-  "name": "Thermal Column",
+  "name": "Thermal Column (OpenSky)",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rising heat made audible. Pitch envelope at +12 semitones with slow decay (1.2s) makes every note swoop up an octave before settling -- the sound of a thermal updraft lifting the flying fish higher. Shimmer feedback at 0.7 catches the ascending pitch and amplifies it through the octave-up shifter, creating a double-ascent effect. The RISE macro at 0.75 pre-opens the filter and adds further pitch envelope intensity. This preset demonstrates the engine's core identity: ascension.",
-  "tags": ["opensky", "transcendental", "riser", "ascending", "thermal", "euphoric"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "riser",
+    "ascending",
+    "thermal",
+    "euphoric"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 10: A 12-Semitone Pitch Envelope at 1.2s Decay Is Not an Effect -- It Is a Journey", "Gospel 3: The Flying Fish Rises on Thermals of Sound"],
+    "scripture": [
+      "Verse 10: A 12-Semitone Pitch Envelope at 1.2s Decay Is Not an Effect -- It Is a Journey",
+      "Gospel 3: The Flying Fish Rises on Thermals of Sound"
+    ],
     "revelation": "Sinusoidal spoke: when the pitch envelope feeds into the shimmer's octave-up shifter, the ascending pitch creates a secondary ascending harmonic in the reverb tail. Two ascensions from one gesture.",
     "god": "Sinusoidal",
     "flock_note": "The Tongue tested at multiple velocities: soft playing (vel 30) produces a subtle 3-semitone rise; full velocity (127) unleashes the full octave swoop. The velocity-to-rise arc is the preset's expressive core.",
     "diagnosis": "Thermal Column is OPENSKY at its most kinetic. Every note is a flight. The double-ascension through pitch envelope + shimmer pitch-shift is the engine's signature trick at full power."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

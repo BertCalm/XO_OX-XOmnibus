@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "LFO Madness",
   "mood": "Flux",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO pitch modulation at maximum rate and depth — amber oscillator in deranged vibrato flux.",
-  "tags": ["flux", "lfo", "vibrato", "deranged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "lfo",
+    "vibrato",
+    "deranged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.5, "movement": 0.92, "density": 0.6, "space": 0.4, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.92,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.75
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.83
     }
   },
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.92, "COUPLING": 0.0, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

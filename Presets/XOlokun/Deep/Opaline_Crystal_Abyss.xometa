@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Crystal Abyss",
   "mood": "Deep",
-  "engines": ["Opaline"],
+  "engines": [
+    "Opaline"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Glass Harp in deepest register. Large body, maximum sustain, crystal drive adds harmonics to the long ring. Fragility is moderate: even soft playing carries risk. The ringing grows as notes accumulate via sustain pedal. What lives at the bottom of glass.",
-  "tags": ["glass", "harp", "deep", "dark", "crystal", "sustained", "drone", "abyss"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "glass",
+    "harp",
+    "deep",
+    "dark",
+    "crystal",
+    "sustained",
+    "drone",
+    "abyss"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

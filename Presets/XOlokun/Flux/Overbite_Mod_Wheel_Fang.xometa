@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Mod Wheel Fang",
   "mood": "Flux",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Performance bass with mod wheel controlling filter sweep and gnash intensity — expressive bite on demand.",
-  "tags": ["bass", "performance", "mod wheel", "expressive"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "bass",
+    "performance",
+    "mod wheel",
+    "expressive"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.6, "movement": 0.45, "density": 0.55, "space": 0.2, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.55,
+    "space": 0.2,
+    "aggression": 0.6
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 2,
@@ -36,6 +56,14 @@
       "poss_macroPlayDead": 0.1
     }
   },
-  "macros": {"BELLY": 0.5, "BITE": 0.6, "SCURRY": 0.45, "TRASH": 0.3, "PLAY DEAD": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.6,
+    "SCURRY": 0.45,
+    "TRASH": 0.3,
+    "PLAY DEAD": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

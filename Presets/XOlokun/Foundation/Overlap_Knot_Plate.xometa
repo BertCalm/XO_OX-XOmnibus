@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Trefoil topology tuned to emulate a plate reverb \u2014 medium decay, moderate diffusion, broad but not infinite. The crossing points add a metallic shimmer at the tail. Classic texture in a topological frame.",
+  "description": "Trefoil topology tuned to emulate a plate reverb — medium decay, moderate diffusion, broad but not infinite. The crossing points add a metallic shimmer at the tail. Classic texture in a topological frame.",
   "tags": [
     "plate",
     "trefoil",

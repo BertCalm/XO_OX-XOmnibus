@@ -2,12 +2,30 @@
   "schema_version": 1,
   "name": "Full Possession",
   "mood": "Entangled",
-  "engines": ["Oracle", "Organon"],
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORACLE GENDY fully replaces ORGANON metabolic FM input at maximum coupling depth — the prophet possesses the organism entirely. Envelope seizes filter and morph. At this intensity the organism no longer knows its own voice.",
-  "tags": ["coupled", "extreme", "possession", "stochastic", "AudioToFM", "AmpToFilter", "EnvToMorph", "advanced", "performance-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "extreme",
+    "possession",
+    "stochastic",
+    "AudioToFM",
+    "AmpToFilter",
+    "EnvToMorph",
+    "advanced",
+    "performance-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -15,22 +33,22 @@
     "warmth": 0.48,
     "movement": 0.88,
     "density": 0.72,
-    "space": 0.50,
-    "aggression": 0.50
+    "space": 0.5,
+    "aggression": 0.5
   },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 12,
-      "oracle_probability": 0.70,
+      "oracle_probability": 0.7,
       "oracle_distribution": 1,
       "oracle_filterCutoff": 0.65,
       "oracle_filterReso": 0.28,
       "oracle_ampAttack": 0.01,
-      "oracle_ampDecay": 0.40,
+      "oracle_ampDecay": 0.4,
       "oracle_ampSustain": 0.75,
-      "oracle_ampRelease": 1.00,
+      "oracle_ampRelease": 1.0,
       "oracle_outputLevel": 0.72,
-      "oracle_lfoRate": 0.20,
+      "oracle_lfoRate": 0.2,
       "oracle_lfoDepth": 0.35,
       "oracle_envDepth": 0.65,
       "oracle_reverbMix": 0.18
@@ -38,15 +56,15 @@
     "Organon": {
       "organon_metabolicRate": 5.5,
       "organon_catalystDrive": 0.82,
-      "organon_enzymeSelectivity": 0.30,
+      "organon_enzymeSelectivity": 0.3,
       "organon_dampingCoeff": 0.04,
       "organon_isotopeBalance": 0.55,
       "organon_filterCutoff": 0.42,
       "organon_filterReso": 0.35,
       "organon_ampAttack": 0.02,
-      "organon_ampDecay": 0.50,
+      "organon_ampDecay": 0.5,
       "organon_ampSustain": 0.68,
-      "organon_ampRelease": 1.20,
+      "organon_ampRelease": 1.2,
       "organon_outputLevel": 0.72,
       "organon_reverbMix": 0.28,
       "organon_signalFlux": 0.72,

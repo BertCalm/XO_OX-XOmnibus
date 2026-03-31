@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Slow Jam",
   "mood": "Family",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All voices at leisurely pace, low strum rate and slow drift — the after-dinner family jam.",
-  "tags": ["latin", "family", "slow", "jam", "leisurely"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "family",
+    "slow",
+    "jam",
+    "leisurely"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.75, "movement": 0.3, "density": 0.48, "space": 0.65, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.48,
+    "space": 0.65,
+    "aggression": 0.12
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 1,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.42
     }
   },
-  "macros": {"DRAMA": 0.32, "FUEGO": 0.28, "ISLA": 0.65, "SIDES": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.32,
+    "FUEGO": 0.28,
+    "ISLA": 0.65,
+    "SIDES": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

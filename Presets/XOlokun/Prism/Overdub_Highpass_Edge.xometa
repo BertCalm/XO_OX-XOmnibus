@@ -2,16 +2,34 @@
   "schema_version": 1,
   "name": "Highpass Edge",
   "mood": "Prism",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-pass filtered dub lead with bright edge — the treble cut of a mixing desk flipped upside down.",
-  "tags": ["prism", "highpass", "edge", "bright", "lead", "character"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "highpass",
+    "edge",
+    "bright",
+    "lead",
+    "character"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 2,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.22, "COUPLING": 0.42, "SPACE": 0.28},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.72, "warmth": 0.52, "movement": 0.32, "density": 0.5, "space": 0.32, "aggression": 0.55}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.42,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.52,
+    "movement": 0.32,
+    "density": 0.5,
+    "space": 0.32,
+    "aggression": 0.55
+  }
 }

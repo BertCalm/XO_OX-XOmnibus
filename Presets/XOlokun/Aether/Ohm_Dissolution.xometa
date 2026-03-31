@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Dissolution",
+  "name": "Dissolution (Ohm)",
   "mood": "Aether",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The hippy dad's final note dissolving — grain, reverb, and spectral freeze merged.",
-  "tags": ["aether", "dissolving", "final", "transcendent"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "aether",
+    "dissolving",
+    "final",
+    "transcendent"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.22,
     "MEADOW": 0.94
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

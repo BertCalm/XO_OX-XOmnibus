@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Pack Chorus",
   "mood": "Family",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wide chorus pad of opossum voices — communal warmth spread wide across the stereo field.",
-  "tags": ["pad", "chorus", "wide", "communal"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "tags": [
+    "pad",
+    "chorus",
+    "wide",
+    "communal"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH",
+    "PLAY DEAD"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.8, "movement": 0.35, "density": 0.6, "space": 0.55, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.8,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.15
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWaveform": 1,
@@ -38,6 +58,14 @@
       "poss_macroPlayDead": 0.25
     }
   },
-  "macros": {"BELLY": 0.6, "BITE": 0.1, "SCURRY": 0.35, "TRASH": 0.05, "PLAY DEAD": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BELLY": 0.6,
+    "BITE": 0.1,
+    "SCURRY": 0.35,
+    "TRASH": 0.05,
+    "PLAY DEAD": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

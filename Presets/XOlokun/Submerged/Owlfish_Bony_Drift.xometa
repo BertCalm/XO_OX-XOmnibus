@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Bony Drift",
   "mood": "Submerged",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow subharmonic drift with moderate inharmonic and gentle body — owlfish schooling in slow mid-trench current.",
-  "tags": ["submerged", "bony", "drift", "slow", "school", "mid-trench"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "submerged",
+    "bony",
+    "drift",
+    "slow",
+    "school",
+    "mid-trench"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.72, "movement": 0.18, "density": 0.78, "space": 0.72, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.72,
+    "movement": 0.18,
+    "density": 0.78,
+    "space": 0.72,
+    "aggression": 0.12
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.25,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.32, "MOVEMENT": 0.18, "COUPLING": 0.1, "SPACE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.1,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

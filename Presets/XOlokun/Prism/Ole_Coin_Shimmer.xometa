@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Coin Shimmer",
   "mood": "Prism",
-  "engines": ["Ole"],
+  "engines": [
+    "Ole"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Coin press at max with high aunt 3 tremolo and drift, prismatic shimmer of percussion and strings.",
-  "tags": ["latin", "coins", "shimmer", "tremolo", "prismatic"],
-  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "tags": [
+    "latin",
+    "coins",
+    "shimmer",
+    "tremolo",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FUEGO",
+    "ISLA",
+    "SIDES"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.65, "movement": 0.6, "density": 0.5, "space": 0.65, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.65,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.28
+  },
   "parameters": {
     "Ole": {
       "ole_allianceConfig": 0,
@@ -37,6 +57,13 @@
       "ole_macroSides": 0.48
     }
   },
-  "macros": {"DRAMA": 0.52, "FUEGO": 0.65, "ISLA": 0.45, "SIDES": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "DRAMA": 0.52,
+    "FUEGO": 0.65,
+    "ISLA": 0.45,
+    "SIDES": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

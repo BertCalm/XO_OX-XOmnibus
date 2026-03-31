@@ -2,15 +2,36 @@
   "schema_version": 1,
   "name": "Steel Beckoner",
   "mood": "Foundation",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Steel string at the bow of the ship — soft velocity yields a muted dark body, hard velocity cuts razor bright like a warning bell.",
-  "tags": ["steel", "velocity", "bright", "expressive", "beckoner", "coastal"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "steel",
+    "velocity",
+    "bright",
+    "expressive",
+    "beckoner",
+    "coastal"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.35, "movement": 0.15, "density": 0.3, "space": 0.4, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.15,
+    "density": 0.3,
+    "space": 0.4,
+    "aggression": 0.45
+  },
   "parameters": {
     "Orphica": {
       "orph_stringMaterial": 1,
@@ -48,6 +69,13 @@
       "orph_macroDivine": 0.08
     }
   },
-  "macros": {"PLUCK": 0.65, "FRACTURE": 0.0, "SURFACE": 0.6, "DIVINE": 0.08},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.65,
+    "FRACTURE": 0.0,
+    "SURFACE": 0.6,
+    "DIVINE": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

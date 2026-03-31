@@ -2,22 +2,39 @@
   "schema_version": 1,
   "name": "Borealis",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The northern lights rendered in sound. S&H (Sample and Hold) LFO on LFO2 at 3.0 Hz with depth 0.15 creates random stepped pitch variations that mimic the flickering, unpredictable movement of aurora curtains. Each 'step' of the S&H produces a momentary pitch offset that the shimmer reverb catches and sustains, creating a trail of randomly pitched harmonic ghosts behind the main note. Shimmer feedback at 0.65 ensures each ghost persists long enough to overlap with the next, building a shimmering curtain of accumulated randomness. The Guru says: controlled randomness is not chaos -- it is nature.",
-  "tags": ["opensky", "transcendental", "random", "sample-hold", "aurora", "flickering"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "random",
+    "sample-hold",
+    "aurora",
+    "flickering"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Sutra 10: S&H at 3 Hz on Pitch Creates Aurora Curtains in the Shimmer Tail", "Sutra 11: Random Pitch Steps Caught by Shimmer Feedback Become Accumulated Harmony"],
+    "scripture": [
+      "Sutra 10: S&H at 3 Hz on Pitch Creates Aurora Curtains in the Shimmer Tail",
+      "Sutra 11: Random Pitch Steps Caught by Shimmer Feedback Become Accumulated Harmony"
+    ],
     "revelation": "Tempora spoke: the S&H LFO shape at moderate rate (2-4 Hz) on pitch creates discrete pitch steps that the shimmer reverb catches individually. Each step becomes its own harmonic ghost in the reverb tail, building a cluster of random harmonics over time.",
     "god": "Tempora",
     "flock_note": "The Breath set the S&H rate at 3.0 Hz -- fast enough to create visible flickering but slow enough that each step is audible as a distinct pitch event. The Eye watched the shimmer tail accumulate 5-6 pitch ghosts before the earliest one decayed. The result is a constantly evolving harmonic cloud.",
     "diagnosis": "Borealis uses S&H randomness as a creative force. The random pitch steps feeding into shimmer feedback create an evolving harmonic cloud that is different every time a note is played -- like the aurora itself."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.1
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A thermocline acoustic inversion layer \u2014 sound bends along the temperature gradient, creating ducted propagation. The torus topology captures the curved path of sound through water layers.",
+  "description": "A thermocline acoustic inversion layer — sound bends along the temperature gradient, creating ducted propagation. The torus topology captures the curved path of sound through water layers.",
   "tags": [
     "thermocline",
     "ducted",

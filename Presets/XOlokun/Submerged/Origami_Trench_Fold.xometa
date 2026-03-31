@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wavefolder at crush depth: fold point lowered to 0.25 to produce crushed, dense harmonics before the filter eats them. Very slow attack \u2014 the fold geometry unfolds like a sea creature uncoiling. Freeze at 0.1 adds spectral smear.",
+  "description": "Wavefolder at crush depth: fold point lowered to 0.25 to produce crushed, dense harmonics before the filter eats them. Very slow attack — the fold geometry unfolds like a sea creature uncoiling. Freeze at 0.1 adds spectral smear.",
   "tags": [
     "fold",
     "dark",

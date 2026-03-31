@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Paradigm Collision",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
   "description": "Wavetable (feliX) meets Wavefolder (Oscar) at HAMMER -0.35 — the sweet spot where light STRIFE introduces inharmonic shimmer without chaos. The collision of smooth and rough synthesis paradigms through cross-FM creates a third voice that neither algorithm can produce alone. Mod wheel morphs the wavetable position while the mod envelope sweeps the fold depth.",
-  "tags": ["hybrid", "shimmer", "metallic", "expressive", "transcendental"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "tags": [
+    "hybrid",
+    "shimmer",
+    "metallic",
+    "expressive",
+    "transcendental"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -76,5 +89,7 @@
       "ouie_macroCurrent": 0.15
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

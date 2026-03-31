@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Tidal Chorus",
   "mood": "Family",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The siren sings with herself — crystal chorus blurs the string into a gathering of voices, sympathetic strings at peak.",
-  "tags": ["family", "chorus", "siren", "gathered", "warm"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "family",
+    "chorus",
+    "siren",
+    "gathered",
+    "warm"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.65, "movement": 0.52, "density": 0.72, "space": 0.78, "aggression": 0.10},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.65,
+    "movement": 0.52,
+    "density": 0.72,
+    "space": 0.78,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orphica": {
       "orph_stringMaterial": 2,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.48
     }
   },
-  "macros": {"PLUCK": 0.62, "FRACTURE": 0.18, "SURFACE": 0.55, "DIVINE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.62,
+    "FRACTURE": 0.18,
+    "SURFACE": 0.55,
+    "DIVINE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

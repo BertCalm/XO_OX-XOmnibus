@@ -14,12 +14,12 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Spectral Morph",
+  "name": "Spectral Morph (OddOscar)",
   "mood": "Prism",
   "engines": [
     "OddOscar"
   ],
-  "description": "Morph reveals harmonic structure \u2014 each position is a different spectral fingerprint.",
+  "description": "Morph reveals harmonic structure — each position is a different spectral fingerprint.",
   "tags": [
     "morph",
     "spectral",

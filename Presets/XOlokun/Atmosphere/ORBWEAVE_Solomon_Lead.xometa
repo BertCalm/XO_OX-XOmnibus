@@ -49,7 +49,7 @@
       "weave_lfo2Depth": 0.0,
       "weave_lfo2Rate": 1.0,
       "weave_fx1Type": 1,
-      "weave_fx1Mix": 0.30,
+      "weave_fx1Mix": 0.3,
       "weave_fx1Param": 0.45,
       "weave_fx2Type": 0,
       "weave_fx2Mix": 0.0,
@@ -61,7 +61,7 @@
       "weave_macroTension": 0.0,
       "weave_macroKnot": 0.22,
       "weave_macroSpace": 0.0,
-      "weave_level": 0.80,
+      "weave_level": 0.8,
       "weave_voiceMode": 1,
       "weave_pitchBendRange": 2,
       "weave_glideTime": 0.35

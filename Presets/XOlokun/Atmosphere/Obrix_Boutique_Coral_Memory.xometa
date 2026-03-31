@@ -2,16 +2,37 @@
   "schema_version": 1,
   "name": "Coral Memory",
   "mood": "Atmosphere",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBRIX through Boutique Chain: the reef as archive. OBRIX's dual pulse/saw collision (Coral Architecture recipe) fed through Dissolving Archive — each note's harmonic collision is stored in the Archive with Chance 0.20 and Dissolve 0.50. Previous coral architectures dissolve into grain clouds and reverb, creating a layered acoustic ecology where each new note is played against decaying ghosts of its predecessors. Anomaly TextureBlend 0.52 and ReverbSize 0.42. Cathedral DarkMix 0.65, BitCrush 0.10 (minimal degradation — the coral should age gracefully). Submersion 5 stages at 0.15 Hz.",
-  "tags": ["obrix", "boutique-chain", "archive", "coral", "memory", "atmosphere", "decay", "ecology", "fx-showcase"],
-  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "tags": [
+    "obrix",
+    "boutique-chain",
+    "archive",
+    "coral",
+    "memory",
+    "atmosphere",
+    "decay",
+    "ecology",
+    "fx-showcase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FX DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-21",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obrix": {
       "obrix_src1Type": 7,
@@ -81,7 +102,9 @@
       "obrix_air": 0.45
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,

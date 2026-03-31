@@ -5,9 +5,9 @@
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Short, gated decay on a trefoil topology. The delay lines open, cascade through the three crossings, then shut. A rhythmic tool \u2014 every note gets a defined, choppy tail. Use on drums or stabs.",
+  "description": "Short, gated decay on a trefoil topology. The delay lines open, cascade through the three crossings, then shut. A rhythmic tool — every note gets a defined, choppy tail. Use on drums or stabs.",
   "tags": [
     "gated",
     "trefoil",

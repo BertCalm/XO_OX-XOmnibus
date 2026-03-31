@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Chamomile Hour",
+  "name": "Chamomile Hour (Overwash) (Overwash)",
   "mood": "Atmosphere",
-  "engines": ["Overwash"],
+  "engines": [
+    "Overwash"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm tea diffusing — medium rate, golden harmonics, two gentle breaths.",
-  "tags": ["pad", "warm", "golden", "atmospheric", "gentle"],
-  "macroLabels": ["VISCOSITY", "DIFFUSION", "INTERFERENCE", "WIDTH"],
+  "tags": [
+    "pad",
+    "warm",
+    "golden",
+    "atmospheric",
+    "gentle"
+  ],
+  "macroLabels": [
+    "VISCOSITY",
+    "DIFFUSION",
+    "INTERFERENCE",
+    "WIDTH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.8, "movement": 0.3, "density": 0.5, "space": 0.6, "aggression": 0.0},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.0
+  },
   "parameters": {
     "Overwash": {
       "wash_diffusionRate": 0.35,
@@ -44,7 +64,9 @@
       "wash_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "starterFor": null
 }

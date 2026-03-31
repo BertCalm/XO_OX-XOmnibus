@@ -2,17 +2,36 @@
   "schema_version": 1,
   "name": "SNES Choir",
   "mood": "Foundation",
-  "engines": ["Overworld"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-29",
   "description": "SNES SPC700 with BRR sample slot 4 (choir-like sample), gaussian interpolation (mode 2). Long SNES attack, sustained decay. SNES echo enabled with moderate delay and feedback, FIR filter shaped for warm presence. The era is at the SNES vertex. Classic Final Fantasy VI warmth.",
-  "tags": ["awakening", "snes", "spc700", "choir", "warm", "pad", "foundation"],
-  "macroLabels": ["ERA", "CRUSH", "GLITCH", "SPACE"],
+  "tags": [
+    "awakening",
+    "snes",
+    "spc700",
+    "choir",
+    "warm",
+    "pad",
+    "foundation"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CRUSH",
+    "GLITCH",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overworld": {
       "ow_era": 0.5,
@@ -102,7 +121,9 @@
       "ow_drumMode": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,

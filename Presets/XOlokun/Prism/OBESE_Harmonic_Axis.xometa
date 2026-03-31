@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Harmonic Axis",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 0.8,
     "MOVEMENT": 0.7,
     "COUPLING": 0.0,
     "SPACE": 0.0
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.65,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.0
     }
   },
-  "tags": ["prism", "lead", "B015", "harmonic", "mojo", "dynamic", "obese"],
+  "tags": [
+    "prism",
+    "lead",
+    "B015",
+    "harmonic",
+    "mojo",
+    "dynamic",
+    "obese"
+  ],
   "description": "B015 in full motion — LFO1 cycling the Mojo axis at 0.28 Hz with high depth produces clearly audible timbral movement between analog warmth and digital precision. The B015 axis IS the sound design."
 }

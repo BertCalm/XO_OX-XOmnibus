@@ -14,13 +14,20 @@
     "space": 0.45,
     "warmth": 0.55
   },
-  "engines": ["Offering"],
+  "engines": [
+    "Offering"
+  ],
   "legacy": {
     "sourceCategory": "Drum Kits",
     "sourceInstrument": "Offering",
     "sourcePresetName": null
   },
-  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "macroLabels": [
+    "DIG",
+    "CITY",
+    "FLIP",
+    "DUST"
+  ],
   "mood": "Foundation",
   "name": "Toronto Sub",
   "parameters": {
@@ -39,8 +46,19 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["toronto", "sub", "sidechain", "low end", "punchy"],
+  "tags": [
+    "toronto",
+    "sub",
+    "sidechain",
+    "low end",
+    "punchy"
+  ],
   "tempo": null,
   "version": "1.0.0",
-  "macros": {"M1": 0.4, "M2": 0.65, "M3": 0.0, "M4": 0.15}
+  "macros": {
+    "M1": 0.4,
+    "M2": 0.65,
+    "M3": 0.0,
+    "M4": 0.15
+  }
 }

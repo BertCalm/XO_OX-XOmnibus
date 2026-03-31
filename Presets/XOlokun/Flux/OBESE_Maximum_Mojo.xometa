@@ -4,17 +4,26 @@
   "version": "1.0.0",
   "name": "Maximum Mojo",
   "mood": "Flux",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "macros": {
     "CHARACTER": 1.0,
     "MOVEMENT": 0.75,
     "COUPLING": 0.0,
     "SPACE": 0.1
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.65,
@@ -68,6 +77,14 @@
       "fat_macroCrush": 0.1
     }
   },
-  "tags": ["flux", "lead", "aggressive", "B015", "mojo", "saturated", "obese"],
+  "tags": [
+    "flux",
+    "lead",
+    "aggressive",
+    "B015",
+    "mojo",
+    "saturated",
+    "obese"
+  ],
   "description": "Full Mojo with LFO1 cycling the Mojo axis at 0.3 Hz — fast enough to feel as timbral vibrato, slow enough to hear each character shift. Maximum GRIT macro. A hot pink overdriven lead that refuses to sit still."
 }

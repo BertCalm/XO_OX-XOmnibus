@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Phosphorescent Display",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The glowing display of a cephalopod in its most colorful state — phosphorescent rings and patterns cycling across the skin. Maximum chromatophore sensitivity with circular LFO patterns driving arm movement.",
-  "tags": ["octopus", "prism", "phosphorescent", "glow", "display", "rings", "colorful"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "phosphorescent",
+    "glow",
+    "display",
+    "rings",
+    "colorful"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.97,

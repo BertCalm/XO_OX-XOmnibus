@@ -2,15 +2,34 @@
   "schema_version": 1,
   "name": "Harbor Mist",
   "mood": "Atmosphere",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Harbor reverb saturated with morning mist — boats and birds barely audible through it.",
-  "tags": ["atmosphere", "harbor", "mist", "morning"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "harbor",
+    "mist",
+    "morning"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.65, "movement": 0.3, "density": 0.45, "space": 0.78, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.45,
+    "space": 0.78,
+    "aggression": 0.1
+  },
   "parameters": {
     "Osprey": {
       "osprey_brine": 0.45,
@@ -35,6 +54,13 @@
       "osprey_macroSpace": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

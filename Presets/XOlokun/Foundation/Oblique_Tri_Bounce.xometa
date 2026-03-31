@@ -2,15 +2,35 @@
   "schema_version": 1,
   "name": "Tri Bounce",
   "mood": "Foundation",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Triangle wave bounce — soft rounded oscillator driving the bounce chain, warm prismatic character.",
-  "tags": ["triangle", "bounce", "soft", "warm", "foundation"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "triangle",
+    "bounce",
+    "soft",
+    "warm",
+    "foundation"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.28, "density": 0.52, "space": 0.38, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.38,
+    "aggression": 0.2
+  },
   "parameters": {
     "Oblique": {
       "oblq_oscWave": 3,
@@ -50,6 +70,13 @@
       "oblq_macroSpace": 0.38
     }
   },
-  "macros": {"BOUNCE": 0.28, "COLOR": 0.48, "FOLD": 0.1, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.28,
+    "COLOR": 0.48,
+    "FOLD": 0.1,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

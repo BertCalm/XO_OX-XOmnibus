@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Screaming rock organ — all drawbars blazing, maximum drive, fast Leslie spin. The Jon Lord wall of distortion that defined hard rock organ.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.3,
     "warmth": 0.6
   },
-  "engines": ["Otis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Otis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Deep Purple",
   "parameters": {
@@ -54,7 +63,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["organ", "rock", "distortion", "aggressive", "hammond"],
+  "tags": [
+    "organ",
+    "rock",
+    "distortion",
+    "aggressive",
+    "hammond"
+  ],
   "version": "1.0.0",
   "tempo": null
 }

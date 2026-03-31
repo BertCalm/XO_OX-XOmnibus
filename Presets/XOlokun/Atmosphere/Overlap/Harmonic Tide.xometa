@@ -1,13 +1,28 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "created": "2026-03-18",
   "description": "Filter opens slowly from 5kHz as the envelope decays — at filterEnvAmt 0.45, a 2-second filter decay sweeps through the trefoil resonances like a tide coming in. Medium tangle means the harmonic rotation is active but not overwhelming. Ocean current chorus at 0.3 for gentle detuning motion.",
-  "dna": { "aggression": 0.1, "brightness": 0.45, "density": 0.55, "movement": 0.3, "space": 0.68, "warmth": 0.55 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.45,
+    "density": 0.55,
+    "movement": 0.3,
+    "space": 0.68,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Atmosphere",
   "name": "Harmonic Tide",
   "parameters": {
@@ -59,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["atmosphere", "pad", "trefoil", "filter-sweep", "tide", "harmonic", "evolving"],
+  "tags": [
+    "atmosphere",
+    "pad",
+    "trefoil",
+    "filter-sweep",
+    "tide",
+    "harmonic",
+    "evolving"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }
