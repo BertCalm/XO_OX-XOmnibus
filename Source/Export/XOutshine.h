@@ -480,6 +480,8 @@ private:
             {
                 auto* entry = zip.getEntry(i);
                 if (entry == nullptr) continue;
+                if (juce::String(entry->filename).contains(".."))
+                    continue;  // Skip entries with path traversal
                 if (entry->filename.endsWithIgnoreCase(".wav"))
                 {
                     auto dest = wavDir.getChildFile(juce::File(entry->filename).getFileName());
