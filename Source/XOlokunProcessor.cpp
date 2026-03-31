@@ -1275,6 +1275,13 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     {
         loadEngine(0, "Obrix");
     }
+
+    // At end of prepareToPlay, clear any stale pending crossfades
+    for (auto& pc : pendingCrossfades)
+    {
+        pc.outgoing.reset();
+        pc.ready.store(false, std::memory_order_release);
+    }
 }
 
 void XOlokunProcessor::releaseResources()
