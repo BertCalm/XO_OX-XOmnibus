@@ -1,0 +1,38 @@
+name: Validate Docs
+
+on:
+  push:
+    paths:
+      - '*.md'
+      - 'Docs/**'
+      - 'site/**/*.html'
+      - 'SDK/README.md'
+      - 'Tools/project_stats.json'
+      - 'Tools/validate_docs.py'
+      - '.github/workflows/validate-docs.yml'
+  pull_request:
+    paths:
+      - '*.md'
+      - 'Docs/**'
+      - 'site/**/*.html'
+      - 'SDK/README.md'
+      - 'Tools/project_stats.json'
+      - 'Tools/validate_docs.py'
+
+jobs:
+  validate-docs:
+    name: Check doc consistency
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate docs against project_stats.json
+        run: python3 Tools/validate_docs.py --verbose

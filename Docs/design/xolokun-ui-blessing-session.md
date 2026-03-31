@@ -70,9 +70,9 @@ Yes, and it exceeds the concern significantly. The Sonic DNA hexagon is specifie
 Preset navigation is solved three ways:
 1. The standard prev/next arrows in the header (always visible)
 2. The mood-filtered, DNA-rich preset browser in the PRESET sidebar tab
-3. The Spatial Preset Navigation map (Section 5.2.1) — the most ambitious preset system in the history of synthesizers. 19,000+ presets projected onto a 2D DNA-space map with continuous interpolation between preset positions. The performer navigates sound, not lists.
+3. The Spatial Preset Navigation map (Section 5.2.1) — the most ambitious preset system in the history of synthesizers. ~17,250 presets projected onto a 2D DNA-space map with continuous interpolation between preset positions. The performer navigates sound, not lists.
 
-The search field addressing "19,000+ presets" is present with mood filter pills.
+The search field addressing "~17,250 presets" is present with mood filter pills.
 
 **What would raise the score?**
 
@@ -225,7 +225,7 @@ Rams speaks: *"This design is disciplined. The Golden Ratio proportions tell me 
 
 Yes. The spec delivers beyond the original request. The PRESET sidebar tab contains:
 - Mood filter row with 15 mood pills (color-coded, horizontally scrollable)
-- Search field addressing "19,000+" presets
+- Search field addressing "~17,250 presets"
 - Preset cards with 32x32 DNA hexagon, engine badge, mood dot, and tags
 - DNA detail view at 120x120 in the detail panel
 - Animated DNA hexagons (ripple for Movement, breathing for Space, angular peaks for Aggression)
