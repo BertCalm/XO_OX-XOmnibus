@@ -174,6 +174,19 @@ public:
         }
 
         resized();
+
+        // Restore previously selected tab now that all content panels are live (#199).
+        // Skip if the persisted index is the invisible PLAY tab (4) — fall back to Preset.
+        {
+            juce::PropertiesFile::Options opts;
+            opts.applicationName     = "XOlokun";
+            opts.filenameSuffix      = "settings";
+            opts.osxLibrarySubFolder = "Application Support";
+            juce::PropertiesFile settings(opts);
+            const int saved = settings.getIntValue("sidebarTab", static_cast<int>(Preset));
+            const int safeIndex = (saved == static_cast<int>(Play)) ? static_cast<int>(Preset) : saved;
+            selectTab(static_cast<Tab>(juce::jlimit(0, static_cast<int>(NumTabs) - 1, safeIndex)));
+        }
     }
 
     //==========================================================================
@@ -244,6 +257,16 @@ public:
             couplingPanel->refresh();
 
         repaint();
+
+        // Persist tab selection across sessions (#199).
+        {
+            juce::PropertiesFile::Options opts;
+            opts.applicationName     = "XOlokun";
+            opts.filenameSuffix      = "settings";
+            opts.osxLibrarySubFolder = "Application Support";
+            juce::PropertiesFile settings(opts);
+            settings.setValue("sidebarTab", static_cast<int>(t));
+        }
 
         // Move keyboard focus into the content area
         if (auto* focusable = contentArea.getChildComponent(0))
