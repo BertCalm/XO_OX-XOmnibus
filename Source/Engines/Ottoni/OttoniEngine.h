@@ -215,8 +215,13 @@ public:
                     }
                 }
 
-                float rr=v.releasing?1.f/(v.sr*0.3f):0;
-                v.ampEnv=std::max(0.f,v.ampEnv-rr);
+                // Exponential release — eliminates the "soft note releases fast"
+                // bug from linear subtraction on small ampEnv values.
+                if(v.releasing){
+                    float releaseCoeff=1.0f-(1.0f/(v.sr*0.3f));
+                    v.ampEnv*=releaseCoeff;
+                }
+                v.ampEnv=flushDenormal(v.ampEnv);
                 if(v.ampEnv<0.0001f&&v.releasing){v.active=false;continue;}
 
                 // --- Organic drift ---
@@ -233,7 +238,7 @@ public:
                 float dlen=v.sr/std::max(df*stretch,20.f);
 
                 // --- Foreign drift: microtonal pitch drift ---
-                float microDrift=effFDr*std::sin(v.vib.phase*3.7f)*0.02f;
+                float microDrift=effFDr*fastSin(v.vib.phase*3.7f)*0.02f;
                 dlen*=(1.f+microDrift);
 
                 float out=v.dl.read(dlen);
@@ -246,7 +251,7 @@ public:
                 // Toddler: loose lips, low pressure, simple
                 float excToddler=v.lipBuzz.tick(df*0.998f, effTodPres*0.4f*velIntens, 0.0f)*toddlerMix;
                 // Tween: moderate embouchure, valve modulates pitch slightly
-                float tweenPitchMod=1.f+pTwValve*0.003f*std::sin(v.vib.phase*2.1f);
+                float tweenPitchMod=1.f+pTwValve*0.003f*fastSin(v.vib.phase*2.1f);
                 float excTween=v.lipBuzz.tick(df*tweenPitchMod, effTwEmb*0.7f*velIntens, 0.5f)*tweenMix;
                 // Teen: full virtuosity, bore width affects body
                 float excTeen=v.lipBuzz.tick(df, std::min(1.f,effTnEmb*velIntens), ageScale)*teenMix;

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Halocline Drift",
+  "mood": "Atmosphere",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-03-29",
+  "description": "The halocline: the boundary between salt and fresh water where sound bends and scatters. Medium everything — the balance point of the engine. Wind chaos at 0.5 creates ambiguous, drifting shimmer. The tidal drift LFO slowly evolves the room geometry. Stable enough to use under anything.",
+  "tags": ["awakening", "ambient", "atmosphere", "drifting", "balanced", "background"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.65,
+      "out_windChaos": 0.5,
+      "out_undertowPull": 0.38,
+      "out_splashSize": 0.5,
+      "out_decay": 6.5,
+      "out_damping": 5500.0,
+      "out_dryWet": 0.55,
+      "out_exciterDecay": 0.03,
+      "out_vacuumAttack": 0.5,
+      "out_opticalWarmth": 0.5,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.45,
+    "space": 0.75,
+    "aggression": 0.22
+  }
+}

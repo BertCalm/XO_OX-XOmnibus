@@ -277,6 +277,9 @@ struct MicroscopeView: View {
                         .font(DesignTokens.body(9))
                         .foregroundColor(.white.opacity(0.15))
                 }
+
+                JournalViewLink(specimen: specimen)
+                    .padding(.top, 4)
             }
         }
         .padding(.horizontal, 20)

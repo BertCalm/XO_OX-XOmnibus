@@ -642,13 +642,19 @@ private:
                     idx = i;
                 }
             }
-            // Mark old voice for crossfade; new note starts immediately on same slot.
-            // The render loop will fade stealFadeGain → 0 over 5ms then deactivate.
-            // We reset below so the new note starts playing; stealFadeGain stays at 1
-            // until the new note's voices diverge enough to avoid the audible click.
+            // Mark old voice for crossfade; capture level before reset.
+            // The render loop will ramp stealFadeGain → 0 over 5ms (new note
+            // plays at reduced amplitude during the crossfade window, preventing click).
+            voices[static_cast<size_t> (idx)].isBeingStolen = true;
+            voices[static_cast<size_t> (idx)].stealFadeGain =
+                voices[static_cast<size_t> (idx)].ampEnv.getLevel();
         }
 
         auto& v = voices[static_cast<size_t> (idx)];
+        // Preserve crossfade state if this slot was just marked as stolen.
+        const bool wasStolen = v.isBeingStolen;
+        const float stolenGain = v.stealFadeGain;
+
         v.active = true;
         v.note = noteNumber;
         v.velocity = vel;
@@ -656,8 +662,9 @@ private:
         v.phase1 = 0.0;
         v.phase2 = 0.0;
         v.age = 0;
-        v.stealFadeGain = 1.0f;
-        v.isBeingStolen = false;
+        // Restore crossfade state so the render loop fades the new note in cleanly.
+        v.isBeingStolen = wasStolen;
+        v.stealFadeGain = wasStolen ? stolenGain : 1.0f;
 
         // Configure StandardADSR
         v.ampEnv.prepare (static_cast<float> (sr));
@@ -827,7 +834,7 @@ private:
 
     //-- State ------------------------------------------------------------------
 
-    double sr = 44100.0;
+    double sr = 48000.0;
     int blockSize = 512;
     float modWheel = 0.0f;
     float aftertouch = 0.0f;

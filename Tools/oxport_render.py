@@ -36,11 +36,11 @@ def _precise_wait(duration_s: float) -> None:
     if duration_s <= 0:
         return
     deadline = _time.perf_counter() + duration_s
-    # Sleep for bulk of duration (save CPU), then busy-wait the tail
-    sleep_duration = duration_s - 0.020  # wake 20ms early
+    # Sleep for bulk of duration (save CPU), then busy-wait only the tail
+    sleep_duration = duration_s - 0.002  # wake 2ms early (was 20ms — reduced CPU burn ~10x)
     if sleep_duration > 0:
         _time.sleep(sleep_duration)
-    # Busy-wait the final ~20ms for precision
+    # Busy-wait only the final ~2ms for sub-millisecond precision
     while _time.perf_counter() < deadline:
         pass
 
@@ -114,14 +114,29 @@ def write_wav_24bit(path: str, data, sample_rate: int):
         # data chunk
         f.write(b"data")
         f.write(struct.pack("<I", data_size))
-        for frame_idx in range(n_frames):
-            for ch in range(n_channels):
-                val = int(scaled[frame_idx, ch])
-                # Pack as 3 little-endian bytes (signed)
-                b0 = val & 0xFF
-                b1 = (val >> 8) & 0xFF
-                b2 = (val >> 16) & 0xFF
-                f.write(bytes([b0, b1, b2]))
+        # Vectorized 24-bit write: extract 3 bytes per sample via numpy bitwise
+        # ops, then write the entire buffer in a single f.write() call.
+        # Replaces per-sample Python loop (~3.4B individual write calls on a
+        # full run) with a single bulk write — massive throughput improvement.
+        try:
+            import numpy as _np_local
+            # Flatten to interleaved samples: [f0_ch0, f0_ch1, f1_ch0, ...]
+            flat = scaled.flatten()
+            n_samples = flat.size
+            buf = _np_local.empty(n_samples * 3, dtype=_np_local.uint8)
+            buf[0::3] = (flat & 0xFF).astype(_np_local.uint8)
+            buf[1::3] = ((flat >> 8) & 0xFF).astype(_np_local.uint8)
+            buf[2::3] = ((flat >> 16) & 0xFF).astype(_np_local.uint8)
+            f.write(buf.tobytes())
+        except ImportError:
+            # Fallback: per-sample loop (slow — only reached if numpy missing)
+            for frame_idx in range(n_frames):
+                for ch in range(n_channels):
+                    val = int(scaled[frame_idx, ch])
+                    b0 = val & 0xFF
+                    b1 = (val >> 8) & 0xFF
+                    b2 = (val >> 16) & 0xFF
+                    f.write(bytes([b0, b1, b2]))
 
 # ---------------------------------------------------------------------------
 # Port listing
@@ -255,8 +270,15 @@ def _preflight_check(device_index, sample_rate: int, midi_port, midi_channel: in
 # ---------------------------------------------------------------------------
 
 def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
-                audio_device, sample_rate: int, preset_load_ms: int = 200):
-    """Execute all render jobs: MIDI out + audio record → WAV."""
+                audio_device, sample_rate: int, preset_load_ms: int = 200,
+                force_rerender: bool = False):
+    """Execute all render jobs: MIDI out + audio record → WAV.
+
+    Args:
+        force_rerender: When False (default), skip any job whose output WAV
+            already exists with a non-zero file size (resume after crash).
+            When True, re-render every job unconditionally.
+    """
     mido = _require_mido()
     sd = _require_sounddevice()
     np = _numpy
@@ -307,8 +329,23 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
     total = len(jobs)
     t_start = time.time()
     last_program = None
+    n_skipped = 0
+    n_rendered = 0
 
     for idx, job in enumerate(jobs):
+        out_path = os.path.join(output_dir, job["filename"])
+
+        # Resume capability: skip jobs whose output already exists and is non-empty.
+        # Disabled when --force-rerender is set.
+        if not force_rerender:
+            try:
+                if os.path.isfile(out_path) and os.path.getsize(out_path) > 0:
+                    print(f"[SKIP] {job['filename']} already exists")
+                    n_skipped += 1
+                    continue
+            except OSError:
+                pass  # stat failure — fall through and render normally
+
         # B4: Safety — clear any stuck notes from previous render
         port.send(mido.Message("control_change", channel=job["channel"], control=123, value=0))  # All Notes Off
         port.send(mido.Message("control_change", channel=job["channel"], control=64, value=0))   # Sustain Pedal Off
@@ -366,8 +403,8 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
         _precise_wait(0.100)  # 100ms gap
 
         # Save WAV (24-bit)
-        out_path = os.path.join(output_dir, job["filename"])
         write_wav_24bit(out_path, recording, sample_rate)
+        n_rendered += 1
 
         elapsed = time.time() - t_start
         print(f"Rendered {idx + 1}/{total}: {job['filename']}  ({elapsed:.0f}s elapsed)")
@@ -376,7 +413,7 @@ def render_jobs(jobs: list[dict], output_dir: str, midi_port_name: str | None,
     total_time = time.time() - t_start
     mins = int(total_time // 60)
     secs = int(total_time % 60)
-    print(f"\nDone. Rendered {total} WAVs in {mins}m {secs}s")
+    print(f"\nDone. {n_rendered} rendered, {n_skipped} skipped in {mins}m {secs}s")
     print(f"Output: {os.path.abspath(output_dir)}")
 
 # ---------------------------------------------------------------------------
@@ -440,6 +477,8 @@ Render spec JSON format:
     parser.add_argument("--dry-run", action="store_true", help="Show what would be rendered without recording")
     parser.add_argument("--engine", type=str, default=None, help="Filter to presets for a single engine")
     parser.add_argument("--preset-load-ms", type=int, default=200, help="Wait time after program change (default: 200)")
+    parser.add_argument("--force-rerender", action="store_true",
+                        help="Re-render all jobs even if output WAV already exists (disables resume skip)")
 
     args = parser.parse_args()
 
@@ -471,7 +510,7 @@ Render spec JSON format:
         return
 
     render_jobs(jobs, args.output_dir, args.midi_port, args.audio_device,
-                args.sample_rate, args.preset_load_ms)
+                args.sample_rate, args.preset_load_ms, args.force_rerender)
 
 
 if __name__ == "__main__":

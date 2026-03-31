@@ -1428,6 +1428,11 @@ def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
     If pyloudnorm is installed, real ITU-R BS.1770 integrated loudness (LUFS)
     is used instead of the RMS proxy. Install with: pip install pyloudnorm
     """
+    if _NUMPY_AVAILABLE:
+        print("    [INFO] Normalization: using numpy path (~50-100x faster)")
+    else:
+        print("    [INFO] Normalization: using stdlib path (pip install numpy for acceleration)")
+
     # Lazy import — ledger is only needed when normalization actually runs.
     try:
         from xpn_loudness_ledger import record_sample as _ledger_record
@@ -2178,6 +2183,9 @@ def cmd_build(args) -> int:
     # 200ms default is too tight for XOlokun with 50+ presets — use 400ms or set
     # rendering.preset_load_ms in the .oxbuild spec.
     preset_load_ms = rendering.get("preset_load_ms", 400)
+    # Average per-voice duration for disk estimate (matches oxport_render defaults).
+    render_duration_ms = rendering.get("duration_ms", 3000)
+    render_release_ms = rendering.get("release_tail_ms", 500)
 
     # Corner config
     corner_strategy = spec.get("corner_strategy", "dynamic_expression")
@@ -2372,7 +2380,26 @@ def cmd_build(args) -> int:
                       f"× {velocity_layers} vel = {total_jobs} WAVs total")
                 print(f"         → Would call: oxport_render.py --spec <spec> --output-dir {output_dir / 'renders'}")
             else:
+                total_jobs = pad_count * 4 * velocity_layers
                 print(f"         → Would call: oxport_render.py --spec <spec> --output-dir {output_dir / 'renders'}")
+            # Disk space estimate for final Samples/ output.
+            # renders/ is cleaned up after ASSEMBLE, so only one copy is retained.
+            # Formula: jobs × (duration + release) × sample_rate × channels × bytes_per_sample
+            _bytes_per_sample = (bit_depth + 7) // 8  # rounds up; 24-bit → 3
+            _channels = 2  # oxport_render always records stereo
+            _avg_wav_bytes = (
+                (render_duration_ms + render_release_ms) / 1000.0
+                * sample_rate * _channels * _bytes_per_sample
+            )
+            _total_bytes = total_jobs * _avg_wav_bytes
+            if _total_bytes >= 1_073_741_824:
+                _disk_str = f"{_total_bytes / 1_073_741_824:.1f} GB"
+            else:
+                _disk_str = f"{_total_bytes / 1_048_576:.0f} MB"
+            print(f"         → Estimated final output size: {_disk_str} "
+                  f"({total_jobs} WAVs × "
+                  f"{(render_duration_ms + render_release_ms) / 1000.0:.1f}s × "
+                  f"{sample_rate}Hz × stereo × {_bytes_per_sample * 8}-bit)")
         else:
             renders_dir = output_dir / "renders"
             renders_dir.mkdir(exist_ok=True)
@@ -2525,6 +2552,7 @@ def cmd_build(args) -> int:
                         program_slug = Path(xpm_path).stem
                         samples_root = output_dir / "Samples" / program_slug
                         wav_count = 0
+                        copy_ok = 0
                         if selected_presets:
                             # Multi-preset: each preset has its own sample subdir.
                             # WAV names: {preset_name}__{rest}.WAV
@@ -2541,6 +2569,7 @@ def cmd_build(args) -> int:
                                 if not dest_wav.exists():
                                     _shutil.copy2(wav, dest_wav)
                                 wav_count += 1
+                                copy_ok += 1
                             print(f"         ✓ {wav_count} WAV(s) staged → "
                                   f"Samples/{program_slug}/{{preset}}/")
                         else:
@@ -2552,8 +2581,20 @@ def cmd_build(args) -> int:
                                 if not dest_wav.exists():
                                     _shutil.copy2(wav, dest_wav)
                                 wav_count += 1
+                                copy_ok += 1
                             print(f"         ✓ {wav_count} WAV(s) staged → "
                                   f"Samples/{program_slug}/")
+
+                        # Clean up renders/ only when every file was copied
+                        # successfully — avoids data loss on partial failures.
+                        if copy_ok == wav_count and wav_count > 0:
+                            try:
+                                _shutil.rmtree(renders_dir)
+                                print(f"         ✓ Cleaned up {renders_dir} "
+                                      f"({wav_count} intermediate file(s) removed)")
+                            except Exception as _cleanup_err:
+                                print(f"         ⚠  renders/ cleanup failed (non-fatal): "
+                                      f"{_cleanup_err}")
 
             except ImportError:
                 print(f"         ⚠  xpn_mpce_quad_builder not available")

@@ -582,6 +582,11 @@ struct OspreyVoice
     // --- Per-voice PRNG (LCG, Knuth TAOCP constants) ---
     uint32_t randomState = 12345u;
 
+    // --- Stereo pan gains (CPU fix: precomputed at noteOn, constant per voice lifetime) ---
+    // Pan position derives from noteNumber % 12 — never changes after voice start.
+    float    panGainL = 0.7071f;
+    float    panGainR = 0.7071f;
+
     // --- DC blocker state (1-pole highpass) ---
     float    dcPreviousInputL  = 0.0f;
     float    dcPreviousOutputL = 0.0f;
@@ -622,6 +627,9 @@ struct OspreyVoice
         fadingOut              = false;
         controlCounter         = 0;
         randomState            = 12345u;
+
+        panGainL = 0.7071f;
+        panGainR = 0.7071f;
 
         dcPreviousInputL  = 0.0f;
         dcPreviousOutputL = 0.0f;
@@ -1276,20 +1284,11 @@ public:
                 voiceOutput *= voiceGain;
 
                 // --- Stereo placement ---
-                // Spread voices across the stereo field based on pitch class.
-                // Each of the 12 pitch classes gets a consistent pan position,
-                // creating a natural spatial distribution without random panning.
-                float voicePanPosition = static_cast<float> (voice.noteNumber % 12) / 12.0f - 0.5f;
-                static constexpr float kMaxStereoSpread = 0.6f;  // limit to prevent hard-panning
-                voicePanPosition *= kMaxStereoSpread;
-
-                // Constant-power pan law (cos/sin)
-                float panAngle = (voicePanPosition + 1.0f) * 0.25f * kPi;
-                float panGainL = std::cos (panAngle);
-                float panGainR = std::sin (panAngle);
-
-                float voiceL = voiceOutput * panGainL;
-                float voiceR = voiceOutput * panGainR;
+                // CPU fix: panGainL/panGainR are precomputed at noteOn (startVoice).
+                // noteNumber % 12 is constant for the voice lifetime — std::cos/std::sin
+                // do not need to run per sample per voice.
+                float voiceL = voiceOutput * voice.panGainL;
+                float voiceR = voiceOutput * voice.panGainR;
 
                 // Final per-voice denormal protection before accumulation
                 voiceL = flushDenormal (voiceL);
@@ -1854,6 +1853,17 @@ private:
         // good dispersion across the LCG state space, ensuring each
         // note+voice combination produces unique noise character.
         voice.randomState = static_cast<uint32_t> (noteNumber * 7919 + voiceCounter * 104729);
+
+        // --- Stereo pan (CPU fix: precompute cos/sin once at noteOn) ---
+        // noteNumber % 12 is constant for the voice lifetime — no need for per-sample trig.
+        {
+            float voicePanPosition = static_cast<float> (noteNumber % 12) / 12.0f - 0.5f;
+            static constexpr float kMaxStereoSpread = 0.6f;
+            voicePanPosition *= kMaxStereoSpread;
+            float panAngle = (voicePanPosition + 1.0f) * 0.25f * kPi;
+            voice.panGainL = std::cos (panAngle);
+            voice.panGainR = std::sin (panAngle);
+        }
 
         // --- Amplitude envelope ---
         voice.amplitudeEnvelope.setParams (ampAttack, ampDecay, ampSustain, ampRelease, sampleRateFloat);

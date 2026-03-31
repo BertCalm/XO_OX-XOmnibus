@@ -368,11 +368,11 @@ private:
     // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.
     juce::AudioBuffer<float> externalInputBuffer;
 
-    double currentSampleRate = 44100.0;
+    std::atomic<double> currentSampleRate { 44100.0 };
     // atomicSampleRate_ mirrors currentSampleRate for safe cross-thread reads.
     // Written in prepareToPlay() (same time as currentSampleRate), read on the
-    // message thread in triggerCouplingBurst(). Using a separate atomic avoids
-    // data-race UB without removing currentSampleRate (still used on audio thread).
+    // message thread in triggerCouplingBurst(). currentSampleRate is now also
+    // atomic, eliminating the data race (FIX 4).
     std::atomic<double> atomicSampleRate_ { 44100.0 };
     int currentBlockSize = 512;
 

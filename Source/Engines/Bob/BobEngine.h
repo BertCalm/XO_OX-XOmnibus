@@ -514,7 +514,9 @@ public:
     void setCutoff (float freqHz) noexcept
     {
         float clamped = clamp (freqHz, 20.0f, static_cast<float> (sr) * 0.45f);
-        if (std::abs (clamped - cutoffHz) < 0.5f) return;
+        // Semitone-relative threshold (~0.2% ≈ 3.5 cents): flat Hz guard is defeated by
+        // envelopes sweeping large frequency ranges, so we compare as a ratio instead.
+        if (std::abs (clamped / cutoffHz - 1.0f) < 0.002f) return;
         cutoffHz = clamped;
         coeffDirty = true;
         updateCoefficients();

@@ -254,10 +254,19 @@ public:
     {
         for (auto& bp : bands)
             bp.reset();
+        lastMorphValue = -999.0f;  // force coefficient recompute on next call
     }
 
+    // lastMorphValue cache: skip all 3 SVF coefficient updates when morph
+    // hasn't moved more than 0.001. At 8 voices this eliminates up to 24
+    // setCoefficients() calls per sample under static or slow-moving morph.
     void updateCoefficients (float morph, float resonance, float sampleRate) noexcept
     {
+        if (std::abs (morph - lastMorphValue) < 0.001f)
+            return;
+
+        lastMorphValue = morph;
+
         float morphScaled = clamp (morph, 0.0f, 1.0f) * 4.0f;
         int vowelIdx = std::min (static_cast<int> (morphScaled), 3);
         float frac = morphScaled - static_cast<float> (vowelIdx);
@@ -289,6 +298,7 @@ public:
 private:
     double sr = 44100.0;
     std::array<CytomicSVF, 3> bands;
+    float lastMorphValue = -999.0f;  // sentinel: guarantees first-call recompute
 
     static constexpr float vowelFreqs[5][3] = {
         { 730.0f, 1090.0f, 2440.0f },   // ah
@@ -403,8 +413,9 @@ public:
         // sin² shaping: always positive [0,1], soft peaks, no sharp zero-crossings.
         // Mathematically equivalent to (1 - cos(2π·phase)) / 2, but computed as
         // sine squared for clarity and consistency with XOdyssey's implementation.
-        constexpr double twoPi = 6.28318530717958647692;
-        float s = static_cast<float> (std::sin (phase * twoPi));
+        // fastSin accuracy (~0.02%) is indistinguishable from std::sin for a breathing LFO.
+        constexpr float twoPi = 6.28318530717958647692f;
+        float s = fastSin (static_cast<float> (phase) * twoPi);
         float breathCycle = s * s;   // unipolar [0, 1]
 
         return breathCycle * depth;
@@ -675,6 +686,12 @@ struct DriftVoice
     // Glide
     bool glideActive = false;
     float glideSourceFreq = 0.0f;
+
+    // Voice-steal fade: 2ms linear ramp-down to silence before new note
+    // prevents the zero-crossing click caused by ampEnv.kill() zeroing immediately.
+    float stealFadeGain = 0.0f;    // current fade gain (starts at stolen level, ramps to 0)
+    float stealFadeDelta = 0.0f;   // amount subtracted from stealFadeGain each sample
+    int   stealFadeSamples = 0;    // samples remaining in fade; 0 = not fading
 
     // Block-start cached base frequencies (avoids std::pow in per-sample loop)
     float cachedBaseFreqA = 440.0f;
@@ -1153,6 +1170,23 @@ public:
                     out *= std::max (0.0f, ampMod);
                 }
 
+                // Voice-steal fade: linearly ramp output from the stolen note's
+                // last envelope level to zero over the first ~2ms of the new note.
+                // This masks the oscillator-reset discontinuity that causes clicks.
+                // stealFadeGain and stealFadeDelta are pre-computed at steal time —
+                // no division or sr-dependent math in the hot sample loop.
+                if (voice.stealFadeSamples > 0)
+                {
+                    out *= voice.stealFadeGain;
+                    voice.stealFadeGain -= voice.stealFadeDelta;
+                    --voice.stealFadeSamples;
+                    if (voice.stealFadeSamples == 0)
+                    {
+                        voice.stealFadeGain  = 0.0f;
+                        voice.stealFadeDelta = 0.0f;
+                    }
+                }
+
                 // --- TidalPulse amplitude modulation (BREATHE macro) ---
                 // sin² breathing shape modulates output amplitude by up to (1 - tidalDepth).
                 // At tidalDepth=0.0 → no modulation. At tidalDepth=1.0 → output reaches 0
@@ -1580,9 +1614,17 @@ private:
         int idx = VoiceAllocator::findFreeVoice (voices, std::min (maxPoly, kMaxVoices));
         auto& v = voices[static_cast<size_t> (idx)];
 
-        // Kill envelope on stolen voice to prevent click
+        // Voice-steal fade: instead of kill() (which zeros immediately and clicks),
+        // capture the current envelope level and ramp it to zero over ~2ms (88 samples
+        // at 44.1kHz; computed proportionally for any sample rate).
         if (v.active)
+        {
+            int fadeSamples    = std::max (1, static_cast<int> (sr * 0.002)); // ~2ms
+            v.stealFadeGain    = v.ampEnv.getLevel();
+            v.stealFadeDelta   = v.stealFadeGain / static_cast<float> (fadeSamples);
+            v.stealFadeSamples = fadeSamples;
             v.ampEnv.kill();
+        }
 
         if (v.active && glideAmt > 0.001f)
         {

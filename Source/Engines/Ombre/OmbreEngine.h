@@ -477,7 +477,8 @@ public:
 
                 // --- Pitch ---
                 float midiNote = static_cast<float> (voice.noteNumber) + pitchMod + pitchBendNorm * 2.0f;
-                float freq = midiToHz (midiNote);
+                // CPU fix: inline fastPow2 replaces midiToHz (which called std::pow per sample per voice).
+                float freq = 440.0f * fastPow2 ((midiNote - 69.0f) / 12.0f);
 
                 // ============================================================
                 // OPSIS — perception, the present moment

@@ -269,8 +269,8 @@ public:
         const float dopplerMix   = pDopplerMix   ? pDopplerMix->load()   : 0.0f;
 
         // Stage 11: Reverb (FATHOM 8-tap Hadamard FDN)
-        const float reverbSize      = pReverbSize->load();
-        const float reverbMix       = pReverbMix->load();
+        const float reverbSize      = pReverbSize  ? pReverbSize->load()  : 0.5f;
+        const float reverbMix       = pReverbMix   ? pReverbMix->load()   : 0.0f;
         const float reverbPreDelay  = pReverbPreDelay  ? pReverbPreDelay->load()  : 0.0f;
         const float reverbDecay     = pReverbDecay     ? pReverbDecay->load()     : 2.0f;
         const float reverbDamping   = pReverbDamping   ? pReverbDamping->load()   : 0.4f;
@@ -337,10 +337,10 @@ public:
         const float pWidthMix    = pPWidthMix    ? pPWidthMix->load()    : 0.0f;
 
         // Stage 19: Bus Compressor
-        const float compRatio    = pCompRatio->load();
-        const float compAttack   = pCompAttack->load();
-        const float compRelease  = pCompRelease->load();
-        const float compMix      = pCompMix->load();
+        const float compRatio    = pCompRatio   ? pCompRatio->load()   : 4.0f;
+        const float compAttack   = pCompAttack  ? pCompAttack->load()  : 10.0f;
+        const float compRelease  = pCompRelease ? pCompRelease->load() : 100.0f;
+        const float compMix      = pCompMix     ? pCompMix->load()     : 0.0f;
 
         // Stage 19.5: Parametric EQ
         const float eqB1Freq  = pEQB1Freq  ? pEQB1Freq->load()  : 100.0f;

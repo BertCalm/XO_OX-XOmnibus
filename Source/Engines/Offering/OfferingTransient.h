@@ -398,7 +398,7 @@ private:
         float phaseInc = freq / sr_;
         phase_ += phaseInc;
         if (phase_ >= 1.0f) phase_ -= 1.0f;
-        float sine = std::sin (phase_ * 6.2831853f);
+        float sine = fastSin (phase_ * 6.2831853f);
 
         // Body resonance bandpass
         float resonant = bp1_.process (sine);
@@ -410,7 +410,7 @@ private:
         float subPhaseInc = freq * 0.5f / sr_;
         subPhase_ += subPhaseInc;
         if (subPhase_ >= 1.0f) subPhase_ -= 1.0f;
-        float sub = std::sin (subPhase_ * 6.2831853f) * 0.5f;
+        float sub = fastSin (subPhase_ * 6.2831853f) * 0.5f;
 
         return (tonal + sub) * env;
     }
@@ -472,7 +472,7 @@ private:
         float filtered = bp1_.process (metallic);
 
         // Body controls tonal content: 0=all metallic, 1=adds tonal sine
-        float tonal = body_ * std::sin (metalPhases_[0] * 6.2831853f) * 0.3f;
+        float tonal = body_ * fastSin (metalPhases_[0] * 6.2831853f) * 0.3f;
 
         float out = filtered + tonal;
 
@@ -557,7 +557,7 @@ private:
         float phaseInc = freq / sr_;
         phase_ += phaseInc;
         if (phase_ >= 1.0f) phase_ -= 1.0f;
-        float sine = std::sin (phase_ * 6.2831853f);
+        float sine = fastSin (phase_ * 6.2831853f);
 
         // Saturation applied in outer process() — no double-sat
         return sine * env;

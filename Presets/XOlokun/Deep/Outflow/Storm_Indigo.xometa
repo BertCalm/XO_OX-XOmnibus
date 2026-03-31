@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Storm Indigo",
+  "mood": "Deep",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-03-29",
+  "description": "XOutflow's identity color is Deep Storm Indigo. This preset embodies it — turbulent, dark, vast. High wind chaos makes the tail unstable and churning. Maximum undertow pull creates dramatic vacuum events. Low damping keeps sub-frequency energy dominant. The storm below the surface.",
+  "tags": ["awakening", "dark", "storm", "turbulent", "vacuum", "deep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.5,
+      "out_windChaos": 0.85,
+      "out_undertowPull": 0.88,
+      "out_splashSize": 0.78,
+      "out_decay": 10.0,
+      "out_damping": 800.0,
+      "out_dryWet": 0.72,
+      "out_exciterDecay": 0.03,
+      "out_vacuumAttack": 0.2,
+      "out_opticalWarmth": 0.42,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.38,
+    "movement": 0.78,
+    "density": 0.58,
+    "space": 0.88,
+    "aggression": 0.72
+  }
+}

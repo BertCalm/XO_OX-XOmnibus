@@ -90,6 +90,11 @@ struct Particle
     int subFlock = 0;          // 0-3
     float phase = 0.0f;       // oscillator phase [0, 1)
 
+    // FIX 3: cached constant-power pan coefficients.
+    // Recomputed at control rate when p.pan changes; read every sample.
+    float panL = 0.7071068f;  // cos(pi/4) — default center
+    float panR = 0.7071068f;  // sin(pi/4) — default center
+
     void reset (float f, float a, float p, int flock) noexcept
     {
         freq = f;
@@ -100,6 +105,11 @@ struct Particle
         vPan = 0.0f;
         subFlock = flock;
         phase = 0.0f;
+        // Recompute cached pan for new position
+        constexpr float kQuarterPi = 0.7853981633974483f;
+        float angle = (p + 1.0f) * 0.25f * 3.14159265358979323846f;
+        panL = fastCos (angle);
+        panR = fastSin (angle);
     }
 };
 
@@ -150,6 +160,10 @@ struct OceanicVoice
     // Murmuration trigger
     bool murmurate = false;
 
+    // FIX 4: cached inverse-norm factor (1/sqrt(activeParticles)).
+    // Recomputed at control rate; used every sample to avoid per-sample sqrt.
+    float cachedInvNorm = 1.0f;
+
     float nextRandom() noexcept
     {
         rng = rng * 1664525u + 1013904223u;
@@ -178,6 +192,7 @@ struct OceanicVoice
         dcPrevInR = 0.0f;
         dcPrevOutR = 0.0f;
         murmurate = false;
+        cachedInvNorm = 1.0f;
         ampEnv.reset();
         swarmEnv.reset();
         lfo1.reset();
@@ -556,7 +571,19 @@ public:
 
                             if (dist2 < rSep * rSep && dist2 > 0.0001f)
                             {
-                                float invDist = 1.0f / (std::sqrt (dist2) + 0.01f);
+                                // FIX 1: avoid std::sqrt in O(N²) loop.
+                                // Quake-style fast inverse-sqrt (rsqrt) — ~0.2% error,
+                                // imperceptible for a boid force direction vector.
+                                float y = dist2;
+                                int32_t ybits;
+                                std::memcpy (&ybits, &y, sizeof (ybits));
+                                ybits = 0x5F375A86 - (ybits >> 1);
+                                float invSqrt;
+                                std::memcpy (&invSqrt, &ybits, sizeof (invSqrt));
+                                invSqrt *= (1.5f - 0.5f * dist2 * invSqrt * invSqrt);  // one Newton-Raphson step
+                                // Convert rsqrt(dist2) to 1/(sqrt(dist2)+0.01):
+                                // sqrt(dist2) = dist2 * invSqrt; then add 0.01 and invert.
+                                float invDist = 1.0f / (dist2 * invSqrt + 0.01f);
                                 sepForceFreq += dFreq * invDist;
                                 sepForceAmp  += dAmp * invDist;
                                 sepForcePan  += dPan * invDist;
@@ -641,7 +668,9 @@ public:
                             p.vFreq = -std::fabs (p.vFreq) * 0.5f;
                         }
 
-                        p.freq = std::pow (2.0f, newLogFreq);
+                        // FIX 2: replace std::pow(2.0f, x) with fastPow2(x) (~0.1% error,
+                        // indistinguishable for a boid frequency integration step).
+                        p.freq = fastPow2 (newLogFreq);
                         p.freq = clamp (p.freq, kMinFreqHz, kMaxFreqHz);
 
                         // Soft clamp amplitude
@@ -674,6 +703,27 @@ public:
                         p.vFreq = flushDenormal (p.vFreq);
                         p.vAmp  = flushDenormal (p.vAmp);
                         p.vPan  = flushDenormal (p.vPan);
+
+                        // FIX 3: update cached pan coefficients at control rate.
+                        // panL/panR are read every sample; computing them here (not per-sample)
+                        // eliminates ~512 std::cos/sin calls/sample at Poly4.
+                        float panAngleCR = (p.pan + 1.0f) * 0.25f * kPI;
+                        p.panL = fastCos (panAngleCR);
+                        p.panR = fastSin (panAngleCR);
+                    }
+
+                    // FIX 4: cache inverse-norm factor (1/sqrt(activeParticles)).
+                    // activeParticles only changes when particles cross the amp threshold,
+                    // which happens at control rate — computing sqrt here avoids one
+                    // std::sqrt per voice per sample.
+                    {
+                        int countActive = 0;
+                        for (int pi = 0; pi < kParticlesPerVoice; ++pi)
+                            if (voice.particles[static_cast<size_t> (pi)].amp >= 0.001f)
+                                ++countActive;
+                        voice.cachedInvNorm = (countActive > 0)
+                            ? (1.0f / std::sqrt (static_cast<float> (countActive)))
+                            : 0.0f;
                     }
                 } // end control-rate update
 
@@ -768,23 +818,18 @@ public:
                     // Apply particle amplitude
                     osc *= p.amp;
 
-                    // Apply constant-power panning
-                    float panAngle = (p.pan + 1.0f) * 0.25f * kPI; // [0, pi/2]
-                    float panL = std::cos (panAngle);
-                    float panR = std::sin (panAngle);
-
-                    voiceL += osc * panL;
-                    voiceR += osc * panR;
+                    // FIX 3: use cached pan coefficients (updated at control rate).
+                    // Eliminates std::cos + std::sin per particle per sample.
+                    voiceL += osc * p.panL;
+                    voiceR += osc * p.panR;
                     activeParticles++;
                 }
 
-                // Normalize by 1/sqrt(N)
-                float normFactor = (activeParticles > 0)
-                    ? (1.0f / std::sqrt (static_cast<float> (activeParticles)))
-                    : 0.0f;
-
-                voiceL *= normFactor;
-                voiceR *= normFactor;
+                // FIX 4: use cached inverse-norm (updated at control rate).
+                // Eliminates std::sqrt per voice per sample; cachedInvNorm is updated
+                // in the control-rate block above whenever activeParticles changes.
+                voiceL *= voice.cachedInvNorm;
+                voiceR *= voice.cachedInvNorm;
 
                 // --- DC Blocker (1-pole highpass at ~5Hz) ---
                 constexpr float dcCoeff = 0.9975f;
@@ -1206,7 +1251,7 @@ private:
             // Start particles clustered near the target frequency with slight spread
             float baseFreq = freq * ratio;
             float spread = voice.nextRandom() * 0.1f; // +/- 10% spread in log-freq
-            float particleFreq = baseFreq * std::pow (2.0f, spread);
+            float particleFreq = baseFreq * fastPow2 (spread);
             particleFreq = clamp (particleFreq, kMinFreqHz, kMaxFreqHz);
 
             float particleAmp = 0.3f + voice.nextRandomUni() * 0.4f; // [0.3, 0.7]
@@ -1259,7 +1304,7 @@ private:
 
     static float midiToHz (float midiNote) noexcept
     {
-        return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((midiNote - 69.0f) / 12.0f);
     }
 
     //==========================================================================

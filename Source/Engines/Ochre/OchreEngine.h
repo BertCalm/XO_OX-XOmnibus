@@ -398,6 +398,10 @@ struct OchreVoice
     // Amp envelope level (decaying)
     float ampLevel = 0.0f;
 
+    // noteOff exponential release (5ms ramp, no click)
+    bool  isReleasing = false;
+    float releaseCoeff = 1.0f;  // computed at noteOff: exp(-1/(0.005*sr))
+
     // Per-voice LFOs (D002/D005)
     StandardLFO lfo1, lfo2;
 
@@ -416,6 +420,8 @@ struct OchreVoice
         active = false;
         velocity = 0.0f;
         ampLevel = 0.0f;
+        isReleasing = false;
+        releaseCoeff = 1.0f;
         hfNoiseEnv = 0.0f;
         glide.reset();
         hammer.reset();
@@ -717,10 +723,15 @@ public:
                 voice.body.setFundamental (freq, pBodyType);
                 float bodied = voice.body.process (resonanceSum, bodyDNow);
 
-                // Amplitude envelope — copper decays faster than iron
-                voice.ampLevel *= baseDecayCoeff;
+                // Amplitude envelope — copper decays faster than iron.
+                // On release: apply exponential ramp (5ms) instead of piano decay.
+                // This eliminates the click from the old hard 75% cut.
+                if (voice.isReleasing)
+                    voice.ampLevel *= voice.releaseCoeff;
+                else
+                    voice.ampLevel *= baseDecayCoeff;
                 voice.ampLevel = flushDenormal (voice.ampLevel);
-                if (voice.ampLevel < 1e-6f) { voice.active = false; continue; }
+                if (voice.ampLevel < 1e-6f) { voice.active = false; voice.isReleasing = false; continue; }
 
                 // Filter envelope + LFO1 → brightness
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
@@ -789,6 +800,8 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.snapTo (freq);
         v.ampLevel = 1.0f;
+        v.isReleasing = false;
+        v.releaseCoeff = 1.0f;
 
         // Trigger hammer (Pillar 1) — caramelNow shapes initial transient warmth
         v.hammer.trigger (vel, hardNow, condNow, freq, srf, caramelNow);
@@ -823,10 +836,12 @@ public:
     {
         for (auto& v : voices)
         {
-            if (v.active && v.currentNote == note)
+            if (v.active && v.currentNote == note && !v.isReleasing)
             {
-                // Copper: faster release than iron (energy leaves quickly)
-                v.ampLevel *= 0.25f;
+                // Copper: faster release than iron (energy leaves quickly).
+                // Exponential 5ms ramp — replaces hard 75% cut that caused clicks.
+                v.isReleasing  = true;
+                v.releaseCoeff = std::exp (-1.0f / (0.005f * srf));
                 v.filterEnv.release();
             }
         }

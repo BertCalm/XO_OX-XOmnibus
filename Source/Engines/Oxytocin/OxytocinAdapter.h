@@ -125,11 +125,9 @@ public:
             couplingCacheR_ = R[numSamples - 1];
         }
 
-        // Update active voice count (for UI)
-        int count = 0;
-        // OxytocinEngine doesn't expose a voice count; approximate from silence
-        // A more precise count could be added to OxytocinEngine if needed.
-        activeVoiceCount_.store (count);
+        // Update active voice count (for UI) — reads live voice state on audio thread,
+        // then publishes atomically so the UI thread can read it without blocking.
+        activeVoiceCount_.store (engine_.getActiveVoiceCount());
 
         analyzeForSilenceGate (buffer, numSamples);
 

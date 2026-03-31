@@ -118,18 +118,27 @@ struct DistillationModel
         noteAge = 0.0f;
     }
 
-    float process (float distillRate, float dtSec) noexcept
+    // CPU fix: precompute decayCoeff once per block (distillRate and dtSec are
+    // block-rate constants). Call computeDecayCoeff() before the sample loop,
+    // then call processWithCoeff() inside it to avoid std::exp per sample per voice.
+    static float computeDecayCoeff (float distillRate, float dtSec) noexcept
+    {
+        float halfLife = 2.0f + (1.0f - distillRate) * 18.0f;  // 2s to 20s half-life
+        return std::exp (-0.693f * dtSec / halfLife);             // ln(2)
+    }
+
+    float processWithCoeff (float decayCoeff, float dtSec) noexcept
     {
         noteAge += dtSec;
-
-        // Exponential decay of mod index: starts at initialIndex, decays toward near-zero
-        // Rate controlled by distillRate (0=slow distillation, 1=fast)
-        float halfLife = 2.0f + (1.0f - distillRate) * 18.0f;  // 2s to 20s half-life
-        float decayCoeff = std::exp (-0.693f * dtSec / halfLife);  // ln(2)
         currentIndex *= decayCoeff;
         currentIndex = flushDenormal (currentIndex);
-
         return std::max (currentIndex, 0.001f);  // never fully zero — keep a trace
+    }
+
+    // Legacy single-call path (kept for reference; not used in render loop).
+    float process (float distillRate, float dtSec) noexcept
+    {
+        return processWithCoeff (computeDecayCoeff (distillRate, dtSec), dtSec);
     }
 
     void reset() noexcept
@@ -372,6 +381,25 @@ public:
 
         const float dtSec = 1.0f / srf;
 
+        // CPU fix 1 (OMEGA): precompute distillation decayCoeff once per block.
+        // pDistill and dtSec are both block-rate constants; std::exp is expensive.
+        // smoothDistillRate has just been set from pDistill — use pDistill directly
+        // for the block-rate coefficient.
+        const float blockDecayCoeff = DistillationModel::computeDecayCoeff (pDistill, dtSec);
+
+        // CPU fix 2 (OMEGA): precompute per-voice pan gains once per block.
+        // macroSpace and voice index are both block-constant — no need to recompute
+        // std::cos/std::sin on every sample for every voice.
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+        {
+            float voiceSpread = (static_cast<float>(vi) - static_cast<float>(kMaxVoices - 1) * 0.5f)
+                               / static_cast<float>(kMaxVoices);  // normalized -0.5..+0.5
+            float pan = 0.5f + macroSpace * voiceSpread;
+            pan = std::clamp (pan, 0.01f, 0.99f);
+            voices[vi].panL = std::cos (pan * 1.5707963f);
+            voices[vi].panR = std::sin (pan * 1.5707963f);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
             float modIdxNow  = smoothModIndex.process();
@@ -380,6 +408,7 @@ public:
             float purityNow  = smoothPurity.process();
             float brightNow  = smoothBrightness.process();
             float distRNow   = smoothDistillRate.process();
+            (void) distRNow;  // block-rate decayCoeff used instead (CPU fix 1)
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -388,17 +417,7 @@ public:
                 auto& voice = voices[vi];
                 if (!voice.active) continue;
 
-                // omega_macroSpace: controls stereo width. At 0.0 voices are mono-centered;
-                // at 1.0 they spread maximally across the stereo field. voiceSpread is
-                // derived from voice index so voices fan out symmetrically around center.
-                {
-                    float voiceSpread = (static_cast<float>(vi) - static_cast<float>(kMaxVoices - 1) * 0.5f)
-                                       / static_cast<float>(kMaxVoices);  // normalized -0.5..+0.5
-                    float pan = 0.5f + macroSpace * voiceSpread;  // 0.5 = center when space=0
-                    pan = std::clamp (pan, 0.01f, 0.99f);
-                    voice.panL = std::cos (pan * 1.5707963f);
-                    voice.panR = std::sin (pan * 1.5707963f);
-                }
+                // panL/panR precomputed before sample loop (CPU fix 2 — block-constant).
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
@@ -406,8 +425,9 @@ public:
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
-                // Distillation: mod index decays over note sustain
-                float distilledIndex = voice.distill.process (distRNow, dtSec);
+                // Distillation: mod index decays over note sustain.
+                // CPU fix 1: use block-rate precomputed decayCoeff instead of std::exp per sample.
+                float distilledIndex = voice.distill.processWithCoeff (blockDecayCoeff, dtSec);
                 float activeModIndex = modIdxNow * distilledIndex;
 
                 // LFO1 -> mod index modulation

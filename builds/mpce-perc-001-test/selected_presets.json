@@ -1,0 +1,49 @@
+{
+  "profile": "boom-bap-percussion",
+  "engine": "ONSET",
+  "count_requested": 3,
+  "count_selected": 3,
+  "dna_diversity_target": 0.7,
+  "mood_filter": null,
+  "presets": [
+    {
+      "name": "Tape Machine",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Tape_Machine.xometa",
+      "dna": {
+        "brightness": 0.3,
+        "warmth": 0.75,
+        "movement": 0.2,
+        "density": 0.5,
+        "space": 0.1,
+        "aggression": 0.3
+      },
+      "distance_from_center": 0.239792
+    },
+    {
+      "name": "Boom Bap OG",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Boom_Bap_OG.xometa",
+      "dna": {
+        "brightness": 0.45,
+        "warmth": 0.65,
+        "movement": 0.15,
+        "density": 0.55,
+        "space": 0.1,
+        "aggression": 0.5
+      },
+      "distance_from_center": 0.070711
+    },
+    {
+      "name": "Garage Two Step",
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Garage_Two_Step.xometa",
+      "dna": {
+        "brightness": 0.55,
+        "warmth": 0.5,
+        "movement": 0.35,
+        "density": 0.5,
+        "space": 0.15,
+        "aggression": 0.35
+      },
+      "distance_from_center": 0.360555
+    }
+  ]
+}

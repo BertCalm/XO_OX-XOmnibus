@@ -442,8 +442,13 @@ public:
     {
         // octave: 0=-1, 1=-2, 2=-3
         float divisor = (octave == 2) ? 8.0f : (octave == 1) ? 4.0f : 2.0f;
-        float tuneRatio = std::pow (2.0f, tuneCents / 1200.0f);
-        double freq = static_cast<double> (clamp (hz / divisor * tuneRatio, 5.0f, 2000.0f));
+        // Recompute tuneRatio only when tuneCents changes (block-constant in practice)
+        if (tuneCents != lastTuneCents)
+        {
+            lastTuneCents  = tuneCents;
+            cachedTuneRatio = std::pow (2.0f, tuneCents / 1200.0f);
+        }
+        double freq = static_cast<double> (clamp (hz / divisor * cachedTuneRatio, 5.0f, 2000.0f));
         phaseInc = freq / sr;
     }
 
@@ -487,6 +492,8 @@ private:
     double phase = 0.0;
     double phaseInc = 0.0;
     int shape = 0;
+    float lastTuneCents    = -99999.0f;  // sentinel: force recompute on first use
+    float cachedTuneRatio  = 1.0f;       // cached pow(2, tuneCents/1200)
 };
 
 //==============================================================================
@@ -508,6 +515,8 @@ public:
         pinkState[0] = pinkState[1] = pinkState[2] = 0.0f;
         brownState = 0.0f;
         decayLevel = 1.0f;
+        lastDecayTime = -1.0f;  // force recompute on first process() call
+        cachedDecayCoeff = 0.0f;
     }
 
     void noteOn() noexcept { decayLevel = 1.0f; }
@@ -558,9 +567,14 @@ public:
                 break;
         }
 
-        // Apply decay envelope
-        float decayCoeff = std::exp (-invSR / std::max (decayTime, 0.001f));
-        decayLevel *= decayCoeff;
+        // Apply decay envelope — recompute coefficient only when decayTime changes
+        float safeDecay = std::max (decayTime, 0.001f);
+        if (safeDecay != lastDecayTime)
+        {
+            lastDecayTime    = safeDecay;
+            cachedDecayCoeff = std::exp (-invSR / safeDecay);
+        }
+        decayLevel *= cachedDecayCoeff;
         decayLevel = flushDenormal (decayLevel);
 
         return clamp (out * decayLevel, -2.0f, 2.0f);
@@ -573,6 +587,8 @@ private:
     float brownState = 0.0f;
     float hissState = 0.0f;
     float decayLevel = 1.0f;
+    float lastDecayTime    = -1.0f;   // sentinel: force recompute on first use
+    float cachedDecayCoeff = 0.0f;    // cached exp(-invSR / decayTime)
     BiteNoiseGen rng;
 };
 
@@ -827,6 +843,8 @@ public:
         bufR.assign (static_cast<size_t> (kMaxDelaySamples), 0.0f);
         writePos = 0;
         filterStateL = filterStateR = 0.0f;
+        // Cache session-constant 1-pole LP coefficients
+        darkTapeCoeff = std::exp (-2.0f * 3.14159265f * 3000.0f / sr);
     }
 
     void reset() noexcept
@@ -861,9 +879,9 @@ public:
 
         if (type == 0) // Dark Tape: 1-pole LP on feedback (~3kHz)
         {
-            float coeff = std::exp (-2.0f * 3.14159265f * 3000.0f / sr);
-            filterStateL = filterStateL * coeff + delayedL * (1.0f - coeff);
-            filterStateR = filterStateR * coeff + delayedR * (1.0f - coeff);
+            // darkTapeCoeff is precomputed in prepare() — session-constant
+            filterStateL = filterStateL * darkTapeCoeff + delayedL * (1.0f - darkTapeCoeff);
+            filterStateR = filterStateR * darkTapeCoeff + delayedR * (1.0f - darkTapeCoeff);
             filterStateL = flushDenormal (filterStateL);
             filterStateR = flushDenormal (filterStateR);
             delayedL = filterStateL;
@@ -894,6 +912,7 @@ private:
     std::vector<float> bufL, bufR;
     int writePos = 0;
     float filterStateL = 0.0f, filterStateR = 0.0f;
+    float darkTapeCoeff = 0.0f; // cached exp(-2π*3000/sr) — computed in prepare()
 };
 
 //==============================================================================
@@ -1154,6 +1173,8 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
+        // Cache session-constant FxFinish LowMono 1-pole LP coefficient
+        lowMonoCoeff = std::exp (-2.0f * 3.14159265f * 200.0f / srf);
         silenceGate.prepare (sampleRate, maxBlockSize);
         silenceGate.setHoldTime (100.0f); // Percussive — short hold
 
@@ -1977,11 +1998,11 @@ public:
                     }
 
                     // LowMono: mono-ize the sub-200Hz band for clean bass translation
+                    // lowMonoCoeff is precomputed in prepare() — session-constant
                     if (fxFinishLowMono > 0.001f)
                     {
-                        float loCoeff = std::exp (-2.0f * 3.14159265f * 200.0f / srf);
-                        lowMonoStateL = flushDenormal (lowMonoStateL * loCoeff + sL * (1.0f - loCoeff));
-                        lowMonoStateR = flushDenormal (lowMonoStateR * loCoeff + sR * (1.0f - loCoeff));
+                        lowMonoStateL = flushDenormal (lowMonoStateL * lowMonoCoeff + sL * (1.0f - lowMonoCoeff));
+                        lowMonoStateR = flushDenormal (lowMonoStateR * lowMonoCoeff + sR * (1.0f - lowMonoCoeff));
                         float loMono = (lowMonoStateL + lowMonoStateR) * 0.5f;
                         sL = lerp (sL, sL - lowMonoStateL + loMono, fxFinishLowMono);
                         sR = lerp (sR, sR - lowMonoStateR + loMono, fxFinishLowMono);
@@ -2940,6 +2961,7 @@ private:
     // FX Finish: LowMono 1-pole LP filter state (persistent between blocks)
     float lowMonoStateL = 0.0f;
     float lowMonoStateR = 0.0f;
+    float lowMonoCoeff  = 0.0f;  // cached exp(-2π*200/sr) — computed in prepare()
 
     // Cached APVTS parameter pointers — 122 total, frozen IDs
     // Oscillator A

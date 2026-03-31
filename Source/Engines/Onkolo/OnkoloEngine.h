@@ -97,6 +97,8 @@ struct ClaviStringModel
             harmonicLevels[i] = 0.0f;
             cachedDecayRates[i] = 0.0f;
         }
+        // Precompute fast-damp coeff immediately so it's valid before any noteOff.
+        cachedFastDampCoeff = 1.0f - std::exp (-1.0f / (sr * 0.05f));
         clunkPhase = 0.0f;
         clunkLevel = 0.0f;
     }
@@ -128,6 +130,12 @@ struct ClaviStringModel
         clunkPhase = 0.0f;
         clunkLevel = vel * 0.4f * clunkScale;
         clunkNoiseState = static_cast<uint32_t>(vel * 65535.0f) + 54321u;
+
+        // CPU fix (ONKOLO): precompute the fast-damp coefficient here at noteOff
+        // (once per key release) instead of calling std::exp x8 per sample x64 harmonics
+        // while the key is held up. sr is constant — result is identical to the
+        // previous inline computation in process().
+        cachedFastDampCoeff = 1.0f - std::exp (-1.0f / (sr * 0.05f));
     }
 
     float process (float fundamentalHz, float pickupPos) noexcept
@@ -158,13 +166,13 @@ struct ClaviStringModel
             out += fastSin (phases[i] * 6.28318530718f) * harmonicLevels[i] * pickupGain;
 
             // String decay — faster when key is released (damper pad).
-            // FIX 3: use precomputed coefficients; only the fast-damp case retains std::exp
-            // (it fires once per note-off, not per sample per harmonic).
+            // CPU fix: cachedFastDampCoeff is precomputed in releaseKey() — no std::exp
+            // per sample per harmonic. cachedDecayRates[i] is precomputed in trigger().
             float decayRate;
             if (keyDown)
                 decayRate = cachedDecayRates[i];
             else
-                decayRate = 1.0f - std::exp (-1.0f / (sr * 0.05f));  // fast damp
+                decayRate = cachedFastDampCoeff;  // precomputed at noteOff (CPU fix)
 
             harmonicLevels[i] -= harmonicLevels[i] * decayRate;
             harmonicLevels[i] = flushDenormal (harmonicLevels[i]);
@@ -198,6 +206,7 @@ struct ClaviStringModel
             harmonicLevels[i] = 0.0f;
             cachedDecayRates[i] = 0.0f;
         }
+        // Keep cachedFastDampCoeff valid (computed from sr in prepare()).
         keyDown = false;
         clunkPhase = 0.0f;
         clunkLevel = 0.0f;
@@ -207,6 +216,7 @@ struct ClaviStringModel
     float vel = 0.0f;
     float phases[kNumHarmonics] = {};
     float cachedDecayRates[kNumHarmonics] = {};  // FIX 3: precomputed per trigger()
+    float cachedFastDampCoeff = 0.0f;            // CPU fix: precomputed at releaseKey()
     float harmonicLevels[kNumHarmonics] = {};
     bool keyDown = false;
     float clunkPhase = 0.0f;

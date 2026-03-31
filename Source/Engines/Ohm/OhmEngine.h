@@ -39,9 +39,9 @@ struct OhmObedFM {
         if (envLevel >= 0.999f) envLevel = 1.0f; // snap to peak
         envLevel *= (1.0f - rate);
         modPhase+=mf/sr; if(modPhase>=1)modPhase-=1;
-        float mod=std::sin(modPhase*6.2831853f)*index*envLevel;
+        float mod=fastSin(modPhase*6.2831853f)*index*envLevel;
         phase+=freq/sr; if(phase>=1)phase-=1;
-        return std::sin((phase+mod)*6.2831853f)*envLevel;
+        return fastSin((phase+mod)*6.2831853f)*envLevel;
     }
 };
 constexpr float OhmObedFM::kRatios[8][2];
@@ -52,9 +52,9 @@ struct OhmInLaw {
     void prepare(double s){sr=(float)s;} void reset(){phase=wobPhase=0;}
     float tick(float freq, float scale, float wobble){
         wobPhase+=0.3f/sr; if(wobPhase>=1)wobPhase-=1;
-        float wob=std::sin(wobPhase*6.2831853f)*wobble*0.05f;
+        float wob=fastSin(wobPhase*6.2831853f)*wobble*0.05f;
         phase+=(freq*scale*(1+wob))/sr; if(phase>=1)phase-=1;
-        return std::sin(phase*6.2831853f);
+        return fastSin(phase*6.2831853f);
     }
 };
 
@@ -67,7 +67,7 @@ struct OhmGlassPartial {
         float partialFreq = freq * (2.0f + brightness * 6.0f);
         phase += partialFreq / sr;
         if (phase >= 1.0f) phase -= 1.0f;
-        return std::sin(phase * 6.2831853f);
+        return fastSin(phase * 6.2831853f);
     }
 };
 
@@ -113,7 +113,7 @@ struct OhmGrainEngine {
             if (grainPhase >= 1.0f) grainPhase -= 1.0f;
             // Hann-ish grain envelope
             grainEnv *= (1.0f - 1.0f / (float)(grainLen + 2));
-            return std::sin(grainPhase * 6.2831853f) * grainEnv;
+            return fastSin(grainPhase * 6.2831853f) * grainEnv;
         }
         return 0.0f;
     }
@@ -318,11 +318,6 @@ public:
         // SilenceGate: skip all DSP if engine has been silent long enough
         if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
 
-        // Reset coupling accumulators — stale values from disconnected routes must not persist
-        extPitchMod = 0.f;
-        extDampMod  = 0.f;
-        extIntens   = 1.f;
-
         // ------- Param reads (all 33 ohm_ params) -------
         // Section A: The Dad
         float pDadInst    = dadInst   ? dadInst->load()   : 0.0f;
@@ -387,12 +382,12 @@ public:
 
         auto*outL=buf.getWritePointer(0);
         auto*outR=buf.getWritePointer(1);
-        // DSP FIX: Autonomous LFO for in-law modulation (SIDES breathing).
-        // 0.12 Hz triangle = ~8 second cycle. Modulates in-law interference level
-        // so the SIDES of the family breathe even with static macro settings.
-        float sidesLfoMod = sidesLFO.process() * 0.15f; // ±15% modulation on in-law level
 
         for(int i=0;i<ns;++i){
+            // DSP FIX: Autonomous LFO for in-law modulation (SIDES breathing).
+            // 0.12 Hz triangle = ~8 second cycle. Advance once per sample so the
+            // effective rate is correct regardless of block size.
+            float sidesLfoMod = sidesLFO.process() * 0.15f; // ±15% modulation on in-law level
             float sL=0,sR=0;
             int voiceIdx = 0;
             for(auto&v:voices){
@@ -412,8 +407,13 @@ public:
                     }
                 }
 
-                float relRate=v.releasing?1.f/(v.sr*0.3f):0;
-                v.ampEnv=std::max(0.f,v.ampEnv-relRate);
+                // Exponential release: coefficient gives -60 dB in 0.3 s at any sample rate.
+                // Linear subtraction caused soft notes (low ampEnv) to release far too quickly.
+                if(v.releasing){
+                    static constexpr float kRelTime = 0.3f;
+                    float relCoeff = 1.0f - 1.0f / (v.sr * kRelTime);
+                    v.ampEnv *= relCoeff;
+                }
                 if(v.ampEnv<0.0001f&&v.releasing){v.active=false;++voiceIdx;continue;}
 
                 // Update body resonance based on material
@@ -469,7 +469,7 @@ public:
                 // Pan table: 0=banjo(L) 1=guitar(C) 2=mandolin(R) 3=dobro(L) 4=fiddle(R)
                 //            5=harmonica(C) 6=djembe(L) 7=kalimba(R) 8=sitar(C) 9=ukulele(R)
                 static constexpr float kDadPan[]={0.25f,0.5f,0.75f,0.3f,0.7f,0.5f,0.28f,0.72f,0.5f,0.68f};
-                int instIdx=std::clamp((int)pDadInst,0,9);
+                int instIdx=std::clamp((int)pDadInst,0,8);
                 float pan=kDadPan[instIdx];
 
                 // DSP FIX: Stereo spread — offset pan per voice index so polyphonic voices
@@ -492,6 +492,11 @@ public:
             lastSampleL=sL; lastSampleR=sR;
         }
         {int c=0;for(auto&v:voices)if(v.active)++c;activeVoiceCount_.store(c,std::memory_order_relaxed);}
+        // Reset coupling accumulators after consumption — stale values from disconnected
+        // routes must not persist into the next block, but must be consumed first.
+        extPitchMod = 0.f;
+        extDampMod  = 0.f;
+        extIntens   = 1.f;
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }

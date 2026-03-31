@@ -94,7 +94,7 @@ public:
 private:
     static float hann(float p) noexcept
     {
-        return 0.5f * (1.0f - std::cos(6.283185307f * p));
+        return 0.5f * (1.0f - fastCos(6.283185307f * p));
     }
 
     static float gaussian(float p) noexcept
@@ -107,9 +107,9 @@ private:
     {
         constexpr float alpha = 0.5f;
         if (p < alpha * 0.5f)
-            return 0.5f * (1.0f - std::cos(6.283185307f * p / alpha));
+            return 0.5f * (1.0f - fastCos(6.283185307f * p / alpha));
         if (p > 1.0f - alpha * 0.5f)
-            return 0.5f * (1.0f - std::cos(6.283185307f * (1.0f - p) / alpha));
+            return 0.5f * (1.0f - fastCos(6.283185307f * (1.0f - p) / alpha));
         return 1.0f;
     }
 };
@@ -317,7 +317,7 @@ public:
         active      = true;
         noteNumber  = note;
         velocity    = vel;
-        pitchRatio  = std::pow(2.0f, (static_cast<float>(note) - 60.0f) / 12.0f);
+        pitchRatio  = fastPow2((static_cast<float>(note) - 60.0f) / 12.0f);
         envStage    = EnvStage::Attack;
         envLevel    = 0.0f;
         envAttack   = std::max(0.001f, attack);
@@ -463,12 +463,12 @@ public:
 
                 float pitch = c.pitchRatio;
                 if (sharedParams.pitchScatter > 0.0f)
-                    pitch *= std::pow(2.0f, randomBipolar() * sharedParams.pitchScatter / 12.0f);
+                    pitch *= fastPow2(randomBipolar() * sharedParams.pitchScatter / 12.0f);
 
                 float pan = 0.5f + randomBipolar() * sharedParams.panScatter * 0.5f;
                 pan = std::max(0.0f, std::min(1.0f, pan));
-                float panL = std::cos(pan * 1.5707963f);
-                float panR = std::sin(pan * 1.5707963f);
+                float panL = fastCos(pan * 1.5707963f);
+                float panR = fastSin(pan * 1.5707963f);
 
                 auto* grain = grainPool.allocate();
                 if (grain)
@@ -521,7 +521,7 @@ public:
                          float& outL, float& outR) noexcept
     {
         double inc1 = static_cast<double>(freqHz) / sr;
-        double inc2 = static_cast<double>(freqHz) * std::pow(2.0, detuneCents / 1200.0) / sr;
+        double inc2 = static_cast<double>(freqHz) * static_cast<double>(fastPow2(static_cast<float>(detuneCents) / 1200.0f)) / sr;
 
         switch (mode)
         {

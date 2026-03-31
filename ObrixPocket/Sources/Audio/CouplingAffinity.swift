@@ -29,14 +29,25 @@ enum CouplingAffinity {
 
     /// High affinity pairs — from the specimen catalog lore
     private static let highAffinityPairs: Set<Set<String>> = [
-        ["polyblep-saw",    "svf-lp"],       // Sawfin + Curtain = classic subtractive
+        // Original 8 pairs
+        ["polyblep-saw",    "svf-lp"],       // Sawfin + Curtain = classic subtractive / warm filtered lead
         ["fm-basic",        "shaper-hard"],   // Bellcrab + Bonecrush = metallic aggression
         ["noise-white",     "feedback"],      // Foamspray + Loopworm = Karplus-Strong percussion
-        ["polyblep-square", "svf-bp"],        // Boxjelly + Prism = vowel sculpting
+        ["polyblep-square", "svf-bp"],        // Boxjelly + Prism = vowel sculpting / spectral pad
         ["lfo-sine",        "svf-lp"],        // Tidepulse + Curtain = classic filter sweep
         ["adsr-fast",       "delay-stereo"],  // Snapper + Echocave = rhythmic echoes
         ["lfo-random",      "shaper-hard"],   // Scramble + Bonecrush = chaos + destruction
         ["vel-map",         "fm-basic"],      // Strikescale + Bellcrab = velocity-driven FM
+        // Sprint 34 — 4 new resonant pairs (8 → 12 total)
+        // Note: Sawfin+Curtain and Boxjelly+Prism were already paired above;
+        // their Sprint 34 descriptions ("warm filtered lead", "spectral pad") are
+        // captured in the comments above. The two genuinely new pairs below are
+        // Glider+Drifter and Foamspray+Echocave, plus two additional pairs that
+        // bring the set to a clean 12.
+        ["polyblep-tri",    "adsr-slow"],     // Glider + Drifter = evolving texture
+        ["noise-white",     "delay-stereo"],  // Foamspray + Echocave = ambient wash
+        ["wt-analog",       "chorus-lush"],   // Morpheel + Shimmer = wide evolving pad
+        ["lfo-sine",        "reverb-hall"],   // Tidepulse + Cathedral = breathing ambience
     ]
 
     /// Bonus multiplier for spectral drift
@@ -62,19 +73,26 @@ enum CouplingAffinity {
     /// Return all subtype IDs that have high affinity with the given subtype
     static func affinitySubtypes(for subtype: String) -> [String] {
         let pairs: [String: [String]] = [
+            // Original 8 pairs
             "polyblep-saw":    ["svf-lp"],
             "svf-lp":          ["polyblep-saw", "lfo-sine"],
             "fm-basic":        ["shaper-hard", "vel-map"],
             "shaper-hard":     ["fm-basic", "lfo-random"],
-            "noise-white":     ["feedback"],
+            "noise-white":     ["feedback", "delay-stereo"],   // +Foamspray+Echocave (Sprint 34)
             "feedback":        ["noise-white"],
             "polyblep-square": ["svf-bp"],
             "svf-bp":          ["polyblep-square"],
-            "lfo-sine":        ["svf-lp"],
+            "lfo-sine":        ["svf-lp", "reverb-hall"],      // +Tidepulse+Cathedral (Sprint 34)
             "adsr-fast":       ["delay-stereo"],
-            "delay-stereo":    ["adsr-fast"],
+            "delay-stereo":    ["adsr-fast", "noise-white"],   // +Echocave+Foamspray (Sprint 34)
             "lfo-random":      ["shaper-hard"],
             "vel-map":         ["fm-basic"],
+            // Sprint 34 — 4 new pairs
+            "polyblep-tri":    ["adsr-slow"],                  // Glider + Drifter = evolving texture
+            "adsr-slow":       ["polyblep-tri"],               // Drifter + Glider (reverse)
+            "wt-analog":       ["chorus-lush"],                // Morpheel + Shimmer = wide evolving pad
+            "chorus-lush":     ["wt-analog"],                  // Shimmer + Morpheel (reverse)
+            "reverb-hall":     ["lfo-sine"],                   // Cathedral + Tidepulse = breathing ambience
         ]
         return pairs[subtype] ?? []
     }

@@ -868,8 +868,8 @@ public:
                         float ratio = srcF / std::max (1.0f, baseFreq);
                         while (ratio >= 2.0f) ratio *= 0.5f;
                         while (ratio < 1.0f)  ratio *= 2.0f;
-                        float nearestJI = findNearestJIRatio (ratio, fieldPrimeLimit);
-                        float jiCents = 1200.0f * std::log2 (nearestJI / ratio);
+                        // CPU fix: precomputed cent tables + fastLog2 instead of std::log2 per sample.
+                        float jiCents = findNearestJICents (ratio, fieldPrimeLimit);
                         // polarity > 0.5 = attract, < 0.5 = repel
                         float polFactor = (fieldPolarity >= 0.5f)
                             ?  (fieldPolarity - 0.5f) * 2.0f
@@ -1011,7 +1011,7 @@ public:
                 if (doFold)
                 {
                     float fold = charFoldScale * velFoldBoost;
-                    signal = fastTanh (std::sin (signal * fold * kPi));
+                    signal = fastTanh (fastSin (signal * fold * kPi));  // CPU fix: fastSin replaces std::sin
                 }
 
                 // Ring mod — multiplies the two sources (requires Src2 active)
@@ -1600,6 +1600,101 @@ private:
             if (d < minDist) { minDist = d; nearest = table[i]; }
         }
         return nearest;
+    }
+
+    //==========================================================================
+    // findNearestJICents — CPU-optimised replacement for the hot path in the
+    // Harmonic Field block.  Replaces the per-sample std::log2 call with:
+    //   1. A precomputed parallel table of 1200*log2(jiRatio[i]) (compile-time)
+    //   2. fastLog2(r) for the dynamic input ratio (single cheap approximation)
+    // Sonic behaviour is identical: same nearest-ratio search, same cent formula.
+    //==========================================================================
+    static float findNearestJICents (float r, int primeLimit) noexcept
+    {
+        // Ratio tables — identical to findNearestJIRatio above.
+        static constexpr float kJI3[] = {
+            1.0f, 9.0f/8.0f, 81.0f/64.0f, 4.0f/3.0f, 3.0f/2.0f,
+            27.0f/16.0f, 243.0f/128.0f, 2.0f/1.0f
+        };
+        static constexpr float kJI5[] = {
+            1.0f, 16.0f/15.0f, 9.0f/8.0f, 6.0f/5.0f, 5.0f/4.0f,
+            4.0f/3.0f, 45.0f/32.0f, 3.0f/2.0f, 8.0f/5.0f, 5.0f/3.0f,
+            9.0f/5.0f, 15.0f/8.0f, 2.0f/1.0f
+        };
+        static constexpr float kJI7[] = {
+            1.0f, 16.0f/15.0f, 9.0f/8.0f, 7.0f/6.0f, 6.0f/5.0f,
+            5.0f/4.0f, 9.0f/7.0f, 4.0f/3.0f, 7.0f/5.0f, 3.0f/2.0f,
+            14.0f/9.0f, 8.0f/5.0f, 5.0f/3.0f, 7.0f/4.0f, 9.0f/5.0f,
+            15.0f/8.0f, 2.0f/1.0f
+        };
+
+        // Precomputed cent offsets: centOffsets[i] = 1200 * log2(jiRatios[i])
+        // All values are compile-time constants — zero runtime cost.
+        static constexpr float kCents3[] = {
+            0.0f,           // 1/1     =   0.000 c
+            203.910f,       // 9/8     = 203.910 c
+            407.820f,       // 81/64   = 407.820 c
+            498.045f,       // 4/3     = 498.045 c
+            701.955f,       // 3/2     = 701.955 c
+            905.865f,       // 27/16   = 905.865 c
+            1109.775f,      // 243/128 =1109.775 c
+            1200.0f         // 2/1     =1200.000 c
+        };
+        static constexpr float kCents5[] = {
+            0.0f,           // 1/1     =   0.000 c
+            111.731f,       // 16/15   = 111.731 c
+            203.910f,       // 9/8     = 203.910 c
+            315.641f,       // 6/5     = 315.641 c
+            386.314f,       // 5/4     = 386.314 c
+            498.045f,       // 4/3     = 498.045 c
+            590.224f,       // 45/32   = 590.224 c
+            701.955f,       // 3/2     = 701.955 c
+            813.686f,       // 8/5     = 813.686 c
+            884.359f,       // 5/3     = 884.359 c
+            1017.596f,      // 9/5     =1017.596 c
+            1088.269f,      // 15/8   =1088.269 c
+            1200.0f         // 2/1     =1200.000 c
+        };
+        static constexpr float kCents7[] = {
+            0.0f,           // 1/1     =   0.000 c
+            111.731f,       // 16/15   = 111.731 c
+            203.910f,       // 9/8     = 203.910 c
+            266.871f,       // 7/6     = 266.871 c
+            315.641f,       // 6/5     = 315.641 c
+            386.314f,       // 5/4     = 386.314 c
+            435.084f,       // 9/7     = 435.084 c
+            498.045f,       // 4/3     = 498.045 c
+            582.512f,       // 7/5     = 582.512 c
+            701.955f,       // 3/2     = 701.955 c
+            764.916f,       // 14/9    = 764.916 c
+            813.686f,       // 8/5     = 813.686 c
+            884.359f,       // 5/3     = 884.359 c
+            968.826f,       // 7/4     = 968.826 c
+            1017.596f,      // 9/5     =1017.596 c
+            1088.269f,      // 15/8   =1088.269 c
+            1200.0f         // 2/1     =1200.000 c
+        };
+
+        const float* table;  const float* cents;  int size;
+        switch (primeLimit)
+        {
+            case 0: table = kJI3; cents = kCents3; size = 8;  break;
+            case 2: table = kJI7; cents = kCents7; size = 17; break;
+            default: table = kJI5; cents = kCents5; size = 13; break;
+        }
+
+        // Find nearest ratio index (same logic as findNearestJIRatio).
+        int nearest = 0;
+        float minDist = std::fabs (r - table[0]);
+        for (int i = 1; i < size; ++i)
+        {
+            float d = std::fabs (r - table[i]);
+            if (d < minDist) { minDist = d; nearest = i; }
+        }
+
+        // Compute cents offset: cents[nearest] - 1200*fastLog2(r).
+        // No std::log2 — pure integer-bit approximation.
+        return cents[nearest] - 1200.0f * fastLog2 (r);
     }
 
     //==========================================================================

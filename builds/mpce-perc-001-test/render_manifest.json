@@ -1,0 +1,22 @@
+{
+  "source_spec": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/render_specs/mpce_perc_001_render.json",
+  "selected_presets_count": 3,
+  "total_jobs": 768,
+  "presets": [
+    {
+      "name": "Tape Machine",
+      "program": 0,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Flux/Onset/Tape_Machine.xometa"
+    },
+    {
+      "name": "Boom Bap OG",
+      "program": 1,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Boom_Bap_OG.xometa"
+    },
+    {
+      "name": "Garage Two Step",
+      "program": 2,
+      "path": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOlokun/Foundation/Onset/Garage_Two_Step.xometa"
+    }
+  ]
+}

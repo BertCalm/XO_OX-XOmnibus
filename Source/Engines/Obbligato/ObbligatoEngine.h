@@ -4,6 +4,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardADSR.h"
 #include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
@@ -65,15 +66,18 @@ struct ObbligatoAdapterVoice
 {
     // --- State flags ---
     bool  active    = false;
-    bool  releasing = false;
     bool  isBroA    = true;     // true = Brother A (flute), false = Brother B (reed)
 
     // --- Note state ---
     int   note  = 0;
     float vel   = 0.0f;
     float freq  = 440.0f;
-    float ampEnv = 0.0f;        // current amplitude envelope value (0..vel)
     float sr    = 44100.0f;
+
+    // --- Amplitude envelope: StandardADSR replaces the former linear ampEnv float ---
+    // Default: 10ms attack, 100ms decay, 0.7 sustain, 400ms release.
+    // Removes the noteOn click (flat sustain with no attack stage).
+    StandardADSR adsr;
 
     // --- Voice-steal crossfade (5 ms linear fade-out before new note starts) ---
     float stealFadeGain  = 1.0f;    // multiplied on the output sample
@@ -102,6 +106,10 @@ struct ObbligatoAdapterVoice
         organicDrift.prepare  (sampleRate);
         airJet.prepare        (sampleRate);
         reed.prepare          (sampleRate);
+        // Prepare ADSR with default parameters (overridden per-noteOn with velocity scaling)
+        adsr.prepare (sr);
+        adsr.setADSR (0.010f, 0.100f, 0.7f, 0.400f);
+        adsr.setShape (StandardADSR::Shape::ADSR);
     }
 
     void reset()
@@ -113,8 +121,8 @@ struct ObbligatoAdapterVoice
         organicDrift.reset();
         airJet.reset();
         reed.reset();
+        adsr.reset();
         active          = false;
-        ampEnv          = 0.0f;
         stealFadeGain   = 1.0f;
         stealFadeStep   = 0.0f;
         isBeingStolen   = false;
@@ -129,14 +137,17 @@ struct ObbligatoAdapterVoice
         dampFilter.reset();
         bodyResonator.setParams (freq * 1.3f, 3.5f); // initial body mode — overridden per sample
         sympBank.tune (freq);
-        ampEnv    = velocity;
-        releasing = false;
+        // Velocity-scaled ADSR: softer notes sustain at a lower level for natural dynamics.
+        // Attack 10ms, Decay 100ms, Sustain scales with velocity (0.3..0.7), Release 400ms.
+        adsr.setADSR (0.010f, 0.100f, 0.3f + velocity * 0.4f, 0.400f);
+        adsr.setShape (StandardADSR::Shape::ADSR);
+        adsr.noteOn();
         active    = true;
     }
 
     void noteOff()
     {
-        releasing = true;
+        adsr.noteOff();
     }
 };
 
@@ -500,11 +511,10 @@ public:
                     }
                 }
 
-                // --- Amplitude envelope: flat sustain until noteOff, then linear release ---
-                float releaseRate = voice.releasing ? 1.0f / (voice.sr * 0.4f) : 0.0f;
-                voice.ampEnv = std::max (0.0f, voice.ampEnv - releaseRate);
+                // --- Amplitude envelope: StandardADSR (10ms A, 100ms D, vel-scaled S, 400ms R) ---
+                float envLevel = voice.adsr.process();
 
-                if (voice.ampEnv < 0.0001f && voice.releasing)
+                if (!voice.adsr.isActive())
                 {
                     voice.active = false;
                     continue;
@@ -536,8 +546,9 @@ public:
                 {
                     // Air flutter: organic LFO modulates embouchure opening for flute vibrato.
                     // The second organicDrift call uses a higher rate to act as flutter LFO.
+                    // fastSin replaces std::sin here — ~0.02% error, no measurable sonic change.
                     float flutterMod = airFlutterA * 0.15f
-                                       * std::sin (voice.organicDrift.tick (5.0f, 1.0f) * 20.0f);
+                                       * fastSin (voice.organicDrift.tick (5.0f, 1.0f) * 20.0f);
                     float effectiveBreathA = std::clamp (
                         effBreathA * velIntensity + flutterMod * embouchureA, 0.0f, 1.0f);
                     exciterOut = voice.airJet.tick (effectiveBreathA, voice.freq) * coupledIntensity;
@@ -570,7 +581,7 @@ public:
                 // Seance finding: "Constellation-wide pattern: intensity not brightness". ---
                 float velBrightScale = 0.7f + voice.vel * 0.6f; // 0.7→1.3x at full velocity
                 float voiceSignal = (bodyOut + sympOut * velBrightScale)
-                                    * voice.ampEnv * voice.stealFadeGain * 0.4f;
+                                    * envLevel * voice.vel * voice.stealFadeGain * 0.4f;
 
                 // --- Stereo panning: A left-ish, B right-ish, modulated by BOND pan spread ---
                 float basePan = voice.isBroA ? 0.35f : 0.65f;

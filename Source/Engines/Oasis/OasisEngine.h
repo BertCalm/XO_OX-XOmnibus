@@ -109,6 +109,11 @@ struct OasisRhodesToneGenerator
         {
             phases[i] = 0.0f;
             partialLevels[i] = 0.0f;
+            // Cache matched-Z decay coefficients — depend only on sr and partial index.
+            // Decay time T(i) = 2.0 - i*0.25 seconds. Computed once here; never again
+            // per-sample. Formula: 1 - exp(-1 / (sr * T(i)))
+            float T = 2.0f - static_cast<float> (i) * 0.25f;
+            cachedDecayRates[i] = 1.0f - std::exp (-1.0f / (sampleRate * T));
         }
         tineEnvLevel = 0.0f;
         bellEnvLevel = 0.0f;
@@ -175,9 +180,8 @@ struct OasisRhodesToneGenerator
             out += fastSin (phases[i] * 6.28318530718f) * effectiveLevel * partialGain;
 
             // Per-partial decay: higher partials decay faster (tine physics).
-            // Decay time T(i) = 2.0 - i*0.25 seconds → matched-Z pole per CLAUDE.md
-            float decayRate = 1.0f - std::exp (-1.0f / (sr * (2.0f - static_cast<float>(i) * 0.25f)));
-            partialLevels[i] -= partialLevels[i] * decayRate * 0.1f;
+            // cachedDecayRates[i] was precomputed in prepare() — zero std::exp per sample.
+            partialLevels[i] -= partialLevels[i] * cachedDecayRates[i] * 0.1f;
             partialLevels[i] = flushDenormal (partialLevels[i]);
         }
 
@@ -198,6 +202,8 @@ struct OasisRhodesToneGenerator
     float sr = 48000.0f;
     float phases[kNumPartials] = {};
     float partialLevels[kNumPartials] = {};
+    // Precomputed matched-Z decay poles — set in prepare(), never recalculated per sample.
+    float cachedDecayRates[kNumPartials] = {};
     float tineEnvLevel = 0.0f;
     float bellEnvLevel = 0.0f;
     float tineVelocity = 0.0f;
@@ -353,7 +359,8 @@ struct OasisVoice
     FilterEnvelope ampEnv;
     FilterEnvelope filterEnv;
     CytomicSVF svf;
-    StandardLFO lfo1, lfo2;
+    // lfo1 and lfo2 removed — they were initialised but never ticked in renderBlock.
+    // tremoloLFO is the active per-voice LFO (wired to tremolo depth/rate params).
     StandardLFO tremoloLFO;
 
     float panL = 0.707f, panR = 0.707f;
@@ -370,6 +377,9 @@ struct OasisVoice
     int  crossfadeSamples = 0;   // total ramp length in samples (set in prepare())
     int  crossfadeCounter = 0;   // remaining ramp samples (0 = crossfade done)
     bool crossfading = false;    // true while fading out the old note
+    // Frequency for the incoming stolen note — computed once at steal time to
+    // avoid std::pow per sample during the crossfade countdown.
+    float cachedRetriggerFreq = 440.0f;
 
     void prepare (float sampleRate) noexcept
     {
@@ -395,16 +405,6 @@ struct OasisVoice
         tremoloLFO.setShape (StandardLFO::Sine);
         tremoloLFO.setRate (5.0f, sampleRate);
         tremoloLFO.reset();
-
-        // LFO1 — slow pitch/tone modulation (vibrato-style)
-        lfo1.setShape (StandardLFO::Sine);
-        lfo1.setRate (0.5f, sampleRate);
-        lfo1.reset();
-
-        // LFO2 — slower timbral drift
-        lfo2.setShape (StandardLFO::Triangle);
-        lfo2.setRate (0.12f, sampleRate);
-        lfo2.reset();
 
         // Glide: 0ms by default (snap on first note)
         glide.setTime (0.0f, sampleRate);
@@ -436,8 +436,6 @@ struct OasisVoice
         ampEnv.kill();
         filterEnv.kill();
         svf.reset();
-        lfo1.reset();
-        lfo2.reset();
         tremoloLFO.reset();
     }
 };
@@ -685,6 +683,9 @@ public:
                     uint32_t velBits;
                     std::memcpy (&velBits, &inVel, sizeof (velBits));
                     voice.startTime = static_cast<uint64_t> (velBits);
+                    // Cache the frequency now (once) so the crossfade branch never
+                    // calls std::pow per sample during the fade countdown.
+                    voice.cachedRetriggerFreq = 440.0f * std::pow (2.0f, (voice.currentNote - 69) / 12.0f);
                 }
             }
             else if (msg.isNoteOff())
@@ -777,6 +778,9 @@ public:
 
         // Coupling modulation
         pFilterCutoff = clamp (pFilterCutoff + extFilterMod_, 60.0f, 16000.0f);
+        // extPitchMod_ (AmpToPitch coupling): treat ±1 as ±2 semitones, same range
+        // as pitchBendNorm_. Compute the combined bend ratio once per block.
+        float couplingPitchRatio = PitchBendUtil::semitonesToFreqRatio (extPitchMod_ * 2.0f);
 
         // Effective entropy (sensitivity-scaled)
         float ent = entropy_ * pEntropySens;
@@ -824,7 +828,7 @@ public:
                     voiceAmp = flushDenormal (voiceAmp);
 
                     voice.glide.setTime (pGlideTime, srF_);
-                    float glidedFreq = voice.glide.process() * bendRatio;
+                    float glidedFreq = voice.glide.process() * bendRatio * couplingPitchRatio;
                     glidedFreq = clamp (glidedFreq, 20.0f, srF_ * 0.49f);
                     voice.phaseDelta = static_cast<double> (glidedFreq) / sr_;
                     voice.phase += voice.phaseDelta;
@@ -871,7 +875,8 @@ public:
                         voice.phase = 0.0;
                         voice.noteAge = 0;
 
-                        float freq = 440.0f * std::pow (2.0f, (voice.note - 69) / 12.0f);
+                        // Use frequency cached at steal time — avoids std::pow per sample.
+                        float freq = voice.cachedRetriggerFreq;
                         voice.phaseDelta = freq / sr_;
                         voice.glide.setTargetOrSnap (freq);
 
@@ -901,8 +906,10 @@ public:
                 voiceAmp = flushDenormal (voiceAmp);
 
                 // === GLIDE — derive current frequency from glide processor ===
+                // couplingPitchRatio applies AmpToPitch coupling (extPitchMod_) as a
+                // frequency multiplier — computed once per block before the voice loop.
                 voice.glide.setTime (pGlideTime, srF_);
-                float glidedFreq = voice.glide.process() * bendRatio;
+                float glidedFreq = voice.glide.process() * bendRatio * couplingPitchRatio;
                 glidedFreq = clamp (glidedFreq, 20.0f, srF_ * 0.49f);
 
                 // Phase accumulation (kept for sub-bass oscillator compatibility)

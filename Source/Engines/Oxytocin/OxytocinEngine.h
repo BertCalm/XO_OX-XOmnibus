@@ -244,6 +244,17 @@ public:
 
     const OxytocinMemory& getMemory() const noexcept { return memory; }
 
+    /// Returns the number of voices currently in their active (non-Idle) state.
+    /// Safe to call from the audio thread (all state lives on the audio thread).
+    int getActiveVoiceCount() const noexcept
+    {
+        int count = 0;
+        for (const auto& v : voices)
+            if (v.isActive())
+                ++count;
+        return count;
+    }
+
 private:
     int findFreeVoice (int midiNote) noexcept
     {

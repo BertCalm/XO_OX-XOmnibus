@@ -1,0 +1,53 @@
+{
+  "$schema": "https://xo-ox.org/schemas/oxbuild/v1.json",
+  "schema_version": "1.0",
+
+  "pack_id": "mpce-perc-001-test",
+  "pack_name": "XO_OX MPCe Percussion TEST (3 presets)",
+  "version": "0.0.1",
+  "author": "XO_OX Designs",
+
+  "engine": "ONSET",
+  "platform": "mpce",
+  "archetype": "percussion",
+
+  "profile": "boom-bap-percussion",
+  "corner_strategy": "dynamic_expression",
+  "pad_count": 16,
+
+  "preset_selection": {
+    "mode": "auto_dna",
+    "mood_filter": null,
+    "min_presets": 3,
+    "dna_diversity_target": 0.7
+  },
+
+  "rendering": {
+    "sample_rate": 44100,
+    "bit_depth": 24,
+    "velocity_layers": 4,
+    "velocity_values": [20, 50, 90, 127],
+    "render_spec_override": "Docs/render_specs/mpce_perc_001_render.json",
+    "preset_load_ms": 400
+  },
+
+  "intent": {
+    "summary": "TEST BUILD — 3 presets only. Validates pipeline before full 50-preset render.",
+    "target_player": "Pipeline validation",
+    "target_genre": ["test"],
+    "not_for": "Production use"
+  },
+
+  "output": {
+    "include_standard_version": true,
+    "include_mpce_setup": true,
+    "include_cover_art": false,
+    "include_intent": false,
+    "cover_art_badge": null
+  },
+
+  "experiment": {
+    "embed_id": true,
+    "tags": ["test-render", "pipeline-validation"]
+  }
+}

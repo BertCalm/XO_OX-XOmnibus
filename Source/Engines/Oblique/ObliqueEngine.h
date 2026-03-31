@@ -502,6 +502,7 @@ public:
             allpassStagesR[i].setMode (CytomicSVF::Mode::AllPass);
         }
         lfoPhase = 0.0;
+        lastPhaserLfoValue = -999.0f;  // force coefficient update on first call
     }
 
     struct Params {
@@ -540,17 +541,24 @@ public:
 
         // --- Set allpass frequencies with inter-stage spread ---
         // Each successive stage is 15% higher in frequency than the previous,
-        // fanning the notches across the spectrum for a fuller sweep character
+        // fanning the notches across the spectrum for a fuller sweep character.
+        // CPU fix: skip setCoefficients when LFO hasn't moved enough to matter
+        // (< 0.001 change). Avoids 12 setCoefficients calls per sample at the
+        // slow phaser rates typical in use (0.05–1 Hz).
         static constexpr float kInterStageSpread = 0.15f;
         // Nyquist safety margin: 0.49 * sampleRate prevents filter instability
         static constexpr float kNyquistSafetyFactor = 0.49f;
 
-        for (int i = 0; i < kNumStages; ++i)
+        if (std::abs (lfoValue - lastPhaserLfoValue) >= 0.001f)
         {
-            float stageFrequency = sweepFrequency * (1.0f + static_cast<float> (i) * kInterStageSpread);
-            stageFrequency = clamp (stageFrequency, 20.0f, sampleRateFloat * kNyquistSafetyFactor);
-            allpassStagesL[i].setCoefficients (stageFrequency, 0.5f, sampleRateFloat);
-            allpassStagesR[i].setCoefficients (stageFrequency, 0.5f, sampleRateFloat);
+            lastPhaserLfoValue = lfoValue;
+            for (int i = 0; i < kNumStages; ++i)
+            {
+                float stageFrequency = sweepFrequency * (1.0f + static_cast<float> (i) * kInterStageSpread);
+                stageFrequency = clamp (stageFrequency, 20.0f, sampleRateFloat * kNyquistSafetyFactor);
+                allpassStagesL[i].setCoefficients (stageFrequency, 0.5f, sampleRateFloat);
+                allpassStagesR[i].setCoefficients (stageFrequency, 0.5f, sampleRateFloat);
+            }
         }
 
         // --- Process through allpass cascade with feedback ---
@@ -581,6 +589,9 @@ public:
 private:
     double hostSampleRate = 44100.0;
     double lfoPhase = 0.0;  // double precision to prevent drift over long sessions
+
+    // CPU fix: skip setCoefficients when LFO value hasn't changed enough
+    float lastPhaserLfoValue = -999.0f;
 
     // Stereo allpass cascade (independent L/R for true stereo phasing)
     CytomicSVF allpassStagesL[kNumStages];
@@ -629,6 +640,11 @@ struct ObliqueVoice
 
     // --- Voice stealing crossfade ---
     float stealFadeLevel = 0.0f;     // 1.0 = fading out stolen voice, 0.0 = normal
+
+    // --- Old-voice fade-out on steal (prevents hard-cut click) ---
+    bool  fadingOut      = false;    // true while the outgoing voice ramps to silence
+    float stealOutLevel  = 1.0f;    // current gain of outgoing voice (decrement per sample)
+    float stealFadeStep  = 0.0f;    // 1 / (0.005 * sr) — computed at steal time
 
     // --- Bounce (per-voice percussive ricochet) ---
     ObliqueBounce bounce;
@@ -718,6 +734,9 @@ public:
             voice.active = false;
             voice.envelopeLevel = 0.0f;
             voice.stealFadeLevel = 0.0f;
+            voice.fadingOut     = false;
+            voice.stealOutLevel = 1.0f;
+            voice.stealFadeStep = 0.0f;
             voice.releasing = false;
             voice.oscillatorPrimary.reset();
             voice.oscillatorSecondary.reset();
@@ -965,6 +984,21 @@ public:
                     }
                 }
 
+                // --- Old-voice fade-out on steal (eliminates hard-cut click) ---
+                // fadingOut: the voice is being replaced — ramp stealOutLevel → 0
+                // over 5ms, then deactivate and skip further processing this sample.
+                if (voice.fadingOut)
+                {
+                    voice.stealOutLevel -= voice.stealFadeStep;
+                    if (voice.stealOutLevel <= 0.0f)
+                    {
+                        voice.fadingOut     = false;
+                        voice.stealOutLevel = 0.0f;
+                        voice.active        = false;
+                        continue; // voice is done — skip audio output this sample
+                    }
+                }
+
                 // --- Voice stealing crossfade ---
                 // When a voice is stolen, it fades out over 5ms to prevent clicks.
                 // 5ms is the standard click-free crossfade duration for voice stealing.
@@ -1023,9 +1057,11 @@ public:
                 // --- Voice filter (Cytomic SVF lowpass) ---
                 oscillatorOutput = voice.voiceFilter.processSample (oscillatorOutput);
 
-                // --- Apply envelope + velocity + steal fade ---
+                // --- Apply envelope + velocity + steal fade + outgoing fade ---
+                // stealOutLevel fades the outgoing note to silence (fadingOut path).
                 float voicedOutput = oscillatorOutput * voice.envelopeLevel
-                                   * voice.velocity * stealFadeGain;
+                                   * voice.velocity * stealFadeGain
+                                   * (voice.fadingOut ? voice.stealOutLevel : 1.0f);
 
                 // --- Bounce clicks (per-voice percussive ricochets) ---
                 ObliqueBounce::Params bounceParams;
@@ -1059,8 +1095,8 @@ public:
                 static constexpr float kHalfPi = 1.5707963f;  // pi/2 for equal-power pan law
                 float bouncePan = kBouncePanBase
                     + (static_cast<float> (voice.noteNumber % 7) / 7.0f) * kBouncePanRange;
-                float bounceL = bounceOutput * std::cos (bouncePan * kHalfPi);
-                float bounceR = bounceOutput * std::sin (bouncePan * kHalfPi);
+                float bounceL = bounceOutput * fastCos (bouncePan * kHalfPi);
+                float bounceR = bounceOutput * fastSin (bouncePan * kHalfPi);
 
                 voiceSumL += bodyL + bounceL;
                 voiceSumR += bodyR + bounceR;
@@ -1619,11 +1655,17 @@ private:
             }
         }
 
-        // If no free voice found, steal the oldest and crossfade it out
+        // If no free voice found, steal the oldest and crossfade it out.
+        // fadingOut marks the outgoing voice for a 5ms fade before reset.
         if (selectedVoiceIndex < 0)
         {
             selectedVoiceIndex = oldestVoiceIndex;
-            voices[static_cast<size_t> (selectedVoiceIndex)].stealFadeLevel = 1.0f;
+            auto& stolen = voices[static_cast<size_t> (selectedVoiceIndex)];
+            stolen.fadingOut     = true;
+            stolen.stealOutLevel = 1.0f;
+            stolen.stealFadeStep = 1.0f / (0.005f * static_cast<float> (hostSampleRate));
+            // stealFadeLevel controls new-voice ramp-in (leave at 0 — new note starts silent)
+            stolen.stealFadeLevel = 1.0f;
         }
 
         auto& voice = voices[static_cast<size_t> (selectedVoiceIndex)];

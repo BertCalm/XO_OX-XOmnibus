@@ -34,7 +34,7 @@
 //      enables coupling without audio routing to slot 5.
 //
 //  Accent: Cardamom Gold #C49B3F
-//  Parameter prefix: oasis_
+//  Parameter prefix: okan_
 //
 //==============================================================================
 
@@ -692,91 +692,91 @@ public:
         using PI = juce::AudioParameterInt;
 
         // Core tone
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_warmth", 1 }, "Okeanos Warmth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_warmth", 1 }, "Okeanos Warmth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bell", 1 }, "Okeanos Bell",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_bell", 1 }, "Okeanos Bell",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_brightness", 1 }, "Okeanos Brightness",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_brightness", 1 }, "Okeanos Brightness",
             juce::NormalisableRange<float> (200.0f, 20000.0f, 0.0f, 0.3f), 6000.0f));
 
         // Tremolo (Rhodes vibrato circuit)
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremRate", 1 }, "Okeanos Tremolo Rate",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_tremRate", 1 }, "Okeanos Tremolo Rate",
             juce::NormalisableRange<float> (0.5f, 12.0f, 0.01f), 4.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremDepth", 1 }, "Okeanos Tremolo Depth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_tremDepth", 1 }, "Okeanos Tremolo Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
         // Amp envelope
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_attack", 1 }, "Okeanos Attack",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_attack", 1 }, "Okeanos Attack",
             juce::NormalisableRange<float> (0.001f, 0.5f, 0.0f, 0.3f), 0.005f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_decay", 1 }, "Okeanos Decay",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_decay", 1 }, "Okeanos Decay",
             juce::NormalisableRange<float> (0.05f, 5.0f, 0.0f, 0.4f), 0.8f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_sustain", 1 }, "Okeanos Sustain",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_sustain", 1 }, "Okeanos Sustain",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_release", 1 }, "Okeanos Release",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_release", 1 }, "Okeanos Release",
             juce::NormalisableRange<float> (0.01f, 5.0f, 0.0f, 0.4f), 0.5f));
 
         // Filter
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_filterEnvAmt", 1 }, "Okeanos Filter Env Amount",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_filterEnvAmt", 1 }, "Okeanos Filter Env Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
 
         // FUSION
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_migration", 1 }, "Okeanos Migration",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_migration", 1 }, "Okeanos Migration",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_stereoWidth", 1 }, "Okeanos Stereo Width",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_stereoWidth", 1 }, "Okeanos Stereo Width",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
         // Pitch
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bendRange", 1 }, "Okeanos Pitch Bend Range",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_bendRange", 1 }, "Okeanos Pitch Bend Range",
             juce::NormalisableRange<float> (1.0f, 24.0f, 1.0f), 2.0f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCharacter", 1 }, "Okeanos Macro CHARACTER",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_macroCharacter", 1 }, "Okeanos Macro CHARACTER",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroMovement", 1 }, "Okeanos Macro MOVEMENT",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_macroMovement", 1 }, "Okeanos Macro MOVEMENT",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCoupling", 1 }, "Okeanos Macro COUPLING",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_macroCoupling", 1 }, "Okeanos Macro COUPLING",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroSpace", 1 }, "Okeanos Macro SPACE",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_macroSpace", 1 }, "Okeanos Macro SPACE",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
         // LFOs (D002/D005)
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Rate", 1 }, "Okeanos LFO1 Rate",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_lfo1Rate", 1 }, "Okeanos LFO1 Rate",
             juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Depth", 1 }, "Okeanos LFO1 Depth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_lfo1Depth", 1 }, "Okeanos LFO1 Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo1Shape", 1 }, "Okeanos LFO1 Shape", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Rate", 1 }, "Okeanos LFO2 Rate",
+        params.push_back (std::make_unique<PI> (juce::ParameterID { "okan_lfo1Shape", 1 }, "Okeanos LFO1 Shape", 0, 4, 0));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_lfo2Rate", 1 }, "Okeanos LFO2 Rate",
             juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Depth", 1 }, "Okeanos LFO2 Depth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "okan_lfo2Depth", 1 }, "Okeanos LFO2 Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo2Shape", 1 }, "Okeanos LFO2 Shape", 0, 4, 0));
+        params.push_back (std::make_unique<PI> (juce::ParameterID { "okan_lfo2Shape", 1 }, "Okeanos LFO2 Shape", 0, 4, 0));
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
-        paramWarmth       = apvts.getRawParameterValue ("oasis_warmth");
-        paramBell         = apvts.getRawParameterValue ("oasis_bell");
-        paramBrightness   = apvts.getRawParameterValue ("oasis_brightness");
-        paramTremRate     = apvts.getRawParameterValue ("oasis_tremRate");
-        paramTremDepth    = apvts.getRawParameterValue ("oasis_tremDepth");
-        paramAttack       = apvts.getRawParameterValue ("oasis_attack");
-        paramDecay        = apvts.getRawParameterValue ("oasis_decay");
-        paramSustain      = apvts.getRawParameterValue ("oasis_sustain");
-        paramRelease      = apvts.getRawParameterValue ("oasis_release");
-        paramFilterEnvAmt = apvts.getRawParameterValue ("oasis_filterEnvAmt");
-        paramMigration    = apvts.getRawParameterValue ("oasis_migration");
-        paramStereoWidth  = apvts.getRawParameterValue ("oasis_stereoWidth");
-        paramBendRange    = apvts.getRawParameterValue ("oasis_bendRange");
-        paramMacroCharacter = apvts.getRawParameterValue ("oasis_macroCharacter");
-        paramMacroMovement  = apvts.getRawParameterValue ("oasis_macroMovement");
-        paramMacroCoupling  = apvts.getRawParameterValue ("oasis_macroCoupling");
-        paramMacroSpace     = apvts.getRawParameterValue ("oasis_macroSpace");
-        paramLfo1Rate     = apvts.getRawParameterValue ("oasis_lfo1Rate");
-        paramLfo1Depth    = apvts.getRawParameterValue ("oasis_lfo1Depth");
-        paramLfo1Shape    = apvts.getRawParameterValue ("oasis_lfo1Shape");
-        paramLfo2Rate     = apvts.getRawParameterValue ("oasis_lfo2Rate");
-        paramLfo2Depth    = apvts.getRawParameterValue ("oasis_lfo2Depth");
-        paramLfo2Shape    = apvts.getRawParameterValue ("oasis_lfo2Shape");
+        paramWarmth       = apvts.getRawParameterValue ("okan_warmth");
+        paramBell         = apvts.getRawParameterValue ("okan_bell");
+        paramBrightness   = apvts.getRawParameterValue ("okan_brightness");
+        paramTremRate     = apvts.getRawParameterValue ("okan_tremRate");
+        paramTremDepth    = apvts.getRawParameterValue ("okan_tremDepth");
+        paramAttack       = apvts.getRawParameterValue ("okan_attack");
+        paramDecay        = apvts.getRawParameterValue ("okan_decay");
+        paramSustain      = apvts.getRawParameterValue ("okan_sustain");
+        paramRelease      = apvts.getRawParameterValue ("okan_release");
+        paramFilterEnvAmt = apvts.getRawParameterValue ("okan_filterEnvAmt");
+        paramMigration    = apvts.getRawParameterValue ("okan_migration");
+        paramStereoWidth  = apvts.getRawParameterValue ("okan_stereoWidth");
+        paramBendRange    = apvts.getRawParameterValue ("okan_bendRange");
+        paramMacroCharacter = apvts.getRawParameterValue ("okan_macroCharacter");
+        paramMacroMovement  = apvts.getRawParameterValue ("okan_macroMovement");
+        paramMacroCoupling  = apvts.getRawParameterValue ("okan_macroCoupling");
+        paramMacroSpace     = apvts.getRawParameterValue ("okan_macroSpace");
+        paramLfo1Rate     = apvts.getRawParameterValue ("okan_lfo1Rate");
+        paramLfo1Depth    = apvts.getRawParameterValue ("okan_lfo1Depth");
+        paramLfo1Shape    = apvts.getRawParameterValue ("okan_lfo1Shape");
+        paramLfo2Rate     = apvts.getRawParameterValue ("okan_lfo2Rate");
+        paramLfo2Depth    = apvts.getRawParameterValue ("okan_lfo2Depth");
+        paramLfo2Shape    = apvts.getRawParameterValue ("okan_lfo2Shape");
     }
 
 private:

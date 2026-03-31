@@ -73,15 +73,19 @@ enum SpawnSource: String, Codable {
 ///   Daily Drift        → Sources only
 ///   Login Milestones   → Modulators only
 ///   Performance Rewards→ Effects only (Phase 2)
-///   Weather/Time Bonus → Processors
+///   Weather Bonus      → Processors — boosted by real-time weather condition (Phase 2)
+///   Time-of-Day        → Category rotates by time window (Phase 2)
 ///   Exploration Bonus  → Any category, Rare+ guaranteed
-///   Coupling Discovery → Hybrid cross-category (Phase 4)
-///   Community Events   → Special limited-edition (Phase 4)
+///   Coupling Discovery → Offspring category from BreedingSystem (Phase 2)
+///   Community Events   → Seasonal event pool with rarity multiplier (Phase 2)
 final class SpawnManager: ObservableObject {
     @Published var wildSpecimens: [WildSpecimen] = []
 
     /// Weak reference to ReefStore — used for persisting visited geohashes across launches.
     weak var reefStore: ReefStore?
+
+    /// Injected by CatchTab so weather condition drives spawn probability boosts (Phase 2).
+    weak var weatherService: WeatherService?
 
     private let biomeDetector: BiomeDetector
     private let defaults = UserDefaults.standard
@@ -208,19 +212,251 @@ final class SpawnManager: ObservableObject {
         ))
     }
 
-    // MARK: - Time of Day Bonus (Processors — spec Section 7.2)
+    // MARK: - Time of Day Bonus (Phase 2 — category rotates by window)
 
-    /// Spawns a Processor during golden hour (dawn 5-7 AM, dusk 5-7 PM) with 30% probability.
+    /// Spawns a specimen whose category matches the current time-of-day window.
+    ///
+    /// Windows (Phase 2 spec):
+    ///   Morning   (06–12): Source specimens boosted   — oscillators stir at dawn
+    ///   Afternoon (12–18): Processor specimens boosted — filters peak in bright light
+    ///   Evening   (18–24): Modulator specimens boosted — LFOs/envelopes surge at dusk
+    ///   Night     (00–06): Effect specimens boosted    — delays/reverbs rule the dark
+    ///
+    /// 35% spawn probability per call to avoid flooding the map.
     func checkTimeOfDay() {
+        guard Float.random(in: 0...1) < 0.35 else { return }
+
         let hour = Calendar.current.component(.hour, from: Date())
-        let isGoldenHour = (hour >= 5 && hour < 7) || (hour >= 17 && hour < 19)
-        guard isGoldenHour, Float.random(in: 0...1) < 0.3 else { return }
+        let (category, rarity): (SpecimenCategory, SpecimenRarity)
+
+        switch hour {
+        case 6..<12:
+            // Morning — Source specimens; rarity climbs toward noon
+            category = .source
+            rarity = hour >= 9 ? .uncommon : .common
+        case 12..<18:
+            // Afternoon — Processor specimens; peak brightness = Rare window 14–16
+            category = .processor
+            rarity = (hour >= 14 && hour < 16) ? .rare : .uncommon
+        case 18..<24:
+            // Evening — Modulator specimens; golden hour 18–20 bumps to Rare
+            category = .modulator
+            rarity = (hour >= 18 && hour < 20) ? .rare : .uncommon
+        default:
+            // Night (00–06) — Effect specimens; deepest hour (02–04) = Rare chance
+            category = .effect
+            rarity = (hour >= 2 && hour < 4) ? .rare : .uncommon
+        }
+
+        wildSpecimens.append(generateWildSpecimen(
+            category: category,
+            rarity: rarity,
+            source: .timeOfDay
+        ))
+    }
+
+    // MARK: - Performance Reward (Effects only — Phase 2)
+
+    /// Spawns an Effect specimen after Dive completion. Score thresholds determine rarity:
+    ///
+    ///   < 1000         → Common  (80% chance to spawn at all)
+    ///   1000 – 2999    → Uncommon (30% chance)
+    ///   3000 – 5999    → Rare     (15% chance)
+    ///   6000+          → Legendary (5% chance)
+    ///
+    /// Call this from DiveTab.endDive() with the final computed score.
+    func checkPerformanceReward(diveScore: Int) {
+        let spawnChance: Float
+        let rarity: SpecimenRarity
+
+        switch diveScore {
+        case ..<1000:
+            spawnChance = 0.80
+            rarity = .common
+        case 1000..<3000:
+            spawnChance = 0.30
+            rarity = .uncommon
+        case 3000..<6000:
+            spawnChance = 0.15
+            rarity = .rare
+        default: // 6000+
+            spawnChance = 0.05
+            rarity = .legendary
+        }
+
+        guard Float.random(in: 0...1) < spawnChance else { return }
+
+        wildSpecimens.append(generateWildSpecimen(
+            category: .effect,
+            rarity: rarity,
+            source: .performanceReward
+        ))
+    }
+
+    // MARK: - Weather Bonus (Processors — Phase 2)
+
+    /// Spawns a Processor whose rarity is boosted by the current weather condition.
+    ///
+    /// Weather → cosmetic/biome mapping (Phase 2 spec):
+    ///   Clear / fair   → Sunlit biome  — Common/Uncommon at 40% probability
+    ///   Rain / storm   → Thermocline   — Uncommon/Rare   at 50% probability
+    ///   Fog / low vis  → Abyss         — Rare            at 20% probability
+    ///   Night + any    → Bio cosmetic  — Uncommon        at 35% probability
+    ///
+    /// Falls back gracefully when WeatherService is unavailable (no spawn).
+    func checkWeatherBonus() {
+        guard let weather = weatherService?.bestAvailable else { return }
+
+        let hour = Calendar.current.component(.hour, from: Date())
+        let isNight = hour < 6 || hour >= 21
+        let desc = weather.description.lowercased()
+
+        let spawnChance: Float
+        let rarity: SpecimenRarity
+
+        if desc.contains("fog") || desc.contains("mist") || desc.contains("haze") {
+            // Fog / low visibility — Abyss class, rare
+            spawnChance = 0.20
+            rarity = .rare
+        } else if desc.contains("rain") || desc.contains("thunder") || desc.contains("storm")
+                  || desc.contains("drizzle") || desc.contains("snow") || desc.contains("sleet") {
+            // Rain / storm — Thermocline class, uncommon–rare
+            spawnChance = 0.50
+            rarity = Bool.random() ? .uncommon : .rare
+        } else if isNight {
+            // Night — Bio cosmetic class, uncommon
+            spawnChance = 0.35
+            rarity = .uncommon
+        } else {
+            // Clear / fair — Sunlit class, common–uncommon
+            spawnChance = 0.40
+            rarity = Bool.random() ? .common : .uncommon
+        }
+
+        guard Float.random(in: 0...1) < spawnChance else { return }
 
         wildSpecimens.append(generateWildSpecimen(
             category: .processor,
-            rarity: .uncommon,
-            source: .timeOfDay
+            rarity: rarity,
+            source: .weatherBonus
         ))
+    }
+
+    // MARK: - Coupling Discovery (Hybrid category from BreedingSystem — Phase 2)
+
+    /// Registers a bred offspring as a wild specimen available for catch.
+    ///
+    /// Called by the Nursery/GameCoordinator when an offspring graduates
+    /// (formationEndDate is reached and the player has not yet placed it).
+    /// The offspring appears on the radar near the player so they must "catch" it
+    /// before it joins the reef — this keeps the catch loop central.
+    ///
+    /// - Parameters:
+    ///   - offspringSubtype: The blended subtype ID from `InheritedTraits.offspringSubtypeID`.
+    ///   - offspringCategory: The category string from `InheritedTraits.offspringCategory`.
+    ///   - generation: The offspring's generation (Gen-2+). Higher gen = higher rarity floor.
+    func registerCouplingDiscovery(
+        offspringSubtype: String,
+        offspringCategory: String,
+        generation: Int
+    ) {
+        // Derive SpecimenCategory from the raw string; fall back to .source on unknown values
+        let validCategories = Set(SpecimenCategory.allCases.map { $0.rawValue })
+        let category: SpecimenCategory
+        if validCategories.contains(offspringCategory),
+           let parsed = SpecimenCategory(rawValue: offspringCategory) {
+            category = parsed
+        } else {
+            category = .source
+        }
+
+        // Generation determines rarity floor: Gen-2 = uncommon, Gen-3 = rare, Gen-4+ = legendary
+        let rarity: SpecimenRarity
+        switch generation {
+        case ..<2:   rarity = .common
+        case 2:      rarity = .uncommon
+        case 3:      rarity = .rare
+        default:     rarity = .legendary
+        }
+
+        // Offspring spawn close to the player — they know where you live
+        wildSpecimens.append(WildSpecimen(
+            category: category,
+            subtype: offspringSubtype,
+            rarity: rarity,
+            biome: biomeDetector.currentBiome,
+            spawnSource: .couplingDiscovery,
+            direction: Double.random(in: 0...(2 * .pi)),
+            distance: Double.random(in: 30...150),  // Always nearby
+            expiresAt: Date().addingTimeInterval(24 * 3600) // 24-hour window (generous)
+        ))
+    }
+
+    // MARK: - Community Events (Seasonal event pool — Phase 2)
+
+    /// Applies the active seasonal event's spawn pool and rarity multiplier to produce
+    /// additional wild specimens. Call periodically (e.g., on app foreground or hourly tick).
+    ///
+    /// Event behaviour:
+    ///   .bioluminescentStorm → Rare/Legendary specimens from all categories; 2× multiplier
+    ///   .migrationWave       → Burst of up to 6 simultaneous specimens; 1.5× multiplier
+    ///   .deepCurrent         → Deep-biome subtypes surface as Sources and Processors
+    ///   .coralBloom          → No spawn change (breeding/nursery focus — handled elsewhere)
+    ///
+    /// No-op when no event is active.
+    func checkCommunityEvent() {
+        guard let event = SeasonalEventManager.activeEvent() else { return }
+
+        switch event.type {
+
+        case .bioluminescentStorm:
+            // Doubled rare spawns — all categories, Rare or Legendary
+            guard Float.random(in: 0...1) < 0.60 else { return }
+            let category = SpecimenCategory.allCases.randomElement() ?? .source
+            let rarity: SpecimenRarity = Float.random(in: 0...1) < 0.40 ? .legendary : .rare
+            wildSpecimens.append(generateWildSpecimen(
+                category: category,
+                rarity: rarity,
+                source: .communityEvent
+            ))
+
+        case .migrationWave:
+            // Wave of 3–6 simultaneous specimens — any rarity, any category
+            let count = Int.random(in: 3...6)
+            for _ in 0..<count {
+                let category = SpecimenCategory.allCases.randomElement() ?? .source
+                let rarity: SpecimenRarity = Float.random(in: 0...1) < 0.30 ? .rare :
+                             (Float.random(in: 0...1) < 0.50 ? .uncommon : .common)
+                wildSpecimens.append(generateWildSpecimen(
+                    category: category,
+                    rarity: rarity,
+                    source: .communityEvent
+                ))
+            }
+
+        case .deepCurrent:
+            // Deep-biome subtypes surface — Sources and Processors only, Rare floor
+            guard Float.random(in: 0...1) < 0.50 else { return }
+            let surfacedSubtypes = LimitedTimeEventType.deepCurrent.surfacedDeepSubtypes
+            guard let chosenSubtype = surfacedSubtypes.randomElement() else { return }
+            // Map deep subtypes to a category: filter-ish → processor, others → source
+            let category: SpecimenCategory = chosenSubtype.contains("svf") || chosenSubtype.contains("feedback")
+                ? .processor : .source
+            wildSpecimens.append(WildSpecimen(
+                category: category,
+                subtype: chosenSubtype,
+                rarity: .rare,
+                biome: biomeDetector.currentBiome,
+                spawnSource: .communityEvent,
+                direction: Double.random(in: 0...(2 * .pi)),
+                distance: Double.random(in: 50...300),
+                expiresAt: Date().addingTimeInterval(4 * 3600)
+            ))
+
+        case .coralBloom:
+            // Coral Bloom affects breeding/nursery speed only — no spawn change
+            break
+        }
     }
 
     // MARK: - Exploration Bonus (Any category, Rare+ — spec Section 7.2)
@@ -285,7 +521,6 @@ final class SpawnManager: ObservableObject {
 
         // Weight selection by biome affinity and seasonal event boosts
         let currentBiome = biomeDetector.currentBiome
-        let activeEvent = SeasonalEventManager.activeEvent()
         let weighted = subtypes.map { subtype -> (String, Float) in
             let catalogID = SpecimenCatalog.catalogSubtypeID(from: subtype)
             var weight: Float = 1.0
@@ -296,8 +531,10 @@ final class SpawnManager: ObservableObject {
                 weight *= 3.0
             }
 
-            // Seasonal event boost — reserved for future LimitedTimeEvent.boostedSubtypes support
-            _ = activeEvent  // suppress unused-variable warning
+            // Seasonal event boost — applies SeasonalEventManager spawn rate multiplier
+            // (handles season-exclusive blocking, season modifiers, and active event overrides)
+            let eventMultiplier = SeasonalEventManager.shared.spawnRateMultiplier(for: catalogID)
+            weight *= eventMultiplier
 
             return (subtype, weight)
         }

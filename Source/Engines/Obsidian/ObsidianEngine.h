@@ -458,6 +458,20 @@ public:
 
         float peakEnvelopeLevel = 0.0f;
 
+        // CPU fix (OBSIDIAN): precompute all 4 Euler-Bernoulli stretchedRatio values once
+        // per block. stiffnessCoefficient is block-rate — std::sqrt x4 per sample per voice
+        // is eliminated. The harmonic numbers (2,3,4,5) and stiffnessCoefficient are all
+        // block-constant, so the 4 stretched ratios are invariant within the block.
+        float cachedStretchedRatios[4] = {};
+        if (stiffnessCoefficient > 0.0001f)
+        {
+            for (int partialIndex = 1; partialIndex <= 4; ++partialIndex)
+            {
+                float harmonicNumber = static_cast<float> (partialIndex + 1);
+                cachedStretchedRatios[partialIndex - 1] =
+                    harmonicNumber * std::sqrt (1.0f + stiffnessCoefficient * harmonicNumber * harmonicNumber);
+            }
+        }
 
         // ---- Per-Sample Render Loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
@@ -552,11 +566,11 @@ public:
                 float stiffnessColor = 0.0f;
                 if (stiffnessCoefficient > 0.0001f)
                 {
+                    // CPU fix: use block-rate precomputed stretchedRatios (no std::sqrt per sample).
                     for (int partialIndex = 1; partialIndex <= 4; ++partialIndex)
                     {
                         float harmonicNumber = static_cast<float> (partialIndex + 1);
-                        // Euler-Bernoulli: ratio = N * sqrt(1 + B * N^2)
-                        float stretchedRatio = harmonicNumber * std::sqrt (1.0f + stiffnessCoefficient * harmonicNumber * harmonicNumber);
+                        float stretchedRatio = cachedStretchedRatios[partialIndex - 1];
                         float partialPhase = voice.phaseStage1 * stretchedRatio;
                         // Wrap phase to [0, 1) — faster than fmod for positive values
                         partialPhase -= static_cast<float> (static_cast<int> (partialPhase));

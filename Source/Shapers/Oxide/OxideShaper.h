@@ -57,6 +57,13 @@ struct LorenzAttractor
         y += dt * (k1y + 2.0f*k2y + 2.0f*k3y + k4y) / 6.0f;
         z += dt * (k1z + 2.0f*k2z + 2.0f*k3z + k4z) / 6.0f;
 
+        // NaN guard: Lorenz can diverge to inf/NaN if dt is too large or rho extreme.
+        // Reset to a known finite initial condition to recover gracefully.
+        if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z))
+        {
+            x = 0.1f; y = 0.0f; z = 0.0f;
+        }
+
         // Normalize x to [-1, 1] range (typical Lorenz x range is ~[-20, 20])
         return clamp (x / 20.0f, -1.0f, 1.0f);
     }

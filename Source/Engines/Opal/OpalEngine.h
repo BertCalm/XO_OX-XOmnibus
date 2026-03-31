@@ -179,7 +179,7 @@ inline float opalWindow (float phase, int shape) noexcept
     switch (shape)
     {
         case 0: // Hann
-            return 0.5f * (1.0f - std::cos (2.0f * pi * phase));
+            return 0.5f * (1.0f - fastCos (2.0f * pi * phase));
 
         case 1: // Gaussian (sigma=0.15)
         {
@@ -191,9 +191,9 @@ inline float opalWindow (float phase, int shape) noexcept
         {
             constexpr float alpha = 0.5f;
             if (phase < alpha * 0.5f)
-                return 0.5f * (1.0f - std::cos (2.0f * pi * phase / alpha));
+                return 0.5f * (1.0f - fastCos (2.0f * pi * phase / alpha));
             if (phase > 1.0f - alpha * 0.5f)
-                return 0.5f * (1.0f - std::cos (2.0f * pi * (1.0f - phase) / alpha));
+                return 0.5f * (1.0f - fastCos (2.0f * pi * (1.0f - phase) / alpha));
             return 1.0f;
         }
 
@@ -201,7 +201,7 @@ inline float opalWindow (float phase, int shape) noexcept
             return 1.0f;
 
         default:
-            return 0.5f * (1.0f - std::cos (2.0f * pi * phase));
+            return 0.5f * (1.0f - fastCos (2.0f * pi * phase));
     }
 }
 
@@ -316,7 +316,7 @@ public:
         g.active = true;
         g.ownerVoice = voiceIdx;
         g.readPosition = readPos;
-        g.readIncrement = std::pow (2.0f, pitchSemitones / 12.0f);
+        g.readIncrement = fastPow2 (pitchSemitones / 12.0f);
 
         float sizeSamples = grainSizeMs * 0.001f * static_cast<float> (sampleRate);
         if (sizeSamples < 1.0f) sizeSamples = 1.0f;
@@ -327,8 +327,8 @@ public:
         // Equal-power pan
         constexpr float pi4 = 0.78539816339745f; // pi/4
         float p = clamp (panPos, -1.0f, 1.0f);
-        g.panL = std::cos ((p + 1.0f) * 0.5f * pi4 * 2.0f);
-        g.panR = std::sin ((p + 1.0f) * 0.5f * pi4 * 2.0f);
+        g.panL = fastCos ((p + 1.0f) * 0.5f * pi4 * 2.0f);
+        g.panR = fastSin ((p + 1.0f) * 0.5f * pi4 * 2.0f);
 
         g.birthOrder = ++globalBirthCounter;
         return g;
@@ -1761,10 +1761,10 @@ public:
                 }
 
                 // Set oscillator frequencies for this voice (with MPE + channel pitch bend)
-                float voiceFreq = v.glideFreq * std::pow (2.0f, v.mpeExpression.pitchBendSemitones / 12.0f)
+                float voiceFreq = v.glideFreq * fastPow2 (v.mpeExpression.pitchBendSemitones / 12.0f)
                                              * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 v.osc1.setFrequency (voiceFreq, static_cast<float> (sr));
-                v.osc2.setFrequency (voiceFreq * std::pow (2.0f, osc2Detune / 12.0f),
+                v.osc2.setFrequency (voiceFreq * fastPow2 (osc2Detune / 12.0f),
                                      static_cast<float> (sr));
 
                 // Grain scheduling
@@ -2112,7 +2112,7 @@ private:
                 srcOsc1.setWaveform (PolyBLEP::Waveform::Saw);
                 srcOsc1.setFrequency (freq, static_cast<float> (sr));
                 srcOsc2.setWaveform (PolyBLEP::Waveform::Saw);
-                srcOsc2.setFrequency (freq * std::pow (2.0f, osc2Det / 12.0f),
+                srcOsc2.setFrequency (freq * fastPow2 (osc2Det / 12.0f),
                                       static_cast<float> (sr));
                 float s1 = srcOsc1.processSample();
                 float s2 = srcOsc2.processSample();

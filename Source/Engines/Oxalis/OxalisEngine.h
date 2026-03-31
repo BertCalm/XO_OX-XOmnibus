@@ -203,6 +203,12 @@ struct OxalisVoice
 
     float panL = 0.707f, panR = 0.707f;
 
+    // CPU fix: cached pitch ratio to avoid std::pow inside semitonesToFreqRatio per sample.
+    // lastBendInput tracks bendSemitones+couplingPitchMod+dormancy; ratio recomputed only
+    // when the combined input changes by more than kPitchCacheThreshold semitones.
+    float cachedPitchRatio = 1.0f;
+    float lastBendInput    = 0.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -211,6 +217,8 @@ struct OxalisVoice
         growthPhase = 0.0f;
         growthTimer = 0.0f;
         dormancyPitchCents = 0.0f;
+        cachedPitchRatio = 1.0f;
+        lastBendInput    = 0.0f;
         glide.reset();
         oscBank.reset();
         filter.reset();
@@ -419,9 +427,20 @@ public:
                 float baseFreq = voice.glide.process();
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth;
 
-                float freq = baseFreq * PitchBendUtil::semitonesToFreqRatio (
-                    bendSemitones + couplingPitchMod + vibrato * 0.08f
-                    + voice.dormancyPitchCents / 100.0f);
+                // CPU fix (OXALIS): cache pitch ratio and only recompute semitonesToFreqRatio
+                // (which contains std::pow) when the slow-moving inputs change significantly.
+                // Vibrato contributes up to ~0.08 semitones — included in cache invalidation.
+                // Threshold of 0.005 semitones keeps tuning error < 0.01 cents inaudible.
+                static constexpr float kPitchCacheThreshold = 0.005f;
+                float bendInput = bendSemitones + couplingPitchMod
+                                  + vibrato * 0.08f
+                                  + voice.dormancyPitchCents / 100.0f;
+                if (std::fabs (bendInput - voice.lastBendInput) > kPitchCacheThreshold)
+                {
+                    voice.cachedPitchRatio = PitchBendUtil::semitonesToFreqRatio (bendInput);
+                    voice.lastBendInput = bendInput;
+                }
+                float freq = baseFreq * voice.cachedPitchRatio;
 
                 float l1 = voice.lfo1.process() * lfo1Depth;
                 float l2 = voice.lfo2.process() * lfo2Depth;

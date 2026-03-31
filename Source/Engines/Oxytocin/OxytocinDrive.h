@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include "OxytocinThermal.h"   // for fastTanh (defined there as shared header)
+#include "../../DSP/FastMath.h"  // for xolokun::fastSin
 
 /// OxytocinDrive — MS-20 Sallen-Key asymmetric saturation model.
 ///
@@ -59,7 +60,7 @@ public:
             screamPhase += static_cast<float> (juce::MathConstants<double>::twoPi * screamFreq / sr);
             if (screamPhase > juce::MathConstants<float>::twoPi)
                 screamPhase -= juce::MathConstants<float>::twoPi;
-            y += screamAmp * std::sin (screamPhase) * 0.15f;
+            y += screamAmp * xolokun::fastSin (screamPhase) * 0.15f;  // PERF: fastSin replaces std::sin
         }
 
         // Aging DC bias drift

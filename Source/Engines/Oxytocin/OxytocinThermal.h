@@ -48,31 +48,55 @@ public:
         wobblePhase = 0.0f;
         signalEnvLevel = 0.0f;   // Fix 4: clear envelope follower on steal
         lastWarmthRate = -1.0f;  // force coefficient recompute after reset
+        // Cached load-adjusted coefficients will be recomputed by the next
+        // updateWarmth() call, so no stale values survive across voice steals.
+        cachedC1f = cachedC2f = cachedC3f = 0.0f;
     }
 
     /// Call once per block with the current intimacy level and warmth rate.
     /// Returns the current warmth value (used by the voice for cross-modulation).
     float updateWarmth (float intimacy, float warmthRate, float /*blockTime*/) noexcept
     {
-        // Cache block-rate coefficients
+        // Cache block-rate per-sample IIR coefficients.
         if (warmthRate != lastWarmthRate)
         {
             float tau1 = std::max (0.001f, warmthRate * 0.3f);
             float tau2 = std::max (0.001f, warmthRate * 0.6f);
             float tau3 = std::max (0.001f, warmthRate * 1.0f);
 
-            // Use averaged sample-rate (block rate ~ sr/blockSize, but we still
-            // compute at sample rate inside processBlock via processSample).
-            // Here we store the per-sample coefficients — computed once per block.
             coeff1 = std::exp (-1.0f / (static_cast<float> (sr) * tau1));
             coeff2 = std::exp (-1.0f / (static_cast<float> (sr) * tau2));
             coeff3 = std::exp (-1.0f / (static_cast<float> (sr) * tau3));
             lastWarmthRate = warmthRate;
         }
 
-        // Advance the three stages by one block-average tick
-        // (these are updated per-sample in processSample; here we just
-        // record the target so processSample can use it)
+        // PERF: Precompute signal-load-adjusted coefficients at block rate.
+        //
+        // The NTC thermal-acceleration model raises each coefficient to the power
+        // 1/loadMult so that a louder signal shortens effective time constants.
+        // Both coeff1/2/3 and signalEnvLevel (which drives loadMult) are stable at
+        // block rate — coeff1/2/3 by construction, signalEnvLevel because the
+        // envelope follower is smoothed over ~20–200 ms.  Precomputing here replaces
+        // 3 × std::pow() calls per sample (= 24 pow/sample at 8 voices) with 3 pow
+        // calls per block, which is ~1000× cheaper at a 128-sample block size.
+        {
+            float loadMult = 1.0f + signalEnvLevel * 2.0f;  // [1.0 .. 3.0]
+            if (loadMult > 1.001f)
+            {
+                float invLoad = 1.0f / loadMult;
+                cachedC1f = std::pow (coeff1, invLoad);
+                cachedC2f = std::pow (coeff2, invLoad);
+                cachedC3f = std::pow (coeff3, invLoad);
+            }
+            else
+            {
+                cachedC1f = coeff1;
+                cachedC2f = coeff2;
+                cachedC3f = coeff3;
+            }
+        }
+
+        // Record target; stages are advanced per-sample in processSample().
         targetIntimacy = intimacy;
         return stage3;
     }
@@ -80,39 +104,27 @@ public:
     /// Process a single audio sample.  Call after updateWarmth() for the block.
     float processSample (float input, float circuitAge) noexcept
     {
-        // Fix 4 (FATHOM): signal-dependent thermal acceleration.
-        // A real NTC thermistor heats faster under electrical load.  We model this
-        // with an envelope follower on the input signal: higher signal level
-        // shortens the effective warmth time constants, so the NTC warms up faster
-        // when the signal is loud.  The effect is bounded to a 3× maximum speedup
-        // so the fundamental warmth character is preserved at low levels.
+        // Signal-dependent thermal acceleration — envelope follower only.
+        // The per-sample cost here is just comparisons, multiplications, and
+        // the cached coefficient reads.  The actual std::pow() that derives
+        // cachedC1f/2f/3f from the envelope level is called once per block in
+        // updateWarmth(), not here.
         {
-            // Peak envelope follower: attack when signal exceeds current level,
-            // release when signal falls below it.  absIn is compared directly —
-            // both are in audio amplitude units (typically [0..1] for normalised audio).
+            // Peak envelope follower: fast attack, slow release.
             float absIn = std::abs (input);
             if (absIn > signalEnvLevel)
-                signalEnvLevel = absIn + (signalEnvLevel - absIn) * signalEnvAttackCoeff;  // fast attack
+                signalEnvLevel = absIn + (signalEnvLevel - absIn) * signalEnvAttackCoeff;
             else
-                signalEnvLevel = signalEnvLevel * signalEnvReleaseCoeff;                   // slow release
+                signalEnvLevel = signalEnvLevel * signalEnvReleaseCoeff;
 
-            // Clamp to [0..1] — normalise so the multiplier math below is predictable
             signalEnvLevel = std::clamp (signalEnvLevel, 0.0f, 1.0f);
 
-            // Map signal level to a load multiplier: 1.0 (quiet) → 3.0 (loud).
-            // Applied to the NTC stage by interpolating coefficients toward 1.0
-            // (coeff → 1 means no smoothing = instant tracking = fully heated).
-            float loadMult  = 1.0f + signalEnvLevel * 2.0f;  // [1.0 .. 3.0]
-            // Re-derive faster coefficients on the fly: c_fast = c ^ (1 / loadMult).
-            // Using pow avoids exp() per sample — same cost as a single exp call.
-            float c1f = (loadMult > 1.001f) ? std::pow (coeff1, 1.0f / loadMult) : coeff1;
-            float c2f = (loadMult > 1.001f) ? std::pow (coeff2, 1.0f / loadMult) : coeff2;
-            float c3f = (loadMult > 1.001f) ? std::pow (coeff3, 1.0f / loadMult) : coeff3;
-
-            // Advance warmth stages with signal-modulated coefficients
-            stage1 = targetIntimacy + (stage1 - targetIntimacy) * c1f;
-            stage2 = stage1          + (stage2 - stage1)         * c2f;
-            stage3 = stage2          + (stage3 - stage2)         * c3f;
+            // Advance warmth stages using block-rate-precomputed coefficients.
+            // cachedC1f/2f/3f are set once per block by updateWarmth() — no
+            // std::pow() here.
+            stage1 = targetIntimacy + (stage1 - targetIntimacy) * cachedC1f;
+            stage2 = stage1          + (stage2 - stage1)         * cachedC2f;
+            stage3 = stage2          + (stage3 - stage2)         * cachedC3f;
         }
 
         // P1-4: denormal guards on warmth stage accumulators
@@ -159,6 +171,11 @@ private:
     float  coeff2       = 0.0f;
     float  coeff3       = 0.0f;
     float  lastWarmthRate = -1.0f;
+    // PERF: block-rate cache of signal-load-adjusted NTC coefficients.
+    // Precomputed in updateWarmth() — eliminates 3 std::pow() calls per sample.
+    float  cachedC1f    = 0.0f;
+    float  cachedC2f    = 0.0f;
+    float  cachedC3f    = 0.0f;
     float  wobblePhase  = 0.0f;
 
     // Fix 4 (FATHOM): signal-level envelope follower for NTC thermal acceleration

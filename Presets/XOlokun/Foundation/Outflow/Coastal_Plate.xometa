@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Coastal Plate",
+  "mood": "Foundation",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-03-29",
+  "description": "Tight, bright plate reverb character. Short decay, high damping frequency, small splash size. Strong anchor keeps the dry signal upfront. Wind chaos adds mechanical shimmer to the reverb tail. The exciter has a fast, percussive decay — suited for snares and attacks.",
+  "tags": ["awakening", "plate", "tight", "bright", "snare", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.9,
+      "out_windChaos": 0.55,
+      "out_undertowPull": 0.2,
+      "out_splashSize": 0.2,
+      "out_decay": 1.2,
+      "out_damping": 15000.0,
+      "out_dryWet": 0.32,
+      "out_exciterDecay": 0.008,
+      "out_vacuumAttack": 0.7,
+      "out_opticalWarmth": 0.2,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.48,
+    "density": 0.38,
+    "space": 0.35,
+    "aggression": 0.28
+  }
+}

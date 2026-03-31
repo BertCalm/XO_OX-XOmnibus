@@ -201,8 +201,13 @@ public:
                 // Husbands only active when DRAMA > 0.7
                 if(v.isHusband && pDr < 0.7f)continue;
 
-                float rr=v.releasing?1.f/(v.sr*0.4f):0;
-                v.ampEnv=std::max(0.f,v.ampEnv-rr);
+                // Exponential release: avoids the "soft note releases in fraction
+                // of stated time" bug caused by linear subtraction on small ampEnv values.
+                if(v.releasing){
+                    float releaseCoeff=1.0f-(1.0f/(v.sr*0.4f));
+                    v.ampEnv*=releaseCoeff;
+                } // (no action during sustain — natural waveguide decay governs)
+                v.ampEnv=flushDenormal(v.ampEnv);
                 if(v.ampEnv<0.0001f&&v.releasing){v.active=false;continue;}
 
                 // ---- Per-aunt brightness selection ----

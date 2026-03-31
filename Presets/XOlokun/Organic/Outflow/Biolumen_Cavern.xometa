@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Biolumen Cavern",
+  "mood": "Organic",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-03-29",
+  "description": "A sea cave with bioluminescent organisms — small reverb space (low splash size) but rich optical saturation every time sound bounces off the walls. Wind chaos is moderate, creating the irregular drip/echo of cave acoustics. High anchor preserves the dry signal for intimacy.",
+  "tags": ["awakening", "warm", "cave", "intimate", "bioluminescent", "saturated"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.85,
+      "out_windChaos": 0.42,
+      "out_undertowPull": 0.55,
+      "out_splashSize": 0.25,
+      "out_decay": 2.5,
+      "out_damping": 6000.0,
+      "out_dryWet": 0.42,
+      "out_exciterDecay": 0.02,
+      "out_vacuumAttack": 0.4,
+      "out_opticalWarmth": 0.88,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.82,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.45,
+    "aggression": 0.32
+  }
+}

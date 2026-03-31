@@ -1007,7 +1007,8 @@ public:
                 voice.currentFreq = flushDenormal (voice.currentFreq);
 
                 // MPE pitch bend + global channel pitch bend
-                float freq = voice.currentFreq * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f)
+                // CPU fix: fastPow2 replaces std::pow — same 2^x formula, no stdlib call per sample.
+                float freq = voice.currentFreq * fastPow2 (voice.mpeExpression.pitchBendSemitones / 12.0f)
                              * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
                 // Coupling pitch mod

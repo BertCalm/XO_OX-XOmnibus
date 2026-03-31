@@ -192,13 +192,18 @@ struct SnapVoice
     float fadeOutLevel = 0.0f;
 
     // --- Unison spread ---
-    float detuneOffsets[4] = {};       // Cents offset per sub-voice
+    float detuneOffsets[4] = {};       // Cents offset per sub-voice (semitones)
+    float detunedRatios[4] = { 1.0f, 1.0f, 1.0f, 1.0f }; // CPU fix: precomputed fastExp(detune) per sub-voice
     float panOffsets[4] = {};          // Stereo position per sub-voice
 
     // --- Pitch sweep (the "snap" transient) ---
     float currentPitch = 0.0f;        // Sweeping from (target + snapOffset)
     float targetPitch = 0.0f;         // Final resting pitch (MIDI note)
     float pitchSweepPhase = 0.0f;     // 0..1 progress through sweep
+
+    // --- Frequency cache (CPU fix: avoids midiToHz/std::pow per sample) ---
+    float cachedFreq = 440.0f;        // Last computed base frequency
+    float lastMidiNote = 69.0f;       // MIDI note at which cachedFreq was computed
 };
 
 
@@ -561,7 +566,14 @@ public:
                                       + voice.targetPitch * sweepProgress;
                 currentMidiNote += pitchModulation;
 
-                float frequency = midiToHz (currentMidiNote)
+                // CPU fix: only call midiToHz when pitch changes by more than 0.01 semitones.
+                // midiToHz calls std::pow — expensive per sample per voice.
+                if (std::fabs (currentMidiNote - voice.lastMidiNote) > 0.01f)
+                {
+                    voice.cachedFreq   = midiToHz (currentMidiNote);
+                    voice.lastMidiNote = currentMidiNote;
+                }
+                float frequency = voice.cachedFreq
                                   * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                 // ---- Oscillator output with unison --------------------------
@@ -570,13 +582,8 @@ public:
 
                 for (int unisonIndex = 0; unisonIndex < activeUnisonCount; ++unisonIndex)
                 {
-                    // Apply per-voice detune: convert cents to frequency ratio
-                    // using e^(cents * ln(2)/1200). The constant 0.693147/12
-                    // equals ln(2)/12, converting from semitones to the natural
-                    // log domain for fastExp.
-                    static constexpr float kSemitonesToNatLog = 0.693147f / 12.0f;  // ln(2) / 12
-                    float detunedFrequency = frequency * fastExp (
-                        voice.detuneOffsets[unisonIndex] * kSemitonesToNatLog);
+                    // CPU fix: detunedRatios precomputed at noteOn; multiply base frequency.
+                    float detunedFrequency = frequency * voice.detunedRatios[unisonIndex];
 
                     float unisonOutput = 0.0f;
 
@@ -1020,12 +1027,22 @@ private:
         // ---- Unison detune and pan scatter ----------------------------------
         // Spread sub-voices symmetrically around center. The offsets create
         // a stereo "school" effect when unison > 1.
-        for (int unisonIndex = 0; unisonIndex < 4; ++unisonIndex)
         {
-            // Offset pattern: -1.5, -0.5, +0.5, +1.5 (centered around 0)
-            float normalizedOffset = (static_cast<float> (unisonIndex) - 1.5f);
-            voice.detuneOffsets[unisonIndex] = normalizedOffset * detuneCents / 100.0f;
-            voice.panOffsets[unisonIndex] = normalizedOffset / 2.0f;
+            static constexpr float kSemitonesToNatLog = 0.693147f / 12.0f;  // ln(2) / 12
+            for (int unisonIndex = 0; unisonIndex < 4; ++unisonIndex)
+            {
+                // Offset pattern: -1.5, -0.5, +0.5, +1.5 (centered around 0)
+                float normalizedOffset = (static_cast<float> (unisonIndex) - 1.5f);
+                voice.detuneOffsets[unisonIndex] = normalizedOffset * detuneCents / 100.0f;
+                voice.panOffsets[unisonIndex] = normalizedOffset / 2.0f;
+                // CPU fix: precompute per-voice detune ratio once at noteOn.
+                // detunedRatios[i] = fastExp(detuneOffsets[i] * ln2/12)
+                // At sample time: detunedFrequency = frequency * detunedRatios[i]
+                voice.detunedRatios[unisonIndex] = fastExp (voice.detuneOffsets[unisonIndex] * kSemitonesToNatLog);
+            }
+            // Initialise frequency cache for the new note.
+            voice.cachedFreq  = midiToHz (baseMidiNote);
+            voice.lastMidiNote = baseMidiNote;
         }
 
         // ---- Reset oscillators for new note ---------------------------------
@@ -1039,8 +1056,8 @@ private:
             int activeUnisonCount = std::min (unisonCount, 4);
             for (int unisonIndex = 0; unisonIndex < activeUnisonCount; ++unisonIndex)
             {
-                float detunedFrequency = baseFrequency * std::pow (2.0f,
-                    voice.detuneOffsets[unisonIndex] / 12.0f);
+                // CPU fix: use precomputed detunedRatios (set in unison loop above).
+                float detunedFrequency = baseFrequency * voice.detunedRatios[unisonIndex];
                 voice.karplusStrongOscillators[unisonIndex].setFrequency (
                     static_cast<double> (detunedFrequency));
                 // Higher snap = less damping = brighter, more metallic string

@@ -346,6 +346,21 @@ public:
         const float inverseSr = 1.0f / srF;
         const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
+        // W03 fix: hoist Fick's Law sqrt to block rate — diffusionClock changes by
+        // only inverseSr (~0.02ms) per sample, far below perceptual resolution for a
+        // 3-30s diffusion arc.  Computing once per voice per block eliminates 8 sqrt
+        // calls per sample (one per active voice).
+        // kInvLog2_1000: shared constant for fixes W01 & W02.
+        constexpr float kInvLog2_1000 = 1.0f / 9.96578428f; // 1/log2(1000)
+        float voiceSpreadBlock[kMaxVoices];
+        for (int v = 0; v < kMaxVoices; ++v)
+        {
+            if (voices[v].active)
+                voiceSpreadBlock[v] = std::sqrt (2.0f * D * std::min (voices[v].diffusionClock, pDiffTime)) * pSpreadMax;
+            else
+                voiceSpreadBlock[v] = 0.0f;
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             float lfo1Val = lfo1.process();
@@ -395,14 +410,15 @@ public:
                 float coupledFreq = voice.fundamental * PitchBendUtil::semitonesToFreqRatio(extPitchMod * 12.0f);
                 float fundamental = coupledFreq * pitchBendRatio;
 
-                // W04 fix: hoist per-voice Fick's Law values out of the partial loop.
+                // Hoist per-voice Fick's Law values out of the partial loop.
                 // t, maxT, D, pSpreadMax, and normalizedT all depend only on voice state —
                 // identical for every partial. Moving them here saves (activePartials-1)
-                // redundant sqrt + division per sample.
+                // redundant divisions per sample.
+                // voiceSpread is precomputed at block rate (see voiceSpreadBlock above).
                 const float voiceDiffT    = voice.diffusionClock;
                 const float voiceNormT    = (pDiffTime > 0.0f)
                                              ? std::min (voiceDiffT / pDiffTime, 1.0f) : 0.0f;
-                const float voiceSpread   = std::sqrt (2.0f * D * std::min (voiceDiffT, pDiffTime)) * pSpreadMax;
+                const float voiceSpread   = voiceSpreadBlock[v];
 
                 // Synthesize diffusing partials
                 float voiceSample = 0.0f;
@@ -447,9 +463,12 @@ public:
 
                     // Accumulate partial energy into spectral field for cross-note interference.
                     // Map frequency to one of 32 bins (log-spaced 20Hz–20kHz).
+                    // W01 fix: replace std::log2 (expensive transcendental) with fastLog2
+                    // (IEEE 754 bit-manipulation + cubic minimax, ~10x faster) and use the
+                    // precomputed reciprocal kInvLog2_1000 to eliminate the division entirely.
                     if (pInterference > 0.01f)
                     {
-                        float logFreq = std::log2 (partialFreq / 20.0f) / std::log2 (1000.0f); // 0..1
+                        float logFreq = fastLog2 (partialFreq / 20.0f) * kInvLog2_1000; // 0..1
                         int bin = std::min (static_cast<int> (logFreq * 32.0f), 31);
                         if (bin >= 0)
                             spectralField[static_cast<size_t> (bin)] += std::fabs (partialContrib) * 0.05f;
@@ -463,8 +482,9 @@ public:
                 // wash_interference controls how much cross-note energy affects this voice.
                 if (pInterference > 0.01f)
                 {
-                    // Map this voice's fundamental to a spectral bin
-                    float logFund = std::log2 (fundamental / 20.0f) / std::log2 (1000.0f);
+                    // Map this voice's fundamental to a spectral bin.
+                    // W02 fix: same fastLog2 + kInvLog2_1000 as the partial loop above.
+                    float logFund = fastLog2 (fundamental / 20.0f) * kInvLog2_1000;
                     int fundBin = std::min (static_cast<int> (logFund * 32.0f), 31);
                     if (fundBin >= 0)
                     {

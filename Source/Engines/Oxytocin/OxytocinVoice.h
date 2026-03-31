@@ -177,6 +177,14 @@ public:
         passionEnv.noteOn();
         intimacyEnv.noteOn();
         commitmentEnv.noteOn();
+
+        // Voice steal click prevention: fade in over 5 ms instead of jumping.
+        // stealFadeLevel ramps from 0 → 1 in processBlock(); once it reaches 1
+        // it stays there for the lifetime of the note, so there is no per-sample
+        // branch overhead after the ramp completes.
+        stealFadeLevel = 0.0f;
+        // stealFadeInc is set in processBlock() once sr is known.
+        stealFading    = true;
     }
 
     void noteOff() noexcept
@@ -252,6 +260,13 @@ public:
         // 0.5 at pp (vel≈0), 1.0 at ff (vel=1) → hard hits bloom faster.
         float velAttackScale = 0.5f + 0.5f * vel;
         passionEnv.setAttackScale (velAttackScale);
+
+        // Voice-steal click prevention: compute per-sample ramp increment.
+        // stealFadeInc is only used while stealFading == true; after the ramp
+        // reaches 1.0 the branch is skipped for the remainder of the note.
+        const float stealFadeInc = (sr > 0.0)
+                                   ? 1.0f / (kStealFadeTimeSec * static_cast<float> (sr))
+                                   : 1.0f;
 
         // P1-6: accumulators for block-average I/P/C
         float accI = 0.0f, accP = 0.0f, accC = 0.0f;
@@ -413,6 +428,18 @@ public:
             float ampVal  = ampEnv.tick (snap.attack, snap.decay, snap.sustain, snap.release);
             float sample  = reactiveOut * ampVal * velScale;
 
+            // Voice-steal click prevention: apply fade-in ramp while active.
+            if (stealFading)
+            {
+                sample *= stealFadeLevel;
+                stealFadeLevel += stealFadeInc;
+                if (stealFadeLevel >= 1.0f)
+                {
+                    stealFadeLevel = 1.0f;
+                    stealFading    = false;  // ramp complete — branch skipped hereafter
+                }
+            }
+
             outBuffer[i] += sample;
         }
 
@@ -437,6 +464,11 @@ private:
     float          fbSample  = 0.0f;
     float          cToICarry = 0.0f;  // FIX 2: C→I circular bleed carry register (one-sample delay)
     uint32_t       noiseSeed = 12345678u;
+
+    // Voice-steal click prevention: 5 ms fade-in ramp on every noteOn.
+    bool           stealFading    = false;   // true while ramp is active
+    float          stealFadeLevel = 1.0f;    // current ramp gain [0..1]; starts at 1 (no fade until noteOn)
+    static constexpr float kStealFadeTimeSec = 0.005f;  // 5 ms
 
     PolyBLEPOsc    osc;
     AmpEnvelope    ampEnv;

@@ -639,6 +639,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OsmosisEngine::addParameters(params);
     OutlookEngine::addParameters(params);
     ObiontEngine::addParameters(params);
+    // FUSION Quad Collection — OASIS + OUTFLOW (ecosystem engines, missing from APVTS)
+    OasisEngine::addParameters(params);
+    OutflowEngine::addParameters(params);
 
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.
@@ -1212,7 +1215,7 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     if (sampleRate <= 0.0) sampleRate = 44100.0;
     if (samplesPerBlock <= 0) samplesPerBlock = 512;
 
-    currentSampleRate = sampleRate;
+    currentSampleRate.store(sampleRate, std::memory_order_relaxed);
     atomicSampleRate_.store(sampleRate, std::memory_order_relaxed);
     currentBlockSize = samplesPerBlock;
 
@@ -1364,10 +1367,6 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // exactly like host-generated MIDI events.
     playSurfaceMidiCollector.removeNextBlockOfMessages(midi, numSamples);
 
-    // Drain XOuija CC output queue — inject CC messages at end of block.
-    // This allows DAW automation lanes to capture XOuija planchette gestures.
-    drainCCOutput(midi, numSamples);
-
     // Process MIDI learn CC → parameter routing (audio thread safe)
     midiLearnManager.processMidi(midi);
 
@@ -1472,7 +1471,7 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
         // Arm the note-off countdown: hold for ~kChordHoldMs milliseconds
         chordFireNoteOffCountdown.store(
-            static_cast<int>(currentSampleRate * kChordHoldMs / 1000.0),
+            static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * kChordHoldMs / 1000.0),
             std::memory_order_release);
     }
 
@@ -1706,7 +1705,7 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             {
                 // Linear decay from kCouplingBurstPeak to 1.0 over the burst window.
                 const int totalBurstSamples = static_cast<int>(
-                    currentSampleRate * kCouplingBurstMs / 1000.0);
+                    currentSampleRate.load(std::memory_order_relaxed) * kCouplingBurstMs / 1000.0);
                 const float progress = 1.0f - static_cast<float>(newRemaining)
                                             / static_cast<float>(std::max(1, totalBurstSamples));
                 const float decayed = kCouplingBurstPeak - (kCouplingBurstPeak - 1.0f) * progress;
@@ -1823,12 +1822,13 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     // CPU load measurement: elapsed / buffer_duration, smoothed with a leaky integrator.
     // Uses high-resolution ticks so measurements are host-independent.
-    if (currentSampleRate > 0.0 && numSamples > 0)
+    const double sr_ = currentSampleRate.load(std::memory_order_relaxed);
+    if (sr_ > 0.0 && numSamples > 0)
     {
         const juce::int64 endTick     = juce::Time::getHighResolutionTicks();
         const double ticksPerSec      = static_cast<double>(juce::Time::getHighResolutionTicksPerSecond());
         const double elapsedSec       = static_cast<double>(endTick - processBlockStartTick) / ticksPerSec;
-        const double bufferDurationSec = static_cast<double>(numSamples) / currentSampleRate;
+        const double bufferDurationSec = static_cast<double>(numSamples) / sr_;
         const float  rawLoad           = static_cast<float>(elapsedSec / bufferDurationSec);
         // Leaky integrator: 90% previous + 10% new — smooths out single-block spikes.
         const float  prevLoad = processingLoad.load(std::memory_order_relaxed);
@@ -1933,9 +1933,12 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
         return;
 
     newEngine->attachParameters(apvts);
-    newEngine->prepare(currentSampleRate, currentBlockSize);
-    newEngine->prepareSilenceGate(currentSampleRate, currentBlockSize,
-                                  silenceGateHoldMs(newEngine->getEngineId()));
+    {
+        const double sr = currentSampleRate.load(std::memory_order_relaxed);
+        newEngine->prepare(sr, currentBlockSize);
+        newEngine->prepareSilenceGate(sr, currentBlockSize,
+                                      silenceGateHoldMs(newEngine->getEngineId()));
+    }
 
     // Wake the silence gate so the new engine renders its first block immediately.
     // Without this, a freshly-constructed engine's gate is in the bypassed state —
@@ -1960,7 +1963,7 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
         pending.outgoing             = oldEngine;
         pending.fadeGain             = 1.0f;
         pending.fadeSamplesRemaining =
-            static_cast<int>(currentSampleRate * CrossfadeMs * 0.001);
+            static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
         // before it observes ready==true.
         pending.ready.store(true, std::memory_order_release);
@@ -1997,7 +2000,7 @@ void XOlokunProcessor::unloadEngine(int slot)
         pending.outgoing             = oldEngine;
         pending.fadeGain             = 1.0f;
         pending.fadeSamplesRemaining =
-            static_cast<int>(currentSampleRate * CrossfadeMs * 0.001);
+            static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
         // before it observes ready==true.
         pending.ready.store(true, std::memory_order_release);

@@ -1,0 +1,17 @@
+{
+  "pack_id": "mpce-perc-001-test",
+  "pack_name": "XO_OX MPCe Percussion TEST (3 presets)",
+  "engine": "ONSET",
+  "version": "0.0.1",
+  "experiment_id": "8ef75cb2-07ee-4566-973c-00876079e7b6",
+  "experiment_tags": [
+    "test-render",
+    "pipeline-validation"
+  ],
+  "build_time": "2026-03-30T20:15:23.539405",
+  "oxbuild_source": "packs/mpce-perc-001-test.oxbuild",
+  "stages_run": 8,
+  "stages_skipped": 2,
+  "dry_run": true,
+  "output_dir": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/builds/mpce-perc-001-test"
+}
