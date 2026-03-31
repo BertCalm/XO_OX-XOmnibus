@@ -5,17 +5,15 @@
 # All tools degrade gracefully when optional deps are absent.
 #
 # Install all optional deps at once:
-#   pip install Pillow numpy scipy soundfile tqdm
+#   pip install Pillow numpy scipy soundfile
 #
 # Per-tool breakdown:
 #   Pillow, numpy       — xpn_cover_art.py, xpn_cover_art_batch.py
 #                         (cover art generation; both required together)
 #   soundfile           — xpn_kit_expander.py (WAV I/O for DSP expansion)
 #   scipy               — xpn_kit_expander.py (signal processing for expansion)
-#   tqdm                — xoutshine.py (progress bars; cosmetic only)
 
 Pillow>=9.0
 numpy>=1.21
 soundfile>=0.10
 scipy>=1.7
-tqdm>=4.60
