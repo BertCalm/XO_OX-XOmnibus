@@ -384,6 +384,18 @@ target_sources(XOlokun PRIVATE
     # Psychology Boom Bap Drum Synthesis
     Source/Engines/Offering/OfferingEngine.cpp
 
+    # Late-registered engines (closes #162)
+    Source/Engines/Obiont/ObiontEngine.h
+    Source/Engines/Obiont/ObiontEngine.cpp
+    Source/Engines/Okeanos/OkeanosEngine.h
+    Source/Engines/Okeanos/OkeanosEngine.cpp
+    Source/Engines/Outflow/OutflowEngine.h
+    Source/Engines/Outflow/OutflowEngine.cpp
+    Source/Engines/Osmosis/OsmosisEngine.h
+    Source/Engines/Osmosis/OsmosisEngine.cpp
+    Source/Engines/Outlook/OutlookEngine.h
+    Source/Engines/Outlook/OutlookEngine.cpp
+
     # Main processor
     Source/XOlokunProcessor.h
     Source/XOlokunProcessor.cpp
