@@ -205,7 +205,7 @@ namespace GalleryColors {
         else if (id == "Outwit")    result = juce::Colour(0xFFCC6600);
         else if (id == "Outlook")   result = juce::Colour(0xFF4169E1);
         else if (id == "Oven")      result = juce::Colour(0xFF1C1C1C);
-        else if (id == "Overbite")  result = juce::Colour(0xFFC9B8A8);  // AgedBone
+        else if (id == "Overbite")  result = juce::Colour(0xFFF0EDE8);  // Fang White
         else if (id == "Overcast")  result = juce::Colour(0xFF778899);
         else if (id == "Overflow")  result = juce::Colour(0xFF1A3A5C);
         else if (id == "Overgrow")  result = juce::Colour(0xFF228B22);
