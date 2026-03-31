@@ -60,7 +60,11 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import List, Optional
 
-import numpy as np
+try:
+    import numpy as np
+    NP_AVAILABLE = True
+except ImportError:
+    NP_AVAILABLE = False
 
 try:
     import soundfile as sf
@@ -514,6 +518,9 @@ def expand_kit(kit_dir: Path, preset_name: str, expand_mode: str,
 # =============================================================================
 
 def main():
+    if not NP_AVAILABLE:
+        print("ERROR: numpy is required. Install with: pip install numpy", file=sys.stderr)
+        sys.exit(1)
     parser = argparse.ArgumentParser(
         description="XPN Kit Expander — derive dynamic WAV sets from flat kits",
         formatter_class=argparse.RawDescriptionHelpFormatter,
