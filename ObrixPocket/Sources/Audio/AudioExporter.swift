@@ -26,6 +26,10 @@ final class AudioExporter: ObservableObject {
     // Reuse a single AVAudioFormat for the tap to avoid per-tick allocation.
     private var tapFormat: AVAudioFormat?
 
+    deinit {
+        tapScratch.deallocate()
+    }
+
     // MARK: - Recording
 
     /// Start recording reef audio output to M4A.
