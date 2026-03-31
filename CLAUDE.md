@@ -285,7 +285,7 @@ cmake --build build
 
 # iOS
 cmake -B build-ios -G Xcode \
-  -DCMAKE_TOOLCHAIN_FILE=ios-toolchain.cmake \
+  -DCMAKE_TOOLCHAIN_FILE=cmake/ios-toolchain.cmake \
   -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM=YOUR_TEAM_ID
 cmake --build build-ios --config Release
 
