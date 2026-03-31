@@ -473,7 +473,7 @@ Render spec JSON format:
     parser.add_argument("--output-dir", type=str, default="./wavs", help="Output directory for WAV files")
     parser.add_argument("--midi-port", type=str, default=None, help="MIDI output port name")
     parser.add_argument("--audio-device", type=str, default="BlackHole", help="Audio input device name or index")
-    parser.add_argument("--sample-rate", type=int, default=44100, help="Recording sample rate (default: 44100)")
+    parser.add_argument("--sample-rate", type=int, default=48000, help="Recording sample rate (default: 48000)")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be rendered without recording")
     parser.add_argument("--engine", type=str, default=None, help="Filter to presets for a single engine")
     parser.add_argument("--preset-load-ms", type=int, default=200, help="Wait time after program change (default: 200)")
