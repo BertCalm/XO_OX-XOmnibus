@@ -339,8 +339,10 @@ enum class CouplingType {
     AudioToBuffer,    // Engine A audio → Engine B ring buffer (continuous stereo streaming)
                       // Designed for OPAL's grain buffer. Unlike AudioToWavetable (snapshots),
                       // streams every block into a pre-allocated circular buffer with freeze support.
-    KnotTopology      // Bidirectional irreducible coupling (B021/B022, ORBWEAVE). Both engines
+    KnotTopology,     // Bidirectional irreducible coupling (B021/B022, ORBWEAVE). Both engines
                       // modulate each other's parameters. Linking number 1–5 sets depth.
+    TriangularCoupling // Three-way love-triangle modulation (B040, OXYTOCIN). Intimacy/Passion/
+                       // Commitment state drives cross-engine timbral evolution.
 };
 ```
 
