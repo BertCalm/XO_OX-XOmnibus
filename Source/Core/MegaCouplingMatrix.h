@@ -237,7 +237,8 @@ public:
                 route.type == CouplingType::AudioToWavetable
              || route.type == CouplingType::AudioToFM
              || route.type == CouplingType::AudioToRing
-             || route.type == CouplingType::AudioToBuffer;
+             || route.type == CouplingType::AudioToBuffer
+             || route.type == CouplingType::TriangularCoupling;
 
             // AudioToBuffer routes bypass the mono mixdown — they require true
             // stereo and write directly into the destination's AudioRingBuffer.
