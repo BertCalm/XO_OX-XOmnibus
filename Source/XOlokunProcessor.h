@@ -376,7 +376,7 @@ private:
     // message thread in triggerCouplingBurst(). currentSampleRate is now also
     // atomic, eliminating the data race (FIX 4).
     std::atomic<double> atomicSampleRate_ { 44100.0 };
-    int currentBlockSize = 512;
+    std::atomic<int> currentBlockSize { 512 };
 
     // SRO: Per-slot CPU profiling + fleet-wide auditor
     std::array<EngineProfiler, MaxSlots> engineProfilers;

@@ -1218,7 +1218,7 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 
     currentSampleRate.store(sampleRate, std::memory_order_relaxed);
     atomicSampleRate_.store(sampleRate, std::memory_order_relaxed);
-    currentBlockSize = samplesPerBlock;
+    currentBlockSize.store(samplesPerBlock, std::memory_order_relaxed);
 
     // Reset the PlaySurface MIDI collector to the new sample rate so
     // its timestamp conversion is accurate after host restart / rate change.
@@ -2034,8 +2034,8 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
     newEngine->attachParameters(apvts);
     {
         const double sr = currentSampleRate.load(std::memory_order_relaxed);
-        newEngine->prepare(sr, currentBlockSize);
-        newEngine->prepareSilenceGate(sr, currentBlockSize,
+        newEngine->prepare(sr, currentBlockSize.load(std::memory_order_relaxed));
+        newEngine->prepareSilenceGate(sr, currentBlockSize.load(std::memory_order_relaxed),
                                       silenceGateHoldMs(newEngine->getEngineId()));
     }
 
