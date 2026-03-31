@@ -544,6 +544,10 @@ public:
             smoothedChromaDepth += (effectiveChromaDepth - smoothedChromaDepth) * smoothCoeff;
             smoothedInkMix     += (effectiveInkMix - smoothedInkMix) * smoothCoeff;
             smoothedSuckerMix  += (effectiveSuckerMix - smoothedSuckerMix) * smoothCoeff;
+            smoothedWTPos       = flushDenormal (smoothedWTPos);
+            smoothedChromaDepth = flushDenormal (smoothedChromaDepth);
+            smoothedInkMix      = flushDenormal (smoothedInkMix);
+            smoothedSuckerMix   = flushDenormal (smoothedSuckerMix);
 
             float mixL = 0.0f, mixR = 0.0f;
 

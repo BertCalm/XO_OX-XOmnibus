@@ -818,6 +818,7 @@ public:
         // ====================================================================
         float effectiveCompMix = applySeqMod (compMix,
             MasterFXSequencer::Target::CompMix, 0.5f);
+        effectiveCompMix = clamp (effectiveCompMix, 0.0f, 1.0f);
 
         if (effectiveCompMix > 0.001f)
         {

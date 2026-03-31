@@ -192,6 +192,8 @@ public:
             envFollowerR_ = (absR > envFollowerR_)
                 ? attackCoeff  * envFollowerR_ + (1.0f - attackCoeff)  * absR
                 : releaseCoeff * envFollowerR_ + (1.0f - releaseCoeff) * absR;
+            envFollowerL_ = (std::abs(envFollowerL_) < 1e-18f) ? 0.0f : envFollowerL_;
+            envFollowerR_ = (std::abs(envFollowerR_) < 1e-18f) ? 0.0f : envFollowerR_;
 
             // ---- Autocorrelation buffer — push mono sample ----
             acBuffer_[acBufPos_] = mono;
@@ -229,6 +231,8 @@ public:
             const float inR_forLP = (externalBufferR_ && i < externalNumSamples_) ? externalBufferR_[i] : 0.0f;
             membraneLPStateL_ = membraneLPCoeff_ * membraneLPStateL_ + (1.0f - membraneLPCoeff_) * inL;
             membraneLPStateR_ = membraneLPCoeff_ * membraneLPStateR_ + (1.0f - membraneLPCoeff_) * inR_forLP;
+            membraneLPStateL_ = (std::abs(membraneLPStateL_) < 1e-18f) ? 0.0f : membraneLPStateL_;
+            membraneLPStateR_ = (std::abs(membraneLPStateR_) < 1e-18f) ? 0.0f : membraneLPStateR_;
 
             // ---- Output: blend dry external with filtered (permeability = wet/dry) ----
             outL[i] = inL       * (1.0f - permeability) + membraneLPStateL_ * permeability;

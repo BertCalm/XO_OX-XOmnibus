@@ -56,6 +56,7 @@ public:
     {
         float raw = noise.process();
         smoothed += lpCoeff * (raw - smoothed);
+        smoothed = flushDenormal (smoothed);
         return smoothed * amount * 5.0f;
     }
 

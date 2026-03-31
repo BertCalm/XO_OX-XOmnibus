@@ -26,6 +26,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [repo-audit](./repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene and documentation currency — stale counts, broken IDs, ODR hazards, governance gaps | HIGH |
 | [preset-audit-checklist](./preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit — 10-point sonic gate, engine-specific depth, coverage gaps, Guru tricks. Path to 9.0+ preset libraries. | HIGH |
 | [new-xo-engine](./new-xo-engine/SKILL.md) | `/new-xo-engine` | End-to-end new engine creation — concept brief, scaffold, integration, verification | HIGH |
+| [issue-triage-fix](./issue-triage-fix/SKILL.md) | `/issue-triage-fix` | End-to-end codebase audit: scan, create GitHub issues, assign model/skill recommendations, fix by complexity tier (Haiku → Sonnet → Opus) | HIGH |
 | [session-start-hook](./session-start-hook/SKILL.md) | `/session-start-hook` | Configure Claude Code SessionStart hook for web sessions — tests, linters, project context | LOW |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
@@ -68,6 +69,8 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Full fleet QA / pre-release health check | `/master-audit` |
 | Stale counts, broken IDs, governance gaps | `/repo-audit` |
 | CPU optimization for an engine | `/sro-optimizer` |
+| Full codebase audit with GitHub issue tracking | `/issue-triage-fix` |
+| Scan, triage, and fix issues by complexity | `/issue-triage-fix` |
 
 ---
 

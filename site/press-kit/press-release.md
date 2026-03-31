@@ -53,7 +53,7 @@ The preset format — `.xometa` JSON — is documented and stable. The parameter
 
 ### About the Coupling System
 
-The coupling system routes live audio and modulation signals between any loaded engines. The 14 coupling types produce structurally different relationships:
+The coupling system routes live audio and modulation signals between any loaded engines. The 15 coupling types produce structurally different relationships:
 
 - **Gravitational** — amplitude of one engine bends the pitch of another
 - **Adversarial** — engines compete; one suppresses the other based on amplitude
