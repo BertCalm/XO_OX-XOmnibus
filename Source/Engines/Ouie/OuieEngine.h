@@ -971,6 +971,7 @@ public:
         {
             // Smooth HAMMER parameter
             smoothedHammer += (effectiveHammer - smoothedHammer) * smoothCoeff;
+            smoothedHammer = flushDenormal (smoothedHammer);
 
             // Breathing LFO (D005)
             float breathMod = breathingLFO.process() * pBreathDepth;
