@@ -2084,6 +2084,12 @@ void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
             xml->setAttribute(slotKey, eng ? juce::String(eng->getEngineId()) : juce::String{});
         }
 
+        // FIX 6 — Save slot mute states (closes #311).
+        // slotMuted is std::atomic<bool> and was previously not persisted,
+        // causing muted slots to revert on DAW session reload.
+        for (int i = 0; i < MaxSlots; ++i)
+            xml->setAttribute("slotMuted" + juce::String(i), slotMuted[i].load() ? 1 : 0);
+
         // FIX 2 — Save baseline coupling routes (user-created routes in the
         // MegaCouplingMatrix that are NOT stored in the APVTS).
         auto routes = couplingMatrix.loadRoutes();
@@ -2148,6 +2154,10 @@ void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
                     }
                 }
             }
+
+            // FIX 6 — Restore slot mute states (closes #311).
+            for (int i = 0; i < MaxSlots; ++i)
+                slotMuted[i].store(xml->getIntAttribute("slotMuted" + juce::String(i), 0) != 0);
 
             // FIX 2 — Restore baseline coupling routes.
             couplingMatrix.clearRoutes();
