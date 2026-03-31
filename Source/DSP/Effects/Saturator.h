@@ -104,9 +104,10 @@ public:
         }
 
         // DC blocking filter: y[n] = x[n] - x[n-1] + R * y[n-1]
-        // R = 0.995 gives ~16Hz cutoff at 44.1kHz — removes DC offset
-        // from asymmetric clipping without affecting audible content
-        float dcBlocked = saturated - dcPrevInput + kDCBlockR * dcPrevOutput;
+        // dcBlockR is computed in prepare() to maintain ~16 Hz cutoff at any
+        // sample rate — removes DC offset from asymmetric clipping without
+        // affecting audible bass content.
+        float dcBlocked = saturated - dcPrevInput + dcBlockR * dcPrevOutput;
         dcPrevInput = saturated;
         dcPrevOutput = flushDenormal (dcBlocked);
         saturated = dcPrevOutput;
@@ -126,6 +127,17 @@ public:
     {
         for (int i = 0; i < numSamples; ++i)
             data[i] = processSample (data[i]);
+    }
+
+    //--------------------------------------------------------------------------
+    /// Set the sample rate. Must be called in prepareToPlay() before processing.
+    /// Recomputes the DC blocker coefficient to maintain a ~16 Hz cutoff at any
+    /// sample rate (16 Hz at 44.1 kHz, same at 48 kHz, 88.2 kHz, 96 kHz, etc.).
+    void prepare (double sampleRate)
+    {
+        dcBlockR = 1.0f - (2.0f * 3.14159265f * 16.0f
+                           / static_cast<float>(sampleRate));
+        reset();
     }
 
     //--------------------------------------------------------------------------
@@ -213,8 +225,10 @@ private:
     float mix = 1.0f;
     float outputGain = 1.0f;
 
-    // DC blocking filter state
-    static constexpr float kDCBlockR = 0.995f;
+    // DC blocking filter state.
+    // dcBlockR is computed in prepare() as 1 - 2π*16/sampleRate so the
+    // ~16 Hz cutoff is correct at any sample rate (44.1, 48, 88.2, 96 kHz).
+    float dcBlockR = 0.995f;  // default safe until prepare() is called
     float dcPrevInput = 0.0f;
     float dcPrevOutput = 0.0f;
 };
