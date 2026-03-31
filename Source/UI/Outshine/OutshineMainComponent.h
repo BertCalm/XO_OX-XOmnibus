@@ -82,8 +82,8 @@ public:
     {
         cancelFlag = true;
         outshine.cancel();
-        // Allow background thread to wind down
-        juce::Thread::sleep(50);
+        // Wait for background thread to finish (500ms timeout)
+        analysisComplete_.wait(500);
     }
 
     void onGrainsChanged(const juce::StringArray& grainPaths)
@@ -204,7 +204,8 @@ private:
         auto paths = grainPaths;
 
         // Background thread for analysis
-        juce::Thread::launch([safeThis, paths, this]() {
+        analysisComplete_.reset();
+        juce::Thread::launch([safeThis, paths]() {
             OutshineSettings settings;
             OutshineProgress progress;
             progress.cancelled = false;
@@ -219,32 +220,42 @@ private:
                 });
             };
 
-            bool success = outshine.analyzeGrains(paths, settings, callback);
+            bool success = false;
+            if (auto* self = safeThis.getComponent())
+                success = self->outshine.analyzeGrains(paths, settings, callback);
 
-            juce::MessageManager::callAsync([safeThis, success, this]() {
+            juce::MessageManager::callAsync([safeThis, success]() {
                 if (auto* w = safeThis.getComponent())
                 {
                     if (success)
                     {
-                        const auto& samples = outshine.getAnalyzedSamples();
-                        autoMode->populate(samples);
-                        previewPlayer->setSamples(samples);
+                        const auto& samples = w->outshine.getAnalyzedSamples();
+                        w->autoMode->populate(samples);
+                        w->previewPlayer->setSamples(samples);
 
                         // Count unverified pitches
                         int unverified = 0;
                         for (const auto& s : samples)
                             if (s.pitchConfidence < 0.15f)
                                 ++unverified;
-                        exportBar->setUnverifiedCount(unverified);
-                        exportBar->setReadyToExport(true);
+                        w->exportBar->setUnverifiedCount(unverified);
+                        w->exportBar->setReadyToExport(true);
 
-                        transitionToState(OutshineState::Preview);
+                        w->transitionToState(OutshineState::Preview);
                     }
                     else
                     {
-                        // Analysis failed — stay in Input state
-                        exportBar->setProgress(0.0f, "Analysis failed");
+                        // Analysis failed or cancelled — stay in Input state
+                        w->exportBar->setProgress(0.0f, "Analysis failed");
                     }
+                    w->analysisComplete_.signal();
+                }
+                else
+                {
+                    // Component was deleted — nothing to update, but still signal
+                    // (can't signal through safeThis; signal is stored on the object,
+                    // so if the object is gone there's nothing to signal — cancelPipeline
+                    // will time out gracefully at 500ms)
                 }
             });
         });
@@ -259,7 +270,8 @@ private:
 
         auto safeThis = juce::Component::SafePointer<OutshineMainComponent>(this);
 
-        juce::Thread::launch([safeThis, pearlName, outputPath, this]() {
+        analysisComplete_.reset();
+        juce::Thread::launch([safeThis, pearlName, outputPath]() {
             OutshineSettings settings;
 
             auto callback = [safeThis](OutshineProgress& p) {
@@ -272,20 +284,23 @@ private:
                 });
             };
 
-            bool success = outshine.exportPearl(outputPath, settings, callback);
+            bool success = false;
+            if (auto* self = safeThis.getComponent())
+                success = self->outshine.exportPearl(outputPath, settings, callback);
 
-            juce::MessageManager::callAsync([safeThis, success, pearlName, this]() {
+            juce::MessageManager::callAsync([safeThis, success, pearlName]() {
                 if (auto* w = safeThis.getComponent())
                 {
                     if (success)
                     {
-                        exportBar->setProgress(1.0f, "Pearl complete: " + pearlName);
+                        w->exportBar->setProgress(1.0f, "Pearl complete: " + pearlName);
                     }
                     else
                     {
-                        exportBar->setProgress(0.0f, "Export failed");
+                        w->exportBar->setProgress(0.0f, "Export failed");
                     }
-                    transitionToState(OutshineState::Preview);
+                    w->transitionToState(OutshineState::Preview);
+                    w->analysisComplete_.signal();
                 }
             });
         });
@@ -304,6 +319,7 @@ private:
 
     juce::StringArray currentGrains;
     std::atomic<bool> cancelFlag { false };
+    juce::WaitableEvent analysisComplete_ { true }; // manualReset=true; reset() before launch, signal() at end
 
     static constexpr int kGrainStripH  = 40;
     static constexpr int kExportBarH   = 60;
