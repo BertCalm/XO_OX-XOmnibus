@@ -513,7 +513,7 @@ public:
     //--------------------------------------------------------------------------
     // SynthEngine interface
     //--------------------------------------------------------------------------
-    juce::String   getEngineId()     const override { return "Oceandeep"; }
+    juce::String   getEngineId()     const override { return "OceanDeep"; }
     juce::Colour   getAccentColour() const override { return juce::Colour(0xff2D0A4E); }
     int            getMaxVoices()    const override { return 1; } // monophonic bass engine
 
