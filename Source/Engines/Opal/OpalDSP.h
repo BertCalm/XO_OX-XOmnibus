@@ -14,7 +14,7 @@ namespace XOpal {
 static constexpr int MAX_CLOUD_COUNT  = 12;
 static constexpr int MAX_GRAIN_COUNT  = 32;
 static constexpr int GRAIN_BUFFER_SEC = 4;
-static constexpr int MAX_BUFFER_SIZE  = 48000 * GRAIN_BUFFER_SEC; // 192000 samples @ 48kHz
+static constexpr int MAX_BUFFER_SIZE  = 192000 * GRAIN_BUFFER_SEC; // 768000 samples @ 192kHz (handles all common pro sample rates)
 
 //==============================================================================
 // Enums
