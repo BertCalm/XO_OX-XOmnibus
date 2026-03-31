@@ -416,7 +416,7 @@ struct ParamSnapshot
     int   lfo2Dest       = 0;
 
     // Conductor (4)
-    int   arcMode        = 0;
+    int   arcMode        = 1;  // 1 = Conductor on (matches APVTS default)
     int   arcShape       = 1;
     float arcTime        = 8.0f;
     float arcPeak        = 0.8f;
