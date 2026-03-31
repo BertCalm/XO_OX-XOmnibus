@@ -42,6 +42,8 @@ final class AudioEngineManager: ObservableObject {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("[ObrixPocket] Failed to activate audio session: \(error)")
+            // Don't proceed with audio if session activation failed
+            return
         }
 
         // Phase 0: Start JUCE audio bridge
