@@ -2173,6 +2173,21 @@ private:
     {
         if (activeCount == 0) return;
 
+        // Compute averaged velocity and note across active voices (used by cases 5 & 6)
+        float avgVelocity = 0.0f;
+        float avgNote     = 0.0f;
+        for (const auto& v : voices)
+        {
+            if (!v.active) continue;
+            avgVelocity += v.velocity;
+            avgNote     += static_cast<float> (v.noteNumber);
+        }
+        float norm = 1.0f / static_cast<float> (activeCount);
+        avgVelocity *= norm;                          // 0..1
+        avgNote     *= norm;
+        // KeyTrack: bipolar -1..+1, centred on middle C (60); range ±1 = ±60 semitones
+        float keyTrackValue = (avgNote - 60.0f) / 60.0f;
+
         for (int slot = 0; slot < kOpalModSlots; ++slot)
         {
             int src = safeLoad (pModSlotSrc[slot], 0);
@@ -2188,9 +2203,9 @@ private:
                 case 2: srcVal = lfo2Val;      break;
                 case 3: srcVal = filterEnvVal; break;
                 case 4: srcVal = ampEnvVal;    break;
-                case 5: srcVal = 0.5f;         break; // Velocity (avg placeholder)
-                case 6: srcVal = 0.0f;         break; // KeyTrack (placeholder)
-                case 7: srcVal = 0.0f;         break; // ModWheel (placeholder)
+                case 5: srcVal = avgVelocity;  break; // Velocity (0..1)
+                case 6: srcVal = keyTrackValue; break; // KeyTrack (bipolar, centred on C4)
+                case 7: srcVal = modWheelAmount; break; // ModWheel (0..1)
             }
 
             offsets[dst] += srcVal * amt;
