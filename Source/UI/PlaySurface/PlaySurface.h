@@ -57,16 +57,19 @@ namespace PS {
     static constexpr float kWarmMemoryDur   = 1.5f;  // seconds
     static constexpr int   kStripTrailSize  = 45;
 
-    // Colors
+    // Colors — performance accent tones (theme-independent)
     static constexpr uint32_t kAmber       = 0xFFF5C97A;
     static constexpr uint32_t kTerracotta  = 0xFFE07A5F;
     static constexpr uint32_t kTeal        = 0xFF2A9D8F;
     static constexpr uint32_t kFireGreen   = 0xFF4ADE80;
     static constexpr uint32_t kPanicRed    = 0xFFEF4444;
-    static constexpr uint32_t kSurfaceBg   = 0xFF1A1A1A;
-    static constexpr uint32_t kSurfaceCard = 0xFF2D2D2D;
-    static constexpr uint32_t kTextLight   = 0xFFEEEEEE;
-    static constexpr uint32_t kTextDim     = 0xFF888888;
+
+    // Surface and text tones — route through GalleryColors so light mode works.
+    // Call these functions instead of using the old constexpr values directly.
+    static inline juce::Colour surfaceBg()   { return GalleryColors::get(GalleryColors::surface()); }
+    static inline juce::Colour surfaceCard() { return GalleryColors::get(GalleryColors::elevated()); }
+    static inline juce::Colour textLight()   { return GalleryColors::get(GalleryColors::t1()); }
+    static inline juce::Colour textDim()     { return GalleryColors::get(GalleryColors::t2()); }
 
     // MIDI
     static constexpr int kBaseNote    = 48; // C3
@@ -165,12 +168,12 @@ public:
         using namespace PS;
         auto b = getLocalBounds().toFloat();
 
-        // Radial gradient background: accent @ 0.04 center → kSurfaceBg edge
+        // Radial gradient background: accent @ 0.04 center → surfaceBg edge
         {
             float cx = b.getCentreX(), cy = b.getCentreY();
             float r  = juce::jmax(b.getWidth(), b.getHeight()) * 0.7f;
             juce::ColourGradient bg(accentColour.withAlpha(0.04f), cx, cy,
-                                    juce::Colour(kSurfaceBg), cx + r, cy, true);
+                                    PS::surfaceBg(), cx + r, cy, true);
             g.setGradientFill(bg);
             g.fillRect(b);
         }
@@ -1156,7 +1159,7 @@ public:
         octUpBtn.setButtonText("+");
         octLabel.setText("OCT 0", juce::dontSendNotification);
         octLabel.setJustificationType(juce::Justification::centred);
-        octLabel.setColour(juce::Label::textColourId, juce::Colour(PS::kTextLight));
+        octLabel.setColour(juce::Label::textColourId, PS::textLight());
         addAndMakeVisible(octDownBtn);
         addAndMakeVisible(octUpBtn);
         addAndMakeVisible(octLabel);
@@ -1440,7 +1443,14 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        g.fillAll(juce::Colour(PS::kSurfaceBg));
+        g.fillAll(PS::surfaceBg());
+    }
+
+    // Re-apply theme-sensitive label colors whenever the global theme changes.
+    void lookAndFeelChanged() override
+    {
+        octLabel.setColour(juce::Label::textColourId, PS::textLight());
+        repaint();
     }
 
     void visibilityChanged() override
@@ -1553,7 +1563,7 @@ public:
     PlaySurfaceWindow()
         : juce::DocumentWindow (
               "PlaySurface",
-              juce::Colour (PS::kSurfaceBg),
+              PS::surfaceBg(),
               juce::DocumentWindow::allButtons,
               true /* addToDesktop */)
     {
