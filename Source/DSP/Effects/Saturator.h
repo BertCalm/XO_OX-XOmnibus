@@ -41,7 +41,13 @@ public:
 
     //--------------------------------------------------------------------------
     /// Set the saturation mode.
-    void setMode (SaturationMode m) { mode = m; }
+    /// Recomputes driveGain so that calling setMode() after setDrive() always
+    /// applies the correct gain formula for the new mode.
+    void setMode (SaturationMode m)
+    {
+        mode = m;
+        setDrive (drive);  // recompute driveGain for new mode
+    }
 
     /// Get the current saturation mode.
     SaturationMode getMode() const { return mode; }
