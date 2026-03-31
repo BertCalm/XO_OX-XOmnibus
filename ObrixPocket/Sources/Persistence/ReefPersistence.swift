@@ -4,35 +4,52 @@ import GRDB
 /// Persistence extension for ReefStore
 extension ReefStore {
 
-    /// Save the entire reef state to database
+    /// Debounce token for async save — cancels any pending write before scheduling a new one.
+    private static var saveWorkItem: DispatchWorkItem?
+
+    /// Save the entire reef state to database.
+    /// Debounced 500 ms and dispatched on a utility queue so rapid slider drags
+    /// do not block the main thread (fixes #273).
     func save() {
-        guard let db = DatabaseManager.shared.db else { return }
-        do {
-            try db.write { db in
-                // Clear existing reef specimens and routes
-                try SpecimenRecord.filter(Column("reefSlotIndex") != nil).deleteAll(db)
-                try CouplingRouteRecord.deleteAll(db)
+        // Snapshot mutable state on the calling thread before going async
+        let snapshotSpecimens = specimens
+        let snapshotRoutes = couplingRoutes
+        let snapshotReefName = reefName
+        let snapshotDiveDepth = totalDiveDepth
 
-                // Save reef specimens with slot indices
-                for (index, specimen) in specimens.enumerated() {
-                    guard let spec = specimen else { continue }
-                    var record = SpecimenRecord(from: spec, reefSlotIndex: index)
-                    try record.save(db)
+        ReefStore.saveWorkItem?.cancel()
+        let workItem = DispatchWorkItem { [weak self] in
+            guard self != nil else { return }
+            guard let db = DatabaseManager.shared.db else { return }
+            do {
+                try db.write { db in
+                    // Clear existing reef specimens and routes
+                    try SpecimenRecord.filter(Column("reefSlotIndex") != nil).deleteAll(db)
+                    try CouplingRouteRecord.deleteAll(db)
+
+                    // Save reef specimens with slot indices
+                    for (index, specimen) in snapshotSpecimens.enumerated() {
+                        guard let spec = specimen else { continue }
+                        var record = SpecimenRecord(from: spec, reefSlotIndex: index)
+                        try record.save(db)
+                    }
+
+                    // Save coupling routes
+                    for route in snapshotRoutes {
+                        var record = CouplingRouteRecord(from: route)
+                        try record.save(db)
+                    }
+
+                    // Save reef metadata
+                    try saveMetadata(db, key: "reefName", value: snapshotReefName)
+                    try saveMetadata(db, key: "totalDiveDepth", value: "\(snapshotDiveDepth)")
                 }
-
-                // Save coupling routes
-                for route in couplingRoutes {
-                    var record = CouplingRouteRecord(from: route)
-                    try record.save(db)
-                }
-
-                // Save reef metadata
-                try saveMetadata(db, key: "reefName", value: reefName)
-                try saveMetadata(db, key: "totalDiveDepth", value: "\(totalDiveDepth)")
+            } catch {
+                print("[ReefPersistence] save failed: \(error)")
             }
-        } catch {
-            print("[ReefPersistence] Save failed: \(error)")
         }
+        ReefStore.saveWorkItem = workItem
+        DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 0.5, execute: workItem)
     }
 
     /// Load reef state from database.
