@@ -225,7 +225,8 @@ public:
         themeToggleBtn.setClickingTogglesState(true);
         themeToggleBtn.onClick = [this]
         {
-            GalleryColors::darkMode() = themeToggleBtn.getToggleState();
+            const bool newState = themeToggleBtn.getToggleState();
+            GalleryColors::darkMode() = newState;
             laf->applyTheme();
             repaint();
             for (int i = 0; i < kNumPrimarySlots; ++i)
@@ -244,6 +245,13 @@ public:
             // the content component must be repainted directly.
             if (playSurfaceWindow != nullptr && playSurfaceWindow->isVisible())
                 playSurfaceWindow->getPlaySurface().repaint();
+            // Persist preference so the theme survives plugin reload (#215).
+            juce::PropertiesFile::Options opts;
+            opts.applicationName     = "XOlokun";
+            opts.filenameSuffix      = "settings";
+            opts.osxLibrarySubFolder = "Application Support";
+            juce::PropertiesFile settings(opts);
+            settings.setValue("darkMode", newState);
         };
         // Sync toggle visual state to the preference we read early in the constructor.
         themeToggleBtn.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
