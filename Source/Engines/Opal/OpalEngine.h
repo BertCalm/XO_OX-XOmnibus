@@ -1872,8 +1872,17 @@ public:
                 // Each semitone above middle C shifts cutoff up proportionally
                 keyTrackOffset = filterKeyTrack * (avgNote - 60.0f) * (filterCutoff / 60.0f);
             }
+            // Compute averaged velocity across active voices for D001 filter scaling
+            float avgVelForFilter = 0.0f;
+            if (activeCount > 0)
+            {
+                for (const auto& v : voices)
+                    if (v.active) avgVelForFilter += v.velocity;
+                avgVelForFilter /= static_cast<float> (activeCount);
+            }
+            float velFilterScale = 0.3f + 0.7f * avgVelForFilter;
             float effCutoff = filterCutoff + keyTrackOffset
-                            + filterEnvAmt * filterEnvSum * 10000.0f
+                            + filterEnvAmt * filterEnvSum * 10000.0f * velFilterScale
                             + modOffsets[6] * 5000.0f; // mod dest 6 = FilterCutoff
             effCutoff = clamp (effCutoff, 20.0f, 20000.0f);
 
