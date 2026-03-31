@@ -1282,6 +1282,10 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
         pc.outgoing.reset();
         pc.ready.store(false, std::memory_order_release);
     }
+
+    // Pre-allocate familySlots so processFamilyBleed never heap-allocates
+    // on the audio thread when capacity is zero on first block.
+    familySlots_.ensureStorageAllocated(MaxSlots);
 }
 
 void XOlokunProcessor::releaseResources()
@@ -1970,20 +1974,19 @@ void XOlokunProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& en
     // Identify which slots hold Constellation family engines
     static const juce::StringArray kFamilyIds = { "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole" };
 
-    // Collect family engine pointers and their slot indices
-    struct FamilySlot { int slot; SynthEngine* eng; };
-    juce::Array<FamilySlot> familySlots;
-    familySlots.ensureStorageAllocated(MaxSlots);
+    // Collect family engine pointers and their slot indices.
+    // familySlots_ is a member pre-allocated in prepareToPlay — no heap alloc here.
+    familySlots_.clearQuick();
 
     for (int i = 0; i < MaxSlots; ++i)
     {
         if (!enginePtrs[i])
             continue;
         if (kFamilyIds.contains(enginePtrs[i]->getEngineId()))
-            familySlots.add({ i, enginePtrs[i] });
+            familySlots_.add({ i, enginePtrs[i] });
     }
 
-    if (familySlots.size() < 2)
+    if (familySlots_.size() < 2)
         return; // nothing to bleed
 
     // Read macro values from cached parameter pointers — safe on audio thread
@@ -1992,12 +1995,12 @@ void XOlokunProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& en
     const float dramaAmt   = cachedParams.oleDrama   ? cachedParams.oleDrama->load()   : 0.f;
 
     // For each family engine, send bleed coupling to all sibling family engines
-    for (const auto& src : familySlots)
+    for (const auto& src : familySlots_)
     {
         const float srcSample = src.eng->getSampleForCoupling(0, 0);
         const juce::String srcId = src.eng->getEngineId();
 
-        for (const auto& dst : familySlots)
+        for (const auto& dst : familySlots_)
         {
             if (dst.slot == src.slot)
                 continue;

@@ -362,6 +362,11 @@ private:
     };
     std::array<PendingCrossfade, MaxSlots> pendingCrossfades;
 
+    // Pre-allocated family-bleed scratch array — capacity reserved in prepareToPlay
+    // so processFamilyBleed never heap-allocates on the audio thread.
+    struct FamilySlot { int slot; SynthEngine* eng; };
+    juce::Array<FamilySlot> familySlots_;
+
     std::array<juce::AudioBuffer<float>, MaxSlots> engineBuffers;
     juce::AudioBuffer<float> crossfadeBuffer;
     std::array<juce::MidiBuffer, MaxSlots> slotMidi;  // per-slot MIDI from ChordMachine
