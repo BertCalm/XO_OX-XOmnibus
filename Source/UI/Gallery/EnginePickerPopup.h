@@ -427,7 +427,7 @@ private:
             { "Oasis",      "Synth",       "desert spring electric piano",              0xFF00827F, 0 },
             { "Oddfellow",  "Synth",       "spectral fingerprint cache EP",             0xFFB87333, 1 },
             { "Onkolo",     "Synth",       "spectral amber resonant EP",                0xFFFFBF00, 1 },
-            { "Opcode",     "Synth",       "dark turquoise code-driven EP",             0xFF00CED1, 1 },
+            { "Opcode",     "Synth",       "dark turquoise code-driven EP",             0xFF5F9EA0, 1 },
             // Flagship + core synths
             { "Obrix",      "Synth",       "modular brick reef synthesizer",            0xFF1E8B7E, 2 },
             { "Oxytocin",   "Synth",       "circuit love triangle synthesizer",         0xFF9B5DE5, 2 },
