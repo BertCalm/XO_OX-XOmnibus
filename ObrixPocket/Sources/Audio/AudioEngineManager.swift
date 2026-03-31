@@ -32,6 +32,21 @@ final class AudioEngineManager: ObservableObject {
         } catch {
             // Expected on first launch — no session was active
         }
+
+        // Memory pressure handling — flush non-essential caches before jetsam kills the process.
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didReceiveMemoryWarningNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.handleMemoryWarning()
+        }
+    }
+
+    private func handleMemoryWarning() {
+        print("[ObrixPocket] Memory warning received — flushing caches")
+        // Clear non-essential caches
+        slotParamCache.removeAll()
     }
 
     func start() {
