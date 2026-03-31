@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Velvet Cavern",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.5918,
-      "macro_coupling": 0.9104,
-      "macro_movement": 0.0286,
-      "macro_space": 0.545
-    },
-    "Overworld": {
-      "macro_character": 0.9672,
-      "macro_coupling": 0.8806,
-      "macro_movement": 0.0345,
-      "macro_space": 0.7685
-    }
+    "Oblique": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

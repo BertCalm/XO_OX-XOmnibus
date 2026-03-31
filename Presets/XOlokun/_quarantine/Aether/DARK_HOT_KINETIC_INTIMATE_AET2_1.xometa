@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Cocoa Stream",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.0714,
-      "macro_coupling": 0.6262,
-      "macro_movement": 0.9307,
-      "macro_space": 0.1259
-    },
-    "Orbital": {
-      "macro_character": 0.0457,
-      "macro_coupling": 0.5918,
-      "macro_movement": 0.9455,
-      "macro_space": 0.0899
-    }
+    "Oracle": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

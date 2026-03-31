@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Perpetual Opening",
   "parameters": {
-    "Overlap": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.22,
-      "macro_movement": 0.87,
-      "macro_space": 0.83
-    }
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

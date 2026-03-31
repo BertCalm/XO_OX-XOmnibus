@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Crystal Fang",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.607,
-      "macro_coupling": 0.985,
-      "macro_movement": 0.48,
-      "macro_space": 0.097
-    },
-    "Opal": {
-      "macro_character": 0.703,
-      "macro_coupling": 0.987,
-      "macro_movement": 0.533,
-      "macro_space": 0.066
-    }
+    "Obscura": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

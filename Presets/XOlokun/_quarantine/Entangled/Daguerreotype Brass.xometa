@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Daguerreotype Brass",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.6,
-      "macro_space": 0.62
-    },
-    "Ottoni": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.44,
-      "macro_space": 0.35
-    }
+    "Obscura": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "sequencer": null,

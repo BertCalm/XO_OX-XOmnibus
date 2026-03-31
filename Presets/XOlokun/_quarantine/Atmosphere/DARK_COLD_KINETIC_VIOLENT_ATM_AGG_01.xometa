@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "DARK COLD KINETIC VIOLENT A...",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.042,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.931,
-      "macro_space": 0.318
-    },
-    "Osprey": {
-      "macro_character": 0.043,
-      "macro_coupling": 0.822,
-      "macro_movement": 0.916,
-      "macro_space": 0.295
-    }
+    "Oblique": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Force",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.513,
-      "macro_coupling": 0.948,
-      "macro_movement": 0.036,
-      "macro_space": 0.122
-    },
-    "Overworld": {
-      "macro_character": 0.624,
-      "macro_coupling": 0.882,
-      "macro_movement": 0.039,
-      "macro_space": 0.116
-    }
+    "Opal": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

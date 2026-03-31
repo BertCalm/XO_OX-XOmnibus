@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Furnace Knot",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.132,
-      "macro_coupling": 0.788,
-      "macro_movement": 0.358,
-      "macro_space": 0.589
-    },
-    "Overlap": {
-      "macro_character": 0.016,
-      "macro_coupling": 0.127,
-      "macro_movement": 0.265,
-      "macro_space": 0.421
-    }
+    "Obsidian": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

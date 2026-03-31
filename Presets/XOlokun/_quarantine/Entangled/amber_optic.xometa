@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Amber Optic",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.675,
-      "macro_coupling": 0.575,
-      "macro_movement": 0.725,
-      "macro_space": 0.475
-    },
-    "Optic": {
-      "macro_character": 0.475,
-      "macro_coupling": 0.575,
-      "macro_movement": 0.425,
-      "macro_space": 0.475
-    }
+    "Ocelot": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

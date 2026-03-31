@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Glass Crush",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.9298,
-      "macro_coupling": 0.6576,
-      "macro_movement": 0.6421,
-      "macro_space": 0.1
-    },
-    "Oceanic": {
-      "macro_character": 0.8801,
-      "macro_coupling": 0.6507,
-      "macro_movement": 0.6075,
-      "macro_space": 0.0781
-    }
+    "Oblique": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Fat Paper Sheet",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.7,
-      "macro_space": 0.5
-    },
-    "Origami": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.7,
-      "macro_space": 0.6
-    }
+    "Obese": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

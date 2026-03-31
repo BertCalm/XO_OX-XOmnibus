@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "EMPTY FLUX 5",
   "parameters": {
-    "Outwit": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.8741,
-      "macro_movement": 0.6412,
-      "macro_space": 0.5545
-    },
+    "Outwit": {},
     "Overdub": {
-      "macro_character": 0.9663,
-      "macro_coupling": 0.8013,
-      "macro_movement": 0.8169,
-      "macro_space": 0.1384,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Black Prism (Overbite)",
   "parameters": {
-    "Overbite": {
-      "macro_character": 0.771,
-      "macro_coupling": 0.713,
-      "macro_movement": 0.934,
-      "macro_space": 0.108
-    },
-    "Overlap": {
-      "macro_character": 0.009,
-      "macro_coupling": 0.393,
-      "macro_movement": 0.28,
-      "macro_space": 0.981
-    }
+    "Overbite": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

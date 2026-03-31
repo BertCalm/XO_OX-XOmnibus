@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Caress Umbra II",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.105,
-      "macro_coupling": 0.156,
-      "macro_movement": 0.134,
-      "macro_space": 0.428
-    },
-    "OddOscar": {
-      "macro_character": 0.151,
-      "macro_coupling": 0.248,
-      "macro_movement": 0.226,
-      "macro_space": 0.207
-    }
+    "Obsidian": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Grain Grit",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.971,
-      "macro_coupling": 0.548,
-      "macro_movement": 0.553,
-      "macro_space": 0.066
-    },
-    "Orphica": {
-      "macro_character": 0.508,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.553,
-      "macro_space": 0.066
-    }
+    "Origami": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

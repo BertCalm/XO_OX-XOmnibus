@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Raw Tide",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.454,
-      "macro_coupling": 0.526,
-      "macro_movement": 0.776,
-      "macro_space": 0.266
-    },
-    "Owlfish": {
-      "macro_character": 0.314,
-      "macro_coupling": 0.573,
-      "macro_movement": 0.407,
-      "macro_space": 0.567
-    }
+    "Osteria": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

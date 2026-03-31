@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Strike Crystal",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.863,
-      "macro_coupling": 0.944,
-      "macro_movement": 0.398,
-      "macro_space": 0.89
-    },
-    "Overbite": {
-      "macro_character": 0.907,
-      "macro_coupling": 0.954,
-      "macro_movement": 0.424,
-      "macro_space": 0.922
-    }
+    "Obbligato": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sunrise Saturated 3",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.676,
-      "macro_movement": 0.786,
-      "macro_space": 0.797
-    },
-    "Orphica": {
-      "macro_character": 0.509,
-      "macro_coupling": 0.704,
-      "macro_movement": 0.825,
-      "macro_space": 0.832
-    }
+    "Odyssey": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

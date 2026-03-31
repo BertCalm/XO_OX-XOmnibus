@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Undulation Matte",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.168,
-      "macro_coupling": 0.75,
-      "macro_movement": 1.0,
-      "macro_space": 0.793
-    },
-    "Opal": {
-      "macro_character": 0.216,
-      "macro_coupling": 0.585,
-      "macro_movement": 0.969,
-      "macro_space": 0.911
-    }
+    "Ombre": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

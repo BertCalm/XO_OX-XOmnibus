@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Signal Stream",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.5731,
-      "macro_coupling": 0.5895,
-      "macro_movement": 0.8932,
-      "macro_space": 0.8009
-    },
-    "Organon": {
-      "macro_character": 0.7453,
-      "macro_coupling": 0.6518,
-      "macro_movement": 0.2592,
-      "macro_space": 0.8168
-    }
+    "Oblique": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Fragment Cathedral",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.6856,
-      "macro_coupling": 0.1414,
-      "macro_movement": 0.9249,
-      "macro_space": 0.9549
-    },
-    "OddfeliX": {
-      "macro_character": 0.7079,
-      "macro_coupling": 0.1125,
-      "macro_movement": 0.9132,
-      "macro_space": 0.9648
-    }
+    "Oblique": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

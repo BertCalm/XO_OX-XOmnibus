@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "WILDFIRE 6",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.507,
-      "macro_coupling": 0.988,
-      "macro_movement": 0.889,
-      "macro_space": 0.554
-    },
-    "Outwit": {
-      "macro_character": 0.975,
-      "macro_coupling": 0.068,
-      "macro_movement": 0.946,
-      "macro_space": 0.526
-    }
+    "Ottoni": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

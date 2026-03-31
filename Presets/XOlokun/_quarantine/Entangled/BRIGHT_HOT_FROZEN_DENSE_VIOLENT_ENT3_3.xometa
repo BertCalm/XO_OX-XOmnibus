@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Sunrise Titan 2",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.9427,
-      "macro_coupling": 0.9051,
-      "macro_movement": 0.0697,
-      "macro_space": 0.3626
-    },
-    "Organon": {
-      "macro_character": 0.784,
-      "macro_coupling": 0.9258,
-      "macro_movement": 0.0639,
-      "macro_space": 0.1766
-    }
+    "Obsidian": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "sequencer": null,

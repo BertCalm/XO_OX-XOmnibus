@@ -38,19 +38,10 @@
   "name": "Thread Heavy",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.888,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.088,
-      "macro_space": 0.435,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Odyssey": {
-      "macro_character": 0.837,
-      "macro_coupling": 0.771,
-      "macro_movement": 0.087,
-      "macro_space": 0.383
-    }
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

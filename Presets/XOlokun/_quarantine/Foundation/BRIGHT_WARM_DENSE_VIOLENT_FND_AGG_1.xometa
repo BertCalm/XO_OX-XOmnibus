@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Golden Massive",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.583,
-      "macro_coupling": 0.865,
-      "macro_movement": 0.494,
-      "macro_space": 0.723
-    },
-    "Origami": {
-      "macro_character": 0.572,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.445,
-      "macro_space": 0.772
-    }
+    "OddOscar": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Frost Edge",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.696,
-      "macro_coupling": 0.898,
-      "macro_movement": 0.477,
-      "macro_space": 0.116
-    },
-    "Ottoni": {
-      "macro_character": 0.692,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.51,
-      "macro_space": 0.106
-    }
+    "Obese": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

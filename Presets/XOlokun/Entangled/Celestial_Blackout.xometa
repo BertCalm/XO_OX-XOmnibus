@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Celestial Blackout",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.26,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.4,
-      "macro_space": 0.36
-    },
+    "Ombre": {},
     "Overdub": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.52,
-      "macro_space": 0.16,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Sunrise Packed",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.839,
-      "macro_coupling": 0.798,
-      "macro_movement": 0.081,
-      "macro_space": 0.421
-    },
-    "Overworld": {
-      "macro_character": 0.939,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.105,
-      "macro_space": 0.43
-    }
+    "Optic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

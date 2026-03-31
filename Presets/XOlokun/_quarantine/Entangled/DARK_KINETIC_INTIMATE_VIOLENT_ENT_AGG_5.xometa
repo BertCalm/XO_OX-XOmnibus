@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Copper Crush",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.586,
-      "macro_coupling": 0.719,
-      "macro_movement": 0.844,
-      "macro_space": 0.029
-    },
-    "Origami": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.754,
-      "macro_movement": 0.846,
-      "macro_space": 0.026
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

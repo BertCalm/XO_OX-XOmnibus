@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Tender Expanse II",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.7847,
-      "macro_coupling": 0.1273,
-      "macro_movement": 0.0637,
-      "macro_space": 0.8483
-    },
+    "Odyssey": {},
     "Overdub": {
-      "macro_character": 0.7664,
-      "macro_coupling": 0.1222,
-      "macro_movement": 0.113,
-      "macro_space": 0.902,
       "dub_lfoDepth": 0.12
     }
   },

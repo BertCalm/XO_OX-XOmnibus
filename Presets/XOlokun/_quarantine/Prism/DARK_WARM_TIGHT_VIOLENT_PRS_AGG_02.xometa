@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "DARK WARM TIGHT VIOLENT PRS... (Oracle)",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.111,
-      "macro_coupling": 0.874,
-      "macro_movement": 0.645,
-      "macro_space": 0.06
-    },
-    "Osteria": {
-      "macro_character": 0.11,
-      "macro_coupling": 0.852,
-      "macro_movement": 0.647,
-      "macro_space": 0.064
-    }
+    "Oracle": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

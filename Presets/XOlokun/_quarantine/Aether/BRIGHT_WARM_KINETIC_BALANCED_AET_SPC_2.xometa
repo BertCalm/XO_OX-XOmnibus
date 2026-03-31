@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC BALANCE... (Overworld)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.925,
-      "macro_coupling": 0.601,
-      "macro_movement": 0.912,
-      "macro_space": 0.586
-    },
-    "Overworld": {
-      "macro_character": 0.942,
-      "macro_coupling": 0.625,
-      "macro_movement": 0.896,
-      "macro_space": 0.593
-    }
+    "Obscura": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

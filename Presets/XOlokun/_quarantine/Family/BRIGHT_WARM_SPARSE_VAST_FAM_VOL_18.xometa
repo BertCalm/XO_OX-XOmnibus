@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Golden Expanse 2",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.894,
-      "macro_coupling": 0.371,
-      "macro_movement": 0.512,
-      "macro_space": 0.975
-    },
-    "Organon": {
-      "macro_character": 0.906,
-      "macro_coupling": 0.336,
-      "macro_movement": 0.511,
-      "macro_space": 0.96
-    }
+    "Obbligato": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

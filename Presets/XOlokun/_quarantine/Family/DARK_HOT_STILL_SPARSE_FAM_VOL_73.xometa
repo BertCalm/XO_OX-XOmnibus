@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Amber Wrath",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.497,
-      "macro_coupling": 0.279,
-      "macro_movement": 0.098,
-      "macro_space": 0.428
-    },
-    "Organon": {
-      "macro_character": 0.487,
-      "macro_coupling": 0.303,
-      "macro_movement": 0.111,
-      "macro_space": 0.45
-    }
+    "Obbligato": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

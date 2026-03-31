@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Signal Titan 3",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.681,
-      "macro_coupling": 0.709,
-      "macro_movement": 0.823,
-      "macro_space": 0.608
-    },
-    "Orbital": {
-      "macro_character": 0.796,
-      "macro_coupling": 0.873,
-      "macro_movement": 0.824,
-      "macro_space": 0.551
-    }
+    "Oblique": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

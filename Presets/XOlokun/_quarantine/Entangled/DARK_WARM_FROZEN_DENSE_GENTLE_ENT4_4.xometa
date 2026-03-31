@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Amber Thick",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.483,
-      "macro_coupling": 0.98,
-      "macro_movement": 0.031,
-      "macro_space": 0.603
-    },
-    "Osteria": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.037,
-      "macro_space": 0.643
-    }
+    "Oblique": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

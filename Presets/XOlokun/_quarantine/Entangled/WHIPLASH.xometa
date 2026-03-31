@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Whiplash",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.197,
-      "macro_coupling": 0.602,
-      "macro_movement": 0.904,
-      "macro_space": 0.76
-    },
-    "Owlfish": {
-      "macro_character": 0.656,
-      "macro_coupling": 0.177,
-      "macro_movement": 0.895,
-      "macro_space": 0.773
-    }
+    "Orbital": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

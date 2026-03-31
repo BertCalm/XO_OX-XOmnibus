@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ICE FLUX 5",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.4076,
-      "macro_coupling": 0.4158,
-      "macro_movement": 0.5426,
-      "macro_space": 0.2068
-    },
-    "Optic": {
-      "macro_character": 0.4201,
-      "macro_coupling": 0.5841,
-      "macro_movement": 0.9048,
-      "macro_space": 0.6955
-    }
+    "Ocelot": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

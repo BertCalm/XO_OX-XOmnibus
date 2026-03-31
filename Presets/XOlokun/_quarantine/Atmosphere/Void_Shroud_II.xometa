@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Void Shroud II",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.586,
-      "macro_coupling": 0.735,
-      "macro_movement": 0.641,
-      "macro_space": 0.919
-    },
-    "Orbital": {
-      "macro_character": 0.493,
-      "macro_coupling": 0.761,
-      "macro_movement": 0.68,
-      "macro_space": 0.81
-    }
+    "OddOscar": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

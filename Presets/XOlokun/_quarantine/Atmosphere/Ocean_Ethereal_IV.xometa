@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ocean Ethereal IV",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.615,
-      "macro_coupling": 0.453,
-      "macro_movement": 0.235,
-      "macro_space": 0.923
-    },
-    "Organon": {
-      "macro_character": 0.617,
-      "macro_coupling": 0.728,
-      "macro_movement": 0.189,
-      "macro_space": 0.776
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

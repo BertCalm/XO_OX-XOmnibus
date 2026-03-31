@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Drift",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.589,
-      "macro_movement": 0.965,
-      "macro_space": 0.908
-    },
-    "Ole": {
-      "macro_character": 0.925,
-      "macro_coupling": 0.581,
-      "macro_movement": 0.967,
-      "macro_space": 0.906
-    }
+    "Obbligato": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

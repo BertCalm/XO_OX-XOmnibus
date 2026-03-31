@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Subterranean Lock",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.89,
-      "macro_movement": 0.14,
-      "macro_space": 0.58
-    },
-    "Obscura": {
-      "macro_character": 0.14,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.69,
-      "macro_space": 0.23
-    }
+    "Obese": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

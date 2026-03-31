@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT COLD TIGHT VIOLENT A... (Organon)",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.843,
-      "macro_movement": 0.381,
-      "macro_space": 0.065
-    },
-    "Organon": {
-      "macro_character": 0.871,
-      "macro_coupling": 0.816,
-      "macro_movement": 0.388,
-      "macro_space": 0.064
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

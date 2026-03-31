@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Golden Canyon",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.979,
-      "macro_coupling": 0.936,
-      "macro_movement": 0.086,
-      "macro_space": 0.975
-    },
-    "Owlfish": {
-      "macro_character": 0.937,
-      "macro_coupling": 0.949,
-      "macro_movement": 0.085,
-      "macro_space": 0.967
-    }
+    "Optic": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

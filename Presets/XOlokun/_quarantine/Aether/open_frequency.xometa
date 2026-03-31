@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Open Frequency",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.2,
-      "macro_movement": 0.66,
-      "macro_space": 0.92
-    }
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

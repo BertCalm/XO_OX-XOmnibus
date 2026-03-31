@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Aurora Saturated",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.938,
-      "macro_coupling": 0.504,
-      "macro_movement": 0.548,
-      "macro_space": 0.596
-    },
-    "Overworld": {
-      "macro_character": 0.986,
-      "macro_coupling": 0.408,
-      "macro_movement": 0.445,
-      "macro_space": 0.469
-    }
+    "OddOscar": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

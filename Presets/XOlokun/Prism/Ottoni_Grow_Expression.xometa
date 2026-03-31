@@ -26,10 +26,6 @@
   "name": "Ottoni Grow Expression",
   "parameters": {
     "Ottoni": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.5,
-      "macro_space": 0.55,
       "otto_attackTime": 0.15,
       "otto_brassA": 0.7,
       "otto_brassB": 0.55,

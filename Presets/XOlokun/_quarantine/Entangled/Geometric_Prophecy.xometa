@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Geometric Prophecy",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.53,
-      "macro_space": 0.9
-    },
-    "Origami": {
-      "macro_character": 0.21,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.58,
-      "macro_space": 0.87
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

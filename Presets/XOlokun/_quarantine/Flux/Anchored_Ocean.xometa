@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Anchored Ocean",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.6551,
-      "macro_coupling": 0.7882,
-      "macro_movement": 0.0853,
-      "macro_space": 0.8961
-    },
-    "Organon": {
-      "macro_character": 0.5342,
-      "macro_coupling": 0.5455,
-      "macro_movement": 0.0642,
-      "macro_space": 0.8954
-    }
+    "Oblique": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

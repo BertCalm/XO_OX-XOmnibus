@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Obsidian Glow Engine",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.47,
-      "macro_space": 0.89
-    },
+    "Oracle": {},
     "Overdub": {
-      "macro_character": 0.56,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.53,
-      "macro_space": 0.36,
       "dub_lfoDepth": 0.12
     }
   },

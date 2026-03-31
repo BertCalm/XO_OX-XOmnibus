@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Tone Surge 3",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.44,
-      "macro_coupling": 0.879,
-      "macro_movement": 0.98,
-      "macro_space": 0.915
-    },
-    "Osprey": {
-      "macro_character": 0.652,
-      "macro_coupling": 0.912,
-      "macro_movement": 0.964,
-      "macro_space": 0.961
-    }
+    "Octopus": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

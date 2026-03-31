@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Leashed Pluck",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.48,
-      "macro_space": 0.78
-    },
-    "Ouroboros": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.75,
-      "macro_space": 0.42
-    }
+    "Orphica": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

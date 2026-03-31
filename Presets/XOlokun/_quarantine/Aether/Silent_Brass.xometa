@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Silent Brass",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.7151,
-      "macro_coupling": 0.7528,
-      "macro_movement": 0.9052,
-      "macro_space": 0.3478
-    },
-    "Oracle": {
-      "macro_character": 0.2333,
-      "macro_coupling": 0.5899,
-      "macro_movement": 0.527,
-      "macro_space": 0.8049
-    }
+    "Oblique": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

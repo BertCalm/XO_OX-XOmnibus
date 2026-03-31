@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Grain Saturated",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.068,
-      "macro_coupling": 0.611,
-      "macro_movement": 0.095,
-      "macro_space": 0.349
-    },
-    "Orphica": {
-      "macro_character": 0.096,
-      "macro_coupling": 0.648,
-      "macro_movement": 0.125,
-      "macro_space": 0.352
-    }
+    "Ohm": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

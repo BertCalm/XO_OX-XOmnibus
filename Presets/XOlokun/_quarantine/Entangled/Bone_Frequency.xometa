@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Bone Frequency",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.22,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.13,
-      "macro_space": 0.91
-    },
-    "Odyssey": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.18,
-      "macro_space": 0.88
-    }
+    "Obsidian": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Expanse Ripple II",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.324,
-      "macro_coupling": 0.798,
-      "macro_movement": 1.0,
-      "macro_space": 0.878
-    },
-    "Opal": {
-      "macro_character": 0.392,
-      "macro_coupling": 0.758,
-      "macro_movement": 0.922,
-      "macro_space": 0.955
-    }
+    "Ombre": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

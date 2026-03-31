@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Radiant Dome",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.776,
-      "macro_coupling": 0.111,
-      "macro_movement": 0.081,
-      "macro_space": 0.871
-    },
-    "Overbite": {
-      "macro_character": 0.763,
-      "macro_coupling": 0.098,
-      "macro_movement": 0.085,
-      "macro_space": 0.882
-    }
+    "Oblique": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

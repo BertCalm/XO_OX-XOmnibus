@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Peach Massive",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.666,
-      "macro_coupling": 0.722,
-      "macro_movement": 0.205,
-      "macro_space": 0.79
-    },
-    "Overbite": {
-      "macro_character": 0.812,
-      "macro_coupling": 0.881,
-      "macro_movement": 0.831,
-      "macro_space": 0.377
-    }
+    "OddOscar": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Dense Shadow Bulk",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.1,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.4,
-      "macro_space": 0.1
-    },
-    "Obscura": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.4,
-      "macro_space": 0.1
-    }
+    "Obese": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

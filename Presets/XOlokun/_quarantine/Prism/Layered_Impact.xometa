@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Layered Impact",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.503,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.6,
-      "macro_space": 0.395
-    },
-    "Orphica": {
-      "macro_character": 0.877,
-      "macro_coupling": 0.323,
-      "macro_movement": 0.6,
-      "macro_space": 0.395
-    }
+    "Ohm": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

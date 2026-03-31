@@ -38,19 +38,10 @@
   "name": "Detuned Concrete",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.83,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.47,
-      "macro_space": 0.25,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "OddOscar": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.51,
-      "macro_space": 0.36
-    }
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

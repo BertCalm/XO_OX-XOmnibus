@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Bloom Storm",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.869,
-      "macro_coupling": 0.041,
-      "macro_movement": 0.038,
-      "macro_space": 0.625
-    },
-    "Orca": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.059,
-      "macro_movement": 0.034,
-      "macro_space": 0.605
-    }
+    "OddfeliX": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

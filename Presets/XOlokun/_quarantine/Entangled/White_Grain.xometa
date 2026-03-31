@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "White Grain",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.19,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.48,
-      "macro_space": 0.89
-    },
-    "Opal": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.43,
-      "macro_space": 0.92
-    }
+    "Obsidian": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

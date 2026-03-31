@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Node Molten 3",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.793,
-      "macro_coupling": 0.9394,
-      "macro_movement": 0.01,
-      "macro_space": 0.6502
-    },
-    "Oracle": {
-      "macro_character": 0.6827,
-      "macro_coupling": 0.8179,
-      "macro_movement": 0.01,
-      "macro_space": 0.4475
-    }
+    "Ole": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "sequencer": null,

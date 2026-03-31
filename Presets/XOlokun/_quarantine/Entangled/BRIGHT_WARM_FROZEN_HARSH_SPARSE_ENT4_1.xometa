@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Candlelight Grit 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.94,
-      "macro_coupling": 0.01,
-      "macro_movement": 0.012,
-      "macro_space": 0.488
-    },
-    "Osprey": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.051,
-      "macro_movement": 0.019,
-      "macro_space": 0.503
-    }
+    "OddOscar": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

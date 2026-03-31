@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Stiff Prophecy",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.4,
-      "macro_space": 0.92
-    },
-    "Oracle": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.45,
-      "macro_space": 0.89
-    }
+    "Obscura": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

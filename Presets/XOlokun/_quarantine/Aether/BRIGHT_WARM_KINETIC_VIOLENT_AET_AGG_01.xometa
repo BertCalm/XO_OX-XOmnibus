@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC VIOLENT...",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.928,
-      "macro_coupling": 0.896,
-      "macro_movement": 0.911,
-      "macro_space": 0.305
-    },
-    "Overworld": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.942,
-      "macro_movement": 0.952,
-      "macro_space": 0.311
-    }
+    "Organon": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

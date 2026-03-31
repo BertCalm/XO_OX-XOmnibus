@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Temple of Air",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.22,
-      "macro_coupling": 0.12,
-      "macro_movement": 0.63,
-      "macro_space": 0.97
-    }
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

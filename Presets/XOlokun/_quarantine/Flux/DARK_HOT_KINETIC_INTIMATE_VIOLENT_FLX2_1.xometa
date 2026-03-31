@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Copper Ripple",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.4842,
-      "macro_coupling": 0.587,
-      "macro_movement": 0.9726,
-      "macro_space": 0.0565
-    },
-    "Overworld": {
-      "macro_character": 0.5211,
-      "macro_coupling": 0.6049,
-      "macro_movement": 0.9472,
-      "macro_space": 0.0661
-    }
+    "Organon": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

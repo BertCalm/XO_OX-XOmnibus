@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Still Shadow",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.675,
-      "macro_coupling": 0.626,
-      "macro_movement": 0.078,
-      "macro_space": 0.888
-    },
-    "Owlfish": {
-      "macro_character": 0.259,
-      "macro_coupling": 0.545,
-      "macro_movement": 0.078,
-      "macro_space": 0.888
-    }
+    "Orphica": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

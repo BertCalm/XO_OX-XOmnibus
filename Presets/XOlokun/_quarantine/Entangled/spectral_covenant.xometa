@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Spectral Covenant",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.8,
-      "macro_space": 0.7
-    },
-    "Organon": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.6,
-      "macro_space": 0.6
-    }
+    "Odyssey": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

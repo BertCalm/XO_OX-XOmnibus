@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Candlelight Saturated",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.722,
-      "macro_movement": 0.013,
-      "macro_space": 0.677
-    },
+    "Origami": {},
     "Overdub": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.749,
-      "macro_movement": 0.04,
-      "macro_space": 0.668,
       "dub_lfoDepth": 0.12
     }
   },

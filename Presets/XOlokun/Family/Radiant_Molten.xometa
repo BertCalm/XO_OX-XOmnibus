@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Radiant Molten",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.887,
-      "macro_coupling": 0.413,
-      "macro_movement": 0.325,
-      "macro_space": 0.069
-    },
+    "Ole": {},
     "Overdub": {
-      "macro_character": 0.91,
-      "macro_coupling": 0.384,
-      "macro_movement": 0.354,
-      "macro_space": 0.089,
       "dub_lfoDepth": 0.12
     }
   },

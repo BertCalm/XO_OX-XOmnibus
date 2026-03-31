@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Brass Solid",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.923,
-      "macro_coupling": 0.823,
-      "macro_movement": 0.447,
-      "macro_space": 0.53
-    },
-    "Overworld": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.481,
-      "macro_space": 0.388
-    }
+    "OddOscar": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

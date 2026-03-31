@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Massive Umbra II",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.7493,
-      "macro_coupling": 0.9479,
-      "macro_movement": 0.5395,
-      "macro_space": 0.8951
-    },
-    "Ottoni": {
-      "macro_character": 0.744,
-      "macro_coupling": 0.9453,
-      "macro_movement": 0.5762,
-      "macro_space": 0.8822
-    }
+    "Orphica": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

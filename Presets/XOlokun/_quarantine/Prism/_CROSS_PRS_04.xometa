@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "CROSS PRS 04",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.676,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.097,
-      "macro_space": 0.942
-    },
-    "Oracle": {
-      "macro_character": 0.676,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.097,
-      "macro_space": 0.942
-    }
+    "Optic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Frost Titan 2",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.9406,
-      "macro_coupling": 0.8273,
-      "macro_movement": 0.0797,
-      "macro_space": 0.2261
-    },
-    "Opal": {
-      "macro_character": 0.8059,
-      "macro_coupling": 0.8905,
-      "macro_movement": 0.0899,
-      "macro_space": 0.7053
-    }
+    "Ombre": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "sequencer": null,

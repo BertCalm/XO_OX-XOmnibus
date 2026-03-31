@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Molten Core",
   "parameters": {
-    "Overbite": {
-      "macro_character": 0.49,
-      "macro_coupling": 0.073,
-      "macro_movement": 0.91,
-      "macro_space": 0.081
-    },
-    "Overlap": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.402,
-      "macro_movement": 0.479,
-      "macro_space": 0.686
-    }
+    "Overbite": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

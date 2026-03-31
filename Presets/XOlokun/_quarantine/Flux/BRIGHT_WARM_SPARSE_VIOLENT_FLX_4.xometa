@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Honey Edge",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.8171,
-      "macro_coupling": 0.7786,
-      "macro_movement": 0.3684,
-      "macro_space": 0.2133
-    },
-    "Origami": {
-      "macro_character": 0.8225,
-      "macro_coupling": 0.7784,
-      "macro_movement": 0.4063,
-      "macro_space": 0.3425
-    }
+    "Opal": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

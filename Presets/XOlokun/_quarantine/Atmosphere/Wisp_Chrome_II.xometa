@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Wisp Chrome II",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.264,
-      "macro_movement": 0.067,
-      "macro_space": 0.099
-    },
-    "Organon": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.264,
-      "macro_movement": 0.067,
-      "macro_space": 0.099
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

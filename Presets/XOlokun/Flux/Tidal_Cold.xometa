@@ -38,19 +38,10 @@
   "name": "Tidal Cold",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.751,
-      "macro_coupling": 0.1066,
-      "macro_movement": 0.77,
-      "macro_space": 0.4251,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ottoni": {
-      "macro_character": 0.1759,
-      "macro_coupling": 0.518,
-      "macro_movement": 0.958,
-      "macro_space": 0.0502
-    }
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

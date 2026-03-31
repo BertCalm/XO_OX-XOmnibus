@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Halo Drift",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.9584,
-      "macro_coupling": 0.6922,
-      "macro_movement": 0.9562,
-      "macro_space": 0.0699
-    },
-    "Origami": {
-      "macro_character": 0.99,
-      "macro_coupling": 0.6735,
-      "macro_movement": 0.9885,
-      "macro_space": 0.0322
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

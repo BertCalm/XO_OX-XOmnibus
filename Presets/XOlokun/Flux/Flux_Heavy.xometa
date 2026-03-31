@@ -38,19 +38,10 @@
   "name": "Flux Heavy",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.0554,
-      "macro_coupling": 0.9255,
-      "macro_movement": 0.8877,
-      "macro_space": 0.4065,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Oracle": {
-      "macro_character": 0.0959,
-      "macro_coupling": 0.9321,
-      "macro_movement": 0.8742,
-      "macro_space": 0.403
-    }
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

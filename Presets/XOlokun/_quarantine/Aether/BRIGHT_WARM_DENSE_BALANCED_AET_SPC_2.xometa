@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM DENSE BALANCED ... (Opal)",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.912,
-      "macro_coupling": 0.603,
-      "macro_movement": 0.326,
-      "macro_space": 0.516
-    },
-    "Oracle": {
-      "macro_character": 0.936,
-      "macro_coupling": 0.577,
-      "macro_movement": 0.348,
-      "macro_space": 0.5
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

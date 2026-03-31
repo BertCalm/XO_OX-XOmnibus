@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Ice Rage 3",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.458,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.694,
-      "macro_space": 0.069
-    },
+    "Obbligato": {},
     "Overdub": {
-      "macro_character": 0.496,
-      "macro_coupling": 0.722,
-      "macro_movement": 0.657,
-      "macro_space": 0.055,
       "dub_lfoDepth": 0.12
     }
   },

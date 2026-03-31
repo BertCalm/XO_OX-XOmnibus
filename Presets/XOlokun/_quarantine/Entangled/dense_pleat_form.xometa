@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Dense Pleat Form",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.4,
-      "macro_space": 0.2
-    },
-    "Origami": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.4,
-      "macro_space": 0.2
-    }
+    "Obese": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

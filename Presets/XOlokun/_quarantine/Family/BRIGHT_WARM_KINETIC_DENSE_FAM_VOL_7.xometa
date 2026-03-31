@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Surge 3",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.745,
-      "macro_movement": 0.938,
-      "macro_space": 0.331
-    },
-    "OddfeliX": {
-      "macro_character": 0.931,
-      "macro_coupling": 0.781,
-      "macro_movement": 0.946,
-      "macro_space": 0.37
-    }
+    "Obbligato": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Saturated Velvet III",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.911,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.414,
-      "macro_space": 0.48
-    },
-    "Overworld": {
-      "macro_character": 0.902,
-      "macro_coupling": 0.764,
-      "macro_movement": 0.515,
-      "macro_space": 0.614
-    }
+    "OddOscar": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

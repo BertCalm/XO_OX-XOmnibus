@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Sunrise Saturated",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.884,
-      "macro_coupling": 0.9842,
-      "macro_movement": 0.6109,
-      "macro_space": 0.0262
-    },
-    "OddfeliX": {
-      "macro_character": 0.9041,
-      "macro_coupling": 0.9462,
-      "macro_movement": 0.6564,
-      "macro_space": 0.0506
-    }
+    "Oblique": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

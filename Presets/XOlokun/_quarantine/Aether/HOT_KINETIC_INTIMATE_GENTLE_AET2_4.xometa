@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Honey Pulse",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.6324,
-      "macro_coupling": 0.496,
-      "macro_movement": 0.9465,
-      "macro_space": 0.0746
-    },
-    "Oceanic": {
-      "macro_character": 0.6459,
-      "macro_coupling": 0.5144,
-      "macro_movement": 0.9848,
-      "macro_space": 0.043
-    }
+    "Oblique": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

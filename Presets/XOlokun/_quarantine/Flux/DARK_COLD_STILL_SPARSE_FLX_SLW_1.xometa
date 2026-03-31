@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Storm 3",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.466,
-      "macro_coupling": 0.691,
-      "macro_movement": 0.091,
-      "macro_space": 0.316
-    },
-    "Ouroboros": {
-      "macro_character": 0.528,
-      "macro_coupling": 0.838,
-      "macro_movement": 0.084,
-      "macro_space": 0.353
-    }
+    "Oblique": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

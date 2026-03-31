@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Detuned Choir II",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.33,
-      "macro_space": 0.27
-    },
-    "Organon": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.25,
-      "macro_space": 0.28
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

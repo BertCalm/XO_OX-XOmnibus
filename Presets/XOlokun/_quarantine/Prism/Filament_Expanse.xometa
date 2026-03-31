@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Filament Expanse",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.582,
-      "macro_movement": 0.535,
-      "macro_space": 0.952
-    },
-    "Osteria": {
-      "macro_character": 0.785,
-      "macro_coupling": 0.881,
-      "macro_movement": 0.535,
-      "macro_space": 0.952
-    }
+    "Ocelot": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

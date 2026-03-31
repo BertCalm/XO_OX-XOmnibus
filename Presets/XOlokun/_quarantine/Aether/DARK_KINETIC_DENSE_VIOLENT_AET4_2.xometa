@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Deep 3",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.3265,
-      "macro_coupling": 0.3156,
-      "macro_movement": 0.9062,
-      "macro_space": 0.694
-    },
-    "OddfeliX": {
-      "macro_character": 0.7405,
-      "macro_coupling": 0.8319,
-      "macro_movement": 0.6539,
-      "macro_space": 0.6227
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

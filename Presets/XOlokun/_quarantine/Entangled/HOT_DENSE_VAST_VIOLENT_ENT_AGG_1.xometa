@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Flux Horizon 3",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.736,
-      "macro_coupling": 0.798,
-      "macro_movement": 0.316,
-      "macro_space": 0.931
-    },
-    "Organon": {
-      "macro_character": 0.533,
-      "macro_coupling": 0.765,
-      "macro_movement": 0.307,
-      "macro_space": 0.993
-    }
+    "Ombre": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

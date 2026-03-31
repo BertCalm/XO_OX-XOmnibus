@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Prophetic Fold",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.3,
-      "macro_space": 0.93
-    },
-    "Origami": {
-      "macro_character": 0.12,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.25,
-      "macro_space": 0.96
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

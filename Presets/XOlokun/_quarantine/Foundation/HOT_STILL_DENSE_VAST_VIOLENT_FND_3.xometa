@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Grain Strike",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.438,
-      "macro_coupling": 0.965,
-      "macro_movement": 0.0,
-      "macro_space": 0.962
-    },
-    "OddfeliX": {
-      "macro_character": 0.603,
-      "macro_coupling": 0.994,
-      "macro_movement": 0.0,
-      "macro_space": 0.881
-    }
+    "Obese": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "sequencer": null,

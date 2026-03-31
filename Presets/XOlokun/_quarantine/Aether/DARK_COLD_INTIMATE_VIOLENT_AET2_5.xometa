@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Fragment Rage",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.0619,
-      "macro_coupling": 0.4087,
-      "macro_movement": 0.4024,
-      "macro_space": 0.0354
-    },
-    "OddfeliX": {
-      "macro_character": 0.0446,
-      "macro_coupling": 0.4366,
-      "macro_movement": 0.3729,
-      "macro_space": 0.0392
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

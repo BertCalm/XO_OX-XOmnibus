@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Mirror Rage 2",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.481,
-      "macro_space": 0.116
-    },
-    "Osteria": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.462,
-      "macro_space": 0.105
-    }
+    "Ole": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

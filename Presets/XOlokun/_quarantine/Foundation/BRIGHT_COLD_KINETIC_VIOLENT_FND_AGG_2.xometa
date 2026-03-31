@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Quartz Crush",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.929,
-      "macro_coupling": 0.365,
-      "macro_movement": 0.415,
-      "macro_space": 0.537
-    },
-    "Overbite": {
-      "macro_character": 0.947,
-      "macro_coupling": 0.355,
-      "macro_movement": 0.461,
-      "macro_space": 0.559
-    }
+    "Ouroboros": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

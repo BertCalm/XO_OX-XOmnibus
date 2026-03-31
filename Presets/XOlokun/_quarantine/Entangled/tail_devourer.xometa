@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Tail Devourer",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.6,
-      "macro_space": 0.2
-    },
-    "Ouroboros": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.6,
-      "macro_space": 0.2
-    }
+    "Odyssey": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

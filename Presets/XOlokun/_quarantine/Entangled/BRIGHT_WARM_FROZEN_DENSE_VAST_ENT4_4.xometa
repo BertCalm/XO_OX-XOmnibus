@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Peach Titan",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.902,
-      "macro_coupling": 0.961,
-      "macro_movement": 0.061,
-      "macro_space": 0.922
-    },
-    "Osteria": {
-      "macro_character": 0.932,
-      "macro_coupling": 0.906,
-      "macro_movement": 0.062,
-      "macro_space": 0.888
-    }
+    "Optic": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

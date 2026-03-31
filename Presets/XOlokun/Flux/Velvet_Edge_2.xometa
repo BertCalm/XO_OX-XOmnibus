@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Velvet Edge 2",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.4818,
-      "macro_coupling": 0.8622,
-      "macro_movement": 0.4772,
-      "macro_space": 0.9054
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.4923,
-      "macro_coupling": 0.9039,
-      "macro_movement": 0.4384,
-      "macro_space": 0.8697,
       "dub_lfoDepth": 0.12
     }
   },

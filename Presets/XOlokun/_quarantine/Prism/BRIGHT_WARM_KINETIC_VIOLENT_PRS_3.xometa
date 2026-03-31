@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Sunrise Drift 2",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.47,
-      "macro_coupling": 0.446,
-      "macro_movement": 0.929,
-      "macro_space": 0.584
-    },
-    "Ole": {
-      "macro_character": 0.941,
-      "macro_coupling": 0.807,
-      "macro_movement": 0.929,
-      "macro_space": 0.584
-    }
+    "Ocelot": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

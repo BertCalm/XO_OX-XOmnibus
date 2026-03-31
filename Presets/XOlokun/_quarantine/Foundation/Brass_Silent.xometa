@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Brass Silent",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.637,
-      "macro_coupling": 0.506,
-      "macro_movement": 0.079,
-      "macro_space": 0.649
-    },
-    "Overlap": {
-      "macro_character": 0.706,
-      "macro_coupling": 0.614,
-      "macro_movement": 0.0,
-      "macro_space": 0.798
-    }
+    "OddfeliX": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

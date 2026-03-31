@@ -26,10 +26,6 @@
   "name": "Obbligato Ancient Air",
   "parameters": {
     "Obbligato": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.15,
-      "macro_movement": 0.12,
-      "macro_space": 0.9,
       "obbl_attackTime": 1.8,
       "obbl_bond": 0.15,
       "obbl_breathA": 0.3,

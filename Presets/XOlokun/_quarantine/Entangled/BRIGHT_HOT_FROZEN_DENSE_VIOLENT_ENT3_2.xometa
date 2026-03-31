@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Candlelight Deep 2",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.504,
-      "macro_coupling": 0.9576,
-      "macro_movement": 0.0648,
-      "macro_space": 0.7616
-    },
-    "Osteria": {
-      "macro_character": 0.9462,
-      "macro_coupling": 0.9288,
-      "macro_movement": 0.062,
-      "macro_space": 0.8079
-    }
+    "Odyssey": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "sequencer": null,

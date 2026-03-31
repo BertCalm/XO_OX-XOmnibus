@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Arctic Swirl",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.0,
-      "macro_movement": 1.0,
-      "macro_space": 0.991
-    },
-    "Overworld": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.986,
-      "macro_space": 0.981
-    }
+    "Oracle": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

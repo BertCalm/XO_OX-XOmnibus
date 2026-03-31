@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Grain Titan",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.105,
-      "macro_coupling": 0.644,
-      "macro_movement": 0.055,
-      "macro_space": 0.653
-    },
-    "Origami": {
-      "macro_character": 0.062,
-      "macro_coupling": 0.655,
-      "macro_movement": 0.067,
-      "macro_space": 0.631
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

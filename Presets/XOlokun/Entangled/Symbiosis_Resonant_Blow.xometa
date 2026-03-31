@@ -2,44 +2,52 @@
   "schema_version": 1,
   "name": "Resonant Blow",
   "mood": "Entangled",
-  "engines": ["Overlap", "Ouie"],
+  "engines": [
+    "Overlap",
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Inverse of Knot Resonance — OVERLAP's FDN modal network supplies AmpToFilter modulation to OUIE's STRIFE/LOVE balance, so resonant build-up in the network forces the hammerhead voices apart into maximum conflict before the next strike releases them.",
-  "tags": ["symbiosis", "resonant", "blow", "FDN", "duophonic", "coupled", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "symbiosis",
+    "resonant",
+    "blow",
+    "FDN",
+    "duophonic",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
-    "brightness": 0.60,
+    "brightness": 0.6,
     "warmth": 0.38,
     "movement": 0.78,
     "density": 0.68,
-    "space": 0.50,
+    "space": 0.5,
     "aggression": 0.72
   },
   "parameters": {
     "Overlap": {
-      "macro_character": 0.62,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.80,
-      "macro_space": 0.52,
       "olap_knotDepth": 0.75,
       "olap_feedbackAmount": 0.65,
       "olap_resonanceFreq": 0.55,
       "olap_reverbMix": 0.45,
-      "olap_outputLevel": 0.80
+      "olap_outputLevel": 0.8
     },
     "Ouie": {
-      "macro_character": 0.70,
-      "macro_movement": 0.75,
-      "macro_coupling": 0.80,
-      "macro_space": 0.48,
       "ouie_macroHammer": 0.72,
       "ouie_voiceAlgo": 6,
       "ouie_strifeBalance": 0.65,
       "ouie_attackTime": 0.015,
-      "ouie_decayTime": 0.30,
+      "ouie_decayTime": 0.3,
       "ouie_outputLevel": 0.82
     }
   },

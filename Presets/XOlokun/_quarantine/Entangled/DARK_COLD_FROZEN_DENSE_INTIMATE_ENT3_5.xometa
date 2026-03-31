@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Node Saturated",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.6166,
-      "macro_coupling": 0.9106,
-      "macro_movement": 0.0584,
-      "macro_space": 0.2821
-    },
-    "Outwit": {
-      "macro_character": 0.9584,
-      "macro_coupling": 0.8871,
-      "macro_movement": 0.0845,
-      "macro_space": 0.5018
-    }
+    "Opal": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "sequencer": null,

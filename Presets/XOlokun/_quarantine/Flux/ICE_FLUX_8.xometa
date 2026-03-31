@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ICE FLUX 8",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.3836,
-      "macro_coupling": 0.5082,
-      "macro_movement": 0.9219,
-      "macro_space": 0.8793
-    },
-    "Osprey": {
-      "macro_character": 0.8347,
-      "macro_coupling": 0.2437,
-      "macro_movement": 0.9802,
-      "macro_space": 0.5513
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

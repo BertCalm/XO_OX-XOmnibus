@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Glass Horizon 2",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.4589,
-      "macro_coupling": 0.0361,
-      "macro_movement": 0.5756,
-      "macro_space": 0.8984
-    },
-    "Origami": {
-      "macro_character": 0.4434,
-      "macro_coupling": 0.0375,
-      "macro_movement": 0.5694,
-      "macro_space": 0.8825
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

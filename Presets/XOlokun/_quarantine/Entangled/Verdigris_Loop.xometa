@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Verdigris Loop",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.68,
-      "macro_space": 0.33
-    },
-    "Ouroboros": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.74,
-      "macro_space": 0.38
-    }
+    "Ottoni": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

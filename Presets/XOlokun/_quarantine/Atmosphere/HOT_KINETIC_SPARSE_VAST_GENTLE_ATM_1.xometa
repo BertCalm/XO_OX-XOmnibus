@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ember Surge 2",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.6493,
-      "macro_coupling": 0.0527,
-      "macro_movement": 0.99,
-      "macro_space": 0.9692
-    },
-    "Oracle": {
-      "macro_character": 0.6638,
-      "macro_coupling": 0.077,
-      "macro_movement": 0.9704,
-      "macro_space": 0.9872
-    }
+    "Optic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

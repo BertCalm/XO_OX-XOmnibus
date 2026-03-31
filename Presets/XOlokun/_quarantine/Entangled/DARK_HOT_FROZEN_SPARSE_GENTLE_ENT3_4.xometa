@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Cocoa Canyon",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.9207,
-      "macro_coupling": 0.8034,
-      "macro_movement": 0.0965,
-      "macro_space": 0.7941
-    },
-    "Overworld": {
-      "macro_character": 0.6307,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.113,
-      "macro_space": 0.1919
-    }
+    "Oblique": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

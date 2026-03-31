@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Oscar Pipe",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.68,
-      "macro_space": 0.22
-    },
-    "Organon": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.66,
-      "macro_space": 0.3
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

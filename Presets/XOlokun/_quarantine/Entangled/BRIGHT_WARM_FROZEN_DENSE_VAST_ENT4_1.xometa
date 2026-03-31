@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Bloom Cavern",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.894,
-      "macro_coupling": 0.901,
-      "macro_movement": 0.037,
-      "macro_space": 0.971
-    },
-    "Overbite": {
-      "macro_character": 0.922,
-      "macro_coupling": 0.894,
-      "macro_movement": 0.033,
-      "macro_space": 0.945
-    }
+    "Orbital": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

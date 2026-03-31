@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Ember Ripple",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.3563,
-      "macro_coupling": 0.6992,
-      "macro_movement": 0.9348,
-      "macro_space": 0.8823
-    },
-    "Owlfish": {
-      "macro_character": 0.3475,
-      "macro_coupling": 0.6634,
-      "macro_movement": 0.9156,
-      "macro_space": 0.9057
-    }
+    "Ocelot": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

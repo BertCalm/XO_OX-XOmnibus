@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Abyss Serene",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.0833,
-      "macro_coupling": 0.393,
-      "macro_movement": 0.0941,
-      "macro_space": 0.8412
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.1571,
-      "macro_coupling": 0.5455,
-      "macro_movement": 0.1742,
-      "macro_space": 0.859,
       "dub_lfoDepth": 0.12
     }
   },

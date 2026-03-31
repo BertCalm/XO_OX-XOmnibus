@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "WARM KINETIC VAST VIOLENT A...",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.901,
-      "macro_movement": 0.865,
-      "macro_space": 0.949
-    },
-    "OddOscar": {
-      "macro_character": 0.307,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.845,
-      "macro_space": 0.921
-    }
+    "Oceanic": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Vast Prismatic",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.955,
-      "macro_coupling": 0.696,
-      "macro_movement": 0.921,
-      "macro_space": 0.969
-    },
-    "Orphica": {
-      "macro_character": 0.955,
-      "macro_coupling": 0.696,
-      "macro_movement": 0.921,
-      "macro_space": 0.969
-    }
+    "OddOscar": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

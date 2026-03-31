@@ -38,19 +38,10 @@
   "name": "Copper Rage 3",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.531,
-      "macro_coupling": 0.94,
-      "macro_movement": 0.328,
-      "macro_space": 0.683,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Orphica": {
-      "macro_character": 0.482,
-      "macro_coupling": 0.928,
-      "macro_movement": 0.364,
-      "macro_space": 0.687
-    }
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

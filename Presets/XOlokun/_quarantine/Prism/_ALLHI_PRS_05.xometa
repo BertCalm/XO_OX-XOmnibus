@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "ALLHI PRS 05",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.748,
-      "macro_movement": 0.904,
-      "macro_space": 0.551
-    },
-    "Optic": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.748,
-      "macro_movement": 0.904,
-      "macro_space": 0.551
-    }
+    "Oblique": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Peach Force 2",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.845,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.458,
-      "macro_space": 0.707
-    },
-    "Ole": {
-      "macro_character": 0.798,
-      "macro_coupling": 0.429,
-      "macro_movement": 0.455,
-      "macro_space": 0.674
-    }
+    "OddfeliX": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

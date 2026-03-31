@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Thread Horizon",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.233,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.416,
-      "macro_space": 0.983
-    },
-    "Origami": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.19,
-      "macro_movement": 0.465,
-      "macro_space": 0.802
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

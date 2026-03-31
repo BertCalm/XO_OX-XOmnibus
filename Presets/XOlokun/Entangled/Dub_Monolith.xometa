@@ -38,18 +38,10 @@
   "name": "Dub Monolith",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.3,
-      "macro_space": 0.14,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
     "Overdub": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.28,
-      "macro_space": 0.2,
       "dub_lfoDepth": 0.12
     }
   },

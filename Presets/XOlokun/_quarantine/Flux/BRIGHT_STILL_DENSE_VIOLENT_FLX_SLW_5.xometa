@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Signal Fang",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.849,
-      "macro_coupling": 0.872,
-      "macro_movement": 0.023,
-      "macro_space": 0.416
-    },
-    "Oracle": {
-      "macro_character": 0.917,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.028,
-      "macro_space": 0.408
-    }
+    "Oceanic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

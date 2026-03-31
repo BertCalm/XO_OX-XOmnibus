@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Phase Rage 2",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.643,
-      "macro_coupling": 0.888,
-      "macro_movement": 0.087,
-      "macro_space": 0.01
-    },
-    "Orca": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.903,
-      "macro_movement": 0.073,
-      "macro_space": 0.041
-    }
+    "Opal": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

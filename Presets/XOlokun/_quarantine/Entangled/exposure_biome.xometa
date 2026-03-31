@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Exposure Biome",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.355,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.255,
-      "macro_space": 0.605
-    },
-    "Ocelot": {
-      "macro_character": 0.645,
-      "macro_coupling": 0.545,
-      "macro_movement": 0.695,
-      "macro_space": 0.445
-    }
+    "Obscura": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

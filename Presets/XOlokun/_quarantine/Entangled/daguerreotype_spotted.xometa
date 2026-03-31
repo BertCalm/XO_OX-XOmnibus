@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Daguerreotype Spotted",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.312,
-      "macro_coupling": 0.512,
-      "macro_movement": 0.212,
-      "macro_space": 0.562
-    },
-    "Ocelot": {
-      "macro_character": 0.688,
-      "macro_coupling": 0.588,
-      "macro_movement": 0.738,
-      "macro_space": 0.488
-    }
+    "Obscura": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

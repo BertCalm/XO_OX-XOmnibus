@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Copper Shimmer",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.161,
-      "macro_coupling": 0.123,
-      "macro_movement": 0.846,
-      "macro_space": 0.444
-    },
-    "Owlfish": {
-      "macro_character": 0.073,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.834,
-      "macro_space": 0.521
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "sequencer": null,

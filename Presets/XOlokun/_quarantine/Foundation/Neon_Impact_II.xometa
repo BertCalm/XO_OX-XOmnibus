@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Neon Impact II",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.936,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.698,
-      "macro_space": 0.912
-    },
-    "Overbite": {
-      "macro_character": 0.936,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.698,
-      "macro_space": 0.912
-    }
+    "OddfeliX": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

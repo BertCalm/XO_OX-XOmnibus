@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Flux Rage 3",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.327,
-      "macro_coupling": 0.01,
-      "macro_movement": 0.072,
-      "macro_space": 0.91
-    },
-    "Overworld": {
-      "macro_character": 0.336,
-      "macro_coupling": 0.039,
-      "macro_movement": 0.076,
-      "macro_space": 0.94
-    }
+    "Obese": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

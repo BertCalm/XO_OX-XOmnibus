@@ -46,19 +46,10 @@
   "name": "Velvet Canyon 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.6937,
-      "macro_coupling": 0.8938,
-      "macro_movement": 0.0304,
-      "macro_space": 0.1065,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Optic": {
-      "macro_character": 0.6035,
-      "macro_coupling": 0.7829,
-      "macro_movement": 0.0314,
-      "macro_space": 0.3172
-    }
+    "Optic": {}
   },
   "schema_version": 1,
   "sequencer": null,

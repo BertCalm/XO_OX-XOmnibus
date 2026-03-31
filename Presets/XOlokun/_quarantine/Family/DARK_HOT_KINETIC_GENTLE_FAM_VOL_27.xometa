@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Smoke Surge",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.522,
-      "macro_coupling": 0.315,
-      "macro_movement": 0.99,
-      "macro_space": 0.715
-    },
-    "Odyssey": {
-      "macro_character": 0.471,
-      "macro_coupling": 0.293,
-      "macro_movement": 0.99,
-      "macro_space": 0.707
-    }
+    "OddfeliX": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Peach Force",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.8599,
-      "macro_coupling": 0.7756,
-      "macro_movement": 0.3623,
-      "macro_space": 0.697
-    },
-    "Ouroboros": {
-      "macro_character": 0.8327,
-      "macro_coupling": 0.9472,
-      "macro_movement": 0.4738,
-      "macro_space": 0.6016
-    }
+    "Oceanic": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

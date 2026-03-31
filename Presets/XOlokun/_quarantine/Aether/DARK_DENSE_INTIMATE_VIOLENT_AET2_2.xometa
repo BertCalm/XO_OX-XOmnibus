@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Fragment Grit",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.0634,
-      "macro_coupling": 0.9392,
-      "macro_movement": 0.3867,
-      "macro_space": 0.0495
-    },
-    "OddOscar": {
-      "macro_character": 0.0673,
-      "macro_coupling": 0.8832,
-      "macro_movement": 0.375,
-      "macro_space": 0.0613
-    }
+    "Oblique": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

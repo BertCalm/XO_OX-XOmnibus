@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Saturation Dust",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.47,
-      "macro_space": 0.54
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.4,
-      "macro_space": 0.63,
       "dub_lfoDepth": 0.12
     }
   },

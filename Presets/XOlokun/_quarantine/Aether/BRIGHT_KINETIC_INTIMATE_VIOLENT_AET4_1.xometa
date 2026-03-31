@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Crush",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.8125,
-      "macro_coupling": 0.8979,
-      "macro_movement": 0.8635,
-      "macro_space": 0.5112
-    },
-    "Overworld": {
-      "macro_character": 0.585,
-      "macro_coupling": 0.2688,
-      "macro_movement": 0.8233,
-      "macro_space": 0.8829
-    }
+    "Obscura": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Radiant Fang",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.666,
-      "macro_movement": 0.649,
-      "macro_space": 0.924
-    },
-    "Orphica": {
-      "macro_character": 0.93,
-      "macro_coupling": 0.708,
-      "macro_movement": 0.655,
-      "macro_space": 0.904
-    }
+    "Opal": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

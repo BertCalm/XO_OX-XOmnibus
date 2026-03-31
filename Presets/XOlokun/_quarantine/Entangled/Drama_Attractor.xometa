@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Drama Attractor",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.8,
-      "macro_space": 0.28
-    },
-    "Ouroboros": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.84,
-      "macro_space": 0.32
-    }
+    "Ole": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

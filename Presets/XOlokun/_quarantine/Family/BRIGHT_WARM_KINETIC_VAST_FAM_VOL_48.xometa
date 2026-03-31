@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Bloom Swirl",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.952,
-      "macro_coupling": 0.379,
-      "macro_movement": 0.916,
-      "macro_space": 0.934
-    },
-    "Ole": {
-      "macro_character": 0.968,
-      "macro_coupling": 0.373,
-      "macro_movement": 0.897,
-      "macro_space": 0.882
-    }
+    "OddOscar": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

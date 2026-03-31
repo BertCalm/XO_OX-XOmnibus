@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Steel Umbra",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.06,
-      "macro_coupling": 0.604,
-      "macro_movement": 0.393,
-      "macro_space": 0.583
-    },
-    "Optic": {
-      "macro_character": 0.035,
-      "macro_coupling": 0.647,
-      "macro_movement": 0.305,
-      "macro_space": 0.704
-    }
+    "Obese": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

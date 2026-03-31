@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Fold Frequency",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.47,
-      "macro_space": 0.92
-    },
-    "Origami": {
-      "macro_character": 0.19,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.52,
-      "macro_space": 0.89
-    }
+    "Odyssey": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

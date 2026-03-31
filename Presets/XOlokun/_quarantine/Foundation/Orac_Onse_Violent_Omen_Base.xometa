@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.96,
-      "macro_movement": 0.67,
-      "macro_coupling": 0.61,
-      "macro_space": 0.3
-    },
-    "Onset": {
-      "macro_character": 0.89,
-      "macro_movement": 0.74,
-      "macro_coupling": 0.74,
-      "macro_space": 0.46
-    }
+    "Oracle": {},
+    "Onset": {}
   },
   "coupling": {
     "type": "ENVELOPE_SLAVE",

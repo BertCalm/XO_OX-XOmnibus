@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ICE FLUX 6",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.731,
-      "macro_coupling": 0.8517,
-      "macro_movement": 0.2684,
-      "macro_space": 0.8307
-    },
-    "Optic": {
-      "macro_character": 0.8082,
-      "macro_coupling": 0.4835,
-      "macro_movement": 0.5382,
-      "macro_space": 0.4356
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

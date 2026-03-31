@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "COLD DENSE VAST VIOLENT PRS... (Origami I)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.525,
-      "macro_coupling": 0.882,
-      "macro_movement": 0.55,
-      "macro_space": 0.98
-    },
-    "Ottoni": {
-      "macro_character": 0.504,
-      "macro_coupling": 0.884,
-      "macro_movement": 0.565,
-      "macro_space": 0.977
-    }
+    "Origami": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

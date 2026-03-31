@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Halo Surge 3",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.928,
-      "macro_coupling": 0.228,
-      "macro_movement": 0.599,
-      "macro_space": 0.068
-    },
-    "Osprey": {
-      "macro_character": 0.925,
-      "macro_coupling": 0.2,
-      "macro_movement": 0.595,
-      "macro_space": 0.049
-    }
+    "OddOscar": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

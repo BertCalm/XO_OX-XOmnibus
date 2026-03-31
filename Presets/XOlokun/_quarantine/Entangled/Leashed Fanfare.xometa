@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Leashed Fanfare",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.44,
-      "macro_space": 0.32
-    },
-    "Ouroboros": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.72,
-      "macro_space": 0.42
-    }
+    "Ottoni": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

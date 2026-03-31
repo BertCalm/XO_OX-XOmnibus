@@ -38,19 +38,10 @@
   "name": "Infinite Glint",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.7838,
-      "macro_coupling": 0.2604,
-      "macro_movement": 0.1403,
-      "macro_space": 0.8138,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Origami": {
-      "macro_character": 0.8221,
-      "macro_coupling": 0.1675,
-      "macro_movement": 0.0577,
-      "macro_space": 0.8242
-    }
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

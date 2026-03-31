@@ -38,19 +38,10 @@
   "name": "Amber Current",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.463,
-      "macro_coupling": 0.693,
-      "macro_movement": 0.768,
-      "macro_space": 0.49,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Orphica": {
-      "macro_character": 0.491,
-      "macro_coupling": 0.717,
-      "macro_movement": 0.722,
-      "macro_space": 0.511
-    }
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Onset": {
-      "macro_character": 0.82,
-      "macro_movement": 0.95,
-      "macro_coupling": 0.7,
-      "macro_space": 0.23
-    },
-    "Optic": {
-      "macro_character": 0.93,
-      "macro_movement": 0.63,
-      "macro_coupling": 0.82,
-      "macro_space": 0.31
-    }
+    "Onset": {},
+    "Optic": {}
   },
   "coupling": {
     "type": "AMPLITUDE_SYNC",

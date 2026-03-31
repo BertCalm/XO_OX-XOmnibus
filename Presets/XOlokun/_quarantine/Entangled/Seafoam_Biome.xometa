@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Seafoam Biome",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.63,
-      "macro_space": 0.58
-    },
-    "Orphica": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.55,
-      "macro_space": 0.72
-    }
+    "Organon": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Midnight Shatter",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.0,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.429,
-      "macro_space": 0.33
-    },
-    "Outwit": {
-      "macro_character": 0.062,
-      "macro_coupling": 0.703,
-      "macro_movement": 0.422,
-      "macro_space": 0.347
-    }
+    "Oceanic": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

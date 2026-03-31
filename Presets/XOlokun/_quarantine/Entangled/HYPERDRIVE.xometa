@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "HYPERDRIVE",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.656,
-      "macro_coupling": 0.972,
-      "macro_movement": 0.94,
-      "macro_space": 0.578
-    },
-    "Ombre": {
-      "macro_character": 0.228,
-      "macro_coupling": 0.051,
-      "macro_movement": 0.907,
-      "macro_space": 0.48
-    }
+    "Obbligato": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

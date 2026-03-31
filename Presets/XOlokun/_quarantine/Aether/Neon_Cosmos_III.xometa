@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Neon Cosmos III",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.761,
-      "macro_coupling": 0.6381,
-      "macro_movement": 0.2429,
-      "macro_space": 0.5771
-    },
-    "Osprey": {
-      "macro_character": 0.4225,
-      "macro_coupling": 0.6344,
-      "macro_movement": 0.9265,
-      "macro_space": 0.6066
-    }
+    "Ombre": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

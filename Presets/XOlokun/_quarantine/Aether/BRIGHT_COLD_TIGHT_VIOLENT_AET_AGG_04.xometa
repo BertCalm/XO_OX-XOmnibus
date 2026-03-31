@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT COLD TIGHT VIOLENT A... (OddOscar I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.934,
-      "macro_movement": 0.455,
-      "macro_space": 0.031
-    },
-    "OddfeliX": {
-      "macro_character": 0.897,
-      "macro_coupling": 0.929,
-      "macro_movement": 0.45,
-      "macro_space": 0.031
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

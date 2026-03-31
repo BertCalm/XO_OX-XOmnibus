@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Burning Jaw",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.86,
-      "macro_movement": 0.58,
-      "macro_space": 0.24
-    },
-    "Ouroboros": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.72,
-      "macro_space": 0.26
-    }
+    "Obese": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

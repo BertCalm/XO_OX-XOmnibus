@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Quartz Horizon 2",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.5171,
-      "macro_coupling": 0.7661,
-      "macro_movement": 0.0838,
-      "macro_space": 0.7617
-    },
-    "Outwit": {
-      "macro_character": 0.9669,
-      "macro_coupling": 0.7843,
-      "macro_movement": 0.1004,
-      "macro_space": 0.6164
-    }
+    "Oracle": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "sequencer": null,

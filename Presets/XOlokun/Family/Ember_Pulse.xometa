@@ -38,19 +38,10 @@
   "name": "Ember Pulse",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.811,
-      "macro_movement": 0.957,
-      "macro_space": 0.334,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ottoni": {
-      "macro_character": 0.535,
-      "macro_coupling": 0.805,
-      "macro_movement": 0.935,
-      "macro_space": 0.314
-    }
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

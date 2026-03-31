@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Sunrise Force",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.7079,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.0235,
-      "macro_space": 0.8185
-    },
-    "Oracle": {
-      "macro_character": 0.7164,
-      "macro_coupling": 0.8329,
-      "macro_movement": 0.0411,
-      "macro_space": 0.5994
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "sequencer": null,

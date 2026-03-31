@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Ice Fang",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.8822,
-      "macro_coupling": 0.511,
-      "macro_movement": 0.4107,
-      "macro_space": 0.0328
-    },
-    "Ombre": {
-      "macro_character": 0.8996,
-      "macro_coupling": 0.5494,
-      "macro_movement": 0.3841,
-      "macro_space": 0.0318
-    }
+    "Obscura": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

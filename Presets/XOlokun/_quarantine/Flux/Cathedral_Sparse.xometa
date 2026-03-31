@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Cathedral Sparse",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.2375,
-      "macro_coupling": 0.2849,
-      "macro_movement": 0.4442,
-      "macro_space": 0.7485
-    },
-    "Ombre": {
-      "macro_character": 0.1655,
-      "macro_coupling": 0.4109,
-      "macro_movement": 0.4377,
-      "macro_space": 0.6764
-    }
+    "Oblique": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

@@ -39,18 +39,8 @@
   "mood": "Flux",
   "name": "Sparse Cathedral",
   "parameters": {
-    "Overlap": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.63,
-      "macro_space": 0.47
-    },
-    "Owlfish": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.85,
-      "macro_space": 0.23
-    }
+    "Overlap": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "sequencer": null,

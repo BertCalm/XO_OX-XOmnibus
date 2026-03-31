@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Phantom Cosmos",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.12,
-      "macro_coupling": 0.86,
-      "macro_movement": 0.25,
-      "macro_space": 0.74
-    },
-    "Oceanic": {
-      "macro_character": 0.71,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.7,
-      "macro_space": 0.49
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

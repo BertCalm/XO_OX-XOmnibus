@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Shadow Expanse",
   "parameters": {
-    "Overbite": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.466,
-      "macro_space": 0.602
-    },
-    "Overdub": {
-      "macro_character": 0.712,
-      "macro_coupling": 0.482,
-      "macro_movement": 0.482,
-      "macro_space": 0.612
-    }
+    "Overbite": {},
+    "Overdub": {}
   },
   "schema_version": 1,
   "tags": [

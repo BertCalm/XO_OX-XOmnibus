@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Steel Cathedral",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.276,
-      "macro_coupling": 0.817,
-      "macro_movement": 0.865,
-      "macro_space": 0.895
-    },
-    "Ottoni": {
-      "macro_character": 0.358,
-      "macro_coupling": 0.451,
-      "macro_movement": 0.865,
-      "macro_space": 0.895
-    }
+    "Osteria": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

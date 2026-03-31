@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Bloom Blade",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.647,
-      "macro_coupling": 0.428,
-      "macro_movement": 0.361,
-      "macro_space": 0.888
-    },
-    "Overbite": {
-      "macro_character": 0.607,
-      "macro_coupling": 0.395,
-      "macro_movement": 0.356,
-      "macro_space": 0.88
-    }
+    "OddfeliX": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

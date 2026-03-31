@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Flux Dense",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.8836,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.95,
-      "macro_space": 0.034
-    },
-    "Origami": {
-      "macro_character": 0.9377,
-      "macro_coupling": 0.9706,
-      "macro_movement": 0.926,
-      "macro_space": 0.0997
-    }
+    "Oblique": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

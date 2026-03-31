@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Eclipse Barb",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.369,
-      "macro_coupling": 0.655,
-      "macro_movement": 0.753,
-      "macro_space": 0.335
-    },
-    "Optic": {
-      "macro_character": 0.741,
-      "macro_coupling": 0.726,
-      "macro_movement": 0.867,
-      "macro_space": 0.432
-    }
+    "Oblique": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Candlelight Rage 3",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.963,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.596,
-      "macro_space": 0.461
-    },
-    "Origami": {
-      "macro_character": 0.924,
-      "macro_coupling": 0.518,
-      "macro_movement": 0.606,
-      "macro_space": 0.486
-    }
+    "Opal": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

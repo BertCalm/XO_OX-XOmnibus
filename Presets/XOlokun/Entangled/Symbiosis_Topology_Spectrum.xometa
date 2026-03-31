@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Topology Spectrum",
   "mood": "Entangled",
-  "engines": ["Orbweave", "Overtone"],
+  "engines": [
+    "Orbweave",
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBWEAVE's topological knot structure feeds wavetable content into OVERTONE's continued-fraction spectral partials — the knot geometry shapes harmonic ratios while spectral output modulates knot depth, creating an impossibly stable yet endlessly evolving timbre.",
-  "tags": ["symbiosis", "topological", "spectral", "knot", "nautilus", "coupled", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "symbiosis",
+    "topological",
+    "spectral",
+    "knot",
+    "nautilus",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -20,21 +36,13 @@
   },
   "parameters": {
     "Orbweave": {
-      "macro_character": 0.55,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.78,
-      "macro_space": 0.60,
-      "weave_knotDepth": 0.70,
+      "weave_knotDepth": 0.7,
       "weave_topologyOrder": 0.55,
       "weave_feedbackAmount": 0.48,
       "weave_filterCutoff": 0.58,
-      "weave_outputLevel": 0.80
+      "weave_outputLevel": 0.8
     },
     "Overtone": {
-      "macro_character": 0.60,
-      "macro_movement": 0.62,
-      "macro_coupling": 0.78,
-      "macro_space": 0.62,
       "over_cfDepth": 0.65,
       "over_partialCount": 0.72,
       "over_spectralSpread": 0.55,
@@ -48,7 +56,7 @@
         "engineA": "Orbweave",
         "engineB": "Overtone",
         "type": "AudioToWavetable",
-        "amount": 0.70
+        "amount": 0.7
       },
       {
         "engineA": "Overtone",

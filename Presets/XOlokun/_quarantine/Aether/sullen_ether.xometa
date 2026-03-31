@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Sullen Ether",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.5,
-      "macro_space": 0.82
-    }
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

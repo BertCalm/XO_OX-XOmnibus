@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Smoke Swirl 4",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.824,
-      "macro_coupling": 0.911,
-      "macro_movement": 0.599,
-      "macro_space": 0.655
-    },
+    "Obbligato": {},
     "Oblong": {
-      "macro_character": 0.856,
-      "macro_coupling": 0.891,
-      "macro_movement": 0.577,
-      "macro_space": 0.664,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

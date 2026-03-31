@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Sunward Drift",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.69,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.46,
-      "macro_space": 0.61
-    },
-    "Osprey": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.35,
-      "macro_space": 0.54
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

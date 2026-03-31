@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Mirror Deep",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.332,
-      "macro_coupling": 0.485,
-      "macro_movement": 0.62,
-      "macro_space": 0.553
-    },
-    "Organon": {
-      "macro_character": 0.473,
-      "macro_coupling": 0.712,
-      "macro_movement": 0.549,
-      "macro_space": 0.442
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

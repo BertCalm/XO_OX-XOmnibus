@@ -45,17 +45,8 @@
   "mood": "Foundation",
   "name": "Thread Cavern",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.429,
-      "macro_coupling": 0.101,
-      "macro_movement": 0.957,
-      "macro_space": 1.0
-    },
+    "Obsidian": {},
     "Overdub": {
-      "macro_character": 0.364,
-      "macro_coupling": 0.094,
-      "macro_movement": 0.883,
-      "macro_space": 0.978,
       "dub_lfoDepth": 0.12
     }
   },

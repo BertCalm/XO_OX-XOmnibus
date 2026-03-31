@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.68,
-      "macro_movement": 1.0,
-      "macro_coupling": 0.85,
-      "macro_space": 0.39
-    },
-    "Obese": {
-      "macro_character": 0.94,
-      "macro_movement": 0.78,
-      "macro_coupling": 0.85,
-      "macro_space": 0.37
-    }
+    "OddfeliX": {},
+    "Obese": {}
   },
   "coupling": {
     "type": "RHYTHM_GATE",

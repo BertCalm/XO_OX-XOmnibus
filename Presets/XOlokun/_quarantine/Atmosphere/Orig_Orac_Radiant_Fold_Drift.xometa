@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Origami": {
-      "macro_character": 0.89,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.66,
-      "macro_space": 0.17
-    },
-    "Oracle": {
-      "macro_character": 0.96,
-      "macro_movement": 0.92,
-      "macro_coupling": 0.81,
-      "macro_space": 0.27
-    }
+    "Origami": {},
+    "Oracle": {}
   },
   "coupling": {
     "type": "FM_CROSS",

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Glass Massive 3",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.534,
-      "macro_coupling": 0.654,
-      "macro_movement": 0.637,
-      "macro_space": 0.105
-    },
-    "Ole": {
-      "macro_character": 0.481,
-      "macro_coupling": 0.668,
-      "macro_movement": 0.641,
-      "macro_space": 0.136
-    }
+    "OddOscar": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

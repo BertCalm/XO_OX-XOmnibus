@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Sunrise Surge",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.576,
-      "macro_coupling": 0.729,
-      "macro_movement": 0.305,
-      "macro_space": 0.2
-    },
-    "Overbite": {
-      "macro_character": 0.521,
-      "macro_coupling": 0.829,
-      "macro_movement": 0.142,
-      "macro_space": 0.347
-    }
+    "Origami": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

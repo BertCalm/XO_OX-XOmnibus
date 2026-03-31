@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Crystal Cathedral",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.673,
-      "macro_coupling": 0.177,
-      "macro_movement": 0.632,
-      "macro_space": 0.277
-    },
-    "Overworld": {
-      "macro_character": 0.715,
-      "macro_coupling": 0.174,
-      "macro_movement": 0.327,
-      "macro_space": 0.148
-    }
+    "OddfeliX": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

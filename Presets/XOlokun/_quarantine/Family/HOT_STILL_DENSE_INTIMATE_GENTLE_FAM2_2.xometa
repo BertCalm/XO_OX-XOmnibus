@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "HOT STILL DENSE INTIMATE GE... (OddfeliX)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.751,
-      "macro_coupling": 0.518,
-      "macro_movement": 0.032,
-      "macro_space": 0.033
-    },
-    "Ottoni": {
-      "macro_character": 0.735,
-      "macro_coupling": 0.535,
-      "macro_movement": 0.02,
-      "macro_space": 0.061
-    }
+    "OddfeliX": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

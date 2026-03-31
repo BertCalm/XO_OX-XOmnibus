@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Glass Massive",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.9082,
-      "macro_coupling": 0.6134,
-      "macro_movement": 0.1357,
-      "macro_space": 0.097
-    },
-    "Organon": {
-      "macro_character": 0.9511,
-      "macro_coupling": 0.6645,
-      "macro_movement": 0.1102,
-      "macro_space": 0.0921
-    }
+    "Orbital": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

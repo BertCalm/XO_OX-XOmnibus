@@ -37,17 +37,8 @@
   "mood": "Prism",
   "name": "Ember Solar II",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.992,
-      "macro_coupling": 0.596,
-      "macro_movement": 0.546,
-      "macro_space": 0.651
-    },
+    "Octopus": {},
     "Overdub": {
-      "macro_character": 0.946,
-      "macro_coupling": 0.761,
-      "macro_movement": 0.65,
-      "macro_space": 0.51,
       "dub_lfoDepth": 0.12
     }
   },

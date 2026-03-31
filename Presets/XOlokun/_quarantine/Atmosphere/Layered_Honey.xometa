@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Layered Honey",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.605,
-      "macro_coupling": 0.775,
-      "macro_movement": 0.568,
-      "macro_space": 0.826
-    },
-    "Oracle": {
-      "macro_character": 0.31,
-      "macro_coupling": 0.766,
-      "macro_movement": 0.565,
-      "macro_space": 0.774
-    }
+    "Obscura": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

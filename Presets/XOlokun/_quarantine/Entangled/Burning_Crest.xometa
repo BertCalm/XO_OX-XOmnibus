@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Burning Crest",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.322,
-      "macro_coupling": 0.857,
-      "macro_movement": 0.408,
-      "macro_space": 0.437
-    },
-    "Origami": {
-      "macro_character": 0.57,
-      "macro_coupling": 0.676,
-      "macro_movement": 0.686,
-      "macro_space": 0.467
-    }
+    "Oceanic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

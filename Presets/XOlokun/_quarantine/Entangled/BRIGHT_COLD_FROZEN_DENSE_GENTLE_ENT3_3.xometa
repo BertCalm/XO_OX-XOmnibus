@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Prism Massive",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.5599,
-      "macro_coupling": 0.8349,
-      "macro_movement": 0.0291,
-      "macro_space": 0.6655
-    },
-    "Ole": {
-      "macro_character": 0.7726,
-      "macro_coupling": 0.8908,
-      "macro_movement": 0.0123,
-      "macro_space": 0.5773
-    }
+    "Obsidian": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Shard Thick",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.0186,
-      "macro_coupling": 0.9091,
-      "macro_movement": 0.5091,
-      "macro_space": 0.0572
-    },
-    "Origami": {
-      "macro_character": 0.0291,
-      "macro_coupling": 0.8691,
-      "macro_movement": 0.4799,
-      "macro_space": 0.0286
-    }
+    "Oceanic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,19 +38,10 @@
   "name": "EMPTY FLUX 7",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.0862,
-      "macro_coupling": 0.9996,
-      "macro_movement": 0.3093,
-      "macro_space": 0.7189,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ottoni": {
-      "macro_character": 0.5257,
-      "macro_coupling": 0.8233,
-      "macro_movement": 0.7692,
-      "macro_space": 0.0738
-    }
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

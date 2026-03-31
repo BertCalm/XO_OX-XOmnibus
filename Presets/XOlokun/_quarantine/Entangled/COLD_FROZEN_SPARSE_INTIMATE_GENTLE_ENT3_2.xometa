@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Signal Node",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.5903,
-      "macro_coupling": 0.7623,
-      "macro_movement": 0.1065,
-      "macro_space": 0.8999
-    },
-    "Overlap": {
-      "macro_character": 0.9276,
-      "macro_coupling": 0.8878,
-      "macro_movement": 0.105,
-      "macro_space": 0.499
-    }
+    "Organon": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "sequencer": null,

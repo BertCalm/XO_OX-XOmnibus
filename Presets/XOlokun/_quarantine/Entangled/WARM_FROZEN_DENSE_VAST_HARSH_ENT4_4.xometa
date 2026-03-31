@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Phase Molten 6",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.681,
-      "macro_coupling": 0.926,
-      "macro_movement": 0.043,
-      "macro_space": 0.884
-    },
-    "Osteria": {
-      "macro_character": 0.666,
-      "macro_coupling": 0.932,
-      "macro_movement": 0.037,
-      "macro_space": 0.897
-    }
+    "OddfeliX": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

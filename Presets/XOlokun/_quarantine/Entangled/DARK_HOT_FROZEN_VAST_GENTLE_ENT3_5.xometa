@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Velvet Abyss",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.5212,
-      "macro_coupling": 0.938,
-      "macro_movement": 0.0236,
-      "macro_space": 0.8369
-    },
-    "Ombre": {
-      "macro_character": 0.7515,
-      "macro_coupling": 0.7762,
-      "macro_movement": 0.0405,
-      "macro_space": 0.5283
-    }
+    "Ole": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "sequencer": null,

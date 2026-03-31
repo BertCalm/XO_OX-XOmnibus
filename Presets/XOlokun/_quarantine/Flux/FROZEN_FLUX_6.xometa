@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "FROZEN FLUX 6",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.1207,
-      "macro_coupling": 0.1196,
-      "macro_movement": 0.1926,
-      "macro_space": 0.5359
-    },
-    "Outwit": {
-      "macro_character": 0.3308,
-      "macro_coupling": 0.2709,
-      "macro_movement": 0.7029,
-      "macro_space": 0.2514
-    }
+    "Opal": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

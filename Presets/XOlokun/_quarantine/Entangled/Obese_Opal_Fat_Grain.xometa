@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fat Grain",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.45,
-      "macro_space": 0.2
-    },
-    "Opal": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.75,
-      "macro_space": 0.65
-    }
+    "Obese": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

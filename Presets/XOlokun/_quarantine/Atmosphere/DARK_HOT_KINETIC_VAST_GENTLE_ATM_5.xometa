@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Dusk Ripple",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.4511,
-      "macro_coupling": 0.4072,
-      "macro_movement": 0.9547,
-      "macro_space": 0.9387
-    },
-    "Osprey": {
-      "macro_character": 0.4541,
-      "macro_coupling": 0.4087,
-      "macro_movement": 0.9624,
-      "macro_space": 0.9302
-    }
+    "OddfeliX": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

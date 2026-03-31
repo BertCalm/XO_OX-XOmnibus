@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Sunrise Surge 2",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.4736,
-      "macro_coupling": 0.8822,
-      "macro_movement": 0.2986,
-      "macro_space": 0.445
-    },
-    "Orbital": {
-      "macro_character": 0.5116,
-      "macro_coupling": 0.7899,
-      "macro_movement": 0.3506,
-      "macro_space": 0.8573
-    }
+    "Opal": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

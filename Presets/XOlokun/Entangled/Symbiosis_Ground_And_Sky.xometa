@@ -2,28 +2,40 @@
   "schema_version": 1,
   "name": "Ground And Sky",
   "mood": "Entangled",
-  "engines": ["Ostinato", "OpenSky"],
+  "engines": [
+    "Ostinato",
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OSTINATO's rhythmic ground pattern drives OPENSKY's shimmer ceiling — the bass pulse gates and brightens the euphoric supersaw canopy while the shimmer's amplitude feeds back to shape the rhythmic accent.",
-  "tags": ["symbiosis", "rhythmic", "shimmer", "ground", "sky", "coupled", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "symbiosis",
+    "rhythmic",
+    "shimmer",
+    "ground",
+    "sky",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.72,
     "warmth": 0.52,
-    "movement": 0.80,
-    "density": 0.60,
-    "space": 0.70,
+    "movement": 0.8,
+    "density": 0.6,
+    "space": 0.7,
     "aggression": 0.42
   },
   "parameters": {
     "Ostinato": {
-      "macro_character": 0.60,
-      "macro_movement": 0.78,
-      "macro_coupling": 0.72,
-      "macro_space": 0.45,
       "osti_macroGather": 0.65,
       "osti_rhythmDensity": 0.55,
       "osti_accentDepth": 0.62,
@@ -31,15 +43,11 @@
       "osti_outputLevel": 0.82
     },
     "OpenSky": {
-      "macro_character": 0.70,
-      "macro_movement": 0.82,
-      "macro_coupling": 0.72,
-      "macro_space": 0.72,
       "sky_macroRise": 0.75,
       "sky_shimmerMix": 0.68,
       "sky_chorusMix": 0.55,
       "sky_filterCutoff": 0.65,
-      "sky_reverbSize": 0.70,
+      "sky_reverbSize": 0.7,
       "sky_outputLevel": 0.78
     }
   },

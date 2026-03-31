@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Eclipse Resonance",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.7,
-      "macro_space": 0.72
-    },
-    "Origami": {
-      "macro_character": 0.43,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.46,
-      "macro_space": 0.45
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

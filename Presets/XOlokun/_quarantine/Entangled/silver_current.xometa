@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Silver Current",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.23,
-      "macro_space": 0.58
-    },
-    "Oceanic": {
-      "macro_character": 0.32,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.37,
-      "macro_space": 0.82
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK KINETIC VAST VIOLENT A... (Orbital I)",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.111,
-      "macro_coupling": 0.887,
-      "macro_movement": 0.804,
-      "macro_space": 0.906
-    },
-    "Origami": {
-      "macro_character": 0.116,
-      "macro_coupling": 0.949,
-      "macro_movement": 0.811,
-      "macro_space": 0.939
-    }
+    "Orbital": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

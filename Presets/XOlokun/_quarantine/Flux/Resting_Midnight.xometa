@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Resting Midnight",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.987,
-      "macro_coupling": 0.678,
-      "macro_movement": 0.021,
-      "macro_space": 0.566
-    },
-    "Organon": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.781,
-      "macro_movement": 0.015,
-      "macro_space": 0.587
-    }
+    "Oracle": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

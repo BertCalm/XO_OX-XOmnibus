@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK KINETIC DENSE BALANCED... (Opal I)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.282,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.954,
-      "macro_space": 0.367
-    },
-    "Opal": {
-      "macro_character": 0.307,
-      "macro_coupling": 0.927,
-      "macro_movement": 0.969,
-      "macro_space": 0.372
-    }
+    "Obscura": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

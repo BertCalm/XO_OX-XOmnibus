@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Halo Fang",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.677,
-      "macro_movement": 0.012,
-      "macro_space": 0.05
-    },
-    "Ole": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.693,
-      "macro_movement": 0.018,
-      "macro_space": 0.027
-    }
+    "Odyssey": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

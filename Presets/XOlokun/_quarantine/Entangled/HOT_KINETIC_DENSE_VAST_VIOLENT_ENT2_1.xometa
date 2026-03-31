@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "HOT KINETIC DENSE VAST VIOL...",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.738,
-      "macro_coupling": 0.95,
-      "macro_movement": 0.944,
-      "macro_space": 0.981
-    },
-    "Overbite": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.954,
-      "macro_movement": 0.963,
-      "macro_space": 0.97
-    }
+    "Ombre": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

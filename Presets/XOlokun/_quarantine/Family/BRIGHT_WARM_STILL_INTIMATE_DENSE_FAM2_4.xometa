@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM STILL INTIMATE ... (Opal I)",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.959,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.09,
-      "macro_space": 0.123
-    },
-    "Organon": {
-      "macro_character": 0.945,
-      "macro_coupling": 0.737,
-      "macro_movement": 0.105,
-      "macro_space": 0.2
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Matte Sting",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.77,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.87,
-      "macro_space": 0.3
-    },
-    "Overbite": {
-      "macro_character": 0.69,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.89,
-      "macro_space": 0.32
-    }
+    "Ohm": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

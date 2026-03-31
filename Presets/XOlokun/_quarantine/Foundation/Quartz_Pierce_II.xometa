@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Quartz Pierce II",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.057,
-      "macro_coupling": 0.611,
-      "macro_movement": 0.319,
-      "macro_space": 0.551
-    },
-    "Origami": {
-      "macro_character": 0.021,
-      "macro_coupling": 0.441,
-      "macro_movement": 0.468,
-      "macro_space": 0.692
-    }
+    "Obbligato": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Shadow Gentle",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.886,
-      "macro_coupling": 0.39,
-      "macro_movement": 0.195,
-      "macro_space": 0.854
-    },
-    "Ouroboros": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.889,
-      "macro_movement": 0.858,
-      "macro_space": 0.764
-    }
+    "Obese": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

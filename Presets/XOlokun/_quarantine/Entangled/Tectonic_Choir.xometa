@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Tectonic Choir",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.41,
-      "macro_space": 0.48
-    },
-    "Organon": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.41,
-      "macro_movement": 0.35,
-      "macro_space": 0.39
-    }
+    "Obese": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

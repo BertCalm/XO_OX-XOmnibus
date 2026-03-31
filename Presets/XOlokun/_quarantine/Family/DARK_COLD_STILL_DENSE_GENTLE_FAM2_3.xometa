@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "DARK COLD STILL DENSE GENTL... (Osprey I)",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.042,
-      "macro_coupling": 0.41,
-      "macro_movement": 0.02,
-      "macro_space": 0.588
-    },
-    "Osprey": {
-      "macro_character": 0.032,
-      "macro_coupling": 0.448,
-      "macro_movement": 0.021,
-      "macro_space": 0.583
-    }
+    "Odyssey": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

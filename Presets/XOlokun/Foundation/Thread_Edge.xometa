@@ -45,17 +45,8 @@
   "mood": "Foundation",
   "name": "Thread Edge",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.055,
-      "macro_coupling": 0.465,
-      "macro_movement": 0.995,
-      "macro_space": 0.098
-    },
+    "Ouroboros": {},
     "Overdub": {
-      "macro_character": 0.015,
-      "macro_coupling": 0.333,
-      "macro_movement": 0.898,
-      "macro_space": 0.0,
       "dub_lfoDepth": 0.12
     }
   },

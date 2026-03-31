@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Glass Fang",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.918,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.21,
-      "macro_space": 0.103
-    },
-    "OddOscar": {
-      "macro_character": 0.919,
-      "macro_coupling": 0.037,
-      "macro_movement": 0.022,
-      "macro_space": 0.027
-    }
+    "Obsidian": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "sequencer": null,

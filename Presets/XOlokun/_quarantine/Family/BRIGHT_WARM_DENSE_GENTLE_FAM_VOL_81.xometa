@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Packed 2",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.947,
-      "macro_coupling": 0.477,
-      "macro_movement": 0.321,
-      "macro_space": 0.502
-    },
-    "Osprey": {
-      "macro_character": 0.939,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.32,
-      "macro_space": 0.494
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

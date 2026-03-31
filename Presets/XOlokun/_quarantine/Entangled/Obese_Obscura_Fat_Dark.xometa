@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fat Dark",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.35,
-      "macro_space": 0.1
-    },
-    "Obscura": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.4,
-      "macro_space": 0.2
-    }
+    "Obese": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

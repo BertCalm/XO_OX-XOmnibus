@@ -39,18 +39,8 @@
   "mood": "Aether",
   "name": "Umbra Close",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.64,
-      "macro_space": 0.1
-    },
-    "Overlap": {
-      "macro_character": 0.79,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.87,
-      "macro_space": 0.43
-    }
+    "Octopus": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "sequencer": null,

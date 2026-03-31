@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Midnight Chrome III",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.139,
-      "macro_coupling": 0.767,
-      "macro_movement": 0.507,
-      "macro_space": 0.424
-    },
-    "Outwit": {
-      "macro_character": 0.046,
-      "macro_coupling": 0.816,
-      "macro_movement": 0.607,
-      "macro_space": 0.451
-    }
+    "Oceanic": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

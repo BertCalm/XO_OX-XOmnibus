@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "DARK HOT DENSE INTIMATE VIO...",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.471,
-      "macro_coupling": 0.966,
-      "macro_movement": 0.602,
-      "macro_space": 0.024
-    },
-    "Organon": {
-      "macro_character": 0.497,
-      "macro_coupling": 0.968,
-      "macro_movement": 0.644,
-      "macro_space": 0.051
-    }
+    "Ocelot": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

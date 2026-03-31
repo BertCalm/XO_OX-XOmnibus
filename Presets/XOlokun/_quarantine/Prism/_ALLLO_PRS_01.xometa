@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "ALLLO PRS 01",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.054,
-      "macro_movement": 0.07,
-      "macro_space": 0.027
-    },
-    "Orphica": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.054,
-      "macro_movement": 0.07,
-      "macro_space": 0.027
-    }
+    "Ocelot": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

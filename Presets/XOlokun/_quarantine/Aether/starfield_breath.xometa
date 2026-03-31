@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Starfield Breath",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.1,
-      "macro_movement": 0.65,
-      "macro_space": 0.96
-    }
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

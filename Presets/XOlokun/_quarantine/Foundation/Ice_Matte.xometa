@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Ice Matte",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.052,
-      "macro_coupling": 0.824,
-      "macro_movement": 0.683,
-      "macro_space": 0.337
-    },
-    "Optic": {
-      "macro_character": 0.144,
-      "macro_coupling": 0.713,
-      "macro_movement": 0.752,
-      "macro_space": 0.479
-    }
+    "Obese": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

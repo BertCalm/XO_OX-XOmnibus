@@ -38,19 +38,10 @@
   "name": "Solar Canyon",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.477,
-      "macro_movement": 0.02,
-      "macro_space": 0.87,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ohm": {
-      "macro_character": 0.924,
-      "macro_coupling": 0.433,
-      "macro_movement": 0.019,
-      "macro_space": 0.865
-    }
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

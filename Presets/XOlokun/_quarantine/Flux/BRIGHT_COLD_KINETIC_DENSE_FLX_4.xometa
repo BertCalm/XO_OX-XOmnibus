@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Quartz Current",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.9405,
-      "macro_coupling": 0.4963,
-      "macro_movement": 0.9641,
-      "macro_space": 0.3446
-    },
-    "Odyssey": {
-      "macro_character": 0.941,
-      "macro_coupling": 0.6562,
-      "macro_movement": 0.92,
-      "macro_space": 0.4705
-    }
+    "Oceanic": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

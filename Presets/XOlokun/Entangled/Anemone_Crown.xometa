@@ -39,19 +39,10 @@
   "name": "Anemone Crown",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.4,
-      "macro_space": 0.3,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Origami": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.4,
-      "macro_space": 0.3
-    }
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

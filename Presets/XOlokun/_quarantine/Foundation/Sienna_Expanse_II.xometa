@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Sienna Expanse II",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.954,
-      "macro_coupling": 0.759,
-      "macro_movement": 0.916,
-      "macro_space": 0.957
-    },
-    "Overbite": {
-      "macro_character": 0.954,
-      "macro_coupling": 0.759,
-      "macro_movement": 0.916,
-      "macro_space": 0.957
-    }
+    "Onset": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

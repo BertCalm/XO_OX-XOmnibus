@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Cinnamon Eclipse",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.1555,
-      "macro_coupling": 0.4915,
-      "macro_movement": 0.1623,
-      "macro_space": 0.8821
-    },
-    "Origami": {
-      "macro_character": 0.1209,
-      "macro_coupling": 0.4818,
-      "macro_movement": 0.1367,
-      "macro_space": 0.8335
-    }
+    "Opal": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

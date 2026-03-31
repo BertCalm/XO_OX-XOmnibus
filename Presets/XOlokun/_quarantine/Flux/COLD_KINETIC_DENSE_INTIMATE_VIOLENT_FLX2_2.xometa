@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Signal Stream 2",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.3264,
-      "macro_coupling": 0.9049,
-      "macro_movement": 0.9849,
-      "macro_space": 0.0571
-    },
-    "Organon": {
-      "macro_character": 0.3098,
-      "macro_coupling": 0.8513,
-      "macro_movement": 0.9556,
-      "macro_space": 0.07
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

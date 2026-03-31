@@ -37,17 +37,8 @@
   "mood": "Foundation",
   "name": "Arctic Strike",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.644,
-      "macro_movement": 0.675,
-      "macro_space": 0.748
-    },
+    "Ouroboros": {},
     "Overdub": {
-      "macro_character": 0.673,
-      "macro_coupling": 0.611,
-      "macro_movement": 0.64,
-      "macro_space": 0.789,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Crystal Molten",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.8725,
-      "macro_coupling": 0.7744,
-      "macro_movement": 0.7874,
-      "macro_space": 0.6293
-    },
-    "Ouroboros": {
-      "macro_character": 0.8332,
-      "macro_coupling": 0.7466,
-      "macro_movement": 0.9771,
-      "macro_space": 0.4959
-    }
+    "Oceanic": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

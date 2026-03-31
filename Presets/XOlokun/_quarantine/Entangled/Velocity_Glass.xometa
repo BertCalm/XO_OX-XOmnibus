@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Velocity Glass",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.46,
-      "macro_space": 0.58
-    },
-    "Orphica": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.52,
-      "macro_space": 0.74
-    }
+    "Obscura": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

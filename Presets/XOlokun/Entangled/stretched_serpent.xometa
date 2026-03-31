@@ -39,19 +39,10 @@
   "name": "Stretched Serpent",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.7,
-      "macro_space": 0.6,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ouroboros": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.8,
-      "macro_space": 0.5
-    }
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

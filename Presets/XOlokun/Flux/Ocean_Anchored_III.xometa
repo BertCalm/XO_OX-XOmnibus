@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Ocean Anchored III",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.6758,
-      "macro_coupling": 0.5376,
-      "macro_movement": 0.1195,
-      "macro_space": 0.8551
-    },
+    "Oceanic": {},
     "Overdub": {
-      "macro_character": 0.698,
-      "macro_coupling": 0.4834,
-      "macro_movement": 0.0835,
-      "macro_space": 0.9076,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM SPARSE BALANCED... (Ombre I)",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.927,
-      "macro_coupling": 0.702,
-      "macro_movement": 0.334,
-      "macro_space": 0.497
-    },
-    "Origami": {
-      "macro_character": 0.898,
-      "macro_coupling": 0.696,
-      "macro_movement": 0.322,
-      "macro_space": 0.482
-    }
+    "Ombre": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

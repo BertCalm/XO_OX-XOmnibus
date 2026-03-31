@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Halo Storm",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.6255,
-      "macro_coupling": 0.8581,
-      "macro_movement": 0.3233,
-      "macro_space": 0.1314
-    },
-    "Oceanic": {
-      "macro_character": 0.7552,
-      "macro_coupling": 0.9289,
-      "macro_movement": 0.5129,
-      "macro_space": 0.0921
-    }
+    "Oblique": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

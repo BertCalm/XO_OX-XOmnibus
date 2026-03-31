@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Halo Expanse",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.929,
-      "macro_coupling": 0.385,
-      "macro_movement": 0.391,
-      "macro_space": 0.891
-    },
+    "Orphica": {},
     "Overdub": {
-      "macro_character": 0.97,
-      "macro_coupling": 0.393,
-      "macro_movement": 0.367,
-      "macro_space": 0.888,
       "dub_lfoDepth": 0.12
     }
   },

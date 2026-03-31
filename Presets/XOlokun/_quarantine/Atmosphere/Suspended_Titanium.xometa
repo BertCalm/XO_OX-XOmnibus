@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Suspended Titanium",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.667,
-      "macro_movement": 0.256,
-      "macro_space": 0.251
-    },
-    "Origami": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.827,
-      "macro_movement": 0.246,
-      "macro_space": 0.144
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

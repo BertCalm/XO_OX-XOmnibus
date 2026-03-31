@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Stiff String Kelp",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.325,
-      "macro_coupling": 0.525,
-      "macro_movement": 0.225,
-      "macro_space": 0.575
-    },
-    "Oceanic": {
-      "macro_character": 0.325,
-      "macro_coupling": 0.475,
-      "macro_movement": 0.375,
-      "macro_space": 0.825
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

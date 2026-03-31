@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Wisp Horizon II",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.6054,
-      "macro_coupling": 0.2699,
-      "macro_movement": 0.2111,
-      "macro_space": 0.7652
-    },
-    "Oracle": {
-      "macro_character": 0.3773,
-      "macro_coupling": 0.561,
-      "macro_movement": 0.5048,
-      "macro_space": 0.8485
-    }
+    "OddfeliX": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Mahogany Undulation III",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.768,
-      "macro_coupling": 0.855,
-      "macro_movement": 0.862,
-      "macro_space": 0.763
-    },
-    "Origami": {
-      "macro_character": 0.43,
-      "macro_coupling": 0.892,
-      "macro_movement": 0.852,
-      "macro_space": 0.698
-    }
+    "Oceanic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

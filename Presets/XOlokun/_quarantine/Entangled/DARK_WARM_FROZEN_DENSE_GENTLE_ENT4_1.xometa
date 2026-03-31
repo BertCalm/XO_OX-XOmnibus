@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Ember Solid 2",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.492,
-      "macro_coupling": 0.907,
-      "macro_movement": 0.099,
-      "macro_space": 0.346
-    },
-    "Osteria": {
-      "macro_character": 0.487,
-      "macro_coupling": 0.859,
-      "macro_movement": 0.103,
-      "macro_space": 0.354
-    }
+    "Origami": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

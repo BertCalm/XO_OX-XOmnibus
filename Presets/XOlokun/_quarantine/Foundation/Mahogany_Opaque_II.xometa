@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Mahogany Opaque II",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.899,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.709,
-      "macro_space": 0.336
-    },
-    "Orphica": {
-      "macro_character": 0.913,
-      "macro_coupling": 0.456,
-      "macro_movement": 0.573,
-      "macro_space": 0.407
-    }
+    "Orbital": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Dusk Velvet II",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.7106,
-      "macro_coupling": 0.9204,
-      "macro_movement": 0.3051,
-      "macro_space": 0.9288
-    },
-    "Ottoni": {
-      "macro_character": 0.7054,
-      "macro_coupling": 0.9576,
-      "macro_movement": 0.3238,
-      "macro_space": 0.9104
-    }
+    "Osteria": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

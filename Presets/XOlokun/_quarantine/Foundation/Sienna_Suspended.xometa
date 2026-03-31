@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Sienna Suspended",
   "parameters": {
-    "Overbite": {
-      "macro_character": 0.155,
-      "macro_coupling": 0.302,
-      "macro_movement": 0.295,
-      "macro_space": 0.753
-    },
-    "Overworld": {
-      "macro_character": 0.211,
-      "macro_coupling": 0.173,
-      "macro_movement": 0.242,
-      "macro_space": 0.542
-    }
+    "Overbite": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

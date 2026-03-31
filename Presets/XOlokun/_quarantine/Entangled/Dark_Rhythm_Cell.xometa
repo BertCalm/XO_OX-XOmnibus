@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Dark Rhythm Cell",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.74,
-      "macro_space": 0.26
-    },
-    "Outwit": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.11,
-      "macro_space": 0.14
-    }
+    "Optic": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

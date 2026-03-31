@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Flux Vast",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.2831,
-      "macro_coupling": 0.5232,
-      "macro_movement": 0.9673,
-      "macro_space": 0.9714
-    },
-    "Oracle": {
-      "macro_character": 0.3033,
-      "macro_coupling": 0.5019,
-      "macro_movement": 0.9563,
-      "macro_space": 0.9697
-    }
+    "Ohm": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

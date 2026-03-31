@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sting Ice II",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.064,
-      "macro_coupling": 0.801,
-      "macro_movement": 0.453,
-      "macro_space": 0.687
-    },
-    "Optic": {
-      "macro_character": 0.0,
-      "macro_coupling": 0.581,
-      "macro_movement": 0.495,
-      "macro_space": 0.703
-    }
+    "Obese": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

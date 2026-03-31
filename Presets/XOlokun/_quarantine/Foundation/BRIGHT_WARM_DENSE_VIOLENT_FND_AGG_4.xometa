@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Radiant Edge",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.686,
-      "macro_movement": 0.562,
-      "macro_space": 0.875
-    },
-    "Overbite": {
-      "macro_character": 0.797,
-      "macro_coupling": 0.729,
-      "macro_movement": 0.587,
-      "macro_space": 0.849
-    }
+    "OddfeliX": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

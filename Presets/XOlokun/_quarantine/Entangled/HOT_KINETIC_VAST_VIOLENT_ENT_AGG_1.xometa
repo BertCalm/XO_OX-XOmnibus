@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Wave Grit 3",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.916,
-      "macro_space": 0.923
-    },
-    "Obsidian": {
-      "macro_character": 0.634,
-      "macro_coupling": 0.844,
-      "macro_movement": 0.852,
-      "macro_space": 0.893
-    }
+    "Obscura": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Overbite": {
-      "macro_character": 0.69,
-      "macro_movement": 0.89,
-      "macro_coupling": 0.83,
-      "macro_space": 0.32
-    },
-    "Ohm": {
-      "macro_character": 0.77,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.53,
-      "macro_space": 0.3
-    }
+    "Overbite": {},
+    "Ohm": {}
   },
   "coupling": {
     "type": "RING_MOD",

@@ -38,19 +38,10 @@
   "name": "Honey Massive 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.893,
-      "macro_coupling": 0.95,
-      "macro_movement": 0.081,
-      "macro_space": 0.389,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Oceanic": {
-      "macro_character": 0.899,
-      "macro_coupling": 0.864,
-      "macro_movement": 0.094,
-      "macro_space": 0.383
-    }
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Chrome Cavern",
   "parameters": {
-    "Orca": {
-      "macro_character": 0.6311,
-      "macro_coupling": 0.8095,
-      "macro_movement": 0.0147,
-      "macro_space": 0.1823
-    },
-    "Ouroboros": {
-      "macro_character": 0.6882,
-      "macro_coupling": 0.8977,
-      "macro_movement": 0.0377,
-      "macro_space": 0.311
-    }
+    "Orca": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

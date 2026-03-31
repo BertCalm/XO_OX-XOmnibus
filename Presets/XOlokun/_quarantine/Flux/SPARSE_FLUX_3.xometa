@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "SPARSE FLUX 3",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.6861,
-      "macro_coupling": 0.9097,
-      "macro_movement": 0.4903,
-      "macro_space": 0.0735
-    },
-    "Osprey": {
-      "macro_character": 0.0808,
-      "macro_coupling": 0.0657,
-      "macro_movement": 0.6083,
-      "macro_space": 0.275
-    }
+    "Onset": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

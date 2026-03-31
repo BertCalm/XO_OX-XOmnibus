@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Silver Strike 2",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.538,
-      "macro_coupling": 0.479,
-      "macro_movement": 0.105,
-      "macro_space": 0.407
-    },
-    "Ole": {
-      "macro_character": 0.899,
-      "macro_coupling": 0.822,
-      "macro_movement": 0.105,
-      "macro_space": 0.407
-    }
+    "Ohm": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

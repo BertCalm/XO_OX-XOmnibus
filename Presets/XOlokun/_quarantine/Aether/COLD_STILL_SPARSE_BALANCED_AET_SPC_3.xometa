@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "COLD STILL SPARSE BALANCED ... (Organon I)",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.345,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.084,
-      "macro_space": 0.595
-    },
-    "Organon": {
-      "macro_character": 0.373,
-      "macro_coupling": 0.931,
-      "macro_movement": 0.112,
-      "macro_space": 0.575
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

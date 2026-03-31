@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Glass Cavern",
   "parameters": {
-    "Orca": {
-      "macro_character": 0.5359,
-      "macro_coupling": 0.8012,
-      "macro_movement": 0.0573,
-      "macro_space": 0.3254
-    },
-    "Organon": {
-      "macro_character": 0.9316,
-      "macro_coupling": 0.961,
-      "macro_movement": 0.0263,
-      "macro_space": 0.4141
-    }
+    "Orca": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "sequencer": null,

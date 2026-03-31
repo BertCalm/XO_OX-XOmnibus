@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "CRYO FLUX 4",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.6415,
-      "macro_coupling": 0.9811,
-      "macro_movement": 0.3997,
-      "macro_space": 0.5362
-    },
-    "Organon": {
-      "macro_character": 0.3283,
-      "macro_coupling": 0.9669,
-      "macro_movement": 0.8644,
-      "macro_space": 0.2791
-    }
+    "Orbital": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

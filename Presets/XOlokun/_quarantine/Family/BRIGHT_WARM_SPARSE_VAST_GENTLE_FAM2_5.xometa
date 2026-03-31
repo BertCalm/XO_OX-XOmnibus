@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM SPARSE VAST GEN... (Origami I)",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.895,
-      "macro_coupling": 0.037,
-      "macro_movement": 0.406,
-      "macro_space": 0.931
-    },
-    "Origami": {
-      "macro_character": 0.917,
-      "macro_coupling": 0.051,
-      "macro_movement": 0.39,
-      "macro_space": 0.947
-    }
+    "Ohm": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

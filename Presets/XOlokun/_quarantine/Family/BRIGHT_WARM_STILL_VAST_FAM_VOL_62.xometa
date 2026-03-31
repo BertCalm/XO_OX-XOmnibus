@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sunrise Canyon 2",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.957,
-      "macro_coupling": 0.502,
-      "macro_movement": 0.059,
-      "macro_space": 0.949
-    },
-    "Osprey": {
-      "macro_character": 0.928,
-      "macro_coupling": 0.492,
-      "macro_movement": 0.055,
-      "macro_space": 0.959
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Murky Pulse",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.726,
-      "macro_coupling": 0.784,
-      "macro_movement": 0.76,
-      "macro_space": 0.677
-    },
-    "Octopus": {
-      "macro_character": 0.737,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.5,
-      "macro_space": 0.346
-    }
+    "Obbligato": {},
+    "Octopus": {}
   },
   "schema_version": 1,
   "tags": [

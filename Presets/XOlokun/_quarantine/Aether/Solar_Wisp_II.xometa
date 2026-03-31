@@ -39,18 +39,8 @@
   "mood": "Aether",
   "name": "Solar Wisp II",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.88,
-      "macro_space": 0.41
-    },
-    "Organon": {
-      "macro_character": 0.77,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.99,
-      "macro_space": 0.25
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "sequencer": null,

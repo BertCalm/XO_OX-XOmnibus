@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Copper Rage",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.9195,
-      "macro_coupling": 0.6848,
-      "macro_movement": 0.881,
-      "macro_space": 0.6344
-    },
-    "Ottoni": {
-      "macro_character": 0.9405,
-      "macro_coupling": 0.6863,
-      "macro_movement": 0.855,
-      "macro_space": 0.6298
-    }
+    "Oblique": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

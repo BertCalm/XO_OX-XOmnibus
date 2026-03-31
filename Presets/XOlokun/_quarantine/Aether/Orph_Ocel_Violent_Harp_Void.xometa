@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.69,
-      "macro_movement": 0.86,
-      "macro_coupling": 0.76,
-      "macro_space": 0.14
-    },
-    "Ocelot": {
-      "macro_character": 0.76,
-      "macro_movement": 0.64,
-      "macro_coupling": 0.61,
-      "macro_space": 0.28
-    }
+    "Orphica": {},
+    "Ocelot": {}
   },
   "coupling": {
     "type": "ENVELOPE_SLAVE",

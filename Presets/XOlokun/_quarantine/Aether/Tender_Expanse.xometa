@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Tender Expanse",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.7127,
-      "macro_coupling": 0.6762,
-      "macro_movement": 0.2536,
-      "macro_space": 0.6006
-    },
-    "Osprey": {
-      "macro_character": 0.3836,
-      "macro_coupling": 0.4025,
-      "macro_movement": 0.5467,
-      "macro_space": 0.894
-    }
+    "Oceanic": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Shard Blade",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.546,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.057,
-      "macro_space": 0.822
-    },
+    "Oceanic": {},
     "Overdub": {
-      "macro_character": 0.69,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.058,
-      "macro_space": 0.883,
       "dub_lfoDepth": 0.12
     }
   },

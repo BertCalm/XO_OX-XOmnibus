@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Stiff String Orbit",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.25,
-      "macro_space": 0.6
-    },
-    "Orbital": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.55,
-      "macro_space": 0.7
-    }
+    "Obscura": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

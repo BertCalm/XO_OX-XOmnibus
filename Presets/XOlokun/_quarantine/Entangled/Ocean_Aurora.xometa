@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Ocean Aurora",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.903,
-      "macro_coupling": 0.951,
-      "macro_movement": 0.473,
-      "macro_space": 0.99
-    },
-    "Owlfish": {
-      "macro_character": 0.933,
-      "macro_coupling": 0.926,
-      "macro_movement": 0.447,
-      "macro_space": 0.99
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

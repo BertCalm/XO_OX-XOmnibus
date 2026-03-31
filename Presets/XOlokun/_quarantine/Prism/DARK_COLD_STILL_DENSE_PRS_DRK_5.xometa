@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Node Thick",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.1966,
-      "macro_coupling": 0.9465,
-      "macro_movement": 0.1238,
-      "macro_space": 0.6011
-    },
-    "Orphica": {
-      "macro_character": 0.1918,
-      "macro_coupling": 0.9106,
-      "macro_movement": 0.0985,
-      "macro_space": 0.6364
-    }
+    "Oblique": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

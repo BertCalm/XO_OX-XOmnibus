@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Tone Blade",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.1551,
-      "macro_coupling": 0.9676,
-      "macro_movement": 0.9143,
-      "macro_space": 0.9379
-    },
-    "Oracle": {
-      "macro_character": 0.1591,
-      "macro_coupling": 0.9562,
-      "macro_movement": 0.8994,
-      "macro_space": 0.9243
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

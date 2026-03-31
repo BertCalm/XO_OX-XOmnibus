@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Peach Abyss",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.295,
-      "macro_movement": 0.52,
-      "macro_space": 0.974
-    },
-    "OddfeliX": {
-      "macro_character": 0.891,
-      "macro_coupling": 0.31,
-      "macro_movement": 0.496,
-      "macro_space": 0.946
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

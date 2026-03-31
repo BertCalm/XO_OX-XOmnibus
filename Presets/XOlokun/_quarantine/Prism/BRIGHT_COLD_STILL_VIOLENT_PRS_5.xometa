@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Silver Fang",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.491,
-      "macro_coupling": 0.379,
-      "macro_movement": 0.095,
-      "macro_space": 0.388
-    },
-    "Overworld": {
-      "macro_character": 0.878,
-      "macro_coupling": 0.429,
-      "macro_movement": 0.095,
-      "macro_space": 0.388
-    }
+    "Ottoni": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

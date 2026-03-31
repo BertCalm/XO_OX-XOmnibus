@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Bloom Surge",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.726,
-      "macro_coupling": 0.983,
-      "macro_movement": 0.955,
-      "macro_space": 0.74
-    },
-    "Oracle": {
-      "macro_character": 0.396,
-      "macro_coupling": 0.991,
-      "macro_movement": 0.901,
-      "macro_space": 0.677
-    }
+    "Optic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

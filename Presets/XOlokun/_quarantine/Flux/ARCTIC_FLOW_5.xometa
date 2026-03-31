@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ARCTIC FLOW 5",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.2194,
-      "macro_coupling": 0.029,
-      "macro_movement": 0.4358,
-      "macro_space": 0.3361
-    },
-    "Overlap": {
-      "macro_character": 0.6791,
-      "macro_coupling": 0.165,
-      "macro_movement": 0.4043,
-      "macro_space": 0.4674
-    }
+    "Orphica": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

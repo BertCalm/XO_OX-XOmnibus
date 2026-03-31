@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Shadow Vast",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.268,
-      "macro_coupling": 0.865,
-      "macro_movement": 0.901,
-      "macro_space": 0.914
-    },
-    "Ole": {
-      "macro_character": 0.313,
-      "macro_coupling": 0.711,
-      "macro_movement": 0.988,
-      "macro_space": 0.85
-    }
+    "Ohm": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

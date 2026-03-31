@@ -37,17 +37,8 @@
   "mood": "Aether",
   "name": "Ember Solar III",
   "parameters": {
-    "Octopus": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.569,
-      "macro_movement": 0.407,
-      "macro_space": 0.291
-    },
+    "Octopus": {},
     "Overdub": {
-      "macro_character": 0.923,
-      "macro_coupling": 0.569,
-      "macro_movement": 0.363,
-      "macro_space": 0.413,
       "dub_lfoDepth": 0.12
     }
   },

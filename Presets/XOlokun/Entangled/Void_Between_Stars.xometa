@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Void Between Stars II",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.13,
-      "macro_coupling": 0.54,
-      "macro_movement": 0.83,
-      "macro_space": 0.43
-    },
+    "Obscura": {},
     "Overdub": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.81,
-      "macro_space": 0.83,
       "dub_lfoDepth": 0.12
     }
   },

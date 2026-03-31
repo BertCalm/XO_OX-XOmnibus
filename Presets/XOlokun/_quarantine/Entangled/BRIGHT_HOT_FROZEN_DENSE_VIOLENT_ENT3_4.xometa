@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Radiant Deep",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.9479,
-      "macro_coupling": 0.9766,
-      "macro_movement": 0.0894,
-      "macro_space": 0.9223
-    },
-    "Osprey": {
-      "macro_character": 0.9265,
-      "macro_coupling": 0.943,
-      "macro_movement": 0.0806,
-      "macro_space": 0.4981
-    }
+    "Oracle": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "sequencer": null,

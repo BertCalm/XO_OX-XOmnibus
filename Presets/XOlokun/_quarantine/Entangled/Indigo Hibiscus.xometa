@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Indigo Hibiscus",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.6,
-      "macro_space": 0.36
-    },
-    "Oracle": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.68,
-      "macro_space": 0.62
-    }
+    "Ole": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "sequencer": null,

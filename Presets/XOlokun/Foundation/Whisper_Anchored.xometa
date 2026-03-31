@@ -37,17 +37,8 @@
   "mood": "Foundation",
   "name": "Whisper Anchored",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.635,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.684,
-      "macro_space": 0.152
-    },
+    "Obsidian": {},
     "Overdub": {
-      "macro_character": 0.388,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.781,
-      "macro_space": 0.518,
       "dub_lfoDepth": 0.12
     }
   },

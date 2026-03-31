@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Amber Blade",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.4162,
-      "macro_coupling": 0.8102,
-      "macro_movement": 0.9089,
-      "macro_space": 0.6126
-    },
-    "Origami": {
-      "macro_character": 0.7026,
-      "macro_coupling": 0.4474,
-      "macro_movement": 0.8433,
-      "macro_space": 0.7203
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

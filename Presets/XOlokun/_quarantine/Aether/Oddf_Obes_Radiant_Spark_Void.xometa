@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.79,
-      "macro_movement": 0.93,
-      "macro_coupling": 0.61,
-      "macro_space": 0.16
-    },
-    "Obese": {
-      "macro_character": 0.64,
-      "macro_movement": 0.94,
-      "macro_coupling": 0.65,
-      "macro_space": 0.38
-    }
+    "OddfeliX": {},
+    "Obese": {}
   },
   "coupling": {
     "type": "PHASE_LOCK",

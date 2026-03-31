@@ -39,18 +39,8 @@
   "mood": "Foundation",
   "name": "Blade Dense III",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.79,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.97,
-      "macro_space": 0.13
-    },
-    "Outwit": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.9,
-      "macro_space": 0.14
-    }
+    "Origami": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Shimmer Trace",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.833,
-      "macro_coupling": 0.635,
-      "macro_movement": 0.569,
-      "macro_space": 0.316
-    },
-    "Organon": {
-      "macro_character": 0.958,
-      "macro_coupling": 0.752,
-      "macro_movement": 0.473,
-      "macro_space": 0.356
-    }
+    "Oracle": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

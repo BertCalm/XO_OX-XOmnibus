@@ -38,19 +38,10 @@
   "name": "Shadow Pulse",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.1139,
-      "macro_coupling": 0.7721,
-      "macro_movement": 0.8394,
-      "macro_space": 0.1275,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Origami": {
-      "macro_character": 0.1738,
-      "macro_coupling": 0.9026,
-      "macro_movement": 0.9113,
-      "macro_space": 0.1265
-    }
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

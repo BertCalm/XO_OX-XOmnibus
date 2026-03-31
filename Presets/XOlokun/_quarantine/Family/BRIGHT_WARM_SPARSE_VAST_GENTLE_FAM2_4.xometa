@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM SPARSE VAST GEN... (Osteria I)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.905,
-      "macro_coupling": 0.062,
-      "macro_movement": 0.347,
-      "macro_space": 0.99
-    },
-    "Osteria": {
-      "macro_character": 0.913,
-      "macro_coupling": 0.072,
-      "macro_movement": 0.319,
-      "macro_space": 0.988
-    }
+    "OddfeliX": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Wave Stream",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.612,
-      "macro_movement": 0.475,
-      "macro_space": 0.71
-    },
-    "Origami": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.587,
-      "macro_movement": 0.493,
-      "macro_space": 0.753
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

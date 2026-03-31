@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Halo Horizon 2",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.268,
-      "macro_movement": 0.473,
-      "macro_space": 0.915
-    },
-    "Osprey": {
-      "macro_character": 0.911,
-      "macro_coupling": 0.263,
-      "macro_movement": 0.477,
-      "macro_space": 0.939
-    }
+    "Ole": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

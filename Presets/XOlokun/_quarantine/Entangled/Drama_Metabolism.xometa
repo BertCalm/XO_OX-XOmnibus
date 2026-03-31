@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Drama Metabolism II",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.72,
-      "macro_space": 0.38
-    },
-    "Organon": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.7,
-      "macro_space": 0.52
-    }
+    "Ole": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

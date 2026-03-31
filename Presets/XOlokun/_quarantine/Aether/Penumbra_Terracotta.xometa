@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Penumbra Terracotta",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.6979,
-      "macro_coupling": 0.27,
-      "macro_movement": 0.6644,
-      "macro_space": 0.914
-    },
-    "Osprey": {
-      "macro_character": 0.3762,
-      "macro_coupling": 0.8049,
-      "macro_movement": 0.4328,
-      "macro_space": 0.3105
-    }
+    "Obscura": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

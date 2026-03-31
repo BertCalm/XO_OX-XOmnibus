@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Grain Shimmer 2",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.3033,
-      "macro_coupling": 0.5519,
-      "macro_movement": 0.9197,
-      "macro_space": 0.8933
-    },
-    "Owlfish": {
-      "macro_character": 0.3183,
-      "macro_coupling": 0.5807,
-      "macro_movement": 0.9511,
-      "macro_space": 0.9241
-    }
+    "Ohm": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

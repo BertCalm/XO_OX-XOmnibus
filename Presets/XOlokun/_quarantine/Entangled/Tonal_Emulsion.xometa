@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Tonal Emulsion",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.07,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.13,
-      "macro_space": 0.99
-    },
-    "Odyssey": {
-      "macro_character": 0.1,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.18,
-      "macro_space": 0.96
-    }
+    "Obscura": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

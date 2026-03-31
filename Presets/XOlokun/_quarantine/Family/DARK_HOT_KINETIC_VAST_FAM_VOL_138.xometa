@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Amber Cascade 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.482,
-      "macro_coupling": 0.462,
-      "macro_movement": 0.929,
-      "macro_space": 0.85
-    },
-    "Origami": {
-      "macro_character": 0.475,
-      "macro_coupling": 0.483,
-      "macro_movement": 0.95,
-      "macro_space": 0.894
-    }
+    "OddOscar": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Strike Crystal II",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.946,
-      "macro_coupling": 0.694,
-      "macro_movement": 0.939,
-      "macro_space": 0.426
-    },
-    "Osteria": {
-      "macro_character": 0.946,
-      "macro_coupling": 0.694,
-      "macro_movement": 0.939,
-      "macro_space": 0.426
-    }
+    "Odyssey": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

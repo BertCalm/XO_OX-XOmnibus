@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Dark Coupling Engine",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.44,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.71,
-      "macro_space": 0.37
-    },
-    "Obsidian": {
-      "macro_character": 0.31,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.33,
-      "macro_space": 0.37
-    }
+    "Obese": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

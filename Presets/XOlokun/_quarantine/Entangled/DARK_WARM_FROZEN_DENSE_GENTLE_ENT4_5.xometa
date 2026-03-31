@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Velvet Heavy",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.499,
-      "macro_coupling": 0.88,
-      "macro_movement": 0.055,
-      "macro_space": 0.356
-    },
-    "Outwit": {
-      "macro_character": 0.478,
-      "macro_coupling": 0.889,
-      "macro_movement": 0.055,
-      "macro_space": 0.305
-    }
+    "Ottoni": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

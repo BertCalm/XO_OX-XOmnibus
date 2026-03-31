@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Ember Flutter",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.034,
-      "macro_coupling": 0.5956,
-      "macro_movement": 0.8915,
-      "macro_space": 0.0453
-    },
-    "Origami": {
-      "macro_character": 0.0697,
-      "macro_coupling": 0.5489,
-      "macro_movement": 0.8515,
-      "macro_space": 0.0401
-    }
+    "Oceanic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

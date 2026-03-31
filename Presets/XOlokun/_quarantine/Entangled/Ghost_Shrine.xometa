@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Ghost Shrine",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.559,
-      "macro_coupling": 0.761,
-      "macro_movement": 0.668,
-      "macro_space": 0.325
-    },
-    "Origami": {
-      "macro_character": 0.461,
-      "macro_coupling": 0.716,
-      "macro_movement": 0.427,
-      "macro_space": 0.5
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

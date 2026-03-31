@@ -38,18 +38,10 @@
   "name": "Flux Current",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.362,
-      "macro_coupling": 0.877,
-      "macro_movement": 0.907,
-      "macro_space": 0.849,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
     "Overdub": {
-      "macro_character": 0.343,
-      "macro_coupling": 0.915,
-      "macro_movement": 0.863,
-      "macro_space": 0.894,
       "dub_lfoDepth": 0.12
     }
   },

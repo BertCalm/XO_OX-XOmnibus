@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Eclipse Balm",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.4796,
-      "macro_coupling": 0.6447,
-      "macro_movement": 0.4357,
-      "macro_space": 0.8998
-    },
-    "Oracle": {
-      "macro_character": 0.4766,
-      "macro_coupling": 0.6107,
-      "macro_movement": 0.4657,
-      "macro_space": 0.9244
-    }
+    "Ohm": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

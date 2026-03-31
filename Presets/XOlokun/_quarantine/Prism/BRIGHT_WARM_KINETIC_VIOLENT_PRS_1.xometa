@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Radiant Edge 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.922,
-      "macro_coupling": 0.327,
-      "macro_movement": 0.918,
-      "macro_space": 0.409
-    },
-    "Optic": {
-      "macro_character": 0.529,
-      "macro_coupling": 0.537,
-      "macro_movement": 0.918,
-      "macro_space": 0.409
-    }
+    "Oblique": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

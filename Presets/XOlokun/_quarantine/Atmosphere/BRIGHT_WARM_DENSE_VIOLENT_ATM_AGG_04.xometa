@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT WARM DENSE VIOLENT A... (Origami I)",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.812,
-      "macro_coupling": 0.867,
-      "macro_movement": 0.316,
-      "macro_space": 0.665
-    },
-    "Origami": {
-      "macro_character": 0.811,
-      "macro_coupling": 0.917,
-      "macro_movement": 0.307,
-      "macro_space": 0.618
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "IONOSPHERE",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.435,
-      "macro_coupling": 0.902,
-      "macro_movement": 0.585,
-      "macro_space": 0.913
-    },
-    "Orbital": {
-      "macro_character": 0.48,
-      "macro_coupling": 0.723,
-      "macro_movement": 0.347,
-      "macro_space": 0.91
-    }
+    "Optic": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

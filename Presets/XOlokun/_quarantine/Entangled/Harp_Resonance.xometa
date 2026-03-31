@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Harp Resonance",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.55,
-      "macro_space": 0.54
-    },
-    "Orphica": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.62,
-      "macro_space": 0.7
-    }
+    "Obscura": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

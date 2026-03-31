@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM VAST VIOLENT AE... (Origami I)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.877,
-      "macro_coupling": 0.836,
-      "macro_movement": 0.467,
-      "macro_space": 0.896
-    },
-    "Overworld": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.804,
-      "macro_movement": 0.461,
-      "macro_space": 0.831
-    }
+    "Origami": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

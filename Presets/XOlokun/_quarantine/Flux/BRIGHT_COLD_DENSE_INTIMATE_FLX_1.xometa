@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Prism Solid",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.8133,
-      "macro_coupling": 0.5132,
-      "macro_movement": 0.5085,
-      "macro_space": 0.1235
-    },
-    "Opal": {
-      "macro_character": 0.8766,
-      "macro_coupling": 0.6938,
-      "macro_movement": 0.5512,
-      "macro_space": 0.0525
-    }
+    "Oceanic": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

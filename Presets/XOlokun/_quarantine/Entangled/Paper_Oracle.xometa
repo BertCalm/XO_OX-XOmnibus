@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Paper Oracle",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.41,
-      "macro_space": 0.93
-    },
-    "Origami": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.46,
-      "macro_space": 0.9
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

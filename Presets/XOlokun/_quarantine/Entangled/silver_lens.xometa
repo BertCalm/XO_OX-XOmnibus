@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Silver Lens",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.387,
-      "macro_coupling": 0.587,
-      "macro_movement": 0.287,
-      "macro_space": 0.637
-    },
-    "Optic": {
-      "macro_character": 0.463,
-      "macro_coupling": 0.563,
-      "macro_movement": 0.413,
-      "macro_space": 0.463
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

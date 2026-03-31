@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Velvet Ocean",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.44,
-      "macro_coupling": 0.586,
-      "macro_movement": 0.876,
-      "macro_space": 0.955
-    },
-    "Osteria": {
-      "macro_character": 0.596,
-      "macro_coupling": 0.767,
-      "macro_movement": 0.876,
-      "macro_space": 0.955
-    }
+    "Ohm": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

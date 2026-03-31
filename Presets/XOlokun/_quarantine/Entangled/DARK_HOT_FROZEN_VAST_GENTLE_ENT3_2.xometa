@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Shadow Abyss",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.8382,
-      "macro_coupling": 0.8021,
-      "macro_movement": 0.094,
-      "macro_space": 0.478
-    },
-    "Overworld": {
-      "macro_character": 0.9085,
-      "macro_coupling": 0.8978,
-      "macro_movement": 0.0958,
-      "macro_space": 0.8982
-    }
+    "Organon": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

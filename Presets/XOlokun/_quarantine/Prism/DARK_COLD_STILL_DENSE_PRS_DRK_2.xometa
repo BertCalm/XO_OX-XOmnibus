@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Phase Deep",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.2166,
-      "macro_coupling": 0.9289,
-      "macro_movement": 0.091,
-      "macro_space": 0.6172
-    },
-    "Owlfish": {
-      "macro_character": 0.2297,
-      "macro_coupling": 0.9332,
-      "macro_movement": 0.0805,
-      "macro_space": 0.6047
-    }
+    "Optic": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

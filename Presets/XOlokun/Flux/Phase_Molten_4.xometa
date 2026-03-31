@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Phase Molten 4",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.057,
-      "macro_coupling": 0.9357,
-      "macro_movement": 0.9244,
-      "macro_space": 0.3803
-    },
+    "Oblique": {},
     "Oblong": {
-      "macro_character": 0.0547,
-      "macro_coupling": 0.9757,
-      "macro_movement": 0.9294,
-      "macro_space": 0.3699,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

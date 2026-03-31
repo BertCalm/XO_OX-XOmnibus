@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Flux Edge",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.0324,
-      "macro_coupling": 0.8997,
-      "macro_movement": 0.3734,
-      "macro_space": 0.0246
-    },
-    "Oracle": {
-      "macro_character": 0.0917,
-      "macro_coupling": 0.9241,
-      "macro_movement": 0.367,
-      "macro_space": 0.0268
-    }
+    "Oblique": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

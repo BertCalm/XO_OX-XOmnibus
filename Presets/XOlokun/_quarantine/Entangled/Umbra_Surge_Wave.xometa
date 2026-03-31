@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Umbra Surge Wave",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.57,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.27,
-      "macro_space": 0.63
-    },
-    "Optic": {
-      "macro_character": 0.32,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.57,
-      "macro_space": 0.71
-    }
+    "Onset": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

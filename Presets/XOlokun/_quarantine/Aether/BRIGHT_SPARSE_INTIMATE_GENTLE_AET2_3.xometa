@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Golden Signal",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.9605,
-      "macro_coupling": 0.1404,
-      "macro_movement": 0.3811,
-      "macro_space": 0.0668
-    },
-    "Organon": {
-      "macro_character": 0.9428,
-      "macro_coupling": 0.1321,
-      "macro_movement": 0.405,
-      "macro_space": 0.0709
-    }
+    "Obscura": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

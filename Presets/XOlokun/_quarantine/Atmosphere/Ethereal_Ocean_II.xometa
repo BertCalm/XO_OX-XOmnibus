@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ethereal Ocean II",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.481,
-      "macro_coupling": 0.726,
-      "macro_movement": 0.496,
-      "macro_space": 0.75
-    },
-    "Optic": {
-      "macro_character": 0.465,
-      "macro_coupling": 0.879,
-      "macro_movement": 0.568,
-      "macro_space": 0.782
-    }
+    "OddOscar": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

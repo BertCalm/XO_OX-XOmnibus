@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Dark Jaw",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.6,
-      "macro_space": 0.25
-    },
-    "Overbite": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.45,
-      "macro_space": 0.15
-    }
+    "Obscura": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

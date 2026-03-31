@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Shadow Frost",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.929,
-      "macro_coupling": 0.393,
-      "macro_movement": 0.414,
-      "macro_space": 0.517
-    },
-    "Overworld": {
-      "macro_character": 0.467,
-      "macro_coupling": 0.745,
-      "macro_movement": 0.414,
-      "macro_space": 0.517
-    }
+    "Oracle": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

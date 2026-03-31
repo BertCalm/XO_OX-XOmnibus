@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "FRANTIC PULSE 35",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.587,
-      "macro_coupling": 0.242,
-      "macro_movement": 0.894,
-      "macro_space": 0.67
-    },
-    "Ole": {
-      "macro_character": 0.531,
-      "macro_coupling": 0.638,
-      "macro_movement": 0.942,
-      "macro_space": 0.052
-    }
+    "Obsidian": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

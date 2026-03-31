@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Balm Radiant II",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.792,
-      "macro_coupling": 0.795,
-      "macro_movement": 0.503,
-      "macro_space": 0.646
-    },
-    "Osteria": {
-      "macro_character": 0.922,
-      "macro_coupling": 0.703,
-      "macro_movement": 0.505,
-      "macro_space": 0.581
-    }
+    "Onset": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

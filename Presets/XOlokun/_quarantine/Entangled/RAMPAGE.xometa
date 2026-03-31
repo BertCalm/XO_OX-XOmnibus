@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "RAMPAGE",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.952,
-      "macro_coupling": 0.235,
-      "macro_movement": 0.908,
-      "macro_space": 0.31
-    },
-    "Osprey": {
-      "macro_character": 0.664,
-      "macro_coupling": 0.619,
-      "macro_movement": 0.946,
-      "macro_space": 0.093
-    }
+    "Onset": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

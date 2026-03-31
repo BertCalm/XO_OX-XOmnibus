@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Deep 2",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.1963,
-      "macro_coupling": 0.9579,
-      "macro_movement": 0.9116,
-      "macro_space": 0.9274
-    },
-    "Organon": {
-      "macro_character": 0.1854,
-      "macro_coupling": 0.9864,
-      "macro_movement": 0.9583,
-      "macro_space": 0.9097
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

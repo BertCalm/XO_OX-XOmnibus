@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Ice Cathedral 2",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.457,
-      "macro_coupling": 0.253,
-      "macro_movement": 0.394,
-      "macro_space": 0.894
-    },
-    "Origami": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.267,
-      "macro_movement": 0.414,
-      "macro_space": 0.876
-    }
+    "Ole": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

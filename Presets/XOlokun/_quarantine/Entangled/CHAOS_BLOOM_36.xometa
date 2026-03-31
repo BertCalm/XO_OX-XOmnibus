@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "CHAOS BLOOM 36",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.151,
-      "macro_coupling": 0.383,
-      "macro_movement": 0.903,
-      "macro_space": 0.153
-    },
-    "Osteria": {
-      "macro_character": 0.336,
-      "macro_coupling": 0.893,
-      "macro_movement": 0.951,
-      "macro_space": 0.081
-    }
+    "Obscura": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

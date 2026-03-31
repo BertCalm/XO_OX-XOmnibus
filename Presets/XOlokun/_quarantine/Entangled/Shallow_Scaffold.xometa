@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Shallow Scaffold",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.561,
-      "macro_movement": 0.649,
-      "macro_space": 0.68
-    },
-    "Origami": {
-      "macro_character": 0.573,
-      "macro_coupling": 0.432,
-      "macro_movement": 0.45,
-      "macro_space": 0.204
-    }
+    "Oceanic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

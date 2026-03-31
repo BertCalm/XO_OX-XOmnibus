@@ -46,19 +46,10 @@
   "name": "Glow Horizon 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.037,
-      "macro_movement": 0.464,
-      "macro_space": 0.932,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "OddfeliX": {
-      "macro_character": 0.861,
-      "macro_coupling": 0.263,
-      "macro_movement": 0.501,
-      "macro_space": 0.994
-    }
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "sequencer": null,

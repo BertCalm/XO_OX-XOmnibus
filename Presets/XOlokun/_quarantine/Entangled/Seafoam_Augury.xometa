@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Seafoam Augury",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.58,
-      "macro_space": 0.6
-    },
-    "Orphica": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.52,
-      "macro_space": 0.76
-    }
+    "Oracle": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Rich Terracotta II",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.5974,
-      "macro_coupling": 0.9812,
-      "macro_movement": 0.6375,
-      "macro_space": 0.8744
-    },
-    "Oracle": {
-      "macro_character": 0.6282,
-      "macro_coupling": 0.984,
-      "macro_movement": 0.6017,
-      "macro_space": 0.8939
-    }
+    "Optic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

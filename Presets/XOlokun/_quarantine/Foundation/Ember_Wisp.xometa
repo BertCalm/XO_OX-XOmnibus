@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Ember Wisp",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.134,
-      "macro_coupling": 0.347,
-      "macro_movement": 0.547,
-      "macro_space": 0.256
-    },
-    "Origami": {
-      "macro_character": 0.457,
-      "macro_coupling": 0.785,
-      "macro_movement": 0.831,
-      "macro_space": 0.714
-    }
+    "Onset": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

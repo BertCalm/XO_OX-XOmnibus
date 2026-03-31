@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Tone Saturated 3",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.7898,
-      "macro_coupling": 0.8345,
-      "macro_movement": 0.1009,
-      "macro_space": 0.1631
-    },
-    "Orphica": {
-      "macro_character": 0.7155,
-      "macro_coupling": 0.8625,
-      "macro_movement": 0.1143,
-      "macro_space": 0.6367
-    }
+    "Origami": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

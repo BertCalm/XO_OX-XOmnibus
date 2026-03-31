@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "MAELSTROM",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.613,
-      "macro_coupling": 0.719,
-      "macro_movement": 0.975,
-      "macro_space": 0.505
-    },
-    "Osteria": {
-      "macro_character": 0.831,
-      "macro_coupling": 0.548,
-      "macro_movement": 0.969,
-      "macro_space": 0.897
-    }
+    "Onset": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

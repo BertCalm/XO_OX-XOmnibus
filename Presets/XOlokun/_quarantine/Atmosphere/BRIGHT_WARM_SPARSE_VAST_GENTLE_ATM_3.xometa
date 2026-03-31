@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Peach Cavern",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.9334,
-      "macro_coupling": 0.1266,
-      "macro_movement": 0.3346,
-      "macro_space": 0.9615
-    },
-    "Organon": {
-      "macro_character": 0.9161,
-      "macro_coupling": 0.1266,
-      "macro_movement": 0.3868,
-      "macro_space": 0.9546
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

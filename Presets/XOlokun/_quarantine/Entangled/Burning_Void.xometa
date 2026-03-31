@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Burning Void",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.785,
-      "macro_coupling": 0.867,
-      "macro_movement": 0.57,
-      "macro_space": 0.61
-    },
-    "Owlfish": {
-      "macro_character": 0.44,
-      "macro_coupling": 0.617,
-      "macro_movement": 0.625,
-      "macro_space": 0.676
-    }
+    "Osprey": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

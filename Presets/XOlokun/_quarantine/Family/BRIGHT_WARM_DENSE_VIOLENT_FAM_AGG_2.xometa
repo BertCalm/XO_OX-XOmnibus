@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Honey Saturated",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.763,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.77,
-      "macro_space": 0.65
-    },
-    "OddfeliX": {
-      "macro_character": 0.762,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.728,
-      "macro_space": 0.643
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

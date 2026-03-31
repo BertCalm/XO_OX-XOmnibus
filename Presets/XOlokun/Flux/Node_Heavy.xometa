@@ -38,19 +38,10 @@
   "name": "Node Heavy",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.3053,
-      "macro_coupling": 0.9708,
-      "macro_movement": 0.9079,
-      "macro_space": 0.128,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Organon": {
-      "macro_character": 0.3303,
-      "macro_coupling": 0.9831,
-      "macro_movement": 0.8991,
-      "macro_space": 0.1267
-    }
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

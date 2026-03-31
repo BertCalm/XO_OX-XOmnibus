@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "DARK KINETIC DENSE VIOLENT ... (Obscura I)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.023,
-      "macro_coupling": 0.949,
-      "macro_movement": 0.857,
-      "macro_space": 0.577
-    },
-    "Osprey": {
-      "macro_character": 0.023,
-      "macro_coupling": 0.883,
-      "macro_movement": 0.9,
-      "macro_space": 0.612
-    }
+    "Obscura": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

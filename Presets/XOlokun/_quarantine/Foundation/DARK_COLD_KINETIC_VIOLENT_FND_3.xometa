@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Thread Storm",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.333,
-      "macro_coupling": 0.681,
-      "macro_movement": 0.56,
-      "macro_space": 0.763
-    },
-    "OddfeliX": {
-      "macro_character": 0.339,
-      "macro_coupling": 0.541,
-      "macro_movement": 0.845,
-      "macro_space": 0.651
-    }
+    "Obsidian": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

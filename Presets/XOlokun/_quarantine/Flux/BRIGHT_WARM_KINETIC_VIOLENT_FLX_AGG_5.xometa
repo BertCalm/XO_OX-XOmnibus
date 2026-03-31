@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Halo Drift 2",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.545,
-      "macro_coupling": 0.812,
-      "macro_movement": 0.988,
-      "macro_space": 0.518
-    },
-    "Origami": {
-      "macro_character": 0.492,
-      "macro_coupling": 0.773,
-      "macro_movement": 0.928,
-      "macro_space": 0.543
-    }
+    "Odyssey": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

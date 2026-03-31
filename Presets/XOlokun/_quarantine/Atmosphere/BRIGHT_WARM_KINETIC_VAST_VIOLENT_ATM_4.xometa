@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Bloom Orbit",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.9685,
-      "macro_coupling": 0.4908,
-      "macro_movement": 0.9046,
-      "macro_space": 0.977
-    },
-    "OddfeliX": {
-      "macro_character": 0.9182,
-      "macro_coupling": 0.4946,
-      "macro_movement": 0.9083,
-      "macro_space": 0.99
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

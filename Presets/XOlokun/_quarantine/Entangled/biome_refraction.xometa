@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Biome Refraction",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.565,
-      "macro_movement": 0.715,
-      "macro_space": 0.465
-    },
-    "Optic": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.585,
-      "macro_movement": 0.435,
-      "macro_space": 0.485
-    }
+    "Ocelot": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

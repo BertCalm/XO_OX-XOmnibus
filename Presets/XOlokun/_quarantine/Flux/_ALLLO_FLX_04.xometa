@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ALLLO FLX 04",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.062,
-      "macro_coupling": 0.077,
-      "macro_movement": 0.275,
-      "macro_space": 0.045
-    },
-    "Ouroboros": {
-      "macro_character": 0.062,
-      "macro_coupling": 0.077,
-      "macro_movement": 0.275,
-      "macro_space": 0.045
-    }
+    "Optic": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

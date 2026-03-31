@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "HARMONIC ERUPTION 53",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.457,
-      "macro_coupling": 0.302,
-      "macro_movement": 0.979,
-      "macro_space": 0.999
-    },
-    "Orbital": {
-      "macro_character": 0.299,
-      "macro_coupling": 0.962,
-      "macro_movement": 0.975,
-      "macro_space": 0.69
-    }
+    "Obscura": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

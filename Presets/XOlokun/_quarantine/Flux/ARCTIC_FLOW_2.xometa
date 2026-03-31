@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ARCTIC FLOW 2",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.0969,
-      "macro_coupling": 0.4236,
-      "macro_movement": 0.4311,
-      "macro_space": 0.467
-    },
-    "Overworld": {
-      "macro_character": 0.7291,
-      "macro_coupling": 0.9842,
-      "macro_movement": 0.6734,
-      "macro_space": 0.0984
-    }
+    "Osteria": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

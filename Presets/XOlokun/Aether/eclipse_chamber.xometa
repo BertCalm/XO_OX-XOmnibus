@@ -27,10 +27,6 @@
   "name": "Eclipse Chamber",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.3,
-      "macro_movement": 0.52,
-      "macro_space": 0.9,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

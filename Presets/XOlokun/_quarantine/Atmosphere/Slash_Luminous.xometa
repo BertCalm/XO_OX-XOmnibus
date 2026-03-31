@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Slash Luminous",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.534,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.734,
-      "macro_space": 0.034
-    },
-    "Oracle": {
-      "macro_character": 0.534,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.734,
-      "macro_space": 0.034
-    }
+    "Oblique": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

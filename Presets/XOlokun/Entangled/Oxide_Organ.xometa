@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Oxide Organ",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.69,
-      "macro_movement": 0.32,
-      "macro_space": 0.19
-    },
+    "Organon": {},
     "Overdub": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.69,
-      "macro_movement": 0.44,
-      "macro_space": 0.23,
       "dub_lfoDepth": 0.12
     }
   },

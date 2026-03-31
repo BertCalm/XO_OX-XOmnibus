@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Warm Cosmos Braid",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.5,
-      "macro_space": 0.71
-    },
-    "Osprey": {
-      "macro_character": 0.84,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.44,
-      "macro_space": 0.62
-    }
+    "Odyssey": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Resting Ember",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.4311,
-      "macro_coupling": 0.4795,
-      "macro_movement": 0.1306,
-      "macro_space": 0.874
-    },
-    "Oracle": {
-      "macro_character": 0.3582,
-      "macro_coupling": 0.553,
-      "macro_movement": 0.0609,
-      "macro_space": 0.938
-    }
+    "Oceanic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,19 +38,10 @@
   "name": "Solar Saturated",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.958,
-      "macro_coupling": 0.882,
-      "macro_movement": 0.058,
-      "macro_space": 0.45,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Opal": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.776,
-      "macro_movement": 0.062,
-      "macro_space": 0.524
-    }
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Signal Flutter",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.1029,
-      "macro_coupling": 0.7251,
-      "macro_movement": 0.957,
-      "macro_space": 0.3036
-    },
-    "Organon": {
-      "macro_character": 0.0755,
-      "macro_coupling": 0.8401,
-      "macro_movement": 0.8634,
-      "macro_space": 0.291
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

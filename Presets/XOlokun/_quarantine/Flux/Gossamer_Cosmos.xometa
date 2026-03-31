@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Gossamer Cosmos",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.3591,
-      "macro_coupling": 0.2952,
-      "macro_movement": 0.0952,
-      "macro_space": 0.8561
-    },
-    "Oracle": {
-      "macro_character": 0.3752,
-      "macro_coupling": 0.5407,
-      "macro_movement": 0.1083,
-      "macro_space": 0.7903
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "COLD STILL SPARSE BALANCED ... (Oceanic I)",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.327,
-      "macro_coupling": 0.782,
-      "macro_movement": 0.083,
-      "macro_space": 0.463
-    },
-    "Oracle": {
-      "macro_character": 0.303,
-      "macro_coupling": 0.803,
-      "macro_movement": 0.099,
-      "macro_space": 0.469
-    }
+    "Oceanic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

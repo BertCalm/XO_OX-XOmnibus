@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Flux Shard",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.5562,
-      "macro_coupling": 0.804,
-      "macro_movement": 0.01,
-      "macro_space": 0.2266
-    },
-    "Overbite": {
-      "macro_character": 0.5697,
-      "macro_coupling": 0.7643,
-      "macro_movement": 0.0209,
-      "macro_space": 0.7737
-    }
+    "Oceanic": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

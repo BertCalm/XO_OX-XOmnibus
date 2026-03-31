@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Abyss Spiral",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.8498,
-      "macro_coupling": 0.4687,
-      "macro_movement": 0.2989,
-      "macro_space": 0.7913
-    },
-    "Orbital": {
-      "macro_character": 0.6416,
-      "macro_coupling": 0.399,
-      "macro_movement": 0.2118,
-      "macro_space": 0.2951
-    }
+    "OddfeliX": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Copper Abyss",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.5585,
-      "macro_coupling": 0.3983,
-      "macro_movement": 0.8797,
-      "macro_space": 0.9374
-    },
-    "Optic": {
-      "macro_character": 0.5061,
-      "macro_coupling": 0.3968,
-      "macro_movement": 0.9131,
-      "macro_space": 0.9625
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

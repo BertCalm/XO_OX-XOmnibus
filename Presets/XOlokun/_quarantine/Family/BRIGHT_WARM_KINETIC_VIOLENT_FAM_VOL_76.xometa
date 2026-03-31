@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Bloom Blade 2",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.951,
-      "macro_coupling": 0.782,
-      "macro_movement": 0.869,
-      "macro_space": 0.418
-    },
-    "Ottoni": {
-      "macro_character": 0.968,
-      "macro_coupling": 0.776,
-      "macro_movement": 0.857,
-      "macro_space": 0.379
-    }
+    "Obbligato": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

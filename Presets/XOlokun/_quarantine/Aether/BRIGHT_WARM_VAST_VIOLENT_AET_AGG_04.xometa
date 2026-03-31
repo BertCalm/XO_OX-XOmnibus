@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM VAST VIOLENT AE... (Osprey I)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.927,
-      "macro_coupling": 0.806,
-      "macro_movement": 0.521,
-      "macro_space": 0.925
-    },
-    "Osprey": {
-      "macro_character": 0.929,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.506,
-      "macro_space": 0.918
-    }
+    "Origami": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "HOT STILL DENSE INTIMATE GE... (Ottoni I)",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.744,
-      "macro_coupling": 0.543,
-      "macro_movement": 0.04,
-      "macro_space": 0.037
-    },
-    "Ottoni": {
-      "macro_character": 0.735,
-      "macro_coupling": 0.534,
-      "macro_movement": 0.047,
-      "macro_space": 0.045
-    }
+    "Osprey": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

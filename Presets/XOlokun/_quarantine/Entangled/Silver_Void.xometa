@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Silver Void",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.05,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.13,
-      "macro_space": 0.99
-    },
-    "Oracle": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.18,
-      "macro_space": 0.96
-    }
+    "Obscura": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

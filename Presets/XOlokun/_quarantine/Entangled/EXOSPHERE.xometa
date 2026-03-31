@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "EXOSPHERE",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.826,
-      "macro_coupling": 0.955,
-      "macro_movement": 0.794,
-      "macro_space": 0.904
-    },
-    "Ombre": {
-      "macro_character": 0.649,
-      "macro_coupling": 0.579,
-      "macro_movement": 0.887,
-      "macro_space": 0.911
-    }
+    "Odyssey": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

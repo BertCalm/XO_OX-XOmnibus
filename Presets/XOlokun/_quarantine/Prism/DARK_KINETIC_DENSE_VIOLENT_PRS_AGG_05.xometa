@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "DARK KINETIC DENSE VIOLENT ... (Owlfish II)",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.024,
-      "macro_coupling": 0.793,
-      "macro_movement": 0.852,
-      "macro_space": 0.46
-    },
-    "Owlfish": {
-      "macro_character": 0.022,
-      "macro_coupling": 0.807,
-      "macro_movement": 0.877,
-      "macro_space": 0.45
-    }
+    "Orphica": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

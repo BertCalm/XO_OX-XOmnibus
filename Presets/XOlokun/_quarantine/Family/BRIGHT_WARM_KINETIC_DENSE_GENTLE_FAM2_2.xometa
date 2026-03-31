@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM KINETIC DENSE G... (OddfeliX)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.446,
-      "macro_movement": 0.942,
-      "macro_space": 0.629
-    },
-    "Origami": {
-      "macro_character": 0.962,
-      "macro_coupling": 0.41,
-      "macro_movement": 0.981,
-      "macro_space": 0.652
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

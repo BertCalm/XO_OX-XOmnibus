@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Silver Grain",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.8617,
-      "macro_coupling": 0.4566,
-      "macro_movement": 0.1129,
-      "macro_space": 0.0851
-    },
-    "Orbital": {
-      "macro_character": 0.9225,
-      "macro_coupling": 0.4673,
-      "macro_movement": 0.1302,
-      "macro_space": 0.1015
-    }
+    "Opal": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

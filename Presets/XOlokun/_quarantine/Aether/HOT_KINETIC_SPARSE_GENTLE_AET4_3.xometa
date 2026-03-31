@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Ember Surge",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.6872,
-      "macro_coupling": 0.2851,
-      "macro_movement": 0.3872,
-      "macro_space": 0.7518
-    },
-    "Osprey": {
-      "macro_character": 0.7723,
-      "macro_coupling": 0.5971,
-      "macro_movement": 0.6304,
-      "macro_space": 0.4985
-    }
+    "Origami": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

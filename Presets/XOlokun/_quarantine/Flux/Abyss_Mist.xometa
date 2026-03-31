@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Abyss Mist",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.0263,
-      "macro_coupling": 0.8295,
-      "macro_movement": 0.9291,
-      "macro_space": 0.2674
-    },
-    "Ottoni": {
-      "macro_character": 0.9745,
-      "macro_coupling": 0.6136,
-      "macro_movement": 0.8184,
-      "macro_space": 0.6427
-    }
+    "Obbligato": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

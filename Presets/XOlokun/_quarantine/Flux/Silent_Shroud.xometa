@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Silent Shroud",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.1276,
-      "macro_coupling": 0.5634,
-      "macro_movement": 0.0723,
-      "macro_space": 0.9316
-    },
-    "Origami": {
-      "macro_character": 0.178,
-      "macro_coupling": 0.3738,
-      "macro_movement": 0.1087,
-      "macro_space": 0.907
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

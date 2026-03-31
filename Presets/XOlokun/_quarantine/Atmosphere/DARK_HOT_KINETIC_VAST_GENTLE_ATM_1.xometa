@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ember Drift",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.5136,
-      "macro_coupling": 0.6477,
-      "macro_movement": 0.9481,
-      "macro_space": 0.9609
-    },
-    "Osprey": {
-      "macro_character": 0.4773,
-      "macro_coupling": 0.6618,
-      "macro_movement": 0.966,
-      "macro_space": 0.9127
-    }
+    "Orbital": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

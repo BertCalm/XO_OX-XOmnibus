@@ -39,18 +39,8 @@
   "mood": "Flux",
   "name": "Cinnamon Nebula",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.63,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.74,
-      "macro_space": 0.42
-    },
-    "Ombre": {
-      "macro_character": 0.84,
-      "macro_coupling": 0.69,
-      "macro_movement": 0.67,
-      "macro_space": 0.13
-    }
+    "Oblique": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "sequencer": null,

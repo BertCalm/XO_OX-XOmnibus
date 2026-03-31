@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ARCTIC FLOW 4",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.9028,
-      "macro_coupling": 0.3009,
-      "macro_movement": 0.6155,
-      "macro_space": 0.5479
-    },
-    "Ohm": {
-      "macro_character": 0.1273,
-      "macro_coupling": 0.9404,
-      "macro_movement": 0.4204,
-      "macro_space": 0.6773
-    }
+    "OddOscar": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

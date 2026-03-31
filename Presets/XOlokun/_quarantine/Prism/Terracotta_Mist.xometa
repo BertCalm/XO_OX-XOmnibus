@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Terracotta Mist",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.385,
-      "macro_coupling": 0.863,
-      "macro_movement": 0.874,
-      "macro_space": 0.925
-    },
-    "Ole": {
-      "macro_character": 0.57,
-      "macro_coupling": 0.468,
-      "macro_movement": 0.874,
-      "macro_space": 0.925
-    }
+    "Ocelot": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

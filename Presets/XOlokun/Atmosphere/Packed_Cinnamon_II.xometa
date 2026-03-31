@@ -37,17 +37,8 @@
   "mood": "Atmosphere",
   "name": "Packed Cinnamon II",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.755,
-      "macro_coupling": 0.653,
-      "macro_movement": 0.612,
-      "macro_space": 0.685
-    },
+    "Octopus": {},
     "Overdub": {
-      "macro_character": 0.905,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.676,
-      "macro_space": 0.661,
       "dub_lfoDepth": 0.12
     }
   },

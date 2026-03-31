@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Harmonic Hum",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.71,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.41,
-      "macro_space": 0.42
-    },
-    "Organon": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.44,
-      "macro_space": 0.56
-    }
+    "Ohm": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK KINETIC VAST VIOLENT A... (Opal I)",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.096,
-      "macro_coupling": 0.898,
-      "macro_movement": 0.89,
-      "macro_space": 0.925
-    },
-    "Orbital": {
-      "macro_character": 0.099,
-      "macro_coupling": 0.922,
-      "macro_movement": 0.93,
-      "macro_space": 0.915
-    }
+    "Opal": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

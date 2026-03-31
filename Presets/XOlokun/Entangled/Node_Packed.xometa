@@ -46,19 +46,10 @@
   "name": "Node Packed",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.761,
-      "macro_coupling": 0.9088,
-      "macro_movement": 0.0843,
-      "macro_space": 0.1586,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ottoni": {
-      "macro_character": 0.5062,
-      "macro_coupling": 0.8508,
-      "macro_movement": 0.0757,
-      "macro_space": 0.5167
-    }
+    "Ottoni": {}
   },
   "schema_version": 1,
   "sequencer": null,

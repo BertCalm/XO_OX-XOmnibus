@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Glass Dome",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.5932,
-      "macro_coupling": 0.8577,
-      "macro_movement": 0.0435,
-      "macro_space": 0.4586
-    },
-    "Organon": {
-      "macro_character": 0.6973,
-      "macro_coupling": 0.8314,
-      "macro_movement": 0.0423,
-      "macro_space": 0.8324
-    }
+    "Obese": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "sequencer": null,

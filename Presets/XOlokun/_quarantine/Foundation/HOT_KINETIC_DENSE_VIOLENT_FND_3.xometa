@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Grain Heavy",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.851,
-      "macro_coupling": 0.312,
-      "macro_movement": 0.482,
-      "macro_space": 0.464
-    },
-    "Overworld": {
-      "macro_character": 0.748,
-      "macro_coupling": 0.146,
-      "macro_movement": 0.167,
-      "macro_space": 0.379
-    }
+    "OddfeliX": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

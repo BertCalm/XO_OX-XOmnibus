@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "COLD FLUX 7",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.5341,
-      "macro_coupling": 0.9743,
-      "macro_movement": 0.2743,
-      "macro_space": 0.5534
-    },
-    "Osprey": {
-      "macro_character": 0.6974,
-      "macro_coupling": 0.8685,
-      "macro_movement": 0.1263,
-      "macro_space": 0.4909
-    }
+    "Onset": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

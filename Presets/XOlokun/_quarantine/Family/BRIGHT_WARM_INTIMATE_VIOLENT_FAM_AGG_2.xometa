@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Candlelight Rage 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.502,
-      "macro_coupling": 0.356,
-      "macro_movement": 0.503,
-      "macro_space": 0.833
-    },
-    "Ottoni": {
-      "macro_character": 0.542,
-      "macro_coupling": 0.322,
-      "macro_movement": 0.521,
-      "macro_space": 0.827
-    }
+    "OddOscar": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

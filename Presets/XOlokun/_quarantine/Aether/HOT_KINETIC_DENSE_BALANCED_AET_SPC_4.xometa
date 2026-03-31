@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "HOT KINETIC DENSE BALANCED ... (Oblique I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.742,
-      "macro_coupling": 0.529,
-      "macro_movement": 0.91,
-      "macro_space": 0.374
-    },
-    "Ombre": {
-      "macro_character": 0.736,
-      "macro_coupling": 0.524,
-      "macro_movement": 0.913,
-      "macro_space": 0.356
-    }
+    "Oblique": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

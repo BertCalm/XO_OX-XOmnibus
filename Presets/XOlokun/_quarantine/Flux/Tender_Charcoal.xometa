@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Tender Charcoal",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.1838,
-      "macro_coupling": 0.1612,
-      "macro_movement": 0.4278,
-      "macro_space": 0.8579
-    },
-    "Optic": {
-      "macro_character": 0.1513,
-      "macro_coupling": 0.0516,
-      "macro_movement": 0.5581,
-      "macro_space": 0.7844
-    }
+    "Oblique": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

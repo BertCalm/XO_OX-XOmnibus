@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Liquid Heaven",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.3,
-      "macro_movement": 0.88,
-      "macro_space": 0.82
-    }
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

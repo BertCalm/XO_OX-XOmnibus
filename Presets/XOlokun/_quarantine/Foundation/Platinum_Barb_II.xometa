@@ -39,18 +39,8 @@
   "mood": "Foundation",
   "name": "Platinum Barb II",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.74,
-      "macro_space": 0.26
-    },
-    "Odyssey": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.75,
-      "macro_space": 0.27
-    }
+    "Obsidian": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "sequencer": null,

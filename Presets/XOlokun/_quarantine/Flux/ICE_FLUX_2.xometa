@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ICE FLUX 2",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.2202,
-      "macro_coupling": 0.6311,
-      "macro_movement": 0.071,
-      "macro_space": 0.2289
-    },
-    "Oracle": {
-      "macro_character": 0.2247,
-      "macro_coupling": 0.5883,
-      "macro_movement": 0.3381,
-      "macro_space": 0.2301
-    }
+    "Ole": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

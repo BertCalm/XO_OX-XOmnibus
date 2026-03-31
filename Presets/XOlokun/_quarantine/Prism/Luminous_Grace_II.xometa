@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Luminous Grace II",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.066,
-      "macro_coupling": 0.532,
-      "macro_movement": 0.587,
-      "macro_space": 0.301
-    },
-    "Overworld": {
-      "macro_character": 0.503,
-      "macro_coupling": 0.326,
-      "macro_movement": 0.587,
-      "macro_space": 0.301
-    }
+    "Osteria": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

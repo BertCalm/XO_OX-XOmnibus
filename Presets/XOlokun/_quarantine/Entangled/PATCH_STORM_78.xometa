@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "PATCH STORM 78",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.241,
-      "macro_movement": 0.959,
-      "macro_space": 0.913
-    },
-    "Orphica": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.079,
-      "macro_movement": 0.937,
-      "macro_space": 0.871
-    }
+    "Ombre": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

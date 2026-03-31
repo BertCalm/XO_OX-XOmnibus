@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Fang 2",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.894,
-      "macro_coupling": 0.691,
-      "macro_movement": 0.864,
-      "macro_space": 0.507
-    },
-    "Organon": {
-      "macro_character": 0.904,
-      "macro_coupling": 0.647,
-      "macro_movement": 0.907,
-      "macro_space": 0.523
-    }
+    "OddfeliX": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

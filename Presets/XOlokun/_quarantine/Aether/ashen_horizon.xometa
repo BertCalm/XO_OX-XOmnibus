@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Ashen Horizon",
   "parameters": {
-    "Outwit": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.42,
-      "macro_movement": 0.62,
-      "macro_space": 0.88
-    }
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

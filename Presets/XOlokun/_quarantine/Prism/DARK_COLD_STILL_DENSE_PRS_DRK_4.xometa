@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Node Solid",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.2042,
-      "macro_coupling": 0.9031,
-      "macro_movement": 0.144,
-      "macro_space": 0.3768
-    },
-    "Optic": {
-      "macro_character": 0.22,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.1274,
-      "macro_space": 0.4132
-    }
+    "Ocelot": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Tone Molten",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.313,
-      "macro_coupling": 0.767,
-      "macro_movement": 0.421,
-      "macro_space": 0.746
-    },
-    "Obsidian": {
-      "macro_character": 0.369,
-      "macro_coupling": 0.278,
-      "macro_movement": 0.786,
-      "macro_space": 0.124
-    }
+    "Obese": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

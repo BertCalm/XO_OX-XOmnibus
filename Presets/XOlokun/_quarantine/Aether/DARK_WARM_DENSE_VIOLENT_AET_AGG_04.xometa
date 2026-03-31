@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK WARM DENSE VIOLENT AET... (OddOscar I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.064,
-      "macro_coupling": 0.872,
-      "macro_movement": 0.486,
-      "macro_space": 0.323
-    },
-    "Origami": {
-      "macro_character": 0.066,
-      "macro_coupling": 0.86,
-      "macro_movement": 0.467,
-      "macro_space": 0.342
-    }
+    "OddOscar": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

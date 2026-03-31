@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT KINETIC VAST VIOLENT...",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.809,
-      "macro_coupling": 0.863,
-      "macro_movement": 0.856,
-      "macro_space": 0.892
-    },
-    "Oracle": {
-      "macro_character": 0.838,
-      "macro_coupling": 0.883,
-      "macro_movement": 0.827,
-      "macro_space": 0.924
-    }
+    "OddfeliX": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

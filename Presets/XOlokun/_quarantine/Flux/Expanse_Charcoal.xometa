@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Expanse Charcoal",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.1088,
-      "macro_coupling": 0.4998,
-      "macro_movement": 0.497,
-      "macro_space": 0.8287
-    },
-    "Overworld": {
-      "macro_character": 0.0776,
-      "macro_coupling": 0.6573,
-      "macro_movement": 0.3798,
-      "macro_space": 0.8348
-    }
+    "Opal": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

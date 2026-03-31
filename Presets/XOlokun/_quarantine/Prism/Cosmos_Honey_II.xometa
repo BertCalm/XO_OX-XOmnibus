@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Cosmos Honey II",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.671,
-      "macro_coupling": 0.9223,
-      "macro_movement": 0.4934,
-      "macro_space": 0.9577
-    },
-    "Origami": {
-      "macro_character": 0.6505,
-      "macro_coupling": 0.9311,
-      "macro_movement": 0.4906,
-      "macro_space": 0.948
-    }
+    "Optic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

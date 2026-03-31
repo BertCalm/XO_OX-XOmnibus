@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Dub Haze",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.31,
-      "macro_space": 0.29
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.41,
-      "macro_space": 0.39,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "KINETIC SPARSE VAST VIOLENT...",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.577,
-      "macro_coupling": 0.918,
-      "macro_movement": 0.83,
-      "macro_space": 0.874
-    },
-    "OddOscar": {
-      "macro_character": 0.566,
-      "macro_coupling": 0.957,
-      "macro_movement": 0.872,
-      "macro_space": 0.843
-    }
+    "Oblique": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

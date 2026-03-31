@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Black Mirror Path",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.7,
-      "macro_space": 0.4
-    },
-    "Odyssey": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.8,
-      "macro_space": 0.5
-    }
+    "Obsidian": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

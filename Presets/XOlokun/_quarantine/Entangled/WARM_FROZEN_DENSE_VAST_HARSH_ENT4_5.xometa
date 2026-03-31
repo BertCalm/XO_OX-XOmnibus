@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fragment Packed 2",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.938,
-      "macro_movement": 0.031,
-      "macro_space": 0.898
-    },
-    "Overbite": {
-      "macro_character": 0.682,
-      "macro_coupling": 0.965,
-      "macro_movement": 0.028,
-      "macro_space": 0.941
-    }
+    "Ottoni": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

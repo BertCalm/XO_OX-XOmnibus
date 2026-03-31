@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Prismatic Gentle",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.758,
-      "macro_coupling": 0.514,
-      "macro_movement": 0.608,
-      "macro_space": 0.386
-    },
-    "Owlfish": {
-      "macro_character": 0.744,
-      "macro_coupling": 0.448,
-      "macro_movement": 0.583,
-      "macro_space": 0.364
-    }
+    "Odyssey": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

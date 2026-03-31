@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "CRYO FLUX 3",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.9347,
-      "macro_coupling": 0.7162,
-      "macro_movement": 0.2043,
-      "macro_space": 0.2387
-    },
-    "Orbital": {
-      "macro_character": 0.6194,
-      "macro_coupling": 0.5837,
-      "macro_movement": 0.4192,
-      "macro_space": 0.5228
-    }
+    "Obsidian": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

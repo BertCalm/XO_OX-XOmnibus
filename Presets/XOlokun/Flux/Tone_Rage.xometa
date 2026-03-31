@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Tone Rage",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.931,
-      "macro_coupling": 0.675,
-      "macro_movement": 0.073,
-      "macro_space": 0.44
-    },
+    "Oceanic": {},
     "Overdub": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.713,
-      "macro_movement": 0.091,
-      "macro_space": 0.472,
       "dub_lfoDepth": 0.12
     }
   },

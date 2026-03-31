@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Mahogany Molten",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.106,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.453,
-      "macro_space": 1.0
-    },
-    "Origami": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.913,
-      "macro_movement": 0.425,
-      "macro_space": 0.864
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

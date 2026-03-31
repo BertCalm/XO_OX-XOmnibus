@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Shard Saturated 2",
   "parameters": {
-    "Outwit": {
-      "macro_character": 0.9644,
-      "macro_coupling": 0.8667,
-      "macro_movement": 0.0784,
-      "macro_space": 0.2926
-    },
-    "Overbite": {
-      "macro_character": 0.6773,
-      "macro_coupling": 0.837,
-      "macro_movement": 0.0815,
-      "macro_space": 0.2532
-    }
+    "Outwit": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

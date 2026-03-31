@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Grain Canyon",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.59,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.0,
-      "macro_space": 1.0
-    },
-    "Overbite": {
-      "macro_character": 0.642,
-      "macro_coupling": 0.922,
-      "macro_movement": 0.121,
-      "macro_space": 1.0
-    }
+    "OddOscar": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

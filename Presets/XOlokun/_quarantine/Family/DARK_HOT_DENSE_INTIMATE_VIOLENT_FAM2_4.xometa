@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE VIO... (Ohm I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.539,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.361,
-      "macro_space": 0.078
-    },
-    "Ohm": {
-      "macro_character": 0.533,
-      "macro_coupling": 0.956,
-      "macro_movement": 0.319,
-      "macro_space": 0.046
-    }
+    "OddOscar": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

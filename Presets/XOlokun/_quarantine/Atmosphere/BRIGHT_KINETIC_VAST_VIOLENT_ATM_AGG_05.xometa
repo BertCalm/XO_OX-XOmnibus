@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT KINETIC VAST VIOLENT... (Opal I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.855,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.96,
-      "macro_space": 0.937
-    },
-    "Opal": {
-      "macro_character": 0.881,
-      "macro_coupling": 0.858,
-      "macro_movement": 0.971,
-      "macro_space": 0.89
-    }
+    "Oblique": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

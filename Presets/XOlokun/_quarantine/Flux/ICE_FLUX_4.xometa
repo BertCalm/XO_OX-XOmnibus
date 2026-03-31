@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ICE FLUX 4",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.5766,
-      "macro_coupling": 0.7088,
-      "macro_movement": 0.2547,
-      "macro_space": 0.0017
-    },
-    "Osteria": {
-      "macro_character": 0.9256,
-      "macro_coupling": 0.7194,
-      "macro_movement": 0.5385,
-      "macro_space": 0.742
-    }
+    "Oceanic": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

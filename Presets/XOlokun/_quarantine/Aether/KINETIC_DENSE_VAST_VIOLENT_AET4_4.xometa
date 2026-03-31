@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Quartz Drift",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.3356,
-      "macro_coupling": 0.6686,
-      "macro_movement": 0.7196,
-      "macro_space": 0.877
-    },
-    "Ombre": {
-      "macro_character": 0.8573,
-      "macro_coupling": 0.6479,
-      "macro_movement": 0.6635,
-      "macro_space": 0.3157
-    }
+    "OddfeliX": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

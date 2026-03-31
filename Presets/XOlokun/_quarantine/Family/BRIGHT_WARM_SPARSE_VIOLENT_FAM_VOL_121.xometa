@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sunrise Strike 4",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.91,
-      "macro_coupling": 0.539,
-      "macro_movement": 0.352,
-      "macro_space": 0.591
-    },
-    "Osprey": {
-      "macro_character": 0.957,
-      "macro_coupling": 0.519,
-      "macro_movement": 0.364,
-      "macro_space": 0.585
-    }
+    "Ohm": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

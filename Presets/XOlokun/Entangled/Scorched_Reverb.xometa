@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Scorched Reverb",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.52,
-      "macro_movement": 0.51,
-      "macro_space": 0.79
-    },
+    "Odyssey": {},
     "Overdub": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.43,
-      "macro_movement": 0.4,
-      "macro_space": 0.91,
       "dub_lfoDepth": 0.12
     }
   },

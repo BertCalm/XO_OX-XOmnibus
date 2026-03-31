@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "DARK COLD KINETIC VIOLENT A... (Orbital I)",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.125,
-      "macro_coupling": 0.859,
-      "macro_movement": 0.863,
-      "macro_space": 0.646
-    },
-    "Orbital": {
-      "macro_character": 0.123,
-      "macro_coupling": 0.886,
-      "macro_movement": 0.857,
-      "macro_space": 0.675
-    }
+    "Oracle": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

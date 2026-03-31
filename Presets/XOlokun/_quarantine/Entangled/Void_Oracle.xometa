@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Void Oracle III",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.11,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.24,
-      "macro_space": 0.95
-    },
-    "Oracle": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.19,
-      "macro_space": 0.98
-    }
+    "Obsidian": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

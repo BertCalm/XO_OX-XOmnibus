@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Sparse Copper",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.495,
-      "macro_coupling": 0.624,
-      "macro_movement": 0.875,
-      "macro_space": 0.868
-    },
-    "Overworld": {
-      "macro_character": 0.611,
-      "macro_coupling": 0.893,
-      "macro_movement": 0.875,
-      "macro_space": 0.868
-    }
+    "Origami": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

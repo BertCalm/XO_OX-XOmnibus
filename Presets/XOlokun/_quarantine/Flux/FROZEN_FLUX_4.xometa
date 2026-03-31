@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "FROZEN FLUX 4",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.5155,
-      "macro_coupling": 0.3352,
-      "macro_movement": 0.6329,
-      "macro_space": 0.8184
-    },
-    "Origami": {
-      "macro_character": 0.7511,
-      "macro_coupling": 0.2246,
-      "macro_movement": 0.6728,
-      "macro_space": 0.1991
-    }
+    "Octopus": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

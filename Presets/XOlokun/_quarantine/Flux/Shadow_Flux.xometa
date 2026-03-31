@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Shadow Flux",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.199,
-      "macro_coupling": 0.815,
-      "macro_movement": 0.929,
-      "macro_space": 0.928
-    },
-    "Ole": {
-      "macro_character": 0.296,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.924,
-      "macro_space": 1.0
-    }
+    "Ohm": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

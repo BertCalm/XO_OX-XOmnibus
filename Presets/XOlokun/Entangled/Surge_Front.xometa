@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Surge Front",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.656,
-      "macro_coupling": 0.548,
-      "macro_movement": 0.917,
-      "macro_space": 0.96
-    },
+    "Organon": {},
     "Overdub": {
-      "macro_character": 0.649,
-      "macro_coupling": 0.594,
-      "macro_movement": 0.942,
-      "macro_space": 0.944,
       "dub_lfoDepth": 0.12
     }
   },

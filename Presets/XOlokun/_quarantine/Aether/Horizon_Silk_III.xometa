@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Horizon Silk III",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.517,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.649,
-      "macro_space": 0.965
-    },
-    "Origami": {
-      "macro_character": 0.517,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.649,
-      "macro_space": 0.965
-    }
+    "Opal": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Ice Rage 2",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.535,
-      "macro_coupling": 0.763,
-      "macro_movement": 0.433,
-      "macro_space": 0.057
-    },
-    "Odyssey": {
-      "macro_character": 0.53,
-      "macro_coupling": 0.773,
-      "macro_movement": 0.462,
-      "macro_space": 0.065
-    }
+    "Obbligato": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

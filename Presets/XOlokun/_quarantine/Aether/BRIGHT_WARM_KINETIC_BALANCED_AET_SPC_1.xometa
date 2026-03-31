@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC BALANCE...",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.91,
-      "macro_coupling": 0.513,
-      "macro_movement": 0.903,
-      "macro_space": 0.571
-    },
-    "Oracle": {
-      "macro_character": 0.893,
-      "macro_coupling": 0.485,
-      "macro_movement": 0.903,
-      "macro_space": 0.553
-    }
+    "OddfeliX": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,10 +45,6 @@
       "osprey_harborVerb": 0.68
     },
     "Osteria": {
-      "macro_character": 0.5,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.5,
-      "macro_space": 0.75,
       "osteria_qBassShore": 0.55,
       "osteria_roomExcitation": 0.48,
       "osteria_filterCutoff": 0.52,

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Current Trace",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.698,
-      "macro_coupling": 0.742,
-      "macro_movement": 0.87,
-      "macro_space": 0.444
-    },
-    "OddfeliX": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.461,
-      "macro_movement": 0.885,
-      "macro_space": 0.434
-    }
+    "Oceanic": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

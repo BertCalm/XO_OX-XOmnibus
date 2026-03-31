@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Mahogany Infinite II",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.949,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.771,
-      "macro_space": 0.945
-    },
-    "Orbital": {
-      "macro_character": 0.949,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.771,
-      "macro_space": 0.945
-    }
+    "Optic": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

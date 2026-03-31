@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Impala Optic",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.838,
-      "macro_coupling": 0.688,
-      "macro_movement": 0.788,
-      "macro_space": 0.588
-    },
-    "Optic": {
-      "macro_character": 0.462,
-      "macro_coupling": 0.562,
-      "macro_movement": 0.412,
-      "macro_space": 0.462
-    }
+    "Oblique": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

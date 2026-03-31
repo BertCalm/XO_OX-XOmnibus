@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Obsidian Weight",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.37,
-      "macro_space": 0.26
-    },
-    "Ouroboros": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.33,
-      "macro_space": 0.76
-    }
+    "Ombre": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

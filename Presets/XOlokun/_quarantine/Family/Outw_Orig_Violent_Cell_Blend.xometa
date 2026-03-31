@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Outwit": {
-      "macro_character": 0.85,
-      "macro_movement": 0.61,
-      "macro_coupling": 0.66,
-      "macro_space": 0.14
-    },
-    "Origami": {
-      "macro_character": 0.9,
-      "macro_movement": 0.79,
-      "macro_coupling": 0.62,
-      "macro_space": 0.1
-    }
+    "Outwit": {},
+    "Origami": {}
   },
   "coupling": {
     "type": "CHAOS_INJECT",

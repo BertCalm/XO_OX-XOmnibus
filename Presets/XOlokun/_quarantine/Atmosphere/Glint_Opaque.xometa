@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Glint Opaque",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.524,
-      "macro_coupling": 0.506,
-      "macro_movement": 0.643,
-      "macro_space": 0.903
-    },
-    "Oracle": {
-      "macro_character": 0.524,
-      "macro_coupling": 0.506,
-      "macro_movement": 0.643,
-      "macro_space": 0.903
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

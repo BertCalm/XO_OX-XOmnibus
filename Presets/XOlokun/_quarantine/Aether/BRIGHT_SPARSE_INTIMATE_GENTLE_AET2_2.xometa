@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Current",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.9458,
-      "macro_coupling": 0.1023,
-      "macro_movement": 0.5503,
-      "macro_space": 0.0316
-    },
-    "Orbital": {
-      "macro_character": 0.9401,
-      "macro_coupling": 0.093,
-      "macro_movement": 0.57,
-      "macro_space": 0.0811
-    }
+    "Ombre": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

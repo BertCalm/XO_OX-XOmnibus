@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Halo Vast",
   "parameters": {
-    "Obese": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.047,
-      "macro_movement": 0.643,
-      "macro_space": 1.0
-    },
-    "Onset": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.057,
-      "macro_movement": 0.481,
-      "macro_space": 0.988
-    }
+    "Obese": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Saturated Velvet II",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.906,
-      "macro_coupling": 0.443,
-      "macro_movement": 0.448,
-      "macro_space": 0.521
-    },
-    "Overworld": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.563,
-      "macro_movement": 0.514,
-      "macro_space": 0.602
-    }
+    "OddOscar": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

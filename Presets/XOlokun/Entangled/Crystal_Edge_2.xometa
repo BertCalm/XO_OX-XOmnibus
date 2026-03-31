@@ -38,18 +38,9 @@
   "name": "Crystal Edge 2",
   "parameters": {
     "Overdub": {
-      "macro_character": 0.573,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.367,
-      "macro_space": 0.067,
       "dub_lfoDepth": 0.12
     },
-    "Overworld": {
-      "macro_character": 0.505,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.286,
-      "macro_space": 0.073
-    }
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

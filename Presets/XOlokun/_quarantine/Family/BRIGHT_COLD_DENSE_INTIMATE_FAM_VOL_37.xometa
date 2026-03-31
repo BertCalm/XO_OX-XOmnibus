@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Crystal Thick",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.47,
-      "macro_coupling": 0.635,
-      "macro_movement": 0.355,
-      "macro_space": 0.072
-    },
-    "Osprey": {
-      "macro_character": 0.474,
-      "macro_coupling": 0.682,
-      "macro_movement": 0.375,
-      "macro_space": 0.066
-    }
+    "Ohm": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Smoke Grit 4",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.525,
-      "macro_coupling": 0.963,
-      "macro_movement": 0.373,
-      "macro_space": 0.535
-    },
-    "Ole": {
-      "macro_character": 0.501,
-      "macro_coupling": 0.959,
-      "macro_movement": 0.417,
-      "macro_space": 0.494
-    }
+    "OddfeliX": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

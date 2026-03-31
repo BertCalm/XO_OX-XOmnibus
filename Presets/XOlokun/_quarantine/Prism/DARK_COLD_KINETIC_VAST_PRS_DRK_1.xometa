@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Shard Shimmer 3",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.3395,
-      "macro_coupling": 0.4215,
-      "macro_movement": 0.97,
-      "macro_space": 0.8952
-    },
-    "Ottoni": {
-      "macro_character": 0.3349,
-      "macro_coupling": 0.4194,
-      "macro_movement": 0.9471,
-      "macro_space": 0.9273
-    }
+    "Orphica": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

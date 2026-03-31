@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Solar Surge 2",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.652,
-      "macro_coupling": 0.976,
-      "macro_movement": 0.964,
-      "macro_space": 0.521
-    },
-    "Oracle": {
-      "macro_character": 0.611,
-      "macro_coupling": 0.978,
-      "macro_movement": 1.0,
-      "macro_space": 0.572
-    }
+    "Odyssey": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Nocturnal Warmth Field",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.54,
-      "macro_movement": 0.85,
-      "macro_space": 0.83
-    },
-    "Opal": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.15,
-      "macro_space": 0.84
-    }
+    "Ohm": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

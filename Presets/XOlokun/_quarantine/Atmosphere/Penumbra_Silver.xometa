@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Penumbra Silver",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.104,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.66,
-      "macro_space": 0.4
-    },
-    "Origami": {
-      "macro_character": 0.076,
-      "macro_coupling": 0.738,
-      "macro_movement": 0.696,
-      "macro_space": 0.529
-    }
+    "Obbligato": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

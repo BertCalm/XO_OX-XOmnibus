@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Black Spectrum",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.641,
-      "macro_coupling": 0.184,
-      "macro_movement": 0.307,
-      "macro_space": 0.291
-    },
-    "Obscura": {
-      "macro_character": 0.164,
-      "macro_coupling": 0.864,
-      "macro_movement": 0.979,
-      "macro_space": 0.67
-    }
+    "Obbligato": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

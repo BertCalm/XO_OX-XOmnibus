@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Node Horizon",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.621,
-      "macro_coupling": 0.918,
-      "macro_movement": 0.037,
-      "macro_space": 1.0
-    },
-    "Ouroboros": {
-      "macro_character": 0.567,
-      "macro_coupling": 0.696,
-      "macro_movement": 0.04,
-      "macro_space": 1.0
-    }
+    "Oracle": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

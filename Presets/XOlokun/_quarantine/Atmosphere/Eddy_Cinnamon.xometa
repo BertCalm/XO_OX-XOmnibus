@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Eddy Cinnamon",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.959,
-      "macro_coupling": 0.679,
-      "macro_movement": 0.968,
-      "macro_space": 0.962
-    },
-    "Orbital": {
-      "macro_character": 0.959,
-      "macro_coupling": 0.679,
-      "macro_movement": 0.968,
-      "macro_space": 0.962
-    }
+    "Optic": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

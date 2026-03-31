@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "CRYO FLUX 7",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.1185,
-      "macro_coupling": 0.6063,
-      "macro_movement": 0.7644,
-      "macro_space": 0.7907
-    },
-    "Overbite": {
-      "macro_character": 0.1492,
-      "macro_coupling": 0.3038,
-      "macro_movement": 0.5628,
-      "macro_space": 0.9939
-    }
+    "OddfeliX": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

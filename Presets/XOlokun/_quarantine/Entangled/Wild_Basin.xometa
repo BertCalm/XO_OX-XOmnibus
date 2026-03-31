@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Wild Basin",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.725,
-      "macro_coupling": 0.531,
-      "macro_movement": 0.629,
-      "macro_space": 0.266
-    },
-    "Orca": {
-      "macro_character": 0.576,
-      "macro_coupling": 0.568,
-      "macro_movement": 0.775,
-      "macro_space": 0.356
-    }
+    "Octopus": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,10 @@
   "name": "Flux Titan 4",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.046,
-      "macro_coupling": 0.954,
-      "macro_movement": 0.664,
-      "macro_space": 0.419,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
     "Overdub": {
-      "macro_character": 0.031,
-      "macro_coupling": 0.924,
-      "macro_movement": 0.667,
-      "macro_space": 0.436,
       "dub_lfoDepth": 0.12
     }
   },

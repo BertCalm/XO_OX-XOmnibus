@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM DENSE INTIMATE ... (Ottoni I)",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.891,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.329,
-      "macro_space": 0.2
-    },
-    "Ottoni": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.511,
-      "macro_movement": 0.37,
-      "macro_space": 0.141
-    }
+    "Odyssey": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

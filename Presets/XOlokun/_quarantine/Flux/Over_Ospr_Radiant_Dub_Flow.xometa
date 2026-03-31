@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Overdub": {
-      "macro_character": 0.7,
-      "macro_movement": 0.98,
-      "macro_coupling": 0.63,
-      "macro_space": 0.41
-    },
-    "Osprey": {
-      "macro_character": 0.88,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.9,
-      "macro_space": 0.15
-    }
+    "Overdub": {},
+    "Osprey": {}
   },
   "coupling": {
     "type": "RHYTHM_GATE",

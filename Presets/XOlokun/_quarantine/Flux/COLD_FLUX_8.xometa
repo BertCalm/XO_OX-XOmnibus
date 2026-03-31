@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "COLD FLUX 8",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.5501,
-      "macro_coupling": 0.3145,
-      "macro_movement": 0.4548,
-      "macro_space": 0.3233
-    },
-    "Overworld": {
-      "macro_character": 0.6937,
-      "macro_coupling": 0.9452,
-      "macro_movement": 0.2882,
-      "macro_space": 0.8136
-    }
+    "Ocelot": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

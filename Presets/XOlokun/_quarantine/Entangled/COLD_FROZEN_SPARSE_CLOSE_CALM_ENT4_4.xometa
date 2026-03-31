@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Signal Flux",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.274,
-      "macro_coupling": 0.032,
-      "macro_movement": 0.012,
-      "macro_space": 0.098
-    },
-    "Overworld": {
-      "macro_character": 0.271,
-      "macro_coupling": 0.033,
-      "macro_movement": 0.013,
-      "macro_space": 0.103
-    }
+    "Ombre": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

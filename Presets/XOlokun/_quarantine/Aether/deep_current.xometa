@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Deep Current",
   "parameters": {
-    "Overlap": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.38,
-      "macro_movement": 0.6,
-      "macro_space": 0.84
-    }
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

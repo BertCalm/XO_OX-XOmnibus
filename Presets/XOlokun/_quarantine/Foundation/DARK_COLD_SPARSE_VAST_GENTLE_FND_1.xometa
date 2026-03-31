@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Node Cathedral",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.139,
-      "macro_coupling": 0.115,
-      "macro_movement": 0.587,
-      "macro_space": 0.874
-    },
-    "OddfeliX": {
-      "macro_character": 0.0,
-      "macro_coupling": 0.156,
-      "macro_movement": 0.5,
-      "macro_space": 0.915
-    }
+    "Obsidian": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "sequencer": null,

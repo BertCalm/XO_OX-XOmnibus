@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Thread Ice II",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.053,
-      "macro_coupling": 0.332,
-      "macro_movement": 0.05,
-      "macro_space": 0.575
-    },
-    "Orphica": {
-      "macro_character": 0.053,
-      "macro_coupling": 0.332,
-      "macro_movement": 0.05,
-      "macro_space": 0.575
-    }
+    "Oceanic": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

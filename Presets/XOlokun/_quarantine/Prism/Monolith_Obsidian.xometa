@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Monolith Obsidian",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.351,
-      "macro_coupling": 0.42,
-      "macro_movement": 0.061,
-      "macro_space": 0.911
-    },
-    "Osteria": {
-      "macro_character": 0.784,
-      "macro_coupling": 0.312,
-      "macro_movement": 0.061,
-      "macro_space": 0.911
-    }
+    "Ole": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

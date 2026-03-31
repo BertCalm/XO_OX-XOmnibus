@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT COLD DENSE BALANCED ... (Osprey II)",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.502,
-      "macro_coupling": 0.831,
-      "macro_movement": 0.524,
-      "macro_space": 0.457
-    },
-    "Osprey": {
-      "macro_character": 0.515,
-      "macro_coupling": 0.812,
-      "macro_movement": 0.497,
-      "macro_space": 0.454
-    }
+    "Oracle": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

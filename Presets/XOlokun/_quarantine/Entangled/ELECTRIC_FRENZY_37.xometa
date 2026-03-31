@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "ELECTRIC FRENZY 37",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.984,
-      "macro_coupling": 0.462,
-      "macro_movement": 0.917,
-      "macro_space": 0.282
-    },
-    "Octopus": {
-      "macro_character": 0.382,
-      "macro_coupling": 0.527,
-      "macro_movement": 0.975,
-      "macro_space": 0.966
-    }
+    "Obese": {},
+    "Octopus": {}
   },
   "schema_version": 1,
   "tags": [

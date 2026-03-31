@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Warm Reverb Knot",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.62,
-      "macro_space": 0.55
-    },
-    "Organon": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.47,
-      "macro_space": 0.6
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

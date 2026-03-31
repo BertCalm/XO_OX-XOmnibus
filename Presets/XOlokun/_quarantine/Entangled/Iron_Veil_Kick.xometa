@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Iron Veil Kick",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.87,
-      "macro_space": 0.12
-    },
-    "Ouroboros": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.74,
-      "macro_space": 0.75
-    }
+    "Obese": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Umbra Copper",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.9101,
-      "macro_coupling": 0.5958,
-      "macro_movement": 0.3238,
-      "macro_space": 0.6549
-    },
-    "Oracle": {
-      "macro_character": 0.9335,
-      "macro_coupling": 0.2943,
-      "macro_movement": 0.5995,
-      "macro_space": 0.6948
-    }
+    "Ombre": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

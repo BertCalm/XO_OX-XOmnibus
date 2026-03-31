@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Shatter Solar",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.865,
-      "macro_coupling": 0.962,
-      "macro_movement": 0.393,
-      "macro_space": 0.902
-    },
-    "Orphica": {
-      "macro_character": 0.913,
-      "macro_coupling": 0.953,
-      "macro_movement": 0.382,
-      "macro_space": 0.925
-    }
+    "Odyssey": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

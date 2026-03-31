@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Dusk Cavern",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.5586,
-      "macro_coupling": 0.5113,
-      "macro_movement": 0.9038,
-      "macro_space": 0.9053
-    },
-    "Opal": {
-      "macro_character": 0.5403,
-      "macro_coupling": 0.5114,
-      "macro_movement": 0.9156,
-      "macro_space": 0.8827
-    }
+    "Obscura": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

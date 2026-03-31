@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Node Thick 2",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.6955,
-      "macro_coupling": 0.9112,
-      "macro_movement": 0.0788,
-      "macro_space": 0.4174
-    },
-    "Ohm": {
-      "macro_character": 0.7212,
-      "macro_coupling": 0.8095,
-      "macro_movement": 0.0436,
-      "macro_space": 0.1544
-    }
+    "Oceanic": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "sequencer": null,

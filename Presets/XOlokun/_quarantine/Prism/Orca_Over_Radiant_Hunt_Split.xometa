@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Orca": {
-      "macro_character": 0.7,
-      "macro_movement": 0.95,
-      "macro_coupling": 0.57,
-      "macro_space": 0.27
-    },
-    "Overworld": {
-      "macro_character": 0.62,
-      "macro_movement": 0.89,
-      "macro_coupling": 0.6,
-      "macro_space": 0.5
-    }
+    "Orca": {},
+    "Overworld": {}
   },
   "coupling": {
     "type": "PHASE_LOCK",

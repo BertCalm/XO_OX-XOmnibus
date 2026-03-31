@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Organ Drift",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.16,
-      "macro_space": 0.2
-    },
-    "Osprey": {
-      "macro_character": 0.84,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.23,
-      "macro_space": 0.13
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

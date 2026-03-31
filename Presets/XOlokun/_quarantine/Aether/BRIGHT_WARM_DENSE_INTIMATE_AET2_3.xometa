@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Peach Massive 2",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.9117,
-      "macro_coupling": 0.964,
-      "macro_movement": 0.5537,
-      "macro_space": 0.061
-    },
-    "Osprey": {
-      "macro_character": 0.8932,
-      "macro_coupling": 0.9568,
-      "macro_movement": 0.5579,
-      "macro_space": 0.0697
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

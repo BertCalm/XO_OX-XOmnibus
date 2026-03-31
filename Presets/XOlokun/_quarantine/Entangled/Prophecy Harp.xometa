@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Prophecy Harp",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.56,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.65,
-      "macro_space": 0.62
-    },
-    "Orphica": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.52,
-      "macro_space": 0.75
-    }
+    "Oracle": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Prism Rain",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.22,
-      "macro_coupling": 0.12,
-      "macro_movement": 0.55,
-      "macro_space": 0.93
-    }
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Golden Expanse",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.903,
-      "macro_coupling": 0.384,
-      "macro_movement": 0.029,
-      "macro_space": 0.925
-    },
-    "Overworld": {
-      "macro_character": 0.919,
-      "macro_coupling": 0.328,
-      "macro_movement": 0.032,
-      "macro_space": 0.944
-    }
+    "Oblique": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

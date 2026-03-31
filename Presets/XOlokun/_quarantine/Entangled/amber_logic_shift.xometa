@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Amber Logic Shift",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.5,
-      "macro_space": 0.5
-    },
-    "Organon": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.6,
-      "macro_space": 0.5
-    }
+    "Odyssey": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

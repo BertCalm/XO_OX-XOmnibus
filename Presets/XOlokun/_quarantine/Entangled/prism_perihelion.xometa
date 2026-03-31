@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Prism Perihelion",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.838,
-      "macro_coupling": 0.688,
-      "macro_movement": 0.788,
-      "macro_space": 0.588
-    },
-    "Orbital": {
-      "macro_character": 0.362,
-      "macro_coupling": 0.462,
-      "macro_movement": 0.512,
-      "macro_space": 0.662
-    }
+    "Oblique": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

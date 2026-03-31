@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Peach Crush",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.716,
-      "macro_coupling": 0.782,
-      "macro_movement": 0.367,
-      "macro_space": 0.586
-    },
-    "Optic": {
-      "macro_character": 0.611,
-      "macro_coupling": 0.794,
-      "macro_movement": 0.421,
-      "macro_space": 0.602
-    }
+    "OddOscar": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

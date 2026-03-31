@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Patina Oracle",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.62,
-      "macro_space": 0.52
-    },
-    "Ottoni": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.58,
-      "macro_space": 0.46
-    }
+    "Oracle": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

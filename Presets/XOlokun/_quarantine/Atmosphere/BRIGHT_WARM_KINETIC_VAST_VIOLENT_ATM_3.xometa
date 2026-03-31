@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Candlelight Horizon",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.9261,
-      "macro_coupling": 0.5274,
-      "macro_movement": 0.9216,
-      "macro_space": 0.99
-    },
-    "Orbital": {
-      "macro_character": 0.9584,
-      "macro_coupling": 0.5191,
-      "macro_movement": 0.9346,
-      "macro_space": 0.9829
-    }
+    "Obscura": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

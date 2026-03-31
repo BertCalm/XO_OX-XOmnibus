@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "VELOCITY SURGE 65",
   "parameters": {
-    "Overworld": {
-      "macro_character": 0.656,
-      "macro_coupling": 0.662,
-      "macro_movement": 0.972,
-      "macro_space": 0.129
-    },
-    "Owlfish": {
-      "macro_character": 0.709,
-      "macro_coupling": 0.085,
-      "macro_movement": 0.911,
-      "macro_space": 0.559
-    }
+    "Overworld": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

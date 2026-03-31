@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Halo Surge 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.9417,
-      "macro_coupling": 0.1164,
-      "macro_movement": 0.9026,
-      "macro_space": 0.4189
-    },
-    "Optic": {
-      "macro_character": 0.9435,
-      "macro_coupling": 0.1167,
-      "macro_movement": 0.91,
-      "macro_space": 0.4594
-    }
+    "OddOscar": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

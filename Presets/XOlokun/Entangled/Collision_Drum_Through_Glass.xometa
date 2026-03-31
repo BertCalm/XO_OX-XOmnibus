@@ -36,10 +36,6 @@
   },
   "parameters": {
     "Onset": {
-      "macro_character": 0.65,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.82,
-      "macro_space": 0.38,
       "perc_noiseLevel": 0.55,
       "perc_kickFreq": 60,
       "perc_kickDecay": 0.45,
@@ -47,10 +43,6 @@
       "perc_outputLevel": 0.8
     },
     "Overlap": {
-      "macro_character": 0.55,
-      "macro_movement": 0.68,
-      "macro_coupling": 0.82,
-      "macro_space": 0.72,
       "olap_knotDepth": 0.68,
       "olap_feedbackAmount": 0.62,
       "olap_resonanceFreq": 0.5,

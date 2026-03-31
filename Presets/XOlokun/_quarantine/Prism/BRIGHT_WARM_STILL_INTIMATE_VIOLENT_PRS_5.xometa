@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Golden Strike",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.869,
-      "macro_coupling": 0.282,
-      "macro_movement": 0.136,
-      "macro_space": 0.184
-    },
-    "Owlfish": {
-      "macro_character": 0.878,
-      "macro_coupling": 0.308,
-      "macro_movement": 0.038,
-      "macro_space": 0.068
-    }
+    "Ocelot": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "sequencer": null,

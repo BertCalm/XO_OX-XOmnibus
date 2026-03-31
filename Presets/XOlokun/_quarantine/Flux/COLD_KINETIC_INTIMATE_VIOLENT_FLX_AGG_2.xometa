@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Signal Wrath",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.424,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.91,
-      "macro_space": 0.081
-    },
-    "Opal": {
-      "macro_character": 0.655,
-      "macro_coupling": 0.802,
-      "macro_movement": 0.862,
-      "macro_space": 0.042
-    }
+    "Odyssey": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Arctic Expanse",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.326,
-      "macro_coupling": 0.679,
-      "macro_movement": 0.101,
-      "macro_space": 0.918
-    },
-    "Oracle": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.089,
-      "macro_space": 0.913
-    }
+    "Odyssey": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

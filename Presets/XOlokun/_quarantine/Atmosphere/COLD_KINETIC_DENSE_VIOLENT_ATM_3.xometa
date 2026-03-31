@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Wave Cascade 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.643,
-      "macro_coupling": 0.867,
-      "macro_movement": 0.827,
-      "macro_space": 0.559
-    },
-    "Orbital": {
-      "macro_character": 0.416,
-      "macro_coupling": 0.542,
-      "macro_movement": 0.765,
-      "macro_space": 0.467
-    }
+    "Oblique": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

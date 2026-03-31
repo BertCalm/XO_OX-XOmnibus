@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Ocean Dusk II",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.261,
-      "macro_coupling": 0.665,
-      "macro_movement": 1.0,
-      "macro_space": 0.992
-    },
-    "Ottoni": {
-      "macro_character": 0.207,
-      "macro_coupling": 0.684,
-      "macro_movement": 0.886,
-      "macro_space": 0.913
-    }
+    "Osprey": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

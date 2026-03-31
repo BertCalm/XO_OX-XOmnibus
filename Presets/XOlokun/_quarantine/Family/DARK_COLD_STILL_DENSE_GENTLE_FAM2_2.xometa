@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "DARK COLD STILL DENSE GENTL... (Organon)",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.069,
-      "macro_coupling": 0.497,
-      "macro_movement": 0.056,
-      "macro_space": 0.605
-    },
-    "Organon": {
-      "macro_character": 0.05,
-      "macro_coupling": 0.471,
-      "macro_movement": 0.082,
-      "macro_space": 0.611
-    }
+    "Odyssey": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

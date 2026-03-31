@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Candlelight Deep",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.8497,
-      "macro_coupling": 0.943,
-      "macro_movement": 0.0354,
-      "macro_space": 0.5414
-    },
-    "Origami": {
-      "macro_character": 0.7952,
-      "macro_coupling": 0.8463,
-      "macro_movement": 0.031,
-      "macro_space": 0.1342
-    }
+    "Oceanic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

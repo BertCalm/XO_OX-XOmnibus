@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Signal Void (Ohm)",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.6598,
-      "macro_coupling": 0.9173,
-      "macro_movement": 0.0291,
-      "macro_space": 0.5713
-    },
-    "Overworld": {
-      "macro_character": 0.8258,
-      "macro_coupling": 0.841,
-      "macro_movement": 0.0284,
-      "macro_space": 0.7359
-    }
+    "Ohm": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

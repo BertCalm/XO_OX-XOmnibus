@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Flux Crush 2",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.8277,
-      "macro_coupling": 0.9416,
-      "macro_movement": 0.0242,
-      "macro_space": 0.7156
-    },
-    "Overworld": {
-      "macro_character": 0.7392,
-      "macro_coupling": 0.8155,
-      "macro_movement": 0.01,
-      "macro_space": 0.5128
-    }
+    "Optic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

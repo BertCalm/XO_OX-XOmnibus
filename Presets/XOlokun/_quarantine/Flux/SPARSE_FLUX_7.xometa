@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "SPARSE FLUX 7",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.0801,
-      "macro_coupling": 0.3065,
-      "macro_movement": 0.6609,
-      "macro_space": 0.6026
-    },
-    "Organon": {
-      "macro_character": 0.6025,
-      "macro_coupling": 0.5455,
-      "macro_movement": 0.8223,
-      "macro_space": 0.3212
-    }
+    "Orbital": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Mirror Rage",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.5007,
-      "macro_coupling": 0.0827,
-      "macro_movement": 0.8538,
-      "macro_space": 0.52
-    },
-    "Ouroboros": {
-      "macro_character": 0.473,
-      "macro_coupling": 0.0843,
-      "macro_movement": 0.8686,
-      "macro_space": 0.5078
-    }
+    "Optic": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

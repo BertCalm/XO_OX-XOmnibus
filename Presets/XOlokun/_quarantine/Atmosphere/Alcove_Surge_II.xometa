@@ -39,18 +39,8 @@
   "mood": "Atmosphere",
   "name": "Alcove Surge II",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.83,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.96,
-      "macro_space": 0.45
-    },
-    "Osteria": {
-      "macro_character": 0.69,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.67,
-      "macro_space": 0.37
-    }
+    "Oceanic": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "sequencer": null,

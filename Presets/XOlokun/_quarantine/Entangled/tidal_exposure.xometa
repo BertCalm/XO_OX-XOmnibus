@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Tidal Exposure",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.335,
-      "macro_coupling": 0.535,
-      "macro_movement": 0.235,
-      "macro_space": 0.585
-    },
-    "Oceanic": {
-      "macro_character": 0.315,
-      "macro_coupling": 0.465,
-      "macro_movement": 0.365,
-      "macro_space": 0.815
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

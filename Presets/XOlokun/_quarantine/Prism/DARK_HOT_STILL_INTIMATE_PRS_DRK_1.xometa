@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Dusk Molten 2",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.7229,
-      "macro_coupling": 0.6709,
-      "macro_movement": 0.086,
-      "macro_space": 0.106
-    },
-    "Overworld": {
-      "macro_character": 0.6942,
-      "macro_coupling": 0.6456,
-      "macro_movement": 0.1082,
-      "macro_space": 0.1092
-    }
+    "Origami": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

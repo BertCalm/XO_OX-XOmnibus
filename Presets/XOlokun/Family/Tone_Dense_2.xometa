@@ -38,19 +38,10 @@
   "name": "Tone Dense 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.057,
-      "macro_coupling": 0.945,
-      "macro_movement": 0.592,
-      "macro_space": 0.295,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "OddfeliX": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.627,
-      "macro_space": 0.297
-    }
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

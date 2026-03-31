@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Seafoam Recursion",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.6,
-      "macro_space": 0.7
-    },
-    "Ouroboros": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.68,
-      "macro_space": 0.4
-    }
+    "Orphica": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

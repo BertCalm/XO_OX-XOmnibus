@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Cold Geometry",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.14,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.3,
-      "macro_space": 0.94
-    },
-    "Origami": {
-      "macro_character": 0.11,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.25,
-      "macro_space": 0.97
-    }
+    "Odyssey": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

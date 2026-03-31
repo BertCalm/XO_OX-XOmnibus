@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Ice Force",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.552,
-      "macro_coupling": 0.968,
-      "macro_movement": 0.343,
-      "macro_space": 0.088
-    },
+    "Oracle": {},
     "Overdub": {
-      "macro_character": 0.45,
-      "macro_coupling": 0.928,
-      "macro_movement": 0.362,
-      "macro_space": 0.123,
       "dub_lfoDepth": 0.12
     }
   },

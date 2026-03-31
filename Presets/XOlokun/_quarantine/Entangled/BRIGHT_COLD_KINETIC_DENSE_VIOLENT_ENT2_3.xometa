@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "BRIGHT COLD KINETIC DENSE V... (Organon I)",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.942,
-      "macro_movement": 0.887,
-      "macro_space": 0.45
-    },
-    "Organon": {
-      "macro_character": 0.495,
-      "macro_coupling": 0.969,
-      "macro_movement": 0.918,
-      "macro_space": 0.444
-    }
+    "Obese": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Cyanotype Fold",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.12,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.27,
-      "macro_space": 0.95
-    },
-    "Origami": {
-      "macro_character": 0.09,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.22,
-      "macro_space": 0.98
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

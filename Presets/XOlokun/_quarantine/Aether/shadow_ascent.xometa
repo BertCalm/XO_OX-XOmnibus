@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Shadow Ascent",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.35,
-      "macro_movement": 0.55,
-      "macro_space": 0.82
-    }
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

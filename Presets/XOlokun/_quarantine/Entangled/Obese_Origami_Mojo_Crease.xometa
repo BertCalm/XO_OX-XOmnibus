@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Mojo Crease",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.5,
-      "macro_space": 0.35
-    },
-    "Origami": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.6,
-      "macro_space": 0.55
-    }
+    "Obese": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

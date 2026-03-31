@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK WARM DENSE VIOLENT AET... (Orbital I)",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.032,
-      "macro_coupling": 0.828,
-      "macro_movement": 0.459,
-      "macro_space": 0.488
-    },
-    "Organon": {
-      "macro_character": 0.032,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.451,
-      "macro_space": 0.475
-    }
+    "Orbital": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

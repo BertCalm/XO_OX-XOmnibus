@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "CROSS FLX 01",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.313,
-      "macro_movement": 0.507,
-      "macro_space": 0.538
-    },
+    "Odyssey": {},
     "Overdub": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.313,
-      "macro_movement": 0.507,
-      "macro_space": 0.538,
       "dub_lfoDepth": 0.12
     }
   },

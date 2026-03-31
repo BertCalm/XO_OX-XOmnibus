@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Current Core",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.227,
-      "macro_coupling": 0.464,
-      "macro_movement": 0.972,
-      "macro_space": 0.033
-    },
-    "Osprey": {
-      "macro_character": 0.227,
-      "macro_coupling": 0.464,
-      "macro_movement": 0.972,
-      "macro_space": 0.033
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

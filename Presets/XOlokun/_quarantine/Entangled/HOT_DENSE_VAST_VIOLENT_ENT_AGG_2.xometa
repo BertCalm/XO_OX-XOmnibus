@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Mahogany Saturated",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.552,
-      "macro_coupling": 0.857,
-      "macro_movement": 0.572,
-      "macro_space": 0.953
-    },
-    "Origami": {
-      "macro_character": 0.468,
-      "macro_coupling": 0.853,
-      "macro_movement": 0.495,
-      "macro_space": 0.931
-    }
+    "Opal": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

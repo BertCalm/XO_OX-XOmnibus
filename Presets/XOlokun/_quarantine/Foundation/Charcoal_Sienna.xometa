@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Charcoal Sienna",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.733,
-      "macro_coupling": 0.158,
-      "macro_movement": 0.85,
-      "macro_space": 0.408
-    },
-    "Onset": {
-      "macro_character": 0.715,
-      "macro_coupling": 0.549,
-      "macro_movement": 0.641,
-      "macro_space": 0.82
-    }
+    "OddOscar": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

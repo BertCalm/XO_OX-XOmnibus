@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "HOT STILL DENSE INTIMATE GE... (OddOscar I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.522,
-      "macro_movement": 0.02,
-      "macro_space": 0.048
-    },
-    "Osprey": {
-      "macro_character": 0.671,
-      "macro_coupling": 0.525,
-      "macro_movement": 0.039,
-      "macro_space": 0.053
-    }
+    "OddOscar": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

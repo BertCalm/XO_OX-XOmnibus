@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Opal": {
-      "macro_character": 0.79,
-      "macro_movement": 0.77,
-      "macro_coupling": 0.65,
-      "macro_space": 0.42
-    },
-    "OddOscar": {
-      "macro_character": 0.64,
-      "macro_movement": 0.88,
-      "macro_coupling": 0.56,
-      "macro_space": 0.4
-    }
+    "Opal": {},
+    "OddOscar": {}
   },
   "coupling": {
     "type": "AMPLITUDE_SYNC",

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sting Opaque",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.648,
-      "macro_coupling": 0.964,
-      "macro_movement": 0.935,
-      "macro_space": 0.946
-    },
-    "Opal": {
-      "macro_character": 0.648,
-      "macro_coupling": 0.964,
-      "macro_movement": 0.935,
-      "macro_space": 0.946
-    }
+    "Ole": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

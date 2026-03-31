@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Wandering Signal",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.42,
-      "macro_coupling": 0.28,
-      "macro_movement": 0.8,
-      "macro_space": 0.82
-    }
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

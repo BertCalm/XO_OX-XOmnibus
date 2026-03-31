@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT DENSE VAST VIOLENT A... (OddOscar I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.924,
-      "macro_coupling": 0.912,
-      "macro_movement": 0.533,
-      "macro_space": 0.913
-    },
-    "Orbital": {
-      "macro_character": 0.931,
-      "macro_coupling": 0.895,
-      "macro_movement": 0.523,
-      "macro_space": 0.926
-    }
+    "OddOscar": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

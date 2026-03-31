@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fat Pipe",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.3,
-      "macro_space": 0.15
-    },
-    "Organon": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.4,
-      "macro_space": 0.5
-    }
+    "Obese": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

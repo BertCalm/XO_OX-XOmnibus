@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Fragment Vast",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.1,
-      "macro_coupling": 0.922,
-      "macro_movement": 0.111,
-      "macro_space": 0.877
-    },
-    "Origami": {
-      "macro_character": 0.07,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.086,
-      "macro_space": 1.0
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

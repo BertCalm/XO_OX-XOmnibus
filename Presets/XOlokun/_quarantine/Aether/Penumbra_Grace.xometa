@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Penumbra Grace",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.059,
-      "macro_coupling": 0.082,
-      "macro_movement": 0.284,
-      "macro_space": 0.101
-    },
-    "Ombre": {
-      "macro_character": 0.059,
-      "macro_coupling": 0.082,
-      "macro_movement": 0.284,
-      "macro_space": 0.101
-    }
+    "Obscura": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Dusk Wrath",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.8235,
-      "macro_coupling": 0.4281,
-      "macro_movement": 0.5886,
-      "macro_space": 0.3215
-    },
-    "Overworld": {
-      "macro_character": 0.7758,
-      "macro_coupling": 0.5771,
-      "macro_movement": 0.2968,
-      "macro_space": 0.8512
-    }
+    "OddfeliX": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

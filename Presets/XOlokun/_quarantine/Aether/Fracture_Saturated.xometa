@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Fracture Saturated",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.748,
-      "macro_coupling": 0.966,
-      "macro_movement": 0.929,
-      "macro_space": 0.961
-    },
-    "Oceanic": {
-      "macro_character": 0.748,
-      "macro_coupling": 0.966,
-      "macro_movement": 0.929,
-      "macro_space": 0.961
-    }
+    "Oblique": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

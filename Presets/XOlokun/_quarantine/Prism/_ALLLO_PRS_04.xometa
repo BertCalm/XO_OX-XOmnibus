@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "ALLLO PRS 04",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.061,
-      "macro_movement": 0.302,
-      "macro_space": 0.064
-    },
-    "Oracle": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.061,
-      "macro_movement": 0.302,
-      "macro_space": 0.064
-    }
+    "Ole": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

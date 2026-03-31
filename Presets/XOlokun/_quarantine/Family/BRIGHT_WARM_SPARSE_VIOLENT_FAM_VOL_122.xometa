@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Glow Wrath",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.912,
-      "macro_coupling": 0.468,
-      "macro_movement": 0.673,
-      "macro_space": 0.627
-    },
-    "Opal": {
-      "macro_character": 0.951,
-      "macro_coupling": 0.506,
-      "macro_movement": 0.649,
-      "macro_space": 0.607
-    }
+    "Odyssey": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

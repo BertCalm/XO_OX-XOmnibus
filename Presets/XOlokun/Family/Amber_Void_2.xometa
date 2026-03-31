@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Amber Void 2",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.492,
-      "macro_coupling": 0.29,
-      "macro_movement": 0.551,
-      "macro_space": 0.905
-    },
+    "Obbligato": {},
     "Oblong": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.292,
-      "macro_movement": 0.506,
-      "macro_space": 0.92,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

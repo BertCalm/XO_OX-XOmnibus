@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Smoke Wrath",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.6906,
-      "macro_coupling": 0.4944,
-      "macro_movement": 0.0811,
-      "macro_space": 0.0938
-    },
-    "Overworld": {
-      "macro_character": 0.725,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.068,
-      "macro_space": 0.1087
-    }
+    "Ottoni": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

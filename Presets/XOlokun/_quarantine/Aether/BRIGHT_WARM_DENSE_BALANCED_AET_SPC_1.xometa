@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM DENSE BALANCED ...",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.906,
-      "macro_coupling": 0.821,
-      "macro_movement": 0.52,
-      "macro_space": 0.612
-    },
-    "OddfeliX": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.813,
-      "macro_movement": 0.53,
-      "macro_space": 0.636
-    }
+    "Oceanic": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

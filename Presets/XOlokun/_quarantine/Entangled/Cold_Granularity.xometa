@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Cold Granularity",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.07,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.15,
-      "macro_space": 0.99
-    },
-    "Opal": {
-      "macro_character": 0.1,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.2,
-      "macro_space": 0.96
-    }
+    "Odyssey": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

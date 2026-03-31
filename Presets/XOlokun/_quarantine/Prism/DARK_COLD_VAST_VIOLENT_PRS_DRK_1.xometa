@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Grain Canyon 2",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.4703,
-      "macro_coupling": 0.4262,
-      "macro_movement": 0.3128,
-      "macro_space": 0.9021
-    },
-    "Osteria": {
-      "macro_character": 0.462,
-      "macro_coupling": 0.4229,
-      "macro_movement": 0.346,
-      "macro_space": 0.8833
-    }
+    "Orphica": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

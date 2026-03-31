@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "DARK WARM TIGHT VIOLENT ATM... (OddfeliX I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.026,
-      "macro_coupling": 0.883,
-      "macro_movement": 0.293,
-      "macro_space": 0.072
-    },
-    "OddfeliX": {
-      "macro_character": 0.027,
-      "macro_coupling": 0.862,
-      "macro_movement": 0.302,
-      "macro_space": 0.069
-    }
+    "Oblique": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

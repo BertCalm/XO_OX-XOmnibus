@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Mahogany Canyon",
   "parameters": {
-    "Orca": {
-      "macro_character": 0.5248,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.1193,
-      "macro_space": 0.9405
-    },
-    "Ouroboros": {
-      "macro_character": 0.5449,
-      "macro_coupling": 0.8009,
-      "macro_movement": 0.1266,
-      "macro_space": 0.6436
-    }
+    "Orca": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

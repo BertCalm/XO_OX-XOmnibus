@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "COLD STILL SPARSE BALANCED ... (Origami)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.184,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.072,
-      "macro_space": 0.53
-    },
-    "Origami": {
-      "macro_character": 0.187,
-      "macro_coupling": 0.647,
-      "macro_movement": 0.082,
-      "macro_space": 0.543
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

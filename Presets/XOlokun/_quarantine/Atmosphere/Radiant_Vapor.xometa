@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Radiant Vapor",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.575,
-      "macro_coupling": 0.864,
-      "macro_movement": 0.135,
-      "macro_space": 0.708
-    },
-    "OddfeliX": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.406,
-      "macro_movement": 0.256,
-      "macro_space": 0.768
-    }
+    "Oblique": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

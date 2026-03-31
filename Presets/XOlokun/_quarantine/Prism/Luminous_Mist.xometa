@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Luminous Mist",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.831,
-      "macro_coupling": 0.836,
-      "macro_movement": 0.599,
-      "macro_space": 0.339
-    },
-    "Owlfish": {
-      "macro_character": 0.889,
-      "macro_coupling": 0.486,
-      "macro_movement": 0.72,
-      "macro_space": 0.428
-    }
+    "Odyssey": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

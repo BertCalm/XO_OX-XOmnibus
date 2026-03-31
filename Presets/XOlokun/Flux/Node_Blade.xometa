@@ -38,19 +38,10 @@
   "name": "Node Blade",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.601,
-      "macro_coupling": 0.705,
-      "macro_movement": 0.048,
-      "macro_space": 0.618,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Oceanic": {
-      "macro_character": 0.625,
-      "macro_coupling": 0.918,
-      "macro_movement": 0.046,
-      "macro_space": 0.604
-    }
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -39,18 +39,8 @@
   "mood": "Aether",
   "name": "Brass Soothe",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.94,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.93,
-      "macro_space": 0.41
-    },
-    "Ouroboros": {
-      "macro_character": 0.93,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.81,
-      "macro_space": 0.48
-    }
+    "Osteria": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Organ Mass",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.53,
-      "macro_space": 0.25
-    },
-    "Organon": {
-      "macro_character": 0.81,
-      "macro_coupling": 0.42,
-      "macro_movement": 0.68,
-      "macro_space": 0.28
-    }
+    "Obese": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

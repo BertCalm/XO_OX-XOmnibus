@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Node Drift",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.274,
-      "macro_coupling": 0.182,
-      "macro_movement": 0.248,
-      "macro_space": 0.307
-    },
-    "Oracle": {
-      "macro_character": 0.278,
-      "macro_coupling": 0.512,
-      "macro_movement": 0.384,
-      "macro_space": 0.446
-    }
+    "Obese": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

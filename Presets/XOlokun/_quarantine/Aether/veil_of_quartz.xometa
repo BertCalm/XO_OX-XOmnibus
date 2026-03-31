@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Veil of Quartz",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.22,
-      "macro_coupling": 0.12,
-      "macro_movement": 0.54,
-      "macro_space": 0.92
-    }
+    "Octopus": {}
   },
   "schema_version": 1,
   "tags": [

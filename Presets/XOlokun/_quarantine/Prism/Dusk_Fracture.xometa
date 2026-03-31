@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Dusk Fracture",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.946,
-      "macro_coupling": 0.512,
-      "macro_movement": 0.662,
-      "macro_space": 0.634
-    },
-    "Overworld": {
-      "macro_character": 0.484,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.662,
-      "macro_space": 0.634
-    }
+    "Ohm": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.79,
-      "macro_movement": 0.94,
-      "macro_coupling": 0.89,
-      "macro_space": 0.31
-    },
-    "Overlap": {
-      "macro_character": 0.65,
-      "macro_movement": 0.9,
-      "macro_coupling": 0.87,
-      "macro_space": 0.46
-    }
+    "Octopus": {},
+    "Overlap": {}
   },
   "coupling": {
     "type": "SPECTRAL_BLEND",

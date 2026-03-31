@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Sunrise Titan",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.7629,
-      "macro_coupling": 0.8591,
-      "macro_movement": 0.1136,
-      "macro_space": 0.6719
-    },
-    "Osprey": {
-      "macro_character": 0.7864,
-      "macro_coupling": 0.9474,
-      "macro_movement": 0.091,
-      "macro_space": 0.8992
-    }
+    "OddfeliX": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "sequencer": null,

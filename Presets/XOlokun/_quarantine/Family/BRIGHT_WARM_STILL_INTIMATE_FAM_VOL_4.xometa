@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Glow Crush",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.933,
-      "macro_coupling": 0.568,
-      "macro_movement": 0.083,
-      "macro_space": 0.083
-    },
-    "Orphica": {
-      "macro_character": 0.905,
-      "macro_coupling": 0.609,
-      "macro_movement": 0.124,
-      "macro_space": 0.106
-    }
+    "Origami": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

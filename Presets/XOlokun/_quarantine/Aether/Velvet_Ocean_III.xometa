@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Velvet Ocean III",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.6412,
-      "macro_coupling": 0.3652,
-      "macro_movement": 0.3726,
-      "macro_space": 0.2532
-    },
-    "Overworld": {
-      "macro_character": 0.6733,
-      "macro_coupling": 0.8791,
-      "macro_movement": 0.3717,
-      "macro_space": 0.8447
-    }
+    "Oceanic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

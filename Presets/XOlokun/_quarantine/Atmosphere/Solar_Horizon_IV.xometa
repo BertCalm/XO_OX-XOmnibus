@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Solar Horizon IV",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.772,
-      "macro_movement": 0.535,
-      "macro_space": 0.822
-    },
-    "OddOscar": {
-      "macro_character": 0.454,
-      "macro_coupling": 0.612,
-      "macro_movement": 0.507,
-      "macro_space": 0.754
-    }
+    "Oblique": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,17 +45,8 @@
   "mood": "Entangled",
   "name": "Shard Deep",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.687,
-      "macro_coupling": 0.9891,
-      "macro_movement": 0.0398,
-      "macro_space": 0.5497
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.9218,
-      "macro_coupling": 0.7528,
-      "macro_movement": 0.0283,
-      "macro_space": 0.7126,
       "dub_lfoDepth": 0.12
     }
   },

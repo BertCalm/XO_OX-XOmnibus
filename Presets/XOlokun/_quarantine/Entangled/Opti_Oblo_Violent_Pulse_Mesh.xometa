@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Optic": {
-      "macro_character": 0.69,
-      "macro_movement": 0.81,
-      "macro_coupling": 0.63,
-      "macro_space": 0.41
-    },
-    "Oblong": {
-      "macro_character": 0.67,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.68,
-      "macro_space": 0.1
-    }
+    "Optic": {},
+    "Oblong": {}
   },
   "coupling": {
     "type": "ENVELOPE_SLAVE",

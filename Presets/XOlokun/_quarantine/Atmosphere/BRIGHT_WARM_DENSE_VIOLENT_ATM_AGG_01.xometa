@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT WARM DENSE VIOLENT A...",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.466,
-      "macro_space": 0.312
-    },
-    "Origami": {
-      "macro_character": 0.913,
-      "macro_coupling": 0.842,
-      "macro_movement": 0.475,
-      "macro_space": 0.331
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

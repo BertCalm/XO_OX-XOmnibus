@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Incandescent Mass",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.93,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.56,
-      "macro_space": 0.22
-    },
-    "Opal": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.54,
-      "macro_space": 0.28
-    }
+    "OddOscar": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

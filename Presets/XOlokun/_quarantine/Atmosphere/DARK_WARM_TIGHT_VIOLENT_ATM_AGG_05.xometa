@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "DARK WARM TIGHT VIOLENT ATM... (Orbital I)",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.106,
-      "macro_coupling": 0.856,
-      "macro_movement": 0.42,
-      "macro_space": 0.12
-    },
-    "Osprey": {
-      "macro_character": 0.105,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.412,
-      "macro_space": 0.118
-    }
+    "Orbital": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

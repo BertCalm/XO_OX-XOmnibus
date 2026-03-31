@@ -39,18 +39,8 @@
   "mood": "Flux",
   "name": "Dusk Saturated",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.61,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.95,
-      "macro_space": 0.47
-    },
-    "Orca": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.87,
-      "macro_space": 0.48
-    }
+    "OddOscar": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "sequencer": null,

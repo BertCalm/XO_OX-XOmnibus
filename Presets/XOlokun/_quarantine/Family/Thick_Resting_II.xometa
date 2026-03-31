@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Thick Resting II",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.652,
-      "macro_coupling": 0.853,
-      "macro_movement": 0.068,
-      "macro_space": 0.483
-    },
-    "Ouroboros": {
-      "macro_character": 0.507,
-      "macro_coupling": 0.621,
-      "macro_movement": 0.073,
-      "macro_space": 0.376
-    }
+    "Obscura": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

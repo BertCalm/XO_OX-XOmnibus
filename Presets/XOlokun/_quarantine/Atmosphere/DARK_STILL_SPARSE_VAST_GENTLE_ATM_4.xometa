@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Mahogany Horizon 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.4014,
-      "macro_coupling": 0.1126,
-      "macro_movement": 0.0867,
-      "macro_space": 0.9836
-    },
-    "Osprey": {
-      "macro_character": 0.3962,
-      "macro_coupling": 0.1212,
-      "macro_movement": 0.0577,
-      "macro_space": 0.9736
-    }
+    "Oblique": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

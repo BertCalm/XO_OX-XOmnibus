@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Tawny Tide",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.35,
-      "macro_space": 0.8
-    },
-    "Ocelot": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.7,
-      "macro_space": 0.45
-    }
+    "Oceanic": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Bloom Cathedral",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.153,
-      "macro_movement": 0.624,
-      "macro_space": 1.0
-    },
-    "Ouroboros": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.048,
-      "macro_movement": 0.512,
-      "macro_space": 0.891
-    }
+    "Obsidian": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

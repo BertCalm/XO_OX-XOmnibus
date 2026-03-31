@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Obsidian Feather III",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.449,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.425,
-      "macro_space": 0.518
-    },
-    "Onset": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.538,
-      "macro_movement": 0.339,
-      "macro_space": 0.506
-    }
+    "Obese": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

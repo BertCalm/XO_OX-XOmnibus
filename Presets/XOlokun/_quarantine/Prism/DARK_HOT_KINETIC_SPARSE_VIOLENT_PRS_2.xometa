@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Dusk Stream",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.026,
-      "macro_coupling": 0.0,
-      "macro_movement": 1.0,
-      "macro_space": 0.686
-    },
-    "Overworld": {
-      "macro_character": 0.151,
-      "macro_coupling": 0.012,
-      "macro_movement": 0.965,
-      "macro_space": 0.56
-    }
+    "Orphica": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

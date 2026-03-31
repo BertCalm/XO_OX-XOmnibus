@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Bloat Crease",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.8,
-      "macro_space": 0.8
-    },
-    "Origami": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.8,
-      "macro_space": 0.8
-    }
+    "Obese": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -39,18 +39,8 @@
   "mood": "Aether",
   "name": "Pulse Arctic",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.61,
-      "macro_movement": 0.65,
-      "macro_space": 0.27
-    },
-    "Overworld": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.66,
-      "macro_space": 0.11
-    }
+    "Organon": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

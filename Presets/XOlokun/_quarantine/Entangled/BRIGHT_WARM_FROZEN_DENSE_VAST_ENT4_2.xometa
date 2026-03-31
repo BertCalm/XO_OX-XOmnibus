@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Bloom Thick",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.988,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.026,
-      "macro_space": 0.917
-    },
-    "Organon": {
-      "macro_character": 0.97,
-      "macro_coupling": 0.914,
-      "macro_movement": 0.033,
-      "macro_space": 0.906
-    }
+    "Obbligato": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

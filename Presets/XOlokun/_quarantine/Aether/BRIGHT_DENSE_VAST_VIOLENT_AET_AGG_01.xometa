@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT DENSE VAST VIOLENT A...",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.835,
-      "macro_coupling": 0.949,
-      "macro_movement": 0.538,
-      "macro_space": 0.914
-    },
-    "Origami": {
-      "macro_character": 0.834,
-      "macro_coupling": 0.918,
-      "macro_movement": 0.512,
-      "macro_space": 0.98
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

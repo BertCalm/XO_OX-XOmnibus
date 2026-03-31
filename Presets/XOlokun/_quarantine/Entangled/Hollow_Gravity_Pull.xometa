@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Hollow Gravity Pull",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.85,
-      "macro_space": 0.47
-    },
-    "Onset": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.21,
-      "macro_space": 0.76
-    }
+    "Obscura": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

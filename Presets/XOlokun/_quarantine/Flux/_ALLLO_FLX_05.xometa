@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ALLLO FLX 05",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.059,
-      "macro_coupling": 0.228,
-      "macro_movement": 0.039,
-      "macro_space": 0.398
-    },
-    "Oracle": {
-      "macro_character": 0.059,
-      "macro_coupling": 0.228,
-      "macro_movement": 0.039,
-      "macro_space": 0.398
-    }
+    "Odyssey": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

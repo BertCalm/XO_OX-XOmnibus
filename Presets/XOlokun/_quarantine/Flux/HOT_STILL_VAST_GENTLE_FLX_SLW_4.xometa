@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Node Canyon",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.747,
-      "macro_movement": 0.044,
-      "macro_space": 0.971
-    },
-    "Ouroboros": {
-      "macro_character": 0.531,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.041,
-      "macro_space": 0.813
-    }
+    "Oracle": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

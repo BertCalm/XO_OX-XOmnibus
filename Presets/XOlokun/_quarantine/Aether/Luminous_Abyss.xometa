@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Luminous Abyss",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.7229,
-      "macro_coupling": 0.7132,
-      "macro_movement": 0.4262,
-      "macro_space": 0.8041
-    },
-    "Ombre": {
-      "macro_character": 0.7972,
-      "macro_coupling": 0.2308,
-      "macro_movement": 0.6244,
-      "macro_space": 0.5996
-    }
+    "OddOscar": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

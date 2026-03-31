@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Ember Solid",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.6343,
-      "macro_coupling": 0.9047,
-      "macro_movement": 0.8973,
-      "macro_space": 0.3319
-    },
-    "Owlfish": {
-      "macro_character": 0.661,
-      "macro_coupling": 0.8931,
-      "macro_movement": 0.8703,
-      "macro_space": 0.3455
-    }
+    "Origami": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

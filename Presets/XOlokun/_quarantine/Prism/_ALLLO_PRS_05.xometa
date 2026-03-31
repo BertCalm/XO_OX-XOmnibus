@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "ALLLO PRS 05",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.282,
-      "macro_movement": 0.071,
-      "macro_space": 0.489
-    },
-    "Osteria": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.282,
-      "macro_movement": 0.071,
-      "macro_space": 0.489
-    }
+    "Optic": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

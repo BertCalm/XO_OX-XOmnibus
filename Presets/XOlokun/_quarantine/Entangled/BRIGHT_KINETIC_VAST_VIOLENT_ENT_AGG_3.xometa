@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Honey Horizon",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.683,
-      "macro_coupling": 0.936,
-      "macro_movement": 0.993,
-      "macro_space": 0.951
-    },
-    "Osteria": {
-      "macro_character": 0.711,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.932,
-      "macro_space": 1.0
-    }
+    "Odyssey": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

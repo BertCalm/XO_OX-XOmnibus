@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Ember Edge",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.9866,
-      "macro_coupling": 0.6412,
-      "macro_movement": 0.9087,
-      "macro_space": 0.6707
-    },
-    "Owlfish": {
-      "macro_character": 0.958,
-      "macro_coupling": 0.6257,
-      "macro_movement": 0.9223,
-      "macro_space": 0.6876
-    }
+    "Osteria": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

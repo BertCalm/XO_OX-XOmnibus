@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Cocoa Horizon",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.145,
-      "macro_coupling": 0.385,
-      "macro_movement": 0.977,
-      "macro_space": 0.9
-    },
-    "Orphica": {
-      "macro_character": 0.142,
-      "macro_coupling": 0.547,
-      "macro_movement": 0.947,
-      "macro_space": 1.0
-    }
+    "Oracle": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

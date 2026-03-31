@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Peach Shard",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.5545,
-      "macro_coupling": 0.8191,
-      "macro_movement": 0.0825,
-      "macro_space": 0.356
-    },
-    "Overbite": {
-      "macro_character": 0.7057,
-      "macro_coupling": 0.9405,
-      "macro_movement": 0.085,
-      "macro_space": 0.4885
-    }
+    "Onset": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

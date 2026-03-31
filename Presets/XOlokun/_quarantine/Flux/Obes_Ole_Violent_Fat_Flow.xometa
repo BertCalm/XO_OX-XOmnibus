@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Obese": {
-      "macro_character": 0.65,
-      "macro_movement": 0.78,
-      "macro_coupling": 0.53,
-      "macro_space": 0.2
-    },
-    "Ole": {
-      "macro_character": 0.71,
-      "macro_movement": 0.79,
-      "macro_coupling": 0.64,
-      "macro_space": 0.17
-    }
+    "Obese": {},
+    "Ole": {}
   },
   "coupling": {
     "type": "HARMONIC_STACK",

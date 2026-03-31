@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Phase Migration",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.18,
-      "macro_movement": 0.9,
-      "macro_space": 0.85
-    }
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

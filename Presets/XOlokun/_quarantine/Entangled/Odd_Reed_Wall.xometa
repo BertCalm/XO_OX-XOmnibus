@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Odd Reed Wall",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.75,
-      "macro_space": 0.26
-    },
-    "Organon": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.63,
-      "macro_space": 0.32
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

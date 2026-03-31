@@ -38,19 +38,10 @@
   "name": "Thermal Strike",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.57,
-      "macro_movement": 0.6,
-      "macro_space": 0.21,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ouroboros": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.61,
-      "macro_movement": 0.42,
-      "macro_space": 0.21
-    }
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

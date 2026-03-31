@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Equatorial Stalk",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.675,
-      "macro_coupling": 0.575,
-      "macro_movement": 0.725,
-      "macro_space": 0.475
-    },
-    "Orbital": {
-      "macro_character": 0.375,
-      "macro_coupling": 0.475,
-      "macro_movement": 0.525,
-      "macro_space": 0.675
-    }
+    "Ocelot": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Honey Grit",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.7763,
-      "macro_coupling": 0.0844,
-      "macro_movement": 0.8745,
-      "macro_space": 0.8891
-    },
-    "Osprey": {
-      "macro_character": 0.7408,
-      "macro_coupling": 0.0419,
-      "macro_movement": 0.9084,
-      "macro_space": 0.9138
-    }
+    "OddfeliX": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

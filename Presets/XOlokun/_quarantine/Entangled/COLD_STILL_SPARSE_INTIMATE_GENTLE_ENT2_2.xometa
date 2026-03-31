@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "COLD STILL SPARSE INTIMATE ... (Ouroboros)",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.122,
-      "macro_coupling": 0.102,
-      "macro_movement": 0.08,
-      "macro_space": 0.101
-    },
-    "Ouroboros": {
-      "macro_character": 0.163,
-      "macro_coupling": 0.099,
-      "macro_movement": 0.095,
-      "macro_space": 0.064
-    }
+    "Oracle": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

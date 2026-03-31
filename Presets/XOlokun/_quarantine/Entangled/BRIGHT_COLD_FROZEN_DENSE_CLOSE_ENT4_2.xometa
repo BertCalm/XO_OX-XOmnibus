@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Silver Heavy",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.519,
-      "macro_coupling": 0.894,
-      "macro_movement": 0.092,
-      "macro_space": 0.059
-    },
-    "Obsidian": {
-      "macro_character": 0.494,
-      "macro_coupling": 0.872,
-      "macro_movement": 0.077,
-      "macro_space": 0.041
-    }
+    "Obese": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

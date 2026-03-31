@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Filament Tender",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.105,
-      "macro_coupling": 0.032,
-      "macro_movement": 0.359,
-      "macro_space": 0.058
-    },
-    "Overbite": {
-      "macro_character": 0.096,
-      "macro_coupling": 0.054,
-      "macro_movement": 0.357,
-      "macro_space": 0.094
-    }
+    "Odyssey": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

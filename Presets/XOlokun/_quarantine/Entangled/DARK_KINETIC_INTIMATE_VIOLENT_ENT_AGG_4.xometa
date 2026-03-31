@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Shard Rage",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.377,
-      "macro_coupling": 0.906,
-      "macro_movement": 0.856,
-      "macro_space": 0.087
-    },
-    "Orbital": {
-      "macro_character": 0.576,
-      "macro_coupling": 0.934,
-      "macro_movement": 0.845,
-      "macro_space": 0.084
-    }
+    "Ocelot": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

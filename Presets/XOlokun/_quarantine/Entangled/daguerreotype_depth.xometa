@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Daguerreotype Depth",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.313,
-      "macro_coupling": 0.513,
-      "macro_movement": 0.213,
-      "macro_space": 0.563
-    },
-    "Oceanic": {
-      "macro_character": 0.337,
-      "macro_coupling": 0.487,
-      "macro_movement": 0.387,
-      "macro_space": 0.837
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

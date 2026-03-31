@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Knotted Bloom",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.567,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.779,
-      "macro_space": 0.344
-    },
-    "Overbite": {
-      "macro_character": 0.775,
-      "macro_coupling": 0.658,
-      "macro_movement": 0.612,
-      "macro_space": 0.208
-    }
+    "Obsidian": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

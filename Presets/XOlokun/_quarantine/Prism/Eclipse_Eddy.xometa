@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Eclipse Eddy",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.366,
-      "macro_coupling": 0.747,
-      "macro_movement": 0.898,
-      "macro_space": 0.384
-    },
-    "Owlfish": {
-      "macro_character": 0.811,
-      "macro_coupling": 0.623,
-      "macro_movement": 0.898,
-      "macro_space": 0.384
-    }
+    "Origami": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

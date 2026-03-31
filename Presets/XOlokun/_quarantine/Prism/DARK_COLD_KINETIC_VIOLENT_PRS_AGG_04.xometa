@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "DARK COLD KINETIC VIOLENT P... (Ole II)",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.069,
-      "macro_coupling": 0.872,
-      "macro_movement": 0.906,
-      "macro_space": 0.544
-    },
-    "Owlfish": {
-      "macro_character": 0.066,
-      "macro_coupling": 0.917,
-      "macro_movement": 0.856,
-      "macro_space": 0.586
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

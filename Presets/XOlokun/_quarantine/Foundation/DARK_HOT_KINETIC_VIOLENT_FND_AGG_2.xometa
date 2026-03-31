@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Amber Strike",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.491,
-      "macro_coupling": 0.564,
-      "macro_movement": 0.803,
-      "macro_space": 0.737
-    },
-    "Overbite": {
-      "macro_character": 0.465,
-      "macro_coupling": 0.516,
-      "macro_movement": 0.793,
-      "macro_space": 0.704
-    }
+    "Oracle": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

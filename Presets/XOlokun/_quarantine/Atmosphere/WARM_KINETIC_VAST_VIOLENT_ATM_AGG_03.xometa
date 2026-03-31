@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "WARM KINETIC VAST VIOLENT A... (Oracle I)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.625,
-      "macro_coupling": 0.862,
-      "macro_movement": 0.925,
-      "macro_space": 0.958
-    },
-    "Oracle": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.897,
-      "macro_movement": 0.899,
-      "macro_space": 0.943
-    }
+    "OddfeliX": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "BRIGHT WARM KINETIC SPARSE ... (OddfeliX I)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.479,
-      "macro_movement": 0.977,
-      "macro_space": 0.416
-    },
-    "Owlfish": {
-      "macro_character": 0.927,
-      "macro_coupling": 0.431,
-      "macro_movement": 0.99,
-      "macro_space": 0.474
-    }
+    "OddfeliX": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

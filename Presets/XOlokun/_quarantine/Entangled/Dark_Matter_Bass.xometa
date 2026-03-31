@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Dark Matter Bass",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.64,
-      "macro_space": 0.78
-    },
-    "Onset": {
-      "macro_character": 0.53,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.32,
-      "macro_space": 0.33
-    }
+    "Ombre": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

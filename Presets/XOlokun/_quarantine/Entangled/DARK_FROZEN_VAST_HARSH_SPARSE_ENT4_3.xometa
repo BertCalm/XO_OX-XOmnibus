@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Cocoa Orbit",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.077,
-      "macro_movement": 0.093,
-      "macro_space": 0.954
-    },
-    "Overlap": {
-      "macro_character": 0.352,
-      "macro_coupling": 0.044,
-      "macro_movement": 0.095,
-      "macro_space": 0.967
-    }
+    "Optic": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

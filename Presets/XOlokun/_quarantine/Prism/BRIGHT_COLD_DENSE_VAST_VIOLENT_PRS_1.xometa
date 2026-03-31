@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Chrome Massive",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.942,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.456,
-      "macro_space": 0.957
-    },
-    "Ottoni": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.438,
-      "macro_space": 0.837
-    }
+    "Oblique": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "sequencer": null,

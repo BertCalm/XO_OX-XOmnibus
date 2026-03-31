@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Folded Cloud",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.14,
-      "macro_space": 0.97
-    },
-    "Origami": {
-      "macro_character": 0.05,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.09,
-      "macro_space": 1.0
-    }
+    "Opal": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Mahogany Cascade",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.7567,
-      "macro_coupling": 0.9211,
-      "macro_movement": 0.9582,
-      "macro_space": 0.4404
-    },
-    "Osteria": {
-      "macro_character": 0.7756,
-      "macro_coupling": 0.8887,
-      "macro_movement": 0.9591,
-      "macro_space": 0.4127
-    }
+    "Optic": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

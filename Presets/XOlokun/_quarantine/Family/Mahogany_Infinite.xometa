@@ -39,18 +39,8 @@
   "mood": "Family",
   "name": "Mahogany Infinite",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.63,
-      "macro_space": 0.2
-    },
-    "Overbite": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.56,
-      "macro_movement": 1.0,
-      "macro_space": 0.33
-    }
+    "Ocelot": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Exposure Arc",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.345,
-      "macro_coupling": 0.545,
-      "macro_movement": 0.245,
-      "macro_space": 0.595
-    },
-    "Orbital": {
-      "macro_character": 0.405,
-      "macro_coupling": 0.505,
-      "macro_movement": 0.555,
-      "macro_space": 0.705
-    }
+    "Obscura": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

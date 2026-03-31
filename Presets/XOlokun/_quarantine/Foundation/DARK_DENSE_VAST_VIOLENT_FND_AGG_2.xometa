@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Phase Wrath",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.614,
-      "macro_movement": 0.838,
-      "macro_space": 0.478
-    },
-    "Onset": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.641,
-      "macro_movement": 0.817,
-      "macro_space": 0.494
-    }
+    "Obsidian": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

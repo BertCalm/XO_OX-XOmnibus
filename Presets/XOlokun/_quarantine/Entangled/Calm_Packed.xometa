@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Calm Packed",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.644,
-      "macro_coupling": 0.725,
-      "macro_movement": 0.032,
-      "macro_space": 0.7
-    },
-    "Ouroboros": {
-      "macro_character": 0.69,
-      "macro_coupling": 0.926,
-      "macro_movement": 0.108,
-      "macro_space": 0.61
-    }
+    "Obscura": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

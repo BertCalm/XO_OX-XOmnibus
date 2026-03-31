@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Prismatic Flux",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.5626,
-      "macro_coupling": 0.7483,
-      "macro_movement": 0.5267,
-      "macro_space": 0.4013
-    },
-    "Obscura": {
-      "macro_character": 0.9241,
-      "macro_coupling": 0.8061,
-      "macro_movement": 0.4026,
-      "macro_space": 0.6036
-    }
+    "Oblique": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

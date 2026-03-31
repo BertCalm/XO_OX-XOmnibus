@@ -38,18 +38,9 @@
   "name": "Mirror Heavy",
   "parameters": {
     "Overdub": {
-      "macro_character": 0.7574,
-      "macro_coupling": 0.5547,
-      "macro_movement": 0.7314,
-      "macro_space": 0.1083,
       "dub_lfoDepth": 0.12
     },
-    "Overworld": {
-      "macro_character": 0.861,
-      "macro_coupling": 0.5886,
-      "macro_movement": 0.5825,
-      "macro_space": 0.1432
-    }
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

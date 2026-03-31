@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Dusk Surge",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.3681,
-      "macro_coupling": 0.5214,
-      "macro_movement": 0.9458,
-      "macro_space": 0.9141
-    },
-    "Owlfish": {
-      "macro_character": 0.3962,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.9645,
-      "macro_space": 0.9493
-    }
+    "Origami": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.437,
-      "macro_coupling": 0.838,
-      "macro_movement": 0.393,
-      "macro_space": 0.867
-    },
-    "Origami": {
-      "macro_character": 0.424,
-      "macro_coupling": 0.898,
-      "macro_movement": 0.379,
-      "macro_space": 0.86
-    }
+    "Ocelot": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Sunrise Saturated 2",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.5454,
-      "macro_coupling": 0.7732,
-      "macro_movement": 0.0947,
-      "macro_space": 0.8204
-    },
-    "Organon": {
-      "macro_character": 0.8955,
-      "macro_coupling": 0.9251,
-      "macro_movement": 0.1095,
-      "macro_space": 0.5558
-    }
+    "Obbligato": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "sequencer": null,

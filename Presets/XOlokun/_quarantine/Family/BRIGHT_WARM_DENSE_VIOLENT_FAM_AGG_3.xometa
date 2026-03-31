@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sunrise Fang",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.845,
-      "macro_coupling": 0.786,
-      "macro_movement": 0.69,
-      "macro_space": 0.505
-    },
-    "OddfeliX": {
-      "macro_character": 0.843,
-      "macro_coupling": 0.808,
-      "macro_movement": 0.696,
-      "macro_space": 0.455
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

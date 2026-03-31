@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Expanse Charcoal IV",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.279,
-      "macro_coupling": 0.393,
-      "macro_movement": 0.939,
-      "macro_space": 1.0
-    },
-    "Ottoni": {
-      "macro_character": 0.274,
-      "macro_coupling": 0.485,
-      "macro_movement": 0.899,
-      "macro_space": 0.961
-    }
+    "Osprey": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

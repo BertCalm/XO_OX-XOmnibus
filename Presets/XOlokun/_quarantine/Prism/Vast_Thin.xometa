@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Vast Thin",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.53,
-      "macro_coupling": 0.658,
-      "macro_movement": 0.888,
-      "macro_space": 0.978
-    },
-    "Overworld": {
-      "macro_character": 0.417,
-      "macro_coupling": 0.685,
-      "macro_movement": 0.888,
-      "macro_space": 0.978
-    }
+    "Optic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

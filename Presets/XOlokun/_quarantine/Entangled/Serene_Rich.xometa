@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Serene Rich",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.798,
-      "macro_coupling": 0.705,
-      "macro_movement": 0.038,
-      "macro_space": 0.398
-    },
-    "Overlap": {
-      "macro_character": 0.657,
-      "macro_coupling": 0.494,
-      "macro_movement": 0.143,
-      "macro_space": 0.312
-    }
+    "OddfeliX": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Candlelight Crush",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.944,
-      "macro_coupling": 0.064,
-      "macro_movement": 0.097,
-      "macro_space": 0.416
-    },
-    "Overworld": {
-      "macro_character": 0.919,
-      "macro_coupling": 0.088,
-      "macro_movement": 0.102,
-      "macro_space": 0.382
-    }
+    "OddfeliX": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

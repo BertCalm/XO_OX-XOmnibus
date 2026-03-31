@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.66,
-      "macro_movement": 0.96,
-      "macro_coupling": 0.74,
-      "macro_space": 0.44
-    },
-    "Octopus": {
-      "macro_character": 0.94,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.86,
-      "macro_space": 0.33
-    }
+    "Obscura": {},
+    "Octopus": {}
   },
   "coupling": {
     "type": "FM_CROSS",

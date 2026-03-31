@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK COLD DENSE BALANCED AE... (Opal I)",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.038,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.646,
-      "macro_space": 0.615
-    },
-    "Opal": {
-      "macro_character": 0.039,
-      "macro_coupling": 0.539,
-      "macro_movement": 0.672,
-      "macro_space": 0.599
-    }
+    "Oceanic": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Mirror Saturated",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.489,
-      "macro_coupling": 0.879,
-      "macro_movement": 0.08,
-      "macro_space": 0.068
-    },
-    "Overbite": {
-      "macro_character": 0.495,
-      "macro_coupling": 0.876,
-      "macro_movement": 0.084,
-      "macro_space": 0.071
-    }
+    "Ocelot": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Flux Saturated 2",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.238,
-      "macro_coupling": 0.718,
-      "macro_movement": 0.946,
-      "macro_space": 0.104
-    },
-    "Overworld": {
-      "macro_character": 0.709,
-      "macro_coupling": 0.496,
-      "macro_movement": 0.946,
-      "macro_space": 0.104
-    }
+    "Ocelot": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Stream 2",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.1395,
-      "macro_coupling": 0.7431,
-      "macro_movement": 0.9705,
-      "macro_space": 0.1596
-    },
-    "Ouroboros": {
-      "macro_character": 0.076,
-      "macro_coupling": 0.7849,
-      "macro_movement": 0.8728,
-      "macro_space": 0.2686
-    }
+    "Origami": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

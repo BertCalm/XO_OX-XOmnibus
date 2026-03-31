@@ -27,18 +27,8 @@
   "mood": "Aether",
   "name": "Form and Formless",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.38,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.85,
-      "macro_space": 0.82
-    },
-    "Orphica": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.78,
-      "macro_space": 0.88
-    }
+    "Obbligato": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

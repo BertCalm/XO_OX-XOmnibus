@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Halo Rage",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.8647,
-      "macro_coupling": 0.8725,
-      "macro_movement": 0.46,
-      "macro_space": 0.497
-    },
-    "Ouroboros": {
-      "macro_character": 0.939,
-      "macro_coupling": 0.9345,
-      "macro_movement": 0.4202,
-      "macro_space": 0.64
-    }
+    "Oceanic": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

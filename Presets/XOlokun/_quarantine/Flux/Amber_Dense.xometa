@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Amber Dense",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.712,
-      "macro_coupling": 0.454,
-      "macro_movement": 0.091,
-      "macro_space": 0.629
-    },
-    "Ouroboros": {
-      "macro_character": 0.57,
-      "macro_coupling": 0.535,
-      "macro_movement": 0.206,
-      "macro_space": 0.754
-    }
+    "Obscura": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Blazing Atmosphere",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.63,
-      "macro_space": 0.75
-    },
+    "Odyssey": {},
     "Overdub": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.67,
-      "macro_space": 0.74,
       "dub_lfoDepth": 0.12
     }
   },

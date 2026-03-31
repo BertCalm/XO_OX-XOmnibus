@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ice Edge",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.401,
-      "macro_movement": 0.279,
-      "macro_space": 0.491
-    },
-    "Optic": {
-      "macro_character": 0.609,
-      "macro_coupling": 0.813,
-      "macro_movement": 0.27,
-      "macro_space": 0.506
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

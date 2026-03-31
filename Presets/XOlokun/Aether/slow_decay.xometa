@@ -27,10 +27,6 @@
   "name": "Slow Decay",
   "parameters": {
     "Overdub": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.35,
-      "macro_movement": 0.58,
-      "macro_space": 0.87,
       "dub_lfoDepth": 0.12
     }
   },

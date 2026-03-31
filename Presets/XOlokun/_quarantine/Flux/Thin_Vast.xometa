@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thin Vast",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.7544,
-      "macro_coupling": 0.4489,
-      "macro_movement": 0.7599,
-      "macro_space": 0.9242
-    },
-    "Owlfish": {
-      "macro_character": 0.5645,
-      "macro_coupling": 0.6245,
-      "macro_movement": 0.6353,
-      "macro_space": 0.8642
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Shard Abyss",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.576,
-      "macro_coupling": 0.135,
-      "macro_movement": 0.853,
-      "macro_space": 0.911
-    },
-    "Ouroboros": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.055,
-      "macro_movement": 0.873,
-      "macro_space": 0.965
-    }
+    "Origami": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

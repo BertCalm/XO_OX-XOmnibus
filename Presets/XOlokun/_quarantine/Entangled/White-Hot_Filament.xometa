@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "White-Hot Filament",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.57,
-      "macro_movement": 0.41,
-      "macro_space": 0.53
-    },
-    "Ottoni": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.51,
-      "macro_movement": 0.31,
-      "macro_space": 0.59
-    }
+    "Origami": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

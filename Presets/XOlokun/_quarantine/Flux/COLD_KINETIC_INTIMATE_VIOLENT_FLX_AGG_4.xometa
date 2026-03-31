@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Grain Current",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.793,
-      "macro_movement": 0.94,
-      "macro_space": 0.069
-    },
-    "Optic": {
-      "macro_character": 0.674,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.891,
-      "macro_space": 0.122
-    }
+    "Odyssey": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

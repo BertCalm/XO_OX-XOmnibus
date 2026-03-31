@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.7,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.7,
-      "macro_space": 0.47
-    },
-    "Opal": {
-      "macro_character": 0.76,
-      "macro_movement": 0.85,
-      "macro_coupling": 0.88,
-      "macro_space": 0.49
-    }
+    "Ouroboros": {},
+    "Opal": {}
   },
   "coupling": {
     "type": "RING_MOD",

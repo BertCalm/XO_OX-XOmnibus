@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Honey Force",
   "parameters": {
-    "Outwit": {
-      "macro_character": 0.7238,
-      "macro_coupling": 0.7847,
-      "macro_movement": 0.0601,
-      "macro_space": 0.262
-    },
-    "Owlfish": {
-      "macro_character": 0.8457,
-      "macro_coupling": 0.8497,
-      "macro_movement": 0.055,
-      "macro_space": 0.5101
-    }
+    "Outwit": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "sequencer": null,

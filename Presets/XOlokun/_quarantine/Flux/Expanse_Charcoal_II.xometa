@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Expanse Charcoal II",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.2191,
-      "macro_coupling": 0.507,
-      "macro_movement": 0.1007,
-      "macro_space": 0.8281
-    },
-    "Oracle": {
-      "macro_character": 0.1473,
-      "macro_coupling": 0.5047,
-      "macro_movement": 0.052,
-      "macro_space": 0.9457
-    }
+    "Oblique": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

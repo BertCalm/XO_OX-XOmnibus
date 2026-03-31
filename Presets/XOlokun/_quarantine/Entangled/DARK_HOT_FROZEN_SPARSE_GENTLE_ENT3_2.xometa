@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Cocoa Canyon 2",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.8122,
-      "macro_coupling": 0.8129,
-      "macro_movement": 0.0172,
-      "macro_space": 0.73
-    },
-    "Obsidian": {
-      "macro_character": 0.7096,
-      "macro_coupling": 0.7523,
-      "macro_movement": 0.0304,
-      "macro_space": 0.164
-    }
+    "Obbligato": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "sequencer": null,

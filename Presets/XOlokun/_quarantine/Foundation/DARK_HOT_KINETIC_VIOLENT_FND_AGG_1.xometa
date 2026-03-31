@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Amber Shimmer",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.768,
-      "macro_coupling": 0.724,
-      "macro_movement": 0.527,
-      "macro_space": 0.617
-    },
-    "Obsidian": {
-      "macro_character": 0.765,
-      "macro_coupling": 0.699,
-      "macro_movement": 0.534,
-      "macro_space": 0.634
-    }
+    "Obese": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

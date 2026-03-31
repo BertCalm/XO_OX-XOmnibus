@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "COLD FLUX 4",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.8814,
-      "macro_coupling": 0.7366,
-      "macro_movement": 0.0248,
-      "macro_space": 0.3322
-    },
-    "Orca": {
-      "macro_character": 0.9308,
-      "macro_coupling": 0.8641,
-      "macro_movement": 0.8022,
-      "macro_space": 0.8107
-    }
+    "Odyssey": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

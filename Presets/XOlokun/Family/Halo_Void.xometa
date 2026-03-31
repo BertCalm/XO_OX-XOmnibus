@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Halo Void",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.885,
-      "macro_coupling": 0.445,
-      "macro_movement": 0.088,
-      "macro_space": 0.899
-    },
+    "Orphica": {},
     "Overdub": {
-      "macro_character": 0.934,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.109,
-      "macro_space": 0.875,
       "dub_lfoDepth": 0.12
     }
   },

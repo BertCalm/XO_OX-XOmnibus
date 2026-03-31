@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Strange Core",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.699,
-      "macro_coupling": 0.693,
-      "macro_movement": 0.597,
-      "macro_space": 0.573
-    },
-    "Orca": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.75,
-      "macro_space": 0.395
-    }
+    "Obbligato": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

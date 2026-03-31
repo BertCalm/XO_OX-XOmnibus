@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Golden Grain",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.5716,
-      "macro_coupling": 0.7592,
-      "macro_movement": 0.0485,
-      "macro_space": 0.8798
-    },
-    "Optic": {
-      "macro_character": 0.6562,
-      "macro_coupling": 0.7738,
-      "macro_movement": 0.043,
-      "macro_space": 0.7075
-    }
+    "OddOscar": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "sequencer": null,

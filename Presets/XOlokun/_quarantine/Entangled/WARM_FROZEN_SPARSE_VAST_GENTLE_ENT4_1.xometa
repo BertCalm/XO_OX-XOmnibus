@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fragment Abyss",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.658,
-      "macro_coupling": 0.055,
-      "macro_movement": 0.076,
-      "macro_space": 0.943
-    },
-    "Odyssey": {
-      "macro_character": 0.671,
-      "macro_coupling": 0.059,
-      "macro_movement": 0.064,
-      "macro_space": 0.94
-    }
+    "Obese": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "GROW Obscura",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.58,
-      "macro_space": 0.48
-    },
-    "Ottoni": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.62,
-      "macro_space": 0.42
-    }
+    "Obscura": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Tone Crush",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.7054,
-      "macro_coupling": 0.9035,
-      "macro_movement": 0.9571,
-      "macro_space": 0.4513
-    },
-    "Ottoni": {
-      "macro_character": 0.701,
-      "macro_coupling": 0.9352,
-      "macro_movement": 0.9226,
-      "macro_space": 0.421
-    }
+    "Ole": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

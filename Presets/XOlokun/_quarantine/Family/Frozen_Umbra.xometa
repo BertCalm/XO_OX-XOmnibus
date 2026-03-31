@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Frozen Umbra",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.085,
-      "macro_coupling": 0.083,
-      "macro_movement": 0.304,
-      "macro_space": 0.098
-    },
-    "Orphica": {
-      "macro_character": 0.085,
-      "macro_coupling": 0.083,
-      "macro_movement": 0.304,
-      "macro_space": 0.098
-    }
+    "OddOscar": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Radiant Canyon",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.8344,
-      "macro_coupling": 0.0521,
-      "macro_movement": 0.99,
-      "macro_space": 0.9787
-    },
-    "Origami": {
-      "macro_character": 0.8217,
-      "macro_coupling": 0.0673,
-      "macro_movement": 0.99,
-      "macro_space": 0.9603
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

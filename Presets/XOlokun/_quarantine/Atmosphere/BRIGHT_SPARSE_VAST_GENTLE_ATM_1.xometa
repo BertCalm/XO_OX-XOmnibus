@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Node Horizon 2",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.636,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.531,
-      "macro_space": 0.81
-    },
-    "Origami": {
-      "macro_character": 0.425,
-      "macro_coupling": 0.544,
-      "macro_movement": 0.403,
-      "macro_space": 0.825
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

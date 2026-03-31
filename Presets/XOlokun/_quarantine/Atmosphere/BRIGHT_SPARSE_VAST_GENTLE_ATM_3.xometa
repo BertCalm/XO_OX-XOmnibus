@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Node Canyon 2",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.754,
-      "macro_coupling": 0.797,
-      "macro_movement": 0.613,
-      "macro_space": 0.743
-    },
-    "Origami": {
-      "macro_character": 0.584,
-      "macro_coupling": 0.513,
-      "macro_movement": 0.501,
-      "macro_space": 0.812
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

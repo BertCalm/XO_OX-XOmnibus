@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Folded Epoch",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.5,
-      "macro_space": 0.89
-    },
-    "Origami": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.45,
-      "macro_space": 0.92
-    }
+    "Odyssey": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

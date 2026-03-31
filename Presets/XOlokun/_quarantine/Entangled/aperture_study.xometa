@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Aperture Study",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.355,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.255,
-      "macro_space": 0.605
-    },
-    "Optic": {
-      "macro_character": 0.495,
-      "macro_coupling": 0.595,
-      "macro_movement": 0.445,
-      "macro_space": 0.495
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Crystal Vast",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.297,
-      "macro_movement": 0.021,
-      "macro_space": 0.98
-    },
-    "Orphica": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.296,
-      "macro_movement": 0.031,
-      "macro_space": 0.958
-    }
+    "Obese": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

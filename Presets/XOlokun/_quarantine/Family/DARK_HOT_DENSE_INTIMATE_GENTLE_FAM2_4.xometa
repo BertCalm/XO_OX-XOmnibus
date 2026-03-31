@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE GEN... (Osteria I)",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.556,
-      "macro_coupling": 0.511,
-      "macro_movement": 0.623,
-      "macro_space": 0.124
-    },
-    "Osteria": {
-      "macro_character": 0.513,
-      "macro_coupling": 0.505,
-      "macro_movement": 0.626,
-      "macro_space": 0.104
-    }
+    "Odyssey": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

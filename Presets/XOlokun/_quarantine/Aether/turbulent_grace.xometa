@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Turbulent Grace",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.45,
-      "macro_coupling": 0.3,
-      "macro_movement": 0.88,
-      "macro_space": 0.78
-    }
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

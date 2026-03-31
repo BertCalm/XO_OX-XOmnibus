@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Smoke Swirl 3",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.519,
-      "macro_coupling": 0.692,
-      "macro_movement": 0.99,
-      "macro_space": 0.573
-    },
+    "Ole": {},
     "Overdub": {
-      "macro_character": 0.536,
-      "macro_coupling": 0.648,
-      "macro_movement": 0.983,
-      "macro_space": 0.552,
       "dub_lfoDepth": 0.12
     }
   },

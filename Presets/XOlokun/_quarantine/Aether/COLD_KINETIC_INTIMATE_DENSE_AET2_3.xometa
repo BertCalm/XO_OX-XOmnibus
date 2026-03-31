@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Flux Packed",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.5127,
-      "macro_coupling": 0.9774,
-      "macro_movement": 0.9577,
-      "macro_space": 0.0958
-    },
-    "Osprey": {
-      "macro_character": 0.5678,
-      "macro_coupling": 0.96,
-      "macro_movement": 0.9093,
-      "macro_space": 0.0854
-    }
+    "Oceanic": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

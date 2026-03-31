@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Bloom Stream",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.7786,
-      "macro_coupling": 0.4494,
-      "macro_movement": 0.7514,
-      "macro_space": 0.2333
-    },
-    "Organon": {
-      "macro_character": 0.7914,
-      "macro_coupling": 0.7497,
-      "macro_movement": 0.4586,
-      "macro_space": 0.6712
-    }
+    "Orbital": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

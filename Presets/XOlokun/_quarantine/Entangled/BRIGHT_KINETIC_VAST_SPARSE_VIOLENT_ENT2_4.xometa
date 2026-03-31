@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "BRIGHT KINETIC VAST SPARSE ... (Osteria I)",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.567,
-      "macro_coupling": 0.535,
-      "macro_movement": 0.863,
-      "macro_space": 0.99
-    },
-    "Ottoni": {
-      "macro_character": 0.601,
-      "macro_coupling": 0.559,
-      "macro_movement": 0.8,
-      "macro_space": 0.959
-    }
+    "Osteria": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

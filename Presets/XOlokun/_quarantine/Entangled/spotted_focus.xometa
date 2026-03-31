@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Spotted Focus",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.686,
-      "macro_coupling": 0.586,
-      "macro_movement": 0.736,
-      "macro_space": 0.486
-    },
-    "Optic": {
-      "macro_character": 0.464,
-      "macro_coupling": 0.564,
-      "macro_movement": 0.414,
-      "macro_space": 0.464
-    }
+    "Ocelot": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

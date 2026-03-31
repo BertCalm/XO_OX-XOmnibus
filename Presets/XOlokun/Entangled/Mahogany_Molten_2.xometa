@@ -46,19 +46,10 @@
   "name": "Mahogany Molten 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.9574,
-      "macro_coupling": 0.8737,
-      "macro_movement": 0.0596,
-      "macro_space": 0.9408,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Orca": {
-      "macro_character": 0.6438,
-      "macro_coupling": 0.7605,
-      "macro_movement": 0.0396,
-      "macro_space": 0.2695
-    }
+    "Orca": {}
   },
   "schema_version": 1,
   "sequencer": null,

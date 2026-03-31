@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Mahogany Current",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.7859,
-      "macro_coupling": 0.8965,
-      "macro_movement": 0.9354,
-      "macro_space": 0.5357
-    },
-    "Oracle": {
-      "macro_character": 0.7681,
-      "macro_coupling": 0.9176,
-      "macro_movement": 0.9126,
-      "macro_space": 0.5039
-    }
+    "Oblique": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

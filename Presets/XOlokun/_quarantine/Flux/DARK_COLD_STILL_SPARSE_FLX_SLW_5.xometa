@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Strike 2",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.875,
-      "macro_movement": 0.055,
-      "macro_space": 0.55
-    },
-    "Ouroboros": {
-      "macro_character": 0.386,
-      "macro_coupling": 0.667,
-      "macro_movement": 0.05,
-      "macro_space": 0.523
-    }
+    "Odyssey": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

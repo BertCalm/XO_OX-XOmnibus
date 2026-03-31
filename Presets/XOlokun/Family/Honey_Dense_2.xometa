@@ -38,19 +38,10 @@
   "name": "Honey Dense 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.862,
-      "macro_coupling": 0.799,
-      "macro_movement": 0.579,
-      "macro_space": 0.081,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Orphica": {
-      "macro_character": 0.898,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.579,
-      "macro_space": 0.11
-    }
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Mahogany Matte",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.7096,
-      "macro_coupling": 0.4484,
-      "macro_movement": 0.8327,
-      "macro_space": 0.2207
-    },
-    "Oceanic": {
-      "macro_character": 0.2521,
-      "macro_coupling": 0.4634,
-      "macro_movement": 0.78,
-      "macro_space": 0.5821
-    }
+    "Oblique": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

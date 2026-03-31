@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Surge Midnight II",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.385,
-      "macro_coupling": 0.616,
-      "macro_movement": 0.925,
-      "macro_space": 0.887
-    },
-    "Ole": {
-      "macro_character": 0.31,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.802,
-      "macro_space": 0.988
-    }
+    "Ohm": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

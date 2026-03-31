@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Strike 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.601,
-      "macro_coupling": 0.565,
-      "macro_movement": 0.707,
-      "macro_space": 0.768
-    },
-    "Orphica": {
-      "macro_character": 0.647,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.748,
-      "macro_space": 0.806
-    }
+    "OddOscar": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

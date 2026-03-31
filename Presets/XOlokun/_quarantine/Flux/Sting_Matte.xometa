@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Sting Matte",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.095,
-      "macro_coupling": 0.543,
-      "macro_movement": 0.32,
-      "macro_space": 0.499
-    },
-    "Optic": {
-      "macro_character": 0.127,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.276,
-      "macro_space": 0.535
-    }
+    "Obese": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

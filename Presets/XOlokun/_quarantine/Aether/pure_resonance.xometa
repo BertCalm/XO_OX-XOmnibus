@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Pure Resonance (Obbligato)",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.1,
-      "macro_movement": 0.5,
-      "macro_space": 0.93
-    }
+    "Obbligato": {}
   },
   "schema_version": 1,
   "tags": [

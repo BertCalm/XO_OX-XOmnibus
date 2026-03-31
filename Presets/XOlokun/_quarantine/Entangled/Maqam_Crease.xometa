@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Maqam Crease",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.19,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.44,
-      "macro_space": 0.9
-    },
-    "Origami": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.39,
-      "macro_space": 0.93
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Pipe Glide",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.59,
-      "macro_space": 0.62
-    },
-    "Osprey": {
-      "macro_character": 0.63,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.59,
-      "macro_space": 0.63
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

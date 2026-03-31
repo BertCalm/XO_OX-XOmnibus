@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Ripple",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.5189,
-      "macro_coupling": 0.3824,
-      "macro_movement": 0.9077,
-      "macro_space": 0.0528
-    },
-    "Ombre": {
-      "macro_character": 0.5674,
-      "macro_coupling": 0.3933,
-      "macro_movement": 0.8718,
-      "macro_space": 0.0493
-    }
+    "Obscura": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

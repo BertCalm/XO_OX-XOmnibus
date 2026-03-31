@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Fold Exposure",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.09,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.18,
-      "macro_space": 0.96
-    },
-    "Origami": {
-      "macro_character": 0.06,
-      "macro_coupling": 0.88,
-      "macro_movement": 0.13,
-      "macro_space": 0.99
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

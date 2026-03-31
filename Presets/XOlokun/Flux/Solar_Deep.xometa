@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Solar Deep",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.7045,
-      "macro_coupling": 0.8905,
-      "macro_movement": 0.2706,
-      "macro_space": 0.1025
-    },
+    "Ouroboros": {},
     "Overdub": {
-      "macro_character": 0.6759,
-      "macro_coupling": 0.9139,
-      "macro_movement": 0.2703,
-      "macro_space": 0.1435,
       "dub_lfoDepth": 0.12
     }
   },

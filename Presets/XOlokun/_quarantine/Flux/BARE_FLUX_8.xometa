@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "BARE FLUX 8",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.0599,
-      "macro_coupling": 0.4843,
-      "macro_movement": 0.4396,
-      "macro_space": 0.204
-    },
-    "Overlap": {
-      "macro_character": 0.6067,
-      "macro_coupling": 0.7184,
-      "macro_movement": 0.3126,
-      "macro_space": 0.7342
-    }
+    "Orphica": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

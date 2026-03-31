@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Dusk Ocean",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.299,
-      "macro_coupling": 0.929,
-      "macro_movement": 0.872,
-      "macro_space": 0.817
-    },
-    "Ottoni": {
-      "macro_character": 0.29,
-      "macro_coupling": 0.563,
-      "macro_movement": 0.886,
-      "macro_space": 0.937
-    }
+    "Osprey": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Phase Solid",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.965,
-      "macro_movement": 0.898,
-      "macro_space": 0.405
-    },
-    "OddfeliX": {
-      "macro_character": 0.0,
-      "macro_coupling": 0.951,
-      "macro_movement": 0.932,
-      "macro_space": 0.56
-    }
+    "Obsidian": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "sequencer": null,

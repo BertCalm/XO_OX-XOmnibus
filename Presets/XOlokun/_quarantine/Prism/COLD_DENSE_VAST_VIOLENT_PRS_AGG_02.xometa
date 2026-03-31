@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "COLD DENSE VAST VIOLENT PRS... (Origami)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.403,
-      "macro_coupling": 0.973,
-      "macro_movement": 0.556,
-      "macro_space": 0.945
-    },
-    "Owlfish": {
-      "macro_character": 0.42,
-      "macro_coupling": 0.903,
-      "macro_movement": 0.561,
-      "macro_space": 0.93
-    }
+    "Origami": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

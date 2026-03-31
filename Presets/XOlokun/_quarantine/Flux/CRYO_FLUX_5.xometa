@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "CRYO FLUX 5",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.2592,
-      "macro_coupling": 0.6377,
-      "macro_movement": 0.2472,
-      "macro_space": 0.7658
-    },
-    "Ouroboros": {
-      "macro_character": 0.5479,
-      "macro_coupling": 0.7437,
-      "macro_movement": 0.8972,
-      "macro_space": 0.4747
-    }
+    "Onset": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

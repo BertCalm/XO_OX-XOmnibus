@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Peach Molten",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.909,
-      "macro_coupling": 0.692,
-      "macro_movement": 0.104,
-      "macro_space": 0.414
-    },
-    "Ouroboros": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.699,
-      "macro_movement": 0.073,
-      "macro_space": 0.455
-    }
+    "Oracle": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Penumbra Terracotta II",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.401,
-      "macro_coupling": 0.598,
-      "macro_movement": 0.836,
-      "macro_space": 0.375
-    },
-    "Opal": {
-      "macro_character": 0.729,
-      "macro_coupling": 0.719,
-      "macro_movement": 0.725,
-      "macro_space": 0.413
-    }
+    "Oblique": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

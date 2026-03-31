@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Strike",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.684,
-      "macro_coupling": 0.94,
-      "macro_movement": 0.056,
-      "macro_space": 0.85
-    },
-    "Optic": {
-      "macro_character": 0.664,
-      "macro_coupling": 0.771,
-      "macro_movement": 0.06,
-      "macro_space": 0.901
-    }
+    "Oceanic": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

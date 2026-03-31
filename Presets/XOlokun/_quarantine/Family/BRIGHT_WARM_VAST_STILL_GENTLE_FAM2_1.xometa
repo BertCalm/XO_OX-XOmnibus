@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM VAST STILL GENT...",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.276,
-      "macro_movement": 0.049,
-      "macro_space": 0.987
-    },
-    "Orphica": {
-      "macro_character": 0.915,
-      "macro_coupling": 0.258,
-      "macro_movement": 0.084,
-      "macro_space": 0.954
-    }
+    "Ohm": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

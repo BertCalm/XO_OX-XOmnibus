@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Silver Perihelion",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.36,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.26,
-      "macro_space": 0.61
-    },
-    "Orbital": {
-      "macro_character": 0.39,
-      "macro_coupling": 0.49,
-      "macro_movement": 0.54,
-      "macro_space": 0.69
-    }
+    "Obscura": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Cathedral Crystal II",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.3938,
-      "macro_coupling": 0.6471,
-      "macro_movement": 0.4097,
-      "macro_space": 0.8601
-    },
-    "Origami": {
-      "macro_character": 0.6168,
-      "macro_coupling": 0.3433,
-      "macro_movement": 0.5875,
-      "macro_space": 0.381
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,19 +38,10 @@
   "name": "Tungsten Core Throb",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.48,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.26,
-      "macro_space": 0.38,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Onset": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.53,
-      "macro_space": 0.39
-    }
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

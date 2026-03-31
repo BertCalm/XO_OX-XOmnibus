@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Cosmos Honey",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.7213,
-      "macro_coupling": 0.5952,
-      "macro_movement": 0.7819,
-      "macro_space": 0.9418
-    },
-    "Organon": {
-      "macro_character": 0.7325,
-      "macro_coupling": 0.6992,
-      "macro_movement": 0.8063,
-      "macro_space": 0.9385
-    }
+    "Oracle": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Wet Plate Optic",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.23,
-      "macro_space": 0.58
-    },
-    "Optic": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.47,
-      "macro_space": 0.52
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

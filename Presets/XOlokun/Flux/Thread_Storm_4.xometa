@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Thread Storm 4",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.559,
-      "macro_coupling": 0.887,
-      "macro_movement": 0.463,
-      "macro_space": 0.939
-    },
+    "Odyssey": {},
     "Overdub": {
-      "macro_character": 0.656,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.484,
-      "macro_space": 0.921,
       "dub_lfoDepth": 0.12
     }
   },

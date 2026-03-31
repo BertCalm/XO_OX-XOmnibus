@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "DARK COLD KINETIC VAST DENS... (Obscura)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.088,
-      "macro_coupling": 0.659,
-      "macro_movement": 0.96,
-      "macro_space": 0.974
-    },
-    "Ohm": {
-      "macro_character": 0.07,
-      "macro_coupling": 0.668,
-      "macro_movement": 0.943,
-      "macro_space": 0.98
-    }
+    "Obscura": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

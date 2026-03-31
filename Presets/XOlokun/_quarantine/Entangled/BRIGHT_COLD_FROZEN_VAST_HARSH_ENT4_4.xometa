@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Arctic Fang",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.534,
-      "macro_coupling": 0.526,
-      "macro_movement": 0.056,
-      "macro_space": 0.885
-    },
-    "Orphica": {
-      "macro_character": 0.509,
-      "macro_coupling": 0.547,
-      "macro_movement": 0.057,
-      "macro_space": 0.849
-    }
+    "Onset": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

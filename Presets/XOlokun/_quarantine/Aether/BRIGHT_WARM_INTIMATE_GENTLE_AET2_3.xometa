@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Golden Wave",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.8573,
-      "macro_coupling": 0.3634,
-      "macro_movement": 0.4583,
-      "macro_space": 0.0573
-    },
-    "Oracle": {
-      "macro_character": 0.8669,
-      "macro_coupling": 0.3609,
-      "macro_movement": 0.4195,
-      "macro_space": 0.0464
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Mahogany Strike 2",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.706,
-      "macro_coupling": 0.347,
-      "macro_movement": 0.418,
-      "macro_space": 0.616
-    },
-    "Ottoni": {
-      "macro_character": 0.726,
-      "macro_coupling": 0.391,
-      "macro_movement": 0.441,
-      "macro_space": 0.615
-    }
+    "Osprey": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

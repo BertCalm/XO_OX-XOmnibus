@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Thread Swirl",
   "parameters": {
-    "Origami": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.823,
-      "macro_movement": 0.967,
-      "macro_space": 0.013
-    },
-    "Ouroboros": {
-      "macro_character": 0.964,
-      "macro_coupling": 0.772,
-      "macro_movement": 0.942,
-      "macro_space": 0.0
-    }
+    "Origami": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

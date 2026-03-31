@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Ember Deep",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.873,
-      "macro_coupling": 0.841,
-      "macro_movement": 0.0825,
-      "macro_space": 0.7392
-    },
-    "Orca": {
-      "macro_character": 0.5246,
-      "macro_coupling": 0.841,
-      "macro_movement": 0.0623,
-      "macro_space": 0.2799
-    }
+    "Obscura": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Smelter's Knot",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.41,
-      "macro_space": 0.29
-    },
+    "Organon": {},
     "Overdub": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.42,
-      "macro_space": 0.6,
       "dub_lfoDepth": 0.12
     }
   },

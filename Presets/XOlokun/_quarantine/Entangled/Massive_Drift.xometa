@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Massive Drift",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.158,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.951,
-      "macro_space": 0.7
-    },
-    "Osprey": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.29,
-      "macro_movement": 0.947,
-      "macro_space": 0.3
-    }
+    "OddOscar": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

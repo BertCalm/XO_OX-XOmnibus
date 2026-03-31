@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Lavender Void (Opal)",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.3,
-      "macro_space": 0.96
-    },
-    "Opal": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.35,
-      "macro_space": 0.93
-    }
+    "Odyssey": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

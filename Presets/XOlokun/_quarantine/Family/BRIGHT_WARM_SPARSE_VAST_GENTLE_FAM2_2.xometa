@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM SPARSE VAST GEN... (Ole)",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.916,
-      "macro_coupling": 0.067,
-      "macro_movement": 0.314,
-      "macro_space": 0.947
-    },
-    "Osprey": {
-      "macro_character": 0.926,
-      "macro_coupling": 0.074,
-      "macro_movement": 0.238,
-      "macro_space": 0.973
-    }
+    "Ole": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

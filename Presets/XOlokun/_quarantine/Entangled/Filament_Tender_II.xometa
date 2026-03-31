@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Filament Tender II",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.633,
-      "macro_coupling": 0.537,
-      "macro_movement": 0.391,
-      "macro_space": 0.306
-    },
-    "Owlfish": {
-      "macro_character": 0.649,
-      "macro_coupling": 0.775,
-      "macro_movement": 0.45,
-      "macro_space": 0.417
-    }
+    "Odyssey": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

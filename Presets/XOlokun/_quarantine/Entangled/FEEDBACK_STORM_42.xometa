@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "FEEDBACK STORM 42",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.374,
-      "macro_coupling": 0.153,
-      "macro_movement": 0.923,
-      "macro_space": 0.923
-    },
-    "Overworld": {
-      "macro_character": 0.067,
-      "macro_coupling": 0.832,
-      "macro_movement": 0.947,
-      "macro_space": 0.093
-    }
+    "OddfeliX": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

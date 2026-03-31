@@ -26,10 +26,6 @@
   "name": "Orphica Velocity Cascade",
   "parameters": {
     "Orphica": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.6,
-      "macro_space": 0.65,
       "orph_attackTime": 0.01,
       "orph_colonyDepth": 0.55,
       "orph_grainDensity": 0.4,

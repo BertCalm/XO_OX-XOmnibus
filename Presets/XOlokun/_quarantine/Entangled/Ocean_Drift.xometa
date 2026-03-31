@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Ocean Drift",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.505,
-      "macro_coupling": 0.611,
-      "macro_movement": 0.481,
-      "macro_space": 0.276
-    },
-    "Overbite": {
-      "macro_character": 0.737,
-      "macro_coupling": 0.735,
-      "macro_movement": 0.65,
-      "macro_space": 0.645
-    }
+    "Obsidian": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

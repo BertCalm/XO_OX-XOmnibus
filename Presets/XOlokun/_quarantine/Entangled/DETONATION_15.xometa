@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "DETONATION 15",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.017,
-      "macro_coupling": 0.294,
-      "macro_movement": 0.904,
-      "macro_space": 0.404
-    },
-    "Onset": {
-      "macro_character": 0.476,
-      "macro_coupling": 0.712,
-      "macro_movement": 0.936,
-      "macro_space": 0.448
-    }
+    "Ohm": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

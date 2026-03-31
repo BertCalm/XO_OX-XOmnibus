@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Dense",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.888,
-      "macro_coupling": 0.658,
-      "macro_movement": 0.312,
-      "macro_space": 0.068
-    },
-    "Osprey": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.639,
-      "macro_movement": 0.32,
-      "macro_space": 0.085
-    }
+    "Origami": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

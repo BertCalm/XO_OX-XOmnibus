@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Rust Dense",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.6749,
-      "macro_coupling": 0.9462,
-      "macro_movement": 0.8786,
-      "macro_space": 0.5137
-    },
-    "Owlfish": {
-      "macro_character": 0.6861,
-      "macro_coupling": 0.961,
-      "macro_movement": 0.8832,
-      "macro_space": 0.5411
-    }
+    "Ohm": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

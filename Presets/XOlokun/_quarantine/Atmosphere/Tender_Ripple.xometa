@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Tender Ripple",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.915,
-      "macro_coupling": 0.336,
-      "macro_movement": 0.503,
-      "macro_space": 0.606
-    },
-    "Optic": {
-      "macro_character": 0.915,
-      "macro_coupling": 0.336,
-      "macro_movement": 0.503,
-      "macro_space": 0.606
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

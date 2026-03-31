@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Cascade Mercury",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.472,
-      "macro_coupling": 0.519,
-      "macro_movement": 0.785,
-      "macro_space": 0.106
-    },
-    "Outwit": {
-      "macro_character": 0.472,
-      "macro_coupling": 0.519,
-      "macro_movement": 0.785,
-      "macro_space": 0.106
-    }
+    "Orphica": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

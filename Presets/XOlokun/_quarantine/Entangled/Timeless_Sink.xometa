@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Timeless Sink",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.715,
-      "macro_space": 0.247
-    },
-    "Owlfish": {
-      "macro_character": 0.494,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.759,
-      "macro_space": 0.35
-    }
+    "Ottoni": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

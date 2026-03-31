@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Signal Rage 2",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.308,
-      "macro_coupling": 0.957,
-      "macro_movement": 0.078,
-      "macro_space": 0.962
-    },
+    "Obsidian": {},
     "Overdub": {
-      "macro_character": 0.269,
-      "macro_coupling": 0.946,
-      "macro_movement": 0.073,
-      "macro_space": 0.977,
       "dub_lfoDepth": 0.12
     }
   },

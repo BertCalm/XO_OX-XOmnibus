@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Flux Solid",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.2464,
-      "macro_coupling": 0.8743,
-      "macro_movement": 0.2776,
-      "macro_space": 0.4576
-    },
-    "Origami": {
-      "macro_character": 0.7357,
-      "macro_coupling": 0.3294,
-      "macro_movement": 0.5784,
-      "macro_space": 0.3858
-    }
+    "OddOscar": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

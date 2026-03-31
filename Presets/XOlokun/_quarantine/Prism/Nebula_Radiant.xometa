@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Nebula Radiant",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.625,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.345,
-      "macro_space": 0.938
-    },
-    "Owlfish": {
-      "macro_character": 0.237,
-      "macro_coupling": 0.853,
-      "macro_movement": 0.345,
-      "macro_space": 0.938
-    }
+    "Osteria": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

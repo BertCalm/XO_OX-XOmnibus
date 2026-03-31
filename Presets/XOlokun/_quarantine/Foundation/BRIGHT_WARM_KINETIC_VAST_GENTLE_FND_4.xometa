@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Glow Abyss",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.584,
-      "macro_movement": 0.978,
-      "macro_space": 0.854
-    },
-    "Overbite": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.449,
-      "macro_movement": 0.836,
-      "macro_space": 0.833
-    }
+    "OddfeliX": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

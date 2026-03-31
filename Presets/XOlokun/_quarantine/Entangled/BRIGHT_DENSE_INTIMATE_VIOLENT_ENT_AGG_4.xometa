@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Sunrise Storm",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.695,
-      "macro_coupling": 0.907,
-      "macro_movement": 0.519,
-      "macro_space": 0.085
-    },
-    "Outwit": {
-      "macro_character": 0.369,
-      "macro_coupling": 0.902,
-      "macro_movement": 0.479,
-      "macro_space": 0.137
-    }
+    "Ohm": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

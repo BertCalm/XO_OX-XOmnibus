@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Violet Aperture",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.832,
-      "macro_coupling": 0.682,
-      "macro_movement": 0.782,
-      "macro_space": 0.582
-    },
-    "Optic": {
-      "macro_character": 0.468,
-      "macro_coupling": 0.568,
-      "macro_movement": 0.418,
-      "macro_space": 0.468
-    }
+    "Oblique": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Solar Current",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.961,
-      "macro_movement": 0.943,
-      "macro_space": 0.031
-    },
-    "Owlfish": {
-      "macro_character": 0.774,
-      "macro_coupling": 0.911,
-      "macro_movement": 0.861,
-      "macro_space": 0.197
-    }
+    "Orphica": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "sequencer": null,

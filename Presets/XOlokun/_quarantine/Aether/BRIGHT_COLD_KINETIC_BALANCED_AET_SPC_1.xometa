@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT COLD KINETIC BALANCE...",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.447,
-      "macro_coupling": 0.851,
-      "macro_movement": 0.901,
-      "macro_space": 0.635
-    },
-    "Orbital": {
-      "macro_character": 0.474,
-      "macro_coupling": 0.873,
-      "macro_movement": 0.911,
-      "macro_space": 0.606
-    }
+    "Opal": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

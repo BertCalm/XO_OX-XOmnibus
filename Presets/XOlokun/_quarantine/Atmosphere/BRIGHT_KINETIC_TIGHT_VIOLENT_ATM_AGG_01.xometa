@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT KINETIC TIGHT VIOLEN...",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.954,
-      "macro_coupling": 0.854,
-      "macro_movement": 0.866,
-      "macro_space": 0.121
-    },
-    "Optic": {
-      "macro_character": 0.948,
-      "macro_coupling": 0.858,
-      "macro_movement": 0.866,
-      "macro_space": 0.115
-    }
+    "Oblique": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Violet Silver",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.69,
-      "macro_movement": 0.53,
-      "macro_space": 0.91
-    },
-    "Odyssey": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.58,
-      "macro_space": 0.88
-    }
+    "Obscura": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

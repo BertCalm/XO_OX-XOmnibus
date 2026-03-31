@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE GEN...",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.503,
-      "macro_movement": 0.685,
-      "macro_space": 0.066
-    },
-    "Osprey": {
-      "macro_character": 0.496,
-      "macro_coupling": 0.48,
-      "macro_movement": 0.662,
-      "macro_space": 0.082
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

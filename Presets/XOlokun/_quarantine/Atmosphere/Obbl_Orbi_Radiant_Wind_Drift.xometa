@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.92,
-      "macro_movement": 0.92,
-      "macro_coupling": 0.52,
-      "macro_space": 0.31
-    },
-    "Orbital": {
-      "macro_character": 0.67,
-      "macro_movement": 0.93,
-      "macro_coupling": 0.84,
-      "macro_space": 0.3
-    }
+    "Obbligato": {},
+    "Orbital": {}
   },
   "coupling": {
     "type": "PHASE_LOCK",

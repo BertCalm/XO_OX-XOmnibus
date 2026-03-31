@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Cephalopod Ring",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.39,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.26,
-      "macro_space": 0.88
-    },
+    "Oracle": {},
     "Overdub": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.21,
-      "macro_space": 0.19,
       "dub_lfoDepth": 0.12
     }
   },

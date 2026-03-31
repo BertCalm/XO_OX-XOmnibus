@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Flux Cavern",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.083,
-      "macro_coupling": 0.798,
-      "macro_movement": 0.057,
-      "macro_space": 1.0
-    },
-    "Osteria": {
-      "macro_character": 0.104,
-      "macro_coupling": 0.859,
-      "macro_movement": 0.187,
-      "macro_space": 0.965
-    }
+    "Oblique": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "sequencer": null,

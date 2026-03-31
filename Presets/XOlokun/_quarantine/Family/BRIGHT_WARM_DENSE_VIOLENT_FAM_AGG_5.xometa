@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Candlelight Packed",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.615,
-      "macro_coupling": 0.51,
-      "macro_movement": 0.381,
-      "macro_space": 0.429
-    },
-    "Ole": {
-      "macro_character": 0.594,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.419,
-      "macro_space": 0.382
-    }
+    "OddfeliX": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "BRIGHT COLD KINETIC DENSE V... (OddfeliX I)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.955,
-      "macro_movement": 0.954,
-      "macro_space": 0.498
-    },
-    "Orbital": {
-      "macro_character": 0.495,
-      "macro_coupling": 0.946,
-      "macro_movement": 0.931,
-      "macro_space": 0.427
-    }
+    "OddfeliX": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

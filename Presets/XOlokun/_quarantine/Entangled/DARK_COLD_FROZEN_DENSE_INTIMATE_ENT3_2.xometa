@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Phase Massive",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.8734,
-      "macro_coupling": 0.8718,
-      "macro_movement": 0.0444,
-      "macro_space": 0.1904
-    },
-    "Outwit": {
-      "macro_character": 0.9124,
-      "macro_coupling": 0.8718,
-      "macro_movement": 0.0344,
-      "macro_space": 0.2691
-    }
+    "Osprey": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -26,10 +26,6 @@
   "name": "Obbligato Breath Flutter",
   "parameters": {
     "Obbligato": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.25,
-      "macro_movement": 0.75,
-      "macro_space": 0.6,
       "obbl_attackTime": 0.12,
       "obbl_bond": 0.25,
       "obbl_breathA": 0.75,

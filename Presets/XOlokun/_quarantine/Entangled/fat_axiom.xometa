@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Fat Axiom",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.5,
-      "macro_space": 0.3
-    },
-    "Organon": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.5,
-      "macro_space": 0.3
-    }
+    "Obese": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

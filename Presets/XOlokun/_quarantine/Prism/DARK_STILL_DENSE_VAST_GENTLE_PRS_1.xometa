@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Flux Titan",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.073,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.0,
-      "macro_space": 0.835
-    },
-    "Origami": {
-      "macro_character": 0.026,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.086,
-      "macro_space": 1.0
-    }
+    "Optic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

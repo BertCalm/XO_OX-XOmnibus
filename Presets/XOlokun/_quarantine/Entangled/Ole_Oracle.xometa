@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Ole Oracle",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.68,
-      "macro_space": 0.42
-    },
-    "Oracle": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.64,
-      "macro_space": 0.52
-    }
+    "Ole": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

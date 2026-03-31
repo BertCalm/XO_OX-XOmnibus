@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Daguerreotype Siren",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.58,
-      "macro_space": 0.7
-    },
-    "Orphica": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.52,
-      "macro_space": 0.75
-    }
+    "Obscura": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

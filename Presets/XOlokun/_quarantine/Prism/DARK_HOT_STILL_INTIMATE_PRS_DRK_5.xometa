@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Velvet Grain",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.7087,
-      "macro_coupling": 0.4237,
-      "macro_movement": 0.053,
-      "macro_space": 0.0649
-    },
-    "Ole": {
-      "macro_character": 0.7219,
-      "macro_coupling": 0.4436,
-      "macro_movement": 0.0433,
-      "macro_space": 0.0388
-    }
+    "Ocelot": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Dusk Rage",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.405,
-      "macro_space": 0.489
-    },
-    "Osteria": {
-      "macro_character": 0.456,
-      "macro_coupling": 0.913,
-      "macro_movement": 0.406,
-      "macro_space": 0.494
-    }
+    "Organon": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

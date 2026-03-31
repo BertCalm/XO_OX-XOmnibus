@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Honey Neon",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.96,
-      "macro_coupling": 0.32,
-      "macro_movement": 0.525,
-      "macro_space": 0.538
-    },
-    "Orbital": {
-      "macro_character": 0.96,
-      "macro_coupling": 0.32,
-      "macro_movement": 0.525,
-      "macro_space": 0.538
-    }
+    "Oceanic": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

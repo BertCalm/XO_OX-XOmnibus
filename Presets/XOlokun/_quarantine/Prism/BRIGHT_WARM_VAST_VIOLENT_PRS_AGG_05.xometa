@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "BRIGHT WARM VAST VIOLENT PR... (Ohm I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.916,
-      "macro_coupling": 0.816,
-      "macro_movement": 0.489,
-      "macro_space": 0.876
-    },
-    "Ohm": {
-      "macro_character": 0.911,
-      "macro_coupling": 0.878,
-      "macro_movement": 0.52,
-      "macro_space": 0.834
-    }
+    "Oblique": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

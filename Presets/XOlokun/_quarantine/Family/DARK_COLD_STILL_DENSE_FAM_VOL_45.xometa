@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Fragment Solid 2",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.077,
-      "macro_coupling": 0.707,
-      "macro_movement": 0.05,
-      "macro_space": 0.654
-    },
-    "Ole": {
-      "macro_character": 0.054,
-      "macro_coupling": 0.694,
-      "macro_movement": 0.06,
-      "macro_space": 0.656
-    }
+    "Odyssey": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Prism Canyon",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.9539,
-      "macro_coupling": 0.9537,
-      "macro_movement": 0.095,
-      "macro_space": 0.2414
-    },
-    "Orbital": {
-      "macro_character": 0.6047,
-      "macro_coupling": 0.8462,
-      "macro_movement": 0.0908,
-      "macro_space": 0.1498
-    }
+    "OddfeliX": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "sequencer": null,

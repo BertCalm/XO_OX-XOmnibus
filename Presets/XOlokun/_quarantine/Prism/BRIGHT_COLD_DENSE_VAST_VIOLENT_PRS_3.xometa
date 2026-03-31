@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Quartz Rage",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.952,
-      "macro_coupling": 0.923,
-      "macro_movement": 0.462,
-      "macro_space": 0.93
-    },
-    "Orphica": {
-      "macro_character": 0.998,
-      "macro_coupling": 0.816,
-      "macro_movement": 0.518,
-      "macro_space": 0.859
-    }
+    "Oblique": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Biome Bounce",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.775,
-      "macro_coupling": 0.625,
-      "macro_movement": 0.725,
-      "macro_space": 0.525
-    },
-    "Ocelot": {
-      "macro_character": 0.675,
-      "macro_coupling": 0.575,
-      "macro_movement": 0.725,
-      "macro_space": 0.475
-    }
+    "Oblique": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

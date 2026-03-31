@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Expanse",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.9233,
-      "macro_coupling": 0.3128,
-      "macro_movement": 0.652,
-      "macro_space": 0.2611
-    },
-    "Osprey": {
-      "macro_character": 0.6185,
-      "macro_coupling": 0.389,
-      "macro_movement": 0.4899,
-      "macro_space": 0.8387
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

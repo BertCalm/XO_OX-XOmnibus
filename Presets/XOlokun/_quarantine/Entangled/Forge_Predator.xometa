@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Forge Predator",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.59,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.43,
-      "macro_space": 0.59
-    },
-    "Orca": {
-      "macro_character": 0.81,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.68,
-      "macro_space": 0.56
-    }
+    "Obese": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

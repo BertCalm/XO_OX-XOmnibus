@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Rust Crush",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.423,
-      "macro_coupling": 0.629,
-      "macro_movement": 0.43,
-      "macro_space": 0.669
-    },
-    "Onset": {
-      "macro_character": 0.429,
-      "macro_coupling": 0.655,
-      "macro_movement": 0.412,
-      "macro_space": 0.663
-    }
+    "OddOscar": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

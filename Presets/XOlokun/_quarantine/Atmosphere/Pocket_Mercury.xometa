@@ -39,18 +39,8 @@
   "mood": "Atmosphere",
   "name": "Pocket Mercury",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.88,
-      "macro_movement": 0.85,
-      "macro_space": 0.49
-    },
-    "Ouroboros": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.87,
-      "macro_space": 0.47
-    }
+    "Opal": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

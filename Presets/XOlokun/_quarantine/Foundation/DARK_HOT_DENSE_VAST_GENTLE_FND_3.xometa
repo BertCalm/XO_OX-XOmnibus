@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Smoke Molten",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.123,
-      "macro_coupling": 0.819,
-      "macro_movement": 0.283,
-      "macro_space": 0.979
-    },
-    "Overbite": {
-      "macro_character": 0.114,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.333,
-      "macro_space": 0.912
-    }
+    "Origami": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

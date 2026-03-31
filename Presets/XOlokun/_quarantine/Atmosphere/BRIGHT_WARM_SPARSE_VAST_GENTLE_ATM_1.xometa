@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Honey Abyss",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.9052,
-      "macro_coupling": 0.0792,
-      "macro_movement": 0.6841,
-      "macro_space": 0.9074
-    },
-    "Oracle": {
-      "macro_character": 0.9179,
-      "macro_coupling": 0.0691,
-      "macro_movement": 0.7048,
-      "macro_space": 0.8867
-    }
+    "Obscura": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

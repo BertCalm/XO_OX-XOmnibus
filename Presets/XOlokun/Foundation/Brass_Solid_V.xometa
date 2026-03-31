@@ -38,19 +38,10 @@
   "name": "Brass Solid V",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.672,
-      "macro_coupling": 0.375,
-      "macro_movement": 0.723,
-      "macro_space": 0.265,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Overworld": {
-      "macro_character": 0.586,
-      "macro_coupling": 0.136,
-      "macro_movement": 0.352,
-      "macro_space": 0.899
-    }
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

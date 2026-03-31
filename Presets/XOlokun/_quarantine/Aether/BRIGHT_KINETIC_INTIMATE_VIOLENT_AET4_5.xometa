@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Shard Surge",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.4987,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.8116,
-      "macro_space": 0.2275
-    },
-    "Origami": {
-      "macro_character": 0.7933,
-      "macro_coupling": 0.4367,
-      "macro_movement": 0.8643,
-      "macro_space": 0.4326
-    }
+    "Opal": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

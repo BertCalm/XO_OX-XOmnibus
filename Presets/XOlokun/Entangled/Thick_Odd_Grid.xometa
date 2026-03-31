@@ -38,19 +38,10 @@
   "name": "Thick Odd Grid",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.81,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.3,
-      "macro_space": 0.4,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "OddOscar": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.23,
-      "macro_space": 0.4
-    }
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

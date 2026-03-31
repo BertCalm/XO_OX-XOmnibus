@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Tide of Becoming",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.22,
-      "macro_movement": 0.85,
-      "macro_space": 0.88
-    }
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

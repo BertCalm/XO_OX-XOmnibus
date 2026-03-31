@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Wave Grit",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.7003,
-      "macro_coupling": 0.0617,
-      "macro_movement": 0.6045,
-      "macro_space": 0.9602
-    },
-    "Origami": {
-      "macro_character": 0.7035,
-      "macro_coupling": 0.0497,
-      "macro_movement": 0.6445,
-      "macro_space": 0.9722
-    }
+    "Ocelot": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

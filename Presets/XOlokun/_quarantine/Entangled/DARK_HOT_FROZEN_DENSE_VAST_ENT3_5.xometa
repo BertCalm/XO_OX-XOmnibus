@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Amber Deep 2",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.5817,
-      "macro_coupling": 0.8565,
-      "macro_movement": 0.0622,
-      "macro_space": 0.4801
-    },
-    "Organon": {
-      "macro_character": 0.6607,
-      "macro_coupling": 0.821,
-      "macro_movement": 0.0618,
-      "macro_space": 0.479
-    }
+    "Orbital": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "sequencer": null,

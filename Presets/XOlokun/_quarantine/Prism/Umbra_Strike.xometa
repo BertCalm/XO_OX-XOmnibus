@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Umbra Strike",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.088,
-      "macro_coupling": 0.671,
-      "macro_movement": 0.462,
-      "macro_space": 0.695
-    },
-    "Origami": {
-      "macro_character": 0.0,
-      "macro_coupling": 0.684,
-      "macro_movement": 0.421,
-      "macro_space": 0.733
-    }
+    "Obbligato": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

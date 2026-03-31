@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Phase Strike",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.582,
-      "macro_coupling": 0.958,
-      "macro_movement": 0.405,
-      "macro_space": 0.573
-    },
-    "Overworld": {
-      "macro_character": 0.614,
-      "macro_coupling": 0.948,
-      "macro_movement": 0.433,
-      "macro_space": 0.633
-    }
+    "Osteria": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

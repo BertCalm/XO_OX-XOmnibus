@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Shadow Lattice Ii",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.872,
-      "macro_coupling": 0.212,
-      "macro_movement": 0.423,
-      "macro_space": 0.539
-    },
-    "Orca": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.312,
-      "macro_movement": 0.201,
-      "macro_space": 0.995
-    }
+    "Opal": {},
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

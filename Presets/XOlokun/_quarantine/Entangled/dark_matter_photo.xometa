@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Dark Matter Photo",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.313,
-      "macro_coupling": 0.513,
-      "macro_movement": 0.213,
-      "macro_space": 0.563
-    },
-    "Orbital": {
-      "macro_character": 0.437,
-      "macro_coupling": 0.537,
-      "macro_movement": 0.587,
-      "macro_space": 0.737
-    }
+    "Obscura": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

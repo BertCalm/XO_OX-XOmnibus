@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Honey Horizon 2",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.413,
-      "macro_movement": 0.09,
-      "macro_space": 0.917
-    },
-    "Octopus": {
-      "macro_character": 0.981,
-      "macro_coupling": 0.381,
-      "macro_movement": 0.08,
-      "macro_space": 0.892
-    }
+    "Oceanic": {},
+    "Octopus": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,10 @@
   "name": "Sub Concrete",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.54,
-      "macro_movement": 0.22,
-      "macro_space": 0.22,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
     "Overdub": {
-      "macro_character": 0.84,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.48,
-      "macro_space": 0.38,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "DARK WARM TIGHT VIOLENT ATM... (Optic I)",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.092,
-      "macro_coupling": 0.927,
-      "macro_movement": 0.426,
-      "macro_space": 0.028
-    },
-    "Origami": {
-      "macro_character": 0.092,
-      "macro_coupling": 0.951,
-      "macro_movement": 0.427,
-      "macro_space": 0.028
-    }
+    "Optic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

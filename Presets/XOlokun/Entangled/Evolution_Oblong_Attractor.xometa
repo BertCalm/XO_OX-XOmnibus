@@ -2,43 +2,52 @@
   "schema_version": 1,
   "name": "Oblong Attractor",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Oblong"],
+  "engines": [
+    "Ouroboros",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OUROBOROS slowly tightens its pitch and amplitude grip on OBLONG's warm harmonic body — over 45 seconds the bass pad migrates from conventional warmth into strange chaotic territory as attractor derivatives accumulate in the pitch modulation.",
-  "tags": ["evolution", "attractor", "harmonic", "chaos", "temporal", "coupled", "entangled", "slow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "evolution",
+    "attractor",
+    "harmonic",
+    "chaos",
+    "temporal",
+    "coupled",
+    "entangled",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
     "warmth": 0.62,
-    "movement": 0.70,
+    "movement": 0.7,
     "density": 0.58,
     "space": 0.52,
     "aggression": 0.45
   },
   "parameters": {
     "Ouroboros": {
-      "macro_character": 0.58,
-      "macro_movement": 0.68,
-      "macro_coupling": 0.52,
-      "macro_space": 0.42,
-      "ouro_topology": 0.50,
+      "ouro_topology": 0.5,
       "ouro_chaosAmount": 0.48,
       "ouro_filterCutoff": 0.52,
       "ouro_outputLevel": 0.78
     },
     "Oblong": {
-      "macro_character": 0.65,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.52,
-      "macro_space": 0.55,
       "bob_fltCutoff": 0.58,
       "bob_resonance": 0.35,
-      "bob_oscMix": 0.60,
+      "bob_oscMix": 0.6,
       "bob_reverbMix": 0.48,
-      "bob_outputLevel": 0.80
+      "bob_outputLevel": 0.8
     }
   },
   "coupling": {
@@ -47,7 +56,7 @@
         "engineA": "Ouroboros",
         "engineB": "Oblong",
         "type": "AmpToFilter",
-        "amount": 0.50
+        "amount": 0.5
       },
       {
         "engineA": "Ouroboros",

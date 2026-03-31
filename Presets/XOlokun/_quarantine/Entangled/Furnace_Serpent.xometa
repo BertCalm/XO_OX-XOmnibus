@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Furnace Serpent",
   "parameters": {
-    "Orca": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.72,
-      "macro_space": 0.22
-    },
-    "Ouroboros": {
-      "macro_character": 0.79,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.76,
-      "macro_space": 0.31
-    }
+    "Orca": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

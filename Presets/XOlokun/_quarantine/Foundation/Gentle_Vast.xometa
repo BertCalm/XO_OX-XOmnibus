@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Gentle Vast",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.349,
-      "macro_coupling": 0.882,
-      "macro_movement": 0.542,
-      "macro_space": 0.65
-    },
-    "Obsidian": {
-      "macro_character": 0.868,
-      "macro_coupling": 0.302,
-      "macro_movement": 0.7,
-      "macro_space": 0.677
-    }
+    "Obese": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

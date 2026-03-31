@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.85,
-      "macro_movement": 0.71,
-      "macro_coupling": 0.7,
-      "macro_space": 0.39
-    },
-    "Outwit": {
-      "macro_character": 0.69,
-      "macro_movement": 0.75,
-      "macro_coupling": 0.66,
-      "macro_space": 0.15
-    }
+    "Obsidian": {},
+    "Outwit": {}
   },
   "coupling": {
     "type": "PITCH_FOLLOW",

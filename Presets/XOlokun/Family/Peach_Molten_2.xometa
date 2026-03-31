@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Peach Molten 2",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.642,
-      "macro_movement": 0.126,
-      "macro_space": 0.498
-    },
+    "OddfeliX": {},
     "Overdub": {
-      "macro_character": 0.907,
-      "macro_coupling": 0.699,
-      "macro_movement": 0.117,
-      "macro_space": 0.502,
       "dub_lfoDepth": 0.12
     }
   },

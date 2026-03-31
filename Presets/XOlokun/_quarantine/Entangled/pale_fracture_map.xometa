@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Pale Fracture Map",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.5,
-      "macro_space": 0.9
-    },
-    "Odyssey": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.6,
-      "macro_space": 0.9
-    }
+    "Obsidian": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

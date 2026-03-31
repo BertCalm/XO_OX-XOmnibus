@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Rage",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.5438,
-      "macro_coupling": 0.9095,
-      "macro_movement": 0.5595,
-      "macro_space": 0.0735
-    },
-    "Orbital": {
-      "macro_character": 0.5413,
-      "macro_coupling": 0.9395,
-      "macro_movement": 0.6094,
-      "macro_space": 0.1362
-    }
+    "Oracle": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

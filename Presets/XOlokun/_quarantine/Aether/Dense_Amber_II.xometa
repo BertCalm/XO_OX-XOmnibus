@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Dense Amber II",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.2194,
-      "macro_coupling": 0.7057,
-      "macro_movement": 0.3717,
-      "macro_space": 0.8454
-    },
-    "Ombre": {
-      "macro_character": 0.6403,
-      "macro_coupling": 0.7736,
-      "macro_movement": 0.2156,
-      "macro_space": 0.8161
-    }
+    "Oblique": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

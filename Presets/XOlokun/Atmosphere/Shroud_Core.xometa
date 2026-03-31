@@ -40,18 +40,9 @@
   "name": "Shroud Core",
   "parameters": {
     "Overdub": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.97,
-      "macro_space": 0.21,
       "dub_lfoDepth": 0.12
     },
-    "Owlfish": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.77,
-      "macro_space": 0.17
-    }
+    "Owlfish": {}
   },
   "schema_version": 1,
   "sequencer": null,

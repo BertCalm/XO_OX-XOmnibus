@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Silver Dome",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.7276,
-      "macro_coupling": 0.8838,
-      "macro_movement": 0.07,
-      "macro_space": 0.8798
-    },
-    "Onset": {
-      "macro_character": 0.5653,
-      "macro_coupling": 0.8615,
-      "macro_movement": 0.0875,
-      "macro_space": 0.5515
-    }
+    "Obscura": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "sequencer": null,

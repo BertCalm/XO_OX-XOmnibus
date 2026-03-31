@@ -37,17 +37,8 @@
   "mood": "Foundation",
   "name": "Wave Rage",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.494,
-      "macro_movement": 0.599,
-      "macro_space": 0.932
-    },
+    "Obese": {},
     "Overdub": {
-      "macro_character": 0.497,
-      "macro_coupling": 0.512,
-      "macro_movement": 0.627,
-      "macro_space": 0.905,
       "dub_lfoDepth": 0.12
     }
   },

@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Latin Enzyme",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.68,
-      "macro_space": 0.35
-    },
-    "Organon": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.72,
-      "macro_space": 0.5
-    }
+    "Ole": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Rust Rage",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.184,
-      "macro_coupling": 0.432,
-      "macro_movement": 0.943,
-      "macro_space": 0.837
-    },
-    "Overworld": {
-      "macro_character": 0.143,
-      "macro_coupling": 0.432,
-      "macro_movement": 0.985,
-      "macro_space": 0.886
-    }
+    "Ohm": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

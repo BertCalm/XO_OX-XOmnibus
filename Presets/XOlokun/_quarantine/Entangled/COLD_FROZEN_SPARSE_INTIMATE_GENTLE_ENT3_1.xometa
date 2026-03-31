@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Fragment Phase",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.6355,
-      "macro_coupling": 0.8915,
-      "macro_movement": 0.0259,
-      "macro_space": 0.7462
-    },
-    "Octopus": {
-      "macro_character": 0.9805,
-      "macro_coupling": 0.9498,
-      "macro_movement": 0.0164,
-      "macro_space": 0.3518
-    }
+    "Ocelot": {},
+    "Octopus": {}
   },
   "schema_version": 1,
   "sequencer": null,

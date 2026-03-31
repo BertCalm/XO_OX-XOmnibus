@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Sand Dollar",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.26,
-      "macro_space": 0.37
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.77,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.55,
-      "macro_space": 0.46,
       "dub_lfoDepth": 0.12
     }
   },

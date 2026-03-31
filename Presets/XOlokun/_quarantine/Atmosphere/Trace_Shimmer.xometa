@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Trace Shimmer",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.825,
-      "macro_movement": 0.38,
-      "macro_space": 0.398
-    },
-    "Owlfish": {
-      "macro_character": 0.639,
-      "macro_coupling": 0.344,
-      "macro_movement": 0.419,
-      "macro_space": 0.457
-    }
+    "Odyssey": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Ethereal Anchored",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.103,
-      "macro_coupling": 0.312,
-      "macro_movement": 0.044,
-      "macro_space": 0.564
-    },
-    "Ole": {
-      "macro_character": 0.103,
-      "macro_coupling": 0.312,
-      "macro_movement": 0.044,
-      "macro_space": 0.564
-    }
+    "OddfeliX": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Grain Cascade",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.421,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.994,
-      "macro_space": 0.032
-    },
-    "Origami": {
-      "macro_character": 0.425,
-      "macro_coupling": 0.797,
-      "macro_movement": 1.0,
-      "macro_space": 0.0
-    }
+    "Oblique": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Abyssal Bass Node",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.36,
-      "macro_space": 0.88
-    },
-    "Ouroboros": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.51,
-      "macro_space": 0.71
-    }
+    "Obsidian": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

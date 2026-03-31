@@ -26,10 +26,6 @@
   "name": "Ole Drama Peak",
   "parameters": {
     "Ole": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.7,
-      "macro_space": 0.45,
       "ole_attackTime": 0.02,
       "ole_drama": 1.0,
       "ole_filterCutoff": 0.8,

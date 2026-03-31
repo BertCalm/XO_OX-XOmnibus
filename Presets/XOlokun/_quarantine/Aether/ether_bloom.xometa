@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Ether Bloom",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.28,
-      "macro_coupling": 0.18,
-      "macro_movement": 0.72,
-      "macro_space": 0.94
-    }
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

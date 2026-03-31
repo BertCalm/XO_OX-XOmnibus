@@ -38,19 +38,10 @@
   "name": "Anchored Velvet",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.697,
-      "macro_coupling": 0.533,
-      "macro_movement": 0.066,
-      "macro_space": 0.452,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Orca": {
-      "macro_character": 0.684,
-      "macro_coupling": 0.929,
-      "macro_movement": 0.043,
-      "macro_space": 0.601
-    }
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

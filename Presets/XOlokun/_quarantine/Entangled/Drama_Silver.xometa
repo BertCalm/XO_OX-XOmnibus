@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Drama Silver",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.6,
-      "macro_space": 0.48
-    },
-    "Ole": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.74,
-      "macro_space": 0.34
-    }
+    "Obscura": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

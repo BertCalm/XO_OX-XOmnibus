@@ -38,19 +38,10 @@
   "name": "Sting Mahogany",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.0909,
-      "macro_coupling": 0.9064,
-      "macro_movement": 0.4207,
-      "macro_space": 0.7456,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ouroboros": {
-      "macro_character": 0.1149,
-      "macro_coupling": 0.9245,
-      "macro_movement": 0.4023,
-      "macro_space": 0.575
-    }
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

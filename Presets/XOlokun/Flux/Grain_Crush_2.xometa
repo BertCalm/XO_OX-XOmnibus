@@ -38,19 +38,10 @@
   "name": "Grain Crush 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.439,
-      "macro_coupling": 0.904,
-      "macro_movement": 0.958,
-      "macro_space": 0.124,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Overworld": {
-      "macro_character": 0.387,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.969,
-      "macro_space": 0.061
-    }
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

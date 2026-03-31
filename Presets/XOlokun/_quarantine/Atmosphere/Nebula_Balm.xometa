@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Nebula Balm",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.624,
-      "macro_coupling": 0.776,
-      "macro_movement": 0.611,
-      "macro_space": 0.955
-    },
-    "Oceanic": {
-      "macro_character": 0.531,
-      "macro_coupling": 0.738,
-      "macro_movement": 0.507,
-      "macro_space": 0.89
-    }
+    "Oblique": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

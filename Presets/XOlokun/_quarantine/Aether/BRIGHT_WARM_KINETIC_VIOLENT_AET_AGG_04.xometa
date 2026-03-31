@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC VIOLENT... (Opal I)",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.893,
-      "macro_coupling": 0.873,
-      "macro_movement": 0.872,
-      "macro_space": 0.349
-    },
-    "Osprey": {
-      "macro_character": 0.867,
-      "macro_coupling": 0.881,
-      "macro_movement": 0.863,
-      "macro_space": 0.349
-    }
+    "Opal": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

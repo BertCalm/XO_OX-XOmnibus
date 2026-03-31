@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Cocoa Rage",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.4325,
-      "macro_coupling": 0.9661,
-      "macro_movement": 0.4318,
-      "macro_space": 0.0159
-    },
-    "Oceanic": {
-      "macro_character": 0.4229,
-      "macro_coupling": 0.9604,
-      "macro_movement": 0.4309,
-      "macro_space": 0.0248
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

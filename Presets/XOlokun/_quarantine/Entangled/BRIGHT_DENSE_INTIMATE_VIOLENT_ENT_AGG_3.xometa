@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fragment Crush",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.628,
-      "macro_coupling": 0.945,
-      "macro_movement": 0.653,
-      "macro_space": 0.102
-    },
-    "Obsidian": {
-      "macro_character": 0.603,
-      "macro_coupling": 0.909,
-      "macro_movement": 0.604,
-      "macro_space": 0.076
-    }
+    "Obbligato": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

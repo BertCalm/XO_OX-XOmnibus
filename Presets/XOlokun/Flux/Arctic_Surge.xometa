@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Arctic Surge",
   "parameters": {
-    "Outwit": {
-      "macro_character": 0.5422,
-      "macro_coupling": 0.0572,
-      "macro_movement": 0.748,
-      "macro_space": 0.5842
-    },
+    "Outwit": {},
     "Overdub": {
-      "macro_character": 0.1548,
-      "macro_coupling": 0.9687,
-      "macro_movement": 0.2967,
-      "macro_space": 0.5792,
       "dub_lfoDepth": 0.12
     }
   },

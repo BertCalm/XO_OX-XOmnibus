@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "DARK KINETIC DENSE VIOLENT ... (Ottoni II)",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.048,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.819,
-      "macro_space": 0.388
-    },
-    "Ottoni": {
-      "macro_character": 0.049,
-      "macro_coupling": 0.901,
-      "macro_movement": 0.834,
-      "macro_space": 0.408
-    }
+    "Optic": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

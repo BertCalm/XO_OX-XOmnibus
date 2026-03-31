@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Drift",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.776,
-      "macro_coupling": 0.897,
-      "macro_movement": 0.9464,
-      "macro_space": 0.2517
-    },
-    "Odyssey": {
-      "macro_character": 0.8604,
-      "macro_coupling": 0.9327,
-      "macro_movement": 0.8747,
-      "macro_space": 0.3513
-    }
+    "Oceanic": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

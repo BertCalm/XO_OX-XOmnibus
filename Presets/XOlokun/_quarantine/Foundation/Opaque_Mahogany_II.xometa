@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Opaque Mahogany II",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.739,
-      "macro_coupling": 0.681,
-      "macro_movement": 0.112,
-      "macro_space": 0.406
-    },
-    "Ouroboros": {
-      "macro_character": 0.764,
-      "macro_coupling": 0.501,
-      "macro_movement": 0.231,
-      "macro_space": 0.322
-    }
+    "Obscura": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

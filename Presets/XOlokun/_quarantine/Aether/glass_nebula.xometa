@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Glass Nebula",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.1,
-      "macro_movement": 0.5,
-      "macro_space": 0.97
-    }
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

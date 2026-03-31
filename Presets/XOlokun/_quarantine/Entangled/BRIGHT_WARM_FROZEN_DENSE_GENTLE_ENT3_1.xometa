@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Candlelight Thick",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.5222,
-      "macro_coupling": 0.7623,
-      "macro_movement": 0.0152,
-      "macro_space": 0.5775
-    },
-    "Ole": {
-      "macro_character": 0.6414,
-      "macro_coupling": 0.8427,
-      "macro_movement": 0.0227,
-      "macro_space": 0.4828
-    }
+    "Odyssey": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "sequencer": null,

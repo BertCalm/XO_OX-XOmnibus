@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Bloom Dense",
   "parameters": {
-    "Outwit": {
-      "macro_character": 0.8473,
-      "macro_coupling": 0.8219,
-      "macro_movement": 0.044,
-      "macro_space": 0.7934
-    },
-    "Overlap": {
-      "macro_character": 0.8302,
-      "macro_coupling": 0.9852,
-      "macro_movement": 0.0612,
-      "macro_space": 0.5961
-    }
+    "Outwit": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "sequencer": null,

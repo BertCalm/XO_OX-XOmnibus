@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Edge",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.735,
-      "macro_movement": 0.465,
-      "macro_space": 0.933
-    },
-    "Orphica": {
-      "macro_character": 0.954,
-      "macro_coupling": 0.733,
-      "macro_movement": 0.421,
-      "macro_space": 0.933
-    }
+    "Ohm": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

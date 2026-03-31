@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Shimmer",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.4725,
-      "macro_coupling": 0.7096,
-      "macro_movement": 0.8008,
-      "macro_space": 0.9146
-    },
-    "Organon": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.2563,
-      "macro_movement": 0.9109,
-      "macro_space": 0.6781
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

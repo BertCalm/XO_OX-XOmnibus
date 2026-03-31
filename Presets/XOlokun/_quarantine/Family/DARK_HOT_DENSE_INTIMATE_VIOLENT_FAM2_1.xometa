@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE VIO... (Ole I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.533,
-      "macro_coupling": 0.944,
-      "macro_movement": 0.438,
-      "macro_space": 0.022
-    },
-    "Ole": {
-      "macro_character": 0.509,
-      "macro_coupling": 0.952,
-      "macro_movement": 0.377,
-      "macro_space": 0.035
-    }
+    "OddOscar": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

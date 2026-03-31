@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Ripple Sienna",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.61,
-      "macro_coupling": 0.379,
-      "macro_movement": 0.904,
-      "macro_space": 0.029
-    },
-    "Origami": {
-      "macro_character": 0.851,
-      "macro_coupling": 0.182,
-      "macro_movement": 0.926,
-      "macro_space": 0.212
-    }
+    "Obese": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,17 +37,8 @@
   "mood": "Foundation",
   "name": "Phase Ripple",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.554,
-      "macro_coupling": 0.791,
-      "macro_movement": 0.846,
-      "macro_space": 0.655
-    },
+    "Obese": {},
     "Overdub": {
-      "macro_character": 0.529,
-      "macro_coupling": 0.241,
-      "macro_movement": 0.844,
-      "macro_space": 0.222,
       "dub_lfoDepth": 0.12
     }
   },

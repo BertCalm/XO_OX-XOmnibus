@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Copper Saturated",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.6598,
-      "macro_coupling": 0.6543,
-      "macro_movement": 0.0783,
-      "macro_space": 0.0812
-    },
-    "Owlfish": {
-      "macro_character": 0.6649,
-      "macro_coupling": 0.685,
-      "macro_movement": 0.0396,
-      "macro_space": 0.0492
-    }
+    "Osteria": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

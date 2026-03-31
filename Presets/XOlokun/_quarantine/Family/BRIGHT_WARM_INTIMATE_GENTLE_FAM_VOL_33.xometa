@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Honey Drift",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.862,
-      "macro_coupling": 0.322,
-      "macro_movement": 0.608,
-      "macro_space": 0.014
-    },
-    "Osteria": {
-      "macro_character": 0.877,
-      "macro_coupling": 0.345,
-      "macro_movement": 0.581,
-      "macro_space": 0.038
-    }
+    "Origami": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Crystal Swirl",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.9263,
-      "macro_coupling": 0.031,
-      "macro_movement": 0.6072,
-      "macro_space": 0.029
-    },
-    "Origami": {
-      "macro_character": 0.9629,
-      "macro_coupling": 0.068,
-      "macro_movement": 0.5874,
-      "macro_space": 0.01
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

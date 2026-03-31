@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Quartz Force",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.8671,
-      "macro_coupling": 0.4586,
-      "macro_movement": 0.3699,
-      "macro_space": 0.0829
-    },
-    "OddOscar": {
-      "macro_character": 0.8371,
-      "macro_coupling": 0.442,
-      "macro_movement": 0.3622,
-      "macro_space": 0.0622
-    }
+    "Obscura": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Cinnamon Balm II",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.365,
-      "macro_coupling": 0.845,
-      "macro_movement": 0.634,
-      "macro_space": 0.749
-    },
-    "Orbital": {
-      "macro_character": 0.383,
-      "macro_coupling": 0.838,
-      "macro_movement": 0.643,
-      "macro_space": 0.837
-    }
+    "Oblique": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

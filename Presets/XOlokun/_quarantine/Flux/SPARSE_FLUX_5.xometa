@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "SPARSE FLUX 5",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.2477,
-      "macro_coupling": 0.4394,
-      "macro_movement": 0.4378,
-      "macro_space": 0.5227
-    },
-    "Oracle": {
-      "macro_character": 0.1587,
-      "macro_coupling": 0.2829,
-      "macro_movement": 0.3729,
-      "macro_space": 0.4088
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

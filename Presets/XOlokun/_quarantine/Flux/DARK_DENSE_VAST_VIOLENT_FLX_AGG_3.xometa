@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Signal Grit",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.375,
-      "macro_coupling": 0.843,
-      "macro_movement": 0.431,
-      "macro_space": 0.862
-    },
-    "Origami": {
-      "macro_character": 0.683,
-      "macro_coupling": 0.849,
-      "macro_movement": 0.424,
-      "macro_space": 0.908
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

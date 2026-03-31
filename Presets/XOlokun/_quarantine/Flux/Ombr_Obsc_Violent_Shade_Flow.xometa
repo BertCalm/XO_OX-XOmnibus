@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.67,
-      "macro_movement": 0.9,
-      "macro_coupling": 0.73,
-      "macro_space": 0.44
-    },
-    "Obscura": {
-      "macro_character": 0.98,
-      "macro_movement": 0.96,
-      "macro_coupling": 0.77,
-      "macro_space": 0.2
-    }
+    "Ombre": {},
+    "Obscura": {}
   },
   "coupling": {
     "type": "CHAOS_INJECT",

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Dark Orbit Drift",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.54,
-      "macro_space": 0.22
-    },
-    "Oracle": {
-      "macro_character": 0.59,
-      "macro_coupling": 0.51,
-      "macro_movement": 0.42,
-      "macro_space": 0.63
-    }
+    "Odyssey": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

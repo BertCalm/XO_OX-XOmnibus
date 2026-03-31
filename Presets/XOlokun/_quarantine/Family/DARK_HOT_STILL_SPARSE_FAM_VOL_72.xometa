@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Shadow Cavern 2",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.498,
-      "macro_coupling": 0.21,
-      "macro_movement": 0.137,
-      "macro_space": 0.558
-    },
-    "Osprey": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.181,
-      "macro_movement": 0.135,
-      "macro_space": 0.563
-    }
+    "Ohm": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

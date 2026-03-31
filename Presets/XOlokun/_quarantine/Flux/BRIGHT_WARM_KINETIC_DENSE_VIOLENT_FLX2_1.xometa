@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Sunrise Pulse",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.9671,
-      "macro_coupling": 0.9215,
-      "macro_movement": 0.9635,
-      "macro_space": 0.6333
-    },
-    "Optic": {
-      "macro_character": 0.9312,
-      "macro_coupling": 0.8843,
-      "macro_movement": 0.9849,
-      "macro_space": 0.6405
-    }
+    "Opal": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

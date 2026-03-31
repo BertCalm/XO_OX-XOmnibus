@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Wavetable Fold",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.42,
-      "macro_space": 0.91
-    },
-    "Origami": {
-      "macro_character": 0.13,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.37,
-      "macro_space": 0.94
-    }
+    "Odyssey": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

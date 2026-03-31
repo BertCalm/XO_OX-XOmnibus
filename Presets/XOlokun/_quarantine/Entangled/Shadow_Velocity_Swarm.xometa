@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Shadow Velocity Swarm",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.32,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.89,
-      "macro_space": 0.79
-    },
-    "Overworld": {
-      "macro_character": 0.71,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.62,
-      "macro_space": 0.39
-    }
+    "Origami": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

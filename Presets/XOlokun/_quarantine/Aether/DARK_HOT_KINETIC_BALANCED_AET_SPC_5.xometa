@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK HOT KINETIC BALANCED A... (Opal I)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.494,
-      "macro_coupling": 0.625,
-      "macro_movement": 0.99,
-      "macro_space": 0.571
-    },
-    "Opal": {
-      "macro_character": 0.518,
-      "macro_coupling": 0.649,
-      "macro_movement": 0.989,
-      "macro_space": 0.546
-    }
+    "Obscura": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

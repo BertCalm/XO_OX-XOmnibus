@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT COLD STILL INTIMATE ... (Organon)",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.499,
-      "macro_coupling": 0.164,
-      "macro_movement": 0.052,
-      "macro_space": 0.057
-    },
-    "Organon": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.156,
-      "macro_movement": 0.02,
-      "macro_space": 0.096
-    }
+    "Obbligato": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

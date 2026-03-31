@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "BARE FLUX 3",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.3296,
-      "macro_coupling": 0.3536,
-      "macro_movement": 0.1222,
-      "macro_space": 0.6653
-    },
-    "Overbite": {
-      "macro_character": 0.7503,
-      "macro_coupling": 0.7211,
-      "macro_movement": 0.8681,
-      "macro_space": 0.9684
-    }
+    "Oblique": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

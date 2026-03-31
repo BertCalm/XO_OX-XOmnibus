@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Surge Silk",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.651,
-      "macro_coupling": 0.499,
-      "macro_movement": 0.788,
-      "macro_space": 0.827
-    },
-    "OddfeliX": {
-      "macro_character": 0.469,
-      "macro_coupling": 0.761,
-      "macro_movement": 0.955,
-      "macro_space": 0.784
-    }
+    "Oblique": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

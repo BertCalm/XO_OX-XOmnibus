@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Golden Thick",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.989,
-      "macro_coupling": 0.591,
-      "macro_movement": 0.099,
-      "macro_space": 0.003
-    },
-    "Ohm": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.509,
-      "macro_movement": 0.042,
-      "macro_space": 0.035
-    }
+    "Oblique": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "sequencer": null,

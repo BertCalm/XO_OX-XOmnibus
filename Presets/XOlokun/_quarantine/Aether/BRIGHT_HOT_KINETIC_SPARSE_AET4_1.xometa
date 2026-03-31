@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Halo Current",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.7146,
-      "macro_coupling": 0.8823,
-      "macro_movement": 0.5677,
-      "macro_space": 0.2551
-    },
-    "Osprey": {
-      "macro_character": 0.923,
-      "macro_coupling": 0.5592,
-      "macro_movement": 0.2456,
-      "macro_space": 0.5012
-    }
+    "OddfeliX": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

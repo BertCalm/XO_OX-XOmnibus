@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Golden Molten 2",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.924,
-      "macro_coupling": 0.747,
-      "macro_movement": 0.595,
-      "macro_space": 0.099
-    },
-    "Ottoni": {
-      "macro_character": 0.897,
-      "macro_coupling": 0.773,
-      "macro_movement": 0.611,
-      "macro_space": 0.113
-    }
+    "Ohm": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

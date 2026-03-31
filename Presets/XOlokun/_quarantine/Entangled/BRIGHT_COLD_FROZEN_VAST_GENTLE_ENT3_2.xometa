@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Ice Cavern",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.6798,
-      "macro_coupling": 0.8255,
-      "macro_movement": 0.0734,
-      "macro_space": 0.3369
-    },
-    "Onset": {
-      "macro_character": 0.5127,
-      "macro_coupling": 0.7947,
-      "macro_movement": 0.0715,
-      "macro_space": 0.5401
-    }
+    "Obsidian": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "sequencer": null,

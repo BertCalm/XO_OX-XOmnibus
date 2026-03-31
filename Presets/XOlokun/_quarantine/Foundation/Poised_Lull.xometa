@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Poised Lull",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.102,
-      "macro_coupling": 0.311,
-      "macro_movement": 0.053,
-      "macro_space": 0.555
-    },
-    "Overbite": {
-      "macro_character": 0.102,
-      "macro_coupling": 0.311,
-      "macro_movement": 0.053,
-      "macro_space": 0.555
-    }
+    "Ouroboros": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Score of Ice",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.33,
-      "macro_space": 0.93
-    },
-    "Origami": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.38,
-      "macro_space": 0.9
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

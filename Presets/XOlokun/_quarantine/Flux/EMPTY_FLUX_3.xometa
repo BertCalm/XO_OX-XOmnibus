@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "EMPTY FLUX 3",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.7768,
-      "macro_coupling": 0.085,
-      "macro_movement": 0.5676,
-      "macro_space": 0.0526
-    },
-    "OddfeliX": {
-      "macro_character": 0.4198,
-      "macro_coupling": 0.3701,
-      "macro_movement": 0.3409,
-      "macro_space": 0.7216
-    }
+    "Obese": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Thermocline Layer",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.43,
-      "macro_space": 0.94
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.61,
-      "macro_space": 0.88,
       "dub_lfoDepth": 0.12
     }
   },

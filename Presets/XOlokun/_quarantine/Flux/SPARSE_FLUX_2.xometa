@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "SPARSE FLUX 2",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.8046,
-      "macro_coupling": 0.7907,
-      "macro_movement": 0.3658,
-      "macro_space": 0.0139
-    },
-    "Ohm": {
-      "macro_character": 0.5366,
-      "macro_coupling": 0.6728,
-      "macro_movement": 0.4548,
-      "macro_space": 0.6723
-    }
+    "Obese": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

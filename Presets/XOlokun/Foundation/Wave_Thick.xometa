@@ -38,18 +38,10 @@
   "name": "Wave Thick",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.659,
-      "macro_coupling": 0.346,
-      "macro_movement": 0.864,
-      "macro_space": 0.802,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
     "Overdub": {
-      "macro_character": 0.235,
-      "macro_coupling": 0.717,
-      "macro_movement": 0.123,
-      "macro_space": 0.626,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Thread Crush",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.459,
-      "macro_coupling": 0.985,
-      "macro_movement": 0.638,
-      "macro_space": 0.575
-    },
-    "Ouroboros": {
-      "macro_character": 0.684,
-      "macro_coupling": 0.986,
-      "macro_movement": 0.675,
-      "macro_space": 0.625
-    }
+    "Optic": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

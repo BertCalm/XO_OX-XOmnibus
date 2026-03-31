@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Flux Grit",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.394,
-      "macro_coupling": 0.728,
-      "macro_movement": 0.599,
-      "macro_space": 0.467
-    },
-    "Overbite": {
-      "macro_character": 0.414,
-      "macro_coupling": 0.702,
-      "macro_movement": 0.598,
-      "macro_space": 0.483
-    }
+    "Obese": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

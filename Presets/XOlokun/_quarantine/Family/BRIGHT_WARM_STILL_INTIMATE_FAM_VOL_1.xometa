@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sunrise Rage",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.884,
-      "macro_coupling": 0.514,
-      "macro_movement": 0.042,
-      "macro_space": 0.034
-    },
-    "Odyssey": {
-      "macro_character": 0.902,
-      "macro_coupling": 0.474,
-      "macro_movement": 0.067,
-      "macro_space": 0.034
-    }
+    "Obbligato": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

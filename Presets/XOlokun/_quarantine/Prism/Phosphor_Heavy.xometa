@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Phosphor Heavy",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.04,
-      "macro_coupling": 0.383,
-      "macro_movement": 0.601,
-      "macro_space": 0.394
-    },
-    "Origami": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.781,
-      "macro_movement": 0.601,
-      "macro_space": 0.394
-    }
+    "Ocelot": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Rust Fragment",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.497,
-      "macro_coupling": 0.238,
-      "macro_movement": 0.432,
-      "macro_space": 0.01
-    },
-    "Opal": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.25,
-      "macro_movement": 0.432,
-      "macro_space": 0.049
-    }
+    "OddfeliX": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

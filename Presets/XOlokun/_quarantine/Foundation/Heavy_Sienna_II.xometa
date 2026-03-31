@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Heavy Sienna II",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.943,
-      "macro_coupling": 0.423,
-      "macro_movement": 0.547,
-      "macro_space": 0.531
-    },
-    "Obsidian": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.434,
-      "macro_movement": 0.421,
-      "macro_space": 0.411
-    }
+    "Oblique": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

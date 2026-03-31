@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Wave Heavy",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.9492,
-      "macro_coupling": 0.8245,
-      "macro_movement": 0.1017,
-      "macro_space": 0.6576
-    },
-    "Origami": {
-      "macro_character": 0.5632,
-      "macro_coupling": 0.9201,
-      "macro_movement": 0.0976,
-      "macro_space": 0.172
-    }
+    "Orbital": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

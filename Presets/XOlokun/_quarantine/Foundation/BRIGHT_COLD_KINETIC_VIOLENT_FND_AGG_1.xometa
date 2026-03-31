@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Silver Cascade",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.741,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.803,
-      "macro_space": 0.47
-    },
-    "Ouroboros": {
-      "macro_character": 0.693,
-      "macro_coupling": 0.883,
-      "macro_movement": 0.768,
-      "macro_space": 0.487
-    }
+    "OddOscar": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

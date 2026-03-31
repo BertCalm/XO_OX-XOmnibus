@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Surge Horizon",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.9162,
-      "macro_coupling": 0.3423,
-      "macro_movement": 0.8528,
-      "macro_space": 0.8214
-    },
-    "Oracle": {
-      "macro_character": 0.8032,
-      "macro_coupling": 0.3743,
-      "macro_movement": 0.8556,
-      "macro_space": 0.8366
-    }
+    "Optic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

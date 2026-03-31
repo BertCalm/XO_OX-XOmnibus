@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Tarnished Savanna",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.335,
-      "macro_coupling": 0.535,
-      "macro_movement": 0.235,
-      "macro_space": 0.585
-    },
-    "Ocelot": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.565,
-      "macro_movement": 0.715,
-      "macro_space": 0.465
-    }
+    "Obscura": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Node Dome",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.299,
-      "macro_coupling": 0.9719,
-      "macro_movement": 0.9637,
-      "macro_space": 0.9674
-    },
-    "Organon": {
-      "macro_character": 0.2951,
-      "macro_coupling": 0.965,
-      "macro_movement": 0.9543,
-      "macro_space": 0.9782
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

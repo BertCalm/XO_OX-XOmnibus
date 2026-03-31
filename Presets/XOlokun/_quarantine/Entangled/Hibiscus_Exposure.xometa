@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Hibiscus Exposure",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.56,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.5,
-      "macro_space": 0.55
-    },
-    "Ole": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.62,
-      "macro_space": 0.46
-    }
+    "Obscura": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Cobalt Path",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.42,
-      "macro_coupling": 0.759,
-      "macro_movement": 0.613,
-      "macro_space": 0.592
-    },
-    "Owlfish": {
-      "macro_character": 0.475,
-      "macro_coupling": 0.549,
-      "macro_movement": 0.405,
-      "macro_space": 0.449
-    }
+    "Ohm": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

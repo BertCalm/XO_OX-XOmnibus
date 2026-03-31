@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Cinnamon Calm",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.752,
-      "macro_coupling": 0.676,
-      "macro_movement": 0.074,
-      "macro_space": 0.515
-    },
-    "Overlap": {
-      "macro_character": 0.739,
-      "macro_coupling": 0.579,
-      "macro_movement": 0.021,
-      "macro_space": 0.574
-    }
+    "OddfeliX": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

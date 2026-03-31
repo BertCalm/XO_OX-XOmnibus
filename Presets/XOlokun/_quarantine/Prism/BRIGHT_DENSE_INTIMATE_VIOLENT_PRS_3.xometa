@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Tone Saturated 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.937,
-      "macro_coupling": 0.772,
-      "macro_movement": 0.661,
-      "macro_space": 0.064
-    },
-    "Orphica": {
-      "macro_character": 0.476,
-      "macro_coupling": 0.826,
-      "macro_movement": 0.661,
-      "macro_space": 0.064
-    }
+    "Oblique": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

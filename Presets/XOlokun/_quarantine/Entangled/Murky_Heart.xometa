@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Murky Heart",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.327,
-      "macro_coupling": 0.584,
-      "macro_movement": 0.522,
-      "macro_space": 0.608
-    },
-    "Octopus": {
-      "macro_character": 0.685,
-      "macro_coupling": 0.406,
-      "macro_movement": 0.776,
-      "macro_space": 0.361
-    }
+    "Obbligato": {},
+    "Octopus": {}
   },
   "schema_version": 1,
   "tags": [

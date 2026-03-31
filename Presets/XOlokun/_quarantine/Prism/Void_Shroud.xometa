@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Void Shroud",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.794,
-      "macro_coupling": 0.592,
-      "macro_movement": 0.899,
-      "macro_space": 0.944
-    },
-    "Ole": {
-      "macro_character": 0.385,
-      "macro_coupling": 0.869,
-      "macro_movement": 0.899,
-      "macro_space": 0.944
-    }
+    "Oblique": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

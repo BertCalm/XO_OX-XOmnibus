@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT WARM DENSE VIOLENT A... (Oceanic)",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.914,
-      "macro_coupling": 0.818,
-      "macro_movement": 0.396,
-      "macro_space": 0.669
-    },
-    "Organon": {
-      "macro_character": 0.912,
-      "macro_coupling": 0.915,
-      "macro_movement": 0.41,
-      "macro_space": 0.661
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

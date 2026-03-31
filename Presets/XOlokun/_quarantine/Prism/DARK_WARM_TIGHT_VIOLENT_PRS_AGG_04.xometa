@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "DARK WARM TIGHT VIOLENT PRS... (Ottoni I)",
   "parameters": {
-    "Ottoni": {
-      "macro_character": 0.071,
-      "macro_coupling": 0.888,
-      "macro_movement": 0.607,
-      "macro_space": 0.113
-    },
-    "Overworld": {
-      "macro_character": 0.067,
-      "macro_coupling": 0.851,
-      "macro_movement": 0.616,
-      "macro_space": 0.112
-    }
+    "Ottoni": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

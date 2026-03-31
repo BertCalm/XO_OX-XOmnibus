@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Phase Molten 3",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.323,
-      "macro_coupling": 0.428,
-      "macro_movement": 0.905,
-      "macro_space": 0.049
-    },
-    "Ottoni": {
-      "macro_character": 0.706,
-      "macro_coupling": 0.565,
-      "macro_movement": 0.905,
-      "macro_space": 0.049
-    }
+    "Optic": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Heavy Sienna III",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.332,
-      "macro_coupling": 0.486,
-      "macro_movement": 0.492,
-      "macro_space": 0.87
-    },
-    "Origami": {
-      "macro_character": 0.698,
-      "macro_coupling": 0.793,
-      "macro_movement": 0.58,
-      "macro_space": 0.784
-    }
+    "Orbital": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

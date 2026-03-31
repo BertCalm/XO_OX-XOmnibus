@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Signal Edge 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.403,
-      "macro_coupling": 0.338,
-      "macro_movement": 0.556,
-      "macro_space": 0.496
-    },
-    "Oracle": {
-      "macro_character": 0.402,
-      "macro_coupling": 0.368,
-      "macro_movement": 0.603,
-      "macro_space": 0.481
-    }
+    "OddOscar": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

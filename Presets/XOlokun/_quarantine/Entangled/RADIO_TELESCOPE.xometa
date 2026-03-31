@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Radio Telescope (Obbligato)",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.457,
-      "macro_coupling": 0.683,
-      "macro_movement": 0.066,
-      "macro_space": 0.912
-    },
-    "Oracle": {
-      "macro_character": 0.553,
-      "macro_coupling": 0.631,
-      "macro_movement": 0.653,
-      "macro_space": 0.904
-    }
+    "Obbligato": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

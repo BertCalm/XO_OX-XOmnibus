@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "DARK COLD KINETIC VIOLENT P... (Ohm I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.049,
-      "macro_coupling": 0.982,
-      "macro_movement": 0.821,
-      "macro_space": 0.586
-    },
-    "Ohm": {
-      "macro_character": 0.049,
-      "macro_coupling": 0.921,
-      "macro_movement": 0.878,
-      "macro_space": 0.588
-    }
+    "Oblique": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

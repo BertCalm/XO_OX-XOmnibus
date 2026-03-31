@@ -2,17 +2,33 @@
   "schema_version": 1,
   "name": "Hammer Pattern",
   "mood": "Entangled",
-  "engines": ["Ouie", "Ostinato"],
+  "engines": [
+    "Ouie",
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OUIE's hammerhead duophonic strikes land on OSTINATO's rhythmic pattern grid — each hammer blow chokes and re-triggers the pattern accent while the underlying pulse modulates the STRIFE/LOVE balance between OUIE's two voices.",
-  "tags": ["collision", "hammer", "rhythm", "percussion", "pattern", "coupled", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "collision",
+    "hammer",
+    "rhythm",
+    "percussion",
+    "pattern",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
-    "warmth": 0.40,
+    "warmth": 0.4,
     "movement": 0.85,
     "density": 0.72,
     "space": 0.38,
@@ -20,10 +36,6 @@
   },
   "parameters": {
     "Ouie": {
-      "macro_character": 0.68,
-      "macro_movement": 0.82,
-      "macro_coupling": 0.75,
-      "macro_space": 0.35,
       "ouie_macroHammer": 0.72,
       "ouie_voiceAlgo": 5,
       "ouie_strifeBalance": 0.55,
@@ -32,15 +44,11 @@
       "ouie_outputLevel": 0.82
     },
     "Ostinato": {
-      "macro_character": 0.62,
-      "macro_movement": 0.80,
-      "macro_coupling": 0.75,
-      "macro_space": 0.38,
-      "osti_macroGather": 0.70,
+      "osti_macroGather": 0.7,
       "osti_rhythmDensity": 0.65,
       "osti_accentDepth": 0.72,
       "osti_filterCutoff": 0.48,
-      "osti_outputLevel": 0.80
+      "osti_outputLevel": 0.8
     }
   },
   "coupling": {

@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Flux Expanse",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.47,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.982,
-      "macro_space": 0.934
-    },
-    "Overbite": {
-      "macro_character": 0.318,
-      "macro_coupling": 0.076,
-      "macro_movement": 0.949,
-      "macro_space": 1.0
-    }
+    "Obsidian": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

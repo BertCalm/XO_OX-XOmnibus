@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Shadow Void 2",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.12,
-      "macro_coupling": 0.419,
-      "macro_movement": 1.0,
-      "macro_space": 0.982
-    },
-    "Ottoni": {
-      "macro_character": 0.133,
-      "macro_coupling": 0.494,
-      "macro_movement": 0.912,
-      "macro_space": 1.0
-    }
+    "Ocelot": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "sequencer": null,

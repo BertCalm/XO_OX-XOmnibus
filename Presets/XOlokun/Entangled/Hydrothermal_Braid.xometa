@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Hydrothermal Braid",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.83,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.35,
-      "macro_space": 0.82
-    },
+    "Organon": {},
     "Overdub": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.46,
-      "macro_space": 0.74,
       "dub_lfoDepth": 0.12
     }
   },

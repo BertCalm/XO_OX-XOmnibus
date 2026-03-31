@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Obsidian Arctic II",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.007,
-      "macro_coupling": 0.663,
-      "macro_movement": 0.33,
-      "macro_space": 0.637
-    },
-    "Outwit": {
-      "macro_character": 0.053,
-      "macro_coupling": 0.479,
-      "macro_movement": 0.304,
-      "macro_space": 0.66
-    }
+    "Oceanic": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

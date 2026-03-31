@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ICE FLUX 7",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.6604,
-      "macro_coupling": 0.1738,
-      "macro_movement": 0.1571,
-      "macro_space": 0.0751
-    },
-    "Overbite": {
-      "macro_character": 0.0027,
-      "macro_coupling": 0.5938,
-      "macro_movement": 0.4505,
-      "macro_space": 0.2913
-    }
+    "Oblique": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

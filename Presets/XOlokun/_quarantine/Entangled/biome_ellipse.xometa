@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Biome Ellipse",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.655,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.705,
-      "macro_space": 0.455
-    },
-    "Orbital": {
-      "macro_character": 0.395,
-      "macro_coupling": 0.495,
-      "macro_movement": 0.545,
-      "macro_space": 0.695
-    }
+    "Ocelot": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Siphonophore Memory",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.6,
-      "macro_space": 0.6
-    },
-    "Orphica": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.52,
-      "macro_space": 0.73
-    }
+    "Organon": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

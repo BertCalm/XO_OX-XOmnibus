@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "BARE FLUX 7",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.387,
-      "macro_coupling": 0.2618,
-      "macro_movement": 0.5617,
-      "macro_space": 0.2603
-    },
-    "Ohm": {
-      "macro_character": 0.2496,
-      "macro_coupling": 0.7357,
-      "macro_movement": 0.1134,
-      "macro_space": 0.499
-    }
+    "OddOscar": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

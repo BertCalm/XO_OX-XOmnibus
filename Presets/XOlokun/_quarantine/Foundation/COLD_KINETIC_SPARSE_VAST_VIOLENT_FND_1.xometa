@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Thread Expanse",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.523,
-      "macro_coupling": 0.154,
-      "macro_movement": 0.968,
-      "macro_space": 1.0
-    },
-    "Onset": {
-      "macro_character": 0.405,
-      "macro_coupling": 0.12,
-      "macro_movement": 0.984,
-      "macro_space": 0.998
-    }
+    "OddfeliX": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -39,18 +39,8 @@
   "mood": "Family",
   "name": "Hearth Spiral",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.84,
-      "macro_space": 0.45
-    },
-    "Ottoni": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.81,
-      "macro_space": 0.47
-    }
+    "OddfeliX": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "sequencer": null,

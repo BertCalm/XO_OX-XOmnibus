@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Strike Copper",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.765,
-      "macro_coupling": 0.798,
-      "macro_movement": 0.108,
-      "macro_space": 0.594
-    },
-    "Osteria": {
-      "macro_character": 0.711,
-      "macro_coupling": 0.352,
-      "macro_movement": 0.108,
-      "macro_space": 0.594
-    }
+    "Origami": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Glass Storm",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.955,
-      "macro_coupling": 0.221,
-      "macro_movement": 0.159,
-      "macro_space": 0.126
-    },
-    "Ouroboros": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.164,
-      "macro_movement": 0.148,
-      "macro_space": 0.063
-    }
+    "OddOscar": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

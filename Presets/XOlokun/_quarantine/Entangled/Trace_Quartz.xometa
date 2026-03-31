@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Trace Quartz",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.086,
-      "macro_coupling": 0.067,
-      "macro_movement": 0.347,
-      "macro_space": 0.13
-    },
-    "Outwit": {
-      "macro_character": 0.071,
-      "macro_coupling": 0.069,
-      "macro_movement": 0.367,
-      "macro_space": 0.2
-    }
+    "Osprey": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

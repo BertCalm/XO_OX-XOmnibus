@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Quartz Drift 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.6611,
-      "macro_coupling": 0.5124,
-      "macro_movement": 0.3804,
-      "macro_space": 0.6983
-    },
-    "Origami": {
-      "macro_character": 0.5865,
-      "macro_coupling": 0.3077,
-      "macro_movement": 0.3815,
-      "macro_space": 0.5219
-    }
+    "OddOscar": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

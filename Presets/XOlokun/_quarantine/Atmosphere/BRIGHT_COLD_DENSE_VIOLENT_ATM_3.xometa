@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Prism Packed",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.695,
-      "macro_coupling": 0.803,
-      "macro_movement": 0.47,
-      "macro_space": 0.408
-    },
-    "Orbital": {
-      "macro_character": 0.474,
-      "macro_coupling": 0.799,
-      "macro_movement": 0.451,
-      "macro_space": 0.47
-    }
+    "Oracle": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

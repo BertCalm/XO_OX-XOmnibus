@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Neon Impact",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.895,
-      "macro_coupling": 0.953,
-      "macro_movement": 0.362,
-      "macro_space": 0.916
-    },
-    "Osteria": {
-      "macro_character": 0.926,
-      "macro_coupling": 0.937,
-      "macro_movement": 0.403,
-      "macro_space": 0.934
-    }
+    "Opal": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

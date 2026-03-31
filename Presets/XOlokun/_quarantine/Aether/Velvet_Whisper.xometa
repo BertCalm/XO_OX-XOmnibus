@@ -39,18 +39,8 @@
   "mood": "Aether",
   "name": "Velvet Whisper",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.94,
-      "macro_space": 0.38
-    },
-    "OddfeliX": {
-      "macro_character": 0.79,
-      "macro_coupling": 0.61,
-      "macro_movement": 0.93,
-      "macro_space": 0.16
-    }
+    "Obese": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "sequencer": null,

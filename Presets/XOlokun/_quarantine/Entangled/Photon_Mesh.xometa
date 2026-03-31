@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Photon Mesh",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.4,
-      "macro_space": 0.53
-    },
-    "Ottoni": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.47,
-      "macro_space": 0.51
-    }
+    "Ohm": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

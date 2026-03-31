@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Silk Chrome",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.184,
-      "macro_coupling": 0.343,
-      "macro_movement": 0.894,
-      "macro_space": 0.869
-    },
-    "Owlfish": {
-      "macro_character": 0.372,
-      "macro_coupling": 0.4,
-      "macro_movement": 0.894,
-      "macro_space": 0.869
-    }
+    "Origami": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ALLHI FLX 06",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.905,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.943,
-      "macro_space": 0.949
-    },
-    "Optic": {
-      "macro_character": 0.905,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.943,
-      "macro_space": 0.949
-    }
+    "Odyssey": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

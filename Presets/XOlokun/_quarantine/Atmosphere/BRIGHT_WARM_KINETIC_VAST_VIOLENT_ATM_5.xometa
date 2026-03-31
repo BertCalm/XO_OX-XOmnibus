@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Peach Edge",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.9128,
-      "macro_coupling": 0.3722,
-      "macro_movement": 0.9383,
-      "macro_space": 0.9283
-    },
-    "Origami": {
-      "macro_character": 0.9652,
-      "macro_coupling": 0.3849,
-      "macro_movement": 0.9562,
-      "macro_space": 0.9256
-    }
+    "Oblique": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

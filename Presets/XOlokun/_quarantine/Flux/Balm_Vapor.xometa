@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Balm Vapor",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.1259,
-      "macro_coupling": 0.0686,
-      "macro_movement": 0.5646,
-      "macro_space": 0.7652
-    },
-    "Ombre": {
-      "macro_character": 0.2072,
-      "macro_coupling": 0.8697,
-      "macro_movement": 0.216,
-      "macro_space": 0.3286
-    }
+    "Obbligato": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

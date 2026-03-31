@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Resting Thick",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.639,
-      "macro_coupling": 0.654,
-      "macro_movement": 0.037,
-      "macro_space": 0.642
-    },
-    "Overlap": {
-      "macro_character": 0.655,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.125,
-      "macro_space": 0.627
-    }
+    "OddfeliX": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

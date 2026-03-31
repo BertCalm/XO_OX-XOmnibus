@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Fragment Deep 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.8253,
-      "macro_coupling": 0.8386,
-      "macro_movement": 0.0529,
-      "macro_space": 0.5705
-    },
-    "Ohm": {
-      "macro_character": 0.9883,
-      "macro_coupling": 0.8821,
-      "macro_movement": 0.0572,
-      "macro_space": 0.399
-    }
+    "Oblique": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "sequencer": null,

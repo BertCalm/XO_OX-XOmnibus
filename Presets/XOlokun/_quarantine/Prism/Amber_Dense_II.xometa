@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Amber Dense II",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.835,
-      "macro_coupling": 0.719,
-      "macro_movement": 0.569,
-      "macro_space": 0.595
-    },
-    "Orphica": {
-      "macro_character": 0.913,
-      "macro_coupling": 0.887,
-      "macro_movement": 0.671,
-      "macro_space": 0.579
-    }
+    "Orbital": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

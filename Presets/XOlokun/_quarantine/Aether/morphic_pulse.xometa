@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Morphic Pulse",
   "parameters": {
-    "Overworld": {
-      "macro_character": 0.45,
-      "macro_coupling": 0.28,
-      "macro_movement": 0.92,
-      "macro_space": 0.78
-    }
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

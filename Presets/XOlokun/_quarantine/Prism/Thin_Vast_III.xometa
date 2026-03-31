@@ -39,18 +39,8 @@
   "mood": "Prism",
   "name": "Thin Vast III",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.89,
-      "macro_movement": 0.74,
-      "macro_space": 0.23
-    },
-    "Overbite": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.69,
-      "macro_space": 0.33
-    }
+    "Ocelot": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

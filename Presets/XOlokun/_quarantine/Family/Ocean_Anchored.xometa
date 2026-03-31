@@ -39,18 +39,8 @@
   "mood": "Family",
   "name": "Ocean Anchored",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.73,
-      "macro_space": 0.38
-    },
-    "Optic": {
-      "macro_character": 0.93,
-      "macro_coupling": 0.57,
-      "macro_movement": 0.74,
-      "macro_space": 0.12
-    }
+    "Onset": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "sequencer": null,

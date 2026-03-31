@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Dub Odd Bass",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.55,
-      "macro_space": 0.49
-    },
+    "OddOscar": {},
     "Overdub": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.61,
-      "macro_movement": 0.74,
-      "macro_space": 0.5,
       "dub_lfoDepth": 0.12
     }
   },

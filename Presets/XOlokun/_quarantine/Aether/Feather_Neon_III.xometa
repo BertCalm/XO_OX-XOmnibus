@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Feather Neon III",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.6209,
-      "macro_coupling": 0.726,
-      "macro_movement": 0.737,
-      "macro_space": 0.5146
-    },
-    "Overworld": {
-      "macro_character": 0.5369,
-      "macro_coupling": 0.852,
-      "macro_movement": 0.4086,
-      "macro_space": 0.7691
-    }
+    "Oceanic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

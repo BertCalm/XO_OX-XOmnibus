@@ -38,19 +38,10 @@
   "name": "Thread Rage 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.368,
-      "macro_coupling": 0.819,
-      "macro_movement": 0.98,
-      "macro_space": 0.568,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Oracle": {
-      "macro_character": 0.441,
-      "macro_coupling": 0.815,
-      "macro_movement": 0.932,
-      "macro_space": 0.564
-    }
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

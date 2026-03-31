@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Velvet Fang",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.661,
-      "macro_coupling": 0.869,
-      "macro_movement": 0.084,
-      "macro_space": 0.98
-    },
-    "Organon": {
-      "macro_character": 0.679,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.075,
-      "macro_space": 0.95
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

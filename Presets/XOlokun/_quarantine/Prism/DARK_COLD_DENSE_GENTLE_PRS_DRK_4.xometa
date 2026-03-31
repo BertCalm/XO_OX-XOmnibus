@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Grain Massive 2",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.0638,
-      "macro_coupling": 0.8539,
-      "macro_movement": 0.5489,
-      "macro_space": 0.3245
-    },
-    "Orphica": {
-      "macro_character": 0.0875,
-      "macro_coupling": 0.8748,
-      "macro_movement": 0.5316,
-      "macro_space": 0.3328
-    }
+    "Ole": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

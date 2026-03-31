@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Shard Storm 3",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.386,
-      "macro_coupling": 0.929,
-      "macro_movement": 0.87,
-      "macro_space": 0.944
-    },
-    "Organon": {
-      "macro_character": 0.468,
-      "macro_coupling": 0.931,
-      "macro_movement": 0.954,
-      "macro_space": 0.981
-    }
+    "Obsidian": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

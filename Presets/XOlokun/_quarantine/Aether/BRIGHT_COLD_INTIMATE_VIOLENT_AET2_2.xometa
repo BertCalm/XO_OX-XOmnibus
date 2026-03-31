@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Arctic Edge 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.9517,
-      "macro_coupling": 0.6424,
-      "macro_movement": 0.6245,
-      "macro_space": 0.0652
-    },
-    "OddfeliX": {
-      "macro_character": 0.9509,
-      "macro_coupling": 0.6589,
-      "macro_movement": 0.6526,
-      "macro_space": 0.0931
-    }
+    "Oblique": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

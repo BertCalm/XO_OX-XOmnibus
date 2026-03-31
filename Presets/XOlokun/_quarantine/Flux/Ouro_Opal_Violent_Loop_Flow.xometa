@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.97,
-      "macro_movement": 0.92,
-      "macro_coupling": 0.89,
-      "macro_space": 0.41
-    },
-    "Opal": {
-      "macro_character": 0.94,
-      "macro_movement": 0.9,
-      "macro_coupling": 0.58,
-      "macro_space": 0.34
-    }
+    "Ouroboros": {},
+    "Opal": {}
   },
   "coupling": {
     "type": "FILTER_SHARE",

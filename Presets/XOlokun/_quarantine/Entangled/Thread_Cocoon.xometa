@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Thread Cocoon",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.112,
-      "macro_coupling": 0.067,
-      "macro_movement": 0.345,
-      "macro_space": 0.085
-    },
-    "Osprey": {
-      "macro_character": 0.107,
-      "macro_coupling": 0.065,
-      "macro_movement": 0.38,
-      "macro_space": 0.088
-    }
+    "Onset": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

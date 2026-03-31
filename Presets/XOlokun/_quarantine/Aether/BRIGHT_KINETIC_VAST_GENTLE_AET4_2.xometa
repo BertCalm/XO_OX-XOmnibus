@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Grain Vast 2",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.7971,
-      "macro_coupling": 0.4811,
-      "macro_movement": 0.42,
-      "macro_space": 0.3092
-    },
-    "Orbital": {
-      "macro_character": 0.5984,
-      "macro_coupling": 0.7944,
-      "macro_movement": 0.6244,
-      "macro_space": 0.3275
-    }
+    "Ombre": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

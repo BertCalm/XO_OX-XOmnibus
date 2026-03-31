@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "RTJ Leopard",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.772,
-      "macro_coupling": 0.622,
-      "macro_movement": 0.722,
-      "macro_space": 0.522
-    },
-    "Ocelot": {
-      "macro_character": 0.678,
-      "macro_coupling": 0.578,
-      "macro_movement": 0.728,
-      "macro_space": 0.478
-    }
+    "Oblique": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

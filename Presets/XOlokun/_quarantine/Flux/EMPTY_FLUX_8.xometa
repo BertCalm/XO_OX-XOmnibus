@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "EMPTY FLUX 8",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.4706,
-      "macro_coupling": 0.8472,
-      "macro_movement": 0.5367,
-      "macro_space": 0.4309
-    },
-    "Ohm": {
-      "macro_character": 0.8825,
-      "macro_coupling": 0.7639,
-      "macro_movement": 0.7275,
-      "macro_space": 0.3659
-    }
+    "Obese": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

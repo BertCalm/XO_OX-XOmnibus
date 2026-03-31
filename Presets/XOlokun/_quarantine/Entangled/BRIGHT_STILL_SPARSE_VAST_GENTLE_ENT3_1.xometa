@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Flux Horizon",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.5217,
-      "macro_coupling": 0.8547,
-      "macro_movement": 0.1009,
-      "macro_space": 0.5419
-    },
-    "Osprey": {
-      "macro_character": 0.8366,
-      "macro_coupling": 0.9757,
-      "macro_movement": 0.0765,
-      "macro_space": 0.7265
-    }
+    "Oceanic": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "sequencer": null,

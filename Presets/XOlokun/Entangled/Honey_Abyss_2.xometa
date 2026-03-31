@@ -45,17 +45,8 @@
   "mood": "Entangled",
   "name": "Honey Abyss 2",
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.913,
-      "macro_coupling": 0.9362,
-      "macro_movement": 0.0522,
-      "macro_space": 0.2947
-    },
+    "Osteria": {},
     "Overdub": {
-      "macro_character": 0.9849,
-      "macro_coupling": 0.9036,
-      "macro_movement": 0.0783,
-      "macro_space": 0.5734,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ember Dome 2",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.6182,
-      "macro_coupling": 0.0617,
-      "macro_movement": 0.8947,
-      "macro_space": 0.9634
-    },
-    "Orbital": {
-      "macro_character": 0.6427,
-      "macro_coupling": 0.0226,
-      "macro_movement": 0.8681,
-      "macro_space": 0.955
-    }
+    "Oceanic": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

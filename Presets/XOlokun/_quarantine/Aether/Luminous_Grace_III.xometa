@@ -39,18 +39,8 @@
   "mood": "Aether",
   "name": "Luminous Grace III",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.87,
-      "macro_space": 0.47
-    },
-    "Orphica": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.79,
-      "macro_space": 0.25
-    }
+    "Ole": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

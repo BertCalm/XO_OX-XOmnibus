@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Solar Wind Trail",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.43,
-      "macro_space": 0.81
-    },
-    "Osprey": {
-      "macro_character": 0.69,
-      "macro_coupling": 0.46,
-      "macro_movement": 0.4,
-      "macro_space": 0.7
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

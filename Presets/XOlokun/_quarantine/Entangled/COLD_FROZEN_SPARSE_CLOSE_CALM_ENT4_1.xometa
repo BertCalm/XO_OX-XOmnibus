@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Shard Flux",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.281,
-      "macro_coupling": 0.038,
-      "macro_movement": 0.067,
-      "macro_space": 0.112
-    },
-    "Owlfish": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.062,
-      "macro_movement": 0.072,
-      "macro_space": 0.063
-    }
+    "Organon": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

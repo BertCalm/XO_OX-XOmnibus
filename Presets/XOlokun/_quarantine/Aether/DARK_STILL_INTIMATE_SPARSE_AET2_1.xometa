@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Wave Fragment",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.088,
-      "macro_coupling": 0.1087,
-      "macro_movement": 0.1563,
-      "macro_space": 0.0319
-    },
-    "OddfeliX": {
-      "macro_character": 0.1482,
-      "macro_coupling": 0.1111,
-      "macro_movement": 0.1458,
-      "macro_space": 0.0129
-    }
+    "Oceanic": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

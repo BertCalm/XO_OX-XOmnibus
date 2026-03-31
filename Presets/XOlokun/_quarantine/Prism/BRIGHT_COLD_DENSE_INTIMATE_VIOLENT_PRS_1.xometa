@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Frost Deep",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.853,
-      "macro_coupling": 0.979,
-      "macro_movement": 0.388,
-      "macro_space": 0.0
-    },
-    "Overworld": {
-      "macro_character": 0.954,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.351,
-      "macro_space": 0.024
-    }
+    "Orphica": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

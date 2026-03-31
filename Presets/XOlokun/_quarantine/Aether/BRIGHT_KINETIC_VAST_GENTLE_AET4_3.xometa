@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Silver Swirl",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.6792,
-      "macro_coupling": 0.3876,
-      "macro_movement": 0.5182,
-      "macro_space": 0.834
-    },
-    "Overworld": {
-      "macro_character": 0.3185,
-      "macro_coupling": 0.4592,
-      "macro_movement": 0.5313,
-      "macro_space": 0.6407
-    }
+    "Origami": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Wave Orbit",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.4999,
-      "macro_coupling": 0.5338,
-      "macro_movement": 0.4051,
-      "macro_space": 0.9777
-    },
-    "Oracle": {
-      "macro_character": 0.5204,
-      "macro_coupling": 0.506,
-      "macro_movement": 0.434,
-      "macro_space": 0.9505
-    }
+    "Optic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

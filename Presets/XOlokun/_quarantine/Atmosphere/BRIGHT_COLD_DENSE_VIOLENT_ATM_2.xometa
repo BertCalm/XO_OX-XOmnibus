@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Mirror Edge",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.495,
-      "macro_coupling": 0.857,
-      "macro_movement": 0.378,
-      "macro_space": 0.643
-    },
-    "Origami": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.708,
-      "macro_movement": 0.476,
-      "macro_space": 0.53
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

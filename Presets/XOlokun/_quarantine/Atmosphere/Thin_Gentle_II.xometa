@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Thin Gentle II",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.338,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.443,
-      "macro_space": 0.759
-    },
-    "Obscura": {
-      "macro_character": 0.312,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.52,
-      "macro_space": 0.89
-    }
+    "Oblique": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

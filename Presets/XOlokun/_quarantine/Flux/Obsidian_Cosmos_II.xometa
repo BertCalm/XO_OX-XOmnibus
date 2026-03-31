@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Obsidian Cosmos II",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.173,
-      "macro_coupling": 0.171,
-      "macro_movement": 0.6471,
-      "macro_space": 0.947
-    },
-    "Overworld": {
-      "macro_character": 0.1756,
-      "macro_coupling": 0.1768,
-      "macro_movement": 0.5479,
-      "macro_space": 0.8946
-    }
+    "Organon": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

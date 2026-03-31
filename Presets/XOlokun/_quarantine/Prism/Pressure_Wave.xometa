@@ -31,12 +31,7 @@
   "mood": "Prism",
   "name": "Pressure Wave (Overbite I)",
   "parameters": {
-    "Overbite": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.7,
-      "macro_space": 0.08
-    }
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

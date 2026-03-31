@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Dusk Wrath 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.397,
-      "macro_coupling": 0.428,
-      "macro_movement": 0.661,
-      "macro_space": 0.792
-    },
-    "Orphica": {
-      "macro_character": 0.426,
-      "macro_coupling": 0.391,
-      "macro_movement": 0.689,
-      "macro_space": 0.809
-    }
+    "OddOscar": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

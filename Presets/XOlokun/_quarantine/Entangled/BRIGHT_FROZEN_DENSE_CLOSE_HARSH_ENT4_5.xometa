@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Flux Thick",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.687,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.036,
-      "macro_space": 0.104
-    },
-    "Ouroboros": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.028,
-      "macro_space": 0.077
-    }
+    "Oblique": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

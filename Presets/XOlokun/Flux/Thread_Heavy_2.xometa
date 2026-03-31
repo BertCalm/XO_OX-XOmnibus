@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Thread Heavy 2",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.868,
-      "macro_coupling": 0.742,
-      "macro_movement": 0.05,
-      "macro_space": 0.579
-    },
+    "Organon": {},
     "Overdub": {
-      "macro_character": 0.91,
-      "macro_coupling": 0.816,
-      "macro_movement": 0.057,
-      "macro_space": 0.567,
       "dub_lfoDepth": 0.12
     }
   },

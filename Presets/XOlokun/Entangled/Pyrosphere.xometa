@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Pyrosphere",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.81,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.53,
-      "macro_space": 0.78
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.46,
-      "macro_space": 0.83,
       "dub_lfoDepth": 0.12
     }
   },

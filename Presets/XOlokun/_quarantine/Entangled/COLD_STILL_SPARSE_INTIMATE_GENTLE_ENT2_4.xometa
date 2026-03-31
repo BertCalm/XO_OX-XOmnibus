@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "COLD STILL SPARSE INTIMATE ... (Obscura I)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.176,
-      "macro_coupling": 0.104,
-      "macro_movement": 0.063,
-      "macro_space": 0.052
-    },
-    "Onset": {
-      "macro_character": 0.202,
-      "macro_coupling": 0.132,
-      "macro_movement": 0.085,
-      "macro_space": 0.078
-    }
+    "Obscura": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

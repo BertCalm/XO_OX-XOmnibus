@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Thread Abyss",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.6732,
-      "macro_coupling": 0.104,
-      "macro_movement": 0.6125,
-      "macro_space": 0.9603
-    },
-    "Optic": {
-      "macro_character": 0.6821,
-      "macro_coupling": 0.0801,
-      "macro_movement": 0.599,
-      "macro_space": 0.9424
-    }
+    "Ocelot": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

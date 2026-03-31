@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "CROSS FLX 03",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.237,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.938,
-      "macro_space": 0.105
-    },
+    "Ouroboros": {},
     "Overdub": {
-      "macro_character": 0.237,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.938,
-      "macro_space": 0.105,
       "dub_lfoDepth": 0.12
     }
   },

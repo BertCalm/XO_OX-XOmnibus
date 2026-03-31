@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Silver Wrath",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.412,
-      "macro_coupling": 0.935,
-      "macro_movement": 0.379,
-      "macro_space": 0.141
-    },
-    "Ouroboros": {
-      "macro_character": 0.598,
-      "macro_coupling": 0.973,
-      "macro_movement": 0.389,
-      "macro_space": 0.148
-    }
+    "Opal": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Event Horizon (Oracle I)",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.505,
-      "macro_coupling": 0.401,
-      "macro_movement": 0.536,
-      "macro_space": 0.99
-    },
-    "Oracle": {
-      "macro_character": 0.465,
-      "macro_coupling": 0.433,
-      "macro_movement": 0.909,
-      "macro_space": 0.96
-    }
+    "Ocelot": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

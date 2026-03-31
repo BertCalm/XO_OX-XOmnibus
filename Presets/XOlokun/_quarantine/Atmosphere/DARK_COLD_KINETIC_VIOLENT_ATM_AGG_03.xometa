@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "DARK COLD KINETIC VIOLENT A... (Oceanic I)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.06,
-      "macro_coupling": 0.856,
-      "macro_movement": 0.924,
-      "macro_space": 0.644
-    },
-    "Oceanic": {
-      "macro_character": 0.059,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.914,
-      "macro_space": 0.666
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

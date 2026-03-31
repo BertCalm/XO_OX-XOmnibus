@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Cosmos Honey III",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.568,
-      "macro_coupling": 0.827,
-      "macro_movement": 0.878,
-      "macro_space": 0.826
-    },
-    "Optic": {
-      "macro_character": 0.534,
-      "macro_coupling": 0.631,
-      "macro_movement": 0.831,
-      "macro_space": 0.953
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Amber Prismatic",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.606,
-      "macro_space": 0.302
-    },
-    "Obsidian": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.901,
-      "macro_movement": 0.582,
-      "macro_space": 0.316
-    }
+    "Oblique": {},
+    "Obsidian": {}
   },
   "schema_version": 1,
   "tags": [

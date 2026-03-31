@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Wave Current",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.45,
-      "macro_coupling": 0.473,
-      "macro_movement": 0.272,
-      "macro_space": 0.798
-    },
-    "Oracle": {
-      "macro_character": 0.278,
-      "macro_coupling": 0.551,
-      "macro_movement": 0.12,
-      "macro_space": 0.753
-    }
+    "Obsidian": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

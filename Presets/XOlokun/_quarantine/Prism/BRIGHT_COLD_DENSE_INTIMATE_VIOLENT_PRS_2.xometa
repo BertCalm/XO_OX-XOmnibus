@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Silver Rage 2",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.945,
-      "macro_coupling": 0.909,
-      "macro_movement": 0.394,
-      "macro_space": 0.0
-    },
-    "Overworld": {
-      "macro_character": 0.884,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.317,
-      "macro_space": 0.069
-    }
+    "Orphica": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

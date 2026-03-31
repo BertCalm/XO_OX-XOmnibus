@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Rust Current",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.9416,
-      "macro_coupling": 0.4569,
-      "macro_movement": 0.9291,
-      "macro_space": 0.4147
-    },
-    "Owlfish": {
-      "macro_character": 0.9382,
-      "macro_coupling": 0.4819,
-      "macro_movement": 0.936,
-      "macro_space": 0.4258
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

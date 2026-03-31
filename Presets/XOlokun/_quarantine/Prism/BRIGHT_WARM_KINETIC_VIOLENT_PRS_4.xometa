@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Candlelight Cascade 2",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.388,
-      "macro_movement": 0.897,
-      "macro_space": 0.433
-    },
-    "Owlfish": {
-      "macro_character": 0.478,
-      "macro_coupling": 0.418,
-      "macro_movement": 0.897,
-      "macro_space": 0.433
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

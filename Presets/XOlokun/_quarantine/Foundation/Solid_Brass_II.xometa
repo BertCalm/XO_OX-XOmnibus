@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Solid Brass II",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.892,
-      "macro_coupling": 0.845,
-      "macro_movement": 0.538,
-      "macro_space": 0.394
-    },
-    "Overworld": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.499,
-      "macro_movement": 0.574,
-      "macro_space": 0.419
-    }
+    "OddOscar": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

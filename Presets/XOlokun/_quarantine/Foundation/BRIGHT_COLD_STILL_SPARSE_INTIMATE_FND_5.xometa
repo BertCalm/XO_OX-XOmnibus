@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Prism Edge",
   "parameters": {
-    "Origami": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.015,
-      "macro_movement": 0.105,
-      "macro_space": 0.117
-    },
-    "Overbite": {
-      "macro_character": 0.962,
-      "macro_coupling": 0.195,
-      "macro_movement": 0.158,
-      "macro_space": 0.084
-    }
+    "Origami": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Drama Circuit",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.74,
-      "macro_space": 0.36
-    },
-    "Organon": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.72,
-      "macro_space": 0.5
-    }
+    "Ole": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

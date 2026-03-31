@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Golden Titan",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.934,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.043,
-      "macro_space": 0.903
-    },
-    "Osprey": {
-      "macro_character": 0.928,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.051,
-      "macro_space": 0.904
-    }
+    "Oblique": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

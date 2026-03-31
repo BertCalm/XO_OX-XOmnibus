@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.83,
-      "macro_movement": 0.96,
-      "macro_coupling": 0.83,
-      "macro_space": 0.45
-    },
-    "Osteria": {
-      "macro_character": 0.69,
-      "macro_movement": 0.67,
-      "macro_coupling": 0.66,
-      "macro_space": 0.37
-    }
+    "Oceanic": {},
+    "Osteria": {}
   },
   "coupling": {
     "type": "ENVELOPE_SLAVE",

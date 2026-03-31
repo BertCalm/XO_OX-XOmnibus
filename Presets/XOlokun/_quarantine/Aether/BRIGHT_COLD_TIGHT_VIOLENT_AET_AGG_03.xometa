@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT COLD TIGHT VIOLENT A... (Origami I)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.979,
-      "macro_coupling": 0.827,
-      "macro_movement": 0.456,
-      "macro_space": 0.092
-    },
-    "Osprey": {
-      "macro_character": 0.912,
-      "macro_coupling": 0.888,
-      "macro_movement": 0.463,
-      "macro_space": 0.092
-    }
+    "Origami": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Dark Ember Coupling",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.79,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.35,
-      "macro_space": 0.62
-    },
-    "Organon": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.52,
-      "macro_movement": 0.76,
-      "macro_space": 0.23
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

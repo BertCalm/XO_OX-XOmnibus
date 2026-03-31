@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Slow Unraveling",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.25,
-      "macro_movement": 0.78,
-      "macro_space": 0.84
-    }
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

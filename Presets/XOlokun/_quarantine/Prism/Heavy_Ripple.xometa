@@ -39,18 +39,8 @@
   "mood": "Prism",
   "name": "Heavy Ripple",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.65,
-      "macro_space": 0.28
-    },
-    "Outwit": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.76,
-      "macro_space": 0.41
-    }
+    "Origami": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "sequencer": null,

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Angular Silence",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.09,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.23,
-      "macro_space": 1.0
-    },
-    "Origami": {
-      "macro_character": 0.12,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.28,
-      "macro_space": 0.97
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

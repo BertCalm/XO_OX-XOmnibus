@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT KINETIC TIGHT VIOLEN... (Orbital I)",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.903,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.899,
-      "macro_space": 0.037
-    },
-    "Orbital": {
-      "macro_character": 0.97,
-      "macro_coupling": 0.857,
-      "macro_movement": 0.887,
-      "macro_space": 0.038
-    }
+    "Oracle": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

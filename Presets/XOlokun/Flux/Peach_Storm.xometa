@@ -38,19 +38,10 @@
   "name": "Peach Storm",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.5942,
-      "macro_coupling": 0.944,
-      "macro_movement": 0.5375,
-      "macro_space": 0.1106,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Origami": {
-      "macro_character": 0.6675,
-      "macro_coupling": 0.9486,
-      "macro_movement": 0.6801,
-      "macro_space": 0.1372
-    }
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

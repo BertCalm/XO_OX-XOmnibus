@@ -46,10 +46,6 @@
       "osprey_macroSpace": 0.15
     },
     "Overdub": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.98,
-      "macro_space": 0.41,
       "dub_lfoDepth": 0.12
     }
   },

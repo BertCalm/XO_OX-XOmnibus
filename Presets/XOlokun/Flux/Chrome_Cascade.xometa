@@ -38,19 +38,10 @@
   "name": "Chrome Cascade",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.8977,
-      "macro_coupling": 0.6498,
-      "macro_movement": 0.9188,
-      "macro_space": 0.4155,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Oceanic": {
-      "macro_character": 0.8257,
-      "macro_coupling": 0.6636,
-      "macro_movement": 0.9528,
-      "macro_space": 0.6151
-    }
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

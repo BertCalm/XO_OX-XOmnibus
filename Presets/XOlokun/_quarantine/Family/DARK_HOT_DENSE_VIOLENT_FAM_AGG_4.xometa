@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Ember Storm",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.863,
-      "macro_coupling": 0.761,
-      "macro_movement": 0.41,
-      "macro_space": 0.677
-    },
-    "Ottoni": {
-      "macro_character": 0.911,
-      "macro_coupling": 0.751,
-      "macro_movement": 0.396,
-      "macro_space": 0.646
-    }
+    "Orphica": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

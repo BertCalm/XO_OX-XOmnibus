@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM DENSE BALANCED ... (Overworld I)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.919,
-      "macro_coupling": 0.542,
-      "macro_movement": 0.348,
-      "macro_space": 0.535
-    },
-    "Overworld": {
-      "macro_character": 0.923,
-      "macro_coupling": 0.544,
-      "macro_movement": 0.353,
-      "macro_space": 0.521
-    }
+    "Origami": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

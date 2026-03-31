@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Continuous Opening",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.28,
-      "macro_coupling": 0.15,
-      "macro_movement": 0.82,
-      "macro_space": 0.9
-    }
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

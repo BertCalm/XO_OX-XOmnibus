@@ -39,18 +39,8 @@
   "mood": "Family",
   "name": "Radiant Cinnamon",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.92,
-      "macro_space": 0.39
-    },
-    "Ottoni": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.52,
-      "macro_movement": 0.79,
-      "macro_space": 0.42
-    }
+    "Ohm": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "sequencer": null,

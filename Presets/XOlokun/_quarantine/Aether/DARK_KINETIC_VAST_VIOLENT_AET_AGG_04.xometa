@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK KINETIC VAST VIOLENT A... (Overworld I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.024,
-      "macro_coupling": 0.935,
-      "macro_movement": 0.924,
-      "macro_space": 0.907
-    },
-    "Overworld": {
-      "macro_character": 0.025,
-      "macro_coupling": 0.892,
-      "macro_movement": 0.954,
-      "macro_space": 0.845
-    }
+    "Oblique": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,19 +38,10 @@
   "name": "Arctic Grit",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.559,
-      "macro_coupling": 0.668,
-      "macro_movement": 0.38,
-      "macro_space": 0.103,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "OddOscar": {
-      "macro_character": 0.562,
-      "macro_coupling": 0.693,
-      "macro_movement": 0.367,
-      "macro_space": 0.118
-    }
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,17 +37,8 @@
   "mood": "Foundation",
   "name": "Amber Flux",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.404,
-      "macro_coupling": 0.529,
-      "macro_movement": 0.586,
-      "macro_space": 0.365
-    },
+    "OddfeliX": {},
     "Overdub": {
-      "macro_character": 0.398,
-      "macro_coupling": 0.402,
-      "macro_movement": 0.836,
-      "macro_space": 0.801,
       "dub_lfoDepth": 0.12
     }
   },

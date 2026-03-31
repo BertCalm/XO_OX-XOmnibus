@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Oblong": {
-      "macro_character": 0.9,
-      "macro_movement": 0.94,
-      "macro_coupling": 0.6,
-      "macro_space": 0.4
-    },
-    "Odyssey": {
-      "macro_character": 0.95,
-      "macro_movement": 0.94,
-      "macro_coupling": 0.54,
-      "macro_space": 0.29
-    }
+    "Oblong": {},
+    "Odyssey": {}
   },
   "coupling": {
     "type": "RHYTHM_GATE",

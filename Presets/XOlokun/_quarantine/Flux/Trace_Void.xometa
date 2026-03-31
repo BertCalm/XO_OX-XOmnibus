@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Trace Void",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.1773,
-      "macro_coupling": 0.6245,
-      "macro_movement": 0.5068,
-      "macro_space": 0.9498
-    },
-    "Oracle": {
-      "macro_character": 0.1411,
-      "macro_coupling": 0.4027,
-      "macro_movement": 0.6347,
-      "macro_space": 0.7854
-    }
+    "Odyssey": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

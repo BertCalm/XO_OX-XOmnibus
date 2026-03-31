@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Maqam Grain",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.13,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.28,
-      "macro_space": 0.93
-    },
-    "Oracle": {
-      "macro_character": 0.1,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.23,
-      "macro_space": 0.96
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Osteria": {
-      "macro_character": 0.75,
-      "macro_movement": 0.66,
-      "macro_coupling": 0.5,
-      "macro_space": 0.48
-    },
-    "Ouroboros": {
-      "macro_character": 0.8,
-      "macro_movement": 0.61,
-      "macro_coupling": 0.86,
-      "macro_space": 0.36
-    }
+    "Osteria": {},
+    "Ouroboros": {}
   },
   "coupling": {
     "type": "LFO_SYNC",

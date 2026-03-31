@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Glassy Wanderer",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.4,
-      "macro_space": 0.8
-    },
-    "Odyssey": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.5,
-      "macro_space": 0.7
-    }
+    "Obsidian": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

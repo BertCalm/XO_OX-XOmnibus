@@ -38,19 +38,10 @@
   "name": "Phase Molten 5",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.0478,
-      "macro_coupling": 0.9824,
-      "macro_movement": 0.872,
-      "macro_space": 0.6793,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Optic": {
-      "macro_character": 0.0702,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.8834,
-      "macro_space": 0.6828
-    }
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

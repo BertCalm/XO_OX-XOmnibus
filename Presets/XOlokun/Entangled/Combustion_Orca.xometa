@@ -38,19 +38,10 @@
   "name": "Combustion Orca",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.35,
-      "macro_space": 0.37,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Orca": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.6,
-      "macro_space": 0.45
-    }
+    "Orca": {}
   },
   "schema_version": 1,
   "tags": [

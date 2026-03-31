@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Copper Crystal",
   "parameters": {
-    "Orbital": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.664,
-      "macro_movement": 0.472,
-      "macro_space": 0.478
-    },
-    "Orphica": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.766,
-      "macro_movement": 0.401,
-      "macro_space": 0.615
-    }
+    "Orbital": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Silver Prowl",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.34,
-      "macro_coupling": 0.54,
-      "macro_movement": 0.24,
-      "macro_space": 0.59
-    },
-    "Ocelot": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.71,
-      "macro_space": 0.46
-    }
+    "Obscura": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

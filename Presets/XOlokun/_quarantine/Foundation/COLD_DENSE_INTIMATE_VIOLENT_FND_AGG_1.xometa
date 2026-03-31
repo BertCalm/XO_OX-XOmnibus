@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Phase Dense 2",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.735,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.59,
-      "macro_space": 0.672
-    },
-    "Oracle": {
-      "macro_character": 0.779,
-      "macro_coupling": 0.986,
-      "macro_movement": 0.552,
-      "macro_space": 0.64
-    }
+    "Obese": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

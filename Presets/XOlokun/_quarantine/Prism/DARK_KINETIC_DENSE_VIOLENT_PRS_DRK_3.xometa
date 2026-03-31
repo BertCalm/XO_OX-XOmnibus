@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Tone Edge",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.7079,
-      "macro_coupling": 0.8704,
-      "macro_movement": 0.9032,
-      "macro_space": 0.6084
-    },
-    "Oracle": {
-      "macro_character": 0.7244,
-      "macro_coupling": 0.8393,
-      "macro_movement": 0.9081,
-      "macro_space": 0.644
-    }
+    "Ocelot": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

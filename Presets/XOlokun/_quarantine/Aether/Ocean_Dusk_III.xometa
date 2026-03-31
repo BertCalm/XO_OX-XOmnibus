@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Ocean Dusk III",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.278,
-      "macro_coupling": 0.531,
-      "macro_movement": 1.0,
-      "macro_space": 0.927
-    },
-    "Ottoni": {
-      "macro_character": 0.323,
-      "macro_coupling": 0.691,
-      "macro_movement": 0.939,
-      "macro_space": 0.959
-    }
+    "Osprey": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

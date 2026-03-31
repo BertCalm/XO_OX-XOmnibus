@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Golden Fang",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.96,
-      "macro_coupling": 0.361,
-      "macro_movement": 0.077,
-      "macro_space": 0.072
-    },
-    "Oceanic": {
-      "macro_character": 0.917,
-      "macro_coupling": 0.335,
-      "macro_movement": 0.082,
-      "macro_space": 0.07
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

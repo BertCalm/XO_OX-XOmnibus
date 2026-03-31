@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Wave Fang",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.906,
-      "macro_coupling": 0.671,
-      "macro_movement": 0.553,
-      "macro_space": 0.112
-    },
-    "Ottoni": {
-      "macro_character": 0.48,
-      "macro_coupling": 0.394,
-      "macro_movement": 0.553,
-      "macro_space": 0.112
-    }
+    "Ole": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

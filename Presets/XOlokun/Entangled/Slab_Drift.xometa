@@ -38,10 +38,6 @@
   "name": "Slab Drift",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.33,
-      "macro_space": 0.36,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },

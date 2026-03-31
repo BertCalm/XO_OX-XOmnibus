@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Massive Crystal II",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.943,
-      "macro_coupling": 0.319,
-      "macro_movement": 0.463,
-      "macro_space": 0.765
-    },
-    "Orphica": {
-      "macro_character": 0.886,
-      "macro_coupling": 0.758,
-      "macro_movement": 0.425,
-      "macro_space": 0.683
-    }
+    "Orbital": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

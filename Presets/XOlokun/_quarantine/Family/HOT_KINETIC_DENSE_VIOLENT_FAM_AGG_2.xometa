@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Thread Storm 5",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.372,
-      "macro_coupling": 0.826,
-      "macro_movement": 0.866,
-      "macro_space": 0.661
-    },
-    "Osprey": {
-      "macro_character": 0.376,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.82,
-      "macro_space": 0.663
-    }
+    "OddOscar": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

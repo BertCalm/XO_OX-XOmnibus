@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Hearth Slash",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.93,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.91,
-      "macro_space": 0.21
-    },
-    "Orphica": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.96,
-      "macro_space": 0.13
-    }
+    "Ocelot": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

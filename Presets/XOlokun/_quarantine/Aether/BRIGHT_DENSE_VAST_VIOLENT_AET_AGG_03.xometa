@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT DENSE VAST VIOLENT A... (Origami I)",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.904,
-      "macro_coupling": 0.86,
-      "macro_movement": 0.457,
-      "macro_space": 0.909
-    },
-    "Origami": {
-      "macro_character": 0.907,
-      "macro_coupling": 0.929,
-      "macro_movement": 0.448,
-      "macro_space": 0.881
-    }
+    "Orbital": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

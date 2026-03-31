@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "ARCTIC FLOW 8",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.5386,
-      "macro_coupling": 0.5519,
-      "macro_movement": 0.3451,
-      "macro_space": 0.5434
-    },
-    "Owlfish": {
-      "macro_character": 0.4553,
-      "macro_coupling": 0.1887,
-      "macro_movement": 0.3218,
-      "macro_space": 0.6975
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

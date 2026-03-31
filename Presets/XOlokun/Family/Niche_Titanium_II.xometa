@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Niche Titanium II",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.335,
-      "macro_coupling": 0.066,
-      "macro_movement": 0.083,
-      "macro_space": 0.041
-    },
+    "OddOscar": {},
     "Overdub": {
-      "macro_character": 0.335,
-      "macro_coupling": 0.066,
-      "macro_movement": 0.083,
-      "macro_space": 0.041,
       "dub_lfoDepth": 0.12
     }
   },

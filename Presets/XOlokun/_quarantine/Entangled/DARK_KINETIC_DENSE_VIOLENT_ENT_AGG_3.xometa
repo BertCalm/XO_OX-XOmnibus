@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Flux Pulse",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.464,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.932,
-      "macro_space": 0.399
-    },
-    "OddOscar": {
-      "macro_character": 0.749,
-      "macro_coupling": 0.97,
-      "macro_movement": 0.899,
-      "macro_space": 0.439
-    }
+    "Obscura": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

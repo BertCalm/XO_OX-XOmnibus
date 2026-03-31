@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Wave Drift",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.5064,
-      "macro_coupling": 0.6255,
-      "macro_movement": 0.9392,
-      "macro_space": 0.0152
-    },
-    "OddfeliX": {
-      "macro_character": 0.4738,
-      "macro_coupling": 0.6248,
-      "macro_movement": 0.9659,
-      "macro_space": 0.0866
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

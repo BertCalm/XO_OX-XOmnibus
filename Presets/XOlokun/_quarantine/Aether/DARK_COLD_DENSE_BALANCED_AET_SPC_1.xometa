@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK COLD DENSE BALANCED AE...",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.046,
-      "macro_coupling": 0.563,
-      "macro_movement": 0.677,
-      "macro_space": 0.444
-    },
-    "Osprey": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.578,
-      "macro_movement": 0.679,
-      "macro_space": 0.44
-    }
+    "Oblique": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

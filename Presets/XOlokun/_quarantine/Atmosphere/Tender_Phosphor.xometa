@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Tender Phosphor",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.671,
-      "macro_coupling": 0.612,
-      "macro_movement": 0.495,
-      "macro_space": 0.638
-    },
-    "Organon": {
-      "macro_character": 0.522,
-      "macro_coupling": 0.579,
-      "macro_movement": 0.576,
-      "macro_space": 0.567
-    }
+    "Oracle": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Candlelight Drift",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.9335,
-      "macro_coupling": 0.4267,
-      "macro_movement": 0.5708,
-      "macro_space": 0.01
-    },
-    "Oceanic": {
-      "macro_character": 0.895,
-      "macro_coupling": 0.3986,
-      "macro_movement": 0.5752,
-      "macro_space": 0.0627
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

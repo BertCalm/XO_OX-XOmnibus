@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Grow Circuit",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.55,
-      "macro_space": 0.52
-    },
-    "Ottoni": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.5,
-      "macro_space": 0.4
-    }
+    "Organon": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

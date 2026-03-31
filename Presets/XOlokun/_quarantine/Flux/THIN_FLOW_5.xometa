@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "THIN FLOW 5",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.6985,
-      "macro_coupling": 0.595,
-      "macro_movement": 0.392,
-      "macro_space": 0.938
-    },
-    "Oracle": {
-      "macro_character": 0.5827,
-      "macro_coupling": 0.3498,
-      "macro_movement": 0.1414,
-      "macro_space": 0.9677
-    }
+    "Ole": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

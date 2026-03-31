@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Solar Surge 4",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.988,
-      "macro_coupling": 0.356,
-      "macro_movement": 0.975,
-      "macro_space": 0.584
-    },
-    "Odyssey": {
-      "macro_character": 0.96,
-      "macro_coupling": 0.377,
-      "macro_movement": 0.979,
-      "macro_space": 0.605
-    }
+    "OddfeliX": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

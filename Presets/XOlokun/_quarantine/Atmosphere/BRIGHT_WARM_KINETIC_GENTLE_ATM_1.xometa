@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Candlelight Drift 2",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.713,
-      "macro_coupling": 0.672,
-      "macro_movement": 0.75,
-      "macro_space": 0.558
-    },
-    "Orbital": {
-      "macro_character": 0.597,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.822,
-      "macro_space": 0.687
-    }
+    "OddfeliX": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

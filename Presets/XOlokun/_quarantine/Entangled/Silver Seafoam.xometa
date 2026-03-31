@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Silver Seafoam",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.58,
-      "macro_space": 0.7
-    },
-    "Orphica": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.5,
-      "macro_space": 0.78
-    }
+    "Obscura": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "sequencer": null,

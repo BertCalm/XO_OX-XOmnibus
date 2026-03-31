@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Tone Edge 3",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.597,
-      "macro_coupling": 0.487,
-      "macro_movement": 0.384,
-      "macro_space": 0.065
-    },
-    "OddOscar": {
-      "macro_character": 0.762,
-      "macro_coupling": 0.551,
-      "macro_movement": 0.409,
-      "macro_space": 0.237
-    }
+    "Oceanic": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ember Midnight",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.539,
-      "macro_coupling": 0.539,
-      "macro_movement": 0.529,
-      "macro_space": 0.697
-    },
-    "Oracle": {
-      "macro_character": 0.341,
-      "macro_coupling": 0.734,
-      "macro_movement": 0.577,
-      "macro_space": 0.801
-    }
+    "OddfeliX": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

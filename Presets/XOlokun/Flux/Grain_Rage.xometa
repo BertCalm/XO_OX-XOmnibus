@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Grain Rage",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.0624,
-      "macro_coupling": 0.7917,
-      "macro_movement": 0.791,
-      "macro_space": 0.5657
-    },
+    "Optic": {},
     "Overdub": {
-      "macro_character": 0.1814,
-      "macro_coupling": 0.8946,
-      "macro_movement": 0.9476,
-      "macro_space": 0.5508,
       "dub_lfoDepth": 0.12
     }
   },

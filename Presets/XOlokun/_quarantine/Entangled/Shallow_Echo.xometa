@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Shallow Echo",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.685,
-      "macro_coupling": 0.532,
-      "macro_movement": 0.362,
-      "macro_space": 0.618
-    },
-    "Ombre": {
-      "macro_character": 0.765,
-      "macro_coupling": 0.412,
-      "macro_movement": 0.646,
-      "macro_space": 0.683
-    }
+    "Obbligato": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

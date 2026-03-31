@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Rust Abyss",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.084,
-      "macro_coupling": 0.461,
-      "macro_movement": 1.0,
-      "macro_space": 0.962
-    },
-    "Origami": {
-      "macro_character": 0.115,
-      "macro_coupling": 0.252,
-      "macro_movement": 0.993,
-      "macro_space": 1.0
-    }
+    "Ocelot": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

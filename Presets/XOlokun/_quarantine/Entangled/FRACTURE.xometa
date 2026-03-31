@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "FRACTURE",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.951,
-      "macro_coupling": 0.342,
-      "macro_movement": 0.882,
-      "macro_space": 0.766
-    },
-    "Oracle": {
-      "macro_character": 0.192,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.911,
-      "macro_space": 0.155
-    }
+    "Optic": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

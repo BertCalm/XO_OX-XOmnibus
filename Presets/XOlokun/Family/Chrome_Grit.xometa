@@ -37,17 +37,8 @@
   "mood": "Family",
   "name": "Chrome Grit",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.365,
-      "macro_coupling": 0.878,
-      "macro_movement": 0.797,
-      "macro_space": 0.843
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.411,
-      "macro_coupling": 0.851,
-      "macro_movement": 0.813,
-      "macro_space": 0.88,
       "dub_lfoDepth": 0.12
     }
   },

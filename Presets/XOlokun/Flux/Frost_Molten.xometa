@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Frost Molten",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.9444,
-      "macro_coupling": 0.5385,
-      "macro_movement": 0.5512,
-      "macro_space": 0.1878
-    },
+    "Origami": {},
     "Overdub": {
-      "macro_character": 0.7902,
-      "macro_coupling": 0.4997,
-      "macro_movement": 0.482,
-      "macro_space": 0.1303,
       "dub_lfoDepth": 0.12
     }
   },

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Monolith Honey",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.689,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.056,
-      "macro_space": 0.585
-    },
-    "Owlfish": {
-      "macro_character": 0.726,
-      "macro_coupling": 0.748,
-      "macro_movement": 0.056,
-      "macro_space": 0.585
-    }
+    "Oracle": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

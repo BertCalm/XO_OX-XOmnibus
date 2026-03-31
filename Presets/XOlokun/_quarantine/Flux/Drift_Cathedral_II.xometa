@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Drift Cathedral II",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.466,
-      "macro_movement": 0.864,
-      "macro_space": 1.0
-    },
-    "Opal": {
-      "macro_character": 0.375,
-      "macro_coupling": 0.889,
-      "macro_movement": 0.957,
-      "macro_space": 0.942
-    }
+    "Ombre": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Tone Abyss",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.627,
-      "macro_coupling": 0.794,
-      "macro_movement": 0.483,
-      "macro_space": 0.928
-    },
-    "Optic": {
-      "macro_character": 0.603,
-      "macro_coupling": 0.618,
-      "macro_movement": 0.559,
-      "macro_space": 0.863
-    }
+    "OddOscar": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

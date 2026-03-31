@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Thread Ripple",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.725,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.701,
-      "macro_space": 0.579
-    },
-    "Orphica": {
-      "macro_character": 0.735,
-      "macro_coupling": 0.778,
-      "macro_movement": 0.68,
-      "macro_space": 0.572
-    }
+    "OddOscar": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

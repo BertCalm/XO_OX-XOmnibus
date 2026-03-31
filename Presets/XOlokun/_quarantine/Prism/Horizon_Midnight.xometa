@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Horizon Midnight",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.5329,
-      "macro_coupling": 0.5928,
-      "macro_movement": 0.3315,
-      "macro_space": 0.9679
-    },
-    "Oracle": {
-      "macro_character": 0.5686,
-      "macro_coupling": 0.595,
-      "macro_movement": 0.3047,
-      "macro_space": 0.9764
-    }
+    "Ole": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

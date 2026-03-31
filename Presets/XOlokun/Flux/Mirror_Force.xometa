@@ -38,19 +38,10 @@
   "name": "Mirror Force",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.693,
-      "macro_coupling": 0.946,
-      "macro_movement": 0.392,
-      "macro_space": 0.064,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Oceanic": {
-      "macro_character": 0.439,
-      "macro_coupling": 0.924,
-      "macro_movement": 0.444,
-      "macro_space": 0.048
-    }
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

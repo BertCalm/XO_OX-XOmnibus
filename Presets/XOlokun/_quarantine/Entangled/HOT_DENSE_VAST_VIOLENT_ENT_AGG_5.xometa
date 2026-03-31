@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Honey Dense",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.722,
-      "macro_coupling": 0.936,
-      "macro_movement": 0.671,
-      "macro_space": 0.895
-    },
-    "Osteria": {
-      "macro_character": 0.361,
-      "macro_coupling": 0.949,
-      "macro_movement": 0.658,
-      "macro_space": 0.964
-    }
+    "Optic": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

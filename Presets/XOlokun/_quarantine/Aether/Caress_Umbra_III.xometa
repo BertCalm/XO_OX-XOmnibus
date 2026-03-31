@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Caress Umbra III",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.042,
-      "macro_coupling": 0.291,
-      "macro_movement": 0.05,
-      "macro_space": 0.56
-    },
-    "Origami": {
-      "macro_character": 0.042,
-      "macro_coupling": 0.291,
-      "macro_movement": 0.05,
-      "macro_space": 0.56
-    }
+    "Oblique": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Crystal Crush",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.375,
-      "macro_coupling": 0.803,
-      "macro_movement": 0.912,
-      "macro_space": 0.573
-    },
-    "Origami": {
-      "macro_character": 0.519,
-      "macro_coupling": 0.842,
-      "macro_movement": 0.879,
-      "macro_space": 0.598
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

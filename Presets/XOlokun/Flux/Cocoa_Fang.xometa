@@ -38,19 +38,10 @@
   "name": "Cocoa Fang",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.505,
-      "macro_coupling": 0.5472,
-      "macro_movement": 0.8725,
-      "macro_space": 0.1437,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Origami": {
-      "macro_character": 0.5111,
-      "macro_coupling": 0.5558,
-      "macro_movement": 0.9033,
-      "macro_space": 0.1303
-    }
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

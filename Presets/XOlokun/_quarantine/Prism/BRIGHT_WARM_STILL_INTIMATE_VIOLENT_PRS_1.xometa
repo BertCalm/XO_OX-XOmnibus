@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Solar Crush",
   "parameters": {
-    "Oracle": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.445,
-      "macro_movement": 0.042,
-      "macro_space": 0.038
-    },
-    "Osteria": {
-      "macro_character": 0.987,
-      "macro_coupling": 0.245,
-      "macro_movement": 0.063,
-      "macro_space": 0.004
-    }
+    "Oracle": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "sequencer": null,

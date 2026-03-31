@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Terracotta Slash",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.797,
-      "macro_coupling": 0.944,
-      "macro_movement": 0.083,
-      "macro_space": 0.93
-    },
-    "Onset": {
-      "macro_character": 0.797,
-      "macro_coupling": 0.944,
-      "macro_movement": 0.083,
-      "macro_space": 0.93
-    }
+    "Obese": {},
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

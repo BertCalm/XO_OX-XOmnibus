@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Wave Solid 2",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.652,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.051,
-      "macro_space": 0.119
-    },
-    "Ombre": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.95,
-      "macro_movement": 0.054,
-      "macro_space": 0.079
-    }
+    "Ocelot": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

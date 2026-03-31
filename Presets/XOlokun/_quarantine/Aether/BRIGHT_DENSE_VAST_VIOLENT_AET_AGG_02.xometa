@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT DENSE VAST VIOLENT A... (Organon)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.826,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.503,
-      "macro_space": 0.837
-    },
-    "Organon": {
-      "macro_character": 0.878,
-      "macro_coupling": 0.799,
-      "macro_movement": 0.51,
-      "macro_space": 0.884
-    }
+    "Oblique": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

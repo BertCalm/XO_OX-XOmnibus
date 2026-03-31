@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Solid Pierce II",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.973,
-      "macro_movement": 0.953,
-      "macro_space": 0.97
-    },
-    "Obscura": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.973,
-      "macro_movement": 0.953,
-      "macro_space": 0.97
-    }
+    "Obbligato": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

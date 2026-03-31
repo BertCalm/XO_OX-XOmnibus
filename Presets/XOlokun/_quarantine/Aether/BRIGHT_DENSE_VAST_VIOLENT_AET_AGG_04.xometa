@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT DENSE VAST VIOLENT A... (Ombre I)",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.871,
-      "macro_coupling": 0.934,
-      "macro_movement": 0.455,
-      "macro_space": 0.961
-    },
-    "Orbital": {
-      "macro_character": 0.866,
-      "macro_coupling": 0.874,
-      "macro_movement": 0.45,
-      "macro_space": 0.959
-    }
+    "Ombre": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

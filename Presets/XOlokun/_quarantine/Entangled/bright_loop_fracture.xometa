@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Bright Loop Fracture",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.7,
-      "macro_space": 0.8
-    },
-    "Ouroboros": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.8,
-      "macro_space": 0.7
-    }
+    "Odyssey": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

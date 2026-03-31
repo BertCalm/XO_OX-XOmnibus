@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Organon": {
-      "macro_character": 0.77,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.79,
-      "macro_space": 0.25
-    },
-    "Oceanic": {
-      "macro_character": 0.8,
-      "macro_movement": 0.88,
-      "macro_coupling": 0.74,
-      "macro_space": 0.41
-    }
+    "Organon": {},
+    "Oceanic": {}
   },
   "coupling": {
     "type": "PITCH_FOLLOW",

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Thick Solar II",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.2615,
-      "macro_coupling": 0.6239,
-      "macro_movement": 0.693,
-      "macro_space": 0.4373
-    },
-    "OddOscar": {
-      "macro_character": 0.3956,
-      "macro_coupling": 0.4356,
-      "macro_movement": 0.7023,
-      "macro_space": 0.3992
-    }
+    "Oceanic": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

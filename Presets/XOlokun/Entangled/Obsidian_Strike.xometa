@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Obsidian Strike",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.48,
-      "macro_movement": 0.49,
-      "macro_space": 0.53
-    },
+    "Obese": {},
     "Oblong": {
-      "macro_character": 0.83,
-      "macro_coupling": 0.46,
-      "macro_movement": 0.54,
-      "macro_space": 0.5,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

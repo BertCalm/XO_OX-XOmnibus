@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Pulse Shimmer",
   "mood": "Entangled",
-  "engines": ["Ostinato", "OpenSky"],
+  "engines": [
+    "Ostinato",
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A second perspective on the rhythmic symbiosis — OPENSKY's shimmer envelope is routed as pitch modulation back into OSTINATO's pattern accent frequency, producing a shimmer-tuned rhythmic engine whose accents follow the shimmer's current resonant peak.",
-  "tags": ["symbiosis", "pulse", "shimmer", "rhythmic", "pitch", "coupled", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "symbiosis",
+    "pulse",
+    "shimmer",
+    "rhythmic",
+    "pitch",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -20,24 +36,16 @@
   },
   "parameters": {
     "Ostinato": {
-      "macro_character": 0.62,
-      "macro_movement": 0.80,
-      "macro_coupling": 0.60,
-      "macro_space": 0.42,
-      "osti_macroGather": 0.60,
-      "osti_rhythmDensity": 0.50,
+      "osti_macroGather": 0.6,
+      "osti_rhythmDensity": 0.5,
       "osti_accentDepth": 0.55,
       "osti_filterCutoff": 0.52,
-      "osti_outputLevel": 0.80
+      "osti_outputLevel": 0.8
     },
     "OpenSky": {
-      "macro_character": 0.72,
-      "macro_movement": 0.78,
-      "macro_coupling": 0.60,
-      "macro_space": 0.68,
       "sky_macroRise": 0.72,
       "sky_shimmerMix": 0.65,
-      "sky_chorusMix": 0.50,
+      "sky_chorusMix": 0.5,
       "sky_filterCutoff": 0.68,
       "sky_reverbSize": 0.65,
       "sky_outputLevel": 0.78

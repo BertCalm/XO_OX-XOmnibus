@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Sparse Crystal II",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.514,
-      "macro_coupling": 0.499,
-      "macro_movement": 0.231,
-      "macro_space": 0.821
-    },
-    "OddfeliX": {
-      "macro_character": 0.718,
-      "macro_coupling": 0.499,
-      "macro_movement": 0.212,
-      "macro_space": 0.784
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

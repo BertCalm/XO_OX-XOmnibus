@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Crystal Force",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.581,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.036,
-      "macro_space": 0.055
-    },
+    "Organon": {},
     "Overdub": {
-      "macro_character": 0.499,
-      "macro_coupling": 0.686,
-      "macro_movement": 0.033,
-      "macro_space": 0.054,
       "dub_lfoDepth": 0.12
     }
   },

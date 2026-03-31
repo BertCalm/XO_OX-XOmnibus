@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Void Quartz",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.249,
-      "macro_coupling": 0.308,
-      "macro_movement": 0.603,
-      "macro_space": 0.951
-    },
-    "Origami": {
-      "macro_character": 0.632,
-      "macro_coupling": 0.486,
-      "macro_movement": 0.603,
-      "macro_space": 0.951
-    }
+    "Oblique": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

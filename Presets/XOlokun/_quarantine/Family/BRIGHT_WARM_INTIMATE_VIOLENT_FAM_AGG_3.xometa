@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Sunrise Edge",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.414,
-      "macro_coupling": 0.565,
-      "macro_movement": 0.579,
-      "macro_space": 0.528
-    },
-    "Ole": {
-      "macro_character": 0.434,
-      "macro_coupling": 0.598,
-      "macro_movement": 0.531,
-      "macro_space": 0.518
-    }
+    "Odyssey": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

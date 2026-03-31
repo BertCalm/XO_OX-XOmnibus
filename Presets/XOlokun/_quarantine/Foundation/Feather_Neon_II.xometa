@@ -39,18 +39,8 @@
   "mood": "Foundation",
   "name": "Feather Neon II",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.69,
-      "macro_space": 0.5
-    },
-    "Outwit": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.94,
-      "macro_space": 0.42
-    }
+    "Obsidian": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "sequencer": null,

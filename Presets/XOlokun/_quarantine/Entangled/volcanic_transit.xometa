@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Volcanic Transit",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.5,
-      "macro_space": 0.2
-    },
-    "Odyssey": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.6,
-      "macro_space": 0.3
-    }
+    "Obsidian": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

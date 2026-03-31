@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Thread Packed",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.563,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.012,
-      "macro_space": 0.924
-    },
-    "Origami": {
-      "macro_character": 0.407,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.0,
-      "macro_space": 0.839
-    }
+    "Onset": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

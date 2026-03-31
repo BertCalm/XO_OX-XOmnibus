@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Omen Passage",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.8,
-      "macro_space": 0.5
-    },
-    "Oracle": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.8,
-      "macro_space": 0.4
-    }
+    "Odyssey": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

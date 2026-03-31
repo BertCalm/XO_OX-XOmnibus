@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Shimmer Solid",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.4735,
-      "macro_coupling": 0.9291,
-      "macro_movement": 0.8998,
-      "macro_space": 0.2299
-    },
-    "Ombre": {
-      "macro_character": 0.4769,
-      "macro_coupling": 0.5223,
-      "macro_movement": 0.6144,
-      "macro_space": 0.2314
-    }
+    "Obscura": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

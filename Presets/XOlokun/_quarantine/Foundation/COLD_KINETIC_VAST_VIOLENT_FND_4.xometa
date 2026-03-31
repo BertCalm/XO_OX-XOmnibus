@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Flux Force",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.33,
-      "macro_space": 0.841
-    },
-    "Overworld": {
-      "macro_character": 0.592,
-      "macro_coupling": 0.735,
-      "macro_movement": 0.811,
-      "macro_space": 0.274
-    }
+    "OddOscar": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Fade Flood",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.715,
-      "macro_coupling": 0.584,
-      "macro_movement": 0.707,
-      "macro_space": 0.316
-    },
-    "Orbital": {
-      "macro_character": 0.386,
-      "macro_coupling": 0.658,
-      "macro_movement": 0.498,
-      "macro_space": 0.203
-    }
+    "Odyssey": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

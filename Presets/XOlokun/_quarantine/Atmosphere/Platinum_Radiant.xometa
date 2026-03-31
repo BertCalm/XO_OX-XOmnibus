@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Platinum Radiant",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.628,
-      "macro_coupling": 0.656,
-      "macro_movement": 0.827,
-      "macro_space": 0.722
-    },
-    "Organon": {
-      "macro_character": 0.595,
-      "macro_coupling": 0.842,
-      "macro_movement": 0.891,
-      "macro_space": 0.878
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

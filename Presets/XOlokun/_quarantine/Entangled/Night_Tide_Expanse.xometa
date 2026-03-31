@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Night Tide Expanse",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.83,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.35,
-      "macro_space": 0.35
-    },
-    "Oceanic": {
-      "macro_character": 0.21,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.12,
-      "macro_space": 0.89
-    }
+    "Obsidian": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

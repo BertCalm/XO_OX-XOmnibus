@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Spotted Apogee",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.565,
-      "macro_movement": 0.715,
-      "macro_space": 0.465
-    },
-    "Orbital": {
-      "macro_character": 0.385,
-      "macro_coupling": 0.485,
-      "macro_movement": 0.535,
-      "macro_space": 0.685
-    }
+    "Ocelot": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

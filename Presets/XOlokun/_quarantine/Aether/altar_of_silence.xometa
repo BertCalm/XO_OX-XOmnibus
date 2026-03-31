@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Altar of Silence",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.2,
-      "macro_movement": 0.6,
-      "macro_space": 0.93
-    }
+    "Obbligato": {}
   },
   "schema_version": 1,
   "tags": [

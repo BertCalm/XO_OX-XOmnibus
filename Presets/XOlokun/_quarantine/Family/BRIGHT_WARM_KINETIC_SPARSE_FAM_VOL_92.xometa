@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Bloom Stream 3",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.909,
-      "macro_coupling": 0.201,
-      "macro_movement": 0.939,
-      "macro_space": 0.582
-    },
-    "Orphica": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.194,
-      "macro_movement": 0.951,
-      "macro_space": 0.574
-    }
+    "Ole": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

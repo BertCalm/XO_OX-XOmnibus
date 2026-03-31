@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Bloom Saturated",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.226,
-      "macro_coupling": 0.725,
-      "macro_movement": 0.891,
-      "macro_space": 0.138
-    },
-    "Origami": {
-      "macro_character": 0.589,
-      "macro_coupling": 0.453,
-      "macro_movement": 0.891,
-      "macro_space": 0.138
-    }
+    "Optic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

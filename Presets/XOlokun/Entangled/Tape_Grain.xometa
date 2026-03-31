@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Tape Grain",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.69,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.72,
-      "macro_space": 0.36
-    },
+    "Opal": {},
     "Overdub": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.51,
-      "macro_space": 0.26,
       "dub_lfoDepth": 0.12
     }
   },

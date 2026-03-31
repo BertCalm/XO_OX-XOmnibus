@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Cobalt Tunnel",
   "parameters": {
-    "Osprey": {
-      "macro_character": 0.686,
-      "macro_coupling": 0.897,
-      "macro_movement": 0.463,
-      "macro_space": 0.486
-    },
-    "Owlfish": {
-      "macro_character": 0.605,
-      "macro_coupling": 0.567,
-      "macro_movement": 0.71,
-      "macro_space": 0.456
-    }
+    "Osprey": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

@@ -45,18 +45,8 @@
   "mood": "Entangled",
   "name": "Fragment Strike 2",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.7033,
-      "macro_coupling": 0.8294,
-      "macro_movement": 0.0465,
-      "macro_space": 0.496
-    },
-    "Opal": {
-      "macro_character": 0.9081,
-      "macro_coupling": 0.8435,
-      "macro_movement": 0.0818,
-      "macro_space": 0.7543
-    }
+    "Ocelot": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "sequencer": null,

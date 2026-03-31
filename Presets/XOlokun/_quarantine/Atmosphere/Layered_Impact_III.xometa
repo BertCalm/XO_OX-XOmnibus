@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Layered Impact III",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.631,
-      "macro_coupling": 0.928,
-      "macro_movement": 0.932,
-      "macro_space": 0.918
-    },
-    "Opal": {
-      "macro_character": 0.631,
-      "macro_coupling": 0.928,
-      "macro_movement": 0.932,
-      "macro_space": 0.918
-    }
+    "Oceanic": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

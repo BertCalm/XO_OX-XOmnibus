@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Matte Mahogany",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.342,
-      "macro_coupling": 0.853,
-      "macro_movement": 0.308,
-      "macro_space": 0.842
-    },
-    "Origami": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.432,
-      "macro_movement": 0.282,
-      "macro_space": 0.83
-    }
+    "OddOscar": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

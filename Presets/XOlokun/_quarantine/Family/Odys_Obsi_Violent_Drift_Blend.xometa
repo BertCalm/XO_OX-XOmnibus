@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.87,
-      "macro_movement": 0.66,
-      "macro_coupling": 0.5,
-      "macro_space": 0.17
-    },
-    "Obsidian": {
-      "macro_character": 0.94,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.53,
-      "macro_space": 0.4
-    }
+    "Odyssey": {},
+    "Obsidian": {}
   },
   "coupling": {
     "type": "SPECTRAL_BLEND",

@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Wave Pulse 2",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.756,
-      "macro_coupling": 0.898,
-      "macro_movement": 0.458,
-      "macro_space": 0.365
-    },
-    "Oracle": {
-      "macro_character": 0.462,
-      "macro_coupling": 0.667,
-      "macro_movement": 0.386,
-      "macro_space": 0.865
-    }
+    "OddfeliX": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

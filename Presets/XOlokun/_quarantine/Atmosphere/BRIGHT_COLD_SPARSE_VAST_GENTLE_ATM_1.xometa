@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Ice Horizon 2",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.4544,
-      "macro_coupling": 0.1161,
-      "macro_movement": 0.553,
-      "macro_space": 0.9752
-    },
-    "Osprey": {
-      "macro_character": 0.4889,
-      "macro_coupling": 0.1216,
-      "macro_movement": 0.5729,
-      "macro_space": 0.99
-    }
+    "Oceanic": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

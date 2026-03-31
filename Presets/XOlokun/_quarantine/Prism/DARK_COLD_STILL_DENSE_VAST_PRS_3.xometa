@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Grain Orbit",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.059,
-      "macro_coupling": 0.823,
-      "macro_movement": 0.0,
-      "macro_space": 0.969
-    },
-    "Ole": {
-      "macro_character": 0.084,
-      "macro_coupling": 0.836,
-      "macro_movement": 0.069,
-      "macro_space": 0.863
-    }
+    "Oblique": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "sequencer": null,

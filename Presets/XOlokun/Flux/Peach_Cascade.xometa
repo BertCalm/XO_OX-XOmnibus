@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Peach Cascade",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.673,
-      "macro_coupling": 0.901,
-      "macro_movement": 0.994,
-      "macro_space": 0.299
-    },
+    "Oblique": {},
     "Oblong": {
-      "macro_character": 0.558,
-      "macro_coupling": 0.915,
-      "macro_movement": 0.964,
-      "macro_space": 0.275,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

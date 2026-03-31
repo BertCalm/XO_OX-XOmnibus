@@ -45,18 +45,8 @@
   "mood": "Prism",
   "name": "Thread Massive 2",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.118,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.0,
-      "macro_space": 0.993
-    },
-    "Overworld": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.86,
-      "macro_movement": 0.077,
-      "macro_space": 0.851
-    }
+    "Orphica": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

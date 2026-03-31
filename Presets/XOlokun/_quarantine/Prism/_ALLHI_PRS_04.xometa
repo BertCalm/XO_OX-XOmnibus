@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "ALLHI PRS 04",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.918,
-      "macro_coupling": 0.962,
-      "macro_movement": 0.723,
-      "macro_space": 0.955
-    },
-    "Origami": {
-      "macro_character": 0.918,
-      "macro_coupling": 0.962,
-      "macro_movement": 0.723,
-      "macro_space": 0.955
-    }
+    "Ohm": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

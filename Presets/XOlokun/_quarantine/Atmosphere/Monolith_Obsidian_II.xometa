@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Monolith Obsidian II",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.041,
-      "macro_coupling": 0.247,
-      "macro_movement": 0.034,
-      "macro_space": 0.435
-    },
-    "Organon": {
-      "macro_character": 0.041,
-      "macro_coupling": 0.247,
-      "macro_movement": 0.034,
-      "macro_space": 0.435
-    }
+    "Optic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

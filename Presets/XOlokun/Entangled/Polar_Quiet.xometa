@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Polar Quiet",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.162,
-      "macro_coupling": 0.088,
-      "macro_movement": 0.108,
-      "macro_space": 0.032
-    },
+    "Obbligato": {},
     "Overdub": {
-      "macro_character": 0.163,
-      "macro_coupling": 0.103,
-      "macro_movement": 0.109,
-      "macro_space": 0.051,
       "dub_lfoDepth": 0.12
     }
   },

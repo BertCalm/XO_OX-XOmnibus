@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "Signal Surge",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.7053,
-      "macro_coupling": 0.9392,
-      "macro_movement": 0.9616,
-      "macro_space": 0.0631
-    },
+    "Optic": {},
     "Overdub": {
-      "macro_character": 0.6908,
-      "macro_coupling": 0.9488,
-      "macro_movement": 0.99,
-      "macro_space": 0.0774,
       "dub_lfoDepth": 0.12
     }
   },

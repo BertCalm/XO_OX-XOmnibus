@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Honey Swirl",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.381,
-      "macro_coupling": 0.661,
-      "macro_movement": 0.907,
-      "macro_space": 0.366
-    },
-    "Organon": {
-      "macro_character": 0.598,
-      "macro_coupling": 0.665,
-      "macro_movement": 0.924,
-      "macro_space": 0.28
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

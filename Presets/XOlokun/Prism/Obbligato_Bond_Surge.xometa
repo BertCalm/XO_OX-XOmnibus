@@ -26,10 +26,6 @@
   "name": "Obbligato Bond Surge",
   "parameters": {
     "Obbligato": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.55,
-      "macro_space": 0.5,
       "obbl_attackTime": 0.08,
       "obbl_bond": 0.0,
       "obbl_breathA": 0.7,

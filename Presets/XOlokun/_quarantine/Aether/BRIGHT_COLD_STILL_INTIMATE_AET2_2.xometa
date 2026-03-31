@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Silver Edge",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.9192,
-      "macro_coupling": 0.4889,
-      "macro_movement": 0.0695,
-      "macro_space": 0.0133
-    },
-    "Orbital": {
-      "macro_character": 0.9072,
-      "macro_coupling": 0.4314,
-      "macro_movement": 0.0399,
-      "macro_space": 0.0127
-    }
+    "OddOscar": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

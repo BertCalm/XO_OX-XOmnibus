@@ -46,19 +46,10 @@
   "name": "Flux Rage 4",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.615,
-      "macro_coupling": 0.9143,
-      "macro_movement": 0.0308,
-      "macro_space": 0.3443,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Opal": {
-      "macro_character": 0.5443,
-      "macro_coupling": 0.9848,
-      "macro_movement": 0.0499,
-      "macro_space": 0.7463
-    }
+    "Opal": {}
   },
   "schema_version": 1,
   "sequencer": null,

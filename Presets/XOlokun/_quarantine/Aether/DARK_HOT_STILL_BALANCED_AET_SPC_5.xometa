@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK HOT STILL BALANCED AET... (OddfeliX I)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.493,
-      "macro_coupling": 0.895,
-      "macro_movement": 0.128,
-      "macro_space": 0.509
-    },
-    "Orbital": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.151,
-      "macro_space": 0.488
-    }
+    "OddfeliX": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

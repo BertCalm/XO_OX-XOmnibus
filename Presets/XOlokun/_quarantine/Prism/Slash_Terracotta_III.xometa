@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Slash Terracotta III",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.651,
-      "macro_coupling": 0.538,
-      "macro_movement": 0.092,
-      "macro_space": 0.58
-    },
-    "Osteria": {
-      "macro_character": 0.801,
-      "macro_coupling": 0.729,
-      "macro_movement": 0.092,
-      "macro_space": 0.58
-    }
+    "Optic": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

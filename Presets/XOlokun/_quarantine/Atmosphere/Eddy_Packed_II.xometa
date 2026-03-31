@@ -39,18 +39,8 @@
   "mood": "Atmosphere",
   "name": "Eddy Packed II",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.66,
-      "macro_space": 0.42
-    },
-    "Ombre": {
-      "macro_character": 0.84,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.77,
-      "macro_space": 0.4
-    }
+    "Obscura": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "sequencer": null,

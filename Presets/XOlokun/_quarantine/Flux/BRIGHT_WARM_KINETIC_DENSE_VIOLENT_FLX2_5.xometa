@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Halo Saturated",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.8783,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.8747,
-      "macro_space": 0.4991
-    },
-    "Overworld": {
-      "macro_character": 0.8876,
-      "macro_coupling": 0.9751,
-      "macro_movement": 0.9045,
-      "macro_space": 0.4871
-    }
+    "Oceanic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

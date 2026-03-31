@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "DARK HOT DENSE INTIMATE VIO... (OddOscar I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.958,
-      "macro_movement": 0.682,
-      "macro_space": 0.02
-    },
-    "Osteria": {
-      "macro_character": 0.508,
-      "macro_coupling": 0.946,
-      "macro_movement": 0.677,
-      "macro_space": 0.053
-    }
+    "OddOscar": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

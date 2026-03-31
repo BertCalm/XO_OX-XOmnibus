@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Latin Resonance",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.52,
-      "macro_space": 0.54
-    },
-    "Ole": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.66,
-      "macro_space": 0.42
-    }
+    "Obscura": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

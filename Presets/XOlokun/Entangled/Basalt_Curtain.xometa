@@ -39,19 +39,10 @@
   "name": "Basalt Curtain",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.5,
-      "macro_space": 0.4,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Obscura": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.5,
-      "macro_space": 0.4
-    }
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

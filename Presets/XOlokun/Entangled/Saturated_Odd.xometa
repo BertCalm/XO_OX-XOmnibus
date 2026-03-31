@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Saturated Odd",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.89,
-      "macro_movement": 0.66,
-      "macro_space": 0.52
-    },
+    "OddOscar": {},
     "Overdub": {
-      "macro_character": 0.71,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.81,
-      "macro_space": 0.52,
       "dub_lfoDepth": 0.12
     }
   },

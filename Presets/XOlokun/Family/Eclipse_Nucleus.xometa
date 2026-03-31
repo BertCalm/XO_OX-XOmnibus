@@ -38,19 +38,10 @@
   "name": "Eclipse Nucleus",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.053,
-      "macro_coupling": 0.292,
-      "macro_movement": 0.079,
-      "macro_space": 0.054,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "OddOscar": {
-      "macro_character": 0.053,
-      "macro_coupling": 0.292,
-      "macro_movement": 0.079,
-      "macro_space": 0.054
-    }
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

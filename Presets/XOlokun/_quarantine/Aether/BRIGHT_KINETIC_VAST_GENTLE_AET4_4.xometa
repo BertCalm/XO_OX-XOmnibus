@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Vast",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.8246,
-      "macro_coupling": 0.7818,
-      "macro_movement": 0.8772,
-      "macro_space": 0.3726
-    },
-    "Orbital": {
-      "macro_character": 0.7837,
-      "macro_coupling": 0.883,
-      "macro_movement": 0.9302,
-      "macro_space": 0.7589
-    }
+    "Opal": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

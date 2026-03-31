@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Sub Monolith",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.61,
-      "macro_space": 0.2
-    },
+    "Obese": {},
     "Oblong": {
-      "macro_character": 0.84,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.7,
-      "macro_space": 0.18,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

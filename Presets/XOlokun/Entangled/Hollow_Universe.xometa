@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Hollow Universe",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.18,
-      "macro_space": 0.39
-    },
+    "Odyssey": {},
     "Overdub": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.55,
-      "macro_space": 0.37,
       "dub_lfoDepth": 0.12
     }
   },

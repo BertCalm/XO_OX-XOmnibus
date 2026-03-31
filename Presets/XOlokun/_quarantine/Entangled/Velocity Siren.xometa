@@ -39,18 +39,8 @@
   "mood": "Entangled",
   "name": "Velocity Siren",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.5,
-      "macro_space": 0.76
-    },
-    "Ouroboros": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.72,
-      "macro_space": 0.44
-    }
+    "Orphica": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

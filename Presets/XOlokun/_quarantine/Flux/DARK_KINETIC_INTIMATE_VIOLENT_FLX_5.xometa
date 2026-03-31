@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Fragment Edge",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.1357,
-      "macro_coupling": 0.8628,
-      "macro_movement": 0.9018,
-      "macro_space": 0.2111
-    },
-    "Origami": {
-      "macro_character": 0.1292,
-      "macro_coupling": 0.8574,
-      "macro_movement": 0.8426,
-      "macro_space": 0.1393
-    }
+    "Odyssey": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

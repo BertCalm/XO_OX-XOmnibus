@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Tone Saturated",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.755,
-      "macro_coupling": 0.826,
-      "macro_movement": 0.657,
-      "macro_space": 0.926
-    },
-    "OddfeliX": {
-      "macro_character": 0.779,
-      "macro_coupling": 0.804,
-      "macro_movement": 0.673,
-      "macro_space": 0.942
-    }
+    "Obsidian": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

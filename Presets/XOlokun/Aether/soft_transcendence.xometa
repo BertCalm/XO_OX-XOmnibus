@@ -27,10 +27,6 @@
   "name": "Soft Transcendence",
   "parameters": {
     "Overdub": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.15,
-      "macro_movement": 0.82,
-      "macro_space": 0.86,
       "dub_lfoDepth": 0.12
     }
   },

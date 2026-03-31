@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Glow Rage",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.718,
-      "macro_coupling": 0.964,
-      "macro_movement": 0.865,
-      "macro_space": 0.542
-    },
-    "Opal": {
-      "macro_character": 0.596,
-      "macro_coupling": 0.936,
-      "macro_movement": 0.882,
-      "macro_space": 0.532
-    }
+    "Oceanic": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,17 +37,8 @@
   "mood": "Entangled",
   "name": "Abyssal Drift Gate",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.24,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.18,
-      "macro_space": 0.43
-    },
+    "Origami": {},
     "Overdub": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.73,
-      "macro_space": 0.19,
       "dub_lfoDepth": 0.12
     }
   },

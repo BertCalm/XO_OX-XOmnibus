@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Umbra Cathedral",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.348,
-      "macro_coupling": 0.464,
-      "macro_movement": 0.13,
-      "macro_space": 0.943
-    },
-    "Optic": {
-      "macro_character": 0.795,
-      "macro_coupling": 0.591,
-      "macro_movement": 0.13,
-      "macro_space": 0.943
-    }
+    "Ocelot": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

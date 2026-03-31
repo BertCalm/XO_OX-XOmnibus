@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Zero Kelvin (Outwit)",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.674,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.397,
-      "macro_space": 0.557
-    },
-    "Outwit": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.226,
-      "macro_movement": 0.754,
-      "macro_space": 0.676
-    }
+    "Odyssey": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

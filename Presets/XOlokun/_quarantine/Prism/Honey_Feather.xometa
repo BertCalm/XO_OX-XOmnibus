@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Honey Feather",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.552,
-      "macro_movement": 0.363,
-      "macro_space": 0.87
-    },
-    "Ocelot": {
-      "macro_character": 0.065,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.363,
-      "macro_space": 0.87
-    }
+    "Oblique": {},
+    "Ocelot": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Crease Lattice",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.06,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.1,
-      "macro_space": 0.98
-    },
-    "Origami": {
-      "macro_character": 0.09,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.15,
-      "macro_space": 0.95
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

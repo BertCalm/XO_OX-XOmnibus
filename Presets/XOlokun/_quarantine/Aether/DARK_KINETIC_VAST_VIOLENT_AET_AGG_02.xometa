@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK KINETIC VAST VIOLENT A... (Ombre I)",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.072,
-      "macro_coupling": 0.881,
-      "macro_movement": 0.964,
-      "macro_space": 0.89
-    },
-    "Orbital": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.912,
-      "macro_movement": 0.914,
-      "macro_space": 0.857
-    }
+    "Ombre": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

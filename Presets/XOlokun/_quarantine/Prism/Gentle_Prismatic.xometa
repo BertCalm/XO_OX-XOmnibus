@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Gentle Prismatic",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.056,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.614,
-      "macro_space": 0.883
-    },
-    "Oracle": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.737,
-      "macro_movement": 0.614,
-      "macro_space": 0.883
-    }
+    "Ocelot": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

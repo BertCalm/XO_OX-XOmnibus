@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Phase Grain",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.99,
-      "macro_coupling": 0.0578,
-      "macro_movement": 0.451,
-      "macro_space": 0.0993
-    },
-    "Origami": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.0933,
-      "macro_movement": 0.4875,
-      "macro_space": 0.0977
-    }
+    "Orbital": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

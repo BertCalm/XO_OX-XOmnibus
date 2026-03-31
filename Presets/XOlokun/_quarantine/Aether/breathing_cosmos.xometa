@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Breathing Cosmos",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.2,
-      "macro_movement": 0.95,
-      "macro_space": 0.75
-    }
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

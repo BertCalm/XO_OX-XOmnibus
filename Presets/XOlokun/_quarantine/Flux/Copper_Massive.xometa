@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Copper Massive",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.693,
-      "macro_movement": 0.058,
-      "macro_space": 0.649
-    },
-    "Overworld": {
-      "macro_character": 0.971,
-      "macro_coupling": 0.763,
-      "macro_movement": 0.052,
-      "macro_space": 0.599
-    }
+    "Odyssey": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

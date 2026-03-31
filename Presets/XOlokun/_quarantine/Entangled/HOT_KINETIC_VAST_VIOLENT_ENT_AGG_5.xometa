@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Radiant Swirl",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.552,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.931,
-      "macro_space": 0.922
-    },
-    "Orphica": {
-      "macro_character": 0.728,
-      "macro_coupling": 0.982,
-      "macro_movement": 0.917,
-      "macro_space": 0.862
-    }
+    "Oceanic": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

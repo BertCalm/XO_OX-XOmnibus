@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Rust Strike",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.476,
-      "macro_coupling": 0.776,
-      "macro_movement": 0.614,
-      "macro_space": 0.761
-    },
-    "Ohm": {
-      "macro_character": 0.431,
-      "macro_coupling": 0.752,
-      "macro_movement": 0.622,
-      "macro_space": 0.796
-    }
+    "OddOscar": {},
+    "Ohm": {}
   },
   "schema_version": 1,
   "tags": [

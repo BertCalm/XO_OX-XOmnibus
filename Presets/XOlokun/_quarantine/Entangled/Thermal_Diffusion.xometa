@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Thermal Diffusion",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.58,
-      "macro_space": 0.69
-    },
-    "Osprey": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.5,
-      "macro_space": 0.54
-    }
+    "Opal": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

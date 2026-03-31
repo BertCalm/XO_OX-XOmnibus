@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Node Cathedral 2",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.1137,
-      "macro_coupling": 0.1378,
-      "macro_movement": 0.8857,
-      "macro_space": 0.8912
-    },
-    "Oceanic": {
-      "macro_character": 0.1196,
-      "macro_coupling": 0.1408,
-      "macro_movement": 0.8879,
-      "macro_space": 0.8955
-    }
+    "Obscura": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

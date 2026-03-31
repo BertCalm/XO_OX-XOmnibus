@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Grain Grit 2",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.072,
-      "macro_coupling": 0.537,
-      "macro_movement": 0.088,
-      "macro_space": 0.913
-    },
-    "Outwit": {
-      "macro_character": 0.066,
-      "macro_coupling": 0.583,
-      "macro_movement": 0.074,
-      "macro_space": 0.916
-    }
+    "Obsidian": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM SPARSE BALANCED... (OddfeliX)",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.907,
-      "macro_coupling": 0.829,
-      "macro_movement": 0.37,
-      "macro_space": 0.545
-    },
-    "Origami": {
-      "macro_character": 0.893,
-      "macro_coupling": 0.849,
-      "macro_movement": 0.391,
-      "macro_space": 0.52
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

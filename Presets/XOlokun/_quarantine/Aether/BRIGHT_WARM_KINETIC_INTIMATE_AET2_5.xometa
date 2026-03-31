@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Sunrise Drift",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.99,
-      "macro_coupling": 0.5265,
-      "macro_movement": 0.9012,
-      "macro_space": 0.0712
-    },
-    "Organon": {
-      "macro_character": 0.9315,
-      "macro_coupling": 0.4983,
-      "macro_movement": 0.8782,
-      "macro_space": 0.0744
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

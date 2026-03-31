@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Node Deep 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.8872,
-      "macro_coupling": 0.9097,
-      "macro_movement": 0.87,
-      "macro_space": 0.0801
-    },
-    "Osprey": {
-      "macro_character": 0.8748,
-      "macro_coupling": 0.9141,
-      "macro_movement": 0.8475,
-      "macro_space": 0.0869
-    }
+    "Oblique": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

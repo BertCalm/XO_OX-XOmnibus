@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Opaque Sting II",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.2341,
-      "macro_coupling": 0.4191,
-      "macro_movement": 0.2409,
-      "macro_space": 0.9081
-    },
-    "Orbital": {
-      "macro_character": 0.4707,
-      "macro_coupling": 0.731,
-      "macro_movement": 0.4267,
-      "macro_space": 0.2949
-    }
+    "Oracle": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

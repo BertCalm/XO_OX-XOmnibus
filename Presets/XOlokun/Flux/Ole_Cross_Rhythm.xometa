@@ -26,10 +26,6 @@
   "name": "Ole Cross Rhythm",
   "parameters": {
     "Ole": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.8,
-      "macro_space": 0.5,
       "ole_attackTime": 0.03,
       "ole_drama": 0.55,
       "ole_filterCutoff": 0.68,

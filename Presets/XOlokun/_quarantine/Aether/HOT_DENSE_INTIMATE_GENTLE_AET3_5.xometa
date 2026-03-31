@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Grain Thick",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.8239,
-      "macro_coupling": 0.2614,
-      "macro_movement": 0.3892,
-      "macro_space": 0.2145
-    },
-    "Orbital": {
-      "macro_character": 0.4451,
-      "macro_coupling": 0.4843,
-      "macro_movement": 0.7709,
-      "macro_space": 0.764
-    }
+    "Oblique": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

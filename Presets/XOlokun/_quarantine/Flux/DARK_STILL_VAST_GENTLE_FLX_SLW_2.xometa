@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Flux Cathedral",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.383,
-      "macro_coupling": 0.701,
-      "macro_movement": 0.046,
-      "macro_space": 0.858
-    },
-    "Overworld": {
-      "macro_character": 0.535,
-      "macro_coupling": 0.864,
-      "macro_movement": 0.047,
-      "macro_space": 0.877
-    }
+    "Optic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

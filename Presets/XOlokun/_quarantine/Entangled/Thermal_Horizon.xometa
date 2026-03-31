@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Thermal Horizon",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.75,
-      "macro_space": 0.79
-    },
-    "Organon": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.71,
-      "macro_space": 0.7
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Tone Heavy 2",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.3106,
-      "macro_coupling": 0.9131,
-      "macro_movement": 0.01,
-      "macro_space": 0.6182
-    },
-    "Orphica": {
-      "macro_character": 0.2748,
-      "macro_coupling": 0.8955,
-      "macro_movement": 0.04,
-      "macro_space": 0.6191
-    }
+    "Ocelot": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

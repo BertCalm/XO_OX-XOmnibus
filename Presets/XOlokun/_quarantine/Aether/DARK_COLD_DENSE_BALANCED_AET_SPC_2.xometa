@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK COLD DENSE BALANCED AE... (Oracle)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.078,
-      "macro_coupling": 0.812,
-      "macro_movement": 0.692,
-      "macro_space": 0.496
-    },
-    "Oracle": {
-      "macro_character": 0.072,
-      "macro_coupling": 0.806,
-      "macro_movement": 0.699,
-      "macro_space": 0.498
-    }
+    "Obscura": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

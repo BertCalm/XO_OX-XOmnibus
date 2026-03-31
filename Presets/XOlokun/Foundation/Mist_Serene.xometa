@@ -37,17 +37,8 @@
   "mood": "Foundation",
   "name": "Mist Serene",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.348,
-      "macro_movement": 0.749,
-      "macro_space": 0.895
-    },
+    "Obsidian": {},
     "Overdub": {
-      "macro_character": 0.878,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.239,
-      "macro_space": 0.47,
       "dub_lfoDepth": 0.12
     }
   },

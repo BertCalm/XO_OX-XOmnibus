@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM KINETIC DENSE G... (Ottoni I)",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.438,
-      "macro_movement": 0.942,
-      "macro_space": 0.542
-    },
-    "Ottoni": {
-      "macro_character": 0.911,
-      "macro_coupling": 0.458,
-      "macro_movement": 0.941,
-      "macro_space": 0.573
-    }
+    "Obbligato": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

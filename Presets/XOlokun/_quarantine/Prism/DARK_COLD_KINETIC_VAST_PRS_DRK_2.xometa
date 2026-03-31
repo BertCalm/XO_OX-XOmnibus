@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Wave Horizon 2",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.2364,
-      "macro_coupling": 0.5062,
-      "macro_movement": 0.8802,
-      "macro_space": 0.946
-    },
-    "Ottoni": {
-      "macro_character": 0.2123,
-      "macro_coupling": 0.4858,
-      "macro_movement": 0.8422,
-      "macro_space": 0.944
-    }
+    "Optic": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

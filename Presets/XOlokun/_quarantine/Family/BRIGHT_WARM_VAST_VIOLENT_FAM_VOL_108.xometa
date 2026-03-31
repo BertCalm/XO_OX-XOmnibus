@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Glow Fang",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.723,
-      "macro_movement": 0.577,
-      "macro_space": 0.898
-    },
-    "OddfeliX": {
-      "macro_character": 0.917,
-      "macro_coupling": 0.739,
-      "macro_movement": 0.582,
-      "macro_space": 0.917
-    }
+    "Obbligato": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

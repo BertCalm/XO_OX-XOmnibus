@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "COLD KINETIC DENSE VIOLENT ... (OddOscar I)",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.419,
-      "macro_coupling": 0.845,
-      "macro_movement": 0.881,
-      "macro_space": 0.449
-    },
-    "OddfeliX": {
-      "macro_character": 0.431,
-      "macro_coupling": 0.866,
-      "macro_movement": 0.881,
-      "macro_space": 0.468
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

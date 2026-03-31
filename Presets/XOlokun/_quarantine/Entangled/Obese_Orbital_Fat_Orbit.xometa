@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fat Orbit",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.55,
-      "macro_space": 0.2
-    },
-    "Orbital": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.72,
-      "macro_space": 0.5
-    }
+    "Obese": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

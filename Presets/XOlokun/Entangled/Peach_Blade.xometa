@@ -45,17 +45,8 @@
   "mood": "Entangled",
   "name": "Peach Blade",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.5756,
-      "macro_coupling": 0.7934,
-      "macro_movement": 0.069,
-      "macro_space": 0.6889
-    },
+    "Obsidian": {},
     "Overdub": {
-      "macro_character": 0.9423,
-      "macro_coupling": 0.9231,
-      "macro_movement": 0.0586,
-      "macro_space": 0.1371,
       "dub_lfoDepth": 0.12
     }
   },

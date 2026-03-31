@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM STILL INTIMATE ... (Ole)",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.954,
-      "macro_coupling": 0.737,
-      "macro_movement": 0.02,
-      "macro_space": 0.2
-    },
-    "Ole": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.742,
-      "macro_movement": 0.03,
-      "macro_space": 0.137
-    }
+    "Odyssey": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

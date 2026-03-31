@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "DARK HOT STILL VAST GENTLE ... (Orphica)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.475,
-      "macro_coupling": 0.182,
-      "macro_movement": 0.102,
-      "macro_space": 0.99
-    },
-    "Orphica": {
-      "macro_character": 0.472,
-      "macro_coupling": 0.197,
-      "macro_movement": 0.118,
-      "macro_space": 0.971
-    }
+    "Oblique": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

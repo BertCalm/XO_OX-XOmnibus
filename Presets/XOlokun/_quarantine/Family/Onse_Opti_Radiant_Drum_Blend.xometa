@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Onset": {
-      "macro_character": 0.89,
-      "macro_movement": 0.73,
-      "macro_coupling": 0.58,
-      "macro_space": 0.38
-    },
-    "Optic": {
-      "macro_character": 0.93,
-      "macro_movement": 0.74,
-      "macro_coupling": 0.57,
-      "macro_space": 0.12
-    }
+    "Onset": {},
+    "Optic": {}
   },
   "coupling": {
     "type": "RHYTHM_GATE",

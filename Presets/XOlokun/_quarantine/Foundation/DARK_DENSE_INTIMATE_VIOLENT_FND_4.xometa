@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Ember Molten",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.618,
-      "macro_coupling": 0.125,
-      "macro_movement": 0.706,
-      "macro_space": 0.247
-    },
-    "Oracle": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.496,
-      "macro_movement": 0.287,
-      "macro_space": 0.147
-    }
+    "Onset": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

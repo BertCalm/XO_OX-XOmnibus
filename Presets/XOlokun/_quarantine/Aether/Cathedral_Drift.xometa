@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Cathedral Drift",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.772,
-      "macro_coupling": 0.947,
-      "macro_movement": 0.93,
-      "macro_space": 0.966
-    },
-    "Origami": {
-      "macro_character": 0.772,
-      "macro_coupling": 0.947,
-      "macro_movement": 0.93,
-      "macro_space": 0.966
-    }
+    "Orbital": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

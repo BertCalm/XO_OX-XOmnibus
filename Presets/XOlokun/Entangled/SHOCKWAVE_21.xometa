@@ -38,19 +38,10 @@
   "name": "SHOCKWAVE 21",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.503,
-      "macro_coupling": 0.868,
-      "macro_movement": 0.957,
-      "macro_space": 0.831,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Odyssey": {
-      "macro_character": 0.518,
-      "macro_coupling": 0.304,
-      "macro_movement": 0.893,
-      "macro_space": 0.162
-    }
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

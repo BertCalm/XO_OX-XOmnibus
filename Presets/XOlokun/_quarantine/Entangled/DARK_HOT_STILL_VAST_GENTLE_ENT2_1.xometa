@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "DARK HOT STILL VAST GENTLE ...",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.507,
-      "macro_coupling": 0.196,
-      "macro_movement": 0.105,
-      "macro_space": 0.986
-    },
-    "Opal": {
-      "macro_character": 0.503,
-      "macro_coupling": 0.234,
-      "macro_movement": 0.097,
-      "macro_space": 0.99
-    }
+    "Obscura": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

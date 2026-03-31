@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Mirror Swirl 2",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.7822,
-      "macro_coupling": 0.9203,
-      "macro_movement": 0.9738,
-      "macro_space": 0.4563
-    },
-    "Origami": {
-      "macro_character": 0.9084,
-      "macro_coupling": 0.8879,
-      "macro_movement": 0.8979,
-      "macro_space": 0.5029
-    }
+    "Optic": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

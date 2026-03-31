@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Shadow Thermal Web",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.43,
-      "macro_space": 0.25
-    },
-    "OddOscar": {
-      "macro_character": 0.61,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.3,
-      "macro_space": 0.26
-    }
+    "Obbligato": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

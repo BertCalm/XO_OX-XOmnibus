@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Rust Cavern 2",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.519,
-      "macro_coupling": 0.279,
-      "macro_movement": 0.124,
-      "macro_space": 0.524
-    },
-    "Organon": {
-      "macro_character": 0.49,
-      "macro_coupling": 0.275,
-      "macro_movement": 0.129,
-      "macro_space": 0.513
-    }
+    "OddOscar": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

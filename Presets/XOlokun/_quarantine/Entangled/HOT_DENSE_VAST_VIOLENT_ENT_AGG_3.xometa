@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Flux Grit 2",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.972,
-      "macro_movement": 0.499,
-      "macro_space": 0.88
-    },
-    "Overworld": {
-      "macro_character": 0.411,
-      "macro_coupling": 0.991,
-      "macro_movement": 0.426,
-      "macro_space": 0.952
-    }
+    "Optic": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

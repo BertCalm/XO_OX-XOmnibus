@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Platinum Vapor",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.11,
-      "macro_coupling": 0.083,
-      "macro_movement": 0.483,
-      "macro_space": 0.2
-    },
-    "Overlap": {
-      "macro_character": 0.077,
-      "macro_coupling": 0.075,
-      "macro_movement": 0.43,
-      "macro_space": 0.127
-    }
+    "OddOscar": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

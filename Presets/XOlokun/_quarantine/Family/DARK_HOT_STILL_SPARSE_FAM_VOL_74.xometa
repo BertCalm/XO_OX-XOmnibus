@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Cocoa Edge",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.473,
-      "macro_coupling": 0.3,
-      "macro_movement": 0.08,
-      "macro_space": 0.515
-    },
-    "Osprey": {
-      "macro_character": 0.468,
-      "macro_coupling": 0.265,
-      "macro_movement": 0.033,
-      "macro_space": 0.465
-    }
+    "Ole": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

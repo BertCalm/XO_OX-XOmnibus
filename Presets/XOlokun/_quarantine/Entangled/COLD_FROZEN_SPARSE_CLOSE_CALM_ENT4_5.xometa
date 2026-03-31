@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fragment Flux",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.299,
-      "macro_coupling": 0.045,
-      "macro_movement": 0.032,
-      "macro_space": 0.072
-    },
-    "Osteria": {
-      "macro_character": 0.31,
-      "macro_coupling": 0.037,
-      "macro_movement": 0.033,
-      "macro_space": 0.032
-    }
+    "Origami": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

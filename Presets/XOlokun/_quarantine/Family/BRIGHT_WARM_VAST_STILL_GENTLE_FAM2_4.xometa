@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "BRIGHT WARM VAST STILL GENT... (Osprey I)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.209,
-      "macro_movement": 0.057,
-      "macro_space": 0.99
-    },
-    "Osprey": {
-      "macro_character": 0.938,
-      "macro_coupling": 0.258,
-      "macro_movement": 0.049,
-      "macro_space": 0.99
-    }
+    "Origami": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

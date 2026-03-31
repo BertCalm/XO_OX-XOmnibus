@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Overlap": {
-      "macro_character": 0.98,
-      "macro_movement": 0.63,
-      "macro_coupling": 0.53,
-      "macro_space": 0.47
-    },
-    "Owlfish": {
-      "macro_character": 0.78,
-      "macro_movement": 0.85,
-      "macro_coupling": 0.64,
-      "macro_space": 0.23
-    }
+    "Overlap": {},
+    "Owlfish": {}
   },
   "coupling": {
     "type": "PHASE_LOCK",

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Mahogany Undulation",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.772,
-      "macro_movement": 0.916,
-      "macro_space": 0.899
-    },
-    "Oracle": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.772,
-      "macro_movement": 0.916,
-      "macro_space": 0.899
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

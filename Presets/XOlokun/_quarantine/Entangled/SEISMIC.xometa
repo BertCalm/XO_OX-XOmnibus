@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "SEISMIC",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.719,
-      "macro_movement": 0.935,
-      "macro_space": 0.526
-    },
-    "Origami": {
-      "macro_character": 0.612,
-      "macro_coupling": 0.086,
-      "macro_movement": 0.96,
-      "macro_space": 0.309
-    }
+    "OddfeliX": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

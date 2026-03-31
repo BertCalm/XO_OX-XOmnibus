@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Honey Monolith II",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.728,
-      "macro_coupling": 0.409,
-      "macro_movement": 0.103,
-      "macro_space": 0.645
-    },
-    "Ouroboros": {
-      "macro_character": 0.837,
-      "macro_coupling": 0.883,
-      "macro_movement": 0.126,
-      "macro_space": 0.708
-    }
+    "Obscura": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

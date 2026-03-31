@@ -38,19 +38,10 @@
   "name": "Dense Scatter",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.91,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.77,
-      "macro_space": 0.67,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Opal": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.68,
-      "macro_space": 0.45
-    }
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

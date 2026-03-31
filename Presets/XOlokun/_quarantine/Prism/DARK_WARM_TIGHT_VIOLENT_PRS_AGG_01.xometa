@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "DARK WARM TIGHT VIOLENT PRS...",
   "parameters": {
-    "Optic": {
-      "macro_character": 0.063,
-      "macro_coupling": 0.948,
-      "macro_movement": 0.491,
-      "macro_space": 0.049
-    },
-    "Orphica": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.919,
-      "macro_movement": 0.461,
-      "macro_space": 0.05
-    }
+    "Optic": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

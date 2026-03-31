@@ -38,19 +38,10 @@
   "name": "Golden Heavy",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.836,
-      "macro_coupling": 0.822,
-      "macro_movement": 0.51,
-      "macro_space": 0.415,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Onset": {
-      "macro_character": 0.873,
-      "macro_coupling": 0.794,
-      "macro_movement": 0.546,
-      "macro_space": 0.447
-    }
+    "Onset": {}
   },
   "schema_version": 1,
   "tags": [

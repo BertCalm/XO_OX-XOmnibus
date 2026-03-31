@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK KINETIC DENSE BALANCED... (Overworld)",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.174,
-      "macro_coupling": 0.739,
-      "macro_movement": 0.873,
-      "macro_space": 0.606
-    },
-    "Overworld": {
-      "macro_character": 0.176,
-      "macro_coupling": 0.758,
-      "macro_movement": 0.877,
-      "macro_space": 0.633
-    }
+    "Origami": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

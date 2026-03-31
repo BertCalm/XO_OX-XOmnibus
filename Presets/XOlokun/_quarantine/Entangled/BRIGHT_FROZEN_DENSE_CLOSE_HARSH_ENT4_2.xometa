@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Flux Grit 3",
   "parameters": {
-    "Orphica": {
-      "macro_character": 0.789,
-      "macro_coupling": 0.873,
-      "macro_movement": 0.072,
-      "macro_space": 0.122
-    },
-    "Overworld": {
-      "macro_character": 0.742,
-      "macro_coupling": 0.911,
-      "macro_movement": 0.068,
-      "macro_space": 0.13
-    }
+    "Orphica": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

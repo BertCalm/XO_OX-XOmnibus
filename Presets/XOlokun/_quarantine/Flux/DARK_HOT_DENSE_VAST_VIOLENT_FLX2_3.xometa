@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Rust Storm",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.4781,
-      "macro_coupling": 0.9598,
-      "macro_movement": 0.2798,
-      "macro_space": 0.9087
-    },
-    "Origami": {
-      "macro_character": 0.4778,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.3152,
-      "macro_space": 0.9411
-    }
+    "Oblique": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

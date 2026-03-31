@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Mojo Serpent II",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.55,
-      "macro_space": 0.25
-    },
-    "Ouroboros": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.65,
-      "macro_space": 0.3
-    }
+    "Obese": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

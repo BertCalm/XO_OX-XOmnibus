@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Feather Neon",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.649,
-      "macro_coupling": 0.528,
-      "macro_movement": 0.582,
-      "macro_space": 0.302
-    },
-    "Organon": {
-      "macro_character": 0.664,
-      "macro_coupling": 0.825,
-      "macro_movement": 0.65,
-      "macro_space": 0.185
-    }
+    "Oracle": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

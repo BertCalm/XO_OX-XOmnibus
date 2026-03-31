@@ -38,10 +38,6 @@
   "name": "Rust Blade",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.426,
-      "macro_coupling": 0.645,
-      "macro_movement": 0.871,
-      "macro_space": 0.874,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },

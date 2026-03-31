@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Phase Cascade",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.1098,
-      "macro_coupling": 0.5092,
-      "macro_movement": 0.8863,
-      "macro_space": 0.0576
-    },
-    "Organon": {
-      "macro_character": 0.1196,
-      "macro_coupling": 0.5821,
-      "macro_movement": 0.9153,
-      "macro_space": 0.0523
-    }
+    "Obscura": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

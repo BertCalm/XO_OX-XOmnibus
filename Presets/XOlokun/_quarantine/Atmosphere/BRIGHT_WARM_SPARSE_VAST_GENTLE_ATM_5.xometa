@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Peach Orbit",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.9072,
-      "macro_coupling": 0.0341,
-      "macro_movement": 0.4968,
-      "macro_space": 0.8837
-    },
-    "Origami": {
-      "macro_character": 0.9057,
-      "macro_coupling": 0.02,
-      "macro_movement": 0.5195,
-      "macro_space": 0.871
-    }
+    "Organon": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

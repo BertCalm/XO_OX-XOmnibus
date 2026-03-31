@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT COLD KINETIC BALANCE... (Oceanic I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.535,
-      "macro_coupling": 0.532,
-      "macro_movement": 0.898,
-      "macro_space": 0.429
-    },
-    "Oceanic": {
-      "macro_character": 0.519,
-      "macro_coupling": 0.531,
-      "macro_movement": 0.907,
-      "macro_space": 0.418
-    }
+    "Oblique": {},
+    "Oceanic": {}
   },
   "schema_version": 1,
   "tags": [

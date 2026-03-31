@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Grain Vast",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.41,
-      "macro_coupling": 0.132,
-      "macro_movement": 0.233,
-      "macro_space": 0.189
-    },
-    "Ouroboros": {
-      "macro_character": 0.358,
-      "macro_coupling": 0.899,
-      "macro_movement": 0.227,
-      "macro_space": 0.853
-    }
+    "Obsidian": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

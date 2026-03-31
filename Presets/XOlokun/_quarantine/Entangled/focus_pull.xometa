@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Focus Pull",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.365,
-      "macro_coupling": 0.565,
-      "macro_movement": 0.265,
-      "macro_space": 0.615
-    },
-    "Optic": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.585,
-      "macro_movement": 0.435,
-      "macro_space": 0.485
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

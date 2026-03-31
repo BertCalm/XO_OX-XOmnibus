@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Umbra Cathedral IV",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.601,
-      "macro_coupling": 0.593,
-      "macro_movement": 0.146,
-      "macro_space": 0.773
-    },
-    "Orbital": {
-      "macro_character": 0.717,
-      "macro_coupling": 0.854,
-      "macro_movement": 0.275,
-      "macro_space": 0.932
-    }
+    "OddOscar": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

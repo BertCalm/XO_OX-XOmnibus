@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Golden Pulse 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.799,
-      "macro_coupling": 0.788,
-      "macro_movement": 0.774,
-      "macro_space": 0.39
-    },
-    "OddfeliX": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.896,
-      "macro_movement": 0.749,
-      "macro_space": 0.348
-    }
+    "Oblique": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

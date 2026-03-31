@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Umbra Cathedral III",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.779,
-      "macro_coupling": 0.867,
-      "macro_movement": 0.464,
-      "macro_space": 0.805
-    },
-    "Organon": {
-      "macro_character": 0.355,
-      "macro_coupling": 0.614,
-      "macro_movement": 0.331,
-      "macro_space": 0.815
-    }
+    "Oracle": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

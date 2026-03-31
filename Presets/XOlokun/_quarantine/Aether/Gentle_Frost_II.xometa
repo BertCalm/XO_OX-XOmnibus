@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Gentle Frost II",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.055,
-      "macro_coupling": 0.051,
-      "macro_movement": 0.307,
-      "macro_space": 0.058
-    },
-    "Oracle": {
-      "macro_character": 0.055,
-      "macro_coupling": 0.051,
-      "macro_movement": 0.307,
-      "macro_space": 0.058
-    }
+    "Obscura": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

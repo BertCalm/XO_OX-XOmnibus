@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Chrome Resting",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.522,
-      "macro_coupling": 0.622,
-      "macro_movement": 0.126,
-      "macro_space": 0.291
-    },
-    "Origami": {
-      "macro_character": 0.631,
-      "macro_coupling": 0.411,
-      "macro_movement": 0.177,
-      "macro_space": 0.184
-    }
+    "Oblique": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

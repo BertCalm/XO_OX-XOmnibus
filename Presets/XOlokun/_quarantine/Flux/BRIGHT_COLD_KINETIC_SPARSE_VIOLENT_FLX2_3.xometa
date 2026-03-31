@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Silver Crush",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.5078,
-      "macro_coupling": 0.0292,
-      "macro_movement": 0.8619,
-      "macro_space": 0.4264
-    },
-    "Oracle": {
-      "macro_character": 0.4879,
-      "macro_coupling": 0.0492,
-      "macro_movement": 0.8953,
-      "macro_space": 0.4127
-    }
+    "Oblique": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

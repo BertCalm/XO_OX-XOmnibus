@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Grain Drift",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.12,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.43,
-      "macro_space": 0.95
-    },
-    "Opal": {
-      "macro_character": 0.15,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.48,
-      "macro_space": 0.92
-    }
+    "Odyssey": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

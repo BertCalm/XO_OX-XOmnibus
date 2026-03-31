@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Pure Elevation II",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.2,
-      "macro_movement": 0.8,
-      "macro_space": 0.88
-    }
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

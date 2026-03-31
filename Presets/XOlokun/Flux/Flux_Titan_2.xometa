@@ -38,19 +38,10 @@
   "name": "Flux Titan 2",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.629,
-      "macro_coupling": 0.938,
-      "macro_movement": 0.882,
-      "macro_space": 0.594,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Ouroboros": {
-      "macro_character": 0.642,
-      "macro_coupling": 0.944,
-      "macro_movement": 0.964,
-      "macro_space": 0.618
-    }
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

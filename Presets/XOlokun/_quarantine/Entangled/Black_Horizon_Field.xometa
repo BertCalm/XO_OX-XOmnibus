@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Black Horizon Field",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.38,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.85,
-      "macro_space": 0.34
-    },
-    "Opal": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.74,
-      "macro_space": 0.44
-    }
+    "Odyssey": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

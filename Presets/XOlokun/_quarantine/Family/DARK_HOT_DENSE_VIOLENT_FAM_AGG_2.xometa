@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Mahogany Storm",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.644,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.737,
-      "macro_space": 0.543
-    },
-    "Opal": {
-      "macro_character": 0.633,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.722,
-      "macro_space": 0.547
-    }
+    "Ole": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

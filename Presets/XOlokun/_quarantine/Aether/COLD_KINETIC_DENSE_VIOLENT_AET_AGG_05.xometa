@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "COLD KINETIC DENSE VIOLENT ... (Osprey II)",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.501,
-      "macro_coupling": 0.862,
-      "macro_movement": 0.842,
-      "macro_space": 0.353
-    },
-    "Osprey": {
-      "macro_character": 0.512,
-      "macro_coupling": 0.849,
-      "macro_movement": 0.873,
-      "macro_space": 0.365
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

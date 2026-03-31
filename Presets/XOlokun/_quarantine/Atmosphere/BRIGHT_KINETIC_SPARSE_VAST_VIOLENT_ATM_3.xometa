@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Golden Dome 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.7614,
-      "macro_coupling": 0.1021,
-      "macro_movement": 0.8726,
-      "macro_space": 0.9732
-    },
-    "Obscura": {
-      "macro_character": 0.7584,
-      "macro_coupling": 0.1013,
-      "macro_movement": 0.9028,
-      "macro_space": 0.9484
-    }
+    "Oblique": {},
+    "Obscura": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Shadow Still",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.649,
-      "macro_coupling": 0.884,
-      "macro_movement": 0.203,
-      "macro_space": 0.806
-    },
-    "Origami": {
-      "macro_character": 0.774,
-      "macro_coupling": 0.434,
-      "macro_movement": 0.123,
-      "macro_space": 0.842
-    }
+    "Obscura": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

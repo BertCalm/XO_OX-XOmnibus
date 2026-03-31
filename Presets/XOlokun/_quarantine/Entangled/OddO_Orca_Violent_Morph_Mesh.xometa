@@ -32,18 +32,8 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.88,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.73,
-      "macro_space": 0.15
-    },
-    "Orca": {
-      "macro_character": 0.64,
-      "macro_movement": 0.93,
-      "macro_coupling": 0.88,
-      "macro_space": 0.19
-    }
+    "OddOscar": {},
+    "Orca": {}
   },
   "coupling": {
     "type": "HARMONIC_STACK",

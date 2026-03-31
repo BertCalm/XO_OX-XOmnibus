@@ -26,10 +26,6 @@
   "name": "Ottoni Section Swell",
   "parameters": {
     "Ottoni": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.4,
-      "macro_space": 0.65,
       "otto_attackTime": 0.6,
       "otto_brassA": 0.65,
       "otto_brassB": 0.55,

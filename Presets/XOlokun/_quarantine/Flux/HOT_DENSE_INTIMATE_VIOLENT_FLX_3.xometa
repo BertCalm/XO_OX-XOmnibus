@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Mahogany Deep",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.4048,
-      "macro_coupling": 0.7684,
-      "macro_movement": 0.637,
-      "macro_space": 0.1065
-    },
-    "Odyssey": {
-      "macro_character": 0.2059,
-      "macro_coupling": 0.8551,
-      "macro_movement": 0.7132,
-      "macro_space": 0.1676
-    }
+    "Oceanic": {},
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

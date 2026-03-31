@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Wild Lure",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.449,
-      "macro_coupling": 0.764,
-      "macro_movement": 0.519,
-      "macro_space": 0.693
-    },
-    "Owlfish": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.748,
-      "macro_movement": 0.72,
-      "macro_space": 0.321
-    }
+    "Ole": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

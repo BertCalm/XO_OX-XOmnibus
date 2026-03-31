@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Nocturnal Flux Grid",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.14,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.48,
-      "macro_space": 0.36
-    },
-    "Overworld": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.23,
-      "macro_space": 0.72
-    }
+    "Octopus": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

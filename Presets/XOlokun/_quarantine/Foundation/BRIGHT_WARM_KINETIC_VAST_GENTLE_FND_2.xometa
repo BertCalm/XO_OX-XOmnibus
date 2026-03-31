@@ -45,18 +45,8 @@
   "mood": "Foundation",
   "name": "Golden Vast",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.908,
-      "macro_coupling": 0.494,
-      "macro_movement": 0.878,
-      "macro_space": 1.0
-    },
-    "Origami": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.414,
-      "macro_movement": 0.877,
-      "macro_space": 1.0
-    }
+    "Obsidian": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "sequencer": null,

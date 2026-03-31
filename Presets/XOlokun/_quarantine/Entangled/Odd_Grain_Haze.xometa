@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Odd Grain Haze",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.94,
-      "macro_movement": 0.28,
-      "macro_space": 0.2
-    },
-    "Opal": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.89,
-      "macro_movement": 0.27,
-      "macro_space": 0.27
-    }
+    "OddOscar": {},
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

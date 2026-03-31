@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Sparse Caress",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.867,
-      "macro_movement": 0.482,
-      "macro_space": 0.847
-    },
-    "Organon": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.884,
-      "macro_movement": 0.63,
-      "macro_space": 0.703
-    }
+    "Oceanic": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

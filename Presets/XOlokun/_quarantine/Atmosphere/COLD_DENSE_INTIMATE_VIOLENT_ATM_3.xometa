@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Signal Fang 2",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.633,
-      "macro_coupling": 0.769,
-      "macro_movement": 0.699,
-      "macro_space": 0.12
-    },
-    "Organon": {
-      "macro_character": 0.604,
-      "macro_coupling": 0.474,
-      "macro_movement": 0.723,
-      "macro_space": 0.228
-    }
+    "Oblique": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

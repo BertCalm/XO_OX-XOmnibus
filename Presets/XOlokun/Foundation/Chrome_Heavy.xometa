@@ -37,17 +37,8 @@
   "mood": "Foundation",
   "name": "Chrome Heavy",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.185,
-      "macro_coupling": 0.179,
-      "macro_movement": 0.796,
-      "macro_space": 0.392
-    },
+    "Origami": {},
     "Overdub": {
-      "macro_character": 0.312,
-      "macro_coupling": 0.662,
-      "macro_movement": 0.537,
-      "macro_space": 0.188,
       "dub_lfoDepth": 0.12
     }
   },

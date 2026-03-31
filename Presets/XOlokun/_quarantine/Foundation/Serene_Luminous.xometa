@@ -39,18 +39,8 @@
   "mood": "Foundation",
   "name": "Serene Luminous",
   "parameters": {
-    "Orca": {
-      "macro_character": 0.96,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.87,
-      "macro_space": 0.24
-    },
-    "Overworld": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.66,
-      "macro_space": 0.14
-    }
+    "Orca": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "sequencer": null,

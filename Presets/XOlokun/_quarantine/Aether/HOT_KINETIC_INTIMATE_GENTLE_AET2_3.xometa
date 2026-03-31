@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Grain Ripple 2",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.5626,
-      "macro_coupling": 0.4825,
-      "macro_movement": 0.9792,
-      "macro_space": 0.0668
-    },
-    "Organon": {
-      "macro_character": 0.5731,
-      "macro_coupling": 0.4569,
-      "macro_movement": 0.9814,
-      "macro_space": 0.0547
-    }
+    "Oracle": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

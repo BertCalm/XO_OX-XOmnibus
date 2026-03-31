@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Mist Silver",
   "parameters": {
-    "Obsidian": {
-      "macro_character": 0.097,
-      "macro_coupling": 0.058,
-      "macro_movement": 0.355,
-      "macro_space": 0.115
-    },
-    "Octopus": {
-      "macro_character": 0.127,
-      "macro_coupling": 0.086,
-      "macro_movement": 0.372,
-      "macro_space": 0.149
-    }
+    "Obsidian": {},
+    "Octopus": {}
   },
   "schema_version": 1,
   "tags": [

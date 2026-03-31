@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Flux Saturated",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.0872,
-      "macro_coupling": 0.9246,
-      "macro_movement": 0.6136,
-      "macro_space": 0.4692
-    },
-    "Ottoni": {
-      "macro_character": 0.0624,
-      "macro_coupling": 0.8893,
-      "macro_movement": 0.591,
-      "macro_space": 0.4881
-    }
+    "Ole": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

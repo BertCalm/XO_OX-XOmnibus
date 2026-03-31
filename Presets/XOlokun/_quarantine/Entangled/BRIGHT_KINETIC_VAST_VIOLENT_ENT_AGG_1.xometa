@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Tone Flutter 5",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.623,
-      "macro_coupling": 0.882,
-      "macro_movement": 0.948,
-      "macro_space": 0.931
-    },
-    "Overbite": {
-      "macro_character": 0.503,
-      "macro_coupling": 0.869,
-      "macro_movement": 0.925,
-      "macro_space": 0.905
-    }
+    "Origami": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

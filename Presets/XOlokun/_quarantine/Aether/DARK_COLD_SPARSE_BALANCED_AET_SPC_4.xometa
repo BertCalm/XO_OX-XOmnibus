@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK COLD SPARSE BALANCED A... (Osprey I)",
   "parameters": {
-    "Organon": {
-      "macro_character": 0.068,
-      "macro_coupling": 0.832,
-      "macro_movement": 0.318,
-      "macro_space": 0.493
-    },
-    "Osprey": {
-      "macro_character": 0.067,
-      "macro_coupling": 0.804,
-      "macro_movement": 0.3,
-      "macro_space": 0.479
-    }
+    "Organon": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

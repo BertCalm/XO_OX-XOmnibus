@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Poised Mahogany",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.673,
-      "macro_movement": 0.031,
-      "macro_space": 0.653
-    },
-    "Ouroboros": {
-      "macro_character": 0.745,
-      "macro_coupling": 0.705,
-      "macro_movement": 0.0,
-      "macro_space": 0.595
-    }
+    "Obscura": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

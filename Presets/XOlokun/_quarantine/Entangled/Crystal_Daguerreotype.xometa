@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Crystal Daguerreotype",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.52,
-      "macro_space": 0.56
-    },
-    "Orphica": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.58,
-      "macro_space": 0.72
-    }
+    "Obscura": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

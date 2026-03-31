@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Thread Deep",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.8247,
-      "macro_coupling": 0.7773,
-      "macro_movement": 0.4921,
-      "macro_space": 0.9095
-    },
-    "Ombre": {
-      "macro_character": 0.5112,
-      "macro_coupling": 0.5494,
-      "macro_movement": 0.4482,
-      "macro_space": 0.2467
-    }
+    "Obscura": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

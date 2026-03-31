@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Node Storm",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.6591,
-      "macro_coupling": 0.0514,
-      "macro_movement": 0.331,
-      "macro_space": 0.9026
-    },
-    "Origami": {
-      "macro_character": 0.6497,
-      "macro_coupling": 0.0285,
-      "macro_movement": 0.3032,
-      "macro_space": 0.8958
-    }
+    "Ole": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

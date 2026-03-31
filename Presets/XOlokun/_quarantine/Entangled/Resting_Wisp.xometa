@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Resting Wisp",
   "parameters": {
-    "Ocelot": {
-      "macro_character": 0.209,
-      "macro_coupling": 0.075,
-      "macro_movement": 0.052,
-      "macro_space": 0.072
-    },
-    "Ottoni": {
-      "macro_character": 0.209,
-      "macro_coupling": 0.075,
-      "macro_movement": 0.052,
-      "macro_space": 0.072
-    }
+    "Ocelot": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

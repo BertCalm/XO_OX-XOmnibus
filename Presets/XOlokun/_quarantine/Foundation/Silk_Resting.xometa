@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Silk Resting",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.444,
-      "macro_coupling": 0.661,
-      "macro_movement": 0.814,
-      "macro_space": 0.38
-    },
-    "Overbite": {
-      "macro_character": 0.133,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.125,
-      "macro_space": 0.506
-    }
+    "Obese": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

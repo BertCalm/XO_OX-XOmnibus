@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Cold Scripture",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.05,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.07,
-      "macro_space": 1.0
-    },
-    "Origami": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.86,
-      "macro_movement": 0.12,
-      "macro_space": 0.97
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

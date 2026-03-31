@@ -38,19 +38,10 @@
   "name": "Sunrise Void",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.581,
-      "macro_coupling": 0.855,
-      "macro_movement": 0.075,
-      "macro_space": 0.889,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Odyssey": {
-      "macro_character": 0.521,
-      "macro_coupling": 0.794,
-      "macro_movement": 0.072,
-      "macro_space": 1.0
-    }
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -36,20 +36,12 @@
   },
   "parameters": {
     "Ouroboros": {
-      "macro_character": 0.72,
-      "macro_movement": 0.85,
-      "macro_coupling": 0.82,
-      "macro_space": 0.38,
       "ouro_topology": 0.65,
       "ouro_chaosAmount": 0.7,
       "ouro_filterCutoff": 0.48,
       "ouro_outputLevel": 0.8
     },
     "Onset": {
-      "macro_character": 0.6,
-      "macro_movement": 0.8,
-      "macro_coupling": 0.82,
-      "macro_space": 0.4,
       "perc_noiseLevel": 0.5,
       "perc_kickFreq": 55,
       "perc_kickDecay": 0.4,

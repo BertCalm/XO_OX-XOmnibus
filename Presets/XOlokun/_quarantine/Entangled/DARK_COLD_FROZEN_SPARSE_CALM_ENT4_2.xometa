@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Flux Flux",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.102,
-      "macro_coupling": 0.102,
-      "macro_movement": 0.069,
-      "macro_space": 0.366
-    },
-    "Outwit": {
-      "macro_character": 0.115,
-      "macro_coupling": 0.078,
-      "macro_movement": 0.085,
-      "macro_space": 0.313
-    }
+    "Oceanic": {},
+    "Outwit": {}
   },
   "schema_version": 1,
   "tags": [

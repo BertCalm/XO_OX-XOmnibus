@@ -38,19 +38,10 @@
   "name": "ALLLO FLX 03",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.048,
-      "macro_coupling": 0.085,
-      "macro_movement": 0.25,
-      "macro_space": 0.097,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Opal": {
-      "macro_character": 0.048,
-      "macro_coupling": 0.085,
-      "macro_movement": 0.25,
-      "macro_space": 0.097
-    }
+    "Opal": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Fragment Shimmer",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.3041,
-      "macro_coupling": 0.5365,
-      "macro_movement": 0.7292,
-      "macro_space": 0.2039
-    },
-    "Orbital": {
-      "macro_character": 0.2594,
-      "macro_coupling": 0.8262,
-      "macro_movement": 0.3919,
-      "macro_space": 0.6116
-    }
+    "Opal": {},
+    "Orbital": {}
   },
   "schema_version": 1,
   "tags": [

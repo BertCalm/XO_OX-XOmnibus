@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Long Exposure (Obscura)",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.34,
-      "macro_coupling": 0.54,
-      "macro_movement": 0.24,
-      "macro_space": 0.59
-    },
-    "Optic": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.61,
-      "macro_movement": 0.46,
-      "macro_space": 0.51
-    }
+    "Obscura": {},
+    "Optic": {}
   },
   "schema_version": 1,
   "tags": [

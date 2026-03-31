@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Prophetic Grain",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.69,
-      "macro_movement": 0.45,
-      "macro_space": 0.91
-    },
-    "Oracle": {
-      "macro_character": 0.14,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.4,
-      "macro_space": 0.94
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

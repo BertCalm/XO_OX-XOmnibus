@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Amber Packed",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.492,
-      "macro_coupling": 0.764,
-      "macro_movement": 0.32,
-      "macro_space": 0.094
-    },
-    "Orphica": {
-      "macro_character": 0.478,
-      "macro_coupling": 0.734,
-      "macro_movement": 0.344,
-      "macro_space": 0.115
-    }
+    "OddfeliX": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

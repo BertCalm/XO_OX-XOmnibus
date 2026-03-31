@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Violet Crease",
   "parameters": {
-    "Odyssey": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.15,
-      "macro_space": 0.97
-    },
-    "Origami": {
-      "macro_character": 0.05,
-      "macro_coupling": 0.89,
-      "macro_movement": 0.1,
-      "macro_space": 1.0
-    }
+    "Odyssey": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

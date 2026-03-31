@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Nebula Eclipse II",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.9416,
-      "macro_coupling": 0.3539,
-      "macro_movement": 0.7902,
-      "macro_space": 0.8224
-    },
-    "Origami": {
-      "macro_character": 0.6796,
-      "macro_coupling": 0.2379,
-      "macro_movement": 0.9283,
-      "macro_space": 0.4501
-    }
+    "Oracle": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

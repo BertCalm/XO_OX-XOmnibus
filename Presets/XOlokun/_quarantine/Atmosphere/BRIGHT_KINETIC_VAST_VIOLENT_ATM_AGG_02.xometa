@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "BRIGHT KINETIC VAST VIOLENT... (Orbital)",
   "parameters": {
-    "Orbital": {
-      "macro_character": 0.846,
-      "macro_coupling": 0.806,
-      "macro_movement": 0.943,
-      "macro_space": 0.875
-    },
-    "Origami": {
-      "macro_character": 0.857,
-      "macro_coupling": 0.823,
-      "macro_movement": 0.911,
-      "macro_space": 0.851
-    }
+    "Orbital": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

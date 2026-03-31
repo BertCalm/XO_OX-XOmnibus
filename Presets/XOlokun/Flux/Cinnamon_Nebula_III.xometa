@@ -38,19 +38,10 @@
   "name": "Cinnamon Nebula III",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.8085,
-      "macro_coupling": 0.6128,
-      "macro_movement": 0.862,
-      "macro_space": 0.8472,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Odyssey": {
-      "macro_character": 0.8485,
-      "macro_coupling": 0.493,
-      "macro_movement": 0.9787,
-      "macro_space": 0.8419
-    }
+    "Odyssey": {}
   },
   "schema_version": 1,
   "tags": [

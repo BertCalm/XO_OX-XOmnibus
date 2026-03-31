@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "BRIGHT WARM VAST VIOLENT PR... (Oracle I)",
   "parameters": {
-    "Oracle": {
-      "macro_character": 0.915,
-      "macro_coupling": 0.851,
-      "macro_movement": 0.311,
-      "macro_space": 0.894
-    },
-    "Ottoni": {
-      "macro_character": 0.889,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.307,
-      "macro_space": 0.888
-    }
+    "Oracle": {},
+    "Ottoni": {}
   },
   "schema_version": 1,
   "tags": [

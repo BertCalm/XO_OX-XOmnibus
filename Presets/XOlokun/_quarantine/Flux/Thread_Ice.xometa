@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Thread Ice",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.1474,
-      "macro_coupling": 0.4565,
-      "macro_movement": 0.4243,
-      "macro_space": 0.8161
-    },
-    "Organon": {
-      "macro_character": 0.2277,
-      "macro_coupling": 0.6052,
-      "macro_movement": 0.2754,
-      "macro_space": 0.8617
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

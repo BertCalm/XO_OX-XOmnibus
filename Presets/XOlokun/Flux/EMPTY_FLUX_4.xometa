@@ -37,17 +37,8 @@
   "mood": "Flux",
   "name": "EMPTY FLUX 4",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.8643,
-      "macro_coupling": 0.615,
-      "macro_movement": 0.8553,
-      "macro_space": 0.5071
-    },
+    "OddOscar": {},
     "Overdub": {
-      "macro_character": 0.4627,
-      "macro_coupling": 0.7918,
-      "macro_movement": 0.5543,
-      "macro_space": 0.8959,
       "dub_lfoDepth": 0.12
     }
   },

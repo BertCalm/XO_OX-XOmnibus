@@ -37,18 +37,8 @@
   "mood": "Foundation",
   "name": "Flux Deep",
   "parameters": {
-    "Onset": {
-      "macro_character": 0.495,
-      "macro_coupling": 0.656,
-      "macro_movement": 0.396,
-      "macro_space": 0.686
-    },
-    "Origami": {
-      "macro_character": 0.464,
-      "macro_coupling": 0.612,
-      "macro_movement": 0.377,
-      "macro_space": 0.662
-    }
+    "Onset": {},
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

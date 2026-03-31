@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Penumbra Abyss II",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.667,
-      "macro_coupling": 0.675,
-      "macro_movement": 0.092,
-      "macro_space": 0.762
-    },
-    "Organon": {
-      "macro_character": 0.514,
-      "macro_coupling": 0.826,
-      "macro_movement": 0.116,
-      "macro_space": 0.827
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

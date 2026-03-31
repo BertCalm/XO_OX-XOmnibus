@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Quartz Horizon",
   "parameters": {
-    "Oceanic": {
-      "macro_character": 0.5402,
-      "macro_coupling": 0.6512,
-      "macro_movement": 0.8754,
-      "macro_space": 0.9229
-    },
-    "OddfeliX": {
-      "macro_character": 0.519,
-      "macro_coupling": 0.6704,
-      "macro_movement": 0.8637,
-      "macro_space": 0.962
-    }
+    "Oceanic": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

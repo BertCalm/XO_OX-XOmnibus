@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Fat Loop",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.7,
-      "macro_space": 0.1
-    },
-    "Ouroboros": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.8,
-      "macro_space": 0.2
-    }
+    "Obese": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Void Resonance (Ouroboros I)",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.6,
-      "macro_space": 0.85
-    }
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "tags": [

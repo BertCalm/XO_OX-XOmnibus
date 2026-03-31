@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Ember Sky",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.79,
-      "macro_space": 0.72
-    },
-    "Osprey": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.5,
-      "macro_space": 0.63
-    }
+    "Opal": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

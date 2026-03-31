@@ -39,18 +39,8 @@
   "mood": "Flux",
   "name": "Heavy Titanium",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.94,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.9,
-      "macro_space": 0.34
-    },
-    "Ouroboros": {
-      "macro_character": 0.97,
-      "macro_coupling": 0.89,
-      "macro_movement": 0.92,
-      "macro_space": 0.41
-    }
+    "Opal": {},
+    "Ouroboros": {}
   },
   "schema_version": 1,
   "sequencer": null,

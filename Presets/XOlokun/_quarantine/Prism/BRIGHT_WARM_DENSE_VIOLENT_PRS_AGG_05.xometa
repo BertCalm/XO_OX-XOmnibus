@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "BRIGHT WARM DENSE VIOLENT P... (Owlfish I)",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.858,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.418,
-      "macro_space": 0.42
-    },
-    "Owlfish": {
-      "macro_character": 0.822,
-      "macro_coupling": 0.784,
-      "macro_movement": 0.437,
-      "macro_space": 0.428
-    }
+    "Ohm": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

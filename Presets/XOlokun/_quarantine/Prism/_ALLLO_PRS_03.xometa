@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "ALLLO PRS 03",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.095,
-      "macro_coupling": 0.086,
-      "macro_movement": 0.244,
-      "macro_space": 0.077
-    },
-    "Osteria": {
-      "macro_character": 0.095,
-      "macro_coupling": 0.086,
-      "macro_movement": 0.244,
-      "macro_space": 0.077
-    }
+    "Oblique": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT COLD KINETIC BALANCE... (Osprey I)",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.454,
-      "macro_coupling": 0.876,
-      "macro_movement": 0.914,
-      "macro_space": 0.568
-    },
-    "Osprey": {
-      "macro_character": 0.478,
-      "macro_coupling": 0.854,
-      "macro_movement": 0.892,
-      "macro_space": 0.585
-    }
+    "Ombre": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Radiant Plate",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.628,
-      "macro_coupling": 0.741,
-      "macro_movement": 0.308,
-      "macro_space": 0.582
-    },
-    "Owlfish": {
-      "macro_character": 0.484,
-      "macro_coupling": 0.742,
-      "macro_movement": 0.622,
-      "macro_space": 0.636
-    }
+    "Ohm": {},
+    "Owlfish": {}
   },
   "schema_version": 1,
   "tags": [

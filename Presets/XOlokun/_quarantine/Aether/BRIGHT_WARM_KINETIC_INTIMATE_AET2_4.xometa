@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "Candlelight Cascade",
   "parameters": {
-    "Ombre": {
-      "macro_character": 0.99,
-      "macro_coupling": 0.668,
-      "macro_movement": 0.9208,
-      "macro_space": 0.0412
-    },
-    "Osprey": {
-      "macro_character": 0.9449,
-      "macro_coupling": 0.6708,
-      "macro_movement": 0.9269,
-      "macro_space": 0.0677
-    }
+    "Ombre": {},
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Thread Storm 2",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.486,
-      "macro_coupling": 0.733,
-      "macro_movement": 0.41,
-      "macro_space": 0.105
-    },
-    "Orphica": {
-      "macro_character": 0.963,
-      "macro_coupling": 0.707,
-      "macro_movement": 0.41,
-      "macro_space": 0.105
-    }
+    "Origami": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

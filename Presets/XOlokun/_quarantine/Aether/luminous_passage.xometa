@@ -26,12 +26,7 @@
   "mood": "Aether",
   "name": "Luminous Passage",
   "parameters": {
-    "Origami": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.2,
-      "macro_movement": 0.68,
-      "macro_space": 0.91
-    }
+    "Origami": {}
   },
   "schema_version": 1,
   "tags": [

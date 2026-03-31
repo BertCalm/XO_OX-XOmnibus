@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Mojo Bite",
   "parameters": {
-    "Obese": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.6,
-      "macro_space": 0.25
-    },
-    "Overbite": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.65,
-      "macro_space": 0.2
-    }
+    "Obese": {},
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

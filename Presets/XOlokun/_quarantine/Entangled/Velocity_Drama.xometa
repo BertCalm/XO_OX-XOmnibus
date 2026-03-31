@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Velocity Drama",
   "parameters": {
-    "Obscura": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.56,
-      "macro_space": 0.5
-    },
-    "Ole": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.7,
-      "macro_space": 0.38
-    }
+    "Obscura": {},
+    "Ole": {}
   },
   "schema_version": 1,
   "tags": [

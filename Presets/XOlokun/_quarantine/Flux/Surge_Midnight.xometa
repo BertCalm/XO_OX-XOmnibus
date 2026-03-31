@@ -37,18 +37,8 @@
   "mood": "Flux",
   "name": "Surge Midnight",
   "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.424,
-      "macro_coupling": 0.912,
-      "macro_movement": 0.962,
-      "macro_space": 0.728
-    },
-    "Overworld": {
-      "macro_character": 0.588,
-      "macro_coupling": 0.918,
-      "macro_movement": 0.979,
-      "macro_space": 0.638
-    }
+    "Ouroboros": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

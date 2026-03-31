@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Heavy Sienna",
   "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.704,
-      "macro_coupling": 0.648,
-      "macro_movement": 0.097,
-      "macro_space": 0.455
-    },
-    "Overlap": {
-      "macro_character": 0.831,
-      "macro_coupling": 0.739,
-      "macro_movement": 0.103,
-      "macro_space": 0.523
-    }
+    "OddfeliX": {},
+    "Overlap": {}
   },
   "schema_version": 1,
   "tags": [

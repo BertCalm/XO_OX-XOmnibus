@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "DARK HOT DENSE INTIMATE GEN... (OddOscar I)",
   "parameters": {
-    "Obbligato": {
-      "macro_character": 0.483,
-      "macro_coupling": 0.505,
-      "macro_movement": 0.739,
-      "macro_space": 0.047
-    },
-    "OddOscar": {
-      "macro_character": 0.493,
-      "macro_coupling": 0.499,
-      "macro_movement": 0.726,
-      "macro_space": 0.08
-    }
+    "Obbligato": {},
+    "OddOscar": {}
   },
   "schema_version": 1,
   "tags": [

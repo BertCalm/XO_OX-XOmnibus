@@ -37,18 +37,8 @@
   "mood": "Family",
   "name": "Radiant Flutter",
   "parameters": {
-    "Ohm": {
-      "macro_character": 0.919,
-      "macro_coupling": 0.685,
-      "macro_movement": 0.897,
-      "macro_space": 0.701
-    },
-    "Osteria": {
-      "macro_character": 0.939,
-      "macro_coupling": 0.711,
-      "macro_movement": 0.892,
-      "macro_space": 0.686
-    }
+    "Ohm": {},
+    "Osteria": {}
   },
   "schema_version": 1,
   "tags": [

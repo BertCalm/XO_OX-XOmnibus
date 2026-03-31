@@ -39,19 +39,10 @@
   "name": "Omen Block Weight",
   "parameters": {
     "Oblong": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.8,
-      "macro_space": 0.4,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Oracle": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.8,
-      "macro_space": 0.3
-    }
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

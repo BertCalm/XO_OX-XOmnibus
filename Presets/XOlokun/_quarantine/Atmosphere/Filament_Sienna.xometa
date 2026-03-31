@@ -37,18 +37,8 @@
   "mood": "Atmosphere",
   "name": "Filament Sienna",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.335,
-      "macro_coupling": 0.832,
-      "macro_movement": 0.583,
-      "macro_space": 0.908
-    },
-    "Organon": {
-      "macro_character": 0.387,
-      "macro_coupling": 0.794,
-      "macro_movement": 0.57,
-      "macro_space": 0.741
-    }
+    "Opal": {},
+    "Organon": {}
   },
   "schema_version": 1,
   "tags": [

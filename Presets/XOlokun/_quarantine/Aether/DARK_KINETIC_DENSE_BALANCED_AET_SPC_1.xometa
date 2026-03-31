@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "DARK KINETIC DENSE BALANCED...",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.227,
-      "macro_coupling": 0.863,
-      "macro_movement": 0.888,
-      "macro_space": 0.579
-    },
-    "OddfeliX": {
-      "macro_character": 0.239,
-      "macro_coupling": 0.875,
-      "macro_movement": 0.896,
-      "macro_space": 0.567
-    }
+    "OddOscar": {},
+    "OddfeliX": {}
   },
   "schema_version": 1,
   "tags": [

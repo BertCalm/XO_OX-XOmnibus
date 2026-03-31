@@ -47,10 +47,6 @@
       "drive": 0.1157,
       "filter_cutoff": 0.5048,
       "filter_resonance": 0.1764,
-      "macro_character": 0.4669,
-      "macro_coupling": 0.6201,
-      "macro_movement": 0.0988,
-      "macro_space": 0.0349,
       "output_level": 0.8323,
       "reverb_mix": 0.1626,
       "reverb_size": 0.2522
@@ -63,10 +59,6 @@
       "drive": 0.0749,
       "filter_cutoff": 0.5256,
       "filter_resonance": 0.157,
-      "macro_character": 0.4962,
-      "macro_coupling": 0.5881,
-      "macro_movement": 0.0999,
-      "macro_space": 0.0449,
       "output_level": 0.8598,
       "reverb_mix": 0.1808,
       "reverb_size": 0.1997

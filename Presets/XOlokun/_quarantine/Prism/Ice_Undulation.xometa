@@ -37,18 +37,8 @@
   "mood": "Prism",
   "name": "Ice Undulation",
   "parameters": {
-    "Ole": {
-      "macro_character": 0.709,
-      "macro_coupling": 0.725,
-      "macro_movement": 0.936,
-      "macro_space": 0.9
-    },
-    "Overworld": {
-      "macro_character": 0.314,
-      "macro_coupling": 0.377,
-      "macro_movement": 0.936,
-      "macro_space": 0.9
-    }
+    "Ole": {},
+    "Overworld": {}
   },
   "schema_version": 1,
   "tags": [

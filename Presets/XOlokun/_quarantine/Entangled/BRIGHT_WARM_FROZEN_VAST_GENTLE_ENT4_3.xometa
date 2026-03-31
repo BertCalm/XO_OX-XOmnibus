@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Bloom Canyon",
   "parameters": {
-    "OddOscar": {
-      "macro_character": 0.883,
-      "macro_coupling": 0.372,
-      "macro_movement": 0.061,
-      "macro_space": 0.976
-    },
-    "Orphica": {
-      "macro_character": 0.894,
-      "macro_coupling": 0.372,
-      "macro_movement": 0.059,
-      "macro_space": 0.99
-    }
+    "OddOscar": {},
+    "Orphica": {}
   },
   "schema_version": 1,
   "tags": [

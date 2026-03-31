@@ -38,18 +38,8 @@
   "mood": "Entangled",
   "name": "Cold Oracle",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.19,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.52,
-      "macro_space": 0.89
-    },
-    "Oracle": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.47,
-      "macro_space": 0.92
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

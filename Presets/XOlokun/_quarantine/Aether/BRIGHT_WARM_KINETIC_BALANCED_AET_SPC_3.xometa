@@ -37,18 +37,8 @@
   "mood": "Aether",
   "name": "BRIGHT WARM KINETIC BALANCE... (Oblique I)",
   "parameters": {
-    "Oblique": {
-      "macro_character": 0.912,
-      "macro_coupling": 0.783,
-      "macro_movement": 0.902,
-      "macro_space": 0.488
-    },
-    "Oracle": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.765,
-      "macro_movement": 0.894,
-      "macro_space": 0.462
-    }
+    "Oblique": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [

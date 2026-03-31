@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "Copper Rage 2",
   "parameters": {
-    "Octopus": {
-      "macro_character": 0.45,
-      "macro_coupling": 0.624,
-      "macro_movement": 0.015,
-      "macro_space": 0.051
-    },
-    "Ombre": {
-      "macro_character": 0.49,
-      "macro_coupling": 0.598,
-      "macro_movement": 0.022,
-      "macro_space": 0.075
-    }
+    "Octopus": {},
+    "Ombre": {}
   },
   "schema_version": 1,
   "tags": [

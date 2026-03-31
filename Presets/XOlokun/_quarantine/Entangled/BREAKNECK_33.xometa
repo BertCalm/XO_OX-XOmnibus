@@ -37,18 +37,8 @@
   "mood": "Entangled",
   "name": "BREAKNECK 33",
   "parameters": {
-    "Opal": {
-      "macro_character": 0.745,
-      "macro_coupling": 0.049,
-      "macro_movement": 0.937,
-      "macro_space": 0.606
-    },
-    "Oracle": {
-      "macro_character": 0.497,
-      "macro_coupling": 0.904,
-      "macro_movement": 0.949,
-      "macro_space": 0.286
-    }
+    "Opal": {},
+    "Oracle": {}
   },
   "schema_version": 1,
   "tags": [
