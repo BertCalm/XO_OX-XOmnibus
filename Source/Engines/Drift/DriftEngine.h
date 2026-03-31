@@ -1439,7 +1439,7 @@ public:
         // --- LFO ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "drift_lfoRate", 1 }, "Drift LFO Rate",
-            juce::NormalisableRange<float> (0.1f, 20.0f, 0.01f, 0.3f), 1.5f));
+            juce::NormalisableRange<float> (0.01f, 20.0f, 0.001f, 0.3f), 1.5f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "drift_lfoDepth", 1 }, "Drift LFO Depth",
