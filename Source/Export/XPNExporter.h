@@ -1242,8 +1242,12 @@ private:
 
     static juce::String sanitizeFilename(const juce::String& name)
     {
-        return name.replaceCharacters(" /\\:*?\"<>|", "__________")
-                   .substring(0, 50);
+        juce::String result = name.replaceCharacters(" /\\:*?\"<>|", "__________")
+                                  .substring(0, 50);
+        // After existing character stripping:
+        result = result.trimCharactersAtStart(".").trimCharactersAtEnd(".");
+        if (result == ".." || result == ".") result = "unnamed";
+        return result;
     }
 
     static juce::String wavFilename(const juce::String& presetName, int note, int velLayer)
