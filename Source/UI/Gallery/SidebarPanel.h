@@ -268,9 +268,20 @@ public:
             settings.setValue("sidebarTab", static_cast<int>(t));
         }
 
-        // Move keyboard focus into the content area
-        if (auto* focusable = contentArea.getChildComponent(0))
-            focusable->grabKeyboardFocus();
+        // Move keyboard focus into the content area — only grab focus on
+        // a visible child so invisible panels don't silently swallow input (#205).
+        juce::Component* focusTarget = nullptr;
+        for (int ci = 0; ci < contentArea.getNumChildComponents(); ++ci)
+        {
+            auto* child = contentArea.getChildComponent(ci);
+            if (child != nullptr && child->isVisible())
+            {
+                focusTarget = child;
+                break;
+            }
+        }
+        if (focusTarget != nullptr)
+            focusTarget->grabKeyboardFocus();
         else
             contentArea.grabKeyboardFocus();
     }
@@ -283,9 +294,18 @@ public:
 
         if (key == juce::KeyPress::leftKey || key == juce::KeyPress::rightKey)
         {
-            int next = static_cast<int>(activeTab)
-                       + (key == juce::KeyPress::rightKey ? 1 : -1);
+            const int direction = (key == juce::KeyPress::rightKey) ? 1 : -1;
+            int next = static_cast<int>(activeTab) + direction;
             next = (next + n) % n;
+            // Skip invisible tabs (e.g. PLAY, index 4) — cycling must only land
+            // on visible tabs (#205).  Guard against infinite loop by capping
+            // iterations at NumTabs.
+            for (int guard = 0; guard < n; ++guard)
+            {
+                if (tabButtons[next] != nullptr && tabButtons[next]->isVisible())
+                    break;
+                next = (next + direction + n) % n;
+            }
             selectTab(static_cast<Tab>(next));
 
             // Return focus to the newly active tab button
