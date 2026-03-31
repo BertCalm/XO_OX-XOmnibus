@@ -10,8 +10,6 @@
 #include <cstdint>
 #include <algorithm>
 #include <cstring>
-#include <mutex>
-
 namespace xolokun {
 
 //==============================================================================
@@ -328,9 +326,11 @@ struct ObiontCA1D {
     // 0=A, 1=B, 2=C — which buffer is currently "ready" (audio-thread readable)
     std::atomic<int> readyIdx   { 0 };
     int              pendingIdx { 1 };
-    // Lock protecting writes to pendingIdx buffer from concurrent access.
-    // Only taken during evolution (off-hot-path per-block at most once).
-    std::mutex       evolveMutex;
+    // RT-safe reseed: UI thread sets flag + params; audio thread performs actual seed.
+    // No std::mutex — audio thread does ALL buffer mutation.
+    std::atomic<bool> needsReseed_ { false };
+    std::atomic<int>  pendingSeedFreq_    { 1 };
+    std::atomic<float> pendingSeedDensity_ { 0.5f };
 
     // Current rule (0-255)
     uint8_t rule  = 90;
@@ -343,13 +343,28 @@ struct ObiontCA1D {
         for (auto& b : bufs) std::fill(std::begin(b), std::end(b), uint8_t(0));
         readyIdx.store(0, std::memory_order_relaxed);
         pendingIdx = 1;
+        needsReseed_.store(false, std::memory_order_relaxed);
     }
 
     // Seed the pending buffer with a structured sinusoidal pattern.
+    // RT-safe: if called from a non-audio thread, stores params and sets
+    // needsReseed_; the audio thread will perform the actual write inside
+    // evolve(). If called from the audio thread (the normal case — noteOn /
+    // steal / anti-extinction), the flag is consumed immediately on the next
+    // evolve() call.
     // frequency: how many "bumps" across the ring (1=one half-wave, 2=full, etc.)
     // density:   0-1, threshold for cell-on (0.5 = balanced; >0.5 = denser)
-    void seedSinusoidal(int frequency, float density, uint32_t& rng) noexcept {
-        std::lock_guard<std::mutex> lock(evolveMutex);
+    void seedSinusoidal(int frequency, float density, uint32_t& /*rng*/) noexcept {
+        pendingSeedFreq_.store(frequency, std::memory_order_relaxed);
+        pendingSeedDensity_.store(density, std::memory_order_relaxed);
+        needsReseed_.store(true, std::memory_order_release);
+    }
+
+    // Internal helper — performs the actual buffer write; must be called on the
+    // audio thread only.  rng is the voice's LCG state (mutated in-place).
+    void doSeed(uint32_t& rng) noexcept {
+        const int  frequency = pendingSeedFreq_.load(std::memory_order_relaxed);
+        const float density  = pendingSeedDensity_.load(std::memory_order_relaxed);
         for (int i = 0; i < kObiontGridWidth1D; ++i) {
             // Sinusoidal envelope: sin(2π * freq * i / N) → 0..1
             float val = 0.5f + 0.5f * std::sin(6.28318530718f * frequency * i / (float)kObiontGridWidth1D);
@@ -369,7 +384,10 @@ struct ObiontCA1D {
     // rng: caller's LCG state (modified in-place).
     // Returns the live-cell ratio (for anti-extinction check and Grid Energy source).
     float evolve(float chaosProbFP, float morphAmtSnapshot, uint32_t& rng) noexcept {
-        std::lock_guard<std::mutex> lock(evolveMutex);
+        // Check for a pending reseed requested by noteOn/steal/anti-extinction.
+        // All buffer mutation happens here on the audio thread — lock-free.
+        if (needsReseed_.exchange(false, std::memory_order_acquire))
+            doSeed(rng);
 
         const int readIdx = readyIdx.load(std::memory_order_acquire);
         const uint8_t* src = bufs[readIdx];
@@ -453,8 +471,8 @@ struct ObiontCA1D {
 // Rule Morphing: obnt_ruleMorph blends toward Conway B3/S23 (0xC8),
 //   matching the 1D morph semantics (bit-by-bit probabilistic blend).
 //
-// Thread model: same as ObiontCA1D — audio-thread-only evolution, double-buffer
-//   swap (current ↔ next). evolveMutex protects the write buffer.
+// Thread model: same as ObiontCA1D — audio-thread-only evolution, lock-free
+//   swap (current ↔ next). needsReseed_ atomic flag replaces evolveMutex.
 // ---------------------------------------------------------------------------
 struct ObiontCA2D {
     static constexpr int kCells  = kObiontGridH2D * kObiontGridW2D; // 4096
@@ -472,23 +490,36 @@ struct ObiontCA2D {
     // Used by ObiontProjection2D for harmonic amplitude without a second pass.
     int colLive[kObiontGridW2D] = {};
 
-    // Mutex protecting gridB writes during seedRandom / evolve
-    std::mutex evolveMutex;
+    // RT-safe reseed: UI thread sets flag + params; audio thread performs actual seed.
+    // No std::mutex — audio thread does ALL buffer mutation.
+    std::atomic<bool>  needsReseed_        { false };
+    std::atomic<int>   pendingSeedFreq_    { 1 };
+    std::atomic<float> pendingSeedDensity_ { 0.5f };
 
     void reset() noexcept {
         std::memset(gridA, 0, sizeof(gridA));
         std::memset(gridB, 0, sizeof(gridB));
         std::memset(colLive, 0, sizeof(colLive));
         readyBuf.store(0, std::memory_order_relaxed);
+        needsReseed_.store(false, std::memory_order_relaxed);
     }
 
     // Seed the write buffer with a structured density pattern.
-    // Seeds a sinusoidal density wave across columns, modulated by the MIDI note
-    // to vary timbral character. Similar to ObiontCA1D::seedSinusoidal.
+    // RT-safe: stores params and sets needsReseed_; the audio thread performs
+    // the actual write inside evolve().
     // seedFreq: number of spatial periods across the grid width (1–8).
     // density: base 0-1 probability of cell-on (0.5 = balanced).
-    void seedSinusoidal(int seedFreq, float density, uint32_t& rng) noexcept {
-        std::lock_guard<std::mutex> lock(evolveMutex);
+    void seedSinusoidal(int seedFreq, float density, uint32_t& /*rng*/) noexcept {
+        pendingSeedFreq_.store(seedFreq, std::memory_order_relaxed);
+        pendingSeedDensity_.store(density, std::memory_order_relaxed);
+        needsReseed_.store(true, std::memory_order_release);
+    }
+
+    // Internal helper — performs the actual buffer write; must be called on the
+    // audio thread only.  rng is the voice's LCG state (mutated in-place).
+    void doSeed(uint32_t& rng) noexcept {
+        const int   seedFreq = pendingSeedFreq_.load(std::memory_order_relaxed);
+        const float density  = pendingSeedDensity_.load(std::memory_order_relaxed);
         const int readIdx = readyBuf.load(std::memory_order_relaxed);
         uint8_t* dst = (readIdx == 0) ? gridB : gridA;
 
@@ -517,7 +548,10 @@ struct ObiontCA2D {
     // Returns live-cell ratio (for grid energy mod source + anti-extinction).
     float evolve(uint8_t ruleParam, float morphAmt, float chaosProbFP,
                  uint32_t& rng) noexcept {
-        std::lock_guard<std::mutex> lock(evolveMutex);
+        // Check for a pending reseed requested by noteOn/steal/anti-extinction.
+        // All buffer mutation happens here on the audio thread — lock-free.
+        if (needsReseed_.exchange(false, std::memory_order_acquire))
+            doSeed(rng);
 
         // Blend rule toward Conway B3/S23 (0xC8) using per-bit probabilistic morph
         // (same pattern as ObiontCA1D rule morphing)
