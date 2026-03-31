@@ -45,7 +45,7 @@ VALID_MOODS = {
 }
 
 VALID_ENGINES = {
-    # Canonical O-prefix engine IDs (all 73)
+    # Canonical O-prefix engine IDs (all 73+)
     # Original fleet
     "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
     "Obese", "Onset", "Overworld", "Opal", "Orbital",
@@ -69,6 +69,8 @@ VALID_ENGINES = {
     "Overwash", "Overworn", "Overflow", "Overcast",
     # Kitchen Collection — Fusion (EP)
     "Oasis", "Oddfellow", "Onkolo", "Opcode",
+    # Recent additions
+    "Okeanos", "Outflow", "Obiont",
     # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
     "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",
