@@ -48,7 +48,7 @@ enum class CouplingType {
 };
 
 /// Total number of coupling types — useful for building iteration tables.
-constexpr int kNumCouplingTypes = 14;
+constexpr int kNumCouplingTypes = 15;
 
 /// Human-readable display name for each CouplingType.
 /// Used in UI labels, preset debugging, and validation output.

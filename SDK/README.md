@@ -48,7 +48,7 @@ SDK/
   include/
     xolokun/
       SynthEngine.h       — the interface (inherit this)
-      CouplingTypes.h     — 14 coupling type enums
+      CouplingTypes.h     — 15 coupling type enums
       EngineModule.h      — XOLOKUN_EXPORT_ENGINE macro
   examples/
     HelloEngine/
@@ -166,7 +166,7 @@ void applyCouplingInput (CouplingType type, float amount,
 | `AmpToChoke` | Source amplitude ducks/chokes receiver |
 | `EnvToDecay` | Source envelope modulates receiver's decay time |
 | `PitchToPitch` | Source pitch transposes receiver (harmony) |
-| ... | See `SDK/include/xolokun/CouplingTypes.h` for all 14 |
+| ... | See `SDK/include/xolokun/CouplingTypes.h` for all 15 |
 
 ---
 
