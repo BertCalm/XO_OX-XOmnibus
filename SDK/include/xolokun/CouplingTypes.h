@@ -42,13 +42,17 @@ enum class CouplingType {
     RhythmToBlend,     ///< Source rhythm pattern modulates destination blend parameter
 
     // --- Bidirectional (post-V1) -------------------------------------------
-    KnotTopology       ///< Both engines mutually modulate each other's pitch/filter/morph
+    KnotTopology,      ///< Both engines mutually modulate each other's pitch/filter/morph
                        ///< via a shared knot state variable. Included now for forward
                        ///< compatibility; the MegaCouplingMatrix activates it in V1.1.
+
+    // --- Love triangle ---------------------------------------------------
+    TriangularCoupling ///< Source engine's intimacy/passion/connection bleed into
+                       ///< destination engine's love components (Oxytocin signature coupling)
 };
 
 /// Total number of coupling types — useful for building iteration tables.
-constexpr int kNumCouplingTypes = 14;
+constexpr int kNumCouplingTypes = 15;
 
 /// Human-readable display name for each CouplingType.
 /// Used in UI labels, preset debugging, and validation output.
@@ -70,6 +74,7 @@ inline const char* couplingTypeName (CouplingType t)
         case CouplingType::PitchToPitch:     return "Pitch→Pitch";
         case CouplingType::RhythmToBlend:    return "Rhythm→Blend";
         case CouplingType::KnotTopology:     return "Knot↔Topology";
+        case CouplingType::TriangularCoupling: return "Love△Coupling";
     }
     return "Unknown";
 }

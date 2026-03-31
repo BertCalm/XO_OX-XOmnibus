@@ -115,12 +115,12 @@ public:
                 apvts, prefix + "active", section.activeBtn);
             addAndMakeVisible (section.activeBtn);
 
-            // Coupling type combo (14 types from CouplingType enum)
+            // Coupling type combo (15 types from CouplingType enum)
             section.typeBox.addItemList ({
                 "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
                 "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
                 "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
-                "AudioToBuffer", "KnotTopology"
+                "AudioToBuffer", "KnotTopology", "TriangularCoupling"
             }, 1);
             A11y::setup (section.typeBox, "Route " + juce::String (r + 1) + " Coupling Type");
             section.typeAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment> (
