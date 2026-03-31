@@ -23,7 +23,7 @@ namespace xolokun {
 //   V8 FX/Cymbal    → Note 49 (C#3)
 //
 // Velocity layers per pad:
-//   Layer 1: vel 0–31   (ghost)
+//   Layer 1: vel 1–31   (ghost)
 //   Layer 2: vel 32–63  (soft)
 //   Layer 3: vel 64–95  (medium)
 //   Layer 4: vel 96–127 (hard)
@@ -308,7 +308,7 @@ private:
     static VelRange velRangeForLayer(int layer)
     {
         static constexpr VelRange ranges[kVelLayers] = {
-            { 0, 31 }, { 32, 63 }, { 64, 95 }, { 96, 127 }
+            { 1, 31 }, { 32, 63 }, { 64, 95 }, { 96, 127 }
         };
         return ranges[juce::jlimit(0, 3, layer)];
     }
