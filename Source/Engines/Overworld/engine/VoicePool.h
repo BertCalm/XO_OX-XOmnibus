@@ -210,7 +210,7 @@ struct ChipWavetables {
 };
 
 // Single global wavetable set (allocated in VoicePool, built on prepare())
-static ChipWavetables gWavetables;
+inline ChipWavetables gWavetables;
 
 //==============================================================================
 // Per-voice state
