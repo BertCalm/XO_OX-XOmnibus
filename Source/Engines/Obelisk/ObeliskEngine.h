@@ -549,7 +549,7 @@ public:
     static constexpr float kPruneThreshold = 1e-6f;  // -120 dB dynamic mode pruning
 
     juce::String getEngineId() const override { return "Obelisk"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF4A4A4A); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFFFFFF0); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 

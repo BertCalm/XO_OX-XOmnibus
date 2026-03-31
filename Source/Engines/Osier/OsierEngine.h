@@ -232,7 +232,7 @@ public:
     static constexpr int kMaxVoices = 4;
 
     juce::String getEngineId() const override { return "Osier"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF6B8E23); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFC0C8C8); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 

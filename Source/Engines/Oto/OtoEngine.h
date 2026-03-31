@@ -329,7 +329,7 @@ public:
     static constexpr float kTwoPi = 6.28318530717958647692f;
 
     juce::String getEngineId() const override { return "Oto"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF7BA05B); }  // Bamboo Green
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFF5F0E8); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 

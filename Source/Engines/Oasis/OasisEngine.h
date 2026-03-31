@@ -450,7 +450,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
     juce::String getEngineId() const override { return "Oasis"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF00FFFF); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFF00827F); }
     int getMaxVoices() const override { return kMaxVoices; }
 
     int getActiveVoiceCount() const override

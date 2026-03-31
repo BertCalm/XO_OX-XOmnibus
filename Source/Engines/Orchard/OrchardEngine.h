@@ -160,7 +160,7 @@ public:
     static constexpr int kMaxVoices = 4;
 
     juce::String getEngineId() const override { return "Orchard"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFDAA520); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFFFB7C5); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 

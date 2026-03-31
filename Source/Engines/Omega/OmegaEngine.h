@@ -218,7 +218,7 @@ public:
     static constexpr int kNumAlgorithms = 8;
 
     juce::String getEngineId() const override { return "Omega"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFB04010); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFF003366); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 

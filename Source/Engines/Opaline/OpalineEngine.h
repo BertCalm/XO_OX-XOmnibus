@@ -388,7 +388,7 @@ public:
     static constexpr int kNumModes = 16;  // V1: 16 full IIR modes (CPU optimization strategy)
 
     juce::String getEngineId() const override { return "Opaline"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFB8D4E3); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFB7410E); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
