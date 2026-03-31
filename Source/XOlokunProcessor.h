@@ -106,7 +106,7 @@ public:
     const juce::String getName() const override { return "XOlokun"; }
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return true; }
-    double getTailLengthSeconds() const override { return 6.0; }
+    double getTailLengthSeconds() const override { return 22.0; }
 
     int getNumPrograms() override { return 1; }
     int getCurrentProgram() override { return 0; }
