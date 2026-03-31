@@ -388,7 +388,15 @@ DEFAULT_STRATEGY = {
 
 
 def _resolve_engine_name(engine_id: str) -> str:
-    """Resolve engine ID from preset to canonical name."""
+    """Resolve engine ID from preset 'engines' array to canonical display name.
+
+    NOTE: oxport.py also maintains ENGINE_ALIASES for CLI input normalization.
+    Importing oxport here would create a circular import (oxport imports this
+    module), so both tables are kept in sync manually. If you add a new alias,
+    add it to both ENGINE_ALIASES in oxport.py and this dict.
+    These aliases resolve legacy preset-internal engine IDs (Snap, Bob, etc.)
+    to canonical names; oxport.py's table normalises case variants from the CLI.
+    """
     aliases = {
         "Snap": "OddfeliX", "Morph": "OddOscar",
         "Dub": "Overdub", "Drift": "Odyssey",
