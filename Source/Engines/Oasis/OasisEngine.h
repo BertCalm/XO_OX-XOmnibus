@@ -587,7 +587,7 @@ public:
                 wakeSilenceGate();
 
                 // Entropy analysis: measure timing deviation from expected grid
-                int timeSinceLastNote = sampleCounter_ - lastNoteOnTime_;
+                int64_t timeSinceLastNote = sampleCounter_ - lastNoteOnTime_;
                 if (expectedInterval_ > 0)
                 {
                     float deviation = std::fabs (static_cast<float> (timeSinceLastNote - expectedInterval_))
@@ -1287,9 +1287,9 @@ private:
     float entropy_ = 0.0f;
     float ecologicalHealth_ = 0.5f;
     float culledEnergy_ = 0.0f;
-    int lastNoteOnTime_ = 0;
+    int64_t lastNoteOnTime_ = 0;
     int expectedInterval_ = 0;
-    int sampleCounter_ = 0;
+    int64_t sampleCounter_ = 0;
     uint32_t noiseRng_ = 42u;
 
     // Coupling state
