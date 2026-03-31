@@ -221,7 +221,7 @@ struct ParamSnapshot
 // params. Integer quantisation and bool thresholds (> 0.5f) are applied in
 // OverworldEngine::buildSnapshot().
 //------------------------------------------------------------------------------
-static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
 {
     using P = juce::AudioParameterFloat;
     using PI = juce::ParameterID;
@@ -333,7 +333,7 @@ static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
 //------------------------------------------------------------------------------
 // createParameterLayout — wraps addParameters into an APVTS ParameterLayout.
 //------------------------------------------------------------------------------
-static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
+inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
     addParameters(params);
