@@ -3961,7 +3961,6 @@ function openEngineModal(eng) {
     const li = document.createElement('li');
     li.textContent = f;
     li.style.setProperty('--dot-color', eng.color);
-    li.querySelector || null; // no-op
     // Set bullet color via inline
     li.innerHTML = `<span style="position:absolute;left:0;top:0.55em;width:5px;height:5px;border-radius:50%;background:${eng.color}"></span>${f}`;
     ul.appendChild(li);
