@@ -637,6 +637,8 @@ final class AudioEngineManager: ObservableObject {
             // Start with playback — switch to playAndRecord when mic is needed (catch)
             try session.setCategory(.playback)
             try session.setPreferredIOBufferDuration(0.005) // 5ms = 256 samples at 48kHz
+            let preferredRate: Double = UserDefaults.standard.integer(forKey: "audio.sampleRate") == 1 ? 48000.0 : 44100.0
+            try session.setPreferredSampleRate(preferredRate)
             // setActive(true) is deferred to start() — called just before JUCE bridge starts
             audioSessionConfigured = true
 
