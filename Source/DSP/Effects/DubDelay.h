@@ -110,15 +110,7 @@ public:
                        float* leftOut, float* rightOut, int numSamples)
     {
         // Guard: if prepare() hasn't been called, pass audio through unchanged
-        jassert (bufferSize > 0);  // processBlock called before prepare()
-        if (bufferSize <= 0)
-        {
-            if (leftIn != leftOut)
-                std::copy(leftIn, leftIn + numSamples, leftOut);
-            if (rightIn != rightOut)
-                std::copy(rightIn, rightIn + numSamples, rightOut);
-            return;
-        }
+        if (bufferSize <= 0) return;  // was jassert — moved validation to prepare()
 
         float delaySamplesF = static_cast<float> (delayTimeMs * 0.001 * sr);
         int delaySamples = static_cast<int> (delaySamplesF);
