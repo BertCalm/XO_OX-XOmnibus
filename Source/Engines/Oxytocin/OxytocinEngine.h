@@ -54,7 +54,7 @@ public:
     }
 
 private:
-    double   sr       = 0.0;   // P1-7: default 0 so prepare() is always required
+    double   sr       = 48000.0;   // Safe default fallback; overridden by prepare()
     float    phase    = 0.0f;
     float    shPhase  = 0.0f;
     float    shValue  = 0.0f;
