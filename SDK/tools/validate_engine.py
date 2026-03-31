@@ -18,6 +18,7 @@ Usage:
 Exit code: 0 on full pass, 1 on any FAIL.
 """
 
+import argparse
 import sys
 import re
 import os
@@ -539,12 +540,14 @@ def validate(path: str) -> bool:
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python3 validate_engine.py <path/to/YourEngine.h>")
-        print("       python3 validate_engine.py SDK/examples/HelloEngine/HelloEngine.h")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description="Validate an XOlokun engine header",
+        epilog="Example: python3 validate_engine.py SDK/examples/HelloEngine/HelloEngine.h",
+    )
+    parser.add_argument("file", help="Path to the engine .h file")
+    args = parser.parse_args()
 
-    path = sys.argv[1]
+    path = args.file
     if not os.path.isfile(path):
         print(f"ERROR: File not found: {path}", file=sys.stderr)
         sys.exit(1)
