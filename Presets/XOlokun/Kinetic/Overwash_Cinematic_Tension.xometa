@@ -27,30 +27,32 @@
     "density": 0.39,
     "space": 0.26
   },
-  "params": {
-    "wash_diffusionRate": 0.42,
-    "wash_viscosity": 0.65,
-    "wash_harmonics": 12,
-    "wash_diffusionTime": 20.0,
-    "wash_spreadMax": 180.0,
-    "wash_brightness": 0.52,
-    "wash_warmth": 0.55,
-    "wash_ampAttack": 0.4,
-    "wash_ampDecay": 3.0,
-    "wash_ampSustain": 0.75,
-    "wash_ampRelease": 6.0,
-    "wash_filterCutoff": 3800.0,
-    "wash_filterRes": 0.3,
-    "wash_filtEnvAmount": 0.45,
-    "wash_filtAttack": 0.25,
-    "wash_filtDecay": 2.5,
-    "wash_filtSustain": 0.42,
-    "wash_lfo1Rate": 0.08,
-    "wash_lfo1Depth": 0.25,
-    "wash_lfo2Rate": 0.04,
-    "wash_lfo2Depth": 0.18,
-    "wash_stereoWidth": 0.75,
-    "wash_level": 0.82
-  },
-  "schema_version": 1
+  "schema_version": 1,
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.42,
+      "wash_viscosity": 0.65,
+      "wash_harmonics": 12,
+      "wash_diffusionTime": 20.0,
+      "wash_spreadMax": 180.0,
+      "wash_brightness": 0.52,
+      "wash_warmth": 0.55,
+      "wash_ampAttack": 0.4,
+      "wash_ampDecay": 3.0,
+      "wash_ampSustain": 0.75,
+      "wash_ampRelease": 6.0,
+      "wash_filterCutoff": 3800.0,
+      "wash_filterRes": 0.3,
+      "wash_filtEnvAmount": 0.45,
+      "wash_filtAttack": 0.25,
+      "wash_filtDecay": 2.5,
+      "wash_filtSustain": 0.42,
+      "wash_lfo1Rate": 0.08,
+      "wash_lfo1Depth": 0.25,
+      "wash_lfo2Rate": 0.04,
+      "wash_lfo2Depth": 0.18,
+      "wash_stereoWidth": 0.75,
+      "wash_level": 0.82
+    }
+  }
 }

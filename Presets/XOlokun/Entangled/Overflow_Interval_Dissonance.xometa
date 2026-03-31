@@ -26,24 +26,26 @@
     "density": 0.33,
     "space": 0.22000000000000003
   },
-  "params": {
-    "flow_threshold": 0.62,
-    "flow_accumRate": 0.55,
-    "flow_valveType": 0,
-    "flow_vesselSize": 0.5,
-    "flow_strainColor": 0.58,
-    "flow_releaseTime": 0.65,
-    "flow_ampAttack": 0.28,
-    "flow_ampDecay": 0.7,
-    "flow_ampSustain": 0.88,
-    "flow_ampRelease": 2.8,
-    "flow_filterCutoff": 5800.0,
-    "flow_filterRes": 0.22,
-    "flow_filtEnvAmount": 0.35,
-    "flow_lfo1Rate": 0.1,
-    "flow_lfo1Depth": 0.22,
-    "flow_stereoWidth": 0.62,
-    "flow_level": 0.82
-  },
-  "schema_version": 1
+  "schema_version": 1,
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.62,
+      "flow_accumRate": 0.55,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.5,
+      "flow_strainColor": 0.58,
+      "flow_releaseTime": 0.65,
+      "flow_ampAttack": 0.28,
+      "flow_ampDecay": 0.7,
+      "flow_ampSustain": 0.88,
+      "flow_ampRelease": 2.8,
+      "flow_filterCutoff": 5800.0,
+      "flow_filterRes": 0.22,
+      "flow_filtEnvAmount": 0.35,
+      "flow_lfo1Rate": 0.1,
+      "flow_lfo1Depth": 0.22,
+      "flow_stereoWidth": 0.62,
+      "flow_level": 0.82
+    }
+  }
 }

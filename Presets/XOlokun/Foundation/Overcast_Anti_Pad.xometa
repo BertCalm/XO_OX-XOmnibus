@@ -27,24 +27,26 @@
     "density": 0.12,
     "space": 0.08000000000000002
   },
-  "params": {
-    "cast_freezeRate": 0.03,
-    "cast_crystalSize": 0.48,
-    "cast_numPeaks": 7,
-    "cast_transition": 0,
-    "cast_latticeSnap": 0.8,
-    "cast_purity": 0.7,
-    "cast_crackle": 0.05,
-    "cast_stereoWidth": 0.55,
-    "cast_filterCutoff": 6000.0,
-    "cast_filterRes": 0.1,
-    "cast_ampAttack": 0.001,
-    "cast_ampDecay": 0.15,
-    "cast_ampSustain": 1.0,
-    "cast_ampRelease": 1.5,
-    "cast_lfo1Rate": 0.1,
-    "cast_lfo1Depth": 0.05,
-    "cast_level": 0.8
-  },
-  "schema_version": 1
+  "schema_version": 1,
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.03,
+      "cast_crystalSize": 0.48,
+      "cast_numPeaks": 7,
+      "cast_transition": 0,
+      "cast_latticeSnap": 0.8,
+      "cast_purity": 0.7,
+      "cast_crackle": 0.05,
+      "cast_stereoWidth": 0.55,
+      "cast_filterCutoff": 6000.0,
+      "cast_filterRes": 0.1,
+      "cast_ampAttack": 0.001,
+      "cast_ampDecay": 0.15,
+      "cast_ampSustain": 1.0,
+      "cast_ampRelease": 1.5,
+      "cast_lfo1Rate": 0.1,
+      "cast_lfo1Depth": 0.05,
+      "cast_level": 0.8
+    }
+  }
 }

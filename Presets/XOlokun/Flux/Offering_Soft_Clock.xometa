@@ -23,25 +23,27 @@
     "aggression": 0.2
   },
   "parameters": {
-    "ofr_transientSnap": 0.38,
-    "ofr_transientSat": 0.12,
-    "ofr_transientPitch": 0.3,
-    "ofr_dustVinyl": 0.18,
-    "ofr_dustTape": 0.1,
-    "ofr_cityMode": 3,
-    "ofr_cityIntensity": 0.5,
-    "ofr_digCuriosity": 0.38,
-    "ofr_digFlow": 0.85,
-    "ofr_lfo1Rate": 0.04,
-    "ofr_lfo1Depth": 0.07,
-    "ofr_lfo2Rate": 1.2,
-    "ofr_lfo2Depth": 0.06,
-    "ofr_velToSnap": 0.45,
-    "ofr_masterWidth": 0.55,
-    "ofr_v0_decay": 0.45,
-    "ofr_v3_decay": 0.5,
-    "ofr_v3_level": 0.85,
-    "ofr_v2_decay": 0.04
+    "Offering": {
+      "ofr_transientSnap": 0.38,
+      "ofr_transientSat": 0.12,
+      "ofr_transientPitch": 0.3,
+      "ofr_dustVinyl": 0.18,
+      "ofr_dustTape": 0.1,
+      "ofr_cityMode": 3,
+      "ofr_cityIntensity": 0.5,
+      "ofr_digCuriosity": 0.38,
+      "ofr_digFlow": 0.85,
+      "ofr_lfo1Rate": 0.04,
+      "ofr_lfo1Depth": 0.07,
+      "ofr_lfo2Rate": 1.2,
+      "ofr_lfo2Depth": 0.06,
+      "ofr_velToSnap": 0.45,
+      "ofr_masterWidth": 0.55,
+      "ofr_v0_decay": 0.45,
+      "ofr_v3_decay": 0.5,
+      "ofr_v3_level": 0.85,
+      "ofr_v2_decay": 0.04
+    }
   },
   "engines": [
     "Offering"

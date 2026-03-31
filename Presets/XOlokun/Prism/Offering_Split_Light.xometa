@@ -23,24 +23,26 @@
     "aggression": 0.45
   },
   "parameters": {
-    "ofr_transientSnap": 0.73,
-    "ofr_transientPitch": 0.52,
-    "ofr_transientSat": 0.1,
-    "ofr_dustVinyl": 0.1,
-    "ofr_dustTape": 0.06,
-    "ofr_cityMode": 2,
-    "ofr_cityBlend": 0.45,
-    "ofr_cityIntensity": 0.55,
-    "ofr_digCuriosity": 0.45,
-    "ofr_digComplexity": 0.3,
-    "ofr_digFlow": 0.6,
-    "ofr_masterWidth": 0.85,
-    "ofr_v2_pan": 0.5,
-    "ofr_v3_pan": -0.5,
-    "ofr_v4_pan": 0.3,
-    "ofr_v5_pan": -0.25,
-    "ofr_v6_pan": 0.5,
-    "ofr_v7_pan": -0.5
+    "Offering": {
+      "ofr_transientSnap": 0.73,
+      "ofr_transientPitch": 0.52,
+      "ofr_transientSat": 0.1,
+      "ofr_dustVinyl": 0.1,
+      "ofr_dustTape": 0.06,
+      "ofr_cityMode": 2,
+      "ofr_cityBlend": 0.45,
+      "ofr_cityIntensity": 0.55,
+      "ofr_digCuriosity": 0.45,
+      "ofr_digComplexity": 0.3,
+      "ofr_digFlow": 0.6,
+      "ofr_masterWidth": 0.85,
+      "ofr_v2_pan": 0.5,
+      "ofr_v3_pan": -0.5,
+      "ofr_v4_pan": 0.3,
+      "ofr_v5_pan": -0.25,
+      "ofr_v6_pan": 0.5,
+      "ofr_v7_pan": -0.5
+    }
   },
   "engines": [
     "Offering"

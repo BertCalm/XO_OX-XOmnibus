@@ -27,26 +27,28 @@
     "density": 0.39,
     "space": 0.26
   },
-  "params": {
-    "worn_reductionRate": 0.4,
-    "worn_heat": 0.45,
-    "worn_richness": 1.0,
-    "worn_maillard": 0.28,
-    "worn_umamiDepth": 0.7,
-    "worn_sessionTarget": 30.0,
-    "worn_filterCutoff": 7000.0,
-    "worn_filterRes": 0.16,
-    "worn_filtEnvAmount": 0.28,
-    "worn_ampAttack": 0.72,
-    "worn_ampDecay": 1.3,
-    "worn_ampSustain": 0.88,
-    "worn_ampRelease": 5.5,
-    "worn_lfo1Rate": 0.06,
-    "worn_lfo1Depth": 0.16,
-    "worn_lfo2Rate": 0.015,
-    "worn_lfo2Depth": 0.1,
-    "worn_stereoWidth": 0.44,
-    "worn_level": 0.8
-  },
-  "schema_version": 1
+  "schema_version": 1,
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.4,
+      "worn_heat": 0.45,
+      "worn_richness": 1.0,
+      "worn_maillard": 0.28,
+      "worn_umamiDepth": 0.7,
+      "worn_sessionTarget": 30.0,
+      "worn_filterCutoff": 7000.0,
+      "worn_filterRes": 0.16,
+      "worn_filtEnvAmount": 0.28,
+      "worn_ampAttack": 0.72,
+      "worn_ampDecay": 1.3,
+      "worn_ampSustain": 0.88,
+      "worn_ampRelease": 5.5,
+      "worn_lfo1Rate": 0.06,
+      "worn_lfo1Depth": 0.16,
+      "worn_lfo2Rate": 0.015,
+      "worn_lfo2Depth": 0.1,
+      "worn_stereoWidth": 0.44,
+      "worn_level": 0.8
+    }
+  }
 }

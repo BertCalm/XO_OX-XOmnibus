@@ -23,25 +23,27 @@
     "aggression": 0.65
   },
   "parameters": {
-    "ofr_flipLayers": 2,
-    "ofr_flipChop": 0.55,
-    "ofr_flipStretch": 1.0,
-    "ofr_flipRingMod": 0.4,
-    "ofr_digCuriosity": 0.7,
-    "ofr_digComplexity": 0.75,
-    "ofr_cityMode": 2,
-    "ofr_cityIntensity": 0.75,
-    "ofr_cityBlend": 0.3,
-    "ofr_transientSnap": 0.78,
-    "ofr_transientSat": 0.22,
-    "ofr_lfo1Rate": 0.13,
-    "ofr_lfo1Depth": 0.1,
-    "ofr_lfo2Rate": 4.2,
-    "ofr_lfo2Depth": 0.16,
-    "ofr_envFilterAmt": 0.3,
-    "ofr_masterWidth": 0.72,
-    "ofr_v0_body": 0.85,
-    "ofr_v1_body": 0.6
+    "Offering": {
+      "ofr_flipLayers": 2,
+      "ofr_flipChop": 0.55,
+      "ofr_flipStretch": 1.0,
+      "ofr_flipRingMod": 0.4,
+      "ofr_digCuriosity": 0.7,
+      "ofr_digComplexity": 0.75,
+      "ofr_cityMode": 2,
+      "ofr_cityIntensity": 0.75,
+      "ofr_cityBlend": 0.3,
+      "ofr_transientSnap": 0.78,
+      "ofr_transientSat": 0.22,
+      "ofr_lfo1Rate": 0.13,
+      "ofr_lfo1Depth": 0.1,
+      "ofr_lfo2Rate": 4.2,
+      "ofr_lfo2Depth": 0.16,
+      "ofr_envFilterAmt": 0.3,
+      "ofr_masterWidth": 0.72,
+      "ofr_v0_body": 0.85,
+      "ofr_v1_body": 0.6
+    }
   },
   "engines": [
     "Offering"

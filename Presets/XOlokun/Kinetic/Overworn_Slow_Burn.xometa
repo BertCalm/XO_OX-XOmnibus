@@ -27,22 +27,24 @@
     "density": 0.39,
     "space": 0.26
   },
-  "params": {
-    "worn_reductionRate": 0.18,
-    "worn_heat": 0.28,
-    "worn_richness": 1.0,
-    "worn_maillard": 0.18,
-    "worn_umamiDepth": 0.6,
-    "worn_sessionTarget": 60.0,
-    "worn_filterCutoff": 7500.0,
-    "worn_filterRes": 0.12,
-    "worn_ampAttack": 0.65,
-    "worn_ampSustain": 0.92,
-    "worn_ampRelease": 5.5,
-    "worn_lfo1Rate": 0.06,
-    "worn_lfo1Depth": 0.14,
-    "worn_stereoWidth": 0.48,
-    "worn_level": 0.8
-  },
-  "schema_version": 1
+  "schema_version": 1,
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.18,
+      "worn_heat": 0.28,
+      "worn_richness": 1.0,
+      "worn_maillard": 0.18,
+      "worn_umamiDepth": 0.6,
+      "worn_sessionTarget": 60.0,
+      "worn_filterCutoff": 7500.0,
+      "worn_filterRes": 0.12,
+      "worn_ampAttack": 0.65,
+      "worn_ampSustain": 0.92,
+      "worn_ampRelease": 5.5,
+      "worn_lfo1Rate": 0.06,
+      "worn_lfo1Depth": 0.14,
+      "worn_stereoWidth": 0.48,
+      "worn_level": 0.8
+    }
+  }
 }

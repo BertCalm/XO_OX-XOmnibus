@@ -26,26 +26,28 @@
     "density": 0.27,
     "space": 0.18000000000000002
   },
-  "params": {
-    "flow_threshold": 0.85,
-    "flow_accumRate": 0.28,
-    "flow_valveType": 0,
-    "flow_vesselSize": 0.55,
-    "flow_strainColor": 0.38,
-    "flow_releaseTime": 0.8,
-    "flow_ampAttack": 0.4,
-    "flow_ampDecay": 0.8,
-    "flow_ampSustain": 0.85,
-    "flow_ampRelease": 3.0,
-    "flow_filterCutoff": 5500.0,
-    "flow_filterRes": 0.15,
-    "flow_filtEnvAmount": 0.28,
-    "flow_lfo1Rate": 0.09,
-    "flow_lfo1Depth": 0.18,
-    "flow_lfo2Rate": 0.04,
-    "flow_lfo2Depth": 0.12,
-    "flow_stereoWidth": 0.58,
-    "flow_level": 0.8
-  },
-  "schema_version": 1
+  "schema_version": 1,
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.85,
+      "flow_accumRate": 0.28,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.55,
+      "flow_strainColor": 0.38,
+      "flow_releaseTime": 0.8,
+      "flow_ampAttack": 0.4,
+      "flow_ampDecay": 0.8,
+      "flow_ampSustain": 0.85,
+      "flow_ampRelease": 3.0,
+      "flow_filterCutoff": 5500.0,
+      "flow_filterRes": 0.15,
+      "flow_filtEnvAmount": 0.28,
+      "flow_lfo1Rate": 0.09,
+      "flow_lfo1Depth": 0.18,
+      "flow_lfo2Rate": 0.04,
+      "flow_lfo2Depth": 0.12,
+      "flow_stereoWidth": 0.58,
+      "flow_level": 0.8
+    }
+  }
 }
