@@ -481,6 +481,9 @@ public:
             smoothedDensity += (effectiveDensity - smoothedDensity) * paramSmoothingCoefficient;
             smoothedTilt    += (effectiveTilt - smoothedTilt) * paramSmoothingCoefficient;
             smoothedDepth   += (effectiveDepth - smoothedDepth) * paramSmoothingCoefficient;
+            smoothedDensity = flushDenormal (smoothedDensity);
+            smoothedTilt    = flushDenormal (smoothedTilt);
+            smoothedDepth   = flushDenormal (smoothedDepth);
 
             float stereoMixLeft = 0.0f, stereoMixRight = 0.0f;
 

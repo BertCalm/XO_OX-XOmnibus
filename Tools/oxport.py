@@ -61,6 +61,7 @@ import json
 import math
 import os
 import struct
+import subprocess
 import sys
 import tempfile
 import time
@@ -1935,29 +1936,20 @@ def cmd_validate(args) -> int:
         print(f"  Validate .xometa presets …")
         print()
         try:
-            import validate_presets as vp
-            # Build the argv that validate_presets expects
-            vp_argv = []
+            tools_dir = Path(__file__).resolve().parent
+            vp_cmd = [sys.executable, str(tools_dir / "validate_presets.py")]
             if args.fix:
-                vp_argv.append("--fix")
+                vp_cmd.append("--fix")
             if args.strict:
-                vp_argv.append("--strict")
-            vp_argv.append("--report")
+                vp_cmd.append("--strict")
+            vp_cmd.append("--report")
 
-            # validate_presets uses sys.argv internally, so we patch it
-            import sys as _sys
-            old_argv = _sys.argv
-            _sys.argv = ["validate_presets.py"] + vp_argv
-            try:
-                vp_rc = vp.main() if hasattr(vp, "main") else 0
-            except SystemExit as e:
-                vp_rc = e.code if e.code is not None else 0
-            finally:
-                _sys.argv = old_argv
+            result = subprocess.run(vp_cmd)
+            vp_rc = result.returncode
 
             if vp_rc != 0:
                 exit_code = max(exit_code, vp_rc)
-        except ImportError:
+        except FileNotFoundError:
             print("    [ERROR] validate_presets.py not found in Tools/")
             exit_code = 2
         except Exception as e:
@@ -1971,22 +1963,17 @@ def cmd_validate(args) -> int:
         print(f"  Validate .xpn archive(s): {args.xpn}")
         print()
         try:
-            import xpn_validator as xv
-            import sys as _sys
-            old_argv = _sys.argv
-            xv_argv = ["xpn_validator.py", args.xpn]
+            tools_dir = Path(__file__).resolve().parent
+            xv_cmd = [sys.executable, str(tools_dir / "xpn_validator.py"), args.xpn]
             if args.strict:
-                xv_argv.append("--strict")
-            _sys.argv = xv_argv
-            try:
-                xv_rc = xv.main() if hasattr(xv, "main") else 0
-            except SystemExit as e:
-                xv_rc = e.code if e.code is not None else 0
-            finally:
-                _sys.argv = old_argv
+                xv_cmd.append("--strict")
+
+            result = subprocess.run(xv_cmd)
+            xv_rc = result.returncode
+
             if xv_rc != 0:
                 exit_code = max(exit_code, xv_rc)
-        except ImportError:
+        except FileNotFoundError:
             print("    [ERROR] xpn_validator.py not found in Tools/")
             exit_code = 2
         except Exception as e:

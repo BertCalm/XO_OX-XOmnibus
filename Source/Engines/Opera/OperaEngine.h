@@ -255,7 +255,8 @@ struct OperaSVF
         {
             svfG_       = FastMath::fastTan (kPi * cutoffHz / sampleRate);
             svfK_       = 1.0f / Q;
-            svfA1_      = 1.0f / (1.0f + svfG_ * (svfG_ + svfK_));
+            float denom = 1.0f + svfG_ * (svfG_ + svfK_);
+            svfA1_      = 1.0f / std::max (denom, 1e-6f);
             svfA2_      = svfG_ * svfA1_;
             svfA3_      = svfG_ * svfA2_;
             lastCutoff_ = cutoffHz;
