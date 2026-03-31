@@ -1043,26 +1043,151 @@ private:
         menu.addSeparator();
         menu.addItem (2, "Delete Route", !route.isNormalled);
 
-        // TODO (V2): show menu, handle result with addRoute/removeUserRoute
-        juce::ignoreUnused (menu);
+        // Capture route fields needed by the async callbacks.
+        const int    routeIdx   = arcIdx;
+        const int    srcSlot    = route.sourceSlot;
+        const int    dstSlot    = route.destSlot;
+        const CouplingType routeType = route.type;
+
+        menu.showMenuAsync (juce::PopupMenu::Options().withTargetComponent (this),
+            [this, routeIdx, srcSlot, dstSlot, routeType] (int result)
+            {
+                if (result == 1)
+                {
+                    // Set Amount — show an AlertWindow with a text editor.
+                    auto* dialog = new juce::AlertWindow ("Set Coupling Amount",
+                                                          "Enter a value between 0.0 and 1.0:",
+                                                          juce::MessageBoxIconType::NoIcon);
+                    dialog->addTextEditor ("amount", juce::String (
+                        (routeIdx >= 0 && routeIdx < (int)cachedRoutes.size())
+                            ? cachedRoutes[static_cast<size_t> (routeIdx)].amount
+                            : 0.5f, 2));
+                    dialog->addButton ("OK",     1);
+                    dialog->addButton ("Cancel", 0);
+
+                    dialog->enterModalState (true,
+                        juce::ModalCallbackFunction::create (
+                            [this, dialog, srcSlot, dstSlot, routeType] (int r)
+                            {
+                                if (r == 1)
+                                {
+                                    float newAmt = juce::jlimit (0.0f, 1.0f,
+                                        dialog->getTextEditorContents ("amount").getFloatValue());
+
+                                    // Replace the route with the updated amount.
+                                    auto routes = couplingMatrix.getRoutes();
+                                    for (auto& ro : routes)
+                                    {
+                                        if (ro.sourceSlot == srcSlot
+                                            && ro.destSlot == dstSlot
+                                            && ro.type == routeType
+                                            && !ro.isNormalled)
+                                        {
+                                            couplingMatrix.removeUserRoute (srcSlot, dstSlot, routeType);
+                                            ro.amount = newAmt;
+                                            couplingMatrix.addRoute (ro);
+                                            break;
+                                        }
+                                    }
+                                    refresh();
+                                }
+                                delete dialog;
+                            }),
+                        true);
+                }
+                else if (result >= 100)
+                {
+                    // Change Type — result 100+ maps to allTypes() index.
+                    auto types = CouplingTypeColors::allTypes();
+                    int  idx   = result - 100;
+                    if (idx >= 0 && idx < (int)types.size())
+                    {
+                        CouplingType newType = types[static_cast<size_t> (idx)];
+                        if (newType != routeType)
+                        {
+                            auto routes = couplingMatrix.getRoutes();
+                            for (auto ro : routes)
+                            {
+                                if (ro.sourceSlot == srcSlot
+                                    && ro.destSlot == dstSlot
+                                    && ro.type == routeType
+                                    && !ro.isNormalled)
+                                {
+                                    couplingMatrix.removeUserRoute (srcSlot, dstSlot, routeType);
+                                    ro.type = newType;
+                                    couplingMatrix.addRoute (ro);
+                                    lastUsedType = newType;
+                                    break;
+                                }
+                            }
+                            refresh();
+                        }
+                    }
+                }
+                else if (result == 2)
+                {
+                    // Delete Route.
+                    couplingMatrix.removeUserRoute (srcSlot, dstSlot, routeType);
+                    refresh();
+                }
+            });
     }
 
     void showAddRoutePopup (int srcSlot, int dstSlot, juce::Point<float> /*pos*/)
     {
-        // TODO (V2): show inline CalloutBox with type selector + amount slider,
-        // then call couplingMatrix.addRoute() on confirm.
-        //
-        // For now, add a default AmpToFilter route at amount=0.5 as a placeholder.
-        MegaCouplingMatrix::CouplingRoute newRoute;
-        newRoute.sourceSlot  = srcSlot;
-        newRoute.destSlot    = dstSlot;
-        newRoute.type        = lastUsedType;
-        newRoute.amount      = 0.5f;
-        newRoute.isNormalled = false;
-        newRoute.active      = true;
+        // Show a type-selector popup so the user picks the coupling type
+        // and amount before the route is added.
+        juce::PopupMenu typeMenu;
+        int itemId = 1;
+        for (auto t : CouplingTypeColors::allTypes())
+            typeMenu.addItem (itemId++, CouplingTypeColors::displayName (t));
 
-        couplingMatrix.addRoute (newRoute);
-        refresh();
+        typeMenu.showMenuAsync (juce::PopupMenu::Options().withTargetComponent (this),
+            [this, srcSlot, dstSlot] (int result)
+            {
+                if (result <= 0)
+                    return;  // user dismissed
+
+                auto types = CouplingTypeColors::allTypes();
+                int  idx   = result - 1;
+                if (idx < 0 || idx >= (int)types.size())
+                    return;
+
+                CouplingType chosenType = types[static_cast<size_t> (idx)];
+
+                // Ask for amount via an AlertWindow.
+                auto* dialog = new juce::AlertWindow ("Set Coupling Amount",
+                                                      "Enter a value between 0.0 and 1.0:",
+                                                      juce::MessageBoxIconType::NoIcon);
+                dialog->addTextEditor ("amount", "0.50");
+                dialog->addButton ("Add",    1);
+                dialog->addButton ("Cancel", 0);
+
+                dialog->enterModalState (true,
+                    juce::ModalCallbackFunction::create (
+                        [this, dialog, srcSlot, dstSlot, chosenType] (int r)
+                        {
+                            if (r == 1)
+                            {
+                                float amt = juce::jlimit (0.0f, 1.0f,
+                                    dialog->getTextEditorContents ("amount").getFloatValue());
+
+                                MegaCouplingMatrix::CouplingRoute newRoute;
+                                newRoute.sourceSlot  = srcSlot;
+                                newRoute.destSlot    = dstSlot;
+                                newRoute.type        = chosenType;
+                                newRoute.amount      = amt;
+                                newRoute.isNormalled = false;
+                                newRoute.active      = true;
+
+                                couplingMatrix.addRoute (newRoute);
+                                lastUsedType = chosenType;
+                                refresh();
+                            }
+                            delete dialog;
+                        }),
+                    true);
+            });
     }
 
     //--------------------------------------------------------------------------
