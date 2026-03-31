@@ -198,14 +198,14 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Overflow",    "flow_"   },
         { "Overcast",    "cast_"   },
         // FUSION Quad Collection
-        { "Okeanos",     "oasis_"  },  // Frozen prefix stays oasis_ (was "Oasis" before rename)
+        { "Okeanos",     "okan_"   },  // Frozen prefix matches actual engine prefix (was oasis_)
         { "Oddfellow",   "oddf_"   },
         { "Onkolo",      "onko_"   },
         { "Opcode",      "opco_"   },
         // Membrane Collection
         { "Osmosis",     "osmo_"   },
         // Love Triangle Circuit Synth
-        { "Oxytocin",    "oxy"     },
+        { "Oxytocin",    "oxy_"    },
         // Panoramic Visionary Synth
         { "Outlook",     "look_"   },
         // Dual Engine Integration
