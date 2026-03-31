@@ -2047,8 +2047,10 @@ void XOlokunProcessor::loadEngine(int slot, const std::string& engineId)
         // would otherwise produce a data race on outgoing/fadeGain/fadeSamplesRemaining.
         // One audio block at 48 kHz / 512 samples ≈ 10 ms worst-case; safe on the
         // message thread.
-        while (pending.ready.load(std::memory_order_acquire))
-            std::this_thread::yield();
+        // Bounded wait (max ~50 ms) — prevents indefinite stall on the message
+        // thread at large buffer sizes (issue #148).
+        for (int i = 0; i < 500 && pending.ready.load(std::memory_order_acquire); ++i)
+            std::this_thread::sleep_for(std::chrono::microseconds(100));
         pending.outgoing             = oldEngine;
         pending.fadeGain             = 1.0f;
         pending.fadeSamplesRemaining =
@@ -2084,8 +2086,10 @@ void XOlokunProcessor::unloadEngine(int slot)
         // Wait until the audio thread has consumed any previous pending command
         // for this slot before overwriting the non-atomic fields.  Mirrors the
         // spin-check in loadEngine() — same data-race protection.
-        while (pending.ready.load(std::memory_order_acquire))
-            std::this_thread::yield();
+        // Bounded wait (max ~50 ms) — prevents indefinite stall on the message
+        // thread at large buffer sizes (issue #148).
+        for (int i = 0; i < 500 && pending.ready.load(std::memory_order_acquire); ++i)
+            std::this_thread::sleep_for(std::chrono::microseconds(100));
         pending.outgoing             = oldEngine;
         pending.fadeGain             = 1.0f;
         pending.fadeSamplesRemaining =
