@@ -175,7 +175,7 @@ The 6 Doctrines are the quality contract every XOlokun engine must satisfy. They
 
 ## 3. Engine Modules
 
-### 3.1 The 73 Engines
+### 3.1 The 76 Engines
 
 | Short Name | Source Instrument | Accent Color | Parameter Prefix |
 |-----------|------------------|-------------|-----------------|
@@ -252,6 +252,9 @@ The 6 Doctrines are the quality contract every XOlokun engine must satisfy. They
 | **OPCODE** | XOpcode | Circuit Green `#39FF14` | `opco_` |
 | **OXYTOCIN** | XOxytocin | Synapse Violet `#9B5DE5` | `oxy_` |
 | **OUTLOOK** | XOutlook | Horizon Indigo `#4169E1` | `look_` |
+| **OBIONT** | XObiont | Bioluminescent Amber `#E8A030` | `obnt_` |
+| **OKEANOS** | XOkeanos | Cardamom Gold `#C49B3F` | `oasis_` |
+| **OUTFLOW** | XOutflow | Deep Storm Indigo `#1A1A40` | `out_` |
 
 ### 3.2 Engine Visual Identity
 
