@@ -131,7 +131,7 @@ public:
             outputCacheR[static_cast<size_t>(i)] = outR[i];
         }
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getNumChannels()>1?buffer.getReadPointer(1):buffer.getReadPointer(0), numSamples);
     }
 
     // ── Coupling ─────────────────────────────────────────

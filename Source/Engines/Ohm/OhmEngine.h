@@ -381,7 +381,7 @@ public:
         float meadowDelFb = pDelFb * (0.7f + pMeadow * 0.3f);  // meadow extends echo tail
 
         auto*outL=buf.getWritePointer(0);
-        auto*outR=buf.getWritePointer(1);
+        auto*outR=buf.getNumChannels()>1?buf.getWritePointer(1):buf.getWritePointer(0);
 
         for(int i=0;i<ns;++i){
             // DSP FIX: Autonomous LFO for in-law modulation (SIDES breathing).

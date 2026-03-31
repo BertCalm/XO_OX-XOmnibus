@@ -197,7 +197,7 @@ public:
         choLFO.setRate(pChoR, (float)sr);
         for(auto&v:voices) v.vib.setRate(pTnVibR, v.sr);
 
-        auto*oL=buf.getWritePointer(0);auto*oR=buf.getWritePointer(1);
+        auto*oL=buf.getWritePointer(0);auto*oR=buf.getNumChannels()>1?buf.getWritePointer(1):buf.getWritePointer(0);
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
             for(auto&v:voices){

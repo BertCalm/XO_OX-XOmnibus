@@ -512,7 +512,7 @@ public:
         crystalChorus.processBlock(hiBufL,hiBufR,ns);
 
         // ---- Mix LOW + HIGH to output -------------------------------------------
-        auto*oL=buf.getWritePointer(0);auto*oR=buf.getWritePointer(1);
+        auto*oL=buf.getWritePointer(0);auto*oR=buf.getNumChannels()>1?buf.getWritePointer(1):buf.getWritePointer(0);
         for(int i=0;i<ns;++i){
             float mL=lowBufL[i]+hiBufL[i];
             float mR=lowBufR[i]+hiBufR[i];

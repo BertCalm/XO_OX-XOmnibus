@@ -437,7 +437,7 @@ public:
 
         lastSample = L[numSamples - 1];
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getNumChannels()>1?buffer.getReadPointer(1):buffer.getReadPointer(0), numSamples);
 
         // Reset per-block coupling accumulators
         externalFilterMod = 0.0f;

@@ -170,7 +170,7 @@ public:
         constexpr float kLfoDepth = 0.3f;
 
         auto* outL = buffer.getWritePointer(0);
-        auto* outR = buffer.getWritePointer(1);
+        auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : buffer.getWritePointer(0);
 
         // Band RMS accumulators for this block
         float bandSumSq[4] = {0.0f, 0.0f, 0.0f, 0.0f};
