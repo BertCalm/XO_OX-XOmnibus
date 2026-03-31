@@ -157,13 +157,13 @@ public:
             // Write to buffer: ping-pong cross-feeds L<->R, normal feeds L->L, R->R
             if (pingPong)
             {
-                bufferL[static_cast<size_t> (writePos)] = inL + fbR;
-                bufferR[static_cast<size_t> (writePos)] = inR + fbL;
+                bufferL[static_cast<size_t> (writePos)] = flushDenormal (inL + fbR);
+                bufferR[static_cast<size_t> (writePos)] = flushDenormal (inR + fbL);
             }
             else
             {
-                bufferL[static_cast<size_t> (writePos)] = inL + fbL;
-                bufferR[static_cast<size_t> (writePos)] = inR + fbR;
+                bufferL[static_cast<size_t> (writePos)] = flushDenormal (inL + fbL);
+                bufferR[static_cast<size_t> (writePos)] = flushDenormal (inR + fbR);
             }
 
             writePos = (writePos + 1) % bufferSize;
