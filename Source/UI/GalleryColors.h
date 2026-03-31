@@ -167,6 +167,7 @@ namespace GalleryColors {
         else if (id == "Ohm")       result = juce::Colour(0xFF87AE73);
         else if (id == "Oaken")     result = juce::Colour(0xFF9C6B30);
         else if (id == "Oasis")     result = juce::Colour(0xFF00827F);
+        else if (id == "Okeanos")   result = juce::Colour(0xFFC49B3F);
         else if (id == "Oblique")   result = juce::Colour(0xFFBF40FF);
         else if (id == "Olate")     result = juce::Colour(0xFF5C3317);
         else if (id == "Ole")       result = juce::Colour(0xFFC9377A);
@@ -205,6 +206,7 @@ namespace GalleryColors {
         else if (id == "Oven")      result = juce::Colour(0xFF1C1C1C);
         else if (id == "Overbite")  result = juce::Colour(0xFFC9B8A8);  // AgedBone
         else if (id == "Overcast")  result = juce::Colour(0xFF778899);
+        else if (id == "Outflow")   result = juce::Colour(0xFF1A1A40);
         else if (id == "Overflow")  result = juce::Colour(0xFF1A3A5C);
         else if (id == "Overgrow")  result = juce::Colour(0xFF228B22);
         else if (id == "Overlap")   result = juce::Colour(0xFF00FFB4);

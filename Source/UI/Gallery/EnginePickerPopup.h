@@ -450,7 +450,7 @@ private:
             { "Orca",       "Synth",       "apex predator wavetable echolocation",      0xFF1B2838, 2 },
             { "Octopus",    "Synth",       "decentralized alien intelligence synth",    0xFFE040FB, 2 },
             { "Ombre",      "Synth",       "dual narrative memory synthesizer",         0xFF7B6B8A, 1 },
-            { "Opensky",    "Synth",       "euphoric shimmer supersaw synth",           0xFFFF8C00, 0 },
+            { "OpenSky",    "Synth",       "euphoric shimmer supersaw synth",           0xFFFF8C00, 0 },
             // Percussion
             { "Onset",      "Percussion",  "cross-voice coupling percussion",           0xFF0066FF, 1 },
             { "Offering",   "Percussion",  "psychology-driven boom bap drums",          0xFFE5B80B, 1 },
@@ -484,7 +484,7 @@ private:
             { "Optic",      "Utility",     "visual modulation zero-audio engine",       0xFF00FF41, 0 },
             { "Outwit",     "FX",          "chromatophore amber effect engine",         0xFFCC6600, 1 },
             // Additional engines (alphabetically filled)
-            { "Oceandeep",  "Synth",       "hydrostatic deep ocean synthesizer",        0xFF2D0A4E, 2 },
+            { "OceanDeep",  "Synth",       "hydrostatic deep ocean synthesizer",        0xFF2D0A4E, 2 },
             { "Ouie",       "Synth",       "duophonic hammerhead synthesizer",          0xFF708090, 2 },
             // Sentinel — must remain last
             { nullptr, nullptr, nullptr, 0, 0 },
