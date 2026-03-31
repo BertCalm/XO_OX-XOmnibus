@@ -52,7 +52,7 @@ jobs:
         working-directory: Tools
         run: python3 oxport.py run --engine Onset --output-dir /tmp/ci-onset --dry-run
 
-      - name: Dry-run pipeline for Odyssey engine (keygroup)
+      - name: Dry-run pipeline for Odyssey engine (canonical name; keygroup)
         working-directory: Tools
         run: python3 oxport.py run --engine Odyssey --output-dir /tmp/ci-odyssey --dry-run
 
