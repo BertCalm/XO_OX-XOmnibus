@@ -431,7 +431,7 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
             if name in name_set:
                 duplicate_names.append(name)
             name_set.add(name)
-        except:
+        except (json.JSONDecodeError, OSError, KeyError, TypeError):
             pass
 
         if result.errors:
@@ -505,7 +505,7 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
                 if dna and isinstance(dna, dict):
                     vals = {d: dna.get(d, 0.5) for d in DNA_DIMENSIONS}
                     all_dna.append((data.get("name", "?"), data.get("engines", []), vals))
-            except:
+            except (json.JSONDecodeError, OSError, KeyError, TypeError):
                 pass
 
         if all_dna:
@@ -578,7 +578,7 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
                                 eb = pair.get("engineB", pair.get("target", ""))
                                 if ea and eb:
                                     coupling_pairs_found.add((min(ea, eb), max(ea, eb)))
-            except:
+            except (json.JSONDecodeError, OSError, KeyError, TypeError):
                 pass
 
         print()
