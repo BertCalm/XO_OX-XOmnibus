@@ -69,6 +69,8 @@ struct FormantBandpass
         float y = b0 * in + z1;
         z1 = b1 * in - a1 * y + z2;
         z2 = b2 * in - a2 * y;
+        z1 = flushDenormal (z1);
+        z2 = flushDenormal (z2);
         return flushDenormal (y);
     }
 
