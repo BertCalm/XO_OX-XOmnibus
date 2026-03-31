@@ -65,3 +65,8 @@ firebase-debug.*.log
 # Social pipeline generated output (keep structure, ignore generated content)
 Tools/social/output/*
 !Tools/social/output/.gitkeep
+
+# Fleet audit fixes (#184 #187 #271)
+*.xometa.bak
+Libs/rive-cpp/
+builds/
