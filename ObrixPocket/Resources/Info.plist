@@ -47,16 +47,20 @@
 	<string>OBRIX Pocket captures a sound fingerprint of your environment to give each specimen a unique sonic character. No audio is recorded or stored.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>OBRIX Pocket captures your movement pattern to give each specimen's modulation a unique character.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>ObrixPocket uses Bluetooth to connect to external MIDI controllers.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>ObrixPocket uses Bluetooth to connect to external MIDI controllers.</string>
+	<key>NSNearbyInteractionUsageDescription</key>
+	<string>ObrixPocket uses nearby interaction for collaborative play features.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>ObrixPocket sends OSC messages to music applications on your local network.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
-		<string>bluetooth-peripheral</string>
 		<string>fetch</string>
-		<string>external-accessory</string>
 		<string>location</string>
 		<string>remote-notification</string>
-		<string>bluetooth-central</string>
-		<string>nearby-interaction</string>
 		<string>processing</string>
 	</array>
 	<key>UILaunchScreen</key>
