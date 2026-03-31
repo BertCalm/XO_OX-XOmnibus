@@ -204,8 +204,8 @@ public:
             float fbL = dampStateL * feedback;
             float fbR = dampStateR * feedback;
 
-            delayL[static_cast<size_t> (writePos)] = inL + fbL;
-            delayR[static_cast<size_t> (writePos)] = inR + fbR;
+            delayL[static_cast<size_t> (writePos)] = flushDenormal (inL + fbL);
+            delayR[static_cast<size_t> (writePos)] = flushDenormal (inR + fbR);
             writePos = (writePos + 1) % bufferSize;
 
             // Mix dry/wet
