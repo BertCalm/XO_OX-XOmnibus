@@ -486,6 +486,9 @@ private:
             // Additional engines (alphabetically filled)
             { "Oceandeep",  "Synth",       "hydrostatic deep ocean synthesizer",        0xFF2D0A4E, 2 },
             { "Ouie",       "Synth",       "duophonic hammerhead synthesizer",          0xFF708090, 2 },
+            { "Obiont",     "Synth",       "cellular automata oscillator",              0xFFE8A030, 2 },
+            { "Okeanos",    "String",      "Spice Route Rhodes electric piano",         0xFFC49B3F, 1 },
+            { "Outflow",    "Synth",       "predictive spatial fluid-dynamics engine",  0xFF1A1A40, 2 },
             // Sentinel — must remain last
             { nullptr, nullptr, nullptr, 0, 0 },
         };
