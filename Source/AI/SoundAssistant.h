@@ -197,6 +197,16 @@ public:
         : schema (buildDefaultSchema())
     {}
 
+    ~SoundAssistant()
+    {
+        // Signal any in-flight RequestThreads not to invoke callbacks after
+        // this object is destroyed. RequestThreads capture &destroyed_ and
+        // check it on the message thread before calling back into this object,
+        // preventing a use-after-free when SoundAssistant is deleted while a
+        // network request is still in flight.
+        destroyed_.store (true);
+    }
+
     /// Access the schema (for UI display of parameter info, debugging, etc.)
     const AIParameterSchema& getSchema() const { return schema; }
 
@@ -480,6 +490,11 @@ public:
     }
 
 private:
+    // Signals in-flight RequestThreads not to invoke callbacks after destruction.
+    // Must be declared before any member that could launch threads, so it is
+    // destroyed last and the flag is valid for the full object lifetime.
+    std::atomic<bool> destroyed_ { false };
+
     SecureKeyStore keyStore;
     AIParameterSchema schema;
     SecureKeyStore::Provider preferredProvider = SecureKeyStore::Provider::Anthropic;
@@ -562,7 +577,7 @@ private:
         }
 
         auto provider = preferredProvider;
-        auto* thread = new RequestThread (provider, key, prompt, std::move (callback));
+        auto* thread = new RequestThread (provider, key, prompt, std::move (callback), &destroyed_);
         thread->startThread();
 
         // Key will be wiped when RequestThread destructs
@@ -577,12 +592,14 @@ private:
         RequestThread (SecureKeyStore::Provider provider,
                        const juce::String& apiKey,
                        const juce::String& prompt,
-                       ResponseCallback callback)
+                       ResponseCallback callback,
+                       std::atomic<bool>* destroyedFlag)
             : juce::Thread ("XO_AI_Request")
             , provider_ (provider)
             , apiKey_ (apiKey)
             , prompt_ (prompt)
             , callback_ (std::move (callback))
+            , destroyedFlag_ (destroyedFlag)
         {}
 
         ~RequestThread() override
@@ -626,8 +643,9 @@ private:
             auto resp = std::move (response);
             auto err = std::move (error);
 
-            juce::MessageManager::callAsync ([cb, resp, err]() {
-                cb (resp, err);
+            juce::MessageManager::callAsync ([cb, resp, err, destroyedFlag = destroyedFlag_]() {
+                if (! destroyedFlag->load())
+                    cb (resp, err);
             });
 
             // Self-delete after callback
@@ -639,6 +657,7 @@ private:
         juce::String apiKey_;
         juce::String prompt_;
         ResponseCallback callback_;
+        std::atomic<bool>* destroyedFlag_ = nullptr;
 
         juce::String getEndpointURL() const
         {
