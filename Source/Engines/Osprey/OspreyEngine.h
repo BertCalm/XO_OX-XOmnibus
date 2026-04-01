@@ -1614,6 +1614,12 @@ public:
         // osprey_glide: portamento time 0–2 s.  When > 0, glideCoefficient is computed
         //   as 1 - exp(-1/(glideTime * sampleRate)) and applied per-sample in the
         //   render loop (IIR exponential approach).
+        //
+        // Sample-rate invariance: the formula coeff = 1 - exp(-1/(T*sr)) is SR-invariant.
+        // At higher SR, coeff is smaller (smaller per-sample step), but there are
+        // proportionally more samples per second, so wall-clock convergence time is
+        // always T seconds (reaches 63.2% of target at T seconds, 99% at ~4.6*T seconds)
+        // regardless of whether sr=44100 or sr=96000.
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "osprey_voiceMode", 1 }, "Osprey Voice Mode",
             juce::StringArray { "Poly", "Mono", "Legato" }, 0));
@@ -1775,7 +1781,9 @@ private:
                     // prevent a detached-pitch artefact between notes.
                     static constexpr float kMinGlideSec = 0.001f;
                     if (glideTimeSec > kMinGlideSec)
-                        // Exponential IIR coefficient: approaches target at ~63% per glideTime sec.
+                        // SR-invariant IIR coefficient: coeff = 1 - exp(-1/(T*sr)).
+                        // Wall-clock convergence is always T seconds at any sample rate —
+                        // higher SR produces a smaller coeff but more samples/sec, cancelling out.
                         v.glideCoefficient = 1.0f - std::exp (-1.0f / (glideTimeSec * sampleRateFloat));
                     else
                         v.currentGlideFrequency = frequency;  // snap
@@ -1828,6 +1836,10 @@ private:
         //   glideTime >  0  -> coefficient = 1 - exp(-1/(glideTime * sampleRate))
         // The coefficient drives the per-sample IIR in the render loop:
         //   currentFrequency += (target - current) * coefficient
+        //
+        // SR-invariance: coeff = 1 - exp(-1/(T*sr)) produces identical wall-clock
+        // glide duration at any sample rate. At 96kHz coeff is ~2x smaller than at
+        // 44.1kHz, but twice as many samples elapse per second — these cancel exactly.
         static constexpr float kMinGlideSec = 0.001f;
         if (glideTimeSec > kMinGlideSec && voice.currentGlideFrequency > 10.0f)
         {
