@@ -4,14 +4,14 @@
     "pairs": [
       {
         "amount": 0.9423,
-        "type": "AudioToBuffer",
         "engineA": "Overbite",
-        "engineB": "Oblong"
+        "engineB": "Oblong",
+        "type": "AudioToBuffer"
       }
     ]
   },
   "couplingIntensity": "Deep",
-  "description": "Bright Warm Still Dense character entanglement — OVERBITE × OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Still Dense character entanglement \u2014 OVERBITE \u00d7 OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
   "dna": {
     "aggression": 0.3916,
     "brightness": 0.9406,
@@ -42,6 +42,12 @@
     "Oblong": {
       "amp_attack": 0.4612,
       "amp_release": 0.4113,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08,
+      "bob_macroCharacter": 0.9595,
+      "bob_macroCoupling": 0.7758,
+      "bob_macroMovement": 0.0581,
+      "bob_macroSpace": 0.5203,
       "coupling_level": 0.7405,
       "density": 0.8608,
       "drive": 0.3571,
@@ -49,15 +55,16 @@
       "filter_resonance": 0.2829,
       "output_level": 0.8996,
       "reverb_mix": 0.429,
-      "reverb_size": 0.5273,
-      "bob_curAmount": 0.2,
-      "bob_lfo1Depth": 0.08,
-      "bob_macroCharacter": 0.9595,
-      "bob_macroCoupling": 0.7758,
-      "bob_macroMovement": 0.0581,
-      "bob_macroSpace": 0.5203
+      "reverb_size": 0.5273
     },
-    "Overbite": {}
+    "Overbite": {
+      "poss_level": 0.8,
+      "poss_macroBelly": 0.919,
+      "poss_macroBite": 0.552,
+      "poss_macroScurry": 0.044,
+      "poss_macroTrash": 0.942,
+      "poss_pan": 0.0
+    }
   },
   "schema_version": 1,
   "tags": [
@@ -68,6 +75,6 @@
     "dense",
     "resonant"
   ],
-  "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "version": "1.0.0"
 }

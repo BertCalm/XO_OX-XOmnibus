@@ -4,15 +4,15 @@
     "pairs": [
       {
         "amount": 0.699,
-        "type": "AmpToFilter",
         "engineA": "OVERBITE",
-        "engineB": "OBLIQUE"
+        "engineB": "OBLIQUE",
+        "type": "AmpToFilter"
       }
     ]
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
+  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
   "dna": {
     "aggression": 0.947,
     "brightness": 0.105,
@@ -38,7 +38,14 @@
       "level": 0.653,
       "pan": -0.118
     },
-    "Overbite": {}
+    "Overbite": {
+      "poss_level": 0.8,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.5,
+      "poss_macroScurry": 0.5,
+      "poss_macroTrash": 0.5,
+      "poss_pan": 0.0
+    }
   },
   "schema_version": 1,
   "sequencer": null,

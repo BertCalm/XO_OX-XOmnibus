@@ -4,15 +4,15 @@
     "pairs": [
       {
         "amount": 0.489,
-        "type": "AmpToChoke",
         "engineA": "OVERBITE",
-        "engineB": "OBLIQUE"
+        "engineB": "OBLIQUE",
+        "type": "AmpToChoke"
       }
     ]
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
   "dna": {
     "aggression": 0.542,
     "brightness": 0.922,
@@ -38,7 +38,14 @@
       "level": 0.672,
       "pan": -0.069
     },
-    "Overbite": {}
+    "Overbite": {
+      "poss_level": 0.8,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.5,
+      "poss_macroScurry": 0.5,
+      "poss_macroTrash": 0.5,
+      "poss_pan": 0.0
+    }
   },
   "schema_version": 1,
   "sequencer": null,

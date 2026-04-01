@@ -4,15 +4,15 @@
     "pairs": [
       {
         "amount": 0.528,
-        "type": "AudioToWavetable",
         "engineA": "OSPREY",
-        "engineB": "OLE"
+        "engineB": "OLE",
+        "type": "AudioToWavetable"
       }
     ]
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners — aether, warm, still, dense.",
+  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
   "dna": {
     "aggression": 0.537,
     "brightness": 0.511,
@@ -38,7 +38,14 @@
       "level": 0.687,
       "pan": 0.039
     },
-    "Osprey": {}
+    "Osprey": {
+      "osprey_level": 0.8,
+      "osprey_macroCharacter": 0.5,
+      "osprey_macroCoupling": 0.5,
+      "osprey_macroMovement": 0.5,
+      "osprey_macroSpace": 0.5,
+      "osprey_pan": 0.0
+    }
   },
   "schema_version": 1,
   "sequencer": null,

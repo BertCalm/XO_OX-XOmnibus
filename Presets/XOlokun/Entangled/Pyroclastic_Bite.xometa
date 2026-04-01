@@ -3,13 +3,15 @@
   "coupling": {
     "pairs": [
       {
+        "amount": 0.82,
         "engineA": "Overbite",
         "engineB": "Oblong",
-        "type": "PitchToPitch",
-        "amount": 0.82
+        "type": "PitchToPitch"
       }
     ]
   },
+  "couplingIntensity": "Moderate",
+  "description": "Interwoven and coupled, warm, aggressive sound. Drives through the mix with presence and bite.",
   "dna": {
     "aggression": 0.82,
     "brightness": 0.55,
@@ -45,7 +47,14 @@
       "bob_macroMovement": 0.31,
       "bob_macroSpace": 0.36
     },
-    "Overbite": {}
+    "Overbite": {
+      "poss_level": 0.8,
+      "poss_macroBelly": 0.76,
+      "poss_macroBite": 0.35,
+      "poss_macroScurry": 0.4,
+      "poss_macroTrash": 0.88,
+      "poss_pan": 0.0
+    }
   },
   "schema_version": 1,
   "tags": [
@@ -54,8 +63,6 @@
     "scorching",
     "aggressive"
   ],
-  "version": "1.0.0",
   "tempo": null,
-  "description": "Interwoven and coupled, warm, aggressive sound. Drives through the mix with presence and bite.",
-  "couplingIntensity": "Moderate"
+  "version": "1.0.0"
 }
