@@ -80,7 +80,7 @@ agent: Explore                           # Subagent type (with context: fork)
 
 Instructions in markdown. Use $ARGUMENTS for passed args.
 Use !`command` for dynamic context injection.
-Reference [supporting-file.md](supporting-file.md) for details.
+Reference `supporting-file.md` for details.  <!-- placeholder: replace with actual path when creating a real skill -->
 ```
 
 ### Directory Structure
@@ -242,7 +242,7 @@ allowed-tools: Read, Grep, Glob, Bash
 ## Engine Validation: $ARGUMENTS
 
 Read the engine source at `Source/Engines/$ARGUMENTS/` and check against
-each Doctrine. See [checklist.md](checklist.md) for detailed criteria.
+each Doctrine. See `Skills/validate-engine/checklist.md` for detailed criteria.  <!-- placeholder path: update when checklist file is created -->
 
 ### D001: Velocity Must Shape Timbre
 - Verify velocity-scaled filter envelope exists

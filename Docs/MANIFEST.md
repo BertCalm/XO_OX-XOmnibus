@@ -1,9 +1,9 @@
 # XOlokun Documentation Manifest
-**Last Updated:** 2026-03-24
+**Last Updated:** 2026-03-31
 **Purpose:** Canonical inventory of all major documentation — purpose, audience, authority level, and currency status.
 
 For governance rules (when to update what), see `GOVERNANCE.md`.
-For the detailed documentation improvement plan, see `documentation_health_plan.md`.
+For the detailed documentation improvement plan, see `fleet-audit/documentation_health_plan.md`.
 
 ---
 
@@ -20,7 +20,7 @@ For the detailed documentation improvement plan, see `documentation_health_plan.
 
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
-| `seance_cross_reference.md` | Engine quality audit index | Sound designers, agents | Engine health status, seance scores, D-violations | ✅ Current (72 seances as of 2026-03-23; OSMOSIS design-only, not seanced) |
+| `seances/seance_cross_reference.md` | Engine quality audit index | Sound designers, agents | Engine health status, seance scores, D-violations | ✅ Current (72 seances as of 2026-03-23; OSMOSIS design-only, not seanced) |
 | `MANIFEST.md` (this file) | Documentation inventory | All contributors | Which doc to consult for what | ✅ Current |
 | `GOVERNANCE.md` | Update policies and SLAs | All contributors | When to update what | ✅ Current |
 | `INDEX.md` | Full discovery index | New contributors | Where to find anything | ✅ Current (verify) |
@@ -33,11 +33,16 @@ For the detailed documentation improvement plan, see `documentation_health_plan.
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
 | `xoutshine-forge-spec.md` | XOutshine universal instrument forge format spec | Export engineers, pipeline devs | SampleCategory enum, multi-source keygroups, velocity strategies, RR spec, formant metadata, FX routing, 9-stage pipeline, XPM examples, MPC constraints | ✅ Current (2026-03-22, v1.0) |
-| `xomnibus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 44/73 engines (44 unique engines; 2 duplicate entries: OVERLAP + OUTWIT; 29 pending: OSMOSIS, OXYTOCIN, OUTLOOK + Kitchen Collection 24 + OXBOW, OWARE) |
+| `xomnibus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 72/76 engines (72 unique engine sections; 4 pending: OSMOSIS, OBIONT + 2 others added post-2026-03-24) |
 | `xomnibus_name_migration_reference.md` | Legacy → canonical engine name map | Agents, engineers | Name aliases, gotchas | ✅ Current |
 | `xomnibus_landscape_2026.md` | Grand fleet survey | Sound designers, engineers | Pre-sweep baseline metrics | ⚠️ Dated 2026-03-14 (pre-sweep), not updated after Round 12 |
 | `fleet_health_2026_03_20.md` | Current fleet status | All | Post-sweep health metrics | ✅ Current (generated 2026-03-20) |
-| `documentation_health_plan.md` | Doc improvement roadmap | All contributors | What needs fixing in docs | ✅ Current |
+| `fleet-audit/documentation_health_plan.md` | Doc improvement roadmap | All contributors | What needs fixing in docs | ✅ Current |
+| `fathom-qdd-level5-fleet-certification-2026-03-29.md` | FATHOM × QDD Level 5 pre-launch fleet certification | Engineers, sound designers, agents | 76-engine audit results, 20-agent findings, 47 CRITs, ship-ready list, launch blockers | ✅ Current (2026-03-29) |
+| `fathom-fleet-report-2026-03-29.md` | FATHOM brutal sonic audit — all 76 engines + DSP library | Sound designers, agents | Per-engine sonic quality verdicts, FATHOM scores, systemic issues | ✅ Current (2026-03-29) |
+| `tidesigns-audit.md` | TIDEsigns QDD full-fleet UI/UX audit | UI engineers, agents | 450+ findings, 8-wave fix sequence, tier priorities, score history | ✅ Current (2026-03-29) |
+| `xolokun-fleet-inventory-2026-03-28.md` | Complete engine fleet inventory — all 73+ engines | All contributors, agents | Engine roster, build status, preset counts, seance scores | ✅ Current (2026-03-28) |
+| `export-architecture.md` | Export Pyramid architecture — ORIGINATE → OUTSHINE → OXPORT | Export engineers, pipeline devs | Three-tool export chain design, tool responsibilities, data flow | ✅ Current (2026-03-29) |
 | `../Skills/*/SKILL.md` | Per-skill procedure guides | Agents | Workflow execution | ✅ Most current; see each file's metadata |
 
 ---

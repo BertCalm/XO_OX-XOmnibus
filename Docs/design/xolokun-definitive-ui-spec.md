@@ -32,7 +32,7 @@ Every synthesizer interface ever made has treated the UI as a **control surface*
 
 XOlokun is not a dashboard.
 
-XOlokun is an **aquarium**. A living, breathing, responsive environment that you inhabit rather than operate. The 73 engines are not modules in a rack — they are creatures in a water column. The coupling connections between them are not patch cables — they are ecological relationships. The performer does not "use" XOlokun. The performer enters it.
+XOlokun is an **aquarium**. A living, breathing, responsive environment that you inhabit rather than operate. The 76 engines are not modules in a rack — they are creatures in a water column. The coupling connections between them are not patch cables — they are ecological relationships. The performer does not "use" XOlokun. The performer enters it.
 
 This is the fundamental inversion that no synthesizer has attempted: **the mythology IS the interface**.
 
@@ -865,7 +865,7 @@ On all subsequent launches, XOlokun loads silently with the last-used preset and
 
 **Left drawer (Engine + Presets)**:
 - Width: 320pt
-- Top half: Engine selector (grid of 73 engine icons, each 44x44pt, colored by accent)
+- Top half: Engine selector (grid of 76 engine icons, each 44x44pt, colored by accent)
 - Bottom half: Preset browser (same as desktop sidebar PRESET tab, touch-optimized)
 - Dismiss: swipe right or tap outside
 
@@ -969,7 +969,7 @@ Several engine accent colors on dark backgrounds:
 
 ### 4.1.3 Color-Blind Safe Engine Differentiation
 
-73 engines cannot be differentiated by color alone. The system provides multiple redundant channels:
+76 engines cannot be differentiated by color alone. The system provides multiple redundant channels:
 
 **Channel 1 (Color)**: Engine accent color — unique per engine but NOT relied upon as sole identifier
 
@@ -998,7 +998,7 @@ Several engine accent colors on dark backgrounds:
 | Component | AccessibilityRole | Label Pattern | Value Pattern |
 |-----------|------------------|---------------|---------------|
 | Macro Knob | `slider` | "Character macro" | "72 percent" |
-| Engine Selector | `comboBox` | "Engine selector, currently OPERA" | "OPERA, engine 45 of 73" |
+| Engine Selector | `comboBox` | "Engine selector, currently OPERA" | "OPERA, engine 45 of 76" |
 | Preset Navigator | `group` | "Preset navigator" | — |
 | Preset Name | `staticText` | "Current preset: Velvet Morning" | — |
 | Prev/Next Preset | `button` | "Previous preset" / "Next preset" | — |
@@ -1241,11 +1241,11 @@ This is embodied cognition applied to software design. It has never been attempt
 
 **Disable**: Settings toggle "Adaptive UI" (default: ON). Reduced motion mode: OFF.
 
-### 5.2.4 The Constellation View — Seeing All 73 at Once
+### 5.2.4 The Constellation View — Seeing All 76 at Once
 
-Every synth forces you to look at one engine at a time. XOlokun has 73 engines. What if you could see ALL of them?
+Every synth forces you to look at one engine at a time. XOlokun has 76 engines. What if you could see ALL of them?
 
-The Constellation View is a full-window overlay (triggered by a button in the header or Cmd+Shift+A) that shows all 73 engines as stars in a constellation map. The map layout follows the water column (surface engines at top, abyss engines at bottom). Each star:
+The Constellation View is a full-window overlay (triggered by a button in the header or Cmd+Shift+A) that shows all 76 engines as stars in a constellation map. The map layout follows the water column (surface engines at top, abyss engines at bottom). Each star:
 - Size: proportional to preset count (popular engines are larger stars)
 - Color: engine accent color
 - Brightness: proportional to current activity (if the engine is making sound, its star is bright)
@@ -1368,9 +1368,9 @@ No synthesizer has ever shown its entire capability space in a single, beautiful
 | Sharp key | `#2A2A2A` | Seaboard black keys |
 | Hit flash | `#FFFFFF` at 20% | Pad impact feedback |
 
-## A.8 All 73 Engine Accent Colors
+## A.8 All 76 Engine Accent Colors
 
-(Full table — see CLAUDE.md Engine Modules table for complete listing. All 73 engines with hex values are defined there and are the canonical reference.)
+(Full table — see CLAUDE.md Engine Modules table for complete listing. All 76 engines with hex values are defined there and are the canonical reference.)
 
 ---
 
@@ -1767,7 +1767,7 @@ All spring physics: `velocity += (target - current) * stiffness; velocity *= dam
 
 ---
 
-*This document supersedes all previous UI specifications for XOlokun. It is the single source of truth for interface implementation. Every pixel described here has been considered in context of the purchased assets, the existing codebase, the aquatic mythology, the 73-engine fleet, and the mandate to surpass every synthesizer interface ever created.*
+*This document supersedes all previous UI specifications for XOlokun. It is the single source of truth for interface implementation. Every pixel described here has been considered in context of the purchased assets, the existing codebase, the aquatic mythology, the 76-engine fleet, and the mandate to surpass every synthesizer interface ever created.*
 
 *The interface is the instrument. The instrument is the interface. The mythology is the medium.*
 

@@ -1109,7 +1109,7 @@ Outlook gives luminous, panoramic pad output with genuine stereo depth that is n
 ---
 
 *All engines reference the unified mythology in `Docs/xo_ox_aquatic_mythology.md`.*
-*Identity cards now cover all 73 registered engines. See `Docs/concepts/` for full engine specs.*
+*Identity cards cover 73 of 76 registered engines (OBIONT, OSIER, OVERFLOW pending). See `Docs/concepts/` for full engine specs.*
 
 ---
 

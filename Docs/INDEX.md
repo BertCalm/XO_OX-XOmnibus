@@ -6,13 +6,13 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 ## Architecture & Specs
 
 - [xomnibus_master_specification.md](xomnibus_master_specification.md) — Master spec for XOlokun platform
-- [XOlokun_Master_Architecture- Volume 2.md.txt](XOlokun_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
+- [XOmnibus_Master_Architecture- Volume 2.md.txt](XOmnibus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
 - [xomnibus_repo_structure.md](xomnibus_repo_structure.md) — Directory and file organization
 - [xomnibus_technical_design_system.md](xomnibus_technical_design_system.md) — Technical design patterns
 - [xomnibus_new_engine_process.md](xomnibus_new_engine_process.md) — How to add a new engine
 - [xomnibus_preset_spec_for_builder.md](xomnibus_preset_spec_for_builder.md) — Preset schema for builders
-- [xometa_schema.json](xometa_schema.json) — .xometa JSON schema definition
-- [xometa_examples.json](xometa_examples.json) — .xometa example files
+- [xometa_schema.json](specs/xometa_schema.json) — .xometa JSON schema definition
+- [xometa_examples.json](specs/xometa_examples.json) — .xometa example files
 - [xomnibus_module_starter_design.md](xomnibus_module_starter_design.md) — Module starter patterns
 - [xomnibus_mobile_and_midi_spec.md](xomnibus_mobile_and_midi_spec.md) — iOS/MIDI specification
 - [xomnibus_mobile_implementation_strategy.md](xomnibus_mobile_implementation_strategy.md) — iOS implementation strategy
@@ -100,7 +100,7 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 - [coupling_expansion_12e.md](coupling_expansion_12e.md) — Coupling expansion (round 12e)
 - [coupling_fixes_5c.md](coupling_fixes_5c.md) — Coupling fixes (round 5c)
 - [coupling_preset_library.md](coupling_preset_library.md) — Coupling preset library
-- [seance_cross_reference.md](seance_cross_reference.md) — Cross-reference of seance verdicts
+- [seance_cross_reference.md](seances/seance_cross_reference.md) — Cross-reference of seance verdicts
 - [preset_expansion_10h.md](preset_expansion_10h.md) — Preset expansion (10h)
 - [preset_expansion_9g.md](preset_expansion_9g.md) — Preset expansion (9g)
 - [preset_gap_analysis.md](preset_gap_analysis.md) — Preset gap analysis
@@ -109,7 +109,7 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 - [preset_schema_audit.md](preset_schema_audit.md) — Preset schema audit
 - [preset_schema_fixes.md](preset_schema_fixes.md) — Preset schema fixes
 - [preset_schema_migration_5e.md](preset_schema_migration_5e.md) — Preset schema migration (5e)
-- [preset_fleet_coverage.md](preset_fleet_coverage.md) — Fleet coverage report: presets per engine vs 150 target
+<!-- preset_fleet_coverage.md — planned but not yet created -->
 - [sonic_dna_audit.md](sonic_dna_audit.md) — Sonic DNA coverage audit
 - [sonic_dna_backfill.md](sonic_dna_backfill.md) — Sonic DNA backfill
 - [sonic_dna_validation_11i.md](sonic_dna_validation_11i.md) — Sonic DNA validation (11i)
@@ -122,13 +122,13 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 
 ## Sweep & Audit Reports
 
-- [code_health_report.md](code_health_report.md) — Code health audit
-- [technical_debt_catalog.md](technical_debt_catalog.md) — Technical debt: TODO/FIXME catalog
-- [haiku-maintenance-plan.md](haiku-maintenance-plan.md) — Haiku maintenance plan (2026-03-19)
-- [site_audit.md](site_audit.md) — Site directory audit (2026-03-19)
+- [code_health_report.md](fleet-audit/code_health_report.md) — Code health audit
+<!-- technical_debt_catalog.md — planned but not yet created -->
+<!-- haiku-maintenance-plan.md — planned but not yet created -->
+<!-- site_audit.md — planned but not yet created -->
 - [prism_sweep_final_report.md](prism_sweep_final_report.md) — Prism sweep final report
 - [prism_sweep_index.md](prism_sweep_index.md) — Prism sweep index
-- [flywheel-2026-03-15.md](flywheel-2026-03-15.md) — Flywheel improvement report (2026-03-15)
+- [flywheel-2026-03-15.md](concepts/flywheel-2026-03-15.md) — Flywheel improvement report (2026-03-15)
 - [filter_envelope_audit.md](filter_envelope_audit.md) — Filter/envelope audit
 - [filter_envelope_expansion_9e.md](filter_envelope_expansion_9e.md) — Filter/envelope expansion (9e)
 - [macro_audit.md](macro_audit.md) — Macro parameter audit
@@ -138,7 +138,7 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 - [organon_prefix_audit.md](organon_prefix_audit.md) — ORGANON prefix audit
 - [drift_fx_gap_analysis.md](drift_fx_gap_analysis.md) — DRIFT FX gap analysis
 - [knowledge_tree_update_12i.md](knowledge_tree_update_12i.md) — Knowledge tree update (12i)
-- [2026-03-14-session-readout.md](2026-03-14-session-readout.md) — Session readout 2026-03-14
+- [2026-03-14-session-readout.md](sessions/2026-03-14-session-readout.md) — Session readout 2026-03-14
 
 ---
 
@@ -146,9 +146,9 @@ Generated: 2026-03-19 | Updated: 2026-03-24 | Total: 300+ files across 30 subdir
 
 > **Note**: These are point-in-time snapshots. Current build status: run `cmake --build build`.
 
-- [build_verification_8h.md](build_verification_8h.md) — Build verification round 8h
-- [build_verification_11j.md](build_verification_11j.md) — Build verification round 11j
-- [build_verification_12j.md](build_verification_12j.md) — Build verification round 12j
+- [build_verification_8h.md](build-logs/build_verification_8h.md) — Build verification round 8h
+- [build_verification_11j.md](build-logs/build_verification_11j.md) — Build verification round 11j
+- [build_verification_12j.md](build-logs/build_verification_12j.md) — Build verification round 12j
 - [v007_journey_demo_report.md](v007_journey_demo_report.md) — v0.0.7 journey demo report
 - [xomnibus_volume2_review.md](xomnibus_volume2_review.md) — Volume 2 review
 

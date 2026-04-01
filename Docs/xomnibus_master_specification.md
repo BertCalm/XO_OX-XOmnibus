@@ -156,7 +156,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 2.6 Design Doctrines
 
-The 6 Doctrines are the quality contract every XOlokun engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 73 engines.
+The 6 Doctrines are the quality contract every XOlokun engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 76 engines.
 
 | ID | Doctrine | Requirement |
 |----|----------|------------|
@@ -1104,7 +1104,7 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 73 engines wrapped and integrated
+- All 76 engines wrapped and integrated
 - Full coupling matrix (12 types)
 - PlaySurface (all 3 modes)
 - 1000 factory presets with DNA fingerprints

@@ -55,7 +55,7 @@ At 1100×700pt, our total area is **770,000 px²**. After chrome (header 52pt + 
 
 ### The Problem No Synth Has Solved
 
-Most synths have 2-3 sound sources (oscillators). XOlokun has **4 simultaneous engine slots** drawn from a pool of **73 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
+Most synths have 2-3 sound sources (oscillators). XOlokun has **4 simultaneous engine slots** drawn from a pool of **76 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
 
 ### What We Can Learn from Competitors
 
@@ -66,7 +66,7 @@ Most synths have 2-3 sound sources (oscillators). XOlokun has **4 simultaneous e
 | **Pigments** | Top tabs (ENGINE / SEQ / FX / MATRIX), full-width content per tab | 2 engines + seq | Full width per view, generous knob spacing | You see ONE thing at a time — lose context of the whole patch |
 | **Phase Plant** | Vertical generator stack (add/remove/reorder), FX chain right | N generators | Scalable to any number of sources | Very tall, lots of scrolling, no overview |
 | **Omnisphere** | Layer A/B tabs, massive browser, FX page | 2 layers | Deep browser, rich FX | Tabbed = you forget what the other layer is doing |
-| **OP-1 (TE)** | Single screen, mode-switching, same 4 knobs control different params | 1 engine | Radical simplicity, same physical gestures for everything | Too constrained for 73 engines with different structures |
+| **OP-1 (TE)** | Single screen, mode-switching, same 4 knobs control different params | 1 engine | Radical simplicity, same physical gestures for everything | Too constrained for 76 engines with different structures |
 
 ### The XOlokun Answer: Hybrid Stack + Context Strip
 
@@ -383,7 +383,7 @@ Tabs at top: [PRESET] [COUPLE] [FX] [PLAY] [⚙]
 
 ## 5. Component Taxonomy (Reusable Library)
 
-### Engine Classification (73 engines audited)
+### Engine Classification (76 engines audited)
 
 | Tier | Count | Description |
 |------|-------|-------------|
@@ -479,7 +479,7 @@ The SPECIAL section is where engine personality lives. Standard engines: just mo
 
 ## 6. Engine-Specific UI Requirements
 
-### Full Audit Complete (73 engines read)
+### Full Audit Complete (76 engines read)
 
 **17 CUSTOM engines** — each needs at least one bespoke panel in the SPECIAL section:
 

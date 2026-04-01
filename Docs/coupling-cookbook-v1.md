@@ -45,7 +45,7 @@ These 10 types exchange slowly-evolving signals: amplitude envelopes, LFO output
 **What it does:** Source amplitude opens or closes the target engine's filter cutoff. When the source is loud, the target's filter opens (brightens). When the source falls silent, the target's filter closes (darkens).
 **Best for:** Sidechain-style breathing, dynamic filtering, drum-to-bass character transfer.
 **Amount range:** Whisper (0.10) to Possession (0.70). Rarely needs to exceed 0.70.
-**Note:** This is the most universally supported coupling type across all 73 engines. If you are exploring a new engine pair and do not know where to start, start here.
+**Note:** This is the most universally supported coupling type across all 76 engines. If you are exploring a new engine pair and do not know where to start, start here.
 
 ---
 
@@ -839,15 +839,15 @@ If CPU is tight, use control-rate types for live performance routes and reserve 
 
 2. **Fix engine parameters, not coupling amount.** If the coupling sounds wrong, adjust the source engine's output character first. Coupling amount controls intensity; engine parameters control quality.
 
-3. **One new coupling type per session.** Don't load four audio-rate routes simultaneously and wonder why the result is chaos. Learn one type at a time. `Amp->Filter` first. Then `Env->Morph`. Then `Audio->FM`. The fleet is 73 engines deep — there is no rush.
+3. **One new coupling type per session.** Don't load four audio-rate routes simultaneously and wonder why the result is chaos. Learn one type at a time. `Amp->Filter` first. Then `Env->Morph`. Then `Audio->FM`. The fleet is 76 engines deep — there is no rush.
 
 ---
 
 ## Closing Note
 
-The recipes in this cookbook are starting points. Each one demonstrates a specific coupling relationship with specific engines at specific amounts. What they cannot demonstrate is what happens when you take any two engines from a fleet of 73 and connect them with any of 15 coupling types at any amount in either direction.
+The recipes in this cookbook are starting points. Each one demonstrates a specific coupling relationship with specific engines at specific amounts. What they cannot demonstrate is what happens when you take any two engines from a fleet of 76 and connect them with any of 15 coupling types at any amount in either direction.
 
-That space — 73 × 72 × 15 × the full 0.0–1.0 depth range — is the actual size of the coupling system. This cookbook covers 20 points in that space. The rest is yours.
+That space — 76 × 75 × 15 × the full 0.0–1.0 depth range — is the actual size of the coupling system. This cookbook covers 20 points in that space. The rest is yours.
 
 Start with `Amp->Filter` at 0.30 and two engines you already know. Find the space between them. Then raise the depth.
 

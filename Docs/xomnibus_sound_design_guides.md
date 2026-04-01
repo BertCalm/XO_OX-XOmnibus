@@ -1,6 +1,6 @@
 # XOlokun — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers all 73 registered engines: features, key parameters, coupling strategies, and recommended pairings. Updated 2026-03-23.*
+*Covers 71 of 76 registered engines: features, key parameters, coupling strategies, and recommended pairings. Updated 2026-03-23.*
 
 ---
 
@@ -3867,4 +3867,4 @@ Circuit-modeling synthesizer built on Sternberg's Triangular Theory of Love — 
 
 ---
 
-*End of Sound Design Guide — 71 engines covered*
+*End of Sound Design Guide — 71 of 76 engines covered (OBIONT, OSIER, OVERFLOW, OVERCAST, ODDFELLOW, ONKOLO, OPCODE pending)*

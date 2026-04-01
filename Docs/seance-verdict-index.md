@@ -1,7 +1,7 @@
 # XOlokun Fleet Seance Verdict Index
 **Compiled:** 2026-03-24 (Seance Oracle — overnight autonomous session)
 **Sources:** `Docs/fleet-seance-scores-2026-03-20.md`, `Docs/seances/seance_cross_reference.md`, all individual seance files in `Docs/seances/` and `scripture/seances/`, Kitchen Collection batch verdicts, post-build seances for OPERA/OFFERING, OXBOW/OWARE seances, OXYTOCIN concept seance
-**Scope:** 73 engines registered — 72 seanced, 1 not yet seanced (OSMOSIS — design-only)
+**Scope:** 76 engines registered — 72 seanced, 4 not yet seanced (OSMOSIS — design-only; OBIONT, OSIER, OVERFLOW — recently added)
 **Fleet Average (post-fix):** ~8.8/10
 **Score Range:** 5.9 (OBLIQUE original) → 9.5 (OXYTOCIN)
 
@@ -315,7 +315,7 @@ Engines with significant changes since their last seance that warrant re-evaluat
 | Document | Coverage |
 |----------|---------|
 | `Docs/fleet-seance-scores-2026-03-20.md` | Complete fleet table for engines 1–46, post-fix rescoring summary |
-| `Docs/seances/seance_cross_reference.md` | All 73 engines, full score ranking by tier, P0 tracker, doctrine summary |
+| `Docs/seances/seance_cross_reference.md` | All 76 engines, full score ranking by tier, P0 tracker, doctrine summary |
 | `Docs/seances/obrix_seance_2026_03_19.md` | OBRIX detailed seance (pre-Wave 2) |
 | `Docs/seances/obrix_seance_verdict.md` | OBRIX summary verdict |
 | `Docs/seances/oceandeep_seance_verdict.md` | OCEANDEEP: 7.8/10 |

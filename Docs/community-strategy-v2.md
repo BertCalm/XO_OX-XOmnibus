@@ -19,7 +19,7 @@ v2 applies the Wedge Model: one focused point of entry, pressure held until some
 ## 1. Positioning
 
 ### Primary
-"73 engines. Couple anything. Sounds nothing else makes."
+"76 engines. Couple anything. Sounds nothing else makes."
 
 ### Secondary
 "An ocean you haven't finished exploring."
@@ -380,7 +380,7 @@ At 90 days, 20-50 patrons at average $6-8/month (2% of Discord members) is a rea
 
 ### Risk 3 — Wrong First Community (MEDIUM)
 
-**Description:** The first wave of Discord members is MPC users who want sample packs and drum kits, not synthesis enthusiasts who want to explore coupling and 73 engines. These users have valid needs that XOlokun may partially serve, but they will not become the coupling-evangelists who drive organic growth.
+**Description:** The first wave of Discord members is MPC users who want sample packs and drum kits, not synthesis enthusiasts who want to explore coupling and 76 engines. These users have valid needs that XOlokun may partially serve, but they will not become the coupling-evangelists who drive organic growth.
 
 **Intervention:**
 - Source the nucleus community explicitly from synthesis enthusiasts. r/synthesizers, KVR, Elektronauts are the right seeding grounds. r/mpcusers is secondary — relevant but not primary.
