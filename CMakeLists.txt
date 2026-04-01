@@ -386,6 +386,12 @@ target_sources(XOlokun PRIVATE
     Source/Engines/Oxalis/OxalisEngine.cpp
 
     # Psychology Boom Bap Drum Synthesis
+    Source/Engines/Offering/OfferingEngine.h
+    Source/Engines/Offering/OfferingCity.h
+    Source/Engines/Offering/OfferingCollage.h
+    Source/Engines/Offering/OfferingCuriosity.h
+    Source/Engines/Offering/OfferingTexture.h
+    Source/Engines/Offering/OfferingTransient.h
     Source/Engines/Offering/OfferingEngine.cpp
 
     # Late-registered engines (closes #162)
