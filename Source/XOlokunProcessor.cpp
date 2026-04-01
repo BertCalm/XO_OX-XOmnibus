@@ -786,7 +786,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // Stage 4: Combulator (tuned comb bank)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_combMix", 1), "Master Comb Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_combFreq", 1), "Master Comb Freq",
         juce::NormalisableRange<float>(20.0f, 2000.0f, 0.0f, 0.3f), 220.0f));
@@ -815,7 +815,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(-1000.0f, 1000.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_fshiftMix", 1), "Master Freq Shift Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_fshiftMode", 1), "Master Freq Shift Mode",
         juce::NormalisableRange<float>(0.0f, 2.0f, 1.0f), 0.0f));
@@ -826,7 +826,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // Stage 8: Multiband OTT
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_ottMix", 1), "Master OTT Mix",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.0f, 0.5f), 0.0f));  // skew 0.5: more resolution in subtle blend range
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_ottDepth", 1), "Master OTT Depth",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
