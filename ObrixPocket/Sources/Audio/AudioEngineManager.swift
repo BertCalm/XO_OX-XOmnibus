@@ -45,8 +45,8 @@ final class AudioEngineManager: ObservableObject {
 
     private func handleMemoryWarning() {
         print("[ObrixPocket] Memory warning received — flushing caches")
-        // Clear non-essential caches
-        slotParamCache.removeAll()
+        // Clear non-essential caches (atomic swap so readers see a consistent empty dict)
+        paramCacheLock.withLock { slotParamCache.removeAll() }
     }
 
     func start() {
@@ -143,7 +143,9 @@ final class AudioEngineManager: ObservableObject {
     /// Build (or rebuild) the per-slot parameter cache from the current reef wiring.
     /// Call this on app launch and whenever wiring changes.
     func rebuildParamCache(reefStore: ReefStore) {
-        slotParamCache.removeAll()
+        // Build into a local dict first — never mutate slotParamCache in-place while
+        // audio-adjacent readers may be holding the lock.
+        var newCache: [Int: [(String, Float)]] = [:]
         for slotIndex in 0..<ReefStore.maxSlots {
             guard let specimen = reefStore.specimens[slotIndex] else { continue }
             var params: [(String, Float)] = []
@@ -152,16 +154,20 @@ final class AudioEngineManager: ObservableObject {
             for w in wired {
                 collectMappedParams(w, into: &params)
             }
-            slotParamCache[slotIndex] = params
+            newCache[slotIndex] = params
         }
+        // Atomic swap: readers either see the old complete dict or the new complete dict.
+        paramCacheLock.withLock { slotParamCache = newCache }
     }
 
     /// Blast cached params for a slot without walking the full wiring chain.
     /// I-08: Used by the PlayKeyboard which calls ObrixBridge directly (bypassing noteOn).
     /// Replaces the per-keypress applySlotChain call in ReefTab.
     func applyCachedParams(for slotIndex: Int) {
-        guard let bridge = ObrixBridge.shared(),
-              let cached = slotParamCache[slotIndex] else { return }
+        guard let bridge = ObrixBridge.shared() else { return }
+        // Snapshot the cached array under lock so we don't hold the lock during bridge calls.
+        let cached: [(String, Float)]? = paramCacheLock.withLock { slotParamCache[slotIndex] }
+        guard let cached else { return }
         for (param, val) in Self.resetParams {
             bridge.setParameterImmediate(param, value: val)
         }
@@ -374,8 +380,13 @@ final class AudioEngineManager: ObservableObject {
 
     // MARK: - Parameter Cache (T1-03)
 
+    /// Protects slotParamCache against concurrent read/write between
+    /// rebuildParamCache (UI thread) and any audio-adjacent readers.
+    private let paramCacheLock = NSLock()
+
     /// Per-slot cache of resolved (engineParam, scaledValue) pairs.
     /// Built once on wiring change; blasted atomically on each noteOn.
+    /// Always access via paramCacheLock.
     private var slotParamCache: [Int: [(String, Float)]] = [:]
 
     /// Default values written before each cached blast to ensure modules not
@@ -559,11 +570,11 @@ final class AudioEngineManager: ObservableObject {
 
         // Fast path: blast cached params (no UUID matching, no chain walking per note).
         // Falls back to full applySlotChain if cache is cold (first note before wiring settles).
-        // C-01: No cache-miss fallback — rebuilding param cache from noteOn is a data race
-        // when noteOn is called from a non-main thread (reads @Published reefStore.specimens).
+        // C-01: Snapshot under lock so we don't hold the lock during bridge calls.
         // rebuildParamCache is already called on every wiring change via onWiringChanged /
         // applyReefConfiguration. If the cache is cold, the engine keeps its last config.
-        if let cached = slotParamCache[slotIndex] {
+        let cachedParams: [(String, Float)]? = paramCacheLock.withLock { slotParamCache[slotIndex] }
+        if let cached = cachedParams {
             for (param, value) in Self.resetParams {
                 bridge.setParameterImmediate(param, value: value)
             }
