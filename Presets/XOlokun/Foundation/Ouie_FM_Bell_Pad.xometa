@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Bell Pad",
+  "name": "Spectral Bell Pad",
   "mood": "Foundation",
   "engines": [
     "Ouie"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Noise and FM",
+  "name": "Noise and Spectral",
   "mood": "Foundation",
   "engines": [
     "Ouie"

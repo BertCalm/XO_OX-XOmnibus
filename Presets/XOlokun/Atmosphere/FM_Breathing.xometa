@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "FM Breathing",
+  "name": "Spectral Breathing",
   "parameters": {
     "Overworld": {
       "ow_ampAttack": 0.08,

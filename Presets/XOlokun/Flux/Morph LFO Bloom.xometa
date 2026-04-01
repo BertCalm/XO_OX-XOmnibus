@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Morph LFO Bloom",
+  "name": "Morph Pulse Bloom",
   "mood": "Flux",
   "engines": [
     "OddOscar"

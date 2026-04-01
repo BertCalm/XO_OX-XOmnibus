@@ -14,7 +14,7 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Wavetable FM",
+  "name": "Wavetable Spectral",
   "mood": "Prism",
   "engines": [
     "Obrix"

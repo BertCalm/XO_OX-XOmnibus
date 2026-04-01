@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Bell Tone",
+  "name": "Spectral Bell Tone",
   "mood": "Foundation",
   "engines": [
     "Overworld"

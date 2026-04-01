@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Double LFO Morph",
+  "name": "Double Pulse Morph",
   "mood": "Flux",
   "engines": [
     "Organism"

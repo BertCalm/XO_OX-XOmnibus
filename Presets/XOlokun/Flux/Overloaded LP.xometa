@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "Overloaded LP",
+  "name": "Overloaded Filter",
   "parameters": {
     "Oblong": {
       "bob_ampAttack": 0.008,

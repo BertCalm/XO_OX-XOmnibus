@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "LFO Thermal",
+  "name": "Pulse Thermal",
   "mood": "Atmosphere",
   "engines": [
     "Obese"

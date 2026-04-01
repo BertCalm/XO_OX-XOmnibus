@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Attractor LFO",
+  "name": "Attractor Pulse",
   "mood": "Submerged",
   "engines": [
     "Ouroboros"

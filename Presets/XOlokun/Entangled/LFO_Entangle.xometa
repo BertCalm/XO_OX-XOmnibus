@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "LFO Entangle",
+  "name": "Pulse Entangle",
   "mood": "Entangled",
   "engines": [
     "Overdub",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Drift LFO Sweep",
+  "name": "Drift Pulse Sweep",
   "mood": "Flux",
   "engines": [
     "Odyssey"

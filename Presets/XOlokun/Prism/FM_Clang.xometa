@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Clang",
+  "name": "Spectral Clang",
   "mood": "Prism",
   "engines": [
     "Overworld"

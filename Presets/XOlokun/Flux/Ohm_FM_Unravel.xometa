@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Unravel",
+  "name": "Spectral Unravel",
   "mood": "Flux",
   "engines": [
     "Ohm"

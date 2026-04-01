@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "LFO Storm",
+  "name": "Pulse Storm",
   "mood": "Flux",
   "engines": [
     "Organism"

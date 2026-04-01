@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Drift Morph Flux LFO",
+  "name": "Drift Morph Flux Pulse",
   "mood": "Flux",
   "engines": [
     "Odyssey",

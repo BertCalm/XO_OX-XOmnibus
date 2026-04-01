@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Dual FM",
+  "name": "Dual Spectral",
   "mood": "Foundation",
   "engines": [
     "Ouie"

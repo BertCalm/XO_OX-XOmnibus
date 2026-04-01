@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Riddim LFO",
+  "name": "Riddim Pulse",
   "mood": "Flux",
   "engines": [
     "Overdub"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "LFO Breathe",
+  "name": "Pulse Breathe",
   "mood": "Foundation",
   "engines": [
     "OpenSky"

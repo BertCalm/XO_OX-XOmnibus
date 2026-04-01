@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Sub Bell",
+  "name": "Spectral Sub Bell",
   "mood": "Submerged",
   "engines": [
     "Obrix"

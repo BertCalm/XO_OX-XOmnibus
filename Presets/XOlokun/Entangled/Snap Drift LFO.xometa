@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Snap Drift LFO",
+  "name": "Snap Drift Pulse",
   "mood": "Entangled",
   "engines": [
     "OddfeliX",

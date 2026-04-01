@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Deep FM",
+  "name": "Deep Spectral",
   "mood": "Submerged",
   "engines": [
     "Odyssey"

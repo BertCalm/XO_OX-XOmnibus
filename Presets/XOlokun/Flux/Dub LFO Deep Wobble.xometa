@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Dub LFO Deep Wobble",
+  "name": "Dub Pulse Deep Wobble",
   "mood": "Flux",
   "engines": [
     "Overdub"

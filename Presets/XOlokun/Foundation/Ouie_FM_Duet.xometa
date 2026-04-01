@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Duet",
+  "name": "Spectral Duet",
   "mood": "Foundation",
   "engines": [
     "Ouie"

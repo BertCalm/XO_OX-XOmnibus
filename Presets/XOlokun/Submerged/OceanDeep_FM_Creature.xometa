@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Creature",
+  "name": "Spectral Creature",
   "mood": "Submerged",
   "engines": [
     "OceanDeep"

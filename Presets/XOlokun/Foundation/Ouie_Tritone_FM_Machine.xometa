@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tritone FM Machine",
+  "name": "Tritone Spectral Machine",
   "mood": "Foundation",
   "engines": [
     "Ouie"
