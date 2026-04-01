@@ -31,7 +31,7 @@ Sharing this week's coupling recipe from the XOlokun cookbook. These are all fre
 
 ---
 
-XOlokun is a free, open-source multi-engine synthesizer with {engine_a} and {engine_b} among 73 registered engines. Coupling lets one engine rewrite another in real time.
+XOlokun is a free, open-source multi-engine synthesizer with {engine_a} and {engine_b} among 76 registered engines. Coupling lets one engine rewrite another in real time.
 
 Download + source: github.com/XO-OX
 Reddit community: {reddit_link}
