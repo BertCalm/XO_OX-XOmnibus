@@ -1801,11 +1801,13 @@ private:
         int voiceIndex = findFreeVoice();
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
-        // If stealing an active voice, initiate 5ms crossfade
+        // If stealing an active voice, initiate 5ms crossfade and reset
+        // glide state so the new note doesn't portamento from a stale pitch.
         if (voice.active)
         {
             voice.fadingOut = true;
             voice.fadeGain = std::min (voice.fadeGain, 0.5f);
+            voice.currentGlideFrequency = frequency;  // snap: no portamento from stolen voice's last pitch
         }
 
         initializeVoice (voice, noteNumber, velocity, frequency,
