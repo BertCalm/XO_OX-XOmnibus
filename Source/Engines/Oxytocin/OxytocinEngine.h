@@ -105,12 +105,39 @@ public:
 
     void pitchWheel (int value) noexcept
     {
-        // ±2 semitones
-        float bend = (static_cast<float> (value - 8192) / 8192.0f) * 2.0f;
+        // Range is set by RPN 0 (pitch bend sensitivity); defaults to ±2 semitones.
+        float bend = (static_cast<float> (value - 8192) / 8192.0f)
+                     * static_cast<float> (pitchBendSemitones);
         float ratio = std::pow (2.0f, bend / 12.0f);
         for (auto& v : voices)
             v.setPitchBend (ratio);
         pitchBendRatio = ratio;
+    }
+
+    /// Handle a MIDI controller message. Tracks RPN 0 (pitch bend sensitivity)
+    /// via the standard CC 101 / CC 100 / CC 6 / CC 38 sequence.
+    void controller (int cc, int val) noexcept
+    {
+        switch (cc)
+        {
+            case 1:   modWheel (val); break;
+
+            // RPN select: CC 101 = RPN MSB, CC 100 = RPN LSB
+            case 101: rpnMsb = static_cast<uint8_t> (val); break;
+            case 100: rpnLsb = static_cast<uint8_t> (val); break;
+
+            // Data Entry MSB (CC 6) — sets the value for the selected RPN.
+            // RPN 0 (MSB=0, LSB=0) = pitch bend sensitivity in semitones.
+            case 6:
+                if (rpnMsb == 0 && rpnLsb == 0)
+                {
+                    // MIDI spec: MSB = semitones, LSB (CC 38) = cents (ignored here).
+                    pitchBendSemitones = std::clamp (val, 1, 24);
+                }
+                break;
+
+            default: break;
+        }
     }
 
     // D006: mod wheel → entanglement boost
@@ -143,9 +170,7 @@ public:
             else if (msg.isNoteOff())        noteOff (msg.getNoteNumber());
             else if (msg.isPitchWheel())     pitchWheel (msg.getPitchWheelValue());
             else if (msg.isController())
-            {
-                if (msg.getControllerNumber() == 1)  modWheel (msg.getControllerValue());
-            }
+                controller (msg.getControllerNumber(), msg.getControllerValue());
             else if (msg.isChannelPressure()) aftertouch (msg.getChannelPressureValue());
             else if (msg.isAftertouch())     aftertouch (msg.getAfterTouchValue());
         }
@@ -284,6 +309,14 @@ private:
     int      allocatedBlockSize = 0;
     uint64_t tick = 0;
     float    pitchBendRatio = 1.0f;
+
+    // Pitch bend sensitivity in semitones — set via MIDI RPN 0 (CC101/CC100/CC6).
+    // Default 2 semitones per MIDI convention; range [1, 24].
+    int      pitchBendSemitones = 2;
+
+    // RPN state machine (CC 101 / CC 100 / CC 6) for pitch bend sensitivity.
+    uint8_t  rpnMsb = 127;  // 127 = null RPN (no selection)
+    uint8_t  rpnLsb = 127;
 
     // D006: expression input state
     float    modWheelValue  = 0.0f;   // 0..1, last received CC1
