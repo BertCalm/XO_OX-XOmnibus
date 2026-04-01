@@ -1028,14 +1028,29 @@ private:
         // ---- Unison detune and pan scatter ----------------------------------
         // Spread sub-voices symmetrically around center. The offsets create
         // a stereo "school" effect when unison > 1.
+        //
+        // Fix (#375): offsets are now computed from the actual activeUnisonCount
+        // so every voice count distributes evenly around 0:
+        //   N=1 → [0]           (single voice stays at fundamental — no detune)
+        //   N=2 → [-0.5, +0.5]  (symmetric pair)
+        //   N=3 → [-1, 0, +1]   (symmetric triplet, center at 0)
+        //   N=4 → [-1.5, -0.5, +0.5, +1.5]  (quad, no center voice)
+        // Previously the code always used the N=4 pattern, so a 1-voice unison
+        // was detuned by -1.5 semitones and a 2-voice unison was biased low.
         {
             static constexpr float kSemitonesToNatLog = 0.693147f / 12.0f;  // ln(2) / 12
+            const int activeUnisonCount = std::min (unisonCount, 4);
+            const float halfSpan = (activeUnisonCount > 1)
+                                   ? 0.5f * static_cast<float> (activeUnisonCount - 1)
+                                   : 0.0f;
             for (int unisonIndex = 0; unisonIndex < 4; ++unisonIndex)
             {
-                // Offset pattern: -1.5, -0.5, +0.5, +1.5 (centered around 0)
-                float normalizedOffset = (static_cast<float> (unisonIndex) - 1.5f);
+                // Symmetric spread: centre each active voice around 0
+                float normalizedOffset = (unisonIndex < activeUnisonCount)
+                    ? (static_cast<float> (unisonIndex) - halfSpan)
+                    : 0.0f;
                 voice.detuneOffsets[unisonIndex] = normalizedOffset * detuneCents / 100.0f;
-                voice.panOffsets[unisonIndex] = normalizedOffset / 2.0f;
+                voice.panOffsets[unisonIndex] = normalizedOffset / static_cast<float> (std::max (activeUnisonCount, 2));
                 // CPU fix: precompute per-voice detune ratio once at noteOn.
                 // detunedRatios[i] = fastExp(detuneOffsets[i] * ln2/12)
                 // At sample time: detunedFrequency = frequency * detunedRatios[i]
