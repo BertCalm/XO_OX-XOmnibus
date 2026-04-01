@@ -302,16 +302,16 @@
 
 ### Kitchen Collection P0s (Active)
 
-| Bug | Engine | Description | Fix Location |
-|-----|--------|-------------|--------------|
-| KC-P0-01 | OGRE | ogre_soil dead — body filter double-pass discards soil character | OgreEngine.h — apply soil to cutoff before envelope modulation |
-| KC-P0-02 | OLATE | olate_terroir dead for 0.7–1.0 range (East Coast + Japanese regions) | OlateEngine.h — implement DSP for 2 missing terroir regions |
-| KC-P0-03 | OVERWASH | wash_interference / spectralField[32] declared but never written or read | OverwashEngine.h renderBlock — populate spectralField from voice output |
-| KC-P0-04 | OCHRE | (void) lfo2Val — LFO2 computed but explicitly discarded | OchreEngine.h — wire lfo2Val to a synthesis target |
-| KC-P0-05 | BROTH | setBrothSessionAge/getSessionAge/getConcentrate/getSpectralMass exist but no coordinator calls them | XOlokunProcessor.cpp — write BROTH coordinator in renderBlock |
-| KC-P0-06 | OTO | Organ crossfade (prevOrganGain/prevOrganModel) declared, never written or read | OtoEngine.h renderBlock — implement crossfade |
-| KC-P0-07 | OTO | Melodica fundamental unaliased sawtooth above C5 | OtoEngine.h — PolyBLEP sawtooth for Melodica partial 0 |
-| KC-P0-08 | OCTAVE + OTIS | Leslie Doppler: amplitude modulation only, no pitch modulation | OctaveEngine.h / OtisEngine.h — add pitch modulation to Leslie model |
+| Bug | Engine | Description | Fix Location | Status |
+|-----|--------|-------------|--------------|--------|
+| KC-P0-01 | OGRE | ogre_soil dead — body filter double-pass discards soil character | OgreEngine.h — apply soil to cutoff before envelope modulation | **FIXED** — D004 fix comment at line 392, soil branches at 400-416 |
+| KC-P0-02 | OLATE | olate_terroir dead for 0.7–1.0 range (East Coast + Japanese regions) | OlateEngine.h — implement DSP for 2 missing terroir regions | **FIXED** — East Coast (0.7–0.98) + Japanese (0.98+) branches live |
+| KC-P0-03 | OVERWASH | wash_interference / spectralField[32] declared but never written or read | OverwashEngine.h renderBlock — populate spectralField from voice output | Open |
+| KC-P0-04 | OCHRE | (void) lfo2Val — LFO2 computed but explicitly discarded | OchreEngine.h — wire lfo2Val to a synthesis target | **FIXED** — D004 fix comment at line 739, caramel modulation wired |
+| KC-P0-05 | BROTH | setBrothSessionAge/getSessionAge/getConcentrate/getSpectralMass exist but no coordinator calls them | XOlokunProcessor.cpp — write BROTH coordinator in renderBlock | Open |
+| KC-P0-06 | OTO | Organ crossfade (prevOrganGain/prevOrganModel) declared, never written or read | OtoEngine.h renderBlock — implement crossfade | **FIXED** — BUG-1 fix at line 604, 50ms crossfade working |
+| KC-P0-07 | OTO | Melodica fundamental unaliased sawtooth above C5 | OtoEngine.h — PolyBLEP sawtooth for Melodica partial 0 | Open |
+| KC-P0-08 | OTIS | Leslie Doppler: amplitude modulation only, no pitch modulation (OCTAVE is pipe organ, no Leslie) | OtisEngine.h — add pitch modulation to Leslie model | **FIXED** — delay-buffer Doppler in OtisEngine.h; OCTAVE attribution was incorrect (no Leslie in pipe organ) |
 
 ---
 
