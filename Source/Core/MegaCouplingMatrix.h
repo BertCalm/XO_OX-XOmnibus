@@ -55,10 +55,23 @@ public:
     // couplingBufferR: R-channel scratch, used exclusively for AudioToBuffer
     //                  routes which require stereo — see processAudioRoute() and
     //                  Docs/xopal_phase1_architecture.md §15.4.
-    void prepare(int maxBlockSize)
+    //
+    // sampleRate is used to scale the control-rate decimation ratio so that the
+    // effective modulation update rate stays near ~1.5 kHz regardless of sample
+    // rate (e.g. 32 @ 48 kHz ≈ 1.5 kHz; 64 @ 96 kHz ≈ 1.5 kHz).
+    void prepare(int maxBlockSize, double sampleRate = 48000.0)
     {
         couplingBuffer.resize(static_cast<size_t>(maxBlockSize), 0.0f);
         couplingBufferR.resize(static_cast<size_t>(maxBlockSize), 0.0f);
+
+        // Target ~1.5 kHz control rate, rounded to nearest power of 2.
+        // Clamped to [8, 256] to avoid extremes at unusual sample rates.
+        const int rawRatio = static_cast<int>(sampleRate / 1500.0);
+        // Round down to previous power of 2
+        int ratio = 8;
+        while (ratio * 2 <= rawRatio && ratio < 256)
+            ratio *= 2;
+        controlRateRatio = std::max(8, std::min(256, ratio));
     }
 
     // Set the engine pointers for the active slots (audio thread).
@@ -284,7 +297,7 @@ public:
             {
                 // SRO: Control-rate decimation for modulation coupling types.
                 // Modulation signals (amp, LFO, envelope, pitch) change slowly —
-                // sample source every kControlRateRatio samples and linearly
+                // sample source every controlRateRatio samples and linearly
                 // interpolate between control points (Buchla 266 topology).
                 // Saves ~97% of getSampleForCoupling calls for these route types.
                 fillControlRateBuffer(source, limit);
@@ -414,8 +427,9 @@ public:
 
 private:
     // SRO: Control-rate decimation ratio for modulation coupling types.
-    // Must be power of 2. 32 = sample every 32nd sample (~1.5 kHz at 48 kHz).
-    static constexpr int kControlRateRatio = 32;
+    // Computed in prepare() to maintain ~1.5 kHz control rate at any sample rate.
+    // Default of 32 is correct for 48 kHz (32 × 1500 = 48000).
+    int controlRateRatio = 32;
 
     //-- Cycle detection helpers (message thread only) -------------------------
 
@@ -477,7 +491,7 @@ private:
     //
     // For modulation routes (AmpToFilter, LFOToPitch, EnvToMorph, etc.),
     // the source signal is inherently control-rate. Instead of reading
-    // every sample, we read every kControlRateRatio-th sample and linearly
+    // every sample, we read every controlRateRatio-th sample and linearly
     // interpolate between control points. This mirrors the Buchla 266
     // "source of uncertainty" topology where CV line capacitance produces
     // smooth transitions between discrete control updates.
@@ -487,13 +501,13 @@ private:
         if (numSamples <= 0)
             return;
 
-        const float invRatio = 1.0f / static_cast<float>(kControlRateRatio);
+        const float invRatio = 1.0f / static_cast<float>(controlRateRatio);
         float currentVal = source->getSampleForCoupling(0, 0);
 
         int blockStart = 0;
         while (blockStart < numSamples)
         {
-            int blockEnd = std::min(blockStart + kControlRateRatio, numSamples);
+            int blockEnd = std::min(blockStart + controlRateRatio, numSamples);
             // Read next control point (or last sample if at buffer end)
             float nextVal = source->getSampleForCoupling(0,
                 std::min(blockEnd, numSamples - 1));
@@ -626,7 +640,7 @@ private:
     // Self-routes (sourceSlot == destSlot) are skipped to prevent feedback.
     // Both source and dest must be non-null (checked by the caller).
     //
-    // Control-rate: uses fillControlRateBuffer (kControlRateRatio decimation)
+    // Control-rate: uses fillControlRateBuffer (controlRateRatio decimation)
     // for both directions. KNOT modulation signals change slowly — no need for
     // audio-rate resolution.
     //

@@ -1225,7 +1225,7 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     playSurfaceMidiCollector.reset(sampleRate);
 
     macroSystem_.prepare(sampleRate, samplesPerBlock);
-    couplingMatrix.prepare(samplesPerBlock);
+    couplingMatrix.prepare(samplesPerBlock, sampleRate);
     couplingCrossfader.prepare(sampleRate, samplesPerBlock);
 
     // Pre-allocate the merged route vector so the audio thread never allocates.
