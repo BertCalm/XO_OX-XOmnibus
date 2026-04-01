@@ -713,6 +713,12 @@ def encode_mp3(wav_path: Path, mp3_path: Path, bitrate: int = 192) -> bool:
     Convert WAV to MP3 using ffmpeg or lame.
     Returns True on success, False if no encoder found.
     """
+    # Validate bitrate before use in subprocess args (issue #430).
+    # Allowlist of standard MP3 bitrates prevents injection via crafted config.
+    VALID_BITRATES = {32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320}
+    if bitrate not in VALID_BITRATES:
+        raise ValueError(f"Invalid MP3 bitrate {bitrate!r} — must be one of {sorted(VALID_BITRATES)}")
+
     # Try ffmpeg first
     try:
         result = subprocess.run(

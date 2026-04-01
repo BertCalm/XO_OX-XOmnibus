@@ -72,11 +72,51 @@ class JobResult:
 
 
 # ---------------------------------------------------------------------------
+# Whitelist validation (issue #430)
+# ---------------------------------------------------------------------------
+
+# Valid values for enum-like job fields passed to oxport.py.
+# These are used as subprocess arguments; unvalidated values could inject
+# unexpected flags into the command line (e.g., --skip containing
+# '--output-dir /tmp/evil'). List-based subprocess.run() prevents shell
+# injection, but arg-count injection is still possible with arbitrary values.
+VALID_KIT_MODES = {"smart", "velocity", "cycle", ""}
+VALID_SKIP_STAGES = {"render", "normalize", "cover_art", "package", ""}
+VALID_TUNING_SYSTEMS = {
+    "12tet", "just", "meantone", "pythagorean", "werckmeister",
+    "kirnberger", "young", "vallotti", "custom", "",
+}
+
+
+def _validate_job(job: dict) -> None:
+    """Raise ValueError if any job field contains an unexpected value."""
+    kit_mode = str(job.get("kit_mode", ""))
+    if kit_mode not in VALID_KIT_MODES:
+        raise ValueError(
+            f"Invalid kit_mode {kit_mode!r} — must be one of {sorted(VALID_KIT_MODES)}"
+        )
+
+    skip = str(job.get("skip", ""))
+    if skip and skip not in VALID_SKIP_STAGES:
+        raise ValueError(
+            f"Invalid skip stage {skip!r} — must be one of {sorted(VALID_SKIP_STAGES)}"
+        )
+
+    tuning = str(job.get("tuning", ""))
+    if tuning and tuning not in VALID_TUNING_SYSTEMS:
+        raise ValueError(
+            f"Invalid tuning system {tuning!r} — must be one of {sorted(VALID_TUNING_SYSTEMS)}"
+        )
+
+
+# ---------------------------------------------------------------------------
 # Command builder
 # ---------------------------------------------------------------------------
 
 def build_command(job: dict, output_base_dir: Path) -> list[str]:
     """Build the oxport.py subprocess command for a single job dict."""
+    _validate_job(job)  # Raises ValueError on unexpected enum values.
+
     engine = job["engine"]
     output_dir = output_base_dir / engine.lower()
 

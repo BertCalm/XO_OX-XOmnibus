@@ -72,16 +72,35 @@ def check_ffmpeg():
     return shutil.which("ffmpeg") is not None
 
 
+def _clamp_float(val: float, lo: float, hi: float, name: str) -> float:
+    """Return val clamped to [lo, hi], raising ValueError if already out of range.
+
+    argparse enforces type=float, but an adversarial config file loaded
+    by a wrapper could bypass argparse. Explicit clamps keep ffmpeg filter
+    chain strings predictable (issue #430).
+    """
+    if not (lo <= val <= hi):
+        raise ValueError(f"{name}={val!r} is outside the allowed range [{lo}, {hi}]")
+    return val
+
+
 def process_wav(input_path, output_dir, engine_name, args):
     """Process a single WAV file into MP3 and OGG."""
     results = []
 
+    # Guard ffmpeg filter chain parameters (issue #430).
+    # argparse already enforces type=float, but clamp explicitly to keep
+    # the constructed filter string predictable and well-formed.
+    duration = _clamp_float(float(args.duration), 0.1, 300.0, "duration")
+    fade_in  = _clamp_float(float(args.fade_in),  0.0,  10.0, "fade_in")
+    fade_out = _clamp_float(float(args.fade_out), 0.0,  10.0, "fade_out")
+
     # Build ffmpeg filter chain
-    filters = [f"atrim=0:{args.duration}"]
-    if args.fade_in > 0:
-        filters.append(f"afade=t=in:d={args.fade_in}")
-    if args.fade_out > 0:
-        filters.append(f"afade=t=out:st={args.duration - args.fade_out}:d={args.fade_out}")
+    filters = [f"atrim=0:{duration}"]
+    if fade_in > 0:
+        filters.append(f"afade=t=in:d={fade_in}")
+    if fade_out > 0:
+        filters.append(f"afade=t=out:st={duration - fade_out}:d={fade_out}")
     if args.normalize:
         filters.append("loudnorm=I=-16:TP=-1:LRA=11")
     filter_chain = ",".join(filters)
