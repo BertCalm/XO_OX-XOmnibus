@@ -77,7 +77,6 @@ public:
     void setMakeupGain (float db)
     {
         makeupGainDb = clamp (db, 0.0f, 30.0f);
-        makeupGainLinear = dbToGain (makeupGainDb);
     }
 
     /// Set soft knee width in dB. 0 = hard knee, up to 12 dB.
@@ -242,8 +241,7 @@ private:
     float ratio = 4.0f;
     float attackMs = 10.0f;      // ms
     float releaseMs = 100.0f;    // ms
-    float makeupGainDb = 0.0f;   // dB
-    float makeupGainLinear = 1.0f;
+    float makeupGainDb = 0.0f;   // dB (applied as dB offset in computeGain)
     float kneeDb = 6.0f;         // dB (soft knee width)
 
     // Envelope follower state
