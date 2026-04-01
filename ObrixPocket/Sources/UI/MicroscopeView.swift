@@ -30,6 +30,9 @@ struct MicroscopeView: View {
                     size: 180,
                     interactive: true
                 )
+                .accessibilityLabel("Spectral fingerprint for \(specimen.name)")
+                .accessibilityHint("Shows the unique spectral DNA pattern of this specimen. Double-tap to interact.")
+                .accessibilityValue(spectralAccessibilityValue)
                 .padding(.vertical, 8)
 
                 // Provenance
@@ -361,6 +364,19 @@ struct MicroscopeView: View {
 
     private var catColor: Color {
         categoryColor(for: specimen.category)
+    }
+
+    /// VoiceOver value summarising the specimen's spectral DNA dimensions.
+    private var spectralAccessibilityValue: String {
+        let dna = specimen.spectralDNA
+        let brightness = Int(dna.brightness * 100)
+        let warmth     = Int(dna.warmth     * 100)
+        let movement   = Int(dna.movement   * 100)
+        let density    = Int(dna.density    * 100)
+        let space      = Int(dna.space      * 100)
+        let aggression = Int(dna.aggression * 100)
+        return "Brightness \(brightness)%, warmth \(warmth)%, movement \(movement)%, " +
+               "density \(density)%, space \(space)%, aggression \(aggression)%"
     }
 }
 
