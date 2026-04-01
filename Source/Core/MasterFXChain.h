@@ -306,7 +306,7 @@ public:
         const float oraDrift     = pOraDrift     ? pOraDrift->load()     : 0.0f;
         const float oraMix       = pOraMix       ? pOraMix->load()       : 0.0f;
 
-        // Stage 6: Combulator
+        // Stage 9: Combulator
         const float combMix      = pCombMix      ? pCombMix->load()      : 0.0f;
         const float combFreq     = pCombFreq     ? pCombFreq->load()     : 220.0f;
         const float combFB       = pCombFB       ? pCombFB->load()       : 0.85f;
@@ -316,7 +316,7 @@ public:
         const float combOff2     = pCombOff2     ? pCombOff2->load()     : 7.0f;
         const float combOff3     = pCombOff3     ? pCombOff3->load()     : 12.0f;
 
-        // Stage 7: Doppler
+        // Stage 10: Doppler
         const float dopplerDist  = pDopplerDist  ? pDopplerDist->load()  : 0.0f;
         const float dopplerSpeed = pDopplerSpeed ? pDopplerSpeed->load() : 0.3f;
         const float dopplerMix   = pDopplerMix   ? pDopplerMix->load()   : 0.0f;
@@ -331,13 +331,13 @@ public:
         const float reverbMod       = pReverbMod       ? pReverbMod->load()       : 0.3f;
         const float reverbWidth     = pReverbWidth     ? pReverbWidth->load()     : 1.0f;
 
-        // Stage 9: Frequency Shifter
+        // Stage 12: Frequency Shifter
         const float fshiftHz     = pFShiftHz     ? pFShiftHz->load()     : 0.0f;
         const float fshiftMix    = pFShiftMix    ? pFShiftMix->load()    : 0.0f;
         const float fshiftMode   = pFShiftMode   ? pFShiftMode->load()   : 0.0f;
         const float fshiftFB     = pFShiftFB     ? pFShiftFB->load()     : 0.0f;
 
-        // Stage 12: fXOneiric
+        // Stage 13: fXOneiric
         const float onDelayMs    = pOnDelayMs    ? pOnDelayMs->load()    : 350.0f;
         const float onShiftHz    = pOnShiftHz    ? pOnShiftHz->load()    : 5.0f;
         const float onFeedback   = pOnFeedback   ? pOnFeedback->load()   : 0.6f;
@@ -355,26 +355,26 @@ public:
         const float onslSCHP      = pOnslSCHP      ? pOnslSCHP->load()      : 200.0f;
         const float onslMix       = pOnslMix       ? pOnslMix->load()       : 0.0f;
 
-        // Stage 13: Modulation
+        // Stage 14: Modulation
         const float modRate      = pModRate      ? pModRate->load()      : 0.8f;
         const float modDepth     = pModDepth     ? pModDepth->load()     : 0.0f;
         const float modMix       = pModMix       ? pModMix->load()       : 0.0f;
         const float modMode      = pModMode      ? pModMode->load()      : 0.0f;
         const float modFeedback  = pModFB        ? pModFB->load()        : 0.0f;
 
-        // Stage 11: Granular Smear
+        // Stage 15: Granular Smear
         const float smearAmt     = pSmearAmt     ? pSmearAmt->load()     : 0.0f;
         const float smearGrain   = pSmearGrain   ? pSmearGrain->load()   : 60.0f;
         const float smearDensity = pSmearDensity ? pSmearDensity->load() : 0.5f;
         const float smearMix     = pSmearMix     ? pSmearMix->load()     : 0.0f;
 
-        // Stage 12: Harmonic Exciter
+        // Stage 16: Harmonic Exciter
         const float excDrive     = pExcDrive     ? pExcDrive->load()     : 0.0f;
         const float excFreq      = pExcFreq      ? pExcFreq->load()      : 3500.0f;
         const float excTone      = pExcTone      ? pExcTone->load()      : 0.7f;
         const float excMix       = pExcMix       ? pExcMix->load()       : 0.0f;
 
-        // Stage 13: Stereo Sculptor
+        // Stage 17: Stereo Sculptor
         const float sculLowW     = pSculLowW     ? pSculLowW->load()     : 0.0f;
         const float sculMidW     = pSculMidW     ? pSculMidW->load()     : 1.0f;
         const float sculHighW    = pSculHighW    ? pSculHighW->load()    : 1.5f;
@@ -382,7 +382,7 @@ public:
         const float sculHighX    = pSculHighX    ? pSculHighX->load()    : 4000.0f;
         const float sculMix      = pSculMix      ? pSculMix->load()      : 0.0f;
 
-        // Stage 14: Psychoacoustic Width
+        // Stage 18: Psychoacoustic Width
         const float pWidthAmt    = pPWidthAmt    ? pPWidthAmt->load()    : 0.0f;
         const float pWidthHaas   = pPWidthHaas   ? pPWidthHaas->load()   : 8.0f;
         const float pWidthComb   = pPWidthComb   ? pPWidthComb->load()   : 600.0f;
@@ -413,7 +413,7 @@ public:
         const float limCeiling   = pLimCeiling   ? pLimCeiling->load()   : -0.3f;
         const float limRelease   = pLimRelease   ? pLimRelease->load()   : 50.0f;
 
-        // Stage 17: Sequencer
+        // Stage 22: Sequencer
         const float seqEnabled   = pSeqEnabled   ? pSeqEnabled->load()   : 0.0f;
         const float seqRate      = pSeqRate      ? pSeqRate->load()      : 2.0f;
         const float seqSteps     = pSeqSteps     ? pSeqSteps->load()     : 8.0f;
@@ -426,7 +426,7 @@ public:
         const float seqEnvAmt    = pSeqEnvAmt    ? pSeqEnvAmt->load()    : 0.5f;
 
         // ====================================================================
-        // Stage 17: Sequencer (non-audio, runs first to compute mod offsets)
+        // Stage 22: Sequencer (non-audio, runs first to compute mod offsets)
         // ====================================================================
         float seqMod1 = 0.0f;
         float seqMod2 = 0.0f;
@@ -704,7 +704,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 7: Doppler Effect
+        // Stage 10: Doppler Effect
         // ====================================================================
         float effectiveDopplerDist = applySeqMod (dopplerDist,
             MasterFXSequencer::Target::DopplerDistance, 0.7f);
@@ -738,7 +738,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 9: Frequency Shifter
+        // Stage 12: Frequency Shifter
         // ====================================================================
         if (fshiftMix > 0.001f)
         {
@@ -751,7 +751,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 12: fXOneiric (Dream State)
+        // Stage 13: fXOneiric (Dream State)
         // ====================================================================
         float effectiveOnMix = applySeqMod (onMix,
             MasterFXSequencer::Target::OneiricMix, 0.6f);
@@ -768,7 +768,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 13: Modulation FX
+        // Stage 14: Modulation FX
         // ====================================================================
         float effectiveModDepth = applySeqMod (modDepth,
             MasterFXSequencer::Target::ModDepth, 0.7f);
@@ -809,7 +809,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 11: Granular Smear
+        // Stage 15: Granular Smear
         // ====================================================================
         float effectiveSmear = applySeqMod (smearAmt,
             MasterFXSequencer::Target::GranularSmear, 0.6f);
@@ -824,7 +824,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 12: Harmonic Exciter
+        // Stage 16: Harmonic Exciter
         // ====================================================================
         float effectiveExcDrive = applySeqMod (excDrive,
             MasterFXSequencer::Target::ExciterDrive, 0.5f);
@@ -839,7 +839,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 13: Stereo Sculptor
+        // Stage 17: Stereo Sculptor
         // ====================================================================
         float effectiveSculMidW = sculMidW;
         {
@@ -863,7 +863,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 14: Psychoacoustic Width
+        // Stage 18: Psychoacoustic Width
         // ====================================================================
         float effectivePWidth = applySeqMod (pWidthAmt,
             MasterFXSequencer::Target::PsychoWidth, 0.6f);
@@ -1078,7 +1078,7 @@ private:
         pCombOff2     = apvts.getRawParameterValue ("master_combOffset2");
         pCombOff3     = apvts.getRawParameterValue ("master_combOffset3");
 
-        // Stage 7: Doppler
+        // Stage 10: Doppler
         pDopplerDist  = apvts.getRawParameterValue ("master_dopplerDist");
         pDopplerSpeed = apvts.getRawParameterValue ("master_dopplerSpeed");
         pDopplerMix   = apvts.getRawParameterValue ("master_dopplerMix");
@@ -1093,13 +1093,13 @@ private:
         pReverbMod        = apvts.getRawParameterValue ("master_reverbMod");
         pReverbWidth      = apvts.getRawParameterValue ("master_reverbWidth");
 
-        // Stage 9: Frequency Shifter
+        // Stage 12: Frequency Shifter
         pFShiftHz     = apvts.getRawParameterValue ("master_fshiftHz");
         pFShiftMix    = apvts.getRawParameterValue ("master_fshiftMix");
         pFShiftMode   = apvts.getRawParameterValue ("master_fshiftMode");
         pFShiftFB     = apvts.getRawParameterValue ("master_fshiftFeedback");
 
-        // Stage 12: fXOneiric
+        // Stage 13: fXOneiric
         pOnDelayMs    = apvts.getRawParameterValue ("master_onDelayTime");
         pOnShiftHz    = apvts.getRawParameterValue ("master_onShiftHz");
         pOnFeedback   = apvts.getRawParameterValue ("master_onFeedback");
@@ -1107,7 +1107,7 @@ private:
         pOnSpread     = apvts.getRawParameterValue ("master_onSpread");
         pOnMix        = apvts.getRawParameterValue ("master_onMix");
 
-        // Stage 13: Modulation
+        // Stage 14: Modulation
         pModRate      = apvts.getRawParameterValue ("master_modRate");
         pModDepth     = apvts.getRawParameterValue ("master_modDepth");
         pModMix       = apvts.getRawParameterValue ("master_modMix");
@@ -1124,19 +1124,19 @@ private:
         pOnslSCHP      = apvts.getRawParameterValue ("master_onslSCHP");
         pOnslMix       = apvts.getRawParameterValue ("master_onslMix");
 
-        // Stage 11: Granular Smear
+        // Stage 15: Granular Smear
         pSmearAmt     = apvts.getRawParameterValue ("master_smearAmount");
         pSmearGrain   = apvts.getRawParameterValue ("master_smearGrainSize");
         pSmearDensity = apvts.getRawParameterValue ("master_smearDensity");
         pSmearMix     = apvts.getRawParameterValue ("master_smearMix");
 
-        // Stage 12: Harmonic Exciter
+        // Stage 16: Harmonic Exciter
         pExcDrive     = apvts.getRawParameterValue ("master_excDrive");
         pExcFreq      = apvts.getRawParameterValue ("master_excFreq");
         pExcTone      = apvts.getRawParameterValue ("master_excTone");
         pExcMix       = apvts.getRawParameterValue ("master_excMix");
 
-        // Stage 13: Stereo Sculptor
+        // Stage 17: Stereo Sculptor
         pSculLowW     = apvts.getRawParameterValue ("master_sculLowWidth");
         pSculMidW     = apvts.getRawParameterValue ("master_sculMidWidth");
         pSculHighW    = apvts.getRawParameterValue ("master_sculHighWidth");
@@ -1144,7 +1144,7 @@ private:
         pSculHighX    = apvts.getRawParameterValue ("master_sculHighCross");
         pSculMix      = apvts.getRawParameterValue ("master_sculMix");
 
-        // Stage 14: Psychoacoustic Width
+        // Stage 18: Psychoacoustic Width
         pPWidthAmt    = apvts.getRawParameterValue ("master_pwidthAmount");
         pPWidthHaas   = apvts.getRawParameterValue ("master_pwidthHaas");
         pPWidthComb   = apvts.getRawParameterValue ("master_pwidthComb");
@@ -1291,7 +1291,7 @@ private:
     std::atomic<float>* pOraDampRes  = nullptr;
     std::atomic<float>* pOraDrift    = nullptr;
     std::atomic<float>* pOraMix      = nullptr;
-    // Stage 6: Combulator
+    // Stage 9: Combulator
     std::atomic<float>* pCombMix     = nullptr;
     std::atomic<float>* pCombFreq    = nullptr;
     std::atomic<float>* pCombFB      = nullptr;
@@ -1300,7 +1300,7 @@ private:
     std::atomic<float>* pCombSpread  = nullptr;
     std::atomic<float>* pCombOff2    = nullptr;
     std::atomic<float>* pCombOff3    = nullptr;
-    // Stage 7: Doppler
+    // Stage 10: Doppler
     std::atomic<float>* pDopplerDist  = nullptr;
     std::atomic<float>* pDopplerSpeed = nullptr;
     std::atomic<float>* pDopplerMix      = nullptr;
@@ -1313,19 +1313,19 @@ private:
     std::atomic<float>* pReverbDiffusion = nullptr;
     std::atomic<float>* pReverbMod       = nullptr;
     std::atomic<float>* pReverbWidth     = nullptr;
-    // Stage 9: Frequency Shifter
+    // Stage 12: Frequency Shifter
     std::atomic<float>* pFShiftHz    = nullptr;
     std::atomic<float>* pFShiftMix   = nullptr;
     std::atomic<float>* pFShiftMode  = nullptr;
     std::atomic<float>* pFShiftFB    = nullptr;
-    // Stage 12: fXOneiric
+    // Stage 13: fXOneiric
     std::atomic<float>* pOnDelayMs   = nullptr;
     std::atomic<float>* pOnShiftHz   = nullptr;
     std::atomic<float>* pOnFeedback  = nullptr;
     std::atomic<float>* pOnDamping   = nullptr;
     std::atomic<float>* pOnSpread    = nullptr;
     std::atomic<float>* pOnMix       = nullptr;
-    // Stage 13: Modulation
+    // Stage 14: Modulation
     std::atomic<float>* pModRate     = nullptr;
     std::atomic<float>* pModDepth    = nullptr;
     std::atomic<float>* pModMix      = nullptr;
@@ -1340,7 +1340,7 @@ private:
     std::atomic<float>* pOnslDecay     = nullptr;
     std::atomic<float>* pOnslSCHP      = nullptr;
     std::atomic<float>* pOnslMix       = nullptr;
-    // Stage 11: Granular Smear
+    // Stage 15: Granular Smear
     std::atomic<float>* pSmearAmt    = nullptr;
     std::atomic<float>* pSmearGrain  = nullptr;
     std::atomic<float>* pSmearDensity= nullptr;
