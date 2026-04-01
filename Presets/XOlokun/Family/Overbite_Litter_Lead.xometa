@@ -1,68 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Litter Lead",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Unison mid-range lead with 4 voices \u2014 many young opossums sharing a single melodic purpose.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.3,
+    "space": 0.35,
+    "warmth": 0.75
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Unison mid-range lead with 4 voices — many young opossums sharing a single melodic purpose.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.55,
+    "BITE": 0.4,
+    "PLAY DEAD": 0.15,
+    "SCURRY": 0.3,
+    "TRASH": 0.2
+  },
+  "mood": "Family",
+  "name": "Litter Lead",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.015,
+      "poss_ampDecay": 0.5,
+      "poss_ampRelease": 0.3,
+      "poss_ampSustain": 0.7,
+      "poss_driveAmount": 0.3,
+      "poss_driveType": 0,
+      "poss_filterCutoff": 2000,
+      "poss_filterDecay": 0.3,
+      "poss_filterEnvAmount": 0.4,
+      "poss_filterReso": 0.2,
+      "poss_macroBelly": 0.55,
+      "poss_macroBite": 0.4,
+      "poss_macroPlayDead": 0.15,
+      "poss_macroScurry": 0.3,
+      "poss_macroTrash": 0.2,
+      "poss_oscAShape": 0.2,
+      "poss_oscAWaveform": 2,
+      "poss_unisonDetune": 0.25,
+      "poss_unisonSpread": 0.65,
+      "poss_unisonVoices": 4
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "lead",
     "unison",
     "warm",
     "community"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.75,
-    "movement": 0.3,
-    "density": 0.6,
-    "space": 0.35,
-    "aggression": 0.3
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 2,
-      "poss_oscAShape": 0.2,
-      "poss_unisonVoices": 4,
-      "poss_unisonDetune": 0.25,
-      "poss_unisonSpread": 0.65,
-      "poss_filterCutoff": 2000,
-      "poss_filterReso": 0.2,
-      "poss_filterEnvAmount": 0.4,
-      "poss_filterDecay": 0.3,
-      "poss_ampAttack": 0.015,
-      "poss_ampDecay": 0.5,
-      "poss_ampSustain": 0.7,
-      "poss_ampRelease": 0.3,
-      "poss_driveAmount": 0.3,
-      "poss_driveType": 0,
-      "poss_macroBelly": 0.55,
-      "poss_macroBite": 0.4,
-      "poss_macroScurry": 0.3,
-      "poss_macroTrash": 0.2,
-      "poss_macroPlayDead": 0.15
-    }
-  },
-  "macros": {
-    "BELLY": 0.55,
-    "BITE": 0.4,
-    "SCURRY": 0.3,
-    "TRASH": 0.2,
-    "PLAY DEAD": 0.15
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

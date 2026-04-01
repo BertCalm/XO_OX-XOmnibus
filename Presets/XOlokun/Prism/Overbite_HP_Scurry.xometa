@@ -1,69 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "HP Scurry",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "High-pass filtered synth voice for scurrying top-end \u2014 thin bright opossum energy for treble layers.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.75,
+    "density": 0.4,
+    "movement": 0.45,
+    "space": 0.35,
+    "warmth": 0.35
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "High-pass filtered synth voice for scurrying top-end — thin bright opossum energy for treble layers.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.2,
+    "BITE": 0.7,
+    "PLAY DEAD": 0.05,
+    "SCURRY": 0.65,
+    "TRASH": 0.25
+  },
+  "mood": "Prism",
+  "name": "HP Scurry",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.002,
+      "poss_ampDecay": 0.25,
+      "poss_ampRelease": 0.15,
+      "poss_ampSustain": 0.45,
+      "poss_chewAmount": 0.35,
+      "poss_chewFreq": 0.6,
+      "poss_chewMix": 0.4,
+      "poss_filterCutoff": 800,
+      "poss_filterDecay": 0.2,
+      "poss_filterEnvAmount": -0.3,
+      "poss_filterMode": 1,
+      "poss_filterReso": 0.4,
+      "poss_macroBelly": 0.2,
+      "poss_macroBite": 0.7,
+      "poss_macroPlayDead": 0.05,
+      "poss_macroScurry": 0.65,
+      "poss_macroTrash": 0.25,
+      "poss_oscAShape": 0.6,
+      "poss_oscAWaveform": 3,
+      "poss_oscBWaveform": 2,
+      "poss_oscMix": 0.45
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "synth",
     "highpass",
     "bright",
     "thin"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.35,
-    "movement": 0.45,
-    "density": 0.4,
-    "space": 0.35,
-    "aggression": 0.5
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 3,
-      "poss_oscAShape": 0.6,
-      "poss_oscBWaveform": 2,
-      "poss_oscMix": 0.45,
-      "poss_filterMode": 1,
-      "poss_filterCutoff": 800,
-      "poss_filterReso": 0.4,
-      "poss_filterEnvAmount": -0.3,
-      "poss_filterDecay": 0.2,
-      "poss_ampAttack": 0.002,
-      "poss_ampDecay": 0.25,
-      "poss_ampSustain": 0.45,
-      "poss_ampRelease": 0.15,
-      "poss_chewAmount": 0.35,
-      "poss_chewFreq": 0.6,
-      "poss_chewMix": 0.4,
-      "poss_macroBelly": 0.2,
-      "poss_macroBite": 0.7,
-      "poss_macroScurry": 0.65,
-      "poss_macroTrash": 0.25,
-      "poss_macroPlayDead": 0.05
-    }
-  },
-  "macros": {
-    "BELLY": 0.2,
-    "BITE": 0.7,
-    "SCURRY": 0.65,
-    "TRASH": 0.25,
-    "PLAY DEAD": 0.05
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

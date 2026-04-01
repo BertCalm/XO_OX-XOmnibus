@@ -1,73 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Bog Pulse",
-  "mood": "Submerged",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Slow pulsing sub bass like methane bubbles rising from a bog \u2014 rhythmically murky and deep.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.2,
+    "density": 0.7,
+    "movement": 0.4,
+    "space": 0.4,
+    "warmth": 0.7
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Slow pulsing sub bass like methane bubbles rising from a bog — rhythmically murky and deep.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.9,
+    "BITE": 0.2,
+    "PLAY DEAD": 0.2,
+    "SCURRY": 0.4,
+    "TRASH": 0.2
+  },
+  "mood": "Submerged",
+  "name": "Bog Pulse",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.03,
+      "poss_ampDecay": 0.9,
+      "poss_ampRelease": 0.6,
+      "poss_ampSustain": 0.65,
+      "poss_filterCutoff": 350,
+      "poss_filterReso": 0.2,
+      "poss_fxFinishLowMono": 0.85,
+      "poss_fxSpaceDecay": 0.6,
+      "poss_fxSpaceMix": 0.35,
+      "poss_fxSpaceSize": 0.7,
+      "poss_fxSpaceType": 2,
+      "poss_lfo1Depth": 0.35,
+      "poss_lfo1Rate": 1.5,
+      "poss_lfo1Shape": 2,
+      "poss_macroBelly": 0.9,
+      "poss_macroBite": 0.2,
+      "poss_macroPlayDead": 0.2,
+      "poss_macroScurry": 0.4,
+      "poss_macroTrash": 0.2,
+      "poss_modSlot1Amt": 0.3,
+      "poss_modSlot1Dst": 3,
+      "poss_modSlot1Src": 1,
+      "poss_oscAWaveform": 0,
+      "poss_subLevel": 0.85,
+      "poss_subOctave": -2
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "sub",
     "pulse",
     "slow",
     "dark"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.7,
-    "movement": 0.4,
-    "density": 0.7,
-    "space": 0.4,
-    "aggression": 0.35
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 0,
-      "poss_subLevel": 0.85,
-      "poss_subOctave": -2,
-      "poss_filterCutoff": 350,
-      "poss_filterReso": 0.2,
-      "poss_ampAttack": 0.03,
-      "poss_ampDecay": 0.9,
-      "poss_ampSustain": 0.65,
-      "poss_ampRelease": 0.6,
-      "poss_lfo1Rate": 1.5,
-      "poss_lfo1Depth": 0.35,
-      "poss_lfo1Shape": 2,
-      "poss_modSlot1Src": 1,
-      "poss_modSlot1Dst": 3,
-      "poss_modSlot1Amt": 0.3,
-      "poss_fxSpaceSize": 0.7,
-      "poss_fxSpaceDecay": 0.6,
-      "poss_fxSpaceType": 2,
-      "poss_fxSpaceMix": 0.35,
-      "poss_fxFinishLowMono": 0.85,
-      "poss_macroBelly": 0.9,
-      "poss_macroBite": 0.2,
-      "poss_macroScurry": 0.4,
-      "poss_macroTrash": 0.2,
-      "poss_macroPlayDead": 0.2
-    }
-  },
-  "macros": {
-    "BELLY": 0.9,
-    "BITE": 0.2,
-    "SCURRY": 0.4,
-    "TRASH": 0.2,
-    "PLAY DEAD": 0.2
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

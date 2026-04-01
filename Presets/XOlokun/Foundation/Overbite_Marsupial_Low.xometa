@@ -1,67 +1,66 @@
 {
-  "schema_version": 1,
-  "name": "Marsupial Low",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Pure sub-heavy foundation bass, sine-based with strong sub octave for maximum low-end mass.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.2,
+    "density": 0.7,
+    "movement": 0.1,
+    "space": 0.15,
+    "warmth": 0.8
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Pure sub-heavy foundation bass, sine-based with strong sub octave for maximum low-end mass.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.85,
+    "BITE": 0.1,
+    "PLAY DEAD": 0.1,
+    "SCURRY": 0.1,
+    "TRASH": 0.05
+  },
+  "mood": "Foundation",
+  "name": "Marsupial Low",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.01,
+      "poss_ampDecay": 0.5,
+      "poss_ampRelease": 0.2,
+      "poss_ampSustain": 0.75,
+      "poss_filterCutoff": 500,
+      "poss_filterMode": 0,
+      "poss_filterReso": 0.1,
+      "poss_fxFinishLowMono": 0.8,
+      "poss_macroBelly": 0.85,
+      "poss_macroBite": 0.1,
+      "poss_macroPlayDead": 0.1,
+      "poss_macroScurry": 0.1,
+      "poss_macroTrash": 0.05,
+      "poss_oscAShape": 0.0,
+      "poss_oscAWaveform": 0,
+      "poss_subLevel": 0.85,
+      "poss_subOctave": -1,
+      "poss_weightLevel": 0.7,
+      "poss_weightOctave": -1
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "bass",
     "sub",
     "deep",
     "pure"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.8,
-    "movement": 0.1,
-    "density": 0.7,
-    "space": 0.15,
-    "aggression": 0.2
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 0,
-      "poss_oscAShape": 0.0,
-      "poss_subLevel": 0.85,
-      "poss_subOctave": -1,
-      "poss_filterMode": 0,
-      "poss_filterCutoff": 500,
-      "poss_filterReso": 0.1,
-      "poss_ampAttack": 0.01,
-      "poss_ampDecay": 0.5,
-      "poss_ampSustain": 0.75,
-      "poss_ampRelease": 0.2,
-      "poss_weightLevel": 0.7,
-      "poss_weightOctave": -1,
-      "poss_fxFinishLowMono": 0.8,
-      "poss_macroBelly": 0.85,
-      "poss_macroBite": 0.1,
-      "poss_macroScurry": 0.1,
-      "poss_macroTrash": 0.05,
-      "poss_macroPlayDead": 0.1
-    }
-  },
-  "macros": {
-    "BELLY": 0.85,
-    "BITE": 0.1,
-    "SCURRY": 0.1,
-    "TRASH": 0.05,
-    "PLAY DEAD": 0.1
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

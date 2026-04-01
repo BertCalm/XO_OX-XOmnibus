@@ -1,69 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Mod Wheel Fang",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Performance bass with mod wheel controlling filter sweep and gnash intensity \u2014 expressive bite on demand.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.45,
+    "space": 0.2,
+    "warmth": 0.6
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Performance bass with mod wheel controlling filter sweep and gnash intensity — expressive bite on demand.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.6,
+    "PLAY DEAD": 0.1,
+    "SCURRY": 0.45,
+    "TRASH": 0.3
+  },
+  "mood": "Flux",
+  "name": "Mod Wheel Fang",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.005,
+      "poss_ampDecay": 0.4,
+      "poss_ampRelease": 0.2,
+      "poss_ampSustain": 0.6,
+      "poss_filterCutoff": 800,
+      "poss_filterDecay": 0.25,
+      "poss_filterEnvAmount": 0.5,
+      "poss_filterReso": 0.4,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.6,
+      "poss_macroPlayDead": 0.1,
+      "poss_macroScurry": 0.45,
+      "poss_macroTrash": 0.3,
+      "poss_modSlot1Amt": 0.7,
+      "poss_modSlot1Dst": 1,
+      "poss_modSlot1Src": 7,
+      "poss_modSlot2Amt": 0.5,
+      "poss_modSlot2Dst": 5,
+      "poss_modSlot2Src": 7,
+      "poss_oscAWaveform": 2,
+      "poss_subLevel": 0.45
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "bass",
     "performance",
     "mod wheel",
     "expressive"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.6,
-    "movement": 0.45,
-    "density": 0.55,
-    "space": 0.2,
-    "aggression": 0.6
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 2,
-      "poss_subLevel": 0.45,
-      "poss_filterCutoff": 800,
-      "poss_filterReso": 0.4,
-      "poss_filterEnvAmount": 0.5,
-      "poss_filterDecay": 0.25,
-      "poss_ampAttack": 0.005,
-      "poss_ampDecay": 0.4,
-      "poss_ampSustain": 0.6,
-      "poss_ampRelease": 0.2,
-      "poss_modSlot1Src": 7,
-      "poss_modSlot1Dst": 1,
-      "poss_modSlot1Amt": 0.7,
-      "poss_modSlot2Src": 7,
-      "poss_modSlot2Dst": 5,
-      "poss_modSlot2Amt": 0.5,
-      "poss_macroBelly": 0.5,
-      "poss_macroBite": 0.6,
-      "poss_macroScurry": 0.45,
-      "poss_macroTrash": 0.3,
-      "poss_macroPlayDead": 0.1
-    }
-  },
-  "macros": {
-    "BELLY": 0.5,
-    "BITE": 0.6,
-    "SCURRY": 0.45,
-    "TRASH": 0.3,
-    "PLAY DEAD": 0.1
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

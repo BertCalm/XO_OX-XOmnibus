@@ -1,73 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Deep Trash",
-  "mood": "Submerged",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Pressurized deep bass from underground dumpsters \u2014 maximum sub weight with wavefolded destruction.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.3,
+    "density": 0.8,
+    "movement": 0.2,
+    "space": 0.2,
+    "warmth": 0.7
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Pressurized deep bass from underground dumpsters — maximum sub weight with wavefolded destruction.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.85,
+    "BITE": 0.3,
+    "PLAY DEAD": 0.1,
+    "SCURRY": 0.15,
+    "TRASH": 0.65
+  },
+  "mood": "Submerged",
+  "name": "Deep Trash",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.01,
+      "poss_ampDecay": 0.7,
+      "poss_ampRelease": 0.4,
+      "poss_ampSustain": 0.75,
+      "poss_filterCutoff": 700,
+      "poss_filterDecay": 0.3,
+      "poss_filterDrive": 0.5,
+      "poss_filterEnvAmount": 0.4,
+      "poss_filterReso": 0.2,
+      "poss_fxFinishGlue": 0.45,
+      "poss_fxFinishLowMono": 0.9,
+      "poss_macroBelly": 0.85,
+      "poss_macroBite": 0.3,
+      "poss_macroPlayDead": 0.1,
+      "poss_macroScurry": 0.15,
+      "poss_macroTrash": 0.65,
+      "poss_oscAWaveform": 0,
+      "poss_oscBWaveform": 2,
+      "poss_oscMix": 0.4,
+      "poss_subLevel": 0.8,
+      "poss_subOctave": -2,
+      "poss_trashAmount": 0.55,
+      "poss_trashMode": 0,
+      "poss_weightLevel": 0.7,
+      "poss_weightOctave": -2
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "sub",
     "bass",
     "deep",
     "destructive"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.7,
-    "movement": 0.2,
-    "density": 0.8,
-    "space": 0.2,
-    "aggression": 0.7
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 0,
-      "poss_oscBWaveform": 2,
-      "poss_oscMix": 0.4,
-      "poss_subLevel": 0.8,
-      "poss_subOctave": -2,
-      "poss_filterCutoff": 700,
-      "poss_filterReso": 0.2,
-      "poss_filterDrive": 0.5,
-      "poss_filterEnvAmount": 0.4,
-      "poss_filterDecay": 0.3,
-      "poss_ampAttack": 0.01,
-      "poss_ampDecay": 0.7,
-      "poss_ampSustain": 0.75,
-      "poss_ampRelease": 0.4,
-      "poss_trashAmount": 0.55,
-      "poss_trashMode": 0,
-      "poss_weightLevel": 0.7,
-      "poss_weightOctave": -2,
-      "poss_fxFinishLowMono": 0.9,
-      "poss_fxFinishGlue": 0.45,
-      "poss_macroBelly": 0.85,
-      "poss_macroBite": 0.3,
-      "poss_macroScurry": 0.15,
-      "poss_macroTrash": 0.65,
-      "poss_macroPlayDead": 0.1
-    }
-  },
-  "macros": {
-    "BELLY": 0.85,
-    "BITE": 0.3,
-    "SCURRY": 0.15,
-    "TRASH": 0.65,
-    "PLAY DEAD": 0.1
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

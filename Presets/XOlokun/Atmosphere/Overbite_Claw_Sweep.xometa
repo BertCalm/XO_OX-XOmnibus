@@ -1,73 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Claw Sweep",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sweeping filter pad with slow LFO and a scratchy vinyl noise layer \u2014 atmospheric claw marks.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.45,
+    "density": 0.5,
+    "movement": 0.5,
+    "space": 0.6,
+    "warmth": 0.65
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Sweeping filter pad with slow LFO and a scratchy vinyl noise layer — atmospheric claw marks.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.45,
+    "BITE": 0.1,
+    "PLAY DEAD": 0.45,
+    "SCURRY": 0.55,
+    "TRASH": 0.15
+  },
+  "mood": "Atmosphere",
+  "name": "Claw Sweep",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.6,
+      "poss_ampRelease": 1.2,
+      "poss_ampSustain": 0.7,
+      "poss_filterCutoff": 900,
+      "poss_filterReso": 0.45,
+      "poss_fxSpaceDecay": 0.5,
+      "poss_fxSpaceMix": 0.3,
+      "poss_fxSpaceSize": 0.55,
+      "poss_lfo1Depth": 0.55,
+      "poss_lfo1Rate": 0.15,
+      "poss_lfo1Shape": 0,
+      "poss_macroBelly": 0.45,
+      "poss_macroBite": 0.1,
+      "poss_macroPlayDead": 0.45,
+      "poss_macroScurry": 0.55,
+      "poss_macroTrash": 0.15,
+      "poss_modSlot1Amt": 0.5,
+      "poss_modSlot1Dst": 1,
+      "poss_modSlot1Src": 1,
+      "poss_noiseLevel": 0.15,
+      "poss_noiseType": 2,
+      "poss_oscAShape": 0.35,
+      "poss_oscAWaveform": 2,
+      "poss_unisonDetune": 0.2,
+      "poss_unisonVoices": 2
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "pad",
     "sweep",
     "filter",
     "slow"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.65,
-    "movement": 0.5,
-    "density": 0.5,
-    "space": 0.6,
-    "aggression": 0.2
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 2,
-      "poss_oscAShape": 0.35,
-      "poss_unisonVoices": 2,
-      "poss_unisonDetune": 0.2,
-      "poss_noiseLevel": 0.15,
-      "poss_noiseType": 2,
-      "poss_filterCutoff": 900,
-      "poss_filterReso": 0.45,
-      "poss_ampAttack": 0.6,
-      "poss_ampSustain": 0.7,
-      "poss_ampRelease": 1.2,
-      "poss_lfo1Rate": 0.15,
-      "poss_lfo1Depth": 0.55,
-      "poss_lfo1Shape": 0,
-      "poss_modSlot1Src": 1,
-      "poss_modSlot1Dst": 1,
-      "poss_modSlot1Amt": 0.5,
-      "poss_fxSpaceSize": 0.55,
-      "poss_fxSpaceDecay": 0.5,
-      "poss_fxSpaceMix": 0.3,
-      "poss_macroBelly": 0.45,
-      "poss_macroBite": 0.1,
-      "poss_macroScurry": 0.55,
-      "poss_macroTrash": 0.15,
-      "poss_macroPlayDead": 0.45
-    }
-  },
-  "macros": {
-    "BELLY": 0.45,
-    "BITE": 0.1,
-    "SCURRY": 0.55,
-    "TRASH": 0.15,
-    "PLAY DEAD": 0.45
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

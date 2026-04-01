@@ -1,67 +1,66 @@
 {
-  "schema_version": 1,
-  "name": "Back Lane Sub",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Rolling sub bass for the back alley \u2014 weighted triangle with deep octave and slow glide.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.25,
+    "density": 0.65,
+    "movement": 0.25,
+    "space": 0.2,
+    "warmth": 0.8
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Rolling sub bass for the back alley — weighted triangle with deep octave and slow glide.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.8,
+    "BITE": 0.15,
+    "PLAY DEAD": 0.15,
+    "SCURRY": 0.2,
+    "TRASH": 0.05
+  },
+  "mood": "Foundation",
+  "name": "Back Lane Sub",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.02,
+      "poss_ampDecay": 0.6,
+      "poss_ampRelease": 0.3,
+      "poss_ampSustain": 0.7,
+      "poss_filterCutoff": 700,
+      "poss_filterReso": 0.15,
+      "poss_fxFinishLowMono": 0.9,
+      "poss_glideMode": 1,
+      "poss_glideTime": 0.35,
+      "poss_macroBelly": 0.8,
+      "poss_macroBite": 0.15,
+      "poss_macroPlayDead": 0.15,
+      "poss_macroScurry": 0.2,
+      "poss_macroTrash": 0.05,
+      "poss_oscAShape": 0.2,
+      "poss_oscAWaveform": 1,
+      "poss_subLevel": 0.75,
+      "poss_subOctave": -2,
+      "poss_weightLevel": 0.6
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "sub",
     "bass",
     "rolling",
     "slow"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.25,
-    "warmth": 0.8,
-    "movement": 0.25,
-    "density": 0.65,
-    "space": 0.2,
-    "aggression": 0.25
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 1,
-      "poss_oscAShape": 0.2,
-      "poss_subLevel": 0.75,
-      "poss_subOctave": -2,
-      "poss_filterCutoff": 700,
-      "poss_filterReso": 0.15,
-      "poss_ampAttack": 0.02,
-      "poss_ampDecay": 0.6,
-      "poss_ampSustain": 0.7,
-      "poss_ampRelease": 0.3,
-      "poss_glideMode": 1,
-      "poss_glideTime": 0.35,
-      "poss_weightLevel": 0.6,
-      "poss_fxFinishLowMono": 0.9,
-      "poss_macroBelly": 0.8,
-      "poss_macroBite": 0.15,
-      "poss_macroScurry": 0.2,
-      "poss_macroTrash": 0.05,
-      "poss_macroPlayDead": 0.15
-    }
-  },
-  "macros": {
-    "BELLY": 0.8,
-    "BITE": 0.15,
-    "SCURRY": 0.2,
-    "TRASH": 0.05,
-    "PLAY DEAD": 0.15
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

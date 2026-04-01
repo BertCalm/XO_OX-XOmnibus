@@ -1,72 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Trash Pad",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Slow-attack atmospheric pad born from dumpster acoustics \u2014 folded waveforms and cave reverb.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.35,
+    "density": 0.55,
+    "movement": 0.3,
+    "space": 0.75,
+    "warmth": 0.65
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Slow-attack atmospheric pad born from dumpster acoustics — folded waveforms and cave reverb.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.45,
+    "BITE": 0.15,
+    "PLAY DEAD": 0.5,
+    "SCURRY": 0.3,
+    "TRASH": 0.4
+  },
+  "mood": "Atmosphere",
+  "name": "Trash Pad",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.8,
+      "poss_ampDecay": 0.5,
+      "poss_ampRelease": 1.2,
+      "poss_ampSustain": 0.75,
+      "poss_filterCutoff": 1800,
+      "poss_filterReso": 0.1,
+      "poss_fxSpaceDecay": 0.7,
+      "poss_fxSpaceMix": 0.45,
+      "poss_fxSpaceSize": 0.8,
+      "poss_fxSpaceType": 2,
+      "poss_macroBelly": 0.45,
+      "poss_macroBite": 0.15,
+      "poss_macroPlayDead": 0.5,
+      "poss_macroScurry": 0.3,
+      "poss_macroTrash": 0.4,
+      "poss_oscAShape": 0.6,
+      "poss_oscAWaveform": 2,
+      "poss_oscBWaveform": 0,
+      "poss_oscMix": 0.4,
+      "poss_trashAmount": 0.3,
+      "poss_trashMode": 0,
+      "poss_unisonDetune": 0.3,
+      "poss_unisonSpread": 0.6,
+      "poss_unisonVoices": 3
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "pad",
     "atmospheric",
     "dark",
     "reverb"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.65,
-    "movement": 0.3,
-    "density": 0.55,
-    "space": 0.75,
-    "aggression": 0.3
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 2,
-      "poss_oscAShape": 0.6,
-      "poss_oscBWaveform": 0,
-      "poss_oscMix": 0.4,
-      "poss_unisonVoices": 3,
-      "poss_unisonDetune": 0.3,
-      "poss_unisonSpread": 0.6,
-      "poss_filterCutoff": 1800,
-      "poss_filterReso": 0.1,
-      "poss_ampAttack": 0.8,
-      "poss_ampDecay": 0.5,
-      "poss_ampSustain": 0.75,
-      "poss_ampRelease": 1.2,
-      "poss_trashAmount": 0.3,
-      "poss_trashMode": 0,
-      "poss_fxSpaceSize": 0.8,
-      "poss_fxSpaceDecay": 0.7,
-      "poss_fxSpaceType": 2,
-      "poss_fxSpaceMix": 0.45,
-      "poss_macroBelly": 0.45,
-      "poss_macroBite": 0.15,
-      "poss_macroScurry": 0.3,
-      "poss_macroTrash": 0.4,
-      "poss_macroPlayDead": 0.5
-    }
-  },
-  "macros": {
-    "BELLY": 0.45,
-    "BITE": 0.15,
-    "SCURRY": 0.3,
-    "TRASH": 0.4,
-    "PLAY DEAD": 0.5
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

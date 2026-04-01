@@ -1,69 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Fang First",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sharp attack transient bass that leads with teeth \u2014 fast bite and punchy mid sustain.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.6,
+    "density": 0.5,
+    "movement": 0.2,
+    "space": 0.2,
+    "warmth": 0.55
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Sharp attack transient bass that leads with teeth — fast bite and punchy mid sustain.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.4,
+    "BITE": 0.85,
+    "PLAY DEAD": 0.05,
+    "SCURRY": 0.15,
+    "TRASH": 0.3
+  },
+  "mood": "Foundation",
+  "name": "Fang First",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.001,
+      "poss_ampDecay": 0.3,
+      "poss_ampRelease": 0.15,
+      "poss_ampSustain": 0.5,
+      "poss_chewAmount": 0.4,
+      "poss_chewMix": 0.3,
+      "poss_filterAttack": 0.001,
+      "poss_filterCutoff": 2500,
+      "poss_filterDecay": 0.15,
+      "poss_filterEnvAmount": 0.8,
+      "poss_filterReso": 0.5,
+      "poss_filterSustain": 0.1,
+      "poss_gnashAmount": 0.35,
+      "poss_macroBelly": 0.4,
+      "poss_macroBite": 0.85,
+      "poss_macroPlayDead": 0.05,
+      "poss_macroScurry": 0.15,
+      "poss_macroTrash": 0.3,
+      "poss_oscAShape": 0.4,
+      "poss_oscAWaveform": 2,
+      "poss_subLevel": 0.4
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "bass",
     "punchy",
     "attack",
     "transient"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.55,
-    "movement": 0.2,
-    "density": 0.5,
-    "space": 0.2,
-    "aggression": 0.7
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 2,
-      "poss_oscAShape": 0.4,
-      "poss_subLevel": 0.4,
-      "poss_filterCutoff": 2500,
-      "poss_filterReso": 0.5,
-      "poss_filterEnvAmount": 0.8,
-      "poss_filterAttack": 0.001,
-      "poss_filterDecay": 0.15,
-      "poss_filterSustain": 0.1,
-      "poss_ampAttack": 0.001,
-      "poss_ampDecay": 0.3,
-      "poss_ampSustain": 0.5,
-      "poss_ampRelease": 0.15,
-      "poss_gnashAmount": 0.35,
-      "poss_chewAmount": 0.4,
-      "poss_chewMix": 0.3,
-      "poss_macroBelly": 0.4,
-      "poss_macroBite": 0.85,
-      "poss_macroScurry": 0.15,
-      "poss_macroTrash": 0.3,
-      "poss_macroPlayDead": 0.05
-    }
-  },
-  "macros": {
-    "BELLY": 0.4,
-    "BITE": 0.85,
-    "SCURRY": 0.15,
-    "TRASH": 0.3,
-    "PLAY DEAD": 0.05
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

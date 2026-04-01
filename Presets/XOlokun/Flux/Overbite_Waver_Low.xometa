@@ -1,71 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Waver Low",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Vibrato sub-bass with slow pitch waver and gentle chorus \u2014 the opossum tail wag in sound.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.3,
+    "density": 0.5,
+    "movement": 0.55,
+    "space": 0.4,
+    "warmth": 0.75
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Vibrato sub-bass with slow pitch waver and gentle chorus — the opossum tail wag in sound.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.7,
+    "BITE": 0.15,
+    "PLAY DEAD": 0.25,
+    "SCURRY": 0.55,
+    "TRASH": 0.1
+  },
+  "mood": "Flux",
+  "name": "Waver Low",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.02,
+      "poss_ampDecay": 0.6,
+      "poss_ampRelease": 0.35,
+      "poss_ampSustain": 0.75,
+      "poss_filterCutoff": 900,
+      "poss_filterReso": 0.1,
+      "poss_fxMotionDepth": 0.3,
+      "poss_fxMotionMix": 0.3,
+      "poss_fxMotionRate": 0.5,
+      "poss_fxMotionType": 0,
+      "poss_lfo1Depth": 0.2,
+      "poss_lfo1Rate": 3.5,
+      "poss_lfo1Shape": 0,
+      "poss_macroBelly": 0.7,
+      "poss_macroBite": 0.15,
+      "poss_macroPlayDead": 0.25,
+      "poss_macroScurry": 0.55,
+      "poss_macroTrash": 0.1,
+      "poss_modSlot1Amt": 0.15,
+      "poss_modSlot1Dst": 2,
+      "poss_modSlot1Src": 1,
+      "poss_oscAWaveform": 0,
+      "poss_subLevel": 0.65
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "sub",
     "vibrato",
     "chorus",
     "waver"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.75,
-    "movement": 0.55,
-    "density": 0.5,
-    "space": 0.4,
-    "aggression": 0.2
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 0,
-      "poss_subLevel": 0.65,
-      "poss_filterCutoff": 900,
-      "poss_filterReso": 0.1,
-      "poss_ampAttack": 0.02,
-      "poss_ampDecay": 0.6,
-      "poss_ampSustain": 0.75,
-      "poss_ampRelease": 0.35,
-      "poss_lfo1Rate": 3.5,
-      "poss_lfo1Depth": 0.2,
-      "poss_lfo1Shape": 0,
-      "poss_modSlot1Src": 1,
-      "poss_modSlot1Dst": 2,
-      "poss_modSlot1Amt": 0.15,
-      "poss_fxMotionType": 0,
-      "poss_fxMotionRate": 0.5,
-      "poss_fxMotionDepth": 0.3,
-      "poss_fxMotionMix": 0.3,
-      "poss_macroBelly": 0.7,
-      "poss_macroBite": 0.15,
-      "poss_macroScurry": 0.55,
-      "poss_macroTrash": 0.1,
-      "poss_macroPlayDead": 0.25
-    }
-  },
-  "macros": {
-    "BELLY": 0.7,
-    "BITE": 0.15,
-    "SCURRY": 0.55,
-    "TRASH": 0.1,
-    "PLAY DEAD": 0.25
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

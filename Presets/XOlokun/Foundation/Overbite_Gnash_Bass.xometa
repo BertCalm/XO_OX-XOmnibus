@@ -1,74 +1,73 @@
 {
-  "schema_version": 1,
-  "name": "Gnash Bass",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Aggressive midrange bass with tooth-gnashing distortion and a tight amp envelope.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.2,
+    "space": 0.2,
+    "warmth": 0.65
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Aggressive midrange bass with tooth-gnashing distortion and a tight amp envelope.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.7,
+    "PLAY DEAD": 0.1,
+    "SCURRY": 0.2,
+    "TRASH": 0.4
+  },
+  "mood": "Foundation",
+  "name": "Gnash Bass",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.005,
+      "poss_ampDecay": 0.4,
+      "poss_ampRelease": 0.15,
+      "poss_ampSustain": 0.6,
+      "poss_driveAmount": 0.4,
+      "poss_driveType": 1,
+      "poss_filterAttack": 0.005,
+      "poss_filterCutoff": 1800,
+      "poss_filterDecay": 0.2,
+      "poss_filterDrive": 0.5,
+      "poss_filterEnvAmount": 0.6,
+      "poss_filterMode": 0,
+      "poss_filterReso": 0.35,
+      "poss_filterSustain": 0.2,
+      "poss_gnashAmount": 0.6,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.7,
+      "poss_macroPlayDead": 0.1,
+      "poss_macroScurry": 0.2,
+      "poss_macroTrash": 0.4,
+      "poss_oscAShape": 0.3,
+      "poss_oscAWaveform": 2,
+      "poss_oscBShape": 0.5,
+      "poss_oscBWaveform": 2,
+      "poss_oscMix": 0.6,
+      "poss_subLevel": 0.5
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "bass",
     "distorted",
     "aggressive",
     "midrange"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.65,
-    "movement": 0.2,
-    "density": 0.6,
-    "space": 0.2,
-    "aggression": 0.75
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 2,
-      "poss_oscAShape": 0.3,
-      "poss_oscBWaveform": 2,
-      "poss_oscBShape": 0.5,
-      "poss_oscMix": 0.6,
-      "poss_subLevel": 0.5,
-      "poss_filterMode": 0,
-      "poss_filterCutoff": 1800,
-      "poss_filterReso": 0.35,
-      "poss_filterDrive": 0.5,
-      "poss_filterEnvAmount": 0.6,
-      "poss_filterAttack": 0.005,
-      "poss_filterDecay": 0.2,
-      "poss_filterSustain": 0.2,
-      "poss_ampAttack": 0.005,
-      "poss_ampDecay": 0.4,
-      "poss_ampSustain": 0.6,
-      "poss_ampRelease": 0.15,
-      "poss_gnashAmount": 0.6,
-      "poss_driveAmount": 0.4,
-      "poss_driveType": 1,
-      "poss_macroBelly": 0.5,
-      "poss_macroBite": 0.7,
-      "poss_macroScurry": 0.2,
-      "poss_macroTrash": 0.4,
-      "poss_macroPlayDead": 0.1
-    }
-  },
-  "macros": {
-    "BELLY": 0.5,
-    "BITE": 0.7,
-    "SCURRY": 0.2,
-    "TRASH": 0.4,
-    "PLAY DEAD": 0.1
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

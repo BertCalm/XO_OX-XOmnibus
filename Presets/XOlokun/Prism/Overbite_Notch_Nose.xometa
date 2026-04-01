@@ -1,67 +1,66 @@
 {
-  "schema_version": 1,
-  "name": "Notch Nose",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Notch-filtered mid-bass with a signature hollow scoop \u2014 the long snout frequency carve.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.2,
+    "space": 0.25,
+    "warmth": 0.6
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Notch-filtered mid-bass with a signature hollow scoop — the long snout frequency carve.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.55,
+    "PLAY DEAD": 0.1,
+    "SCURRY": 0.2,
+    "TRASH": 0.25
+  },
+  "mood": "Prism",
+  "name": "Notch Nose",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.005,
+      "poss_ampDecay": 0.45,
+      "poss_ampRelease": 0.2,
+      "poss_ampSustain": 0.6,
+      "poss_driveAmount": 0.3,
+      "poss_filterCutoff": 1200,
+      "poss_filterDecay": 0.3,
+      "poss_filterEnvAmount": 0.5,
+      "poss_filterMode": 3,
+      "poss_filterReso": 0.5,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.55,
+      "poss_macroPlayDead": 0.1,
+      "poss_macroScurry": 0.2,
+      "poss_macroTrash": 0.25,
+      "poss_oscAWaveform": 2,
+      "poss_oscBWaveform": 1,
+      "poss_oscMix": 0.5,
+      "poss_subLevel": 0.5
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "bass",
     "notch",
     "hollow",
     "character"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.6,
-    "movement": 0.2,
-    "density": 0.55,
-    "space": 0.25,
-    "aggression": 0.45
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 2,
-      "poss_oscBWaveform": 1,
-      "poss_oscMix": 0.5,
-      "poss_subLevel": 0.5,
-      "poss_filterMode": 3,
-      "poss_filterCutoff": 1200,
-      "poss_filterReso": 0.5,
-      "poss_filterEnvAmount": 0.5,
-      "poss_filterDecay": 0.3,
-      "poss_ampAttack": 0.005,
-      "poss_ampDecay": 0.45,
-      "poss_ampSustain": 0.6,
-      "poss_ampRelease": 0.2,
-      "poss_driveAmount": 0.3,
-      "poss_macroBelly": 0.5,
-      "poss_macroBite": 0.55,
-      "poss_macroScurry": 0.2,
-      "poss_macroTrash": 0.25,
-      "poss_macroPlayDead": 0.1
-    }
-  },
-  "macros": {
-    "BELLY": 0.5,
-    "BITE": 0.55,
-    "SCURRY": 0.2,
-    "TRASH": 0.25,
-    "PLAY DEAD": 0.1
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

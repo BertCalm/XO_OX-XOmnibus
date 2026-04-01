@@ -1,70 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Garbage Fog",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Dense foggy texture from folded noise and slow oscillators \u2014 alley mist in sound form.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.3,
+    "density": 0.7,
+    "movement": 0.25,
+    "space": 0.65,
+    "warmth": 0.6
+  },
   "engines": [
     "Overbite"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Dense foggy texture from folded noise and slow oscillators — alley mist in sound form.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "BELLY": 0.5,
+    "BITE": 0.1,
+    "PLAY DEAD": 0.65,
+    "SCURRY": 0.25,
+    "TRASH": 0.45
+  },
+  "mood": "Atmosphere",
+  "name": "Garbage Fog",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 1.5,
+      "poss_ampDecay": 0.8,
+      "poss_ampRelease": 2.0,
+      "poss_ampSustain": 0.65,
+      "poss_filterCutoff": 800,
+      "poss_filterReso": 0.2,
+      "poss_fxSpaceDecay": 0.65,
+      "poss_fxSpaceMix": 0.5,
+      "poss_fxSpaceSize": 0.75,
+      "poss_fxSpaceType": 2,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.1,
+      "poss_macroPlayDead": 0.65,
+      "poss_macroScurry": 0.25,
+      "poss_macroTrash": 0.45,
+      "poss_noiseDecay": 1.5,
+      "poss_noiseLevel": 0.4,
+      "poss_noiseType": 1,
+      "poss_oscADrift": 0.4,
+      "poss_oscAWaveform": 0,
+      "poss_trashAmount": 0.35,
+      "poss_trashMode": 0
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "texture",
     "noise",
     "dark",
     "dense"
   ],
-  "macroLabels": [
-    "BELLY",
-    "BITE",
-    "SCURRY",
-    "TRASH",
-    "PLAY DEAD"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.6,
-    "movement": 0.25,
-    "density": 0.7,
-    "space": 0.65,
-    "aggression": 0.25
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWaveform": 0,
-      "poss_oscADrift": 0.4,
-      "poss_noiseLevel": 0.4,
-      "poss_noiseType": 1,
-      "poss_noiseDecay": 1.5,
-      "poss_filterCutoff": 800,
-      "poss_filterReso": 0.2,
-      "poss_ampAttack": 1.5,
-      "poss_ampDecay": 0.8,
-      "poss_ampSustain": 0.65,
-      "poss_ampRelease": 2.0,
-      "poss_trashAmount": 0.35,
-      "poss_trashMode": 0,
-      "poss_fxSpaceSize": 0.75,
-      "poss_fxSpaceDecay": 0.65,
-      "poss_fxSpaceType": 2,
-      "poss_fxSpaceMix": 0.5,
-      "poss_macroBelly": 0.5,
-      "poss_macroBite": 0.1,
-      "poss_macroScurry": 0.25,
-      "poss_macroTrash": 0.45,
-      "poss_macroPlayDead": 0.65
-    }
-  },
-  "macros": {
-    "BELLY": 0.5,
-    "BITE": 0.1,
-    "SCURRY": 0.25,
-    "TRASH": 0.45,
-    "PLAY DEAD": 0.65
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }
