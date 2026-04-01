@@ -3,11 +3,11 @@
   "name": "Spice Route Full Migration",
   "mood": "Entangled",
   "engines": [
-    "Oasis"
+    "Okeanos"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "XOasis with SpectralFingerprint migration at full engagement — the Rhodes broadcasting 152 bytes of spectral identity across the Fusion quad. modalFrequencies, impedanceEstimate, harmonicDensity all live in the shared bus.",
+  "description": "XOasis with SpectralFingerprint migration at full engagement \u2014 the Rhodes broadcasting 152 bytes of spectral identity across the Fusion quad. modalFrequencies, impedanceEstimate, harmonicDensity all live in the shared bus.",
   "tags": [
     "rhodes",
     "coupling",
@@ -33,30 +33,30 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Oasis": {
-      "oasis_warmth": 0.52,
-      "oasis_bell": 0.45,
-      "oasis_brightness": 5800.0,
-      "oasis_tremRate": 5.0,
-      "oasis_tremDepth": 0.42,
-      "oasis_attack": 0.004,
-      "oasis_decay": 1.2,
-      "oasis_sustain": 0.52,
-      "oasis_release": 0.65,
-      "oasis_filterEnvAmt": 0.38,
-      "oasis_migration": 0.85,
-      "oasis_stereoWidth": 0.6,
-      "oasis_bendRange": 2.0,
-      "oasis_macroCharacter": 0.48,
-      "oasis_macroMovement": 0.48,
-      "oasis_macroCoupling": 0.85,
-      "oasis_macroSpace": 0.58,
-      "oasis_lfo1Rate": 0.4,
-      "oasis_lfo1Depth": 0.07,
-      "oasis_lfo1Shape": 0,
-      "oasis_lfo2Rate": 1.2,
-      "oasis_lfo2Depth": 0.08,
-      "oasis_lfo2Shape": 0
+    "Okeanos": {
+      "okan_warmth": 0.52,
+      "okan_bell": 0.45,
+      "okan_brightness": 5800.0,
+      "okan_tremRate": 5.0,
+      "okan_tremDepth": 0.42,
+      "okan_attack": 0.004,
+      "okan_decay": 1.2,
+      "okan_sustain": 0.52,
+      "okan_release": 0.65,
+      "okan_filterEnvAmt": 0.38,
+      "okan_migration": 0.85,
+      "okan_stereoWidth": 0.6,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.48,
+      "okan_macroMovement": 0.48,
+      "okan_macroCoupling": 0.85,
+      "okan_macroSpace": 0.58,
+      "okan_lfo1Rate": 0.4,
+      "okan_lfo1Depth": 0.07,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 1.2,
+      "okan_lfo2Depth": 0.08,
+      "okan_lfo2Shape": 0
     }
   },
   "coupling": {

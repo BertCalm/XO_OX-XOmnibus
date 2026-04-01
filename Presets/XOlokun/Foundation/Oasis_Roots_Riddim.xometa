@@ -3,11 +3,11 @@
   "name": "Roots Riddim",
   "mood": "Foundation",
   "engines": [
-    "Oasis"
+    "Okeanos"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Reggae roots Rhodes for the skank pattern. Short decay, very fast release, no tremolo. Staccato articulation is built into the envelope — the rhythm is the player's job.",
+  "description": "Reggae roots Rhodes for the skank pattern. Short decay, very fast release, no tremolo. Staccato articulation is built into the envelope \u2014 the rhythm is the player's job.",
   "tags": [
     "rhodes",
     "reggae",
@@ -33,30 +33,30 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Oasis": {
-      "oasis_warmth": 0.6,
-      "oasis_bell": 0.42,
-      "oasis_brightness": 5000.0,
-      "oasis_tremRate": 4.0,
-      "oasis_tremDepth": 0.0,
-      "oasis_attack": 0.004,
-      "oasis_decay": 0.6,
-      "oasis_sustain": 0.3,
-      "oasis_release": 0.2,
-      "oasis_filterEnvAmt": 0.45,
-      "oasis_migration": 0.0,
-      "oasis_stereoWidth": 0.5,
-      "oasis_bendRange": 2.0,
-      "oasis_macroCharacter": 0.4,
-      "oasis_macroMovement": 0.0,
-      "oasis_macroCoupling": 0.0,
-      "oasis_macroSpace": 0.4,
-      "oasis_lfo1Rate": 0.1,
-      "oasis_lfo1Depth": 0.0,
-      "oasis_lfo1Shape": 0,
-      "oasis_lfo2Rate": 0.05,
-      "oasis_lfo2Depth": 0.0,
-      "oasis_lfo2Shape": 0
+    "Okeanos": {
+      "okan_warmth": 0.6,
+      "okan_bell": 0.42,
+      "okan_brightness": 5000.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.0,
+      "okan_attack": 0.004,
+      "okan_decay": 0.6,
+      "okan_sustain": 0.3,
+      "okan_release": 0.2,
+      "okan_filterEnvAmt": 0.45,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.5,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.4,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.4,
+      "okan_lfo1Rate": 0.1,
+      "okan_lfo1Depth": 0.0,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 0.05,
+      "okan_lfo2Depth": 0.0,
+      "okan_lfo2Shape": 0
     }
   },
   "coupling": {

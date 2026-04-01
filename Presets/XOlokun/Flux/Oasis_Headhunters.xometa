@@ -3,7 +3,7 @@
   "name": "Headhunters",
   "mood": "Flux",
   "engines": [
-    "Oasis"
+    "Okeanos"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,30 +33,30 @@
     "aggression": 0.68
   },
   "parameters": {
-    "Oasis": {
-      "oasis_warmth": 0.55,
-      "oasis_bell": 0.62,
-      "oasis_brightness": 7500.0,
-      "oasis_tremRate": 7.0,
-      "oasis_tremDepth": 0.65,
-      "oasis_attack": 0.002,
-      "oasis_decay": 1.3,
-      "oasis_sustain": 0.48,
-      "oasis_release": 0.55,
-      "oasis_filterEnvAmt": 0.68,
-      "oasis_migration": 0.0,
-      "oasis_stereoWidth": 0.65,
-      "oasis_bendRange": 2.0,
-      "oasis_macroCharacter": 0.5,
-      "oasis_macroMovement": 0.85,
-      "oasis_macroCoupling": 0.0,
-      "oasis_macroSpace": 0.5,
-      "oasis_lfo1Rate": 0.35,
-      "oasis_lfo1Depth": 0.12,
-      "oasis_lfo1Shape": 0,
-      "oasis_lfo2Rate": 2.5,
-      "oasis_lfo2Depth": 0.1,
-      "oasis_lfo2Shape": 0
+    "Okeanos": {
+      "okan_warmth": 0.55,
+      "okan_bell": 0.62,
+      "okan_brightness": 7500.0,
+      "okan_tremRate": 7.0,
+      "okan_tremDepth": 0.65,
+      "okan_attack": 0.002,
+      "okan_decay": 1.3,
+      "okan_sustain": 0.48,
+      "okan_release": 0.55,
+      "okan_filterEnvAmt": 0.68,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.65,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.5,
+      "okan_macroMovement": 0.85,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.5,
+      "okan_lfo1Rate": 0.35,
+      "okan_lfo1Depth": 0.12,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 2.5,
+      "okan_lfo2Depth": 0.1,
+      "okan_lfo2Shape": 0
     }
   },
   "coupling": {

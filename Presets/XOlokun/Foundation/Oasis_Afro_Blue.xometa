@@ -3,7 +3,7 @@
   "name": "Afro Blue Voicing",
   "mood": "Foundation",
   "engines": [
-    "Oasis"
+    "Okeanos"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,30 +33,30 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Oasis": {
-      "oasis_warmth": 0.72,
-      "oasis_bell": 0.38,
-      "oasis_brightness": 4800.0,
-      "oasis_tremRate": 4.0,
-      "oasis_tremDepth": 0.0,
-      "oasis_attack": 0.005,
-      "oasis_decay": 2.5,
-      "oasis_sustain": 0.52,
-      "oasis_release": 1.0,
-      "oasis_filterEnvAmt": 0.28,
-      "oasis_migration": 0.0,
-      "oasis_stereoWidth": 0.45,
-      "oasis_bendRange": 2.0,
-      "oasis_macroCharacter": 0.45,
-      "oasis_macroMovement": 0.0,
-      "oasis_macroCoupling": 0.0,
-      "oasis_macroSpace": 0.5,
-      "oasis_lfo1Rate": 0.3,
-      "oasis_lfo1Depth": 0.04,
-      "oasis_lfo1Shape": 0,
-      "oasis_lfo2Rate": 0.1,
-      "oasis_lfo2Depth": 0.02,
-      "oasis_lfo2Shape": 0
+    "Okeanos": {
+      "okan_warmth": 0.72,
+      "okan_bell": 0.38,
+      "okan_brightness": 4800.0,
+      "okan_tremRate": 4.0,
+      "okan_tremDepth": 0.0,
+      "okan_attack": 0.005,
+      "okan_decay": 2.5,
+      "okan_sustain": 0.52,
+      "okan_release": 1.0,
+      "okan_filterEnvAmt": 0.28,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.45,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.45,
+      "okan_macroMovement": 0.0,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.5,
+      "okan_lfo1Rate": 0.3,
+      "okan_lfo1Depth": 0.04,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 0.1,
+      "okan_lfo2Depth": 0.02,
+      "okan_lfo2Shape": 0
     }
   },
   "coupling": {

@@ -3,7 +3,7 @@
   "name": "Rhodes After Dark",
   "mood": "Atmosphere",
   "engines": [
-    "Oasis"
+    "Okeanos"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,30 +33,30 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Oasis": {
-      "oasis_warmth": 0.78,
-      "oasis_bell": 0.38,
-      "oasis_brightness": 3800.0,
-      "oasis_tremRate": 2.8,
-      "oasis_tremDepth": 0.42,
-      "oasis_attack": 0.007,
-      "oasis_decay": 2.0,
-      "oasis_sustain": 0.62,
-      "oasis_release": 1.1,
-      "oasis_filterEnvAmt": 0.28,
-      "oasis_migration": 0.0,
-      "oasis_stereoWidth": 0.6,
-      "oasis_bendRange": 2.0,
-      "oasis_macroCharacter": 0.28,
-      "oasis_macroMovement": 0.22,
-      "oasis_macroCoupling": 0.0,
-      "oasis_macroSpace": 0.72,
-      "oasis_lfo1Rate": 0.03,
-      "oasis_lfo1Depth": 0.05,
-      "oasis_lfo1Shape": 0,
-      "oasis_lfo2Rate": 0.12,
-      "oasis_lfo2Depth": 0.05,
-      "oasis_lfo2Shape": 0
+    "Okeanos": {
+      "okan_warmth": 0.78,
+      "okan_bell": 0.38,
+      "okan_brightness": 3800.0,
+      "okan_tremRate": 2.8,
+      "okan_tremDepth": 0.42,
+      "okan_attack": 0.007,
+      "okan_decay": 2.0,
+      "okan_sustain": 0.62,
+      "okan_release": 1.1,
+      "okan_filterEnvAmt": 0.28,
+      "okan_migration": 0.0,
+      "okan_stereoWidth": 0.6,
+      "okan_bendRange": 2.0,
+      "okan_macroCharacter": 0.28,
+      "okan_macroMovement": 0.22,
+      "okan_macroCoupling": 0.0,
+      "okan_macroSpace": 0.72,
+      "okan_lfo1Rate": 0.03,
+      "okan_lfo1Depth": 0.05,
+      "okan_lfo1Shape": 0,
+      "okan_lfo2Rate": 0.12,
+      "okan_lfo2Depth": 0.05,
+      "okan_lfo2Shape": 0
     }
   },
   "coupling": {
