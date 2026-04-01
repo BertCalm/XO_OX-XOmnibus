@@ -413,6 +413,12 @@ public:
     // Maximum .xometa file size (1 MB) — prevents OOM on corrupted/malicious files.
     static constexpr int64_t kMaxPresetFileSize = 1024 * 1024;
 
+    // Maximum number of presets loaded into the in-memory library (issue #424).
+    // Prevents unbounded memory growth when a deeply-nested or very large preset
+    // directory is scanned. O(n) DNA search operations also degrade linearly beyond
+    // this threshold. 10 000 entries at ~4 KB average = ~40 MB RAM.
+    static constexpr size_t kMaxLibrarySize = 10000;
+
     bool loadPresetFromFile(const juce::File& file)
     {
         if (!file.existsAsFile())
@@ -560,6 +566,14 @@ public:
         for (const auto& file :
              directory.findChildFiles(juce::File::findFiles, true, "*.xometa"))
         {
+            // Issue #424: cap library size to prevent unbounded memory growth.
+            if (library.size() >= kMaxLibrarySize)
+            {
+                DBG ("PresetManager: library limit (" + juce::String ((int) kMaxLibrarySize)
+                     + ") reached — stopping scan of " + directory.getFullPathName());
+                break;
+            }
+
             if (file.getSize() > kMaxPresetFileSize)
                 continue;
 
